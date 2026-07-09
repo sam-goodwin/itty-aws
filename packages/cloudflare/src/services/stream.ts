@@ -10,6 +10,9 @@ import {
 } from "../protocol.ts";
 import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
+import * as Retry from "../retry.ts";
+
+export type { CloudflareOpError, CloudflareOpContext };
 
 export class Forbidden extends T.applyErrorMatchers(
   S.TaggedErrorClass<Forbidden>()("Forbidden", {
@@ -4096,6 +4099,7 @@ export const copyAudioTrack: API.OperationMethod<
   output: CopyAudioTrackResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type CreateCaptionLanguageError = CloudflareOpError;
@@ -4110,6 +4114,7 @@ export const createCaptionLanguage: API.OperationMethod<
   output: CreateCaptionLanguageResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type CreateClipError = CloudflareOpError;
@@ -4124,6 +4129,7 @@ export const createClip: API.OperationMethod<
   output: CreateClipResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type CreateCopyError = CloudflareOpError;
@@ -4138,6 +4144,7 @@ export const createCopy: API.OperationMethod<
   output: CreateCopyResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type CreateDirectUploadError = CloudflareOpError;
@@ -4152,6 +4159,7 @@ export const createDirectUpload: API.OperationMethod<
   output: CreateDirectUploadResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type CreateDownloadError = CloudflareOpError;
@@ -4166,6 +4174,7 @@ export const createDownload: API.OperationMethod<
   output: CreateDownloadResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type CreateKeyError = CloudflareOpError;
@@ -4180,6 +4189,7 @@ export const createKey: API.OperationMethod<
   output: CreateKeyResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type CreateLiveInputError = CloudflareOpError;
@@ -4194,6 +4204,7 @@ export const createLiveInput: API.OperationMethod<
   output: CreateLiveInputResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type CreateLiveInputOutputError =
@@ -4216,6 +4227,7 @@ export const createLiveInputOutput: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type CreateStreamError = CloudflareOpError;
@@ -4230,6 +4242,7 @@ export const createStream: API.OperationMethod<
   output: CreateStreamResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type CreateTokenError = CloudflareOpError;
@@ -4244,6 +4257,7 @@ export const createToken: API.OperationMethod<
   output: CreateTokenResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type CreateWatermarkError =
@@ -4266,6 +4280,7 @@ export const createWatermark: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteAudioTrackError = CloudflareOpError;
@@ -4280,6 +4295,7 @@ export const deleteAudioTrack: API.OperationMethod<
   output: DeleteAudioTrackResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteCaptionLanguageError = CloudflareOpError;
@@ -4294,6 +4310,7 @@ export const deleteCaptionLanguage: API.OperationMethod<
   output: DeleteCaptionLanguageResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteDownloadError = CloudflareOpError;
@@ -4308,6 +4325,7 @@ export const deleteDownload: API.OperationMethod<
   output: DeleteDownloadResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteKeyError = SigningKeyNotFound | Forbidden | CloudflareOpError;
@@ -4327,6 +4345,7 @@ export const deleteKey: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteLiveInputError =
@@ -4349,6 +4368,7 @@ export const deleteLiveInput: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteLiveInputOutputError =
@@ -4366,6 +4386,7 @@ export const deleteLiveInputOutput: API.OperationMethod<
   output: DeleteLiveInputOutputResponse,
   errors: [OutputNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteStreamError = CloudflareOpError;
@@ -4380,6 +4401,7 @@ export const deleteStream: API.OperationMethod<
   output: DeleteStreamResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteWatermarkError =
@@ -4402,6 +4424,7 @@ export const deleteWatermark: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteWebhookError =
@@ -4419,6 +4442,7 @@ export const deleteWebhook: API.OperationMethod<
   output: DeleteWebhookResponse,
   errors: [WebhookNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type EditStreamError = CloudflareOpError;
@@ -4433,6 +4457,7 @@ export const editStream: API.OperationMethod<
   output: EditStreamResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetAudioTrackError = CloudflareOpError;
@@ -4447,6 +4472,7 @@ export const getAudioTrack: API.OperationMethod<
   output: GetAudioTrackResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetCaptionError = CloudflareOpError;
@@ -4462,6 +4488,7 @@ export const getCaption: API.PaginatedOperationMethod<
     output: GetCaptionResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
@@ -4479,6 +4506,7 @@ export const getCaptionLanguage: API.OperationMethod<
   output: GetCaptionLanguageResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetCaptionLanguageVttError = CloudflareOpError;
@@ -4493,6 +4521,7 @@ export const getCaptionLanguageVtt: API.OperationMethod<
   output: GetCaptionLanguageVttResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetDownloadError = CloudflareOpError;
@@ -4507,6 +4536,7 @@ export const getDownload: API.OperationMethod<
   output: GetDownloadResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetEmbedError = CloudflareOpError;
@@ -4521,6 +4551,7 @@ export const getEmbed: API.OperationMethod<
   output: GetEmbedResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetKeyError = Forbidden | CloudflareOpError;
@@ -4536,6 +4567,7 @@ export const getKey: API.PaginatedOperationMethod<
     output: GetKeyResponse,
     errors: [Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
@@ -4561,6 +4593,7 @@ export const getLiveInput: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetStreamError = CloudflareOpError;
@@ -4575,6 +4608,7 @@ export const getStream: API.OperationMethod<
   output: GetStreamResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetWatermarkError =
@@ -4597,6 +4631,7 @@ export const getWatermark: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetWebhookError = WebhookNotFound | Forbidden | CloudflareOpError;
@@ -4611,6 +4646,7 @@ export const getWebhook: API.OperationMethod<
   output: GetWebhookResponse,
   errors: [WebhookNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ListLiveInputOutputsError =
@@ -4634,6 +4670,7 @@ export const listLiveInputOutputs: API.PaginatedOperationMethod<
       CloudflareError,
     ],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
@@ -4651,6 +4688,7 @@ export const listLiveInputs: API.OperationMethod<
   output: ListLiveInputsResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ListStreamsError = CloudflareOpError;
@@ -4666,6 +4704,7 @@ export const listStreams: API.PaginatedOperationMethod<
     output: ListStreamsResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
@@ -4684,6 +4723,7 @@ export const listWatermarks: API.PaginatedOperationMethod<
     output: ListWatermarksResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
@@ -4701,6 +4741,7 @@ export const patchAudioTrack: API.OperationMethod<
   output: PatchAudioTrackResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type PutWebhookError = CloudflareOpError;
@@ -4715,6 +4756,7 @@ export const putWebhook: API.OperationMethod<
   output: PutWebhookResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type StorageUsageVideoError = CloudflareOpError;
@@ -4729,6 +4771,7 @@ export const storageUsageVideo: API.OperationMethod<
   output: StorageUsageVideoResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type UpdateCaptionLanguageError = CloudflareOpError;
@@ -4743,6 +4786,7 @@ export const updateCaptionLanguage: API.OperationMethod<
   output: UpdateCaptionLanguageResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type UpdateLiveInputError = CloudflareOpError;
@@ -4757,6 +4801,7 @@ export const updateLiveInput: API.OperationMethod<
   output: UpdateLiveInputResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type UpdateLiveInputOutputError =
@@ -4774,4 +4819,5 @@ export const updateLiveInputOutput: API.OperationMethod<
   output: UpdateLiveInputOutputResponse,
   errors: [OutputNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));

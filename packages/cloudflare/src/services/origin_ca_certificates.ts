@@ -10,6 +10,9 @@ import {
 } from "../protocol.ts";
 import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
+import * as Retry from "../retry.ts";
+
+export type { CloudflareOpError, CloudflareOpContext };
 
 export class CertificateAlreadyRevoked extends T.applyErrorMatchers(
   S.TaggedErrorClass<CertificateAlreadyRevoked>()("CertificateAlreadyRevoked", {
@@ -397,6 +400,7 @@ export const createOriginCaCertificate: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteOriginCaCertificateError =
@@ -423,6 +427,7 @@ export const deleteOriginCaCertificate: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetOriginCaCertificateError =
@@ -445,6 +450,7 @@ export const getOriginCaCertificate: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ListOriginCaCertificatesError = Forbidden | CloudflareOpError;
@@ -460,6 +466,7 @@ export const listOriginCaCertificates: API.PaginatedOperationMethod<
     output: ListOriginCaCertificatesResponse,
     errors: [Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: {
       mode: "page",
       inputToken: "page",

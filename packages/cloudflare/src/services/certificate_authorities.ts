@@ -8,6 +8,9 @@ import {
   type CloudflareOpContext,
 } from "../protocol.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
+import * as Retry from "../retry.ts";
+
+export type { CloudflareOpError, CloudflareOpContext };
 
 export class Forbidden extends T.applyErrorMatchers(
   S.TaggedErrorClass<Forbidden>()("Forbidden", {
@@ -117,6 +120,7 @@ export const getHostnameAssociation: API.OperationMethod<
   output: GetHostnameAssociationResponse,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type PutHostnameAssociationError = Forbidden | CloudflareOpError;
@@ -131,4 +135,5 @@ export const putHostnameAssociation: API.OperationMethod<
   output: PutHostnameAssociationResponse,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));

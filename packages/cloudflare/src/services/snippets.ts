@@ -10,6 +10,9 @@ import {
 } from "../protocol.ts";
 import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
+import * as Retry from "../retry.ts";
+
+export type { CloudflareOpError, CloudflareOpContext };
 
 export class Forbidden extends T.applyErrorMatchers(
   S.TaggedErrorClass<Forbidden>()("Forbidden", {
@@ -417,6 +420,7 @@ export const deleteRule: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteSnippetError =
@@ -439,6 +443,7 @@ export const deleteSnippet: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetContentError = CloudflareOpError;
@@ -453,6 +458,7 @@ export const getContent: API.OperationMethod<
   output: GetContentResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetRuleError = CloudflareOpError;
@@ -467,6 +473,7 @@ export const getRule: API.OperationMethod<
   output: GetRuleResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetSnippetError = SnippetNotFound | CloudflareOpError;
@@ -481,6 +488,7 @@ export const getSnippet: API.OperationMethod<
   output: GetSnippetResponse,
   errors: [SnippetNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ListSnippetsError = Forbidden | CloudflareOpError;
@@ -496,6 +504,7 @@ export const listSnippets: API.PaginatedOperationMethod<
     output: ListSnippetsResponse,
     errors: [Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: {
       mode: "page",
       inputToken: "page",
@@ -519,6 +528,7 @@ export const putRule: API.OperationMethod<
   output: PutRuleResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type PutSnippetError = CloudflareOpError;
@@ -533,6 +543,7 @@ export const putSnippet: API.OperationMethod<
   output: PutSnippetResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type RulesListError = CloudflareOpError;
@@ -547,4 +558,5 @@ export const rulesList: API.OperationMethod<
   output: RulesListResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));

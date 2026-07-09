@@ -10,6 +10,9 @@ import {
 } from "../protocol.ts";
 import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
+import * as Retry from "../retry.ts";
+
+export type { CloudflareOpError, CloudflareOpContext };
 
 export class AccountNotFound extends T.applyErrorMatchers(
   S.TaggedErrorClass<AccountNotFound>()("AccountNotFound", {
@@ -808,6 +811,7 @@ export const createFinetune: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type CreateFinetuneAssetError =
@@ -830,6 +834,7 @@ export const createFinetuneAsset: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetModelSchemaError =
@@ -854,6 +859,7 @@ export const getModelSchema: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ListAuthorsError = CloudflareOpError;
@@ -869,6 +875,7 @@ export const listAuthors: API.PaginatedOperationMethod<
     output: ListAuthorsResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
@@ -887,6 +894,7 @@ export const listFinetunePublics: API.PaginatedOperationMethod<
     output: ListFinetunePublicsResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
@@ -904,6 +912,7 @@ export const listFinetunes: API.OperationMethod<
   output: ListFinetunesResponse,
   errors: [AccountNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ListModelsError = CloudflareOpError;
@@ -918,6 +927,7 @@ export const listModels: API.OperationMethod<
   output: ListModelsResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ListTasksError = CloudflareOpError;
@@ -933,6 +943,7 @@ export const listTasks: API.PaginatedOperationMethod<
     output: ListTasksResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
@@ -950,6 +961,7 @@ export const runAi: API.OperationMethod<
   output: RunAiResponse,
   errors: [ModelNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type SupportedToMarkdownError = CloudflareOpError;
@@ -965,6 +977,7 @@ export const supportedToMarkdown: API.PaginatedOperationMethod<
     output: SupportedToMarkdownResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
@@ -982,4 +995,5 @@ export const transformToMarkdown: API.OperationMethod<
   output: TransformToMarkdownResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));

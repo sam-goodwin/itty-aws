@@ -8,6 +8,9 @@ import {
   type CloudflareOpContext,
 } from "../protocol.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
+import * as Retry from "../retry.ts";
+
+export type { CloudflareOpError, CloudflareOpContext };
 
 export interface AiSearchRequestFilters {
   objectKeyTypeValue__: unknown;
@@ -576,6 +579,7 @@ export const aiSearch: API.OperationMethod<
   output: AiSearchResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type FilesError = CloudflareOpError;
@@ -590,6 +594,7 @@ export const files: API.OperationMethod<
   output: FilesResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type JobsGetError = CloudflareOpError;
@@ -604,6 +609,7 @@ export const jobsGet: API.OperationMethod<
   output: JobsGetResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type JobsListError = CloudflareOpError;
@@ -618,6 +624,7 @@ export const jobsList: API.OperationMethod<
   output: JobsListResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type JobsLogsError = CloudflareOpError;
@@ -632,6 +639,7 @@ export const jobsLogs: API.OperationMethod<
   output: JobsLogsResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type SearchError = CloudflareOpError;
@@ -646,6 +654,7 @@ export const search: API.OperationMethod<
   output: SearchResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type SyncError = CloudflareOpError;
@@ -660,4 +669,5 @@ export const sync: API.OperationMethod<
   output: SyncResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));

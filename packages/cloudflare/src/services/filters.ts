@@ -10,6 +10,9 @@ import {
 } from "../protocol.ts";
 import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
+import * as Retry from "../retry.ts";
+
+export type { CloudflareOpError, CloudflareOpContext };
 
 export type BulkDeleteRequestIdList = string[];
 export const BulkDeleteRequestIdList = /*@__PURE__*/ S.Array(
@@ -466,6 +469,7 @@ export const bulkDeleteFilters: API.OperationMethod<
   output: BulkDeleteFiltersResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type BulkPutFiltersError = CloudflareOpError;
@@ -481,6 +485,7 @@ export const bulkPutFilters: API.PaginatedOperationMethod<
     output: BulkPutFiltersResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
@@ -499,6 +504,7 @@ export const createFilter: API.PaginatedOperationMethod<
     output: CreateFilterResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
@@ -516,6 +522,7 @@ export const deleteFilter: API.OperationMethod<
   output: DeleteFilterResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetFilterError = CloudflareOpError;
@@ -530,6 +537,7 @@ export const getFilter: API.OperationMethod<
   output: GetFilterResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ListFiltersError = CloudflareOpError;
@@ -545,6 +553,7 @@ export const listFilters: API.PaginatedOperationMethod<
     output: ListFiltersResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: {
       mode: "page",
       inputToken: "page",
@@ -568,4 +577,5 @@ export const updateFilter: API.OperationMethod<
   output: UpdateFilterResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));

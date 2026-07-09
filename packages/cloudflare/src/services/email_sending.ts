@@ -10,6 +10,9 @@ import {
 } from "../protocol.ts";
 import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
+import * as Retry from "../retry.ts";
+
+export type { CloudflareOpError, CloudflareOpContext };
 
 export class Forbidden extends T.applyErrorMatchers(
   S.TaggedErrorClass<Forbidden>()("Forbidden", {
@@ -625,6 +628,7 @@ export const createSubdomain: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteSubdomainError =
@@ -647,6 +651,7 @@ export const deleteSubdomain: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetSubdomainError =
@@ -669,6 +674,7 @@ export const getSubdomain: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetSubdomainDnsError = CloudflareOpError;
@@ -684,6 +690,7 @@ export const getSubdomainDns: API.PaginatedOperationMethod<
     output: GetSubdomainDnsResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
@@ -702,6 +709,7 @@ export const listSubdomains: API.PaginatedOperationMethod<
     output: ListSubdomainsResponse,
     errors: [Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
@@ -719,6 +727,7 @@ export const sendEmailSending: API.OperationMethod<
   output: SendEmailSendingResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type SendRawEmailSendingError = CloudflareOpError;
@@ -733,4 +742,5 @@ export const sendRawEmailSending: API.OperationMethod<
   output: SendRawEmailSendingResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));

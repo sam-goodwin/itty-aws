@@ -10,6 +10,9 @@ import {
 } from "../protocol.ts";
 import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
+import * as Retry from "../retry.ts";
+
+export type { CloudflareOpError, CloudflareOpContext };
 
 export class HyperdriveConfigNotFound extends T.applyErrorMatchers(
   S.TaggedErrorClass<HyperdriveConfigNotFound>()("HyperdriveConfigNotFound", {
@@ -968,6 +971,7 @@ export const createConfig: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteConfigError =
@@ -994,6 +998,7 @@ export const deleteConfig: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetConfigError =
@@ -1018,6 +1023,7 @@ export const getConfig: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ListConfigsError =
@@ -1041,6 +1047,7 @@ export const listConfigs: API.PaginatedOperationMethod<
       CloudflareError,
     ],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
@@ -1070,6 +1077,7 @@ export const patchConfig: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type UpdateConfigError =
@@ -1096,4 +1104,5 @@ export const updateConfig: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));

@@ -10,6 +10,9 @@ import {
 } from "../protocol.ts";
 import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
+import * as Retry from "../retry.ts";
+
+export type { CloudflareOpError, CloudflareOpContext };
 
 export class Forbidden extends T.applyErrorMatchers(
   S.TaggedErrorClass<Forbidden>()("Forbidden", {
@@ -1606,6 +1609,7 @@ export const createPageTest: API.OperationMethod<
   output: CreatePageTestResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type CreateScheduleError =
@@ -1630,6 +1634,7 @@ export const createSchedule: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeletePageTestError = CloudflareOpError;
@@ -1644,6 +1649,7 @@ export const deletePageTest: API.OperationMethod<
   output: DeletePageTestResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteScheduleError =
@@ -1666,6 +1672,7 @@ export const deleteSchedule: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetPageTestError = CloudflareOpError;
@@ -1680,6 +1687,7 @@ export const getPageTest: API.OperationMethod<
   output: GetPageTestResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetScheduleError =
@@ -1702,6 +1710,7 @@ export const getSchedule: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ListAvailabilitiesError = CloudflareOpError;
@@ -1716,6 +1725,7 @@ export const listAvailabilities: API.OperationMethod<
   output: ListAvailabilitiesResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ListPagesError = CloudflareOpError;
@@ -1731,6 +1741,7 @@ export const listPages: API.PaginatedOperationMethod<
     output: ListPagesResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
@@ -1749,6 +1760,7 @@ export const listPageTests: API.PaginatedOperationMethod<
     output: ListPageTestsResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: {
       mode: "page",
       inputToken: "page",
@@ -1772,4 +1784,5 @@ export const trendPage: API.OperationMethod<
   output: TrendPageResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));

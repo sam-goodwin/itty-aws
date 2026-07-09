@@ -10,6 +10,9 @@ import {
 } from "../protocol.ts";
 import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
+import * as Retry from "../retry.ts";
+
+export type { CloudflareOpError, CloudflareOpContext };
 
 export class DatabaseAlreadyExists extends T.applyErrorMatchers(
   S.TaggedErrorClass<DatabaseAlreadyExists>()("DatabaseAlreadyExists", {
@@ -1333,6 +1336,7 @@ export const createDatabase: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteDatabaseError =
@@ -1357,6 +1361,7 @@ export const deleteDatabase: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ExportDatabaseError =
@@ -1381,6 +1386,7 @@ export const exportDatabase: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetBookmarkDatabaseTimeTravelError =
@@ -1407,6 +1413,7 @@ export const getBookmarkDatabaseTimeTravel: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetDatabaseError =
@@ -1431,6 +1438,7 @@ export const getDatabase: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ImportDatabaseError = InvalidObjectIdentifier | CloudflareOpError;
@@ -1445,6 +1453,7 @@ export const importDatabase: API.OperationMethod<
   output: ImportDatabaseResponse,
   errors: [InvalidObjectIdentifier, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ListDatabasesError = CloudflareOpError;
@@ -1460,6 +1469,7 @@ export const listDatabases: API.PaginatedOperationMethod<
     output: ListDatabasesResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: {
       mode: "page",
       inputToken: "page",
@@ -1493,6 +1503,7 @@ export const patchDatabase: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type QueryDatabaseError = CloudflareOpError;
@@ -1508,6 +1519,7 @@ export const queryDatabase: API.PaginatedOperationMethod<
     output: QueryDatabaseResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
@@ -1526,6 +1538,7 @@ export const rawDatabase: API.PaginatedOperationMethod<
     output: RawDatabaseResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
@@ -1555,6 +1568,7 @@ export const restoreDatabaseTimeTravel: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type UpdateDatabaseError =
@@ -1579,4 +1593,5 @@ export const updateDatabase: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));

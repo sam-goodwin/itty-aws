@@ -8,6 +8,9 @@ import {
   type CloudflareOpContext,
 } from "../protocol.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
+import * as Retry from "../retry.ts";
+
+export type { CloudflareOpError, CloudflareOpContext };
 
 export interface AssetsCreateRequest {
   accountsOrZones: string;
@@ -465,6 +468,7 @@ export const assetsCreate: API.OperationMethod<
   output: AssetsCreateResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type AssetsDeleteError = CloudflareOpError;
@@ -479,6 +483,7 @@ export const assetsDelete: API.OperationMethod<
   output: AssetsDeleteResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type AssetsGetError = CloudflareOpError;
@@ -493,6 +498,7 @@ export const assetsGet: API.OperationMethod<
   output: AssetsGetResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type AssetsListError = CloudflareOpError;
@@ -507,6 +513,7 @@ export const assetsList: API.OperationMethod<
   output: AssetsListResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type AssetsUpdateError = CloudflareOpError;
@@ -521,6 +528,7 @@ export const assetsUpdate: API.OperationMethod<
   output: AssetsUpdateResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetError = CloudflareOpError;
@@ -535,6 +543,7 @@ export const get: API.OperationMethod<
   output: GetResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ListError = CloudflareOpError;
@@ -549,6 +558,7 @@ export const list: API.OperationMethod<
   output: ListResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type UpdateError = CloudflareOpError;
@@ -563,4 +573,5 @@ export const update: API.OperationMethod<
   output: UpdateResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));

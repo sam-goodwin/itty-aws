@@ -10,6 +10,9 @@ import {
 } from "../protocol.ts";
 import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
+import * as Retry from "../retry.ts";
+
+export type { CloudflareOpError, CloudflareOpContext };
 
 export class CloudConnectorRulesNotFound extends T.applyErrorMatchers(
   S.TaggedErrorClass<CloudConnectorRulesNotFound>()(
@@ -262,6 +265,7 @@ export const listRules: API.PaginatedOperationMethod<
       CloudflareError,
     ],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
@@ -280,6 +284,7 @@ export const putRule: API.PaginatedOperationMethod<
     output: PutRuleResponse,
     errors: [Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,

@@ -8,6 +8,9 @@ import {
   type CloudflareOpContext,
 } from "../protocol.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
+import * as Retry from "../retry.ts";
+
+export type { CloudflareOpError, CloudflareOpContext };
 
 export type CreateRequestSansList = string[];
 export const CreateRequestSansList = /*@__PURE__*/ S.Array(
@@ -346,6 +349,7 @@ export const create: API.OperationMethod<
   output: CreateResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteError = CloudflareOpError;
@@ -360,6 +364,7 @@ export const Delete: API.OperationMethod<
   output: DeleteResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetError = CloudflareOpError;
@@ -374,6 +379,7 @@ export const get: API.OperationMethod<
   output: GetResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ListError = CloudflareOpError;
@@ -388,4 +394,5 @@ export const list: API.OperationMethod<
   output: ListResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));

@@ -10,6 +10,9 @@ import {
 } from "../protocol.ts";
 import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
+import * as Retry from "../retry.ts";
+
+export type { CloudflareOpError, CloudflareOpContext };
 
 export class FlagshipAppNotFound extends T.applyErrorMatchers(
   S.TaggedErrorClass<FlagshipAppNotFound>()("FlagshipAppNotFound", {
@@ -1229,6 +1232,7 @@ export const createApp: API.OperationMethod<
   output: CreateAppResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type CreateAppFlagError =
@@ -1251,6 +1255,7 @@ export const createAppFlag: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteAppError = FlagshipAppNotFound | CloudflareOpError;
@@ -1265,6 +1270,7 @@ export const deleteApp: API.OperationMethod<
   output: DeleteAppResponse,
   errors: [FlagshipAppNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteAppFlagError =
@@ -1287,6 +1293,7 @@ export const deleteAppFlag: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetAppError = FlagshipAppNotFound | CloudflareOpError;
@@ -1301,6 +1308,7 @@ export const getApp: API.OperationMethod<
   output: GetAppResponse,
   errors: [FlagshipAppNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetAppEvaluateError = CloudflareOpError;
@@ -1315,6 +1323,7 @@ export const getAppEvaluate: API.OperationMethod<
   output: GetAppEvaluateResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetAppFlagError =
@@ -1337,6 +1346,7 @@ export const getAppFlag: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ListAppFlagChangelogsError = CloudflareOpError;
@@ -1352,6 +1362,7 @@ export const listAppFlagChangelogs: API.PaginatedOperationMethod<
     output: ListAppFlagChangelogsResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: {
       mode: "cursor",
       inputToken: "cursor",
@@ -1375,6 +1386,7 @@ export const listAppFlags: API.PaginatedOperationMethod<
     output: ListAppFlagsResponse,
     errors: [FlagshipAppNotFound, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: {
       mode: "cursor",
       inputToken: "cursor",
@@ -1398,6 +1410,7 @@ export const listApps: API.PaginatedOperationMethod<
     output: ListAppsResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
@@ -1415,6 +1428,7 @@ export const updateApp: API.OperationMethod<
   output: UpdateAppResponse,
   errors: [FlagshipAppNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type UpdateAppFlagError =
@@ -1437,4 +1451,5 @@ export const updateAppFlag: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));

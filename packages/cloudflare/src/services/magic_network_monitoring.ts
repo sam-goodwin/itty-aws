@@ -10,6 +10,9 @@ import {
 } from "../protocol.ts";
 import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
+import * as Retry from "../retry.ts";
+
+export type { CloudflareOpError, CloudflareOpContext };
 
 export class DuplicateMnmRuleName extends T.applyErrorMatchers(
   S.TaggedErrorClass<DuplicateMnmRuleName>()("DuplicateMnmRuleName", {
@@ -1536,6 +1539,7 @@ export const createConfig: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type CreateRuleError =
@@ -1560,6 +1564,7 @@ export const createRule: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type CreateVpcFlowTokenError = CloudflareOpError;
@@ -1574,6 +1579,7 @@ export const createVpcFlowToken: API.OperationMethod<
   output: CreateVpcFlowTokenResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteConfigError =
@@ -1596,6 +1602,7 @@ export const deleteConfig: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteRuleError = MnmRuleNotFound | Forbidden | CloudflareOpError;
@@ -1610,6 +1617,7 @@ export const deleteRule: API.OperationMethod<
   output: DeleteRuleResponse,
   errors: [MnmRuleNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetConfigError = Forbidden | CloudflareOpError;
@@ -1624,6 +1632,7 @@ export const getConfig: API.OperationMethod<
   output: GetConfigResponse,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetConfigFullError = CloudflareOpError;
@@ -1638,6 +1647,7 @@ export const getConfigFull: API.OperationMethod<
   output: GetConfigFullResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetRuleError = MnmRuleNotFound | Forbidden | CloudflareOpError;
@@ -1652,6 +1662,7 @@ export const getRule: API.OperationMethod<
   output: GetRuleResponse,
   errors: [MnmRuleNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ListRulesError = Forbidden | CloudflareOpError;
@@ -1667,6 +1678,7 @@ export const listRules: API.PaginatedOperationMethod<
     output: ListRulesResponse,
     errors: [Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
@@ -1684,6 +1696,7 @@ export const patchConfig: API.OperationMethod<
   output: PatchConfigResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type PatchRuleError = MnmRuleNotFound | Forbidden | CloudflareOpError;
@@ -1698,6 +1711,7 @@ export const patchRule: API.OperationMethod<
   output: PatchRuleResponse,
   errors: [MnmRuleNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type PatchRuleAdvertisementError = CloudflareOpError;
@@ -1712,6 +1726,7 @@ export const patchRuleAdvertisement: API.OperationMethod<
   output: PatchRuleAdvertisementResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type UpdateConfigError =
@@ -1729,6 +1744,7 @@ export const updateConfig: API.OperationMethod<
   output: UpdateConfigResponse,
   errors: [Forbidden, InvalidMnmConfig, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type UpdateRuleError = CloudflareOpError;
@@ -1743,4 +1759,5 @@ export const updateRule: API.OperationMethod<
   output: UpdateRuleResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));

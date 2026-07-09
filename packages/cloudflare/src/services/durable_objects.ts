@@ -10,6 +10,9 @@ import {
 } from "../protocol.ts";
 import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
+import * as Retry from "../retry.ts";
+
+export type { CloudflareOpError, CloudflareOpContext };
 
 export class InvalidIdentifier extends T.applyErrorMatchers(
   S.TaggedErrorClass<InvalidIdentifier>()("InvalidIdentifier", {
@@ -185,6 +188,7 @@ export const listNamespaceObjects: API.PaginatedOperationMethod<
       CloudflareError,
     ],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: {
       mode: "cursor",
       inputToken: "cursor",
@@ -208,6 +212,7 @@ export const listNamespaces: API.PaginatedOperationMethod<
     output: ListNamespacesResponse,
     errors: [InvalidIdentifier, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: {
       mode: "page",
       inputToken: "page",

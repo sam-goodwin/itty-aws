@@ -10,6 +10,9 @@ import {
 } from "../protocol.ts";
 import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
+import * as Retry from "../retry.ts";
+
+export type { CloudflareOpError, CloudflareOpContext };
 
 export class Forbidden extends T.applyErrorMatchers(
   S.TaggedErrorClass<Forbidden>()("Forbidden", {
@@ -733,6 +736,7 @@ export const createList: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type CreateListItemError = CloudflareOpError;
@@ -747,6 +751,7 @@ export const createListItem: API.OperationMethod<
   output: CreateListItemResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteListError = ListNotFound | Forbidden | CloudflareOpError;
@@ -761,6 +766,7 @@ export const deleteList: API.OperationMethod<
   output: DeleteListResponse,
   errors: [ListNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteListItemError = CloudflareOpError;
@@ -775,6 +781,7 @@ export const deleteListItem: API.OperationMethod<
   output: DeleteListItemResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetListError = ListNotFound | Forbidden | CloudflareOpError;
@@ -789,6 +796,7 @@ export const getList: API.OperationMethod<
   output: GetListResponse,
   errors: [ListNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetListBulkOperationError =
@@ -806,6 +814,7 @@ export const getListBulkOperation: API.OperationMethod<
   output: GetListBulkOperationResponse,
   errors: [ListNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetListItemError = CloudflareOpError;
@@ -820,6 +829,7 @@ export const getListItem: API.OperationMethod<
   output: GetListItemResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ListListItemsError = ListNotFound | Forbidden | CloudflareOpError;
@@ -835,6 +845,7 @@ export const listListItems: API.PaginatedOperationMethod<
     output: ListListItemsResponse,
     errors: [ListNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: {
       mode: "cursor",
       inputToken: "cursor",
@@ -858,6 +869,7 @@ export const listLists: API.PaginatedOperationMethod<
     output: ListListsResponse,
     errors: [Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
@@ -875,6 +887,7 @@ export const updateList: API.OperationMethod<
   output: UpdateListResponse,
   errors: [ListNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type UpdateListItemError = ListNotFound | Forbidden | CloudflareOpError;
@@ -889,4 +902,5 @@ export const updateListItem: API.OperationMethod<
   output: UpdateListItemResponse,
   errors: [ListNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));

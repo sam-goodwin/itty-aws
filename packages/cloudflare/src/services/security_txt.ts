@@ -8,6 +8,9 @@ import {
   type CloudflareOpContext,
 } from "../protocol.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
+import * as Retry from "../retry.ts";
+
+export type { CloudflareOpError, CloudflareOpContext };
 
 export class Forbidden extends T.applyErrorMatchers(
   S.TaggedErrorClass<Forbidden>()("Forbidden", {
@@ -215,6 +218,7 @@ export const deleteSecurityTxt: API.OperationMethod<
   output: DeleteSecurityTxtResponse,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetSecurityTxtError = Forbidden | CloudflareOpError;
@@ -229,6 +233,7 @@ export const getSecurityTxt: API.OperationMethod<
   output: GetSecurityTxtResponse,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type PutSecurityTxtError =
@@ -251,4 +256,5 @@ export const putSecurityTxt: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));

@@ -8,6 +8,9 @@ import {
   type CloudflareOpContext,
 } from "../protocol.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
+import * as Retry from "../retry.ts";
+
+export type { CloudflareOpError, CloudflareOpContext };
 
 export class CmbConfigNotFound extends T.applyErrorMatchers(
   S.TaggedErrorClass<CmbConfigNotFound>()("CmbConfigNotFound", {
@@ -832,6 +835,7 @@ export const createControlCmbConfig: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type CreateControlRetentionError =
@@ -854,6 +858,7 @@ export const createControlRetention: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteControlCmbConfigError =
@@ -878,6 +883,7 @@ export const deleteControlCmbConfig: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetControlCmbConfigError =
@@ -902,6 +908,7 @@ export const getControlCmbConfig: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetControlRetentionError =
@@ -924,6 +931,7 @@ export const getControlRetention: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetRayidError = CloudflareOpError;
@@ -938,6 +946,7 @@ export const getRayid: API.OperationMethod<
   output: GetRayidResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetReceivedError = CloudflareOpError;
@@ -952,6 +961,7 @@ export const getReceived: API.OperationMethod<
   output: GetReceivedResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetReceivedFieldError = CloudflareOpError;
@@ -966,6 +976,7 @@ export const getReceivedField: API.OperationMethod<
   output: GetReceivedFieldResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type LogExplorerDatasetsAvailableListError = CloudflareOpError;
@@ -980,6 +991,7 @@ export const logExplorerDatasetsAvailableList: API.OperationMethod<
   output: LogExplorerDatasetsAvailableListResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type LogExplorerDatasetsCreateError = CloudflareOpError;
@@ -994,6 +1006,7 @@ export const logExplorerDatasetsCreate: API.OperationMethod<
   output: LogExplorerDatasetsCreateResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type LogExplorerDatasetsGetError = CloudflareOpError;
@@ -1008,6 +1021,7 @@ export const logExplorerDatasetsGet: API.OperationMethod<
   output: LogExplorerDatasetsGetResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type LogExplorerDatasetsListError = CloudflareOpError;
@@ -1022,6 +1036,7 @@ export const logExplorerDatasetsList: API.OperationMethod<
   output: LogExplorerDatasetsListResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type LogExplorerDatasetsUpdateError = CloudflareOpError;
@@ -1036,6 +1051,7 @@ export const logExplorerDatasetsUpdate: API.OperationMethod<
   output: LogExplorerDatasetsUpdateResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type LogExplorerQuerySqlError = CloudflareOpError;
@@ -1050,4 +1066,5 @@ export const logExplorerQuerySql: API.OperationMethod<
   output: LogExplorerQuerySqlResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));

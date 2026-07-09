@@ -10,6 +10,9 @@ import {
 } from "../protocol.ts";
 import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
+import * as Retry from "../retry.ts";
+
+export type { CloudflareOpError, CloudflareOpContext };
 
 export class CertificateAlreadyDeleted extends T.applyErrorMatchers(
   S.TaggedErrorClass<CertificateAlreadyDeleted>()("CertificateAlreadyDeleted", {
@@ -1063,6 +1066,7 @@ export const createHostnameCertificate: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type CreateOriginTlsClientAuthError =
@@ -1089,6 +1093,7 @@ export const createOriginTlsClientAuth: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteHostnameCertificateError =
@@ -1119,6 +1124,7 @@ export const deleteHostnameCertificate: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteOriginTlsClientAuthError =
@@ -1147,6 +1153,7 @@ export const deleteOriginTlsClientAuth: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetHostnameError =
@@ -1169,6 +1176,7 @@ export const getHostname: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetHostnameCertificateError =
@@ -1191,6 +1199,7 @@ export const getHostnameCertificate: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetOriginTlsClientAuthError =
@@ -1213,6 +1222,7 @@ export const getOriginTlsClientAuth: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetSettingError = Forbidden | CloudflareOpError;
@@ -1227,6 +1237,7 @@ export const getSetting: API.OperationMethod<
   output: GetSettingResponse,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ListHostnameCertificatesError = Forbidden | CloudflareOpError;
@@ -1242,6 +1253,7 @@ export const listHostnameCertificates: API.PaginatedOperationMethod<
     output: ListHostnameCertificatesResponse,
     errors: [Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
@@ -1260,6 +1272,7 @@ export const listOriginTlsClientAuths: API.PaginatedOperationMethod<
     output: ListOriginTlsClientAuthsResponse,
     errors: [Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
@@ -1288,6 +1301,7 @@ export const putHostname: API.PaginatedOperationMethod<
       CloudflareError,
     ],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
@@ -1305,6 +1319,7 @@ export const putSetting: API.OperationMethod<
   output: PutSettingResponse,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ZoneCertificatesCreateError = CloudflareOpError;
@@ -1319,6 +1334,7 @@ export const zoneCertificatesCreate: API.OperationMethod<
   output: ZoneCertificatesCreateResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ZoneCertificatesDeleteError = CloudflareOpError;
@@ -1333,6 +1349,7 @@ export const zoneCertificatesDelete: API.OperationMethod<
   output: ZoneCertificatesDeleteResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ZoneCertificatesGetError = CloudflareOpError;
@@ -1347,6 +1364,7 @@ export const zoneCertificatesGet: API.OperationMethod<
   output: ZoneCertificatesGetResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ZoneCertificatesListError = CloudflareOpError;
@@ -1361,4 +1379,5 @@ export const zoneCertificatesList: API.OperationMethod<
   output: ZoneCertificatesListResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));

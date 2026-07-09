@@ -10,6 +10,9 @@ import {
 } from "../protocol.ts";
 import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
+import * as Retry from "../retry.ts";
+
+export type { CloudflareOpError, CloudflareOpContext };
 
 export class AdvancedCertificateManagerRequired extends T.applyErrorMatchers(
   S.TaggedErrorClass<AdvancedCertificateManagerRequired>()(
@@ -507,6 +510,7 @@ export const createCustomTrustStore: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteCustomTrustStoreError =
@@ -533,6 +537,7 @@ export const deleteCustomTrustStore: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetCustomTrustStoreError =
@@ -559,6 +564,7 @@ export const getCustomTrustStore: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetTotalTlError =
@@ -583,6 +589,7 @@ export const getTotalTl: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ListCustomTrustStoresError =
@@ -606,6 +613,7 @@ export const listCustomTrustStores: API.PaginatedOperationMethod<
       CloudflareError,
     ],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: {
       mode: "page",
       inputToken: "page",
@@ -629,6 +637,7 @@ export const totalTlsUpdate: API.OperationMethod<
   output: TotalTlsUpdateResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type UpdateTotalTlError =
@@ -657,4 +666,5 @@ export const updateTotalTl: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));

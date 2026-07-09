@@ -10,6 +10,9 @@ import {
 } from "../protocol.ts";
 import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
+import * as Retry from "../retry.ts";
+
+export type { CloudflareOpError, CloudflareOpContext };
 
 export class ActiveProductionDeployment extends T.applyErrorMatchers(
   S.TaggedErrorClass<ActiveProductionDeployment>()(
@@ -9196,6 +9199,7 @@ export const createProject: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type CreateProjectDeploymentError =
@@ -9213,6 +9217,7 @@ export const createProjectDeployment: API.OperationMethod<
   output: CreateProjectDeploymentResponse,
   errors: [ProjectNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type CreateProjectDomainError =
@@ -9237,6 +9242,7 @@ export const createProjectDomain: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteProjectError =
@@ -9254,6 +9260,7 @@ export const deleteProject: API.OperationMethod<
   output: DeleteProjectResponse,
   errors: [ProjectNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteProjectDeploymentError =
@@ -9280,6 +9287,7 @@ export const deleteProjectDeployment: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteProjectDomainError =
@@ -9304,6 +9312,7 @@ export const deleteProjectDomain: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetProjectError = ProjectNotFound | Forbidden | CloudflareOpError;
@@ -9318,6 +9327,7 @@ export const getProject: API.OperationMethod<
   output: GetProjectResponse,
   errors: [ProjectNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetProjectDeploymentError =
@@ -9342,6 +9352,7 @@ export const getProjectDeployment: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetProjectDeploymentHistoryLogError = CloudflareOpError;
@@ -9356,6 +9367,7 @@ export const getProjectDeploymentHistoryLog: API.OperationMethod<
   output: GetProjectDeploymentHistoryLogResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetProjectDomainError =
@@ -9380,6 +9392,7 @@ export const getProjectDomain: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ListProjectDeploymentsError = CloudflareOpError;
@@ -9395,6 +9408,7 @@ export const listProjectDeployments: API.PaginatedOperationMethod<
     output: ListProjectDeploymentsResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: {
       mode: "page",
       inputToken: "page",
@@ -9427,6 +9441,7 @@ export const listProjectDomains: API.PaginatedOperationMethod<
       CloudflareError,
     ],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
@@ -9445,6 +9460,7 @@ export const listProjects: API.PaginatedOperationMethod<
     output: ListProjectsResponse,
     errors: [Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: {
       mode: "page",
       inputToken: "page",
@@ -9468,6 +9484,7 @@ export const patchProject: API.OperationMethod<
   output: PatchProjectResponse,
   errors: [ProjectNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type PatchProjectDomainError =
@@ -9492,6 +9509,7 @@ export const patchProjectDomain: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type PurgeBuildCacheProjectError = CloudflareOpError;
@@ -9506,6 +9524,7 @@ export const purgeBuildCacheProject: API.OperationMethod<
   output: PurgeBuildCacheProjectResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type RetryProjectDeploymentError = CloudflareOpError;
@@ -9520,6 +9539,7 @@ export const retryProjectDeployment: API.OperationMethod<
   output: RetryProjectDeploymentResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type RollbackProjectDeploymentError = CloudflareOpError;
@@ -9534,4 +9554,5 @@ export const rollbackProjectDeployment: API.OperationMethod<
   output: RollbackProjectDeploymentResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));

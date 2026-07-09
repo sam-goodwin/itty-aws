@@ -10,6 +10,9 @@ import {
 } from "../protocol.ts";
 import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
+import * as Retry from "../retry.ts";
+
+export type { CloudflareOpError, CloudflareOpContext };
 
 export interface CreateTenantCustomNameserverRequest {
   /** Tenant identifier tag. */
@@ -235,6 +238,7 @@ export const createTenantCustomNameserver: API.OperationMethod<
   output: CreateTenantCustomNameserverResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteTenantCustomNameserverError = CloudflareOpError;
@@ -250,6 +254,7 @@ export const deleteTenantCustomNameserver: API.PaginatedOperationMethod<
     output: DeleteTenantCustomNameserverResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
@@ -268,6 +273,7 @@ export const getTenantCustomNameserver: API.PaginatedOperationMethod<
     output: GetTenantCustomNameserverResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,

@@ -8,6 +8,9 @@ import {
   type CloudflareOpContext,
 } from "../protocol.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
+import * as Retry from "../retry.ts";
+
+export type { CloudflareOpError, CloudflareOpContext };
 
 export class Forbidden extends T.applyErrorMatchers(
   S.TaggedErrorClass<Forbidden>()("Forbidden", {
@@ -1940,6 +1943,7 @@ export const createPageRule: API.OperationMethod<
   output: CreatePageRuleResponse,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeletePageRuleError =
@@ -1957,6 +1961,7 @@ export const deletePageRule: API.OperationMethod<
   output: DeletePageRuleResponse,
   errors: [PageRuleNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetPageRuleError = PageRuleNotFound | Forbidden | CloudflareOpError;
@@ -1971,6 +1976,7 @@ export const getPageRule: API.OperationMethod<
   output: GetPageRuleResponse,
   errors: [PageRuleNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ListPageRulesError =
@@ -1993,6 +1999,7 @@ export const listPageRules: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type PatchPageRuleError =
@@ -2010,6 +2017,7 @@ export const patchPageRule: API.OperationMethod<
   output: PatchPageRuleResponse,
   errors: [PageRuleNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type UpdatePageRuleError =
@@ -2027,4 +2035,5 @@ export const updatePageRule: API.OperationMethod<
   output: UpdatePageRuleResponse,
   errors: [PageRuleNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));

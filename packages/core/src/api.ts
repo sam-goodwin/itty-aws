@@ -6,9 +6,11 @@ import * as Option from "effect/Option";
 import * as Schedule from "effect/Schedule";
 import * as S from "effect/Schema";
 import type * as AST from "effect/SchemaAST";
+import * as Ref from "effect/Ref";
 import * as Scope from "effect/Scope";
 import type * as Stream from "effect/Stream";
 import * as Pagination from "./pagination.ts";
+import type { Policy as RetryPolicy } from "./retry.ts";
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import type * as HttpClientError from "effect/unstable/http/HttpClientError";
 import type * as HttpClientRequest from "effect/unstable/http/HttpClientRequest";
@@ -180,7 +182,40 @@ export interface OperationConfig<
    */
   protocol: Layer.Layer<Protocol, PE, PR>;
   retryPolicy?: RetryPolicyFn;
+  /**
+   * SDK-specific retry service tag (see `core/retry`). When provided and the
+   * caller's context carries a policy under this tag, every call is retried
+   * per that policy (e.g. `Layer.succeed(Cloudflare.Retry.Retry, factory)`).
+   */
+  retry?: Context.Key<any, RetryPolicy>;
 }
+
+/**
+ * Wrap one operation call with the caller-provided retry policy, if the
+ * operation declares a retry tag and the context carries a policy for it.
+ */
+const applyRetry = (
+  base: Effect.Effect<any, any, any>,
+  retryKey: Context.Key<any, RetryPolicy> | undefined,
+): Effect.Effect<any, any, any> =>
+  retryKey === undefined
+    ? base
+    : Effect.flatMap(Effect.serviceOption(retryKey), (opt) => {
+        if (Option.isNone(opt)) return base;
+        return Effect.gen(function* () {
+          const lastError = yield* Ref.make<unknown>(undefined);
+          const policy = opt.value;
+          const opts =
+            typeof policy === "function" ? policy(lastError) : policy;
+          return yield* base.pipe(
+            Effect.tapError((e) => Ref.set(lastError, e)),
+            Effect.retry({
+              ...(opts.while ? { while: (e: unknown) => opts.while!(e) } : {}),
+              ...(opts.schedule ? { schedule: opts.schedule as any } : {}),
+            }),
+          );
+        });
+      });
 
 export function make<
   I extends S.Top,
@@ -221,19 +256,22 @@ export function make<
   return ((input: unknown) =>
     Effect.suspend(() => {
       const { cfg, inputAst, outputAst } = prepare();
-      return Effect.flatMap(protocolContext(cfg.protocol), (protocolCtx) =>
-        Effect.gen(function* () {
-          const protocol = yield* Protocol;
-          const client = yield* HttpClient.HttpClient;
-          const request = yield* protocol.encode({ input, inputAst });
-          const response = yield* client.execute(request);
-          return yield* protocol.decode({
-            response,
-            outputAst,
-            errors: cfg.errors ?? [],
-          });
-        }).pipe(Effect.provideContext(protocolCtx)),
+      const call = Effect.flatMap(
+        protocolContext(cfg.protocol),
+        (protocolCtx) =>
+          Effect.gen(function* () {
+            const protocol = yield* Protocol;
+            const client = yield* HttpClient.HttpClient;
+            const request = yield* protocol.encode({ input, inputAst });
+            const response = yield* client.execute(request);
+            return yield* protocol.decode({
+              response,
+              outputAst,
+              errors: cfg.errors ?? [],
+            });
+          }).pipe(Effect.provideContext(protocolCtx)),
       );
+      return applyRetry(call, cfg.retry);
     })) as any;
 }
 

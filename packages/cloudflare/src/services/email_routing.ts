@@ -10,6 +10,9 @@ import {
 } from "../protocol.ts";
 import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
+import * as Retry from "../retry.ts";
+
+export type { CloudflareOpError, CloudflareOpContext };
 
 export class DestinationNotVerified extends T.applyErrorMatchers(
   S.TaggedErrorClass<DestinationNotVerified>()("DestinationNotVerified", {
@@ -2129,6 +2132,7 @@ export const addressesEdit: API.OperationMethod<
   output: AddressesEditResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type CreateAddressError = CloudflareOpError;
@@ -2143,6 +2147,7 @@ export const createAddress: API.OperationMethod<
   output: CreateAddressResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type CreateDnsError = CloudflareOpError;
@@ -2157,6 +2162,7 @@ export const createDns: API.OperationMethod<
   output: CreateDnsResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type CreateRuleError = CloudflareOpError;
@@ -2171,6 +2177,7 @@ export const createRule: API.OperationMethod<
   output: CreateRuleResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteAddressError = CloudflareOpError;
@@ -2185,6 +2192,7 @@ export const deleteAddress: API.OperationMethod<
   output: DeleteAddressResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteDnsError = CloudflareOpError;
@@ -2199,6 +2207,7 @@ export const deleteDns: API.OperationMethod<
   output: DeleteDnsResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteRuleError = EmailRoutingRuleNotFound | CloudflareOpError;
@@ -2213,6 +2222,7 @@ export const deleteRule: API.OperationMethod<
   output: DeleteRuleResponse,
   errors: [EmailRoutingRuleNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DisableEmailRoutingError = Forbidden | CloudflareOpError;
@@ -2227,6 +2237,7 @@ export const disableEmailRouting: API.OperationMethod<
   output: DisableEmailRoutingResponse,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type EnableEmailRoutingError = Forbidden | CloudflareOpError;
@@ -2241,6 +2252,7 @@ export const enableEmailRouting: API.OperationMethod<
   output: EnableEmailRoutingResponse,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetAddressError = CloudflareOpError;
@@ -2255,6 +2267,7 @@ export const getAddress: API.OperationMethod<
   output: GetAddressResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetDnsError = CloudflareOpError;
@@ -2269,6 +2282,7 @@ export const getDns: API.OperationMethod<
   output: GetDnsResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetEmailRoutingError = Forbidden | CloudflareOpError;
@@ -2283,6 +2297,7 @@ export const getEmailRouting: API.OperationMethod<
   output: GetEmailRoutingResponse,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetRuleError = CloudflareOpError;
@@ -2297,6 +2312,7 @@ export const getRule: API.OperationMethod<
   output: GetRuleResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetRuleCatchAllError = Forbidden | CloudflareOpError;
@@ -2311,6 +2327,7 @@ export const getRuleCatchAll: API.OperationMethod<
   output: GetRuleCatchAllResponse,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ListAddressesError = CloudflareOpError;
@@ -2326,6 +2343,7 @@ export const listAddresses: API.PaginatedOperationMethod<
     output: ListAddressesResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: {
       mode: "page",
       inputToken: "page",
@@ -2349,6 +2367,7 @@ export const patchDns: API.OperationMethod<
   output: PatchDnsResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type PutRuleCatchAllError =
@@ -2371,6 +2390,7 @@ export const putRuleCatchAll: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type UnlockError = CloudflareOpError;
@@ -2385,6 +2405,7 @@ export const unlock: API.OperationMethod<
   output: UnlockResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type UpdateRuleError = CloudflareOpError;
@@ -2399,4 +2420,5 @@ export const updateRule: API.OperationMethod<
   output: UpdateRuleResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));

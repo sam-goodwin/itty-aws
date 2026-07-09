@@ -10,6 +10,9 @@ import {
 } from "../protocol.ts";
 import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
+import * as Retry from "../retry.ts";
+
+export type { CloudflareOpError, CloudflareOpContext };
 
 export class Forbidden extends T.applyErrorMatchers(
   S.TaggedErrorClass<Forbidden>()("Forbidden", {
@@ -1136,6 +1139,7 @@ export const deleteAccountTag: API.OperationMethod<
   output: DeleteAccountTagResponse,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteZoneTagError = Forbidden | CloudflareOpError;
@@ -1150,6 +1154,7 @@ export const deleteZoneTag: API.OperationMethod<
   output: DeleteZoneTagResponse,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetAccountTagError = Forbidden | CloudflareOpError;
@@ -1164,6 +1169,7 @@ export const getAccountTag: API.OperationMethod<
   output: GetAccountTagResponse,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetZoneTagError =
@@ -1186,6 +1192,7 @@ export const getZoneTag: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ListKeysError = CloudflareOpError;
@@ -1201,6 +1208,7 @@ export const listKeys: API.PaginatedOperationMethod<
     output: ListKeysResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: {
       mode: "cursor",
       inputToken: "cursor",
@@ -1224,6 +1232,7 @@ export const listResourceTaggings: API.PaginatedOperationMethod<
     output: ListResourceTaggingsResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: {
       mode: "cursor",
       inputToken: "cursor",
@@ -1247,6 +1256,7 @@ export const listValues: API.PaginatedOperationMethod<
     output: ListValuesResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: {
       mode: "cursor",
       inputToken: "cursor",
@@ -1277,6 +1287,7 @@ export const putAccountTag: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type PutZoneTagError =
@@ -1301,4 +1312,5 @@ export const putZoneTag: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));

@@ -8,6 +8,9 @@ import {
   type CloudflareOpContext,
 } from "../protocol.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
+import * as Retry from "../retry.ts";
+
+export type { CloudflareOpError, CloudflareOpContext };
 
 export class Forbidden extends T.applyErrorMatchers(
   S.TaggedErrorClass<Forbidden>()("Forbidden", {
@@ -317,6 +320,7 @@ export const feedbackCreate: API.OperationMethod<
   output: FeedbackCreateResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type FeedbackListError = CloudflareOpError;
@@ -331,6 +335,7 @@ export const feedbackList: API.OperationMethod<
   output: FeedbackListResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetBotManagementError = Forbidden | CloudflareOpError;
@@ -345,6 +350,7 @@ export const getBotManagement: API.OperationMethod<
   output: GetBotManagementResponse,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type PutBotManagementError = Forbidden | CloudflareOpError;
@@ -359,4 +365,5 @@ export const putBotManagement: API.OperationMethod<
   output: PutBotManagementResponse,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));

@@ -10,6 +10,9 @@ import {
 } from "../protocol.ts";
 import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
+import * as Retry from "../retry.ts";
+
+export type { CloudflareOpError, CloudflareOpContext };
 
 export class Forbidden extends T.applyErrorMatchers(
   S.TaggedErrorClass<Forbidden>()("Forbidden", {
@@ -1728,6 +1731,7 @@ export const createPublish: API.OperationMethod<
   output: CreatePublishResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetConfigError = Forbidden | NotFound | CloudflareOpError;
@@ -1742,6 +1746,7 @@ export const getConfig: API.OperationMethod<
   output: GetConfigResponse,
   errors: [Forbidden, NotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetDefaultError = CloudflareOpError;
@@ -1756,6 +1761,7 @@ export const getDefault: API.OperationMethod<
   output: GetDefaultResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetExportError = CloudflareOpError;
@@ -1770,6 +1776,7 @@ export const getExport: API.OperationMethod<
   output: GetExportResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetHistoryConfigError = CloudflareOpError;
@@ -1784,6 +1791,7 @@ export const getHistoryConfig: API.OperationMethod<
   output: GetHistoryConfigResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetWorkflowError = Forbidden | NotFound | CloudflareOpError;
@@ -1798,6 +1806,7 @@ export const getWorkflow: API.OperationMethod<
   output: GetWorkflowResponse,
   errors: [Forbidden, NotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ListHistoriesError = CloudflareOpError;
@@ -1813,6 +1822,7 @@ export const listHistories: API.PaginatedOperationMethod<
     output: ListHistoriesResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
@@ -1830,6 +1840,7 @@ export const putConfig: API.OperationMethod<
   output: PutConfigResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type PutHistoryError = CloudflareOpError;
@@ -1844,6 +1855,7 @@ export const putHistory: API.OperationMethod<
   output: PutHistoryResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type PutZarazError = CloudflareOpError;
@@ -1858,4 +1870,5 @@ export const putZaraz: API.OperationMethod<
   output: PutZarazResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));

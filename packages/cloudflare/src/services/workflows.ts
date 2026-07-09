@@ -10,6 +10,9 @@ import {
 } from "../protocol.ts";
 import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
+import * as Retry from "../retry.ts";
+
+export type { CloudflareOpError, CloudflareOpContext };
 
 export class InstanceAlreadyExists extends T.applyErrorMatchers(
   S.TaggedErrorClass<InstanceAlreadyExists>()("InstanceAlreadyExists", {
@@ -1496,6 +1499,7 @@ export const bulkInstance: API.PaginatedOperationMethod<
       CloudflareError,
     ],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
@@ -1525,6 +1529,7 @@ export const createInstance: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type CreateInstanceEventError =
@@ -1551,6 +1556,7 @@ export const createInstanceEvent: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteWorkflowError =
@@ -1573,6 +1579,7 @@ export const deleteWorkflow: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetInstanceError =
@@ -1597,6 +1604,7 @@ export const getInstance: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetVersionError =
@@ -1621,6 +1629,7 @@ export const getVersion: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetWorkflowError =
@@ -1643,6 +1652,7 @@ export const getWorkflow: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GraphVersionError = CloudflareOpError;
@@ -1657,6 +1667,7 @@ export const graphVersion: API.OperationMethod<
   output: GraphVersionResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ListInstancesError =
@@ -1684,6 +1695,7 @@ export const listInstances: API.PaginatedOperationMethod<
       CloudflareError,
     ],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: {
       mode: "page",
       inputToken: "page",
@@ -1716,6 +1728,7 @@ export const listVersions: API.PaginatedOperationMethod<
       CloudflareError,
     ],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: {
       mode: "page",
       inputToken: "page",
@@ -1740,6 +1753,7 @@ export const listWorkflows: API.PaginatedOperationMethod<
     output: ListWorkflowsResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: {
       mode: "page",
       inputToken: "page",
@@ -1775,6 +1789,7 @@ export const patchInstanceStatus: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type PutWorkflowError =
@@ -1797,6 +1812,7 @@ export const putWorkflow: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type StepInstanceError = CloudflareOpError;
@@ -1811,4 +1827,5 @@ export const stepInstance: API.OperationMethod<
   output: StepInstanceResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));

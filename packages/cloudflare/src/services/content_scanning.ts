@@ -10,6 +10,9 @@ import {
 } from "../protocol.ts";
 import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
+import * as Retry from "../retry.ts";
+
+export type { CloudflareOpError, CloudflareOpContext };
 
 export class ContentScanningNotEnabled extends T.applyErrorMatchers(
   S.TaggedErrorClass<ContentScanningNotEnabled>()("ContentScanningNotEnabled", {
@@ -443,6 +446,7 @@ export const createContentScanning: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type CreatePayloadError =
@@ -468,6 +472,7 @@ export const createPayload: API.PaginatedOperationMethod<
       CloudflareError,
     ],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
@@ -494,6 +499,7 @@ export const deletePayload: API.PaginatedOperationMethod<
       CloudflareError,
     ],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
@@ -511,6 +517,7 @@ export const disableContentScanning: API.OperationMethod<
   output: DisableContentScanningResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type EnableContentScanningError = CloudflareOpError;
@@ -525,6 +532,7 @@ export const enableContentScanning: API.OperationMethod<
   output: EnableContentScanningResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetContentScanningError = Forbidden | CloudflareOpError;
@@ -539,6 +547,7 @@ export const getContentScanning: API.OperationMethod<
   output: GetContentScanningResponse,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ListPayloadsError =
@@ -562,6 +571,7 @@ export const listPayloads: API.PaginatedOperationMethod<
       CloudflareError,
     ],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
@@ -579,6 +589,7 @@ export const settingsGet: API.OperationMethod<
   output: SettingsGetResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type UpdateError = CloudflareOpError;
@@ -593,4 +604,5 @@ export const update: API.OperationMethod<
   output: UpdateResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));

@@ -10,6 +10,9 @@ import {
 } from "../protocol.ts";
 import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
+import * as Retry from "../retry.ts";
+
+export type { CloudflareOpError, CloudflareOpContext };
 
 export class CertificateAlreadyDeleted extends T.applyErrorMatchers(
   S.TaggedErrorClass<CertificateAlreadyDeleted>()("CertificateAlreadyDeleted", {
@@ -421,6 +424,7 @@ export const createMtlsCertificate: API.OperationMethod<
   output: CreateMtlsCertificateResponse,
   errors: [CertificateAlreadyExists, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteMtlsCertificateError =
@@ -443,6 +447,7 @@ export const deleteMtlsCertificate: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetAssociationError = CloudflareOpError;
@@ -458,6 +463,7 @@ export const getAssociation: API.PaginatedOperationMethod<
     output: GetAssociationResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
@@ -475,6 +481,7 @@ export const getMtlsCertificate: API.OperationMethod<
   output: GetMtlsCertificateResponse,
   errors: [CertificateNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ListMtlsCertificatesError = CloudflareOpError;
@@ -490,6 +497,7 @@ export const listMtlsCertificates: API.PaginatedOperationMethod<
     output: ListMtlsCertificatesResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,

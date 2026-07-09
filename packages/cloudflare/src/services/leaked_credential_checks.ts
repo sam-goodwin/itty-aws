@@ -10,6 +10,9 @@ import {
 } from "../protocol.ts";
 import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
+import * as Retry from "../retry.ts";
+
+export type { CloudflareOpError, CloudflareOpContext };
 
 export class DetectionNotFound extends T.applyErrorMatchers(
   S.TaggedErrorClass<DetectionNotFound>()("DetectionNotFound", {
@@ -351,6 +354,7 @@ export const createDetection: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type CreateLeakedCredentialCheckError = Forbidden | CloudflareOpError;
@@ -365,6 +369,7 @@ export const createLeakedCredentialCheck: API.OperationMethod<
   output: CreateLeakedCredentialCheckResponse,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteDetectionError =
@@ -389,6 +394,7 @@ export const deleteDetection: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetDetectionError =
@@ -413,6 +419,7 @@ export const getDetection: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetLeakedCredentialCheckError = Forbidden | CloudflareOpError;
@@ -427,6 +434,7 @@ export const getLeakedCredentialCheck: API.OperationMethod<
   output: GetLeakedCredentialCheckResponse,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ListDetectionsError =
@@ -450,6 +458,7 @@ export const listDetections: API.PaginatedOperationMethod<
       CloudflareError,
     ],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
@@ -477,4 +486,5 @@ export const updateDetection: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));

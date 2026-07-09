@@ -10,6 +10,9 @@ import {
 } from "../protocol.ts";
 import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
+import * as Retry from "../retry.ts";
+
+export type { CloudflareOpError, CloudflareOpContext };
 
 export class EndpointHealthcheckNotFound extends T.applyErrorMatchers(
   S.TaggedErrorClass<EndpointHealthcheckNotFound>()(
@@ -547,6 +550,7 @@ export const createEndpointHealthcheck: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type CreateTracerouteError = CloudflareOpError;
@@ -562,6 +566,7 @@ export const createTraceroute: API.PaginatedOperationMethod<
     output: CreateTracerouteResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
@@ -587,6 +592,7 @@ export const deleteEndpointHealthcheck: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetEndpointHealthcheckError =
@@ -609,6 +615,7 @@ export const getEndpointHealthcheck: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ListEndpointHealthchecksError = Forbidden | CloudflareOpError;
@@ -623,6 +630,7 @@ export const listEndpointHealthchecks: API.OperationMethod<
   output: ListEndpointHealthchecksResponse,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type UpdateEndpointHealthcheckError =
@@ -647,4 +655,5 @@ export const updateEndpointHealthcheck: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));

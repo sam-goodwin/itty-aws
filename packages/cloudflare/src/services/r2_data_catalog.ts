@@ -8,6 +8,9 @@ import {
   type CloudflareOpContext,
 } from "../protocol.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
+import * as Retry from "../retry.ts";
+
+export type { CloudflareOpError, CloudflareOpContext };
 
 export class Forbidden extends T.applyErrorMatchers(
   S.TaggedErrorClass<Forbidden>()("Forbidden", {
@@ -1348,6 +1351,7 @@ export const createCredential: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DisableR2DataCatalogError =
@@ -1374,6 +1378,7 @@ export const disableR2DataCatalog: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type EnableR2DataCatalogError =
@@ -1391,6 +1396,7 @@ export const enableR2DataCatalog: API.OperationMethod<
   output: EnableR2DataCatalogResponse,
   errors: [NoSuchBucket, InvalidRoute, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetMaintenanceConfigError =
@@ -1415,6 +1421,7 @@ export const getMaintenanceConfig: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetNamespaceTableMaintenanceConfigError =
@@ -1439,6 +1446,7 @@ export const getNamespaceTableMaintenanceConfig: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetR2DataCatalogError =
@@ -1465,6 +1473,7 @@ export const getR2DataCatalog: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ListNamespacesError =
@@ -1489,6 +1498,7 @@ export const listNamespaces: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ListNamespaceTablesError =
@@ -1511,6 +1521,7 @@ export const listNamespaceTables: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ListR2DataCatalogsError = InvalidRoute | CloudflareOpError;
@@ -1525,6 +1536,7 @@ export const listR2DataCatalogs: API.OperationMethod<
   output: ListR2DataCatalogsResponse,
   errors: [InvalidRoute, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type UpdateMaintenanceConfigError =
@@ -1547,6 +1559,7 @@ export const updateMaintenanceConfig: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type UpdateNamespaceTableMaintenanceConfigError =
@@ -1571,4 +1584,5 @@ export const updateNamespaceTableMaintenanceConfig: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));

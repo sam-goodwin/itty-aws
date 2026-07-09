@@ -8,6 +8,9 @@ import {
   type CloudflareOpContext,
 } from "../protocol.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
+import * as Retry from "../retry.ts";
+
+export type { CloudflareOpError, CloudflareOpContext };
 
 export interface DeleteOriginTlsComplianceModeRequest {
   /** Identifier. */
@@ -224,6 +227,7 @@ export const deleteOriginTlsComplianceMode: API.OperationMethod<
   output: DeleteOriginTlsComplianceModeResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetOriginTlsComplianceModeError = CloudflareOpError;
@@ -238,6 +242,7 @@ export const getOriginTlsComplianceMode: API.OperationMethod<
   output: GetOriginTlsComplianceModeResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type PatchOriginTlsComplianceModeError = CloudflareOpError;
@@ -252,6 +257,7 @@ export const patchOriginTlsComplianceMode: API.OperationMethod<
   output: PatchOriginTlsComplianceModeResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type PutOriginTlsComplianceModeError = CloudflareOpError;
@@ -266,4 +272,5 @@ export const putOriginTlsComplianceMode: API.OperationMethod<
   output: PutOriginTlsComplianceModeResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));

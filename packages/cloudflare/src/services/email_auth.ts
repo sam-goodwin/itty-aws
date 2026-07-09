@@ -8,6 +8,9 @@ import {
   type CloudflareOpContext,
 } from "../protocol.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
+import * as Retry from "../retry.ts";
+
+export type { CloudflareOpError, CloudflareOpContext };
 
 export interface GetDmarcReportRequest {
   /** Identifier. */
@@ -915,6 +918,7 @@ export const getDmarcReport: API.OperationMethod<
   output: GetDmarcReportResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetSpfInspectError = CloudflareOpError;
@@ -929,6 +933,7 @@ export const getSpfInspect: API.OperationMethod<
   output: GetSpfInspectResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type PatchDmarcReportError = CloudflareOpError;
@@ -943,4 +948,5 @@ export const patchDmarcReport: API.OperationMethod<
   output: PatchDmarcReportResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));

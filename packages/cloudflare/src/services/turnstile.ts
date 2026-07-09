@@ -10,6 +10,9 @@ import {
 } from "../protocol.ts";
 import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
+import * as Retry from "../retry.ts";
+
+export type { CloudflareOpError, CloudflareOpContext };
 
 export class Forbidden extends T.applyErrorMatchers(
   S.TaggedErrorClass<Forbidden>()("Forbidden", {
@@ -745,6 +748,7 @@ export const createWidget: API.OperationMethod<
   output: CreateWidgetResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteWidgetError = WidgetNotFound | Forbidden | CloudflareOpError;
@@ -759,6 +763,7 @@ export const deleteWidget: API.OperationMethod<
   output: DeleteWidgetResponse,
   errors: [WidgetNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetWidgetError = WidgetNotFound | Forbidden | CloudflareOpError;
@@ -773,6 +778,7 @@ export const getWidget: API.OperationMethod<
   output: GetWidgetResponse,
   errors: [WidgetNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ListWidgetsError = CloudflareOpError;
@@ -788,6 +794,7 @@ export const listWidgets: API.PaginatedOperationMethod<
     output: ListWidgetsResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: {
       mode: "page",
       inputToken: "page",
@@ -811,6 +818,7 @@ export const rotateSecretWidget: API.OperationMethod<
   output: RotateSecretWidgetResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type UpdateWidgetError = CloudflareOpError;
@@ -825,4 +833,5 @@ export const updateWidget: API.OperationMethod<
   output: UpdateWidgetResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));

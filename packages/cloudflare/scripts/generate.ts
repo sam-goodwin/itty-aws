@@ -527,6 +527,7 @@ const generateModel = (
             `  output: ${local(op.def.__output)},\n` +
             `  errors: [${errList.join(", ")}],\n` +
             `  protocol: CloudflarePaginatedProtocol,\n` +
+            `  retry: Retry.Retry,\n` +
             `  pagination: ${JSON.stringify(pg)} as const,\n` +
             `}), cloudflarePaginate);\n`
         : `export const ${lowerFirst(opName)}: API.OperationMethod<\n` +
@@ -539,6 +540,7 @@ const generateModel = (
             `  output: ${local(op.def.__output)},\n` +
             `  errors: [${errList.join(", ")}],\n` +
             `  protocol: CloudflareProtocol,\n` +
+            `  retry: Retry.Retry,\n` +
             `}));\n`,
     );
   }
@@ -558,7 +560,10 @@ const generateModel = (
     (hasPaginated
       ? `import { cloudflarePaginate, ResultInfo } from "../pagination.ts";\n`
       : "") +
-    `import { CloudflareError, CloudflareRateLimited } from "../errors.ts";\n\n`;
+    `import { CloudflareError, CloudflareRateLimited } from "../errors.ts";\n` +
+    `import * as Retry from "../retry.ts";\n\n` +
+    // Re-exported so inferred provider types downstream can always name them.
+    `export type { CloudflareOpError, CloudflareOpContext };\n\n`;
 
   return { code: header + out.join("\n") + "\n", operations: selected.length };
 };

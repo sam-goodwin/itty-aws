@@ -8,6 +8,9 @@ import {
   type CloudflareOpContext,
 } from "../protocol.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
+import * as Retry from "../retry.ts";
+
+export type { CloudflareOpError, CloudflareOpContext };
 
 export interface ListIpsRequest {
   /** Specified as `jdcloud` to list IPs used by JD Cloud data centers. */
@@ -52,4 +55,5 @@ export const listIps: API.OperationMethod<
   output: ListIpsResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));

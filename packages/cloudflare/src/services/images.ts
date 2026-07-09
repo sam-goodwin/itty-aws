@@ -8,6 +8,9 @@ import {
   type CloudflareOpContext,
 } from "../protocol.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
+import * as Retry from "../retry.ts";
+
+export type { CloudflareOpError, CloudflareOpContext };
 
 export class ImageAlreadyExists extends T.applyErrorMatchers(
   S.TaggedErrorClass<ImageAlreadyExists>()("ImageAlreadyExists", {
@@ -1186,6 +1189,7 @@ export const createV1: API.OperationMethod<
   output: CreateV1Response,
   errors: [ImagesAccessNotEnabled, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type CreateV1VariantError =
@@ -1210,6 +1214,7 @@ export const createV1Variant: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type CreateV2DirectUploadError =
@@ -1234,6 +1239,7 @@ export const createV2DirectUpload: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteV1Error =
@@ -1256,6 +1262,7 @@ export const deleteV1: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteV1KeyError =
@@ -1278,6 +1285,7 @@ export const deleteV1Key: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteV1VariantError =
@@ -1302,6 +1310,7 @@ export const deleteV1Variant: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetV1Error =
@@ -1324,6 +1333,7 @@ export const getV1: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetV1BlobError =
@@ -1346,6 +1356,7 @@ export const getV1Blob: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetV1StatError = ImagesAccessNotEnabled | CloudflareOpError;
@@ -1360,6 +1371,7 @@ export const getV1Stat: API.OperationMethod<
   output: GetV1StatResponse,
   errors: [ImagesAccessNotEnabled, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetV1VariantError =
@@ -1384,6 +1396,7 @@ export const getV1Variant: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ListV1KeysError = ImagesAccessNotEnabled | CloudflareOpError;
@@ -1398,6 +1411,7 @@ export const listV1Keys: API.OperationMethod<
   output: ListV1KeysResponse,
   errors: [ImagesAccessNotEnabled, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ListV1sError = ImagesAccessNotEnabled | CloudflareOpError;
@@ -1412,6 +1426,7 @@ export const listV1s: API.OperationMethod<
   output: ListV1sResponse,
   errors: [ImagesAccessNotEnabled, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ListV1VariantsError = ImagesAccessNotEnabled | CloudflareOpError;
@@ -1426,6 +1441,7 @@ export const listV1Variants: API.OperationMethod<
   output: ListV1VariantsResponse,
   errors: [ImagesAccessNotEnabled, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ListV2sError = ImagesAccessNotEnabled | CloudflareOpError;
@@ -1440,6 +1456,7 @@ export const listV2s: API.OperationMethod<
   output: ListV2sResponse,
   errors: [ImagesAccessNotEnabled, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type PatchV1Error =
@@ -1462,6 +1479,7 @@ export const patchV1: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type PatchV1VariantError =
@@ -1486,6 +1504,7 @@ export const patchV1Variant: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type PutV1KeyError = ImagesAccessNotEnabled | CloudflareOpError;
@@ -1500,4 +1519,5 @@ export const putV1Key: API.OperationMethod<
   output: PutV1KeyResponse,
   errors: [ImagesAccessNotEnabled, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));

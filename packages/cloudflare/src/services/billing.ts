@@ -8,6 +8,9 @@ import {
   type CloudflareOpContext,
 } from "../protocol.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
+import * as Retry from "../retry.ts";
+
+export type { CloudflareOpError, CloudflareOpContext };
 
 export interface GetProfileRequest {
   /** Identifier */
@@ -390,6 +393,7 @@ export const getProfile: API.OperationMethod<
   output: GetProfileResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetUsageError = CloudflareOpError;
@@ -404,6 +408,7 @@ export const getUsage: API.OperationMethod<
   output: GetUsageResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type PaygoUsageError = CloudflareOpError;
@@ -418,4 +423,5 @@ export const paygoUsage: API.OperationMethod<
   output: PaygoUsageResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));

@@ -10,6 +10,9 @@ import {
 } from "../protocol.ts";
 import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
+import * as Retry from "../retry.ts";
+
+export type { CloudflareOpError, CloudflareOpContext };
 
 export interface CreateEdgeRequest {
   /** Identifier. */
@@ -1883,6 +1886,7 @@ export const createEdge: API.OperationMethod<
   output: CreateEdgeResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DatasetsFieldsGetError = CloudflareOpError;
@@ -1897,6 +1901,7 @@ export const datasetsFieldsGet: API.OperationMethod<
   output: DatasetsFieldsGetResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DatasetsJobsGetError = CloudflareOpError;
@@ -1911,6 +1916,7 @@ export const datasetsJobsGet: API.OperationMethod<
   output: DatasetsJobsGetResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetEdgeError = CloudflareOpError;
@@ -1926,6 +1932,7 @@ export const getEdge: API.PaginatedOperationMethod<
     output: GetEdgeResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
@@ -1943,6 +1950,7 @@ export const jobsCreate: API.OperationMethod<
   output: JobsCreateResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type JobsDeleteError = CloudflareOpError;
@@ -1957,6 +1965,7 @@ export const jobsDelete: API.OperationMethod<
   output: JobsDeleteResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type JobsGetError = CloudflareOpError;
@@ -1971,6 +1980,7 @@ export const jobsGet: API.OperationMethod<
   output: JobsGetResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type JobsListError = CloudflareOpError;
@@ -1985,6 +1995,7 @@ export const jobsList: API.OperationMethod<
   output: JobsListResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type JobsUpdateError = CloudflareOpError;
@@ -1999,6 +2010,7 @@ export const jobsUpdate: API.OperationMethod<
   output: JobsUpdateResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type OwnershipCreateError = CloudflareOpError;
@@ -2013,6 +2025,7 @@ export const ownershipCreate: API.OperationMethod<
   output: OwnershipCreateResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type OwnershipValidateError = CloudflareOpError;
@@ -2027,6 +2040,7 @@ export const ownershipValidate: API.OperationMethod<
   output: OwnershipValidateResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ValidateDestinationError = CloudflareOpError;
@@ -2041,6 +2055,7 @@ export const validateDestination: API.OperationMethod<
   output: ValidateDestinationResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ValidateDestinationExistsError = CloudflareOpError;
@@ -2055,6 +2070,7 @@ export const validateDestinationExists: API.OperationMethod<
   output: ValidateDestinationExistsResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ValidateOriginError = CloudflareOpError;
@@ -2069,4 +2085,5 @@ export const validateOrigin: API.OperationMethod<
   output: ValidateOriginResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));

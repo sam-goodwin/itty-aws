@@ -8,6 +8,9 @@ import {
   type CloudflareOpContext,
 } from "../protocol.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
+import * as Retry from "../retry.ts";
+
+export type { CloudflareOpError, CloudflareOpContext };
 
 export interface CacheReserveClearClearRequest {
   /** Identifier. */
@@ -1904,6 +1907,7 @@ export const cacheReserveClearClear: API.OperationMethod<
   output: CacheReserveClearClearResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type CacheReserveClearStatusError = CloudflareOpError;
@@ -1918,6 +1922,7 @@ export const cacheReserveClearStatus: API.OperationMethod<
   output: CacheReserveClearStatusResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetError = CloudflareOpError;
@@ -1932,6 +1937,7 @@ export const get: API.OperationMethod<
   output: GetResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type HealthChecksCreateError = CloudflareOpError;
@@ -1946,6 +1952,7 @@ export const healthChecksCreate: API.OperationMethod<
   output: HealthChecksCreateResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type HealthChecksDeleteError = CloudflareOpError;
@@ -1960,6 +1967,7 @@ export const healthChecksDelete: API.OperationMethod<
   output: HealthChecksDeleteResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type HealthChecksEditError = CloudflareOpError;
@@ -1974,6 +1982,7 @@ export const healthChecksEdit: API.OperationMethod<
   output: HealthChecksEditResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type HealthChecksGetError = CloudflareOpError;
@@ -1988,6 +1997,7 @@ export const healthChecksGet: API.OperationMethod<
   output: HealthChecksGetResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type HealthChecksListError = CloudflareOpError;
@@ -2002,6 +2012,7 @@ export const healthChecksList: API.OperationMethod<
   output: HealthChecksListResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type HealthChecksUpdateError = CloudflareOpError;
@@ -2016,6 +2027,7 @@ export const healthChecksUpdate: API.OperationMethod<
   output: HealthChecksUpdateResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type UpdateError = CloudflareOpError;
@@ -2030,4 +2042,5 @@ export const update: API.OperationMethod<
   output: UpdateResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));

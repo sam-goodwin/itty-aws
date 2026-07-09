@@ -10,6 +10,9 @@ import {
 } from "../protocol.ts";
 import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
+import * as Retry from "../retry.ts";
+
+export type { CloudflareOpError, CloudflareOpContext };
 
 export class CustomHostnameNotFound extends T.applyErrorMatchers(
   S.TaggedErrorClass<CustomHostnameNotFound>()("CustomHostnameNotFound", {
@@ -2659,6 +2662,7 @@ export const createCustomHostname: API.OperationMethod<
   output: CreateCustomHostnameResponse,
   errors: [SaasQuotaNotAllocated, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteCertificatePackCertificateError = CloudflareOpError;
@@ -2673,6 +2677,7 @@ export const deleteCertificatePackCertificate: API.OperationMethod<
   output: DeleteCertificatePackCertificateResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteCustomHostnameError =
@@ -2695,6 +2700,7 @@ export const deleteCustomHostname: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteFallbackOriginError =
@@ -2717,6 +2723,7 @@ export const deleteFallbackOrigin: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetCustomHostnameError =
@@ -2741,6 +2748,7 @@ export const getCustomHostname: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetFallbackOriginError =
@@ -2765,6 +2773,7 @@ export const getFallbackOrigin: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ListCustomHostnamesError =
@@ -2788,6 +2797,7 @@ export const listCustomHostnames: API.PaginatedOperationMethod<
       CloudflareError,
     ],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: {
       mode: "page",
       inputToken: "page",
@@ -2819,6 +2829,7 @@ export const patchCustomHostname: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type PutCertificatePackCertificateError = CloudflareOpError;
@@ -2833,6 +2844,7 @@ export const putCertificatePackCertificate: API.OperationMethod<
   output: PutCertificatePackCertificateResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type PutFallbackOriginError = SaasAccessNotGranted | CloudflareOpError;
@@ -2847,4 +2859,5 @@ export const putFallbackOrigin: API.OperationMethod<
   output: PutFallbackOriginResponse,
   errors: [SaasAccessNotGranted, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));

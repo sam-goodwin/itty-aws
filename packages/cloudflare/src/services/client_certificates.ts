@@ -10,6 +10,9 @@ import {
 } from "../protocol.ts";
 import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
+import * as Retry from "../retry.ts";
+
+export type { CloudflareOpError, CloudflareOpContext };
 
 export class ClientCertificateAlreadyRevoked extends T.applyErrorMatchers(
   S.TaggedErrorClass<ClientCertificateAlreadyRevoked>()(
@@ -604,6 +607,7 @@ export const createClientCertificate: API.OperationMethod<
   output: CreateClientCertificateResponse,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteClientCertificateError =
@@ -628,6 +632,7 @@ export const deleteClientCertificate: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetClientCertificateError =
@@ -650,6 +655,7 @@ export const getClientCertificate: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ListClientCertificatesError = Forbidden | CloudflareOpError;
@@ -665,6 +671,7 @@ export const listClientCertificates: API.PaginatedOperationMethod<
     output: ListClientCertificatesResponse,
     errors: [Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: {
       mode: "page",
       inputToken: "page",
@@ -696,4 +703,5 @@ export const patchClientCertificate: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));

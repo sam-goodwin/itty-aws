@@ -8,6 +8,9 @@ import {
   type CloudflareOpContext,
 } from "../protocol.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
+import * as Retry from "../retry.ts";
+
+export type { CloudflareOpError, CloudflareOpContext };
 
 export class Forbidden extends T.applyErrorMatchers(
   S.TaggedErrorClass<Forbidden>()("Forbidden", {
@@ -146,6 +149,7 @@ export const deleteUrlNormalization: API.OperationMethod<
   output: DeleteUrlNormalizationResponse,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetUrlNormalizationError = Forbidden | CloudflareOpError;
@@ -160,6 +164,7 @@ export const getUrlNormalization: API.OperationMethod<
   output: GetUrlNormalizationResponse,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type PutUrlNormalizationError = Forbidden | CloudflareOpError;
@@ -174,4 +179,5 @@ export const putUrlNormalization: API.OperationMethod<
   output: PutUrlNormalizationResponse,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));

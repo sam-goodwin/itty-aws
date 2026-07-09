@@ -10,6 +10,9 @@ import {
 } from "../protocol.ts";
 import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
+import * as Retry from "../retry.ts";
+
+export type { CloudflareOpError, CloudflareOpContext };
 
 export class Gone extends T.applyErrorMatchers(
   S.TaggedErrorClass<Gone>()("Gone", {
@@ -902,6 +905,7 @@ export const createIndex: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type CreateIndexMetadataIndexError =
@@ -926,6 +930,7 @@ export const createIndexMetadataIndex: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteByIdsIndexError = CloudflareOpError;
@@ -940,6 +945,7 @@ export const deleteByIdsIndex: API.OperationMethod<
   output: DeleteByIdsIndexResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteIndexError = NotFound | Gone | CloudflareOpError;
@@ -954,6 +960,7 @@ export const deleteIndex: API.OperationMethod<
   output: DeleteIndexResponse,
   errors: [NotFound, Gone, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteIndexMetadataIndexError =
@@ -978,6 +985,7 @@ export const deleteIndexMetadataIndex: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetByIdsIndexError = CloudflareOpError;
@@ -992,6 +1000,7 @@ export const getByIdsIndex: API.OperationMethod<
   output: GetByIdsIndexResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetIndexError = NotFound | Gone | CloudflareOpError;
@@ -1006,6 +1015,7 @@ export const getIndex: API.OperationMethod<
   output: GetIndexResponse,
   errors: [NotFound, Gone, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type InfoIndexError = CloudflareOpError;
@@ -1020,6 +1030,7 @@ export const infoIndex: API.OperationMethod<
   output: InfoIndexResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type InsertIndexError = CloudflareOpError;
@@ -1034,6 +1045,7 @@ export const insertIndex: API.OperationMethod<
   output: InsertIndexResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ListIndexesError = NotFound | Gone | CloudflareOpError;
@@ -1049,6 +1061,7 @@ export const listIndexes: API.PaginatedOperationMethod<
     output: ListIndexesResponse,
     errors: [NotFound, Gone, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
@@ -1066,6 +1079,7 @@ export const listIndexMetadataIndexes: API.OperationMethod<
   output: ListIndexMetadataIndexesResponse,
   errors: [NotFound, Gone, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ListVectorsIndexError = CloudflareOpError;
@@ -1080,6 +1094,7 @@ export const listVectorsIndex: API.OperationMethod<
   output: ListVectorsIndexResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type QueryIndexError = CloudflareOpError;
@@ -1094,6 +1109,7 @@ export const queryIndex: API.OperationMethod<
   output: QueryIndexResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type UpsertIndexError = CloudflareOpError;
@@ -1108,4 +1124,5 @@ export const upsertIndex: API.OperationMethod<
   output: UpsertIndexResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));

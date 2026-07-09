@@ -10,6 +10,9 @@ import {
 } from "../protocol.ts";
 import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
+import * as Retry from "../retry.ts";
+
+export type { CloudflareOpError, CloudflareOpContext };
 
 export interface CreateRegionalServicePrefixBindingRequest {
   /** Identifier of a Cloudflare account. */
@@ -383,6 +386,7 @@ export const createRegionalServicePrefixBinding: API.OperationMethod<
   output: CreateRegionalServicePrefixBindingResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteRegionalServicePrefixBindingError = CloudflareOpError;
@@ -397,6 +401,7 @@ export const deleteRegionalServicePrefixBinding: API.OperationMethod<
   output: DeleteRegionalServicePrefixBindingResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetRegionError = CloudflareOpError;
@@ -411,6 +416,7 @@ export const getRegion: API.OperationMethod<
   output: GetRegionResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetRegionalServicePrefixBindingError = CloudflareOpError;
@@ -425,6 +431,7 @@ export const getRegionalServicePrefixBinding: API.OperationMethod<
   output: GetRegionalServicePrefixBindingResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ListRegionalServicePrefixBindingsError = CloudflareOpError;
@@ -440,6 +447,7 @@ export const listRegionalServicePrefixBindings: API.PaginatedOperationMethod<
     output: ListRegionalServicePrefixBindingsResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: {
       mode: "cursor",
       inputToken: "cursor",
@@ -464,6 +472,7 @@ export const listRegions: API.PaginatedOperationMethod<
     output: ListRegionsResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: {
       mode: "cursor",
       inputToken: "cursor",
@@ -487,4 +496,5 @@ export const patchRegionalServicePrefixBinding: API.OperationMethod<
   output: PatchRegionalServicePrefixBindingResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));

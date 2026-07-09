@@ -10,6 +10,9 @@ import {
 } from "../protocol.ts";
 import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
+import * as Retry from "../retry.ts";
+
+export type { CloudflareOpError, CloudflareOpContext };
 
 export class Forbidden extends T.applyErrorMatchers(
   S.TaggedErrorClass<Forbidden>()("Forbidden", {
@@ -2314,6 +2317,7 @@ export const bulkDeleteOriginCloudRegions: API.OperationMethod<
   output: BulkDeleteOriginCloudRegionsResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type BulkPutOriginCloudRegionsError = CloudflareOpError;
@@ -2328,6 +2332,7 @@ export const bulkPutOriginCloudRegions: API.OperationMethod<
   output: BulkPutOriginCloudRegionsResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ClearCacheReserveError = CloudflareOpError;
@@ -2342,6 +2347,7 @@ export const clearCacheReserve: API.OperationMethod<
   output: ClearCacheReserveResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type CreateSmartTieredCacheError = CloudflareOpError;
@@ -2356,6 +2362,7 @@ export const createSmartTieredCache: API.OperationMethod<
   output: CreateSmartTieredCacheResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteOriginCloudRegionError =
@@ -2378,6 +2385,7 @@ export const deleteOriginCloudRegion: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteSmartTieredCacheError = CloudflareOpError;
@@ -2392,6 +2400,7 @@ export const deleteSmartTieredCache: API.OperationMethod<
   output: DeleteSmartTieredCacheResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteVariantError =
@@ -2414,6 +2423,7 @@ export const deleteVariant: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetCacheReserveError =
@@ -2436,6 +2446,7 @@ export const getCacheReserve: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetOriginCloudRegionError =
@@ -2458,6 +2469,7 @@ export const getOriginCloudRegion: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetRegionalTieredCacheError =
@@ -2482,6 +2494,7 @@ export const getRegionalTieredCache: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetSmartTieredCacheError = Forbidden | CloudflareOpError;
@@ -2496,6 +2509,7 @@ export const getSmartTieredCache: API.OperationMethod<
   output: GetSmartTieredCacheResponse,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetVariantError =
@@ -2518,6 +2532,7 @@ export const getVariant: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ListOriginCloudRegionsError = Forbidden | CloudflareOpError;
@@ -2533,6 +2548,7 @@ export const listOriginCloudRegions: API.PaginatedOperationMethod<
     output: ListOriginCloudRegionsResponse,
     errors: [Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: {
       mode: "page",
       inputToken: "page",
@@ -2556,6 +2572,7 @@ export const originCloudRegionsBulkDeleteV1: API.OperationMethod<
   output: OriginCloudRegionsBulkDeleteV1Response,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type OriginCloudRegionsBulkEditV1Error = CloudflareOpError;
@@ -2570,6 +2587,7 @@ export const originCloudRegionsBulkEditV1: API.OperationMethod<
   output: OriginCloudRegionsBulkEditV1Response,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type OriginCloudRegionsCreateV1Error = CloudflareOpError;
@@ -2584,6 +2602,7 @@ export const originCloudRegionsCreateV1: API.OperationMethod<
   output: OriginCloudRegionsCreateV1Response,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type OriginCloudRegionsDeleteV1Error = CloudflareOpError;
@@ -2598,6 +2617,7 @@ export const originCloudRegionsDeleteV1: API.OperationMethod<
   output: OriginCloudRegionsDeleteV1Response,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type OriginCloudRegionsEditV1Error = CloudflareOpError;
@@ -2612,6 +2632,7 @@ export const originCloudRegionsEditV1: API.OperationMethod<
   output: OriginCloudRegionsEditV1Response,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type OriginCloudRegionsGetV1Error = CloudflareOpError;
@@ -2626,6 +2647,7 @@ export const originCloudRegionsGetV1: API.OperationMethod<
   output: OriginCloudRegionsGetV1Response,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type OriginCloudRegionsListV1Error = CloudflareOpError;
@@ -2640,6 +2662,7 @@ export const originCloudRegionsListV1: API.OperationMethod<
   output: OriginCloudRegionsListV1Response,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type OriginCloudRegionsSupportedRegionsV1Error = CloudflareOpError;
@@ -2654,6 +2677,7 @@ export const originCloudRegionsSupportedRegionsV1: API.OperationMethod<
   output: OriginCloudRegionsSupportedRegionsV1Response,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type PatchCacheReserveError =
@@ -2676,6 +2700,7 @@ export const patchCacheReserve: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type PatchRegionalTieredCacheError =
@@ -2698,6 +2723,7 @@ export const patchRegionalTieredCache: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type PatchSmartTieredCacheError = Forbidden | CloudflareOpError;
@@ -2712,6 +2738,7 @@ export const patchSmartTieredCache: API.OperationMethod<
   output: PatchSmartTieredCacheResponse,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type PatchVariantError = Forbidden | CloudflareOpError;
@@ -2726,6 +2753,7 @@ export const patchVariant: API.OperationMethod<
   output: PatchVariantResponse,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type PurgeCacheError = CloudflareOpError;
@@ -2739,6 +2767,7 @@ export const purgeCache: API.OperationMethod<
   output: PurgeCacheResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type PurgeEnvironmentCacheError = CloudflareOpError;
@@ -2753,6 +2782,7 @@ export const purgeEnvironmentCache: API.OperationMethod<
   output: PurgeEnvironmentCacheResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type PutOriginCloudRegionError = Forbidden | CloudflareOpError;
@@ -2767,6 +2797,7 @@ export const putOriginCloudRegion: API.OperationMethod<
   output: PutOriginCloudRegionResponse,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type StatusCacheReserveError = CloudflareOpError;
@@ -2781,6 +2812,7 @@ export const statusCacheReserve: API.OperationMethod<
   output: StatusCacheReserveResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type SupportedRegionsOriginCloudRegionError = CloudflareOpError;
@@ -2795,4 +2827,5 @@ export const supportedRegionsOriginCloudRegion: API.OperationMethod<
   output: SupportedRegionsOriginCloudRegionResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));

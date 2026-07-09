@@ -8,6 +8,9 @@ import {
   type CloudflareOpContext,
 } from "../protocol.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
+import * as Retry from "../retry.ts";
+
+export type { CloudflareOpError, CloudflareOpContext };
 
 export interface DayReportAsnRequest {
   /** Identifier. */
@@ -157,6 +160,7 @@ export const dayReportAsn: API.OperationMethod<
   output: DayReportAsnResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteConfigAsnError = CloudflareOpError;
@@ -171,6 +175,7 @@ export const deleteConfigAsn: API.OperationMethod<
   output: DeleteConfigAsnResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type FullReportAsnError = CloudflareOpError;
@@ -185,6 +190,7 @@ export const fullReportAsn: API.OperationMethod<
   output: FullReportAsnResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetConfigAsnError = CloudflareOpError;
@@ -199,4 +205,5 @@ export const getConfigAsn: API.OperationMethod<
   output: GetConfigAsnResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));

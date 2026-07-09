@@ -10,6 +10,9 @@ import {
 } from "../protocol.ts";
 import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
+import * as Retry from "../retry.ts";
+
+export type { CloudflareOpError, CloudflareOpContext };
 
 export class BucketAlreadyExists extends T.applyErrorMatchers(
   S.TaggedErrorClass<BucketAlreadyExists>()("BucketAlreadyExists", {
@@ -4108,6 +4111,7 @@ export const abortAllSuperSlurperJob: API.OperationMethod<
   output: AbortAllSuperSlurperJobResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type AbortSuperSlurperJobError = CloudflareOpError;
@@ -4122,6 +4126,7 @@ export const abortSuperSlurperJob: API.OperationMethod<
   output: AbortSuperSlurperJobResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type CreateBucketError =
@@ -4146,6 +4151,7 @@ export const createBucket: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type CreateBucketDomainCustomError =
@@ -4170,6 +4176,7 @@ export const createBucketDomainCustom: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type CreateSuperSlurperJobError = CloudflareOpError;
@@ -4184,6 +4191,7 @@ export const createSuperSlurperJob: API.OperationMethod<
   output: CreateSuperSlurperJobResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type CreateTemporaryCredentialError = CloudflareOpError;
@@ -4198,6 +4206,7 @@ export const createTemporaryCredential: API.OperationMethod<
   output: CreateTemporaryCredentialResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteBucketError =
@@ -4222,6 +4231,7 @@ export const deleteBucket: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteBucketCorsError =
@@ -4239,6 +4249,7 @@ export const deleteBucketCors: API.OperationMethod<
   output: DeleteBucketCorsResponse,
   errors: [NoSuchBucket, InvalidRoute, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteBucketDomainCustomError =
@@ -4261,6 +4272,7 @@ export const deleteBucketDomainCustom: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteBucketEventNotificationError =
@@ -4287,6 +4299,7 @@ export const deleteBucketEventNotification: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteBucketObjectError = CloudflareOpError;
@@ -4301,6 +4314,7 @@ export const deleteBucketObject: API.OperationMethod<
   output: DeleteBucketObjectResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteBucketSippyError =
@@ -4318,6 +4332,7 @@ export const deleteBucketSippy: API.OperationMethod<
   output: DeleteBucketSippyResponse,
   errors: [NoSuchBucket, InvalidRoute, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetBucketError = NoSuchBucket | InvalidRoute | CloudflareOpError;
@@ -4332,6 +4347,7 @@ export const getBucket: API.OperationMethod<
   output: GetBucketResponse,
   errors: [NoSuchBucket, InvalidRoute, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetBucketCorsError =
@@ -4356,6 +4372,7 @@ export const getBucketCors: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetBucketDomainCustomError =
@@ -4380,6 +4397,7 @@ export const getBucketDomainCustom: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetBucketEventNotificationError =
@@ -4410,6 +4428,7 @@ export const getBucketEventNotification: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetBucketLifecycleError =
@@ -4427,6 +4446,7 @@ export const getBucketLifecycle: API.OperationMethod<
   output: GetBucketLifecycleResponse,
   errors: [NoSuchBucket, InvalidRoute, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetBucketLockError =
@@ -4444,6 +4464,7 @@ export const getBucketLock: API.OperationMethod<
   output: GetBucketLockResponse,
   errors: [NoSuchBucket, InvalidRoute, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetBucketObjectError = CloudflareOpError;
@@ -4458,6 +4479,7 @@ export const getBucketObject: API.OperationMethod<
   output: GetBucketObjectResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetBucketSippyError =
@@ -4482,6 +4504,7 @@ export const getBucketSippy: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetSuperSlurperJobError = CloudflareOpError;
@@ -4496,6 +4519,7 @@ export const getSuperSlurperJob: API.OperationMethod<
   output: GetSuperSlurperJobResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ListBucketDomainCustomsError =
@@ -4513,6 +4537,7 @@ export const listBucketDomainCustoms: API.OperationMethod<
   output: ListBucketDomainCustomsResponse,
   errors: [NoSuchBucket, InvalidRoute, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ListBucketDomainManagedsError =
@@ -4530,6 +4555,7 @@ export const listBucketDomainManageds: API.OperationMethod<
   output: ListBucketDomainManagedsResponse,
   errors: [NoSuchBucket, InvalidRoute, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ListBucketEventNotificationsError =
@@ -4556,6 +4582,7 @@ export const listBucketEventNotifications: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ListBucketMetricsError = InvalidRoute | CloudflareOpError;
@@ -4570,6 +4597,7 @@ export const listBucketMetrics: API.OperationMethod<
   output: ListBucketMetricsResponse,
   errors: [InvalidRoute, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ListBucketObjectsError = CloudflareOpError;
@@ -4585,6 +4613,7 @@ export const listBucketObjects: API.PaginatedOperationMethod<
     output: ListBucketObjectsResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: {
       mode: "cursor",
       inputToken: "cursor",
@@ -4608,6 +4637,7 @@ export const listBuckets: API.OperationMethod<
   output: ListBucketsResponse,
   errors: [InvalidRoute, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ListSuperSlurperJobLogsError = CloudflareOpError;
@@ -4623,6 +4653,7 @@ export const listSuperSlurperJobLogs: API.PaginatedOperationMethod<
     output: ListSuperSlurperJobLogsResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
@@ -4641,6 +4672,7 @@ export const listSuperSlurperJobs: API.PaginatedOperationMethod<
     output: ListSuperSlurperJobsResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
@@ -4658,6 +4690,7 @@ export const patchBucket: API.OperationMethod<
   output: PatchBucketResponse,
   errors: [NoSuchBucket, InvalidRoute, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type PauseSuperSlurperJobError = CloudflareOpError;
@@ -4672,6 +4705,7 @@ export const pauseSuperSlurperJob: API.OperationMethod<
   output: PauseSuperSlurperJobResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ProgressSuperSlurperJobError = CloudflareOpError;
@@ -4686,6 +4720,7 @@ export const progressSuperSlurperJob: API.OperationMethod<
   output: ProgressSuperSlurperJobResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type PutBucketCorsError =
@@ -4703,6 +4738,7 @@ export const putBucketCors: API.OperationMethod<
   output: PutBucketCorsResponse,
   errors: [NoSuchBucket, InvalidRoute, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type PutBucketDomainManagedError =
@@ -4720,6 +4756,7 @@ export const putBucketDomainManaged: API.OperationMethod<
   output: PutBucketDomainManagedResponse,
   errors: [NoSuchBucket, InvalidRoute, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type PutBucketEventNotificationError =
@@ -4748,6 +4785,7 @@ export const putBucketEventNotification: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type PutBucketLifecycleError =
@@ -4765,6 +4803,7 @@ export const putBucketLifecycle: API.OperationMethod<
   output: PutBucketLifecycleResponse,
   errors: [NoSuchBucket, InvalidRoute, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type PutBucketLockError =
@@ -4782,6 +4821,7 @@ export const putBucketLock: API.OperationMethod<
   output: PutBucketLockResponse,
   errors: [NoSuchBucket, InvalidRoute, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type PutBucketSippyError =
@@ -4804,6 +4844,7 @@ export const putBucketSippy: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ResumeSuperSlurperJobError = CloudflareOpError;
@@ -4818,6 +4859,7 @@ export const resumeSuperSlurperJob: API.OperationMethod<
   output: ResumeSuperSlurperJobResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type SourceSuperSlurperConnectivityPrecheckError = CloudflareOpError;
@@ -4832,6 +4874,7 @@ export const sourceSuperSlurperConnectivityPrecheck: API.OperationMethod<
   output: SourceSuperSlurperConnectivityPrecheckResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type TargetSuperSlurperConnectivityPrecheckError = CloudflareOpError;
@@ -4846,6 +4889,7 @@ export const targetSuperSlurperConnectivityPrecheck: API.OperationMethod<
   output: TargetSuperSlurperConnectivityPrecheckResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type UpdateBucketDomainCustomError = NoSuchBucket | CloudflareOpError;
@@ -4860,6 +4904,7 @@ export const updateBucketDomainCustom: API.OperationMethod<
   output: UpdateBucketDomainCustomResponse,
   errors: [NoSuchBucket, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type UploadBucketObjectError = CloudflareOpError;
@@ -4874,4 +4919,5 @@ export const uploadBucketObject: API.OperationMethod<
   output: UploadBucketObjectResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));

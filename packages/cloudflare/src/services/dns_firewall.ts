@@ -10,6 +10,9 @@ import {
 } from "../protocol.ts";
 import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
+import * as Retry from "../retry.ts";
+
+export type { CloudflareOpError, CloudflareOpContext };
 
 export class DnsFirewallNotEntitled extends T.applyErrorMatchers(
   S.TaggedErrorClass<DnsFirewallNotEntitled>()("DnsFirewallNotEntitled", {
@@ -1058,6 +1061,7 @@ export const createDnsFirewall: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteDnsFirewallError =
@@ -1080,6 +1084,7 @@ export const deleteDnsFirewall: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetAnalyticReportError = CloudflareOpError;
@@ -1094,6 +1099,7 @@ export const getAnalyticReport: API.OperationMethod<
   output: GetAnalyticReportResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetAnalyticReportBytimeError = CloudflareOpError;
@@ -1108,6 +1114,7 @@ export const getAnalyticReportBytime: API.OperationMethod<
   output: GetAnalyticReportBytimeResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetDnsFirewallError =
@@ -1130,6 +1137,7 @@ export const getDnsFirewall: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetReverseDnError =
@@ -1152,6 +1160,7 @@ export const getReverseDn: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ListDnsFirewallsError = Forbidden | CloudflareOpError;
@@ -1167,6 +1176,7 @@ export const listDnsFirewalls: API.PaginatedOperationMethod<
     output: ListDnsFirewallsResponse,
     errors: [Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: {
       mode: "page",
       inputToken: "page",
@@ -1198,6 +1208,7 @@ export const patchDnsFirewall: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type PatchReverseDnError =
@@ -1220,4 +1231,5 @@ export const patchReverseDn: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));

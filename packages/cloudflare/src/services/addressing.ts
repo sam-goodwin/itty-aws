@@ -10,6 +10,9 @@ import {
 } from "../protocol.ts";
 import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
+import * as Retry from "../retry.ts";
+
+export type { CloudflareOpError, CloudflareOpContext };
 
 export class AddressMapNotFound extends T.applyErrorMatchers(
   S.TaggedErrorClass<AddressMapNotFound>()("AddressMapNotFound", {
@@ -2615,6 +2618,7 @@ export const createAddressMap: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type CreateLoaDocumentError =
@@ -2637,6 +2641,7 @@ export const createLoaDocument: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type CreatePrefixError =
@@ -2661,6 +2666,7 @@ export const createPrefix: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type CreatePrefixBgpPrefixError =
@@ -2685,6 +2691,7 @@ export const createPrefixBgpPrefix: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type CreatePrefixDelegationError =
@@ -2709,6 +2716,7 @@ export const createPrefixDelegation: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type CreatePrefixServiceBindingError =
@@ -2731,6 +2739,7 @@ export const createPrefixServiceBinding: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type CreateRegionalHostnameError =
@@ -2755,6 +2764,7 @@ export const createRegionalHostname: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteAddressMapError =
@@ -2781,6 +2791,7 @@ export const deleteAddressMap: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteAddressMapAccountError =
@@ -2805,6 +2816,7 @@ export const deleteAddressMapAccount: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteAddressMapIpError =
@@ -2831,6 +2843,7 @@ export const deleteAddressMapIp: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteAddressMapZoneError =
@@ -2855,6 +2868,7 @@ export const deleteAddressMapZone: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeletePrefixError =
@@ -2879,6 +2893,7 @@ export const deletePrefix: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeletePrefixDelegationError =
@@ -2901,6 +2916,7 @@ export const deletePrefixDelegation: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeletePrefixServiceBindingError =
@@ -2925,6 +2941,7 @@ export const deletePrefixServiceBinding: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteRegionalHostnameError =
@@ -2951,6 +2968,7 @@ export const deleteRegionalHostname: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetAddressMapError =
@@ -2975,6 +2993,7 @@ export const getAddressMap: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetLoaDocumentError =
@@ -2997,6 +3016,7 @@ export const getLoaDocument: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetPrefixError =
@@ -3019,6 +3039,7 @@ export const getPrefix: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetPrefixAdvertisementStatusError =
@@ -3041,6 +3062,7 @@ export const getPrefixAdvertisementStatus: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetPrefixBgpPrefixError =
@@ -3065,6 +3087,7 @@ export const getPrefixBgpPrefix: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetPrefixServiceBindingError =
@@ -3089,6 +3112,7 @@ export const getPrefixServiceBinding: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetRegionalHostnameError =
@@ -3113,6 +3137,7 @@ export const getRegionalHostname: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ListAddressMapsError = CloudflareOpError;
@@ -3128,6 +3153,7 @@ export const listAddressMaps: API.PaginatedOperationMethod<
     output: ListAddressMapsResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
@@ -3154,6 +3180,7 @@ export const listPrefixBgpPrefixes: API.PaginatedOperationMethod<
       CloudflareError,
     ],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
@@ -3180,6 +3207,7 @@ export const listPrefixDelegations: API.PaginatedOperationMethod<
       CloudflareError,
     ],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
@@ -3198,6 +3226,7 @@ export const listPrefixes: API.PaginatedOperationMethod<
     output: ListPrefixesResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
@@ -3224,6 +3253,7 @@ export const listPrefixServiceBindings: API.PaginatedOperationMethod<
       CloudflareError,
     ],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
@@ -3242,6 +3272,7 @@ export const listRegionalHostnameRegions: API.PaginatedOperationMethod<
     output: ListRegionalHostnameRegionsResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
@@ -3260,6 +3291,7 @@ export const listRegionalHostnames: API.PaginatedOperationMethod<
     output: ListRegionalHostnamesResponse,
     errors: [Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
@@ -3278,6 +3310,7 @@ export const listServices: API.PaginatedOperationMethod<
     output: ListServicesResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
@@ -3305,6 +3338,7 @@ export const patchAddressMap: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type PatchPrefixError =
@@ -3329,6 +3363,7 @@ export const patchPrefix: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type PatchPrefixAdvertisementStatusError =
@@ -3351,6 +3386,7 @@ export const patchPrefixAdvertisementStatus: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type PatchPrefixBgpPrefixError =
@@ -3375,6 +3411,7 @@ export const patchPrefixBgpPrefix: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type PatchRegionalHostnameError =
@@ -3399,6 +3436,7 @@ export const patchRegionalHostname: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type PutAddressMapAccountError =
@@ -3423,6 +3461,7 @@ export const putAddressMapAccount: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type PutAddressMapIpError =
@@ -3449,6 +3488,7 @@ export const putAddressMapIp: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type PutAddressMapZoneError =
@@ -3473,4 +3513,5 @@ export const putAddressMapZone: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));

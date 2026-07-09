@@ -10,6 +10,9 @@ import {
 } from "../protocol.ts";
 import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
+import * as Retry from "../retry.ts";
+
+export type { CloudflareOpError, CloudflareOpContext };
 
 export class Forbidden extends T.applyErrorMatchers(
   S.TaggedErrorClass<Forbidden>()("Forbidden", {
@@ -1820,6 +1823,7 @@ export const createRecipient: API.OperationMethod<
   output: CreateRecipientResponse,
   errors: [ShareNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type CreateResourceError = ShareNotFound | Forbidden | CloudflareOpError;
@@ -1834,6 +1838,7 @@ export const createResource: API.OperationMethod<
   output: CreateResourceResponse,
   errors: [ShareNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type CreateResourceSharingError = Forbidden | CloudflareOpError;
@@ -1848,6 +1853,7 @@ export const createResourceSharing: API.OperationMethod<
   output: CreateResourceSharingResponse,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteRecipientError =
@@ -1870,6 +1876,7 @@ export const deleteRecipient: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteResourceError =
@@ -1892,6 +1899,7 @@ export const deleteResource: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteResourceSharingError =
@@ -1909,6 +1917,7 @@ export const deleteResourceSharing: API.OperationMethod<
   output: DeleteResourceSharingResponse,
   errors: [ShareNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetRecipientError =
@@ -1931,6 +1940,7 @@ export const getRecipient: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetResourceError =
@@ -1953,6 +1963,7 @@ export const getResource: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetResourceSharingError =
@@ -1970,6 +1981,7 @@ export const getResourceSharing: API.OperationMethod<
   output: GetResourceSharingResponse,
   errors: [ShareNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ListRecipientsError = ShareNotFound | Forbidden | CloudflareOpError;
@@ -1985,6 +1997,7 @@ export const listRecipients: API.PaginatedOperationMethod<
     output: ListRecipientsResponse,
     errors: [ShareNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: {
       mode: "page",
       inputToken: "page",
@@ -2009,6 +2022,7 @@ export const listResources: API.PaginatedOperationMethod<
     output: ListResourcesResponse,
     errors: [ShareNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: {
       mode: "page",
       inputToken: "page",
@@ -2033,6 +2047,7 @@ export const listResourceSharings: API.PaginatedOperationMethod<
     output: ListResourceSharingsResponse,
     errors: [Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: {
       mode: "page",
       inputToken: "page",
@@ -2064,6 +2079,7 @@ export const updateResource: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type UpdateResourceSharingError =
@@ -2081,4 +2097,5 @@ export const updateResourceSharing: API.OperationMethod<
   output: UpdateResourceSharingResponse,
   errors: [ShareNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));

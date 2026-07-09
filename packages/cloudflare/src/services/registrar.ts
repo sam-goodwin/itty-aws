@@ -10,6 +10,9 @@ import {
 } from "../protocol.ts";
 import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
+import * as Retry from "../retry.ts";
+
+export type { CloudflareOpError, CloudflareOpContext };
 
 export class Forbidden extends T.applyErrorMatchers(
   S.TaggedErrorClass<Forbidden>()("Forbidden", {
@@ -1199,6 +1202,7 @@ export const checkRegistrar: API.OperationMethod<
   output: CheckRegistrarResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetDomainError = Forbidden | CloudflareOpError;
@@ -1213,6 +1217,7 @@ export const getDomain: API.OperationMethod<
   output: GetDomainResponse,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetRegistrationStatusError = CloudflareOpError;
@@ -1227,6 +1232,7 @@ export const getRegistrationStatus: API.OperationMethod<
   output: GetRegistrationStatusResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetUpdateStatusError = CloudflareOpError;
@@ -1241,6 +1247,7 @@ export const getUpdateStatus: API.OperationMethod<
   output: GetUpdateStatusResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ListDomainsError = Forbidden | CloudflareOpError;
@@ -1256,6 +1263,7 @@ export const listDomains: API.PaginatedOperationMethod<
     output: ListDomainsResponse,
     errors: [Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
@@ -1283,6 +1291,7 @@ export const putDomain: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type RegistrationsCreateError = CloudflareOpError;
@@ -1297,6 +1306,7 @@ export const registrationsCreate: API.OperationMethod<
   output: RegistrationsCreateResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type RegistrationsEditError = CloudflareOpError;
@@ -1311,6 +1321,7 @@ export const registrationsEdit: API.OperationMethod<
   output: RegistrationsEditResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type RegistrationsGetError = CloudflareOpError;
@@ -1325,6 +1336,7 @@ export const registrationsGet: API.OperationMethod<
   output: RegistrationsGetResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type RegistrationsListError = CloudflareOpError;
@@ -1339,6 +1351,7 @@ export const registrationsList: API.OperationMethod<
   output: RegistrationsListResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type SearchRegistrarError = CloudflareOpError;
@@ -1353,4 +1366,5 @@ export const searchRegistrar: API.OperationMethod<
   output: SearchRegistrarResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));

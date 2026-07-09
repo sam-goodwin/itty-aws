@@ -8,6 +8,9 @@ import {
   type CloudflareOpContext,
 } from "../protocol.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
+import * as Retry from "../retry.ts";
+
+export type { CloudflareOpError, CloudflareOpContext };
 
 export class Forbidden extends T.applyErrorMatchers(
   S.TaggedErrorClass<Forbidden>()("Forbidden", {
@@ -1025,6 +1028,7 @@ export const createCni: API.OperationMethod<
   output: CreateCniResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type CreateInterconnectError = CloudflareOpError;
@@ -1039,6 +1043,7 @@ export const createInterconnect: API.OperationMethod<
   output: CreateInterconnectResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteCniError = CloudflareOpError;
@@ -1053,6 +1058,7 @@ export const deleteCni: API.OperationMethod<
   output: DeleteCniResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteInterconnectError = CloudflareOpError;
@@ -1067,6 +1073,7 @@ export const deleteInterconnect: API.OperationMethod<
   output: DeleteInterconnectResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetCniError = CloudflareOpError;
@@ -1081,6 +1088,7 @@ export const getCni: API.OperationMethod<
   output: GetCniResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetInterconnectError = CloudflareOpError;
@@ -1095,6 +1103,7 @@ export const getInterconnect: API.OperationMethod<
   output: GetInterconnectResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetSettingError = Forbidden | CloudflareOpError;
@@ -1109,6 +1118,7 @@ export const getSetting: API.OperationMethod<
   output: GetSettingResponse,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetSlotError = CloudflareOpError;
@@ -1123,6 +1133,7 @@ export const getSlot: API.OperationMethod<
   output: GetSlotResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ListCnisError = CloudflareOpError;
@@ -1137,6 +1148,7 @@ export const listCnis: API.OperationMethod<
   output: ListCnisResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ListInterconnectsError = CloudflareOpError;
@@ -1151,6 +1163,7 @@ export const listInterconnects: API.OperationMethod<
   output: ListInterconnectsResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ListSlotsError = CloudflareOpError;
@@ -1165,6 +1178,7 @@ export const listSlots: API.OperationMethod<
   output: ListSlotsResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type LoaInterconnectError = CloudflareOpError;
@@ -1179,6 +1193,7 @@ export const loaInterconnect: API.OperationMethod<
   output: LoaInterconnectResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type PutSettingError = Forbidden | CloudflareOpError;
@@ -1193,6 +1208,7 @@ export const putSetting: API.OperationMethod<
   output: PutSettingResponse,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type StatusInterconnectError = CloudflareOpError;
@@ -1207,6 +1223,7 @@ export const statusInterconnect: API.OperationMethod<
   output: StatusInterconnectResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type UpdateCniError = CloudflareOpError;
@@ -1221,4 +1238,5 @@ export const updateCni: API.OperationMethod<
   output: UpdateCniResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));

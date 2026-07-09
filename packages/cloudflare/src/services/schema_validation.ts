@@ -10,6 +10,9 @@ import {
 } from "../protocol.ts";
 import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
+import * as Retry from "../retry.ts";
+
+export type { CloudflareOpError, CloudflareOpContext };
 
 export class Forbidden extends T.applyErrorMatchers(
   S.TaggedErrorClass<Forbidden>()("Forbidden", {
@@ -843,6 +846,7 @@ export const bulkPatchSettingOperations: API.OperationMethod<
   output: BulkPatchSettingOperationsResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type CreateSchemaError = InvalidSchema | Forbidden | CloudflareOpError;
@@ -857,6 +861,7 @@ export const createSchema: API.OperationMethod<
   output: CreateSchemaResponse,
   errors: [InvalidSchema, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteSchemaError = SchemaNotFound | CloudflareOpError;
@@ -871,6 +876,7 @@ export const deleteSchema: API.OperationMethod<
   output: DeleteSchemaResponse,
   errors: [SchemaNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteSettingOperationError = OperationNotFound | CloudflareOpError;
@@ -885,6 +891,7 @@ export const deleteSettingOperation: API.OperationMethod<
   output: DeleteSettingOperationResponse,
   errors: [OperationNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetSchemaError = SchemaNotFound | Forbidden | CloudflareOpError;
@@ -899,6 +906,7 @@ export const getSchema: API.OperationMethod<
   output: GetSchemaResponse,
   errors: [SchemaNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetSettingError = Forbidden | CloudflareOpError;
@@ -913,6 +921,7 @@ export const getSetting: API.OperationMethod<
   output: GetSettingResponse,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetSettingOperationError =
@@ -935,6 +944,7 @@ export const getSettingOperation: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ListSchemasError = ZonePurged | Forbidden | CloudflareOpError;
@@ -950,6 +960,7 @@ export const listSchemas: API.PaginatedOperationMethod<
     output: ListSchemasResponse,
     errors: [ZonePurged, Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: {
       mode: "page",
       inputToken: "page",
@@ -974,6 +985,7 @@ export const listSettingOperations: API.PaginatedOperationMethod<
     output: ListSettingOperationsResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: {
       mode: "page",
       inputToken: "page",
@@ -997,6 +1009,7 @@ export const patchSchema: API.OperationMethod<
   output: PatchSchemaResponse,
   errors: [SchemaNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type PatchSettingError = CloudflareOpError;
@@ -1011,6 +1024,7 @@ export const patchSetting: API.OperationMethod<
   output: PatchSettingResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type PutSettingError =
@@ -1033,6 +1047,7 @@ export const putSetting: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type PutSettingOperationError =
@@ -1055,4 +1070,5 @@ export const putSettingOperation: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));

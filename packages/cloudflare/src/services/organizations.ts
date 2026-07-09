@@ -10,6 +10,9 @@ import {
 } from "../protocol.ts";
 import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
+import * as Retry from "../retry.ts";
+
+export type { CloudflareOpError, CloudflareOpContext };
 
 export class Forbidden extends T.applyErrorMatchers(
   S.TaggedErrorClass<Forbidden>()("Forbidden", {
@@ -1525,6 +1528,7 @@ export const createOrganization: API.OperationMethod<
   output: CreateOrganizationResponse,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteOrganizationError =
@@ -1547,6 +1551,7 @@ export const deleteOrganization: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetBillingUsageError = CloudflareOpError;
@@ -1561,6 +1566,7 @@ export const getBillingUsage: API.OperationMethod<
   output: GetBillingUsageResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetOrganizationError =
@@ -1583,6 +1589,7 @@ export const getOrganization: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetOrganizationProfileError =
@@ -1605,6 +1612,7 @@ export const getOrganizationProfile: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ListLogAuditsError = CloudflareOpError;
@@ -1620,6 +1628,7 @@ export const listLogAudits: API.PaginatedOperationMethod<
     output: ListLogAuditsResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: {
       mode: "cursor",
       inputToken: "cursor",
@@ -1643,6 +1652,7 @@ export const listOrganizations: API.PaginatedOperationMethod<
     output: ListOrganizationsResponse,
     errors: [Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
@@ -1660,6 +1670,7 @@ export const membersCreate: API.OperationMethod<
   output: MembersCreateResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type MembersDeleteError = CloudflareOpError;
@@ -1674,6 +1685,7 @@ export const membersDelete: API.OperationMethod<
   output: MembersDeleteResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type MembersGetError = CloudflareOpError;
@@ -1688,6 +1700,7 @@ export const membersGet: API.OperationMethod<
   output: MembersGetResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type MembersListError = CloudflareOpError;
@@ -1702,6 +1715,7 @@ export const membersList: API.OperationMethod<
   output: MembersListResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type OrganizationAccountsGetError = CloudflareOpError;
@@ -1716,6 +1730,7 @@ export const organizationAccountsGet: API.OperationMethod<
   output: OrganizationAccountsGetResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type PutOrganizationProfileError =
@@ -1738,6 +1753,7 @@ export const putOrganizationProfile: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type UpdateOrganizationError =
@@ -1760,4 +1776,5 @@ export const updateOrganization: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));

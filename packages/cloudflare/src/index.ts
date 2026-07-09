@@ -7,6 +7,12 @@
 export * from "./credentials.ts";
 export * from "./errors.ts";
 export * as T from "./traits.ts";
-export { CloudflareProtocol, CloudflarePaginatedProtocol } from "./protocol.ts";
+export {
+  CloudflareProtocol,
+  CloudflarePaginatedProtocol,
+  type CloudflareOpError,
+  type CloudflareOpContext,
+} from "./protocol.ts";
 export { cloudflarePaginate, ResultInfo } from "./pagination.ts";
+export * as Retry from "./retry.ts";
 export * as Services from "./services/index.ts";

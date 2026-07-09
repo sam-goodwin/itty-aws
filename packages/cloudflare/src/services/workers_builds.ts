@@ -8,6 +8,9 @@ import {
   type CloudflareOpContext,
 } from "../protocol.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
+import * as Retry from "../retry.ts";
+
+export type { CloudflareOpError, CloudflareOpContext };
 
 export interface BuildsCancelRequest {
   /** Account identifier. */
@@ -2438,6 +2441,7 @@ export const buildsCancel: API.OperationMethod<
   output: BuildsCancelResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type BuildsGetError = CloudflareOpError;
@@ -2452,6 +2456,7 @@ export const buildsGet: API.OperationMethod<
   output: BuildsGetResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type BuildsListError = CloudflareOpError;
@@ -2466,6 +2471,7 @@ export const buildsList: API.OperationMethod<
   output: BuildsListResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type BuildsLogsGetError = CloudflareOpError;
@@ -2480,6 +2486,7 @@ export const buildsLogsGet: API.OperationMethod<
   output: BuildsLogsGetResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeployHooksCreateError = CloudflareOpError;
@@ -2494,6 +2501,7 @@ export const deployHooksCreate: API.OperationMethod<
   output: DeployHooksCreateResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeployHooksDeleteError = CloudflareOpError;
@@ -2508,6 +2516,7 @@ export const deployHooksDelete: API.OperationMethod<
   output: DeployHooksDeleteResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeployHooksGetError = CloudflareOpError;
@@ -2522,6 +2531,7 @@ export const deployHooksGet: API.OperationMethod<
   output: DeployHooksGetResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeployHooksListError = CloudflareOpError;
@@ -2536,6 +2546,7 @@ export const deployHooksList: API.OperationMethod<
   output: DeployHooksListResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeployHooksTriggerError = CloudflareOpError;
@@ -2550,6 +2561,7 @@ export const deployHooksTrigger: API.OperationMethod<
   output: DeployHooksTriggerResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeployHooksUpdateError = CloudflareOpError;
@@ -2564,6 +2576,7 @@ export const deployHooksUpdate: API.OperationMethod<
   output: DeployHooksUpdateResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetAccountLimitsError = CloudflareOpError;
@@ -2578,6 +2591,7 @@ export const getAccountLimits: API.OperationMethod<
   output: GetAccountLimitsResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetBuildsByVersionError = CloudflareOpError;
@@ -2592,6 +2606,7 @@ export const getBuildsByVersion: API.OperationMethod<
   output: GetBuildsByVersionResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetLatestBuildsError = CloudflareOpError;
@@ -2606,6 +2621,7 @@ export const getLatestBuilds: API.OperationMethod<
   output: GetLatestBuildsResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ReposConfigAutofillGetError = CloudflareOpError;
@@ -2620,6 +2636,7 @@ export const reposConfigAutofillGet: API.OperationMethod<
   output: ReposConfigAutofillGetResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ReposConnectionsDeleteError = CloudflareOpError;
@@ -2634,6 +2651,7 @@ export const reposConnectionsDelete: API.OperationMethod<
   output: ReposConnectionsDeleteResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ReposConnectionsUpsertError = CloudflareOpError;
@@ -2648,6 +2666,7 @@ export const reposConnectionsUpsert: API.OperationMethod<
   output: ReposConnectionsUpsertResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type TokensCreateError = CloudflareOpError;
@@ -2662,6 +2681,7 @@ export const tokensCreate: API.OperationMethod<
   output: TokensCreateResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type TokensDeleteError = CloudflareOpError;
@@ -2676,6 +2696,7 @@ export const tokensDelete: API.OperationMethod<
   output: TokensDeleteResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type TokensListError = CloudflareOpError;
@@ -2690,6 +2711,7 @@ export const tokensList: API.OperationMethod<
   output: TokensListResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type TriggersCreateError = CloudflareOpError;
@@ -2704,6 +2726,7 @@ export const triggersCreate: API.OperationMethod<
   output: TriggersCreateResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type TriggersCreateBuildError = CloudflareOpError;
@@ -2718,6 +2741,7 @@ export const triggersCreateBuild: API.OperationMethod<
   output: TriggersCreateBuildResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type TriggersDeleteError = CloudflareOpError;
@@ -2732,6 +2756,7 @@ export const triggersDelete: API.OperationMethod<
   output: TriggersDeleteResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type TriggersEnvironmentVariablesDeleteError = CloudflareOpError;
@@ -2746,6 +2771,7 @@ export const triggersEnvironmentVariablesDelete: API.OperationMethod<
   output: TriggersEnvironmentVariablesDeleteResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type TriggersEnvironmentVariablesListError = CloudflareOpError;
@@ -2760,6 +2786,7 @@ export const triggersEnvironmentVariablesList: API.OperationMethod<
   output: TriggersEnvironmentVariablesListResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type TriggersEnvironmentVariablesUpsertError = CloudflareOpError;
@@ -2774,6 +2801,7 @@ export const triggersEnvironmentVariablesUpsert: API.OperationMethod<
   output: TriggersEnvironmentVariablesUpsertResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type TriggersListError = CloudflareOpError;
@@ -2788,6 +2816,7 @@ export const triggersList: API.OperationMethod<
   output: TriggersListResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type TriggersPurgeCacheError = CloudflareOpError;
@@ -2802,6 +2831,7 @@ export const triggersPurgeCache: API.OperationMethod<
   output: TriggersPurgeCacheResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type TriggersUpdateError = CloudflareOpError;
@@ -2816,4 +2846,5 @@ export const triggersUpdate: API.OperationMethod<
   output: TriggersUpdateResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));

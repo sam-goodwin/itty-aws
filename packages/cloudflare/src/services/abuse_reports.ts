@@ -10,6 +10,9 @@ import {
 } from "../protocol.ts";
 import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
+import * as Retry from "../retry.ts";
+
+export type { CloudflareOpError, CloudflareOpContext };
 
 export class InvalidAccountId extends T.applyErrorMatchers(
   S.TaggedErrorClass<InvalidAccountId>()("InvalidAccountId", {
@@ -660,6 +663,7 @@ export const createAbuseReport: API.OperationMethod<
   output: CreateAbuseReportResponse,
   errors: [InvalidRequest, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetError = CloudflareOpError;
@@ -674,6 +678,7 @@ export const get: API.OperationMethod<
   output: GetResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ListAbuseReportsError = InvalidAccountId | CloudflareOpError;
@@ -688,6 +693,7 @@ export const listAbuseReports: API.OperationMethod<
   output: ListAbuseReportsResponse,
   errors: [InvalidAccountId, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ListMitigationsError = CloudflareOpError;
@@ -702,6 +708,7 @@ export const listMitigations: API.OperationMethod<
   output: ListMitigationsResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ReviewMitigationError = CloudflareOpError;
@@ -717,6 +724,7 @@ export const reviewMitigation: API.PaginatedOperationMethod<
     output: ReviewMitigationResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,

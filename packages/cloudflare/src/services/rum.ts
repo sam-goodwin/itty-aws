@@ -10,6 +10,9 @@ import {
 } from "../protocol.ts";
 import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
+import * as Retry from "../retry.ts";
+
+export type { CloudflareOpError, CloudflareOpContext };
 
 export class Forbidden extends T.applyErrorMatchers(
   S.TaggedErrorClass<Forbidden>()("Forbidden", {
@@ -990,6 +993,7 @@ export const bulkCreateRules: API.OperationMethod<
   output: BulkCreateRulesResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type CreateRuleError =
@@ -1014,6 +1018,7 @@ export const createRule: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type CreateSiteInfoError = Forbidden | CloudflareOpError;
@@ -1028,6 +1033,7 @@ export const createSiteInfo: API.OperationMethod<
   output: CreateSiteInfoResponse,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteRuleError =
@@ -1052,6 +1058,7 @@ export const deleteRule: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteSiteInfoError = SiteNotFound | Forbidden | CloudflareOpError;
@@ -1066,6 +1073,7 @@ export const deleteSiteInfo: API.OperationMethod<
   output: DeleteSiteInfoResponse,
   errors: [SiteNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetSiteInfoError = SiteNotFound | Forbidden | CloudflareOpError;
@@ -1080,6 +1088,7 @@ export const getSiteInfo: API.OperationMethod<
   output: GetSiteInfoResponse,
   errors: [SiteNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ListRulesError = Forbidden | RulesetNotFound | CloudflareOpError;
@@ -1094,6 +1103,7 @@ export const listRules: API.OperationMethod<
   output: ListRulesResponse,
   errors: [Forbidden, RulesetNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ListSiteInfosError = Forbidden | CloudflareOpError;
@@ -1109,6 +1119,7 @@ export const listSiteInfos: API.PaginatedOperationMethod<
     output: ListSiteInfosResponse,
     errors: [Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: {
       mode: "page",
       inputToken: "page",
@@ -1132,6 +1143,7 @@ export const updateRule: API.OperationMethod<
   output: UpdateRuleResponse,
   errors: [Forbidden, RulesetNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type UpdateSiteInfoError = SiteNotFound | Forbidden | CloudflareOpError;
@@ -1146,4 +1158,5 @@ export const updateSiteInfo: API.OperationMethod<
   output: UpdateSiteInfoResponse,
   errors: [SiteNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));

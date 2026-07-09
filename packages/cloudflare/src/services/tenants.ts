@@ -10,6 +10,9 @@ import {
 } from "../protocol.ts";
 import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
+import * as Retry from "../retry.ts";
+
+export type { CloudflareOpError, CloudflareOpContext };
 
 export interface GetEntitlementRequest {
   tenantId: string;
@@ -531,6 +534,7 @@ export const getEntitlement: API.OperationMethod<
   output: GetEntitlementResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetTenantError = CloudflareOpError;
@@ -545,6 +549,7 @@ export const getTenant: API.OperationMethod<
   output: GetTenantResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ListAccountsError = CloudflareOpError;
@@ -560,6 +565,7 @@ export const listAccounts: API.PaginatedOperationMethod<
     output: ListAccountsResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
@@ -578,6 +584,7 @@ export const listAccountTypes: API.PaginatedOperationMethod<
     output: ListAccountTypesResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
@@ -596,6 +603,7 @@ export const listMemberships: API.PaginatedOperationMethod<
     output: ListMembershipsResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,

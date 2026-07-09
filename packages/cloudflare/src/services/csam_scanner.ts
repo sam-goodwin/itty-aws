@@ -8,6 +8,9 @@ import {
   type CloudflareOpContext,
 } from "../protocol.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
+import * as Retry from "../retry.ts";
+
+export type { CloudflareOpError, CloudflareOpContext };
 
 export interface GetCsamScannerRequest {
   /** Identifier for the zone. */
@@ -223,6 +226,7 @@ export const getCsamScanner: API.OperationMethod<
   output: GetCsamScannerResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type PatchCsamScannerError = CloudflareOpError;
@@ -237,4 +241,5 @@ export const patchCsamScanner: API.OperationMethod<
   output: PatchCsamScannerResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));

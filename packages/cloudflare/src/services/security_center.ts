@@ -8,6 +8,9 @@ import {
   type CloudflareOpContext,
 } from "../protocol.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
+import * as Retry from "../retry.ts";
+
+export type { CloudflareOpError, CloudflareOpContext };
 
 export interface GetInsightContextRequest {
   /** Identifier. */
@@ -1017,6 +1020,7 @@ export const getInsightContext: API.OperationMethod<
   output: GetInsightContextResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type InsightsAuditLogsListError = CloudflareOpError;
@@ -1031,6 +1035,7 @@ export const insightsAuditLogsList: API.OperationMethod<
   output: InsightsAuditLogsListResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type InsightsAuditLogsListByInsightError = CloudflareOpError;
@@ -1045,6 +1050,7 @@ export const insightsAuditLogsListByInsight: API.OperationMethod<
   output: InsightsAuditLogsListByInsightResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type InsightsClassGetError = CloudflareOpError;
@@ -1059,6 +1065,7 @@ export const insightsClassGet: API.OperationMethod<
   output: InsightsClassGetResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type InsightsClassificationUpdateError = CloudflareOpError;
@@ -1073,6 +1080,7 @@ export const insightsClassificationUpdate: API.OperationMethod<
   output: InsightsClassificationUpdateResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type InsightsDismissError = CloudflareOpError;
@@ -1087,6 +1095,7 @@ export const insightsDismiss: API.OperationMethod<
   output: InsightsDismissResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type InsightsListError = CloudflareOpError;
@@ -1101,6 +1110,7 @@ export const insightsList: API.OperationMethod<
   output: InsightsListResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type InsightsSeverityGetError = CloudflareOpError;
@@ -1115,6 +1125,7 @@ export const insightsSeverityGet: API.OperationMethod<
   output: InsightsSeverityGetResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type InsightsTypeGetError = CloudflareOpError;
@@ -1129,4 +1140,5 @@ export const insightsTypeGet: API.OperationMethod<
   output: InsightsTypeGetResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));

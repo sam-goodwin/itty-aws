@@ -10,6 +10,9 @@ import {
 } from "../protocol.ts";
 import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
+import * as Retry from "../retry.ts";
+
+export type { CloudflareOpError, CloudflareOpContext };
 
 export class AclNotFound extends T.applyErrorMatchers(
   S.TaggedErrorClass<AclNotFound>()("AclNotFound", {
@@ -15685,6 +15688,7 @@ export const batchRecord: API.OperationMethod<
   output: BatchRecordResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type CreateRecordError =
@@ -15707,6 +15711,7 @@ export const createRecord: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type CreateSettingAccountViewError =
@@ -15723,6 +15728,7 @@ export const createSettingAccountView: API.OperationMethod<
   output: CreateSettingAccountViewResponse,
   errors: [InternalDnsNotAvailable, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type CreateZoneTransferAclError = CloudflareOpError;
@@ -15737,6 +15743,7 @@ export const createZoneTransferAcl: API.OperationMethod<
   output: CreateZoneTransferAclResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type CreateZoneTransferForceAxfrError = CloudflareOpError;
@@ -15751,6 +15758,7 @@ export const createZoneTransferForceAxfr: API.OperationMethod<
   output: CreateZoneTransferForceAxfrResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type CreateZoneTransferIncomingError = CloudflareOpError;
@@ -15765,6 +15773,7 @@ export const createZoneTransferIncoming: API.OperationMethod<
   output: CreateZoneTransferIncomingResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type CreateZoneTransferOutgoingError =
@@ -15785,6 +15794,7 @@ export const createZoneTransferOutgoing: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type CreateZoneTransferPeerError = CloudflareOpError;
@@ -15799,6 +15809,7 @@ export const createZoneTransferPeer: API.OperationMethod<
   output: CreateZoneTransferPeerResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type CreateZoneTransferTsigError = CloudflareOpError;
@@ -15813,6 +15824,7 @@ export const createZoneTransferTsig: API.OperationMethod<
   output: CreateZoneTransferTsigResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteDnssecError = Forbidden | CloudflareOpError;
@@ -15827,6 +15839,7 @@ export const deleteDnssec: API.OperationMethod<
   output: DeleteDnssecResponse,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteRecordError = CloudflareOpError;
@@ -15841,6 +15854,7 @@ export const deleteRecord: API.OperationMethod<
   output: DeleteRecordResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteSettingAccountViewError = ViewNotFound | CloudflareOpError;
@@ -15855,6 +15869,7 @@ export const deleteSettingAccountView: API.OperationMethod<
   output: DeleteSettingAccountViewResponse,
   errors: [ViewNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteZoneTransferAclError = AclNotFound | CloudflareOpError;
@@ -15869,6 +15884,7 @@ export const deleteZoneTransferAcl: API.OperationMethod<
   output: DeleteZoneTransferAclResponse,
   errors: [AclNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteZoneTransferIncomingError =
@@ -15889,6 +15905,7 @@ export const deleteZoneTransferIncoming: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteZoneTransferOutgoingError =
@@ -15911,6 +15928,7 @@ export const deleteZoneTransferOutgoing: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteZoneTransferPeerError = PeerNotFound | CloudflareOpError;
@@ -15925,6 +15943,7 @@ export const deleteZoneTransferPeer: API.OperationMethod<
   output: DeleteZoneTransferPeerResponse,
   errors: [PeerNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteZoneTransferTsigError = TsigNotFound | CloudflareOpError;
@@ -15939,6 +15958,7 @@ export const deleteZoneTransferTsig: API.OperationMethod<
   output: DeleteZoneTransferTsigResponse,
   errors: [TsigNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DisableZoneTransferOutgoingError =
@@ -15959,6 +15979,7 @@ export const disableZoneTransferOutgoing: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type EnableZoneTransferOutgoingError =
@@ -15979,6 +16000,7 @@ export const enableZoneTransferOutgoing: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ExportRecordError = CloudflareOpError;
@@ -15993,6 +16015,7 @@ export const exportRecord: API.OperationMethod<
   output: ExportRecordResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ForceNotifyZoneTransferOutgoingError = CloudflareOpError;
@@ -16007,6 +16030,7 @@ export const forceNotifyZoneTransferOutgoing: API.OperationMethod<
   output: ForceNotifyZoneTransferOutgoingResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetAnalyticReportError = CloudflareOpError;
@@ -16021,6 +16045,7 @@ export const getAnalyticReport: API.OperationMethod<
   output: GetAnalyticReportResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetAnalyticReportBytimeError = CloudflareOpError;
@@ -16035,6 +16060,7 @@ export const getAnalyticReportBytime: API.OperationMethod<
   output: GetAnalyticReportBytimeResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetDnssecError = Forbidden | CloudflareOpError;
@@ -16049,6 +16075,7 @@ export const getDnssec: API.OperationMethod<
   output: GetDnssecResponse,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetRecordError = Forbidden | CloudflareOpError;
@@ -16063,6 +16090,7 @@ export const getRecord: API.OperationMethod<
   output: GetRecordResponse,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetSettingAccountError = CloudflareOpError;
@@ -16077,6 +16105,7 @@ export const getSettingAccount: API.OperationMethod<
   output: GetSettingAccountResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetSettingAccountViewError = ViewNotFound | CloudflareOpError;
@@ -16091,6 +16120,7 @@ export const getSettingAccountView: API.OperationMethod<
   output: GetSettingAccountViewResponse,
   errors: [ViewNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetSettingZoneError = Forbidden | CloudflareOpError;
@@ -16105,6 +16135,7 @@ export const getSettingZone: API.OperationMethod<
   output: GetSettingZoneResponse,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetUsageAccountError = CloudflareOpError;
@@ -16119,6 +16150,7 @@ export const getUsageAccount: API.OperationMethod<
   output: GetUsageAccountResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetUsageZoneError = CloudflareOpError;
@@ -16133,6 +16165,7 @@ export const getUsageZone: API.OperationMethod<
   output: GetUsageZoneResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetZoneTransferAclError = AclNotFound | CloudflareOpError;
@@ -16147,6 +16180,7 @@ export const getZoneTransferAcl: API.OperationMethod<
   output: GetZoneTransferAclResponse,
   errors: [AclNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetZoneTransferIncomingError =
@@ -16167,6 +16201,7 @@ export const getZoneTransferIncoming: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetZoneTransferOutgoingError =
@@ -16189,6 +16224,7 @@ export const getZoneTransferOutgoing: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetZoneTransferOutgoingStatusError = CloudflareOpError;
@@ -16203,6 +16239,7 @@ export const getZoneTransferOutgoingStatus: API.OperationMethod<
   output: GetZoneTransferOutgoingStatusResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetZoneTransferPeerError = PeerNotFound | CloudflareOpError;
@@ -16217,6 +16254,7 @@ export const getZoneTransferPeer: API.OperationMethod<
   output: GetZoneTransferPeerResponse,
   errors: [PeerNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetZoneTransferTsigError = TsigNotFound | CloudflareOpError;
@@ -16231,6 +16269,7 @@ export const getZoneTransferTsig: API.OperationMethod<
   output: GetZoneTransferTsigResponse,
   errors: [TsigNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ImportRecordError = CloudflareOpError;
@@ -16245,6 +16284,7 @@ export const importRecord: API.OperationMethod<
   output: ImportRecordResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ListRecordsError = Forbidden | CloudflareOpError;
@@ -16260,6 +16300,7 @@ export const listRecords: API.PaginatedOperationMethod<
     output: ListRecordsResponse,
     errors: [Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: {
       mode: "page",
       inputToken: "page",
@@ -16284,6 +16325,7 @@ export const listSettingAccountViews: API.PaginatedOperationMethod<
     output: ListSettingAccountViewsResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: {
       mode: "page",
       inputToken: "page",
@@ -16308,6 +16350,7 @@ export const listZoneTransferAcls: API.PaginatedOperationMethod<
     output: ListZoneTransferAclsResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
@@ -16326,6 +16369,7 @@ export const listZoneTransferPeers: API.PaginatedOperationMethod<
     output: ListZoneTransferPeersResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
@@ -16344,6 +16388,7 @@ export const listZoneTransferTsigs: API.PaginatedOperationMethod<
     output: ListZoneTransferTsigsResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
@@ -16361,6 +16406,7 @@ export const patchDnssec: API.OperationMethod<
   output: PatchDnssecResponse,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type PatchRecordError = CloudflareOpError;
@@ -16375,6 +16421,7 @@ export const patchRecord: API.OperationMethod<
   output: PatchRecordResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type PatchSettingAccountError =
@@ -16391,6 +16438,7 @@ export const patchSettingAccount: API.OperationMethod<
   output: PatchSettingAccountResponse,
   errors: [DnsSettingNotAvailable, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type PatchSettingAccountViewError = ViewNotFound | CloudflareOpError;
@@ -16405,6 +16453,7 @@ export const patchSettingAccountView: API.OperationMethod<
   output: PatchSettingAccountViewResponse,
   errors: [ViewNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type PatchSettingZoneError = Forbidden | CloudflareOpError;
@@ -16419,6 +16468,7 @@ export const patchSettingZone: API.OperationMethod<
   output: PatchSettingZoneResponse,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ScanListRecordError = CloudflareOpError;
@@ -16434,6 +16484,7 @@ export const scanListRecord: API.PaginatedOperationMethod<
     output: ScanListRecordResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
@@ -16451,6 +16502,7 @@ export const scanRecord: API.OperationMethod<
   output: ScanRecordResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ScanReviewRecordError = CloudflareOpError;
@@ -16465,6 +16517,7 @@ export const scanReviewRecord: API.OperationMethod<
   output: ScanReviewRecordResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ScanTriggerRecordError = CloudflareOpError;
@@ -16479,6 +16532,7 @@ export const scanTriggerRecord: API.OperationMethod<
   output: ScanTriggerRecordResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type UpdateRecordError = CloudflareOpError;
@@ -16493,6 +16547,7 @@ export const updateRecord: API.OperationMethod<
   output: UpdateRecordResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type UpdateZoneTransferAclError = AclNotFound | CloudflareOpError;
@@ -16507,6 +16562,7 @@ export const updateZoneTransferAcl: API.OperationMethod<
   output: UpdateZoneTransferAclResponse,
   errors: [AclNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type UpdateZoneTransferIncomingError =
@@ -16527,6 +16583,7 @@ export const updateZoneTransferIncoming: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type UpdateZoneTransferOutgoingError =
@@ -16549,6 +16606,7 @@ export const updateZoneTransferOutgoing: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type UpdateZoneTransferPeerError = PeerNotFound | CloudflareOpError;
@@ -16563,6 +16621,7 @@ export const updateZoneTransferPeer: API.OperationMethod<
   output: UpdateZoneTransferPeerResponse,
   errors: [PeerNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type UpdateZoneTransferTsigError = TsigNotFound | CloudflareOpError;
@@ -16577,4 +16636,5 @@ export const updateZoneTransferTsig: API.OperationMethod<
   output: UpdateZoneTransferTsigResponse,
   errors: [TsigNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));

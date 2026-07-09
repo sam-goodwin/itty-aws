@@ -8,6 +8,9 @@ import {
   type CloudflareOpContext,
 } from "../protocol.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
+import * as Retry from "../retry.ts";
+
+export type { CloudflareOpError, CloudflareOpContext };
 
 export type ScansBulkCreateRequestBodyItemCustomHeadersMap = {
   [key: string]: unknown | undefined;
@@ -4879,6 +4882,7 @@ export const bulkCreateScans: API.OperationMethod<
   output: BulkCreateScansResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type CreateScanError = CloudflareOpError;
@@ -4893,6 +4897,7 @@ export const createScan: API.OperationMethod<
   output: CreateScanResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DomScanError = CloudflareOpError;
@@ -4907,6 +4912,7 @@ export const domScan: API.OperationMethod<
   output: DomScanResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetResponsError = CloudflareOpError;
@@ -4921,6 +4927,7 @@ export const getRespons: API.OperationMethod<
   output: GetResponsResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetScanError = CloudflareOpError;
@@ -4935,6 +4942,7 @@ export const getScan: API.OperationMethod<
   output: GetScanResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type HarScanError = CloudflareOpError;
@@ -4949,6 +4957,7 @@ export const harScan: API.OperationMethod<
   output: HarScanResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ListScansError = CloudflareOpError;
@@ -4963,6 +4972,7 @@ export const listScans: API.OperationMethod<
   output: ListScansResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ScreenshotScanError = CloudflareOpError;
@@ -4977,4 +4987,5 @@ export const screenshotScan: API.OperationMethod<
   output: ScreenshotScanResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));

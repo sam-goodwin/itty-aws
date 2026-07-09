@@ -8,6 +8,9 @@ import {
   type CloudflareOpContext,
 } from "../protocol.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
+import * as Retry from "../retry.ts";
+
+export type { CloudflareOpError, CloudflareOpContext };
 
 export class Forbidden extends T.applyErrorMatchers(
   S.TaggedErrorClass<Forbidden>()("Forbidden", {
@@ -16007,6 +16010,7 @@ export const addParticipantMeeting: API.OperationMethod<
   output: AddParticipantMeetingResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type CreateIndependentLivestreamLivestreamError = CloudflareOpError;
@@ -16021,6 +16025,7 @@ export const createIndependentLivestreamLivestream: API.OperationMethod<
   output: CreateIndependentLivestreamLivestreamResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type CreateMeetingError = CloudflareOpError;
@@ -16035,6 +16040,7 @@ export const createMeeting: API.OperationMethod<
   output: CreateMeetingResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type CreatePollActiveSessionError = CloudflareOpError;
@@ -16049,6 +16055,7 @@ export const createPollActiveSession: API.OperationMethod<
   output: CreatePollActiveSessionResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type CreatePresetError =
@@ -16071,6 +16078,7 @@ export const createPreset: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type CreateWebhookWebhookError =
@@ -16093,6 +16101,7 @@ export const createWebhookWebhook: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteMeetingParticipantMeetingError = CloudflareOpError;
@@ -16107,6 +16116,7 @@ export const deleteMeetingParticipantMeeting: API.OperationMethod<
   output: DeleteMeetingParticipantMeetingResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeletePresetError =
@@ -16129,6 +16139,7 @@ export const deletePreset: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteWebhookWebhookError =
@@ -16151,6 +16162,7 @@ export const deleteWebhookWebhook: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type EditParticipantMeetingError = CloudflareOpError;
@@ -16165,6 +16177,7 @@ export const editParticipantMeeting: API.OperationMethod<
   output: EditParticipantMeetingResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type EditWebhookWebhookError = CloudflareOpError;
@@ -16179,6 +16192,7 @@ export const editWebhookWebhook: API.OperationMethod<
   output: EditWebhookWebhookResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GenerateSummaryOfTranscriptsSessionError = CloudflareOpError;
@@ -16193,6 +16207,7 @@ export const generateSummaryOfTranscriptsSession: API.OperationMethod<
   output: GenerateSummaryOfTranscriptsSessionResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetActiveLivestreamsForLivestreamIdLivestreamError =
@@ -16208,6 +16223,7 @@ export const getActiveLivestreamsForLivestreamIdLivestream: API.OperationMethod<
   output: GetActiveLivestreamsForLivestreamIdLivestreamResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetActiveRecordingsRecordingError = CloudflareOpError;
@@ -16222,6 +16238,7 @@ export const getActiveRecordingsRecording: API.OperationMethod<
   output: GetActiveRecordingsRecordingResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetActiveSessionActiveSessionError = CloudflareOpError;
@@ -16236,6 +16253,7 @@ export const getActiveSessionActiveSession: API.OperationMethod<
   output: GetActiveSessionActiveSessionResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetAllLivestreamsLivestreamError = CloudflareOpError;
@@ -16250,6 +16268,7 @@ export const getAllLivestreamsLivestream: API.OperationMethod<
   output: GetAllLivestreamsLivestreamResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetAppError = Forbidden | CloudflareOpError;
@@ -16264,6 +16283,7 @@ export const getApp: API.OperationMethod<
   output: GetAppResponse,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetLivestreamAnalyticsCompleteLivestreamError = CloudflareOpError;
@@ -16278,6 +16298,7 @@ export const getLivestreamAnalyticsCompleteLivestream: API.OperationMethod<
   output: GetLivestreamAnalyticsCompleteLivestreamResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetLivestreamAnalyticsDaywiseLivestreamError = CloudflareOpError;
@@ -16292,6 +16313,7 @@ export const getLivestreamAnalyticsDaywiseLivestream: API.OperationMethod<
   output: GetLivestreamAnalyticsDaywiseLivestreamResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetLivestreamSessionDetailsForSessionIdLivestreamError =
@@ -16307,6 +16329,7 @@ export const getLivestreamSessionDetailsForSessionIdLivestream: API.OperationMet
   output: GetLivestreamSessionDetailsForSessionIdLivestreamResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetLivestreamSessionForLivestreamIdLivestreamError =
@@ -16322,6 +16345,7 @@ export const getLivestreamSessionForLivestreamIdLivestream: API.OperationMethod<
   output: GetLivestreamSessionForLivestreamIdLivestreamResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetMeetingError = CloudflareOpError;
@@ -16336,6 +16360,7 @@ export const getMeeting: API.OperationMethod<
   output: GetMeetingResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetMeetingActiveLivestreamsLivestreamError = CloudflareOpError;
@@ -16350,6 +16375,7 @@ export const getMeetingActiveLivestreamsLivestream: API.OperationMethod<
   output: GetMeetingActiveLivestreamsLivestreamResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetMeetingByIdMeetingError = CloudflareOpError;
@@ -16364,6 +16390,7 @@ export const getMeetingByIdMeeting: API.OperationMethod<
   output: GetMeetingByIdMeetingResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetMeetingParticipantMeetingError = CloudflareOpError;
@@ -16378,6 +16405,7 @@ export const getMeetingParticipantMeeting: API.OperationMethod<
   output: GetMeetingParticipantMeetingResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetMeetingParticipantsMeetingError = CloudflareOpError;
@@ -16392,6 +16420,7 @@ export const getMeetingParticipantsMeeting: API.OperationMethod<
   output: GetMeetingParticipantsMeetingResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetOneRecordingRecordingError = CloudflareOpError;
@@ -16406,6 +16435,7 @@ export const getOneRecordingRecording: API.OperationMethod<
   output: GetOneRecordingRecordingResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetOrgAnalyticsAnalyticError = CloudflareOpError;
@@ -16420,6 +16450,7 @@ export const getOrgAnalyticsAnalytic: API.OperationMethod<
   output: GetOrgAnalyticsAnalyticResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetParticipantDataFromPeerIdSessionError = CloudflareOpError;
@@ -16434,6 +16465,7 @@ export const getParticipantDataFromPeerIdSession: API.OperationMethod<
   output: GetParticipantDataFromPeerIdSessionResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetPresetError = Forbidden | CloudflareOpError;
@@ -16448,6 +16480,7 @@ export const getPreset: API.OperationMethod<
   output: GetPresetResponse,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetPresetByIdPresetError =
@@ -16470,6 +16503,7 @@ export const getPresetByIdPreset: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetRecordingsRecordingError = CloudflareOpError;
@@ -16484,6 +16518,7 @@ export const getRecordingsRecording: API.OperationMethod<
   output: GetRecordingsRecordingResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetSessionChatSessionError = CloudflareOpError;
@@ -16498,6 +16533,7 @@ export const getSessionChatSession: API.OperationMethod<
   output: GetSessionChatSessionResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetSessionDetailsSessionError = CloudflareOpError;
@@ -16512,6 +16548,7 @@ export const getSessionDetailsSession: API.OperationMethod<
   output: GetSessionDetailsSessionResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetSessionParticipantDetailsSessionError = CloudflareOpError;
@@ -16526,6 +16563,7 @@ export const getSessionParticipantDetailsSession: API.OperationMethod<
   output: GetSessionParticipantDetailsSessionResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetSessionParticipantsSessionError = CloudflareOpError;
@@ -16540,6 +16578,7 @@ export const getSessionParticipantsSession: API.OperationMethod<
   output: GetSessionParticipantsSessionResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetSessionsSessionError = CloudflareOpError;
@@ -16554,6 +16593,7 @@ export const getSessionsSession: API.OperationMethod<
   output: GetSessionsSessionResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetSessionSummarySessionError = CloudflareOpError;
@@ -16568,6 +16608,7 @@ export const getSessionSummarySession: API.OperationMethod<
   output: GetSessionSummarySessionResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetSessionTranscriptsSessionError = CloudflareOpError;
@@ -16582,6 +16623,7 @@ export const getSessionTranscriptsSession: API.OperationMethod<
   output: GetSessionTranscriptsSessionResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetWebhookByIdWebhookError =
@@ -16604,6 +16646,7 @@ export const getWebhookByIdWebhook: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetWebhooksWebhookError =
@@ -16626,6 +16669,7 @@ export const getWebhooksWebhook: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type KickAllParticipantsActiveSessionError = CloudflareOpError;
@@ -16640,6 +16684,7 @@ export const kickAllParticipantsActiveSession: API.OperationMethod<
   output: KickAllParticipantsActiveSessionResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type KickParticipantsActiveSessionError = CloudflareOpError;
@@ -16654,6 +16699,7 @@ export const kickParticipantsActiveSession: API.OperationMethod<
   output: KickParticipantsActiveSessionResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type LivestreamsGetOrgAnalyticsError = CloudflareOpError;
@@ -16668,6 +16714,7 @@ export const livestreamsGetOrgAnalytics: API.OperationMethod<
   output: LivestreamsGetOrgAnalyticsResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type PatchPresetError =
@@ -16690,6 +16737,7 @@ export const patchPreset: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type PauseResumeStopRecordingRecordingError = CloudflareOpError;
@@ -16704,6 +16752,7 @@ export const pauseResumeStopRecordingRecording: API.OperationMethod<
   output: PauseResumeStopRecordingRecordingResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type PostAppError = Forbidden | CloudflareOpError;
@@ -16718,6 +16767,7 @@ export const postApp: API.OperationMethod<
   output: PostAppResponse,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type RefreshParticipantTokenMeetingError = CloudflareOpError;
@@ -16732,6 +16782,7 @@ export const refreshParticipantTokenMeeting: API.OperationMethod<
   output: RefreshParticipantTokenMeetingResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ReplaceMeetingByIdMeetingError = CloudflareOpError;
@@ -16746,6 +16797,7 @@ export const replaceMeetingByIdMeeting: API.OperationMethod<
   output: ReplaceMeetingByIdMeetingResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ReplaceWebhookWebhookError =
@@ -16768,6 +16820,7 @@ export const replaceWebhookWebhook: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type StartLivestreamingAMeetingLivestreamError = CloudflareOpError;
@@ -16782,6 +16835,7 @@ export const startLivestreamingAMeetingLivestream: API.OperationMethod<
   output: StartLivestreamingAMeetingLivestreamResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type StartRecordingsRecordingError = CloudflareOpError;
@@ -16796,6 +16850,7 @@ export const startRecordingsRecording: API.OperationMethod<
   output: StartRecordingsRecordingResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type StartTrackRecordingRecordingError = CloudflareOpError;
@@ -16810,6 +16865,7 @@ export const startTrackRecordingRecording: API.OperationMethod<
   output: StartTrackRecordingRecordingResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type StopLivestreamingAMeetingLivestreamError = CloudflareOpError;
@@ -16824,6 +16880,7 @@ export const stopLivestreamingAMeetingLivestream: API.OperationMethod<
   output: StopLivestreamingAMeetingLivestreamResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type UpdateMeetingByIdMeetingError = CloudflareOpError;
@@ -16838,4 +16895,5 @@ export const updateMeetingByIdMeeting: API.OperationMethod<
   output: UpdateMeetingByIdMeetingResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));

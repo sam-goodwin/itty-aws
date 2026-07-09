@@ -10,6 +10,9 @@ import {
 } from "../protocol.ts";
 import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
+import * as Retry from "../retry.ts";
+
+export type { CloudflareOpError, CloudflareOpContext };
 
 export class FiltersRequired extends T.applyErrorMatchers(
   S.TaggedErrorClass<FiltersRequired>()("FiltersRequired", {
@@ -3462,6 +3465,7 @@ export const createDestinationPagerduty: API.OperationMethod<
   output: CreateDestinationPagerdutyResponse,
   errors: [InvalidRoute, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type CreateDestinationWebhookError =
@@ -3484,6 +3488,7 @@ export const createDestinationWebhook: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type CreatePolicyError =
@@ -3508,6 +3513,7 @@ export const createPolicy: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type CreateSilenceError =
@@ -3532,6 +3538,7 @@ export const createSilence: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteDestinationPagerdutyError = InvalidRoute | CloudflareOpError;
@@ -3546,6 +3553,7 @@ export const deleteDestinationPagerduty: API.OperationMethod<
   output: DeleteDestinationPagerdutyResponse,
   errors: [InvalidRoute, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteDestinationWebhookError =
@@ -3568,6 +3576,7 @@ export const deleteDestinationWebhook: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeletePolicyError =
@@ -3590,6 +3599,7 @@ export const deletePolicy: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteSilenceError =
@@ -3612,6 +3622,7 @@ export const deleteSilence: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetDestinationEligibleError = InvalidRoute | CloudflareOpError;
@@ -3626,6 +3637,7 @@ export const getDestinationEligible: API.OperationMethod<
   output: GetDestinationEligibleResponse,
   errors: [InvalidRoute, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetDestinationPagerdutyError = CloudflareOpError;
@@ -3641,6 +3653,7 @@ export const getDestinationPagerduty: API.PaginatedOperationMethod<
     output: GetDestinationPagerdutyResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
@@ -3666,6 +3679,7 @@ export const getDestinationWebhook: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetPolicyError = InvalidRoute | PolicyNotFound | CloudflareOpError;
@@ -3685,6 +3699,7 @@ export const getPolicy: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetSilenceError =
@@ -3709,6 +3724,7 @@ export const getSilence: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type LinkDestinationPagerdutyError = InvalidRoute | CloudflareOpError;
@@ -3723,6 +3739,7 @@ export const linkDestinationPagerduty: API.OperationMethod<
   output: LinkDestinationPagerdutyResponse,
   errors: [InvalidRoute, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ListAvailableAlertsError = InvalidRoute | CloudflareOpError;
@@ -3737,6 +3754,7 @@ export const listAvailableAlerts: API.OperationMethod<
   output: ListAvailableAlertsResponse,
   errors: [InvalidRoute, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ListDestinationWebhooksError = CloudflareOpError;
@@ -3752,6 +3770,7 @@ export const listDestinationWebhooks: API.PaginatedOperationMethod<
     output: ListDestinationWebhooksResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
@@ -3770,6 +3789,7 @@ export const listHistories: API.PaginatedOperationMethod<
     output: ListHistoriesResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: {
       mode: "page",
       inputToken: "page",
@@ -3794,6 +3814,7 @@ export const listPolicies: API.PaginatedOperationMethod<
     output: ListPoliciesResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
@@ -3812,6 +3833,7 @@ export const listSilences: API.PaginatedOperationMethod<
     output: ListSilencesResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
@@ -3839,6 +3861,7 @@ export const updateDestinationWebhook: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type UpdatePolicyError =
@@ -3865,6 +3888,7 @@ export const updatePolicy: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type UpdateSilenceError =
@@ -3888,6 +3912,7 @@ export const updateSilence: API.PaginatedOperationMethod<
       CloudflareError,
     ],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,

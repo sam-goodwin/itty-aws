@@ -10,6 +10,9 @@ import {
 } from "../protocol.ts";
 import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
+import * as Retry from "../retry.ts";
+
+export type { CloudflareOpError, CloudflareOpContext };
 
 export type CreateRequestActionMode =
   | "simulate"
@@ -1344,6 +1347,7 @@ export const createRateLimit: API.OperationMethod<
   output: CreateRateLimitResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteRateLimitError = CloudflareOpError;
@@ -1358,6 +1362,7 @@ export const deleteRateLimit: API.OperationMethod<
   output: DeleteRateLimitResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type EditRateLimitError = CloudflareOpError;
@@ -1372,6 +1377,7 @@ export const editRateLimit: API.OperationMethod<
   output: EditRateLimitResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetRateLimitError = CloudflareOpError;
@@ -1386,6 +1392,7 @@ export const getRateLimit: API.OperationMethod<
   output: GetRateLimitResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ListRateLimitsError = CloudflareOpError;
@@ -1401,6 +1408,7 @@ export const listRateLimits: API.PaginatedOperationMethod<
     output: ListRateLimitsResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: {
       mode: "page",
       inputToken: "page",

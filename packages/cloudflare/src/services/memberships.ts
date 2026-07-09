@@ -8,6 +8,9 @@ import {
   type CloudflareOpContext,
 } from "../protocol.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
+import * as Retry from "../retry.ts";
+
+export type { CloudflareOpError, CloudflareOpContext };
 
 export interface DeleteMembershipRequest {
   /** Membership identifier tag. */
@@ -777,6 +780,7 @@ export const deleteMembership: API.OperationMethod<
   output: DeleteMembershipResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetMembershipError = CloudflareOpError;
@@ -791,6 +795,7 @@ export const getMembership: API.OperationMethod<
   output: GetMembershipResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ListMembershipsError = CloudflareOpError;
@@ -805,6 +810,7 @@ export const listMemberships: API.OperationMethod<
   output: ListMembershipsResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type PutMembershipError = CloudflareOpError;
@@ -819,4 +825,5 @@ export const putMembership: API.OperationMethod<
   output: PutMembershipResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));

@@ -10,6 +10,9 @@ import {
 } from "../protocol.ts";
 import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
+import * as Retry from "../retry.ts";
+
+export type { CloudflareOpError, CloudflareOpContext };
 
 export class CatalogSyncNotFound extends T.applyErrorMatchers(
   S.TaggedErrorClass<CatalogSyncNotFound>()("CatalogSyncNotFound", {
@@ -5502,6 +5505,7 @@ export const applyOnRamp: API.OperationMethod<
   output: ApplyOnRampResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type CreateCatalogSyncError =
@@ -5524,6 +5528,7 @@ export const createCatalogSync: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type CreateCloudIntegrationError =
@@ -5546,6 +5551,7 @@ export const createCloudIntegration: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type CreateOnRampError =
@@ -5568,6 +5574,7 @@ export const createOnRamp: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteCatalogSyncError =
@@ -5592,6 +5599,7 @@ export const deleteCatalogSync: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteCloudIntegrationError =
@@ -5616,6 +5624,7 @@ export const deleteCloudIntegration: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteOnRampError =
@@ -5640,6 +5649,7 @@ export const deleteOnRamp: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DiscoverAllCloudIntegrationError = CloudflareOpError;
@@ -5654,6 +5664,7 @@ export const discoverAllCloudIntegration: API.OperationMethod<
   output: DiscoverAllCloudIntegrationResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DiscoverCloudIntegrationError =
@@ -5676,6 +5687,7 @@ export const discoverCloudIntegration: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ExportOnRampError = CloudflareOpError;
@@ -5690,6 +5702,7 @@ export const exportOnRamp: API.OperationMethod<
   output: ExportOnRampResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ExportResourceError = CloudflareOpError;
@@ -5704,6 +5717,7 @@ export const exportResource: API.OperationMethod<
   output: ExportResourceResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetCatalogSyncError =
@@ -5728,6 +5742,7 @@ export const getCatalogSync: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetCloudIntegrationError =
@@ -5752,6 +5767,7 @@ export const getCloudIntegration: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetOnRampError =
@@ -5776,6 +5792,7 @@ export const getOnRamp: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetResourceError = CloudflareOpError;
@@ -5790,6 +5807,7 @@ export const getResource: API.OperationMethod<
   output: GetResourceResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type InitialSetupCloudIntegrationError = CloudflareOpError;
@@ -5804,6 +5822,7 @@ export const initialSetupCloudIntegration: API.OperationMethod<
   output: InitialSetupCloudIntegrationResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ListCatalogSyncPrebuiltPoliciesError =
@@ -5827,6 +5846,7 @@ export const listCatalogSyncPrebuiltPolicies: API.PaginatedOperationMethod<
       CloudflareError,
     ],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
@@ -5853,6 +5873,7 @@ export const listCatalogSyncs: API.PaginatedOperationMethod<
       CloudflareError,
     ],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
@@ -5879,6 +5900,7 @@ export const listCloudIntegrations: API.PaginatedOperationMethod<
       CloudflareError,
     ],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
@@ -5896,6 +5918,7 @@ export const listOnRampAddressSpaces: API.OperationMethod<
   output: ListOnRampAddressSpacesResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ListOnRampsError =
@@ -5919,6 +5942,7 @@ export const listOnRamps: API.PaginatedOperationMethod<
       CloudflareError,
     ],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
@@ -5937,6 +5961,7 @@ export const listResources: API.PaginatedOperationMethod<
     output: ListResourcesResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: {
       mode: "page",
       inputToken: "page",
@@ -5970,6 +5995,7 @@ export const patchCatalogSync: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type PatchCloudIntegrationError =
@@ -5994,6 +6020,7 @@ export const patchCloudIntegration: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type PatchOnRampError =
@@ -6018,6 +6045,7 @@ export const patchOnRamp: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type PatchOnRampAddressSpaceError = CloudflareOpError;
@@ -6032,6 +6060,7 @@ export const patchOnRampAddressSpace: API.OperationMethod<
   output: PatchOnRampAddressSpaceResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type PlanOnRampError = CloudflareOpError;
@@ -6046,6 +6075,7 @@ export const planOnRamp: API.OperationMethod<
   output: PlanOnRampResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type PolicyPreviewResourceError = CloudflareOpError;
@@ -6060,6 +6090,7 @@ export const policyPreviewResource: API.OperationMethod<
   output: PolicyPreviewResourceResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type PutOnRampAddressSpaceError = CloudflareOpError;
@@ -6074,6 +6105,7 @@ export const putOnRampAddressSpace: API.OperationMethod<
   output: PutOnRampAddressSpaceResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type RefreshCatalogSyncError =
@@ -6098,6 +6130,7 @@ export const refreshCatalogSync: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type UpdateCatalogSyncError =
@@ -6122,6 +6155,7 @@ export const updateCatalogSync: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type UpdateCloudIntegrationError =
@@ -6146,6 +6180,7 @@ export const updateCloudIntegration: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type UpdateOnRampError =
@@ -6170,4 +6205,5 @@ export const updateOnRamp: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));

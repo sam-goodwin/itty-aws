@@ -10,6 +10,9 @@ import {
 } from "../protocol.ts";
 import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
+import * as Retry from "../retry.ts";
+
+export type { CloudflareOpError, CloudflareOpContext };
 
 export class CallsAppNotFound extends T.applyErrorMatchers(
   S.TaggedErrorClass<CallsAppNotFound>()("CallsAppNotFound", {
@@ -515,6 +518,7 @@ export const createSfu: API.OperationMethod<
   output: CreateSfuResponse,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type CreateTurnError = Forbidden | CloudflareOpError;
@@ -529,6 +533,7 @@ export const createTurn: API.OperationMethod<
   output: CreateTurnResponse,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteSfuError = CallsAppNotFound | Forbidden | CloudflareOpError;
@@ -543,6 +548,7 @@ export const deleteSfu: API.OperationMethod<
   output: DeleteSfuResponse,
   errors: [CallsAppNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteTurnError = TurnKeyNotFound | Forbidden | CloudflareOpError;
@@ -557,6 +563,7 @@ export const deleteTurn: API.OperationMethod<
   output: DeleteTurnResponse,
   errors: [TurnKeyNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetSfuError = CallsAppNotFound | Forbidden | CloudflareOpError;
@@ -571,6 +578,7 @@ export const getSfu: API.OperationMethod<
   output: GetSfuResponse,
   errors: [CallsAppNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetTurnError = TurnKeyNotFound | Forbidden | CloudflareOpError;
@@ -585,6 +593,7 @@ export const getTurn: API.OperationMethod<
   output: GetTurnResponse,
   errors: [TurnKeyNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ListSfusError = CloudflareOpError;
@@ -600,6 +609,7 @@ export const listSfus: API.PaginatedOperationMethod<
     output: ListSfusResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
@@ -618,6 +628,7 @@ export const listTurns: API.PaginatedOperationMethod<
     output: ListTurnsResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
@@ -635,6 +646,7 @@ export const updateSfu: API.OperationMethod<
   output: UpdateSfuResponse,
   errors: [CallsAppNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type UpdateTurnError = TurnKeyNotFound | Forbidden | CloudflareOpError;
@@ -649,4 +661,5 @@ export const updateTurn: API.OperationMethod<
   output: UpdateTurnResponse,
   errors: [TurnKeyNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));

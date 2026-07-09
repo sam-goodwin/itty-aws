@@ -10,6 +10,9 @@ import {
 } from "../protocol.ts";
 import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
+import * as Retry from "../retry.ts";
+
+export type { CloudflareOpError, CloudflareOpContext };
 
 export class InvalidSinkConfig extends T.applyErrorMatchers(
   S.TaggedErrorClass<InvalidSinkConfig>()("InvalidSinkConfig", {
@@ -3270,6 +3273,7 @@ export const createPipeline: API.OperationMethod<
   output: CreatePipelineResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type CreateSinkError =
@@ -3294,6 +3298,7 @@ export const createSink: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type CreateStreamError =
@@ -3316,6 +3321,7 @@ export const createStream: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type CreateV1PipelineError =
@@ -3340,6 +3346,7 @@ export const createV1Pipeline: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeletePipelineError = PipelineNotExists | CloudflareOpError;
@@ -3354,6 +3361,7 @@ export const deletePipeline: API.OperationMethod<
   output: DeletePipelineResponse,
   errors: [PipelineNotExists, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteSinkError =
@@ -3378,6 +3386,7 @@ export const deleteSink: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteStreamError =
@@ -3404,6 +3413,7 @@ export const deleteStream: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteV1PipelineError = PipelineNotExists | CloudflareOpError;
@@ -3418,6 +3428,7 @@ export const deleteV1Pipeline: API.OperationMethod<
   output: DeleteV1PipelineResponse,
   errors: [PipelineNotExists, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetPipelineError = PipelineNotExists | CloudflareOpError;
@@ -3432,6 +3443,7 @@ export const getPipeline: API.OperationMethod<
   output: GetPipelineResponse,
   errors: [PipelineNotExists, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetSinkError = SinkNotFound | InvalidSinkId | CloudflareOpError;
@@ -3446,6 +3458,7 @@ export const getSink: API.OperationMethod<
   output: GetSinkResponse,
   errors: [SinkNotFound, InvalidSinkId, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetStreamError =
@@ -3468,6 +3481,7 @@ export const getStream: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetV1PipelineError = PipelineNotExists | CloudflareOpError;
@@ -3482,6 +3496,7 @@ export const getV1Pipeline: API.OperationMethod<
   output: GetV1PipelineResponse,
   errors: [PipelineNotExists, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ListPipelinesError = CloudflareOpError;
@@ -3496,6 +3511,7 @@ export const listPipelines: API.OperationMethod<
   output: ListPipelinesResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ListSinksError = CloudflareOpError;
@@ -3511,6 +3527,7 @@ export const listSinks: API.PaginatedOperationMethod<
     output: ListSinksResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: {
       mode: "page",
       inputToken: "page",
@@ -3535,6 +3552,7 @@ export const listStreams: API.PaginatedOperationMethod<
     output: ListStreamsResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: {
       mode: "page",
       inputToken: "page",
@@ -3559,6 +3577,7 @@ export const listV1Pipeline: API.PaginatedOperationMethod<
     output: ListV1PipelineResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: {
       mode: "page",
       inputToken: "page",
@@ -3582,6 +3601,7 @@ export const patchStream: API.OperationMethod<
   output: PatchStreamResponse,
   errors: [StreamNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type UpdatePipelineError = PipelineNotExists | CloudflareOpError;
@@ -3596,6 +3616,7 @@ export const updatePipeline: API.OperationMethod<
   output: UpdatePipelineResponse,
   errors: [PipelineNotExists, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ValidateSqlPipelineError =
@@ -3613,4 +3634,5 @@ export const validateSqlPipeline: API.OperationMethod<
   output: ValidateSqlPipelineResponse,
   errors: [TableNotFound, InvalidSql, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));

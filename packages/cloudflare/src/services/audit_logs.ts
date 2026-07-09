@@ -8,6 +8,9 @@ import {
   type CloudflareOpContext,
 } from "../protocol.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
+import * as Retry from "../retry.ts";
+
+export type { CloudflareOpError, CloudflareOpContext };
 
 export type ListRequestDirection = "desc" | "asc" | (string & {});
 export const ListRequestDirection = /*@__PURE__*/ S.String;
@@ -90,4 +93,5 @@ export const listAuditLogs: API.OperationMethod<
   output: ListAuditLogsResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));

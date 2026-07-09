@@ -10,6 +10,9 @@ import {
 } from "../protocol.ts";
 import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
+import * as Retry from "../retry.ts";
+
+export type { CloudflareOpError, CloudflareOpContext };
 
 export class AdvancedCertificateManagerRequired extends T.applyErrorMatchers(
   S.TaggedErrorClass<AdvancedCertificateManagerRequired>()(
@@ -2103,6 +2106,7 @@ export const automaticUpgraderGet: API.OperationMethod<
   output: AutomaticUpgraderGetResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type AutomaticUpgraderPatchError = CloudflareOpError;
@@ -2117,6 +2121,7 @@ export const automaticUpgraderPatch: API.OperationMethod<
   output: AutomaticUpgraderPatchResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type CreateAnalyzeError = CloudflareOpError;
@@ -2131,6 +2136,7 @@ export const createAnalyze: API.OperationMethod<
   output: CreateAnalyzeResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type CreateCertificatePackError =
@@ -2153,6 +2159,7 @@ export const createCertificatePack: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteCertificatePackError =
@@ -2175,6 +2182,7 @@ export const deleteCertificatePack: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetAutoOriginTlsKexError = CloudflareOpError;
@@ -2189,6 +2197,7 @@ export const getAutoOriginTlsKex: API.OperationMethod<
   output: GetAutoOriginTlsKexResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetCertificatePackError =
@@ -2211,6 +2220,7 @@ export const getCertificatePack: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetCertificatePackQuotaError = CloudflareOpError;
@@ -2225,6 +2235,7 @@ export const getCertificatePackQuota: API.OperationMethod<
   output: GetCertificatePackQuotaResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetUniversalSettingError = Forbidden | CloudflareOpError;
@@ -2239,6 +2250,7 @@ export const getUniversalSetting: API.OperationMethod<
   output: GetUniversalSettingResponse,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetVerificationError = CloudflareOpError;
@@ -2253,6 +2265,7 @@ export const getVerification: API.OperationMethod<
   output: GetVerificationResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ListCertificatePacksError = Forbidden | CloudflareOpError;
@@ -2268,6 +2281,7 @@ export const listCertificatePacks: API.PaginatedOperationMethod<
     output: ListCertificatePacksResponse,
     errors: [Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: {
       mode: "page",
       inputToken: "page",
@@ -2291,6 +2305,7 @@ export const patchAutoOriginTlsKex: API.OperationMethod<
   output: PatchAutoOriginTlsKexResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type PatchCertificatePackError =
@@ -2313,6 +2328,7 @@ export const patchCertificatePack: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type PatchUniversalSettingError = Forbidden | CloudflareOpError;
@@ -2327,6 +2343,7 @@ export const patchUniversalSetting: API.OperationMethod<
   output: PatchUniversalSettingResponse,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type PatchVerificationError = CloudflareOpError;
@@ -2341,4 +2358,5 @@ export const patchVerification: API.OperationMethod<
   output: PatchVerificationResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));

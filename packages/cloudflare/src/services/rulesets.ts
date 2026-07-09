@@ -8,6 +8,9 @@ import {
   type CloudflareOpContext,
 } from "../protocol.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
+import * as Retry from "../retry.ts";
+
+export type { CloudflareOpError, CloudflareOpContext };
 
 export interface CreateRequestRulesItem {
   BlockRuleObjectLastUpdatedVersionId10More__: unknown;
@@ -3650,6 +3653,7 @@ export const create: API.OperationMethod<
   output: CreateResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteError = CloudflareOpError;
@@ -3664,6 +3668,7 @@ export const Delete: API.OperationMethod<
   output: DeleteResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetError = CloudflareOpError;
@@ -3678,6 +3683,7 @@ export const get: API.OperationMethod<
   output: GetResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ListError = CloudflareOpError;
@@ -3692,6 +3698,7 @@ export const list: API.OperationMethod<
   output: ListResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type PhasesGetError = CloudflareOpError;
@@ -3706,6 +3713,7 @@ export const phasesGet: API.OperationMethod<
   output: PhasesGetResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type PhasesUpdateError = CloudflareOpError;
@@ -3720,6 +3728,7 @@ export const phasesUpdate: API.OperationMethod<
   output: PhasesUpdateResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type PhasesVersionsGetError = CloudflareOpError;
@@ -3734,6 +3743,7 @@ export const phasesVersionsGet: API.OperationMethod<
   output: PhasesVersionsGetResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type PhasesVersionsListError = CloudflareOpError;
@@ -3748,6 +3758,7 @@ export const phasesVersionsList: API.OperationMethod<
   output: PhasesVersionsListResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type RulesCreateError = CloudflareOpError;
@@ -3762,6 +3773,7 @@ export const rulesCreate: API.OperationMethod<
   output: RulesCreateResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type RulesDeleteError = CloudflareOpError;
@@ -3776,6 +3788,7 @@ export const rulesDelete: API.OperationMethod<
   output: RulesDeleteResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type RulesEditError = CloudflareOpError;
@@ -3790,6 +3803,7 @@ export const rulesEdit: API.OperationMethod<
   output: RulesEditResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type UpdateError = CloudflareOpError;
@@ -3804,6 +3818,7 @@ export const update: API.OperationMethod<
   output: UpdateResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type VersionsDeleteError = CloudflareOpError;
@@ -3818,6 +3833,7 @@ export const versionsDelete: API.OperationMethod<
   output: VersionsDeleteResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type VersionsGetError = CloudflareOpError;
@@ -3832,6 +3848,7 @@ export const versionsGet: API.OperationMethod<
   output: VersionsGetResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type VersionsListError = CloudflareOpError;
@@ -3846,4 +3863,5 @@ export const versionsList: API.OperationMethod<
   output: VersionsListResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));

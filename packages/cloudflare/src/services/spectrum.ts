@@ -10,6 +10,9 @@ import {
 } from "../protocol.ts";
 import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
+import * as Retry from "../retry.ts";
+
+export type { CloudflareOpError, CloudflareOpContext };
 
 export class Forbidden extends T.applyErrorMatchers(
   S.TaggedErrorClass<Forbidden>()("Forbidden", {
@@ -894,6 +897,7 @@ export const createApp: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteAppError =
@@ -916,6 +920,7 @@ export const deleteApp: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetAnalyticAggregateCurrentError = CloudflareOpError;
@@ -930,6 +935,7 @@ export const getAnalyticAggregateCurrent: API.OperationMethod<
   output: GetAnalyticAggregateCurrentResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetAnalyticEventBytimeError = CloudflareOpError;
@@ -944,6 +950,7 @@ export const getAnalyticEventBytime: API.OperationMethod<
   output: GetAnalyticEventBytimeResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetAnalyticEventSummaryError = CloudflareOpError;
@@ -958,6 +965,7 @@ export const getAnalyticEventSummary: API.OperationMethod<
   output: GetAnalyticEventSummaryResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetAppError = SpectrumAppNotFound | Forbidden | CloudflareOpError;
@@ -977,6 +985,7 @@ export const getApp: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ListAppsError = Forbidden | CloudflareOpError;
@@ -992,6 +1001,7 @@ export const listApps: API.PaginatedOperationMethod<
     output: ListAppsResponse,
     errors: [Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: {
       mode: "page",
       inputToken: "page",
@@ -1025,4 +1035,5 @@ export const updateApp: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));

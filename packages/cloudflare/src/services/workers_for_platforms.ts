@@ -10,6 +10,9 @@ import {
 } from "../protocol.ts";
 import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
+import * as Retry from "../retry.ts";
+
+export type { CloudflareOpError, CloudflareOpContext };
 
 export class D1DatabaseNotFound extends T.applyErrorMatchers(
   S.TaggedErrorClass<D1DatabaseNotFound>()("D1DatabaseNotFound", {
@@ -3427,6 +3430,7 @@ export const bulkUpdateDispatchNamespaceScriptSecrets: API.OperationMethod<
   output: BulkUpdateDispatchNamespaceScriptSecretsResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type CreateDispatchNamespaceError =
@@ -3449,6 +3453,7 @@ export const createDispatchNamespace: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type CreateDispatchNamespaceScriptAssetUploadError = CloudflareOpError;
@@ -3463,6 +3468,7 @@ export const createDispatchNamespaceScriptAssetUpload: API.OperationMethod<
   output: CreateDispatchNamespaceScriptAssetUploadResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteDispatchNamespaceError =
@@ -3485,6 +3491,7 @@ export const deleteDispatchNamespace: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteDispatchNamespaceScriptError =
@@ -3509,6 +3516,7 @@ export const deleteDispatchNamespaceScript: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteDispatchNamespaceScriptSecretError = CloudflareOpError;
@@ -3523,6 +3531,7 @@ export const deleteDispatchNamespaceScriptSecret: API.OperationMethod<
   output: DeleteDispatchNamespaceScriptSecretResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteDispatchNamespaceScriptTagError = CloudflareOpError;
@@ -3537,6 +3546,7 @@ export const deleteDispatchNamespaceScriptTag: API.OperationMethod<
   output: DeleteDispatchNamespaceScriptTagResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetDispatchNamespaceError =
@@ -3559,6 +3569,7 @@ export const getDispatchNamespace: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetDispatchNamespaceScriptError =
@@ -3583,6 +3594,7 @@ export const getDispatchNamespaceScript: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetDispatchNamespaceScriptBindingError = CloudflareOpError;
@@ -3598,6 +3610,7 @@ export const getDispatchNamespaceScriptBinding: API.PaginatedOperationMethod<
     output: GetDispatchNamespaceScriptBindingResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
@@ -3615,6 +3628,7 @@ export const getDispatchNamespaceScriptContent: API.OperationMethod<
   output: GetDispatchNamespaceScriptContentResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetDispatchNamespaceScriptSecretError = CloudflareOpError;
@@ -3629,6 +3643,7 @@ export const getDispatchNamespaceScriptSecret: API.OperationMethod<
   output: GetDispatchNamespaceScriptSecretResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetDispatchNamespaceScriptSettingError =
@@ -3653,6 +3668,7 @@ export const getDispatchNamespaceScriptSetting: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ListDispatchNamespacesError = CloudflareOpError;
@@ -3668,6 +3684,7 @@ export const listDispatchNamespaces: API.PaginatedOperationMethod<
     output: ListDispatchNamespacesResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
@@ -3686,6 +3703,7 @@ export const listDispatchNamespaceScriptSecrets: API.PaginatedOperationMethod<
     output: ListDispatchNamespaceScriptSecretsResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
@@ -3704,6 +3722,7 @@ export const listDispatchNamespaceScriptTags: API.PaginatedOperationMethod<
     output: ListDispatchNamespaceScriptTagsResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
@@ -3721,6 +3740,7 @@ export const patchDispatchNamespaceScriptSetting: API.OperationMethod<
   output: PatchDispatchNamespaceScriptSettingResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type PutDispatchNamespaceScriptError =
@@ -3763,6 +3783,7 @@ export const putDispatchNamespaceScript: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type PutDispatchNamespaceScriptContentError = CloudflareOpError;
@@ -3777,6 +3798,7 @@ export const putDispatchNamespaceScriptContent: API.OperationMethod<
   output: PutDispatchNamespaceScriptContentResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type PutDispatchNamespaceScriptSecretError = CloudflareOpError;
@@ -3791,6 +3813,7 @@ export const putDispatchNamespaceScriptSecret: API.OperationMethod<
   output: PutDispatchNamespaceScriptSecretResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type PutDispatchNamespaceScriptTagError = CloudflareOpError;
@@ -3806,6 +3829,7 @@ export const putDispatchNamespaceScriptTag: API.PaginatedOperationMethod<
     output: PutDispatchNamespaceScriptTagResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,

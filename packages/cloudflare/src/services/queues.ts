@@ -10,6 +10,9 @@ import {
 } from "../protocol.ts";
 import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
+import * as Retry from "../retry.ts";
+
+export type { CloudflareOpError, CloudflareOpContext };
 
 export class ConsumerAlreadyExists extends T.applyErrorMatchers(
   S.TaggedErrorClass<ConsumerAlreadyExists>()("ConsumerAlreadyExists", {
@@ -2481,6 +2484,7 @@ export const ackMessage: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type BulkPushMessagesError =
@@ -2505,6 +2509,7 @@ export const bulkPushMessages: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type CreateConsumerError =
@@ -2535,6 +2540,7 @@ export const createConsumer: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type CreateQueueError =
@@ -2559,6 +2565,7 @@ export const createQueue: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type CreateSubscriptionError =
@@ -2583,6 +2590,7 @@ export const createSubscription: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteConsumerError =
@@ -2609,6 +2617,7 @@ export const deleteConsumer: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteQueueError =
@@ -2633,6 +2642,7 @@ export const deleteQueue: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteSubscriptionError =
@@ -2655,6 +2665,7 @@ export const deleteSubscription: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetConsumerError =
@@ -2681,6 +2692,7 @@ export const getConsumer: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetMetricsQueueError = CloudflareOpError;
@@ -2695,6 +2707,7 @@ export const getMetricsQueue: API.OperationMethod<
   output: GetMetricsQueueResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetQueueError = QueueNotFound | InvalidRoute | CloudflareOpError;
@@ -2709,6 +2722,7 @@ export const getQueue: API.OperationMethod<
   output: GetQueueResponse,
   errors: [QueueNotFound, InvalidRoute, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetSubscriptionError =
@@ -2733,6 +2747,7 @@ export const getSubscription: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ListConsumersError =
@@ -2758,6 +2773,7 @@ export const listConsumers: API.PaginatedOperationMethod<
       CloudflareError,
     ],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
@@ -2776,6 +2792,7 @@ export const listQueues: API.PaginatedOperationMethod<
     output: ListQueuesResponse,
     errors: [InvalidRoute, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
@@ -2794,6 +2811,7 @@ export const listSubscriptions: API.PaginatedOperationMethod<
     output: ListSubscriptionsResponse,
     errors: [Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: {
       mode: "page",
       inputToken: "page",
@@ -2817,6 +2835,7 @@ export const patchQueue: API.OperationMethod<
   output: PatchQueueResponse,
   errors: [QueueNotFound, InvalidRoute, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type PatchSubscriptionError =
@@ -2841,6 +2860,7 @@ export const patchSubscription: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type PullMessageError =
@@ -2867,6 +2887,7 @@ export const pullMessage: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type PushMessageError =
@@ -2891,6 +2912,7 @@ export const pushMessage: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type StartPurgeError = InvalidQueueId | InvalidRoute | CloudflareOpError;
@@ -2910,6 +2932,7 @@ export const startPurge: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type StatusPurgeError =
@@ -2932,6 +2955,7 @@ export const statusPurge: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type UpdateConsumerError =
@@ -2962,6 +2986,7 @@ export const updateConsumer: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type UpdateQueueError =
@@ -2986,4 +3011,5 @@ export const updateQueue: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));

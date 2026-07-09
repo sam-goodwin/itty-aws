@@ -8,6 +8,9 @@ import {
   type CloudflareOpContext,
 } from "../protocol.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
+import * as Retry from "../retry.ts";
+
+export type { CloudflareOpError, CloudflareOpContext };
 
 export class Forbidden extends T.applyErrorMatchers(
   S.TaggedErrorClass<Forbidden>()("Forbidden", {
@@ -372,6 +375,7 @@ export const deleteManagedTransform: API.OperationMethod<
   output: DeleteManagedTransformResponse,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ListManagedTransformsError = Forbidden | CloudflareOpError;
@@ -386,6 +390,7 @@ export const listManagedTransforms: API.OperationMethod<
   output: ListManagedTransformsResponse,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type PatchManagedTransformError = Forbidden | CloudflareOpError;
@@ -400,4 +405,5 @@ export const patchManagedTransform: API.OperationMethod<
   output: PatchManagedTransformResponse,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));

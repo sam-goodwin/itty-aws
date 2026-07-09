@@ -10,6 +10,9 @@ import {
 } from "../protocol.ts";
 import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
+import * as Retry from "../retry.ts";
+
+export type { CloudflareOpError, CloudflareOpContext };
 
 export interface CreateRelayRequest {
   /** Cloudflare account identifier. */
@@ -588,6 +591,7 @@ export const createRelay: API.OperationMethod<
   output: CreateRelayResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteRelayError = CloudflareOpError;
@@ -602,6 +606,7 @@ export const deleteRelay: API.OperationMethod<
   output: DeleteRelayResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetRelayError = CloudflareOpError;
@@ -616,6 +621,7 @@ export const getRelay: API.OperationMethod<
   output: GetRelayResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ListRelaysError = CloudflareOpError;
@@ -631,6 +637,7 @@ export const listRelays: API.PaginatedOperationMethod<
     output: ListRelaysResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
@@ -648,6 +655,7 @@ export const rotateRelayToken: API.OperationMethod<
   output: RotateRelayTokenResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type UpdateRelayError = CloudflareOpError;
@@ -662,4 +670,5 @@ export const updateRelay: API.OperationMethod<
   output: UpdateRelayResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));

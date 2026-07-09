@@ -10,6 +10,9 @@ import {
 } from "../protocol.ts";
 import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
+import * as Retry from "../retry.ts";
+
+export type { CloudflareOpError, CloudflareOpContext };
 
 export class Forbidden extends T.applyErrorMatchers(
   S.TaggedErrorClass<Forbidden>()("Forbidden", {
@@ -884,6 +887,7 @@ export const createHostname: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type CreateHostnameIpfsUniversalPathContentListEntryError =
@@ -899,6 +903,7 @@ export const createHostnameIpfsUniversalPathContentListEntry: API.OperationMetho
   output: CreateHostnameIpfsUniversalPathContentListEntryResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteHostnameError =
@@ -921,6 +926,7 @@ export const deleteHostname: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteHostnameIpfsUniversalPathContentListEntryError =
@@ -936,6 +942,7 @@ export const deleteHostnameIpfsUniversalPathContentListEntry: API.OperationMetho
   output: DeleteHostnameIpfsUniversalPathContentListEntryResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetHostnameError =
@@ -958,6 +965,7 @@ export const getHostname: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetHostnameIpfsUniversalPathContentListError =
@@ -982,6 +990,7 @@ export const getHostnameIpfsUniversalPathContentList: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetHostnameIpfsUniversalPathContentListEntryError =
@@ -997,6 +1006,7 @@ export const getHostnameIpfsUniversalPathContentListEntry: API.OperationMethod<
   output: GetHostnameIpfsUniversalPathContentListEntryResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ListHostnameIpfsUniversalPathContentListEntriesError =
@@ -1021,6 +1031,7 @@ export const listHostnameIpfsUniversalPathContentListEntries: API.OperationMetho
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ListHostnamesError = Forbidden | CloudflareOpError;
@@ -1036,6 +1047,7 @@ export const listHostnames: API.PaginatedOperationMethod<
     output: ListHostnamesResponse,
     errors: [Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
@@ -1061,6 +1073,7 @@ export const patchHostname: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type PutHostnameIpfsUniversalPathContentListError =
@@ -1085,6 +1098,7 @@ export const putHostnameIpfsUniversalPathContentList: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type UpdateHostnameIpfsUniversalPathContentListEntryError =
@@ -1100,4 +1114,5 @@ export const updateHostnameIpfsUniversalPathContentListEntry: API.OperationMetho
   output: UpdateHostnameIpfsUniversalPathContentListEntryResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));

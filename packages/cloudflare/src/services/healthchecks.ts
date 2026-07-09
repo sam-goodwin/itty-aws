@@ -10,6 +10,9 @@ import {
 } from "../protocol.ts";
 import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
+import * as Retry from "../retry.ts";
+
+export type { CloudflareOpError, CloudflareOpContext };
 
 export class Forbidden extends T.applyErrorMatchers(
   S.TaggedErrorClass<Forbidden>()("Forbidden", {
@@ -1838,6 +1841,7 @@ export const createHealthcheck: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type CreatePreviewError = CloudflareOpError;
@@ -1852,6 +1856,7 @@ export const createPreview: API.OperationMethod<
   output: CreatePreviewResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteHealthcheckError =
@@ -1874,6 +1879,7 @@ export const deleteHealthcheck: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeletePreviewError = CloudflareOpError;
@@ -1888,6 +1894,7 @@ export const deletePreview: API.OperationMethod<
   output: DeletePreviewResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetHealthcheckError =
@@ -1910,6 +1917,7 @@ export const getHealthcheck: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetPreviewError = CloudflareOpError;
@@ -1924,6 +1932,7 @@ export const getPreview: API.OperationMethod<
   output: GetPreviewResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ListHealthchecksError = Forbidden | CloudflareOpError;
@@ -1939,6 +1948,7 @@ export const listHealthchecks: API.PaginatedOperationMethod<
     output: ListHealthchecksResponse,
     errors: [Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: {
       mode: "page",
       inputToken: "page",
@@ -1962,6 +1972,7 @@ export const patchHealthcheck: API.OperationMethod<
   output: PatchHealthcheckResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type UpdateHealthcheckError =
@@ -1984,4 +1995,5 @@ export const updateHealthcheck: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));

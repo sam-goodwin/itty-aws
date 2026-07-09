@@ -10,6 +10,9 @@ import {
 } from "../protocol.ts";
 import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
+import * as Retry from "../retry.ts";
+
+export type { CloudflareOpError, CloudflareOpContext };
 
 export class Forbidden extends T.applyErrorMatchers(
   S.TaggedErrorClass<Forbidden>()("Forbidden", {
@@ -1299,6 +1302,7 @@ export const createPolicy: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeletePolicyError = PolicyNotFound | Forbidden | CloudflareOpError;
@@ -1313,6 +1317,7 @@ export const deletePolicy: API.OperationMethod<
   output: DeletePolicyResponse,
   errors: [PolicyNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetConnectionError = CloudflareOpError;
@@ -1327,6 +1332,7 @@ export const getConnection: API.OperationMethod<
   output: GetConnectionResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetCookyError = CloudflareOpError;
@@ -1341,6 +1347,7 @@ export const getCooky: API.OperationMethod<
   output: GetCookyResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetPageShieldError = Forbidden | CloudflareOpError;
@@ -1355,6 +1362,7 @@ export const getPageShield: API.OperationMethod<
   output: GetPageShieldResponse,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetPolicyError = PolicyNotFound | Forbidden | CloudflareOpError;
@@ -1369,6 +1377,7 @@ export const getPolicy: API.OperationMethod<
   output: GetPolicyResponse,
   errors: [PolicyNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetScriptError = CloudflareOpError;
@@ -1383,6 +1392,7 @@ export const getScript: API.OperationMethod<
   output: GetScriptResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ListConnectionsError = CloudflareOpError;
@@ -1398,6 +1408,7 @@ export const listConnections: API.PaginatedOperationMethod<
     output: ListConnectionsResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
@@ -1416,6 +1427,7 @@ export const listCookies: API.PaginatedOperationMethod<
     output: ListCookiesResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
@@ -1434,6 +1446,7 @@ export const listPolicies: API.PaginatedOperationMethod<
     output: ListPoliciesResponse,
     errors: [Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
@@ -1452,6 +1465,7 @@ export const listScripts: API.PaginatedOperationMethod<
     output: ListScriptsResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
@@ -1469,6 +1483,7 @@ export const putPageShield: API.OperationMethod<
   output: PutPageShieldResponse,
   errors: [NotEntitled, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type UpdatePolicyError = PolicyNotFound | Forbidden | CloudflareOpError;
@@ -1483,4 +1498,5 @@ export const updatePolicy: API.OperationMethod<
   output: UpdatePolicyResponse,
   errors: [PolicyNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));

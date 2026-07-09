@@ -10,6 +10,9 @@ import {
 } from "../protocol.ts";
 import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
+import * as Retry from "../retry.ts";
+
+export type { CloudflareOpError, CloudflareOpContext };
 
 export class Forbidden extends T.applyErrorMatchers(
   S.TaggedErrorClass<Forbidden>()("Forbidden", {
@@ -7812,6 +7815,7 @@ export const bulkPatchPools: API.PaginatedOperationMethod<
     output: BulkPatchPoolsResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
@@ -7837,6 +7841,7 @@ export const createLoadBalancer: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type CreateMonitorError =
@@ -7859,6 +7864,7 @@ export const createMonitor: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type CreateMonitorGroupError =
@@ -7881,6 +7887,7 @@ export const createMonitorGroup: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type CreateMonitorPreviewError = CloudflareOpError;
@@ -7895,6 +7902,7 @@ export const createMonitorPreview: API.OperationMethod<
   output: CreateMonitorPreviewResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type CreatePoolError = PoolAccessFailed | Forbidden | CloudflareOpError;
@@ -7909,6 +7917,7 @@ export const createPool: API.OperationMethod<
   output: CreatePoolResponse,
   errors: [PoolAccessFailed, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type CreatePoolHealthError = CloudflareOpError;
@@ -7923,6 +7932,7 @@ export const createPoolHealth: API.OperationMethod<
   output: CreatePoolHealthResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteLoadBalancerError =
@@ -7945,6 +7955,7 @@ export const deleteLoadBalancer: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteMonitorError =
@@ -7969,6 +7980,7 @@ export const deleteMonitor: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteMonitorGroupError =
@@ -7993,6 +8005,7 @@ export const deleteMonitorGroup: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeletePoolError =
@@ -8017,6 +8030,7 @@ export const deletePool: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetLoadBalancerError =
@@ -8039,6 +8053,7 @@ export const getLoadBalancer: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetMonitorError = MonitorNotFound | Forbidden | CloudflareOpError;
@@ -8053,6 +8068,7 @@ export const getMonitor: API.OperationMethod<
   output: GetMonitorResponse,
   errors: [MonitorNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetMonitorGroupError =
@@ -8075,6 +8091,7 @@ export const getMonitorGroup: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetMonitorGroupReferenceError = CloudflareOpError;
@@ -8090,6 +8107,7 @@ export const getMonitorGroupReference: API.PaginatedOperationMethod<
     output: GetMonitorGroupReferenceResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
@@ -8108,6 +8126,7 @@ export const getMonitorReference: API.PaginatedOperationMethod<
     output: GetMonitorReferenceResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
@@ -8125,6 +8144,7 @@ export const getPool: API.OperationMethod<
   output: GetPoolResponse,
   errors: [PoolNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetPoolHealthError = CloudflareOpError;
@@ -8139,6 +8159,7 @@ export const getPoolHealth: API.OperationMethod<
   output: GetPoolHealthResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetPoolReferenceError = CloudflareOpError;
@@ -8154,6 +8175,7 @@ export const getPoolReference: API.PaginatedOperationMethod<
     output: GetPoolReferenceResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
@@ -8171,6 +8193,7 @@ export const getPreview: API.OperationMethod<
   output: GetPreviewResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetRegionError = CloudflareOpError;
@@ -8185,6 +8208,7 @@ export const getRegion: API.OperationMethod<
   output: GetRegionResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ListLoadBalancersError = CloudflareOpError;
@@ -8200,6 +8224,7 @@ export const listLoadBalancers: API.PaginatedOperationMethod<
     output: ListLoadBalancersResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
@@ -8218,6 +8243,7 @@ export const listMonitorGroups: API.PaginatedOperationMethod<
     output: ListMonitorGroupsResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
@@ -8236,6 +8262,7 @@ export const listMonitors: API.PaginatedOperationMethod<
     output: ListMonitorsResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
@@ -8254,6 +8281,7 @@ export const listPools: API.PaginatedOperationMethod<
     output: ListPoolsResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
@@ -8271,6 +8299,7 @@ export const listRegions: API.OperationMethod<
   output: ListRegionsResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ListSearchesError = CloudflareOpError;
@@ -8285,6 +8314,7 @@ export const listSearches: API.OperationMethod<
   output: ListSearchesResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type PatchLoadBalancerError = CloudflareOpError;
@@ -8299,6 +8329,7 @@ export const patchLoadBalancer: API.OperationMethod<
   output: PatchLoadBalancerResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type PatchMonitorError = CloudflareOpError;
@@ -8313,6 +8344,7 @@ export const patchMonitor: API.OperationMethod<
   output: PatchMonitorResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type PatchMonitorGroupError = CloudflareOpError;
@@ -8327,6 +8359,7 @@ export const patchMonitorGroup: API.OperationMethod<
   output: PatchMonitorGroupResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type PatchPoolError = CloudflareOpError;
@@ -8341,6 +8374,7 @@ export const patchPool: API.OperationMethod<
   output: PatchPoolResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type UpdateLoadBalancerError =
@@ -8365,6 +8399,7 @@ export const updateLoadBalancer: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type UpdateMonitorError =
@@ -8389,6 +8424,7 @@ export const updateMonitor: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type UpdateMonitorGroupError =
@@ -8413,6 +8449,7 @@ export const updateMonitorGroup: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type UpdatePoolError =
@@ -8437,4 +8474,5 @@ export const updatePool: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));

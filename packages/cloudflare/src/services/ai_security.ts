@@ -8,6 +8,9 @@ import {
   type CloudflareOpContext,
 } from "../protocol.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
+import * as Retry from "../retry.ts";
+
+export type { CloudflareOpError, CloudflareOpContext };
 
 export class AiSecurityNotEntitled extends T.applyErrorMatchers(
   S.TaggedErrorClass<AiSecurityNotEntitled>()("AiSecurityNotEntitled", {
@@ -249,6 +252,7 @@ export const getAiSecurity: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetCustomTopicError =
@@ -273,6 +277,7 @@ export const getCustomTopic: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type PutAiSecurityError =
@@ -297,6 +302,7 @@ export const putAiSecurity: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type PutCustomTopicError =
@@ -321,4 +327,5 @@ export const putCustomTopic: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));

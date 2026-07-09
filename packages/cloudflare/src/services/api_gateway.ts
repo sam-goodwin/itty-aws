@@ -10,6 +10,9 @@ import {
 } from "../protocol.ts";
 import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
+import * as Retry from "../retry.ts";
+
+export type { CloudflareOpError, CloudflareOpContext };
 
 export class Forbidden extends T.applyErrorMatchers(
   S.TaggedErrorClass<Forbidden>()("Forbidden", {
@@ -3854,6 +3857,7 @@ export const bulkCreateLabelUsers: API.PaginatedOperationMethod<
       CloudflareError,
     ],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
@@ -3872,6 +3876,7 @@ export const bulkCreateOperationLabels: API.PaginatedOperationMethod<
     output: BulkCreateOperationLabelsResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
@@ -3890,6 +3895,7 @@ export const bulkCreateOperations: API.PaginatedOperationMethod<
     output: BulkCreateOperationsResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
@@ -3908,6 +3914,7 @@ export const bulkDeleteLabelUsers: API.PaginatedOperationMethod<
     output: BulkDeleteLabelUsersResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
@@ -3926,6 +3933,7 @@ export const bulkDeleteOperationLabels: API.PaginatedOperationMethod<
     output: BulkDeleteOperationLabelsResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
@@ -3945,6 +3953,7 @@ export const bulkDeleteOperations: API.OperationMethod<
   output: BulkDeleteOperationsResponse,
   errors: [InvalidObjectIdentifier, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type BulkPatchDiscoveryOperationsError =
@@ -3967,6 +3976,7 @@ export const bulkPatchDiscoveryOperations: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type BulkUpdateOperationLabelsError = CloudflareOpError;
@@ -3982,6 +3992,7 @@ export const bulkUpdateOperationLabels: API.PaginatedOperationMethod<
     output: BulkUpdateOperationLabelsResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
@@ -4001,6 +4012,7 @@ export const createExpressionTemplateFallthrough: API.OperationMethod<
   output: CreateExpressionTemplateFallthroughResponse,
   errors: [InvalidObjectIdentifier, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type CreateOperationError =
@@ -4023,6 +4035,7 @@ export const createOperation: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type CreateOperationLabelError = CloudflareOpError;
@@ -4037,6 +4050,7 @@ export const createOperationLabel: API.OperationMethod<
   output: CreateOperationLabelResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type CreateUserSchemaError =
@@ -4059,6 +4073,7 @@ export const createUserSchema: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteLabelUserError =
@@ -4076,6 +4091,7 @@ export const deleteLabelUser: API.OperationMethod<
   output: DeleteLabelUserResponse,
   errors: [LabelNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteOperationError =
@@ -4100,6 +4116,7 @@ export const deleteOperation: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteOperationLabelError = CloudflareOpError;
@@ -4114,6 +4131,7 @@ export const deleteOperationLabel: API.OperationMethod<
   output: DeleteOperationLabelResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteUserSchemaError =
@@ -4138,6 +4156,7 @@ export const deleteUserSchema: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetConfigurationError =
@@ -4162,6 +4181,7 @@ export const getConfiguration: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetDiscoveryError =
@@ -4184,6 +4204,7 @@ export const getDiscovery: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetLabelManagedError = CloudflareOpError;
@@ -4198,6 +4219,7 @@ export const getLabelManaged: API.OperationMethod<
   output: GetLabelManagedResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetLabelUserError = LabelNotFound | Forbidden | CloudflareOpError;
@@ -4212,6 +4234,7 @@ export const getLabelUser: API.OperationMethod<
   output: GetLabelUserResponse,
   errors: [LabelNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetOperationError =
@@ -4236,6 +4259,7 @@ export const getOperation: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetOperationSchemaValidationError =
@@ -4258,6 +4282,7 @@ export const getOperationSchemaValidation: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetSettingSchemaValidationError =
@@ -4274,6 +4299,7 @@ export const getSettingSchemaValidation: API.OperationMethod<
   output: GetSettingSchemaValidationResponse,
   errors: [InvalidObjectIdentifier, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetUserSchemaError =
@@ -4298,6 +4324,7 @@ export const getUserSchema: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ListDiscoveryOperationsError = CloudflareOpError;
@@ -4313,6 +4340,7 @@ export const listDiscoveryOperations: API.PaginatedOperationMethod<
     output: ListDiscoveryOperationsResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: {
       mode: "page",
       inputToken: "page",
@@ -4347,6 +4375,7 @@ export const listLabels: API.PaginatedOperationMethod<
       CloudflareError,
     ],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: {
       mode: "page",
       inputToken: "page",
@@ -4371,6 +4400,7 @@ export const listOperations: API.PaginatedOperationMethod<
     output: ListOperationsResponse,
     errors: [Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: {
       mode: "page",
       inputToken: "page",
@@ -4394,6 +4424,7 @@ export const listSchemas: API.OperationMethod<
   output: ListSchemasResponse,
   errors: [InvalidObjectIdentifier, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ListUserSchemaHostsError = CloudflareOpError;
@@ -4409,6 +4440,7 @@ export const listUserSchemaHosts: API.PaginatedOperationMethod<
     output: ListUserSchemaHostsResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: {
       mode: "page",
       inputToken: "page",
@@ -4433,6 +4465,7 @@ export const listUserSchemaOperations: API.PaginatedOperationMethod<
     output: ListUserSchemaOperationsResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: {
       mode: "page",
       inputToken: "page",
@@ -4457,6 +4490,7 @@ export const listUserSchemas: API.PaginatedOperationMethod<
     output: ListUserSchemasResponse,
     errors: [ZonePurged, Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: {
       mode: "page",
       inputToken: "page",
@@ -4480,6 +4514,7 @@ export const patchLabelUser: API.OperationMethod<
   output: PatchLabelUserResponse,
   errors: [LabelNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type PatchOperationSchemaValidationError =
@@ -4496,6 +4531,7 @@ export const patchOperationSchemaValidation: API.OperationMethod<
   output: PatchOperationSchemaValidationResponse,
   errors: [InvalidObjectIdentifier, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type PatchSettingSchemaValidationError =
@@ -4512,6 +4548,7 @@ export const patchSettingSchemaValidation: API.OperationMethod<
   output: PatchSettingSchemaValidationResponse,
   errors: [InvalidObjectIdentifier, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type PatchUserSchemaError =
@@ -4536,6 +4573,7 @@ export const patchUserSchema: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type PutConfigurationError =
@@ -4560,6 +4598,7 @@ export const putConfiguration: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type PutLabelManagedResourceOperationError = CloudflareOpError;
@@ -4574,6 +4613,7 @@ export const putLabelManagedResourceOperation: API.OperationMethod<
   output: PutLabelManagedResourceOperationResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type PutLabelUserError = LabelNotFound | CloudflareOpError;
@@ -4588,6 +4628,7 @@ export const putLabelUser: API.OperationMethod<
   output: PutLabelUserResponse,
   errors: [LabelNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type PutLabelUserResourceOperationError = CloudflareOpError;
@@ -4602,6 +4643,7 @@ export const putLabelUserResourceOperation: API.OperationMethod<
   output: PutLabelUserResourceOperationResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type PutOperationSchemaValidationError =
@@ -4624,6 +4666,7 @@ export const putOperationSchemaValidation: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type PutSettingSchemaValidationError =
@@ -4640,6 +4683,7 @@ export const putSettingSchemaValidation: API.OperationMethod<
   output: PutSettingSchemaValidationResponse,
   errors: [InvalidObjectIdentifier, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type UpdateOperationLabelError = CloudflareOpError;
@@ -4654,4 +4698,5 @@ export const updateOperationLabel: API.OperationMethod<
   output: UpdateOperationLabelResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));

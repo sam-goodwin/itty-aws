@@ -10,6 +10,9 @@ import {
 } from "../protocol.ts";
 import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
+import * as Retry from "../retry.ts";
+
+export type { CloudflareOpError, CloudflareOpContext };
 
 export class InvalidAccountId extends T.applyErrorMatchers(
   S.TaggedErrorClass<InvalidAccountId>()("InvalidAccountId", {
@@ -904,6 +907,7 @@ export const bulkDeleteStoreSecrets: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type CreateStoreError = CloudflareOpError;
@@ -918,6 +922,7 @@ export const createStore: API.OperationMethod<
   output: CreateStoreResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type CreateStoreSecretError =
@@ -947,6 +952,7 @@ export const createStoreSecret: API.PaginatedOperationMethod<
       CloudflareError,
     ],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
@@ -974,6 +980,7 @@ export const deleteStore: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteStoreSecretError =
@@ -1000,6 +1007,7 @@ export const deleteStoreSecret: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DuplicateStoreSecretError =
@@ -1032,6 +1040,7 @@ export const duplicateStoreSecret: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetQuotaError = InvalidAccountId | CloudflareOpError;
@@ -1046,6 +1055,7 @@ export const getQuota: API.OperationMethod<
   output: GetQuotaResponse,
   errors: [InvalidAccountId, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetStoreError = CloudflareOpError;
@@ -1060,6 +1070,7 @@ export const getStore: API.OperationMethod<
   output: GetStoreResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetStoreSecretError =
@@ -1086,6 +1097,7 @@ export const getStoreSecret: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ListStoresError = InvalidAccountId | CloudflareOpError;
@@ -1101,6 +1113,7 @@ export const listStores: API.PaginatedOperationMethod<
     output: ListStoresResponse,
     errors: [InvalidAccountId, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: {
       mode: "page",
       inputToken: "page",
@@ -1133,6 +1146,7 @@ export const listStoreSecrets: API.PaginatedOperationMethod<
       CloudflareError,
     ],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: {
       mode: "page",
       inputToken: "page",
@@ -1168,4 +1182,5 @@ export const patchStoreSecret: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));

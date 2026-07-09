@@ -10,6 +10,9 @@ import {
 } from "../protocol.ts";
 import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
+import * as Retry from "../retry.ts";
+
+export type { CloudflareOpError, CloudflareOpContext };
 
 export class Forbidden extends T.applyErrorMatchers(
   S.TaggedErrorClass<Forbidden>()("Forbidden", {
@@ -3387,6 +3390,7 @@ export const createEvent: API.OperationMethod<
   output: CreateEventResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type CreateRuleError = CloudflareOpError;
@@ -3402,6 +3406,7 @@ export const createRule: API.PaginatedOperationMethod<
     output: CreateRuleResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
@@ -3422,6 +3427,7 @@ export const createWaitingRoom: API.OperationMethod<
   output: CreateWaitingRoomResponse,
   errors: [ZoneNotEntitled, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteEventError = CloudflareOpError;
@@ -3436,6 +3442,7 @@ export const deleteEvent: API.OperationMethod<
   output: DeleteEventResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteRuleError = CloudflareOpError;
@@ -3451,6 +3458,7 @@ export const deleteRule: API.PaginatedOperationMethod<
     output: DeleteRuleResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
@@ -3476,6 +3484,7 @@ export const deleteWaitingRoom: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetEventError = CloudflareOpError;
@@ -3490,6 +3499,7 @@ export const getEvent: API.OperationMethod<
   output: GetEventResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetEventDetailError = CloudflareOpError;
@@ -3504,6 +3514,7 @@ export const getEventDetail: API.OperationMethod<
   output: GetEventDetailResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetRuleError = CloudflareOpError;
@@ -3519,6 +3530,7 @@ export const getRule: API.PaginatedOperationMethod<
     output: GetRuleResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
@@ -3536,6 +3548,7 @@ export const getSetting: API.OperationMethod<
   output: GetSettingResponse,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetStatusError = CloudflareOpError;
@@ -3550,6 +3563,7 @@ export const getStatus: API.OperationMethod<
   output: GetStatusResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetWaitingRoomError =
@@ -3572,6 +3586,7 @@ export const getWaitingRoom: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ListError = CloudflareOpError;
@@ -3586,6 +3601,7 @@ export const list: API.OperationMethod<
   output: ListResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ListEventsError = CloudflareOpError;
@@ -3601,6 +3617,7 @@ export const listEvents: API.PaginatedOperationMethod<
     output: ListEventsResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: {
       mode: "page",
       inputToken: "page",
@@ -3624,6 +3641,7 @@ export const patchEvent: API.OperationMethod<
   output: PatchEventResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type PatchRuleError = CloudflareOpError;
@@ -3639,6 +3657,7 @@ export const patchRule: API.PaginatedOperationMethod<
     output: PatchRuleResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
@@ -3656,6 +3675,7 @@ export const patchSetting: API.OperationMethod<
   output: PatchSettingResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type PatchWaitingRoomError = CloudflareOpError;
@@ -3670,6 +3690,7 @@ export const patchWaitingRoom: API.OperationMethod<
   output: PatchWaitingRoomResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type PreviewPageError = CloudflareOpError;
@@ -3684,6 +3705,7 @@ export const previewPage: API.OperationMethod<
   output: PreviewPageResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type PutSettingError = ZoneNotEntitled | Forbidden | CloudflareOpError;
@@ -3698,6 +3720,7 @@ export const putSetting: API.OperationMethod<
   output: PutSettingResponse,
   errors: [ZoneNotEntitled, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type UpdateEventError = CloudflareOpError;
@@ -3712,6 +3735,7 @@ export const updateEvent: API.OperationMethod<
   output: UpdateEventResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type UpdateRuleError = CloudflareOpError;
@@ -3727,6 +3751,7 @@ export const updateRule: API.PaginatedOperationMethod<
     output: UpdateRuleResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
@@ -3754,4 +3779,5 @@ export const updateWaitingRoom: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));

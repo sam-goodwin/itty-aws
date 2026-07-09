@@ -10,6 +10,9 @@ import {
 } from "../protocol.ts";
 import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
+import * as Retry from "../retry.ts";
+
+export type { CloudflareOpError, CloudflareOpContext };
 
 export class CustomNameserverSetNotFound extends T.applyErrorMatchers(
   S.TaggedErrorClass<CustomNameserverSetNotFound>()(
@@ -4904,6 +4907,7 @@ export const createEnvironment: API.OperationMethod<
   output: CreateEnvironmentResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type CreateHoldError =
@@ -4928,6 +4932,7 @@ export const createHold: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type CreateSubscriptionError = CloudflareOpError;
@@ -4942,6 +4947,7 @@ export const createSubscription: API.OperationMethod<
   output: CreateSubscriptionResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type CreateZoneError =
@@ -4970,6 +4976,7 @@ export const createZone: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteEnvironmentError = CloudflareOpError;
@@ -4984,6 +4991,7 @@ export const deleteEnvironment: API.OperationMethod<
   output: DeleteEnvironmentResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteHoldError =
@@ -5006,6 +5014,7 @@ export const deleteHold: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteZoneError = InvalidZoneIdentifier | CloudflareOpError;
@@ -5020,6 +5029,7 @@ export const deleteZone: API.OperationMethod<
   output: DeleteZoneResponse,
   errors: [InvalidZoneIdentifier, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetCtAlertingError = CloudflareOpError;
@@ -5034,6 +5044,7 @@ export const getCtAlerting: API.OperationMethod<
   output: GetCtAlertingResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetCustomNameserverError =
@@ -5056,6 +5067,7 @@ export const getCustomNameserver: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetHoldError =
@@ -5078,6 +5090,7 @@ export const getHold: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetPlanError = CloudflareOpError;
@@ -5092,6 +5105,7 @@ export const getPlan: API.OperationMethod<
   output: GetPlanResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetRatePlanError = CloudflareOpError;
@@ -5107,6 +5121,7 @@ export const getRatePlan: API.PaginatedOperationMethod<
     output: GetRatePlanResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
@@ -5132,6 +5147,7 @@ export const getSetting: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetSubscriptionError = CloudflareOpError;
@@ -5146,6 +5162,7 @@ export const getSubscription: API.OperationMethod<
   output: GetSubscriptionResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetZoneError = InvalidZoneIdentifier | CloudflareOpError;
@@ -5160,6 +5177,7 @@ export const getZone: API.OperationMethod<
   output: GetZoneResponse,
   errors: [InvalidZoneIdentifier, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ListEnvironmentsError = CloudflareOpError;
@@ -5174,6 +5192,7 @@ export const listEnvironments: API.OperationMethod<
   output: ListEnvironmentsResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ListPlansError = CloudflareOpError;
@@ -5189,6 +5208,7 @@ export const listPlans: API.PaginatedOperationMethod<
     output: ListPlansResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
@@ -5207,6 +5227,7 @@ export const listZones: API.PaginatedOperationMethod<
     output: ListZonesResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: {
       mode: "page",
       inputToken: "page",
@@ -5230,6 +5251,7 @@ export const patchCtAlerting: API.OperationMethod<
   output: PatchCtAlertingResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type PatchEnvironmentError = CloudflareOpError;
@@ -5244,6 +5266,7 @@ export const patchEnvironment: API.OperationMethod<
   output: PatchEnvironmentResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type PatchHoldError =
@@ -5270,6 +5293,7 @@ export const patchHold: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type PatchSettingError =
@@ -5292,6 +5316,7 @@ export const patchSetting: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type PatchZoneError = InvalidZoneIdentifier | CloudflareOpError;
@@ -5306,6 +5331,7 @@ export const patchZone: API.OperationMethod<
   output: PatchZoneResponse,
   errors: [InvalidZoneIdentifier, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type PutCustomNameserverError =
@@ -5331,6 +5357,7 @@ export const putCustomNameserver: API.PaginatedOperationMethod<
       CloudflareError,
     ],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
@@ -5348,6 +5375,7 @@ export const rollbackEnvironment: API.OperationMethod<
   output: RollbackEnvironmentResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type SettingsBulkEditError = CloudflareOpError;
@@ -5362,6 +5390,7 @@ export const settingsBulkEdit: API.OperationMethod<
   output: SettingsBulkEditResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type SettingsListError = CloudflareOpError;
@@ -5376,6 +5405,7 @@ export const settingsList: API.OperationMethod<
   output: SettingsListResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type TriggerActivationCheckError = CloudflareOpError;
@@ -5390,6 +5420,7 @@ export const triggerActivationCheck: API.OperationMethod<
   output: TriggerActivationCheckResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type UpdateEnvironmentError = CloudflareOpError;
@@ -5404,6 +5435,7 @@ export const updateEnvironment: API.OperationMethod<
   output: UpdateEnvironmentResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type UpdateSubscriptionError = CloudflareOpError;
@@ -5418,4 +5450,5 @@ export const updateSubscription: API.OperationMethod<
   output: UpdateSubscriptionResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));

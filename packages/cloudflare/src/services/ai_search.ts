@@ -10,6 +10,9 @@ import {
 } from "../protocol.ts";
 import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
+import * as Retry from "../retry.ts";
+
+export type { CloudflareOpError, CloudflareOpContext };
 
 export class AiSearchInstanceNotFound extends T.applyErrorMatchers(
   S.TaggedErrorClass<AiSearchInstanceNotFound>()("AiSearchInstanceNotFound", {
@@ -14244,6 +14247,7 @@ export const chatCompletionsInstance: API.OperationMethod<
   output: ChatCompletionsInstanceResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ChatCompletionsNamespaceError = CloudflareOpError;
@@ -14258,6 +14262,7 @@ export const chatCompletionsNamespace: API.OperationMethod<
   output: ChatCompletionsNamespaceResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ChatCompletionsNamespaceInstanceError = CloudflareOpError;
@@ -14272,6 +14277,7 @@ export const chatCompletionsNamespaceInstance: API.OperationMethod<
   output: ChatCompletionsNamespaceInstanceResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ChunksNamespaceInstanceItemError = CloudflareOpError;
@@ -14286,6 +14292,7 @@ export const chunksNamespaceInstanceItem: API.OperationMethod<
   output: ChunksNamespaceInstanceItemResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type CreateInstanceError =
@@ -14316,6 +14323,7 @@ export const createInstance: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type CreateInstanceJobError =
@@ -14344,6 +14352,7 @@ export const createInstanceJob: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type CreateNamespaceError =
@@ -14366,6 +14375,7 @@ export const createNamespace: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type CreateNamespaceInstanceError =
@@ -14402,6 +14412,7 @@ export const createNamespaceInstance: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type CreateNamespaceInstanceJobError = CloudflareOpError;
@@ -14416,6 +14427,7 @@ export const createNamespaceInstanceJob: API.OperationMethod<
   output: CreateNamespaceInstanceJobResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type CreateOrUpdateNamespaceInstanceItemError = CloudflareOpError;
@@ -14430,6 +14442,7 @@ export const createOrUpdateNamespaceInstanceItem: API.OperationMethod<
   output: CreateOrUpdateNamespaceInstanceItemResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type CreateTokenError =
@@ -14458,6 +14471,7 @@ export const createToken: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteInstanceError =
@@ -14484,6 +14498,7 @@ export const deleteInstance: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteNamespaceError =
@@ -14506,6 +14521,7 @@ export const deleteNamespace: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteNamespaceInstanceError =
@@ -14534,6 +14550,7 @@ export const deleteNamespaceInstance: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteNamespaceInstanceItemError = CloudflareOpError;
@@ -14548,6 +14565,7 @@ export const deleteNamespaceInstanceItem: API.OperationMethod<
   output: DeleteNamespaceInstanceItemResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DeleteTokenError =
@@ -14578,6 +14596,7 @@ export const deleteToken: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type DownloadNamespaceInstanceItemError = CloudflareOpError;
@@ -14592,6 +14611,7 @@ export const downloadNamespaceInstanceItem: API.OperationMethod<
   output: DownloadNamespaceInstanceItemResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetInstanceJobError =
@@ -14616,6 +14636,7 @@ export const getInstanceJob: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetNamespaceInstanceItemError = CloudflareOpError;
@@ -14630,6 +14651,7 @@ export const getNamespaceInstanceItem: API.OperationMethod<
   output: GetNamespaceInstanceItemResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type GetNamespaceInstanceJobError = CloudflareOpError;
@@ -14644,6 +14666,7 @@ export const getNamespaceInstanceJob: API.OperationMethod<
   output: GetNamespaceInstanceJobResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ListInstanceJobsError = CloudflareOpError;
@@ -14659,6 +14682,7 @@ export const listInstanceJobs: API.PaginatedOperationMethod<
     output: ListInstanceJobsResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: {
       mode: "page",
       inputToken: "page",
@@ -14683,6 +14707,7 @@ export const listInstances: API.PaginatedOperationMethod<
     output: ListInstancesResponse,
     errors: [InvalidRoute, Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: {
       mode: "page",
       inputToken: "page",
@@ -14707,6 +14732,7 @@ export const listNamespaceInstanceItems: API.PaginatedOperationMethod<
     output: ListNamespaceInstanceItemsResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: {
       mode: "page",
       inputToken: "page",
@@ -14731,6 +14757,7 @@ export const listNamespaceInstanceJobs: API.PaginatedOperationMethod<
     output: ListNamespaceInstanceJobsResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: {
       mode: "page",
       inputToken: "page",
@@ -14765,6 +14792,7 @@ export const listNamespaceInstances: API.PaginatedOperationMethod<
       CloudflareError,
     ],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: {
       mode: "page",
       inputToken: "page",
@@ -14789,6 +14817,7 @@ export const listNamespaces: API.PaginatedOperationMethod<
     output: ListNamespacesResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: {
       mode: "page",
       inputToken: "page",
@@ -14813,6 +14842,7 @@ export const listTokens: API.PaginatedOperationMethod<
     output: ListTokensResponse,
     errors: [InvalidRoute, Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
     pagination: {
       mode: "page",
       inputToken: "page",
@@ -14846,6 +14876,7 @@ export const logsInstanceJob: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type LogsNamespaceInstanceItemError = CloudflareOpError;
@@ -14860,6 +14891,7 @@ export const logsNamespaceInstanceItem: API.OperationMethod<
   output: LogsNamespaceInstanceItemResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type LogsNamespaceInstanceJobError = CloudflareOpError;
@@ -14874,6 +14906,7 @@ export const logsNamespaceInstanceJob: API.OperationMethod<
   output: LogsNamespaceInstanceJobResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type PatchNamespaceInstanceJobError = CloudflareOpError;
@@ -14888,6 +14921,7 @@ export const patchNamespaceInstanceJob: API.OperationMethod<
   output: PatchNamespaceInstanceJobResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ReadInstanceError =
@@ -14914,6 +14948,7 @@ export const readInstance: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ReadNamespaceError =
@@ -14936,6 +14971,7 @@ export const readNamespace: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ReadNamespaceInstanceError =
@@ -14964,6 +15000,7 @@ export const readNamespaceInstance: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type ReadTokenError =
@@ -14992,6 +15029,7 @@ export const readToken: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type SearchInstanceError = CloudflareOpError;
@@ -15006,6 +15044,7 @@ export const searchInstance: API.OperationMethod<
   output: SearchInstanceResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type SearchNamespaceError = CloudflareOpError;
@@ -15020,6 +15059,7 @@ export const searchNamespace: API.OperationMethod<
   output: SearchNamespaceResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type SearchNamespaceInstanceError = CloudflareOpError;
@@ -15034,6 +15074,7 @@ export const searchNamespaceInstance: API.OperationMethod<
   output: SearchNamespaceInstanceResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type StatsInstanceError =
@@ -15058,6 +15099,7 @@ export const statsInstance: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type StatsNamespaceInstanceError = CloudflareOpError;
@@ -15072,6 +15114,7 @@ export const statsNamespaceInstance: API.OperationMethod<
   output: StatsNamespaceInstanceResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type SyncNamespaceInstanceItemError = CloudflareOpError;
@@ -15086,6 +15129,7 @@ export const syncNamespaceInstanceItem: API.OperationMethod<
   output: SyncNamespaceInstanceItemResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type UpdateInstanceError =
@@ -15114,6 +15158,7 @@ export const updateInstance: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type UpdateNamespaceError =
@@ -15136,6 +15181,7 @@ export const updateNamespace: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type UpdateNamespaceInstanceError =
@@ -15168,6 +15214,7 @@ export const updateNamespaceInstance: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type UpdateTokenError =
@@ -15198,6 +15245,7 @@ export const updateToken: API.OperationMethod<
     CloudflareError,
   ],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
 
 export type UploadNamespaceInstanceItemError = CloudflareOpError;
@@ -15212,4 +15260,5 @@ export const uploadNamespaceInstanceItem: API.OperationMethod<
   output: UploadNamespaceInstanceItemResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
+  retry: Retry.Retry,
 }));
