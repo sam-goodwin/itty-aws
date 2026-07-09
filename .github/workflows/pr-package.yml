@@ -37,6 +37,7 @@ jobs:
           { "dir": "packages/planetscale",     "name": "@distilled.cloud/planetscale",     "install": "planetscale" },
           { "dir": "packages/posthog",         "name": "@distilled.cloud/posthog",         "install": "posthog" },
           { "dir": "packages/prisma-postgres", "name": "@distilled.cloud/prisma-postgres", "install": "prisma-postgres" },
+          { "dir": "packages/resend",          "name": "@distilled.cloud/resend",          "install": "resend" },
           { "dir": "packages/stripe",          "name": "@distilled.cloud/stripe",          "install": "stripe" },
           { "dir": "packages/supabase",        "name": "@distilled.cloud/supabase",        "install": "supabase" },
           { "dir": "packages/turso",           "name": "@distilled.cloud/turso",           "install": "turso" },
