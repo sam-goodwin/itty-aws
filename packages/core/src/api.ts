@@ -6,9 +6,11 @@ import * as Option from "effect/Option";
 import * as Schedule from "effect/Schedule";
 import * as S from "effect/Schema";
 import type * as AST from "effect/SchemaAST";
+import { pipeArguments } from "effect/Pipeable";
 import * as Ref from "effect/Ref";
 import * as Scope from "effect/Scope";
 import type * as Stream from "effect/Stream";
+import { SingleShotGen } from "effect/Utils";
 import * as Pagination from "./pagination.ts";
 import type { Policy as RetryPolicy } from "./retry.ts";
 import * as HttpClient from "effect/unstable/http/HttpClient";
@@ -114,12 +116,23 @@ export type ApiErrorClass = {
 };
 
 /**
- * The shape of a generated SDK operation: a plain function from input to
- * Effect. Generated service files annotate every exported operation with this
- * type explicitly (against their hand-emitted interfaces), so the compiler
- * never has to infer it back out of the schema generics.
+ * The shape of a generated SDK operation — usable two ways (mirrors the
+ * distilled repo's OperationMethod):
+ *
+ * 1. Direct call: `yield* operation(input)` — an Effect with requirements.
+ * 2. Yield first: `const fn = yield* operation` — captures the current
+ *    context and returns a requirement-free call function.
+ *
+ * Generated service files annotate every exported operation with this type
+ * explicitly (against their hand-emitted interfaces), so the compiler never
+ * has to infer it back out of the schema generics.
  */
-export type OperationMethod<I, O, E, R> = (input: I) => Effect.Effect<O, E, R>;
+export type OperationMethod<I, O, E, R> = Effect.Effect<
+  (input: I) => Effect.Effect<O, E, never>,
+  never,
+  R
+> &
+  ((input: I) => Effect.Effect<O, E, R>);
 
 /**
  * Generated SDKs may wrap each request/response schema in
@@ -253,7 +266,7 @@ export function make<
     };
     return prepared;
   };
-  return ((input: unknown) =>
+  const fn = (input: unknown) =>
     Effect.suspend(() => {
       const { cfg, inputAst, outputAst } = prepare();
       const call = Effect.flatMap(
@@ -272,7 +285,28 @@ export function make<
           }).pipe(Effect.provideContext(protocolCtx)),
       );
       return applyRetry(call, cfg.retry);
-    })) as any;
+    });
+
+  // Make the operation itself yieldable: `yield* operation` captures the
+  // current context and returns a requirement-free call function (mirrors
+  // the distilled repo's OperationMethod).
+  const Proto = {
+    [Symbol.iterator](this: any) {
+      return new SingleShotGen(this.asEffect());
+    },
+    pipe(this: any) {
+      return pipeArguments(this.asEffect(), arguments);
+    },
+    asEffect() {
+      return Effect.map(
+        Effect.context(),
+        (context) => (input: unknown) =>
+          Effect.provideContext(fn(input), context),
+      );
+    },
+  };
+
+  return Object.assign(fn, Proto) as any;
 }
 
 //#endregion
