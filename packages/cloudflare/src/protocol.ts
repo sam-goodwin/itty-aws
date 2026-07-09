@@ -36,7 +36,13 @@ import {
   responseCodeSymbol,
   type HttpTrait,
 } from "@distilled.cloud/core/trait";
-import { CloudflareCredentials } from "./credentials.ts";
+import { ConfigError } from "@distilled.cloud/core/errors";
+import {
+  Credentials,
+  formatHeaders,
+  type OAuthRefreshError,
+  type ResolvedCredentials,
+} from "./credentials.ts";
 import { CloudflareError, CloudflareRateLimited } from "./errors.ts";
 import {
   envelopePayloadSymbol,
@@ -53,10 +59,12 @@ import {
 export type CloudflareOpError =
   | CloudflareError
   | CloudflareRateLimited
+  | ConfigError
+  | OAuthRefreshError
   | HttpClientError.HttpClientError;
 
 /** Context (requirements) shared by every generated Cloudflare operation. */
-export type CloudflareOpContext = CloudflareCredentials | HttpClient.HttpClient;
+export type CloudflareOpContext = Credentials | HttpClient.HttpClient;
 
 // --- AST helpers (survive S.optional / Suspend / transforms) -----------------
 
@@ -109,7 +117,7 @@ const fail = (
 
 // The protocol layer is memoized per process by `API.make` (see
 // `OperationConfig.protocol`), so the build must not capture credentials —
-// `encode` resolves CloudflareCredentials from the calling fiber's context on
+// `encode` resolves Credentials from the calling fiber's context on
 // every request instead. Like the error channel above, the requirement is
 // erased at this boundary (Protocol effects are typed with no requirements)
 // and reintroduced for callers by the generated `CloudflareOpContext`
@@ -122,7 +130,13 @@ const encode = ({
   readonly inputAst: AST.AST;
 }) =>
   Effect.gen(function* () {
-    const creds = yield* CloudflareCredentials;
+    // The Credentials service holds an effect — resolving it here (per
+    // request) picks up token refreshes. Its ConfigError/OAuthRefreshError
+    // channel is erased at this boundary like the rest of encode's
+    // requirements; CloudflareOpError reintroduces it for callers.
+    const resolveCredentials = yield* Credentials;
+    const creds =
+      yield* resolveCredentials as Effect.Effect<ResolvedCredentials>;
     const inputObj = (input ?? {}) as Record<string, unknown>;
     const http = getAnn(inputAst, httpSymbol) as HttpTrait | undefined;
     if (!http) {
@@ -132,7 +146,7 @@ const encode = ({
     }
 
     const headers: Record<string, string> = {
-      authorization: `Bearer ${creds.apiToken}`,
+      ...formatHeaders(creds),
     };
     const body: Record<string, unknown> = {};
     const query = new URLSearchParams();
@@ -161,7 +175,7 @@ const encode = ({
     }
 
     const qs = query.toString();
-    const url = `${creds.baseUrl}${uri}${qs ? `?${qs}` : ""}`;
+    const url = `${creds.apiBaseUrl}${uri}${qs ? `?${qs}` : ""}`;
 
     let request = HttpClientRequest.make(http.method)(url).pipe(
       HttpClientRequest.setHeaders(headers),
@@ -335,7 +349,7 @@ const makeDecode =
 export const CloudflareProtocol: Layer.Layer<API.Protocol> = Layer.succeed(
   API.Protocol,
   API.Protocol.of({
-    // Erase encode's CloudflareCredentials requirement (see comment above).
+    // Erase encode's Credentials requirement (see comment above).
     encode: (args) =>
       encode(args) as Effect.Effect<HttpClientRequest.HttpClientRequest>,
     decode: makeDecode({ resultInfo: false }),

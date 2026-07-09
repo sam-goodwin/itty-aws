@@ -146,6 +146,8 @@ let withErrors = 0;
 let collisions = 0;
 let filesWritten = 0;
 const writtenFiles = new Set<string>();
+/** distilled service name → { our resource → matched op count } */
+const serviceVotes = new Map<string, Map<string, number>>();
 
 for (const file of fs.readdirSync(SMITHY_DIR)) {
   if (!file.endsWith(".json") || file === "cloudflare.protocols.json") continue;
@@ -168,6 +170,10 @@ for (const file of fs.readdirSync(SMITHY_DIR)) {
       continue;
     }
     matched++;
+
+    const votes = serviceVotes.get(dist.service) ?? new Map<string, number>();
+    votes.set(resource, (votes.get(resource) ?? 0) + 1);
+    serviceVotes.set(dist.service, votes);
 
     const ns = opId.split("#")[0];
     const ourOpName = opId.split("#")[1];
@@ -317,3 +323,39 @@ console.log(
 console.log(
   `   renames: ${renames}, ops with typed errors: ${withErrors}, name collisions skipped: ${collisions}`,
 );
+
+// ============================================================================
+// 3. Export aliases: distilled service names → our service files, so
+//    `@distilled.cloud/cloudflare/zero-trust` (their kebab-case naming)
+//    resolves to our snake_case module. Majority vote when one distilled
+//    service's operations land across several of our resources.
+// ============================================================================
+
+const pkgPath = path.join(ROOT, "package.json");
+const pkg = JSON.parse(fs.readFileSync(pkgPath, "utf8"));
+const target = (p: string) => ({ types: p, bun: p, default: p });
+
+const aliases: Record<string, ReturnType<typeof target>> = {};
+let aliasCount = 0;
+for (const [service, votes] of [...serviceVotes.entries()].sort()) {
+  const [best] = [...votes.entries()].sort((a, b) => b[1] - a[1]);
+  if (!best) continue;
+  if (service !== best[0]) {
+    aliases[`./${service}`] = target(`./src/services/${best[0]}.ts`);
+    aliasCount++;
+  }
+}
+
+pkg.exports = {
+  // Named hand-written modules first, then the aliases, then the wildcard
+  // (Node picks the most specific match regardless of order).
+  "./Credentials": target("./src/credentials.ts"),
+  "./Errors": target("./src/errors.ts"),
+  "./Traits": target("./src/traits.ts"),
+  "./Pagination": target("./src/pagination.ts"),
+  ...aliases,
+  ".": target("./src/index.ts"),
+  "./*": target("./src/services/*.ts"),
+};
+fs.writeFileSync(pkgPath, JSON.stringify(pkg, null, 2) + "\n");
+console.log(`   wrote ${aliasCount} service export aliases to package.json`);
