@@ -4,9 +4,11 @@ import * as API from "@distilled.cloud/core/api";
 import * as T from "../traits.ts";
 import {
   CloudflareProtocol,
+  CloudflarePaginatedProtocol,
   type CloudflareOpError,
   type CloudflareOpContext,
 } from "../protocol.ts";
+import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
 export class Forbidden extends T.applyErrorMatchers(
@@ -491,10 +493,13 @@ export const ListsItemsListResultList = /*@__PURE__*/ S.Array(
 export interface ListListItemsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: ListsItemsListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListListItemsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(ListsItemsListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListListItemsResponse",
@@ -567,10 +572,13 @@ export const ListsListResultList = /*@__PURE__*/ S.Array(
 export interface ListListsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: ListsListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListListsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(ListsListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListListsResponse",
@@ -816,31 +824,44 @@ export const getListItem: API.OperationMethod<
 
 export type ListListItemsError = ListNotFound | Forbidden | CloudflareOpError;
 /** Fetches all the items in the list. */
-export const listListItems: API.OperationMethod<
+export const listListItems: API.PaginatedOperationMethod<
   ListListItemsRequest,
   ListListItemsResponse,
   ListListItemsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListListItemsRequest,
-  output: ListListItemsResponse,
-  errors: [ListNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListListItemsRequest,
+    output: ListListItemsResponse,
+    errors: [ListNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: {
+      mode: "cursor",
+      inputToken: "cursor",
+      outputToken: "resultInfo.cursors.after",
+      items: "result",
+    } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListListsError = Forbidden | CloudflareOpError;
 /** Fetches all lists in the account. */
-export const listLists: API.OperationMethod<
+export const listLists: API.PaginatedOperationMethod<
   ListListsRequest,
   ListListsResponse,
   ListListsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListListsRequest,
-  output: ListListsResponse,
-  errors: [Forbidden, CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListListsRequest,
+    output: ListListsResponse,
+    errors: [Forbidden, CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type UpdateListError = ListNotFound | Forbidden | CloudflareOpError;
 /** Updates the description of a list. */

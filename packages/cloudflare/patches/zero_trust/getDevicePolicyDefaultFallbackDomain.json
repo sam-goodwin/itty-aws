@@ -25,6 +25,14 @@
       "op": "replace",
       "path": "/shapes/com.cloudflare.zero_trust#GetDevicePolicyDefaultFallbackDomain/output/target",
       "value": "com.cloudflare.zero_trust#GetDevicePolicyDefaultFallbackDomainResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.zero_trust#GetDevicePolicyDefaultFallbackDomain/traits/smithy.api#paginated",
+      "value": {
+        "mode": "single",
+        "items": "result"
+      }
     }
   ]
 }

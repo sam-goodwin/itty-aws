@@ -25,6 +25,17 @@
       "op": "replace",
       "path": "/shapes/com.cloudflare.zero_trust#ListDexTests/output/target",
       "value": "com.cloudflare.zero_trust#ListDexTestsResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.zero_trust#ListDexTests/traits/smithy.api#paginated",
+      "value": {
+        "mode": "page",
+        "inputToken": "page",
+        "outputToken": "resultInfo.page",
+        "items": "result.items",
+        "pageSize": "perPage"
+      }
     }
   ]
 }

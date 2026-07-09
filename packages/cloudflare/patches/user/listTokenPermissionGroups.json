@@ -25,6 +25,14 @@
       "op": "replace",
       "path": "/shapes/com.cloudflare.user#ListTokenPermissionGroups/output/target",
       "value": "com.cloudflare.user#ListTokenPermissionGroupsResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.user#ListTokenPermissionGroups/traits/smithy.api#paginated",
+      "value": {
+        "mode": "single",
+        "items": "result"
+      }
     }
   ]
 }

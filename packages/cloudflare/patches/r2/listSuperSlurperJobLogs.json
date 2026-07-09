@@ -25,6 +25,14 @@
       "op": "replace",
       "path": "/shapes/com.cloudflare.r2#ListSuperSlurperJobLogs/output/target",
       "value": "com.cloudflare.r2#ListSuperSlurperJobLogsResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.r2#ListSuperSlurperJobLogs/traits/smithy.api#paginated",
+      "value": {
+        "mode": "single",
+        "items": "result"
+      }
     }
   ]
 }

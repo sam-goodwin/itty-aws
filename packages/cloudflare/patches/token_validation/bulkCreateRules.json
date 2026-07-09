@@ -25,6 +25,14 @@
       "op": "replace",
       "path": "/shapes/com.cloudflare.token_validation#BulkCreateRules/output/target",
       "value": "com.cloudflare.token_validation#BulkCreateRulesResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.token_validation#BulkCreateRules/traits/smithy.api#paginated",
+      "value": {
+        "mode": "single",
+        "items": "result"
+      }
     }
   ]
 }

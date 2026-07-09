@@ -25,6 +25,14 @@
       "op": "replace",
       "path": "/shapes/com.cloudflare.load_balancers#GetMonitorGroupReference/output/target",
       "value": "com.cloudflare.load_balancers#GetMonitorGroupReferenceResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.load_balancers#GetMonitorGroupReference/traits/smithy.api#paginated",
+      "value": {
+        "mode": "single",
+        "items": "result"
+      }
     }
   ]
 }

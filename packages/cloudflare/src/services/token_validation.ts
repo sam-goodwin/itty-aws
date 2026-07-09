@@ -4,9 +4,11 @@ import * as API from "@distilled.cloud/core/api";
 import * as T from "../traits.ts";
 import {
   CloudflareProtocol,
+  CloudflarePaginatedProtocol,
   type CloudflareOpError,
   type CloudflareOpContext,
 } from "../protocol.ts";
+import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
 export class Forbidden extends T.applyErrorMatchers(
@@ -301,10 +303,13 @@ export const RulesBulkCreateResultList = /*@__PURE__*/ S.Array(
 export interface BulkCreateRulesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: RulesBulkCreateResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const BulkCreateRulesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(RulesBulkCreateResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "BulkCreateRulesResponse",
@@ -586,10 +591,13 @@ export const RulesBulkEditResultList = /*@__PURE__*/ S.Array(
 export interface BulkPatchRulesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: RulesBulkEditResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const BulkPatchRulesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(RulesBulkEditResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "BulkPatchRulesResponse",
@@ -1395,10 +1403,13 @@ export const ConfigurationListResultList = /*@__PURE__*/ S.Array(
 export interface ListConfigurationsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: ConfigurationListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListConfigurationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(ConfigurationListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListConfigurationsResponse",
@@ -1575,10 +1586,13 @@ export const RulesListResultList = /*@__PURE__*/ S.Array(
 export interface ListRulesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: RulesListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListRulesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(RulesListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListRulesResponse",
@@ -1995,31 +2009,39 @@ export const PutConfigurationCredentialResponse = /*@__PURE__*/ S.suspend(() =>
 
 export type BulkCreateRulesError = CloudflareOpError;
 /** Create zone token validation rules. A request can create multiple Token Validation Rules. */
-export const bulkCreateRules: API.OperationMethod<
+export const bulkCreateRules: API.PaginatedOperationMethod<
   BulkCreateRulesRequest,
   BulkCreateRulesResponse,
   BulkCreateRulesError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BulkCreateRulesRequest,
-  output: BulkCreateRulesResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: BulkCreateRulesRequest,
+    output: BulkCreateRulesResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type BulkPatchRulesError = CloudflareOpError;
 /** Edit token validation rules. A request can update multiple Token Validation Rules. Rules can be re-ordered using the `position` field. Returns all updated rules. */
-export const bulkPatchRules: API.OperationMethod<
+export const bulkPatchRules: API.PaginatedOperationMethod<
   BulkPatchRulesRequest,
   BulkPatchRulesResponse,
   BulkPatchRulesError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BulkPatchRulesRequest,
-  output: BulkPatchRulesResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: BulkPatchRulesRequest,
+    output: BulkPatchRulesResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type CreateConfigurationError =
   | TokenValidationNotEntitled
@@ -2166,44 +2188,64 @@ export type ListConfigurationsError =
   | Forbidden
   | CloudflareOpError;
 /** Lists all token validation configurations for this zone */
-export const listConfigurations: API.OperationMethod<
+export const listConfigurations: API.PaginatedOperationMethod<
   ListConfigurationsRequest,
   ListConfigurationsResponse,
   ListConfigurationsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListConfigurationsRequest,
-  output: ListConfigurationsResponse,
-  errors: [
-    TokenValidationNotEntitled,
-    Forbidden,
-    CloudflareRateLimited,
-    CloudflareError,
-  ],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListConfigurationsRequest,
+    output: ListConfigurationsResponse,
+    errors: [
+      TokenValidationNotEntitled,
+      Forbidden,
+      CloudflareRateLimited,
+      CloudflareError,
+    ],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "resultInfo.page",
+      items: "result",
+      pageSize: "perPage",
+    } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListRulesError =
   | TokenValidationNotEntitled
   | Forbidden
   | CloudflareOpError;
 /** List token validation rules */
-export const listRules: API.OperationMethod<
+export const listRules: API.PaginatedOperationMethod<
   ListRulesRequest,
   ListRulesResponse,
   ListRulesError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListRulesRequest,
-  output: ListRulesResponse,
-  errors: [
-    TokenValidationNotEntitled,
-    Forbidden,
-    CloudflareRateLimited,
-    CloudflareError,
-  ],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListRulesRequest,
+    output: ListRulesResponse,
+    errors: [
+      TokenValidationNotEntitled,
+      Forbidden,
+      CloudflareRateLimited,
+      CloudflareError,
+    ],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "resultInfo.page",
+      items: "result",
+      pageSize: "perPage",
+    } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type PatchConfigurationError =
   | TokenConfigurationNotFound

@@ -4,9 +4,11 @@ import * as API from "@distilled.cloud/core/api";
 import * as T from "../traits.ts";
 import {
   CloudflareProtocol,
+  CloudflarePaginatedProtocol,
   type CloudflareOpError,
   type CloudflareOpContext,
 } from "../protocol.ts";
+import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
 export class Forbidden extends T.applyErrorMatchers(
@@ -871,12 +873,15 @@ export const OriginCloudRegionsListResultList = /*@__PURE__*/ S.Array(
 export interface ListOriginCloudRegionsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: OriginCloudRegionsListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListOriginCloudRegionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(
       OriginCloudRegionsListResultList.pipe(T.EnvelopePayload()),
     ),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListOriginCloudRegionsResponse",
@@ -2517,17 +2522,27 @@ export const getVariant: API.OperationMethod<
 
 export type ListOriginCloudRegionsError = Forbidden | CloudflareOpError;
 /** Returns all IP-to-cloud-region mappings configured for the zone with pagination support. Each mapping tells Cloudflare which cloud vendor and region hosts the origin at that IP, enabling the edge to route via the nearest Tiered Cache upper-tier co-located with that cloud provider. Returns an empty array when no mappings exist. */
-export const listOriginCloudRegions: API.OperationMethod<
+export const listOriginCloudRegions: API.PaginatedOperationMethod<
   ListOriginCloudRegionsRequest,
   ListOriginCloudRegionsResponse,
   ListOriginCloudRegionsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListOriginCloudRegionsRequest,
-  output: ListOriginCloudRegionsResponse,
-  errors: [Forbidden, CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListOriginCloudRegionsRequest,
+    output: ListOriginCloudRegionsResponse,
+    errors: [Forbidden, CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "resultInfo.page",
+      items: "result",
+      pageSize: "perPage",
+    } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type OriginCloudRegionsBulkDeleteV1Error = CloudflareOpError;
 /** Removes up to 100 IP-to-cloud-region mappings in a single request. Each IP is validated independently — successfully deleted items are returned in the `succeeded` array and IPs that could not be found or are invalid are returned in the `failed` array. */

@@ -4,9 +4,11 @@ import * as API from "@distilled.cloud/core/api";
 import * as T from "../traits.ts";
 import {
   CloudflareProtocol,
+  CloudflarePaginatedProtocol,
   type CloudflareOpError,
   type CloudflareOpContext,
 } from "../protocol.ts";
+import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
 export class InvalidAccountId extends T.applyErrorMatchers(
@@ -634,10 +636,13 @@ export const MitigationsReviewResultList = /*@__PURE__*/ S.Array(
 export interface ReviewMitigationResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: MitigationsReviewResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ReviewMitigationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(MitigationsReviewResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ReviewMitigationResponse",
@@ -701,14 +706,18 @@ export const listMitigations: API.OperationMethod<
 
 export type ReviewMitigationError = CloudflareOpError;
 /** Request a review for mitigations on an account. */
-export const reviewMitigation: API.OperationMethod<
+export const reviewMitigation: API.PaginatedOperationMethod<
   ReviewMitigationRequest,
   ReviewMitigationResponse,
   ReviewMitigationError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ReviewMitigationRequest,
-  output: ReviewMitigationResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ReviewMitigationRequest,
+    output: ReviewMitigationResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);

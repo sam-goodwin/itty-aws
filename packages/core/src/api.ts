@@ -7,6 +7,8 @@ import * as Schedule from "effect/Schedule";
 import * as S from "effect/Schema";
 import type * as AST from "effect/SchemaAST";
 import * as Scope from "effect/Scope";
+import type * as Stream from "effect/Stream";
+import * as Pagination from "./pagination.ts";
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import type * as HttpClientError from "effect/unstable/http/HttpClientError";
 import type * as HttpClientRequest from "effect/unstable/http/HttpClientRequest";
@@ -233,6 +235,87 @@ export function make<
         }).pipe(Effect.provideContext(protocolCtx)),
       );
     })) as any;
+}
+
+//#endregion
+
+//#region MakePaginated
+
+/**
+ * The element type `.items()` yields: the array element of the page response
+ * itself, of its `result` member, or `unknown` when no items shape applies.
+ */
+export type PaginatedItem<A> =
+  A extends ReadonlyArray<infer Item>
+    ? Item
+    : A extends { result: ReadonlyArray<infer Item> }
+      ? Item
+      : A extends { result?: ReadonlyArray<infer Item> | null | undefined }
+        ? Item
+        : unknown;
+
+/**
+ * A paginated operation: callable like any {@link OperationMethod}, plus
+ * `.pages(input)` streaming every page response and `.items(input)` streaming
+ * the individual items across pages.
+ */
+export type PaginatedOperationMethod<I, O, E, R> = OperationMethod<
+  I,
+  O,
+  E,
+  R
+> & {
+  readonly pages: (input: I) => Stream.Stream<O, E, R>;
+  readonly items: (input: I) => Stream.Stream<PaginatedItem<O>, E, R>;
+};
+
+export interface PaginatedOperationConfig<
+  I extends S.Top,
+  O extends S.Top,
+  PE,
+  PR,
+  E extends readonly ApiErrorClass[] = readonly ApiErrorClass[],
+> extends OperationConfig<I, O, PE, PR, E> {
+  /** How to advance between pages (mirrors the `smithy.api#paginated` trait). */
+  pagination: Pagination.PaginatedTrait;
+}
+
+/**
+ * Like {@link make}, plus `.pages()` / `.items()` streaming built on the
+ * operation's pagination trait. The SDK can pass a provider-specific
+ * {@link Pagination.PaginationStrategy} (e.g. Cloudflare stops page-mode
+ * traversal on the first empty page); the default dispatches on
+ * `pagination.mode`.
+ */
+export function makePaginated<
+  I extends S.Top,
+  O extends S.Top,
+  PE,
+  PR,
+  const E extends readonly ApiErrorClass[] = readonly [],
+>(
+  configFn: () => PaginatedOperationConfig<I, O, PE, PR, E>,
+  strategy?: Pagination.PaginationStrategy,
+): PaginatedOperationMethod<
+  S.Schema.Type<I>,
+  S.Schema.Type<O>,
+  InstanceType<E[number]> | PE | HttpClientError.HttpClientError,
+  PR | HttpClient.HttpClient
+> {
+  const fn: any = make(configFn);
+  // configFn is a cheap object literal over already-constructed consts —
+  // re-invoking it here just reads the pagination trait (memoized).
+  let pagination: Pagination.PaginatedTrait | undefined;
+  const pag = () => (pagination ??= configFn().pagination);
+  const paginate = strategy ?? Pagination.paginateWithDefaults;
+  fn.pages = (input: Record<string, unknown>) => paginate(fn, input, pag());
+  fn.items = (input: Record<string, unknown>) => {
+    const p = pag();
+    return p.items
+      ? Pagination.extractItems(fn.pages(input), p.items)
+      : fn.pages(input);
+  };
+  return fn;
 }
 
 //#endregion

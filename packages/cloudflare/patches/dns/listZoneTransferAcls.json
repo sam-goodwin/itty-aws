@@ -25,6 +25,14 @@
       "op": "replace",
       "path": "/shapes/com.cloudflare.dns#ListZoneTransferAcls/output/target",
       "value": "com.cloudflare.dns#ListZoneTransferAclsResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.dns#ListZoneTransferAcls/traits/smithy.api#paginated",
+      "value": {
+        "mode": "single",
+        "items": "result"
+      }
     }
   ]
 }

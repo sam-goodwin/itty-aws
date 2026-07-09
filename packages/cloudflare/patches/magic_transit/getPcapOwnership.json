@@ -25,6 +25,14 @@
       "op": "replace",
       "path": "/shapes/com.cloudflare.magic_transit#GetPcapOwnership/output/target",
       "value": "com.cloudflare.magic_transit#GetPcapOwnershipResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.magic_transit#GetPcapOwnership/traits/smithy.api#paginated",
+      "value": {
+        "mode": "single",
+        "items": "result"
+      }
     }
   ]
 }

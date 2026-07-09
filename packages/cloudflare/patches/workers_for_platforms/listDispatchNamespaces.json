@@ -25,6 +25,14 @@
       "op": "replace",
       "path": "/shapes/com.cloudflare.workers_for_platforms#ListDispatchNamespaces/output/target",
       "value": "com.cloudflare.workers_for_platforms#ListDispatchNamespacesResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.workers_for_platforms#ListDispatchNamespaces/traits/smithy.api#paginated",
+      "value": {
+        "mode": "single",
+        "items": "result"
+      }
     }
   ]
 }

@@ -4,9 +4,11 @@ import * as API from "@distilled.cloud/core/api";
 import * as T from "../traits.ts";
 import {
   CloudflareProtocol,
+  CloudflarePaginatedProtocol,
   type CloudflareOpError,
   type CloudflareOpContext,
 } from "../protocol.ts";
+import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
 export interface CreateRegionalServicePrefixBindingRequest {
@@ -234,6 +236,8 @@ export const RegionalServicesPrefixBindingsListResultList =
 export interface ListRegionalServicePrefixBindingsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: RegionalServicesPrefixBindingsListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListRegionalServicePrefixBindingsResponse =
   /*@__PURE__*/ S.suspend(() =>
@@ -241,6 +245,7 @@ export const ListRegionalServicePrefixBindingsResponse =
       result: S.optional(
         RegionalServicesPrefixBindingsListResultList.pipe(T.EnvelopePayload()),
       ),
+      resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
     }),
   ).annotate({
     identifier: "ListRegionalServicePrefixBindingsResponse",
@@ -306,10 +311,13 @@ export const RegionsListResultList = /*@__PURE__*/ S.Array(
 export interface ListRegionsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: RegionsListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListRegionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(RegionsListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListRegionsResponse",
@@ -421,31 +429,51 @@ export const getRegionalServicePrefixBinding: API.OperationMethod<
 
 export type ListRegionalServicePrefixBindingsError = CloudflareOpError;
 /** List DLS prefix bindings for an account */
-export const listRegionalServicePrefixBindings: API.OperationMethod<
+export const listRegionalServicePrefixBindings: API.PaginatedOperationMethod<
   ListRegionalServicePrefixBindingsRequest,
   ListRegionalServicePrefixBindingsResponse,
   ListRegionalServicePrefixBindingsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListRegionalServicePrefixBindingsRequest,
-  output: ListRegionalServicePrefixBindingsResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListRegionalServicePrefixBindingsRequest,
+    output: ListRegionalServicePrefixBindingsResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: {
+      mode: "cursor",
+      inputToken: "cursor",
+      outputToken: "resultInfo.cursor",
+      items: "result",
+      pageSize: "perPage",
+    } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListRegionsError = CloudflareOpError;
 /** List DLS regions for an account */
-export const listRegions: API.OperationMethod<
+export const listRegions: API.PaginatedOperationMethod<
   ListRegionsRequest,
   ListRegionsResponse,
   ListRegionsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListRegionsRequest,
-  output: ListRegionsResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListRegionsRequest,
+    output: ListRegionsResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: {
+      mode: "cursor",
+      inputToken: "cursor",
+      outputToken: "resultInfo.cursor",
+      items: "result",
+      pageSize: "perPage",
+    } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type PatchRegionalServicePrefixBindingError = CloudflareOpError;
 /** Update a DLS prefix binding */

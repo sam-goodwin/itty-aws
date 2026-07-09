@@ -4,9 +4,11 @@ import * as API from "@distilled.cloud/core/api";
 import * as T from "../traits.ts";
 import {
   CloudflareProtocol,
+  CloudflarePaginatedProtocol,
   type CloudflareOpError,
   type CloudflareOpContext,
 } from "../protocol.ts";
+import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
 export class Forbidden extends T.applyErrorMatchers(
@@ -354,10 +356,13 @@ export const ListResultList = /*@__PURE__*/ S.Array(
 export interface ListKeylessCertificatesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: ListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListKeylessCertificatesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(ListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListKeylessCertificatesResponse",
@@ -545,17 +550,21 @@ export const getKeylessCertificate: API.OperationMethod<
 
 export type ListKeylessCertificatesError = Forbidden | CloudflareOpError;
 /** List all Keyless SSL configurations for a given zone. */
-export const listKeylessCertificates: API.OperationMethod<
+export const listKeylessCertificates: API.PaginatedOperationMethod<
   ListKeylessCertificatesRequest,
   ListKeylessCertificatesResponse,
   ListKeylessCertificatesError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListKeylessCertificatesRequest,
-  output: ListKeylessCertificatesResponse,
-  errors: [Forbidden, CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListKeylessCertificatesRequest,
+    output: ListKeylessCertificatesResponse,
+    errors: [Forbidden, CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type PatchKeylessCertificateError =
   | KeylessCertificateNotFound

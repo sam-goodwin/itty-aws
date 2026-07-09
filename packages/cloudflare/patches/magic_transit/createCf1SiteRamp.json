@@ -25,6 +25,14 @@
       "op": "replace",
       "path": "/shapes/com.cloudflare.magic_transit#CreateCf1SiteRamp/output/target",
       "value": "com.cloudflare.magic_transit#CreateCf1SiteRampResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.magic_transit#CreateCf1SiteRamp/traits/smithy.api#paginated",
+      "value": {
+        "mode": "single",
+        "items": "result"
+      }
     }
   ]
 }

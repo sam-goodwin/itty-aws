@@ -25,6 +25,17 @@
       "op": "replace",
       "path": "/shapes/com.cloudflare.pipelines#ListV1Pipeline/output/target",
       "value": "com.cloudflare.pipelines#ListV1PipelineResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.pipelines#ListV1Pipeline/traits/smithy.api#paginated",
+      "value": {
+        "mode": "page",
+        "inputToken": "page",
+        "outputToken": "resultInfo.page",
+        "items": "result",
+        "pageSize": "perPage"
+      }
     }
   ]
 }

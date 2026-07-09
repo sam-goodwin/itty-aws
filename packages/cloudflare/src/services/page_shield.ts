@@ -4,9 +4,11 @@ import * as API from "@distilled.cloud/core/api";
 import * as T from "../traits.ts";
 import {
   CloudflareProtocol,
+  CloudflarePaginatedProtocol,
   type CloudflareOpError,
   type CloudflareOpContext,
 } from "../protocol.ts";
+import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
 export class Forbidden extends T.applyErrorMatchers(
@@ -714,10 +716,13 @@ export const ConnectionsListResultList = /*@__PURE__*/ S.Array(
 export interface ListConnectionsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: ConnectionsListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListConnectionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(ConnectionsListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListConnectionsResponse",
@@ -877,10 +882,13 @@ export const CookiesListResultList = /*@__PURE__*/ S.Array(
 export interface ListCookiesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: CookiesListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListCookiesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(CookiesListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListCookiesResponse",
@@ -946,10 +954,13 @@ export const PoliciesListResultList = /*@__PURE__*/ S.Array(
 export interface ListPoliciesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: PoliciesListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(PoliciesListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListPoliciesResponse",
@@ -1127,10 +1138,13 @@ export const ScriptsListResultList = /*@__PURE__*/ S.Array(
 export interface ListScriptsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: ScriptsListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListScriptsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(ScriptsListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListScriptsResponse",
@@ -1373,59 +1387,75 @@ export const getScript: API.OperationMethod<
 
 export type ListConnectionsError = CloudflareOpError;
 /** Lists all connections detected by Page Shield. */
-export const listConnections: API.OperationMethod<
+export const listConnections: API.PaginatedOperationMethod<
   ListConnectionsRequest,
   ListConnectionsResponse,
   ListConnectionsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListConnectionsRequest,
-  output: ListConnectionsResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListConnectionsRequest,
+    output: ListConnectionsResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListCookiesError = CloudflareOpError;
 /** Lists all cookies collected by Page Shield. */
-export const listCookies: API.OperationMethod<
+export const listCookies: API.PaginatedOperationMethod<
   ListCookiesRequest,
   ListCookiesResponse,
   ListCookiesError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListCookiesRequest,
-  output: ListCookiesResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListCookiesRequest,
+    output: ListCookiesResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListPoliciesError = Forbidden | CloudflareOpError;
 /** Lists all Page Shield policies. */
-export const listPolicies: API.OperationMethod<
+export const listPolicies: API.PaginatedOperationMethod<
   ListPoliciesRequest,
   ListPoliciesResponse,
   ListPoliciesError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListPoliciesRequest,
-  output: ListPoliciesResponse,
-  errors: [Forbidden, CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListPoliciesRequest,
+    output: ListPoliciesResponse,
+    errors: [Forbidden, CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListScriptsError = CloudflareOpError;
 /** Lists all scripts detected by Page Shield. */
-export const listScripts: API.OperationMethod<
+export const listScripts: API.PaginatedOperationMethod<
   ListScriptsRequest,
   ListScriptsResponse,
   ListScriptsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListScriptsRequest,
-  output: ListScriptsResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListScriptsRequest,
+    output: ListScriptsResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type PutPageShieldError = NotEntitled | Forbidden | CloudflareOpError;
 /** Updates Page Shield settings. */

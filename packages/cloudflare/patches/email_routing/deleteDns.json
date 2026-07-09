@@ -25,6 +25,14 @@
       "op": "replace",
       "path": "/shapes/com.cloudflare.email_routing#DeleteDns/output/target",
       "value": "com.cloudflare.email_routing#DeleteDnsResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.email_routing#DeleteDns/traits/smithy.api#paginated",
+      "value": {
+        "mode": "single",
+        "items": "result"
+      }
     }
   ]
 }

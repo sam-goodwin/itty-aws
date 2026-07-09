@@ -4,9 +4,11 @@ import * as API from "@distilled.cloud/core/api";
 import * as T from "../traits.ts";
 import {
   CloudflareProtocol,
+  CloudflarePaginatedProtocol,
   type CloudflareOpError,
   type CloudflareOpContext,
 } from "../protocol.ts";
+import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
 export class AdvancedCertificateManagerRequired extends T.applyErrorMatchers(
@@ -1589,12 +1591,15 @@ export const CertificatePacksListResultList = /*@__PURE__*/ S.Array(
 export interface ListCertificatePacksResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: CertificatePacksListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListCertificatePacksResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(
       CertificatePacksListResultList.pipe(T.EnvelopePayload()),
     ),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListCertificatePacksResponse",
@@ -2252,17 +2257,27 @@ export const getVerification: API.OperationMethod<
 
 export type ListCertificatePacksError = Forbidden | CloudflareOpError;
 /** For a given zone, list all active certificate packs. */
-export const listCertificatePacks: API.OperationMethod<
+export const listCertificatePacks: API.PaginatedOperationMethod<
   ListCertificatePacksRequest,
   ListCertificatePacksResponse,
   ListCertificatePacksError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListCertificatePacksRequest,
-  output: ListCertificatePacksResponse,
-  errors: [Forbidden, CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListCertificatePacksRequest,
+    output: ListCertificatePacksResponse,
+    errors: [Forbidden, CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "resultInfo.page",
+      items: "result",
+      pageSize: "perPage",
+    } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type PatchAutoOriginTlsKexError = CloudflareOpError;
 /** Enable or disable Auto-Origin TLS KEX selection for the zone by sending `{"enabled": true}` or `{"enabled": false}`. When enabled, Cloudflare runs a periodic scan of the zone's origins to determine the preferred key-exchange algorithm and writes that preference to the edge so it is sent first in the TLS ClientHello to the origin. */

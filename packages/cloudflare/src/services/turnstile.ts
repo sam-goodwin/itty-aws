@@ -4,9 +4,11 @@ import * as API from "@distilled.cloud/core/api";
 import * as T from "../traits.ts";
 import {
   CloudflareProtocol,
+  CloudflarePaginatedProtocol,
   type CloudflareOpError,
   type CloudflareOpContext,
 } from "../protocol.ts";
+import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
 export class Forbidden extends T.applyErrorMatchers(
@@ -481,10 +483,13 @@ export const WidgetsListResultList = /*@__PURE__*/ S.Array(
 export interface ListWidgetsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: WidgetsListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListWidgetsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(WidgetsListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListWidgetsResponse",
@@ -772,17 +777,27 @@ export const getWidget: API.OperationMethod<
 
 export type ListWidgetsError = CloudflareOpError;
 /** Lists all turnstile widgets of an account. */
-export const listWidgets: API.OperationMethod<
+export const listWidgets: API.PaginatedOperationMethod<
   ListWidgetsRequest,
   ListWidgetsResponse,
   ListWidgetsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListWidgetsRequest,
-  output: ListWidgetsResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListWidgetsRequest,
+    output: ListWidgetsResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "resultInfo.page",
+      items: "result",
+      pageSize: "perPage",
+    } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type RotateSecretWidgetError = CloudflareOpError;
 /** Generate a new secret key for this widget. If `invalidate_immediately` is set to `false`, the previous secret remains valid for 2 hours. Note that secrets cannot be rotated again during the grace period. */

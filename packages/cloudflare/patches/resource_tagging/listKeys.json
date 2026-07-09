@@ -25,6 +25,16 @@
       "op": "replace",
       "path": "/shapes/com.cloudflare.resource_tagging#ListKeys/output/target",
       "value": "com.cloudflare.resource_tagging#ListKeysResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.resource_tagging#ListKeys/traits/smithy.api#paginated",
+      "value": {
+        "mode": "cursor",
+        "inputToken": "cursor",
+        "outputToken": "resultInfo.cursors.after",
+        "items": "result"
+      }
     }
   ]
 }

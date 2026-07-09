@@ -25,6 +25,14 @@
       "op": "replace",
       "path": "/shapes/com.cloudflare.ddos_protection#BulkCreateAdvancedTcpProtectionPrefixes/output/target",
       "value": "com.cloudflare.ddos_protection#BulkCreateAdvancedTcpProtectionPrefixesResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.ddos_protection#BulkCreateAdvancedTcpProtectionPrefixes/traits/smithy.api#paginated",
+      "value": {
+        "mode": "single",
+        "items": "result"
+      }
     }
   ]
 }

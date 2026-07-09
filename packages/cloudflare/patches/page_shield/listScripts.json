@@ -25,6 +25,14 @@
       "op": "replace",
       "path": "/shapes/com.cloudflare.page_shield#ListScripts/output/target",
       "value": "com.cloudflare.page_shield#ListScriptsResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.page_shield#ListScripts/traits/smithy.api#paginated",
+      "value": {
+        "mode": "single",
+        "items": "result"
+      }
     }
   ]
 }

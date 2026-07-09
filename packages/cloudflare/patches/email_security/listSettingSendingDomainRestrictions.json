@@ -25,6 +25,17 @@
       "op": "replace",
       "path": "/shapes/com.cloudflare.email_security#ListSettingSendingDomainRestrictions/output/target",
       "value": "com.cloudflare.email_security#ListSettingSendingDomainRestrictionsResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.email_security#ListSettingSendingDomainRestrictions/traits/smithy.api#paginated",
+      "value": {
+        "mode": "page",
+        "inputToken": "page",
+        "outputToken": "resultInfo.page",
+        "items": "result",
+        "pageSize": "perPage"
+      }
     }
   ]
 }

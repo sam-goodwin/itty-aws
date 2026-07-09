@@ -28,6 +28,14 @@
     },
     {
       "op": "add",
+      "path": "/shapes/com.cloudflare.custom_nameservers#DeleteCustomNameserver/traits/smithy.api#paginated",
+      "value": {
+        "mode": "single",
+        "items": "result"
+      }
+    },
+    {
+      "op": "add",
       "path": "/shapes/com.cloudflare.custom_nameservers#CustomNameserversNotEnabled",
       "value": {
         "type": "structure",

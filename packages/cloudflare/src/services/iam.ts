@@ -4,9 +4,11 @@ import * as API from "@distilled.cloud/core/api";
 import * as T from "../traits.ts";
 import {
   CloudflareProtocol,
+  CloudflarePaginatedProtocol,
   type CloudflareOpError,
   type CloudflareOpContext,
 } from "../protocol.ts";
+import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
 export class Forbidden extends T.applyErrorMatchers(
@@ -995,12 +997,15 @@ export const UserGroupsMembersCreateResultList = /*@__PURE__*/ S.Array(
 export interface CreateUserGroupMemberResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: UserGroupsMembersCreateResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const CreateUserGroupMemberResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(
       UserGroupsMembersCreateResultList.pipe(T.EnvelopePayload()),
     ),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "CreateUserGroupMemberResponse",
@@ -2140,10 +2145,13 @@ export const OauthClientsListResultList = /*@__PURE__*/ S.Array(
 export interface ListOauthClientsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: OauthClientsListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListOauthClientsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(OauthClientsListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListOauthClientsResponse",
@@ -2190,10 +2198,13 @@ export const OauthScopesListResultList = /*@__PURE__*/ S.Array(
 export interface ListOauthScopesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: OauthScopesListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListOauthScopesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(OauthScopesListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListOauthScopesResponse",
@@ -2271,12 +2282,15 @@ export const PermissionGroupsListResultList = /*@__PURE__*/ S.Array(
 export interface ListPermissionGroupsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: PermissionGroupsListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListPermissionGroupsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(
       PermissionGroupsListResultList.pipe(T.EnvelopePayload()),
     ),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListPermissionGroupsResponse",
@@ -2390,10 +2404,13 @@ export const ResourceGroupsListResultList = /*@__PURE__*/ S.Array(
 export interface ListResourceGroupsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: ResourceGroupsListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListResourceGroupsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(ResourceGroupsListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListResourceGroupsResponse",
@@ -2477,10 +2494,13 @@ export const SsoListResultList = /*@__PURE__*/ S.Array(
 export interface ListSsosResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: SsoListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListSsosResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(SsoListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListSsosResponse",
@@ -2559,12 +2579,15 @@ export const UserGroupsMembersListResultList = /*@__PURE__*/ S.Array(
 export interface ListUserGroupMembersResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: UserGroupsMembersListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListUserGroupMembersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(
       UserGroupsMembersListResultList.pipe(T.EnvelopePayload()),
     ),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListUserGroupMembersResponse",
@@ -2817,10 +2840,13 @@ export const UserGroupsListResultList = /*@__PURE__*/ S.Array(
 export interface ListUserGroupsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: UserGroupsListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListUserGroupsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(UserGroupsListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListUserGroupsResponse",
@@ -3779,12 +3805,15 @@ export const UserGroupsMembersUpdateResultList = /*@__PURE__*/ S.Array(
 export interface UpdateUserGroupMemberResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: UserGroupsMembersUpdateResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const UpdateUserGroupMemberResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(
       UserGroupsMembersUpdateResultList.pipe(T.EnvelopePayload()),
     ),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "UpdateUserGroupMemberResponse",
@@ -3865,22 +3894,26 @@ export type CreateUserGroupMemberError =
   | UserGroupNotFound
   | CloudflareOpError;
 /** Add members to a User Group. */
-export const createUserGroupMember: API.OperationMethod<
+export const createUserGroupMember: API.PaginatedOperationMethod<
   CreateUserGroupMemberRequest,
   CreateUserGroupMemberResponse,
   CreateUserGroupMemberError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: CreateUserGroupMemberRequest,
-  output: CreateUserGroupMemberResponse,
-  errors: [
-    InvalidMember,
-    UserGroupNotFound,
-    CloudflareRateLimited,
-    CloudflareError,
-  ],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: CreateUserGroupMemberRequest,
+    output: CreateUserGroupMemberResponse,
+    errors: [
+      InvalidMember,
+      UserGroupNotFound,
+      CloudflareRateLimited,
+      CloudflareError,
+    ],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type DeleteOauthClientError = CloudflareOpError;
 /** Delete an OAuth client. */
@@ -4090,109 +4123,155 @@ export const getUserGroupMember: API.OperationMethod<
 
 export type ListOauthClientsError = CloudflareOpError;
 /** List all OAuth clients for an account. */
-export const listOauthClients: API.OperationMethod<
+export const listOauthClients: API.PaginatedOperationMethod<
   ListOauthClientsRequest,
   ListOauthClientsResponse,
   ListOauthClientsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListOauthClientsRequest,
-  output: ListOauthClientsResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListOauthClientsRequest,
+    output: ListOauthClientsResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListOauthScopesError = CloudflareOpError;
 /** List all available OAuth scopes. This endpoint requires authentication but has no authorization role requirements. */
-export const listOauthScopes: API.OperationMethod<
+export const listOauthScopes: API.PaginatedOperationMethod<
   ListOauthScopesRequest,
   ListOauthScopesResponse,
   ListOauthScopesError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListOauthScopesRequest,
-  output: ListOauthScopesResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListOauthScopesRequest,
+    output: ListOauthScopesResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListPermissionGroupsError = CloudflareOpError;
 /** List all the permissions groups for an account. */
-export const listPermissionGroups: API.OperationMethod<
+export const listPermissionGroups: API.PaginatedOperationMethod<
   ListPermissionGroupsRequest,
   ListPermissionGroupsResponse,
   ListPermissionGroupsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListPermissionGroupsRequest,
-  output: ListPermissionGroupsResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListPermissionGroupsRequest,
+    output: ListPermissionGroupsResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "resultInfo.page",
+      items: "result",
+      pageSize: "perPage",
+    } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListResourceGroupsError = CloudflareOpError;
 /** List all the resource groups for an account. */
-export const listResourceGroups: API.OperationMethod<
+export const listResourceGroups: API.PaginatedOperationMethod<
   ListResourceGroupsRequest,
   ListResourceGroupsResponse,
   ListResourceGroupsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListResourceGroupsRequest,
-  output: ListResourceGroupsResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListResourceGroupsRequest,
+    output: ListResourceGroupsResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListSsosError = CloudflareOpError;
 /** Lists all SSO connectors configured for the account. */
-export const listSsos: API.OperationMethod<
+export const listSsos: API.PaginatedOperationMethod<
   ListSsosRequest,
   ListSsosResponse,
   ListSsosError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListSsosRequest,
-  output: ListSsosResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListSsosRequest,
+    output: ListSsosResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListUserGroupMembersError =
   | UserGroupNotFound
   | PolicyValidationFailed
   | CloudflareOpError;
 /** List all the members attached to a user group. */
-export const listUserGroupMembers: API.OperationMethod<
+export const listUserGroupMembers: API.PaginatedOperationMethod<
   ListUserGroupMembersRequest,
   ListUserGroupMembersResponse,
   ListUserGroupMembersError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListUserGroupMembersRequest,
-  output: ListUserGroupMembersResponse,
-  errors: [
-    UserGroupNotFound,
-    PolicyValidationFailed,
-    CloudflareRateLimited,
-    CloudflareError,
-  ],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListUserGroupMembersRequest,
+    output: ListUserGroupMembersResponse,
+    errors: [
+      UserGroupNotFound,
+      PolicyValidationFailed,
+      CloudflareRateLimited,
+      CloudflareError,
+    ],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "resultInfo.page",
+      items: "result",
+      pageSize: "perPage",
+    } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListUserGroupsError = CloudflareOpError;
 /** List all the user groups for an account. */
-export const listUserGroups: API.OperationMethod<
+export const listUserGroups: API.PaginatedOperationMethod<
   ListUserGroupsRequest,
   ListUserGroupsResponse,
   ListUserGroupsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListUserGroupsRequest,
-  output: ListUserGroupsResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListUserGroupsRequest,
+    output: ListUserGroupsResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "resultInfo.page",
+      items: "result",
+      pageSize: "perPage",
+    } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type PatchOauthClientError = CloudflareOpError;
 /** Update an existing OAuth client. Only include fields you want to update. */
@@ -4279,19 +4358,23 @@ export type UpdateUserGroupMemberError =
   | UserGroupNotFound
   | CloudflareOpError;
 /** Replace the set of members attached to a User Group. */
-export const updateUserGroupMember: API.OperationMethod<
+export const updateUserGroupMember: API.PaginatedOperationMethod<
   UpdateUserGroupMemberRequest,
   UpdateUserGroupMemberResponse,
   UpdateUserGroupMemberError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: UpdateUserGroupMemberRequest,
-  output: UpdateUserGroupMemberResponse,
-  errors: [
-    InvalidMember,
-    UserGroupNotFound,
-    CloudflareRateLimited,
-    CloudflareError,
-  ],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: UpdateUserGroupMemberRequest,
+    output: UpdateUserGroupMemberResponse,
+    errors: [
+      InvalidMember,
+      UserGroupNotFound,
+      CloudflareRateLimited,
+      CloudflareError,
+    ],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);

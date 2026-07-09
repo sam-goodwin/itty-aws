@@ -25,6 +25,14 @@
       "op": "replace",
       "path": "/shapes/com.cloudflare.zero_trust#ListAccessBookmarks/output/target",
       "value": "com.cloudflare.zero_trust#ListAccessBookmarksResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.zero_trust#ListAccessBookmarks/traits/smithy.api#paginated",
+      "value": {
+        "mode": "single",
+        "items": "result"
+      }
     }
   ]
 }

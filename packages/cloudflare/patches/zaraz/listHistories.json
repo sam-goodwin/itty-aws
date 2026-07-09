@@ -25,6 +25,14 @@
       "op": "replace",
       "path": "/shapes/com.cloudflare.zaraz#ListHistories/output/target",
       "value": "com.cloudflare.zaraz#ListHistoriesResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.zaraz#ListHistories/traits/smithy.api#paginated",
+      "value": {
+        "mode": "single",
+        "items": "result"
+      }
     }
   ]
 }

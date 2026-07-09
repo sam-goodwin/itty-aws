@@ -4,9 +4,11 @@ import * as API from "@distilled.cloud/core/api";
 import * as T from "../traits.ts";
 import {
   CloudflareProtocol,
+  CloudflarePaginatedProtocol,
   type CloudflareOpError,
   type CloudflareOpContext,
 } from "../protocol.ts";
+import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
 export class AccountCreationForbidden extends T.applyErrorMatchers(
@@ -1994,10 +1996,13 @@ export const SubscriptionsGetResultList = /*@__PURE__*/ S.Array(
 export interface GetSubscriptionResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: SubscriptionsGetResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const GetSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(SubscriptionsGetResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "GetSubscriptionResponse",
@@ -2406,10 +2411,13 @@ export const ListResultList = /*@__PURE__*/ S.Array(
 export interface ListAccountsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: ListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListAccountsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(ListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListAccountsResponse",
@@ -2687,10 +2695,13 @@ export const LogsAuditListResultList = /*@__PURE__*/ S.Array(
 export interface ListLogAuditsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: LogsAuditListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListLogAuditsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(LogsAuditListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListLogAuditsResponse",
@@ -3054,10 +3065,13 @@ export const MembersListResultList = /*@__PURE__*/ S.Array(
 export interface ListMembersResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: MembersListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListMembersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(MembersListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListMembersResponse",
@@ -3158,10 +3172,13 @@ export const RolesListResultList = /*@__PURE__*/ S.Array(
 export interface ListRolesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: RolesListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListRolesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(RolesListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListRolesResponse",
@@ -3410,10 +3427,13 @@ export const TokensListResultList = /*@__PURE__*/ S.Array(
 export interface ListTokensResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: TokensListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListTokensResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(TokensListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListTokensResponse",
@@ -4920,17 +4940,21 @@ export const getRole: API.OperationMethod<
 
 export type GetSubscriptionError = CloudflareOpError;
 /** Lists all of an account's subscriptions. */
-export const getSubscription: API.OperationMethod<
+export const getSubscription: API.PaginatedOperationMethod<
   GetSubscriptionRequest,
   GetSubscriptionResponse,
   GetSubscriptionError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetSubscriptionRequest,
-  output: GetSubscriptionResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: GetSubscriptionRequest,
+    output: GetSubscriptionResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type GetTokenError = InvalidRoute | TokenNotFound | CloudflareOpError;
 /** Get information about a specific Account Owned API token. */
@@ -4962,73 +4986,122 @@ export const getTokenPermissionGroup: API.OperationMethod<
 
 export type ListAccountsError = CloudflareOpError;
 /** List all accounts you have ownership or verified access to. */
-export const listAccounts: API.OperationMethod<
+export const listAccounts: API.PaginatedOperationMethod<
   ListAccountsRequest,
   ListAccountsResponse,
   ListAccountsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListAccountsRequest,
-  output: ListAccountsResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListAccountsRequest,
+    output: ListAccountsResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "resultInfo.page",
+      items: "result",
+      pageSize: "perPage",
+    } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListLogAuditsError = CloudflareOpError;
 /** Gets a list of audit logs for an account. */
-export const listLogAudits: API.OperationMethod<
+export const listLogAudits: API.PaginatedOperationMethod<
   ListLogAuditsRequest,
   ListLogAuditsResponse,
   ListLogAuditsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListLogAuditsRequest,
-  output: ListLogAuditsResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListLogAuditsRequest,
+    output: ListLogAuditsResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: {
+      mode: "cursor",
+      inputToken: "cursor",
+      outputToken: "resultInfo.cursors.after",
+      items: "result",
+    } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListMembersError = CloudflareOpError;
 /** List all members of an account. */
-export const listMembers: API.OperationMethod<
+export const listMembers: API.PaginatedOperationMethod<
   ListMembersRequest,
   ListMembersResponse,
   ListMembersError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListMembersRequest,
-  output: ListMembersResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListMembersRequest,
+    output: ListMembersResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "resultInfo.page",
+      items: "result",
+      pageSize: "perPage",
+    } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListRolesError = CloudflareOpError;
 /** Get all available roles for an account. */
-export const listRoles: API.OperationMethod<
+export const listRoles: API.PaginatedOperationMethod<
   ListRolesRequest,
   ListRolesResponse,
   ListRolesError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListRolesRequest,
-  output: ListRolesResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListRolesRequest,
+    output: ListRolesResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "resultInfo.page",
+      items: "result",
+      pageSize: "perPage",
+    } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListTokensError = CloudflareOpError;
 /** List all Account Owned API tokens created for this account. */
-export const listTokens: API.OperationMethod<
+export const listTokens: API.PaginatedOperationMethod<
   ListTokensRequest,
   ListTokensResponse,
   ListTokensError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListTokensRequest,
-  output: ListTokensResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListTokensRequest,
+    output: ListTokensResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "resultInfo.page",
+      items: "result",
+      pageSize: "perPage",
+    } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type PutTokenValueError =
   | InvalidRoute

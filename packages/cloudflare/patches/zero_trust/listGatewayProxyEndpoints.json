@@ -25,6 +25,14 @@
       "op": "replace",
       "path": "/shapes/com.cloudflare.zero_trust#ListGatewayProxyEndpoints/output/target",
       "value": "com.cloudflare.zero_trust#ListGatewayProxyEndpointsResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.zero_trust#ListGatewayProxyEndpoints/traits/smithy.api#paginated",
+      "value": {
+        "mode": "single",
+        "items": "result"
+      }
     }
   ]
 }

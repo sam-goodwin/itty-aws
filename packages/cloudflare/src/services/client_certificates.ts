@@ -4,9 +4,11 @@ import * as API from "@distilled.cloud/core/api";
 import * as T from "../traits.ts";
 import {
   CloudflareProtocol,
+  CloudflarePaginatedProtocol,
   type CloudflareOpError,
   type CloudflareOpContext,
 } from "../protocol.ts";
+import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
 export class ClientCertificateAlreadyRevoked extends T.applyErrorMatchers(
@@ -474,10 +476,13 @@ export const ListResultList = /*@__PURE__*/ S.Array(
 export interface ListClientCertificatesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: ListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListClientCertificatesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(ListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListClientCertificatesResponse",
@@ -649,17 +654,27 @@ export const getClientCertificate: API.OperationMethod<
 
 export type ListClientCertificatesError = Forbidden | CloudflareOpError;
 /** List all of your Zone's API Shield mTLS Client Certificates by Status and/or using Pagination. */
-export const listClientCertificates: API.OperationMethod<
+export const listClientCertificates: API.PaginatedOperationMethod<
   ListClientCertificatesRequest,
   ListClientCertificatesResponse,
   ListClientCertificatesError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListClientCertificatesRequest,
-  output: ListClientCertificatesResponse,
-  errors: [Forbidden, CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListClientCertificatesRequest,
+    output: ListClientCertificatesResponse,
+    errors: [Forbidden, CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "resultInfo.page",
+      items: "result",
+      pageSize: "perPage",
+    } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type PatchClientCertificateError =
   | ClientCertificateNotFound

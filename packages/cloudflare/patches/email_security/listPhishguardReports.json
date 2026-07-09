@@ -25,6 +25,14 @@
       "op": "replace",
       "path": "/shapes/com.cloudflare.email_security#ListPhishguardReports/output/target",
       "value": "com.cloudflare.email_security#ListPhishguardReportsResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.email_security#ListPhishguardReports/traits/smithy.api#paginated",
+      "value": {
+        "mode": "single",
+        "items": "result"
+      }
     }
   ]
 }

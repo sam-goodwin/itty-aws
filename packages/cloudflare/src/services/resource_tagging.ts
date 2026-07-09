@@ -4,9 +4,11 @@ import * as API from "@distilled.cloud/core/api";
 import * as T from "../traits.ts";
 import {
   CloudflareProtocol,
+  CloudflarePaginatedProtocol,
   type CloudflareOpError,
   type CloudflareOpContext,
 } from "../protocol.ts";
+import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
 export class Forbidden extends T.applyErrorMatchers(
@@ -466,10 +468,13 @@ export const KeysListResultList = /*@__PURE__*/ S.Array(
 export interface ListKeysResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: KeysListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListKeysResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(KeysListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListKeysResponse",
@@ -672,10 +677,13 @@ export const ListResultList = /*@__PURE__*/ S.Array(
 export interface ListResourceTaggingsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: ListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListResourceTaggingsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(ListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListResourceTaggingsResponse",
@@ -722,10 +730,13 @@ export const ValuesListResultList = /*@__PURE__*/ S.Array(
 export interface ListValuesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: ValuesListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListValuesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(ValuesListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListValuesResponse",
@@ -1179,45 +1190,72 @@ export const getZoneTag: API.OperationMethod<
 
 export type ListKeysError = CloudflareOpError;
 /** Lists all distinct tag keys used across resources in an account. */
-export const listKeys: API.OperationMethod<
+export const listKeys: API.PaginatedOperationMethod<
   ListKeysRequest,
   ListKeysResponse,
   ListKeysError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListKeysRequest,
-  output: ListKeysResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListKeysRequest,
+    output: ListKeysResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: {
+      mode: "cursor",
+      inputToken: "cursor",
+      outputToken: "resultInfo.cursors.after",
+      items: "result",
+    } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListResourceTaggingsError = CloudflareOpError;
 /** Lists all tagged resources for an account. */
-export const listResourceTaggings: API.OperationMethod<
+export const listResourceTaggings: API.PaginatedOperationMethod<
   ListResourceTaggingsRequest,
   ListResourceTaggingsResponse,
   ListResourceTaggingsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListResourceTaggingsRequest,
-  output: ListResourceTaggingsResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListResourceTaggingsRequest,
+    output: ListResourceTaggingsResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: {
+      mode: "cursor",
+      inputToken: "cursor",
+      outputToken: "resultInfo.cursors.after",
+      items: "result",
+    } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListValuesError = CloudflareOpError;
 /** Lists all distinct values for a given tag key, optionally filtered by resource type. */
-export const listValues: API.OperationMethod<
+export const listValues: API.PaginatedOperationMethod<
   ListValuesRequest,
   ListValuesResponse,
   ListValuesError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListValuesRequest,
-  output: ListValuesResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListValuesRequest,
+    output: ListValuesResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: {
+      mode: "cursor",
+      inputToken: "cursor",
+      outputToken: "resultInfo.cursors.after",
+      items: "result",
+    } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type PutAccountTagError =
   | Forbidden

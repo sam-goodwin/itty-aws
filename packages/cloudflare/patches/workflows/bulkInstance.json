@@ -28,6 +28,14 @@
     },
     {
       "op": "add",
+      "path": "/shapes/com.cloudflare.workflows#BulkInstance/traits/smithy.api#paginated",
+      "value": {
+        "mode": "single",
+        "items": "result"
+      }
+    },
+    {
+      "op": "add",
       "path": "/shapes/com.cloudflare.workflows#WorkflowNotFound",
       "value": {
         "type": "structure",

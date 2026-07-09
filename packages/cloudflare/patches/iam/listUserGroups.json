@@ -25,6 +25,17 @@
       "op": "replace",
       "path": "/shapes/com.cloudflare.iam#ListUserGroups/output/target",
       "value": "com.cloudflare.iam#ListUserGroupsResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.iam#ListUserGroups/traits/smithy.api#paginated",
+      "value": {
+        "mode": "page",
+        "inputToken": "page",
+        "outputToken": "resultInfo.page",
+        "items": "result",
+        "pageSize": "perPage"
+      }
     }
   ]
 }

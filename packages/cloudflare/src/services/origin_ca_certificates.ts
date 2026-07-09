@@ -4,9 +4,11 @@ import * as API from "@distilled.cloud/core/api";
 import * as T from "../traits.ts";
 import {
   CloudflareProtocol,
+  CloudflarePaginatedProtocol,
   type CloudflareOpError,
   type CloudflareOpContext,
 } from "../protocol.ts";
+import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
 export class CertificateAlreadyRevoked extends T.applyErrorMatchers(
@@ -363,10 +365,13 @@ export const ListResultList = /*@__PURE__*/ S.Array(
 export interface ListOriginCaCertificatesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: ListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListOriginCaCertificatesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(ListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListOriginCaCertificatesResponse",
@@ -444,14 +449,24 @@ export const getOriginCaCertificate: API.OperationMethod<
 
 export type ListOriginCaCertificatesError = Forbidden | CloudflareOpError;
 /** List all existing Origin CA certificates for a given zone. You can use an Origin CA Key as your User Service Key or an API token when calling this endpoint ([see above](#requests)). */
-export const listOriginCaCertificates: API.OperationMethod<
+export const listOriginCaCertificates: API.PaginatedOperationMethod<
   ListOriginCaCertificatesRequest,
   ListOriginCaCertificatesResponse,
   ListOriginCaCertificatesError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListOriginCaCertificatesRequest,
-  output: ListOriginCaCertificatesResponse,
-  errors: [Forbidden, CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListOriginCaCertificatesRequest,
+    output: ListOriginCaCertificatesResponse,
+    errors: [Forbidden, CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "resultInfo.page",
+      items: "result",
+      pageSize: "perPage",
+    } as const,
+  }),
+  cloudflarePaginate,
+);

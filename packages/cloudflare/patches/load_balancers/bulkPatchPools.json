@@ -25,6 +25,14 @@
       "op": "replace",
       "path": "/shapes/com.cloudflare.load_balancers#BulkPatchPools/output/target",
       "value": "com.cloudflare.load_balancers#BulkPatchPoolsResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.load_balancers#BulkPatchPools/traits/smithy.api#paginated",
+      "value": {
+        "mode": "single",
+        "items": "result"
+      }
     }
   ]
 }

@@ -25,6 +25,14 @@
       "op": "replace",
       "path": "/shapes/com.cloudflare.firewall#BulkPutRules/output/target",
       "value": "com.cloudflare.firewall#BulkPutRulesResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.firewall#BulkPutRules/traits/smithy.api#paginated",
+      "value": {
+        "mode": "single",
+        "items": "result"
+      }
     }
   ]
 }

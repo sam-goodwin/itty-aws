@@ -25,6 +25,14 @@
       "op": "replace",
       "path": "/shapes/com.cloudflare.zero_trust#ListDlpDataTagCategoryDataTags/output/target",
       "value": "com.cloudflare.zero_trust#ListDlpDataTagCategoryDataTagsResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.zero_trust#ListDlpDataTagCategoryDataTags/traits/smithy.api#paginated",
+      "value": {
+        "mode": "single",
+        "items": "result"
+      }
     }
   ]
 }

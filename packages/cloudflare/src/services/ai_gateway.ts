@@ -4,9 +4,11 @@ import * as API from "@distilled.cloud/core/api";
 import * as T from "../traits.ts";
 import {
   CloudflareProtocol,
+  CloudflarePaginatedProtocol,
   type CloudflareOpError,
   type CloudflareOpContext,
 } from "../protocol.ts";
+import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
 export class AiGatewaySpendingLimitDeprecated extends T.applyErrorMatchers(
@@ -5029,10 +5031,13 @@ export const ListResultList = /*@__PURE__*/ S.Array(
 export interface ListAiGatewaysResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: ListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListAiGatewaysResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(ListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListAiGatewaysResponse",
@@ -5113,10 +5118,13 @@ export const CustomProvidersListResultList = /*@__PURE__*/ S.Array(
 export interface ListCustomProvidersResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: CustomProvidersListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListCustomProvidersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(CustomProvidersListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListCustomProvidersResponse",
@@ -5243,10 +5251,13 @@ export const DatasetsListResultList = /*@__PURE__*/ S.Array(
 export interface ListDatasetsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: DatasetsListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListDatasetsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(DatasetsListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListDatasetsResponse",
@@ -5703,10 +5714,13 @@ export const EvaluationsListResultList = /*@__PURE__*/ S.Array(
 export interface ListEvaluationsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: EvaluationsListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListEvaluationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(EvaluationsListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListEvaluationsResponse",
@@ -5781,10 +5795,13 @@ export const EvaluationTypesListResultList = /*@__PURE__*/ S.Array(
 export interface ListEvaluationTypesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: EvaluationTypesListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListEvaluationTypesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(EvaluationTypesListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListEvaluationTypesResponse",
@@ -5949,10 +5966,13 @@ export const LogsListResultList = /*@__PURE__*/ S.Array(
 export interface ListLogsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: LogsListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListLogsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(LogsListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListLogsResponse",
@@ -6020,10 +6040,13 @@ export const ProviderConfigsListResultList = /*@__PURE__*/ S.Array(
 export interface ListProviderConfigsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: ProviderConfigsListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListProviderConfigsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(ProviderConfigsListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListProviderConfigsResponse",
@@ -8221,45 +8244,75 @@ export const invoicePreviewBilling: API.OperationMethod<
 
 export type ListAiGatewaysError = CloudflareOpError;
 /** Lists all AI Gateway evaluator types configured for the account. */
-export const listAiGateways: API.OperationMethod<
+export const listAiGateways: API.PaginatedOperationMethod<
   ListAiGatewaysRequest,
   ListAiGatewaysResponse,
   ListAiGatewaysError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListAiGatewaysRequest,
-  output: ListAiGatewaysResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListAiGatewaysRequest,
+    output: ListAiGatewaysResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "resultInfo.page",
+      items: "result",
+      pageSize: "perPage",
+    } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListCustomProvidersError = CloudflareOpError;
 /** Lists all AI Gateway evaluator types configured for the account. */
-export const listCustomProviders: API.OperationMethod<
+export const listCustomProviders: API.PaginatedOperationMethod<
   ListCustomProvidersRequest,
   ListCustomProvidersResponse,
   ListCustomProvidersError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListCustomProvidersRequest,
-  output: ListCustomProvidersResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListCustomProvidersRequest,
+    output: ListCustomProvidersResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "resultInfo.page",
+      items: "result",
+      pageSize: "perPage",
+    } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListDatasetsError = GatewayNotFound | CloudflareOpError;
 /** Lists all AI Gateway evaluator types configured for the account. */
-export const listDatasets: API.OperationMethod<
+export const listDatasets: API.PaginatedOperationMethod<
   ListDatasetsRequest,
   ListDatasetsResponse,
   ListDatasetsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListDatasetsRequest,
-  output: ListDatasetsResponse,
-  errors: [GatewayNotFound, CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListDatasetsRequest,
+    output: ListDatasetsResponse,
+    errors: [GatewayNotFound, CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "resultInfo.page",
+      items: "result",
+      pageSize: "perPage",
+    } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListDeploymentsDynamicRoutingError = CloudflareOpError;
 /** List all AI Gateway Dynamic Route Deployments. */
@@ -8291,59 +8344,99 @@ export const listDynamicRoutings: API.OperationMethod<
 
 export type ListEvaluationsError = CloudflareOpError;
 /** Lists all AI Gateway evaluator types configured for the account. */
-export const listEvaluations: API.OperationMethod<
+export const listEvaluations: API.PaginatedOperationMethod<
   ListEvaluationsRequest,
   ListEvaluationsResponse,
   ListEvaluationsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListEvaluationsRequest,
-  output: ListEvaluationsResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListEvaluationsRequest,
+    output: ListEvaluationsResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "resultInfo.page",
+      items: "result",
+      pageSize: "perPage",
+    } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListEvaluationTypesError = CloudflareOpError;
 /** List Evaluators */
-export const listEvaluationTypes: API.OperationMethod<
+export const listEvaluationTypes: API.PaginatedOperationMethod<
   ListEvaluationTypesRequest,
   ListEvaluationTypesResponse,
   ListEvaluationTypesError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListEvaluationTypesRequest,
-  output: ListEvaluationTypesResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListEvaluationTypesRequest,
+    output: ListEvaluationTypesResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "resultInfo.page",
+      items: "result",
+      pageSize: "perPage",
+    } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListLogsError = CloudflareOpError;
 /** List Gateway Logs */
-export const listLogs: API.OperationMethod<
+export const listLogs: API.PaginatedOperationMethod<
   ListLogsRequest,
   ListLogsResponse,
   ListLogsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListLogsRequest,
-  output: ListLogsResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListLogsRequest,
+    output: ListLogsResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "resultInfo.page",
+      items: "result",
+      pageSize: "perPage",
+    } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListProviderConfigsError = CloudflareOpError;
 /** Lists all AI Gateway evaluator types configured for the account. */
-export const listProviderConfigs: API.OperationMethod<
+export const listProviderConfigs: API.PaginatedOperationMethod<
   ListProviderConfigsRequest,
   ListProviderConfigsResponse,
   ListProviderConfigsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListProviderConfigsRequest,
-  output: ListProviderConfigsResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListProviderConfigsRequest,
+    output: ListProviderConfigsResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "resultInfo.page",
+      items: "result",
+      pageSize: "perPage",
+    } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListVersionsDynamicRoutingError = CloudflareOpError;
 /** List all AI Gateway Dynamic Route Versions. */

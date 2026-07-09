@@ -4,9 +4,11 @@ import * as API from "@distilled.cloud/core/api";
 import * as T from "../traits.ts";
 import {
   CloudflareProtocol,
+  CloudflarePaginatedProtocol,
   type CloudflareOpError,
   type CloudflareOpContext,
 } from "../protocol.ts";
+import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
 export interface CreateRelayRequest {
@@ -326,10 +328,13 @@ export const RelaysListResultList = /*@__PURE__*/ S.Array(
 export interface ListRelaysResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: RelaysListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListRelaysResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(RelaysListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListRelaysResponse",
@@ -615,17 +620,21 @@ export const getRelay: API.OperationMethod<
 
 export type ListRelaysError = CloudflareOpError;
 /** Lists all MoQ relays for the account. Returns only metadata. Config, status, and tokens are omitted. Results are cursor-paginated (keyset on the `created` timestamp). Use `created_before` / `created_after` with the `created` value of the first/last item in a page to fetch the adjacent page. `result_info` reports the page `count` and the `total` matching the cursor filters. */
-export const listRelays: API.OperationMethod<
+export const listRelays: API.PaginatedOperationMethod<
   ListRelaysRequest,
   ListRelaysResponse,
   ListRelaysError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListRelaysRequest,
-  output: ListRelaysResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListRelaysRequest,
+    output: ListRelaysResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type RotateRelayTokenError = CloudflareOpError;
 /** Generates a new token for the specified type. The old token is immediately invalidated. Token value is shown once in the response. */

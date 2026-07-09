@@ -25,6 +25,14 @@
       "op": "replace",
       "path": "/shapes/com.cloudflare.d1#RawDatabase/output/target",
       "value": "com.cloudflare.d1#RawDatabaseResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.d1#RawDatabase/traits/smithy.api#paginated",
+      "value": {
+        "mode": "single",
+        "items": "result"
+      }
     }
   ]
 }

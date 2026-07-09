@@ -25,6 +25,14 @@
       "op": "replace",
       "path": "/shapes/com.cloudflare.waiting_rooms#DeleteRule/output/target",
       "value": "com.cloudflare.waiting_rooms#DeleteRuleResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.waiting_rooms#DeleteRule/traits/smithy.api#paginated",
+      "value": {
+        "mode": "single",
+        "items": "result"
+      }
     }
   ]
 }

@@ -4,9 +4,11 @@ import * as API from "@distilled.cloud/core/api";
 import * as T from "../traits.ts";
 import {
   CloudflareProtocol,
+  CloudflarePaginatedProtocol,
   type CloudflareOpError,
   type CloudflareOpContext,
 } from "../protocol.ts";
+import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
 export class ScanConfigNotFound extends T.applyErrorMatchers(
@@ -395,12 +397,15 @@ export const RequestsAssetsCreateResultList = /*@__PURE__*/ S.Array(
 export interface CreateRequestAssetResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: RequestsAssetsCreateResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const CreateRequestAssetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(
       RequestsAssetsCreateResultList.pipe(T.EnvelopePayload()),
     ),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "CreateRequestAssetResponse",
@@ -1782,10 +1787,13 @@ export const RequestsMessageGetResultList = /*@__PURE__*/ S.Array(
 export interface GetRequestMessageResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: RequestsMessageGetResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const GetRequestMessageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(RequestsMessageGetResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "GetRequestMessageResponse",
@@ -2247,10 +2255,13 @@ export const ScansConfigListResultList = /*@__PURE__*/ S.Array(
 export interface ListScanConfigsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: ScansConfigListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListScanConfigsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(ScansConfigListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListScanConfigsResponse",
@@ -3978,17 +3989,21 @@ export const createRequest: API.OperationMethod<
 
 export type CreateRequestAssetError = CloudflareOpError;
 /** Lists assets attached to a Cloudforce One intelligence request. */
-export const createRequestAsset: API.OperationMethod<
+export const createRequestAsset: API.PaginatedOperationMethod<
   CreateRequestAssetRequest,
   CreateRequestAssetResponse,
   CreateRequestAssetError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: CreateRequestAssetRequest,
-  output: CreateRequestAssetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: CreateRequestAssetRequest,
+    output: CreateRequestAssetResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type CreateRequestMessageError = CloudflareOpError;
 /** Adds a message to a Cloudforce One intelligence request conversation. */
@@ -4230,17 +4245,21 @@ export const getRequest: API.OperationMethod<
 
 export type GetRequestMessageError = CloudflareOpError;
 /** Lists messages in a Cloudforce One intelligence request conversation. */
-export const getRequestMessage: API.OperationMethod<
+export const getRequestMessage: API.PaginatedOperationMethod<
   GetRequestMessageRequest,
   GetRequestMessageResponse,
   GetRequestMessageError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetRequestMessageRequest,
-  output: GetRequestMessageResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: GetRequestMessageRequest,
+    output: GetRequestMessageResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type GetRequestPriorityError = CloudflareOpError;
 /** Retrieves a specific priority intelligence request from Cloudforce One. */
@@ -4328,17 +4347,21 @@ export const getThreatEventRaw: API.OperationMethod<
 
 export type ListScanConfigsError = CloudflareOpError;
 /** List Scan Configs */
-export const listScanConfigs: API.OperationMethod<
+export const listScanConfigs: API.PaginatedOperationMethod<
   ListScanConfigsRequest,
   ListScanConfigsResponse,
   ListScanConfigsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListScanConfigsRequest,
-  output: ListScanConfigsResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListScanConfigsRequest,
+    output: ListScanConfigsResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListThreatEventAttackersError = CloudflareOpError;
 /** Lists attackers across multiple datasets */

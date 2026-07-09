@@ -55,6 +55,8 @@ interface DistilledOp {
   path: string;
   /** error class name → matcher list (from distilled patches/<svc>/<op>.json) */
   errors: Record<string, unknown[]>;
+  /** pagination config (from the makePaginated call), if the op is paginated */
+  pagination?: Record<string, unknown>;
 }
 
 const distilledOps = new Map<string, DistilledOp>(); // key: METHOD normPath
@@ -71,6 +73,23 @@ for (const file of fs.readdirSync(DIST_SERVICES)) {
     /const (\w+)Request(?::[^=]+)? =[\s\S]*?T\.Http\(\{\s*method:\s*"(\w+)",\s*path:\s*"([^"]+)"/g;
   for (const m of src.matchAll(reqRe)) {
     httpFor.set(m[1], { method: m[2], path: m[3] });
+  }
+
+  // Paginated ops carry their config in the makePaginated call right after
+  // the export: `export const <name>: API.PaginatedOperationMethod<
+  //   ... pagination: { mode: "page", ... } as const`.
+  const paginationFor = new Map<string, Record<string, unknown>>();
+  const pagRe =
+    /export const (\w+): API\.PaginatedOperationMethod<[\s\S]*?pagination:\s*(\{[\s\S]*?\})\s*as const/g;
+  for (const m of src.matchAll(pagRe)) {
+    try {
+      paginationFor.set(
+        m[1],
+        new Function(`return (${m[2]})`)() as Record<string, unknown>,
+      );
+    } catch {
+      console.warn(`⚠️  unparsable pagination config: ${service}/${m[1]}`);
+    }
   }
 
   // Operation exports: `export const <name>: API.(Paginated)OperationMethod<`
@@ -107,6 +126,7 @@ for (const file of fs.readdirSync(DIST_SERVICES)) {
       method: http.method,
       path: http.path,
       errors,
+      pagination: paginationFor.get(exportName),
     });
   }
 }
@@ -207,6 +227,15 @@ for (const file of fs.readdirSync(SMITHY_DIR)) {
 
     // The op shape id the error patches must target (post-rename or original).
     const finalOp = patches.length ? wantOpName : ourOpName;
+
+    // --- Pagination trait ----------------------------------------------------
+    if (dist.pagination) {
+      patches.push({
+        op: "add",
+        path: `/shapes/${ns}#${finalOp}/traits/smithy.api#paginated`,
+        value: dist.pagination,
+      });
+    }
 
     // --- Typed errors --------------------------------------------------------
     const errorNames = Object.keys(dist.errors);

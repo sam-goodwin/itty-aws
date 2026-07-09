@@ -4,9 +4,11 @@ import * as API from "@distilled.cloud/core/api";
 import * as T from "../traits.ts";
 import {
   CloudflareProtocol,
+  CloudflarePaginatedProtocol,
   type CloudflareOpError,
   type CloudflareOpContext,
 } from "../protocol.ts";
+import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
 export class CatalogSyncNotFound extends T.applyErrorMatchers(
@@ -2386,6 +2388,8 @@ export const CatalogSyncsPrebuiltPoliciesListResultList = /*@__PURE__*/ S.Array(
 export interface ListCatalogSyncPrebuiltPoliciesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: CatalogSyncsPrebuiltPoliciesListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListCatalogSyncPrebuiltPoliciesResponse = /*@__PURE__*/ S.suspend(
   () =>
@@ -2393,6 +2397,7 @@ export const ListCatalogSyncPrebuiltPoliciesResponse = /*@__PURE__*/ S.suspend(
       result: S.optional(
         CatalogSyncsPrebuiltPoliciesListResultList.pipe(T.EnvelopePayload()),
       ),
+      resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
     }),
 ).annotate({
   identifier: "ListCatalogSyncPrebuiltPoliciesResponse",
@@ -2486,10 +2491,13 @@ export const CatalogSyncsListResultList = /*@__PURE__*/ S.Array(
 export interface ListCatalogSyncsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: CatalogSyncsListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListCatalogSyncsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(CatalogSyncsListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListCatalogSyncsResponse",
@@ -2764,12 +2772,15 @@ export const CloudIntegrationsListResultList = /*@__PURE__*/ S.Array(
 export interface ListCloudIntegrationsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: CloudIntegrationsListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListCloudIntegrationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(
       CloudIntegrationsListResultList.pipe(T.EnvelopePayload()),
     ),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListCloudIntegrationsResponse",
@@ -3245,10 +3256,13 @@ export const OnRampsListResultList = /*@__PURE__*/ S.Array(
 export interface ListOnRampsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: OnRampsListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListOnRampsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(OnRampsListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListOnRampsResponse",
@@ -3636,10 +3650,13 @@ export const ResourcesListResultList = /*@__PURE__*/ S.Array(
 export interface ListResourcesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: ResourcesListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListResourcesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(ResourcesListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListResourcesResponse",
@@ -5794,66 +5811,78 @@ export type ListCatalogSyncPrebuiltPoliciesError =
   | Forbidden
   | CloudflareOpError;
 /** List prebuilt catalog sync policies (Closed Beta). */
-export const listCatalogSyncPrebuiltPolicies: API.OperationMethod<
+export const listCatalogSyncPrebuiltPolicies: API.PaginatedOperationMethod<
   ListCatalogSyncPrebuiltPoliciesRequest,
   ListCatalogSyncPrebuiltPoliciesResponse,
   ListCatalogSyncPrebuiltPoliciesError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListCatalogSyncPrebuiltPoliciesRequest,
-  output: ListCatalogSyncPrebuiltPoliciesResponse,
-  errors: [
-    FeatureNotEnabled,
-    Forbidden,
-    CloudflareRateLimited,
-    CloudflareError,
-  ],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListCatalogSyncPrebuiltPoliciesRequest,
+    output: ListCatalogSyncPrebuiltPoliciesResponse,
+    errors: [
+      FeatureNotEnabled,
+      Forbidden,
+      CloudflareRateLimited,
+      CloudflareError,
+    ],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListCatalogSyncsError =
   | FeatureNotEnabled
   | Forbidden
   | CloudflareOpError;
 /** List Catalog Syncs (Closed Beta). */
-export const listCatalogSyncs: API.OperationMethod<
+export const listCatalogSyncs: API.PaginatedOperationMethod<
   ListCatalogSyncsRequest,
   ListCatalogSyncsResponse,
   ListCatalogSyncsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListCatalogSyncsRequest,
-  output: ListCatalogSyncsResponse,
-  errors: [
-    FeatureNotEnabled,
-    Forbidden,
-    CloudflareRateLimited,
-    CloudflareError,
-  ],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListCatalogSyncsRequest,
+    output: ListCatalogSyncsResponse,
+    errors: [
+      FeatureNotEnabled,
+      Forbidden,
+      CloudflareRateLimited,
+      CloudflareError,
+    ],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListCloudIntegrationsError =
   | FeatureNotEnabled
   | Forbidden
   | CloudflareOpError;
 /** List Cloud Integrations (Closed Beta). */
-export const listCloudIntegrations: API.OperationMethod<
+export const listCloudIntegrations: API.PaginatedOperationMethod<
   ListCloudIntegrationsRequest,
   ListCloudIntegrationsResponse,
   ListCloudIntegrationsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListCloudIntegrationsRequest,
-  output: ListCloudIntegrationsResponse,
-  errors: [
-    FeatureNotEnabled,
-    Forbidden,
-    CloudflareRateLimited,
-    CloudflareError,
-  ],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListCloudIntegrationsRequest,
+    output: ListCloudIntegrationsResponse,
+    errors: [
+      FeatureNotEnabled,
+      Forbidden,
+      CloudflareRateLimited,
+      CloudflareError,
+    ],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListOnRampAddressSpacesError = CloudflareOpError;
 /** Read the Magic WAN Address Space (Closed Beta). */
@@ -5874,36 +5903,50 @@ export type ListOnRampsError =
   | Forbidden
   | CloudflareOpError;
 /** List On-ramps (Closed Beta). */
-export const listOnRamps: API.OperationMethod<
+export const listOnRamps: API.PaginatedOperationMethod<
   ListOnRampsRequest,
   ListOnRampsResponse,
   ListOnRampsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListOnRampsRequest,
-  output: ListOnRampsResponse,
-  errors: [
-    FeatureNotEnabled,
-    Forbidden,
-    CloudflareRateLimited,
-    CloudflareError,
-  ],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListOnRampsRequest,
+    output: ListOnRampsResponse,
+    errors: [
+      FeatureNotEnabled,
+      Forbidden,
+      CloudflareRateLimited,
+      CloudflareError,
+    ],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListResourcesError = CloudflareOpError;
 /** List resources in the Resource Catalog (Closed Beta). */
-export const listResources: API.OperationMethod<
+export const listResources: API.PaginatedOperationMethod<
   ListResourcesRequest,
   ListResourcesResponse,
   ListResourcesError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListResourcesRequest,
-  output: ListResourcesResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListResourcesRequest,
+    output: ListResourcesResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "resultInfo.page",
+      items: "result",
+      pageSize: "perPage",
+    } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type PatchCatalogSyncError =
   | FeatureNotEnabled

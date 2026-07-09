@@ -25,6 +25,14 @@
       "op": "replace",
       "path": "/shapes/com.cloudflare.calls#ListTurns/output/target",
       "value": "com.cloudflare.calls#ListTurnsResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.calls#ListTurns/traits/smithy.api#paginated",
+      "value": {
+        "mode": "single",
+        "items": "result"
+      }
     }
   ]
 }

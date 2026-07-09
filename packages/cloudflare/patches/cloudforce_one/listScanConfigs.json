@@ -25,6 +25,14 @@
       "op": "replace",
       "path": "/shapes/com.cloudflare.cloudforce_one#ListScanConfigs/output/target",
       "value": "com.cloudflare.cloudforce_one#ListScanConfigsResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.cloudforce_one#ListScanConfigs/traits/smithy.api#paginated",
+      "value": {
+        "mode": "single",
+        "items": "result"
+      }
     }
   ]
 }

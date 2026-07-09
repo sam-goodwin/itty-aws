@@ -4,9 +4,11 @@ import * as API from "@distilled.cloud/core/api";
 import * as T from "../traits.ts";
 import {
   CloudflareProtocol,
+  CloudflarePaginatedProtocol,
   type CloudflareOpError,
   type CloudflareOpContext,
 } from "../protocol.ts";
+import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
 export class AddressMapNotFound extends T.applyErrorMatchers(
@@ -1533,10 +1535,13 @@ export const AddressMapsListResultList = /*@__PURE__*/ S.Array(
 export interface ListAddressMapsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: AddressMapsListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListAddressMapsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(AddressMapsListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListAddressMapsResponse",
@@ -1652,12 +1657,15 @@ export const PrefixesBgpPrefixesListResultList = /*@__PURE__*/ S.Array(
 export interface ListPrefixBgpPrefixesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: PrefixesBgpPrefixesListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListPrefixBgpPrefixesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(
       PrefixesBgpPrefixesListResultList.pipe(T.EnvelopePayload()),
     ),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListPrefixBgpPrefixesResponse",
@@ -1720,12 +1728,15 @@ export const PrefixesDelegationsListResultList = /*@__PURE__*/ S.Array(
 export interface ListPrefixDelegationsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: PrefixesDelegationsListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListPrefixDelegationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(
       PrefixesDelegationsListResultList.pipe(T.EnvelopePayload()),
     ),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListPrefixDelegationsResponse",
@@ -1830,10 +1841,13 @@ export const PrefixesListResultList = /*@__PURE__*/ S.Array(
 export interface ListPrefixesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: PrefixesListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListPrefixesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(PrefixesListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListPrefixesResponse",
@@ -1916,12 +1930,15 @@ export const PrefixesServiceBindingsListResultList = /*@__PURE__*/ S.Array(
 export interface ListPrefixServiceBindingsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: PrefixesServiceBindingsListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListPrefixServiceBindingsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(
       PrefixesServiceBindingsListResultList.pipe(T.EnvelopePayload()),
     ),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListPrefixServiceBindingsResponse",
@@ -1970,12 +1987,15 @@ export const RegionalHostnamesRegionsListResultList = /*@__PURE__*/ S.Array(
 export interface ListRegionalHostnameRegionsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: RegionalHostnamesRegionsListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListRegionalHostnameRegionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(
       RegionalHostnamesRegionsListResultList.pipe(T.EnvelopePayload()),
     ),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListRegionalHostnameRegionsResponse",
@@ -2028,12 +2048,15 @@ export const RegionalHostnamesListResultList = /*@__PURE__*/ S.Array(
 export interface ListRegionalHostnamesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: RegionalHostnamesListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListRegionalHostnamesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(
       RegionalHostnamesListResultList.pipe(T.EnvelopePayload()),
     ),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListRegionalHostnamesResponse",
@@ -2080,10 +2103,13 @@ export const ServicesListResultList = /*@__PURE__*/ S.Array(
 export interface ListServicesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: ServicesListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListServicesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(ServicesListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListServicesResponse",
@@ -3091,139 +3117,171 @@ export const getRegionalHostname: API.OperationMethod<
 
 export type ListAddressMapsError = CloudflareOpError;
 /** List all address maps owned by the account. */
-export const listAddressMaps: API.OperationMethod<
+export const listAddressMaps: API.PaginatedOperationMethod<
   ListAddressMapsRequest,
   ListAddressMapsResponse,
   ListAddressMapsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListAddressMapsRequest,
-  output: ListAddressMapsResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListAddressMapsRequest,
+    output: ListAddressMapsResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListPrefixBgpPrefixesError =
   | PrefixNotFound
   | InvalidAccountId
   | CloudflareOpError;
 /** List all BGP Prefixes within the specified IP Prefix. BGP Prefixes are used to control which specific subnets are advertised to the Internet. It is possible to advertise subnets more specific than an IP Prefix by creating more specific BGP Prefixes. */
-export const listPrefixBgpPrefixes: API.OperationMethod<
+export const listPrefixBgpPrefixes: API.PaginatedOperationMethod<
   ListPrefixBgpPrefixesRequest,
   ListPrefixBgpPrefixesResponse,
   ListPrefixBgpPrefixesError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListPrefixBgpPrefixesRequest,
-  output: ListPrefixBgpPrefixesResponse,
-  errors: [
-    PrefixNotFound,
-    InvalidAccountId,
-    CloudflareRateLimited,
-    CloudflareError,
-  ],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListPrefixBgpPrefixesRequest,
+    output: ListPrefixBgpPrefixesResponse,
+    errors: [
+      PrefixNotFound,
+      InvalidAccountId,
+      CloudflareRateLimited,
+      CloudflareError,
+    ],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListPrefixDelegationsError =
   | PrefixNotFound
   | InvalidAccountId
   | CloudflareOpError;
 /** List all delegations for a given account IP prefix. */
-export const listPrefixDelegations: API.OperationMethod<
+export const listPrefixDelegations: API.PaginatedOperationMethod<
   ListPrefixDelegationsRequest,
   ListPrefixDelegationsResponse,
   ListPrefixDelegationsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListPrefixDelegationsRequest,
-  output: ListPrefixDelegationsResponse,
-  errors: [
-    PrefixNotFound,
-    InvalidAccountId,
-    CloudflareRateLimited,
-    CloudflareError,
-  ],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListPrefixDelegationsRequest,
+    output: ListPrefixDelegationsResponse,
+    errors: [
+      PrefixNotFound,
+      InvalidAccountId,
+      CloudflareRateLimited,
+      CloudflareError,
+    ],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListPrefixesError = CloudflareOpError;
 /** List all prefixes owned by the account. */
-export const listPrefixes: API.OperationMethod<
+export const listPrefixes: API.PaginatedOperationMethod<
   ListPrefixesRequest,
   ListPrefixesResponse,
   ListPrefixesError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListPrefixesRequest,
-  output: ListPrefixesResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListPrefixesRequest,
+    output: ListPrefixesResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListPrefixServiceBindingsError =
   | PrefixNotFound
   | InvalidAccountId
   | CloudflareOpError;
 /** List the Cloudflare services this prefix is currently bound to. Traffic sent to an address within an IP prefix will be routed to the Cloudflare service of the most-specific Service Binding matching the address. **Example:** binding `192.0.2.0/24` to Cloudflare Magic Transit and `192.0.2.1/32` to the Cloudflare CDN would route traffic for `192.0.2.1` to the CDN, and traffic for all other IPs in the prefix to Cloudflare Magic Transit. */
-export const listPrefixServiceBindings: API.OperationMethod<
+export const listPrefixServiceBindings: API.PaginatedOperationMethod<
   ListPrefixServiceBindingsRequest,
   ListPrefixServiceBindingsResponse,
   ListPrefixServiceBindingsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListPrefixServiceBindingsRequest,
-  output: ListPrefixServiceBindingsResponse,
-  errors: [
-    PrefixNotFound,
-    InvalidAccountId,
-    CloudflareRateLimited,
-    CloudflareError,
-  ],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListPrefixServiceBindingsRequest,
+    output: ListPrefixServiceBindingsResponse,
+    errors: [
+      PrefixNotFound,
+      InvalidAccountId,
+      CloudflareRateLimited,
+      CloudflareError,
+    ],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListRegionalHostnameRegionsError = CloudflareOpError;
 /** List all Regional Services regions available for use by this account. */
-export const listRegionalHostnameRegions: API.OperationMethod<
+export const listRegionalHostnameRegions: API.PaginatedOperationMethod<
   ListRegionalHostnameRegionsRequest,
   ListRegionalHostnameRegionsResponse,
   ListRegionalHostnameRegionsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListRegionalHostnameRegionsRequest,
-  output: ListRegionalHostnameRegionsResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListRegionalHostnameRegionsRequest,
+    output: ListRegionalHostnameRegionsResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListRegionalHostnamesError = Forbidden | CloudflareOpError;
 /** List all Regional Hostnames within a zone. */
-export const listRegionalHostnames: API.OperationMethod<
+export const listRegionalHostnames: API.PaginatedOperationMethod<
   ListRegionalHostnamesRequest,
   ListRegionalHostnamesResponse,
   ListRegionalHostnamesError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListRegionalHostnamesRequest,
-  output: ListRegionalHostnamesResponse,
-  errors: [Forbidden, CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListRegionalHostnamesRequest,
+    output: ListRegionalHostnamesResponse,
+    errors: [Forbidden, CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListServicesError = CloudflareOpError;
 /** Bring-Your-Own IP (BYOIP) prefixes onboarded to Cloudflare must be bound to a service running on the Cloudflare network to enable a Cloudflare product on the IP addresses. This endpoint can be used as a reference of available services on the Cloudflare network, and their service IDs. */
-export const listServices: API.OperationMethod<
+export const listServices: API.PaginatedOperationMethod<
   ListServicesRequest,
   ListServicesResponse,
   ListServicesError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListServicesRequest,
-  output: ListServicesResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListServicesRequest,
+    output: ListServicesResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type PatchAddressMapError =
   | MethodNotAllowed

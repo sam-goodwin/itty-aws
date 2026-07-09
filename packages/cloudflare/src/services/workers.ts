@@ -4,9 +4,11 @@ import * as API from "@distilled.cloud/core/api";
 import * as T from "../traits.ts";
 import {
   CloudflareProtocol,
+  CloudflarePaginatedProtocol,
   type CloudflareOpError,
   type CloudflareOpContext,
 } from "../protocol.ts";
+import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
 export class ContentTypeRequired extends T.applyErrorMatchers(
@@ -8121,12 +8123,15 @@ export const ObservabilityTelemetryKeysResultList = /*@__PURE__*/ S.Array(
 export interface KeysObservabilityTelemetryResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: ObservabilityTelemetryKeysResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const KeysObservabilityTelemetryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(
       ObservabilityTelemetryKeysResultList.pipe(T.EnvelopePayload()),
     ),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "KeysObservabilityTelemetryResponse",
@@ -8536,10 +8541,13 @@ export const BetaWorkersListResultList = /*@__PURE__*/ S.Array(
 export interface ListBetaWorkersResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: BetaWorkersListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListBetaWorkersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(BetaWorkersListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListBetaWorkersResponse",
@@ -9114,12 +9122,15 @@ export const BetaWorkersVersionsListResultList = /*@__PURE__*/ S.Array(
 export interface ListBetaWorkerVersionsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: BetaWorkersVersionsListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListBetaWorkerVersionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(
       BetaWorkersVersionsListResultList.pipe(T.EnvelopePayload()),
     ),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListBetaWorkerVersionsResponse",
@@ -9196,10 +9207,13 @@ export const DomainsListResultList = /*@__PURE__*/ S.Array(
 export interface ListDomainsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: DomainsListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListDomainsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(DomainsListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListDomainsResponse",
@@ -9345,6 +9359,8 @@ export const ObservabilityDestinationsListResultList = /*@__PURE__*/ S.Array(
 export interface ListObservabilityDestinationsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: ObservabilityDestinationsListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListObservabilityDestinationsResponse = /*@__PURE__*/ S.suspend(
   () =>
@@ -9352,6 +9368,7 @@ export const ListObservabilityDestinationsResponse = /*@__PURE__*/ S.suspend(
       result: S.optional(
         ObservabilityDestinationsListResultList.pipe(T.EnvelopePayload()),
       ),
+      resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
     }),
 ).annotate({
   identifier: "ListObservabilityDestinationsResponse",
@@ -9681,12 +9698,15 @@ export const ObservabilityQueriesListResultList = /*@__PURE__*/ S.Array(
 export interface ListObservabilityQueriesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: ObservabilityQueriesListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListObservabilityQueriesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(
       ObservabilityQueriesListResultList.pipe(T.EnvelopePayload()),
     ),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListObservabilityQueriesResponse",
@@ -9736,10 +9756,13 @@ export const RoutesListResultList = /*@__PURE__*/ S.Array(
 export interface ListRoutesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: RoutesListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListRoutesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(RoutesListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListRoutesResponse",
@@ -10245,10 +10268,13 @@ export const ScriptsListResultList = /*@__PURE__*/ S.Array(
 export interface ListScriptsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: ScriptsListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListScriptsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(ScriptsListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListScriptsResponse",
@@ -10300,10 +10326,13 @@ export const ScriptsSecretsListResultList = /*@__PURE__*/ S.Array(
 export interface ListScriptSecretsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: ScriptsSecretsListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListScriptSecretsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(ScriptsSecretsListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListScriptSecretsResponse",
@@ -15465,6 +15494,8 @@ export const ObservabilityTelemetryValuesResultList = /*@__PURE__*/ S.Array(
 export interface ValuesObservabilityTelemetryResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: ObservabilityTelemetryValuesResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ValuesObservabilityTelemetryResponse = /*@__PURE__*/ S.suspend(
   () =>
@@ -15472,6 +15503,7 @@ export const ValuesObservabilityTelemetryResponse = /*@__PURE__*/ S.suspend(
       result: S.optional(
         ObservabilityTelemetryValuesResultList.pipe(T.EnvelopePayload()),
       ),
+      resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
     }),
 ).annotate({
   identifier: "ValuesObservabilityTelemetryResponse",
@@ -16214,101 +16246,141 @@ export const getSubdomain: API.OperationMethod<
 
 export type KeysObservabilityTelemetryError = InvalidRoute | CloudflareOpError;
 /** List all the keys in your telemetry events. */
-export const keysObservabilityTelemetry: API.OperationMethod<
+export const keysObservabilityTelemetry: API.PaginatedOperationMethod<
   KeysObservabilityTelemetryRequest,
   KeysObservabilityTelemetryResponse,
   KeysObservabilityTelemetryError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: KeysObservabilityTelemetryRequest,
-  output: KeysObservabilityTelemetryResponse,
-  errors: [InvalidRoute, CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: KeysObservabilityTelemetryRequest,
+    output: KeysObservabilityTelemetryResponse,
+    errors: [InvalidRoute, CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListBetaWorkersError = InvalidRoute | CloudflareOpError;
 /** List all Workers for an account. */
-export const listBetaWorkers: API.OperationMethod<
+export const listBetaWorkers: API.PaginatedOperationMethod<
   ListBetaWorkersRequest,
   ListBetaWorkersResponse,
   ListBetaWorkersError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListBetaWorkersRequest,
-  output: ListBetaWorkersResponse,
-  errors: [InvalidRoute, CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListBetaWorkersRequest,
+    output: ListBetaWorkersResponse,
+    errors: [InvalidRoute, CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "resultInfo.page",
+      items: "result",
+      pageSize: "perPage",
+    } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListBetaWorkerVersionsError = WorkerNotFound | CloudflareOpError;
 /** List all versions for a Worker. */
-export const listBetaWorkerVersions: API.OperationMethod<
+export const listBetaWorkerVersions: API.PaginatedOperationMethod<
   ListBetaWorkerVersionsRequest,
   ListBetaWorkerVersionsResponse,
   ListBetaWorkerVersionsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListBetaWorkerVersionsRequest,
-  output: ListBetaWorkerVersionsResponse,
-  errors: [WorkerNotFound, CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListBetaWorkerVersionsRequest,
+    output: ListBetaWorkerVersionsResponse,
+    errors: [WorkerNotFound, CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "resultInfo.page",
+      items: "result",
+      pageSize: "perPage",
+    } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListDomainsError = InvalidRoute | CloudflareOpError;
 /** Lists all domains for an account. */
-export const listDomains: API.OperationMethod<
+export const listDomains: API.PaginatedOperationMethod<
   ListDomainsRequest,
   ListDomainsResponse,
   ListDomainsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListDomainsRequest,
-  output: ListDomainsResponse,
-  errors: [InvalidRoute, CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListDomainsRequest,
+    output: ListDomainsResponse,
+    errors: [InvalidRoute, CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListObservabilityDestinationsError = Forbidden | CloudflareOpError;
 /** List your Workers Observability Telemetry Destinations. */
-export const listObservabilityDestinations: API.OperationMethod<
+export const listObservabilityDestinations: API.PaginatedOperationMethod<
   ListObservabilityDestinationsRequest,
   ListObservabilityDestinationsResponse,
   ListObservabilityDestinationsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListObservabilityDestinationsRequest,
-  output: ListObservabilityDestinationsResponse,
-  errors: [Forbidden, CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListObservabilityDestinationsRequest,
+    output: ListObservabilityDestinationsResponse,
+    errors: [Forbidden, CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListObservabilityQueriesError = CloudflareOpError;
 /** List saved queries. */
-export const listObservabilityQueries: API.OperationMethod<
+export const listObservabilityQueries: API.PaginatedOperationMethod<
   ListObservabilityQueriesRequest,
   ListObservabilityQueriesResponse,
   ListObservabilityQueriesError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListObservabilityQueriesRequest,
-  output: ListObservabilityQueriesResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListObservabilityQueriesRequest,
+    output: ListObservabilityQueriesResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListRoutesError = InvalidRoute | Forbidden | CloudflareOpError;
 /** Returns routes for a zone. */
-export const listRoutes: API.OperationMethod<
+export const listRoutes: API.PaginatedOperationMethod<
   ListRoutesRequest,
   ListRoutesResponse,
   ListRoutesError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListRoutesRequest,
-  output: ListRoutesResponse,
-  errors: [InvalidRoute, Forbidden, CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListRoutesRequest,
+    output: ListRoutesResponse,
+    errors: [InvalidRoute, Forbidden, CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListScriptDeploymentsError = WorkerNotFound | CloudflareOpError;
 /** List of Worker Deployments. The first deployment in the list is the latest deployment actively serving traffic. */
@@ -16326,31 +16398,39 @@ export const listScriptDeployments: API.OperationMethod<
 
 export type ListScriptsError = InvalidRoute | CloudflareOpError;
 /** Fetch a list of uploaded workers. */
-export const listScripts: API.OperationMethod<
+export const listScripts: API.PaginatedOperationMethod<
   ListScriptsRequest,
   ListScriptsResponse,
   ListScriptsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListScriptsRequest,
-  output: ListScriptsResponse,
-  errors: [InvalidRoute, CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListScriptsRequest,
+    output: ListScriptsResponse,
+    errors: [InvalidRoute, CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListScriptSecretsError = WorkerNotFound | CloudflareOpError;
 /** List secrets bound to a script. */
-export const listScriptSecrets: API.OperationMethod<
+export const listScriptSecrets: API.PaginatedOperationMethod<
   ListScriptSecretsRequest,
   ListScriptSecretsResponse,
   ListScriptSecretsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListScriptSecretsRequest,
-  output: ListScriptSecretsResponse,
-  errors: [WorkerNotFound, CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListScriptSecretsRequest,
+    output: ListScriptSecretsResponse,
+    errors: [WorkerNotFound, CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListScriptVersionsError = WorkerNotFound | CloudflareOpError;
 /** List of Worker Versions. The first version in the list is the latest version. */
@@ -16709,14 +16789,18 @@ export type ValuesObservabilityTelemetryError =
   | InvalidRoute
   | CloudflareOpError;
 /** List unique values found in your events. */
-export const valuesObservabilityTelemetry: API.OperationMethod<
+export const valuesObservabilityTelemetry: API.PaginatedOperationMethod<
   ValuesObservabilityTelemetryRequest,
   ValuesObservabilityTelemetryResponse,
   ValuesObservabilityTelemetryError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ValuesObservabilityTelemetryRequest,
-  output: ValuesObservabilityTelemetryResponse,
-  errors: [InvalidRoute, CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ValuesObservabilityTelemetryRequest,
+    output: ValuesObservabilityTelemetryResponse,
+    errors: [InvalidRoute, CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);

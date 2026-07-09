@@ -25,6 +25,14 @@
       "op": "replace",
       "path": "/shapes/com.cloudflare.api_gateway#BulkUpdateOperationLabels/output/target",
       "value": "com.cloudflare.api_gateway#BulkUpdateOperationLabelsResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.api_gateway#BulkUpdateOperationLabels/traits/smithy.api#paginated",
+      "value": {
+        "mode": "single",
+        "items": "result"
+      }
     }
   ]
 }

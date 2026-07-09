@@ -4,9 +4,11 @@ import * as API from "@distilled.cloud/core/api";
 import * as T from "../traits.ts";
 import {
   CloudflareProtocol,
+  CloudflarePaginatedProtocol,
   type CloudflareOpError,
   type CloudflareOpContext,
 } from "../protocol.ts";
+import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
 export class Forbidden extends T.applyErrorMatchers(
@@ -1196,10 +1198,13 @@ export const RecipientsListResultList = /*@__PURE__*/ S.Array(
 export interface ListRecipientsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: RecipientsListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListRecipientsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(RecipientsListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListRecipientsResponse",
@@ -1314,10 +1319,13 @@ export const ResourcesListResultList = /*@__PURE__*/ S.Array(
 export interface ListResourcesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: ResourcesListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListResourcesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(ResourcesListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListResourcesResponse",
@@ -1548,10 +1556,13 @@ export const ListResultList = /*@__PURE__*/ S.Array(
 export interface ListResourceSharingsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: ListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListResourceSharingsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(ListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListResourceSharingsResponse",
@@ -1963,45 +1974,75 @@ export const getResourceSharing: API.OperationMethod<
 
 export type ListRecipientsError = ShareNotFound | Forbidden | CloudflareOpError;
 /** List share recipients by share ID. */
-export const listRecipients: API.OperationMethod<
+export const listRecipients: API.PaginatedOperationMethod<
   ListRecipientsRequest,
   ListRecipientsResponse,
   ListRecipientsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListRecipientsRequest,
-  output: ListRecipientsResponse,
-  errors: [ShareNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListRecipientsRequest,
+    output: ListRecipientsResponse,
+    errors: [ShareNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "resultInfo.page",
+      items: "result",
+      pageSize: "perPage",
+    } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListResourcesError = ShareNotFound | Forbidden | CloudflareOpError;
 /** List share resources by share ID. */
-export const listResources: API.OperationMethod<
+export const listResources: API.PaginatedOperationMethod<
   ListResourcesRequest,
   ListResourcesResponse,
   ListResourcesError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListResourcesRequest,
-  output: ListResourcesResponse,
-  errors: [ShareNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListResourcesRequest,
+    output: ListResourcesResponse,
+    errors: [ShareNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "resultInfo.page",
+      items: "result",
+      pageSize: "perPage",
+    } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListResourceSharingsError = Forbidden | CloudflareOpError;
 /** Lists all account shares. */
-export const listResourceSharings: API.OperationMethod<
+export const listResourceSharings: API.PaginatedOperationMethod<
   ListResourceSharingsRequest,
   ListResourceSharingsResponse,
   ListResourceSharingsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListResourceSharingsRequest,
-  output: ListResourceSharingsResponse,
-  errors: [Forbidden, CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListResourceSharingsRequest,
+    output: ListResourceSharingsResponse,
+    errors: [Forbidden, CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "resultInfo.page",
+      items: "result",
+      pageSize: "perPage",
+    } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type UpdateResourceError =
   | ShareResourceNotFound

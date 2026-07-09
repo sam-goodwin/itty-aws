@@ -4,9 +4,11 @@ import * as API from "@distilled.cloud/core/api";
 import * as T from "../traits.ts";
 import {
   CloudflareProtocol,
+  CloudflarePaginatedProtocol,
   type CloudflareOpError,
   type CloudflareOpContext,
 } from "../protocol.ts";
+import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
 export type BulkDeleteRequestIdList = string[];
@@ -136,10 +138,13 @@ export const BulkUpdateResultList = /*@__PURE__*/ S.Array(
 export interface BulkPutFiltersResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: BulkUpdateResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const BulkPutFiltersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(BulkUpdateResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "BulkPutFiltersResponse",
@@ -222,10 +227,13 @@ export const CreateResultList = /*@__PURE__*/ S.Array(
 export interface CreateFilterResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: CreateResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const CreateFilterResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(CreateResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "CreateFilterResponse",
@@ -376,10 +384,13 @@ export const ListResultList = /*@__PURE__*/ S.Array(
 export interface ListFiltersResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: ListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListFiltersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(ListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListFiltersResponse",
@@ -459,31 +470,39 @@ export const bulkDeleteFilters: API.OperationMethod<
 
 export type BulkPutFiltersError = CloudflareOpError;
 /** Updates one or more existing filters. */
-export const bulkPutFilters: API.OperationMethod<
+export const bulkPutFilters: API.PaginatedOperationMethod<
   BulkPutFiltersRequest,
   BulkPutFiltersResponse,
   BulkPutFiltersError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BulkPutFiltersRequest,
-  output: BulkPutFiltersResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: BulkPutFiltersRequest,
+    output: BulkPutFiltersResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type CreateFilterError = CloudflareOpError;
 /** Creates one or more filters. */
-export const createFilter: API.OperationMethod<
+export const createFilter: API.PaginatedOperationMethod<
   CreateFilterRequest,
   CreateFilterResponse,
   CreateFilterError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: CreateFilterRequest,
-  output: CreateFilterResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: CreateFilterRequest,
+    output: CreateFilterResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type DeleteFilterError = CloudflareOpError;
 /** Deletes an existing filter. */
@@ -515,17 +534,27 @@ export const getFilter: API.OperationMethod<
 
 export type ListFiltersError = CloudflareOpError;
 /** Fetches filters in a zone. You can filter the results using several optional parameters. */
-export const listFilters: API.OperationMethod<
+export const listFilters: API.PaginatedOperationMethod<
   ListFiltersRequest,
   ListFiltersResponse,
   ListFiltersError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListFiltersRequest,
-  output: ListFiltersResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListFiltersRequest,
+    output: ListFiltersResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "resultInfo.page",
+      items: "result",
+      pageSize: "perPage",
+    } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type UpdateFilterError = CloudflareOpError;
 /** Updates an existing filter. */

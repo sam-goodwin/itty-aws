@@ -4,9 +4,11 @@ import * as API from "@distilled.cloud/core/api";
 import * as T from "../traits.ts";
 import {
   CloudflareProtocol,
+  CloudflarePaginatedProtocol,
   type CloudflareOpError,
   type CloudflareOpContext,
 } from "../protocol.ts";
+import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
 export class InvalidExpirationTtl extends T.applyErrorMatchers(
@@ -549,10 +551,13 @@ export const NamespacesKeysListResultList = /*@__PURE__*/ S.Array(
 export interface ListNamespaceKeysResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: NamespacesKeysListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListNamespaceKeysResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(NamespacesKeysListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListNamespaceKeysResponse",
@@ -622,10 +627,13 @@ export const NamespacesListResultList = /*@__PURE__*/ S.Array(
 export interface ListNamespacesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: NamespacesListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListNamespacesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(NamespacesListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListNamespacesResponse",
@@ -1126,31 +1134,51 @@ export const getNamespaceValue: API.OperationMethod<
 
 export type ListNamespaceKeysError = CloudflareOpError;
 /** Lists a namespace's keys. */
-export const listNamespaceKeys: API.OperationMethod<
+export const listNamespaceKeys: API.PaginatedOperationMethod<
   ListNamespaceKeysRequest,
   ListNamespaceKeysResponse,
   ListNamespaceKeysError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListNamespaceKeysRequest,
-  output: ListNamespaceKeysResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListNamespaceKeysRequest,
+    output: ListNamespaceKeysResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: {
+      mode: "cursor",
+      inputToken: "cursor",
+      outputToken: "resultInfo.cursor",
+      items: "result",
+      pageSize: "limit",
+    } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListNamespacesError = CloudflareOpError;
 /** Returns the namespaces owned by an account. */
-export const listNamespaces: API.OperationMethod<
+export const listNamespaces: API.PaginatedOperationMethod<
   ListNamespacesRequest,
   ListNamespacesResponse,
   ListNamespacesError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListNamespacesRequest,
-  output: ListNamespacesResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListNamespacesRequest,
+    output: ListNamespacesResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "resultInfo.page",
+      items: "result",
+      pageSize: "perPage",
+    } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type NamespacesKeysBulkDeleteError = CloudflareOpError;
 /** Remove multiple KV pairs from the namespace. Body should be an array of up to 10,000 keys to be removed. */

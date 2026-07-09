@@ -4,9 +4,11 @@ import * as API from "@distilled.cloud/core/api";
 import * as T from "../traits.ts";
 import {
   CloudflareProtocol,
+  CloudflarePaginatedProtocol,
   type CloudflareOpError,
   type CloudflareOpContext,
 } from "../protocol.ts";
+import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
 export class BucketAlreadyExists extends T.applyErrorMatchers(
@@ -2493,10 +2495,13 @@ export const BucketsObjectsListResultList = /*@__PURE__*/ S.Array(
 export interface ListBucketObjectsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: BucketsObjectsListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListBucketObjectsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(BucketsObjectsListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListBucketObjectsResponse",
@@ -2679,12 +2684,15 @@ export const SuperSlurperJobsLogsListResultList = /*@__PURE__*/ S.Array(
 export interface ListSuperSlurperJobLogsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: SuperSlurperJobsLogsListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListSuperSlurperJobLogsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(
       SuperSlurperJobsLogsListResultList.pipe(T.EnvelopePayload()),
     ),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListSuperSlurperJobLogsResponse",
@@ -2804,12 +2812,15 @@ export const SuperSlurperJobsListResultList = /*@__PURE__*/ S.Array(
 export interface ListSuperSlurperJobsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: SuperSlurperJobsListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListSuperSlurperJobsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(
       SuperSlurperJobsListResultList.pipe(T.EnvelopePayload()),
     ),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListSuperSlurperJobsResponse",
@@ -4563,17 +4574,27 @@ export const listBucketMetrics: API.OperationMethod<
 
 export type ListBucketObjectsError = CloudflareOpError;
 /** Lists objects in an R2 bucket. Returns object metadata including key, size, etag, last modified date, HTTP metadata, and custom metadata. For most workloads, we recommend using R2's [S3-compatible API](https://developers.cloudflare.com/r2/api/s3/api/) or a [Worker with an R2 binding](https://developers.cloudflare.com/r2/api/workers/workers-api-reference/) instead. */
-export const listBucketObjects: API.OperationMethod<
+export const listBucketObjects: API.PaginatedOperationMethod<
   ListBucketObjectsRequest,
   ListBucketObjectsResponse,
   ListBucketObjectsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListBucketObjectsRequest,
-  output: ListBucketObjectsResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListBucketObjectsRequest,
+    output: ListBucketObjectsResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: {
+      mode: "cursor",
+      inputToken: "cursor",
+      outputToken: "resultInfo.cursor",
+      items: "result",
+      pageSize: "perPage",
+    } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListBucketsError = InvalidRoute | CloudflareOpError;
 /** Lists all R2 buckets on your account. */
@@ -4591,31 +4612,39 @@ export const listBuckets: API.OperationMethod<
 
 export type ListSuperSlurperJobLogsError = CloudflareOpError;
 /** Gets log entries for an R2 Super Slurper migration job, showing migration status changes, errors, etc. */
-export const listSuperSlurperJobLogs: API.OperationMethod<
+export const listSuperSlurperJobLogs: API.PaginatedOperationMethod<
   ListSuperSlurperJobLogsRequest,
   ListSuperSlurperJobLogsResponse,
   ListSuperSlurperJobLogsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListSuperSlurperJobLogsRequest,
-  output: ListSuperSlurperJobLogsResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListSuperSlurperJobLogsRequest,
+    output: ListSuperSlurperJobLogsResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListSuperSlurperJobsError = CloudflareOpError;
 /** Lists all R2 Super Slurper migration jobs for the account with their status. */
-export const listSuperSlurperJobs: API.OperationMethod<
+export const listSuperSlurperJobs: API.PaginatedOperationMethod<
   ListSuperSlurperJobsRequest,
   ListSuperSlurperJobsResponse,
   ListSuperSlurperJobsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListSuperSlurperJobsRequest,
-  output: ListSuperSlurperJobsResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListSuperSlurperJobsRequest,
+    output: ListSuperSlurperJobsResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type PatchBucketError = NoSuchBucket | InvalidRoute | CloudflareOpError;
 /** Updates properties of an existing R2 bucket. */

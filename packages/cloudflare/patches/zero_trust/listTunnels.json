@@ -25,6 +25,17 @@
       "op": "replace",
       "path": "/shapes/com.cloudflare.zero_trust#ListTunnels/output/target",
       "value": "com.cloudflare.zero_trust#ListTunnelsResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.zero_trust#ListTunnels/traits/smithy.api#paginated",
+      "value": {
+        "mode": "page",
+        "inputToken": "page",
+        "outputToken": "resultInfo.page",
+        "items": "result",
+        "pageSize": "perPage"
+      }
     }
   ]
 }

@@ -25,6 +25,17 @@
       "op": "replace",
       "path": "/shapes/com.cloudflare.abuse_reports#ListMitigations/output/target",
       "value": "com.cloudflare.abuse_reports#ListMitigationsResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.abuse_reports#ListMitigations/traits/smithy.api#paginated",
+      "value": {
+        "mode": "page",
+        "inputToken": "page",
+        "outputToken": "resultInfo.page",
+        "items": "result.items",
+        "pageSize": "perPage"
+      }
     }
   ]
 }

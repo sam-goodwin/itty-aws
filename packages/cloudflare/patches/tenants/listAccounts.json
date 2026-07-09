@@ -25,6 +25,14 @@
       "op": "replace",
       "path": "/shapes/com.cloudflare.tenants#ListAccounts/output/target",
       "value": "com.cloudflare.tenants#ListAccountsResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.tenants#ListAccounts/traits/smithy.api#paginated",
+      "value": {
+        "mode": "single",
+        "items": "result"
+      }
     }
   ]
 }

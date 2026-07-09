@@ -25,6 +25,17 @@
       "op": "replace",
       "path": "/shapes/com.cloudflare.rate_limits#ListRateLimits/output/target",
       "value": "com.cloudflare.rate_limits#ListRateLimitsResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.rate_limits#ListRateLimits/traits/smithy.api#paginated",
+      "value": {
+        "mode": "page",
+        "inputToken": "page",
+        "outputToken": "resultInfo.page",
+        "items": "result",
+        "pageSize": "perPage"
+      }
     }
   ]
 }

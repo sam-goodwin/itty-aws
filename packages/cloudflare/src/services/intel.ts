@@ -4,9 +4,11 @@ import * as API from "@distilled.cloud/core/api";
 import * as T from "../traits.ts";
 import {
   CloudflareProtocol,
+  CloudflarePaginatedProtocol,
   type CloudflareOpError,
   type CloudflareOpContext,
 } from "../protocol.ts";
+import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
 export class Forbidden extends T.applyErrorMatchers(
@@ -605,6 +607,8 @@ export const AttackSurfaceReportIssueTypesGetResultList = /*@__PURE__*/ S.Array(
 export interface GetAttackSurfaceReportIssueTypeResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: AttackSurfaceReportIssueTypesGetResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const GetAttackSurfaceReportIssueTypeResponse = /*@__PURE__*/ S.suspend(
   () =>
@@ -612,6 +616,7 @@ export const GetAttackSurfaceReportIssueTypeResponse = /*@__PURE__*/ S.suspend(
       result: S.optional(
         AttackSurfaceReportIssueTypesGetResultList.pipe(T.EnvelopePayload()),
       ),
+      resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
     }),
 ).annotate({
   identifier: "GetAttackSurfaceReportIssueTypeResponse",
@@ -2141,10 +2146,13 @@ export const IndicatorFeedsListResultList = /*@__PURE__*/ S.Array(
 export interface ListIndicatorFeedsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: IndicatorFeedsListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListIndicatorFeedsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(IndicatorFeedsListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListIndicatorFeedsResponse",
@@ -2206,10 +2214,13 @@ export const SinkholesListResultList = /*@__PURE__*/ S.Array(
 export interface ListSinkholesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: SinkholesListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListSinkholesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(SinkholesListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListSinkholesResponse",
@@ -2818,17 +2829,21 @@ export const getAsnSubnet: API.OperationMethod<
 
 export type GetAttackSurfaceReportIssueTypeError = CloudflareOpError;
 /** Lists all available issue types in Security Center, describing categories of security issues. */
-export const getAttackSurfaceReportIssueType: API.OperationMethod<
+export const getAttackSurfaceReportIssueType: API.PaginatedOperationMethod<
   GetAttackSurfaceReportIssueTypeRequest,
   GetAttackSurfaceReportIssueTypeResponse,
   GetAttackSurfaceReportIssueTypeError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetAttackSurfaceReportIssueTypeRequest,
-  output: GetAttackSurfaceReportIssueTypeResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: GetAttackSurfaceReportIssueTypeRequest,
+    output: GetAttackSurfaceReportIssueTypeResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type GetDomainError = CloudflareOpError;
 /** Gets security details and statistics about a domain. */
@@ -2966,31 +2981,39 @@ export const listIndicatorFeedPermissions: API.OperationMethod<
 
 export type ListIndicatorFeedsError = Forbidden | CloudflareOpError;
 /** Retrieves details for all accessible custom threat indicator feeds. */
-export const listIndicatorFeeds: API.OperationMethod<
+export const listIndicatorFeeds: API.PaginatedOperationMethod<
   ListIndicatorFeedsRequest,
   ListIndicatorFeedsResponse,
   ListIndicatorFeedsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListIndicatorFeedsRequest,
-  output: ListIndicatorFeedsResponse,
-  errors: [Forbidden, CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListIndicatorFeedsRequest,
+    output: ListIndicatorFeedsResponse,
+    errors: [Forbidden, CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListSinkholesError = CloudflareOpError;
 /** Lists sinkholes owned by the account for redirecting malicious traffic. */
-export const listSinkholes: API.OperationMethod<
+export const listSinkholes: API.PaginatedOperationMethod<
   ListSinkholesRequest,
   ListSinkholesResponse,
   ListSinkholesError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListSinkholesRequest,
-  output: ListSinkholesResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListSinkholesRequest,
+    output: ListSinkholesResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type PutIndicatorFeedSnapshotError =
   | IndicatorFeedNotFound

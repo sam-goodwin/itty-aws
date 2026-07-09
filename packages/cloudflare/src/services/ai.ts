@@ -4,9 +4,11 @@ import * as API from "@distilled.cloud/core/api";
 import * as T from "../traits.ts";
 import {
   CloudflareProtocol,
+  CloudflarePaginatedProtocol,
   type CloudflareOpError,
   type CloudflareOpContext,
 } from "../protocol.ts";
+import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
 export class AccountNotFound extends T.applyErrorMatchers(
@@ -205,10 +207,13 @@ export const AuthorsListResultList = /*@__PURE__*/ S.Array(
 export interface ListAuthorsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: AuthorsListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListAuthorsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(AuthorsListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListAuthorsResponse",
@@ -271,10 +276,13 @@ export const FinetunesPublicListResultList = /*@__PURE__*/ S.Array(
 export interface ListFinetunePublicsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: FinetunesPublicListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListFinetunePublicsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(FinetunesPublicListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListFinetunePublicsResponse",
@@ -408,10 +416,13 @@ export const TasksListResultList = /*@__PURE__*/ S.Array(
 export interface ListTasksResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: TasksListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListTasksResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(TasksListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListTasksResponse",
@@ -712,10 +723,13 @@ export const ToMarkdownSupportedResultList = /*@__PURE__*/ S.Array(
 export interface SupportedToMarkdownResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: ToMarkdownSupportedResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const SupportedToMarkdownResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(ToMarkdownSupportedResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "SupportedToMarkdownResponse",
@@ -844,31 +858,39 @@ export const getModelSchema: API.OperationMethod<
 
 export type ListAuthorsError = CloudflareOpError;
 /** Searches Workers AI models by author or organization name. */
-export const listAuthors: API.OperationMethod<
+export const listAuthors: API.PaginatedOperationMethod<
   ListAuthorsRequest,
   ListAuthorsResponse,
   ListAuthorsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListAuthorsRequest,
-  output: ListAuthorsResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListAuthorsRequest,
+    output: ListAuthorsResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListFinetunePublicsError = CloudflareOpError;
 /** Lists publicly available fine-tuned models that can be used with Workers AI. */
-export const listFinetunePublics: API.OperationMethod<
+export const listFinetunePublics: API.PaginatedOperationMethod<
   ListFinetunePublicsRequest,
   ListFinetunePublicsResponse,
   ListFinetunePublicsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListFinetunePublicsRequest,
-  output: ListFinetunePublicsResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListFinetunePublicsRequest,
+    output: ListFinetunePublicsResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListFinetunesError = AccountNotFound | CloudflareOpError;
 /** Lists all fine-tuning jobs created by the account, including status and metrics. */
@@ -900,17 +922,21 @@ export const listModels: API.OperationMethod<
 
 export type ListTasksError = CloudflareOpError;
 /** Searches Workers AI models by task type (e.g., text-generation, embeddings). */
-export const listTasks: API.OperationMethod<
+export const listTasks: API.PaginatedOperationMethod<
   ListTasksRequest,
   ListTasksResponse,
   ListTasksError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListTasksRequest,
-  output: ListTasksResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListTasksRequest,
+    output: ListTasksResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type RunAiError = ModelNotFound | CloudflareOpError;
 /** This endpoint provides users with the capability to run specific AI models on-demand. By submitting the required input data, users can receive real-time predictions or results generated by the chosen AI model. The endpoint supports various AI model types, ensuring flexibility and adaptability for diverse use cases. Model specific inputs available in [Cloudflare Docs](https://developers.cloudflare.com/workers-ai/models/). */
@@ -928,17 +954,21 @@ export const runAi: API.OperationMethod<
 
 export type SupportedToMarkdownError = CloudflareOpError;
 /** Lists all file formats supported for conversion to Markdown. */
-export const supportedToMarkdown: API.OperationMethod<
+export const supportedToMarkdown: API.PaginatedOperationMethod<
   SupportedToMarkdownRequest,
   SupportedToMarkdownResponse,
   SupportedToMarkdownError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SupportedToMarkdownRequest,
-  output: SupportedToMarkdownResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: SupportedToMarkdownRequest,
+    output: SupportedToMarkdownResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type TransformToMarkdownError = CloudflareOpError;
 /** Converts uploaded files into Markdown format using Workers AI. */

@@ -25,6 +25,17 @@
       "op": "replace",
       "path": "/shapes/com.cloudflare.user#ListBillingHistories/output/target",
       "value": "com.cloudflare.user#ListBillingHistoriesResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.user#ListBillingHistories/traits/smithy.api#paginated",
+      "value": {
+        "mode": "page",
+        "inputToken": "page",
+        "outputToken": "resultInfo.page",
+        "items": "result",
+        "pageSize": "perPage"
+      }
     }
   ]
 }

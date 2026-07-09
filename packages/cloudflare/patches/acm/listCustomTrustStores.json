@@ -28,6 +28,17 @@
     },
     {
       "op": "add",
+      "path": "/shapes/com.cloudflare.acm#ListCustomTrustStores/traits/smithy.api#paginated",
+      "value": {
+        "mode": "page",
+        "inputToken": "page",
+        "outputToken": "resultInfo.page",
+        "items": "result",
+        "pageSize": "perPage"
+      }
+    },
+    {
+      "op": "add",
       "path": "/shapes/com.cloudflare.acm#AdvancedCertificateManagerRequired",
       "value": {
         "type": "structure",

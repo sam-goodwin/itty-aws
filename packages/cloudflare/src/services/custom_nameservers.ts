@@ -4,9 +4,11 @@ import * as API from "@distilled.cloud/core/api";
 import * as T from "../traits.ts";
 import {
   CloudflareProtocol,
+  CloudflarePaginatedProtocol,
   type CloudflareOpError,
   type CloudflareOpContext,
 } from "../protocol.ts";
+import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
 export class CustomNameserverAlreadyExists extends T.applyErrorMatchers(
@@ -155,10 +157,13 @@ export const DeleteResultList = /*@__PURE__*/ S.Array(
 export interface DeleteCustomNameserverResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: DeleteResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const DeleteCustomNameserverResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(DeleteResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "DeleteCustomNameserverResponse",
@@ -242,10 +247,13 @@ export const GetResultList = /*@__PURE__*/ S.Array(
 export interface GetCustomNameserverResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: GetResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const GetCustomNameserverResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(GetResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "GetCustomNameserverResponse",
@@ -281,42 +289,50 @@ export type DeleteCustomNameserverError =
   | Forbidden
   | CloudflareOpError;
 /** Removes a custom nameserver from the account. */
-export const deleteCustomNameserver: API.OperationMethod<
+export const deleteCustomNameserver: API.PaginatedOperationMethod<
   DeleteCustomNameserverRequest,
   DeleteCustomNameserverResponse,
   DeleteCustomNameserverError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: DeleteCustomNameserverRequest,
-  output: DeleteCustomNameserverResponse,
-  errors: [
-    CustomNameserversNotEnabled,
-    CustomNameserverNotFound,
-    Forbidden,
-    CloudflareRateLimited,
-    CloudflareError,
-  ],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: DeleteCustomNameserverRequest,
+    output: DeleteCustomNameserverResponse,
+    errors: [
+      CustomNameserversNotEnabled,
+      CustomNameserverNotFound,
+      Forbidden,
+      CloudflareRateLimited,
+      CloudflareError,
+    ],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type GetCustomNameserverError =
   | CustomNameserversNotEnabled
   | Forbidden
   | CloudflareOpError;
 /** List an account's custom nameservers. */
-export const getCustomNameserver: API.OperationMethod<
+export const getCustomNameserver: API.PaginatedOperationMethod<
   GetCustomNameserverRequest,
   GetCustomNameserverResponse,
   GetCustomNameserverError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetCustomNameserverRequest,
-  output: GetCustomNameserverResponse,
-  errors: [
-    CustomNameserversNotEnabled,
-    Forbidden,
-    CloudflareRateLimited,
-    CloudflareError,
-  ],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: GetCustomNameserverRequest,
+    output: GetCustomNameserverResponse,
+    errors: [
+      CustomNameserversNotEnabled,
+      Forbidden,
+      CloudflareRateLimited,
+      CloudflareError,
+    ],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);

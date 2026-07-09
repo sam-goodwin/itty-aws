@@ -25,6 +25,14 @@
       "op": "replace",
       "path": "/shapes/com.cloudflare.filters#BulkPutFilters/output/target",
       "value": "com.cloudflare.filters#BulkPutFiltersResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.filters#BulkPutFilters/traits/smithy.api#paginated",
+      "value": {
+        "mode": "single",
+        "items": "result"
+      }
     }
   ]
 }

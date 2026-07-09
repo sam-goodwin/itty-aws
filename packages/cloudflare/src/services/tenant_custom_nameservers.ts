@@ -4,9 +4,11 @@ import * as API from "@distilled.cloud/core/api";
 import * as T from "../traits.ts";
 import {
   CloudflareProtocol,
+  CloudflarePaginatedProtocol,
   type CloudflareOpError,
   type CloudflareOpContext,
 } from "../protocol.ts";
+import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
 export interface CreateTenantCustomNameserverRequest {
@@ -118,11 +120,14 @@ export const DeleteResultList = /*@__PURE__*/ S.Array(
 export interface DeleteTenantCustomNameserverResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: DeleteResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const DeleteTenantCustomNameserverResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       result: S.optional(DeleteResultList.pipe(T.EnvelopePayload())),
+      resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
     }),
 ).annotate({
   identifier: "DeleteTenantCustomNameserverResponse",
@@ -206,10 +211,13 @@ export const GetResultList = /*@__PURE__*/ S.Array(
 export interface GetTenantCustomNameserverResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: GetResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const GetTenantCustomNameserverResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(GetResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "GetTenantCustomNameserverResponse",
@@ -231,28 +239,36 @@ export const createTenantCustomNameserver: API.OperationMethod<
 
 export type DeleteTenantCustomNameserverError = CloudflareOpError;
 /** Delete Tenant Custom Nameserver */
-export const deleteTenantCustomNameserver: API.OperationMethod<
+export const deleteTenantCustomNameserver: API.PaginatedOperationMethod<
   DeleteTenantCustomNameserverRequest,
   DeleteTenantCustomNameserverResponse,
   DeleteTenantCustomNameserverError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTenantCustomNameserverRequest,
-  output: DeleteTenantCustomNameserverResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: DeleteTenantCustomNameserverRequest,
+    output: DeleteTenantCustomNameserverResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type GetTenantCustomNameserverError = CloudflareOpError;
 /** List a tenant's custom nameservers. */
-export const getTenantCustomNameserver: API.OperationMethod<
+export const getTenantCustomNameserver: API.PaginatedOperationMethod<
   GetTenantCustomNameserverRequest,
   GetTenantCustomNameserverResponse,
   GetTenantCustomNameserverError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetTenantCustomNameserverRequest,
-  output: GetTenantCustomNameserverResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: GetTenantCustomNameserverRequest,
+    output: GetTenantCustomNameserverResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);

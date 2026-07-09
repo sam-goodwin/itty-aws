@@ -4,9 +4,11 @@ import * as API from "@distilled.cloud/core/api";
 import * as T from "../traits.ts";
 import {
   CloudflareProtocol,
+  CloudflarePaginatedProtocol,
   type CloudflareOpError,
   type CloudflareOpContext,
 } from "../protocol.ts";
+import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
 export type CreateRequestActionMode =
@@ -1318,10 +1320,13 @@ export const ListResultList = /*@__PURE__*/ S.Array(
 export interface ListRateLimitsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: ListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListRateLimitsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(ListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListRateLimitsResponse",
@@ -1385,14 +1390,24 @@ export const getRateLimit: API.OperationMethod<
 
 export type ListRateLimitsError = CloudflareOpError;
 /** Fetches the rate limits for a zone. */
-export const listRateLimits: API.OperationMethod<
+export const listRateLimits: API.PaginatedOperationMethod<
   ListRateLimitsRequest,
   ListRateLimitsResponse,
   ListRateLimitsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListRateLimitsRequest,
-  output: ListRateLimitsResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListRateLimitsRequest,
+    output: ListRateLimitsResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "resultInfo.page",
+      items: "result",
+      pageSize: "perPage",
+    } as const,
+  }),
+  cloudflarePaginate,
+);

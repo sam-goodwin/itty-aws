@@ -28,6 +28,17 @@
     },
     {
       "op": "add",
+      "path": "/shapes/com.cloudflare.abuse_reports#ListAbuseReports/traits/smithy.api#paginated",
+      "value": {
+        "mode": "page",
+        "inputToken": "page",
+        "outputToken": "resultInfo.page",
+        "items": "result.items",
+        "pageSize": "perPage"
+      }
+    },
+    {
+      "op": "add",
       "path": "/shapes/com.cloudflare.abuse_reports#InvalidAccountId",
       "value": {
         "type": "structure",

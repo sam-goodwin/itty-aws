@@ -25,6 +25,14 @@
       "op": "replace",
       "path": "/shapes/com.cloudflare.tenant_custom_nameservers#GetTenantCustomNameserver/output/target",
       "value": "com.cloudflare.tenant_custom_nameservers#GetTenantCustomNameserverResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.tenant_custom_nameservers#GetTenantCustomNameserver/traits/smithy.api#paginated",
+      "value": {
+        "mode": "single",
+        "items": "result"
+      }
     }
   ]
 }

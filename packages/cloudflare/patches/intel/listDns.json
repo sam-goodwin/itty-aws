@@ -25,6 +25,17 @@
       "op": "replace",
       "path": "/shapes/com.cloudflare.intel#ListDns/output/target",
       "value": "com.cloudflare.intel#ListDnsResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.intel#ListDns/traits/smithy.api#paginated",
+      "value": {
+        "mode": "page",
+        "inputToken": "page",
+        "outputToken": "resultInfo.page",
+        "items": "result.items",
+        "pageSize": "perPage"
+      }
     }
   ]
 }

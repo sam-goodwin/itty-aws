@@ -28,6 +28,14 @@
     },
     {
       "op": "add",
+      "path": "/shapes/com.cloudflare.api_gateway#BulkCreateLabelUsers/traits/smithy.api#paginated",
+      "value": {
+        "mode": "single",
+        "items": "result"
+      }
+    },
+    {
+      "op": "add",
       "path": "/shapes/com.cloudflare.api_gateway#LabelAlreadyExists",
       "value": {
         "type": "structure",

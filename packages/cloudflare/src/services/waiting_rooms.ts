@@ -4,9 +4,11 @@ import * as API from "@distilled.cloud/core/api";
 import * as T from "../traits.ts";
 import {
   CloudflareProtocol,
+  CloudflarePaginatedProtocol,
   type CloudflareOpError,
   type CloudflareOpContext,
 } from "../protocol.ts";
+import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
 export class Forbidden extends T.applyErrorMatchers(
@@ -295,10 +297,13 @@ export const RulesCreateResultList = /*@__PURE__*/ S.Array(
 export interface CreateRuleResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: RulesCreateResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const CreateRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(RulesCreateResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "CreateRuleResponse",
@@ -829,10 +834,13 @@ export const RulesDeleteResultList = /*@__PURE__*/ S.Array(
 export interface DeleteRuleResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: RulesDeleteResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const DeleteRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(RulesDeleteResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "DeleteRuleResponse",
@@ -1112,10 +1120,13 @@ export const RulesGetResultList = /*@__PURE__*/ S.Array(
 export interface GetRuleResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: RulesGetResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const GetRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(RulesGetResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "GetRuleResponse",
@@ -1818,10 +1829,13 @@ export const EventsListResultList = /*@__PURE__*/ S.Array(
 export interface ListEventsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: EventsListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListEventsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(EventsListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListEventsResponse",
@@ -2099,10 +2113,13 @@ export const RulesEditResultList = /*@__PURE__*/ S.Array(
 export interface PatchRuleResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: RulesEditResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const PatchRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(RulesEditResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "PatchRuleResponse",
@@ -2916,10 +2933,13 @@ export const RulesUpdateResultList = /*@__PURE__*/ S.Array(
 export interface UpdateRuleResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: RulesUpdateResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const UpdateRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(RulesUpdateResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "UpdateRuleResponse",
@@ -3371,17 +3391,21 @@ export const createEvent: API.OperationMethod<
 
 export type CreateRuleError = CloudflareOpError;
 /** Only available for the Waiting Room Advanced subscription. Creates a rule for a waiting room. */
-export const createRule: API.OperationMethod<
+export const createRule: API.PaginatedOperationMethod<
   CreateRuleRequest,
   CreateRuleResponse,
   CreateRuleError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: CreateRuleRequest,
-  output: CreateRuleResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: CreateRuleRequest,
+    output: CreateRuleResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type CreateWaitingRoomError =
   | ZoneNotEntitled
@@ -3416,17 +3440,21 @@ export const deleteEvent: API.OperationMethod<
 
 export type DeleteRuleError = CloudflareOpError;
 /** Deletes a rule for a waiting room. */
-export const deleteRule: API.OperationMethod<
+export const deleteRule: API.PaginatedOperationMethod<
   DeleteRuleRequest,
   DeleteRuleResponse,
   DeleteRuleError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: DeleteRuleRequest,
-  output: DeleteRuleResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: DeleteRuleRequest,
+    output: DeleteRuleResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type DeleteWaitingRoomError =
   | WaitingRoomNotFound
@@ -3480,17 +3508,21 @@ export const getEventDetail: API.OperationMethod<
 
 export type GetRuleError = CloudflareOpError;
 /** Lists rules for a waiting room. */
-export const getRule: API.OperationMethod<
+export const getRule: API.PaginatedOperationMethod<
   GetRuleRequest,
   GetRuleResponse,
   GetRuleError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetRuleRequest,
-  output: GetRuleResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: GetRuleRequest,
+    output: GetRuleResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type GetSettingError = Forbidden | CloudflareOpError;
 /** Gets the zone-level Waiting Room settings that apply as defaults to all waiting rooms on the zone. */
@@ -3558,17 +3590,27 @@ export const list: API.OperationMethod<
 
 export type ListEventsError = CloudflareOpError;
 /** Lists events for a waiting room. */
-export const listEvents: API.OperationMethod<
+export const listEvents: API.PaginatedOperationMethod<
   ListEventsRequest,
   ListEventsResponse,
   ListEventsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListEventsRequest,
-  output: ListEventsResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListEventsRequest,
+    output: ListEventsResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "resultInfo.page",
+      items: "result",
+      pageSize: "perPage",
+    } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type PatchEventError = CloudflareOpError;
 /** Patches a configured event for a waiting room. */
@@ -3586,17 +3628,21 @@ export const patchEvent: API.OperationMethod<
 
 export type PatchRuleError = CloudflareOpError;
 /** Patches a rule for a waiting room. */
-export const patchRule: API.OperationMethod<
+export const patchRule: API.PaginatedOperationMethod<
   PatchRuleRequest,
   PatchRuleResponse,
   PatchRuleError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: PatchRuleRequest,
-  output: PatchRuleResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: PatchRuleRequest,
+    output: PatchRuleResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type PatchSettingError = CloudflareOpError;
 /** Partially updates zone-level Waiting Room settings using PATCH semantics. */
@@ -3670,17 +3716,21 @@ export const updateEvent: API.OperationMethod<
 
 export type UpdateRuleError = CloudflareOpError;
 /** Only available for the Waiting Room Advanced subscription. Replaces all rules for a waiting room. */
-export const updateRule: API.OperationMethod<
+export const updateRule: API.PaginatedOperationMethod<
   UpdateRuleRequest,
   UpdateRuleResponse,
   UpdateRuleError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: UpdateRuleRequest,
-  output: UpdateRuleResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: UpdateRuleRequest,
+    output: UpdateRuleResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type UpdateWaitingRoomError =
   | WaitingRoomNotFound

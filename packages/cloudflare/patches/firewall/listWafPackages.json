@@ -25,6 +25,17 @@
       "op": "replace",
       "path": "/shapes/com.cloudflare.firewall#ListWafPackages/output/target",
       "value": "com.cloudflare.firewall#ListWafPackagesResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.firewall#ListWafPackages/traits/smithy.api#paginated",
+      "value": {
+        "mode": "page",
+        "inputToken": "page",
+        "outputToken": "resultInfo.page",
+        "items": "result",
+        "pageSize": "perPage"
+      }
     }
   ]
 }

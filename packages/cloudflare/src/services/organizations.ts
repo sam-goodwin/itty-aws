@@ -4,9 +4,11 @@ import * as API from "@distilled.cloud/core/api";
 import * as T from "../traits.ts";
 import {
   CloudflareProtocol,
+  CloudflarePaginatedProtocol,
   type CloudflareOpError,
   type CloudflareOpContext,
 } from "../protocol.ts";
+import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
 export class Forbidden extends T.applyErrorMatchers(
@@ -746,10 +748,13 @@ export const LogsAuditListResultList = /*@__PURE__*/ S.Array(
 export interface ListLogAuditsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: LogsAuditListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListLogAuditsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(LogsAuditListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListLogAuditsResponse",
@@ -886,10 +891,13 @@ export const ListResultList = /*@__PURE__*/ S.Array(
 export interface ListOrganizationsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: ListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListOrganizationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(ListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListOrganizationsResponse",
@@ -1601,31 +1609,44 @@ export const getOrganizationProfile: API.OperationMethod<
 
 export type ListLogAuditsError = CloudflareOpError;
 /** Gets a list of audit logs for an organization. */
-export const listLogAudits: API.OperationMethod<
+export const listLogAudits: API.PaginatedOperationMethod<
   ListLogAuditsRequest,
   ListLogAuditsResponse,
   ListLogAuditsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListLogAuditsRequest,
-  output: ListLogAuditsResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListLogAuditsRequest,
+    output: ListLogAuditsResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: {
+      mode: "cursor",
+      inputToken: "cursor",
+      outputToken: "resultInfo.cursors.after",
+      items: "result",
+    } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListOrganizationsError = Forbidden | CloudflareOpError;
 /** Retrieve a list of organizations a particular user has access to. (Currently in Public Beta - see https://developers.cloudflare.com/fundamentals/organizations/) */
-export const listOrganizations: API.OperationMethod<
+export const listOrganizations: API.PaginatedOperationMethod<
   ListOrganizationsRequest,
   ListOrganizationsResponse,
   ListOrganizationsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListOrganizationsRequest,
-  output: ListOrganizationsResponse,
-  errors: [Forbidden, CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListOrganizationsRequest,
+    output: ListOrganizationsResponse,
+    errors: [Forbidden, CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type MembersCreateError = CloudflareOpError;
 /** Create a membership that grants access to a specific Organization. (Currently in Public Beta - see https://developers.cloudflare.com/fundamentals/organizations/) */

@@ -25,6 +25,14 @@
       "op": "replace",
       "path": "/shapes/com.cloudflare.api_gateway#BulkDeleteLabelUsers/output/target",
       "value": "com.cloudflare.api_gateway#BulkDeleteLabelUsersResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.api_gateway#BulkDeleteLabelUsers/traits/smithy.api#paginated",
+      "value": {
+        "mode": "single",
+        "items": "result"
+      }
     }
   ]
 }

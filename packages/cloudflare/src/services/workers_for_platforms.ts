@@ -4,9 +4,11 @@ import * as API from "@distilled.cloud/core/api";
 import * as T from "../traits.ts";
 import {
   CloudflareProtocol,
+  CloudflarePaginatedProtocol,
   type CloudflareOpError,
   type CloudflareOpContext,
 } from "../protocol.ts";
+import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
 export class D1DatabaseNotFound extends T.applyErrorMatchers(
@@ -1154,6 +1156,8 @@ export const DispatchNamespacesScriptsBindingsGetResultList =
 export interface GetDispatchNamespaceScriptBindingResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: DispatchNamespacesScriptsBindingsGetResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const GetDispatchNamespaceScriptBindingResponse =
   /*@__PURE__*/ S.suspend(() =>
@@ -1163,6 +1167,7 @@ export const GetDispatchNamespaceScriptBindingResponse =
           T.EnvelopePayload(),
         ),
       ),
+      resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
     }),
   ).annotate({
     identifier: "GetDispatchNamespaceScriptBindingResponse",
@@ -1819,12 +1824,15 @@ export const DispatchNamespacesListResultList = /*@__PURE__*/ S.Array(
 export interface ListDispatchNamespacesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: DispatchNamespacesListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListDispatchNamespacesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(
       DispatchNamespacesListResultList.pipe(T.EnvelopePayload()),
     ),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListDispatchNamespacesResponse",
@@ -1883,6 +1891,8 @@ export const DispatchNamespacesScriptsSecretsListResultList =
 export interface ListDispatchNamespaceScriptSecretsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: DispatchNamespacesScriptsSecretsListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListDispatchNamespaceScriptSecretsResponse =
   /*@__PURE__*/ S.suspend(() =>
@@ -1892,6 +1902,7 @@ export const ListDispatchNamespaceScriptSecretsResponse =
           T.EnvelopePayload(),
         ),
       ),
+      resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
     }),
   ).annotate({
     identifier: "ListDispatchNamespaceScriptSecretsResponse",
@@ -1931,6 +1942,8 @@ export const DispatchNamespacesScriptsTagsListResultList =
 export interface ListDispatchNamespaceScriptTagsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: DispatchNamespacesScriptsTagsListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListDispatchNamespaceScriptTagsResponse = /*@__PURE__*/ S.suspend(
   () =>
@@ -1938,6 +1951,7 @@ export const ListDispatchNamespaceScriptTagsResponse = /*@__PURE__*/ S.suspend(
       result: S.optional(
         DispatchNamespacesScriptsTagsListResultList.pipe(T.EnvelopePayload()),
       ),
+      resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
     }),
 ).annotate({
   identifier: "ListDispatchNamespaceScriptTagsResponse",
@@ -3386,6 +3400,8 @@ export const DispatchNamespacesScriptsTagsUpdateResultList =
 export interface PutDispatchNamespaceScriptTagResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: DispatchNamespacesScriptsTagsUpdateResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const PutDispatchNamespaceScriptTagResponse = /*@__PURE__*/ S.suspend(
   () =>
@@ -3393,6 +3409,7 @@ export const PutDispatchNamespaceScriptTagResponse = /*@__PURE__*/ S.suspend(
       result: S.optional(
         DispatchNamespacesScriptsTagsUpdateResultList.pipe(T.EnvelopePayload()),
       ),
+      resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
     }),
 ).annotate({
   identifier: "PutDispatchNamespaceScriptTagResponse",
@@ -3570,17 +3587,21 @@ export const getDispatchNamespaceScript: API.OperationMethod<
 
 export type GetDispatchNamespaceScriptBindingError = CloudflareOpError;
 /** Fetch script bindings from a script uploaded to a Workers for Platforms namespace. */
-export const getDispatchNamespaceScriptBinding: API.OperationMethod<
+export const getDispatchNamespaceScriptBinding: API.PaginatedOperationMethod<
   GetDispatchNamespaceScriptBindingRequest,
   GetDispatchNamespaceScriptBindingResponse,
   GetDispatchNamespaceScriptBindingError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetDispatchNamespaceScriptBindingRequest,
-  output: GetDispatchNamespaceScriptBindingResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: GetDispatchNamespaceScriptBindingRequest,
+    output: GetDispatchNamespaceScriptBindingResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type GetDispatchNamespaceScriptContentError = CloudflareOpError;
 /** Fetch script content from a script uploaded to a Workers for Platforms namespace. */
@@ -3636,45 +3657,57 @@ export const getDispatchNamespaceScriptSetting: API.OperationMethod<
 
 export type ListDispatchNamespacesError = CloudflareOpError;
 /** Fetch a list of Workers for Platforms namespaces. */
-export const listDispatchNamespaces: API.OperationMethod<
+export const listDispatchNamespaces: API.PaginatedOperationMethod<
   ListDispatchNamespacesRequest,
   ListDispatchNamespacesResponse,
   ListDispatchNamespacesError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListDispatchNamespacesRequest,
-  output: ListDispatchNamespacesResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListDispatchNamespacesRequest,
+    output: ListDispatchNamespacesResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListDispatchNamespaceScriptSecretsError = CloudflareOpError;
 /** List secrets bound to a script uploaded to a Workers for Platforms namespace. */
-export const listDispatchNamespaceScriptSecrets: API.OperationMethod<
+export const listDispatchNamespaceScriptSecrets: API.PaginatedOperationMethod<
   ListDispatchNamespaceScriptSecretsRequest,
   ListDispatchNamespaceScriptSecretsResponse,
   ListDispatchNamespaceScriptSecretsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListDispatchNamespaceScriptSecretsRequest,
-  output: ListDispatchNamespaceScriptSecretsResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListDispatchNamespaceScriptSecretsRequest,
+    output: ListDispatchNamespaceScriptSecretsResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListDispatchNamespaceScriptTagsError = CloudflareOpError;
 /** Fetch tags from a script uploaded to a Workers for Platforms namespace. */
-export const listDispatchNamespaceScriptTags: API.OperationMethod<
+export const listDispatchNamespaceScriptTags: API.PaginatedOperationMethod<
   ListDispatchNamespaceScriptTagsRequest,
   ListDispatchNamespaceScriptTagsResponse,
   ListDispatchNamespaceScriptTagsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListDispatchNamespaceScriptTagsRequest,
-  output: ListDispatchNamespaceScriptTagsResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListDispatchNamespaceScriptTagsRequest,
+    output: ListDispatchNamespaceScriptTagsResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type PatchDispatchNamespaceScriptSettingError = CloudflareOpError;
 /** Patch script metadata, such as bindings. */
@@ -3762,14 +3795,18 @@ export const putDispatchNamespaceScriptSecret: API.OperationMethod<
 
 export type PutDispatchNamespaceScriptTagError = CloudflareOpError;
 /** Put script tags for a script uploaded to a Workers for Platforms namespace. */
-export const putDispatchNamespaceScriptTag: API.OperationMethod<
+export const putDispatchNamespaceScriptTag: API.PaginatedOperationMethod<
   PutDispatchNamespaceScriptTagRequest,
   PutDispatchNamespaceScriptTagResponse,
   PutDispatchNamespaceScriptTagError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: PutDispatchNamespaceScriptTagRequest,
-  output: PutDispatchNamespaceScriptTagResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: PutDispatchNamespaceScriptTagRequest,
+    output: PutDispatchNamespaceScriptTagResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);

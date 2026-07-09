@@ -25,6 +25,17 @@
       "op": "replace",
       "path": "/shapes/com.cloudflare.kv#ListNamespaceKeys/output/target",
       "value": "com.cloudflare.kv#ListNamespaceKeysResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.kv#ListNamespaceKeys/traits/smithy.api#paginated",
+      "value": {
+        "mode": "cursor",
+        "inputToken": "cursor",
+        "outputToken": "resultInfo.cursor",
+        "items": "result",
+        "pageSize": "limit"
+      }
     }
   ]
 }

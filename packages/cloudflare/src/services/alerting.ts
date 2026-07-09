@@ -4,9 +4,11 @@ import * as API from "@distilled.cloud/core/api";
 import * as T from "../traits.ts";
 import {
   CloudflareProtocol,
+  CloudflarePaginatedProtocol,
   type CloudflareOpError,
   type CloudflareOpContext,
 } from "../protocol.ts";
+import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
 export class FiltersRequired extends T.applyErrorMatchers(
@@ -1027,12 +1029,15 @@ export const DestinationsPagerdutyGetResultList = /*@__PURE__*/ S.Array(
 export interface GetDestinationPagerdutyResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: DestinationsPagerdutyGetResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const GetDestinationPagerdutyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(
       DestinationsPagerdutyGetResultList.pipe(T.EnvelopePayload()),
     ),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "GetDestinationPagerdutyResponse",
@@ -1893,12 +1898,15 @@ export const DestinationsWebhooksListResultList = /*@__PURE__*/ S.Array(
 export interface ListDestinationWebhooksResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: DestinationsWebhooksListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListDestinationWebhooksResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(
       DestinationsWebhooksListResultList.pipe(T.EnvelopePayload()),
     ),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListDestinationWebhooksResponse",
@@ -1987,10 +1995,13 @@ export const HistoryListResultList = /*@__PURE__*/ S.Array(
 export interface ListHistoriesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: HistoryListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListHistoriesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(HistoryListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListHistoriesResponse",
@@ -2617,10 +2628,13 @@ export const PoliciesListResultList = /*@__PURE__*/ S.Array(
 export interface ListPoliciesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: PoliciesListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(PoliciesListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListPoliciesResponse",
@@ -2679,10 +2693,13 @@ export const SilencesListResultList = /*@__PURE__*/ S.Array(
 export interface ListSilencesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: SilencesListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListSilencesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(SilencesListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListSilencesResponse",
@@ -3421,10 +3438,13 @@ export const SilencesUpdateResultList = /*@__PURE__*/ S.Array(
 export interface UpdateSilenceResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: SilencesUpdateResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const UpdateSilenceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(SilencesUpdateResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "UpdateSilenceResponse",
@@ -3610,17 +3630,21 @@ export const getDestinationEligible: API.OperationMethod<
 
 export type GetDestinationPagerdutyError = CloudflareOpError;
 /** Get a list of all configured PagerDuty services. */
-export const getDestinationPagerduty: API.OperationMethod<
+export const getDestinationPagerduty: API.PaginatedOperationMethod<
   GetDestinationPagerdutyRequest,
   GetDestinationPagerdutyResponse,
   GetDestinationPagerdutyError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetDestinationPagerdutyRequest,
-  output: GetDestinationPagerdutyResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: GetDestinationPagerdutyRequest,
+    output: GetDestinationPagerdutyResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type GetDestinationWebhookError =
   | InvalidRoute
@@ -3717,59 +3741,81 @@ export const listAvailableAlerts: API.OperationMethod<
 
 export type ListDestinationWebhooksError = CloudflareOpError;
 /** Gets a list of all configured webhook destinations. */
-export const listDestinationWebhooks: API.OperationMethod<
+export const listDestinationWebhooks: API.PaginatedOperationMethod<
   ListDestinationWebhooksRequest,
   ListDestinationWebhooksResponse,
   ListDestinationWebhooksError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListDestinationWebhooksRequest,
-  output: ListDestinationWebhooksResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListDestinationWebhooksRequest,
+    output: ListDestinationWebhooksResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListHistoriesError = CloudflareOpError;
 /** Gets a list of history records for notifications sent to an account. The records are displayed for last `x` number of days based on the zone plan (free = 30, pro = 30, biz = 30, ent = 90). */
-export const listHistories: API.OperationMethod<
+export const listHistories: API.PaginatedOperationMethod<
   ListHistoriesRequest,
   ListHistoriesResponse,
   ListHistoriesError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListHistoriesRequest,
-  output: ListHistoriesResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListHistoriesRequest,
+    output: ListHistoriesResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "resultInfo.page",
+      items: "result",
+      pageSize: "perPage",
+    } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListPoliciesError = CloudflareOpError;
 /** Get a list of all Notification policies. */
-export const listPolicies: API.OperationMethod<
+export const listPolicies: API.PaginatedOperationMethod<
   ListPoliciesRequest,
   ListPoliciesResponse,
   ListPoliciesError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListPoliciesRequest,
-  output: ListPoliciesResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListPoliciesRequest,
+    output: ListPoliciesResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListSilencesError = CloudflareOpError;
 /** Gets a list of silences for an account. */
-export const listSilences: API.OperationMethod<
+export const listSilences: API.PaginatedOperationMethod<
   ListSilencesRequest,
   ListSilencesResponse,
   ListSilencesError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListSilencesRequest,
-  output: ListSilencesResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListSilencesRequest,
+    output: ListSilencesResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type UpdateDestinationWebhookError =
   | InvalidRoute
@@ -3826,19 +3872,23 @@ export type UpdateSilenceError =
   | InvalidSilence
   | CloudflareOpError;
 /** Updates existing silences for an account. */
-export const updateSilence: API.OperationMethod<
+export const updateSilence: API.PaginatedOperationMethod<
   UpdateSilenceRequest,
   UpdateSilenceResponse,
   UpdateSilenceError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: UpdateSilenceRequest,
-  output: UpdateSilenceResponse,
-  errors: [
-    SilenceNotFound,
-    InvalidSilence,
-    CloudflareRateLimited,
-    CloudflareError,
-  ],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: UpdateSilenceRequest,
+    output: UpdateSilenceResponse,
+    errors: [
+      SilenceNotFound,
+      InvalidSilence,
+      CloudflareRateLimited,
+      CloudflareError,
+    ],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);

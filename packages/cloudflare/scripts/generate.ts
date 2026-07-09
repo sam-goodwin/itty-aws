@@ -141,6 +141,7 @@ const lowerFirst = (s: string): string => {
 
 const NULLABLE_TRAIT = "com.cloudflare.protocols#nullable";
 const ERROR_MATCHERS_TRAIT = "com.cloudflare.protocols#errorMatchers";
+const PAGINATED_TRAIT = "smithy.api#paginated";
 
 const oneLine = (s: string | undefined): string | undefined =>
   s ? s.replace(/\s+/g, " ").replace(/\*\//g, "*\\/").trim() : undefined;
@@ -352,7 +353,32 @@ const generateModel = (
     return `  ${q(info.tsName)}: ${expr},`;
   };
 
-  // 5. Emit typed error classes referenced by the operations' `errors` lists
+  // 5. Validate pagination traits (added via patches). A paginated op must
+  //    actually carry its page/cursor token on the input and its items member
+  //    on the output — otherwise `.pages()` would loop or yield nothing, so
+  //    the op degrades to a plain operation.
+  const paginatedOutputs = new Set<string>();
+  for (const op of selected) {
+    const pg = op.def.traits?.[PAGINATED_TRAIT];
+    if (!pg) continue;
+    const inNames = new Set(
+      memberInfos(shapes[op.def.__input] ?? {}).map((m) => m.tsName),
+    );
+    const outNames = new Set(
+      memberInfos(shapes[op.def.__output] ?? {}).map((m) => m.tsName),
+    );
+    const itemsRoot = String(pg.items ?? "result").split(".")[0];
+    const tokenOk =
+      pg.mode === "single" ||
+      (typeof pg.inputToken === "string" && inNames.has(pg.inputToken));
+    const itemsOk = outNames.has(itemsRoot) || itemsRoot === "resultInfo";
+    if (tokenOk && itemsOk) {
+      op.def.__pagination = pg;
+      paginatedOutputs.add(op.def.__output);
+    }
+  }
+
+  //    Emit typed error classes referenced by the operations' `errors` lists
   //    (added to the smithy models via patches/<service>/<operation>.json).
   const out: string[] = [];
   const errorIds: string[] = [];
@@ -416,12 +442,26 @@ const generateModel = (
           `  ${tsKey(info.tsName)}${opt}: ${type};`,
         ];
       });
+      const members = infos.map((info) => emitMember(info, i));
+      // Paginated responses additionally carry the envelope's `result_info`
+      // (see CloudflarePaginatedProtocol / the shared ResultInfo schema).
+      if (
+        paginatedOutputs.has(id) &&
+        !infos.some((m) => m.tsName === "resultInfo")
+      ) {
+        fields.push(
+          `  /** Pagination info from the envelope's \`result_info\`. */`,
+          `  resultInfo?: ResultInfo | null;`,
+        );
+        members.push(
+          `  "resultInfo": S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),`,
+        );
+      }
       out.push(
         fields.length
           ? `export interface ${name} {\n${fields.join("\n")}\n}`
           : `export interface ${name} {}`,
       );
-      const members = infos.map((info) => emitMember(info, i));
       const struct = members.length
         ? `S.Struct({\n${members.join("\n")}\n})`
         : `S.Struct({})`;
@@ -462,6 +502,7 @@ const generateModel = (
   // 6. Emit operations with explicit OperationMethod annotations so the
   //    call signature comes from the emitted interfaces, not inference. The
   //    export is lowerFirst (`getNamespace`) while the shapes stay PascalCase.
+  //    Paginated ops get the pagination-specific protocol + `.pages/.items`.
   for (const op of selected) {
     const opName = local(op.id);
     const errNames = ((op.def.errors ?? []) as Array<{ target: string }>)
@@ -472,21 +513,37 @@ const generateModel = (
       `export type ${opName}Error = ${[...errNames, "CloudflareOpError"].join(" | ")};`,
     );
     if (doc) out.push(`/** ${doc} */`);
+    const pg = op.def.__pagination;
+    const errList = [...errNames, "CloudflareRateLimited", "CloudflareError"];
     out.push(
-      `export const ${lowerFirst(opName)}: API.OperationMethod<\n` +
-        `  ${local(op.def.__input)},\n` +
-        `  ${local(op.def.__output)},\n` +
-        `  ${opName}Error,\n` +
-        `  CloudflareOpContext\n` +
-        `> = /*@__PURE__*/ API.make(() => ({\n` +
-        `  input: ${local(op.def.__input)},\n` +
-        `  output: ${local(op.def.__output)},\n` +
-        `  errors: [${[...errNames, "CloudflareRateLimited", "CloudflareError"].join(", ")}],\n` +
-        `  protocol: CloudflareProtocol,\n` +
-        `}));\n`,
+      pg
+        ? `export const ${lowerFirst(opName)}: API.PaginatedOperationMethod<\n` +
+            `  ${local(op.def.__input)},\n` +
+            `  ${local(op.def.__output)},\n` +
+            `  ${opName}Error,\n` +
+            `  CloudflareOpContext\n` +
+            `> = /*@__PURE__*/ API.makePaginated(() => ({\n` +
+            `  input: ${local(op.def.__input)},\n` +
+            `  output: ${local(op.def.__output)},\n` +
+            `  errors: [${errList.join(", ")}],\n` +
+            `  protocol: CloudflarePaginatedProtocol,\n` +
+            `  pagination: ${JSON.stringify(pg)} as const,\n` +
+            `}), cloudflarePaginate);\n`
+        : `export const ${lowerFirst(opName)}: API.OperationMethod<\n` +
+            `  ${local(op.def.__input)},\n` +
+            `  ${local(op.def.__output)},\n` +
+            `  ${opName}Error,\n` +
+            `  CloudflareOpContext\n` +
+            `> = /*@__PURE__*/ API.make(() => ({\n` +
+            `  input: ${local(op.def.__input)},\n` +
+            `  output: ${local(op.def.__output)},\n` +
+            `  errors: [${errList.join(", ")}],\n` +
+            `  protocol: CloudflareProtocol,\n` +
+            `}));\n`,
     );
   }
 
+  const hasPaginated = paginatedOutputs.size > 0;
   const header =
     `// AUTO-GENERATED by scripts/generate.ts from .generated-specs. Do not edit.\n` +
     `import * as S from "@distilled.cloud/core/schema";\n` +
@@ -494,9 +551,13 @@ const generateModel = (
     `import * as T from "../traits.ts";\n` +
     `import {\n` +
     `  CloudflareProtocol,\n` +
+    (hasPaginated ? `  CloudflarePaginatedProtocol,\n` : "") +
     `  type CloudflareOpError,\n` +
     `  type CloudflareOpContext,\n` +
     `} from "../protocol.ts";\n` +
+    (hasPaginated
+      ? `import { cloudflarePaginate, ResultInfo } from "../pagination.ts";\n`
+      : "") +
     `import { CloudflareError, CloudflareRateLimited } from "../errors.ts";\n\n`;
 
   return { code: header + out.join("\n") + "\n", operations: selected.length };

@@ -28,6 +28,14 @@
     },
     {
       "op": "add",
+      "path": "/shapes/com.cloudflare.zero_trust#GetDevicePolicyCustomInclude/traits/smithy.api#paginated",
+      "value": {
+        "mode": "single",
+        "items": "result"
+      }
+    },
+    {
+      "op": "add",
       "path": "/shapes/com.cloudflare.zero_trust#DevicePolicyNotFound",
       "value": {
         "type": "structure",

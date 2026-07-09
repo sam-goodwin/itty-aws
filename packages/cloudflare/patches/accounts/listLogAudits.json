@@ -25,6 +25,16 @@
       "op": "replace",
       "path": "/shapes/com.cloudflare.accounts#ListLogAudits/output/target",
       "value": "com.cloudflare.accounts#ListLogAuditsResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.accounts#ListLogAudits/traits/smithy.api#paginated",
+      "value": {
+        "mode": "cursor",
+        "inputToken": "cursor",
+        "outputToken": "resultInfo.cursors.after",
+        "items": "result"
+      }
     }
   ]
 }

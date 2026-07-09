@@ -4,9 +4,11 @@ import * as API from "@distilled.cloud/core/api";
 import * as T from "../traits.ts";
 import {
   CloudflareProtocol,
+  CloudflarePaginatedProtocol,
   type CloudflareOpError,
   type CloudflareOpContext,
 } from "../protocol.ts";
+import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
 export class Forbidden extends T.applyErrorMatchers(
@@ -2240,10 +2242,13 @@ export const CaptionsGetResultList = /*@__PURE__*/ S.Array(
 export interface GetCaptionResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: CaptionsGetResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const GetCaptionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(CaptionsGetResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "GetCaptionResponse",
@@ -2490,10 +2495,13 @@ export const KeysGetResultList = /*@__PURE__*/ S.Array(
 export interface GetKeyResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: KeysGetResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const GetKeyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(KeysGetResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({ identifier: "GetKeyResponse" }) as any as S.Schema<GetKeyResponse>;
 
@@ -3095,12 +3103,15 @@ export const LiveInputsOutputsListResultList = /*@__PURE__*/ S.Array(
 export interface ListLiveInputOutputsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: LiveInputsOutputsListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListLiveInputOutputsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(
       LiveInputsOutputsListResultList.pipe(T.EnvelopePayload()),
     ),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListLiveInputOutputsResponse",
@@ -3459,10 +3470,13 @@ export const ListResultList = /*@__PURE__*/ S.Array(
 export interface ListStreamsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: ListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListStreamsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(ListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListStreamsResponse",
@@ -3536,10 +3550,13 @@ export const WatermarksListResultList = /*@__PURE__*/ S.Array(
 export interface ListWatermarksResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: WatermarksListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListWatermarksResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(WatermarksListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListWatermarksResponse",
@@ -4434,17 +4451,21 @@ export const getAudioTrack: API.OperationMethod<
 
 export type GetCaptionError = CloudflareOpError;
 /** Lists the available captions or subtitles for a specific video. */
-export const getCaption: API.OperationMethod<
+export const getCaption: API.PaginatedOperationMethod<
   GetCaptionRequest,
   GetCaptionResponse,
   GetCaptionError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetCaptionRequest,
-  output: GetCaptionResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: GetCaptionRequest,
+    output: GetCaptionResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type GetCaptionLanguageError = CloudflareOpError;
 /** Lists the captions or subtitles for provided language. */
@@ -4504,17 +4525,21 @@ export const getEmbed: API.OperationMethod<
 
 export type GetKeyError = Forbidden | CloudflareOpError;
 /** Lists the video ID and creation date and time when a signing key was created. */
-export const getKey: API.OperationMethod<
+export const getKey: API.PaginatedOperationMethod<
   GetKeyRequest,
   GetKeyResponse,
   GetKeyError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetKeyRequest,
-  output: GetKeyResponse,
-  errors: [Forbidden, CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: GetKeyRequest,
+    output: GetKeyResponse,
+    errors: [Forbidden, CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type GetLiveInputError =
   | LiveInputNotFound
@@ -4593,22 +4618,26 @@ export type ListLiveInputOutputsError =
   | Forbidden
   | CloudflareOpError;
 /** Retrieves all outputs associated with a specified live input. */
-export const listLiveInputOutputs: API.OperationMethod<
+export const listLiveInputOutputs: API.PaginatedOperationMethod<
   ListLiveInputOutputsRequest,
   ListLiveInputOutputsResponse,
   ListLiveInputOutputsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListLiveInputOutputsRequest,
-  output: ListLiveInputOutputsResponse,
-  errors: [
-    LiveInputNotFound,
-    Forbidden,
-    CloudflareRateLimited,
-    CloudflareError,
-  ],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListLiveInputOutputsRequest,
+    output: ListLiveInputOutputsResponse,
+    errors: [
+      LiveInputNotFound,
+      Forbidden,
+      CloudflareRateLimited,
+      CloudflareError,
+    ],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListLiveInputsError = CloudflareOpError;
 /** Lists the live inputs created for an account. To get the credentials needed to stream to a specific live input, request a single live input. */
@@ -4626,31 +4655,39 @@ export const listLiveInputs: API.OperationMethod<
 
 export type ListStreamsError = CloudflareOpError;
 /** Lists up to 1000 videos from a single request. For a specific range, refer to the optional parameters. */
-export const listStreams: API.OperationMethod<
+export const listStreams: API.PaginatedOperationMethod<
   ListStreamsRequest,
   ListStreamsResponse,
   ListStreamsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListStreamsRequest,
-  output: ListStreamsResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListStreamsRequest,
+    output: ListStreamsResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListWatermarksError = CloudflareOpError;
 /** Lists all watermark profiles for an account. */
-export const listWatermarks: API.OperationMethod<
+export const listWatermarks: API.PaginatedOperationMethod<
   ListWatermarksRequest,
   ListWatermarksResponse,
   ListWatermarksError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListWatermarksRequest,
-  output: ListWatermarksResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListWatermarksRequest,
+    output: ListWatermarksResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type PatchAudioTrackError = CloudflareOpError;
 /** Edits additional audio tracks on a video. Editing the default status of an audio track to `true` will mark all other audio tracks on the video default status to `false`. */

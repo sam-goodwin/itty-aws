@@ -25,6 +25,14 @@
       "op": "replace",
       "path": "/shapes/com.cloudflare.ai#SupportedToMarkdown/output/target",
       "value": "com.cloudflare.ai#SupportedToMarkdownResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.ai#SupportedToMarkdown/traits/smithy.api#paginated",
+      "value": {
+        "mode": "single",
+        "items": "result"
+      }
     }
   ]
 }

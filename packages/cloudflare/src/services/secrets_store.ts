@@ -4,9 +4,11 @@ import * as API from "@distilled.cloud/core/api";
 import * as T from "../traits.ts";
 import {
   CloudflareProtocol,
+  CloudflarePaginatedProtocol,
   type CloudflareOpError,
   type CloudflareOpContext,
 } from "../protocol.ts";
+import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
 export class InvalidAccountId extends T.applyErrorMatchers(
@@ -268,10 +270,13 @@ export const StoresSecretsCreateResultList = /*@__PURE__*/ S.Array(
 export interface CreateStoreSecretResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: StoresSecretsCreateResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const CreateStoreSecretResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(StoresSecretsCreateResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "CreateStoreSecretResponse",
@@ -664,10 +669,13 @@ export const StoresListResultList = /*@__PURE__*/ S.Array(
 export interface ListStoresResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: StoresListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListStoresResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(StoresListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListStoresResponse",
@@ -779,10 +787,13 @@ export const StoresSecretsListResultList = /*@__PURE__*/ S.Array(
 export interface ListStoreSecretsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: StoresSecretsListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListStoreSecretsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(StoresSecretsListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListStoreSecretsResponse",
@@ -917,25 +928,29 @@ export type CreateStoreSecretError =
   | SecretScopeInvalid
   | CloudflareOpError;
 /** Creates a secret in the account */
-export const createStoreSecret: API.OperationMethod<
+export const createStoreSecret: API.PaginatedOperationMethod<
   CreateStoreSecretRequest,
   CreateStoreSecretResponse,
   CreateStoreSecretError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: CreateStoreSecretRequest,
-  output: CreateStoreSecretResponse,
-  errors: [
-    StoreNotFound,
-    InvalidAccountId,
-    SecretNameEmpty,
-    SecretNameAlreadyExists,
-    SecretScopeInvalid,
-    CloudflareRateLimited,
-    CloudflareError,
-  ],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: CreateStoreSecretRequest,
+    output: CreateStoreSecretResponse,
+    errors: [
+      StoreNotFound,
+      InvalidAccountId,
+      SecretNameEmpty,
+      SecretNameAlreadyExists,
+      SecretScopeInvalid,
+      CloudflareRateLimited,
+      CloudflareError,
+    ],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type DeleteStoreError =
   | StoreNotFound
@@ -1075,39 +1090,59 @@ export const getStoreSecret: API.OperationMethod<
 
 export type ListStoresError = InvalidAccountId | CloudflareOpError;
 /** Lists all the stores in an account */
-export const listStores: API.OperationMethod<
+export const listStores: API.PaginatedOperationMethod<
   ListStoresRequest,
   ListStoresResponse,
   ListStoresError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListStoresRequest,
-  output: ListStoresResponse,
-  errors: [InvalidAccountId, CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListStoresRequest,
+    output: ListStoresResponse,
+    errors: [InvalidAccountId, CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "resultInfo.page",
+      items: "result",
+      pageSize: "perPage",
+    } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListStoreSecretsError =
   | StoreNotFound
   | InvalidAccountId
   | CloudflareOpError;
 /** Lists all store secrets */
-export const listStoreSecrets: API.OperationMethod<
+export const listStoreSecrets: API.PaginatedOperationMethod<
   ListStoreSecretsRequest,
   ListStoreSecretsResponse,
   ListStoreSecretsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListStoreSecretsRequest,
-  output: ListStoreSecretsResponse,
-  errors: [
-    StoreNotFound,
-    InvalidAccountId,
-    CloudflareRateLimited,
-    CloudflareError,
-  ],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListStoreSecretsRequest,
+    output: ListStoreSecretsResponse,
+    errors: [
+      StoreNotFound,
+      InvalidAccountId,
+      CloudflareRateLimited,
+      CloudflareError,
+    ],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "resultInfo.page",
+      items: "result",
+      pageSize: "perPage",
+    } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type PatchStoreSecretError =
   | StoreNotFound

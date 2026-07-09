@@ -25,6 +25,14 @@
       "op": "replace",
       "path": "/shapes/com.cloudflare.dns#ScanListRecord/output/target",
       "value": "com.cloudflare.dns#ScanListRecordResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.dns#ScanListRecord/traits/smithy.api#paginated",
+      "value": {
+        "mode": "single",
+        "items": "result"
+      }
     }
   ]
 }

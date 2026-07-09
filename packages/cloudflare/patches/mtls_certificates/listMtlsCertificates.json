@@ -25,6 +25,14 @@
       "op": "replace",
       "path": "/shapes/com.cloudflare.mtls_certificates#ListMtlsCertificates/output/target",
       "value": "com.cloudflare.mtls_certificates#ListMtlsCertificatesResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.mtls_certificates#ListMtlsCertificates/traits/smithy.api#paginated",
+      "value": {
+        "mode": "single",
+        "items": "result"
+      }
     }
   ]
 }

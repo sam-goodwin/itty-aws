@@ -4,9 +4,11 @@ import * as API from "@distilled.cloud/core/api";
 import * as T from "../traits.ts";
 import {
   CloudflareProtocol,
+  CloudflarePaginatedProtocol,
   type CloudflareOpError,
   type CloudflareOpContext,
 } from "../protocol.ts";
+import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
 export class Forbidden extends T.applyErrorMatchers(
@@ -164,12 +166,15 @@ export const LabelsUserBulkCreateResultList = /*@__PURE__*/ S.Array(
 export interface BulkCreateLabelUsersResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: LabelsUserBulkCreateResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const BulkCreateLabelUsersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(
       LabelsUserBulkCreateResultList.pipe(T.EnvelopePayload()),
     ),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "BulkCreateLabelUsersResponse",
@@ -355,12 +360,15 @@ export const OperationsLabelsBulkCreateResultList = /*@__PURE__*/ S.Array(
 export interface BulkCreateOperationLabelsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: OperationsLabelsBulkCreateResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const BulkCreateOperationLabelsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(
       OperationsLabelsBulkCreateResultList.pipe(T.EnvelopePayload()),
     ),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "BulkCreateOperationLabelsResponse",
@@ -493,12 +501,15 @@ export const OperationsBulkCreateResultList = /*@__PURE__*/ S.Array(
 export interface BulkCreateOperationsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: OperationsBulkCreateResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const BulkCreateOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(
       OperationsBulkCreateResultList.pipe(T.EnvelopePayload()),
     ),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "BulkCreateOperationsResponse",
@@ -561,12 +572,15 @@ export const LabelsUserBulkDeleteResultList = /*@__PURE__*/ S.Array(
 export interface BulkDeleteLabelUsersResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: LabelsUserBulkDeleteResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const BulkDeleteLabelUsersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(
       LabelsUserBulkDeleteResultList.pipe(T.EnvelopePayload()),
     ),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "BulkDeleteLabelUsersResponse",
@@ -673,12 +687,15 @@ export const OperationsLabelsBulkDeleteResultList = /*@__PURE__*/ S.Array(
 export interface BulkDeleteOperationLabelsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: OperationsLabelsBulkDeleteResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const BulkDeleteOperationLabelsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(
       OperationsLabelsBulkDeleteResultList.pipe(T.EnvelopePayload()),
     ),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "BulkDeleteOperationLabelsResponse",
@@ -942,12 +959,15 @@ export const OperationsLabelsBulkUpdateResultList = /*@__PURE__*/ S.Array(
 export interface BulkUpdateOperationLabelsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: OperationsLabelsBulkUpdateResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const BulkUpdateOperationLabelsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(
       OperationsLabelsBulkUpdateResultList.pipe(T.EnvelopePayload()),
     ),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "BulkUpdateOperationLabelsResponse",
@@ -2382,12 +2402,15 @@ export const DiscoveryOperationsListResultList = /*@__PURE__*/ S.Array(
 export interface ListDiscoveryOperationsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: DiscoveryOperationsListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListDiscoveryOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(
       DiscoveryOperationsListResultList.pipe(T.EnvelopePayload()),
     ),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListDiscoveryOperationsResponse",
@@ -2486,10 +2509,13 @@ export const LabelsListResultList = /*@__PURE__*/ S.Array(
 export interface ListLabelsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: LabelsListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListLabelsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(LabelsListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListLabelsResponse",
@@ -2645,10 +2671,13 @@ export const OperationsListResultList = /*@__PURE__*/ S.Array(
 export interface ListOperationsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: OperationsListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(OperationsListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListOperationsResponse",
@@ -2771,12 +2800,15 @@ export const UserSchemasHostsListResultList = /*@__PURE__*/ S.Array(
 export interface ListUserSchemaHostsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: UserSchemasHostsListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListUserSchemaHostsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(
       UserSchemasHostsListResultList.pipe(T.EnvelopePayload()),
     ),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListUserSchemaHostsResponse",
@@ -2890,12 +2922,15 @@ export const UserSchemasOperationsListResultList = /*@__PURE__*/ S.Array(
 export interface ListUserSchemaOperationsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: UserSchemasOperationsListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListUserSchemaOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(
       UserSchemasOperationsListResultList.pipe(T.EnvelopePayload()),
     ),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListUserSchemaOperationsResponse",
@@ -2970,10 +3005,13 @@ export const UserSchemasListResultList = /*@__PURE__*/ S.Array(
 export interface ListUserSchemasResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: UserSchemasListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListUserSchemasResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(UserSchemasListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListUserSchemasResponse",
@@ -3800,78 +3838,98 @@ export type BulkCreateLabelUsersError =
   | Forbidden
   | CloudflareOpError;
 /** Create user labels */
-export const bulkCreateLabelUsers: API.OperationMethod<
+export const bulkCreateLabelUsers: API.PaginatedOperationMethod<
   BulkCreateLabelUsersRequest,
   BulkCreateLabelUsersResponse,
   BulkCreateLabelUsersError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BulkCreateLabelUsersRequest,
-  output: BulkCreateLabelUsersResponse,
-  errors: [
-    LabelAlreadyExists,
-    Forbidden,
-    CloudflareRateLimited,
-    CloudflareError,
-  ],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: BulkCreateLabelUsersRequest,
+    output: BulkCreateLabelUsersResponse,
+    errors: [
+      LabelAlreadyExists,
+      Forbidden,
+      CloudflareRateLimited,
+      CloudflareError,
+    ],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type BulkCreateOperationLabelsError = CloudflareOpError;
 /** Bulk attach label(s) on operation(s) in endpoint management */
-export const bulkCreateOperationLabels: API.OperationMethod<
+export const bulkCreateOperationLabels: API.PaginatedOperationMethod<
   BulkCreateOperationLabelsRequest,
   BulkCreateOperationLabelsResponse,
   BulkCreateOperationLabelsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BulkCreateOperationLabelsRequest,
-  output: BulkCreateOperationLabelsResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: BulkCreateOperationLabelsRequest,
+    output: BulkCreateOperationLabelsResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type BulkCreateOperationsError = CloudflareOpError;
 /** Add one or more operations to a zone. Endpoints can contain path variables. Host, method, endpoint will be normalized to a canoncial form when creating an operation and must be unique on the zone. Inserting an operation that matches an existing one will return the record of the already existing operation and update its last_updated date. */
-export const bulkCreateOperations: API.OperationMethod<
+export const bulkCreateOperations: API.PaginatedOperationMethod<
   BulkCreateOperationsRequest,
   BulkCreateOperationsResponse,
   BulkCreateOperationsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BulkCreateOperationsRequest,
-  output: BulkCreateOperationsResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: BulkCreateOperationsRequest,
+    output: BulkCreateOperationsResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type BulkDeleteLabelUsersError = CloudflareOpError;
 /** Delete user labels */
-export const bulkDeleteLabelUsers: API.OperationMethod<
+export const bulkDeleteLabelUsers: API.PaginatedOperationMethod<
   BulkDeleteLabelUsersRequest,
   BulkDeleteLabelUsersResponse,
   BulkDeleteLabelUsersError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BulkDeleteLabelUsersRequest,
-  output: BulkDeleteLabelUsersResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: BulkDeleteLabelUsersRequest,
+    output: BulkDeleteLabelUsersResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type BulkDeleteOperationLabelsError = CloudflareOpError;
 /** Bulk remove label(s) on operation(s) in endpoint management */
-export const bulkDeleteOperationLabels: API.OperationMethod<
+export const bulkDeleteOperationLabels: API.PaginatedOperationMethod<
   BulkDeleteOperationLabelsRequest,
   BulkDeleteOperationLabelsResponse,
   BulkDeleteOperationLabelsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BulkDeleteOperationLabelsRequest,
-  output: BulkDeleteOperationLabelsResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: BulkDeleteOperationLabelsRequest,
+    output: BulkDeleteOperationLabelsResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type BulkDeleteOperationsError =
   | InvalidObjectIdentifier
@@ -3913,17 +3971,21 @@ export const bulkPatchDiscoveryOperations: API.OperationMethod<
 
 export type BulkUpdateOperationLabelsError = CloudflareOpError;
 /** Bulk replace label(s) on operation(s) in endpoint management */
-export const bulkUpdateOperationLabels: API.OperationMethod<
+export const bulkUpdateOperationLabels: API.PaginatedOperationMethod<
   BulkUpdateOperationLabelsRequest,
   BulkUpdateOperationLabelsResponse,
   BulkUpdateOperationLabelsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BulkUpdateOperationLabelsRequest,
-  output: BulkUpdateOperationLabelsResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: BulkUpdateOperationLabelsRequest,
+    output: BulkUpdateOperationLabelsResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type CreateExpressionTemplateFallthroughError =
   | InvalidObjectIdentifier
@@ -4240,17 +4302,27 @@ export const getUserSchema: API.OperationMethod<
 
 export type ListDiscoveryOperationsError = CloudflareOpError;
 /** Retrieve the most up to date view of discovered operations */
-export const listDiscoveryOperations: API.OperationMethod<
+export const listDiscoveryOperations: API.PaginatedOperationMethod<
   ListDiscoveryOperationsRequest,
   ListDiscoveryOperationsResponse,
   ListDiscoveryOperationsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListDiscoveryOperationsRequest,
-  output: ListDiscoveryOperationsResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListDiscoveryOperationsRequest,
+    output: ListDiscoveryOperationsResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "resultInfo.page",
+      items: "result",
+      pageSize: "perPage",
+    } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListLabelsError =
   | ZonePurged
@@ -4258,37 +4330,57 @@ export type ListLabelsError =
   | NotFound
   | CloudflareOpError;
 /** Retrieve all labels */
-export const listLabels: API.OperationMethod<
+export const listLabels: API.PaginatedOperationMethod<
   ListLabelsRequest,
   ListLabelsResponse,
   ListLabelsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListLabelsRequest,
-  output: ListLabelsResponse,
-  errors: [
-    ZonePurged,
-    Forbidden,
-    NotFound,
-    CloudflareRateLimited,
-    CloudflareError,
-  ],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListLabelsRequest,
+    output: ListLabelsResponse,
+    errors: [
+      ZonePurged,
+      Forbidden,
+      NotFound,
+      CloudflareRateLimited,
+      CloudflareError,
+    ],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "resultInfo.page",
+      items: "result",
+      pageSize: "perPage",
+    } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListOperationsError = Forbidden | CloudflareOpError;
 /** Lists all API operations tracked by API Shield for a zone with pagination. Returns operation details including method, path, and feature configurations. */
-export const listOperations: API.OperationMethod<
+export const listOperations: API.PaginatedOperationMethod<
   ListOperationsRequest,
   ListOperationsResponse,
   ListOperationsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListOperationsRequest,
-  output: ListOperationsResponse,
-  errors: [Forbidden, CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListOperationsRequest,
+    output: ListOperationsResponse,
+    errors: [Forbidden, CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "resultInfo.page",
+      items: "result",
+      pageSize: "perPage",
+    } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListSchemasError = InvalidObjectIdentifier | CloudflareOpError;
 /** Retrieves API operations and their features exported as OpenAPI schemas. */
@@ -4306,45 +4398,75 @@ export const listSchemas: API.OperationMethod<
 
 export type ListUserSchemaHostsError = CloudflareOpError;
 /** Lists all unique hosts found in uploaded OpenAPI schemas for the zone. Useful for understanding which domains have schema coverage. */
-export const listUserSchemaHosts: API.OperationMethod<
+export const listUserSchemaHosts: API.PaginatedOperationMethod<
   ListUserSchemaHostsRequest,
   ListUserSchemaHostsResponse,
   ListUserSchemaHostsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListUserSchemaHostsRequest,
-  output: ListUserSchemaHostsResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListUserSchemaHostsRequest,
+    output: ListUserSchemaHostsResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "resultInfo.page",
+      items: "result",
+      pageSize: "perPage",
+    } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListUserSchemaOperationsError = CloudflareOpError;
 /** Retrieves all operations from the schema. Operations that already exist in API Shield Endpoint Management will be returned as full operations. */
-export const listUserSchemaOperations: API.OperationMethod<
+export const listUserSchemaOperations: API.PaginatedOperationMethod<
   ListUserSchemaOperationsRequest,
   ListUserSchemaOperationsResponse,
   ListUserSchemaOperationsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListUserSchemaOperationsRequest,
-  output: ListUserSchemaOperationsResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListUserSchemaOperationsRequest,
+    output: ListUserSchemaOperationsResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "resultInfo.page",
+      items: "result",
+      pageSize: "perPage",
+    } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListUserSchemasError = ZonePurged | Forbidden | CloudflareOpError;
 /** Lists all OpenAPI schemas uploaded to API Shield for the zone, including their validation status and associated operations. */
-export const listUserSchemas: API.OperationMethod<
+export const listUserSchemas: API.PaginatedOperationMethod<
   ListUserSchemasRequest,
   ListUserSchemasResponse,
   ListUserSchemasError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListUserSchemasRequest,
-  output: ListUserSchemasResponse,
-  errors: [ZonePurged, Forbidden, CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListUserSchemasRequest,
+    output: ListUserSchemasResponse,
+    errors: [ZonePurged, Forbidden, CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "resultInfo.page",
+      items: "result",
+      pageSize: "perPage",
+    } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type PatchLabelUserError = LabelNotFound | CloudflareOpError;
 /** Update certain fields on a label */

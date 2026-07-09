@@ -4,9 +4,11 @@ import * as API from "@distilled.cloud/core/api";
 import * as T from "../traits.ts";
 import {
   CloudflareProtocol,
+  CloudflarePaginatedProtocol,
   type CloudflareOpError,
   type CloudflareOpContext,
 } from "../protocol.ts";
+import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
 export class Forbidden extends T.applyErrorMatchers(
@@ -248,10 +250,13 @@ export const SubdomainsDnsGetResultList = /*@__PURE__*/ S.Array(
 export interface GetSubdomainDnsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: SubdomainsDnsGetResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const GetSubdomainDnsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(SubdomainsDnsGetResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "GetSubdomainDnsResponse",
@@ -316,10 +321,13 @@ export const SubdomainsListResultList = /*@__PURE__*/ S.Array(
 export interface ListSubdomainsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: SubdomainsListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListSubdomainsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(SubdomainsListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListSubdomainsResponse",
@@ -665,31 +673,39 @@ export const getSubdomain: API.OperationMethod<
 
 export type GetSubdomainDnsError = CloudflareOpError;
 /** Returns the expected DNS records for a sending subdomain. */
-export const getSubdomainDns: API.OperationMethod<
+export const getSubdomainDns: API.PaginatedOperationMethod<
   GetSubdomainDnsRequest,
   GetSubdomainDnsResponse,
   GetSubdomainDnsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetSubdomainDnsRequest,
-  output: GetSubdomainDnsResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: GetSubdomainDnsRequest,
+    output: GetSubdomainDnsResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListSubdomainsError = Forbidden | CloudflareOpError;
 /** Lists all sending-enabled subdomains for the zone. */
-export const listSubdomains: API.OperationMethod<
+export const listSubdomains: API.PaginatedOperationMethod<
   ListSubdomainsRequest,
   ListSubdomainsResponse,
   ListSubdomainsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListSubdomainsRequest,
-  output: ListSubdomainsResponse,
-  errors: [Forbidden, CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListSubdomainsRequest,
+    output: ListSubdomainsResponse,
+    errors: [Forbidden, CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type SendEmailSendingError = CloudflareOpError;
 /** Send an email */

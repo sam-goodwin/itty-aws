@@ -4,9 +4,11 @@ import * as API from "@distilled.cloud/core/api";
 import * as T from "../traits.ts";
 import {
   CloudflareProtocol,
+  CloudflarePaginatedProtocol,
   type CloudflareOpError,
   type CloudflareOpContext,
 } from "../protocol.ts";
+import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
 export class Forbidden extends T.applyErrorMatchers(
@@ -798,10 +800,13 @@ export const AppsListResultList = /*@__PURE__*/ S.Array(
 export interface ListAppsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: AppsListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListAppsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(AppsListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListAppsResponse",
@@ -976,17 +981,27 @@ export const getApp: API.OperationMethod<
 
 export type ListAppsError = Forbidden | CloudflareOpError;
 /** Retrieves a list of currently existing Spectrum applications inside a zone. */
-export const listApps: API.OperationMethod<
+export const listApps: API.PaginatedOperationMethod<
   ListAppsRequest,
   ListAppsResponse,
   ListAppsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListAppsRequest,
-  output: ListAppsResponse,
-  errors: [Forbidden, CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListAppsRequest,
+    output: ListAppsResponse,
+    errors: [Forbidden, CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "resultInfo.page",
+      items: "result",
+      pageSize: "perPage",
+    } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type UpdateAppError =
   | SpectrumAppNotFound

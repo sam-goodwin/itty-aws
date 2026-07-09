@@ -4,9 +4,11 @@ import * as API from "@distilled.cloud/core/api";
 import * as T from "../traits.ts";
 import {
   CloudflareProtocol,
+  CloudflarePaginatedProtocol,
   type CloudflareOpError,
   type CloudflareOpContext,
 } from "../protocol.ts";
+import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
 export class AdvancedTcpProtectionNotEntitled extends T.applyErrorMatchers(
@@ -162,6 +164,8 @@ export const AdvancedTcpProtectionPrefixesBulkCreateResultList =
 export interface BulkCreateAdvancedTcpProtectionPrefixesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: AdvancedTcpProtectionPrefixesBulkCreateResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const BulkCreateAdvancedTcpProtectionPrefixesResponse =
   /*@__PURE__*/ S.suspend(() =>
@@ -171,6 +175,7 @@ export const BulkCreateAdvancedTcpProtectionPrefixesResponse =
           T.EnvelopePayload(),
         ),
       ),
+      resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
     }),
   ).annotate({
     identifier: "BulkCreateAdvancedTcpProtectionPrefixesResponse",
@@ -1273,6 +1278,8 @@ export const AdvancedTcpProtectionAllowlistListResultList =
 export interface ListAdvancedTcpProtectionAllowlistsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: AdvancedTcpProtectionAllowlistListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListAdvancedTcpProtectionAllowlistsResponse =
   /*@__PURE__*/ S.suspend(() =>
@@ -1280,6 +1287,7 @@ export const ListAdvancedTcpProtectionAllowlistsResponse =
       result: S.optional(
         AdvancedTcpProtectionAllowlistListResultList.pipe(T.EnvelopePayload()),
       ),
+      resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
     }),
   ).annotate({
     identifier: "ListAdvancedTcpProtectionAllowlistsResponse",
@@ -1354,6 +1362,8 @@ export const AdvancedTcpProtectionPrefixesListResultList =
 export interface ListAdvancedTcpProtectionPrefixesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: AdvancedTcpProtectionPrefixesListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListAdvancedTcpProtectionPrefixesResponse =
   /*@__PURE__*/ S.suspend(() =>
@@ -1361,6 +1371,7 @@ export const ListAdvancedTcpProtectionPrefixesResponse =
       result: S.optional(
         AdvancedTcpProtectionPrefixesListResultList.pipe(T.EnvelopePayload()),
       ),
+      resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
     }),
   ).annotate({
     identifier: "ListAdvancedTcpProtectionPrefixesResponse",
@@ -1435,6 +1446,8 @@ export const AdvancedTcpProtectionSynProtectionFiltersListResultList =
 export interface ListAdvancedTcpProtectionSynProtectionFiltersResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: AdvancedTcpProtectionSynProtectionFiltersListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListAdvancedTcpProtectionSynProtectionFiltersResponse =
   /*@__PURE__*/ S.suspend(() =>
@@ -1444,6 +1457,7 @@ export const ListAdvancedTcpProtectionSynProtectionFiltersResponse =
           T.EnvelopePayload(),
         ),
       ),
+      resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
     }),
   ).annotate({
     identifier: "ListAdvancedTcpProtectionSynProtectionFiltersResponse",
@@ -1527,6 +1541,8 @@ export const AdvancedTcpProtectionSynProtectionRulesListResultList =
 export interface ListAdvancedTcpProtectionSynProtectionRulesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: AdvancedTcpProtectionSynProtectionRulesListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListAdvancedTcpProtectionSynProtectionRulesResponse =
   /*@__PURE__*/ S.suspend(() =>
@@ -1536,6 +1552,7 @@ export const ListAdvancedTcpProtectionSynProtectionRulesResponse =
           T.EnvelopePayload(),
         ),
       ),
+      resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
     }),
   ).annotate({
     identifier: "ListAdvancedTcpProtectionSynProtectionRulesResponse",
@@ -1610,6 +1627,8 @@ export const AdvancedTcpProtectionTcpFlowProtectionFiltersListResultList =
 export interface ListAdvancedTcpProtectionTcpFlowProtectionFiltersResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: AdvancedTcpProtectionTcpFlowProtectionFiltersListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListAdvancedTcpProtectionTcpFlowProtectionFiltersResponse =
   /*@__PURE__*/ S.suspend(() =>
@@ -1619,6 +1638,7 @@ export const ListAdvancedTcpProtectionTcpFlowProtectionFiltersResponse =
           T.EnvelopePayload(),
         ),
       ),
+      resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
     }),
   ).annotate({
     identifier: "ListAdvancedTcpProtectionTcpFlowProtectionFiltersResponse",
@@ -1699,6 +1719,8 @@ export const AdvancedTcpProtectionTcpFlowProtectionRulesListResultList =
 export interface ListAdvancedTcpProtectionTcpFlowProtectionRulesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: AdvancedTcpProtectionTcpFlowProtectionRulesListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListAdvancedTcpProtectionTcpFlowProtectionRulesResponse =
   /*@__PURE__*/ S.suspend(() =>
@@ -1708,6 +1730,7 @@ export const ListAdvancedTcpProtectionTcpFlowProtectionRulesResponse =
           T.EnvelopePayload(),
         ),
       ),
+      resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
     }),
   ).annotate({
     identifier: "ListAdvancedTcpProtectionTcpFlowProtectionRulesResponse",
@@ -2110,17 +2133,21 @@ export const PatchAdvancedTcpProtectionTcpFlowProtectionRuleItemResponse =
 
 export type BulkCreateAdvancedTcpProtectionPrefixesError = CloudflareOpError;
 /** Create multiple prefixes for an account. */
-export const bulkCreateAdvancedTcpProtectionPrefixes: API.OperationMethod<
+export const bulkCreateAdvancedTcpProtectionPrefixes: API.PaginatedOperationMethod<
   BulkCreateAdvancedTcpProtectionPrefixesRequest,
   BulkCreateAdvancedTcpProtectionPrefixesResponse,
   BulkCreateAdvancedTcpProtectionPrefixesError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BulkCreateAdvancedTcpProtectionPrefixesRequest,
-  output: BulkCreateAdvancedTcpProtectionPrefixesResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: BulkCreateAdvancedTcpProtectionPrefixesRequest,
+    output: BulkCreateAdvancedTcpProtectionPrefixesResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type BulkDeleteAdvancedTcpProtectionAllowlistsError = CloudflareOpError;
 /** Delete all allowlist prefixes for an account. */
@@ -2621,124 +2648,184 @@ export type ListAdvancedTcpProtectionAllowlistsError =
   | Forbidden
   | CloudflareOpError;
 /** List all allowlist prefixes for an account. */
-export const listAdvancedTcpProtectionAllowlists: API.OperationMethod<
+export const listAdvancedTcpProtectionAllowlists: API.PaginatedOperationMethod<
   ListAdvancedTcpProtectionAllowlistsRequest,
   ListAdvancedTcpProtectionAllowlistsResponse,
   ListAdvancedTcpProtectionAllowlistsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListAdvancedTcpProtectionAllowlistsRequest,
-  output: ListAdvancedTcpProtectionAllowlistsResponse,
-  errors: [
-    AdvancedTcpProtectionNotEntitled,
-    Forbidden,
-    CloudflareRateLimited,
-    CloudflareError,
-  ],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListAdvancedTcpProtectionAllowlistsRequest,
+    output: ListAdvancedTcpProtectionAllowlistsResponse,
+    errors: [
+      AdvancedTcpProtectionNotEntitled,
+      Forbidden,
+      CloudflareRateLimited,
+      CloudflareError,
+    ],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "resultInfo.page",
+      items: "result",
+      pageSize: "perPage",
+    } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListAdvancedTcpProtectionPrefixesError = CloudflareOpError;
 /** List all prefixes for an account. */
-export const listAdvancedTcpProtectionPrefixes: API.OperationMethod<
+export const listAdvancedTcpProtectionPrefixes: API.PaginatedOperationMethod<
   ListAdvancedTcpProtectionPrefixesRequest,
   ListAdvancedTcpProtectionPrefixesResponse,
   ListAdvancedTcpProtectionPrefixesError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListAdvancedTcpProtectionPrefixesRequest,
-  output: ListAdvancedTcpProtectionPrefixesResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListAdvancedTcpProtectionPrefixesRequest,
+    output: ListAdvancedTcpProtectionPrefixesResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "resultInfo.page",
+      items: "result",
+      pageSize: "perPage",
+    } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListAdvancedTcpProtectionSynProtectionFiltersError =
   | AdvancedTcpProtectionNotEntitled
   | Forbidden
   | CloudflareOpError;
 /** List all SYN Protection filters for an account. */
-export const listAdvancedTcpProtectionSynProtectionFilters: API.OperationMethod<
+export const listAdvancedTcpProtectionSynProtectionFilters: API.PaginatedOperationMethod<
   ListAdvancedTcpProtectionSynProtectionFiltersRequest,
   ListAdvancedTcpProtectionSynProtectionFiltersResponse,
   ListAdvancedTcpProtectionSynProtectionFiltersError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListAdvancedTcpProtectionSynProtectionFiltersRequest,
-  output: ListAdvancedTcpProtectionSynProtectionFiltersResponse,
-  errors: [
-    AdvancedTcpProtectionNotEntitled,
-    Forbidden,
-    CloudflareRateLimited,
-    CloudflareError,
-  ],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListAdvancedTcpProtectionSynProtectionFiltersRequest,
+    output: ListAdvancedTcpProtectionSynProtectionFiltersResponse,
+    errors: [
+      AdvancedTcpProtectionNotEntitled,
+      Forbidden,
+      CloudflareRateLimited,
+      CloudflareError,
+    ],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "resultInfo.page",
+      items: "result",
+      pageSize: "perPage",
+    } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListAdvancedTcpProtectionSynProtectionRulesError =
   | AdvancedTcpProtectionNotEntitled
   | Forbidden
   | CloudflareOpError;
 /** List all SYN Protection rules for an account. */
-export const listAdvancedTcpProtectionSynProtectionRules: API.OperationMethod<
+export const listAdvancedTcpProtectionSynProtectionRules: API.PaginatedOperationMethod<
   ListAdvancedTcpProtectionSynProtectionRulesRequest,
   ListAdvancedTcpProtectionSynProtectionRulesResponse,
   ListAdvancedTcpProtectionSynProtectionRulesError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListAdvancedTcpProtectionSynProtectionRulesRequest,
-  output: ListAdvancedTcpProtectionSynProtectionRulesResponse,
-  errors: [
-    AdvancedTcpProtectionNotEntitled,
-    Forbidden,
-    CloudflareRateLimited,
-    CloudflareError,
-  ],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListAdvancedTcpProtectionSynProtectionRulesRequest,
+    output: ListAdvancedTcpProtectionSynProtectionRulesResponse,
+    errors: [
+      AdvancedTcpProtectionNotEntitled,
+      Forbidden,
+      CloudflareRateLimited,
+      CloudflareError,
+    ],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "resultInfo.page",
+      items: "result",
+      pageSize: "perPage",
+    } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListAdvancedTcpProtectionTcpFlowProtectionFiltersError =
   | AdvancedTcpProtectionNotEntitled
   | Forbidden
   | CloudflareOpError;
 /** List all TCP Flow Protection filters for an account. */
-export const listAdvancedTcpProtectionTcpFlowProtectionFilters: API.OperationMethod<
+export const listAdvancedTcpProtectionTcpFlowProtectionFilters: API.PaginatedOperationMethod<
   ListAdvancedTcpProtectionTcpFlowProtectionFiltersRequest,
   ListAdvancedTcpProtectionTcpFlowProtectionFiltersResponse,
   ListAdvancedTcpProtectionTcpFlowProtectionFiltersError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListAdvancedTcpProtectionTcpFlowProtectionFiltersRequest,
-  output: ListAdvancedTcpProtectionTcpFlowProtectionFiltersResponse,
-  errors: [
-    AdvancedTcpProtectionNotEntitled,
-    Forbidden,
-    CloudflareRateLimited,
-    CloudflareError,
-  ],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListAdvancedTcpProtectionTcpFlowProtectionFiltersRequest,
+    output: ListAdvancedTcpProtectionTcpFlowProtectionFiltersResponse,
+    errors: [
+      AdvancedTcpProtectionNotEntitled,
+      Forbidden,
+      CloudflareRateLimited,
+      CloudflareError,
+    ],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "resultInfo.page",
+      items: "result",
+      pageSize: "perPage",
+    } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListAdvancedTcpProtectionTcpFlowProtectionRulesError =
   | AdvancedTcpProtectionNotEntitled
   | Forbidden
   | CloudflareOpError;
 /** List all TCP Flow Protection rules for an account. */
-export const listAdvancedTcpProtectionTcpFlowProtectionRules: API.OperationMethod<
+export const listAdvancedTcpProtectionTcpFlowProtectionRules: API.PaginatedOperationMethod<
   ListAdvancedTcpProtectionTcpFlowProtectionRulesRequest,
   ListAdvancedTcpProtectionTcpFlowProtectionRulesResponse,
   ListAdvancedTcpProtectionTcpFlowProtectionRulesError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListAdvancedTcpProtectionTcpFlowProtectionRulesRequest,
-  output: ListAdvancedTcpProtectionTcpFlowProtectionRulesResponse,
-  errors: [
-    AdvancedTcpProtectionNotEntitled,
-    Forbidden,
-    CloudflareRateLimited,
-    CloudflareError,
-  ],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListAdvancedTcpProtectionTcpFlowProtectionRulesRequest,
+    output: ListAdvancedTcpProtectionTcpFlowProtectionRulesResponse,
+    errors: [
+      AdvancedTcpProtectionNotEntitled,
+      Forbidden,
+      CloudflareRateLimited,
+      CloudflareError,
+    ],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "resultInfo.page",
+      items: "result",
+      pageSize: "perPage",
+    } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type PatchAdvancedTcpProtectionAllowlistItemError =
   | AllowlistEntryNotFound

@@ -25,6 +25,16 @@
       "op": "replace",
       "path": "/shapes/com.cloudflare.flagship#ListAppFlagChangelogs/output/target",
       "value": "com.cloudflare.flagship#ListAppFlagChangelogsResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.flagship#ListAppFlagChangelogs/traits/smithy.api#paginated",
+      "value": {
+        "mode": "cursor",
+        "inputToken": "cursor",
+        "outputToken": "resultInfo.cursors.after",
+        "items": "result"
+      }
     }
   ]
 }

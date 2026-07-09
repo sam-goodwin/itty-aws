@@ -25,6 +25,14 @@
       "op": "replace",
       "path": "/shapes/com.cloudflare.email_security#BulkInvestigateMove/output/target",
       "value": "com.cloudflare.email_security#BulkInvestigateMoveResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.email_security#BulkInvestigateMove/traits/smithy.api#paginated",
+      "value": {
+        "mode": "single",
+        "items": "result"
+      }
     }
   ]
 }

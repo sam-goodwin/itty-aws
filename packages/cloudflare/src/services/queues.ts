@@ -4,9 +4,11 @@ import * as API from "@distilled.cloud/core/api";
 import * as T from "../traits.ts";
 import {
   CloudflareProtocol,
+  CloudflarePaginatedProtocol,
   type CloudflareOpError,
   type CloudflareOpContext,
 } from "../protocol.ts";
+import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
 export class ConsumerAlreadyExists extends T.applyErrorMatchers(
@@ -1276,10 +1278,13 @@ export const ConsumersListResultList = /*@__PURE__*/ S.Array(
 export interface ListConsumersResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: ConsumersListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListConsumersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(ConsumersListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListConsumersResponse",
@@ -1404,10 +1409,13 @@ export const ListResultList = /*@__PURE__*/ S.Array(
 export interface ListQueuesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: ListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListQueuesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(ListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListQueuesResponse",
@@ -1563,10 +1571,13 @@ export const SubscriptionsListResultList = /*@__PURE__*/ S.Array(
 export interface ListSubscriptionsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: SubscriptionsListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListSubscriptionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(SubscriptionsListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListSubscriptionsResponse",
@@ -2730,51 +2741,69 @@ export type ListConsumersError =
   | InvalidRoute
   | CloudflareOpError;
 /** Returns the consumers for a Queue */
-export const listConsumers: API.OperationMethod<
+export const listConsumers: API.PaginatedOperationMethod<
   ListConsumersRequest,
   ListConsumersResponse,
   ListConsumersError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListConsumersRequest,
-  output: ListConsumersResponse,
-  errors: [
-    InvalidRequestBody,
-    QueueNotFound,
-    InvalidRoute,
-    CloudflareRateLimited,
-    CloudflareError,
-  ],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListConsumersRequest,
+    output: ListConsumersResponse,
+    errors: [
+      InvalidRequestBody,
+      QueueNotFound,
+      InvalidRoute,
+      CloudflareRateLimited,
+      CloudflareError,
+    ],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListQueuesError = InvalidRoute | CloudflareOpError;
 /** Returns the queues owned by an account. */
-export const listQueues: API.OperationMethod<
+export const listQueues: API.PaginatedOperationMethod<
   ListQueuesRequest,
   ListQueuesResponse,
   ListQueuesError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListQueuesRequest,
-  output: ListQueuesResponse,
-  errors: [InvalidRoute, CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListQueuesRequest,
+    output: ListQueuesResponse,
+    errors: [InvalidRoute, CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListSubscriptionsError = Forbidden | CloudflareOpError;
 /** Get a paginated list of event subscriptions with optional sorting and filtering */
-export const listSubscriptions: API.OperationMethod<
+export const listSubscriptions: API.PaginatedOperationMethod<
   ListSubscriptionsRequest,
   ListSubscriptionsResponse,
   ListSubscriptionsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListSubscriptionsRequest,
-  output: ListSubscriptionsResponse,
-  errors: [Forbidden, CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListSubscriptionsRequest,
+    output: ListSubscriptionsResponse,
+    errors: [Forbidden, CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "resultInfo.page",
+      items: "result",
+      pageSize: "perPage",
+    } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type PatchQueueError = QueueNotFound | InvalidRoute | CloudflareOpError;
 /** Updates a Queue. */

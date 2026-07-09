@@ -4,9 +4,11 @@ import * as API from "@distilled.cloud/core/api";
 import * as T from "../traits.ts";
 import {
   CloudflareProtocol,
+  CloudflarePaginatedProtocol,
   type CloudflareOpError,
   type CloudflareOpContext,
 } from "../protocol.ts";
+import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
 export class DatabaseAlreadyExists extends T.applyErrorMatchers(
@@ -721,10 +723,13 @@ export const DatabaseListResultList = /*@__PURE__*/ S.Array(
 export interface ListDatabasesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: DatabaseListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListDatabasesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(DatabaseListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListDatabasesResponse",
@@ -964,10 +969,13 @@ export const DatabaseQueryResultList = /*@__PURE__*/ S.Array(
 export interface QueryDatabaseResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: DatabaseQueryResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const QueryDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(DatabaseQueryResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "QueryDatabaseResponse",
@@ -1141,10 +1149,13 @@ export const DatabaseRawResultList = /*@__PURE__*/ S.Array(
 export interface RawDatabaseResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: DatabaseRawResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const RawDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(DatabaseRawResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "RawDatabaseResponse",
@@ -1438,17 +1449,27 @@ export const importDatabase: API.OperationMethod<
 
 export type ListDatabasesError = CloudflareOpError;
 /** Returns a list of D1 databases. */
-export const listDatabases: API.OperationMethod<
+export const listDatabases: API.PaginatedOperationMethod<
   ListDatabasesRequest,
   ListDatabasesResponse,
   ListDatabasesError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListDatabasesRequest,
-  output: ListDatabasesResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListDatabasesRequest,
+    output: ListDatabasesResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "resultInfo.page",
+      items: "result",
+      pageSize: "perPage",
+    } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type PatchDatabaseError =
   | InvalidObjectIdentifier
@@ -1476,31 +1497,39 @@ export const patchDatabase: API.OperationMethod<
 
 export type QueryDatabaseError = CloudflareOpError;
 /** Returns the query result as an object. */
-export const queryDatabase: API.OperationMethod<
+export const queryDatabase: API.PaginatedOperationMethod<
   QueryDatabaseRequest,
   QueryDatabaseResponse,
   QueryDatabaseError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: QueryDatabaseRequest,
-  output: QueryDatabaseResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: QueryDatabaseRequest,
+    output: QueryDatabaseResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type RawDatabaseError = CloudflareOpError;
 /** Returns the query result rows as arrays rather than objects. This is a performance-optimized version of the /query endpoint. */
-export const rawDatabase: API.OperationMethod<
+export const rawDatabase: API.PaginatedOperationMethod<
   RawDatabaseRequest,
   RawDatabaseResponse,
   RawDatabaseError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: RawDatabaseRequest,
-  output: RawDatabaseResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: RawDatabaseRequest,
+    output: RawDatabaseResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type RestoreDatabaseTimeTravelError =
   | InvalidObjectIdentifier

@@ -92,6 +92,17 @@ export const getErrorMatchers = (
 ): ReadonlyArray<ErrorMatcher> | undefined =>
   (cls as any)?.[errorMatchersSymbol];
 
+export const resultInfoSymbol = Symbol.for(
+  "@distilled.cloud/cloudflare/result-info",
+);
+
+/**
+ * Marks the output member that receives the envelope's top-level
+ * `result_info` block (camelCased). Only honored by
+ * `CloudflarePaginatedProtocol` — pagination-specific by design.
+ */
+export const ResultInfo = () => makeAnnotation(resultInfoSymbol, true);
+
 export const envelopePayloadSymbol = Symbol.for(
   "@distilled.cloud/cloudflare/envelope-payload",
 );

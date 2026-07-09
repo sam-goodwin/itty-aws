@@ -4,9 +4,11 @@ import * as API from "@distilled.cloud/core/api";
 import * as T from "../traits.ts";
 import {
   CloudflareProtocol,
+  CloudflarePaginatedProtocol,
   type CloudflareOpError,
   type CloudflareOpContext,
 } from "../protocol.ts";
+import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
 export class CertificateAlreadyDeleted extends T.applyErrorMatchers(
@@ -228,10 +230,13 @@ export const AssociationsGetResultList = /*@__PURE__*/ S.Array(
 export interface GetAssociationResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: AssociationsGetResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const GetAssociationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(AssociationsGetResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "GetAssociationResponse",
@@ -390,10 +395,13 @@ export const ListResultList = /*@__PURE__*/ S.Array(
 export interface ListMtlsCertificatesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: ListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListMtlsCertificatesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(ListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListMtlsCertificatesResponse",
@@ -439,17 +447,21 @@ export const deleteMtlsCertificate: API.OperationMethod<
 
 export type GetAssociationError = CloudflareOpError;
 /** Lists all active associations between the certificate and Cloudflare services. */
-export const getAssociation: API.OperationMethod<
+export const getAssociation: API.PaginatedOperationMethod<
   GetAssociationRequest,
   GetAssociationResponse,
   GetAssociationError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetAssociationRequest,
-  output: GetAssociationResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: GetAssociationRequest,
+    output: GetAssociationResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type GetMtlsCertificateError = CertificateNotFound | CloudflareOpError;
 /** Fetches a single mTLS certificate uploaded to your account. To get a certificate issued by the Cloudflare managed CA, use the [Client Certificate Details endpoint](/api/resources/client_certificates/methods/get/). */
@@ -467,14 +479,18 @@ export const getMtlsCertificate: API.OperationMethod<
 
 export type ListMtlsCertificatesError = CloudflareOpError;
 /** Lists all mTLS certificates uploaded to your account, such as Bring Your Own CA (BYO-CA) for mTLS. To list certificates issued by the Cloudflare managed CA, use the [List Client Certificates endpoint](/api/resources/client_certificates/methods/list/). */
-export const listMtlsCertificates: API.OperationMethod<
+export const listMtlsCertificates: API.PaginatedOperationMethod<
   ListMtlsCertificatesRequest,
   ListMtlsCertificatesResponse,
   ListMtlsCertificatesError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListMtlsCertificatesRequest,
-  output: ListMtlsCertificatesResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListMtlsCertificatesRequest,
+    output: ListMtlsCertificatesResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);

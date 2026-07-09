@@ -4,9 +4,11 @@ import * as API from "@distilled.cloud/core/api";
 import * as T from "../traits.ts";
 import {
   CloudflareProtocol,
+  CloudflarePaginatedProtocol,
   type CloudflareOpError,
   type CloudflareOpContext,
 } from "../protocol.ts";
+import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
 export class AdvancedCertificateManagerRequired extends T.applyErrorMatchers(
@@ -348,12 +350,15 @@ export const CustomTrustStoreListResultList = /*@__PURE__*/ S.Array(
 export interface ListCustomTrustStoresResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: CustomTrustStoreListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListCustomTrustStoresResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(
       CustomTrustStoreListResultList.pipe(T.EnvelopePayload()),
     ),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListCustomTrustStoresResponse",
@@ -585,22 +590,32 @@ export type ListCustomTrustStoresError =
   | Forbidden
   | CloudflareOpError;
 /** Get Custom Origin Trust Store for a Zone. */
-export const listCustomTrustStores: API.OperationMethod<
+export const listCustomTrustStores: API.PaginatedOperationMethod<
   ListCustomTrustStoresRequest,
   ListCustomTrustStoresResponse,
   ListCustomTrustStoresError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListCustomTrustStoresRequest,
-  output: ListCustomTrustStoresResponse,
-  errors: [
-    AdvancedCertificateManagerRequired,
-    Forbidden,
-    CloudflareRateLimited,
-    CloudflareError,
-  ],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListCustomTrustStoresRequest,
+    output: ListCustomTrustStoresResponse,
+    errors: [
+      AdvancedCertificateManagerRequired,
+      Forbidden,
+      CloudflareRateLimited,
+      CloudflareError,
+    ],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "resultInfo.page",
+      items: "result",
+      pageSize: "perPage",
+    } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type TotalTlsUpdateError = CloudflareOpError;
 /** Set Total TLS Settings or disable the feature for a Zone. */

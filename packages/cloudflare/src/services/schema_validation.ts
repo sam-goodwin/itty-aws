@@ -4,9 +4,11 @@ import * as API from "@distilled.cloud/core/api";
 import * as T from "../traits.ts";
 import {
   CloudflareProtocol,
+  CloudflarePaginatedProtocol,
   type CloudflareOpError,
   type CloudflareOpContext,
 } from "../protocol.ts";
+import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
 export class Forbidden extends T.applyErrorMatchers(
@@ -466,10 +468,13 @@ export const SchemasListResultList = /*@__PURE__*/ S.Array(
 export interface ListSchemasResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: SchemasListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListSchemasResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(SchemasListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListSchemasResponse",
@@ -533,12 +538,15 @@ export const SettingsOperationsListResultList = /*@__PURE__*/ S.Array(
 export interface ListSettingOperationsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: SettingsOperationsListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListSettingOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(
       SettingsOperationsListResultList.pipe(T.EnvelopePayload()),
     ),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListSettingOperationsResponse",
@@ -931,31 +939,51 @@ export const getSettingOperation: API.OperationMethod<
 
 export type ListSchemasError = ZonePurged | Forbidden | CloudflareOpError;
 /** Lists all OpenAPI schemas uploaded to API Shield with pagination support. */
-export const listSchemas: API.OperationMethod<
+export const listSchemas: API.PaginatedOperationMethod<
   ListSchemasRequest,
   ListSchemasResponse,
   ListSchemasError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListSchemasRequest,
-  output: ListSchemasResponse,
-  errors: [ZonePurged, Forbidden, CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListSchemasRequest,
+    output: ListSchemasResponse,
+    errors: [ZonePurged, Forbidden, CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "resultInfo.page",
+      items: "result",
+      pageSize: "perPage",
+    } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListSettingOperationsError = CloudflareOpError;
 /** Lists all per-operation schema validation settings configured for the zone. */
-export const listSettingOperations: API.OperationMethod<
+export const listSettingOperations: API.PaginatedOperationMethod<
   ListSettingOperationsRequest,
   ListSettingOperationsResponse,
   ListSettingOperationsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListSettingOperationsRequest,
-  output: ListSettingOperationsResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListSettingOperationsRequest,
+    output: ListSettingOperationsResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "resultInfo.page",
+      items: "result",
+      pageSize: "perPage",
+    } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type PatchSchemaError = SchemaNotFound | CloudflareOpError;
 /** Modifies an existing OpenAPI schema in API Shield, updating the validation rules for associated API operations. */

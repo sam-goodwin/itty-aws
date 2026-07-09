@@ -4,9 +4,11 @@ import * as API from "@distilled.cloud/core/api";
 import * as T from "../traits.ts";
 import {
   CloudflareProtocol,
+  CloudflarePaginatedProtocol,
   type CloudflareOpError,
   type CloudflareOpContext,
 } from "../protocol.ts";
+import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
 export class Forbidden extends T.applyErrorMatchers(
@@ -216,12 +218,15 @@ export const DirectoryServicesListResultList = /*@__PURE__*/ S.Array(
 export interface ListDirectoryServicesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: DirectoryServicesListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListDirectoryServicesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(
       DirectoryServicesListResultList.pipe(T.EnvelopePayload()),
     ),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListDirectoryServicesResponse",
@@ -353,17 +358,27 @@ export const getDirectoryService: API.OperationMethod<
 
 export type ListDirectoryServicesError = Forbidden | CloudflareOpError;
 /** List Workers VPC connectivity services */
-export const listDirectoryServices: API.OperationMethod<
+export const listDirectoryServices: API.PaginatedOperationMethod<
   ListDirectoryServicesRequest,
   ListDirectoryServicesResponse,
   ListDirectoryServicesError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListDirectoryServicesRequest,
-  output: ListDirectoryServicesResponse,
-  errors: [Forbidden, CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListDirectoryServicesRequest,
+    output: ListDirectoryServicesResponse,
+    errors: [Forbidden, CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "resultInfo.page",
+      items: "result",
+      pageSize: "perPage",
+    } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type UpdateDirectoryServiceError =
   | VpcServiceNotFound

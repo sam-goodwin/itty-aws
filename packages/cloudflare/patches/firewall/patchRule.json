@@ -25,6 +25,14 @@
       "op": "replace",
       "path": "/shapes/com.cloudflare.firewall#PatchRule/output/target",
       "value": "com.cloudflare.firewall#PatchRuleResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.firewall#PatchRule/traits/smithy.api#paginated",
+      "value": {
+        "mode": "single",
+        "items": "result"
+      }
     }
   ]
 }

@@ -4,9 +4,11 @@ import * as API from "@distilled.cloud/core/api";
 import * as T from "../traits.ts";
 import {
   CloudflareProtocol,
+  CloudflarePaginatedProtocol,
   type CloudflareOpError,
   type CloudflareOpContext,
 } from "../protocol.ts";
+import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
 export class Forbidden extends T.applyErrorMatchers(
@@ -1222,10 +1224,13 @@ export const ListResultList = /*@__PURE__*/ S.Array(
 export interface ListHealthchecksResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: ListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListHealthchecksResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(ListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListHealthchecksResponse",
@@ -1923,17 +1928,27 @@ export const getPreview: API.OperationMethod<
 
 export type ListHealthchecksError = Forbidden | CloudflareOpError;
 /** List configured health checks. */
-export const listHealthchecks: API.OperationMethod<
+export const listHealthchecks: API.PaginatedOperationMethod<
   ListHealthchecksRequest,
   ListHealthchecksResponse,
   ListHealthchecksError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListHealthchecksRequest,
-  output: ListHealthchecksResponse,
-  errors: [Forbidden, CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListHealthchecksRequest,
+    output: ListHealthchecksResponse,
+    errors: [Forbidden, CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "resultInfo.page",
+      items: "result",
+      pageSize: "perPage",
+    } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type PatchHealthcheckError = CloudflareOpError;
 /** Patch a configured health check. */

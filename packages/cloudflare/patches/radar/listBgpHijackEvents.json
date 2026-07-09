@@ -25,6 +25,17 @@
       "op": "replace",
       "path": "/shapes/com.cloudflare.radar#ListBgpHijackEvents/output/target",
       "value": "com.cloudflare.radar#ListBgpHijackEventsResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.radar#ListBgpHijackEvents/traits/smithy.api#paginated",
+      "value": {
+        "mode": "page",
+        "inputToken": "page",
+        "outputToken": "resultInfo.page",
+        "items": "result.items",
+        "pageSize": "perPage"
+      }
     }
   ]
 }

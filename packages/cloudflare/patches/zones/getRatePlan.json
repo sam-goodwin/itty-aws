@@ -25,6 +25,14 @@
       "op": "replace",
       "path": "/shapes/com.cloudflare.zones#GetRatePlan/output/target",
       "value": "com.cloudflare.zones#GetRatePlanResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.zones#GetRatePlan/traits/smithy.api#paginated",
+      "value": {
+        "mode": "single",
+        "items": "result"
+      }
     }
   ]
 }

@@ -4,9 +4,11 @@ import * as API from "@distilled.cloud/core/api";
 import * as T from "../traits.ts";
 import {
   CloudflareProtocol,
+  CloudflarePaginatedProtocol,
   type CloudflareOpError,
   type CloudflareOpContext,
 } from "../protocol.ts";
+import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
 export class InvalidSinkConfig extends T.applyErrorMatchers(
@@ -2354,10 +2356,13 @@ export const SinksListResultList = /*@__PURE__*/ S.Array(
 export interface ListSinksResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: SinksListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListSinksResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(SinksListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListSinksResponse",
@@ -2589,10 +2594,13 @@ export const StreamsListResultList = /*@__PURE__*/ S.Array(
 export interface ListStreamsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: StreamsListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListStreamsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(StreamsListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListStreamsResponse",
@@ -2656,10 +2664,13 @@ export const ListV1ResultList = /*@__PURE__*/ S.Array(
 export interface ListV1PipelineResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: ListV1ResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListV1PipelineResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(ListV1ResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListV1PipelineResponse",
@@ -3489,45 +3500,75 @@ export const listPipelines: API.OperationMethod<
 
 export type ListSinksError = CloudflareOpError;
 /** List/Filter Sinks in Account. */
-export const listSinks: API.OperationMethod<
+export const listSinks: API.PaginatedOperationMethod<
   ListSinksRequest,
   ListSinksResponse,
   ListSinksError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListSinksRequest,
-  output: ListSinksResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListSinksRequest,
+    output: ListSinksResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "resultInfo.page",
+      items: "result",
+      pageSize: "perPage",
+    } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListStreamsError = CloudflareOpError;
 /** List/Filter Streams in Account. */
-export const listStreams: API.OperationMethod<
+export const listStreams: API.PaginatedOperationMethod<
   ListStreamsRequest,
   ListStreamsResponse,
   ListStreamsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListStreamsRequest,
-  output: ListStreamsResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListStreamsRequest,
+    output: ListStreamsResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "resultInfo.page",
+      items: "result",
+      pageSize: "perPage",
+    } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListV1PipelineError = CloudflareOpError;
 /** List/Filter Pipelines in Account. */
-export const listV1Pipeline: API.OperationMethod<
+export const listV1Pipeline: API.PaginatedOperationMethod<
   ListV1PipelineRequest,
   ListV1PipelineResponse,
   ListV1PipelineError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListV1PipelineRequest,
-  output: ListV1PipelineResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListV1PipelineRequest,
+    output: ListV1PipelineResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "resultInfo.page",
+      items: "result",
+      pageSize: "perPage",
+    } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type PatchStreamError = StreamNotFound | CloudflareOpError;
 /** Update a Stream. */

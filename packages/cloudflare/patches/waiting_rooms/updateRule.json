@@ -25,6 +25,14 @@
       "op": "replace",
       "path": "/shapes/com.cloudflare.waiting_rooms#UpdateRule/output/target",
       "value": "com.cloudflare.waiting_rooms#UpdateRuleResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.waiting_rooms#UpdateRule/traits/smithy.api#paginated",
+      "value": {
+        "mode": "single",
+        "items": "result"
+      }
     }
   ]
 }

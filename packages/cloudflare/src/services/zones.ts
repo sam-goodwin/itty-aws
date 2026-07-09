@@ -4,9 +4,11 @@ import * as API from "@distilled.cloud/core/api";
 import * as T from "../traits.ts";
 import {
   CloudflareProtocol,
+  CloudflarePaginatedProtocol,
   type CloudflareOpError,
   type CloudflareOpContext,
 } from "../protocol.ts";
+import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
 export class CustomNameserverSetNotFound extends T.applyErrorMatchers(
@@ -1085,10 +1087,13 @@ export const RatePlansGetResultList = /*@__PURE__*/ S.Array(
 export interface GetRatePlanResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: RatePlansGetResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const GetRatePlanResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(RatePlansGetResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "GetRatePlanResponse",
@@ -2007,10 +2012,13 @@ export const PlansListResultList = /*@__PURE__*/ S.Array(
 export interface ListPlansResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: PlansListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListPlansResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(PlansListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListPlansResponse",
@@ -2329,10 +2337,13 @@ export const ListResultList = /*@__PURE__*/ S.Array(
 export interface ListZonesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: ListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListZonesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(ListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListZonesResponse",
@@ -3273,12 +3284,15 @@ export const CustomNameserversUpdateResultList = /*@__PURE__*/ S.Array(
 export interface PutCustomNameserverResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: CustomNameserversUpdateResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const PutCustomNameserverResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(
       CustomNameserversUpdateResultList.pipe(T.EnvelopePayload()),
     ),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "PutCustomNameserverResponse",
@@ -5082,17 +5096,21 @@ export const getPlan: API.OperationMethod<
 
 export type GetRatePlanError = CloudflareOpError;
 /** Lists all rate plans the zone can subscribe to. */
-export const getRatePlan: API.OperationMethod<
+export const getRatePlan: API.PaginatedOperationMethod<
   GetRatePlanRequest,
   GetRatePlanResponse,
   GetRatePlanError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetRatePlanRequest,
-  output: GetRatePlanResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: GetRatePlanRequest,
+    output: GetRatePlanResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type GetSettingError =
   | InvalidZoneIdentifier
@@ -5160,31 +5178,45 @@ export const listEnvironments: API.OperationMethod<
 
 export type ListPlansError = CloudflareOpError;
 /** Lists available plans the zone can subscribe to. */
-export const listPlans: API.OperationMethod<
+export const listPlans: API.PaginatedOperationMethod<
   ListPlansRequest,
   ListPlansResponse,
   ListPlansError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListPlansRequest,
-  output: ListPlansResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListPlansRequest,
+    output: ListPlansResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListZonesError = CloudflareOpError;
 /** Lists, searches, sorts, and filters your zones. Listing zones across more than 500 accounts is currently not allowed. */
-export const listZones: API.OperationMethod<
+export const listZones: API.PaginatedOperationMethod<
   ListZonesRequest,
   ListZonesResponse,
   ListZonesError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListZonesRequest,
-  output: ListZonesResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListZonesRequest,
+    output: ListZonesResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "resultInfo.page",
+      items: "result",
+      pageSize: "perPage",
+    } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type PatchCtAlertingError = CloudflareOpError;
 /** Create or update the Certificate Transparency alerting subscription for a zone. Enables or disables email notifications when certificates are issued for the zone's domains. For Free and Pro zones, the subscription is toggled on or off using the enabled field. Notification emails are sent to all users with SSL permissions on the zone. For Business and Enterprise zones, the emails field is required and controls which addresses receive alerts. Setting emails to an empty list disables the subscription regardless of the enabled field. A maximum of 10 email addresses may be configured. */
@@ -5282,23 +5314,27 @@ export type PutCustomNameserverError =
   | Forbidden
   | CloudflareOpError;
 /** Set metadata for account-level custom nameservers on a zone. If you would like new zones in the account to use account custom nameservers by default, use PUT /accounts/:identifier to set the account setting use_account_custom_ns_by_default to true. Deprecated in favor of [Update DNS Settings](https://developers.cloudflare.com/api/operations/dns-settings-for-a-zone-update-dns-settings). */
-export const putCustomNameserver: API.OperationMethod<
+export const putCustomNameserver: API.PaginatedOperationMethod<
   PutCustomNameserverRequest,
   PutCustomNameserverResponse,
   PutCustomNameserverError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: PutCustomNameserverRequest,
-  output: PutCustomNameserverResponse,
-  errors: [
-    InvalidZoneIdentifier,
-    CustomNameserverSetNotFound,
-    Forbidden,
-    CloudflareRateLimited,
-    CloudflareError,
-  ],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: PutCustomNameserverRequest,
+    output: PutCustomNameserverResponse,
+    errors: [
+      InvalidZoneIdentifier,
+      CustomNameserverSetNotFound,
+      Forbidden,
+      CloudflareRateLimited,
+      CloudflareError,
+    ],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type RollbackEnvironmentError = CloudflareOpError;
 /** Roll back zone environment */

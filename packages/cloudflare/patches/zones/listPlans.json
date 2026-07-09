@@ -25,6 +25,14 @@
       "op": "replace",
       "path": "/shapes/com.cloudflare.zones#ListPlans/output/target",
       "value": "com.cloudflare.zones#ListPlansResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.zones#ListPlans/traits/smithy.api#paginated",
+      "value": {
+        "mode": "single",
+        "items": "result"
+      }
     }
   ]
 }

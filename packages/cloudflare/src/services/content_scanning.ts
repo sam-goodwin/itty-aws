@@ -4,9 +4,11 @@ import * as API from "@distilled.cloud/core/api";
 import * as T from "../traits.ts";
 import {
   CloudflareProtocol,
+  CloudflarePaginatedProtocol,
   type CloudflareOpError,
   type CloudflareOpContext,
 } from "../protocol.ts";
+import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
 export class ContentScanningNotEnabled extends T.applyErrorMatchers(
@@ -136,10 +138,13 @@ export const PayloadsCreateResultList = /*@__PURE__*/ S.Array(
 export interface CreatePayloadResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: PayloadsCreateResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const CreatePayloadResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(PayloadsCreateResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "CreatePayloadResponse",
@@ -189,10 +194,13 @@ export const PayloadsDeleteResultList = /*@__PURE__*/ S.Array(
 export interface DeletePayloadResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: PayloadsDeleteResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const DeletePayloadResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(PayloadsDeleteResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "DeletePayloadResponse",
@@ -333,10 +341,13 @@ export const PayloadsListResultList = /*@__PURE__*/ S.Array(
 export interface ListPayloadsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: PayloadsListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListPayloadsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(PayloadsListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListPayloadsResponse",
@@ -440,45 +451,53 @@ export type CreatePayloadError =
   | Forbidden
   | CloudflareOpError;
 /** Add custom scan expressions for Content Scanning. */
-export const createPayload: API.OperationMethod<
+export const createPayload: API.PaginatedOperationMethod<
   CreatePayloadRequest,
   CreatePayloadResponse,
   CreatePayloadError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: CreatePayloadRequest,
-  output: CreatePayloadResponse,
-  errors: [
-    ContentScanningNotEnabled,
-    ContentScanningNotEntitled,
-    Forbidden,
-    CloudflareRateLimited,
-    CloudflareError,
-  ],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: CreatePayloadRequest,
+    output: CreatePayloadResponse,
+    errors: [
+      ContentScanningNotEnabled,
+      ContentScanningNotEntitled,
+      Forbidden,
+      CloudflareRateLimited,
+      CloudflareError,
+    ],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type DeletePayloadError =
   | ContentScanningNotEnabled
   | Forbidden
   | CloudflareOpError;
 /** Delete a Content Scan Custom Expression. */
-export const deletePayload: API.OperationMethod<
+export const deletePayload: API.PaginatedOperationMethod<
   DeletePayloadRequest,
   DeletePayloadResponse,
   DeletePayloadError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: DeletePayloadRequest,
-  output: DeletePayloadResponse,
-  errors: [
-    ContentScanningNotEnabled,
-    Forbidden,
-    CloudflareRateLimited,
-    CloudflareError,
-  ],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: DeletePayloadRequest,
+    output: DeletePayloadResponse,
+    errors: [
+      ContentScanningNotEnabled,
+      Forbidden,
+      CloudflareRateLimited,
+      CloudflareError,
+    ],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type DisableContentScanningError = CloudflareOpError;
 /** Disable Content Scanning. */
@@ -527,22 +546,26 @@ export type ListPayloadsError =
   | Forbidden
   | CloudflareOpError;
 /** Get a list of existing custom scan expressions for Content Scanning. */
-export const listPayloads: API.OperationMethod<
+export const listPayloads: API.PaginatedOperationMethod<
   ListPayloadsRequest,
   ListPayloadsResponse,
   ListPayloadsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListPayloadsRequest,
-  output: ListPayloadsResponse,
-  errors: [
-    ContentScanningNotEnabled,
-    Forbidden,
-    CloudflareRateLimited,
-    CloudflareError,
-  ],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListPayloadsRequest,
+    output: ListPayloadsResponse,
+    errors: [
+      ContentScanningNotEnabled,
+      Forbidden,
+      CloudflareRateLimited,
+      CloudflareError,
+    ],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type SettingsGetError = CloudflareOpError;
 /** Retrieve the current status of Content Scanning. */

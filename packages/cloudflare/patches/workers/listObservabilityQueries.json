@@ -25,6 +25,14 @@
       "op": "replace",
       "path": "/shapes/com.cloudflare.workers#ListObservabilityQueries/output/target",
       "value": "com.cloudflare.workers#ListObservabilityQueriesResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.workers#ListObservabilityQueries/traits/smithy.api#paginated",
+      "value": {
+        "mode": "single",
+        "items": "result"
+      }
     }
   ]
 }

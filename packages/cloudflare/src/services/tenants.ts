@@ -4,9 +4,11 @@ import * as API from "@distilled.cloud/core/api";
 import * as T from "../traits.ts";
 import {
   CloudflareProtocol,
+  CloudflarePaginatedProtocol,
   type CloudflareOpError,
   type CloudflareOpContext,
 } from "../protocol.ts";
+import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
 export interface GetEntitlementRequest {
@@ -416,10 +418,13 @@ export const AccountsListResultList = /*@__PURE__*/ S.Array(
 export interface ListAccountsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: AccountsListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListAccountsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(AccountsListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListAccountsResponse",
@@ -450,10 +455,13 @@ export const AccountTypesListResultList = /*@__PURE__*/ S.Array(
 export interface ListAccountTypesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: AccountTypesListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListAccountTypesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(AccountTypesListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListAccountTypesResponse",
@@ -499,10 +507,13 @@ export const MembershipsListResultList = /*@__PURE__*/ S.Array(
 export interface ListMembershipsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: MembershipsListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListMembershipsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(MembershipsListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListMembershipsResponse",
@@ -538,42 +549,54 @@ export const getTenant: API.OperationMethod<
 
 export type ListAccountsError = CloudflareOpError;
 /** List of accounts for the Tenant. */
-export const listAccounts: API.OperationMethod<
+export const listAccounts: API.PaginatedOperationMethod<
   ListAccountsRequest,
   ListAccountsResponse,
   ListAccountsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListAccountsRequest,
-  output: ListAccountsResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListAccountsRequest,
+    output: ListAccountsResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListAccountTypesError = CloudflareOpError;
 /** List of account types available for the Tenant to provision accounts. */
-export const listAccountTypes: API.OperationMethod<
+export const listAccountTypes: API.PaginatedOperationMethod<
   ListAccountTypesRequest,
   ListAccountTypesResponse,
   ListAccountTypesError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListAccountTypesRequest,
-  output: ListAccountTypesResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListAccountTypesRequest,
+    output: ListAccountTypesResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListMembershipsError = CloudflareOpError;
 /** List of active members (Cloudflare users) for the Tenant. */
-export const listMemberships: API.OperationMethod<
+export const listMemberships: API.PaginatedOperationMethod<
   ListMembershipsRequest,
   ListMembershipsResponse,
   ListMembershipsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListMembershipsRequest,
-  output: ListMembershipsResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListMembershipsRequest,
+    output: ListMembershipsResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);

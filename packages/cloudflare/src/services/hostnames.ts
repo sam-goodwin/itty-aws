@@ -4,9 +4,11 @@ import * as API from "@distilled.cloud/core/api";
 import * as T from "../traits.ts";
 import {
   CloudflareProtocol,
+  CloudflarePaginatedProtocol,
   type CloudflareOpError,
   type CloudflareOpContext,
 } from "../protocol.ts";
+import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
 export class AdvancedCertificateManagerRequired extends T.applyErrorMatchers(
@@ -187,10 +189,13 @@ export const SettingsTlsGetResultList = /*@__PURE__*/ S.Array(
 export interface GetSettingTlsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: SettingsTlsGetResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const GetSettingTlsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(SettingsTlsGetResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "GetSettingTlsResponse",
@@ -316,22 +321,26 @@ export type GetSettingTlsError =
   | Forbidden
   | CloudflareOpError;
 /** List the requested TLS setting for the hostnames under this zone. */
-export const getSettingTls: API.OperationMethod<
+export const getSettingTls: API.PaginatedOperationMethod<
   GetSettingTlsRequest,
   GetSettingTlsResponse,
   GetSettingTlsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetSettingTlsRequest,
-  output: GetSettingTlsResponse,
-  errors: [
-    AdvancedCertificateManagerRequired,
-    Forbidden,
-    CloudflareRateLimited,
-    CloudflareError,
-  ],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: GetSettingTlsRequest,
+    output: GetSettingTlsResponse,
+    errors: [
+      AdvancedCertificateManagerRequired,
+      Forbidden,
+      CloudflareRateLimited,
+      CloudflareError,
+    ],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type PutSettingTlsError =
   | AdvancedCertificateManagerRequired

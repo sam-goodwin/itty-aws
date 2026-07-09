@@ -25,6 +25,17 @@
       "op": "replace",
       "path": "/shapes/com.cloudflare.ai_search#ListNamespaceInstanceJobs/output/target",
       "value": "com.cloudflare.ai_search#ListNamespaceInstanceJobsResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.ai_search#ListNamespaceInstanceJobs/traits/smithy.api#paginated",
+      "value": {
+        "mode": "page",
+        "inputToken": "page",
+        "outputToken": "resultInfo.page",
+        "items": "result",
+        "pageSize": "perPage"
+      }
     }
   ]
 }

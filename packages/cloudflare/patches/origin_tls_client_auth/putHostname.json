@@ -28,6 +28,14 @@
     },
     {
       "op": "add",
+      "path": "/shapes/com.cloudflare.origin_tls_client_auth#PutHostname/traits/smithy.api#paginated",
+      "value": {
+        "mode": "single",
+        "items": "result"
+      }
+    },
+    {
+      "op": "add",
       "path": "/shapes/com.cloudflare.origin_tls_client_auth#HostnameCertificateIdRequired",
       "value": {
         "type": "structure",

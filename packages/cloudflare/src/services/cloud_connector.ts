@@ -4,9 +4,11 @@ import * as API from "@distilled.cloud/core/api";
 import * as T from "../traits.ts";
 import {
   CloudflareProtocol,
+  CloudflarePaginatedProtocol,
   type CloudflareOpError,
   type CloudflareOpContext,
 } from "../protocol.ts";
+import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
 export class CloudConnectorRulesNotFound extends T.applyErrorMatchers(
@@ -97,10 +99,13 @@ export const RulesListResultList = /*@__PURE__*/ S.Array(
 export interface ListRulesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: RulesListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListRulesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(RulesListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListRulesResponse",
@@ -224,10 +229,13 @@ export const RulesUpdateResultList = /*@__PURE__*/ S.Array(
 export interface PutRuleResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: RulesUpdateResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const PutRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(RulesUpdateResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "PutRuleResponse",
@@ -238,33 +246,41 @@ export type ListRulesError =
   | CloudConnectorRulesNotFound
   | CloudflareOpError;
 /** Retrieves the Cloud Connector rules configured for a zone. Rules define how traffic is routed to cloud services. */
-export const listRules: API.OperationMethod<
+export const listRules: API.PaginatedOperationMethod<
   ListRulesRequest,
   ListRulesResponse,
   ListRulesError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListRulesRequest,
-  output: ListRulesResponse,
-  errors: [
-    Forbidden,
-    CloudConnectorRulesNotFound,
-    CloudflareRateLimited,
-    CloudflareError,
-  ],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListRulesRequest,
+    output: ListRulesResponse,
+    errors: [
+      Forbidden,
+      CloudConnectorRulesNotFound,
+      CloudflareRateLimited,
+      CloudflareError,
+    ],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type PutRuleError = Forbidden | CloudflareOpError;
 /** Updates Cloud Connector rules for a zone, replacing the existing rule configuration. */
-export const putRule: API.OperationMethod<
+export const putRule: API.PaginatedOperationMethod<
   PutRuleRequest,
   PutRuleResponse,
   PutRuleError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: PutRuleRequest,
-  output: PutRuleResponse,
-  errors: [Forbidden, CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: PutRuleRequest,
+    output: PutRuleResponse,
+    errors: [Forbidden, CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);

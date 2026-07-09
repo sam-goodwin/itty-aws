@@ -4,9 +4,11 @@ import * as API from "@distilled.cloud/core/api";
 import * as T from "../traits.ts";
 import {
   CloudflareProtocol,
+  CloudflarePaginatedProtocol,
   type CloudflareOpError,
   type CloudflareOpContext,
 } from "../protocol.ts";
+import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
 export class CustomCertificateNotFound extends T.applyErrorMatchers(
@@ -671,10 +673,13 @@ export const ListResultList = /*@__PURE__*/ S.Array(
 export interface ListCustomCertificatesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: ListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListCustomCertificatesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(ListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListCustomCertificatesResponse",
@@ -1111,10 +1116,13 @@ export const PrioritizeUpdateResultList = /*@__PURE__*/ S.Array(
 export interface PutPrioritizeResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: PrioritizeUpdateResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const PutPrioritizeResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(PrioritizeUpdateResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "PutPrioritizeResponse",
@@ -1196,23 +1204,33 @@ export type ListCustomCertificatesError =
   | Forbidden
   | CloudflareOpError;
 /** List, search, and filter all of your custom SSL certificates. The higher priority will break ties across overlapping 'legacy_custom' certificates, but 'legacy_custom' certificates will always supercede 'sni_custom' certificates. */
-export const listCustomCertificates: API.OperationMethod<
+export const listCustomCertificates: API.PaginatedOperationMethod<
   ListCustomCertificatesRequest,
   ListCustomCertificatesResponse,
   ListCustomCertificatesError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListCustomCertificatesRequest,
-  output: ListCustomCertificatesResponse,
-  errors: [
-    PlanLevelNotAllowed,
-    ZoneNotFound,
-    Forbidden,
-    CloudflareRateLimited,
-    CloudflareError,
-  ],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListCustomCertificatesRequest,
+    output: ListCustomCertificatesResponse,
+    errors: [
+      PlanLevelNotAllowed,
+      ZoneNotFound,
+      Forbidden,
+      CloudflareRateLimited,
+      CloudflareError,
+    ],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "resultInfo.page",
+      items: "result",
+      pageSize: "perPage",
+    } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type PatchCustomCertificateError =
   | CustomCertificateNotFound
@@ -1243,19 +1261,23 @@ export type PutPrioritizeError =
   | Forbidden
   | CloudflareOpError;
 /** If a zone has multiple SSL certificates, you can set the order in which they should be used during a request. The higher priority will break ties across overlapping 'legacy_custom' certificates. */
-export const putPrioritize: API.OperationMethod<
+export const putPrioritize: API.PaginatedOperationMethod<
   PutPrioritizeRequest,
   PutPrioritizeResponse,
   PutPrioritizeError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: PutPrioritizeRequest,
-  output: PutPrioritizeResponse,
-  errors: [
-    PlanLevelNotAllowed,
-    Forbidden,
-    CloudflareRateLimited,
-    CloudflareError,
-  ],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: PutPrioritizeRequest,
+    output: PutPrioritizeResponse,
+    errors: [
+      PlanLevelNotAllowed,
+      Forbidden,
+      CloudflareRateLimited,
+      CloudflareError,
+    ],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);

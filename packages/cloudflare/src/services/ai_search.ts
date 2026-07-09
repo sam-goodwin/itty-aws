@@ -4,9 +4,11 @@ import * as API from "@distilled.cloud/core/api";
 import * as T from "../traits.ts";
 import {
   CloudflareProtocol,
+  CloudflarePaginatedProtocol,
   type CloudflareOpError,
   type CloudflareOpContext,
 } from "../protocol.ts";
+import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
 export class AiSearchInstanceNotFound extends T.applyErrorMatchers(
@@ -6301,10 +6303,13 @@ export const InstancesJobsListResultList = /*@__PURE__*/ S.Array(
 export interface ListInstanceJobsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: InstancesJobsListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListInstanceJobsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(InstancesJobsListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListInstanceJobsResponse",
@@ -7007,10 +7012,13 @@ export const InstancesListResultList = /*@__PURE__*/ S.Array(
 export interface ListInstancesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: InstancesListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListInstancesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(InstancesListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListInstancesResponse",
@@ -7136,12 +7144,15 @@ export const NamespacesInstancesItemsListResultList = /*@__PURE__*/ S.Array(
 export interface ListNamespaceInstanceItemsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: NamespacesInstancesItemsListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListNamespaceInstanceItemsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(
       NamespacesInstancesItemsListResultList.pipe(T.EnvelopePayload()),
     ),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListNamespaceInstanceItemsResponse",
@@ -7213,12 +7224,15 @@ export const NamespacesInstancesJobsListResultList = /*@__PURE__*/ S.Array(
 export interface ListNamespaceInstanceJobsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: NamespacesInstancesJobsListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListNamespaceInstanceJobsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(
       NamespacesInstancesJobsListResultList.pipe(T.EnvelopePayload()),
     ),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListNamespaceInstanceJobsResponse",
@@ -7973,12 +7987,15 @@ export const NamespacesInstancesListResultList = /*@__PURE__*/ S.Array(
 export interface ListNamespaceInstancesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: NamespacesInstancesListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListNamespaceInstancesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(
       NamespacesInstancesListResultList.pipe(T.EnvelopePayload()),
     ),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListNamespaceInstancesResponse",
@@ -8034,10 +8051,13 @@ export const NamespacesListResultList = /*@__PURE__*/ S.Array(
 export interface ListNamespacesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: NamespacesListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListNamespacesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(NamespacesListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListNamespacesResponse",
@@ -8104,10 +8124,13 @@ export const TokensListResultList = /*@__PURE__*/ S.Array(
 export interface ListTokensResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: TokensListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListTokensResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(TokensListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListTokensResponse",
@@ -14625,59 +14648,99 @@ export const getNamespaceInstanceJob: API.OperationMethod<
 
 export type ListInstanceJobsError = CloudflareOpError;
 /** Lists indexing jobs for an AI Search instance. */
-export const listInstanceJobs: API.OperationMethod<
+export const listInstanceJobs: API.PaginatedOperationMethod<
   ListInstanceJobsRequest,
   ListInstanceJobsResponse,
   ListInstanceJobsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListInstanceJobsRequest,
-  output: ListInstanceJobsResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListInstanceJobsRequest,
+    output: ListInstanceJobsResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "resultInfo.page",
+      items: "result",
+      pageSize: "perPage",
+    } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListInstancesError = InvalidRoute | Forbidden | CloudflareOpError;
 /** List instances. */
-export const listInstances: API.OperationMethod<
+export const listInstances: API.PaginatedOperationMethod<
   ListInstancesRequest,
   ListInstancesResponse,
   ListInstancesError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListInstancesRequest,
-  output: ListInstancesResponse,
-  errors: [InvalidRoute, Forbidden, CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListInstancesRequest,
+    output: ListInstancesResponse,
+    errors: [InvalidRoute, Forbidden, CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "resultInfo.page",
+      items: "result",
+      pageSize: "perPage",
+    } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListNamespaceInstanceItemsError = CloudflareOpError;
 /** Lists indexed items in an AI Search instance. */
-export const listNamespaceInstanceItems: API.OperationMethod<
+export const listNamespaceInstanceItems: API.PaginatedOperationMethod<
   ListNamespaceInstanceItemsRequest,
   ListNamespaceInstanceItemsResponse,
   ListNamespaceInstanceItemsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListNamespaceInstanceItemsRequest,
-  output: ListNamespaceInstanceItemsResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListNamespaceInstanceItemsRequest,
+    output: ListNamespaceInstanceItemsResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "resultInfo.page",
+      items: "result",
+      pageSize: "perPage",
+    } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListNamespaceInstanceJobsError = CloudflareOpError;
 /** Lists indexing jobs for an AI Search instance. */
-export const listNamespaceInstanceJobs: API.OperationMethod<
+export const listNamespaceInstanceJobs: API.PaginatedOperationMethod<
   ListNamespaceInstanceJobsRequest,
   ListNamespaceInstanceJobsResponse,
   ListNamespaceInstanceJobsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListNamespaceInstanceJobsRequest,
-  output: ListNamespaceInstanceJobsResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListNamespaceInstanceJobsRequest,
+    output: ListNamespaceInstanceJobsResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "resultInfo.page",
+      items: "result",
+      pageSize: "perPage",
+    } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListNamespaceInstancesError =
   | NamespaceNotFound
@@ -14685,51 +14748,81 @@ export type ListNamespaceInstancesError =
   | Forbidden
   | CloudflareOpError;
 /** List instances. */
-export const listNamespaceInstances: API.OperationMethod<
+export const listNamespaceInstances: API.PaginatedOperationMethod<
   ListNamespaceInstancesRequest,
   ListNamespaceInstancesResponse,
   ListNamespaceInstancesError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListNamespaceInstancesRequest,
-  output: ListNamespaceInstancesResponse,
-  errors: [
-    NamespaceNotFound,
-    InvalidRoute,
-    Forbidden,
-    CloudflareRateLimited,
-    CloudflareError,
-  ],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListNamespaceInstancesRequest,
+    output: ListNamespaceInstancesResponse,
+    errors: [
+      NamespaceNotFound,
+      InvalidRoute,
+      Forbidden,
+      CloudflareRateLimited,
+      CloudflareError,
+    ],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "resultInfo.page",
+      items: "result",
+      pageSize: "perPage",
+    } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListNamespacesError = CloudflareOpError;
 /** List namespaces. */
-export const listNamespaces: API.OperationMethod<
+export const listNamespaces: API.PaginatedOperationMethod<
   ListNamespacesRequest,
   ListNamespacesResponse,
   ListNamespacesError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListNamespacesRequest,
-  output: ListNamespacesResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListNamespacesRequest,
+    output: ListNamespacesResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "resultInfo.page",
+      items: "result",
+      pageSize: "perPage",
+    } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListTokensError = InvalidRoute | Forbidden | CloudflareOpError;
 /** List tokens. */
-export const listTokens: API.OperationMethod<
+export const listTokens: API.PaginatedOperationMethod<
   ListTokensRequest,
   ListTokensResponse,
   ListTokensError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListTokensRequest,
-  output: ListTokensResponse,
-  errors: [InvalidRoute, Forbidden, CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListTokensRequest,
+    output: ListTokensResponse,
+    errors: [InvalidRoute, Forbidden, CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "resultInfo.page",
+      items: "result",
+      pageSize: "perPage",
+    } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type LogsInstanceJobError =
   | ValidationError

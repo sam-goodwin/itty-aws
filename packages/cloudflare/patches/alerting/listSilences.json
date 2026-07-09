@@ -25,6 +25,14 @@
       "op": "replace",
       "path": "/shapes/com.cloudflare.alerting#ListSilences/output/target",
       "value": "com.cloudflare.alerting#ListSilencesResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.alerting#ListSilences/traits/smithy.api#paginated",
+      "value": {
+        "mode": "single",
+        "items": "result"
+      }
     }
   ]
 }

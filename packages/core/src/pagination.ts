@@ -1,0 +1,295 @@
+/**
+ * Pagination utilities for streaming through paginated API responses.
+ *
+ * Supports multiple pagination styles:
+ * - Page-based: page/per_page with a page number that advances
+ * - Cursor-based: cursor/limit with an opaque next-cursor string
+ * - Token-based (AWS style): NextToken/MaxResults continuation tokens
+ * - Single: one-shot list endpoints that still expose the paginated surface
+ *
+ * Each SDK stores a {@link PaginatedTrait} on its operations (sourced from the
+ * `smithy.api#paginated` trait in its models) and picks a
+ * {@link PaginationStrategy}; these shared utilities handle the streaming.
+ * Ported from the distilled repo's `core/pagination`.
+ */
+import * as Effect from "effect/Effect";
+import * as Stream from "effect/Stream";
+
+/**
+ * Get a value from an object using a dot-separated path (e.g.
+ * `"resultInfo.page"`). Used for pagination traits and nested access.
+ */
+export const getPath = (obj: unknown, path: string): unknown => {
+  const parts = path.split(".");
+  let current: unknown = obj;
+  for (const part of parts) {
+    if (current == null || typeof current !== "object") {
+      return undefined;
+    }
+    current = (current as Record<string, unknown>)[part];
+  }
+  return current;
+};
+
+// ============================================================================
+// Pagination Trait
+// ============================================================================
+
+/** Pagination trait describing how to navigate between pages. */
+export interface PaginatedTrait {
+  /** Pagination strategy */
+  readonly mode?: "token" | "page" | "cursor" | "single";
+  /** The name of the input member containing the page/cursor token */
+  readonly inputToken?: string;
+  /** The path to the output member containing the next page/cursor token */
+  readonly outputToken?: string;
+  /** The path to the output member containing the paginated items */
+  readonly items?: string;
+  /** The name of the input member that limits page size */
+  readonly pageSize?: string;
+}
+
+export type PaginationStrategy = <
+  Input extends Record<string, unknown>,
+  Output,
+  E,
+  R,
+>(
+  operation: (input: Input) => Effect.Effect<Output, E, R>,
+  input: Input,
+  pagination: PaginatedTrait,
+) => Stream.Stream<Output, E, R>;
+
+const missingPaginationConfig = (kind: string) => Stream.die(new Error(kind));
+
+/**
+ * Stream for single-shot list endpoints that still expose the paginated
+ * surface — emits exactly one page.
+ */
+export const paginateSingle: PaginationStrategy = (operation, input) =>
+  Stream.make(input).pipe(
+    Stream.mapEffect((requestPayload) => operation(requestPayload)),
+  );
+
+// ============================================================================
+// Page-based Pagination
+// ============================================================================
+
+/**
+ * Stream of pages using page-number pagination. The next page is taken from
+ * `outputToken` when it advances; otherwise the page number is incremented,
+ * terminating when a page comes back with no items (or no token).
+ */
+export const paginatePageNumber = <
+  Input extends Record<string, unknown>,
+  Output,
+  E,
+  R,
+>(
+  operation: (input: Input) => Effect.Effect<Output, E, R>,
+  input: Input,
+  pagination: PaginatedTrait,
+): Stream.Stream<Output, E, R> => {
+  const inputToken = pagination.inputToken;
+  const outputToken = pagination.outputToken;
+  if (!inputToken || !outputToken) {
+    return missingPaginationConfig(
+      "Page-number pagination requires inputToken and outputToken",
+    );
+  }
+  type State = { page: number; done: boolean };
+  const startPage =
+    typeof input[inputToken] === "number" ? (input[inputToken] as number) : 1;
+
+  return Stream.unfold({ page: startPage, done: false } as State, (state) =>
+    Effect.gen(function* () {
+      if (state.done) return undefined;
+
+      const requestPayload = { ...input, [inputToken]: state.page } as Input;
+      const response = yield* operation(requestPayload);
+
+      const nextPage = getPath(response, outputToken) as
+        | number
+        | null
+        | undefined;
+
+      // Some APIs report the CURRENT page at `outputToken` rather than the
+      // next one (e.g. Cloudflare's `result_info.page`). Taking that value as
+      // the next page re-requests the same page forever. Only accept an
+      // *advancing* page number; otherwise advance by one and terminate when
+      // a page comes back with no items (or the token is absent).
+      const items = pagination.items
+        ? (getPath(response, pagination.items) as
+            | readonly unknown[]
+            | undefined)
+        : undefined;
+
+      const nextState: State = {
+        page:
+          typeof nextPage === "number" && nextPage > state.page
+            ? nextPage
+            : state.page + 1,
+        done:
+          nextPage === null ||
+          nextPage === undefined ||
+          (items !== undefined && items.length === 0),
+      };
+
+      return [response, nextState] as const;
+    }),
+  );
+};
+
+// ============================================================================
+// Cursor-based Pagination
+// ============================================================================
+
+/**
+ * Stream of pages using cursor-based pagination — follow `outputToken`
+ * cursors until one comes back absent.
+ */
+export const paginateCursor = <
+  Input extends Record<string, unknown>,
+  Output,
+  E,
+  R,
+>(
+  operation: (input: Input) => Effect.Effect<Output, E, R>,
+  input: Input,
+  pagination: PaginatedTrait,
+): Stream.Stream<Output, E, R> => {
+  const inputToken = pagination.inputToken;
+  const outputToken = pagination.outputToken;
+  if (!inputToken || !outputToken) {
+    return missingPaginationConfig(
+      "Cursor pagination requires inputToken and outputToken",
+    );
+  }
+  type State = { cursor: string | undefined; done: boolean };
+  const startCursor =
+    typeof input[inputToken] === "string"
+      ? (input[inputToken] as string)
+      : undefined;
+
+  return Stream.unfold({ cursor: startCursor, done: false } as State, (state) =>
+    Effect.gen(function* () {
+      if (state.done) return undefined;
+
+      const requestPayload = {
+        ...input,
+        ...(state.cursor ? { [inputToken]: state.cursor } : {}),
+      } as Input;
+
+      const response = yield* operation(requestPayload);
+
+      const nextCursor = getPath(response, outputToken) as
+        | string
+        | null
+        | undefined;
+
+      const nextState: State = {
+        cursor: nextCursor ?? undefined,
+        done: nextCursor === null || nextCursor === undefined,
+      };
+
+      return [response, nextState] as const;
+    }),
+  );
+};
+
+// ============================================================================
+// Token-based Pagination (AWS style)
+// ============================================================================
+
+/**
+ * Stream of pages using token-based pagination — pass `outputToken` back as
+ * `inputToken` until it comes back absent.
+ */
+export const paginateToken = <
+  Input extends Record<string, unknown>,
+  Output,
+  E,
+  R,
+>(
+  operation: (input: Input) => Effect.Effect<Output, E, R>,
+  input: Input,
+  pagination: PaginatedTrait,
+): Stream.Stream<Output, E, R> => {
+  const inputToken = pagination.inputToken;
+  const outputToken = pagination.outputToken;
+  if (!inputToken || !outputToken) {
+    return missingPaginationConfig(
+      "Token pagination requires inputToken and outputToken",
+    );
+  }
+  type State = { token: unknown; done: boolean };
+  const startToken = input[inputToken];
+
+  return Stream.unfold({ token: startToken, done: false } as State, (state) =>
+    Effect.gen(function* () {
+      if (state.done) return undefined;
+
+      const requestPayload =
+        state.token !== undefined
+          ? ({ ...input, [inputToken]: state.token } as Input)
+          : input;
+
+      const response = yield* operation(requestPayload);
+
+      const nextToken = getPath(response, outputToken);
+
+      const nextState: State = {
+        token: nextToken,
+        done: nextToken === undefined || nextToken === null,
+      };
+
+      return [response, nextState] as const;
+    }),
+  );
+};
+
+/**
+ * Shared default pagination dispatcher for SDKs that use generic
+ * token/cursor/page traversal.
+ */
+export const paginateWithDefaults: PaginationStrategy = (
+  operation,
+  input,
+  pagination,
+) => {
+  const mode = pagination.mode ?? "token";
+
+  switch (mode) {
+    case "page":
+      return paginatePageNumber(operation, input, pagination);
+    case "cursor":
+      return paginateCursor(operation, input, pagination);
+    case "single":
+      return paginateSingle(operation, input, pagination);
+    case "token":
+    default:
+      return paginateToken(operation, input, pagination);
+  }
+};
+
+// ============================================================================
+// Item extraction
+// ============================================================================
+
+/**
+ * Extracts individual items from a page stream.
+ *
+ * @param pages - A stream of page responses
+ * @param itemsPath - Dot-separated path to the items array in the page
+ * @returns A Stream of individual items
+ */
+export const extractItems = <Output, Item, E, R>(
+  pages: Stream.Stream<Output, E, R>,
+  itemsPath: string,
+): Stream.Stream<Item, E, R> =>
+  pages.pipe(
+    Stream.flatMap((page) => {
+      const items = getPath(page, itemsPath) as readonly Item[] | undefined;
+      return Stream.fromIterable(items ?? []);
+    }),
+  );

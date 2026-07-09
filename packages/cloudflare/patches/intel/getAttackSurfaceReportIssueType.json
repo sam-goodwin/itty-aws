@@ -25,6 +25,14 @@
       "op": "replace",
       "path": "/shapes/com.cloudflare.intel#GetAttackSurfaceReportIssueType/output/target",
       "value": "com.cloudflare.intel#GetAttackSurfaceReportIssueTypeResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.intel#GetAttackSurfaceReportIssueType/traits/smithy.api#paginated",
+      "value": {
+        "mode": "single",
+        "items": "result"
+      }
     }
   ]
 }

@@ -25,6 +25,14 @@
       "op": "replace",
       "path": "/shapes/com.cloudflare.stream#GetCaption/output/target",
       "value": "com.cloudflare.stream#GetCaptionResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.stream#GetCaption/traits/smithy.api#paginated",
+      "value": {
+        "mode": "single",
+        "items": "result"
+      }
     }
   ]
 }

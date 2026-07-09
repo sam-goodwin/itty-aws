@@ -28,6 +28,16 @@
     },
     {
       "op": "add",
+      "path": "/shapes/com.cloudflare.rules#ListListItems/traits/smithy.api#paginated",
+      "value": {
+        "mode": "cursor",
+        "inputToken": "cursor",
+        "outputToken": "resultInfo.cursors.after",
+        "items": "result"
+      }
+    },
+    {
+      "op": "add",
       "path": "/shapes/com.cloudflare.rules#ListNotFound",
       "value": {
         "type": "structure",

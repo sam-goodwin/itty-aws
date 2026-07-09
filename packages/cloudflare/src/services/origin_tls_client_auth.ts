@@ -4,9 +4,11 @@ import * as API from "@distilled.cloud/core/api";
 import * as T from "../traits.ts";
 import {
   CloudflareProtocol,
+  CloudflarePaginatedProtocol,
   type CloudflareOpError,
   type CloudflareOpContext,
 } from "../protocol.ts";
+import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
 export class CertificateAlreadyDeleted extends T.applyErrorMatchers(
@@ -653,12 +655,15 @@ export const HostnameCertificatesListResultList = /*@__PURE__*/ S.Array(
 export interface ListHostnameCertificatesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: HostnameCertificatesListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListHostnameCertificatesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(
       HostnameCertificatesListResultList.pipe(T.EnvelopePayload()),
     ),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListHostnameCertificatesResponse",
@@ -709,10 +714,13 @@ export const ListResultList = /*@__PURE__*/ S.Array(
 export interface ListOriginTlsClientAuthsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: ListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListOriginTlsClientAuthsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(ListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListOriginTlsClientAuthsResponse",
@@ -797,10 +805,13 @@ export const HostnamesUpdateResultList = /*@__PURE__*/ S.Array(
 export interface PutHostnameResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: HostnamesUpdateResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const PutHostnameResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(HostnamesUpdateResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "PutHostnameResponse",
@@ -1220,31 +1231,39 @@ export const getSetting: API.OperationMethod<
 
 export type ListHostnameCertificatesError = Forbidden | CloudflareOpError;
 /** Lists all client certificates configured for per-hostname authenticated origin pulls on the zone. */
-export const listHostnameCertificates: API.OperationMethod<
+export const listHostnameCertificates: API.PaginatedOperationMethod<
   ListHostnameCertificatesRequest,
   ListHostnameCertificatesResponse,
   ListHostnameCertificatesError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListHostnameCertificatesRequest,
-  output: ListHostnameCertificatesResponse,
-  errors: [Forbidden, CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListHostnameCertificatesRequest,
+    output: ListHostnameCertificatesResponse,
+    errors: [Forbidden, CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListOriginTlsClientAuthsError = Forbidden | CloudflareOpError;
 /** Lists all client certificates configured for zone-level authenticated origin pulls. */
-export const listOriginTlsClientAuths: API.OperationMethod<
+export const listOriginTlsClientAuths: API.PaginatedOperationMethod<
   ListOriginTlsClientAuthsRequest,
   ListOriginTlsClientAuthsResponse,
   ListOriginTlsClientAuthsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListOriginTlsClientAuthsRequest,
-  output: ListOriginTlsClientAuthsResponse,
-  errors: [Forbidden, CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListOriginTlsClientAuthsRequest,
+    output: ListOriginTlsClientAuthsResponse,
+    errors: [Forbidden, CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type PutHostnameError =
   | HostnameCertificateIdRequired
@@ -1252,23 +1271,27 @@ export type PutHostnameError =
   | Forbidden
   | CloudflareOpError;
 /** Associate a hostname to a certificate and enable, disable or invalidate the association. If disabled, client certificate will not be sent to the hostname even if activated at the zone level. 100 maximum associations on a single certificate are allowed. Note: Use a null value for parameter *enabled* to invalidate the association. */
-export const putHostname: API.OperationMethod<
+export const putHostname: API.PaginatedOperationMethod<
   PutHostnameRequest,
   PutHostnameResponse,
   PutHostnameError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: PutHostnameRequest,
-  output: PutHostnameResponse,
-  errors: [
-    HostnameCertificateIdRequired,
-    InvalidHostnameConfig,
-    Forbidden,
-    CloudflareRateLimited,
-    CloudflareError,
-  ],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: PutHostnameRequest,
+    output: PutHostnameResponse,
+    errors: [
+      HostnameCertificateIdRequired,
+      InvalidHostnameConfig,
+      Forbidden,
+      CloudflareRateLimited,
+      CloudflareError,
+    ],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type PutSettingError = Forbidden | CloudflareOpError;
 /** Enable or disable zone-level authenticated origin pulls. 'enabled' should be set true either before/after the certificate is uploaded to see the certificate in use. */

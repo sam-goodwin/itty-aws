@@ -4,9 +4,11 @@ import * as API from "@distilled.cloud/core/api";
 import * as T from "../traits.ts";
 import {
   CloudflareProtocol,
+  CloudflarePaginatedProtocol,
   type CloudflareOpError,
   type CloudflareOpContext,
 } from "../protocol.ts";
+import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
 export class CallsAppNotFound extends T.applyErrorMatchers(
@@ -338,10 +340,13 @@ export const SfuListResultList = /*@__PURE__*/ S.Array(
 export interface ListSfusResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: SfuListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListSfusResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(SfuListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListSfusResponse",
@@ -394,10 +399,13 @@ export const TurnListResultList = /*@__PURE__*/ S.Array(
 export interface ListTurnsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: TurnListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListTurnsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(TurnListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListTurnsResponse",
@@ -581,31 +589,39 @@ export const getTurn: API.OperationMethod<
 
 export type ListSfusError = CloudflareOpError;
 /** Lists all apps in the Cloudflare account */
-export const listSfus: API.OperationMethod<
+export const listSfus: API.PaginatedOperationMethod<
   ListSfusRequest,
   ListSfusResponse,
   ListSfusError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListSfusRequest,
-  output: ListSfusResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListSfusRequest,
+    output: ListSfusResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListTurnsError = CloudflareOpError;
 /** Lists all TURN keys in the Cloudflare account */
-export const listTurns: API.OperationMethod<
+export const listTurns: API.PaginatedOperationMethod<
   ListTurnsRequest,
   ListTurnsResponse,
   ListTurnsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListTurnsRequest,
-  output: ListTurnsResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListTurnsRequest,
+    output: ListTurnsResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type UpdateSfuError = CallsAppNotFound | Forbidden | CloudflareOpError;
 /** Edit details for a single app. */

@@ -25,6 +25,17 @@
       "op": "replace",
       "path": "/shapes/com.cloudflare.d1#ListDatabases/output/target",
       "value": "com.cloudflare.d1#ListDatabasesResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.d1#ListDatabases/traits/smithy.api#paginated",
+      "value": {
+        "mode": "page",
+        "inputToken": "page",
+        "outputToken": "resultInfo.page",
+        "items": "result",
+        "pageSize": "perPage"
+      }
     }
   ]
 }

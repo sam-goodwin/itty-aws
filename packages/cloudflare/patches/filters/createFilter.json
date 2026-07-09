@@ -25,6 +25,14 @@
       "op": "replace",
       "path": "/shapes/com.cloudflare.filters#CreateFilter/output/target",
       "value": "com.cloudflare.filters#CreateFilterResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.filters#CreateFilter/traits/smithy.api#paginated",
+      "value": {
+        "mode": "single",
+        "items": "result"
+      }
     }
   ]
 }

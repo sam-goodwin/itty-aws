@@ -25,6 +25,14 @@
       "op": "replace",
       "path": "/shapes/com.cloudflare.cloudforce_one#CreateRequestAsset/output/target",
       "value": "com.cloudflare.cloudforce_one#CreateRequestAssetResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.cloudforce_one#CreateRequestAsset/traits/smithy.api#paginated",
+      "value": {
+        "mode": "single",
+        "items": "result"
+      }
     }
   ]
 }

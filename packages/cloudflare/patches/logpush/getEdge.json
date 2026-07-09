@@ -25,6 +25,14 @@
       "op": "replace",
       "path": "/shapes/com.cloudflare.logpush#GetEdge/output/target",
       "value": "com.cloudflare.logpush#GetEdgeResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.logpush#GetEdge/traits/smithy.api#paginated",
+      "value": {
+        "mode": "single",
+        "items": "result"
+      }
     }
   ]
 }

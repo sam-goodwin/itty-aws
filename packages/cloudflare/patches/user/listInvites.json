@@ -15,6 +15,14 @@
       "op": "replace",
       "path": "/shapes/com.cloudflare.user#ListInvites/output/target",
       "value": "com.cloudflare.user#ListInvitesResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.user#ListInvites/traits/smithy.api#paginated",
+      "value": {
+        "mode": "single",
+        "items": "result"
+      }
     }
   ]
 }

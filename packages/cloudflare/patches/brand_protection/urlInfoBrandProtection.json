@@ -25,6 +25,14 @@
       "op": "replace",
       "path": "/shapes/com.cloudflare.brand_protection#UrlInfoBrandProtection/output/target",
       "value": "com.cloudflare.brand_protection#UrlInfoBrandProtectionResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.brand_protection#UrlInfoBrandProtection/traits/smithy.api#paginated",
+      "value": {
+        "mode": "single",
+        "items": "result"
+      }
     }
   ]
 }

@@ -4,9 +4,11 @@ import * as API from "@distilled.cloud/core/api";
 import * as T from "../traits.ts";
 import {
   CloudflareProtocol,
+  CloudflarePaginatedProtocol,
   type CloudflareOpError,
   type CloudflareOpContext,
 } from "../protocol.ts";
+import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
 export class Forbidden extends T.applyErrorMatchers(
@@ -818,10 +820,13 @@ export const HistoryListResultList = /*@__PURE__*/ S.Array(
 export interface ListHistoriesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: HistoryListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListHistoriesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(HistoryListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListHistoriesResponse",
@@ -1797,17 +1802,21 @@ export const getWorkflow: API.OperationMethod<
 
 export type ListHistoriesError = CloudflareOpError;
 /** Lists a history of published Zaraz configuration records for a zone. */
-export const listHistories: API.OperationMethod<
+export const listHistories: API.PaginatedOperationMethod<
   ListHistoriesRequest,
   ListHistoriesResponse,
   ListHistoriesError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListHistoriesRequest,
-  output: ListHistoriesResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListHistoriesRequest,
+    output: ListHistoriesResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type PutConfigError = CloudflareOpError;
 /** Updates Zaraz configuration for a zone. */

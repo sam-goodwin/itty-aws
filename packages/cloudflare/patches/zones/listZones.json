@@ -25,6 +25,17 @@
       "op": "replace",
       "path": "/shapes/com.cloudflare.zones#ListZones/output/target",
       "value": "com.cloudflare.zones#ListZonesResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.zones#ListZones/traits/smithy.api#paginated",
+      "value": {
+        "mode": "page",
+        "inputToken": "page",
+        "outputToken": "resultInfo.page",
+        "items": "result",
+        "pageSize": "perPage"
+      }
     }
   ]
 }

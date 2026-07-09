@@ -4,9 +4,11 @@ import * as API from "@distilled.cloud/core/api";
 import * as T from "../traits.ts";
 import {
   CloudflareProtocol,
+  CloudflarePaginatedProtocol,
   type CloudflareOpError,
   type CloudflareOpContext,
 } from "../protocol.ts";
+import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
 export class InstanceAlreadyExists extends T.applyErrorMatchers(
@@ -215,10 +217,13 @@ export const InstancesBulkResultList = /*@__PURE__*/ S.Array(
 export interface BulkInstanceResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: InstancesBulkResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const BulkInstanceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(InstancesBulkResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "BulkInstanceResponse",
@@ -1033,10 +1038,13 @@ export const InstancesListResultList = /*@__PURE__*/ S.Array(
 export interface ListInstancesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: InstancesListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListInstancesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(InstancesListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListInstancesResponse",
@@ -1116,10 +1124,13 @@ export const VersionsListResultList = /*@__PURE__*/ S.Array(
 export interface ListVersionsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: VersionsListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListVersionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(VersionsListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListVersionsResponse",
@@ -1227,10 +1238,13 @@ export const ListResultList = /*@__PURE__*/ S.Array(
 export interface ListWorkflowsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: ListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListWorkflowsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(ListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListWorkflowsResponse",
@@ -1464,24 +1478,28 @@ export type BulkInstanceError =
   | InvalidBody
   | CloudflareOpError;
 /** Creates multiple workflow instances in a single batch operation. */
-export const bulkInstance: API.OperationMethod<
+export const bulkInstance: API.PaginatedOperationMethod<
   BulkInstanceRequest,
   BulkInstanceResponse,
   BulkInstanceError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BulkInstanceRequest,
-  output: BulkInstanceResponse,
-  errors: [
-    WorkflowNotFound,
-    InstanceAlreadyExists,
-    InvalidRoute,
-    InvalidBody,
-    CloudflareRateLimited,
-    CloudflareError,
-  ],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: BulkInstanceRequest,
+    output: BulkInstanceResponse,
+    errors: [
+      WorkflowNotFound,
+      InstanceAlreadyExists,
+      InvalidRoute,
+      InvalidBody,
+      CloudflareRateLimited,
+      CloudflareError,
+    ],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type CreateInstanceError =
   | WorkflowNotFound
@@ -1648,60 +1666,90 @@ export type ListInstancesError =
   | InvalidBody
   | CloudflareOpError;
 /** Lists all instances of a workflow with their execution status. */
-export const listInstances: API.OperationMethod<
+export const listInstances: API.PaginatedOperationMethod<
   ListInstancesRequest,
   ListInstancesResponse,
   ListInstancesError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListInstancesRequest,
-  output: ListInstancesResponse,
-  errors: [
-    WorkflowNotFound,
-    WorkflowInternalError,
-    InvalidRoute,
-    InvalidBody,
-    CloudflareRateLimited,
-    CloudflareError,
-  ],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListInstancesRequest,
+    output: ListInstancesResponse,
+    errors: [
+      WorkflowNotFound,
+      WorkflowInternalError,
+      InvalidRoute,
+      InvalidBody,
+      CloudflareRateLimited,
+      CloudflareError,
+    ],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "resultInfo.page",
+      items: "result",
+      pageSize: "perPage",
+    } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListVersionsError =
   | WorkflowNotFound
   | InvalidRoute
   | CloudflareOpError;
 /** Lists all deployed versions of a workflow. */
-export const listVersions: API.OperationMethod<
+export const listVersions: API.PaginatedOperationMethod<
   ListVersionsRequest,
   ListVersionsResponse,
   ListVersionsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListVersionsRequest,
-  output: ListVersionsResponse,
-  errors: [
-    WorkflowNotFound,
-    InvalidRoute,
-    CloudflareRateLimited,
-    CloudflareError,
-  ],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListVersionsRequest,
+    output: ListVersionsResponse,
+    errors: [
+      WorkflowNotFound,
+      InvalidRoute,
+      CloudflareRateLimited,
+      CloudflareError,
+    ],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "resultInfo.page",
+      items: "result",
+      pageSize: "perPage",
+    } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListWorkflowsError = CloudflareOpError;
 /** Lists all workflows configured for the account. */
-export const listWorkflows: API.OperationMethod<
+export const listWorkflows: API.PaginatedOperationMethod<
   ListWorkflowsRequest,
   ListWorkflowsResponse,
   ListWorkflowsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListWorkflowsRequest,
-  output: ListWorkflowsResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListWorkflowsRequest,
+    output: ListWorkflowsResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "resultInfo.page",
+      items: "result",
+      pageSize: "perPage",
+    } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type PatchInstanceStatusError =
   | WorkflowNotFound

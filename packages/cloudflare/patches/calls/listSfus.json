@@ -25,6 +25,14 @@
       "op": "replace",
       "path": "/shapes/com.cloudflare.calls#ListSfus/output/target",
       "value": "com.cloudflare.calls#ListSfusResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.calls#ListSfus/traits/smithy.api#paginated",
+      "value": {
+        "mode": "single",
+        "items": "result"
+      }
     }
   ]
 }

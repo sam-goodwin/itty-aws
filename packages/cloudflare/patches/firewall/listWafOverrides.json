@@ -25,6 +25,17 @@
       "op": "replace",
       "path": "/shapes/com.cloudflare.firewall#ListWafOverrides/output/target",
       "value": "com.cloudflare.firewall#ListWafOverridesResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.firewall#ListWafOverrides/traits/smithy.api#paginated",
+      "value": {
+        "mode": "page",
+        "inputToken": "page",
+        "outputToken": "resultInfo.page",
+        "items": "result",
+        "pageSize": "perPage"
+      }
     }
   ]
 }

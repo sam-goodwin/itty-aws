@@ -4,9 +4,11 @@ import * as API from "@distilled.cloud/core/api";
 import * as T from "../traits.ts";
 import {
   CloudflareProtocol,
+  CloudflarePaginatedProtocol,
   type CloudflareOpError,
   type CloudflareOpContext,
 } from "../protocol.ts";
+import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
 export class DuplicateMnmRuleName extends T.applyErrorMatchers(
@@ -900,10 +902,13 @@ export const RulesListResultList = /*@__PURE__*/ S.Array(
 export interface ListRulesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: RulesListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListRulesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(RulesListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListRulesResponse",
@@ -1651,17 +1656,21 @@ export const getRule: API.OperationMethod<
 
 export type ListRulesError = Forbidden | CloudflareOpError;
 /** Lists network monitoring rules for account. */
-export const listRules: API.OperationMethod<
+export const listRules: API.PaginatedOperationMethod<
   ListRulesRequest,
   ListRulesResponse,
   ListRulesError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListRulesRequest,
-  output: ListRulesResponse,
-  errors: [Forbidden, CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListRulesRequest,
+    output: ListRulesResponse,
+    errors: [Forbidden, CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type PatchConfigError = CloudflareOpError;
 /** Update fields in an existing network monitoring configuration. */

@@ -4,9 +4,11 @@ import * as API from "@distilled.cloud/core/api";
 import * as T from "../traits.ts";
 import {
   CloudflareProtocol,
+  CloudflarePaginatedProtocol,
   type CloudflareOpError,
   type CloudflareOpContext,
 } from "../protocol.ts";
+import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
 export class AccessBookmarkNotFound extends T.applyErrorMatchers(
@@ -9722,6 +9724,8 @@ export const AccessInfrastructureTargetsBulkUpdateResultList =
 export interface BulkPutAccessInfrastructureTargetsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: AccessInfrastructureTargetsBulkUpdateResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const BulkPutAccessInfrastructureTargetsResponse =
   /*@__PURE__*/ S.suspend(() =>
@@ -9731,6 +9735,7 @@ export const BulkPutAccessInfrastructureTargetsResponse =
           T.EnvelopePayload(),
         ),
       ),
+      resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
     }),
   ).annotate({
     identifier: "BulkPutAccessInfrastructureTargetsResponse",
@@ -16422,12 +16427,15 @@ export const DlpDatasetsVersionsCreateResultList = /*@__PURE__*/ S.Array(
 export interface CreateDlpDatasetVersionResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: DlpDatasetsVersionsCreateResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const CreateDlpDatasetVersionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(
       DlpDatasetsVersionsCreateResultList.pipe(T.EnvelopePayload()),
     ),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "CreateDlpDatasetVersionResponse",
@@ -21446,12 +21454,15 @@ export const DevicesNetworksDeleteResultList = /*@__PURE__*/ S.Array(
 export interface DeleteDeviceNetworkResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: DevicesNetworksDeleteResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const DeleteDeviceNetworkResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(
       DevicesNetworksDeleteResultList.pipe(T.EnvelopePayload()),
     ),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "DeleteDeviceNetworkResponse",
@@ -21850,12 +21861,15 @@ export const DevicesPoliciesCustomDeleteResultList = /*@__PURE__*/ S.Array(
 export interface DeleteDevicePolicyCustomResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: DevicesPoliciesCustomDeleteResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const DeleteDevicePolicyCustomResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(
       DevicesPoliciesCustomDeleteResultList.pipe(T.EnvelopePayload()),
     ),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "DeleteDevicePolicyCustomResponse",
@@ -27379,6 +27393,8 @@ export const DevicesPoliciesCustomExcludesGetResultList = /*@__PURE__*/ S.Array(
 export interface GetDevicePolicyCustomExcludeResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: DevicesPoliciesCustomExcludesGetResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const GetDevicePolicyCustomExcludeResponse = /*@__PURE__*/ S.suspend(
   () =>
@@ -27386,6 +27402,7 @@ export const GetDevicePolicyCustomExcludeResponse = /*@__PURE__*/ S.suspend(
       result: S.optional(
         DevicesPoliciesCustomExcludesGetResultList.pipe(T.EnvelopePayload()),
       ),
+      resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
     }),
 ).annotate({
   identifier: "GetDevicePolicyCustomExcludeResponse",
@@ -27451,6 +27468,8 @@ export const DevicesPoliciesCustomFallbackDomainsGetResultList =
 export interface GetDevicePolicyCustomFallbackDomainResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: DevicesPoliciesCustomFallbackDomainsGetResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const GetDevicePolicyCustomFallbackDomainResponse =
   /*@__PURE__*/ S.suspend(() =>
@@ -27460,6 +27479,7 @@ export const GetDevicePolicyCustomFallbackDomainResponse =
           T.EnvelopePayload(),
         ),
       ),
+      resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
     }),
   ).annotate({
     identifier: "GetDevicePolicyCustomFallbackDomainResponse",
@@ -27517,6 +27537,8 @@ export const DevicesPoliciesCustomIncludesGetResultList = /*@__PURE__*/ S.Array(
 export interface GetDevicePolicyCustomIncludeResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: DevicesPoliciesCustomIncludesGetResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const GetDevicePolicyCustomIncludeResponse = /*@__PURE__*/ S.suspend(
   () =>
@@ -27524,6 +27546,7 @@ export const GetDevicePolicyCustomIncludeResponse = /*@__PURE__*/ S.suspend(
       result: S.optional(
         DevicesPoliciesCustomIncludesGetResultList.pipe(T.EnvelopePayload()),
       ),
+      resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
     }),
 ).annotate({
   identifier: "GetDevicePolicyCustomIncludeResponse",
@@ -27944,6 +27967,8 @@ export const DevicesPoliciesDefaultExcludesGetResultList =
 export interface GetDevicePolicyDefaultExcludeResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: DevicesPoliciesDefaultExcludesGetResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const GetDevicePolicyDefaultExcludeResponse = /*@__PURE__*/ S.suspend(
   () =>
@@ -27951,6 +27976,7 @@ export const GetDevicePolicyDefaultExcludeResponse = /*@__PURE__*/ S.suspend(
       result: S.optional(
         DevicesPoliciesDefaultExcludesGetResultList.pipe(T.EnvelopePayload()),
       ),
+      resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
     }),
 ).annotate({
   identifier: "GetDevicePolicyDefaultExcludeResponse",
@@ -28014,6 +28040,8 @@ export const DevicesPoliciesDefaultFallbackDomainsGetResultList =
 export interface GetDevicePolicyDefaultFallbackDomainResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: DevicesPoliciesDefaultFallbackDomainsGetResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const GetDevicePolicyDefaultFallbackDomainResponse =
   /*@__PURE__*/ S.suspend(() =>
@@ -28023,6 +28051,7 @@ export const GetDevicePolicyDefaultFallbackDomainResponse =
           T.EnvelopePayload(),
         ),
       ),
+      resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
     }),
   ).annotate({
     identifier: "GetDevicePolicyDefaultFallbackDomainResponse",
@@ -28080,6 +28109,8 @@ export const DevicesPoliciesDefaultIncludesGetResultList =
 export interface GetDevicePolicyDefaultIncludeResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: DevicesPoliciesDefaultIncludesGetResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const GetDevicePolicyDefaultIncludeResponse = /*@__PURE__*/ S.suspend(
   () =>
@@ -28087,6 +28118,7 @@ export const GetDevicePolicyDefaultIncludeResponse = /*@__PURE__*/ S.suspend(
       result: S.optional(
         DevicesPoliciesDefaultIncludesGetResultList.pipe(T.EnvelopePayload()),
       ),
+      resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
     }),
 ).annotate({
   identifier: "GetDevicePolicyDefaultIncludeResponse",
@@ -34141,6 +34173,8 @@ export const TunnelsCloudflaredConnectionsGetResultList = /*@__PURE__*/ S.Array(
 export interface GetTunnelCloudflaredConnectionResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: TunnelsCloudflaredConnectionsGetResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const GetTunnelCloudflaredConnectionResponse = /*@__PURE__*/ S.suspend(
   () =>
@@ -34148,6 +34182,7 @@ export const GetTunnelCloudflaredConnectionResponse = /*@__PURE__*/ S.suspend(
       result: S.optional(
         TunnelsCloudflaredConnectionsGetResultList.pipe(T.EnvelopePayload()),
       ),
+      resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
     }),
 ).annotate({
   identifier: "GetTunnelCloudflaredConnectionResponse",
@@ -34614,6 +34649,8 @@ export const TunnelsWarpConnectorConnectionsGetResultList =
 export interface GetTunnelWarpConnectorConnectionResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: TunnelsWarpConnectorConnectionsGetResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const GetTunnelWarpConnectorConnectionResponse = /*@__PURE__*/ S.suspend(
   () =>
@@ -34621,6 +34658,7 @@ export const GetTunnelWarpConnectorConnectionResponse = /*@__PURE__*/ S.suspend(
       result: S.optional(
         TunnelsWarpConnectorConnectionsGetResultList.pipe(T.EnvelopePayload()),
       ),
+      resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
     }),
 ).annotate({
   identifier: "GetTunnelWarpConnectorConnectionResponse",
@@ -35565,6 +35603,8 @@ export const AccessAiControlsMcpServersListResultList = /*@__PURE__*/ S.Array(
 export interface ListAccessAiControlMcpServersResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: AccessAiControlsMcpServersListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListAccessAiControlMcpServersResponse = /*@__PURE__*/ S.suspend(
   () =>
@@ -35572,6 +35612,7 @@ export const ListAccessAiControlMcpServersResponse = /*@__PURE__*/ S.suspend(
       result: S.optional(
         AccessAiControlsMcpServersListResultList.pipe(T.EnvelopePayload()),
       ),
+      resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
     }),
 ).annotate({
   identifier: "ListAccessAiControlMcpServersResponse",
@@ -35659,6 +35700,8 @@ export const AccessApplicationsPolicyTestsUsersListResultList =
 export interface ListAccessApplicationPolicyTestUsersResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: AccessApplicationsPolicyTestsUsersListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListAccessApplicationPolicyTestUsersResponse =
   /*@__PURE__*/ S.suspend(() =>
@@ -35668,6 +35711,7 @@ export const ListAccessApplicationPolicyTestUsersResponse =
           T.EnvelopePayload(),
         ),
       ),
+      resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
     }),
   ).annotate({
     identifier: "ListAccessApplicationPolicyTestUsersResponse",
@@ -35724,10 +35768,13 @@ export const AccessBookmarksListResultList = /*@__PURE__*/ S.Array(
 export interface ListAccessBookmarksResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: AccessBookmarksListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListAccessBookmarksResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(AccessBookmarksListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListAccessBookmarksResponse",
@@ -35789,12 +35836,15 @@ export const AccessCustomPagesListResultList = /*@__PURE__*/ S.Array(
 export interface ListAccessCustomPagesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: AccessCustomPagesListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListAccessCustomPagesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(
       AccessCustomPagesListResultList.pipe(T.EnvelopePayload()),
     ),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListAccessCustomPagesResponse",
@@ -35841,10 +35891,13 @@ export const AccessGatewayCaListResultList = /*@__PURE__*/ S.Array(
 export interface ListAccessGatewayCasResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: AccessGatewayCaListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListAccessGatewayCasResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(AccessGatewayCaListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListAccessGatewayCasResponse",
@@ -36105,6 +36158,8 @@ export const AccessInfrastructureTargetsListResultList = /*@__PURE__*/ S.Array(
 export interface ListAccessInfrastructureTargetsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: AccessInfrastructureTargetsListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListAccessInfrastructureTargetsResponse = /*@__PURE__*/ S.suspend(
   () =>
@@ -36112,6 +36167,7 @@ export const ListAccessInfrastructureTargetsResponse = /*@__PURE__*/ S.suspend(
       result: S.optional(
         AccessInfrastructureTargetsListResultList.pipe(T.EnvelopePayload()),
       ),
+      resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
     }),
 ).annotate({
   identifier: "ListAccessInfrastructureTargetsResponse",
@@ -36555,12 +36611,15 @@ export const AccessLogsScimUpdatesListResultList = /*@__PURE__*/ S.Array(
 export interface ListAccessLogScimUpdatesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: AccessLogsScimUpdatesListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListAccessLogScimUpdatesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(
       AccessLogsScimUpdatesListResultList.pipe(T.EnvelopePayload()),
     ),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListAccessLogScimUpdatesResponse",
@@ -37249,10 +37308,13 @@ export const AccessPoliciesListResultList = /*@__PURE__*/ S.Array(
 export interface ListAccessPoliciesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: AccessPoliciesListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListAccessPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(AccessPoliciesListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListAccessPoliciesResponse",
@@ -37347,12 +37409,15 @@ export const AccessSamlCertificatesListResultList = /*@__PURE__*/ S.Array(
 export interface ListAccessSamlCertificatesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: AccessSamlCertificatesListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListAccessSamlCertificatesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(
       AccessSamlCertificatesListResultList.pipe(T.EnvelopePayload()),
     ),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListAccessSamlCertificatesResponse",
@@ -37402,10 +37467,13 @@ export const AccessTagsListResultList = /*@__PURE__*/ S.Array(
 export interface ListAccessTagsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: AccessTagsListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListAccessTagsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(AccessTagsListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListAccessTagsResponse",
@@ -37486,6 +37554,8 @@ export const AccessUsersActiveSessionsListResultList = /*@__PURE__*/ S.Array(
 export interface ListAccessUserActiveSessionsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: AccessUsersActiveSessionsListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListAccessUserActiveSessionsResponse = /*@__PURE__*/ S.suspend(
   () =>
@@ -37493,6 +37563,7 @@ export const ListAccessUserActiveSessionsResponse = /*@__PURE__*/ S.suspend(
       result: S.optional(
         AccessUsersActiveSessionsListResultList.pipe(T.EnvelopePayload()),
       ),
+      resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
     }),
 ).annotate({
   identifier: "ListAccessUserActiveSessionsResponse",
@@ -37542,12 +37613,15 @@ export const AccessUsersFailedLoginsListResultList = /*@__PURE__*/ S.Array(
 export interface ListAccessUserFailedLoginsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: AccessUsersFailedLoginsListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListAccessUserFailedLoginsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(
       AccessUsersFailedLoginsListResultList.pipe(T.EnvelopePayload()),
     ),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListAccessUserFailedLoginsResponse",
@@ -37636,10 +37710,13 @@ export const AccessUsersListResultList = /*@__PURE__*/ S.Array(
 export interface ListAccessUsersResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: AccessUsersListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListAccessUsersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(AccessUsersListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListAccessUsersResponse",
@@ -37741,12 +37818,15 @@ export const DevicesDeploymentGroupsListResultList = /*@__PURE__*/ S.Array(
 export interface ListDeviceDeploymentGroupsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: DevicesDeploymentGroupsListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListDeviceDeploymentGroupsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(
       DevicesDeploymentGroupsListResultList.pipe(T.EnvelopePayload()),
     ),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListDeviceDeploymentGroupsResponse",
@@ -37971,10 +38051,13 @@ export const DevicesDevicesListResultList = /*@__PURE__*/ S.Array(
 export interface ListDeviceDevicesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: DevicesDevicesListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListDeviceDevicesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(DevicesDevicesListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListDeviceDevicesResponse",
@@ -38113,10 +38196,13 @@ export const DevicesDexTestsListResultList = /*@__PURE__*/ S.Array(
 export interface ListDeviceDexTestsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: DevicesDexTestsListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListDeviceDexTestsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(DevicesDexTestsListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListDeviceDexTestsResponse",
@@ -38189,12 +38275,15 @@ export const DevicesIpProfilesListResultList = /*@__PURE__*/ S.Array(
 export interface ListDeviceIpProfilesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: DevicesIpProfilesListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListDeviceIpProfilesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(
       DevicesIpProfilesListResultList.pipe(T.EnvelopePayload()),
     ),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListDeviceIpProfilesResponse",
@@ -38264,10 +38353,13 @@ export const DevicesNetworksListResultList = /*@__PURE__*/ S.Array(
 export interface ListDeviceNetworksResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: DevicesNetworksListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListDeviceNetworksResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(DevicesNetworksListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListDeviceNetworksResponse",
@@ -38301,12 +38393,15 @@ export const DevicesOverrideCodesListResultList = /*@__PURE__*/ S.Array(
 export interface ListDeviceOverrideCodesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: DevicesOverrideCodesListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListDeviceOverrideCodesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(
       DevicesOverrideCodesListResultList.pipe(T.EnvelopePayload()),
     ),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListDeviceOverrideCodesResponse",
@@ -38700,12 +38795,15 @@ export const DevicesPoliciesCustomListResultList = /*@__PURE__*/ S.Array(
 export interface ListDevicePolicyCustomsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: DevicesPoliciesCustomListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListDevicePolicyCustomsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(
       DevicesPoliciesCustomListResultList.pipe(T.EnvelopePayload()),
     ),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListDevicePolicyCustomsResponse",
@@ -38790,6 +38888,8 @@ export const DevicesPostureIntegrationsListResultList = /*@__PURE__*/ S.Array(
 export interface ListDevicePostureIntegrationsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: DevicesPostureIntegrationsListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListDevicePostureIntegrationsResponse = /*@__PURE__*/ S.suspend(
   () =>
@@ -38797,6 +38897,7 @@ export const ListDevicePostureIntegrationsResponse = /*@__PURE__*/ S.suspend(
       result: S.optional(
         DevicesPostureIntegrationsListResultList.pipe(T.EnvelopePayload()),
       ),
+      resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
     }),
 ).annotate({
   identifier: "ListDevicePostureIntegrationsResponse",
@@ -39008,10 +39109,13 @@ export const DevicesPostureListResultList = /*@__PURE__*/ S.Array(
 export interface ListDevicePosturesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: DevicesPostureListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListDevicePosturesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(DevicesPostureListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListDevicePosturesResponse",
@@ -39219,12 +39323,15 @@ export const DevicesRegistrationsListResultList = /*@__PURE__*/ S.Array(
 export interface ListDeviceRegistrationsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: DevicesRegistrationsListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListDeviceRegistrationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(
       DevicesRegistrationsListResultList.pipe(T.EnvelopePayload()),
     ),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListDeviceRegistrationsResponse",
@@ -39345,10 +39452,13 @@ export const DevicesListResultList = /*@__PURE__*/ S.Array(
 export interface ListDevicesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: DevicesListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListDevicesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(DevicesListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListDevicesResponse",
@@ -39413,10 +39523,13 @@ export const DexColosListResultList = /*@__PURE__*/ S.Array(
 export interface ListDexColosResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: DexColosListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListDexColosResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(DexColosListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListDexColosResponse",
@@ -40484,12 +40597,15 @@ export const DexFleetStatusDevicesListResultList = /*@__PURE__*/ S.Array(
 export interface ListDexFleetStatusDevicesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: DexFleetStatusDevicesListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListDexFleetStatusDevicesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(
       DexFleetStatusDevicesListResultList.pipe(T.EnvelopePayload()),
     ),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListDexFleetStatusDevicesResponse",
@@ -41336,12 +41452,15 @@ export const DlpCustomPromptTopicsListResultList = /*@__PURE__*/ S.Array(
 export interface ListDlpCustomPromptTopicsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: DlpCustomPromptTopicsListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListDlpCustomPromptTopicsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(
       DlpCustomPromptTopicsListResultList.pipe(T.EnvelopePayload()),
     ),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListDlpCustomPromptTopicsResponse",
@@ -41427,10 +41546,13 @@ export const DlpDataClassesListResultList = /*@__PURE__*/ S.Array(
 export interface ListDlpDataClassesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: DlpDataClassesListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListDlpDataClassesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(DlpDataClassesListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListDlpDataClassesResponse",
@@ -41632,12 +41754,15 @@ export const DlpDataTagCategoriesListResultList = /*@__PURE__*/ S.Array(
 export interface ListDlpDataTagCategoriesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: DlpDataTagCategoriesListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListDlpDataTagCategoriesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(
       DlpDataTagCategoriesListResultList.pipe(T.EnvelopePayload()),
     ),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListDlpDataTagCategoriesResponse",
@@ -41692,6 +41817,8 @@ export const DlpDataTagCategoriesDataTagsListResultList = /*@__PURE__*/ S.Array(
 export interface ListDlpDataTagCategoryDataTagsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: DlpDataTagCategoriesDataTagsListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListDlpDataTagCategoryDataTagsResponse = /*@__PURE__*/ S.suspend(
   () =>
@@ -41699,6 +41826,7 @@ export const ListDlpDataTagCategoryDataTagsResponse = /*@__PURE__*/ S.suspend(
       result: S.optional(
         DlpDataTagCategoriesDataTagsListResultList.pipe(T.EnvelopePayload()),
       ),
+      resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
     }),
 ).annotate({
   identifier: "ListDlpDataTagCategoryDataTagsResponse",
@@ -41833,10 +41961,13 @@ export const DlpEmailRulesListResultList = /*@__PURE__*/ S.Array(
 export interface ListDlpEmailRulesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: DlpEmailRulesListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListDlpEmailRulesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(DlpEmailRulesListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListDlpEmailRulesResponse",
@@ -41904,10 +42035,13 @@ export const DlpEntriesListResultList = /*@__PURE__*/ S.Array(
 export interface ListDlpEntriesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: DlpEntriesListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListDlpEntriesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(DlpEntriesListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListDlpEntriesResponse",
@@ -42013,10 +42147,13 @@ export const DlpProfilesListResultList = /*@__PURE__*/ S.Array(
 export interface ListDlpProfilesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: DlpProfilesListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListDlpProfilesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(DlpProfilesListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListDlpProfilesResponse",
@@ -42071,6 +42208,8 @@ export const DlpSensitivityGroupsLevelsListResultList = /*@__PURE__*/ S.Array(
 export interface ListDlpSensitivityGroupLevelsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: DlpSensitivityGroupsLevelsListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListDlpSensitivityGroupLevelsResponse = /*@__PURE__*/ S.suspend(
   () =>
@@ -42078,6 +42217,7 @@ export const ListDlpSensitivityGroupLevelsResponse = /*@__PURE__*/ S.suspend(
       result: S.optional(
         DlpSensitivityGroupsLevelsListResultList.pipe(T.EnvelopePayload()),
       ),
+      resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
     }),
 ).annotate({
   identifier: "ListDlpSensitivityGroupLevelsResponse",
@@ -42159,12 +42299,15 @@ export const DlpSensitivityGroupsListResultList = /*@__PURE__*/ S.Array(
 export interface ListDlpSensitivityGroupsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: DlpSensitivityGroupsListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListDlpSensitivityGroupsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(
       DlpSensitivityGroupsListResultList.pipe(T.EnvelopePayload()),
     ),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListDlpSensitivityGroupsResponse",
@@ -42219,10 +42362,13 @@ export const GatewayAppTypesListResultList = /*@__PURE__*/ S.Array(
 export interface ListGatewayAppTypesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: GatewayAppTypesListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListGatewayAppTypesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(GatewayAppTypesListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListGatewayAppTypesResponse",
@@ -42328,12 +42474,15 @@ export const GatewayCategoriesListResultList = /*@__PURE__*/ S.Array(
 export interface ListGatewayCategoriesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: GatewayCategoriesListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListGatewayCategoriesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(
       GatewayCategoriesListResultList.pipe(T.EnvelopePayload()),
     ),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListGatewayCategoriesResponse",
@@ -42425,12 +42574,15 @@ export const GatewayCertificatesListResultList = /*@__PURE__*/ S.Array(
 export interface ListGatewayCertificatesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: GatewayCertificatesListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListGatewayCertificatesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(
       GatewayCertificatesListResultList.pipe(T.EnvelopePayload()),
     ),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListGatewayCertificatesResponse",
@@ -42481,12 +42633,15 @@ export const GatewayListsItemsListResultList = /*@__PURE__*/ S.Array(
 export interface ListGatewayListItemsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: GatewayListsItemsListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListGatewayListItemsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(
       GatewayListsItemsListResultList.pipe(T.EnvelopePayload()),
     ),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListGatewayListItemsResponse",
@@ -42588,10 +42743,13 @@ export const GatewayListsListResultList = /*@__PURE__*/ S.Array(
 export interface ListGatewayListsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: GatewayListsListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListGatewayListsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(GatewayListsListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListGatewayListsResponse",
@@ -42871,12 +43029,15 @@ export const GatewayLocationsListResultList = /*@__PURE__*/ S.Array(
 export interface ListGatewayLocationsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: GatewayLocationsListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListGatewayLocationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(
       GatewayLocationsListResultList.pipe(T.EnvelopePayload()),
     ),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListGatewayLocationsResponse",
@@ -42934,10 +43095,13 @@ export const GatewayPacfilesListResultList = /*@__PURE__*/ S.Array(
 export interface ListGatewayPacfilesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: GatewayPacfilesListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListGatewayPacfilesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(GatewayPacfilesListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListGatewayPacfilesResponse",
@@ -42986,12 +43150,15 @@ export const GatewayProxyEndpointsListResultList = /*@__PURE__*/ S.Array(
 export interface ListGatewayProxyEndpointsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: GatewayProxyEndpointsListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListGatewayProxyEndpointsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(
       GatewayProxyEndpointsListResultList.pipe(T.EnvelopePayload()),
     ),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListGatewayProxyEndpointsResponse",
@@ -43745,10 +43912,13 @@ export const GatewayRulesListResultList = /*@__PURE__*/ S.Array(
 export interface ListGatewayRulesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: GatewayRulesListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListGatewayRulesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(GatewayRulesListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListGatewayRulesResponse",
@@ -43899,6 +44069,8 @@ export const IdentityProvidersScimGroupsListResultList = /*@__PURE__*/ S.Array(
 export interface ListIdentityProviderScimGroupsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: IdentityProvidersScimGroupsListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListIdentityProviderScimGroupsResponse = /*@__PURE__*/ S.suspend(
   () =>
@@ -43906,6 +44078,7 @@ export const ListIdentityProviderScimGroupsResponse = /*@__PURE__*/ S.suspend(
       result: S.optional(
         IdentityProvidersScimGroupsListResultList.pipe(T.EnvelopePayload()),
       ),
+      resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
     }),
 ).annotate({
   identifier: "ListIdentityProviderScimGroupsResponse",
@@ -44061,6 +44234,8 @@ export const IdentityProvidersScimUsersListResultList = /*@__PURE__*/ S.Array(
 export interface ListIdentityProviderScimUsersResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: IdentityProvidersScimUsersListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListIdentityProviderScimUsersResponse = /*@__PURE__*/ S.suspend(
   () =>
@@ -44068,6 +44243,7 @@ export const ListIdentityProviderScimUsersResponse = /*@__PURE__*/ S.suspend(
       result: S.optional(
         IdentityProvidersScimUsersListResultList.pipe(T.EnvelopePayload()),
       ),
+      resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
     }),
 ).annotate({
   identifier: "ListIdentityProviderScimUsersResponse",
@@ -44168,12 +44344,15 @@ export const NetworksHostnameRoutesListResultList = /*@__PURE__*/ S.Array(
 export interface ListNetworkHostnameRoutesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: NetworksHostnameRoutesListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListNetworkHostnameRoutesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(
       NetworksHostnameRoutesListResultList.pipe(T.EnvelopePayload()),
     ),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListNetworkHostnameRoutesResponse",
@@ -44303,10 +44482,13 @@ export const NetworksRoutesListResultList = /*@__PURE__*/ S.Array(
 export interface ListNetworkRoutesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: NetworksRoutesListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListNetworkRoutesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(NetworksRoutesListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListNetworkRoutesResponse",
@@ -44436,10 +44618,13 @@ export const NetworksSubnetsListResultList = /*@__PURE__*/ S.Array(
 export interface ListNetworkSubnetsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: NetworksSubnetsListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListNetworkSubnetsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(NetworksSubnetsListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListNetworkSubnetsResponse",
@@ -44515,12 +44700,15 @@ export const NetworksVirtualNetworksListResultList = /*@__PURE__*/ S.Array(
 export interface ListNetworkVirtualNetworksResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: NetworksVirtualNetworksListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListNetworkVirtualNetworksResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(
       NetworksVirtualNetworksListResultList.pipe(T.EnvelopePayload()),
     ),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListNetworkVirtualNetworksResponse",
@@ -44687,6 +44875,8 @@ export const ResourceLibraryApplicationsListResultList = /*@__PURE__*/ S.Array(
 export interface ListResourceLibraryApplicationsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: ResourceLibraryApplicationsListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListResourceLibraryApplicationsResponse = /*@__PURE__*/ S.suspend(
   () =>
@@ -44694,6 +44884,7 @@ export const ListResourceLibraryApplicationsResponse = /*@__PURE__*/ S.suspend(
       result: S.optional(
         ResourceLibraryApplicationsListResultList.pipe(T.EnvelopePayload()),
       ),
+      resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
     }),
 ).annotate({
   identifier: "ListResourceLibraryApplicationsResponse",
@@ -44754,6 +44945,8 @@ export const ResourceLibraryCategoriesListResultList = /*@__PURE__*/ S.Array(
 export interface ListResourceLibraryCategoriesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: ResourceLibraryCategoriesListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListResourceLibraryCategoriesResponse = /*@__PURE__*/ S.suspend(
   () =>
@@ -44761,6 +44954,7 @@ export const ListResourceLibraryCategoriesResponse = /*@__PURE__*/ S.suspend(
       result: S.optional(
         ResourceLibraryCategoriesListResultList.pipe(T.EnvelopePayload()),
       ),
+      resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
     }),
 ).annotate({
   identifier: "ListResourceLibraryCategoriesResponse",
@@ -44834,12 +45028,15 @@ export const RiskScoringIntegrationsListResultList = /*@__PURE__*/ S.Array(
 export interface ListRiskScoringIntegrationsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: RiskScoringIntegrationsListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListRiskScoringIntegrationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(
       RiskScoringIntegrationsListResultList.pipe(T.EnvelopePayload()),
     ),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListRiskScoringIntegrationsResponse",
@@ -45592,12 +45789,15 @@ export const GatewayRulesListTenantResultList = /*@__PURE__*/ S.Array(
 export interface ListTenantGatewayRuleResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: GatewayRulesListTenantResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListTenantGatewayRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(
       GatewayRulesListTenantResultList.pipe(T.EnvelopePayload()),
     ),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListTenantGatewayRuleResponse",
@@ -45783,12 +45983,15 @@ export const TunnelsCloudflaredListResultList = /*@__PURE__*/ S.Array(
 export interface ListTunnelCloudflaredsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: TunnelsCloudflaredListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListTunnelCloudflaredsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(
       TunnelsCloudflaredListResultList.pipe(T.EnvelopePayload()),
     ),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListTunnelCloudflaredsResponse",
@@ -45894,10 +46097,13 @@ export const TunnelsListResultList = /*@__PURE__*/ S.Array(
 export interface ListTunnelsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: TunnelsListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListTunnelsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(TunnelsListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListTunnelsResponse",
@@ -46069,12 +46275,15 @@ export const TunnelsWarpConnectorListResultList = /*@__PURE__*/ S.Array(
 export interface ListTunnelWarpConnectorsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: TunnelsWarpConnectorListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListTunnelWarpConnectorsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(
       TunnelsWarpConnectorListResultList.pipe(T.EnvelopePayload()),
     ),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListTunnelWarpConnectorsResponse",
@@ -51507,10 +51716,13 @@ export const SeatsEditResultList = /*@__PURE__*/ S.Array(
 export interface PatchSeatResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: SeatsEditResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const PatchSeatResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(SeatsEditResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "PatchSeatResponse",
@@ -52004,6 +52216,8 @@ export const DevicesPoliciesCustomExcludesUpdateResultList =
 export interface PutDevicePolicyCustomExcludeResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: DevicesPoliciesCustomExcludesUpdateResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const PutDevicePolicyCustomExcludeResponse = /*@__PURE__*/ S.suspend(
   () =>
@@ -52011,6 +52225,7 @@ export const PutDevicePolicyCustomExcludeResponse = /*@__PURE__*/ S.suspend(
       result: S.optional(
         DevicesPoliciesCustomExcludesUpdateResultList.pipe(T.EnvelopePayload()),
       ),
+      resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
     }),
 ).annotate({
   identifier: "PutDevicePolicyCustomExcludeResponse",
@@ -52115,6 +52330,8 @@ export const DevicesPoliciesCustomFallbackDomainsUpdateResultList =
 export interface PutDevicePolicyCustomFallbackDomainResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: DevicesPoliciesCustomFallbackDomainsUpdateResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const PutDevicePolicyCustomFallbackDomainResponse =
   /*@__PURE__*/ S.suspend(() =>
@@ -52124,6 +52341,7 @@ export const PutDevicePolicyCustomFallbackDomainResponse =
           T.EnvelopePayload(),
         ),
       ),
+      resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
     }),
   ).annotate({
     identifier: "PutDevicePolicyCustomFallbackDomainResponse",
@@ -52215,6 +52433,8 @@ export const DevicesPoliciesCustomIncludesUpdateResultList =
 export interface PutDevicePolicyCustomIncludeResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: DevicesPoliciesCustomIncludesUpdateResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const PutDevicePolicyCustomIncludeResponse = /*@__PURE__*/ S.suspend(
   () =>
@@ -52222,6 +52442,7 @@ export const PutDevicePolicyCustomIncludeResponse = /*@__PURE__*/ S.suspend(
       result: S.optional(
         DevicesPoliciesCustomIncludesUpdateResultList.pipe(T.EnvelopePayload()),
       ),
+      resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
     }),
 ).annotate({
   identifier: "PutDevicePolicyCustomIncludeResponse",
@@ -52312,6 +52533,8 @@ export const DevicesPoliciesDefaultExcludesUpdateResultList =
 export interface PutDevicePolicyDefaultExcludeResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: DevicesPoliciesDefaultExcludesUpdateResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const PutDevicePolicyDefaultExcludeResponse = /*@__PURE__*/ S.suspend(
   () =>
@@ -52321,6 +52544,7 @@ export const PutDevicePolicyDefaultExcludeResponse = /*@__PURE__*/ S.suspend(
           T.EnvelopePayload(),
         ),
       ),
+      resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
     }),
 ).annotate({
   identifier: "PutDevicePolicyDefaultExcludeResponse",
@@ -52423,6 +52647,8 @@ export const DevicesPoliciesDefaultFallbackDomainsUpdateResultList =
 export interface PutDevicePolicyDefaultFallbackDomainResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: DevicesPoliciesDefaultFallbackDomainsUpdateResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const PutDevicePolicyDefaultFallbackDomainResponse =
   /*@__PURE__*/ S.suspend(() =>
@@ -52432,6 +52658,7 @@ export const PutDevicePolicyDefaultFallbackDomainResponse =
           T.EnvelopePayload(),
         ),
       ),
+      resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
     }),
   ).annotate({
     identifier: "PutDevicePolicyDefaultFallbackDomainResponse",
@@ -52522,6 +52749,8 @@ export const DevicesPoliciesDefaultIncludesUpdateResultList =
 export interface PutDevicePolicyDefaultIncludeResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: DevicesPoliciesDefaultIncludesUpdateResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const PutDevicePolicyDefaultIncludeResponse = /*@__PURE__*/ S.suspend(
   () =>
@@ -52531,6 +52760,7 @@ export const PutDevicePolicyDefaultIncludeResponse = /*@__PURE__*/ S.suspend(
           T.EnvelopePayload(),
         ),
       ),
+      resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
     }),
 ).annotate({
   identifier: "PutDevicePolicyDefaultIncludeResponse",
@@ -63651,17 +63881,21 @@ export const bulkPatchDlpEmailRules: API.OperationMethod<
 
 export type BulkPutAccessInfrastructureTargetsError = CloudflareOpError;
 /** Adds one or more targets. */
-export const bulkPutAccessInfrastructureTargets: API.OperationMethod<
+export const bulkPutAccessInfrastructureTargets: API.PaginatedOperationMethod<
   BulkPutAccessInfrastructureTargetsRequest,
   BulkPutAccessInfrastructureTargetsResponse,
   BulkPutAccessInfrastructureTargetsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BulkPutAccessInfrastructureTargetsRequest,
-  output: BulkPutAccessInfrastructureTargetsResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: BulkPutAccessInfrastructureTargetsRequest,
+    output: BulkPutAccessInfrastructureTargetsResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type CasbApplicationsGetError = CloudflareOpError;
 /** Returns full application details including auth methods, use cases, and permissions. */
@@ -64209,17 +64443,21 @@ export const createDlpDatasetUpload: API.OperationMethod<
 
 export type CreateDlpDatasetVersionError = CloudflareOpError;
 /** This is used for multi-column EDMv2 datasets. The EDMv2 format can only be created in the Cloudflare dashboard. The columns in the response appear in the same order as in the request. */
-export const createDlpDatasetVersion: API.OperationMethod<
+export const createDlpDatasetVersion: API.PaginatedOperationMethod<
   CreateDlpDatasetVersionRequest,
   CreateDlpDatasetVersionResponse,
   CreateDlpDatasetVersionError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: CreateDlpDatasetVersionRequest,
-  output: CreateDlpDatasetVersionResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: CreateDlpDatasetVersionRequest,
+    output: CreateDlpDatasetVersionResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type CreateDlpDatasetVersionEntryError = CloudflareOpError;
 /** This is used for multi-column EDMv2 datasets. The EDMv2 format can only be created in the Cloudflare dashboard. */
@@ -64888,44 +65126,52 @@ export type DeleteDeviceNetworkError =
   | Forbidden
   | CloudflareOpError;
 /** Deletes a device managed network and fetches a list of the remaining device managed networks for an account. */
-export const deleteDeviceNetwork: API.OperationMethod<
+export const deleteDeviceNetwork: API.PaginatedOperationMethod<
   DeleteDeviceNetworkRequest,
   DeleteDeviceNetworkResponse,
   DeleteDeviceNetworkError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDeviceNetworkRequest,
-  output: DeleteDeviceNetworkResponse,
-  errors: [
-    DeviceNetworkNotFound,
-    Forbidden,
-    CloudflareRateLimited,
-    CloudflareError,
-  ],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: DeleteDeviceNetworkRequest,
+    output: DeleteDeviceNetworkResponse,
+    errors: [
+      DeviceNetworkNotFound,
+      Forbidden,
+      CloudflareRateLimited,
+      CloudflareError,
+    ],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type DeleteDevicePolicyCustomError =
   | DevicePolicyNotFound
   | Forbidden
   | CloudflareOpError;
 /** Deletes a device settings profile and fetches a list of the remaining profiles for an account. */
-export const deleteDevicePolicyCustom: API.OperationMethod<
+export const deleteDevicePolicyCustom: API.PaginatedOperationMethod<
   DeleteDevicePolicyCustomRequest,
   DeleteDevicePolicyCustomResponse,
   DeleteDevicePolicyCustomError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDevicePolicyCustomRequest,
-  output: DeleteDevicePolicyCustomResponse,
-  errors: [
-    DevicePolicyNotFound,
-    Forbidden,
-    CloudflareRateLimited,
-    CloudflareError,
-  ],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: DeleteDevicePolicyCustomRequest,
+    output: DeleteDevicePolicyCustomResponse,
+    errors: [
+      DevicePolicyNotFound,
+      Forbidden,
+      CloudflareRateLimited,
+      CloudflareError,
+    ],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type DeleteDevicePostureError =
   | PostureRuleNotFound
@@ -65937,66 +66183,78 @@ export type GetDevicePolicyCustomExcludeError =
   | Forbidden
   | CloudflareOpError;
 /** Fetches the list of routes excluded from the WARP client's tunnel for a specific device settings profile. */
-export const getDevicePolicyCustomExclude: API.OperationMethod<
+export const getDevicePolicyCustomExclude: API.PaginatedOperationMethod<
   GetDevicePolicyCustomExcludeRequest,
   GetDevicePolicyCustomExcludeResponse,
   GetDevicePolicyCustomExcludeError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetDevicePolicyCustomExcludeRequest,
-  output: GetDevicePolicyCustomExcludeResponse,
-  errors: [
-    DevicePolicyNotFound,
-    Forbidden,
-    CloudflareRateLimited,
-    CloudflareError,
-  ],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: GetDevicePolicyCustomExcludeRequest,
+    output: GetDevicePolicyCustomExcludeResponse,
+    errors: [
+      DevicePolicyNotFound,
+      Forbidden,
+      CloudflareRateLimited,
+      CloudflareError,
+    ],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type GetDevicePolicyCustomFallbackDomainError =
   | DevicePolicyNotFound
   | Forbidden
   | CloudflareOpError;
 /** Fetches the list of domains to bypass Gateway DNS resolution from a specified device settings profile. These domains will use the specified local DNS resolver instead. */
-export const getDevicePolicyCustomFallbackDomain: API.OperationMethod<
+export const getDevicePolicyCustomFallbackDomain: API.PaginatedOperationMethod<
   GetDevicePolicyCustomFallbackDomainRequest,
   GetDevicePolicyCustomFallbackDomainResponse,
   GetDevicePolicyCustomFallbackDomainError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetDevicePolicyCustomFallbackDomainRequest,
-  output: GetDevicePolicyCustomFallbackDomainResponse,
-  errors: [
-    DevicePolicyNotFound,
-    Forbidden,
-    CloudflareRateLimited,
-    CloudflareError,
-  ],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: GetDevicePolicyCustomFallbackDomainRequest,
+    output: GetDevicePolicyCustomFallbackDomainResponse,
+    errors: [
+      DevicePolicyNotFound,
+      Forbidden,
+      CloudflareRateLimited,
+      CloudflareError,
+    ],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type GetDevicePolicyCustomIncludeError =
   | DevicePolicyNotFound
   | Forbidden
   | CloudflareOpError;
 /** Fetches the list of routes included in the WARP client's tunnel for a specific device settings profile. */
-export const getDevicePolicyCustomInclude: API.OperationMethod<
+export const getDevicePolicyCustomInclude: API.PaginatedOperationMethod<
   GetDevicePolicyCustomIncludeRequest,
   GetDevicePolicyCustomIncludeResponse,
   GetDevicePolicyCustomIncludeError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetDevicePolicyCustomIncludeRequest,
-  output: GetDevicePolicyCustomIncludeResponse,
-  errors: [
-    DevicePolicyNotFound,
-    Forbidden,
-    CloudflareRateLimited,
-    CloudflareError,
-  ],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: GetDevicePolicyCustomIncludeRequest,
+    output: GetDevicePolicyCustomIncludeResponse,
+    errors: [
+      DevicePolicyNotFound,
+      Forbidden,
+      CloudflareRateLimited,
+      CloudflareError,
+    ],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type GetDevicePolicyDefaultError = CloudflareOpError;
 /** Fetches the default device settings profile for an account. */
@@ -66028,45 +66286,57 @@ export const getDevicePolicyDefaultCertificate: API.OperationMethod<
 
 export type GetDevicePolicyDefaultExcludeError = CloudflareOpError;
 /** Fetches the list of routes excluded from the WARP client's tunnel. */
-export const getDevicePolicyDefaultExclude: API.OperationMethod<
+export const getDevicePolicyDefaultExclude: API.PaginatedOperationMethod<
   GetDevicePolicyDefaultExcludeRequest,
   GetDevicePolicyDefaultExcludeResponse,
   GetDevicePolicyDefaultExcludeError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetDevicePolicyDefaultExcludeRequest,
-  output: GetDevicePolicyDefaultExcludeResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: GetDevicePolicyDefaultExcludeRequest,
+    output: GetDevicePolicyDefaultExcludeResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type GetDevicePolicyDefaultFallbackDomainError = CloudflareOpError;
 /** Fetches a list of domains to bypass Gateway DNS resolution. These domains will use the specified local DNS resolver instead. */
-export const getDevicePolicyDefaultFallbackDomain: API.OperationMethod<
+export const getDevicePolicyDefaultFallbackDomain: API.PaginatedOperationMethod<
   GetDevicePolicyDefaultFallbackDomainRequest,
   GetDevicePolicyDefaultFallbackDomainResponse,
   GetDevicePolicyDefaultFallbackDomainError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetDevicePolicyDefaultFallbackDomainRequest,
-  output: GetDevicePolicyDefaultFallbackDomainResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: GetDevicePolicyDefaultFallbackDomainRequest,
+    output: GetDevicePolicyDefaultFallbackDomainResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type GetDevicePolicyDefaultIncludeError = CloudflareOpError;
 /** Fetches the list of routes included in the WARP client's tunnel. */
-export const getDevicePolicyDefaultInclude: API.OperationMethod<
+export const getDevicePolicyDefaultInclude: API.PaginatedOperationMethod<
   GetDevicePolicyDefaultIncludeRequest,
   GetDevicePolicyDefaultIncludeResponse,
   GetDevicePolicyDefaultIncludeError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetDevicePolicyDefaultIncludeRequest,
-  output: GetDevicePolicyDefaultIncludeResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: GetDevicePolicyDefaultIncludeRequest,
+    output: GetDevicePolicyDefaultIncludeResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type GetDevicePostureError =
   | PostureRuleNotFound
@@ -66922,17 +67192,21 @@ export const getTunnelCloudflaredConfiguration: API.OperationMethod<
 
 export type GetTunnelCloudflaredConnectionError = CloudflareOpError;
 /** Fetches connection details for a Cloudflare Tunnel. */
-export const getTunnelCloudflaredConnection: API.OperationMethod<
+export const getTunnelCloudflaredConnection: API.PaginatedOperationMethod<
   GetTunnelCloudflaredConnectionRequest,
   GetTunnelCloudflaredConnectionResponse,
   GetTunnelCloudflaredConnectionError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetTunnelCloudflaredConnectionRequest,
-  output: GetTunnelCloudflaredConnectionResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: GetTunnelCloudflaredConnectionRequest,
+    output: GetTunnelCloudflaredConnectionResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type GetTunnelCloudflaredConnectorError = CloudflareOpError;
 /** Fetches connector and connection details for a Cloudflare Tunnel. */
@@ -66997,17 +67271,21 @@ export const getTunnelWarpConnectorConfiguration: API.OperationMethod<
 
 export type GetTunnelWarpConnectorConnectionError = CloudflareOpError;
 /** Fetches connection details for a WARP Connector Tunnel. */
-export const getTunnelWarpConnectorConnection: API.OperationMethod<
+export const getTunnelWarpConnectorConnection: API.PaginatedOperationMethod<
   GetTunnelWarpConnectorConnectionRequest,
   GetTunnelWarpConnectorConnectionResponse,
   GetTunnelWarpConnectorConnectionError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetTunnelWarpConnectorConnectionRequest,
-  output: GetTunnelWarpConnectorConnectionResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: GetTunnelWarpConnectorConnectionRequest,
+    output: GetTunnelWarpConnectorConnectionResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type GetTunnelWarpConnectorConnectorError = CloudflareOpError;
 /** Fetches connector and connection details for a WARP Connector Tunnel. */
@@ -67112,73 +67390,111 @@ export const identityProvidersUpdate: API.OperationMethod<
 
 export type ListAccessAiControlMcpServersError = CloudflareOpError;
 /** Lists all MCP portals configured for the account. */
-export const listAccessAiControlMcpServers: API.OperationMethod<
+export const listAccessAiControlMcpServers: API.PaginatedOperationMethod<
   ListAccessAiControlMcpServersRequest,
   ListAccessAiControlMcpServersResponse,
   ListAccessAiControlMcpServersError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListAccessAiControlMcpServersRequest,
-  output: ListAccessAiControlMcpServersResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListAccessAiControlMcpServersRequest,
+    output: ListAccessAiControlMcpServersResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "resultInfo.page",
+      items: "result",
+      pageSize: "perPage",
+    } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListAccessApplicationPolicyTestUsersError = CloudflareOpError;
 /** Fetches a single page of user results from an Access policy test. */
-export const listAccessApplicationPolicyTestUsers: API.OperationMethod<
+export const listAccessApplicationPolicyTestUsers: API.PaginatedOperationMethod<
   ListAccessApplicationPolicyTestUsersRequest,
   ListAccessApplicationPolicyTestUsersResponse,
   ListAccessApplicationPolicyTestUsersError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListAccessApplicationPolicyTestUsersRequest,
-  output: ListAccessApplicationPolicyTestUsersResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListAccessApplicationPolicyTestUsersRequest,
+    output: ListAccessApplicationPolicyTestUsersResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "resultInfo.page",
+      items: "result",
+      pageSize: "perPage",
+    } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListAccessBookmarksError = CloudflareOpError;
 /** Lists Bookmark applications. */
-export const listAccessBookmarks: API.OperationMethod<
+export const listAccessBookmarks: API.PaginatedOperationMethod<
   ListAccessBookmarksRequest,
   ListAccessBookmarksResponse,
   ListAccessBookmarksError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListAccessBookmarksRequest,
-  output: ListAccessBookmarksResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListAccessBookmarksRequest,
+    output: ListAccessBookmarksResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListAccessCustomPagesError = CloudflareOpError;
 /** List custom pages */
-export const listAccessCustomPages: API.OperationMethod<
+export const listAccessCustomPages: API.PaginatedOperationMethod<
   ListAccessCustomPagesRequest,
   ListAccessCustomPagesResponse,
   ListAccessCustomPagesError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListAccessCustomPagesRequest,
-  output: ListAccessCustomPagesResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListAccessCustomPagesRequest,
+    output: ListAccessCustomPagesResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "resultInfo.page",
+      items: "result",
+      pageSize: "perPage",
+    } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListAccessGatewayCasError = CloudflareOpError;
 /** Lists SSH Certificate Authorities (CA). */
-export const listAccessGatewayCas: API.OperationMethod<
+export const listAccessGatewayCas: API.PaginatedOperationMethod<
   ListAccessGatewayCasRequest,
   ListAccessGatewayCasResponse,
   ListAccessGatewayCasError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListAccessGatewayCasRequest,
-  output: ListAccessGatewayCasResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListAccessGatewayCasRequest,
+    output: ListAccessGatewayCasResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListAccessIdpFederationGrantsError = CloudflareOpError;
 /** Lists the IdP federation grants owned by the account. */
@@ -67198,17 +67514,27 @@ export type ListAccessInfrastructureTargetsError =
   | Forbidden
   | CloudflareOpError;
 /** Lists and sorts an account’s targets. Filters are optional and are ANDed together. */
-export const listAccessInfrastructureTargets: API.OperationMethod<
+export const listAccessInfrastructureTargets: API.PaginatedOperationMethod<
   ListAccessInfrastructureTargetsRequest,
   ListAccessInfrastructureTargetsResponse,
   ListAccessInfrastructureTargetsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListAccessInfrastructureTargetsRequest,
-  output: ListAccessInfrastructureTargetsResponse,
-  errors: [Forbidden, CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListAccessInfrastructureTargetsRequest,
+    output: ListAccessInfrastructureTargetsResponse,
+    errors: [Forbidden, CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "resultInfo.page",
+      items: "result",
+      pageSize: "perPage",
+    } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListAccessLogAccessRequestsError = CloudflareOpError;
 /** Gets a list of Access authentication audit logs for an account. */
@@ -67226,269 +67552,405 @@ export const listAccessLogAccessRequests: API.OperationMethod<
 
 export type ListAccessLogScimUpdatesError = CloudflareOpError;
 /** Lists Access SCIM update logs that maintain a record of updates made to User and Group resources synced to Cloudflare via the System for Cross-domain Identity Management (SCIM). */
-export const listAccessLogScimUpdates: API.OperationMethod<
+export const listAccessLogScimUpdates: API.PaginatedOperationMethod<
   ListAccessLogScimUpdatesRequest,
   ListAccessLogScimUpdatesResponse,
   ListAccessLogScimUpdatesError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListAccessLogScimUpdatesRequest,
-  output: ListAccessLogScimUpdatesResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListAccessLogScimUpdatesRequest,
+    output: ListAccessLogScimUpdatesResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "resultInfo.page",
+      items: "result",
+      pageSize: "perPage",
+    } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListAccessPoliciesError = CloudflareOpError;
 /** Lists Access reusable policies. */
-export const listAccessPolicies: API.OperationMethod<
+export const listAccessPolicies: API.PaginatedOperationMethod<
   ListAccessPoliciesRequest,
   ListAccessPoliciesResponse,
   ListAccessPoliciesError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListAccessPoliciesRequest,
-  output: ListAccessPoliciesResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListAccessPoliciesRequest,
+    output: ListAccessPoliciesResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "resultInfo.page",
+      items: "result",
+      pageSize: "perPage",
+    } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListAccessSamlCertificatesError = CloudflareOpError;
 /** Returns a paginated list of the organization's SAML encryption certificate sets. Each certificate set includes the current and (if present) previous certificates. */
-export const listAccessSamlCertificates: API.OperationMethod<
+export const listAccessSamlCertificates: API.PaginatedOperationMethod<
   ListAccessSamlCertificatesRequest,
   ListAccessSamlCertificatesResponse,
   ListAccessSamlCertificatesError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListAccessSamlCertificatesRequest,
-  output: ListAccessSamlCertificatesResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListAccessSamlCertificatesRequest,
+    output: ListAccessSamlCertificatesResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "resultInfo.page",
+      items: "result",
+      pageSize: "perPage",
+    } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListAccessTagsError = CloudflareOpError;
 /** List tags */
-export const listAccessTags: API.OperationMethod<
+export const listAccessTags: API.PaginatedOperationMethod<
   ListAccessTagsRequest,
   ListAccessTagsResponse,
   ListAccessTagsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListAccessTagsRequest,
-  output: ListAccessTagsResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListAccessTagsRequest,
+    output: ListAccessTagsResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "resultInfo.page",
+      items: "result",
+      pageSize: "perPage",
+    } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListAccessUserActiveSessionsError = CloudflareOpError;
 /** Get active sessions for a single user. */
-export const listAccessUserActiveSessions: API.OperationMethod<
+export const listAccessUserActiveSessions: API.PaginatedOperationMethod<
   ListAccessUserActiveSessionsRequest,
   ListAccessUserActiveSessionsResponse,
   ListAccessUserActiveSessionsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListAccessUserActiveSessionsRequest,
-  output: ListAccessUserActiveSessionsResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListAccessUserActiveSessionsRequest,
+    output: ListAccessUserActiveSessionsResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListAccessUserFailedLoginsError = CloudflareOpError;
 /** Get all failed login attempts for a single user. */
-export const listAccessUserFailedLogins: API.OperationMethod<
+export const listAccessUserFailedLogins: API.PaginatedOperationMethod<
   ListAccessUserFailedLoginsRequest,
   ListAccessUserFailedLoginsResponse,
   ListAccessUserFailedLoginsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListAccessUserFailedLoginsRequest,
-  output: ListAccessUserFailedLoginsResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListAccessUserFailedLoginsRequest,
+    output: ListAccessUserFailedLoginsResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListAccessUsersError = CloudflareOpError;
 /** Gets a list of users for an account. */
-export const listAccessUsers: API.OperationMethod<
+export const listAccessUsers: API.PaginatedOperationMethod<
   ListAccessUsersRequest,
   ListAccessUsersResponse,
   ListAccessUsersError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListAccessUsersRequest,
-  output: ListAccessUsersResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListAccessUsersRequest,
+    output: ListAccessUsersResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "resultInfo.page",
+      items: "result",
+      pageSize: "perPage",
+    } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListDeviceDeploymentGroupsError = CloudflareOpError;
 /** Lists all deployment groups for an account. Use deployment groups to assign target WARP client versions to specific devices. This endpoint is in Beta. */
-export const listDeviceDeploymentGroups: API.OperationMethod<
+export const listDeviceDeploymentGroups: API.PaginatedOperationMethod<
   ListDeviceDeploymentGroupsRequest,
   ListDeviceDeploymentGroupsResponse,
   ListDeviceDeploymentGroupsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListDeviceDeploymentGroupsRequest,
-  output: ListDeviceDeploymentGroupsResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListDeviceDeploymentGroupsRequest,
+    output: ListDeviceDeploymentGroupsResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "resultInfo.page",
+      items: "result",
+      pageSize: "perPage",
+    } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListDeviceDevicesError = CloudflareOpError;
 /** Lists WARP devices. */
-export const listDeviceDevices: API.OperationMethod<
+export const listDeviceDevices: API.PaginatedOperationMethod<
   ListDeviceDevicesRequest,
   ListDeviceDevicesResponse,
   ListDeviceDevicesError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListDeviceDevicesRequest,
-  output: ListDeviceDevicesResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListDeviceDevicesRequest,
+    output: ListDeviceDevicesResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: {
+      mode: "cursor",
+      inputToken: "cursor",
+      outputToken: "resultInfo.cursor",
+      items: "result",
+      pageSize: "perPage",
+    } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListDeviceDexTestsError = Forbidden | CloudflareOpError;
 /** Fetch all DEX tests. */
-export const listDeviceDexTests: API.OperationMethod<
+export const listDeviceDexTests: API.PaginatedOperationMethod<
   ListDeviceDexTestsRequest,
   ListDeviceDexTestsResponse,
   ListDeviceDexTestsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListDeviceDexTestsRequest,
-  output: ListDeviceDexTestsResponse,
-  errors: [Forbidden, CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListDeviceDexTestsRequest,
+    output: ListDeviceDexTestsResponse,
+    errors: [Forbidden, CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "resultInfo.page",
+      items: "result",
+      pageSize: "perPage",
+    } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListDeviceIpProfilesError = CloudflareOpError;
 /** Lists WARP Device IP profiles. */
-export const listDeviceIpProfiles: API.OperationMethod<
+export const listDeviceIpProfiles: API.PaginatedOperationMethod<
   ListDeviceIpProfilesRequest,
   ListDeviceIpProfilesResponse,
   ListDeviceIpProfilesError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListDeviceIpProfilesRequest,
-  output: ListDeviceIpProfilesResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListDeviceIpProfilesRequest,
+    output: ListDeviceIpProfilesResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "resultInfo.page",
+      items: "result",
+      pageSize: "perPage",
+    } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListDeviceNetworksError = Forbidden | CloudflareOpError;
 /** Fetches a list of managed networks for an account. */
-export const listDeviceNetworks: API.OperationMethod<
+export const listDeviceNetworks: API.PaginatedOperationMethod<
   ListDeviceNetworksRequest,
   ListDeviceNetworksResponse,
   ListDeviceNetworksError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListDeviceNetworksRequest,
-  output: ListDeviceNetworksResponse,
-  errors: [Forbidden, CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListDeviceNetworksRequest,
+    output: ListDeviceNetworksResponse,
+    errors: [Forbidden, CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListDeviceOverrideCodesError = CloudflareOpError;
 /** Fetches a one-time use admin override code for a device. This relies on the **Admin Override** setting being enabled in your device configuration. Not supported when [multi-user mode](https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/deployment/mdm-deployment/windows-multiuser/) is enabled for the account. **Deprecated:** please use GET /accounts/{account_id}/devices/registrations/{registration_id}/override_codes instead. */
-export const listDeviceOverrideCodes: API.OperationMethod<
+export const listDeviceOverrideCodes: API.PaginatedOperationMethod<
   ListDeviceOverrideCodesRequest,
   ListDeviceOverrideCodesResponse,
   ListDeviceOverrideCodesError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListDeviceOverrideCodesRequest,
-  output: ListDeviceOverrideCodesResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListDeviceOverrideCodesRequest,
+    output: ListDeviceOverrideCodesResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListDevicePolicyCustomsError = Forbidden | CloudflareOpError;
 /** Fetches a list of the device settings profiles for an account. */
-export const listDevicePolicyCustoms: API.OperationMethod<
+export const listDevicePolicyCustoms: API.PaginatedOperationMethod<
   ListDevicePolicyCustomsRequest,
   ListDevicePolicyCustomsResponse,
   ListDevicePolicyCustomsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListDevicePolicyCustomsRequest,
-  output: ListDevicePolicyCustomsResponse,
-  errors: [Forbidden, CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListDevicePolicyCustomsRequest,
+    output: ListDevicePolicyCustomsResponse,
+    errors: [Forbidden, CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListDevicePostureIntegrationsError = Forbidden | CloudflareOpError;
 /** Fetches the list of device posture integrations for an account. */
-export const listDevicePostureIntegrations: API.OperationMethod<
+export const listDevicePostureIntegrations: API.PaginatedOperationMethod<
   ListDevicePostureIntegrationsRequest,
   ListDevicePostureIntegrationsResponse,
   ListDevicePostureIntegrationsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListDevicePostureIntegrationsRequest,
-  output: ListDevicePostureIntegrationsResponse,
-  errors: [Forbidden, CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListDevicePostureIntegrationsRequest,
+    output: ListDevicePostureIntegrationsResponse,
+    errors: [Forbidden, CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListDevicePosturesError = Forbidden | CloudflareOpError;
 /** Fetches device posture rules for a Zero Trust account. */
-export const listDevicePostures: API.OperationMethod<
+export const listDevicePostures: API.PaginatedOperationMethod<
   ListDevicePosturesRequest,
   ListDevicePosturesResponse,
   ListDevicePosturesError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListDevicePosturesRequest,
-  output: ListDevicePosturesResponse,
-  errors: [Forbidden, CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListDevicePosturesRequest,
+    output: ListDevicePosturesResponse,
+    errors: [Forbidden, CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListDeviceRegistrationsError = CloudflareOpError;
 /** Lists WARP registrations. */
-export const listDeviceRegistrations: API.OperationMethod<
+export const listDeviceRegistrations: API.PaginatedOperationMethod<
   ListDeviceRegistrationsRequest,
   ListDeviceRegistrationsResponse,
   ListDeviceRegistrationsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListDeviceRegistrationsRequest,
-  output: ListDeviceRegistrationsResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListDeviceRegistrationsRequest,
+    output: ListDeviceRegistrationsResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: {
+      mode: "cursor",
+      inputToken: "cursor",
+      outputToken: "resultInfo.cursor",
+      items: "result",
+      pageSize: "perPage",
+    } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListDevicesError = CloudflareOpError;
 /** List WARP devices. Not supported when [multi-user mode](https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/deployment/mdm-deployment/windows-multiuser/) is enabled for the account. **Deprecated**: please use one of the following endpoints instead: - GET /accounts/{account_id}/devices/physical-devices - GET /accounts/{account_id}/devices/registrations */
-export const listDevices: API.OperationMethod<
+export const listDevices: API.PaginatedOperationMethod<
   ListDevicesRequest,
   ListDevicesResponse,
   ListDevicesError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListDevicesRequest,
-  output: ListDevicesResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListDevicesRequest,
+    output: ListDevicesResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListDexColosError = CloudflareOpError;
 /** List Cloudflare colos that account's devices were connected to during a time period, sorted by usage starting from the most used colo. Colos without traffic are also returned and sorted alphabetically. */
-export const listDexColos: API.OperationMethod<
+export const listDexColos: API.PaginatedOperationMethod<
   ListDexColosRequest,
   ListDexColosResponse,
   ListDexColosError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListDexColosRequest,
-  output: ListDexColosResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListDexColosRequest,
+    output: ListDexColosResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListDexCommandDevicesError = CloudflareOpError;
 /** List devices with WARP client support for remote captures which have been connected in the last 1 hour. */
@@ -67534,17 +67996,27 @@ export const listDexDeviceIsps: API.OperationMethod<
 
 export type ListDexFleetStatusDevicesError = CloudflareOpError;
 /** List details of devices using WARP. */
-export const listDexFleetStatusDevices: API.OperationMethod<
+export const listDexFleetStatusDevices: API.PaginatedOperationMethod<
   ListDexFleetStatusDevicesRequest,
   ListDexFleetStatusDevicesResponse,
   ListDexFleetStatusDevicesError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListDexFleetStatusDevicesRequest,
-  output: ListDexFleetStatusDevicesResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListDexFleetStatusDevicesRequest,
+    output: ListDexFleetStatusDevicesResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "resultInfo.page",
+      items: "result",
+      pageSize: "perPage",
+    } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListDexRulesError = CloudflareOpError;
 /** List DEX Rules. */
@@ -67590,31 +68062,39 @@ export const listDexTestUniqueDevices: API.OperationMethod<
 
 export type ListDlpCustomPromptTopicsError = CloudflareOpError;
 /** Lists all DLP custom prompt topic entries in an account. */
-export const listDlpCustomPromptTopics: API.OperationMethod<
+export const listDlpCustomPromptTopics: API.PaginatedOperationMethod<
   ListDlpCustomPromptTopicsRequest,
   ListDlpCustomPromptTopicsResponse,
   ListDlpCustomPromptTopicsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListDlpCustomPromptTopicsRequest,
-  output: ListDlpCustomPromptTopicsResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListDlpCustomPromptTopicsRequest,
+    output: ListDlpCustomPromptTopicsResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListDlpDataClassesError = CloudflareOpError;
 /** Retrieve all data classes in an account */
-export const listDlpDataClasses: API.OperationMethod<
+export const listDlpDataClasses: API.PaginatedOperationMethod<
   ListDlpDataClassesRequest,
   ListDlpDataClassesResponse,
   ListDlpDataClassesError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListDlpDataClassesRequest,
-  output: ListDlpDataClassesResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListDlpDataClassesRequest,
+    output: ListDlpDataClassesResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListDlpDatasetsError = CloudflareOpError;
 /** Lists all DLP datasets configured for the account, including custom word lists and EDM datasets. */
@@ -67632,59 +68112,75 @@ export const listDlpDatasets: API.OperationMethod<
 
 export type ListDlpDataTagCategoriesError = CloudflareOpError;
 /** Retrieve all data tag categories in an account */
-export const listDlpDataTagCategories: API.OperationMethod<
+export const listDlpDataTagCategories: API.PaginatedOperationMethod<
   ListDlpDataTagCategoriesRequest,
   ListDlpDataTagCategoriesResponse,
   ListDlpDataTagCategoriesError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListDlpDataTagCategoriesRequest,
-  output: ListDlpDataTagCategoriesResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListDlpDataTagCategoriesRequest,
+    output: ListDlpDataTagCategoriesResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListDlpDataTagCategoryDataTagsError = CloudflareOpError;
 /** Retrieve all data tags in a data tag category */
-export const listDlpDataTagCategoryDataTags: API.OperationMethod<
+export const listDlpDataTagCategoryDataTags: API.PaginatedOperationMethod<
   ListDlpDataTagCategoryDataTagsRequest,
   ListDlpDataTagCategoryDataTagsResponse,
   ListDlpDataTagCategoryDataTagsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListDlpDataTagCategoryDataTagsRequest,
-  output: ListDlpDataTagCategoryDataTagsResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListDlpDataTagCategoryDataTagsRequest,
+    output: ListDlpDataTagCategoryDataTagsResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListDlpEmailRulesError = CloudflareOpError;
 /** Lists all email scanner rules for an account. */
-export const listDlpEmailRules: API.OperationMethod<
+export const listDlpEmailRules: API.PaginatedOperationMethod<
   ListDlpEmailRulesRequest,
   ListDlpEmailRulesResponse,
   ListDlpEmailRulesError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListDlpEmailRulesRequest,
-  output: ListDlpEmailRulesResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListDlpEmailRulesRequest,
+    output: ListDlpEmailRulesResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListDlpEntriesError = CloudflareOpError;
 /** Lists all DLP entries in an account. */
-export const listDlpEntries: API.OperationMethod<
+export const listDlpEntries: API.PaginatedOperationMethod<
   ListDlpEntriesRequest,
   ListDlpEntriesResponse,
   ListDlpEntriesError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListDlpEntriesRequest,
-  output: ListDlpEntriesResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListDlpEntriesRequest,
+    output: ListDlpEntriesResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListDlpLimitsError = CloudflareOpError;
 /** Retrieves current DLP usage limits and quotas for the account, including maximum allowed counts and current usage for custom entries, dataset cells, and document fingerprints. */
@@ -67702,171 +68198,219 @@ export const listDlpLimits: API.OperationMethod<
 
 export type ListDlpProfilesError = CloudflareOpError;
 /** Lists all DLP profiles in an account. */
-export const listDlpProfiles: API.OperationMethod<
+export const listDlpProfiles: API.PaginatedOperationMethod<
   ListDlpProfilesRequest,
   ListDlpProfilesResponse,
   ListDlpProfilesError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListDlpProfilesRequest,
-  output: ListDlpProfilesResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListDlpProfilesRequest,
+    output: ListDlpProfilesResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListDlpSensitivityGroupLevelsError = CloudflareOpError;
 /** Retrieve all sensitivity levels in a sensitivity group */
-export const listDlpSensitivityGroupLevels: API.OperationMethod<
+export const listDlpSensitivityGroupLevels: API.PaginatedOperationMethod<
   ListDlpSensitivityGroupLevelsRequest,
   ListDlpSensitivityGroupLevelsResponse,
   ListDlpSensitivityGroupLevelsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListDlpSensitivityGroupLevelsRequest,
-  output: ListDlpSensitivityGroupLevelsResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListDlpSensitivityGroupLevelsRequest,
+    output: ListDlpSensitivityGroupLevelsResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListDlpSensitivityGroupsError = CloudflareOpError;
 /** Retrieve all sensitivity groups in an account */
-export const listDlpSensitivityGroups: API.OperationMethod<
+export const listDlpSensitivityGroups: API.PaginatedOperationMethod<
   ListDlpSensitivityGroupsRequest,
   ListDlpSensitivityGroupsResponse,
   ListDlpSensitivityGroupsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListDlpSensitivityGroupsRequest,
-  output: ListDlpSensitivityGroupsResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListDlpSensitivityGroupsRequest,
+    output: ListDlpSensitivityGroupsResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListGatewayAppTypesError = CloudflareOpError;
 /** List all application and application type mappings. */
-export const listGatewayAppTypes: API.OperationMethod<
+export const listGatewayAppTypes: API.PaginatedOperationMethod<
   ListGatewayAppTypesRequest,
   ListGatewayAppTypesResponse,
   ListGatewayAppTypesError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListGatewayAppTypesRequest,
-  output: ListGatewayAppTypesResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListGatewayAppTypesRequest,
+    output: ListGatewayAppTypesResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListGatewayCategoriesError = CloudflareOpError;
 /** List all categories. */
-export const listGatewayCategories: API.OperationMethod<
+export const listGatewayCategories: API.PaginatedOperationMethod<
   ListGatewayCategoriesRequest,
   ListGatewayCategoriesResponse,
   ListGatewayCategoriesError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListGatewayCategoriesRequest,
-  output: ListGatewayCategoriesResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListGatewayCategoriesRequest,
+    output: ListGatewayCategoriesResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListGatewayCertificatesError = CloudflareOpError;
 /** List all Zero Trust certificates for an account. */
-export const listGatewayCertificates: API.OperationMethod<
+export const listGatewayCertificates: API.PaginatedOperationMethod<
   ListGatewayCertificatesRequest,
   ListGatewayCertificatesResponse,
   ListGatewayCertificatesError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListGatewayCertificatesRequest,
-  output: ListGatewayCertificatesResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListGatewayCertificatesRequest,
+    output: ListGatewayCertificatesResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListGatewayListItemsError = GatewayListNotFound | CloudflareOpError;
 /** Fetch all items in a single Zero Trust list. */
-export const listGatewayListItems: API.OperationMethod<
+export const listGatewayListItems: API.PaginatedOperationMethod<
   ListGatewayListItemsRequest,
   ListGatewayListItemsResponse,
   ListGatewayListItemsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListGatewayListItemsRequest,
-  output: ListGatewayListItemsResponse,
-  errors: [GatewayListNotFound, CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListGatewayListItemsRequest,
+    output: ListGatewayListItemsResponse,
+    errors: [GatewayListNotFound, CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListGatewayListsError = CloudflareOpError;
 /** Fetch all Zero Trust lists for an account. */
-export const listGatewayLists: API.OperationMethod<
+export const listGatewayLists: API.PaginatedOperationMethod<
   ListGatewayListsRequest,
   ListGatewayListsResponse,
   ListGatewayListsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListGatewayListsRequest,
-  output: ListGatewayListsResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListGatewayListsRequest,
+    output: ListGatewayListsResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListGatewayLocationsError = CloudflareOpError;
 /** List Zero Trust Gateway locations for an account. */
-export const listGatewayLocations: API.OperationMethod<
+export const listGatewayLocations: API.PaginatedOperationMethod<
   ListGatewayLocationsRequest,
   ListGatewayLocationsResponse,
   ListGatewayLocationsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListGatewayLocationsRequest,
-  output: ListGatewayLocationsResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListGatewayLocationsRequest,
+    output: ListGatewayLocationsResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListGatewayPacfilesError = CloudflareOpError;
 /** List all Zero Trust Gateway PAC files for an account. */
-export const listGatewayPacfiles: API.OperationMethod<
+export const listGatewayPacfiles: API.PaginatedOperationMethod<
   ListGatewayPacfilesRequest,
   ListGatewayPacfilesResponse,
   ListGatewayPacfilesError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListGatewayPacfilesRequest,
-  output: ListGatewayPacfilesResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListGatewayPacfilesRequest,
+    output: ListGatewayPacfilesResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListGatewayProxyEndpointsError = CloudflareOpError;
 /** List all Zero Trust Gateway proxy endpoints for an account. */
-export const listGatewayProxyEndpoints: API.OperationMethod<
+export const listGatewayProxyEndpoints: API.PaginatedOperationMethod<
   ListGatewayProxyEndpointsRequest,
   ListGatewayProxyEndpointsResponse,
   ListGatewayProxyEndpointsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListGatewayProxyEndpointsRequest,
-  output: ListGatewayProxyEndpointsResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListGatewayProxyEndpointsRequest,
+    output: ListGatewayProxyEndpointsResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListGatewayRulesError = CloudflareOpError;
 /** List Zero Trust Gateway rules for an account. */
-export const listGatewayRules: API.OperationMethod<
+export const listGatewayRules: API.PaginatedOperationMethod<
   ListGatewayRulesRequest,
   ListGatewayRulesResponse,
   ListGatewayRulesError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListGatewayRulesRequest,
-  output: ListGatewayRulesResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListGatewayRulesRequest,
+    output: ListGatewayRulesResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListGatewaysError = CloudflareOpError;
 /** Retrieve information about the current Zero Trust account. */
@@ -67884,185 +68428,285 @@ export const listGateways: API.OperationMethod<
 
 export type ListIdentityProviderScimGroupsError = CloudflareOpError;
 /** Lists SCIM Group resources synced to Cloudflare via the System for Cross-domain Identity Management (SCIM). */
-export const listIdentityProviderScimGroups: API.OperationMethod<
+export const listIdentityProviderScimGroups: API.PaginatedOperationMethod<
   ListIdentityProviderScimGroupsRequest,
   ListIdentityProviderScimGroupsResponse,
   ListIdentityProviderScimGroupsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListIdentityProviderScimGroupsRequest,
-  output: ListIdentityProviderScimGroupsResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListIdentityProviderScimGroupsRequest,
+    output: ListIdentityProviderScimGroupsResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "resultInfo.page",
+      items: "result",
+      pageSize: "perPage",
+    } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListIdentityProviderScimUsersError = CloudflareOpError;
 /** Lists SCIM User resources synced to Cloudflare via the System for Cross-domain Identity Management (SCIM). */
-export const listIdentityProviderScimUsers: API.OperationMethod<
+export const listIdentityProviderScimUsers: API.PaginatedOperationMethod<
   ListIdentityProviderScimUsersRequest,
   ListIdentityProviderScimUsersResponse,
   ListIdentityProviderScimUsersError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListIdentityProviderScimUsersRequest,
-  output: ListIdentityProviderScimUsersResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListIdentityProviderScimUsersRequest,
+    output: ListIdentityProviderScimUsersResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "resultInfo.page",
+      items: "result",
+      pageSize: "perPage",
+    } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListNetworkHostnameRoutesError = Forbidden | CloudflareOpError;
 /** Lists and filters hostname routes in an account. */
-export const listNetworkHostnameRoutes: API.OperationMethod<
+export const listNetworkHostnameRoutes: API.PaginatedOperationMethod<
   ListNetworkHostnameRoutesRequest,
   ListNetworkHostnameRoutesResponse,
   ListNetworkHostnameRoutesError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListNetworkHostnameRoutesRequest,
-  output: ListNetworkHostnameRoutesResponse,
-  errors: [Forbidden, CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListNetworkHostnameRoutesRequest,
+    output: ListNetworkHostnameRoutesResponse,
+    errors: [Forbidden, CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "resultInfo.page",
+      items: "result",
+      pageSize: "perPage",
+    } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListNetworkRoutesError = CloudflareOpError;
 /** Lists and filters private network routes in an account. */
-export const listNetworkRoutes: API.OperationMethod<
+export const listNetworkRoutes: API.PaginatedOperationMethod<
   ListNetworkRoutesRequest,
   ListNetworkRoutesResponse,
   ListNetworkRoutesError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListNetworkRoutesRequest,
-  output: ListNetworkRoutesResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListNetworkRoutesRequest,
+    output: ListNetworkRoutesResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "resultInfo.page",
+      items: "result",
+      pageSize: "perPage",
+    } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListNetworkSubnetsError = CloudflareOpError;
 /** Lists and filters subnets in an account. */
-export const listNetworkSubnets: API.OperationMethod<
+export const listNetworkSubnets: API.PaginatedOperationMethod<
   ListNetworkSubnetsRequest,
   ListNetworkSubnetsResponse,
   ListNetworkSubnetsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListNetworkSubnetsRequest,
-  output: ListNetworkSubnetsResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListNetworkSubnetsRequest,
+    output: ListNetworkSubnetsResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "resultInfo.page",
+      items: "result",
+      pageSize: "perPage",
+    } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListNetworkVirtualNetworksError = CloudflareOpError;
 /** Lists and filters virtual networks in an account. */
-export const listNetworkVirtualNetworks: API.OperationMethod<
+export const listNetworkVirtualNetworks: API.PaginatedOperationMethod<
   ListNetworkVirtualNetworksRequest,
   ListNetworkVirtualNetworksResponse,
   ListNetworkVirtualNetworksError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListNetworkVirtualNetworksRequest,
-  output: ListNetworkVirtualNetworksResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListNetworkVirtualNetworksRequest,
+    output: ListNetworkVirtualNetworksResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListResourceLibraryApplicationsError = CloudflareOpError;
 /** List applications with different filters. */
-export const listResourceLibraryApplications: API.OperationMethod<
+export const listResourceLibraryApplications: API.PaginatedOperationMethod<
   ListResourceLibraryApplicationsRequest,
   ListResourceLibraryApplicationsResponse,
   ListResourceLibraryApplicationsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListResourceLibraryApplicationsRequest,
-  output: ListResourceLibraryApplicationsResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListResourceLibraryApplicationsRequest,
+    output: ListResourceLibraryApplicationsResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListResourceLibraryCategoriesError = CloudflareOpError;
 /** List application categories. */
-export const listResourceLibraryCategories: API.OperationMethod<
+export const listResourceLibraryCategories: API.PaginatedOperationMethod<
   ListResourceLibraryCategoriesRequest,
   ListResourceLibraryCategoriesResponse,
   ListResourceLibraryCategoriesError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListResourceLibraryCategoriesRequest,
-  output: ListResourceLibraryCategoriesResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListResourceLibraryCategoriesRequest,
+    output: ListResourceLibraryCategoriesResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListRiskScoringIntegrationsError = Forbidden | CloudflareOpError;
 /** Lists all configured Zero Trust risk score integrations for the account. */
-export const listRiskScoringIntegrations: API.OperationMethod<
+export const listRiskScoringIntegrations: API.PaginatedOperationMethod<
   ListRiskScoringIntegrationsRequest,
   ListRiskScoringIntegrationsResponse,
   ListRiskScoringIntegrationsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListRiskScoringIntegrationsRequest,
-  output: ListRiskScoringIntegrationsResponse,
-  errors: [Forbidden, CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListRiskScoringIntegrationsRequest,
+    output: ListRiskScoringIntegrationsResponse,
+    errors: [Forbidden, CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListTenantGatewayRuleError = CloudflareOpError;
 /** List Zero Trust Gateway rules for the parent account of an account in the MSP configuration. */
-export const listTenantGatewayRule: API.OperationMethod<
+export const listTenantGatewayRule: API.PaginatedOperationMethod<
   ListTenantGatewayRuleRequest,
   ListTenantGatewayRuleResponse,
   ListTenantGatewayRuleError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListTenantGatewayRuleRequest,
-  output: ListTenantGatewayRuleResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListTenantGatewayRuleRequest,
+    output: ListTenantGatewayRuleResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListTunnelCloudflaredsError = CloudflareOpError;
 /** Lists and filters Cloudflare Tunnels in an account. */
-export const listTunnelCloudflareds: API.OperationMethod<
+export const listTunnelCloudflareds: API.PaginatedOperationMethod<
   ListTunnelCloudflaredsRequest,
   ListTunnelCloudflaredsResponse,
   ListTunnelCloudflaredsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListTunnelCloudflaredsRequest,
-  output: ListTunnelCloudflaredsResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListTunnelCloudflaredsRequest,
+    output: ListTunnelCloudflaredsResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "resultInfo.page",
+      items: "result",
+      pageSize: "perPage",
+    } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListTunnelsError = CloudflareOpError;
 /** Lists and filters all types of Tunnels in an account. */
-export const listTunnels: API.OperationMethod<
+export const listTunnels: API.PaginatedOperationMethod<
   ListTunnelsRequest,
   ListTunnelsResponse,
   ListTunnelsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListTunnelsRequest,
-  output: ListTunnelsResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListTunnelsRequest,
+    output: ListTunnelsResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "resultInfo.page",
+      items: "result",
+      pageSize: "perPage",
+    } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListTunnelWarpConnectorsError = Forbidden | CloudflareOpError;
 /** Lists and filters Warp Connector Tunnels in an account. */
-export const listTunnelWarpConnectors: API.OperationMethod<
+export const listTunnelWarpConnectors: API.PaginatedOperationMethod<
   ListTunnelWarpConnectorsRequest,
   ListTunnelWarpConnectorsResponse,
   ListTunnelWarpConnectorsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListTunnelWarpConnectorsRequest,
-  output: ListTunnelWarpConnectorsResponse,
-  errors: [Forbidden, CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListTunnelWarpConnectorsRequest,
+    output: ListTunnelWarpConnectorsResponse,
+    errors: [Forbidden, CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "resultInfo.page",
+      items: "result",
+      pageSize: "perPage",
+    } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type LiveDexFleetStatusError = CloudflareOpError;
 /** Get details for live (up to 60 minutes) devices using WARP. */
@@ -68462,17 +69106,21 @@ export const patchNetworkVirtualNetwork: API.OperationMethod<
 
 export type PatchSeatError = CloudflareOpError;
 /** Removes a user from a Zero Trust seat when both `access_seat` and `gateway_seat` are set to false. */
-export const patchSeat: API.OperationMethod<
+export const patchSeat: API.PaginatedOperationMethod<
   PatchSeatRequest,
   PatchSeatResponse,
   PatchSeatError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: PatchSeatRequest,
-  output: PatchSeatResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: PatchSeatRequest,
+    output: PatchSeatResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type PatchTunnelCloudflaredError =
   | TunnelNotFound
@@ -68553,108 +69201,132 @@ export type PutDevicePolicyCustomExcludeError =
   | Forbidden
   | CloudflareOpError;
 /** Sets the list of routes excluded from the WARP client's tunnel for a specific device settings profile. */
-export const putDevicePolicyCustomExclude: API.OperationMethod<
+export const putDevicePolicyCustomExclude: API.PaginatedOperationMethod<
   PutDevicePolicyCustomExcludeRequest,
   PutDevicePolicyCustomExcludeResponse,
   PutDevicePolicyCustomExcludeError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: PutDevicePolicyCustomExcludeRequest,
-  output: PutDevicePolicyCustomExcludeResponse,
-  errors: [
-    DevicePolicyNotFound,
-    Forbidden,
-    CloudflareRateLimited,
-    CloudflareError,
-  ],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: PutDevicePolicyCustomExcludeRequest,
+    output: PutDevicePolicyCustomExcludeResponse,
+    errors: [
+      DevicePolicyNotFound,
+      Forbidden,
+      CloudflareRateLimited,
+      CloudflareError,
+    ],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type PutDevicePolicyCustomFallbackDomainError =
   | DevicePolicyNotFound
   | Forbidden
   | CloudflareOpError;
 /** Sets the list of domains to bypass Gateway DNS resolution. These domains will use the specified local DNS resolver instead. This will only apply to the specified device settings profile. */
-export const putDevicePolicyCustomFallbackDomain: API.OperationMethod<
+export const putDevicePolicyCustomFallbackDomain: API.PaginatedOperationMethod<
   PutDevicePolicyCustomFallbackDomainRequest,
   PutDevicePolicyCustomFallbackDomainResponse,
   PutDevicePolicyCustomFallbackDomainError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: PutDevicePolicyCustomFallbackDomainRequest,
-  output: PutDevicePolicyCustomFallbackDomainResponse,
-  errors: [
-    DevicePolicyNotFound,
-    Forbidden,
-    CloudflareRateLimited,
-    CloudflareError,
-  ],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: PutDevicePolicyCustomFallbackDomainRequest,
+    output: PutDevicePolicyCustomFallbackDomainResponse,
+    errors: [
+      DevicePolicyNotFound,
+      Forbidden,
+      CloudflareRateLimited,
+      CloudflareError,
+    ],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type PutDevicePolicyCustomIncludeError =
   | DevicePolicyNotFound
   | Forbidden
   | CloudflareOpError;
 /** Sets the list of routes included in the WARP client's tunnel for a specific device settings profile. */
-export const putDevicePolicyCustomInclude: API.OperationMethod<
+export const putDevicePolicyCustomInclude: API.PaginatedOperationMethod<
   PutDevicePolicyCustomIncludeRequest,
   PutDevicePolicyCustomIncludeResponse,
   PutDevicePolicyCustomIncludeError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: PutDevicePolicyCustomIncludeRequest,
-  output: PutDevicePolicyCustomIncludeResponse,
-  errors: [
-    DevicePolicyNotFound,
-    Forbidden,
-    CloudflareRateLimited,
-    CloudflareError,
-  ],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: PutDevicePolicyCustomIncludeRequest,
+    output: PutDevicePolicyCustomIncludeResponse,
+    errors: [
+      DevicePolicyNotFound,
+      Forbidden,
+      CloudflareRateLimited,
+      CloudflareError,
+    ],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type PutDevicePolicyDefaultExcludeError = CloudflareOpError;
 /** Sets the list of routes excluded from the WARP client's tunnel. */
-export const putDevicePolicyDefaultExclude: API.OperationMethod<
+export const putDevicePolicyDefaultExclude: API.PaginatedOperationMethod<
   PutDevicePolicyDefaultExcludeRequest,
   PutDevicePolicyDefaultExcludeResponse,
   PutDevicePolicyDefaultExcludeError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: PutDevicePolicyDefaultExcludeRequest,
-  output: PutDevicePolicyDefaultExcludeResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: PutDevicePolicyDefaultExcludeRequest,
+    output: PutDevicePolicyDefaultExcludeResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type PutDevicePolicyDefaultFallbackDomainError = CloudflareOpError;
 /** Sets the list of domains to bypass Gateway DNS resolution. These domains will use the specified local DNS resolver instead. */
-export const putDevicePolicyDefaultFallbackDomain: API.OperationMethod<
+export const putDevicePolicyDefaultFallbackDomain: API.PaginatedOperationMethod<
   PutDevicePolicyDefaultFallbackDomainRequest,
   PutDevicePolicyDefaultFallbackDomainResponse,
   PutDevicePolicyDefaultFallbackDomainError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: PutDevicePolicyDefaultFallbackDomainRequest,
-  output: PutDevicePolicyDefaultFallbackDomainResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: PutDevicePolicyDefaultFallbackDomainRequest,
+    output: PutDevicePolicyDefaultFallbackDomainResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type PutDevicePolicyDefaultIncludeError = CloudflareOpError;
 /** Sets the list of routes included in the WARP client's tunnel. */
-export const putDevicePolicyDefaultInclude: API.OperationMethod<
+export const putDevicePolicyDefaultInclude: API.PaginatedOperationMethod<
   PutDevicePolicyDefaultIncludeRequest,
   PutDevicePolicyDefaultIncludeResponse,
   PutDevicePolicyDefaultIncludeError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: PutDevicePolicyDefaultIncludeRequest,
-  output: PutDevicePolicyDefaultIncludeResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: PutDevicePolicyDefaultIncludeRequest,
+    output: PutDevicePolicyDefaultIncludeResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type PutDeviceSettingError = Forbidden | CloudflareOpError;
 /** Updates the current device settings for a Zero Trust account. */

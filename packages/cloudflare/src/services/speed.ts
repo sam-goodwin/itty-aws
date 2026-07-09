@@ -4,9 +4,11 @@ import * as API from "@distilled.cloud/core/api";
 import * as T from "../traits.ts";
 import {
   CloudflareProtocol,
+  CloudflarePaginatedProtocol,
   type CloudflareOpError,
   type CloudflareOpContext,
 } from "../protocol.ts";
+import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
 export class Forbidden extends T.applyErrorMatchers(
@@ -1261,10 +1263,13 @@ export const PagesListResultList = /*@__PURE__*/ S.Array(
 export interface ListPagesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: PagesListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListPagesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(PagesListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListPagesResponse",
@@ -1456,10 +1461,13 @@ export const PagesTestsListResultList = /*@__PURE__*/ S.Array(
 export interface ListPageTestsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: PagesTestsListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListPageTestsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(PagesTestsListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListPageTestsResponse",
@@ -1712,31 +1720,45 @@ export const listAvailabilities: API.OperationMethod<
 
 export type ListPagesError = CloudflareOpError;
 /** Lists all webpages which have been tested. */
-export const listPages: API.OperationMethod<
+export const listPages: API.PaginatedOperationMethod<
   ListPagesRequest,
   ListPagesResponse,
   ListPagesError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListPagesRequest,
-  output: ListPagesResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListPagesRequest,
+    output: ListPagesResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListPageTestsError = CloudflareOpError;
 /** Test history (list of tests) for a specific webpage. */
-export const listPageTests: API.OperationMethod<
+export const listPageTests: API.PaginatedOperationMethod<
   ListPageTestsRequest,
   ListPageTestsResponse,
   ListPageTestsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListPageTestsRequest,
-  output: ListPageTestsResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListPageTestsRequest,
+    output: ListPageTestsResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "resultInfo.page",
+      items: "result",
+      pageSize: "perPage",
+    } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type TrendPageError = CloudflareOpError;
 /** Lists the core web vital metrics trend over time for a specific page. */

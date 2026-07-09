@@ -4,9 +4,11 @@ import * as API from "@distilled.cloud/core/api";
 import * as T from "../traits.ts";
 import {
   CloudflareProtocol,
+  CloudflarePaginatedProtocol,
   type CloudflareOpError,
   type CloudflareOpContext,
 } from "../protocol.ts";
+import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
 export class AclNotFound extends T.applyErrorMatchers(
@@ -8501,10 +8503,13 @@ export const RecordsListResultList = /*@__PURE__*/ S.Array(
 export interface ListRecordsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: RecordsListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListRecordsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(RecordsListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListRecordsResponse",
@@ -8611,12 +8616,15 @@ export const SettingsAccountViewsListResultList = /*@__PURE__*/ S.Array(
 export interface ListSettingAccountViewsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: SettingsAccountViewsListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListSettingAccountViewsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(
       SettingsAccountViewsListResultList.pipe(T.EnvelopePayload()),
     ),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListSettingAccountViewsResponse",
@@ -8664,12 +8672,15 @@ export const ZoneTransfersAclsListResultList = /*@__PURE__*/ S.Array(
 export interface ListZoneTransferAclsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: ZoneTransfersAclsListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListZoneTransferAclsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(
       ZoneTransfersAclsListResultList.pipe(T.EnvelopePayload()),
     ),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListZoneTransferAclsResponse",
@@ -8727,12 +8738,15 @@ export const ZoneTransfersPeersListResultList = /*@__PURE__*/ S.Array(
 export interface ListZoneTransferPeersResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: ZoneTransfersPeersListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListZoneTransferPeersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(
       ZoneTransfersPeersListResultList.pipe(T.EnvelopePayload()),
     ),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListZoneTransferPeersResponse",
@@ -8784,12 +8798,15 @@ export const ZoneTransfersTsigsListResultList = /*@__PURE__*/ S.Array(
 export interface ListZoneTransferTsigsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: ZoneTransfersTsigsListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListZoneTransferTsigsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(
       ZoneTransfersTsigsListResultList.pipe(T.EnvelopePayload()),
     ),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListZoneTransferTsigsResponse",
@@ -12269,10 +12286,13 @@ export const RecordsScanListResultList = /*@__PURE__*/ S.Array(
 export interface ScanListRecordResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: RecordsScanListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ScanListRecordResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(RecordsScanListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ScanListRecordResponse",
@@ -16229,73 +16249,105 @@ export const importRecord: API.OperationMethod<
 
 export type ListRecordsError = Forbidden | CloudflareOpError;
 /** List, search, sort, and filter a zones' DNS records. */
-export const listRecords: API.OperationMethod<
+export const listRecords: API.PaginatedOperationMethod<
   ListRecordsRequest,
   ListRecordsResponse,
   ListRecordsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListRecordsRequest,
-  output: ListRecordsResponse,
-  errors: [Forbidden, CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListRecordsRequest,
+    output: ListRecordsResponse,
+    errors: [Forbidden, CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "resultInfo.page",
+      items: "result",
+      pageSize: "perPage",
+    } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListSettingAccountViewsError = CloudflareOpError;
 /** List DNS Internal Views for an Account */
-export const listSettingAccountViews: API.OperationMethod<
+export const listSettingAccountViews: API.PaginatedOperationMethod<
   ListSettingAccountViewsRequest,
   ListSettingAccountViewsResponse,
   ListSettingAccountViewsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListSettingAccountViewsRequest,
-  output: ListSettingAccountViewsResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListSettingAccountViewsRequest,
+    output: ListSettingAccountViewsResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "resultInfo.page",
+      items: "result",
+      pageSize: "perPage",
+    } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListZoneTransferAclsError = CloudflareOpError;
 /** List ACLs. */
-export const listZoneTransferAcls: API.OperationMethod<
+export const listZoneTransferAcls: API.PaginatedOperationMethod<
   ListZoneTransferAclsRequest,
   ListZoneTransferAclsResponse,
   ListZoneTransferAclsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListZoneTransferAclsRequest,
-  output: ListZoneTransferAclsResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListZoneTransferAclsRequest,
+    output: ListZoneTransferAclsResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListZoneTransferPeersError = CloudflareOpError;
 /** List Peers. */
-export const listZoneTransferPeers: API.OperationMethod<
+export const listZoneTransferPeers: API.PaginatedOperationMethod<
   ListZoneTransferPeersRequest,
   ListZoneTransferPeersResponse,
   ListZoneTransferPeersError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListZoneTransferPeersRequest,
-  output: ListZoneTransferPeersResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListZoneTransferPeersRequest,
+    output: ListZoneTransferPeersResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListZoneTransferTsigsError = CloudflareOpError;
 /** List TSIGs. */
-export const listZoneTransferTsigs: API.OperationMethod<
+export const listZoneTransferTsigs: API.PaginatedOperationMethod<
   ListZoneTransferTsigsRequest,
   ListZoneTransferTsigsResponse,
   ListZoneTransferTsigsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListZoneTransferTsigsRequest,
-  output: ListZoneTransferTsigsResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListZoneTransferTsigsRequest,
+    output: ListZoneTransferTsigsResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type PatchDnssecError = Forbidden | CloudflareOpError;
 /** Enable or disable DNSSEC. */
@@ -16371,17 +16423,21 @@ export const patchSettingZone: API.OperationMethod<
 
 export type ScanListRecordError = CloudflareOpError;
 /** Retrieves the list of DNS records discovered up to this point by the asynchronous scan. These records are temporary until explicitly accepted or rejected via `POST /scan/review`. Additional records may be discovered by the scan later. */
-export const scanListRecord: API.OperationMethod<
+export const scanListRecord: API.PaginatedOperationMethod<
   ScanListRecordRequest,
   ScanListRecordResponse,
   ScanListRecordError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ScanListRecordRequest,
-  output: ScanListRecordResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ScanListRecordRequest,
+    output: ScanListRecordResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ScanRecordError = CloudflareOpError;
 /** Scan for common DNS records on your domain and automatically add them to your zone. Useful if you haven't updated your nameservers yet. */

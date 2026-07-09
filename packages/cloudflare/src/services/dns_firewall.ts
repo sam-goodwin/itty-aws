@@ -4,9 +4,11 @@ import * as API from "@distilled.cloud/core/api";
 import * as T from "../traits.ts";
 import {
   CloudflareProtocol,
+  CloudflarePaginatedProtocol,
   type CloudflareOpError,
   type CloudflareOpContext,
 } from "../protocol.ts";
+import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
 export class DnsFirewallNotEntitled extends T.applyErrorMatchers(
@@ -815,10 +817,13 @@ export const ListResultList = /*@__PURE__*/ S.Array(
 export interface ListDnsFirewallsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: ListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListDnsFirewallsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(ListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListDnsFirewallsResponse",
@@ -1151,17 +1156,27 @@ export const getReverseDn: API.OperationMethod<
 
 export type ListDnsFirewallsError = Forbidden | CloudflareOpError;
 /** List DNS Firewall clusters for an account */
-export const listDnsFirewalls: API.OperationMethod<
+export const listDnsFirewalls: API.PaginatedOperationMethod<
   ListDnsFirewallsRequest,
   ListDnsFirewallsResponse,
   ListDnsFirewallsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListDnsFirewallsRequest,
-  output: ListDnsFirewallsResponse,
-  errors: [Forbidden, CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListDnsFirewallsRequest,
+    output: ListDnsFirewallsResponse,
+    errors: [Forbidden, CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "resultInfo.page",
+      items: "result",
+      pageSize: "perPage",
+    } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type PatchDnsFirewallError =
   | DnsFirewallNotFound

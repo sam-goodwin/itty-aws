@@ -4,9 +4,11 @@ import * as API from "@distilled.cloud/core/api";
 import * as T from "../traits.ts";
 import {
   CloudflareProtocol,
+  CloudflarePaginatedProtocol,
   type CloudflareOpError,
   type CloudflareOpContext,
 } from "../protocol.ts";
+import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
 export class FlagshipAppNotFound extends T.applyErrorMatchers(
@@ -693,12 +695,15 @@ export const AppsFlagsChangelogListResultList = /*@__PURE__*/ S.Array(
 export interface ListAppFlagChangelogsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: AppsFlagsChangelogListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListAppFlagChangelogsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(
       AppsFlagsChangelogListResultList.pipe(T.EnvelopePayload()),
     ),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListAppFlagChangelogsResponse",
@@ -855,10 +860,13 @@ export const AppsFlagsListResultList = /*@__PURE__*/ S.Array(
 export interface ListAppFlagsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: AppsFlagsListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListAppFlagsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(AppsFlagsListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListAppFlagsResponse",
@@ -910,10 +918,13 @@ export const AppsListResultList = /*@__PURE__*/ S.Array(
 export interface ListAppsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: AppsListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListAppsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(AppsListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListAppsResponse",
@@ -1330,45 +1341,67 @@ export const getAppFlag: API.OperationMethod<
 
 export type ListAppFlagChangelogsError = CloudflareOpError;
 /** Returns the audit history for a flag, newest first. Each entry includes the event type and full flag state after the change; `update` entries include a field-level diff. Capped at 200 entries per flag. */
-export const listAppFlagChangelogs: API.OperationMethod<
+export const listAppFlagChangelogs: API.PaginatedOperationMethod<
   ListAppFlagChangelogsRequest,
   ListAppFlagChangelogsResponse,
   ListAppFlagChangelogsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListAppFlagChangelogsRequest,
-  output: ListAppFlagChangelogsResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListAppFlagChangelogsRequest,
+    output: ListAppFlagChangelogsResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: {
+      mode: "cursor",
+      inputToken: "cursor",
+      outputToken: "resultInfo.cursors.after",
+      items: "result",
+    } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListAppFlagsError = FlagshipAppNotFound | CloudflareOpError;
 /** Lists an app's flags ordered by key. Pass `cursor` from `result_info` to page forward; a null cursor indicates the last page. */
-export const listAppFlags: API.OperationMethod<
+export const listAppFlags: API.PaginatedOperationMethod<
   ListAppFlagsRequest,
   ListAppFlagsResponse,
   ListAppFlagsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListAppFlagsRequest,
-  output: ListAppFlagsResponse,
-  errors: [FlagshipAppNotFound, CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListAppFlagsRequest,
+    output: ListAppFlagsResponse,
+    errors: [FlagshipAppNotFound, CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: {
+      mode: "cursor",
+      inputToken: "cursor",
+      outputToken: "resultInfo.cursors.after",
+      items: "result",
+    } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListAppsError = CloudflareOpError;
 /** Lists all apps in the account. Returns identity and audit fields only — flag definitions are not included. */
-export const listApps: API.OperationMethod<
+export const listApps: API.PaginatedOperationMethod<
   ListAppsRequest,
   ListAppsResponse,
   ListAppsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListAppsRequest,
-  output: ListAppsResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListAppsRequest,
+    output: ListAppsResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type UpdateAppError = FlagshipAppNotFound | CloudflareOpError;
 /** Updates an app. Only `name` is mutable. */

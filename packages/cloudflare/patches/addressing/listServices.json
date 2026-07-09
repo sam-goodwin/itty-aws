@@ -25,6 +25,14 @@
       "op": "replace",
       "path": "/shapes/com.cloudflare.addressing#ListServices/output/target",
       "value": "com.cloudflare.addressing#ListServicesResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.addressing#ListServices/traits/smithy.api#paginated",
+      "value": {
+        "mode": "single",
+        "items": "result"
+      }
     }
   ]
 }

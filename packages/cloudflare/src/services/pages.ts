@@ -4,9 +4,11 @@ import * as API from "@distilled.cloud/core/api";
 import * as T from "../traits.ts";
 import {
   CloudflareProtocol,
+  CloudflarePaginatedProtocol,
   type CloudflareOpError,
   type CloudflareOpContext,
 } from "../protocol.ts";
+import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
 export class ActiveProductionDeployment extends T.applyErrorMatchers(
@@ -4863,12 +4865,15 @@ export const ProjectsDeploymentsListResultList = /*@__PURE__*/ S.Array(
 export interface ListProjectDeploymentsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: ProjectsDeploymentsListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListProjectDeploymentsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(
       ProjectsDeploymentsListResultList.pipe(T.EnvelopePayload()),
     ),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListProjectDeploymentsResponse",
@@ -5009,10 +5014,13 @@ export const ProjectsDomainsListResultList = /*@__PURE__*/ S.Array(
 export interface ListProjectDomainsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: ProjectsDomainsListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListProjectDomainsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(ProjectsDomainsListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListProjectDomainsResponse",
@@ -6228,10 +6236,13 @@ export const ProjectsListResultList = /*@__PURE__*/ S.Array(
 export interface ListProjectsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: ProjectsListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListProjectsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(ProjectsListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListProjectsResponse",
@@ -9373,48 +9384,77 @@ export const getProjectDomain: API.OperationMethod<
 
 export type ListProjectDeploymentsError = CloudflareOpError;
 /** Fetch a list of project deployments. */
-export const listProjectDeployments: API.OperationMethod<
+export const listProjectDeployments: API.PaginatedOperationMethod<
   ListProjectDeploymentsRequest,
   ListProjectDeploymentsResponse,
   ListProjectDeploymentsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListProjectDeploymentsRequest,
-  output: ListProjectDeploymentsResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListProjectDeploymentsRequest,
+    output: ListProjectDeploymentsResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "resultInfo.page",
+      items: "result",
+      pageSize: "perPage",
+    } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListProjectDomainsError =
   | ProjectNotFound
   | Forbidden
   | CloudflareOpError;
 /** Fetch a list of all domains associated with a Pages project. */
-export const listProjectDomains: API.OperationMethod<
+export const listProjectDomains: API.PaginatedOperationMethod<
   ListProjectDomainsRequest,
   ListProjectDomainsResponse,
   ListProjectDomainsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListProjectDomainsRequest,
-  output: ListProjectDomainsResponse,
-  errors: [ProjectNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListProjectDomainsRequest,
+    output: ListProjectDomainsResponse,
+    errors: [
+      ProjectNotFound,
+      Forbidden,
+      CloudflareRateLimited,
+      CloudflareError,
+    ],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListProjectsError = Forbidden | CloudflareOpError;
 /** Fetch a list of all user projects. */
-export const listProjects: API.OperationMethod<
+export const listProjects: API.PaginatedOperationMethod<
   ListProjectsRequest,
   ListProjectsResponse,
   ListProjectsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListProjectsRequest,
-  output: ListProjectsResponse,
-  errors: [Forbidden, CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListProjectsRequest,
+    output: ListProjectsResponse,
+    errors: [Forbidden, CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "resultInfo.page",
+      items: "result",
+      pageSize: "perPage",
+    } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type PatchProjectError = ProjectNotFound | Forbidden | CloudflareOpError;
 /** Set new attributes for an existing project. Modify environment variables. To delete an environment variable, set the key to null. */

@@ -38,7 +38,11 @@ import {
 } from "@distilled.cloud/core/trait";
 import { CloudflareCredentials } from "./credentials.ts";
 import { CloudflareError, CloudflareRateLimited } from "./errors.ts";
-import { envelopePayloadSymbol, getErrorMatchers } from "./traits.ts";
+import {
+  envelopePayloadSymbol,
+  getErrorMatchers,
+  resultInfoSymbol,
+} from "./traits.ts";
 
 /**
  * Error channel shared by every generated Cloudflare operation. Generated
@@ -235,76 +239,98 @@ const matchTypedError = (
   });
 };
 
-const decode = ({
-  response,
-  outputAst,
-  errors: errorClasses,
-}: {
-  readonly response: HttpClientResponse.HttpClientResponse;
-  readonly outputAst: AST.AST;
-  readonly errors: ReadonlyArray<unknown>;
-}) =>
-  Effect.gen(function* () {
-    const json = ((yield* response.json.pipe(Effect.orDie)) ?? {}) as Record<
-      string,
-      unknown
-    >;
+/** Shallow-camelCase the keys of the envelope's `result_info` block. */
+const camelizeKeys = (v: unknown): unknown => {
+  if (v === null || typeof v !== "object" || Array.isArray(v)) return v;
+  return Object.fromEntries(
+    Object.entries(v).map(([k, val]) => [
+      k.replace(/_+([a-z0-9])/gi, (_, c: string) => c.toUpperCase()),
+      val,
+    ]),
+  );
+};
 
-    // Error envelope or non-2xx → typed Cloudflare error.
-    const failed = response.status >= 400 || json.success === false;
-    if (failed) {
-      const rawErrors = Array.isArray(json.errors) ? json.errors : [];
-      const errors = rawErrors.map((e: any) => ({
-        code: typeof e?.code === "number" ? e.code : undefined,
-        message: String(e?.message ?? `HTTP ${response.status}`),
-      }));
-      if (errors.length === 0) {
-        errors.push({
-          code: undefined,
-          message: `HTTP ${response.status}`,
-        });
-      }
-      // Operation-specific typed error (matcher metadata on the class) wins
-      // over the generic envelope errors.
-      const typed = matchTypedError(errorClasses, response.status, errors);
-      if (typed !== undefined) {
-        return yield* Effect.fail(typed) as Effect.Effect<never>;
-      }
-      if (response.status === 429) {
+/**
+ * Build a decode implementation. `resultInfo: true` (the paginated protocol)
+ * additionally maps the envelope's top-level `result_info` onto the output
+ * member marked with `T.ResultInfo()`, camelCased.
+ */
+const makeDecode =
+  (options: { readonly resultInfo: boolean }) =>
+  ({
+    response,
+    outputAst,
+    errors: errorClasses,
+  }: {
+    readonly response: HttpClientResponse.HttpClientResponse;
+    readonly outputAst: AST.AST;
+    readonly errors: ReadonlyArray<unknown>;
+  }) =>
+    Effect.gen(function* () {
+      const json = ((yield* response.json.pipe(Effect.orDie)) ?? {}) as Record<
+        string,
+        unknown
+      >;
+
+      // Error envelope or non-2xx → typed Cloudflare error.
+      const failed = response.status >= 400 || json.success === false;
+      if (failed) {
+        const rawErrors = Array.isArray(json.errors) ? json.errors : [];
+        const errors = rawErrors.map((e: any) => ({
+          code: typeof e?.code === "number" ? e.code : undefined,
+          message: String(e?.message ?? `HTTP ${response.status}`),
+        }));
+        if (errors.length === 0) {
+          errors.push({
+            code: undefined,
+            message: `HTTP ${response.status}`,
+          });
+        }
+        // Operation-specific typed error (matcher metadata on the class) wins
+        // over the generic envelope errors.
+        const typed = matchTypedError(errorClasses, response.status, errors);
+        if (typed !== undefined) {
+          return yield* Effect.fail(typed) as Effect.Effect<never>;
+        }
+        if (response.status === 429) {
+          return yield* fail(
+            new CloudflareRateLimited({ status: response.status, errors }),
+          );
+        }
         return yield* fail(
-          new CloudflareRateLimited({ status: response.status, errors }),
+          new CloudflareError({ status: response.status, errors }),
         );
       }
-      return yield* fail(
-        new CloudflareError({ status: response.status, errors }),
-      );
-    }
 
-    // Unwrap the envelope: the payload is `result` (fall back to the whole
-    // body for the handful of endpoints that don't use the envelope).
-    const payload = ("result" in json ? json.result : json) as
-      | Record<string, unknown>
-      | unknown;
-    const result: Record<string, unknown> = {};
+      // Unwrap the envelope: the payload is `result` (fall back to the whole
+      // body for the handful of endpoints that don't use the envelope).
+      const payload = ("result" in json ? json.result : json) as
+        | Record<string, unknown>
+        | unknown;
+      const result: Record<string, unknown> = {};
 
-    for (const prop of getProps(outputAst)) {
-      const key = String(prop.name);
-      if (hasPropAnn(prop, envelopePayloadSymbol)) {
-        result[key] = payload;
-      } else if (hasPropAnn(prop, headerSymbol)) {
-        const v = response.headers[nameOf(prop, headerSymbol).toLowerCase()];
-        if (v !== undefined) result[key] = v;
-      } else if (hasPropAnn(prop, responseCodeSymbol)) {
-        result[key] = response.status;
-      } else {
-        const wire = nameOf(prop, bodySymbol);
-        if (payload && typeof payload === "object" && wire in payload) {
-          result[key] = (payload as Record<string, unknown>)[wire];
+      for (const prop of getProps(outputAst)) {
+        const key = String(prop.name);
+        if (options.resultInfo && hasPropAnn(prop, resultInfoSymbol)) {
+          if (json.result_info !== undefined) {
+            result[key] = camelizeKeys(json.result_info);
+          }
+        } else if (hasPropAnn(prop, envelopePayloadSymbol)) {
+          result[key] = payload;
+        } else if (hasPropAnn(prop, headerSymbol)) {
+          const v = response.headers[nameOf(prop, headerSymbol).toLowerCase()];
+          if (v !== undefined) result[key] = v;
+        } else if (hasPropAnn(prop, responseCodeSymbol)) {
+          result[key] = response.status;
+        } else {
+          const wire = nameOf(prop, bodySymbol);
+          if (payload && typeof payload === "object" && wire in payload) {
+            result[key] = (payload as Record<string, unknown>)[wire];
+          }
         }
       }
-    }
-    return result;
-  });
+      return result;
+    });
 
 export const CloudflareProtocol: Layer.Layer<API.Protocol> = Layer.succeed(
   API.Protocol,
@@ -312,6 +338,22 @@ export const CloudflareProtocol: Layer.Layer<API.Protocol> = Layer.succeed(
     // Erase encode's CloudflareCredentials requirement (see comment above).
     encode: (args) =>
       encode(args) as Effect.Effect<HttpClientRequest.HttpClientRequest>,
-    decode,
+    decode: makeDecode({ resultInfo: false }),
   }),
 );
+
+/**
+ * Protocol for paginated operations: identical to {@link CloudflareProtocol}
+ * except the envelope's top-level `result_info` is kept on the response (as
+ * the member marked `T.ResultInfo()`, camelCased) so `.pages()` / `.items()`
+ * can advance and callers can read totals.
+ */
+export const CloudflarePaginatedProtocol: Layer.Layer<API.Protocol> =
+  Layer.succeed(
+    API.Protocol,
+    API.Protocol.of({
+      encode: (args) =>
+        encode(args) as Effect.Effect<HttpClientRequest.HttpClientRequest>,
+      decode: makeDecode({ resultInfo: true }),
+    }),
+  );

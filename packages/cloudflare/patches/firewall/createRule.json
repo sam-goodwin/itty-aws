@@ -25,6 +25,14 @@
       "op": "replace",
       "path": "/shapes/com.cloudflare.firewall#CreateRule/output/target",
       "value": "com.cloudflare.firewall#CreateRuleResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.firewall#CreateRule/traits/smithy.api#paginated",
+      "value": {
+        "mode": "single",
+        "items": "result"
+      }
     }
   ]
 }

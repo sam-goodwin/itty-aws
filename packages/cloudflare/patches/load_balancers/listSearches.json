@@ -25,6 +25,17 @@
       "op": "replace",
       "path": "/shapes/com.cloudflare.load_balancers#ListSearches/output/target",
       "value": "com.cloudflare.load_balancers#ListSearchesResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.load_balancers#ListSearches/traits/smithy.api#paginated",
+      "value": {
+        "mode": "page",
+        "inputToken": "page",
+        "outputToken": "resultInfo.page",
+        "items": "result.items",
+        "pageSize": "perPage"
+      }
     }
   ]
 }

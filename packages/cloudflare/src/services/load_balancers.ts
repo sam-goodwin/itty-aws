@@ -4,9 +4,11 @@ import * as API from "@distilled.cloud/core/api";
 import * as T from "../traits.ts";
 import {
   CloudflareProtocol,
+  CloudflarePaginatedProtocol,
   type CloudflareOpError,
   type CloudflareOpContext,
 } from "../protocol.ts";
+import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
 export class Forbidden extends T.applyErrorMatchers(
@@ -382,10 +384,13 @@ export const PoolsBulkEditResultList = /*@__PURE__*/ S.Array(
 export interface BulkPatchPoolsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: PoolsBulkEditResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const BulkPatchPoolsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(PoolsBulkEditResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "BulkPatchPoolsResponse",
@@ -3009,12 +3014,15 @@ export const MonitorGroupsReferencesGetResultList = /*@__PURE__*/ S.Array(
 export interface GetMonitorGroupReferenceResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: MonitorGroupsReferencesGetResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const GetMonitorGroupReferenceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(
       MonitorGroupsReferencesGetResultList.pipe(T.EnvelopePayload()),
     ),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "GetMonitorGroupReferenceResponse",
@@ -3077,12 +3085,15 @@ export const MonitorsReferencesGetResultList = /*@__PURE__*/ S.Array(
 export interface GetMonitorReferenceResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: MonitorsReferencesGetResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const GetMonitorReferenceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(
       MonitorsReferencesGetResultList.pipe(T.EnvelopePayload()),
     ),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "GetMonitorReferenceResponse",
@@ -3477,10 +3488,13 @@ export const PoolsReferencesGetResultList = /*@__PURE__*/ S.Array(
 export interface GetPoolReferenceResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: PoolsReferencesGetResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const GetPoolReferenceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(PoolsReferencesGetResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "GetPoolReferenceResponse",
@@ -4007,10 +4021,13 @@ export const ListResultList = /*@__PURE__*/ S.Array(
 export interface ListLoadBalancersResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: ListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListLoadBalancersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(ListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListLoadBalancersResponse",
@@ -4100,10 +4117,13 @@ export const MonitorGroupsListResultList = /*@__PURE__*/ S.Array(
 export interface ListMonitorGroupsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: MonitorGroupsListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListMonitorGroupsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(MonitorGroupsListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListMonitorGroupsResponse",
@@ -4213,10 +4233,13 @@ export const MonitorsListResultList = /*@__PURE__*/ S.Array(
 export interface ListMonitorsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: MonitorsListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListMonitorsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(MonitorsListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListMonitorsResponse",
@@ -4486,10 +4509,13 @@ export const PoolsListResultList = /*@__PURE__*/ S.Array(
 export interface ListPoolsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: PoolsListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListPoolsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(PoolsListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListPoolsResponse",
@@ -7775,17 +7801,21 @@ export const UpdatePoolResponse = /*@__PURE__*/ S.suspend(() =>
 
 export type BulkPatchPoolsError = CloudflareOpError;
 /** Apply changes to a number of existing pools, overwriting the supplied properties. Pools are ordered by ascending `name`. Returns the list of affected pools. Supports the standard pagination query parameters, either `limit`/`offset` or `per_page`/`page`. */
-export const bulkPatchPools: API.OperationMethod<
+export const bulkPatchPools: API.PaginatedOperationMethod<
   BulkPatchPoolsRequest,
   BulkPatchPoolsResponse,
   BulkPatchPoolsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BulkPatchPoolsRequest,
-  output: BulkPatchPoolsResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: BulkPatchPoolsRequest,
+    output: BulkPatchPoolsResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type CreateLoadBalancerError =
   | LoadBalancingNotEnabledForZone
@@ -8049,31 +8079,39 @@ export const getMonitorGroup: API.OperationMethod<
 
 export type GetMonitorGroupReferenceError = CloudflareOpError;
 /** Get the list of resources that reference the provided monitor group. */
-export const getMonitorGroupReference: API.OperationMethod<
+export const getMonitorGroupReference: API.PaginatedOperationMethod<
   GetMonitorGroupReferenceRequest,
   GetMonitorGroupReferenceResponse,
   GetMonitorGroupReferenceError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetMonitorGroupReferenceRequest,
-  output: GetMonitorGroupReferenceResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: GetMonitorGroupReferenceRequest,
+    output: GetMonitorGroupReferenceResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type GetMonitorReferenceError = CloudflareOpError;
 /** Get the list of resources that reference the provided monitor. */
-export const getMonitorReference: API.OperationMethod<
+export const getMonitorReference: API.PaginatedOperationMethod<
   GetMonitorReferenceRequest,
   GetMonitorReferenceResponse,
   GetMonitorReferenceError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetMonitorReferenceRequest,
-  output: GetMonitorReferenceResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: GetMonitorReferenceRequest,
+    output: GetMonitorReferenceResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type GetPoolError = PoolNotFound | Forbidden | CloudflareOpError;
 /** Fetch a single configured pool. */
@@ -8105,17 +8143,21 @@ export const getPoolHealth: API.OperationMethod<
 
 export type GetPoolReferenceError = CloudflareOpError;
 /** Get the list of resources that reference the provided pool. */
-export const getPoolReference: API.OperationMethod<
+export const getPoolReference: API.PaginatedOperationMethod<
   GetPoolReferenceRequest,
   GetPoolReferenceResponse,
   GetPoolReferenceError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetPoolReferenceRequest,
-  output: GetPoolReferenceResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: GetPoolReferenceRequest,
+    output: GetPoolReferenceResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type GetPreviewError = CloudflareOpError;
 /** Get the result of a previous preview operation using the provided preview_id. */
@@ -8147,59 +8189,75 @@ export const getRegion: API.OperationMethod<
 
 export type ListLoadBalancersError = CloudflareOpError;
 /** List configured load balancers. */
-export const listLoadBalancers: API.OperationMethod<
+export const listLoadBalancers: API.PaginatedOperationMethod<
   ListLoadBalancersRequest,
   ListLoadBalancersResponse,
   ListLoadBalancersError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListLoadBalancersRequest,
-  output: ListLoadBalancersResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListLoadBalancersRequest,
+    output: ListLoadBalancersResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListMonitorGroupsError = CloudflareOpError;
 /** List configured monitor groups. */
-export const listMonitorGroups: API.OperationMethod<
+export const listMonitorGroups: API.PaginatedOperationMethod<
   ListMonitorGroupsRequest,
   ListMonitorGroupsResponse,
   ListMonitorGroupsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListMonitorGroupsRequest,
-  output: ListMonitorGroupsResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListMonitorGroupsRequest,
+    output: ListMonitorGroupsResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListMonitorsError = CloudflareOpError;
 /** List configured monitors for an account. */
-export const listMonitors: API.OperationMethod<
+export const listMonitors: API.PaginatedOperationMethod<
   ListMonitorsRequest,
   ListMonitorsResponse,
   ListMonitorsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListMonitorsRequest,
-  output: ListMonitorsResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListMonitorsRequest,
+    output: ListMonitorsResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListPoolsError = CloudflareOpError;
 /** List configured pools. */
-export const listPools: API.OperationMethod<
+export const listPools: API.PaginatedOperationMethod<
   ListPoolsRequest,
   ListPoolsResponse,
   ListPoolsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListPoolsRequest,
-  output: ListPoolsResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListPoolsRequest,
+    output: ListPoolsResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListRegionsError = CloudflareOpError;
 /** List all region mappings. */

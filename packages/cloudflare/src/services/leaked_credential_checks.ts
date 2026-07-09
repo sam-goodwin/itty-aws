@@ -4,9 +4,11 @@ import * as API from "@distilled.cloud/core/api";
 import * as T from "../traits.ts";
 import {
   CloudflareProtocol,
+  CloudflarePaginatedProtocol,
   type CloudflareOpError,
   type CloudflareOpContext,
 } from "../protocol.ts";
+import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
 export class DetectionNotFound extends T.applyErrorMatchers(
@@ -269,10 +271,13 @@ export const DetectionsListResultList = /*@__PURE__*/ S.Array(
 export interface ListDetectionsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: DetectionsListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListDetectionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(DetectionsListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListDetectionsResponse",
@@ -429,22 +434,26 @@ export type ListDetectionsError =
   | Forbidden
   | CloudflareOpError;
 /** List user-defined detection patterns for Leaked Credential Checks. */
-export const listDetections: API.OperationMethod<
+export const listDetections: API.PaginatedOperationMethod<
   ListDetectionsRequest,
   ListDetectionsResponse,
   ListDetectionsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListDetectionsRequest,
-  output: ListDetectionsResponse,
-  errors: [
-    LeakedCredentialChecksDisabled,
-    Forbidden,
-    CloudflareRateLimited,
-    CloudflareError,
-  ],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListDetectionsRequest,
+    output: ListDetectionsResponse,
+    errors: [
+      LeakedCredentialChecksDisabled,
+      Forbidden,
+      CloudflareRateLimited,
+      CloudflareError,
+    ],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type UpdateDetectionError =
   | DetectionNotFound

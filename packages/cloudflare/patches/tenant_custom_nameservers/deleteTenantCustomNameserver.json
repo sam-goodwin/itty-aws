@@ -25,6 +25,14 @@
       "op": "replace",
       "path": "/shapes/com.cloudflare.tenant_custom_nameservers#DeleteTenantCustomNameserver/output/target",
       "value": "com.cloudflare.tenant_custom_nameservers#DeleteTenantCustomNameserverResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.tenant_custom_nameservers#DeleteTenantCustomNameserver/traits/smithy.api#paginated",
+      "value": {
+        "mode": "single",
+        "items": "result"
+      }
     }
   ]
 }

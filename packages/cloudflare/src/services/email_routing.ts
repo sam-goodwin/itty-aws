@@ -4,9 +4,11 @@ import * as API from "@distilled.cloud/core/api";
 import * as T from "../traits.ts";
 import {
   CloudflareProtocol,
+  CloudflarePaginatedProtocol,
   type CloudflareOpError,
   type CloudflareOpContext,
 } from "../protocol.ts";
+import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
 export class DestinationNotVerified extends T.applyErrorMatchers(
@@ -1434,10 +1436,13 @@ export const AddressesListResultList = /*@__PURE__*/ S.Array(
 export interface ListAddressesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: AddressesListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListAddressesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(AddressesListResultList.pipe(T.EnvelopePayload())),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListAddressesResponse",
@@ -2310,17 +2315,27 @@ export const getRuleCatchAll: API.OperationMethod<
 
 export type ListAddressesError = CloudflareOpError;
 /** Lists existing destination addresses. */
-export const listAddresses: API.OperationMethod<
+export const listAddresses: API.PaginatedOperationMethod<
   ListAddressesRequest,
   ListAddressesResponse,
   ListAddressesError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListAddressesRequest,
-  output: ListAddressesResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListAddressesRequest,
+    output: ListAddressesResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "resultInfo.page",
+      items: "result",
+      pageSize: "perPage",
+    } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type PatchDnsError = CloudflareOpError;
 /** Unlock MX Records previously locked by Email Routing. */
