@@ -93,18 +93,309 @@ export const CreateAppResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateAppResponse",
 }) as any as S.Schema<CreateAppResponse>;
 
+export type AppsFlagsCreateRequestRulesItemConditionsItemOperator =
+  | "equals"
+  | "not_equals"
+  | "greater_than"
+  | (string & {});
+export const AppsFlagsCreateRequestRulesItemConditionsItemOperator =
+  /*@__PURE__*/ S.String;
+
+export type AppsFlagsCreateRequestRulesItemConditionsItemClausesItemOperator =
+  | "equals"
+  | "not_equals"
+  | "greater_than"
+  | (string & {});
+export const AppsFlagsCreateRequestRulesItemConditionsItemClausesItemOperator =
+  /*@__PURE__*/ S.String;
+
+export type AppsFlagsCreateRequestRulesItemConditionsItemClausesItemClausesItemOperator =
+  "equals" | "not_equals" | "greater_than" | (string & {});
+export const AppsFlagsCreateRequestRulesItemConditionsItemClausesItemClausesItemOperator =
+  /*@__PURE__*/ S.String;
+
+export type AppsFlagsCreateRequestRulesItemConditionsItemClausesItemClausesItemClausesItemOperator =
+  "equals" | "not_equals" | "greater_than" | (string & {});
+export const AppsFlagsCreateRequestRulesItemConditionsItemClausesItemClausesItemClausesItemOperator =
+  /*@__PURE__*/ S.String;
+
+export type AppsFlagsCreateRequestRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemOperator =
+  "equals" | "not_equals" | "greater_than" | (string & {});
+export const AppsFlagsCreateRequestRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemOperator =
+  /*@__PURE__*/ S.String;
+
+export type AppsFlagsCreateRequestRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemOperator =
+  "equals" | "not_equals" | "greater_than" | (string & {});
+export const AppsFlagsCreateRequestRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemOperator =
+  /*@__PURE__*/ S.String;
+
+export interface AppsFlagsCreateRequestRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemClausesItem {
+  string: unknown;
+  number: unknown;
+  boolean: unknown;
+  mapUnknown_: unknown;
+  arrayOfUnknown: unknown;
+}
+export const AppsFlagsCreateRequestRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemClausesItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      string: S.Unknown,
+      number: S.Unknown,
+      boolean: S.Unknown,
+      mapUnknown_: S.Unknown.pipe(T.Body("map[unknown]")),
+      arrayOfUnknown: S.Unknown.pipe(T.Body("array of unknown")),
+    }),
+  ).annotate({
+    identifier:
+      "AppsFlagsCreateRequestRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemClausesItem",
+  }) as any as S.Schema<AppsFlagsCreateRequestRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemClausesItem>;
+
+export type AppsFlagsCreateRequestRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemClausesList =
+  AppsFlagsCreateRequestRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemClausesItem[];
+export const AppsFlagsCreateRequestRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemClausesList =
+  /*@__PURE__*/ S.Array(
+    AppsFlagsCreateRequestRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemClausesItem,
+  ) as any as S.Schema<AppsFlagsCreateRequestRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemClausesList>;
+
+export type AppsFlagsCreateRequestRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemLogicalOperator =
+  "AND" | "OR" | (string & {});
+export const AppsFlagsCreateRequestRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemLogicalOperator =
+  /*@__PURE__*/ S.String;
+
+export interface AppsFlagsCreateRequestRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItem {
+  attribute?: string;
+  operator?: AppsFlagsCreateRequestRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemOperator;
+  /** Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators. */
+  value?: unknown;
+  clauses?: AppsFlagsCreateRequestRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemClausesList;
+  logicalOperator?: AppsFlagsCreateRequestRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemLogicalOperator;
+}
+export const AppsFlagsCreateRequestRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      attribute: S.optional(S.String),
+      operator: S.optional(
+        AppsFlagsCreateRequestRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemOperator,
+      ),
+      value: S.optional(S.Unknown),
+      clauses: S.optional(
+        AppsFlagsCreateRequestRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemClausesList,
+      ),
+      logicalOperator: S.optional(
+        AppsFlagsCreateRequestRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemLogicalOperator.pipe(
+          T.Body("logical_operator"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "AppsFlagsCreateRequestRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItem",
+  }) as any as S.Schema<AppsFlagsCreateRequestRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItem>;
+
+export type AppsFlagsCreateRequestRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesList =
+  AppsFlagsCreateRequestRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItem[];
+export const AppsFlagsCreateRequestRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesList =
+  /*@__PURE__*/ S.Array(
+    AppsFlagsCreateRequestRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItem,
+  ) as any as S.Schema<AppsFlagsCreateRequestRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesList>;
+
+export type AppsFlagsCreateRequestRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemLogicalOperator =
+  "AND" | "OR" | (string & {});
+export const AppsFlagsCreateRequestRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemLogicalOperator =
+  /*@__PURE__*/ S.String;
+
+export interface AppsFlagsCreateRequestRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItem {
+  attribute?: string;
+  operator?: AppsFlagsCreateRequestRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemOperator;
+  /** Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators. */
+  value?: unknown;
+  clauses?: AppsFlagsCreateRequestRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesList;
+  logicalOperator?: AppsFlagsCreateRequestRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemLogicalOperator;
+}
+export const AppsFlagsCreateRequestRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      attribute: S.optional(S.String),
+      operator: S.optional(
+        AppsFlagsCreateRequestRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemOperator,
+      ),
+      value: S.optional(S.Unknown),
+      clauses: S.optional(
+        AppsFlagsCreateRequestRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesList,
+      ),
+      logicalOperator: S.optional(
+        AppsFlagsCreateRequestRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemLogicalOperator.pipe(
+          T.Body("logical_operator"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "AppsFlagsCreateRequestRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItem",
+  }) as any as S.Schema<AppsFlagsCreateRequestRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItem>;
+
+export type AppsFlagsCreateRequestRulesItemConditionsItemClausesItemClausesItemClausesItemClausesList =
+  AppsFlagsCreateRequestRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItem[];
+export const AppsFlagsCreateRequestRulesItemConditionsItemClausesItemClausesItemClausesItemClausesList =
+  /*@__PURE__*/ S.Array(
+    AppsFlagsCreateRequestRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItem,
+  ) as any as S.Schema<AppsFlagsCreateRequestRulesItemConditionsItemClausesItemClausesItemClausesItemClausesList>;
+
+export type AppsFlagsCreateRequestRulesItemConditionsItemClausesItemClausesItemClausesItemLogicalOperator =
+  "AND" | "OR" | (string & {});
+export const AppsFlagsCreateRequestRulesItemConditionsItemClausesItemClausesItemClausesItemLogicalOperator =
+  /*@__PURE__*/ S.String;
+
+export interface AppsFlagsCreateRequestRulesItemConditionsItemClausesItemClausesItemClausesItem {
+  attribute?: string;
+  operator?: AppsFlagsCreateRequestRulesItemConditionsItemClausesItemClausesItemClausesItemOperator;
+  /** Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators. */
+  value?: unknown;
+  clauses?: AppsFlagsCreateRequestRulesItemConditionsItemClausesItemClausesItemClausesItemClausesList;
+  logicalOperator?: AppsFlagsCreateRequestRulesItemConditionsItemClausesItemClausesItemClausesItemLogicalOperator;
+}
+export const AppsFlagsCreateRequestRulesItemConditionsItemClausesItemClausesItemClausesItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      attribute: S.optional(S.String),
+      operator: S.optional(
+        AppsFlagsCreateRequestRulesItemConditionsItemClausesItemClausesItemClausesItemOperator,
+      ),
+      value: S.optional(S.Unknown),
+      clauses: S.optional(
+        AppsFlagsCreateRequestRulesItemConditionsItemClausesItemClausesItemClausesItemClausesList,
+      ),
+      logicalOperator: S.optional(
+        AppsFlagsCreateRequestRulesItemConditionsItemClausesItemClausesItemClausesItemLogicalOperator.pipe(
+          T.Body("logical_operator"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "AppsFlagsCreateRequestRulesItemConditionsItemClausesItemClausesItemClausesItem",
+  }) as any as S.Schema<AppsFlagsCreateRequestRulesItemConditionsItemClausesItemClausesItemClausesItem>;
+
+export type AppsFlagsCreateRequestRulesItemConditionsItemClausesItemClausesItemClausesList =
+  AppsFlagsCreateRequestRulesItemConditionsItemClausesItemClausesItemClausesItem[];
+export const AppsFlagsCreateRequestRulesItemConditionsItemClausesItemClausesItemClausesList =
+  /*@__PURE__*/ S.Array(
+    AppsFlagsCreateRequestRulesItemConditionsItemClausesItemClausesItemClausesItem,
+  ) as any as S.Schema<AppsFlagsCreateRequestRulesItemConditionsItemClausesItemClausesItemClausesList>;
+
+export type AppsFlagsCreateRequestRulesItemConditionsItemClausesItemClausesItemLogicalOperator =
+  "AND" | "OR" | (string & {});
+export const AppsFlagsCreateRequestRulesItemConditionsItemClausesItemClausesItemLogicalOperator =
+  /*@__PURE__*/ S.String;
+
+export interface AppsFlagsCreateRequestRulesItemConditionsItemClausesItemClausesItem {
+  attribute?: string;
+  operator?: AppsFlagsCreateRequestRulesItemConditionsItemClausesItemClausesItemOperator;
+  /** Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators. */
+  value?: unknown;
+  clauses?: AppsFlagsCreateRequestRulesItemConditionsItemClausesItemClausesItemClausesList;
+  logicalOperator?: AppsFlagsCreateRequestRulesItemConditionsItemClausesItemClausesItemLogicalOperator;
+}
+export const AppsFlagsCreateRequestRulesItemConditionsItemClausesItemClausesItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      attribute: S.optional(S.String),
+      operator: S.optional(
+        AppsFlagsCreateRequestRulesItemConditionsItemClausesItemClausesItemOperator,
+      ),
+      value: S.optional(S.Unknown),
+      clauses: S.optional(
+        AppsFlagsCreateRequestRulesItemConditionsItemClausesItemClausesItemClausesList,
+      ),
+      logicalOperator: S.optional(
+        AppsFlagsCreateRequestRulesItemConditionsItemClausesItemClausesItemLogicalOperator.pipe(
+          T.Body("logical_operator"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "AppsFlagsCreateRequestRulesItemConditionsItemClausesItemClausesItem",
+  }) as any as S.Schema<AppsFlagsCreateRequestRulesItemConditionsItemClausesItemClausesItem>;
+
+export type AppsFlagsCreateRequestRulesItemConditionsItemClausesItemClausesList =
+  AppsFlagsCreateRequestRulesItemConditionsItemClausesItemClausesItem[];
+export const AppsFlagsCreateRequestRulesItemConditionsItemClausesItemClausesList =
+  /*@__PURE__*/ S.Array(
+    AppsFlagsCreateRequestRulesItemConditionsItemClausesItemClausesItem,
+  ) as any as S.Schema<AppsFlagsCreateRequestRulesItemConditionsItemClausesItemClausesList>;
+
+export type AppsFlagsCreateRequestRulesItemConditionsItemClausesItemLogicalOperator =
+  "AND" | "OR" | (string & {});
+export const AppsFlagsCreateRequestRulesItemConditionsItemClausesItemLogicalOperator =
+  /*@__PURE__*/ S.String;
+
+export interface AppsFlagsCreateRequestRulesItemConditionsItemClausesItem {
+  attribute?: string;
+  operator?: AppsFlagsCreateRequestRulesItemConditionsItemClausesItemOperator;
+  /** Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators. */
+  value?: unknown;
+  clauses?: AppsFlagsCreateRequestRulesItemConditionsItemClausesItemClausesList;
+  logicalOperator?: AppsFlagsCreateRequestRulesItemConditionsItemClausesItemLogicalOperator;
+}
+export const AppsFlagsCreateRequestRulesItemConditionsItemClausesItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      attribute: S.optional(S.String),
+      operator: S.optional(
+        AppsFlagsCreateRequestRulesItemConditionsItemClausesItemOperator,
+      ),
+      value: S.optional(S.Unknown),
+      clauses: S.optional(
+        AppsFlagsCreateRequestRulesItemConditionsItemClausesItemClausesList,
+      ),
+      logicalOperator: S.optional(
+        AppsFlagsCreateRequestRulesItemConditionsItemClausesItemLogicalOperator.pipe(
+          T.Body("logical_operator"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "AppsFlagsCreateRequestRulesItemConditionsItemClausesItem",
+  }) as any as S.Schema<AppsFlagsCreateRequestRulesItemConditionsItemClausesItem>;
+
+export type AppsFlagsCreateRequestRulesItemConditionsItemClausesList =
+  AppsFlagsCreateRequestRulesItemConditionsItemClausesItem[];
+export const AppsFlagsCreateRequestRulesItemConditionsItemClausesList =
+  /*@__PURE__*/ S.Array(
+    AppsFlagsCreateRequestRulesItemConditionsItemClausesItem,
+  ) as any as S.Schema<AppsFlagsCreateRequestRulesItemConditionsItemClausesList>;
+
+export type AppsFlagsCreateRequestRulesItemConditionsItemLogicalOperator =
+  | "AND"
+  | "OR"
+  | (string & {});
+export const AppsFlagsCreateRequestRulesItemConditionsItemLogicalOperator =
+  /*@__PURE__*/ S.String;
+
 export interface AppsFlagsCreateRequestRulesItemConditionsItem {
-  objectAttributeOperatorValue__: unknown;
-  objectClausesLogicalOperator__: unknown;
+  attribute?: string;
+  operator?: AppsFlagsCreateRequestRulesItemConditionsItemOperator;
+  /** Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators. */
+  value?: unknown;
+  clauses?: AppsFlagsCreateRequestRulesItemConditionsItemClausesList;
+  logicalOperator?: AppsFlagsCreateRequestRulesItemConditionsItemLogicalOperator;
 }
 export const AppsFlagsCreateRequestRulesItemConditionsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      objectAttributeOperatorValue__: S.Unknown.pipe(
-        T.Body("object { attribute, operator, value }"),
+      attribute: S.optional(S.String),
+      operator: S.optional(
+        AppsFlagsCreateRequestRulesItemConditionsItemOperator,
       ),
-      objectClausesLogicalOperator__: S.Unknown.pipe(
-        T.Body("object { clauses, logical_operator }"),
+      value: S.optional(S.Unknown),
+      clauses: S.optional(
+        AppsFlagsCreateRequestRulesItemConditionsItemClausesList,
+      ),
+      logicalOperator: S.optional(
+        AppsFlagsCreateRequestRulesItemConditionsItemLogicalOperator.pipe(
+          T.Body("logical_operator"),
+        ),
       ),
     }),
   ).annotate({
@@ -218,18 +509,309 @@ export const CreateAppFlagRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateAppFlagRequest",
 }) as any as S.Schema<CreateAppFlagRequest>;
 
+export type AppsFlagsCreateResponseRulesItemConditionsItemOperator =
+  | "equals"
+  | "not_equals"
+  | "greater_than"
+  | (string & {});
+export const AppsFlagsCreateResponseRulesItemConditionsItemOperator =
+  /*@__PURE__*/ S.String;
+
+export type AppsFlagsCreateResponseRulesItemConditionsItemClausesItemOperator =
+  | "equals"
+  | "not_equals"
+  | "greater_than"
+  | (string & {});
+export const AppsFlagsCreateResponseRulesItemConditionsItemClausesItemOperator =
+  /*@__PURE__*/ S.String;
+
+export type AppsFlagsCreateResponseRulesItemConditionsItemClausesItemClausesItemOperator =
+  "equals" | "not_equals" | "greater_than" | (string & {});
+export const AppsFlagsCreateResponseRulesItemConditionsItemClausesItemClausesItemOperator =
+  /*@__PURE__*/ S.String;
+
+export type AppsFlagsCreateResponseRulesItemConditionsItemClausesItemClausesItemClausesItemOperator =
+  "equals" | "not_equals" | "greater_than" | (string & {});
+export const AppsFlagsCreateResponseRulesItemConditionsItemClausesItemClausesItemClausesItemOperator =
+  /*@__PURE__*/ S.String;
+
+export type AppsFlagsCreateResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemOperator =
+  "equals" | "not_equals" | "greater_than" | (string & {});
+export const AppsFlagsCreateResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemOperator =
+  /*@__PURE__*/ S.String;
+
+export type AppsFlagsCreateResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemOperator =
+  "equals" | "not_equals" | "greater_than" | (string & {});
+export const AppsFlagsCreateResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemOperator =
+  /*@__PURE__*/ S.String;
+
+export interface AppsFlagsCreateResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemClausesItem {
+  string: unknown;
+  number: unknown;
+  boolean: unknown;
+  mapUnknown_: unknown;
+  arrayOfUnknown: unknown;
+}
+export const AppsFlagsCreateResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemClausesItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      string: S.Unknown,
+      number: S.Unknown,
+      boolean: S.Unknown,
+      mapUnknown_: S.Unknown.pipe(T.Body("map[unknown]")),
+      arrayOfUnknown: S.Unknown.pipe(T.Body("array of unknown")),
+    }),
+  ).annotate({
+    identifier:
+      "AppsFlagsCreateResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemClausesItem",
+  }) as any as S.Schema<AppsFlagsCreateResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemClausesItem>;
+
+export type AppsFlagsCreateResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemClausesList =
+  AppsFlagsCreateResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemClausesItem[];
+export const AppsFlagsCreateResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemClausesList =
+  /*@__PURE__*/ S.Array(
+    AppsFlagsCreateResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemClausesItem,
+  ) as any as S.Schema<AppsFlagsCreateResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemClausesList>;
+
+export type AppsFlagsCreateResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemLogicalOperator =
+  "AND" | "OR" | (string & {});
+export const AppsFlagsCreateResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemLogicalOperator =
+  /*@__PURE__*/ S.String;
+
+export interface AppsFlagsCreateResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItem {
+  attribute?: string;
+  operator?: AppsFlagsCreateResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemOperator;
+  /** Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators. */
+  value?: unknown;
+  clauses?: AppsFlagsCreateResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemClausesList;
+  logicalOperator?: AppsFlagsCreateResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemLogicalOperator;
+}
+export const AppsFlagsCreateResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      attribute: S.optional(S.String),
+      operator: S.optional(
+        AppsFlagsCreateResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemOperator,
+      ),
+      value: S.optional(S.Unknown),
+      clauses: S.optional(
+        AppsFlagsCreateResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemClausesList,
+      ),
+      logicalOperator: S.optional(
+        AppsFlagsCreateResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemLogicalOperator.pipe(
+          T.Body("logical_operator"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "AppsFlagsCreateResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItem",
+  }) as any as S.Schema<AppsFlagsCreateResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItem>;
+
+export type AppsFlagsCreateResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesList =
+  AppsFlagsCreateResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItem[];
+export const AppsFlagsCreateResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesList =
+  /*@__PURE__*/ S.Array(
+    AppsFlagsCreateResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItem,
+  ) as any as S.Schema<AppsFlagsCreateResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesList>;
+
+export type AppsFlagsCreateResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemLogicalOperator =
+  "AND" | "OR" | (string & {});
+export const AppsFlagsCreateResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemLogicalOperator =
+  /*@__PURE__*/ S.String;
+
+export interface AppsFlagsCreateResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItem {
+  attribute?: string;
+  operator?: AppsFlagsCreateResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemOperator;
+  /** Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators. */
+  value?: unknown;
+  clauses?: AppsFlagsCreateResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesList;
+  logicalOperator?: AppsFlagsCreateResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemLogicalOperator;
+}
+export const AppsFlagsCreateResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      attribute: S.optional(S.String),
+      operator: S.optional(
+        AppsFlagsCreateResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemOperator,
+      ),
+      value: S.optional(S.Unknown),
+      clauses: S.optional(
+        AppsFlagsCreateResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesList,
+      ),
+      logicalOperator: S.optional(
+        AppsFlagsCreateResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemLogicalOperator.pipe(
+          T.Body("logical_operator"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "AppsFlagsCreateResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItem",
+  }) as any as S.Schema<AppsFlagsCreateResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItem>;
+
+export type AppsFlagsCreateResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesList =
+  AppsFlagsCreateResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItem[];
+export const AppsFlagsCreateResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesList =
+  /*@__PURE__*/ S.Array(
+    AppsFlagsCreateResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItem,
+  ) as any as S.Schema<AppsFlagsCreateResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesList>;
+
+export type AppsFlagsCreateResponseRulesItemConditionsItemClausesItemClausesItemClausesItemLogicalOperator =
+  "AND" | "OR" | (string & {});
+export const AppsFlagsCreateResponseRulesItemConditionsItemClausesItemClausesItemClausesItemLogicalOperator =
+  /*@__PURE__*/ S.String;
+
+export interface AppsFlagsCreateResponseRulesItemConditionsItemClausesItemClausesItemClausesItem {
+  attribute?: string;
+  operator?: AppsFlagsCreateResponseRulesItemConditionsItemClausesItemClausesItemClausesItemOperator;
+  /** Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators. */
+  value?: unknown;
+  clauses?: AppsFlagsCreateResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesList;
+  logicalOperator?: AppsFlagsCreateResponseRulesItemConditionsItemClausesItemClausesItemClausesItemLogicalOperator;
+}
+export const AppsFlagsCreateResponseRulesItemConditionsItemClausesItemClausesItemClausesItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      attribute: S.optional(S.String),
+      operator: S.optional(
+        AppsFlagsCreateResponseRulesItemConditionsItemClausesItemClausesItemClausesItemOperator,
+      ),
+      value: S.optional(S.Unknown),
+      clauses: S.optional(
+        AppsFlagsCreateResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesList,
+      ),
+      logicalOperator: S.optional(
+        AppsFlagsCreateResponseRulesItemConditionsItemClausesItemClausesItemClausesItemLogicalOperator.pipe(
+          T.Body("logical_operator"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "AppsFlagsCreateResponseRulesItemConditionsItemClausesItemClausesItemClausesItem",
+  }) as any as S.Schema<AppsFlagsCreateResponseRulesItemConditionsItemClausesItemClausesItemClausesItem>;
+
+export type AppsFlagsCreateResponseRulesItemConditionsItemClausesItemClausesItemClausesList =
+  AppsFlagsCreateResponseRulesItemConditionsItemClausesItemClausesItemClausesItem[];
+export const AppsFlagsCreateResponseRulesItemConditionsItemClausesItemClausesItemClausesList =
+  /*@__PURE__*/ S.Array(
+    AppsFlagsCreateResponseRulesItemConditionsItemClausesItemClausesItemClausesItem,
+  ) as any as S.Schema<AppsFlagsCreateResponseRulesItemConditionsItemClausesItemClausesItemClausesList>;
+
+export type AppsFlagsCreateResponseRulesItemConditionsItemClausesItemClausesItemLogicalOperator =
+  "AND" | "OR" | (string & {});
+export const AppsFlagsCreateResponseRulesItemConditionsItemClausesItemClausesItemLogicalOperator =
+  /*@__PURE__*/ S.String;
+
+export interface AppsFlagsCreateResponseRulesItemConditionsItemClausesItemClausesItem {
+  attribute?: string;
+  operator?: AppsFlagsCreateResponseRulesItemConditionsItemClausesItemClausesItemOperator;
+  /** Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators. */
+  value?: unknown;
+  clauses?: AppsFlagsCreateResponseRulesItemConditionsItemClausesItemClausesItemClausesList;
+  logicalOperator?: AppsFlagsCreateResponseRulesItemConditionsItemClausesItemClausesItemLogicalOperator;
+}
+export const AppsFlagsCreateResponseRulesItemConditionsItemClausesItemClausesItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      attribute: S.optional(S.String),
+      operator: S.optional(
+        AppsFlagsCreateResponseRulesItemConditionsItemClausesItemClausesItemOperator,
+      ),
+      value: S.optional(S.Unknown),
+      clauses: S.optional(
+        AppsFlagsCreateResponseRulesItemConditionsItemClausesItemClausesItemClausesList,
+      ),
+      logicalOperator: S.optional(
+        AppsFlagsCreateResponseRulesItemConditionsItemClausesItemClausesItemLogicalOperator.pipe(
+          T.Body("logical_operator"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "AppsFlagsCreateResponseRulesItemConditionsItemClausesItemClausesItem",
+  }) as any as S.Schema<AppsFlagsCreateResponseRulesItemConditionsItemClausesItemClausesItem>;
+
+export type AppsFlagsCreateResponseRulesItemConditionsItemClausesItemClausesList =
+  AppsFlagsCreateResponseRulesItemConditionsItemClausesItemClausesItem[];
+export const AppsFlagsCreateResponseRulesItemConditionsItemClausesItemClausesList =
+  /*@__PURE__*/ S.Array(
+    AppsFlagsCreateResponseRulesItemConditionsItemClausesItemClausesItem,
+  ) as any as S.Schema<AppsFlagsCreateResponseRulesItemConditionsItemClausesItemClausesList>;
+
+export type AppsFlagsCreateResponseRulesItemConditionsItemClausesItemLogicalOperator =
+  "AND" | "OR" | (string & {});
+export const AppsFlagsCreateResponseRulesItemConditionsItemClausesItemLogicalOperator =
+  /*@__PURE__*/ S.String;
+
+export interface AppsFlagsCreateResponseRulesItemConditionsItemClausesItem {
+  attribute?: string;
+  operator?: AppsFlagsCreateResponseRulesItemConditionsItemClausesItemOperator;
+  /** Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators. */
+  value?: unknown;
+  clauses?: AppsFlagsCreateResponseRulesItemConditionsItemClausesItemClausesList;
+  logicalOperator?: AppsFlagsCreateResponseRulesItemConditionsItemClausesItemLogicalOperator;
+}
+export const AppsFlagsCreateResponseRulesItemConditionsItemClausesItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      attribute: S.optional(S.String),
+      operator: S.optional(
+        AppsFlagsCreateResponseRulesItemConditionsItemClausesItemOperator,
+      ),
+      value: S.optional(S.Unknown),
+      clauses: S.optional(
+        AppsFlagsCreateResponseRulesItemConditionsItemClausesItemClausesList,
+      ),
+      logicalOperator: S.optional(
+        AppsFlagsCreateResponseRulesItemConditionsItemClausesItemLogicalOperator.pipe(
+          T.Body("logical_operator"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "AppsFlagsCreateResponseRulesItemConditionsItemClausesItem",
+  }) as any as S.Schema<AppsFlagsCreateResponseRulesItemConditionsItemClausesItem>;
+
+export type AppsFlagsCreateResponseRulesItemConditionsItemClausesList =
+  AppsFlagsCreateResponseRulesItemConditionsItemClausesItem[];
+export const AppsFlagsCreateResponseRulesItemConditionsItemClausesList =
+  /*@__PURE__*/ S.Array(
+    AppsFlagsCreateResponseRulesItemConditionsItemClausesItem,
+  ) as any as S.Schema<AppsFlagsCreateResponseRulesItemConditionsItemClausesList>;
+
+export type AppsFlagsCreateResponseRulesItemConditionsItemLogicalOperator =
+  | "AND"
+  | "OR"
+  | (string & {});
+export const AppsFlagsCreateResponseRulesItemConditionsItemLogicalOperator =
+  /*@__PURE__*/ S.String;
+
 export interface AppsFlagsCreateResponseRulesItemConditionsItem {
-  objectAttributeOperatorValue__: unknown;
-  objectClausesLogicalOperator__: unknown;
+  attribute?: string;
+  operator?: AppsFlagsCreateResponseRulesItemConditionsItemOperator;
+  /** Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators. */
+  value?: unknown;
+  clauses?: AppsFlagsCreateResponseRulesItemConditionsItemClausesList;
+  logicalOperator?: AppsFlagsCreateResponseRulesItemConditionsItemLogicalOperator;
 }
 export const AppsFlagsCreateResponseRulesItemConditionsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      objectAttributeOperatorValue__: S.Unknown.pipe(
-        T.Body("object { attribute, operator, value }"),
+      attribute: S.optional(S.String),
+      operator: S.optional(
+        AppsFlagsCreateResponseRulesItemConditionsItemOperator,
       ),
-      objectClausesLogicalOperator__: S.Unknown.pipe(
-        T.Body("object { clauses, logical_operator }"),
+      value: S.optional(S.Unknown),
+      clauses: S.optional(
+        AppsFlagsCreateResponseRulesItemConditionsItemClausesList,
+      ),
+      logicalOperator: S.optional(
+        AppsFlagsCreateResponseRulesItemConditionsItemLogicalOperator.pipe(
+          T.Body("logical_operator"),
+        ),
       ),
     }),
   ).annotate({
@@ -548,18 +1130,307 @@ export const GetAppFlagRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetAppFlagRequest",
 }) as any as S.Schema<GetAppFlagRequest>;
 
+export type AppsFlagsGetResponseRulesItemConditionsItemOperator =
+  | "equals"
+  | "not_equals"
+  | "greater_than"
+  | (string & {});
+export const AppsFlagsGetResponseRulesItemConditionsItemOperator =
+  /*@__PURE__*/ S.String;
+
+export type AppsFlagsGetResponseRulesItemConditionsItemClausesItemOperator =
+  | "equals"
+  | "not_equals"
+  | "greater_than"
+  | (string & {});
+export const AppsFlagsGetResponseRulesItemConditionsItemClausesItemOperator =
+  /*@__PURE__*/ S.String;
+
+export type AppsFlagsGetResponseRulesItemConditionsItemClausesItemClausesItemOperator =
+  "equals" | "not_equals" | "greater_than" | (string & {});
+export const AppsFlagsGetResponseRulesItemConditionsItemClausesItemClausesItemOperator =
+  /*@__PURE__*/ S.String;
+
+export type AppsFlagsGetResponseRulesItemConditionsItemClausesItemClausesItemClausesItemOperator =
+  "equals" | "not_equals" | "greater_than" | (string & {});
+export const AppsFlagsGetResponseRulesItemConditionsItemClausesItemClausesItemClausesItemOperator =
+  /*@__PURE__*/ S.String;
+
+export type AppsFlagsGetResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemOperator =
+  "equals" | "not_equals" | "greater_than" | (string & {});
+export const AppsFlagsGetResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemOperator =
+  /*@__PURE__*/ S.String;
+
+export type AppsFlagsGetResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemOperator =
+  "equals" | "not_equals" | "greater_than" | (string & {});
+export const AppsFlagsGetResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemOperator =
+  /*@__PURE__*/ S.String;
+
+export interface AppsFlagsGetResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemClausesItem {
+  string: unknown;
+  number: unknown;
+  boolean: unknown;
+  mapUnknown_: unknown;
+  arrayOfUnknown: unknown;
+}
+export const AppsFlagsGetResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemClausesItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      string: S.Unknown,
+      number: S.Unknown,
+      boolean: S.Unknown,
+      mapUnknown_: S.Unknown.pipe(T.Body("map[unknown]")),
+      arrayOfUnknown: S.Unknown.pipe(T.Body("array of unknown")),
+    }),
+  ).annotate({
+    identifier:
+      "AppsFlagsGetResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemClausesItem",
+  }) as any as S.Schema<AppsFlagsGetResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemClausesItem>;
+
+export type AppsFlagsGetResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemClausesList =
+  AppsFlagsGetResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemClausesItem[];
+export const AppsFlagsGetResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemClausesList =
+  /*@__PURE__*/ S.Array(
+    AppsFlagsGetResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemClausesItem,
+  ) as any as S.Schema<AppsFlagsGetResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemClausesList>;
+
+export type AppsFlagsGetResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemLogicalOperator =
+  "AND" | "OR" | (string & {});
+export const AppsFlagsGetResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemLogicalOperator =
+  /*@__PURE__*/ S.String;
+
+export interface AppsFlagsGetResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItem {
+  attribute?: string;
+  operator?: AppsFlagsGetResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemOperator;
+  /** Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators. */
+  value?: unknown;
+  clauses?: AppsFlagsGetResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemClausesList;
+  logicalOperator?: AppsFlagsGetResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemLogicalOperator;
+}
+export const AppsFlagsGetResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      attribute: S.optional(S.String),
+      operator: S.optional(
+        AppsFlagsGetResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemOperator,
+      ),
+      value: S.optional(S.Unknown),
+      clauses: S.optional(
+        AppsFlagsGetResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemClausesList,
+      ),
+      logicalOperator: S.optional(
+        AppsFlagsGetResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemLogicalOperator.pipe(
+          T.Body("logical_operator"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "AppsFlagsGetResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItem",
+  }) as any as S.Schema<AppsFlagsGetResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItem>;
+
+export type AppsFlagsGetResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesList =
+  AppsFlagsGetResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItem[];
+export const AppsFlagsGetResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesList =
+  /*@__PURE__*/ S.Array(
+    AppsFlagsGetResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItem,
+  ) as any as S.Schema<AppsFlagsGetResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesList>;
+
+export type AppsFlagsGetResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemLogicalOperator =
+  "AND" | "OR" | (string & {});
+export const AppsFlagsGetResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemLogicalOperator =
+  /*@__PURE__*/ S.String;
+
+export interface AppsFlagsGetResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItem {
+  attribute?: string;
+  operator?: AppsFlagsGetResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemOperator;
+  /** Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators. */
+  value?: unknown;
+  clauses?: AppsFlagsGetResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesList;
+  logicalOperator?: AppsFlagsGetResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemLogicalOperator;
+}
+export const AppsFlagsGetResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      attribute: S.optional(S.String),
+      operator: S.optional(
+        AppsFlagsGetResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemOperator,
+      ),
+      value: S.optional(S.Unknown),
+      clauses: S.optional(
+        AppsFlagsGetResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesList,
+      ),
+      logicalOperator: S.optional(
+        AppsFlagsGetResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemLogicalOperator.pipe(
+          T.Body("logical_operator"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "AppsFlagsGetResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItem",
+  }) as any as S.Schema<AppsFlagsGetResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItem>;
+
+export type AppsFlagsGetResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesList =
+  AppsFlagsGetResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItem[];
+export const AppsFlagsGetResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesList =
+  /*@__PURE__*/ S.Array(
+    AppsFlagsGetResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItem,
+  ) as any as S.Schema<AppsFlagsGetResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesList>;
+
+export type AppsFlagsGetResponseRulesItemConditionsItemClausesItemClausesItemClausesItemLogicalOperator =
+  "AND" | "OR" | (string & {});
+export const AppsFlagsGetResponseRulesItemConditionsItemClausesItemClausesItemClausesItemLogicalOperator =
+  /*@__PURE__*/ S.String;
+
+export interface AppsFlagsGetResponseRulesItemConditionsItemClausesItemClausesItemClausesItem {
+  attribute?: string;
+  operator?: AppsFlagsGetResponseRulesItemConditionsItemClausesItemClausesItemClausesItemOperator;
+  /** Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators. */
+  value?: unknown;
+  clauses?: AppsFlagsGetResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesList;
+  logicalOperator?: AppsFlagsGetResponseRulesItemConditionsItemClausesItemClausesItemClausesItemLogicalOperator;
+}
+export const AppsFlagsGetResponseRulesItemConditionsItemClausesItemClausesItemClausesItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      attribute: S.optional(S.String),
+      operator: S.optional(
+        AppsFlagsGetResponseRulesItemConditionsItemClausesItemClausesItemClausesItemOperator,
+      ),
+      value: S.optional(S.Unknown),
+      clauses: S.optional(
+        AppsFlagsGetResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesList,
+      ),
+      logicalOperator: S.optional(
+        AppsFlagsGetResponseRulesItemConditionsItemClausesItemClausesItemClausesItemLogicalOperator.pipe(
+          T.Body("logical_operator"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "AppsFlagsGetResponseRulesItemConditionsItemClausesItemClausesItemClausesItem",
+  }) as any as S.Schema<AppsFlagsGetResponseRulesItemConditionsItemClausesItemClausesItemClausesItem>;
+
+export type AppsFlagsGetResponseRulesItemConditionsItemClausesItemClausesItemClausesList =
+  AppsFlagsGetResponseRulesItemConditionsItemClausesItemClausesItemClausesItem[];
+export const AppsFlagsGetResponseRulesItemConditionsItemClausesItemClausesItemClausesList =
+  /*@__PURE__*/ S.Array(
+    AppsFlagsGetResponseRulesItemConditionsItemClausesItemClausesItemClausesItem,
+  ) as any as S.Schema<AppsFlagsGetResponseRulesItemConditionsItemClausesItemClausesItemClausesList>;
+
+export type AppsFlagsGetResponseRulesItemConditionsItemClausesItemClausesItemLogicalOperator =
+  "AND" | "OR" | (string & {});
+export const AppsFlagsGetResponseRulesItemConditionsItemClausesItemClausesItemLogicalOperator =
+  /*@__PURE__*/ S.String;
+
+export interface AppsFlagsGetResponseRulesItemConditionsItemClausesItemClausesItem {
+  attribute?: string;
+  operator?: AppsFlagsGetResponseRulesItemConditionsItemClausesItemClausesItemOperator;
+  /** Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators. */
+  value?: unknown;
+  clauses?: AppsFlagsGetResponseRulesItemConditionsItemClausesItemClausesItemClausesList;
+  logicalOperator?: AppsFlagsGetResponseRulesItemConditionsItemClausesItemClausesItemLogicalOperator;
+}
+export const AppsFlagsGetResponseRulesItemConditionsItemClausesItemClausesItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      attribute: S.optional(S.String),
+      operator: S.optional(
+        AppsFlagsGetResponseRulesItemConditionsItemClausesItemClausesItemOperator,
+      ),
+      value: S.optional(S.Unknown),
+      clauses: S.optional(
+        AppsFlagsGetResponseRulesItemConditionsItemClausesItemClausesItemClausesList,
+      ),
+      logicalOperator: S.optional(
+        AppsFlagsGetResponseRulesItemConditionsItemClausesItemClausesItemLogicalOperator.pipe(
+          T.Body("logical_operator"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "AppsFlagsGetResponseRulesItemConditionsItemClausesItemClausesItem",
+  }) as any as S.Schema<AppsFlagsGetResponseRulesItemConditionsItemClausesItemClausesItem>;
+
+export type AppsFlagsGetResponseRulesItemConditionsItemClausesItemClausesList =
+  AppsFlagsGetResponseRulesItemConditionsItemClausesItemClausesItem[];
+export const AppsFlagsGetResponseRulesItemConditionsItemClausesItemClausesList =
+  /*@__PURE__*/ S.Array(
+    AppsFlagsGetResponseRulesItemConditionsItemClausesItemClausesItem,
+  ) as any as S.Schema<AppsFlagsGetResponseRulesItemConditionsItemClausesItemClausesList>;
+
+export type AppsFlagsGetResponseRulesItemConditionsItemClausesItemLogicalOperator =
+  "AND" | "OR" | (string & {});
+export const AppsFlagsGetResponseRulesItemConditionsItemClausesItemLogicalOperator =
+  /*@__PURE__*/ S.String;
+
+export interface AppsFlagsGetResponseRulesItemConditionsItemClausesItem {
+  attribute?: string;
+  operator?: AppsFlagsGetResponseRulesItemConditionsItemClausesItemOperator;
+  /** Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators. */
+  value?: unknown;
+  clauses?: AppsFlagsGetResponseRulesItemConditionsItemClausesItemClausesList;
+  logicalOperator?: AppsFlagsGetResponseRulesItemConditionsItemClausesItemLogicalOperator;
+}
+export const AppsFlagsGetResponseRulesItemConditionsItemClausesItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      attribute: S.optional(S.String),
+      operator: S.optional(
+        AppsFlagsGetResponseRulesItemConditionsItemClausesItemOperator,
+      ),
+      value: S.optional(S.Unknown),
+      clauses: S.optional(
+        AppsFlagsGetResponseRulesItemConditionsItemClausesItemClausesList,
+      ),
+      logicalOperator: S.optional(
+        AppsFlagsGetResponseRulesItemConditionsItemClausesItemLogicalOperator.pipe(
+          T.Body("logical_operator"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "AppsFlagsGetResponseRulesItemConditionsItemClausesItem",
+  }) as any as S.Schema<AppsFlagsGetResponseRulesItemConditionsItemClausesItem>;
+
+export type AppsFlagsGetResponseRulesItemConditionsItemClausesList =
+  AppsFlagsGetResponseRulesItemConditionsItemClausesItem[];
+export const AppsFlagsGetResponseRulesItemConditionsItemClausesList =
+  /*@__PURE__*/ S.Array(
+    AppsFlagsGetResponseRulesItemConditionsItemClausesItem,
+  ) as any as S.Schema<AppsFlagsGetResponseRulesItemConditionsItemClausesList>;
+
+export type AppsFlagsGetResponseRulesItemConditionsItemLogicalOperator =
+  | "AND"
+  | "OR"
+  | (string & {});
+export const AppsFlagsGetResponseRulesItemConditionsItemLogicalOperator =
+  /*@__PURE__*/ S.String;
+
 export interface AppsFlagsGetResponseRulesItemConditionsItem {
-  objectAttributeOperatorValue__: unknown;
-  objectClausesLogicalOperator__: unknown;
+  attribute?: string;
+  operator?: AppsFlagsGetResponseRulesItemConditionsItemOperator;
+  /** Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators. */
+  value?: unknown;
+  clauses?: AppsFlagsGetResponseRulesItemConditionsItemClausesList;
+  logicalOperator?: AppsFlagsGetResponseRulesItemConditionsItemLogicalOperator;
 }
 export const AppsFlagsGetResponseRulesItemConditionsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      objectAttributeOperatorValue__: S.Unknown.pipe(
-        T.Body("object { attribute, operator, value }"),
+      attribute: S.optional(S.String),
+      operator: S.optional(AppsFlagsGetResponseRulesItemConditionsItemOperator),
+      value: S.optional(S.Unknown),
+      clauses: S.optional(
+        AppsFlagsGetResponseRulesItemConditionsItemClausesList,
       ),
-      objectClausesLogicalOperator__: S.Unknown.pipe(
-        T.Body("object { clauses, logical_operator }"),
+      logicalOperator: S.optional(
+        AppsFlagsGetResponseRulesItemConditionsItemLogicalOperator.pipe(
+          T.Body("logical_operator"),
+        ),
       ),
     }),
   ).annotate({
@@ -696,22 +1567,435 @@ export const ListAppFlagChangelogsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAppFlagChangelogsRequest",
 }) as any as S.Schema<ListAppFlagChangelogsRequest>;
 
+export type AppsFlagsChangelogListResultItemAfterRulesItemConditionsItemOperator =
+  "equals" | "not_equals" | "greater_than" | (string & {});
+export const AppsFlagsChangelogListResultItemAfterRulesItemConditionsItemOperator =
+  /*@__PURE__*/ S.String;
+
+export type AppsFlagsChangelogListResultItemAfterRulesItemConditionsItemClausesItemOperator =
+  "equals" | "not_equals" | "greater_than" | (string & {});
+export const AppsFlagsChangelogListResultItemAfterRulesItemConditionsItemClausesItemOperator =
+  /*@__PURE__*/ S.String;
+
+export type AppsFlagsChangelogListResultItemAfterRulesItemConditionsItemClausesItemClausesItemOperator =
+  "equals" | "not_equals" | "greater_than" | (string & {});
+export const AppsFlagsChangelogListResultItemAfterRulesItemConditionsItemClausesItemClausesItemOperator =
+  /*@__PURE__*/ S.String;
+
+export type AppsFlagsChangelogListResultItemAfterRulesItemConditionsItemClausesItemClausesItemClausesItemOperator =
+  "equals" | "not_equals" | "greater_than" | (string & {});
+export const AppsFlagsChangelogListResultItemAfterRulesItemConditionsItemClausesItemClausesItemClausesItemOperator =
+  /*@__PURE__*/ S.String;
+
+export type AppsFlagsChangelogListResultItemAfterRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemOperator =
+  "equals" | "not_equals" | "greater_than" | (string & {});
+export const AppsFlagsChangelogListResultItemAfterRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemOperator =
+  /*@__PURE__*/ S.String;
+
+export type AppsFlagsChangelogListResultItemAfterRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemOperator =
+  "equals" | "not_equals" | "greater_than" | (string & {});
+export const AppsFlagsChangelogListResultItemAfterRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemOperator =
+  /*@__PURE__*/ S.String;
+
+export interface AppsFlagsChangelogListResultItemAfterRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemClausesItem {
+  string: unknown;
+  number: unknown;
+  boolean: unknown;
+  mapUnknown_: unknown;
+  arrayOfUnknown: unknown;
+}
+export const AppsFlagsChangelogListResultItemAfterRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemClausesItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      string: S.Unknown,
+      number: S.Unknown,
+      boolean: S.Unknown,
+      mapUnknown_: S.Unknown.pipe(T.Body("map[unknown]")),
+      arrayOfUnknown: S.Unknown.pipe(T.Body("array of unknown")),
+    }),
+  ).annotate({
+    identifier:
+      "AppsFlagsChangelogListResultItemAfterRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemClausesItem",
+  }) as any as S.Schema<AppsFlagsChangelogListResultItemAfterRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemClausesItem>;
+
+export type AppsFlagsChangelogListResultItemAfterRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemClausesList =
+  AppsFlagsChangelogListResultItemAfterRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemClausesItem[];
+export const AppsFlagsChangelogListResultItemAfterRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemClausesList =
+  /*@__PURE__*/ S.Array(
+    AppsFlagsChangelogListResultItemAfterRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemClausesItem,
+  ) as any as S.Schema<AppsFlagsChangelogListResultItemAfterRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemClausesList>;
+
+export type AppsFlagsChangelogListResultItemAfterRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemLogicalOperator =
+  "AND" | "OR" | (string & {});
+export const AppsFlagsChangelogListResultItemAfterRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemLogicalOperator =
+  /*@__PURE__*/ S.String;
+
+export interface AppsFlagsChangelogListResultItemAfterRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItem {
+  attribute?: string;
+  operator?: AppsFlagsChangelogListResultItemAfterRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemOperator;
+  /** Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators. */
+  value?: unknown;
+  clauses?: AppsFlagsChangelogListResultItemAfterRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemClausesList;
+  logicalOperator?: AppsFlagsChangelogListResultItemAfterRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemLogicalOperator;
+}
+export const AppsFlagsChangelogListResultItemAfterRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      attribute: S.optional(S.String),
+      operator: S.optional(
+        AppsFlagsChangelogListResultItemAfterRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemOperator,
+      ),
+      value: S.optional(S.Unknown),
+      clauses: S.optional(
+        AppsFlagsChangelogListResultItemAfterRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemClausesList,
+      ),
+      logicalOperator: S.optional(
+        AppsFlagsChangelogListResultItemAfterRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemLogicalOperator.pipe(
+          T.Body("logical_operator"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "AppsFlagsChangelogListResultItemAfterRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItem",
+  }) as any as S.Schema<AppsFlagsChangelogListResultItemAfterRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItem>;
+
+export type AppsFlagsChangelogListResultItemAfterRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesList =
+  AppsFlagsChangelogListResultItemAfterRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItem[];
+export const AppsFlagsChangelogListResultItemAfterRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesList =
+  /*@__PURE__*/ S.Array(
+    AppsFlagsChangelogListResultItemAfterRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItem,
+  ) as any as S.Schema<AppsFlagsChangelogListResultItemAfterRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesList>;
+
+export type AppsFlagsChangelogListResultItemAfterRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemLogicalOperator =
+  "AND" | "OR" | (string & {});
+export const AppsFlagsChangelogListResultItemAfterRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemLogicalOperator =
+  /*@__PURE__*/ S.String;
+
+export interface AppsFlagsChangelogListResultItemAfterRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItem {
+  attribute?: string;
+  operator?: AppsFlagsChangelogListResultItemAfterRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemOperator;
+  /** Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators. */
+  value?: unknown;
+  clauses?: AppsFlagsChangelogListResultItemAfterRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesList;
+  logicalOperator?: AppsFlagsChangelogListResultItemAfterRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemLogicalOperator;
+}
+export const AppsFlagsChangelogListResultItemAfterRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      attribute: S.optional(S.String),
+      operator: S.optional(
+        AppsFlagsChangelogListResultItemAfterRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemOperator,
+      ),
+      value: S.optional(S.Unknown),
+      clauses: S.optional(
+        AppsFlagsChangelogListResultItemAfterRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesList,
+      ),
+      logicalOperator: S.optional(
+        AppsFlagsChangelogListResultItemAfterRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemLogicalOperator.pipe(
+          T.Body("logical_operator"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "AppsFlagsChangelogListResultItemAfterRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItem",
+  }) as any as S.Schema<AppsFlagsChangelogListResultItemAfterRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItem>;
+
+export type AppsFlagsChangelogListResultItemAfterRulesItemConditionsItemClausesItemClausesItemClausesItemClausesList =
+  AppsFlagsChangelogListResultItemAfterRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItem[];
+export const AppsFlagsChangelogListResultItemAfterRulesItemConditionsItemClausesItemClausesItemClausesItemClausesList =
+  /*@__PURE__*/ S.Array(
+    AppsFlagsChangelogListResultItemAfterRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItem,
+  ) as any as S.Schema<AppsFlagsChangelogListResultItemAfterRulesItemConditionsItemClausesItemClausesItemClausesItemClausesList>;
+
+export type AppsFlagsChangelogListResultItemAfterRulesItemConditionsItemClausesItemClausesItemClausesItemLogicalOperator =
+  "AND" | "OR" | (string & {});
+export const AppsFlagsChangelogListResultItemAfterRulesItemConditionsItemClausesItemClausesItemClausesItemLogicalOperator =
+  /*@__PURE__*/ S.String;
+
+export interface AppsFlagsChangelogListResultItemAfterRulesItemConditionsItemClausesItemClausesItemClausesItem {
+  attribute?: string;
+  operator?: AppsFlagsChangelogListResultItemAfterRulesItemConditionsItemClausesItemClausesItemClausesItemOperator;
+  /** Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators. */
+  value?: unknown;
+  clauses?: AppsFlagsChangelogListResultItemAfterRulesItemConditionsItemClausesItemClausesItemClausesItemClausesList;
+  logicalOperator?: AppsFlagsChangelogListResultItemAfterRulesItemConditionsItemClausesItemClausesItemClausesItemLogicalOperator;
+}
+export const AppsFlagsChangelogListResultItemAfterRulesItemConditionsItemClausesItemClausesItemClausesItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      attribute: S.optional(S.String),
+      operator: S.optional(
+        AppsFlagsChangelogListResultItemAfterRulesItemConditionsItemClausesItemClausesItemClausesItemOperator,
+      ),
+      value: S.optional(S.Unknown),
+      clauses: S.optional(
+        AppsFlagsChangelogListResultItemAfterRulesItemConditionsItemClausesItemClausesItemClausesItemClausesList,
+      ),
+      logicalOperator: S.optional(
+        AppsFlagsChangelogListResultItemAfterRulesItemConditionsItemClausesItemClausesItemClausesItemLogicalOperator.pipe(
+          T.Body("logical_operator"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "AppsFlagsChangelogListResultItemAfterRulesItemConditionsItemClausesItemClausesItemClausesItem",
+  }) as any as S.Schema<AppsFlagsChangelogListResultItemAfterRulesItemConditionsItemClausesItemClausesItemClausesItem>;
+
+export type AppsFlagsChangelogListResultItemAfterRulesItemConditionsItemClausesItemClausesItemClausesList =
+  AppsFlagsChangelogListResultItemAfterRulesItemConditionsItemClausesItemClausesItemClausesItem[];
+export const AppsFlagsChangelogListResultItemAfterRulesItemConditionsItemClausesItemClausesItemClausesList =
+  /*@__PURE__*/ S.Array(
+    AppsFlagsChangelogListResultItemAfterRulesItemConditionsItemClausesItemClausesItemClausesItem,
+  ) as any as S.Schema<AppsFlagsChangelogListResultItemAfterRulesItemConditionsItemClausesItemClausesItemClausesList>;
+
+export type AppsFlagsChangelogListResultItemAfterRulesItemConditionsItemClausesItemClausesItemLogicalOperator =
+  "AND" | "OR" | (string & {});
+export const AppsFlagsChangelogListResultItemAfterRulesItemConditionsItemClausesItemClausesItemLogicalOperator =
+  /*@__PURE__*/ S.String;
+
+export interface AppsFlagsChangelogListResultItemAfterRulesItemConditionsItemClausesItemClausesItem {
+  attribute?: string;
+  operator?: AppsFlagsChangelogListResultItemAfterRulesItemConditionsItemClausesItemClausesItemOperator;
+  /** Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators. */
+  value?: unknown;
+  clauses?: AppsFlagsChangelogListResultItemAfterRulesItemConditionsItemClausesItemClausesItemClausesList;
+  logicalOperator?: AppsFlagsChangelogListResultItemAfterRulesItemConditionsItemClausesItemClausesItemLogicalOperator;
+}
+export const AppsFlagsChangelogListResultItemAfterRulesItemConditionsItemClausesItemClausesItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      attribute: S.optional(S.String),
+      operator: S.optional(
+        AppsFlagsChangelogListResultItemAfterRulesItemConditionsItemClausesItemClausesItemOperator,
+      ),
+      value: S.optional(S.Unknown),
+      clauses: S.optional(
+        AppsFlagsChangelogListResultItemAfterRulesItemConditionsItemClausesItemClausesItemClausesList,
+      ),
+      logicalOperator: S.optional(
+        AppsFlagsChangelogListResultItemAfterRulesItemConditionsItemClausesItemClausesItemLogicalOperator.pipe(
+          T.Body("logical_operator"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "AppsFlagsChangelogListResultItemAfterRulesItemConditionsItemClausesItemClausesItem",
+  }) as any as S.Schema<AppsFlagsChangelogListResultItemAfterRulesItemConditionsItemClausesItemClausesItem>;
+
+export type AppsFlagsChangelogListResultItemAfterRulesItemConditionsItemClausesItemClausesList =
+  AppsFlagsChangelogListResultItemAfterRulesItemConditionsItemClausesItemClausesItem[];
+export const AppsFlagsChangelogListResultItemAfterRulesItemConditionsItemClausesItemClausesList =
+  /*@__PURE__*/ S.Array(
+    AppsFlagsChangelogListResultItemAfterRulesItemConditionsItemClausesItemClausesItem,
+  ) as any as S.Schema<AppsFlagsChangelogListResultItemAfterRulesItemConditionsItemClausesItemClausesList>;
+
+export type AppsFlagsChangelogListResultItemAfterRulesItemConditionsItemClausesItemLogicalOperator =
+  "AND" | "OR" | (string & {});
+export const AppsFlagsChangelogListResultItemAfterRulesItemConditionsItemClausesItemLogicalOperator =
+  /*@__PURE__*/ S.String;
+
+export interface AppsFlagsChangelogListResultItemAfterRulesItemConditionsItemClausesItem {
+  attribute?: string;
+  operator?: AppsFlagsChangelogListResultItemAfterRulesItemConditionsItemClausesItemOperator;
+  /** Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators. */
+  value?: unknown;
+  clauses?: AppsFlagsChangelogListResultItemAfterRulesItemConditionsItemClausesItemClausesList;
+  logicalOperator?: AppsFlagsChangelogListResultItemAfterRulesItemConditionsItemClausesItemLogicalOperator;
+}
+export const AppsFlagsChangelogListResultItemAfterRulesItemConditionsItemClausesItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      attribute: S.optional(S.String),
+      operator: S.optional(
+        AppsFlagsChangelogListResultItemAfterRulesItemConditionsItemClausesItemOperator,
+      ),
+      value: S.optional(S.Unknown),
+      clauses: S.optional(
+        AppsFlagsChangelogListResultItemAfterRulesItemConditionsItemClausesItemClausesList,
+      ),
+      logicalOperator: S.optional(
+        AppsFlagsChangelogListResultItemAfterRulesItemConditionsItemClausesItemLogicalOperator.pipe(
+          T.Body("logical_operator"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "AppsFlagsChangelogListResultItemAfterRulesItemConditionsItemClausesItem",
+  }) as any as S.Schema<AppsFlagsChangelogListResultItemAfterRulesItemConditionsItemClausesItem>;
+
+export type AppsFlagsChangelogListResultItemAfterRulesItemConditionsItemClausesList =
+  AppsFlagsChangelogListResultItemAfterRulesItemConditionsItemClausesItem[];
+export const AppsFlagsChangelogListResultItemAfterRulesItemConditionsItemClausesList =
+  /*@__PURE__*/ S.Array(
+    AppsFlagsChangelogListResultItemAfterRulesItemConditionsItemClausesItem,
+  ) as any as S.Schema<AppsFlagsChangelogListResultItemAfterRulesItemConditionsItemClausesList>;
+
+export type AppsFlagsChangelogListResultItemAfterRulesItemConditionsItemLogicalOperator =
+  "AND" | "OR" | (string & {});
+export const AppsFlagsChangelogListResultItemAfterRulesItemConditionsItemLogicalOperator =
+  /*@__PURE__*/ S.String;
+
+export interface AppsFlagsChangelogListResultItemAfterRulesItemConditionsItem {
+  attribute?: string;
+  operator?: AppsFlagsChangelogListResultItemAfterRulesItemConditionsItemOperator;
+  /** Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators. */
+  value?: unknown;
+  clauses?: AppsFlagsChangelogListResultItemAfterRulesItemConditionsItemClausesList;
+  logicalOperator?: AppsFlagsChangelogListResultItemAfterRulesItemConditionsItemLogicalOperator;
+}
+export const AppsFlagsChangelogListResultItemAfterRulesItemConditionsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      attribute: S.optional(S.String),
+      operator: S.optional(
+        AppsFlagsChangelogListResultItemAfterRulesItemConditionsItemOperator,
+      ),
+      value: S.optional(S.Unknown),
+      clauses: S.optional(
+        AppsFlagsChangelogListResultItemAfterRulesItemConditionsItemClausesList,
+      ),
+      logicalOperator: S.optional(
+        AppsFlagsChangelogListResultItemAfterRulesItemConditionsItemLogicalOperator.pipe(
+          T.Body("logical_operator"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "AppsFlagsChangelogListResultItemAfterRulesItemConditionsItem",
+  }) as any as S.Schema<AppsFlagsChangelogListResultItemAfterRulesItemConditionsItem>;
+
+export type AppsFlagsChangelogListResultItemAfterRulesItemConditionsList =
+  AppsFlagsChangelogListResultItemAfterRulesItemConditionsItem[];
+export const AppsFlagsChangelogListResultItemAfterRulesItemConditionsList =
+  /*@__PURE__*/ S.Array(
+    AppsFlagsChangelogListResultItemAfterRulesItemConditionsItem,
+  ) as any as S.Schema<AppsFlagsChangelogListResultItemAfterRulesItemConditionsList>;
+
+export interface AppsFlagsChangelogListResultItemAfterRulesItemRollout {
+  /** Percentage of matching traffic (0–100) served this variation. For multi-way splits, use cumulative upper bounds across rules (e.g. 30, 70, 100). */
+  percentage: number;
+  /** Context attribute used for sticky bucketing. Defaults to `targetingKey`. If absent at evaluation time, bucketing is random per request. */
+  attribute?: string;
+}
+export const AppsFlagsChangelogListResultItemAfterRulesItemRollout =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      percentage: S.Number,
+      attribute: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "AppsFlagsChangelogListResultItemAfterRulesItemRollout",
+  }) as any as S.Schema<AppsFlagsChangelogListResultItemAfterRulesItemRollout>;
+
+export interface AppsFlagsChangelogListResultItemAfterRulesItem {
+  /** Conditions the context must satisfy for this rule to match. An empty array matches all contexts. */
+  conditions: AppsFlagsChangelogListResultItemAfterRulesItemConditionsList;
+  /** Evaluation order; lower numbers are evaluated first. Must be unique across the flag's rules. */
+  priority: number;
+  /** Variation served when this rule matches. Must be a key in `variations`. */
+  serveVariation: string;
+  rollout?: AppsFlagsChangelogListResultItemAfterRulesItemRollout;
+}
+export const AppsFlagsChangelogListResultItemAfterRulesItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      conditions: AppsFlagsChangelogListResultItemAfterRulesItemConditionsList,
+      priority: S.Number,
+      serveVariation: S.String.pipe(T.Body("serve_variation")),
+      rollout: S.optional(
+        AppsFlagsChangelogListResultItemAfterRulesItemRollout,
+      ),
+    }),
+  ).annotate({
+    identifier: "AppsFlagsChangelogListResultItemAfterRulesItem",
+  }) as any as S.Schema<AppsFlagsChangelogListResultItemAfterRulesItem>;
+
+export type AppsFlagsChangelogListResultItemAfterRulesList =
+  AppsFlagsChangelogListResultItemAfterRulesItem[];
+export const AppsFlagsChangelogListResultItemAfterRulesList =
+  /*@__PURE__*/ S.Array(
+    AppsFlagsChangelogListResultItemAfterRulesItem,
+  ) as any as S.Schema<AppsFlagsChangelogListResultItemAfterRulesList>;
+
+export type AppsFlagsChangelogListResultItemAfterVariationsMap = {
+  [key: string]: unknown | undefined;
+};
+export const AppsFlagsChangelogListResultItemAfterVariationsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<AppsFlagsChangelogListResultItemAfterVariationsMap>;
+
+export type AppsFlagsChangelogListResultItemAfterType =
+  | "boolean"
+  | "string"
+  | "number"
+  | "json"
+  | (string & {});
+export const AppsFlagsChangelogListResultItemAfterType = /*@__PURE__*/ S.String;
+
+export interface AppsFlagsChangelogListResultItemAfter {
+  /** Variation served when no rule matches or the flag is disabled. Must be a key in `variations`. */
+  defaultVariation: string;
+  /** When false, the flag bypasses all rules and always serves `default_variation`. */
+  enabled: boolean;
+  /** Unique identifier for the flag within an app. Used in all evaluation and SDK calls. */
+  key: string;
+  /** Targeting rules evaluated in ascending `priority`; the first matching rule wins. An empty array means the flag always serves `default_variation`. */
+  rules: AppsFlagsChangelogListResultItemAfterRulesList;
+  /** Map of variation name to value. All values must be the same type (boolean, string, number, or JSON object/array). Each serialized value must be 10KB or smaller. */
+  variations: AppsFlagsChangelogListResultItemAfterVariationsMap;
+  description?: string;
+  /** Value type of the flag's variations. Inferred from the variation values on write, so it may be omitted in requests. */
+  type?: AppsFlagsChangelogListResultItemAfterType;
+  updatedAt?: string;
+  updatedBy?: string;
+}
+export const AppsFlagsChangelogListResultItemAfter = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      defaultVariation: S.String.pipe(T.Body("default_variation")),
+      enabled: S.Boolean,
+      key: S.String,
+      rules: AppsFlagsChangelogListResultItemAfterRulesList,
+      variations: AppsFlagsChangelogListResultItemAfterVariationsMap,
+      description: S.optional(S.String),
+      type: S.optional(AppsFlagsChangelogListResultItemAfterType),
+      updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
+      updatedBy: S.optional(S.String.pipe(T.Body("updated_by"))),
+    }),
+).annotate({
+  identifier: "AppsFlagsChangelogListResultItemAfter",
+}) as any as S.Schema<AppsFlagsChangelogListResultItemAfter>;
+
+export type AppsFlagsChangelogListResultItemEvent = "create" | (string & {});
+export const AppsFlagsChangelogListResultItemEvent = /*@__PURE__*/ S.String;
+
+export type AppsFlagsChangelogListResultItemDiffMap = {
+  [key: string]: unknown | undefined;
+};
+export const AppsFlagsChangelogListResultItemDiffMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<AppsFlagsChangelogListResultItemDiffMap>;
+
 export interface AppsFlagsChangelogListResultItem {
-  objectAfterEventFlagKey__: unknown;
-  objectAfterEventFlagKey2: unknown;
-  objectAfterDiffEventFlagKey__: unknown;
+  after?: AppsFlagsChangelogListResultItemAfter;
+  event?: AppsFlagsChangelogListResultItemEvent;
+  flagKey?: string;
+  diff?: AppsFlagsChangelogListResultItemDiffMap;
 }
 export const AppsFlagsChangelogListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    objectAfterEventFlagKey__: S.Unknown.pipe(
-      T.Body("object { after, event, flag_key }"),
-    ),
-    objectAfterEventFlagKey2: S.Unknown.pipe(
-      T.Body("object { after, event, flag_key }"),
-    ),
-    objectAfterDiffEventFlagKey__: S.Unknown.pipe(
-      T.Body("object { after, diff, event, flag_key }"),
-    ),
+    after: S.optional(AppsFlagsChangelogListResultItemAfter),
+    event: S.optional(AppsFlagsChangelogListResultItemEvent),
+    flagKey: S.optional(S.String.pipe(T.Body("flag_key"))),
+    diff: S.optional(AppsFlagsChangelogListResultItemDiffMap),
   }),
 ).annotate({
   identifier: "AppsFlagsChangelogListResultItem",
@@ -767,18 +2051,309 @@ export const ListAppFlagsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAppFlagsRequest",
 }) as any as S.Schema<ListAppFlagsRequest>;
 
+export type AppsFlagsListResultItemRulesItemConditionsItemOperator =
+  | "equals"
+  | "not_equals"
+  | "greater_than"
+  | (string & {});
+export const AppsFlagsListResultItemRulesItemConditionsItemOperator =
+  /*@__PURE__*/ S.String;
+
+export type AppsFlagsListResultItemRulesItemConditionsItemClausesItemOperator =
+  | "equals"
+  | "not_equals"
+  | "greater_than"
+  | (string & {});
+export const AppsFlagsListResultItemRulesItemConditionsItemClausesItemOperator =
+  /*@__PURE__*/ S.String;
+
+export type AppsFlagsListResultItemRulesItemConditionsItemClausesItemClausesItemOperator =
+  "equals" | "not_equals" | "greater_than" | (string & {});
+export const AppsFlagsListResultItemRulesItemConditionsItemClausesItemClausesItemOperator =
+  /*@__PURE__*/ S.String;
+
+export type AppsFlagsListResultItemRulesItemConditionsItemClausesItemClausesItemClausesItemOperator =
+  "equals" | "not_equals" | "greater_than" | (string & {});
+export const AppsFlagsListResultItemRulesItemConditionsItemClausesItemClausesItemClausesItemOperator =
+  /*@__PURE__*/ S.String;
+
+export type AppsFlagsListResultItemRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemOperator =
+  "equals" | "not_equals" | "greater_than" | (string & {});
+export const AppsFlagsListResultItemRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemOperator =
+  /*@__PURE__*/ S.String;
+
+export type AppsFlagsListResultItemRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemOperator =
+  "equals" | "not_equals" | "greater_than" | (string & {});
+export const AppsFlagsListResultItemRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemOperator =
+  /*@__PURE__*/ S.String;
+
+export interface AppsFlagsListResultItemRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemClausesItem {
+  string: unknown;
+  number: unknown;
+  boolean: unknown;
+  mapUnknown_: unknown;
+  arrayOfUnknown: unknown;
+}
+export const AppsFlagsListResultItemRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemClausesItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      string: S.Unknown,
+      number: S.Unknown,
+      boolean: S.Unknown,
+      mapUnknown_: S.Unknown.pipe(T.Body("map[unknown]")),
+      arrayOfUnknown: S.Unknown.pipe(T.Body("array of unknown")),
+    }),
+  ).annotate({
+    identifier:
+      "AppsFlagsListResultItemRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemClausesItem",
+  }) as any as S.Schema<AppsFlagsListResultItemRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemClausesItem>;
+
+export type AppsFlagsListResultItemRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemClausesList =
+  AppsFlagsListResultItemRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemClausesItem[];
+export const AppsFlagsListResultItemRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemClausesList =
+  /*@__PURE__*/ S.Array(
+    AppsFlagsListResultItemRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemClausesItem,
+  ) as any as S.Schema<AppsFlagsListResultItemRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemClausesList>;
+
+export type AppsFlagsListResultItemRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemLogicalOperator =
+  "AND" | "OR" | (string & {});
+export const AppsFlagsListResultItemRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemLogicalOperator =
+  /*@__PURE__*/ S.String;
+
+export interface AppsFlagsListResultItemRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItem {
+  attribute?: string;
+  operator?: AppsFlagsListResultItemRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemOperator;
+  /** Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators. */
+  value?: unknown;
+  clauses?: AppsFlagsListResultItemRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemClausesList;
+  logicalOperator?: AppsFlagsListResultItemRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemLogicalOperator;
+}
+export const AppsFlagsListResultItemRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      attribute: S.optional(S.String),
+      operator: S.optional(
+        AppsFlagsListResultItemRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemOperator,
+      ),
+      value: S.optional(S.Unknown),
+      clauses: S.optional(
+        AppsFlagsListResultItemRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemClausesList,
+      ),
+      logicalOperator: S.optional(
+        AppsFlagsListResultItemRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemLogicalOperator.pipe(
+          T.Body("logical_operator"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "AppsFlagsListResultItemRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItem",
+  }) as any as S.Schema<AppsFlagsListResultItemRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItem>;
+
+export type AppsFlagsListResultItemRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesList =
+  AppsFlagsListResultItemRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItem[];
+export const AppsFlagsListResultItemRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesList =
+  /*@__PURE__*/ S.Array(
+    AppsFlagsListResultItemRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItem,
+  ) as any as S.Schema<AppsFlagsListResultItemRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesList>;
+
+export type AppsFlagsListResultItemRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemLogicalOperator =
+  "AND" | "OR" | (string & {});
+export const AppsFlagsListResultItemRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemLogicalOperator =
+  /*@__PURE__*/ S.String;
+
+export interface AppsFlagsListResultItemRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItem {
+  attribute?: string;
+  operator?: AppsFlagsListResultItemRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemOperator;
+  /** Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators. */
+  value?: unknown;
+  clauses?: AppsFlagsListResultItemRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesList;
+  logicalOperator?: AppsFlagsListResultItemRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemLogicalOperator;
+}
+export const AppsFlagsListResultItemRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      attribute: S.optional(S.String),
+      operator: S.optional(
+        AppsFlagsListResultItemRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemOperator,
+      ),
+      value: S.optional(S.Unknown),
+      clauses: S.optional(
+        AppsFlagsListResultItemRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesList,
+      ),
+      logicalOperator: S.optional(
+        AppsFlagsListResultItemRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemLogicalOperator.pipe(
+          T.Body("logical_operator"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "AppsFlagsListResultItemRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItem",
+  }) as any as S.Schema<AppsFlagsListResultItemRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItem>;
+
+export type AppsFlagsListResultItemRulesItemConditionsItemClausesItemClausesItemClausesItemClausesList =
+  AppsFlagsListResultItemRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItem[];
+export const AppsFlagsListResultItemRulesItemConditionsItemClausesItemClausesItemClausesItemClausesList =
+  /*@__PURE__*/ S.Array(
+    AppsFlagsListResultItemRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItem,
+  ) as any as S.Schema<AppsFlagsListResultItemRulesItemConditionsItemClausesItemClausesItemClausesItemClausesList>;
+
+export type AppsFlagsListResultItemRulesItemConditionsItemClausesItemClausesItemClausesItemLogicalOperator =
+  "AND" | "OR" | (string & {});
+export const AppsFlagsListResultItemRulesItemConditionsItemClausesItemClausesItemClausesItemLogicalOperator =
+  /*@__PURE__*/ S.String;
+
+export interface AppsFlagsListResultItemRulesItemConditionsItemClausesItemClausesItemClausesItem {
+  attribute?: string;
+  operator?: AppsFlagsListResultItemRulesItemConditionsItemClausesItemClausesItemClausesItemOperator;
+  /** Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators. */
+  value?: unknown;
+  clauses?: AppsFlagsListResultItemRulesItemConditionsItemClausesItemClausesItemClausesItemClausesList;
+  logicalOperator?: AppsFlagsListResultItemRulesItemConditionsItemClausesItemClausesItemClausesItemLogicalOperator;
+}
+export const AppsFlagsListResultItemRulesItemConditionsItemClausesItemClausesItemClausesItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      attribute: S.optional(S.String),
+      operator: S.optional(
+        AppsFlagsListResultItemRulesItemConditionsItemClausesItemClausesItemClausesItemOperator,
+      ),
+      value: S.optional(S.Unknown),
+      clauses: S.optional(
+        AppsFlagsListResultItemRulesItemConditionsItemClausesItemClausesItemClausesItemClausesList,
+      ),
+      logicalOperator: S.optional(
+        AppsFlagsListResultItemRulesItemConditionsItemClausesItemClausesItemClausesItemLogicalOperator.pipe(
+          T.Body("logical_operator"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "AppsFlagsListResultItemRulesItemConditionsItemClausesItemClausesItemClausesItem",
+  }) as any as S.Schema<AppsFlagsListResultItemRulesItemConditionsItemClausesItemClausesItemClausesItem>;
+
+export type AppsFlagsListResultItemRulesItemConditionsItemClausesItemClausesItemClausesList =
+  AppsFlagsListResultItemRulesItemConditionsItemClausesItemClausesItemClausesItem[];
+export const AppsFlagsListResultItemRulesItemConditionsItemClausesItemClausesItemClausesList =
+  /*@__PURE__*/ S.Array(
+    AppsFlagsListResultItemRulesItemConditionsItemClausesItemClausesItemClausesItem,
+  ) as any as S.Schema<AppsFlagsListResultItemRulesItemConditionsItemClausesItemClausesItemClausesList>;
+
+export type AppsFlagsListResultItemRulesItemConditionsItemClausesItemClausesItemLogicalOperator =
+  "AND" | "OR" | (string & {});
+export const AppsFlagsListResultItemRulesItemConditionsItemClausesItemClausesItemLogicalOperator =
+  /*@__PURE__*/ S.String;
+
+export interface AppsFlagsListResultItemRulesItemConditionsItemClausesItemClausesItem {
+  attribute?: string;
+  operator?: AppsFlagsListResultItemRulesItemConditionsItemClausesItemClausesItemOperator;
+  /** Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators. */
+  value?: unknown;
+  clauses?: AppsFlagsListResultItemRulesItemConditionsItemClausesItemClausesItemClausesList;
+  logicalOperator?: AppsFlagsListResultItemRulesItemConditionsItemClausesItemClausesItemLogicalOperator;
+}
+export const AppsFlagsListResultItemRulesItemConditionsItemClausesItemClausesItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      attribute: S.optional(S.String),
+      operator: S.optional(
+        AppsFlagsListResultItemRulesItemConditionsItemClausesItemClausesItemOperator,
+      ),
+      value: S.optional(S.Unknown),
+      clauses: S.optional(
+        AppsFlagsListResultItemRulesItemConditionsItemClausesItemClausesItemClausesList,
+      ),
+      logicalOperator: S.optional(
+        AppsFlagsListResultItemRulesItemConditionsItemClausesItemClausesItemLogicalOperator.pipe(
+          T.Body("logical_operator"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "AppsFlagsListResultItemRulesItemConditionsItemClausesItemClausesItem",
+  }) as any as S.Schema<AppsFlagsListResultItemRulesItemConditionsItemClausesItemClausesItem>;
+
+export type AppsFlagsListResultItemRulesItemConditionsItemClausesItemClausesList =
+  AppsFlagsListResultItemRulesItemConditionsItemClausesItemClausesItem[];
+export const AppsFlagsListResultItemRulesItemConditionsItemClausesItemClausesList =
+  /*@__PURE__*/ S.Array(
+    AppsFlagsListResultItemRulesItemConditionsItemClausesItemClausesItem,
+  ) as any as S.Schema<AppsFlagsListResultItemRulesItemConditionsItemClausesItemClausesList>;
+
+export type AppsFlagsListResultItemRulesItemConditionsItemClausesItemLogicalOperator =
+  "AND" | "OR" | (string & {});
+export const AppsFlagsListResultItemRulesItemConditionsItemClausesItemLogicalOperator =
+  /*@__PURE__*/ S.String;
+
+export interface AppsFlagsListResultItemRulesItemConditionsItemClausesItem {
+  attribute?: string;
+  operator?: AppsFlagsListResultItemRulesItemConditionsItemClausesItemOperator;
+  /** Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators. */
+  value?: unknown;
+  clauses?: AppsFlagsListResultItemRulesItemConditionsItemClausesItemClausesList;
+  logicalOperator?: AppsFlagsListResultItemRulesItemConditionsItemClausesItemLogicalOperator;
+}
+export const AppsFlagsListResultItemRulesItemConditionsItemClausesItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      attribute: S.optional(S.String),
+      operator: S.optional(
+        AppsFlagsListResultItemRulesItemConditionsItemClausesItemOperator,
+      ),
+      value: S.optional(S.Unknown),
+      clauses: S.optional(
+        AppsFlagsListResultItemRulesItemConditionsItemClausesItemClausesList,
+      ),
+      logicalOperator: S.optional(
+        AppsFlagsListResultItemRulesItemConditionsItemClausesItemLogicalOperator.pipe(
+          T.Body("logical_operator"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "AppsFlagsListResultItemRulesItemConditionsItemClausesItem",
+  }) as any as S.Schema<AppsFlagsListResultItemRulesItemConditionsItemClausesItem>;
+
+export type AppsFlagsListResultItemRulesItemConditionsItemClausesList =
+  AppsFlagsListResultItemRulesItemConditionsItemClausesItem[];
+export const AppsFlagsListResultItemRulesItemConditionsItemClausesList =
+  /*@__PURE__*/ S.Array(
+    AppsFlagsListResultItemRulesItemConditionsItemClausesItem,
+  ) as any as S.Schema<AppsFlagsListResultItemRulesItemConditionsItemClausesList>;
+
+export type AppsFlagsListResultItemRulesItemConditionsItemLogicalOperator =
+  | "AND"
+  | "OR"
+  | (string & {});
+export const AppsFlagsListResultItemRulesItemConditionsItemLogicalOperator =
+  /*@__PURE__*/ S.String;
+
 export interface AppsFlagsListResultItemRulesItemConditionsItem {
-  objectAttributeOperatorValue__: unknown;
-  objectClausesLogicalOperator__: unknown;
+  attribute?: string;
+  operator?: AppsFlagsListResultItemRulesItemConditionsItemOperator;
+  /** Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators. */
+  value?: unknown;
+  clauses?: AppsFlagsListResultItemRulesItemConditionsItemClausesList;
+  logicalOperator?: AppsFlagsListResultItemRulesItemConditionsItemLogicalOperator;
 }
 export const AppsFlagsListResultItemRulesItemConditionsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      objectAttributeOperatorValue__: S.Unknown.pipe(
-        T.Body("object { attribute, operator, value }"),
+      attribute: S.optional(S.String),
+      operator: S.optional(
+        AppsFlagsListResultItemRulesItemConditionsItemOperator,
       ),
-      objectClausesLogicalOperator__: S.Unknown.pipe(
-        T.Body("object { clauses, logical_operator }"),
+      value: S.optional(S.Unknown),
+      clauses: S.optional(
+        AppsFlagsListResultItemRulesItemConditionsItemClausesList,
+      ),
+      logicalOperator: S.optional(
+        AppsFlagsListResultItemRulesItemConditionsItemLogicalOperator.pipe(
+          T.Body("logical_operator"),
+        ),
       ),
     }),
   ).annotate({
@@ -1009,18 +2584,309 @@ export const UpdateAppResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateAppResponse",
 }) as any as S.Schema<UpdateAppResponse>;
 
+export type AppsFlagsUpdateRequestRulesItemConditionsItemOperator =
+  | "equals"
+  | "not_equals"
+  | "greater_than"
+  | (string & {});
+export const AppsFlagsUpdateRequestRulesItemConditionsItemOperator =
+  /*@__PURE__*/ S.String;
+
+export type AppsFlagsUpdateRequestRulesItemConditionsItemClausesItemOperator =
+  | "equals"
+  | "not_equals"
+  | "greater_than"
+  | (string & {});
+export const AppsFlagsUpdateRequestRulesItemConditionsItemClausesItemOperator =
+  /*@__PURE__*/ S.String;
+
+export type AppsFlagsUpdateRequestRulesItemConditionsItemClausesItemClausesItemOperator =
+  "equals" | "not_equals" | "greater_than" | (string & {});
+export const AppsFlagsUpdateRequestRulesItemConditionsItemClausesItemClausesItemOperator =
+  /*@__PURE__*/ S.String;
+
+export type AppsFlagsUpdateRequestRulesItemConditionsItemClausesItemClausesItemClausesItemOperator =
+  "equals" | "not_equals" | "greater_than" | (string & {});
+export const AppsFlagsUpdateRequestRulesItemConditionsItemClausesItemClausesItemClausesItemOperator =
+  /*@__PURE__*/ S.String;
+
+export type AppsFlagsUpdateRequestRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemOperator =
+  "equals" | "not_equals" | "greater_than" | (string & {});
+export const AppsFlagsUpdateRequestRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemOperator =
+  /*@__PURE__*/ S.String;
+
+export type AppsFlagsUpdateRequestRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemOperator =
+  "equals" | "not_equals" | "greater_than" | (string & {});
+export const AppsFlagsUpdateRequestRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemOperator =
+  /*@__PURE__*/ S.String;
+
+export interface AppsFlagsUpdateRequestRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemClausesItem {
+  string: unknown;
+  number: unknown;
+  boolean: unknown;
+  mapUnknown_: unknown;
+  arrayOfUnknown: unknown;
+}
+export const AppsFlagsUpdateRequestRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemClausesItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      string: S.Unknown,
+      number: S.Unknown,
+      boolean: S.Unknown,
+      mapUnknown_: S.Unknown.pipe(T.Body("map[unknown]")),
+      arrayOfUnknown: S.Unknown.pipe(T.Body("array of unknown")),
+    }),
+  ).annotate({
+    identifier:
+      "AppsFlagsUpdateRequestRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemClausesItem",
+  }) as any as S.Schema<AppsFlagsUpdateRequestRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemClausesItem>;
+
+export type AppsFlagsUpdateRequestRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemClausesList =
+  AppsFlagsUpdateRequestRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemClausesItem[];
+export const AppsFlagsUpdateRequestRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemClausesList =
+  /*@__PURE__*/ S.Array(
+    AppsFlagsUpdateRequestRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemClausesItem,
+  ) as any as S.Schema<AppsFlagsUpdateRequestRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemClausesList>;
+
+export type AppsFlagsUpdateRequestRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemLogicalOperator =
+  "AND" | "OR" | (string & {});
+export const AppsFlagsUpdateRequestRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemLogicalOperator =
+  /*@__PURE__*/ S.String;
+
+export interface AppsFlagsUpdateRequestRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItem {
+  attribute?: string;
+  operator?: AppsFlagsUpdateRequestRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemOperator;
+  /** Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators. */
+  value?: unknown;
+  clauses?: AppsFlagsUpdateRequestRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemClausesList;
+  logicalOperator?: AppsFlagsUpdateRequestRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemLogicalOperator;
+}
+export const AppsFlagsUpdateRequestRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      attribute: S.optional(S.String),
+      operator: S.optional(
+        AppsFlagsUpdateRequestRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemOperator,
+      ),
+      value: S.optional(S.Unknown),
+      clauses: S.optional(
+        AppsFlagsUpdateRequestRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemClausesList,
+      ),
+      logicalOperator: S.optional(
+        AppsFlagsUpdateRequestRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemLogicalOperator.pipe(
+          T.Body("logical_operator"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "AppsFlagsUpdateRequestRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItem",
+  }) as any as S.Schema<AppsFlagsUpdateRequestRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItem>;
+
+export type AppsFlagsUpdateRequestRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesList =
+  AppsFlagsUpdateRequestRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItem[];
+export const AppsFlagsUpdateRequestRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesList =
+  /*@__PURE__*/ S.Array(
+    AppsFlagsUpdateRequestRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItem,
+  ) as any as S.Schema<AppsFlagsUpdateRequestRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesList>;
+
+export type AppsFlagsUpdateRequestRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemLogicalOperator =
+  "AND" | "OR" | (string & {});
+export const AppsFlagsUpdateRequestRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemLogicalOperator =
+  /*@__PURE__*/ S.String;
+
+export interface AppsFlagsUpdateRequestRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItem {
+  attribute?: string;
+  operator?: AppsFlagsUpdateRequestRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemOperator;
+  /** Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators. */
+  value?: unknown;
+  clauses?: AppsFlagsUpdateRequestRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesList;
+  logicalOperator?: AppsFlagsUpdateRequestRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemLogicalOperator;
+}
+export const AppsFlagsUpdateRequestRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      attribute: S.optional(S.String),
+      operator: S.optional(
+        AppsFlagsUpdateRequestRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemOperator,
+      ),
+      value: S.optional(S.Unknown),
+      clauses: S.optional(
+        AppsFlagsUpdateRequestRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesList,
+      ),
+      logicalOperator: S.optional(
+        AppsFlagsUpdateRequestRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemLogicalOperator.pipe(
+          T.Body("logical_operator"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "AppsFlagsUpdateRequestRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItem",
+  }) as any as S.Schema<AppsFlagsUpdateRequestRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItem>;
+
+export type AppsFlagsUpdateRequestRulesItemConditionsItemClausesItemClausesItemClausesItemClausesList =
+  AppsFlagsUpdateRequestRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItem[];
+export const AppsFlagsUpdateRequestRulesItemConditionsItemClausesItemClausesItemClausesItemClausesList =
+  /*@__PURE__*/ S.Array(
+    AppsFlagsUpdateRequestRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItem,
+  ) as any as S.Schema<AppsFlagsUpdateRequestRulesItemConditionsItemClausesItemClausesItemClausesItemClausesList>;
+
+export type AppsFlagsUpdateRequestRulesItemConditionsItemClausesItemClausesItemClausesItemLogicalOperator =
+  "AND" | "OR" | (string & {});
+export const AppsFlagsUpdateRequestRulesItemConditionsItemClausesItemClausesItemClausesItemLogicalOperator =
+  /*@__PURE__*/ S.String;
+
+export interface AppsFlagsUpdateRequestRulesItemConditionsItemClausesItemClausesItemClausesItem {
+  attribute?: string;
+  operator?: AppsFlagsUpdateRequestRulesItemConditionsItemClausesItemClausesItemClausesItemOperator;
+  /** Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators. */
+  value?: unknown;
+  clauses?: AppsFlagsUpdateRequestRulesItemConditionsItemClausesItemClausesItemClausesItemClausesList;
+  logicalOperator?: AppsFlagsUpdateRequestRulesItemConditionsItemClausesItemClausesItemClausesItemLogicalOperator;
+}
+export const AppsFlagsUpdateRequestRulesItemConditionsItemClausesItemClausesItemClausesItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      attribute: S.optional(S.String),
+      operator: S.optional(
+        AppsFlagsUpdateRequestRulesItemConditionsItemClausesItemClausesItemClausesItemOperator,
+      ),
+      value: S.optional(S.Unknown),
+      clauses: S.optional(
+        AppsFlagsUpdateRequestRulesItemConditionsItemClausesItemClausesItemClausesItemClausesList,
+      ),
+      logicalOperator: S.optional(
+        AppsFlagsUpdateRequestRulesItemConditionsItemClausesItemClausesItemClausesItemLogicalOperator.pipe(
+          T.Body("logical_operator"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "AppsFlagsUpdateRequestRulesItemConditionsItemClausesItemClausesItemClausesItem",
+  }) as any as S.Schema<AppsFlagsUpdateRequestRulesItemConditionsItemClausesItemClausesItemClausesItem>;
+
+export type AppsFlagsUpdateRequestRulesItemConditionsItemClausesItemClausesItemClausesList =
+  AppsFlagsUpdateRequestRulesItemConditionsItemClausesItemClausesItemClausesItem[];
+export const AppsFlagsUpdateRequestRulesItemConditionsItemClausesItemClausesItemClausesList =
+  /*@__PURE__*/ S.Array(
+    AppsFlagsUpdateRequestRulesItemConditionsItemClausesItemClausesItemClausesItem,
+  ) as any as S.Schema<AppsFlagsUpdateRequestRulesItemConditionsItemClausesItemClausesItemClausesList>;
+
+export type AppsFlagsUpdateRequestRulesItemConditionsItemClausesItemClausesItemLogicalOperator =
+  "AND" | "OR" | (string & {});
+export const AppsFlagsUpdateRequestRulesItemConditionsItemClausesItemClausesItemLogicalOperator =
+  /*@__PURE__*/ S.String;
+
+export interface AppsFlagsUpdateRequestRulesItemConditionsItemClausesItemClausesItem {
+  attribute?: string;
+  operator?: AppsFlagsUpdateRequestRulesItemConditionsItemClausesItemClausesItemOperator;
+  /** Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators. */
+  value?: unknown;
+  clauses?: AppsFlagsUpdateRequestRulesItemConditionsItemClausesItemClausesItemClausesList;
+  logicalOperator?: AppsFlagsUpdateRequestRulesItemConditionsItemClausesItemClausesItemLogicalOperator;
+}
+export const AppsFlagsUpdateRequestRulesItemConditionsItemClausesItemClausesItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      attribute: S.optional(S.String),
+      operator: S.optional(
+        AppsFlagsUpdateRequestRulesItemConditionsItemClausesItemClausesItemOperator,
+      ),
+      value: S.optional(S.Unknown),
+      clauses: S.optional(
+        AppsFlagsUpdateRequestRulesItemConditionsItemClausesItemClausesItemClausesList,
+      ),
+      logicalOperator: S.optional(
+        AppsFlagsUpdateRequestRulesItemConditionsItemClausesItemClausesItemLogicalOperator.pipe(
+          T.Body("logical_operator"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "AppsFlagsUpdateRequestRulesItemConditionsItemClausesItemClausesItem",
+  }) as any as S.Schema<AppsFlagsUpdateRequestRulesItemConditionsItemClausesItemClausesItem>;
+
+export type AppsFlagsUpdateRequestRulesItemConditionsItemClausesItemClausesList =
+  AppsFlagsUpdateRequestRulesItemConditionsItemClausesItemClausesItem[];
+export const AppsFlagsUpdateRequestRulesItemConditionsItemClausesItemClausesList =
+  /*@__PURE__*/ S.Array(
+    AppsFlagsUpdateRequestRulesItemConditionsItemClausesItemClausesItem,
+  ) as any as S.Schema<AppsFlagsUpdateRequestRulesItemConditionsItemClausesItemClausesList>;
+
+export type AppsFlagsUpdateRequestRulesItemConditionsItemClausesItemLogicalOperator =
+  "AND" | "OR" | (string & {});
+export const AppsFlagsUpdateRequestRulesItemConditionsItemClausesItemLogicalOperator =
+  /*@__PURE__*/ S.String;
+
+export interface AppsFlagsUpdateRequestRulesItemConditionsItemClausesItem {
+  attribute?: string;
+  operator?: AppsFlagsUpdateRequestRulesItemConditionsItemClausesItemOperator;
+  /** Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators. */
+  value?: unknown;
+  clauses?: AppsFlagsUpdateRequestRulesItemConditionsItemClausesItemClausesList;
+  logicalOperator?: AppsFlagsUpdateRequestRulesItemConditionsItemClausesItemLogicalOperator;
+}
+export const AppsFlagsUpdateRequestRulesItemConditionsItemClausesItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      attribute: S.optional(S.String),
+      operator: S.optional(
+        AppsFlagsUpdateRequestRulesItemConditionsItemClausesItemOperator,
+      ),
+      value: S.optional(S.Unknown),
+      clauses: S.optional(
+        AppsFlagsUpdateRequestRulesItemConditionsItemClausesItemClausesList,
+      ),
+      logicalOperator: S.optional(
+        AppsFlagsUpdateRequestRulesItemConditionsItemClausesItemLogicalOperator.pipe(
+          T.Body("logical_operator"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "AppsFlagsUpdateRequestRulesItemConditionsItemClausesItem",
+  }) as any as S.Schema<AppsFlagsUpdateRequestRulesItemConditionsItemClausesItem>;
+
+export type AppsFlagsUpdateRequestRulesItemConditionsItemClausesList =
+  AppsFlagsUpdateRequestRulesItemConditionsItemClausesItem[];
+export const AppsFlagsUpdateRequestRulesItemConditionsItemClausesList =
+  /*@__PURE__*/ S.Array(
+    AppsFlagsUpdateRequestRulesItemConditionsItemClausesItem,
+  ) as any as S.Schema<AppsFlagsUpdateRequestRulesItemConditionsItemClausesList>;
+
+export type AppsFlagsUpdateRequestRulesItemConditionsItemLogicalOperator =
+  | "AND"
+  | "OR"
+  | (string & {});
+export const AppsFlagsUpdateRequestRulesItemConditionsItemLogicalOperator =
+  /*@__PURE__*/ S.String;
+
 export interface AppsFlagsUpdateRequestRulesItemConditionsItem {
-  objectAttributeOperatorValue__: unknown;
-  objectClausesLogicalOperator__: unknown;
+  attribute?: string;
+  operator?: AppsFlagsUpdateRequestRulesItemConditionsItemOperator;
+  /** Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators. */
+  value?: unknown;
+  clauses?: AppsFlagsUpdateRequestRulesItemConditionsItemClausesList;
+  logicalOperator?: AppsFlagsUpdateRequestRulesItemConditionsItemLogicalOperator;
 }
 export const AppsFlagsUpdateRequestRulesItemConditionsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      objectAttributeOperatorValue__: S.Unknown.pipe(
-        T.Body("object { attribute, operator, value }"),
+      attribute: S.optional(S.String),
+      operator: S.optional(
+        AppsFlagsUpdateRequestRulesItemConditionsItemOperator,
       ),
-      objectClausesLogicalOperator__: S.Unknown.pipe(
-        T.Body("object { clauses, logical_operator }"),
+      value: S.optional(S.Unknown),
+      clauses: S.optional(
+        AppsFlagsUpdateRequestRulesItemConditionsItemClausesList,
+      ),
+      logicalOperator: S.optional(
+        AppsFlagsUpdateRequestRulesItemConditionsItemLogicalOperator.pipe(
+          T.Body("logical_operator"),
+        ),
       ),
     }),
   ).annotate({
@@ -1137,18 +3003,309 @@ export const UpdateAppFlagRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateAppFlagRequest",
 }) as any as S.Schema<UpdateAppFlagRequest>;
 
+export type AppsFlagsUpdateResponseRulesItemConditionsItemOperator =
+  | "equals"
+  | "not_equals"
+  | "greater_than"
+  | (string & {});
+export const AppsFlagsUpdateResponseRulesItemConditionsItemOperator =
+  /*@__PURE__*/ S.String;
+
+export type AppsFlagsUpdateResponseRulesItemConditionsItemClausesItemOperator =
+  | "equals"
+  | "not_equals"
+  | "greater_than"
+  | (string & {});
+export const AppsFlagsUpdateResponseRulesItemConditionsItemClausesItemOperator =
+  /*@__PURE__*/ S.String;
+
+export type AppsFlagsUpdateResponseRulesItemConditionsItemClausesItemClausesItemOperator =
+  "equals" | "not_equals" | "greater_than" | (string & {});
+export const AppsFlagsUpdateResponseRulesItemConditionsItemClausesItemClausesItemOperator =
+  /*@__PURE__*/ S.String;
+
+export type AppsFlagsUpdateResponseRulesItemConditionsItemClausesItemClausesItemClausesItemOperator =
+  "equals" | "not_equals" | "greater_than" | (string & {});
+export const AppsFlagsUpdateResponseRulesItemConditionsItemClausesItemClausesItemClausesItemOperator =
+  /*@__PURE__*/ S.String;
+
+export type AppsFlagsUpdateResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemOperator =
+  "equals" | "not_equals" | "greater_than" | (string & {});
+export const AppsFlagsUpdateResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemOperator =
+  /*@__PURE__*/ S.String;
+
+export type AppsFlagsUpdateResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemOperator =
+  "equals" | "not_equals" | "greater_than" | (string & {});
+export const AppsFlagsUpdateResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemOperator =
+  /*@__PURE__*/ S.String;
+
+export interface AppsFlagsUpdateResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemClausesItem {
+  string: unknown;
+  number: unknown;
+  boolean: unknown;
+  mapUnknown_: unknown;
+  arrayOfUnknown: unknown;
+}
+export const AppsFlagsUpdateResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemClausesItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      string: S.Unknown,
+      number: S.Unknown,
+      boolean: S.Unknown,
+      mapUnknown_: S.Unknown.pipe(T.Body("map[unknown]")),
+      arrayOfUnknown: S.Unknown.pipe(T.Body("array of unknown")),
+    }),
+  ).annotate({
+    identifier:
+      "AppsFlagsUpdateResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemClausesItem",
+  }) as any as S.Schema<AppsFlagsUpdateResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemClausesItem>;
+
+export type AppsFlagsUpdateResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemClausesList =
+  AppsFlagsUpdateResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemClausesItem[];
+export const AppsFlagsUpdateResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemClausesList =
+  /*@__PURE__*/ S.Array(
+    AppsFlagsUpdateResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemClausesItem,
+  ) as any as S.Schema<AppsFlagsUpdateResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemClausesList>;
+
+export type AppsFlagsUpdateResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemLogicalOperator =
+  "AND" | "OR" | (string & {});
+export const AppsFlagsUpdateResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemLogicalOperator =
+  /*@__PURE__*/ S.String;
+
+export interface AppsFlagsUpdateResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItem {
+  attribute?: string;
+  operator?: AppsFlagsUpdateResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemOperator;
+  /** Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators. */
+  value?: unknown;
+  clauses?: AppsFlagsUpdateResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemClausesList;
+  logicalOperator?: AppsFlagsUpdateResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemLogicalOperator;
+}
+export const AppsFlagsUpdateResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      attribute: S.optional(S.String),
+      operator: S.optional(
+        AppsFlagsUpdateResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemOperator,
+      ),
+      value: S.optional(S.Unknown),
+      clauses: S.optional(
+        AppsFlagsUpdateResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemClausesList,
+      ),
+      logicalOperator: S.optional(
+        AppsFlagsUpdateResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItemLogicalOperator.pipe(
+          T.Body("logical_operator"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "AppsFlagsUpdateResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItem",
+  }) as any as S.Schema<AppsFlagsUpdateResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItem>;
+
+export type AppsFlagsUpdateResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesList =
+  AppsFlagsUpdateResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItem[];
+export const AppsFlagsUpdateResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesList =
+  /*@__PURE__*/ S.Array(
+    AppsFlagsUpdateResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesItem,
+  ) as any as S.Schema<AppsFlagsUpdateResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesList>;
+
+export type AppsFlagsUpdateResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemLogicalOperator =
+  "AND" | "OR" | (string & {});
+export const AppsFlagsUpdateResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemLogicalOperator =
+  /*@__PURE__*/ S.String;
+
+export interface AppsFlagsUpdateResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItem {
+  attribute?: string;
+  operator?: AppsFlagsUpdateResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemOperator;
+  /** Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators. */
+  value?: unknown;
+  clauses?: AppsFlagsUpdateResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesList;
+  logicalOperator?: AppsFlagsUpdateResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemLogicalOperator;
+}
+export const AppsFlagsUpdateResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      attribute: S.optional(S.String),
+      operator: S.optional(
+        AppsFlagsUpdateResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemOperator,
+      ),
+      value: S.optional(S.Unknown),
+      clauses: S.optional(
+        AppsFlagsUpdateResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemClausesList,
+      ),
+      logicalOperator: S.optional(
+        AppsFlagsUpdateResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItemLogicalOperator.pipe(
+          T.Body("logical_operator"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "AppsFlagsUpdateResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItem",
+  }) as any as S.Schema<AppsFlagsUpdateResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItem>;
+
+export type AppsFlagsUpdateResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesList =
+  AppsFlagsUpdateResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItem[];
+export const AppsFlagsUpdateResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesList =
+  /*@__PURE__*/ S.Array(
+    AppsFlagsUpdateResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesItem,
+  ) as any as S.Schema<AppsFlagsUpdateResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesList>;
+
+export type AppsFlagsUpdateResponseRulesItemConditionsItemClausesItemClausesItemClausesItemLogicalOperator =
+  "AND" | "OR" | (string & {});
+export const AppsFlagsUpdateResponseRulesItemConditionsItemClausesItemClausesItemClausesItemLogicalOperator =
+  /*@__PURE__*/ S.String;
+
+export interface AppsFlagsUpdateResponseRulesItemConditionsItemClausesItemClausesItemClausesItem {
+  attribute?: string;
+  operator?: AppsFlagsUpdateResponseRulesItemConditionsItemClausesItemClausesItemClausesItemOperator;
+  /** Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators. */
+  value?: unknown;
+  clauses?: AppsFlagsUpdateResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesList;
+  logicalOperator?: AppsFlagsUpdateResponseRulesItemConditionsItemClausesItemClausesItemClausesItemLogicalOperator;
+}
+export const AppsFlagsUpdateResponseRulesItemConditionsItemClausesItemClausesItemClausesItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      attribute: S.optional(S.String),
+      operator: S.optional(
+        AppsFlagsUpdateResponseRulesItemConditionsItemClausesItemClausesItemClausesItemOperator,
+      ),
+      value: S.optional(S.Unknown),
+      clauses: S.optional(
+        AppsFlagsUpdateResponseRulesItemConditionsItemClausesItemClausesItemClausesItemClausesList,
+      ),
+      logicalOperator: S.optional(
+        AppsFlagsUpdateResponseRulesItemConditionsItemClausesItemClausesItemClausesItemLogicalOperator.pipe(
+          T.Body("logical_operator"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "AppsFlagsUpdateResponseRulesItemConditionsItemClausesItemClausesItemClausesItem",
+  }) as any as S.Schema<AppsFlagsUpdateResponseRulesItemConditionsItemClausesItemClausesItemClausesItem>;
+
+export type AppsFlagsUpdateResponseRulesItemConditionsItemClausesItemClausesItemClausesList =
+  AppsFlagsUpdateResponseRulesItemConditionsItemClausesItemClausesItemClausesItem[];
+export const AppsFlagsUpdateResponseRulesItemConditionsItemClausesItemClausesItemClausesList =
+  /*@__PURE__*/ S.Array(
+    AppsFlagsUpdateResponseRulesItemConditionsItemClausesItemClausesItemClausesItem,
+  ) as any as S.Schema<AppsFlagsUpdateResponseRulesItemConditionsItemClausesItemClausesItemClausesList>;
+
+export type AppsFlagsUpdateResponseRulesItemConditionsItemClausesItemClausesItemLogicalOperator =
+  "AND" | "OR" | (string & {});
+export const AppsFlagsUpdateResponseRulesItemConditionsItemClausesItemClausesItemLogicalOperator =
+  /*@__PURE__*/ S.String;
+
+export interface AppsFlagsUpdateResponseRulesItemConditionsItemClausesItemClausesItem {
+  attribute?: string;
+  operator?: AppsFlagsUpdateResponseRulesItemConditionsItemClausesItemClausesItemOperator;
+  /** Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators. */
+  value?: unknown;
+  clauses?: AppsFlagsUpdateResponseRulesItemConditionsItemClausesItemClausesItemClausesList;
+  logicalOperator?: AppsFlagsUpdateResponseRulesItemConditionsItemClausesItemClausesItemLogicalOperator;
+}
+export const AppsFlagsUpdateResponseRulesItemConditionsItemClausesItemClausesItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      attribute: S.optional(S.String),
+      operator: S.optional(
+        AppsFlagsUpdateResponseRulesItemConditionsItemClausesItemClausesItemOperator,
+      ),
+      value: S.optional(S.Unknown),
+      clauses: S.optional(
+        AppsFlagsUpdateResponseRulesItemConditionsItemClausesItemClausesItemClausesList,
+      ),
+      logicalOperator: S.optional(
+        AppsFlagsUpdateResponseRulesItemConditionsItemClausesItemClausesItemLogicalOperator.pipe(
+          T.Body("logical_operator"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "AppsFlagsUpdateResponseRulesItemConditionsItemClausesItemClausesItem",
+  }) as any as S.Schema<AppsFlagsUpdateResponseRulesItemConditionsItemClausesItemClausesItem>;
+
+export type AppsFlagsUpdateResponseRulesItemConditionsItemClausesItemClausesList =
+  AppsFlagsUpdateResponseRulesItemConditionsItemClausesItemClausesItem[];
+export const AppsFlagsUpdateResponseRulesItemConditionsItemClausesItemClausesList =
+  /*@__PURE__*/ S.Array(
+    AppsFlagsUpdateResponseRulesItemConditionsItemClausesItemClausesItem,
+  ) as any as S.Schema<AppsFlagsUpdateResponseRulesItemConditionsItemClausesItemClausesList>;
+
+export type AppsFlagsUpdateResponseRulesItemConditionsItemClausesItemLogicalOperator =
+  "AND" | "OR" | (string & {});
+export const AppsFlagsUpdateResponseRulesItemConditionsItemClausesItemLogicalOperator =
+  /*@__PURE__*/ S.String;
+
+export interface AppsFlagsUpdateResponseRulesItemConditionsItemClausesItem {
+  attribute?: string;
+  operator?: AppsFlagsUpdateResponseRulesItemConditionsItemClausesItemOperator;
+  /** Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators. */
+  value?: unknown;
+  clauses?: AppsFlagsUpdateResponseRulesItemConditionsItemClausesItemClausesList;
+  logicalOperator?: AppsFlagsUpdateResponseRulesItemConditionsItemClausesItemLogicalOperator;
+}
+export const AppsFlagsUpdateResponseRulesItemConditionsItemClausesItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      attribute: S.optional(S.String),
+      operator: S.optional(
+        AppsFlagsUpdateResponseRulesItemConditionsItemClausesItemOperator,
+      ),
+      value: S.optional(S.Unknown),
+      clauses: S.optional(
+        AppsFlagsUpdateResponseRulesItemConditionsItemClausesItemClausesList,
+      ),
+      logicalOperator: S.optional(
+        AppsFlagsUpdateResponseRulesItemConditionsItemClausesItemLogicalOperator.pipe(
+          T.Body("logical_operator"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "AppsFlagsUpdateResponseRulesItemConditionsItemClausesItem",
+  }) as any as S.Schema<AppsFlagsUpdateResponseRulesItemConditionsItemClausesItem>;
+
+export type AppsFlagsUpdateResponseRulesItemConditionsItemClausesList =
+  AppsFlagsUpdateResponseRulesItemConditionsItemClausesItem[];
+export const AppsFlagsUpdateResponseRulesItemConditionsItemClausesList =
+  /*@__PURE__*/ S.Array(
+    AppsFlagsUpdateResponseRulesItemConditionsItemClausesItem,
+  ) as any as S.Schema<AppsFlagsUpdateResponseRulesItemConditionsItemClausesList>;
+
+export type AppsFlagsUpdateResponseRulesItemConditionsItemLogicalOperator =
+  | "AND"
+  | "OR"
+  | (string & {});
+export const AppsFlagsUpdateResponseRulesItemConditionsItemLogicalOperator =
+  /*@__PURE__*/ S.String;
+
 export interface AppsFlagsUpdateResponseRulesItemConditionsItem {
-  objectAttributeOperatorValue__: unknown;
-  objectClausesLogicalOperator__: unknown;
+  attribute?: string;
+  operator?: AppsFlagsUpdateResponseRulesItemConditionsItemOperator;
+  /** Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators. */
+  value?: unknown;
+  clauses?: AppsFlagsUpdateResponseRulesItemConditionsItemClausesList;
+  logicalOperator?: AppsFlagsUpdateResponseRulesItemConditionsItemLogicalOperator;
 }
 export const AppsFlagsUpdateResponseRulesItemConditionsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      objectAttributeOperatorValue__: S.Unknown.pipe(
-        T.Body("object { attribute, operator, value }"),
+      attribute: S.optional(S.String),
+      operator: S.optional(
+        AppsFlagsUpdateResponseRulesItemConditionsItemOperator,
       ),
-      objectClausesLogicalOperator__: S.Unknown.pipe(
-        T.Body("object { clauses, logical_operator }"),
+      value: S.optional(S.Unknown),
+      clauses: S.optional(
+        AppsFlagsUpdateResponseRulesItemConditionsItemClausesList,
+      ),
+      logicalOperator: S.optional(
+        AppsFlagsUpdateResponseRulesItemConditionsItemLogicalOperator.pipe(
+          T.Body("logical_operator"),
+        ),
       ),
     }),
   ).annotate({

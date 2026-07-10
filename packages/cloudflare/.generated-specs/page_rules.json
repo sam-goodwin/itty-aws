@@ -17,245 +17,47 @@
     ]
   },
   "shapes": {
+    "com.cloudflare.page_rules#CreateRequestActionsItemId": {
+      "type": "enum",
+      "members": {
+        "ALWAYS_USE_HTTPS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "always_use_https"
+          }
+        }
+      }
+    },
+    "com.cloudflare.page_rules#CreateRequestActionsItemValue": {
+      "type": "enum",
+      "members": {
+        "ON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "on"
+          }
+        },
+        "OFF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "off"
+          }
+        }
+      }
+    },
     "com.cloudflare.page_rules#CreateRequestActionsItem": {
       "type": "structure",
       "members": {
-        "AlwaysUseHTTPS_object___id__": {
-          "target": "smithy.api#Document",
+        "id": {
+          "target": "com.cloudflare.page_rules#CreateRequestActionsItemId",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "AlwaysUseHTTPS object { id }"
+            "smithy.api#documentation": "If enabled, any `http://`` URL is converted to`https://` through a"
           }
         },
-        "AutomaticHTTPSRewrites_object___id__value__": {
-          "target": "smithy.api#Document",
+        "value": {
+          "target": "com.cloudflare.page_rules#CreateRequestActionsItemValue",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "AutomaticHTTPSRewrites object { id, value }"
-          }
-        },
-        "BrowserCacheTTL_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "BrowserCacheTTL object { id, value }"
-          }
-        },
-        "BrowserCheck_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "BrowserCheck object { id, value }"
-          }
-        },
-        "BypassCacheOnCookie_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "BypassCacheOnCookie object { id, value }"
-          }
-        },
-        "CacheByDeviceType_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "CacheByDeviceType object { id, value }"
-          }
-        },
-        "CacheDeceptionArmor_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "CacheDeceptionArmor object { id, value }"
-          }
-        },
-        "CacheKeyFields_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "CacheKeyFields object { id, value }"
-          }
-        },
-        "CacheLevel_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "CacheLevel object { id, value }"
-          }
-        },
-        "CacheOnCookie_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "CacheOnCookie object { id, value }"
-          }
-        },
-        "CacheTTLByStatus_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "CacheTTLByStatus object { id, value }"
-          }
-        },
-        "DisableApps_object___id__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "DisableApps object { id }"
-          }
-        },
-        "DisablePerformance_object___id__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "DisablePerformance object { id }"
-          }
-        },
-        "DisableSecurity_object___id__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "DisableSecurity object { id }"
-          }
-        },
-        "DisableZaraz_object___id__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "DisableZaraz object { id }"
-          }
-        },
-        "EdgeCacheTTL_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "EdgeCacheTTL object { id, value }"
-          }
-        },
-        "EmailObfuscation_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "EmailObfuscation object { id, value }"
-          }
-        },
-        "ExplicitCacheControl_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "ExplicitCacheControl object { id, value }"
-          }
-        },
-        "ForwardingURL_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "ForwardingURL object { id, value }"
-          }
-        },
-        "HostHeaderOverride_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "HostHeaderOverride object { id, value }"
-          }
-        },
-        "IPGeolocation_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "IPGeolocation object { id, value }"
-          }
-        },
-        "Mirage_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Mirage object { id, value }"
-          }
-        },
-        "OpportunisticEncryption_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "OpportunisticEncryption object { id, value }"
-          }
-        },
-        "OriginErrorPagePassThru_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "OriginErrorPagePassThru object { id, value }"
-          }
-        },
-        "Polish_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Polish object { id, value }"
-          }
-        },
-        "ResolveOverride_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "ResolveOverride object { id, value }"
-          }
-        },
-        "RespectStrongEtag_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "RespectStrongEtag object { id, value }"
-          }
-        },
-        "ResponseBuffering_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "ResponseBuffering object { id, value }"
-          }
-        },
-        "RocketLoader_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "RocketLoader object { id, value }"
-          }
-        },
-        "SecurityLevel_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "SecurityLevel object { id, value }"
-          }
-        },
-        "SortQueryStringForCache_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "SortQueryStringForCache object { id, value }"
-          }
-        },
-        "SSL_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "SSL object { id, value }"
-          }
-        },
-        "TrueClientIPHeader_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "TrueClientIPHeader object { id, value }"
-          }
-        },
-        "WAF_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "WAF object { id, value }"
+            "smithy.api#documentation": "The status of Automatic HTTPS Rewrites."
           }
         }
       }
@@ -401,245 +203,47 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.page_rules#CreateResponseActionsItemId": {
+      "type": "enum",
+      "members": {
+        "ALWAYS_USE_HTTPS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "always_use_https"
+          }
+        }
+      }
+    },
+    "com.cloudflare.page_rules#CreateResponseActionsItemValue": {
+      "type": "enum",
+      "members": {
+        "ON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "on"
+          }
+        },
+        "OFF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "off"
+          }
+        }
+      }
+    },
     "com.cloudflare.page_rules#CreateResponseActionsItem": {
       "type": "structure",
       "members": {
-        "AlwaysUseHTTPS_object___id__": {
-          "target": "smithy.api#Document",
+        "id": {
+          "target": "com.cloudflare.page_rules#CreateResponseActionsItemId",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "AlwaysUseHTTPS object { id }"
+            "smithy.api#documentation": "If enabled, any `http://`` URL is converted to`https://` through a"
           }
         },
-        "AutomaticHTTPSRewrites_object___id__value__": {
-          "target": "smithy.api#Document",
+        "value": {
+          "target": "com.cloudflare.page_rules#CreateResponseActionsItemValue",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "AutomaticHTTPSRewrites object { id, value }"
-          }
-        },
-        "BrowserCacheTTL_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "BrowserCacheTTL object { id, value }"
-          }
-        },
-        "BrowserCheck_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "BrowserCheck object { id, value }"
-          }
-        },
-        "BypassCacheOnCookie_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "BypassCacheOnCookie object { id, value }"
-          }
-        },
-        "CacheByDeviceType_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "CacheByDeviceType object { id, value }"
-          }
-        },
-        "CacheDeceptionArmor_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "CacheDeceptionArmor object { id, value }"
-          }
-        },
-        "CacheKeyFields_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "CacheKeyFields object { id, value }"
-          }
-        },
-        "CacheLevel_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "CacheLevel object { id, value }"
-          }
-        },
-        "CacheOnCookie_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "CacheOnCookie object { id, value }"
-          }
-        },
-        "CacheTTLByStatus_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "CacheTTLByStatus object { id, value }"
-          }
-        },
-        "DisableApps_object___id__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "DisableApps object { id }"
-          }
-        },
-        "DisablePerformance_object___id__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "DisablePerformance object { id }"
-          }
-        },
-        "DisableSecurity_object___id__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "DisableSecurity object { id }"
-          }
-        },
-        "DisableZaraz_object___id__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "DisableZaraz object { id }"
-          }
-        },
-        "EdgeCacheTTL_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "EdgeCacheTTL object { id, value }"
-          }
-        },
-        "EmailObfuscation_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "EmailObfuscation object { id, value }"
-          }
-        },
-        "ExplicitCacheControl_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "ExplicitCacheControl object { id, value }"
-          }
-        },
-        "ForwardingURL_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "ForwardingURL object { id, value }"
-          }
-        },
-        "HostHeaderOverride_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "HostHeaderOverride object { id, value }"
-          }
-        },
-        "IPGeolocation_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "IPGeolocation object { id, value }"
-          }
-        },
-        "Mirage_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Mirage object { id, value }"
-          }
-        },
-        "OpportunisticEncryption_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "OpportunisticEncryption object { id, value }"
-          }
-        },
-        "OriginErrorPagePassThru_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "OriginErrorPagePassThru object { id, value }"
-          }
-        },
-        "Polish_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Polish object { id, value }"
-          }
-        },
-        "ResolveOverride_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "ResolveOverride object { id, value }"
-          }
-        },
-        "RespectStrongEtag_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "RespectStrongEtag object { id, value }"
-          }
-        },
-        "ResponseBuffering_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "ResponseBuffering object { id, value }"
-          }
-        },
-        "RocketLoader_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "RocketLoader object { id, value }"
-          }
-        },
-        "SecurityLevel_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "SecurityLevel object { id, value }"
-          }
-        },
-        "SortQueryStringForCache_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "SortQueryStringForCache object { id, value }"
-          }
-        },
-        "SSL_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "SSL object { id, value }"
-          }
-        },
-        "TrueClientIPHeader_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "TrueClientIPHeader object { id, value }"
-          }
-        },
-        "WAF_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "WAF object { id, value }"
+            "smithy.api#documentation": "The status of Automatic HTTPS Rewrites."
           }
         }
       }
@@ -876,245 +480,47 @@
         "smithy.api#idempotent": {}
       }
     },
+    "com.cloudflare.page_rules#EditRequestActionsItemId": {
+      "type": "enum",
+      "members": {
+        "ALWAYS_USE_HTTPS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "always_use_https"
+          }
+        }
+      }
+    },
+    "com.cloudflare.page_rules#EditRequestActionsItemValue": {
+      "type": "enum",
+      "members": {
+        "ON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "on"
+          }
+        },
+        "OFF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "off"
+          }
+        }
+      }
+    },
     "com.cloudflare.page_rules#EditRequestActionsItem": {
       "type": "structure",
       "members": {
-        "AlwaysUseHTTPS_object___id__": {
-          "target": "smithy.api#Document",
+        "id": {
+          "target": "com.cloudflare.page_rules#EditRequestActionsItemId",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "AlwaysUseHTTPS object { id }"
+            "smithy.api#documentation": "If enabled, any `http://`` URL is converted to`https://` through a"
           }
         },
-        "AutomaticHTTPSRewrites_object___id__value__": {
-          "target": "smithy.api#Document",
+        "value": {
+          "target": "com.cloudflare.page_rules#EditRequestActionsItemValue",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "AutomaticHTTPSRewrites object { id, value }"
-          }
-        },
-        "BrowserCacheTTL_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "BrowserCacheTTL object { id, value }"
-          }
-        },
-        "BrowserCheck_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "BrowserCheck object { id, value }"
-          }
-        },
-        "BypassCacheOnCookie_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "BypassCacheOnCookie object { id, value }"
-          }
-        },
-        "CacheByDeviceType_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "CacheByDeviceType object { id, value }"
-          }
-        },
-        "CacheDeceptionArmor_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "CacheDeceptionArmor object { id, value }"
-          }
-        },
-        "CacheKeyFields_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "CacheKeyFields object { id, value }"
-          }
-        },
-        "CacheLevel_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "CacheLevel object { id, value }"
-          }
-        },
-        "CacheOnCookie_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "CacheOnCookie object { id, value }"
-          }
-        },
-        "CacheTTLByStatus_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "CacheTTLByStatus object { id, value }"
-          }
-        },
-        "DisableApps_object___id__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "DisableApps object { id }"
-          }
-        },
-        "DisablePerformance_object___id__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "DisablePerformance object { id }"
-          }
-        },
-        "DisableSecurity_object___id__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "DisableSecurity object { id }"
-          }
-        },
-        "DisableZaraz_object___id__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "DisableZaraz object { id }"
-          }
-        },
-        "EdgeCacheTTL_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "EdgeCacheTTL object { id, value }"
-          }
-        },
-        "EmailObfuscation_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "EmailObfuscation object { id, value }"
-          }
-        },
-        "ExplicitCacheControl_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "ExplicitCacheControl object { id, value }"
-          }
-        },
-        "ForwardingURL_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "ForwardingURL object { id, value }"
-          }
-        },
-        "HostHeaderOverride_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "HostHeaderOverride object { id, value }"
-          }
-        },
-        "IPGeolocation_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "IPGeolocation object { id, value }"
-          }
-        },
-        "Mirage_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Mirage object { id, value }"
-          }
-        },
-        "OpportunisticEncryption_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "OpportunisticEncryption object { id, value }"
-          }
-        },
-        "OriginErrorPagePassThru_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "OriginErrorPagePassThru object { id, value }"
-          }
-        },
-        "Polish_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Polish object { id, value }"
-          }
-        },
-        "ResolveOverride_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "ResolveOverride object { id, value }"
-          }
-        },
-        "RespectStrongEtag_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "RespectStrongEtag object { id, value }"
-          }
-        },
-        "ResponseBuffering_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "ResponseBuffering object { id, value }"
-          }
-        },
-        "RocketLoader_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "RocketLoader object { id, value }"
-          }
-        },
-        "SecurityLevel_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "SecurityLevel object { id, value }"
-          }
-        },
-        "SortQueryStringForCache_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "SortQueryStringForCache object { id, value }"
-          }
-        },
-        "SSL_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "SSL object { id, value }"
-          }
-        },
-        "TrueClientIPHeader_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "TrueClientIPHeader object { id, value }"
-          }
-        },
-        "WAF_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "WAF object { id, value }"
+            "smithy.api#documentation": "The status of Automatic HTTPS Rewrites."
           }
         }
       }
@@ -1266,245 +672,47 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.page_rules#EditResponseActionsItemId": {
+      "type": "enum",
+      "members": {
+        "ALWAYS_USE_HTTPS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "always_use_https"
+          }
+        }
+      }
+    },
+    "com.cloudflare.page_rules#EditResponseActionsItemValue": {
+      "type": "enum",
+      "members": {
+        "ON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "on"
+          }
+        },
+        "OFF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "off"
+          }
+        }
+      }
+    },
     "com.cloudflare.page_rules#EditResponseActionsItem": {
       "type": "structure",
       "members": {
-        "AlwaysUseHTTPS_object___id__": {
-          "target": "smithy.api#Document",
+        "id": {
+          "target": "com.cloudflare.page_rules#EditResponseActionsItemId",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "AlwaysUseHTTPS object { id }"
+            "smithy.api#documentation": "If enabled, any `http://`` URL is converted to`https://` through a"
           }
         },
-        "AutomaticHTTPSRewrites_object___id__value__": {
-          "target": "smithy.api#Document",
+        "value": {
+          "target": "com.cloudflare.page_rules#EditResponseActionsItemValue",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "AutomaticHTTPSRewrites object { id, value }"
-          }
-        },
-        "BrowserCacheTTL_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "BrowserCacheTTL object { id, value }"
-          }
-        },
-        "BrowserCheck_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "BrowserCheck object { id, value }"
-          }
-        },
-        "BypassCacheOnCookie_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "BypassCacheOnCookie object { id, value }"
-          }
-        },
-        "CacheByDeviceType_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "CacheByDeviceType object { id, value }"
-          }
-        },
-        "CacheDeceptionArmor_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "CacheDeceptionArmor object { id, value }"
-          }
-        },
-        "CacheKeyFields_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "CacheKeyFields object { id, value }"
-          }
-        },
-        "CacheLevel_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "CacheLevel object { id, value }"
-          }
-        },
-        "CacheOnCookie_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "CacheOnCookie object { id, value }"
-          }
-        },
-        "CacheTTLByStatus_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "CacheTTLByStatus object { id, value }"
-          }
-        },
-        "DisableApps_object___id__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "DisableApps object { id }"
-          }
-        },
-        "DisablePerformance_object___id__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "DisablePerformance object { id }"
-          }
-        },
-        "DisableSecurity_object___id__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "DisableSecurity object { id }"
-          }
-        },
-        "DisableZaraz_object___id__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "DisableZaraz object { id }"
-          }
-        },
-        "EdgeCacheTTL_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "EdgeCacheTTL object { id, value }"
-          }
-        },
-        "EmailObfuscation_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "EmailObfuscation object { id, value }"
-          }
-        },
-        "ExplicitCacheControl_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "ExplicitCacheControl object { id, value }"
-          }
-        },
-        "ForwardingURL_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "ForwardingURL object { id, value }"
-          }
-        },
-        "HostHeaderOverride_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "HostHeaderOverride object { id, value }"
-          }
-        },
-        "IPGeolocation_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "IPGeolocation object { id, value }"
-          }
-        },
-        "Mirage_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Mirage object { id, value }"
-          }
-        },
-        "OpportunisticEncryption_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "OpportunisticEncryption object { id, value }"
-          }
-        },
-        "OriginErrorPagePassThru_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "OriginErrorPagePassThru object { id, value }"
-          }
-        },
-        "Polish_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Polish object { id, value }"
-          }
-        },
-        "ResolveOverride_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "ResolveOverride object { id, value }"
-          }
-        },
-        "RespectStrongEtag_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "RespectStrongEtag object { id, value }"
-          }
-        },
-        "ResponseBuffering_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "ResponseBuffering object { id, value }"
-          }
-        },
-        "RocketLoader_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "RocketLoader object { id, value }"
-          }
-        },
-        "SecurityLevel_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "SecurityLevel object { id, value }"
-          }
-        },
-        "SortQueryStringForCache_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "SortQueryStringForCache object { id, value }"
-          }
-        },
-        "SSL_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "SSL object { id, value }"
-          }
-        },
-        "TrueClientIPHeader_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "TrueClientIPHeader object { id, value }"
-          }
-        },
-        "WAF_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "WAF object { id, value }"
+            "smithy.api#documentation": "The status of Automatic HTTPS Rewrites."
           }
         }
       }
@@ -1707,245 +915,47 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.page_rules#GetResponseActionsItemId": {
+      "type": "enum",
+      "members": {
+        "ALWAYS_USE_HTTPS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "always_use_https"
+          }
+        }
+      }
+    },
+    "com.cloudflare.page_rules#GetResponseActionsItemValue": {
+      "type": "enum",
+      "members": {
+        "ON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "on"
+          }
+        },
+        "OFF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "off"
+          }
+        }
+      }
+    },
     "com.cloudflare.page_rules#GetResponseActionsItem": {
       "type": "structure",
       "members": {
-        "AlwaysUseHTTPS_object___id__": {
-          "target": "smithy.api#Document",
+        "id": {
+          "target": "com.cloudflare.page_rules#GetResponseActionsItemId",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "AlwaysUseHTTPS object { id }"
+            "smithy.api#documentation": "If enabled, any `http://`` URL is converted to`https://` through a"
           }
         },
-        "AutomaticHTTPSRewrites_object___id__value__": {
-          "target": "smithy.api#Document",
+        "value": {
+          "target": "com.cloudflare.page_rules#GetResponseActionsItemValue",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "AutomaticHTTPSRewrites object { id, value }"
-          }
-        },
-        "BrowserCacheTTL_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "BrowserCacheTTL object { id, value }"
-          }
-        },
-        "BrowserCheck_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "BrowserCheck object { id, value }"
-          }
-        },
-        "BypassCacheOnCookie_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "BypassCacheOnCookie object { id, value }"
-          }
-        },
-        "CacheByDeviceType_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "CacheByDeviceType object { id, value }"
-          }
-        },
-        "CacheDeceptionArmor_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "CacheDeceptionArmor object { id, value }"
-          }
-        },
-        "CacheKeyFields_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "CacheKeyFields object { id, value }"
-          }
-        },
-        "CacheLevel_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "CacheLevel object { id, value }"
-          }
-        },
-        "CacheOnCookie_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "CacheOnCookie object { id, value }"
-          }
-        },
-        "CacheTTLByStatus_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "CacheTTLByStatus object { id, value }"
-          }
-        },
-        "DisableApps_object___id__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "DisableApps object { id }"
-          }
-        },
-        "DisablePerformance_object___id__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "DisablePerformance object { id }"
-          }
-        },
-        "DisableSecurity_object___id__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "DisableSecurity object { id }"
-          }
-        },
-        "DisableZaraz_object___id__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "DisableZaraz object { id }"
-          }
-        },
-        "EdgeCacheTTL_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "EdgeCacheTTL object { id, value }"
-          }
-        },
-        "EmailObfuscation_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "EmailObfuscation object { id, value }"
-          }
-        },
-        "ExplicitCacheControl_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "ExplicitCacheControl object { id, value }"
-          }
-        },
-        "ForwardingURL_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "ForwardingURL object { id, value }"
-          }
-        },
-        "HostHeaderOverride_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "HostHeaderOverride object { id, value }"
-          }
-        },
-        "IPGeolocation_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "IPGeolocation object { id, value }"
-          }
-        },
-        "Mirage_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Mirage object { id, value }"
-          }
-        },
-        "OpportunisticEncryption_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "OpportunisticEncryption object { id, value }"
-          }
-        },
-        "OriginErrorPagePassThru_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "OriginErrorPagePassThru object { id, value }"
-          }
-        },
-        "Polish_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Polish object { id, value }"
-          }
-        },
-        "ResolveOverride_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "ResolveOverride object { id, value }"
-          }
-        },
-        "RespectStrongEtag_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "RespectStrongEtag object { id, value }"
-          }
-        },
-        "ResponseBuffering_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "ResponseBuffering object { id, value }"
-          }
-        },
-        "RocketLoader_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "RocketLoader object { id, value }"
-          }
-        },
-        "SecurityLevel_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "SecurityLevel object { id, value }"
-          }
-        },
-        "SortQueryStringForCache_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "SortQueryStringForCache object { id, value }"
-          }
-        },
-        "SSL_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "SSL object { id, value }"
-          }
-        },
-        "TrueClientIPHeader_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "TrueClientIPHeader object { id, value }"
-          }
-        },
-        "WAF_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "WAF object { id, value }"
+            "smithy.api#documentation": "The status of Automatic HTTPS Rewrites."
           }
         }
       }
@@ -2237,245 +1247,47 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.page_rules#ListResultItemActionsItemId": {
+      "type": "enum",
+      "members": {
+        "ALWAYS_USE_HTTPS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "always_use_https"
+          }
+        }
+      }
+    },
+    "com.cloudflare.page_rules#ListResultItemActionsItemValue": {
+      "type": "enum",
+      "members": {
+        "ON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "on"
+          }
+        },
+        "OFF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "off"
+          }
+        }
+      }
+    },
     "com.cloudflare.page_rules#ListResultItemActionsItem": {
       "type": "structure",
       "members": {
-        "AlwaysUseHTTPS_object___id__": {
-          "target": "smithy.api#Document",
+        "id": {
+          "target": "com.cloudflare.page_rules#ListResultItemActionsItemId",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "AlwaysUseHTTPS object { id }"
+            "smithy.api#documentation": "If enabled, any `http://`` URL is converted to`https://` through a"
           }
         },
-        "AutomaticHTTPSRewrites_object___id__value__": {
-          "target": "smithy.api#Document",
+        "value": {
+          "target": "com.cloudflare.page_rules#ListResultItemActionsItemValue",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "AutomaticHTTPSRewrites object { id, value }"
-          }
-        },
-        "BrowserCacheTTL_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "BrowserCacheTTL object { id, value }"
-          }
-        },
-        "BrowserCheck_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "BrowserCheck object { id, value }"
-          }
-        },
-        "BypassCacheOnCookie_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "BypassCacheOnCookie object { id, value }"
-          }
-        },
-        "CacheByDeviceType_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "CacheByDeviceType object { id, value }"
-          }
-        },
-        "CacheDeceptionArmor_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "CacheDeceptionArmor object { id, value }"
-          }
-        },
-        "CacheKeyFields_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "CacheKeyFields object { id, value }"
-          }
-        },
-        "CacheLevel_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "CacheLevel object { id, value }"
-          }
-        },
-        "CacheOnCookie_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "CacheOnCookie object { id, value }"
-          }
-        },
-        "CacheTTLByStatus_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "CacheTTLByStatus object { id, value }"
-          }
-        },
-        "DisableApps_object___id__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "DisableApps object { id }"
-          }
-        },
-        "DisablePerformance_object___id__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "DisablePerformance object { id }"
-          }
-        },
-        "DisableSecurity_object___id__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "DisableSecurity object { id }"
-          }
-        },
-        "DisableZaraz_object___id__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "DisableZaraz object { id }"
-          }
-        },
-        "EdgeCacheTTL_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "EdgeCacheTTL object { id, value }"
-          }
-        },
-        "EmailObfuscation_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "EmailObfuscation object { id, value }"
-          }
-        },
-        "ExplicitCacheControl_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "ExplicitCacheControl object { id, value }"
-          }
-        },
-        "ForwardingURL_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "ForwardingURL object { id, value }"
-          }
-        },
-        "HostHeaderOverride_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "HostHeaderOverride object { id, value }"
-          }
-        },
-        "IPGeolocation_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "IPGeolocation object { id, value }"
-          }
-        },
-        "Mirage_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Mirage object { id, value }"
-          }
-        },
-        "OpportunisticEncryption_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "OpportunisticEncryption object { id, value }"
-          }
-        },
-        "OriginErrorPagePassThru_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "OriginErrorPagePassThru object { id, value }"
-          }
-        },
-        "Polish_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Polish object { id, value }"
-          }
-        },
-        "ResolveOverride_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "ResolveOverride object { id, value }"
-          }
-        },
-        "RespectStrongEtag_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "RespectStrongEtag object { id, value }"
-          }
-        },
-        "ResponseBuffering_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "ResponseBuffering object { id, value }"
-          }
-        },
-        "RocketLoader_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "RocketLoader object { id, value }"
-          }
-        },
-        "SecurityLevel_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "SecurityLevel object { id, value }"
-          }
-        },
-        "SortQueryStringForCache_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "SortQueryStringForCache object { id, value }"
-          }
-        },
-        "SSL_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "SSL object { id, value }"
-          }
-        },
-        "TrueClientIPHeader_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "TrueClientIPHeader object { id, value }"
-          }
-        },
-        "WAF_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "WAF object { id, value }"
+            "smithy.api#documentation": "The status of Automatic HTTPS Rewrites."
           }
         }
       }
@@ -2672,245 +1484,47 @@
         "smithy.api#readonly": {}
       }
     },
+    "com.cloudflare.page_rules#UpdateRequestActionsItemId": {
+      "type": "enum",
+      "members": {
+        "ALWAYS_USE_HTTPS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "always_use_https"
+          }
+        }
+      }
+    },
+    "com.cloudflare.page_rules#UpdateRequestActionsItemValue": {
+      "type": "enum",
+      "members": {
+        "ON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "on"
+          }
+        },
+        "OFF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "off"
+          }
+        }
+      }
+    },
     "com.cloudflare.page_rules#UpdateRequestActionsItem": {
       "type": "structure",
       "members": {
-        "AlwaysUseHTTPS_object___id__": {
-          "target": "smithy.api#Document",
+        "id": {
+          "target": "com.cloudflare.page_rules#UpdateRequestActionsItemId",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "AlwaysUseHTTPS object { id }"
+            "smithy.api#documentation": "If enabled, any `http://`` URL is converted to`https://` through a"
           }
         },
-        "AutomaticHTTPSRewrites_object___id__value__": {
-          "target": "smithy.api#Document",
+        "value": {
+          "target": "com.cloudflare.page_rules#UpdateRequestActionsItemValue",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "AutomaticHTTPSRewrites object { id, value }"
-          }
-        },
-        "BrowserCacheTTL_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "BrowserCacheTTL object { id, value }"
-          }
-        },
-        "BrowserCheck_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "BrowserCheck object { id, value }"
-          }
-        },
-        "BypassCacheOnCookie_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "BypassCacheOnCookie object { id, value }"
-          }
-        },
-        "CacheByDeviceType_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "CacheByDeviceType object { id, value }"
-          }
-        },
-        "CacheDeceptionArmor_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "CacheDeceptionArmor object { id, value }"
-          }
-        },
-        "CacheKeyFields_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "CacheKeyFields object { id, value }"
-          }
-        },
-        "CacheLevel_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "CacheLevel object { id, value }"
-          }
-        },
-        "CacheOnCookie_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "CacheOnCookie object { id, value }"
-          }
-        },
-        "CacheTTLByStatus_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "CacheTTLByStatus object { id, value }"
-          }
-        },
-        "DisableApps_object___id__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "DisableApps object { id }"
-          }
-        },
-        "DisablePerformance_object___id__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "DisablePerformance object { id }"
-          }
-        },
-        "DisableSecurity_object___id__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "DisableSecurity object { id }"
-          }
-        },
-        "DisableZaraz_object___id__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "DisableZaraz object { id }"
-          }
-        },
-        "EdgeCacheTTL_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "EdgeCacheTTL object { id, value }"
-          }
-        },
-        "EmailObfuscation_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "EmailObfuscation object { id, value }"
-          }
-        },
-        "ExplicitCacheControl_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "ExplicitCacheControl object { id, value }"
-          }
-        },
-        "ForwardingURL_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "ForwardingURL object { id, value }"
-          }
-        },
-        "HostHeaderOverride_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "HostHeaderOverride object { id, value }"
-          }
-        },
-        "IPGeolocation_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "IPGeolocation object { id, value }"
-          }
-        },
-        "Mirage_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Mirage object { id, value }"
-          }
-        },
-        "OpportunisticEncryption_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "OpportunisticEncryption object { id, value }"
-          }
-        },
-        "OriginErrorPagePassThru_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "OriginErrorPagePassThru object { id, value }"
-          }
-        },
-        "Polish_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Polish object { id, value }"
-          }
-        },
-        "ResolveOverride_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "ResolveOverride object { id, value }"
-          }
-        },
-        "RespectStrongEtag_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "RespectStrongEtag object { id, value }"
-          }
-        },
-        "ResponseBuffering_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "ResponseBuffering object { id, value }"
-          }
-        },
-        "RocketLoader_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "RocketLoader object { id, value }"
-          }
-        },
-        "SecurityLevel_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "SecurityLevel object { id, value }"
-          }
-        },
-        "SortQueryStringForCache_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "SortQueryStringForCache object { id, value }"
-          }
-        },
-        "SSL_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "SSL object { id, value }"
-          }
-        },
-        "TrueClientIPHeader_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "TrueClientIPHeader object { id, value }"
-          }
-        },
-        "WAF_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "WAF object { id, value }"
+            "smithy.api#documentation": "The status of Automatic HTTPS Rewrites."
           }
         }
       }
@@ -3064,245 +1678,47 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.page_rules#UpdateResponseActionsItemId": {
+      "type": "enum",
+      "members": {
+        "ALWAYS_USE_HTTPS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "always_use_https"
+          }
+        }
+      }
+    },
+    "com.cloudflare.page_rules#UpdateResponseActionsItemValue": {
+      "type": "enum",
+      "members": {
+        "ON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "on"
+          }
+        },
+        "OFF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "off"
+          }
+        }
+      }
+    },
     "com.cloudflare.page_rules#UpdateResponseActionsItem": {
       "type": "structure",
       "members": {
-        "AlwaysUseHTTPS_object___id__": {
-          "target": "smithy.api#Document",
+        "id": {
+          "target": "com.cloudflare.page_rules#UpdateResponseActionsItemId",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "AlwaysUseHTTPS object { id }"
+            "smithy.api#documentation": "If enabled, any `http://`` URL is converted to`https://` through a"
           }
         },
-        "AutomaticHTTPSRewrites_object___id__value__": {
-          "target": "smithy.api#Document",
+        "value": {
+          "target": "com.cloudflare.page_rules#UpdateResponseActionsItemValue",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "AutomaticHTTPSRewrites object { id, value }"
-          }
-        },
-        "BrowserCacheTTL_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "BrowserCacheTTL object { id, value }"
-          }
-        },
-        "BrowserCheck_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "BrowserCheck object { id, value }"
-          }
-        },
-        "BypassCacheOnCookie_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "BypassCacheOnCookie object { id, value }"
-          }
-        },
-        "CacheByDeviceType_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "CacheByDeviceType object { id, value }"
-          }
-        },
-        "CacheDeceptionArmor_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "CacheDeceptionArmor object { id, value }"
-          }
-        },
-        "CacheKeyFields_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "CacheKeyFields object { id, value }"
-          }
-        },
-        "CacheLevel_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "CacheLevel object { id, value }"
-          }
-        },
-        "CacheOnCookie_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "CacheOnCookie object { id, value }"
-          }
-        },
-        "CacheTTLByStatus_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "CacheTTLByStatus object { id, value }"
-          }
-        },
-        "DisableApps_object___id__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "DisableApps object { id }"
-          }
-        },
-        "DisablePerformance_object___id__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "DisablePerformance object { id }"
-          }
-        },
-        "DisableSecurity_object___id__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "DisableSecurity object { id }"
-          }
-        },
-        "DisableZaraz_object___id__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "DisableZaraz object { id }"
-          }
-        },
-        "EdgeCacheTTL_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "EdgeCacheTTL object { id, value }"
-          }
-        },
-        "EmailObfuscation_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "EmailObfuscation object { id, value }"
-          }
-        },
-        "ExplicitCacheControl_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "ExplicitCacheControl object { id, value }"
-          }
-        },
-        "ForwardingURL_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "ForwardingURL object { id, value }"
-          }
-        },
-        "HostHeaderOverride_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "HostHeaderOverride object { id, value }"
-          }
-        },
-        "IPGeolocation_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "IPGeolocation object { id, value }"
-          }
-        },
-        "Mirage_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Mirage object { id, value }"
-          }
-        },
-        "OpportunisticEncryption_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "OpportunisticEncryption object { id, value }"
-          }
-        },
-        "OriginErrorPagePassThru_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "OriginErrorPagePassThru object { id, value }"
-          }
-        },
-        "Polish_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Polish object { id, value }"
-          }
-        },
-        "ResolveOverride_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "ResolveOverride object { id, value }"
-          }
-        },
-        "RespectStrongEtag_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "RespectStrongEtag object { id, value }"
-          }
-        },
-        "ResponseBuffering_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "ResponseBuffering object { id, value }"
-          }
-        },
-        "RocketLoader_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "RocketLoader object { id, value }"
-          }
-        },
-        "SecurityLevel_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "SecurityLevel object { id, value }"
-          }
-        },
-        "SortQueryStringForCache_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "SortQueryStringForCache object { id, value }"
-          }
-        },
-        "SSL_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "SSL object { id, value }"
-          }
-        },
-        "TrueClientIPHeader_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "TrueClientIPHeader object { id, value }"
-          }
-        },
-        "WAF_object___id__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "WAF object { id, value }"
+            "smithy.api#documentation": "The status of Automatic HTTPS Rewrites."
           }
         }
       }

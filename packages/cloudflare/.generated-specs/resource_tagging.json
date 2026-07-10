@@ -89,223 +89,72 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.resource_tagging#ListResultItemTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.resource_tagging#ListResultItemType": {
+      "type": "enum",
+      "members": {
+        "ACCESS_APPLICATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "access_application"
+          }
+        }
+      }
+    },
     "com.cloudflare.resource_tagging#ListResultItem": {
       "type": "structure",
       "members": {
-        "AccessApplication_object___id__etag__name__2_more__": {
-          "target": "smithy.api#Document",
+        "id": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Response for access_application resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "AccessApplication object { id, etag, name, 2 more }"
+            "smithy.api#documentation": "Identifies the unique resource."
           }
         },
-        "AccessApplicationPolicy_object___id__access_application_id__etag__4_more__": {
-          "target": "smithy.api#Document",
+        "etag": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Response for access_application_policy resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "AccessApplicationPolicy object { id, access_application_id, etag, 4 more }"
+            "smithy.api#documentation": "ETag identifier for optimistic concurrency control. Formatted as \"v1:<hash>\" where"
           }
         },
-        "AccessGroup_object___id__etag__name__2_more__": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Response for access_group resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "AccessGroup object { id, etag, name, 2 more }"
+            "smithy.api#documentation": "Human-readable name of the resource."
           }
         },
-        "Account_object___id__etag__name__2_more__": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.cloudflare.resource_tagging#ListResultItemTagsMap",
           "traits": {
-            "smithy.api#documentation": "Response for account resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Account object { id, etag, name, 2 more }"
+            "smithy.api#documentation": "Contains key-value pairs of tags."
           }
         },
-        "AIGateway_object___id__etag__name__2_more__": {
-          "target": "smithy.api#Document",
+        "type": {
+          "target": "com.cloudflare.resource_tagging#ListResultItemType"
+        },
+        "access_application_id": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Response for ai_gateway resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "AIGateway object { id, etag, name, 2 more }"
+            "smithy.api#documentation": "Access application ID is required only for access_application_policy resources"
           }
         },
-        "AlertingPolicy_object___id__etag__name__2_more__": {
-          "target": "smithy.api#Document",
+        "zone_id": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Response for alerting_policy resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "AlertingPolicy object { id, etag, name, 2 more }"
+            "smithy.api#documentation": "Zone ID is required only for zone-level resources"
           }
         },
-        "AlertingWebhook_object___id__etag__name__2_more__": {
-          "target": "smithy.api#Document",
+        "worker_id": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Response for alerting_webhook resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "AlertingWebhook object { id, etag, name, 2 more }"
-          }
-        },
-        "APIGatewayOperation_object___id__etag__name__3_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Response for api_gateway_operation resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "APIGatewayOperation object { id, etag, name, 3 more }"
-          }
-        },
-        "CloudflaredTunnel_object___id__etag__name__2_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Response for cloudflared_tunnel resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "CloudflaredTunnel object { id, etag, name, 2 more }"
-          }
-        },
-        "CustomCertificate_object___id__etag__name__3_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Response for custom_certificate resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "CustomCertificate object { id, etag, name, 3 more }"
-          }
-        },
-        "CustomHostname_object___id__etag__name__3_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Response for custom_hostname resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "CustomHostname object { id, etag, name, 3 more }"
-          }
-        },
-        "D1Database_object___id__etag__name__2_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Response for d1_database resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "D1Database object { id, etag, name, 2 more }"
-          }
-        },
-        "DNSRecord_object___id__etag__name__3_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Response for dns_record resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "DNSRecord object { id, etag, name, 3 more }"
-          }
-        },
-        "DurableObjectNamespace_object___id__etag__name__2_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Response for durable_object_namespace resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "DurableObjectNamespace object { id, etag, name, 2 more }"
-          }
-        },
-        "GatewayList_object___id__etag__name__2_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Response for gateway_list resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "GatewayList object { id, etag, name, 2 more }"
-          }
-        },
-        "GatewayRule_object___id__etag__name__2_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Response for gateway_rule resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "GatewayRule object { id, etag, name, 2 more }"
-          }
-        },
-        "Image_object___id__etag__name__2_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Response for image resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Image object { id, etag, name, 2 more }"
-          }
-        },
-        "KVNamespace_object___id__etag__name__2_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Response for kv_namespace resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "KVNamespace object { id, etag, name, 2 more }"
-          }
-        },
-        "ManagedClientCertificate_object___id__etag__name__3_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Response for managed_client_certificate resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "ManagedClientCertificate object { id, etag, name, 3 more }"
-          }
-        },
-        "Queue_object___id__etag__name__2_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Response for queue resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Queue object { id, etag, name, 2 more }"
-          }
-        },
-        "R2Bucket_object___id__etag__name__2_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Response for r2_bucket resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "R2Bucket object { id, etag, name, 2 more }"
-          }
-        },
-        "ResourceShare_object___id__etag__name__2_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Response for resource_share resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "ResourceShare object { id, etag, name, 2 more }"
-          }
-        },
-        "StreamLiveInput_object___id__etag__name__2_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Response for stream_live_input resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "StreamLiveInput object { id, etag, name, 2 more }"
-          }
-        },
-        "StreamVideo_object___id__etag__name__2_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Response for stream_video resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "StreamVideo object { id, etag, name, 2 more }"
-          }
-        },
-        "Worker_object___id__etag__name__2_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Response for worker resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Worker object { id, etag, name, 2 more }"
-          }
-        },
-        "WorkerVersion_object___id__etag__name__3_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Response for worker_version resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "WorkerVersion object { id, etag, name, 3 more }"
-          }
-        },
-        "Zone_object___id__etag__name__3_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Response for zone resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Zone object { id, etag, name, 3 more }"
+            "smithy.api#documentation": "Worker ID is required only for worker_version resources"
           }
         }
       }
@@ -451,223 +300,72 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.resource_tagging#AccountTagsGetResponseTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.resource_tagging#AccountTagsGetResponseType": {
+      "type": "enum",
+      "members": {
+        "ACCESS_APPLICATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "access_application"
+          }
+        }
+      }
+    },
     "com.cloudflare.resource_tagging#AccountTagsGetResponse": {
       "type": "structure",
       "members": {
-        "AccessApplication_object___id__etag__name__2_more__": {
-          "target": "smithy.api#Document",
+        "id": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Response for access_application resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "AccessApplication object { id, etag, name, 2 more }"
+            "smithy.api#documentation": "Identifies the unique resource."
           }
         },
-        "AccessApplicationPolicy_object___id__access_application_id__etag__4_more__": {
-          "target": "smithy.api#Document",
+        "etag": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Response for access_application_policy resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "AccessApplicationPolicy object { id, access_application_id, etag, 4 more }"
+            "smithy.api#documentation": "ETag identifier for optimistic concurrency control. Formatted as \"v1:<hash>\" where"
           }
         },
-        "AccessGroup_object___id__etag__name__2_more__": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Response for access_group resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "AccessGroup object { id, etag, name, 2 more }"
+            "smithy.api#documentation": "Human-readable name of the resource."
           }
         },
-        "Account_object___id__etag__name__2_more__": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.cloudflare.resource_tagging#AccountTagsGetResponseTagsMap",
           "traits": {
-            "smithy.api#documentation": "Response for account resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Account object { id, etag, name, 2 more }"
+            "smithy.api#documentation": "Contains key-value pairs of tags."
           }
         },
-        "AIGateway_object___id__etag__name__2_more__": {
-          "target": "smithy.api#Document",
+        "type": {
+          "target": "com.cloudflare.resource_tagging#AccountTagsGetResponseType"
+        },
+        "access_application_id": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Response for ai_gateway resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "AIGateway object { id, etag, name, 2 more }"
+            "smithy.api#documentation": "Access application ID is required only for access_application_policy resources"
           }
         },
-        "AlertingPolicy_object___id__etag__name__2_more__": {
-          "target": "smithy.api#Document",
+        "zone_id": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Response for alerting_policy resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "AlertingPolicy object { id, etag, name, 2 more }"
+            "smithy.api#documentation": "Zone ID is required only for zone-level resources"
           }
         },
-        "AlertingWebhook_object___id__etag__name__2_more__": {
-          "target": "smithy.api#Document",
+        "worker_id": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Response for alerting_webhook resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "AlertingWebhook object { id, etag, name, 2 more }"
-          }
-        },
-        "APIGatewayOperation_object___id__etag__name__3_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Response for api_gateway_operation resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "APIGatewayOperation object { id, etag, name, 3 more }"
-          }
-        },
-        "CloudflaredTunnel_object___id__etag__name__2_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Response for cloudflared_tunnel resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "CloudflaredTunnel object { id, etag, name, 2 more }"
-          }
-        },
-        "CustomCertificate_object___id__etag__name__3_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Response for custom_certificate resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "CustomCertificate object { id, etag, name, 3 more }"
-          }
-        },
-        "CustomHostname_object___id__etag__name__3_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Response for custom_hostname resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "CustomHostname object { id, etag, name, 3 more }"
-          }
-        },
-        "D1Database_object___id__etag__name__2_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Response for d1_database resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "D1Database object { id, etag, name, 2 more }"
-          }
-        },
-        "DNSRecord_object___id__etag__name__3_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Response for dns_record resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "DNSRecord object { id, etag, name, 3 more }"
-          }
-        },
-        "DurableObjectNamespace_object___id__etag__name__2_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Response for durable_object_namespace resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "DurableObjectNamespace object { id, etag, name, 2 more }"
-          }
-        },
-        "GatewayList_object___id__etag__name__2_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Response for gateway_list resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "GatewayList object { id, etag, name, 2 more }"
-          }
-        },
-        "GatewayRule_object___id__etag__name__2_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Response for gateway_rule resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "GatewayRule object { id, etag, name, 2 more }"
-          }
-        },
-        "Image_object___id__etag__name__2_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Response for image resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Image object { id, etag, name, 2 more }"
-          }
-        },
-        "KVNamespace_object___id__etag__name__2_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Response for kv_namespace resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "KVNamespace object { id, etag, name, 2 more }"
-          }
-        },
-        "ManagedClientCertificate_object___id__etag__name__3_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Response for managed_client_certificate resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "ManagedClientCertificate object { id, etag, name, 3 more }"
-          }
-        },
-        "Queue_object___id__etag__name__2_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Response for queue resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Queue object { id, etag, name, 2 more }"
-          }
-        },
-        "R2Bucket_object___id__etag__name__2_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Response for r2_bucket resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "R2Bucket object { id, etag, name, 2 more }"
-          }
-        },
-        "ResourceShare_object___id__etag__name__2_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Response for resource_share resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "ResourceShare object { id, etag, name, 2 more }"
-          }
-        },
-        "StreamLiveInput_object___id__etag__name__2_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Response for stream_live_input resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "StreamLiveInput object { id, etag, name, 2 more }"
-          }
-        },
-        "StreamVideo_object___id__etag__name__2_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Response for stream_video resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "StreamVideo object { id, etag, name, 2 more }"
-          }
-        },
-        "Worker_object___id__etag__name__2_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Response for worker resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Worker object { id, etag, name, 2 more }"
-          }
-        },
-        "WorkerVersion_object___id__etag__name__3_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Response for worker_version resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "WorkerVersion object { id, etag, name, 3 more }"
-          }
-        },
-        "Zone_object___id__etag__name__3_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Response for zone resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Zone object { id, etag, name, 3 more }"
+            "smithy.api#documentation": "Worker ID is required only for worker_version resources"
           }
         }
       },
@@ -694,23 +392,63 @@
         "smithy.api#readonly": {}
       }
     },
+    "com.cloudflare.resource_tagging#AccountTagsUpdateRequestBodyResourceType": {
+      "type": "enum",
+      "members": {
+        "ACCESS_APPLICATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "access_application"
+          }
+        },
+        "ACCESS_GROUP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "access_group"
+          }
+        },
+        "ACCOUNT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "account"
+          }
+        }
+      }
+    },
+    "com.cloudflare.resource_tagging#AccountTagsUpdateRequestBodyTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
     "com.cloudflare.resource_tagging#AccountTagsUpdateRequestBody": {
       "type": "structure",
       "members": {
-        "ResourceTaggingSetTagsRequestAccountLevelWorkerVersion_object___resource_id__resource_type__worker_id__tags__": {
-          "target": "smithy.api#Document",
+        "resource_id": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Request body schema for deleting tags from account-level resources.",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "ResourceTaggingSetTagsRequestAccountLevelWorkerVersion object { resource_id, resource_type, worker_id, tags }"
+            "smithy.api#documentation": "Identifies the unique resource."
           }
         },
-        "ResourceTaggingSetTagsRequestAccountLevelBase_object___resource_id__resource_type__tags__": {
-          "target": "smithy.api#Document",
+        "resource_type": {
+          "target": "com.cloudflare.resource_tagging#AccountTagsUpdateRequestBodyResourceType",
           "traits": {
-            "smithy.api#documentation": "Request body schema for deleting tags from account-level resources.",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "ResourceTaggingSetTagsRequestAccountLevelBase object { resource_id, resource_type, tags }"
+            "smithy.api#documentation": "Enum for base account-level resource types (those with no extra required fields)."
+          }
+        },
+        "worker_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Worker ID is required only for worker_version resources"
+          }
+        },
+        "tags": {
+          "target": "com.cloudflare.resource_tagging#AccountTagsUpdateRequestBodyTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Contains key-value pairs of tags."
           }
         }
       }
@@ -744,223 +482,72 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.resource_tagging#AccountTagsUpdateResponseTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.resource_tagging#AccountTagsUpdateResponseType": {
+      "type": "enum",
+      "members": {
+        "ACCESS_APPLICATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "access_application"
+          }
+        }
+      }
+    },
     "com.cloudflare.resource_tagging#AccountTagsUpdateResponse": {
       "type": "structure",
       "members": {
-        "AccessApplication_object___id__etag__name__2_more__": {
-          "target": "smithy.api#Document",
+        "id": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Response for access_application resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "AccessApplication object { id, etag, name, 2 more }"
+            "smithy.api#documentation": "Identifies the unique resource."
           }
         },
-        "AccessApplicationPolicy_object___id__access_application_id__etag__4_more__": {
-          "target": "smithy.api#Document",
+        "etag": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Response for access_application_policy resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "AccessApplicationPolicy object { id, access_application_id, etag, 4 more }"
+            "smithy.api#documentation": "ETag identifier for optimistic concurrency control. Formatted as \"v1:<hash>\" where"
           }
         },
-        "AccessGroup_object___id__etag__name__2_more__": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Response for access_group resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "AccessGroup object { id, etag, name, 2 more }"
+            "smithy.api#documentation": "Human-readable name of the resource."
           }
         },
-        "Account_object___id__etag__name__2_more__": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.cloudflare.resource_tagging#AccountTagsUpdateResponseTagsMap",
           "traits": {
-            "smithy.api#documentation": "Response for account resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Account object { id, etag, name, 2 more }"
+            "smithy.api#documentation": "Contains key-value pairs of tags."
           }
         },
-        "AIGateway_object___id__etag__name__2_more__": {
-          "target": "smithy.api#Document",
+        "type": {
+          "target": "com.cloudflare.resource_tagging#AccountTagsUpdateResponseType"
+        },
+        "access_application_id": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Response for ai_gateway resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "AIGateway object { id, etag, name, 2 more }"
+            "smithy.api#documentation": "Access application ID is required only for access_application_policy resources"
           }
         },
-        "AlertingPolicy_object___id__etag__name__2_more__": {
-          "target": "smithy.api#Document",
+        "zone_id": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Response for alerting_policy resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "AlertingPolicy object { id, etag, name, 2 more }"
+            "smithy.api#documentation": "Zone ID is required only for zone-level resources"
           }
         },
-        "AlertingWebhook_object___id__etag__name__2_more__": {
-          "target": "smithy.api#Document",
+        "worker_id": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Response for alerting_webhook resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "AlertingWebhook object { id, etag, name, 2 more }"
-          }
-        },
-        "APIGatewayOperation_object___id__etag__name__3_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Response for api_gateway_operation resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "APIGatewayOperation object { id, etag, name, 3 more }"
-          }
-        },
-        "CloudflaredTunnel_object___id__etag__name__2_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Response for cloudflared_tunnel resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "CloudflaredTunnel object { id, etag, name, 2 more }"
-          }
-        },
-        "CustomCertificate_object___id__etag__name__3_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Response for custom_certificate resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "CustomCertificate object { id, etag, name, 3 more }"
-          }
-        },
-        "CustomHostname_object___id__etag__name__3_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Response for custom_hostname resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "CustomHostname object { id, etag, name, 3 more }"
-          }
-        },
-        "D1Database_object___id__etag__name__2_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Response for d1_database resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "D1Database object { id, etag, name, 2 more }"
-          }
-        },
-        "DNSRecord_object___id__etag__name__3_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Response for dns_record resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "DNSRecord object { id, etag, name, 3 more }"
-          }
-        },
-        "DurableObjectNamespace_object___id__etag__name__2_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Response for durable_object_namespace resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "DurableObjectNamespace object { id, etag, name, 2 more }"
-          }
-        },
-        "GatewayList_object___id__etag__name__2_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Response for gateway_list resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "GatewayList object { id, etag, name, 2 more }"
-          }
-        },
-        "GatewayRule_object___id__etag__name__2_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Response for gateway_rule resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "GatewayRule object { id, etag, name, 2 more }"
-          }
-        },
-        "Image_object___id__etag__name__2_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Response for image resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Image object { id, etag, name, 2 more }"
-          }
-        },
-        "KVNamespace_object___id__etag__name__2_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Response for kv_namespace resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "KVNamespace object { id, etag, name, 2 more }"
-          }
-        },
-        "ManagedClientCertificate_object___id__etag__name__3_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Response for managed_client_certificate resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "ManagedClientCertificate object { id, etag, name, 3 more }"
-          }
-        },
-        "Queue_object___id__etag__name__2_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Response for queue resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Queue object { id, etag, name, 2 more }"
-          }
-        },
-        "R2Bucket_object___id__etag__name__2_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Response for r2_bucket resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "R2Bucket object { id, etag, name, 2 more }"
-          }
-        },
-        "ResourceShare_object___id__etag__name__2_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Response for resource_share resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "ResourceShare object { id, etag, name, 2 more }"
-          }
-        },
-        "StreamLiveInput_object___id__etag__name__2_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Response for stream_live_input resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "StreamLiveInput object { id, etag, name, 2 more }"
-          }
-        },
-        "StreamVideo_object___id__etag__name__2_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Response for stream_video resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "StreamVideo object { id, etag, name, 2 more }"
-          }
-        },
-        "Worker_object___id__etag__name__2_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Response for worker resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Worker object { id, etag, name, 2 more }"
-          }
-        },
-        "WorkerVersion_object___id__etag__name__3_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Response for worker_version resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "WorkerVersion object { id, etag, name, 3 more }"
-          }
-        },
-        "Zone_object___id__etag__name__3_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Response for zone resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Zone object { id, etag, name, 3 more }"
+            "smithy.api#documentation": "Worker ID is required only for worker_version resources"
           }
         }
       },
@@ -1250,223 +837,72 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.resource_tagging#ZoneTagsGetResponseTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.resource_tagging#ZoneTagsGetResponseType": {
+      "type": "enum",
+      "members": {
+        "ACCESS_APPLICATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "access_application"
+          }
+        }
+      }
+    },
     "com.cloudflare.resource_tagging#ZoneTagsGetResponse": {
       "type": "structure",
       "members": {
-        "AccessApplication_object___id__etag__name__2_more__": {
-          "target": "smithy.api#Document",
+        "id": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Response for access_application resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "AccessApplication object { id, etag, name, 2 more }"
+            "smithy.api#documentation": "Identifies the unique resource."
           }
         },
-        "AccessApplicationPolicy_object___id__access_application_id__etag__4_more__": {
-          "target": "smithy.api#Document",
+        "etag": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Response for access_application_policy resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "AccessApplicationPolicy object { id, access_application_id, etag, 4 more }"
+            "smithy.api#documentation": "ETag identifier for optimistic concurrency control. Formatted as \"v1:<hash>\" where"
           }
         },
-        "AccessGroup_object___id__etag__name__2_more__": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Response for access_group resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "AccessGroup object { id, etag, name, 2 more }"
+            "smithy.api#documentation": "Human-readable name of the resource."
           }
         },
-        "Account_object___id__etag__name__2_more__": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.cloudflare.resource_tagging#ZoneTagsGetResponseTagsMap",
           "traits": {
-            "smithy.api#documentation": "Response for account resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Account object { id, etag, name, 2 more }"
+            "smithy.api#documentation": "Contains key-value pairs of tags."
           }
         },
-        "AIGateway_object___id__etag__name__2_more__": {
-          "target": "smithy.api#Document",
+        "type": {
+          "target": "com.cloudflare.resource_tagging#ZoneTagsGetResponseType"
+        },
+        "access_application_id": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Response for ai_gateway resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "AIGateway object { id, etag, name, 2 more }"
+            "smithy.api#documentation": "Access application ID is required only for access_application_policy resources"
           }
         },
-        "AlertingPolicy_object___id__etag__name__2_more__": {
-          "target": "smithy.api#Document",
+        "zone_id": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Response for alerting_policy resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "AlertingPolicy object { id, etag, name, 2 more }"
+            "smithy.api#documentation": "Zone ID is required only for zone-level resources"
           }
         },
-        "AlertingWebhook_object___id__etag__name__2_more__": {
-          "target": "smithy.api#Document",
+        "worker_id": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Response for alerting_webhook resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "AlertingWebhook object { id, etag, name, 2 more }"
-          }
-        },
-        "APIGatewayOperation_object___id__etag__name__3_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Response for api_gateway_operation resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "APIGatewayOperation object { id, etag, name, 3 more }"
-          }
-        },
-        "CloudflaredTunnel_object___id__etag__name__2_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Response for cloudflared_tunnel resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "CloudflaredTunnel object { id, etag, name, 2 more }"
-          }
-        },
-        "CustomCertificate_object___id__etag__name__3_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Response for custom_certificate resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "CustomCertificate object { id, etag, name, 3 more }"
-          }
-        },
-        "CustomHostname_object___id__etag__name__3_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Response for custom_hostname resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "CustomHostname object { id, etag, name, 3 more }"
-          }
-        },
-        "D1Database_object___id__etag__name__2_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Response for d1_database resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "D1Database object { id, etag, name, 2 more }"
-          }
-        },
-        "DNSRecord_object___id__etag__name__3_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Response for dns_record resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "DNSRecord object { id, etag, name, 3 more }"
-          }
-        },
-        "DurableObjectNamespace_object___id__etag__name__2_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Response for durable_object_namespace resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "DurableObjectNamespace object { id, etag, name, 2 more }"
-          }
-        },
-        "GatewayList_object___id__etag__name__2_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Response for gateway_list resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "GatewayList object { id, etag, name, 2 more }"
-          }
-        },
-        "GatewayRule_object___id__etag__name__2_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Response for gateway_rule resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "GatewayRule object { id, etag, name, 2 more }"
-          }
-        },
-        "Image_object___id__etag__name__2_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Response for image resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Image object { id, etag, name, 2 more }"
-          }
-        },
-        "KVNamespace_object___id__etag__name__2_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Response for kv_namespace resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "KVNamespace object { id, etag, name, 2 more }"
-          }
-        },
-        "ManagedClientCertificate_object___id__etag__name__3_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Response for managed_client_certificate resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "ManagedClientCertificate object { id, etag, name, 3 more }"
-          }
-        },
-        "Queue_object___id__etag__name__2_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Response for queue resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Queue object { id, etag, name, 2 more }"
-          }
-        },
-        "R2Bucket_object___id__etag__name__2_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Response for r2_bucket resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "R2Bucket object { id, etag, name, 2 more }"
-          }
-        },
-        "ResourceShare_object___id__etag__name__2_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Response for resource_share resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "ResourceShare object { id, etag, name, 2 more }"
-          }
-        },
-        "StreamLiveInput_object___id__etag__name__2_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Response for stream_live_input resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "StreamLiveInput object { id, etag, name, 2 more }"
-          }
-        },
-        "StreamVideo_object___id__etag__name__2_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Response for stream_video resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "StreamVideo object { id, etag, name, 2 more }"
-          }
-        },
-        "Worker_object___id__etag__name__2_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Response for worker resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Worker object { id, etag, name, 2 more }"
-          }
-        },
-        "WorkerVersion_object___id__etag__name__3_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Response for worker_version resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "WorkerVersion object { id, etag, name, 3 more }"
-          }
-        },
-        "Zone_object___id__etag__name__3_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Response for zone resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Zone object { id, etag, name, 3 more }"
+            "smithy.api#documentation": "Worker ID is required only for worker_version resources"
           }
         }
       },
@@ -1493,23 +929,63 @@
         "smithy.api#readonly": {}
       }
     },
+    "com.cloudflare.resource_tagging#ZoneTagsUpdateRequestBodyResourceType": {
+      "type": "enum",
+      "members": {
+        "API_GATEWAY_OPERATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "api_gateway_operation"
+          }
+        },
+        "CUSTOM_CERTIFICATE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "custom_certificate"
+          }
+        },
+        "CUSTOM_HOSTNAME": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "custom_hostname"
+          }
+        }
+      }
+    },
+    "com.cloudflare.resource_tagging#ZoneTagsUpdateRequestBodyTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
     "com.cloudflare.resource_tagging#ZoneTagsUpdateRequestBody": {
       "type": "structure",
       "members": {
-        "ResourceTaggingSetTagsRequestZoneLevelBase_object___resource_id__resource_type__tags__": {
-          "target": "smithy.api#Document",
+        "resource_id": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Request body schema for deleting tags from zone-level resources. Zone ID comes from URL path.",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "ResourceTaggingSetTagsRequestZoneLevelBase object { resource_id, resource_type, tags }"
+            "smithy.api#documentation": "Identifies the unique resource."
           }
         },
-        "ResourceTaggingSetTagsRequestZoneLevelAccessApplicationPolicy_object___access_application_id__resource_id__resource_type__tags__": {
-          "target": "smithy.api#Document",
+        "resource_type": {
+          "target": "com.cloudflare.resource_tagging#ZoneTagsUpdateRequestBodyResourceType",
           "traits": {
-            "smithy.api#documentation": "Request body schema for deleting tags from zone-level resources. Zone ID comes from URL path.",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "ResourceTaggingSetTagsRequestZoneLevelAccessApplicationPolicy object { access_application_id, resource_id, resource_type, tags }"
+            "smithy.api#documentation": "Enum for base zone-level resource types (those with no extra required fields)."
+          }
+        },
+        "tags": {
+          "target": "com.cloudflare.resource_tagging#ZoneTagsUpdateRequestBodyTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Contains key-value pairs of tags."
+          }
+        },
+        "access_application_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Access application ID is required only for access_application_policy resources"
           }
         }
       }
@@ -1543,223 +1019,72 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.resource_tagging#ZoneTagsUpdateResponseTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.resource_tagging#ZoneTagsUpdateResponseType": {
+      "type": "enum",
+      "members": {
+        "ACCESS_APPLICATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "access_application"
+          }
+        }
+      }
+    },
     "com.cloudflare.resource_tagging#ZoneTagsUpdateResponse": {
       "type": "structure",
       "members": {
-        "AccessApplication_object___id__etag__name__2_more__": {
-          "target": "smithy.api#Document",
+        "id": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Response for access_application resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "AccessApplication object { id, etag, name, 2 more }"
+            "smithy.api#documentation": "Identifies the unique resource."
           }
         },
-        "AccessApplicationPolicy_object___id__access_application_id__etag__4_more__": {
-          "target": "smithy.api#Document",
+        "etag": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Response for access_application_policy resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "AccessApplicationPolicy object { id, access_application_id, etag, 4 more }"
+            "smithy.api#documentation": "ETag identifier for optimistic concurrency control. Formatted as \"v1:<hash>\" where"
           }
         },
-        "AccessGroup_object___id__etag__name__2_more__": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Response for access_group resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "AccessGroup object { id, etag, name, 2 more }"
+            "smithy.api#documentation": "Human-readable name of the resource."
           }
         },
-        "Account_object___id__etag__name__2_more__": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.cloudflare.resource_tagging#ZoneTagsUpdateResponseTagsMap",
           "traits": {
-            "smithy.api#documentation": "Response for account resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Account object { id, etag, name, 2 more }"
+            "smithy.api#documentation": "Contains key-value pairs of tags."
           }
         },
-        "AIGateway_object___id__etag__name__2_more__": {
-          "target": "smithy.api#Document",
+        "type": {
+          "target": "com.cloudflare.resource_tagging#ZoneTagsUpdateResponseType"
+        },
+        "access_application_id": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Response for ai_gateway resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "AIGateway object { id, etag, name, 2 more }"
+            "smithy.api#documentation": "Access application ID is required only for access_application_policy resources"
           }
         },
-        "AlertingPolicy_object___id__etag__name__2_more__": {
-          "target": "smithy.api#Document",
+        "zone_id": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Response for alerting_policy resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "AlertingPolicy object { id, etag, name, 2 more }"
+            "smithy.api#documentation": "Zone ID is required only for zone-level resources"
           }
         },
-        "AlertingWebhook_object___id__etag__name__2_more__": {
-          "target": "smithy.api#Document",
+        "worker_id": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Response for alerting_webhook resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "AlertingWebhook object { id, etag, name, 2 more }"
-          }
-        },
-        "APIGatewayOperation_object___id__etag__name__3_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Response for api_gateway_operation resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "APIGatewayOperation object { id, etag, name, 3 more }"
-          }
-        },
-        "CloudflaredTunnel_object___id__etag__name__2_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Response for cloudflared_tunnel resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "CloudflaredTunnel object { id, etag, name, 2 more }"
-          }
-        },
-        "CustomCertificate_object___id__etag__name__3_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Response for custom_certificate resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "CustomCertificate object { id, etag, name, 3 more }"
-          }
-        },
-        "CustomHostname_object___id__etag__name__3_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Response for custom_hostname resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "CustomHostname object { id, etag, name, 3 more }"
-          }
-        },
-        "D1Database_object___id__etag__name__2_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Response for d1_database resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "D1Database object { id, etag, name, 2 more }"
-          }
-        },
-        "DNSRecord_object___id__etag__name__3_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Response for dns_record resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "DNSRecord object { id, etag, name, 3 more }"
-          }
-        },
-        "DurableObjectNamespace_object___id__etag__name__2_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Response for durable_object_namespace resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "DurableObjectNamespace object { id, etag, name, 2 more }"
-          }
-        },
-        "GatewayList_object___id__etag__name__2_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Response for gateway_list resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "GatewayList object { id, etag, name, 2 more }"
-          }
-        },
-        "GatewayRule_object___id__etag__name__2_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Response for gateway_rule resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "GatewayRule object { id, etag, name, 2 more }"
-          }
-        },
-        "Image_object___id__etag__name__2_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Response for image resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Image object { id, etag, name, 2 more }"
-          }
-        },
-        "KVNamespace_object___id__etag__name__2_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Response for kv_namespace resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "KVNamespace object { id, etag, name, 2 more }"
-          }
-        },
-        "ManagedClientCertificate_object___id__etag__name__3_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Response for managed_client_certificate resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "ManagedClientCertificate object { id, etag, name, 3 more }"
-          }
-        },
-        "Queue_object___id__etag__name__2_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Response for queue resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Queue object { id, etag, name, 2 more }"
-          }
-        },
-        "R2Bucket_object___id__etag__name__2_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Response for r2_bucket resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "R2Bucket object { id, etag, name, 2 more }"
-          }
-        },
-        "ResourceShare_object___id__etag__name__2_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Response for resource_share resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "ResourceShare object { id, etag, name, 2 more }"
-          }
-        },
-        "StreamLiveInput_object___id__etag__name__2_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Response for stream_live_input resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "StreamLiveInput object { id, etag, name, 2 more }"
-          }
-        },
-        "StreamVideo_object___id__etag__name__2_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Response for stream_video resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "StreamVideo object { id, etag, name, 2 more }"
-          }
-        },
-        "Worker_object___id__etag__name__2_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Response for worker resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Worker object { id, etag, name, 2 more }"
-          }
-        },
-        "WorkerVersion_object___id__etag__name__3_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Response for worker_version resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "WorkerVersion object { id, etag, name, 3 more }"
-          }
-        },
-        "Zone_object___id__etag__name__3_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Response for zone resources",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Zone object { id, etag, name, 3 more }"
+            "smithy.api#documentation": "Worker ID is required only for worker_version resources"
           }
         }
       },

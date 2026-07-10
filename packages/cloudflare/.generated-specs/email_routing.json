@@ -1433,22 +1433,218 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.email_routing#DnsDeleteResponseErrorsItemSource": {
+      "type": "structure",
+      "members": {
+        "pointer": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.email_routing#DnsDeleteResponseErrorsItem": {
+      "type": "structure",
+      "members": {
+        "code": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "message": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "documentation_url": {
+          "target": "smithy.api#String"
+        },
+        "source": {
+          "target": "com.cloudflare.email_routing#DnsDeleteResponseErrorsItemSource"
+        }
+      }
+    },
+    "com.cloudflare.email_routing#DnsDeleteResponseErrorsList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.email_routing#DnsDeleteResponseErrorsItem"
+      }
+    },
+    "com.cloudflare.email_routing#DnsDeleteResponseMessagesItemSource": {
+      "type": "structure",
+      "members": {
+        "pointer": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.email_routing#DnsDeleteResponseMessagesItem": {
+      "type": "structure",
+      "members": {
+        "code": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "message": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "documentation_url": {
+          "target": "smithy.api#String"
+        },
+        "source": {
+          "target": "com.cloudflare.email_routing#DnsDeleteResponseMessagesItemSource"
+        }
+      }
+    },
+    "com.cloudflare.email_routing#DnsDeleteResponseMessagesList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.email_routing#DnsDeleteResponseMessagesItem"
+      }
+    },
+    "com.cloudflare.email_routing#DnsDeleteResponseResultItemTtl": {
+      "type": "structure",
+      "members": {
+        "number": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "_1": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "1"
+          }
+        }
+      }
+    },
+    "com.cloudflare.email_routing#DnsDeleteResponseResultItemType": {
+      "type": "enum",
+      "members": {
+        "A": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "A"
+          }
+        },
+        "AAAA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AAAA"
+          }
+        },
+        "CNAME": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CNAME"
+          }
+        }
+      }
+    },
+    "com.cloudflare.email_routing#DnsDeleteResponseResultItem": {
+      "type": "structure",
+      "members": {
+        "content": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "DNS record content."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "DNS record name (or @ for the zone apex)."
+          }
+        },
+        "priority": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Required for MX, SRV and URI records. Unused by other record types. Records with lower priorities are preferred."
+          }
+        },
+        "ttl": {
+          "target": "com.cloudflare.email_routing#DnsDeleteResponseResultItemTtl",
+          "traits": {
+            "smithy.api#documentation": "Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'."
+          }
+        },
+        "type": {
+          "target": "com.cloudflare.email_routing#DnsDeleteResponseResultItemType",
+          "traits": {
+            "smithy.api#documentation": "DNS record type."
+          }
+        }
+      }
+    },
+    "com.cloudflare.email_routing#DnsDeleteResponseResultList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.email_routing#DnsDeleteResponseResultItem"
+      }
+    },
+    "com.cloudflare.email_routing#DnsDeleteResponseResultInfo": {
+      "type": "structure",
+      "members": {
+        "count": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Total number of results for the requested service."
+          }
+        },
+        "page": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Current page within paginated list of results."
+          }
+        },
+        "per_page": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Number of results per page of results."
+          }
+        },
+        "total_count": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Total results available without any search parameters."
+          }
+        },
+        "total_pages": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The number of total pages in the entire result set."
+          }
+        }
+      }
+    },
     "com.cloudflare.email_routing#DnsDeleteResponse": {
       "type": "structure",
       "members": {
-        "EmailAPIResponseCommon_object___errors__messages__success__": {
-          "target": "smithy.api#Document",
+        "errors": {
+          "target": "com.cloudflare.email_routing#DnsDeleteResponseErrorsList"
+        },
+        "messages": {
+          "target": "com.cloudflare.email_routing#DnsDeleteResponseMessagesList"
+        },
+        "success": {
+          "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "EmailAPIResponseCommon object { errors, messages, success }"
+            "smithy.api#documentation": "Whether the API call was successful."
           }
         },
-        "EmailDNSSettingsResponseCollection_object___errors__messages__success__2_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "EmailDNSSettingsResponseCollection object { errors, messages, success, 2 more }"
-          }
+        "result": {
+          "target": "com.cloudflare.email_routing#DnsDeleteResponseResultList"
+        },
+        "result_info": {
+          "target": "com.cloudflare.email_routing#DnsDeleteResponseResultInfo"
         }
       },
       "traits": {
@@ -1676,22 +1872,307 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.email_routing#DnsGetResponseErrorsItemSource": {
+      "type": "structure",
+      "members": {
+        "pointer": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.email_routing#DnsGetResponseErrorsItem": {
+      "type": "structure",
+      "members": {
+        "code": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "message": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "documentation_url": {
+          "target": "smithy.api#String"
+        },
+        "source": {
+          "target": "com.cloudflare.email_routing#DnsGetResponseErrorsItemSource"
+        }
+      }
+    },
+    "com.cloudflare.email_routing#DnsGetResponseErrorsList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.email_routing#DnsGetResponseErrorsItem"
+      }
+    },
+    "com.cloudflare.email_routing#DnsGetResponseMessagesItemSource": {
+      "type": "structure",
+      "members": {
+        "pointer": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.email_routing#DnsGetResponseMessagesItem": {
+      "type": "structure",
+      "members": {
+        "code": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "message": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "documentation_url": {
+          "target": "smithy.api#String"
+        },
+        "source": {
+          "target": "com.cloudflare.email_routing#DnsGetResponseMessagesItemSource"
+        }
+      }
+    },
+    "com.cloudflare.email_routing#DnsGetResponseMessagesList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.email_routing#DnsGetResponseMessagesItem"
+      }
+    },
+    "com.cloudflare.email_routing#DnsGetResponseResultErrorsItemMissingTtl": {
+      "type": "structure",
+      "members": {
+        "number": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "_1": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "1"
+          }
+        }
+      }
+    },
+    "com.cloudflare.email_routing#DnsGetResponseResultErrorsItemMissingType": {
+      "type": "enum",
+      "members": {
+        "A": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "A"
+          }
+        },
+        "AAAA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AAAA"
+          }
+        },
+        "CNAME": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CNAME"
+          }
+        }
+      }
+    },
+    "com.cloudflare.email_routing#DnsGetResponseResultErrorsItemMissing": {
+      "type": "structure",
+      "members": {
+        "content": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "DNS record content."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "DNS record name (or @ for the zone apex)."
+          }
+        },
+        "priority": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Required for MX, SRV and URI records. Unused by other record types. Records with lower priorities are preferred."
+          }
+        },
+        "ttl": {
+          "target": "com.cloudflare.email_routing#DnsGetResponseResultErrorsItemMissingTtl",
+          "traits": {
+            "smithy.api#documentation": "Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'."
+          }
+        },
+        "type": {
+          "target": "com.cloudflare.email_routing#DnsGetResponseResultErrorsItemMissingType",
+          "traits": {
+            "smithy.api#documentation": "DNS record type."
+          }
+        }
+      }
+    },
+    "com.cloudflare.email_routing#DnsGetResponseResultErrorsItem": {
+      "type": "structure",
+      "members": {
+        "code": {
+          "target": "smithy.api#String"
+        },
+        "missing": {
+          "target": "com.cloudflare.email_routing#DnsGetResponseResultErrorsItemMissing",
+          "traits": {
+            "smithy.api#documentation": "List of records needed to enable an Email Routing zone."
+          }
+        }
+      }
+    },
+    "com.cloudflare.email_routing#DnsGetResponseResultErrorsList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.email_routing#DnsGetResponseResultErrorsItem"
+      }
+    },
+    "com.cloudflare.email_routing#DnsGetResponseResultRecordItemType": {
+      "type": "enum",
+      "members": {
+        "A": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "A"
+          }
+        },
+        "AAAA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AAAA"
+          }
+        },
+        "CNAME": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CNAME"
+          }
+        }
+      }
+    },
+    "com.cloudflare.email_routing#DnsGetResponseResultRecordItem": {
+      "type": "structure",
+      "members": {
+        "content": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "DNS record content."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "DNS record name (or @ for the zone apex)."
+          }
+        },
+        "priority": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Required for MX, SRV and URI records. Unused by other record types. Records with lower priorities are preferred."
+          }
+        },
+        "ttl": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'."
+          }
+        },
+        "type": {
+          "target": "com.cloudflare.email_routing#DnsGetResponseResultRecordItemType",
+          "traits": {
+            "smithy.api#documentation": "DNS record type."
+          }
+        }
+      }
+    },
+    "com.cloudflare.email_routing#DnsGetResponseResultRecordList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.email_routing#DnsGetResponseResultRecordItem"
+      }
+    },
+    "com.cloudflare.email_routing#DnsGetResponseResult": {
+      "type": "structure",
+      "members": {
+        "errors": {
+          "target": "com.cloudflare.email_routing#DnsGetResponseResultErrorsList"
+        },
+        "record": {
+          "target": "com.cloudflare.email_routing#DnsGetResponseResultRecordList"
+        }
+      }
+    },
+    "com.cloudflare.email_routing#DnsGetResponseResultInfo": {
+      "type": "structure",
+      "members": {
+        "count": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Total number of results for the requested service."
+          }
+        },
+        "page": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Current page within paginated list of results."
+          }
+        },
+        "per_page": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Number of results per page of results."
+          }
+        },
+        "total_count": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Total results available without any search parameters."
+          }
+        },
+        "total_pages": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The number of total pages in the entire result set."
+          }
+        }
+      }
+    },
     "com.cloudflare.email_routing#DnsGetResponse": {
       "type": "structure",
       "members": {
-        "EmailEmailRoutingDNSQueryResponse_object___errors__messages__success__2_more__": {
-          "target": "smithy.api#Document",
+        "errors": {
+          "target": "com.cloudflare.email_routing#DnsGetResponseErrorsList"
+        },
+        "messages": {
+          "target": "com.cloudflare.email_routing#DnsGetResponseMessagesList"
+        },
+        "success": {
+          "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "EmailEmailRoutingDNSQueryResponse object { errors, messages, success, 2 more }"
+            "smithy.api#documentation": "Whether the API call was successful."
           }
         },
-        "EmailDNSSettingsResponseCollection_object___errors__messages__success__2_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "EmailDNSSettingsResponseCollection object { errors, messages, success, 2 more }"
-          }
+        "result": {
+          "target": "com.cloudflare.email_routing#DnsGetResponseResult"
+        },
+        "result_info": {
+          "target": "com.cloudflare.email_routing#DnsGetResponseResultInfo"
         }
       },
       "traits": {

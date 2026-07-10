@@ -2396,15 +2396,18 @@ export type RulesEditRequestAction = "bypass_waiting_room" | (string & {});
 export const RulesEditRequestAction = /*@__PURE__*/ S.String;
 
 export interface RulesEditRequestPosition {
-  IndexObjectIndex__: unknown;
-  BeforeObjectBefore__: unknown;
-  AfterObjectAfter__: unknown;
+  /** Places the rule in the exact position specified by the integer number <POSITION_NUMBER>. Position numbers start with 1. Existing rules in the ruleset from the specified position number onward are shifted one position (no rule is overwritten). */
+  index?: number;
+  /** Places the rule before rule <RULE_ID>. Use this argument with an empty rule ID value ("") to set the rule as the first rule in the ruleset. */
+  before?: string;
+  /** Places the rule after rule <RULE_ID>. Use this argument with an empty rule ID value ("") to set the rule as the last rule in the ruleset. */
+  after?: string;
 }
 export const RulesEditRequestPosition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    IndexObjectIndex__: S.Unknown.pipe(T.Body("Index object { index }")),
-    BeforeObjectBefore__: S.Unknown.pipe(T.Body("Before object { before }")),
-    AfterObjectAfter__: S.Unknown.pipe(T.Body("After object { after }")),
+    index: S.optional(S.Number),
+    before: S.optional(S.String),
+    after: S.optional(S.String),
   }),
 ).annotate({
   identifier: "RulesEditRequestPosition",

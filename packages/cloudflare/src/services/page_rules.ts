@@ -46,140 +46,22 @@ export class PageRuleNotFound extends T.applyErrorMatchers(
   [{ status: 404 }],
 ) {}
 
+export type CreateRequestActionsItemId = "always_use_https" | (string & {});
+export const CreateRequestActionsItemId = /*@__PURE__*/ S.String;
+
+export type CreateRequestActionsItemValue = "on" | "off" | (string & {});
+export const CreateRequestActionsItemValue = /*@__PURE__*/ S.String;
+
 export interface CreateRequestActionsItem {
-  AlwaysUseHTTPSObjectId__: unknown;
-  AutomaticHTTPSRewritesObjectIdValue__: unknown;
-  BrowserCacheTTLObjectIdValue__: unknown;
-  BrowserCheckObjectIdValue__: unknown;
-  BypassCacheOnCookieObjectIdValue__: unknown;
-  CacheByDeviceTypeObjectIdValue__: unknown;
-  CacheDeceptionArmorObjectIdValue__: unknown;
-  CacheKeyFieldsObjectIdValue__: unknown;
-  CacheLevelObjectIdValue__: unknown;
-  CacheOnCookieObjectIdValue__: unknown;
-  CacheTTLByStatusObjectIdValue__: unknown;
-  DisableAppsObjectId__: unknown;
-  DisablePerformanceObjectId__: unknown;
-  DisableSecurityObjectId__: unknown;
-  DisableZarazObjectId__: unknown;
-  EdgeCacheTTLObjectIdValue__: unknown;
-  EmailObfuscationObjectIdValue__: unknown;
-  ExplicitCacheControlObjectIdValue__: unknown;
-  ForwardingURLObjectIdValue__: unknown;
-  HostHeaderOverrideObjectIdValue__: unknown;
-  IPGeolocationObjectIdValue__: unknown;
-  MirageObjectIdValue__: unknown;
-  OpportunisticEncryptionObjectIdValue__: unknown;
-  OriginErrorPagePassThruObjectIdValue__: unknown;
-  PolishObjectIdValue__: unknown;
-  ResolveOverrideObjectIdValue__: unknown;
-  RespectStrongEtagObjectIdValue__: unknown;
-  ResponseBufferingObjectIdValue__: unknown;
-  RocketLoaderObjectIdValue__: unknown;
-  SecurityLevelObjectIdValue__: unknown;
-  SortQueryStringForCacheObjectIdValue__: unknown;
-  SSLObjectIdValue__: unknown;
-  TrueClientIPHeaderObjectIdValue__: unknown;
-  WAFObjectIdValue__: unknown;
+  /** If enabled, any `http://`` URL is converted to`https://` through a */
+  id?: CreateRequestActionsItemId;
+  /** The status of Automatic HTTPS Rewrites. */
+  value?: CreateRequestActionsItemValue;
 }
 export const CreateRequestActionsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    AlwaysUseHTTPSObjectId__: S.Unknown.pipe(
-      T.Body("AlwaysUseHTTPS object { id }"),
-    ),
-    AutomaticHTTPSRewritesObjectIdValue__: S.Unknown.pipe(
-      T.Body("AutomaticHTTPSRewrites object { id, value }"),
-    ),
-    BrowserCacheTTLObjectIdValue__: S.Unknown.pipe(
-      T.Body("BrowserCacheTTL object { id, value }"),
-    ),
-    BrowserCheckObjectIdValue__: S.Unknown.pipe(
-      T.Body("BrowserCheck object { id, value }"),
-    ),
-    BypassCacheOnCookieObjectIdValue__: S.Unknown.pipe(
-      T.Body("BypassCacheOnCookie object { id, value }"),
-    ),
-    CacheByDeviceTypeObjectIdValue__: S.Unknown.pipe(
-      T.Body("CacheByDeviceType object { id, value }"),
-    ),
-    CacheDeceptionArmorObjectIdValue__: S.Unknown.pipe(
-      T.Body("CacheDeceptionArmor object { id, value }"),
-    ),
-    CacheKeyFieldsObjectIdValue__: S.Unknown.pipe(
-      T.Body("CacheKeyFields object { id, value }"),
-    ),
-    CacheLevelObjectIdValue__: S.Unknown.pipe(
-      T.Body("CacheLevel object { id, value }"),
-    ),
-    CacheOnCookieObjectIdValue__: S.Unknown.pipe(
-      T.Body("CacheOnCookie object { id, value }"),
-    ),
-    CacheTTLByStatusObjectIdValue__: S.Unknown.pipe(
-      T.Body("CacheTTLByStatus object { id, value }"),
-    ),
-    DisableAppsObjectId__: S.Unknown.pipe(T.Body("DisableApps object { id }")),
-    DisablePerformanceObjectId__: S.Unknown.pipe(
-      T.Body("DisablePerformance object { id }"),
-    ),
-    DisableSecurityObjectId__: S.Unknown.pipe(
-      T.Body("DisableSecurity object { id }"),
-    ),
-    DisableZarazObjectId__: S.Unknown.pipe(
-      T.Body("DisableZaraz object { id }"),
-    ),
-    EdgeCacheTTLObjectIdValue__: S.Unknown.pipe(
-      T.Body("EdgeCacheTTL object { id, value }"),
-    ),
-    EmailObfuscationObjectIdValue__: S.Unknown.pipe(
-      T.Body("EmailObfuscation object { id, value }"),
-    ),
-    ExplicitCacheControlObjectIdValue__: S.Unknown.pipe(
-      T.Body("ExplicitCacheControl object { id, value }"),
-    ),
-    ForwardingURLObjectIdValue__: S.Unknown.pipe(
-      T.Body("ForwardingURL object { id, value }"),
-    ),
-    HostHeaderOverrideObjectIdValue__: S.Unknown.pipe(
-      T.Body("HostHeaderOverride object { id, value }"),
-    ),
-    IPGeolocationObjectIdValue__: S.Unknown.pipe(
-      T.Body("IPGeolocation object { id, value }"),
-    ),
-    MirageObjectIdValue__: S.Unknown.pipe(
-      T.Body("Mirage object { id, value }"),
-    ),
-    OpportunisticEncryptionObjectIdValue__: S.Unknown.pipe(
-      T.Body("OpportunisticEncryption object { id, value }"),
-    ),
-    OriginErrorPagePassThruObjectIdValue__: S.Unknown.pipe(
-      T.Body("OriginErrorPagePassThru object { id, value }"),
-    ),
-    PolishObjectIdValue__: S.Unknown.pipe(
-      T.Body("Polish object { id, value }"),
-    ),
-    ResolveOverrideObjectIdValue__: S.Unknown.pipe(
-      T.Body("ResolveOverride object { id, value }"),
-    ),
-    RespectStrongEtagObjectIdValue__: S.Unknown.pipe(
-      T.Body("RespectStrongEtag object { id, value }"),
-    ),
-    ResponseBufferingObjectIdValue__: S.Unknown.pipe(
-      T.Body("ResponseBuffering object { id, value }"),
-    ),
-    RocketLoaderObjectIdValue__: S.Unknown.pipe(
-      T.Body("RocketLoader object { id, value }"),
-    ),
-    SecurityLevelObjectIdValue__: S.Unknown.pipe(
-      T.Body("SecurityLevel object { id, value }"),
-    ),
-    SortQueryStringForCacheObjectIdValue__: S.Unknown.pipe(
-      T.Body("SortQueryStringForCache object { id, value }"),
-    ),
-    SSLObjectIdValue__: S.Unknown.pipe(T.Body("SSL object { id, value }")),
-    TrueClientIPHeaderObjectIdValue__: S.Unknown.pipe(
-      T.Body("TrueClientIPHeader object { id, value }"),
-    ),
-    WAFObjectIdValue__: S.Unknown.pipe(T.Body("WAF object { id, value }")),
+    id: S.optional(CreateRequestActionsItemId),
+    value: S.optional(CreateRequestActionsItemValue),
   }),
 ).annotate({
   identifier: "CreateRequestActionsItem",
@@ -267,140 +149,22 @@ export const CreatePageRuleRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreatePageRuleRequest",
 }) as any as S.Schema<CreatePageRuleRequest>;
 
+export type CreateResponseActionsItemId = "always_use_https" | (string & {});
+export const CreateResponseActionsItemId = /*@__PURE__*/ S.String;
+
+export type CreateResponseActionsItemValue = "on" | "off" | (string & {});
+export const CreateResponseActionsItemValue = /*@__PURE__*/ S.String;
+
 export interface CreateResponseActionsItem {
-  AlwaysUseHTTPSObjectId__: unknown;
-  AutomaticHTTPSRewritesObjectIdValue__: unknown;
-  BrowserCacheTTLObjectIdValue__: unknown;
-  BrowserCheckObjectIdValue__: unknown;
-  BypassCacheOnCookieObjectIdValue__: unknown;
-  CacheByDeviceTypeObjectIdValue__: unknown;
-  CacheDeceptionArmorObjectIdValue__: unknown;
-  CacheKeyFieldsObjectIdValue__: unknown;
-  CacheLevelObjectIdValue__: unknown;
-  CacheOnCookieObjectIdValue__: unknown;
-  CacheTTLByStatusObjectIdValue__: unknown;
-  DisableAppsObjectId__: unknown;
-  DisablePerformanceObjectId__: unknown;
-  DisableSecurityObjectId__: unknown;
-  DisableZarazObjectId__: unknown;
-  EdgeCacheTTLObjectIdValue__: unknown;
-  EmailObfuscationObjectIdValue__: unknown;
-  ExplicitCacheControlObjectIdValue__: unknown;
-  ForwardingURLObjectIdValue__: unknown;
-  HostHeaderOverrideObjectIdValue__: unknown;
-  IPGeolocationObjectIdValue__: unknown;
-  MirageObjectIdValue__: unknown;
-  OpportunisticEncryptionObjectIdValue__: unknown;
-  OriginErrorPagePassThruObjectIdValue__: unknown;
-  PolishObjectIdValue__: unknown;
-  ResolveOverrideObjectIdValue__: unknown;
-  RespectStrongEtagObjectIdValue__: unknown;
-  ResponseBufferingObjectIdValue__: unknown;
-  RocketLoaderObjectIdValue__: unknown;
-  SecurityLevelObjectIdValue__: unknown;
-  SortQueryStringForCacheObjectIdValue__: unknown;
-  SSLObjectIdValue__: unknown;
-  TrueClientIPHeaderObjectIdValue__: unknown;
-  WAFObjectIdValue__: unknown;
+  /** If enabled, any `http://`` URL is converted to`https://` through a */
+  id?: CreateResponseActionsItemId;
+  /** The status of Automatic HTTPS Rewrites. */
+  value?: CreateResponseActionsItemValue;
 }
 export const CreateResponseActionsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    AlwaysUseHTTPSObjectId__: S.Unknown.pipe(
-      T.Body("AlwaysUseHTTPS object { id }"),
-    ),
-    AutomaticHTTPSRewritesObjectIdValue__: S.Unknown.pipe(
-      T.Body("AutomaticHTTPSRewrites object { id, value }"),
-    ),
-    BrowserCacheTTLObjectIdValue__: S.Unknown.pipe(
-      T.Body("BrowserCacheTTL object { id, value }"),
-    ),
-    BrowserCheckObjectIdValue__: S.Unknown.pipe(
-      T.Body("BrowserCheck object { id, value }"),
-    ),
-    BypassCacheOnCookieObjectIdValue__: S.Unknown.pipe(
-      T.Body("BypassCacheOnCookie object { id, value }"),
-    ),
-    CacheByDeviceTypeObjectIdValue__: S.Unknown.pipe(
-      T.Body("CacheByDeviceType object { id, value }"),
-    ),
-    CacheDeceptionArmorObjectIdValue__: S.Unknown.pipe(
-      T.Body("CacheDeceptionArmor object { id, value }"),
-    ),
-    CacheKeyFieldsObjectIdValue__: S.Unknown.pipe(
-      T.Body("CacheKeyFields object { id, value }"),
-    ),
-    CacheLevelObjectIdValue__: S.Unknown.pipe(
-      T.Body("CacheLevel object { id, value }"),
-    ),
-    CacheOnCookieObjectIdValue__: S.Unknown.pipe(
-      T.Body("CacheOnCookie object { id, value }"),
-    ),
-    CacheTTLByStatusObjectIdValue__: S.Unknown.pipe(
-      T.Body("CacheTTLByStatus object { id, value }"),
-    ),
-    DisableAppsObjectId__: S.Unknown.pipe(T.Body("DisableApps object { id }")),
-    DisablePerformanceObjectId__: S.Unknown.pipe(
-      T.Body("DisablePerformance object { id }"),
-    ),
-    DisableSecurityObjectId__: S.Unknown.pipe(
-      T.Body("DisableSecurity object { id }"),
-    ),
-    DisableZarazObjectId__: S.Unknown.pipe(
-      T.Body("DisableZaraz object { id }"),
-    ),
-    EdgeCacheTTLObjectIdValue__: S.Unknown.pipe(
-      T.Body("EdgeCacheTTL object { id, value }"),
-    ),
-    EmailObfuscationObjectIdValue__: S.Unknown.pipe(
-      T.Body("EmailObfuscation object { id, value }"),
-    ),
-    ExplicitCacheControlObjectIdValue__: S.Unknown.pipe(
-      T.Body("ExplicitCacheControl object { id, value }"),
-    ),
-    ForwardingURLObjectIdValue__: S.Unknown.pipe(
-      T.Body("ForwardingURL object { id, value }"),
-    ),
-    HostHeaderOverrideObjectIdValue__: S.Unknown.pipe(
-      T.Body("HostHeaderOverride object { id, value }"),
-    ),
-    IPGeolocationObjectIdValue__: S.Unknown.pipe(
-      T.Body("IPGeolocation object { id, value }"),
-    ),
-    MirageObjectIdValue__: S.Unknown.pipe(
-      T.Body("Mirage object { id, value }"),
-    ),
-    OpportunisticEncryptionObjectIdValue__: S.Unknown.pipe(
-      T.Body("OpportunisticEncryption object { id, value }"),
-    ),
-    OriginErrorPagePassThruObjectIdValue__: S.Unknown.pipe(
-      T.Body("OriginErrorPagePassThru object { id, value }"),
-    ),
-    PolishObjectIdValue__: S.Unknown.pipe(
-      T.Body("Polish object { id, value }"),
-    ),
-    ResolveOverrideObjectIdValue__: S.Unknown.pipe(
-      T.Body("ResolveOverride object { id, value }"),
-    ),
-    RespectStrongEtagObjectIdValue__: S.Unknown.pipe(
-      T.Body("RespectStrongEtag object { id, value }"),
-    ),
-    ResponseBufferingObjectIdValue__: S.Unknown.pipe(
-      T.Body("ResponseBuffering object { id, value }"),
-    ),
-    RocketLoaderObjectIdValue__: S.Unknown.pipe(
-      T.Body("RocketLoader object { id, value }"),
-    ),
-    SecurityLevelObjectIdValue__: S.Unknown.pipe(
-      T.Body("SecurityLevel object { id, value }"),
-    ),
-    SortQueryStringForCacheObjectIdValue__: S.Unknown.pipe(
-      T.Body("SortQueryStringForCache object { id, value }"),
-    ),
-    SSLObjectIdValue__: S.Unknown.pipe(T.Body("SSL object { id, value }")),
-    TrueClientIPHeaderObjectIdValue__: S.Unknown.pipe(
-      T.Body("TrueClientIPHeader object { id, value }"),
-    ),
-    WAFObjectIdValue__: S.Unknown.pipe(T.Body("WAF object { id, value }")),
+    id: S.optional(CreateResponseActionsItemId),
+    value: S.optional(CreateResponseActionsItemValue),
   }),
 ).annotate({
   identifier: "CreateResponseActionsItem",
@@ -550,140 +314,22 @@ export const GetPageRuleRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetPageRuleRequest",
 }) as any as S.Schema<GetPageRuleRequest>;
 
+export type GetResponseActionsItemId = "always_use_https" | (string & {});
+export const GetResponseActionsItemId = /*@__PURE__*/ S.String;
+
+export type GetResponseActionsItemValue = "on" | "off" | (string & {});
+export const GetResponseActionsItemValue = /*@__PURE__*/ S.String;
+
 export interface GetResponseActionsItem {
-  AlwaysUseHTTPSObjectId__: unknown;
-  AutomaticHTTPSRewritesObjectIdValue__: unknown;
-  BrowserCacheTTLObjectIdValue__: unknown;
-  BrowserCheckObjectIdValue__: unknown;
-  BypassCacheOnCookieObjectIdValue__: unknown;
-  CacheByDeviceTypeObjectIdValue__: unknown;
-  CacheDeceptionArmorObjectIdValue__: unknown;
-  CacheKeyFieldsObjectIdValue__: unknown;
-  CacheLevelObjectIdValue__: unknown;
-  CacheOnCookieObjectIdValue__: unknown;
-  CacheTTLByStatusObjectIdValue__: unknown;
-  DisableAppsObjectId__: unknown;
-  DisablePerformanceObjectId__: unknown;
-  DisableSecurityObjectId__: unknown;
-  DisableZarazObjectId__: unknown;
-  EdgeCacheTTLObjectIdValue__: unknown;
-  EmailObfuscationObjectIdValue__: unknown;
-  ExplicitCacheControlObjectIdValue__: unknown;
-  ForwardingURLObjectIdValue__: unknown;
-  HostHeaderOverrideObjectIdValue__: unknown;
-  IPGeolocationObjectIdValue__: unknown;
-  MirageObjectIdValue__: unknown;
-  OpportunisticEncryptionObjectIdValue__: unknown;
-  OriginErrorPagePassThruObjectIdValue__: unknown;
-  PolishObjectIdValue__: unknown;
-  ResolveOverrideObjectIdValue__: unknown;
-  RespectStrongEtagObjectIdValue__: unknown;
-  ResponseBufferingObjectIdValue__: unknown;
-  RocketLoaderObjectIdValue__: unknown;
-  SecurityLevelObjectIdValue__: unknown;
-  SortQueryStringForCacheObjectIdValue__: unknown;
-  SSLObjectIdValue__: unknown;
-  TrueClientIPHeaderObjectIdValue__: unknown;
-  WAFObjectIdValue__: unknown;
+  /** If enabled, any `http://`` URL is converted to`https://` through a */
+  id?: GetResponseActionsItemId;
+  /** The status of Automatic HTTPS Rewrites. */
+  value?: GetResponseActionsItemValue;
 }
 export const GetResponseActionsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    AlwaysUseHTTPSObjectId__: S.Unknown.pipe(
-      T.Body("AlwaysUseHTTPS object { id }"),
-    ),
-    AutomaticHTTPSRewritesObjectIdValue__: S.Unknown.pipe(
-      T.Body("AutomaticHTTPSRewrites object { id, value }"),
-    ),
-    BrowserCacheTTLObjectIdValue__: S.Unknown.pipe(
-      T.Body("BrowserCacheTTL object { id, value }"),
-    ),
-    BrowserCheckObjectIdValue__: S.Unknown.pipe(
-      T.Body("BrowserCheck object { id, value }"),
-    ),
-    BypassCacheOnCookieObjectIdValue__: S.Unknown.pipe(
-      T.Body("BypassCacheOnCookie object { id, value }"),
-    ),
-    CacheByDeviceTypeObjectIdValue__: S.Unknown.pipe(
-      T.Body("CacheByDeviceType object { id, value }"),
-    ),
-    CacheDeceptionArmorObjectIdValue__: S.Unknown.pipe(
-      T.Body("CacheDeceptionArmor object { id, value }"),
-    ),
-    CacheKeyFieldsObjectIdValue__: S.Unknown.pipe(
-      T.Body("CacheKeyFields object { id, value }"),
-    ),
-    CacheLevelObjectIdValue__: S.Unknown.pipe(
-      T.Body("CacheLevel object { id, value }"),
-    ),
-    CacheOnCookieObjectIdValue__: S.Unknown.pipe(
-      T.Body("CacheOnCookie object { id, value }"),
-    ),
-    CacheTTLByStatusObjectIdValue__: S.Unknown.pipe(
-      T.Body("CacheTTLByStatus object { id, value }"),
-    ),
-    DisableAppsObjectId__: S.Unknown.pipe(T.Body("DisableApps object { id }")),
-    DisablePerformanceObjectId__: S.Unknown.pipe(
-      T.Body("DisablePerformance object { id }"),
-    ),
-    DisableSecurityObjectId__: S.Unknown.pipe(
-      T.Body("DisableSecurity object { id }"),
-    ),
-    DisableZarazObjectId__: S.Unknown.pipe(
-      T.Body("DisableZaraz object { id }"),
-    ),
-    EdgeCacheTTLObjectIdValue__: S.Unknown.pipe(
-      T.Body("EdgeCacheTTL object { id, value }"),
-    ),
-    EmailObfuscationObjectIdValue__: S.Unknown.pipe(
-      T.Body("EmailObfuscation object { id, value }"),
-    ),
-    ExplicitCacheControlObjectIdValue__: S.Unknown.pipe(
-      T.Body("ExplicitCacheControl object { id, value }"),
-    ),
-    ForwardingURLObjectIdValue__: S.Unknown.pipe(
-      T.Body("ForwardingURL object { id, value }"),
-    ),
-    HostHeaderOverrideObjectIdValue__: S.Unknown.pipe(
-      T.Body("HostHeaderOverride object { id, value }"),
-    ),
-    IPGeolocationObjectIdValue__: S.Unknown.pipe(
-      T.Body("IPGeolocation object { id, value }"),
-    ),
-    MirageObjectIdValue__: S.Unknown.pipe(
-      T.Body("Mirage object { id, value }"),
-    ),
-    OpportunisticEncryptionObjectIdValue__: S.Unknown.pipe(
-      T.Body("OpportunisticEncryption object { id, value }"),
-    ),
-    OriginErrorPagePassThruObjectIdValue__: S.Unknown.pipe(
-      T.Body("OriginErrorPagePassThru object { id, value }"),
-    ),
-    PolishObjectIdValue__: S.Unknown.pipe(
-      T.Body("Polish object { id, value }"),
-    ),
-    ResolveOverrideObjectIdValue__: S.Unknown.pipe(
-      T.Body("ResolveOverride object { id, value }"),
-    ),
-    RespectStrongEtagObjectIdValue__: S.Unknown.pipe(
-      T.Body("RespectStrongEtag object { id, value }"),
-    ),
-    ResponseBufferingObjectIdValue__: S.Unknown.pipe(
-      T.Body("ResponseBuffering object { id, value }"),
-    ),
-    RocketLoaderObjectIdValue__: S.Unknown.pipe(
-      T.Body("RocketLoader object { id, value }"),
-    ),
-    SecurityLevelObjectIdValue__: S.Unknown.pipe(
-      T.Body("SecurityLevel object { id, value }"),
-    ),
-    SortQueryStringForCacheObjectIdValue__: S.Unknown.pipe(
-      T.Body("SortQueryStringForCache object { id, value }"),
-    ),
-    SSLObjectIdValue__: S.Unknown.pipe(T.Body("SSL object { id, value }")),
-    TrueClientIPHeaderObjectIdValue__: S.Unknown.pipe(
-      T.Body("TrueClientIPHeader object { id, value }"),
-    ),
-    WAFObjectIdValue__: S.Unknown.pipe(T.Body("WAF object { id, value }")),
+    id: S.optional(GetResponseActionsItemId),
+    value: S.optional(GetResponseActionsItemValue),
   }),
 ).annotate({
   identifier: "GetResponseActionsItem",
@@ -813,140 +459,22 @@ export const ListPageRulesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListPageRulesRequest",
 }) as any as S.Schema<ListPageRulesRequest>;
 
+export type ListResultItemActionsItemId = "always_use_https" | (string & {});
+export const ListResultItemActionsItemId = /*@__PURE__*/ S.String;
+
+export type ListResultItemActionsItemValue = "on" | "off" | (string & {});
+export const ListResultItemActionsItemValue = /*@__PURE__*/ S.String;
+
 export interface ListResultItemActionsItem {
-  AlwaysUseHTTPSObjectId__: unknown;
-  AutomaticHTTPSRewritesObjectIdValue__: unknown;
-  BrowserCacheTTLObjectIdValue__: unknown;
-  BrowserCheckObjectIdValue__: unknown;
-  BypassCacheOnCookieObjectIdValue__: unknown;
-  CacheByDeviceTypeObjectIdValue__: unknown;
-  CacheDeceptionArmorObjectIdValue__: unknown;
-  CacheKeyFieldsObjectIdValue__: unknown;
-  CacheLevelObjectIdValue__: unknown;
-  CacheOnCookieObjectIdValue__: unknown;
-  CacheTTLByStatusObjectIdValue__: unknown;
-  DisableAppsObjectId__: unknown;
-  DisablePerformanceObjectId__: unknown;
-  DisableSecurityObjectId__: unknown;
-  DisableZarazObjectId__: unknown;
-  EdgeCacheTTLObjectIdValue__: unknown;
-  EmailObfuscationObjectIdValue__: unknown;
-  ExplicitCacheControlObjectIdValue__: unknown;
-  ForwardingURLObjectIdValue__: unknown;
-  HostHeaderOverrideObjectIdValue__: unknown;
-  IPGeolocationObjectIdValue__: unknown;
-  MirageObjectIdValue__: unknown;
-  OpportunisticEncryptionObjectIdValue__: unknown;
-  OriginErrorPagePassThruObjectIdValue__: unknown;
-  PolishObjectIdValue__: unknown;
-  ResolveOverrideObjectIdValue__: unknown;
-  RespectStrongEtagObjectIdValue__: unknown;
-  ResponseBufferingObjectIdValue__: unknown;
-  RocketLoaderObjectIdValue__: unknown;
-  SecurityLevelObjectIdValue__: unknown;
-  SortQueryStringForCacheObjectIdValue__: unknown;
-  SSLObjectIdValue__: unknown;
-  TrueClientIPHeaderObjectIdValue__: unknown;
-  WAFObjectIdValue__: unknown;
+  /** If enabled, any `http://`` URL is converted to`https://` through a */
+  id?: ListResultItemActionsItemId;
+  /** The status of Automatic HTTPS Rewrites. */
+  value?: ListResultItemActionsItemValue;
 }
 export const ListResultItemActionsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    AlwaysUseHTTPSObjectId__: S.Unknown.pipe(
-      T.Body("AlwaysUseHTTPS object { id }"),
-    ),
-    AutomaticHTTPSRewritesObjectIdValue__: S.Unknown.pipe(
-      T.Body("AutomaticHTTPSRewrites object { id, value }"),
-    ),
-    BrowserCacheTTLObjectIdValue__: S.Unknown.pipe(
-      T.Body("BrowserCacheTTL object { id, value }"),
-    ),
-    BrowserCheckObjectIdValue__: S.Unknown.pipe(
-      T.Body("BrowserCheck object { id, value }"),
-    ),
-    BypassCacheOnCookieObjectIdValue__: S.Unknown.pipe(
-      T.Body("BypassCacheOnCookie object { id, value }"),
-    ),
-    CacheByDeviceTypeObjectIdValue__: S.Unknown.pipe(
-      T.Body("CacheByDeviceType object { id, value }"),
-    ),
-    CacheDeceptionArmorObjectIdValue__: S.Unknown.pipe(
-      T.Body("CacheDeceptionArmor object { id, value }"),
-    ),
-    CacheKeyFieldsObjectIdValue__: S.Unknown.pipe(
-      T.Body("CacheKeyFields object { id, value }"),
-    ),
-    CacheLevelObjectIdValue__: S.Unknown.pipe(
-      T.Body("CacheLevel object { id, value }"),
-    ),
-    CacheOnCookieObjectIdValue__: S.Unknown.pipe(
-      T.Body("CacheOnCookie object { id, value }"),
-    ),
-    CacheTTLByStatusObjectIdValue__: S.Unknown.pipe(
-      T.Body("CacheTTLByStatus object { id, value }"),
-    ),
-    DisableAppsObjectId__: S.Unknown.pipe(T.Body("DisableApps object { id }")),
-    DisablePerformanceObjectId__: S.Unknown.pipe(
-      T.Body("DisablePerformance object { id }"),
-    ),
-    DisableSecurityObjectId__: S.Unknown.pipe(
-      T.Body("DisableSecurity object { id }"),
-    ),
-    DisableZarazObjectId__: S.Unknown.pipe(
-      T.Body("DisableZaraz object { id }"),
-    ),
-    EdgeCacheTTLObjectIdValue__: S.Unknown.pipe(
-      T.Body("EdgeCacheTTL object { id, value }"),
-    ),
-    EmailObfuscationObjectIdValue__: S.Unknown.pipe(
-      T.Body("EmailObfuscation object { id, value }"),
-    ),
-    ExplicitCacheControlObjectIdValue__: S.Unknown.pipe(
-      T.Body("ExplicitCacheControl object { id, value }"),
-    ),
-    ForwardingURLObjectIdValue__: S.Unknown.pipe(
-      T.Body("ForwardingURL object { id, value }"),
-    ),
-    HostHeaderOverrideObjectIdValue__: S.Unknown.pipe(
-      T.Body("HostHeaderOverride object { id, value }"),
-    ),
-    IPGeolocationObjectIdValue__: S.Unknown.pipe(
-      T.Body("IPGeolocation object { id, value }"),
-    ),
-    MirageObjectIdValue__: S.Unknown.pipe(
-      T.Body("Mirage object { id, value }"),
-    ),
-    OpportunisticEncryptionObjectIdValue__: S.Unknown.pipe(
-      T.Body("OpportunisticEncryption object { id, value }"),
-    ),
-    OriginErrorPagePassThruObjectIdValue__: S.Unknown.pipe(
-      T.Body("OriginErrorPagePassThru object { id, value }"),
-    ),
-    PolishObjectIdValue__: S.Unknown.pipe(
-      T.Body("Polish object { id, value }"),
-    ),
-    ResolveOverrideObjectIdValue__: S.Unknown.pipe(
-      T.Body("ResolveOverride object { id, value }"),
-    ),
-    RespectStrongEtagObjectIdValue__: S.Unknown.pipe(
-      T.Body("RespectStrongEtag object { id, value }"),
-    ),
-    ResponseBufferingObjectIdValue__: S.Unknown.pipe(
-      T.Body("ResponseBuffering object { id, value }"),
-    ),
-    RocketLoaderObjectIdValue__: S.Unknown.pipe(
-      T.Body("RocketLoader object { id, value }"),
-    ),
-    SecurityLevelObjectIdValue__: S.Unknown.pipe(
-      T.Body("SecurityLevel object { id, value }"),
-    ),
-    SortQueryStringForCacheObjectIdValue__: S.Unknown.pipe(
-      T.Body("SortQueryStringForCache object { id, value }"),
-    ),
-    SSLObjectIdValue__: S.Unknown.pipe(T.Body("SSL object { id, value }")),
-    TrueClientIPHeaderObjectIdValue__: S.Unknown.pipe(
-      T.Body("TrueClientIPHeader object { id, value }"),
-    ),
-    WAFObjectIdValue__: S.Unknown.pipe(T.Body("WAF object { id, value }")),
+    id: S.optional(ListResultItemActionsItemId),
+    value: S.optional(ListResultItemActionsItemValue),
   }),
 ).annotate({
   identifier: "ListResultItemActionsItem",
@@ -1051,140 +579,22 @@ export const ListPageRulesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListPageRulesResponse",
 }) as any as S.Schema<ListPageRulesResponse>;
 
+export type EditRequestActionsItemId = "always_use_https" | (string & {});
+export const EditRequestActionsItemId = /*@__PURE__*/ S.String;
+
+export type EditRequestActionsItemValue = "on" | "off" | (string & {});
+export const EditRequestActionsItemValue = /*@__PURE__*/ S.String;
+
 export interface EditRequestActionsItem {
-  AlwaysUseHTTPSObjectId__: unknown;
-  AutomaticHTTPSRewritesObjectIdValue__: unknown;
-  BrowserCacheTTLObjectIdValue__: unknown;
-  BrowserCheckObjectIdValue__: unknown;
-  BypassCacheOnCookieObjectIdValue__: unknown;
-  CacheByDeviceTypeObjectIdValue__: unknown;
-  CacheDeceptionArmorObjectIdValue__: unknown;
-  CacheKeyFieldsObjectIdValue__: unknown;
-  CacheLevelObjectIdValue__: unknown;
-  CacheOnCookieObjectIdValue__: unknown;
-  CacheTTLByStatusObjectIdValue__: unknown;
-  DisableAppsObjectId__: unknown;
-  DisablePerformanceObjectId__: unknown;
-  DisableSecurityObjectId__: unknown;
-  DisableZarazObjectId__: unknown;
-  EdgeCacheTTLObjectIdValue__: unknown;
-  EmailObfuscationObjectIdValue__: unknown;
-  ExplicitCacheControlObjectIdValue__: unknown;
-  ForwardingURLObjectIdValue__: unknown;
-  HostHeaderOverrideObjectIdValue__: unknown;
-  IPGeolocationObjectIdValue__: unknown;
-  MirageObjectIdValue__: unknown;
-  OpportunisticEncryptionObjectIdValue__: unknown;
-  OriginErrorPagePassThruObjectIdValue__: unknown;
-  PolishObjectIdValue__: unknown;
-  ResolveOverrideObjectIdValue__: unknown;
-  RespectStrongEtagObjectIdValue__: unknown;
-  ResponseBufferingObjectIdValue__: unknown;
-  RocketLoaderObjectIdValue__: unknown;
-  SecurityLevelObjectIdValue__: unknown;
-  SortQueryStringForCacheObjectIdValue__: unknown;
-  SSLObjectIdValue__: unknown;
-  TrueClientIPHeaderObjectIdValue__: unknown;
-  WAFObjectIdValue__: unknown;
+  /** If enabled, any `http://`` URL is converted to`https://` through a */
+  id?: EditRequestActionsItemId;
+  /** The status of Automatic HTTPS Rewrites. */
+  value?: EditRequestActionsItemValue;
 }
 export const EditRequestActionsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    AlwaysUseHTTPSObjectId__: S.Unknown.pipe(
-      T.Body("AlwaysUseHTTPS object { id }"),
-    ),
-    AutomaticHTTPSRewritesObjectIdValue__: S.Unknown.pipe(
-      T.Body("AutomaticHTTPSRewrites object { id, value }"),
-    ),
-    BrowserCacheTTLObjectIdValue__: S.Unknown.pipe(
-      T.Body("BrowserCacheTTL object { id, value }"),
-    ),
-    BrowserCheckObjectIdValue__: S.Unknown.pipe(
-      T.Body("BrowserCheck object { id, value }"),
-    ),
-    BypassCacheOnCookieObjectIdValue__: S.Unknown.pipe(
-      T.Body("BypassCacheOnCookie object { id, value }"),
-    ),
-    CacheByDeviceTypeObjectIdValue__: S.Unknown.pipe(
-      T.Body("CacheByDeviceType object { id, value }"),
-    ),
-    CacheDeceptionArmorObjectIdValue__: S.Unknown.pipe(
-      T.Body("CacheDeceptionArmor object { id, value }"),
-    ),
-    CacheKeyFieldsObjectIdValue__: S.Unknown.pipe(
-      T.Body("CacheKeyFields object { id, value }"),
-    ),
-    CacheLevelObjectIdValue__: S.Unknown.pipe(
-      T.Body("CacheLevel object { id, value }"),
-    ),
-    CacheOnCookieObjectIdValue__: S.Unknown.pipe(
-      T.Body("CacheOnCookie object { id, value }"),
-    ),
-    CacheTTLByStatusObjectIdValue__: S.Unknown.pipe(
-      T.Body("CacheTTLByStatus object { id, value }"),
-    ),
-    DisableAppsObjectId__: S.Unknown.pipe(T.Body("DisableApps object { id }")),
-    DisablePerformanceObjectId__: S.Unknown.pipe(
-      T.Body("DisablePerformance object { id }"),
-    ),
-    DisableSecurityObjectId__: S.Unknown.pipe(
-      T.Body("DisableSecurity object { id }"),
-    ),
-    DisableZarazObjectId__: S.Unknown.pipe(
-      T.Body("DisableZaraz object { id }"),
-    ),
-    EdgeCacheTTLObjectIdValue__: S.Unknown.pipe(
-      T.Body("EdgeCacheTTL object { id, value }"),
-    ),
-    EmailObfuscationObjectIdValue__: S.Unknown.pipe(
-      T.Body("EmailObfuscation object { id, value }"),
-    ),
-    ExplicitCacheControlObjectIdValue__: S.Unknown.pipe(
-      T.Body("ExplicitCacheControl object { id, value }"),
-    ),
-    ForwardingURLObjectIdValue__: S.Unknown.pipe(
-      T.Body("ForwardingURL object { id, value }"),
-    ),
-    HostHeaderOverrideObjectIdValue__: S.Unknown.pipe(
-      T.Body("HostHeaderOverride object { id, value }"),
-    ),
-    IPGeolocationObjectIdValue__: S.Unknown.pipe(
-      T.Body("IPGeolocation object { id, value }"),
-    ),
-    MirageObjectIdValue__: S.Unknown.pipe(
-      T.Body("Mirage object { id, value }"),
-    ),
-    OpportunisticEncryptionObjectIdValue__: S.Unknown.pipe(
-      T.Body("OpportunisticEncryption object { id, value }"),
-    ),
-    OriginErrorPagePassThruObjectIdValue__: S.Unknown.pipe(
-      T.Body("OriginErrorPagePassThru object { id, value }"),
-    ),
-    PolishObjectIdValue__: S.Unknown.pipe(
-      T.Body("Polish object { id, value }"),
-    ),
-    ResolveOverrideObjectIdValue__: S.Unknown.pipe(
-      T.Body("ResolveOverride object { id, value }"),
-    ),
-    RespectStrongEtagObjectIdValue__: S.Unknown.pipe(
-      T.Body("RespectStrongEtag object { id, value }"),
-    ),
-    ResponseBufferingObjectIdValue__: S.Unknown.pipe(
-      T.Body("ResponseBuffering object { id, value }"),
-    ),
-    RocketLoaderObjectIdValue__: S.Unknown.pipe(
-      T.Body("RocketLoader object { id, value }"),
-    ),
-    SecurityLevelObjectIdValue__: S.Unknown.pipe(
-      T.Body("SecurityLevel object { id, value }"),
-    ),
-    SortQueryStringForCacheObjectIdValue__: S.Unknown.pipe(
-      T.Body("SortQueryStringForCache object { id, value }"),
-    ),
-    SSLObjectIdValue__: S.Unknown.pipe(T.Body("SSL object { id, value }")),
-    TrueClientIPHeaderObjectIdValue__: S.Unknown.pipe(
-      T.Body("TrueClientIPHeader object { id, value }"),
-    ),
-    WAFObjectIdValue__: S.Unknown.pipe(T.Body("WAF object { id, value }")),
+    id: S.optional(EditRequestActionsItemId),
+    value: S.optional(EditRequestActionsItemValue),
   }),
 ).annotate({
   identifier: "EditRequestActionsItem",
@@ -1278,140 +688,22 @@ export const PatchPageRuleRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchPageRuleRequest",
 }) as any as S.Schema<PatchPageRuleRequest>;
 
+export type EditResponseActionsItemId = "always_use_https" | (string & {});
+export const EditResponseActionsItemId = /*@__PURE__*/ S.String;
+
+export type EditResponseActionsItemValue = "on" | "off" | (string & {});
+export const EditResponseActionsItemValue = /*@__PURE__*/ S.String;
+
 export interface EditResponseActionsItem {
-  AlwaysUseHTTPSObjectId__: unknown;
-  AutomaticHTTPSRewritesObjectIdValue__: unknown;
-  BrowserCacheTTLObjectIdValue__: unknown;
-  BrowserCheckObjectIdValue__: unknown;
-  BypassCacheOnCookieObjectIdValue__: unknown;
-  CacheByDeviceTypeObjectIdValue__: unknown;
-  CacheDeceptionArmorObjectIdValue__: unknown;
-  CacheKeyFieldsObjectIdValue__: unknown;
-  CacheLevelObjectIdValue__: unknown;
-  CacheOnCookieObjectIdValue__: unknown;
-  CacheTTLByStatusObjectIdValue__: unknown;
-  DisableAppsObjectId__: unknown;
-  DisablePerformanceObjectId__: unknown;
-  DisableSecurityObjectId__: unknown;
-  DisableZarazObjectId__: unknown;
-  EdgeCacheTTLObjectIdValue__: unknown;
-  EmailObfuscationObjectIdValue__: unknown;
-  ExplicitCacheControlObjectIdValue__: unknown;
-  ForwardingURLObjectIdValue__: unknown;
-  HostHeaderOverrideObjectIdValue__: unknown;
-  IPGeolocationObjectIdValue__: unknown;
-  MirageObjectIdValue__: unknown;
-  OpportunisticEncryptionObjectIdValue__: unknown;
-  OriginErrorPagePassThruObjectIdValue__: unknown;
-  PolishObjectIdValue__: unknown;
-  ResolveOverrideObjectIdValue__: unknown;
-  RespectStrongEtagObjectIdValue__: unknown;
-  ResponseBufferingObjectIdValue__: unknown;
-  RocketLoaderObjectIdValue__: unknown;
-  SecurityLevelObjectIdValue__: unknown;
-  SortQueryStringForCacheObjectIdValue__: unknown;
-  SSLObjectIdValue__: unknown;
-  TrueClientIPHeaderObjectIdValue__: unknown;
-  WAFObjectIdValue__: unknown;
+  /** If enabled, any `http://`` URL is converted to`https://` through a */
+  id?: EditResponseActionsItemId;
+  /** The status of Automatic HTTPS Rewrites. */
+  value?: EditResponseActionsItemValue;
 }
 export const EditResponseActionsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    AlwaysUseHTTPSObjectId__: S.Unknown.pipe(
-      T.Body("AlwaysUseHTTPS object { id }"),
-    ),
-    AutomaticHTTPSRewritesObjectIdValue__: S.Unknown.pipe(
-      T.Body("AutomaticHTTPSRewrites object { id, value }"),
-    ),
-    BrowserCacheTTLObjectIdValue__: S.Unknown.pipe(
-      T.Body("BrowserCacheTTL object { id, value }"),
-    ),
-    BrowserCheckObjectIdValue__: S.Unknown.pipe(
-      T.Body("BrowserCheck object { id, value }"),
-    ),
-    BypassCacheOnCookieObjectIdValue__: S.Unknown.pipe(
-      T.Body("BypassCacheOnCookie object { id, value }"),
-    ),
-    CacheByDeviceTypeObjectIdValue__: S.Unknown.pipe(
-      T.Body("CacheByDeviceType object { id, value }"),
-    ),
-    CacheDeceptionArmorObjectIdValue__: S.Unknown.pipe(
-      T.Body("CacheDeceptionArmor object { id, value }"),
-    ),
-    CacheKeyFieldsObjectIdValue__: S.Unknown.pipe(
-      T.Body("CacheKeyFields object { id, value }"),
-    ),
-    CacheLevelObjectIdValue__: S.Unknown.pipe(
-      T.Body("CacheLevel object { id, value }"),
-    ),
-    CacheOnCookieObjectIdValue__: S.Unknown.pipe(
-      T.Body("CacheOnCookie object { id, value }"),
-    ),
-    CacheTTLByStatusObjectIdValue__: S.Unknown.pipe(
-      T.Body("CacheTTLByStatus object { id, value }"),
-    ),
-    DisableAppsObjectId__: S.Unknown.pipe(T.Body("DisableApps object { id }")),
-    DisablePerformanceObjectId__: S.Unknown.pipe(
-      T.Body("DisablePerformance object { id }"),
-    ),
-    DisableSecurityObjectId__: S.Unknown.pipe(
-      T.Body("DisableSecurity object { id }"),
-    ),
-    DisableZarazObjectId__: S.Unknown.pipe(
-      T.Body("DisableZaraz object { id }"),
-    ),
-    EdgeCacheTTLObjectIdValue__: S.Unknown.pipe(
-      T.Body("EdgeCacheTTL object { id, value }"),
-    ),
-    EmailObfuscationObjectIdValue__: S.Unknown.pipe(
-      T.Body("EmailObfuscation object { id, value }"),
-    ),
-    ExplicitCacheControlObjectIdValue__: S.Unknown.pipe(
-      T.Body("ExplicitCacheControl object { id, value }"),
-    ),
-    ForwardingURLObjectIdValue__: S.Unknown.pipe(
-      T.Body("ForwardingURL object { id, value }"),
-    ),
-    HostHeaderOverrideObjectIdValue__: S.Unknown.pipe(
-      T.Body("HostHeaderOverride object { id, value }"),
-    ),
-    IPGeolocationObjectIdValue__: S.Unknown.pipe(
-      T.Body("IPGeolocation object { id, value }"),
-    ),
-    MirageObjectIdValue__: S.Unknown.pipe(
-      T.Body("Mirage object { id, value }"),
-    ),
-    OpportunisticEncryptionObjectIdValue__: S.Unknown.pipe(
-      T.Body("OpportunisticEncryption object { id, value }"),
-    ),
-    OriginErrorPagePassThruObjectIdValue__: S.Unknown.pipe(
-      T.Body("OriginErrorPagePassThru object { id, value }"),
-    ),
-    PolishObjectIdValue__: S.Unknown.pipe(
-      T.Body("Polish object { id, value }"),
-    ),
-    ResolveOverrideObjectIdValue__: S.Unknown.pipe(
-      T.Body("ResolveOverride object { id, value }"),
-    ),
-    RespectStrongEtagObjectIdValue__: S.Unknown.pipe(
-      T.Body("RespectStrongEtag object { id, value }"),
-    ),
-    ResponseBufferingObjectIdValue__: S.Unknown.pipe(
-      T.Body("ResponseBuffering object { id, value }"),
-    ),
-    RocketLoaderObjectIdValue__: S.Unknown.pipe(
-      T.Body("RocketLoader object { id, value }"),
-    ),
-    SecurityLevelObjectIdValue__: S.Unknown.pipe(
-      T.Body("SecurityLevel object { id, value }"),
-    ),
-    SortQueryStringForCacheObjectIdValue__: S.Unknown.pipe(
-      T.Body("SortQueryStringForCache object { id, value }"),
-    ),
-    SSLObjectIdValue__: S.Unknown.pipe(T.Body("SSL object { id, value }")),
-    TrueClientIPHeaderObjectIdValue__: S.Unknown.pipe(
-      T.Body("TrueClientIPHeader object { id, value }"),
-    ),
-    WAFObjectIdValue__: S.Unknown.pipe(T.Body("WAF object { id, value }")),
+    id: S.optional(EditResponseActionsItemId),
+    value: S.optional(EditResponseActionsItemValue),
   }),
 ).annotate({
   identifier: "EditResponseActionsItem",
@@ -1501,140 +793,22 @@ export const PatchPageRuleResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchPageRuleResponse",
 }) as any as S.Schema<PatchPageRuleResponse>;
 
+export type UpdateRequestActionsItemId = "always_use_https" | (string & {});
+export const UpdateRequestActionsItemId = /*@__PURE__*/ S.String;
+
+export type UpdateRequestActionsItemValue = "on" | "off" | (string & {});
+export const UpdateRequestActionsItemValue = /*@__PURE__*/ S.String;
+
 export interface UpdateRequestActionsItem {
-  AlwaysUseHTTPSObjectId__: unknown;
-  AutomaticHTTPSRewritesObjectIdValue__: unknown;
-  BrowserCacheTTLObjectIdValue__: unknown;
-  BrowserCheckObjectIdValue__: unknown;
-  BypassCacheOnCookieObjectIdValue__: unknown;
-  CacheByDeviceTypeObjectIdValue__: unknown;
-  CacheDeceptionArmorObjectIdValue__: unknown;
-  CacheKeyFieldsObjectIdValue__: unknown;
-  CacheLevelObjectIdValue__: unknown;
-  CacheOnCookieObjectIdValue__: unknown;
-  CacheTTLByStatusObjectIdValue__: unknown;
-  DisableAppsObjectId__: unknown;
-  DisablePerformanceObjectId__: unknown;
-  DisableSecurityObjectId__: unknown;
-  DisableZarazObjectId__: unknown;
-  EdgeCacheTTLObjectIdValue__: unknown;
-  EmailObfuscationObjectIdValue__: unknown;
-  ExplicitCacheControlObjectIdValue__: unknown;
-  ForwardingURLObjectIdValue__: unknown;
-  HostHeaderOverrideObjectIdValue__: unknown;
-  IPGeolocationObjectIdValue__: unknown;
-  MirageObjectIdValue__: unknown;
-  OpportunisticEncryptionObjectIdValue__: unknown;
-  OriginErrorPagePassThruObjectIdValue__: unknown;
-  PolishObjectIdValue__: unknown;
-  ResolveOverrideObjectIdValue__: unknown;
-  RespectStrongEtagObjectIdValue__: unknown;
-  ResponseBufferingObjectIdValue__: unknown;
-  RocketLoaderObjectIdValue__: unknown;
-  SecurityLevelObjectIdValue__: unknown;
-  SortQueryStringForCacheObjectIdValue__: unknown;
-  SSLObjectIdValue__: unknown;
-  TrueClientIPHeaderObjectIdValue__: unknown;
-  WAFObjectIdValue__: unknown;
+  /** If enabled, any `http://`` URL is converted to`https://` through a */
+  id?: UpdateRequestActionsItemId;
+  /** The status of Automatic HTTPS Rewrites. */
+  value?: UpdateRequestActionsItemValue;
 }
 export const UpdateRequestActionsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    AlwaysUseHTTPSObjectId__: S.Unknown.pipe(
-      T.Body("AlwaysUseHTTPS object { id }"),
-    ),
-    AutomaticHTTPSRewritesObjectIdValue__: S.Unknown.pipe(
-      T.Body("AutomaticHTTPSRewrites object { id, value }"),
-    ),
-    BrowserCacheTTLObjectIdValue__: S.Unknown.pipe(
-      T.Body("BrowserCacheTTL object { id, value }"),
-    ),
-    BrowserCheckObjectIdValue__: S.Unknown.pipe(
-      T.Body("BrowserCheck object { id, value }"),
-    ),
-    BypassCacheOnCookieObjectIdValue__: S.Unknown.pipe(
-      T.Body("BypassCacheOnCookie object { id, value }"),
-    ),
-    CacheByDeviceTypeObjectIdValue__: S.Unknown.pipe(
-      T.Body("CacheByDeviceType object { id, value }"),
-    ),
-    CacheDeceptionArmorObjectIdValue__: S.Unknown.pipe(
-      T.Body("CacheDeceptionArmor object { id, value }"),
-    ),
-    CacheKeyFieldsObjectIdValue__: S.Unknown.pipe(
-      T.Body("CacheKeyFields object { id, value }"),
-    ),
-    CacheLevelObjectIdValue__: S.Unknown.pipe(
-      T.Body("CacheLevel object { id, value }"),
-    ),
-    CacheOnCookieObjectIdValue__: S.Unknown.pipe(
-      T.Body("CacheOnCookie object { id, value }"),
-    ),
-    CacheTTLByStatusObjectIdValue__: S.Unknown.pipe(
-      T.Body("CacheTTLByStatus object { id, value }"),
-    ),
-    DisableAppsObjectId__: S.Unknown.pipe(T.Body("DisableApps object { id }")),
-    DisablePerformanceObjectId__: S.Unknown.pipe(
-      T.Body("DisablePerformance object { id }"),
-    ),
-    DisableSecurityObjectId__: S.Unknown.pipe(
-      T.Body("DisableSecurity object { id }"),
-    ),
-    DisableZarazObjectId__: S.Unknown.pipe(
-      T.Body("DisableZaraz object { id }"),
-    ),
-    EdgeCacheTTLObjectIdValue__: S.Unknown.pipe(
-      T.Body("EdgeCacheTTL object { id, value }"),
-    ),
-    EmailObfuscationObjectIdValue__: S.Unknown.pipe(
-      T.Body("EmailObfuscation object { id, value }"),
-    ),
-    ExplicitCacheControlObjectIdValue__: S.Unknown.pipe(
-      T.Body("ExplicitCacheControl object { id, value }"),
-    ),
-    ForwardingURLObjectIdValue__: S.Unknown.pipe(
-      T.Body("ForwardingURL object { id, value }"),
-    ),
-    HostHeaderOverrideObjectIdValue__: S.Unknown.pipe(
-      T.Body("HostHeaderOverride object { id, value }"),
-    ),
-    IPGeolocationObjectIdValue__: S.Unknown.pipe(
-      T.Body("IPGeolocation object { id, value }"),
-    ),
-    MirageObjectIdValue__: S.Unknown.pipe(
-      T.Body("Mirage object { id, value }"),
-    ),
-    OpportunisticEncryptionObjectIdValue__: S.Unknown.pipe(
-      T.Body("OpportunisticEncryption object { id, value }"),
-    ),
-    OriginErrorPagePassThruObjectIdValue__: S.Unknown.pipe(
-      T.Body("OriginErrorPagePassThru object { id, value }"),
-    ),
-    PolishObjectIdValue__: S.Unknown.pipe(
-      T.Body("Polish object { id, value }"),
-    ),
-    ResolveOverrideObjectIdValue__: S.Unknown.pipe(
-      T.Body("ResolveOverride object { id, value }"),
-    ),
-    RespectStrongEtagObjectIdValue__: S.Unknown.pipe(
-      T.Body("RespectStrongEtag object { id, value }"),
-    ),
-    ResponseBufferingObjectIdValue__: S.Unknown.pipe(
-      T.Body("ResponseBuffering object { id, value }"),
-    ),
-    RocketLoaderObjectIdValue__: S.Unknown.pipe(
-      T.Body("RocketLoader object { id, value }"),
-    ),
-    SecurityLevelObjectIdValue__: S.Unknown.pipe(
-      T.Body("SecurityLevel object { id, value }"),
-    ),
-    SortQueryStringForCacheObjectIdValue__: S.Unknown.pipe(
-      T.Body("SortQueryStringForCache object { id, value }"),
-    ),
-    SSLObjectIdValue__: S.Unknown.pipe(T.Body("SSL object { id, value }")),
-    TrueClientIPHeaderObjectIdValue__: S.Unknown.pipe(
-      T.Body("TrueClientIPHeader object { id, value }"),
-    ),
-    WAFObjectIdValue__: S.Unknown.pipe(T.Body("WAF object { id, value }")),
+    id: S.optional(UpdateRequestActionsItemId),
+    value: S.optional(UpdateRequestActionsItemValue),
   }),
 ).annotate({
   identifier: "UpdateRequestActionsItem",
@@ -1729,140 +903,22 @@ export const UpdatePageRuleRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdatePageRuleRequest",
 }) as any as S.Schema<UpdatePageRuleRequest>;
 
+export type UpdateResponseActionsItemId = "always_use_https" | (string & {});
+export const UpdateResponseActionsItemId = /*@__PURE__*/ S.String;
+
+export type UpdateResponseActionsItemValue = "on" | "off" | (string & {});
+export const UpdateResponseActionsItemValue = /*@__PURE__*/ S.String;
+
 export interface UpdateResponseActionsItem {
-  AlwaysUseHTTPSObjectId__: unknown;
-  AutomaticHTTPSRewritesObjectIdValue__: unknown;
-  BrowserCacheTTLObjectIdValue__: unknown;
-  BrowserCheckObjectIdValue__: unknown;
-  BypassCacheOnCookieObjectIdValue__: unknown;
-  CacheByDeviceTypeObjectIdValue__: unknown;
-  CacheDeceptionArmorObjectIdValue__: unknown;
-  CacheKeyFieldsObjectIdValue__: unknown;
-  CacheLevelObjectIdValue__: unknown;
-  CacheOnCookieObjectIdValue__: unknown;
-  CacheTTLByStatusObjectIdValue__: unknown;
-  DisableAppsObjectId__: unknown;
-  DisablePerformanceObjectId__: unknown;
-  DisableSecurityObjectId__: unknown;
-  DisableZarazObjectId__: unknown;
-  EdgeCacheTTLObjectIdValue__: unknown;
-  EmailObfuscationObjectIdValue__: unknown;
-  ExplicitCacheControlObjectIdValue__: unknown;
-  ForwardingURLObjectIdValue__: unknown;
-  HostHeaderOverrideObjectIdValue__: unknown;
-  IPGeolocationObjectIdValue__: unknown;
-  MirageObjectIdValue__: unknown;
-  OpportunisticEncryptionObjectIdValue__: unknown;
-  OriginErrorPagePassThruObjectIdValue__: unknown;
-  PolishObjectIdValue__: unknown;
-  ResolveOverrideObjectIdValue__: unknown;
-  RespectStrongEtagObjectIdValue__: unknown;
-  ResponseBufferingObjectIdValue__: unknown;
-  RocketLoaderObjectIdValue__: unknown;
-  SecurityLevelObjectIdValue__: unknown;
-  SortQueryStringForCacheObjectIdValue__: unknown;
-  SSLObjectIdValue__: unknown;
-  TrueClientIPHeaderObjectIdValue__: unknown;
-  WAFObjectIdValue__: unknown;
+  /** If enabled, any `http://`` URL is converted to`https://` through a */
+  id?: UpdateResponseActionsItemId;
+  /** The status of Automatic HTTPS Rewrites. */
+  value?: UpdateResponseActionsItemValue;
 }
 export const UpdateResponseActionsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    AlwaysUseHTTPSObjectId__: S.Unknown.pipe(
-      T.Body("AlwaysUseHTTPS object { id }"),
-    ),
-    AutomaticHTTPSRewritesObjectIdValue__: S.Unknown.pipe(
-      T.Body("AutomaticHTTPSRewrites object { id, value }"),
-    ),
-    BrowserCacheTTLObjectIdValue__: S.Unknown.pipe(
-      T.Body("BrowserCacheTTL object { id, value }"),
-    ),
-    BrowserCheckObjectIdValue__: S.Unknown.pipe(
-      T.Body("BrowserCheck object { id, value }"),
-    ),
-    BypassCacheOnCookieObjectIdValue__: S.Unknown.pipe(
-      T.Body("BypassCacheOnCookie object { id, value }"),
-    ),
-    CacheByDeviceTypeObjectIdValue__: S.Unknown.pipe(
-      T.Body("CacheByDeviceType object { id, value }"),
-    ),
-    CacheDeceptionArmorObjectIdValue__: S.Unknown.pipe(
-      T.Body("CacheDeceptionArmor object { id, value }"),
-    ),
-    CacheKeyFieldsObjectIdValue__: S.Unknown.pipe(
-      T.Body("CacheKeyFields object { id, value }"),
-    ),
-    CacheLevelObjectIdValue__: S.Unknown.pipe(
-      T.Body("CacheLevel object { id, value }"),
-    ),
-    CacheOnCookieObjectIdValue__: S.Unknown.pipe(
-      T.Body("CacheOnCookie object { id, value }"),
-    ),
-    CacheTTLByStatusObjectIdValue__: S.Unknown.pipe(
-      T.Body("CacheTTLByStatus object { id, value }"),
-    ),
-    DisableAppsObjectId__: S.Unknown.pipe(T.Body("DisableApps object { id }")),
-    DisablePerformanceObjectId__: S.Unknown.pipe(
-      T.Body("DisablePerformance object { id }"),
-    ),
-    DisableSecurityObjectId__: S.Unknown.pipe(
-      T.Body("DisableSecurity object { id }"),
-    ),
-    DisableZarazObjectId__: S.Unknown.pipe(
-      T.Body("DisableZaraz object { id }"),
-    ),
-    EdgeCacheTTLObjectIdValue__: S.Unknown.pipe(
-      T.Body("EdgeCacheTTL object { id, value }"),
-    ),
-    EmailObfuscationObjectIdValue__: S.Unknown.pipe(
-      T.Body("EmailObfuscation object { id, value }"),
-    ),
-    ExplicitCacheControlObjectIdValue__: S.Unknown.pipe(
-      T.Body("ExplicitCacheControl object { id, value }"),
-    ),
-    ForwardingURLObjectIdValue__: S.Unknown.pipe(
-      T.Body("ForwardingURL object { id, value }"),
-    ),
-    HostHeaderOverrideObjectIdValue__: S.Unknown.pipe(
-      T.Body("HostHeaderOverride object { id, value }"),
-    ),
-    IPGeolocationObjectIdValue__: S.Unknown.pipe(
-      T.Body("IPGeolocation object { id, value }"),
-    ),
-    MirageObjectIdValue__: S.Unknown.pipe(
-      T.Body("Mirage object { id, value }"),
-    ),
-    OpportunisticEncryptionObjectIdValue__: S.Unknown.pipe(
-      T.Body("OpportunisticEncryption object { id, value }"),
-    ),
-    OriginErrorPagePassThruObjectIdValue__: S.Unknown.pipe(
-      T.Body("OriginErrorPagePassThru object { id, value }"),
-    ),
-    PolishObjectIdValue__: S.Unknown.pipe(
-      T.Body("Polish object { id, value }"),
-    ),
-    ResolveOverrideObjectIdValue__: S.Unknown.pipe(
-      T.Body("ResolveOverride object { id, value }"),
-    ),
-    RespectStrongEtagObjectIdValue__: S.Unknown.pipe(
-      T.Body("RespectStrongEtag object { id, value }"),
-    ),
-    ResponseBufferingObjectIdValue__: S.Unknown.pipe(
-      T.Body("ResponseBuffering object { id, value }"),
-    ),
-    RocketLoaderObjectIdValue__: S.Unknown.pipe(
-      T.Body("RocketLoader object { id, value }"),
-    ),
-    SecurityLevelObjectIdValue__: S.Unknown.pipe(
-      T.Body("SecurityLevel object { id, value }"),
-    ),
-    SortQueryStringForCacheObjectIdValue__: S.Unknown.pipe(
-      T.Body("SortQueryStringForCache object { id, value }"),
-    ),
-    SSLObjectIdValue__: S.Unknown.pipe(T.Body("SSL object { id, value }")),
-    TrueClientIPHeaderObjectIdValue__: S.Unknown.pipe(
-      T.Body("TrueClientIPHeader object { id, value }"),
-    ),
-    WAFObjectIdValue__: S.Unknown.pipe(T.Body("WAF object { id, value }")),
+    id: S.optional(UpdateResponseActionsItemId),
+    value: S.optional(UpdateResponseActionsItemValue),
   }),
 ).annotate({
   identifier: "UpdateResponseActionsItem",

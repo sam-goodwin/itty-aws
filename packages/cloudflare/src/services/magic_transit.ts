@@ -473,16 +473,17 @@ export const CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemGre =
   }) as any as S.Schema<CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemGre>;
 
 export interface CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckTarget {
-  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. */
-  MagicHealthCheckTargetObjectEffectiveSaved__: unknown;
+  /** The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests. */
+  effective?: string;
+  /** The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used. */
+  saved?: string;
   string: unknown;
 }
 export const CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckTarget =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      MagicHealthCheckTargetObjectEffectiveSaved__: S.Unknown.pipe(
-        T.Body("MagicHealthCheckTarget object { effective, saved }"),
-      ),
+      effective: S.optional(S.String),
+      saved: S.optional(S.String),
       string: S.Unknown,
     }),
   ).annotate({
@@ -706,16 +707,17 @@ export const GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemHealthCheckDirect
   /*@__PURE__*/ S.String;
 
 export interface GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemHealthCheckTarget {
-  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. */
-  MagicHealthCheckTargetObjectEffectiveSaved__: unknown;
+  /** The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests. */
+  effective?: string;
+  /** The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used. */
+  saved?: string;
   string: unknown;
 }
 export const GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemHealthCheckTarget =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      MagicHealthCheckTargetObjectEffectiveSaved__: S.Unknown.pipe(
-        T.Body("MagicHealthCheckTarget object { effective, saved }"),
-      ),
+      effective: S.optional(S.String),
+      saved: S.optional(S.String),
       string: S.Unknown,
     }),
   ).annotate({
@@ -960,16 +962,17 @@ export const IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemHealthCheckDi
   /*@__PURE__*/ S.String;
 
 export interface IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemHealthCheckTarget {
-  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. */
-  MagicHealthCheckTargetObjectEffectiveSaved__: unknown;
+  /** The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests. */
+  effective?: string;
+  /** The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used. */
+  saved?: string;
   string: unknown;
 }
 export const IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemHealthCheckTarget =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      MagicHealthCheckTargetObjectEffectiveSaved__: S.Unknown.pipe(
-        T.Body("MagicHealthCheckTarget object { effective, saved }"),
-      ),
+      effective: S.optional(S.String),
+      saved: S.optional(S.String),
       string: S.Unknown,
     }),
   ).annotate({
@@ -1950,16 +1953,17 @@ export const GreTunnelsCreateRequestHealthCheckDirection =
   /*@__PURE__*/ S.String;
 
 export interface GreTunnelsCreateRequestHealthCheckTarget {
-  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. */
-  MagicHealthCheckTargetObjectEffectiveSaved__: unknown;
+  /** The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests. */
+  effective?: string;
+  /** The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used. */
+  saved?: string;
   string: unknown;
 }
 export const GreTunnelsCreateRequestHealthCheckTarget = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      MagicHealthCheckTargetObjectEffectiveSaved__: S.Unknown.pipe(
-        T.Body("MagicHealthCheckTarget object { effective, saved }"),
-      ),
+      effective: S.optional(S.String),
+      saved: S.optional(S.String),
       string: S.Unknown,
     }),
 ).annotate({
@@ -2125,16 +2129,17 @@ export const GreTunnelsCreateResponseHealthCheckDirection =
   /*@__PURE__*/ S.String;
 
 export interface GreTunnelsCreateResponseHealthCheckTarget {
-  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. */
-  MagicHealthCheckTargetObjectEffectiveSaved__: unknown;
+  /** The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests. */
+  effective?: string;
+  /** The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used. */
+  saved?: string;
   string: unknown;
 }
 export const GreTunnelsCreateResponseHealthCheckTarget =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      MagicHealthCheckTargetObjectEffectiveSaved__: S.Unknown.pipe(
-        T.Body("MagicHealthCheckTarget object { effective, saved }"),
-      ),
+      effective: S.optional(S.String),
+      saved: S.optional(S.String),
       string: S.Unknown,
     }),
   ).annotate({
@@ -2278,16 +2283,17 @@ export const IpsecTunnelsCreateRequestHealthCheckDirection =
   /*@__PURE__*/ S.String;
 
 export interface IpsecTunnelsCreateRequestHealthCheckTarget {
-  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. */
-  MagicHealthCheckTargetObjectEffectiveSaved__: unknown;
+  /** The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests. */
+  effective?: string;
+  /** The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used. */
+  saved?: string;
   string: unknown;
 }
 export const IpsecTunnelsCreateRequestHealthCheckTarget =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      MagicHealthCheckTargetObjectEffectiveSaved__: S.Unknown.pipe(
-        T.Body("MagicHealthCheckTarget object { effective, saved }"),
-      ),
+      effective: S.optional(S.String),
+      saved: S.optional(S.String),
       string: S.Unknown,
     }),
   ).annotate({
@@ -2473,16 +2479,17 @@ export const IpsecTunnelsCreateResponseHealthCheckDirection =
   /*@__PURE__*/ S.String;
 
 export interface IpsecTunnelsCreateResponseHealthCheckTarget {
-  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. */
-  MagicHealthCheckTargetObjectEffectiveSaved__: unknown;
+  /** The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests. */
+  effective?: string;
+  /** The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used. */
+  saved?: string;
   string: unknown;
 }
 export const IpsecTunnelsCreateResponseHealthCheckTarget =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      MagicHealthCheckTargetObjectEffectiveSaved__: S.Unknown.pipe(
-        T.Body("MagicHealthCheckTarget object { effective, saved }"),
-      ),
+      effective: S.optional(S.String),
+      saved: S.optional(S.String),
       string: S.Unknown,
     }),
   ).annotate({
@@ -2596,24 +2603,71 @@ export const CreateIpsecTunnelResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateIpsecTunnelResponse",
 }) as any as S.Schema<CreateIpsecTunnelResponse>;
 
+export type PcapsCreateRequestBodySystem = "magic-transit" | (string & {});
+export const PcapsCreateRequestBodySystem = /*@__PURE__*/ S.String;
+
+export type PcapsCreateRequestBodyType = "simple" | "full" | (string & {});
+export const PcapsCreateRequestBodyType = /*@__PURE__*/ S.String;
+
+export interface PcapsCreateRequestBodyFilterV1 {
+  /** The destination IP address of the packet. */
+  destinationAddress?: string;
+  /** The destination port of the packet. */
+  destinationPort?: number;
+  /** The protocol number of the packet. */
+  protocol?: number;
+  /** The source IP address of the packet. */
+  sourceAddress?: string;
+  /** The source port of the packet. */
+  sourcePort?: number;
+}
+export const PcapsCreateRequestBodyFilterV1 = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    destinationAddress: S.optional(
+      S.String.pipe(T.Body("destination_address")),
+    ),
+    destinationPort: S.optional(S.Number.pipe(T.Body("destination_port"))),
+    protocol: S.optional(S.Number),
+    sourceAddress: S.optional(S.String.pipe(T.Body("source_address"))),
+    sourcePort: S.optional(S.Number.pipe(T.Body("source_port"))),
+  }),
+).annotate({
+  identifier: "PcapsCreateRequestBodyFilterV1",
+}) as any as S.Schema<PcapsCreateRequestBodyFilterV1>;
+
 export interface PcapsCreateRequestBody {
-  MagicVisibilityPCAPsPCAPsRequestSimpleObjectPacketLimitSystemTimeLimit3More__: unknown;
-  MagicVisibilityPCAPsPCAPsRequestFullObjectColoNameDestinationConfSystem5More__: unknown;
+  /** The limit of packets contained in a packet capture. */
+  packetLimit?: number;
+  /** The system used to collect packet captures. */
+  system?: PcapsCreateRequestBodySystem;
+  /** The packet capture duration in seconds. */
+  timeLimit?: number;
+  /** The type of packet capture. `Simple` captures sampled packets, and `full` captures entire payloads and non-sampled packets. */
+  type?: PcapsCreateRequestBodyType;
+  /** The packet capture filter. When this field is empty, all packets are captured. */
+  filterV1?: PcapsCreateRequestBodyFilterV1;
+  /** The RFC 3339 offset timestamp from which to query backwards for packets. Must be within the last 24h. When this field is empty, defaults to time of request. */
+  offsetTime?: string;
+  /** The name of the data center used for the packet capture. This can be a specific colo (ord02) or a multi-colo name (ORD). This field only applies to `full` packet captures. */
+  coloName?: string;
+  /** The full URI for the bucket. This field only applies to `full` packet captures. */
+  destinationConf?: string;
+  /** The maximum number of bytes to capture. This field only applies to `full` packet captures. */
+  byteLimit?: number;
 }
 export const PcapsCreateRequestBody = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    MagicVisibilityPCAPsPCAPsRequestSimpleObjectPacketLimitSystemTimeLimit3More__:
-      S.Unknown.pipe(
-        T.Body(
-          "MagicVisibilityPCAPsPCAPsRequestSimple object { packet_limit, system, time_limit, 3 more }",
-        ),
-      ),
-    MagicVisibilityPCAPsPCAPsRequestFullObjectColoNameDestinationConfSystem5More__:
-      S.Unknown.pipe(
-        T.Body(
-          "MagicVisibilityPCAPsPCAPsRequestFull object { colo_name, destination_conf, system, 5 more }",
-        ),
-      ),
+    packetLimit: S.optional(S.Number.pipe(T.Body("packet_limit"))),
+    system: S.optional(PcapsCreateRequestBodySystem),
+    timeLimit: S.optional(S.Number.pipe(T.Body("time_limit"))),
+    type: S.optional(PcapsCreateRequestBodyType),
+    filterV1: S.optional(
+      PcapsCreateRequestBodyFilterV1.pipe(T.Body("filter_v1")),
+    ),
+    offsetTime: S.optional(S.String.pipe(T.Body("offset_time"))),
+    coloName: S.optional(S.String.pipe(T.Body("colo_name"))),
+    destinationConf: S.optional(S.String.pipe(T.Body("destination_conf"))),
+    byteLimit: S.optional(S.Number.pipe(T.Body("byte_limit"))),
   }),
 ).annotate({
   identifier: "PcapsCreateRequestBody",
@@ -2641,22 +2695,92 @@ export const CreatePcapRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreatePcapRequest",
 }) as any as S.Schema<CreatePcapRequest>;
 
+export interface PcapsCreateResponseFilterV1 {
+  /** The destination IP address of the packet. */
+  destinationAddress?: string;
+  /** The destination port of the packet. */
+  destinationPort?: number;
+  /** The protocol number of the packet. */
+  protocol?: number;
+  /** The source IP address of the packet. */
+  sourceAddress?: string;
+  /** The source port of the packet. */
+  sourcePort?: number;
+}
+export const PcapsCreateResponseFilterV1 = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    destinationAddress: S.optional(
+      S.String.pipe(T.Body("destination_address")),
+    ),
+    destinationPort: S.optional(S.Number.pipe(T.Body("destination_port"))),
+    protocol: S.optional(S.Number),
+    sourceAddress: S.optional(S.String.pipe(T.Body("source_address"))),
+    sourcePort: S.optional(S.Number.pipe(T.Body("source_port"))),
+  }),
+).annotate({
+  identifier: "PcapsCreateResponseFilterV1",
+}) as any as S.Schema<PcapsCreateResponseFilterV1>;
+
+export type PcapsCreateResponseStatus =
+  | "unknown"
+  | "success"
+  | "pending"
+  | (string & {});
+export const PcapsCreateResponseStatus = /*@__PURE__*/ S.String;
+
+export type PcapsCreateResponseSystem = "magic-transit" | (string & {});
+export const PcapsCreateResponseSystem = /*@__PURE__*/ S.String;
+
+export type PcapsCreateResponseType = "simple" | "full" | (string & {});
+export const PcapsCreateResponseType = /*@__PURE__*/ S.String;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreatePcapResponse {
-  PCAPObjectIdFilterV1OffsetTime5More__: unknown;
-  MagicVisibilityPCAPsPCAPsResponseFullObjectIdByteLimitColoName10More__: unknown;
+  /** The ID for the packet capture. */
+  id?: string;
+  /** The packet capture filter. When this field is empty, all packets are captured. */
+  filterV1?: PcapsCreateResponseFilterV1;
+  /** The RFC 3339 offset timestamp from which to query backwards for packets. Must be within the last 24h. When this field is empty, defaults to time of request. */
+  offsetTime?: string;
+  /** The status of the packet capture request. */
+  status?: PcapsCreateResponseStatus;
+  /** The RFC 3339 timestamp when the packet capture was created. */
+  submitted?: string;
+  /** The system used to collect packet captures. */
+  system?: PcapsCreateResponseSystem;
+  /** The packet capture duration in seconds. */
+  timeLimit?: number;
+  /** The type of packet capture. `Simple` captures sampled packets, and `full` captures entire payloads and non-sampled packets. */
+  type?: PcapsCreateResponseType;
+  /** The maximum number of bytes to capture. This field only applies to `full` packet captures. */
+  byteLimit?: number;
+  /** The name of the data center used for the packet capture. This can be a specific colo (ord02) or a multi-colo name (ORD). This field only applies to `full` packet captures. */
+  coloName?: string;
+  /** The full URI for the bucket. This field only applies to `full` packet captures. */
+  destinationConf?: string;
+  /** An error message that describes why the packet capture failed. This field only applies to `full` packet captures. */
+  errorMessage?: string;
+  /** The number of packets captured. */
+  packetsCaptured?: number;
+  /** The RFC 3339 timestamp when stopping the packet capture was requested. This field only applies to `full` packet captures. */
+  stopRequested?: string;
 }
 export const CreatePcapResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    PCAPObjectIdFilterV1OffsetTime5More__: S.Unknown.pipe(
-      T.Body("PCAP object { id, filter_v1, offset_time, 5 more }"),
-    ),
-    MagicVisibilityPCAPsPCAPsResponseFullObjectIdByteLimitColoName10More__:
-      S.Unknown.pipe(
-        T.Body(
-          "MagicVisibilityPCAPsPCAPsResponseFull object { id, byte_limit, colo_name, 10 more }",
-        ),
-      ),
+    id: S.optional(S.String),
+    filterV1: S.optional(PcapsCreateResponseFilterV1.pipe(T.Body("filter_v1"))),
+    offsetTime: S.optional(S.String.pipe(T.Body("offset_time"))),
+    status: S.optional(PcapsCreateResponseStatus),
+    submitted: S.optional(S.String),
+    system: S.optional(PcapsCreateResponseSystem),
+    timeLimit: S.optional(S.Number.pipe(T.Body("time_limit"))),
+    type: S.optional(PcapsCreateResponseType),
+    byteLimit: S.optional(S.Number.pipe(T.Body("byte_limit"))),
+    coloName: S.optional(S.String.pipe(T.Body("colo_name"))),
+    destinationConf: S.optional(S.String.pipe(T.Body("destination_conf"))),
+    errorMessage: S.optional(S.String.pipe(T.Body("error_message"))),
+    packetsCaptured: S.optional(S.Number.pipe(T.Body("packets_captured"))),
+    stopRequested: S.optional(S.String.pipe(T.Body("stop_requested"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreatePcapResponse",
@@ -4221,16 +4345,17 @@ export const GreTunnelsDeleteResponseDeletedGreTunnelHealthCheckDirection =
   /*@__PURE__*/ S.String;
 
 export interface GreTunnelsDeleteResponseDeletedGreTunnelHealthCheckTarget {
-  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. */
-  MagicHealthCheckTargetObjectEffectiveSaved__: unknown;
+  /** The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests. */
+  effective?: string;
+  /** The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used. */
+  saved?: string;
   string: unknown;
 }
 export const GreTunnelsDeleteResponseDeletedGreTunnelHealthCheckTarget =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      MagicHealthCheckTargetObjectEffectiveSaved__: S.Unknown.pipe(
-        T.Body("MagicHealthCheckTarget object { effective, saved }"),
-      ),
+      effective: S.optional(S.String),
+      saved: S.optional(S.String),
       string: S.Unknown,
     }),
   ).annotate({
@@ -4471,16 +4596,17 @@ export const IpsecTunnelsDeleteResponseDeletedIpsecTunnelHealthCheckDirection =
   /*@__PURE__*/ S.String;
 
 export interface IpsecTunnelsDeleteResponseDeletedIpsecTunnelHealthCheckTarget {
-  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. */
-  MagicHealthCheckTargetObjectEffectiveSaved__: unknown;
+  /** The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests. */
+  effective?: string;
+  /** The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used. */
+  saved?: string;
   string: unknown;
 }
 export const IpsecTunnelsDeleteResponseDeletedIpsecTunnelHealthCheckTarget =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      MagicHealthCheckTargetObjectEffectiveSaved__: S.Unknown.pipe(
-        T.Body("MagicHealthCheckTarget object { effective, saved }"),
-      ),
+      effective: S.optional(S.String),
+      saved: S.optional(S.String),
       string: S.Unknown,
     }),
   ).annotate({
@@ -5627,16 +5753,17 @@ export const CfInterconnectsGetResponseInterconnectGre =
   }) as any as S.Schema<CfInterconnectsGetResponseInterconnectGre>;
 
 export interface CfInterconnectsGetResponseInterconnectHealthCheckTarget {
-  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. */
-  MagicHealthCheckTargetObjectEffectiveSaved__: unknown;
+  /** The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests. */
+  effective?: string;
+  /** The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used. */
+  saved?: string;
   string: unknown;
 }
 export const CfInterconnectsGetResponseInterconnectHealthCheckTarget =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      MagicHealthCheckTargetObjectEffectiveSaved__: S.Unknown.pipe(
-        T.Body("MagicHealthCheckTarget object { effective, saved }"),
-      ),
+      effective: S.optional(S.String),
+      saved: S.optional(S.String),
       string: S.Unknown,
     }),
   ).annotate({
@@ -5879,88 +6006,22 @@ export const GetConnectorEventRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetConnectorEventRequest",
 }) as any as S.Schema<GetConnectorEventRequest>;
 
+export type ConnectorsEventsGetResponseEK = "Init" | (string & {});
+export const ConnectorsEventsGetResponseEK = /*@__PURE__*/ S.String;
+
 export interface ConnectorsEventsGetResponseE {
-  InitObjectK__: unknown;
-  LeaveObjectK__: unknown;
-  StartAttestationObjectK__: unknown;
-  FinishAttestationSuccessObjectK__: unknown;
-  FinishAttestationFailureObjectK__: unknown;
-  StartRotateCryptKeyObjectK__: unknown;
-  FinishRotateCryptKeySuccessObjectK__: unknown;
-  FinishRotateCryptKeyFailureObjectK__: unknown;
-  StartRotatePkiObjectK__: unknown;
-  FinishRotatePkiSuccessObjectK__: unknown;
-  FinishRotatePkiFailureObjectK__: unknown;
-  StartUpgradeObjectKUrl__: unknown;
-  FinishUpgradeSuccessObjectK__: unknown;
-  FinishUpgradeFailureObjectK__: unknown;
-  ReconcileObjectK__: unknown;
-  ConfigureCloudflaredTunnelObjectK__: unknown;
-  RekeyInstallBothObjectKTunnelId__: unknown;
-  RekeyStartObjectKTunnelId__: unknown;
-  RekeyAdvanceObjectKTunnelId__: unknown;
-  RekeyCompleteObjectKTunnelId__: unknown;
-  RekeyResetObjectKTunnelId__: unknown;
+  /** Initialized process */
+  k?: ConnectorsEventsGetResponseEK;
+  /** Location of upgrade bundle */
+  url?: string;
+  /** Tunnel identifier */
+  tunnelId?: string;
 }
 export const ConnectorsEventsGetResponseE = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    InitObjectK__: S.Unknown.pipe(T.Body("Init object { k }")),
-    LeaveObjectK__: S.Unknown.pipe(T.Body("Leave object { k }")),
-    StartAttestationObjectK__: S.Unknown.pipe(
-      T.Body("StartAttestation object { k }"),
-    ),
-    FinishAttestationSuccessObjectK__: S.Unknown.pipe(
-      T.Body("FinishAttestationSuccess object { k }"),
-    ),
-    FinishAttestationFailureObjectK__: S.Unknown.pipe(
-      T.Body("FinishAttestationFailure object { k }"),
-    ),
-    StartRotateCryptKeyObjectK__: S.Unknown.pipe(
-      T.Body("StartRotateCryptKey object { k }"),
-    ),
-    FinishRotateCryptKeySuccessObjectK__: S.Unknown.pipe(
-      T.Body("FinishRotateCryptKeySuccess object { k }"),
-    ),
-    FinishRotateCryptKeyFailureObjectK__: S.Unknown.pipe(
-      T.Body("FinishRotateCryptKeyFailure object { k }"),
-    ),
-    StartRotatePkiObjectK__: S.Unknown.pipe(
-      T.Body("StartRotatePki object { k }"),
-    ),
-    FinishRotatePkiSuccessObjectK__: S.Unknown.pipe(
-      T.Body("FinishRotatePkiSuccess object { k }"),
-    ),
-    FinishRotatePkiFailureObjectK__: S.Unknown.pipe(
-      T.Body("FinishRotatePkiFailure object { k }"),
-    ),
-    StartUpgradeObjectKUrl__: S.Unknown.pipe(
-      T.Body("StartUpgrade object { k, url }"),
-    ),
-    FinishUpgradeSuccessObjectK__: S.Unknown.pipe(
-      T.Body("FinishUpgradeSuccess object { k }"),
-    ),
-    FinishUpgradeFailureObjectK__: S.Unknown.pipe(
-      T.Body("FinishUpgradeFailure object { k }"),
-    ),
-    ReconcileObjectK__: S.Unknown.pipe(T.Body("Reconcile object { k }")),
-    ConfigureCloudflaredTunnelObjectK__: S.Unknown.pipe(
-      T.Body("ConfigureCloudflaredTunnel object { k }"),
-    ),
-    RekeyInstallBothObjectKTunnelId__: S.Unknown.pipe(
-      T.Body("RekeyInstallBoth object { k, tunnel_id }"),
-    ),
-    RekeyStartObjectKTunnelId__: S.Unknown.pipe(
-      T.Body("RekeyStart object { k, tunnel_id }"),
-    ),
-    RekeyAdvanceObjectKTunnelId__: S.Unknown.pipe(
-      T.Body("RekeyAdvance object { k, tunnel_id }"),
-    ),
-    RekeyCompleteObjectKTunnelId__: S.Unknown.pipe(
-      T.Body("RekeyComplete object { k, tunnel_id }"),
-    ),
-    RekeyResetObjectKTunnelId__: S.Unknown.pipe(
-      T.Body("RekeyReset object { k, tunnel_id }"),
-    ),
+    k: S.optional(ConnectorsEventsGetResponseEK),
+    url: S.optional(S.String),
+    tunnelId: S.optional(S.String.pipe(T.Body("tunnel_id"))),
   }),
 ).annotate({
   identifier: "ConnectorsEventsGetResponseE",
@@ -7214,16 +7275,17 @@ export const GreTunnelsGetResponseGreTunnelHealthCheckDirection =
   /*@__PURE__*/ S.String;
 
 export interface GreTunnelsGetResponseGreTunnelHealthCheckTarget {
-  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. */
-  MagicHealthCheckTargetObjectEffectiveSaved__: unknown;
+  /** The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests. */
+  effective?: string;
+  /** The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used. */
+  saved?: string;
   string: unknown;
 }
 export const GreTunnelsGetResponseGreTunnelHealthCheckTarget =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      MagicHealthCheckTargetObjectEffectiveSaved__: S.Unknown.pipe(
-        T.Body("MagicHealthCheckTarget object { effective, saved }"),
-      ),
+      effective: S.optional(S.String),
+      saved: S.optional(S.String),
       string: S.Unknown,
     }),
   ).annotate({
@@ -7447,16 +7509,17 @@ export const IpsecTunnelsGetResponseIpsecTunnelHealthCheckDirection =
   /*@__PURE__*/ S.String;
 
 export interface IpsecTunnelsGetResponseIpsecTunnelHealthCheckTarget {
-  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. */
-  MagicHealthCheckTargetObjectEffectiveSaved__: unknown;
+  /** The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests. */
+  effective?: string;
+  /** The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used. */
+  saved?: string;
   string: unknown;
 }
 export const IpsecTunnelsGetResponseIpsecTunnelHealthCheckTarget =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      MagicHealthCheckTargetObjectEffectiveSaved__: S.Unknown.pipe(
-        T.Body("MagicHealthCheckTarget object { effective, saved }"),
-      ),
+      effective: S.optional(S.String),
+      saved: S.optional(S.String),
       string: S.Unknown,
     }),
   ).annotate({
@@ -7610,22 +7673,92 @@ export const GetPcapRequest = /*@__PURE__*/ S.suspend(() =>
     .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "GetPcapRequest" }) as any as S.Schema<GetPcapRequest>;
 
+export interface PcapsGetResponseFilterV1 {
+  /** The destination IP address of the packet. */
+  destinationAddress?: string;
+  /** The destination port of the packet. */
+  destinationPort?: number;
+  /** The protocol number of the packet. */
+  protocol?: number;
+  /** The source IP address of the packet. */
+  sourceAddress?: string;
+  /** The source port of the packet. */
+  sourcePort?: number;
+}
+export const PcapsGetResponseFilterV1 = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    destinationAddress: S.optional(
+      S.String.pipe(T.Body("destination_address")),
+    ),
+    destinationPort: S.optional(S.Number.pipe(T.Body("destination_port"))),
+    protocol: S.optional(S.Number),
+    sourceAddress: S.optional(S.String.pipe(T.Body("source_address"))),
+    sourcePort: S.optional(S.Number.pipe(T.Body("source_port"))),
+  }),
+).annotate({
+  identifier: "PcapsGetResponseFilterV1",
+}) as any as S.Schema<PcapsGetResponseFilterV1>;
+
+export type PcapsGetResponseStatus =
+  | "unknown"
+  | "success"
+  | "pending"
+  | (string & {});
+export const PcapsGetResponseStatus = /*@__PURE__*/ S.String;
+
+export type PcapsGetResponseSystem = "magic-transit" | (string & {});
+export const PcapsGetResponseSystem = /*@__PURE__*/ S.String;
+
+export type PcapsGetResponseType = "simple" | "full" | (string & {});
+export const PcapsGetResponseType = /*@__PURE__*/ S.String;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetPcapResponse {
-  PCAPObjectIdFilterV1OffsetTime5More__: unknown;
-  MagicVisibilityPCAPsPCAPsResponseFullObjectIdByteLimitColoName10More__: unknown;
+  /** The ID for the packet capture. */
+  id?: string;
+  /** The packet capture filter. When this field is empty, all packets are captured. */
+  filterV1?: PcapsGetResponseFilterV1;
+  /** The RFC 3339 offset timestamp from which to query backwards for packets. Must be within the last 24h. When this field is empty, defaults to time of request. */
+  offsetTime?: string;
+  /** The status of the packet capture request. */
+  status?: PcapsGetResponseStatus;
+  /** The RFC 3339 timestamp when the packet capture was created. */
+  submitted?: string;
+  /** The system used to collect packet captures. */
+  system?: PcapsGetResponseSystem;
+  /** The packet capture duration in seconds. */
+  timeLimit?: number;
+  /** The type of packet capture. `Simple` captures sampled packets, and `full` captures entire payloads and non-sampled packets. */
+  type?: PcapsGetResponseType;
+  /** The maximum number of bytes to capture. This field only applies to `full` packet captures. */
+  byteLimit?: number;
+  /** The name of the data center used for the packet capture. This can be a specific colo (ord02) or a multi-colo name (ORD). This field only applies to `full` packet captures. */
+  coloName?: string;
+  /** The full URI for the bucket. This field only applies to `full` packet captures. */
+  destinationConf?: string;
+  /** An error message that describes why the packet capture failed. This field only applies to `full` packet captures. */
+  errorMessage?: string;
+  /** The number of packets captured. */
+  packetsCaptured?: number;
+  /** The RFC 3339 timestamp when stopping the packet capture was requested. This field only applies to `full` packet captures. */
+  stopRequested?: string;
 }
 export const GetPcapResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    PCAPObjectIdFilterV1OffsetTime5More__: S.Unknown.pipe(
-      T.Body("PCAP object { id, filter_v1, offset_time, 5 more }"),
-    ),
-    MagicVisibilityPCAPsPCAPsResponseFullObjectIdByteLimitColoName10More__:
-      S.Unknown.pipe(
-        T.Body(
-          "MagicVisibilityPCAPsPCAPsResponseFull object { id, byte_limit, colo_name, 10 more }",
-        ),
-      ),
+    id: S.optional(S.String),
+    filterV1: S.optional(PcapsGetResponseFilterV1.pipe(T.Body("filter_v1"))),
+    offsetTime: S.optional(S.String.pipe(T.Body("offset_time"))),
+    status: S.optional(PcapsGetResponseStatus),
+    submitted: S.optional(S.String),
+    system: S.optional(PcapsGetResponseSystem),
+    timeLimit: S.optional(S.Number.pipe(T.Body("time_limit"))),
+    type: S.optional(PcapsGetResponseType),
+    byteLimit: S.optional(S.Number.pipe(T.Body("byte_limit"))),
+    coloName: S.optional(S.String.pipe(T.Body("colo_name"))),
+    destinationConf: S.optional(S.String.pipe(T.Body("destination_conf"))),
+    errorMessage: S.optional(S.String.pipe(T.Body("error_message"))),
+    packetsCaptured: S.optional(S.Number.pipe(T.Body("packets_captured"))),
+    stopRequested: S.optional(S.String.pipe(T.Body("stop_requested"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetPcapResponse",
@@ -8367,24 +8500,50 @@ export const ListAppsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAppsRequest",
 }) as any as S.Schema<ListAppsRequest>;
 
+export type AppsListResultItemHostnamesList = string[];
+export const AppsListResultItemHostnamesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<AppsListResultItemHostnamesList>;
+
+export type AppsListResultItemIpSubnetsList = string[];
+export const AppsListResultItemIpSubnetsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<AppsListResultItemIpSubnetsList>;
+
+export type AppsListResultItemSourceSubnetsList = string[];
+export const AppsListResultItemSourceSubnetsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<AppsListResultItemSourceSubnetsList>;
+
 export interface AppsListResultItem {
-  /** Custom app defined for an account. */
-  MagicAccountAppObjectAccountAppIdHostnamesIpSubnets3More__: unknown;
-  /** Managed app defined by Cloudflare. */
-  MagicManagedAppObjectManagedAppIdHostnamesIpSubnets3More__: unknown;
+  /** Magic account app ID. */
+  accountAppId?: string;
+  /** FQDNs to associate with traffic decisions. */
+  hostnames?: AppsListResultItemHostnamesList;
+  /** IPv4 CIDRs to associate with traffic decisions. (IPv6 CIDRs are currently unsupported) */
+  ipSubnets?: AppsListResultItemIpSubnetsList;
+  /** Display name for the app. */
+  name?: string;
+  /** IPv4 CIDRs to associate with traffic decisions. (IPv6 CIDRs are currently unsupported) */
+  sourceSubnets?: AppsListResultItemSourceSubnetsList;
+  /** Category of the app. */
+  type?: string;
+  /** Managed app ID. */
+  managedAppId?: string;
 }
 export const AppsListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    MagicAccountAppObjectAccountAppIdHostnamesIpSubnets3More__: S.Unknown.pipe(
-      T.Body(
-        "MagicAccountApp object { account_app_id, hostnames, ip_subnets, 3 more }",
-      ),
+    accountAppId: S.optional(S.String.pipe(T.Body("account_app_id"))),
+    hostnames: S.optional(AppsListResultItemHostnamesList),
+    ipSubnets: S.optional(
+      AppsListResultItemIpSubnetsList.pipe(T.Body("ip_subnets")),
     ),
-    MagicManagedAppObjectManagedAppIdHostnamesIpSubnets3More__: S.Unknown.pipe(
-      T.Body(
-        "MagicManagedApp object { managed_app_id, hostnames, ip_subnets, 3 more }",
-      ),
+    name: S.optional(S.String),
+    sourceSubnets: S.optional(
+      AppsListResultItemSourceSubnetsList.pipe(T.Body("source_subnets")),
     ),
+    type: S.optional(S.String),
+    managedAppId: S.optional(S.String.pipe(T.Body("managed_app_id"))),
   }),
 ).annotate({
   identifier: "AppsListResultItem",
@@ -8680,16 +8839,17 @@ export const CfInterconnectsListResponseInterconnectsItemGre =
   }) as any as S.Schema<CfInterconnectsListResponseInterconnectsItemGre>;
 
 export interface CfInterconnectsListResponseInterconnectsItemHealthCheckTarget {
-  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. */
-  MagicHealthCheckTargetObjectEffectiveSaved__: unknown;
+  /** The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests. */
+  effective?: string;
+  /** The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used. */
+  saved?: string;
   string: unknown;
 }
 export const CfInterconnectsListResponseInterconnectsItemHealthCheckTarget =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      MagicHealthCheckTargetObjectEffectiveSaved__: S.Unknown.pipe(
-        T.Body("MagicHealthCheckTarget object { effective, saved }"),
-      ),
+      effective: S.optional(S.String),
+      saved: S.optional(S.String),
       string: S.Unknown,
     }),
   ).annotate({
@@ -8819,89 +8979,26 @@ export const ListConnectorEventLatestsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListConnectorEventLatestsRequest",
 }) as any as S.Schema<ListConnectorEventLatestsRequest>;
 
+export type ConnectorsEventsLatestListResponseItemsItemEK =
+  | "Init"
+  | (string & {});
+export const ConnectorsEventsLatestListResponseItemsItemEK =
+  /*@__PURE__*/ S.String;
+
 export interface ConnectorsEventsLatestListResponseItemsItemE {
-  InitObjectK__: unknown;
-  LeaveObjectK__: unknown;
-  StartAttestationObjectK__: unknown;
-  FinishAttestationSuccessObjectK__: unknown;
-  FinishAttestationFailureObjectK__: unknown;
-  StartRotateCryptKeyObjectK__: unknown;
-  FinishRotateCryptKeySuccessObjectK__: unknown;
-  FinishRotateCryptKeyFailureObjectK__: unknown;
-  StartRotatePkiObjectK__: unknown;
-  FinishRotatePkiSuccessObjectK__: unknown;
-  FinishRotatePkiFailureObjectK__: unknown;
-  StartUpgradeObjectKUrl__: unknown;
-  FinishUpgradeSuccessObjectK__: unknown;
-  FinishUpgradeFailureObjectK__: unknown;
-  ReconcileObjectK__: unknown;
-  ConfigureCloudflaredTunnelObjectK__: unknown;
-  RekeyInstallBothObjectKTunnelId__: unknown;
-  RekeyStartObjectKTunnelId__: unknown;
-  RekeyAdvanceObjectKTunnelId__: unknown;
-  RekeyCompleteObjectKTunnelId__: unknown;
-  RekeyResetObjectKTunnelId__: unknown;
+  /** Initialized process */
+  k?: ConnectorsEventsLatestListResponseItemsItemEK;
+  /** Location of upgrade bundle */
+  url?: string;
+  /** Tunnel identifier */
+  tunnelId?: string;
 }
 export const ConnectorsEventsLatestListResponseItemsItemE =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      InitObjectK__: S.Unknown.pipe(T.Body("Init object { k }")),
-      LeaveObjectK__: S.Unknown.pipe(T.Body("Leave object { k }")),
-      StartAttestationObjectK__: S.Unknown.pipe(
-        T.Body("StartAttestation object { k }"),
-      ),
-      FinishAttestationSuccessObjectK__: S.Unknown.pipe(
-        T.Body("FinishAttestationSuccess object { k }"),
-      ),
-      FinishAttestationFailureObjectK__: S.Unknown.pipe(
-        T.Body("FinishAttestationFailure object { k }"),
-      ),
-      StartRotateCryptKeyObjectK__: S.Unknown.pipe(
-        T.Body("StartRotateCryptKey object { k }"),
-      ),
-      FinishRotateCryptKeySuccessObjectK__: S.Unknown.pipe(
-        T.Body("FinishRotateCryptKeySuccess object { k }"),
-      ),
-      FinishRotateCryptKeyFailureObjectK__: S.Unknown.pipe(
-        T.Body("FinishRotateCryptKeyFailure object { k }"),
-      ),
-      StartRotatePkiObjectK__: S.Unknown.pipe(
-        T.Body("StartRotatePki object { k }"),
-      ),
-      FinishRotatePkiSuccessObjectK__: S.Unknown.pipe(
-        T.Body("FinishRotatePkiSuccess object { k }"),
-      ),
-      FinishRotatePkiFailureObjectK__: S.Unknown.pipe(
-        T.Body("FinishRotatePkiFailure object { k }"),
-      ),
-      StartUpgradeObjectKUrl__: S.Unknown.pipe(
-        T.Body("StartUpgrade object { k, url }"),
-      ),
-      FinishUpgradeSuccessObjectK__: S.Unknown.pipe(
-        T.Body("FinishUpgradeSuccess object { k }"),
-      ),
-      FinishUpgradeFailureObjectK__: S.Unknown.pipe(
-        T.Body("FinishUpgradeFailure object { k }"),
-      ),
-      ReconcileObjectK__: S.Unknown.pipe(T.Body("Reconcile object { k }")),
-      ConfigureCloudflaredTunnelObjectK__: S.Unknown.pipe(
-        T.Body("ConfigureCloudflaredTunnel object { k }"),
-      ),
-      RekeyInstallBothObjectKTunnelId__: S.Unknown.pipe(
-        T.Body("RekeyInstallBoth object { k, tunnel_id }"),
-      ),
-      RekeyStartObjectKTunnelId__: S.Unknown.pipe(
-        T.Body("RekeyStart object { k, tunnel_id }"),
-      ),
-      RekeyAdvanceObjectKTunnelId__: S.Unknown.pipe(
-        T.Body("RekeyAdvance object { k, tunnel_id }"),
-      ),
-      RekeyCompleteObjectKTunnelId__: S.Unknown.pipe(
-        T.Body("RekeyComplete object { k, tunnel_id }"),
-      ),
-      RekeyResetObjectKTunnelId__: S.Unknown.pipe(
-        T.Body("RekeyReset object { k, tunnel_id }"),
-      ),
+      k: S.optional(ConnectorsEventsLatestListResponseItemsItemEK),
+      url: S.optional(S.String),
+      tunnelId: S.optional(S.String.pipe(T.Body("tunnel_id"))),
     }),
   ).annotate({
     identifier: "ConnectorsEventsLatestListResponseItemsItemE",
@@ -10536,16 +10633,17 @@ export const GreTunnelsListResponseGreTunnelsItemHealthCheckDirection =
   /*@__PURE__*/ S.String;
 
 export interface GreTunnelsListResponseGreTunnelsItemHealthCheckTarget {
-  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. */
-  MagicHealthCheckTargetObjectEffectiveSaved__: unknown;
+  /** The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests. */
+  effective?: string;
+  /** The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used. */
+  saved?: string;
   string: unknown;
 }
 export const GreTunnelsListResponseGreTunnelsItemHealthCheckTarget =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      MagicHealthCheckTargetObjectEffectiveSaved__: S.Unknown.pipe(
-        T.Body("MagicHealthCheckTarget object { effective, saved }"),
-      ),
+      effective: S.optional(S.String),
+      saved: S.optional(S.String),
       string: S.Unknown,
     }),
   ).annotate({
@@ -10783,16 +10881,17 @@ export const IpsecTunnelsListResponseIpsecTunnelsItemHealthCheckDirection =
   /*@__PURE__*/ S.String;
 
 export interface IpsecTunnelsListResponseIpsecTunnelsItemHealthCheckTarget {
-  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. */
-  MagicHealthCheckTargetObjectEffectiveSaved__: unknown;
+  /** The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests. */
+  effective?: string;
+  /** The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used. */
+  saved?: string;
   string: unknown;
 }
 export const IpsecTunnelsListResponseIpsecTunnelsItemHealthCheckTarget =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      MagicHealthCheckTargetObjectEffectiveSaved__: S.Unknown.pipe(
-        T.Body("MagicHealthCheckTarget object { effective, saved }"),
-      ),
+      effective: S.optional(S.String),
+      saved: S.optional(S.String),
       string: S.Unknown,
     }),
   ).annotate({
@@ -10954,21 +11053,91 @@ export const ListPcapsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListPcapsRequest",
 }) as any as S.Schema<ListPcapsRequest>;
 
+export interface PcapsListResultItemFilterV1 {
+  /** The destination IP address of the packet. */
+  destinationAddress?: string;
+  /** The destination port of the packet. */
+  destinationPort?: number;
+  /** The protocol number of the packet. */
+  protocol?: number;
+  /** The source IP address of the packet. */
+  sourceAddress?: string;
+  /** The source port of the packet. */
+  sourcePort?: number;
+}
+export const PcapsListResultItemFilterV1 = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    destinationAddress: S.optional(
+      S.String.pipe(T.Body("destination_address")),
+    ),
+    destinationPort: S.optional(S.Number.pipe(T.Body("destination_port"))),
+    protocol: S.optional(S.Number),
+    sourceAddress: S.optional(S.String.pipe(T.Body("source_address"))),
+    sourcePort: S.optional(S.Number.pipe(T.Body("source_port"))),
+  }),
+).annotate({
+  identifier: "PcapsListResultItemFilterV1",
+}) as any as S.Schema<PcapsListResultItemFilterV1>;
+
+export type PcapsListResultItemStatus =
+  | "unknown"
+  | "success"
+  | "pending"
+  | (string & {});
+export const PcapsListResultItemStatus = /*@__PURE__*/ S.String;
+
+export type PcapsListResultItemSystem = "magic-transit" | (string & {});
+export const PcapsListResultItemSystem = /*@__PURE__*/ S.String;
+
+export type PcapsListResultItemType = "simple" | "full" | (string & {});
+export const PcapsListResultItemType = /*@__PURE__*/ S.String;
+
 export interface PcapsListResultItem {
-  PCAPObjectIdFilterV1OffsetTime5More__: unknown;
-  MagicVisibilityPCAPsPCAPsResponseFullObjectIdByteLimitColoName10More__: unknown;
+  /** The ID for the packet capture. */
+  id?: string;
+  /** The packet capture filter. When this field is empty, all packets are captured. */
+  filterV1?: PcapsListResultItemFilterV1;
+  /** The RFC 3339 offset timestamp from which to query backwards for packets. Must be within the last 24h. When this field is empty, defaults to time of request. */
+  offsetTime?: string;
+  /** The status of the packet capture request. */
+  status?: PcapsListResultItemStatus;
+  /** The RFC 3339 timestamp when the packet capture was created. */
+  submitted?: string;
+  /** The system used to collect packet captures. */
+  system?: PcapsListResultItemSystem;
+  /** The packet capture duration in seconds. */
+  timeLimit?: number;
+  /** The type of packet capture. `Simple` captures sampled packets, and `full` captures entire payloads and non-sampled packets. */
+  type?: PcapsListResultItemType;
+  /** The maximum number of bytes to capture. This field only applies to `full` packet captures. */
+  byteLimit?: number;
+  /** The name of the data center used for the packet capture. This can be a specific colo (ord02) or a multi-colo name (ORD). This field only applies to `full` packet captures. */
+  coloName?: string;
+  /** The full URI for the bucket. This field only applies to `full` packet captures. */
+  destinationConf?: string;
+  /** An error message that describes why the packet capture failed. This field only applies to `full` packet captures. */
+  errorMessage?: string;
+  /** The number of packets captured. */
+  packetsCaptured?: number;
+  /** The RFC 3339 timestamp when stopping the packet capture was requested. This field only applies to `full` packet captures. */
+  stopRequested?: string;
 }
 export const PcapsListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    PCAPObjectIdFilterV1OffsetTime5More__: S.Unknown.pipe(
-      T.Body("PCAP object { id, filter_v1, offset_time, 5 more }"),
-    ),
-    MagicVisibilityPCAPsPCAPsResponseFullObjectIdByteLimitColoName10More__:
-      S.Unknown.pipe(
-        T.Body(
-          "MagicVisibilityPCAPsPCAPsResponseFull object { id, byte_limit, colo_name, 10 more }",
-        ),
-      ),
+    id: S.optional(S.String),
+    filterV1: S.optional(PcapsListResultItemFilterV1.pipe(T.Body("filter_v1"))),
+    offsetTime: S.optional(S.String.pipe(T.Body("offset_time"))),
+    status: S.optional(PcapsListResultItemStatus),
+    submitted: S.optional(S.String),
+    system: S.optional(PcapsListResultItemSystem),
+    timeLimit: S.optional(S.Number.pipe(T.Body("time_limit"))),
+    type: S.optional(PcapsListResultItemType),
+    byteLimit: S.optional(S.Number.pipe(T.Body("byte_limit"))),
+    coloName: S.optional(S.String.pipe(T.Body("colo_name"))),
+    destinationConf: S.optional(S.String.pipe(T.Body("destination_conf"))),
+    errorMessage: S.optional(S.String.pipe(T.Body("error_message"))),
+    packetsCaptured: S.optional(S.Number.pipe(T.Body("packets_captured"))),
+    stopRequested: S.optional(S.String.pipe(T.Body("stop_requested"))),
   }),
 ).annotate({
   identifier: "PcapsListResultItem",
@@ -13044,16 +13213,17 @@ export const CfInterconnectsUpdateRequestGre = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CfInterconnectsUpdateRequestGre>;
 
 export interface CfInterconnectsUpdateRequestHealthCheckTarget {
-  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. */
-  MagicHealthCheckTargetObjectEffectiveSaved__: unknown;
+  /** The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests. */
+  effective?: string;
+  /** The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used. */
+  saved?: string;
   string: unknown;
 }
 export const CfInterconnectsUpdateRequestHealthCheckTarget =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      MagicHealthCheckTargetObjectEffectiveSaved__: S.Unknown.pipe(
-        T.Body("MagicHealthCheckTarget object { effective, saved }"),
-      ),
+      effective: S.optional(S.String),
+      saved: S.optional(S.String),
       string: S.Unknown,
     }),
   ).annotate({
@@ -13152,16 +13322,17 @@ export const CfInterconnectsUpdateResponseModifiedInterconnectGre =
   }) as any as S.Schema<CfInterconnectsUpdateResponseModifiedInterconnectGre>;
 
 export interface CfInterconnectsUpdateResponseModifiedInterconnectHealthCheckTarget {
-  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. */
-  MagicHealthCheckTargetObjectEffectiveSaved__: unknown;
+  /** The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests. */
+  effective?: string;
+  /** The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used. */
+  saved?: string;
   string: unknown;
 }
 export const CfInterconnectsUpdateResponseModifiedInterconnectHealthCheckTarget =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      MagicHealthCheckTargetObjectEffectiveSaved__: S.Unknown.pipe(
-        T.Body("MagicHealthCheckTarget object { effective, saved }"),
-      ),
+      effective: S.optional(S.String),
+      saved: S.optional(S.String),
       string: S.Unknown,
     }),
   ).annotate({
@@ -13269,25 +13440,36 @@ export const PutCfInterconnectResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutCfInterconnectResponse",
 }) as any as S.Schema<PutCfInterconnectResponse>;
 
+export type SitesAppConfigurationCreateRequestBodyPreferredWansList = string[];
+export const SitesAppConfigurationCreateRequestBodyPreferredWansList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<SitesAppConfigurationCreateRequestBodyPreferredWansList>;
+
 export interface SitesAppConfigurationCreateRequestBody {
-  AccountAppObjectAccountAppIdBreakoutPreferredWansPriority__: unknown;
-  ManagedAppObjectManagedAppIdBreakoutPreferredWansPriority__: unknown;
+  /** Magic account app ID. */
+  accountAppId?: string;
+  /** Whether to breakout traffic to the app's endpoints directly. Null preserves default behavior. */
+  breakout?: boolean;
+  /** WAN interfaces to prefer over default WANs, highest-priority first. Can only be specified for breakout rules (breakout must be true). */
+  preferredWans?: SitesAppConfigurationCreateRequestBodyPreferredWansList;
+  /** Priority of traffic. 0 is default, anything greater is prioritized. (Currently only 0 and 1 are supported) */
+  priority?: number;
+  /** Managed app ID. */
+  managedAppId?: string;
 }
 export const SitesAppConfigurationCreateRequestBody = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      AccountAppObjectAccountAppIdBreakoutPreferredWansPriority__:
-        S.Unknown.pipe(
-          T.Body(
-            "AccountApp object { account_app_id, breakout, preferred_wans, priority }",
-          ),
+      accountAppId: S.optional(S.String.pipe(T.Body("account_app_id"))),
+      breakout: S.optional(S.Boolean),
+      preferredWans: S.optional(
+        SitesAppConfigurationCreateRequestBodyPreferredWansList.pipe(
+          T.Body("preferred_wans"),
         ),
-      ManagedAppObjectManagedAppIdBreakoutPreferredWansPriority__:
-        S.Unknown.pipe(
-          T.Body(
-            "ManagedApp object { managed_app_id, breakout, preferred_wans, priority }",
-          ),
-        ),
+      ),
+      priority: S.optional(S.Number),
+      managedAppId: S.optional(S.String.pipe(T.Body("managed_app_id"))),
     }),
 ).annotate({
   identifier: "SitesAppConfigurationCreateRequestBody",
@@ -13318,19 +13500,42 @@ export const SitesAppConfigurationCreateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "SitesAppConfigurationCreateRequest",
 }) as any as S.Schema<SitesAppConfigurationCreateRequest>;
 
+export type SitesAppConfigurationCreateResponsePreferredWansList = string[];
+export const SitesAppConfigurationCreateResponsePreferredWansList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<SitesAppConfigurationCreateResponsePreferredWansList>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface SitesAppConfigurationCreateResponse {
-  AccountAppObjectAccountAppIdIdBreakout3More__: unknown;
-  ManagedAppObjectManagedAppIdIdBreakout3More__: unknown;
+  /** Magic account app ID. */
+  accountAppId?: string;
+  /** Identifier */
+  id?: string;
+  /** Whether to breakout traffic to the app's endpoints directly. Null preserves default behavior. */
+  breakout?: boolean;
+  /** WAN interfaces to prefer over default WANs, highest-priority first. Can only be specified for breakout rules (breakout must be true). */
+  preferredWans?: SitesAppConfigurationCreateResponsePreferredWansList;
+  /** Priority of traffic. 0 is default, anything greater is prioritized. (Currently only 0 and 1 are supported) */
+  priority?: number;
+  /** Identifier */
+  siteId?: string;
+  /** Managed app ID. */
+  managedAppId?: string;
 }
 export const SitesAppConfigurationCreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    AccountAppObjectAccountAppIdIdBreakout3More__: S.Unknown.pipe(
-      T.Body("AccountApp object { account_app_id, id, breakout, 3 more }"),
+    accountAppId: S.optional(S.String.pipe(T.Body("account_app_id"))),
+    id: S.optional(S.String),
+    breakout: S.optional(S.Boolean),
+    preferredWans: S.optional(
+      SitesAppConfigurationCreateResponsePreferredWansList.pipe(
+        T.Body("preferred_wans"),
+      ),
     ),
-    ManagedAppObjectManagedAppIdIdBreakout3More__: S.Unknown.pipe(
-      T.Body("ManagedApp object { managed_app_id, id, breakout, 3 more }"),
-    ),
+    priority: S.optional(S.Number),
+    siteId: S.optional(S.String.pipe(T.Body("site_id"))),
+    managedAppId: S.optional(S.String.pipe(T.Body("managed_app_id"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "SitesAppConfigurationCreateResponse",
@@ -13362,19 +13567,42 @@ export const SitesAppConfigurationDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "SitesAppConfigurationDeleteRequest",
 }) as any as S.Schema<SitesAppConfigurationDeleteRequest>;
 
+export type SitesAppConfigurationDeleteResponsePreferredWansList = string[];
+export const SitesAppConfigurationDeleteResponsePreferredWansList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<SitesAppConfigurationDeleteResponsePreferredWansList>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface SitesAppConfigurationDeleteResponse {
-  AccountAppObjectAccountAppIdIdBreakout3More__: unknown;
-  ManagedAppObjectManagedAppIdIdBreakout3More__: unknown;
+  /** Magic account app ID. */
+  accountAppId?: string;
+  /** Identifier */
+  id?: string;
+  /** Whether to breakout traffic to the app's endpoints directly. Null preserves default behavior. */
+  breakout?: boolean;
+  /** WAN interfaces to prefer over default WANs, highest-priority first. Can only be specified for breakout rules (breakout must be true). */
+  preferredWans?: SitesAppConfigurationDeleteResponsePreferredWansList;
+  /** Priority of traffic. 0 is default, anything greater is prioritized. (Currently only 0 and 1 are supported) */
+  priority?: number;
+  /** Identifier */
+  siteId?: string;
+  /** Managed app ID. */
+  managedAppId?: string;
 }
 export const SitesAppConfigurationDeleteResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    AccountAppObjectAccountAppIdIdBreakout3More__: S.Unknown.pipe(
-      T.Body("AccountApp object { account_app_id, id, breakout, 3 more }"),
+    accountAppId: S.optional(S.String.pipe(T.Body("account_app_id"))),
+    id: S.optional(S.String),
+    breakout: S.optional(S.Boolean),
+    preferredWans: S.optional(
+      SitesAppConfigurationDeleteResponsePreferredWansList.pipe(
+        T.Body("preferred_wans"),
+      ),
     ),
-    ManagedAppObjectManagedAppIdIdBreakout3More__: S.Unknown.pipe(
-      T.Body("ManagedApp object { managed_app_id, id, breakout, 3 more }"),
-    ),
+    priority: S.optional(S.Number),
+    siteId: S.optional(S.String.pipe(T.Body("site_id"))),
+    managedAppId: S.optional(S.String.pipe(T.Body("managed_app_id"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "SitesAppConfigurationDeleteResponse",
@@ -13431,19 +13659,42 @@ export const SitesAppConfigurationEditRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "SitesAppConfigurationEditRequest",
 }) as any as S.Schema<SitesAppConfigurationEditRequest>;
 
+export type SitesAppConfigurationEditResponsePreferredWansList = string[];
+export const SitesAppConfigurationEditResponsePreferredWansList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<SitesAppConfigurationEditResponsePreferredWansList>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface SitesAppConfigurationEditResponse {
-  AccountAppObjectAccountAppIdIdBreakout3More__: unknown;
-  ManagedAppObjectManagedAppIdIdBreakout3More__: unknown;
+  /** Magic account app ID. */
+  accountAppId?: string;
+  /** Identifier */
+  id?: string;
+  /** Whether to breakout traffic to the app's endpoints directly. Null preserves default behavior. */
+  breakout?: boolean;
+  /** WAN interfaces to prefer over default WANs, highest-priority first. Can only be specified for breakout rules (breakout must be true). */
+  preferredWans?: SitesAppConfigurationEditResponsePreferredWansList;
+  /** Priority of traffic. 0 is default, anything greater is prioritized. (Currently only 0 and 1 are supported) */
+  priority?: number;
+  /** Identifier */
+  siteId?: string;
+  /** Managed app ID. */
+  managedAppId?: string;
 }
 export const SitesAppConfigurationEditResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    AccountAppObjectAccountAppIdIdBreakout3More__: S.Unknown.pipe(
-      T.Body("AccountApp object { account_app_id, id, breakout, 3 more }"),
+    accountAppId: S.optional(S.String.pipe(T.Body("account_app_id"))),
+    id: S.optional(S.String),
+    breakout: S.optional(S.Boolean),
+    preferredWans: S.optional(
+      SitesAppConfigurationEditResponsePreferredWansList.pipe(
+        T.Body("preferred_wans"),
+      ),
     ),
-    ManagedAppObjectManagedAppIdIdBreakout3More__: S.Unknown.pipe(
-      T.Body("ManagedApp object { managed_app_id, id, breakout, 3 more }"),
-    ),
+    priority: S.optional(S.Number),
+    siteId: S.optional(S.String.pipe(T.Body("site_id"))),
+    managedAppId: S.optional(S.String.pipe(T.Body("managed_app_id"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "SitesAppConfigurationEditResponse",
@@ -13472,18 +13723,41 @@ export const SitesAppConfigurationListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "SitesAppConfigurationListRequest",
 }) as any as S.Schema<SitesAppConfigurationListRequest>;
 
+export type SitesAppConfigurationListResultItemPreferredWansList = string[];
+export const SitesAppConfigurationListResultItemPreferredWansList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<SitesAppConfigurationListResultItemPreferredWansList>;
+
 export interface SitesAppConfigurationListResultItem {
-  AccountAppObjectAccountAppIdIdBreakout3More__: unknown;
-  ManagedAppObjectManagedAppIdIdBreakout3More__: unknown;
+  /** Magic account app ID. */
+  accountAppId?: string;
+  /** Identifier */
+  id?: string;
+  /** Whether to breakout traffic to the app's endpoints directly. Null preserves default behavior. */
+  breakout?: boolean;
+  /** WAN interfaces to prefer over default WANs, highest-priority first. Can only be specified for breakout rules (breakout must be true). */
+  preferredWans?: SitesAppConfigurationListResultItemPreferredWansList;
+  /** Priority of traffic. 0 is default, anything greater is prioritized. (Currently only 0 and 1 are supported) */
+  priority?: number;
+  /** Identifier */
+  siteId?: string;
+  /** Managed app ID. */
+  managedAppId?: string;
 }
 export const SitesAppConfigurationListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    AccountAppObjectAccountAppIdIdBreakout3More__: S.Unknown.pipe(
-      T.Body("AccountApp object { account_app_id, id, breakout, 3 more }"),
+    accountAppId: S.optional(S.String.pipe(T.Body("account_app_id"))),
+    id: S.optional(S.String),
+    breakout: S.optional(S.Boolean),
+    preferredWans: S.optional(
+      SitesAppConfigurationListResultItemPreferredWansList.pipe(
+        T.Body("preferred_wans"),
+      ),
     ),
-    ManagedAppObjectManagedAppIdIdBreakout3More__: S.Unknown.pipe(
-      T.Body("ManagedApp object { managed_app_id, id, breakout, 3 more }"),
-    ),
+    priority: S.optional(S.Number),
+    siteId: S.optional(S.String.pipe(T.Body("site_id"))),
+    managedAppId: S.optional(S.String.pipe(T.Body("managed_app_id"))),
   }),
 ).annotate({
   identifier: "SitesAppConfigurationListResultItem",
@@ -13560,19 +13834,42 @@ export const SitesAppConfigurationUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "SitesAppConfigurationUpdateRequest",
 }) as any as S.Schema<SitesAppConfigurationUpdateRequest>;
 
+export type SitesAppConfigurationUpdateResponsePreferredWansList = string[];
+export const SitesAppConfigurationUpdateResponsePreferredWansList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<SitesAppConfigurationUpdateResponsePreferredWansList>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface SitesAppConfigurationUpdateResponse {
-  AccountAppObjectAccountAppIdIdBreakout3More__: unknown;
-  ManagedAppObjectManagedAppIdIdBreakout3More__: unknown;
+  /** Magic account app ID. */
+  accountAppId?: string;
+  /** Identifier */
+  id?: string;
+  /** Whether to breakout traffic to the app's endpoints directly. Null preserves default behavior. */
+  breakout?: boolean;
+  /** WAN interfaces to prefer over default WANs, highest-priority first. Can only be specified for breakout rules (breakout must be true). */
+  preferredWans?: SitesAppConfigurationUpdateResponsePreferredWansList;
+  /** Priority of traffic. 0 is default, anything greater is prioritized. (Currently only 0 and 1 are supported) */
+  priority?: number;
+  /** Identifier */
+  siteId?: string;
+  /** Managed app ID. */
+  managedAppId?: string;
 }
 export const SitesAppConfigurationUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    AccountAppObjectAccountAppIdIdBreakout3More__: S.Unknown.pipe(
-      T.Body("AccountApp object { account_app_id, id, breakout, 3 more }"),
+    accountAppId: S.optional(S.String.pipe(T.Body("account_app_id"))),
+    id: S.optional(S.String),
+    breakout: S.optional(S.Boolean),
+    preferredWans: S.optional(
+      SitesAppConfigurationUpdateResponsePreferredWansList.pipe(
+        T.Body("preferred_wans"),
+      ),
     ),
-    ManagedAppObjectManagedAppIdIdBreakout3More__: S.Unknown.pipe(
-      T.Body("ManagedApp object { managed_app_id, id, breakout, 3 more }"),
-    ),
+    priority: S.optional(S.Number),
+    siteId: S.optional(S.String.pipe(T.Body("site_id"))),
+    managedAppId: S.optional(S.String.pipe(T.Body("managed_app_id"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "SitesAppConfigurationUpdateResponse",
@@ -13892,16 +14189,17 @@ export const GreTunnelsUpdateRequestHealthCheckDirection =
   /*@__PURE__*/ S.String;
 
 export interface GreTunnelsUpdateRequestHealthCheckTarget {
-  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. */
-  MagicHealthCheckTargetObjectEffectiveSaved__: unknown;
+  /** The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests. */
+  effective?: string;
+  /** The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used. */
+  saved?: string;
   string: unknown;
 }
 export const GreTunnelsUpdateRequestHealthCheckTarget = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      MagicHealthCheckTargetObjectEffectiveSaved__: S.Unknown.pipe(
-        T.Body("MagicHealthCheckTarget object { effective, saved }"),
-      ),
+      effective: S.optional(S.String),
+      saved: S.optional(S.String),
       string: S.Unknown,
     }),
 ).annotate({
@@ -14074,16 +14372,17 @@ export const GreTunnelsUpdateResponseModifiedGreTunnelHealthCheckDirection =
   /*@__PURE__*/ S.String;
 
 export interface GreTunnelsUpdateResponseModifiedGreTunnelHealthCheckTarget {
-  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. */
-  MagicHealthCheckTargetObjectEffectiveSaved__: unknown;
+  /** The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests. */
+  effective?: string;
+  /** The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used. */
+  saved?: string;
   string: unknown;
 }
 export const GreTunnelsUpdateResponseModifiedGreTunnelHealthCheckTarget =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      MagicHealthCheckTargetObjectEffectiveSaved__: S.Unknown.pipe(
-        T.Body("MagicHealthCheckTarget object { effective, saved }"),
-      ),
+      effective: S.optional(S.String),
+      saved: S.optional(S.String),
       string: S.Unknown,
     }),
   ).annotate({
@@ -14256,16 +14555,17 @@ export const IpsecTunnelsUpdateRequestHealthCheckDirection =
   /*@__PURE__*/ S.String;
 
 export interface IpsecTunnelsUpdateRequestHealthCheckTarget {
-  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. */
-  MagicHealthCheckTargetObjectEffectiveSaved__: unknown;
+  /** The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests. */
+  effective?: string;
+  /** The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used. */
+  saved?: string;
   string: unknown;
 }
 export const IpsecTunnelsUpdateRequestHealthCheckTarget =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      MagicHealthCheckTargetObjectEffectiveSaved__: S.Unknown.pipe(
-        T.Body("MagicHealthCheckTarget object { effective, saved }"),
-      ),
+      effective: S.optional(S.String),
+      saved: S.optional(S.String),
       string: S.Unknown,
     }),
   ).annotate({
@@ -14461,16 +14761,17 @@ export const IpsecTunnelsUpdateResponseModifiedIpsecTunnelHealthCheckDirection =
   /*@__PURE__*/ S.String;
 
 export interface IpsecTunnelsUpdateResponseModifiedIpsecTunnelHealthCheckTarget {
-  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. */
-  MagicHealthCheckTargetObjectEffectiveSaved__: unknown;
+  /** The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests. */
+  effective?: string;
+  /** The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used. */
+  saved?: string;
   string: unknown;
 }
 export const IpsecTunnelsUpdateResponseModifiedIpsecTunnelHealthCheckTarget =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      MagicHealthCheckTargetObjectEffectiveSaved__: S.Unknown.pipe(
-        T.Body("MagicHealthCheckTarget object { effective, saved }"),
-      ),
+      effective: S.optional(S.String),
+      saved: S.optional(S.String),
       string: S.Unknown,
     }),
   ).annotate({

@@ -503,22 +503,242 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.user#AuditLogsListResponseErrorsItemSource": {
+      "type": "structure",
+      "members": {
+        "pointer": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.user#AuditLogsListResponseErrorsItem": {
+      "type": "structure",
+      "members": {
+        "code": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "message": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "documentation_url": {
+          "target": "smithy.api#String"
+        },
+        "source": {
+          "target": "com.cloudflare.user#AuditLogsListResponseErrorsItemSource"
+        }
+      }
+    },
+    "com.cloudflare.user#AuditLogsListResponseErrorsList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.user#AuditLogsListResponseErrorsItem"
+      }
+    },
+    "com.cloudflare.user#AuditLogsListResponseMessagesItem": {
+      "type": "structure",
+      "members": {
+        "code": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "message": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "documentation_url": {
+          "target": "smithy.api#String"
+        },
+        "source": {
+          "target": "smithy.api#Document"
+        }
+      }
+    },
+    "com.cloudflare.user#AuditLogsListResponseMessagesList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.user#AuditLogsListResponseMessagesItem"
+      }
+    },
+    "com.cloudflare.user#AuditLogsListResponseResultItemAction": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "A boolean that indicates if the action attempted was successful."
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A short string that describes the action that was performed."
+          }
+        }
+      }
+    },
+    "com.cloudflare.user#AuditLogsListResponseResultItemActorType": {
+      "type": "enum",
+      "members": {
+        "USER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "user"
+          }
+        },
+        "ADMIN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "admin"
+          }
+        },
+        "CLOUDFLARE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Cloudflare"
+          }
+        }
+      }
+    },
+    "com.cloudflare.user#AuditLogsListResponseResultItemActor": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID of the actor that performed the action. If a user performed the action, this will be their User ID."
+          }
+        },
+        "email": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The email of the user that performed the action."
+          }
+        },
+        "ip": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The IP address of the request that performed the action."
+          }
+        },
+        "type": {
+          "target": "com.cloudflare.user#AuditLogsListResponseResultItemActorType",
+          "traits": {
+            "smithy.api#documentation": "The type of actor, whether a User, Cloudflare Admin, or an Automated System."
+          }
+        }
+      }
+    },
+    "com.cloudflare.user#AuditLogsListResponseResultItemOwner": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier"
+          }
+        }
+      }
+    },
+    "com.cloudflare.user#AuditLogsListResponseResultItemResource": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "An identifier for the resource that was affected by the action."
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A short string that describes the resource that was affected by the action."
+          }
+        }
+      }
+    },
+    "com.cloudflare.user#AuditLogsListResponseResultItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A string that uniquely identifies the audit log."
+          }
+        },
+        "action": {
+          "target": "com.cloudflare.user#AuditLogsListResponseResultItemAction"
+        },
+        "actor": {
+          "target": "com.cloudflare.user#AuditLogsListResponseResultItemActor"
+        },
+        "interface": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The source of the event."
+          }
+        },
+        "metadata": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "An object which can lend more context to the action being logged. This is a flexible value and varies between different actions."
+          }
+        },
+        "newValue": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The new value of the resource that was modified."
+          }
+        },
+        "oldValue": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The value of the resource before it was modified."
+          }
+        },
+        "owner": {
+          "target": "com.cloudflare.user#AuditLogsListResponseResultItemOwner"
+        },
+        "resource": {
+          "target": "com.cloudflare.user#AuditLogsListResponseResultItemResource"
+        },
+        "when": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A UTC RFC3339 timestamp that specifies when the action being logged occured."
+          }
+        }
+      }
+    },
+    "com.cloudflare.user#AuditLogsListResponseResultList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.user#AuditLogsListResponseResultItem"
+      }
+    },
     "com.cloudflare.user#AuditLogsListResponse": {
       "type": "structure",
       "members": {
-        "object___errors__messages__result__success__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "object { errors, messages, result, success }"
-          }
+        "errors": {
+          "target": "com.cloudflare.user#AuditLogsListResponseErrorsList"
         },
-        "AaaAPIResponseCommon_object___errors__messages__success__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "AaaAPIResponseCommon object { errors, messages, success }"
-          }
+        "messages": {
+          "target": "com.cloudflare.user#AuditLogsListResponseMessagesList"
+        },
+        "result": {
+          "target": "com.cloudflare.user#AuditLogsListResponseResultList"
+        },
+        "success": {
+          "target": "smithy.api#Boolean"
         }
       },
       "traits": {

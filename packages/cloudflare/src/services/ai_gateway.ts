@@ -318,18 +318,73 @@ export const CreateAiGatewayRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateAiGatewayRequest",
 }) as any as S.Schema<CreateAiGatewayRequest>;
 
+export type CreateResponseDlpAction = "BLOCK" | "FLAG" | (string & {});
+export const CreateResponseDlpAction = /*@__PURE__*/ S.String;
+
+export type CreateResponseDlpProfilesList = string[];
+export const CreateResponseDlpProfilesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<CreateResponseDlpProfilesList>;
+
+export type CreateResponseDlpPoliciesItemAction =
+  | "FLAG"
+  | "BLOCK"
+  | (string & {});
+export const CreateResponseDlpPoliciesItemAction = /*@__PURE__*/ S.String;
+
+export type CreateResponseDlpPoliciesItemCheckItem =
+  | "REQUEST"
+  | "RESPONSE"
+  | (string & {});
+export const CreateResponseDlpPoliciesItemCheckItem = /*@__PURE__*/ S.String;
+
+export type CreateResponseDlpPoliciesItemCheckList =
+  CreateResponseDlpPoliciesItemCheckItem[];
+export const CreateResponseDlpPoliciesItemCheckList = /*@__PURE__*/ S.Array(
+  CreateResponseDlpPoliciesItemCheckItem,
+) as any as S.Schema<CreateResponseDlpPoliciesItemCheckList>;
+
+export type CreateResponseDlpPoliciesItemProfilesList = string[];
+export const CreateResponseDlpPoliciesItemProfilesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<CreateResponseDlpPoliciesItemProfilesList>;
+
+export interface CreateResponseDlpPoliciesItem {
+  id: string;
+  action: CreateResponseDlpPoliciesItemAction;
+  check: CreateResponseDlpPoliciesItemCheckList;
+  enabled: boolean;
+  profiles: CreateResponseDlpPoliciesItemProfilesList;
+}
+export const CreateResponseDlpPoliciesItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    action: CreateResponseDlpPoliciesItemAction,
+    check: CreateResponseDlpPoliciesItemCheckList,
+    enabled: S.Boolean,
+    profiles: CreateResponseDlpPoliciesItemProfilesList,
+  }),
+).annotate({
+  identifier: "CreateResponseDlpPoliciesItem",
+}) as any as S.Schema<CreateResponseDlpPoliciesItem>;
+
+export type CreateResponseDlpPoliciesList = CreateResponseDlpPoliciesItem[];
+export const CreateResponseDlpPoliciesList = /*@__PURE__*/ S.Array(
+  CreateResponseDlpPoliciesItem,
+) as any as S.Schema<CreateResponseDlpPoliciesList>;
+
 export interface CreateResponseDlp {
-  objectActionEnabledProfiles__: unknown;
-  objectEnabledPolicies__: unknown;
+  action?: CreateResponseDlpAction;
+  enabled?: boolean;
+  profiles?: CreateResponseDlpProfilesList;
+  policies?: CreateResponseDlpPoliciesList;
 }
 export const CreateResponseDlp = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    objectActionEnabledProfiles__: S.Unknown.pipe(
-      T.Body("object { action, enabled, profiles }"),
-    ),
-    objectEnabledPolicies__: S.Unknown.pipe(
-      T.Body("object { enabled, policies }"),
-    ),
+    action: S.optional(CreateResponseDlpAction),
+    enabled: S.optional(S.Boolean),
+    profiles: S.optional(CreateResponseDlpProfilesList),
+    policies: S.optional(CreateResponseDlpPoliciesList),
   }),
 ).annotate({
   identifier: "CreateResponseDlp",
@@ -1272,34 +1327,64 @@ export const CreateDeploymentDynamicRoutingRequest = /*@__PURE__*/ S.suspend(
   identifier: "CreateDeploymentDynamicRoutingRequest",
 }) as any as S.Schema<CreateDeploymentDynamicRoutingRequest>;
 
+export interface DynamicRoutingCreateDeploymentResponseElementsItemOutputsNext {
+  elementId: string;
+}
+export const DynamicRoutingCreateDeploymentResponseElementsItemOutputsNext =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      elementId: S.String,
+    }),
+  ).annotate({
+    identifier: "DynamicRoutingCreateDeploymentResponseElementsItemOutputsNext",
+  }) as any as S.Schema<DynamicRoutingCreateDeploymentResponseElementsItemOutputsNext>;
+
+export interface DynamicRoutingCreateDeploymentResponseElementsItemOutputs {
+  next: DynamicRoutingCreateDeploymentResponseElementsItemOutputsNext;
+}
+export const DynamicRoutingCreateDeploymentResponseElementsItemOutputs =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      next: DynamicRoutingCreateDeploymentResponseElementsItemOutputsNext,
+    }),
+  ).annotate({
+    identifier: "DynamicRoutingCreateDeploymentResponseElementsItemOutputs",
+  }) as any as S.Schema<DynamicRoutingCreateDeploymentResponseElementsItemOutputs>;
+
+export type DynamicRoutingCreateDeploymentResponseElementsItemType =
+  | "start"
+  | (string & {});
+export const DynamicRoutingCreateDeploymentResponseElementsItemType =
+  /*@__PURE__*/ S.String;
+
+export interface DynamicRoutingCreateDeploymentResponseElementsItemProperties {
+  conditions?: unknown;
+}
+export const DynamicRoutingCreateDeploymentResponseElementsItemProperties =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      conditions: S.optional(S.Unknown),
+    }),
+  ).annotate({
+    identifier: "DynamicRoutingCreateDeploymentResponseElementsItemProperties",
+  }) as any as S.Schema<DynamicRoutingCreateDeploymentResponseElementsItemProperties>;
+
 export interface DynamicRoutingCreateDeploymentResponseElementsItem {
-  objectIdOutputsType__: unknown;
-  objectIdOutputsPropertiesType__: unknown;
-  objectIdOutputsType2: unknown;
-  objectIdOutputsPropertiesType2: unknown;
-  objectIdOutputsPropertiesType3: unknown;
-  objectIdOutputsType3: unknown;
+  id?: string;
+  outputs?: DynamicRoutingCreateDeploymentResponseElementsItemOutputs;
+  type?: DynamicRoutingCreateDeploymentResponseElementsItemType;
+  properties?: DynamicRoutingCreateDeploymentResponseElementsItemProperties;
 }
 export const DynamicRoutingCreateDeploymentResponseElementsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      objectIdOutputsType__: S.Unknown.pipe(
-        T.Body("object { id, outputs, type }"),
+      id: S.optional(S.String),
+      outputs: S.optional(
+        DynamicRoutingCreateDeploymentResponseElementsItemOutputs,
       ),
-      objectIdOutputsPropertiesType__: S.Unknown.pipe(
-        T.Body("object { id, outputs, properties, type }"),
-      ),
-      objectIdOutputsType2: S.Unknown.pipe(
-        T.Body("object { id, outputs, type }"),
-      ),
-      objectIdOutputsPropertiesType2: S.Unknown.pipe(
-        T.Body("object { id, outputs, properties, type }"),
-      ),
-      objectIdOutputsPropertiesType3: S.Unknown.pipe(
-        T.Body("object { id, outputs, properties, type }"),
-      ),
-      objectIdOutputsType3: S.Unknown.pipe(
-        T.Body("object { id, outputs, type }"),
+      type: S.optional(DynamicRoutingCreateDeploymentResponseElementsItemType),
+      properties: S.optional(
+        DynamicRoutingCreateDeploymentResponseElementsItemProperties,
       ),
     }),
   ).annotate({
@@ -1336,35 +1421,61 @@ export const CreateDeploymentDynamicRoutingResponse = /*@__PURE__*/ S.suspend(
   identifier: "CreateDeploymentDynamicRoutingResponse",
 }) as any as S.Schema<CreateDeploymentDynamicRoutingResponse>;
 
+export interface DynamicRoutingCreateRequestElementsItemOutputsNext {
+  elementId: string;
+}
+export const DynamicRoutingCreateRequestElementsItemOutputsNext =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      elementId: S.String,
+    }),
+  ).annotate({
+    identifier: "DynamicRoutingCreateRequestElementsItemOutputsNext",
+  }) as any as S.Schema<DynamicRoutingCreateRequestElementsItemOutputsNext>;
+
+export interface DynamicRoutingCreateRequestElementsItemOutputs {
+  next: DynamicRoutingCreateRequestElementsItemOutputsNext;
+}
+export const DynamicRoutingCreateRequestElementsItemOutputs =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      next: DynamicRoutingCreateRequestElementsItemOutputsNext,
+    }),
+  ).annotate({
+    identifier: "DynamicRoutingCreateRequestElementsItemOutputs",
+  }) as any as S.Schema<DynamicRoutingCreateRequestElementsItemOutputs>;
+
+export type DynamicRoutingCreateRequestElementsItemType =
+  | "start"
+  | (string & {});
+export const DynamicRoutingCreateRequestElementsItemType =
+  /*@__PURE__*/ S.String;
+
+export interface DynamicRoutingCreateRequestElementsItemProperties {
+  conditions?: unknown;
+}
+export const DynamicRoutingCreateRequestElementsItemProperties =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      conditions: S.optional(S.Unknown),
+    }),
+  ).annotate({
+    identifier: "DynamicRoutingCreateRequestElementsItemProperties",
+  }) as any as S.Schema<DynamicRoutingCreateRequestElementsItemProperties>;
+
 export interface DynamicRoutingCreateRequestElementsItem {
-  objectIdOutputsType__: unknown;
-  objectIdOutputsPropertiesType__: unknown;
-  objectIdOutputsType2: unknown;
-  objectIdOutputsPropertiesType2: unknown;
-  objectIdOutputsPropertiesType3: unknown;
-  objectIdOutputsType3: unknown;
+  id?: string;
+  outputs?: DynamicRoutingCreateRequestElementsItemOutputs;
+  type?: DynamicRoutingCreateRequestElementsItemType;
+  properties?: DynamicRoutingCreateRequestElementsItemProperties;
 }
 export const DynamicRoutingCreateRequestElementsItem = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      objectIdOutputsType__: S.Unknown.pipe(
-        T.Body("object { id, outputs, type }"),
-      ),
-      objectIdOutputsPropertiesType__: S.Unknown.pipe(
-        T.Body("object { id, outputs, properties, type }"),
-      ),
-      objectIdOutputsType2: S.Unknown.pipe(
-        T.Body("object { id, outputs, type }"),
-      ),
-      objectIdOutputsPropertiesType2: S.Unknown.pipe(
-        T.Body("object { id, outputs, properties, type }"),
-      ),
-      objectIdOutputsPropertiesType3: S.Unknown.pipe(
-        T.Body("object { id, outputs, properties, type }"),
-      ),
-      objectIdOutputsType3: S.Unknown.pipe(
-        T.Body("object { id, outputs, type }"),
-      ),
+      id: S.optional(S.String),
+      outputs: S.optional(DynamicRoutingCreateRequestElementsItemOutputs),
+      type: S.optional(DynamicRoutingCreateRequestElementsItemType),
+      properties: S.optional(DynamicRoutingCreateRequestElementsItemProperties),
     }),
 ).annotate({
   identifier: "DynamicRoutingCreateRequestElementsItem",
@@ -1417,34 +1528,62 @@ export const DynamicRoutingCreateResponseDeployment = /*@__PURE__*/ S.suspend(
   identifier: "DynamicRoutingCreateResponseDeployment",
 }) as any as S.Schema<DynamicRoutingCreateResponseDeployment>;
 
+export interface DynamicRoutingCreateResponseElementsItemOutputsNext {
+  elementId: string;
+}
+export const DynamicRoutingCreateResponseElementsItemOutputsNext =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      elementId: S.String,
+    }),
+  ).annotate({
+    identifier: "DynamicRoutingCreateResponseElementsItemOutputsNext",
+  }) as any as S.Schema<DynamicRoutingCreateResponseElementsItemOutputsNext>;
+
+export interface DynamicRoutingCreateResponseElementsItemOutputs {
+  next: DynamicRoutingCreateResponseElementsItemOutputsNext;
+}
+export const DynamicRoutingCreateResponseElementsItemOutputs =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      next: DynamicRoutingCreateResponseElementsItemOutputsNext,
+    }),
+  ).annotate({
+    identifier: "DynamicRoutingCreateResponseElementsItemOutputs",
+  }) as any as S.Schema<DynamicRoutingCreateResponseElementsItemOutputs>;
+
+export type DynamicRoutingCreateResponseElementsItemType =
+  | "start"
+  | (string & {});
+export const DynamicRoutingCreateResponseElementsItemType =
+  /*@__PURE__*/ S.String;
+
+export interface DynamicRoutingCreateResponseElementsItemProperties {
+  conditions?: unknown;
+}
+export const DynamicRoutingCreateResponseElementsItemProperties =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      conditions: S.optional(S.Unknown),
+    }),
+  ).annotate({
+    identifier: "DynamicRoutingCreateResponseElementsItemProperties",
+  }) as any as S.Schema<DynamicRoutingCreateResponseElementsItemProperties>;
+
 export interface DynamicRoutingCreateResponseElementsItem {
-  objectIdOutputsType__: unknown;
-  objectIdOutputsPropertiesType__: unknown;
-  objectIdOutputsType2: unknown;
-  objectIdOutputsPropertiesType2: unknown;
-  objectIdOutputsPropertiesType3: unknown;
-  objectIdOutputsType3: unknown;
+  id?: string;
+  outputs?: DynamicRoutingCreateResponseElementsItemOutputs;
+  type?: DynamicRoutingCreateResponseElementsItemType;
+  properties?: DynamicRoutingCreateResponseElementsItemProperties;
 }
 export const DynamicRoutingCreateResponseElementsItem = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      objectIdOutputsType__: S.Unknown.pipe(
-        T.Body("object { id, outputs, type }"),
-      ),
-      objectIdOutputsPropertiesType__: S.Unknown.pipe(
-        T.Body("object { id, outputs, properties, type }"),
-      ),
-      objectIdOutputsType2: S.Unknown.pipe(
-        T.Body("object { id, outputs, type }"),
-      ),
-      objectIdOutputsPropertiesType2: S.Unknown.pipe(
-        T.Body("object { id, outputs, properties, type }"),
-      ),
-      objectIdOutputsPropertiesType3: S.Unknown.pipe(
-        T.Body("object { id, outputs, properties, type }"),
-      ),
-      objectIdOutputsType3: S.Unknown.pipe(
-        T.Body("object { id, outputs, type }"),
+      id: S.optional(S.String),
+      outputs: S.optional(DynamicRoutingCreateResponseElementsItemOutputs),
+      type: S.optional(DynamicRoutingCreateResponseElementsItemType),
+      properties: S.optional(
+        DynamicRoutingCreateResponseElementsItemProperties,
       ),
     }),
 ).annotate({
@@ -1779,34 +1918,64 @@ export const CreateProviderConfigResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateProviderConfigResponse",
 }) as any as S.Schema<CreateProviderConfigResponse>;
 
+export interface DynamicRoutingCreateVersionRequestElementsItemOutputsNext {
+  elementId: string;
+}
+export const DynamicRoutingCreateVersionRequestElementsItemOutputsNext =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      elementId: S.String,
+    }),
+  ).annotate({
+    identifier: "DynamicRoutingCreateVersionRequestElementsItemOutputsNext",
+  }) as any as S.Schema<DynamicRoutingCreateVersionRequestElementsItemOutputsNext>;
+
+export interface DynamicRoutingCreateVersionRequestElementsItemOutputs {
+  next: DynamicRoutingCreateVersionRequestElementsItemOutputsNext;
+}
+export const DynamicRoutingCreateVersionRequestElementsItemOutputs =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      next: DynamicRoutingCreateVersionRequestElementsItemOutputsNext,
+    }),
+  ).annotate({
+    identifier: "DynamicRoutingCreateVersionRequestElementsItemOutputs",
+  }) as any as S.Schema<DynamicRoutingCreateVersionRequestElementsItemOutputs>;
+
+export type DynamicRoutingCreateVersionRequestElementsItemType =
+  | "start"
+  | (string & {});
+export const DynamicRoutingCreateVersionRequestElementsItemType =
+  /*@__PURE__*/ S.String;
+
+export interface DynamicRoutingCreateVersionRequestElementsItemProperties {
+  conditions?: unknown;
+}
+export const DynamicRoutingCreateVersionRequestElementsItemProperties =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      conditions: S.optional(S.Unknown),
+    }),
+  ).annotate({
+    identifier: "DynamicRoutingCreateVersionRequestElementsItemProperties",
+  }) as any as S.Schema<DynamicRoutingCreateVersionRequestElementsItemProperties>;
+
 export interface DynamicRoutingCreateVersionRequestElementsItem {
-  objectIdOutputsType__: unknown;
-  objectIdOutputsPropertiesType__: unknown;
-  objectIdOutputsType2: unknown;
-  objectIdOutputsPropertiesType2: unknown;
-  objectIdOutputsPropertiesType3: unknown;
-  objectIdOutputsType3: unknown;
+  id?: string;
+  outputs?: DynamicRoutingCreateVersionRequestElementsItemOutputs;
+  type?: DynamicRoutingCreateVersionRequestElementsItemType;
+  properties?: DynamicRoutingCreateVersionRequestElementsItemProperties;
 }
 export const DynamicRoutingCreateVersionRequestElementsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      objectIdOutputsType__: S.Unknown.pipe(
-        T.Body("object { id, outputs, type }"),
+      id: S.optional(S.String),
+      outputs: S.optional(
+        DynamicRoutingCreateVersionRequestElementsItemOutputs,
       ),
-      objectIdOutputsPropertiesType__: S.Unknown.pipe(
-        T.Body("object { id, outputs, properties, type }"),
-      ),
-      objectIdOutputsType2: S.Unknown.pipe(
-        T.Body("object { id, outputs, type }"),
-      ),
-      objectIdOutputsPropertiesType2: S.Unknown.pipe(
-        T.Body("object { id, outputs, properties, type }"),
-      ),
-      objectIdOutputsPropertiesType3: S.Unknown.pipe(
-        T.Body("object { id, outputs, properties, type }"),
-      ),
-      objectIdOutputsType3: S.Unknown.pipe(
-        T.Body("object { id, outputs, type }"),
+      type: S.optional(DynamicRoutingCreateVersionRequestElementsItemType),
+      properties: S.optional(
+        DynamicRoutingCreateVersionRequestElementsItemProperties,
       ),
     }),
   ).annotate({
@@ -1845,34 +2014,64 @@ export const CreateVersionDynamicRoutingRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateVersionDynamicRoutingRequest",
 }) as any as S.Schema<CreateVersionDynamicRoutingRequest>;
 
+export interface DynamicRoutingCreateVersionResponseElementsItemOutputsNext {
+  elementId: string;
+}
+export const DynamicRoutingCreateVersionResponseElementsItemOutputsNext =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      elementId: S.String,
+    }),
+  ).annotate({
+    identifier: "DynamicRoutingCreateVersionResponseElementsItemOutputsNext",
+  }) as any as S.Schema<DynamicRoutingCreateVersionResponseElementsItemOutputsNext>;
+
+export interface DynamicRoutingCreateVersionResponseElementsItemOutputs {
+  next: DynamicRoutingCreateVersionResponseElementsItemOutputsNext;
+}
+export const DynamicRoutingCreateVersionResponseElementsItemOutputs =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      next: DynamicRoutingCreateVersionResponseElementsItemOutputsNext,
+    }),
+  ).annotate({
+    identifier: "DynamicRoutingCreateVersionResponseElementsItemOutputs",
+  }) as any as S.Schema<DynamicRoutingCreateVersionResponseElementsItemOutputs>;
+
+export type DynamicRoutingCreateVersionResponseElementsItemType =
+  | "start"
+  | (string & {});
+export const DynamicRoutingCreateVersionResponseElementsItemType =
+  /*@__PURE__*/ S.String;
+
+export interface DynamicRoutingCreateVersionResponseElementsItemProperties {
+  conditions?: unknown;
+}
+export const DynamicRoutingCreateVersionResponseElementsItemProperties =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      conditions: S.optional(S.Unknown),
+    }),
+  ).annotate({
+    identifier: "DynamicRoutingCreateVersionResponseElementsItemProperties",
+  }) as any as S.Schema<DynamicRoutingCreateVersionResponseElementsItemProperties>;
+
 export interface DynamicRoutingCreateVersionResponseElementsItem {
-  objectIdOutputsType__: unknown;
-  objectIdOutputsPropertiesType__: unknown;
-  objectIdOutputsType2: unknown;
-  objectIdOutputsPropertiesType2: unknown;
-  objectIdOutputsPropertiesType3: unknown;
-  objectIdOutputsType3: unknown;
+  id?: string;
+  outputs?: DynamicRoutingCreateVersionResponseElementsItemOutputs;
+  type?: DynamicRoutingCreateVersionResponseElementsItemType;
+  properties?: DynamicRoutingCreateVersionResponseElementsItemProperties;
 }
 export const DynamicRoutingCreateVersionResponseElementsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      objectIdOutputsType__: S.Unknown.pipe(
-        T.Body("object { id, outputs, type }"),
+      id: S.optional(S.String),
+      outputs: S.optional(
+        DynamicRoutingCreateVersionResponseElementsItemOutputs,
       ),
-      objectIdOutputsPropertiesType__: S.Unknown.pipe(
-        T.Body("object { id, outputs, properties, type }"),
-      ),
-      objectIdOutputsType2: S.Unknown.pipe(
-        T.Body("object { id, outputs, type }"),
-      ),
-      objectIdOutputsPropertiesType2: S.Unknown.pipe(
-        T.Body("object { id, outputs, properties, type }"),
-      ),
-      objectIdOutputsPropertiesType3: S.Unknown.pipe(
-        T.Body("object { id, outputs, properties, type }"),
-      ),
-      objectIdOutputsType3: S.Unknown.pipe(
-        T.Body("object { id, outputs, type }"),
+      type: S.optional(DynamicRoutingCreateVersionResponseElementsItemType),
+      properties: S.optional(
+        DynamicRoutingCreateVersionResponseElementsItemProperties,
       ),
     }),
   ).annotate({
@@ -2011,18 +2210,73 @@ export const DeleteAiGatewayRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteAiGatewayRequest",
 }) as any as S.Schema<DeleteAiGatewayRequest>;
 
+export type DeleteResponseDlpAction = "BLOCK" | "FLAG" | (string & {});
+export const DeleteResponseDlpAction = /*@__PURE__*/ S.String;
+
+export type DeleteResponseDlpProfilesList = string[];
+export const DeleteResponseDlpProfilesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<DeleteResponseDlpProfilesList>;
+
+export type DeleteResponseDlpPoliciesItemAction =
+  | "FLAG"
+  | "BLOCK"
+  | (string & {});
+export const DeleteResponseDlpPoliciesItemAction = /*@__PURE__*/ S.String;
+
+export type DeleteResponseDlpPoliciesItemCheckItem =
+  | "REQUEST"
+  | "RESPONSE"
+  | (string & {});
+export const DeleteResponseDlpPoliciesItemCheckItem = /*@__PURE__*/ S.String;
+
+export type DeleteResponseDlpPoliciesItemCheckList =
+  DeleteResponseDlpPoliciesItemCheckItem[];
+export const DeleteResponseDlpPoliciesItemCheckList = /*@__PURE__*/ S.Array(
+  DeleteResponseDlpPoliciesItemCheckItem,
+) as any as S.Schema<DeleteResponseDlpPoliciesItemCheckList>;
+
+export type DeleteResponseDlpPoliciesItemProfilesList = string[];
+export const DeleteResponseDlpPoliciesItemProfilesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<DeleteResponseDlpPoliciesItemProfilesList>;
+
+export interface DeleteResponseDlpPoliciesItem {
+  id: string;
+  action: DeleteResponseDlpPoliciesItemAction;
+  check: DeleteResponseDlpPoliciesItemCheckList;
+  enabled: boolean;
+  profiles: DeleteResponseDlpPoliciesItemProfilesList;
+}
+export const DeleteResponseDlpPoliciesItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    action: DeleteResponseDlpPoliciesItemAction,
+    check: DeleteResponseDlpPoliciesItemCheckList,
+    enabled: S.Boolean,
+    profiles: DeleteResponseDlpPoliciesItemProfilesList,
+  }),
+).annotate({
+  identifier: "DeleteResponseDlpPoliciesItem",
+}) as any as S.Schema<DeleteResponseDlpPoliciesItem>;
+
+export type DeleteResponseDlpPoliciesList = DeleteResponseDlpPoliciesItem[];
+export const DeleteResponseDlpPoliciesList = /*@__PURE__*/ S.Array(
+  DeleteResponseDlpPoliciesItem,
+) as any as S.Schema<DeleteResponseDlpPoliciesList>;
+
 export interface DeleteResponseDlp {
-  objectActionEnabledProfiles__: unknown;
-  objectEnabledPolicies__: unknown;
+  action?: DeleteResponseDlpAction;
+  enabled?: boolean;
+  profiles?: DeleteResponseDlpProfilesList;
+  policies?: DeleteResponseDlpPoliciesList;
 }
 export const DeleteResponseDlp = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    objectActionEnabledProfiles__: S.Unknown.pipe(
-      T.Body("object { action, enabled, profiles }"),
-    ),
-    objectEnabledPolicies__: S.Unknown.pipe(
-      T.Body("object { enabled, policies }"),
-    ),
+    action: S.optional(DeleteResponseDlpAction),
+    enabled: S.optional(S.Boolean),
+    profiles: S.optional(DeleteResponseDlpProfilesList),
+    policies: S.optional(DeleteResponseDlpPoliciesList),
   }),
 ).annotate({
   identifier: "DeleteResponseDlp",
@@ -2803,34 +3057,62 @@ export const DeleteDynamicRoutingRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteDynamicRoutingRequest",
 }) as any as S.Schema<DeleteDynamicRoutingRequest>;
 
+export interface DynamicRoutingDeleteResponseElementsItemOutputsNext {
+  elementId: string;
+}
+export const DynamicRoutingDeleteResponseElementsItemOutputsNext =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      elementId: S.String,
+    }),
+  ).annotate({
+    identifier: "DynamicRoutingDeleteResponseElementsItemOutputsNext",
+  }) as any as S.Schema<DynamicRoutingDeleteResponseElementsItemOutputsNext>;
+
+export interface DynamicRoutingDeleteResponseElementsItemOutputs {
+  next: DynamicRoutingDeleteResponseElementsItemOutputsNext;
+}
+export const DynamicRoutingDeleteResponseElementsItemOutputs =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      next: DynamicRoutingDeleteResponseElementsItemOutputsNext,
+    }),
+  ).annotate({
+    identifier: "DynamicRoutingDeleteResponseElementsItemOutputs",
+  }) as any as S.Schema<DynamicRoutingDeleteResponseElementsItemOutputs>;
+
+export type DynamicRoutingDeleteResponseElementsItemType =
+  | "start"
+  | (string & {});
+export const DynamicRoutingDeleteResponseElementsItemType =
+  /*@__PURE__*/ S.String;
+
+export interface DynamicRoutingDeleteResponseElementsItemProperties {
+  conditions?: unknown;
+}
+export const DynamicRoutingDeleteResponseElementsItemProperties =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      conditions: S.optional(S.Unknown),
+    }),
+  ).annotate({
+    identifier: "DynamicRoutingDeleteResponseElementsItemProperties",
+  }) as any as S.Schema<DynamicRoutingDeleteResponseElementsItemProperties>;
+
 export interface DynamicRoutingDeleteResponseElementsItem {
-  objectIdOutputsType__: unknown;
-  objectIdOutputsPropertiesType__: unknown;
-  objectIdOutputsType2: unknown;
-  objectIdOutputsPropertiesType2: unknown;
-  objectIdOutputsPropertiesType3: unknown;
-  objectIdOutputsType3: unknown;
+  id?: string;
+  outputs?: DynamicRoutingDeleteResponseElementsItemOutputs;
+  type?: DynamicRoutingDeleteResponseElementsItemType;
+  properties?: DynamicRoutingDeleteResponseElementsItemProperties;
 }
 export const DynamicRoutingDeleteResponseElementsItem = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      objectIdOutputsType__: S.Unknown.pipe(
-        T.Body("object { id, outputs, type }"),
-      ),
-      objectIdOutputsPropertiesType__: S.Unknown.pipe(
-        T.Body("object { id, outputs, properties, type }"),
-      ),
-      objectIdOutputsType2: S.Unknown.pipe(
-        T.Body("object { id, outputs, type }"),
-      ),
-      objectIdOutputsPropertiesType2: S.Unknown.pipe(
-        T.Body("object { id, outputs, properties, type }"),
-      ),
-      objectIdOutputsPropertiesType3: S.Unknown.pipe(
-        T.Body("object { id, outputs, properties, type }"),
-      ),
-      objectIdOutputsType3: S.Unknown.pipe(
-        T.Body("object { id, outputs, type }"),
+      id: S.optional(S.String),
+      outputs: S.optional(DynamicRoutingDeleteResponseElementsItemOutputs),
+      type: S.optional(DynamicRoutingDeleteResponseElementsItemType),
+      properties: S.optional(
+        DynamicRoutingDeleteResponseElementsItemProperties,
       ),
     }),
 ).annotate({
@@ -3126,18 +3408,70 @@ export const GetAiGatewayRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetAiGatewayRequest",
 }) as any as S.Schema<GetAiGatewayRequest>;
 
+export type GetResponseDlpAction = "BLOCK" | "FLAG" | (string & {});
+export const GetResponseDlpAction = /*@__PURE__*/ S.String;
+
+export type GetResponseDlpProfilesList = string[];
+export const GetResponseDlpProfilesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<GetResponseDlpProfilesList>;
+
+export type GetResponseDlpPoliciesItemAction = "FLAG" | "BLOCK" | (string & {});
+export const GetResponseDlpPoliciesItemAction = /*@__PURE__*/ S.String;
+
+export type GetResponseDlpPoliciesItemCheckItem =
+  | "REQUEST"
+  | "RESPONSE"
+  | (string & {});
+export const GetResponseDlpPoliciesItemCheckItem = /*@__PURE__*/ S.String;
+
+export type GetResponseDlpPoliciesItemCheckList =
+  GetResponseDlpPoliciesItemCheckItem[];
+export const GetResponseDlpPoliciesItemCheckList = /*@__PURE__*/ S.Array(
+  GetResponseDlpPoliciesItemCheckItem,
+) as any as S.Schema<GetResponseDlpPoliciesItemCheckList>;
+
+export type GetResponseDlpPoliciesItemProfilesList = string[];
+export const GetResponseDlpPoliciesItemProfilesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<GetResponseDlpPoliciesItemProfilesList>;
+
+export interface GetResponseDlpPoliciesItem {
+  id: string;
+  action: GetResponseDlpPoliciesItemAction;
+  check: GetResponseDlpPoliciesItemCheckList;
+  enabled: boolean;
+  profiles: GetResponseDlpPoliciesItemProfilesList;
+}
+export const GetResponseDlpPoliciesItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    action: GetResponseDlpPoliciesItemAction,
+    check: GetResponseDlpPoliciesItemCheckList,
+    enabled: S.Boolean,
+    profiles: GetResponseDlpPoliciesItemProfilesList,
+  }),
+).annotate({
+  identifier: "GetResponseDlpPoliciesItem",
+}) as any as S.Schema<GetResponseDlpPoliciesItem>;
+
+export type GetResponseDlpPoliciesList = GetResponseDlpPoliciesItem[];
+export const GetResponseDlpPoliciesList = /*@__PURE__*/ S.Array(
+  GetResponseDlpPoliciesItem,
+) as any as S.Schema<GetResponseDlpPoliciesList>;
+
 export interface GetResponseDlp {
-  objectActionEnabledProfiles__: unknown;
-  objectEnabledPolicies__: unknown;
+  action?: GetResponseDlpAction;
+  enabled?: boolean;
+  profiles?: GetResponseDlpProfilesList;
+  policies?: GetResponseDlpPoliciesList;
 }
 export const GetResponseDlp = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    objectActionEnabledProfiles__: S.Unknown.pipe(
-      T.Body("object { action, enabled, profiles }"),
-    ),
-    objectEnabledPolicies__: S.Unknown.pipe(
-      T.Body("object { enabled, policies }"),
-    ),
+    action: S.optional(GetResponseDlpAction),
+    enabled: S.optional(S.Boolean),
+    profiles: S.optional(GetResponseDlpProfilesList),
+    policies: S.optional(GetResponseDlpPoliciesList),
   }),
 ).annotate({ identifier: "GetResponseDlp" }) as any as S.Schema<GetResponseDlp>;
 
@@ -3886,35 +4220,58 @@ export const DynamicRoutingGetResponseDeployment = /*@__PURE__*/ S.suspend(() =>
   identifier: "DynamicRoutingGetResponseDeployment",
 }) as any as S.Schema<DynamicRoutingGetResponseDeployment>;
 
+export interface DynamicRoutingGetResponseElementsItemOutputsNext {
+  elementId: string;
+}
+export const DynamicRoutingGetResponseElementsItemOutputsNext =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      elementId: S.String,
+    }),
+  ).annotate({
+    identifier: "DynamicRoutingGetResponseElementsItemOutputsNext",
+  }) as any as S.Schema<DynamicRoutingGetResponseElementsItemOutputsNext>;
+
+export interface DynamicRoutingGetResponseElementsItemOutputs {
+  next: DynamicRoutingGetResponseElementsItemOutputsNext;
+}
+export const DynamicRoutingGetResponseElementsItemOutputs =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      next: DynamicRoutingGetResponseElementsItemOutputsNext,
+    }),
+  ).annotate({
+    identifier: "DynamicRoutingGetResponseElementsItemOutputs",
+  }) as any as S.Schema<DynamicRoutingGetResponseElementsItemOutputs>;
+
+export type DynamicRoutingGetResponseElementsItemType = "start" | (string & {});
+export const DynamicRoutingGetResponseElementsItemType = /*@__PURE__*/ S.String;
+
+export interface DynamicRoutingGetResponseElementsItemProperties {
+  conditions?: unknown;
+}
+export const DynamicRoutingGetResponseElementsItemProperties =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      conditions: S.optional(S.Unknown),
+    }),
+  ).annotate({
+    identifier: "DynamicRoutingGetResponseElementsItemProperties",
+  }) as any as S.Schema<DynamicRoutingGetResponseElementsItemProperties>;
+
 export interface DynamicRoutingGetResponseElementsItem {
-  objectIdOutputsType__: unknown;
-  objectIdOutputsPropertiesType__: unknown;
-  objectIdOutputsType2: unknown;
-  objectIdOutputsPropertiesType2: unknown;
-  objectIdOutputsPropertiesType3: unknown;
-  objectIdOutputsType3: unknown;
+  id?: string;
+  outputs?: DynamicRoutingGetResponseElementsItemOutputs;
+  type?: DynamicRoutingGetResponseElementsItemType;
+  properties?: DynamicRoutingGetResponseElementsItemProperties;
 }
 export const DynamicRoutingGetResponseElementsItem = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      objectIdOutputsType__: S.Unknown.pipe(
-        T.Body("object { id, outputs, type }"),
-      ),
-      objectIdOutputsPropertiesType__: S.Unknown.pipe(
-        T.Body("object { id, outputs, properties, type }"),
-      ),
-      objectIdOutputsType2: S.Unknown.pipe(
-        T.Body("object { id, outputs, type }"),
-      ),
-      objectIdOutputsPropertiesType2: S.Unknown.pipe(
-        T.Body("object { id, outputs, properties, type }"),
-      ),
-      objectIdOutputsPropertiesType3: S.Unknown.pipe(
-        T.Body("object { id, outputs, properties, type }"),
-      ),
-      objectIdOutputsType3: S.Unknown.pipe(
-        T.Body("object { id, outputs, type }"),
-      ),
+      id: S.optional(S.String),
+      outputs: S.optional(DynamicRoutingGetResponseElementsItemOutputs),
+      type: S.optional(DynamicRoutingGetResponseElementsItemType),
+      properties: S.optional(DynamicRoutingGetResponseElementsItemProperties),
     }),
 ).annotate({
   identifier: "DynamicRoutingGetResponseElementsItem",
@@ -4311,34 +4668,62 @@ export type DynamicRoutingGetVersionResponseActive =
   | (string & {});
 export const DynamicRoutingGetVersionResponseActive = /*@__PURE__*/ S.String;
 
+export interface DynamicRoutingGetVersionResponseElementsItemOutputsNext {
+  elementId: string;
+}
+export const DynamicRoutingGetVersionResponseElementsItemOutputsNext =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      elementId: S.String,
+    }),
+  ).annotate({
+    identifier: "DynamicRoutingGetVersionResponseElementsItemOutputsNext",
+  }) as any as S.Schema<DynamicRoutingGetVersionResponseElementsItemOutputsNext>;
+
+export interface DynamicRoutingGetVersionResponseElementsItemOutputs {
+  next: DynamicRoutingGetVersionResponseElementsItemOutputsNext;
+}
+export const DynamicRoutingGetVersionResponseElementsItemOutputs =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      next: DynamicRoutingGetVersionResponseElementsItemOutputsNext,
+    }),
+  ).annotate({
+    identifier: "DynamicRoutingGetVersionResponseElementsItemOutputs",
+  }) as any as S.Schema<DynamicRoutingGetVersionResponseElementsItemOutputs>;
+
+export type DynamicRoutingGetVersionResponseElementsItemType =
+  | "start"
+  | (string & {});
+export const DynamicRoutingGetVersionResponseElementsItemType =
+  /*@__PURE__*/ S.String;
+
+export interface DynamicRoutingGetVersionResponseElementsItemProperties {
+  conditions?: unknown;
+}
+export const DynamicRoutingGetVersionResponseElementsItemProperties =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      conditions: S.optional(S.Unknown),
+    }),
+  ).annotate({
+    identifier: "DynamicRoutingGetVersionResponseElementsItemProperties",
+  }) as any as S.Schema<DynamicRoutingGetVersionResponseElementsItemProperties>;
+
 export interface DynamicRoutingGetVersionResponseElementsItem {
-  objectIdOutputsType__: unknown;
-  objectIdOutputsPropertiesType__: unknown;
-  objectIdOutputsType2: unknown;
-  objectIdOutputsPropertiesType2: unknown;
-  objectIdOutputsPropertiesType3: unknown;
-  objectIdOutputsType3: unknown;
+  id?: string;
+  outputs?: DynamicRoutingGetVersionResponseElementsItemOutputs;
+  type?: DynamicRoutingGetVersionResponseElementsItemType;
+  properties?: DynamicRoutingGetVersionResponseElementsItemProperties;
 }
 export const DynamicRoutingGetVersionResponseElementsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      objectIdOutputsType__: S.Unknown.pipe(
-        T.Body("object { id, outputs, type }"),
-      ),
-      objectIdOutputsPropertiesType__: S.Unknown.pipe(
-        T.Body("object { id, outputs, properties, type }"),
-      ),
-      objectIdOutputsType2: S.Unknown.pipe(
-        T.Body("object { id, outputs, type }"),
-      ),
-      objectIdOutputsPropertiesType2: S.Unknown.pipe(
-        T.Body("object { id, outputs, properties, type }"),
-      ),
-      objectIdOutputsPropertiesType3: S.Unknown.pipe(
-        T.Body("object { id, outputs, properties, type }"),
-      ),
-      objectIdOutputsType3: S.Unknown.pipe(
-        T.Body("object { id, outputs, type }"),
+      id: S.optional(S.String),
+      outputs: S.optional(DynamicRoutingGetVersionResponseElementsItemOutputs),
+      type: S.optional(DynamicRoutingGetVersionResponseElementsItemType),
+      properties: S.optional(
+        DynamicRoutingGetVersionResponseElementsItemProperties,
       ),
     }),
   ).annotate({
@@ -4658,18 +5043,73 @@ export const ListAiGatewaysRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAiGatewaysRequest",
 }) as any as S.Schema<ListAiGatewaysRequest>;
 
+export type ListResultItemDlpAction = "BLOCK" | "FLAG" | (string & {});
+export const ListResultItemDlpAction = /*@__PURE__*/ S.String;
+
+export type ListResultItemDlpProfilesList = string[];
+export const ListResultItemDlpProfilesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<ListResultItemDlpProfilesList>;
+
+export type ListResultItemDlpPoliciesItemAction =
+  | "FLAG"
+  | "BLOCK"
+  | (string & {});
+export const ListResultItemDlpPoliciesItemAction = /*@__PURE__*/ S.String;
+
+export type ListResultItemDlpPoliciesItemCheckItem =
+  | "REQUEST"
+  | "RESPONSE"
+  | (string & {});
+export const ListResultItemDlpPoliciesItemCheckItem = /*@__PURE__*/ S.String;
+
+export type ListResultItemDlpPoliciesItemCheckList =
+  ListResultItemDlpPoliciesItemCheckItem[];
+export const ListResultItemDlpPoliciesItemCheckList = /*@__PURE__*/ S.Array(
+  ListResultItemDlpPoliciesItemCheckItem,
+) as any as S.Schema<ListResultItemDlpPoliciesItemCheckList>;
+
+export type ListResultItemDlpPoliciesItemProfilesList = string[];
+export const ListResultItemDlpPoliciesItemProfilesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<ListResultItemDlpPoliciesItemProfilesList>;
+
+export interface ListResultItemDlpPoliciesItem {
+  id: string;
+  action: ListResultItemDlpPoliciesItemAction;
+  check: ListResultItemDlpPoliciesItemCheckList;
+  enabled: boolean;
+  profiles: ListResultItemDlpPoliciesItemProfilesList;
+}
+export const ListResultItemDlpPoliciesItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    action: ListResultItemDlpPoliciesItemAction,
+    check: ListResultItemDlpPoliciesItemCheckList,
+    enabled: S.Boolean,
+    profiles: ListResultItemDlpPoliciesItemProfilesList,
+  }),
+).annotate({
+  identifier: "ListResultItemDlpPoliciesItem",
+}) as any as S.Schema<ListResultItemDlpPoliciesItem>;
+
+export type ListResultItemDlpPoliciesList = ListResultItemDlpPoliciesItem[];
+export const ListResultItemDlpPoliciesList = /*@__PURE__*/ S.Array(
+  ListResultItemDlpPoliciesItem,
+) as any as S.Schema<ListResultItemDlpPoliciesList>;
+
 export interface ListResultItemDlp {
-  objectActionEnabledProfiles__: unknown;
-  objectEnabledPolicies__: unknown;
+  action?: ListResultItemDlpAction;
+  enabled?: boolean;
+  profiles?: ListResultItemDlpProfilesList;
+  policies?: ListResultItemDlpPoliciesList;
 }
 export const ListResultItemDlp = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    objectActionEnabledProfiles__: S.Unknown.pipe(
-      T.Body("object { action, enabled, profiles }"),
-    ),
-    objectEnabledPolicies__: S.Unknown.pipe(
-      T.Body("object { enabled, policies }"),
-    ),
+    action: S.optional(ListResultItemDlpAction),
+    enabled: S.optional(S.Boolean),
+    profiles: S.optional(ListResultItemDlpProfilesList),
+    policies: S.optional(ListResultItemDlpPoliciesList),
   }),
 ).annotate({
   identifier: "ListResultItemDlp",
@@ -5561,34 +6001,68 @@ export const DynamicRoutingListResponseDataRoutesItemDeployment =
     identifier: "DynamicRoutingListResponseDataRoutesItemDeployment",
   }) as any as S.Schema<DynamicRoutingListResponseDataRoutesItemDeployment>;
 
+export interface DynamicRoutingListResponseDataRoutesItemElementsItemOutputsNext {
+  elementId: string;
+}
+export const DynamicRoutingListResponseDataRoutesItemElementsItemOutputsNext =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      elementId: S.String,
+    }),
+  ).annotate({
+    identifier:
+      "DynamicRoutingListResponseDataRoutesItemElementsItemOutputsNext",
+  }) as any as S.Schema<DynamicRoutingListResponseDataRoutesItemElementsItemOutputsNext>;
+
+export interface DynamicRoutingListResponseDataRoutesItemElementsItemOutputs {
+  next: DynamicRoutingListResponseDataRoutesItemElementsItemOutputsNext;
+}
+export const DynamicRoutingListResponseDataRoutesItemElementsItemOutputs =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      next: DynamicRoutingListResponseDataRoutesItemElementsItemOutputsNext,
+    }),
+  ).annotate({
+    identifier: "DynamicRoutingListResponseDataRoutesItemElementsItemOutputs",
+  }) as any as S.Schema<DynamicRoutingListResponseDataRoutesItemElementsItemOutputs>;
+
+export type DynamicRoutingListResponseDataRoutesItemElementsItemType =
+  | "start"
+  | (string & {});
+export const DynamicRoutingListResponseDataRoutesItemElementsItemType =
+  /*@__PURE__*/ S.String;
+
+export interface DynamicRoutingListResponseDataRoutesItemElementsItemProperties {
+  conditions?: unknown;
+}
+export const DynamicRoutingListResponseDataRoutesItemElementsItemProperties =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      conditions: S.optional(S.Unknown),
+    }),
+  ).annotate({
+    identifier:
+      "DynamicRoutingListResponseDataRoutesItemElementsItemProperties",
+  }) as any as S.Schema<DynamicRoutingListResponseDataRoutesItemElementsItemProperties>;
+
 export interface DynamicRoutingListResponseDataRoutesItemElementsItem {
-  objectIdOutputsType__: unknown;
-  objectIdOutputsPropertiesType__: unknown;
-  objectIdOutputsType2: unknown;
-  objectIdOutputsPropertiesType2: unknown;
-  objectIdOutputsPropertiesType3: unknown;
-  objectIdOutputsType3: unknown;
+  id?: string;
+  outputs?: DynamicRoutingListResponseDataRoutesItemElementsItemOutputs;
+  type?: DynamicRoutingListResponseDataRoutesItemElementsItemType;
+  properties?: DynamicRoutingListResponseDataRoutesItemElementsItemProperties;
 }
 export const DynamicRoutingListResponseDataRoutesItemElementsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      objectIdOutputsType__: S.Unknown.pipe(
-        T.Body("object { id, outputs, type }"),
+      id: S.optional(S.String),
+      outputs: S.optional(
+        DynamicRoutingListResponseDataRoutesItemElementsItemOutputs,
       ),
-      objectIdOutputsPropertiesType__: S.Unknown.pipe(
-        T.Body("object { id, outputs, properties, type }"),
+      type: S.optional(
+        DynamicRoutingListResponseDataRoutesItemElementsItemType,
       ),
-      objectIdOutputsType2: S.Unknown.pipe(
-        T.Body("object { id, outputs, type }"),
-      ),
-      objectIdOutputsPropertiesType2: S.Unknown.pipe(
-        T.Body("object { id, outputs, properties, type }"),
-      ),
-      objectIdOutputsPropertiesType3: S.Unknown.pipe(
-        T.Body("object { id, outputs, properties, type }"),
-      ),
-      objectIdOutputsType3: S.Unknown.pipe(
-        T.Body("object { id, outputs, type }"),
+      properties: S.optional(
+        DynamicRoutingListResponseDataRoutesItemElementsItemProperties,
       ),
     }),
   ).annotate({
@@ -6369,34 +6843,62 @@ export const DynamicRoutingUpdateResponseRouteDeployment =
     identifier: "DynamicRoutingUpdateResponseRouteDeployment",
   }) as any as S.Schema<DynamicRoutingUpdateResponseRouteDeployment>;
 
+export interface DynamicRoutingUpdateResponseRouteElementsItemOutputsNext {
+  elementId: string;
+}
+export const DynamicRoutingUpdateResponseRouteElementsItemOutputsNext =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      elementId: S.String,
+    }),
+  ).annotate({
+    identifier: "DynamicRoutingUpdateResponseRouteElementsItemOutputsNext",
+  }) as any as S.Schema<DynamicRoutingUpdateResponseRouteElementsItemOutputsNext>;
+
+export interface DynamicRoutingUpdateResponseRouteElementsItemOutputs {
+  next: DynamicRoutingUpdateResponseRouteElementsItemOutputsNext;
+}
+export const DynamicRoutingUpdateResponseRouteElementsItemOutputs =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      next: DynamicRoutingUpdateResponseRouteElementsItemOutputsNext,
+    }),
+  ).annotate({
+    identifier: "DynamicRoutingUpdateResponseRouteElementsItemOutputs",
+  }) as any as S.Schema<DynamicRoutingUpdateResponseRouteElementsItemOutputs>;
+
+export type DynamicRoutingUpdateResponseRouteElementsItemType =
+  | "start"
+  | (string & {});
+export const DynamicRoutingUpdateResponseRouteElementsItemType =
+  /*@__PURE__*/ S.String;
+
+export interface DynamicRoutingUpdateResponseRouteElementsItemProperties {
+  conditions?: unknown;
+}
+export const DynamicRoutingUpdateResponseRouteElementsItemProperties =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      conditions: S.optional(S.Unknown),
+    }),
+  ).annotate({
+    identifier: "DynamicRoutingUpdateResponseRouteElementsItemProperties",
+  }) as any as S.Schema<DynamicRoutingUpdateResponseRouteElementsItemProperties>;
+
 export interface DynamicRoutingUpdateResponseRouteElementsItem {
-  objectIdOutputsType__: unknown;
-  objectIdOutputsPropertiesType__: unknown;
-  objectIdOutputsType2: unknown;
-  objectIdOutputsPropertiesType2: unknown;
-  objectIdOutputsPropertiesType3: unknown;
-  objectIdOutputsType3: unknown;
+  id?: string;
+  outputs?: DynamicRoutingUpdateResponseRouteElementsItemOutputs;
+  type?: DynamicRoutingUpdateResponseRouteElementsItemType;
+  properties?: DynamicRoutingUpdateResponseRouteElementsItemProperties;
 }
 export const DynamicRoutingUpdateResponseRouteElementsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      objectIdOutputsType__: S.Unknown.pipe(
-        T.Body("object { id, outputs, type }"),
-      ),
-      objectIdOutputsPropertiesType__: S.Unknown.pipe(
-        T.Body("object { id, outputs, properties, type }"),
-      ),
-      objectIdOutputsType2: S.Unknown.pipe(
-        T.Body("object { id, outputs, type }"),
-      ),
-      objectIdOutputsPropertiesType2: S.Unknown.pipe(
-        T.Body("object { id, outputs, properties, type }"),
-      ),
-      objectIdOutputsPropertiesType3: S.Unknown.pipe(
-        T.Body("object { id, outputs, properties, type }"),
-      ),
-      objectIdOutputsType3: S.Unknown.pipe(
-        T.Body("object { id, outputs, type }"),
+      id: S.optional(S.String),
+      outputs: S.optional(DynamicRoutingUpdateResponseRouteElementsItemOutputs),
+      type: S.optional(DynamicRoutingUpdateResponseRouteElementsItemType),
+      properties: S.optional(
+        DynamicRoutingUpdateResponseRouteElementsItemProperties,
       ),
     }),
   ).annotate({
@@ -6628,18 +7130,73 @@ export const StatusBillingTopupResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "StatusBillingTopupResponse",
 }) as any as S.Schema<StatusBillingTopupResponse>;
 
+export type UpdateRequestDlpAction = "BLOCK" | "FLAG" | (string & {});
+export const UpdateRequestDlpAction = /*@__PURE__*/ S.String;
+
+export type UpdateRequestDlpProfilesList = string[];
+export const UpdateRequestDlpProfilesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<UpdateRequestDlpProfilesList>;
+
+export type UpdateRequestDlpPoliciesItemAction =
+  | "FLAG"
+  | "BLOCK"
+  | (string & {});
+export const UpdateRequestDlpPoliciesItemAction = /*@__PURE__*/ S.String;
+
+export type UpdateRequestDlpPoliciesItemCheckItem =
+  | "REQUEST"
+  | "RESPONSE"
+  | (string & {});
+export const UpdateRequestDlpPoliciesItemCheckItem = /*@__PURE__*/ S.String;
+
+export type UpdateRequestDlpPoliciesItemCheckList =
+  UpdateRequestDlpPoliciesItemCheckItem[];
+export const UpdateRequestDlpPoliciesItemCheckList = /*@__PURE__*/ S.Array(
+  UpdateRequestDlpPoliciesItemCheckItem,
+) as any as S.Schema<UpdateRequestDlpPoliciesItemCheckList>;
+
+export type UpdateRequestDlpPoliciesItemProfilesList = string[];
+export const UpdateRequestDlpPoliciesItemProfilesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<UpdateRequestDlpPoliciesItemProfilesList>;
+
+export interface UpdateRequestDlpPoliciesItem {
+  id: string;
+  action: UpdateRequestDlpPoliciesItemAction;
+  check: UpdateRequestDlpPoliciesItemCheckList;
+  enabled: boolean;
+  profiles: UpdateRequestDlpPoliciesItemProfilesList;
+}
+export const UpdateRequestDlpPoliciesItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    action: UpdateRequestDlpPoliciesItemAction,
+    check: UpdateRequestDlpPoliciesItemCheckList,
+    enabled: S.Boolean,
+    profiles: UpdateRequestDlpPoliciesItemProfilesList,
+  }),
+).annotate({
+  identifier: "UpdateRequestDlpPoliciesItem",
+}) as any as S.Schema<UpdateRequestDlpPoliciesItem>;
+
+export type UpdateRequestDlpPoliciesList = UpdateRequestDlpPoliciesItem[];
+export const UpdateRequestDlpPoliciesList = /*@__PURE__*/ S.Array(
+  UpdateRequestDlpPoliciesItem,
+) as any as S.Schema<UpdateRequestDlpPoliciesList>;
+
 export interface UpdateRequestDlp {
-  objectActionEnabledProfiles__: unknown;
-  objectEnabledPolicies__: unknown;
+  action?: UpdateRequestDlpAction;
+  enabled?: boolean;
+  profiles?: UpdateRequestDlpProfilesList;
+  policies?: UpdateRequestDlpPoliciesList;
 }
 export const UpdateRequestDlp = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    objectActionEnabledProfiles__: S.Unknown.pipe(
-      T.Body("object { action, enabled, profiles }"),
-    ),
-    objectEnabledPolicies__: S.Unknown.pipe(
-      T.Body("object { enabled, policies }"),
-    ),
+    action: S.optional(UpdateRequestDlpAction),
+    enabled: S.optional(S.Boolean),
+    profiles: S.optional(UpdateRequestDlpProfilesList),
+    policies: S.optional(UpdateRequestDlpPoliciesList),
   }),
 ).annotate({
   identifier: "UpdateRequestDlp",
@@ -7154,18 +7711,73 @@ export const UpdateAiGatewayRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateAiGatewayRequest",
 }) as any as S.Schema<UpdateAiGatewayRequest>;
 
+export type UpdateResponseDlpAction = "BLOCK" | "FLAG" | (string & {});
+export const UpdateResponseDlpAction = /*@__PURE__*/ S.String;
+
+export type UpdateResponseDlpProfilesList = string[];
+export const UpdateResponseDlpProfilesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<UpdateResponseDlpProfilesList>;
+
+export type UpdateResponseDlpPoliciesItemAction =
+  | "FLAG"
+  | "BLOCK"
+  | (string & {});
+export const UpdateResponseDlpPoliciesItemAction = /*@__PURE__*/ S.String;
+
+export type UpdateResponseDlpPoliciesItemCheckItem =
+  | "REQUEST"
+  | "RESPONSE"
+  | (string & {});
+export const UpdateResponseDlpPoliciesItemCheckItem = /*@__PURE__*/ S.String;
+
+export type UpdateResponseDlpPoliciesItemCheckList =
+  UpdateResponseDlpPoliciesItemCheckItem[];
+export const UpdateResponseDlpPoliciesItemCheckList = /*@__PURE__*/ S.Array(
+  UpdateResponseDlpPoliciesItemCheckItem,
+) as any as S.Schema<UpdateResponseDlpPoliciesItemCheckList>;
+
+export type UpdateResponseDlpPoliciesItemProfilesList = string[];
+export const UpdateResponseDlpPoliciesItemProfilesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<UpdateResponseDlpPoliciesItemProfilesList>;
+
+export interface UpdateResponseDlpPoliciesItem {
+  id: string;
+  action: UpdateResponseDlpPoliciesItemAction;
+  check: UpdateResponseDlpPoliciesItemCheckList;
+  enabled: boolean;
+  profiles: UpdateResponseDlpPoliciesItemProfilesList;
+}
+export const UpdateResponseDlpPoliciesItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    action: UpdateResponseDlpPoliciesItemAction,
+    check: UpdateResponseDlpPoliciesItemCheckList,
+    enabled: S.Boolean,
+    profiles: UpdateResponseDlpPoliciesItemProfilesList,
+  }),
+).annotate({
+  identifier: "UpdateResponseDlpPoliciesItem",
+}) as any as S.Schema<UpdateResponseDlpPoliciesItem>;
+
+export type UpdateResponseDlpPoliciesList = UpdateResponseDlpPoliciesItem[];
+export const UpdateResponseDlpPoliciesList = /*@__PURE__*/ S.Array(
+  UpdateResponseDlpPoliciesItem,
+) as any as S.Schema<UpdateResponseDlpPoliciesList>;
+
 export interface UpdateResponseDlp {
-  objectActionEnabledProfiles__: unknown;
-  objectEnabledPolicies__: unknown;
+  action?: UpdateResponseDlpAction;
+  enabled?: boolean;
+  profiles?: UpdateResponseDlpProfilesList;
+  policies?: UpdateResponseDlpPoliciesList;
 }
 export const UpdateResponseDlp = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    objectActionEnabledProfiles__: S.Unknown.pipe(
-      T.Body("object { action, enabled, profiles }"),
-    ),
-    objectEnabledPolicies__: S.Unknown.pipe(
-      T.Body("object { enabled, policies }"),
-    ),
+    action: S.optional(UpdateResponseDlpAction),
+    enabled: S.optional(S.Boolean),
+    profiles: S.optional(UpdateResponseDlpProfilesList),
+    policies: S.optional(UpdateResponseDlpPoliciesList),
   }),
 ).annotate({
   identifier: "UpdateResponseDlp",

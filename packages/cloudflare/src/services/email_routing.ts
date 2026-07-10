@@ -578,22 +578,164 @@ export const DeleteDnsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteDnsRequest",
 }) as any as S.Schema<DeleteDnsRequest>;
 
+export interface DnsDeleteResponseErrorsItemSource {
+  pointer?: string;
+}
+export const DnsDeleteResponseErrorsItemSource = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    pointer: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DnsDeleteResponseErrorsItemSource",
+}) as any as S.Schema<DnsDeleteResponseErrorsItemSource>;
+
+export interface DnsDeleteResponseErrorsItem {
+  code: number;
+  message: string;
+  documentationUrl?: string;
+  source?: DnsDeleteResponseErrorsItemSource;
+}
+export const DnsDeleteResponseErrorsItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    code: S.Number,
+    message: S.String,
+    documentationUrl: S.optional(S.String.pipe(T.Body("documentation_url"))),
+    source: S.optional(DnsDeleteResponseErrorsItemSource),
+  }),
+).annotate({
+  identifier: "DnsDeleteResponseErrorsItem",
+}) as any as S.Schema<DnsDeleteResponseErrorsItem>;
+
+export type DnsDeleteResponseErrorsList = DnsDeleteResponseErrorsItem[];
+export const DnsDeleteResponseErrorsList = /*@__PURE__*/ S.Array(
+  DnsDeleteResponseErrorsItem,
+) as any as S.Schema<DnsDeleteResponseErrorsList>;
+
+export interface DnsDeleteResponseMessagesItemSource {
+  pointer?: string;
+}
+export const DnsDeleteResponseMessagesItemSource = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    pointer: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DnsDeleteResponseMessagesItemSource",
+}) as any as S.Schema<DnsDeleteResponseMessagesItemSource>;
+
+export interface DnsDeleteResponseMessagesItem {
+  code: number;
+  message: string;
+  documentationUrl?: string;
+  source?: DnsDeleteResponseMessagesItemSource;
+}
+export const DnsDeleteResponseMessagesItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    code: S.Number,
+    message: S.String,
+    documentationUrl: S.optional(S.String.pipe(T.Body("documentation_url"))),
+    source: S.optional(DnsDeleteResponseMessagesItemSource),
+  }),
+).annotate({
+  identifier: "DnsDeleteResponseMessagesItem",
+}) as any as S.Schema<DnsDeleteResponseMessagesItem>;
+
+export type DnsDeleteResponseMessagesList = DnsDeleteResponseMessagesItem[];
+export const DnsDeleteResponseMessagesList = /*@__PURE__*/ S.Array(
+  DnsDeleteResponseMessagesItem,
+) as any as S.Schema<DnsDeleteResponseMessagesList>;
+
+export interface DnsDeleteResponseResultItemTtl {
+  number: unknown;
+  /** Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'. */
+  "1": unknown;
+}
+export const DnsDeleteResponseResultItemTtl = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    number: S.Unknown,
+    "1": S.Unknown,
+  }),
+).annotate({
+  identifier: "DnsDeleteResponseResultItemTtl",
+}) as any as S.Schema<DnsDeleteResponseResultItemTtl>;
+
+export type DnsDeleteResponseResultItemType =
+  | "A"
+  | "AAAA"
+  | "CNAME"
+  | (string & {});
+export const DnsDeleteResponseResultItemType = /*@__PURE__*/ S.String;
+
+export interface DnsDeleteResponseResultItem {
+  /** DNS record content. */
+  content?: string;
+  /** DNS record name (or @ for the zone apex). */
+  name?: string;
+  /** Required for MX, SRV and URI records. Unused by other record types. Records with lower priorities are preferred. */
+  priority?: number;
+  /** Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'. */
+  ttl?: DnsDeleteResponseResultItemTtl;
+  /** DNS record type. */
+  type?: DnsDeleteResponseResultItemType;
+}
+export const DnsDeleteResponseResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    content: S.optional(S.String),
+    name: S.optional(S.String),
+    priority: S.optional(S.Number),
+    ttl: S.optional(DnsDeleteResponseResultItemTtl),
+    type: S.optional(DnsDeleteResponseResultItemType),
+  }),
+).annotate({
+  identifier: "DnsDeleteResponseResultItem",
+}) as any as S.Schema<DnsDeleteResponseResultItem>;
+
+export type DnsDeleteResponseResultList = DnsDeleteResponseResultItem[];
+export const DnsDeleteResponseResultList = /*@__PURE__*/ S.Array(
+  DnsDeleteResponseResultItem,
+) as any as S.Schema<DnsDeleteResponseResultList>;
+
+export interface DnsDeleteResponseResultInfo {
+  /** Total number of results for the requested service. */
+  count?: number;
+  /** Current page within paginated list of results. */
+  page?: number;
+  /** Number of results per page of results. */
+  perPage?: number;
+  /** Total results available without any search parameters. */
+  totalCount?: number;
+  /** The number of total pages in the entire result set. */
+  totalPages?: number;
+}
+export const DnsDeleteResponseResultInfo = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    count: S.optional(S.Number),
+    page: S.optional(S.Number),
+    perPage: S.optional(S.Number.pipe(T.Body("per_page"))),
+    totalCount: S.optional(S.Number.pipe(T.Body("total_count"))),
+    totalPages: S.optional(S.Number.pipe(T.Body("total_pages"))),
+  }),
+).annotate({
+  identifier: "DnsDeleteResponseResultInfo",
+}) as any as S.Schema<DnsDeleteResponseResultInfo>;
+
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface DeleteDnsResponse {
-  EmailAPIResponseCommonObjectErrorsMessagesSuccess__: unknown;
-  EmailDNSSettingsResponseCollectionObjectErrorsMessagesSuccess2More__: unknown;
+  errors?: DnsDeleteResponseErrorsList;
+  messages?: DnsDeleteResponseMessagesList;
+  /** Whether the API call was successful. */
+  success?: boolean;
+  result: DnsDeleteResponseResultList;
+  resultInfo?: DnsDeleteResponseResultInfo;
 }
 export const DeleteDnsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    EmailAPIResponseCommonObjectErrorsMessagesSuccess__: S.Unknown.pipe(
-      T.Body("EmailAPIResponseCommon object { errors, messages, success }"),
+    errors: S.optional(DnsDeleteResponseErrorsList),
+    messages: S.optional(DnsDeleteResponseMessagesList),
+    success: S.optional(S.Boolean),
+    result: DnsDeleteResponseResultList,
+    resultInfo: S.optional(
+      DnsDeleteResponseResultInfo.pipe(T.Body("result_info")),
     ),
-    EmailDNSSettingsResponseCollectionObjectErrorsMessagesSuccess2More__:
-      S.Unknown.pipe(
-        T.Body(
-          "EmailDNSSettingsResponseCollection object { errors, messages, success, 2 more }",
-        ),
-      ),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteDnsResponse",
@@ -1027,25 +1169,229 @@ export const GetDnsRequest = /*@__PURE__*/ S.suspend(() =>
     .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "GetDnsRequest" }) as any as S.Schema<GetDnsRequest>;
 
+export interface DnsGetResponseErrorsItemSource {
+  pointer?: string;
+}
+export const DnsGetResponseErrorsItemSource = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    pointer: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DnsGetResponseErrorsItemSource",
+}) as any as S.Schema<DnsGetResponseErrorsItemSource>;
+
+export interface DnsGetResponseErrorsItem {
+  code: number;
+  message: string;
+  documentationUrl?: string;
+  source?: DnsGetResponseErrorsItemSource;
+}
+export const DnsGetResponseErrorsItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    code: S.Number,
+    message: S.String,
+    documentationUrl: S.optional(S.String.pipe(T.Body("documentation_url"))),
+    source: S.optional(DnsGetResponseErrorsItemSource),
+  }),
+).annotate({
+  identifier: "DnsGetResponseErrorsItem",
+}) as any as S.Schema<DnsGetResponseErrorsItem>;
+
+export type DnsGetResponseErrorsList = DnsGetResponseErrorsItem[];
+export const DnsGetResponseErrorsList = /*@__PURE__*/ S.Array(
+  DnsGetResponseErrorsItem,
+) as any as S.Schema<DnsGetResponseErrorsList>;
+
+export interface DnsGetResponseMessagesItemSource {
+  pointer?: string;
+}
+export const DnsGetResponseMessagesItemSource = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    pointer: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DnsGetResponseMessagesItemSource",
+}) as any as S.Schema<DnsGetResponseMessagesItemSource>;
+
+export interface DnsGetResponseMessagesItem {
+  code: number;
+  message: string;
+  documentationUrl?: string;
+  source?: DnsGetResponseMessagesItemSource;
+}
+export const DnsGetResponseMessagesItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    code: S.Number,
+    message: S.String,
+    documentationUrl: S.optional(S.String.pipe(T.Body("documentation_url"))),
+    source: S.optional(DnsGetResponseMessagesItemSource),
+  }),
+).annotate({
+  identifier: "DnsGetResponseMessagesItem",
+}) as any as S.Schema<DnsGetResponseMessagesItem>;
+
+export type DnsGetResponseMessagesList = DnsGetResponseMessagesItem[];
+export const DnsGetResponseMessagesList = /*@__PURE__*/ S.Array(
+  DnsGetResponseMessagesItem,
+) as any as S.Schema<DnsGetResponseMessagesList>;
+
+export interface DnsGetResponseResultErrorsItemMissingTtl {
+  number: unknown;
+  /** Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'. */
+  "1": unknown;
+}
+export const DnsGetResponseResultErrorsItemMissingTtl = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      number: S.Unknown,
+      "1": S.Unknown,
+    }),
+).annotate({
+  identifier: "DnsGetResponseResultErrorsItemMissingTtl",
+}) as any as S.Schema<DnsGetResponseResultErrorsItemMissingTtl>;
+
+export type DnsGetResponseResultErrorsItemMissingType =
+  | "A"
+  | "AAAA"
+  | "CNAME"
+  | (string & {});
+export const DnsGetResponseResultErrorsItemMissingType = /*@__PURE__*/ S.String;
+
+export interface DnsGetResponseResultErrorsItemMissing {
+  /** DNS record content. */
+  content?: string;
+  /** DNS record name (or @ for the zone apex). */
+  name?: string;
+  /** Required for MX, SRV and URI records. Unused by other record types. Records with lower priorities are preferred. */
+  priority?: number;
+  /** Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'. */
+  ttl?: DnsGetResponseResultErrorsItemMissingTtl;
+  /** DNS record type. */
+  type?: DnsGetResponseResultErrorsItemMissingType;
+}
+export const DnsGetResponseResultErrorsItemMissing = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      content: S.optional(S.String),
+      name: S.optional(S.String),
+      priority: S.optional(S.Number),
+      ttl: S.optional(DnsGetResponseResultErrorsItemMissingTtl),
+      type: S.optional(DnsGetResponseResultErrorsItemMissingType),
+    }),
+).annotate({
+  identifier: "DnsGetResponseResultErrorsItemMissing",
+}) as any as S.Schema<DnsGetResponseResultErrorsItemMissing>;
+
+export interface DnsGetResponseResultErrorsItem {
+  code?: string;
+  /** List of records needed to enable an Email Routing zone. */
+  missing?: DnsGetResponseResultErrorsItemMissing;
+}
+export const DnsGetResponseResultErrorsItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    code: S.optional(S.String),
+    missing: S.optional(DnsGetResponseResultErrorsItemMissing),
+  }),
+).annotate({
+  identifier: "DnsGetResponseResultErrorsItem",
+}) as any as S.Schema<DnsGetResponseResultErrorsItem>;
+
+export type DnsGetResponseResultErrorsList = DnsGetResponseResultErrorsItem[];
+export const DnsGetResponseResultErrorsList = /*@__PURE__*/ S.Array(
+  DnsGetResponseResultErrorsItem,
+) as any as S.Schema<DnsGetResponseResultErrorsList>;
+
+export type DnsGetResponseResultRecordItemType =
+  | "A"
+  | "AAAA"
+  | "CNAME"
+  | (string & {});
+export const DnsGetResponseResultRecordItemType = /*@__PURE__*/ S.String;
+
+export interface DnsGetResponseResultRecordItem {
+  /** DNS record content. */
+  content?: string;
+  /** DNS record name (or @ for the zone apex). */
+  name?: string;
+  /** Required for MX, SRV and URI records. Unused by other record types. Records with lower priorities are preferred. */
+  priority?: number;
+  /** Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'. */
+  ttl?: unknown;
+  /** DNS record type. */
+  type?: DnsGetResponseResultRecordItemType;
+}
+export const DnsGetResponseResultRecordItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    content: S.optional(S.String),
+    name: S.optional(S.String),
+    priority: S.optional(S.Number),
+    ttl: S.optional(S.Unknown),
+    type: S.optional(DnsGetResponseResultRecordItemType),
+  }),
+).annotate({
+  identifier: "DnsGetResponseResultRecordItem",
+}) as any as S.Schema<DnsGetResponseResultRecordItem>;
+
+export type DnsGetResponseResultRecordList = DnsGetResponseResultRecordItem[];
+export const DnsGetResponseResultRecordList = /*@__PURE__*/ S.Array(
+  DnsGetResponseResultRecordItem,
+) as any as S.Schema<DnsGetResponseResultRecordList>;
+
+export interface DnsGetResponseResult {
+  errors?: DnsGetResponseResultErrorsList;
+  record?: DnsGetResponseResultRecordList;
+}
+export const DnsGetResponseResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    errors: S.optional(DnsGetResponseResultErrorsList),
+    record: S.optional(DnsGetResponseResultRecordList),
+  }),
+).annotate({
+  identifier: "DnsGetResponseResult",
+}) as any as S.Schema<DnsGetResponseResult>;
+
+export interface DnsGetResponseResultInfo {
+  /** Total number of results for the requested service. */
+  count?: number;
+  /** Current page within paginated list of results. */
+  page?: number;
+  /** Number of results per page of results. */
+  perPage?: number;
+  /** Total results available without any search parameters. */
+  totalCount?: number;
+  /** The number of total pages in the entire result set. */
+  totalPages?: number;
+}
+export const DnsGetResponseResultInfo = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    count: S.optional(S.Number),
+    page: S.optional(S.Number),
+    perPage: S.optional(S.Number.pipe(T.Body("per_page"))),
+    totalCount: S.optional(S.Number.pipe(T.Body("total_count"))),
+    totalPages: S.optional(S.Number.pipe(T.Body("total_pages"))),
+  }),
+).annotate({
+  identifier: "DnsGetResponseResultInfo",
+}) as any as S.Schema<DnsGetResponseResultInfo>;
+
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface GetDnsResponse {
-  EmailEmailRoutingDNSQueryResponseObjectErrorsMessagesSuccess2More__: unknown;
-  EmailDNSSettingsResponseCollectionObjectErrorsMessagesSuccess2More__: unknown;
+  errors?: DnsGetResponseErrorsList;
+  messages?: DnsGetResponseMessagesList;
+  /** Whether the API call was successful. */
+  success?: boolean;
+  result?: DnsGetResponseResult;
+  resultInfo?: DnsGetResponseResultInfo;
 }
 export const GetDnsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    EmailEmailRoutingDNSQueryResponseObjectErrorsMessagesSuccess2More__:
-      S.Unknown.pipe(
-        T.Body(
-          "EmailEmailRoutingDNSQueryResponse object { errors, messages, success, 2 more }",
-        ),
-      ),
-    EmailDNSSettingsResponseCollectionObjectErrorsMessagesSuccess2More__:
-      S.Unknown.pipe(
-        T.Body(
-          "EmailDNSSettingsResponseCollection object { errors, messages, success, 2 more }",
-        ),
-      ),
+    errors: S.optional(DnsGetResponseErrorsList),
+    messages: S.optional(DnsGetResponseMessagesList),
+    success: S.optional(S.Boolean),
+    result: S.optional(DnsGetResponseResult),
+    resultInfo: S.optional(
+      DnsGetResponseResultInfo.pipe(T.Body("result_info")),
+    ),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "GetDnsResponse" }) as any as S.Schema<GetDnsResponse>;
 
@@ -2250,18 +2596,22 @@ export const deleteAddress: API.OperationMethod<
 
 export type DeleteDnsError = CloudflareOpError;
 /** Disable your Email Routing zone. Also removes additional MX records previously required for Email Routing to work. */
-export const deleteDns: API.OperationMethod<
+export const deleteDns: API.PaginatedOperationMethod<
   DeleteDnsRequest,
   DeleteDnsResponse,
   DeleteDnsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDnsRequest,
-  output: DeleteDnsResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-  retry: Retry.Retry,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: DeleteDnsRequest,
+    output: DeleteDnsResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type DeleteRuleError = EmailRoutingRuleNotFound | CloudflareOpError;
 /** Delete a specific routing rule. */

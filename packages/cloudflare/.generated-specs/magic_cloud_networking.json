@@ -2618,26 +2618,20 @@
     "com.cloudflare.magic_cloud_networking#CloudIntegrationsInitialSetupResponse": {
       "type": "structure",
       "members": {
-        "McnAwsTrustPolicy_object___aws_trust_policy__item_type__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "McnAwsTrustPolicy object { aws_trust_policy, item_type }"
-          }
+        "aws_trust_policy": {
+          "target": "smithy.api#String"
         },
-        "McnAzureSetup_object___azure_consent_url__integration_identity_tag__item_type__tag_cli_command__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "McnAzureSetup object { azure_consent_url, integration_identity_tag, item_type, tag_cli_command }"
-          }
+        "item_type": {
+          "target": "smithy.api#String"
         },
-        "McnGcpSetup_object___integration_identity_tag__item_type__tag_cli_command__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "McnGcpSetup object { integration_identity_tag, item_type, tag_cli_command }"
-          }
+        "azure_consent_url": {
+          "target": "smithy.api#String"
+        },
+        "integration_identity_tag": {
+          "target": "smithy.api#String"
+        },
+        "tag_cli_command": {
+          "target": "smithy.api#String"
         }
       },
       "traits": {
@@ -7575,43 +7569,267 @@
         }
       }
     },
+    "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemHiddenItemsItemValueYamlDiff": {
+      "type": "structure",
+      "members": {
+        "diff": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "left_description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "left_yaml": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "right_description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "right_yaml": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemHiddenItemsItemValueResourcePreviewCloudType": {
+      "type": "enum",
+      "members": {
+        "AWS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AWS"
+          }
+        },
+        "AZURE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AZURE"
+          }
+        },
+        "GOOGLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "GOOGLE"
+          }
+        },
+        "CLOUDFLARE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CLOUDFLARE"
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemHiddenItemsItemValueResourcePreviewResourceType": {
+      "type": "enum",
+      "members": {
+        "AWS_CUSTOMER_GATEWAY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "aws_customer_gateway"
+          }
+        },
+        "AWS_EGRESS_ONLY_INTERNET_GATEWAY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "aws_egress_only_internet_gateway"
+          }
+        },
+        "AWS_INTERNET_GATEWAY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "aws_internet_gateway"
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemHiddenItemsItemValueResourcePreview": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "cloud_type": {
+          "target": "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemHiddenItemsItemValueResourcePreviewCloudType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "detail": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "resource_type": {
+          "target": "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemHiddenItemsItemValueResourcePreviewResourceType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "title": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemHiddenItemsItemValueListItemResourcePreviewCloudType": {
+      "type": "enum",
+      "members": {
+        "AWS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AWS"
+          }
+        },
+        "AZURE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AZURE"
+          }
+        },
+        "GOOGLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "GOOGLE"
+          }
+        },
+        "CLOUDFLARE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CLOUDFLARE"
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemHiddenItemsItemValueListItemResourcePreviewResourceType": {
+      "type": "enum",
+      "members": {
+        "AWS_CUSTOMER_GATEWAY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "aws_customer_gateway"
+          }
+        },
+        "AWS_EGRESS_ONLY_INTERNET_GATEWAY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "aws_egress_only_internet_gateway"
+          }
+        },
+        "AWS_INTERNET_GATEWAY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "aws_internet_gateway"
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemHiddenItemsItemValueListItemResourcePreview": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "cloud_type": {
+          "target": "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemHiddenItemsItemValueListItemResourcePreviewCloudType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "detail": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "resource_type": {
+          "target": "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemHiddenItemsItemValueListItemResourcePreviewResourceType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "title": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemHiddenItemsItemValueListItem": {
+      "type": "structure",
+      "members": {
+        "item_type": {
+          "target": "smithy.api#String"
+        },
+        "string": {
+          "target": "smithy.api#String"
+        },
+        "resource_preview": {
+          "target": "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemHiddenItemsItemValueListItemResourcePreview"
+        }
+      }
+    },
+    "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemHiddenItemsItemValueListList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemHiddenItemsItemValueListItem"
+      }
+    },
     "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemHiddenItemsItemValue": {
       "type": "structure",
       "members": {
-        "McnStringItem_object___item_type__string__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "McnStringItem object { item_type, string }"
-          }
+        "item_type": {
+          "target": "smithy.api#String"
         },
-        "McnYamlItem_object___item_type__yaml__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "McnYamlItem object { item_type, yaml }"
-          }
+        "string": {
+          "target": "smithy.api#String"
         },
-        "McnYamlDiffItem_object___item_type__yaml_diff__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "McnYamlDiffItem object { item_type, yaml_diff }"
-          }
+        "yaml": {
+          "target": "smithy.api#String"
         },
-        "McnResourcePreviewItem_object___item_type__resource_preview__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "McnResourcePreviewItem object { item_type, resource_preview }"
-          }
+        "yaml_diff": {
+          "target": "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemHiddenItemsItemValueYamlDiff"
         },
-        "McnListItem_object___item_type__list__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "McnListItem object { item_type, list }"
-          }
+        "resource_preview": {
+          "target": "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemHiddenItemsItemValueResourcePreview"
+        },
+        "list": {
+          "target": "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemHiddenItemsItemValueListList"
         }
       }
     },
@@ -7635,43 +7853,267 @@
         "target": "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemHiddenItemsItem"
       }
     },
+    "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemVisibleItemsItemValueYamlDiff": {
+      "type": "structure",
+      "members": {
+        "diff": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "left_description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "left_yaml": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "right_description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "right_yaml": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemVisibleItemsItemValueResourcePreviewCloudType": {
+      "type": "enum",
+      "members": {
+        "AWS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AWS"
+          }
+        },
+        "AZURE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AZURE"
+          }
+        },
+        "GOOGLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "GOOGLE"
+          }
+        },
+        "CLOUDFLARE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CLOUDFLARE"
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemVisibleItemsItemValueResourcePreviewResourceType": {
+      "type": "enum",
+      "members": {
+        "AWS_CUSTOMER_GATEWAY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "aws_customer_gateway"
+          }
+        },
+        "AWS_EGRESS_ONLY_INTERNET_GATEWAY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "aws_egress_only_internet_gateway"
+          }
+        },
+        "AWS_INTERNET_GATEWAY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "aws_internet_gateway"
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemVisibleItemsItemValueResourcePreview": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "cloud_type": {
+          "target": "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemVisibleItemsItemValueResourcePreviewCloudType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "detail": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "resource_type": {
+          "target": "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemVisibleItemsItemValueResourcePreviewResourceType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "title": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemVisibleItemsItemValueListItemResourcePreviewCloudType": {
+      "type": "enum",
+      "members": {
+        "AWS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AWS"
+          }
+        },
+        "AZURE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AZURE"
+          }
+        },
+        "GOOGLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "GOOGLE"
+          }
+        },
+        "CLOUDFLARE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CLOUDFLARE"
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemVisibleItemsItemValueListItemResourcePreviewResourceType": {
+      "type": "enum",
+      "members": {
+        "AWS_CUSTOMER_GATEWAY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "aws_customer_gateway"
+          }
+        },
+        "AWS_EGRESS_ONLY_INTERNET_GATEWAY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "aws_egress_only_internet_gateway"
+          }
+        },
+        "AWS_INTERNET_GATEWAY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "aws_internet_gateway"
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemVisibleItemsItemValueListItemResourcePreview": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "cloud_type": {
+          "target": "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemVisibleItemsItemValueListItemResourcePreviewCloudType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "detail": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "resource_type": {
+          "target": "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemVisibleItemsItemValueListItemResourcePreviewResourceType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "title": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemVisibleItemsItemValueListItem": {
+      "type": "structure",
+      "members": {
+        "item_type": {
+          "target": "smithy.api#String"
+        },
+        "string": {
+          "target": "smithy.api#String"
+        },
+        "resource_preview": {
+          "target": "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemVisibleItemsItemValueListItemResourcePreview"
+        }
+      }
+    },
+    "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemVisibleItemsItemValueListList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemVisibleItemsItemValueListItem"
+      }
+    },
     "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemVisibleItemsItemValue": {
       "type": "structure",
       "members": {
-        "McnStringItem_object___item_type__string__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "McnStringItem object { item_type, string }"
-          }
+        "item_type": {
+          "target": "smithy.api#String"
         },
-        "McnYamlItem_object___item_type__yaml__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "McnYamlItem object { item_type, yaml }"
-          }
+        "string": {
+          "target": "smithy.api#String"
         },
-        "McnYamlDiffItem_object___item_type__yaml_diff__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "McnYamlDiffItem object { item_type, yaml_diff }"
-          }
+        "yaml": {
+          "target": "smithy.api#String"
         },
-        "McnResourcePreviewItem_object___item_type__resource_preview__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "McnResourcePreviewItem object { item_type, resource_preview }"
-          }
+        "yaml_diff": {
+          "target": "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemVisibleItemsItemValueYamlDiff"
         },
-        "McnListItem_object___item_type__list__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "McnListItem object { item_type, list }"
-          }
+        "resource_preview": {
+          "target": "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemVisibleItemsItemValueResourcePreview"
+        },
+        "list": {
+          "target": "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemVisibleItemsItemValueListList"
         }
       }
     },
@@ -8172,43 +8614,267 @@
         }
       }
     },
+    "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemHiddenItemsItemValueYamlDiff": {
+      "type": "structure",
+      "members": {
+        "diff": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "left_description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "left_yaml": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "right_description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "right_yaml": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemHiddenItemsItemValueResourcePreviewCloudType": {
+      "type": "enum",
+      "members": {
+        "AWS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AWS"
+          }
+        },
+        "AZURE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AZURE"
+          }
+        },
+        "GOOGLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "GOOGLE"
+          }
+        },
+        "CLOUDFLARE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CLOUDFLARE"
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemHiddenItemsItemValueResourcePreviewResourceType": {
+      "type": "enum",
+      "members": {
+        "AWS_CUSTOMER_GATEWAY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "aws_customer_gateway"
+          }
+        },
+        "AWS_EGRESS_ONLY_INTERNET_GATEWAY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "aws_egress_only_internet_gateway"
+          }
+        },
+        "AWS_INTERNET_GATEWAY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "aws_internet_gateway"
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemHiddenItemsItemValueResourcePreview": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "cloud_type": {
+          "target": "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemHiddenItemsItemValueResourcePreviewCloudType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "detail": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "resource_type": {
+          "target": "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemHiddenItemsItemValueResourcePreviewResourceType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "title": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemHiddenItemsItemValueListItemResourcePreviewCloudType": {
+      "type": "enum",
+      "members": {
+        "AWS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AWS"
+          }
+        },
+        "AZURE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AZURE"
+          }
+        },
+        "GOOGLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "GOOGLE"
+          }
+        },
+        "CLOUDFLARE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CLOUDFLARE"
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemHiddenItemsItemValueListItemResourcePreviewResourceType": {
+      "type": "enum",
+      "members": {
+        "AWS_CUSTOMER_GATEWAY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "aws_customer_gateway"
+          }
+        },
+        "AWS_EGRESS_ONLY_INTERNET_GATEWAY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "aws_egress_only_internet_gateway"
+          }
+        },
+        "AWS_INTERNET_GATEWAY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "aws_internet_gateway"
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemHiddenItemsItemValueListItemResourcePreview": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "cloud_type": {
+          "target": "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemHiddenItemsItemValueListItemResourcePreviewCloudType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "detail": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "resource_type": {
+          "target": "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemHiddenItemsItemValueListItemResourcePreviewResourceType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "title": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemHiddenItemsItemValueListItem": {
+      "type": "structure",
+      "members": {
+        "item_type": {
+          "target": "smithy.api#String"
+        },
+        "string": {
+          "target": "smithy.api#String"
+        },
+        "resource_preview": {
+          "target": "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemHiddenItemsItemValueListItemResourcePreview"
+        }
+      }
+    },
+    "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemHiddenItemsItemValueListList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemHiddenItemsItemValueListItem"
+      }
+    },
     "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemHiddenItemsItemValue": {
       "type": "structure",
       "members": {
-        "McnStringItem_object___item_type__string__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "McnStringItem object { item_type, string }"
-          }
+        "item_type": {
+          "target": "smithy.api#String"
         },
-        "McnYamlItem_object___item_type__yaml__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "McnYamlItem object { item_type, yaml }"
-          }
+        "string": {
+          "target": "smithy.api#String"
         },
-        "McnYamlDiffItem_object___item_type__yaml_diff__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "McnYamlDiffItem object { item_type, yaml_diff }"
-          }
+        "yaml": {
+          "target": "smithy.api#String"
         },
-        "McnResourcePreviewItem_object___item_type__resource_preview__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "McnResourcePreviewItem object { item_type, resource_preview }"
-          }
+        "yaml_diff": {
+          "target": "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemHiddenItemsItemValueYamlDiff"
         },
-        "McnListItem_object___item_type__list__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "McnListItem object { item_type, list }"
-          }
+        "resource_preview": {
+          "target": "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemHiddenItemsItemValueResourcePreview"
+        },
+        "list": {
+          "target": "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemHiddenItemsItemValueListList"
         }
       }
     },
@@ -8232,43 +8898,267 @@
         "target": "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemHiddenItemsItem"
       }
     },
+    "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemVisibleItemsItemValueYamlDiff": {
+      "type": "structure",
+      "members": {
+        "diff": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "left_description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "left_yaml": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "right_description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "right_yaml": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemVisibleItemsItemValueResourcePreviewCloudType": {
+      "type": "enum",
+      "members": {
+        "AWS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AWS"
+          }
+        },
+        "AZURE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AZURE"
+          }
+        },
+        "GOOGLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "GOOGLE"
+          }
+        },
+        "CLOUDFLARE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CLOUDFLARE"
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemVisibleItemsItemValueResourcePreviewResourceType": {
+      "type": "enum",
+      "members": {
+        "AWS_CUSTOMER_GATEWAY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "aws_customer_gateway"
+          }
+        },
+        "AWS_EGRESS_ONLY_INTERNET_GATEWAY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "aws_egress_only_internet_gateway"
+          }
+        },
+        "AWS_INTERNET_GATEWAY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "aws_internet_gateway"
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemVisibleItemsItemValueResourcePreview": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "cloud_type": {
+          "target": "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemVisibleItemsItemValueResourcePreviewCloudType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "detail": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "resource_type": {
+          "target": "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemVisibleItemsItemValueResourcePreviewResourceType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "title": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemVisibleItemsItemValueListItemResourcePreviewCloudType": {
+      "type": "enum",
+      "members": {
+        "AWS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AWS"
+          }
+        },
+        "AZURE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AZURE"
+          }
+        },
+        "GOOGLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "GOOGLE"
+          }
+        },
+        "CLOUDFLARE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CLOUDFLARE"
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemVisibleItemsItemValueListItemResourcePreviewResourceType": {
+      "type": "enum",
+      "members": {
+        "AWS_CUSTOMER_GATEWAY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "aws_customer_gateway"
+          }
+        },
+        "AWS_EGRESS_ONLY_INTERNET_GATEWAY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "aws_egress_only_internet_gateway"
+          }
+        },
+        "AWS_INTERNET_GATEWAY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "aws_internet_gateway"
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemVisibleItemsItemValueListItemResourcePreview": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "cloud_type": {
+          "target": "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemVisibleItemsItemValueListItemResourcePreviewCloudType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "detail": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "resource_type": {
+          "target": "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemVisibleItemsItemValueListItemResourcePreviewResourceType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "title": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemVisibleItemsItemValueListItem": {
+      "type": "structure",
+      "members": {
+        "item_type": {
+          "target": "smithy.api#String"
+        },
+        "string": {
+          "target": "smithy.api#String"
+        },
+        "resource_preview": {
+          "target": "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemVisibleItemsItemValueListItemResourcePreview"
+        }
+      }
+    },
+    "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemVisibleItemsItemValueListList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemVisibleItemsItemValueListItem"
+      }
+    },
     "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemVisibleItemsItemValue": {
       "type": "structure",
       "members": {
-        "McnStringItem_object___item_type__string__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "McnStringItem object { item_type, string }"
-          }
+        "item_type": {
+          "target": "smithy.api#String"
         },
-        "McnYamlItem_object___item_type__yaml__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "McnYamlItem object { item_type, yaml }"
-          }
+        "string": {
+          "target": "smithy.api#String"
         },
-        "McnYamlDiffItem_object___item_type__yaml_diff__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "McnYamlDiffItem object { item_type, yaml_diff }"
-          }
+        "yaml": {
+          "target": "smithy.api#String"
         },
-        "McnResourcePreviewItem_object___item_type__resource_preview__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "McnResourcePreviewItem object { item_type, resource_preview }"
-          }
+        "yaml_diff": {
+          "target": "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemVisibleItemsItemValueYamlDiff"
         },
-        "McnListItem_object___item_type__list__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "McnListItem object { item_type, list }"
-          }
+        "resource_preview": {
+          "target": "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemVisibleItemsItemValueResourcePreview"
+        },
+        "list": {
+          "target": "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemVisibleItemsItemValueListList"
         }
       }
     },

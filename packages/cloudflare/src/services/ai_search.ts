@@ -246,14 +246,18 @@ export class WebCrawlerDomainNotOwned extends T.applyErrorMatchers(
 
 export interface InstancesChatCompletionsRequestMessagesItemContent {
   string: unknown;
-  arrayOfObjectTextTypeOrObjectImageUrlType__: unknown;
+  objectTextType__?: unknown;
+  objectImageUrlType__?: unknown;
 }
 export const InstancesChatCompletionsRequestMessagesItemContent =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       string: S.Unknown,
-      arrayOfObjectTextTypeOrObjectImageUrlType__: S.Unknown.pipe(
-        T.Body("array of object { text, type }  or object { image_url, type }"),
+      objectTextType__: S.optional(
+        S.Unknown.pipe(T.Body("object { text, type }")),
+      ),
+      objectImageUrlType__: S.optional(
+        S.Unknown.pipe(T.Body("object { image_url, type }")),
       ),
     }),
   ).annotate({
@@ -538,14 +542,18 @@ export const ChatCompletionsInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 
 export interface InstancesChatCompletionsResponseChoicesItemMessageContent {
   string: unknown;
-  arrayOfObjectTextTypeOrObjectImageUrlType__: unknown;
+  objectTextType__?: unknown;
+  objectImageUrlType__?: unknown;
 }
 export const InstancesChatCompletionsResponseChoicesItemMessageContent =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       string: S.Unknown,
-      arrayOfObjectTextTypeOrObjectImageUrlType__: S.Unknown.pipe(
-        T.Body("array of object { text, type }  or object { image_url, type }"),
+      objectTextType__: S.optional(
+        S.Unknown.pipe(T.Body("object { text, type }")),
+      ),
+      objectImageUrlType__: S.optional(
+        S.Unknown.pipe(T.Body("object { image_url, type }")),
       ),
     }),
   ).annotate({
@@ -925,14 +933,18 @@ export const NamespacesChatCompletionsRequestAiSearchOptions =
 
 export interface NamespacesChatCompletionsRequestMessagesItemContent {
   string: unknown;
-  arrayOfObjectTextTypeOrObjectImageUrlType__: unknown;
+  objectTextType__?: unknown;
+  objectImageUrlType__?: unknown;
 }
 export const NamespacesChatCompletionsRequestMessagesItemContent =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       string: S.Unknown,
-      arrayOfObjectTextTypeOrObjectImageUrlType__: S.Unknown.pipe(
-        T.Body("array of object { text, type }  or object { image_url, type }"),
+      objectTextType__: S.optional(
+        S.Unknown.pipe(T.Body("object { text, type }")),
+      ),
+      objectImageUrlType__: S.optional(
+        S.Unknown.pipe(T.Body("object { image_url, type }")),
       ),
     }),
   ).annotate({
@@ -1008,14 +1020,18 @@ export const ChatCompletionsNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
 
 export interface NamespacesChatCompletionsResponseChoicesItemMessageContent {
   string: unknown;
-  arrayOfObjectTextTypeOrObjectImageUrlType__: unknown;
+  objectTextType__?: unknown;
+  objectImageUrlType__?: unknown;
 }
 export const NamespacesChatCompletionsResponseChoicesItemMessageContent =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       string: S.Unknown,
-      arrayOfObjectTextTypeOrObjectImageUrlType__: S.Unknown.pipe(
-        T.Body("array of object { text, type }  or object { image_url, type }"),
+      objectTextType__: S.optional(
+        S.Unknown.pipe(T.Body("object { text, type }")),
+      ),
+      objectImageUrlType__: S.optional(
+        S.Unknown.pipe(T.Body("object { image_url, type }")),
       ),
     }),
   ).annotate({
@@ -1180,14 +1196,18 @@ export const ChatCompletionsNamespaceResponse = /*@__PURE__*/ S.suspend(() =>
 
 export interface NamespacesInstancesChatCompletionsRequestMessagesItemContent {
   string: unknown;
-  arrayOfObjectTextTypeOrObjectImageUrlType__: unknown;
+  objectTextType__?: unknown;
+  objectImageUrlType__?: unknown;
 }
 export const NamespacesInstancesChatCompletionsRequestMessagesItemContent =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       string: S.Unknown,
-      arrayOfObjectTextTypeOrObjectImageUrlType__: S.Unknown.pipe(
-        T.Body("array of object { text, type }  or object { image_url, type }"),
+      objectTextType__: S.optional(
+        S.Unknown.pipe(T.Body("object { text, type }")),
+      ),
+      objectImageUrlType__: S.optional(
+        S.Unknown.pipe(T.Body("object { image_url, type }")),
       ),
     }),
   ).annotate({
@@ -1479,14 +1499,18 @@ export const ChatCompletionsNamespaceInstanceRequest = /*@__PURE__*/ S.suspend(
 
 export interface NamespacesInstancesChatCompletionsResponseChoicesItemMessageContent {
   string: unknown;
-  arrayOfObjectTextTypeOrObjectImageUrlType__: unknown;
+  objectTextType__?: unknown;
+  objectImageUrlType__?: unknown;
 }
 export const NamespacesInstancesChatCompletionsResponseChoicesItemMessageContent =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       string: S.Unknown,
-      arrayOfObjectTextTypeOrObjectImageUrlType__: S.Unknown.pipe(
-        T.Body("array of object { text, type }  or object { image_url, type }"),
+      objectTextType__: S.optional(
+        S.Unknown.pipe(T.Body("object { text, type }")),
+      ),
+      objectImageUrlType__: S.optional(
+        S.Unknown.pipe(T.Body("object { image_url, type }")),
       ),
     }),
   ).annotate({
@@ -10218,14 +10242,18 @@ export const InstancesSearchRequestAiSearchOptions = /*@__PURE__*/ S.suspend(
 
 export interface InstancesSearchRequestMessagesItemContent {
   string: unknown;
-  arrayOfObjectTextTypeOrObjectImageUrlType__: unknown;
+  objectTextType__?: unknown;
+  objectImageUrlType__?: unknown;
 }
 export const InstancesSearchRequestMessagesItemContent =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       string: S.Unknown,
-      arrayOfObjectTextTypeOrObjectImageUrlType__: S.Unknown.pipe(
-        T.Body("array of object { text, type }  or object { image_url, type }"),
+      objectTextType__: S.optional(
+        S.Unknown.pipe(T.Body("object { text, type }")),
+      ),
+      objectImageUrlType__: S.optional(
+        S.Unknown.pipe(T.Body("object { image_url, type }")),
       ),
     }),
   ).annotate({
@@ -10621,14 +10649,18 @@ export const NamespacesSearchRequestAiSearchOptions = /*@__PURE__*/ S.suspend(
 
 export interface NamespacesSearchRequestMessagesItemContent {
   string: unknown;
-  arrayOfObjectTextTypeOrObjectImageUrlType__: unknown;
+  objectTextType__?: unknown;
+  objectImageUrlType__?: unknown;
 }
 export const NamespacesSearchRequestMessagesItemContent =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       string: S.Unknown,
-      arrayOfObjectTextTypeOrObjectImageUrlType__: S.Unknown.pipe(
-        T.Body("array of object { text, type }  or object { image_url, type }"),
+      objectTextType__: S.optional(
+        S.Unknown.pipe(T.Body("object { text, type }")),
+      ),
+      objectImageUrlType__: S.optional(
+        S.Unknown.pipe(T.Body("object { image_url, type }")),
       ),
     }),
   ).annotate({
@@ -11035,14 +11067,18 @@ export const NamespacesInstancesSearchRequestAiSearchOptions =
 
 export interface NamespacesInstancesSearchRequestMessagesItemContent {
   string: unknown;
-  arrayOfObjectTextTypeOrObjectImageUrlType__: unknown;
+  objectTextType__?: unknown;
+  objectImageUrlType__?: unknown;
 }
 export const NamespacesInstancesSearchRequestMessagesItemContent =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       string: S.Unknown,
-      arrayOfObjectTextTypeOrObjectImageUrlType__: S.Unknown.pipe(
-        T.Body("array of object { text, type }  or object { image_url, type }"),
+      objectTextType__: S.optional(
+        S.Unknown.pipe(T.Body("object { text, type }")),
+      ),
+      objectImageUrlType__: S.optional(
+        S.Unknown.pipe(T.Body("object { image_url, type }")),
       ),
     }),
   ).annotate({

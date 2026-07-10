@@ -31,22 +31,40 @@ export const ListIpsRequest = /*@__PURE__*/ S.suspend(() =>
     .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "ListIpsRequest" }) as any as S.Schema<ListIpsRequest>;
 
+export type ListResponseIpv4CidrsList = string[];
+export const ListResponseIpv4CidrsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<ListResponseIpv4CidrsList>;
+
+export type ListResponseIpv6CidrsList = string[];
+export const ListResponseIpv6CidrsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<ListResponseIpv6CidrsList>;
+
+export type ListResponseJdcloudCidrsList = string[];
+export const ListResponseJdcloudCidrsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<ListResponseJdcloudCidrsList>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ListIpsResponse {
-  PublicIPIPsObjectEtagIpv4CidrsIpv6Cidrs__: unknown;
-  PublicIPIPsJDCloudObjectEtagIpv4CidrsIpv6CidrsJdcloudCidrs__: unknown;
+  /** A digest of the IP data. Useful for determining if the data has changed. */
+  etag?: string;
+  /** List of Cloudflare IPv4 CIDR addresses. */
+  ipv4Cidrs?: ListResponseIpv4CidrsList;
+  /** List of Cloudflare IPv6 CIDR addresses. */
+  ipv6Cidrs?: ListResponseIpv6CidrsList;
+  /** List IPv4 and IPv6 CIDRs, only populated if `?networks=jdcloud` is used. */
+  jdcloudCidrs?: ListResponseJdcloudCidrsList;
 }
 export const ListIpsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    PublicIPIPsObjectEtagIpv4CidrsIpv6Cidrs__: S.Unknown.pipe(
-      T.Body("PublicIPIPs object { etag, ipv4_cidrs, ipv6_cidrs }"),
+    etag: S.optional(S.String),
+    ipv4Cidrs: S.optional(ListResponseIpv4CidrsList.pipe(T.Body("ipv4_cidrs"))),
+    ipv6Cidrs: S.optional(ListResponseIpv6CidrsList.pipe(T.Body("ipv6_cidrs"))),
+    jdcloudCidrs: S.optional(
+      ListResponseJdcloudCidrsList.pipe(T.Body("jdcloud_cidrs")),
     ),
-    PublicIPIPsJDCloudObjectEtagIpv4CidrsIpv6CidrsJdcloudCidrs__:
-      S.Unknown.pipe(
-        T.Body(
-          "PublicIPIPsJDCloud object { etag, ipv4_cidrs, ipv6_cidrs, jdcloud_cidrs }",
-        ),
-      ),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListIpsResponse",

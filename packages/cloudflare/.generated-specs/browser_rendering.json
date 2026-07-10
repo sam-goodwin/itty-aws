@@ -17,21 +17,499 @@
     ]
   },
   "shapes": {
+    "com.cloudflare.browser_rendering#ContentCreateRequestBodyAddScriptTagItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String"
+        },
+        "content": {
+          "target": "smithy.api#String"
+        },
+        "type": {
+          "target": "smithy.api#String"
+        },
+        "url": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#ContentCreateRequestBodyAddScriptTagList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.browser_rendering#ContentCreateRequestBodyAddScriptTagItem"
+      }
+    },
+    "com.cloudflare.browser_rendering#ContentCreateRequestBodyAddStyleTagItem": {
+      "type": "structure",
+      "members": {
+        "content": {
+          "target": "smithy.api#String"
+        },
+        "url": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#ContentCreateRequestBodyAddStyleTagList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.browser_rendering#ContentCreateRequestBodyAddStyleTagItem"
+      }
+    },
+    "com.cloudflare.browser_rendering#ContentCreateRequestBodyAllowRequestPatternList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.browser_rendering#ContentCreateRequestBodyAllowResourceTypesItem": {
+      "type": "enum",
+      "members": {
+        "DOCUMENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "document"
+          }
+        },
+        "STYLESHEET": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "stylesheet"
+          }
+        },
+        "IMAGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "image"
+          }
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#ContentCreateRequestBodyAllowResourceTypesList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.browser_rendering#ContentCreateRequestBodyAllowResourceTypesItem"
+      }
+    },
+    "com.cloudflare.browser_rendering#ContentCreateRequestBodyAuthenticate": {
+      "type": "structure",
+      "members": {
+        "password": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "username": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#ContentCreateRequestBodyCookiesItemPriority": {
+      "type": "enum",
+      "members": {
+        "LOW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Low"
+          }
+        },
+        "MEDIUM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Medium"
+          }
+        },
+        "HIGH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "High"
+          }
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#ContentCreateRequestBodyCookiesItemSameSite": {
+      "type": "enum",
+      "members": {
+        "STRICT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Strict"
+          }
+        },
+        "LAX": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Lax"
+          }
+        },
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "None"
+          }
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#ContentCreateRequestBodyCookiesItemSourceScheme": {
+      "type": "enum",
+      "members": {
+        "UNSET": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Unset"
+          }
+        },
+        "NONSECURE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NonSecure"
+          }
+        },
+        "SECURE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Secure"
+          }
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#ContentCreateRequestBodyCookiesItem": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Cookie name.",
+            "smithy.api#required": {}
+          }
+        },
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "domain": {
+          "target": "smithy.api#String"
+        },
+        "expires": {
+          "target": "smithy.api#Double"
+        },
+        "httpOnly": {
+          "target": "smithy.api#Boolean"
+        },
+        "partitionKey": {
+          "target": "smithy.api#String"
+        },
+        "path": {
+          "target": "smithy.api#String"
+        },
+        "priority": {
+          "target": "com.cloudflare.browser_rendering#ContentCreateRequestBodyCookiesItemPriority"
+        },
+        "sameParty": {
+          "target": "smithy.api#Boolean"
+        },
+        "sameSite": {
+          "target": "com.cloudflare.browser_rendering#ContentCreateRequestBodyCookiesItemSameSite"
+        },
+        "secure": {
+          "target": "smithy.api#Boolean"
+        },
+        "sourcePort": {
+          "target": "smithy.api#Double"
+        },
+        "sourceScheme": {
+          "target": "com.cloudflare.browser_rendering#ContentCreateRequestBodyCookiesItemSourceScheme"
+        },
+        "url": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#ContentCreateRequestBodyCookiesList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.browser_rendering#ContentCreateRequestBodyCookiesItem"
+      }
+    },
+    "com.cloudflare.browser_rendering#ContentCreateRequestBodyGotoOptionsWaitUntil": {
+      "type": "enum",
+      "members": {
+        "LOAD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "load"
+          }
+        },
+        "DOMCONTENTLOADED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "domcontentloaded"
+          }
+        },
+        "NETWORKIDLE0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "networkidle0"
+          }
+        },
+        "NETWORKIDLE2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "networkidle2"
+          }
+        },
+        "LOAD_2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "load"
+          }
+        },
+        "DOMCONTENTLOADED_2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "domcontentloaded"
+          }
+        },
+        "NETWORKIDLE0_2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "networkidle0"
+          }
+        },
+        "NETWORKIDLE2_2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "networkidle2"
+          }
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#ContentCreateRequestBodyGotoOptions": {
+      "type": "structure",
+      "members": {
+        "referer": {
+          "target": "smithy.api#String"
+        },
+        "referrerPolicy": {
+          "target": "smithy.api#String"
+        },
+        "timeout": {
+          "target": "smithy.api#Double"
+        },
+        "waitUntil": {
+          "target": "com.cloudflare.browser_rendering#ContentCreateRequestBodyGotoOptionsWaitUntil"
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#ContentCreateRequestBodyRejectRequestPatternList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.browser_rendering#ContentCreateRequestBodyRejectResourceTypesItem": {
+      "type": "enum",
+      "members": {
+        "DOCUMENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "document"
+          }
+        },
+        "STYLESHEET": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "stylesheet"
+          }
+        },
+        "IMAGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "image"
+          }
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#ContentCreateRequestBodyRejectResourceTypesList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.browser_rendering#ContentCreateRequestBodyRejectResourceTypesItem"
+      }
+    },
+    "com.cloudflare.browser_rendering#ContentCreateRequestBodySetExtraHTTPHeadersMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.browser_rendering#ContentCreateRequestBodyViewport": {
+      "type": "structure",
+      "members": {
+        "height": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "width": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "deviceScaleFactor": {
+          "target": "smithy.api#Double"
+        },
+        "hasTouch": {
+          "target": "smithy.api#Boolean"
+        },
+        "isLandscape": {
+          "target": "smithy.api#Boolean"
+        },
+        "isMobile": {
+          "target": "smithy.api#Boolean"
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#ContentCreateRequestBodyWaitForSelector": {
+      "type": "structure",
+      "members": {
+        "selector": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "hidden": {
+          "target": "smithy.api#Boolean"
+        },
+        "timeout": {
+          "target": "smithy.api#Double"
+        },
+        "visible": {
+          "target": "smithy.api#Boolean"
+        }
+      }
+    },
     "com.cloudflare.browser_rendering#ContentCreateRequestBody": {
       "type": "structure",
       "members": {
-        "object___url__actionTimeout__addScriptTag__16_more__": {
-          "target": "smithy.api#Document",
+        "url": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "object { url, actionTimeout, addScriptTag, 16 more }"
+            "smithy.api#documentation": "URL to navigate to, eg. `https://example.com`."
           }
         },
-        "object___html__actionTimeout__addScriptTag__16_more__": {
-          "target": "smithy.api#Document",
+        "actionTimeout": {
+          "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "object { html, actionTimeout, addScriptTag, 16 more }"
+            "smithy.api#documentation": "The maximum duration allowed for the browser action to complete after the page has loaded (such as taking screenshots, extracting content, or generating PDFs). If this time limit is exceeded, the action stops and returns a timeout error."
+          }
+        },
+        "addScriptTag": {
+          "target": "com.cloudflare.browser_rendering#ContentCreateRequestBodyAddScriptTagList",
+          "traits": {
+            "smithy.api#documentation": "Adds a `<script>` tag into the page with the desired URL or content."
+          }
+        },
+        "addStyleTag": {
+          "target": "com.cloudflare.browser_rendering#ContentCreateRequestBodyAddStyleTagList",
+          "traits": {
+            "smithy.api#documentation": "Adds a `<link rel=\"stylesheet\">` tag into the page with the desired URL or a `<style type=\"text/css\">` tag with the content."
+          }
+        },
+        "allowRequestPattern": {
+          "target": "com.cloudflare.browser_rendering#ContentCreateRequestBodyAllowRequestPatternList",
+          "traits": {
+            "smithy.api#documentation": "Only allow requests that match the provided regex patterns, eg. '/^.*.(css)'."
+          }
+        },
+        "allowResourceTypes": {
+          "target": "com.cloudflare.browser_rendering#ContentCreateRequestBodyAllowResourceTypesList",
+          "traits": {
+            "smithy.api#documentation": "Only allow requests that match the provided resource types, eg. 'image' or 'script'."
+          }
+        },
+        "authenticate": {
+          "target": "com.cloudflare.browser_rendering#ContentCreateRequestBodyAuthenticate",
+          "traits": {
+            "smithy.api#documentation": "Provide credentials for HTTP authentication."
+          }
+        },
+        "bestAttempt": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Attempt to proceed when 'awaited' events fail or timeout."
+          }
+        },
+        "cookies": {
+          "target": "com.cloudflare.browser_rendering#ContentCreateRequestBodyCookiesList",
+          "traits": {
+            "smithy.api#documentation": "Check [options](https://pptr.dev/api/puppeteer.page.setcookie)."
+          }
+        },
+        "emulateMediaType": {
+          "target": "smithy.api#String"
+        },
+        "gotoOptions": {
+          "target": "com.cloudflare.browser_rendering#ContentCreateRequestBodyGotoOptions",
+          "traits": {
+            "smithy.api#documentation": "Check [options](https://pptr.dev/api/puppeteer.gotooptions)."
+          }
+        },
+        "rejectRequestPattern": {
+          "target": "com.cloudflare.browser_rendering#ContentCreateRequestBodyRejectRequestPatternList",
+          "traits": {
+            "smithy.api#documentation": "Block undesired requests that match the provided regex patterns, eg. '/^.*.(css)'."
+          }
+        },
+        "rejectResourceTypes": {
+          "target": "com.cloudflare.browser_rendering#ContentCreateRequestBodyRejectResourceTypesList",
+          "traits": {
+            "smithy.api#documentation": "Block undesired requests that match the provided resource types, eg. 'image' or 'script'."
+          }
+        },
+        "setExtraHTTPHeaders": {
+          "target": "com.cloudflare.browser_rendering#ContentCreateRequestBodySetExtraHTTPHeadersMap"
+        },
+        "setJavaScriptEnabled": {
+          "target": "smithy.api#Boolean"
+        },
+        "userAgent": {
+          "target": "smithy.api#String"
+        },
+        "viewport": {
+          "target": "com.cloudflare.browser_rendering#ContentCreateRequestBodyViewport",
+          "traits": {
+            "smithy.api#documentation": "Check [options](https://pptr.dev/api/puppeteer.page.setviewport)."
+          }
+        },
+        "waitForSelector": {
+          "target": "com.cloudflare.browser_rendering#ContentCreateRequestBodyWaitForSelector",
+          "traits": {
+            "smithy.api#documentation": "Wait for the selector to appear in page. Check [options](https://pptr.dev/api/puppeteer.page.waitforselector)."
+          }
+        },
+        "waitForTimeout": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Waits for a specified timeout before continuing."
+          }
+        },
+        "html": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Set the content of the page, eg: `<h1>Hello World!!</h1>`. Either `html` or `url` must be set."
           }
         }
       }
@@ -97,21 +575,739 @@
         "smithy.api#documentation": "Fetches rendered HTML content from provided URL or HTML. Check available options like `gotoOptions` and `waitFor*` to control page load behaviour."
       }
     },
+    "com.cloudflare.browser_rendering#CrawlCreateRequestBodyAddScriptTagItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String"
+        },
+        "content": {
+          "target": "smithy.api#String"
+        },
+        "type": {
+          "target": "smithy.api#String"
+        },
+        "url": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#CrawlCreateRequestBodyAddScriptTagList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.browser_rendering#CrawlCreateRequestBodyAddScriptTagItem"
+      }
+    },
+    "com.cloudflare.browser_rendering#CrawlCreateRequestBodyAddStyleTagItem": {
+      "type": "structure",
+      "members": {
+        "content": {
+          "target": "smithy.api#String"
+        },
+        "url": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#CrawlCreateRequestBodyAddStyleTagList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.browser_rendering#CrawlCreateRequestBodyAddStyleTagItem"
+      }
+    },
+    "com.cloudflare.browser_rendering#CrawlCreateRequestBodyAllowRequestPatternList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.browser_rendering#CrawlCreateRequestBodyAllowResourceTypesItem": {
+      "type": "enum",
+      "members": {
+        "DOCUMENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "document"
+          }
+        },
+        "STYLESHEET": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "stylesheet"
+          }
+        },
+        "IMAGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "image"
+          }
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#CrawlCreateRequestBodyAllowResourceTypesList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.browser_rendering#CrawlCreateRequestBodyAllowResourceTypesItem"
+      }
+    },
+    "com.cloudflare.browser_rendering#CrawlCreateRequestBodyAuthenticate": {
+      "type": "structure",
+      "members": {
+        "password": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "username": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#CrawlCreateRequestBodyCookiesItemPriority": {
+      "type": "enum",
+      "members": {
+        "LOW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Low"
+          }
+        },
+        "MEDIUM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Medium"
+          }
+        },
+        "HIGH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "High"
+          }
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#CrawlCreateRequestBodyCookiesItemSameSite": {
+      "type": "enum",
+      "members": {
+        "STRICT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Strict"
+          }
+        },
+        "LAX": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Lax"
+          }
+        },
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "None"
+          }
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#CrawlCreateRequestBodyCookiesItemSourceScheme": {
+      "type": "enum",
+      "members": {
+        "UNSET": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Unset"
+          }
+        },
+        "NONSECURE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NonSecure"
+          }
+        },
+        "SECURE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Secure"
+          }
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#CrawlCreateRequestBodyCookiesItem": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Cookie name.",
+            "smithy.api#required": {}
+          }
+        },
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "domain": {
+          "target": "smithy.api#String"
+        },
+        "expires": {
+          "target": "smithy.api#Double"
+        },
+        "httpOnly": {
+          "target": "smithy.api#Boolean"
+        },
+        "partitionKey": {
+          "target": "smithy.api#String"
+        },
+        "path": {
+          "target": "smithy.api#String"
+        },
+        "priority": {
+          "target": "com.cloudflare.browser_rendering#CrawlCreateRequestBodyCookiesItemPriority"
+        },
+        "sameParty": {
+          "target": "smithy.api#Boolean"
+        },
+        "sameSite": {
+          "target": "com.cloudflare.browser_rendering#CrawlCreateRequestBodyCookiesItemSameSite"
+        },
+        "secure": {
+          "target": "smithy.api#Boolean"
+        },
+        "sourcePort": {
+          "target": "smithy.api#Double"
+        },
+        "sourceScheme": {
+          "target": "com.cloudflare.browser_rendering#CrawlCreateRequestBodyCookiesItemSourceScheme"
+        },
+        "url": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#CrawlCreateRequestBodyCookiesList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.browser_rendering#CrawlCreateRequestBodyCookiesItem"
+      }
+    },
+    "com.cloudflare.browser_rendering#CrawlCreateRequestBodyCrawlPurposesItem": {
+      "type": "enum",
+      "members": {
+        "SEARCH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "search"
+          }
+        },
+        "AI_INPUT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ai-input"
+          }
+        },
+        "AI_TRAIN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ai-train"
+          }
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#CrawlCreateRequestBodyCrawlPurposesList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.browser_rendering#CrawlCreateRequestBodyCrawlPurposesItem"
+      }
+    },
+    "com.cloudflare.browser_rendering#CrawlCreateRequestBodyFormatsItem": {
+      "type": "enum",
+      "members": {
+        "HTML": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "html"
+          }
+        },
+        "MARKDOWN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "markdown"
+          }
+        },
+        "JSON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "json"
+          }
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#CrawlCreateRequestBodyFormatsList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.browser_rendering#CrawlCreateRequestBodyFormatsItem"
+      }
+    },
+    "com.cloudflare.browser_rendering#CrawlCreateRequestBodyGotoOptionsWaitUntil": {
+      "type": "enum",
+      "members": {
+        "LOAD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "load"
+          }
+        },
+        "DOMCONTENTLOADED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "domcontentloaded"
+          }
+        },
+        "NETWORKIDLE0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "networkidle0"
+          }
+        },
+        "NETWORKIDLE2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "networkidle2"
+          }
+        },
+        "LOAD_2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "load"
+          }
+        },
+        "DOMCONTENTLOADED_2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "domcontentloaded"
+          }
+        },
+        "NETWORKIDLE0_2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "networkidle0"
+          }
+        },
+        "NETWORKIDLE2_2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "networkidle2"
+          }
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#CrawlCreateRequestBodyGotoOptions": {
+      "type": "structure",
+      "members": {
+        "referer": {
+          "target": "smithy.api#String"
+        },
+        "referrerPolicy": {
+          "target": "smithy.api#String"
+        },
+        "timeout": {
+          "target": "smithy.api#Double"
+        },
+        "waitUntil": {
+          "target": "com.cloudflare.browser_rendering#CrawlCreateRequestBodyGotoOptionsWaitUntil"
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#CrawlCreateRequestBodyJsonOptionsCustomAiItem": {
+      "type": "structure",
+      "members": {
+        "model": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "AI model to use for the request. Must be formed as `<provider>/<model_name>`, e.g. `workers-ai/@cf/meta/llama-3.3-70b-instruct-fp8-fast`.",
+            "smithy.api#required": {}
+          }
+        },
+        "authorization": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Authorization token for the AI model: `Bearer <token>`. Not needed for workers-ai models."
+          }
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#CrawlCreateRequestBodyJsonOptionsCustomAiList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.browser_rendering#CrawlCreateRequestBodyJsonOptionsCustomAiItem"
+      }
+    },
+    "com.cloudflare.browser_rendering#CrawlCreateRequestBodyJsonOptionsResponseFormatJsonSchemaMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.browser_rendering#CrawlCreateRequestBodyJsonOptionsResponseFormat": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "json_schema": {
+          "target": "com.cloudflare.browser_rendering#CrawlCreateRequestBodyJsonOptionsResponseFormatJsonSchemaMap",
+          "traits": {
+            "smithy.api#documentation": "Schema for the response format. More information here: https://developers.cloudflare.com/workers-ai/json-mode/"
+          }
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#CrawlCreateRequestBodyJsonOptions": {
+      "type": "structure",
+      "members": {
+        "custom_ai": {
+          "target": "com.cloudflare.browser_rendering#CrawlCreateRequestBodyJsonOptionsCustomAiList",
+          "traits": {
+            "smithy.api#documentation": "Optional list of custom AI models to use for the request. The models will be tried in the order provided, and in case a model returns an error, the next one will be used as fallback."
+          }
+        },
+        "prompt": {
+          "target": "smithy.api#String"
+        },
+        "response_format": {
+          "target": "com.cloudflare.browser_rendering#CrawlCreateRequestBodyJsonOptionsResponseFormat"
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#CrawlCreateRequestBodyOptionsExcludePatternsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.browser_rendering#CrawlCreateRequestBodyOptionsIncludePatternsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.browser_rendering#CrawlCreateRequestBodyOptions": {
+      "type": "structure",
+      "members": {
+        "excludePatterns": {
+          "target": "com.cloudflare.browser_rendering#CrawlCreateRequestBodyOptionsExcludePatternsList",
+          "traits": {
+            "smithy.api#documentation": "Exclude links matching the provided wildcard patterns in the crawl job. Example: 'https://example.com/privacy/**'."
+          }
+        },
+        "includeExternalLinks": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Include external links in the crawl job. If set to true, includeSubdomains is ignored."
+          }
+        },
+        "includePatterns": {
+          "target": "com.cloudflare.browser_rendering#CrawlCreateRequestBodyOptionsIncludePatternsList",
+          "traits": {
+            "smithy.api#documentation": "Include only links matching the provided wildcard patterns in the crawl job. Include patterns are evaluated before exclude patterns. URLs that match any of the specified include patterns will be included in the crawl job. Example: 'https://example.com/blog/**'."
+          }
+        },
+        "includeSubdomains": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Include links to subdomains in the crawl job. This option is ignored if includeExternalLinks is true."
+          }
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#CrawlCreateRequestBodyRejectRequestPatternList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.browser_rendering#CrawlCreateRequestBodyRejectResourceTypesItem": {
+      "type": "enum",
+      "members": {
+        "DOCUMENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "document"
+          }
+        },
+        "STYLESHEET": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "stylesheet"
+          }
+        },
+        "IMAGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "image"
+          }
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#CrawlCreateRequestBodyRejectResourceTypesList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.browser_rendering#CrawlCreateRequestBodyRejectResourceTypesItem"
+      }
+    },
+    "com.cloudflare.browser_rendering#CrawlCreateRequestBodySetExtraHTTPHeadersMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.browser_rendering#CrawlCreateRequestBodySource": {
+      "type": "enum",
+      "members": {
+        "SITEMAPS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sitemaps"
+          }
+        },
+        "LINKS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "links"
+          }
+        },
+        "ALL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "all"
+          }
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#CrawlCreateRequestBodyViewport": {
+      "type": "structure",
+      "members": {
+        "height": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "width": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "deviceScaleFactor": {
+          "target": "smithy.api#Double"
+        },
+        "hasTouch": {
+          "target": "smithy.api#Boolean"
+        },
+        "isLandscape": {
+          "target": "smithy.api#Boolean"
+        },
+        "isMobile": {
+          "target": "smithy.api#Boolean"
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#CrawlCreateRequestBodyWaitForSelector": {
+      "type": "structure",
+      "members": {
+        "selector": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "hidden": {
+          "target": "smithy.api#Boolean"
+        },
+        "timeout": {
+          "target": "smithy.api#Double"
+        },
+        "visible": {
+          "target": "smithy.api#Boolean"
+        }
+      }
+    },
     "com.cloudflare.browser_rendering#CrawlCreateRequestBody": {
       "type": "structure",
       "members": {
-        "object___url__actionTimeout__addScriptTag__25_more__": {
-          "target": "smithy.api#Document",
+        "url": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "object { url, actionTimeout, addScriptTag, 25 more }"
+            "smithy.api#documentation": "URL to navigate to, eg. `https://example.com`."
           }
         },
-        "object___render__url__crawlPurposes__8_more__": {
-          "target": "smithy.api#Document",
+        "actionTimeout": {
+          "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "object { render, url, crawlPurposes, 8 more }"
+            "smithy.api#documentation": "The maximum duration allowed for the browser action to complete after the page has loaded (such as taking screenshots, extracting content, or generating PDFs). If this time limit is exceeded, the action stops and returns a timeout error."
+          }
+        },
+        "addScriptTag": {
+          "target": "com.cloudflare.browser_rendering#CrawlCreateRequestBodyAddScriptTagList",
+          "traits": {
+            "smithy.api#documentation": "Adds a `<script>` tag into the page with the desired URL or content."
+          }
+        },
+        "addStyleTag": {
+          "target": "com.cloudflare.browser_rendering#CrawlCreateRequestBodyAddStyleTagList",
+          "traits": {
+            "smithy.api#documentation": "Adds a `<link rel=\"stylesheet\">` tag into the page with the desired URL or a `<style type=\"text/css\">` tag with the content."
+          }
+        },
+        "allowRequestPattern": {
+          "target": "com.cloudflare.browser_rendering#CrawlCreateRequestBodyAllowRequestPatternList",
+          "traits": {
+            "smithy.api#documentation": "Only allow requests that match the provided regex patterns, eg. '/^.*.(css)'."
+          }
+        },
+        "allowResourceTypes": {
+          "target": "com.cloudflare.browser_rendering#CrawlCreateRequestBodyAllowResourceTypesList",
+          "traits": {
+            "smithy.api#documentation": "Only allow requests that match the provided resource types, eg. 'image' or 'script'."
+          }
+        },
+        "authenticate": {
+          "target": "com.cloudflare.browser_rendering#CrawlCreateRequestBodyAuthenticate",
+          "traits": {
+            "smithy.api#documentation": "Provide credentials for HTTP authentication."
+          }
+        },
+        "bestAttempt": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Attempt to proceed when 'awaited' events fail or timeout."
+          }
+        },
+        "cookies": {
+          "target": "com.cloudflare.browser_rendering#CrawlCreateRequestBodyCookiesList",
+          "traits": {
+            "smithy.api#documentation": "Check [options](https://pptr.dev/api/puppeteer.page.setcookie)."
+          }
+        },
+        "crawlPurposes": {
+          "target": "com.cloudflare.browser_rendering#CrawlCreateRequestBodyCrawlPurposesList",
+          "traits": {
+            "smithy.api#documentation": "List of crawl purposes to respect Content-Signal directives in robots.txt. Allowed values: 'search', 'ai-input', 'ai-train'. Learn more: https://contentsignals.org/. Default: ['search', 'ai-input', 'ai-train']."
+          }
+        },
+        "depth": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Maximum number of levels deep the crawler will traverse from the starting URL."
+          }
+        },
+        "emulateMediaType": {
+          "target": "smithy.api#String"
+        },
+        "formats": {
+          "target": "com.cloudflare.browser_rendering#CrawlCreateRequestBodyFormatsList",
+          "traits": {
+            "smithy.api#documentation": "Formats to return. Default is `html`."
+          }
+        },
+        "gotoOptions": {
+          "target": "com.cloudflare.browser_rendering#CrawlCreateRequestBodyGotoOptions",
+          "traits": {
+            "smithy.api#documentation": "Check [options](https://pptr.dev/api/puppeteer.gotooptions)."
+          }
+        },
+        "jsonOptions": {
+          "target": "com.cloudflare.browser_rendering#CrawlCreateRequestBodyJsonOptions",
+          "traits": {
+            "smithy.api#documentation": "Options for JSON extraction."
+          }
+        },
+        "limit": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Maximum number of URLs to crawl."
+          }
+        },
+        "maxAge": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Maximum age of a resource that can be returned from cache in seconds. Default is 1 day."
+          }
+        },
+        "modifiedSince": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Unix timestamp (seconds since epoch) indicating to only crawl pages that were modified since this time. For sitemap URLs with a lastmod field, this is compared directly. For other URLs, the crawler will use If-Modified-Since header when fetching. URLs without modification information (no lastmod in sitemap and no Last-Modified header support) will be crawled. Note: This works in conjunction with maxAge - both filters must pass for a cached resource to be used. Must be within the last year and not in the future."
+          }
+        },
+        "options": {
+          "target": "com.cloudflare.browser_rendering#CrawlCreateRequestBodyOptions",
+          "traits": {
+            "smithy.api#documentation": "Additional options for the crawler."
+          }
+        },
+        "rejectRequestPattern": {
+          "target": "com.cloudflare.browser_rendering#CrawlCreateRequestBodyRejectRequestPatternList",
+          "traits": {
+            "smithy.api#documentation": "Block undesired requests that match the provided regex patterns, eg. '/^.*.(css)'."
+          }
+        },
+        "rejectResourceTypes": {
+          "target": "com.cloudflare.browser_rendering#CrawlCreateRequestBodyRejectResourceTypesList",
+          "traits": {
+            "smithy.api#documentation": "Block undesired requests that match the provided resource types, eg. 'image' or 'script'."
+          }
+        },
+        "render": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether to render the page or fetch static content. True by default."
+          }
+        },
+        "setExtraHTTPHeaders": {
+          "target": "com.cloudflare.browser_rendering#CrawlCreateRequestBodySetExtraHTTPHeadersMap"
+        },
+        "setJavaScriptEnabled": {
+          "target": "smithy.api#Boolean"
+        },
+        "source": {
+          "target": "com.cloudflare.browser_rendering#CrawlCreateRequestBodySource",
+          "traits": {
+            "smithy.api#documentation": "Source of links to crawl. 'sitemaps' - only crawl URLs from sitemaps, 'links' - only crawl URLs scraped from pages, 'all' - crawl both sitemap and scraped links (default)."
+          }
+        },
+        "viewport": {
+          "target": "com.cloudflare.browser_rendering#CrawlCreateRequestBodyViewport",
+          "traits": {
+            "smithy.api#documentation": "Check [options](https://pptr.dev/api/puppeteer.page.setviewport)."
+          }
+        },
+        "waitForSelector": {
+          "target": "com.cloudflare.browser_rendering#CrawlCreateRequestBodyWaitForSelector",
+          "traits": {
+            "smithy.api#documentation": "Wait for the selector to appear in page. Check [options](https://pptr.dev/api/puppeteer.page.waitforselector)."
+          }
+        },
+        "waitForTimeout": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Waits for a specified timeout before continuing."
           }
         }
       }
@@ -1801,21 +2997,561 @@
         "smithy.api#readonly": {}
       }
     },
+    "com.cloudflare.browser_rendering#JsonCreateRequestBodyAddScriptTagItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String"
+        },
+        "content": {
+          "target": "smithy.api#String"
+        },
+        "type": {
+          "target": "smithy.api#String"
+        },
+        "url": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#JsonCreateRequestBodyAddScriptTagList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.browser_rendering#JsonCreateRequestBodyAddScriptTagItem"
+      }
+    },
+    "com.cloudflare.browser_rendering#JsonCreateRequestBodyAddStyleTagItem": {
+      "type": "structure",
+      "members": {
+        "content": {
+          "target": "smithy.api#String"
+        },
+        "url": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#JsonCreateRequestBodyAddStyleTagList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.browser_rendering#JsonCreateRequestBodyAddStyleTagItem"
+      }
+    },
+    "com.cloudflare.browser_rendering#JsonCreateRequestBodyAllowRequestPatternList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.browser_rendering#JsonCreateRequestBodyAllowResourceTypesItem": {
+      "type": "enum",
+      "members": {
+        "DOCUMENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "document"
+          }
+        },
+        "STYLESHEET": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "stylesheet"
+          }
+        },
+        "IMAGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "image"
+          }
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#JsonCreateRequestBodyAllowResourceTypesList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.browser_rendering#JsonCreateRequestBodyAllowResourceTypesItem"
+      }
+    },
+    "com.cloudflare.browser_rendering#JsonCreateRequestBodyAuthenticate": {
+      "type": "structure",
+      "members": {
+        "password": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "username": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#JsonCreateRequestBodyCookiesItemPriority": {
+      "type": "enum",
+      "members": {
+        "LOW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Low"
+          }
+        },
+        "MEDIUM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Medium"
+          }
+        },
+        "HIGH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "High"
+          }
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#JsonCreateRequestBodyCookiesItemSameSite": {
+      "type": "enum",
+      "members": {
+        "STRICT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Strict"
+          }
+        },
+        "LAX": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Lax"
+          }
+        },
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "None"
+          }
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#JsonCreateRequestBodyCookiesItemSourceScheme": {
+      "type": "enum",
+      "members": {
+        "UNSET": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Unset"
+          }
+        },
+        "NONSECURE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NonSecure"
+          }
+        },
+        "SECURE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Secure"
+          }
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#JsonCreateRequestBodyCookiesItem": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Cookie name.",
+            "smithy.api#required": {}
+          }
+        },
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "domain": {
+          "target": "smithy.api#String"
+        },
+        "expires": {
+          "target": "smithy.api#Double"
+        },
+        "httpOnly": {
+          "target": "smithy.api#Boolean"
+        },
+        "partitionKey": {
+          "target": "smithy.api#String"
+        },
+        "path": {
+          "target": "smithy.api#String"
+        },
+        "priority": {
+          "target": "com.cloudflare.browser_rendering#JsonCreateRequestBodyCookiesItemPriority"
+        },
+        "sameParty": {
+          "target": "smithy.api#Boolean"
+        },
+        "sameSite": {
+          "target": "com.cloudflare.browser_rendering#JsonCreateRequestBodyCookiesItemSameSite"
+        },
+        "secure": {
+          "target": "smithy.api#Boolean"
+        },
+        "sourcePort": {
+          "target": "smithy.api#Double"
+        },
+        "sourceScheme": {
+          "target": "com.cloudflare.browser_rendering#JsonCreateRequestBodyCookiesItemSourceScheme"
+        },
+        "url": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#JsonCreateRequestBodyCookiesList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.browser_rendering#JsonCreateRequestBodyCookiesItem"
+      }
+    },
+    "com.cloudflare.browser_rendering#JsonCreateRequestBodyCustomAiItem": {
+      "type": "structure",
+      "members": {
+        "model": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "AI model to use for the request. Must be formed as `<provider>/<model_name>`, e.g. `workers-ai/@cf/meta/llama-3.3-70b-instruct-fp8-fast`.",
+            "smithy.api#required": {}
+          }
+        },
+        "authorization": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Authorization token for the AI model: `Bearer <token>`. Not needed for workers-ai models."
+          }
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#JsonCreateRequestBodyCustomAiList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.browser_rendering#JsonCreateRequestBodyCustomAiItem"
+      }
+    },
+    "com.cloudflare.browser_rendering#JsonCreateRequestBodyGotoOptionsWaitUntil": {
+      "type": "enum",
+      "members": {
+        "LOAD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "load"
+          }
+        },
+        "DOMCONTENTLOADED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "domcontentloaded"
+          }
+        },
+        "NETWORKIDLE0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "networkidle0"
+          }
+        },
+        "NETWORKIDLE2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "networkidle2"
+          }
+        },
+        "LOAD_2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "load"
+          }
+        },
+        "DOMCONTENTLOADED_2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "domcontentloaded"
+          }
+        },
+        "NETWORKIDLE0_2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "networkidle0"
+          }
+        },
+        "NETWORKIDLE2_2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "networkidle2"
+          }
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#JsonCreateRequestBodyGotoOptions": {
+      "type": "structure",
+      "members": {
+        "referer": {
+          "target": "smithy.api#String"
+        },
+        "referrerPolicy": {
+          "target": "smithy.api#String"
+        },
+        "timeout": {
+          "target": "smithy.api#Double"
+        },
+        "waitUntil": {
+          "target": "com.cloudflare.browser_rendering#JsonCreateRequestBodyGotoOptionsWaitUntil"
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#JsonCreateRequestBodyRejectRequestPatternList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.browser_rendering#JsonCreateRequestBodyRejectResourceTypesItem": {
+      "type": "enum",
+      "members": {
+        "DOCUMENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "document"
+          }
+        },
+        "STYLESHEET": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "stylesheet"
+          }
+        },
+        "IMAGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "image"
+          }
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#JsonCreateRequestBodyRejectResourceTypesList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.browser_rendering#JsonCreateRequestBodyRejectResourceTypesItem"
+      }
+    },
+    "com.cloudflare.browser_rendering#JsonCreateRequestBodyResponseFormatJsonSchemaMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.browser_rendering#JsonCreateRequestBodyResponseFormat": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "json_schema": {
+          "target": "com.cloudflare.browser_rendering#JsonCreateRequestBodyResponseFormatJsonSchemaMap",
+          "traits": {
+            "smithy.api#documentation": "Schema for the response format. More information here: https://developers.cloudflare.com/workers-ai/json-mode/"
+          }
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#JsonCreateRequestBodySetExtraHTTPHeadersMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.browser_rendering#JsonCreateRequestBodyViewport": {
+      "type": "structure",
+      "members": {
+        "height": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "width": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "deviceScaleFactor": {
+          "target": "smithy.api#Double"
+        },
+        "hasTouch": {
+          "target": "smithy.api#Boolean"
+        },
+        "isLandscape": {
+          "target": "smithy.api#Boolean"
+        },
+        "isMobile": {
+          "target": "smithy.api#Boolean"
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#JsonCreateRequestBodyWaitForSelector": {
+      "type": "structure",
+      "members": {
+        "selector": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "hidden": {
+          "target": "smithy.api#Boolean"
+        },
+        "timeout": {
+          "target": "smithy.api#Double"
+        },
+        "visible": {
+          "target": "smithy.api#Boolean"
+        }
+      }
+    },
     "com.cloudflare.browser_rendering#JsonCreateRequestBody": {
       "type": "structure",
       "members": {
-        "object___html__actionTimeout__addScriptTag__19_more__": {
-          "target": "smithy.api#Document",
+        "html": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "object { html, actionTimeout, addScriptTag, 19 more }"
+            "smithy.api#documentation": "Set the content of the page, eg: `<h1>Hello World!!</h1>`. Either `html` or `url` must be set."
           }
         },
-        "object___url__actionTimeout__addScriptTag__19_more__": {
-          "target": "smithy.api#Document",
+        "actionTimeout": {
+          "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "object { url, actionTimeout, addScriptTag, 19 more }"
+            "smithy.api#documentation": "The maximum duration allowed for the browser action to complete after the page has loaded (such as taking screenshots, extracting content, or generating PDFs). If this time limit is exceeded, the action stops and returns a timeout error."
+          }
+        },
+        "addScriptTag": {
+          "target": "com.cloudflare.browser_rendering#JsonCreateRequestBodyAddScriptTagList",
+          "traits": {
+            "smithy.api#documentation": "Adds a `<script>` tag into the page with the desired URL or content."
+          }
+        },
+        "addStyleTag": {
+          "target": "com.cloudflare.browser_rendering#JsonCreateRequestBodyAddStyleTagList",
+          "traits": {
+            "smithy.api#documentation": "Adds a `<link rel=\"stylesheet\">` tag into the page with the desired URL or a `<style type=\"text/css\">` tag with the content."
+          }
+        },
+        "allowRequestPattern": {
+          "target": "com.cloudflare.browser_rendering#JsonCreateRequestBodyAllowRequestPatternList",
+          "traits": {
+            "smithy.api#documentation": "Only allow requests that match the provided regex patterns, eg. '/^.*.(css)'."
+          }
+        },
+        "allowResourceTypes": {
+          "target": "com.cloudflare.browser_rendering#JsonCreateRequestBodyAllowResourceTypesList",
+          "traits": {
+            "smithy.api#documentation": "Only allow requests that match the provided resource types, eg. 'image' or 'script'."
+          }
+        },
+        "authenticate": {
+          "target": "com.cloudflare.browser_rendering#JsonCreateRequestBodyAuthenticate",
+          "traits": {
+            "smithy.api#documentation": "Provide credentials for HTTP authentication."
+          }
+        },
+        "bestAttempt": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Attempt to proceed when 'awaited' events fail or timeout."
+          }
+        },
+        "cookies": {
+          "target": "com.cloudflare.browser_rendering#JsonCreateRequestBodyCookiesList",
+          "traits": {
+            "smithy.api#documentation": "Check [options](https://pptr.dev/api/puppeteer.page.setcookie)."
+          }
+        },
+        "custom_ai": {
+          "target": "com.cloudflare.browser_rendering#JsonCreateRequestBodyCustomAiList",
+          "traits": {
+            "smithy.api#documentation": "Optional list of custom AI models to use for the request. The models will be tried in the order provided, and in case a model returns an error, the next one will be used as fallback."
+          }
+        },
+        "emulateMediaType": {
+          "target": "smithy.api#String"
+        },
+        "gotoOptions": {
+          "target": "com.cloudflare.browser_rendering#JsonCreateRequestBodyGotoOptions",
+          "traits": {
+            "smithy.api#documentation": "Check [options](https://pptr.dev/api/puppeteer.gotooptions)."
+          }
+        },
+        "prompt": {
+          "target": "smithy.api#String"
+        },
+        "rejectRequestPattern": {
+          "target": "com.cloudflare.browser_rendering#JsonCreateRequestBodyRejectRequestPatternList",
+          "traits": {
+            "smithy.api#documentation": "Block undesired requests that match the provided regex patterns, eg. '/^.*.(css)'."
+          }
+        },
+        "rejectResourceTypes": {
+          "target": "com.cloudflare.browser_rendering#JsonCreateRequestBodyRejectResourceTypesList",
+          "traits": {
+            "smithy.api#documentation": "Block undesired requests that match the provided resource types, eg. 'image' or 'script'."
+          }
+        },
+        "response_format": {
+          "target": "com.cloudflare.browser_rendering#JsonCreateRequestBodyResponseFormat"
+        },
+        "setExtraHTTPHeaders": {
+          "target": "com.cloudflare.browser_rendering#JsonCreateRequestBodySetExtraHTTPHeadersMap"
+        },
+        "setJavaScriptEnabled": {
+          "target": "smithy.api#Boolean"
+        },
+        "userAgent": {
+          "target": "smithy.api#String"
+        },
+        "viewport": {
+          "target": "com.cloudflare.browser_rendering#JsonCreateRequestBodyViewport",
+          "traits": {
+            "smithy.api#documentation": "Check [options](https://pptr.dev/api/puppeteer.page.setviewport)."
+          }
+        },
+        "waitForSelector": {
+          "target": "com.cloudflare.browser_rendering#JsonCreateRequestBodyWaitForSelector",
+          "traits": {
+            "smithy.api#documentation": "Wait for the selector to appear in page. Check [options](https://pptr.dev/api/puppeteer.page.waitforselector)."
+          }
+        },
+        "waitForTimeout": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Waits for a specified timeout before continuing."
+          }
+        },
+        "url": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "URL to navigate to, eg. `https://example.com`."
           }
         }
       }
@@ -1890,21 +3626,505 @@
         "smithy.api#documentation": "Gets json from a webpage from a provided URL or HTML. Pass `prompt` or `schema` in the body. Control page loading with `gotoOptions` and `waitFor*` options."
       }
     },
+    "com.cloudflare.browser_rendering#LinksCreateRequestBodyAddScriptTagItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String"
+        },
+        "content": {
+          "target": "smithy.api#String"
+        },
+        "type": {
+          "target": "smithy.api#String"
+        },
+        "url": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#LinksCreateRequestBodyAddScriptTagList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.browser_rendering#LinksCreateRequestBodyAddScriptTagItem"
+      }
+    },
+    "com.cloudflare.browser_rendering#LinksCreateRequestBodyAddStyleTagItem": {
+      "type": "structure",
+      "members": {
+        "content": {
+          "target": "smithy.api#String"
+        },
+        "url": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#LinksCreateRequestBodyAddStyleTagList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.browser_rendering#LinksCreateRequestBodyAddStyleTagItem"
+      }
+    },
+    "com.cloudflare.browser_rendering#LinksCreateRequestBodyAllowRequestPatternList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.browser_rendering#LinksCreateRequestBodyAllowResourceTypesItem": {
+      "type": "enum",
+      "members": {
+        "DOCUMENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "document"
+          }
+        },
+        "STYLESHEET": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "stylesheet"
+          }
+        },
+        "IMAGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "image"
+          }
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#LinksCreateRequestBodyAllowResourceTypesList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.browser_rendering#LinksCreateRequestBodyAllowResourceTypesItem"
+      }
+    },
+    "com.cloudflare.browser_rendering#LinksCreateRequestBodyAuthenticate": {
+      "type": "structure",
+      "members": {
+        "password": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "username": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#LinksCreateRequestBodyCookiesItemPriority": {
+      "type": "enum",
+      "members": {
+        "LOW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Low"
+          }
+        },
+        "MEDIUM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Medium"
+          }
+        },
+        "HIGH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "High"
+          }
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#LinksCreateRequestBodyCookiesItemSameSite": {
+      "type": "enum",
+      "members": {
+        "STRICT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Strict"
+          }
+        },
+        "LAX": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Lax"
+          }
+        },
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "None"
+          }
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#LinksCreateRequestBodyCookiesItemSourceScheme": {
+      "type": "enum",
+      "members": {
+        "UNSET": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Unset"
+          }
+        },
+        "NONSECURE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NonSecure"
+          }
+        },
+        "SECURE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Secure"
+          }
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#LinksCreateRequestBodyCookiesItem": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Cookie name.",
+            "smithy.api#required": {}
+          }
+        },
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "domain": {
+          "target": "smithy.api#String"
+        },
+        "expires": {
+          "target": "smithy.api#Double"
+        },
+        "httpOnly": {
+          "target": "smithy.api#Boolean"
+        },
+        "partitionKey": {
+          "target": "smithy.api#String"
+        },
+        "path": {
+          "target": "smithy.api#String"
+        },
+        "priority": {
+          "target": "com.cloudflare.browser_rendering#LinksCreateRequestBodyCookiesItemPriority"
+        },
+        "sameParty": {
+          "target": "smithy.api#Boolean"
+        },
+        "sameSite": {
+          "target": "com.cloudflare.browser_rendering#LinksCreateRequestBodyCookiesItemSameSite"
+        },
+        "secure": {
+          "target": "smithy.api#Boolean"
+        },
+        "sourcePort": {
+          "target": "smithy.api#Double"
+        },
+        "sourceScheme": {
+          "target": "com.cloudflare.browser_rendering#LinksCreateRequestBodyCookiesItemSourceScheme"
+        },
+        "url": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#LinksCreateRequestBodyCookiesList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.browser_rendering#LinksCreateRequestBodyCookiesItem"
+      }
+    },
+    "com.cloudflare.browser_rendering#LinksCreateRequestBodyGotoOptionsWaitUntil": {
+      "type": "enum",
+      "members": {
+        "LOAD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "load"
+          }
+        },
+        "DOMCONTENTLOADED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "domcontentloaded"
+          }
+        },
+        "NETWORKIDLE0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "networkidle0"
+          }
+        },
+        "NETWORKIDLE2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "networkidle2"
+          }
+        },
+        "LOAD_2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "load"
+          }
+        },
+        "DOMCONTENTLOADED_2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "domcontentloaded"
+          }
+        },
+        "NETWORKIDLE0_2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "networkidle0"
+          }
+        },
+        "NETWORKIDLE2_2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "networkidle2"
+          }
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#LinksCreateRequestBodyGotoOptions": {
+      "type": "structure",
+      "members": {
+        "referer": {
+          "target": "smithy.api#String"
+        },
+        "referrerPolicy": {
+          "target": "smithy.api#String"
+        },
+        "timeout": {
+          "target": "smithy.api#Double"
+        },
+        "waitUntil": {
+          "target": "com.cloudflare.browser_rendering#LinksCreateRequestBodyGotoOptionsWaitUntil"
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#LinksCreateRequestBodyRejectRequestPatternList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.browser_rendering#LinksCreateRequestBodyRejectResourceTypesItem": {
+      "type": "enum",
+      "members": {
+        "DOCUMENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "document"
+          }
+        },
+        "STYLESHEET": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "stylesheet"
+          }
+        },
+        "IMAGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "image"
+          }
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#LinksCreateRequestBodyRejectResourceTypesList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.browser_rendering#LinksCreateRequestBodyRejectResourceTypesItem"
+      }
+    },
+    "com.cloudflare.browser_rendering#LinksCreateRequestBodySetExtraHTTPHeadersMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.browser_rendering#LinksCreateRequestBodyViewport": {
+      "type": "structure",
+      "members": {
+        "height": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "width": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "deviceScaleFactor": {
+          "target": "smithy.api#Double"
+        },
+        "hasTouch": {
+          "target": "smithy.api#Boolean"
+        },
+        "isLandscape": {
+          "target": "smithy.api#Boolean"
+        },
+        "isMobile": {
+          "target": "smithy.api#Boolean"
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#LinksCreateRequestBodyWaitForSelector": {
+      "type": "structure",
+      "members": {
+        "selector": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "hidden": {
+          "target": "smithy.api#Boolean"
+        },
+        "timeout": {
+          "target": "smithy.api#Double"
+        },
+        "visible": {
+          "target": "smithy.api#Boolean"
+        }
+      }
+    },
     "com.cloudflare.browser_rendering#LinksCreateRequestBody": {
       "type": "structure",
       "members": {
-        "object___html__actionTimeout__addScriptTag__18_more__": {
-          "target": "smithy.api#Document",
+        "html": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "object { html, actionTimeout, addScriptTag, 18 more }"
+            "smithy.api#documentation": "Set the content of the page, eg: `<h1>Hello World!!</h1>`. Either `html` or `url` must be set."
           }
         },
-        "object___url__actionTimeout__addScriptTag__18_more__": {
-          "target": "smithy.api#Document",
+        "actionTimeout": {
+          "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "object { url, actionTimeout, addScriptTag, 18 more }"
+            "smithy.api#documentation": "The maximum duration allowed for the browser action to complete after the page has loaded (such as taking screenshots, extracting content, or generating PDFs). If this time limit is exceeded, the action stops and returns a timeout error."
+          }
+        },
+        "addScriptTag": {
+          "target": "com.cloudflare.browser_rendering#LinksCreateRequestBodyAddScriptTagList",
+          "traits": {
+            "smithy.api#documentation": "Adds a `<script>` tag into the page with the desired URL or content."
+          }
+        },
+        "addStyleTag": {
+          "target": "com.cloudflare.browser_rendering#LinksCreateRequestBodyAddStyleTagList",
+          "traits": {
+            "smithy.api#documentation": "Adds a `<link rel=\"stylesheet\">` tag into the page with the desired URL or a `<style type=\"text/css\">` tag with the content."
+          }
+        },
+        "allowRequestPattern": {
+          "target": "com.cloudflare.browser_rendering#LinksCreateRequestBodyAllowRequestPatternList",
+          "traits": {
+            "smithy.api#documentation": "Only allow requests that match the provided regex patterns, eg. '/^.*.(css)'."
+          }
+        },
+        "allowResourceTypes": {
+          "target": "com.cloudflare.browser_rendering#LinksCreateRequestBodyAllowResourceTypesList",
+          "traits": {
+            "smithy.api#documentation": "Only allow requests that match the provided resource types, eg. 'image' or 'script'."
+          }
+        },
+        "authenticate": {
+          "target": "com.cloudflare.browser_rendering#LinksCreateRequestBodyAuthenticate",
+          "traits": {
+            "smithy.api#documentation": "Provide credentials for HTTP authentication."
+          }
+        },
+        "bestAttempt": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Attempt to proceed when 'awaited' events fail or timeout."
+          }
+        },
+        "cookies": {
+          "target": "com.cloudflare.browser_rendering#LinksCreateRequestBodyCookiesList",
+          "traits": {
+            "smithy.api#documentation": "Check [options](https://pptr.dev/api/puppeteer.page.setcookie)."
+          }
+        },
+        "emulateMediaType": {
+          "target": "smithy.api#String"
+        },
+        "excludeExternalLinks": {
+          "target": "smithy.api#Boolean"
+        },
+        "gotoOptions": {
+          "target": "com.cloudflare.browser_rendering#LinksCreateRequestBodyGotoOptions",
+          "traits": {
+            "smithy.api#documentation": "Check [options](https://pptr.dev/api/puppeteer.gotooptions)."
+          }
+        },
+        "rejectRequestPattern": {
+          "target": "com.cloudflare.browser_rendering#LinksCreateRequestBodyRejectRequestPatternList",
+          "traits": {
+            "smithy.api#documentation": "Block undesired requests that match the provided regex patterns, eg. '/^.*.(css)'."
+          }
+        },
+        "rejectResourceTypes": {
+          "target": "com.cloudflare.browser_rendering#LinksCreateRequestBodyRejectResourceTypesList",
+          "traits": {
+            "smithy.api#documentation": "Block undesired requests that match the provided resource types, eg. 'image' or 'script'."
+          }
+        },
+        "setExtraHTTPHeaders": {
+          "target": "com.cloudflare.browser_rendering#LinksCreateRequestBodySetExtraHTTPHeadersMap"
+        },
+        "setJavaScriptEnabled": {
+          "target": "smithy.api#Boolean"
+        },
+        "userAgent": {
+          "target": "smithy.api#String"
+        },
+        "viewport": {
+          "target": "com.cloudflare.browser_rendering#LinksCreateRequestBodyViewport",
+          "traits": {
+            "smithy.api#documentation": "Check [options](https://pptr.dev/api/puppeteer.page.setviewport)."
+          }
+        },
+        "visibleLinksOnly": {
+          "target": "smithy.api#Boolean"
+        },
+        "waitForSelector": {
+          "target": "com.cloudflare.browser_rendering#LinksCreateRequestBodyWaitForSelector",
+          "traits": {
+            "smithy.api#documentation": "Wait for the selector to appear in page. Check [options](https://pptr.dev/api/puppeteer.page.waitforselector)."
+          }
+        },
+        "waitForTimeout": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Waits for a specified timeout before continuing."
+          }
+        },
+        "url": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "URL to navigate to, eg. `https://example.com`."
           }
         }
       }
@@ -1976,21 +4196,499 @@
         "smithy.api#documentation": "Get links from a web page."
       }
     },
+    "com.cloudflare.browser_rendering#MarkdownCreateRequestBodyAddScriptTagItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String"
+        },
+        "content": {
+          "target": "smithy.api#String"
+        },
+        "type": {
+          "target": "smithy.api#String"
+        },
+        "url": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#MarkdownCreateRequestBodyAddScriptTagList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.browser_rendering#MarkdownCreateRequestBodyAddScriptTagItem"
+      }
+    },
+    "com.cloudflare.browser_rendering#MarkdownCreateRequestBodyAddStyleTagItem": {
+      "type": "structure",
+      "members": {
+        "content": {
+          "target": "smithy.api#String"
+        },
+        "url": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#MarkdownCreateRequestBodyAddStyleTagList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.browser_rendering#MarkdownCreateRequestBodyAddStyleTagItem"
+      }
+    },
+    "com.cloudflare.browser_rendering#MarkdownCreateRequestBodyAllowRequestPatternList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.browser_rendering#MarkdownCreateRequestBodyAllowResourceTypesItem": {
+      "type": "enum",
+      "members": {
+        "DOCUMENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "document"
+          }
+        },
+        "STYLESHEET": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "stylesheet"
+          }
+        },
+        "IMAGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "image"
+          }
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#MarkdownCreateRequestBodyAllowResourceTypesList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.browser_rendering#MarkdownCreateRequestBodyAllowResourceTypesItem"
+      }
+    },
+    "com.cloudflare.browser_rendering#MarkdownCreateRequestBodyAuthenticate": {
+      "type": "structure",
+      "members": {
+        "password": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "username": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#MarkdownCreateRequestBodyCookiesItemPriority": {
+      "type": "enum",
+      "members": {
+        "LOW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Low"
+          }
+        },
+        "MEDIUM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Medium"
+          }
+        },
+        "HIGH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "High"
+          }
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#MarkdownCreateRequestBodyCookiesItemSameSite": {
+      "type": "enum",
+      "members": {
+        "STRICT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Strict"
+          }
+        },
+        "LAX": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Lax"
+          }
+        },
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "None"
+          }
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#MarkdownCreateRequestBodyCookiesItemSourceScheme": {
+      "type": "enum",
+      "members": {
+        "UNSET": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Unset"
+          }
+        },
+        "NONSECURE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NonSecure"
+          }
+        },
+        "SECURE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Secure"
+          }
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#MarkdownCreateRequestBodyCookiesItem": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Cookie name.",
+            "smithy.api#required": {}
+          }
+        },
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "domain": {
+          "target": "smithy.api#String"
+        },
+        "expires": {
+          "target": "smithy.api#Double"
+        },
+        "httpOnly": {
+          "target": "smithy.api#Boolean"
+        },
+        "partitionKey": {
+          "target": "smithy.api#String"
+        },
+        "path": {
+          "target": "smithy.api#String"
+        },
+        "priority": {
+          "target": "com.cloudflare.browser_rendering#MarkdownCreateRequestBodyCookiesItemPriority"
+        },
+        "sameParty": {
+          "target": "smithy.api#Boolean"
+        },
+        "sameSite": {
+          "target": "com.cloudflare.browser_rendering#MarkdownCreateRequestBodyCookiesItemSameSite"
+        },
+        "secure": {
+          "target": "smithy.api#Boolean"
+        },
+        "sourcePort": {
+          "target": "smithy.api#Double"
+        },
+        "sourceScheme": {
+          "target": "com.cloudflare.browser_rendering#MarkdownCreateRequestBodyCookiesItemSourceScheme"
+        },
+        "url": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#MarkdownCreateRequestBodyCookiesList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.browser_rendering#MarkdownCreateRequestBodyCookiesItem"
+      }
+    },
+    "com.cloudflare.browser_rendering#MarkdownCreateRequestBodyGotoOptionsWaitUntil": {
+      "type": "enum",
+      "members": {
+        "LOAD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "load"
+          }
+        },
+        "DOMCONTENTLOADED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "domcontentloaded"
+          }
+        },
+        "NETWORKIDLE0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "networkidle0"
+          }
+        },
+        "NETWORKIDLE2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "networkidle2"
+          }
+        },
+        "LOAD_2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "load"
+          }
+        },
+        "DOMCONTENTLOADED_2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "domcontentloaded"
+          }
+        },
+        "NETWORKIDLE0_2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "networkidle0"
+          }
+        },
+        "NETWORKIDLE2_2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "networkidle2"
+          }
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#MarkdownCreateRequestBodyGotoOptions": {
+      "type": "structure",
+      "members": {
+        "referer": {
+          "target": "smithy.api#String"
+        },
+        "referrerPolicy": {
+          "target": "smithy.api#String"
+        },
+        "timeout": {
+          "target": "smithy.api#Double"
+        },
+        "waitUntil": {
+          "target": "com.cloudflare.browser_rendering#MarkdownCreateRequestBodyGotoOptionsWaitUntil"
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#MarkdownCreateRequestBodyRejectRequestPatternList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.browser_rendering#MarkdownCreateRequestBodyRejectResourceTypesItem": {
+      "type": "enum",
+      "members": {
+        "DOCUMENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "document"
+          }
+        },
+        "STYLESHEET": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "stylesheet"
+          }
+        },
+        "IMAGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "image"
+          }
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#MarkdownCreateRequestBodyRejectResourceTypesList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.browser_rendering#MarkdownCreateRequestBodyRejectResourceTypesItem"
+      }
+    },
+    "com.cloudflare.browser_rendering#MarkdownCreateRequestBodySetExtraHTTPHeadersMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.browser_rendering#MarkdownCreateRequestBodyViewport": {
+      "type": "structure",
+      "members": {
+        "height": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "width": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "deviceScaleFactor": {
+          "target": "smithy.api#Double"
+        },
+        "hasTouch": {
+          "target": "smithy.api#Boolean"
+        },
+        "isLandscape": {
+          "target": "smithy.api#Boolean"
+        },
+        "isMobile": {
+          "target": "smithy.api#Boolean"
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#MarkdownCreateRequestBodyWaitForSelector": {
+      "type": "structure",
+      "members": {
+        "selector": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "hidden": {
+          "target": "smithy.api#Boolean"
+        },
+        "timeout": {
+          "target": "smithy.api#Double"
+        },
+        "visible": {
+          "target": "smithy.api#Boolean"
+        }
+      }
+    },
     "com.cloudflare.browser_rendering#MarkdownCreateRequestBody": {
       "type": "structure",
       "members": {
-        "object___url__actionTimeout__addScriptTag__16_more__": {
-          "target": "smithy.api#Document",
+        "url": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "object { url, actionTimeout, addScriptTag, 16 more }"
+            "smithy.api#documentation": "URL to navigate to, eg. `https://example.com`."
           }
         },
-        "object___html__actionTimeout__addScriptTag__16_more__": {
-          "target": "smithy.api#Document",
+        "actionTimeout": {
+          "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "object { html, actionTimeout, addScriptTag, 16 more }"
+            "smithy.api#documentation": "The maximum duration allowed for the browser action to complete after the page has loaded (such as taking screenshots, extracting content, or generating PDFs). If this time limit is exceeded, the action stops and returns a timeout error."
+          }
+        },
+        "addScriptTag": {
+          "target": "com.cloudflare.browser_rendering#MarkdownCreateRequestBodyAddScriptTagList",
+          "traits": {
+            "smithy.api#documentation": "Adds a `<script>` tag into the page with the desired URL or content."
+          }
+        },
+        "addStyleTag": {
+          "target": "com.cloudflare.browser_rendering#MarkdownCreateRequestBodyAddStyleTagList",
+          "traits": {
+            "smithy.api#documentation": "Adds a `<link rel=\"stylesheet\">` tag into the page with the desired URL or a `<style type=\"text/css\">` tag with the content."
+          }
+        },
+        "allowRequestPattern": {
+          "target": "com.cloudflare.browser_rendering#MarkdownCreateRequestBodyAllowRequestPatternList",
+          "traits": {
+            "smithy.api#documentation": "Only allow requests that match the provided regex patterns, eg. '/^.*.(css)'."
+          }
+        },
+        "allowResourceTypes": {
+          "target": "com.cloudflare.browser_rendering#MarkdownCreateRequestBodyAllowResourceTypesList",
+          "traits": {
+            "smithy.api#documentation": "Only allow requests that match the provided resource types, eg. 'image' or 'script'."
+          }
+        },
+        "authenticate": {
+          "target": "com.cloudflare.browser_rendering#MarkdownCreateRequestBodyAuthenticate",
+          "traits": {
+            "smithy.api#documentation": "Provide credentials for HTTP authentication."
+          }
+        },
+        "bestAttempt": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Attempt to proceed when 'awaited' events fail or timeout."
+          }
+        },
+        "cookies": {
+          "target": "com.cloudflare.browser_rendering#MarkdownCreateRequestBodyCookiesList",
+          "traits": {
+            "smithy.api#documentation": "Check [options](https://pptr.dev/api/puppeteer.page.setcookie)."
+          }
+        },
+        "emulateMediaType": {
+          "target": "smithy.api#String"
+        },
+        "gotoOptions": {
+          "target": "com.cloudflare.browser_rendering#MarkdownCreateRequestBodyGotoOptions",
+          "traits": {
+            "smithy.api#documentation": "Check [options](https://pptr.dev/api/puppeteer.gotooptions)."
+          }
+        },
+        "rejectRequestPattern": {
+          "target": "com.cloudflare.browser_rendering#MarkdownCreateRequestBodyRejectRequestPatternList",
+          "traits": {
+            "smithy.api#documentation": "Block undesired requests that match the provided regex patterns, eg. '/^.*.(css)'."
+          }
+        },
+        "rejectResourceTypes": {
+          "target": "com.cloudflare.browser_rendering#MarkdownCreateRequestBodyRejectResourceTypesList",
+          "traits": {
+            "smithy.api#documentation": "Block undesired requests that match the provided resource types, eg. 'image' or 'script'."
+          }
+        },
+        "setExtraHTTPHeaders": {
+          "target": "com.cloudflare.browser_rendering#MarkdownCreateRequestBodySetExtraHTTPHeadersMap"
+        },
+        "setJavaScriptEnabled": {
+          "target": "smithy.api#Boolean"
+        },
+        "userAgent": {
+          "target": "smithy.api#String"
+        },
+        "viewport": {
+          "target": "com.cloudflare.browser_rendering#MarkdownCreateRequestBodyViewport",
+          "traits": {
+            "smithy.api#documentation": "Check [options](https://pptr.dev/api/puppeteer.page.setviewport)."
+          }
+        },
+        "waitForSelector": {
+          "target": "com.cloudflare.browser_rendering#MarkdownCreateRequestBodyWaitForSelector",
+          "traits": {
+            "smithy.api#documentation": "Wait for the selector to appear in page. Check [options](https://pptr.dev/api/puppeteer.page.waitforselector)."
+          }
+        },
+        "waitForTimeout": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Waits for a specified timeout before continuing."
+          }
+        },
+        "html": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Set the content of the page, eg: `<h1>Hello World!!</h1>`. Either `html` or `url` must be set."
           }
         }
       }
@@ -2056,21 +4754,748 @@
         "smithy.api#documentation": "Gets markdown of a webpage from provided URL or HTML. Control page loading with `gotoOptions` and `waitFor*` options."
       }
     },
+    "com.cloudflare.browser_rendering#PdfCreateRequestBodyAddScriptTagItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String"
+        },
+        "content": {
+          "target": "smithy.api#String"
+        },
+        "type": {
+          "target": "smithy.api#String"
+        },
+        "url": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#PdfCreateRequestBodyAddScriptTagList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.browser_rendering#PdfCreateRequestBodyAddScriptTagItem"
+      }
+    },
+    "com.cloudflare.browser_rendering#PdfCreateRequestBodyAddStyleTagItem": {
+      "type": "structure",
+      "members": {
+        "content": {
+          "target": "smithy.api#String"
+        },
+        "url": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#PdfCreateRequestBodyAddStyleTagList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.browser_rendering#PdfCreateRequestBodyAddStyleTagItem"
+      }
+    },
+    "com.cloudflare.browser_rendering#PdfCreateRequestBodyAllowRequestPatternList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.browser_rendering#PdfCreateRequestBodyAllowResourceTypesItem": {
+      "type": "enum",
+      "members": {
+        "DOCUMENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "document"
+          }
+        },
+        "STYLESHEET": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "stylesheet"
+          }
+        },
+        "IMAGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "image"
+          }
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#PdfCreateRequestBodyAllowResourceTypesList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.browser_rendering#PdfCreateRequestBodyAllowResourceTypesItem"
+      }
+    },
+    "com.cloudflare.browser_rendering#PdfCreateRequestBodyAuthenticate": {
+      "type": "structure",
+      "members": {
+        "password": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "username": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#PdfCreateRequestBodyCookiesItemPriority": {
+      "type": "enum",
+      "members": {
+        "LOW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Low"
+          }
+        },
+        "MEDIUM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Medium"
+          }
+        },
+        "HIGH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "High"
+          }
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#PdfCreateRequestBodyCookiesItemSameSite": {
+      "type": "enum",
+      "members": {
+        "STRICT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Strict"
+          }
+        },
+        "LAX": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Lax"
+          }
+        },
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "None"
+          }
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#PdfCreateRequestBodyCookiesItemSourceScheme": {
+      "type": "enum",
+      "members": {
+        "UNSET": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Unset"
+          }
+        },
+        "NONSECURE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NonSecure"
+          }
+        },
+        "SECURE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Secure"
+          }
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#PdfCreateRequestBodyCookiesItem": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Cookie name.",
+            "smithy.api#required": {}
+          }
+        },
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "domain": {
+          "target": "smithy.api#String"
+        },
+        "expires": {
+          "target": "smithy.api#Double"
+        },
+        "httpOnly": {
+          "target": "smithy.api#Boolean"
+        },
+        "partitionKey": {
+          "target": "smithy.api#String"
+        },
+        "path": {
+          "target": "smithy.api#String"
+        },
+        "priority": {
+          "target": "com.cloudflare.browser_rendering#PdfCreateRequestBodyCookiesItemPriority"
+        },
+        "sameParty": {
+          "target": "smithy.api#Boolean"
+        },
+        "sameSite": {
+          "target": "com.cloudflare.browser_rendering#PdfCreateRequestBodyCookiesItemSameSite"
+        },
+        "secure": {
+          "target": "smithy.api#Boolean"
+        },
+        "sourcePort": {
+          "target": "smithy.api#Double"
+        },
+        "sourceScheme": {
+          "target": "com.cloudflare.browser_rendering#PdfCreateRequestBodyCookiesItemSourceScheme"
+        },
+        "url": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#PdfCreateRequestBodyCookiesList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.browser_rendering#PdfCreateRequestBodyCookiesItem"
+      }
+    },
+    "com.cloudflare.browser_rendering#PdfCreateRequestBodyGotoOptionsWaitUntil": {
+      "type": "enum",
+      "members": {
+        "LOAD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "load"
+          }
+        },
+        "DOMCONTENTLOADED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "domcontentloaded"
+          }
+        },
+        "NETWORKIDLE0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "networkidle0"
+          }
+        },
+        "NETWORKIDLE2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "networkidle2"
+          }
+        },
+        "LOAD_2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "load"
+          }
+        },
+        "DOMCONTENTLOADED_2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "domcontentloaded"
+          }
+        },
+        "NETWORKIDLE0_2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "networkidle0"
+          }
+        },
+        "NETWORKIDLE2_2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "networkidle2"
+          }
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#PdfCreateRequestBodyGotoOptions": {
+      "type": "structure",
+      "members": {
+        "referer": {
+          "target": "smithy.api#String"
+        },
+        "referrerPolicy": {
+          "target": "smithy.api#String"
+        },
+        "timeout": {
+          "target": "smithy.api#Double"
+        },
+        "waitUntil": {
+          "target": "com.cloudflare.browser_rendering#PdfCreateRequestBodyGotoOptionsWaitUntil"
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#PdfCreateRequestBodyPdfOptionsFormat": {
+      "type": "enum",
+      "members": {
+        "LETTER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "letter"
+          }
+        },
+        "LEGAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "legal"
+          }
+        },
+        "TABLOID": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "tabloid"
+          }
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#PdfCreateRequestBodyPdfOptionsHeight": {
+      "type": "structure",
+      "members": {
+        "string": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "number": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#PdfCreateRequestBodyPdfOptionsMarginBottom": {
+      "type": "structure",
+      "members": {
+        "string": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "number": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#PdfCreateRequestBodyPdfOptionsMarginLeft": {
+      "type": "structure",
+      "members": {
+        "string": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "number": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#PdfCreateRequestBodyPdfOptionsMarginRight": {
+      "type": "structure",
+      "members": {
+        "string": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "number": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#PdfCreateRequestBodyPdfOptionsMarginTop": {
+      "type": "structure",
+      "members": {
+        "string": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "number": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#PdfCreateRequestBodyPdfOptionsMargin": {
+      "type": "structure",
+      "members": {
+        "bottom": {
+          "target": "com.cloudflare.browser_rendering#PdfCreateRequestBodyPdfOptionsMarginBottom"
+        },
+        "left": {
+          "target": "com.cloudflare.browser_rendering#PdfCreateRequestBodyPdfOptionsMarginLeft"
+        },
+        "right": {
+          "target": "com.cloudflare.browser_rendering#PdfCreateRequestBodyPdfOptionsMarginRight"
+        },
+        "top": {
+          "target": "com.cloudflare.browser_rendering#PdfCreateRequestBodyPdfOptionsMarginTop"
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#PdfCreateRequestBodyPdfOptionsWidth": {
+      "type": "structure",
+      "members": {
+        "string": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "number": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#PdfCreateRequestBodyPdfOptions": {
+      "type": "structure",
+      "members": {
+        "displayHeaderFooter": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether to show the header and footer."
+          }
+        },
+        "footerTemplate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "HTML template for the print footer."
+          }
+        },
+        "format": {
+          "target": "com.cloudflare.browser_rendering#PdfCreateRequestBodyPdfOptionsFormat",
+          "traits": {
+            "smithy.api#documentation": "Paper format. Takes priority over width and height if set."
+          }
+        },
+        "headerTemplate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "HTML template for the print header."
+          }
+        },
+        "height": {
+          "target": "com.cloudflare.browser_rendering#PdfCreateRequestBodyPdfOptionsHeight",
+          "traits": {
+            "smithy.api#documentation": "Sets the height of paper. Can be a number or string with unit."
+          }
+        },
+        "landscape": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether to print in landscape orientation."
+          }
+        },
+        "margin": {
+          "target": "com.cloudflare.browser_rendering#PdfCreateRequestBodyPdfOptionsMargin",
+          "traits": {
+            "smithy.api#documentation": "Set the PDF margins. Useful when setting header and footer."
+          }
+        },
+        "omitBackground": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Hides default white background and allows generating pdfs with transparency."
+          }
+        },
+        "outline": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Generate document outline."
+          }
+        },
+        "pageRanges": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Paper ranges to print, e.g. '1-5, 8, 11-13'."
+          }
+        },
+        "preferCSSPageSize": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Give CSS @page size priority over other size declarations."
+          }
+        },
+        "printBackground": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Set to true to print background graphics."
+          }
+        },
+        "scale": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Scales the rendering of the web page. Amount must be between 0.1 and 2."
+          }
+        },
+        "tagged": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Generate tagged (accessible) PDF."
+          }
+        },
+        "timeout": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Timeout in milliseconds."
+          }
+        },
+        "width": {
+          "target": "com.cloudflare.browser_rendering#PdfCreateRequestBodyPdfOptionsWidth",
+          "traits": {
+            "smithy.api#documentation": "Sets the width of paper. Can be a number or string with unit."
+          }
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#PdfCreateRequestBodyRejectRequestPatternList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.browser_rendering#PdfCreateRequestBodyRejectResourceTypesItem": {
+      "type": "enum",
+      "members": {
+        "DOCUMENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "document"
+          }
+        },
+        "STYLESHEET": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "stylesheet"
+          }
+        },
+        "IMAGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "image"
+          }
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#PdfCreateRequestBodyRejectResourceTypesList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.browser_rendering#PdfCreateRequestBodyRejectResourceTypesItem"
+      }
+    },
+    "com.cloudflare.browser_rendering#PdfCreateRequestBodySetExtraHTTPHeadersMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.browser_rendering#PdfCreateRequestBodyViewport": {
+      "type": "structure",
+      "members": {
+        "height": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "width": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "deviceScaleFactor": {
+          "target": "smithy.api#Double"
+        },
+        "hasTouch": {
+          "target": "smithy.api#Boolean"
+        },
+        "isLandscape": {
+          "target": "smithy.api#Boolean"
+        },
+        "isMobile": {
+          "target": "smithy.api#Boolean"
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#PdfCreateRequestBodyWaitForSelector": {
+      "type": "structure",
+      "members": {
+        "selector": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "hidden": {
+          "target": "smithy.api#Boolean"
+        },
+        "timeout": {
+          "target": "smithy.api#Double"
+        },
+        "visible": {
+          "target": "smithy.api#Boolean"
+        }
+      }
+    },
     "com.cloudflare.browser_rendering#PdfCreateRequestBody": {
       "type": "structure",
       "members": {
-        "object___html__actionTimeout__addScriptTag__17_more__": {
-          "target": "smithy.api#Document",
+        "html": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "object { html, actionTimeout, addScriptTag, 17 more }"
+            "smithy.api#documentation": "Set the content of the page, eg: `<h1>Hello World!!</h1>`. Either `html` or `url` must be set."
           }
         },
-        "object___url__actionTimeout__addScriptTag__17_more__": {
-          "target": "smithy.api#Document",
+        "actionTimeout": {
+          "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "object { url, actionTimeout, addScriptTag, 17 more }"
+            "smithy.api#documentation": "The maximum duration allowed for the browser action to complete after the page has loaded (such as taking screenshots, extracting content, or generating PDFs). If this time limit is exceeded, the action stops and returns a timeout error."
+          }
+        },
+        "addScriptTag": {
+          "target": "com.cloudflare.browser_rendering#PdfCreateRequestBodyAddScriptTagList",
+          "traits": {
+            "smithy.api#documentation": "Adds a `<script>` tag into the page with the desired URL or content."
+          }
+        },
+        "addStyleTag": {
+          "target": "com.cloudflare.browser_rendering#PdfCreateRequestBodyAddStyleTagList",
+          "traits": {
+            "smithy.api#documentation": "Adds a `<link rel=\"stylesheet\">` tag into the page with the desired URL or a `<style type=\"text/css\">` tag with the content."
+          }
+        },
+        "allowRequestPattern": {
+          "target": "com.cloudflare.browser_rendering#PdfCreateRequestBodyAllowRequestPatternList",
+          "traits": {
+            "smithy.api#documentation": "Only allow requests that match the provided regex patterns, eg. '/^.*.(css)'."
+          }
+        },
+        "allowResourceTypes": {
+          "target": "com.cloudflare.browser_rendering#PdfCreateRequestBodyAllowResourceTypesList",
+          "traits": {
+            "smithy.api#documentation": "Only allow requests that match the provided resource types, eg. 'image' or 'script'."
+          }
+        },
+        "authenticate": {
+          "target": "com.cloudflare.browser_rendering#PdfCreateRequestBodyAuthenticate",
+          "traits": {
+            "smithy.api#documentation": "Provide credentials for HTTP authentication."
+          }
+        },
+        "bestAttempt": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Attempt to proceed when 'awaited' events fail or timeout."
+          }
+        },
+        "cookies": {
+          "target": "com.cloudflare.browser_rendering#PdfCreateRequestBodyCookiesList",
+          "traits": {
+            "smithy.api#documentation": "Check [options](https://pptr.dev/api/puppeteer.page.setcookie)."
+          }
+        },
+        "emulateMediaType": {
+          "target": "smithy.api#String"
+        },
+        "gotoOptions": {
+          "target": "com.cloudflare.browser_rendering#PdfCreateRequestBodyGotoOptions",
+          "traits": {
+            "smithy.api#documentation": "Check [options](https://pptr.dev/api/puppeteer.gotooptions)."
+          }
+        },
+        "pdfOptions": {
+          "target": "com.cloudflare.browser_rendering#PdfCreateRequestBodyPdfOptions",
+          "traits": {
+            "smithy.api#documentation": "Check [options](https://pptr.dev/api/puppeteer.pdfoptions)."
+          }
+        },
+        "rejectRequestPattern": {
+          "target": "com.cloudflare.browser_rendering#PdfCreateRequestBodyRejectRequestPatternList",
+          "traits": {
+            "smithy.api#documentation": "Block undesired requests that match the provided regex patterns, eg. '/^.*.(css)'."
+          }
+        },
+        "rejectResourceTypes": {
+          "target": "com.cloudflare.browser_rendering#PdfCreateRequestBodyRejectResourceTypesList",
+          "traits": {
+            "smithy.api#documentation": "Block undesired requests that match the provided resource types, eg. 'image' or 'script'."
+          }
+        },
+        "setExtraHTTPHeaders": {
+          "target": "com.cloudflare.browser_rendering#PdfCreateRequestBodySetExtraHTTPHeadersMap"
+        },
+        "setJavaScriptEnabled": {
+          "target": "smithy.api#Boolean"
+        },
+        "userAgent": {
+          "target": "smithy.api#String"
+        },
+        "viewport": {
+          "target": "com.cloudflare.browser_rendering#PdfCreateRequestBodyViewport",
+          "traits": {
+            "smithy.api#documentation": "Check [options](https://pptr.dev/api/puppeteer.page.setviewport)."
+          }
+        },
+        "waitForSelector": {
+          "target": "com.cloudflare.browser_rendering#PdfCreateRequestBodyWaitForSelector",
+          "traits": {
+            "smithy.api#documentation": "Wait for the selector to appear in page. Check [options](https://pptr.dev/api/puppeteer.page.waitforselector)."
+          }
+        },
+        "waitForTimeout": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Waits for a specified timeout before continuing."
+          }
+        },
+        "url": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "URL to navigate to, eg. `https://example.com`."
           }
         }
       }
@@ -2121,21 +5546,519 @@
         "smithy.api#documentation": "Fetches rendered PDF from provided URL or HTML. Check available options like `gotoOptions` and `waitFor*` to control page load behaviour."
       }
     },
+    "com.cloudflare.browser_rendering#ScrapeCreateRequestBodyElementsItem": {
+      "type": "structure",
+      "members": {
+        "selector": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#ScrapeCreateRequestBodyElementsList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.browser_rendering#ScrapeCreateRequestBodyElementsItem"
+      }
+    },
+    "com.cloudflare.browser_rendering#ScrapeCreateRequestBodyAddScriptTagItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String"
+        },
+        "content": {
+          "target": "smithy.api#String"
+        },
+        "type": {
+          "target": "smithy.api#String"
+        },
+        "url": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#ScrapeCreateRequestBodyAddScriptTagList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.browser_rendering#ScrapeCreateRequestBodyAddScriptTagItem"
+      }
+    },
+    "com.cloudflare.browser_rendering#ScrapeCreateRequestBodyAddStyleTagItem": {
+      "type": "structure",
+      "members": {
+        "content": {
+          "target": "smithy.api#String"
+        },
+        "url": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#ScrapeCreateRequestBodyAddStyleTagList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.browser_rendering#ScrapeCreateRequestBodyAddStyleTagItem"
+      }
+    },
+    "com.cloudflare.browser_rendering#ScrapeCreateRequestBodyAllowRequestPatternList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.browser_rendering#ScrapeCreateRequestBodyAllowResourceTypesItem": {
+      "type": "enum",
+      "members": {
+        "DOCUMENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "document"
+          }
+        },
+        "STYLESHEET": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "stylesheet"
+          }
+        },
+        "IMAGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "image"
+          }
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#ScrapeCreateRequestBodyAllowResourceTypesList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.browser_rendering#ScrapeCreateRequestBodyAllowResourceTypesItem"
+      }
+    },
+    "com.cloudflare.browser_rendering#ScrapeCreateRequestBodyAuthenticate": {
+      "type": "structure",
+      "members": {
+        "password": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "username": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#ScrapeCreateRequestBodyCookiesItemPriority": {
+      "type": "enum",
+      "members": {
+        "LOW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Low"
+          }
+        },
+        "MEDIUM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Medium"
+          }
+        },
+        "HIGH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "High"
+          }
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#ScrapeCreateRequestBodyCookiesItemSameSite": {
+      "type": "enum",
+      "members": {
+        "STRICT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Strict"
+          }
+        },
+        "LAX": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Lax"
+          }
+        },
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "None"
+          }
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#ScrapeCreateRequestBodyCookiesItemSourceScheme": {
+      "type": "enum",
+      "members": {
+        "UNSET": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Unset"
+          }
+        },
+        "NONSECURE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NonSecure"
+          }
+        },
+        "SECURE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Secure"
+          }
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#ScrapeCreateRequestBodyCookiesItem": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Cookie name.",
+            "smithy.api#required": {}
+          }
+        },
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "domain": {
+          "target": "smithy.api#String"
+        },
+        "expires": {
+          "target": "smithy.api#Double"
+        },
+        "httpOnly": {
+          "target": "smithy.api#Boolean"
+        },
+        "partitionKey": {
+          "target": "smithy.api#String"
+        },
+        "path": {
+          "target": "smithy.api#String"
+        },
+        "priority": {
+          "target": "com.cloudflare.browser_rendering#ScrapeCreateRequestBodyCookiesItemPriority"
+        },
+        "sameParty": {
+          "target": "smithy.api#Boolean"
+        },
+        "sameSite": {
+          "target": "com.cloudflare.browser_rendering#ScrapeCreateRequestBodyCookiesItemSameSite"
+        },
+        "secure": {
+          "target": "smithy.api#Boolean"
+        },
+        "sourcePort": {
+          "target": "smithy.api#Double"
+        },
+        "sourceScheme": {
+          "target": "com.cloudflare.browser_rendering#ScrapeCreateRequestBodyCookiesItemSourceScheme"
+        },
+        "url": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#ScrapeCreateRequestBodyCookiesList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.browser_rendering#ScrapeCreateRequestBodyCookiesItem"
+      }
+    },
+    "com.cloudflare.browser_rendering#ScrapeCreateRequestBodyGotoOptionsWaitUntil": {
+      "type": "enum",
+      "members": {
+        "LOAD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "load"
+          }
+        },
+        "DOMCONTENTLOADED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "domcontentloaded"
+          }
+        },
+        "NETWORKIDLE0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "networkidle0"
+          }
+        },
+        "NETWORKIDLE2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "networkidle2"
+          }
+        },
+        "LOAD_2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "load"
+          }
+        },
+        "DOMCONTENTLOADED_2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "domcontentloaded"
+          }
+        },
+        "NETWORKIDLE0_2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "networkidle0"
+          }
+        },
+        "NETWORKIDLE2_2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "networkidle2"
+          }
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#ScrapeCreateRequestBodyGotoOptions": {
+      "type": "structure",
+      "members": {
+        "referer": {
+          "target": "smithy.api#String"
+        },
+        "referrerPolicy": {
+          "target": "smithy.api#String"
+        },
+        "timeout": {
+          "target": "smithy.api#Double"
+        },
+        "waitUntil": {
+          "target": "com.cloudflare.browser_rendering#ScrapeCreateRequestBodyGotoOptionsWaitUntil"
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#ScrapeCreateRequestBodyRejectRequestPatternList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.browser_rendering#ScrapeCreateRequestBodyRejectResourceTypesItem": {
+      "type": "enum",
+      "members": {
+        "DOCUMENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "document"
+          }
+        },
+        "STYLESHEET": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "stylesheet"
+          }
+        },
+        "IMAGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "image"
+          }
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#ScrapeCreateRequestBodyRejectResourceTypesList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.browser_rendering#ScrapeCreateRequestBodyRejectResourceTypesItem"
+      }
+    },
+    "com.cloudflare.browser_rendering#ScrapeCreateRequestBodySetExtraHTTPHeadersMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.browser_rendering#ScrapeCreateRequestBodyViewport": {
+      "type": "structure",
+      "members": {
+        "height": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "width": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "deviceScaleFactor": {
+          "target": "smithy.api#Double"
+        },
+        "hasTouch": {
+          "target": "smithy.api#Boolean"
+        },
+        "isLandscape": {
+          "target": "smithy.api#Boolean"
+        },
+        "isMobile": {
+          "target": "smithy.api#Boolean"
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#ScrapeCreateRequestBodyWaitForSelector": {
+      "type": "structure",
+      "members": {
+        "selector": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "hidden": {
+          "target": "smithy.api#Boolean"
+        },
+        "timeout": {
+          "target": "smithy.api#Double"
+        },
+        "visible": {
+          "target": "smithy.api#Boolean"
+        }
+      }
+    },
     "com.cloudflare.browser_rendering#ScrapeCreateRequestBody": {
       "type": "structure",
       "members": {
-        "object___elements__html__actionTimeout__17_more__": {
-          "target": "smithy.api#Document",
+        "elements": {
+          "target": "com.cloudflare.browser_rendering#ScrapeCreateRequestBodyElementsList"
+        },
+        "html": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "object { elements, html, actionTimeout, 17 more }"
+            "smithy.api#documentation": "Set the content of the page, eg: `<h1>Hello World!!</h1>`. Either `html` or `url` must be set."
           }
         },
-        "object___elements__url__actionTimeout__17_more__": {
-          "target": "smithy.api#Document",
+        "actionTimeout": {
+          "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "object { elements, url, actionTimeout, 17 more }"
+            "smithy.api#documentation": "The maximum duration allowed for the browser action to complete after the page has loaded (such as taking screenshots, extracting content, or generating PDFs). If this time limit is exceeded, the action stops and returns a timeout error."
+          }
+        },
+        "addScriptTag": {
+          "target": "com.cloudflare.browser_rendering#ScrapeCreateRequestBodyAddScriptTagList",
+          "traits": {
+            "smithy.api#documentation": "Adds a `<script>` tag into the page with the desired URL or content."
+          }
+        },
+        "addStyleTag": {
+          "target": "com.cloudflare.browser_rendering#ScrapeCreateRequestBodyAddStyleTagList",
+          "traits": {
+            "smithy.api#documentation": "Adds a `<link rel=\"stylesheet\">` tag into the page with the desired URL or a `<style type=\"text/css\">` tag with the content."
+          }
+        },
+        "allowRequestPattern": {
+          "target": "com.cloudflare.browser_rendering#ScrapeCreateRequestBodyAllowRequestPatternList",
+          "traits": {
+            "smithy.api#documentation": "Only allow requests that match the provided regex patterns, eg. '/^.*.(css)'."
+          }
+        },
+        "allowResourceTypes": {
+          "target": "com.cloudflare.browser_rendering#ScrapeCreateRequestBodyAllowResourceTypesList",
+          "traits": {
+            "smithy.api#documentation": "Only allow requests that match the provided resource types, eg. 'image' or 'script'."
+          }
+        },
+        "authenticate": {
+          "target": "com.cloudflare.browser_rendering#ScrapeCreateRequestBodyAuthenticate",
+          "traits": {
+            "smithy.api#documentation": "Provide credentials for HTTP authentication."
+          }
+        },
+        "bestAttempt": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Attempt to proceed when 'awaited' events fail or timeout."
+          }
+        },
+        "cookies": {
+          "target": "com.cloudflare.browser_rendering#ScrapeCreateRequestBodyCookiesList",
+          "traits": {
+            "smithy.api#documentation": "Check [options](https://pptr.dev/api/puppeteer.page.setcookie)."
+          }
+        },
+        "emulateMediaType": {
+          "target": "smithy.api#String"
+        },
+        "gotoOptions": {
+          "target": "com.cloudflare.browser_rendering#ScrapeCreateRequestBodyGotoOptions",
+          "traits": {
+            "smithy.api#documentation": "Check [options](https://pptr.dev/api/puppeteer.gotooptions)."
+          }
+        },
+        "rejectRequestPattern": {
+          "target": "com.cloudflare.browser_rendering#ScrapeCreateRequestBodyRejectRequestPatternList",
+          "traits": {
+            "smithy.api#documentation": "Block undesired requests that match the provided regex patterns, eg. '/^.*.(css)'."
+          }
+        },
+        "rejectResourceTypes": {
+          "target": "com.cloudflare.browser_rendering#ScrapeCreateRequestBodyRejectResourceTypesList",
+          "traits": {
+            "smithy.api#documentation": "Block undesired requests that match the provided resource types, eg. 'image' or 'script'."
+          }
+        },
+        "setExtraHTTPHeaders": {
+          "target": "com.cloudflare.browser_rendering#ScrapeCreateRequestBodySetExtraHTTPHeadersMap"
+        },
+        "setJavaScriptEnabled": {
+          "target": "smithy.api#Boolean"
+        },
+        "userAgent": {
+          "target": "smithy.api#String"
+        },
+        "viewport": {
+          "target": "com.cloudflare.browser_rendering#ScrapeCreateRequestBodyViewport",
+          "traits": {
+            "smithy.api#documentation": "Check [options](https://pptr.dev/api/puppeteer.page.setviewport)."
+          }
+        },
+        "waitForSelector": {
+          "target": "com.cloudflare.browser_rendering#ScrapeCreateRequestBodyWaitForSelector",
+          "traits": {
+            "smithy.api#documentation": "Wait for the selector to appear in page. Check [options](https://pptr.dev/api/puppeteer.page.waitforselector)."
+          }
+        },
+        "waitForTimeout": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Waits for a specified timeout before continuing."
+          }
+        },
+        "url": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "URL to navigate to, eg. `https://example.com`."
           }
         }
       }
@@ -2303,21 +6226,615 @@
         "smithy.api#documentation": "Get meta attributes like height, width, text and others of selected elements."
       }
     },
+    "com.cloudflare.browser_rendering#ScreenshotCreateRequestBodyAddScriptTagItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String"
+        },
+        "content": {
+          "target": "smithy.api#String"
+        },
+        "type": {
+          "target": "smithy.api#String"
+        },
+        "url": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#ScreenshotCreateRequestBodyAddScriptTagList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.browser_rendering#ScreenshotCreateRequestBodyAddScriptTagItem"
+      }
+    },
+    "com.cloudflare.browser_rendering#ScreenshotCreateRequestBodyAddStyleTagItem": {
+      "type": "structure",
+      "members": {
+        "content": {
+          "target": "smithy.api#String"
+        },
+        "url": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#ScreenshotCreateRequestBodyAddStyleTagList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.browser_rendering#ScreenshotCreateRequestBodyAddStyleTagItem"
+      }
+    },
+    "com.cloudflare.browser_rendering#ScreenshotCreateRequestBodyAllowRequestPatternList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.browser_rendering#ScreenshotCreateRequestBodyAllowResourceTypesItem": {
+      "type": "enum",
+      "members": {
+        "DOCUMENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "document"
+          }
+        },
+        "STYLESHEET": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "stylesheet"
+          }
+        },
+        "IMAGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "image"
+          }
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#ScreenshotCreateRequestBodyAllowResourceTypesList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.browser_rendering#ScreenshotCreateRequestBodyAllowResourceTypesItem"
+      }
+    },
+    "com.cloudflare.browser_rendering#ScreenshotCreateRequestBodyAuthenticate": {
+      "type": "structure",
+      "members": {
+        "password": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "username": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#ScreenshotCreateRequestBodyCookiesItemPriority": {
+      "type": "enum",
+      "members": {
+        "LOW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Low"
+          }
+        },
+        "MEDIUM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Medium"
+          }
+        },
+        "HIGH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "High"
+          }
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#ScreenshotCreateRequestBodyCookiesItemSameSite": {
+      "type": "enum",
+      "members": {
+        "STRICT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Strict"
+          }
+        },
+        "LAX": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Lax"
+          }
+        },
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "None"
+          }
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#ScreenshotCreateRequestBodyCookiesItemSourceScheme": {
+      "type": "enum",
+      "members": {
+        "UNSET": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Unset"
+          }
+        },
+        "NONSECURE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NonSecure"
+          }
+        },
+        "SECURE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Secure"
+          }
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#ScreenshotCreateRequestBodyCookiesItem": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Cookie name.",
+            "smithy.api#required": {}
+          }
+        },
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "domain": {
+          "target": "smithy.api#String"
+        },
+        "expires": {
+          "target": "smithy.api#Double"
+        },
+        "httpOnly": {
+          "target": "smithy.api#Boolean"
+        },
+        "partitionKey": {
+          "target": "smithy.api#String"
+        },
+        "path": {
+          "target": "smithy.api#String"
+        },
+        "priority": {
+          "target": "com.cloudflare.browser_rendering#ScreenshotCreateRequestBodyCookiesItemPriority"
+        },
+        "sameParty": {
+          "target": "smithy.api#Boolean"
+        },
+        "sameSite": {
+          "target": "com.cloudflare.browser_rendering#ScreenshotCreateRequestBodyCookiesItemSameSite"
+        },
+        "secure": {
+          "target": "smithy.api#Boolean"
+        },
+        "sourcePort": {
+          "target": "smithy.api#Double"
+        },
+        "sourceScheme": {
+          "target": "com.cloudflare.browser_rendering#ScreenshotCreateRequestBodyCookiesItemSourceScheme"
+        },
+        "url": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#ScreenshotCreateRequestBodyCookiesList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.browser_rendering#ScreenshotCreateRequestBodyCookiesItem"
+      }
+    },
+    "com.cloudflare.browser_rendering#ScreenshotCreateRequestBodyGotoOptionsWaitUntil": {
+      "type": "enum",
+      "members": {
+        "LOAD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "load"
+          }
+        },
+        "DOMCONTENTLOADED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "domcontentloaded"
+          }
+        },
+        "NETWORKIDLE0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "networkidle0"
+          }
+        },
+        "NETWORKIDLE2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "networkidle2"
+          }
+        },
+        "LOAD_2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "load"
+          }
+        },
+        "DOMCONTENTLOADED_2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "domcontentloaded"
+          }
+        },
+        "NETWORKIDLE0_2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "networkidle0"
+          }
+        },
+        "NETWORKIDLE2_2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "networkidle2"
+          }
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#ScreenshotCreateRequestBodyGotoOptions": {
+      "type": "structure",
+      "members": {
+        "referer": {
+          "target": "smithy.api#String"
+        },
+        "referrerPolicy": {
+          "target": "smithy.api#String"
+        },
+        "timeout": {
+          "target": "smithy.api#Double"
+        },
+        "waitUntil": {
+          "target": "com.cloudflare.browser_rendering#ScreenshotCreateRequestBodyGotoOptionsWaitUntil"
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#ScreenshotCreateRequestBodyRejectRequestPatternList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.browser_rendering#ScreenshotCreateRequestBodyRejectResourceTypesItem": {
+      "type": "enum",
+      "members": {
+        "DOCUMENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "document"
+          }
+        },
+        "STYLESHEET": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "stylesheet"
+          }
+        },
+        "IMAGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "image"
+          }
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#ScreenshotCreateRequestBodyRejectResourceTypesList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.browser_rendering#ScreenshotCreateRequestBodyRejectResourceTypesItem"
+      }
+    },
+    "com.cloudflare.browser_rendering#ScreenshotCreateRequestBodyScreenshotOptionsClip": {
+      "type": "structure",
+      "members": {
+        "height": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "width": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "x": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "y": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "scale": {
+          "target": "smithy.api#Double"
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#ScreenshotCreateRequestBodyScreenshotOptionsEncoding": {
+      "type": "enum",
+      "members": {
+        "BINARY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "binary"
+          }
+        },
+        "BASE64": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "base64"
+          }
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#ScreenshotCreateRequestBodyScreenshotOptionsType": {
+      "type": "enum",
+      "members": {
+        "PNG": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "png"
+          }
+        },
+        "JPEG": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "jpeg"
+          }
+        },
+        "WEBP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "webp"
+          }
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#ScreenshotCreateRequestBodyScreenshotOptions": {
+      "type": "structure",
+      "members": {
+        "captureBeyondViewport": {
+          "target": "smithy.api#Boolean"
+        },
+        "clip": {
+          "target": "com.cloudflare.browser_rendering#ScreenshotCreateRequestBodyScreenshotOptionsClip"
+        },
+        "encoding": {
+          "target": "com.cloudflare.browser_rendering#ScreenshotCreateRequestBodyScreenshotOptionsEncoding"
+        },
+        "fromSurface": {
+          "target": "smithy.api#Boolean"
+        },
+        "fullPage": {
+          "target": "smithy.api#Boolean"
+        },
+        "omitBackground": {
+          "target": "smithy.api#Boolean"
+        },
+        "optimizeForSpeed": {
+          "target": "smithy.api#Boolean"
+        },
+        "quality": {
+          "target": "smithy.api#Double"
+        },
+        "type": {
+          "target": "com.cloudflare.browser_rendering#ScreenshotCreateRequestBodyScreenshotOptionsType"
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#ScreenshotCreateRequestBodySetExtraHTTPHeadersMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.browser_rendering#ScreenshotCreateRequestBodyViewport": {
+      "type": "structure",
+      "members": {
+        "height": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "width": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "deviceScaleFactor": {
+          "target": "smithy.api#Double"
+        },
+        "hasTouch": {
+          "target": "smithy.api#Boolean"
+        },
+        "isLandscape": {
+          "target": "smithy.api#Boolean"
+        },
+        "isMobile": {
+          "target": "smithy.api#Boolean"
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#ScreenshotCreateRequestBodyWaitForSelector": {
+      "type": "structure",
+      "members": {
+        "selector": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "hidden": {
+          "target": "smithy.api#Boolean"
+        },
+        "timeout": {
+          "target": "smithy.api#Double"
+        },
+        "visible": {
+          "target": "smithy.api#Boolean"
+        }
+      }
+    },
     "com.cloudflare.browser_rendering#ScreenshotCreateRequestBody": {
       "type": "structure",
       "members": {
-        "object___html__actionTimeout__addScriptTag__19_more__": {
-          "target": "smithy.api#Document",
+        "html": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "object { html, actionTimeout, addScriptTag, 19 more }"
+            "smithy.api#documentation": "Set the content of the page, eg: `<h1>Hello World!!</h1>`. Either `html` or `url` must be set."
           }
         },
-        "object___url__actionTimeout__addScriptTag__19_more__": {
-          "target": "smithy.api#Document",
+        "actionTimeout": {
+          "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "object { url, actionTimeout, addScriptTag, 19 more }"
+            "smithy.api#documentation": "The maximum duration allowed for the browser action to complete after the page has loaded (such as taking screenshots, extracting content, or generating PDFs). If this time limit is exceeded, the action stops and returns a timeout error."
+          }
+        },
+        "addScriptTag": {
+          "target": "com.cloudflare.browser_rendering#ScreenshotCreateRequestBodyAddScriptTagList",
+          "traits": {
+            "smithy.api#documentation": "Adds a `<script>` tag into the page with the desired URL or content."
+          }
+        },
+        "addStyleTag": {
+          "target": "com.cloudflare.browser_rendering#ScreenshotCreateRequestBodyAddStyleTagList",
+          "traits": {
+            "smithy.api#documentation": "Adds a `<link rel=\"stylesheet\">` tag into the page with the desired URL or a `<style type=\"text/css\">` tag with the content."
+          }
+        },
+        "allowRequestPattern": {
+          "target": "com.cloudflare.browser_rendering#ScreenshotCreateRequestBodyAllowRequestPatternList",
+          "traits": {
+            "smithy.api#documentation": "Only allow requests that match the provided regex patterns, eg. '/^.*.(css)'."
+          }
+        },
+        "allowResourceTypes": {
+          "target": "com.cloudflare.browser_rendering#ScreenshotCreateRequestBodyAllowResourceTypesList",
+          "traits": {
+            "smithy.api#documentation": "Only allow requests that match the provided resource types, eg. 'image' or 'script'."
+          }
+        },
+        "authenticate": {
+          "target": "com.cloudflare.browser_rendering#ScreenshotCreateRequestBodyAuthenticate",
+          "traits": {
+            "smithy.api#documentation": "Provide credentials for HTTP authentication."
+          }
+        },
+        "bestAttempt": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Attempt to proceed when 'awaited' events fail or timeout."
+          }
+        },
+        "cookies": {
+          "target": "com.cloudflare.browser_rendering#ScreenshotCreateRequestBodyCookiesList",
+          "traits": {
+            "smithy.api#documentation": "Check [options](https://pptr.dev/api/puppeteer.page.setcookie)."
+          }
+        },
+        "emulateMediaType": {
+          "target": "smithy.api#String"
+        },
+        "gotoOptions": {
+          "target": "com.cloudflare.browser_rendering#ScreenshotCreateRequestBodyGotoOptions",
+          "traits": {
+            "smithy.api#documentation": "Check [options](https://pptr.dev/api/puppeteer.gotooptions)."
+          }
+        },
+        "rejectRequestPattern": {
+          "target": "com.cloudflare.browser_rendering#ScreenshotCreateRequestBodyRejectRequestPatternList",
+          "traits": {
+            "smithy.api#documentation": "Block undesired requests that match the provided regex patterns, eg. '/^.*.(css)'."
+          }
+        },
+        "rejectResourceTypes": {
+          "target": "com.cloudflare.browser_rendering#ScreenshotCreateRequestBodyRejectResourceTypesList",
+          "traits": {
+            "smithy.api#documentation": "Block undesired requests that match the provided resource types, eg. 'image' or 'script'."
+          }
+        },
+        "screenshotOptions": {
+          "target": "com.cloudflare.browser_rendering#ScreenshotCreateRequestBodyScreenshotOptions",
+          "traits": {
+            "smithy.api#documentation": "Check [options](https://pptr.dev/api/puppeteer.screenshotoptions)."
+          }
+        },
+        "scrollPage": {
+          "target": "smithy.api#Boolean"
+        },
+        "selector": {
+          "target": "smithy.api#String"
+        },
+        "setExtraHTTPHeaders": {
+          "target": "com.cloudflare.browser_rendering#ScreenshotCreateRequestBodySetExtraHTTPHeadersMap"
+        },
+        "setJavaScriptEnabled": {
+          "target": "smithy.api#Boolean"
+        },
+        "userAgent": {
+          "target": "smithy.api#String"
+        },
+        "viewport": {
+          "target": "com.cloudflare.browser_rendering#ScreenshotCreateRequestBodyViewport",
+          "traits": {
+            "smithy.api#documentation": "Check [options](https://pptr.dev/api/puppeteer.page.setviewport)."
+          }
+        },
+        "waitForSelector": {
+          "target": "com.cloudflare.browser_rendering#ScreenshotCreateRequestBodyWaitForSelector",
+          "traits": {
+            "smithy.api#documentation": "Wait for the selector to appear in page. Check [options](https://pptr.dev/api/puppeteer.page.waitforselector)."
+          }
+        },
+        "waitForTimeout": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Waits for a specified timeout before continuing."
+          }
+        },
+        "url": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "URL to navigate to, eg. `https://example.com`."
           }
         }
       }
@@ -2368,21 +6885,624 @@
         "smithy.api#documentation": "Takes a screenshot of a webpage from provided URL or HTML. Control page loading with `gotoOptions` and `waitFor*` options. Customize screenshots with `viewport`, `fullPage`, `clip` and others."
       }
     },
+    "com.cloudflare.browser_rendering#SnapshotCreateRequestBodyAddScriptTagItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String"
+        },
+        "content": {
+          "target": "smithy.api#String"
+        },
+        "type": {
+          "target": "smithy.api#String"
+        },
+        "url": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#SnapshotCreateRequestBodyAddScriptTagList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.browser_rendering#SnapshotCreateRequestBodyAddScriptTagItem"
+      }
+    },
+    "com.cloudflare.browser_rendering#SnapshotCreateRequestBodyAddStyleTagItem": {
+      "type": "structure",
+      "members": {
+        "content": {
+          "target": "smithy.api#String"
+        },
+        "url": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#SnapshotCreateRequestBodyAddStyleTagList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.browser_rendering#SnapshotCreateRequestBodyAddStyleTagItem"
+      }
+    },
+    "com.cloudflare.browser_rendering#SnapshotCreateRequestBodyAllowRequestPatternList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.browser_rendering#SnapshotCreateRequestBodyAllowResourceTypesItem": {
+      "type": "enum",
+      "members": {
+        "DOCUMENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "document"
+          }
+        },
+        "STYLESHEET": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "stylesheet"
+          }
+        },
+        "IMAGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "image"
+          }
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#SnapshotCreateRequestBodyAllowResourceTypesList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.browser_rendering#SnapshotCreateRequestBodyAllowResourceTypesItem"
+      }
+    },
+    "com.cloudflare.browser_rendering#SnapshotCreateRequestBodyAuthenticate": {
+      "type": "structure",
+      "members": {
+        "password": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "username": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#SnapshotCreateRequestBodyCookiesItemPriority": {
+      "type": "enum",
+      "members": {
+        "LOW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Low"
+          }
+        },
+        "MEDIUM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Medium"
+          }
+        },
+        "HIGH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "High"
+          }
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#SnapshotCreateRequestBodyCookiesItemSameSite": {
+      "type": "enum",
+      "members": {
+        "STRICT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Strict"
+          }
+        },
+        "LAX": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Lax"
+          }
+        },
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "None"
+          }
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#SnapshotCreateRequestBodyCookiesItemSourceScheme": {
+      "type": "enum",
+      "members": {
+        "UNSET": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Unset"
+          }
+        },
+        "NONSECURE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NonSecure"
+          }
+        },
+        "SECURE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Secure"
+          }
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#SnapshotCreateRequestBodyCookiesItem": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Cookie name.",
+            "smithy.api#required": {}
+          }
+        },
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "domain": {
+          "target": "smithy.api#String"
+        },
+        "expires": {
+          "target": "smithy.api#Double"
+        },
+        "httpOnly": {
+          "target": "smithy.api#Boolean"
+        },
+        "partitionKey": {
+          "target": "smithy.api#String"
+        },
+        "path": {
+          "target": "smithy.api#String"
+        },
+        "priority": {
+          "target": "com.cloudflare.browser_rendering#SnapshotCreateRequestBodyCookiesItemPriority"
+        },
+        "sameParty": {
+          "target": "smithy.api#Boolean"
+        },
+        "sameSite": {
+          "target": "com.cloudflare.browser_rendering#SnapshotCreateRequestBodyCookiesItemSameSite"
+        },
+        "secure": {
+          "target": "smithy.api#Boolean"
+        },
+        "sourcePort": {
+          "target": "smithy.api#Double"
+        },
+        "sourceScheme": {
+          "target": "com.cloudflare.browser_rendering#SnapshotCreateRequestBodyCookiesItemSourceScheme"
+        },
+        "url": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#SnapshotCreateRequestBodyCookiesList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.browser_rendering#SnapshotCreateRequestBodyCookiesItem"
+      }
+    },
+    "com.cloudflare.browser_rendering#SnapshotCreateRequestBodyFormatsItem": {
+      "type": "enum",
+      "members": {
+        "CONTENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "content"
+          }
+        },
+        "SCREENSHOT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "screenshot"
+          }
+        },
+        "MARKDOWN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "markdown"
+          }
+        },
+        "ACCESSIBILITYTREE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "accessibilityTree"
+          }
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#SnapshotCreateRequestBodyFormatsList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.browser_rendering#SnapshotCreateRequestBodyFormatsItem"
+      }
+    },
+    "com.cloudflare.browser_rendering#SnapshotCreateRequestBodyGotoOptionsWaitUntil": {
+      "type": "enum",
+      "members": {
+        "LOAD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "load"
+          }
+        },
+        "DOMCONTENTLOADED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "domcontentloaded"
+          }
+        },
+        "NETWORKIDLE0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "networkidle0"
+          }
+        },
+        "NETWORKIDLE2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "networkidle2"
+          }
+        },
+        "LOAD_2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "load"
+          }
+        },
+        "DOMCONTENTLOADED_2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "domcontentloaded"
+          }
+        },
+        "NETWORKIDLE0_2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "networkidle0"
+          }
+        },
+        "NETWORKIDLE2_2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "networkidle2"
+          }
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#SnapshotCreateRequestBodyGotoOptions": {
+      "type": "structure",
+      "members": {
+        "referer": {
+          "target": "smithy.api#String"
+        },
+        "referrerPolicy": {
+          "target": "smithy.api#String"
+        },
+        "timeout": {
+          "target": "smithy.api#Double"
+        },
+        "waitUntil": {
+          "target": "com.cloudflare.browser_rendering#SnapshotCreateRequestBodyGotoOptionsWaitUntil"
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#SnapshotCreateRequestBodyRejectRequestPatternList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.browser_rendering#SnapshotCreateRequestBodyRejectResourceTypesItem": {
+      "type": "enum",
+      "members": {
+        "DOCUMENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "document"
+          }
+        },
+        "STYLESHEET": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "stylesheet"
+          }
+        },
+        "IMAGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "image"
+          }
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#SnapshotCreateRequestBodyRejectResourceTypesList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.browser_rendering#SnapshotCreateRequestBodyRejectResourceTypesItem"
+      }
+    },
+    "com.cloudflare.browser_rendering#SnapshotCreateRequestBodyScreenshotOptionsClip": {
+      "type": "structure",
+      "members": {
+        "height": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "width": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "x": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "y": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "scale": {
+          "target": "smithy.api#Double"
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#SnapshotCreateRequestBodyScreenshotOptionsType": {
+      "type": "enum",
+      "members": {
+        "PNG": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "png"
+          }
+        },
+        "JPEG": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "jpeg"
+          }
+        },
+        "WEBP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "webp"
+          }
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#SnapshotCreateRequestBodyScreenshotOptions": {
+      "type": "structure",
+      "members": {
+        "captureBeyondViewport": {
+          "target": "smithy.api#Boolean"
+        },
+        "clip": {
+          "target": "com.cloudflare.browser_rendering#SnapshotCreateRequestBodyScreenshotOptionsClip"
+        },
+        "fromSurface": {
+          "target": "smithy.api#Boolean"
+        },
+        "fullPage": {
+          "target": "smithy.api#Boolean"
+        },
+        "omitBackground": {
+          "target": "smithy.api#Boolean"
+        },
+        "optimizeForSpeed": {
+          "target": "smithy.api#Boolean"
+        },
+        "quality": {
+          "target": "smithy.api#Double"
+        },
+        "type": {
+          "target": "com.cloudflare.browser_rendering#SnapshotCreateRequestBodyScreenshotOptionsType"
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#SnapshotCreateRequestBodySetExtraHTTPHeadersMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.browser_rendering#SnapshotCreateRequestBodyViewport": {
+      "type": "structure",
+      "members": {
+        "height": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "width": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "deviceScaleFactor": {
+          "target": "smithy.api#Double"
+        },
+        "hasTouch": {
+          "target": "smithy.api#Boolean"
+        },
+        "isLandscape": {
+          "target": "smithy.api#Boolean"
+        },
+        "isMobile": {
+          "target": "smithy.api#Boolean"
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#SnapshotCreateRequestBodyWaitForSelector": {
+      "type": "structure",
+      "members": {
+        "selector": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "hidden": {
+          "target": "smithy.api#Boolean"
+        },
+        "timeout": {
+          "target": "smithy.api#Double"
+        },
+        "visible": {
+          "target": "smithy.api#Boolean"
+        }
+      }
+    },
     "com.cloudflare.browser_rendering#SnapshotCreateRequestBody": {
       "type": "structure",
       "members": {
-        "object___html__actionTimeout__addScriptTag__18_more__": {
-          "target": "smithy.api#Document",
+        "html": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "object { html, actionTimeout, addScriptTag, 18 more }"
+            "smithy.api#documentation": "Set the content of the page, eg: `<h1>Hello World!!</h1>`. Either `html` or `url` must be set."
           }
         },
-        "object___url__actionTimeout__addScriptTag__18_more__": {
-          "target": "smithy.api#Document",
+        "actionTimeout": {
+          "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "object { url, actionTimeout, addScriptTag, 18 more }"
+            "smithy.api#documentation": "The maximum duration allowed for the browser action to complete after the page has loaded (such as taking screenshots, extracting content, or generating PDFs). If this time limit is exceeded, the action stops and returns a timeout error."
+          }
+        },
+        "addScriptTag": {
+          "target": "com.cloudflare.browser_rendering#SnapshotCreateRequestBodyAddScriptTagList",
+          "traits": {
+            "smithy.api#documentation": "Adds a `<script>` tag into the page with the desired URL or content."
+          }
+        },
+        "addStyleTag": {
+          "target": "com.cloudflare.browser_rendering#SnapshotCreateRequestBodyAddStyleTagList",
+          "traits": {
+            "smithy.api#documentation": "Adds a `<link rel=\"stylesheet\">` tag into the page with the desired URL or a `<style type=\"text/css\">` tag with the content."
+          }
+        },
+        "allowRequestPattern": {
+          "target": "com.cloudflare.browser_rendering#SnapshotCreateRequestBodyAllowRequestPatternList",
+          "traits": {
+            "smithy.api#documentation": "Only allow requests that match the provided regex patterns, eg. '/^.*.(css)'."
+          }
+        },
+        "allowResourceTypes": {
+          "target": "com.cloudflare.browser_rendering#SnapshotCreateRequestBodyAllowResourceTypesList",
+          "traits": {
+            "smithy.api#documentation": "Only allow requests that match the provided resource types, eg. 'image' or 'script'."
+          }
+        },
+        "authenticate": {
+          "target": "com.cloudflare.browser_rendering#SnapshotCreateRequestBodyAuthenticate",
+          "traits": {
+            "smithy.api#documentation": "Provide credentials for HTTP authentication."
+          }
+        },
+        "bestAttempt": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Attempt to proceed when 'awaited' events fail or timeout."
+          }
+        },
+        "cookies": {
+          "target": "com.cloudflare.browser_rendering#SnapshotCreateRequestBodyCookiesList",
+          "traits": {
+            "smithy.api#documentation": "Check [options](https://pptr.dev/api/puppeteer.page.setcookie)."
+          }
+        },
+        "emulateMediaType": {
+          "target": "smithy.api#String"
+        },
+        "formats": {
+          "target": "com.cloudflare.browser_rendering#SnapshotCreateRequestBodyFormatsList"
+        },
+        "gotoOptions": {
+          "target": "com.cloudflare.browser_rendering#SnapshotCreateRequestBodyGotoOptions",
+          "traits": {
+            "smithy.api#documentation": "Check [options](https://pptr.dev/api/puppeteer.gotooptions)."
+          }
+        },
+        "rejectRequestPattern": {
+          "target": "com.cloudflare.browser_rendering#SnapshotCreateRequestBodyRejectRequestPatternList",
+          "traits": {
+            "smithy.api#documentation": "Block undesired requests that match the provided regex patterns, eg. '/^.*.(css)'."
+          }
+        },
+        "rejectResourceTypes": {
+          "target": "com.cloudflare.browser_rendering#SnapshotCreateRequestBodyRejectResourceTypesList",
+          "traits": {
+            "smithy.api#documentation": "Block undesired requests that match the provided resource types, eg. 'image' or 'script'."
+          }
+        },
+        "screenshotOptions": {
+          "target": "com.cloudflare.browser_rendering#SnapshotCreateRequestBodyScreenshotOptions"
+        },
+        "setExtraHTTPHeaders": {
+          "target": "com.cloudflare.browser_rendering#SnapshotCreateRequestBodySetExtraHTTPHeadersMap"
+        },
+        "setJavaScriptEnabled": {
+          "target": "smithy.api#Boolean"
+        },
+        "userAgent": {
+          "target": "smithy.api#String"
+        },
+        "viewport": {
+          "target": "com.cloudflare.browser_rendering#SnapshotCreateRequestBodyViewport",
+          "traits": {
+            "smithy.api#documentation": "Check [options](https://pptr.dev/api/puppeteer.page.setviewport)."
+          }
+        },
+        "waitForSelector": {
+          "target": "com.cloudflare.browser_rendering#SnapshotCreateRequestBodyWaitForSelector",
+          "traits": {
+            "smithy.api#documentation": "Wait for the selector to appear in page. Check [options](https://pptr.dev/api/puppeteer.page.waitforselector)."
+          }
+        },
+        "waitForTimeout": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Waits for a specified timeout before continuing."
+          }
+        },
+        "url": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "URL to navigate to, eg. `https://example.com`."
           }
         }
       }

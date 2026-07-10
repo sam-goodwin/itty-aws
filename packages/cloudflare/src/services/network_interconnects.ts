@@ -170,24 +170,31 @@ export const CreateCniResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateCniResponse",
 }) as any as S.Schema<CreateCniResponse>;
 
+export type InterconnectsCreateRequestBodyBandwidth =
+  | "50M"
+  | "100M"
+  | "200M"
+  | (string & {});
+export const InterconnectsCreateRequestBodyBandwidth = /*@__PURE__*/ S.String;
+
 export interface InterconnectsCreateRequestBody {
-  NscInterconnectCreatePhysicalBodyObjectAccountSlotIdTypeSpeed__: unknown;
-  NscInterconnectCreateGcpPartnerBodyObjectAccountBandwidthPairingKeyType__: unknown;
+  account?: string;
+  slotId?: string;
+  type?: string;
+  speed?: string;
+  /** Bandwidth structure as visible through the customer-facing API. */
+  bandwidth?: InterconnectsCreateRequestBodyBandwidth;
+  /** Pairing key provided by GCP */
+  pairingKey?: string;
 }
 export const InterconnectsCreateRequestBody = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    NscInterconnectCreatePhysicalBodyObjectAccountSlotIdTypeSpeed__:
-      S.Unknown.pipe(
-        T.Body(
-          "NscInterconnectCreatePhysicalBody object { account, slot_id, type, speed }",
-        ),
-      ),
-    NscInterconnectCreateGcpPartnerBodyObjectAccountBandwidthPairingKeyType__:
-      S.Unknown.pipe(
-        T.Body(
-          "NscInterconnectCreateGcpPartnerBody object { account, bandwidth, pairing_key, type }",
-        ),
-      ),
+    account: S.optional(S.String),
+    slotId: S.optional(S.String.pipe(T.Body("slot_id"))),
+    type: S.optional(S.String),
+    speed: S.optional(S.String),
+    bandwidth: S.optional(InterconnectsCreateRequestBodyBandwidth),
+    pairingKey: S.optional(S.String.pipe(T.Body("pairing_key"))),
   }),
 ).annotate({
   identifier: "InterconnectsCreateRequestBody",
@@ -215,23 +222,49 @@ export const CreateInterconnectRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateInterconnectRequest",
 }) as any as S.Schema<CreateInterconnectRequest>;
 
+export type InterconnectsCreateResponseFacilityAddressList = string[];
+export const InterconnectsCreateResponseFacilityAddressList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<InterconnectsCreateResponseFacilityAddressList>;
+
+export interface InterconnectsCreateResponseFacility {
+  address: InterconnectsCreateResponseFacilityAddressList;
+  name: string;
+}
+export const InterconnectsCreateResponseFacility = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    address: InterconnectsCreateResponseFacilityAddressList,
+    name: S.String,
+  }),
+).annotate({
+  identifier: "InterconnectsCreateResponseFacility",
+}) as any as S.Schema<InterconnectsCreateResponseFacility>;
+
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface CreateInterconnectResponse {
-  NscInterconnectPhysicalBodyObjectAccountFacilityName5More__: unknown;
-  NscInterconnectGcpPartnerBodyObjectAccountNameRegion3More__: unknown;
+  account?: string;
+  facility?: InterconnectsCreateResponseFacility;
+  name?: string;
+  /** A Cloudflare site name. */
+  site?: string;
+  slotId?: string;
+  speed?: string;
+  type?: string;
+  owner?: string;
+  region?: string;
 }
 export const CreateInterconnectResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    NscInterconnectPhysicalBodyObjectAccountFacilityName5More__: S.Unknown.pipe(
-      T.Body(
-        "NscInterconnectPhysicalBody object { account, facility, name, 5 more }",
-      ),
-    ),
-    NscInterconnectGcpPartnerBodyObjectAccountNameRegion3More__: S.Unknown.pipe(
-      T.Body(
-        "NscInterconnectGcpPartnerBody object { account, name, region, 3 more }",
-      ),
-    ),
+    account: S.optional(S.String),
+    facility: S.optional(InterconnectsCreateResponseFacility),
+    name: S.optional(S.String),
+    site: S.optional(S.String),
+    slotId: S.optional(S.String.pipe(T.Body("slot_id"))),
+    speed: S.optional(S.String),
+    type: S.optional(S.String),
+    owner: S.optional(S.String),
+    region: S.optional(S.String),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateInterconnectResponse",
@@ -403,23 +436,49 @@ export const GetInterconnectRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetInterconnectRequest",
 }) as any as S.Schema<GetInterconnectRequest>;
 
+export type InterconnectsGetResponseFacilityAddressList = string[];
+export const InterconnectsGetResponseFacilityAddressList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<InterconnectsGetResponseFacilityAddressList>;
+
+export interface InterconnectsGetResponseFacility {
+  address: InterconnectsGetResponseFacilityAddressList;
+  name: string;
+}
+export const InterconnectsGetResponseFacility = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    address: InterconnectsGetResponseFacilityAddressList,
+    name: S.String,
+  }),
+).annotate({
+  identifier: "InterconnectsGetResponseFacility",
+}) as any as S.Schema<InterconnectsGetResponseFacility>;
+
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface GetInterconnectResponse {
-  NscInterconnectPhysicalBodyObjectAccountFacilityName5More__: unknown;
-  NscInterconnectGcpPartnerBodyObjectAccountNameRegion3More__: unknown;
+  account?: string;
+  facility?: InterconnectsGetResponseFacility;
+  name?: string;
+  /** A Cloudflare site name. */
+  site?: string;
+  slotId?: string;
+  speed?: string;
+  type?: string;
+  owner?: string;
+  region?: string;
 }
 export const GetInterconnectResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    NscInterconnectPhysicalBodyObjectAccountFacilityName5More__: S.Unknown.pipe(
-      T.Body(
-        "NscInterconnectPhysicalBody object { account, facility, name, 5 more }",
-      ),
-    ),
-    NscInterconnectGcpPartnerBodyObjectAccountNameRegion3More__: S.Unknown.pipe(
-      T.Body(
-        "NscInterconnectGcpPartnerBody object { account, name, region, 3 more }",
-      ),
-    ),
+    account: S.optional(S.String),
+    facility: S.optional(InterconnectsGetResponseFacility),
+    name: S.optional(S.String),
+    site: S.optional(S.String),
+    slotId: S.optional(S.String.pipe(T.Body("slot_id"))),
+    speed: S.optional(S.String),
+    type: S.optional(S.String),
+    owner: S.optional(S.String),
+    region: S.optional(S.String),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetInterconnectResponse",
@@ -666,22 +725,49 @@ export const ListInterconnectsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListInterconnectsRequest",
 }) as any as S.Schema<ListInterconnectsRequest>;
 
+export type InterconnectsListResponseItemsItemFacilityAddressList = string[];
+export const InterconnectsListResponseItemsItemFacilityAddressList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<InterconnectsListResponseItemsItemFacilityAddressList>;
+
+export interface InterconnectsListResponseItemsItemFacility {
+  address: InterconnectsListResponseItemsItemFacilityAddressList;
+  name: string;
+}
+export const InterconnectsListResponseItemsItemFacility =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      address: InterconnectsListResponseItemsItemFacilityAddressList,
+      name: S.String,
+    }),
+  ).annotate({
+    identifier: "InterconnectsListResponseItemsItemFacility",
+  }) as any as S.Schema<InterconnectsListResponseItemsItemFacility>;
+
 export interface InterconnectsListResponseItemsItem {
-  NscInterconnectPhysicalBodyObjectAccountFacilityName5More__: unknown;
-  NscInterconnectGcpPartnerBodyObjectAccountNameRegion3More__: unknown;
+  account?: string;
+  facility?: InterconnectsListResponseItemsItemFacility;
+  name?: string;
+  /** A Cloudflare site name. */
+  site?: string;
+  slotId?: string;
+  speed?: string;
+  type?: string;
+  owner?: string;
+  region?: string;
 }
 export const InterconnectsListResponseItemsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    NscInterconnectPhysicalBodyObjectAccountFacilityName5More__: S.Unknown.pipe(
-      T.Body(
-        "NscInterconnectPhysicalBody object { account, facility, name, 5 more }",
-      ),
-    ),
-    NscInterconnectGcpPartnerBodyObjectAccountNameRegion3More__: S.Unknown.pipe(
-      T.Body(
-        "NscInterconnectGcpPartnerBody object { account, name, region, 3 more }",
-      ),
-    ),
+    account: S.optional(S.String),
+    facility: S.optional(InterconnectsListResponseItemsItemFacility),
+    name: S.optional(S.String),
+    site: S.optional(S.String),
+    slotId: S.optional(S.String.pipe(T.Body("slot_id"))),
+    speed: S.optional(S.String),
+    type: S.optional(S.String),
+    owner: S.optional(S.String),
+    region: S.optional(S.String),
   }),
 ).annotate({
   identifier: "InterconnectsListResponseItemsItem",
@@ -889,23 +975,19 @@ export const StatusInterconnectRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "StatusInterconnectRequest",
 }) as any as S.Schema<StatusInterconnectRequest>;
 
+export type InterconnectsStatusResponseState = "Pending" | (string & {});
+export const InterconnectsStatusResponseState = /*@__PURE__*/ S.String;
+
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface StatusInterconnectResponse {
-  PendingObjectState__: unknown;
-  DownObjectStateReason__: unknown;
-  UnhealthyObjectStateReason__: unknown;
-  HealthyObjectState__: unknown;
+  state?: InterconnectsStatusResponseState;
+  /** Diagnostic information, if available */
+  reason?: string;
 }
 export const StatusInterconnectResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    PendingObjectState__: S.Unknown.pipe(T.Body("Pending object { state }")),
-    DownObjectStateReason__: S.Unknown.pipe(
-      T.Body("Down object { state, reason }"),
-    ),
-    UnhealthyObjectStateReason__: S.Unknown.pipe(
-      T.Body("Unhealthy object { state, reason }"),
-    ),
-    HealthyObjectState__: S.Unknown.pipe(T.Body("Healthy object { state }")),
+    state: S.optional(InterconnectsStatusResponseState),
+    reason: S.optional(S.String),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "StatusInterconnectResponse",

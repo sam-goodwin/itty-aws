@@ -17,31 +17,100 @@
     ]
   },
   "shapes": {
+    "com.cloudflare.token_validation#ConfigurationCreateRequestCredentialsKeysItemAlg": {
+      "type": "enum",
+      "members": {
+        "RS256": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RS256"
+          }
+        },
+        "RS384": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RS384"
+          }
+        },
+        "RS512": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RS512"
+          }
+        }
+      }
+    },
+    "com.cloudflare.token_validation#ConfigurationCreateRequestCredentialsKeysItemKty": {
+      "type": "enum",
+      "members": {
+        "RSA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RSA"
+          }
+        }
+      }
+    },
+    "com.cloudflare.token_validation#ConfigurationCreateRequestCredentialsKeysItemCrv": {
+      "type": "enum",
+      "members": {
+        "P_256": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "P-256"
+          }
+        }
+      }
+    },
     "com.cloudflare.token_validation#ConfigurationCreateRequestCredentialsKeysItem": {
       "type": "structure",
       "members": {
-        "APIShieldCredentialsJWTKeyRSA_object___alg__e__kid__2_more__": {
-          "target": "smithy.api#Document",
+        "alg": {
+          "target": "com.cloudflare.token_validation#ConfigurationCreateRequestCredentialsKeysItemAlg",
           "traits": {
-            "smithy.api#documentation": "JSON representation of an RSA key.",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "APIShieldCredentialsJWTKeyRSA object { alg, e, kid, 2 more }"
+            "smithy.api#documentation": "Algorithm"
           }
         },
-        "APIShieldCredentialsJWTKeyEcEs256_object___alg__crv__kid__3_more__": {
-          "target": "smithy.api#Document",
+        "e": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "JSON representation of an ES256 key",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "APIShieldCredentialsJWTKeyEcEs256 object { alg, crv, kid, 3 more }"
+            "smithy.api#documentation": "RSA exponent"
           }
         },
-        "APIShieldCredentialsJWTKeyEcEs384_object___alg__crv__kid__3_more__": {
-          "target": "smithy.api#Document",
+        "kid": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "JSON representation of an ES384 key",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "APIShieldCredentialsJWTKeyEcEs384 object { alg, crv, kid, 3 more }"
+            "smithy.api#documentation": "Key ID"
+          }
+        },
+        "kty": {
+          "target": "com.cloudflare.token_validation#ConfigurationCreateRequestCredentialsKeysItemKty",
+          "traits": {
+            "smithy.api#documentation": "Key Type"
+          }
+        },
+        "n": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "RSA modulus"
+          }
+        },
+        "crv": {
+          "target": "com.cloudflare.token_validation#ConfigurationCreateRequestCredentialsKeysItemCrv",
+          "traits": {
+            "smithy.api#documentation": "Curve"
+          }
+        },
+        "x": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "X EC coordinate"
+          }
+        },
+        "y": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Y EC coordinate"
           }
         }
       }
@@ -126,31 +195,100 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.token_validation#ConfigurationCreateResponseCredentialsKeysItemAlg": {
+      "type": "enum",
+      "members": {
+        "RS256": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RS256"
+          }
+        },
+        "RS384": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RS384"
+          }
+        },
+        "RS512": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RS512"
+          }
+        }
+      }
+    },
+    "com.cloudflare.token_validation#ConfigurationCreateResponseCredentialsKeysItemKty": {
+      "type": "enum",
+      "members": {
+        "RSA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RSA"
+          }
+        }
+      }
+    },
+    "com.cloudflare.token_validation#ConfigurationCreateResponseCredentialsKeysItemCrv": {
+      "type": "enum",
+      "members": {
+        "P_256": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "P-256"
+          }
+        }
+      }
+    },
     "com.cloudflare.token_validation#ConfigurationCreateResponseCredentialsKeysItem": {
       "type": "structure",
       "members": {
-        "APIShieldCredentialsJWTKeyRSA_object___alg__e__kid__2_more__": {
-          "target": "smithy.api#Document",
+        "alg": {
+          "target": "com.cloudflare.token_validation#ConfigurationCreateResponseCredentialsKeysItemAlg",
           "traits": {
-            "smithy.api#documentation": "JSON representation of an RSA key.",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "APIShieldCredentialsJWTKeyRSA object { alg, e, kid, 2 more }"
+            "smithy.api#documentation": "Algorithm"
           }
         },
-        "APIShieldCredentialsJWTKeyEcEs256_object___alg__crv__kid__3_more__": {
-          "target": "smithy.api#Document",
+        "e": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "JSON representation of an ES256 key",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "APIShieldCredentialsJWTKeyEcEs256 object { alg, crv, kid, 3 more }"
+            "smithy.api#documentation": "RSA exponent"
           }
         },
-        "APIShieldCredentialsJWTKeyEcEs384_object___alg__crv__kid__3_more__": {
-          "target": "smithy.api#Document",
+        "kid": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "JSON representation of an ES384 key",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "APIShieldCredentialsJWTKeyEcEs384 object { alg, crv, kid, 3 more }"
+            "smithy.api#documentation": "Key ID"
+          }
+        },
+        "kty": {
+          "target": "com.cloudflare.token_validation#ConfigurationCreateResponseCredentialsKeysItemKty",
+          "traits": {
+            "smithy.api#documentation": "Key Type"
+          }
+        },
+        "n": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "RSA modulus"
+          }
+        },
+        "crv": {
+          "target": "com.cloudflare.token_validation#ConfigurationCreateResponseCredentialsKeysItemCrv",
+          "traits": {
+            "smithy.api#documentation": "Curve"
+          }
+        },
+        "x": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "X EC coordinate"
+          }
+        },
+        "y": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Y EC coordinate"
           }
         }
       }
@@ -431,31 +569,100 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.token_validation#ConfigurationGetResponseCredentialsKeysItemAlg": {
+      "type": "enum",
+      "members": {
+        "RS256": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RS256"
+          }
+        },
+        "RS384": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RS384"
+          }
+        },
+        "RS512": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RS512"
+          }
+        }
+      }
+    },
+    "com.cloudflare.token_validation#ConfigurationGetResponseCredentialsKeysItemKty": {
+      "type": "enum",
+      "members": {
+        "RSA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RSA"
+          }
+        }
+      }
+    },
+    "com.cloudflare.token_validation#ConfigurationGetResponseCredentialsKeysItemCrv": {
+      "type": "enum",
+      "members": {
+        "P_256": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "P-256"
+          }
+        }
+      }
+    },
     "com.cloudflare.token_validation#ConfigurationGetResponseCredentialsKeysItem": {
       "type": "structure",
       "members": {
-        "APIShieldCredentialsJWTKeyRSA_object___alg__e__kid__2_more__": {
-          "target": "smithy.api#Document",
+        "alg": {
+          "target": "com.cloudflare.token_validation#ConfigurationGetResponseCredentialsKeysItemAlg",
           "traits": {
-            "smithy.api#documentation": "JSON representation of an RSA key.",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "APIShieldCredentialsJWTKeyRSA object { alg, e, kid, 2 more }"
+            "smithy.api#documentation": "Algorithm"
           }
         },
-        "APIShieldCredentialsJWTKeyEcEs256_object___alg__crv__kid__3_more__": {
-          "target": "smithy.api#Document",
+        "e": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "JSON representation of an ES256 key",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "APIShieldCredentialsJWTKeyEcEs256 object { alg, crv, kid, 3 more }"
+            "smithy.api#documentation": "RSA exponent"
           }
         },
-        "APIShieldCredentialsJWTKeyEcEs384_object___alg__crv__kid__3_more__": {
-          "target": "smithy.api#Document",
+        "kid": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "JSON representation of an ES384 key",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "APIShieldCredentialsJWTKeyEcEs384 object { alg, crv, kid, 3 more }"
+            "smithy.api#documentation": "Key ID"
+          }
+        },
+        "kty": {
+          "target": "com.cloudflare.token_validation#ConfigurationGetResponseCredentialsKeysItemKty",
+          "traits": {
+            "smithy.api#documentation": "Key Type"
+          }
+        },
+        "n": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "RSA modulus"
+          }
+        },
+        "crv": {
+          "target": "com.cloudflare.token_validation#ConfigurationGetResponseCredentialsKeysItemCrv",
+          "traits": {
+            "smithy.api#documentation": "Curve"
+          }
+        },
+        "x": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "X EC coordinate"
+          }
+        },
+        "y": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Y EC coordinate"
           }
         }
       }
@@ -600,31 +807,100 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.token_validation#ConfigurationListResultItemCredentialsKeysItemAlg": {
+      "type": "enum",
+      "members": {
+        "RS256": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RS256"
+          }
+        },
+        "RS384": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RS384"
+          }
+        },
+        "RS512": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RS512"
+          }
+        }
+      }
+    },
+    "com.cloudflare.token_validation#ConfigurationListResultItemCredentialsKeysItemKty": {
+      "type": "enum",
+      "members": {
+        "RSA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RSA"
+          }
+        }
+      }
+    },
+    "com.cloudflare.token_validation#ConfigurationListResultItemCredentialsKeysItemCrv": {
+      "type": "enum",
+      "members": {
+        "P_256": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "P-256"
+          }
+        }
+      }
+    },
     "com.cloudflare.token_validation#ConfigurationListResultItemCredentialsKeysItem": {
       "type": "structure",
       "members": {
-        "APIShieldCredentialsJWTKeyRSA_object___alg__e__kid__2_more__": {
-          "target": "smithy.api#Document",
+        "alg": {
+          "target": "com.cloudflare.token_validation#ConfigurationListResultItemCredentialsKeysItemAlg",
           "traits": {
-            "smithy.api#documentation": "JSON representation of an RSA key.",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "APIShieldCredentialsJWTKeyRSA object { alg, e, kid, 2 more }"
+            "smithy.api#documentation": "Algorithm"
           }
         },
-        "APIShieldCredentialsJWTKeyEcEs256_object___alg__crv__kid__3_more__": {
-          "target": "smithy.api#Document",
+        "e": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "JSON representation of an ES256 key",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "APIShieldCredentialsJWTKeyEcEs256 object { alg, crv, kid, 3 more }"
+            "smithy.api#documentation": "RSA exponent"
           }
         },
-        "APIShieldCredentialsJWTKeyEcEs384_object___alg__crv__kid__3_more__": {
-          "target": "smithy.api#Document",
+        "kid": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "JSON representation of an ES384 key",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "APIShieldCredentialsJWTKeyEcEs384 object { alg, crv, kid, 3 more }"
+            "smithy.api#documentation": "Key ID"
+          }
+        },
+        "kty": {
+          "target": "com.cloudflare.token_validation#ConfigurationListResultItemCredentialsKeysItemKty",
+          "traits": {
+            "smithy.api#documentation": "Key Type"
+          }
+        },
+        "n": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "RSA modulus"
+          }
+        },
+        "crv": {
+          "target": "com.cloudflare.token_validation#ConfigurationListResultItemCredentialsKeysItemCrv",
+          "traits": {
+            "smithy.api#documentation": "Curve"
+          }
+        },
+        "x": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "X EC coordinate"
+          }
+        },
+        "y": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Y EC coordinate"
           }
         }
       }
@@ -756,31 +1032,100 @@
         "smithy.api#readonly": {}
       }
     },
+    "com.cloudflare.token_validation#ConfigurationCredentialsUpdateRequestKeysItemAlg": {
+      "type": "enum",
+      "members": {
+        "RS256": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RS256"
+          }
+        },
+        "RS384": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RS384"
+          }
+        },
+        "RS512": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RS512"
+          }
+        }
+      }
+    },
+    "com.cloudflare.token_validation#ConfigurationCredentialsUpdateRequestKeysItemKty": {
+      "type": "enum",
+      "members": {
+        "RSA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RSA"
+          }
+        }
+      }
+    },
+    "com.cloudflare.token_validation#ConfigurationCredentialsUpdateRequestKeysItemCrv": {
+      "type": "enum",
+      "members": {
+        "P_256": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "P-256"
+          }
+        }
+      }
+    },
     "com.cloudflare.token_validation#ConfigurationCredentialsUpdateRequestKeysItem": {
       "type": "structure",
       "members": {
-        "APIShieldCredentialsJWTKeyRSA_object___alg__e__kid__2_more__": {
-          "target": "smithy.api#Document",
+        "alg": {
+          "target": "com.cloudflare.token_validation#ConfigurationCredentialsUpdateRequestKeysItemAlg",
           "traits": {
-            "smithy.api#documentation": "JSON representation of an RSA key.",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "APIShieldCredentialsJWTKeyRSA object { alg, e, kid, 2 more }"
+            "smithy.api#documentation": "Algorithm"
           }
         },
-        "APIShieldCredentialsJWTKeyEcEs256_object___alg__crv__kid__3_more__": {
-          "target": "smithy.api#Document",
+        "e": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "JSON representation of an ES256 key",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "APIShieldCredentialsJWTKeyEcEs256 object { alg, crv, kid, 3 more }"
+            "smithy.api#documentation": "RSA exponent"
           }
         },
-        "APIShieldCredentialsJWTKeyEcEs384_object___alg__crv__kid__3_more__": {
-          "target": "smithy.api#Document",
+        "kid": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "JSON representation of an ES384 key",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "APIShieldCredentialsJWTKeyEcEs384 object { alg, crv, kid, 3 more }"
+            "smithy.api#documentation": "Key ID"
+          }
+        },
+        "kty": {
+          "target": "com.cloudflare.token_validation#ConfigurationCredentialsUpdateRequestKeysItemKty",
+          "traits": {
+            "smithy.api#documentation": "Key Type"
+          }
+        },
+        "n": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "RSA modulus"
+          }
+        },
+        "crv": {
+          "target": "com.cloudflare.token_validation#ConfigurationCredentialsUpdateRequestKeysItemCrv",
+          "traits": {
+            "smithy.api#documentation": "Curve"
+          }
+        },
+        "x": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "X EC coordinate"
+          }
+        },
+        "y": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Y EC coordinate"
           }
         }
       }
@@ -821,31 +1166,100 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.token_validation#ConfigurationCredentialsUpdateResponseKeysItemAlg": {
+      "type": "enum",
+      "members": {
+        "RS256": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RS256"
+          }
+        },
+        "RS384": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RS384"
+          }
+        },
+        "RS512": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RS512"
+          }
+        }
+      }
+    },
+    "com.cloudflare.token_validation#ConfigurationCredentialsUpdateResponseKeysItemKty": {
+      "type": "enum",
+      "members": {
+        "RSA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RSA"
+          }
+        }
+      }
+    },
+    "com.cloudflare.token_validation#ConfigurationCredentialsUpdateResponseKeysItemCrv": {
+      "type": "enum",
+      "members": {
+        "P_256": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "P-256"
+          }
+        }
+      }
+    },
     "com.cloudflare.token_validation#ConfigurationCredentialsUpdateResponseKeysItem": {
       "type": "structure",
       "members": {
-        "APIShieldCredentialsJWTKeyRSA_object___alg__e__kid__2_more__": {
-          "target": "smithy.api#Document",
+        "alg": {
+          "target": "com.cloudflare.token_validation#ConfigurationCredentialsUpdateResponseKeysItemAlg",
           "traits": {
-            "smithy.api#documentation": "JSON representation of an RSA key.",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "APIShieldCredentialsJWTKeyRSA object { alg, e, kid, 2 more }"
+            "smithy.api#documentation": "Algorithm"
           }
         },
-        "APIShieldCredentialsJWTKeyEcEs256_object___alg__crv__kid__3_more__": {
-          "target": "smithy.api#Document",
+        "e": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "JSON representation of an ES256 key",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "APIShieldCredentialsJWTKeyEcEs256 object { alg, crv, kid, 3 more }"
+            "smithy.api#documentation": "RSA exponent"
           }
         },
-        "APIShieldCredentialsJWTKeyEcEs384_object___alg__crv__kid__3_more__": {
-          "target": "smithy.api#Document",
+        "kid": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "JSON representation of an ES384 key",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "APIShieldCredentialsJWTKeyEcEs384 object { alg, crv, kid, 3 more }"
+            "smithy.api#documentation": "Key ID"
+          }
+        },
+        "kty": {
+          "target": "com.cloudflare.token_validation#ConfigurationCredentialsUpdateResponseKeysItemKty",
+          "traits": {
+            "smithy.api#documentation": "Key Type"
+          }
+        },
+        "n": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "RSA modulus"
+          }
+        },
+        "crv": {
+          "target": "com.cloudflare.token_validation#ConfigurationCredentialsUpdateResponseKeysItemCrv",
+          "traits": {
+            "smithy.api#documentation": "Curve"
+          }
+        },
+        "x": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "X EC coordinate"
+          }
+        },
+        "y": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Y EC coordinate"
           }
         }
       }
@@ -1241,27 +1655,22 @@
     "com.cloudflare.token_validation#RulesBulkEditRequestBodyItemPosition": {
       "type": "structure",
       "members": {
-        "APIShieldIndex_object___index__": {
-          "target": "smithy.api#Document",
+        "index": {
+          "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "APIShieldIndex object { index }"
+            "smithy.api#documentation": "Move rule to this position"
           }
         },
-        "APIShieldBefore_object___before__": {
-          "target": "smithy.api#Document",
+        "before": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Move rule to after rule with ID.",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "APIShieldBefore object { before }"
+            "smithy.api#documentation": "Move rule to before rule with this ID."
           }
         },
-        "APIShieldAfter_object___after__": {
-          "target": "smithy.api#Document",
+        "after": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Move rule to before rule with ID.",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "APIShieldAfter object { after }"
+            "smithy.api#documentation": "Move rule to after rule with this ID."
           }
         }
       }
@@ -1963,27 +2372,22 @@
     "com.cloudflare.token_validation#RulesEditRequestPosition": {
       "type": "structure",
       "members": {
-        "APIShieldIndex_object___index__": {
-          "target": "smithy.api#Document",
+        "index": {
+          "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "APIShieldIndex object { index }"
+            "smithy.api#documentation": "Move rule to this position"
           }
         },
-        "APIShieldBefore_object___before__": {
-          "target": "smithy.api#Document",
+        "before": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Move rule to after rule with ID.",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "APIShieldBefore object { before }"
+            "smithy.api#documentation": "Move rule to before rule with this ID."
           }
         },
-        "APIShieldAfter_object___after__": {
-          "target": "smithy.api#Document",
+        "after": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Move rule to before rule with ID.",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "APIShieldAfter object { after }"
+            "smithy.api#documentation": "Move rule to after rule with this ID."
           }
         }
       }

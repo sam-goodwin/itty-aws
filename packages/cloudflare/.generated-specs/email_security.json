@@ -1765,22 +1765,74 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.email_security#InvestigateBulkCreateResponseActionParamsDestination": {
+      "type": "enum",
+      "members": {
+        "INBOX": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Inbox"
+          }
+        },
+        "JUNKEMAIL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "JunkEmail"
+          }
+        },
+        "DELETEDITEMS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "DeletedItems"
+          }
+        }
+      }
+    },
+    "com.cloudflare.email_security#InvestigateBulkCreateResponseActionParamsType": {
+      "type": "enum",
+      "members": {
+        "MOVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MOVE"
+          }
+        }
+      }
+    },
+    "com.cloudflare.email_security#InvestigateBulkCreateResponseActionParamsExpectedDisposition": {
+      "type": "enum",
+      "members": {
+        "MALICIOUS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MALICIOUS"
+          }
+        },
+        "MALICIOUS_BEC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MALICIOUS-BEC"
+          }
+        },
+        "SUSPICIOUS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SUSPICIOUS"
+          }
+        }
+      }
+    },
     "com.cloudflare.email_security#InvestigateBulkCreateResponseActionParams": {
       "type": "structure",
       "members": {
-        "Move_object___destination__type__expected_disposition__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Move object { destination, type, expected_disposition }"
-          }
+        "destination": {
+          "target": "com.cloudflare.email_security#InvestigateBulkCreateResponseActionParamsDestination"
         },
-        "Release_object___type__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Release object { type }"
-          }
+        "type": {
+          "target": "com.cloudflare.email_security#InvestigateBulkCreateResponseActionParamsType"
+        },
+        "expected_disposition": {
+          "target": "com.cloudflare.email_security#InvestigateBulkCreateResponseActionParamsExpectedDisposition"
         }
       }
     },
@@ -2138,22 +2190,74 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.email_security#InvestigateBulkGetResponseActionParamsDestination": {
+      "type": "enum",
+      "members": {
+        "INBOX": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Inbox"
+          }
+        },
+        "JUNKEMAIL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "JunkEmail"
+          }
+        },
+        "DELETEDITEMS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "DeletedItems"
+          }
+        }
+      }
+    },
+    "com.cloudflare.email_security#InvestigateBulkGetResponseActionParamsType": {
+      "type": "enum",
+      "members": {
+        "MOVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MOVE"
+          }
+        }
+      }
+    },
+    "com.cloudflare.email_security#InvestigateBulkGetResponseActionParamsExpectedDisposition": {
+      "type": "enum",
+      "members": {
+        "MALICIOUS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MALICIOUS"
+          }
+        },
+        "MALICIOUS_BEC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MALICIOUS-BEC"
+          }
+        },
+        "SUSPICIOUS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SUSPICIOUS"
+          }
+        }
+      }
+    },
     "com.cloudflare.email_security#InvestigateBulkGetResponseActionParams": {
       "type": "structure",
       "members": {
-        "Move_object___destination__type__expected_disposition__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Move object { destination, type, expected_disposition }"
-          }
+        "destination": {
+          "target": "com.cloudflare.email_security#InvestigateBulkGetResponseActionParamsDestination"
         },
-        "Release_object___type__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Release object { type }"
-          }
+        "type": {
+          "target": "com.cloudflare.email_security#InvestigateBulkGetResponseActionParamsType"
+        },
+        "expected_disposition": {
+          "target": "com.cloudflare.email_security#InvestigateBulkGetResponseActionParamsExpectedDisposition"
         }
       }
     },
@@ -2515,22 +2619,74 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.email_security#InvestigateBulkListResultItemActionParamsDestination": {
+      "type": "enum",
+      "members": {
+        "INBOX": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Inbox"
+          }
+        },
+        "JUNKEMAIL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "JunkEmail"
+          }
+        },
+        "DELETEDITEMS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "DeletedItems"
+          }
+        }
+      }
+    },
+    "com.cloudflare.email_security#InvestigateBulkListResultItemActionParamsType": {
+      "type": "enum",
+      "members": {
+        "MOVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MOVE"
+          }
+        }
+      }
+    },
+    "com.cloudflare.email_security#InvestigateBulkListResultItemActionParamsExpectedDisposition": {
+      "type": "enum",
+      "members": {
+        "MALICIOUS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MALICIOUS"
+          }
+        },
+        "MALICIOUS_BEC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MALICIOUS-BEC"
+          }
+        },
+        "SUSPICIOUS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SUSPICIOUS"
+          }
+        }
+      }
+    },
     "com.cloudflare.email_security#InvestigateBulkListResultItemActionParams": {
       "type": "structure",
       "members": {
-        "Move_object___destination__type__expected_disposition__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Move object { destination, type, expected_disposition }"
-          }
+        "destination": {
+          "target": "com.cloudflare.email_security#InvestigateBulkListResultItemActionParamsDestination"
         },
-        "Release_object___type__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Release object { type }"
-          }
+        "type": {
+          "target": "com.cloudflare.email_security#InvestigateBulkListResultItemActionParamsType"
+        },
+        "expected_disposition": {
+          "target": "com.cloudflare.email_security#InvestigateBulkListResultItemActionParamsExpectedDisposition"
         }
       }
     },
@@ -2850,22 +3006,74 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.email_security#InvestigateBulkCancelCreateResponseActionParamsDestination": {
+      "type": "enum",
+      "members": {
+        "INBOX": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Inbox"
+          }
+        },
+        "JUNKEMAIL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "JunkEmail"
+          }
+        },
+        "DELETEDITEMS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "DeletedItems"
+          }
+        }
+      }
+    },
+    "com.cloudflare.email_security#InvestigateBulkCancelCreateResponseActionParamsType": {
+      "type": "enum",
+      "members": {
+        "MOVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MOVE"
+          }
+        }
+      }
+    },
+    "com.cloudflare.email_security#InvestigateBulkCancelCreateResponseActionParamsExpectedDisposition": {
+      "type": "enum",
+      "members": {
+        "MALICIOUS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MALICIOUS"
+          }
+        },
+        "MALICIOUS_BEC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MALICIOUS-BEC"
+          }
+        },
+        "SUSPICIOUS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SUSPICIOUS"
+          }
+        }
+      }
+    },
     "com.cloudflare.email_security#InvestigateBulkCancelCreateResponseActionParams": {
       "type": "structure",
       "members": {
-        "Move_object___destination__type__expected_disposition__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Move object { destination, type, expected_disposition }"
-          }
+        "destination": {
+          "target": "com.cloudflare.email_security#InvestigateBulkCancelCreateResponseActionParamsDestination"
         },
-        "Release_object___type__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Release object { type }"
-          }
+        "type": {
+          "target": "com.cloudflare.email_security#InvestigateBulkCancelCreateResponseActionParamsType"
+        },
+        "expected_disposition": {
+          "target": "com.cloudflare.email_security#InvestigateBulkCancelCreateResponseActionParamsExpectedDisposition"
         }
       }
     },
@@ -3210,22 +3418,77 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.email_security#InvestigateBulkMessagesListResultItemActionParamsDestination": {
+      "type": "enum",
+      "members": {
+        "INBOX": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Inbox"
+          }
+        },
+        "JUNKEMAIL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "JunkEmail"
+          }
+        },
+        "DELETEDITEMS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "DeletedItems"
+          }
+        }
+      }
+    },
+    "com.cloudflare.email_security#InvestigateBulkMessagesListResultItemActionParamsType": {
+      "type": "enum",
+      "members": {
+        "MOVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MOVE"
+          }
+        }
+      }
+    },
+    "com.cloudflare.email_security#InvestigateBulkMessagesListResultItemActionParamsExpectedDisposition": {
+      "type": "enum",
+      "members": {
+        "MALICIOUS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MALICIOUS"
+          }
+        },
+        "MALICIOUS_BEC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MALICIOUS-BEC"
+          }
+        },
+        "SUSPICIOUS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SUSPICIOUS"
+          }
+        }
+      }
+    },
     "com.cloudflare.email_security#InvestigateBulkMessagesListResultItemActionParams": {
       "type": "structure",
       "members": {
-        "Move_object___client_recipient__destination__type__expected_disposition__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Move object { client_recipient, destination, type, expected_disposition }"
-          }
+        "client_recipient": {
+          "target": "smithy.api#String"
         },
-        "Release_object___client_recipient__type__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Release object { client_recipient, type }"
-          }
+        "destination": {
+          "target": "com.cloudflare.email_security#InvestigateBulkMessagesListResultItemActionParamsDestination"
+        },
+        "type": {
+          "target": "com.cloudflare.email_security#InvestigateBulkMessagesListResultItemActionParamsType"
+        },
+        "expected_disposition": {
+          "target": "com.cloudflare.email_security#InvestigateBulkMessagesListResultItemActionParamsExpectedDisposition"
         }
       }
     },

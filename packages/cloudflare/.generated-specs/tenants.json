@@ -524,29 +524,25 @@
         }
       }
     },
+    "com.cloudflare.tenants#EntitlementsGetResponseCustomEntitlementsItemAllocationType": {
+      "type": "enum",
+      "members": {
+        "MAX_COUNT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "max_count"
+          }
+        }
+      }
+    },
     "com.cloudflare.tenants#EntitlementsGetResponseCustomEntitlementsItemAllocation": {
       "type": "structure",
       "members": {
-        "OrganizationsAPIMaxCountAllocation_object___type__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "OrganizationsAPIMaxCountAllocation object { type, value }"
-          }
+        "type": {
+          "target": "com.cloudflare.tenants#EntitlementsGetResponseCustomEntitlementsItemAllocationType"
         },
-        "OrganizationsAPIBoolAllocation_object___type__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "OrganizationsAPIBoolAllocation object { type, value }"
-          }
-        },
-        "OrganizationsAPINullAllocation_object___type__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "OrganizationsAPINullAllocation object { type, value }"
-          }
+        "value": {
+          "target": "smithy.api#Double"
         }
       }
     },

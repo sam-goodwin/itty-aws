@@ -87,18 +87,33 @@ export class NotFound extends T.applyErrorMatchers(
   [{ code: 3000 }],
 ) {}
 
+export type IndexesCreateRequestConfigMetric =
+  | "cosine"
+  | "euclidean"
+  | "dot-product"
+  | (string & {});
+export const IndexesCreateRequestConfigMetric = /*@__PURE__*/ S.String;
+
+export type IndexesCreateRequestConfigPreset =
+  | "@cf/baai/bge-small-en-v1.5"
+  | "@cf/baai/bge-base-en-v1.5"
+  | "@cf/baai/bge-large-en-v1.5"
+  | (string & {});
+export const IndexesCreateRequestConfigPreset = /*@__PURE__*/ S.String;
+
 export interface IndexesCreateRequestConfig {
-  IndexDimensionConfigurationObjectDimensionsMetric__: unknown;
-  VectorizeIndexPresetConfigurationObjectPreset__: unknown;
+  /** Specifies the number of dimensions for the index */
+  dimensions?: number;
+  /** Specifies the type of metric to use calculating distance. */
+  metric?: IndexesCreateRequestConfigMetric;
+  /** Specifies the preset to use for the index. */
+  preset?: IndexesCreateRequestConfigPreset;
 }
 export const IndexesCreateRequestConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    IndexDimensionConfigurationObjectDimensionsMetric__: S.Unknown.pipe(
-      T.Body("IndexDimensionConfiguration object { dimensions, metric }"),
-    ),
-    VectorizeIndexPresetConfigurationObjectPreset__: S.Unknown.pipe(
-      T.Body("VectorizeIndexPresetConfiguration object { preset }"),
-    ),
+    dimensions: S.optional(S.Number),
+    metric: S.optional(IndexesCreateRequestConfigMetric),
+    preset: S.optional(IndexesCreateRequestConfigPreset),
   }),
 ).annotate({
   identifier: "IndexesCreateRequestConfig",

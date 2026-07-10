@@ -5764,25 +5764,22 @@
     "com.cloudflare.waiting_rooms#RulesEditRequestPosition": {
       "type": "structure",
       "members": {
-        "Index_object___index__": {
-          "target": "smithy.api#Document",
+        "index": {
+          "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Index object { index }"
+            "smithy.api#documentation": "Places the rule in the exact position specified by the integer number <POSITION_NUMBER>. Position numbers start with 1. Existing rules in the ruleset from the specified position number onward are shifted one position (no rule is overwritten)."
           }
         },
-        "Before_object___before__": {
-          "target": "smithy.api#Document",
+        "before": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Before object { before }"
+            "smithy.api#documentation": "Places the rule before rule <RULE_ID>. Use this argument with an empty rule ID value (\"\") to set the rule as the first rule in the ruleset."
           }
         },
-        "After_object___after__": {
-          "target": "smithy.api#Document",
+        "after": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "After object { after }"
+            "smithy.api#documentation": "Places the rule after rule <RULE_ID>. Use this argument with an empty rule ID value (\"\") to set the rule as the last rule in the ruleset."
           }
         }
       }

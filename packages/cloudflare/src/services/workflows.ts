@@ -564,24 +564,177 @@ export type InstancesGetResponseStatus =
   | (string & {});
 export const InstancesGetResponseStatus = /*@__PURE__*/ S.String;
 
+export interface InstancesGetResponseStepsItemAttemptsItemError {
+  message: string;
+  name: string;
+}
+export const InstancesGetResponseStepsItemAttemptsItemError =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      message: S.String,
+      name: S.String,
+    }),
+  ).annotate({
+    identifier: "InstancesGetResponseStepsItemAttemptsItemError",
+  }) as any as S.Schema<InstancesGetResponseStepsItemAttemptsItemError>;
+
+export interface InstancesGetResponseStepsItemAttemptsItem {
+  end: string;
+  error: InstancesGetResponseStepsItemAttemptsItemError;
+  start: string;
+  success: boolean;
+}
+export const InstancesGetResponseStepsItemAttemptsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      end: S.String,
+      error: InstancesGetResponseStepsItemAttemptsItemError,
+      start: S.String,
+      success: S.Boolean,
+    }),
+  ).annotate({
+    identifier: "InstancesGetResponseStepsItemAttemptsItem",
+  }) as any as S.Schema<InstancesGetResponseStepsItemAttemptsItem>;
+
+export type InstancesGetResponseStepsItemAttemptsList =
+  InstancesGetResponseStepsItemAttemptsItem[];
+export const InstancesGetResponseStepsItemAttemptsList = /*@__PURE__*/ S.Array(
+  InstancesGetResponseStepsItemAttemptsItem,
+) as any as S.Schema<InstancesGetResponseStepsItemAttemptsList>;
+
+export interface InstancesGetResponseStepsItemConfigRetriesDelay {
+  string: unknown;
+  number: unknown;
+}
+export const InstancesGetResponseStepsItemConfigRetriesDelay =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      string: S.Unknown,
+      number: S.Unknown,
+    }),
+  ).annotate({
+    identifier: "InstancesGetResponseStepsItemConfigRetriesDelay",
+  }) as any as S.Schema<InstancesGetResponseStepsItemConfigRetriesDelay>;
+
+export type InstancesGetResponseStepsItemConfigRetriesBackoff =
+  | "constant"
+  | "linear"
+  | "exponential"
+  | (string & {});
+export const InstancesGetResponseStepsItemConfigRetriesBackoff =
+  /*@__PURE__*/ S.String;
+
+export interface InstancesGetResponseStepsItemConfigRetries {
+  /** Specifies the delay duration. '[dynamic]' indicates the delay is computed by a user-supplied function. */
+  delay: InstancesGetResponseStepsItemConfigRetriesDelay;
+  limit: number;
+  backoff?: InstancesGetResponseStepsItemConfigRetriesBackoff;
+}
+export const InstancesGetResponseStepsItemConfigRetries =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      delay: InstancesGetResponseStepsItemConfigRetriesDelay,
+      limit: S.Number,
+      backoff: S.optional(InstancesGetResponseStepsItemConfigRetriesBackoff),
+    }),
+  ).annotate({
+    identifier: "InstancesGetResponseStepsItemConfigRetries",
+  }) as any as S.Schema<InstancesGetResponseStepsItemConfigRetries>;
+
+export interface InstancesGetResponseStepsItemConfigTimeout {
+  string: unknown;
+  number: unknown;
+}
+export const InstancesGetResponseStepsItemConfigTimeout =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      string: S.Unknown,
+      number: S.Unknown,
+    }),
+  ).annotate({
+    identifier: "InstancesGetResponseStepsItemConfigTimeout",
+  }) as any as S.Schema<InstancesGetResponseStepsItemConfigTimeout>;
+
+export type InstancesGetResponseStepsItemConfigSensitive =
+  | "output"
+  | (string & {});
+export const InstancesGetResponseStepsItemConfigSensitive =
+  /*@__PURE__*/ S.String;
+
+export interface InstancesGetResponseStepsItemConfig {
+  retries: InstancesGetResponseStepsItemConfigRetries;
+  /** Specifies the timeout duration. */
+  timeout: InstancesGetResponseStepsItemConfigTimeout;
+  /** When set to 'output', step output is redacted from log and step output responses. */
+  sensitive?: InstancesGetResponseStepsItemConfigSensitive;
+}
+export const InstancesGetResponseStepsItemConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    retries: InstancesGetResponseStepsItemConfigRetries,
+    timeout: InstancesGetResponseStepsItemConfigTimeout,
+    sensitive: S.optional(InstancesGetResponseStepsItemConfigSensitive),
+  }),
+).annotate({
+  identifier: "InstancesGetResponseStepsItemConfig",
+}) as any as S.Schema<InstancesGetResponseStepsItemConfig>;
+
+export type InstancesGetResponseStepsItemType =
+  | "step"
+  | "rollback"
+  | (string & {});
+export const InstancesGetResponseStepsItemType = /*@__PURE__*/ S.String;
+
+export interface InstancesGetResponseStepsItemError {
+  message: string;
+  name: string;
+}
+export const InstancesGetResponseStepsItemError = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    message: S.String,
+    name: S.String,
+  }),
+).annotate({
+  identifier: "InstancesGetResponseStepsItemError",
+}) as any as S.Schema<InstancesGetResponseStepsItemError>;
+
+export interface InstancesGetResponseStepsItemTrigger {
+  source: string;
+}
+export const InstancesGetResponseStepsItemTrigger = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      source: S.String,
+    }),
+).annotate({
+  identifier: "InstancesGetResponseStepsItemTrigger",
+}) as any as S.Schema<InstancesGetResponseStepsItemTrigger>;
+
 export interface InstancesGetResponseStepsItem {
-  objectAttemptsConfigEnd5More__: unknown;
-  objectEndErrorFinished3More__: unknown;
-  objectTriggerType__: unknown;
-  objectEndErrorFinished4More__: unknown;
+  attempts?: InstancesGetResponseStepsItemAttemptsList;
+  config?: InstancesGetResponseStepsItemConfig;
+  end?: string;
+  name?: string;
+  output?: string;
+  start?: string;
+  success?: boolean;
+  type?: InstancesGetResponseStepsItemType;
+  error?: InstancesGetResponseStepsItemError;
+  finished?: boolean;
+  trigger?: InstancesGetResponseStepsItemTrigger;
 }
 export const InstancesGetResponseStepsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    objectAttemptsConfigEnd5More__: S.Unknown.pipe(
-      T.Body("object { attempts, config, end, 5 more }"),
-    ),
-    objectEndErrorFinished3More__: S.Unknown.pipe(
-      T.Body("object { end, error, finished, 3 more }"),
-    ),
-    objectTriggerType__: S.Unknown.pipe(T.Body("object { trigger, type }")),
-    objectEndErrorFinished4More__: S.Unknown.pipe(
-      T.Body("object { end, error, finished, 4 more }"),
-    ),
+    attempts: S.optional(InstancesGetResponseStepsItemAttemptsList),
+    config: S.optional(InstancesGetResponseStepsItemConfig),
+    end: S.optional(S.String),
+    name: S.optional(S.String),
+    output: S.optional(S.String),
+    start: S.optional(S.String),
+    success: S.optional(S.Boolean),
+    type: S.optional(InstancesGetResponseStepsItemType),
+    error: S.optional(InstancesGetResponseStepsItemError),
+    finished: S.optional(S.Boolean),
+    trigger: S.optional(InstancesGetResponseStepsItemTrigger),
   }),
 ).annotate({
   identifier: "InstancesGetResponseStepsItem",
@@ -854,59 +1007,357 @@ export const VersionsGraphResponseGraphWorkflowFunctionsMap =
     S.Unknown,
   ) as any as S.Schema<VersionsGraphResponseGraphWorkflowFunctionsMap>;
 
+export interface VersionsGraphResponseGraphWorkflowNodesItemDuration {
+  number: unknown;
+  string: unknown;
+}
+export const VersionsGraphResponseGraphWorkflowNodesItemDuration =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      number: S.Unknown,
+      string: S.Unknown,
+    }),
+  ).annotate({
+    identifier: "VersionsGraphResponseGraphWorkflowNodesItemDuration",
+  }) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemDuration>;
+
+export type VersionsGraphResponseGraphWorkflowNodesItemType =
+  | "step_sleep"
+  | (string & {});
+export const VersionsGraphResponseGraphWorkflowNodesItemType =
+  /*@__PURE__*/ S.String;
+
+export type VersionsGraphResponseGraphWorkflowNodesItemConfigRetriesBackoff =
+  | "constant"
+  | "linear"
+  | "exponential"
+  | (string & {});
+export const VersionsGraphResponseGraphWorkflowNodesItemConfigRetriesBackoff =
+  /*@__PURE__*/ S.String;
+
+export interface VersionsGraphResponseGraphWorkflowNodesItemConfigRetriesDelay {
+  number: unknown;
+  string: unknown;
+}
+export const VersionsGraphResponseGraphWorkflowNodesItemConfigRetriesDelay =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      number: S.Unknown,
+      string: S.Unknown,
+    }),
+  ).annotate({
+    identifier: "VersionsGraphResponseGraphWorkflowNodesItemConfigRetriesDelay",
+  }) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemConfigRetriesDelay>;
+
+export interface VersionsGraphResponseGraphWorkflowNodesItemConfigRetries {
+  /** Backoff strategy for step retries. */
+  backoff: VersionsGraphResponseGraphWorkflowNodesItemConfigRetriesBackoff;
+  /** Duration as milliseconds (number) or human-readable string. */
+  delay: VersionsGraphResponseGraphWorkflowNodesItemConfigRetriesDelay;
+  limit: number;
+}
+export const VersionsGraphResponseGraphWorkflowNodesItemConfigRetries =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      backoff: VersionsGraphResponseGraphWorkflowNodesItemConfigRetriesBackoff,
+      delay: VersionsGraphResponseGraphWorkflowNodesItemConfigRetriesDelay,
+      limit: S.Number,
+    }),
+  ).annotate({
+    identifier: "VersionsGraphResponseGraphWorkflowNodesItemConfigRetries",
+  }) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemConfigRetries>;
+
+export interface VersionsGraphResponseGraphWorkflowNodesItemConfigTimeout {
+  number: unknown;
+  string: unknown;
+}
+export const VersionsGraphResponseGraphWorkflowNodesItemConfigTimeout =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      number: S.Unknown,
+      string: S.Unknown,
+    }),
+  ).annotate({
+    identifier: "VersionsGraphResponseGraphWorkflowNodesItemConfigTimeout",
+  }) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemConfigTimeout>;
+
+export interface VersionsGraphResponseGraphWorkflowNodesItemConfig {
+  /** Retry policy for a step. */
+  retries: VersionsGraphResponseGraphWorkflowNodesItemConfigRetries;
+  /** Duration as milliseconds (number) or human-readable string. */
+  timeout: VersionsGraphResponseGraphWorkflowNodesItemConfigTimeout;
+}
+export const VersionsGraphResponseGraphWorkflowNodesItemConfig =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      retries: VersionsGraphResponseGraphWorkflowNodesItemConfigRetries,
+      timeout: VersionsGraphResponseGraphWorkflowNodesItemConfigTimeout,
+    }),
+  ).annotate({
+    identifier: "VersionsGraphResponseGraphWorkflowNodesItemConfig",
+  }) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemConfig>;
+
+export type VersionsGraphResponseGraphWorkflowNodesItemNodesList = unknown[];
+export const VersionsGraphResponseGraphWorkflowNodesItemNodesList =
+  /*@__PURE__*/ S.Array(
+    S.Unknown,
+  ) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemNodesList>;
+
+export interface VersionsGraphResponseGraphWorkflowNodesItemOptionsTimeout {
+  number: unknown;
+  string: unknown;
+}
+export const VersionsGraphResponseGraphWorkflowNodesItemOptionsTimeout =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      number: S.Unknown,
+      string: S.Unknown,
+    }),
+  ).annotate({
+    identifier: "VersionsGraphResponseGraphWorkflowNodesItemOptionsTimeout",
+  }) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemOptionsTimeout>;
+
+export interface VersionsGraphResponseGraphWorkflowNodesItemOptions {
+  eventType: string;
+  /** Duration as milliseconds (number) or human-readable string. */
+  timeout: VersionsGraphResponseGraphWorkflowNodesItemOptionsTimeout;
+}
+export const VersionsGraphResponseGraphWorkflowNodesItemOptions =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      eventType: S.String.pipe(T.Body("event_type")),
+      timeout: VersionsGraphResponseGraphWorkflowNodesItemOptionsTimeout,
+    }),
+  ).annotate({
+    identifier: "VersionsGraphResponseGraphWorkflowNodesItemOptions",
+  }) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemOptions>;
+
+export type VersionsGraphResponseGraphWorkflowNodesItemPayloadType =
+  | "unknown"
+  | (string & {});
+export const VersionsGraphResponseGraphWorkflowNodesItemPayloadType =
+  /*@__PURE__*/ S.String;
+
+export type VersionsGraphResponseGraphWorkflowNodesItemPayloadFieldsMap = {
+  [key: string]: unknown | undefined;
+};
+export const VersionsGraphResponseGraphWorkflowNodesItemPayloadFieldsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemPayloadFieldsMap>;
+
+export interface VersionsGraphResponseGraphWorkflowNodesItemPayload {
+  type?: VersionsGraphResponseGraphWorkflowNodesItemPayloadType;
+  /** Nested JsonShape fields (recursive structure). */
+  fields?: VersionsGraphResponseGraphWorkflowNodesItemPayloadFieldsMap;
+}
+export const VersionsGraphResponseGraphWorkflowNodesItemPayload =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.optional(VersionsGraphResponseGraphWorkflowNodesItemPayloadType),
+      fields: S.optional(
+        VersionsGraphResponseGraphWorkflowNodesItemPayloadFieldsMap,
+      ),
+    }),
+  ).annotate({
+    identifier: "VersionsGraphResponseGraphWorkflowNodesItemPayload",
+  }) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemPayload>;
+
+export type VersionsGraphResponseGraphWorkflowNodesItemKind =
+  | "all"
+  | "any"
+  | "all_settled"
+  | "race"
+  | (string & {});
+export const VersionsGraphResponseGraphWorkflowNodesItemKind =
+  /*@__PURE__*/ S.String;
+
+export type VersionsGraphResponseGraphWorkflowNodesItemCatchBlockNodesList =
+  unknown[];
+export const VersionsGraphResponseGraphWorkflowNodesItemCatchBlockNodesList =
+  /*@__PURE__*/ S.Array(
+    S.Unknown,
+  ) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCatchBlockNodesList>;
+
+export type VersionsGraphResponseGraphWorkflowNodesItemCatchBlockType =
+  | "block"
+  | (string & {});
+export const VersionsGraphResponseGraphWorkflowNodesItemCatchBlockType =
+  /*@__PURE__*/ S.String;
+
+export interface VersionsGraphResponseGraphWorkflowNodesItemCatchBlock {
+  /** Child nodes (recursive). */
+  nodes: VersionsGraphResponseGraphWorkflowNodesItemCatchBlockNodesList;
+  type: VersionsGraphResponseGraphWorkflowNodesItemCatchBlockType;
+}
+export const VersionsGraphResponseGraphWorkflowNodesItemCatchBlock =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      nodes: VersionsGraphResponseGraphWorkflowNodesItemCatchBlockNodesList,
+      type: VersionsGraphResponseGraphWorkflowNodesItemCatchBlockType,
+    }),
+  ).annotate({
+    identifier: "VersionsGraphResponseGraphWorkflowNodesItemCatchBlock",
+  }) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCatchBlock>;
+
+export type VersionsGraphResponseGraphWorkflowNodesItemFinallyBlockNodesList =
+  unknown[];
+export const VersionsGraphResponseGraphWorkflowNodesItemFinallyBlockNodesList =
+  /*@__PURE__*/ S.Array(
+    S.Unknown,
+  ) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemFinallyBlockNodesList>;
+
+export type VersionsGraphResponseGraphWorkflowNodesItemFinallyBlockType =
+  | "block"
+  | (string & {});
+export const VersionsGraphResponseGraphWorkflowNodesItemFinallyBlockType =
+  /*@__PURE__*/ S.String;
+
+export interface VersionsGraphResponseGraphWorkflowNodesItemFinallyBlock {
+  /** Child nodes (recursive). */
+  nodes: VersionsGraphResponseGraphWorkflowNodesItemFinallyBlockNodesList;
+  type: VersionsGraphResponseGraphWorkflowNodesItemFinallyBlockType;
+}
+export const VersionsGraphResponseGraphWorkflowNodesItemFinallyBlock =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      nodes: VersionsGraphResponseGraphWorkflowNodesItemFinallyBlockNodesList,
+      type: VersionsGraphResponseGraphWorkflowNodesItemFinallyBlockType,
+    }),
+  ).annotate({
+    identifier: "VersionsGraphResponseGraphWorkflowNodesItemFinallyBlock",
+  }) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemFinallyBlock>;
+
+export type VersionsGraphResponseGraphWorkflowNodesItemTryBlockNodesList =
+  unknown[];
+export const VersionsGraphResponseGraphWorkflowNodesItemTryBlockNodesList =
+  /*@__PURE__*/ S.Array(
+    S.Unknown,
+  ) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemTryBlockNodesList>;
+
+export type VersionsGraphResponseGraphWorkflowNodesItemTryBlockType =
+  | "block"
+  | (string & {});
+export const VersionsGraphResponseGraphWorkflowNodesItemTryBlockType =
+  /*@__PURE__*/ S.String;
+
+export interface VersionsGraphResponseGraphWorkflowNodesItemTryBlock {
+  /** Child nodes (recursive). */
+  nodes: VersionsGraphResponseGraphWorkflowNodesItemTryBlockNodesList;
+  type: VersionsGraphResponseGraphWorkflowNodesItemTryBlockType;
+}
+export const VersionsGraphResponseGraphWorkflowNodesItemTryBlock =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      nodes: VersionsGraphResponseGraphWorkflowNodesItemTryBlockNodesList,
+      type: VersionsGraphResponseGraphWorkflowNodesItemTryBlockType,
+    }),
+  ).annotate({
+    identifier: "VersionsGraphResponseGraphWorkflowNodesItemTryBlock",
+  }) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemTryBlock>;
+
+export type VersionsGraphResponseGraphWorkflowNodesItemBranchesItemNodesList =
+  unknown[];
+export const VersionsGraphResponseGraphWorkflowNodesItemBranchesItemNodesList =
+  /*@__PURE__*/ S.Array(
+    S.Unknown,
+  ) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemBranchesItemNodesList>;
+
+export interface VersionsGraphResponseGraphWorkflowNodesItemBranchesItem {
+  condition: string;
+  /** Child nodes (recursive). */
+  nodes: VersionsGraphResponseGraphWorkflowNodesItemBranchesItemNodesList;
+}
+export const VersionsGraphResponseGraphWorkflowNodesItemBranchesItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      condition: S.String,
+      nodes: VersionsGraphResponseGraphWorkflowNodesItemBranchesItemNodesList,
+    }),
+  ).annotate({
+    identifier: "VersionsGraphResponseGraphWorkflowNodesItemBranchesItem",
+  }) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemBranchesItem>;
+
+export type VersionsGraphResponseGraphWorkflowNodesItemBranchesList =
+  VersionsGraphResponseGraphWorkflowNodesItemBranchesItem[];
+export const VersionsGraphResponseGraphWorkflowNodesItemBranchesList =
+  /*@__PURE__*/ S.Array(
+    VersionsGraphResponseGraphWorkflowNodesItemBranchesItem,
+  ) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemBranchesList>;
+
+export type VersionsGraphResponseGraphWorkflowNodesItemFunctionsMap = {
+  [key: string]: unknown | undefined;
+};
+export const VersionsGraphResponseGraphWorkflowNodesItemFunctionsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemFunctionsMap>;
+
 export interface VersionsGraphResponseGraphWorkflowNodesItem {
-  objectDurationNameType2More__: unknown;
-  objectConfigNameNodes3More__: unknown;
-  objectNameOptionsType3More__: unknown;
-  objectNameTimestampType2More__: unknown;
-  objectNodesType__: unknown;
-  objectKindNodesType__: unknown;
-  objectCatchBlockFinallyBlockTryBlockType__: unknown;
-  objectNodesType2: unknown;
-  objectBranchesType__: unknown;
-  objectBranchesDiscriminantType__: unknown;
-  objectClassNameFunctionsNodes2More__: unknown;
-  objectNameTypeResolvesStarts__: unknown;
-  objectNameNodesType__: unknown;
-  objectKindType__: unknown;
+  /** Duration as milliseconds (number) or human-readable string. */
+  duration?: VersionsGraphResponseGraphWorkflowNodesItemDuration;
+  name?: string;
+  type?: VersionsGraphResponseGraphWorkflowNodesItemType;
+  resolves?: number;
+  starts?: number;
+  /** Configuration for a step (retries and timeout). */
+  config?: VersionsGraphResponseGraphWorkflowNodesItemConfig;
+  /** Child nodes (recursive). */
+  nodes?: VersionsGraphResponseGraphWorkflowNodesItemNodesList;
+  /** Options for a waitForEvent step. */
+  options?: VersionsGraphResponseGraphWorkflowNodesItemOptions;
+  /** Shape descriptor for JSON payloads. */
+  payload?: VersionsGraphResponseGraphWorkflowNodesItemPayload;
+  timestamp?: string;
+  /** Parallel execution strategy. */
+  kind?: VersionsGraphResponseGraphWorkflowNodesItemKind;
+  catchBlock?: VersionsGraphResponseGraphWorkflowNodesItemCatchBlock;
+  finallyBlock?: VersionsGraphResponseGraphWorkflowNodesItemFinallyBlock;
+  tryBlock?: VersionsGraphResponseGraphWorkflowNodesItemTryBlock;
+  branches?: VersionsGraphResponseGraphWorkflowNodesItemBranchesList;
+  discriminant?: string;
+  className?: string;
+  functions?: VersionsGraphResponseGraphWorkflowNodesItemFunctionsMap;
 }
 export const VersionsGraphResponseGraphWorkflowNodesItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      objectDurationNameType2More__: S.Unknown.pipe(
-        T.Body("object { duration, name, type, 2 more }"),
+      duration: S.optional(VersionsGraphResponseGraphWorkflowNodesItemDuration),
+      name: S.optional(S.String),
+      type: S.optional(VersionsGraphResponseGraphWorkflowNodesItemType),
+      resolves: S.optional(S.Number),
+      starts: S.optional(S.Number),
+      config: S.optional(VersionsGraphResponseGraphWorkflowNodesItemConfig),
+      nodes: S.optional(VersionsGraphResponseGraphWorkflowNodesItemNodesList),
+      options: S.optional(VersionsGraphResponseGraphWorkflowNodesItemOptions),
+      payload: S.optional(VersionsGraphResponseGraphWorkflowNodesItemPayload),
+      timestamp: S.optional(S.String),
+      kind: S.optional(VersionsGraphResponseGraphWorkflowNodesItemKind),
+      catchBlock: S.optional(
+        VersionsGraphResponseGraphWorkflowNodesItemCatchBlock.pipe(
+          T.Body("catch_block"),
+        ),
       ),
-      objectConfigNameNodes3More__: S.Unknown.pipe(
-        T.Body("object { config, name, nodes, 3 more }"),
+      finallyBlock: S.optional(
+        VersionsGraphResponseGraphWorkflowNodesItemFinallyBlock.pipe(
+          T.Body("finally_block"),
+        ),
       ),
-      objectNameOptionsType3More__: S.Unknown.pipe(
-        T.Body("object { name, options, type, 3 more }"),
+      tryBlock: S.optional(
+        VersionsGraphResponseGraphWorkflowNodesItemTryBlock.pipe(
+          T.Body("try_block"),
+        ),
       ),
-      objectNameTimestampType2More__: S.Unknown.pipe(
-        T.Body("object { name, timestamp, type, 2 more }"),
+      branches: S.optional(
+        VersionsGraphResponseGraphWorkflowNodesItemBranchesList,
       ),
-      objectNodesType__: S.Unknown.pipe(T.Body("object { nodes, type }")),
-      objectKindNodesType__: S.Unknown.pipe(
-        T.Body("object { kind, nodes, type }"),
+      discriminant: S.optional(S.String),
+      className: S.optional(S.String.pipe(T.Body("class_name"))),
+      functions: S.optional(
+        VersionsGraphResponseGraphWorkflowNodesItemFunctionsMap,
       ),
-      objectCatchBlockFinallyBlockTryBlockType__: S.Unknown.pipe(
-        T.Body("object { catch_block, finally_block, try_block, type }"),
-      ),
-      objectNodesType2: S.Unknown.pipe(T.Body("object { nodes, type }")),
-      objectBranchesType__: S.Unknown.pipe(T.Body("object { branches, type }")),
-      objectBranchesDiscriminantType__: S.Unknown.pipe(
-        T.Body("object { branches, discriminant, type }"),
-      ),
-      objectClassNameFunctionsNodes2More__: S.Unknown.pipe(
-        T.Body("object { class_name, functions, nodes, 2 more }"),
-      ),
-      objectNameTypeResolvesStarts__: S.Unknown.pipe(
-        T.Body("object { name, type, resolves, starts }"),
-      ),
-      objectNameNodesType__: S.Unknown.pipe(
-        T.Body("object { name, nodes, type }"),
-      ),
-      objectKindType__: S.Unknown.pipe(T.Body("object { kind, type }")),
     }),
   ).annotate({
     identifier: "VersionsGraphResponseGraphWorkflowNodesItem",
@@ -919,15 +1370,31 @@ export const VersionsGraphResponseGraphWorkflowNodesList =
     VersionsGraphResponseGraphWorkflowNodesItem,
   ) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesList>;
 
+export type VersionsGraphResponseGraphWorkflowPayloadType =
+  | "unknown"
+  | (string & {});
+export const VersionsGraphResponseGraphWorkflowPayloadType =
+  /*@__PURE__*/ S.String;
+
+export type VersionsGraphResponseGraphWorkflowPayloadFieldsMap = {
+  [key: string]: unknown | undefined;
+};
+export const VersionsGraphResponseGraphWorkflowPayloadFieldsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<VersionsGraphResponseGraphWorkflowPayloadFieldsMap>;
+
 export interface VersionsGraphResponseGraphWorkflowPayload {
-  TypeObjectType__: unknown;
-  objectFieldsType__: unknown;
+  type?: VersionsGraphResponseGraphWorkflowPayloadType;
+  /** Nested JsonShape fields (recursive structure). */
+  fields?: VersionsGraphResponseGraphWorkflowPayloadFieldsMap;
 }
 export const VersionsGraphResponseGraphWorkflowPayload =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      TypeObjectType__: S.Unknown.pipe(T.Body("Type object { type }")),
-      objectFieldsType__: S.Unknown.pipe(T.Body("object { fields, type }")),
+      type: S.optional(VersionsGraphResponseGraphWorkflowPayloadType),
+      fields: S.optional(VersionsGraphResponseGraphWorkflowPayloadFieldsMap),
     }),
   ).annotate({
     identifier: "VersionsGraphResponseGraphWorkflowPayload",
@@ -1305,20 +1772,43 @@ export const ListWorkflowsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListWorkflowsResponse",
 }) as any as S.Schema<ListWorkflowsResponse>;
 
+export type InstancesStatusEditRequestBodyStatus = "pause" | (string & {});
+export const InstancesStatusEditRequestBodyStatus = /*@__PURE__*/ S.String;
+
+export type InstancesStatusEditRequestBodyFromType =
+  | "do"
+  | "sleep"
+  | "waitForEvent"
+  | (string & {});
+export const InstancesStatusEditRequestBodyFromType = /*@__PURE__*/ S.String;
+
+export interface InstancesStatusEditRequestBodyFrom {
+  name: string;
+  count?: number;
+  type?: InstancesStatusEditRequestBodyFromType;
+}
+export const InstancesStatusEditRequestBodyFrom = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    count: S.optional(S.Number),
+    type: S.optional(InstancesStatusEditRequestBodyFromType),
+  }),
+).annotate({
+  identifier: "InstancesStatusEditRequestBodyFrom",
+}) as any as S.Schema<InstancesStatusEditRequestBodyFrom>;
+
 export interface InstancesStatusEditRequestBody {
-  StatusObjectStatus__: unknown;
-  StatusObjectStatus2: unknown;
-  objectStatusRollback__: unknown;
-  objectStatusFrom__: unknown;
+  status?: InstancesStatusEditRequestBodyStatus;
+  /** Run rollback before terminating. */
+  rollback?: boolean;
+  /** Step to restart from. */
+  from?: InstancesStatusEditRequestBodyFrom;
 }
 export const InstancesStatusEditRequestBody = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    StatusObjectStatus__: S.Unknown.pipe(T.Body("Status object { status }")),
-    StatusObjectStatus2: S.Unknown.pipe(T.Body("Status object { status }")),
-    objectStatusRollback__: S.Unknown.pipe(
-      T.Body("object { status, rollback }"),
-    ),
-    objectStatusFrom__: S.Unknown.pipe(T.Body("object { status, from }")),
+    status: S.optional(InstancesStatusEditRequestBodyStatus),
+    rollback: S.optional(S.Boolean),
+    from: S.optional(InstancesStatusEditRequestBodyFrom),
   }),
 ).annotate({
   identifier: "InstancesStatusEditRequestBody",

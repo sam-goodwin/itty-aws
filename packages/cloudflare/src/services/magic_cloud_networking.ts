@@ -2162,30 +2162,163 @@ export type ResourcesGetResponseResourceType =
   | (string & {});
 export const ResourcesGetResponseResourceType = /*@__PURE__*/ S.String;
 
+export interface ResourcesGetResponseSectionsItemHiddenItemsItemValueYamlDiff {
+  diff: string;
+  leftDescription: string;
+  leftYaml: string;
+  rightDescription: string;
+  rightYaml: string;
+}
+export const ResourcesGetResponseSectionsItemHiddenItemsItemValueYamlDiff =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      diff: S.String,
+      leftDescription: S.String.pipe(T.Body("left_description")),
+      leftYaml: S.String.pipe(T.Body("left_yaml")),
+      rightDescription: S.String.pipe(T.Body("right_description")),
+      rightYaml: S.String.pipe(T.Body("right_yaml")),
+    }),
+  ).annotate({
+    identifier: "ResourcesGetResponseSectionsItemHiddenItemsItemValueYamlDiff",
+  }) as any as S.Schema<ResourcesGetResponseSectionsItemHiddenItemsItemValueYamlDiff>;
+
+export type ResourcesGetResponseSectionsItemHiddenItemsItemValueResourcePreviewCloudType =
+  "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE" | (string & {});
+export const ResourcesGetResponseSectionsItemHiddenItemsItemValueResourcePreviewCloudType =
+  /*@__PURE__*/ S.String;
+
+export type ResourcesGetResponseSectionsItemHiddenItemsItemValueResourcePreviewResourceType =
+    | "aws_customer_gateway"
+    | "aws_egress_only_internet_gateway"
+    | "aws_internet_gateway"
+    | (string & {});
+export const ResourcesGetResponseSectionsItemHiddenItemsItemValueResourcePreviewResourceType =
+  /*@__PURE__*/ S.String;
+
+export interface ResourcesGetResponseSectionsItemHiddenItemsItemValueResourcePreview {
+  id: string;
+  cloudType: ResourcesGetResponseSectionsItemHiddenItemsItemValueResourcePreviewCloudType;
+  detail: string;
+  name: string;
+  resourceType: ResourcesGetResponseSectionsItemHiddenItemsItemValueResourcePreviewResourceType;
+  title: string;
+}
+export const ResourcesGetResponseSectionsItemHiddenItemsItemValueResourcePreview =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+      cloudType:
+        ResourcesGetResponseSectionsItemHiddenItemsItemValueResourcePreviewCloudType.pipe(
+          T.Body("cloud_type"),
+        ),
+      detail: S.String,
+      name: S.String,
+      resourceType:
+        ResourcesGetResponseSectionsItemHiddenItemsItemValueResourcePreviewResourceType.pipe(
+          T.Body("resource_type"),
+        ),
+      title: S.String,
+    }),
+  ).annotate({
+    identifier:
+      "ResourcesGetResponseSectionsItemHiddenItemsItemValueResourcePreview",
+  }) as any as S.Schema<ResourcesGetResponseSectionsItemHiddenItemsItemValueResourcePreview>;
+
+export type ResourcesGetResponseSectionsItemHiddenItemsItemValueListItemResourcePreviewCloudType =
+  "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE" | (string & {});
+export const ResourcesGetResponseSectionsItemHiddenItemsItemValueListItemResourcePreviewCloudType =
+  /*@__PURE__*/ S.String;
+
+export type ResourcesGetResponseSectionsItemHiddenItemsItemValueListItemResourcePreviewResourceType =
+    | "aws_customer_gateway"
+    | "aws_egress_only_internet_gateway"
+    | "aws_internet_gateway"
+    | (string & {});
+export const ResourcesGetResponseSectionsItemHiddenItemsItemValueListItemResourcePreviewResourceType =
+  /*@__PURE__*/ S.String;
+
+export interface ResourcesGetResponseSectionsItemHiddenItemsItemValueListItemResourcePreview {
+  id: string;
+  cloudType: ResourcesGetResponseSectionsItemHiddenItemsItemValueListItemResourcePreviewCloudType;
+  detail: string;
+  name: string;
+  resourceType: ResourcesGetResponseSectionsItemHiddenItemsItemValueListItemResourcePreviewResourceType;
+  title: string;
+}
+export const ResourcesGetResponseSectionsItemHiddenItemsItemValueListItemResourcePreview =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+      cloudType:
+        ResourcesGetResponseSectionsItemHiddenItemsItemValueListItemResourcePreviewCloudType.pipe(
+          T.Body("cloud_type"),
+        ),
+      detail: S.String,
+      name: S.String,
+      resourceType:
+        ResourcesGetResponseSectionsItemHiddenItemsItemValueListItemResourcePreviewResourceType.pipe(
+          T.Body("resource_type"),
+        ),
+      title: S.String,
+    }),
+  ).annotate({
+    identifier:
+      "ResourcesGetResponseSectionsItemHiddenItemsItemValueListItemResourcePreview",
+  }) as any as S.Schema<ResourcesGetResponseSectionsItemHiddenItemsItemValueListItemResourcePreview>;
+
+export interface ResourcesGetResponseSectionsItemHiddenItemsItemValueListItem {
+  itemType?: string;
+  string?: string;
+  resourcePreview?: ResourcesGetResponseSectionsItemHiddenItemsItemValueListItemResourcePreview;
+}
+export const ResourcesGetResponseSectionsItemHiddenItemsItemValueListItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      itemType: S.optional(S.String.pipe(T.Body("item_type"))),
+      string: S.optional(S.String),
+      resourcePreview: S.optional(
+        ResourcesGetResponseSectionsItemHiddenItemsItemValueListItemResourcePreview.pipe(
+          T.Body("resource_preview"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "ResourcesGetResponseSectionsItemHiddenItemsItemValueListItem",
+  }) as any as S.Schema<ResourcesGetResponseSectionsItemHiddenItemsItemValueListItem>;
+
+export type ResourcesGetResponseSectionsItemHiddenItemsItemValueListList =
+  ResourcesGetResponseSectionsItemHiddenItemsItemValueListItem[];
+export const ResourcesGetResponseSectionsItemHiddenItemsItemValueListList =
+  /*@__PURE__*/ S.Array(
+    ResourcesGetResponseSectionsItemHiddenItemsItemValueListItem,
+  ) as any as S.Schema<ResourcesGetResponseSectionsItemHiddenItemsItemValueListList>;
+
 export interface ResourcesGetResponseSectionsItemHiddenItemsItemValue {
-  McnStringItemObjectItemTypeString__: unknown;
-  McnYamlItemObjectItemTypeYaml__: unknown;
-  McnYamlDiffItemObjectItemTypeYamlDiff__: unknown;
-  McnResourcePreviewItemObjectItemTypeResourcePreview__: unknown;
-  McnListItemObjectItemTypeList__: unknown;
+  itemType?: string;
+  string?: string;
+  yaml?: string;
+  yamlDiff?: ResourcesGetResponseSectionsItemHiddenItemsItemValueYamlDiff;
+  resourcePreview?: ResourcesGetResponseSectionsItemHiddenItemsItemValueResourcePreview;
+  list?: ResourcesGetResponseSectionsItemHiddenItemsItemValueListList;
 }
 export const ResourcesGetResponseSectionsItemHiddenItemsItemValue =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      McnStringItemObjectItemTypeString__: S.Unknown.pipe(
-        T.Body("McnStringItem object { item_type, string }"),
+      itemType: S.optional(S.String.pipe(T.Body("item_type"))),
+      string: S.optional(S.String),
+      yaml: S.optional(S.String),
+      yamlDiff: S.optional(
+        ResourcesGetResponseSectionsItemHiddenItemsItemValueYamlDiff.pipe(
+          T.Body("yaml_diff"),
+        ),
       ),
-      McnYamlItemObjectItemTypeYaml__: S.Unknown.pipe(
-        T.Body("McnYamlItem object { item_type, yaml }"),
+      resourcePreview: S.optional(
+        ResourcesGetResponseSectionsItemHiddenItemsItemValueResourcePreview.pipe(
+          T.Body("resource_preview"),
+        ),
       ),
-      McnYamlDiffItemObjectItemTypeYamlDiff__: S.Unknown.pipe(
-        T.Body("McnYamlDiffItem object { item_type, yaml_diff }"),
-      ),
-      McnResourcePreviewItemObjectItemTypeResourcePreview__: S.Unknown.pipe(
-        T.Body("McnResourcePreviewItem object { item_type, resource_preview }"),
-      ),
-      McnListItemObjectItemTypeList__: S.Unknown.pipe(
-        T.Body("McnListItem object { item_type, list }"),
+      list: S.optional(
+        ResourcesGetResponseSectionsItemHiddenItemsItemValueListList,
       ),
     }),
   ).annotate({
@@ -2215,30 +2348,163 @@ export const ResourcesGetResponseSectionsItemHiddenItemsList =
     ResourcesGetResponseSectionsItemHiddenItemsItem,
   ) as any as S.Schema<ResourcesGetResponseSectionsItemHiddenItemsList>;
 
+export interface ResourcesGetResponseSectionsItemVisibleItemsItemValueYamlDiff {
+  diff: string;
+  leftDescription: string;
+  leftYaml: string;
+  rightDescription: string;
+  rightYaml: string;
+}
+export const ResourcesGetResponseSectionsItemVisibleItemsItemValueYamlDiff =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      diff: S.String,
+      leftDescription: S.String.pipe(T.Body("left_description")),
+      leftYaml: S.String.pipe(T.Body("left_yaml")),
+      rightDescription: S.String.pipe(T.Body("right_description")),
+      rightYaml: S.String.pipe(T.Body("right_yaml")),
+    }),
+  ).annotate({
+    identifier: "ResourcesGetResponseSectionsItemVisibleItemsItemValueYamlDiff",
+  }) as any as S.Schema<ResourcesGetResponseSectionsItemVisibleItemsItemValueYamlDiff>;
+
+export type ResourcesGetResponseSectionsItemVisibleItemsItemValueResourcePreviewCloudType =
+  "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE" | (string & {});
+export const ResourcesGetResponseSectionsItemVisibleItemsItemValueResourcePreviewCloudType =
+  /*@__PURE__*/ S.String;
+
+export type ResourcesGetResponseSectionsItemVisibleItemsItemValueResourcePreviewResourceType =
+    | "aws_customer_gateway"
+    | "aws_egress_only_internet_gateway"
+    | "aws_internet_gateway"
+    | (string & {});
+export const ResourcesGetResponseSectionsItemVisibleItemsItemValueResourcePreviewResourceType =
+  /*@__PURE__*/ S.String;
+
+export interface ResourcesGetResponseSectionsItemVisibleItemsItemValueResourcePreview {
+  id: string;
+  cloudType: ResourcesGetResponseSectionsItemVisibleItemsItemValueResourcePreviewCloudType;
+  detail: string;
+  name: string;
+  resourceType: ResourcesGetResponseSectionsItemVisibleItemsItemValueResourcePreviewResourceType;
+  title: string;
+}
+export const ResourcesGetResponseSectionsItemVisibleItemsItemValueResourcePreview =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+      cloudType:
+        ResourcesGetResponseSectionsItemVisibleItemsItemValueResourcePreviewCloudType.pipe(
+          T.Body("cloud_type"),
+        ),
+      detail: S.String,
+      name: S.String,
+      resourceType:
+        ResourcesGetResponseSectionsItemVisibleItemsItemValueResourcePreviewResourceType.pipe(
+          T.Body("resource_type"),
+        ),
+      title: S.String,
+    }),
+  ).annotate({
+    identifier:
+      "ResourcesGetResponseSectionsItemVisibleItemsItemValueResourcePreview",
+  }) as any as S.Schema<ResourcesGetResponseSectionsItemVisibleItemsItemValueResourcePreview>;
+
+export type ResourcesGetResponseSectionsItemVisibleItemsItemValueListItemResourcePreviewCloudType =
+  "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE" | (string & {});
+export const ResourcesGetResponseSectionsItemVisibleItemsItemValueListItemResourcePreviewCloudType =
+  /*@__PURE__*/ S.String;
+
+export type ResourcesGetResponseSectionsItemVisibleItemsItemValueListItemResourcePreviewResourceType =
+    | "aws_customer_gateway"
+    | "aws_egress_only_internet_gateway"
+    | "aws_internet_gateway"
+    | (string & {});
+export const ResourcesGetResponseSectionsItemVisibleItemsItemValueListItemResourcePreviewResourceType =
+  /*@__PURE__*/ S.String;
+
+export interface ResourcesGetResponseSectionsItemVisibleItemsItemValueListItemResourcePreview {
+  id: string;
+  cloudType: ResourcesGetResponseSectionsItemVisibleItemsItemValueListItemResourcePreviewCloudType;
+  detail: string;
+  name: string;
+  resourceType: ResourcesGetResponseSectionsItemVisibleItemsItemValueListItemResourcePreviewResourceType;
+  title: string;
+}
+export const ResourcesGetResponseSectionsItemVisibleItemsItemValueListItemResourcePreview =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+      cloudType:
+        ResourcesGetResponseSectionsItemVisibleItemsItemValueListItemResourcePreviewCloudType.pipe(
+          T.Body("cloud_type"),
+        ),
+      detail: S.String,
+      name: S.String,
+      resourceType:
+        ResourcesGetResponseSectionsItemVisibleItemsItemValueListItemResourcePreviewResourceType.pipe(
+          T.Body("resource_type"),
+        ),
+      title: S.String,
+    }),
+  ).annotate({
+    identifier:
+      "ResourcesGetResponseSectionsItemVisibleItemsItemValueListItemResourcePreview",
+  }) as any as S.Schema<ResourcesGetResponseSectionsItemVisibleItemsItemValueListItemResourcePreview>;
+
+export interface ResourcesGetResponseSectionsItemVisibleItemsItemValueListItem {
+  itemType?: string;
+  string?: string;
+  resourcePreview?: ResourcesGetResponseSectionsItemVisibleItemsItemValueListItemResourcePreview;
+}
+export const ResourcesGetResponseSectionsItemVisibleItemsItemValueListItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      itemType: S.optional(S.String.pipe(T.Body("item_type"))),
+      string: S.optional(S.String),
+      resourcePreview: S.optional(
+        ResourcesGetResponseSectionsItemVisibleItemsItemValueListItemResourcePreview.pipe(
+          T.Body("resource_preview"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "ResourcesGetResponseSectionsItemVisibleItemsItemValueListItem",
+  }) as any as S.Schema<ResourcesGetResponseSectionsItemVisibleItemsItemValueListItem>;
+
+export type ResourcesGetResponseSectionsItemVisibleItemsItemValueListList =
+  ResourcesGetResponseSectionsItemVisibleItemsItemValueListItem[];
+export const ResourcesGetResponseSectionsItemVisibleItemsItemValueListList =
+  /*@__PURE__*/ S.Array(
+    ResourcesGetResponseSectionsItemVisibleItemsItemValueListItem,
+  ) as any as S.Schema<ResourcesGetResponseSectionsItemVisibleItemsItemValueListList>;
+
 export interface ResourcesGetResponseSectionsItemVisibleItemsItemValue {
-  McnStringItemObjectItemTypeString__: unknown;
-  McnYamlItemObjectItemTypeYaml__: unknown;
-  McnYamlDiffItemObjectItemTypeYamlDiff__: unknown;
-  McnResourcePreviewItemObjectItemTypeResourcePreview__: unknown;
-  McnListItemObjectItemTypeList__: unknown;
+  itemType?: string;
+  string?: string;
+  yaml?: string;
+  yamlDiff?: ResourcesGetResponseSectionsItemVisibleItemsItemValueYamlDiff;
+  resourcePreview?: ResourcesGetResponseSectionsItemVisibleItemsItemValueResourcePreview;
+  list?: ResourcesGetResponseSectionsItemVisibleItemsItemValueListList;
 }
 export const ResourcesGetResponseSectionsItemVisibleItemsItemValue =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      McnStringItemObjectItemTypeString__: S.Unknown.pipe(
-        T.Body("McnStringItem object { item_type, string }"),
+      itemType: S.optional(S.String.pipe(T.Body("item_type"))),
+      string: S.optional(S.String),
+      yaml: S.optional(S.String),
+      yamlDiff: S.optional(
+        ResourcesGetResponseSectionsItemVisibleItemsItemValueYamlDiff.pipe(
+          T.Body("yaml_diff"),
+        ),
       ),
-      McnYamlItemObjectItemTypeYaml__: S.Unknown.pipe(
-        T.Body("McnYamlItem object { item_type, yaml }"),
+      resourcePreview: S.optional(
+        ResourcesGetResponseSectionsItemVisibleItemsItemValueResourcePreview.pipe(
+          T.Body("resource_preview"),
+        ),
       ),
-      McnYamlDiffItemObjectItemTypeYamlDiff__: S.Unknown.pipe(
-        T.Body("McnYamlDiffItem object { item_type, yaml_diff }"),
-      ),
-      McnResourcePreviewItemObjectItemTypeResourcePreview__: S.Unknown.pipe(
-        T.Body("McnResourcePreviewItem object { item_type, resource_preview }"),
-      ),
-      McnListItemObjectItemTypeList__: S.Unknown.pipe(
-        T.Body("McnListItem object { item_type, list }"),
+      list: S.optional(
+        ResourcesGetResponseSectionsItemVisibleItemsItemValueListList,
       ),
     }),
   ).annotate({
@@ -2425,28 +2691,22 @@ export const InitialSetupCloudIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface InitialSetupCloudIntegrationResponse {
-  McnAwsTrustPolicyObjectAwsTrustPolicyItemType__: unknown;
-  McnAzureSetupObjectAzureConsentUrlIntegrationIdentityTagItemTypeTagCliCommand__: unknown;
-  McnGcpSetupObjectIntegrationIdentityTagItemTypeTagCliCommand__: unknown;
+  awsTrustPolicy?: string;
+  itemType?: string;
+  azureConsentUrl?: string;
+  integrationIdentityTag?: string;
+  tagCliCommand?: string;
 }
 export const InitialSetupCloudIntegrationResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      McnAwsTrustPolicyObjectAwsTrustPolicyItemType__: S.Unknown.pipe(
-        T.Body("McnAwsTrustPolicy object { aws_trust_policy, item_type }"),
+      awsTrustPolicy: S.optional(S.String.pipe(T.Body("aws_trust_policy"))),
+      itemType: S.optional(S.String.pipe(T.Body("item_type"))),
+      azureConsentUrl: S.optional(S.String.pipe(T.Body("azure_consent_url"))),
+      integrationIdentityTag: S.optional(
+        S.String.pipe(T.Body("integration_identity_tag")),
       ),
-      McnAzureSetupObjectAzureConsentUrlIntegrationIdentityTagItemTypeTagCliCommand__:
-        S.Unknown.pipe(
-          T.Body(
-            "McnAzureSetup object { azure_consent_url, integration_identity_tag, item_type, tag_cli_command }",
-          ),
-        ),
-      McnGcpSetupObjectIntegrationIdentityTagItemTypeTagCliCommand__:
-        S.Unknown.pipe(
-          T.Body(
-            "McnGcpSetup object { integration_identity_tag, item_type, tag_cli_command }",
-          ),
-        ),
+      tagCliCommand: S.optional(S.String.pipe(T.Body("tag_cli_command"))),
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "InitialSetupCloudIntegrationResponse",
@@ -3546,30 +3806,165 @@ export type ResourcesListResultItemResourceType =
   | (string & {});
 export const ResourcesListResultItemResourceType = /*@__PURE__*/ S.String;
 
+export interface ResourcesListResultItemSectionsItemHiddenItemsItemValueYamlDiff {
+  diff: string;
+  leftDescription: string;
+  leftYaml: string;
+  rightDescription: string;
+  rightYaml: string;
+}
+export const ResourcesListResultItemSectionsItemHiddenItemsItemValueYamlDiff =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      diff: S.String,
+      leftDescription: S.String.pipe(T.Body("left_description")),
+      leftYaml: S.String.pipe(T.Body("left_yaml")),
+      rightDescription: S.String.pipe(T.Body("right_description")),
+      rightYaml: S.String.pipe(T.Body("right_yaml")),
+    }),
+  ).annotate({
+    identifier:
+      "ResourcesListResultItemSectionsItemHiddenItemsItemValueYamlDiff",
+  }) as any as S.Schema<ResourcesListResultItemSectionsItemHiddenItemsItemValueYamlDiff>;
+
+export type ResourcesListResultItemSectionsItemHiddenItemsItemValueResourcePreviewCloudType =
+  "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE" | (string & {});
+export const ResourcesListResultItemSectionsItemHiddenItemsItemValueResourcePreviewCloudType =
+  /*@__PURE__*/ S.String;
+
+export type ResourcesListResultItemSectionsItemHiddenItemsItemValueResourcePreviewResourceType =
+    | "aws_customer_gateway"
+    | "aws_egress_only_internet_gateway"
+    | "aws_internet_gateway"
+    | (string & {});
+export const ResourcesListResultItemSectionsItemHiddenItemsItemValueResourcePreviewResourceType =
+  /*@__PURE__*/ S.String;
+
+export interface ResourcesListResultItemSectionsItemHiddenItemsItemValueResourcePreview {
+  id: string;
+  cloudType: ResourcesListResultItemSectionsItemHiddenItemsItemValueResourcePreviewCloudType;
+  detail: string;
+  name: string;
+  resourceType: ResourcesListResultItemSectionsItemHiddenItemsItemValueResourcePreviewResourceType;
+  title: string;
+}
+export const ResourcesListResultItemSectionsItemHiddenItemsItemValueResourcePreview =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+      cloudType:
+        ResourcesListResultItemSectionsItemHiddenItemsItemValueResourcePreviewCloudType.pipe(
+          T.Body("cloud_type"),
+        ),
+      detail: S.String,
+      name: S.String,
+      resourceType:
+        ResourcesListResultItemSectionsItemHiddenItemsItemValueResourcePreviewResourceType.pipe(
+          T.Body("resource_type"),
+        ),
+      title: S.String,
+    }),
+  ).annotate({
+    identifier:
+      "ResourcesListResultItemSectionsItemHiddenItemsItemValueResourcePreview",
+  }) as any as S.Schema<ResourcesListResultItemSectionsItemHiddenItemsItemValueResourcePreview>;
+
+export type ResourcesListResultItemSectionsItemHiddenItemsItemValueListItemResourcePreviewCloudType =
+  "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE" | (string & {});
+export const ResourcesListResultItemSectionsItemHiddenItemsItemValueListItemResourcePreviewCloudType =
+  /*@__PURE__*/ S.String;
+
+export type ResourcesListResultItemSectionsItemHiddenItemsItemValueListItemResourcePreviewResourceType =
+    | "aws_customer_gateway"
+    | "aws_egress_only_internet_gateway"
+    | "aws_internet_gateway"
+    | (string & {});
+export const ResourcesListResultItemSectionsItemHiddenItemsItemValueListItemResourcePreviewResourceType =
+  /*@__PURE__*/ S.String;
+
+export interface ResourcesListResultItemSectionsItemHiddenItemsItemValueListItemResourcePreview {
+  id: string;
+  cloudType: ResourcesListResultItemSectionsItemHiddenItemsItemValueListItemResourcePreviewCloudType;
+  detail: string;
+  name: string;
+  resourceType: ResourcesListResultItemSectionsItemHiddenItemsItemValueListItemResourcePreviewResourceType;
+  title: string;
+}
+export const ResourcesListResultItemSectionsItemHiddenItemsItemValueListItemResourcePreview =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+      cloudType:
+        ResourcesListResultItemSectionsItemHiddenItemsItemValueListItemResourcePreviewCloudType.pipe(
+          T.Body("cloud_type"),
+        ),
+      detail: S.String,
+      name: S.String,
+      resourceType:
+        ResourcesListResultItemSectionsItemHiddenItemsItemValueListItemResourcePreviewResourceType.pipe(
+          T.Body("resource_type"),
+        ),
+      title: S.String,
+    }),
+  ).annotate({
+    identifier:
+      "ResourcesListResultItemSectionsItemHiddenItemsItemValueListItemResourcePreview",
+  }) as any as S.Schema<ResourcesListResultItemSectionsItemHiddenItemsItemValueListItemResourcePreview>;
+
+export interface ResourcesListResultItemSectionsItemHiddenItemsItemValueListItem {
+  itemType?: string;
+  string?: string;
+  resourcePreview?: ResourcesListResultItemSectionsItemHiddenItemsItemValueListItemResourcePreview;
+}
+export const ResourcesListResultItemSectionsItemHiddenItemsItemValueListItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      itemType: S.optional(S.String.pipe(T.Body("item_type"))),
+      string: S.optional(S.String),
+      resourcePreview: S.optional(
+        ResourcesListResultItemSectionsItemHiddenItemsItemValueListItemResourcePreview.pipe(
+          T.Body("resource_preview"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "ResourcesListResultItemSectionsItemHiddenItemsItemValueListItem",
+  }) as any as S.Schema<ResourcesListResultItemSectionsItemHiddenItemsItemValueListItem>;
+
+export type ResourcesListResultItemSectionsItemHiddenItemsItemValueListList =
+  ResourcesListResultItemSectionsItemHiddenItemsItemValueListItem[];
+export const ResourcesListResultItemSectionsItemHiddenItemsItemValueListList =
+  /*@__PURE__*/ S.Array(
+    ResourcesListResultItemSectionsItemHiddenItemsItemValueListItem,
+  ) as any as S.Schema<ResourcesListResultItemSectionsItemHiddenItemsItemValueListList>;
+
 export interface ResourcesListResultItemSectionsItemHiddenItemsItemValue {
-  McnStringItemObjectItemTypeString__: unknown;
-  McnYamlItemObjectItemTypeYaml__: unknown;
-  McnYamlDiffItemObjectItemTypeYamlDiff__: unknown;
-  McnResourcePreviewItemObjectItemTypeResourcePreview__: unknown;
-  McnListItemObjectItemTypeList__: unknown;
+  itemType?: string;
+  string?: string;
+  yaml?: string;
+  yamlDiff?: ResourcesListResultItemSectionsItemHiddenItemsItemValueYamlDiff;
+  resourcePreview?: ResourcesListResultItemSectionsItemHiddenItemsItemValueResourcePreview;
+  list?: ResourcesListResultItemSectionsItemHiddenItemsItemValueListList;
 }
 export const ResourcesListResultItemSectionsItemHiddenItemsItemValue =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      McnStringItemObjectItemTypeString__: S.Unknown.pipe(
-        T.Body("McnStringItem object { item_type, string }"),
+      itemType: S.optional(S.String.pipe(T.Body("item_type"))),
+      string: S.optional(S.String),
+      yaml: S.optional(S.String),
+      yamlDiff: S.optional(
+        ResourcesListResultItemSectionsItemHiddenItemsItemValueYamlDiff.pipe(
+          T.Body("yaml_diff"),
+        ),
       ),
-      McnYamlItemObjectItemTypeYaml__: S.Unknown.pipe(
-        T.Body("McnYamlItem object { item_type, yaml }"),
+      resourcePreview: S.optional(
+        ResourcesListResultItemSectionsItemHiddenItemsItemValueResourcePreview.pipe(
+          T.Body("resource_preview"),
+        ),
       ),
-      McnYamlDiffItemObjectItemTypeYamlDiff__: S.Unknown.pipe(
-        T.Body("McnYamlDiffItem object { item_type, yaml_diff }"),
-      ),
-      McnResourcePreviewItemObjectItemTypeResourcePreview__: S.Unknown.pipe(
-        T.Body("McnResourcePreviewItem object { item_type, resource_preview }"),
-      ),
-      McnListItemObjectItemTypeList__: S.Unknown.pipe(
-        T.Body("McnListItem object { item_type, list }"),
+      list: S.optional(
+        ResourcesListResultItemSectionsItemHiddenItemsItemValueListList,
       ),
     }),
   ).annotate({
@@ -3601,30 +3996,165 @@ export const ResourcesListResultItemSectionsItemHiddenItemsList =
     ResourcesListResultItemSectionsItemHiddenItemsItem,
   ) as any as S.Schema<ResourcesListResultItemSectionsItemHiddenItemsList>;
 
+export interface ResourcesListResultItemSectionsItemVisibleItemsItemValueYamlDiff {
+  diff: string;
+  leftDescription: string;
+  leftYaml: string;
+  rightDescription: string;
+  rightYaml: string;
+}
+export const ResourcesListResultItemSectionsItemVisibleItemsItemValueYamlDiff =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      diff: S.String,
+      leftDescription: S.String.pipe(T.Body("left_description")),
+      leftYaml: S.String.pipe(T.Body("left_yaml")),
+      rightDescription: S.String.pipe(T.Body("right_description")),
+      rightYaml: S.String.pipe(T.Body("right_yaml")),
+    }),
+  ).annotate({
+    identifier:
+      "ResourcesListResultItemSectionsItemVisibleItemsItemValueYamlDiff",
+  }) as any as S.Schema<ResourcesListResultItemSectionsItemVisibleItemsItemValueYamlDiff>;
+
+export type ResourcesListResultItemSectionsItemVisibleItemsItemValueResourcePreviewCloudType =
+  "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE" | (string & {});
+export const ResourcesListResultItemSectionsItemVisibleItemsItemValueResourcePreviewCloudType =
+  /*@__PURE__*/ S.String;
+
+export type ResourcesListResultItemSectionsItemVisibleItemsItemValueResourcePreviewResourceType =
+    | "aws_customer_gateway"
+    | "aws_egress_only_internet_gateway"
+    | "aws_internet_gateway"
+    | (string & {});
+export const ResourcesListResultItemSectionsItemVisibleItemsItemValueResourcePreviewResourceType =
+  /*@__PURE__*/ S.String;
+
+export interface ResourcesListResultItemSectionsItemVisibleItemsItemValueResourcePreview {
+  id: string;
+  cloudType: ResourcesListResultItemSectionsItemVisibleItemsItemValueResourcePreviewCloudType;
+  detail: string;
+  name: string;
+  resourceType: ResourcesListResultItemSectionsItemVisibleItemsItemValueResourcePreviewResourceType;
+  title: string;
+}
+export const ResourcesListResultItemSectionsItemVisibleItemsItemValueResourcePreview =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+      cloudType:
+        ResourcesListResultItemSectionsItemVisibleItemsItemValueResourcePreviewCloudType.pipe(
+          T.Body("cloud_type"),
+        ),
+      detail: S.String,
+      name: S.String,
+      resourceType:
+        ResourcesListResultItemSectionsItemVisibleItemsItemValueResourcePreviewResourceType.pipe(
+          T.Body("resource_type"),
+        ),
+      title: S.String,
+    }),
+  ).annotate({
+    identifier:
+      "ResourcesListResultItemSectionsItemVisibleItemsItemValueResourcePreview",
+  }) as any as S.Schema<ResourcesListResultItemSectionsItemVisibleItemsItemValueResourcePreview>;
+
+export type ResourcesListResultItemSectionsItemVisibleItemsItemValueListItemResourcePreviewCloudType =
+  "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE" | (string & {});
+export const ResourcesListResultItemSectionsItemVisibleItemsItemValueListItemResourcePreviewCloudType =
+  /*@__PURE__*/ S.String;
+
+export type ResourcesListResultItemSectionsItemVisibleItemsItemValueListItemResourcePreviewResourceType =
+    | "aws_customer_gateway"
+    | "aws_egress_only_internet_gateway"
+    | "aws_internet_gateway"
+    | (string & {});
+export const ResourcesListResultItemSectionsItemVisibleItemsItemValueListItemResourcePreviewResourceType =
+  /*@__PURE__*/ S.String;
+
+export interface ResourcesListResultItemSectionsItemVisibleItemsItemValueListItemResourcePreview {
+  id: string;
+  cloudType: ResourcesListResultItemSectionsItemVisibleItemsItemValueListItemResourcePreviewCloudType;
+  detail: string;
+  name: string;
+  resourceType: ResourcesListResultItemSectionsItemVisibleItemsItemValueListItemResourcePreviewResourceType;
+  title: string;
+}
+export const ResourcesListResultItemSectionsItemVisibleItemsItemValueListItemResourcePreview =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+      cloudType:
+        ResourcesListResultItemSectionsItemVisibleItemsItemValueListItemResourcePreviewCloudType.pipe(
+          T.Body("cloud_type"),
+        ),
+      detail: S.String,
+      name: S.String,
+      resourceType:
+        ResourcesListResultItemSectionsItemVisibleItemsItemValueListItemResourcePreviewResourceType.pipe(
+          T.Body("resource_type"),
+        ),
+      title: S.String,
+    }),
+  ).annotate({
+    identifier:
+      "ResourcesListResultItemSectionsItemVisibleItemsItemValueListItemResourcePreview",
+  }) as any as S.Schema<ResourcesListResultItemSectionsItemVisibleItemsItemValueListItemResourcePreview>;
+
+export interface ResourcesListResultItemSectionsItemVisibleItemsItemValueListItem {
+  itemType?: string;
+  string?: string;
+  resourcePreview?: ResourcesListResultItemSectionsItemVisibleItemsItemValueListItemResourcePreview;
+}
+export const ResourcesListResultItemSectionsItemVisibleItemsItemValueListItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      itemType: S.optional(S.String.pipe(T.Body("item_type"))),
+      string: S.optional(S.String),
+      resourcePreview: S.optional(
+        ResourcesListResultItemSectionsItemVisibleItemsItemValueListItemResourcePreview.pipe(
+          T.Body("resource_preview"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "ResourcesListResultItemSectionsItemVisibleItemsItemValueListItem",
+  }) as any as S.Schema<ResourcesListResultItemSectionsItemVisibleItemsItemValueListItem>;
+
+export type ResourcesListResultItemSectionsItemVisibleItemsItemValueListList =
+  ResourcesListResultItemSectionsItemVisibleItemsItemValueListItem[];
+export const ResourcesListResultItemSectionsItemVisibleItemsItemValueListList =
+  /*@__PURE__*/ S.Array(
+    ResourcesListResultItemSectionsItemVisibleItemsItemValueListItem,
+  ) as any as S.Schema<ResourcesListResultItemSectionsItemVisibleItemsItemValueListList>;
+
 export interface ResourcesListResultItemSectionsItemVisibleItemsItemValue {
-  McnStringItemObjectItemTypeString__: unknown;
-  McnYamlItemObjectItemTypeYaml__: unknown;
-  McnYamlDiffItemObjectItemTypeYamlDiff__: unknown;
-  McnResourcePreviewItemObjectItemTypeResourcePreview__: unknown;
-  McnListItemObjectItemTypeList__: unknown;
+  itemType?: string;
+  string?: string;
+  yaml?: string;
+  yamlDiff?: ResourcesListResultItemSectionsItemVisibleItemsItemValueYamlDiff;
+  resourcePreview?: ResourcesListResultItemSectionsItemVisibleItemsItemValueResourcePreview;
+  list?: ResourcesListResultItemSectionsItemVisibleItemsItemValueListList;
 }
 export const ResourcesListResultItemSectionsItemVisibleItemsItemValue =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      McnStringItemObjectItemTypeString__: S.Unknown.pipe(
-        T.Body("McnStringItem object { item_type, string }"),
+      itemType: S.optional(S.String.pipe(T.Body("item_type"))),
+      string: S.optional(S.String),
+      yaml: S.optional(S.String),
+      yamlDiff: S.optional(
+        ResourcesListResultItemSectionsItemVisibleItemsItemValueYamlDiff.pipe(
+          T.Body("yaml_diff"),
+        ),
       ),
-      McnYamlItemObjectItemTypeYaml__: S.Unknown.pipe(
-        T.Body("McnYamlItem object { item_type, yaml }"),
+      resourcePreview: S.optional(
+        ResourcesListResultItemSectionsItemVisibleItemsItemValueResourcePreview.pipe(
+          T.Body("resource_preview"),
+        ),
       ),
-      McnYamlDiffItemObjectItemTypeYamlDiff__: S.Unknown.pipe(
-        T.Body("McnYamlDiffItem object { item_type, yaml_diff }"),
-      ),
-      McnResourcePreviewItemObjectItemTypeResourcePreview__: S.Unknown.pipe(
-        T.Body("McnResourcePreviewItem object { item_type, resource_preview }"),
-      ),
-      McnListItemObjectItemTypeList__: S.Unknown.pipe(
-        T.Body("McnListItem object { item_type, list }"),
+      list: S.optional(
+        ResourcesListResultItemSectionsItemVisibleItemsItemValueListList,
       ),
     }),
   ).annotate({

@@ -836,28 +836,42 @@
         "smithy.api#readonly": {}
       }
     },
+    "com.cloudflare.d1#DatabaseImportRequestBodyAction": {
+      "type": "enum",
+      "members": {
+        "INIT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "init"
+          }
+        }
+      }
+    },
     "com.cloudflare.d1#DatabaseImportRequestBody": {
       "type": "structure",
       "members": {
-        "Init_object___action__etag__": {
-          "target": "smithy.api#Document",
+        "action": {
+          "target": "com.cloudflare.d1#DatabaseImportRequestBodyAction",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Init object { action, etag }"
+            "smithy.api#documentation": "Indicates you have a new SQL file to upload."
           }
         },
-        "Ingest_object___action__etag__filename__": {
-          "target": "smithy.api#Document",
+        "etag": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Ingest object { action, etag, filename }"
+            "smithy.api#documentation": "Required when action is 'init' or 'ingest'. An md5 hash of the file you're uploading. Used to check if it already exists, and validate its contents before ingesting."
           }
         },
-        "Poll_object___action__current_bookmark__": {
-          "target": "smithy.api#Document",
+        "filename": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Poll object { action, current_bookmark }"
+            "smithy.api#documentation": "The filename you have successfully uploaded."
+          }
+        },
+        "current_bookmark": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "This identifies the currently-running import, checking its status."
           }
         }
       }
@@ -1247,23 +1261,53 @@
         "smithy.api#readonly": {}
       }
     },
+    "com.cloudflare.d1#DatabaseQueryRequestBodyParamsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.d1#DatabaseQueryRequestBodyBatchItemParamsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.d1#DatabaseQueryRequestBodyBatchItem": {
+      "type": "structure",
+      "members": {
+        "sql": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Your SQL query. Supports multiple statements, joined by semicolons, which will be executed as a batch.",
+            "smithy.api#required": {}
+          }
+        },
+        "params": {
+          "target": "com.cloudflare.d1#DatabaseQueryRequestBodyBatchItemParamsList"
+        }
+      }
+    },
+    "com.cloudflare.d1#DatabaseQueryRequestBodyBatchList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.d1#DatabaseQueryRequestBodyBatchItem"
+      }
+    },
     "com.cloudflare.d1#DatabaseQueryRequestBody": {
       "type": "structure",
       "members": {
-        "D1SingleQuery_object___sql__params__": {
-          "target": "smithy.api#Document",
+        "sql": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "A single query with or without parameters",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "D1SingleQuery object { sql, params }"
+            "smithy.api#documentation": "Your SQL query. Supports multiple statements, joined by semicolons, which will be executed as a batch."
           }
         },
-        "MultipleQueries_object___batch__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "MultipleQueries object { batch }"
-          }
+        "params": {
+          "target": "com.cloudflare.d1#DatabaseQueryRequestBodyParamsList"
+        },
+        "batch": {
+          "target": "com.cloudflare.d1#DatabaseQueryRequestBodyBatchList"
         }
       }
     },
@@ -1461,23 +1505,53 @@
         "smithy.api#documentation": "Returns the query result as an object."
       }
     },
+    "com.cloudflare.d1#DatabaseRawRequestBodyParamsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.d1#DatabaseRawRequestBodyBatchItemParamsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.d1#DatabaseRawRequestBodyBatchItem": {
+      "type": "structure",
+      "members": {
+        "sql": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Your SQL query. Supports multiple statements, joined by semicolons, which will be executed as a batch.",
+            "smithy.api#required": {}
+          }
+        },
+        "params": {
+          "target": "com.cloudflare.d1#DatabaseRawRequestBodyBatchItemParamsList"
+        }
+      }
+    },
+    "com.cloudflare.d1#DatabaseRawRequestBodyBatchList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.d1#DatabaseRawRequestBodyBatchItem"
+      }
+    },
     "com.cloudflare.d1#DatabaseRawRequestBody": {
       "type": "structure",
       "members": {
-        "D1SingleQuery_object___sql__params__": {
-          "target": "smithy.api#Document",
+        "sql": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "A single query with or without parameters",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "D1SingleQuery object { sql, params }"
+            "smithy.api#documentation": "Your SQL query. Supports multiple statements, joined by semicolons, which will be executed as a batch."
           }
         },
-        "MultipleQueries_object___batch__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "MultipleQueries object { batch }"
-          }
+        "params": {
+          "target": "com.cloudflare.d1#DatabaseRawRequestBodyParamsList"
+        },
+        "batch": {
+          "target": "com.cloudflare.d1#DatabaseRawRequestBodyBatchList"
         }
       }
     },

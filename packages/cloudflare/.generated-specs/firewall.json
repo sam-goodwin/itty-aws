@@ -17,42 +17,30 @@
     ]
   },
   "shapes": {
+    "com.cloudflare.firewall#AccessRulesCreateForAccountRequestConfigurationTarget": {
+      "type": "enum",
+      "members": {
+        "IP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ip"
+          }
+        }
+      }
+    },
     "com.cloudflare.firewall#AccessRulesCreateForAccountRequestConfiguration": {
       "type": "structure",
       "members": {
-        "AccessRuleIPConfiguration_object___target__value__": {
-          "target": "smithy.api#Document",
+        "target": {
+          "target": "com.cloudflare.firewall#AccessRulesCreateForAccountRequestConfigurationTarget",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "AccessRuleIPConfiguration object { target, value }"
+            "smithy.api#documentation": "The configuration target. You must set the target to `ip` when specifying an IP address in the rule."
           }
         },
-        "IPV6Configuration_object___target__value__": {
-          "target": "smithy.api#Document",
+        "value": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "IPV6Configuration object { target, value }"
-          }
-        },
-        "AccessRuleCIDRConfiguration_object___target__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "AccessRuleCIDRConfiguration object { target, value }"
-          }
-        },
-        "ASNConfiguration_object___target__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "ASNConfiguration object { target, value }"
-          }
-        },
-        "CountryConfiguration_object___target__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "CountryConfiguration object { target, value }"
+            "smithy.api#documentation": "The IP address to match. This address will be compared to the IP address of incoming requests."
           }
         }
       }
@@ -145,42 +133,30 @@
         "target": "com.cloudflare.firewall#AccessRulesCreateForAccountResponseAllowedModesItem"
       }
     },
+    "com.cloudflare.firewall#AccessRulesCreateForAccountResponseConfigurationTarget": {
+      "type": "enum",
+      "members": {
+        "IP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ip"
+          }
+        }
+      }
+    },
     "com.cloudflare.firewall#AccessRulesCreateForAccountResponseConfiguration": {
       "type": "structure",
       "members": {
-        "AccessRuleIPConfiguration_object___target__value__": {
-          "target": "smithy.api#Document",
+        "target": {
+          "target": "com.cloudflare.firewall#AccessRulesCreateForAccountResponseConfigurationTarget",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "AccessRuleIPConfiguration object { target, value }"
+            "smithy.api#documentation": "The configuration target. You must set the target to `ip` when specifying an IP address in the rule."
           }
         },
-        "IPV6Configuration_object___target__value__": {
-          "target": "smithy.api#Document",
+        "value": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "IPV6Configuration object { target, value }"
-          }
-        },
-        "AccessRuleCIDRConfiguration_object___target__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "AccessRuleCIDRConfiguration object { target, value }"
-          }
-        },
-        "ASNConfiguration_object___target__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "ASNConfiguration object { target, value }"
-          }
-        },
-        "CountryConfiguration_object___target__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "CountryConfiguration object { target, value }"
+            "smithy.api#documentation": "The IP address to match. This address will be compared to the IP address of incoming requests."
           }
         }
       }
@@ -326,42 +302,30 @@
         "smithy.api#documentation": "Creates a new IP Access rule for an account or zone. The rule will apply to all zones in the account or zone. Note: To create an IP Access rule that applies to a single zone, refer to the [IP Access rules for a zone](#ip-access-rules-for-a-zone) endpoints."
       }
     },
+    "com.cloudflare.firewall#AccessRulesCreateForZoneRequestConfigurationTarget": {
+      "type": "enum",
+      "members": {
+        "IP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ip"
+          }
+        }
+      }
+    },
     "com.cloudflare.firewall#AccessRulesCreateForZoneRequestConfiguration": {
       "type": "structure",
       "members": {
-        "AccessRuleIPConfiguration_object___target__value__": {
-          "target": "smithy.api#Document",
+        "target": {
+          "target": "com.cloudflare.firewall#AccessRulesCreateForZoneRequestConfigurationTarget",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "AccessRuleIPConfiguration object { target, value }"
+            "smithy.api#documentation": "The configuration target. You must set the target to `ip` when specifying an IP address in the rule."
           }
         },
-        "IPV6Configuration_object___target__value__": {
-          "target": "smithy.api#Document",
+        "value": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "IPV6Configuration object { target, value }"
-          }
-        },
-        "AccessRuleCIDRConfiguration_object___target__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "AccessRuleCIDRConfiguration object { target, value }"
-          }
-        },
-        "ASNConfiguration_object___target__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "ASNConfiguration object { target, value }"
-          }
-        },
-        "CountryConfiguration_object___target__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "CountryConfiguration object { target, value }"
+            "smithy.api#documentation": "The IP address to match. This address will be compared to the IP address of incoming requests."
           }
         }
       }
@@ -454,42 +418,30 @@
         "target": "com.cloudflare.firewall#AccessRulesCreateForZoneResponseAllowedModesItem"
       }
     },
+    "com.cloudflare.firewall#AccessRulesCreateForZoneResponseConfigurationTarget": {
+      "type": "enum",
+      "members": {
+        "IP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ip"
+          }
+        }
+      }
+    },
     "com.cloudflare.firewall#AccessRulesCreateForZoneResponseConfiguration": {
       "type": "structure",
       "members": {
-        "AccessRuleIPConfiguration_object___target__value__": {
-          "target": "smithy.api#Document",
+        "target": {
+          "target": "com.cloudflare.firewall#AccessRulesCreateForZoneResponseConfigurationTarget",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "AccessRuleIPConfiguration object { target, value }"
+            "smithy.api#documentation": "The configuration target. You must set the target to `ip` when specifying an IP address in the rule."
           }
         },
-        "IPV6Configuration_object___target__value__": {
-          "target": "smithy.api#Document",
+        "value": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "IPV6Configuration object { target, value }"
-          }
-        },
-        "AccessRuleCIDRConfiguration_object___target__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "AccessRuleCIDRConfiguration object { target, value }"
-          }
-        },
-        "ASNConfiguration_object___target__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "ASNConfiguration object { target, value }"
-          }
-        },
-        "CountryConfiguration_object___target__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "CountryConfiguration object { target, value }"
+            "smithy.api#documentation": "The IP address to match. This address will be compared to the IP address of incoming requests."
           }
         }
       }
@@ -751,42 +703,30 @@
         "smithy.api#idempotent": {}
       }
     },
+    "com.cloudflare.firewall#AccessRulesEditForAccountRequestConfigurationTarget": {
+      "type": "enum",
+      "members": {
+        "IP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ip"
+          }
+        }
+      }
+    },
     "com.cloudflare.firewall#AccessRulesEditForAccountRequestConfiguration": {
       "type": "structure",
       "members": {
-        "AccessRuleIPConfiguration_object___target__value__": {
-          "target": "smithy.api#Document",
+        "target": {
+          "target": "com.cloudflare.firewall#AccessRulesEditForAccountRequestConfigurationTarget",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "AccessRuleIPConfiguration object { target, value }"
+            "smithy.api#documentation": "The configuration target. You must set the target to `ip` when specifying an IP address in the rule."
           }
         },
-        "IPV6Configuration_object___target__value__": {
-          "target": "smithy.api#Document",
+        "value": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "IPV6Configuration object { target, value }"
-          }
-        },
-        "AccessRuleCIDRConfiguration_object___target__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "AccessRuleCIDRConfiguration object { target, value }"
-          }
-        },
-        "ASNConfiguration_object___target__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "ASNConfiguration object { target, value }"
-          }
-        },
-        "CountryConfiguration_object___target__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "CountryConfiguration object { target, value }"
+            "smithy.api#documentation": "The IP address to match. This address will be compared to the IP address of incoming requests."
           }
         }
       }
@@ -887,42 +827,30 @@
         "target": "com.cloudflare.firewall#AccessRulesEditForAccountResponseAllowedModesItem"
       }
     },
+    "com.cloudflare.firewall#AccessRulesEditForAccountResponseConfigurationTarget": {
+      "type": "enum",
+      "members": {
+        "IP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ip"
+          }
+        }
+      }
+    },
     "com.cloudflare.firewall#AccessRulesEditForAccountResponseConfiguration": {
       "type": "structure",
       "members": {
-        "AccessRuleIPConfiguration_object___target__value__": {
-          "target": "smithy.api#Document",
+        "target": {
+          "target": "com.cloudflare.firewall#AccessRulesEditForAccountResponseConfigurationTarget",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "AccessRuleIPConfiguration object { target, value }"
+            "smithy.api#documentation": "The configuration target. You must set the target to `ip` when specifying an IP address in the rule."
           }
         },
-        "IPV6Configuration_object___target__value__": {
-          "target": "smithy.api#Document",
+        "value": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "IPV6Configuration object { target, value }"
-          }
-        },
-        "AccessRuleCIDRConfiguration_object___target__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "AccessRuleCIDRConfiguration object { target, value }"
-          }
-        },
-        "ASNConfiguration_object___target__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "ASNConfiguration object { target, value }"
-          }
-        },
-        "CountryConfiguration_object___target__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "CountryConfiguration object { target, value }"
+            "smithy.api#documentation": "The IP address to match. This address will be compared to the IP address of incoming requests."
           }
         }
       }
@@ -1068,42 +996,30 @@
         "smithy.api#documentation": "Updates an IP Access rule defined. Note: This operation will affect all zones in the account or zone."
       }
     },
+    "com.cloudflare.firewall#AccessRulesEditForZoneRequestConfigurationTarget": {
+      "type": "enum",
+      "members": {
+        "IP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ip"
+          }
+        }
+      }
+    },
     "com.cloudflare.firewall#AccessRulesEditForZoneRequestConfiguration": {
       "type": "structure",
       "members": {
-        "AccessRuleIPConfiguration_object___target__value__": {
-          "target": "smithy.api#Document",
+        "target": {
+          "target": "com.cloudflare.firewall#AccessRulesEditForZoneRequestConfigurationTarget",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "AccessRuleIPConfiguration object { target, value }"
+            "smithy.api#documentation": "The configuration target. You must set the target to `ip` when specifying an IP address in the rule."
           }
         },
-        "IPV6Configuration_object___target__value__": {
-          "target": "smithy.api#Document",
+        "value": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "IPV6Configuration object { target, value }"
-          }
-        },
-        "AccessRuleCIDRConfiguration_object___target__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "AccessRuleCIDRConfiguration object { target, value }"
-          }
-        },
-        "ASNConfiguration_object___target__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "ASNConfiguration object { target, value }"
-          }
-        },
-        "CountryConfiguration_object___target__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "CountryConfiguration object { target, value }"
+            "smithy.api#documentation": "The IP address to match. This address will be compared to the IP address of incoming requests."
           }
         }
       }
@@ -1204,42 +1120,30 @@
         "target": "com.cloudflare.firewall#AccessRulesEditForZoneResponseAllowedModesItem"
       }
     },
+    "com.cloudflare.firewall#AccessRulesEditForZoneResponseConfigurationTarget": {
+      "type": "enum",
+      "members": {
+        "IP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ip"
+          }
+        }
+      }
+    },
     "com.cloudflare.firewall#AccessRulesEditForZoneResponseConfiguration": {
       "type": "structure",
       "members": {
-        "AccessRuleIPConfiguration_object___target__value__": {
-          "target": "smithy.api#Document",
+        "target": {
+          "target": "com.cloudflare.firewall#AccessRulesEditForZoneResponseConfigurationTarget",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "AccessRuleIPConfiguration object { target, value }"
+            "smithy.api#documentation": "The configuration target. You must set the target to `ip` when specifying an IP address in the rule."
           }
         },
-        "IPV6Configuration_object___target__value__": {
-          "target": "smithy.api#Document",
+        "value": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "IPV6Configuration object { target, value }"
-          }
-        },
-        "AccessRuleCIDRConfiguration_object___target__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "AccessRuleCIDRConfiguration object { target, value }"
-          }
-        },
-        "ASNConfiguration_object___target__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "ASNConfiguration object { target, value }"
-          }
-        },
-        "CountryConfiguration_object___target__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "CountryConfiguration object { target, value }"
+            "smithy.api#documentation": "The IP address to match. This address will be compared to the IP address of incoming requests."
           }
         }
       }
@@ -1438,42 +1342,30 @@
         "target": "com.cloudflare.firewall#AccessRulesGetForAccountResponseAllowedModesItem"
       }
     },
+    "com.cloudflare.firewall#AccessRulesGetForAccountResponseConfigurationTarget": {
+      "type": "enum",
+      "members": {
+        "IP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ip"
+          }
+        }
+      }
+    },
     "com.cloudflare.firewall#AccessRulesGetForAccountResponseConfiguration": {
       "type": "structure",
       "members": {
-        "AccessRuleIPConfiguration_object___target__value__": {
-          "target": "smithy.api#Document",
+        "target": {
+          "target": "com.cloudflare.firewall#AccessRulesGetForAccountResponseConfigurationTarget",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "AccessRuleIPConfiguration object { target, value }"
+            "smithy.api#documentation": "The configuration target. You must set the target to `ip` when specifying an IP address in the rule."
           }
         },
-        "IPV6Configuration_object___target__value__": {
-          "target": "smithy.api#Document",
+        "value": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "IPV6Configuration object { target, value }"
-          }
-        },
-        "AccessRuleCIDRConfiguration_object___target__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "AccessRuleCIDRConfiguration object { target, value }"
-          }
-        },
-        "ASNConfiguration_object___target__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "ASNConfiguration object { target, value }"
-          }
-        },
-        "CountryConfiguration_object___target__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "CountryConfiguration object { target, value }"
+            "smithy.api#documentation": "The IP address to match. This address will be compared to the IP address of incoming requests."
           }
         }
       }
@@ -1673,42 +1565,30 @@
         "target": "com.cloudflare.firewall#AccessRulesGetForZoneResponseAllowedModesItem"
       }
     },
+    "com.cloudflare.firewall#AccessRulesGetForZoneResponseConfigurationTarget": {
+      "type": "enum",
+      "members": {
+        "IP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ip"
+          }
+        }
+      }
+    },
     "com.cloudflare.firewall#AccessRulesGetForZoneResponseConfiguration": {
       "type": "structure",
       "members": {
-        "AccessRuleIPConfiguration_object___target__value__": {
-          "target": "smithy.api#Document",
+        "target": {
+          "target": "com.cloudflare.firewall#AccessRulesGetForZoneResponseConfigurationTarget",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "AccessRuleIPConfiguration object { target, value }"
+            "smithy.api#documentation": "The configuration target. You must set the target to `ip` when specifying an IP address in the rule."
           }
         },
-        "IPV6Configuration_object___target__value__": {
-          "target": "smithy.api#Document",
+        "value": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "IPV6Configuration object { target, value }"
-          }
-        },
-        "AccessRuleCIDRConfiguration_object___target__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "AccessRuleCIDRConfiguration object { target, value }"
-          }
-        },
-        "ASNConfiguration_object___target__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "ASNConfiguration object { target, value }"
-          }
-        },
-        "CountryConfiguration_object___target__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "CountryConfiguration object { target, value }"
+            "smithy.api#documentation": "The IP address to match. This address will be compared to the IP address of incoming requests."
           }
         }
       }
@@ -2035,42 +1915,30 @@
         "target": "com.cloudflare.firewall#AccessRulesListForAccountResultItemAllowedModesItem"
       }
     },
+    "com.cloudflare.firewall#AccessRulesListForAccountResultItemConfigurationTarget": {
+      "type": "enum",
+      "members": {
+        "IP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ip"
+          }
+        }
+      }
+    },
     "com.cloudflare.firewall#AccessRulesListForAccountResultItemConfiguration": {
       "type": "structure",
       "members": {
-        "AccessRuleIPConfiguration_object___target__value__": {
-          "target": "smithy.api#Document",
+        "target": {
+          "target": "com.cloudflare.firewall#AccessRulesListForAccountResultItemConfigurationTarget",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "AccessRuleIPConfiguration object { target, value }"
+            "smithy.api#documentation": "The configuration target. You must set the target to `ip` when specifying an IP address in the rule."
           }
         },
-        "IPV6Configuration_object___target__value__": {
-          "target": "smithy.api#Document",
+        "value": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "IPV6Configuration object { target, value }"
-          }
-        },
-        "AccessRuleCIDRConfiguration_object___target__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "AccessRuleCIDRConfiguration object { target, value }"
-          }
-        },
-        "ASNConfiguration_object___target__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "ASNConfiguration object { target, value }"
-          }
-        },
-        "CountryConfiguration_object___target__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "CountryConfiguration object { target, value }"
+            "smithy.api#documentation": "The IP address to match. This address will be compared to the IP address of incoming requests."
           }
         }
       }
@@ -2414,42 +2282,30 @@
         "target": "com.cloudflare.firewall#AccessRulesListForZoneResultItemAllowedModesItem"
       }
     },
+    "com.cloudflare.firewall#AccessRulesListForZoneResultItemConfigurationTarget": {
+      "type": "enum",
+      "members": {
+        "IP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ip"
+          }
+        }
+      }
+    },
     "com.cloudflare.firewall#AccessRulesListForZoneResultItemConfiguration": {
       "type": "structure",
       "members": {
-        "AccessRuleIPConfiguration_object___target__value__": {
-          "target": "smithy.api#Document",
+        "target": {
+          "target": "com.cloudflare.firewall#AccessRulesListForZoneResultItemConfigurationTarget",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "AccessRuleIPConfiguration object { target, value }"
+            "smithy.api#documentation": "The configuration target. You must set the target to `ip` when specifying an IP address in the rule."
           }
         },
-        "IPV6Configuration_object___target__value__": {
-          "target": "smithy.api#Document",
+        "value": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "IPV6Configuration object { target, value }"
-          }
-        },
-        "AccessRuleCIDRConfiguration_object___target__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "AccessRuleCIDRConfiguration object { target, value }"
-          }
-        },
-        "ASNConfiguration_object___target__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "ASNConfiguration object { target, value }"
-          }
-        },
-        "CountryConfiguration_object___target__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "CountryConfiguration object { target, value }"
+            "smithy.api#documentation": "The IP address to match. This address will be compared to the IP address of incoming requests."
           }
         }
       }
@@ -2613,21 +2469,30 @@
         "smithy.api#readonly": {}
       }
     },
+    "com.cloudflare.firewall#LockdownsCreateRequestConfigurationsTarget": {
+      "type": "enum",
+      "members": {
+        "IP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ip"
+          }
+        }
+      }
+    },
     "com.cloudflare.firewall#LockdownsCreateRequestConfigurations": {
       "type": "structure",
       "members": {
-        "LockdownIPConfiguration_object___target__value__": {
-          "target": "smithy.api#Document",
+        "target": {
+          "target": "com.cloudflare.firewall#LockdownsCreateRequestConfigurationsTarget",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "LockdownIPConfiguration object { target, value }"
+            "smithy.api#documentation": "The configuration target. You must set the target to `ip` when specifying an IP address in the Zone Lockdown rule."
           }
         },
-        "LockdownCIDRConfiguration_object___target__value__": {
-          "target": "smithy.api#Document",
+        "value": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "LockdownCIDRConfiguration object { target, value }"
+            "smithy.api#documentation": "The IP address to match. This address will be compared to the IP address of incoming requests."
           }
         }
       }
@@ -2686,21 +2551,30 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.firewall#LockdownsCreateResponseConfigurationsTarget": {
+      "type": "enum",
+      "members": {
+        "IP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ip"
+          }
+        }
+      }
+    },
     "com.cloudflare.firewall#LockdownsCreateResponseConfigurations": {
       "type": "structure",
       "members": {
-        "LockdownIPConfiguration_object___target__value__": {
-          "target": "smithy.api#Document",
+        "target": {
+          "target": "com.cloudflare.firewall#LockdownsCreateResponseConfigurationsTarget",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "LockdownIPConfiguration object { target, value }"
+            "smithy.api#documentation": "The configuration target. You must set the target to `ip` when specifying an IP address in the Zone Lockdown rule."
           }
         },
-        "LockdownCIDRConfiguration_object___target__value__": {
-          "target": "smithy.api#Document",
+        "value": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "LockdownCIDRConfiguration object { target, value }"
+            "smithy.api#documentation": "The IP address to match. This address will be compared to the IP address of incoming requests."
           }
         }
       }
@@ -2867,21 +2741,30 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.firewall#LockdownsGetResponseConfigurationsTarget": {
+      "type": "enum",
+      "members": {
+        "IP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ip"
+          }
+        }
+      }
+    },
     "com.cloudflare.firewall#LockdownsGetResponseConfigurations": {
       "type": "structure",
       "members": {
-        "LockdownIPConfiguration_object___target__value__": {
-          "target": "smithy.api#Document",
+        "target": {
+          "target": "com.cloudflare.firewall#LockdownsGetResponseConfigurationsTarget",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "LockdownIPConfiguration object { target, value }"
+            "smithy.api#documentation": "The configuration target. You must set the target to `ip` when specifying an IP address in the Zone Lockdown rule."
           }
         },
-        "LockdownCIDRConfiguration_object___target__value__": {
-          "target": "smithy.api#Document",
+        "value": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "LockdownCIDRConfiguration object { target, value }"
+            "smithy.api#documentation": "The IP address to match. This address will be compared to the IP address of incoming requests."
           }
         }
       }
@@ -3061,21 +2944,30 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.firewall#LockdownsListResultItemConfigurationsTarget": {
+      "type": "enum",
+      "members": {
+        "IP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ip"
+          }
+        }
+      }
+    },
     "com.cloudflare.firewall#LockdownsListResultItemConfigurations": {
       "type": "structure",
       "members": {
-        "LockdownIPConfiguration_object___target__value__": {
-          "target": "smithy.api#Document",
+        "target": {
+          "target": "com.cloudflare.firewall#LockdownsListResultItemConfigurationsTarget",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "LockdownIPConfiguration object { target, value }"
+            "smithy.api#documentation": "The configuration target. You must set the target to `ip` when specifying an IP address in the Zone Lockdown rule."
           }
         },
-        "LockdownCIDRConfiguration_object___target__value__": {
-          "target": "smithy.api#Document",
+        "value": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "LockdownCIDRConfiguration object { target, value }"
+            "smithy.api#documentation": "The IP address to match. This address will be compared to the IP address of incoming requests."
           }
         }
       }
@@ -3179,21 +3071,30 @@
         "smithy.api#readonly": {}
       }
     },
+    "com.cloudflare.firewall#LockdownsUpdateRequestConfigurationsTarget": {
+      "type": "enum",
+      "members": {
+        "IP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ip"
+          }
+        }
+      }
+    },
     "com.cloudflare.firewall#LockdownsUpdateRequestConfigurations": {
       "type": "structure",
       "members": {
-        "LockdownIPConfiguration_object___target__value__": {
-          "target": "smithy.api#Document",
+        "target": {
+          "target": "com.cloudflare.firewall#LockdownsUpdateRequestConfigurationsTarget",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "LockdownIPConfiguration object { target, value }"
+            "smithy.api#documentation": "The configuration target. You must set the target to `ip` when specifying an IP address in the Zone Lockdown rule."
           }
         },
-        "LockdownCIDRConfiguration_object___target__value__": {
-          "target": "smithy.api#Document",
+        "value": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "LockdownCIDRConfiguration object { target, value }"
+            "smithy.api#documentation": "The IP address to match. This address will be compared to the IP address of incoming requests."
           }
         }
       }
@@ -3242,21 +3143,30 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.firewall#LockdownsUpdateResponseConfigurationsTarget": {
+      "type": "enum",
+      "members": {
+        "IP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ip"
+          }
+        }
+      }
+    },
     "com.cloudflare.firewall#LockdownsUpdateResponseConfigurations": {
       "type": "structure",
       "members": {
-        "LockdownIPConfiguration_object___target__value__": {
-          "target": "smithy.api#Document",
+        "target": {
+          "target": "com.cloudflare.firewall#LockdownsUpdateResponseConfigurationsTarget",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "LockdownIPConfiguration object { target, value }"
+            "smithy.api#documentation": "The configuration target. You must set the target to `ip` when specifying an IP address in the Zone Lockdown rule."
           }
         },
-        "LockdownCIDRConfiguration_object___target__value__": {
-          "target": "smithy.api#Document",
+        "value": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "LockdownCIDRConfiguration object { target, value }"
+            "smithy.api#documentation": "The IP address to match. This address will be compared to the IP address of incoming requests."
           }
         }
       }
@@ -3362,18 +3272,40 @@
     "com.cloudflare.firewall#RulesBulkDeleteResultItemFilter": {
       "type": "structure",
       "members": {
-        "FirewallFilter_object___id__description__expression__2_more__": {
-          "target": "smithy.api#Document",
+        "id": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "FirewallFilter object { id, description, expression, 2 more }"
+            "smithy.api#documentation": "The unique identifier of the filter."
           }
         },
-        "DeletedFilter_object___id__deleted__": {
-          "target": "smithy.api#Document",
+        "description": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "DeletedFilter object { id, deleted }"
+            "smithy.api#documentation": "An informative summary of the filter."
+          }
+        },
+        "expression": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/)."
+          }
+        },
+        "paused": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "When true, indicates that the filter is currently paused."
+          }
+        },
+        "ref": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A short reference tag. Allows you to select related filters."
+          }
+        },
+        "deleted": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "When true, indicates that the firewall rule was deleted."
           }
         }
       }
@@ -3495,18 +3427,40 @@
     "com.cloudflare.firewall#RulesBulkEditResultItemFilter": {
       "type": "structure",
       "members": {
-        "FirewallFilter_object___id__description__expression__2_more__": {
-          "target": "smithy.api#Document",
+        "id": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "FirewallFilter object { id, description, expression, 2 more }"
+            "smithy.api#documentation": "The unique identifier of the filter."
           }
         },
-        "DeletedFilter_object___id__deleted__": {
-          "target": "smithy.api#Document",
+        "description": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "DeletedFilter object { id, deleted }"
+            "smithy.api#documentation": "An informative summary of the filter."
+          }
+        },
+        "expression": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/)."
+          }
+        },
+        "paused": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "When true, indicates that the filter is currently paused."
+          }
+        },
+        "ref": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A short reference tag. Allows you to select related filters."
+          }
+        },
+        "deleted": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "When true, indicates that the firewall rule was deleted."
           }
         }
       }
@@ -3627,18 +3581,40 @@
     "com.cloudflare.firewall#RulesBulkUpdateResultItemFilter": {
       "type": "structure",
       "members": {
-        "FirewallFilter_object___id__description__expression__2_more__": {
-          "target": "smithy.api#Document",
+        "id": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "FirewallFilter object { id, description, expression, 2 more }"
+            "smithy.api#documentation": "The unique identifier of the filter."
           }
         },
-        "DeletedFilter_object___id__deleted__": {
-          "target": "smithy.api#Document",
+        "description": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "DeletedFilter object { id, deleted }"
+            "smithy.api#documentation": "An informative summary of the filter."
+          }
+        },
+        "expression": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/)."
+          }
+        },
+        "paused": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "When true, indicates that the filter is currently paused."
+          }
+        },
+        "ref": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A short reference tag. Allows you to select related filters."
+          }
+        },
+        "deleted": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "When true, indicates that the firewall rule was deleted."
           }
         }
       }
@@ -3865,18 +3841,40 @@
     "com.cloudflare.firewall#RulesCreateResultItemFilter": {
       "type": "structure",
       "members": {
-        "FirewallFilter_object___id__description__expression__2_more__": {
-          "target": "smithy.api#Document",
+        "id": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "FirewallFilter object { id, description, expression, 2 more }"
+            "smithy.api#documentation": "The unique identifier of the filter."
           }
         },
-        "DeletedFilter_object___id__deleted__": {
-          "target": "smithy.api#Document",
+        "description": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "DeletedFilter object { id, deleted }"
+            "smithy.api#documentation": "An informative summary of the filter."
+          }
+        },
+        "expression": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/)."
+          }
+        },
+        "paused": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "When true, indicates that the filter is currently paused."
+          }
+        },
+        "ref": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A short reference tag. Allows you to select related filters."
+          }
+        },
+        "deleted": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "When true, indicates that the firewall rule was deleted."
           }
         }
       }
@@ -3999,18 +3997,40 @@
     "com.cloudflare.firewall#RulesDeleteResponseFilter": {
       "type": "structure",
       "members": {
-        "FirewallFilter_object___id__description__expression__2_more__": {
-          "target": "smithy.api#Document",
+        "id": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "FirewallFilter object { id, description, expression, 2 more }"
+            "smithy.api#documentation": "The unique identifier of the filter."
           }
         },
-        "DeletedFilter_object___id__deleted__": {
-          "target": "smithy.api#Document",
+        "description": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "DeletedFilter object { id, deleted }"
+            "smithy.api#documentation": "An informative summary of the filter."
+          }
+        },
+        "expression": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/)."
+          }
+        },
+        "paused": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "When true, indicates that the filter is currently paused."
+          }
+        },
+        "ref": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A short reference tag. Allows you to select related filters."
+          }
+        },
+        "deleted": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "When true, indicates that the firewall rule was deleted."
           }
         }
       }
@@ -4117,18 +4137,40 @@
     "com.cloudflare.firewall#RulesEditResultItemFilter": {
       "type": "structure",
       "members": {
-        "FirewallFilter_object___id__description__expression__2_more__": {
-          "target": "smithy.api#Document",
+        "id": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "FirewallFilter object { id, description, expression, 2 more }"
+            "smithy.api#documentation": "The unique identifier of the filter."
           }
         },
-        "DeletedFilter_object___id__deleted__": {
-          "target": "smithy.api#Document",
+        "description": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "DeletedFilter object { id, deleted }"
+            "smithy.api#documentation": "An informative summary of the filter."
+          }
+        },
+        "expression": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/)."
+          }
+        },
+        "paused": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "When true, indicates that the filter is currently paused."
+          }
+        },
+        "ref": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A short reference tag. Allows you to select related filters."
+          }
+        },
+        "deleted": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "When true, indicates that the firewall rule was deleted."
           }
         }
       }
@@ -4251,18 +4293,40 @@
     "com.cloudflare.firewall#RulesGetResponseFilter": {
       "type": "structure",
       "members": {
-        "FirewallFilter_object___id__description__expression__2_more__": {
-          "target": "smithy.api#Document",
+        "id": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "FirewallFilter object { id, description, expression, 2 more }"
+            "smithy.api#documentation": "The unique identifier of the filter."
           }
         },
-        "DeletedFilter_object___id__deleted__": {
-          "target": "smithy.api#Document",
+        "description": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "DeletedFilter object { id, deleted }"
+            "smithy.api#documentation": "An informative summary of the filter."
+          }
+        },
+        "expression": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/)."
+          }
+        },
+        "paused": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "When true, indicates that the filter is currently paused."
+          }
+        },
+        "ref": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A short reference tag. Allows you to select related filters."
+          }
+        },
+        "deleted": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "When true, indicates that the firewall rule was deleted."
           }
         }
       }
@@ -4403,18 +4467,40 @@
     "com.cloudflare.firewall#RulesListResultItemFilter": {
       "type": "structure",
       "members": {
-        "FirewallFilter_object___id__description__expression__2_more__": {
-          "target": "smithy.api#Document",
+        "id": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "FirewallFilter object { id, description, expression, 2 more }"
+            "smithy.api#documentation": "The unique identifier of the filter."
           }
         },
-        "DeletedFilter_object___id__deleted__": {
-          "target": "smithy.api#Document",
+        "description": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "DeletedFilter object { id, deleted }"
+            "smithy.api#documentation": "An informative summary of the filter."
+          }
+        },
+        "expression": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/)."
+          }
+        },
+        "paused": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "When true, indicates that the filter is currently paused."
+          }
+        },
+        "ref": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A short reference tag. Allows you to select related filters."
+          }
+        },
+        "deleted": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "When true, indicates that the firewall rule was deleted."
           }
         }
       }
@@ -4649,18 +4735,40 @@
     "com.cloudflare.firewall#RulesUpdateResponseFilter": {
       "type": "structure",
       "members": {
-        "FirewallFilter_object___id__description__expression__2_more__": {
-          "target": "smithy.api#Document",
+        "id": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "FirewallFilter object { id, description, expression, 2 more }"
+            "smithy.api#documentation": "The unique identifier of the filter."
           }
         },
-        "DeletedFilter_object___id__deleted__": {
-          "target": "smithy.api#Document",
+        "description": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "DeletedFilter object { id, deleted }"
+            "smithy.api#documentation": "An informative summary of the filter."
+          }
+        },
+        "expression": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/)."
+          }
+        },
+        "paused": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "When true, indicates that the filter is currently paused."
+          }
+        },
+        "ref": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A short reference tag. Allows you to select related filters."
+          }
+        },
+        "deleted": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "When true, indicates that the firewall rule was deleted."
           }
         }
       }
@@ -5359,42 +5467,30 @@
         "smithy.api#readonly": {}
       }
     },
+    "com.cloudflare.firewall#UaRulesUpdateRequestConfigurationTarget": {
+      "type": "enum",
+      "members": {
+        "IP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ip"
+          }
+        }
+      }
+    },
     "com.cloudflare.firewall#UaRulesUpdateRequestConfiguration": {
       "type": "structure",
       "members": {
-        "AccessRuleIPConfiguration_object___target__value__": {
-          "target": "smithy.api#Document",
+        "target": {
+          "target": "com.cloudflare.firewall#UaRulesUpdateRequestConfigurationTarget",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "AccessRuleIPConfiguration object { target, value }"
+            "smithy.api#documentation": "The configuration target. You must set the target to `ip` when specifying an IP address in the rule."
           }
         },
-        "IPV6Configuration_object___target__value__": {
-          "target": "smithy.api#Document",
+        "value": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "IPV6Configuration object { target, value }"
-          }
-        },
-        "AccessRuleCIDRConfiguration_object___target__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "AccessRuleCIDRConfiguration object { target, value }"
-          }
-        },
-        "ASNConfiguration_object___target__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "ASNConfiguration object { target, value }"
-          }
-        },
-        "CountryConfiguration_object___target__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "CountryConfiguration object { target, value }"
+            "smithy.api#documentation": "The IP address to match. This address will be compared to the IP address of incoming requests."
           }
         }
       }
@@ -6923,21 +7019,105 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.firewall#WafPackagesGetResponseErrorsItemSource": {
+      "type": "structure",
+      "members": {
+        "pointer": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.firewall#WafPackagesGetResponseErrorsItem": {
+      "type": "structure",
+      "members": {
+        "code": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "message": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "documentation_url": {
+          "target": "smithy.api#String"
+        },
+        "source": {
+          "target": "com.cloudflare.firewall#WafPackagesGetResponseErrorsItemSource"
+        }
+      }
+    },
+    "com.cloudflare.firewall#WafPackagesGetResponseErrorsList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.firewall#WafPackagesGetResponseErrorsItem"
+      }
+    },
+    "com.cloudflare.firewall#WafPackagesGetResponseMessagesItem": {
+      "type": "structure",
+      "members": {
+        "code": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "message": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "documentation_url": {
+          "target": "smithy.api#String"
+        },
+        "source": {
+          "target": "smithy.api#Document"
+        }
+      }
+    },
+    "com.cloudflare.firewall#WafPackagesGetResponseMessagesList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.firewall#WafPackagesGetResponseMessagesItem"
+      }
+    },
+    "com.cloudflare.firewall#WafPackagesGetResponseResult": {
+      "type": "structure",
+      "members": {
+        "unknown": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "string": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
     "com.cloudflare.firewall#WafPackagesGetResponse": {
       "type": "structure",
       "members": {
-        "FirewallAPIResponseSingle_object___errors__messages__result__success__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "FirewallAPIResponseSingle object { errors, messages, result, success }"
-          }
+        "errors": {
+          "target": "com.cloudflare.firewall#WafPackagesGetResponseErrorsList"
         },
-        "Result_object___result__": {
-          "target": "smithy.api#Document",
+        "messages": {
+          "target": "com.cloudflare.firewall#WafPackagesGetResponseMessagesList"
+        },
+        "result": {
+          "target": "com.cloudflare.firewall#WafPackagesGetResponseResult"
+        },
+        "success": {
+          "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Result object { result }"
+            "smithy.api#documentation": "Defines whether the API call was successful."
           }
         }
       },
@@ -7067,22 +7247,127 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.firewall#WafPackagesListResponseErrorsItemSource": {
+      "type": "structure",
+      "members": {
+        "pointer": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.firewall#WafPackagesListResponseErrorsItem": {
+      "type": "structure",
+      "members": {
+        "code": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "message": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "documentation_url": {
+          "target": "smithy.api#String"
+        },
+        "source": {
+          "target": "com.cloudflare.firewall#WafPackagesListResponseErrorsItemSource"
+        }
+      }
+    },
+    "com.cloudflare.firewall#WafPackagesListResponseErrorsList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.firewall#WafPackagesListResponseErrorsItem"
+      }
+    },
+    "com.cloudflare.firewall#WafPackagesListResponseMessagesItem": {
+      "type": "structure",
+      "members": {
+        "code": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "message": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "documentation_url": {
+          "target": "smithy.api#String"
+        },
+        "source": {
+          "target": "smithy.api#Document"
+        }
+      }
+    },
+    "com.cloudflare.firewall#WafPackagesListResponseMessagesList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.firewall#WafPackagesListResponseMessagesItem"
+      }
+    },
+    "com.cloudflare.firewall#WafPackagesListResponseResultList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.firewall#WafPackagesListResponseResultInfo": {
+      "type": "structure",
+      "members": {
+        "count": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Defines the total number of results for the requested service."
+          }
+        },
+        "page": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Defines the current page within paginated list of results."
+          }
+        },
+        "per_page": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Defines the number of results per page of results."
+          }
+        },
+        "total_count": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Defines the total results available without any search parameters."
+          }
+        }
+      }
+    },
     "com.cloudflare.firewall#WafPackagesListResponse": {
       "type": "structure",
       "members": {
-        "FirewallAPIResponseCollection_object___errors__messages__result__2_more__": {
-          "target": "smithy.api#Document",
+        "errors": {
+          "target": "com.cloudflare.firewall#WafPackagesListResponseErrorsList"
+        },
+        "messages": {
+          "target": "com.cloudflare.firewall#WafPackagesListResponseMessagesList"
+        },
+        "result": {
+          "target": "com.cloudflare.firewall#WafPackagesListResponseResultList"
+        },
+        "success": {
+          "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "FirewallAPIResponseCollection object { errors, messages, result, 2 more }"
+            "smithy.api#documentation": "Defines whether the API call was successful."
           }
         },
-        "Result_object___result__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Result object { result }"
-          }
+        "result_info": {
+          "target": "com.cloudflare.firewall#WafPackagesListResponseResultInfo"
         }
       },
       "traits": {
@@ -7618,31 +7903,107 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.firewall#WafPackagesRulesEditResponseAllowedModesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.firewall#WafPackagesRulesEditResponseGroup": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Defines the unique identifier of the rule group."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Defines the name of the rule group."
+          }
+        }
+      }
+    },
+    "com.cloudflare.firewall#WafPackagesRulesEditResponseDefaultMode": {
+      "type": "enum",
+      "members": {
+        "DISABLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "disable"
+          }
+        },
+        "SIMULATE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "simulate"
+          }
+        },
+        "BLOCK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "block"
+          }
+        },
+        "CHALLENGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "challenge"
+          }
+        }
+      }
+    },
     "com.cloudflare.firewall#WafPackagesRulesEditResponse": {
       "type": "structure",
       "members": {
-        "WAFManagedRulesAnomalyRule_object___id__allowed_modes__description__4_more__": {
-          "target": "smithy.api#Document",
+        "id": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "When triggered, anomaly detection WAF rules contribute to an overall threat score that will determine if a request is considered malicious. You can configure the total scoring threshold through the 'sensitivity' property of the WAF package.",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "WAFManagedRulesAnomalyRule object { id, allowed_modes, description, 4 more }"
+            "smithy.api#documentation": "Defines the unique identifier of the WAF rule."
           }
         },
-        "WAFManagedRulesTraditionalDenyRule_object___id__allowed_modes__default_mode__5_more__": {
-          "target": "smithy.api#Document",
+        "allowed_modes": {
+          "target": "com.cloudflare.firewall#WafPackagesRulesEditResponseAllowedModesList",
           "traits": {
-            "smithy.api#documentation": "When triggered, traditional WAF rules cause the firewall to immediately act upon the request based on the configuration of the rule. A 'deny' rule will immediately respond to the request based on the configured rule action/mode (for example, 'block') and no other rules will be processed.",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "WAFManagedRulesTraditionalDenyRule object { id, allowed_modes, default_mode, 5 more }"
+            "smithy.api#documentation": "Defines the available modes for the current WAF rule. Applies to anomaly detection WAF rules."
           }
         },
-        "WAFManagedRulesTraditionalAllowRule_object___id__allowed_modes__description__4_more__": {
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Defines the public description of the WAF rule."
+          }
+        },
+        "group": {
+          "target": "com.cloudflare.firewall#WafPackagesRulesEditResponseGroup",
+          "traits": {
+            "smithy.api#documentation": "Defines the rule group to which the current WAF rule belongs."
+          }
+        },
+        "mode": {
           "target": "smithy.api#Document",
           "traits": {
-            "smithy.api#documentation": "When triggered, traditional WAF rules cause the firewall to immediately act on the request based on the rule configuration. An 'allow' rule will immediately allow the request and no other rules will be processed.",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "WAFManagedRulesTraditionalAllowRule object { id, allowed_modes, description, 4 more }"
+            "smithy.api#documentation": "Defines the mode anomaly. When set to `on`, the current WAF rule will be used when evaluating the request. Applies to anomaly detection WAF rules."
+          }
+        },
+        "package_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Defines the unique identifier of a WAF package."
+          }
+        },
+        "priority": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Defines the order in which the individual WAF rule is executed within its rule group."
+          }
+        },
+        "default_mode": {
+          "target": "com.cloudflare.firewall#WafPackagesRulesEditResponseDefaultMode",
+          "traits": {
+            "smithy.api#documentation": "Defines the default action/mode of a rule."
           }
         }
       },
@@ -7912,31 +8273,107 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.firewall#WafPackagesRulesListResultItemAllowedModesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.firewall#WafPackagesRulesListResultItemGroup": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Defines the unique identifier of the rule group."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Defines the name of the rule group."
+          }
+        }
+      }
+    },
+    "com.cloudflare.firewall#WafPackagesRulesListResultItemDefaultMode": {
+      "type": "enum",
+      "members": {
+        "DISABLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "disable"
+          }
+        },
+        "SIMULATE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "simulate"
+          }
+        },
+        "BLOCK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "block"
+          }
+        },
+        "CHALLENGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "challenge"
+          }
+        }
+      }
+    },
     "com.cloudflare.firewall#WafPackagesRulesListResultItem": {
       "type": "structure",
       "members": {
-        "WAFManagedRulesAnomalyRule_object___id__allowed_modes__description__4_more__": {
-          "target": "smithy.api#Document",
+        "id": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "When triggered, anomaly detection WAF rules contribute to an overall threat score that will determine if a request is considered malicious. You can configure the total scoring threshold through the 'sensitivity' property of the WAF package.",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "WAFManagedRulesAnomalyRule object { id, allowed_modes, description, 4 more }"
+            "smithy.api#documentation": "Defines the unique identifier of the WAF rule."
           }
         },
-        "WAFManagedRulesTraditionalDenyRule_object___id__allowed_modes__default_mode__5_more__": {
-          "target": "smithy.api#Document",
+        "allowed_modes": {
+          "target": "com.cloudflare.firewall#WafPackagesRulesListResultItemAllowedModesList",
           "traits": {
-            "smithy.api#documentation": "When triggered, traditional WAF rules cause the firewall to immediately act upon the request based on the configuration of the rule. A 'deny' rule will immediately respond to the request based on the configured rule action/mode (for example, 'block') and no other rules will be processed.",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "WAFManagedRulesTraditionalDenyRule object { id, allowed_modes, default_mode, 5 more }"
+            "smithy.api#documentation": "Defines the available modes for the current WAF rule. Applies to anomaly detection WAF rules."
           }
         },
-        "WAFManagedRulesTraditionalAllowRule_object___id__allowed_modes__description__4_more__": {
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Defines the public description of the WAF rule."
+          }
+        },
+        "group": {
+          "target": "com.cloudflare.firewall#WafPackagesRulesListResultItemGroup",
+          "traits": {
+            "smithy.api#documentation": "Defines the rule group to which the current WAF rule belongs."
+          }
+        },
+        "mode": {
           "target": "smithy.api#Document",
           "traits": {
-            "smithy.api#documentation": "When triggered, traditional WAF rules cause the firewall to immediately act on the request based on the rule configuration. An 'allow' rule will immediately allow the request and no other rules will be processed.",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "WAFManagedRulesTraditionalAllowRule object { id, allowed_modes, description, 4 more }"
+            "smithy.api#documentation": "Defines the mode anomaly. When set to `on`, the current WAF rule will be used when evaluating the request. Applies to anomaly detection WAF rules."
+          }
+        },
+        "package_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Defines the unique identifier of a WAF package."
+          }
+        },
+        "priority": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Defines the order in which the individual WAF rule is executed within its rule group."
+          }
+        },
+        "default_mode": {
+          "target": "com.cloudflare.firewall#WafPackagesRulesListResultItemDefaultMode",
+          "traits": {
+            "smithy.api#documentation": "Defines the default action/mode of a rule."
           }
         }
       }

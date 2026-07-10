@@ -108,17 +108,27 @@ export const BulkDeleteRulesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BulkDeleteRulesRequest>;
 
 export interface RulesBulkDeleteResultItemFilter {
-  FirewallFilterObjectIdDescriptionExpression2More__: unknown;
-  DeletedFilterObjectIdDeleted__: unknown;
+  /** The unique identifier of the filter. */
+  id?: string;
+  /** An informative summary of the filter. */
+  description?: string;
+  /** The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/). */
+  expression?: string;
+  /** When true, indicates that the filter is currently paused. */
+  paused?: boolean;
+  /** A short reference tag. Allows you to select related filters. */
+  ref?: string;
+  /** When true, indicates that the firewall rule was deleted. */
+  deleted?: boolean;
 }
 export const RulesBulkDeleteResultItemFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    FirewallFilterObjectIdDescriptionExpression2More__: S.Unknown.pipe(
-      T.Body("FirewallFilter object { id, description, expression, 2 more }"),
-    ),
-    DeletedFilterObjectIdDeleted__: S.Unknown.pipe(
-      T.Body("DeletedFilter object { id, deleted }"),
-    ),
+    id: S.optional(S.String),
+    description: S.optional(S.String),
+    expression: S.optional(S.String),
+    paused: S.optional(S.Boolean),
+    ref: S.optional(S.String),
+    deleted: S.optional(S.Boolean),
   }),
 ).annotate({
   identifier: "RulesBulkDeleteResultItemFilter",
@@ -203,17 +213,27 @@ export const BulkPatchRulesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BulkPatchRulesRequest>;
 
 export interface RulesBulkEditResultItemFilter {
-  FirewallFilterObjectIdDescriptionExpression2More__: unknown;
-  DeletedFilterObjectIdDeleted__: unknown;
+  /** The unique identifier of the filter. */
+  id?: string;
+  /** An informative summary of the filter. */
+  description?: string;
+  /** The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/). */
+  expression?: string;
+  /** When true, indicates that the filter is currently paused. */
+  paused?: boolean;
+  /** A short reference tag. Allows you to select related filters. */
+  ref?: string;
+  /** When true, indicates that the firewall rule was deleted. */
+  deleted?: boolean;
 }
 export const RulesBulkEditResultItemFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    FirewallFilterObjectIdDescriptionExpression2More__: S.Unknown.pipe(
-      T.Body("FirewallFilter object { id, description, expression, 2 more }"),
-    ),
-    DeletedFilterObjectIdDeleted__: S.Unknown.pipe(
-      T.Body("DeletedFilter object { id, deleted }"),
-    ),
+    id: S.optional(S.String),
+    description: S.optional(S.String),
+    expression: S.optional(S.String),
+    paused: S.optional(S.Boolean),
+    ref: S.optional(S.String),
+    deleted: S.optional(S.Boolean),
   }),
 ).annotate({
   identifier: "RulesBulkEditResultItemFilter",
@@ -298,17 +318,27 @@ export const BulkPutRulesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BulkPutRulesRequest>;
 
 export interface RulesBulkUpdateResultItemFilter {
-  FirewallFilterObjectIdDescriptionExpression2More__: unknown;
-  DeletedFilterObjectIdDeleted__: unknown;
+  /** The unique identifier of the filter. */
+  id?: string;
+  /** An informative summary of the filter. */
+  description?: string;
+  /** The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/). */
+  expression?: string;
+  /** When true, indicates that the filter is currently paused. */
+  paused?: boolean;
+  /** A short reference tag. Allows you to select related filters. */
+  ref?: string;
+  /** When true, indicates that the firewall rule was deleted. */
+  deleted?: boolean;
 }
 export const RulesBulkUpdateResultItemFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    FirewallFilterObjectIdDescriptionExpression2More__: S.Unknown.pipe(
-      T.Body("FirewallFilter object { id, description, expression, 2 more }"),
-    ),
-    DeletedFilterObjectIdDeleted__: S.Unknown.pipe(
-      T.Body("DeletedFilter object { id, deleted }"),
-    ),
+    id: S.optional(S.String),
+    description: S.optional(S.String),
+    expression: S.optional(S.String),
+    paused: S.optional(S.Boolean),
+    ref: S.optional(S.String),
+    deleted: S.optional(S.Boolean),
   }),
 ).annotate({
   identifier: "RulesBulkUpdateResultItemFilter",
@@ -370,31 +400,23 @@ export const BulkPutRulesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "BulkPutRulesResponse",
 }) as any as S.Schema<BulkPutRulesResponse>;
 
+export type AccessRulesCreateForAccountRequestConfigurationTarget =
+  | "ip"
+  | (string & {});
+export const AccessRulesCreateForAccountRequestConfigurationTarget =
+  /*@__PURE__*/ S.String;
+
 export interface AccessRulesCreateForAccountRequestConfiguration {
-  AccessRuleIPConfigurationObjectTargetValue__: unknown;
-  IPV6ConfigurationObjectTargetValue__: unknown;
-  AccessRuleCIDRConfigurationObjectTargetValue__: unknown;
-  ASNConfigurationObjectTargetValue__: unknown;
-  CountryConfigurationObjectTargetValue__: unknown;
+  /** The configuration target. You must set the target to `ip` when specifying an IP address in the rule. */
+  target?: AccessRulesCreateForAccountRequestConfigurationTarget;
+  /** The IP address to match. This address will be compared to the IP address of incoming requests. */
+  value?: string;
 }
 export const AccessRulesCreateForAccountRequestConfiguration =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      AccessRuleIPConfigurationObjectTargetValue__: S.Unknown.pipe(
-        T.Body("AccessRuleIPConfiguration object { target, value }"),
-      ),
-      IPV6ConfigurationObjectTargetValue__: S.Unknown.pipe(
-        T.Body("IPV6Configuration object { target, value }"),
-      ),
-      AccessRuleCIDRConfigurationObjectTargetValue__: S.Unknown.pipe(
-        T.Body("AccessRuleCIDRConfiguration object { target, value }"),
-      ),
-      ASNConfigurationObjectTargetValue__: S.Unknown.pipe(
-        T.Body("ASNConfiguration object { target, value }"),
-      ),
-      CountryConfigurationObjectTargetValue__: S.Unknown.pipe(
-        T.Body("CountryConfiguration object { target, value }"),
-      ),
+      target: S.optional(AccessRulesCreateForAccountRequestConfigurationTarget),
+      value: S.optional(S.String),
     }),
   ).annotate({
     identifier: "AccessRulesCreateForAccountRequestConfiguration",
@@ -451,31 +473,25 @@ export const AccessRulesCreateForAccountResponseAllowedModesList =
     AccessRulesCreateForAccountResponseAllowedModesItem,
   ) as any as S.Schema<AccessRulesCreateForAccountResponseAllowedModesList>;
 
+export type AccessRulesCreateForAccountResponseConfigurationTarget =
+  | "ip"
+  | (string & {});
+export const AccessRulesCreateForAccountResponseConfigurationTarget =
+  /*@__PURE__*/ S.String;
+
 export interface AccessRulesCreateForAccountResponseConfiguration {
-  AccessRuleIPConfigurationObjectTargetValue__: unknown;
-  IPV6ConfigurationObjectTargetValue__: unknown;
-  AccessRuleCIDRConfigurationObjectTargetValue__: unknown;
-  ASNConfigurationObjectTargetValue__: unknown;
-  CountryConfigurationObjectTargetValue__: unknown;
+  /** The configuration target. You must set the target to `ip` when specifying an IP address in the rule. */
+  target?: AccessRulesCreateForAccountResponseConfigurationTarget;
+  /** The IP address to match. This address will be compared to the IP address of incoming requests. */
+  value?: string;
 }
 export const AccessRulesCreateForAccountResponseConfiguration =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      AccessRuleIPConfigurationObjectTargetValue__: S.Unknown.pipe(
-        T.Body("AccessRuleIPConfiguration object { target, value }"),
+      target: S.optional(
+        AccessRulesCreateForAccountResponseConfigurationTarget,
       ),
-      IPV6ConfigurationObjectTargetValue__: S.Unknown.pipe(
-        T.Body("IPV6Configuration object { target, value }"),
-      ),
-      AccessRuleCIDRConfigurationObjectTargetValue__: S.Unknown.pipe(
-        T.Body("AccessRuleCIDRConfiguration object { target, value }"),
-      ),
-      ASNConfigurationObjectTargetValue__: S.Unknown.pipe(
-        T.Body("ASNConfiguration object { target, value }"),
-      ),
-      CountryConfigurationObjectTargetValue__: S.Unknown.pipe(
-        T.Body("CountryConfiguration object { target, value }"),
-      ),
+      value: S.optional(S.String),
     }),
   ).annotate({
     identifier: "AccessRulesCreateForAccountResponseConfiguration",
@@ -550,31 +566,23 @@ export const CreateAccessRuleForAccountResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateAccessRuleForAccountResponse",
 }) as any as S.Schema<CreateAccessRuleForAccountResponse>;
 
+export type AccessRulesCreateForZoneRequestConfigurationTarget =
+  | "ip"
+  | (string & {});
+export const AccessRulesCreateForZoneRequestConfigurationTarget =
+  /*@__PURE__*/ S.String;
+
 export interface AccessRulesCreateForZoneRequestConfiguration {
-  AccessRuleIPConfigurationObjectTargetValue__: unknown;
-  IPV6ConfigurationObjectTargetValue__: unknown;
-  AccessRuleCIDRConfigurationObjectTargetValue__: unknown;
-  ASNConfigurationObjectTargetValue__: unknown;
-  CountryConfigurationObjectTargetValue__: unknown;
+  /** The configuration target. You must set the target to `ip` when specifying an IP address in the rule. */
+  target?: AccessRulesCreateForZoneRequestConfigurationTarget;
+  /** The IP address to match. This address will be compared to the IP address of incoming requests. */
+  value?: string;
 }
 export const AccessRulesCreateForZoneRequestConfiguration =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      AccessRuleIPConfigurationObjectTargetValue__: S.Unknown.pipe(
-        T.Body("AccessRuleIPConfiguration object { target, value }"),
-      ),
-      IPV6ConfigurationObjectTargetValue__: S.Unknown.pipe(
-        T.Body("IPV6Configuration object { target, value }"),
-      ),
-      AccessRuleCIDRConfigurationObjectTargetValue__: S.Unknown.pipe(
-        T.Body("AccessRuleCIDRConfiguration object { target, value }"),
-      ),
-      ASNConfigurationObjectTargetValue__: S.Unknown.pipe(
-        T.Body("ASNConfiguration object { target, value }"),
-      ),
-      CountryConfigurationObjectTargetValue__: S.Unknown.pipe(
-        T.Body("CountryConfiguration object { target, value }"),
-      ),
+      target: S.optional(AccessRulesCreateForZoneRequestConfigurationTarget),
+      value: S.optional(S.String),
     }),
   ).annotate({
     identifier: "AccessRulesCreateForZoneRequestConfiguration",
@@ -631,31 +639,23 @@ export const AccessRulesCreateForZoneResponseAllowedModesList =
     AccessRulesCreateForZoneResponseAllowedModesItem,
   ) as any as S.Schema<AccessRulesCreateForZoneResponseAllowedModesList>;
 
+export type AccessRulesCreateForZoneResponseConfigurationTarget =
+  | "ip"
+  | (string & {});
+export const AccessRulesCreateForZoneResponseConfigurationTarget =
+  /*@__PURE__*/ S.String;
+
 export interface AccessRulesCreateForZoneResponseConfiguration {
-  AccessRuleIPConfigurationObjectTargetValue__: unknown;
-  IPV6ConfigurationObjectTargetValue__: unknown;
-  AccessRuleCIDRConfigurationObjectTargetValue__: unknown;
-  ASNConfigurationObjectTargetValue__: unknown;
-  CountryConfigurationObjectTargetValue__: unknown;
+  /** The configuration target. You must set the target to `ip` when specifying an IP address in the rule. */
+  target?: AccessRulesCreateForZoneResponseConfigurationTarget;
+  /** The IP address to match. This address will be compared to the IP address of incoming requests. */
+  value?: string;
 }
 export const AccessRulesCreateForZoneResponseConfiguration =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      AccessRuleIPConfigurationObjectTargetValue__: S.Unknown.pipe(
-        T.Body("AccessRuleIPConfiguration object { target, value }"),
-      ),
-      IPV6ConfigurationObjectTargetValue__: S.Unknown.pipe(
-        T.Body("IPV6Configuration object { target, value }"),
-      ),
-      AccessRuleCIDRConfigurationObjectTargetValue__: S.Unknown.pipe(
-        T.Body("AccessRuleCIDRConfiguration object { target, value }"),
-      ),
-      ASNConfigurationObjectTargetValue__: S.Unknown.pipe(
-        T.Body("ASNConfiguration object { target, value }"),
-      ),
-      CountryConfigurationObjectTargetValue__: S.Unknown.pipe(
-        T.Body("CountryConfiguration object { target, value }"),
-      ),
+      target: S.optional(AccessRulesCreateForZoneResponseConfigurationTarget),
+      value: S.optional(S.String),
     }),
   ).annotate({
     identifier: "AccessRulesCreateForZoneResponseConfiguration",
@@ -729,19 +729,21 @@ export const CreateAccessRuleForZoneResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateAccessRuleForZoneResponse",
 }) as any as S.Schema<CreateAccessRuleForZoneResponse>;
 
+export type LockdownsCreateRequestConfigurationsTarget = "ip" | (string & {});
+export const LockdownsCreateRequestConfigurationsTarget =
+  /*@__PURE__*/ S.String;
+
 export interface LockdownsCreateRequestConfigurations {
-  LockdownIPConfigurationObjectTargetValue__: unknown;
-  LockdownCIDRConfigurationObjectTargetValue__: unknown;
+  /** The configuration target. You must set the target to `ip` when specifying an IP address in the Zone Lockdown rule. */
+  target?: LockdownsCreateRequestConfigurationsTarget;
+  /** The IP address to match. This address will be compared to the IP address of incoming requests. */
+  value?: string;
 }
 export const LockdownsCreateRequestConfigurations = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      LockdownIPConfigurationObjectTargetValue__: S.Unknown.pipe(
-        T.Body("LockdownIPConfiguration object { target, value }"),
-      ),
-      LockdownCIDRConfigurationObjectTargetValue__: S.Unknown.pipe(
-        T.Body("LockdownCIDRConfiguration object { target, value }"),
-      ),
+      target: S.optional(LockdownsCreateRequestConfigurationsTarget),
+      value: S.optional(S.String),
     }),
 ).annotate({
   identifier: "LockdownsCreateRequestConfigurations",
@@ -787,19 +789,21 @@ export const CreateLockdownRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateLockdownRequest",
 }) as any as S.Schema<CreateLockdownRequest>;
 
+export type LockdownsCreateResponseConfigurationsTarget = "ip" | (string & {});
+export const LockdownsCreateResponseConfigurationsTarget =
+  /*@__PURE__*/ S.String;
+
 export interface LockdownsCreateResponseConfigurations {
-  LockdownIPConfigurationObjectTargetValue__: unknown;
-  LockdownCIDRConfigurationObjectTargetValue__: unknown;
+  /** The configuration target. You must set the target to `ip` when specifying an IP address in the Zone Lockdown rule. */
+  target?: LockdownsCreateResponseConfigurationsTarget;
+  /** The IP address to match. This address will be compared to the IP address of incoming requests. */
+  value?: string;
 }
 export const LockdownsCreateResponseConfigurations = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      LockdownIPConfigurationObjectTargetValue__: S.Unknown.pipe(
-        T.Body("LockdownIPConfiguration object { target, value }"),
-      ),
-      LockdownCIDRConfigurationObjectTargetValue__: S.Unknown.pipe(
-        T.Body("LockdownCIDRConfiguration object { target, value }"),
-      ),
+      target: S.optional(LockdownsCreateResponseConfigurationsTarget),
+      value: S.optional(S.String),
     }),
 ).annotate({
   identifier: "LockdownsCreateResponseConfigurations",
@@ -931,17 +935,27 @@ export const CreateRuleRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateRuleRequest>;
 
 export interface RulesCreateResultItemFilter {
-  FirewallFilterObjectIdDescriptionExpression2More__: unknown;
-  DeletedFilterObjectIdDeleted__: unknown;
+  /** The unique identifier of the filter. */
+  id?: string;
+  /** An informative summary of the filter. */
+  description?: string;
+  /** The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/). */
+  expression?: string;
+  /** When true, indicates that the filter is currently paused. */
+  paused?: boolean;
+  /** A short reference tag. Allows you to select related filters. */
+  ref?: string;
+  /** When true, indicates that the firewall rule was deleted. */
+  deleted?: boolean;
 }
 export const RulesCreateResultItemFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    FirewallFilterObjectIdDescriptionExpression2More__: S.Unknown.pipe(
-      T.Body("FirewallFilter object { id, description, expression, 2 more }"),
-    ),
-    DeletedFilterObjectIdDeleted__: S.Unknown.pipe(
-      T.Body("DeletedFilter object { id, deleted }"),
-    ),
+    id: S.optional(S.String),
+    description: S.optional(S.String),
+    expression: S.optional(S.String),
+    paused: S.optional(S.Boolean),
+    ref: S.optional(S.String),
+    deleted: S.optional(S.Boolean),
   }),
 ).annotate({
   identifier: "RulesCreateResultItemFilter",
@@ -1381,17 +1395,27 @@ export const DeleteRuleRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteRuleRequest>;
 
 export interface RulesDeleteResponseFilter {
-  FirewallFilterObjectIdDescriptionExpression2More__: unknown;
-  DeletedFilterObjectIdDeleted__: unknown;
+  /** The unique identifier of the filter. */
+  id?: string;
+  /** An informative summary of the filter. */
+  description?: string;
+  /** The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/). */
+  expression?: string;
+  /** When true, indicates that the filter is currently paused. */
+  paused?: boolean;
+  /** A short reference tag. Allows you to select related filters. */
+  ref?: string;
+  /** When true, indicates that the firewall rule was deleted. */
+  deleted?: boolean;
 }
 export const RulesDeleteResponseFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    FirewallFilterObjectIdDescriptionExpression2More__: S.Unknown.pipe(
-      T.Body("FirewallFilter object { id, description, expression, 2 more }"),
-    ),
-    DeletedFilterObjectIdDeleted__: S.Unknown.pipe(
-      T.Body("DeletedFilter object { id, deleted }"),
-    ),
+    id: S.optional(S.String),
+    description: S.optional(S.String),
+    expression: S.optional(S.String),
+    paused: S.optional(S.Boolean),
+    ref: S.optional(S.String),
+    deleted: S.optional(S.Boolean),
   }),
 ).annotate({
   identifier: "RulesDeleteResponseFilter",
@@ -1579,31 +1603,23 @@ export const AccessRulesGetForAccountResponseAllowedModesList =
     AccessRulesGetForAccountResponseAllowedModesItem,
   ) as any as S.Schema<AccessRulesGetForAccountResponseAllowedModesList>;
 
+export type AccessRulesGetForAccountResponseConfigurationTarget =
+  | "ip"
+  | (string & {});
+export const AccessRulesGetForAccountResponseConfigurationTarget =
+  /*@__PURE__*/ S.String;
+
 export interface AccessRulesGetForAccountResponseConfiguration {
-  AccessRuleIPConfigurationObjectTargetValue__: unknown;
-  IPV6ConfigurationObjectTargetValue__: unknown;
-  AccessRuleCIDRConfigurationObjectTargetValue__: unknown;
-  ASNConfigurationObjectTargetValue__: unknown;
-  CountryConfigurationObjectTargetValue__: unknown;
+  /** The configuration target. You must set the target to `ip` when specifying an IP address in the rule. */
+  target?: AccessRulesGetForAccountResponseConfigurationTarget;
+  /** The IP address to match. This address will be compared to the IP address of incoming requests. */
+  value?: string;
 }
 export const AccessRulesGetForAccountResponseConfiguration =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      AccessRuleIPConfigurationObjectTargetValue__: S.Unknown.pipe(
-        T.Body("AccessRuleIPConfiguration object { target, value }"),
-      ),
-      IPV6ConfigurationObjectTargetValue__: S.Unknown.pipe(
-        T.Body("IPV6Configuration object { target, value }"),
-      ),
-      AccessRuleCIDRConfigurationObjectTargetValue__: S.Unknown.pipe(
-        T.Body("AccessRuleCIDRConfiguration object { target, value }"),
-      ),
-      ASNConfigurationObjectTargetValue__: S.Unknown.pipe(
-        T.Body("ASNConfiguration object { target, value }"),
-      ),
-      CountryConfigurationObjectTargetValue__: S.Unknown.pipe(
-        T.Body("CountryConfiguration object { target, value }"),
-      ),
+      target: S.optional(AccessRulesGetForAccountResponseConfigurationTarget),
+      value: S.optional(S.String),
     }),
   ).annotate({
     identifier: "AccessRulesGetForAccountResponseConfiguration",
@@ -1715,31 +1731,23 @@ export const AccessRulesGetForZoneResponseAllowedModesList =
     AccessRulesGetForZoneResponseAllowedModesItem,
   ) as any as S.Schema<AccessRulesGetForZoneResponseAllowedModesList>;
 
+export type AccessRulesGetForZoneResponseConfigurationTarget =
+  | "ip"
+  | (string & {});
+export const AccessRulesGetForZoneResponseConfigurationTarget =
+  /*@__PURE__*/ S.String;
+
 export interface AccessRulesGetForZoneResponseConfiguration {
-  AccessRuleIPConfigurationObjectTargetValue__: unknown;
-  IPV6ConfigurationObjectTargetValue__: unknown;
-  AccessRuleCIDRConfigurationObjectTargetValue__: unknown;
-  ASNConfigurationObjectTargetValue__: unknown;
-  CountryConfigurationObjectTargetValue__: unknown;
+  /** The configuration target. You must set the target to `ip` when specifying an IP address in the rule. */
+  target?: AccessRulesGetForZoneResponseConfigurationTarget;
+  /** The IP address to match. This address will be compared to the IP address of incoming requests. */
+  value?: string;
 }
 export const AccessRulesGetForZoneResponseConfiguration =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      AccessRuleIPConfigurationObjectTargetValue__: S.Unknown.pipe(
-        T.Body("AccessRuleIPConfiguration object { target, value }"),
-      ),
-      IPV6ConfigurationObjectTargetValue__: S.Unknown.pipe(
-        T.Body("IPV6Configuration object { target, value }"),
-      ),
-      AccessRuleCIDRConfigurationObjectTargetValue__: S.Unknown.pipe(
-        T.Body("AccessRuleCIDRConfiguration object { target, value }"),
-      ),
-      ASNConfigurationObjectTargetValue__: S.Unknown.pipe(
-        T.Body("ASNConfiguration object { target, value }"),
-      ),
-      CountryConfigurationObjectTargetValue__: S.Unknown.pipe(
-        T.Body("CountryConfiguration object { target, value }"),
-      ),
+      target: S.optional(AccessRulesGetForZoneResponseConfigurationTarget),
+      value: S.optional(S.String),
     }),
   ).annotate({
     identifier: "AccessRulesGetForZoneResponseConfiguration",
@@ -1835,18 +1843,19 @@ export const GetLockdownRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetLockdownRequest",
 }) as any as S.Schema<GetLockdownRequest>;
 
+export type LockdownsGetResponseConfigurationsTarget = "ip" | (string & {});
+export const LockdownsGetResponseConfigurationsTarget = /*@__PURE__*/ S.String;
+
 export interface LockdownsGetResponseConfigurations {
-  LockdownIPConfigurationObjectTargetValue__: unknown;
-  LockdownCIDRConfigurationObjectTargetValue__: unknown;
+  /** The configuration target. You must set the target to `ip` when specifying an IP address in the Zone Lockdown rule. */
+  target?: LockdownsGetResponseConfigurationsTarget;
+  /** The IP address to match. This address will be compared to the IP address of incoming requests. */
+  value?: string;
 }
 export const LockdownsGetResponseConfigurations = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    LockdownIPConfigurationObjectTargetValue__: S.Unknown.pipe(
-      T.Body("LockdownIPConfiguration object { target, value }"),
-    ),
-    LockdownCIDRConfigurationObjectTargetValue__: S.Unknown.pipe(
-      T.Body("LockdownCIDRConfiguration object { target, value }"),
-    ),
+    target: S.optional(LockdownsGetResponseConfigurationsTarget),
+    value: S.optional(S.String),
   }),
 ).annotate({
   identifier: "LockdownsGetResponseConfigurations",
@@ -1910,17 +1919,27 @@ export const GetRuleRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetRuleRequest" }) as any as S.Schema<GetRuleRequest>;
 
 export interface RulesGetResponseFilter {
-  FirewallFilterObjectIdDescriptionExpression2More__: unknown;
-  DeletedFilterObjectIdDeleted__: unknown;
+  /** The unique identifier of the filter. */
+  id?: string;
+  /** An informative summary of the filter. */
+  description?: string;
+  /** The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/). */
+  expression?: string;
+  /** When true, indicates that the filter is currently paused. */
+  paused?: boolean;
+  /** A short reference tag. Allows you to select related filters. */
+  ref?: string;
+  /** When true, indicates that the firewall rule was deleted. */
+  deleted?: boolean;
 }
 export const RulesGetResponseFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    FirewallFilterObjectIdDescriptionExpression2More__: S.Unknown.pipe(
-      T.Body("FirewallFilter object { id, description, expression, 2 more }"),
-    ),
-    DeletedFilterObjectIdDeleted__: S.Unknown.pipe(
-      T.Body("DeletedFilter object { id, deleted }"),
-    ),
+    id: S.optional(S.String),
+    description: S.optional(S.String),
+    expression: S.optional(S.String),
+    paused: S.optional(S.Boolean),
+    ref: S.optional(S.String),
+    deleted: S.optional(S.Boolean),
   }),
 ).annotate({
   identifier: "RulesGetResponseFilter",
@@ -2193,20 +2212,91 @@ export const GetWafPackageRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetWafPackageRequest",
 }) as any as S.Schema<GetWafPackageRequest>;
 
+export interface WafPackagesGetResponseErrorsItemSource {
+  pointer?: string;
+}
+export const WafPackagesGetResponseErrorsItemSource = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      pointer: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "WafPackagesGetResponseErrorsItemSource",
+}) as any as S.Schema<WafPackagesGetResponseErrorsItemSource>;
+
+export interface WafPackagesGetResponseErrorsItem {
+  code: number;
+  message: string;
+  documentationUrl?: string;
+  source?: WafPackagesGetResponseErrorsItemSource;
+}
+export const WafPackagesGetResponseErrorsItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    code: S.Number,
+    message: S.String,
+    documentationUrl: S.optional(S.String.pipe(T.Body("documentation_url"))),
+    source: S.optional(WafPackagesGetResponseErrorsItemSource),
+  }),
+).annotate({
+  identifier: "WafPackagesGetResponseErrorsItem",
+}) as any as S.Schema<WafPackagesGetResponseErrorsItem>;
+
+export type WafPackagesGetResponseErrorsList =
+  WafPackagesGetResponseErrorsItem[];
+export const WafPackagesGetResponseErrorsList = /*@__PURE__*/ S.Array(
+  WafPackagesGetResponseErrorsItem,
+) as any as S.Schema<WafPackagesGetResponseErrorsList>;
+
+export interface WafPackagesGetResponseMessagesItem {
+  code: number;
+  message: string;
+  documentationUrl?: string;
+  source?: unknown;
+}
+export const WafPackagesGetResponseMessagesItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    code: S.Number,
+    message: S.String,
+    documentationUrl: S.optional(S.String.pipe(T.Body("documentation_url"))),
+    source: S.optional(S.Unknown),
+  }),
+).annotate({
+  identifier: "WafPackagesGetResponseMessagesItem",
+}) as any as S.Schema<WafPackagesGetResponseMessagesItem>;
+
+export type WafPackagesGetResponseMessagesList =
+  WafPackagesGetResponseMessagesItem[];
+export const WafPackagesGetResponseMessagesList = /*@__PURE__*/ S.Array(
+  WafPackagesGetResponseMessagesItem,
+) as any as S.Schema<WafPackagesGetResponseMessagesList>;
+
+export interface WafPackagesGetResponseResult {
+  unknown: unknown;
+  string: unknown;
+}
+export const WafPackagesGetResponseResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    unknown: S.Unknown,
+    string: S.Unknown,
+  }),
+).annotate({
+  identifier: "WafPackagesGetResponseResult",
+}) as any as S.Schema<WafPackagesGetResponseResult>;
+
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface GetWafPackageResponse {
-  FirewallAPIResponseSingleObjectErrorsMessagesResultSuccess__: unknown;
-  ResultObjectResult__: unknown;
+  errors?: WafPackagesGetResponseErrorsList;
+  messages?: WafPackagesGetResponseMessagesList;
+  result?: WafPackagesGetResponseResult;
+  /** Defines whether the API call was successful. */
+  success?: boolean;
 }
 export const GetWafPackageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    FirewallAPIResponseSingleObjectErrorsMessagesResultSuccess__:
-      S.Unknown.pipe(
-        T.Body(
-          "FirewallAPIResponseSingle object { errors, messages, result, success }",
-        ),
-      ),
-    ResultObjectResult__: S.Unknown.pipe(T.Body("Result object { result }")),
+    errors: S.optional(WafPackagesGetResponseErrorsList),
+    messages: S.optional(WafPackagesGetResponseMessagesList),
+    result: S.optional(WafPackagesGetResponseResult),
+    success: S.optional(S.Boolean),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetWafPackageResponse",
@@ -2378,31 +2468,25 @@ export const AccessRulesListForAccountResultItemAllowedModesList =
     AccessRulesListForAccountResultItemAllowedModesItem,
   ) as any as S.Schema<AccessRulesListForAccountResultItemAllowedModesList>;
 
+export type AccessRulesListForAccountResultItemConfigurationTarget =
+  | "ip"
+  | (string & {});
+export const AccessRulesListForAccountResultItemConfigurationTarget =
+  /*@__PURE__*/ S.String;
+
 export interface AccessRulesListForAccountResultItemConfiguration {
-  AccessRuleIPConfigurationObjectTargetValue__: unknown;
-  IPV6ConfigurationObjectTargetValue__: unknown;
-  AccessRuleCIDRConfigurationObjectTargetValue__: unknown;
-  ASNConfigurationObjectTargetValue__: unknown;
-  CountryConfigurationObjectTargetValue__: unknown;
+  /** The configuration target. You must set the target to `ip` when specifying an IP address in the rule. */
+  target?: AccessRulesListForAccountResultItemConfigurationTarget;
+  /** The IP address to match. This address will be compared to the IP address of incoming requests. */
+  value?: string;
 }
 export const AccessRulesListForAccountResultItemConfiguration =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      AccessRuleIPConfigurationObjectTargetValue__: S.Unknown.pipe(
-        T.Body("AccessRuleIPConfiguration object { target, value }"),
+      target: S.optional(
+        AccessRulesListForAccountResultItemConfigurationTarget,
       ),
-      IPV6ConfigurationObjectTargetValue__: S.Unknown.pipe(
-        T.Body("IPV6Configuration object { target, value }"),
-      ),
-      AccessRuleCIDRConfigurationObjectTargetValue__: S.Unknown.pipe(
-        T.Body("AccessRuleCIDRConfiguration object { target, value }"),
-      ),
-      ASNConfigurationObjectTargetValue__: S.Unknown.pipe(
-        T.Body("ASNConfiguration object { target, value }"),
-      ),
-      CountryConfigurationObjectTargetValue__: S.Unknown.pipe(
-        T.Body("CountryConfiguration object { target, value }"),
-      ),
+      value: S.optional(S.String),
     }),
   ).annotate({
     identifier: "AccessRulesListForAccountResultItemConfiguration",
@@ -2580,31 +2664,23 @@ export const AccessRulesListForZoneResultItemAllowedModesList =
     AccessRulesListForZoneResultItemAllowedModesItem,
   ) as any as S.Schema<AccessRulesListForZoneResultItemAllowedModesList>;
 
+export type AccessRulesListForZoneResultItemConfigurationTarget =
+  | "ip"
+  | (string & {});
+export const AccessRulesListForZoneResultItemConfigurationTarget =
+  /*@__PURE__*/ S.String;
+
 export interface AccessRulesListForZoneResultItemConfiguration {
-  AccessRuleIPConfigurationObjectTargetValue__: unknown;
-  IPV6ConfigurationObjectTargetValue__: unknown;
-  AccessRuleCIDRConfigurationObjectTargetValue__: unknown;
-  ASNConfigurationObjectTargetValue__: unknown;
-  CountryConfigurationObjectTargetValue__: unknown;
+  /** The configuration target. You must set the target to `ip` when specifying an IP address in the rule. */
+  target?: AccessRulesListForZoneResultItemConfigurationTarget;
+  /** The IP address to match. This address will be compared to the IP address of incoming requests. */
+  value?: string;
 }
 export const AccessRulesListForZoneResultItemConfiguration =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      AccessRuleIPConfigurationObjectTargetValue__: S.Unknown.pipe(
-        T.Body("AccessRuleIPConfiguration object { target, value }"),
-      ),
-      IPV6ConfigurationObjectTargetValue__: S.Unknown.pipe(
-        T.Body("IPV6Configuration object { target, value }"),
-      ),
-      AccessRuleCIDRConfigurationObjectTargetValue__: S.Unknown.pipe(
-        T.Body("AccessRuleCIDRConfiguration object { target, value }"),
-      ),
-      ASNConfigurationObjectTargetValue__: S.Unknown.pipe(
-        T.Body("ASNConfiguration object { target, value }"),
-      ),
-      CountryConfigurationObjectTargetValue__: S.Unknown.pipe(
-        T.Body("CountryConfiguration object { target, value }"),
-      ),
+      target: S.optional(AccessRulesListForZoneResultItemConfigurationTarget),
+      value: S.optional(S.String),
     }),
   ).annotate({
     identifier: "AccessRulesListForZoneResultItemConfiguration",
@@ -2751,19 +2827,21 @@ export const ListLockdownsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListLockdownsRequest",
 }) as any as S.Schema<ListLockdownsRequest>;
 
+export type LockdownsListResultItemConfigurationsTarget = "ip" | (string & {});
+export const LockdownsListResultItemConfigurationsTarget =
+  /*@__PURE__*/ S.String;
+
 export interface LockdownsListResultItemConfigurations {
-  LockdownIPConfigurationObjectTargetValue__: unknown;
-  LockdownCIDRConfigurationObjectTargetValue__: unknown;
+  /** The configuration target. You must set the target to `ip` when specifying an IP address in the Zone Lockdown rule. */
+  target?: LockdownsListResultItemConfigurationsTarget;
+  /** The IP address to match. This address will be compared to the IP address of incoming requests. */
+  value?: string;
 }
 export const LockdownsListResultItemConfigurations = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      LockdownIPConfigurationObjectTargetValue__: S.Unknown.pipe(
-        T.Body("LockdownIPConfiguration object { target, value }"),
-      ),
-      LockdownCIDRConfigurationObjectTargetValue__: S.Unknown.pipe(
-        T.Body("LockdownCIDRConfiguration object { target, value }"),
-      ),
+      target: S.optional(LockdownsListResultItemConfigurationsTarget),
+      value: S.optional(S.String),
     }),
 ).annotate({
   identifier: "LockdownsListResultItemConfigurations",
@@ -2863,17 +2941,27 @@ export const ListRulesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListRulesRequest>;
 
 export interface RulesListResultItemFilter {
-  FirewallFilterObjectIdDescriptionExpression2More__: unknown;
-  DeletedFilterObjectIdDeleted__: unknown;
+  /** The unique identifier of the filter. */
+  id?: string;
+  /** An informative summary of the filter. */
+  description?: string;
+  /** The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/). */
+  expression?: string;
+  /** When true, indicates that the filter is currently paused. */
+  paused?: boolean;
+  /** A short reference tag. Allows you to select related filters. */
+  ref?: string;
+  /** When true, indicates that the firewall rule was deleted. */
+  deleted?: boolean;
 }
 export const RulesListResultItemFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    FirewallFilterObjectIdDescriptionExpression2More__: S.Unknown.pipe(
-      T.Body("FirewallFilter object { id, description, expression, 2 more }"),
-    ),
-    DeletedFilterObjectIdDeleted__: S.Unknown.pipe(
-      T.Body("DeletedFilter object { id, deleted }"),
-    ),
+    id: S.optional(S.String),
+    description: S.optional(S.String),
+    expression: S.optional(S.String),
+    paused: S.optional(S.Boolean),
+    ref: S.optional(S.String),
+    deleted: S.optional(S.Boolean),
   }),
 ).annotate({
   identifier: "RulesListResultItemFilter",
@@ -3413,34 +3501,69 @@ export const ListWafPackageRulesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListWafPackageRulesRequest",
 }) as any as S.Schema<ListWafPackageRulesRequest>;
 
+export type WafPackagesRulesListResultItemAllowedModesList = unknown[];
+export const WafPackagesRulesListResultItemAllowedModesList =
+  /*@__PURE__*/ S.Array(
+    S.Unknown,
+  ) as any as S.Schema<WafPackagesRulesListResultItemAllowedModesList>;
+
+export interface WafPackagesRulesListResultItemGroup {
+  /** Defines the unique identifier of the rule group. */
+  id?: string;
+  /** Defines the name of the rule group. */
+  name?: string;
+}
+export const WafPackagesRulesListResultItemGroup = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "WafPackagesRulesListResultItemGroup",
+}) as any as S.Schema<WafPackagesRulesListResultItemGroup>;
+
+export type WafPackagesRulesListResultItemDefaultMode =
+  | "disable"
+  | "simulate"
+  | "block"
+  | "challenge"
+  | (string & {});
+export const WafPackagesRulesListResultItemDefaultMode = /*@__PURE__*/ S.String;
+
 export interface WafPackagesRulesListResultItem {
-  /** When triggered, anomaly detection WAF rules contribute to an overall threat score that will determine if a request is considered malicious. You can configure the total scoring threshold through the 'sensitivity' property of the WAF package. */
-  WAFManagedRulesAnomalyRuleObjectIdAllowedModesDescription4More__: unknown;
-  /** When triggered, traditional WAF rules cause the firewall to immediately act upon the request based on the configuration of the rule. A 'deny' rule will immediately respond to the request based on the configured rule action/mode (for example, 'block') and no other rules will be processed. */
-  WAFManagedRulesTraditionalDenyRuleObjectIdAllowedModesDefaultMode5More__: unknown;
-  /** When triggered, traditional WAF rules cause the firewall to immediately act on the request based on the rule configuration. An 'allow' rule will immediately allow the request and no other rules will be processed. */
-  WAFManagedRulesTraditionalAllowRuleObjectIdAllowedModesDescription4More__: unknown;
+  /** Defines the unique identifier of the WAF rule. */
+  id?: string;
+  /** Defines the available modes for the current WAF rule. Applies to anomaly detection WAF rules. */
+  allowedModes?: WafPackagesRulesListResultItemAllowedModesList;
+  /** Defines the public description of the WAF rule. */
+  description?: string;
+  /** Defines the rule group to which the current WAF rule belongs. */
+  group?: WafPackagesRulesListResultItemGroup;
+  /** Defines the mode anomaly. When set to `on`, the current WAF rule will be used when evaluating the request. Applies to anomaly detection WAF rules. */
+  mode?: unknown;
+  /** Defines the unique identifier of a WAF package. */
+  packageId?: string;
+  /** Defines the order in which the individual WAF rule is executed within its rule group. */
+  priority?: string;
+  /** Defines the default action/mode of a rule. */
+  defaultMode?: WafPackagesRulesListResultItemDefaultMode;
 }
 export const WafPackagesRulesListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    WAFManagedRulesAnomalyRuleObjectIdAllowedModesDescription4More__:
-      S.Unknown.pipe(
-        T.Body(
-          "WAFManagedRulesAnomalyRule object { id, allowed_modes, description, 4 more }",
-        ),
+    id: S.optional(S.String),
+    allowedModes: S.optional(
+      WafPackagesRulesListResultItemAllowedModesList.pipe(
+        T.Body("allowed_modes"),
       ),
-    WAFManagedRulesTraditionalDenyRuleObjectIdAllowedModesDefaultMode5More__:
-      S.Unknown.pipe(
-        T.Body(
-          "WAFManagedRulesTraditionalDenyRule object { id, allowed_modes, default_mode, 5 more }",
-        ),
-      ),
-    WAFManagedRulesTraditionalAllowRuleObjectIdAllowedModesDescription4More__:
-      S.Unknown.pipe(
-        T.Body(
-          "WAFManagedRulesTraditionalAllowRule object { id, allowed_modes, description, 4 more }",
-        ),
-      ),
+    ),
+    description: S.optional(S.String),
+    group: S.optional(WafPackagesRulesListResultItemGroup),
+    mode: S.optional(S.Unknown),
+    packageId: S.optional(S.String.pipe(T.Body("package_id"))),
+    priority: S.optional(S.String),
+    defaultMode: S.optional(
+      WafPackagesRulesListResultItemDefaultMode.pipe(T.Body("default_mode")),
+    ),
   }),
 ).annotate({
   identifier: "WafPackagesRulesListResultItem",
@@ -3513,50 +3636,130 @@ export const ListWafPackagesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListWafPackagesRequest",
 }) as any as S.Schema<ListWafPackagesRequest>;
 
+export interface WafPackagesListResponseErrorsItemSource {
+  pointer?: string;
+}
+export const WafPackagesListResponseErrorsItemSource = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      pointer: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "WafPackagesListResponseErrorsItemSource",
+}) as any as S.Schema<WafPackagesListResponseErrorsItemSource>;
+
+export interface WafPackagesListResponseErrorsItem {
+  code: number;
+  message: string;
+  documentationUrl?: string;
+  source?: WafPackagesListResponseErrorsItemSource;
+}
+export const WafPackagesListResponseErrorsItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    code: S.Number,
+    message: S.String,
+    documentationUrl: S.optional(S.String.pipe(T.Body("documentation_url"))),
+    source: S.optional(WafPackagesListResponseErrorsItemSource),
+  }),
+).annotate({
+  identifier: "WafPackagesListResponseErrorsItem",
+}) as any as S.Schema<WafPackagesListResponseErrorsItem>;
+
+export type WafPackagesListResponseErrorsList =
+  WafPackagesListResponseErrorsItem[];
+export const WafPackagesListResponseErrorsList = /*@__PURE__*/ S.Array(
+  WafPackagesListResponseErrorsItem,
+) as any as S.Schema<WafPackagesListResponseErrorsList>;
+
+export interface WafPackagesListResponseMessagesItem {
+  code: number;
+  message: string;
+  documentationUrl?: string;
+  source?: unknown;
+}
+export const WafPackagesListResponseMessagesItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    code: S.Number,
+    message: S.String,
+    documentationUrl: S.optional(S.String.pipe(T.Body("documentation_url"))),
+    source: S.optional(S.Unknown),
+  }),
+).annotate({
+  identifier: "WafPackagesListResponseMessagesItem",
+}) as any as S.Schema<WafPackagesListResponseMessagesItem>;
+
+export type WafPackagesListResponseMessagesList =
+  WafPackagesListResponseMessagesItem[];
+export const WafPackagesListResponseMessagesList = /*@__PURE__*/ S.Array(
+  WafPackagesListResponseMessagesItem,
+) as any as S.Schema<WafPackagesListResponseMessagesList>;
+
+export type WafPackagesListResponseResultList = unknown[];
+export const WafPackagesListResponseResultList = /*@__PURE__*/ S.Array(
+  S.Unknown,
+) as any as S.Schema<WafPackagesListResponseResultList>;
+
+export interface WafPackagesListResponseResultInfo {
+  /** Defines the total number of results for the requested service. */
+  count?: number;
+  /** Defines the current page within paginated list of results. */
+  page?: number;
+  /** Defines the number of results per page of results. */
+  perPage?: number;
+  /** Defines the total results available without any search parameters. */
+  totalCount?: number;
+}
+export const WafPackagesListResponseResultInfo = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    count: S.optional(S.Number),
+    page: S.optional(S.Number),
+    perPage: S.optional(S.Number.pipe(T.Body("per_page"))),
+    totalCount: S.optional(S.Number.pipe(T.Body("total_count"))),
+  }),
+).annotate({
+  identifier: "WafPackagesListResponseResultInfo",
+}) as any as S.Schema<WafPackagesListResponseResultInfo>;
+
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface ListWafPackagesResponse {
-  FirewallAPIResponseCollectionObjectErrorsMessagesResult2More__: unknown;
-  ResultObjectResult__: unknown;
+  errors?: WafPackagesListResponseErrorsList;
+  messages?: WafPackagesListResponseMessagesList;
+  result: WafPackagesListResponseResultList;
+  /** Defines whether the API call was successful. */
+  success?: boolean;
+  resultInfo?: WafPackagesListResponseResultInfo;
 }
 export const ListWafPackagesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    FirewallAPIResponseCollectionObjectErrorsMessagesResult2More__:
-      S.Unknown.pipe(
-        T.Body(
-          "FirewallAPIResponseCollection object { errors, messages, result, 2 more }",
-        ),
-      ),
-    ResultObjectResult__: S.Unknown.pipe(T.Body("Result object { result }")),
+    errors: S.optional(WafPackagesListResponseErrorsList),
+    messages: S.optional(WafPackagesListResponseMessagesList),
+    result: WafPackagesListResponseResultList,
+    success: S.optional(S.Boolean),
+    resultInfo: S.optional(
+      WafPackagesListResponseResultInfo.pipe(T.Body("result_info")),
+    ),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListWafPackagesResponse",
 }) as any as S.Schema<ListWafPackagesResponse>;
 
+export type AccessRulesEditForAccountRequestConfigurationTarget =
+  | "ip"
+  | (string & {});
+export const AccessRulesEditForAccountRequestConfigurationTarget =
+  /*@__PURE__*/ S.String;
+
 export interface AccessRulesEditForAccountRequestConfiguration {
-  AccessRuleIPConfigurationObjectTargetValue__: unknown;
-  IPV6ConfigurationObjectTargetValue__: unknown;
-  AccessRuleCIDRConfigurationObjectTargetValue__: unknown;
-  ASNConfigurationObjectTargetValue__: unknown;
-  CountryConfigurationObjectTargetValue__: unknown;
+  /** The configuration target. You must set the target to `ip` when specifying an IP address in the rule. */
+  target?: AccessRulesEditForAccountRequestConfigurationTarget;
+  /** The IP address to match. This address will be compared to the IP address of incoming requests. */
+  value?: string;
 }
 export const AccessRulesEditForAccountRequestConfiguration =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      AccessRuleIPConfigurationObjectTargetValue__: S.Unknown.pipe(
-        T.Body("AccessRuleIPConfiguration object { target, value }"),
-      ),
-      IPV6ConfigurationObjectTargetValue__: S.Unknown.pipe(
-        T.Body("IPV6Configuration object { target, value }"),
-      ),
-      AccessRuleCIDRConfigurationObjectTargetValue__: S.Unknown.pipe(
-        T.Body("AccessRuleCIDRConfiguration object { target, value }"),
-      ),
-      ASNConfigurationObjectTargetValue__: S.Unknown.pipe(
-        T.Body("ASNConfiguration object { target, value }"),
-      ),
-      CountryConfigurationObjectTargetValue__: S.Unknown.pipe(
-        T.Body("CountryConfiguration object { target, value }"),
-      ),
+      target: S.optional(AccessRulesEditForAccountRequestConfigurationTarget),
+      value: S.optional(S.String),
     }),
   ).annotate({
     identifier: "AccessRulesEditForAccountRequestConfiguration",
@@ -3616,31 +3819,23 @@ export const AccessRulesEditForAccountResponseAllowedModesList =
     AccessRulesEditForAccountResponseAllowedModesItem,
   ) as any as S.Schema<AccessRulesEditForAccountResponseAllowedModesList>;
 
+export type AccessRulesEditForAccountResponseConfigurationTarget =
+  | "ip"
+  | (string & {});
+export const AccessRulesEditForAccountResponseConfigurationTarget =
+  /*@__PURE__*/ S.String;
+
 export interface AccessRulesEditForAccountResponseConfiguration {
-  AccessRuleIPConfigurationObjectTargetValue__: unknown;
-  IPV6ConfigurationObjectTargetValue__: unknown;
-  AccessRuleCIDRConfigurationObjectTargetValue__: unknown;
-  ASNConfigurationObjectTargetValue__: unknown;
-  CountryConfigurationObjectTargetValue__: unknown;
+  /** The configuration target. You must set the target to `ip` when specifying an IP address in the rule. */
+  target?: AccessRulesEditForAccountResponseConfigurationTarget;
+  /** The IP address to match. This address will be compared to the IP address of incoming requests. */
+  value?: string;
 }
 export const AccessRulesEditForAccountResponseConfiguration =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      AccessRuleIPConfigurationObjectTargetValue__: S.Unknown.pipe(
-        T.Body("AccessRuleIPConfiguration object { target, value }"),
-      ),
-      IPV6ConfigurationObjectTargetValue__: S.Unknown.pipe(
-        T.Body("IPV6Configuration object { target, value }"),
-      ),
-      AccessRuleCIDRConfigurationObjectTargetValue__: S.Unknown.pipe(
-        T.Body("AccessRuleCIDRConfiguration object { target, value }"),
-      ),
-      ASNConfigurationObjectTargetValue__: S.Unknown.pipe(
-        T.Body("ASNConfiguration object { target, value }"),
-      ),
-      CountryConfigurationObjectTargetValue__: S.Unknown.pipe(
-        T.Body("CountryConfiguration object { target, value }"),
-      ),
+      target: S.optional(AccessRulesEditForAccountResponseConfigurationTarget),
+      value: S.optional(S.String),
     }),
   ).annotate({
     identifier: "AccessRulesEditForAccountResponseConfiguration",
@@ -3715,31 +3910,23 @@ export const PatchAccessRuleForAccountResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchAccessRuleForAccountResponse",
 }) as any as S.Schema<PatchAccessRuleForAccountResponse>;
 
+export type AccessRulesEditForZoneRequestConfigurationTarget =
+  | "ip"
+  | (string & {});
+export const AccessRulesEditForZoneRequestConfigurationTarget =
+  /*@__PURE__*/ S.String;
+
 export interface AccessRulesEditForZoneRequestConfiguration {
-  AccessRuleIPConfigurationObjectTargetValue__: unknown;
-  IPV6ConfigurationObjectTargetValue__: unknown;
-  AccessRuleCIDRConfigurationObjectTargetValue__: unknown;
-  ASNConfigurationObjectTargetValue__: unknown;
-  CountryConfigurationObjectTargetValue__: unknown;
+  /** The configuration target. You must set the target to `ip` when specifying an IP address in the rule. */
+  target?: AccessRulesEditForZoneRequestConfigurationTarget;
+  /** The IP address to match. This address will be compared to the IP address of incoming requests. */
+  value?: string;
 }
 export const AccessRulesEditForZoneRequestConfiguration =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      AccessRuleIPConfigurationObjectTargetValue__: S.Unknown.pipe(
-        T.Body("AccessRuleIPConfiguration object { target, value }"),
-      ),
-      IPV6ConfigurationObjectTargetValue__: S.Unknown.pipe(
-        T.Body("IPV6Configuration object { target, value }"),
-      ),
-      AccessRuleCIDRConfigurationObjectTargetValue__: S.Unknown.pipe(
-        T.Body("AccessRuleCIDRConfiguration object { target, value }"),
-      ),
-      ASNConfigurationObjectTargetValue__: S.Unknown.pipe(
-        T.Body("ASNConfiguration object { target, value }"),
-      ),
-      CountryConfigurationObjectTargetValue__: S.Unknown.pipe(
-        T.Body("CountryConfiguration object { target, value }"),
-      ),
+      target: S.optional(AccessRulesEditForZoneRequestConfigurationTarget),
+      value: S.optional(S.String),
     }),
   ).annotate({
     identifier: "AccessRulesEditForZoneRequestConfiguration",
@@ -3799,31 +3986,23 @@ export const AccessRulesEditForZoneResponseAllowedModesList =
     AccessRulesEditForZoneResponseAllowedModesItem,
   ) as any as S.Schema<AccessRulesEditForZoneResponseAllowedModesList>;
 
+export type AccessRulesEditForZoneResponseConfigurationTarget =
+  | "ip"
+  | (string & {});
+export const AccessRulesEditForZoneResponseConfigurationTarget =
+  /*@__PURE__*/ S.String;
+
 export interface AccessRulesEditForZoneResponseConfiguration {
-  AccessRuleIPConfigurationObjectTargetValue__: unknown;
-  IPV6ConfigurationObjectTargetValue__: unknown;
-  AccessRuleCIDRConfigurationObjectTargetValue__: unknown;
-  ASNConfigurationObjectTargetValue__: unknown;
-  CountryConfigurationObjectTargetValue__: unknown;
+  /** The configuration target. You must set the target to `ip` when specifying an IP address in the rule. */
+  target?: AccessRulesEditForZoneResponseConfigurationTarget;
+  /** The IP address to match. This address will be compared to the IP address of incoming requests. */
+  value?: string;
 }
 export const AccessRulesEditForZoneResponseConfiguration =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      AccessRuleIPConfigurationObjectTargetValue__: S.Unknown.pipe(
-        T.Body("AccessRuleIPConfiguration object { target, value }"),
-      ),
-      IPV6ConfigurationObjectTargetValue__: S.Unknown.pipe(
-        T.Body("IPV6Configuration object { target, value }"),
-      ),
-      AccessRuleCIDRConfigurationObjectTargetValue__: S.Unknown.pipe(
-        T.Body("AccessRuleCIDRConfiguration object { target, value }"),
-      ),
-      ASNConfigurationObjectTargetValue__: S.Unknown.pipe(
-        T.Body("ASNConfiguration object { target, value }"),
-      ),
-      CountryConfigurationObjectTargetValue__: S.Unknown.pipe(
-        T.Body("CountryConfiguration object { target, value }"),
-      ),
+      target: S.optional(AccessRulesEditForZoneResponseConfigurationTarget),
+      value: S.optional(S.String),
     }),
   ).annotate({
     identifier: "AccessRulesEditForZoneResponseConfiguration",
@@ -3920,17 +4099,27 @@ export const PatchRuleRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PatchRuleRequest>;
 
 export interface RulesEditResultItemFilter {
-  FirewallFilterObjectIdDescriptionExpression2More__: unknown;
-  DeletedFilterObjectIdDeleted__: unknown;
+  /** The unique identifier of the filter. */
+  id?: string;
+  /** An informative summary of the filter. */
+  description?: string;
+  /** The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/). */
+  expression?: string;
+  /** When true, indicates that the filter is currently paused. */
+  paused?: boolean;
+  /** A short reference tag. Allows you to select related filters. */
+  ref?: string;
+  /** When true, indicates that the firewall rule was deleted. */
+  deleted?: boolean;
 }
 export const RulesEditResultItemFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    FirewallFilterObjectIdDescriptionExpression2More__: S.Unknown.pipe(
-      T.Body("FirewallFilter object { id, description, expression, 2 more }"),
-    ),
-    DeletedFilterObjectIdDeleted__: S.Unknown.pipe(
-      T.Body("DeletedFilter object { id, deleted }"),
-    ),
+    id: S.optional(S.String),
+    description: S.optional(S.String),
+    expression: S.optional(S.String),
+    paused: S.optional(S.Boolean),
+    ref: S.optional(S.String),
+    deleted: S.optional(S.Boolean),
   }),
 ).annotate({
   identifier: "RulesEditResultItemFilter",
@@ -4074,53 +4263,90 @@ export const PatchWafPackageRuleRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchWafPackageRuleRequest",
 }) as any as S.Schema<PatchWafPackageRuleRequest>;
 
+export type WafPackagesRulesEditResponseAllowedModesList = unknown[];
+export const WafPackagesRulesEditResponseAllowedModesList =
+  /*@__PURE__*/ S.Array(
+    S.Unknown,
+  ) as any as S.Schema<WafPackagesRulesEditResponseAllowedModesList>;
+
+export interface WafPackagesRulesEditResponseGroup {
+  /** Defines the unique identifier of the rule group. */
+  id?: string;
+  /** Defines the name of the rule group. */
+  name?: string;
+}
+export const WafPackagesRulesEditResponseGroup = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "WafPackagesRulesEditResponseGroup",
+}) as any as S.Schema<WafPackagesRulesEditResponseGroup>;
+
+export type WafPackagesRulesEditResponseDefaultMode =
+  | "disable"
+  | "simulate"
+  | "block"
+  | "challenge"
+  | (string & {});
+export const WafPackagesRulesEditResponseDefaultMode = /*@__PURE__*/ S.String;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchWafPackageRuleResponse {
-  /** When triggered, anomaly detection WAF rules contribute to an overall threat score that will determine if a request is considered malicious. You can configure the total scoring threshold through the 'sensitivity' property of the WAF package. */
-  WAFManagedRulesAnomalyRuleObjectIdAllowedModesDescription4More__: unknown;
-  /** When triggered, traditional WAF rules cause the firewall to immediately act upon the request based on the configuration of the rule. A 'deny' rule will immediately respond to the request based on the configured rule action/mode (for example, 'block') and no other rules will be processed. */
-  WAFManagedRulesTraditionalDenyRuleObjectIdAllowedModesDefaultMode5More__: unknown;
-  /** When triggered, traditional WAF rules cause the firewall to immediately act on the request based on the rule configuration. An 'allow' rule will immediately allow the request and no other rules will be processed. */
-  WAFManagedRulesTraditionalAllowRuleObjectIdAllowedModesDescription4More__: unknown;
+  /** Defines the unique identifier of the WAF rule. */
+  id?: string;
+  /** Defines the available modes for the current WAF rule. Applies to anomaly detection WAF rules. */
+  allowedModes?: WafPackagesRulesEditResponseAllowedModesList;
+  /** Defines the public description of the WAF rule. */
+  description?: string;
+  /** Defines the rule group to which the current WAF rule belongs. */
+  group?: WafPackagesRulesEditResponseGroup;
+  /** Defines the mode anomaly. When set to `on`, the current WAF rule will be used when evaluating the request. Applies to anomaly detection WAF rules. */
+  mode?: unknown;
+  /** Defines the unique identifier of a WAF package. */
+  packageId?: string;
+  /** Defines the order in which the individual WAF rule is executed within its rule group. */
+  priority?: string;
+  /** Defines the default action/mode of a rule. */
+  defaultMode?: WafPackagesRulesEditResponseDefaultMode;
 }
 export const PatchWafPackageRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    WAFManagedRulesAnomalyRuleObjectIdAllowedModesDescription4More__:
-      S.Unknown.pipe(
-        T.Body(
-          "WAFManagedRulesAnomalyRule object { id, allowed_modes, description, 4 more }",
-        ),
+    id: S.optional(S.String),
+    allowedModes: S.optional(
+      WafPackagesRulesEditResponseAllowedModesList.pipe(
+        T.Body("allowed_modes"),
       ),
-    WAFManagedRulesTraditionalDenyRuleObjectIdAllowedModesDefaultMode5More__:
-      S.Unknown.pipe(
-        T.Body(
-          "WAFManagedRulesTraditionalDenyRule object { id, allowed_modes, default_mode, 5 more }",
-        ),
-      ),
-    WAFManagedRulesTraditionalAllowRuleObjectIdAllowedModesDescription4More__:
-      S.Unknown.pipe(
-        T.Body(
-          "WAFManagedRulesTraditionalAllowRule object { id, allowed_modes, description, 4 more }",
-        ),
-      ),
+    ),
+    description: S.optional(S.String),
+    group: S.optional(WafPackagesRulesEditResponseGroup),
+    mode: S.optional(S.Unknown),
+    packageId: S.optional(S.String.pipe(T.Body("package_id"))),
+    priority: S.optional(S.String),
+    defaultMode: S.optional(
+      WafPackagesRulesEditResponseDefaultMode.pipe(T.Body("default_mode")),
+    ),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchWafPackageRuleResponse",
 }) as any as S.Schema<PatchWafPackageRuleResponse>;
 
+export type LockdownsUpdateRequestConfigurationsTarget = "ip" | (string & {});
+export const LockdownsUpdateRequestConfigurationsTarget =
+  /*@__PURE__*/ S.String;
+
 export interface LockdownsUpdateRequestConfigurations {
-  LockdownIPConfigurationObjectTargetValue__: unknown;
-  LockdownCIDRConfigurationObjectTargetValue__: unknown;
+  /** The configuration target. You must set the target to `ip` when specifying an IP address in the Zone Lockdown rule. */
+  target?: LockdownsUpdateRequestConfigurationsTarget;
+  /** The IP address to match. This address will be compared to the IP address of incoming requests. */
+  value?: string;
 }
 export const LockdownsUpdateRequestConfigurations = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      LockdownIPConfigurationObjectTargetValue__: S.Unknown.pipe(
-        T.Body("LockdownIPConfiguration object { target, value }"),
-      ),
-      LockdownCIDRConfigurationObjectTargetValue__: S.Unknown.pipe(
-        T.Body("LockdownCIDRConfiguration object { target, value }"),
-      ),
+      target: S.optional(LockdownsUpdateRequestConfigurationsTarget),
+      value: S.optional(S.String),
     }),
 ).annotate({
   identifier: "LockdownsUpdateRequestConfigurations",
@@ -4160,19 +4386,21 @@ export const UpdateLockdownRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateLockdownRequest",
 }) as any as S.Schema<UpdateLockdownRequest>;
 
+export type LockdownsUpdateResponseConfigurationsTarget = "ip" | (string & {});
+export const LockdownsUpdateResponseConfigurationsTarget =
+  /*@__PURE__*/ S.String;
+
 export interface LockdownsUpdateResponseConfigurations {
-  LockdownIPConfigurationObjectTargetValue__: unknown;
-  LockdownCIDRConfigurationObjectTargetValue__: unknown;
+  /** The configuration target. You must set the target to `ip` when specifying an IP address in the Zone Lockdown rule. */
+  target?: LockdownsUpdateResponseConfigurationsTarget;
+  /** The IP address to match. This address will be compared to the IP address of incoming requests. */
+  value?: string;
 }
 export const LockdownsUpdateResponseConfigurations = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      LockdownIPConfigurationObjectTargetValue__: S.Unknown.pipe(
-        T.Body("LockdownIPConfiguration object { target, value }"),
-      ),
-      LockdownCIDRConfigurationObjectTargetValue__: S.Unknown.pipe(
-        T.Body("LockdownCIDRConfiguration object { target, value }"),
-      ),
+      target: S.optional(LockdownsUpdateResponseConfigurationsTarget),
+      value: S.optional(S.String),
     }),
 ).annotate({
   identifier: "LockdownsUpdateResponseConfigurations",
@@ -4307,17 +4535,27 @@ export const UpdateRuleRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateRuleRequest>;
 
 export interface RulesUpdateResponseFilter {
-  FirewallFilterObjectIdDescriptionExpression2More__: unknown;
-  DeletedFilterObjectIdDeleted__: unknown;
+  /** The unique identifier of the filter. */
+  id?: string;
+  /** An informative summary of the filter. */
+  description?: string;
+  /** The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/). */
+  expression?: string;
+  /** When true, indicates that the filter is currently paused. */
+  paused?: boolean;
+  /** A short reference tag. Allows you to select related filters. */
+  ref?: string;
+  /** When true, indicates that the firewall rule was deleted. */
+  deleted?: boolean;
 }
 export const RulesUpdateResponseFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    FirewallFilterObjectIdDescriptionExpression2More__: S.Unknown.pipe(
-      T.Body("FirewallFilter object { id, description, expression, 2 more }"),
-    ),
-    DeletedFilterObjectIdDeleted__: S.Unknown.pipe(
-      T.Body("DeletedFilter object { id, deleted }"),
-    ),
+    id: S.optional(S.String),
+    description: S.optional(S.String),
+    expression: S.optional(S.String),
+    paused: S.optional(S.Boolean),
+    ref: S.optional(S.String),
+    deleted: S.optional(S.Boolean),
   }),
 ).annotate({
   identifier: "RulesUpdateResponseFilter",
@@ -4360,30 +4598,19 @@ export const UpdateRuleResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateRuleResponse",
 }) as any as S.Schema<UpdateRuleResponse>;
 
+export type UaRulesUpdateRequestConfigurationTarget = "ip" | (string & {});
+export const UaRulesUpdateRequestConfigurationTarget = /*@__PURE__*/ S.String;
+
 export interface UaRulesUpdateRequestConfiguration {
-  AccessRuleIPConfigurationObjectTargetValue__: unknown;
-  IPV6ConfigurationObjectTargetValue__: unknown;
-  AccessRuleCIDRConfigurationObjectTargetValue__: unknown;
-  ASNConfigurationObjectTargetValue__: unknown;
-  CountryConfigurationObjectTargetValue__: unknown;
+  /** The configuration target. You must set the target to `ip` when specifying an IP address in the rule. */
+  target?: UaRulesUpdateRequestConfigurationTarget;
+  /** The IP address to match. This address will be compared to the IP address of incoming requests. */
+  value?: string;
 }
 export const UaRulesUpdateRequestConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    AccessRuleIPConfigurationObjectTargetValue__: S.Unknown.pipe(
-      T.Body("AccessRuleIPConfiguration object { target, value }"),
-    ),
-    IPV6ConfigurationObjectTargetValue__: S.Unknown.pipe(
-      T.Body("IPV6Configuration object { target, value }"),
-    ),
-    AccessRuleCIDRConfigurationObjectTargetValue__: S.Unknown.pipe(
-      T.Body("AccessRuleCIDRConfiguration object { target, value }"),
-    ),
-    ASNConfigurationObjectTargetValue__: S.Unknown.pipe(
-      T.Body("ASNConfiguration object { target, value }"),
-    ),
-    CountryConfigurationObjectTargetValue__: S.Unknown.pipe(
-      T.Body("CountryConfiguration object { target, value }"),
-    ),
+    target: S.optional(UaRulesUpdateRequestConfigurationTarget),
+    value: S.optional(S.String),
   }),
 ).annotate({
   identifier: "UaRulesUpdateRequestConfiguration",
@@ -5289,18 +5516,28 @@ export const listWafPackageRules: API.PaginatedOperationMethod<
 
 export type ListWafPackagesError = CloudflareOpError;
 /** Fetches WAF packages for a zone. **Note:** Applies only to the [previous version of WAF managed rules](https://developers.cloudflare.com/support/firewall/managed-rules-web-application-firewall-waf/understanding-waf-managed-rules-web-application-firewall/). */
-export const listWafPackages: API.OperationMethod<
+export const listWafPackages: API.PaginatedOperationMethod<
   ListWafPackagesRequest,
   ListWafPackagesResponse,
   ListWafPackagesError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListWafPackagesRequest,
-  output: ListWafPackagesResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-  retry: Retry.Retry,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListWafPackagesRequest,
+    output: ListWafPackagesResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "resultInfo.page",
+      items: "result",
+      pageSize: "perPage",
+    } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type PatchAccessRuleForAccountError = CloudflareOpError;
 /** Updates an IP Access rule defined. Note: This operation will affect all zones in the account or zone. */

@@ -1051,6 +1051,59 @@
         }
       }
     },
+    "com.cloudflare.dns#RecordsBatchRequestPatchesItemTtl": {
+      "type": "structure",
+      "members": {
+        "number": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "_1": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "1"
+          }
+        }
+      }
+    },
+    "com.cloudflare.dns#RecordsBatchRequestPatchesItemType": {
+      "type": "enum",
+      "members": {
+        "OPENPGPKEY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "OPENPGPKEY"
+          }
+        }
+      }
+    },
+    "com.cloudflare.dns#RecordsBatchRequestPatchesItemSettings": {
+      "type": "structure",
+      "members": {
+        "ipv4_only": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6."
+          }
+        },
+        "ipv6_only": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6."
+          }
+        }
+      }
+    },
+    "com.cloudflare.dns#RecordsBatchRequestPatchesItemTagsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      }
+    },
     "com.cloudflare.dns#RecordsBatchRequestPatchesItemPTRRecord": {
       "type": "structure",
       "members": {
@@ -1264,11 +1317,58 @@
             "smithy.api#required": {}
           }
         },
-        "OpenpgpkeyRecord_object___id__name__ttl__6_more__": {
-          "target": "smithy.api#Document",
+        "id": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "OpenpgpkeyRecord object { id, name, ttl, 6 more }"
+            "smithy.api#documentation": "Identifier."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Complete DNS record name, including the zone name, in Punycode."
+          }
+        },
+        "ttl": {
+          "target": "com.cloudflare.dns#RecordsBatchRequestPatchesItemTtl",
+          "traits": {
+            "smithy.api#documentation": "Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones."
+          }
+        },
+        "type": {
+          "target": "com.cloudflare.dns#RecordsBatchRequestPatchesItemType",
+          "traits": {
+            "smithy.api#documentation": "Record type."
+          }
+        },
+        "comment": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Comments or notes about the DNS record. This field has no effect on DNS responses."
+          }
+        },
+        "content": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A single Base64-encoded OpenPGP Transferable Public Key (RFC 4880 Section 11.1)"
+          }
+        },
+        "proxied": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether the record is receiving the performance and security benefits of Cloudflare."
+          }
+        },
+        "settings": {
+          "target": "com.cloudflare.dns#RecordsBatchRequestPatchesItemSettings",
+          "traits": {
+            "smithy.api#documentation": "Settings for the DNS record."
+          }
+        },
+        "tags": {
+          "target": "com.cloudflare.dns#RecordsBatchRequestPatchesItemTagsList",
+          "traits": {
+            "smithy.api#documentation": "Custom tags for the DNS record. This field has no effect on DNS responses."
           }
         },
         "PTRRecord": {
@@ -1369,154 +1469,130 @@
         "target": "com.cloudflare.dns#RecordsBatchRequestPatchesItem"
       }
     },
+    "com.cloudflare.dns#RecordsBatchRequestPostsItemType": {
+      "type": "enum",
+      "members": {
+        "A": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "A"
+          }
+        }
+      }
+    },
+    "com.cloudflare.dns#RecordsBatchRequestPostsItemSettings": {
+      "type": "structure",
+      "members": {
+        "ipv4_only": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6."
+          }
+        },
+        "ipv6_only": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6."
+          }
+        }
+      }
+    },
+    "com.cloudflare.dns#RecordsBatchRequestPostsItemTagsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.dns#RecordsBatchRequestPostsItemData": {
+      "type": "structure",
+      "members": {
+        "flags": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Flags for the CAA record."
+          }
+        },
+        "tag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the property controlled by this record (e.g.: issue, issuewild, iodef)."
+          }
+        },
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Value of the record. This field's semantics depend on the chosen tag."
+          }
+        }
+      }
+    },
     "com.cloudflare.dns#RecordsBatchRequestPostsItem": {
       "type": "structure",
       "members": {
-        "ARecord_object___name__ttl__type__6_more__": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "ARecord object { name, ttl, type, 6 more }"
+            "smithy.api#documentation": "Complete DNS record name, including the zone name, in Punycode."
           }
         },
-        "AAAARecord_object___name__ttl__type__6_more__": {
+        "ttl": {
           "target": "smithy.api#Document",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "AAAARecord object { name, ttl, type, 6 more }"
+            "smithy.api#documentation": "Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones."
           }
         },
-        "CNAMERecord_object___name__ttl__type__5_more__": {
-          "target": "smithy.api#Document",
+        "type": {
+          "target": "com.cloudflare.dns#RecordsBatchRequestPostsItemType",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "CNAMERecord object { name, ttl, type, 5 more }"
+            "smithy.api#documentation": "Record type."
           }
         },
-        "MXRecord_object___name__ttl__type__6_more__": {
-          "target": "smithy.api#Document",
+        "comment": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "MXRecord object { name, ttl, type, 6 more }"
+            "smithy.api#documentation": "Comments or notes about the DNS record. This field has no effect on DNS responses."
           }
         },
-        "NSRecord_object___name__ttl__type__5_more__": {
-          "target": "smithy.api#Document",
+        "content": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "NSRecord object { name, ttl, type, 5 more }"
+            "smithy.api#documentation": "A valid IPv4 address."
           }
         },
-        "DNSRecordsOpenpgpkeyRecord_object___name__ttl__type__5_more__": {
-          "target": "smithy.api#Document",
+        "private_routing": {
+          "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "DNSRecordsOpenpgpkeyRecord object { name, ttl, type, 5 more }"
+            "smithy.api#documentation": "Enables private network routing to the origin."
           }
         },
-        "PTRRecord_object___name__ttl__type__5_more__": {
-          "target": "smithy.api#Document",
+        "proxied": {
+          "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "PTRRecord object { name, ttl, type, 5 more }"
+            "smithy.api#documentation": "Whether the record is receiving the performance and security benefits of Cloudflare."
           }
         },
-        "TXTRecord_object___name__ttl__type__5_more__": {
-          "target": "smithy.api#Document",
+        "settings": {
+          "target": "com.cloudflare.dns#RecordsBatchRequestPostsItemSettings",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "TXTRecord object { name, ttl, type, 5 more }"
+            "smithy.api#documentation": "Settings for the DNS record."
           }
         },
-        "CAARecord_object___name__ttl__type__6_more__": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.cloudflare.dns#RecordsBatchRequestPostsItemTagsList",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "CAARecord object { name, ttl, type, 6 more }"
+            "smithy.api#documentation": "Custom tags for the DNS record. This field has no effect on DNS responses."
           }
         },
-        "CERTRecord_object___name__ttl__type__6_more__": {
-          "target": "smithy.api#Document",
+        "priority": {
+          "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "CERTRecord object { name, ttl, type, 6 more }"
+            "smithy.api#documentation": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map."
           }
         },
-        "DNSKEYRecord_object___name__ttl__type__6_more__": {
-          "target": "smithy.api#Document",
+        "data": {
+          "target": "com.cloudflare.dns#RecordsBatchRequestPostsItemData",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "DNSKEYRecord object { name, ttl, type, 6 more }"
-          }
-        },
-        "DSRecord_object___name__ttl__type__6_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "DSRecord object { name, ttl, type, 6 more }"
-          }
-        },
-        "HTTPSRecord_object___name__ttl__type__6_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "HTTPSRecord object { name, ttl, type, 6 more }"
-          }
-        },
-        "LOCRecord_object___name__ttl__type__6_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "LOCRecord object { name, ttl, type, 6 more }"
-          }
-        },
-        "NAPTRRecord_object___name__ttl__type__6_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "NAPTRRecord object { name, ttl, type, 6 more }"
-          }
-        },
-        "SMIMEARecord_object___name__ttl__type__6_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "SMIMEARecord object { name, ttl, type, 6 more }"
-          }
-        },
-        "SRVRecord_object___name__ttl__type__6_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "SRVRecord object { name, ttl, type, 6 more }"
-          }
-        },
-        "SSHFPRecord_object___name__ttl__type__6_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "SSHFPRecord object { name, ttl, type, 6 more }"
-          }
-        },
-        "SVCBRecord_object___name__ttl__type__6_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "SVCBRecord object { name, ttl, type, 6 more }"
-          }
-        },
-        "TLSARecord_object___name__ttl__type__6_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "TLSARecord object { name, ttl, type, 6 more }"
-          }
-        },
-        "URIRecord_object___name__ttl__type__7_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "URIRecord object { name, ttl, type, 7 more }"
+            "smithy.api#documentation": "Components of a CAA record."
           }
         }
       }
@@ -1585,6 +1661,40 @@
             "smithy.api#required": {}
           }
         }
+      }
+    },
+    "com.cloudflare.dns#RecordsBatchRequestPutsItemType": {
+      "type": "enum",
+      "members": {
+        "OPENPGPKEY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "OPENPGPKEY"
+          }
+        }
+      }
+    },
+    "com.cloudflare.dns#RecordsBatchRequestPutsItemSettings": {
+      "type": "structure",
+      "members": {
+        "ipv4_only": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6."
+          }
+        },
+        "ipv6_only": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6."
+          }
+        }
+      }
+    },
+    "com.cloudflare.dns#RecordsBatchRequestPutsItemTagsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
       }
     },
     "com.cloudflare.dns#RecordsBatchRequestPutsItemPTRRecord": {
@@ -1800,11 +1910,58 @@
             "smithy.api#required": {}
           }
         },
-        "OpenpgpkeyRecord_object___id__name__ttl__6_more__": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Complete DNS record name, including the zone name, in Punycode."
+          }
+        },
+        "ttl": {
           "target": "smithy.api#Document",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "OpenpgpkeyRecord object { id, name, ttl, 6 more }"
+            "smithy.api#documentation": "Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones."
+          }
+        },
+        "type": {
+          "target": "com.cloudflare.dns#RecordsBatchRequestPutsItemType",
+          "traits": {
+            "smithy.api#documentation": "Record type."
+          }
+        },
+        "comment": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Comments or notes about the DNS record. This field has no effect on DNS responses."
+          }
+        },
+        "content": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A single Base64-encoded OpenPGP Transferable Public Key (RFC 4880 Section 11.1)"
+          }
+        },
+        "proxied": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether the record is receiving the performance and security benefits of Cloudflare."
+          }
+        },
+        "settings": {
+          "target": "com.cloudflare.dns#RecordsBatchRequestPutsItemSettings",
+          "traits": {
+            "smithy.api#documentation": "Settings for the DNS record."
+          }
+        },
+        "tags": {
+          "target": "com.cloudflare.dns#RecordsBatchRequestPutsItemTagsList",
+          "traits": {
+            "smithy.api#documentation": "Custom tags for the DNS record. This field has no effect on DNS responses."
           }
         },
         "PTRRecord": {
@@ -2371,6 +2528,94 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "When the record tags were last modified. Omitted if there are no tags."
+          }
+        }
+      }
+    },
+    "com.cloudflare.dns#RecordsBatchResponseDeletesItemMetaShadowedByList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.dns#RecordsBatchResponseDeletesItemMeta": {
+      "type": "structure",
+      "members": {
+        "dead_glue": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records)."
+          }
+        },
+        "is_glue": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records)."
+          }
+        },
+        "shadowed_by": {
+          "target": "com.cloudflare.dns#RecordsBatchResponseDeletesItemMetaShadowedByList",
+          "traits": {
+            "smithy.api#documentation": "IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records)."
+          }
+        },
+        "shadowed_records_count": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records)."
+          }
+        }
+      }
+    },
+    "com.cloudflare.dns#RecordsBatchResponseDeletesItemSettings": {
+      "type": "structure",
+      "members": {
+        "ipv4_only": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6."
+          }
+        },
+        "ipv6_only": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6."
+          }
+        }
+      }
+    },
+    "com.cloudflare.dns#RecordsBatchResponseDeletesItemTagsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.dns#RecordsBatchResponseDeletesItemTtl": {
+      "type": "structure",
+      "members": {
+        "number": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "_1": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "1"
+          }
+        }
+      }
+    },
+    "com.cloudflare.dns#RecordsBatchResponseDeletesItemType": {
+      "type": "enum",
+      "members": {
+        "OPENPGPKEY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "OPENPGPKEY"
           }
         }
       }
@@ -3713,11 +3958,94 @@
             "smithy.api#required": {}
           }
         },
-        "OpenpgpkeyRecord_object___id__comment__content__12_more__": {
-          "target": "smithy.api#Document",
+        "id": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "OpenpgpkeyRecord object { id, comment, content, 12 more }"
+            "smithy.api#documentation": "Identifier."
+          }
+        },
+        "comment": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Comments or notes about the DNS record. This field has no effect on DNS responses."
+          }
+        },
+        "content": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A single Base64-encoded OpenPGP Transferable Public Key (RFC 4880 Section 11.1)"
+          }
+        },
+        "created_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When the record was created."
+          }
+        },
+        "meta": {
+          "target": "com.cloudflare.dns#RecordsBatchResponseDeletesItemMeta",
+          "traits": {
+            "smithy.api#documentation": "Extra Cloudflare-specific metadata about the record."
+          }
+        },
+        "modified_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When the record was last modified."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Complete DNS record name, including the zone name, in Punycode."
+          }
+        },
+        "proxiable": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether the record can be proxied by Cloudflare or not."
+          }
+        },
+        "proxied": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether the record is receiving the performance and security benefits of Cloudflare."
+          }
+        },
+        "settings": {
+          "target": "com.cloudflare.dns#RecordsBatchResponseDeletesItemSettings",
+          "traits": {
+            "smithy.api#documentation": "Settings for the DNS record."
+          }
+        },
+        "tags": {
+          "target": "com.cloudflare.dns#RecordsBatchResponseDeletesItemTagsList",
+          "traits": {
+            "smithy.api#documentation": "Custom tags for the DNS record. This field has no effect on DNS responses."
+          }
+        },
+        "ttl": {
+          "target": "com.cloudflare.dns#RecordsBatchResponseDeletesItemTtl",
+          "traits": {
+            "smithy.api#documentation": "Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones."
+          }
+        },
+        "type": {
+          "target": "com.cloudflare.dns#RecordsBatchResponseDeletesItemType",
+          "traits": {
+            "smithy.api#documentation": "Record type."
+          }
+        },
+        "comment_modified_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When the record comment was last modified. Omitted if there is no comment."
+          }
+        },
+        "tags_modified_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When the record tags were last modified. Omitted if there are no tags."
           }
         },
         "PTRRecord": {
@@ -4270,154 +4598,149 @@
         "smithy.api#documentation": "Send a Batch of DNS Record API calls to be executed together. Notes: - Although Cloudflare will execute the batched operations in a single database transaction, Cloudflare's distributed KV store must treat each record change as a single key-value pair. This means that the propagation of changes is not atomic. See [the documentation](https://developers.cloudflare.com/dns/manage-dns-records/how-to/batch-record-changes/ \"Batch DNS records\") for more information. - The operations you specify within the /batch request body are always executed in the following order: - Deletes - Patches - Puts - Posts"
       }
     },
+    "com.cloudflare.dns#RecordsCreateRequestBodyTtl": {
+      "type": "structure",
+      "members": {
+        "number": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "_1": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "1"
+          }
+        }
+      }
+    },
+    "com.cloudflare.dns#RecordsCreateRequestBodyType": {
+      "type": "enum",
+      "members": {
+        "A": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "A"
+          }
+        }
+      }
+    },
+    "com.cloudflare.dns#RecordsCreateRequestBodySettings": {
+      "type": "structure",
+      "members": {
+        "ipv4_only": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6."
+          }
+        },
+        "ipv6_only": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6."
+          }
+        }
+      }
+    },
+    "com.cloudflare.dns#RecordsCreateRequestBodyTagsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.dns#RecordsCreateRequestBodyData": {
+      "type": "structure",
+      "members": {
+        "flags": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Flags for the CAA record."
+          }
+        },
+        "tag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the property controlled by this record (e.g.: issue, issuewild, iodef)."
+          }
+        },
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Value of the record. This field's semantics depend on the chosen tag."
+          }
+        }
+      }
+    },
     "com.cloudflare.dns#RecordsCreateRequestBody": {
       "type": "structure",
       "members": {
-        "ARecord_object___name__ttl__type__6_more__": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "ARecord object { name, ttl, type, 6 more }"
+            "smithy.api#documentation": "Complete DNS record name, including the zone name, in Punycode."
           }
         },
-        "AAAARecord_object___name__ttl__type__6_more__": {
-          "target": "smithy.api#Document",
+        "ttl": {
+          "target": "com.cloudflare.dns#RecordsCreateRequestBodyTtl",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "AAAARecord object { name, ttl, type, 6 more }"
+            "smithy.api#documentation": "Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones."
           }
         },
-        "CNAMERecord_object___name__ttl__type__5_more__": {
-          "target": "smithy.api#Document",
+        "type": {
+          "target": "com.cloudflare.dns#RecordsCreateRequestBodyType",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "CNAMERecord object { name, ttl, type, 5 more }"
+            "smithy.api#documentation": "Record type."
           }
         },
-        "MXRecord_object___name__ttl__type__6_more__": {
-          "target": "smithy.api#Document",
+        "comment": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "MXRecord object { name, ttl, type, 6 more }"
+            "smithy.api#documentation": "Comments or notes about the DNS record. This field has no effect on DNS responses."
           }
         },
-        "NSRecord_object___name__ttl__type__5_more__": {
-          "target": "smithy.api#Document",
+        "content": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "NSRecord object { name, ttl, type, 5 more }"
+            "smithy.api#documentation": "A valid IPv4 address."
           }
         },
-        "DNSRecordsOpenpgpkeyRecord_object___name__ttl__type__5_more__": {
-          "target": "smithy.api#Document",
+        "private_routing": {
+          "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "DNSRecordsOpenpgpkeyRecord object { name, ttl, type, 5 more }"
+            "smithy.api#documentation": "Enables private network routing to the origin."
           }
         },
-        "PTRRecord_object___name__ttl__type__5_more__": {
-          "target": "smithy.api#Document",
+        "proxied": {
+          "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "PTRRecord object { name, ttl, type, 5 more }"
+            "smithy.api#documentation": "Whether the record is receiving the performance and security benefits of Cloudflare."
           }
         },
-        "TXTRecord_object___name__ttl__type__5_more__": {
-          "target": "smithy.api#Document",
+        "settings": {
+          "target": "com.cloudflare.dns#RecordsCreateRequestBodySettings",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "TXTRecord object { name, ttl, type, 5 more }"
+            "smithy.api#documentation": "Settings for the DNS record."
           }
         },
-        "CAARecord_object___name__ttl__type__6_more__": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.cloudflare.dns#RecordsCreateRequestBodyTagsList",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "CAARecord object { name, ttl, type, 6 more }"
+            "smithy.api#documentation": "Custom tags for the DNS record. This field has no effect on DNS responses."
           }
         },
-        "CERTRecord_object___name__ttl__type__6_more__": {
-          "target": "smithy.api#Document",
+        "priority": {
+          "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "CERTRecord object { name, ttl, type, 6 more }"
+            "smithy.api#documentation": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map."
           }
         },
-        "DNSKEYRecord_object___name__ttl__type__6_more__": {
-          "target": "smithy.api#Document",
+        "data": {
+          "target": "com.cloudflare.dns#RecordsCreateRequestBodyData",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "DNSKEYRecord object { name, ttl, type, 6 more }"
-          }
-        },
-        "DSRecord_object___name__ttl__type__6_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "DSRecord object { name, ttl, type, 6 more }"
-          }
-        },
-        "HTTPSRecord_object___name__ttl__type__6_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "HTTPSRecord object { name, ttl, type, 6 more }"
-          }
-        },
-        "LOCRecord_object___name__ttl__type__6_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "LOCRecord object { name, ttl, type, 6 more }"
-          }
-        },
-        "NAPTRRecord_object___name__ttl__type__6_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "NAPTRRecord object { name, ttl, type, 6 more }"
-          }
-        },
-        "SMIMEARecord_object___name__ttl__type__6_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "SMIMEARecord object { name, ttl, type, 6 more }"
-          }
-        },
-        "SRVRecord_object___name__ttl__type__6_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "SRVRecord object { name, ttl, type, 6 more }"
-          }
-        },
-        "SSHFPRecord_object___name__ttl__type__6_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "SSHFPRecord object { name, ttl, type, 6 more }"
-          }
-        },
-        "SVCBRecord_object___name__ttl__type__6_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "SVCBRecord object { name, ttl, type, 6 more }"
-          }
-        },
-        "TLSARecord_object___name__ttl__type__6_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "TLSARecord object { name, ttl, type, 6 more }"
-          }
-        },
-        "URIRecord_object___name__ttl__type__7_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "URIRecord object { name, ttl, type, 7 more }"
+            "smithy.api#documentation": "Components of a CAA record."
           }
         }
       }
@@ -4882,6 +5205,94 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "When the record tags were last modified. Omitted if there are no tags."
+          }
+        }
+      }
+    },
+    "com.cloudflare.dns#RecordsCreateResponseMetaShadowedByList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.dns#RecordsCreateResponseMeta": {
+      "type": "structure",
+      "members": {
+        "dead_glue": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records)."
+          }
+        },
+        "is_glue": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records)."
+          }
+        },
+        "shadowed_by": {
+          "target": "com.cloudflare.dns#RecordsCreateResponseMetaShadowedByList",
+          "traits": {
+            "smithy.api#documentation": "IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records)."
+          }
+        },
+        "shadowed_records_count": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records)."
+          }
+        }
+      }
+    },
+    "com.cloudflare.dns#RecordsCreateResponseSettings": {
+      "type": "structure",
+      "members": {
+        "ipv4_only": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6."
+          }
+        },
+        "ipv6_only": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6."
+          }
+        }
+      }
+    },
+    "com.cloudflare.dns#RecordsCreateResponseTagsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.dns#RecordsCreateResponseTtl": {
+      "type": "structure",
+      "members": {
+        "number": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "_1": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "1"
+          }
+        }
+      }
+    },
+    "com.cloudflare.dns#RecordsCreateResponseType": {
+      "type": "enum",
+      "members": {
+        "OPENPGPKEY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "OPENPGPKEY"
           }
         }
       }
@@ -6224,11 +6635,94 @@
             "smithy.api#required": {}
           }
         },
-        "OpenpgpkeyRecord_object___id__comment__content__12_more__": {
-          "target": "smithy.api#Document",
+        "id": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "OpenpgpkeyRecord object { id, comment, content, 12 more }"
+            "smithy.api#documentation": "Identifier."
+          }
+        },
+        "comment": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Comments or notes about the DNS record. This field has no effect on DNS responses."
+          }
+        },
+        "content": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A single Base64-encoded OpenPGP Transferable Public Key (RFC 4880 Section 11.1)"
+          }
+        },
+        "created_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When the record was created."
+          }
+        },
+        "meta": {
+          "target": "com.cloudflare.dns#RecordsCreateResponseMeta",
+          "traits": {
+            "smithy.api#documentation": "Extra Cloudflare-specific metadata about the record."
+          }
+        },
+        "modified_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When the record was last modified."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Complete DNS record name, including the zone name, in Punycode."
+          }
+        },
+        "proxiable": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether the record can be proxied by Cloudflare or not."
+          }
+        },
+        "proxied": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether the record is receiving the performance and security benefits of Cloudflare."
+          }
+        },
+        "settings": {
+          "target": "com.cloudflare.dns#RecordsCreateResponseSettings",
+          "traits": {
+            "smithy.api#documentation": "Settings for the DNS record."
+          }
+        },
+        "tags": {
+          "target": "com.cloudflare.dns#RecordsCreateResponseTagsList",
+          "traits": {
+            "smithy.api#documentation": "Custom tags for the DNS record. This field has no effect on DNS responses."
+          }
+        },
+        "ttl": {
+          "target": "com.cloudflare.dns#RecordsCreateResponseTtl",
+          "traits": {
+            "smithy.api#documentation": "Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones."
+          }
+        },
+        "type": {
+          "target": "com.cloudflare.dns#RecordsCreateResponseType",
+          "traits": {
+            "smithy.api#documentation": "Record type."
+          }
+        },
+        "comment_modified_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When the record comment was last modified. Omitted if there is no comment."
+          }
+        },
+        "tags_modified_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When the record tags were last modified. Omitted if there are no tags."
           }
         },
         "PTRRecord": {
@@ -6401,154 +6895,149 @@
         "smithy.api#idempotent": {}
       }
     },
+    "com.cloudflare.dns#RecordsEditRequestBodyTtl": {
+      "type": "structure",
+      "members": {
+        "number": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "_1": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "1"
+          }
+        }
+      }
+    },
+    "com.cloudflare.dns#RecordsEditRequestBodyType": {
+      "type": "enum",
+      "members": {
+        "A": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "A"
+          }
+        }
+      }
+    },
+    "com.cloudflare.dns#RecordsEditRequestBodySettings": {
+      "type": "structure",
+      "members": {
+        "ipv4_only": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6."
+          }
+        },
+        "ipv6_only": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6."
+          }
+        }
+      }
+    },
+    "com.cloudflare.dns#RecordsEditRequestBodyTagsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.dns#RecordsEditRequestBodyData": {
+      "type": "structure",
+      "members": {
+        "flags": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Flags for the CAA record."
+          }
+        },
+        "tag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the property controlled by this record (e.g.: issue, issuewild, iodef)."
+          }
+        },
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Value of the record. This field's semantics depend on the chosen tag."
+          }
+        }
+      }
+    },
     "com.cloudflare.dns#RecordsEditRequestBody": {
       "type": "structure",
       "members": {
-        "ARecord_object___name__ttl__type__6_more__": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "ARecord object { name, ttl, type, 6 more }"
+            "smithy.api#documentation": "Complete DNS record name, including the zone name, in Punycode."
           }
         },
-        "AAAARecord_object___name__ttl__type__6_more__": {
-          "target": "smithy.api#Document",
+        "ttl": {
+          "target": "com.cloudflare.dns#RecordsEditRequestBodyTtl",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "AAAARecord object { name, ttl, type, 6 more }"
+            "smithy.api#documentation": "Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones."
           }
         },
-        "CNAMERecord_object___name__ttl__type__5_more__": {
-          "target": "smithy.api#Document",
+        "type": {
+          "target": "com.cloudflare.dns#RecordsEditRequestBodyType",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "CNAMERecord object { name, ttl, type, 5 more }"
+            "smithy.api#documentation": "Record type."
           }
         },
-        "MXRecord_object___name__ttl__type__6_more__": {
-          "target": "smithy.api#Document",
+        "comment": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "MXRecord object { name, ttl, type, 6 more }"
+            "smithy.api#documentation": "Comments or notes about the DNS record. This field has no effect on DNS responses."
           }
         },
-        "NSRecord_object___name__ttl__type__5_more__": {
-          "target": "smithy.api#Document",
+        "content": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "NSRecord object { name, ttl, type, 5 more }"
+            "smithy.api#documentation": "A valid IPv4 address."
           }
         },
-        "DNSRecordsOpenpgpkeyRecord_object___name__ttl__type__5_more__": {
-          "target": "smithy.api#Document",
+        "private_routing": {
+          "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "DNSRecordsOpenpgpkeyRecord object { name, ttl, type, 5 more }"
+            "smithy.api#documentation": "Enables private network routing to the origin."
           }
         },
-        "PTRRecord_object___name__ttl__type__5_more__": {
-          "target": "smithy.api#Document",
+        "proxied": {
+          "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "PTRRecord object { name, ttl, type, 5 more }"
+            "smithy.api#documentation": "Whether the record is receiving the performance and security benefits of Cloudflare."
           }
         },
-        "TXTRecord_object___name__ttl__type__5_more__": {
-          "target": "smithy.api#Document",
+        "settings": {
+          "target": "com.cloudflare.dns#RecordsEditRequestBodySettings",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "TXTRecord object { name, ttl, type, 5 more }"
+            "smithy.api#documentation": "Settings for the DNS record."
           }
         },
-        "CAARecord_object___name__ttl__type__6_more__": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.cloudflare.dns#RecordsEditRequestBodyTagsList",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "CAARecord object { name, ttl, type, 6 more }"
+            "smithy.api#documentation": "Custom tags for the DNS record. This field has no effect on DNS responses."
           }
         },
-        "CERTRecord_object___name__ttl__type__6_more__": {
-          "target": "smithy.api#Document",
+        "priority": {
+          "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "CERTRecord object { name, ttl, type, 6 more }"
+            "smithy.api#documentation": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map."
           }
         },
-        "DNSKEYRecord_object___name__ttl__type__6_more__": {
-          "target": "smithy.api#Document",
+        "data": {
+          "target": "com.cloudflare.dns#RecordsEditRequestBodyData",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "DNSKEYRecord object { name, ttl, type, 6 more }"
-          }
-        },
-        "DSRecord_object___name__ttl__type__6_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "DSRecord object { name, ttl, type, 6 more }"
-          }
-        },
-        "HTTPSRecord_object___name__ttl__type__6_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "HTTPSRecord object { name, ttl, type, 6 more }"
-          }
-        },
-        "LOCRecord_object___name__ttl__type__6_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "LOCRecord object { name, ttl, type, 6 more }"
-          }
-        },
-        "NAPTRRecord_object___name__ttl__type__6_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "NAPTRRecord object { name, ttl, type, 6 more }"
-          }
-        },
-        "SMIMEARecord_object___name__ttl__type__6_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "SMIMEARecord object { name, ttl, type, 6 more }"
-          }
-        },
-        "SRVRecord_object___name__ttl__type__6_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "SRVRecord object { name, ttl, type, 6 more }"
-          }
-        },
-        "SSHFPRecord_object___name__ttl__type__6_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "SSHFPRecord object { name, ttl, type, 6 more }"
-          }
-        },
-        "SVCBRecord_object___name__ttl__type__6_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "SVCBRecord object { name, ttl, type, 6 more }"
-          }
-        },
-        "TLSARecord_object___name__ttl__type__6_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "TLSARecord object { name, ttl, type, 6 more }"
-          }
-        },
-        "URIRecord_object___name__ttl__type__7_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "URIRecord object { name, ttl, type, 7 more }"
+            "smithy.api#documentation": "Components of a CAA record."
           }
         }
       }
@@ -7021,6 +7510,94 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "When the record tags were last modified. Omitted if there are no tags."
+          }
+        }
+      }
+    },
+    "com.cloudflare.dns#RecordsEditResponseMetaShadowedByList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.dns#RecordsEditResponseMeta": {
+      "type": "structure",
+      "members": {
+        "dead_glue": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records)."
+          }
+        },
+        "is_glue": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records)."
+          }
+        },
+        "shadowed_by": {
+          "target": "com.cloudflare.dns#RecordsEditResponseMetaShadowedByList",
+          "traits": {
+            "smithy.api#documentation": "IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records)."
+          }
+        },
+        "shadowed_records_count": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records)."
+          }
+        }
+      }
+    },
+    "com.cloudflare.dns#RecordsEditResponseSettings": {
+      "type": "structure",
+      "members": {
+        "ipv4_only": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6."
+          }
+        },
+        "ipv6_only": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6."
+          }
+        }
+      }
+    },
+    "com.cloudflare.dns#RecordsEditResponseTagsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.dns#RecordsEditResponseTtl": {
+      "type": "structure",
+      "members": {
+        "number": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "_1": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "1"
+          }
+        }
+      }
+    },
+    "com.cloudflare.dns#RecordsEditResponseType": {
+      "type": "enum",
+      "members": {
+        "OPENPGPKEY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "OPENPGPKEY"
           }
         }
       }
@@ -8363,11 +8940,94 @@
             "smithy.api#required": {}
           }
         },
-        "OpenpgpkeyRecord_object___id__comment__content__12_more__": {
-          "target": "smithy.api#Document",
+        "id": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "OpenpgpkeyRecord object { id, comment, content, 12 more }"
+            "smithy.api#documentation": "Identifier."
+          }
+        },
+        "comment": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Comments or notes about the DNS record. This field has no effect on DNS responses."
+          }
+        },
+        "content": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A single Base64-encoded OpenPGP Transferable Public Key (RFC 4880 Section 11.1)"
+          }
+        },
+        "created_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When the record was created."
+          }
+        },
+        "meta": {
+          "target": "com.cloudflare.dns#RecordsEditResponseMeta",
+          "traits": {
+            "smithy.api#documentation": "Extra Cloudflare-specific metadata about the record."
+          }
+        },
+        "modified_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When the record was last modified."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Complete DNS record name, including the zone name, in Punycode."
+          }
+        },
+        "proxiable": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether the record can be proxied by Cloudflare or not."
+          }
+        },
+        "proxied": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether the record is receiving the performance and security benefits of Cloudflare."
+          }
+        },
+        "settings": {
+          "target": "com.cloudflare.dns#RecordsEditResponseSettings",
+          "traits": {
+            "smithy.api#documentation": "Settings for the DNS record."
+          }
+        },
+        "tags": {
+          "target": "com.cloudflare.dns#RecordsEditResponseTagsList",
+          "traits": {
+            "smithy.api#documentation": "Custom tags for the DNS record. This field has no effect on DNS responses."
+          }
+        },
+        "ttl": {
+          "target": "com.cloudflare.dns#RecordsEditResponseTtl",
+          "traits": {
+            "smithy.api#documentation": "Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones."
+          }
+        },
+        "type": {
+          "target": "com.cloudflare.dns#RecordsEditResponseType",
+          "traits": {
+            "smithy.api#documentation": "Record type."
+          }
+        },
+        "comment_modified_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When the record comment was last modified. Omitted if there is no comment."
+          }
+        },
+        "tags_modified_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When the record tags were last modified. Omitted if there are no tags."
           }
         },
         "PTRRecord": {
@@ -8979,6 +9639,94 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "When the record tags were last modified. Omitted if there are no tags."
+          }
+        }
+      }
+    },
+    "com.cloudflare.dns#RecordsGetResponseMetaShadowedByList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.dns#RecordsGetResponseMeta": {
+      "type": "structure",
+      "members": {
+        "dead_glue": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records)."
+          }
+        },
+        "is_glue": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records)."
+          }
+        },
+        "shadowed_by": {
+          "target": "com.cloudflare.dns#RecordsGetResponseMetaShadowedByList",
+          "traits": {
+            "smithy.api#documentation": "IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records)."
+          }
+        },
+        "shadowed_records_count": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records)."
+          }
+        }
+      }
+    },
+    "com.cloudflare.dns#RecordsGetResponseSettings": {
+      "type": "structure",
+      "members": {
+        "ipv4_only": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6."
+          }
+        },
+        "ipv6_only": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6."
+          }
+        }
+      }
+    },
+    "com.cloudflare.dns#RecordsGetResponseTagsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.dns#RecordsGetResponseTtl": {
+      "type": "structure",
+      "members": {
+        "number": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "_1": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "1"
+          }
+        }
+      }
+    },
+    "com.cloudflare.dns#RecordsGetResponseType": {
+      "type": "enum",
+      "members": {
+        "OPENPGPKEY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "OPENPGPKEY"
           }
         }
       }
@@ -10321,11 +11069,94 @@
             "smithy.api#required": {}
           }
         },
-        "OpenpgpkeyRecord_object___id__comment__content__12_more__": {
-          "target": "smithy.api#Document",
+        "id": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "OpenpgpkeyRecord object { id, comment, content, 12 more }"
+            "smithy.api#documentation": "Identifier."
+          }
+        },
+        "comment": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Comments or notes about the DNS record. This field has no effect on DNS responses."
+          }
+        },
+        "content": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A single Base64-encoded OpenPGP Transferable Public Key (RFC 4880 Section 11.1)"
+          }
+        },
+        "created_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When the record was created."
+          }
+        },
+        "meta": {
+          "target": "com.cloudflare.dns#RecordsGetResponseMeta",
+          "traits": {
+            "smithy.api#documentation": "Extra Cloudflare-specific metadata about the record."
+          }
+        },
+        "modified_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When the record was last modified."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Complete DNS record name, including the zone name, in Punycode."
+          }
+        },
+        "proxiable": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether the record can be proxied by Cloudflare or not."
+          }
+        },
+        "proxied": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether the record is receiving the performance and security benefits of Cloudflare."
+          }
+        },
+        "settings": {
+          "target": "com.cloudflare.dns#RecordsGetResponseSettings",
+          "traits": {
+            "smithy.api#documentation": "Settings for the DNS record."
+          }
+        },
+        "tags": {
+          "target": "com.cloudflare.dns#RecordsGetResponseTagsList",
+          "traits": {
+            "smithy.api#documentation": "Custom tags for the DNS record. This field has no effect on DNS responses."
+          }
+        },
+        "ttl": {
+          "target": "com.cloudflare.dns#RecordsGetResponseTtl",
+          "traits": {
+            "smithy.api#documentation": "Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones."
+          }
+        },
+        "type": {
+          "target": "com.cloudflare.dns#RecordsGetResponseType",
+          "traits": {
+            "smithy.api#documentation": "Record type."
+          }
+        },
+        "comment_modified_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When the record comment was last modified. Omitted if there is no comment."
+          }
+        },
+        "tags_modified_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When the record tags were last modified. Omitted if there are no tags."
           }
         },
         "PTRRecord": {
@@ -11131,6 +11962,94 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "When the record tags were last modified. Omitted if there are no tags."
+          }
+        }
+      }
+    },
+    "com.cloudflare.dns#RecordsListResultItemMetaShadowedByList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.dns#RecordsListResultItemMeta": {
+      "type": "structure",
+      "members": {
+        "dead_glue": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records)."
+          }
+        },
+        "is_glue": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records)."
+          }
+        },
+        "shadowed_by": {
+          "target": "com.cloudflare.dns#RecordsListResultItemMetaShadowedByList",
+          "traits": {
+            "smithy.api#documentation": "IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records)."
+          }
+        },
+        "shadowed_records_count": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records)."
+          }
+        }
+      }
+    },
+    "com.cloudflare.dns#RecordsListResultItemSettings": {
+      "type": "structure",
+      "members": {
+        "ipv4_only": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6."
+          }
+        },
+        "ipv6_only": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6."
+          }
+        }
+      }
+    },
+    "com.cloudflare.dns#RecordsListResultItemTagsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.dns#RecordsListResultItemTtl": {
+      "type": "structure",
+      "members": {
+        "number": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "_1": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "1"
+          }
+        }
+      }
+    },
+    "com.cloudflare.dns#RecordsListResultItemType": {
+      "type": "enum",
+      "members": {
+        "OPENPGPKEY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "OPENPGPKEY"
           }
         }
       }
@@ -12473,11 +13392,94 @@
             "smithy.api#required": {}
           }
         },
-        "OpenpgpkeyRecord_object___id__comment__content__12_more__": {
-          "target": "smithy.api#Document",
+        "id": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "OpenpgpkeyRecord object { id, comment, content, 12 more }"
+            "smithy.api#documentation": "Identifier."
+          }
+        },
+        "comment": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Comments or notes about the DNS record. This field has no effect on DNS responses."
+          }
+        },
+        "content": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A single Base64-encoded OpenPGP Transferable Public Key (RFC 4880 Section 11.1)"
+          }
+        },
+        "created_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When the record was created."
+          }
+        },
+        "meta": {
+          "target": "com.cloudflare.dns#RecordsListResultItemMeta",
+          "traits": {
+            "smithy.api#documentation": "Extra Cloudflare-specific metadata about the record."
+          }
+        },
+        "modified_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When the record was last modified."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Complete DNS record name, including the zone name, in Punycode."
+          }
+        },
+        "proxiable": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether the record can be proxied by Cloudflare or not."
+          }
+        },
+        "proxied": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether the record is receiving the performance and security benefits of Cloudflare."
+          }
+        },
+        "settings": {
+          "target": "com.cloudflare.dns#RecordsListResultItemSettings",
+          "traits": {
+            "smithy.api#documentation": "Settings for the DNS record."
+          }
+        },
+        "tags": {
+          "target": "com.cloudflare.dns#RecordsListResultItemTagsList",
+          "traits": {
+            "smithy.api#documentation": "Custom tags for the DNS record. This field has no effect on DNS responses."
+          }
+        },
+        "ttl": {
+          "target": "com.cloudflare.dns#RecordsListResultItemTtl",
+          "traits": {
+            "smithy.api#documentation": "Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones."
+          }
+        },
+        "type": {
+          "target": "com.cloudflare.dns#RecordsListResultItemType",
+          "traits": {
+            "smithy.api#documentation": "Record type."
+          }
+        },
+        "comment_modified_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When the record comment was last modified. Omitted if there is no comment."
+          }
+        },
+        "tags_modified_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When the record tags were last modified. Omitted if there are no tags."
           }
         },
         "PTRRecord": {
@@ -13118,6 +14120,94 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "When the record tags were last modified. Omitted if there are no tags."
+          }
+        }
+      }
+    },
+    "com.cloudflare.dns#RecordsScanListResultItemMetaShadowedByList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.dns#RecordsScanListResultItemMeta": {
+      "type": "structure",
+      "members": {
+        "dead_glue": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records)."
+          }
+        },
+        "is_glue": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records)."
+          }
+        },
+        "shadowed_by": {
+          "target": "com.cloudflare.dns#RecordsScanListResultItemMetaShadowedByList",
+          "traits": {
+            "smithy.api#documentation": "IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records)."
+          }
+        },
+        "shadowed_records_count": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records)."
+          }
+        }
+      }
+    },
+    "com.cloudflare.dns#RecordsScanListResultItemSettings": {
+      "type": "structure",
+      "members": {
+        "ipv4_only": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6."
+          }
+        },
+        "ipv6_only": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6."
+          }
+        }
+      }
+    },
+    "com.cloudflare.dns#RecordsScanListResultItemTagsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.dns#RecordsScanListResultItemTtl": {
+      "type": "structure",
+      "members": {
+        "number": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "_1": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "1"
+          }
+        }
+      }
+    },
+    "com.cloudflare.dns#RecordsScanListResultItemType": {
+      "type": "enum",
+      "members": {
+        "OPENPGPKEY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "OPENPGPKEY"
           }
         }
       }
@@ -14460,11 +15550,94 @@
             "smithy.api#required": {}
           }
         },
-        "OpenpgpkeyRecord_object___id__comment__content__12_more__": {
-          "target": "smithy.api#Document",
+        "id": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "OpenpgpkeyRecord object { id, comment, content, 12 more }"
+            "smithy.api#documentation": "Identifier."
+          }
+        },
+        "comment": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Comments or notes about the DNS record. This field has no effect on DNS responses."
+          }
+        },
+        "content": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A single Base64-encoded OpenPGP Transferable Public Key (RFC 4880 Section 11.1)"
+          }
+        },
+        "created_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When the record was created."
+          }
+        },
+        "meta": {
+          "target": "com.cloudflare.dns#RecordsScanListResultItemMeta",
+          "traits": {
+            "smithy.api#documentation": "Extra Cloudflare-specific metadata about the record."
+          }
+        },
+        "modified_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When the record was last modified."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Complete DNS record name, including the zone name, in Punycode."
+          }
+        },
+        "proxiable": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether the record can be proxied by Cloudflare or not."
+          }
+        },
+        "proxied": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether the record is receiving the performance and security benefits of Cloudflare."
+          }
+        },
+        "settings": {
+          "target": "com.cloudflare.dns#RecordsScanListResultItemSettings",
+          "traits": {
+            "smithy.api#documentation": "Settings for the DNS record."
+          }
+        },
+        "tags": {
+          "target": "com.cloudflare.dns#RecordsScanListResultItemTagsList",
+          "traits": {
+            "smithy.api#documentation": "Custom tags for the DNS record. This field has no effect on DNS responses."
+          }
+        },
+        "ttl": {
+          "target": "com.cloudflare.dns#RecordsScanListResultItemTtl",
+          "traits": {
+            "smithy.api#documentation": "Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones."
+          }
+        },
+        "type": {
+          "target": "com.cloudflare.dns#RecordsScanListResultItemType",
+          "traits": {
+            "smithy.api#documentation": "Record type."
+          }
+        },
+        "comment_modified_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When the record comment was last modified. Omitted if there is no comment."
+          }
+        },
+        "tags_modified_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When the record tags were last modified. Omitted if there are no tags."
           }
         },
         "PTRRecord": {
@@ -14598,154 +15771,149 @@
         "smithy.api#readonly": {}
       }
     },
+    "com.cloudflare.dns#RecordsScanReviewRequestAcceptsItemTtl": {
+      "type": "structure",
+      "members": {
+        "number": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "_1": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "1"
+          }
+        }
+      }
+    },
+    "com.cloudflare.dns#RecordsScanReviewRequestAcceptsItemType": {
+      "type": "enum",
+      "members": {
+        "A": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "A"
+          }
+        }
+      }
+    },
+    "com.cloudflare.dns#RecordsScanReviewRequestAcceptsItemSettings": {
+      "type": "structure",
+      "members": {
+        "ipv4_only": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6."
+          }
+        },
+        "ipv6_only": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6."
+          }
+        }
+      }
+    },
+    "com.cloudflare.dns#RecordsScanReviewRequestAcceptsItemTagsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.dns#RecordsScanReviewRequestAcceptsItemData": {
+      "type": "structure",
+      "members": {
+        "flags": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Flags for the CAA record."
+          }
+        },
+        "tag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the property controlled by this record (e.g.: issue, issuewild, iodef)."
+          }
+        },
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Value of the record. This field's semantics depend on the chosen tag."
+          }
+        }
+      }
+    },
     "com.cloudflare.dns#RecordsScanReviewRequestAcceptsItem": {
       "type": "structure",
       "members": {
-        "ARecord_object___name__ttl__type__6_more__": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "ARecord object { name, ttl, type, 6 more }"
+            "smithy.api#documentation": "Complete DNS record name, including the zone name, in Punycode."
           }
         },
-        "AAAARecord_object___name__ttl__type__6_more__": {
-          "target": "smithy.api#Document",
+        "ttl": {
+          "target": "com.cloudflare.dns#RecordsScanReviewRequestAcceptsItemTtl",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "AAAARecord object { name, ttl, type, 6 more }"
+            "smithy.api#documentation": "Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones."
           }
         },
-        "CNAMERecord_object___name__ttl__type__5_more__": {
-          "target": "smithy.api#Document",
+        "type": {
+          "target": "com.cloudflare.dns#RecordsScanReviewRequestAcceptsItemType",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "CNAMERecord object { name, ttl, type, 5 more }"
+            "smithy.api#documentation": "Record type."
           }
         },
-        "MXRecord_object___name__ttl__type__6_more__": {
-          "target": "smithy.api#Document",
+        "comment": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "MXRecord object { name, ttl, type, 6 more }"
+            "smithy.api#documentation": "Comments or notes about the DNS record. This field has no effect on DNS responses."
           }
         },
-        "NSRecord_object___name__ttl__type__5_more__": {
-          "target": "smithy.api#Document",
+        "content": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "NSRecord object { name, ttl, type, 5 more }"
+            "smithy.api#documentation": "A valid IPv4 address."
           }
         },
-        "DNSRecordsOpenpgpkeyRecord_object___name__ttl__type__5_more__": {
-          "target": "smithy.api#Document",
+        "private_routing": {
+          "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "DNSRecordsOpenpgpkeyRecord object { name, ttl, type, 5 more }"
+            "smithy.api#documentation": "Enables private network routing to the origin."
           }
         },
-        "PTRRecord_object___name__ttl__type__5_more__": {
-          "target": "smithy.api#Document",
+        "proxied": {
+          "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "PTRRecord object { name, ttl, type, 5 more }"
+            "smithy.api#documentation": "Whether the record is receiving the performance and security benefits of Cloudflare."
           }
         },
-        "TXTRecord_object___name__ttl__type__5_more__": {
-          "target": "smithy.api#Document",
+        "settings": {
+          "target": "com.cloudflare.dns#RecordsScanReviewRequestAcceptsItemSettings",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "TXTRecord object { name, ttl, type, 5 more }"
+            "smithy.api#documentation": "Settings for the DNS record."
           }
         },
-        "CAARecord_object___name__ttl__type__6_more__": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.cloudflare.dns#RecordsScanReviewRequestAcceptsItemTagsList",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "CAARecord object { name, ttl, type, 6 more }"
+            "smithy.api#documentation": "Custom tags for the DNS record. This field has no effect on DNS responses."
           }
         },
-        "CERTRecord_object___name__ttl__type__6_more__": {
-          "target": "smithy.api#Document",
+        "priority": {
+          "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "CERTRecord object { name, ttl, type, 6 more }"
+            "smithy.api#documentation": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map."
           }
         },
-        "DNSKEYRecord_object___name__ttl__type__6_more__": {
-          "target": "smithy.api#Document",
+        "data": {
+          "target": "com.cloudflare.dns#RecordsScanReviewRequestAcceptsItemData",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "DNSKEYRecord object { name, ttl, type, 6 more }"
-          }
-        },
-        "DSRecord_object___name__ttl__type__6_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "DSRecord object { name, ttl, type, 6 more }"
-          }
-        },
-        "HTTPSRecord_object___name__ttl__type__6_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "HTTPSRecord object { name, ttl, type, 6 more }"
-          }
-        },
-        "LOCRecord_object___name__ttl__type__6_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "LOCRecord object { name, ttl, type, 6 more }"
-          }
-        },
-        "NAPTRRecord_object___name__ttl__type__6_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "NAPTRRecord object { name, ttl, type, 6 more }"
-          }
-        },
-        "SMIMEARecord_object___name__ttl__type__6_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "SMIMEARecord object { name, ttl, type, 6 more }"
-          }
-        },
-        "SRVRecord_object___name__ttl__type__6_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "SRVRecord object { name, ttl, type, 6 more }"
-          }
-        },
-        "SSHFPRecord_object___name__ttl__type__6_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "SSHFPRecord object { name, ttl, type, 6 more }"
-          }
-        },
-        "SVCBRecord_object___name__ttl__type__6_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "SVCBRecord object { name, ttl, type, 6 more }"
-          }
-        },
-        "TLSARecord_object___name__ttl__type__6_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "TLSARecord object { name, ttl, type, 6 more }"
-          }
-        },
-        "URIRecord_object___name__ttl__type__7_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "URIRecord object { name, ttl, type, 7 more }"
+            "smithy.api#documentation": "Components of a CAA record."
           }
         }
       }
@@ -15227,6 +16395,94 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "When the record tags were last modified. Omitted if there are no tags."
+          }
+        }
+      }
+    },
+    "com.cloudflare.dns#RecordsScanReviewResponseAcceptsItemMetaShadowedByList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.dns#RecordsScanReviewResponseAcceptsItemMeta": {
+      "type": "structure",
+      "members": {
+        "dead_glue": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records)."
+          }
+        },
+        "is_glue": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records)."
+          }
+        },
+        "shadowed_by": {
+          "target": "com.cloudflare.dns#RecordsScanReviewResponseAcceptsItemMetaShadowedByList",
+          "traits": {
+            "smithy.api#documentation": "IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records)."
+          }
+        },
+        "shadowed_records_count": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records)."
+          }
+        }
+      }
+    },
+    "com.cloudflare.dns#RecordsScanReviewResponseAcceptsItemSettings": {
+      "type": "structure",
+      "members": {
+        "ipv4_only": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6."
+          }
+        },
+        "ipv6_only": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6."
+          }
+        }
+      }
+    },
+    "com.cloudflare.dns#RecordsScanReviewResponseAcceptsItemTagsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.dns#RecordsScanReviewResponseAcceptsItemTtl": {
+      "type": "structure",
+      "members": {
+        "number": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "_1": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "1"
+          }
+        }
+      }
+    },
+    "com.cloudflare.dns#RecordsScanReviewResponseAcceptsItemType": {
+      "type": "enum",
+      "members": {
+        "OPENPGPKEY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "OPENPGPKEY"
           }
         }
       }
@@ -16569,11 +17825,94 @@
             "smithy.api#required": {}
           }
         },
-        "OpenpgpkeyRecord_object___id__comment__content__12_more__": {
-          "target": "smithy.api#Document",
+        "id": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "OpenpgpkeyRecord object { id, comment, content, 12 more }"
+            "smithy.api#documentation": "Identifier."
+          }
+        },
+        "comment": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Comments or notes about the DNS record. This field has no effect on DNS responses."
+          }
+        },
+        "content": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A single Base64-encoded OpenPGP Transferable Public Key (RFC 4880 Section 11.1)"
+          }
+        },
+        "created_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When the record was created."
+          }
+        },
+        "meta": {
+          "target": "com.cloudflare.dns#RecordsScanReviewResponseAcceptsItemMeta",
+          "traits": {
+            "smithy.api#documentation": "Extra Cloudflare-specific metadata about the record."
+          }
+        },
+        "modified_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When the record was last modified."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Complete DNS record name, including the zone name, in Punycode."
+          }
+        },
+        "proxiable": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether the record can be proxied by Cloudflare or not."
+          }
+        },
+        "proxied": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether the record is receiving the performance and security benefits of Cloudflare."
+          }
+        },
+        "settings": {
+          "target": "com.cloudflare.dns#RecordsScanReviewResponseAcceptsItemSettings",
+          "traits": {
+            "smithy.api#documentation": "Settings for the DNS record."
+          }
+        },
+        "tags": {
+          "target": "com.cloudflare.dns#RecordsScanReviewResponseAcceptsItemTagsList",
+          "traits": {
+            "smithy.api#documentation": "Custom tags for the DNS record. This field has no effect on DNS responses."
+          }
+        },
+        "ttl": {
+          "target": "com.cloudflare.dns#RecordsScanReviewResponseAcceptsItemTtl",
+          "traits": {
+            "smithy.api#documentation": "Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones."
+          }
+        },
+        "type": {
+          "target": "com.cloudflare.dns#RecordsScanReviewResponseAcceptsItemType",
+          "traits": {
+            "smithy.api#documentation": "Record type."
+          }
+        },
+        "comment_modified_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When the record comment was last modified. Omitted if there is no comment."
+          }
+        },
+        "tags_modified_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When the record tags were last modified. Omitted if there are no tags."
           }
         },
         "PTRRecord": {
@@ -16745,154 +18084,149 @@
         "smithy.api#documentation": "Initiates an asynchronous scan for common DNS records on your domain. Note that this **does not** automatically add records to your zone. The scan runs in the background, and results can be reviewed later using the `/scan/review` endpoints. Useful if you haven't updated your nameservers yet."
       }
     },
+    "com.cloudflare.dns#RecordsUpdateRequestBodyTtl": {
+      "type": "structure",
+      "members": {
+        "number": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "_1": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "1"
+          }
+        }
+      }
+    },
+    "com.cloudflare.dns#RecordsUpdateRequestBodyType": {
+      "type": "enum",
+      "members": {
+        "A": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "A"
+          }
+        }
+      }
+    },
+    "com.cloudflare.dns#RecordsUpdateRequestBodySettings": {
+      "type": "structure",
+      "members": {
+        "ipv4_only": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6."
+          }
+        },
+        "ipv6_only": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6."
+          }
+        }
+      }
+    },
+    "com.cloudflare.dns#RecordsUpdateRequestBodyTagsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.dns#RecordsUpdateRequestBodyData": {
+      "type": "structure",
+      "members": {
+        "flags": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Flags for the CAA record."
+          }
+        },
+        "tag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the property controlled by this record (e.g.: issue, issuewild, iodef)."
+          }
+        },
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Value of the record. This field's semantics depend on the chosen tag."
+          }
+        }
+      }
+    },
     "com.cloudflare.dns#RecordsUpdateRequestBody": {
       "type": "structure",
       "members": {
-        "ARecord_object___name__ttl__type__6_more__": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "ARecord object { name, ttl, type, 6 more }"
+            "smithy.api#documentation": "Complete DNS record name, including the zone name, in Punycode."
           }
         },
-        "AAAARecord_object___name__ttl__type__6_more__": {
-          "target": "smithy.api#Document",
+        "ttl": {
+          "target": "com.cloudflare.dns#RecordsUpdateRequestBodyTtl",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "AAAARecord object { name, ttl, type, 6 more }"
+            "smithy.api#documentation": "Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones."
           }
         },
-        "CNAMERecord_object___name__ttl__type__5_more__": {
-          "target": "smithy.api#Document",
+        "type": {
+          "target": "com.cloudflare.dns#RecordsUpdateRequestBodyType",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "CNAMERecord object { name, ttl, type, 5 more }"
+            "smithy.api#documentation": "Record type."
           }
         },
-        "MXRecord_object___name__ttl__type__6_more__": {
-          "target": "smithy.api#Document",
+        "comment": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "MXRecord object { name, ttl, type, 6 more }"
+            "smithy.api#documentation": "Comments or notes about the DNS record. This field has no effect on DNS responses."
           }
         },
-        "NSRecord_object___name__ttl__type__5_more__": {
-          "target": "smithy.api#Document",
+        "content": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "NSRecord object { name, ttl, type, 5 more }"
+            "smithy.api#documentation": "A valid IPv4 address."
           }
         },
-        "DNSRecordsOpenpgpkeyRecord_object___name__ttl__type__5_more__": {
-          "target": "smithy.api#Document",
+        "private_routing": {
+          "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "DNSRecordsOpenpgpkeyRecord object { name, ttl, type, 5 more }"
+            "smithy.api#documentation": "Enables private network routing to the origin."
           }
         },
-        "PTRRecord_object___name__ttl__type__5_more__": {
-          "target": "smithy.api#Document",
+        "proxied": {
+          "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "PTRRecord object { name, ttl, type, 5 more }"
+            "smithy.api#documentation": "Whether the record is receiving the performance and security benefits of Cloudflare."
           }
         },
-        "TXTRecord_object___name__ttl__type__5_more__": {
-          "target": "smithy.api#Document",
+        "settings": {
+          "target": "com.cloudflare.dns#RecordsUpdateRequestBodySettings",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "TXTRecord object { name, ttl, type, 5 more }"
+            "smithy.api#documentation": "Settings for the DNS record."
           }
         },
-        "CAARecord_object___name__ttl__type__6_more__": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.cloudflare.dns#RecordsUpdateRequestBodyTagsList",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "CAARecord object { name, ttl, type, 6 more }"
+            "smithy.api#documentation": "Custom tags for the DNS record. This field has no effect on DNS responses."
           }
         },
-        "CERTRecord_object___name__ttl__type__6_more__": {
-          "target": "smithy.api#Document",
+        "priority": {
+          "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "CERTRecord object { name, ttl, type, 6 more }"
+            "smithy.api#documentation": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map."
           }
         },
-        "DNSKEYRecord_object___name__ttl__type__6_more__": {
-          "target": "smithy.api#Document",
+        "data": {
+          "target": "com.cloudflare.dns#RecordsUpdateRequestBodyData",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "DNSKEYRecord object { name, ttl, type, 6 more }"
-          }
-        },
-        "DSRecord_object___name__ttl__type__6_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "DSRecord object { name, ttl, type, 6 more }"
-          }
-        },
-        "HTTPSRecord_object___name__ttl__type__6_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "HTTPSRecord object { name, ttl, type, 6 more }"
-          }
-        },
-        "LOCRecord_object___name__ttl__type__6_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "LOCRecord object { name, ttl, type, 6 more }"
-          }
-        },
-        "NAPTRRecord_object___name__ttl__type__6_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "NAPTRRecord object { name, ttl, type, 6 more }"
-          }
-        },
-        "SMIMEARecord_object___name__ttl__type__6_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "SMIMEARecord object { name, ttl, type, 6 more }"
-          }
-        },
-        "SRVRecord_object___name__ttl__type__6_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "SRVRecord object { name, ttl, type, 6 more }"
-          }
-        },
-        "SSHFPRecord_object___name__ttl__type__6_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "SSHFPRecord object { name, ttl, type, 6 more }"
-          }
-        },
-        "SVCBRecord_object___name__ttl__type__6_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "SVCBRecord object { name, ttl, type, 6 more }"
-          }
-        },
-        "TLSARecord_object___name__ttl__type__6_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "TLSARecord object { name, ttl, type, 6 more }"
-          }
-        },
-        "URIRecord_object___name__ttl__type__7_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "URIRecord object { name, ttl, type, 7 more }"
+            "smithy.api#documentation": "Components of a CAA record."
           }
         }
       }
@@ -17365,6 +18699,94 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "When the record tags were last modified. Omitted if there are no tags."
+          }
+        }
+      }
+    },
+    "com.cloudflare.dns#RecordsUpdateResponseMetaShadowedByList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.dns#RecordsUpdateResponseMeta": {
+      "type": "structure",
+      "members": {
+        "dead_glue": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records)."
+          }
+        },
+        "is_glue": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records)."
+          }
+        },
+        "shadowed_by": {
+          "target": "com.cloudflare.dns#RecordsUpdateResponseMetaShadowedByList",
+          "traits": {
+            "smithy.api#documentation": "IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records)."
+          }
+        },
+        "shadowed_records_count": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records)."
+          }
+        }
+      }
+    },
+    "com.cloudflare.dns#RecordsUpdateResponseSettings": {
+      "type": "structure",
+      "members": {
+        "ipv4_only": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6."
+          }
+        },
+        "ipv6_only": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6."
+          }
+        }
+      }
+    },
+    "com.cloudflare.dns#RecordsUpdateResponseTagsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.dns#RecordsUpdateResponseTtl": {
+      "type": "structure",
+      "members": {
+        "number": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "_1": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "1"
+          }
+        }
+      }
+    },
+    "com.cloudflare.dns#RecordsUpdateResponseType": {
+      "type": "enum",
+      "members": {
+        "OPENPGPKEY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "OPENPGPKEY"
           }
         }
       }
@@ -18707,11 +20129,94 @@
             "smithy.api#required": {}
           }
         },
-        "OpenpgpkeyRecord_object___id__comment__content__12_more__": {
-          "target": "smithy.api#Document",
+        "id": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "OpenpgpkeyRecord object { id, comment, content, 12 more }"
+            "smithy.api#documentation": "Identifier."
+          }
+        },
+        "comment": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Comments or notes about the DNS record. This field has no effect on DNS responses."
+          }
+        },
+        "content": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A single Base64-encoded OpenPGP Transferable Public Key (RFC 4880 Section 11.1)"
+          }
+        },
+        "created_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When the record was created."
+          }
+        },
+        "meta": {
+          "target": "com.cloudflare.dns#RecordsUpdateResponseMeta",
+          "traits": {
+            "smithy.api#documentation": "Extra Cloudflare-specific metadata about the record."
+          }
+        },
+        "modified_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When the record was last modified."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Complete DNS record name, including the zone name, in Punycode."
+          }
+        },
+        "proxiable": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether the record can be proxied by Cloudflare or not."
+          }
+        },
+        "proxied": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether the record is receiving the performance and security benefits of Cloudflare."
+          }
+        },
+        "settings": {
+          "target": "com.cloudflare.dns#RecordsUpdateResponseSettings",
+          "traits": {
+            "smithy.api#documentation": "Settings for the DNS record."
+          }
+        },
+        "tags": {
+          "target": "com.cloudflare.dns#RecordsUpdateResponseTagsList",
+          "traits": {
+            "smithy.api#documentation": "Custom tags for the DNS record. This field has no effect on DNS responses."
+          }
+        },
+        "ttl": {
+          "target": "com.cloudflare.dns#RecordsUpdateResponseTtl",
+          "traits": {
+            "smithy.api#documentation": "Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones."
+          }
+        },
+        "type": {
+          "target": "com.cloudflare.dns#RecordsUpdateResponseType",
+          "traits": {
+            "smithy.api#documentation": "Record type."
+          }
+        },
+        "comment_modified_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When the record comment was last modified. Omitted if there is no comment."
+          }
+        },
+        "tags_modified_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When the record tags were last modified. Omitted if there are no tags."
           }
         },
         "PTRRecord": {

@@ -452,6 +452,14 @@ const encode = ({
 
     const qs = query.toString();
     const url = `${creds.apiBaseUrl}${uri}${qs ? `?${qs}` : ""}`;
+    if (process.env.DISTILLED_DEBUG_HTTP) {
+      console.error(
+        `[distilled] ${http.method} ${url}` +
+          (Object.keys(body).length
+            ? ` body=${JSON.stringify(body).slice(0, 400)}`
+            : ""),
+      );
+    }
 
     let request = HttpClientRequest.make(http.method)(url).pipe(
       HttpClientRequest.setHeaders(headers),

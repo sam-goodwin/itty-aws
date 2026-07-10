@@ -1204,390 +1204,48 @@ export const GetSettingRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetSettingRequest",
 }) as any as S.Schema<GetSettingRequest>;
 
+export type SettingsGetResponseId = "0rtt" | (string & {});
+export const SettingsGetResponseId = /*@__PURE__*/ S.String;
+
+export type SettingsGetResponseValue = "on" | "off" | (string & {});
+export const SettingsGetResponseValue = /*@__PURE__*/ S.String;
+
+export interface SettingsGetResponseEditable {
+  true: unknown;
+  false: unknown;
+}
+export const SettingsGetResponseEditable = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    true: S.Unknown,
+    false: S.Unknown,
+  }),
+).annotate({
+  identifier: "SettingsGetResponseEditable",
+}) as any as S.Schema<SettingsGetResponseEditable>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetSettingResponse {
-  /** 0-RTT session resumption enabled for this zone. */
-  ZeroRTTObjectIdValueEditableModifiedOn__: unknown;
-  /** Advanced protection from Distributed Denial of Service (DDoS) attacks on your website. This is an uneditable value that is 'on' in the case of Business and Enterprise zones. */
-  AdvancedDDoSObjectIdValueEditableModifiedOn__: unknown;
-  /** Aegis provides dedicated egress IPs (from Cloudflare to your origin) for your layer 7 WAF and CDN services. The egress IPs are reserved exclusively for your account so that you can increase your origin security by only allowing traffic from a small list of IP addresses. */
-  ZonesCacheRulesAegisObjectIdModifiedOnValue__: unknown;
-  /** When enabled, Cloudflare serves limited copies of web pages available from the [Internet Archive's Wayback Machine](https://archive.org/web/) if your server is offline. Refer to [Always Online](https://developers.cloudflare.com/cache/about/always-online) for more information. */
-  AlwaysOnlineObjectIdValueEditableModifiedOn__: unknown;
-  /** Reply to all requests for URLs that use "http" with a 301 redirect to the equivalent "https" URL. If you only want to redirect for a subset of requests, consider creating an "Always use HTTPS" page rule. */
-  ZonesSchemasAlwaysUseHTTPSObjectIdValueEditableModifiedOn__: unknown;
-  /** Enable the Automatic HTTPS Rewrites feature for this zone. */
-  ZonesSchemasAutomaticHTTPSRewritesObjectIdValueEditableModifiedOn__: unknown;
-  /** When the client requesting an asset supports the Brotli compression algorithm, Cloudflare will serve a Brotli compressed version of the asset. */
-  BrotliObjectIdValueEditableModifiedOn__: unknown;
-  /** Browser Cache TTL (in seconds) specifies how long Cloudflare-cached resources will remain on your visitors' computers. Cloudflare will honor any larger times specified by your server. (https://support.cloudflare.com/hc/en-us/articles/200168276). */
-  ZonesSchemasBrowserCacheTTLObjectIdValueEditableModifiedOn__: unknown;
-  /** Browser Integrity Check is similar to Bad Behavior and looks for common HTTP headers abused most commonly by spammers and denies access to your page. It will also challenge visitors that do not have a user agent or a non standard user agent (also commonly used by abuse bots, crawlers or visitors). (https://support.cloudflare.com/hc/en-us/articles/200170086). */
-  ZonesSchemasBrowserCheckObjectIdValueEditableModifiedOn__: unknown;
-  /** Cache Level functions based off the setting level. The basic setting will cache most static resources (i.e., css, images, and JavaScript). The simplified setting will ignore the query string when delivering a cached resource. The aggressive setting will cache all static resources, including ones with a query string. (https://support.cloudflare.com/hc/en-us/articles/200168256). */
-  ZonesSchemasCacheLevelObjectIdValueEditableModifiedOn__: unknown;
-  /** Specify how long a visitor is allowed access to your site after successfully completing a challenge (such as a CAPTCHA). After the TTL has expired the visitor will have to complete a new challenge. We recommend a 15 - 45 minute setting and will attempt to honor any setting above 45 minutes. (https://support.cloudflare.com/hc/en-us/articles/200170136). */
-  ChallengeTTLObjectIdValueEditableModifiedOn__: unknown;
-  /** Determines whether or not the china network is enabled. */
-  ZonesChinaNetworkEnabledObjectIdValueEditableModifiedOn__: unknown;
-  /** When enabled and the client sends an Accept header requesting text/markdown, */
-  ZonesContentConverterObjectIdValueEditableModifiedOn__: unknown;
-  /** An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format. */
-  CiphersObjectIdValueEditableModifiedOn__: unknown;
-  /** Whether or not cname flattening is on. */
-  ZonesCNAMEFlatteningObjectIdValueEditableModifiedOn__: unknown;
-  /** Development Mode temporarily allows you to enter development mode for your websites if you need to make changes to your site. This will bypass Cloudflare's accelerated cache and slow down your site, but is useful if you are making changes to cacheable content (like images, css, or JavaScript) and would like to see those changes right away. Once entered, development mode will last for 3 hours and then automatically toggle off. */
-  DevelopmentModeObjectIdValueEditable2More__: unknown;
-  /** When enabled, Cloudflare will attempt to speed up overall page loads by serving `103` responses with `Link` headers from the final response. Refer to [Early Hints](https://developers.cloudflare.com/cache/about/early-hints) for more information. */
-  EarlyHintsObjectIdValueEditableModifiedOn__: unknown;
-  /** Time (in seconds) that a resource will be ensured to remain on Cloudflare's cache servers. */
-  ZonesSchemasEdgeCacheTTLObjectIdValueEditableModifiedOn__: unknown;
-  /** Encrypt email adresses on your web page from bots, while keeping them visible to humans. (https://support.cloudflare.com/hc/en-us/articles/200170016). */
-  ZonesSchemasEmailObfuscationObjectIdValueEditableModifiedOn__: unknown;
-  /** HTTP/2 Edge Prioritization optimises the delivery of resources served through HTTP/2 to improve page load performance. It also supports fine control of content delivery when used in conjunction with Workers. */
-  H2PrioritizationObjectIdValueEditableModifiedOn__: unknown;
-  /** When enabled, the Hotlink Protection option ensures that other sites cannot suck up your bandwidth by building pages that use images hosted on your site. Anytime a request for an image on your site hits Cloudflare, we check to ensure that it's not another site requesting them. People will still be able to download and view images from your page, but other sites won't be able to steal them for use on their own pages. (https://support.cloudflare.com/hc/en-us/articles/200170026). */
-  HotlinkProtectionObjectIdValueEditableModifiedOn__: unknown;
-  /** HTTP2 enabled for this zone. */
-  HTTP2ObjectIdValueEditableModifiedOn__: unknown;
-  /** HTTP3 enabled for this zone. */
-  HTTP3ObjectIdValueEditableModifiedOn__: unknown;
-  /** Image Transformations provides on-demand resizing, conversion and optimization for images served through Cloudflare's network. Refer to the [Image Transformations documentation](https://developers.cloudflare.com/images/) for more information. */
-  ImageResizingObjectIdValueEditableModifiedOn__: unknown;
-  /** Enable IP Geolocation to have Cloudflare geolocate visitors to your website and pass the country code to you. (https://support.cloudflare.com/hc/en-us/articles/200168236). */
-  ZonesSchemasIPGeolocationObjectIdValueEditableModifiedOn__: unknown;
-  /** Enable IPv6 on all subdomains that are Cloudflare enabled. (https://support.cloudflare.com/hc/en-us/articles/200168586). */
-  IPV6ObjectIdValueEditableModifiedOn__: unknown;
-  /** Maximum size of an allowable upload. */
-  ZonesMaxUploadObjectIdValueEditableModifiedOn__: unknown;
-  /** Only accepts HTTPS requests that use at least the TLS protocol version specified. For example, if TLS 1.1 is selected, TLS 1.0 connections will be rejected, while 1.1, 1.2, and 1.3 (if enabled) will be permitted. */
-  MinTLSVersionObjectIdValueEditableModifiedOn__: unknown;
-  /** Automatically optimize image loading for website visitors on mobile */
-  ZonesSchemasMirageObjectIdValueEditableModifiedOn__: unknown;
-  /** Enable Network Error Logging reporting on your zone. (Beta) */
-  NELObjectIdValueEditableModifiedOn__: unknown;
-  /** Enables the Opportunistic Encryption feature for a zone. */
-  ZonesSchemasOpportunisticEncryptionObjectIdValueEditableModifiedOn__: unknown;
-  /** Add an Alt-Svc header to all legitimate requests from Tor, allowing the connection to use our onion services instead of exit nodes. */
-  OpportunisticOnionObjectIdValueEditableModifiedOn__: unknown;
-  /** Orange to Orange (O2O) allows zones on Cloudflare to CNAME to other zones also on Cloudflare. */
-  OrangeToOrangeObjectIdValueEditableModifiedOn__: unknown;
-  /** Cloudflare will proxy customer error pages on any 502,504 errors on origin server instead of showing a default Cloudflare error page. This does not apply to 522 errors and is limited to Enterprise Zones. */
-  ZonesSchemasOriginErrorPagePassThruObjectIdValueEditableModifiedOn__: unknown;
-  /** Origin H2 Max Streams configures the max number of concurrent requests that Cloudflare will send within the same connection when communicating with the origin server, if the origin supports it. Note that if your origin does not support H2 multiplexing, 5xx errors may be observed, particularly 520s. Also note that the default value is `100` for all plan types except Enterprise where it is `1`. `1` means that H2 multiplexing is disabled. */
-  ZonesCacheRulesOriginH2MaxStreamsObjectIdModifiedOnValue__: unknown;
-  /** Origin Max HTTP Setting Version sets the highest HTTP version Cloudflare will attempt to use with your origin. This setting allows Cloudflare to make HTTP/2 requests to your origin. (Refer to [Enable HTTP/2 to Origin](https://developers.cloudflare.com/cache/how-to/enable-http2-to-origin/), for more information.). The default value is "2" for all plan types except Enterprise where it is "1". */
-  ZonesCacheRulesOriginMaxHTTPVersionObjectIdModifiedOnValue__: unknown;
-  /** Removes metadata and compresses your images for faster page load times. Basic (Lossless): Reduce the size of PNG, JPEG, and GIF files - no impact on visual quality. Basic + JPEG (Lossy): Further reduce the size of JPEG files for faster image loading. Larger JPEGs are converted to progressive images, loading a lower-resolution image first and ending in a higher-resolution version. Not recommended for hi-res photography sites. */
-  ZonesSchemasPolishObjectIdValueEditableModifiedOn__: unknown;
-  /** Cloudflare will prefetch any URLs that are included in the response headers. This is limited to Enterprise Zones. */
-  PrefetchPreloadObjectIdValueEditableModifiedOn__: unknown;
-  /** Privacy Pass v1 was a browser extension developed by the Privacy Pass Team to improve the browsing experience for your visitors by allowing users to reduce the number of CAPTCHAs shown. (https://support.cloudflare.com/hc/en-us/articles/115001992652-Privacy-Pass). */
-  ZonesPrivacyPassObjectIdValueEditableModifiedOn__: unknown;
-  /** Maximum time between two read operations from origin. */
-  ProxyReadTimeoutObjectIdValueEditableModifiedOn__: unknown;
-  /** The value set for the Pseudo IPv4 setting. */
-  PseudoIPV4ObjectIdValueEditableModifiedOn__: unknown;
-  /** When enabled, Cloudflare will redirect verified AI training crawlers to canonical URLs */
-  ZonesRedirectsForAITrainingObjectIdValueEditableModifiedOn__: unknown;
-  /** Automatically replace insecure JavaScript libraries with safer and faster alternatives provided under cdnjs and powered by Cloudflare. Currently supports the following libraries: Polyfill under polyfill.io. */
-  ZonesReplaceInsecureJSObjectIdValueEditableModifiedOn__: unknown;
-  /** Enables or disables buffering of responses from the proxied server. Cloudflare may buffer the whole payload to deliver it at once to the client versus allowing it to be delivered in chunks. By default, the proxied server streams directly and is not buffered by Cloudflare. This is limited to Enterprise Zones. */
-  ZonesSchemasResponseBufferingObjectIdValueEditableModifiedOn__: unknown;
-  /** Rocket Loader is a general-purpose asynchronous JavaScript optimisation that prioritises rendering your content while loading your site's Javascript asynchronously. Turning on Rocket Loader will immediately improve a web page's rendering time sometimes measured as Time to First Paint (TTFP), and also the `window.onload` time (assuming there is JavaScript on the page). This can have a positive impact on your Google search ranking. When turned on, Rocket Loader will automatically defer the loading of all Javascript referenced in your HTML, with no configuration required. Refer to [Understanding Rocket Loader](https://support.cloudflare.com/hc/articles/200168056) for more information. */
-  ZonesSchemasRocketLoaderObjectIdValueEditableModifiedOn__: unknown;
-  /** [Automatic Platform Optimization for WordPress](https://developers.cloudflare.com/automatic-platform-optimization/) serves your WordPress site from Cloudflare's edge network and caches third-party fonts. */
-  ZonesSchemasAutomaticPlatformOptimizationObjectIdValueEditableModifiedOn__: unknown;
-  /** When enabled, Cloudflare provisions an AI Search instance for the zone */
-  ZonesSearchForAgentsObjectIdValueEditableModifiedOn__: unknown;
-  /** Cloudflare security header for a zone. */
-  SecurityHeadersObjectIdValueEditableModifiedOn__: unknown;
-  /** Choose the appropriate security profile for your website, which will automatically adjust each of the security settings. If you choose to customize an individual security setting, the profile will become Custom. (https://support.cloudflare.com/hc/en-us/articles/200170056). */
-  ZonesSchemasSecurityLevelObjectIdValueEditableModifiedOn__: unknown;
-  /** If there is sensitive content on your website that you want visible to real visitors, but that you want to hide from suspicious visitors, all you have to do is wrap the content with Cloudflare SSE tags. Wrap any content that you want to be excluded from suspicious visitors in the following SSE tags: <!--sse--><!--/sse-->. For example: <!--sse--> Bad visitors won't see my phone number, 555-555-5555 <!--/sse-->. Note: SSE only will work with HTML. If you have HTML minification enabled, you won't see the SSE tags in your HTML source when it's served through Cloudflare. SSE will still function in this case, as Cloudflare's HTML minification and SSE functionality occur on-the-fly as the resource moves through our network to the visitor's computer. (https://support.cloudflare.com/hc/en-us/articles/200170036). */
-  ServerSideExcludesObjectIdValueEditableModifiedOn__: unknown;
-  /** Allow SHA1 support. */
-  ZonesSha1SupportObjectIdValueEditableModifiedOn__: unknown;
-  /** Cloudflare will treat files with the same query strings as the same file in cache, regardless of the order of the query strings. This is limited to Enterprise Zones. */
-  ZonesSchemasSortQueryStringForCacheObjectIdValueEditableModifiedOn__: unknown;
-  /** SSL encrypts your visitor's connection and safeguards credit card numbers and other personal data to and from your website. SSL can take up to 5 minutes to fully activate. Requires Cloudflare active on your root domain or www domain. Off: no SSL between the visitor and Cloudflare, and no SSL between Cloudflare and your web server (all HTTP traffic). Flexible: SSL between the visitor and Cloudflare -- visitor sees HTTPS on your site, but no SSL between Cloudflare and your web server. You don't need to have an SSL cert on your web server, but your vistors will still see the site as being HTTPS enabled. Full: SSL between the visitor and Cloudflare -- visitor sees HTTPS on your site, and SSL between Cloudflare and your web server. You'll need to have your own SSL cert or self-signed cert at the very least. Full (Strict): SSL between the visitor and Cloudflare -- visitor sees HTTPS on your site, and SSL between Cloudflare and your web server. You'll need to have a valid SSL certificate installed on your web server. This certificate must be signed by a certificate authority, have an expiration date in the future, and respond for the request domain name (hostname). (https://support.cloudflare.com/hc/en-us/articles/200170416). */
-  ZonesSchemasSSLObjectIdValueEditableModifiedOn__: unknown;
-  /** Enrollment in the SSL/TLS Recommender service which tries to detect and recommend (by sending periodic emails) the most secure SSL/TLS setting your origin servers support. */
-  SSLRecommenderObjectIdEnabled__: unknown;
-  /** Only allows TLS1.2. */
-  ZonesTLS12OnlyObjectIdValueEditableModifiedOn__: unknown;
-  /** Enables Crypto TLS 1.3 feature for a zone. */
-  TLS13ObjectIdValueEditableModifiedOn__: unknown;
-  /** TLS Client Auth requires Cloudflare to connect to your origin server using a client certificate (Enterprise Only). */
-  TLSClientAuthObjectIdValueEditableModifiedOn__: unknown;
-  /** Media Transformations provides on-demand resizing, conversion and optimization for images and video served through Cloudflare's network. Refer to the [Image Transformations](https://developers.cloudflare.com/images/) and [Video Transformations](https://developers.cloudflare.com/stream/transform-videos/#getting-started) documentation for more information. */
-  ZonesTransformationsObjectIdValueEditableModifiedOn__: unknown;
-  /** Media Transformations Allowed Origins restricts transformations for images and video served through Cloudflare's network. Refer to the [Image Transformations](https://developers.cloudflare.com/images/) and [Video Transformations](https://developers.cloudflare.com/stream/transform-videos/#getting-started) documentation for more information. */
-  ZonesTransformationsAllowedOriginsObjectIdValueEditableModifiedOn__: unknown;
-  /** Allows customer to continue to use True Client IP (Akamai feature) in the headers we send to the origin. This is limited to Enterprise Zones. */
-  ZonesSchemasTrueClientIPHeaderObjectIdValueEditableModifiedOn__: unknown;
-  /** The WAF examines HTTP requests to your website. It inspects both GET and POST requests and applies rules to help filter out illegitimate traffic from legitimate website visitors. The Cloudflare WAF inspects website addresses or URLs to detect anything out of the ordinary. If the Cloudflare WAF determines suspicious user behavior, then the WAF will 'challenge' the web visitor with a page that asks them to submit a CAPTCHA successfully to continue their action. If the challenge is failed, the action will be stopped. What this means is that Cloudflare's WAF will block any traffic identified as illegitimate before it reaches your origin web server. (https://support.cloudflare.com/hc/en-us/articles/200172016). */
-  ZonesSchemasWAFObjectIdValueEditableModifiedOn__: unknown;
-  /** When the client requesting the image supports the WebP image codec, and WebP offers a performance advantage over the original image format, Cloudflare will serve a WebP version of the original image. */
-  WebPObjectIdValueEditableModifiedOn__: unknown;
-  /** WebSockets are open connections sustained between the client and the origin server. Inside a WebSockets connection, the client and the origin can pass data back and forth without having to reestablish sessions. This makes exchanging data within a WebSockets connection fast. WebSockets are often used for real-time applications such as live chat and gaming. For more information refer to [Can I use Cloudflare with Websockets](https://support.cloudflare.com/hc/en-us/articles/200169466-Can-I-use-Cloudflare-with-WebSockets-). */
-  WebsocketObjectIdValueEditableModifiedOn__: unknown;
+  /** ID of the zone setting. */
+  id?: SettingsGetResponseId;
+  /** Current value of the zone setting. */
+  value?: SettingsGetResponseValue;
+  /** Whether or not this setting can be modified for this zone (based on your Cloudflare plan level). */
+  editable?: SettingsGetResponseEditable;
+  /** last time this setting was modified. */
+  modifiedOn?: string;
+  /** Value of the zone setting. */
+  timeRemaining?: number;
+  /** ssl-recommender enrollment setting. */
+  enabled?: boolean;
 }
 export const GetSettingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    ZeroRTTObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("ZeroRTT object { id, value, editable, modified_on }"),
-    ),
-    AdvancedDDoSObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("AdvancedDDoS object { id, value, editable, modified_on }"),
-    ),
-    ZonesCacheRulesAegisObjectIdModifiedOnValue__: S.Unknown.pipe(
-      T.Body("ZonesCacheRulesAegis object { id, modified_on, value }"),
-    ),
-    AlwaysOnlineObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("AlwaysOnline object { id, value, editable, modified_on }"),
-    ),
-    ZonesSchemasAlwaysUseHTTPSObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body(
-        "ZonesSchemasAlwaysUseHTTPS object { id, value, editable, modified_on }",
-      ),
-    ),
-    ZonesSchemasAutomaticHTTPSRewritesObjectIdValueEditableModifiedOn__:
-      S.Unknown.pipe(
-        T.Body(
-          "ZonesSchemasAutomaticHTTPSRewrites object { id, value, editable, modified_on }",
-        ),
-      ),
-    BrotliObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("Brotli object { id, value, editable, modified_on }"),
-    ),
-    ZonesSchemasBrowserCacheTTLObjectIdValueEditableModifiedOn__:
-      S.Unknown.pipe(
-        T.Body(
-          "ZonesSchemasBrowserCacheTTL object { id, value, editable, modified_on }",
-        ),
-      ),
-    ZonesSchemasBrowserCheckObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body(
-        "ZonesSchemasBrowserCheck object { id, value, editable, modified_on }",
-      ),
-    ),
-    ZonesSchemasCacheLevelObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body(
-        "ZonesSchemasCacheLevel object { id, value, editable, modified_on }",
-      ),
-    ),
-    ChallengeTTLObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("ChallengeTTL object { id, value, editable, modified_on }"),
-    ),
-    ZonesChinaNetworkEnabledObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body(
-        "ZonesChinaNetworkEnabled object { id, value, editable, modified_on }",
-      ),
-    ),
-    ZonesContentConverterObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body(
-        "ZonesContentConverter object { id, value, editable, modified_on }",
-      ),
-    ),
-    CiphersObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("Ciphers object { id, value, editable, modified_on }"),
-    ),
-    ZonesCNAMEFlatteningObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body(
-        "ZonesCNAMEFlattening object { id, value, editable, modified_on }",
-      ),
-    ),
-    DevelopmentModeObjectIdValueEditable2More__: S.Unknown.pipe(
-      T.Body("DevelopmentMode object { id, value, editable, 2 more }"),
-    ),
-    EarlyHintsObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("EarlyHints object { id, value, editable, modified_on }"),
-    ),
-    ZonesSchemasEdgeCacheTTLObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body(
-        "ZonesSchemasEdgeCacheTTL object { id, value, editable, modified_on }",
-      ),
-    ),
-    ZonesSchemasEmailObfuscationObjectIdValueEditableModifiedOn__:
-      S.Unknown.pipe(
-        T.Body(
-          "ZonesSchemasEmailObfuscation object { id, value, editable, modified_on }",
-        ),
-      ),
-    H2PrioritizationObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("H2Prioritization object { id, value, editable, modified_on }"),
-    ),
-    HotlinkProtectionObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("HotlinkProtection object { id, value, editable, modified_on }"),
-    ),
-    HTTP2ObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("HTTP2 object { id, value, editable, modified_on }"),
-    ),
-    HTTP3ObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("HTTP3 object { id, value, editable, modified_on }"),
-    ),
-    ImageResizingObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("ImageResizing object { id, value, editable, modified_on }"),
-    ),
-    ZonesSchemasIPGeolocationObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body(
-        "ZonesSchemasIPGeolocation object { id, value, editable, modified_on }",
-      ),
-    ),
-    IPV6ObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("IPV6 object { id, value, editable, modified_on }"),
-    ),
-    ZonesMaxUploadObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("ZonesMaxUpload object { id, value, editable, modified_on }"),
-    ),
-    MinTLSVersionObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("MinTLSVersion object { id, value, editable, modified_on }"),
-    ),
-    ZonesSchemasMirageObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("ZonesSchemasMirage object { id, value, editable, modified_on }"),
-    ),
-    NELObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("NEL object { id, value, editable, modified_on }"),
-    ),
-    ZonesSchemasOpportunisticEncryptionObjectIdValueEditableModifiedOn__:
-      S.Unknown.pipe(
-        T.Body(
-          "ZonesSchemasOpportunisticEncryption object { id, value, editable, modified_on }",
-        ),
-      ),
-    OpportunisticOnionObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("OpportunisticOnion object { id, value, editable, modified_on }"),
-    ),
-    OrangeToOrangeObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("OrangeToOrange object { id, value, editable, modified_on }"),
-    ),
-    ZonesSchemasOriginErrorPagePassThruObjectIdValueEditableModifiedOn__:
-      S.Unknown.pipe(
-        T.Body(
-          "ZonesSchemasOriginErrorPagePassThru object { id, value, editable, modified_on }",
-        ),
-      ),
-    ZonesCacheRulesOriginH2MaxStreamsObjectIdModifiedOnValue__: S.Unknown.pipe(
-      T.Body(
-        "ZonesCacheRulesOriginH2MaxStreams object { id, modified_on, value }",
-      ),
-    ),
-    ZonesCacheRulesOriginMaxHTTPVersionObjectIdModifiedOnValue__:
-      S.Unknown.pipe(
-        T.Body(
-          "ZonesCacheRulesOriginMaxHTTPVersion object { id, modified_on, value }",
-        ),
-      ),
-    ZonesSchemasPolishObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("ZonesSchemasPolish object { id, value, editable, modified_on }"),
-    ),
-    PrefetchPreloadObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("PrefetchPreload object { id, value, editable, modified_on }"),
-    ),
-    ZonesPrivacyPassObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("ZonesPrivacyPass object { id, value, editable, modified_on }"),
-    ),
-    ProxyReadTimeoutObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("ProxyReadTimeout object { id, value, editable, modified_on }"),
-    ),
-    PseudoIPV4ObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("PseudoIPV4 object { id, value, editable, modified_on }"),
-    ),
-    ZonesRedirectsForAITrainingObjectIdValueEditableModifiedOn__:
-      S.Unknown.pipe(
-        T.Body(
-          "ZonesRedirectsForAITraining object { id, value, editable, modified_on }",
-        ),
-      ),
-    ZonesReplaceInsecureJSObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body(
-        "ZonesReplaceInsecureJS object { id, value, editable, modified_on }",
-      ),
-    ),
-    ZonesSchemasResponseBufferingObjectIdValueEditableModifiedOn__:
-      S.Unknown.pipe(
-        T.Body(
-          "ZonesSchemasResponseBuffering object { id, value, editable, modified_on }",
-        ),
-      ),
-    ZonesSchemasRocketLoaderObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body(
-        "ZonesSchemasRocketLoader object { id, value, editable, modified_on }",
-      ),
-    ),
-    ZonesSchemasAutomaticPlatformOptimizationObjectIdValueEditableModifiedOn__:
-      S.Unknown.pipe(
-        T.Body(
-          "ZonesSchemasAutomaticPlatformOptimization object { id, value, editable, modified_on }",
-        ),
-      ),
-    ZonesSearchForAgentsObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body(
-        "ZonesSearchForAgents object { id, value, editable, modified_on }",
-      ),
-    ),
-    SecurityHeadersObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("SecurityHeaders object { id, value, editable, modified_on }"),
-    ),
-    ZonesSchemasSecurityLevelObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body(
-        "ZonesSchemasSecurityLevel object { id, value, editable, modified_on }",
-      ),
-    ),
-    ServerSideExcludesObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("ServerSideExcludes object { id, value, editable, modified_on }"),
-    ),
-    ZonesSha1SupportObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("ZonesSha1Support object { id, value, editable, modified_on }"),
-    ),
-    ZonesSchemasSortQueryStringForCacheObjectIdValueEditableModifiedOn__:
-      S.Unknown.pipe(
-        T.Body(
-          "ZonesSchemasSortQueryStringForCache object { id, value, editable, modified_on }",
-        ),
-      ),
-    ZonesSchemasSSLObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("ZonesSchemasSSL object { id, value, editable, modified_on }"),
-    ),
-    SSLRecommenderObjectIdEnabled__: S.Unknown.pipe(
-      T.Body("SSLRecommender object { id, enabled }"),
-    ),
-    ZonesTLS12OnlyObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("ZonesTLS1_2Only object { id, value, editable, modified_on }"),
-    ),
-    TLS13ObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("TLS1_3 object { id, value, editable, modified_on }"),
-    ),
-    TLSClientAuthObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("TLSClientAuth object { id, value, editable, modified_on }"),
-    ),
-    ZonesTransformationsObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body(
-        "ZonesTransformations object { id, value, editable, modified_on }",
-      ),
-    ),
-    ZonesTransformationsAllowedOriginsObjectIdValueEditableModifiedOn__:
-      S.Unknown.pipe(
-        T.Body(
-          "ZonesTransformationsAllowedOrigins object { id, value, editable, modified_on }",
-        ),
-      ),
-    ZonesSchemasTrueClientIPHeaderObjectIdValueEditableModifiedOn__:
-      S.Unknown.pipe(
-        T.Body(
-          "ZonesSchemasTrueClientIPHeader object { id, value, editable, modified_on }",
-        ),
-      ),
-    ZonesSchemasWAFObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("ZonesSchemasWAF object { id, value, editable, modified_on }"),
-    ),
-    WebPObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("WebP object { id, value, editable, modified_on }"),
-    ),
-    WebsocketObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("Websocket object { id, value, editable, modified_on }"),
-    ),
+    id: S.optional(SettingsGetResponseId),
+    value: S.optional(SettingsGetResponseValue),
+    editable: S.optional(SettingsGetResponseEditable),
+    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+    timeRemaining: S.optional(S.Number.pipe(T.Body("time_remaining"))),
+    enabled: S.optional(S.Boolean),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetSettingResponse",
@@ -2664,16 +2322,101 @@ export const PatchHoldResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchHoldResponse",
 }) as any as S.Schema<PatchHoldResponse>;
 
+export type SettingsEditRequestBodyValueZonesCiphersValueList = string[];
+export const SettingsEditRequestBodyValueZonesCiphersValueList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<SettingsEditRequestBodyValueZonesCiphersValueList>;
+
+export type SettingsEditRequestBodyValueHostnamesList = string[];
+export const SettingsEditRequestBodyValueHostnamesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<SettingsEditRequestBodyValueHostnamesList>;
+
+export interface SettingsEditRequestBodyValueStrictTransportSecurity {
+  /** Whether or not strict transport security is enabled. */
+  enabled?: boolean;
+  /** Include all subdomains for strict transport security. */
+  includeSubdomains?: boolean;
+  /** Max age in seconds of the strict transport security. */
+  maxAge?: number;
+  /** Whether or not to include 'X-Content-Type-Options: nosniff' header. */
+  nosniff?: boolean;
+  /** Enable automatic preload of the HSTS configuration. */
+  preload?: boolean;
+}
+export const SettingsEditRequestBodyValueStrictTransportSecurity =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      enabled: S.optional(S.Boolean),
+      includeSubdomains: S.optional(
+        S.Boolean.pipe(T.Body("include_subdomains")),
+      ),
+      maxAge: S.optional(S.Number.pipe(T.Body("max_age"))),
+      nosniff: S.optional(S.Boolean),
+      preload: S.optional(S.Boolean),
+    }),
+  ).annotate({
+    identifier: "SettingsEditRequestBodyValueStrictTransportSecurity",
+  }) as any as S.Schema<SettingsEditRequestBodyValueStrictTransportSecurity>;
+
+export interface SettingsEditRequestBodyValue {
+  unknown: unknown;
+  /** Whether the feature is enabled or not. */
+  enabled?: boolean;
+  /** Egress pool id which refers to a grouping of dedicated egress IPs through which Cloudflare will connect to origin. */
+  poolId?: string;
+  /** Value of the zone setting. */
+  ZonesCiphersValue: SettingsEditRequestBodyValueZonesCiphersValueList;
+  /** Value of the zone setting. */
+  ZonesProxyReadTimeoutValue: number;
+  /** Indicates whether or not [cache by device type](https://developers.cloudflare.com/automatic-platform-optimization/reference/cache-device-type/) is enabled. */
+  cacheByDeviceType?: boolean;
+  /** Indicates whether or not Cloudflare proxy is enabled. */
+  cf?: boolean;
+  /** An array of hostnames where Automatic Platform Optimization for WordPress is activated. */
+  hostnames?: SettingsEditRequestBodyValueHostnamesList;
+  /** Indicates whether or not site is powered by WordPress. */
+  wordpress?: boolean;
+  /** Indicates whether or not [Cloudflare for WordPress plugin](https://wordpress.org/plugins/cloudflare/) is installed. */
+  wpPlugin?: boolean;
+  /** Strict Transport Security. */
+  strictTransportSecurity?: SettingsEditRequestBodyValueStrictTransportSecurity;
+}
+export const SettingsEditRequestBodyValue = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    unknown: S.Unknown,
+    enabled: S.optional(S.Boolean),
+    poolId: S.optional(S.String.pipe(T.Body("pool_id"))),
+    ZonesCiphersValue: SettingsEditRequestBodyValueZonesCiphersValueList,
+    ZonesProxyReadTimeoutValue: S.Number,
+    cacheByDeviceType: S.optional(
+      S.Boolean.pipe(T.Body("cache_by_device_type")),
+    ),
+    cf: S.optional(S.Boolean),
+    hostnames: S.optional(SettingsEditRequestBodyValueHostnamesList),
+    wordpress: S.optional(S.Boolean),
+    wpPlugin: S.optional(S.Boolean.pipe(T.Body("wp_plugin"))),
+    strictTransportSecurity: S.optional(
+      SettingsEditRequestBodyValueStrictTransportSecurity.pipe(
+        T.Body("strict_transport_security"),
+      ),
+    ),
+  }),
+).annotate({
+  identifier: "SettingsEditRequestBodyValue",
+}) as any as S.Schema<SettingsEditRequestBodyValue>;
+
 export interface SettingsEditRequestBody {
-  EnabledObjectEnabled__: unknown;
-  ValueObjectValue__: unknown;
+  /** ssl-recommender enrollment setting. */
+  enabled?: boolean;
+  /** Value of the zone setting. */
+  value?: SettingsEditRequestBodyValue;
 }
 export const SettingsEditRequestBody = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    EnabledObjectEnabled__: S.Unknown.pipe(
-      T.Body("Enabled object { enabled }"),
-    ),
-    ValueObjectValue__: S.Unknown.pipe(T.Body("Value object { value }")),
+    enabled: S.optional(S.Boolean),
+    value: S.optional(SettingsEditRequestBodyValue),
   }),
 ).annotate({
   identifier: "SettingsEditRequestBody",
@@ -2704,390 +2447,48 @@ export const PatchSettingRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchSettingRequest",
 }) as any as S.Schema<PatchSettingRequest>;
 
+export type SettingsEditResponseId = "0rtt" | (string & {});
+export const SettingsEditResponseId = /*@__PURE__*/ S.String;
+
+export type SettingsEditResponseValue = "on" | "off" | (string & {});
+export const SettingsEditResponseValue = /*@__PURE__*/ S.String;
+
+export interface SettingsEditResponseEditable {
+  true: unknown;
+  false: unknown;
+}
+export const SettingsEditResponseEditable = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    true: S.Unknown,
+    false: S.Unknown,
+  }),
+).annotate({
+  identifier: "SettingsEditResponseEditable",
+}) as any as S.Schema<SettingsEditResponseEditable>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchSettingResponse {
-  /** 0-RTT session resumption enabled for this zone. */
-  ZeroRTTObjectIdValueEditableModifiedOn__: unknown;
-  /** Advanced protection from Distributed Denial of Service (DDoS) attacks on your website. This is an uneditable value that is 'on' in the case of Business and Enterprise zones. */
-  AdvancedDDoSObjectIdValueEditableModifiedOn__: unknown;
-  /** Aegis provides dedicated egress IPs (from Cloudflare to your origin) for your layer 7 WAF and CDN services. The egress IPs are reserved exclusively for your account so that you can increase your origin security by only allowing traffic from a small list of IP addresses. */
-  ZonesCacheRulesAegisObjectIdModifiedOnValue__: unknown;
-  /** When enabled, Cloudflare serves limited copies of web pages available from the [Internet Archive's Wayback Machine](https://archive.org/web/) if your server is offline. Refer to [Always Online](https://developers.cloudflare.com/cache/about/always-online) for more information. */
-  AlwaysOnlineObjectIdValueEditableModifiedOn__: unknown;
-  /** Reply to all requests for URLs that use "http" with a 301 redirect to the equivalent "https" URL. If you only want to redirect for a subset of requests, consider creating an "Always use HTTPS" page rule. */
-  ZonesSchemasAlwaysUseHTTPSObjectIdValueEditableModifiedOn__: unknown;
-  /** Enable the Automatic HTTPS Rewrites feature for this zone. */
-  ZonesSchemasAutomaticHTTPSRewritesObjectIdValueEditableModifiedOn__: unknown;
-  /** When the client requesting an asset supports the Brotli compression algorithm, Cloudflare will serve a Brotli compressed version of the asset. */
-  BrotliObjectIdValueEditableModifiedOn__: unknown;
-  /** Browser Cache TTL (in seconds) specifies how long Cloudflare-cached resources will remain on your visitors' computers. Cloudflare will honor any larger times specified by your server. (https://support.cloudflare.com/hc/en-us/articles/200168276). */
-  ZonesSchemasBrowserCacheTTLObjectIdValueEditableModifiedOn__: unknown;
-  /** Browser Integrity Check is similar to Bad Behavior and looks for common HTTP headers abused most commonly by spammers and denies access to your page. It will also challenge visitors that do not have a user agent or a non standard user agent (also commonly used by abuse bots, crawlers or visitors). (https://support.cloudflare.com/hc/en-us/articles/200170086). */
-  ZonesSchemasBrowserCheckObjectIdValueEditableModifiedOn__: unknown;
-  /** Cache Level functions based off the setting level. The basic setting will cache most static resources (i.e., css, images, and JavaScript). The simplified setting will ignore the query string when delivering a cached resource. The aggressive setting will cache all static resources, including ones with a query string. (https://support.cloudflare.com/hc/en-us/articles/200168256). */
-  ZonesSchemasCacheLevelObjectIdValueEditableModifiedOn__: unknown;
-  /** Specify how long a visitor is allowed access to your site after successfully completing a challenge (such as a CAPTCHA). After the TTL has expired the visitor will have to complete a new challenge. We recommend a 15 - 45 minute setting and will attempt to honor any setting above 45 minutes. (https://support.cloudflare.com/hc/en-us/articles/200170136). */
-  ChallengeTTLObjectIdValueEditableModifiedOn__: unknown;
-  /** Determines whether or not the china network is enabled. */
-  ZonesChinaNetworkEnabledObjectIdValueEditableModifiedOn__: unknown;
-  /** When enabled and the client sends an Accept header requesting text/markdown, */
-  ZonesContentConverterObjectIdValueEditableModifiedOn__: unknown;
-  /** An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format. */
-  CiphersObjectIdValueEditableModifiedOn__: unknown;
-  /** Whether or not cname flattening is on. */
-  ZonesCNAMEFlatteningObjectIdValueEditableModifiedOn__: unknown;
-  /** Development Mode temporarily allows you to enter development mode for your websites if you need to make changes to your site. This will bypass Cloudflare's accelerated cache and slow down your site, but is useful if you are making changes to cacheable content (like images, css, or JavaScript) and would like to see those changes right away. Once entered, development mode will last for 3 hours and then automatically toggle off. */
-  DevelopmentModeObjectIdValueEditable2More__: unknown;
-  /** When enabled, Cloudflare will attempt to speed up overall page loads by serving `103` responses with `Link` headers from the final response. Refer to [Early Hints](https://developers.cloudflare.com/cache/about/early-hints) for more information. */
-  EarlyHintsObjectIdValueEditableModifiedOn__: unknown;
-  /** Time (in seconds) that a resource will be ensured to remain on Cloudflare's cache servers. */
-  ZonesSchemasEdgeCacheTTLObjectIdValueEditableModifiedOn__: unknown;
-  /** Encrypt email adresses on your web page from bots, while keeping them visible to humans. (https://support.cloudflare.com/hc/en-us/articles/200170016). */
-  ZonesSchemasEmailObfuscationObjectIdValueEditableModifiedOn__: unknown;
-  /** HTTP/2 Edge Prioritization optimises the delivery of resources served through HTTP/2 to improve page load performance. It also supports fine control of content delivery when used in conjunction with Workers. */
-  H2PrioritizationObjectIdValueEditableModifiedOn__: unknown;
-  /** When enabled, the Hotlink Protection option ensures that other sites cannot suck up your bandwidth by building pages that use images hosted on your site. Anytime a request for an image on your site hits Cloudflare, we check to ensure that it's not another site requesting them. People will still be able to download and view images from your page, but other sites won't be able to steal them for use on their own pages. (https://support.cloudflare.com/hc/en-us/articles/200170026). */
-  HotlinkProtectionObjectIdValueEditableModifiedOn__: unknown;
-  /** HTTP2 enabled for this zone. */
-  HTTP2ObjectIdValueEditableModifiedOn__: unknown;
-  /** HTTP3 enabled for this zone. */
-  HTTP3ObjectIdValueEditableModifiedOn__: unknown;
-  /** Image Transformations provides on-demand resizing, conversion and optimization for images served through Cloudflare's network. Refer to the [Image Transformations documentation](https://developers.cloudflare.com/images/) for more information. */
-  ImageResizingObjectIdValueEditableModifiedOn__: unknown;
-  /** Enable IP Geolocation to have Cloudflare geolocate visitors to your website and pass the country code to you. (https://support.cloudflare.com/hc/en-us/articles/200168236). */
-  ZonesSchemasIPGeolocationObjectIdValueEditableModifiedOn__: unknown;
-  /** Enable IPv6 on all subdomains that are Cloudflare enabled. (https://support.cloudflare.com/hc/en-us/articles/200168586). */
-  IPV6ObjectIdValueEditableModifiedOn__: unknown;
-  /** Maximum size of an allowable upload. */
-  ZonesMaxUploadObjectIdValueEditableModifiedOn__: unknown;
-  /** Only accepts HTTPS requests that use at least the TLS protocol version specified. For example, if TLS 1.1 is selected, TLS 1.0 connections will be rejected, while 1.1, 1.2, and 1.3 (if enabled) will be permitted. */
-  MinTLSVersionObjectIdValueEditableModifiedOn__: unknown;
-  /** Automatically optimize image loading for website visitors on mobile */
-  ZonesSchemasMirageObjectIdValueEditableModifiedOn__: unknown;
-  /** Enable Network Error Logging reporting on your zone. (Beta) */
-  NELObjectIdValueEditableModifiedOn__: unknown;
-  /** Enables the Opportunistic Encryption feature for a zone. */
-  ZonesSchemasOpportunisticEncryptionObjectIdValueEditableModifiedOn__: unknown;
-  /** Add an Alt-Svc header to all legitimate requests from Tor, allowing the connection to use our onion services instead of exit nodes. */
-  OpportunisticOnionObjectIdValueEditableModifiedOn__: unknown;
-  /** Orange to Orange (O2O) allows zones on Cloudflare to CNAME to other zones also on Cloudflare. */
-  OrangeToOrangeObjectIdValueEditableModifiedOn__: unknown;
-  /** Cloudflare will proxy customer error pages on any 502,504 errors on origin server instead of showing a default Cloudflare error page. This does not apply to 522 errors and is limited to Enterprise Zones. */
-  ZonesSchemasOriginErrorPagePassThruObjectIdValueEditableModifiedOn__: unknown;
-  /** Origin H2 Max Streams configures the max number of concurrent requests that Cloudflare will send within the same connection when communicating with the origin server, if the origin supports it. Note that if your origin does not support H2 multiplexing, 5xx errors may be observed, particularly 520s. Also note that the default value is `100` for all plan types except Enterprise where it is `1`. `1` means that H2 multiplexing is disabled. */
-  ZonesCacheRulesOriginH2MaxStreamsObjectIdModifiedOnValue__: unknown;
-  /** Origin Max HTTP Setting Version sets the highest HTTP version Cloudflare will attempt to use with your origin. This setting allows Cloudflare to make HTTP/2 requests to your origin. (Refer to [Enable HTTP/2 to Origin](https://developers.cloudflare.com/cache/how-to/enable-http2-to-origin/), for more information.). The default value is "2" for all plan types except Enterprise where it is "1". */
-  ZonesCacheRulesOriginMaxHTTPVersionObjectIdModifiedOnValue__: unknown;
-  /** Removes metadata and compresses your images for faster page load times. Basic (Lossless): Reduce the size of PNG, JPEG, and GIF files - no impact on visual quality. Basic + JPEG (Lossy): Further reduce the size of JPEG files for faster image loading. Larger JPEGs are converted to progressive images, loading a lower-resolution image first and ending in a higher-resolution version. Not recommended for hi-res photography sites. */
-  ZonesSchemasPolishObjectIdValueEditableModifiedOn__: unknown;
-  /** Cloudflare will prefetch any URLs that are included in the response headers. This is limited to Enterprise Zones. */
-  PrefetchPreloadObjectIdValueEditableModifiedOn__: unknown;
-  /** Privacy Pass v1 was a browser extension developed by the Privacy Pass Team to improve the browsing experience for your visitors by allowing users to reduce the number of CAPTCHAs shown. (https://support.cloudflare.com/hc/en-us/articles/115001992652-Privacy-Pass). */
-  ZonesPrivacyPassObjectIdValueEditableModifiedOn__: unknown;
-  /** Maximum time between two read operations from origin. */
-  ProxyReadTimeoutObjectIdValueEditableModifiedOn__: unknown;
-  /** The value set for the Pseudo IPv4 setting. */
-  PseudoIPV4ObjectIdValueEditableModifiedOn__: unknown;
-  /** When enabled, Cloudflare will redirect verified AI training crawlers to canonical URLs */
-  ZonesRedirectsForAITrainingObjectIdValueEditableModifiedOn__: unknown;
-  /** Automatically replace insecure JavaScript libraries with safer and faster alternatives provided under cdnjs and powered by Cloudflare. Currently supports the following libraries: Polyfill under polyfill.io. */
-  ZonesReplaceInsecureJSObjectIdValueEditableModifiedOn__: unknown;
-  /** Enables or disables buffering of responses from the proxied server. Cloudflare may buffer the whole payload to deliver it at once to the client versus allowing it to be delivered in chunks. By default, the proxied server streams directly and is not buffered by Cloudflare. This is limited to Enterprise Zones. */
-  ZonesSchemasResponseBufferingObjectIdValueEditableModifiedOn__: unknown;
-  /** Rocket Loader is a general-purpose asynchronous JavaScript optimisation that prioritises rendering your content while loading your site's Javascript asynchronously. Turning on Rocket Loader will immediately improve a web page's rendering time sometimes measured as Time to First Paint (TTFP), and also the `window.onload` time (assuming there is JavaScript on the page). This can have a positive impact on your Google search ranking. When turned on, Rocket Loader will automatically defer the loading of all Javascript referenced in your HTML, with no configuration required. Refer to [Understanding Rocket Loader](https://support.cloudflare.com/hc/articles/200168056) for more information. */
-  ZonesSchemasRocketLoaderObjectIdValueEditableModifiedOn__: unknown;
-  /** [Automatic Platform Optimization for WordPress](https://developers.cloudflare.com/automatic-platform-optimization/) serves your WordPress site from Cloudflare's edge network and caches third-party fonts. */
-  ZonesSchemasAutomaticPlatformOptimizationObjectIdValueEditableModifiedOn__: unknown;
-  /** When enabled, Cloudflare provisions an AI Search instance for the zone */
-  ZonesSearchForAgentsObjectIdValueEditableModifiedOn__: unknown;
-  /** Cloudflare security header for a zone. */
-  SecurityHeadersObjectIdValueEditableModifiedOn__: unknown;
-  /** Choose the appropriate security profile for your website, which will automatically adjust each of the security settings. If you choose to customize an individual security setting, the profile will become Custom. (https://support.cloudflare.com/hc/en-us/articles/200170056). */
-  ZonesSchemasSecurityLevelObjectIdValueEditableModifiedOn__: unknown;
-  /** If there is sensitive content on your website that you want visible to real visitors, but that you want to hide from suspicious visitors, all you have to do is wrap the content with Cloudflare SSE tags. Wrap any content that you want to be excluded from suspicious visitors in the following SSE tags: <!--sse--><!--/sse-->. For example: <!--sse--> Bad visitors won't see my phone number, 555-555-5555 <!--/sse-->. Note: SSE only will work with HTML. If you have HTML minification enabled, you won't see the SSE tags in your HTML source when it's served through Cloudflare. SSE will still function in this case, as Cloudflare's HTML minification and SSE functionality occur on-the-fly as the resource moves through our network to the visitor's computer. (https://support.cloudflare.com/hc/en-us/articles/200170036). */
-  ServerSideExcludesObjectIdValueEditableModifiedOn__: unknown;
-  /** Allow SHA1 support. */
-  ZonesSha1SupportObjectIdValueEditableModifiedOn__: unknown;
-  /** Cloudflare will treat files with the same query strings as the same file in cache, regardless of the order of the query strings. This is limited to Enterprise Zones. */
-  ZonesSchemasSortQueryStringForCacheObjectIdValueEditableModifiedOn__: unknown;
-  /** SSL encrypts your visitor's connection and safeguards credit card numbers and other personal data to and from your website. SSL can take up to 5 minutes to fully activate. Requires Cloudflare active on your root domain or www domain. Off: no SSL between the visitor and Cloudflare, and no SSL between Cloudflare and your web server (all HTTP traffic). Flexible: SSL between the visitor and Cloudflare -- visitor sees HTTPS on your site, but no SSL between Cloudflare and your web server. You don't need to have an SSL cert on your web server, but your vistors will still see the site as being HTTPS enabled. Full: SSL between the visitor and Cloudflare -- visitor sees HTTPS on your site, and SSL between Cloudflare and your web server. You'll need to have your own SSL cert or self-signed cert at the very least. Full (Strict): SSL between the visitor and Cloudflare -- visitor sees HTTPS on your site, and SSL between Cloudflare and your web server. You'll need to have a valid SSL certificate installed on your web server. This certificate must be signed by a certificate authority, have an expiration date in the future, and respond for the request domain name (hostname). (https://support.cloudflare.com/hc/en-us/articles/200170416). */
-  ZonesSchemasSSLObjectIdValueEditableModifiedOn__: unknown;
-  /** Enrollment in the SSL/TLS Recommender service which tries to detect and recommend (by sending periodic emails) the most secure SSL/TLS setting your origin servers support. */
-  SSLRecommenderObjectIdEnabled__: unknown;
-  /** Only allows TLS1.2. */
-  ZonesTLS12OnlyObjectIdValueEditableModifiedOn__: unknown;
-  /** Enables Crypto TLS 1.3 feature for a zone. */
-  TLS13ObjectIdValueEditableModifiedOn__: unknown;
-  /** TLS Client Auth requires Cloudflare to connect to your origin server using a client certificate (Enterprise Only). */
-  TLSClientAuthObjectIdValueEditableModifiedOn__: unknown;
-  /** Media Transformations provides on-demand resizing, conversion and optimization for images and video served through Cloudflare's network. Refer to the [Image Transformations](https://developers.cloudflare.com/images/) and [Video Transformations](https://developers.cloudflare.com/stream/transform-videos/#getting-started) documentation for more information. */
-  ZonesTransformationsObjectIdValueEditableModifiedOn__: unknown;
-  /** Media Transformations Allowed Origins restricts transformations for images and video served through Cloudflare's network. Refer to the [Image Transformations](https://developers.cloudflare.com/images/) and [Video Transformations](https://developers.cloudflare.com/stream/transform-videos/#getting-started) documentation for more information. */
-  ZonesTransformationsAllowedOriginsObjectIdValueEditableModifiedOn__: unknown;
-  /** Allows customer to continue to use True Client IP (Akamai feature) in the headers we send to the origin. This is limited to Enterprise Zones. */
-  ZonesSchemasTrueClientIPHeaderObjectIdValueEditableModifiedOn__: unknown;
-  /** The WAF examines HTTP requests to your website. It inspects both GET and POST requests and applies rules to help filter out illegitimate traffic from legitimate website visitors. The Cloudflare WAF inspects website addresses or URLs to detect anything out of the ordinary. If the Cloudflare WAF determines suspicious user behavior, then the WAF will 'challenge' the web visitor with a page that asks them to submit a CAPTCHA successfully to continue their action. If the challenge is failed, the action will be stopped. What this means is that Cloudflare's WAF will block any traffic identified as illegitimate before it reaches your origin web server. (https://support.cloudflare.com/hc/en-us/articles/200172016). */
-  ZonesSchemasWAFObjectIdValueEditableModifiedOn__: unknown;
-  /** When the client requesting the image supports the WebP image codec, and WebP offers a performance advantage over the original image format, Cloudflare will serve a WebP version of the original image. */
-  WebPObjectIdValueEditableModifiedOn__: unknown;
-  /** WebSockets are open connections sustained between the client and the origin server. Inside a WebSockets connection, the client and the origin can pass data back and forth without having to reestablish sessions. This makes exchanging data within a WebSockets connection fast. WebSockets are often used for real-time applications such as live chat and gaming. For more information refer to [Can I use Cloudflare with Websockets](https://support.cloudflare.com/hc/en-us/articles/200169466-Can-I-use-Cloudflare-with-WebSockets-). */
-  WebsocketObjectIdValueEditableModifiedOn__: unknown;
+  /** ID of the zone setting. */
+  id?: SettingsEditResponseId;
+  /** Current value of the zone setting. */
+  value?: SettingsEditResponseValue;
+  /** Whether or not this setting can be modified for this zone (based on your Cloudflare plan level). */
+  editable?: SettingsEditResponseEditable;
+  /** last time this setting was modified. */
+  modifiedOn?: string;
+  /** Value of the zone setting. */
+  timeRemaining?: number;
+  /** ssl-recommender enrollment setting. */
+  enabled?: boolean;
 }
 export const PatchSettingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    ZeroRTTObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("ZeroRTT object { id, value, editable, modified_on }"),
-    ),
-    AdvancedDDoSObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("AdvancedDDoS object { id, value, editable, modified_on }"),
-    ),
-    ZonesCacheRulesAegisObjectIdModifiedOnValue__: S.Unknown.pipe(
-      T.Body("ZonesCacheRulesAegis object { id, modified_on, value }"),
-    ),
-    AlwaysOnlineObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("AlwaysOnline object { id, value, editable, modified_on }"),
-    ),
-    ZonesSchemasAlwaysUseHTTPSObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body(
-        "ZonesSchemasAlwaysUseHTTPS object { id, value, editable, modified_on }",
-      ),
-    ),
-    ZonesSchemasAutomaticHTTPSRewritesObjectIdValueEditableModifiedOn__:
-      S.Unknown.pipe(
-        T.Body(
-          "ZonesSchemasAutomaticHTTPSRewrites object { id, value, editable, modified_on }",
-        ),
-      ),
-    BrotliObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("Brotli object { id, value, editable, modified_on }"),
-    ),
-    ZonesSchemasBrowserCacheTTLObjectIdValueEditableModifiedOn__:
-      S.Unknown.pipe(
-        T.Body(
-          "ZonesSchemasBrowserCacheTTL object { id, value, editable, modified_on }",
-        ),
-      ),
-    ZonesSchemasBrowserCheckObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body(
-        "ZonesSchemasBrowserCheck object { id, value, editable, modified_on }",
-      ),
-    ),
-    ZonesSchemasCacheLevelObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body(
-        "ZonesSchemasCacheLevel object { id, value, editable, modified_on }",
-      ),
-    ),
-    ChallengeTTLObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("ChallengeTTL object { id, value, editable, modified_on }"),
-    ),
-    ZonesChinaNetworkEnabledObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body(
-        "ZonesChinaNetworkEnabled object { id, value, editable, modified_on }",
-      ),
-    ),
-    ZonesContentConverterObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body(
-        "ZonesContentConverter object { id, value, editable, modified_on }",
-      ),
-    ),
-    CiphersObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("Ciphers object { id, value, editable, modified_on }"),
-    ),
-    ZonesCNAMEFlatteningObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body(
-        "ZonesCNAMEFlattening object { id, value, editable, modified_on }",
-      ),
-    ),
-    DevelopmentModeObjectIdValueEditable2More__: S.Unknown.pipe(
-      T.Body("DevelopmentMode object { id, value, editable, 2 more }"),
-    ),
-    EarlyHintsObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("EarlyHints object { id, value, editable, modified_on }"),
-    ),
-    ZonesSchemasEdgeCacheTTLObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body(
-        "ZonesSchemasEdgeCacheTTL object { id, value, editable, modified_on }",
-      ),
-    ),
-    ZonesSchemasEmailObfuscationObjectIdValueEditableModifiedOn__:
-      S.Unknown.pipe(
-        T.Body(
-          "ZonesSchemasEmailObfuscation object { id, value, editable, modified_on }",
-        ),
-      ),
-    H2PrioritizationObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("H2Prioritization object { id, value, editable, modified_on }"),
-    ),
-    HotlinkProtectionObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("HotlinkProtection object { id, value, editable, modified_on }"),
-    ),
-    HTTP2ObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("HTTP2 object { id, value, editable, modified_on }"),
-    ),
-    HTTP3ObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("HTTP3 object { id, value, editable, modified_on }"),
-    ),
-    ImageResizingObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("ImageResizing object { id, value, editable, modified_on }"),
-    ),
-    ZonesSchemasIPGeolocationObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body(
-        "ZonesSchemasIPGeolocation object { id, value, editable, modified_on }",
-      ),
-    ),
-    IPV6ObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("IPV6 object { id, value, editable, modified_on }"),
-    ),
-    ZonesMaxUploadObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("ZonesMaxUpload object { id, value, editable, modified_on }"),
-    ),
-    MinTLSVersionObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("MinTLSVersion object { id, value, editable, modified_on }"),
-    ),
-    ZonesSchemasMirageObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("ZonesSchemasMirage object { id, value, editable, modified_on }"),
-    ),
-    NELObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("NEL object { id, value, editable, modified_on }"),
-    ),
-    ZonesSchemasOpportunisticEncryptionObjectIdValueEditableModifiedOn__:
-      S.Unknown.pipe(
-        T.Body(
-          "ZonesSchemasOpportunisticEncryption object { id, value, editable, modified_on }",
-        ),
-      ),
-    OpportunisticOnionObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("OpportunisticOnion object { id, value, editable, modified_on }"),
-    ),
-    OrangeToOrangeObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("OrangeToOrange object { id, value, editable, modified_on }"),
-    ),
-    ZonesSchemasOriginErrorPagePassThruObjectIdValueEditableModifiedOn__:
-      S.Unknown.pipe(
-        T.Body(
-          "ZonesSchemasOriginErrorPagePassThru object { id, value, editable, modified_on }",
-        ),
-      ),
-    ZonesCacheRulesOriginH2MaxStreamsObjectIdModifiedOnValue__: S.Unknown.pipe(
-      T.Body(
-        "ZonesCacheRulesOriginH2MaxStreams object { id, modified_on, value }",
-      ),
-    ),
-    ZonesCacheRulesOriginMaxHTTPVersionObjectIdModifiedOnValue__:
-      S.Unknown.pipe(
-        T.Body(
-          "ZonesCacheRulesOriginMaxHTTPVersion object { id, modified_on, value }",
-        ),
-      ),
-    ZonesSchemasPolishObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("ZonesSchemasPolish object { id, value, editable, modified_on }"),
-    ),
-    PrefetchPreloadObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("PrefetchPreload object { id, value, editable, modified_on }"),
-    ),
-    ZonesPrivacyPassObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("ZonesPrivacyPass object { id, value, editable, modified_on }"),
-    ),
-    ProxyReadTimeoutObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("ProxyReadTimeout object { id, value, editable, modified_on }"),
-    ),
-    PseudoIPV4ObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("PseudoIPV4 object { id, value, editable, modified_on }"),
-    ),
-    ZonesRedirectsForAITrainingObjectIdValueEditableModifiedOn__:
-      S.Unknown.pipe(
-        T.Body(
-          "ZonesRedirectsForAITraining object { id, value, editable, modified_on }",
-        ),
-      ),
-    ZonesReplaceInsecureJSObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body(
-        "ZonesReplaceInsecureJS object { id, value, editable, modified_on }",
-      ),
-    ),
-    ZonesSchemasResponseBufferingObjectIdValueEditableModifiedOn__:
-      S.Unknown.pipe(
-        T.Body(
-          "ZonesSchemasResponseBuffering object { id, value, editable, modified_on }",
-        ),
-      ),
-    ZonesSchemasRocketLoaderObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body(
-        "ZonesSchemasRocketLoader object { id, value, editable, modified_on }",
-      ),
-    ),
-    ZonesSchemasAutomaticPlatformOptimizationObjectIdValueEditableModifiedOn__:
-      S.Unknown.pipe(
-        T.Body(
-          "ZonesSchemasAutomaticPlatformOptimization object { id, value, editable, modified_on }",
-        ),
-      ),
-    ZonesSearchForAgentsObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body(
-        "ZonesSearchForAgents object { id, value, editable, modified_on }",
-      ),
-    ),
-    SecurityHeadersObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("SecurityHeaders object { id, value, editable, modified_on }"),
-    ),
-    ZonesSchemasSecurityLevelObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body(
-        "ZonesSchemasSecurityLevel object { id, value, editable, modified_on }",
-      ),
-    ),
-    ServerSideExcludesObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("ServerSideExcludes object { id, value, editable, modified_on }"),
-    ),
-    ZonesSha1SupportObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("ZonesSha1Support object { id, value, editable, modified_on }"),
-    ),
-    ZonesSchemasSortQueryStringForCacheObjectIdValueEditableModifiedOn__:
-      S.Unknown.pipe(
-        T.Body(
-          "ZonesSchemasSortQueryStringForCache object { id, value, editable, modified_on }",
-        ),
-      ),
-    ZonesSchemasSSLObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("ZonesSchemasSSL object { id, value, editable, modified_on }"),
-    ),
-    SSLRecommenderObjectIdEnabled__: S.Unknown.pipe(
-      T.Body("SSLRecommender object { id, enabled }"),
-    ),
-    ZonesTLS12OnlyObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("ZonesTLS1_2Only object { id, value, editable, modified_on }"),
-    ),
-    TLS13ObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("TLS1_3 object { id, value, editable, modified_on }"),
-    ),
-    TLSClientAuthObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("TLSClientAuth object { id, value, editable, modified_on }"),
-    ),
-    ZonesTransformationsObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body(
-        "ZonesTransformations object { id, value, editable, modified_on }",
-      ),
-    ),
-    ZonesTransformationsAllowedOriginsObjectIdValueEditableModifiedOn__:
-      S.Unknown.pipe(
-        T.Body(
-          "ZonesTransformationsAllowedOrigins object { id, value, editable, modified_on }",
-        ),
-      ),
-    ZonesSchemasTrueClientIPHeaderObjectIdValueEditableModifiedOn__:
-      S.Unknown.pipe(
-        T.Body(
-          "ZonesSchemasTrueClientIPHeader object { id, value, editable, modified_on }",
-        ),
-      ),
-    ZonesSchemasWAFObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("ZonesSchemasWAF object { id, value, editable, modified_on }"),
-    ),
-    WebPObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("WebP object { id, value, editable, modified_on }"),
-    ),
-    WebsocketObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("Websocket object { id, value, editable, modified_on }"),
-    ),
+    id: S.optional(SettingsEditResponseId),
+    value: S.optional(SettingsEditResponseValue),
+    editable: S.optional(SettingsEditResponseEditable),
+    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+    timeRemaining: S.optional(S.Number.pipe(T.Body("time_remaining"))),
+    enabled: S.optional(S.Boolean),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchSettingResponse",
@@ -3494,369 +2895,48 @@ export const RollbackEnvironmentResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "RollbackEnvironmentResponse",
 }) as any as S.Schema<RollbackEnvironmentResponse>;
 
+export type SettingsBulkEditRequestBodyItemId = "0rtt" | (string & {});
+export const SettingsBulkEditRequestBodyItemId = /*@__PURE__*/ S.String;
+
+export type SettingsBulkEditRequestBodyItemValue = "on" | "off" | (string & {});
+export const SettingsBulkEditRequestBodyItemValue = /*@__PURE__*/ S.String;
+
+export interface SettingsBulkEditRequestBodyItemEditable {
+  true: unknown;
+  false: unknown;
+}
+export const SettingsBulkEditRequestBodyItemEditable = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      true: S.Unknown,
+      false: S.Unknown,
+    }),
+).annotate({
+  identifier: "SettingsBulkEditRequestBodyItemEditable",
+}) as any as S.Schema<SettingsBulkEditRequestBodyItemEditable>;
+
 export interface SettingsBulkEditRequestBodyItem {
-  /** 0-RTT session resumption enabled for this zone. */
-  ZeroRTTObjectIdValueEditableModifiedOn__: unknown;
-  /** Advanced protection from Distributed Denial of Service (DDoS) attacks on your website. This is an uneditable value that is 'on' in the case of Business and Enterprise zones. */
-  AdvancedDDoSObjectIdValueEditableModifiedOn__: unknown;
-  /** Aegis provides dedicated egress IPs (from Cloudflare to your origin) for your layer 7 WAF and CDN services. The egress IPs are reserved exclusively for your account so that you can increase your origin security by only allowing traffic from a small list of IP addresses. */
-  ZonesCacheRulesAegisObjectIdModifiedOnValue__: unknown;
-  /** When enabled, Cloudflare serves limited copies of web pages available from the [Internet Archive's Wayback Machine](https://archive.org/web/) if your server is offline. Refer to [Always Online](https://developers.cloudflare.com/cache/about/always-online) for more information. */
-  AlwaysOnlineObjectIdValueEditableModifiedOn__: unknown;
-  /** Reply to all requests for URLs that use "http" with a 301 redirect to the equivalent "https" URL. If you only want to redirect for a subset of requests, consider creating an "Always use HTTPS" page rule. */
-  ZonesSchemasAlwaysUseHTTPSObjectIdValueEditableModifiedOn__: unknown;
-  /** Enable the Automatic HTTPS Rewrites feature for this zone. */
-  ZonesSchemasAutomaticHTTPSRewritesObjectIdValueEditableModifiedOn__: unknown;
-  /** When the client requesting an asset supports the Brotli compression algorithm, Cloudflare will serve a Brotli compressed version of the asset. */
-  BrotliObjectIdValueEditableModifiedOn__: unknown;
-  /** Browser Cache TTL (in seconds) specifies how long Cloudflare-cached resources will remain on your visitors' computers. Cloudflare will honor any larger times specified by your server. (https://support.cloudflare.com/hc/en-us/articles/200168276). */
-  ZonesSchemasBrowserCacheTTLObjectIdValueEditableModifiedOn__: unknown;
-  /** Browser Integrity Check is similar to Bad Behavior and looks for common HTTP headers abused most commonly by spammers and denies access to your page. It will also challenge visitors that do not have a user agent or a non standard user agent (also commonly used by abuse bots, crawlers or visitors). (https://support.cloudflare.com/hc/en-us/articles/200170086). */
-  ZonesSchemasBrowserCheckObjectIdValueEditableModifiedOn__: unknown;
-  /** Cache Level functions based off the setting level. The basic setting will cache most static resources (i.e., css, images, and JavaScript). The simplified setting will ignore the query string when delivering a cached resource. The aggressive setting will cache all static resources, including ones with a query string. (https://support.cloudflare.com/hc/en-us/articles/200168256). */
-  ZonesSchemasCacheLevelObjectIdValueEditableModifiedOn__: unknown;
-  /** Specify how long a visitor is allowed access to your site after successfully completing a challenge (such as a CAPTCHA). After the TTL has expired the visitor will have to complete a new challenge. We recommend a 15 - 45 minute setting and will attempt to honor any setting above 45 minutes. (https://support.cloudflare.com/hc/en-us/articles/200170136). */
-  ChallengeTTLObjectIdValueEditableModifiedOn__: unknown;
-  /** Determines whether or not the china network is enabled. */
-  ZonesChinaNetworkEnabledObjectIdValueEditableModifiedOn__: unknown;
-  /** When enabled and the client sends an Accept header requesting text/markdown, */
-  ZonesContentConverterObjectIdValueEditableModifiedOn__: unknown;
-  /** An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format. */
-  CiphersObjectIdValueEditableModifiedOn__: unknown;
-  /** Whether or not cname flattening is on. */
-  ZonesCNAMEFlatteningObjectIdValueEditableModifiedOn__: unknown;
-  /** Development Mode temporarily allows you to enter development mode for your websites if you need to make changes to your site. This will bypass Cloudflare's accelerated cache and slow down your site, but is useful if you are making changes to cacheable content (like images, css, or JavaScript) and would like to see those changes right away. Once entered, development mode will last for 3 hours and then automatically toggle off. */
-  DevelopmentModeObjectIdValueEditable2More__: unknown;
-  /** When enabled, Cloudflare will attempt to speed up overall page loads by serving `103` responses with `Link` headers from the final response. Refer to [Early Hints](https://developers.cloudflare.com/cache/about/early-hints) for more information. */
-  EarlyHintsObjectIdValueEditableModifiedOn__: unknown;
-  /** Time (in seconds) that a resource will be ensured to remain on Cloudflare's cache servers. */
-  ZonesSchemasEdgeCacheTTLObjectIdValueEditableModifiedOn__: unknown;
-  /** Encrypt email adresses on your web page from bots, while keeping them visible to humans. (https://support.cloudflare.com/hc/en-us/articles/200170016). */
-  ZonesSchemasEmailObfuscationObjectIdValueEditableModifiedOn__: unknown;
-  /** HTTP/2 Edge Prioritization optimises the delivery of resources served through HTTP/2 to improve page load performance. It also supports fine control of content delivery when used in conjunction with Workers. */
-  H2PrioritizationObjectIdValueEditableModifiedOn__: unknown;
-  /** When enabled, the Hotlink Protection option ensures that other sites cannot suck up your bandwidth by building pages that use images hosted on your site. Anytime a request for an image on your site hits Cloudflare, we check to ensure that it's not another site requesting them. People will still be able to download and view images from your page, but other sites won't be able to steal them for use on their own pages. (https://support.cloudflare.com/hc/en-us/articles/200170026). */
-  HotlinkProtectionObjectIdValueEditableModifiedOn__: unknown;
-  /** HTTP2 enabled for this zone. */
-  HTTP2ObjectIdValueEditableModifiedOn__: unknown;
-  /** HTTP3 enabled for this zone. */
-  HTTP3ObjectIdValueEditableModifiedOn__: unknown;
-  /** Enable IP Geolocation to have Cloudflare geolocate visitors to your website and pass the country code to you. (https://support.cloudflare.com/hc/en-us/articles/200168236). */
-  ZonesSchemasIPGeolocationObjectIdValueEditableModifiedOn__: unknown;
-  /** Enable IPv6 on all subdomains that are Cloudflare enabled. (https://support.cloudflare.com/hc/en-us/articles/200168586). */
-  IPV6ObjectIdValueEditableModifiedOn__: unknown;
-  /** Maximum size of an allowable upload. */
-  ZonesMaxUploadObjectIdValueEditableModifiedOn__: unknown;
-  /** Only accepts HTTPS requests that use at least the TLS protocol version specified. For example, if TLS 1.1 is selected, TLS 1.0 connections will be rejected, while 1.1, 1.2, and 1.3 (if enabled) will be permitted. */
-  MinTLSVersionObjectIdValueEditableModifiedOn__: unknown;
-  /** Automatically optimize image loading for website visitors on mobile */
-  ZonesSchemasMirageObjectIdValueEditableModifiedOn__: unknown;
-  /** Enable Network Error Logging reporting on your zone. (Beta) */
-  NELObjectIdValueEditableModifiedOn__: unknown;
-  /** Enables the Opportunistic Encryption feature for a zone. */
-  ZonesSchemasOpportunisticEncryptionObjectIdValueEditableModifiedOn__: unknown;
-  /** Add an Alt-Svc header to all legitimate requests from Tor, allowing the connection to use our onion services instead of exit nodes. */
-  OpportunisticOnionObjectIdValueEditableModifiedOn__: unknown;
-  /** Orange to Orange (O2O) allows zones on Cloudflare to CNAME to other zones also on Cloudflare. */
-  OrangeToOrangeObjectIdValueEditableModifiedOn__: unknown;
-  /** Cloudflare will proxy customer error pages on any 502,504 errors on origin server instead of showing a default Cloudflare error page. This does not apply to 522 errors and is limited to Enterprise Zones. */
-  ZonesSchemasOriginErrorPagePassThruObjectIdValueEditableModifiedOn__: unknown;
-  /** Origin H2 Max Streams configures the max number of concurrent requests that Cloudflare will send within the same connection when communicating with the origin server, if the origin supports it. Note that if your origin does not support H2 multiplexing, 5xx errors may be observed, particularly 520s. Also note that the default value is `100` for all plan types except Enterprise where it is `1`. `1` means that H2 multiplexing is disabled. */
-  ZonesCacheRulesOriginH2MaxStreamsObjectIdModifiedOnValue__: unknown;
-  /** Origin Max HTTP Setting Version sets the highest HTTP version Cloudflare will attempt to use with your origin. This setting allows Cloudflare to make HTTP/2 requests to your origin. (Refer to [Enable HTTP/2 to Origin](https://developers.cloudflare.com/cache/how-to/enable-http2-to-origin/), for more information.). The default value is "2" for all plan types except Enterprise where it is "1". */
-  ZonesCacheRulesOriginMaxHTTPVersionObjectIdModifiedOnValue__: unknown;
-  /** Removes metadata and compresses your images for faster page load times. Basic (Lossless): Reduce the size of PNG, JPEG, and GIF files - no impact on visual quality. Basic + JPEG (Lossy): Further reduce the size of JPEG files for faster image loading. Larger JPEGs are converted to progressive images, loading a lower-resolution image first and ending in a higher-resolution version. Not recommended for hi-res photography sites. */
-  ZonesSchemasPolishObjectIdValueEditableModifiedOn__: unknown;
-  /** Cloudflare will prefetch any URLs that are included in the response headers. This is limited to Enterprise Zones. */
-  PrefetchPreloadObjectIdValueEditableModifiedOn__: unknown;
-  /** Privacy Pass v1 was a browser extension developed by the Privacy Pass Team to improve the browsing experience for your visitors by allowing users to reduce the number of CAPTCHAs shown. (https://support.cloudflare.com/hc/en-us/articles/115001992652-Privacy-Pass). */
-  ZonesPrivacyPassObjectIdValueEditableModifiedOn__: unknown;
-  /** Maximum time between two read operations from origin. */
-  ProxyReadTimeoutObjectIdValueEditableModifiedOn__: unknown;
-  /** The value set for the Pseudo IPv4 setting. */
-  PseudoIPV4ObjectIdValueEditableModifiedOn__: unknown;
-  /** When enabled, Cloudflare will redirect verified AI training crawlers to canonical URLs */
-  ZonesRedirectsForAITrainingObjectIdValueEditableModifiedOn__: unknown;
-  /** Automatically replace insecure JavaScript libraries with safer and faster alternatives provided under cdnjs and powered by Cloudflare. Currently supports the following libraries: Polyfill under polyfill.io. */
-  ZonesReplaceInsecureJSObjectIdValueEditableModifiedOn__: unknown;
-  /** Enables or disables buffering of responses from the proxied server. Cloudflare may buffer the whole payload to deliver it at once to the client versus allowing it to be delivered in chunks. By default, the proxied server streams directly and is not buffered by Cloudflare. This is limited to Enterprise Zones. */
-  ZonesSchemasResponseBufferingObjectIdValueEditableModifiedOn__: unknown;
-  /** Rocket Loader is a general-purpose asynchronous JavaScript optimisation that prioritises rendering your content while loading your site's Javascript asynchronously. Turning on Rocket Loader will immediately improve a web page's rendering time sometimes measured as Time to First Paint (TTFP), and also the `window.onload` time (assuming there is JavaScript on the page). This can have a positive impact on your Google search ranking. When turned on, Rocket Loader will automatically defer the loading of all Javascript referenced in your HTML, with no configuration required. Refer to [Understanding Rocket Loader](https://support.cloudflare.com/hc/articles/200168056) for more information. */
-  ZonesSchemasRocketLoaderObjectIdValueEditableModifiedOn__: unknown;
-  /** [Automatic Platform Optimization for WordPress](https://developers.cloudflare.com/automatic-platform-optimization/) serves your WordPress site from Cloudflare's edge network and caches third-party fonts. */
-  ZonesSchemasAutomaticPlatformOptimizationObjectIdValueEditableModifiedOn__: unknown;
-  /** When enabled, Cloudflare provisions an AI Search instance for the zone */
-  ZonesSearchForAgentsObjectIdValueEditableModifiedOn__: unknown;
-  /** Cloudflare security header for a zone. */
-  SecurityHeadersObjectIdValueEditableModifiedOn__: unknown;
-  /** Choose the appropriate security profile for your website, which will automatically adjust each of the security settings. If you choose to customize an individual security setting, the profile will become Custom. (https://support.cloudflare.com/hc/en-us/articles/200170056). */
-  ZonesSchemasSecurityLevelObjectIdValueEditableModifiedOn__: unknown;
-  /** If there is sensitive content on your website that you want visible to real visitors, but that you want to hide from suspicious visitors, all you have to do is wrap the content with Cloudflare SSE tags. Wrap any content that you want to be excluded from suspicious visitors in the following SSE tags: <!--sse--><!--/sse-->. For example: <!--sse--> Bad visitors won't see my phone number, 555-555-5555 <!--/sse-->. Note: SSE only will work with HTML. If you have HTML minification enabled, you won't see the SSE tags in your HTML source when it's served through Cloudflare. SSE will still function in this case, as Cloudflare's HTML minification and SSE functionality occur on-the-fly as the resource moves through our network to the visitor's computer. (https://support.cloudflare.com/hc/en-us/articles/200170036). */
-  ServerSideExcludesObjectIdValueEditableModifiedOn__: unknown;
-  /** Allow SHA1 support. */
-  ZonesSha1SupportObjectIdValueEditableModifiedOn__: unknown;
-  /** Cloudflare will treat files with the same query strings as the same file in cache, regardless of the order of the query strings. This is limited to Enterprise Zones. */
-  ZonesSchemasSortQueryStringForCacheObjectIdValueEditableModifiedOn__: unknown;
-  /** SSL encrypts your visitor's connection and safeguards credit card numbers and other personal data to and from your website. SSL can take up to 5 minutes to fully activate. Requires Cloudflare active on your root domain or www domain. Off: no SSL between the visitor and Cloudflare, and no SSL between Cloudflare and your web server (all HTTP traffic). Flexible: SSL between the visitor and Cloudflare -- visitor sees HTTPS on your site, but no SSL between Cloudflare and your web server. You don't need to have an SSL cert on your web server, but your vistors will still see the site as being HTTPS enabled. Full: SSL between the visitor and Cloudflare -- visitor sees HTTPS on your site, and SSL between Cloudflare and your web server. You'll need to have your own SSL cert or self-signed cert at the very least. Full (Strict): SSL between the visitor and Cloudflare -- visitor sees HTTPS on your site, and SSL between Cloudflare and your web server. You'll need to have a valid SSL certificate installed on your web server. This certificate must be signed by a certificate authority, have an expiration date in the future, and respond for the request domain name (hostname). (https://support.cloudflare.com/hc/en-us/articles/200170416). */
-  ZonesSchemasSSLObjectIdValueEditableModifiedOn__: unknown;
-  /** Enrollment in the SSL/TLS Recommender service which tries to detect and recommend (by sending periodic emails) the most secure SSL/TLS setting your origin servers support. */
-  SSLRecommenderObjectIdEnabled__: unknown;
-  /** Only allows TLS1.2. */
-  ZonesTLS12OnlyObjectIdValueEditableModifiedOn__: unknown;
-  /** Enables Crypto TLS 1.3 feature for a zone. */
-  TLS13ObjectIdValueEditableModifiedOn__: unknown;
-  /** TLS Client Auth requires Cloudflare to connect to your origin server using a client certificate (Enterprise Only). */
-  TLSClientAuthObjectIdValueEditableModifiedOn__: unknown;
-  /** Allows customer to continue to use True Client IP (Akamai feature) in the headers we send to the origin. This is limited to Enterprise Zones. */
-  ZonesSchemasTrueClientIPHeaderObjectIdValueEditableModifiedOn__: unknown;
-  /** The WAF examines HTTP requests to your website. It inspects both GET and POST requests and applies rules to help filter out illegitimate traffic from legitimate website visitors. The Cloudflare WAF inspects website addresses or URLs to detect anything out of the ordinary. If the Cloudflare WAF determines suspicious user behavior, then the WAF will 'challenge' the web visitor with a page that asks them to submit a CAPTCHA successfully to continue their action. If the challenge is failed, the action will be stopped. What this means is that Cloudflare's WAF will block any traffic identified as illegitimate before it reaches your origin web server. (https://support.cloudflare.com/hc/en-us/articles/200172016). */
-  ZonesSchemasWAFObjectIdValueEditableModifiedOn__: unknown;
-  /** When the client requesting the image supports the WebP image codec, and WebP offers a performance advantage over the original image format, Cloudflare will serve a WebP version of the original image. */
-  WebPObjectIdValueEditableModifiedOn__: unknown;
-  /** WebSockets are open connections sustained between the client and the origin server. Inside a WebSockets connection, the client and the origin can pass data back and forth without having to reestablish sessions. This makes exchanging data within a WebSockets connection fast. WebSockets are often used for real-time applications such as live chat and gaming. For more information refer to [Can I use Cloudflare with Websockets](https://support.cloudflare.com/hc/en-us/articles/200169466-Can-I-use-Cloudflare-with-WebSockets-). */
-  WebsocketObjectIdValueEditableModifiedOn__: unknown;
+  /** ID of the zone setting. */
+  id?: SettingsBulkEditRequestBodyItemId;
+  /** Current value of the zone setting. */
+  value?: SettingsBulkEditRequestBodyItemValue;
+  /** Whether or not this setting can be modified for this zone (based on your Cloudflare plan level). */
+  editable?: SettingsBulkEditRequestBodyItemEditable;
+  /** last time this setting was modified. */
+  modifiedOn?: string;
+  /** Value of the zone setting. */
+  timeRemaining?: number;
+  /** ssl-recommender enrollment setting. */
+  enabled?: boolean;
 }
 export const SettingsBulkEditRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    ZeroRTTObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("ZeroRTT object { id, value, editable, modified_on }"),
-    ),
-    AdvancedDDoSObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("AdvancedDDoS object { id, value, editable, modified_on }"),
-    ),
-    ZonesCacheRulesAegisObjectIdModifiedOnValue__: S.Unknown.pipe(
-      T.Body("ZonesCacheRulesAegis object { id, modified_on, value }"),
-    ),
-    AlwaysOnlineObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("AlwaysOnline object { id, value, editable, modified_on }"),
-    ),
-    ZonesSchemasAlwaysUseHTTPSObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body(
-        "ZonesSchemasAlwaysUseHTTPS object { id, value, editable, modified_on }",
-      ),
-    ),
-    ZonesSchemasAutomaticHTTPSRewritesObjectIdValueEditableModifiedOn__:
-      S.Unknown.pipe(
-        T.Body(
-          "ZonesSchemasAutomaticHTTPSRewrites object { id, value, editable, modified_on }",
-        ),
-      ),
-    BrotliObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("Brotli object { id, value, editable, modified_on }"),
-    ),
-    ZonesSchemasBrowserCacheTTLObjectIdValueEditableModifiedOn__:
-      S.Unknown.pipe(
-        T.Body(
-          "ZonesSchemasBrowserCacheTTL object { id, value, editable, modified_on }",
-        ),
-      ),
-    ZonesSchemasBrowserCheckObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body(
-        "ZonesSchemasBrowserCheck object { id, value, editable, modified_on }",
-      ),
-    ),
-    ZonesSchemasCacheLevelObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body(
-        "ZonesSchemasCacheLevel object { id, value, editable, modified_on }",
-      ),
-    ),
-    ChallengeTTLObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("ChallengeTTL object { id, value, editable, modified_on }"),
-    ),
-    ZonesChinaNetworkEnabledObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body(
-        "ZonesChinaNetworkEnabled object { id, value, editable, modified_on }",
-      ),
-    ),
-    ZonesContentConverterObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body(
-        "ZonesContentConverter object { id, value, editable, modified_on }",
-      ),
-    ),
-    CiphersObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("Ciphers object { id, value, editable, modified_on }"),
-    ),
-    ZonesCNAMEFlatteningObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body(
-        "ZonesCNAMEFlattening object { id, value, editable, modified_on }",
-      ),
-    ),
-    DevelopmentModeObjectIdValueEditable2More__: S.Unknown.pipe(
-      T.Body("DevelopmentMode object { id, value, editable, 2 more }"),
-    ),
-    EarlyHintsObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("EarlyHints object { id, value, editable, modified_on }"),
-    ),
-    ZonesSchemasEdgeCacheTTLObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body(
-        "ZonesSchemasEdgeCacheTTL object { id, value, editable, modified_on }",
-      ),
-    ),
-    ZonesSchemasEmailObfuscationObjectIdValueEditableModifiedOn__:
-      S.Unknown.pipe(
-        T.Body(
-          "ZonesSchemasEmailObfuscation object { id, value, editable, modified_on }",
-        ),
-      ),
-    H2PrioritizationObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("H2Prioritization object { id, value, editable, modified_on }"),
-    ),
-    HotlinkProtectionObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("HotlinkProtection object { id, value, editable, modified_on }"),
-    ),
-    HTTP2ObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("HTTP2 object { id, value, editable, modified_on }"),
-    ),
-    HTTP3ObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("HTTP3 object { id, value, editable, modified_on }"),
-    ),
-    ZonesSchemasIPGeolocationObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body(
-        "ZonesSchemasIPGeolocation object { id, value, editable, modified_on }",
-      ),
-    ),
-    IPV6ObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("IPV6 object { id, value, editable, modified_on }"),
-    ),
-    ZonesMaxUploadObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("ZonesMaxUpload object { id, value, editable, modified_on }"),
-    ),
-    MinTLSVersionObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("MinTLSVersion object { id, value, editable, modified_on }"),
-    ),
-    ZonesSchemasMirageObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("ZonesSchemasMirage object { id, value, editable, modified_on }"),
-    ),
-    NELObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("NEL object { id, value, editable, modified_on }"),
-    ),
-    ZonesSchemasOpportunisticEncryptionObjectIdValueEditableModifiedOn__:
-      S.Unknown.pipe(
-        T.Body(
-          "ZonesSchemasOpportunisticEncryption object { id, value, editable, modified_on }",
-        ),
-      ),
-    OpportunisticOnionObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("OpportunisticOnion object { id, value, editable, modified_on }"),
-    ),
-    OrangeToOrangeObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("OrangeToOrange object { id, value, editable, modified_on }"),
-    ),
-    ZonesSchemasOriginErrorPagePassThruObjectIdValueEditableModifiedOn__:
-      S.Unknown.pipe(
-        T.Body(
-          "ZonesSchemasOriginErrorPagePassThru object { id, value, editable, modified_on }",
-        ),
-      ),
-    ZonesCacheRulesOriginH2MaxStreamsObjectIdModifiedOnValue__: S.Unknown.pipe(
-      T.Body(
-        "ZonesCacheRulesOriginH2MaxStreams object { id, modified_on, value }",
-      ),
-    ),
-    ZonesCacheRulesOriginMaxHTTPVersionObjectIdModifiedOnValue__:
-      S.Unknown.pipe(
-        T.Body(
-          "ZonesCacheRulesOriginMaxHTTPVersion object { id, modified_on, value }",
-        ),
-      ),
-    ZonesSchemasPolishObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("ZonesSchemasPolish object { id, value, editable, modified_on }"),
-    ),
-    PrefetchPreloadObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("PrefetchPreload object { id, value, editable, modified_on }"),
-    ),
-    ZonesPrivacyPassObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("ZonesPrivacyPass object { id, value, editable, modified_on }"),
-    ),
-    ProxyReadTimeoutObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("ProxyReadTimeout object { id, value, editable, modified_on }"),
-    ),
-    PseudoIPV4ObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("PseudoIPV4 object { id, value, editable, modified_on }"),
-    ),
-    ZonesRedirectsForAITrainingObjectIdValueEditableModifiedOn__:
-      S.Unknown.pipe(
-        T.Body(
-          "ZonesRedirectsForAITraining object { id, value, editable, modified_on }",
-        ),
-      ),
-    ZonesReplaceInsecureJSObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body(
-        "ZonesReplaceInsecureJS object { id, value, editable, modified_on }",
-      ),
-    ),
-    ZonesSchemasResponseBufferingObjectIdValueEditableModifiedOn__:
-      S.Unknown.pipe(
-        T.Body(
-          "ZonesSchemasResponseBuffering object { id, value, editable, modified_on }",
-        ),
-      ),
-    ZonesSchemasRocketLoaderObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body(
-        "ZonesSchemasRocketLoader object { id, value, editable, modified_on }",
-      ),
-    ),
-    ZonesSchemasAutomaticPlatformOptimizationObjectIdValueEditableModifiedOn__:
-      S.Unknown.pipe(
-        T.Body(
-          "ZonesSchemasAutomaticPlatformOptimization object { id, value, editable, modified_on }",
-        ),
-      ),
-    ZonesSearchForAgentsObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body(
-        "ZonesSearchForAgents object { id, value, editable, modified_on }",
-      ),
-    ),
-    SecurityHeadersObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("SecurityHeaders object { id, value, editable, modified_on }"),
-    ),
-    ZonesSchemasSecurityLevelObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body(
-        "ZonesSchemasSecurityLevel object { id, value, editable, modified_on }",
-      ),
-    ),
-    ServerSideExcludesObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("ServerSideExcludes object { id, value, editable, modified_on }"),
-    ),
-    ZonesSha1SupportObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("ZonesSha1Support object { id, value, editable, modified_on }"),
-    ),
-    ZonesSchemasSortQueryStringForCacheObjectIdValueEditableModifiedOn__:
-      S.Unknown.pipe(
-        T.Body(
-          "ZonesSchemasSortQueryStringForCache object { id, value, editable, modified_on }",
-        ),
-      ),
-    ZonesSchemasSSLObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("ZonesSchemasSSL object { id, value, editable, modified_on }"),
-    ),
-    SSLRecommenderObjectIdEnabled__: S.Unknown.pipe(
-      T.Body("SSLRecommender object { id, enabled }"),
-    ),
-    ZonesTLS12OnlyObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("ZonesTLS1_2Only object { id, value, editable, modified_on }"),
-    ),
-    TLS13ObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("TLS1_3 object { id, value, editable, modified_on }"),
-    ),
-    TLSClientAuthObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("TLSClientAuth object { id, value, editable, modified_on }"),
-    ),
-    ZonesSchemasTrueClientIPHeaderObjectIdValueEditableModifiedOn__:
-      S.Unknown.pipe(
-        T.Body(
-          "ZonesSchemasTrueClientIPHeader object { id, value, editable, modified_on }",
-        ),
-      ),
-    ZonesSchemasWAFObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("ZonesSchemasWAF object { id, value, editable, modified_on }"),
-    ),
-    WebPObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("WebP object { id, value, editable, modified_on }"),
-    ),
-    WebsocketObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("Websocket object { id, value, editable, modified_on }"),
-    ),
+    id: S.optional(SettingsBulkEditRequestBodyItemId),
+    value: S.optional(SettingsBulkEditRequestBodyItemValue),
+    editable: S.optional(SettingsBulkEditRequestBodyItemEditable),
+    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+    timeRemaining: S.optional(S.Number.pipe(T.Body("time_remaining"))),
+    enabled: S.optional(S.Boolean),
   }),
 ).annotate({
   identifier: "SettingsBulkEditRequestBodyItem",
@@ -3885,382 +2965,47 @@ export const SettingsBulkEditRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "SettingsBulkEditRequest",
 }) as any as S.Schema<SettingsBulkEditRequest>;
 
+export type SettingsBulkEditResultItemId = "0rtt" | (string & {});
+export const SettingsBulkEditResultItemId = /*@__PURE__*/ S.String;
+
+export type SettingsBulkEditResultItemValue = "on" | "off" | (string & {});
+export const SettingsBulkEditResultItemValue = /*@__PURE__*/ S.String;
+
+export interface SettingsBulkEditResultItemEditable {
+  true: unknown;
+  false: unknown;
+}
+export const SettingsBulkEditResultItemEditable = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    true: S.Unknown,
+    false: S.Unknown,
+  }),
+).annotate({
+  identifier: "SettingsBulkEditResultItemEditable",
+}) as any as S.Schema<SettingsBulkEditResultItemEditable>;
+
 export interface SettingsBulkEditResultItem {
-  /** 0-RTT session resumption enabled for this zone. */
-  ZeroRTTObjectIdValueEditableModifiedOn__: unknown;
-  /** Advanced protection from Distributed Denial of Service (DDoS) attacks on your website. This is an uneditable value that is 'on' in the case of Business and Enterprise zones. */
-  AdvancedDDoSObjectIdValueEditableModifiedOn__: unknown;
-  /** Aegis provides dedicated egress IPs (from Cloudflare to your origin) for your layer 7 WAF and CDN services. The egress IPs are reserved exclusively for your account so that you can increase your origin security by only allowing traffic from a small list of IP addresses. */
-  ZonesCacheRulesAegisObjectIdModifiedOnValue__: unknown;
-  /** When enabled, Cloudflare serves limited copies of web pages available from the [Internet Archive's Wayback Machine](https://archive.org/web/) if your server is offline. Refer to [Always Online](https://developers.cloudflare.com/cache/about/always-online) for more information. */
-  AlwaysOnlineObjectIdValueEditableModifiedOn__: unknown;
-  /** Reply to all requests for URLs that use "http" with a 301 redirect to the equivalent "https" URL. If you only want to redirect for a subset of requests, consider creating an "Always use HTTPS" page rule. */
-  ZonesSchemasAlwaysUseHTTPSObjectIdValueEditableModifiedOn__: unknown;
-  /** Enable the Automatic HTTPS Rewrites feature for this zone. */
-  ZonesSchemasAutomaticHTTPSRewritesObjectIdValueEditableModifiedOn__: unknown;
-  /** When the client requesting an asset supports the Brotli compression algorithm, Cloudflare will serve a Brotli compressed version of the asset. */
-  BrotliObjectIdValueEditableModifiedOn__: unknown;
-  /** Browser Cache TTL (in seconds) specifies how long Cloudflare-cached resources will remain on your visitors' computers. Cloudflare will honor any larger times specified by your server. (https://support.cloudflare.com/hc/en-us/articles/200168276). */
-  ZonesSchemasBrowserCacheTTLObjectIdValueEditableModifiedOn__: unknown;
-  /** Browser Integrity Check is similar to Bad Behavior and looks for common HTTP headers abused most commonly by spammers and denies access to your page. It will also challenge visitors that do not have a user agent or a non standard user agent (also commonly used by abuse bots, crawlers or visitors). (https://support.cloudflare.com/hc/en-us/articles/200170086). */
-  ZonesSchemasBrowserCheckObjectIdValueEditableModifiedOn__: unknown;
-  /** Cache Level functions based off the setting level. The basic setting will cache most static resources (i.e., css, images, and JavaScript). The simplified setting will ignore the query string when delivering a cached resource. The aggressive setting will cache all static resources, including ones with a query string. (https://support.cloudflare.com/hc/en-us/articles/200168256). */
-  ZonesSchemasCacheLevelObjectIdValueEditableModifiedOn__: unknown;
-  /** Specify how long a visitor is allowed access to your site after successfully completing a challenge (such as a CAPTCHA). After the TTL has expired the visitor will have to complete a new challenge. We recommend a 15 - 45 minute setting and will attempt to honor any setting above 45 minutes. (https://support.cloudflare.com/hc/en-us/articles/200170136). */
-  ChallengeTTLObjectIdValueEditableModifiedOn__: unknown;
-  /** An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format. */
-  CiphersObjectIdValueEditableModifiedOn__: unknown;
-  /** When enabled and the client sends an Accept header requesting text/markdown, */
-  ZonesContentConverterObjectIdValueEditableModifiedOn__: unknown;
-  /** Whether or not cname flattening is on. */
-  ZonesCNAMEFlatteningObjectIdValueEditableModifiedOn__: unknown;
-  /** Development Mode temporarily allows you to enter development mode for your websites if you need to make changes to your site. This will bypass Cloudflare's accelerated cache and slow down your site, but is useful if you are making changes to cacheable content (like images, css, or JavaScript) and would like to see those changes right away. Once entered, development mode will last for 3 hours and then automatically toggle off. */
-  DevelopmentModeObjectIdValueEditable2More__: unknown;
-  /** When enabled, Cloudflare will attempt to speed up overall page loads by serving `103` responses with `Link` headers from the final response. Refer to [Early Hints](https://developers.cloudflare.com/cache/about/early-hints) for more information. */
-  EarlyHintsObjectIdValueEditableModifiedOn__: unknown;
-  /** Time (in seconds) that a resource will be ensured to remain on Cloudflare's cache servers. */
-  ZonesSchemasEdgeCacheTTLObjectIdValueEditableModifiedOn__: unknown;
-  /** Encrypt email adresses on your web page from bots, while keeping them visible to humans. (https://support.cloudflare.com/hc/en-us/articles/200170016). */
-  ZonesSchemasEmailObfuscationObjectIdValueEditableModifiedOn__: unknown;
-  /** HTTP/2 Edge Prioritization optimises the delivery of resources served through HTTP/2 to improve page load performance. It also supports fine control of content delivery when used in conjunction with Workers. */
-  H2PrioritizationObjectIdValueEditableModifiedOn__: unknown;
-  /** When enabled, the Hotlink Protection option ensures that other sites cannot suck up your bandwidth by building pages that use images hosted on your site. Anytime a request for an image on your site hits Cloudflare, we check to ensure that it's not another site requesting them. People will still be able to download and view images from your page, but other sites won't be able to steal them for use on their own pages. (https://support.cloudflare.com/hc/en-us/articles/200170026). */
-  HotlinkProtectionObjectIdValueEditableModifiedOn__: unknown;
-  /** HTTP2 enabled for this zone. */
-  HTTP2ObjectIdValueEditableModifiedOn__: unknown;
-  /** HTTP3 enabled for this zone. */
-  HTTP3ObjectIdValueEditableModifiedOn__: unknown;
-  /** Image Transformations provides on-demand resizing, conversion and optimization for images served through Cloudflare's network. Refer to the [Image Transformations documentation](https://developers.cloudflare.com/images/) for more information. */
-  ImageResizingObjectIdValueEditableModifiedOn__: unknown;
-  /** Enable IP Geolocation to have Cloudflare geolocate visitors to your website and pass the country code to you. (https://support.cloudflare.com/hc/en-us/articles/200168236). */
-  ZonesSchemasIPGeolocationObjectIdValueEditableModifiedOn__: unknown;
-  /** Enable IPv6 on all subdomains that are Cloudflare enabled. (https://support.cloudflare.com/hc/en-us/articles/200168586). */
-  IPV6ObjectIdValueEditableModifiedOn__: unknown;
-  /** Maximum size of an allowable upload. */
-  ZonesMaxUploadObjectIdValueEditableModifiedOn__: unknown;
-  /** Only accepts HTTPS requests that use at least the TLS protocol version specified. For example, if TLS 1.1 is selected, TLS 1.0 connections will be rejected, while 1.1, 1.2, and 1.3 (if enabled) will be permitted. */
-  MinTLSVersionObjectIdValueEditableModifiedOn__: unknown;
-  /** Automatically optimize image loading for website visitors on mobile */
-  ZonesSchemasMirageObjectIdValueEditableModifiedOn__: unknown;
-  /** Enable Network Error Logging reporting on your zone. (Beta) */
-  NELObjectIdValueEditableModifiedOn__: unknown;
-  /** Enables the Opportunistic Encryption feature for a zone. */
-  ZonesSchemasOpportunisticEncryptionObjectIdValueEditableModifiedOn__: unknown;
-  /** Add an Alt-Svc header to all legitimate requests from Tor, allowing the connection to use our onion services instead of exit nodes. */
-  OpportunisticOnionObjectIdValueEditableModifiedOn__: unknown;
-  /** Orange to Orange (O2O) allows zones on Cloudflare to CNAME to other zones also on Cloudflare. */
-  OrangeToOrangeObjectIdValueEditableModifiedOn__: unknown;
-  /** Cloudflare will proxy customer error pages on any 502,504 errors on origin server instead of showing a default Cloudflare error page. This does not apply to 522 errors and is limited to Enterprise Zones. */
-  ZonesSchemasOriginErrorPagePassThruObjectIdValueEditableModifiedOn__: unknown;
-  /** Origin H2 Max Streams configures the max number of concurrent requests that Cloudflare will send within the same connection when communicating with the origin server, if the origin supports it. Note that if your origin does not support H2 multiplexing, 5xx errors may be observed, particularly 520s. Also note that the default value is `100` for all plan types except Enterprise where it is `1`. `1` means that H2 multiplexing is disabled. */
-  ZonesCacheRulesOriginH2MaxStreamsObjectIdModifiedOnValue__: unknown;
-  /** Origin Max HTTP Setting Version sets the highest HTTP version Cloudflare will attempt to use with your origin. This setting allows Cloudflare to make HTTP/2 requests to your origin. (Refer to [Enable HTTP/2 to Origin](https://developers.cloudflare.com/cache/how-to/enable-http2-to-origin/), for more information.). The default value is "2" for all plan types except Enterprise where it is "1". */
-  ZonesCacheRulesOriginMaxHTTPVersionObjectIdModifiedOnValue__: unknown;
-  /** Removes metadata and compresses your images for faster page load times. Basic (Lossless): Reduce the size of PNG, JPEG, and GIF files - no impact on visual quality. Basic + JPEG (Lossy): Further reduce the size of JPEG files for faster image loading. Larger JPEGs are converted to progressive images, loading a lower-resolution image first and ending in a higher-resolution version. Not recommended for hi-res photography sites. */
-  ZonesSchemasPolishObjectIdValueEditableModifiedOn__: unknown;
-  /** Cloudflare will prefetch any URLs that are included in the response headers. This is limited to Enterprise Zones. */
-  PrefetchPreloadObjectIdValueEditableModifiedOn__: unknown;
-  /** Privacy Pass v1 was a browser extension developed by the Privacy Pass Team to improve the browsing experience for your visitors by allowing users to reduce the number of CAPTCHAs shown. (https://support.cloudflare.com/hc/en-us/articles/115001992652-Privacy-Pass). */
-  ZonesPrivacyPassObjectIdValueEditableModifiedOn__: unknown;
-  /** Maximum time between two read operations from origin. */
-  ProxyReadTimeoutObjectIdValueEditableModifiedOn__: unknown;
-  /** The value set for the Pseudo IPv4 setting. */
-  PseudoIPV4ObjectIdValueEditableModifiedOn__: unknown;
-  /** When enabled, Cloudflare will redirect verified AI training crawlers to canonical URLs */
-  ZonesRedirectsForAITrainingObjectIdValueEditableModifiedOn__: unknown;
-  /** Automatically replace insecure JavaScript libraries with safer and faster alternatives provided under cdnjs and powered by Cloudflare. Currently supports the following libraries: Polyfill under polyfill.io. */
-  ZonesReplaceInsecureJSObjectIdValueEditableModifiedOn__: unknown;
-  /** Enables or disables buffering of responses from the proxied server. Cloudflare may buffer the whole payload to deliver it at once to the client versus allowing it to be delivered in chunks. By default, the proxied server streams directly and is not buffered by Cloudflare. This is limited to Enterprise Zones. */
-  ZonesSchemasResponseBufferingObjectIdValueEditableModifiedOn__: unknown;
-  /** Rocket Loader is a general-purpose asynchronous JavaScript optimisation that prioritises rendering your content while loading your site's Javascript asynchronously. Turning on Rocket Loader will immediately improve a web page's rendering time sometimes measured as Time to First Paint (TTFP), and also the `window.onload` time (assuming there is JavaScript on the page). This can have a positive impact on your Google search ranking. When turned on, Rocket Loader will automatically defer the loading of all Javascript referenced in your HTML, with no configuration required. Refer to [Understanding Rocket Loader](https://support.cloudflare.com/hc/articles/200168056) for more information. */
-  ZonesSchemasRocketLoaderObjectIdValueEditableModifiedOn__: unknown;
-  /** [Automatic Platform Optimization for WordPress](https://developers.cloudflare.com/automatic-platform-optimization/) serves your WordPress site from Cloudflare's edge network and caches third-party fonts. */
-  ZonesSchemasAutomaticPlatformOptimizationObjectIdValueEditableModifiedOn__: unknown;
-  /** When enabled, Cloudflare provisions an AI Search instance for the zone */
-  ZonesSearchForAgentsObjectIdValueEditableModifiedOn__: unknown;
-  /** Cloudflare security header for a zone. */
-  SecurityHeadersObjectIdValueEditableModifiedOn__: unknown;
-  /** Choose the appropriate security profile for your website, which will automatically adjust each of the security settings. If you choose to customize an individual security setting, the profile will become Custom. (https://support.cloudflare.com/hc/en-us/articles/200170056). */
-  ZonesSchemasSecurityLevelObjectIdValueEditableModifiedOn__: unknown;
-  /** If there is sensitive content on your website that you want visible to real visitors, but that you want to hide from suspicious visitors, all you have to do is wrap the content with Cloudflare SSE tags. Wrap any content that you want to be excluded from suspicious visitors in the following SSE tags: <!--sse--><!--/sse-->. For example: <!--sse--> Bad visitors won't see my phone number, 555-555-5555 <!--/sse-->. Note: SSE only will work with HTML. If you have HTML minification enabled, you won't see the SSE tags in your HTML source when it's served through Cloudflare. SSE will still function in this case, as Cloudflare's HTML minification and SSE functionality occur on-the-fly as the resource moves through our network to the visitor's computer. (https://support.cloudflare.com/hc/en-us/articles/200170036). */
-  ServerSideExcludesObjectIdValueEditableModifiedOn__: unknown;
-  /** Allow SHA1 support. */
-  ZonesSha1SupportObjectIdValueEditableModifiedOn__: unknown;
-  /** Cloudflare will treat files with the same query strings as the same file in cache, regardless of the order of the query strings. This is limited to Enterprise Zones. */
-  ZonesSchemasSortQueryStringForCacheObjectIdValueEditableModifiedOn__: unknown;
-  /** SSL encrypts your visitor's connection and safeguards credit card numbers and other personal data to and from your website. SSL can take up to 5 minutes to fully activate. Requires Cloudflare active on your root domain or www domain. Off: no SSL between the visitor and Cloudflare, and no SSL between Cloudflare and your web server (all HTTP traffic). Flexible: SSL between the visitor and Cloudflare -- visitor sees HTTPS on your site, but no SSL between Cloudflare and your web server. You don't need to have an SSL cert on your web server, but your vistors will still see the site as being HTTPS enabled. Full: SSL between the visitor and Cloudflare -- visitor sees HTTPS on your site, and SSL between Cloudflare and your web server. You'll need to have your own SSL cert or self-signed cert at the very least. Full (Strict): SSL between the visitor and Cloudflare -- visitor sees HTTPS on your site, and SSL between Cloudflare and your web server. You'll need to have a valid SSL certificate installed on your web server. This certificate must be signed by a certificate authority, have an expiration date in the future, and respond for the request domain name (hostname). (https://support.cloudflare.com/hc/en-us/articles/200170416). */
-  ZonesSchemasSSLObjectIdValueEditableModifiedOn__: unknown;
-  /** Enrollment in the SSL/TLS Recommender service which tries to detect and recommend (by sending periodic emails) the most secure SSL/TLS setting your origin servers support. */
-  SSLRecommenderObjectIdEnabled__: unknown;
-  /** Only allows TLS1.2. */
-  ZonesTLS12OnlyObjectIdValueEditableModifiedOn__: unknown;
-  /** Enables Crypto TLS 1.3 feature for a zone. */
-  TLS13ObjectIdValueEditableModifiedOn__: unknown;
-  /** TLS Client Auth requires Cloudflare to connect to your origin server using a client certificate (Enterprise Only). */
-  TLSClientAuthObjectIdValueEditableModifiedOn__: unknown;
-  /** Media Transformations provides on-demand resizing, conversion and optimization for images and video served through Cloudflare's network. Refer to the [Image Transformations](https://developers.cloudflare.com/images/) and [Video Transformations](https://developers.cloudflare.com/stream/transform-videos/#getting-started) documentation for more information. */
-  ZonesTransformationsObjectIdValueEditableModifiedOn__: unknown;
-  /** Media Transformations Allowed Origins restricts transformations for images and video served through Cloudflare's network. Refer to the [Image Transformations](https://developers.cloudflare.com/images/) and [Video Transformations](https://developers.cloudflare.com/stream/transform-videos/#getting-started) documentation for more information. */
-  ZonesTransformationsAllowedOriginsObjectIdValueEditableModifiedOn__: unknown;
-  /** Allows customer to continue to use True Client IP (Akamai feature) in the headers we send to the origin. This is limited to Enterprise Zones. */
-  ZonesSchemasTrueClientIPHeaderObjectIdValueEditableModifiedOn__: unknown;
-  /** The WAF examines HTTP requests to your website. It inspects both GET and POST requests and applies rules to help filter out illegitimate traffic from legitimate website visitors. The Cloudflare WAF inspects website addresses or URLs to detect anything out of the ordinary. If the Cloudflare WAF determines suspicious user behavior, then the WAF will 'challenge' the web visitor with a page that asks them to submit a CAPTCHA successfully to continue their action. If the challenge is failed, the action will be stopped. What this means is that Cloudflare's WAF will block any traffic identified as illegitimate before it reaches your origin web server. (https://support.cloudflare.com/hc/en-us/articles/200172016). */
-  ZonesSchemasWAFObjectIdValueEditableModifiedOn__: unknown;
-  /** When the client requesting the image supports the WebP image codec, and WebP offers a performance advantage over the original image format, Cloudflare will serve a WebP version of the original image. */
-  WebPObjectIdValueEditableModifiedOn__: unknown;
-  /** WebSockets are open connections sustained between the client and the origin server. Inside a WebSockets connection, the client and the origin can pass data back and forth without having to reestablish sessions. This makes exchanging data within a WebSockets connection fast. WebSockets are often used for real-time applications such as live chat and gaming. For more information refer to [Can I use Cloudflare with Websockets](https://support.cloudflare.com/hc/en-us/articles/200169466-Can-I-use-Cloudflare-with-WebSockets-). */
-  WebsocketObjectIdValueEditableModifiedOn__: unknown;
+  /** ID of the zone setting. */
+  id?: SettingsBulkEditResultItemId;
+  /** Current value of the zone setting. */
+  value?: SettingsBulkEditResultItemValue;
+  /** Whether or not this setting can be modified for this zone (based on your Cloudflare plan level). */
+  editable?: SettingsBulkEditResultItemEditable;
+  /** last time this setting was modified. */
+  modifiedOn?: string;
+  /** Value of the zone setting. */
+  timeRemaining?: number;
+  /** ssl-recommender enrollment setting. */
+  enabled?: boolean;
 }
 export const SettingsBulkEditResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    ZeroRTTObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("ZeroRTT object { id, value, editable, modified_on }"),
-    ),
-    AdvancedDDoSObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("AdvancedDDoS object { id, value, editable, modified_on }"),
-    ),
-    ZonesCacheRulesAegisObjectIdModifiedOnValue__: S.Unknown.pipe(
-      T.Body("ZonesCacheRulesAegis object { id, modified_on, value }"),
-    ),
-    AlwaysOnlineObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("AlwaysOnline object { id, value, editable, modified_on }"),
-    ),
-    ZonesSchemasAlwaysUseHTTPSObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body(
-        "ZonesSchemasAlwaysUseHTTPS object { id, value, editable, modified_on }",
-      ),
-    ),
-    ZonesSchemasAutomaticHTTPSRewritesObjectIdValueEditableModifiedOn__:
-      S.Unknown.pipe(
-        T.Body(
-          "ZonesSchemasAutomaticHTTPSRewrites object { id, value, editable, modified_on }",
-        ),
-      ),
-    BrotliObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("Brotli object { id, value, editable, modified_on }"),
-    ),
-    ZonesSchemasBrowserCacheTTLObjectIdValueEditableModifiedOn__:
-      S.Unknown.pipe(
-        T.Body(
-          "ZonesSchemasBrowserCacheTTL object { id, value, editable, modified_on }",
-        ),
-      ),
-    ZonesSchemasBrowserCheckObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body(
-        "ZonesSchemasBrowserCheck object { id, value, editable, modified_on }",
-      ),
-    ),
-    ZonesSchemasCacheLevelObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body(
-        "ZonesSchemasCacheLevel object { id, value, editable, modified_on }",
-      ),
-    ),
-    ChallengeTTLObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("ChallengeTTL object { id, value, editable, modified_on }"),
-    ),
-    CiphersObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("Ciphers object { id, value, editable, modified_on }"),
-    ),
-    ZonesContentConverterObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body(
-        "ZonesContentConverter object { id, value, editable, modified_on }",
-      ),
-    ),
-    ZonesCNAMEFlatteningObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body(
-        "ZonesCNAMEFlattening object { id, value, editable, modified_on }",
-      ),
-    ),
-    DevelopmentModeObjectIdValueEditable2More__: S.Unknown.pipe(
-      T.Body("DevelopmentMode object { id, value, editable, 2 more }"),
-    ),
-    EarlyHintsObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("EarlyHints object { id, value, editable, modified_on }"),
-    ),
-    ZonesSchemasEdgeCacheTTLObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body(
-        "ZonesSchemasEdgeCacheTTL object { id, value, editable, modified_on }",
-      ),
-    ),
-    ZonesSchemasEmailObfuscationObjectIdValueEditableModifiedOn__:
-      S.Unknown.pipe(
-        T.Body(
-          "ZonesSchemasEmailObfuscation object { id, value, editable, modified_on }",
-        ),
-      ),
-    H2PrioritizationObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("H2Prioritization object { id, value, editable, modified_on }"),
-    ),
-    HotlinkProtectionObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("HotlinkProtection object { id, value, editable, modified_on }"),
-    ),
-    HTTP2ObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("HTTP2 object { id, value, editable, modified_on }"),
-    ),
-    HTTP3ObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("HTTP3 object { id, value, editable, modified_on }"),
-    ),
-    ImageResizingObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("ImageResizing object { id, value, editable, modified_on }"),
-    ),
-    ZonesSchemasIPGeolocationObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body(
-        "ZonesSchemasIPGeolocation object { id, value, editable, modified_on }",
-      ),
-    ),
-    IPV6ObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("IPV6 object { id, value, editable, modified_on }"),
-    ),
-    ZonesMaxUploadObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("ZonesMaxUpload object { id, value, editable, modified_on }"),
-    ),
-    MinTLSVersionObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("MinTLSVersion object { id, value, editable, modified_on }"),
-    ),
-    ZonesSchemasMirageObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("ZonesSchemasMirage object { id, value, editable, modified_on }"),
-    ),
-    NELObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("NEL object { id, value, editable, modified_on }"),
-    ),
-    ZonesSchemasOpportunisticEncryptionObjectIdValueEditableModifiedOn__:
-      S.Unknown.pipe(
-        T.Body(
-          "ZonesSchemasOpportunisticEncryption object { id, value, editable, modified_on }",
-        ),
-      ),
-    OpportunisticOnionObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("OpportunisticOnion object { id, value, editable, modified_on }"),
-    ),
-    OrangeToOrangeObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("OrangeToOrange object { id, value, editable, modified_on }"),
-    ),
-    ZonesSchemasOriginErrorPagePassThruObjectIdValueEditableModifiedOn__:
-      S.Unknown.pipe(
-        T.Body(
-          "ZonesSchemasOriginErrorPagePassThru object { id, value, editable, modified_on }",
-        ),
-      ),
-    ZonesCacheRulesOriginH2MaxStreamsObjectIdModifiedOnValue__: S.Unknown.pipe(
-      T.Body(
-        "ZonesCacheRulesOriginH2MaxStreams object { id, modified_on, value }",
-      ),
-    ),
-    ZonesCacheRulesOriginMaxHTTPVersionObjectIdModifiedOnValue__:
-      S.Unknown.pipe(
-        T.Body(
-          "ZonesCacheRulesOriginMaxHTTPVersion object { id, modified_on, value }",
-        ),
-      ),
-    ZonesSchemasPolishObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("ZonesSchemasPolish object { id, value, editable, modified_on }"),
-    ),
-    PrefetchPreloadObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("PrefetchPreload object { id, value, editable, modified_on }"),
-    ),
-    ZonesPrivacyPassObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("ZonesPrivacyPass object { id, value, editable, modified_on }"),
-    ),
-    ProxyReadTimeoutObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("ProxyReadTimeout object { id, value, editable, modified_on }"),
-    ),
-    PseudoIPV4ObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("PseudoIPV4 object { id, value, editable, modified_on }"),
-    ),
-    ZonesRedirectsForAITrainingObjectIdValueEditableModifiedOn__:
-      S.Unknown.pipe(
-        T.Body(
-          "ZonesRedirectsForAITraining object { id, value, editable, modified_on }",
-        ),
-      ),
-    ZonesReplaceInsecureJSObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body(
-        "ZonesReplaceInsecureJS object { id, value, editable, modified_on }",
-      ),
-    ),
-    ZonesSchemasResponseBufferingObjectIdValueEditableModifiedOn__:
-      S.Unknown.pipe(
-        T.Body(
-          "ZonesSchemasResponseBuffering object { id, value, editable, modified_on }",
-        ),
-      ),
-    ZonesSchemasRocketLoaderObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body(
-        "ZonesSchemasRocketLoader object { id, value, editable, modified_on }",
-      ),
-    ),
-    ZonesSchemasAutomaticPlatformOptimizationObjectIdValueEditableModifiedOn__:
-      S.Unknown.pipe(
-        T.Body(
-          "ZonesSchemasAutomaticPlatformOptimization object { id, value, editable, modified_on }",
-        ),
-      ),
-    ZonesSearchForAgentsObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body(
-        "ZonesSearchForAgents object { id, value, editable, modified_on }",
-      ),
-    ),
-    SecurityHeadersObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("SecurityHeaders object { id, value, editable, modified_on }"),
-    ),
-    ZonesSchemasSecurityLevelObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body(
-        "ZonesSchemasSecurityLevel object { id, value, editable, modified_on }",
-      ),
-    ),
-    ServerSideExcludesObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("ServerSideExcludes object { id, value, editable, modified_on }"),
-    ),
-    ZonesSha1SupportObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("ZonesSha1Support object { id, value, editable, modified_on }"),
-    ),
-    ZonesSchemasSortQueryStringForCacheObjectIdValueEditableModifiedOn__:
-      S.Unknown.pipe(
-        T.Body(
-          "ZonesSchemasSortQueryStringForCache object { id, value, editable, modified_on }",
-        ),
-      ),
-    ZonesSchemasSSLObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("ZonesSchemasSSL object { id, value, editable, modified_on }"),
-    ),
-    SSLRecommenderObjectIdEnabled__: S.Unknown.pipe(
-      T.Body("SSLRecommender object { id, enabled }"),
-    ),
-    ZonesTLS12OnlyObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("ZonesTLS1_2Only object { id, value, editable, modified_on }"),
-    ),
-    TLS13ObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("TLS1_3 object { id, value, editable, modified_on }"),
-    ),
-    TLSClientAuthObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("TLSClientAuth object { id, value, editable, modified_on }"),
-    ),
-    ZonesTransformationsObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body(
-        "ZonesTransformations object { id, value, editable, modified_on }",
-      ),
-    ),
-    ZonesTransformationsAllowedOriginsObjectIdValueEditableModifiedOn__:
-      S.Unknown.pipe(
-        T.Body(
-          "ZonesTransformationsAllowedOrigins object { id, value, editable, modified_on }",
-        ),
-      ),
-    ZonesSchemasTrueClientIPHeaderObjectIdValueEditableModifiedOn__:
-      S.Unknown.pipe(
-        T.Body(
-          "ZonesSchemasTrueClientIPHeader object { id, value, editable, modified_on }",
-        ),
-      ),
-    ZonesSchemasWAFObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("ZonesSchemasWAF object { id, value, editable, modified_on }"),
-    ),
-    WebPObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("WebP object { id, value, editable, modified_on }"),
-    ),
-    WebsocketObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("Websocket object { id, value, editable, modified_on }"),
-    ),
+    id: S.optional(SettingsBulkEditResultItemId),
+    value: S.optional(SettingsBulkEditResultItemValue),
+    editable: S.optional(SettingsBulkEditResultItemEditable),
+    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+    timeRemaining: S.optional(S.Number.pipe(T.Body("time_remaining"))),
+    enabled: S.optional(S.Boolean),
   }),
 ).annotate({
   identifier: "SettingsBulkEditResultItem",
@@ -4299,382 +3044,47 @@ export const SettingsListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "SettingsListRequest",
 }) as any as S.Schema<SettingsListRequest>;
 
+export type SettingsListResultItemId = "0rtt" | (string & {});
+export const SettingsListResultItemId = /*@__PURE__*/ S.String;
+
+export type SettingsListResultItemValue = "on" | "off" | (string & {});
+export const SettingsListResultItemValue = /*@__PURE__*/ S.String;
+
+export interface SettingsListResultItemEditable {
+  true: unknown;
+  false: unknown;
+}
+export const SettingsListResultItemEditable = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    true: S.Unknown,
+    false: S.Unknown,
+  }),
+).annotate({
+  identifier: "SettingsListResultItemEditable",
+}) as any as S.Schema<SettingsListResultItemEditable>;
+
 export interface SettingsListResultItem {
-  /** 0-RTT session resumption enabled for this zone. */
-  ZeroRTTObjectIdValueEditableModifiedOn__: unknown;
-  /** Advanced protection from Distributed Denial of Service (DDoS) attacks on your website. This is an uneditable value that is 'on' in the case of Business and Enterprise zones. */
-  AdvancedDDoSObjectIdValueEditableModifiedOn__: unknown;
-  /** Aegis provides dedicated egress IPs (from Cloudflare to your origin) for your layer 7 WAF and CDN services. The egress IPs are reserved exclusively for your account so that you can increase your origin security by only allowing traffic from a small list of IP addresses. */
-  ZonesCacheRulesAegisObjectIdModifiedOnValue__: unknown;
-  /** When enabled, Cloudflare serves limited copies of web pages available from the [Internet Archive's Wayback Machine](https://archive.org/web/) if your server is offline. Refer to [Always Online](https://developers.cloudflare.com/cache/about/always-online) for more information. */
-  AlwaysOnlineObjectIdValueEditableModifiedOn__: unknown;
-  /** Reply to all requests for URLs that use "http" with a 301 redirect to the equivalent "https" URL. If you only want to redirect for a subset of requests, consider creating an "Always use HTTPS" page rule. */
-  ZonesSchemasAlwaysUseHTTPSObjectIdValueEditableModifiedOn__: unknown;
-  /** Enable the Automatic HTTPS Rewrites feature for this zone. */
-  ZonesSchemasAutomaticHTTPSRewritesObjectIdValueEditableModifiedOn__: unknown;
-  /** When the client requesting an asset supports the Brotli compression algorithm, Cloudflare will serve a Brotli compressed version of the asset. */
-  BrotliObjectIdValueEditableModifiedOn__: unknown;
-  /** Browser Cache TTL (in seconds) specifies how long Cloudflare-cached resources will remain on your visitors' computers. Cloudflare will honor any larger times specified by your server. (https://support.cloudflare.com/hc/en-us/articles/200168276). */
-  ZonesSchemasBrowserCacheTTLObjectIdValueEditableModifiedOn__: unknown;
-  /** Browser Integrity Check is similar to Bad Behavior and looks for common HTTP headers abused most commonly by spammers and denies access to your page. It will also challenge visitors that do not have a user agent or a non standard user agent (also commonly used by abuse bots, crawlers or visitors). (https://support.cloudflare.com/hc/en-us/articles/200170086). */
-  ZonesSchemasBrowserCheckObjectIdValueEditableModifiedOn__: unknown;
-  /** Cache Level functions based off the setting level. The basic setting will cache most static resources (i.e., css, images, and JavaScript). The simplified setting will ignore the query string when delivering a cached resource. The aggressive setting will cache all static resources, including ones with a query string. (https://support.cloudflare.com/hc/en-us/articles/200168256). */
-  ZonesSchemasCacheLevelObjectIdValueEditableModifiedOn__: unknown;
-  /** Specify how long a visitor is allowed access to your site after successfully completing a challenge (such as a CAPTCHA). After the TTL has expired the visitor will have to complete a new challenge. We recommend a 15 - 45 minute setting and will attempt to honor any setting above 45 minutes. (https://support.cloudflare.com/hc/en-us/articles/200170136). */
-  ChallengeTTLObjectIdValueEditableModifiedOn__: unknown;
-  /** An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format. */
-  CiphersObjectIdValueEditableModifiedOn__: unknown;
-  /** When enabled and the client sends an Accept header requesting text/markdown, */
-  ZonesContentConverterObjectIdValueEditableModifiedOn__: unknown;
-  /** Whether or not cname flattening is on. */
-  ZonesCNAMEFlatteningObjectIdValueEditableModifiedOn__: unknown;
-  /** Development Mode temporarily allows you to enter development mode for your websites if you need to make changes to your site. This will bypass Cloudflare's accelerated cache and slow down your site, but is useful if you are making changes to cacheable content (like images, css, or JavaScript) and would like to see those changes right away. Once entered, development mode will last for 3 hours and then automatically toggle off. */
-  DevelopmentModeObjectIdValueEditable2More__: unknown;
-  /** When enabled, Cloudflare will attempt to speed up overall page loads by serving `103` responses with `Link` headers from the final response. Refer to [Early Hints](https://developers.cloudflare.com/cache/about/early-hints) for more information. */
-  EarlyHintsObjectIdValueEditableModifiedOn__: unknown;
-  /** Time (in seconds) that a resource will be ensured to remain on Cloudflare's cache servers. */
-  ZonesSchemasEdgeCacheTTLObjectIdValueEditableModifiedOn__: unknown;
-  /** Encrypt email adresses on your web page from bots, while keeping them visible to humans. (https://support.cloudflare.com/hc/en-us/articles/200170016). */
-  ZonesSchemasEmailObfuscationObjectIdValueEditableModifiedOn__: unknown;
-  /** HTTP/2 Edge Prioritization optimises the delivery of resources served through HTTP/2 to improve page load performance. It also supports fine control of content delivery when used in conjunction with Workers. */
-  H2PrioritizationObjectIdValueEditableModifiedOn__: unknown;
-  /** When enabled, the Hotlink Protection option ensures that other sites cannot suck up your bandwidth by building pages that use images hosted on your site. Anytime a request for an image on your site hits Cloudflare, we check to ensure that it's not another site requesting them. People will still be able to download and view images from your page, but other sites won't be able to steal them for use on their own pages. (https://support.cloudflare.com/hc/en-us/articles/200170026). */
-  HotlinkProtectionObjectIdValueEditableModifiedOn__: unknown;
-  /** HTTP2 enabled for this zone. */
-  HTTP2ObjectIdValueEditableModifiedOn__: unknown;
-  /** HTTP3 enabled for this zone. */
-  HTTP3ObjectIdValueEditableModifiedOn__: unknown;
-  /** Image Transformations provides on-demand resizing, conversion and optimization for images served through Cloudflare's network. Refer to the [Image Transformations documentation](https://developers.cloudflare.com/images/) for more information. */
-  ImageResizingObjectIdValueEditableModifiedOn__: unknown;
-  /** Enable IP Geolocation to have Cloudflare geolocate visitors to your website and pass the country code to you. (https://support.cloudflare.com/hc/en-us/articles/200168236). */
-  ZonesSchemasIPGeolocationObjectIdValueEditableModifiedOn__: unknown;
-  /** Enable IPv6 on all subdomains that are Cloudflare enabled. (https://support.cloudflare.com/hc/en-us/articles/200168586). */
-  IPV6ObjectIdValueEditableModifiedOn__: unknown;
-  /** Maximum size of an allowable upload. */
-  ZonesMaxUploadObjectIdValueEditableModifiedOn__: unknown;
-  /** Only accepts HTTPS requests that use at least the TLS protocol version specified. For example, if TLS 1.1 is selected, TLS 1.0 connections will be rejected, while 1.1, 1.2, and 1.3 (if enabled) will be permitted. */
-  MinTLSVersionObjectIdValueEditableModifiedOn__: unknown;
-  /** Automatically optimize image loading for website visitors on mobile */
-  ZonesSchemasMirageObjectIdValueEditableModifiedOn__: unknown;
-  /** Enable Network Error Logging reporting on your zone. (Beta) */
-  NELObjectIdValueEditableModifiedOn__: unknown;
-  /** Enables the Opportunistic Encryption feature for a zone. */
-  ZonesSchemasOpportunisticEncryptionObjectIdValueEditableModifiedOn__: unknown;
-  /** Add an Alt-Svc header to all legitimate requests from Tor, allowing the connection to use our onion services instead of exit nodes. */
-  OpportunisticOnionObjectIdValueEditableModifiedOn__: unknown;
-  /** Orange to Orange (O2O) allows zones on Cloudflare to CNAME to other zones also on Cloudflare. */
-  OrangeToOrangeObjectIdValueEditableModifiedOn__: unknown;
-  /** Cloudflare will proxy customer error pages on any 502,504 errors on origin server instead of showing a default Cloudflare error page. This does not apply to 522 errors and is limited to Enterprise Zones. */
-  ZonesSchemasOriginErrorPagePassThruObjectIdValueEditableModifiedOn__: unknown;
-  /** Origin H2 Max Streams configures the max number of concurrent requests that Cloudflare will send within the same connection when communicating with the origin server, if the origin supports it. Note that if your origin does not support H2 multiplexing, 5xx errors may be observed, particularly 520s. Also note that the default value is `100` for all plan types except Enterprise where it is `1`. `1` means that H2 multiplexing is disabled. */
-  ZonesCacheRulesOriginH2MaxStreamsObjectIdModifiedOnValue__: unknown;
-  /** Origin Max HTTP Setting Version sets the highest HTTP version Cloudflare will attempt to use with your origin. This setting allows Cloudflare to make HTTP/2 requests to your origin. (Refer to [Enable HTTP/2 to Origin](https://developers.cloudflare.com/cache/how-to/enable-http2-to-origin/), for more information.). The default value is "2" for all plan types except Enterprise where it is "1". */
-  ZonesCacheRulesOriginMaxHTTPVersionObjectIdModifiedOnValue__: unknown;
-  /** Removes metadata and compresses your images for faster page load times. Basic (Lossless): Reduce the size of PNG, JPEG, and GIF files - no impact on visual quality. Basic + JPEG (Lossy): Further reduce the size of JPEG files for faster image loading. Larger JPEGs are converted to progressive images, loading a lower-resolution image first and ending in a higher-resolution version. Not recommended for hi-res photography sites. */
-  ZonesSchemasPolishObjectIdValueEditableModifiedOn__: unknown;
-  /** Cloudflare will prefetch any URLs that are included in the response headers. This is limited to Enterprise Zones. */
-  PrefetchPreloadObjectIdValueEditableModifiedOn__: unknown;
-  /** Privacy Pass v1 was a browser extension developed by the Privacy Pass Team to improve the browsing experience for your visitors by allowing users to reduce the number of CAPTCHAs shown. (https://support.cloudflare.com/hc/en-us/articles/115001992652-Privacy-Pass). */
-  ZonesPrivacyPassObjectIdValueEditableModifiedOn__: unknown;
-  /** Maximum time between two read operations from origin. */
-  ProxyReadTimeoutObjectIdValueEditableModifiedOn__: unknown;
-  /** The value set for the Pseudo IPv4 setting. */
-  PseudoIPV4ObjectIdValueEditableModifiedOn__: unknown;
-  /** When enabled, Cloudflare will redirect verified AI training crawlers to canonical URLs */
-  ZonesRedirectsForAITrainingObjectIdValueEditableModifiedOn__: unknown;
-  /** Automatically replace insecure JavaScript libraries with safer and faster alternatives provided under cdnjs and powered by Cloudflare. Currently supports the following libraries: Polyfill under polyfill.io. */
-  ZonesReplaceInsecureJSObjectIdValueEditableModifiedOn__: unknown;
-  /** Enables or disables buffering of responses from the proxied server. Cloudflare may buffer the whole payload to deliver it at once to the client versus allowing it to be delivered in chunks. By default, the proxied server streams directly and is not buffered by Cloudflare. This is limited to Enterprise Zones. */
-  ZonesSchemasResponseBufferingObjectIdValueEditableModifiedOn__: unknown;
-  /** Rocket Loader is a general-purpose asynchronous JavaScript optimisation that prioritises rendering your content while loading your site's Javascript asynchronously. Turning on Rocket Loader will immediately improve a web page's rendering time sometimes measured as Time to First Paint (TTFP), and also the `window.onload` time (assuming there is JavaScript on the page). This can have a positive impact on your Google search ranking. When turned on, Rocket Loader will automatically defer the loading of all Javascript referenced in your HTML, with no configuration required. Refer to [Understanding Rocket Loader](https://support.cloudflare.com/hc/articles/200168056) for more information. */
-  ZonesSchemasRocketLoaderObjectIdValueEditableModifiedOn__: unknown;
-  /** [Automatic Platform Optimization for WordPress](https://developers.cloudflare.com/automatic-platform-optimization/) serves your WordPress site from Cloudflare's edge network and caches third-party fonts. */
-  ZonesSchemasAutomaticPlatformOptimizationObjectIdValueEditableModifiedOn__: unknown;
-  /** When enabled, Cloudflare provisions an AI Search instance for the zone */
-  ZonesSearchForAgentsObjectIdValueEditableModifiedOn__: unknown;
-  /** Cloudflare security header for a zone. */
-  SecurityHeadersObjectIdValueEditableModifiedOn__: unknown;
-  /** Choose the appropriate security profile for your website, which will automatically adjust each of the security settings. If you choose to customize an individual security setting, the profile will become Custom. (https://support.cloudflare.com/hc/en-us/articles/200170056). */
-  ZonesSchemasSecurityLevelObjectIdValueEditableModifiedOn__: unknown;
-  /** If there is sensitive content on your website that you want visible to real visitors, but that you want to hide from suspicious visitors, all you have to do is wrap the content with Cloudflare SSE tags. Wrap any content that you want to be excluded from suspicious visitors in the following SSE tags: <!--sse--><!--/sse-->. For example: <!--sse--> Bad visitors won't see my phone number, 555-555-5555 <!--/sse-->. Note: SSE only will work with HTML. If you have HTML minification enabled, you won't see the SSE tags in your HTML source when it's served through Cloudflare. SSE will still function in this case, as Cloudflare's HTML minification and SSE functionality occur on-the-fly as the resource moves through our network to the visitor's computer. (https://support.cloudflare.com/hc/en-us/articles/200170036). */
-  ServerSideExcludesObjectIdValueEditableModifiedOn__: unknown;
-  /** Allow SHA1 support. */
-  ZonesSha1SupportObjectIdValueEditableModifiedOn__: unknown;
-  /** Cloudflare will treat files with the same query strings as the same file in cache, regardless of the order of the query strings. This is limited to Enterprise Zones. */
-  ZonesSchemasSortQueryStringForCacheObjectIdValueEditableModifiedOn__: unknown;
-  /** SSL encrypts your visitor's connection and safeguards credit card numbers and other personal data to and from your website. SSL can take up to 5 minutes to fully activate. Requires Cloudflare active on your root domain or www domain. Off: no SSL between the visitor and Cloudflare, and no SSL between Cloudflare and your web server (all HTTP traffic). Flexible: SSL between the visitor and Cloudflare -- visitor sees HTTPS on your site, but no SSL between Cloudflare and your web server. You don't need to have an SSL cert on your web server, but your vistors will still see the site as being HTTPS enabled. Full: SSL between the visitor and Cloudflare -- visitor sees HTTPS on your site, and SSL between Cloudflare and your web server. You'll need to have your own SSL cert or self-signed cert at the very least. Full (Strict): SSL between the visitor and Cloudflare -- visitor sees HTTPS on your site, and SSL between Cloudflare and your web server. You'll need to have a valid SSL certificate installed on your web server. This certificate must be signed by a certificate authority, have an expiration date in the future, and respond for the request domain name (hostname). (https://support.cloudflare.com/hc/en-us/articles/200170416). */
-  ZonesSchemasSSLObjectIdValueEditableModifiedOn__: unknown;
-  /** Enrollment in the SSL/TLS Recommender service which tries to detect and recommend (by sending periodic emails) the most secure SSL/TLS setting your origin servers support. */
-  SSLRecommenderObjectIdEnabled__: unknown;
-  /** Only allows TLS1.2. */
-  ZonesTLS12OnlyObjectIdValueEditableModifiedOn__: unknown;
-  /** Enables Crypto TLS 1.3 feature for a zone. */
-  TLS13ObjectIdValueEditableModifiedOn__: unknown;
-  /** TLS Client Auth requires Cloudflare to connect to your origin server using a client certificate (Enterprise Only). */
-  TLSClientAuthObjectIdValueEditableModifiedOn__: unknown;
-  /** Media Transformations provides on-demand resizing, conversion and optimization for images and video served through Cloudflare's network. Refer to the [Image Transformations](https://developers.cloudflare.com/images/) and [Video Transformations](https://developers.cloudflare.com/stream/transform-videos/#getting-started) documentation for more information. */
-  ZonesTransformationsObjectIdValueEditableModifiedOn__: unknown;
-  /** Media Transformations Allowed Origins restricts transformations for images and video served through Cloudflare's network. Refer to the [Image Transformations](https://developers.cloudflare.com/images/) and [Video Transformations](https://developers.cloudflare.com/stream/transform-videos/#getting-started) documentation for more information. */
-  ZonesTransformationsAllowedOriginsObjectIdValueEditableModifiedOn__: unknown;
-  /** Allows customer to continue to use True Client IP (Akamai feature) in the headers we send to the origin. This is limited to Enterprise Zones. */
-  ZonesSchemasTrueClientIPHeaderObjectIdValueEditableModifiedOn__: unknown;
-  /** The WAF examines HTTP requests to your website. It inspects both GET and POST requests and applies rules to help filter out illegitimate traffic from legitimate website visitors. The Cloudflare WAF inspects website addresses or URLs to detect anything out of the ordinary. If the Cloudflare WAF determines suspicious user behavior, then the WAF will 'challenge' the web visitor with a page that asks them to submit a CAPTCHA successfully to continue their action. If the challenge is failed, the action will be stopped. What this means is that Cloudflare's WAF will block any traffic identified as illegitimate before it reaches your origin web server. (https://support.cloudflare.com/hc/en-us/articles/200172016). */
-  ZonesSchemasWAFObjectIdValueEditableModifiedOn__: unknown;
-  /** When the client requesting the image supports the WebP image codec, and WebP offers a performance advantage over the original image format, Cloudflare will serve a WebP version of the original image. */
-  WebPObjectIdValueEditableModifiedOn__: unknown;
-  /** WebSockets are open connections sustained between the client and the origin server. Inside a WebSockets connection, the client and the origin can pass data back and forth without having to reestablish sessions. This makes exchanging data within a WebSockets connection fast. WebSockets are often used for real-time applications such as live chat and gaming. For more information refer to [Can I use Cloudflare with Websockets](https://support.cloudflare.com/hc/en-us/articles/200169466-Can-I-use-Cloudflare-with-WebSockets-). */
-  WebsocketObjectIdValueEditableModifiedOn__: unknown;
+  /** ID of the zone setting. */
+  id?: SettingsListResultItemId;
+  /** Current value of the zone setting. */
+  value?: SettingsListResultItemValue;
+  /** Whether or not this setting can be modified for this zone (based on your Cloudflare plan level). */
+  editable?: SettingsListResultItemEditable;
+  /** last time this setting was modified. */
+  modifiedOn?: string;
+  /** Value of the zone setting. */
+  timeRemaining?: number;
+  /** ssl-recommender enrollment setting. */
+  enabled?: boolean;
 }
 export const SettingsListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    ZeroRTTObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("ZeroRTT object { id, value, editable, modified_on }"),
-    ),
-    AdvancedDDoSObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("AdvancedDDoS object { id, value, editable, modified_on }"),
-    ),
-    ZonesCacheRulesAegisObjectIdModifiedOnValue__: S.Unknown.pipe(
-      T.Body("ZonesCacheRulesAegis object { id, modified_on, value }"),
-    ),
-    AlwaysOnlineObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("AlwaysOnline object { id, value, editable, modified_on }"),
-    ),
-    ZonesSchemasAlwaysUseHTTPSObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body(
-        "ZonesSchemasAlwaysUseHTTPS object { id, value, editable, modified_on }",
-      ),
-    ),
-    ZonesSchemasAutomaticHTTPSRewritesObjectIdValueEditableModifiedOn__:
-      S.Unknown.pipe(
-        T.Body(
-          "ZonesSchemasAutomaticHTTPSRewrites object { id, value, editable, modified_on }",
-        ),
-      ),
-    BrotliObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("Brotli object { id, value, editable, modified_on }"),
-    ),
-    ZonesSchemasBrowserCacheTTLObjectIdValueEditableModifiedOn__:
-      S.Unknown.pipe(
-        T.Body(
-          "ZonesSchemasBrowserCacheTTL object { id, value, editable, modified_on }",
-        ),
-      ),
-    ZonesSchemasBrowserCheckObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body(
-        "ZonesSchemasBrowserCheck object { id, value, editable, modified_on }",
-      ),
-    ),
-    ZonesSchemasCacheLevelObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body(
-        "ZonesSchemasCacheLevel object { id, value, editable, modified_on }",
-      ),
-    ),
-    ChallengeTTLObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("ChallengeTTL object { id, value, editable, modified_on }"),
-    ),
-    CiphersObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("Ciphers object { id, value, editable, modified_on }"),
-    ),
-    ZonesContentConverterObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body(
-        "ZonesContentConverter object { id, value, editable, modified_on }",
-      ),
-    ),
-    ZonesCNAMEFlatteningObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body(
-        "ZonesCNAMEFlattening object { id, value, editable, modified_on }",
-      ),
-    ),
-    DevelopmentModeObjectIdValueEditable2More__: S.Unknown.pipe(
-      T.Body("DevelopmentMode object { id, value, editable, 2 more }"),
-    ),
-    EarlyHintsObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("EarlyHints object { id, value, editable, modified_on }"),
-    ),
-    ZonesSchemasEdgeCacheTTLObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body(
-        "ZonesSchemasEdgeCacheTTL object { id, value, editable, modified_on }",
-      ),
-    ),
-    ZonesSchemasEmailObfuscationObjectIdValueEditableModifiedOn__:
-      S.Unknown.pipe(
-        T.Body(
-          "ZonesSchemasEmailObfuscation object { id, value, editable, modified_on }",
-        ),
-      ),
-    H2PrioritizationObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("H2Prioritization object { id, value, editable, modified_on }"),
-    ),
-    HotlinkProtectionObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("HotlinkProtection object { id, value, editable, modified_on }"),
-    ),
-    HTTP2ObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("HTTP2 object { id, value, editable, modified_on }"),
-    ),
-    HTTP3ObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("HTTP3 object { id, value, editable, modified_on }"),
-    ),
-    ImageResizingObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("ImageResizing object { id, value, editable, modified_on }"),
-    ),
-    ZonesSchemasIPGeolocationObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body(
-        "ZonesSchemasIPGeolocation object { id, value, editable, modified_on }",
-      ),
-    ),
-    IPV6ObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("IPV6 object { id, value, editable, modified_on }"),
-    ),
-    ZonesMaxUploadObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("ZonesMaxUpload object { id, value, editable, modified_on }"),
-    ),
-    MinTLSVersionObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("MinTLSVersion object { id, value, editable, modified_on }"),
-    ),
-    ZonesSchemasMirageObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("ZonesSchemasMirage object { id, value, editable, modified_on }"),
-    ),
-    NELObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("NEL object { id, value, editable, modified_on }"),
-    ),
-    ZonesSchemasOpportunisticEncryptionObjectIdValueEditableModifiedOn__:
-      S.Unknown.pipe(
-        T.Body(
-          "ZonesSchemasOpportunisticEncryption object { id, value, editable, modified_on }",
-        ),
-      ),
-    OpportunisticOnionObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("OpportunisticOnion object { id, value, editable, modified_on }"),
-    ),
-    OrangeToOrangeObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("OrangeToOrange object { id, value, editable, modified_on }"),
-    ),
-    ZonesSchemasOriginErrorPagePassThruObjectIdValueEditableModifiedOn__:
-      S.Unknown.pipe(
-        T.Body(
-          "ZonesSchemasOriginErrorPagePassThru object { id, value, editable, modified_on }",
-        ),
-      ),
-    ZonesCacheRulesOriginH2MaxStreamsObjectIdModifiedOnValue__: S.Unknown.pipe(
-      T.Body(
-        "ZonesCacheRulesOriginH2MaxStreams object { id, modified_on, value }",
-      ),
-    ),
-    ZonesCacheRulesOriginMaxHTTPVersionObjectIdModifiedOnValue__:
-      S.Unknown.pipe(
-        T.Body(
-          "ZonesCacheRulesOriginMaxHTTPVersion object { id, modified_on, value }",
-        ),
-      ),
-    ZonesSchemasPolishObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("ZonesSchemasPolish object { id, value, editable, modified_on }"),
-    ),
-    PrefetchPreloadObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("PrefetchPreload object { id, value, editable, modified_on }"),
-    ),
-    ZonesPrivacyPassObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("ZonesPrivacyPass object { id, value, editable, modified_on }"),
-    ),
-    ProxyReadTimeoutObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("ProxyReadTimeout object { id, value, editable, modified_on }"),
-    ),
-    PseudoIPV4ObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("PseudoIPV4 object { id, value, editable, modified_on }"),
-    ),
-    ZonesRedirectsForAITrainingObjectIdValueEditableModifiedOn__:
-      S.Unknown.pipe(
-        T.Body(
-          "ZonesRedirectsForAITraining object { id, value, editable, modified_on }",
-        ),
-      ),
-    ZonesReplaceInsecureJSObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body(
-        "ZonesReplaceInsecureJS object { id, value, editable, modified_on }",
-      ),
-    ),
-    ZonesSchemasResponseBufferingObjectIdValueEditableModifiedOn__:
-      S.Unknown.pipe(
-        T.Body(
-          "ZonesSchemasResponseBuffering object { id, value, editable, modified_on }",
-        ),
-      ),
-    ZonesSchemasRocketLoaderObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body(
-        "ZonesSchemasRocketLoader object { id, value, editable, modified_on }",
-      ),
-    ),
-    ZonesSchemasAutomaticPlatformOptimizationObjectIdValueEditableModifiedOn__:
-      S.Unknown.pipe(
-        T.Body(
-          "ZonesSchemasAutomaticPlatformOptimization object { id, value, editable, modified_on }",
-        ),
-      ),
-    ZonesSearchForAgentsObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body(
-        "ZonesSearchForAgents object { id, value, editable, modified_on }",
-      ),
-    ),
-    SecurityHeadersObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("SecurityHeaders object { id, value, editable, modified_on }"),
-    ),
-    ZonesSchemasSecurityLevelObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body(
-        "ZonesSchemasSecurityLevel object { id, value, editable, modified_on }",
-      ),
-    ),
-    ServerSideExcludesObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("ServerSideExcludes object { id, value, editable, modified_on }"),
-    ),
-    ZonesSha1SupportObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("ZonesSha1Support object { id, value, editable, modified_on }"),
-    ),
-    ZonesSchemasSortQueryStringForCacheObjectIdValueEditableModifiedOn__:
-      S.Unknown.pipe(
-        T.Body(
-          "ZonesSchemasSortQueryStringForCache object { id, value, editable, modified_on }",
-        ),
-      ),
-    ZonesSchemasSSLObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("ZonesSchemasSSL object { id, value, editable, modified_on }"),
-    ),
-    SSLRecommenderObjectIdEnabled__: S.Unknown.pipe(
-      T.Body("SSLRecommender object { id, enabled }"),
-    ),
-    ZonesTLS12OnlyObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("ZonesTLS1_2Only object { id, value, editable, modified_on }"),
-    ),
-    TLS13ObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("TLS1_3 object { id, value, editable, modified_on }"),
-    ),
-    TLSClientAuthObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("TLSClientAuth object { id, value, editable, modified_on }"),
-    ),
-    ZonesTransformationsObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body(
-        "ZonesTransformations object { id, value, editable, modified_on }",
-      ),
-    ),
-    ZonesTransformationsAllowedOriginsObjectIdValueEditableModifiedOn__:
-      S.Unknown.pipe(
-        T.Body(
-          "ZonesTransformationsAllowedOrigins object { id, value, editable, modified_on }",
-        ),
-      ),
-    ZonesSchemasTrueClientIPHeaderObjectIdValueEditableModifiedOn__:
-      S.Unknown.pipe(
-        T.Body(
-          "ZonesSchemasTrueClientIPHeader object { id, value, editable, modified_on }",
-        ),
-      ),
-    ZonesSchemasWAFObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("ZonesSchemasWAF object { id, value, editable, modified_on }"),
-    ),
-    WebPObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("WebP object { id, value, editable, modified_on }"),
-    ),
-    WebsocketObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
-      T.Body("Websocket object { id, value, editable, modified_on }"),
-    ),
+    id: S.optional(SettingsListResultItemId),
+    value: S.optional(SettingsListResultItemValue),
+    editable: S.optional(SettingsListResultItemEditable),
+    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+    timeRemaining: S.optional(S.Number.pipe(T.Body("time_remaining"))),
+    enabled: S.optional(S.Boolean),
   }),
 ).annotate({
   identifier: "SettingsListResultItem",

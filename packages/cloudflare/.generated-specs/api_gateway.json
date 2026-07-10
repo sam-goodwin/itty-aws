@@ -40,23 +40,36 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.api_gateway#ConfigurationsGetResponseAuthIdCharacteristicsItemType": {
+      "type": "enum",
+      "members": {
+        "HEADER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "header"
+          }
+        },
+        "COOKIE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cookie"
+          }
+        }
+      }
+    },
     "com.cloudflare.api_gateway#ConfigurationsGetResponseAuthIdCharacteristicsItem": {
       "type": "structure",
       "members": {
-        "APIShieldAuthIDCharacteristic_object___name__type__": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Auth ID Characteristic",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "APIShieldAuthIDCharacteristic object { name, type }"
+            "smithy.api#documentation": "The name of the characteristic field, i.e., the header or cookie name."
           }
         },
-        "APIShieldAuthIDCharacteristicJWTClaim_object___name__type__": {
-          "target": "smithy.api#Document",
+        "type": {
+          "target": "com.cloudflare.api_gateway#ConfigurationsGetResponseAuthIdCharacteristicsItemType",
           "traits": {
-            "smithy.api#documentation": "Auth ID Characteristic extracted from JWT Token Claims",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "APIShieldAuthIDCharacteristicJWTClaim object { name, type }"
+            "smithy.api#documentation": "The type of characteristic."
           }
         }
       }
@@ -100,23 +113,36 @@
         "smithy.api#readonly": {}
       }
     },
+    "com.cloudflare.api_gateway#ConfigurationsUpdateRequestAuthIdCharacteristicsItemType": {
+      "type": "enum",
+      "members": {
+        "HEADER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "header"
+          }
+        },
+        "COOKIE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cookie"
+          }
+        }
+      }
+    },
     "com.cloudflare.api_gateway#ConfigurationsUpdateRequestAuthIdCharacteristicsItem": {
       "type": "structure",
       "members": {
-        "APIShieldAuthIDCharacteristic_object___name__type__": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Auth ID Characteristic",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "APIShieldAuthIDCharacteristic object { name, type }"
+            "smithy.api#documentation": "The name of the characteristic field, i.e., the header or cookie name."
           }
         },
-        "APIShieldAuthIDCharacteristicJWTClaim_object___name__type__": {
-          "target": "smithy.api#Document",
+        "type": {
+          "target": "com.cloudflare.api_gateway#ConfigurationsUpdateRequestAuthIdCharacteristicsItemType",
           "traits": {
-            "smithy.api#documentation": "Auth ID Characteristic extracted from JWT Token Claims",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "APIShieldAuthIDCharacteristicJWTClaim object { name, type }"
+            "smithy.api#documentation": "The type of characteristic."
           }
         }
       }
@@ -156,23 +182,36 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.api_gateway#ConfigurationsUpdateResponseAuthIdCharacteristicsItemType": {
+      "type": "enum",
+      "members": {
+        "HEADER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "header"
+          }
+        },
+        "COOKIE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cookie"
+          }
+        }
+      }
+    },
     "com.cloudflare.api_gateway#ConfigurationsUpdateResponseAuthIdCharacteristicsItem": {
       "type": "structure",
       "members": {
-        "APIShieldAuthIDCharacteristic_object___name__type__": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Auth ID Characteristic",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "APIShieldAuthIDCharacteristic object { name, type }"
+            "smithy.api#documentation": "The name of the characteristic field, i.e., the header or cookie name."
           }
         },
-        "APIShieldAuthIDCharacteristicJWTClaim_object___name__type__": {
-          "target": "smithy.api#Document",
+        "type": {
+          "target": "com.cloudflare.api_gateway#ConfigurationsUpdateResponseAuthIdCharacteristicsItemType",
           "traits": {
-            "smithy.api#documentation": "Auth ID Characteristic extracted from JWT Token Claims",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "APIShieldAuthIDCharacteristicJWTClaim object { name, type }"
+            "smithy.api#documentation": "The type of characteristic."
           }
         }
       }
@@ -2290,43 +2329,304 @@
         }
       }
     },
+    "com.cloudflare.api_gateway#OperationsBulkCreateResultItemFeaturesThresholds": {
+      "type": "structure",
+      "members": {
+        "auth_id_tokens": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The total number of auth-ids seen across this calculation."
+          }
+        },
+        "data_points": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The number of data points used for the threshold suggestion calculation."
+          }
+        },
+        "last_updated": {
+          "target": "smithy.api#String"
+        },
+        "p50": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The p50 quantile of requests (in period_seconds)."
+          }
+        },
+        "p90": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The p90 quantile of requests (in period_seconds)."
+          }
+        },
+        "p99": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The p99 quantile of requests (in period_seconds)."
+          }
+        },
+        "period_seconds": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The period over which this threshold is suggested."
+          }
+        },
+        "requests": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The estimated number of requests covered by these calculations."
+          }
+        },
+        "suggested_threshold": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The suggested threshold in requests done by the same auth_id or period_seconds."
+          }
+        }
+      }
+    },
+    "com.cloudflare.api_gateway#OperationsBulkCreateResultItemFeaturesParameterSchemasParameterSchemasParametersList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.api_gateway#OperationsBulkCreateResultItemFeaturesParameterSchemasParameterSchemas": {
+      "type": "structure",
+      "members": {
+        "parameters": {
+          "target": "com.cloudflare.api_gateway#OperationsBulkCreateResultItemFeaturesParameterSchemasParameterSchemasParametersList",
+          "traits": {
+            "smithy.api#documentation": "An array containing the learned parameter schemas."
+          }
+        },
+        "responses": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "An empty response object. This field is required to yield a valid operation schema."
+          }
+        }
+      }
+    },
+    "com.cloudflare.api_gateway#OperationsBulkCreateResultItemFeaturesParameterSchemas": {
+      "type": "structure",
+      "members": {
+        "last_updated": {
+          "target": "smithy.api#String"
+        },
+        "parameter_schemas": {
+          "target": "com.cloudflare.api_gateway#OperationsBulkCreateResultItemFeaturesParameterSchemasParameterSchemas",
+          "traits": {
+            "smithy.api#documentation": "An operation schema object containing a response."
+          }
+        }
+      }
+    },
+    "com.cloudflare.api_gateway#OperationsBulkCreateResultItemFeaturesApiRouting": {
+      "type": "structure",
+      "members": {
+        "last_updated": {
+          "target": "smithy.api#String"
+        },
+        "route": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Target route."
+          }
+        }
+      }
+    },
+    "com.cloudflare.api_gateway#OperationsBulkCreateResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90": {
+      "type": "structure",
+      "members": {
+        "lower": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Lower bound for percentile estimate"
+          }
+        },
+        "upper": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Upper bound for percentile estimate"
+          }
+        }
+      }
+    },
+    "com.cloudflare.api_gateway#OperationsBulkCreateResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95": {
+      "type": "structure",
+      "members": {
+        "lower": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Lower bound for percentile estimate"
+          }
+        },
+        "upper": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Upper bound for percentile estimate"
+          }
+        }
+      }
+    },
+    "com.cloudflare.api_gateway#OperationsBulkCreateResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99": {
+      "type": "structure",
+      "members": {
+        "lower": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Lower bound for percentile estimate"
+          }
+        },
+        "upper": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Upper bound for percentile estimate"
+          }
+        }
+      }
+    },
+    "com.cloudflare.api_gateway#OperationsBulkCreateResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervals": {
+      "type": "structure",
+      "members": {
+        "p90": {
+          "target": "com.cloudflare.api_gateway#OperationsBulkCreateResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90",
+          "traits": {
+            "smithy.api#documentation": "Upper and lower bound for percentile estimate"
+          }
+        },
+        "p95": {
+          "target": "com.cloudflare.api_gateway#OperationsBulkCreateResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95",
+          "traits": {
+            "smithy.api#documentation": "Upper and lower bound for percentile estimate"
+          }
+        },
+        "p99": {
+          "target": "com.cloudflare.api_gateway#OperationsBulkCreateResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99",
+          "traits": {
+            "smithy.api#documentation": "Upper and lower bound for percentile estimate"
+          }
+        }
+      }
+    },
+    "com.cloudflare.api_gateway#OperationsBulkCreateResultItemFeaturesConfidenceIntervalsSuggestedThreshold": {
+      "type": "structure",
+      "members": {
+        "confidence_intervals": {
+          "target": "com.cloudflare.api_gateway#OperationsBulkCreateResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervals"
+        },
+        "mean": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Suggested threshold."
+          }
+        }
+      }
+    },
+    "com.cloudflare.api_gateway#OperationsBulkCreateResultItemFeaturesConfidenceIntervals": {
+      "type": "structure",
+      "members": {
+        "last_updated": {
+          "target": "smithy.api#String"
+        },
+        "suggested_threshold": {
+          "target": "com.cloudflare.api_gateway#OperationsBulkCreateResultItemFeaturesConfidenceIntervalsSuggestedThreshold"
+        }
+      }
+    },
+    "com.cloudflare.api_gateway#OperationsBulkCreateResultItemFeaturesSchemaInfoActiveSchema": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "UUID."
+          }
+        },
+        "created_at": {
+          "target": "smithy.api#String"
+        },
+        "is_learned": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "True if schema is Cloudflare-provided."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Schema file name."
+          }
+        }
+      }
+    },
+    "com.cloudflare.api_gateway#OperationsBulkCreateResultItemFeaturesSchemaInfoMitigationAction": {
+      "type": "enum",
+      "members": {
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "none"
+          }
+        },
+        "LOG": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "log"
+          }
+        },
+        "BLOCK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "block"
+          }
+        }
+      }
+    },
+    "com.cloudflare.api_gateway#OperationsBulkCreateResultItemFeaturesSchemaInfo": {
+      "type": "structure",
+      "members": {
+        "active_schema": {
+          "target": "com.cloudflare.api_gateway#OperationsBulkCreateResultItemFeaturesSchemaInfoActiveSchema",
+          "traits": {
+            "smithy.api#documentation": "Schema active on endpoint."
+          }
+        },
+        "learned_available": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "True if a Cloudflare-provided learned schema is available for this endpoint."
+          }
+        },
+        "mitigation_action": {
+          "target": "com.cloudflare.api_gateway#OperationsBulkCreateResultItemFeaturesSchemaInfoMitigationAction",
+          "traits": {
+            "smithy.api#documentation": "Action taken on requests failing validation."
+          }
+        }
+      }
+    },
     "com.cloudflare.api_gateway#OperationsBulkCreateResultItemFeatures": {
       "type": "structure",
       "members": {
-        "APIShieldOperationFeatureThresholds_object___thresholds__": {
-          "target": "smithy.api#Document",
+        "thresholds": {
+          "target": "com.cloudflare.api_gateway#OperationsBulkCreateResultItemFeaturesThresholds"
+        },
+        "parameter_schemas": {
+          "target": "com.cloudflare.api_gateway#OperationsBulkCreateResultItemFeaturesParameterSchemas"
+        },
+        "api_routing": {
+          "target": "com.cloudflare.api_gateway#OperationsBulkCreateResultItemFeaturesApiRouting",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "APIShieldOperationFeatureThresholds object { thresholds }"
+            "smithy.api#documentation": "API Routing settings on endpoint."
           }
         },
-        "APIShieldOperationFeatureParameterSchemas_object___parameter_schemas__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "APIShieldOperationFeatureParameterSchemas object { parameter_schemas }"
-          }
+        "confidence_intervals": {
+          "target": "com.cloudflare.api_gateway#OperationsBulkCreateResultItemFeaturesConfidenceIntervals"
         },
-        "APIShieldOperationFeatureAPIRouting_object___api_routing__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "APIShieldOperationFeatureAPIRouting object { api_routing }"
-          }
-        },
-        "APIShieldOperationFeatureConfidenceIntervals_object___confidence_intervals__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "APIShieldOperationFeatureConfidenceIntervals object { confidence_intervals }"
-          }
-        },
-        "APIShieldOperationFeatureSchemaInfo_object___schema_info__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "APIShieldOperationFeatureSchemaInfo object { schema_info }"
-          }
+        "schema_info": {
+          "target": "com.cloudflare.api_gateway#OperationsBulkCreateResultItemFeaturesSchemaInfo"
         }
       }
     },
@@ -2527,43 +2827,304 @@
         }
       }
     },
+    "com.cloudflare.api_gateway#OperationsCreateResponseFeaturesThresholds": {
+      "type": "structure",
+      "members": {
+        "auth_id_tokens": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The total number of auth-ids seen across this calculation."
+          }
+        },
+        "data_points": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The number of data points used for the threshold suggestion calculation."
+          }
+        },
+        "last_updated": {
+          "target": "smithy.api#String"
+        },
+        "p50": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The p50 quantile of requests (in period_seconds)."
+          }
+        },
+        "p90": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The p90 quantile of requests (in period_seconds)."
+          }
+        },
+        "p99": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The p99 quantile of requests (in period_seconds)."
+          }
+        },
+        "period_seconds": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The period over which this threshold is suggested."
+          }
+        },
+        "requests": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The estimated number of requests covered by these calculations."
+          }
+        },
+        "suggested_threshold": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The suggested threshold in requests done by the same auth_id or period_seconds."
+          }
+        }
+      }
+    },
+    "com.cloudflare.api_gateway#OperationsCreateResponseFeaturesParameterSchemasParameterSchemasParametersList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.api_gateway#OperationsCreateResponseFeaturesParameterSchemasParameterSchemas": {
+      "type": "structure",
+      "members": {
+        "parameters": {
+          "target": "com.cloudflare.api_gateway#OperationsCreateResponseFeaturesParameterSchemasParameterSchemasParametersList",
+          "traits": {
+            "smithy.api#documentation": "An array containing the learned parameter schemas."
+          }
+        },
+        "responses": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "An empty response object. This field is required to yield a valid operation schema."
+          }
+        }
+      }
+    },
+    "com.cloudflare.api_gateway#OperationsCreateResponseFeaturesParameterSchemas": {
+      "type": "structure",
+      "members": {
+        "last_updated": {
+          "target": "smithy.api#String"
+        },
+        "parameter_schemas": {
+          "target": "com.cloudflare.api_gateway#OperationsCreateResponseFeaturesParameterSchemasParameterSchemas",
+          "traits": {
+            "smithy.api#documentation": "An operation schema object containing a response."
+          }
+        }
+      }
+    },
+    "com.cloudflare.api_gateway#OperationsCreateResponseFeaturesApiRouting": {
+      "type": "structure",
+      "members": {
+        "last_updated": {
+          "target": "smithy.api#String"
+        },
+        "route": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Target route."
+          }
+        }
+      }
+    },
+    "com.cloudflare.api_gateway#OperationsCreateResponseFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90": {
+      "type": "structure",
+      "members": {
+        "lower": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Lower bound for percentile estimate"
+          }
+        },
+        "upper": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Upper bound for percentile estimate"
+          }
+        }
+      }
+    },
+    "com.cloudflare.api_gateway#OperationsCreateResponseFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95": {
+      "type": "structure",
+      "members": {
+        "lower": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Lower bound for percentile estimate"
+          }
+        },
+        "upper": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Upper bound for percentile estimate"
+          }
+        }
+      }
+    },
+    "com.cloudflare.api_gateway#OperationsCreateResponseFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99": {
+      "type": "structure",
+      "members": {
+        "lower": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Lower bound for percentile estimate"
+          }
+        },
+        "upper": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Upper bound for percentile estimate"
+          }
+        }
+      }
+    },
+    "com.cloudflare.api_gateway#OperationsCreateResponseFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervals": {
+      "type": "structure",
+      "members": {
+        "p90": {
+          "target": "com.cloudflare.api_gateway#OperationsCreateResponseFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90",
+          "traits": {
+            "smithy.api#documentation": "Upper and lower bound for percentile estimate"
+          }
+        },
+        "p95": {
+          "target": "com.cloudflare.api_gateway#OperationsCreateResponseFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95",
+          "traits": {
+            "smithy.api#documentation": "Upper and lower bound for percentile estimate"
+          }
+        },
+        "p99": {
+          "target": "com.cloudflare.api_gateway#OperationsCreateResponseFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99",
+          "traits": {
+            "smithy.api#documentation": "Upper and lower bound for percentile estimate"
+          }
+        }
+      }
+    },
+    "com.cloudflare.api_gateway#OperationsCreateResponseFeaturesConfidenceIntervalsSuggestedThreshold": {
+      "type": "structure",
+      "members": {
+        "confidence_intervals": {
+          "target": "com.cloudflare.api_gateway#OperationsCreateResponseFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervals"
+        },
+        "mean": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Suggested threshold."
+          }
+        }
+      }
+    },
+    "com.cloudflare.api_gateway#OperationsCreateResponseFeaturesConfidenceIntervals": {
+      "type": "structure",
+      "members": {
+        "last_updated": {
+          "target": "smithy.api#String"
+        },
+        "suggested_threshold": {
+          "target": "com.cloudflare.api_gateway#OperationsCreateResponseFeaturesConfidenceIntervalsSuggestedThreshold"
+        }
+      }
+    },
+    "com.cloudflare.api_gateway#OperationsCreateResponseFeaturesSchemaInfoActiveSchema": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "UUID."
+          }
+        },
+        "created_at": {
+          "target": "smithy.api#String"
+        },
+        "is_learned": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "True if schema is Cloudflare-provided."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Schema file name."
+          }
+        }
+      }
+    },
+    "com.cloudflare.api_gateway#OperationsCreateResponseFeaturesSchemaInfoMitigationAction": {
+      "type": "enum",
+      "members": {
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "none"
+          }
+        },
+        "LOG": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "log"
+          }
+        },
+        "BLOCK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "block"
+          }
+        }
+      }
+    },
+    "com.cloudflare.api_gateway#OperationsCreateResponseFeaturesSchemaInfo": {
+      "type": "structure",
+      "members": {
+        "active_schema": {
+          "target": "com.cloudflare.api_gateway#OperationsCreateResponseFeaturesSchemaInfoActiveSchema",
+          "traits": {
+            "smithy.api#documentation": "Schema active on endpoint."
+          }
+        },
+        "learned_available": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "True if a Cloudflare-provided learned schema is available for this endpoint."
+          }
+        },
+        "mitigation_action": {
+          "target": "com.cloudflare.api_gateway#OperationsCreateResponseFeaturesSchemaInfoMitigationAction",
+          "traits": {
+            "smithy.api#documentation": "Action taken on requests failing validation."
+          }
+        }
+      }
+    },
     "com.cloudflare.api_gateway#OperationsCreateResponseFeatures": {
       "type": "structure",
       "members": {
-        "APIShieldOperationFeatureThresholds_object___thresholds__": {
-          "target": "smithy.api#Document",
+        "thresholds": {
+          "target": "com.cloudflare.api_gateway#OperationsCreateResponseFeaturesThresholds"
+        },
+        "parameter_schemas": {
+          "target": "com.cloudflare.api_gateway#OperationsCreateResponseFeaturesParameterSchemas"
+        },
+        "api_routing": {
+          "target": "com.cloudflare.api_gateway#OperationsCreateResponseFeaturesApiRouting",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "APIShieldOperationFeatureThresholds object { thresholds }"
+            "smithy.api#documentation": "API Routing settings on endpoint."
           }
         },
-        "APIShieldOperationFeatureParameterSchemas_object___parameter_schemas__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "APIShieldOperationFeatureParameterSchemas object { parameter_schemas }"
-          }
+        "confidence_intervals": {
+          "target": "com.cloudflare.api_gateway#OperationsCreateResponseFeaturesConfidenceIntervals"
         },
-        "APIShieldOperationFeatureAPIRouting_object___api_routing__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "APIShieldOperationFeatureAPIRouting object { api_routing }"
-          }
-        },
-        "APIShieldOperationFeatureConfidenceIntervals_object___confidence_intervals__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "APIShieldOperationFeatureConfidenceIntervals object { confidence_intervals }"
-          }
-        },
-        "APIShieldOperationFeatureSchemaInfo_object___schema_info__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "APIShieldOperationFeatureSchemaInfo object { schema_info }"
-          }
+        "schema_info": {
+          "target": "com.cloudflare.api_gateway#OperationsCreateResponseFeaturesSchemaInfo"
         }
       }
     },
@@ -2867,43 +3428,304 @@
         }
       }
     },
+    "com.cloudflare.api_gateway#OperationsGetResponseFeaturesThresholds": {
+      "type": "structure",
+      "members": {
+        "auth_id_tokens": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The total number of auth-ids seen across this calculation."
+          }
+        },
+        "data_points": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The number of data points used for the threshold suggestion calculation."
+          }
+        },
+        "last_updated": {
+          "target": "smithy.api#String"
+        },
+        "p50": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The p50 quantile of requests (in period_seconds)."
+          }
+        },
+        "p90": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The p90 quantile of requests (in period_seconds)."
+          }
+        },
+        "p99": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The p99 quantile of requests (in period_seconds)."
+          }
+        },
+        "period_seconds": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The period over which this threshold is suggested."
+          }
+        },
+        "requests": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The estimated number of requests covered by these calculations."
+          }
+        },
+        "suggested_threshold": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The suggested threshold in requests done by the same auth_id or period_seconds."
+          }
+        }
+      }
+    },
+    "com.cloudflare.api_gateway#OperationsGetResponseFeaturesParameterSchemasParameterSchemasParametersList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.api_gateway#OperationsGetResponseFeaturesParameterSchemasParameterSchemas": {
+      "type": "structure",
+      "members": {
+        "parameters": {
+          "target": "com.cloudflare.api_gateway#OperationsGetResponseFeaturesParameterSchemasParameterSchemasParametersList",
+          "traits": {
+            "smithy.api#documentation": "An array containing the learned parameter schemas."
+          }
+        },
+        "responses": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "An empty response object. This field is required to yield a valid operation schema."
+          }
+        }
+      }
+    },
+    "com.cloudflare.api_gateway#OperationsGetResponseFeaturesParameterSchemas": {
+      "type": "structure",
+      "members": {
+        "last_updated": {
+          "target": "smithy.api#String"
+        },
+        "parameter_schemas": {
+          "target": "com.cloudflare.api_gateway#OperationsGetResponseFeaturesParameterSchemasParameterSchemas",
+          "traits": {
+            "smithy.api#documentation": "An operation schema object containing a response."
+          }
+        }
+      }
+    },
+    "com.cloudflare.api_gateway#OperationsGetResponseFeaturesApiRouting": {
+      "type": "structure",
+      "members": {
+        "last_updated": {
+          "target": "smithy.api#String"
+        },
+        "route": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Target route."
+          }
+        }
+      }
+    },
+    "com.cloudflare.api_gateway#OperationsGetResponseFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90": {
+      "type": "structure",
+      "members": {
+        "lower": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Lower bound for percentile estimate"
+          }
+        },
+        "upper": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Upper bound for percentile estimate"
+          }
+        }
+      }
+    },
+    "com.cloudflare.api_gateway#OperationsGetResponseFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95": {
+      "type": "structure",
+      "members": {
+        "lower": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Lower bound for percentile estimate"
+          }
+        },
+        "upper": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Upper bound for percentile estimate"
+          }
+        }
+      }
+    },
+    "com.cloudflare.api_gateway#OperationsGetResponseFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99": {
+      "type": "structure",
+      "members": {
+        "lower": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Lower bound for percentile estimate"
+          }
+        },
+        "upper": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Upper bound for percentile estimate"
+          }
+        }
+      }
+    },
+    "com.cloudflare.api_gateway#OperationsGetResponseFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervals": {
+      "type": "structure",
+      "members": {
+        "p90": {
+          "target": "com.cloudflare.api_gateway#OperationsGetResponseFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90",
+          "traits": {
+            "smithy.api#documentation": "Upper and lower bound for percentile estimate"
+          }
+        },
+        "p95": {
+          "target": "com.cloudflare.api_gateway#OperationsGetResponseFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95",
+          "traits": {
+            "smithy.api#documentation": "Upper and lower bound for percentile estimate"
+          }
+        },
+        "p99": {
+          "target": "com.cloudflare.api_gateway#OperationsGetResponseFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99",
+          "traits": {
+            "smithy.api#documentation": "Upper and lower bound for percentile estimate"
+          }
+        }
+      }
+    },
+    "com.cloudflare.api_gateway#OperationsGetResponseFeaturesConfidenceIntervalsSuggestedThreshold": {
+      "type": "structure",
+      "members": {
+        "confidence_intervals": {
+          "target": "com.cloudflare.api_gateway#OperationsGetResponseFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervals"
+        },
+        "mean": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Suggested threshold."
+          }
+        }
+      }
+    },
+    "com.cloudflare.api_gateway#OperationsGetResponseFeaturesConfidenceIntervals": {
+      "type": "structure",
+      "members": {
+        "last_updated": {
+          "target": "smithy.api#String"
+        },
+        "suggested_threshold": {
+          "target": "com.cloudflare.api_gateway#OperationsGetResponseFeaturesConfidenceIntervalsSuggestedThreshold"
+        }
+      }
+    },
+    "com.cloudflare.api_gateway#OperationsGetResponseFeaturesSchemaInfoActiveSchema": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "UUID."
+          }
+        },
+        "created_at": {
+          "target": "smithy.api#String"
+        },
+        "is_learned": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "True if schema is Cloudflare-provided."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Schema file name."
+          }
+        }
+      }
+    },
+    "com.cloudflare.api_gateway#OperationsGetResponseFeaturesSchemaInfoMitigationAction": {
+      "type": "enum",
+      "members": {
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "none"
+          }
+        },
+        "LOG": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "log"
+          }
+        },
+        "BLOCK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "block"
+          }
+        }
+      }
+    },
+    "com.cloudflare.api_gateway#OperationsGetResponseFeaturesSchemaInfo": {
+      "type": "structure",
+      "members": {
+        "active_schema": {
+          "target": "com.cloudflare.api_gateway#OperationsGetResponseFeaturesSchemaInfoActiveSchema",
+          "traits": {
+            "smithy.api#documentation": "Schema active on endpoint."
+          }
+        },
+        "learned_available": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "True if a Cloudflare-provided learned schema is available for this endpoint."
+          }
+        },
+        "mitigation_action": {
+          "target": "com.cloudflare.api_gateway#OperationsGetResponseFeaturesSchemaInfoMitigationAction",
+          "traits": {
+            "smithy.api#documentation": "Action taken on requests failing validation."
+          }
+        }
+      }
+    },
     "com.cloudflare.api_gateway#OperationsGetResponseFeatures": {
       "type": "structure",
       "members": {
-        "APIShieldOperationFeatureThresholds_object___thresholds__": {
-          "target": "smithy.api#Document",
+        "thresholds": {
+          "target": "com.cloudflare.api_gateway#OperationsGetResponseFeaturesThresholds"
+        },
+        "parameter_schemas": {
+          "target": "com.cloudflare.api_gateway#OperationsGetResponseFeaturesParameterSchemas"
+        },
+        "api_routing": {
+          "target": "com.cloudflare.api_gateway#OperationsGetResponseFeaturesApiRouting",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "APIShieldOperationFeatureThresholds object { thresholds }"
+            "smithy.api#documentation": "API Routing settings on endpoint."
           }
         },
-        "APIShieldOperationFeatureParameterSchemas_object___parameter_schemas__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "APIShieldOperationFeatureParameterSchemas object { parameter_schemas }"
-          }
+        "confidence_intervals": {
+          "target": "com.cloudflare.api_gateway#OperationsGetResponseFeaturesConfidenceIntervals"
         },
-        "APIShieldOperationFeatureAPIRouting_object___api_routing__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "APIShieldOperationFeatureAPIRouting object { api_routing }"
-          }
-        },
-        "APIShieldOperationFeatureConfidenceIntervals_object___confidence_intervals__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "APIShieldOperationFeatureConfidenceIntervals object { confidence_intervals }"
-          }
-        },
-        "APIShieldOperationFeatureSchemaInfo_object___schema_info__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "APIShieldOperationFeatureSchemaInfo object { schema_info }"
-          }
+        "schema_info": {
+          "target": "com.cloudflare.api_gateway#OperationsGetResponseFeaturesSchemaInfo"
         }
       }
     },
@@ -3258,43 +4080,304 @@
         }
       }
     },
+    "com.cloudflare.api_gateway#OperationsListResultItemFeaturesThresholds": {
+      "type": "structure",
+      "members": {
+        "auth_id_tokens": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The total number of auth-ids seen across this calculation."
+          }
+        },
+        "data_points": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The number of data points used for the threshold suggestion calculation."
+          }
+        },
+        "last_updated": {
+          "target": "smithy.api#String"
+        },
+        "p50": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The p50 quantile of requests (in period_seconds)."
+          }
+        },
+        "p90": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The p90 quantile of requests (in period_seconds)."
+          }
+        },
+        "p99": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The p99 quantile of requests (in period_seconds)."
+          }
+        },
+        "period_seconds": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The period over which this threshold is suggested."
+          }
+        },
+        "requests": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The estimated number of requests covered by these calculations."
+          }
+        },
+        "suggested_threshold": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The suggested threshold in requests done by the same auth_id or period_seconds."
+          }
+        }
+      }
+    },
+    "com.cloudflare.api_gateway#OperationsListResultItemFeaturesParameterSchemasParameterSchemasParametersList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.api_gateway#OperationsListResultItemFeaturesParameterSchemasParameterSchemas": {
+      "type": "structure",
+      "members": {
+        "parameters": {
+          "target": "com.cloudflare.api_gateway#OperationsListResultItemFeaturesParameterSchemasParameterSchemasParametersList",
+          "traits": {
+            "smithy.api#documentation": "An array containing the learned parameter schemas."
+          }
+        },
+        "responses": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "An empty response object. This field is required to yield a valid operation schema."
+          }
+        }
+      }
+    },
+    "com.cloudflare.api_gateway#OperationsListResultItemFeaturesParameterSchemas": {
+      "type": "structure",
+      "members": {
+        "last_updated": {
+          "target": "smithy.api#String"
+        },
+        "parameter_schemas": {
+          "target": "com.cloudflare.api_gateway#OperationsListResultItemFeaturesParameterSchemasParameterSchemas",
+          "traits": {
+            "smithy.api#documentation": "An operation schema object containing a response."
+          }
+        }
+      }
+    },
+    "com.cloudflare.api_gateway#OperationsListResultItemFeaturesApiRouting": {
+      "type": "structure",
+      "members": {
+        "last_updated": {
+          "target": "smithy.api#String"
+        },
+        "route": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Target route."
+          }
+        }
+      }
+    },
+    "com.cloudflare.api_gateway#OperationsListResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90": {
+      "type": "structure",
+      "members": {
+        "lower": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Lower bound for percentile estimate"
+          }
+        },
+        "upper": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Upper bound for percentile estimate"
+          }
+        }
+      }
+    },
+    "com.cloudflare.api_gateway#OperationsListResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95": {
+      "type": "structure",
+      "members": {
+        "lower": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Lower bound for percentile estimate"
+          }
+        },
+        "upper": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Upper bound for percentile estimate"
+          }
+        }
+      }
+    },
+    "com.cloudflare.api_gateway#OperationsListResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99": {
+      "type": "structure",
+      "members": {
+        "lower": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Lower bound for percentile estimate"
+          }
+        },
+        "upper": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Upper bound for percentile estimate"
+          }
+        }
+      }
+    },
+    "com.cloudflare.api_gateway#OperationsListResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervals": {
+      "type": "structure",
+      "members": {
+        "p90": {
+          "target": "com.cloudflare.api_gateway#OperationsListResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90",
+          "traits": {
+            "smithy.api#documentation": "Upper and lower bound for percentile estimate"
+          }
+        },
+        "p95": {
+          "target": "com.cloudflare.api_gateway#OperationsListResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95",
+          "traits": {
+            "smithy.api#documentation": "Upper and lower bound for percentile estimate"
+          }
+        },
+        "p99": {
+          "target": "com.cloudflare.api_gateway#OperationsListResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99",
+          "traits": {
+            "smithy.api#documentation": "Upper and lower bound for percentile estimate"
+          }
+        }
+      }
+    },
+    "com.cloudflare.api_gateway#OperationsListResultItemFeaturesConfidenceIntervalsSuggestedThreshold": {
+      "type": "structure",
+      "members": {
+        "confidence_intervals": {
+          "target": "com.cloudflare.api_gateway#OperationsListResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervals"
+        },
+        "mean": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Suggested threshold."
+          }
+        }
+      }
+    },
+    "com.cloudflare.api_gateway#OperationsListResultItemFeaturesConfidenceIntervals": {
+      "type": "structure",
+      "members": {
+        "last_updated": {
+          "target": "smithy.api#String"
+        },
+        "suggested_threshold": {
+          "target": "com.cloudflare.api_gateway#OperationsListResultItemFeaturesConfidenceIntervalsSuggestedThreshold"
+        }
+      }
+    },
+    "com.cloudflare.api_gateway#OperationsListResultItemFeaturesSchemaInfoActiveSchema": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "UUID."
+          }
+        },
+        "created_at": {
+          "target": "smithy.api#String"
+        },
+        "is_learned": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "True if schema is Cloudflare-provided."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Schema file name."
+          }
+        }
+      }
+    },
+    "com.cloudflare.api_gateway#OperationsListResultItemFeaturesSchemaInfoMitigationAction": {
+      "type": "enum",
+      "members": {
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "none"
+          }
+        },
+        "LOG": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "log"
+          }
+        },
+        "BLOCK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "block"
+          }
+        }
+      }
+    },
+    "com.cloudflare.api_gateway#OperationsListResultItemFeaturesSchemaInfo": {
+      "type": "structure",
+      "members": {
+        "active_schema": {
+          "target": "com.cloudflare.api_gateway#OperationsListResultItemFeaturesSchemaInfoActiveSchema",
+          "traits": {
+            "smithy.api#documentation": "Schema active on endpoint."
+          }
+        },
+        "learned_available": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "True if a Cloudflare-provided learned schema is available for this endpoint."
+          }
+        },
+        "mitigation_action": {
+          "target": "com.cloudflare.api_gateway#OperationsListResultItemFeaturesSchemaInfoMitigationAction",
+          "traits": {
+            "smithy.api#documentation": "Action taken on requests failing validation."
+          }
+        }
+      }
+    },
     "com.cloudflare.api_gateway#OperationsListResultItemFeatures": {
       "type": "structure",
       "members": {
-        "APIShieldOperationFeatureThresholds_object___thresholds__": {
-          "target": "smithy.api#Document",
+        "thresholds": {
+          "target": "com.cloudflare.api_gateway#OperationsListResultItemFeaturesThresholds"
+        },
+        "parameter_schemas": {
+          "target": "com.cloudflare.api_gateway#OperationsListResultItemFeaturesParameterSchemas"
+        },
+        "api_routing": {
+          "target": "com.cloudflare.api_gateway#OperationsListResultItemFeaturesApiRouting",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "APIShieldOperationFeatureThresholds object { thresholds }"
+            "smithy.api#documentation": "API Routing settings on endpoint."
           }
         },
-        "APIShieldOperationFeatureParameterSchemas_object___parameter_schemas__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "APIShieldOperationFeatureParameterSchemas object { parameter_schemas }"
-          }
+        "confidence_intervals": {
+          "target": "com.cloudflare.api_gateway#OperationsListResultItemFeaturesConfidenceIntervals"
         },
-        "APIShieldOperationFeatureAPIRouting_object___api_routing__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "APIShieldOperationFeatureAPIRouting object { api_routing }"
-          }
-        },
-        "APIShieldOperationFeatureConfidenceIntervals_object___confidence_intervals__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "APIShieldOperationFeatureConfidenceIntervals object { confidence_intervals }"
-          }
-        },
-        "APIShieldOperationFeatureSchemaInfo_object___schema_info__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "APIShieldOperationFeatureSchemaInfo object { schema_info }"
-          }
+        "schema_info": {
+          "target": "com.cloudflare.api_gateway#OperationsListResultItemFeaturesSchemaInfo"
         }
       }
     },
@@ -5170,14 +6253,53 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.api_gateway#SettingsSchemaValidationEditResponseValidationDefaultMitigationAction": {
+      "type": "enum",
+      "members": {
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "none"
+          }
+        },
+        "LOG": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "log"
+          }
+        },
+        "BLOCK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "block"
+          }
+        }
+      }
+    },
+    "com.cloudflare.api_gateway#SettingsSchemaValidationEditResponseValidationOverrideMitigationAction": {
+      "type": "enum",
+      "members": {
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "none"
+          }
+        }
+      }
+    },
     "com.cloudflare.api_gateway#SettingsSchemaValidationEditResponse": {
       "type": "structure",
       "members": {
-        "Settings_object___validation_default_mitigation_action__validation_override_mitigation_action__": {
-          "target": "smithy.api#Document",
+        "validation_default_mitigation_action": {
+          "target": "com.cloudflare.api_gateway#SettingsSchemaValidationEditResponseValidationDefaultMitigationAction",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Settings object { validation_default_mitigation_action, validation_override_mitigation_action }"
+            "smithy.api#documentation": "The default mitigation action used when there is no mitigation action defined on the operation"
+          }
+        },
+        "validation_override_mitigation_action": {
+          "target": "com.cloudflare.api_gateway#SettingsSchemaValidationEditResponseValidationOverrideMitigationAction",
+          "traits": {
+            "smithy.api#documentation": "When set, this overrides both zone level and operation level mitigation actions."
           }
         }
       },
@@ -5219,14 +6341,53 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.api_gateway#SettingsSchemaValidationGetResponseValidationDefaultMitigationAction": {
+      "type": "enum",
+      "members": {
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "none"
+          }
+        },
+        "LOG": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "log"
+          }
+        },
+        "BLOCK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "block"
+          }
+        }
+      }
+    },
+    "com.cloudflare.api_gateway#SettingsSchemaValidationGetResponseValidationOverrideMitigationAction": {
+      "type": "enum",
+      "members": {
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "none"
+          }
+        }
+      }
+    },
     "com.cloudflare.api_gateway#SettingsSchemaValidationGetResponse": {
       "type": "structure",
       "members": {
-        "Settings_object___validation_default_mitigation_action__validation_override_mitigation_action__": {
-          "target": "smithy.api#Document",
+        "validation_default_mitigation_action": {
+          "target": "com.cloudflare.api_gateway#SettingsSchemaValidationGetResponseValidationDefaultMitigationAction",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Settings object { validation_default_mitigation_action, validation_override_mitigation_action }"
+            "smithy.api#documentation": "The default mitigation action used when there is no mitigation action defined on the operation"
+          }
+        },
+        "validation_override_mitigation_action": {
+          "target": "com.cloudflare.api_gateway#SettingsSchemaValidationGetResponseValidationOverrideMitigationAction",
+          "traits": {
+            "smithy.api#documentation": "When set, this overrides both zone level and operation level mitigation actions."
           }
         }
       },
@@ -5322,14 +6483,53 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.api_gateway#SettingsSchemaValidationUpdateResponseValidationDefaultMitigationAction": {
+      "type": "enum",
+      "members": {
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "none"
+          }
+        },
+        "LOG": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "log"
+          }
+        },
+        "BLOCK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "block"
+          }
+        }
+      }
+    },
+    "com.cloudflare.api_gateway#SettingsSchemaValidationUpdateResponseValidationOverrideMitigationAction": {
+      "type": "enum",
+      "members": {
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "none"
+          }
+        }
+      }
+    },
     "com.cloudflare.api_gateway#SettingsSchemaValidationUpdateResponse": {
       "type": "structure",
       "members": {
-        "Settings_object___validation_default_mitigation_action__validation_override_mitigation_action__": {
-          "target": "smithy.api#Document",
+        "validation_default_mitigation_action": {
+          "target": "com.cloudflare.api_gateway#SettingsSchemaValidationUpdateResponseValidationDefaultMitigationAction",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Settings object { validation_default_mitigation_action, validation_override_mitigation_action }"
+            "smithy.api#documentation": "The default mitigation action used when there is no mitigation action defined on the operation"
+          }
+        },
+        "validation_override_mitigation_action": {
+          "target": "com.cloudflare.api_gateway#SettingsSchemaValidationUpdateResponseValidationOverrideMitigationAction",
+          "traits": {
+            "smithy.api#documentation": "When set, this overrides both zone level and operation level mitigation actions."
           }
         }
       },
@@ -6137,22 +7337,362 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemMethod": {
+      "type": "enum",
+      "members": {
+        "GET": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "GET"
+          }
+        },
+        "POST": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "POST"
+          }
+        },
+        "HEAD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "HEAD"
+          }
+        }
+      }
+    },
+    "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesThresholds": {
+      "type": "structure",
+      "members": {
+        "auth_id_tokens": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The total number of auth-ids seen across this calculation."
+          }
+        },
+        "data_points": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The number of data points used for the threshold suggestion calculation."
+          }
+        },
+        "last_updated": {
+          "target": "smithy.api#String"
+        },
+        "p50": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The p50 quantile of requests (in period_seconds)."
+          }
+        },
+        "p90": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The p90 quantile of requests (in period_seconds)."
+          }
+        },
+        "p99": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The p99 quantile of requests (in period_seconds)."
+          }
+        },
+        "period_seconds": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The period over which this threshold is suggested."
+          }
+        },
+        "requests": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The estimated number of requests covered by these calculations."
+          }
+        },
+        "suggested_threshold": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The suggested threshold in requests done by the same auth_id or period_seconds."
+          }
+        }
+      }
+    },
+    "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesParameterSchemasParameterSchemasParametersList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesParameterSchemasParameterSchemas": {
+      "type": "structure",
+      "members": {
+        "parameters": {
+          "target": "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesParameterSchemasParameterSchemasParametersList",
+          "traits": {
+            "smithy.api#documentation": "An array containing the learned parameter schemas."
+          }
+        },
+        "responses": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "An empty response object. This field is required to yield a valid operation schema."
+          }
+        }
+      }
+    },
+    "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesParameterSchemas": {
+      "type": "structure",
+      "members": {
+        "last_updated": {
+          "target": "smithy.api#String"
+        },
+        "parameter_schemas": {
+          "target": "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesParameterSchemasParameterSchemas",
+          "traits": {
+            "smithy.api#documentation": "An operation schema object containing a response."
+          }
+        }
+      }
+    },
+    "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesApiRouting": {
+      "type": "structure",
+      "members": {
+        "last_updated": {
+          "target": "smithy.api#String"
+        },
+        "route": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Target route."
+          }
+        }
+      }
+    },
+    "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90": {
+      "type": "structure",
+      "members": {
+        "lower": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Lower bound for percentile estimate"
+          }
+        },
+        "upper": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Upper bound for percentile estimate"
+          }
+        }
+      }
+    },
+    "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95": {
+      "type": "structure",
+      "members": {
+        "lower": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Lower bound for percentile estimate"
+          }
+        },
+        "upper": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Upper bound for percentile estimate"
+          }
+        }
+      }
+    },
+    "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99": {
+      "type": "structure",
+      "members": {
+        "lower": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Lower bound for percentile estimate"
+          }
+        },
+        "upper": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Upper bound for percentile estimate"
+          }
+        }
+      }
+    },
+    "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervals": {
+      "type": "structure",
+      "members": {
+        "p90": {
+          "target": "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90",
+          "traits": {
+            "smithy.api#documentation": "Upper and lower bound for percentile estimate"
+          }
+        },
+        "p95": {
+          "target": "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95",
+          "traits": {
+            "smithy.api#documentation": "Upper and lower bound for percentile estimate"
+          }
+        },
+        "p99": {
+          "target": "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99",
+          "traits": {
+            "smithy.api#documentation": "Upper and lower bound for percentile estimate"
+          }
+        }
+      }
+    },
+    "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesConfidenceIntervalsSuggestedThreshold": {
+      "type": "structure",
+      "members": {
+        "confidence_intervals": {
+          "target": "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervals"
+        },
+        "mean": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Suggested threshold."
+          }
+        }
+      }
+    },
+    "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesConfidenceIntervals": {
+      "type": "structure",
+      "members": {
+        "last_updated": {
+          "target": "smithy.api#String"
+        },
+        "suggested_threshold": {
+          "target": "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesConfidenceIntervalsSuggestedThreshold"
+        }
+      }
+    },
+    "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesSchemaInfoActiveSchema": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "UUID."
+          }
+        },
+        "created_at": {
+          "target": "smithy.api#String"
+        },
+        "is_learned": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "True if schema is Cloudflare-provided."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Schema file name."
+          }
+        }
+      }
+    },
+    "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesSchemaInfoMitigationAction": {
+      "type": "enum",
+      "members": {
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "none"
+          }
+        },
+        "LOG": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "log"
+          }
+        },
+        "BLOCK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "block"
+          }
+        }
+      }
+    },
+    "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesSchemaInfo": {
+      "type": "structure",
+      "members": {
+        "active_schema": {
+          "target": "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesSchemaInfoActiveSchema",
+          "traits": {
+            "smithy.api#documentation": "Schema active on endpoint."
+          }
+        },
+        "learned_available": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "True if a Cloudflare-provided learned schema is available for this endpoint."
+          }
+        },
+        "mitigation_action": {
+          "target": "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesSchemaInfoMitigationAction",
+          "traits": {
+            "smithy.api#documentation": "Action taken on requests failing validation."
+          }
+        }
+      }
+    },
+    "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeatures": {
+      "type": "structure",
+      "members": {
+        "thresholds": {
+          "target": "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesThresholds"
+        },
+        "parameter_schemas": {
+          "target": "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesParameterSchemas"
+        },
+        "api_routing": {
+          "target": "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesApiRouting",
+          "traits": {
+            "smithy.api#documentation": "API Routing settings on endpoint."
+          }
+        },
+        "confidence_intervals": {
+          "target": "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesConfidenceIntervals"
+        },
+        "schema_info": {
+          "target": "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesSchemaInfo"
+        }
+      }
+    },
     "com.cloudflare.api_gateway#UserSchemasOperationsListResultItem": {
       "type": "structure",
       "members": {
-        "APIShieldOperation_object___endpoint__host__last_updated__3_more__": {
-          "target": "smithy.api#Document",
+        "endpoint": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "APIShieldOperation object { endpoint, host, last_updated, 3 more }"
+            "smithy.api#documentation": "The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with {varN}, starting with {var1}, during insertion. This will further be Cloudflare-normalized upon insertion. See: https://developers.cloudflare.com/rules/normalization/how-it-works/."
           }
         },
-        "APIShieldBasicOperation_object___endpoint__host__method__": {
-          "target": "smithy.api#Document",
+        "host": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "APIShieldBasicOperation object { endpoint, host, method }"
+            "smithy.api#documentation": "RFC3986-compliant host."
           }
+        },
+        "last_updated": {
+          "target": "smithy.api#String"
+        },
+        "method": {
+          "target": "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemMethod",
+          "traits": {
+            "smithy.api#documentation": "The HTTP method used to access the endpoint."
+          }
+        },
+        "operation_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "UUID."
+          }
+        },
+        "features": {
+          "target": "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeatures"
         }
       }
     },

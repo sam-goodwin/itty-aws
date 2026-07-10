@@ -17,22 +17,141 @@
     ]
   },
   "shapes": {
+    "com.cloudflare.autorag#AiSearchRequestFiltersType": {
+      "type": "enum",
+      "members": {
+        "EQ": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "eq"
+          }
+        },
+        "NE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ne"
+          }
+        },
+        "GT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gt"
+          }
+        }
+      }
+    },
+    "com.cloudflare.autorag#AiSearchRequestFiltersValue": {
+      "type": "structure",
+      "members": {
+        "string": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "number": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "boolean": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.autorag#AiSearchRequestFiltersFiltersItemType": {
+      "type": "enum",
+      "members": {
+        "EQ": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "eq"
+          }
+        },
+        "NE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ne"
+          }
+        },
+        "GT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gt"
+          }
+        }
+      }
+    },
+    "com.cloudflare.autorag#AiSearchRequestFiltersFiltersItemValue": {
+      "type": "structure",
+      "members": {
+        "string": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "number": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "boolean": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.autorag#AiSearchRequestFiltersFiltersItem": {
+      "type": "structure",
+      "members": {
+        "key": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "com.cloudflare.autorag#AiSearchRequestFiltersFiltersItemType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "value": {
+          "target": "com.cloudflare.autorag#AiSearchRequestFiltersFiltersItemValue",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.autorag#AiSearchRequestFiltersFiltersList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.autorag#AiSearchRequestFiltersFiltersItem"
+      }
+    },
     "com.cloudflare.autorag#AiSearchRequestFilters": {
       "type": "structure",
       "members": {
-        "object___key__type__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "object { key, type, value }"
-          }
+        "key": {
+          "target": "smithy.api#String"
         },
-        "object___filters__type__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "object { filters, type }"
-          }
+        "type": {
+          "target": "com.cloudflare.autorag#AiSearchRequestFiltersType"
+        },
+        "value": {
+          "target": "com.cloudflare.autorag#AiSearchRequestFiltersValue"
+        },
+        "filters": {
+          "target": "com.cloudflare.autorag#AiSearchRequestFiltersFiltersList"
         }
       }
     },
@@ -379,22 +498,141 @@
         "smithy.api#readonly": {}
       }
     },
+    "com.cloudflare.autorag#SearchRequestFiltersType": {
+      "type": "enum",
+      "members": {
+        "EQ": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "eq"
+          }
+        },
+        "NE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ne"
+          }
+        },
+        "GT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gt"
+          }
+        }
+      }
+    },
+    "com.cloudflare.autorag#SearchRequestFiltersValue": {
+      "type": "structure",
+      "members": {
+        "string": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "number": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "boolean": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.autorag#SearchRequestFiltersFiltersItemType": {
+      "type": "enum",
+      "members": {
+        "EQ": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "eq"
+          }
+        },
+        "NE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ne"
+          }
+        },
+        "GT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gt"
+          }
+        }
+      }
+    },
+    "com.cloudflare.autorag#SearchRequestFiltersFiltersItemValue": {
+      "type": "structure",
+      "members": {
+        "string": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "number": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "boolean": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.autorag#SearchRequestFiltersFiltersItem": {
+      "type": "structure",
+      "members": {
+        "key": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "com.cloudflare.autorag#SearchRequestFiltersFiltersItemType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "value": {
+          "target": "com.cloudflare.autorag#SearchRequestFiltersFiltersItemValue",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.autorag#SearchRequestFiltersFiltersList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.autorag#SearchRequestFiltersFiltersItem"
+      }
+    },
     "com.cloudflare.autorag#SearchRequestFilters": {
       "type": "structure",
       "members": {
-        "object___key__type__value__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "object { key, type, value }"
-          }
+        "key": {
+          "target": "smithy.api#String"
         },
-        "object___filters__type__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "object { filters, type }"
-          }
+        "type": {
+          "target": "com.cloudflare.autorag#SearchRequestFiltersType"
+        },
+        "value": {
+          "target": "com.cloudflare.autorag#SearchRequestFiltersValue"
+        },
+        "filters": {
+          "target": "com.cloudflare.autorag#SearchRequestFiltersFiltersList"
         }
       }
     },

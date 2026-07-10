@@ -27,11 +27,27 @@
             "smithy.api#required": {}
           }
         },
-        "EmailSendingEmailAddressObject_object___address__name__": {
-          "target": "smithy.api#Document",
+        "address": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "EmailSendingEmailAddressObject object { address, name }"
+            "smithy.api#documentation": "Email address (e.g., 'user@example.com')."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Display name for the email address (e.g., 'John Doe'). Optional — omit or set to null for no display name."
+          }
+        }
+      }
+    },
+    "com.cloudflare.email_sending#SendRequestAttachmentsItemDisposition": {
+      "type": "enum",
+      "members": {
+        "INLINE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "inline"
           }
         }
       }
@@ -39,18 +55,34 @@
     "com.cloudflare.email_sending#SendRequestAttachmentsItem": {
       "type": "structure",
       "members": {
-        "Inline_object___content__content_id__disposition__2_more__": {
-          "target": "smithy.api#Document",
+        "content": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Inline object { content, content_id, disposition, 2 more }"
+            "smithy.api#documentation": "Base64-encoded content of the attachment."
           }
         },
-        "Attachment_object___content__disposition__filename__type__": {
-          "target": "smithy.api#Document",
+        "content_id": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Attachment object { content, disposition, filename, type }"
+            "smithy.api#documentation": "Content ID used to reference this attachment in HTML via cid: URI (e.g., <img src=\"cid:logo\">)."
+          }
+        },
+        "disposition": {
+          "target": "com.cloudflare.email_sending#SendRequestAttachmentsItemDisposition",
+          "traits": {
+            "smithy.api#documentation": "Must be 'inline'. Indicates the attachment is embedded in the email body."
+          }
+        },
+        "filename": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Filename for the attachment."
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "MIME type of the attachment (e.g., 'image/png', 'text/plain')."
           }
         }
       }
@@ -71,18 +103,22 @@
             "smithy.api#required": {}
           }
         },
+        "address": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Email address (e.g., 'user@example.com')."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Display name for the email address (e.g., 'John Doe'). Optional — omit or set to null for no display name."
+          }
+        },
         "EmailSendingEmailAddressObject_object___address__name__": {
           "target": "smithy.api#Document",
           "traits": {
-            "smithy.api#required": {},
             "smithy.api#jsonName": "EmailSendingEmailAddressObject object { address, name }"
-          }
-        },
-        "array_of_string_or_object___address__name__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "array of string or object { address, name }"
           }
         }
       }
@@ -97,18 +133,22 @@
             "smithy.api#required": {}
           }
         },
+        "address": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Email address (e.g., 'user@example.com')."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Display name for the email address (e.g., 'John Doe'). Optional — omit or set to null for no display name."
+          }
+        },
         "EmailSendingEmailAddressObject_object___address__name__": {
           "target": "smithy.api#Document",
           "traits": {
-            "smithy.api#required": {},
             "smithy.api#jsonName": "EmailSendingEmailAddressObject object { address, name }"
-          }
-        },
-        "array_of_string_or_object___address__name__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "array of string or object { address, name }"
           }
         }
       }
@@ -132,11 +172,16 @@
             "smithy.api#required": {}
           }
         },
-        "EmailSendingEmailAddressObject_object___address__name__": {
-          "target": "smithy.api#Document",
+        "address": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "EmailSendingEmailAddressObject object { address, name }"
+            "smithy.api#documentation": "Email address (e.g., 'user@example.com')."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Display name for the email address (e.g., 'John Doe'). Optional — omit or set to null for no display name."
           }
         }
       }
@@ -151,18 +196,22 @@
             "smithy.api#required": {}
           }
         },
+        "address": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Email address (e.g., 'user@example.com')."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Display name for the email address (e.g., 'John Doe'). Optional — omit or set to null for no display name."
+          }
+        },
         "EmailSendingEmailAddressObject_object___address__name__": {
           "target": "smithy.api#Document",
           "traits": {
-            "smithy.api#required": {},
             "smithy.api#jsonName": "EmailSendingEmailAddressObject object { address, name }"
-          }
-        },
-        "array_of_string_or_object___address__name__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "array of string or object { address, name }"
           }
         }
       }

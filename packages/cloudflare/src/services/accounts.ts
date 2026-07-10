@@ -414,18 +414,114 @@ export const CreateAccountResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateAccountResponse",
 }) as any as S.Schema<CreateAccountResponse>;
 
+export type MembersCreateRequestBodyRolesList = string[];
+export const MembersCreateRequestBodyRolesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<MembersCreateRequestBodyRolesList>;
+
+export type MembersCreateRequestBodyStatus =
+  | "accepted"
+  | "pending"
+  | (string & {});
+export const MembersCreateRequestBodyStatus = /*@__PURE__*/ S.String;
+
+export type MembersCreateRequestBodyPoliciesItemAccess =
+  | "allow"
+  | "deny"
+  | (string & {});
+export const MembersCreateRequestBodyPoliciesItemAccess =
+  /*@__PURE__*/ S.String;
+
+export interface MembersCreateRequestBodyPoliciesItemPermissionGroupsItem {
+  /** Identifier of the group. */
+  id: string;
+}
+export const MembersCreateRequestBodyPoliciesItemPermissionGroupsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+    }),
+  ).annotate({
+    identifier: "MembersCreateRequestBodyPoliciesItemPermissionGroupsItem",
+  }) as any as S.Schema<MembersCreateRequestBodyPoliciesItemPermissionGroupsItem>;
+
+export type MembersCreateRequestBodyPoliciesItemPermissionGroupsList =
+  MembersCreateRequestBodyPoliciesItemPermissionGroupsItem[];
+export const MembersCreateRequestBodyPoliciesItemPermissionGroupsList =
+  /*@__PURE__*/ S.Array(
+    MembersCreateRequestBodyPoliciesItemPermissionGroupsItem,
+  ) as any as S.Schema<MembersCreateRequestBodyPoliciesItemPermissionGroupsList>;
+
+export interface MembersCreateRequestBodyPoliciesItemResourceGroupsItem {
+  /** Identifier of the group. */
+  id: string;
+}
+export const MembersCreateRequestBodyPoliciesItemResourceGroupsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+    }),
+  ).annotate({
+    identifier: "MembersCreateRequestBodyPoliciesItemResourceGroupsItem",
+  }) as any as S.Schema<MembersCreateRequestBodyPoliciesItemResourceGroupsItem>;
+
+export type MembersCreateRequestBodyPoliciesItemResourceGroupsList =
+  MembersCreateRequestBodyPoliciesItemResourceGroupsItem[];
+export const MembersCreateRequestBodyPoliciesItemResourceGroupsList =
+  /*@__PURE__*/ S.Array(
+    MembersCreateRequestBodyPoliciesItemResourceGroupsItem,
+  ) as any as S.Schema<MembersCreateRequestBodyPoliciesItemResourceGroupsList>;
+
+export interface MembersCreateRequestBodyPoliciesItem {
+  /** Policy identifier. */
+  id: string;
+  /** Allow or deny operations against the resources. */
+  access: MembersCreateRequestBodyPoliciesItemAccess;
+  /** A set of permission groups that are specified to the policy. */
+  permissionGroups: MembersCreateRequestBodyPoliciesItemPermissionGroupsList;
+  /** A list of resource groups that the policy applies to. */
+  resourceGroups: MembersCreateRequestBodyPoliciesItemResourceGroupsList;
+}
+export const MembersCreateRequestBodyPoliciesItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.String,
+      access: MembersCreateRequestBodyPoliciesItemAccess,
+      permissionGroups:
+        MembersCreateRequestBodyPoliciesItemPermissionGroupsList.pipe(
+          T.Body("permission_groups"),
+        ),
+      resourceGroups:
+        MembersCreateRequestBodyPoliciesItemResourceGroupsList.pipe(
+          T.Body("resource_groups"),
+        ),
+    }),
+).annotate({
+  identifier: "MembersCreateRequestBodyPoliciesItem",
+}) as any as S.Schema<MembersCreateRequestBodyPoliciesItem>;
+
+export type MembersCreateRequestBodyPoliciesList =
+  MembersCreateRequestBodyPoliciesItem[];
+export const MembersCreateRequestBodyPoliciesList = /*@__PURE__*/ S.Array(
+  MembersCreateRequestBodyPoliciesItem,
+) as any as S.Schema<MembersCreateRequestBodyPoliciesList>;
+
 export interface MembersCreateRequestBody {
-  IAMCreateMemberWithRolesObjectEmailRolesStatus__: unknown;
-  IAMCreateMemberWithPoliciesObjectEmailPoliciesStatus__: unknown;
+  /** The contact email address of the user. */
+  email?: string;
+  /** Array of roles associated with this member. */
+  roles?: MembersCreateRequestBodyRolesList;
+  /** Status of the member invitation. If not provided during creation, defaults to 'pending'. */
+  status?: MembersCreateRequestBodyStatus;
+  /** Array of policies associated with this member. */
+  policies?: MembersCreateRequestBodyPoliciesList;
 }
 export const MembersCreateRequestBody = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    IAMCreateMemberWithRolesObjectEmailRolesStatus__: S.Unknown.pipe(
-      T.Body("IAMCreateMemberWithRoles object { email, roles, status }"),
-    ),
-    IAMCreateMemberWithPoliciesObjectEmailPoliciesStatus__: S.Unknown.pipe(
-      T.Body("IAMCreateMemberWithPolicies object { email, policies, status }"),
-    ),
+    email: S.optional(S.String),
+    roles: S.optional(MembersCreateRequestBodyRolesList),
+    status: S.optional(MembersCreateRequestBodyStatus),
+    policies: S.optional(MembersCreateRequestBodyPoliciesList),
   }),
 ).annotate({
   identifier: "MembersCreateRequestBody",
@@ -3797,18 +3893,214 @@ export const UpdateAccountResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateAccountResponse",
 }) as any as S.Schema<UpdateAccountResponse>;
 
+export interface MembersUpdateRequestBodyRolesItemPermissionsAnalytics {
+  read?: boolean;
+  write?: boolean;
+}
+export const MembersUpdateRequestBodyRolesItemPermissionsAnalytics =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      read: S.optional(S.Boolean),
+      write: S.optional(S.Boolean),
+    }),
+  ).annotate({
+    identifier: "MembersUpdateRequestBodyRolesItemPermissionsAnalytics",
+  }) as any as S.Schema<MembersUpdateRequestBodyRolesItemPermissionsAnalytics>;
+
+export interface MembersUpdateRequestBodyRolesItemPermissions {
+  analytics?: MembersUpdateRequestBodyRolesItemPermissionsAnalytics;
+  billing?: unknown;
+  cachePurge?: unknown;
+  dns?: unknown;
+  dnsRecords?: unknown;
+  lb?: unknown;
+  logs?: unknown;
+  organization?: unknown;
+  ssl?: unknown;
+  waf?: unknown;
+  zoneSettings?: unknown;
+  zones?: unknown;
+}
+export const MembersUpdateRequestBodyRolesItemPermissions =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      analytics: S.optional(
+        MembersUpdateRequestBodyRolesItemPermissionsAnalytics,
+      ),
+      billing: S.optional(S.Unknown),
+      cachePurge: S.optional(S.Unknown.pipe(T.Body("cache_purge"))),
+      dns: S.optional(S.Unknown),
+      dnsRecords: S.optional(S.Unknown.pipe(T.Body("dns_records"))),
+      lb: S.optional(S.Unknown),
+      logs: S.optional(S.Unknown),
+      organization: S.optional(S.Unknown),
+      ssl: S.optional(S.Unknown),
+      waf: S.optional(S.Unknown),
+      zoneSettings: S.optional(S.Unknown.pipe(T.Body("zone_settings"))),
+      zones: S.optional(S.Unknown),
+    }),
+  ).annotate({
+    identifier: "MembersUpdateRequestBodyRolesItemPermissions",
+  }) as any as S.Schema<MembersUpdateRequestBodyRolesItemPermissions>;
+
+export interface MembersUpdateRequestBodyRolesItem {
+  /** Role identifier tag. */
+  id: string;
+  /** Description of role's permissions. */
+  description: string;
+  /** Role name. */
+  name: string;
+  permissions: MembersUpdateRequestBodyRolesItemPermissions;
+}
+export const MembersUpdateRequestBodyRolesItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    description: S.String,
+    name: S.String,
+    permissions: MembersUpdateRequestBodyRolesItemPermissions,
+  }),
+).annotate({
+  identifier: "MembersUpdateRequestBodyRolesItem",
+}) as any as S.Schema<MembersUpdateRequestBodyRolesItem>;
+
+export type MembersUpdateRequestBodyRolesList =
+  MembersUpdateRequestBodyRolesItem[];
+export const MembersUpdateRequestBodyRolesList = /*@__PURE__*/ S.Array(
+  MembersUpdateRequestBodyRolesItem,
+) as any as S.Schema<MembersUpdateRequestBodyRolesList>;
+
+export type MembersUpdateRequestBodyStatus =
+  | "accepted"
+  | "pending"
+  | (string & {});
+export const MembersUpdateRequestBodyStatus = /*@__PURE__*/ S.String;
+
+export interface MembersUpdateRequestBodyUser {
+  /** The contact email address of the user. */
+  email: string;
+  /** Identifier */
+  id?: string;
+  /** User's first name */
+  firstName?: string;
+  /** User's last name */
+  lastName?: string;
+  /** Indicates whether two-factor authentication is enabled for the user account. Does not apply to API authentication. */
+  twoFactorAuthenticationEnabled?: boolean;
+}
+export const MembersUpdateRequestBodyUser = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    email: S.String,
+    id: S.optional(S.String),
+    firstName: S.optional(S.String.pipe(T.Body("first_name"))),
+    lastName: S.optional(S.String.pipe(T.Body("last_name"))),
+    twoFactorAuthenticationEnabled: S.optional(
+      S.Boolean.pipe(T.Body("two_factor_authentication_enabled")),
+    ),
+  }),
+).annotate({
+  identifier: "MembersUpdateRequestBodyUser",
+}) as any as S.Schema<MembersUpdateRequestBodyUser>;
+
+export type MembersUpdateRequestBodyPoliciesItemAccess =
+  | "allow"
+  | "deny"
+  | (string & {});
+export const MembersUpdateRequestBodyPoliciesItemAccess =
+  /*@__PURE__*/ S.String;
+
+export interface MembersUpdateRequestBodyPoliciesItemPermissionGroupsItem {
+  /** Identifier of the group. */
+  id: string;
+}
+export const MembersUpdateRequestBodyPoliciesItemPermissionGroupsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+    }),
+  ).annotate({
+    identifier: "MembersUpdateRequestBodyPoliciesItemPermissionGroupsItem",
+  }) as any as S.Schema<MembersUpdateRequestBodyPoliciesItemPermissionGroupsItem>;
+
+export type MembersUpdateRequestBodyPoliciesItemPermissionGroupsList =
+  MembersUpdateRequestBodyPoliciesItemPermissionGroupsItem[];
+export const MembersUpdateRequestBodyPoliciesItemPermissionGroupsList =
+  /*@__PURE__*/ S.Array(
+    MembersUpdateRequestBodyPoliciesItemPermissionGroupsItem,
+  ) as any as S.Schema<MembersUpdateRequestBodyPoliciesItemPermissionGroupsList>;
+
+export interface MembersUpdateRequestBodyPoliciesItemResourceGroupsItem {
+  /** Identifier of the group. */
+  id: string;
+}
+export const MembersUpdateRequestBodyPoliciesItemResourceGroupsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+    }),
+  ).annotate({
+    identifier: "MembersUpdateRequestBodyPoliciesItemResourceGroupsItem",
+  }) as any as S.Schema<MembersUpdateRequestBodyPoliciesItemResourceGroupsItem>;
+
+export type MembersUpdateRequestBodyPoliciesItemResourceGroupsList =
+  MembersUpdateRequestBodyPoliciesItemResourceGroupsItem[];
+export const MembersUpdateRequestBodyPoliciesItemResourceGroupsList =
+  /*@__PURE__*/ S.Array(
+    MembersUpdateRequestBodyPoliciesItemResourceGroupsItem,
+  ) as any as S.Schema<MembersUpdateRequestBodyPoliciesItemResourceGroupsList>;
+
+export interface MembersUpdateRequestBodyPoliciesItem {
+  /** Policy identifier. */
+  id: string;
+  /** Allow or deny operations against the resources. */
+  access: MembersUpdateRequestBodyPoliciesItemAccess;
+  /** A set of permission groups that are specified to the policy. */
+  permissionGroups: MembersUpdateRequestBodyPoliciesItemPermissionGroupsList;
+  /** A list of resource groups that the policy applies to. */
+  resourceGroups: MembersUpdateRequestBodyPoliciesItemResourceGroupsList;
+}
+export const MembersUpdateRequestBodyPoliciesItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.String,
+      access: MembersUpdateRequestBodyPoliciesItemAccess,
+      permissionGroups:
+        MembersUpdateRequestBodyPoliciesItemPermissionGroupsList.pipe(
+          T.Body("permission_groups"),
+        ),
+      resourceGroups:
+        MembersUpdateRequestBodyPoliciesItemResourceGroupsList.pipe(
+          T.Body("resource_groups"),
+        ),
+    }),
+).annotate({
+  identifier: "MembersUpdateRequestBodyPoliciesItem",
+}) as any as S.Schema<MembersUpdateRequestBodyPoliciesItem>;
+
+export type MembersUpdateRequestBodyPoliciesList =
+  MembersUpdateRequestBodyPoliciesItem[];
+export const MembersUpdateRequestBodyPoliciesList = /*@__PURE__*/ S.Array(
+  MembersUpdateRequestBodyPoliciesItem,
+) as any as S.Schema<MembersUpdateRequestBodyPoliciesList>;
+
 export interface MembersUpdateRequestBody {
-  IAMUpdateMemberWithRolesObjectIdRolesStatusUser__: unknown;
-  IAMUpdateMemberWithPoliciesObjectPolicies__: unknown;
+  /** Membership identifier tag. */
+  id?: string;
+  /** Roles assigned to this member. */
+  roles?: MembersUpdateRequestBodyRolesList;
+  /** A member's status in the account. */
+  status?: MembersUpdateRequestBodyStatus;
+  /** Details of the user associated to the membership. */
+  user?: MembersUpdateRequestBodyUser;
+  /** Array of policies associated with this member. */
+  policies?: MembersUpdateRequestBodyPoliciesList;
 }
 export const MembersUpdateRequestBody = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    IAMUpdateMemberWithRolesObjectIdRolesStatusUser__: S.Unknown.pipe(
-      T.Body("IAMUpdateMemberWithRoles object { id, roles, status, user }"),
-    ),
-    IAMUpdateMemberWithPoliciesObjectPolicies__: S.Unknown.pipe(
-      T.Body("IAMUpdateMemberWithPolicies object { policies }"),
-    ),
+    id: S.optional(S.String),
+    roles: S.optional(MembersUpdateRequestBodyRolesList),
+    status: S.optional(MembersUpdateRequestBodyStatus),
+    user: S.optional(MembersUpdateRequestBodyUser),
+    policies: S.optional(MembersUpdateRequestBodyPoliciesList),
   }),
 ).annotate({
   identifier: "MembersUpdateRequestBody",

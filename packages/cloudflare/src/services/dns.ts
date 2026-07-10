@@ -262,6 +262,44 @@ export const RecordsBatchRequestPatchesItemNSRecord = /*@__PURE__*/ S.suspend(
   identifier: "RecordsBatchRequestPatchesItemNSRecord",
 }) as any as S.Schema<RecordsBatchRequestPatchesItemNSRecord>;
 
+export interface RecordsBatchRequestPatchesItemTtl {
+  number: unknown;
+  /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
+  "1": unknown;
+}
+export const RecordsBatchRequestPatchesItemTtl = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    number: S.Unknown,
+    "1": S.Unknown,
+  }),
+).annotate({
+  identifier: "RecordsBatchRequestPatchesItemTtl",
+}) as any as S.Schema<RecordsBatchRequestPatchesItemTtl>;
+
+export type RecordsBatchRequestPatchesItemType = "OPENPGPKEY" | (string & {});
+export const RecordsBatchRequestPatchesItemType = /*@__PURE__*/ S.String;
+
+export interface RecordsBatchRequestPatchesItemSettings {
+  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
+  ipv4Only?: boolean;
+  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
+  ipv6Only?: boolean;
+}
+export const RecordsBatchRequestPatchesItemSettings = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
+      ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
+    }),
+).annotate({
+  identifier: "RecordsBatchRequestPatchesItemSettings",
+}) as any as S.Schema<RecordsBatchRequestPatchesItemSettings>;
+
+export type RecordsBatchRequestPatchesItemTagsList = unknown[];
+export const RecordsBatchRequestPatchesItemTagsList = /*@__PURE__*/ S.Array(
+  S.Unknown,
+) as any as S.Schema<RecordsBatchRequestPatchesItemTagsList>;
+
 export interface RecordsBatchRequestPatchesItemPTRRecord {
   /** Identifier. */
   id: string;
@@ -463,7 +501,24 @@ export interface RecordsBatchRequestPatchesItem {
   CNAMERecord: RecordsBatchRequestPatchesItemCNAMERecord;
   MXRecord: RecordsBatchRequestPatchesItemMXRecord;
   NSRecord: RecordsBatchRequestPatchesItemNSRecord;
-  OpenpgpkeyRecordObjectIdNameTtl6More__: unknown;
+  /** Identifier. */
+  id?: string;
+  /** Complete DNS record name, including the zone name, in Punycode. */
+  name?: string;
+  /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
+  ttl?: RecordsBatchRequestPatchesItemTtl;
+  /** Record type. */
+  type?: RecordsBatchRequestPatchesItemType;
+  /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
+  comment?: string;
+  /** A single Base64-encoded OpenPGP Transferable Public Key (RFC 4880 Section 11.1) */
+  content?: string;
+  /** Whether the record is receiving the performance and security benefits of Cloudflare. */
+  proxied?: boolean;
+  /** Settings for the DNS record. */
+  settings?: RecordsBatchRequestPatchesItemSettings;
+  /** Custom tags for the DNS record. This field has no effect on DNS responses. */
+  tags?: RecordsBatchRequestPatchesItemTagsList;
   PTRRecord: RecordsBatchRequestPatchesItemPTRRecord;
   TXTRecord: RecordsBatchRequestPatchesItemTXTRecord;
   CAARecord: RecordsBatchRequestPatchesItemCAARecord;
@@ -487,9 +542,15 @@ export const RecordsBatchRequestPatchesItem = /*@__PURE__*/ S.suspend(() =>
     CNAMERecord: RecordsBatchRequestPatchesItemCNAMERecord,
     MXRecord: RecordsBatchRequestPatchesItemMXRecord,
     NSRecord: RecordsBatchRequestPatchesItemNSRecord,
-    OpenpgpkeyRecordObjectIdNameTtl6More__: S.Unknown.pipe(
-      T.Body("OpenpgpkeyRecord object { id, name, ttl, 6 more }"),
-    ),
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    ttl: S.optional(RecordsBatchRequestPatchesItemTtl),
+    type: S.optional(RecordsBatchRequestPatchesItemType),
+    comment: S.optional(S.String),
+    content: S.optional(S.String),
+    proxied: S.optional(S.Boolean),
+    settings: S.optional(RecordsBatchRequestPatchesItemSettings),
+    tags: S.optional(RecordsBatchRequestPatchesItemTagsList),
     PTRRecord: RecordsBatchRequestPatchesItemPTRRecord,
     TXTRecord: RecordsBatchRequestPatchesItemTXTRecord,
     CAARecord: RecordsBatchRequestPatchesItemCAARecord,
@@ -515,94 +576,85 @@ export const RecordsBatchRequestPatchesList = /*@__PURE__*/ S.Array(
   RecordsBatchRequestPatchesItem,
 ) as any as S.Schema<RecordsBatchRequestPatchesList>;
 
+export type RecordsBatchRequestPostsItemType = "A" | (string & {});
+export const RecordsBatchRequestPostsItemType = /*@__PURE__*/ S.String;
+
+export interface RecordsBatchRequestPostsItemSettings {
+  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
+  ipv4Only?: boolean;
+  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
+  ipv6Only?: boolean;
+}
+export const RecordsBatchRequestPostsItemSettings = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
+      ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
+    }),
+).annotate({
+  identifier: "RecordsBatchRequestPostsItemSettings",
+}) as any as S.Schema<RecordsBatchRequestPostsItemSettings>;
+
+export type RecordsBatchRequestPostsItemTagsList = unknown[];
+export const RecordsBatchRequestPostsItemTagsList = /*@__PURE__*/ S.Array(
+  S.Unknown,
+) as any as S.Schema<RecordsBatchRequestPostsItemTagsList>;
+
+export interface RecordsBatchRequestPostsItemData {
+  /** Flags for the CAA record. */
+  flags?: number;
+  /** Name of the property controlled by this record (e.g.: issue, issuewild, iodef). */
+  tag?: string;
+  /** Value of the record. This field's semantics depend on the chosen tag. */
+  value?: string;
+}
+export const RecordsBatchRequestPostsItemData = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    flags: S.optional(S.Number),
+    tag: S.optional(S.String),
+    value: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "RecordsBatchRequestPostsItemData",
+}) as any as S.Schema<RecordsBatchRequestPostsItemData>;
+
 export interface RecordsBatchRequestPostsItem {
-  ARecordObjectNameTtlType6More__: unknown;
-  AAAARecordObjectNameTtlType6More__: unknown;
-  CNAMERecordObjectNameTtlType5More__: unknown;
-  MXRecordObjectNameTtlType6More__: unknown;
-  NSRecordObjectNameTtlType5More__: unknown;
-  DNSRecordsOpenpgpkeyRecordObjectNameTtlType5More__: unknown;
-  PTRRecordObjectNameTtlType5More__: unknown;
-  TXTRecordObjectNameTtlType5More__: unknown;
-  CAARecordObjectNameTtlType6More__: unknown;
-  CERTRecordObjectNameTtlType6More__: unknown;
-  DNSKEYRecordObjectNameTtlType6More__: unknown;
-  DSRecordObjectNameTtlType6More__: unknown;
-  HTTPSRecordObjectNameTtlType6More__: unknown;
-  LOCRecordObjectNameTtlType6More__: unknown;
-  NAPTRRecordObjectNameTtlType6More__: unknown;
-  SMIMEARecordObjectNameTtlType6More__: unknown;
-  SRVRecordObjectNameTtlType6More__: unknown;
-  SSHFPRecordObjectNameTtlType6More__: unknown;
-  SVCBRecordObjectNameTtlType6More__: unknown;
-  TLSARecordObjectNameTtlType6More__: unknown;
-  URIRecordObjectNameTtlType7More__: unknown;
+  /** Complete DNS record name, including the zone name, in Punycode. */
+  name?: string;
+  /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
+  ttl?: unknown;
+  /** Record type. */
+  type?: RecordsBatchRequestPostsItemType;
+  /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
+  comment?: string;
+  /** A valid IPv4 address. */
+  content?: string;
+  /** Enables private network routing to the origin. */
+  privateRouting?: boolean;
+  /** Whether the record is receiving the performance and security benefits of Cloudflare. */
+  proxied?: boolean;
+  /** Settings for the DNS record. */
+  settings?: RecordsBatchRequestPostsItemSettings;
+  /** Custom tags for the DNS record. This field has no effect on DNS responses. */
+  tags?: RecordsBatchRequestPostsItemTagsList;
+  /** Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map. */
+  priority?: number;
+  /** Components of a CAA record. */
+  data?: RecordsBatchRequestPostsItemData;
 }
 export const RecordsBatchRequestPostsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    ARecordObjectNameTtlType6More__: S.Unknown.pipe(
-      T.Body("ARecord object { name, ttl, type, 6 more }"),
-    ),
-    AAAARecordObjectNameTtlType6More__: S.Unknown.pipe(
-      T.Body("AAAARecord object { name, ttl, type, 6 more }"),
-    ),
-    CNAMERecordObjectNameTtlType5More__: S.Unknown.pipe(
-      T.Body("CNAMERecord object { name, ttl, type, 5 more }"),
-    ),
-    MXRecordObjectNameTtlType6More__: S.Unknown.pipe(
-      T.Body("MXRecord object { name, ttl, type, 6 more }"),
-    ),
-    NSRecordObjectNameTtlType5More__: S.Unknown.pipe(
-      T.Body("NSRecord object { name, ttl, type, 5 more }"),
-    ),
-    DNSRecordsOpenpgpkeyRecordObjectNameTtlType5More__: S.Unknown.pipe(
-      T.Body("DNSRecordsOpenpgpkeyRecord object { name, ttl, type, 5 more }"),
-    ),
-    PTRRecordObjectNameTtlType5More__: S.Unknown.pipe(
-      T.Body("PTRRecord object { name, ttl, type, 5 more }"),
-    ),
-    TXTRecordObjectNameTtlType5More__: S.Unknown.pipe(
-      T.Body("TXTRecord object { name, ttl, type, 5 more }"),
-    ),
-    CAARecordObjectNameTtlType6More__: S.Unknown.pipe(
-      T.Body("CAARecord object { name, ttl, type, 6 more }"),
-    ),
-    CERTRecordObjectNameTtlType6More__: S.Unknown.pipe(
-      T.Body("CERTRecord object { name, ttl, type, 6 more }"),
-    ),
-    DNSKEYRecordObjectNameTtlType6More__: S.Unknown.pipe(
-      T.Body("DNSKEYRecord object { name, ttl, type, 6 more }"),
-    ),
-    DSRecordObjectNameTtlType6More__: S.Unknown.pipe(
-      T.Body("DSRecord object { name, ttl, type, 6 more }"),
-    ),
-    HTTPSRecordObjectNameTtlType6More__: S.Unknown.pipe(
-      T.Body("HTTPSRecord object { name, ttl, type, 6 more }"),
-    ),
-    LOCRecordObjectNameTtlType6More__: S.Unknown.pipe(
-      T.Body("LOCRecord object { name, ttl, type, 6 more }"),
-    ),
-    NAPTRRecordObjectNameTtlType6More__: S.Unknown.pipe(
-      T.Body("NAPTRRecord object { name, ttl, type, 6 more }"),
-    ),
-    SMIMEARecordObjectNameTtlType6More__: S.Unknown.pipe(
-      T.Body("SMIMEARecord object { name, ttl, type, 6 more }"),
-    ),
-    SRVRecordObjectNameTtlType6More__: S.Unknown.pipe(
-      T.Body("SRVRecord object { name, ttl, type, 6 more }"),
-    ),
-    SSHFPRecordObjectNameTtlType6More__: S.Unknown.pipe(
-      T.Body("SSHFPRecord object { name, ttl, type, 6 more }"),
-    ),
-    SVCBRecordObjectNameTtlType6More__: S.Unknown.pipe(
-      T.Body("SVCBRecord object { name, ttl, type, 6 more }"),
-    ),
-    TLSARecordObjectNameTtlType6More__: S.Unknown.pipe(
-      T.Body("TLSARecord object { name, ttl, type, 6 more }"),
-    ),
-    URIRecordObjectNameTtlType7More__: S.Unknown.pipe(
-      T.Body("URIRecord object { name, ttl, type, 7 more }"),
-    ),
+    name: S.optional(S.String),
+    ttl: S.optional(S.Unknown),
+    type: S.optional(RecordsBatchRequestPostsItemType),
+    comment: S.optional(S.String),
+    content: S.optional(S.String),
+    privateRouting: S.optional(S.Boolean.pipe(T.Body("private_routing"))),
+    proxied: S.optional(S.Boolean),
+    settings: S.optional(RecordsBatchRequestPostsItemSettings),
+    tags: S.optional(RecordsBatchRequestPostsItemTagsList),
+    priority: S.optional(S.Number),
+    data: S.optional(RecordsBatchRequestPostsItemData),
   }),
 ).annotate({
   identifier: "RecordsBatchRequestPostsItem",
@@ -674,6 +726,29 @@ export const RecordsBatchRequestPutsItemNSRecord = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RecordsBatchRequestPutsItemNSRecord",
 }) as any as S.Schema<RecordsBatchRequestPutsItemNSRecord>;
+
+export type RecordsBatchRequestPutsItemType = "OPENPGPKEY" | (string & {});
+export const RecordsBatchRequestPutsItemType = /*@__PURE__*/ S.String;
+
+export interface RecordsBatchRequestPutsItemSettings {
+  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
+  ipv4Only?: boolean;
+  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
+  ipv6Only?: boolean;
+}
+export const RecordsBatchRequestPutsItemSettings = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
+    ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
+  }),
+).annotate({
+  identifier: "RecordsBatchRequestPutsItemSettings",
+}) as any as S.Schema<RecordsBatchRequestPutsItemSettings>;
+
+export type RecordsBatchRequestPutsItemTagsList = unknown[];
+export const RecordsBatchRequestPutsItemTagsList = /*@__PURE__*/ S.Array(
+  S.Unknown,
+) as any as S.Schema<RecordsBatchRequestPutsItemTagsList>;
 
 export interface RecordsBatchRequestPutsItemPTRRecord {
   /** Identifier. */
@@ -875,7 +950,24 @@ export interface RecordsBatchRequestPutsItem {
   CNAMERecord: RecordsBatchRequestPutsItemCNAMERecord;
   MXRecord: RecordsBatchRequestPutsItemMXRecord;
   NSRecord: RecordsBatchRequestPutsItemNSRecord;
-  OpenpgpkeyRecordObjectIdNameTtl6More__: unknown;
+  /** Identifier. */
+  id?: string;
+  /** Complete DNS record name, including the zone name, in Punycode. */
+  name?: string;
+  /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
+  ttl?: unknown;
+  /** Record type. */
+  type?: RecordsBatchRequestPutsItemType;
+  /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
+  comment?: string;
+  /** A single Base64-encoded OpenPGP Transferable Public Key (RFC 4880 Section 11.1) */
+  content?: string;
+  /** Whether the record is receiving the performance and security benefits of Cloudflare. */
+  proxied?: boolean;
+  /** Settings for the DNS record. */
+  settings?: RecordsBatchRequestPutsItemSettings;
+  /** Custom tags for the DNS record. This field has no effect on DNS responses. */
+  tags?: RecordsBatchRequestPutsItemTagsList;
   PTRRecord: RecordsBatchRequestPutsItemPTRRecord;
   TXTRecord: RecordsBatchRequestPutsItemTXTRecord;
   CAARecord: RecordsBatchRequestPutsItemCAARecord;
@@ -899,9 +991,15 @@ export const RecordsBatchRequestPutsItem = /*@__PURE__*/ S.suspend(() =>
     CNAMERecord: RecordsBatchRequestPutsItemCNAMERecord,
     MXRecord: RecordsBatchRequestPutsItemMXRecord,
     NSRecord: RecordsBatchRequestPutsItemNSRecord,
-    OpenpgpkeyRecordObjectIdNameTtl6More__: S.Unknown.pipe(
-      T.Body("OpenpgpkeyRecord object { id, name, ttl, 6 more }"),
-    ),
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    ttl: S.optional(S.Unknown),
+    type: S.optional(RecordsBatchRequestPutsItemType),
+    comment: S.optional(S.String),
+    content: S.optional(S.String),
+    proxied: S.optional(S.Boolean),
+    settings: S.optional(RecordsBatchRequestPutsItemSettings),
+    tags: S.optional(RecordsBatchRequestPutsItemTagsList),
     PTRRecord: RecordsBatchRequestPutsItemPTRRecord,
     TXTRecord: RecordsBatchRequestPutsItemTXTRecord,
     CAARecord: RecordsBatchRequestPutsItemCAARecord,
@@ -1298,6 +1396,77 @@ export const RecordsBatchResponseDeletesItemNSRecord = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "RecordsBatchResponseDeletesItemNSRecord",
 }) as any as S.Schema<RecordsBatchResponseDeletesItemNSRecord>;
+
+export type RecordsBatchResponseDeletesItemMetaShadowedByList = string[];
+export const RecordsBatchResponseDeletesItemMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsBatchResponseDeletesItemMetaShadowedByList>;
+
+export interface RecordsBatchResponseDeletesItemMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsBatchResponseDeletesItemMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsBatchResponseDeletesItemMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+    shadowedBy: S.optional(
+      RecordsBatchResponseDeletesItemMetaShadowedByList.pipe(
+        T.Body("shadowed_by"),
+      ),
+    ),
+    shadowedRecordsCount: S.optional(
+      S.Number.pipe(T.Body("shadowed_records_count")),
+    ),
+  }),
+).annotate({
+  identifier: "RecordsBatchResponseDeletesItemMeta",
+}) as any as S.Schema<RecordsBatchResponseDeletesItemMeta>;
+
+export interface RecordsBatchResponseDeletesItemSettings {
+  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
+  ipv4Only?: boolean;
+  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
+  ipv6Only?: boolean;
+}
+export const RecordsBatchResponseDeletesItemSettings = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
+      ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
+    }),
+).annotate({
+  identifier: "RecordsBatchResponseDeletesItemSettings",
+}) as any as S.Schema<RecordsBatchResponseDeletesItemSettings>;
+
+export type RecordsBatchResponseDeletesItemTagsList = unknown[];
+export const RecordsBatchResponseDeletesItemTagsList = /*@__PURE__*/ S.Array(
+  S.Unknown,
+) as any as S.Schema<RecordsBatchResponseDeletesItemTagsList>;
+
+export interface RecordsBatchResponseDeletesItemTtl {
+  number: unknown;
+  /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
+  "1": unknown;
+}
+export const RecordsBatchResponseDeletesItemTtl = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    number: S.Unknown,
+    "1": S.Unknown,
+  }),
+).annotate({
+  identifier: "RecordsBatchResponseDeletesItemTtl",
+}) as any as S.Schema<RecordsBatchResponseDeletesItemTtl>;
+
+export type RecordsBatchResponseDeletesItemType = "OPENPGPKEY" | (string & {});
+export const RecordsBatchResponseDeletesItemType = /*@__PURE__*/ S.String;
 
 export type RecordsBatchResponseDeletesItemPTRRecordMetaShadowedByList =
   string[];
@@ -2325,7 +2494,36 @@ export interface RecordsBatchResponseDeletesItem {
   CNAMERecord: RecordsBatchResponseDeletesItemCNAMERecord;
   MXRecord: RecordsBatchResponseDeletesItemMXRecord;
   NSRecord: RecordsBatchResponseDeletesItemNSRecord;
-  OpenpgpkeyRecordObjectIdCommentContent12More__: unknown;
+  /** Identifier. */
+  id?: string;
+  /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
+  comment?: string;
+  /** A single Base64-encoded OpenPGP Transferable Public Key (RFC 4880 Section 11.1) */
+  content?: string;
+  /** When the record was created. */
+  createdOn?: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta?: RecordsBatchResponseDeletesItemMeta;
+  /** When the record was last modified. */
+  modifiedOn?: string;
+  /** Complete DNS record name, including the zone name, in Punycode. */
+  name?: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable?: boolean;
+  /** Whether the record is receiving the performance and security benefits of Cloudflare. */
+  proxied?: boolean;
+  /** Settings for the DNS record. */
+  settings?: RecordsBatchResponseDeletesItemSettings;
+  /** Custom tags for the DNS record. This field has no effect on DNS responses. */
+  tags?: RecordsBatchResponseDeletesItemTagsList;
+  /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
+  ttl?: RecordsBatchResponseDeletesItemTtl;
+  /** Record type. */
+  type?: RecordsBatchResponseDeletesItemType;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
   PTRRecord: RecordsBatchResponseDeletesItemPTRRecord;
   TXTRecord: RecordsBatchResponseDeletesItemTXTRecord;
   CAARecord: RecordsBatchResponseDeletesItemCAARecord;
@@ -2349,9 +2547,21 @@ export const RecordsBatchResponseDeletesItem = /*@__PURE__*/ S.suspend(() =>
     CNAMERecord: RecordsBatchResponseDeletesItemCNAMERecord,
     MXRecord: RecordsBatchResponseDeletesItemMXRecord,
     NSRecord: RecordsBatchResponseDeletesItemNSRecord,
-    OpenpgpkeyRecordObjectIdCommentContent12More__: S.Unknown.pipe(
-      T.Body("OpenpgpkeyRecord object { id, comment, content, 12 more }"),
-    ),
+    id: S.optional(S.String),
+    comment: S.optional(S.String),
+    content: S.optional(S.String),
+    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
+    meta: S.optional(RecordsBatchResponseDeletesItemMeta),
+    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+    name: S.optional(S.String),
+    proxiable: S.optional(S.Boolean),
+    proxied: S.optional(S.Boolean),
+    settings: S.optional(RecordsBatchResponseDeletesItemSettings),
+    tags: S.optional(RecordsBatchResponseDeletesItemTagsList),
+    ttl: S.optional(RecordsBatchResponseDeletesItemTtl),
+    type: S.optional(RecordsBatchResponseDeletesItemType),
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
     PTRRecord: RecordsBatchResponseDeletesItemPTRRecord,
     TXTRecord: RecordsBatchResponseDeletesItemTXTRecord,
     CAARecord: RecordsBatchResponseDeletesItemCAARecord,
@@ -2569,94 +2779,98 @@ export const BatchRecordResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "BatchRecordResponse",
 }) as any as S.Schema<BatchRecordResponse>;
 
+export interface RecordsCreateRequestBodyTtl {
+  number: unknown;
+  /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
+  "1": unknown;
+}
+export const RecordsCreateRequestBodyTtl = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    number: S.Unknown,
+    "1": S.Unknown,
+  }),
+).annotate({
+  identifier: "RecordsCreateRequestBodyTtl",
+}) as any as S.Schema<RecordsCreateRequestBodyTtl>;
+
+export type RecordsCreateRequestBodyType = "A" | (string & {});
+export const RecordsCreateRequestBodyType = /*@__PURE__*/ S.String;
+
+export interface RecordsCreateRequestBodySettings {
+  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
+  ipv4Only?: boolean;
+  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
+  ipv6Only?: boolean;
+}
+export const RecordsCreateRequestBodySettings = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
+    ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
+  }),
+).annotate({
+  identifier: "RecordsCreateRequestBodySettings",
+}) as any as S.Schema<RecordsCreateRequestBodySettings>;
+
+export type RecordsCreateRequestBodyTagsList = unknown[];
+export const RecordsCreateRequestBodyTagsList = /*@__PURE__*/ S.Array(
+  S.Unknown,
+) as any as S.Schema<RecordsCreateRequestBodyTagsList>;
+
+export interface RecordsCreateRequestBodyData {
+  /** Flags for the CAA record. */
+  flags?: number;
+  /** Name of the property controlled by this record (e.g.: issue, issuewild, iodef). */
+  tag?: string;
+  /** Value of the record. This field's semantics depend on the chosen tag. */
+  value?: string;
+}
+export const RecordsCreateRequestBodyData = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    flags: S.optional(S.Number),
+    tag: S.optional(S.String),
+    value: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "RecordsCreateRequestBodyData",
+}) as any as S.Schema<RecordsCreateRequestBodyData>;
+
 export interface RecordsCreateRequestBody {
-  ARecordObjectNameTtlType6More__: unknown;
-  AAAARecordObjectNameTtlType6More__: unknown;
-  CNAMERecordObjectNameTtlType5More__: unknown;
-  MXRecordObjectNameTtlType6More__: unknown;
-  NSRecordObjectNameTtlType5More__: unknown;
-  DNSRecordsOpenpgpkeyRecordObjectNameTtlType5More__: unknown;
-  PTRRecordObjectNameTtlType5More__: unknown;
-  TXTRecordObjectNameTtlType5More__: unknown;
-  CAARecordObjectNameTtlType6More__: unknown;
-  CERTRecordObjectNameTtlType6More__: unknown;
-  DNSKEYRecordObjectNameTtlType6More__: unknown;
-  DSRecordObjectNameTtlType6More__: unknown;
-  HTTPSRecordObjectNameTtlType6More__: unknown;
-  LOCRecordObjectNameTtlType6More__: unknown;
-  NAPTRRecordObjectNameTtlType6More__: unknown;
-  SMIMEARecordObjectNameTtlType6More__: unknown;
-  SRVRecordObjectNameTtlType6More__: unknown;
-  SSHFPRecordObjectNameTtlType6More__: unknown;
-  SVCBRecordObjectNameTtlType6More__: unknown;
-  TLSARecordObjectNameTtlType6More__: unknown;
-  URIRecordObjectNameTtlType7More__: unknown;
+  /** Complete DNS record name, including the zone name, in Punycode. */
+  name?: string;
+  /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
+  ttl?: RecordsCreateRequestBodyTtl;
+  /** Record type. */
+  type?: RecordsCreateRequestBodyType;
+  /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
+  comment?: string;
+  /** A valid IPv4 address. */
+  content?: string;
+  /** Enables private network routing to the origin. */
+  privateRouting?: boolean;
+  /** Whether the record is receiving the performance and security benefits of Cloudflare. */
+  proxied?: boolean;
+  /** Settings for the DNS record. */
+  settings?: RecordsCreateRequestBodySettings;
+  /** Custom tags for the DNS record. This field has no effect on DNS responses. */
+  tags?: RecordsCreateRequestBodyTagsList;
+  /** Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map. */
+  priority?: number;
+  /** Components of a CAA record. */
+  data?: RecordsCreateRequestBodyData;
 }
 export const RecordsCreateRequestBody = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    ARecordObjectNameTtlType6More__: S.Unknown.pipe(
-      T.Body("ARecord object { name, ttl, type, 6 more }"),
-    ),
-    AAAARecordObjectNameTtlType6More__: S.Unknown.pipe(
-      T.Body("AAAARecord object { name, ttl, type, 6 more }"),
-    ),
-    CNAMERecordObjectNameTtlType5More__: S.Unknown.pipe(
-      T.Body("CNAMERecord object { name, ttl, type, 5 more }"),
-    ),
-    MXRecordObjectNameTtlType6More__: S.Unknown.pipe(
-      T.Body("MXRecord object { name, ttl, type, 6 more }"),
-    ),
-    NSRecordObjectNameTtlType5More__: S.Unknown.pipe(
-      T.Body("NSRecord object { name, ttl, type, 5 more }"),
-    ),
-    DNSRecordsOpenpgpkeyRecordObjectNameTtlType5More__: S.Unknown.pipe(
-      T.Body("DNSRecordsOpenpgpkeyRecord object { name, ttl, type, 5 more }"),
-    ),
-    PTRRecordObjectNameTtlType5More__: S.Unknown.pipe(
-      T.Body("PTRRecord object { name, ttl, type, 5 more }"),
-    ),
-    TXTRecordObjectNameTtlType5More__: S.Unknown.pipe(
-      T.Body("TXTRecord object { name, ttl, type, 5 more }"),
-    ),
-    CAARecordObjectNameTtlType6More__: S.Unknown.pipe(
-      T.Body("CAARecord object { name, ttl, type, 6 more }"),
-    ),
-    CERTRecordObjectNameTtlType6More__: S.Unknown.pipe(
-      T.Body("CERTRecord object { name, ttl, type, 6 more }"),
-    ),
-    DNSKEYRecordObjectNameTtlType6More__: S.Unknown.pipe(
-      T.Body("DNSKEYRecord object { name, ttl, type, 6 more }"),
-    ),
-    DSRecordObjectNameTtlType6More__: S.Unknown.pipe(
-      T.Body("DSRecord object { name, ttl, type, 6 more }"),
-    ),
-    HTTPSRecordObjectNameTtlType6More__: S.Unknown.pipe(
-      T.Body("HTTPSRecord object { name, ttl, type, 6 more }"),
-    ),
-    LOCRecordObjectNameTtlType6More__: S.Unknown.pipe(
-      T.Body("LOCRecord object { name, ttl, type, 6 more }"),
-    ),
-    NAPTRRecordObjectNameTtlType6More__: S.Unknown.pipe(
-      T.Body("NAPTRRecord object { name, ttl, type, 6 more }"),
-    ),
-    SMIMEARecordObjectNameTtlType6More__: S.Unknown.pipe(
-      T.Body("SMIMEARecord object { name, ttl, type, 6 more }"),
-    ),
-    SRVRecordObjectNameTtlType6More__: S.Unknown.pipe(
-      T.Body("SRVRecord object { name, ttl, type, 6 more }"),
-    ),
-    SSHFPRecordObjectNameTtlType6More__: S.Unknown.pipe(
-      T.Body("SSHFPRecord object { name, ttl, type, 6 more }"),
-    ),
-    SVCBRecordObjectNameTtlType6More__: S.Unknown.pipe(
-      T.Body("SVCBRecord object { name, ttl, type, 6 more }"),
-    ),
-    TLSARecordObjectNameTtlType6More__: S.Unknown.pipe(
-      T.Body("TLSARecord object { name, ttl, type, 6 more }"),
-    ),
-    URIRecordObjectNameTtlType7More__: S.Unknown.pipe(
-      T.Body("URIRecord object { name, ttl, type, 7 more }"),
-    ),
+    name: S.optional(S.String),
+    ttl: S.optional(RecordsCreateRequestBodyTtl),
+    type: S.optional(RecordsCreateRequestBodyType),
+    comment: S.optional(S.String),
+    content: S.optional(S.String),
+    privateRouting: S.optional(S.Boolean.pipe(T.Body("private_routing"))),
+    proxied: S.optional(S.Boolean),
+    settings: S.optional(RecordsCreateRequestBodySettings),
+    tags: S.optional(RecordsCreateRequestBodyTagsList),
+    priority: S.optional(S.Number),
+    data: S.optional(RecordsCreateRequestBodyData),
   }),
 ).annotate({
   identifier: "RecordsCreateRequestBody",
@@ -3004,6 +3218,73 @@ export const RecordsCreateResponseNSRecord = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RecordsCreateResponseNSRecord",
 }) as any as S.Schema<RecordsCreateResponseNSRecord>;
+
+export type RecordsCreateResponseMetaShadowedByList = string[];
+export const RecordsCreateResponseMetaShadowedByList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<RecordsCreateResponseMetaShadowedByList>;
+
+export interface RecordsCreateResponseMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsCreateResponseMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsCreateResponseMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+    shadowedBy: S.optional(
+      RecordsCreateResponseMetaShadowedByList.pipe(T.Body("shadowed_by")),
+    ),
+    shadowedRecordsCount: S.optional(
+      S.Number.pipe(T.Body("shadowed_records_count")),
+    ),
+  }),
+).annotate({
+  identifier: "RecordsCreateResponseMeta",
+}) as any as S.Schema<RecordsCreateResponseMeta>;
+
+export interface RecordsCreateResponseSettings {
+  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
+  ipv4Only?: boolean;
+  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
+  ipv6Only?: boolean;
+}
+export const RecordsCreateResponseSettings = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
+    ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
+  }),
+).annotate({
+  identifier: "RecordsCreateResponseSettings",
+}) as any as S.Schema<RecordsCreateResponseSettings>;
+
+export type RecordsCreateResponseTagsList = unknown[];
+export const RecordsCreateResponseTagsList = /*@__PURE__*/ S.Array(
+  S.Unknown,
+) as any as S.Schema<RecordsCreateResponseTagsList>;
+
+export interface RecordsCreateResponseTtl {
+  number: unknown;
+  /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
+  "1": unknown;
+}
+export const RecordsCreateResponseTtl = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    number: S.Unknown,
+    "1": S.Unknown,
+  }),
+).annotate({
+  identifier: "RecordsCreateResponseTtl",
+}) as any as S.Schema<RecordsCreateResponseTtl>;
+
+export type RecordsCreateResponseType = "OPENPGPKEY" | (string & {});
+export const RecordsCreateResponseType = /*@__PURE__*/ S.String;
 
 export type RecordsCreateResponsePTRRecordMetaShadowedByList = string[];
 export const RecordsCreateResponsePTRRecordMetaShadowedByList =
@@ -3962,7 +4243,36 @@ export interface CreateRecordResponse {
   CNAMERecord: RecordsCreateResponseCNAMERecord;
   MXRecord: RecordsCreateResponseMXRecord;
   NSRecord: RecordsCreateResponseNSRecord;
-  OpenpgpkeyRecordObjectIdCommentContent12More__: unknown;
+  /** Identifier. */
+  id?: string;
+  /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
+  comment?: string;
+  /** A single Base64-encoded OpenPGP Transferable Public Key (RFC 4880 Section 11.1) */
+  content?: string;
+  /** When the record was created. */
+  createdOn?: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta?: RecordsCreateResponseMeta;
+  /** When the record was last modified. */
+  modifiedOn?: string;
+  /** Complete DNS record name, including the zone name, in Punycode. */
+  name?: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable?: boolean;
+  /** Whether the record is receiving the performance and security benefits of Cloudflare. */
+  proxied?: boolean;
+  /** Settings for the DNS record. */
+  settings?: RecordsCreateResponseSettings;
+  /** Custom tags for the DNS record. This field has no effect on DNS responses. */
+  tags?: RecordsCreateResponseTagsList;
+  /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
+  ttl?: RecordsCreateResponseTtl;
+  /** Record type. */
+  type?: RecordsCreateResponseType;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
   PTRRecord: RecordsCreateResponsePTRRecord;
   TXTRecord: RecordsCreateResponseTXTRecord;
   CAARecord: RecordsCreateResponseCAARecord;
@@ -3986,9 +4296,21 @@ export const CreateRecordResponse = /*@__PURE__*/ S.suspend(() =>
     CNAMERecord: RecordsCreateResponseCNAMERecord,
     MXRecord: RecordsCreateResponseMXRecord,
     NSRecord: RecordsCreateResponseNSRecord,
-    OpenpgpkeyRecordObjectIdCommentContent12More__: S.Unknown.pipe(
-      T.Body("OpenpgpkeyRecord object { id, comment, content, 12 more }"),
-    ),
+    id: S.optional(S.String),
+    comment: S.optional(S.String),
+    content: S.optional(S.String),
+    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
+    meta: S.optional(RecordsCreateResponseMeta),
+    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+    name: S.optional(S.String),
+    proxiable: S.optional(S.Boolean),
+    proxied: S.optional(S.Boolean),
+    settings: S.optional(RecordsCreateResponseSettings),
+    tags: S.optional(RecordsCreateResponseTagsList),
+    ttl: S.optional(RecordsCreateResponseTtl),
+    type: S.optional(RecordsCreateResponseType),
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
     PTRRecord: RecordsCreateResponsePTRRecord,
     TXTRecord: RecordsCreateResponseTXTRecord,
     CAARecord: RecordsCreateResponseCAARecord,
@@ -5532,6 +5854,73 @@ export const RecordsGetResponseNSRecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsGetResponseNSRecord",
 }) as any as S.Schema<RecordsGetResponseNSRecord>;
 
+export type RecordsGetResponseMetaShadowedByList = string[];
+export const RecordsGetResponseMetaShadowedByList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<RecordsGetResponseMetaShadowedByList>;
+
+export interface RecordsGetResponseMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsGetResponseMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsGetResponseMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+    shadowedBy: S.optional(
+      RecordsGetResponseMetaShadowedByList.pipe(T.Body("shadowed_by")),
+    ),
+    shadowedRecordsCount: S.optional(
+      S.Number.pipe(T.Body("shadowed_records_count")),
+    ),
+  }),
+).annotate({
+  identifier: "RecordsGetResponseMeta",
+}) as any as S.Schema<RecordsGetResponseMeta>;
+
+export interface RecordsGetResponseSettings {
+  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
+  ipv4Only?: boolean;
+  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
+  ipv6Only?: boolean;
+}
+export const RecordsGetResponseSettings = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
+    ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
+  }),
+).annotate({
+  identifier: "RecordsGetResponseSettings",
+}) as any as S.Schema<RecordsGetResponseSettings>;
+
+export type RecordsGetResponseTagsList = unknown[];
+export const RecordsGetResponseTagsList = /*@__PURE__*/ S.Array(
+  S.Unknown,
+) as any as S.Schema<RecordsGetResponseTagsList>;
+
+export interface RecordsGetResponseTtl {
+  number: unknown;
+  /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
+  "1": unknown;
+}
+export const RecordsGetResponseTtl = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    number: S.Unknown,
+    "1": S.Unknown,
+  }),
+).annotate({
+  identifier: "RecordsGetResponseTtl",
+}) as any as S.Schema<RecordsGetResponseTtl>;
+
+export type RecordsGetResponseType = "OPENPGPKEY" | (string & {});
+export const RecordsGetResponseType = /*@__PURE__*/ S.String;
+
 export type RecordsGetResponsePTRRecordMetaShadowedByList = string[];
 export const RecordsGetResponsePTRRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
@@ -6470,7 +6859,36 @@ export interface GetRecordResponse {
   CNAMERecord: RecordsGetResponseCNAMERecord;
   MXRecord: RecordsGetResponseMXRecord;
   NSRecord: RecordsGetResponseNSRecord;
-  OpenpgpkeyRecordObjectIdCommentContent12More__: unknown;
+  /** Identifier. */
+  id?: string;
+  /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
+  comment?: string;
+  /** A single Base64-encoded OpenPGP Transferable Public Key (RFC 4880 Section 11.1) */
+  content?: string;
+  /** When the record was created. */
+  createdOn?: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta?: RecordsGetResponseMeta;
+  /** When the record was last modified. */
+  modifiedOn?: string;
+  /** Complete DNS record name, including the zone name, in Punycode. */
+  name?: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable?: boolean;
+  /** Whether the record is receiving the performance and security benefits of Cloudflare. */
+  proxied?: boolean;
+  /** Settings for the DNS record. */
+  settings?: RecordsGetResponseSettings;
+  /** Custom tags for the DNS record. This field has no effect on DNS responses. */
+  tags?: RecordsGetResponseTagsList;
+  /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
+  ttl?: RecordsGetResponseTtl;
+  /** Record type. */
+  type?: RecordsGetResponseType;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
   PTRRecord: RecordsGetResponsePTRRecord;
   TXTRecord: RecordsGetResponseTXTRecord;
   CAARecord: RecordsGetResponseCAARecord;
@@ -6494,9 +6912,21 @@ export const GetRecordResponse = /*@__PURE__*/ S.suspend(() =>
     CNAMERecord: RecordsGetResponseCNAMERecord,
     MXRecord: RecordsGetResponseMXRecord,
     NSRecord: RecordsGetResponseNSRecord,
-    OpenpgpkeyRecordObjectIdCommentContent12More__: S.Unknown.pipe(
-      T.Body("OpenpgpkeyRecord object { id, comment, content, 12 more }"),
-    ),
+    id: S.optional(S.String),
+    comment: S.optional(S.String),
+    content: S.optional(S.String),
+    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
+    meta: S.optional(RecordsGetResponseMeta),
+    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+    name: S.optional(S.String),
+    proxiable: S.optional(S.Boolean),
+    proxied: S.optional(S.Boolean),
+    settings: S.optional(RecordsGetResponseSettings),
+    tags: S.optional(RecordsGetResponseTagsList),
+    ttl: S.optional(RecordsGetResponseTtl),
+    type: S.optional(RecordsGetResponseType),
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
     PTRRecord: RecordsGetResponsePTRRecord,
     TXTRecord: RecordsGetResponseTXTRecord,
     CAARecord: RecordsGetResponseCAARecord,
@@ -7644,6 +8074,73 @@ export const RecordsListResultItemNSRecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsListResultItemNSRecord",
 }) as any as S.Schema<RecordsListResultItemNSRecord>;
 
+export type RecordsListResultItemMetaShadowedByList = string[];
+export const RecordsListResultItemMetaShadowedByList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<RecordsListResultItemMetaShadowedByList>;
+
+export interface RecordsListResultItemMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsListResultItemMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsListResultItemMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+    shadowedBy: S.optional(
+      RecordsListResultItemMetaShadowedByList.pipe(T.Body("shadowed_by")),
+    ),
+    shadowedRecordsCount: S.optional(
+      S.Number.pipe(T.Body("shadowed_records_count")),
+    ),
+  }),
+).annotate({
+  identifier: "RecordsListResultItemMeta",
+}) as any as S.Schema<RecordsListResultItemMeta>;
+
+export interface RecordsListResultItemSettings {
+  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
+  ipv4Only?: boolean;
+  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
+  ipv6Only?: boolean;
+}
+export const RecordsListResultItemSettings = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
+    ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
+  }),
+).annotate({
+  identifier: "RecordsListResultItemSettings",
+}) as any as S.Schema<RecordsListResultItemSettings>;
+
+export type RecordsListResultItemTagsList = unknown[];
+export const RecordsListResultItemTagsList = /*@__PURE__*/ S.Array(
+  S.Unknown,
+) as any as S.Schema<RecordsListResultItemTagsList>;
+
+export interface RecordsListResultItemTtl {
+  number: unknown;
+  /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
+  "1": unknown;
+}
+export const RecordsListResultItemTtl = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    number: S.Unknown,
+    "1": S.Unknown,
+  }),
+).annotate({
+  identifier: "RecordsListResultItemTtl",
+}) as any as S.Schema<RecordsListResultItemTtl>;
+
+export type RecordsListResultItemType = "OPENPGPKEY" | (string & {});
+export const RecordsListResultItemType = /*@__PURE__*/ S.String;
+
 export type RecordsListResultItemPTRRecordMetaShadowedByList = string[];
 export const RecordsListResultItemPTRRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
@@ -8600,7 +9097,36 @@ export interface RecordsListResultItem {
   CNAMERecord: RecordsListResultItemCNAMERecord;
   MXRecord: RecordsListResultItemMXRecord;
   NSRecord: RecordsListResultItemNSRecord;
-  OpenpgpkeyRecordObjectIdCommentContent12More__: unknown;
+  /** Identifier. */
+  id?: string;
+  /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
+  comment?: string;
+  /** A single Base64-encoded OpenPGP Transferable Public Key (RFC 4880 Section 11.1) */
+  content?: string;
+  /** When the record was created. */
+  createdOn?: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta?: RecordsListResultItemMeta;
+  /** When the record was last modified. */
+  modifiedOn?: string;
+  /** Complete DNS record name, including the zone name, in Punycode. */
+  name?: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable?: boolean;
+  /** Whether the record is receiving the performance and security benefits of Cloudflare. */
+  proxied?: boolean;
+  /** Settings for the DNS record. */
+  settings?: RecordsListResultItemSettings;
+  /** Custom tags for the DNS record. This field has no effect on DNS responses. */
+  tags?: RecordsListResultItemTagsList;
+  /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
+  ttl?: RecordsListResultItemTtl;
+  /** Record type. */
+  type?: RecordsListResultItemType;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
   PTRRecord: RecordsListResultItemPTRRecord;
   TXTRecord: RecordsListResultItemTXTRecord;
   CAARecord: RecordsListResultItemCAARecord;
@@ -8624,9 +9150,21 @@ export const RecordsListResultItem = /*@__PURE__*/ S.suspend(() =>
     CNAMERecord: RecordsListResultItemCNAMERecord,
     MXRecord: RecordsListResultItemMXRecord,
     NSRecord: RecordsListResultItemNSRecord,
-    OpenpgpkeyRecordObjectIdCommentContent12More__: S.Unknown.pipe(
-      T.Body("OpenpgpkeyRecord object { id, comment, content, 12 more }"),
-    ),
+    id: S.optional(S.String),
+    comment: S.optional(S.String),
+    content: S.optional(S.String),
+    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
+    meta: S.optional(RecordsListResultItemMeta),
+    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+    name: S.optional(S.String),
+    proxiable: S.optional(S.Boolean),
+    proxied: S.optional(S.Boolean),
+    settings: S.optional(RecordsListResultItemSettings),
+    tags: S.optional(RecordsListResultItemTagsList),
+    ttl: S.optional(RecordsListResultItemTtl),
+    type: S.optional(RecordsListResultItemType),
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
     PTRRecord: RecordsListResultItemPTRRecord,
     TXTRecord: RecordsListResultItemTXTRecord,
     CAARecord: RecordsListResultItemCAARecord,
@@ -9058,94 +9596,98 @@ export const PatchDnssecResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchDnssecResponse",
 }) as any as S.Schema<PatchDnssecResponse>;
 
+export interface RecordsEditRequestBodyTtl {
+  number: unknown;
+  /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
+  "1": unknown;
+}
+export const RecordsEditRequestBodyTtl = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    number: S.Unknown,
+    "1": S.Unknown,
+  }),
+).annotate({
+  identifier: "RecordsEditRequestBodyTtl",
+}) as any as S.Schema<RecordsEditRequestBodyTtl>;
+
+export type RecordsEditRequestBodyType = "A" | (string & {});
+export const RecordsEditRequestBodyType = /*@__PURE__*/ S.String;
+
+export interface RecordsEditRequestBodySettings {
+  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
+  ipv4Only?: boolean;
+  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
+  ipv6Only?: boolean;
+}
+export const RecordsEditRequestBodySettings = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
+    ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
+  }),
+).annotate({
+  identifier: "RecordsEditRequestBodySettings",
+}) as any as S.Schema<RecordsEditRequestBodySettings>;
+
+export type RecordsEditRequestBodyTagsList = unknown[];
+export const RecordsEditRequestBodyTagsList = /*@__PURE__*/ S.Array(
+  S.Unknown,
+) as any as S.Schema<RecordsEditRequestBodyTagsList>;
+
+export interface RecordsEditRequestBodyData {
+  /** Flags for the CAA record. */
+  flags?: number;
+  /** Name of the property controlled by this record (e.g.: issue, issuewild, iodef). */
+  tag?: string;
+  /** Value of the record. This field's semantics depend on the chosen tag. */
+  value?: string;
+}
+export const RecordsEditRequestBodyData = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    flags: S.optional(S.Number),
+    tag: S.optional(S.String),
+    value: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "RecordsEditRequestBodyData",
+}) as any as S.Schema<RecordsEditRequestBodyData>;
+
 export interface RecordsEditRequestBody {
-  ARecordObjectNameTtlType6More__: unknown;
-  AAAARecordObjectNameTtlType6More__: unknown;
-  CNAMERecordObjectNameTtlType5More__: unknown;
-  MXRecordObjectNameTtlType6More__: unknown;
-  NSRecordObjectNameTtlType5More__: unknown;
-  DNSRecordsOpenpgpkeyRecordObjectNameTtlType5More__: unknown;
-  PTRRecordObjectNameTtlType5More__: unknown;
-  TXTRecordObjectNameTtlType5More__: unknown;
-  CAARecordObjectNameTtlType6More__: unknown;
-  CERTRecordObjectNameTtlType6More__: unknown;
-  DNSKEYRecordObjectNameTtlType6More__: unknown;
-  DSRecordObjectNameTtlType6More__: unknown;
-  HTTPSRecordObjectNameTtlType6More__: unknown;
-  LOCRecordObjectNameTtlType6More__: unknown;
-  NAPTRRecordObjectNameTtlType6More__: unknown;
-  SMIMEARecordObjectNameTtlType6More__: unknown;
-  SRVRecordObjectNameTtlType6More__: unknown;
-  SSHFPRecordObjectNameTtlType6More__: unknown;
-  SVCBRecordObjectNameTtlType6More__: unknown;
-  TLSARecordObjectNameTtlType6More__: unknown;
-  URIRecordObjectNameTtlType7More__: unknown;
+  /** Complete DNS record name, including the zone name, in Punycode. */
+  name?: string;
+  /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
+  ttl?: RecordsEditRequestBodyTtl;
+  /** Record type. */
+  type?: RecordsEditRequestBodyType;
+  /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
+  comment?: string;
+  /** A valid IPv4 address. */
+  content?: string;
+  /** Enables private network routing to the origin. */
+  privateRouting?: boolean;
+  /** Whether the record is receiving the performance and security benefits of Cloudflare. */
+  proxied?: boolean;
+  /** Settings for the DNS record. */
+  settings?: RecordsEditRequestBodySettings;
+  /** Custom tags for the DNS record. This field has no effect on DNS responses. */
+  tags?: RecordsEditRequestBodyTagsList;
+  /** Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map. */
+  priority?: number;
+  /** Components of a CAA record. */
+  data?: RecordsEditRequestBodyData;
 }
 export const RecordsEditRequestBody = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    ARecordObjectNameTtlType6More__: S.Unknown.pipe(
-      T.Body("ARecord object { name, ttl, type, 6 more }"),
-    ),
-    AAAARecordObjectNameTtlType6More__: S.Unknown.pipe(
-      T.Body("AAAARecord object { name, ttl, type, 6 more }"),
-    ),
-    CNAMERecordObjectNameTtlType5More__: S.Unknown.pipe(
-      T.Body("CNAMERecord object { name, ttl, type, 5 more }"),
-    ),
-    MXRecordObjectNameTtlType6More__: S.Unknown.pipe(
-      T.Body("MXRecord object { name, ttl, type, 6 more }"),
-    ),
-    NSRecordObjectNameTtlType5More__: S.Unknown.pipe(
-      T.Body("NSRecord object { name, ttl, type, 5 more }"),
-    ),
-    DNSRecordsOpenpgpkeyRecordObjectNameTtlType5More__: S.Unknown.pipe(
-      T.Body("DNSRecordsOpenpgpkeyRecord object { name, ttl, type, 5 more }"),
-    ),
-    PTRRecordObjectNameTtlType5More__: S.Unknown.pipe(
-      T.Body("PTRRecord object { name, ttl, type, 5 more }"),
-    ),
-    TXTRecordObjectNameTtlType5More__: S.Unknown.pipe(
-      T.Body("TXTRecord object { name, ttl, type, 5 more }"),
-    ),
-    CAARecordObjectNameTtlType6More__: S.Unknown.pipe(
-      T.Body("CAARecord object { name, ttl, type, 6 more }"),
-    ),
-    CERTRecordObjectNameTtlType6More__: S.Unknown.pipe(
-      T.Body("CERTRecord object { name, ttl, type, 6 more }"),
-    ),
-    DNSKEYRecordObjectNameTtlType6More__: S.Unknown.pipe(
-      T.Body("DNSKEYRecord object { name, ttl, type, 6 more }"),
-    ),
-    DSRecordObjectNameTtlType6More__: S.Unknown.pipe(
-      T.Body("DSRecord object { name, ttl, type, 6 more }"),
-    ),
-    HTTPSRecordObjectNameTtlType6More__: S.Unknown.pipe(
-      T.Body("HTTPSRecord object { name, ttl, type, 6 more }"),
-    ),
-    LOCRecordObjectNameTtlType6More__: S.Unknown.pipe(
-      T.Body("LOCRecord object { name, ttl, type, 6 more }"),
-    ),
-    NAPTRRecordObjectNameTtlType6More__: S.Unknown.pipe(
-      T.Body("NAPTRRecord object { name, ttl, type, 6 more }"),
-    ),
-    SMIMEARecordObjectNameTtlType6More__: S.Unknown.pipe(
-      T.Body("SMIMEARecord object { name, ttl, type, 6 more }"),
-    ),
-    SRVRecordObjectNameTtlType6More__: S.Unknown.pipe(
-      T.Body("SRVRecord object { name, ttl, type, 6 more }"),
-    ),
-    SSHFPRecordObjectNameTtlType6More__: S.Unknown.pipe(
-      T.Body("SSHFPRecord object { name, ttl, type, 6 more }"),
-    ),
-    SVCBRecordObjectNameTtlType6More__: S.Unknown.pipe(
-      T.Body("SVCBRecord object { name, ttl, type, 6 more }"),
-    ),
-    TLSARecordObjectNameTtlType6More__: S.Unknown.pipe(
-      T.Body("TLSARecord object { name, ttl, type, 6 more }"),
-    ),
-    URIRecordObjectNameTtlType7More__: S.Unknown.pipe(
-      T.Body("URIRecord object { name, ttl, type, 7 more }"),
-    ),
+    name: S.optional(S.String),
+    ttl: S.optional(RecordsEditRequestBodyTtl),
+    type: S.optional(RecordsEditRequestBodyType),
+    comment: S.optional(S.String),
+    content: S.optional(S.String),
+    privateRouting: S.optional(S.Boolean.pipe(T.Body("private_routing"))),
+    proxied: S.optional(S.Boolean),
+    settings: S.optional(RecordsEditRequestBodySettings),
+    tags: S.optional(RecordsEditRequestBodyTagsList),
+    priority: S.optional(S.Number),
+    data: S.optional(RecordsEditRequestBodyData),
   }),
 ).annotate({
   identifier: "RecordsEditRequestBody",
@@ -9489,6 +10031,73 @@ export const RecordsEditResponseNSRecord = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RecordsEditResponseNSRecord",
 }) as any as S.Schema<RecordsEditResponseNSRecord>;
+
+export type RecordsEditResponseMetaShadowedByList = string[];
+export const RecordsEditResponseMetaShadowedByList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<RecordsEditResponseMetaShadowedByList>;
+
+export interface RecordsEditResponseMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsEditResponseMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsEditResponseMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+    shadowedBy: S.optional(
+      RecordsEditResponseMetaShadowedByList.pipe(T.Body("shadowed_by")),
+    ),
+    shadowedRecordsCount: S.optional(
+      S.Number.pipe(T.Body("shadowed_records_count")),
+    ),
+  }),
+).annotate({
+  identifier: "RecordsEditResponseMeta",
+}) as any as S.Schema<RecordsEditResponseMeta>;
+
+export interface RecordsEditResponseSettings {
+  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
+  ipv4Only?: boolean;
+  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
+  ipv6Only?: boolean;
+}
+export const RecordsEditResponseSettings = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
+    ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
+  }),
+).annotate({
+  identifier: "RecordsEditResponseSettings",
+}) as any as S.Schema<RecordsEditResponseSettings>;
+
+export type RecordsEditResponseTagsList = unknown[];
+export const RecordsEditResponseTagsList = /*@__PURE__*/ S.Array(
+  S.Unknown,
+) as any as S.Schema<RecordsEditResponseTagsList>;
+
+export interface RecordsEditResponseTtl {
+  number: unknown;
+  /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
+  "1": unknown;
+}
+export const RecordsEditResponseTtl = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    number: S.Unknown,
+    "1": S.Unknown,
+  }),
+).annotate({
+  identifier: "RecordsEditResponseTtl",
+}) as any as S.Schema<RecordsEditResponseTtl>;
+
+export type RecordsEditResponseType = "OPENPGPKEY" | (string & {});
+export const RecordsEditResponseType = /*@__PURE__*/ S.String;
 
 export type RecordsEditResponsePTRRecordMetaShadowedByList = string[];
 export const RecordsEditResponsePTRRecordMetaShadowedByList =
@@ -10440,7 +11049,36 @@ export interface PatchRecordResponse {
   CNAMERecord: RecordsEditResponseCNAMERecord;
   MXRecord: RecordsEditResponseMXRecord;
   NSRecord: RecordsEditResponseNSRecord;
-  OpenpgpkeyRecordObjectIdCommentContent12More__: unknown;
+  /** Identifier. */
+  id?: string;
+  /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
+  comment?: string;
+  /** A single Base64-encoded OpenPGP Transferable Public Key (RFC 4880 Section 11.1) */
+  content?: string;
+  /** When the record was created. */
+  createdOn?: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta?: RecordsEditResponseMeta;
+  /** When the record was last modified. */
+  modifiedOn?: string;
+  /** Complete DNS record name, including the zone name, in Punycode. */
+  name?: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable?: boolean;
+  /** Whether the record is receiving the performance and security benefits of Cloudflare. */
+  proxied?: boolean;
+  /** Settings for the DNS record. */
+  settings?: RecordsEditResponseSettings;
+  /** Custom tags for the DNS record. This field has no effect on DNS responses. */
+  tags?: RecordsEditResponseTagsList;
+  /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
+  ttl?: RecordsEditResponseTtl;
+  /** Record type. */
+  type?: RecordsEditResponseType;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
   PTRRecord: RecordsEditResponsePTRRecord;
   TXTRecord: RecordsEditResponseTXTRecord;
   CAARecord: RecordsEditResponseCAARecord;
@@ -10464,9 +11102,21 @@ export const PatchRecordResponse = /*@__PURE__*/ S.suspend(() =>
     CNAMERecord: RecordsEditResponseCNAMERecord,
     MXRecord: RecordsEditResponseMXRecord,
     NSRecord: RecordsEditResponseNSRecord,
-    OpenpgpkeyRecordObjectIdCommentContent12More__: S.Unknown.pipe(
-      T.Body("OpenpgpkeyRecord object { id, comment, content, 12 more }"),
-    ),
+    id: S.optional(S.String),
+    comment: S.optional(S.String),
+    content: S.optional(S.String),
+    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
+    meta: S.optional(RecordsEditResponseMeta),
+    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+    name: S.optional(S.String),
+    proxiable: S.optional(S.Boolean),
+    proxied: S.optional(S.Boolean),
+    settings: S.optional(RecordsEditResponseSettings),
+    tags: S.optional(RecordsEditResponseTagsList),
+    ttl: S.optional(RecordsEditResponseTtl),
+    type: S.optional(RecordsEditResponseType),
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
     PTRRecord: RecordsEditResponsePTRRecord,
     TXTRecord: RecordsEditResponseTXTRecord,
     CAARecord: RecordsEditResponseCAARecord,
@@ -11413,6 +12063,74 @@ export const RecordsScanListResultItemNSRecord = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RecordsScanListResultItemNSRecord",
 }) as any as S.Schema<RecordsScanListResultItemNSRecord>;
+
+export type RecordsScanListResultItemMetaShadowedByList = string[];
+export const RecordsScanListResultItemMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsScanListResultItemMetaShadowedByList>;
+
+export interface RecordsScanListResultItemMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsScanListResultItemMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsScanListResultItemMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+    shadowedBy: S.optional(
+      RecordsScanListResultItemMetaShadowedByList.pipe(T.Body("shadowed_by")),
+    ),
+    shadowedRecordsCount: S.optional(
+      S.Number.pipe(T.Body("shadowed_records_count")),
+    ),
+  }),
+).annotate({
+  identifier: "RecordsScanListResultItemMeta",
+}) as any as S.Schema<RecordsScanListResultItemMeta>;
+
+export interface RecordsScanListResultItemSettings {
+  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
+  ipv4Only?: boolean;
+  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
+  ipv6Only?: boolean;
+}
+export const RecordsScanListResultItemSettings = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
+    ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
+  }),
+).annotate({
+  identifier: "RecordsScanListResultItemSettings",
+}) as any as S.Schema<RecordsScanListResultItemSettings>;
+
+export type RecordsScanListResultItemTagsList = unknown[];
+export const RecordsScanListResultItemTagsList = /*@__PURE__*/ S.Array(
+  S.Unknown,
+) as any as S.Schema<RecordsScanListResultItemTagsList>;
+
+export interface RecordsScanListResultItemTtl {
+  number: unknown;
+  /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
+  "1": unknown;
+}
+export const RecordsScanListResultItemTtl = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    number: S.Unknown,
+    "1": S.Unknown,
+  }),
+).annotate({
+  identifier: "RecordsScanListResultItemTtl",
+}) as any as S.Schema<RecordsScanListResultItemTtl>;
+
+export type RecordsScanListResultItemType = "OPENPGPKEY" | (string & {});
+export const RecordsScanListResultItemType = /*@__PURE__*/ S.String;
 
 export type RecordsScanListResultItemPTRRecordMetaShadowedByList = string[];
 export const RecordsScanListResultItemPTRRecordMetaShadowedByList =
@@ -12395,7 +13113,36 @@ export interface RecordsScanListResultItem {
   CNAMERecord: RecordsScanListResultItemCNAMERecord;
   MXRecord: RecordsScanListResultItemMXRecord;
   NSRecord: RecordsScanListResultItemNSRecord;
-  OpenpgpkeyRecordObjectIdCommentContent12More__: unknown;
+  /** Identifier. */
+  id?: string;
+  /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
+  comment?: string;
+  /** A single Base64-encoded OpenPGP Transferable Public Key (RFC 4880 Section 11.1) */
+  content?: string;
+  /** When the record was created. */
+  createdOn?: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta?: RecordsScanListResultItemMeta;
+  /** When the record was last modified. */
+  modifiedOn?: string;
+  /** Complete DNS record name, including the zone name, in Punycode. */
+  name?: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable?: boolean;
+  /** Whether the record is receiving the performance and security benefits of Cloudflare. */
+  proxied?: boolean;
+  /** Settings for the DNS record. */
+  settings?: RecordsScanListResultItemSettings;
+  /** Custom tags for the DNS record. This field has no effect on DNS responses. */
+  tags?: RecordsScanListResultItemTagsList;
+  /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
+  ttl?: RecordsScanListResultItemTtl;
+  /** Record type. */
+  type?: RecordsScanListResultItemType;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
   PTRRecord: RecordsScanListResultItemPTRRecord;
   TXTRecord: RecordsScanListResultItemTXTRecord;
   CAARecord: RecordsScanListResultItemCAARecord;
@@ -12419,9 +13166,21 @@ export const RecordsScanListResultItem = /*@__PURE__*/ S.suspend(() =>
     CNAMERecord: RecordsScanListResultItemCNAMERecord,
     MXRecord: RecordsScanListResultItemMXRecord,
     NSRecord: RecordsScanListResultItemNSRecord,
-    OpenpgpkeyRecordObjectIdCommentContent12More__: S.Unknown.pipe(
-      T.Body("OpenpgpkeyRecord object { id, comment, content, 12 more }"),
-    ),
+    id: S.optional(S.String),
+    comment: S.optional(S.String),
+    content: S.optional(S.String),
+    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
+    meta: S.optional(RecordsScanListResultItemMeta),
+    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+    name: S.optional(S.String),
+    proxiable: S.optional(S.Boolean),
+    proxied: S.optional(S.Boolean),
+    settings: S.optional(RecordsScanListResultItemSettings),
+    tags: S.optional(RecordsScanListResultItemTagsList),
+    ttl: S.optional(RecordsScanListResultItemTtl),
+    type: S.optional(RecordsScanListResultItemType),
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
     PTRRecord: RecordsScanListResultItemPTRRecord,
     TXTRecord: RecordsScanListResultItemTXTRecord,
     CAARecord: RecordsScanListResultItemCAARecord,
@@ -12502,94 +13261,102 @@ export const ScanRecordResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ScanRecordResponse",
 }) as any as S.Schema<ScanRecordResponse>;
 
+export interface RecordsScanReviewRequestAcceptsItemTtl {
+  number: unknown;
+  /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
+  "1": unknown;
+}
+export const RecordsScanReviewRequestAcceptsItemTtl = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      number: S.Unknown,
+      "1": S.Unknown,
+    }),
+).annotate({
+  identifier: "RecordsScanReviewRequestAcceptsItemTtl",
+}) as any as S.Schema<RecordsScanReviewRequestAcceptsItemTtl>;
+
+export type RecordsScanReviewRequestAcceptsItemType = "A" | (string & {});
+export const RecordsScanReviewRequestAcceptsItemType = /*@__PURE__*/ S.String;
+
+export interface RecordsScanReviewRequestAcceptsItemSettings {
+  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
+  ipv4Only?: boolean;
+  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
+  ipv6Only?: boolean;
+}
+export const RecordsScanReviewRequestAcceptsItemSettings =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
+      ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
+    }),
+  ).annotate({
+    identifier: "RecordsScanReviewRequestAcceptsItemSettings",
+  }) as any as S.Schema<RecordsScanReviewRequestAcceptsItemSettings>;
+
+export type RecordsScanReviewRequestAcceptsItemTagsList = unknown[];
+export const RecordsScanReviewRequestAcceptsItemTagsList =
+  /*@__PURE__*/ S.Array(
+    S.Unknown,
+  ) as any as S.Schema<RecordsScanReviewRequestAcceptsItemTagsList>;
+
+export interface RecordsScanReviewRequestAcceptsItemData {
+  /** Flags for the CAA record. */
+  flags?: number;
+  /** Name of the property controlled by this record (e.g.: issue, issuewild, iodef). */
+  tag?: string;
+  /** Value of the record. This field's semantics depend on the chosen tag. */
+  value?: string;
+}
+export const RecordsScanReviewRequestAcceptsItemData = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      flags: S.optional(S.Number),
+      tag: S.optional(S.String),
+      value: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "RecordsScanReviewRequestAcceptsItemData",
+}) as any as S.Schema<RecordsScanReviewRequestAcceptsItemData>;
+
 export interface RecordsScanReviewRequestAcceptsItem {
-  ARecordObjectNameTtlType6More__: unknown;
-  AAAARecordObjectNameTtlType6More__: unknown;
-  CNAMERecordObjectNameTtlType5More__: unknown;
-  MXRecordObjectNameTtlType6More__: unknown;
-  NSRecordObjectNameTtlType5More__: unknown;
-  DNSRecordsOpenpgpkeyRecordObjectNameTtlType5More__: unknown;
-  PTRRecordObjectNameTtlType5More__: unknown;
-  TXTRecordObjectNameTtlType5More__: unknown;
-  CAARecordObjectNameTtlType6More__: unknown;
-  CERTRecordObjectNameTtlType6More__: unknown;
-  DNSKEYRecordObjectNameTtlType6More__: unknown;
-  DSRecordObjectNameTtlType6More__: unknown;
-  HTTPSRecordObjectNameTtlType6More__: unknown;
-  LOCRecordObjectNameTtlType6More__: unknown;
-  NAPTRRecordObjectNameTtlType6More__: unknown;
-  SMIMEARecordObjectNameTtlType6More__: unknown;
-  SRVRecordObjectNameTtlType6More__: unknown;
-  SSHFPRecordObjectNameTtlType6More__: unknown;
-  SVCBRecordObjectNameTtlType6More__: unknown;
-  TLSARecordObjectNameTtlType6More__: unknown;
-  URIRecordObjectNameTtlType7More__: unknown;
+  /** Complete DNS record name, including the zone name, in Punycode. */
+  name?: string;
+  /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
+  ttl?: RecordsScanReviewRequestAcceptsItemTtl;
+  /** Record type. */
+  type?: RecordsScanReviewRequestAcceptsItemType;
+  /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
+  comment?: string;
+  /** A valid IPv4 address. */
+  content?: string;
+  /** Enables private network routing to the origin. */
+  privateRouting?: boolean;
+  /** Whether the record is receiving the performance and security benefits of Cloudflare. */
+  proxied?: boolean;
+  /** Settings for the DNS record. */
+  settings?: RecordsScanReviewRequestAcceptsItemSettings;
+  /** Custom tags for the DNS record. This field has no effect on DNS responses. */
+  tags?: RecordsScanReviewRequestAcceptsItemTagsList;
+  /** Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map. */
+  priority?: number;
+  /** Components of a CAA record. */
+  data?: RecordsScanReviewRequestAcceptsItemData;
 }
 export const RecordsScanReviewRequestAcceptsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    ARecordObjectNameTtlType6More__: S.Unknown.pipe(
-      T.Body("ARecord object { name, ttl, type, 6 more }"),
-    ),
-    AAAARecordObjectNameTtlType6More__: S.Unknown.pipe(
-      T.Body("AAAARecord object { name, ttl, type, 6 more }"),
-    ),
-    CNAMERecordObjectNameTtlType5More__: S.Unknown.pipe(
-      T.Body("CNAMERecord object { name, ttl, type, 5 more }"),
-    ),
-    MXRecordObjectNameTtlType6More__: S.Unknown.pipe(
-      T.Body("MXRecord object { name, ttl, type, 6 more }"),
-    ),
-    NSRecordObjectNameTtlType5More__: S.Unknown.pipe(
-      T.Body("NSRecord object { name, ttl, type, 5 more }"),
-    ),
-    DNSRecordsOpenpgpkeyRecordObjectNameTtlType5More__: S.Unknown.pipe(
-      T.Body("DNSRecordsOpenpgpkeyRecord object { name, ttl, type, 5 more }"),
-    ),
-    PTRRecordObjectNameTtlType5More__: S.Unknown.pipe(
-      T.Body("PTRRecord object { name, ttl, type, 5 more }"),
-    ),
-    TXTRecordObjectNameTtlType5More__: S.Unknown.pipe(
-      T.Body("TXTRecord object { name, ttl, type, 5 more }"),
-    ),
-    CAARecordObjectNameTtlType6More__: S.Unknown.pipe(
-      T.Body("CAARecord object { name, ttl, type, 6 more }"),
-    ),
-    CERTRecordObjectNameTtlType6More__: S.Unknown.pipe(
-      T.Body("CERTRecord object { name, ttl, type, 6 more }"),
-    ),
-    DNSKEYRecordObjectNameTtlType6More__: S.Unknown.pipe(
-      T.Body("DNSKEYRecord object { name, ttl, type, 6 more }"),
-    ),
-    DSRecordObjectNameTtlType6More__: S.Unknown.pipe(
-      T.Body("DSRecord object { name, ttl, type, 6 more }"),
-    ),
-    HTTPSRecordObjectNameTtlType6More__: S.Unknown.pipe(
-      T.Body("HTTPSRecord object { name, ttl, type, 6 more }"),
-    ),
-    LOCRecordObjectNameTtlType6More__: S.Unknown.pipe(
-      T.Body("LOCRecord object { name, ttl, type, 6 more }"),
-    ),
-    NAPTRRecordObjectNameTtlType6More__: S.Unknown.pipe(
-      T.Body("NAPTRRecord object { name, ttl, type, 6 more }"),
-    ),
-    SMIMEARecordObjectNameTtlType6More__: S.Unknown.pipe(
-      T.Body("SMIMEARecord object { name, ttl, type, 6 more }"),
-    ),
-    SRVRecordObjectNameTtlType6More__: S.Unknown.pipe(
-      T.Body("SRVRecord object { name, ttl, type, 6 more }"),
-    ),
-    SSHFPRecordObjectNameTtlType6More__: S.Unknown.pipe(
-      T.Body("SSHFPRecord object { name, ttl, type, 6 more }"),
-    ),
-    SVCBRecordObjectNameTtlType6More__: S.Unknown.pipe(
-      T.Body("SVCBRecord object { name, ttl, type, 6 more }"),
-    ),
-    TLSARecordObjectNameTtlType6More__: S.Unknown.pipe(
-      T.Body("TLSARecord object { name, ttl, type, 6 more }"),
-    ),
-    URIRecordObjectNameTtlType7More__: S.Unknown.pipe(
-      T.Body("URIRecord object { name, ttl, type, 7 more }"),
-    ),
+    name: S.optional(S.String),
+    ttl: S.optional(RecordsScanReviewRequestAcceptsItemTtl),
+    type: S.optional(RecordsScanReviewRequestAcceptsItemType),
+    comment: S.optional(S.String),
+    content: S.optional(S.String),
+    privateRouting: S.optional(S.Boolean.pipe(T.Body("private_routing"))),
+    proxied: S.optional(S.Boolean),
+    settings: S.optional(RecordsScanReviewRequestAcceptsItemSettings),
+    tags: S.optional(RecordsScanReviewRequestAcceptsItemTagsList),
+    priority: S.optional(S.Number),
+    data: S.optional(RecordsScanReviewRequestAcceptsItemData),
   }),
 ).annotate({
   identifier: "RecordsScanReviewRequestAcceptsItem",
@@ -12982,6 +13749,82 @@ export const RecordsScanReviewResponseAcceptsItemNSRecord =
   ).annotate({
     identifier: "RecordsScanReviewResponseAcceptsItemNSRecord",
   }) as any as S.Schema<RecordsScanReviewResponseAcceptsItemNSRecord>;
+
+export type RecordsScanReviewResponseAcceptsItemMetaShadowedByList = string[];
+export const RecordsScanReviewResponseAcceptsItemMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsScanReviewResponseAcceptsItemMetaShadowedByList>;
+
+export interface RecordsScanReviewResponseAcceptsItemMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsScanReviewResponseAcceptsItemMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsScanReviewResponseAcceptsItemMeta = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+      isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+      shadowedBy: S.optional(
+        RecordsScanReviewResponseAcceptsItemMetaShadowedByList.pipe(
+          T.Body("shadowed_by"),
+        ),
+      ),
+      shadowedRecordsCount: S.optional(
+        S.Number.pipe(T.Body("shadowed_records_count")),
+      ),
+    }),
+).annotate({
+  identifier: "RecordsScanReviewResponseAcceptsItemMeta",
+}) as any as S.Schema<RecordsScanReviewResponseAcceptsItemMeta>;
+
+export interface RecordsScanReviewResponseAcceptsItemSettings {
+  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
+  ipv4Only?: boolean;
+  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
+  ipv6Only?: boolean;
+}
+export const RecordsScanReviewResponseAcceptsItemSettings =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
+      ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
+    }),
+  ).annotate({
+    identifier: "RecordsScanReviewResponseAcceptsItemSettings",
+  }) as any as S.Schema<RecordsScanReviewResponseAcceptsItemSettings>;
+
+export type RecordsScanReviewResponseAcceptsItemTagsList = unknown[];
+export const RecordsScanReviewResponseAcceptsItemTagsList =
+  /*@__PURE__*/ S.Array(
+    S.Unknown,
+  ) as any as S.Schema<RecordsScanReviewResponseAcceptsItemTagsList>;
+
+export interface RecordsScanReviewResponseAcceptsItemTtl {
+  number: unknown;
+  /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
+  "1": unknown;
+}
+export const RecordsScanReviewResponseAcceptsItemTtl = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      number: S.Unknown,
+      "1": S.Unknown,
+    }),
+).annotate({
+  identifier: "RecordsScanReviewResponseAcceptsItemTtl",
+}) as any as S.Schema<RecordsScanReviewResponseAcceptsItemTtl>;
+
+export type RecordsScanReviewResponseAcceptsItemType =
+  | "OPENPGPKEY"
+  | (string & {});
+export const RecordsScanReviewResponseAcceptsItemType = /*@__PURE__*/ S.String;
 
 export type RecordsScanReviewResponseAcceptsItemPTRRecordMetaShadowedByList =
   string[];
@@ -14009,7 +14852,36 @@ export interface RecordsScanReviewResponseAcceptsItem {
   CNAMERecord: RecordsScanReviewResponseAcceptsItemCNAMERecord;
   MXRecord: RecordsScanReviewResponseAcceptsItemMXRecord;
   NSRecord: RecordsScanReviewResponseAcceptsItemNSRecord;
-  OpenpgpkeyRecordObjectIdCommentContent12More__: unknown;
+  /** Identifier. */
+  id?: string;
+  /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
+  comment?: string;
+  /** A single Base64-encoded OpenPGP Transferable Public Key (RFC 4880 Section 11.1) */
+  content?: string;
+  /** When the record was created. */
+  createdOn?: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta?: RecordsScanReviewResponseAcceptsItemMeta;
+  /** When the record was last modified. */
+  modifiedOn?: string;
+  /** Complete DNS record name, including the zone name, in Punycode. */
+  name?: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable?: boolean;
+  /** Whether the record is receiving the performance and security benefits of Cloudflare. */
+  proxied?: boolean;
+  /** Settings for the DNS record. */
+  settings?: RecordsScanReviewResponseAcceptsItemSettings;
+  /** Custom tags for the DNS record. This field has no effect on DNS responses. */
+  tags?: RecordsScanReviewResponseAcceptsItemTagsList;
+  /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
+  ttl?: RecordsScanReviewResponseAcceptsItemTtl;
+  /** Record type. */
+  type?: RecordsScanReviewResponseAcceptsItemType;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
   PTRRecord: RecordsScanReviewResponseAcceptsItemPTRRecord;
   TXTRecord: RecordsScanReviewResponseAcceptsItemTXTRecord;
   CAARecord: RecordsScanReviewResponseAcceptsItemCAARecord;
@@ -14034,9 +14906,23 @@ export const RecordsScanReviewResponseAcceptsItem = /*@__PURE__*/ S.suspend(
       CNAMERecord: RecordsScanReviewResponseAcceptsItemCNAMERecord,
       MXRecord: RecordsScanReviewResponseAcceptsItemMXRecord,
       NSRecord: RecordsScanReviewResponseAcceptsItemNSRecord,
-      OpenpgpkeyRecordObjectIdCommentContent12More__: S.Unknown.pipe(
-        T.Body("OpenpgpkeyRecord object { id, comment, content, 12 more }"),
+      id: S.optional(S.String),
+      comment: S.optional(S.String),
+      content: S.optional(S.String),
+      createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
+      meta: S.optional(RecordsScanReviewResponseAcceptsItemMeta),
+      modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+      name: S.optional(S.String),
+      proxiable: S.optional(S.Boolean),
+      proxied: S.optional(S.Boolean),
+      settings: S.optional(RecordsScanReviewResponseAcceptsItemSettings),
+      tags: S.optional(RecordsScanReviewResponseAcceptsItemTagsList),
+      ttl: S.optional(RecordsScanReviewResponseAcceptsItemTtl),
+      type: S.optional(RecordsScanReviewResponseAcceptsItemType),
+      commentModifiedOn: S.optional(
+        S.String.pipe(T.Body("comment_modified_on")),
       ),
+      tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
       PTRRecord: RecordsScanReviewResponseAcceptsItemPTRRecord,
       TXTRecord: RecordsScanReviewResponseAcceptsItemTXTRecord,
       CAARecord: RecordsScanReviewResponseAcceptsItemCAARecord,
@@ -14109,94 +14995,98 @@ export const ScanTriggerRecordResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ScanTriggerRecordResponse",
 }) as any as S.Schema<ScanTriggerRecordResponse>;
 
+export interface RecordsUpdateRequestBodyTtl {
+  number: unknown;
+  /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
+  "1": unknown;
+}
+export const RecordsUpdateRequestBodyTtl = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    number: S.Unknown,
+    "1": S.Unknown,
+  }),
+).annotate({
+  identifier: "RecordsUpdateRequestBodyTtl",
+}) as any as S.Schema<RecordsUpdateRequestBodyTtl>;
+
+export type RecordsUpdateRequestBodyType = "A" | (string & {});
+export const RecordsUpdateRequestBodyType = /*@__PURE__*/ S.String;
+
+export interface RecordsUpdateRequestBodySettings {
+  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
+  ipv4Only?: boolean;
+  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
+  ipv6Only?: boolean;
+}
+export const RecordsUpdateRequestBodySettings = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
+    ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
+  }),
+).annotate({
+  identifier: "RecordsUpdateRequestBodySettings",
+}) as any as S.Schema<RecordsUpdateRequestBodySettings>;
+
+export type RecordsUpdateRequestBodyTagsList = unknown[];
+export const RecordsUpdateRequestBodyTagsList = /*@__PURE__*/ S.Array(
+  S.Unknown,
+) as any as S.Schema<RecordsUpdateRequestBodyTagsList>;
+
+export interface RecordsUpdateRequestBodyData {
+  /** Flags for the CAA record. */
+  flags?: number;
+  /** Name of the property controlled by this record (e.g.: issue, issuewild, iodef). */
+  tag?: string;
+  /** Value of the record. This field's semantics depend on the chosen tag. */
+  value?: string;
+}
+export const RecordsUpdateRequestBodyData = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    flags: S.optional(S.Number),
+    tag: S.optional(S.String),
+    value: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "RecordsUpdateRequestBodyData",
+}) as any as S.Schema<RecordsUpdateRequestBodyData>;
+
 export interface RecordsUpdateRequestBody {
-  ARecordObjectNameTtlType6More__: unknown;
-  AAAARecordObjectNameTtlType6More__: unknown;
-  CNAMERecordObjectNameTtlType5More__: unknown;
-  MXRecordObjectNameTtlType6More__: unknown;
-  NSRecordObjectNameTtlType5More__: unknown;
-  DNSRecordsOpenpgpkeyRecordObjectNameTtlType5More__: unknown;
-  PTRRecordObjectNameTtlType5More__: unknown;
-  TXTRecordObjectNameTtlType5More__: unknown;
-  CAARecordObjectNameTtlType6More__: unknown;
-  CERTRecordObjectNameTtlType6More__: unknown;
-  DNSKEYRecordObjectNameTtlType6More__: unknown;
-  DSRecordObjectNameTtlType6More__: unknown;
-  HTTPSRecordObjectNameTtlType6More__: unknown;
-  LOCRecordObjectNameTtlType6More__: unknown;
-  NAPTRRecordObjectNameTtlType6More__: unknown;
-  SMIMEARecordObjectNameTtlType6More__: unknown;
-  SRVRecordObjectNameTtlType6More__: unknown;
-  SSHFPRecordObjectNameTtlType6More__: unknown;
-  SVCBRecordObjectNameTtlType6More__: unknown;
-  TLSARecordObjectNameTtlType6More__: unknown;
-  URIRecordObjectNameTtlType7More__: unknown;
+  /** Complete DNS record name, including the zone name, in Punycode. */
+  name?: string;
+  /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
+  ttl?: RecordsUpdateRequestBodyTtl;
+  /** Record type. */
+  type?: RecordsUpdateRequestBodyType;
+  /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
+  comment?: string;
+  /** A valid IPv4 address. */
+  content?: string;
+  /** Enables private network routing to the origin. */
+  privateRouting?: boolean;
+  /** Whether the record is receiving the performance and security benefits of Cloudflare. */
+  proxied?: boolean;
+  /** Settings for the DNS record. */
+  settings?: RecordsUpdateRequestBodySettings;
+  /** Custom tags for the DNS record. This field has no effect on DNS responses. */
+  tags?: RecordsUpdateRequestBodyTagsList;
+  /** Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map. */
+  priority?: number;
+  /** Components of a CAA record. */
+  data?: RecordsUpdateRequestBodyData;
 }
 export const RecordsUpdateRequestBody = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    ARecordObjectNameTtlType6More__: S.Unknown.pipe(
-      T.Body("ARecord object { name, ttl, type, 6 more }"),
-    ),
-    AAAARecordObjectNameTtlType6More__: S.Unknown.pipe(
-      T.Body("AAAARecord object { name, ttl, type, 6 more }"),
-    ),
-    CNAMERecordObjectNameTtlType5More__: S.Unknown.pipe(
-      T.Body("CNAMERecord object { name, ttl, type, 5 more }"),
-    ),
-    MXRecordObjectNameTtlType6More__: S.Unknown.pipe(
-      T.Body("MXRecord object { name, ttl, type, 6 more }"),
-    ),
-    NSRecordObjectNameTtlType5More__: S.Unknown.pipe(
-      T.Body("NSRecord object { name, ttl, type, 5 more }"),
-    ),
-    DNSRecordsOpenpgpkeyRecordObjectNameTtlType5More__: S.Unknown.pipe(
-      T.Body("DNSRecordsOpenpgpkeyRecord object { name, ttl, type, 5 more }"),
-    ),
-    PTRRecordObjectNameTtlType5More__: S.Unknown.pipe(
-      T.Body("PTRRecord object { name, ttl, type, 5 more }"),
-    ),
-    TXTRecordObjectNameTtlType5More__: S.Unknown.pipe(
-      T.Body("TXTRecord object { name, ttl, type, 5 more }"),
-    ),
-    CAARecordObjectNameTtlType6More__: S.Unknown.pipe(
-      T.Body("CAARecord object { name, ttl, type, 6 more }"),
-    ),
-    CERTRecordObjectNameTtlType6More__: S.Unknown.pipe(
-      T.Body("CERTRecord object { name, ttl, type, 6 more }"),
-    ),
-    DNSKEYRecordObjectNameTtlType6More__: S.Unknown.pipe(
-      T.Body("DNSKEYRecord object { name, ttl, type, 6 more }"),
-    ),
-    DSRecordObjectNameTtlType6More__: S.Unknown.pipe(
-      T.Body("DSRecord object { name, ttl, type, 6 more }"),
-    ),
-    HTTPSRecordObjectNameTtlType6More__: S.Unknown.pipe(
-      T.Body("HTTPSRecord object { name, ttl, type, 6 more }"),
-    ),
-    LOCRecordObjectNameTtlType6More__: S.Unknown.pipe(
-      T.Body("LOCRecord object { name, ttl, type, 6 more }"),
-    ),
-    NAPTRRecordObjectNameTtlType6More__: S.Unknown.pipe(
-      T.Body("NAPTRRecord object { name, ttl, type, 6 more }"),
-    ),
-    SMIMEARecordObjectNameTtlType6More__: S.Unknown.pipe(
-      T.Body("SMIMEARecord object { name, ttl, type, 6 more }"),
-    ),
-    SRVRecordObjectNameTtlType6More__: S.Unknown.pipe(
-      T.Body("SRVRecord object { name, ttl, type, 6 more }"),
-    ),
-    SSHFPRecordObjectNameTtlType6More__: S.Unknown.pipe(
-      T.Body("SSHFPRecord object { name, ttl, type, 6 more }"),
-    ),
-    SVCBRecordObjectNameTtlType6More__: S.Unknown.pipe(
-      T.Body("SVCBRecord object { name, ttl, type, 6 more }"),
-    ),
-    TLSARecordObjectNameTtlType6More__: S.Unknown.pipe(
-      T.Body("TLSARecord object { name, ttl, type, 6 more }"),
-    ),
-    URIRecordObjectNameTtlType7More__: S.Unknown.pipe(
-      T.Body("URIRecord object { name, ttl, type, 7 more }"),
-    ),
+    name: S.optional(S.String),
+    ttl: S.optional(RecordsUpdateRequestBodyTtl),
+    type: S.optional(RecordsUpdateRequestBodyType),
+    comment: S.optional(S.String),
+    content: S.optional(S.String),
+    privateRouting: S.optional(S.Boolean.pipe(T.Body("private_routing"))),
+    proxied: S.optional(S.Boolean),
+    settings: S.optional(RecordsUpdateRequestBodySettings),
+    tags: S.optional(RecordsUpdateRequestBodyTagsList),
+    priority: S.optional(S.Number),
+    data: S.optional(RecordsUpdateRequestBodyData),
   }),
 ).annotate({
   identifier: "RecordsUpdateRequestBody",
@@ -14547,6 +15437,73 @@ export const RecordsUpdateResponseNSRecord = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RecordsUpdateResponseNSRecord",
 }) as any as S.Schema<RecordsUpdateResponseNSRecord>;
+
+export type RecordsUpdateResponseMetaShadowedByList = string[];
+export const RecordsUpdateResponseMetaShadowedByList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<RecordsUpdateResponseMetaShadowedByList>;
+
+export interface RecordsUpdateResponseMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsUpdateResponseMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsUpdateResponseMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+    shadowedBy: S.optional(
+      RecordsUpdateResponseMetaShadowedByList.pipe(T.Body("shadowed_by")),
+    ),
+    shadowedRecordsCount: S.optional(
+      S.Number.pipe(T.Body("shadowed_records_count")),
+    ),
+  }),
+).annotate({
+  identifier: "RecordsUpdateResponseMeta",
+}) as any as S.Schema<RecordsUpdateResponseMeta>;
+
+export interface RecordsUpdateResponseSettings {
+  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
+  ipv4Only?: boolean;
+  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
+  ipv6Only?: boolean;
+}
+export const RecordsUpdateResponseSettings = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
+    ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
+  }),
+).annotate({
+  identifier: "RecordsUpdateResponseSettings",
+}) as any as S.Schema<RecordsUpdateResponseSettings>;
+
+export type RecordsUpdateResponseTagsList = unknown[];
+export const RecordsUpdateResponseTagsList = /*@__PURE__*/ S.Array(
+  S.Unknown,
+) as any as S.Schema<RecordsUpdateResponseTagsList>;
+
+export interface RecordsUpdateResponseTtl {
+  number: unknown;
+  /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
+  "1": unknown;
+}
+export const RecordsUpdateResponseTtl = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    number: S.Unknown,
+    "1": S.Unknown,
+  }),
+).annotate({
+  identifier: "RecordsUpdateResponseTtl",
+}) as any as S.Schema<RecordsUpdateResponseTtl>;
+
+export type RecordsUpdateResponseType = "OPENPGPKEY" | (string & {});
+export const RecordsUpdateResponseType = /*@__PURE__*/ S.String;
 
 export type RecordsUpdateResponsePTRRecordMetaShadowedByList = string[];
 export const RecordsUpdateResponsePTRRecordMetaShadowedByList =
@@ -15505,7 +16462,36 @@ export interface UpdateRecordResponse {
   CNAMERecord: RecordsUpdateResponseCNAMERecord;
   MXRecord: RecordsUpdateResponseMXRecord;
   NSRecord: RecordsUpdateResponseNSRecord;
-  OpenpgpkeyRecordObjectIdCommentContent12More__: unknown;
+  /** Identifier. */
+  id?: string;
+  /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
+  comment?: string;
+  /** A single Base64-encoded OpenPGP Transferable Public Key (RFC 4880 Section 11.1) */
+  content?: string;
+  /** When the record was created. */
+  createdOn?: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta?: RecordsUpdateResponseMeta;
+  /** When the record was last modified. */
+  modifiedOn?: string;
+  /** Complete DNS record name, including the zone name, in Punycode. */
+  name?: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable?: boolean;
+  /** Whether the record is receiving the performance and security benefits of Cloudflare. */
+  proxied?: boolean;
+  /** Settings for the DNS record. */
+  settings?: RecordsUpdateResponseSettings;
+  /** Custom tags for the DNS record. This field has no effect on DNS responses. */
+  tags?: RecordsUpdateResponseTagsList;
+  /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
+  ttl?: RecordsUpdateResponseTtl;
+  /** Record type. */
+  type?: RecordsUpdateResponseType;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
   PTRRecord: RecordsUpdateResponsePTRRecord;
   TXTRecord: RecordsUpdateResponseTXTRecord;
   CAARecord: RecordsUpdateResponseCAARecord;
@@ -15529,9 +16515,21 @@ export const UpdateRecordResponse = /*@__PURE__*/ S.suspend(() =>
     CNAMERecord: RecordsUpdateResponseCNAMERecord,
     MXRecord: RecordsUpdateResponseMXRecord,
     NSRecord: RecordsUpdateResponseNSRecord,
-    OpenpgpkeyRecordObjectIdCommentContent12More__: S.Unknown.pipe(
-      T.Body("OpenpgpkeyRecord object { id, comment, content, 12 more }"),
-    ),
+    id: S.optional(S.String),
+    comment: S.optional(S.String),
+    content: S.optional(S.String),
+    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
+    meta: S.optional(RecordsUpdateResponseMeta),
+    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+    name: S.optional(S.String),
+    proxiable: S.optional(S.Boolean),
+    proxied: S.optional(S.Boolean),
+    settings: S.optional(RecordsUpdateResponseSettings),
+    tags: S.optional(RecordsUpdateResponseTagsList),
+    ttl: S.optional(RecordsUpdateResponseTtl),
+    type: S.optional(RecordsUpdateResponseType),
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
     PTRRecord: RecordsUpdateResponsePTRRecord,
     TXTRecord: RecordsUpdateResponseTXTRecord,
     CAARecord: RecordsUpdateResponseCAARecord,

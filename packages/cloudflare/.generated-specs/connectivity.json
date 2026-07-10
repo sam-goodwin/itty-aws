@@ -17,22 +17,141 @@
     ]
   },
   "shapes": {
+    "com.cloudflare.connectivity#DirectoryServicesCreateRequestBodyHostNetwork": {
+      "type": "structure",
+      "members": {
+        "tunnel_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.connectivity#DirectoryServicesCreateRequestBodyHostResolverNetworkResolverIpsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.connectivity#DirectoryServicesCreateRequestBodyHostResolverNetwork": {
+      "type": "structure",
+      "members": {
+        "tunnel_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "resolver_ips": {
+          "target": "com.cloudflare.connectivity#DirectoryServicesCreateRequestBodyHostResolverNetworkResolverIpsList"
+        }
+      }
+    },
+    "com.cloudflare.connectivity#DirectoryServicesCreateRequestBodyHost": {
+      "type": "structure",
+      "members": {
+        "ipv4": {
+          "target": "smithy.api#String"
+        },
+        "network": {
+          "target": "com.cloudflare.connectivity#DirectoryServicesCreateRequestBodyHostNetwork"
+        },
+        "ipv6": {
+          "target": "smithy.api#String"
+        },
+        "hostname": {
+          "target": "smithy.api#String"
+        },
+        "resolver_network": {
+          "target": "com.cloudflare.connectivity#DirectoryServicesCreateRequestBodyHostResolverNetwork"
+        }
+      }
+    },
+    "com.cloudflare.connectivity#DirectoryServicesCreateRequestBodyType": {
+      "type": "enum",
+      "members": {
+        "TCP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "tcp"
+          }
+        },
+        "HTTP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "http"
+          }
+        }
+      }
+    },
+    "com.cloudflare.connectivity#DirectoryServicesCreateRequestBodyTlsSettings": {
+      "type": "structure",
+      "members": {
+        "cert_verification_mode": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "TLS certificate verification mode for the connection to the origin.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.connectivity#DirectoryServicesCreateRequestBodyAppProtocol": {
+      "type": "enum",
+      "members": {
+        "POSTGRESQL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "postgresql"
+          }
+        },
+        "MYSQL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mysql"
+          }
+        }
+      }
+    },
     "com.cloudflare.connectivity#DirectoryServicesCreateRequestBody": {
       "type": "structure",
       "members": {
-        "InfraHTTPServiceConfig_object___host__name__type__6_more__": {
-          "target": "smithy.api#Document",
+        "host": {
+          "target": "com.cloudflare.connectivity#DirectoryServicesCreateRequestBodyHost"
+        },
+        "name": {
+          "target": "smithy.api#String"
+        },
+        "type": {
+          "target": "com.cloudflare.connectivity#DirectoryServicesCreateRequestBodyType"
+        },
+        "created_at": {
+          "target": "smithy.api#String"
+        },
+        "http_port": {
+          "target": "smithy.api#Double"
+        },
+        "https_port": {
+          "target": "smithy.api#Double"
+        },
+        "service_id": {
+          "target": "smithy.api#String"
+        },
+        "tls_settings": {
+          "target": "com.cloudflare.connectivity#DirectoryServicesCreateRequestBodyTlsSettings",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "InfraHTTPServiceConfig object { host, name, type, 6 more }"
+            "smithy.api#documentation": "TLS settings for a connectivity service."
           }
         },
-        "InfraTCPServiceConfig_object___host__name__type__6_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "InfraTCPServiceConfig object { host, name, type, 6 more }"
-          }
+        "updated_at": {
+          "target": "smithy.api#String"
+        },
+        "app_protocol": {
+          "target": "com.cloudflare.connectivity#DirectoryServicesCreateRequestBodyAppProtocol"
+        },
+        "tcp_port": {
+          "target": "smithy.api#Double"
         }
       }
     },
@@ -58,22 +177,141 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.connectivity#DirectoryServicesCreateResponseHostNetwork": {
+      "type": "structure",
+      "members": {
+        "tunnel_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.connectivity#DirectoryServicesCreateResponseHostResolverNetworkResolverIpsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.connectivity#DirectoryServicesCreateResponseHostResolverNetwork": {
+      "type": "structure",
+      "members": {
+        "tunnel_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "resolver_ips": {
+          "target": "com.cloudflare.connectivity#DirectoryServicesCreateResponseHostResolverNetworkResolverIpsList"
+        }
+      }
+    },
+    "com.cloudflare.connectivity#DirectoryServicesCreateResponseHost": {
+      "type": "structure",
+      "members": {
+        "ipv4": {
+          "target": "smithy.api#String"
+        },
+        "network": {
+          "target": "com.cloudflare.connectivity#DirectoryServicesCreateResponseHostNetwork"
+        },
+        "ipv6": {
+          "target": "smithy.api#String"
+        },
+        "hostname": {
+          "target": "smithy.api#String"
+        },
+        "resolver_network": {
+          "target": "com.cloudflare.connectivity#DirectoryServicesCreateResponseHostResolverNetwork"
+        }
+      }
+    },
+    "com.cloudflare.connectivity#DirectoryServicesCreateResponseType": {
+      "type": "enum",
+      "members": {
+        "TCP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "tcp"
+          }
+        },
+        "HTTP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "http"
+          }
+        }
+      }
+    },
+    "com.cloudflare.connectivity#DirectoryServicesCreateResponseTlsSettings": {
+      "type": "structure",
+      "members": {
+        "cert_verification_mode": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "TLS certificate verification mode for the connection to the origin.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.connectivity#DirectoryServicesCreateResponseAppProtocol": {
+      "type": "enum",
+      "members": {
+        "POSTGRESQL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "postgresql"
+          }
+        },
+        "MYSQL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mysql"
+          }
+        }
+      }
+    },
     "com.cloudflare.connectivity#DirectoryServicesCreateResponse": {
       "type": "structure",
       "members": {
-        "InfraHTTPServiceConfig_object___host__name__type__6_more__": {
-          "target": "smithy.api#Document",
+        "host": {
+          "target": "com.cloudflare.connectivity#DirectoryServicesCreateResponseHost"
+        },
+        "name": {
+          "target": "smithy.api#String"
+        },
+        "type": {
+          "target": "com.cloudflare.connectivity#DirectoryServicesCreateResponseType"
+        },
+        "created_at": {
+          "target": "smithy.api#String"
+        },
+        "http_port": {
+          "target": "smithy.api#Double"
+        },
+        "https_port": {
+          "target": "smithy.api#Double"
+        },
+        "service_id": {
+          "target": "smithy.api#String"
+        },
+        "tls_settings": {
+          "target": "com.cloudflare.connectivity#DirectoryServicesCreateResponseTlsSettings",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "InfraHTTPServiceConfig object { host, name, type, 6 more }"
+            "smithy.api#documentation": "TLS settings for a connectivity service."
           }
         },
-        "InfraTCPServiceConfig_object___host__name__type__6_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "InfraTCPServiceConfig object { host, name, type, 6 more }"
-          }
+        "updated_at": {
+          "target": "smithy.api#String"
+        },
+        "app_protocol": {
+          "target": "com.cloudflare.connectivity#DirectoryServicesCreateResponseAppProtocol"
+        },
+        "tcp_port": {
+          "target": "smithy.api#Double"
         }
       },
       "traits": {
@@ -160,22 +398,141 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.connectivity#DirectoryServicesGetResponseHostNetwork": {
+      "type": "structure",
+      "members": {
+        "tunnel_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.connectivity#DirectoryServicesGetResponseHostResolverNetworkResolverIpsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.connectivity#DirectoryServicesGetResponseHostResolverNetwork": {
+      "type": "structure",
+      "members": {
+        "tunnel_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "resolver_ips": {
+          "target": "com.cloudflare.connectivity#DirectoryServicesGetResponseHostResolverNetworkResolverIpsList"
+        }
+      }
+    },
+    "com.cloudflare.connectivity#DirectoryServicesGetResponseHost": {
+      "type": "structure",
+      "members": {
+        "ipv4": {
+          "target": "smithy.api#String"
+        },
+        "network": {
+          "target": "com.cloudflare.connectivity#DirectoryServicesGetResponseHostNetwork"
+        },
+        "ipv6": {
+          "target": "smithy.api#String"
+        },
+        "hostname": {
+          "target": "smithy.api#String"
+        },
+        "resolver_network": {
+          "target": "com.cloudflare.connectivity#DirectoryServicesGetResponseHostResolverNetwork"
+        }
+      }
+    },
+    "com.cloudflare.connectivity#DirectoryServicesGetResponseType": {
+      "type": "enum",
+      "members": {
+        "TCP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "tcp"
+          }
+        },
+        "HTTP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "http"
+          }
+        }
+      }
+    },
+    "com.cloudflare.connectivity#DirectoryServicesGetResponseTlsSettings": {
+      "type": "structure",
+      "members": {
+        "cert_verification_mode": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "TLS certificate verification mode for the connection to the origin.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.connectivity#DirectoryServicesGetResponseAppProtocol": {
+      "type": "enum",
+      "members": {
+        "POSTGRESQL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "postgresql"
+          }
+        },
+        "MYSQL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mysql"
+          }
+        }
+      }
+    },
     "com.cloudflare.connectivity#DirectoryServicesGetResponse": {
       "type": "structure",
       "members": {
-        "InfraHTTPServiceConfig_object___host__name__type__6_more__": {
-          "target": "smithy.api#Document",
+        "host": {
+          "target": "com.cloudflare.connectivity#DirectoryServicesGetResponseHost"
+        },
+        "name": {
+          "target": "smithy.api#String"
+        },
+        "type": {
+          "target": "com.cloudflare.connectivity#DirectoryServicesGetResponseType"
+        },
+        "created_at": {
+          "target": "smithy.api#String"
+        },
+        "http_port": {
+          "target": "smithy.api#Double"
+        },
+        "https_port": {
+          "target": "smithy.api#Double"
+        },
+        "service_id": {
+          "target": "smithy.api#String"
+        },
+        "tls_settings": {
+          "target": "com.cloudflare.connectivity#DirectoryServicesGetResponseTlsSettings",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "InfraHTTPServiceConfig object { host, name, type, 6 more }"
+            "smithy.api#documentation": "TLS settings for a connectivity service."
           }
         },
-        "InfraTCPServiceConfig_object___host__name__type__6_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "InfraTCPServiceConfig object { host, name, type, 6 more }"
-          }
+        "updated_at": {
+          "target": "smithy.api#String"
+        },
+        "app_protocol": {
+          "target": "com.cloudflare.connectivity#DirectoryServicesGetResponseAppProtocol"
+        },
+        "tcp_port": {
+          "target": "smithy.api#Double"
         }
       },
       "traits": {
@@ -254,22 +611,141 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.connectivity#DirectoryServicesListResultItemHostNetwork": {
+      "type": "structure",
+      "members": {
+        "tunnel_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.connectivity#DirectoryServicesListResultItemHostResolverNetworkResolverIpsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.connectivity#DirectoryServicesListResultItemHostResolverNetwork": {
+      "type": "structure",
+      "members": {
+        "tunnel_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "resolver_ips": {
+          "target": "com.cloudflare.connectivity#DirectoryServicesListResultItemHostResolverNetworkResolverIpsList"
+        }
+      }
+    },
+    "com.cloudflare.connectivity#DirectoryServicesListResultItemHost": {
+      "type": "structure",
+      "members": {
+        "ipv4": {
+          "target": "smithy.api#String"
+        },
+        "network": {
+          "target": "com.cloudflare.connectivity#DirectoryServicesListResultItemHostNetwork"
+        },
+        "ipv6": {
+          "target": "smithy.api#String"
+        },
+        "hostname": {
+          "target": "smithy.api#String"
+        },
+        "resolver_network": {
+          "target": "com.cloudflare.connectivity#DirectoryServicesListResultItemHostResolverNetwork"
+        }
+      }
+    },
+    "com.cloudflare.connectivity#DirectoryServicesListResultItemType": {
+      "type": "enum",
+      "members": {
+        "TCP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "tcp"
+          }
+        },
+        "HTTP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "http"
+          }
+        }
+      }
+    },
+    "com.cloudflare.connectivity#DirectoryServicesListResultItemTlsSettings": {
+      "type": "structure",
+      "members": {
+        "cert_verification_mode": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "TLS certificate verification mode for the connection to the origin.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.connectivity#DirectoryServicesListResultItemAppProtocol": {
+      "type": "enum",
+      "members": {
+        "POSTGRESQL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "postgresql"
+          }
+        },
+        "MYSQL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mysql"
+          }
+        }
+      }
+    },
     "com.cloudflare.connectivity#DirectoryServicesListResultItem": {
       "type": "structure",
       "members": {
-        "InfraHTTPServiceConfig_object___host__name__type__6_more__": {
-          "target": "smithy.api#Document",
+        "host": {
+          "target": "com.cloudflare.connectivity#DirectoryServicesListResultItemHost"
+        },
+        "name": {
+          "target": "smithy.api#String"
+        },
+        "type": {
+          "target": "com.cloudflare.connectivity#DirectoryServicesListResultItemType"
+        },
+        "created_at": {
+          "target": "smithy.api#String"
+        },
+        "http_port": {
+          "target": "smithy.api#Double"
+        },
+        "https_port": {
+          "target": "smithy.api#Double"
+        },
+        "service_id": {
+          "target": "smithy.api#String"
+        },
+        "tls_settings": {
+          "target": "com.cloudflare.connectivity#DirectoryServicesListResultItemTlsSettings",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "InfraHTTPServiceConfig object { host, name, type, 6 more }"
+            "smithy.api#documentation": "TLS settings for a connectivity service."
           }
         },
-        "InfraTCPServiceConfig_object___host__name__type__6_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "InfraTCPServiceConfig object { host, name, type, 6 more }"
-          }
+        "updated_at": {
+          "target": "smithy.api#String"
+        },
+        "app_protocol": {
+          "target": "com.cloudflare.connectivity#DirectoryServicesListResultItemAppProtocol"
+        },
+        "tcp_port": {
+          "target": "smithy.api#Double"
         }
       }
     },
@@ -312,22 +788,141 @@
         "smithy.api#readonly": {}
       }
     },
+    "com.cloudflare.connectivity#DirectoryServicesUpdateRequestBodyHostNetwork": {
+      "type": "structure",
+      "members": {
+        "tunnel_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.connectivity#DirectoryServicesUpdateRequestBodyHostResolverNetworkResolverIpsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.connectivity#DirectoryServicesUpdateRequestBodyHostResolverNetwork": {
+      "type": "structure",
+      "members": {
+        "tunnel_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "resolver_ips": {
+          "target": "com.cloudflare.connectivity#DirectoryServicesUpdateRequestBodyHostResolverNetworkResolverIpsList"
+        }
+      }
+    },
+    "com.cloudflare.connectivity#DirectoryServicesUpdateRequestBodyHost": {
+      "type": "structure",
+      "members": {
+        "ipv4": {
+          "target": "smithy.api#String"
+        },
+        "network": {
+          "target": "com.cloudflare.connectivity#DirectoryServicesUpdateRequestBodyHostNetwork"
+        },
+        "ipv6": {
+          "target": "smithy.api#String"
+        },
+        "hostname": {
+          "target": "smithy.api#String"
+        },
+        "resolver_network": {
+          "target": "com.cloudflare.connectivity#DirectoryServicesUpdateRequestBodyHostResolverNetwork"
+        }
+      }
+    },
+    "com.cloudflare.connectivity#DirectoryServicesUpdateRequestBodyType": {
+      "type": "enum",
+      "members": {
+        "TCP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "tcp"
+          }
+        },
+        "HTTP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "http"
+          }
+        }
+      }
+    },
+    "com.cloudflare.connectivity#DirectoryServicesUpdateRequestBodyTlsSettings": {
+      "type": "structure",
+      "members": {
+        "cert_verification_mode": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "TLS certificate verification mode for the connection to the origin.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.connectivity#DirectoryServicesUpdateRequestBodyAppProtocol": {
+      "type": "enum",
+      "members": {
+        "POSTGRESQL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "postgresql"
+          }
+        },
+        "MYSQL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mysql"
+          }
+        }
+      }
+    },
     "com.cloudflare.connectivity#DirectoryServicesUpdateRequestBody": {
       "type": "structure",
       "members": {
-        "InfraHTTPServiceConfig_object___host__name__type__6_more__": {
-          "target": "smithy.api#Document",
+        "host": {
+          "target": "com.cloudflare.connectivity#DirectoryServicesUpdateRequestBodyHost"
+        },
+        "name": {
+          "target": "smithy.api#String"
+        },
+        "type": {
+          "target": "com.cloudflare.connectivity#DirectoryServicesUpdateRequestBodyType"
+        },
+        "created_at": {
+          "target": "smithy.api#String"
+        },
+        "http_port": {
+          "target": "smithy.api#Double"
+        },
+        "https_port": {
+          "target": "smithy.api#Double"
+        },
+        "service_id": {
+          "target": "smithy.api#String"
+        },
+        "tls_settings": {
+          "target": "com.cloudflare.connectivity#DirectoryServicesUpdateRequestBodyTlsSettings",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "InfraHTTPServiceConfig object { host, name, type, 6 more }"
+            "smithy.api#documentation": "TLS settings for a connectivity service."
           }
         },
-        "InfraTCPServiceConfig_object___host__name__type__6_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "InfraTCPServiceConfig object { host, name, type, 6 more }"
-          }
+        "updated_at": {
+          "target": "smithy.api#String"
+        },
+        "app_protocol": {
+          "target": "com.cloudflare.connectivity#DirectoryServicesUpdateRequestBodyAppProtocol"
+        },
+        "tcp_port": {
+          "target": "smithy.api#Double"
         }
       }
     },
@@ -359,22 +954,141 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.connectivity#DirectoryServicesUpdateResponseHostNetwork": {
+      "type": "structure",
+      "members": {
+        "tunnel_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.connectivity#DirectoryServicesUpdateResponseHostResolverNetworkResolverIpsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.connectivity#DirectoryServicesUpdateResponseHostResolverNetwork": {
+      "type": "structure",
+      "members": {
+        "tunnel_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "resolver_ips": {
+          "target": "com.cloudflare.connectivity#DirectoryServicesUpdateResponseHostResolverNetworkResolverIpsList"
+        }
+      }
+    },
+    "com.cloudflare.connectivity#DirectoryServicesUpdateResponseHost": {
+      "type": "structure",
+      "members": {
+        "ipv4": {
+          "target": "smithy.api#String"
+        },
+        "network": {
+          "target": "com.cloudflare.connectivity#DirectoryServicesUpdateResponseHostNetwork"
+        },
+        "ipv6": {
+          "target": "smithy.api#String"
+        },
+        "hostname": {
+          "target": "smithy.api#String"
+        },
+        "resolver_network": {
+          "target": "com.cloudflare.connectivity#DirectoryServicesUpdateResponseHostResolverNetwork"
+        }
+      }
+    },
+    "com.cloudflare.connectivity#DirectoryServicesUpdateResponseType": {
+      "type": "enum",
+      "members": {
+        "TCP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "tcp"
+          }
+        },
+        "HTTP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "http"
+          }
+        }
+      }
+    },
+    "com.cloudflare.connectivity#DirectoryServicesUpdateResponseTlsSettings": {
+      "type": "structure",
+      "members": {
+        "cert_verification_mode": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "TLS certificate verification mode for the connection to the origin.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.connectivity#DirectoryServicesUpdateResponseAppProtocol": {
+      "type": "enum",
+      "members": {
+        "POSTGRESQL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "postgresql"
+          }
+        },
+        "MYSQL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mysql"
+          }
+        }
+      }
+    },
     "com.cloudflare.connectivity#DirectoryServicesUpdateResponse": {
       "type": "structure",
       "members": {
-        "InfraHTTPServiceConfig_object___host__name__type__6_more__": {
-          "target": "smithy.api#Document",
+        "host": {
+          "target": "com.cloudflare.connectivity#DirectoryServicesUpdateResponseHost"
+        },
+        "name": {
+          "target": "smithy.api#String"
+        },
+        "type": {
+          "target": "com.cloudflare.connectivity#DirectoryServicesUpdateResponseType"
+        },
+        "created_at": {
+          "target": "smithy.api#String"
+        },
+        "http_port": {
+          "target": "smithy.api#Double"
+        },
+        "https_port": {
+          "target": "smithy.api#Double"
+        },
+        "service_id": {
+          "target": "smithy.api#String"
+        },
+        "tls_settings": {
+          "target": "com.cloudflare.connectivity#DirectoryServicesUpdateResponseTlsSettings",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "InfraHTTPServiceConfig object { host, name, type, 6 more }"
+            "smithy.api#documentation": "TLS settings for a connectivity service."
           }
         },
-        "InfraTCPServiceConfig_object___host__name__type__6_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "InfraTCPServiceConfig object { host, name, type, 6 more }"
-          }
+        "updated_at": {
+          "target": "smithy.api#String"
+        },
+        "app_protocol": {
+          "target": "com.cloudflare.connectivity#DirectoryServicesUpdateResponseAppProtocol"
+        },
+        "tcp_port": {
+          "target": "smithy.api#Double"
         }
       },
       "traits": {

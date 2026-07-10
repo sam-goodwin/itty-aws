@@ -4,9 +4,11 @@ import * as API from "@distilled.cloud/core/api";
 import * as T from "../traits.ts";
 import {
   CloudflareProtocol,
+  CloudflarePaginatedProtocol,
   type CloudflareOpError,
   type CloudflareOpContext,
 } from "../protocol.ts";
+import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 import * as Retry from "../retry.ts";
 
@@ -433,25 +435,267 @@ export const ListMembershipsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListMembershipsRequest",
 }) as any as S.Schema<ListMembershipsRequest>;
 
+export interface ListResponseErrorsItemSource {
+  pointer?: string;
+}
+export const ListResponseErrorsItemSource = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    pointer: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListResponseErrorsItemSource",
+}) as any as S.Schema<ListResponseErrorsItemSource>;
+
+export interface ListResponseErrorsItem {
+  code: number;
+  message: string;
+  documentationUrl?: string;
+  source?: ListResponseErrorsItemSource;
+}
+export const ListResponseErrorsItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    code: S.Number,
+    message: S.String,
+    documentationUrl: S.optional(S.String.pipe(T.Body("documentation_url"))),
+    source: S.optional(ListResponseErrorsItemSource),
+  }),
+).annotate({
+  identifier: "ListResponseErrorsItem",
+}) as any as S.Schema<ListResponseErrorsItem>;
+
+export type ListResponseErrorsList = ListResponseErrorsItem[];
+export const ListResponseErrorsList = /*@__PURE__*/ S.Array(
+  ListResponseErrorsItem,
+) as any as S.Schema<ListResponseErrorsList>;
+
+export interface ListResponseMessagesItemSource {
+  pointer?: string;
+}
+export const ListResponseMessagesItemSource = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    pointer: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListResponseMessagesItemSource",
+}) as any as S.Schema<ListResponseMessagesItemSource>;
+
+export interface ListResponseMessagesItem {
+  code: number;
+  message: string;
+  documentationUrl?: string;
+  source?: ListResponseMessagesItemSource;
+}
+export const ListResponseMessagesItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    code: S.Number,
+    message: S.String,
+    documentationUrl: S.optional(S.String.pipe(T.Body("documentation_url"))),
+    source: S.optional(ListResponseMessagesItemSource),
+  }),
+).annotate({
+  identifier: "ListResponseMessagesItem",
+}) as any as S.Schema<ListResponseMessagesItem>;
+
+export type ListResponseMessagesList = ListResponseMessagesItem[];
+export const ListResponseMessagesList = /*@__PURE__*/ S.Array(
+  ListResponseMessagesItem,
+) as any as S.Schema<ListResponseMessagesList>;
+
+export type ListResponseResultItemAccountType =
+  | "standard"
+  | "enterprise"
+  | (string & {});
+export const ListResponseResultItemAccountType = /*@__PURE__*/ S.String;
+
+export interface ListResponseResultItemAccountManagedBy {
+  /** ID of the parent Organization, if one exists */
+  parentOrgId?: string;
+  /** Name of the parent Organization, if one exists */
+  parentOrgName?: string;
+}
+export const ListResponseResultItemAccountManagedBy = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      parentOrgId: S.optional(S.String.pipe(T.Body("parent_org_id"))),
+      parentOrgName: S.optional(S.String.pipe(T.Body("parent_org_name"))),
+    }),
+).annotate({
+  identifier: "ListResponseResultItemAccountManagedBy",
+}) as any as S.Schema<ListResponseResultItemAccountManagedBy>;
+
+export interface ListResponseResultItemAccountSettings {
+  /** Sets an abuse contact email to notify for abuse reports. */
+  abuseContactEmail?: string;
+  /** Indicates whether membership in this account requires that */
+  enforceTwofactor?: boolean;
+}
+export const ListResponseResultItemAccountSettings = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      abuseContactEmail: S.optional(
+        S.String.pipe(T.Body("abuse_contact_email")),
+      ),
+      enforceTwofactor: S.optional(S.Boolean.pipe(T.Body("enforce_twofactor"))),
+    }),
+).annotate({
+  identifier: "ListResponseResultItemAccountSettings",
+}) as any as S.Schema<ListResponseResultItemAccountSettings>;
+
+export interface ListResponseResultItemAccount {
+  /** Identifier */
+  id: string;
+  /** Account name */
+  name: string;
+  type: ListResponseResultItemAccountType;
+  /** Timestamp for the creation of the account */
+  createdOn?: string;
+  /** Parent container details */
+  managedBy?: ListResponseResultItemAccountManagedBy;
+  /** Account settings */
+  settings?: ListResponseResultItemAccountSettings;
+}
+export const ListResponseResultItemAccount = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    name: S.String,
+    type: ListResponseResultItemAccountType,
+    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
+    managedBy: S.optional(
+      ListResponseResultItemAccountManagedBy.pipe(T.Body("managed_by")),
+    ),
+    settings: S.optional(ListResponseResultItemAccountSettings),
+  }),
+).annotate({
+  identifier: "ListResponseResultItemAccount",
+}) as any as S.Schema<ListResponseResultItemAccount>;
+
+export interface ListResponseResultItemPermissionsAnalytics {
+  read?: boolean;
+  write?: boolean;
+}
+export const ListResponseResultItemPermissionsAnalytics =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      read: S.optional(S.Boolean),
+      write: S.optional(S.Boolean),
+    }),
+  ).annotate({
+    identifier: "ListResponseResultItemPermissionsAnalytics",
+  }) as any as S.Schema<ListResponseResultItemPermissionsAnalytics>;
+
+export interface ListResponseResultItemPermissions {
+  analytics?: ListResponseResultItemPermissionsAnalytics;
+  billing?: unknown;
+  cachePurge?: unknown;
+  dns?: unknown;
+  dnsRecords?: unknown;
+  lb?: unknown;
+  logs?: unknown;
+  organization?: unknown;
+  ssl?: unknown;
+  waf?: unknown;
+  zoneSettings?: unknown;
+  zones?: unknown;
+}
+export const ListResponseResultItemPermissions = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    analytics: S.optional(ListResponseResultItemPermissionsAnalytics),
+    billing: S.optional(S.Unknown),
+    cachePurge: S.optional(S.Unknown.pipe(T.Body("cache_purge"))),
+    dns: S.optional(S.Unknown),
+    dnsRecords: S.optional(S.Unknown.pipe(T.Body("dns_records"))),
+    lb: S.optional(S.Unknown),
+    logs: S.optional(S.Unknown),
+    organization: S.optional(S.Unknown),
+    ssl: S.optional(S.Unknown),
+    waf: S.optional(S.Unknown),
+    zoneSettings: S.optional(S.Unknown.pipe(T.Body("zone_settings"))),
+    zones: S.optional(S.Unknown),
+  }),
+).annotate({
+  identifier: "ListResponseResultItemPermissions",
+}) as any as S.Schema<ListResponseResultItemPermissions>;
+
+export type ListResponseResultItemRolesList = string[];
+export const ListResponseResultItemRolesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<ListResponseResultItemRolesList>;
+
+export type ListResponseResultItemStatus =
+  | "accepted"
+  | "pending"
+  | "rejected"
+  | (string & {});
+export const ListResponseResultItemStatus = /*@__PURE__*/ S.String;
+
+export interface ListResponseResultItem {
+  /** Membership identifier tag. */
+  id?: string;
+  account?: ListResponseResultItemAccount;
+  /** Enterprise only. Indicates whether or not API access is enabled specifically for this user on a given account. */
+  apiAccessEnabled?: boolean;
+  /** All access permissions for the user at the account. */
+  permissions?: ListResponseResultItemPermissions;
+  /** List of role names the membership has for this account. */
+  roles?: ListResponseResultItemRolesList;
+  /** Status of this membership. */
+  status?: ListResponseResultItemStatus;
+}
+export const ListResponseResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    account: S.optional(ListResponseResultItemAccount),
+    apiAccessEnabled: S.optional(S.Boolean.pipe(T.Body("api_access_enabled"))),
+    permissions: S.optional(ListResponseResultItemPermissions),
+    roles: S.optional(ListResponseResultItemRolesList),
+    status: S.optional(ListResponseResultItemStatus),
+  }),
+).annotate({
+  identifier: "ListResponseResultItem",
+}) as any as S.Schema<ListResponseResultItem>;
+
+export type ListResponseResultList = ListResponseResultItem[];
+export const ListResponseResultList = /*@__PURE__*/ S.Array(
+  ListResponseResultItem,
+) as any as S.Schema<ListResponseResultList>;
+
+export interface ListResponseResultInfo {
+  /** Total number of results for the requested service */
+  count?: number;
+  /** Current page within paginated list of results */
+  page?: number;
+  /** Number of results per page of results */
+  perPage?: number;
+  /** Total results available without any search parameters */
+  totalCount?: number;
+}
+export const ListResponseResultInfo = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    count: S.optional(S.Number),
+    page: S.optional(S.Number),
+    perPage: S.optional(S.Number.pipe(T.Body("per_page"))),
+    totalCount: S.optional(S.Number.pipe(T.Body("total_count"))),
+  }),
+).annotate({
+  identifier: "ListResponseResultInfo",
+}) as any as S.Schema<ListResponseResultInfo>;
+
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface ListMembershipsResponse {
-  IAMCollectionMembershipResponseObjectErrorsMessagesSuccess2More__: unknown;
-  IAMCollectionMembershipResponseWithPoliciesObjectErrorsMessagesSuccess2More__: unknown;
+  errors?: ListResponseErrorsList;
+  messages?: ListResponseMessagesList;
+  /** Whether the API call was successful. */
+  success?: boolean;
+  result: ListResponseResultList;
+  resultInfo?: ListResponseResultInfo;
 }
 export const ListMembershipsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    IAMCollectionMembershipResponseObjectErrorsMessagesSuccess2More__:
-      S.Unknown.pipe(
-        T.Body(
-          "IAMCollectionMembershipResponse object { errors, messages, success, 2 more }",
-        ),
-      ),
-    IAMCollectionMembershipResponseWithPoliciesObjectErrorsMessagesSuccess2More__:
-      S.Unknown.pipe(
-        T.Body(
-          "IAMCollectionMembershipResponseWithPolicies object { errors, messages, success, 2 more }",
-        ),
-      ),
+    errors: S.optional(ListResponseErrorsList),
+    messages: S.optional(ListResponseMessagesList),
+    success: S.optional(S.Boolean),
+    result: ListResponseResultList,
+    resultInfo: S.optional(ListResponseResultInfo.pipe(T.Body("result_info"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListMembershipsResponse",
@@ -827,18 +1071,28 @@ export const getMembership: API.OperationMethod<
 
 export type ListMembershipsError = CloudflareOpError;
 /** List memberships of accounts the user can access. */
-export const listMemberships: API.OperationMethod<
+export const listMemberships: API.PaginatedOperationMethod<
   ListMembershipsRequest,
   ListMembershipsResponse,
   ListMembershipsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListMembershipsRequest,
-  output: ListMembershipsResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-  retry: Retry.Retry,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListMembershipsRequest,
+    output: ListMembershipsResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "resultInfo.page",
+      items: "result",
+      pageSize: "perPage",
+    } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type PutMembershipError = CloudflareOpError;
 /** Accept or reject this account invitation. */

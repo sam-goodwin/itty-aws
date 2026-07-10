@@ -361,31 +361,43 @@ export const ListSubdomainsResponse = /*@__PURE__*/ S.suspend(() =>
 export interface SendRequestFrom {
   /** An email address as a plain string. */
   EmailSendingEmailAddressString: string;
-  EmailSendingEmailAddressObjectObjectAddressName__: unknown;
+  /** Email address (e.g., 'user@example.com'). */
+  address?: string;
+  /** Display name for the email address (e.g., 'John Doe'). Optional — omit or set to null for no display name. */
+  name?: string;
 }
 export const SendRequestFrom = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     EmailSendingEmailAddressString: S.String,
-    EmailSendingEmailAddressObjectObjectAddressName__: S.Unknown.pipe(
-      T.Body("EmailSendingEmailAddressObject object { address, name }"),
-    ),
+    address: S.optional(S.String),
+    name: S.optional(S.String),
   }),
 ).annotate({
   identifier: "SendRequestFrom",
 }) as any as S.Schema<SendRequestFrom>;
 
+export type SendRequestAttachmentsItemDisposition = "inline" | (string & {});
+export const SendRequestAttachmentsItemDisposition = /*@__PURE__*/ S.String;
+
 export interface SendRequestAttachmentsItem {
-  InlineObjectContentContentIdDisposition2More__: unknown;
-  AttachmentObjectContentDispositionFilenameType__: unknown;
+  /** Base64-encoded content of the attachment. */
+  content?: string;
+  /** Content ID used to reference this attachment in HTML via cid: URI (e.g., <img src="cid:logo">). */
+  contentId?: string;
+  /** Must be 'inline'. Indicates the attachment is embedded in the email body. */
+  disposition?: SendRequestAttachmentsItemDisposition;
+  /** Filename for the attachment. */
+  filename?: string;
+  /** MIME type of the attachment (e.g., 'image/png', 'text/plain'). */
+  type?: string;
 }
 export const SendRequestAttachmentsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    InlineObjectContentContentIdDisposition2More__: S.Unknown.pipe(
-      T.Body("Inline object { content, content_id, disposition, 2 more }"),
-    ),
-    AttachmentObjectContentDispositionFilenameType__: S.Unknown.pipe(
-      T.Body("Attachment object { content, disposition, filename, type }"),
-    ),
+    content: S.optional(S.String),
+    contentId: S.optional(S.String.pipe(T.Body("content_id"))),
+    disposition: S.optional(SendRequestAttachmentsItemDisposition),
+    filename: S.optional(S.String),
+    type: S.optional(S.String),
   }),
 ).annotate({
   identifier: "SendRequestAttachmentsItem",
@@ -399,17 +411,21 @@ export const SendRequestAttachmentsList = /*@__PURE__*/ S.Array(
 export interface SendRequestBcc {
   /** An email address as a plain string. */
   EmailSendingEmailAddressString: string;
-  EmailSendingEmailAddressObjectObjectAddressName__: unknown;
-  arrayOfStringOrObjectAddressName__: unknown;
+  /** Email address (e.g., 'user@example.com'). */
+  address?: string;
+  /** Display name for the email address (e.g., 'John Doe'). Optional — omit or set to null for no display name. */
+  name?: string;
+  EmailSendingEmailAddressObjectObjectAddressName__?: unknown;
 }
 export const SendRequestBcc = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     EmailSendingEmailAddressString: S.String,
-    EmailSendingEmailAddressObjectObjectAddressName__: S.Unknown.pipe(
-      T.Body("EmailSendingEmailAddressObject object { address, name }"),
-    ),
-    arrayOfStringOrObjectAddressName__: S.Unknown.pipe(
-      T.Body("array of string or object { address, name }"),
+    address: S.optional(S.String),
+    name: S.optional(S.String),
+    EmailSendingEmailAddressObjectObjectAddressName__: S.optional(
+      S.Unknown.pipe(
+        T.Body("EmailSendingEmailAddressObject object { address, name }"),
+      ),
     ),
   }),
 ).annotate({ identifier: "SendRequestBcc" }) as any as S.Schema<SendRequestBcc>;
@@ -417,17 +433,21 @@ export const SendRequestBcc = /*@__PURE__*/ S.suspend(() =>
 export interface SendRequestCc {
   /** An email address as a plain string. */
   EmailSendingEmailAddressString: string;
-  EmailSendingEmailAddressObjectObjectAddressName__: unknown;
-  arrayOfStringOrObjectAddressName__: unknown;
+  /** Email address (e.g., 'user@example.com'). */
+  address?: string;
+  /** Display name for the email address (e.g., 'John Doe'). Optional — omit or set to null for no display name. */
+  name?: string;
+  EmailSendingEmailAddressObjectObjectAddressName__?: unknown;
 }
 export const SendRequestCc = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     EmailSendingEmailAddressString: S.String,
-    EmailSendingEmailAddressObjectObjectAddressName__: S.Unknown.pipe(
-      T.Body("EmailSendingEmailAddressObject object { address, name }"),
-    ),
-    arrayOfStringOrObjectAddressName__: S.Unknown.pipe(
-      T.Body("array of string or object { address, name }"),
+    address: S.optional(S.String),
+    name: S.optional(S.String),
+    EmailSendingEmailAddressObjectObjectAddressName__: S.optional(
+      S.Unknown.pipe(
+        T.Body("EmailSendingEmailAddressObject object { address, name }"),
+      ),
     ),
   }),
 ).annotate({ identifier: "SendRequestCc" }) as any as S.Schema<SendRequestCc>;
@@ -441,14 +461,16 @@ export const SendRequestHeadersMap = /*@__PURE__*/ S.Record(
 export interface SendRequestReplyTo {
   /** An email address as a plain string. */
   EmailSendingEmailAddressString: string;
-  EmailSendingEmailAddressObjectObjectAddressName__: unknown;
+  /** Email address (e.g., 'user@example.com'). */
+  address?: string;
+  /** Display name for the email address (e.g., 'John Doe'). Optional — omit or set to null for no display name. */
+  name?: string;
 }
 export const SendRequestReplyTo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     EmailSendingEmailAddressString: S.String,
-    EmailSendingEmailAddressObjectObjectAddressName__: S.Unknown.pipe(
-      T.Body("EmailSendingEmailAddressObject object { address, name }"),
-    ),
+    address: S.optional(S.String),
+    name: S.optional(S.String),
   }),
 ).annotate({
   identifier: "SendRequestReplyTo",
@@ -457,17 +479,21 @@ export const SendRequestReplyTo = /*@__PURE__*/ S.suspend(() =>
 export interface SendRequestTo {
   /** An email address as a plain string. */
   EmailSendingEmailAddressString: string;
-  EmailSendingEmailAddressObjectObjectAddressName__: unknown;
-  arrayOfStringOrObjectAddressName__: unknown;
+  /** Email address (e.g., 'user@example.com'). */
+  address?: string;
+  /** Display name for the email address (e.g., 'John Doe'). Optional — omit or set to null for no display name. */
+  name?: string;
+  EmailSendingEmailAddressObjectObjectAddressName__?: unknown;
 }
 export const SendRequestTo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     EmailSendingEmailAddressString: S.String,
-    EmailSendingEmailAddressObjectObjectAddressName__: S.Unknown.pipe(
-      T.Body("EmailSendingEmailAddressObject object { address, name }"),
-    ),
-    arrayOfStringOrObjectAddressName__: S.Unknown.pipe(
-      T.Body("array of string or object { address, name }"),
+    address: S.optional(S.String),
+    name: S.optional(S.String),
+    EmailSendingEmailAddressObjectObjectAddressName__: S.optional(
+      S.Unknown.pipe(
+        T.Body("EmailSendingEmailAddressObject object { address, name }"),
+      ),
     ),
   }),
 ).annotate({ identifier: "SendRequestTo" }) as any as S.Schema<SendRequestTo>;

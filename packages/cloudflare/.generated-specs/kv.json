@@ -163,21 +163,52 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.kv#NamespacesBulkGetResponseValuesValue": {
+      "type": "structure",
+      "members": {
+        "string": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "number": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "boolean": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "map_unknown_": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "map[unknown]"
+          }
+        }
+      }
+    },
+    "com.cloudflare.kv#NamespacesBulkGetResponseValuesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.cloudflare.kv#NamespacesBulkGetResponseValuesValue"
+      }
+    },
     "com.cloudflare.kv#NamespacesBulkGetResponse": {
       "type": "structure",
       "members": {
-        "WorkersKVBulkGetResult_object___values__": {
-          "target": "smithy.api#Document",
+        "values": {
+          "target": "com.cloudflare.kv#NamespacesBulkGetResponseValuesMap",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "WorkersKVBulkGetResult object { values }"
-          }
-        },
-        "WorkersKVBulkGetResultWithMetadata_object___values__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "WorkersKVBulkGetResultWithMetadata object { values }"
+            "smithy.api#documentation": "Requested keys are paired with their values in an object."
           }
         }
       },
@@ -875,21 +906,52 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.kv#NamespacesKeysBulkGetResponseValuesValue": {
+      "type": "structure",
+      "members": {
+        "string": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "number": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "boolean": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "map_unknown_": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "map[unknown]"
+          }
+        }
+      }
+    },
+    "com.cloudflare.kv#NamespacesKeysBulkGetResponseValuesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.cloudflare.kv#NamespacesKeysBulkGetResponseValuesValue"
+      }
+    },
     "com.cloudflare.kv#NamespacesKeysBulkGetResponse": {
       "type": "structure",
       "members": {
-        "WorkersKVBulkGetResult_object___values__": {
-          "target": "smithy.api#Document",
+        "values": {
+          "target": "com.cloudflare.kv#NamespacesKeysBulkGetResponseValuesMap",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "WorkersKVBulkGetResult object { values }"
-          }
-        },
-        "WorkersKVBulkGetResultWithMetadata_object___values__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "WorkersKVBulkGetResultWithMetadata object { values }"
+            "smithy.api#documentation": "Requested keys are paired with their values in an object."
           }
         }
       },

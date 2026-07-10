@@ -855,21 +855,350 @@
         "smithy.api#readonly": {}
       }
     },
+    "com.cloudflare.spectrum#AppsCreateRequestBodyDnsType": {
+      "type": "enum",
+      "members": {
+        "CNAME": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CNAME"
+          }
+        },
+        "ADDRESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ADDRESS"
+          }
+        }
+      }
+    },
+    "com.cloudflare.spectrum#AppsCreateRequestBodyDns": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the DNS record associated with the application."
+          }
+        },
+        "type": {
+          "target": "com.cloudflare.spectrum#AppsCreateRequestBodyDnsType",
+          "traits": {
+            "smithy.api#documentation": "The type of DNS record associated with the application."
+          }
+        }
+      }
+    },
+    "com.cloudflare.spectrum#AppsCreateRequestBodyTrafficType": {
+      "type": "enum",
+      "members": {
+        "DIRECT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "direct"
+          }
+        },
+        "HTTP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "http"
+          }
+        },
+        "HTTPS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "https"
+          }
+        }
+      }
+    },
+    "com.cloudflare.spectrum#AppsCreateRequestBodyEdgeIpsConnectivity": {
+      "type": "enum",
+      "members": {
+        "ALL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "all"
+          }
+        },
+        "IPV4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ipv4"
+          }
+        },
+        "IPV6": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ipv6"
+          }
+        }
+      }
+    },
+    "com.cloudflare.spectrum#AppsCreateRequestBodyEdgeIpsType": {
+      "type": "enum",
+      "members": {
+        "DYNAMIC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dynamic"
+          }
+        }
+      }
+    },
+    "com.cloudflare.spectrum#AppsCreateRequestBodyEdgeIpsIpsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.spectrum#AppsCreateRequestBodyEdgeIps": {
+      "type": "structure",
+      "members": {
+        "connectivity": {
+          "target": "com.cloudflare.spectrum#AppsCreateRequestBodyEdgeIpsConnectivity",
+          "traits": {
+            "smithy.api#documentation": "The IP versions supported for inbound connections on Spectrum anycast IPs."
+          }
+        },
+        "type": {
+          "target": "com.cloudflare.spectrum#AppsCreateRequestBodyEdgeIpsType",
+          "traits": {
+            "smithy.api#documentation": "The type of edge IP configuration specified. Dynamically allocated edge IPs use Spectrum anycast IPs in accordance with the connectivity you specify. Only valid with CNAME DNS names."
+          }
+        },
+        "ips": {
+          "target": "com.cloudflare.spectrum#AppsCreateRequestBodyEdgeIpsIpsList",
+          "traits": {
+            "smithy.api#documentation": "The array of customer owned IPs we broadcast via anycast for this hostname and application."
+          }
+        }
+      }
+    },
+    "com.cloudflare.spectrum#AppsCreateRequestBodyOriginDirectList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.spectrum#AppsCreateRequestBodyOriginDnsType": {
+      "type": "enum",
+      "members": {
+        "VALUE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": ""
+          }
+        },
+        "A": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "A"
+          }
+        },
+        "AAAA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AAAA"
+          }
+        },
+        "SRV": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SRV"
+          }
+        }
+      }
+    },
+    "com.cloudflare.spectrum#AppsCreateRequestBodyOriginDns": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the DNS record associated with the origin."
+          }
+        },
+        "ttl": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The TTL of our resolution of your DNS record in seconds."
+          }
+        },
+        "type": {
+          "target": "com.cloudflare.spectrum#AppsCreateRequestBodyOriginDnsType",
+          "traits": {
+            "smithy.api#documentation": "The type of DNS record associated with the origin. \"\" is used to specify a combination of A/AAAA records."
+          }
+        }
+      }
+    },
+    "com.cloudflare.spectrum#AppsCreateRequestBodyOriginPort": {
+      "type": "structure",
+      "members": {
+        "number": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "string": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.spectrum#AppsCreateRequestBodyProxyProtocol": {
+      "type": "enum",
+      "members": {
+        "OFF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "off"
+          }
+        },
+        "V1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "v1"
+          }
+        },
+        "V2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "v2"
+          }
+        },
+        "SIMPLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "simple"
+          }
+        }
+      }
+    },
+    "com.cloudflare.spectrum#AppsCreateRequestBodyTls": {
+      "type": "enum",
+      "members": {
+        "OFF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "off"
+          }
+        },
+        "FLEXIBLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "flexible"
+          }
+        },
+        "FULL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "full"
+          }
+        },
+        "STRICT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "strict"
+          }
+        }
+      }
+    },
     "com.cloudflare.spectrum#AppsCreateRequestBody": {
       "type": "structure",
       "members": {
-        "SpectrumConfigAppConfig_object___id__created_on__dns__12_more__": {
-          "target": "smithy.api#Document",
+        "id": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "SpectrumConfigAppConfig object { id, created_on, dns, 12 more }"
+            "smithy.api#documentation": "App identifier."
           }
         },
-        "SpectrumConfigPaygoAppConfig_object___id__created_on__dns__3_more__": {
-          "target": "smithy.api#Document",
+        "created_on": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "SpectrumConfigPaygoAppConfig object { id, created_on, dns, 3 more }"
+            "smithy.api#documentation": "When the Application was created."
+          }
+        },
+        "dns": {
+          "target": "com.cloudflare.spectrum#AppsCreateRequestBodyDns",
+          "traits": {
+            "smithy.api#documentation": "The name and type of DNS record for the Spectrum application."
+          }
+        },
+        "modified_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When the Application was last modified."
+          }
+        },
+        "protocol": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The port configuration at Cloudflare's edge. May specify a single port, for example `\"tcp/1000\"`, or a range of ports, for example `\"tcp/1000-2000\"`."
+          }
+        },
+        "traffic_type": {
+          "target": "com.cloudflare.spectrum#AppsCreateRequestBodyTrafficType",
+          "traits": {
+            "smithy.api#documentation": "Determines how data travels from the edge to your origin. When set to \"direct\", Spectrum will send traffic directly to your origin, and the application's type is derived from the `protocol`. When set to \"http\" or \"https\", Spectrum will apply Cloudflare's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly."
+          }
+        },
+        "argo_smart_routing": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Enables Argo Smart Routing for this application."
+          }
+        },
+        "edge_ips": {
+          "target": "com.cloudflare.spectrum#AppsCreateRequestBodyEdgeIps",
+          "traits": {
+            "smithy.api#documentation": "The anycast edge IP configuration for the hostname of this application."
+          }
+        },
+        "ip_firewall": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Enables IP Access Rules for this application."
+          }
+        },
+        "origin_direct": {
+          "target": "com.cloudflare.spectrum#AppsCreateRequestBodyOriginDirectList",
+          "traits": {
+            "smithy.api#documentation": "List of origin IP addresses. Array may contain multiple IP addresses for load balancing."
+          }
+        },
+        "origin_dns": {
+          "target": "com.cloudflare.spectrum#AppsCreateRequestBodyOriginDns",
+          "traits": {
+            "smithy.api#documentation": "The name and type of DNS record for the Spectrum application."
+          }
+        },
+        "origin_port": {
+          "target": "com.cloudflare.spectrum#AppsCreateRequestBodyOriginPort",
+          "traits": {
+            "smithy.api#documentation": "The destination port at the origin. Only specified in conjunction with origin_dns. May use an integer to specify a single origin port, for example `1000`, or a string to specify a range of origin ports, for example `\"1000-2000\"`."
+          }
+        },
+        "proxy_protocol": {
+          "target": "com.cloudflare.spectrum#AppsCreateRequestBodyProxyProtocol",
+          "traits": {
+            "smithy.api#documentation": "Enables Proxy Protocol to the origin. Refer to [Enable Proxy protocol](https://developers.cloudflare.com/spectrum/getting-started/proxy-protocol/) for implementation details on PROXY Protocol V1, PROXY Protocol V2, and Simple Proxy Protocol."
+          }
+        },
+        "tls": {
+          "target": "com.cloudflare.spectrum#AppsCreateRequestBodyTls",
+          "traits": {
+            "smithy.api#documentation": "The type of TLS termination associated with the application."
+          }
+        },
+        "virtual_network_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optional UUID of a virtual network for routing origin traffic through tunnel virtual networks."
           }
         }
       }
@@ -896,21 +1225,350 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.spectrum#AppsCreateResponseDnsType": {
+      "type": "enum",
+      "members": {
+        "CNAME": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CNAME"
+          }
+        },
+        "ADDRESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ADDRESS"
+          }
+        }
+      }
+    },
+    "com.cloudflare.spectrum#AppsCreateResponseDns": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the DNS record associated with the application."
+          }
+        },
+        "type": {
+          "target": "com.cloudflare.spectrum#AppsCreateResponseDnsType",
+          "traits": {
+            "smithy.api#documentation": "The type of DNS record associated with the application."
+          }
+        }
+      }
+    },
+    "com.cloudflare.spectrum#AppsCreateResponseTrafficType": {
+      "type": "enum",
+      "members": {
+        "DIRECT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "direct"
+          }
+        },
+        "HTTP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "http"
+          }
+        },
+        "HTTPS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "https"
+          }
+        }
+      }
+    },
+    "com.cloudflare.spectrum#AppsCreateResponseEdgeIpsConnectivity": {
+      "type": "enum",
+      "members": {
+        "ALL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "all"
+          }
+        },
+        "IPV4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ipv4"
+          }
+        },
+        "IPV6": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ipv6"
+          }
+        }
+      }
+    },
+    "com.cloudflare.spectrum#AppsCreateResponseEdgeIpsType": {
+      "type": "enum",
+      "members": {
+        "DYNAMIC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dynamic"
+          }
+        }
+      }
+    },
+    "com.cloudflare.spectrum#AppsCreateResponseEdgeIpsIpsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.spectrum#AppsCreateResponseEdgeIps": {
+      "type": "structure",
+      "members": {
+        "connectivity": {
+          "target": "com.cloudflare.spectrum#AppsCreateResponseEdgeIpsConnectivity",
+          "traits": {
+            "smithy.api#documentation": "The IP versions supported for inbound connections on Spectrum anycast IPs."
+          }
+        },
+        "type": {
+          "target": "com.cloudflare.spectrum#AppsCreateResponseEdgeIpsType",
+          "traits": {
+            "smithy.api#documentation": "The type of edge IP configuration specified. Dynamically allocated edge IPs use Spectrum anycast IPs in accordance with the connectivity you specify. Only valid with CNAME DNS names."
+          }
+        },
+        "ips": {
+          "target": "com.cloudflare.spectrum#AppsCreateResponseEdgeIpsIpsList",
+          "traits": {
+            "smithy.api#documentation": "The array of customer owned IPs we broadcast via anycast for this hostname and application."
+          }
+        }
+      }
+    },
+    "com.cloudflare.spectrum#AppsCreateResponseOriginDirectList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.spectrum#AppsCreateResponseOriginDnsType": {
+      "type": "enum",
+      "members": {
+        "VALUE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": ""
+          }
+        },
+        "A": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "A"
+          }
+        },
+        "AAAA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AAAA"
+          }
+        },
+        "SRV": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SRV"
+          }
+        }
+      }
+    },
+    "com.cloudflare.spectrum#AppsCreateResponseOriginDns": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the DNS record associated with the origin."
+          }
+        },
+        "ttl": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The TTL of our resolution of your DNS record in seconds."
+          }
+        },
+        "type": {
+          "target": "com.cloudflare.spectrum#AppsCreateResponseOriginDnsType",
+          "traits": {
+            "smithy.api#documentation": "The type of DNS record associated with the origin. \"\" is used to specify a combination of A/AAAA records."
+          }
+        }
+      }
+    },
+    "com.cloudflare.spectrum#AppsCreateResponseOriginPort": {
+      "type": "structure",
+      "members": {
+        "number": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "string": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.spectrum#AppsCreateResponseProxyProtocol": {
+      "type": "enum",
+      "members": {
+        "OFF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "off"
+          }
+        },
+        "V1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "v1"
+          }
+        },
+        "V2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "v2"
+          }
+        },
+        "SIMPLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "simple"
+          }
+        }
+      }
+    },
+    "com.cloudflare.spectrum#AppsCreateResponseTls": {
+      "type": "enum",
+      "members": {
+        "OFF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "off"
+          }
+        },
+        "FLEXIBLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "flexible"
+          }
+        },
+        "FULL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "full"
+          }
+        },
+        "STRICT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "strict"
+          }
+        }
+      }
+    },
     "com.cloudflare.spectrum#AppsCreateResponse": {
       "type": "structure",
       "members": {
-        "SpectrumConfigAppConfig_object___id__created_on__dns__12_more__": {
-          "target": "smithy.api#Document",
+        "id": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "SpectrumConfigAppConfig object { id, created_on, dns, 12 more }"
+            "smithy.api#documentation": "App identifier."
           }
         },
-        "SpectrumConfigPaygoAppConfig_object___id__created_on__dns__3_more__": {
-          "target": "smithy.api#Document",
+        "created_on": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "SpectrumConfigPaygoAppConfig object { id, created_on, dns, 3 more }"
+            "smithy.api#documentation": "When the Application was created."
+          }
+        },
+        "dns": {
+          "target": "com.cloudflare.spectrum#AppsCreateResponseDns",
+          "traits": {
+            "smithy.api#documentation": "The name and type of DNS record for the Spectrum application."
+          }
+        },
+        "modified_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When the Application was last modified."
+          }
+        },
+        "protocol": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The port configuration at Cloudflare's edge. May specify a single port, for example `\"tcp/1000\"`, or a range of ports, for example `\"tcp/1000-2000\"`."
+          }
+        },
+        "traffic_type": {
+          "target": "com.cloudflare.spectrum#AppsCreateResponseTrafficType",
+          "traits": {
+            "smithy.api#documentation": "Determines how data travels from the edge to your origin. When set to \"direct\", Spectrum will send traffic directly to your origin, and the application's type is derived from the `protocol`. When set to \"http\" or \"https\", Spectrum will apply Cloudflare's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly."
+          }
+        },
+        "argo_smart_routing": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Enables Argo Smart Routing for this application."
+          }
+        },
+        "edge_ips": {
+          "target": "com.cloudflare.spectrum#AppsCreateResponseEdgeIps",
+          "traits": {
+            "smithy.api#documentation": "The anycast edge IP configuration for the hostname of this application."
+          }
+        },
+        "ip_firewall": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Enables IP Access Rules for this application."
+          }
+        },
+        "origin_direct": {
+          "target": "com.cloudflare.spectrum#AppsCreateResponseOriginDirectList",
+          "traits": {
+            "smithy.api#documentation": "List of origin IP addresses. Array may contain multiple IP addresses for load balancing."
+          }
+        },
+        "origin_dns": {
+          "target": "com.cloudflare.spectrum#AppsCreateResponseOriginDns",
+          "traits": {
+            "smithy.api#documentation": "The name and type of DNS record for the Spectrum application."
+          }
+        },
+        "origin_port": {
+          "target": "com.cloudflare.spectrum#AppsCreateResponseOriginPort",
+          "traits": {
+            "smithy.api#documentation": "The destination port at the origin. Only specified in conjunction with origin_dns. May use an integer to specify a single origin port, for example `1000`, or a string to specify a range of origin ports, for example `\"1000-2000\"`."
+          }
+        },
+        "proxy_protocol": {
+          "target": "com.cloudflare.spectrum#AppsCreateResponseProxyProtocol",
+          "traits": {
+            "smithy.api#documentation": "Enables Proxy Protocol to the origin. Refer to [Enable Proxy protocol](https://developers.cloudflare.com/spectrum/getting-started/proxy-protocol/) for implementation details on PROXY Protocol V1, PROXY Protocol V2, and Simple Proxy Protocol."
+          }
+        },
+        "tls": {
+          "target": "com.cloudflare.spectrum#AppsCreateResponseTls",
+          "traits": {
+            "smithy.api#documentation": "The type of TLS termination associated with the application."
+          }
+        },
+        "virtual_network_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optional UUID of a virtual network for routing origin traffic through tunnel virtual networks."
           }
         }
       },
@@ -1018,21 +1676,350 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.spectrum#AppsGetResponseDnsType": {
+      "type": "enum",
+      "members": {
+        "CNAME": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CNAME"
+          }
+        },
+        "ADDRESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ADDRESS"
+          }
+        }
+      }
+    },
+    "com.cloudflare.spectrum#AppsGetResponseDns": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the DNS record associated with the application."
+          }
+        },
+        "type": {
+          "target": "com.cloudflare.spectrum#AppsGetResponseDnsType",
+          "traits": {
+            "smithy.api#documentation": "The type of DNS record associated with the application."
+          }
+        }
+      }
+    },
+    "com.cloudflare.spectrum#AppsGetResponseTrafficType": {
+      "type": "enum",
+      "members": {
+        "DIRECT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "direct"
+          }
+        },
+        "HTTP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "http"
+          }
+        },
+        "HTTPS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "https"
+          }
+        }
+      }
+    },
+    "com.cloudflare.spectrum#AppsGetResponseEdgeIpsConnectivity": {
+      "type": "enum",
+      "members": {
+        "ALL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "all"
+          }
+        },
+        "IPV4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ipv4"
+          }
+        },
+        "IPV6": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ipv6"
+          }
+        }
+      }
+    },
+    "com.cloudflare.spectrum#AppsGetResponseEdgeIpsType": {
+      "type": "enum",
+      "members": {
+        "DYNAMIC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dynamic"
+          }
+        }
+      }
+    },
+    "com.cloudflare.spectrum#AppsGetResponseEdgeIpsIpsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.spectrum#AppsGetResponseEdgeIps": {
+      "type": "structure",
+      "members": {
+        "connectivity": {
+          "target": "com.cloudflare.spectrum#AppsGetResponseEdgeIpsConnectivity",
+          "traits": {
+            "smithy.api#documentation": "The IP versions supported for inbound connections on Spectrum anycast IPs."
+          }
+        },
+        "type": {
+          "target": "com.cloudflare.spectrum#AppsGetResponseEdgeIpsType",
+          "traits": {
+            "smithy.api#documentation": "The type of edge IP configuration specified. Dynamically allocated edge IPs use Spectrum anycast IPs in accordance with the connectivity you specify. Only valid with CNAME DNS names."
+          }
+        },
+        "ips": {
+          "target": "com.cloudflare.spectrum#AppsGetResponseEdgeIpsIpsList",
+          "traits": {
+            "smithy.api#documentation": "The array of customer owned IPs we broadcast via anycast for this hostname and application."
+          }
+        }
+      }
+    },
+    "com.cloudflare.spectrum#AppsGetResponseOriginDirectList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.spectrum#AppsGetResponseOriginDnsType": {
+      "type": "enum",
+      "members": {
+        "VALUE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": ""
+          }
+        },
+        "A": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "A"
+          }
+        },
+        "AAAA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AAAA"
+          }
+        },
+        "SRV": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SRV"
+          }
+        }
+      }
+    },
+    "com.cloudflare.spectrum#AppsGetResponseOriginDns": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the DNS record associated with the origin."
+          }
+        },
+        "ttl": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The TTL of our resolution of your DNS record in seconds."
+          }
+        },
+        "type": {
+          "target": "com.cloudflare.spectrum#AppsGetResponseOriginDnsType",
+          "traits": {
+            "smithy.api#documentation": "The type of DNS record associated with the origin. \"\" is used to specify a combination of A/AAAA records."
+          }
+        }
+      }
+    },
+    "com.cloudflare.spectrum#AppsGetResponseOriginPort": {
+      "type": "structure",
+      "members": {
+        "number": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "string": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.spectrum#AppsGetResponseProxyProtocol": {
+      "type": "enum",
+      "members": {
+        "OFF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "off"
+          }
+        },
+        "V1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "v1"
+          }
+        },
+        "V2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "v2"
+          }
+        },
+        "SIMPLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "simple"
+          }
+        }
+      }
+    },
+    "com.cloudflare.spectrum#AppsGetResponseTls": {
+      "type": "enum",
+      "members": {
+        "OFF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "off"
+          }
+        },
+        "FLEXIBLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "flexible"
+          }
+        },
+        "FULL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "full"
+          }
+        },
+        "STRICT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "strict"
+          }
+        }
+      }
+    },
     "com.cloudflare.spectrum#AppsGetResponse": {
       "type": "structure",
       "members": {
-        "SpectrumConfigAppConfig_object___id__created_on__dns__12_more__": {
-          "target": "smithy.api#Document",
+        "id": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "SpectrumConfigAppConfig object { id, created_on, dns, 12 more }"
+            "smithy.api#documentation": "App identifier."
           }
         },
-        "SpectrumConfigPaygoAppConfig_object___id__created_on__dns__3_more__": {
-          "target": "smithy.api#Document",
+        "created_on": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "SpectrumConfigPaygoAppConfig object { id, created_on, dns, 3 more }"
+            "smithy.api#documentation": "When the Application was created."
+          }
+        },
+        "dns": {
+          "target": "com.cloudflare.spectrum#AppsGetResponseDns",
+          "traits": {
+            "smithy.api#documentation": "The name and type of DNS record for the Spectrum application."
+          }
+        },
+        "modified_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When the Application was last modified."
+          }
+        },
+        "protocol": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The port configuration at Cloudflare's edge. May specify a single port, for example `\"tcp/1000\"`, or a range of ports, for example `\"tcp/1000-2000\"`."
+          }
+        },
+        "traffic_type": {
+          "target": "com.cloudflare.spectrum#AppsGetResponseTrafficType",
+          "traits": {
+            "smithy.api#documentation": "Determines how data travels from the edge to your origin. When set to \"direct\", Spectrum will send traffic directly to your origin, and the application's type is derived from the `protocol`. When set to \"http\" or \"https\", Spectrum will apply Cloudflare's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly."
+          }
+        },
+        "argo_smart_routing": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Enables Argo Smart Routing for this application."
+          }
+        },
+        "edge_ips": {
+          "target": "com.cloudflare.spectrum#AppsGetResponseEdgeIps",
+          "traits": {
+            "smithy.api#documentation": "The anycast edge IP configuration for the hostname of this application."
+          }
+        },
+        "ip_firewall": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Enables IP Access Rules for this application."
+          }
+        },
+        "origin_direct": {
+          "target": "com.cloudflare.spectrum#AppsGetResponseOriginDirectList",
+          "traits": {
+            "smithy.api#documentation": "List of origin IP addresses. Array may contain multiple IP addresses for load balancing."
+          }
+        },
+        "origin_dns": {
+          "target": "com.cloudflare.spectrum#AppsGetResponseOriginDns",
+          "traits": {
+            "smithy.api#documentation": "The name and type of DNS record for the Spectrum application."
+          }
+        },
+        "origin_port": {
+          "target": "com.cloudflare.spectrum#AppsGetResponseOriginPort",
+          "traits": {
+            "smithy.api#documentation": "The destination port at the origin. Only specified in conjunction with origin_dns. May use an integer to specify a single origin port, for example `1000`, or a string to specify a range of origin ports, for example `\"1000-2000\"`."
+          }
+        },
+        "proxy_protocol": {
+          "target": "com.cloudflare.spectrum#AppsGetResponseProxyProtocol",
+          "traits": {
+            "smithy.api#documentation": "Enables Proxy Protocol to the origin. Refer to [Enable Proxy protocol](https://developers.cloudflare.com/spectrum/getting-started/proxy-protocol/) for implementation details on PROXY Protocol V1, PROXY Protocol V2, and Simple Proxy Protocol."
+          }
+        },
+        "tls": {
+          "target": "com.cloudflare.spectrum#AppsGetResponseTls",
+          "traits": {
+            "smithy.api#documentation": "The type of TLS termination associated with the application."
+          }
+        },
+        "virtual_network_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optional UUID of a virtual network for routing origin traffic through tunnel virtual networks."
           }
         }
       },
@@ -1143,21 +2130,350 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.spectrum#AppsListResultItemDnsType": {
+      "type": "enum",
+      "members": {
+        "CNAME": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CNAME"
+          }
+        },
+        "ADDRESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ADDRESS"
+          }
+        }
+      }
+    },
+    "com.cloudflare.spectrum#AppsListResultItemDns": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the DNS record associated with the application."
+          }
+        },
+        "type": {
+          "target": "com.cloudflare.spectrum#AppsListResultItemDnsType",
+          "traits": {
+            "smithy.api#documentation": "The type of DNS record associated with the application."
+          }
+        }
+      }
+    },
+    "com.cloudflare.spectrum#AppsListResultItemTrafficType": {
+      "type": "enum",
+      "members": {
+        "DIRECT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "direct"
+          }
+        },
+        "HTTP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "http"
+          }
+        },
+        "HTTPS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "https"
+          }
+        }
+      }
+    },
+    "com.cloudflare.spectrum#AppsListResultItemEdgeIpsConnectivity": {
+      "type": "enum",
+      "members": {
+        "ALL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "all"
+          }
+        },
+        "IPV4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ipv4"
+          }
+        },
+        "IPV6": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ipv6"
+          }
+        }
+      }
+    },
+    "com.cloudflare.spectrum#AppsListResultItemEdgeIpsType": {
+      "type": "enum",
+      "members": {
+        "DYNAMIC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dynamic"
+          }
+        }
+      }
+    },
+    "com.cloudflare.spectrum#AppsListResultItemEdgeIpsIpsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.spectrum#AppsListResultItemEdgeIps": {
+      "type": "structure",
+      "members": {
+        "connectivity": {
+          "target": "com.cloudflare.spectrum#AppsListResultItemEdgeIpsConnectivity",
+          "traits": {
+            "smithy.api#documentation": "The IP versions supported for inbound connections on Spectrum anycast IPs."
+          }
+        },
+        "type": {
+          "target": "com.cloudflare.spectrum#AppsListResultItemEdgeIpsType",
+          "traits": {
+            "smithy.api#documentation": "The type of edge IP configuration specified. Dynamically allocated edge IPs use Spectrum anycast IPs in accordance with the connectivity you specify. Only valid with CNAME DNS names."
+          }
+        },
+        "ips": {
+          "target": "com.cloudflare.spectrum#AppsListResultItemEdgeIpsIpsList",
+          "traits": {
+            "smithy.api#documentation": "The array of customer owned IPs we broadcast via anycast for this hostname and application."
+          }
+        }
+      }
+    },
+    "com.cloudflare.spectrum#AppsListResultItemOriginDirectList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.spectrum#AppsListResultItemOriginDnsType": {
+      "type": "enum",
+      "members": {
+        "VALUE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": ""
+          }
+        },
+        "A": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "A"
+          }
+        },
+        "AAAA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AAAA"
+          }
+        },
+        "SRV": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SRV"
+          }
+        }
+      }
+    },
+    "com.cloudflare.spectrum#AppsListResultItemOriginDns": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the DNS record associated with the origin."
+          }
+        },
+        "ttl": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The TTL of our resolution of your DNS record in seconds."
+          }
+        },
+        "type": {
+          "target": "com.cloudflare.spectrum#AppsListResultItemOriginDnsType",
+          "traits": {
+            "smithy.api#documentation": "The type of DNS record associated with the origin. \"\" is used to specify a combination of A/AAAA records."
+          }
+        }
+      }
+    },
+    "com.cloudflare.spectrum#AppsListResultItemOriginPort": {
+      "type": "structure",
+      "members": {
+        "number": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "string": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.spectrum#AppsListResultItemProxyProtocol": {
+      "type": "enum",
+      "members": {
+        "OFF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "off"
+          }
+        },
+        "V1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "v1"
+          }
+        },
+        "V2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "v2"
+          }
+        },
+        "SIMPLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "simple"
+          }
+        }
+      }
+    },
+    "com.cloudflare.spectrum#AppsListResultItemTls": {
+      "type": "enum",
+      "members": {
+        "OFF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "off"
+          }
+        },
+        "FLEXIBLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "flexible"
+          }
+        },
+        "FULL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "full"
+          }
+        },
+        "STRICT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "strict"
+          }
+        }
+      }
+    },
     "com.cloudflare.spectrum#AppsListResultItem": {
       "type": "structure",
       "members": {
-        "array_of_object___id__created_on__dns__12_more__": {
-          "target": "smithy.api#Document",
+        "id": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "array of object { id, created_on, dns, 12 more }"
+            "smithy.api#documentation": "App identifier."
           }
         },
-        "array_of_object___id__created_on__dns__3_more__": {
-          "target": "smithy.api#Document",
+        "created_on": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "array of object { id, created_on, dns, 3 more }"
+            "smithy.api#documentation": "When the Application was created."
+          }
+        },
+        "dns": {
+          "target": "com.cloudflare.spectrum#AppsListResultItemDns",
+          "traits": {
+            "smithy.api#documentation": "The name and type of DNS record for the Spectrum application."
+          }
+        },
+        "modified_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When the Application was last modified."
+          }
+        },
+        "protocol": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The port configuration at Cloudflare's edge. May specify a single port, for example `\"tcp/1000\"`, or a range of ports, for example `\"tcp/1000-2000\"`."
+          }
+        },
+        "traffic_type": {
+          "target": "com.cloudflare.spectrum#AppsListResultItemTrafficType",
+          "traits": {
+            "smithy.api#documentation": "Determines how data travels from the edge to your origin. When set to \"direct\", Spectrum will send traffic directly to your origin, and the application's type is derived from the `protocol`. When set to \"http\" or \"https\", Spectrum will apply Cloudflare's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly."
+          }
+        },
+        "argo_smart_routing": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Enables Argo Smart Routing for this application."
+          }
+        },
+        "edge_ips": {
+          "target": "com.cloudflare.spectrum#AppsListResultItemEdgeIps",
+          "traits": {
+            "smithy.api#documentation": "The anycast edge IP configuration for the hostname of this application."
+          }
+        },
+        "ip_firewall": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Enables IP Access Rules for this application."
+          }
+        },
+        "origin_direct": {
+          "target": "com.cloudflare.spectrum#AppsListResultItemOriginDirectList",
+          "traits": {
+            "smithy.api#documentation": "List of origin IP addresses. Array may contain multiple IP addresses for load balancing."
+          }
+        },
+        "origin_dns": {
+          "target": "com.cloudflare.spectrum#AppsListResultItemOriginDns",
+          "traits": {
+            "smithy.api#documentation": "The name and type of DNS record for the Spectrum application."
+          }
+        },
+        "origin_port": {
+          "target": "com.cloudflare.spectrum#AppsListResultItemOriginPort",
+          "traits": {
+            "smithy.api#documentation": "The destination port at the origin. Only specified in conjunction with origin_dns. May use an integer to specify a single origin port, for example `1000`, or a string to specify a range of origin ports, for example `\"1000-2000\"`."
+          }
+        },
+        "proxy_protocol": {
+          "target": "com.cloudflare.spectrum#AppsListResultItemProxyProtocol",
+          "traits": {
+            "smithy.api#documentation": "Enables Proxy Protocol to the origin. Refer to [Enable Proxy protocol](https://developers.cloudflare.com/spectrum/getting-started/proxy-protocol/) for implementation details on PROXY Protocol V1, PROXY Protocol V2, and Simple Proxy Protocol."
+          }
+        },
+        "tls": {
+          "target": "com.cloudflare.spectrum#AppsListResultItemTls",
+          "traits": {
+            "smithy.api#documentation": "The type of TLS termination associated with the application."
+          }
+        },
+        "virtual_network_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optional UUID of a virtual network for routing origin traffic through tunnel virtual networks."
           }
         }
       }
@@ -1201,21 +2517,350 @@
         "smithy.api#readonly": {}
       }
     },
+    "com.cloudflare.spectrum#AppsUpdateRequestBodyDnsType": {
+      "type": "enum",
+      "members": {
+        "CNAME": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CNAME"
+          }
+        },
+        "ADDRESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ADDRESS"
+          }
+        }
+      }
+    },
+    "com.cloudflare.spectrum#AppsUpdateRequestBodyDns": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the DNS record associated with the application."
+          }
+        },
+        "type": {
+          "target": "com.cloudflare.spectrum#AppsUpdateRequestBodyDnsType",
+          "traits": {
+            "smithy.api#documentation": "The type of DNS record associated with the application."
+          }
+        }
+      }
+    },
+    "com.cloudflare.spectrum#AppsUpdateRequestBodyTrafficType": {
+      "type": "enum",
+      "members": {
+        "DIRECT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "direct"
+          }
+        },
+        "HTTP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "http"
+          }
+        },
+        "HTTPS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "https"
+          }
+        }
+      }
+    },
+    "com.cloudflare.spectrum#AppsUpdateRequestBodyEdgeIpsConnectivity": {
+      "type": "enum",
+      "members": {
+        "ALL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "all"
+          }
+        },
+        "IPV4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ipv4"
+          }
+        },
+        "IPV6": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ipv6"
+          }
+        }
+      }
+    },
+    "com.cloudflare.spectrum#AppsUpdateRequestBodyEdgeIpsType": {
+      "type": "enum",
+      "members": {
+        "DYNAMIC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dynamic"
+          }
+        }
+      }
+    },
+    "com.cloudflare.spectrum#AppsUpdateRequestBodyEdgeIpsIpsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.spectrum#AppsUpdateRequestBodyEdgeIps": {
+      "type": "structure",
+      "members": {
+        "connectivity": {
+          "target": "com.cloudflare.spectrum#AppsUpdateRequestBodyEdgeIpsConnectivity",
+          "traits": {
+            "smithy.api#documentation": "The IP versions supported for inbound connections on Spectrum anycast IPs."
+          }
+        },
+        "type": {
+          "target": "com.cloudflare.spectrum#AppsUpdateRequestBodyEdgeIpsType",
+          "traits": {
+            "smithy.api#documentation": "The type of edge IP configuration specified. Dynamically allocated edge IPs use Spectrum anycast IPs in accordance with the connectivity you specify. Only valid with CNAME DNS names."
+          }
+        },
+        "ips": {
+          "target": "com.cloudflare.spectrum#AppsUpdateRequestBodyEdgeIpsIpsList",
+          "traits": {
+            "smithy.api#documentation": "The array of customer owned IPs we broadcast via anycast for this hostname and application."
+          }
+        }
+      }
+    },
+    "com.cloudflare.spectrum#AppsUpdateRequestBodyOriginDirectList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.spectrum#AppsUpdateRequestBodyOriginDnsType": {
+      "type": "enum",
+      "members": {
+        "VALUE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": ""
+          }
+        },
+        "A": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "A"
+          }
+        },
+        "AAAA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AAAA"
+          }
+        },
+        "SRV": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SRV"
+          }
+        }
+      }
+    },
+    "com.cloudflare.spectrum#AppsUpdateRequestBodyOriginDns": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the DNS record associated with the origin."
+          }
+        },
+        "ttl": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The TTL of our resolution of your DNS record in seconds."
+          }
+        },
+        "type": {
+          "target": "com.cloudflare.spectrum#AppsUpdateRequestBodyOriginDnsType",
+          "traits": {
+            "smithy.api#documentation": "The type of DNS record associated with the origin. \"\" is used to specify a combination of A/AAAA records."
+          }
+        }
+      }
+    },
+    "com.cloudflare.spectrum#AppsUpdateRequestBodyOriginPort": {
+      "type": "structure",
+      "members": {
+        "number": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "string": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.spectrum#AppsUpdateRequestBodyProxyProtocol": {
+      "type": "enum",
+      "members": {
+        "OFF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "off"
+          }
+        },
+        "V1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "v1"
+          }
+        },
+        "V2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "v2"
+          }
+        },
+        "SIMPLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "simple"
+          }
+        }
+      }
+    },
+    "com.cloudflare.spectrum#AppsUpdateRequestBodyTls": {
+      "type": "enum",
+      "members": {
+        "OFF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "off"
+          }
+        },
+        "FLEXIBLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "flexible"
+          }
+        },
+        "FULL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "full"
+          }
+        },
+        "STRICT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "strict"
+          }
+        }
+      }
+    },
     "com.cloudflare.spectrum#AppsUpdateRequestBody": {
       "type": "structure",
       "members": {
-        "SpectrumConfigAppConfig_object___id__created_on__dns__12_more__": {
-          "target": "smithy.api#Document",
+        "id": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "SpectrumConfigAppConfig object { id, created_on, dns, 12 more }"
+            "smithy.api#documentation": "App identifier."
           }
         },
-        "SpectrumConfigPaygoAppConfig_object___id__created_on__dns__3_more__": {
-          "target": "smithy.api#Document",
+        "created_on": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "SpectrumConfigPaygoAppConfig object { id, created_on, dns, 3 more }"
+            "smithy.api#documentation": "When the Application was created."
+          }
+        },
+        "dns": {
+          "target": "com.cloudflare.spectrum#AppsUpdateRequestBodyDns",
+          "traits": {
+            "smithy.api#documentation": "The name and type of DNS record for the Spectrum application."
+          }
+        },
+        "modified_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When the Application was last modified."
+          }
+        },
+        "protocol": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The port configuration at Cloudflare's edge. May specify a single port, for example `\"tcp/1000\"`, or a range of ports, for example `\"tcp/1000-2000\"`."
+          }
+        },
+        "traffic_type": {
+          "target": "com.cloudflare.spectrum#AppsUpdateRequestBodyTrafficType",
+          "traits": {
+            "smithy.api#documentation": "Determines how data travels from the edge to your origin. When set to \"direct\", Spectrum will send traffic directly to your origin, and the application's type is derived from the `protocol`. When set to \"http\" or \"https\", Spectrum will apply Cloudflare's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly."
+          }
+        },
+        "argo_smart_routing": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Enables Argo Smart Routing for this application."
+          }
+        },
+        "edge_ips": {
+          "target": "com.cloudflare.spectrum#AppsUpdateRequestBodyEdgeIps",
+          "traits": {
+            "smithy.api#documentation": "The anycast edge IP configuration for the hostname of this application."
+          }
+        },
+        "ip_firewall": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Enables IP Access Rules for this application."
+          }
+        },
+        "origin_direct": {
+          "target": "com.cloudflare.spectrum#AppsUpdateRequestBodyOriginDirectList",
+          "traits": {
+            "smithy.api#documentation": "List of origin IP addresses. Array may contain multiple IP addresses for load balancing."
+          }
+        },
+        "origin_dns": {
+          "target": "com.cloudflare.spectrum#AppsUpdateRequestBodyOriginDns",
+          "traits": {
+            "smithy.api#documentation": "The name and type of DNS record for the Spectrum application."
+          }
+        },
+        "origin_port": {
+          "target": "com.cloudflare.spectrum#AppsUpdateRequestBodyOriginPort",
+          "traits": {
+            "smithy.api#documentation": "The destination port at the origin. Only specified in conjunction with origin_dns. May use an integer to specify a single origin port, for example `1000`, or a string to specify a range of origin ports, for example `\"1000-2000\"`."
+          }
+        },
+        "proxy_protocol": {
+          "target": "com.cloudflare.spectrum#AppsUpdateRequestBodyProxyProtocol",
+          "traits": {
+            "smithy.api#documentation": "Enables Proxy Protocol to the origin. Refer to [Enable Proxy protocol](https://developers.cloudflare.com/spectrum/getting-started/proxy-protocol/) for implementation details on PROXY Protocol V1, PROXY Protocol V2, and Simple Proxy Protocol."
+          }
+        },
+        "tls": {
+          "target": "com.cloudflare.spectrum#AppsUpdateRequestBodyTls",
+          "traits": {
+            "smithy.api#documentation": "The type of TLS termination associated with the application."
+          }
+        },
+        "virtual_network_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optional UUID of a virtual network for routing origin traffic through tunnel virtual networks."
           }
         }
       }
@@ -1250,21 +2895,350 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.spectrum#AppsUpdateResponseDnsType": {
+      "type": "enum",
+      "members": {
+        "CNAME": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CNAME"
+          }
+        },
+        "ADDRESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ADDRESS"
+          }
+        }
+      }
+    },
+    "com.cloudflare.spectrum#AppsUpdateResponseDns": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the DNS record associated with the application."
+          }
+        },
+        "type": {
+          "target": "com.cloudflare.spectrum#AppsUpdateResponseDnsType",
+          "traits": {
+            "smithy.api#documentation": "The type of DNS record associated with the application."
+          }
+        }
+      }
+    },
+    "com.cloudflare.spectrum#AppsUpdateResponseTrafficType": {
+      "type": "enum",
+      "members": {
+        "DIRECT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "direct"
+          }
+        },
+        "HTTP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "http"
+          }
+        },
+        "HTTPS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "https"
+          }
+        }
+      }
+    },
+    "com.cloudflare.spectrum#AppsUpdateResponseEdgeIpsConnectivity": {
+      "type": "enum",
+      "members": {
+        "ALL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "all"
+          }
+        },
+        "IPV4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ipv4"
+          }
+        },
+        "IPV6": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ipv6"
+          }
+        }
+      }
+    },
+    "com.cloudflare.spectrum#AppsUpdateResponseEdgeIpsType": {
+      "type": "enum",
+      "members": {
+        "DYNAMIC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dynamic"
+          }
+        }
+      }
+    },
+    "com.cloudflare.spectrum#AppsUpdateResponseEdgeIpsIpsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.spectrum#AppsUpdateResponseEdgeIps": {
+      "type": "structure",
+      "members": {
+        "connectivity": {
+          "target": "com.cloudflare.spectrum#AppsUpdateResponseEdgeIpsConnectivity",
+          "traits": {
+            "smithy.api#documentation": "The IP versions supported for inbound connections on Spectrum anycast IPs."
+          }
+        },
+        "type": {
+          "target": "com.cloudflare.spectrum#AppsUpdateResponseEdgeIpsType",
+          "traits": {
+            "smithy.api#documentation": "The type of edge IP configuration specified. Dynamically allocated edge IPs use Spectrum anycast IPs in accordance with the connectivity you specify. Only valid with CNAME DNS names."
+          }
+        },
+        "ips": {
+          "target": "com.cloudflare.spectrum#AppsUpdateResponseEdgeIpsIpsList",
+          "traits": {
+            "smithy.api#documentation": "The array of customer owned IPs we broadcast via anycast for this hostname and application."
+          }
+        }
+      }
+    },
+    "com.cloudflare.spectrum#AppsUpdateResponseOriginDirectList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.spectrum#AppsUpdateResponseOriginDnsType": {
+      "type": "enum",
+      "members": {
+        "VALUE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": ""
+          }
+        },
+        "A": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "A"
+          }
+        },
+        "AAAA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AAAA"
+          }
+        },
+        "SRV": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SRV"
+          }
+        }
+      }
+    },
+    "com.cloudflare.spectrum#AppsUpdateResponseOriginDns": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the DNS record associated with the origin."
+          }
+        },
+        "ttl": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The TTL of our resolution of your DNS record in seconds."
+          }
+        },
+        "type": {
+          "target": "com.cloudflare.spectrum#AppsUpdateResponseOriginDnsType",
+          "traits": {
+            "smithy.api#documentation": "The type of DNS record associated with the origin. \"\" is used to specify a combination of A/AAAA records."
+          }
+        }
+      }
+    },
+    "com.cloudflare.spectrum#AppsUpdateResponseOriginPort": {
+      "type": "structure",
+      "members": {
+        "number": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "string": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.spectrum#AppsUpdateResponseProxyProtocol": {
+      "type": "enum",
+      "members": {
+        "OFF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "off"
+          }
+        },
+        "V1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "v1"
+          }
+        },
+        "V2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "v2"
+          }
+        },
+        "SIMPLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "simple"
+          }
+        }
+      }
+    },
+    "com.cloudflare.spectrum#AppsUpdateResponseTls": {
+      "type": "enum",
+      "members": {
+        "OFF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "off"
+          }
+        },
+        "FLEXIBLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "flexible"
+          }
+        },
+        "FULL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "full"
+          }
+        },
+        "STRICT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "strict"
+          }
+        }
+      }
+    },
     "com.cloudflare.spectrum#AppsUpdateResponse": {
       "type": "structure",
       "members": {
-        "SpectrumConfigAppConfig_object___id__created_on__dns__12_more__": {
-          "target": "smithy.api#Document",
+        "id": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "SpectrumConfigAppConfig object { id, created_on, dns, 12 more }"
+            "smithy.api#documentation": "App identifier."
           }
         },
-        "SpectrumConfigPaygoAppConfig_object___id__created_on__dns__3_more__": {
-          "target": "smithy.api#Document",
+        "created_on": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "SpectrumConfigPaygoAppConfig object { id, created_on, dns, 3 more }"
+            "smithy.api#documentation": "When the Application was created."
+          }
+        },
+        "dns": {
+          "target": "com.cloudflare.spectrum#AppsUpdateResponseDns",
+          "traits": {
+            "smithy.api#documentation": "The name and type of DNS record for the Spectrum application."
+          }
+        },
+        "modified_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When the Application was last modified."
+          }
+        },
+        "protocol": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The port configuration at Cloudflare's edge. May specify a single port, for example `\"tcp/1000\"`, or a range of ports, for example `\"tcp/1000-2000\"`."
+          }
+        },
+        "traffic_type": {
+          "target": "com.cloudflare.spectrum#AppsUpdateResponseTrafficType",
+          "traits": {
+            "smithy.api#documentation": "Determines how data travels from the edge to your origin. When set to \"direct\", Spectrum will send traffic directly to your origin, and the application's type is derived from the `protocol`. When set to \"http\" or \"https\", Spectrum will apply Cloudflare's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly."
+          }
+        },
+        "argo_smart_routing": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Enables Argo Smart Routing for this application."
+          }
+        },
+        "edge_ips": {
+          "target": "com.cloudflare.spectrum#AppsUpdateResponseEdgeIps",
+          "traits": {
+            "smithy.api#documentation": "The anycast edge IP configuration for the hostname of this application."
+          }
+        },
+        "ip_firewall": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Enables IP Access Rules for this application."
+          }
+        },
+        "origin_direct": {
+          "target": "com.cloudflare.spectrum#AppsUpdateResponseOriginDirectList",
+          "traits": {
+            "smithy.api#documentation": "List of origin IP addresses. Array may contain multiple IP addresses for load balancing."
+          }
+        },
+        "origin_dns": {
+          "target": "com.cloudflare.spectrum#AppsUpdateResponseOriginDns",
+          "traits": {
+            "smithy.api#documentation": "The name and type of DNS record for the Spectrum application."
+          }
+        },
+        "origin_port": {
+          "target": "com.cloudflare.spectrum#AppsUpdateResponseOriginPort",
+          "traits": {
+            "smithy.api#documentation": "The destination port at the origin. Only specified in conjunction with origin_dns. May use an integer to specify a single origin port, for example `1000`, or a string to specify a range of origin ports, for example `\"1000-2000\"`."
+          }
+        },
+        "proxy_protocol": {
+          "target": "com.cloudflare.spectrum#AppsUpdateResponseProxyProtocol",
+          "traits": {
+            "smithy.api#documentation": "Enables Proxy Protocol to the origin. Refer to [Enable Proxy protocol](https://developers.cloudflare.com/spectrum/getting-started/proxy-protocol/) for implementation details on PROXY Protocol V1, PROXY Protocol V2, and Simple Proxy Protocol."
+          }
+        },
+        "tls": {
+          "target": "com.cloudflare.spectrum#AppsUpdateResponseTls",
+          "traits": {
+            "smithy.api#documentation": "The type of TLS termination associated with the application."
+          }
+        },
+        "virtual_network_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optional UUID of a virtual network for routing origin traffic through tunnel virtual networks."
           }
         }
       },

@@ -55228,64 +55228,206 @@
         }
       }
     },
+    "com.cloudflare.radar#CtTimeseriesGroupsResponseSerie0TimestampsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.radar#CtTimeseriesGroupsResponseSerie0Rfc6962List": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.radar#CtTimeseriesGroupsResponseSerie0StaticList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.radar#CtTimeseriesGroupsResponseSerie0Gt121dList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.radar#CtTimeseriesGroupsResponseSerie0Gt16dLte31dList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.radar#CtTimeseriesGroupsResponseSerie0Gt31dLte91dList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.radar#CtTimeseriesGroupsResponseSerie0Gt3dLte16dList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.radar#CtTimeseriesGroupsResponseSerie0Gt91dLte121dList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.radar#CtTimeseriesGroupsResponseSerie0Lte3dList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.radar#CtTimeseriesGroupsResponseSerie0CERTIFICATEList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.radar#CtTimeseriesGroupsResponseSerie0PRECERTIFICATEList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.radar#CtTimeseriesGroupsResponseSerie0EXPIREDList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.radar#CtTimeseriesGroupsResponseSerie0VALIDList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.radar#CtTimeseriesGroupsResponseSerie0NEGATIVEList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.radar#CtTimeseriesGroupsResponseSerie0POSITIVEList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.radar#CtTimeseriesGroupsResponseSerie0DSAList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.radar#CtTimeseriesGroupsResponseSerie0ECDSAList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.radar#CtTimeseriesGroupsResponseSerie0RSAList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.radar#CtTimeseriesGroupsResponseSerie0DomainList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.radar#CtTimeseriesGroupsResponseSerie0ExtendedList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.radar#CtTimeseriesGroupsResponseSerie0OrganizationList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.radar#CtTimeseriesGroupsResponseSerie0UnknownList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
     "com.cloudflare.radar#CtTimeseriesGroupsResponseSerie0": {
       "type": "structure",
       "members": {
-        "UnnamedSchemaRef7826220e105d84352ba1108d9ed88e55_object___timestamps__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "UnnamedSchemaRef7826220e105d84352ba1108d9ed88e55 object { timestamps }"
-          }
+        "timestamps": {
+          "target": "com.cloudflare.radar#CtTimeseriesGroupsResponseSerie0TimestampsList"
         },
-        "object___rfc6962__static__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "object { rfc6962, static }"
-          }
+        "rfc6962": {
+          "target": "com.cloudflare.radar#CtTimeseriesGroupsResponseSerie0Rfc6962List"
         },
-        "object___gt_121d__gt_16d_lte_31d__gt_31d_lte_91d__3_more__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "object { gt_121d, gt_16d_lte_31d, gt_31d_lte_91d, 3 more }"
-          }
+        "static": {
+          "target": "com.cloudflare.radar#CtTimeseriesGroupsResponseSerie0StaticList"
         },
-        "object___CERTIFICATE__PRECERTIFICATE__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "object { CERTIFICATE, PRECERTIFICATE }"
-          }
+        "gt_121d": {
+          "target": "com.cloudflare.radar#CtTimeseriesGroupsResponseSerie0Gt121dList"
         },
-        "object___EXPIRED__VALID__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "object { EXPIRED, VALID }"
-          }
+        "gt_16d_lte_31d": {
+          "target": "com.cloudflare.radar#CtTimeseriesGroupsResponseSerie0Gt16dLte31dList"
         },
-        "object___NEGATIVE__POSITIVE__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "object { NEGATIVE, POSITIVE }"
-          }
+        "gt_31d_lte_91d": {
+          "target": "com.cloudflare.radar#CtTimeseriesGroupsResponseSerie0Gt31dLte91dList"
         },
-        "object___DSA__ECDSA__RSA__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "object { DSA, ECDSA, RSA }"
-          }
+        "gt_3d_lte_16d": {
+          "target": "com.cloudflare.radar#CtTimeseriesGroupsResponseSerie0Gt3dLte16dList"
         },
-        "object___domain__extended__organization__unknown__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "object { domain, extended, organization, unknown }"
-          }
+        "gt_91d_lte_121d": {
+          "target": "com.cloudflare.radar#CtTimeseriesGroupsResponseSerie0Gt91dLte121dList"
+        },
+        "lte_3d": {
+          "target": "com.cloudflare.radar#CtTimeseriesGroupsResponseSerie0Lte3dList"
+        },
+        "CERTIFICATE": {
+          "target": "com.cloudflare.radar#CtTimeseriesGroupsResponseSerie0CERTIFICATEList"
+        },
+        "PRECERTIFICATE": {
+          "target": "com.cloudflare.radar#CtTimeseriesGroupsResponseSerie0PRECERTIFICATEList"
+        },
+        "EXPIRED": {
+          "target": "com.cloudflare.radar#CtTimeseriesGroupsResponseSerie0EXPIREDList"
+        },
+        "VALID": {
+          "target": "com.cloudflare.radar#CtTimeseriesGroupsResponseSerie0VALIDList"
+        },
+        "NEGATIVE": {
+          "target": "com.cloudflare.radar#CtTimeseriesGroupsResponseSerie0NEGATIVEList"
+        },
+        "POSITIVE": {
+          "target": "com.cloudflare.radar#CtTimeseriesGroupsResponseSerie0POSITIVEList"
+        },
+        "DSA": {
+          "target": "com.cloudflare.radar#CtTimeseriesGroupsResponseSerie0DSAList"
+        },
+        "ECDSA": {
+          "target": "com.cloudflare.radar#CtTimeseriesGroupsResponseSerie0ECDSAList"
+        },
+        "RSA": {
+          "target": "com.cloudflare.radar#CtTimeseriesGroupsResponseSerie0RSAList"
+        },
+        "domain": {
+          "target": "com.cloudflare.radar#CtTimeseriesGroupsResponseSerie0DomainList"
+        },
+        "extended": {
+          "target": "com.cloudflare.radar#CtTimeseriesGroupsResponseSerie0ExtendedList"
+        },
+        "organization": {
+          "target": "com.cloudflare.radar#CtTimeseriesGroupsResponseSerie0OrganizationList"
+        },
+        "unknown": {
+          "target": "com.cloudflare.radar#CtTimeseriesGroupsResponseSerie0UnknownList"
         }
       }
     },

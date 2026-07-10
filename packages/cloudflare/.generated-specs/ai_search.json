@@ -26,11 +26,16 @@
             "smithy.api#required": {}
           }
         },
-        "array_of_object___text__type____or_object___image_url__type__": {
+        "object___text__type__": {
           "target": "smithy.api#Document",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "array of object { text, type }  or object { image_url, type }"
+            "smithy.api#jsonName": "object { text, type }"
+          }
+        },
+        "object___image_url__type__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#jsonName": "object { image_url, type }"
           }
         }
       }
@@ -433,11 +438,16 @@
             "smithy.api#required": {}
           }
         },
-        "array_of_object___text__type____or_object___image_url__type__": {
+        "object___text__type__": {
           "target": "smithy.api#Document",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "array of object { text, type }  or object { image_url, type }"
+            "smithy.api#jsonName": "object { text, type }"
+          }
+        },
+        "object___image_url__type__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#jsonName": "object { image_url, type }"
           }
         }
       }
@@ -5499,11 +5509,16 @@
             "smithy.api#required": {}
           }
         },
-        "array_of_object___text__type____or_object___image_url__type__": {
+        "object___text__type__": {
           "target": "smithy.api#Document",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "array of object { text, type }  or object { image_url, type }"
+            "smithy.api#jsonName": "object { text, type }"
+          }
+        },
+        "object___image_url__type__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#jsonName": "object { image_url, type }"
           }
         }
       }
@@ -8409,11 +8424,16 @@
             "smithy.api#required": {}
           }
         },
-        "array_of_object___text__type____or_object___image_url__type__": {
+        "object___text__type__": {
           "target": "smithy.api#Document",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "array of object { text, type }  or object { image_url, type }"
+            "smithy.api#jsonName": "object { text, type }"
+          }
+        },
+        "object___image_url__type__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#jsonName": "object { image_url, type }"
           }
         }
       }
@@ -8536,11 +8556,16 @@
             "smithy.api#required": {}
           }
         },
-        "array_of_object___text__type____or_object___image_url__type__": {
+        "object___text__type__": {
           "target": "smithy.api#Document",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "array of object { text, type }  or object { image_url, type }"
+            "smithy.api#jsonName": "object { text, type }"
+          }
+        },
+        "object___image_url__type__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#jsonName": "object { image_url, type }"
           }
         }
       }
@@ -9359,11 +9384,16 @@
             "smithy.api#required": {}
           }
         },
-        "array_of_object___text__type____or_object___image_url__type__": {
+        "object___text__type__": {
           "target": "smithy.api#Document",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "array of object { text, type }  or object { image_url, type }"
+            "smithy.api#jsonName": "object { text, type }"
+          }
+        },
+        "object___image_url__type__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#jsonName": "object { image_url, type }"
           }
         }
       }
@@ -9739,11 +9769,16 @@
             "smithy.api#required": {}
           }
         },
-        "array_of_object___text__type____or_object___image_url__type__": {
+        "object___text__type__": {
           "target": "smithy.api#Document",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "array of object { text, type }  or object { image_url, type }"
+            "smithy.api#jsonName": "object { text, type }"
+          }
+        },
+        "object___image_url__type__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#jsonName": "object { image_url, type }"
           }
         }
       }
@@ -10153,11 +10188,16 @@
             "smithy.api#required": {}
           }
         },
-        "array_of_object___text__type____or_object___image_url__type__": {
+        "object___text__type__": {
           "target": "smithy.api#Document",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "array of object { text, type }  or object { image_url, type }"
+            "smithy.api#jsonName": "object { text, type }"
+          }
+        },
+        "object___image_url__type__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#jsonName": "object { image_url, type }"
           }
         }
       }
@@ -15247,11 +15287,16 @@
             "smithy.api#required": {}
           }
         },
-        "array_of_object___text__type____or_object___image_url__type__": {
+        "object___text__type__": {
           "target": "smithy.api#Document",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "array of object { text, type }  or object { image_url, type }"
+            "smithy.api#jsonName": "object { text, type }"
+          }
+        },
+        "object___image_url__type__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#jsonName": "object { image_url, type }"
           }
         }
       }

@@ -32,21 +32,49 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.ips#ListResponseIpv4CidrsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.ips#ListResponseIpv6CidrsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.ips#ListResponseJdcloudCidrsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
     "com.cloudflare.ips#ListResponse": {
       "type": "structure",
       "members": {
-        "PublicIPIPs_object___etag__ipv4_cidrs__ipv6_cidrs__": {
-          "target": "smithy.api#Document",
+        "etag": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "PublicIPIPs object { etag, ipv4_cidrs, ipv6_cidrs }"
+            "smithy.api#documentation": "A digest of the IP data. Useful for determining if the data has changed."
           }
         },
-        "PublicIPIPsJDCloud_object___etag__ipv4_cidrs__ipv6_cidrs__jdcloud_cidrs__": {
-          "target": "smithy.api#Document",
+        "ipv4_cidrs": {
+          "target": "com.cloudflare.ips#ListResponseIpv4CidrsList",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "PublicIPIPsJDCloud object { etag, ipv4_cidrs, ipv6_cidrs, jdcloud_cidrs }"
+            "smithy.api#documentation": "List of Cloudflare IPv4 CIDR addresses."
+          }
+        },
+        "ipv6_cidrs": {
+          "target": "com.cloudflare.ips#ListResponseIpv6CidrsList",
+          "traits": {
+            "smithy.api#documentation": "List of Cloudflare IPv6 CIDR addresses."
+          }
+        },
+        "jdcloud_cidrs": {
+          "target": "com.cloudflare.ips#ListResponseJdcloudCidrsList",
+          "traits": {
+            "smithy.api#documentation": "List IPv4 and IPv6 CIDRs, only populated if `?networks=jdcloud` is used."
           }
         }
       },

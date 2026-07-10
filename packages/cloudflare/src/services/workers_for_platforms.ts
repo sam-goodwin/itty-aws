@@ -831,51 +831,8 @@ export const DispatchNamespacesScriptsGetResponseScriptObservability =
     identifier: "DispatchNamespacesScriptsGetResponseScriptObservability",
   }) as any as S.Schema<DispatchNamespacesScriptsGetResponseScriptObservability>;
 
-export interface DispatchNamespacesScriptsGetResponseScriptPlacement {
-  objectModeLastAnalyzedAtStatus__: unknown;
-  objectRegionLastAnalyzedAtStatus__: unknown;
-  objectHostnameLastAnalyzedAtStatus__: unknown;
-  objectHostLastAnalyzedAtStatus__: unknown;
-  objectModeRegionLastAnalyzedAtStatus__: unknown;
-  objectHostnameModeLastAnalyzedAtStatus__: unknown;
-  objectHostModeLastAnalyzedAtStatus__: unknown;
-  objectModeTargetLastAnalyzedAtStatus__: unknown;
-}
-export const DispatchNamespacesScriptsGetResponseScriptPlacement =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      objectModeLastAnalyzedAtStatus__: S.Unknown.pipe(
-        T.Body("object { mode, last_analyzed_at, status }"),
-      ),
-      objectRegionLastAnalyzedAtStatus__: S.Unknown.pipe(
-        T.Body("object { region, last_analyzed_at, status }"),
-      ),
-      objectHostnameLastAnalyzedAtStatus__: S.Unknown.pipe(
-        T.Body("object { hostname, last_analyzed_at, status }"),
-      ),
-      objectHostLastAnalyzedAtStatus__: S.Unknown.pipe(
-        T.Body("object { host, last_analyzed_at, status }"),
-      ),
-      objectModeRegionLastAnalyzedAtStatus__: S.Unknown.pipe(
-        T.Body("object { mode, region, last_analyzed_at, status }"),
-      ),
-      objectHostnameModeLastAnalyzedAtStatus__: S.Unknown.pipe(
-        T.Body("object { hostname, mode, last_analyzed_at, status }"),
-      ),
-      objectHostModeLastAnalyzedAtStatus__: S.Unknown.pipe(
-        T.Body("object { host, mode, last_analyzed_at, status }"),
-      ),
-      objectModeTargetLastAnalyzedAtStatus__: S.Unknown.pipe(
-        T.Body("object { mode, target, last_analyzed_at, status }"),
-      ),
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsGetResponseScriptPlacement",
-  }) as any as S.Schema<DispatchNamespacesScriptsGetResponseScriptPlacement>;
-
 export type DispatchNamespacesScriptsGetResponseScriptPlacementMode =
   | "smart"
-  | "targeted"
   | (string & {});
 export const DispatchNamespacesScriptsGetResponseScriptPlacementMode =
   /*@__PURE__*/ S.String;
@@ -886,6 +843,82 @@ export type DispatchNamespacesScriptsGetResponseScriptPlacementStatus =
   | "INSUFFICIENT_INVOCATIONS"
   | (string & {});
 export const DispatchNamespacesScriptsGetResponseScriptPlacementStatus =
+  /*@__PURE__*/ S.String;
+
+export interface DispatchNamespacesScriptsGetResponseScriptPlacementTargetItem {
+  /** Cloud region in format 'provider:region'. */
+  region?: string;
+  /** HTTP hostname for targeted placement. */
+  hostname?: string;
+  /** TCP host:port for targeted placement. */
+  host?: string;
+}
+export const DispatchNamespacesScriptsGetResponseScriptPlacementTargetItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      region: S.optional(S.String),
+      hostname: S.optional(S.String),
+      host: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "DispatchNamespacesScriptsGetResponseScriptPlacementTargetItem",
+  }) as any as S.Schema<DispatchNamespacesScriptsGetResponseScriptPlacementTargetItem>;
+
+export type DispatchNamespacesScriptsGetResponseScriptPlacementTargetList =
+  DispatchNamespacesScriptsGetResponseScriptPlacementTargetItem[];
+export const DispatchNamespacesScriptsGetResponseScriptPlacementTargetList =
+  /*@__PURE__*/ S.Array(
+    DispatchNamespacesScriptsGetResponseScriptPlacementTargetItem,
+  ) as any as S.Schema<DispatchNamespacesScriptsGetResponseScriptPlacementTargetList>;
+
+export interface DispatchNamespacesScriptsGetResponseScriptPlacement {
+  /** Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
+  mode?: DispatchNamespacesScriptsGetResponseScriptPlacementMode;
+  /** The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
+  lastAnalyzedAt?: string;
+  /** Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
+  status?: DispatchNamespacesScriptsGetResponseScriptPlacementStatus;
+  /** Cloud region for targeted placement in format 'provider:region'. */
+  region?: string;
+  /** HTTP hostname for targeted placement. */
+  hostname?: string;
+  /** TCP host and port for targeted placement. */
+  host?: string;
+  /** Array of placement targets (currently limited to single target). */
+  target?: DispatchNamespacesScriptsGetResponseScriptPlacementTargetList;
+}
+export const DispatchNamespacesScriptsGetResponseScriptPlacement =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      mode: S.optional(DispatchNamespacesScriptsGetResponseScriptPlacementMode),
+      lastAnalyzedAt: S.optional(S.String.pipe(T.Body("last_analyzed_at"))),
+      status: S.optional(
+        DispatchNamespacesScriptsGetResponseScriptPlacementStatus,
+      ),
+      region: S.optional(S.String),
+      hostname: S.optional(S.String),
+      host: S.optional(S.String),
+      target: S.optional(
+        DispatchNamespacesScriptsGetResponseScriptPlacementTargetList,
+      ),
+    }),
+  ).annotate({
+    identifier: "DispatchNamespacesScriptsGetResponseScriptPlacement",
+  }) as any as S.Schema<DispatchNamespacesScriptsGetResponseScriptPlacement>;
+
+export type DispatchNamespacesScriptsGetResponseScriptPlacementMode2 =
+  | "smart"
+  | "targeted"
+  | (string & {});
+export const DispatchNamespacesScriptsGetResponseScriptPlacementMode2 =
+  /*@__PURE__*/ S.String;
+
+export type DispatchNamespacesScriptsGetResponseScriptPlacementStatus2 =
+  | "SUCCESS"
+  | "UNSUPPORTED_APPLICATION"
+  | "INSUFFICIENT_INVOCATIONS"
+  | (string & {});
+export const DispatchNamespacesScriptsGetResponseScriptPlacementStatus2 =
   /*@__PURE__*/ S.String;
 
 export type DispatchNamespacesScriptsGetResponseScriptTagsList = string[];
@@ -962,9 +995,9 @@ export interface DispatchNamespacesScriptsGetResponseScript {
   /** Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host. */
   placement?: DispatchNamespacesScriptsGetResponseScriptPlacement;
   /** Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host. */
-  placementMode?: DispatchNamespacesScriptsGetResponseScriptPlacementMode;
+  placementMode?: DispatchNamespacesScriptsGetResponseScriptPlacementMode2;
   /** Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
-  placementStatus?: DispatchNamespacesScriptsGetResponseScriptPlacementStatus;
+  placementStatus?: DispatchNamespacesScriptsGetResponseScriptPlacementStatus2;
   /** The immutable ID of the script. */
   tag?: string;
   /** Tags associated with the Worker. */
@@ -1014,12 +1047,12 @@ export const DispatchNamespacesScriptsGetResponseScript =
         DispatchNamespacesScriptsGetResponseScriptPlacement,
       ),
       placementMode: S.optional(
-        DispatchNamespacesScriptsGetResponseScriptPlacementMode.pipe(
+        DispatchNamespacesScriptsGetResponseScriptPlacementMode2.pipe(
           T.Body("placement_mode"),
         ),
       ),
       placementStatus: S.optional(
-        DispatchNamespacesScriptsGetResponseScriptPlacementStatus.pipe(
+        DispatchNamespacesScriptsGetResponseScriptPlacementStatus2.pipe(
           T.Body("placement_status"),
         ),
       ),
@@ -1088,155 +1121,288 @@ export const GetDispatchNamespaceScriptBindingRequest = /*@__PURE__*/ S.suspend(
   identifier: "GetDispatchNamespaceScriptBindingRequest",
 }) as any as S.Schema<GetDispatchNamespaceScriptBindingRequest>;
 
+export type DispatchNamespacesScriptsBindingsGetResultItemType =
+  | "ai"
+  | (string & {});
+export const DispatchNamespacesScriptsBindingsGetResultItemType =
+  /*@__PURE__*/ S.String;
+
+export interface DispatchNamespacesScriptsBindingsGetResultItemOutboundParamsItem {
+  /** Name of the parameter. */
+  name: string;
+}
+export const DispatchNamespacesScriptsBindingsGetResultItemOutboundParamsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String,
+    }),
+  ).annotate({
+    identifier:
+      "DispatchNamespacesScriptsBindingsGetResultItemOutboundParamsItem",
+  }) as any as S.Schema<DispatchNamespacesScriptsBindingsGetResultItemOutboundParamsItem>;
+
+export type DispatchNamespacesScriptsBindingsGetResultItemOutboundParamsList =
+  DispatchNamespacesScriptsBindingsGetResultItemOutboundParamsItem[];
+export const DispatchNamespacesScriptsBindingsGetResultItemOutboundParamsList =
+  /*@__PURE__*/ S.Array(
+    DispatchNamespacesScriptsBindingsGetResultItemOutboundParamsItem,
+  ) as any as S.Schema<DispatchNamespacesScriptsBindingsGetResultItemOutboundParamsList>;
+
+export interface DispatchNamespacesScriptsBindingsGetResultItemOutboundWorker {
+  /** Entrypoint to invoke on the outbound worker. */
+  entrypoint?: string;
+  /** Environment of the outbound worker. */
+  environment?: string;
+  /** Name of the outbound worker. */
+  service?: string;
+}
+export const DispatchNamespacesScriptsBindingsGetResultItemOutboundWorker =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      entrypoint: S.optional(S.String),
+      environment: S.optional(S.String),
+      service: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "DispatchNamespacesScriptsBindingsGetResultItemOutboundWorker",
+  }) as any as S.Schema<DispatchNamespacesScriptsBindingsGetResultItemOutboundWorker>;
+
+export interface DispatchNamespacesScriptsBindingsGetResultItemOutbound {
+  /** Pass information from the Dispatch Worker to the Outbound Worker through the parameters. */
+  params?: DispatchNamespacesScriptsBindingsGetResultItemOutboundParamsList;
+  /** Outbound worker. */
+  worker?: DispatchNamespacesScriptsBindingsGetResultItemOutboundWorker;
+}
+export const DispatchNamespacesScriptsBindingsGetResultItemOutbound =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      params: S.optional(
+        DispatchNamespacesScriptsBindingsGetResultItemOutboundParamsList,
+      ),
+      worker: S.optional(
+        DispatchNamespacesScriptsBindingsGetResultItemOutboundWorker,
+      ),
+    }),
+  ).annotate({
+    identifier: "DispatchNamespacesScriptsBindingsGetResultItemOutbound",
+  }) as any as S.Schema<DispatchNamespacesScriptsBindingsGetResultItemOutbound>;
+
+export interface DispatchNamespacesScriptsBindingsGetResultItemSimple {
+  /** The limit (requests per period). */
+  limit: number;
+  /** The period in seconds. */
+  period: number;
+  /** Duration in seconds to apply the mitigation action after the rate limit is exceeded. Valid values are 0 (disabled), 10, or multiples of 60 up to 86400. Must be greater than or equal to the period when non-zero. */
+  mitigationTimeout?: number;
+}
+export const DispatchNamespacesScriptsBindingsGetResultItemSimple =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      limit: S.Number,
+      period: S.Number,
+      mitigationTimeout: S.optional(
+        S.Number.pipe(T.Body("mitigation_timeout")),
+      ),
+    }),
+  ).annotate({
+    identifier: "DispatchNamespacesScriptsBindingsGetResultItemSimple",
+  }) as any as S.Schema<DispatchNamespacesScriptsBindingsGetResultItemSimple>;
+
+export type DispatchNamespacesScriptsBindingsGetResultItemJurisdiction =
+  | "eu"
+  | "fedramp"
+  | "fedramp-high"
+  | (string & {});
+export const DispatchNamespacesScriptsBindingsGetResultItemJurisdiction =
+  /*@__PURE__*/ S.String;
+
+export type DispatchNamespacesScriptsBindingsGetResultItemAllowedDestinationAddressesList =
+  string[];
+export const DispatchNamespacesScriptsBindingsGetResultItemAllowedDestinationAddressesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<DispatchNamespacesScriptsBindingsGetResultItemAllowedDestinationAddressesList>;
+
+export type DispatchNamespacesScriptsBindingsGetResultItemAllowedSenderAddressesList =
+  string[];
+export const DispatchNamespacesScriptsBindingsGetResultItemAllowedSenderAddressesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<DispatchNamespacesScriptsBindingsGetResultItemAllowedSenderAddressesList>;
+
+export type DispatchNamespacesScriptsBindingsGetResultItemFormat =
+  | "raw"
+  | "pkcs8"
+  | "spki"
+  | "jwk"
+  | (string & {});
+export const DispatchNamespacesScriptsBindingsGetResultItemFormat =
+  /*@__PURE__*/ S.String;
+
+export type DispatchNamespacesScriptsBindingsGetResultItemUsagesItem =
+  | "encrypt"
+  | "decrypt"
+  | "sign"
+  | (string & {});
+export const DispatchNamespacesScriptsBindingsGetResultItemUsagesItem =
+  /*@__PURE__*/ S.String;
+
+export type DispatchNamespacesScriptsBindingsGetResultItemUsagesList =
+  DispatchNamespacesScriptsBindingsGetResultItemUsagesItem[];
+export const DispatchNamespacesScriptsBindingsGetResultItemUsagesList =
+  /*@__PURE__*/ S.Array(
+    DispatchNamespacesScriptsBindingsGetResultItemUsagesItem,
+  ) as any as S.Schema<DispatchNamespacesScriptsBindingsGetResultItemUsagesList>;
+
 export interface DispatchNamespacesScriptsBindingsGetResultItem {
-  AIObjectNameType__: unknown;
-  AISearchObjectInstanceNameNameTypeNamespace__: unknown;
-  AISearchNamespaceObjectNameNamespaceType__: unknown;
-  AnalyticsEngineObjectDatasetNameType__: unknown;
-  AssetsObjectNameType__: unknown;
-  BrowserObjectNameType__: unknown;
-  D1ObjectDatabaseIdNameTypeId__: unknown;
-  DataBlobObjectNamePartType__: unknown;
-  DispatchNamespaceObjectNameNamespaceTypeOutbound__: unknown;
-  DurableObjectNamespaceObjectNameTypeClassName4More__: unknown;
-  HyperdriveObjectIdNameType__: unknown;
-  InheritObjectNameTypeOldNameVersionId__: unknown;
-  ImagesObjectNameType__: unknown;
-  JsonObjectJsonNameType__: unknown;
-  KVNamespaceObjectNameNamespaceIdType__: unknown;
-  MediaObjectNameType__: unknown;
-  MTLSCertificateObjectCertificateIdNameType__: unknown;
-  PlainTextObjectNameTextType__: unknown;
-  PipelinesObjectNamePipelineType__: unknown;
-  QueueObjectNameQueueNameType__: unknown;
-  RatelimitObjectNameNamespaceIdSimpleType__: unknown;
-  R2BucketObjectBucketNameNameTypeJurisdiction__: unknown;
-  SecretTextObjectNameTextType__: unknown;
-  SendEmailObjectNameTypeAllowedDestinationAddresses2More__: unknown;
-  ServiceObjectNameServiceType2More__: unknown;
-  TextBlobObjectNamePartType__: unknown;
-  VectorizeObjectIndexNameNameType__: unknown;
-  VersionMetadataObjectNameType__: unknown;
-  SecretsStoreSecretObjectNameSecretNameStoreIdType__: unknown;
-  FlagshipObjectAppIdNameType__: unknown;
-  SecretKeyObjectAlgorithmFormatName4More__: unknown;
-  WorkflowObjectNameTypeWorkflowName2More__: unknown;
-  WasmModuleObjectNamePartType__: unknown;
-  VPCServiceObjectNameServiceIdType__: unknown;
-  VPCNetworkObjectNameTypeNetworkIdTunnelId__: unknown;
+  /** A JavaScript variable name for the binding. */
+  name?: string;
+  /** The kind of resource that the binding provides. */
+  type?: DispatchNamespacesScriptsBindingsGetResultItemType;
+  /** The user-chosen instance name. Must exist at deploy time. The worker can search, chat, update, and manage items/jobs on this instance. */
+  instanceName?: string;
+  /** The namespace the instance belongs to. Defaults to "default" if omitted. Customers who don't use namespaces can simply omit this field. */
+  namespace?: string;
+  /** The name of the dataset to bind to. */
+  dataset?: string;
+  /** Identifier of the D1 database to bind to. */
+  databaseId?: string;
+  /** Identifier of the D1 database to bind to. */
+  id?: string;
+  /** The name of the file containing the data content. Only accepted for `service worker syntax` Workers. */
+  part?: string;
+  /** Outbound worker. */
+  outbound?: DispatchNamespacesScriptsBindingsGetResultItemOutbound;
+  /** The exported class name of the Durable Object. */
+  className?: string;
+  /** The dispatch namespace the Durable Object script belongs to. */
+  dispatchNamespace?: string;
+  /** The environment of the script_name to bind to. */
+  environment?: string;
+  /** Namespace identifier tag. */
+  namespaceId?: string;
+  /** The script where the Durable Object is defined, if it is external to this Worker. */
+  scriptName?: string;
+  /** The old name of the inherited binding. If set, the binding will be renamed from `old_name` to `name` in the new version. If not set, the binding will keep the same name between versions. */
+  oldName?: string;
+  /** Identifier for the version to inherit the binding from, which can be the version ID or the literal "latest" to inherit from the latest version. Defaults to inheriting the binding from the latest version. */
+  versionId?: string;
+  /** JSON data to use. */
+  json?: unknown;
+  /** Identifier of the certificate to bind to. */
+  certificateId?: string;
+  /** The text value to use. */
+  text?: string;
+  /** Name of the Pipeline to bind to. */
+  pipeline?: string;
+  /** Name of the Queue to bind to. */
+  queueName?: string;
+  /** The rate limit configuration. */
+  simple?: DispatchNamespacesScriptsBindingsGetResultItemSimple;
+  /** R2 bucket to bind to. */
+  bucketName?: string;
+  /** The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket. */
+  jurisdiction?: DispatchNamespacesScriptsBindingsGetResultItemJurisdiction;
+  /** List of allowed destination addresses. */
+  allowedDestinationAddresses?: DispatchNamespacesScriptsBindingsGetResultItemAllowedDestinationAddressesList;
+  /** List of allowed sender addresses. */
+  allowedSenderAddresses?: DispatchNamespacesScriptsBindingsGetResultItemAllowedSenderAddressesList;
+  /** Destination address for the email. */
+  destinationAddress?: string;
+  /** Name of Worker to bind to. */
+  service?: string;
+  /** Entrypoint to invoke on the target Worker. */
+  entrypoint?: string;
+  /** Name of the Vectorize index to bind to. */
+  indexName?: string;
+  /** Name of the secret in the store. */
+  secretName?: string;
+  /** ID of the store containing the secret. */
+  storeId?: string;
+  /** ID of the Flagship app to bind to for feature flag evaluation. */
+  appId?: string;
+  /** Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm). */
+  algorithm?: unknown;
+  /** Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format). */
+  format?: DispatchNamespacesScriptsBindingsGetResultItemFormat;
+  /** Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages). */
+  usages?: DispatchNamespacesScriptsBindingsGetResultItemUsagesList;
+  /** Base64-encoded key data. Required if `format` is "raw", "pkcs8", or "spki". */
+  keyBase64?: string;
+  /** Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is "jwk". */
+  keyJwk?: unknown;
+  /** Name of the Workflow to bind to. */
+  workflowName?: string;
+  /** Identifier of the VPC service to bind to. */
+  serviceId?: string;
+  /** Identifier of the network to bind to. Only "cf1:network" is currently supported. Mutually exclusive with tunnel_id. */
+  networkId?: string;
+  /** UUID of the Cloudflare Tunnel to bind to. Mutually exclusive with network_id. */
+  tunnelId?: string;
 }
 export const DispatchNamespacesScriptsBindingsGetResultItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      AIObjectNameType__: S.Unknown.pipe(T.Body("AI object { name, type }")),
-      AISearchObjectInstanceNameNameTypeNamespace__: S.Unknown.pipe(
-        T.Body("AISearch object { instance_name, name, type, namespace }"),
+      name: S.optional(S.String),
+      type: S.optional(DispatchNamespacesScriptsBindingsGetResultItemType),
+      instanceName: S.optional(S.String.pipe(T.Body("instance_name"))),
+      namespace: S.optional(S.String),
+      dataset: S.optional(S.String),
+      databaseId: S.optional(S.String.pipe(T.Body("database_id"))),
+      id: S.optional(S.String),
+      part: S.optional(S.String),
+      outbound: S.optional(
+        DispatchNamespacesScriptsBindingsGetResultItemOutbound,
       ),
-      AISearchNamespaceObjectNameNamespaceType__: S.Unknown.pipe(
-        T.Body("AISearchNamespace object { name, namespace, type }"),
+      className: S.optional(S.String.pipe(T.Body("class_name"))),
+      dispatchNamespace: S.optional(
+        S.String.pipe(T.Body("dispatch_namespace")),
       ),
-      AnalyticsEngineObjectDatasetNameType__: S.Unknown.pipe(
-        T.Body("AnalyticsEngine object { dataset, name, type }"),
+      environment: S.optional(S.String),
+      namespaceId: S.optional(S.String.pipe(T.Body("namespace_id"))),
+      scriptName: S.optional(S.String.pipe(T.Body("script_name"))),
+      oldName: S.optional(S.String.pipe(T.Body("old_name"))),
+      versionId: S.optional(S.String.pipe(T.Body("version_id"))),
+      json: S.optional(S.Unknown),
+      certificateId: S.optional(S.String.pipe(T.Body("certificate_id"))),
+      text: S.optional(S.String),
+      pipeline: S.optional(S.String),
+      queueName: S.optional(S.String.pipe(T.Body("queue_name"))),
+      simple: S.optional(DispatchNamespacesScriptsBindingsGetResultItemSimple),
+      bucketName: S.optional(S.String.pipe(T.Body("bucket_name"))),
+      jurisdiction: S.optional(
+        DispatchNamespacesScriptsBindingsGetResultItemJurisdiction,
       ),
-      AssetsObjectNameType__: S.Unknown.pipe(
-        T.Body("Assets object { name, type }"),
-      ),
-      BrowserObjectNameType__: S.Unknown.pipe(
-        T.Body("Browser object { name, type }"),
-      ),
-      D1ObjectDatabaseIdNameTypeId__: S.Unknown.pipe(
-        T.Body("D1 object { database_id, name, type, id }"),
-      ),
-      DataBlobObjectNamePartType__: S.Unknown.pipe(
-        T.Body("DataBlob object { name, part, type }"),
-      ),
-      DispatchNamespaceObjectNameNamespaceTypeOutbound__: S.Unknown.pipe(
-        T.Body("DispatchNamespace object { name, namespace, type, outbound }"),
-      ),
-      DurableObjectNamespaceObjectNameTypeClassName4More__: S.Unknown.pipe(
-        T.Body(
-          "DurableObjectNamespace object { name, type, class_name, 4 more }",
+      allowedDestinationAddresses: S.optional(
+        DispatchNamespacesScriptsBindingsGetResultItemAllowedDestinationAddressesList.pipe(
+          T.Body("allowed_destination_addresses"),
         ),
       ),
-      HyperdriveObjectIdNameType__: S.Unknown.pipe(
-        T.Body("Hyperdrive object { id, name, type }"),
-      ),
-      InheritObjectNameTypeOldNameVersionId__: S.Unknown.pipe(
-        T.Body("Inherit object { name, type, old_name, version_id }"),
-      ),
-      ImagesObjectNameType__: S.Unknown.pipe(
-        T.Body("Images object { name, type }"),
-      ),
-      JsonObjectJsonNameType__: S.Unknown.pipe(
-        T.Body("Json object { json, name, type }"),
-      ),
-      KVNamespaceObjectNameNamespaceIdType__: S.Unknown.pipe(
-        T.Body("KVNamespace object { name, namespace_id, type }"),
-      ),
-      MediaObjectNameType__: S.Unknown.pipe(
-        T.Body("Media object { name, type }"),
-      ),
-      MTLSCertificateObjectCertificateIdNameType__: S.Unknown.pipe(
-        T.Body("MTLSCertificate object { certificate_id, name, type }"),
-      ),
-      PlainTextObjectNameTextType__: S.Unknown.pipe(
-        T.Body("PlainText object { name, text, type }"),
-      ),
-      PipelinesObjectNamePipelineType__: S.Unknown.pipe(
-        T.Body("Pipelines object { name, pipeline, type }"),
-      ),
-      QueueObjectNameQueueNameType__: S.Unknown.pipe(
-        T.Body("Queue object { name, queue_name, type }"),
-      ),
-      RatelimitObjectNameNamespaceIdSimpleType__: S.Unknown.pipe(
-        T.Body("Ratelimit object { name, namespace_id, simple, type }"),
-      ),
-      R2BucketObjectBucketNameNameTypeJurisdiction__: S.Unknown.pipe(
-        T.Body("R2Bucket object { bucket_name, name, type, jurisdiction }"),
-      ),
-      SecretTextObjectNameTextType__: S.Unknown.pipe(
-        T.Body("SecretText object { name, text, type }"),
-      ),
-      SendEmailObjectNameTypeAllowedDestinationAddresses2More__: S.Unknown.pipe(
-        T.Body(
-          "SendEmail object { name, type, allowed_destination_addresses, 2 more }",
+      allowedSenderAddresses: S.optional(
+        DispatchNamespacesScriptsBindingsGetResultItemAllowedSenderAddressesList.pipe(
+          T.Body("allowed_sender_addresses"),
         ),
       ),
-      ServiceObjectNameServiceType2More__: S.Unknown.pipe(
-        T.Body("Service object { name, service, type, 2 more }"),
+      destinationAddress: S.optional(
+        S.String.pipe(T.Body("destination_address")),
       ),
-      TextBlobObjectNamePartType__: S.Unknown.pipe(
-        T.Body("TextBlob object { name, part, type }"),
+      service: S.optional(S.String),
+      entrypoint: S.optional(S.String),
+      indexName: S.optional(S.String.pipe(T.Body("index_name"))),
+      secretName: S.optional(S.String.pipe(T.Body("secret_name"))),
+      storeId: S.optional(S.String.pipe(T.Body("store_id"))),
+      appId: S.optional(S.String.pipe(T.Body("app_id"))),
+      algorithm: S.optional(S.Unknown),
+      format: S.optional(DispatchNamespacesScriptsBindingsGetResultItemFormat),
+      usages: S.optional(
+        DispatchNamespacesScriptsBindingsGetResultItemUsagesList,
       ),
-      VectorizeObjectIndexNameNameType__: S.Unknown.pipe(
-        T.Body("Vectorize object { index_name, name, type }"),
-      ),
-      VersionMetadataObjectNameType__: S.Unknown.pipe(
-        T.Body("VersionMetadata object { name, type }"),
-      ),
-      SecretsStoreSecretObjectNameSecretNameStoreIdType__: S.Unknown.pipe(
-        T.Body(
-          "SecretsStoreSecret object { name, secret_name, store_id, type }",
-        ),
-      ),
-      FlagshipObjectAppIdNameType__: S.Unknown.pipe(
-        T.Body("Flagship object { app_id, name, type }"),
-      ),
-      SecretKeyObjectAlgorithmFormatName4More__: S.Unknown.pipe(
-        T.Body("SecretKey object { algorithm, format, name, 4 more }"),
-      ),
-      WorkflowObjectNameTypeWorkflowName2More__: S.Unknown.pipe(
-        T.Body("Workflow object { name, type, workflow_name, 2 more }"),
-      ),
-      WasmModuleObjectNamePartType__: S.Unknown.pipe(
-        T.Body("WasmModule object { name, part, type }"),
-      ),
-      VPCServiceObjectNameServiceIdType__: S.Unknown.pipe(
-        T.Body("VPCService object { name, service_id, type }"),
-      ),
-      VPCNetworkObjectNameTypeNetworkIdTunnelId__: S.Unknown.pipe(
-        T.Body("VPCNetwork object { name, type, network_id, tunnel_id }"),
-      ),
+      keyBase64: S.optional(S.String.pipe(T.Body("key_base64"))),
+      keyJwk: S.optional(S.Unknown.pipe(T.Body("key_jwk"))),
+      workflowName: S.optional(S.String.pipe(T.Body("workflow_name"))),
+      serviceId: S.optional(S.String.pipe(T.Body("service_id"))),
+      networkId: S.optional(S.String.pipe(T.Body("network_id"))),
+      tunnelId: S.optional(S.String.pipe(T.Body("tunnel_id"))),
     }),
   ).annotate({
     identifier: "DispatchNamespacesScriptsBindingsGetResultItem",
@@ -1335,20 +1501,66 @@ export const GetDispatchNamespaceScriptSecretRequest = /*@__PURE__*/ S.suspend(
   identifier: "GetDispatchNamespaceScriptSecretRequest",
 }) as any as S.Schema<GetDispatchNamespaceScriptSecretRequest>;
 
+export type DispatchNamespacesScriptsSecretsGetResponseType =
+  | "secret_text"
+  | (string & {});
+export const DispatchNamespacesScriptsSecretsGetResponseType =
+  /*@__PURE__*/ S.String;
+
+export type DispatchNamespacesScriptsSecretsGetResponseFormat =
+  | "raw"
+  | "pkcs8"
+  | "spki"
+  | "jwk"
+  | (string & {});
+export const DispatchNamespacesScriptsSecretsGetResponseFormat =
+  /*@__PURE__*/ S.String;
+
+export type DispatchNamespacesScriptsSecretsGetResponseUsagesItem =
+  | "encrypt"
+  | "decrypt"
+  | "sign"
+  | (string & {});
+export const DispatchNamespacesScriptsSecretsGetResponseUsagesItem =
+  /*@__PURE__*/ S.String;
+
+export type DispatchNamespacesScriptsSecretsGetResponseUsagesList =
+  DispatchNamespacesScriptsSecretsGetResponseUsagesItem[];
+export const DispatchNamespacesScriptsSecretsGetResponseUsagesList =
+  /*@__PURE__*/ S.Array(
+    DispatchNamespacesScriptsSecretsGetResponseUsagesItem,
+  ) as any as S.Schema<DispatchNamespacesScriptsSecretsGetResponseUsagesList>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetDispatchNamespaceScriptSecretResponse {
-  SecretTextObjectNameTextType__: unknown;
-  SecretKeyObjectAlgorithmFormatName4More__: unknown;
+  /** A JavaScript variable name for the binding. */
+  name?: string;
+  /** The secret value to use. */
+  text?: string;
+  /** The kind of resource that the binding provides. */
+  type?: DispatchNamespacesScriptsSecretsGetResponseType;
+  /** Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm). */
+  algorithm?: unknown;
+  /** Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format). */
+  format?: DispatchNamespacesScriptsSecretsGetResponseFormat;
+  /** Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages). */
+  usages?: DispatchNamespacesScriptsSecretsGetResponseUsagesList;
+  /** Base64-encoded key data. Required if `format` is "raw", "pkcs8", or "spki". */
+  keyBase64?: string;
+  /** Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is "jwk". */
+  keyJwk?: unknown;
 }
 export const GetDispatchNamespaceScriptSecretResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      SecretTextObjectNameTextType__: S.Unknown.pipe(
-        T.Body("SecretText object { name, text, type }"),
-      ),
-      SecretKeyObjectAlgorithmFormatName4More__: S.Unknown.pipe(
-        T.Body("SecretKey object { algorithm, format, name, 4 more }"),
-      ),
+      name: S.optional(S.String),
+      text: S.optional(S.String),
+      type: S.optional(DispatchNamespacesScriptsSecretsGetResponseType),
+      algorithm: S.optional(S.Unknown),
+      format: S.optional(DispatchNamespacesScriptsSecretsGetResponseFormat),
+      usages: S.optional(DispatchNamespacesScriptsSecretsGetResponseUsagesList),
+      keyBase64: S.optional(S.String.pipe(T.Body("key_base64"))),
+      keyJwk: S.optional(S.Unknown.pipe(T.Body("key_jwk"))),
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDispatchNamespaceScriptSecretResponse",
@@ -1381,155 +1593,291 @@ export const GetDispatchNamespaceScriptSettingRequest = /*@__PURE__*/ S.suspend(
   identifier: "GetDispatchNamespaceScriptSettingRequest",
 }) as any as S.Schema<GetDispatchNamespaceScriptSettingRequest>;
 
+export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemType =
+  | "ai"
+  | (string & {});
+export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemType =
+  /*@__PURE__*/ S.String;
+
+export interface DispatchNamespacesScriptsSettingsGetResponseBindingsItemOutboundParamsItem {
+  /** Name of the parameter. */
+  name: string;
+}
+export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemOutboundParamsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String,
+    }),
+  ).annotate({
+    identifier:
+      "DispatchNamespacesScriptsSettingsGetResponseBindingsItemOutboundParamsItem",
+  }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemOutboundParamsItem>;
+
+export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemOutboundParamsList =
+  DispatchNamespacesScriptsSettingsGetResponseBindingsItemOutboundParamsItem[];
+export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemOutboundParamsList =
+  /*@__PURE__*/ S.Array(
+    DispatchNamespacesScriptsSettingsGetResponseBindingsItemOutboundParamsItem,
+  ) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemOutboundParamsList>;
+
+export interface DispatchNamespacesScriptsSettingsGetResponseBindingsItemOutboundWorker {
+  /** Entrypoint to invoke on the outbound worker. */
+  entrypoint?: string;
+  /** Environment of the outbound worker. */
+  environment?: string;
+  /** Name of the outbound worker. */
+  service?: string;
+}
+export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemOutboundWorker =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      entrypoint: S.optional(S.String),
+      environment: S.optional(S.String),
+      service: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "DispatchNamespacesScriptsSettingsGetResponseBindingsItemOutboundWorker",
+  }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemOutboundWorker>;
+
+export interface DispatchNamespacesScriptsSettingsGetResponseBindingsItemOutbound {
+  /** Pass information from the Dispatch Worker to the Outbound Worker through the parameters. */
+  params?: DispatchNamespacesScriptsSettingsGetResponseBindingsItemOutboundParamsList;
+  /** Outbound worker. */
+  worker?: DispatchNamespacesScriptsSettingsGetResponseBindingsItemOutboundWorker;
+}
+export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemOutbound =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      params: S.optional(
+        DispatchNamespacesScriptsSettingsGetResponseBindingsItemOutboundParamsList,
+      ),
+      worker: S.optional(
+        DispatchNamespacesScriptsSettingsGetResponseBindingsItemOutboundWorker,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "DispatchNamespacesScriptsSettingsGetResponseBindingsItemOutbound",
+  }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemOutbound>;
+
+export interface DispatchNamespacesScriptsSettingsGetResponseBindingsItemSimple {
+  /** The limit (requests per period). */
+  limit: number;
+  /** The period in seconds. */
+  period: number;
+  /** Duration in seconds to apply the mitigation action after the rate limit is exceeded. Valid values are 0 (disabled), 10, or multiples of 60 up to 86400. Must be greater than or equal to the period when non-zero. */
+  mitigationTimeout?: number;
+}
+export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemSimple =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      limit: S.Number,
+      period: S.Number,
+      mitigationTimeout: S.optional(
+        S.Number.pipe(T.Body("mitigation_timeout")),
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "DispatchNamespacesScriptsSettingsGetResponseBindingsItemSimple",
+  }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemSimple>;
+
+export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemJurisdiction =
+  "eu" | "fedramp" | "fedramp-high" | (string & {});
+export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemJurisdiction =
+  /*@__PURE__*/ S.String;
+
+export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemAllowedDestinationAddressesList =
+  string[];
+export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemAllowedDestinationAddressesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemAllowedDestinationAddressesList>;
+
+export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemAllowedSenderAddressesList =
+  string[];
+export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemAllowedSenderAddressesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemAllowedSenderAddressesList>;
+
+export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemFormat =
+  | "raw"
+  | "pkcs8"
+  | "spki"
+  | "jwk"
+  | (string & {});
+export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemFormat =
+  /*@__PURE__*/ S.String;
+
+export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemUsagesItem =
+  "encrypt" | "decrypt" | "sign" | (string & {});
+export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemUsagesItem =
+  /*@__PURE__*/ S.String;
+
+export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemUsagesList =
+  DispatchNamespacesScriptsSettingsGetResponseBindingsItemUsagesItem[];
+export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemUsagesList =
+  /*@__PURE__*/ S.Array(
+    DispatchNamespacesScriptsSettingsGetResponseBindingsItemUsagesItem,
+  ) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemUsagesList>;
+
 export interface DispatchNamespacesScriptsSettingsGetResponseBindingsItem {
-  AIObjectNameType__: unknown;
-  AISearchObjectInstanceNameNameTypeNamespace__: unknown;
-  AISearchNamespaceObjectNameNamespaceType__: unknown;
-  AnalyticsEngineObjectDatasetNameType__: unknown;
-  AssetsObjectNameType__: unknown;
-  BrowserObjectNameType__: unknown;
-  D1ObjectDatabaseIdNameTypeId__: unknown;
-  DataBlobObjectNamePartType__: unknown;
-  DispatchNamespaceObjectNameNamespaceTypeOutbound__: unknown;
-  DurableObjectNamespaceObjectNameTypeClassName4More__: unknown;
-  HyperdriveObjectIdNameType__: unknown;
-  InheritObjectNameTypeOldNameVersionId__: unknown;
-  ImagesObjectNameType__: unknown;
-  JsonObjectJsonNameType__: unknown;
-  KVNamespaceObjectNameNamespaceIdType__: unknown;
-  MediaObjectNameType__: unknown;
-  MTLSCertificateObjectCertificateIdNameType__: unknown;
-  PlainTextObjectNameTextType__: unknown;
-  PipelinesObjectNamePipelineType__: unknown;
-  QueueObjectNameQueueNameType__: unknown;
-  RatelimitObjectNameNamespaceIdSimpleType__: unknown;
-  R2BucketObjectBucketNameNameTypeJurisdiction__: unknown;
-  SecretTextObjectNameTextType__: unknown;
-  SendEmailObjectNameTypeAllowedDestinationAddresses2More__: unknown;
-  ServiceObjectNameServiceType2More__: unknown;
-  TextBlobObjectNamePartType__: unknown;
-  VectorizeObjectIndexNameNameType__: unknown;
-  VersionMetadataObjectNameType__: unknown;
-  SecretsStoreSecretObjectNameSecretNameStoreIdType__: unknown;
-  FlagshipObjectAppIdNameType__: unknown;
-  SecretKeyObjectAlgorithmFormatName4More__: unknown;
-  WorkflowObjectNameTypeWorkflowName2More__: unknown;
-  WasmModuleObjectNamePartType__: unknown;
-  VPCServiceObjectNameServiceIdType__: unknown;
-  VPCNetworkObjectNameTypeNetworkIdTunnelId__: unknown;
+  /** A JavaScript variable name for the binding. */
+  name?: string;
+  /** The kind of resource that the binding provides. */
+  type?: DispatchNamespacesScriptsSettingsGetResponseBindingsItemType;
+  /** The user-chosen instance name. Must exist at deploy time. The worker can search, chat, update, and manage items/jobs on this instance. */
+  instanceName?: string;
+  /** The namespace the instance belongs to. Defaults to "default" if omitted. Customers who don't use namespaces can simply omit this field. */
+  namespace?: string;
+  /** The name of the dataset to bind to. */
+  dataset?: string;
+  /** Identifier of the D1 database to bind to. */
+  databaseId?: string;
+  /** Identifier of the D1 database to bind to. */
+  id?: string;
+  /** The name of the file containing the data content. Only accepted for `service worker syntax` Workers. */
+  part?: string;
+  /** Outbound worker. */
+  outbound?: DispatchNamespacesScriptsSettingsGetResponseBindingsItemOutbound;
+  /** The exported class name of the Durable Object. */
+  className?: string;
+  /** The dispatch namespace the Durable Object script belongs to. */
+  dispatchNamespace?: string;
+  /** The environment of the script_name to bind to. */
+  environment?: string;
+  /** Namespace identifier tag. */
+  namespaceId?: string;
+  /** The script where the Durable Object is defined, if it is external to this Worker. */
+  scriptName?: string;
+  /** The old name of the inherited binding. If set, the binding will be renamed from `old_name` to `name` in the new version. If not set, the binding will keep the same name between versions. */
+  oldName?: string;
+  /** Identifier for the version to inherit the binding from, which can be the version ID or the literal "latest" to inherit from the latest version. Defaults to inheriting the binding from the latest version. */
+  versionId?: string;
+  /** JSON data to use. */
+  json?: unknown;
+  /** Identifier of the certificate to bind to. */
+  certificateId?: string;
+  /** The text value to use. */
+  text?: string;
+  /** Name of the Pipeline to bind to. */
+  pipeline?: string;
+  /** Name of the Queue to bind to. */
+  queueName?: string;
+  /** The rate limit configuration. */
+  simple?: DispatchNamespacesScriptsSettingsGetResponseBindingsItemSimple;
+  /** R2 bucket to bind to. */
+  bucketName?: string;
+  /** The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket. */
+  jurisdiction?: DispatchNamespacesScriptsSettingsGetResponseBindingsItemJurisdiction;
+  /** List of allowed destination addresses. */
+  allowedDestinationAddresses?: DispatchNamespacesScriptsSettingsGetResponseBindingsItemAllowedDestinationAddressesList;
+  /** List of allowed sender addresses. */
+  allowedSenderAddresses?: DispatchNamespacesScriptsSettingsGetResponseBindingsItemAllowedSenderAddressesList;
+  /** Destination address for the email. */
+  destinationAddress?: string;
+  /** Name of Worker to bind to. */
+  service?: string;
+  /** Entrypoint to invoke on the target Worker. */
+  entrypoint?: string;
+  /** Name of the Vectorize index to bind to. */
+  indexName?: string;
+  /** Name of the secret in the store. */
+  secretName?: string;
+  /** ID of the store containing the secret. */
+  storeId?: string;
+  /** ID of the Flagship app to bind to for feature flag evaluation. */
+  appId?: string;
+  /** Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm). */
+  algorithm?: unknown;
+  /** Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format). */
+  format?: DispatchNamespacesScriptsSettingsGetResponseBindingsItemFormat;
+  /** Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages). */
+  usages?: DispatchNamespacesScriptsSettingsGetResponseBindingsItemUsagesList;
+  /** Base64-encoded key data. Required if `format` is "raw", "pkcs8", or "spki". */
+  keyBase64?: string;
+  /** Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is "jwk". */
+  keyJwk?: unknown;
+  /** Name of the Workflow to bind to. */
+  workflowName?: string;
+  /** Identifier of the VPC service to bind to. */
+  serviceId?: string;
+  /** Identifier of the network to bind to. Only "cf1:network" is currently supported. Mutually exclusive with tunnel_id. */
+  networkId?: string;
+  /** UUID of the Cloudflare Tunnel to bind to. Mutually exclusive with network_id. */
+  tunnelId?: string;
 }
 export const DispatchNamespacesScriptsSettingsGetResponseBindingsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      AIObjectNameType__: S.Unknown.pipe(T.Body("AI object { name, type }")),
-      AISearchObjectInstanceNameNameTypeNamespace__: S.Unknown.pipe(
-        T.Body("AISearch object { instance_name, name, type, namespace }"),
+      name: S.optional(S.String),
+      type: S.optional(
+        DispatchNamespacesScriptsSettingsGetResponseBindingsItemType,
       ),
-      AISearchNamespaceObjectNameNamespaceType__: S.Unknown.pipe(
-        T.Body("AISearchNamespace object { name, namespace, type }"),
+      instanceName: S.optional(S.String.pipe(T.Body("instance_name"))),
+      namespace: S.optional(S.String),
+      dataset: S.optional(S.String),
+      databaseId: S.optional(S.String.pipe(T.Body("database_id"))),
+      id: S.optional(S.String),
+      part: S.optional(S.String),
+      outbound: S.optional(
+        DispatchNamespacesScriptsSettingsGetResponseBindingsItemOutbound,
       ),
-      AnalyticsEngineObjectDatasetNameType__: S.Unknown.pipe(
-        T.Body("AnalyticsEngine object { dataset, name, type }"),
+      className: S.optional(S.String.pipe(T.Body("class_name"))),
+      dispatchNamespace: S.optional(
+        S.String.pipe(T.Body("dispatch_namespace")),
       ),
-      AssetsObjectNameType__: S.Unknown.pipe(
-        T.Body("Assets object { name, type }"),
+      environment: S.optional(S.String),
+      namespaceId: S.optional(S.String.pipe(T.Body("namespace_id"))),
+      scriptName: S.optional(S.String.pipe(T.Body("script_name"))),
+      oldName: S.optional(S.String.pipe(T.Body("old_name"))),
+      versionId: S.optional(S.String.pipe(T.Body("version_id"))),
+      json: S.optional(S.Unknown),
+      certificateId: S.optional(S.String.pipe(T.Body("certificate_id"))),
+      text: S.optional(S.String),
+      pipeline: S.optional(S.String),
+      queueName: S.optional(S.String.pipe(T.Body("queue_name"))),
+      simple: S.optional(
+        DispatchNamespacesScriptsSettingsGetResponseBindingsItemSimple,
       ),
-      BrowserObjectNameType__: S.Unknown.pipe(
-        T.Body("Browser object { name, type }"),
+      bucketName: S.optional(S.String.pipe(T.Body("bucket_name"))),
+      jurisdiction: S.optional(
+        DispatchNamespacesScriptsSettingsGetResponseBindingsItemJurisdiction,
       ),
-      D1ObjectDatabaseIdNameTypeId__: S.Unknown.pipe(
-        T.Body("D1 object { database_id, name, type, id }"),
-      ),
-      DataBlobObjectNamePartType__: S.Unknown.pipe(
-        T.Body("DataBlob object { name, part, type }"),
-      ),
-      DispatchNamespaceObjectNameNamespaceTypeOutbound__: S.Unknown.pipe(
-        T.Body("DispatchNamespace object { name, namespace, type, outbound }"),
-      ),
-      DurableObjectNamespaceObjectNameTypeClassName4More__: S.Unknown.pipe(
-        T.Body(
-          "DurableObjectNamespace object { name, type, class_name, 4 more }",
+      allowedDestinationAddresses: S.optional(
+        DispatchNamespacesScriptsSettingsGetResponseBindingsItemAllowedDestinationAddressesList.pipe(
+          T.Body("allowed_destination_addresses"),
         ),
       ),
-      HyperdriveObjectIdNameType__: S.Unknown.pipe(
-        T.Body("Hyperdrive object { id, name, type }"),
-      ),
-      InheritObjectNameTypeOldNameVersionId__: S.Unknown.pipe(
-        T.Body("Inherit object { name, type, old_name, version_id }"),
-      ),
-      ImagesObjectNameType__: S.Unknown.pipe(
-        T.Body("Images object { name, type }"),
-      ),
-      JsonObjectJsonNameType__: S.Unknown.pipe(
-        T.Body("Json object { json, name, type }"),
-      ),
-      KVNamespaceObjectNameNamespaceIdType__: S.Unknown.pipe(
-        T.Body("KVNamespace object { name, namespace_id, type }"),
-      ),
-      MediaObjectNameType__: S.Unknown.pipe(
-        T.Body("Media object { name, type }"),
-      ),
-      MTLSCertificateObjectCertificateIdNameType__: S.Unknown.pipe(
-        T.Body("MTLSCertificate object { certificate_id, name, type }"),
-      ),
-      PlainTextObjectNameTextType__: S.Unknown.pipe(
-        T.Body("PlainText object { name, text, type }"),
-      ),
-      PipelinesObjectNamePipelineType__: S.Unknown.pipe(
-        T.Body("Pipelines object { name, pipeline, type }"),
-      ),
-      QueueObjectNameQueueNameType__: S.Unknown.pipe(
-        T.Body("Queue object { name, queue_name, type }"),
-      ),
-      RatelimitObjectNameNamespaceIdSimpleType__: S.Unknown.pipe(
-        T.Body("Ratelimit object { name, namespace_id, simple, type }"),
-      ),
-      R2BucketObjectBucketNameNameTypeJurisdiction__: S.Unknown.pipe(
-        T.Body("R2Bucket object { bucket_name, name, type, jurisdiction }"),
-      ),
-      SecretTextObjectNameTextType__: S.Unknown.pipe(
-        T.Body("SecretText object { name, text, type }"),
-      ),
-      SendEmailObjectNameTypeAllowedDestinationAddresses2More__: S.Unknown.pipe(
-        T.Body(
-          "SendEmail object { name, type, allowed_destination_addresses, 2 more }",
+      allowedSenderAddresses: S.optional(
+        DispatchNamespacesScriptsSettingsGetResponseBindingsItemAllowedSenderAddressesList.pipe(
+          T.Body("allowed_sender_addresses"),
         ),
       ),
-      ServiceObjectNameServiceType2More__: S.Unknown.pipe(
-        T.Body("Service object { name, service, type, 2 more }"),
+      destinationAddress: S.optional(
+        S.String.pipe(T.Body("destination_address")),
       ),
-      TextBlobObjectNamePartType__: S.Unknown.pipe(
-        T.Body("TextBlob object { name, part, type }"),
+      service: S.optional(S.String),
+      entrypoint: S.optional(S.String),
+      indexName: S.optional(S.String.pipe(T.Body("index_name"))),
+      secretName: S.optional(S.String.pipe(T.Body("secret_name"))),
+      storeId: S.optional(S.String.pipe(T.Body("store_id"))),
+      appId: S.optional(S.String.pipe(T.Body("app_id"))),
+      algorithm: S.optional(S.Unknown),
+      format: S.optional(
+        DispatchNamespacesScriptsSettingsGetResponseBindingsItemFormat,
       ),
-      VectorizeObjectIndexNameNameType__: S.Unknown.pipe(
-        T.Body("Vectorize object { index_name, name, type }"),
+      usages: S.optional(
+        DispatchNamespacesScriptsSettingsGetResponseBindingsItemUsagesList,
       ),
-      VersionMetadataObjectNameType__: S.Unknown.pipe(
-        T.Body("VersionMetadata object { name, type }"),
-      ),
-      SecretsStoreSecretObjectNameSecretNameStoreIdType__: S.Unknown.pipe(
-        T.Body(
-          "SecretsStoreSecret object { name, secret_name, store_id, type }",
-        ),
-      ),
-      FlagshipObjectAppIdNameType__: S.Unknown.pipe(
-        T.Body("Flagship object { app_id, name, type }"),
-      ),
-      SecretKeyObjectAlgorithmFormatName4More__: S.Unknown.pipe(
-        T.Body("SecretKey object { algorithm, format, name, 4 more }"),
-      ),
-      WorkflowObjectNameTypeWorkflowName2More__: S.Unknown.pipe(
-        T.Body("Workflow object { name, type, workflow_name, 2 more }"),
-      ),
-      WasmModuleObjectNamePartType__: S.Unknown.pipe(
-        T.Body("WasmModule object { name, part, type }"),
-      ),
-      VPCServiceObjectNameServiceIdType__: S.Unknown.pipe(
-        T.Body("VPCService object { name, service_id, type }"),
-      ),
-      VPCNetworkObjectNameTypeNetworkIdTunnelId__: S.Unknown.pipe(
-        T.Body("VPCNetwork object { name, type, network_id, tunnel_id }"),
-      ),
+      keyBase64: S.optional(S.String.pipe(T.Body("key_base64"))),
+      keyJwk: S.optional(S.Unknown.pipe(T.Body("key_jwk"))),
+      workflowName: S.optional(S.String.pipe(T.Body("workflow_name"))),
+      serviceId: S.optional(S.String.pipe(T.Body("service_id"))),
+      networkId: S.optional(S.String.pipe(T.Body("network_id"))),
+      tunnelId: S.optional(S.String.pipe(T.Body("tunnel_id"))),
     }),
   ).annotate({
     identifier: "DispatchNamespacesScriptsSettingsGetResponseBindingsItem",
@@ -1592,24 +1940,243 @@ export const DispatchNamespacesScriptsSettingsGetResponseLimits =
     identifier: "DispatchNamespacesScriptsSettingsGetResponseLimits",
   }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseLimits>;
 
+export type DispatchNamespacesScriptsSettingsGetResponseMigrationsDeletedClassesList =
+  string[];
+export const DispatchNamespacesScriptsSettingsGetResponseMigrationsDeletedClassesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseMigrationsDeletedClassesList>;
+
+export type DispatchNamespacesScriptsSettingsGetResponseMigrationsNewClassesList =
+  string[];
+export const DispatchNamespacesScriptsSettingsGetResponseMigrationsNewClassesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseMigrationsNewClassesList>;
+
+export type DispatchNamespacesScriptsSettingsGetResponseMigrationsNewSqliteClassesList =
+  string[];
+export const DispatchNamespacesScriptsSettingsGetResponseMigrationsNewSqliteClassesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseMigrationsNewSqliteClassesList>;
+
+export interface DispatchNamespacesScriptsSettingsGetResponseMigrationsRenamedClassesItem {
+  from?: string;
+  to?: string;
+}
+export const DispatchNamespacesScriptsSettingsGetResponseMigrationsRenamedClassesItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      from: S.optional(S.String),
+      to: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "DispatchNamespacesScriptsSettingsGetResponseMigrationsRenamedClassesItem",
+  }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseMigrationsRenamedClassesItem>;
+
+export type DispatchNamespacesScriptsSettingsGetResponseMigrationsRenamedClassesList =
+  DispatchNamespacesScriptsSettingsGetResponseMigrationsRenamedClassesItem[];
+export const DispatchNamespacesScriptsSettingsGetResponseMigrationsRenamedClassesList =
+  /*@__PURE__*/ S.Array(
+    DispatchNamespacesScriptsSettingsGetResponseMigrationsRenamedClassesItem,
+  ) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseMigrationsRenamedClassesList>;
+
+export interface DispatchNamespacesScriptsSettingsGetResponseMigrationsTransferredClassesItem {
+  from?: string;
+  fromScript?: string;
+  to?: string;
+}
+export const DispatchNamespacesScriptsSettingsGetResponseMigrationsTransferredClassesItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      from: S.optional(S.String),
+      fromScript: S.optional(S.String.pipe(T.Body("from_script"))),
+      to: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "DispatchNamespacesScriptsSettingsGetResponseMigrationsTransferredClassesItem",
+  }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseMigrationsTransferredClassesItem>;
+
+export type DispatchNamespacesScriptsSettingsGetResponseMigrationsTransferredClassesList =
+  DispatchNamespacesScriptsSettingsGetResponseMigrationsTransferredClassesItem[];
+export const DispatchNamespacesScriptsSettingsGetResponseMigrationsTransferredClassesList =
+  /*@__PURE__*/ S.Array(
+    DispatchNamespacesScriptsSettingsGetResponseMigrationsTransferredClassesItem,
+  ) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseMigrationsTransferredClassesList>;
+
+export type DispatchNamespacesScriptsSettingsGetResponseMigrationsStepsItemDeletedClassesList =
+  string[];
+export const DispatchNamespacesScriptsSettingsGetResponseMigrationsStepsItemDeletedClassesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseMigrationsStepsItemDeletedClassesList>;
+
+export type DispatchNamespacesScriptsSettingsGetResponseMigrationsStepsItemNewClassesList =
+  string[];
+export const DispatchNamespacesScriptsSettingsGetResponseMigrationsStepsItemNewClassesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseMigrationsStepsItemNewClassesList>;
+
+export type DispatchNamespacesScriptsSettingsGetResponseMigrationsStepsItemNewSqliteClassesList =
+  string[];
+export const DispatchNamespacesScriptsSettingsGetResponseMigrationsStepsItemNewSqliteClassesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseMigrationsStepsItemNewSqliteClassesList>;
+
+export interface DispatchNamespacesScriptsSettingsGetResponseMigrationsStepsItemRenamedClassesItem {
+  from?: string;
+  to?: string;
+}
+export const DispatchNamespacesScriptsSettingsGetResponseMigrationsStepsItemRenamedClassesItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      from: S.optional(S.String),
+      to: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "DispatchNamespacesScriptsSettingsGetResponseMigrationsStepsItemRenamedClassesItem",
+  }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseMigrationsStepsItemRenamedClassesItem>;
+
+export type DispatchNamespacesScriptsSettingsGetResponseMigrationsStepsItemRenamedClassesList =
+  DispatchNamespacesScriptsSettingsGetResponseMigrationsStepsItemRenamedClassesItem[];
+export const DispatchNamespacesScriptsSettingsGetResponseMigrationsStepsItemRenamedClassesList =
+  /*@__PURE__*/ S.Array(
+    DispatchNamespacesScriptsSettingsGetResponseMigrationsStepsItemRenamedClassesItem,
+  ) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseMigrationsStepsItemRenamedClassesList>;
+
+export interface DispatchNamespacesScriptsSettingsGetResponseMigrationsStepsItemTransferredClassesItem {
+  from?: string;
+  fromScript?: string;
+  to?: string;
+}
+export const DispatchNamespacesScriptsSettingsGetResponseMigrationsStepsItemTransferredClassesItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      from: S.optional(S.String),
+      fromScript: S.optional(S.String.pipe(T.Body("from_script"))),
+      to: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "DispatchNamespacesScriptsSettingsGetResponseMigrationsStepsItemTransferredClassesItem",
+  }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseMigrationsStepsItemTransferredClassesItem>;
+
+export type DispatchNamespacesScriptsSettingsGetResponseMigrationsStepsItemTransferredClassesList =
+  DispatchNamespacesScriptsSettingsGetResponseMigrationsStepsItemTransferredClassesItem[];
+export const DispatchNamespacesScriptsSettingsGetResponseMigrationsStepsItemTransferredClassesList =
+  /*@__PURE__*/ S.Array(
+    DispatchNamespacesScriptsSettingsGetResponseMigrationsStepsItemTransferredClassesItem,
+  ) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseMigrationsStepsItemTransferredClassesList>;
+
+export interface DispatchNamespacesScriptsSettingsGetResponseMigrationsStepsItem {
+  /** A list of classes to delete Durable Object namespaces from. */
+  deletedClasses?: DispatchNamespacesScriptsSettingsGetResponseMigrationsStepsItemDeletedClassesList;
+  /** A list of classes to create Durable Object namespaces from. */
+  newClasses?: DispatchNamespacesScriptsSettingsGetResponseMigrationsStepsItemNewClassesList;
+  /** A list of classes to create Durable Object namespaces with SQLite from. */
+  newSqliteClasses?: DispatchNamespacesScriptsSettingsGetResponseMigrationsStepsItemNewSqliteClassesList;
+  /** A list of classes with Durable Object namespaces that were renamed. */
+  renamedClasses?: DispatchNamespacesScriptsSettingsGetResponseMigrationsStepsItemRenamedClassesList;
+  /** A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker. */
+  transferredClasses?: DispatchNamespacesScriptsSettingsGetResponseMigrationsStepsItemTransferredClassesList;
+}
+export const DispatchNamespacesScriptsSettingsGetResponseMigrationsStepsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      deletedClasses: S.optional(
+        DispatchNamespacesScriptsSettingsGetResponseMigrationsStepsItemDeletedClassesList.pipe(
+          T.Body("deleted_classes"),
+        ),
+      ),
+      newClasses: S.optional(
+        DispatchNamespacesScriptsSettingsGetResponseMigrationsStepsItemNewClassesList.pipe(
+          T.Body("new_classes"),
+        ),
+      ),
+      newSqliteClasses: S.optional(
+        DispatchNamespacesScriptsSettingsGetResponseMigrationsStepsItemNewSqliteClassesList.pipe(
+          T.Body("new_sqlite_classes"),
+        ),
+      ),
+      renamedClasses: S.optional(
+        DispatchNamespacesScriptsSettingsGetResponseMigrationsStepsItemRenamedClassesList.pipe(
+          T.Body("renamed_classes"),
+        ),
+      ),
+      transferredClasses: S.optional(
+        DispatchNamespacesScriptsSettingsGetResponseMigrationsStepsItemTransferredClassesList.pipe(
+          T.Body("transferred_classes"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "DispatchNamespacesScriptsSettingsGetResponseMigrationsStepsItem",
+  }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseMigrationsStepsItem>;
+
+export type DispatchNamespacesScriptsSettingsGetResponseMigrationsStepsList =
+  DispatchNamespacesScriptsSettingsGetResponseMigrationsStepsItem[];
+export const DispatchNamespacesScriptsSettingsGetResponseMigrationsStepsList =
+  /*@__PURE__*/ S.Array(
+    DispatchNamespacesScriptsSettingsGetResponseMigrationsStepsItem,
+  ) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseMigrationsStepsList>;
+
 export interface DispatchNamespacesScriptsSettingsGetResponseMigrations {
-  /** A single set of migrations to apply. */
-  SingleStepMigrationObjectDeletedClassesNewClassesNewSqliteClasses4More__: unknown;
-  WorkersMultipleStepMigrationsObjectNewTagOldTagSteps__: unknown;
+  /** A list of classes to delete Durable Object namespaces from. */
+  deletedClasses?: DispatchNamespacesScriptsSettingsGetResponseMigrationsDeletedClassesList;
+  /** A list of classes to create Durable Object namespaces from. */
+  newClasses?: DispatchNamespacesScriptsSettingsGetResponseMigrationsNewClassesList;
+  /** A list of classes to create Durable Object namespaces with SQLite from. */
+  newSqliteClasses?: DispatchNamespacesScriptsSettingsGetResponseMigrationsNewSqliteClassesList;
+  /** Tag to set as the latest migration tag. */
+  newTag?: string;
+  /** Tag used to verify against the latest migration tag for this Worker. If they don't match, the upload is rejected. */
+  oldTag?: string;
+  /** A list of classes with Durable Object namespaces that were renamed. */
+  renamedClasses?: DispatchNamespacesScriptsSettingsGetResponseMigrationsRenamedClassesList;
+  /** A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker. */
+  transferredClasses?: DispatchNamespacesScriptsSettingsGetResponseMigrationsTransferredClassesList;
+  /** Migrations to apply in order. */
+  steps?: DispatchNamespacesScriptsSettingsGetResponseMigrationsStepsList;
 }
 export const DispatchNamespacesScriptsSettingsGetResponseMigrations =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      SingleStepMigrationObjectDeletedClassesNewClassesNewSqliteClasses4More__:
-        S.Unknown.pipe(
-          T.Body(
-            "SingleStepMigration object { deleted_classes, new_classes, new_sqlite_classes, 4 more }",
-          ),
+      deletedClasses: S.optional(
+        DispatchNamespacesScriptsSettingsGetResponseMigrationsDeletedClassesList.pipe(
+          T.Body("deleted_classes"),
         ),
-      WorkersMultipleStepMigrationsObjectNewTagOldTagSteps__: S.Unknown.pipe(
-        T.Body(
-          "WorkersMultipleStepMigrations object { new_tag, old_tag, steps }",
+      ),
+      newClasses: S.optional(
+        DispatchNamespacesScriptsSettingsGetResponseMigrationsNewClassesList.pipe(
+          T.Body("new_classes"),
         ),
+      ),
+      newSqliteClasses: S.optional(
+        DispatchNamespacesScriptsSettingsGetResponseMigrationsNewSqliteClassesList.pipe(
+          T.Body("new_sqlite_classes"),
+        ),
+      ),
+      newTag: S.optional(S.String.pipe(T.Body("new_tag"))),
+      oldTag: S.optional(S.String.pipe(T.Body("old_tag"))),
+      renamedClasses: S.optional(
+        DispatchNamespacesScriptsSettingsGetResponseMigrationsRenamedClassesList.pipe(
+          T.Body("renamed_classes"),
+        ),
+      ),
+      transferredClasses: S.optional(
+        DispatchNamespacesScriptsSettingsGetResponseMigrationsTransferredClassesList.pipe(
+          T.Body("transferred_classes"),
+        ),
+      ),
+      steps: S.optional(
+        DispatchNamespacesScriptsSettingsGetResponseMigrationsStepsList,
       ),
     }),
   ).annotate({
@@ -1720,29 +2287,63 @@ export const DispatchNamespacesScriptsSettingsGetResponseObservability =
     identifier: "DispatchNamespacesScriptsSettingsGetResponseObservability",
   }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseObservability>;
 
+export type DispatchNamespacesScriptsSettingsGetResponsePlacementMode =
+  | "smart"
+  | (string & {});
+export const DispatchNamespacesScriptsSettingsGetResponsePlacementMode =
+  /*@__PURE__*/ S.String;
+
+export interface DispatchNamespacesScriptsSettingsGetResponsePlacementTargetItem {
+  /** Cloud region in format 'provider:region'. */
+  region?: string;
+  /** HTTP hostname for targeted placement. */
+  hostname?: string;
+  /** TCP host:port for targeted placement. */
+  host?: string;
+}
+export const DispatchNamespacesScriptsSettingsGetResponsePlacementTargetItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      region: S.optional(S.String),
+      hostname: S.optional(S.String),
+      host: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "DispatchNamespacesScriptsSettingsGetResponsePlacementTargetItem",
+  }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponsePlacementTargetItem>;
+
+export type DispatchNamespacesScriptsSettingsGetResponsePlacementTargetList =
+  DispatchNamespacesScriptsSettingsGetResponsePlacementTargetItem[];
+export const DispatchNamespacesScriptsSettingsGetResponsePlacementTargetList =
+  /*@__PURE__*/ S.Array(
+    DispatchNamespacesScriptsSettingsGetResponsePlacementTargetItem,
+  ) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponsePlacementTargetList>;
+
 export interface DispatchNamespacesScriptsSettingsGetResponsePlacement {
-  ModeObjectMode__: unknown;
-  RegionObjectRegion__: unknown;
-  HostnameObjectHostname__: unknown;
-  HostObjectHost__: unknown;
-  objectModeRegion__: unknown;
-  objectHostnameMode__: unknown;
-  objectHostMode__: unknown;
-  objectModeTarget__: unknown;
+  /** Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
+  mode?: DispatchNamespacesScriptsSettingsGetResponsePlacementMode;
+  /** Cloud region for targeted placement in format 'provider:region'. */
+  region?: string;
+  /** HTTP hostname for targeted placement. */
+  hostname?: string;
+  /** TCP host and port for targeted placement. */
+  host?: string;
+  /** Array of placement targets (currently limited to single target). */
+  target?: DispatchNamespacesScriptsSettingsGetResponsePlacementTargetList;
 }
 export const DispatchNamespacesScriptsSettingsGetResponsePlacement =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      ModeObjectMode__: S.Unknown.pipe(T.Body("Mode object { mode }")),
-      RegionObjectRegion__: S.Unknown.pipe(T.Body("Region object { region }")),
-      HostnameObjectHostname__: S.Unknown.pipe(
-        T.Body("Hostname object { hostname }"),
+      mode: S.optional(
+        DispatchNamespacesScriptsSettingsGetResponsePlacementMode,
       ),
-      HostObjectHost__: S.Unknown.pipe(T.Body("Host object { host }")),
-      objectModeRegion__: S.Unknown.pipe(T.Body("object { mode, region }")),
-      objectHostnameMode__: S.Unknown.pipe(T.Body("object { hostname, mode }")),
-      objectHostMode__: S.Unknown.pipe(T.Body("object { host, mode }")),
-      objectModeTarget__: S.Unknown.pipe(T.Body("object { mode, target }")),
+      region: S.optional(S.String),
+      hostname: S.optional(S.String),
+      host: S.optional(S.String),
+      target: S.optional(
+        DispatchNamespacesScriptsSettingsGetResponsePlacementTargetList,
+      ),
     }),
   ).annotate({
     identifier: "DispatchNamespacesScriptsSettingsGetResponsePlacement",
@@ -1967,19 +2568,67 @@ export const ListDispatchNamespaceScriptSecretsRequest =
     identifier: "ListDispatchNamespaceScriptSecretsRequest",
   }) as any as S.Schema<ListDispatchNamespaceScriptSecretsRequest>;
 
+export type DispatchNamespacesScriptsSecretsListResultItemType =
+  | "secret_text"
+  | (string & {});
+export const DispatchNamespacesScriptsSecretsListResultItemType =
+  /*@__PURE__*/ S.String;
+
+export type DispatchNamespacesScriptsSecretsListResultItemFormat =
+  | "raw"
+  | "pkcs8"
+  | "spki"
+  | "jwk"
+  | (string & {});
+export const DispatchNamespacesScriptsSecretsListResultItemFormat =
+  /*@__PURE__*/ S.String;
+
+export type DispatchNamespacesScriptsSecretsListResultItemUsagesItem =
+  | "encrypt"
+  | "decrypt"
+  | "sign"
+  | (string & {});
+export const DispatchNamespacesScriptsSecretsListResultItemUsagesItem =
+  /*@__PURE__*/ S.String;
+
+export type DispatchNamespacesScriptsSecretsListResultItemUsagesList =
+  DispatchNamespacesScriptsSecretsListResultItemUsagesItem[];
+export const DispatchNamespacesScriptsSecretsListResultItemUsagesList =
+  /*@__PURE__*/ S.Array(
+    DispatchNamespacesScriptsSecretsListResultItemUsagesItem,
+  ) as any as S.Schema<DispatchNamespacesScriptsSecretsListResultItemUsagesList>;
+
 export interface DispatchNamespacesScriptsSecretsListResultItem {
-  SecretTextObjectNameTextType__: unknown;
-  SecretKeyObjectAlgorithmFormatName4More__: unknown;
+  /** A JavaScript variable name for the binding. */
+  name?: string;
+  /** The secret value to use. */
+  text?: string;
+  /** The kind of resource that the binding provides. */
+  type?: DispatchNamespacesScriptsSecretsListResultItemType;
+  /** Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm). */
+  algorithm?: unknown;
+  /** Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format). */
+  format?: DispatchNamespacesScriptsSecretsListResultItemFormat;
+  /** Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages). */
+  usages?: DispatchNamespacesScriptsSecretsListResultItemUsagesList;
+  /** Base64-encoded key data. Required if `format` is "raw", "pkcs8", or "spki". */
+  keyBase64?: string;
+  /** Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is "jwk". */
+  keyJwk?: unknown;
 }
 export const DispatchNamespacesScriptsSecretsListResultItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      SecretTextObjectNameTextType__: S.Unknown.pipe(
-        T.Body("SecretText object { name, text, type }"),
+      name: S.optional(S.String),
+      text: S.optional(S.String),
+      type: S.optional(DispatchNamespacesScriptsSecretsListResultItemType),
+      algorithm: S.optional(S.Unknown),
+      format: S.optional(DispatchNamespacesScriptsSecretsListResultItemFormat),
+      usages: S.optional(
+        DispatchNamespacesScriptsSecretsListResultItemUsagesList,
       ),
-      SecretKeyObjectAlgorithmFormatName4More__: S.Unknown.pipe(
-        T.Body("SecretKey object { algorithm, format, name, 4 more }"),
-      ),
+      keyBase64: S.optional(S.String.pipe(T.Body("key_base64"))),
+      keyJwk: S.optional(S.Unknown.pipe(T.Body("key_jwk"))),
     }),
   ).annotate({
     identifier: "DispatchNamespacesScriptsSecretsListResultItem",
@@ -2088,155 +2737,291 @@ export const PatchDispatchNamespaceScriptSettingRequest =
     identifier: "PatchDispatchNamespaceScriptSettingRequest",
   }) as any as S.Schema<PatchDispatchNamespaceScriptSettingRequest>;
 
+export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemType =
+  | "ai"
+  | (string & {});
+export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemType =
+  /*@__PURE__*/ S.String;
+
+export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemOutboundParamsItem {
+  /** Name of the parameter. */
+  name: string;
+}
+export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemOutboundParamsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String,
+    }),
+  ).annotate({
+    identifier:
+      "DispatchNamespacesScriptsSettingsEditResponseBindingsItemOutboundParamsItem",
+  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemOutboundParamsItem>;
+
+export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemOutboundParamsList =
+  DispatchNamespacesScriptsSettingsEditResponseBindingsItemOutboundParamsItem[];
+export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemOutboundParamsList =
+  /*@__PURE__*/ S.Array(
+    DispatchNamespacesScriptsSettingsEditResponseBindingsItemOutboundParamsItem,
+  ) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemOutboundParamsList>;
+
+export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemOutboundWorker {
+  /** Entrypoint to invoke on the outbound worker. */
+  entrypoint?: string;
+  /** Environment of the outbound worker. */
+  environment?: string;
+  /** Name of the outbound worker. */
+  service?: string;
+}
+export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemOutboundWorker =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      entrypoint: S.optional(S.String),
+      environment: S.optional(S.String),
+      service: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "DispatchNamespacesScriptsSettingsEditResponseBindingsItemOutboundWorker",
+  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemOutboundWorker>;
+
+export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemOutbound {
+  /** Pass information from the Dispatch Worker to the Outbound Worker through the parameters. */
+  params?: DispatchNamespacesScriptsSettingsEditResponseBindingsItemOutboundParamsList;
+  /** Outbound worker. */
+  worker?: DispatchNamespacesScriptsSettingsEditResponseBindingsItemOutboundWorker;
+}
+export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemOutbound =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      params: S.optional(
+        DispatchNamespacesScriptsSettingsEditResponseBindingsItemOutboundParamsList,
+      ),
+      worker: S.optional(
+        DispatchNamespacesScriptsSettingsEditResponseBindingsItemOutboundWorker,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "DispatchNamespacesScriptsSettingsEditResponseBindingsItemOutbound",
+  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemOutbound>;
+
+export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemSimple {
+  /** The limit (requests per period). */
+  limit: number;
+  /** The period in seconds. */
+  period: number;
+  /** Duration in seconds to apply the mitigation action after the rate limit is exceeded. Valid values are 0 (disabled), 10, or multiples of 60 up to 86400. Must be greater than or equal to the period when non-zero. */
+  mitigationTimeout?: number;
+}
+export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemSimple =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      limit: S.Number,
+      period: S.Number,
+      mitigationTimeout: S.optional(
+        S.Number.pipe(T.Body("mitigation_timeout")),
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "DispatchNamespacesScriptsSettingsEditResponseBindingsItemSimple",
+  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemSimple>;
+
+export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemJurisdiction =
+  "eu" | "fedramp" | "fedramp-high" | (string & {});
+export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemJurisdiction =
+  /*@__PURE__*/ S.String;
+
+export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemAllowedDestinationAddressesList =
+  string[];
+export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemAllowedDestinationAddressesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemAllowedDestinationAddressesList>;
+
+export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemAllowedSenderAddressesList =
+  string[];
+export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemAllowedSenderAddressesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemAllowedSenderAddressesList>;
+
+export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemFormat =
+  | "raw"
+  | "pkcs8"
+  | "spki"
+  | "jwk"
+  | (string & {});
+export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemFormat =
+  /*@__PURE__*/ S.String;
+
+export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemUsagesItem =
+  "encrypt" | "decrypt" | "sign" | (string & {});
+export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemUsagesItem =
+  /*@__PURE__*/ S.String;
+
+export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemUsagesList =
+  DispatchNamespacesScriptsSettingsEditResponseBindingsItemUsagesItem[];
+export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemUsagesList =
+  /*@__PURE__*/ S.Array(
+    DispatchNamespacesScriptsSettingsEditResponseBindingsItemUsagesItem,
+  ) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemUsagesList>;
+
 export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItem {
-  AIObjectNameType__: unknown;
-  AISearchObjectInstanceNameNameTypeNamespace__: unknown;
-  AISearchNamespaceObjectNameNamespaceType__: unknown;
-  AnalyticsEngineObjectDatasetNameType__: unknown;
-  AssetsObjectNameType__: unknown;
-  BrowserObjectNameType__: unknown;
-  D1ObjectDatabaseIdNameTypeId__: unknown;
-  DataBlobObjectNamePartType__: unknown;
-  DispatchNamespaceObjectNameNamespaceTypeOutbound__: unknown;
-  DurableObjectNamespaceObjectNameTypeClassName4More__: unknown;
-  HyperdriveObjectIdNameType__: unknown;
-  InheritObjectNameTypeOldNameVersionId__: unknown;
-  ImagesObjectNameType__: unknown;
-  JsonObjectJsonNameType__: unknown;
-  KVNamespaceObjectNameNamespaceIdType__: unknown;
-  MediaObjectNameType__: unknown;
-  MTLSCertificateObjectCertificateIdNameType__: unknown;
-  PlainTextObjectNameTextType__: unknown;
-  PipelinesObjectNamePipelineType__: unknown;
-  QueueObjectNameQueueNameType__: unknown;
-  RatelimitObjectNameNamespaceIdSimpleType__: unknown;
-  R2BucketObjectBucketNameNameTypeJurisdiction__: unknown;
-  SecretTextObjectNameTextType__: unknown;
-  SendEmailObjectNameTypeAllowedDestinationAddresses2More__: unknown;
-  ServiceObjectNameServiceType2More__: unknown;
-  TextBlobObjectNamePartType__: unknown;
-  VectorizeObjectIndexNameNameType__: unknown;
-  VersionMetadataObjectNameType__: unknown;
-  SecretsStoreSecretObjectNameSecretNameStoreIdType__: unknown;
-  FlagshipObjectAppIdNameType__: unknown;
-  SecretKeyObjectAlgorithmFormatName4More__: unknown;
-  WorkflowObjectNameTypeWorkflowName2More__: unknown;
-  WasmModuleObjectNamePartType__: unknown;
-  VPCServiceObjectNameServiceIdType__: unknown;
-  VPCNetworkObjectNameTypeNetworkIdTunnelId__: unknown;
+  /** A JavaScript variable name for the binding. */
+  name?: string;
+  /** The kind of resource that the binding provides. */
+  type?: DispatchNamespacesScriptsSettingsEditResponseBindingsItemType;
+  /** The user-chosen instance name. Must exist at deploy time. The worker can search, chat, update, and manage items/jobs on this instance. */
+  instanceName?: string;
+  /** The namespace the instance belongs to. Defaults to "default" if omitted. Customers who don't use namespaces can simply omit this field. */
+  namespace?: string;
+  /** The name of the dataset to bind to. */
+  dataset?: string;
+  /** Identifier of the D1 database to bind to. */
+  databaseId?: string;
+  /** Identifier of the D1 database to bind to. */
+  id?: string;
+  /** The name of the file containing the data content. Only accepted for `service worker syntax` Workers. */
+  part?: string;
+  /** Outbound worker. */
+  outbound?: DispatchNamespacesScriptsSettingsEditResponseBindingsItemOutbound;
+  /** The exported class name of the Durable Object. */
+  className?: string;
+  /** The dispatch namespace the Durable Object script belongs to. */
+  dispatchNamespace?: string;
+  /** The environment of the script_name to bind to. */
+  environment?: string;
+  /** Namespace identifier tag. */
+  namespaceId?: string;
+  /** The script where the Durable Object is defined, if it is external to this Worker. */
+  scriptName?: string;
+  /** The old name of the inherited binding. If set, the binding will be renamed from `old_name` to `name` in the new version. If not set, the binding will keep the same name between versions. */
+  oldName?: string;
+  /** Identifier for the version to inherit the binding from, which can be the version ID or the literal "latest" to inherit from the latest version. Defaults to inheriting the binding from the latest version. */
+  versionId?: string;
+  /** JSON data to use. */
+  json?: unknown;
+  /** Identifier of the certificate to bind to. */
+  certificateId?: string;
+  /** The text value to use. */
+  text?: string;
+  /** Name of the Pipeline to bind to. */
+  pipeline?: string;
+  /** Name of the Queue to bind to. */
+  queueName?: string;
+  /** The rate limit configuration. */
+  simple?: DispatchNamespacesScriptsSettingsEditResponseBindingsItemSimple;
+  /** R2 bucket to bind to. */
+  bucketName?: string;
+  /** The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket. */
+  jurisdiction?: DispatchNamespacesScriptsSettingsEditResponseBindingsItemJurisdiction;
+  /** List of allowed destination addresses. */
+  allowedDestinationAddresses?: DispatchNamespacesScriptsSettingsEditResponseBindingsItemAllowedDestinationAddressesList;
+  /** List of allowed sender addresses. */
+  allowedSenderAddresses?: DispatchNamespacesScriptsSettingsEditResponseBindingsItemAllowedSenderAddressesList;
+  /** Destination address for the email. */
+  destinationAddress?: string;
+  /** Name of Worker to bind to. */
+  service?: string;
+  /** Entrypoint to invoke on the target Worker. */
+  entrypoint?: string;
+  /** Name of the Vectorize index to bind to. */
+  indexName?: string;
+  /** Name of the secret in the store. */
+  secretName?: string;
+  /** ID of the store containing the secret. */
+  storeId?: string;
+  /** ID of the Flagship app to bind to for feature flag evaluation. */
+  appId?: string;
+  /** Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm). */
+  algorithm?: unknown;
+  /** Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format). */
+  format?: DispatchNamespacesScriptsSettingsEditResponseBindingsItemFormat;
+  /** Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages). */
+  usages?: DispatchNamespacesScriptsSettingsEditResponseBindingsItemUsagesList;
+  /** Base64-encoded key data. Required if `format` is "raw", "pkcs8", or "spki". */
+  keyBase64?: string;
+  /** Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is "jwk". */
+  keyJwk?: unknown;
+  /** Name of the Workflow to bind to. */
+  workflowName?: string;
+  /** Identifier of the VPC service to bind to. */
+  serviceId?: string;
+  /** Identifier of the network to bind to. Only "cf1:network" is currently supported. Mutually exclusive with tunnel_id. */
+  networkId?: string;
+  /** UUID of the Cloudflare Tunnel to bind to. Mutually exclusive with network_id. */
+  tunnelId?: string;
 }
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      AIObjectNameType__: S.Unknown.pipe(T.Body("AI object { name, type }")),
-      AISearchObjectInstanceNameNameTypeNamespace__: S.Unknown.pipe(
-        T.Body("AISearch object { instance_name, name, type, namespace }"),
+      name: S.optional(S.String),
+      type: S.optional(
+        DispatchNamespacesScriptsSettingsEditResponseBindingsItemType,
       ),
-      AISearchNamespaceObjectNameNamespaceType__: S.Unknown.pipe(
-        T.Body("AISearchNamespace object { name, namespace, type }"),
+      instanceName: S.optional(S.String.pipe(T.Body("instance_name"))),
+      namespace: S.optional(S.String),
+      dataset: S.optional(S.String),
+      databaseId: S.optional(S.String.pipe(T.Body("database_id"))),
+      id: S.optional(S.String),
+      part: S.optional(S.String),
+      outbound: S.optional(
+        DispatchNamespacesScriptsSettingsEditResponseBindingsItemOutbound,
       ),
-      AnalyticsEngineObjectDatasetNameType__: S.Unknown.pipe(
-        T.Body("AnalyticsEngine object { dataset, name, type }"),
+      className: S.optional(S.String.pipe(T.Body("class_name"))),
+      dispatchNamespace: S.optional(
+        S.String.pipe(T.Body("dispatch_namespace")),
       ),
-      AssetsObjectNameType__: S.Unknown.pipe(
-        T.Body("Assets object { name, type }"),
+      environment: S.optional(S.String),
+      namespaceId: S.optional(S.String.pipe(T.Body("namespace_id"))),
+      scriptName: S.optional(S.String.pipe(T.Body("script_name"))),
+      oldName: S.optional(S.String.pipe(T.Body("old_name"))),
+      versionId: S.optional(S.String.pipe(T.Body("version_id"))),
+      json: S.optional(S.Unknown),
+      certificateId: S.optional(S.String.pipe(T.Body("certificate_id"))),
+      text: S.optional(S.String),
+      pipeline: S.optional(S.String),
+      queueName: S.optional(S.String.pipe(T.Body("queue_name"))),
+      simple: S.optional(
+        DispatchNamespacesScriptsSettingsEditResponseBindingsItemSimple,
       ),
-      BrowserObjectNameType__: S.Unknown.pipe(
-        T.Body("Browser object { name, type }"),
+      bucketName: S.optional(S.String.pipe(T.Body("bucket_name"))),
+      jurisdiction: S.optional(
+        DispatchNamespacesScriptsSettingsEditResponseBindingsItemJurisdiction,
       ),
-      D1ObjectDatabaseIdNameTypeId__: S.Unknown.pipe(
-        T.Body("D1 object { database_id, name, type, id }"),
-      ),
-      DataBlobObjectNamePartType__: S.Unknown.pipe(
-        T.Body("DataBlob object { name, part, type }"),
-      ),
-      DispatchNamespaceObjectNameNamespaceTypeOutbound__: S.Unknown.pipe(
-        T.Body("DispatchNamespace object { name, namespace, type, outbound }"),
-      ),
-      DurableObjectNamespaceObjectNameTypeClassName4More__: S.Unknown.pipe(
-        T.Body(
-          "DurableObjectNamespace object { name, type, class_name, 4 more }",
+      allowedDestinationAddresses: S.optional(
+        DispatchNamespacesScriptsSettingsEditResponseBindingsItemAllowedDestinationAddressesList.pipe(
+          T.Body("allowed_destination_addresses"),
         ),
       ),
-      HyperdriveObjectIdNameType__: S.Unknown.pipe(
-        T.Body("Hyperdrive object { id, name, type }"),
-      ),
-      InheritObjectNameTypeOldNameVersionId__: S.Unknown.pipe(
-        T.Body("Inherit object { name, type, old_name, version_id }"),
-      ),
-      ImagesObjectNameType__: S.Unknown.pipe(
-        T.Body("Images object { name, type }"),
-      ),
-      JsonObjectJsonNameType__: S.Unknown.pipe(
-        T.Body("Json object { json, name, type }"),
-      ),
-      KVNamespaceObjectNameNamespaceIdType__: S.Unknown.pipe(
-        T.Body("KVNamespace object { name, namespace_id, type }"),
-      ),
-      MediaObjectNameType__: S.Unknown.pipe(
-        T.Body("Media object { name, type }"),
-      ),
-      MTLSCertificateObjectCertificateIdNameType__: S.Unknown.pipe(
-        T.Body("MTLSCertificate object { certificate_id, name, type }"),
-      ),
-      PlainTextObjectNameTextType__: S.Unknown.pipe(
-        T.Body("PlainText object { name, text, type }"),
-      ),
-      PipelinesObjectNamePipelineType__: S.Unknown.pipe(
-        T.Body("Pipelines object { name, pipeline, type }"),
-      ),
-      QueueObjectNameQueueNameType__: S.Unknown.pipe(
-        T.Body("Queue object { name, queue_name, type }"),
-      ),
-      RatelimitObjectNameNamespaceIdSimpleType__: S.Unknown.pipe(
-        T.Body("Ratelimit object { name, namespace_id, simple, type }"),
-      ),
-      R2BucketObjectBucketNameNameTypeJurisdiction__: S.Unknown.pipe(
-        T.Body("R2Bucket object { bucket_name, name, type, jurisdiction }"),
-      ),
-      SecretTextObjectNameTextType__: S.Unknown.pipe(
-        T.Body("SecretText object { name, text, type }"),
-      ),
-      SendEmailObjectNameTypeAllowedDestinationAddresses2More__: S.Unknown.pipe(
-        T.Body(
-          "SendEmail object { name, type, allowed_destination_addresses, 2 more }",
+      allowedSenderAddresses: S.optional(
+        DispatchNamespacesScriptsSettingsEditResponseBindingsItemAllowedSenderAddressesList.pipe(
+          T.Body("allowed_sender_addresses"),
         ),
       ),
-      ServiceObjectNameServiceType2More__: S.Unknown.pipe(
-        T.Body("Service object { name, service, type, 2 more }"),
+      destinationAddress: S.optional(
+        S.String.pipe(T.Body("destination_address")),
       ),
-      TextBlobObjectNamePartType__: S.Unknown.pipe(
-        T.Body("TextBlob object { name, part, type }"),
+      service: S.optional(S.String),
+      entrypoint: S.optional(S.String),
+      indexName: S.optional(S.String.pipe(T.Body("index_name"))),
+      secretName: S.optional(S.String.pipe(T.Body("secret_name"))),
+      storeId: S.optional(S.String.pipe(T.Body("store_id"))),
+      appId: S.optional(S.String.pipe(T.Body("app_id"))),
+      algorithm: S.optional(S.Unknown),
+      format: S.optional(
+        DispatchNamespacesScriptsSettingsEditResponseBindingsItemFormat,
       ),
-      VectorizeObjectIndexNameNameType__: S.Unknown.pipe(
-        T.Body("Vectorize object { index_name, name, type }"),
+      usages: S.optional(
+        DispatchNamespacesScriptsSettingsEditResponseBindingsItemUsagesList,
       ),
-      VersionMetadataObjectNameType__: S.Unknown.pipe(
-        T.Body("VersionMetadata object { name, type }"),
-      ),
-      SecretsStoreSecretObjectNameSecretNameStoreIdType__: S.Unknown.pipe(
-        T.Body(
-          "SecretsStoreSecret object { name, secret_name, store_id, type }",
-        ),
-      ),
-      FlagshipObjectAppIdNameType__: S.Unknown.pipe(
-        T.Body("Flagship object { app_id, name, type }"),
-      ),
-      SecretKeyObjectAlgorithmFormatName4More__: S.Unknown.pipe(
-        T.Body("SecretKey object { algorithm, format, name, 4 more }"),
-      ),
-      WorkflowObjectNameTypeWorkflowName2More__: S.Unknown.pipe(
-        T.Body("Workflow object { name, type, workflow_name, 2 more }"),
-      ),
-      WasmModuleObjectNamePartType__: S.Unknown.pipe(
-        T.Body("WasmModule object { name, part, type }"),
-      ),
-      VPCServiceObjectNameServiceIdType__: S.Unknown.pipe(
-        T.Body("VPCService object { name, service_id, type }"),
-      ),
-      VPCNetworkObjectNameTypeNetworkIdTunnelId__: S.Unknown.pipe(
-        T.Body("VPCNetwork object { name, type, network_id, tunnel_id }"),
-      ),
+      keyBase64: S.optional(S.String.pipe(T.Body("key_base64"))),
+      keyJwk: S.optional(S.Unknown.pipe(T.Body("key_jwk"))),
+      workflowName: S.optional(S.String.pipe(T.Body("workflow_name"))),
+      serviceId: S.optional(S.String.pipe(T.Body("service_id"))),
+      networkId: S.optional(S.String.pipe(T.Body("network_id"))),
+      tunnelId: S.optional(S.String.pipe(T.Body("tunnel_id"))),
     }),
   ).annotate({
     identifier: "DispatchNamespacesScriptsSettingsEditResponseBindingsItem",
@@ -2299,24 +3084,243 @@ export const DispatchNamespacesScriptsSettingsEditResponseLimits =
     identifier: "DispatchNamespacesScriptsSettingsEditResponseLimits",
   }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseLimits>;
 
+export type DispatchNamespacesScriptsSettingsEditResponseMigrationsDeletedClassesList =
+  string[];
+export const DispatchNamespacesScriptsSettingsEditResponseMigrationsDeletedClassesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseMigrationsDeletedClassesList>;
+
+export type DispatchNamespacesScriptsSettingsEditResponseMigrationsNewClassesList =
+  string[];
+export const DispatchNamespacesScriptsSettingsEditResponseMigrationsNewClassesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseMigrationsNewClassesList>;
+
+export type DispatchNamespacesScriptsSettingsEditResponseMigrationsNewSqliteClassesList =
+  string[];
+export const DispatchNamespacesScriptsSettingsEditResponseMigrationsNewSqliteClassesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseMigrationsNewSqliteClassesList>;
+
+export interface DispatchNamespacesScriptsSettingsEditResponseMigrationsRenamedClassesItem {
+  from?: string;
+  to?: string;
+}
+export const DispatchNamespacesScriptsSettingsEditResponseMigrationsRenamedClassesItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      from: S.optional(S.String),
+      to: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "DispatchNamespacesScriptsSettingsEditResponseMigrationsRenamedClassesItem",
+  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseMigrationsRenamedClassesItem>;
+
+export type DispatchNamespacesScriptsSettingsEditResponseMigrationsRenamedClassesList =
+  DispatchNamespacesScriptsSettingsEditResponseMigrationsRenamedClassesItem[];
+export const DispatchNamespacesScriptsSettingsEditResponseMigrationsRenamedClassesList =
+  /*@__PURE__*/ S.Array(
+    DispatchNamespacesScriptsSettingsEditResponseMigrationsRenamedClassesItem,
+  ) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseMigrationsRenamedClassesList>;
+
+export interface DispatchNamespacesScriptsSettingsEditResponseMigrationsTransferredClassesItem {
+  from?: string;
+  fromScript?: string;
+  to?: string;
+}
+export const DispatchNamespacesScriptsSettingsEditResponseMigrationsTransferredClassesItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      from: S.optional(S.String),
+      fromScript: S.optional(S.String.pipe(T.Body("from_script"))),
+      to: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "DispatchNamespacesScriptsSettingsEditResponseMigrationsTransferredClassesItem",
+  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseMigrationsTransferredClassesItem>;
+
+export type DispatchNamespacesScriptsSettingsEditResponseMigrationsTransferredClassesList =
+  DispatchNamespacesScriptsSettingsEditResponseMigrationsTransferredClassesItem[];
+export const DispatchNamespacesScriptsSettingsEditResponseMigrationsTransferredClassesList =
+  /*@__PURE__*/ S.Array(
+    DispatchNamespacesScriptsSettingsEditResponseMigrationsTransferredClassesItem,
+  ) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseMigrationsTransferredClassesList>;
+
+export type DispatchNamespacesScriptsSettingsEditResponseMigrationsStepsItemDeletedClassesList =
+  string[];
+export const DispatchNamespacesScriptsSettingsEditResponseMigrationsStepsItemDeletedClassesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseMigrationsStepsItemDeletedClassesList>;
+
+export type DispatchNamespacesScriptsSettingsEditResponseMigrationsStepsItemNewClassesList =
+  string[];
+export const DispatchNamespacesScriptsSettingsEditResponseMigrationsStepsItemNewClassesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseMigrationsStepsItemNewClassesList>;
+
+export type DispatchNamespacesScriptsSettingsEditResponseMigrationsStepsItemNewSqliteClassesList =
+  string[];
+export const DispatchNamespacesScriptsSettingsEditResponseMigrationsStepsItemNewSqliteClassesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseMigrationsStepsItemNewSqliteClassesList>;
+
+export interface DispatchNamespacesScriptsSettingsEditResponseMigrationsStepsItemRenamedClassesItem {
+  from?: string;
+  to?: string;
+}
+export const DispatchNamespacesScriptsSettingsEditResponseMigrationsStepsItemRenamedClassesItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      from: S.optional(S.String),
+      to: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "DispatchNamespacesScriptsSettingsEditResponseMigrationsStepsItemRenamedClassesItem",
+  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseMigrationsStepsItemRenamedClassesItem>;
+
+export type DispatchNamespacesScriptsSettingsEditResponseMigrationsStepsItemRenamedClassesList =
+  DispatchNamespacesScriptsSettingsEditResponseMigrationsStepsItemRenamedClassesItem[];
+export const DispatchNamespacesScriptsSettingsEditResponseMigrationsStepsItemRenamedClassesList =
+  /*@__PURE__*/ S.Array(
+    DispatchNamespacesScriptsSettingsEditResponseMigrationsStepsItemRenamedClassesItem,
+  ) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseMigrationsStepsItemRenamedClassesList>;
+
+export interface DispatchNamespacesScriptsSettingsEditResponseMigrationsStepsItemTransferredClassesItem {
+  from?: string;
+  fromScript?: string;
+  to?: string;
+}
+export const DispatchNamespacesScriptsSettingsEditResponseMigrationsStepsItemTransferredClassesItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      from: S.optional(S.String),
+      fromScript: S.optional(S.String.pipe(T.Body("from_script"))),
+      to: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "DispatchNamespacesScriptsSettingsEditResponseMigrationsStepsItemTransferredClassesItem",
+  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseMigrationsStepsItemTransferredClassesItem>;
+
+export type DispatchNamespacesScriptsSettingsEditResponseMigrationsStepsItemTransferredClassesList =
+  DispatchNamespacesScriptsSettingsEditResponseMigrationsStepsItemTransferredClassesItem[];
+export const DispatchNamespacesScriptsSettingsEditResponseMigrationsStepsItemTransferredClassesList =
+  /*@__PURE__*/ S.Array(
+    DispatchNamespacesScriptsSettingsEditResponseMigrationsStepsItemTransferredClassesItem,
+  ) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseMigrationsStepsItemTransferredClassesList>;
+
+export interface DispatchNamespacesScriptsSettingsEditResponseMigrationsStepsItem {
+  /** A list of classes to delete Durable Object namespaces from. */
+  deletedClasses?: DispatchNamespacesScriptsSettingsEditResponseMigrationsStepsItemDeletedClassesList;
+  /** A list of classes to create Durable Object namespaces from. */
+  newClasses?: DispatchNamespacesScriptsSettingsEditResponseMigrationsStepsItemNewClassesList;
+  /** A list of classes to create Durable Object namespaces with SQLite from. */
+  newSqliteClasses?: DispatchNamespacesScriptsSettingsEditResponseMigrationsStepsItemNewSqliteClassesList;
+  /** A list of classes with Durable Object namespaces that were renamed. */
+  renamedClasses?: DispatchNamespacesScriptsSettingsEditResponseMigrationsStepsItemRenamedClassesList;
+  /** A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker. */
+  transferredClasses?: DispatchNamespacesScriptsSettingsEditResponseMigrationsStepsItemTransferredClassesList;
+}
+export const DispatchNamespacesScriptsSettingsEditResponseMigrationsStepsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      deletedClasses: S.optional(
+        DispatchNamespacesScriptsSettingsEditResponseMigrationsStepsItemDeletedClassesList.pipe(
+          T.Body("deleted_classes"),
+        ),
+      ),
+      newClasses: S.optional(
+        DispatchNamespacesScriptsSettingsEditResponseMigrationsStepsItemNewClassesList.pipe(
+          T.Body("new_classes"),
+        ),
+      ),
+      newSqliteClasses: S.optional(
+        DispatchNamespacesScriptsSettingsEditResponseMigrationsStepsItemNewSqliteClassesList.pipe(
+          T.Body("new_sqlite_classes"),
+        ),
+      ),
+      renamedClasses: S.optional(
+        DispatchNamespacesScriptsSettingsEditResponseMigrationsStepsItemRenamedClassesList.pipe(
+          T.Body("renamed_classes"),
+        ),
+      ),
+      transferredClasses: S.optional(
+        DispatchNamespacesScriptsSettingsEditResponseMigrationsStepsItemTransferredClassesList.pipe(
+          T.Body("transferred_classes"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "DispatchNamespacesScriptsSettingsEditResponseMigrationsStepsItem",
+  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseMigrationsStepsItem>;
+
+export type DispatchNamespacesScriptsSettingsEditResponseMigrationsStepsList =
+  DispatchNamespacesScriptsSettingsEditResponseMigrationsStepsItem[];
+export const DispatchNamespacesScriptsSettingsEditResponseMigrationsStepsList =
+  /*@__PURE__*/ S.Array(
+    DispatchNamespacesScriptsSettingsEditResponseMigrationsStepsItem,
+  ) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseMigrationsStepsList>;
+
 export interface DispatchNamespacesScriptsSettingsEditResponseMigrations {
-  /** A single set of migrations to apply. */
-  SingleStepMigrationObjectDeletedClassesNewClassesNewSqliteClasses4More__: unknown;
-  WorkersMultipleStepMigrationsObjectNewTagOldTagSteps__: unknown;
+  /** A list of classes to delete Durable Object namespaces from. */
+  deletedClasses?: DispatchNamespacesScriptsSettingsEditResponseMigrationsDeletedClassesList;
+  /** A list of classes to create Durable Object namespaces from. */
+  newClasses?: DispatchNamespacesScriptsSettingsEditResponseMigrationsNewClassesList;
+  /** A list of classes to create Durable Object namespaces with SQLite from. */
+  newSqliteClasses?: DispatchNamespacesScriptsSettingsEditResponseMigrationsNewSqliteClassesList;
+  /** Tag to set as the latest migration tag. */
+  newTag?: string;
+  /** Tag used to verify against the latest migration tag for this Worker. If they don't match, the upload is rejected. */
+  oldTag?: string;
+  /** A list of classes with Durable Object namespaces that were renamed. */
+  renamedClasses?: DispatchNamespacesScriptsSettingsEditResponseMigrationsRenamedClassesList;
+  /** A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker. */
+  transferredClasses?: DispatchNamespacesScriptsSettingsEditResponseMigrationsTransferredClassesList;
+  /** Migrations to apply in order. */
+  steps?: DispatchNamespacesScriptsSettingsEditResponseMigrationsStepsList;
 }
 export const DispatchNamespacesScriptsSettingsEditResponseMigrations =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      SingleStepMigrationObjectDeletedClassesNewClassesNewSqliteClasses4More__:
-        S.Unknown.pipe(
-          T.Body(
-            "SingleStepMigration object { deleted_classes, new_classes, new_sqlite_classes, 4 more }",
-          ),
+      deletedClasses: S.optional(
+        DispatchNamespacesScriptsSettingsEditResponseMigrationsDeletedClassesList.pipe(
+          T.Body("deleted_classes"),
         ),
-      WorkersMultipleStepMigrationsObjectNewTagOldTagSteps__: S.Unknown.pipe(
-        T.Body(
-          "WorkersMultipleStepMigrations object { new_tag, old_tag, steps }",
+      ),
+      newClasses: S.optional(
+        DispatchNamespacesScriptsSettingsEditResponseMigrationsNewClassesList.pipe(
+          T.Body("new_classes"),
         ),
+      ),
+      newSqliteClasses: S.optional(
+        DispatchNamespacesScriptsSettingsEditResponseMigrationsNewSqliteClassesList.pipe(
+          T.Body("new_sqlite_classes"),
+        ),
+      ),
+      newTag: S.optional(S.String.pipe(T.Body("new_tag"))),
+      oldTag: S.optional(S.String.pipe(T.Body("old_tag"))),
+      renamedClasses: S.optional(
+        DispatchNamespacesScriptsSettingsEditResponseMigrationsRenamedClassesList.pipe(
+          T.Body("renamed_classes"),
+        ),
+      ),
+      transferredClasses: S.optional(
+        DispatchNamespacesScriptsSettingsEditResponseMigrationsTransferredClassesList.pipe(
+          T.Body("transferred_classes"),
+        ),
+      ),
+      steps: S.optional(
+        DispatchNamespacesScriptsSettingsEditResponseMigrationsStepsList,
       ),
     }),
   ).annotate({
@@ -2428,29 +3432,63 @@ export const DispatchNamespacesScriptsSettingsEditResponseObservability =
     identifier: "DispatchNamespacesScriptsSettingsEditResponseObservability",
   }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseObservability>;
 
+export type DispatchNamespacesScriptsSettingsEditResponsePlacementMode =
+  | "smart"
+  | (string & {});
+export const DispatchNamespacesScriptsSettingsEditResponsePlacementMode =
+  /*@__PURE__*/ S.String;
+
+export interface DispatchNamespacesScriptsSettingsEditResponsePlacementTargetItem {
+  /** Cloud region in format 'provider:region'. */
+  region?: string;
+  /** HTTP hostname for targeted placement. */
+  hostname?: string;
+  /** TCP host:port for targeted placement. */
+  host?: string;
+}
+export const DispatchNamespacesScriptsSettingsEditResponsePlacementTargetItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      region: S.optional(S.String),
+      hostname: S.optional(S.String),
+      host: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "DispatchNamespacesScriptsSettingsEditResponsePlacementTargetItem",
+  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponsePlacementTargetItem>;
+
+export type DispatchNamespacesScriptsSettingsEditResponsePlacementTargetList =
+  DispatchNamespacesScriptsSettingsEditResponsePlacementTargetItem[];
+export const DispatchNamespacesScriptsSettingsEditResponsePlacementTargetList =
+  /*@__PURE__*/ S.Array(
+    DispatchNamespacesScriptsSettingsEditResponsePlacementTargetItem,
+  ) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponsePlacementTargetList>;
+
 export interface DispatchNamespacesScriptsSettingsEditResponsePlacement {
-  ModeObjectMode__: unknown;
-  RegionObjectRegion__: unknown;
-  HostnameObjectHostname__: unknown;
-  HostObjectHost__: unknown;
-  objectModeRegion__: unknown;
-  objectHostnameMode__: unknown;
-  objectHostMode__: unknown;
-  objectModeTarget__: unknown;
+  /** Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
+  mode?: DispatchNamespacesScriptsSettingsEditResponsePlacementMode;
+  /** Cloud region for targeted placement in format 'provider:region'. */
+  region?: string;
+  /** HTTP hostname for targeted placement. */
+  hostname?: string;
+  /** TCP host and port for targeted placement. */
+  host?: string;
+  /** Array of placement targets (currently limited to single target). */
+  target?: DispatchNamespacesScriptsSettingsEditResponsePlacementTargetList;
 }
 export const DispatchNamespacesScriptsSettingsEditResponsePlacement =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      ModeObjectMode__: S.Unknown.pipe(T.Body("Mode object { mode }")),
-      RegionObjectRegion__: S.Unknown.pipe(T.Body("Region object { region }")),
-      HostnameObjectHostname__: S.Unknown.pipe(
-        T.Body("Hostname object { hostname }"),
+      mode: S.optional(
+        DispatchNamespacesScriptsSettingsEditResponsePlacementMode,
       ),
-      HostObjectHost__: S.Unknown.pipe(T.Body("Host object { host }")),
-      objectModeRegion__: S.Unknown.pipe(T.Body("object { mode, region }")),
-      objectHostnameMode__: S.Unknown.pipe(T.Body("object { hostname, mode }")),
-      objectHostMode__: S.Unknown.pipe(T.Body("object { host, mode }")),
-      objectModeTarget__: S.Unknown.pipe(T.Body("object { mode, target }")),
+      region: S.optional(S.String),
+      hostname: S.optional(S.String),
+      host: S.optional(S.String),
+      target: S.optional(
+        DispatchNamespacesScriptsSettingsEditResponsePlacementTargetList,
+      ),
     }),
   ).annotate({
     identifier: "DispatchNamespacesScriptsSettingsEditResponsePlacement",
@@ -2780,51 +3818,8 @@ export const DispatchNamespacesScriptsUpdateResponseObservability =
     identifier: "DispatchNamespacesScriptsUpdateResponseObservability",
   }) as any as S.Schema<DispatchNamespacesScriptsUpdateResponseObservability>;
 
-export interface DispatchNamespacesScriptsUpdateResponsePlacement {
-  objectModeLastAnalyzedAtStatus__: unknown;
-  objectRegionLastAnalyzedAtStatus__: unknown;
-  objectHostnameLastAnalyzedAtStatus__: unknown;
-  objectHostLastAnalyzedAtStatus__: unknown;
-  objectModeRegionLastAnalyzedAtStatus__: unknown;
-  objectHostnameModeLastAnalyzedAtStatus__: unknown;
-  objectHostModeLastAnalyzedAtStatus__: unknown;
-  objectModeTargetLastAnalyzedAtStatus__: unknown;
-}
-export const DispatchNamespacesScriptsUpdateResponsePlacement =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      objectModeLastAnalyzedAtStatus__: S.Unknown.pipe(
-        T.Body("object { mode, last_analyzed_at, status }"),
-      ),
-      objectRegionLastAnalyzedAtStatus__: S.Unknown.pipe(
-        T.Body("object { region, last_analyzed_at, status }"),
-      ),
-      objectHostnameLastAnalyzedAtStatus__: S.Unknown.pipe(
-        T.Body("object { hostname, last_analyzed_at, status }"),
-      ),
-      objectHostLastAnalyzedAtStatus__: S.Unknown.pipe(
-        T.Body("object { host, last_analyzed_at, status }"),
-      ),
-      objectModeRegionLastAnalyzedAtStatus__: S.Unknown.pipe(
-        T.Body("object { mode, region, last_analyzed_at, status }"),
-      ),
-      objectHostnameModeLastAnalyzedAtStatus__: S.Unknown.pipe(
-        T.Body("object { hostname, mode, last_analyzed_at, status }"),
-      ),
-      objectHostModeLastAnalyzedAtStatus__: S.Unknown.pipe(
-        T.Body("object { host, mode, last_analyzed_at, status }"),
-      ),
-      objectModeTargetLastAnalyzedAtStatus__: S.Unknown.pipe(
-        T.Body("object { mode, target, last_analyzed_at, status }"),
-      ),
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsUpdateResponsePlacement",
-  }) as any as S.Schema<DispatchNamespacesScriptsUpdateResponsePlacement>;
-
 export type DispatchNamespacesScriptsUpdateResponsePlacementMode =
   | "smart"
-  | "targeted"
   | (string & {});
 export const DispatchNamespacesScriptsUpdateResponsePlacementMode =
   /*@__PURE__*/ S.String;
@@ -2835,6 +3830,82 @@ export type DispatchNamespacesScriptsUpdateResponsePlacementStatus =
   | "INSUFFICIENT_INVOCATIONS"
   | (string & {});
 export const DispatchNamespacesScriptsUpdateResponsePlacementStatus =
+  /*@__PURE__*/ S.String;
+
+export interface DispatchNamespacesScriptsUpdateResponsePlacementTargetItem {
+  /** Cloud region in format 'provider:region'. */
+  region?: string;
+  /** HTTP hostname for targeted placement. */
+  hostname?: string;
+  /** TCP host:port for targeted placement. */
+  host?: string;
+}
+export const DispatchNamespacesScriptsUpdateResponsePlacementTargetItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      region: S.optional(S.String),
+      hostname: S.optional(S.String),
+      host: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "DispatchNamespacesScriptsUpdateResponsePlacementTargetItem",
+  }) as any as S.Schema<DispatchNamespacesScriptsUpdateResponsePlacementTargetItem>;
+
+export type DispatchNamespacesScriptsUpdateResponsePlacementTargetList =
+  DispatchNamespacesScriptsUpdateResponsePlacementTargetItem[];
+export const DispatchNamespacesScriptsUpdateResponsePlacementTargetList =
+  /*@__PURE__*/ S.Array(
+    DispatchNamespacesScriptsUpdateResponsePlacementTargetItem,
+  ) as any as S.Schema<DispatchNamespacesScriptsUpdateResponsePlacementTargetList>;
+
+export interface DispatchNamespacesScriptsUpdateResponsePlacement {
+  /** Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
+  mode?: DispatchNamespacesScriptsUpdateResponsePlacementMode;
+  /** The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
+  lastAnalyzedAt?: string;
+  /** Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
+  status?: DispatchNamespacesScriptsUpdateResponsePlacementStatus;
+  /** Cloud region for targeted placement in format 'provider:region'. */
+  region?: string;
+  /** HTTP hostname for targeted placement. */
+  hostname?: string;
+  /** TCP host and port for targeted placement. */
+  host?: string;
+  /** Array of placement targets (currently limited to single target). */
+  target?: DispatchNamespacesScriptsUpdateResponsePlacementTargetList;
+}
+export const DispatchNamespacesScriptsUpdateResponsePlacement =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      mode: S.optional(DispatchNamespacesScriptsUpdateResponsePlacementMode),
+      lastAnalyzedAt: S.optional(S.String.pipe(T.Body("last_analyzed_at"))),
+      status: S.optional(
+        DispatchNamespacesScriptsUpdateResponsePlacementStatus,
+      ),
+      region: S.optional(S.String),
+      hostname: S.optional(S.String),
+      host: S.optional(S.String),
+      target: S.optional(
+        DispatchNamespacesScriptsUpdateResponsePlacementTargetList,
+      ),
+    }),
+  ).annotate({
+    identifier: "DispatchNamespacesScriptsUpdateResponsePlacement",
+  }) as any as S.Schema<DispatchNamespacesScriptsUpdateResponsePlacement>;
+
+export type DispatchNamespacesScriptsUpdateResponsePlacementMode2 =
+  | "smart"
+  | "targeted"
+  | (string & {});
+export const DispatchNamespacesScriptsUpdateResponsePlacementMode2 =
+  /*@__PURE__*/ S.String;
+
+export type DispatchNamespacesScriptsUpdateResponsePlacementStatus2 =
+  | "SUCCESS"
+  | "UNSUPPORTED_APPLICATION"
+  | "INSUFFICIENT_INVOCATIONS"
+  | (string & {});
+export const DispatchNamespacesScriptsUpdateResponsePlacementStatus2 =
   /*@__PURE__*/ S.String;
 
 export type DispatchNamespacesScriptsUpdateResponseTagsList = string[];
@@ -2914,8 +3985,8 @@ export interface PutDispatchNamespaceScriptResponse {
   observability?: DispatchNamespacesScriptsUpdateResponseObservability;
   /** Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host. */
   placement?: DispatchNamespacesScriptsUpdateResponsePlacement;
-  placementMode?: DispatchNamespacesScriptsUpdateResponsePlacementMode;
-  placementStatus?: DispatchNamespacesScriptsUpdateResponsePlacementStatus;
+  placementMode?: DispatchNamespacesScriptsUpdateResponsePlacementMode2;
+  placementStatus?: DispatchNamespacesScriptsUpdateResponsePlacementStatus2;
   /** The immutable ID of the script. */
   tag?: string;
   /** Tags associated with the Worker. */
@@ -2960,12 +4031,12 @@ export const PutDispatchNamespaceScriptResponse = /*@__PURE__*/ S.suspend(() =>
     ),
     placement: S.optional(DispatchNamespacesScriptsUpdateResponsePlacement),
     placementMode: S.optional(
-      DispatchNamespacesScriptsUpdateResponsePlacementMode.pipe(
+      DispatchNamespacesScriptsUpdateResponsePlacementMode2.pipe(
         T.Body("placement_mode"),
       ),
     ),
     placementStatus: S.optional(
-      DispatchNamespacesScriptsUpdateResponsePlacementStatus.pipe(
+      DispatchNamespacesScriptsUpdateResponsePlacementStatus2.pipe(
         T.Body("placement_status"),
       ),
     ),
@@ -3191,51 +4262,8 @@ export const DispatchNamespacesScriptsContentUpdateResponseObservability =
     identifier: "DispatchNamespacesScriptsContentUpdateResponseObservability",
   }) as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponseObservability>;
 
-export interface DispatchNamespacesScriptsContentUpdateResponsePlacement {
-  objectModeLastAnalyzedAtStatus__: unknown;
-  objectRegionLastAnalyzedAtStatus__: unknown;
-  objectHostnameLastAnalyzedAtStatus__: unknown;
-  objectHostLastAnalyzedAtStatus__: unknown;
-  objectModeRegionLastAnalyzedAtStatus__: unknown;
-  objectHostnameModeLastAnalyzedAtStatus__: unknown;
-  objectHostModeLastAnalyzedAtStatus__: unknown;
-  objectModeTargetLastAnalyzedAtStatus__: unknown;
-}
-export const DispatchNamespacesScriptsContentUpdateResponsePlacement =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      objectModeLastAnalyzedAtStatus__: S.Unknown.pipe(
-        T.Body("object { mode, last_analyzed_at, status }"),
-      ),
-      objectRegionLastAnalyzedAtStatus__: S.Unknown.pipe(
-        T.Body("object { region, last_analyzed_at, status }"),
-      ),
-      objectHostnameLastAnalyzedAtStatus__: S.Unknown.pipe(
-        T.Body("object { hostname, last_analyzed_at, status }"),
-      ),
-      objectHostLastAnalyzedAtStatus__: S.Unknown.pipe(
-        T.Body("object { host, last_analyzed_at, status }"),
-      ),
-      objectModeRegionLastAnalyzedAtStatus__: S.Unknown.pipe(
-        T.Body("object { mode, region, last_analyzed_at, status }"),
-      ),
-      objectHostnameModeLastAnalyzedAtStatus__: S.Unknown.pipe(
-        T.Body("object { hostname, mode, last_analyzed_at, status }"),
-      ),
-      objectHostModeLastAnalyzedAtStatus__: S.Unknown.pipe(
-        T.Body("object { host, mode, last_analyzed_at, status }"),
-      ),
-      objectModeTargetLastAnalyzedAtStatus__: S.Unknown.pipe(
-        T.Body("object { mode, target, last_analyzed_at, status }"),
-      ),
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsContentUpdateResponsePlacement",
-  }) as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponsePlacement>;
-
 export type DispatchNamespacesScriptsContentUpdateResponsePlacementMode =
   | "smart"
-  | "targeted"
   | (string & {});
 export const DispatchNamespacesScriptsContentUpdateResponsePlacementMode =
   /*@__PURE__*/ S.String;
@@ -3246,6 +4274,85 @@ export type DispatchNamespacesScriptsContentUpdateResponsePlacementStatus =
   | "INSUFFICIENT_INVOCATIONS"
   | (string & {});
 export const DispatchNamespacesScriptsContentUpdateResponsePlacementStatus =
+  /*@__PURE__*/ S.String;
+
+export interface DispatchNamespacesScriptsContentUpdateResponsePlacementTargetItem {
+  /** Cloud region in format 'provider:region'. */
+  region?: string;
+  /** HTTP hostname for targeted placement. */
+  hostname?: string;
+  /** TCP host:port for targeted placement. */
+  host?: string;
+}
+export const DispatchNamespacesScriptsContentUpdateResponsePlacementTargetItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      region: S.optional(S.String),
+      hostname: S.optional(S.String),
+      host: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "DispatchNamespacesScriptsContentUpdateResponsePlacementTargetItem",
+  }) as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponsePlacementTargetItem>;
+
+export type DispatchNamespacesScriptsContentUpdateResponsePlacementTargetList =
+  DispatchNamespacesScriptsContentUpdateResponsePlacementTargetItem[];
+export const DispatchNamespacesScriptsContentUpdateResponsePlacementTargetList =
+  /*@__PURE__*/ S.Array(
+    DispatchNamespacesScriptsContentUpdateResponsePlacementTargetItem,
+  ) as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponsePlacementTargetList>;
+
+export interface DispatchNamespacesScriptsContentUpdateResponsePlacement {
+  /** Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
+  mode?: DispatchNamespacesScriptsContentUpdateResponsePlacementMode;
+  /** The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
+  lastAnalyzedAt?: string;
+  /** Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
+  status?: DispatchNamespacesScriptsContentUpdateResponsePlacementStatus;
+  /** Cloud region for targeted placement in format 'provider:region'. */
+  region?: string;
+  /** HTTP hostname for targeted placement. */
+  hostname?: string;
+  /** TCP host and port for targeted placement. */
+  host?: string;
+  /** Array of placement targets (currently limited to single target). */
+  target?: DispatchNamespacesScriptsContentUpdateResponsePlacementTargetList;
+}
+export const DispatchNamespacesScriptsContentUpdateResponsePlacement =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      mode: S.optional(
+        DispatchNamespacesScriptsContentUpdateResponsePlacementMode,
+      ),
+      lastAnalyzedAt: S.optional(S.String.pipe(T.Body("last_analyzed_at"))),
+      status: S.optional(
+        DispatchNamespacesScriptsContentUpdateResponsePlacementStatus,
+      ),
+      region: S.optional(S.String),
+      hostname: S.optional(S.String),
+      host: S.optional(S.String),
+      target: S.optional(
+        DispatchNamespacesScriptsContentUpdateResponsePlacementTargetList,
+      ),
+    }),
+  ).annotate({
+    identifier: "DispatchNamespacesScriptsContentUpdateResponsePlacement",
+  }) as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponsePlacement>;
+
+export type DispatchNamespacesScriptsContentUpdateResponsePlacementMode2 =
+  | "smart"
+  | "targeted"
+  | (string & {});
+export const DispatchNamespacesScriptsContentUpdateResponsePlacementMode2 =
+  /*@__PURE__*/ S.String;
+
+export type DispatchNamespacesScriptsContentUpdateResponsePlacementStatus2 =
+  | "SUCCESS"
+  | "UNSUPPORTED_APPLICATION"
+  | "INSUFFICIENT_INVOCATIONS"
+  | (string & {});
+export const DispatchNamespacesScriptsContentUpdateResponsePlacementStatus2 =
   /*@__PURE__*/ S.String;
 
 export type DispatchNamespacesScriptsContentUpdateResponseTagsList = string[];
@@ -3324,9 +4431,9 @@ export interface PutDispatchNamespaceScriptContentResponse {
   /** Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host. */
   placement?: DispatchNamespacesScriptsContentUpdateResponsePlacement;
   /** Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host. */
-  placementMode?: DispatchNamespacesScriptsContentUpdateResponsePlacementMode;
+  placementMode?: DispatchNamespacesScriptsContentUpdateResponsePlacementMode2;
   /** Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
-  placementStatus?: DispatchNamespacesScriptsContentUpdateResponsePlacementStatus;
+  placementStatus?: DispatchNamespacesScriptsContentUpdateResponsePlacementStatus2;
   /** The immutable ID of the script. */
   tag?: string;
   /** Tags associated with the Worker. */
@@ -3376,12 +4483,12 @@ export const PutDispatchNamespaceScriptContentResponse =
         DispatchNamespacesScriptsContentUpdateResponsePlacement,
       ),
       placementMode: S.optional(
-        DispatchNamespacesScriptsContentUpdateResponsePlacementMode.pipe(
+        DispatchNamespacesScriptsContentUpdateResponsePlacementMode2.pipe(
           T.Body("placement_mode"),
         ),
       ),
       placementStatus: S.optional(
-        DispatchNamespacesScriptsContentUpdateResponsePlacementStatus.pipe(
+        DispatchNamespacesScriptsContentUpdateResponsePlacementStatus2.pipe(
           T.Body("placement_status"),
         ),
       ),
@@ -3402,19 +4509,69 @@ export const PutDispatchNamespaceScriptContentResponse =
     identifier: "PutDispatchNamespaceScriptContentResponse",
   }) as any as S.Schema<PutDispatchNamespaceScriptContentResponse>;
 
+export type DispatchNamespacesScriptsSecretsUpdateRequestBodyType =
+  | "secret_text"
+  | (string & {});
+export const DispatchNamespacesScriptsSecretsUpdateRequestBodyType =
+  /*@__PURE__*/ S.String;
+
+export type DispatchNamespacesScriptsSecretsUpdateRequestBodyFormat =
+  | "raw"
+  | "pkcs8"
+  | "spki"
+  | "jwk"
+  | (string & {});
+export const DispatchNamespacesScriptsSecretsUpdateRequestBodyFormat =
+  /*@__PURE__*/ S.String;
+
+export type DispatchNamespacesScriptsSecretsUpdateRequestBodyUsagesItem =
+  | "encrypt"
+  | "decrypt"
+  | "sign"
+  | (string & {});
+export const DispatchNamespacesScriptsSecretsUpdateRequestBodyUsagesItem =
+  /*@__PURE__*/ S.String;
+
+export type DispatchNamespacesScriptsSecretsUpdateRequestBodyUsagesList =
+  DispatchNamespacesScriptsSecretsUpdateRequestBodyUsagesItem[];
+export const DispatchNamespacesScriptsSecretsUpdateRequestBodyUsagesList =
+  /*@__PURE__*/ S.Array(
+    DispatchNamespacesScriptsSecretsUpdateRequestBodyUsagesItem,
+  ) as any as S.Schema<DispatchNamespacesScriptsSecretsUpdateRequestBodyUsagesList>;
+
 export interface DispatchNamespacesScriptsSecretsUpdateRequestBody {
-  SecretTextObjectNameTextType__: unknown;
-  SecretKeyObjectAlgorithmFormatName4More__: unknown;
+  /** A JavaScript variable name for the binding. */
+  name?: string;
+  /** The secret value to use. */
+  text?: string;
+  /** The kind of resource that the binding provides. */
+  type?: DispatchNamespacesScriptsSecretsUpdateRequestBodyType;
+  /** Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm). */
+  algorithm?: unknown;
+  /** Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format). */
+  format?: DispatchNamespacesScriptsSecretsUpdateRequestBodyFormat;
+  /** Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages). */
+  usages?: DispatchNamespacesScriptsSecretsUpdateRequestBodyUsagesList;
+  /** Base64-encoded key data. Required if `format` is "raw", "pkcs8", or "spki". */
+  keyBase64?: string;
+  /** Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is "jwk". */
+  keyJwk?: unknown;
 }
 export const DispatchNamespacesScriptsSecretsUpdateRequestBody =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      SecretTextObjectNameTextType__: S.Unknown.pipe(
-        T.Body("SecretText object { name, text, type }"),
+      name: S.optional(S.String),
+      text: S.optional(S.String),
+      type: S.optional(DispatchNamespacesScriptsSecretsUpdateRequestBodyType),
+      algorithm: S.optional(S.Unknown),
+      format: S.optional(
+        DispatchNamespacesScriptsSecretsUpdateRequestBodyFormat,
       ),
-      SecretKeyObjectAlgorithmFormatName4More__: S.Unknown.pipe(
-        T.Body("SecretKey object { algorithm, format, name, 4 more }"),
+      usages: S.optional(
+        DispatchNamespacesScriptsSecretsUpdateRequestBodyUsagesList,
       ),
+      keyBase64: S.optional(S.String.pipe(T.Body("key_base64"))),
+      keyJwk: S.optional(S.Unknown.pipe(T.Body("key_jwk"))),
     }),
   ).annotate({
     identifier: "DispatchNamespacesScriptsSecretsUpdateRequestBody",
@@ -3450,20 +4607,68 @@ export const PutDispatchNamespaceScriptSecretRequest = /*@__PURE__*/ S.suspend(
   identifier: "PutDispatchNamespaceScriptSecretRequest",
 }) as any as S.Schema<PutDispatchNamespaceScriptSecretRequest>;
 
+export type DispatchNamespacesScriptsSecretsUpdateResponseType =
+  | "secret_text"
+  | (string & {});
+export const DispatchNamespacesScriptsSecretsUpdateResponseType =
+  /*@__PURE__*/ S.String;
+
+export type DispatchNamespacesScriptsSecretsUpdateResponseFormat =
+  | "raw"
+  | "pkcs8"
+  | "spki"
+  | "jwk"
+  | (string & {});
+export const DispatchNamespacesScriptsSecretsUpdateResponseFormat =
+  /*@__PURE__*/ S.String;
+
+export type DispatchNamespacesScriptsSecretsUpdateResponseUsagesItem =
+  | "encrypt"
+  | "decrypt"
+  | "sign"
+  | (string & {});
+export const DispatchNamespacesScriptsSecretsUpdateResponseUsagesItem =
+  /*@__PURE__*/ S.String;
+
+export type DispatchNamespacesScriptsSecretsUpdateResponseUsagesList =
+  DispatchNamespacesScriptsSecretsUpdateResponseUsagesItem[];
+export const DispatchNamespacesScriptsSecretsUpdateResponseUsagesList =
+  /*@__PURE__*/ S.Array(
+    DispatchNamespacesScriptsSecretsUpdateResponseUsagesItem,
+  ) as any as S.Schema<DispatchNamespacesScriptsSecretsUpdateResponseUsagesList>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PutDispatchNamespaceScriptSecretResponse {
-  SecretTextObjectNameTextType__: unknown;
-  SecretKeyObjectAlgorithmFormatName4More__: unknown;
+  /** A JavaScript variable name for the binding. */
+  name?: string;
+  /** The secret value to use. */
+  text?: string;
+  /** The kind of resource that the binding provides. */
+  type?: DispatchNamespacesScriptsSecretsUpdateResponseType;
+  /** Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm). */
+  algorithm?: unknown;
+  /** Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format). */
+  format?: DispatchNamespacesScriptsSecretsUpdateResponseFormat;
+  /** Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages). */
+  usages?: DispatchNamespacesScriptsSecretsUpdateResponseUsagesList;
+  /** Base64-encoded key data. Required if `format` is "raw", "pkcs8", or "spki". */
+  keyBase64?: string;
+  /** Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is "jwk". */
+  keyJwk?: unknown;
 }
 export const PutDispatchNamespaceScriptSecretResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      SecretTextObjectNameTextType__: S.Unknown.pipe(
-        T.Body("SecretText object { name, text, type }"),
+      name: S.optional(S.String),
+      text: S.optional(S.String),
+      type: S.optional(DispatchNamespacesScriptsSecretsUpdateResponseType),
+      algorithm: S.optional(S.Unknown),
+      format: S.optional(DispatchNamespacesScriptsSecretsUpdateResponseFormat),
+      usages: S.optional(
+        DispatchNamespacesScriptsSecretsUpdateResponseUsagesList,
       ),
-      SecretKeyObjectAlgorithmFormatName4More__: S.Unknown.pipe(
-        T.Body("SecretKey object { algorithm, format, name, 4 more }"),
-      ),
+      keyBase64: S.optional(S.String.pipe(T.Body("key_base64"))),
+      keyJwk: S.optional(S.Unknown.pipe(T.Body("key_jwk"))),
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutDispatchNamespaceScriptSecretResponse",

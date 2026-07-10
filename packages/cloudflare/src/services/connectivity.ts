@@ -68,18 +68,128 @@ export class VpcTunnelNotFound extends T.applyErrorMatchers(
   [{ code: 5101, message: { includes: "Tunnel ID Not Found" } }],
 ) {}
 
+export interface DirectoryServicesCreateRequestBodyHostNetwork {
+  tunnelId: string;
+}
+export const DirectoryServicesCreateRequestBodyHostNetwork =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      tunnelId: S.String.pipe(T.Body("tunnel_id")),
+    }),
+  ).annotate({
+    identifier: "DirectoryServicesCreateRequestBodyHostNetwork",
+  }) as any as S.Schema<DirectoryServicesCreateRequestBodyHostNetwork>;
+
+export type DirectoryServicesCreateRequestBodyHostResolverNetworkResolverIpsList =
+  string[];
+export const DirectoryServicesCreateRequestBodyHostResolverNetworkResolverIpsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<DirectoryServicesCreateRequestBodyHostResolverNetworkResolverIpsList>;
+
+export interface DirectoryServicesCreateRequestBodyHostResolverNetwork {
+  tunnelId: string;
+  resolverIps?: DirectoryServicesCreateRequestBodyHostResolverNetworkResolverIpsList;
+}
+export const DirectoryServicesCreateRequestBodyHostResolverNetwork =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      tunnelId: S.String.pipe(T.Body("tunnel_id")),
+      resolverIps: S.optional(
+        DirectoryServicesCreateRequestBodyHostResolverNetworkResolverIpsList.pipe(
+          T.Body("resolver_ips"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "DirectoryServicesCreateRequestBodyHostResolverNetwork",
+  }) as any as S.Schema<DirectoryServicesCreateRequestBodyHostResolverNetwork>;
+
+export interface DirectoryServicesCreateRequestBodyHost {
+  ipv4?: string;
+  network?: DirectoryServicesCreateRequestBodyHostNetwork;
+  ipv6?: string;
+  hostname?: string;
+  resolverNetwork?: DirectoryServicesCreateRequestBodyHostResolverNetwork;
+}
+export const DirectoryServicesCreateRequestBodyHost = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      ipv4: S.optional(S.String),
+      network: S.optional(DirectoryServicesCreateRequestBodyHostNetwork),
+      ipv6: S.optional(S.String),
+      hostname: S.optional(S.String),
+      resolverNetwork: S.optional(
+        DirectoryServicesCreateRequestBodyHostResolverNetwork.pipe(
+          T.Body("resolver_network"),
+        ),
+      ),
+    }),
+).annotate({
+  identifier: "DirectoryServicesCreateRequestBodyHost",
+}) as any as S.Schema<DirectoryServicesCreateRequestBodyHost>;
+
+export type DirectoryServicesCreateRequestBodyType =
+  | "tcp"
+  | "http"
+  | (string & {});
+export const DirectoryServicesCreateRequestBodyType = /*@__PURE__*/ S.String;
+
+export interface DirectoryServicesCreateRequestBodyTlsSettings {
+  /** TLS certificate verification mode for the connection to the origin. */
+  certVerificationMode: string;
+}
+export const DirectoryServicesCreateRequestBodyTlsSettings =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      certVerificationMode: S.String.pipe(T.Body("cert_verification_mode")),
+    }),
+  ).annotate({
+    identifier: "DirectoryServicesCreateRequestBodyTlsSettings",
+  }) as any as S.Schema<DirectoryServicesCreateRequestBodyTlsSettings>;
+
+export type DirectoryServicesCreateRequestBodyAppProtocol =
+  | "postgresql"
+  | "mysql"
+  | (string & {});
+export const DirectoryServicesCreateRequestBodyAppProtocol =
+  /*@__PURE__*/ S.String;
+
 export interface DirectoryServicesCreateRequestBody {
-  InfraHTTPServiceConfigObjectHostNameType6More__: unknown;
-  InfraTCPServiceConfigObjectHostNameType6More__: unknown;
+  host?: DirectoryServicesCreateRequestBodyHost;
+  name?: string;
+  type?: DirectoryServicesCreateRequestBodyType;
+  createdAt?: string;
+  httpPort?: number;
+  httpsPort?: number;
+  serviceId?: string;
+  /** TLS settings for a connectivity service. */
+  tlsSettings?: DirectoryServicesCreateRequestBodyTlsSettings;
+  updatedAt?: string;
+  appProtocol?: DirectoryServicesCreateRequestBodyAppProtocol;
+  tcpPort?: number;
 }
 export const DirectoryServicesCreateRequestBody = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    InfraHTTPServiceConfigObjectHostNameType6More__: S.Unknown.pipe(
-      T.Body("InfraHTTPServiceConfig object { host, name, type, 6 more }"),
+    host: S.optional(DirectoryServicesCreateRequestBodyHost),
+    name: S.optional(S.String),
+    type: S.optional(DirectoryServicesCreateRequestBodyType),
+    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
+    httpPort: S.optional(S.Number.pipe(T.Body("http_port"))),
+    httpsPort: S.optional(S.Number.pipe(T.Body("https_port"))),
+    serviceId: S.optional(S.String.pipe(T.Body("service_id"))),
+    tlsSettings: S.optional(
+      DirectoryServicesCreateRequestBodyTlsSettings.pipe(
+        T.Body("tls_settings"),
+      ),
     ),
-    InfraTCPServiceConfigObjectHostNameType6More__: S.Unknown.pipe(
-      T.Body("InfraTCPServiceConfig object { host, name, type, 6 more }"),
+    updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
+    appProtocol: S.optional(
+      DirectoryServicesCreateRequestBodyAppProtocol.pipe(
+        T.Body("app_protocol"),
+      ),
     ),
+    tcpPort: S.optional(S.Number.pipe(T.Body("tcp_port"))),
   }),
 ).annotate({
   identifier: "DirectoryServicesCreateRequestBody",
@@ -107,19 +217,124 @@ export const CreateDirectoryServiceRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateDirectoryServiceRequest",
 }) as any as S.Schema<CreateDirectoryServiceRequest>;
 
+export interface DirectoryServicesCreateResponseHostNetwork {
+  tunnelId: string;
+}
+export const DirectoryServicesCreateResponseHostNetwork =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      tunnelId: S.String.pipe(T.Body("tunnel_id")),
+    }),
+  ).annotate({
+    identifier: "DirectoryServicesCreateResponseHostNetwork",
+  }) as any as S.Schema<DirectoryServicesCreateResponseHostNetwork>;
+
+export type DirectoryServicesCreateResponseHostResolverNetworkResolverIpsList =
+  string[];
+export const DirectoryServicesCreateResponseHostResolverNetworkResolverIpsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<DirectoryServicesCreateResponseHostResolverNetworkResolverIpsList>;
+
+export interface DirectoryServicesCreateResponseHostResolverNetwork {
+  tunnelId: string;
+  resolverIps?: DirectoryServicesCreateResponseHostResolverNetworkResolverIpsList;
+}
+export const DirectoryServicesCreateResponseHostResolverNetwork =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      tunnelId: S.String.pipe(T.Body("tunnel_id")),
+      resolverIps: S.optional(
+        DirectoryServicesCreateResponseHostResolverNetworkResolverIpsList.pipe(
+          T.Body("resolver_ips"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "DirectoryServicesCreateResponseHostResolverNetwork",
+  }) as any as S.Schema<DirectoryServicesCreateResponseHostResolverNetwork>;
+
+export interface DirectoryServicesCreateResponseHost {
+  ipv4?: string;
+  network?: DirectoryServicesCreateResponseHostNetwork;
+  ipv6?: string;
+  hostname?: string;
+  resolverNetwork?: DirectoryServicesCreateResponseHostResolverNetwork;
+}
+export const DirectoryServicesCreateResponseHost = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ipv4: S.optional(S.String),
+    network: S.optional(DirectoryServicesCreateResponseHostNetwork),
+    ipv6: S.optional(S.String),
+    hostname: S.optional(S.String),
+    resolverNetwork: S.optional(
+      DirectoryServicesCreateResponseHostResolverNetwork.pipe(
+        T.Body("resolver_network"),
+      ),
+    ),
+  }),
+).annotate({
+  identifier: "DirectoryServicesCreateResponseHost",
+}) as any as S.Schema<DirectoryServicesCreateResponseHost>;
+
+export type DirectoryServicesCreateResponseType =
+  | "tcp"
+  | "http"
+  | (string & {});
+export const DirectoryServicesCreateResponseType = /*@__PURE__*/ S.String;
+
+export interface DirectoryServicesCreateResponseTlsSettings {
+  /** TLS certificate verification mode for the connection to the origin. */
+  certVerificationMode: string;
+}
+export const DirectoryServicesCreateResponseTlsSettings =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      certVerificationMode: S.String.pipe(T.Body("cert_verification_mode")),
+    }),
+  ).annotate({
+    identifier: "DirectoryServicesCreateResponseTlsSettings",
+  }) as any as S.Schema<DirectoryServicesCreateResponseTlsSettings>;
+
+export type DirectoryServicesCreateResponseAppProtocol =
+  | "postgresql"
+  | "mysql"
+  | (string & {});
+export const DirectoryServicesCreateResponseAppProtocol =
+  /*@__PURE__*/ S.String;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateDirectoryServiceResponse {
-  InfraHTTPServiceConfigObjectHostNameType6More__: unknown;
-  InfraTCPServiceConfigObjectHostNameType6More__: unknown;
+  host?: DirectoryServicesCreateResponseHost;
+  name?: string;
+  type?: DirectoryServicesCreateResponseType;
+  createdAt?: string;
+  httpPort?: number;
+  httpsPort?: number;
+  serviceId?: string;
+  /** TLS settings for a connectivity service. */
+  tlsSettings?: DirectoryServicesCreateResponseTlsSettings;
+  updatedAt?: string;
+  appProtocol?: DirectoryServicesCreateResponseAppProtocol;
+  tcpPort?: number;
 }
 export const CreateDirectoryServiceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    InfraHTTPServiceConfigObjectHostNameType6More__: S.Unknown.pipe(
-      T.Body("InfraHTTPServiceConfig object { host, name, type, 6 more }"),
+    host: S.optional(DirectoryServicesCreateResponseHost),
+    name: S.optional(S.String),
+    type: S.optional(DirectoryServicesCreateResponseType),
+    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
+    httpPort: S.optional(S.Number.pipe(T.Body("http_port"))),
+    httpsPort: S.optional(S.Number.pipe(T.Body("https_port"))),
+    serviceId: S.optional(S.String.pipe(T.Body("service_id"))),
+    tlsSettings: S.optional(
+      DirectoryServicesCreateResponseTlsSettings.pipe(T.Body("tls_settings")),
     ),
-    InfraTCPServiceConfigObjectHostNameType6More__: S.Unknown.pipe(
-      T.Body("InfraTCPServiceConfig object { host, name, type, 6 more }"),
+    updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
+    appProtocol: S.optional(
+      DirectoryServicesCreateResponseAppProtocol.pipe(T.Body("app_protocol")),
     ),
+    tcpPort: S.optional(S.Number.pipe(T.Body("tcp_port"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateDirectoryServiceResponse",
@@ -174,19 +389,120 @@ export const GetDirectoryServiceRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetDirectoryServiceRequest",
 }) as any as S.Schema<GetDirectoryServiceRequest>;
 
+export interface DirectoryServicesGetResponseHostNetwork {
+  tunnelId: string;
+}
+export const DirectoryServicesGetResponseHostNetwork = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      tunnelId: S.String.pipe(T.Body("tunnel_id")),
+    }),
+).annotate({
+  identifier: "DirectoryServicesGetResponseHostNetwork",
+}) as any as S.Schema<DirectoryServicesGetResponseHostNetwork>;
+
+export type DirectoryServicesGetResponseHostResolverNetworkResolverIpsList =
+  string[];
+export const DirectoryServicesGetResponseHostResolverNetworkResolverIpsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<DirectoryServicesGetResponseHostResolverNetworkResolverIpsList>;
+
+export interface DirectoryServicesGetResponseHostResolverNetwork {
+  tunnelId: string;
+  resolverIps?: DirectoryServicesGetResponseHostResolverNetworkResolverIpsList;
+}
+export const DirectoryServicesGetResponseHostResolverNetwork =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      tunnelId: S.String.pipe(T.Body("tunnel_id")),
+      resolverIps: S.optional(
+        DirectoryServicesGetResponseHostResolverNetworkResolverIpsList.pipe(
+          T.Body("resolver_ips"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "DirectoryServicesGetResponseHostResolverNetwork",
+  }) as any as S.Schema<DirectoryServicesGetResponseHostResolverNetwork>;
+
+export interface DirectoryServicesGetResponseHost {
+  ipv4?: string;
+  network?: DirectoryServicesGetResponseHostNetwork;
+  ipv6?: string;
+  hostname?: string;
+  resolverNetwork?: DirectoryServicesGetResponseHostResolverNetwork;
+}
+export const DirectoryServicesGetResponseHost = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ipv4: S.optional(S.String),
+    network: S.optional(DirectoryServicesGetResponseHostNetwork),
+    ipv6: S.optional(S.String),
+    hostname: S.optional(S.String),
+    resolverNetwork: S.optional(
+      DirectoryServicesGetResponseHostResolverNetwork.pipe(
+        T.Body("resolver_network"),
+      ),
+    ),
+  }),
+).annotate({
+  identifier: "DirectoryServicesGetResponseHost",
+}) as any as S.Schema<DirectoryServicesGetResponseHost>;
+
+export type DirectoryServicesGetResponseType = "tcp" | "http" | (string & {});
+export const DirectoryServicesGetResponseType = /*@__PURE__*/ S.String;
+
+export interface DirectoryServicesGetResponseTlsSettings {
+  /** TLS certificate verification mode for the connection to the origin. */
+  certVerificationMode: string;
+}
+export const DirectoryServicesGetResponseTlsSettings = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      certVerificationMode: S.String.pipe(T.Body("cert_verification_mode")),
+    }),
+).annotate({
+  identifier: "DirectoryServicesGetResponseTlsSettings",
+}) as any as S.Schema<DirectoryServicesGetResponseTlsSettings>;
+
+export type DirectoryServicesGetResponseAppProtocol =
+  | "postgresql"
+  | "mysql"
+  | (string & {});
+export const DirectoryServicesGetResponseAppProtocol = /*@__PURE__*/ S.String;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetDirectoryServiceResponse {
-  InfraHTTPServiceConfigObjectHostNameType6More__: unknown;
-  InfraTCPServiceConfigObjectHostNameType6More__: unknown;
+  host?: DirectoryServicesGetResponseHost;
+  name?: string;
+  type?: DirectoryServicesGetResponseType;
+  createdAt?: string;
+  httpPort?: number;
+  httpsPort?: number;
+  serviceId?: string;
+  /** TLS settings for a connectivity service. */
+  tlsSettings?: DirectoryServicesGetResponseTlsSettings;
+  updatedAt?: string;
+  appProtocol?: DirectoryServicesGetResponseAppProtocol;
+  tcpPort?: number;
 }
 export const GetDirectoryServiceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    InfraHTTPServiceConfigObjectHostNameType6More__: S.Unknown.pipe(
-      T.Body("InfraHTTPServiceConfig object { host, name, type, 6 more }"),
+    host: S.optional(DirectoryServicesGetResponseHost),
+    name: S.optional(S.String),
+    type: S.optional(DirectoryServicesGetResponseType),
+    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
+    httpPort: S.optional(S.Number.pipe(T.Body("http_port"))),
+    httpsPort: S.optional(S.Number.pipe(T.Body("https_port"))),
+    serviceId: S.optional(S.String.pipe(T.Body("service_id"))),
+    tlsSettings: S.optional(
+      DirectoryServicesGetResponseTlsSettings.pipe(T.Body("tls_settings")),
     ),
-    InfraTCPServiceConfigObjectHostNameType6More__: S.Unknown.pipe(
-      T.Body("InfraTCPServiceConfig object { host, name, type, 6 more }"),
+    updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
+    appProtocol: S.optional(
+      DirectoryServicesGetResponseAppProtocol.pipe(T.Body("app_protocol")),
     ),
+    tcpPort: S.optional(S.Number.pipe(T.Body("tcp_port"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDirectoryServiceResponse",
@@ -223,18 +539,123 @@ export const ListDirectoryServicesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListDirectoryServicesRequest",
 }) as any as S.Schema<ListDirectoryServicesRequest>;
 
+export interface DirectoryServicesListResultItemHostNetwork {
+  tunnelId: string;
+}
+export const DirectoryServicesListResultItemHostNetwork =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      tunnelId: S.String.pipe(T.Body("tunnel_id")),
+    }),
+  ).annotate({
+    identifier: "DirectoryServicesListResultItemHostNetwork",
+  }) as any as S.Schema<DirectoryServicesListResultItemHostNetwork>;
+
+export type DirectoryServicesListResultItemHostResolverNetworkResolverIpsList =
+  string[];
+export const DirectoryServicesListResultItemHostResolverNetworkResolverIpsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<DirectoryServicesListResultItemHostResolverNetworkResolverIpsList>;
+
+export interface DirectoryServicesListResultItemHostResolverNetwork {
+  tunnelId: string;
+  resolverIps?: DirectoryServicesListResultItemHostResolverNetworkResolverIpsList;
+}
+export const DirectoryServicesListResultItemHostResolverNetwork =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      tunnelId: S.String.pipe(T.Body("tunnel_id")),
+      resolverIps: S.optional(
+        DirectoryServicesListResultItemHostResolverNetworkResolverIpsList.pipe(
+          T.Body("resolver_ips"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "DirectoryServicesListResultItemHostResolverNetwork",
+  }) as any as S.Schema<DirectoryServicesListResultItemHostResolverNetwork>;
+
+export interface DirectoryServicesListResultItemHost {
+  ipv4?: string;
+  network?: DirectoryServicesListResultItemHostNetwork;
+  ipv6?: string;
+  hostname?: string;
+  resolverNetwork?: DirectoryServicesListResultItemHostResolverNetwork;
+}
+export const DirectoryServicesListResultItemHost = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ipv4: S.optional(S.String),
+    network: S.optional(DirectoryServicesListResultItemHostNetwork),
+    ipv6: S.optional(S.String),
+    hostname: S.optional(S.String),
+    resolverNetwork: S.optional(
+      DirectoryServicesListResultItemHostResolverNetwork.pipe(
+        T.Body("resolver_network"),
+      ),
+    ),
+  }),
+).annotate({
+  identifier: "DirectoryServicesListResultItemHost",
+}) as any as S.Schema<DirectoryServicesListResultItemHost>;
+
+export type DirectoryServicesListResultItemType =
+  | "tcp"
+  | "http"
+  | (string & {});
+export const DirectoryServicesListResultItemType = /*@__PURE__*/ S.String;
+
+export interface DirectoryServicesListResultItemTlsSettings {
+  /** TLS certificate verification mode for the connection to the origin. */
+  certVerificationMode: string;
+}
+export const DirectoryServicesListResultItemTlsSettings =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      certVerificationMode: S.String.pipe(T.Body("cert_verification_mode")),
+    }),
+  ).annotate({
+    identifier: "DirectoryServicesListResultItemTlsSettings",
+  }) as any as S.Schema<DirectoryServicesListResultItemTlsSettings>;
+
+export type DirectoryServicesListResultItemAppProtocol =
+  | "postgresql"
+  | "mysql"
+  | (string & {});
+export const DirectoryServicesListResultItemAppProtocol =
+  /*@__PURE__*/ S.String;
+
 export interface DirectoryServicesListResultItem {
-  InfraHTTPServiceConfigObjectHostNameType6More__: unknown;
-  InfraTCPServiceConfigObjectHostNameType6More__: unknown;
+  host?: DirectoryServicesListResultItemHost;
+  name?: string;
+  type?: DirectoryServicesListResultItemType;
+  createdAt?: string;
+  httpPort?: number;
+  httpsPort?: number;
+  serviceId?: string;
+  /** TLS settings for a connectivity service. */
+  tlsSettings?: DirectoryServicesListResultItemTlsSettings;
+  updatedAt?: string;
+  appProtocol?: DirectoryServicesListResultItemAppProtocol;
+  tcpPort?: number;
 }
 export const DirectoryServicesListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    InfraHTTPServiceConfigObjectHostNameType6More__: S.Unknown.pipe(
-      T.Body("InfraHTTPServiceConfig object { host, name, type, 6 more }"),
+    host: S.optional(DirectoryServicesListResultItemHost),
+    name: S.optional(S.String),
+    type: S.optional(DirectoryServicesListResultItemType),
+    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
+    httpPort: S.optional(S.Number.pipe(T.Body("http_port"))),
+    httpsPort: S.optional(S.Number.pipe(T.Body("https_port"))),
+    serviceId: S.optional(S.String.pipe(T.Body("service_id"))),
+    tlsSettings: S.optional(
+      DirectoryServicesListResultItemTlsSettings.pipe(T.Body("tls_settings")),
     ),
-    InfraTCPServiceConfigObjectHostNameType6More__: S.Unknown.pipe(
-      T.Body("InfraTCPServiceConfig object { host, name, type, 6 more }"),
+    updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
+    appProtocol: S.optional(
+      DirectoryServicesListResultItemAppProtocol.pipe(T.Body("app_protocol")),
     ),
+    tcpPort: S.optional(S.Number.pipe(T.Body("tcp_port"))),
   }),
 ).annotate({
   identifier: "DirectoryServicesListResultItem",
@@ -260,18 +681,128 @@ export const ListDirectoryServicesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListDirectoryServicesResponse",
 }) as any as S.Schema<ListDirectoryServicesResponse>;
 
+export interface DirectoryServicesUpdateRequestBodyHostNetwork {
+  tunnelId: string;
+}
+export const DirectoryServicesUpdateRequestBodyHostNetwork =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      tunnelId: S.String.pipe(T.Body("tunnel_id")),
+    }),
+  ).annotate({
+    identifier: "DirectoryServicesUpdateRequestBodyHostNetwork",
+  }) as any as S.Schema<DirectoryServicesUpdateRequestBodyHostNetwork>;
+
+export type DirectoryServicesUpdateRequestBodyHostResolverNetworkResolverIpsList =
+  string[];
+export const DirectoryServicesUpdateRequestBodyHostResolverNetworkResolverIpsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<DirectoryServicesUpdateRequestBodyHostResolverNetworkResolverIpsList>;
+
+export interface DirectoryServicesUpdateRequestBodyHostResolverNetwork {
+  tunnelId: string;
+  resolverIps?: DirectoryServicesUpdateRequestBodyHostResolverNetworkResolverIpsList;
+}
+export const DirectoryServicesUpdateRequestBodyHostResolverNetwork =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      tunnelId: S.String.pipe(T.Body("tunnel_id")),
+      resolverIps: S.optional(
+        DirectoryServicesUpdateRequestBodyHostResolverNetworkResolverIpsList.pipe(
+          T.Body("resolver_ips"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "DirectoryServicesUpdateRequestBodyHostResolverNetwork",
+  }) as any as S.Schema<DirectoryServicesUpdateRequestBodyHostResolverNetwork>;
+
+export interface DirectoryServicesUpdateRequestBodyHost {
+  ipv4?: string;
+  network?: DirectoryServicesUpdateRequestBodyHostNetwork;
+  ipv6?: string;
+  hostname?: string;
+  resolverNetwork?: DirectoryServicesUpdateRequestBodyHostResolverNetwork;
+}
+export const DirectoryServicesUpdateRequestBodyHost = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      ipv4: S.optional(S.String),
+      network: S.optional(DirectoryServicesUpdateRequestBodyHostNetwork),
+      ipv6: S.optional(S.String),
+      hostname: S.optional(S.String),
+      resolverNetwork: S.optional(
+        DirectoryServicesUpdateRequestBodyHostResolverNetwork.pipe(
+          T.Body("resolver_network"),
+        ),
+      ),
+    }),
+).annotate({
+  identifier: "DirectoryServicesUpdateRequestBodyHost",
+}) as any as S.Schema<DirectoryServicesUpdateRequestBodyHost>;
+
+export type DirectoryServicesUpdateRequestBodyType =
+  | "tcp"
+  | "http"
+  | (string & {});
+export const DirectoryServicesUpdateRequestBodyType = /*@__PURE__*/ S.String;
+
+export interface DirectoryServicesUpdateRequestBodyTlsSettings {
+  /** TLS certificate verification mode for the connection to the origin. */
+  certVerificationMode: string;
+}
+export const DirectoryServicesUpdateRequestBodyTlsSettings =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      certVerificationMode: S.String.pipe(T.Body("cert_verification_mode")),
+    }),
+  ).annotate({
+    identifier: "DirectoryServicesUpdateRequestBodyTlsSettings",
+  }) as any as S.Schema<DirectoryServicesUpdateRequestBodyTlsSettings>;
+
+export type DirectoryServicesUpdateRequestBodyAppProtocol =
+  | "postgresql"
+  | "mysql"
+  | (string & {});
+export const DirectoryServicesUpdateRequestBodyAppProtocol =
+  /*@__PURE__*/ S.String;
+
 export interface DirectoryServicesUpdateRequestBody {
-  InfraHTTPServiceConfigObjectHostNameType6More__: unknown;
-  InfraTCPServiceConfigObjectHostNameType6More__: unknown;
+  host?: DirectoryServicesUpdateRequestBodyHost;
+  name?: string;
+  type?: DirectoryServicesUpdateRequestBodyType;
+  createdAt?: string;
+  httpPort?: number;
+  httpsPort?: number;
+  serviceId?: string;
+  /** TLS settings for a connectivity service. */
+  tlsSettings?: DirectoryServicesUpdateRequestBodyTlsSettings;
+  updatedAt?: string;
+  appProtocol?: DirectoryServicesUpdateRequestBodyAppProtocol;
+  tcpPort?: number;
 }
 export const DirectoryServicesUpdateRequestBody = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    InfraHTTPServiceConfigObjectHostNameType6More__: S.Unknown.pipe(
-      T.Body("InfraHTTPServiceConfig object { host, name, type, 6 more }"),
+    host: S.optional(DirectoryServicesUpdateRequestBodyHost),
+    name: S.optional(S.String),
+    type: S.optional(DirectoryServicesUpdateRequestBodyType),
+    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
+    httpPort: S.optional(S.Number.pipe(T.Body("http_port"))),
+    httpsPort: S.optional(S.Number.pipe(T.Body("https_port"))),
+    serviceId: S.optional(S.String.pipe(T.Body("service_id"))),
+    tlsSettings: S.optional(
+      DirectoryServicesUpdateRequestBodyTlsSettings.pipe(
+        T.Body("tls_settings"),
+      ),
     ),
-    InfraTCPServiceConfigObjectHostNameType6More__: S.Unknown.pipe(
-      T.Body("InfraTCPServiceConfig object { host, name, type, 6 more }"),
+    updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
+    appProtocol: S.optional(
+      DirectoryServicesUpdateRequestBodyAppProtocol.pipe(
+        T.Body("app_protocol"),
+      ),
     ),
+    tcpPort: S.optional(S.Number.pipe(T.Body("tcp_port"))),
   }),
 ).annotate({
   identifier: "DirectoryServicesUpdateRequestBody",
@@ -300,19 +831,124 @@ export const UpdateDirectoryServiceRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateDirectoryServiceRequest",
 }) as any as S.Schema<UpdateDirectoryServiceRequest>;
 
+export interface DirectoryServicesUpdateResponseHostNetwork {
+  tunnelId: string;
+}
+export const DirectoryServicesUpdateResponseHostNetwork =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      tunnelId: S.String.pipe(T.Body("tunnel_id")),
+    }),
+  ).annotate({
+    identifier: "DirectoryServicesUpdateResponseHostNetwork",
+  }) as any as S.Schema<DirectoryServicesUpdateResponseHostNetwork>;
+
+export type DirectoryServicesUpdateResponseHostResolverNetworkResolverIpsList =
+  string[];
+export const DirectoryServicesUpdateResponseHostResolverNetworkResolverIpsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<DirectoryServicesUpdateResponseHostResolverNetworkResolverIpsList>;
+
+export interface DirectoryServicesUpdateResponseHostResolverNetwork {
+  tunnelId: string;
+  resolverIps?: DirectoryServicesUpdateResponseHostResolverNetworkResolverIpsList;
+}
+export const DirectoryServicesUpdateResponseHostResolverNetwork =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      tunnelId: S.String.pipe(T.Body("tunnel_id")),
+      resolverIps: S.optional(
+        DirectoryServicesUpdateResponseHostResolverNetworkResolverIpsList.pipe(
+          T.Body("resolver_ips"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "DirectoryServicesUpdateResponseHostResolverNetwork",
+  }) as any as S.Schema<DirectoryServicesUpdateResponseHostResolverNetwork>;
+
+export interface DirectoryServicesUpdateResponseHost {
+  ipv4?: string;
+  network?: DirectoryServicesUpdateResponseHostNetwork;
+  ipv6?: string;
+  hostname?: string;
+  resolverNetwork?: DirectoryServicesUpdateResponseHostResolverNetwork;
+}
+export const DirectoryServicesUpdateResponseHost = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ipv4: S.optional(S.String),
+    network: S.optional(DirectoryServicesUpdateResponseHostNetwork),
+    ipv6: S.optional(S.String),
+    hostname: S.optional(S.String),
+    resolverNetwork: S.optional(
+      DirectoryServicesUpdateResponseHostResolverNetwork.pipe(
+        T.Body("resolver_network"),
+      ),
+    ),
+  }),
+).annotate({
+  identifier: "DirectoryServicesUpdateResponseHost",
+}) as any as S.Schema<DirectoryServicesUpdateResponseHost>;
+
+export type DirectoryServicesUpdateResponseType =
+  | "tcp"
+  | "http"
+  | (string & {});
+export const DirectoryServicesUpdateResponseType = /*@__PURE__*/ S.String;
+
+export interface DirectoryServicesUpdateResponseTlsSettings {
+  /** TLS certificate verification mode for the connection to the origin. */
+  certVerificationMode: string;
+}
+export const DirectoryServicesUpdateResponseTlsSettings =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      certVerificationMode: S.String.pipe(T.Body("cert_verification_mode")),
+    }),
+  ).annotate({
+    identifier: "DirectoryServicesUpdateResponseTlsSettings",
+  }) as any as S.Schema<DirectoryServicesUpdateResponseTlsSettings>;
+
+export type DirectoryServicesUpdateResponseAppProtocol =
+  | "postgresql"
+  | "mysql"
+  | (string & {});
+export const DirectoryServicesUpdateResponseAppProtocol =
+  /*@__PURE__*/ S.String;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateDirectoryServiceResponse {
-  InfraHTTPServiceConfigObjectHostNameType6More__: unknown;
-  InfraTCPServiceConfigObjectHostNameType6More__: unknown;
+  host?: DirectoryServicesUpdateResponseHost;
+  name?: string;
+  type?: DirectoryServicesUpdateResponseType;
+  createdAt?: string;
+  httpPort?: number;
+  httpsPort?: number;
+  serviceId?: string;
+  /** TLS settings for a connectivity service. */
+  tlsSettings?: DirectoryServicesUpdateResponseTlsSettings;
+  updatedAt?: string;
+  appProtocol?: DirectoryServicesUpdateResponseAppProtocol;
+  tcpPort?: number;
 }
 export const UpdateDirectoryServiceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    InfraHTTPServiceConfigObjectHostNameType6More__: S.Unknown.pipe(
-      T.Body("InfraHTTPServiceConfig object { host, name, type, 6 more }"),
+    host: S.optional(DirectoryServicesUpdateResponseHost),
+    name: S.optional(S.String),
+    type: S.optional(DirectoryServicesUpdateResponseType),
+    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
+    httpPort: S.optional(S.Number.pipe(T.Body("http_port"))),
+    httpsPort: S.optional(S.Number.pipe(T.Body("https_port"))),
+    serviceId: S.optional(S.String.pipe(T.Body("service_id"))),
+    tlsSettings: S.optional(
+      DirectoryServicesUpdateResponseTlsSettings.pipe(T.Body("tls_settings")),
     ),
-    InfraTCPServiceConfigObjectHostNameType6More__: S.Unknown.pipe(
-      T.Body("InfraTCPServiceConfig object { host, name, type, 6 more }"),
+    updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
+    appProtocol: S.optional(
+      DirectoryServicesUpdateResponseAppProtocol.pipe(T.Body("app_protocol")),
     ),
+    tcpPort: S.optional(S.Number.pipe(T.Body("tcp_port"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateDirectoryServiceResponse",

@@ -129,23 +129,23 @@ export const EntitlementsGetResponseCnameSetupAllowed = /*@__PURE__*/ S.suspend(
   identifier: "EntitlementsGetResponseCnameSetupAllowed",
 }) as any as S.Schema<EntitlementsGetResponseCnameSetupAllowed>;
 
+export type EntitlementsGetResponseCustomEntitlementsItemAllocationType =
+  | "max_count"
+  | (string & {});
+export const EntitlementsGetResponseCustomEntitlementsItemAllocationType =
+  /*@__PURE__*/ S.String;
+
 export interface EntitlementsGetResponseCustomEntitlementsItemAllocation {
-  OrganizationsAPIMaxCountAllocationObjectTypeValue__: unknown;
-  OrganizationsAPIBoolAllocationObjectTypeValue__: unknown;
-  OrganizationsAPINullAllocationObjectTypeValue__: unknown;
+  type?: EntitlementsGetResponseCustomEntitlementsItemAllocationType;
+  value?: number;
 }
 export const EntitlementsGetResponseCustomEntitlementsItemAllocation =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      OrganizationsAPIMaxCountAllocationObjectTypeValue__: S.Unknown.pipe(
-        T.Body("OrganizationsAPIMaxCountAllocation object { type, value }"),
+      type: S.optional(
+        EntitlementsGetResponseCustomEntitlementsItemAllocationType,
       ),
-      OrganizationsAPIBoolAllocationObjectTypeValue__: S.Unknown.pipe(
-        T.Body("OrganizationsAPIBoolAllocation object { type, value }"),
-      ),
-      OrganizationsAPINullAllocationObjectTypeValue__: S.Unknown.pipe(
-        T.Body("OrganizationsAPINullAllocation object { type, value }"),
-      ),
+      value: S.optional(S.Number),
     }),
   ).annotate({
     identifier: "EntitlementsGetResponseCustomEntitlementsItemAllocation",

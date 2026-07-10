@@ -462,14 +462,53 @@ const boundTarget = (
 type Role = "input" | "output" | "nested";
 
 /** Build a structure's `members` map from a list of field nodes. */
+/**
+ * A docs union case: a nameless variant line like
+ * `Worker object { consumer_id, created_on, ... }` whose children are that
+ * case's fields (the docs render `A | B` object unions this way).
+ */
+const isUnionCase = (f: FieldNode): boolean =>
+  f.typeStr === "unknown" &&
+  f.children.length > 0 &&
+  /\bobject(\s*\{[^}]*\})?$/.test(f.name);
+
+/**
+ * Flatten union-case nodes into their parent's member list: every case's
+ * fields merge into one open structure (first occurrence wins), forced
+ * optional since presence depends on the variant. Mirrors how the SDK's
+ * union types read at runtime — any variant's field may be present.
+ */
+const expandUnionCases = (fields: FieldNode[]): FieldNode[] => {
+  let current = fields;
+  while (current.some(isUnionCase)) {
+    const out: FieldNode[] = [];
+    const seen = new Set<string>();
+    for (const f of current) {
+      const expanded = isUnionCase(f) ? f.children : [f];
+      for (const c of expanded) {
+        if (seen.has(c.name)) continue;
+        seen.add(c.name);
+        out.push(
+          isUnionCase(f) && !c.typeStr.startsWith("optional")
+            ? { ...c, typeStr: `optional ${c.typeStr}` }
+            : c,
+        );
+      }
+    }
+    current = out;
+  }
+  return current;
+};
+
 const buildMembers = (
   bag: Bag,
-  fields: FieldNode[],
+  rawFields: FieldNode[],
   hint: string,
   role: Role,
 ): Record<string, any> => {
   const members: Record<string, any> = {};
   const used = new Set<string>();
+  const fields = expandUnionCases(rawFields);
 
   for (const f of fields) {
     const { optional, core } = stripOptional(f.typeStr);

@@ -424,18 +424,44 @@ export const ListModelsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListModelsRequest",
 }) as any as S.Schema<ListModelsRequest>;
 
+export type ModelsListResponseErrorsList = unknown[];
+export const ModelsListResponseErrorsList = /*@__PURE__*/ S.Array(
+  S.Unknown,
+) as any as S.Schema<ModelsListResponseErrorsList>;
+
+export type ModelsListResponseMessagesList = string[];
+export const ModelsListResponseMessagesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<ModelsListResponseMessagesList>;
+
+export type ModelsListResponseResultList = unknown[];
+export const ModelsListResponseResultList = /*@__PURE__*/ S.Array(
+  S.Unknown,
+) as any as S.Schema<ModelsListResponseResultList>;
+
+export type ModelsListResponseDataList = unknown[];
+export const ModelsListResponseDataList = /*@__PURE__*/ S.Array(
+  S.Unknown,
+) as any as S.Schema<ModelsListResponseDataList>;
+
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface ListModelsResponse {
-  objectErrorsMessagesResultSuccess__: unknown;
-  /** Marketplace-format response. See https://openrouter.ai/docs/guides/get-started/for-providers */
-  DataObjectData__: unknown;
+  errors?: ModelsListResponseErrorsList;
+  messages?: ModelsListResponseMessagesList;
+  result: ModelsListResponseResultList;
+  success?: boolean;
+  data?: ModelsListResponseDataList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ListModelsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    objectErrorsMessagesResultSuccess__: S.Unknown.pipe(
-      T.Body("object { errors, messages, result, success }"),
-    ),
-    DataObjectData__: S.Unknown.pipe(T.Body("Data object { data }")),
+    errors: S.optional(ModelsListResponseErrorsList),
+    messages: S.optional(ModelsListResponseMessagesList),
+    result: ModelsListResponseResultList,
+    success: S.optional(S.Boolean),
+    data: S.optional(ModelsListResponseDataList),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListModelsResponse",
@@ -480,79 +506,315 @@ export const ListTasksResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListTasksResponse",
 }) as any as S.Schema<ListTasksResponse>;
 
+export type RunRequestBodyImageList = number[];
+export const RunRequestBodyImageList = /*@__PURE__*/ S.Array(
+  S.Number,
+) as any as S.Schema<RunRequestBodyImageList>;
+
+export type RunRequestBodyMaskList = number[];
+export const RunRequestBodyMaskList = /*@__PURE__*/ S.Array(
+  S.Number,
+) as any as S.Schema<RunRequestBodyMaskList>;
+
+export type RunRequestBodyAudioList = number[];
+export const RunRequestBodyAudioList = /*@__PURE__*/ S.Array(
+  S.Number,
+) as any as S.Schema<RunRequestBodyAudioList>;
+
+export type RunRequestBodyResponseFormatType =
+  | "json_object"
+  | "json_schema"
+  | (string & {});
+export const RunRequestBodyResponseFormatType = /*@__PURE__*/ S.String;
+
+export interface RunRequestBodyResponseFormat {
+  jsonSchema?: unknown;
+  type?: RunRequestBodyResponseFormatType;
+}
+export const RunRequestBodyResponseFormat = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    jsonSchema: S.optional(S.Unknown.pipe(T.Body("json_schema"))),
+    type: S.optional(RunRequestBodyResponseFormatType),
+  }),
+).annotate({
+  identifier: "RunRequestBodyResponseFormat",
+}) as any as S.Schema<RunRequestBodyResponseFormat>;
+
+export interface RunRequestBodyMessagesItemContent {
+  /** The content of the message as a string. */
+  string: unknown;
+  /** Text content */
+  text?: string;
+  /** Type of the content (text) */
+  type?: string;
+}
+export const RunRequestBodyMessagesItemContent = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    string: S.Unknown,
+    text: S.optional(S.String),
+    type: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "RunRequestBodyMessagesItemContent",
+}) as any as S.Schema<RunRequestBodyMessagesItemContent>;
+
+export interface RunRequestBodyMessagesItem {
+  /** The content of the message as a string. */
+  content: RunRequestBodyMessagesItemContent;
+  /** The role of the message sender (e.g., 'user', 'assistant', 'system', 'tool'). */
+  role: string;
+}
+export const RunRequestBodyMessagesItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    content: RunRequestBodyMessagesItemContent,
+    role: S.String,
+  }),
+).annotate({
+  identifier: "RunRequestBodyMessagesItem",
+}) as any as S.Schema<RunRequestBodyMessagesItem>;
+
+export type RunRequestBodyMessagesList = RunRequestBodyMessagesItem[];
+export const RunRequestBodyMessagesList = /*@__PURE__*/ S.Array(
+  RunRequestBodyMessagesItem,
+) as any as S.Schema<RunRequestBodyMessagesList>;
+
+export interface RunRequestBodyFunctionsItem {
+  code: string;
+  name: string;
+}
+export const RunRequestBodyFunctionsItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    code: S.String,
+    name: S.String,
+  }),
+).annotate({
+  identifier: "RunRequestBodyFunctionsItem",
+}) as any as S.Schema<RunRequestBodyFunctionsItem>;
+
+export type RunRequestBodyFunctionsList = RunRequestBodyFunctionsItem[];
+export const RunRequestBodyFunctionsList = /*@__PURE__*/ S.Array(
+  RunRequestBodyFunctionsItem,
+) as any as S.Schema<RunRequestBodyFunctionsList>;
+
+export type RunRequestBodyToolsItemParametersPropertiesMap = {
+  [key: string]: unknown | undefined;
+};
+export const RunRequestBodyToolsItemParametersPropertiesMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<RunRequestBodyToolsItemParametersPropertiesMap>;
+
+export type RunRequestBodyToolsItemParametersRequiredList = string[];
+export const RunRequestBodyToolsItemParametersRequiredList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RunRequestBodyToolsItemParametersRequiredList>;
+
+export interface RunRequestBodyToolsItemParameters {
+  /** Definitions of each parameter. */
+  properties: RunRequestBodyToolsItemParametersPropertiesMap;
+  /** The type of the parameters object (usually 'object'). */
+  type: string;
+  /** List of required parameter names. */
+  required?: RunRequestBodyToolsItemParametersRequiredList;
+}
+export const RunRequestBodyToolsItemParameters = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    properties: RunRequestBodyToolsItemParametersPropertiesMap,
+    type: S.String,
+    required: S.optional(RunRequestBodyToolsItemParametersRequiredList),
+  }),
+).annotate({
+  identifier: "RunRequestBodyToolsItemParameters",
+}) as any as S.Schema<RunRequestBodyToolsItemParameters>;
+
+export type RunRequestBodyToolsItemFunctionParametersPropertiesMap = {
+  [key: string]: unknown | undefined;
+};
+export const RunRequestBodyToolsItemFunctionParametersPropertiesMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<RunRequestBodyToolsItemFunctionParametersPropertiesMap>;
+
+export type RunRequestBodyToolsItemFunctionParametersRequiredList = string[];
+export const RunRequestBodyToolsItemFunctionParametersRequiredList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RunRequestBodyToolsItemFunctionParametersRequiredList>;
+
+export interface RunRequestBodyToolsItemFunctionParameters {
+  /** Definitions of each parameter. */
+  properties: RunRequestBodyToolsItemFunctionParametersPropertiesMap;
+  /** The type of the parameters object (usually 'object'). */
+  type: string;
+  /** List of required parameter names. */
+  required?: RunRequestBodyToolsItemFunctionParametersRequiredList;
+}
+export const RunRequestBodyToolsItemFunctionParameters =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      properties: RunRequestBodyToolsItemFunctionParametersPropertiesMap,
+      type: S.String,
+      required: S.optional(
+        RunRequestBodyToolsItemFunctionParametersRequiredList,
+      ),
+    }),
+  ).annotate({
+    identifier: "RunRequestBodyToolsItemFunctionParameters",
+  }) as any as S.Schema<RunRequestBodyToolsItemFunctionParameters>;
+
+export interface RunRequestBodyToolsItemFunction {
+  /** A brief description of what the function does. */
+  description: string;
+  /** The name of the function. */
+  name: string;
+  /** Schema defining the parameters accepted by the function. */
+  parameters: RunRequestBodyToolsItemFunctionParameters;
+}
+export const RunRequestBodyToolsItemFunction = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    description: S.String,
+    name: S.String,
+    parameters: RunRequestBodyToolsItemFunctionParameters,
+  }),
+).annotate({
+  identifier: "RunRequestBodyToolsItemFunction",
+}) as any as S.Schema<RunRequestBodyToolsItemFunction>;
+
+export interface RunRequestBodyToolsItem {
+  /** A brief description of what the tool does. */
+  description?: string;
+  /** The name of the tool. More descriptive the better. */
+  name?: string;
+  /** Schema defining the parameters accepted by the tool. */
+  parameters?: RunRequestBodyToolsItemParameters;
+  /** Details of the function tool. */
+  function?: RunRequestBodyToolsItemFunction;
+  /** Specifies the type of tool (e.g., 'function'). */
+  type?: string;
+}
+export const RunRequestBodyToolsItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    description: S.optional(S.String),
+    name: S.optional(S.String),
+    parameters: S.optional(RunRequestBodyToolsItemParameters),
+    function: S.optional(RunRequestBodyToolsItemFunction),
+    type: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "RunRequestBodyToolsItem",
+}) as any as S.Schema<RunRequestBodyToolsItem>;
+
+export type RunRequestBodyToolsList = RunRequestBodyToolsItem[];
+export const RunRequestBodyToolsList = /*@__PURE__*/ S.Array(
+  RunRequestBodyToolsItem,
+) as any as S.Schema<RunRequestBodyToolsList>;
+
 export interface RunRequestBody {
-  TextClassificationObjectText__: unknown;
-  TextToImageObjectPromptGuidanceHeight8More__: unknown;
-  TextToSpeechObjectPromptLang__: unknown;
-  TextEmbeddingsObjectText__: unknown;
-  AutomaticSpeechRecognitionObjectAudioSourceLangTargetLang__: unknown;
-  ImageClassificationObjectImage__: unknown;
-  ObjectDetectionObjectImage__: unknown;
-  PromptObjectPromptFrequencyPenaltyLora10More__: unknown;
-  TextGenerationObjectMessagesFrequencyPenaltyFunctions11More__: unknown;
-  TranslationObjectTargetLangTextSourceLang__: unknown;
-  SummarizationObjectInputTextMaxLength__: unknown;
-  ImageToTextObjectImageFrequencyPenaltyMaxTokens8More__: unknown;
-  objectImagePromptFrequencyPenalty8More__: unknown;
-  ImageTextToTextObjectImageMessagesFrequencyPenalty8More__: unknown;
-  MultimodalEmbeddingsObjectImageText__: unknown;
+  /** The text that you want to classify */
+  text?: string;
+  /** A text description of the image you want to generate */
+  prompt?: string;
+  /** Controls how closely the generated image should adhere to the prompt; higher values make the image more aligned with the prompt */
+  guidance?: number;
+  /** The height of the generated image in pixels */
+  height?: number;
+  /** For use with img2img tasks. An array of integers that represent the image data constrained to 8-bit unsigned integer values */
+  image?: RunRequestBodyImageList;
+  /** For use with img2img tasks. A base64-encoded string of the input image */
+  imageB64?: string;
+  /** An array representing An array of integers that represent mask image data for inpainting constrained to 8-bit unsigned integer values */
+  mask?: RunRequestBodyMaskList;
+  /** Text describing elements to avoid in the generated image */
+  negativePrompt?: string;
+  /** The number of diffusion steps; higher values can improve quality but take longer */
+  numSteps?: number;
+  /** Random seed for reproducibility of the image generation */
+  seed?: number;
+  /** A value between 0 and 1 indicating how strongly to apply the transformation during img2img tasks; lower values make the output closer to the input image */
+  strength?: number;
+  /** The width of the generated image in pixels */
+  width?: number;
+  /** The speech language (e.g., 'en' for English, 'fr' for French). Defaults to 'en' if not specified */
+  lang?: string;
+  /** An array of integers that represent the audio data constrained to 8-bit unsigned integer values */
+  audio?: RunRequestBodyAudioList;
+  /** The language of the recorded audio */
+  sourceLang?: string;
+  /** The language to translate the transcription into. Currently only English is supported. */
+  targetLang?: string;
+  /** Decreases the likelihood of the model repeating the same lines verbatim. */
+  frequencyPenalty?: number;
+  /** Name of the LoRA (Low-Rank Adaptation) model to fine-tune the base model. */
+  lora?: string;
+  /** The maximum number of tokens to generate in the response. */
+  maxTokens?: number;
+  /** Increases the likelihood of the model introducing new topics. */
+  presencePenalty?: number;
+  /** If true, a chat template is not applied and you must adhere to the specific model's expected formatting. */
+  raw?: boolean;
+  /** Penalty for repeated tokens; higher values discourage repetition. */
+  repetitionPenalty?: number;
+  responseFormat?: RunRequestBodyResponseFormat;
+  /** If true, the response will be streamed back incrementally using SSE, Server Sent Events. */
+  stream?: boolean;
+  /** Controls the randomness of the output; higher values produce more random results. */
+  temperature?: number;
+  /** Limits the AI to choose from the top 'k' most probable words. Lower values make responses more focused; higher values introduce more variety and potential surprises. */
+  topK?: number;
+  /** Adjusts the creativity of the AI's responses by controlling how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses. */
+  topP?: number;
+  /** An array of message objects representing the conversation history. */
+  messages?: RunRequestBodyMessagesList;
+  functions?: RunRequestBodyFunctionsList;
+  /** A list of tools available for the assistant to use. */
+  tools?: RunRequestBodyToolsList;
+  /** The text that you want the model to summarize */
+  inputText?: string;
+  /** The maximum length of the generated summary in tokens */
+  maxLength?: number;
+  /** Whether to ignore the EOS token and continue generating tokens after the EOS token is generated. */
+  ignoreEos?: boolean;
 }
 export const RunRequestBody = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    TextClassificationObjectText__: S.Unknown.pipe(
-      T.Body("TextClassification object { text }"),
+    text: S.optional(S.String),
+    prompt: S.optional(S.String),
+    guidance: S.optional(S.Number),
+    height: S.optional(S.Number),
+    image: S.optional(RunRequestBodyImageList),
+    imageB64: S.optional(S.String.pipe(T.Body("image_b64"))),
+    mask: S.optional(RunRequestBodyMaskList),
+    negativePrompt: S.optional(S.String.pipe(T.Body("negative_prompt"))),
+    numSteps: S.optional(S.Number.pipe(T.Body("num_steps"))),
+    seed: S.optional(S.Number),
+    strength: S.optional(S.Number),
+    width: S.optional(S.Number),
+    lang: S.optional(S.String),
+    audio: S.optional(RunRequestBodyAudioList),
+    sourceLang: S.optional(S.String.pipe(T.Body("source_lang"))),
+    targetLang: S.optional(S.String.pipe(T.Body("target_lang"))),
+    frequencyPenalty: S.optional(S.Number.pipe(T.Body("frequency_penalty"))),
+    lora: S.optional(S.String),
+    maxTokens: S.optional(S.Number.pipe(T.Body("max_tokens"))),
+    presencePenalty: S.optional(S.Number.pipe(T.Body("presence_penalty"))),
+    raw: S.optional(S.Boolean),
+    repetitionPenalty: S.optional(S.Number.pipe(T.Body("repetition_penalty"))),
+    responseFormat: S.optional(
+      RunRequestBodyResponseFormat.pipe(T.Body("response_format")),
     ),
-    TextToImageObjectPromptGuidanceHeight8More__: S.Unknown.pipe(
-      T.Body("TextToImage object { prompt, guidance, height, 8 more }"),
-    ),
-    TextToSpeechObjectPromptLang__: S.Unknown.pipe(
-      T.Body("TextToSpeech object { prompt, lang }"),
-    ),
-    TextEmbeddingsObjectText__: S.Unknown.pipe(
-      T.Body("TextEmbeddings object { text }"),
-    ),
-    AutomaticSpeechRecognitionObjectAudioSourceLangTargetLang__: S.Unknown.pipe(
-      T.Body(
-        "AutomaticSpeechRecognition object { audio, source_lang, target_lang }",
-      ),
-    ),
-    ImageClassificationObjectImage__: S.Unknown.pipe(
-      T.Body("ImageClassification object { image }"),
-    ),
-    ObjectDetectionObjectImage__: S.Unknown.pipe(
-      T.Body("ObjectDetection object { image }"),
-    ),
-    PromptObjectPromptFrequencyPenaltyLora10More__: S.Unknown.pipe(
-      T.Body("Prompt object { prompt, frequency_penalty, lora, 10 more }"),
-    ),
-    TextGenerationObjectMessagesFrequencyPenaltyFunctions11More__:
-      S.Unknown.pipe(
-        T.Body(
-          "TextGeneration object { messages, frequency_penalty, functions, 11 more }",
-        ),
-      ),
-    TranslationObjectTargetLangTextSourceLang__: S.Unknown.pipe(
-      T.Body("Translation object { target_lang, text, source_lang }"),
-    ),
-    SummarizationObjectInputTextMaxLength__: S.Unknown.pipe(
-      T.Body("Summarization object { input_text, max_length }"),
-    ),
-    ImageToTextObjectImageFrequencyPenaltyMaxTokens8More__: S.Unknown.pipe(
-      T.Body(
-        "ImageToText object { image, frequency_penalty, max_tokens, 8 more }",
-      ),
-    ),
-    objectImagePromptFrequencyPenalty8More__: S.Unknown.pipe(
-      T.Body("object { image, prompt, frequency_penalty, 8 more }"),
-    ),
-    ImageTextToTextObjectImageMessagesFrequencyPenalty8More__: S.Unknown.pipe(
-      T.Body(
-        "ImageTextToText object { image, messages, frequency_penalty, 8 more }",
-      ),
-    ),
-    MultimodalEmbeddingsObjectImageText__: S.Unknown.pipe(
-      T.Body("MultimodalEmbeddings object { image, text }"),
-    ),
+    stream: S.optional(S.Boolean),
+    temperature: S.optional(S.Number),
+    topK: S.optional(S.Number.pipe(T.Body("top_k"))),
+    topP: S.optional(S.Number.pipe(T.Body("top_p"))),
+    messages: S.optional(RunRequestBodyMessagesList),
+    functions: S.optional(RunRequestBodyFunctionsList),
+    tools: S.optional(RunRequestBodyToolsList),
+    inputText: S.optional(S.String.pipe(T.Body("input_text"))),
+    maxLength: S.optional(S.Number.pipe(T.Body("max_length"))),
+    ignoreEos: S.optional(S.Boolean.pipe(T.Body("ignore_eos"))),
   }),
 ).annotate({ identifier: "RunRequestBody" }) as any as S.Schema<RunRequestBody>;
 
@@ -597,6 +859,38 @@ export type RunResultItemTextClassificationList =
 export const RunResultItemTextClassificationList = /*@__PURE__*/ S.Array(
   RunResultItemTextClassificationItem,
 ) as any as S.Schema<RunResultItemTextClassificationList>;
+
+export type RunResultItemDataList = unknown[];
+export const RunResultItemDataList = /*@__PURE__*/ S.Array(
+  S.Unknown,
+) as any as S.Schema<RunResultItemDataList>;
+
+export type RunResultItemShapeList = number[];
+export const RunResultItemShapeList = /*@__PURE__*/ S.Array(
+  S.Number,
+) as any as S.Schema<RunResultItemShapeList>;
+
+export interface RunResultItemWordsItem {
+  /** The ending second when the word completes */
+  end?: number;
+  /** The second this word begins in the recording */
+  start?: number;
+  word?: string;
+}
+export const RunResultItemWordsItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    end: S.optional(S.Number),
+    start: S.optional(S.Number),
+    word: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "RunResultItemWordsItem",
+}) as any as S.Schema<RunResultItemWordsItem>;
+
+export type RunResultItemWordsList = RunResultItemWordsItem[];
+export const RunResultItemWordsList = /*@__PURE__*/ S.Array(
+  RunResultItemWordsItem,
+) as any as S.Schema<RunResultItemWordsList>;
 
 export interface RunResultItemImageClassificationItem {
   /** The predicted category or class for the input image based on analysis */
@@ -665,62 +959,98 @@ export const RunResultItemObjectDetectionList = /*@__PURE__*/ S.Array(
   RunResultItemObjectDetectionItem,
 ) as any as S.Schema<RunResultItemObjectDetectionList>;
 
+export interface RunResultItemToolCallsItem {
+  /** The arguments passed to be passed to the tool call request */
+  arguments?: unknown;
+  /** The name of the tool to be called */
+  name?: string;
+}
+export const RunResultItemToolCallsItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    arguments: S.optional(S.Unknown),
+    name: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "RunResultItemToolCallsItem",
+}) as any as S.Schema<RunResultItemToolCallsItem>;
+
+export type RunResultItemToolCallsList = RunResultItemToolCallsItem[];
+export const RunResultItemToolCallsList = /*@__PURE__*/ S.Array(
+  RunResultItemToolCallsItem,
+) as any as S.Schema<RunResultItemToolCallsList>;
+
+export interface RunResultItemUsage {
+  /** Total number of tokens in output */
+  completionTokens?: number;
+  /** Total number of tokens in input */
+  promptTokens?: number;
+  /** Total number of input and output tokens */
+  totalTokens?: number;
+}
+export const RunResultItemUsage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    completionTokens: S.optional(S.Number.pipe(T.Body("completion_tokens"))),
+    promptTokens: S.optional(S.Number.pipe(T.Body("prompt_tokens"))),
+    totalTokens: S.optional(S.Number.pipe(T.Body("total_tokens"))),
+  }),
+).annotate({
+  identifier: "RunResultItemUsage",
+}) as any as S.Schema<RunResultItemUsage>;
+
 export interface RunResultItem {
   /** An array of classification results for the input text */
   TextClassification: RunResultItemTextClassificationList;
   /** The generated image in PNG format */
   TextToImage: string;
-  AudioObjectAudio__: unknown;
+  /** The generated audio in MP3 format, base64-encoded */
+  audio?: string;
   /** The generated audio in MP3 format */
   string: unknown;
-  TextEmbeddingsObjectDataShape__: unknown;
-  AutomaticSpeechRecognitionObjectTextVttWordCountWords__: unknown;
+  /** Embeddings of the requested text values */
+  data?: RunResultItemDataList;
+  shape?: RunResultItemShapeList;
+  /** The transcription */
+  text?: string;
+  vtt?: string;
+  wordCount?: number;
+  words?: RunResultItemWordsList;
   ImageClassification: RunResultItemImageClassificationList;
   /** An array of detected objects within the input image */
   ObjectDetection: RunResultItemObjectDetectionList;
-  objectResponseToolCallsUsage__: unknown;
-  string2: unknown;
-  TranslationObjectTranslatedText__: unknown;
-  SummarizationObjectSummary__: unknown;
-  ImageToTextObjectDescription__: unknown;
-  ImageTextToTextObjectDescription__: unknown;
-  MultimodalEmbeddingsObjectDataShape__: unknown;
+  /** The generated text response from the model */
+  response?: string;
+  /** An array of tool calls requests made during the response generation */
+  toolCalls?: RunResultItemToolCallsList;
+  /** Usage statistics for the inference request */
+  usage?: RunResultItemUsage;
+  /** The translated text in the target language */
+  translatedText?: string;
+  /** The summarized version of the input text */
+  summary?: string;
+  description?: string;
 }
 export const RunResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     TextClassification: RunResultItemTextClassificationList,
     TextToImage: S.String,
-    AudioObjectAudio__: S.Unknown.pipe(T.Body("Audio object { audio }")),
+    audio: S.optional(S.String),
     string: S.Unknown,
-    TextEmbeddingsObjectDataShape__: S.Unknown.pipe(
-      T.Body("TextEmbeddings object { data, shape }"),
-    ),
-    AutomaticSpeechRecognitionObjectTextVttWordCountWords__: S.Unknown.pipe(
-      T.Body(
-        "AutomaticSpeechRecognition object { text, vtt, word_count, words }",
-      ),
-    ),
+    data: S.optional(RunResultItemDataList),
+    shape: S.optional(RunResultItemShapeList),
+    text: S.optional(S.String),
+    vtt: S.optional(S.String),
+    wordCount: S.optional(S.Number.pipe(T.Body("word_count"))),
+    words: S.optional(RunResultItemWordsList),
     ImageClassification: RunResultItemImageClassificationList,
     ObjectDetection: RunResultItemObjectDetectionList,
-    objectResponseToolCallsUsage__: S.Unknown.pipe(
-      T.Body("object { response, tool_calls, usage }"),
+    response: S.optional(S.String),
+    toolCalls: S.optional(
+      RunResultItemToolCallsList.pipe(T.Body("tool_calls")),
     ),
-    string2: S.Unknown.pipe(T.Body("string")),
-    TranslationObjectTranslatedText__: S.Unknown.pipe(
-      T.Body("Translation object { translated_text }"),
-    ),
-    SummarizationObjectSummary__: S.Unknown.pipe(
-      T.Body("Summarization object { summary }"),
-    ),
-    ImageToTextObjectDescription__: S.Unknown.pipe(
-      T.Body("ImageToText object { description }"),
-    ),
-    ImageTextToTextObjectDescription__: S.Unknown.pipe(
-      T.Body("ImageTextToText object { description }"),
-    ),
-    MultimodalEmbeddingsObjectDataShape__: S.Unknown.pipe(
-      T.Body("MultimodalEmbeddings object { data, shape }"),
-    ),
+    usage: S.optional(RunResultItemUsage),
+    translatedText: S.optional(S.String.pipe(T.Body("translated_text"))),
+    summary: S.optional(S.String),
+    description: S.optional(S.String),
   }),
 ).annotate({ identifier: "RunResultItem" }) as any as S.Schema<RunResultItem>;
 
@@ -972,18 +1302,28 @@ export const listFinetunes: API.OperationMethod<
 
 export type ListModelsError = CloudflareOpError;
 /** Searches Workers AI models by name or description. */
-export const listModels: API.OperationMethod<
+export const listModels: API.PaginatedOperationMethod<
   ListModelsRequest,
   ListModelsResponse,
   ListModelsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListModelsRequest,
-  output: ListModelsResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-  retry: Retry.Retry,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListModelsRequest,
+    output: ListModelsResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "resultInfo.page",
+      items: "result",
+      pageSize: "perPage",
+    } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListTasksError = CloudflareOpError;
 /** Searches Workers AI models by task type (e.g., text-generation, embeddings). */

@@ -136,26 +136,94 @@ export const CreateListResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateListResponse",
 }) as any as S.Schema<CreateListResponse>;
 
+export interface ListsItemsCreateRequestBodyItemRedirectStatusCode {
+  "301": unknown;
+  "302": unknown;
+  "307": unknown;
+  "308": unknown;
+}
+export const ListsItemsCreateRequestBodyItemRedirectStatusCode =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      "301": S.Unknown,
+      "302": S.Unknown,
+      "307": S.Unknown,
+      "308": S.Unknown,
+    }),
+  ).annotate({
+    identifier: "ListsItemsCreateRequestBodyItemRedirectStatusCode",
+  }) as any as S.Schema<ListsItemsCreateRequestBodyItemRedirectStatusCode>;
+
+export interface ListsItemsCreateRequestBodyItemRedirect {
+  sourceUrl: string;
+  targetUrl: string;
+  includeSubdomains?: boolean;
+  preservePathSuffix?: boolean;
+  preserveQueryString?: boolean;
+  statusCode?: ListsItemsCreateRequestBodyItemRedirectStatusCode;
+  subpathMatching?: boolean;
+}
+export const ListsItemsCreateRequestBodyItemRedirect = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      sourceUrl: S.String.pipe(T.Body("source_url")),
+      targetUrl: S.String.pipe(T.Body("target_url")),
+      includeSubdomains: S.optional(
+        S.Boolean.pipe(T.Body("include_subdomains")),
+      ),
+      preservePathSuffix: S.optional(
+        S.Boolean.pipe(T.Body("preserve_path_suffix")),
+      ),
+      preserveQueryString: S.optional(
+        S.Boolean.pipe(T.Body("preserve_query_string")),
+      ),
+      statusCode: S.optional(
+        ListsItemsCreateRequestBodyItemRedirectStatusCode.pipe(
+          T.Body("status_code"),
+        ),
+      ),
+      subpathMatching: S.optional(S.Boolean.pipe(T.Body("subpath_matching"))),
+    }),
+).annotate({
+  identifier: "ListsItemsCreateRequestBodyItemRedirect",
+}) as any as S.Schema<ListsItemsCreateRequestBodyItemRedirect>;
+
+export interface ListsItemsCreateRequestBodyItemHostname {
+  urlHostname: string;
+  /** Only applies to wildcard hostnames (e.g., *.example.com). When true (default), only subdomains are blocked. When false, both the root domain and subdomains are blocked. */
+  excludeExactHostname?: boolean;
+}
+export const ListsItemsCreateRequestBodyItemHostname = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      urlHostname: S.String.pipe(T.Body("url_hostname")),
+      excludeExactHostname: S.optional(
+        S.Boolean.pipe(T.Body("exclude_exact_hostname")),
+      ),
+    }),
+).annotate({
+  identifier: "ListsItemsCreateRequestBodyItemHostname",
+}) as any as S.Schema<ListsItemsCreateRequestBodyItemHostname>;
+
 export interface ListsItemsCreateRequestBodyItem {
-  ListsListItemIPCommentObjectIpComment__: unknown;
-  ListsListItemRedirectCommentObjectRedirectComment__: unknown;
-  ListsListItemHostnameCommentObjectHostnameComment__: unknown;
-  ListsListItemASNCommentObjectAsnComment__: unknown;
+  /** An IPv4 address, an IPv4 CIDR, an IPv6 address, or an IPv6 CIDR. */
+  ip?: string;
+  /** Defines an informative summary of the list item. */
+  comment?: string;
+  /** The definition of the redirect. */
+  redirect?: ListsItemsCreateRequestBodyItemRedirect;
+  /** Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-). */
+  hostname?: ListsItemsCreateRequestBodyItemHostname;
+  /** Defines a non-negative 32 bit integer. */
+  asn?: number;
 }
 export const ListsItemsCreateRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    ListsListItemIPCommentObjectIpComment__: S.Unknown.pipe(
-      T.Body("ListsListItemIPComment object { ip, comment }"),
-    ),
-    ListsListItemRedirectCommentObjectRedirectComment__: S.Unknown.pipe(
-      T.Body("ListsListItemRedirectComment object { redirect, comment }"),
-    ),
-    ListsListItemHostnameCommentObjectHostnameComment__: S.Unknown.pipe(
-      T.Body("ListsListItemHostnameComment object { hostname, comment }"),
-    ),
-    ListsListItemASNCommentObjectAsnComment__: S.Unknown.pipe(
-      T.Body("ListsListItemASNComment object { asn, comment }"),
-    ),
+    ip: S.optional(S.String),
+    comment: S.optional(S.String),
+    redirect: S.optional(ListsItemsCreateRequestBodyItemRedirect),
+    hostname: S.optional(ListsItemsCreateRequestBodyItemHostname),
+    asn: S.optional(S.Number),
   }),
 ).annotate({
   identifier: "ListsItemsCreateRequestBodyItem",
@@ -382,25 +450,29 @@ export const GetListBulkOperationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetListBulkOperationRequest",
 }) as any as S.Schema<GetListBulkOperationRequest>;
 
+export type ListsBulkOperationsGetResponseStatus =
+  | "pending"
+  | "running"
+  | (string & {});
+export const ListsBulkOperationsGetResponseStatus = /*@__PURE__*/ S.String;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetListBulkOperationResponse {
-  ListsBulkOperationPendingOrRunningObjectIdStatus__: unknown;
-  ListsBulkOperationCompletedObjectIdCompletedStatus__: unknown;
-  ListsBulkOperationFailedObjectIdCompletedErrorStatus__: unknown;
+  /** The unique operation ID of the asynchronous action. */
+  id?: string;
+  /** The current status of the asynchronous operation. */
+  status?: ListsBulkOperationsGetResponseStatus;
+  /** The RFC 3339 timestamp of when the operation was completed. */
+  completed?: string;
+  /** A message describing the error when the status is `failed`. */
+  error?: string;
 }
 export const GetListBulkOperationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    ListsBulkOperationPendingOrRunningObjectIdStatus__: S.Unknown.pipe(
-      T.Body("ListsBulkOperationPendingOrRunning object { id, status }"),
-    ),
-    ListsBulkOperationCompletedObjectIdCompletedStatus__: S.Unknown.pipe(
-      T.Body("ListsBulkOperationCompleted object { id, completed, status }"),
-    ),
-    ListsBulkOperationFailedObjectIdCompletedErrorStatus__: S.Unknown.pipe(
-      T.Body(
-        "ListsBulkOperationFailed object { id, completed, error, status }",
-      ),
-    ),
+    id: S.optional(S.String),
+    status: S.optional(ListsBulkOperationsGetResponseStatus),
+    completed: S.optional(S.String),
+    error: S.optional(S.String),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetListBulkOperationResponse",
@@ -432,31 +504,98 @@ export const GetListItemRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetListItemRequest",
 }) as any as S.Schema<GetListItemRequest>;
 
+export interface ListsItemsGetResponseHostname {
+  urlHostname: string;
+  /** Only applies to wildcard hostnames (e.g., *.example.com). When true (default), only subdomains are blocked. When false, both the root domain and subdomains are blocked. */
+  excludeExactHostname?: boolean;
+}
+export const ListsItemsGetResponseHostname = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    urlHostname: S.String.pipe(T.Body("url_hostname")),
+    excludeExactHostname: S.optional(
+      S.Boolean.pipe(T.Body("exclude_exact_hostname")),
+    ),
+  }),
+).annotate({
+  identifier: "ListsItemsGetResponseHostname",
+}) as any as S.Schema<ListsItemsGetResponseHostname>;
+
+export interface ListsItemsGetResponseRedirectStatusCode {
+  "301": unknown;
+  "302": unknown;
+  "307": unknown;
+  "308": unknown;
+}
+export const ListsItemsGetResponseRedirectStatusCode = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      "301": S.Unknown,
+      "302": S.Unknown,
+      "307": S.Unknown,
+      "308": S.Unknown,
+    }),
+).annotate({
+  identifier: "ListsItemsGetResponseRedirectStatusCode",
+}) as any as S.Schema<ListsItemsGetResponseRedirectStatusCode>;
+
+export interface ListsItemsGetResponseRedirect {
+  sourceUrl: string;
+  targetUrl: string;
+  includeSubdomains?: boolean;
+  preservePathSuffix?: boolean;
+  preserveQueryString?: boolean;
+  statusCode?: ListsItemsGetResponseRedirectStatusCode;
+  subpathMatching?: boolean;
+}
+export const ListsItemsGetResponseRedirect = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    sourceUrl: S.String.pipe(T.Body("source_url")),
+    targetUrl: S.String.pipe(T.Body("target_url")),
+    includeSubdomains: S.optional(S.Boolean.pipe(T.Body("include_subdomains"))),
+    preservePathSuffix: S.optional(
+      S.Boolean.pipe(T.Body("preserve_path_suffix")),
+    ),
+    preserveQueryString: S.optional(
+      S.Boolean.pipe(T.Body("preserve_query_string")),
+    ),
+    statusCode: S.optional(
+      ListsItemsGetResponseRedirectStatusCode.pipe(T.Body("status_code")),
+    ),
+    subpathMatching: S.optional(S.Boolean.pipe(T.Body("subpath_matching"))),
+  }),
+).annotate({
+  identifier: "ListsItemsGetResponseRedirect",
+}) as any as S.Schema<ListsItemsGetResponseRedirect>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetListItemResponse {
-  ListsListItemIPFullObjectIdCreatedOnIp2More__: unknown;
-  ListsListItemHostnameFullObjectIdCreatedOnHostname2More__: unknown;
-  ListsListItemRedirectFullObjectIdCreatedOnModifiedOn2More__: unknown;
-  ListsListItemASNFullObjectIdAsnCreatedOn2More__: unknown;
+  /** Defines the unique ID of the item in the List. */
+  id?: string;
+  /** The RFC 3339 timestamp of when the list was created. */
+  createdOn?: string;
+  /** An IPv4 address, an IPv4 CIDR, an IPv6 address, or an IPv6 CIDR. */
+  ip?: string;
+  /** The RFC 3339 timestamp of when the list was last modified. */
+  modifiedOn?: string;
+  /** Defines an informative summary of the list item. */
+  comment?: string;
+  /** Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-). */
+  hostname?: ListsItemsGetResponseHostname;
+  /** The definition of the redirect. */
+  redirect?: ListsItemsGetResponseRedirect;
+  /** Defines a non-negative 32 bit integer. */
+  asn?: number;
 }
 export const GetListItemResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    ListsListItemIPFullObjectIdCreatedOnIp2More__: S.Unknown.pipe(
-      T.Body("ListsListItemIPFull object { id, created_on, ip, 2 more }"),
-    ),
-    ListsListItemHostnameFullObjectIdCreatedOnHostname2More__: S.Unknown.pipe(
-      T.Body(
-        "ListsListItemHostnameFull object { id, created_on, hostname, 2 more }",
-      ),
-    ),
-    ListsListItemRedirectFullObjectIdCreatedOnModifiedOn2More__: S.Unknown.pipe(
-      T.Body(
-        "ListsListItemRedirectFull object { id, created_on, modified_on, 2 more }",
-      ),
-    ),
-    ListsListItemASNFullObjectIdAsnCreatedOn2More__: S.Unknown.pipe(
-      T.Body("ListsListItemASNFull object { id, asn, created_on, 2 more }"),
-    ),
+    id: S.optional(S.String),
+    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
+    ip: S.optional(S.String),
+    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+    comment: S.optional(S.String),
+    hostname: S.optional(ListsItemsGetResponseHostname),
+    redirect: S.optional(ListsItemsGetResponseRedirect),
+    asn: S.optional(S.Number),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetListItemResponse",
@@ -494,30 +633,97 @@ export const ListListItemsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListListItemsRequest",
 }) as any as S.Schema<ListListItemsRequest>;
 
+export interface ListsItemsListResultItemHostname {
+  urlHostname: string;
+  /** Only applies to wildcard hostnames (e.g., *.example.com). When true (default), only subdomains are blocked. When false, both the root domain and subdomains are blocked. */
+  excludeExactHostname?: boolean;
+}
+export const ListsItemsListResultItemHostname = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    urlHostname: S.String.pipe(T.Body("url_hostname")),
+    excludeExactHostname: S.optional(
+      S.Boolean.pipe(T.Body("exclude_exact_hostname")),
+    ),
+  }),
+).annotate({
+  identifier: "ListsItemsListResultItemHostname",
+}) as any as S.Schema<ListsItemsListResultItemHostname>;
+
+export interface ListsItemsListResultItemRedirectStatusCode {
+  "301": unknown;
+  "302": unknown;
+  "307": unknown;
+  "308": unknown;
+}
+export const ListsItemsListResultItemRedirectStatusCode =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      "301": S.Unknown,
+      "302": S.Unknown,
+      "307": S.Unknown,
+      "308": S.Unknown,
+    }),
+  ).annotate({
+    identifier: "ListsItemsListResultItemRedirectStatusCode",
+  }) as any as S.Schema<ListsItemsListResultItemRedirectStatusCode>;
+
+export interface ListsItemsListResultItemRedirect {
+  sourceUrl: string;
+  targetUrl: string;
+  includeSubdomains?: boolean;
+  preservePathSuffix?: boolean;
+  preserveQueryString?: boolean;
+  statusCode?: ListsItemsListResultItemRedirectStatusCode;
+  subpathMatching?: boolean;
+}
+export const ListsItemsListResultItemRedirect = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    sourceUrl: S.String.pipe(T.Body("source_url")),
+    targetUrl: S.String.pipe(T.Body("target_url")),
+    includeSubdomains: S.optional(S.Boolean.pipe(T.Body("include_subdomains"))),
+    preservePathSuffix: S.optional(
+      S.Boolean.pipe(T.Body("preserve_path_suffix")),
+    ),
+    preserveQueryString: S.optional(
+      S.Boolean.pipe(T.Body("preserve_query_string")),
+    ),
+    statusCode: S.optional(
+      ListsItemsListResultItemRedirectStatusCode.pipe(T.Body("status_code")),
+    ),
+    subpathMatching: S.optional(S.Boolean.pipe(T.Body("subpath_matching"))),
+  }),
+).annotate({
+  identifier: "ListsItemsListResultItemRedirect",
+}) as any as S.Schema<ListsItemsListResultItemRedirect>;
+
 export interface ListsItemsListResultItem {
-  ListsListItemIPFullObjectIdCreatedOnIp2More__: unknown;
-  ListsListItemHostnameFullObjectIdCreatedOnHostname2More__: unknown;
-  ListsListItemRedirectFullObjectIdCreatedOnModifiedOn2More__: unknown;
-  ListsListItemASNFullObjectIdAsnCreatedOn2More__: unknown;
+  /** Defines the unique ID of the item in the List. */
+  id?: string;
+  /** The RFC 3339 timestamp of when the list was created. */
+  createdOn?: string;
+  /** An IPv4 address, an IPv4 CIDR, an IPv6 address, or an IPv6 CIDR. */
+  ip?: string;
+  /** The RFC 3339 timestamp of when the list was last modified. */
+  modifiedOn?: string;
+  /** Defines an informative summary of the list item. */
+  comment?: string;
+  /** Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-). */
+  hostname?: ListsItemsListResultItemHostname;
+  /** The definition of the redirect. */
+  redirect?: ListsItemsListResultItemRedirect;
+  /** Defines a non-negative 32 bit integer. */
+  asn?: number;
 }
 export const ListsItemsListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    ListsListItemIPFullObjectIdCreatedOnIp2More__: S.Unknown.pipe(
-      T.Body("ListsListItemIPFull object { id, created_on, ip, 2 more }"),
-    ),
-    ListsListItemHostnameFullObjectIdCreatedOnHostname2More__: S.Unknown.pipe(
-      T.Body(
-        "ListsListItemHostnameFull object { id, created_on, hostname, 2 more }",
-      ),
-    ),
-    ListsListItemRedirectFullObjectIdCreatedOnModifiedOn2More__: S.Unknown.pipe(
-      T.Body(
-        "ListsListItemRedirectFull object { id, created_on, modified_on, 2 more }",
-      ),
-    ),
-    ListsListItemASNFullObjectIdAsnCreatedOn2More__: S.Unknown.pipe(
-      T.Body("ListsListItemASNFull object { id, asn, created_on, 2 more }"),
-    ),
+    id: S.optional(S.String),
+    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
+    ip: S.optional(S.String),
+    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+    comment: S.optional(S.String),
+    hostname: S.optional(ListsItemsListResultItemHostname),
+    redirect: S.optional(ListsItemsListResultItemRedirect),
+    asn: S.optional(S.Number),
   }),
 ).annotate({
   identifier: "ListsItemsListResultItem",
@@ -692,26 +898,94 @@ export const UpdateListResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateListResponse",
 }) as any as S.Schema<UpdateListResponse>;
 
+export interface ListsItemsUpdateRequestBodyItemRedirectStatusCode {
+  "301": unknown;
+  "302": unknown;
+  "307": unknown;
+  "308": unknown;
+}
+export const ListsItemsUpdateRequestBodyItemRedirectStatusCode =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      "301": S.Unknown,
+      "302": S.Unknown,
+      "307": S.Unknown,
+      "308": S.Unknown,
+    }),
+  ).annotate({
+    identifier: "ListsItemsUpdateRequestBodyItemRedirectStatusCode",
+  }) as any as S.Schema<ListsItemsUpdateRequestBodyItemRedirectStatusCode>;
+
+export interface ListsItemsUpdateRequestBodyItemRedirect {
+  sourceUrl: string;
+  targetUrl: string;
+  includeSubdomains?: boolean;
+  preservePathSuffix?: boolean;
+  preserveQueryString?: boolean;
+  statusCode?: ListsItemsUpdateRequestBodyItemRedirectStatusCode;
+  subpathMatching?: boolean;
+}
+export const ListsItemsUpdateRequestBodyItemRedirect = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      sourceUrl: S.String.pipe(T.Body("source_url")),
+      targetUrl: S.String.pipe(T.Body("target_url")),
+      includeSubdomains: S.optional(
+        S.Boolean.pipe(T.Body("include_subdomains")),
+      ),
+      preservePathSuffix: S.optional(
+        S.Boolean.pipe(T.Body("preserve_path_suffix")),
+      ),
+      preserveQueryString: S.optional(
+        S.Boolean.pipe(T.Body("preserve_query_string")),
+      ),
+      statusCode: S.optional(
+        ListsItemsUpdateRequestBodyItemRedirectStatusCode.pipe(
+          T.Body("status_code"),
+        ),
+      ),
+      subpathMatching: S.optional(S.Boolean.pipe(T.Body("subpath_matching"))),
+    }),
+).annotate({
+  identifier: "ListsItemsUpdateRequestBodyItemRedirect",
+}) as any as S.Schema<ListsItemsUpdateRequestBodyItemRedirect>;
+
+export interface ListsItemsUpdateRequestBodyItemHostname {
+  urlHostname: string;
+  /** Only applies to wildcard hostnames (e.g., *.example.com). When true (default), only subdomains are blocked. When false, both the root domain and subdomains are blocked. */
+  excludeExactHostname?: boolean;
+}
+export const ListsItemsUpdateRequestBodyItemHostname = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      urlHostname: S.String.pipe(T.Body("url_hostname")),
+      excludeExactHostname: S.optional(
+        S.Boolean.pipe(T.Body("exclude_exact_hostname")),
+      ),
+    }),
+).annotate({
+  identifier: "ListsItemsUpdateRequestBodyItemHostname",
+}) as any as S.Schema<ListsItemsUpdateRequestBodyItemHostname>;
+
 export interface ListsItemsUpdateRequestBodyItem {
-  ListsListItemIPCommentObjectIpComment__: unknown;
-  ListsListItemRedirectCommentObjectRedirectComment__: unknown;
-  ListsListItemHostnameCommentObjectHostnameComment__: unknown;
-  ListsListItemASNCommentObjectAsnComment__: unknown;
+  /** An IPv4 address, an IPv4 CIDR, an IPv6 address, or an IPv6 CIDR. */
+  ip?: string;
+  /** Defines an informative summary of the list item. */
+  comment?: string;
+  /** The definition of the redirect. */
+  redirect?: ListsItemsUpdateRequestBodyItemRedirect;
+  /** Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-). */
+  hostname?: ListsItemsUpdateRequestBodyItemHostname;
+  /** Defines a non-negative 32 bit integer. */
+  asn?: number;
 }
 export const ListsItemsUpdateRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    ListsListItemIPCommentObjectIpComment__: S.Unknown.pipe(
-      T.Body("ListsListItemIPComment object { ip, comment }"),
-    ),
-    ListsListItemRedirectCommentObjectRedirectComment__: S.Unknown.pipe(
-      T.Body("ListsListItemRedirectComment object { redirect, comment }"),
-    ),
-    ListsListItemHostnameCommentObjectHostnameComment__: S.Unknown.pipe(
-      T.Body("ListsListItemHostnameComment object { hostname, comment }"),
-    ),
-    ListsListItemASNCommentObjectAsnComment__: S.Unknown.pipe(
-      T.Body("ListsListItemASNComment object { asn, comment }"),
-    ),
+    ip: S.optional(S.String),
+    comment: S.optional(S.String),
+    redirect: S.optional(ListsItemsUpdateRequestBodyItemRedirect),
+    hostname: S.optional(ListsItemsUpdateRequestBodyItemHostname),
+    asn: S.optional(S.Number),
   }),
 ).annotate({
   identifier: "ListsItemsUpdateRequestBodyItem",

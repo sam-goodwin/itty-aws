@@ -439,23 +439,67 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.magic_transit#AppsListResultItemHostnamesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.magic_transit#AppsListResultItemIpSubnetsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.magic_transit#AppsListResultItemSourceSubnetsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
     "com.cloudflare.magic_transit#AppsListResultItem": {
       "type": "structure",
       "members": {
-        "MagicAccountApp_object___account_app_id__hostnames__ip_subnets__3_more__": {
-          "target": "smithy.api#Document",
+        "account_app_id": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Custom app defined for an account.",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "MagicAccountApp object { account_app_id, hostnames, ip_subnets, 3 more }"
+            "smithy.api#documentation": "Magic account app ID."
           }
         },
-        "MagicManagedApp_object___managed_app_id__hostnames__ip_subnets__3_more__": {
-          "target": "smithy.api#Document",
+        "hostnames": {
+          "target": "com.cloudflare.magic_transit#AppsListResultItemHostnamesList",
           "traits": {
-            "smithy.api#documentation": "Managed app defined by Cloudflare.",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "MagicManagedApp object { managed_app_id, hostnames, ip_subnets, 3 more }"
+            "smithy.api#documentation": "FQDNs to associate with traffic decisions."
+          }
+        },
+        "ip_subnets": {
+          "target": "com.cloudflare.magic_transit#AppsListResultItemIpSubnetsList",
+          "traits": {
+            "smithy.api#documentation": "IPv4 CIDRs to associate with traffic decisions. (IPv6 CIDRs are currently unsupported)"
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Display name for the app."
+          }
+        },
+        "source_subnets": {
+          "target": "com.cloudflare.magic_transit#AppsListResultItemSourceSubnetsList",
+          "traits": {
+            "smithy.api#documentation": "IPv4 CIDRs to associate with traffic decisions. (IPv6 CIDRs are currently unsupported)"
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Category of the app."
+          }
+        },
+        "managed_app_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Managed app ID."
           }
         }
       }
@@ -2047,12 +2091,16 @@
     "com.cloudflare.magic_transit#CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckTarget": {
       "type": "structure",
       "members": {
-        "MagicHealthCheckTarget_object___effective__saved__": {
-          "target": "smithy.api#Document",
+        "effective": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target.",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "MagicHealthCheckTarget object { effective, saved }"
+            "smithy.api#documentation": "The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests."
+          }
+        },
+        "saved": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used."
           }
         },
         "string": {
@@ -2255,12 +2303,16 @@
     "com.cloudflare.magic_transit#CfInterconnectsGetResponseInterconnectHealthCheckTarget": {
       "type": "structure",
       "members": {
-        "MagicHealthCheckTarget_object___effective__saved__": {
-          "target": "smithy.api#Document",
+        "effective": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target.",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "MagicHealthCheckTarget object { effective, saved }"
+            "smithy.api#documentation": "The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests."
+          }
+        },
+        "saved": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used."
           }
         },
         "string": {
@@ -2446,12 +2498,16 @@
     "com.cloudflare.magic_transit#CfInterconnectsListResponseInterconnectsItemHealthCheckTarget": {
       "type": "structure",
       "members": {
-        "MagicHealthCheckTarget_object___effective__saved__": {
-          "target": "smithy.api#Document",
+        "effective": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target.",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "MagicHealthCheckTarget object { effective, saved }"
+            "smithy.api#documentation": "The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests."
+          }
+        },
+        "saved": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used."
           }
         },
         "string": {
@@ -2621,12 +2677,16 @@
     "com.cloudflare.magic_transit#CfInterconnectsUpdateRequestHealthCheckTarget": {
       "type": "structure",
       "members": {
-        "MagicHealthCheckTarget_object___effective__saved__": {
-          "target": "smithy.api#Document",
+        "effective": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target.",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "MagicHealthCheckTarget object { effective, saved }"
+            "smithy.api#documentation": "The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests."
+          }
+        },
+        "saved": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used."
           }
         },
         "string": {
@@ -2755,12 +2815,16 @@
     "com.cloudflare.magic_transit#CfInterconnectsUpdateResponseModifiedInterconnectHealthCheckTarget": {
       "type": "structure",
       "members": {
-        "MagicHealthCheckTarget_object___effective__saved__": {
-          "target": "smithy.api#Document",
+        "effective": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target.",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "MagicHealthCheckTarget object { effective, saved }"
+            "smithy.api#documentation": "The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests."
+          }
+        },
+        "saved": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used."
           }
         },
         "string": {
@@ -4391,154 +4455,36 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.magic_transit#ConnectorsEventsGetResponseEK": {
+      "type": "enum",
+      "members": {
+        "INIT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Init"
+          }
+        }
+      }
+    },
     "com.cloudflare.magic_transit#ConnectorsEventsGetResponseE": {
       "type": "structure",
       "members": {
-        "Init_object___k__": {
-          "target": "smithy.api#Document",
+        "k": {
+          "target": "com.cloudflare.magic_transit#ConnectorsEventsGetResponseEK",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Init object { k }"
+            "smithy.api#documentation": "Initialized process"
           }
         },
-        "Leave_object___k__": {
-          "target": "smithy.api#Document",
+        "url": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Leave object { k }"
+            "smithy.api#documentation": "Location of upgrade bundle"
           }
         },
-        "StartAttestation_object___k__": {
-          "target": "smithy.api#Document",
+        "tunnel_id": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "StartAttestation object { k }"
-          }
-        },
-        "FinishAttestationSuccess_object___k__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "FinishAttestationSuccess object { k }"
-          }
-        },
-        "FinishAttestationFailure_object___k__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "FinishAttestationFailure object { k }"
-          }
-        },
-        "StartRotateCryptKey_object___k__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "StartRotateCryptKey object { k }"
-          }
-        },
-        "FinishRotateCryptKeySuccess_object___k__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "FinishRotateCryptKeySuccess object { k }"
-          }
-        },
-        "FinishRotateCryptKeyFailure_object___k__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "FinishRotateCryptKeyFailure object { k }"
-          }
-        },
-        "StartRotatePki_object___k__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "StartRotatePki object { k }"
-          }
-        },
-        "FinishRotatePkiSuccess_object___k__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "FinishRotatePkiSuccess object { k }"
-          }
-        },
-        "FinishRotatePkiFailure_object___k__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "FinishRotatePkiFailure object { k }"
-          }
-        },
-        "StartUpgrade_object___k__url__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "StartUpgrade object { k, url }"
-          }
-        },
-        "FinishUpgradeSuccess_object___k__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "FinishUpgradeSuccess object { k }"
-          }
-        },
-        "FinishUpgradeFailure_object___k__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "FinishUpgradeFailure object { k }"
-          }
-        },
-        "Reconcile_object___k__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Reconcile object { k }"
-          }
-        },
-        "ConfigureCloudflaredTunnel_object___k__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "ConfigureCloudflaredTunnel object { k }"
-          }
-        },
-        "RekeyInstallBoth_object___k__tunnel_id__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "RekeyInstallBoth object { k, tunnel_id }"
-          }
-        },
-        "RekeyStart_object___k__tunnel_id__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "RekeyStart object { k, tunnel_id }"
-          }
-        },
-        "RekeyAdvance_object___k__tunnel_id__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "RekeyAdvance object { k, tunnel_id }"
-          }
-        },
-        "RekeyComplete_object___k__tunnel_id__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "RekeyComplete object { k, tunnel_id }"
-          }
-        },
-        "RekeyReset_object___k__tunnel_id__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "RekeyReset object { k, tunnel_id }"
+            "smithy.api#documentation": "Tunnel identifier"
           }
         }
       }
@@ -4756,154 +4702,36 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.magic_transit#ConnectorsEventsLatestListResponseItemsItemEK": {
+      "type": "enum",
+      "members": {
+        "INIT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Init"
+          }
+        }
+      }
+    },
     "com.cloudflare.magic_transit#ConnectorsEventsLatestListResponseItemsItemE": {
       "type": "structure",
       "members": {
-        "Init_object___k__": {
-          "target": "smithy.api#Document",
+        "k": {
+          "target": "com.cloudflare.magic_transit#ConnectorsEventsLatestListResponseItemsItemEK",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Init object { k }"
+            "smithy.api#documentation": "Initialized process"
           }
         },
-        "Leave_object___k__": {
-          "target": "smithy.api#Document",
+        "url": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Leave object { k }"
+            "smithy.api#documentation": "Location of upgrade bundle"
           }
         },
-        "StartAttestation_object___k__": {
-          "target": "smithy.api#Document",
+        "tunnel_id": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "StartAttestation object { k }"
-          }
-        },
-        "FinishAttestationSuccess_object___k__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "FinishAttestationSuccess object { k }"
-          }
-        },
-        "FinishAttestationFailure_object___k__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "FinishAttestationFailure object { k }"
-          }
-        },
-        "StartRotateCryptKey_object___k__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "StartRotateCryptKey object { k }"
-          }
-        },
-        "FinishRotateCryptKeySuccess_object___k__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "FinishRotateCryptKeySuccess object { k }"
-          }
-        },
-        "FinishRotateCryptKeyFailure_object___k__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "FinishRotateCryptKeyFailure object { k }"
-          }
-        },
-        "StartRotatePki_object___k__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "StartRotatePki object { k }"
-          }
-        },
-        "FinishRotatePkiSuccess_object___k__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "FinishRotatePkiSuccess object { k }"
-          }
-        },
-        "FinishRotatePkiFailure_object___k__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "FinishRotatePkiFailure object { k }"
-          }
-        },
-        "StartUpgrade_object___k__url__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "StartUpgrade object { k, url }"
-          }
-        },
-        "FinishUpgradeSuccess_object___k__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "FinishUpgradeSuccess object { k }"
-          }
-        },
-        "FinishUpgradeFailure_object___k__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "FinishUpgradeFailure object { k }"
-          }
-        },
-        "Reconcile_object___k__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Reconcile object { k }"
-          }
-        },
-        "ConfigureCloudflaredTunnel_object___k__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "ConfigureCloudflaredTunnel object { k }"
-          }
-        },
-        "RekeyInstallBoth_object___k__tunnel_id__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "RekeyInstallBoth object { k, tunnel_id }"
-          }
-        },
-        "RekeyStart_object___k__tunnel_id__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "RekeyStart object { k, tunnel_id }"
-          }
-        },
-        "RekeyAdvance_object___k__tunnel_id__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "RekeyAdvance object { k, tunnel_id }"
-          }
-        },
-        "RekeyComplete_object___k__tunnel_id__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "RekeyComplete object { k, tunnel_id }"
-          }
-        },
-        "RekeyReset_object___k__tunnel_id__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "RekeyReset object { k, tunnel_id }"
+            "smithy.api#documentation": "Tunnel identifier"
           }
         }
       }
@@ -8617,12 +8445,16 @@
     "com.cloudflare.magic_transit#GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemHealthCheckTarget": {
       "type": "structure",
       "members": {
-        "MagicHealthCheckTarget_object___effective__saved__": {
-          "target": "smithy.api#Document",
+        "effective": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target.",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "MagicHealthCheckTarget object { effective, saved }"
+            "smithy.api#documentation": "The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests."
+          }
+        },
+        "saved": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used."
           }
         },
         "string": {
@@ -8860,12 +8692,16 @@
     "com.cloudflare.magic_transit#GreTunnelsCreateRequestHealthCheckTarget": {
       "type": "structure",
       "members": {
-        "MagicHealthCheckTarget_object___effective__saved__": {
-          "target": "smithy.api#Document",
+        "effective": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target.",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "MagicHealthCheckTarget object { effective, saved }"
+            "smithy.api#documentation": "The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests."
+          }
+        },
+        "saved": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used."
           }
         },
         "string": {
@@ -9120,12 +8956,16 @@
     "com.cloudflare.magic_transit#GreTunnelsCreateResponseHealthCheckTarget": {
       "type": "structure",
       "members": {
-        "MagicHealthCheckTarget_object___effective__saved__": {
-          "target": "smithy.api#Document",
+        "effective": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target.",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "MagicHealthCheckTarget object { effective, saved }"
+            "smithy.api#documentation": "The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests."
+          }
+        },
+        "saved": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used."
           }
         },
         "string": {
@@ -9436,12 +9276,16 @@
     "com.cloudflare.magic_transit#GreTunnelsDeleteResponseDeletedGreTunnelHealthCheckTarget": {
       "type": "structure",
       "members": {
-        "MagicHealthCheckTarget_object___effective__saved__": {
-          "target": "smithy.api#Document",
+        "effective": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target.",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "MagicHealthCheckTarget object { effective, saved }"
+            "smithy.api#documentation": "The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests."
+          }
+        },
+        "saved": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used."
           }
         },
         "string": {
@@ -9764,12 +9608,16 @@
     "com.cloudflare.magic_transit#GreTunnelsGetResponseGreTunnelHealthCheckTarget": {
       "type": "structure",
       "members": {
-        "MagicHealthCheckTarget_object___effective__saved__": {
-          "target": "smithy.api#Document",
+        "effective": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target.",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "MagicHealthCheckTarget object { effective, saved }"
+            "smithy.api#documentation": "The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests."
+          }
+        },
+        "saved": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used."
           }
         },
         "string": {
@@ -10081,12 +9929,16 @@
     "com.cloudflare.magic_transit#GreTunnelsListResponseGreTunnelsItemHealthCheckTarget": {
       "type": "structure",
       "members": {
-        "MagicHealthCheckTarget_object___effective__saved__": {
-          "target": "smithy.api#Document",
+        "effective": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target.",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "MagicHealthCheckTarget object { effective, saved }"
+            "smithy.api#documentation": "The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests."
+          }
+        },
+        "saved": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used."
           }
         },
         "string": {
@@ -10279,12 +10131,16 @@
     "com.cloudflare.magic_transit#GreTunnelsUpdateRequestHealthCheckTarget": {
       "type": "structure",
       "members": {
-        "MagicHealthCheckTarget_object___effective__saved__": {
-          "target": "smithy.api#Document",
+        "effective": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target.",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "MagicHealthCheckTarget object { effective, saved }"
+            "smithy.api#documentation": "The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests."
+          }
+        },
+        "saved": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used."
           }
         },
         "string": {
@@ -10544,12 +10400,16 @@
     "com.cloudflare.magic_transit#GreTunnelsUpdateResponseModifiedGreTunnelHealthCheckTarget": {
       "type": "structure",
       "members": {
-        "MagicHealthCheckTarget_object___effective__saved__": {
-          "target": "smithy.api#Document",
+        "effective": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target.",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "MagicHealthCheckTarget object { effective, saved }"
+            "smithy.api#documentation": "The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests."
+          }
+        },
+        "saved": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used."
           }
         },
         "string": {
@@ -10881,12 +10741,16 @@
     "com.cloudflare.magic_transit#IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemHealthCheckTarget": {
       "type": "structure",
       "members": {
-        "MagicHealthCheckTarget_object___effective__saved__": {
-          "target": "smithy.api#Document",
+        "effective": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target.",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "MagicHealthCheckTarget object { effective, saved }"
+            "smithy.api#documentation": "The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests."
+          }
+        },
+        "saved": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used."
           }
         },
         "string": {
@@ -11154,12 +11018,16 @@
     "com.cloudflare.magic_transit#IpsecTunnelsCreateRequestHealthCheckTarget": {
       "type": "structure",
       "members": {
-        "MagicHealthCheckTarget_object___effective__saved__": {
-          "target": "smithy.api#Document",
+        "effective": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target.",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "MagicHealthCheckTarget object { effective, saved }"
+            "smithy.api#documentation": "The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests."
+          }
+        },
+        "saved": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used."
           }
         },
         "string": {
@@ -11427,12 +11295,16 @@
     "com.cloudflare.magic_transit#IpsecTunnelsCreateResponseHealthCheckTarget": {
       "type": "structure",
       "members": {
-        "MagicHealthCheckTarget_object___effective__saved__": {
-          "target": "smithy.api#Document",
+        "effective": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target.",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "MagicHealthCheckTarget object { effective, saved }"
+            "smithy.api#documentation": "The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests."
+          }
+        },
+        "saved": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used."
           }
         },
         "string": {
@@ -11773,12 +11645,16 @@
     "com.cloudflare.magic_transit#IpsecTunnelsDeleteResponseDeletedIpsecTunnelHealthCheckTarget": {
       "type": "structure",
       "members": {
-        "MagicHealthCheckTarget_object___effective__saved__": {
-          "target": "smithy.api#Document",
+        "effective": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target.",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "MagicHealthCheckTarget object { effective, saved }"
+            "smithy.api#documentation": "The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests."
+          }
+        },
+        "saved": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used."
           }
         },
         "string": {
@@ -12131,12 +12007,16 @@
     "com.cloudflare.magic_transit#IpsecTunnelsGetResponseIpsecTunnelHealthCheckTarget": {
       "type": "structure",
       "members": {
-        "MagicHealthCheckTarget_object___effective__saved__": {
-          "target": "smithy.api#Document",
+        "effective": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target.",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "MagicHealthCheckTarget object { effective, saved }"
+            "smithy.api#documentation": "The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests."
+          }
+        },
+        "saved": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used."
           }
         },
         "string": {
@@ -12478,12 +12358,16 @@
     "com.cloudflare.magic_transit#IpsecTunnelsListResponseIpsecTunnelsItemHealthCheckTarget": {
       "type": "structure",
       "members": {
-        "MagicHealthCheckTarget_object___effective__saved__": {
-          "target": "smithy.api#Document",
+        "effective": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target.",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "MagicHealthCheckTarget object { effective, saved }"
+            "smithy.api#documentation": "The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests."
+          }
+        },
+        "saved": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used."
           }
         },
         "string": {
@@ -12944,12 +12828,16 @@
     "com.cloudflare.magic_transit#IpsecTunnelsUpdateRequestHealthCheckTarget": {
       "type": "structure",
       "members": {
-        "MagicHealthCheckTarget_object___effective__saved__": {
-          "target": "smithy.api#Document",
+        "effective": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target.",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "MagicHealthCheckTarget object { effective, saved }"
+            "smithy.api#documentation": "The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests."
+          }
+        },
+        "saved": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used."
           }
         },
         "string": {
@@ -13225,12 +13113,16 @@
     "com.cloudflare.magic_transit#IpsecTunnelsUpdateResponseModifiedIpsecTunnelHealthCheckTarget": {
       "type": "structure",
       "members": {
-        "MagicHealthCheckTarget_object___effective__saved__": {
-          "target": "smithy.api#Document",
+        "effective": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target.",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "MagicHealthCheckTarget object { effective, saved }"
+            "smithy.api#documentation": "The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests."
+          }
+        },
+        "saved": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used."
           }
         },
         "string": {
@@ -13419,21 +13311,124 @@
         "smithy.api#idempotent": {}
       }
     },
+    "com.cloudflare.magic_transit#PcapsCreateRequestBodySystem": {
+      "type": "enum",
+      "members": {
+        "MAGIC_TRANSIT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "magic-transit"
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#PcapsCreateRequestBodyType": {
+      "type": "enum",
+      "members": {
+        "SIMPLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "simple"
+          }
+        },
+        "FULL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "full"
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#PcapsCreateRequestBodyFilterV1": {
+      "type": "structure",
+      "members": {
+        "destination_address": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The destination IP address of the packet."
+          }
+        },
+        "destination_port": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The destination port of the packet."
+          }
+        },
+        "protocol": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The protocol number of the packet."
+          }
+        },
+        "source_address": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The source IP address of the packet."
+          }
+        },
+        "source_port": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The source port of the packet."
+          }
+        }
+      }
+    },
     "com.cloudflare.magic_transit#PcapsCreateRequestBody": {
       "type": "structure",
       "members": {
-        "MagicVisibilityPCAPsPCAPsRequestSimple_object___packet_limit__system__time_limit__3_more__": {
-          "target": "smithy.api#Document",
+        "packet_limit": {
+          "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "MagicVisibilityPCAPsPCAPsRequestSimple object { packet_limit, system, time_limit, 3 more }"
+            "smithy.api#documentation": "The limit of packets contained in a packet capture."
           }
         },
-        "MagicVisibilityPCAPsPCAPsRequestFull_object___colo_name__destination_conf__system__5_more__": {
-          "target": "smithy.api#Document",
+        "system": {
+          "target": "com.cloudflare.magic_transit#PcapsCreateRequestBodySystem",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "MagicVisibilityPCAPsPCAPsRequestFull object { colo_name, destination_conf, system, 5 more }"
+            "smithy.api#documentation": "The system used to collect packet captures."
+          }
+        },
+        "time_limit": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The packet capture duration in seconds."
+          }
+        },
+        "type": {
+          "target": "com.cloudflare.magic_transit#PcapsCreateRequestBodyType",
+          "traits": {
+            "smithy.api#documentation": "The type of packet capture. `Simple` captures sampled packets, and `full` captures entire payloads and non-sampled packets."
+          }
+        },
+        "filter_v1": {
+          "target": "com.cloudflare.magic_transit#PcapsCreateRequestBodyFilterV1",
+          "traits": {
+            "smithy.api#documentation": "The packet capture filter. When this field is empty, all packets are captured."
+          }
+        },
+        "offset_time": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The RFC 3339 offset timestamp from which to query backwards for packets. Must be within the last 24h. When this field is empty, defaults to time of request."
+          }
+        },
+        "colo_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the data center used for the packet capture. This can be a specific colo (ord02) or a multi-colo name (ORD). This field only applies to `full` packet captures."
+          }
+        },
+        "destination_conf": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The full URI for the bucket. This field only applies to `full` packet captures."
+          }
+        },
+        "byte_limit": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The maximum number of bytes to capture. This field only applies to `full` packet captures."
           }
         }
       }
@@ -13460,21 +13455,177 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.magic_transit#PcapsCreateResponseFilterV1": {
+      "type": "structure",
+      "members": {
+        "destination_address": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The destination IP address of the packet."
+          }
+        },
+        "destination_port": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The destination port of the packet."
+          }
+        },
+        "protocol": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The protocol number of the packet."
+          }
+        },
+        "source_address": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The source IP address of the packet."
+          }
+        },
+        "source_port": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The source port of the packet."
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#PcapsCreateResponseStatus": {
+      "type": "enum",
+      "members": {
+        "UNKNOWN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unknown"
+          }
+        },
+        "SUCCESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "success"
+          }
+        },
+        "PENDING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pending"
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#PcapsCreateResponseSystem": {
+      "type": "enum",
+      "members": {
+        "MAGIC_TRANSIT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "magic-transit"
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#PcapsCreateResponseType": {
+      "type": "enum",
+      "members": {
+        "SIMPLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "simple"
+          }
+        },
+        "FULL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "full"
+          }
+        }
+      }
+    },
     "com.cloudflare.magic_transit#PcapsCreateResponse": {
       "type": "structure",
       "members": {
-        "PCAP_object___id__filter_v1__offset_time__5_more__": {
-          "target": "smithy.api#Document",
+        "id": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "PCAP object { id, filter_v1, offset_time, 5 more }"
+            "smithy.api#documentation": "The ID for the packet capture."
           }
         },
-        "MagicVisibilityPCAPsPCAPsResponseFull_object___id__byte_limit__colo_name__10_more__": {
-          "target": "smithy.api#Document",
+        "filter_v1": {
+          "target": "com.cloudflare.magic_transit#PcapsCreateResponseFilterV1",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "MagicVisibilityPCAPsPCAPsResponseFull object { id, byte_limit, colo_name, 10 more }"
+            "smithy.api#documentation": "The packet capture filter. When this field is empty, all packets are captured."
+          }
+        },
+        "offset_time": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The RFC 3339 offset timestamp from which to query backwards for packets. Must be within the last 24h. When this field is empty, defaults to time of request."
+          }
+        },
+        "status": {
+          "target": "com.cloudflare.magic_transit#PcapsCreateResponseStatus",
+          "traits": {
+            "smithy.api#documentation": "The status of the packet capture request."
+          }
+        },
+        "submitted": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The RFC 3339 timestamp when the packet capture was created."
+          }
+        },
+        "system": {
+          "target": "com.cloudflare.magic_transit#PcapsCreateResponseSystem",
+          "traits": {
+            "smithy.api#documentation": "The system used to collect packet captures."
+          }
+        },
+        "time_limit": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The packet capture duration in seconds."
+          }
+        },
+        "type": {
+          "target": "com.cloudflare.magic_transit#PcapsCreateResponseType",
+          "traits": {
+            "smithy.api#documentation": "The type of packet capture. `Simple` captures sampled packets, and `full` captures entire payloads and non-sampled packets."
+          }
+        },
+        "byte_limit": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The maximum number of bytes to capture. This field only applies to `full` packet captures."
+          }
+        },
+        "colo_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the data center used for the packet capture. This can be a specific colo (ord02) or a multi-colo name (ORD). This field only applies to `full` packet captures."
+          }
+        },
+        "destination_conf": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The full URI for the bucket. This field only applies to `full` packet captures."
+          }
+        },
+        "error_message": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "An error message that describes why the packet capture failed. This field only applies to `full` packet captures."
+          }
+        },
+        "packets_captured": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The number of packets captured."
+          }
+        },
+        "stop_requested": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The RFC 3339 timestamp when stopping the packet capture was requested. This field only applies to `full` packet captures."
           }
         }
       },
@@ -13524,21 +13675,177 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.magic_transit#PcapsGetResponseFilterV1": {
+      "type": "structure",
+      "members": {
+        "destination_address": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The destination IP address of the packet."
+          }
+        },
+        "destination_port": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The destination port of the packet."
+          }
+        },
+        "protocol": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The protocol number of the packet."
+          }
+        },
+        "source_address": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The source IP address of the packet."
+          }
+        },
+        "source_port": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The source port of the packet."
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#PcapsGetResponseStatus": {
+      "type": "enum",
+      "members": {
+        "UNKNOWN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unknown"
+          }
+        },
+        "SUCCESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "success"
+          }
+        },
+        "PENDING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pending"
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#PcapsGetResponseSystem": {
+      "type": "enum",
+      "members": {
+        "MAGIC_TRANSIT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "magic-transit"
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#PcapsGetResponseType": {
+      "type": "enum",
+      "members": {
+        "SIMPLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "simple"
+          }
+        },
+        "FULL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "full"
+          }
+        }
+      }
+    },
     "com.cloudflare.magic_transit#PcapsGetResponse": {
       "type": "structure",
       "members": {
-        "PCAP_object___id__filter_v1__offset_time__5_more__": {
-          "target": "smithy.api#Document",
+        "id": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "PCAP object { id, filter_v1, offset_time, 5 more }"
+            "smithy.api#documentation": "The ID for the packet capture."
           }
         },
-        "MagicVisibilityPCAPsPCAPsResponseFull_object___id__byte_limit__colo_name__10_more__": {
-          "target": "smithy.api#Document",
+        "filter_v1": {
+          "target": "com.cloudflare.magic_transit#PcapsGetResponseFilterV1",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "MagicVisibilityPCAPsPCAPsResponseFull object { id, byte_limit, colo_name, 10 more }"
+            "smithy.api#documentation": "The packet capture filter. When this field is empty, all packets are captured."
+          }
+        },
+        "offset_time": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The RFC 3339 offset timestamp from which to query backwards for packets. Must be within the last 24h. When this field is empty, defaults to time of request."
+          }
+        },
+        "status": {
+          "target": "com.cloudflare.magic_transit#PcapsGetResponseStatus",
+          "traits": {
+            "smithy.api#documentation": "The status of the packet capture request."
+          }
+        },
+        "submitted": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The RFC 3339 timestamp when the packet capture was created."
+          }
+        },
+        "system": {
+          "target": "com.cloudflare.magic_transit#PcapsGetResponseSystem",
+          "traits": {
+            "smithy.api#documentation": "The system used to collect packet captures."
+          }
+        },
+        "time_limit": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The packet capture duration in seconds."
+          }
+        },
+        "type": {
+          "target": "com.cloudflare.magic_transit#PcapsGetResponseType",
+          "traits": {
+            "smithy.api#documentation": "The type of packet capture. `Simple` captures sampled packets, and `full` captures entire payloads and non-sampled packets."
+          }
+        },
+        "byte_limit": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The maximum number of bytes to capture. This field only applies to `full` packet captures."
+          }
+        },
+        "colo_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the data center used for the packet capture. This can be a specific colo (ord02) or a multi-colo name (ORD). This field only applies to `full` packet captures."
+          }
+        },
+        "destination_conf": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The full URI for the bucket. This field only applies to `full` packet captures."
+          }
+        },
+        "error_message": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "An error message that describes why the packet capture failed. This field only applies to `full` packet captures."
+          }
+        },
+        "packets_captured": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The number of packets captured."
+          }
+        },
+        "stop_requested": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The RFC 3339 timestamp when stopping the packet capture was requested. This field only applies to `full` packet captures."
           }
         }
       },
@@ -13581,21 +13888,177 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.magic_transit#PcapsListResultItemFilterV1": {
+      "type": "structure",
+      "members": {
+        "destination_address": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The destination IP address of the packet."
+          }
+        },
+        "destination_port": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The destination port of the packet."
+          }
+        },
+        "protocol": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The protocol number of the packet."
+          }
+        },
+        "source_address": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The source IP address of the packet."
+          }
+        },
+        "source_port": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The source port of the packet."
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#PcapsListResultItemStatus": {
+      "type": "enum",
+      "members": {
+        "UNKNOWN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unknown"
+          }
+        },
+        "SUCCESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "success"
+          }
+        },
+        "PENDING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pending"
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#PcapsListResultItemSystem": {
+      "type": "enum",
+      "members": {
+        "MAGIC_TRANSIT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "magic-transit"
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#PcapsListResultItemType": {
+      "type": "enum",
+      "members": {
+        "SIMPLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "simple"
+          }
+        },
+        "FULL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "full"
+          }
+        }
+      }
+    },
     "com.cloudflare.magic_transit#PcapsListResultItem": {
       "type": "structure",
       "members": {
-        "PCAP_object___id__filter_v1__offset_time__5_more__": {
-          "target": "smithy.api#Document",
+        "id": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "PCAP object { id, filter_v1, offset_time, 5 more }"
+            "smithy.api#documentation": "The ID for the packet capture."
           }
         },
-        "MagicVisibilityPCAPsPCAPsResponseFull_object___id__byte_limit__colo_name__10_more__": {
-          "target": "smithy.api#Document",
+        "filter_v1": {
+          "target": "com.cloudflare.magic_transit#PcapsListResultItemFilterV1",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "MagicVisibilityPCAPsPCAPsResponseFull object { id, byte_limit, colo_name, 10 more }"
+            "smithy.api#documentation": "The packet capture filter. When this field is empty, all packets are captured."
+          }
+        },
+        "offset_time": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The RFC 3339 offset timestamp from which to query backwards for packets. Must be within the last 24h. When this field is empty, defaults to time of request."
+          }
+        },
+        "status": {
+          "target": "com.cloudflare.magic_transit#PcapsListResultItemStatus",
+          "traits": {
+            "smithy.api#documentation": "The status of the packet capture request."
+          }
+        },
+        "submitted": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The RFC 3339 timestamp when the packet capture was created."
+          }
+        },
+        "system": {
+          "target": "com.cloudflare.magic_transit#PcapsListResultItemSystem",
+          "traits": {
+            "smithy.api#documentation": "The system used to collect packet captures."
+          }
+        },
+        "time_limit": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The packet capture duration in seconds."
+          }
+        },
+        "type": {
+          "target": "com.cloudflare.magic_transit#PcapsListResultItemType",
+          "traits": {
+            "smithy.api#documentation": "The type of packet capture. `Simple` captures sampled packets, and `full` captures entire payloads and non-sampled packets."
+          }
+        },
+        "byte_limit": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The maximum number of bytes to capture. This field only applies to `full` packet captures."
+          }
+        },
+        "colo_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the data center used for the packet capture. This can be a specific colo (ord02) or a multi-colo name (ORD). This field only applies to `full` packet captures."
+          }
+        },
+        "destination_conf": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The full URI for the bucket. This field only applies to `full` packet captures."
+          }
+        },
+        "error_message": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "An error message that describes why the packet capture failed. This field only applies to `full` packet captures."
+          }
+        },
+        "packets_captured": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The number of packets captured."
+          }
+        },
+        "stop_requested": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The RFC 3339 timestamp when stopping the packet capture was requested. This field only applies to `full` packet captures."
           }
         }
       }
@@ -17387,21 +17850,43 @@
         "smithy.api#idempotent": {}
       }
     },
+    "com.cloudflare.magic_transit#SitesAppConfigurationCreateRequestBodyPreferredWansList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
     "com.cloudflare.magic_transit#SitesAppConfigurationCreateRequestBody": {
       "type": "structure",
       "members": {
-        "AccountApp_object___account_app_id__breakout__preferred_wans__priority__": {
-          "target": "smithy.api#Document",
+        "account_app_id": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "AccountApp object { account_app_id, breakout, preferred_wans, priority }"
+            "smithy.api#documentation": "Magic account app ID."
           }
         },
-        "ManagedApp_object___managed_app_id__breakout__preferred_wans__priority__": {
-          "target": "smithy.api#Document",
+        "breakout": {
+          "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "ManagedApp object { managed_app_id, breakout, preferred_wans, priority }"
+            "smithy.api#documentation": "Whether to breakout traffic to the app's endpoints directly. Null preserves default behavior."
+          }
+        },
+        "preferred_wans": {
+          "target": "com.cloudflare.magic_transit#SitesAppConfigurationCreateRequestBodyPreferredWansList",
+          "traits": {
+            "smithy.api#documentation": "WAN interfaces to prefer over default WANs, highest-priority first. Can only be specified for breakout rules (breakout must be true)."
+          }
+        },
+        "priority": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Priority of traffic. 0 is default, anything greater is prioritized. (Currently only 0 and 1 are supported)"
+          }
+        },
+        "managed_app_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Managed app ID."
           }
         }
       }
@@ -17436,21 +17921,55 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.magic_transit#SitesAppConfigurationCreateResponsePreferredWansList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
     "com.cloudflare.magic_transit#SitesAppConfigurationCreateResponse": {
       "type": "structure",
       "members": {
-        "AccountApp_object___account_app_id__id__breakout__3_more__": {
-          "target": "smithy.api#Document",
+        "account_app_id": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "AccountApp object { account_app_id, id, breakout, 3 more }"
+            "smithy.api#documentation": "Magic account app ID."
           }
         },
-        "ManagedApp_object___managed_app_id__id__breakout__3_more__": {
-          "target": "smithy.api#Document",
+        "id": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "ManagedApp object { managed_app_id, id, breakout, 3 more }"
+            "smithy.api#documentation": "Identifier"
+          }
+        },
+        "breakout": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether to breakout traffic to the app's endpoints directly. Null preserves default behavior."
+          }
+        },
+        "preferred_wans": {
+          "target": "com.cloudflare.magic_transit#SitesAppConfigurationCreateResponsePreferredWansList",
+          "traits": {
+            "smithy.api#documentation": "WAN interfaces to prefer over default WANs, highest-priority first. Can only be specified for breakout rules (breakout must be true)."
+          }
+        },
+        "priority": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Priority of traffic. 0 is default, anything greater is prioritized. (Currently only 0 and 1 are supported)"
+          }
+        },
+        "site_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier"
+          }
+        },
+        "managed_app_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Managed app ID."
           }
         }
       },
@@ -17508,21 +18027,55 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.magic_transit#SitesAppConfigurationDeleteResponsePreferredWansList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
     "com.cloudflare.magic_transit#SitesAppConfigurationDeleteResponse": {
       "type": "structure",
       "members": {
-        "AccountApp_object___account_app_id__id__breakout__3_more__": {
-          "target": "smithy.api#Document",
+        "account_app_id": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "AccountApp object { account_app_id, id, breakout, 3 more }"
+            "smithy.api#documentation": "Magic account app ID."
           }
         },
-        "ManagedApp_object___managed_app_id__id__breakout__3_more__": {
-          "target": "smithy.api#Document",
+        "id": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "ManagedApp object { managed_app_id, id, breakout, 3 more }"
+            "smithy.api#documentation": "Identifier"
+          }
+        },
+        "breakout": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether to breakout traffic to the app's endpoints directly. Null preserves default behavior."
+          }
+        },
+        "preferred_wans": {
+          "target": "com.cloudflare.magic_transit#SitesAppConfigurationDeleteResponsePreferredWansList",
+          "traits": {
+            "smithy.api#documentation": "WAN interfaces to prefer over default WANs, highest-priority first. Can only be specified for breakout rules (breakout must be true)."
+          }
+        },
+        "priority": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Priority of traffic. 0 is default, anything greater is prioritized. (Currently only 0 and 1 are supported)"
+          }
+        },
+        "site_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier"
+          }
+        },
+        "managed_app_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Managed app ID."
           }
         }
       },
@@ -17617,21 +18170,55 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.magic_transit#SitesAppConfigurationEditResponsePreferredWansList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
     "com.cloudflare.magic_transit#SitesAppConfigurationEditResponse": {
       "type": "structure",
       "members": {
-        "AccountApp_object___account_app_id__id__breakout__3_more__": {
-          "target": "smithy.api#Document",
+        "account_app_id": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "AccountApp object { account_app_id, id, breakout, 3 more }"
+            "smithy.api#documentation": "Magic account app ID."
           }
         },
-        "ManagedApp_object___managed_app_id__id__breakout__3_more__": {
-          "target": "smithy.api#Document",
+        "id": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "ManagedApp object { managed_app_id, id, breakout, 3 more }"
+            "smithy.api#documentation": "Identifier"
+          }
+        },
+        "breakout": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether to breakout traffic to the app's endpoints directly. Null preserves default behavior."
+          }
+        },
+        "preferred_wans": {
+          "target": "com.cloudflare.magic_transit#SitesAppConfigurationEditResponsePreferredWansList",
+          "traits": {
+            "smithy.api#documentation": "WAN interfaces to prefer over default WANs, highest-priority first. Can only be specified for breakout rules (breakout must be true)."
+          }
+        },
+        "priority": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Priority of traffic. 0 is default, anything greater is prioritized. (Currently only 0 and 1 are supported)"
+          }
+        },
+        "site_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier"
+          }
+        },
+        "managed_app_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Managed app ID."
           }
         }
       },
@@ -17681,21 +18268,55 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.magic_transit#SitesAppConfigurationListResultItemPreferredWansList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
     "com.cloudflare.magic_transit#SitesAppConfigurationListResultItem": {
       "type": "structure",
       "members": {
-        "AccountApp_object___account_app_id__id__breakout__3_more__": {
-          "target": "smithy.api#Document",
+        "account_app_id": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "AccountApp object { account_app_id, id, breakout, 3 more }"
+            "smithy.api#documentation": "Magic account app ID."
           }
         },
-        "ManagedApp_object___managed_app_id__id__breakout__3_more__": {
-          "target": "smithy.api#Document",
+        "id": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "ManagedApp object { managed_app_id, id, breakout, 3 more }"
+            "smithy.api#documentation": "Identifier"
+          }
+        },
+        "breakout": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether to breakout traffic to the app's endpoints directly. Null preserves default behavior."
+          }
+        },
+        "preferred_wans": {
+          "target": "com.cloudflare.magic_transit#SitesAppConfigurationListResultItemPreferredWansList",
+          "traits": {
+            "smithy.api#documentation": "WAN interfaces to prefer over default WANs, highest-priority first. Can only be specified for breakout rules (breakout must be true)."
+          }
+        },
+        "priority": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Priority of traffic. 0 is default, anything greater is prioritized. (Currently only 0 and 1 are supported)"
+          }
+        },
+        "site_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier"
+          }
+        },
+        "managed_app_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Managed app ID."
           }
         }
       }
@@ -17807,21 +18428,55 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.magic_transit#SitesAppConfigurationUpdateResponsePreferredWansList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
     "com.cloudflare.magic_transit#SitesAppConfigurationUpdateResponse": {
       "type": "structure",
       "members": {
-        "AccountApp_object___account_app_id__id__breakout__3_more__": {
-          "target": "smithy.api#Document",
+        "account_app_id": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "AccountApp object { account_app_id, id, breakout, 3 more }"
+            "smithy.api#documentation": "Magic account app ID."
           }
         },
-        "ManagedApp_object___managed_app_id__id__breakout__3_more__": {
-          "target": "smithy.api#Document",
+        "id": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "ManagedApp object { managed_app_id, id, breakout, 3 more }"
+            "smithy.api#documentation": "Identifier"
+          }
+        },
+        "breakout": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether to breakout traffic to the app's endpoints directly. Null preserves default behavior."
+          }
+        },
+        "preferred_wans": {
+          "target": "com.cloudflare.magic_transit#SitesAppConfigurationUpdateResponsePreferredWansList",
+          "traits": {
+            "smithy.api#documentation": "WAN interfaces to prefer over default WANs, highest-priority first. Can only be specified for breakout rules (breakout must be true)."
+          }
+        },
+        "priority": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Priority of traffic. 0 is default, anything greater is prioritized. (Currently only 0 and 1 are supported)"
+          }
+        },
+        "site_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier"
+          }
+        },
+        "managed_app_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Managed app ID."
           }
         }
       },

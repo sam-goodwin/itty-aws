@@ -671,68 +671,117 @@
         }
       }
     },
-    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsGetResponseScriptPlacement": {
-      "type": "structure",
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsGetResponseScriptPlacementMode": {
+      "type": "enum",
       "members": {
-        "object___mode__last_analyzed_at__status__": {
-          "target": "smithy.api#Document",
+        "SMART": {
+          "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "object { mode, last_analyzed_at, status }"
-          }
-        },
-        "object___region__last_analyzed_at__status__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "object { region, last_analyzed_at, status }"
-          }
-        },
-        "object___hostname__last_analyzed_at__status__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "object { hostname, last_analyzed_at, status }"
-          }
-        },
-        "object___host__last_analyzed_at__status__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "object { host, last_analyzed_at, status }"
-          }
-        },
-        "object___mode__region__last_analyzed_at__status__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "object { mode, region, last_analyzed_at, status }"
-          }
-        },
-        "object___hostname__mode__last_analyzed_at__status__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "object { hostname, mode, last_analyzed_at, status }"
-          }
-        },
-        "object___host__mode__last_analyzed_at__status__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "object { host, mode, last_analyzed_at, status }"
-          }
-        },
-        "object___mode__target__last_analyzed_at__status__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "object { mode, target, last_analyzed_at, status }"
+            "smithy.api#enumValue": "smart"
           }
         }
       }
     },
-    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsGetResponseScriptPlacementMode": {
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsGetResponseScriptPlacementStatus": {
+      "type": "enum",
+      "members": {
+        "SUCCESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SUCCESS"
+          }
+        },
+        "UNSUPPORTED_APPLICATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "UNSUPPORTED_APPLICATION"
+          }
+        },
+        "INSUFFICIENT_INVOCATIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "INSUFFICIENT_INVOCATIONS"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsGetResponseScriptPlacementTargetItem": {
+      "type": "structure",
+      "members": {
+        "region": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Cloud region in format 'provider:region'."
+          }
+        },
+        "hostname": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "HTTP hostname for targeted placement."
+          }
+        },
+        "host": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "TCP host:port for targeted placement."
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsGetResponseScriptPlacementTargetList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsGetResponseScriptPlacementTargetItem"
+      }
+    },
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsGetResponseScriptPlacement": {
+      "type": "structure",
+      "members": {
+        "mode": {
+          "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsGetResponseScriptPlacementMode",
+          "traits": {
+            "smithy.api#documentation": "Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement)."
+          }
+        },
+        "last_analyzed_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement)."
+          }
+        },
+        "status": {
+          "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsGetResponseScriptPlacementStatus",
+          "traits": {
+            "smithy.api#documentation": "Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement)."
+          }
+        },
+        "region": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Cloud region for targeted placement in format 'provider:region'."
+          }
+        },
+        "hostname": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "HTTP hostname for targeted placement."
+          }
+        },
+        "host": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "TCP host and port for targeted placement."
+          }
+        },
+        "target": {
+          "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsGetResponseScriptPlacementTargetList",
+          "traits": {
+            "smithy.api#documentation": "Array of placement targets (currently limited to single target)."
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsGetResponseScriptPlacementMode2": {
       "type": "enum",
       "members": {
         "SMART": {
@@ -749,7 +798,7 @@
         }
       }
     },
-    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsGetResponseScriptPlacementStatus": {
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsGetResponseScriptPlacementStatus2": {
       "type": "enum",
       "members": {
         "SUCCESS": {
@@ -931,13 +980,13 @@
           }
         },
         "placement_mode": {
-          "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsGetResponseScriptPlacementMode",
+          "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsGetResponseScriptPlacementMode2",
           "traits": {
             "smithy.api#documentation": "Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host."
           }
         },
         "placement_status": {
-          "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsGetResponseScriptPlacementStatus",
+          "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsGetResponseScriptPlacementStatus2",
           "traits": {
             "smithy.api#documentation": "Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement)."
           }
@@ -1256,68 +1305,117 @@
         }
       }
     },
-    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsUpdateResponsePlacement": {
-      "type": "structure",
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsUpdateResponsePlacementMode": {
+      "type": "enum",
       "members": {
-        "object___mode__last_analyzed_at__status__": {
-          "target": "smithy.api#Document",
+        "SMART": {
+          "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "object { mode, last_analyzed_at, status }"
-          }
-        },
-        "object___region__last_analyzed_at__status__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "object { region, last_analyzed_at, status }"
-          }
-        },
-        "object___hostname__last_analyzed_at__status__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "object { hostname, last_analyzed_at, status }"
-          }
-        },
-        "object___host__last_analyzed_at__status__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "object { host, last_analyzed_at, status }"
-          }
-        },
-        "object___mode__region__last_analyzed_at__status__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "object { mode, region, last_analyzed_at, status }"
-          }
-        },
-        "object___hostname__mode__last_analyzed_at__status__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "object { hostname, mode, last_analyzed_at, status }"
-          }
-        },
-        "object___host__mode__last_analyzed_at__status__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "object { host, mode, last_analyzed_at, status }"
-          }
-        },
-        "object___mode__target__last_analyzed_at__status__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "object { mode, target, last_analyzed_at, status }"
+            "smithy.api#enumValue": "smart"
           }
         }
       }
     },
-    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsUpdateResponsePlacementMode": {
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsUpdateResponsePlacementStatus": {
+      "type": "enum",
+      "members": {
+        "SUCCESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SUCCESS"
+          }
+        },
+        "UNSUPPORTED_APPLICATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "UNSUPPORTED_APPLICATION"
+          }
+        },
+        "INSUFFICIENT_INVOCATIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "INSUFFICIENT_INVOCATIONS"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsUpdateResponsePlacementTargetItem": {
+      "type": "structure",
+      "members": {
+        "region": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Cloud region in format 'provider:region'."
+          }
+        },
+        "hostname": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "HTTP hostname for targeted placement."
+          }
+        },
+        "host": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "TCP host:port for targeted placement."
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsUpdateResponsePlacementTargetList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsUpdateResponsePlacementTargetItem"
+      }
+    },
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsUpdateResponsePlacement": {
+      "type": "structure",
+      "members": {
+        "mode": {
+          "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsUpdateResponsePlacementMode",
+          "traits": {
+            "smithy.api#documentation": "Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement)."
+          }
+        },
+        "last_analyzed_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement)."
+          }
+        },
+        "status": {
+          "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsUpdateResponsePlacementStatus",
+          "traits": {
+            "smithy.api#documentation": "Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement)."
+          }
+        },
+        "region": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Cloud region for targeted placement in format 'provider:region'."
+          }
+        },
+        "hostname": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "HTTP hostname for targeted placement."
+          }
+        },
+        "host": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "TCP host and port for targeted placement."
+          }
+        },
+        "target": {
+          "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsUpdateResponsePlacementTargetList",
+          "traits": {
+            "smithy.api#documentation": "Array of placement targets (currently limited to single target)."
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsUpdateResponsePlacementMode2": {
       "type": "enum",
       "members": {
         "SMART": {
@@ -1334,7 +1432,7 @@
         }
       }
     },
-    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsUpdateResponsePlacementStatus": {
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsUpdateResponsePlacementStatus2": {
       "type": "enum",
       "members": {
         "SUCCESS": {
@@ -1528,10 +1626,10 @@
           }
         },
         "placement_mode": {
-          "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsUpdateResponsePlacementMode"
+          "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsUpdateResponsePlacementMode2"
         },
         "placement_status": {
-          "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsUpdateResponsePlacementStatus"
+          "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsUpdateResponsePlacementStatus2"
         },
         "tag": {
           "target": "smithy.api#String",
@@ -1705,252 +1803,446 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsBindingsGetResultItemType": {
+      "type": "enum",
+      "members": {
+        "AI": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ai"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsBindingsGetResultItemOutboundParamsItem": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the parameter.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsBindingsGetResultItemOutboundParamsList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsBindingsGetResultItemOutboundParamsItem"
+      }
+    },
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsBindingsGetResultItemOutboundWorker": {
+      "type": "structure",
+      "members": {
+        "entrypoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Entrypoint to invoke on the outbound worker."
+          }
+        },
+        "environment": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Environment of the outbound worker."
+          }
+        },
+        "service": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the outbound worker."
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsBindingsGetResultItemOutbound": {
+      "type": "structure",
+      "members": {
+        "params": {
+          "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsBindingsGetResultItemOutboundParamsList",
+          "traits": {
+            "smithy.api#documentation": "Pass information from the Dispatch Worker to the Outbound Worker through the parameters."
+          }
+        },
+        "worker": {
+          "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsBindingsGetResultItemOutboundWorker",
+          "traits": {
+            "smithy.api#documentation": "Outbound worker."
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsBindingsGetResultItemSimple": {
+      "type": "structure",
+      "members": {
+        "limit": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The limit (requests per period).",
+            "smithy.api#required": {}
+          }
+        },
+        "period": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The period in seconds.",
+            "smithy.api#required": {}
+          }
+        },
+        "mitigation_timeout": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Duration in seconds to apply the mitigation action after the rate limit is exceeded. Valid values are 0 (disabled), 10, or multiples of 60 up to 86400. Must be greater than or equal to the period when non-zero."
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsBindingsGetResultItemJurisdiction": {
+      "type": "enum",
+      "members": {
+        "EU": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "eu"
+          }
+        },
+        "FEDRAMP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fedramp"
+          }
+        },
+        "FEDRAMP_HIGH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fedramp-high"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsBindingsGetResultItemAllowedDestinationAddressesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsBindingsGetResultItemAllowedSenderAddressesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsBindingsGetResultItemFormat": {
+      "type": "enum",
+      "members": {
+        "RAW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "raw"
+          }
+        },
+        "PKCS8": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pkcs8"
+          }
+        },
+        "SPKI": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "spki"
+          }
+        },
+        "JWK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "jwk"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsBindingsGetResultItemUsagesItem": {
+      "type": "enum",
+      "members": {
+        "ENCRYPT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "encrypt"
+          }
+        },
+        "DECRYPT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "decrypt"
+          }
+        },
+        "SIGN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sign"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsBindingsGetResultItemUsagesList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsBindingsGetResultItemUsagesItem"
+      }
+    },
     "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsBindingsGetResultItem": {
       "type": "structure",
       "members": {
-        "AI_object___name__type__": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "AI object { name, type }"
+            "smithy.api#documentation": "A JavaScript variable name for the binding."
           }
         },
-        "AISearch_object___instance_name__name__type__namespace__": {
-          "target": "smithy.api#Document",
+        "type": {
+          "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsBindingsGetResultItemType",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "AISearch object { instance_name, name, type, namespace }"
+            "smithy.api#documentation": "The kind of resource that the binding provides."
           }
         },
-        "AISearchNamespace_object___name__namespace__type__": {
-          "target": "smithy.api#Document",
+        "instance_name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "AISearchNamespace object { name, namespace, type }"
+            "smithy.api#documentation": "The user-chosen instance name. Must exist at deploy time. The worker can search, chat, update, and manage items/jobs on this instance."
           }
         },
-        "AnalyticsEngine_object___dataset__name__type__": {
-          "target": "smithy.api#Document",
+        "namespace": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "AnalyticsEngine object { dataset, name, type }"
+            "smithy.api#documentation": "The namespace the instance belongs to. Defaults to \"default\" if omitted. Customers who don't use namespaces can simply omit this field."
           }
         },
-        "Assets_object___name__type__": {
-          "target": "smithy.api#Document",
+        "dataset": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Assets object { name, type }"
+            "smithy.api#documentation": "The name of the dataset to bind to."
           }
         },
-        "Browser_object___name__type__": {
-          "target": "smithy.api#Document",
+        "database_id": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Browser object { name, type }"
+            "smithy.api#documentation": "Identifier of the D1 database to bind to."
           }
         },
-        "D1_object___database_id__name__type__id__": {
-          "target": "smithy.api#Document",
+        "id": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "D1 object { database_id, name, type, id }"
+            "smithy.api#documentation": "Identifier of the D1 database to bind to."
           }
         },
-        "DataBlob_object___name__part__type__": {
-          "target": "smithy.api#Document",
+        "part": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "DataBlob object { name, part, type }"
+            "smithy.api#documentation": "The name of the file containing the data content. Only accepted for `service worker syntax` Workers."
           }
         },
-        "DispatchNamespace_object___name__namespace__type__outbound__": {
-          "target": "smithy.api#Document",
+        "outbound": {
+          "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsBindingsGetResultItemOutbound",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "DispatchNamespace object { name, namespace, type, outbound }"
+            "smithy.api#documentation": "Outbound worker."
           }
         },
-        "DurableObjectNamespace_object___name__type__class_name__4_more__": {
-          "target": "smithy.api#Document",
+        "class_name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "DurableObjectNamespace object { name, type, class_name, 4 more }"
+            "smithy.api#documentation": "The exported class name of the Durable Object."
           }
         },
-        "Hyperdrive_object___id__name__type__": {
-          "target": "smithy.api#Document",
+        "dispatch_namespace": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Hyperdrive object { id, name, type }"
+            "smithy.api#documentation": "The dispatch namespace the Durable Object script belongs to."
           }
         },
-        "Inherit_object___name__type__old_name__version_id__": {
-          "target": "smithy.api#Document",
+        "environment": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Inherit object { name, type, old_name, version_id }"
+            "smithy.api#documentation": "The environment of the script_name to bind to."
           }
         },
-        "Images_object___name__type__": {
-          "target": "smithy.api#Document",
+        "namespace_id": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Images object { name, type }"
+            "smithy.api#documentation": "Namespace identifier tag."
           }
         },
-        "Json_object___json__name__type__": {
-          "target": "smithy.api#Document",
+        "script_name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Json object { json, name, type }"
+            "smithy.api#documentation": "The script where the Durable Object is defined, if it is external to this Worker."
           }
         },
-        "KVNamespace_object___name__namespace_id__type__": {
-          "target": "smithy.api#Document",
+        "old_name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "KVNamespace object { name, namespace_id, type }"
+            "smithy.api#documentation": "The old name of the inherited binding. If set, the binding will be renamed from `old_name` to `name` in the new version. If not set, the binding will keep the same name between versions."
           }
         },
-        "Media_object___name__type__": {
-          "target": "smithy.api#Document",
+        "version_id": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Media object { name, type }"
+            "smithy.api#documentation": "Identifier for the version to inherit the binding from, which can be the version ID or the literal \"latest\" to inherit from the latest version. Defaults to inheriting the binding from the latest version."
           }
         },
-        "MTLSCertificate_object___certificate_id__name__type__": {
+        "json": {
           "target": "smithy.api#Document",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "MTLSCertificate object { certificate_id, name, type }"
+            "smithy.api#documentation": "JSON data to use."
           }
         },
-        "PlainText_object___name__text__type__": {
-          "target": "smithy.api#Document",
+        "certificate_id": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "PlainText object { name, text, type }"
+            "smithy.api#documentation": "Identifier of the certificate to bind to."
           }
         },
-        "Pipelines_object___name__pipeline__type__": {
-          "target": "smithy.api#Document",
+        "text": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Pipelines object { name, pipeline, type }"
+            "smithy.api#documentation": "The text value to use."
           }
         },
-        "Queue_object___name__queue_name__type__": {
-          "target": "smithy.api#Document",
+        "pipeline": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Queue object { name, queue_name, type }"
+            "smithy.api#documentation": "Name of the Pipeline to bind to."
           }
         },
-        "Ratelimit_object___name__namespace_id__simple__type__": {
-          "target": "smithy.api#Document",
+        "queue_name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Ratelimit object { name, namespace_id, simple, type }"
+            "smithy.api#documentation": "Name of the Queue to bind to."
           }
         },
-        "R2Bucket_object___bucket_name__name__type__jurisdiction__": {
-          "target": "smithy.api#Document",
+        "simple": {
+          "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsBindingsGetResultItemSimple",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "R2Bucket object { bucket_name, name, type, jurisdiction }"
+            "smithy.api#documentation": "The rate limit configuration."
           }
         },
-        "SecretText_object___name__text__type__": {
-          "target": "smithy.api#Document",
+        "bucket_name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "SecretText object { name, text, type }"
+            "smithy.api#documentation": "R2 bucket to bind to."
           }
         },
-        "SendEmail_object___name__type__allowed_destination_addresses__2_more__": {
-          "target": "smithy.api#Document",
+        "jurisdiction": {
+          "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsBindingsGetResultItemJurisdiction",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "SendEmail object { name, type, allowed_destination_addresses, 2 more }"
+            "smithy.api#documentation": "The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket."
           }
         },
-        "Service_object___name__service__type__2_more__": {
-          "target": "smithy.api#Document",
+        "allowed_destination_addresses": {
+          "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsBindingsGetResultItemAllowedDestinationAddressesList",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Service object { name, service, type, 2 more }"
+            "smithy.api#documentation": "List of allowed destination addresses."
           }
         },
-        "TextBlob_object___name__part__type__": {
-          "target": "smithy.api#Document",
+        "allowed_sender_addresses": {
+          "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsBindingsGetResultItemAllowedSenderAddressesList",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "TextBlob object { name, part, type }"
+            "smithy.api#documentation": "List of allowed sender addresses."
           }
         },
-        "Vectorize_object___index_name__name__type__": {
-          "target": "smithy.api#Document",
+        "destination_address": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Vectorize object { index_name, name, type }"
+            "smithy.api#documentation": "Destination address for the email."
           }
         },
-        "VersionMetadata_object___name__type__": {
-          "target": "smithy.api#Document",
+        "service": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "VersionMetadata object { name, type }"
+            "smithy.api#documentation": "Name of Worker to bind to."
           }
         },
-        "SecretsStoreSecret_object___name__secret_name__store_id__type__": {
-          "target": "smithy.api#Document",
+        "entrypoint": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "SecretsStoreSecret object { name, secret_name, store_id, type }"
+            "smithy.api#documentation": "Entrypoint to invoke on the target Worker."
           }
         },
-        "Flagship_object___app_id__name__type__": {
-          "target": "smithy.api#Document",
+        "index_name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Flagship object { app_id, name, type }"
+            "smithy.api#documentation": "Name of the Vectorize index to bind to."
           }
         },
-        "SecretKey_object___algorithm__format__name__4_more__": {
-          "target": "smithy.api#Document",
+        "secret_name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "SecretKey object { algorithm, format, name, 4 more }"
+            "smithy.api#documentation": "Name of the secret in the store."
           }
         },
-        "Workflow_object___name__type__workflow_name__2_more__": {
-          "target": "smithy.api#Document",
+        "store_id": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Workflow object { name, type, workflow_name, 2 more }"
+            "smithy.api#documentation": "ID of the store containing the secret."
           }
         },
-        "WasmModule_object___name__part__type__": {
-          "target": "smithy.api#Document",
+        "app_id": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "WasmModule object { name, part, type }"
+            "smithy.api#documentation": "ID of the Flagship app to bind to for feature flag evaluation."
           }
         },
-        "VPCService_object___name__service_id__type__": {
+        "algorithm": {
           "target": "smithy.api#Document",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "VPCService object { name, service_id, type }"
+            "smithy.api#documentation": "Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm)."
           }
         },
-        "VPCNetwork_object___name__type__network_id__tunnel_id__": {
+        "format": {
+          "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsBindingsGetResultItemFormat",
+          "traits": {
+            "smithy.api#documentation": "Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format)."
+          }
+        },
+        "usages": {
+          "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsBindingsGetResultItemUsagesList",
+          "traits": {
+            "smithy.api#documentation": "Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages)."
+          }
+        },
+        "key_base64": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Base64-encoded key data. Required if `format` is \"raw\", \"pkcs8\", or \"spki\"."
+          }
+        },
+        "key_jwk": {
           "target": "smithy.api#Document",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "VPCNetwork object { name, type, network_id, tunnel_id }"
+            "smithy.api#documentation": "Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is \"jwk\"."
+          }
+        },
+        "workflow_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the Workflow to bind to."
+          }
+        },
+        "service_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier of the VPC service to bind to."
+          }
+        },
+        "network_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier of the network to bind to. Only \"cf1:network\" is currently supported. Mutually exclusive with tunnel_id."
+          }
+        },
+        "tunnel_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "UUID of the Cloudflare Tunnel to bind to. Mutually exclusive with network_id."
           }
         }
       }
@@ -2278,68 +2570,117 @@
         }
       }
     },
-    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsContentUpdateResponsePlacement": {
-      "type": "structure",
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsContentUpdateResponsePlacementMode": {
+      "type": "enum",
       "members": {
-        "object___mode__last_analyzed_at__status__": {
-          "target": "smithy.api#Document",
+        "SMART": {
+          "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "object { mode, last_analyzed_at, status }"
-          }
-        },
-        "object___region__last_analyzed_at__status__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "object { region, last_analyzed_at, status }"
-          }
-        },
-        "object___hostname__last_analyzed_at__status__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "object { hostname, last_analyzed_at, status }"
-          }
-        },
-        "object___host__last_analyzed_at__status__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "object { host, last_analyzed_at, status }"
-          }
-        },
-        "object___mode__region__last_analyzed_at__status__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "object { mode, region, last_analyzed_at, status }"
-          }
-        },
-        "object___hostname__mode__last_analyzed_at__status__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "object { hostname, mode, last_analyzed_at, status }"
-          }
-        },
-        "object___host__mode__last_analyzed_at__status__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "object { host, mode, last_analyzed_at, status }"
-          }
-        },
-        "object___mode__target__last_analyzed_at__status__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "object { mode, target, last_analyzed_at, status }"
+            "smithy.api#enumValue": "smart"
           }
         }
       }
     },
-    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsContentUpdateResponsePlacementMode": {
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsContentUpdateResponsePlacementStatus": {
+      "type": "enum",
+      "members": {
+        "SUCCESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SUCCESS"
+          }
+        },
+        "UNSUPPORTED_APPLICATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "UNSUPPORTED_APPLICATION"
+          }
+        },
+        "INSUFFICIENT_INVOCATIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "INSUFFICIENT_INVOCATIONS"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsContentUpdateResponsePlacementTargetItem": {
+      "type": "structure",
+      "members": {
+        "region": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Cloud region in format 'provider:region'."
+          }
+        },
+        "hostname": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "HTTP hostname for targeted placement."
+          }
+        },
+        "host": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "TCP host:port for targeted placement."
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsContentUpdateResponsePlacementTargetList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsContentUpdateResponsePlacementTargetItem"
+      }
+    },
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsContentUpdateResponsePlacement": {
+      "type": "structure",
+      "members": {
+        "mode": {
+          "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsContentUpdateResponsePlacementMode",
+          "traits": {
+            "smithy.api#documentation": "Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement)."
+          }
+        },
+        "last_analyzed_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement)."
+          }
+        },
+        "status": {
+          "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsContentUpdateResponsePlacementStatus",
+          "traits": {
+            "smithy.api#documentation": "Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement)."
+          }
+        },
+        "region": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Cloud region for targeted placement in format 'provider:region'."
+          }
+        },
+        "hostname": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "HTTP hostname for targeted placement."
+          }
+        },
+        "host": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "TCP host and port for targeted placement."
+          }
+        },
+        "target": {
+          "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsContentUpdateResponsePlacementTargetList",
+          "traits": {
+            "smithy.api#documentation": "Array of placement targets (currently limited to single target)."
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsContentUpdateResponsePlacementMode2": {
       "type": "enum",
       "members": {
         "SMART": {
@@ -2356,7 +2697,7 @@
         }
       }
     },
-    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsContentUpdateResponsePlacementStatus": {
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsContentUpdateResponsePlacementStatus2": {
       "type": "enum",
       "members": {
         "SUCCESS": {
@@ -2538,13 +2879,13 @@
           }
         },
         "placement_mode": {
-          "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsContentUpdateResponsePlacementMode",
+          "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsContentUpdateResponsePlacementMode2",
           "traits": {
             "smithy.api#documentation": "Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host."
           }
         },
         "placement_status": {
-          "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsContentUpdateResponsePlacementStatus",
+          "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsContentUpdateResponsePlacementStatus2",
           "traits": {
             "smithy.api#documentation": "Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement)."
           }
@@ -2827,21 +3168,124 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSecretsGetResponseType": {
+      "type": "enum",
+      "members": {
+        "SECRET_TEXT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "secret_text"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSecretsGetResponseFormat": {
+      "type": "enum",
+      "members": {
+        "RAW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "raw"
+          }
+        },
+        "PKCS8": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pkcs8"
+          }
+        },
+        "SPKI": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "spki"
+          }
+        },
+        "JWK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "jwk"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSecretsGetResponseUsagesItem": {
+      "type": "enum",
+      "members": {
+        "ENCRYPT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "encrypt"
+          }
+        },
+        "DECRYPT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "decrypt"
+          }
+        },
+        "SIGN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sign"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSecretsGetResponseUsagesList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSecretsGetResponseUsagesItem"
+      }
+    },
     "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSecretsGetResponse": {
       "type": "structure",
       "members": {
-        "SecretText_object___name__text__type__": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "SecretText object { name, text, type }"
+            "smithy.api#documentation": "A JavaScript variable name for the binding."
           }
         },
-        "SecretKey_object___algorithm__format__name__4_more__": {
+        "text": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The secret value to use."
+          }
+        },
+        "type": {
+          "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSecretsGetResponseType",
+          "traits": {
+            "smithy.api#documentation": "The kind of resource that the binding provides."
+          }
+        },
+        "algorithm": {
           "target": "smithy.api#Document",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "SecretKey object { algorithm, format, name, 4 more }"
+            "smithy.api#documentation": "Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm)."
+          }
+        },
+        "format": {
+          "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSecretsGetResponseFormat",
+          "traits": {
+            "smithy.api#documentation": "Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format)."
+          }
+        },
+        "usages": {
+          "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSecretsGetResponseUsagesList",
+          "traits": {
+            "smithy.api#documentation": "Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages)."
+          }
+        },
+        "key_base64": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Base64-encoded key data. Required if `format` is \"raw\", \"pkcs8\", or \"spki\"."
+          }
+        },
+        "key_jwk": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is \"jwk\"."
           }
         }
       },
@@ -2900,21 +3344,124 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSecretsListResultItemType": {
+      "type": "enum",
+      "members": {
+        "SECRET_TEXT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "secret_text"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSecretsListResultItemFormat": {
+      "type": "enum",
+      "members": {
+        "RAW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "raw"
+          }
+        },
+        "PKCS8": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pkcs8"
+          }
+        },
+        "SPKI": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "spki"
+          }
+        },
+        "JWK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "jwk"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSecretsListResultItemUsagesItem": {
+      "type": "enum",
+      "members": {
+        "ENCRYPT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "encrypt"
+          }
+        },
+        "DECRYPT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "decrypt"
+          }
+        },
+        "SIGN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sign"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSecretsListResultItemUsagesList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSecretsListResultItemUsagesItem"
+      }
+    },
     "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSecretsListResultItem": {
       "type": "structure",
       "members": {
-        "SecretText_object___name__text__type__": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "SecretText object { name, text, type }"
+            "smithy.api#documentation": "A JavaScript variable name for the binding."
           }
         },
-        "SecretKey_object___algorithm__format__name__4_more__": {
+        "text": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The secret value to use."
+          }
+        },
+        "type": {
+          "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSecretsListResultItemType",
+          "traits": {
+            "smithy.api#documentation": "The kind of resource that the binding provides."
+          }
+        },
+        "algorithm": {
           "target": "smithy.api#Document",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "SecretKey object { algorithm, format, name, 4 more }"
+            "smithy.api#documentation": "Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm)."
+          }
+        },
+        "format": {
+          "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSecretsListResultItemFormat",
+          "traits": {
+            "smithy.api#documentation": "Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format)."
+          }
+        },
+        "usages": {
+          "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSecretsListResultItemUsagesList",
+          "traits": {
+            "smithy.api#documentation": "Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages)."
+          }
+        },
+        "key_base64": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Base64-encoded key data. Required if `format` is \"raw\", \"pkcs8\", or \"spki\"."
+          }
+        },
+        "key_jwk": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is \"jwk\"."
           }
         }
       }
@@ -2958,21 +3505,124 @@
         "smithy.api#readonly": {}
       }
     },
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSecretsUpdateRequestBodyType": {
+      "type": "enum",
+      "members": {
+        "SECRET_TEXT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "secret_text"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSecretsUpdateRequestBodyFormat": {
+      "type": "enum",
+      "members": {
+        "RAW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "raw"
+          }
+        },
+        "PKCS8": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pkcs8"
+          }
+        },
+        "SPKI": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "spki"
+          }
+        },
+        "JWK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "jwk"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSecretsUpdateRequestBodyUsagesItem": {
+      "type": "enum",
+      "members": {
+        "ENCRYPT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "encrypt"
+          }
+        },
+        "DECRYPT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "decrypt"
+          }
+        },
+        "SIGN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sign"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSecretsUpdateRequestBodyUsagesList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSecretsUpdateRequestBodyUsagesItem"
+      }
+    },
     "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSecretsUpdateRequestBody": {
       "type": "structure",
       "members": {
-        "SecretText_object___name__text__type__": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "SecretText object { name, text, type }"
+            "smithy.api#documentation": "A JavaScript variable name for the binding."
           }
         },
-        "SecretKey_object___algorithm__format__name__4_more__": {
+        "text": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The secret value to use."
+          }
+        },
+        "type": {
+          "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSecretsUpdateRequestBodyType",
+          "traits": {
+            "smithy.api#documentation": "The kind of resource that the binding provides."
+          }
+        },
+        "algorithm": {
           "target": "smithy.api#Document",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "SecretKey object { algorithm, format, name, 4 more }"
+            "smithy.api#documentation": "Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm)."
+          }
+        },
+        "format": {
+          "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSecretsUpdateRequestBodyFormat",
+          "traits": {
+            "smithy.api#documentation": "Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format)."
+          }
+        },
+        "usages": {
+          "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSecretsUpdateRequestBodyUsagesList",
+          "traits": {
+            "smithy.api#documentation": "Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages)."
+          }
+        },
+        "key_base64": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Base64-encoded key data. Required if `format` is \"raw\", \"pkcs8\", or \"spki\"."
+          }
+        },
+        "key_jwk": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is \"jwk\"."
           }
         }
       }
@@ -3016,21 +3666,124 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSecretsUpdateResponseType": {
+      "type": "enum",
+      "members": {
+        "SECRET_TEXT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "secret_text"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSecretsUpdateResponseFormat": {
+      "type": "enum",
+      "members": {
+        "RAW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "raw"
+          }
+        },
+        "PKCS8": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pkcs8"
+          }
+        },
+        "SPKI": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "spki"
+          }
+        },
+        "JWK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "jwk"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSecretsUpdateResponseUsagesItem": {
+      "type": "enum",
+      "members": {
+        "ENCRYPT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "encrypt"
+          }
+        },
+        "DECRYPT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "decrypt"
+          }
+        },
+        "SIGN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sign"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSecretsUpdateResponseUsagesList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSecretsUpdateResponseUsagesItem"
+      }
+    },
     "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSecretsUpdateResponse": {
       "type": "structure",
       "members": {
-        "SecretText_object___name__text__type__": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "SecretText object { name, text, type }"
+            "smithy.api#documentation": "A JavaScript variable name for the binding."
           }
         },
-        "SecretKey_object___algorithm__format__name__4_more__": {
+        "text": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The secret value to use."
+          }
+        },
+        "type": {
+          "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSecretsUpdateResponseType",
+          "traits": {
+            "smithy.api#documentation": "The kind of resource that the binding provides."
+          }
+        },
+        "algorithm": {
           "target": "smithy.api#Document",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "SecretKey object { algorithm, format, name, 4 more }"
+            "smithy.api#documentation": "Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm)."
+          }
+        },
+        "format": {
+          "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSecretsUpdateResponseFormat",
+          "traits": {
+            "smithy.api#documentation": "Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format)."
+          }
+        },
+        "usages": {
+          "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSecretsUpdateResponseUsagesList",
+          "traits": {
+            "smithy.api#documentation": "Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages)."
+          }
+        },
+        "key_base64": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Base64-encoded key data. Required if `format` is \"raw\", \"pkcs8\", or \"spki\"."
+          }
+        },
+        "key_jwk": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is \"jwk\"."
           }
         }
       },
@@ -3089,252 +3842,446 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsEditResponseBindingsItemType": {
+      "type": "enum",
+      "members": {
+        "AI": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ai"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsEditResponseBindingsItemOutboundParamsItem": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the parameter.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsEditResponseBindingsItemOutboundParamsList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsEditResponseBindingsItemOutboundParamsItem"
+      }
+    },
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsEditResponseBindingsItemOutboundWorker": {
+      "type": "structure",
+      "members": {
+        "entrypoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Entrypoint to invoke on the outbound worker."
+          }
+        },
+        "environment": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Environment of the outbound worker."
+          }
+        },
+        "service": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the outbound worker."
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsEditResponseBindingsItemOutbound": {
+      "type": "structure",
+      "members": {
+        "params": {
+          "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsEditResponseBindingsItemOutboundParamsList",
+          "traits": {
+            "smithy.api#documentation": "Pass information from the Dispatch Worker to the Outbound Worker through the parameters."
+          }
+        },
+        "worker": {
+          "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsEditResponseBindingsItemOutboundWorker",
+          "traits": {
+            "smithy.api#documentation": "Outbound worker."
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsEditResponseBindingsItemSimple": {
+      "type": "structure",
+      "members": {
+        "limit": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The limit (requests per period).",
+            "smithy.api#required": {}
+          }
+        },
+        "period": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The period in seconds.",
+            "smithy.api#required": {}
+          }
+        },
+        "mitigation_timeout": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Duration in seconds to apply the mitigation action after the rate limit is exceeded. Valid values are 0 (disabled), 10, or multiples of 60 up to 86400. Must be greater than or equal to the period when non-zero."
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsEditResponseBindingsItemJurisdiction": {
+      "type": "enum",
+      "members": {
+        "EU": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "eu"
+          }
+        },
+        "FEDRAMP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fedramp"
+          }
+        },
+        "FEDRAMP_HIGH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fedramp-high"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsEditResponseBindingsItemAllowedDestinationAddressesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsEditResponseBindingsItemAllowedSenderAddressesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsEditResponseBindingsItemFormat": {
+      "type": "enum",
+      "members": {
+        "RAW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "raw"
+          }
+        },
+        "PKCS8": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pkcs8"
+          }
+        },
+        "SPKI": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "spki"
+          }
+        },
+        "JWK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "jwk"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsEditResponseBindingsItemUsagesItem": {
+      "type": "enum",
+      "members": {
+        "ENCRYPT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "encrypt"
+          }
+        },
+        "DECRYPT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "decrypt"
+          }
+        },
+        "SIGN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sign"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsEditResponseBindingsItemUsagesList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsEditResponseBindingsItemUsagesItem"
+      }
+    },
     "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsEditResponseBindingsItem": {
       "type": "structure",
       "members": {
-        "AI_object___name__type__": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "AI object { name, type }"
+            "smithy.api#documentation": "A JavaScript variable name for the binding."
           }
         },
-        "AISearch_object___instance_name__name__type__namespace__": {
-          "target": "smithy.api#Document",
+        "type": {
+          "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsEditResponseBindingsItemType",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "AISearch object { instance_name, name, type, namespace }"
+            "smithy.api#documentation": "The kind of resource that the binding provides."
           }
         },
-        "AISearchNamespace_object___name__namespace__type__": {
-          "target": "smithy.api#Document",
+        "instance_name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "AISearchNamespace object { name, namespace, type }"
+            "smithy.api#documentation": "The user-chosen instance name. Must exist at deploy time. The worker can search, chat, update, and manage items/jobs on this instance."
           }
         },
-        "AnalyticsEngine_object___dataset__name__type__": {
-          "target": "smithy.api#Document",
+        "namespace": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "AnalyticsEngine object { dataset, name, type }"
+            "smithy.api#documentation": "The namespace the instance belongs to. Defaults to \"default\" if omitted. Customers who don't use namespaces can simply omit this field."
           }
         },
-        "Assets_object___name__type__": {
-          "target": "smithy.api#Document",
+        "dataset": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Assets object { name, type }"
+            "smithy.api#documentation": "The name of the dataset to bind to."
           }
         },
-        "Browser_object___name__type__": {
-          "target": "smithy.api#Document",
+        "database_id": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Browser object { name, type }"
+            "smithy.api#documentation": "Identifier of the D1 database to bind to."
           }
         },
-        "D1_object___database_id__name__type__id__": {
-          "target": "smithy.api#Document",
+        "id": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "D1 object { database_id, name, type, id }"
+            "smithy.api#documentation": "Identifier of the D1 database to bind to."
           }
         },
-        "DataBlob_object___name__part__type__": {
-          "target": "smithy.api#Document",
+        "part": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "DataBlob object { name, part, type }"
+            "smithy.api#documentation": "The name of the file containing the data content. Only accepted for `service worker syntax` Workers."
           }
         },
-        "DispatchNamespace_object___name__namespace__type__outbound__": {
-          "target": "smithy.api#Document",
+        "outbound": {
+          "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsEditResponseBindingsItemOutbound",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "DispatchNamespace object { name, namespace, type, outbound }"
+            "smithy.api#documentation": "Outbound worker."
           }
         },
-        "DurableObjectNamespace_object___name__type__class_name__4_more__": {
-          "target": "smithy.api#Document",
+        "class_name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "DurableObjectNamespace object { name, type, class_name, 4 more }"
+            "smithy.api#documentation": "The exported class name of the Durable Object."
           }
         },
-        "Hyperdrive_object___id__name__type__": {
-          "target": "smithy.api#Document",
+        "dispatch_namespace": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Hyperdrive object { id, name, type }"
+            "smithy.api#documentation": "The dispatch namespace the Durable Object script belongs to."
           }
         },
-        "Inherit_object___name__type__old_name__version_id__": {
-          "target": "smithy.api#Document",
+        "environment": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Inherit object { name, type, old_name, version_id }"
+            "smithy.api#documentation": "The environment of the script_name to bind to."
           }
         },
-        "Images_object___name__type__": {
-          "target": "smithy.api#Document",
+        "namespace_id": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Images object { name, type }"
+            "smithy.api#documentation": "Namespace identifier tag."
           }
         },
-        "Json_object___json__name__type__": {
-          "target": "smithy.api#Document",
+        "script_name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Json object { json, name, type }"
+            "smithy.api#documentation": "The script where the Durable Object is defined, if it is external to this Worker."
           }
         },
-        "KVNamespace_object___name__namespace_id__type__": {
-          "target": "smithy.api#Document",
+        "old_name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "KVNamespace object { name, namespace_id, type }"
+            "smithy.api#documentation": "The old name of the inherited binding. If set, the binding will be renamed from `old_name` to `name` in the new version. If not set, the binding will keep the same name between versions."
           }
         },
-        "Media_object___name__type__": {
-          "target": "smithy.api#Document",
+        "version_id": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Media object { name, type }"
+            "smithy.api#documentation": "Identifier for the version to inherit the binding from, which can be the version ID or the literal \"latest\" to inherit from the latest version. Defaults to inheriting the binding from the latest version."
           }
         },
-        "MTLSCertificate_object___certificate_id__name__type__": {
+        "json": {
           "target": "smithy.api#Document",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "MTLSCertificate object { certificate_id, name, type }"
+            "smithy.api#documentation": "JSON data to use."
           }
         },
-        "PlainText_object___name__text__type__": {
-          "target": "smithy.api#Document",
+        "certificate_id": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "PlainText object { name, text, type }"
+            "smithy.api#documentation": "Identifier of the certificate to bind to."
           }
         },
-        "Pipelines_object___name__pipeline__type__": {
-          "target": "smithy.api#Document",
+        "text": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Pipelines object { name, pipeline, type }"
+            "smithy.api#documentation": "The text value to use."
           }
         },
-        "Queue_object___name__queue_name__type__": {
-          "target": "smithy.api#Document",
+        "pipeline": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Queue object { name, queue_name, type }"
+            "smithy.api#documentation": "Name of the Pipeline to bind to."
           }
         },
-        "Ratelimit_object___name__namespace_id__simple__type__": {
-          "target": "smithy.api#Document",
+        "queue_name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Ratelimit object { name, namespace_id, simple, type }"
+            "smithy.api#documentation": "Name of the Queue to bind to."
           }
         },
-        "R2Bucket_object___bucket_name__name__type__jurisdiction__": {
-          "target": "smithy.api#Document",
+        "simple": {
+          "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsEditResponseBindingsItemSimple",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "R2Bucket object { bucket_name, name, type, jurisdiction }"
+            "smithy.api#documentation": "The rate limit configuration."
           }
         },
-        "SecretText_object___name__text__type__": {
-          "target": "smithy.api#Document",
+        "bucket_name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "SecretText object { name, text, type }"
+            "smithy.api#documentation": "R2 bucket to bind to."
           }
         },
-        "SendEmail_object___name__type__allowed_destination_addresses__2_more__": {
-          "target": "smithy.api#Document",
+        "jurisdiction": {
+          "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsEditResponseBindingsItemJurisdiction",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "SendEmail object { name, type, allowed_destination_addresses, 2 more }"
+            "smithy.api#documentation": "The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket."
           }
         },
-        "Service_object___name__service__type__2_more__": {
-          "target": "smithy.api#Document",
+        "allowed_destination_addresses": {
+          "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsEditResponseBindingsItemAllowedDestinationAddressesList",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Service object { name, service, type, 2 more }"
+            "smithy.api#documentation": "List of allowed destination addresses."
           }
         },
-        "TextBlob_object___name__part__type__": {
-          "target": "smithy.api#Document",
+        "allowed_sender_addresses": {
+          "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsEditResponseBindingsItemAllowedSenderAddressesList",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "TextBlob object { name, part, type }"
+            "smithy.api#documentation": "List of allowed sender addresses."
           }
         },
-        "Vectorize_object___index_name__name__type__": {
-          "target": "smithy.api#Document",
+        "destination_address": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Vectorize object { index_name, name, type }"
+            "smithy.api#documentation": "Destination address for the email."
           }
         },
-        "VersionMetadata_object___name__type__": {
-          "target": "smithy.api#Document",
+        "service": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "VersionMetadata object { name, type }"
+            "smithy.api#documentation": "Name of Worker to bind to."
           }
         },
-        "SecretsStoreSecret_object___name__secret_name__store_id__type__": {
-          "target": "smithy.api#Document",
+        "entrypoint": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "SecretsStoreSecret object { name, secret_name, store_id, type }"
+            "smithy.api#documentation": "Entrypoint to invoke on the target Worker."
           }
         },
-        "Flagship_object___app_id__name__type__": {
-          "target": "smithy.api#Document",
+        "index_name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Flagship object { app_id, name, type }"
+            "smithy.api#documentation": "Name of the Vectorize index to bind to."
           }
         },
-        "SecretKey_object___algorithm__format__name__4_more__": {
-          "target": "smithy.api#Document",
+        "secret_name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "SecretKey object { algorithm, format, name, 4 more }"
+            "smithy.api#documentation": "Name of the secret in the store."
           }
         },
-        "Workflow_object___name__type__workflow_name__2_more__": {
-          "target": "smithy.api#Document",
+        "store_id": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Workflow object { name, type, workflow_name, 2 more }"
+            "smithy.api#documentation": "ID of the store containing the secret."
           }
         },
-        "WasmModule_object___name__part__type__": {
-          "target": "smithy.api#Document",
+        "app_id": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "WasmModule object { name, part, type }"
+            "smithy.api#documentation": "ID of the Flagship app to bind to for feature flag evaluation."
           }
         },
-        "VPCService_object___name__service_id__type__": {
+        "algorithm": {
           "target": "smithy.api#Document",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "VPCService object { name, service_id, type }"
+            "smithy.api#documentation": "Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm)."
           }
         },
-        "VPCNetwork_object___name__type__network_id__tunnel_id__": {
+        "format": {
+          "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsEditResponseBindingsItemFormat",
+          "traits": {
+            "smithy.api#documentation": "Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format)."
+          }
+        },
+        "usages": {
+          "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsEditResponseBindingsItemUsagesList",
+          "traits": {
+            "smithy.api#documentation": "Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages)."
+          }
+        },
+        "key_base64": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Base64-encoded key data. Required if `format` is \"raw\", \"pkcs8\", or \"spki\"."
+          }
+        },
+        "key_jwk": {
           "target": "smithy.api#Document",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "VPCNetwork object { name, type, network_id, tunnel_id }"
+            "smithy.api#documentation": "Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is \"jwk\"."
+          }
+        },
+        "workflow_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the Workflow to bind to."
+          }
+        },
+        "service_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier of the VPC service to bind to."
+          }
+        },
+        "network_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier of the network to bind to. Only \"cf1:network\" is currently supported. Mutually exclusive with tunnel_id."
+          }
+        },
+        "tunnel_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "UUID of the Cloudflare Tunnel to bind to. Mutually exclusive with network_id."
           }
         }
       }
@@ -3395,22 +4342,206 @@
         }
       }
     },
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsEditResponseMigrationsDeletedClassesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsEditResponseMigrationsNewClassesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsEditResponseMigrationsNewSqliteClassesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsEditResponseMigrationsRenamedClassesItem": {
+      "type": "structure",
+      "members": {
+        "from": {
+          "target": "smithy.api#String"
+        },
+        "to": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsEditResponseMigrationsRenamedClassesList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsEditResponseMigrationsRenamedClassesItem"
+      }
+    },
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsEditResponseMigrationsTransferredClassesItem": {
+      "type": "structure",
+      "members": {
+        "from": {
+          "target": "smithy.api#String"
+        },
+        "from_script": {
+          "target": "smithy.api#String"
+        },
+        "to": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsEditResponseMigrationsTransferredClassesList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsEditResponseMigrationsTransferredClassesItem"
+      }
+    },
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsEditResponseMigrationsStepsItemDeletedClassesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsEditResponseMigrationsStepsItemNewClassesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsEditResponseMigrationsStepsItemNewSqliteClassesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsEditResponseMigrationsStepsItemRenamedClassesItem": {
+      "type": "structure",
+      "members": {
+        "from": {
+          "target": "smithy.api#String"
+        },
+        "to": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsEditResponseMigrationsStepsItemRenamedClassesList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsEditResponseMigrationsStepsItemRenamedClassesItem"
+      }
+    },
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsEditResponseMigrationsStepsItemTransferredClassesItem": {
+      "type": "structure",
+      "members": {
+        "from": {
+          "target": "smithy.api#String"
+        },
+        "from_script": {
+          "target": "smithy.api#String"
+        },
+        "to": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsEditResponseMigrationsStepsItemTransferredClassesList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsEditResponseMigrationsStepsItemTransferredClassesItem"
+      }
+    },
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsEditResponseMigrationsStepsItem": {
+      "type": "structure",
+      "members": {
+        "deleted_classes": {
+          "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsEditResponseMigrationsStepsItemDeletedClassesList",
+          "traits": {
+            "smithy.api#documentation": "A list of classes to delete Durable Object namespaces from."
+          }
+        },
+        "new_classes": {
+          "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsEditResponseMigrationsStepsItemNewClassesList",
+          "traits": {
+            "smithy.api#documentation": "A list of classes to create Durable Object namespaces from."
+          }
+        },
+        "new_sqlite_classes": {
+          "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsEditResponseMigrationsStepsItemNewSqliteClassesList",
+          "traits": {
+            "smithy.api#documentation": "A list of classes to create Durable Object namespaces with SQLite from."
+          }
+        },
+        "renamed_classes": {
+          "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsEditResponseMigrationsStepsItemRenamedClassesList",
+          "traits": {
+            "smithy.api#documentation": "A list of classes with Durable Object namespaces that were renamed."
+          }
+        },
+        "transferred_classes": {
+          "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsEditResponseMigrationsStepsItemTransferredClassesList",
+          "traits": {
+            "smithy.api#documentation": "A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker."
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsEditResponseMigrationsStepsList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsEditResponseMigrationsStepsItem"
+      }
+    },
     "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsEditResponseMigrations": {
       "type": "structure",
       "members": {
-        "SingleStepMigration_object___deleted_classes__new_classes__new_sqlite_classes__4_more__": {
-          "target": "smithy.api#Document",
+        "deleted_classes": {
+          "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsEditResponseMigrationsDeletedClassesList",
           "traits": {
-            "smithy.api#documentation": "A single set of migrations to apply.",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "SingleStepMigration object { deleted_classes, new_classes, new_sqlite_classes, 4 more }"
+            "smithy.api#documentation": "A list of classes to delete Durable Object namespaces from."
           }
         },
-        "WorkersMultipleStepMigrations_object___new_tag__old_tag__steps__": {
-          "target": "smithy.api#Document",
+        "new_classes": {
+          "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsEditResponseMigrationsNewClassesList",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "WorkersMultipleStepMigrations object { new_tag, old_tag, steps }"
+            "smithy.api#documentation": "A list of classes to create Durable Object namespaces from."
+          }
+        },
+        "new_sqlite_classes": {
+          "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsEditResponseMigrationsNewSqliteClassesList",
+          "traits": {
+            "smithy.api#documentation": "A list of classes to create Durable Object namespaces with SQLite from."
+          }
+        },
+        "new_tag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Tag to set as the latest migration tag."
+          }
+        },
+        "old_tag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Tag used to verify against the latest migration tag for this Worker. If they don't match, the upload is rejected."
+          }
+        },
+        "renamed_classes": {
+          "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsEditResponseMigrationsRenamedClassesList",
+          "traits": {
+            "smithy.api#documentation": "A list of classes with Durable Object namespaces that were renamed."
+          }
+        },
+        "transferred_classes": {
+          "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsEditResponseMigrationsTransferredClassesList",
+          "traits": {
+            "smithy.api#documentation": "A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker."
+          }
+        },
+        "steps": {
+          "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsEditResponseMigrationsStepsList",
+          "traits": {
+            "smithy.api#documentation": "Migrations to apply in order."
           }
         }
       }
@@ -3546,63 +4677,77 @@
         }
       }
     },
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsEditResponsePlacementMode": {
+      "type": "enum",
+      "members": {
+        "SMART": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "smart"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsEditResponsePlacementTargetItem": {
+      "type": "structure",
+      "members": {
+        "region": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Cloud region in format 'provider:region'."
+          }
+        },
+        "hostname": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "HTTP hostname for targeted placement."
+          }
+        },
+        "host": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "TCP host:port for targeted placement."
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsEditResponsePlacementTargetList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsEditResponsePlacementTargetItem"
+      }
+    },
     "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsEditResponsePlacement": {
       "type": "structure",
       "members": {
-        "Mode_object___mode__": {
-          "target": "smithy.api#Document",
+        "mode": {
+          "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsEditResponsePlacementMode",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Mode object { mode }"
+            "smithy.api#documentation": "Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement)."
           }
         },
-        "Region_object___region__": {
-          "target": "smithy.api#Document",
+        "region": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Region object { region }"
+            "smithy.api#documentation": "Cloud region for targeted placement in format 'provider:region'."
           }
         },
-        "Hostname_object___hostname__": {
-          "target": "smithy.api#Document",
+        "hostname": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Hostname object { hostname }"
+            "smithy.api#documentation": "HTTP hostname for targeted placement."
           }
         },
-        "Host_object___host__": {
-          "target": "smithy.api#Document",
+        "host": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Host object { host }"
+            "smithy.api#documentation": "TCP host and port for targeted placement."
           }
         },
-        "object___mode__region__": {
-          "target": "smithy.api#Document",
+        "target": {
+          "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsEditResponsePlacementTargetList",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "object { mode, region }"
-          }
-        },
-        "object___hostname__mode__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "object { hostname, mode }"
-          }
-        },
-        "object___host__mode__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "object { host, mode }"
-          }
-        },
-        "object___mode__target__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "object { mode, target }"
+            "smithy.api#documentation": "Array of placement targets (currently limited to single target)."
           }
         }
       }
@@ -3802,252 +4947,446 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsGetResponseBindingsItemType": {
+      "type": "enum",
+      "members": {
+        "AI": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ai"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsGetResponseBindingsItemOutboundParamsItem": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the parameter.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsGetResponseBindingsItemOutboundParamsList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsGetResponseBindingsItemOutboundParamsItem"
+      }
+    },
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsGetResponseBindingsItemOutboundWorker": {
+      "type": "structure",
+      "members": {
+        "entrypoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Entrypoint to invoke on the outbound worker."
+          }
+        },
+        "environment": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Environment of the outbound worker."
+          }
+        },
+        "service": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the outbound worker."
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsGetResponseBindingsItemOutbound": {
+      "type": "structure",
+      "members": {
+        "params": {
+          "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsGetResponseBindingsItemOutboundParamsList",
+          "traits": {
+            "smithy.api#documentation": "Pass information from the Dispatch Worker to the Outbound Worker through the parameters."
+          }
+        },
+        "worker": {
+          "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsGetResponseBindingsItemOutboundWorker",
+          "traits": {
+            "smithy.api#documentation": "Outbound worker."
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsGetResponseBindingsItemSimple": {
+      "type": "structure",
+      "members": {
+        "limit": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The limit (requests per period).",
+            "smithy.api#required": {}
+          }
+        },
+        "period": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The period in seconds.",
+            "smithy.api#required": {}
+          }
+        },
+        "mitigation_timeout": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Duration in seconds to apply the mitigation action after the rate limit is exceeded. Valid values are 0 (disabled), 10, or multiples of 60 up to 86400. Must be greater than or equal to the period when non-zero."
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsGetResponseBindingsItemJurisdiction": {
+      "type": "enum",
+      "members": {
+        "EU": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "eu"
+          }
+        },
+        "FEDRAMP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fedramp"
+          }
+        },
+        "FEDRAMP_HIGH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fedramp-high"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsGetResponseBindingsItemAllowedDestinationAddressesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsGetResponseBindingsItemAllowedSenderAddressesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsGetResponseBindingsItemFormat": {
+      "type": "enum",
+      "members": {
+        "RAW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "raw"
+          }
+        },
+        "PKCS8": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pkcs8"
+          }
+        },
+        "SPKI": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "spki"
+          }
+        },
+        "JWK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "jwk"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsGetResponseBindingsItemUsagesItem": {
+      "type": "enum",
+      "members": {
+        "ENCRYPT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "encrypt"
+          }
+        },
+        "DECRYPT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "decrypt"
+          }
+        },
+        "SIGN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sign"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsGetResponseBindingsItemUsagesList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsGetResponseBindingsItemUsagesItem"
+      }
+    },
     "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsGetResponseBindingsItem": {
       "type": "structure",
       "members": {
-        "AI_object___name__type__": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "AI object { name, type }"
+            "smithy.api#documentation": "A JavaScript variable name for the binding."
           }
         },
-        "AISearch_object___instance_name__name__type__namespace__": {
-          "target": "smithy.api#Document",
+        "type": {
+          "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsGetResponseBindingsItemType",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "AISearch object { instance_name, name, type, namespace }"
+            "smithy.api#documentation": "The kind of resource that the binding provides."
           }
         },
-        "AISearchNamespace_object___name__namespace__type__": {
-          "target": "smithy.api#Document",
+        "instance_name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "AISearchNamespace object { name, namespace, type }"
+            "smithy.api#documentation": "The user-chosen instance name. Must exist at deploy time. The worker can search, chat, update, and manage items/jobs on this instance."
           }
         },
-        "AnalyticsEngine_object___dataset__name__type__": {
-          "target": "smithy.api#Document",
+        "namespace": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "AnalyticsEngine object { dataset, name, type }"
+            "smithy.api#documentation": "The namespace the instance belongs to. Defaults to \"default\" if omitted. Customers who don't use namespaces can simply omit this field."
           }
         },
-        "Assets_object___name__type__": {
-          "target": "smithy.api#Document",
+        "dataset": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Assets object { name, type }"
+            "smithy.api#documentation": "The name of the dataset to bind to."
           }
         },
-        "Browser_object___name__type__": {
-          "target": "smithy.api#Document",
+        "database_id": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Browser object { name, type }"
+            "smithy.api#documentation": "Identifier of the D1 database to bind to."
           }
         },
-        "D1_object___database_id__name__type__id__": {
-          "target": "smithy.api#Document",
+        "id": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "D1 object { database_id, name, type, id }"
+            "smithy.api#documentation": "Identifier of the D1 database to bind to."
           }
         },
-        "DataBlob_object___name__part__type__": {
-          "target": "smithy.api#Document",
+        "part": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "DataBlob object { name, part, type }"
+            "smithy.api#documentation": "The name of the file containing the data content. Only accepted for `service worker syntax` Workers."
           }
         },
-        "DispatchNamespace_object___name__namespace__type__outbound__": {
-          "target": "smithy.api#Document",
+        "outbound": {
+          "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsGetResponseBindingsItemOutbound",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "DispatchNamespace object { name, namespace, type, outbound }"
+            "smithy.api#documentation": "Outbound worker."
           }
         },
-        "DurableObjectNamespace_object___name__type__class_name__4_more__": {
-          "target": "smithy.api#Document",
+        "class_name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "DurableObjectNamespace object { name, type, class_name, 4 more }"
+            "smithy.api#documentation": "The exported class name of the Durable Object."
           }
         },
-        "Hyperdrive_object___id__name__type__": {
-          "target": "smithy.api#Document",
+        "dispatch_namespace": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Hyperdrive object { id, name, type }"
+            "smithy.api#documentation": "The dispatch namespace the Durable Object script belongs to."
           }
         },
-        "Inherit_object___name__type__old_name__version_id__": {
-          "target": "smithy.api#Document",
+        "environment": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Inherit object { name, type, old_name, version_id }"
+            "smithy.api#documentation": "The environment of the script_name to bind to."
           }
         },
-        "Images_object___name__type__": {
-          "target": "smithy.api#Document",
+        "namespace_id": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Images object { name, type }"
+            "smithy.api#documentation": "Namespace identifier tag."
           }
         },
-        "Json_object___json__name__type__": {
-          "target": "smithy.api#Document",
+        "script_name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Json object { json, name, type }"
+            "smithy.api#documentation": "The script where the Durable Object is defined, if it is external to this Worker."
           }
         },
-        "KVNamespace_object___name__namespace_id__type__": {
-          "target": "smithy.api#Document",
+        "old_name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "KVNamespace object { name, namespace_id, type }"
+            "smithy.api#documentation": "The old name of the inherited binding. If set, the binding will be renamed from `old_name` to `name` in the new version. If not set, the binding will keep the same name between versions."
           }
         },
-        "Media_object___name__type__": {
-          "target": "smithy.api#Document",
+        "version_id": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Media object { name, type }"
+            "smithy.api#documentation": "Identifier for the version to inherit the binding from, which can be the version ID or the literal \"latest\" to inherit from the latest version. Defaults to inheriting the binding from the latest version."
           }
         },
-        "MTLSCertificate_object___certificate_id__name__type__": {
+        "json": {
           "target": "smithy.api#Document",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "MTLSCertificate object { certificate_id, name, type }"
+            "smithy.api#documentation": "JSON data to use."
           }
         },
-        "PlainText_object___name__text__type__": {
-          "target": "smithy.api#Document",
+        "certificate_id": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "PlainText object { name, text, type }"
+            "smithy.api#documentation": "Identifier of the certificate to bind to."
           }
         },
-        "Pipelines_object___name__pipeline__type__": {
-          "target": "smithy.api#Document",
+        "text": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Pipelines object { name, pipeline, type }"
+            "smithy.api#documentation": "The text value to use."
           }
         },
-        "Queue_object___name__queue_name__type__": {
-          "target": "smithy.api#Document",
+        "pipeline": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Queue object { name, queue_name, type }"
+            "smithy.api#documentation": "Name of the Pipeline to bind to."
           }
         },
-        "Ratelimit_object___name__namespace_id__simple__type__": {
-          "target": "smithy.api#Document",
+        "queue_name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Ratelimit object { name, namespace_id, simple, type }"
+            "smithy.api#documentation": "Name of the Queue to bind to."
           }
         },
-        "R2Bucket_object___bucket_name__name__type__jurisdiction__": {
-          "target": "smithy.api#Document",
+        "simple": {
+          "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsGetResponseBindingsItemSimple",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "R2Bucket object { bucket_name, name, type, jurisdiction }"
+            "smithy.api#documentation": "The rate limit configuration."
           }
         },
-        "SecretText_object___name__text__type__": {
-          "target": "smithy.api#Document",
+        "bucket_name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "SecretText object { name, text, type }"
+            "smithy.api#documentation": "R2 bucket to bind to."
           }
         },
-        "SendEmail_object___name__type__allowed_destination_addresses__2_more__": {
-          "target": "smithy.api#Document",
+        "jurisdiction": {
+          "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsGetResponseBindingsItemJurisdiction",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "SendEmail object { name, type, allowed_destination_addresses, 2 more }"
+            "smithy.api#documentation": "The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket."
           }
         },
-        "Service_object___name__service__type__2_more__": {
-          "target": "smithy.api#Document",
+        "allowed_destination_addresses": {
+          "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsGetResponseBindingsItemAllowedDestinationAddressesList",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Service object { name, service, type, 2 more }"
+            "smithy.api#documentation": "List of allowed destination addresses."
           }
         },
-        "TextBlob_object___name__part__type__": {
-          "target": "smithy.api#Document",
+        "allowed_sender_addresses": {
+          "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsGetResponseBindingsItemAllowedSenderAddressesList",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "TextBlob object { name, part, type }"
+            "smithy.api#documentation": "List of allowed sender addresses."
           }
         },
-        "Vectorize_object___index_name__name__type__": {
-          "target": "smithy.api#Document",
+        "destination_address": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Vectorize object { index_name, name, type }"
+            "smithy.api#documentation": "Destination address for the email."
           }
         },
-        "VersionMetadata_object___name__type__": {
-          "target": "smithy.api#Document",
+        "service": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "VersionMetadata object { name, type }"
+            "smithy.api#documentation": "Name of Worker to bind to."
           }
         },
-        "SecretsStoreSecret_object___name__secret_name__store_id__type__": {
-          "target": "smithy.api#Document",
+        "entrypoint": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "SecretsStoreSecret object { name, secret_name, store_id, type }"
+            "smithy.api#documentation": "Entrypoint to invoke on the target Worker."
           }
         },
-        "Flagship_object___app_id__name__type__": {
-          "target": "smithy.api#Document",
+        "index_name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Flagship object { app_id, name, type }"
+            "smithy.api#documentation": "Name of the Vectorize index to bind to."
           }
         },
-        "SecretKey_object___algorithm__format__name__4_more__": {
-          "target": "smithy.api#Document",
+        "secret_name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "SecretKey object { algorithm, format, name, 4 more }"
+            "smithy.api#documentation": "Name of the secret in the store."
           }
         },
-        "Workflow_object___name__type__workflow_name__2_more__": {
-          "target": "smithy.api#Document",
+        "store_id": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Workflow object { name, type, workflow_name, 2 more }"
+            "smithy.api#documentation": "ID of the store containing the secret."
           }
         },
-        "WasmModule_object___name__part__type__": {
-          "target": "smithy.api#Document",
+        "app_id": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "WasmModule object { name, part, type }"
+            "smithy.api#documentation": "ID of the Flagship app to bind to for feature flag evaluation."
           }
         },
-        "VPCService_object___name__service_id__type__": {
+        "algorithm": {
           "target": "smithy.api#Document",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "VPCService object { name, service_id, type }"
+            "smithy.api#documentation": "Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm)."
           }
         },
-        "VPCNetwork_object___name__type__network_id__tunnel_id__": {
+        "format": {
+          "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsGetResponseBindingsItemFormat",
+          "traits": {
+            "smithy.api#documentation": "Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format)."
+          }
+        },
+        "usages": {
+          "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsGetResponseBindingsItemUsagesList",
+          "traits": {
+            "smithy.api#documentation": "Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages)."
+          }
+        },
+        "key_base64": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Base64-encoded key data. Required if `format` is \"raw\", \"pkcs8\", or \"spki\"."
+          }
+        },
+        "key_jwk": {
           "target": "smithy.api#Document",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "VPCNetwork object { name, type, network_id, tunnel_id }"
+            "smithy.api#documentation": "Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is \"jwk\"."
+          }
+        },
+        "workflow_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the Workflow to bind to."
+          }
+        },
+        "service_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier of the VPC service to bind to."
+          }
+        },
+        "network_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier of the network to bind to. Only \"cf1:network\" is currently supported. Mutually exclusive with tunnel_id."
+          }
+        },
+        "tunnel_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "UUID of the Cloudflare Tunnel to bind to. Mutually exclusive with network_id."
           }
         }
       }
@@ -4108,22 +5447,206 @@
         }
       }
     },
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsGetResponseMigrationsDeletedClassesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsGetResponseMigrationsNewClassesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsGetResponseMigrationsNewSqliteClassesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsGetResponseMigrationsRenamedClassesItem": {
+      "type": "structure",
+      "members": {
+        "from": {
+          "target": "smithy.api#String"
+        },
+        "to": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsGetResponseMigrationsRenamedClassesList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsGetResponseMigrationsRenamedClassesItem"
+      }
+    },
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsGetResponseMigrationsTransferredClassesItem": {
+      "type": "structure",
+      "members": {
+        "from": {
+          "target": "smithy.api#String"
+        },
+        "from_script": {
+          "target": "smithy.api#String"
+        },
+        "to": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsGetResponseMigrationsTransferredClassesList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsGetResponseMigrationsTransferredClassesItem"
+      }
+    },
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsGetResponseMigrationsStepsItemDeletedClassesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsGetResponseMigrationsStepsItemNewClassesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsGetResponseMigrationsStepsItemNewSqliteClassesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsGetResponseMigrationsStepsItemRenamedClassesItem": {
+      "type": "structure",
+      "members": {
+        "from": {
+          "target": "smithy.api#String"
+        },
+        "to": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsGetResponseMigrationsStepsItemRenamedClassesList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsGetResponseMigrationsStepsItemRenamedClassesItem"
+      }
+    },
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsGetResponseMigrationsStepsItemTransferredClassesItem": {
+      "type": "structure",
+      "members": {
+        "from": {
+          "target": "smithy.api#String"
+        },
+        "from_script": {
+          "target": "smithy.api#String"
+        },
+        "to": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsGetResponseMigrationsStepsItemTransferredClassesList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsGetResponseMigrationsStepsItemTransferredClassesItem"
+      }
+    },
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsGetResponseMigrationsStepsItem": {
+      "type": "structure",
+      "members": {
+        "deleted_classes": {
+          "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsGetResponseMigrationsStepsItemDeletedClassesList",
+          "traits": {
+            "smithy.api#documentation": "A list of classes to delete Durable Object namespaces from."
+          }
+        },
+        "new_classes": {
+          "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsGetResponseMigrationsStepsItemNewClassesList",
+          "traits": {
+            "smithy.api#documentation": "A list of classes to create Durable Object namespaces from."
+          }
+        },
+        "new_sqlite_classes": {
+          "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsGetResponseMigrationsStepsItemNewSqliteClassesList",
+          "traits": {
+            "smithy.api#documentation": "A list of classes to create Durable Object namespaces with SQLite from."
+          }
+        },
+        "renamed_classes": {
+          "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsGetResponseMigrationsStepsItemRenamedClassesList",
+          "traits": {
+            "smithy.api#documentation": "A list of classes with Durable Object namespaces that were renamed."
+          }
+        },
+        "transferred_classes": {
+          "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsGetResponseMigrationsStepsItemTransferredClassesList",
+          "traits": {
+            "smithy.api#documentation": "A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker."
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsGetResponseMigrationsStepsList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsGetResponseMigrationsStepsItem"
+      }
+    },
     "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsGetResponseMigrations": {
       "type": "structure",
       "members": {
-        "SingleStepMigration_object___deleted_classes__new_classes__new_sqlite_classes__4_more__": {
-          "target": "smithy.api#Document",
+        "deleted_classes": {
+          "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsGetResponseMigrationsDeletedClassesList",
           "traits": {
-            "smithy.api#documentation": "A single set of migrations to apply.",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "SingleStepMigration object { deleted_classes, new_classes, new_sqlite_classes, 4 more }"
+            "smithy.api#documentation": "A list of classes to delete Durable Object namespaces from."
           }
         },
-        "WorkersMultipleStepMigrations_object___new_tag__old_tag__steps__": {
-          "target": "smithy.api#Document",
+        "new_classes": {
+          "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsGetResponseMigrationsNewClassesList",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "WorkersMultipleStepMigrations object { new_tag, old_tag, steps }"
+            "smithy.api#documentation": "A list of classes to create Durable Object namespaces from."
+          }
+        },
+        "new_sqlite_classes": {
+          "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsGetResponseMigrationsNewSqliteClassesList",
+          "traits": {
+            "smithy.api#documentation": "A list of classes to create Durable Object namespaces with SQLite from."
+          }
+        },
+        "new_tag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Tag to set as the latest migration tag."
+          }
+        },
+        "old_tag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Tag used to verify against the latest migration tag for this Worker. If they don't match, the upload is rejected."
+          }
+        },
+        "renamed_classes": {
+          "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsGetResponseMigrationsRenamedClassesList",
+          "traits": {
+            "smithy.api#documentation": "A list of classes with Durable Object namespaces that were renamed."
+          }
+        },
+        "transferred_classes": {
+          "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsGetResponseMigrationsTransferredClassesList",
+          "traits": {
+            "smithy.api#documentation": "A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker."
+          }
+        },
+        "steps": {
+          "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsGetResponseMigrationsStepsList",
+          "traits": {
+            "smithy.api#documentation": "Migrations to apply in order."
           }
         }
       }
@@ -4259,63 +5782,77 @@
         }
       }
     },
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsGetResponsePlacementMode": {
+      "type": "enum",
+      "members": {
+        "SMART": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "smart"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsGetResponsePlacementTargetItem": {
+      "type": "structure",
+      "members": {
+        "region": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Cloud region in format 'provider:region'."
+          }
+        },
+        "hostname": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "HTTP hostname for targeted placement."
+          }
+        },
+        "host": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "TCP host:port for targeted placement."
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsGetResponsePlacementTargetList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsGetResponsePlacementTargetItem"
+      }
+    },
     "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsGetResponsePlacement": {
       "type": "structure",
       "members": {
-        "Mode_object___mode__": {
-          "target": "smithy.api#Document",
+        "mode": {
+          "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsGetResponsePlacementMode",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Mode object { mode }"
+            "smithy.api#documentation": "Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement)."
           }
         },
-        "Region_object___region__": {
-          "target": "smithy.api#Document",
+        "region": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Region object { region }"
+            "smithy.api#documentation": "Cloud region for targeted placement in format 'provider:region'."
           }
         },
-        "Hostname_object___hostname__": {
-          "target": "smithy.api#Document",
+        "hostname": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Hostname object { hostname }"
+            "smithy.api#documentation": "HTTP hostname for targeted placement."
           }
         },
-        "Host_object___host__": {
-          "target": "smithy.api#Document",
+        "host": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "Host object { host }"
+            "smithy.api#documentation": "TCP host and port for targeted placement."
           }
         },
-        "object___mode__region__": {
-          "target": "smithy.api#Document",
+        "target": {
+          "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsGetResponsePlacementTargetList",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "object { mode, region }"
-          }
-        },
-        "object___hostname__mode__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "object { hostname, mode }"
-          }
-        },
-        "object___host__mode__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "object { host, mode }"
-          }
-        },
-        "object___mode__target__": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "object { mode, target }"
+            "smithy.api#documentation": "Array of placement targets (currently limited to single target)."
           }
         }
       }

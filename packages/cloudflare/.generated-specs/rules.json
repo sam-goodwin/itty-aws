@@ -694,28 +694,48 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.rules#ListsBulkOperationsGetResponseStatus": {
+      "type": "enum",
+      "members": {
+        "PENDING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pending"
+          }
+        },
+        "RUNNING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "running"
+          }
+        }
+      }
+    },
     "com.cloudflare.rules#ListsBulkOperationsGetResponse": {
       "type": "structure",
       "members": {
-        "ListsBulkOperationPendingOrRunning_object___id__status__": {
-          "target": "smithy.api#Document",
+        "id": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "ListsBulkOperationPendingOrRunning object { id, status }"
+            "smithy.api#documentation": "The unique operation ID of the asynchronous action."
           }
         },
-        "ListsBulkOperationCompleted_object___id__completed__status__": {
-          "target": "smithy.api#Document",
+        "status": {
+          "target": "com.cloudflare.rules#ListsBulkOperationsGetResponseStatus",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "ListsBulkOperationCompleted object { id, completed, status }"
+            "smithy.api#documentation": "The current status of the asynchronous operation."
           }
         },
-        "ListsBulkOperationFailed_object___id__completed__error__status__": {
-          "target": "smithy.api#Document",
+        "completed": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "ListsBulkOperationFailed object { id, completed, error, status }"
+            "smithy.api#documentation": "The RFC 3339 timestamp of when the operation was completed."
+          }
+        },
+        "error": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A message describing the error when the status is `failed`."
           }
         }
       },
@@ -742,35 +762,119 @@
         "smithy.api#readonly": {}
       }
     },
+    "com.cloudflare.rules#ListsItemsCreateRequestBodyItemRedirectStatusCode": {
+      "type": "structure",
+      "members": {
+        "_301": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "301"
+          }
+        },
+        "_302": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "302"
+          }
+        },
+        "_307": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "307"
+          }
+        },
+        "_308": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "308"
+          }
+        }
+      }
+    },
+    "com.cloudflare.rules#ListsItemsCreateRequestBodyItemRedirect": {
+      "type": "structure",
+      "members": {
+        "source_url": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "target_url": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "include_subdomains": {
+          "target": "smithy.api#Boolean"
+        },
+        "preserve_path_suffix": {
+          "target": "smithy.api#Boolean"
+        },
+        "preserve_query_string": {
+          "target": "smithy.api#Boolean"
+        },
+        "status_code": {
+          "target": "com.cloudflare.rules#ListsItemsCreateRequestBodyItemRedirectStatusCode"
+        },
+        "subpath_matching": {
+          "target": "smithy.api#Boolean"
+        }
+      }
+    },
+    "com.cloudflare.rules#ListsItemsCreateRequestBodyItemHostname": {
+      "type": "structure",
+      "members": {
+        "url_hostname": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "exclude_exact_hostname": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Only applies to wildcard hostnames (e.g., *.example.com). When true (default), only subdomains are blocked. When false, both the root domain and subdomains are blocked."
+          }
+        }
+      }
+    },
     "com.cloudflare.rules#ListsItemsCreateRequestBodyItem": {
       "type": "structure",
       "members": {
-        "ListsListItemIPComment_object___ip__comment__": {
-          "target": "smithy.api#Document",
+        "ip": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "ListsListItemIPComment object { ip, comment }"
+            "smithy.api#documentation": "An IPv4 address, an IPv4 CIDR, an IPv6 address, or an IPv6 CIDR."
           }
         },
-        "ListsListItemRedirectComment_object___redirect__comment__": {
-          "target": "smithy.api#Document",
+        "comment": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "ListsListItemRedirectComment object { redirect, comment }"
+            "smithy.api#documentation": "Defines an informative summary of the list item."
           }
         },
-        "ListsListItemHostnameComment_object___hostname__comment__": {
-          "target": "smithy.api#Document",
+        "redirect": {
+          "target": "com.cloudflare.rules#ListsItemsCreateRequestBodyItemRedirect",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "ListsListItemHostnameComment object { hostname, comment }"
+            "smithy.api#documentation": "The definition of the redirect."
           }
         },
-        "ListsListItemASNComment_object___asn__comment__": {
-          "target": "smithy.api#Document",
+        "hostname": {
+          "target": "com.cloudflare.rules#ListsItemsCreateRequestBodyItemHostname",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "ListsListItemASNComment object { asn, comment }"
+            "smithy.api#documentation": "Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-)."
+          }
+        },
+        "asn": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Defines a non-negative 32 bit integer."
           }
         }
       }
@@ -955,35 +1059,137 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.rules#ListsItemsGetResponseHostname": {
+      "type": "structure",
+      "members": {
+        "url_hostname": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "exclude_exact_hostname": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Only applies to wildcard hostnames (e.g., *.example.com). When true (default), only subdomains are blocked. When false, both the root domain and subdomains are blocked."
+          }
+        }
+      }
+    },
+    "com.cloudflare.rules#ListsItemsGetResponseRedirectStatusCode": {
+      "type": "structure",
+      "members": {
+        "_301": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "301"
+          }
+        },
+        "_302": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "302"
+          }
+        },
+        "_307": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "307"
+          }
+        },
+        "_308": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "308"
+          }
+        }
+      }
+    },
+    "com.cloudflare.rules#ListsItemsGetResponseRedirect": {
+      "type": "structure",
+      "members": {
+        "source_url": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "target_url": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "include_subdomains": {
+          "target": "smithy.api#Boolean"
+        },
+        "preserve_path_suffix": {
+          "target": "smithy.api#Boolean"
+        },
+        "preserve_query_string": {
+          "target": "smithy.api#Boolean"
+        },
+        "status_code": {
+          "target": "com.cloudflare.rules#ListsItemsGetResponseRedirectStatusCode"
+        },
+        "subpath_matching": {
+          "target": "smithy.api#Boolean"
+        }
+      }
+    },
     "com.cloudflare.rules#ListsItemsGetResponse": {
       "type": "structure",
       "members": {
-        "ListsListItemIPFull_object___id__created_on__ip__2_more__": {
-          "target": "smithy.api#Document",
+        "id": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "ListsListItemIPFull object { id, created_on, ip, 2 more }"
+            "smithy.api#documentation": "Defines the unique ID of the item in the List."
           }
         },
-        "ListsListItemHostnameFull_object___id__created_on__hostname__2_more__": {
-          "target": "smithy.api#Document",
+        "created_on": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "ListsListItemHostnameFull object { id, created_on, hostname, 2 more }"
+            "smithy.api#documentation": "The RFC 3339 timestamp of when the list was created."
           }
         },
-        "ListsListItemRedirectFull_object___id__created_on__modified_on__2_more__": {
-          "target": "smithy.api#Document",
+        "ip": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "ListsListItemRedirectFull object { id, created_on, modified_on, 2 more }"
+            "smithy.api#documentation": "An IPv4 address, an IPv4 CIDR, an IPv6 address, or an IPv6 CIDR."
           }
         },
-        "ListsListItemASNFull_object___id__asn__created_on__2_more__": {
-          "target": "smithy.api#Document",
+        "modified_on": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "ListsListItemASNFull object { id, asn, created_on, 2 more }"
+            "smithy.api#documentation": "The RFC 3339 timestamp of when the list was last modified."
+          }
+        },
+        "comment": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Defines an informative summary of the list item."
+          }
+        },
+        "hostname": {
+          "target": "com.cloudflare.rules#ListsItemsGetResponseHostname",
+          "traits": {
+            "smithy.api#documentation": "Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-)."
+          }
+        },
+        "redirect": {
+          "target": "com.cloudflare.rules#ListsItemsGetResponseRedirect",
+          "traits": {
+            "smithy.api#documentation": "The definition of the redirect."
+          }
+        },
+        "asn": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Defines a non-negative 32 bit integer."
           }
         }
       },
@@ -1055,35 +1261,137 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.rules#ListsItemsListResultItemHostname": {
+      "type": "structure",
+      "members": {
+        "url_hostname": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "exclude_exact_hostname": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Only applies to wildcard hostnames (e.g., *.example.com). When true (default), only subdomains are blocked. When false, both the root domain and subdomains are blocked."
+          }
+        }
+      }
+    },
+    "com.cloudflare.rules#ListsItemsListResultItemRedirectStatusCode": {
+      "type": "structure",
+      "members": {
+        "_301": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "301"
+          }
+        },
+        "_302": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "302"
+          }
+        },
+        "_307": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "307"
+          }
+        },
+        "_308": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "308"
+          }
+        }
+      }
+    },
+    "com.cloudflare.rules#ListsItemsListResultItemRedirect": {
+      "type": "structure",
+      "members": {
+        "source_url": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "target_url": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "include_subdomains": {
+          "target": "smithy.api#Boolean"
+        },
+        "preserve_path_suffix": {
+          "target": "smithy.api#Boolean"
+        },
+        "preserve_query_string": {
+          "target": "smithy.api#Boolean"
+        },
+        "status_code": {
+          "target": "com.cloudflare.rules#ListsItemsListResultItemRedirectStatusCode"
+        },
+        "subpath_matching": {
+          "target": "smithy.api#Boolean"
+        }
+      }
+    },
     "com.cloudflare.rules#ListsItemsListResultItem": {
       "type": "structure",
       "members": {
-        "ListsListItemIPFull_object___id__created_on__ip__2_more__": {
-          "target": "smithy.api#Document",
+        "id": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "ListsListItemIPFull object { id, created_on, ip, 2 more }"
+            "smithy.api#documentation": "Defines the unique ID of the item in the List."
           }
         },
-        "ListsListItemHostnameFull_object___id__created_on__hostname__2_more__": {
-          "target": "smithy.api#Document",
+        "created_on": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "ListsListItemHostnameFull object { id, created_on, hostname, 2 more }"
+            "smithy.api#documentation": "The RFC 3339 timestamp of when the list was created."
           }
         },
-        "ListsListItemRedirectFull_object___id__created_on__modified_on__2_more__": {
-          "target": "smithy.api#Document",
+        "ip": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "ListsListItemRedirectFull object { id, created_on, modified_on, 2 more }"
+            "smithy.api#documentation": "An IPv4 address, an IPv4 CIDR, an IPv6 address, or an IPv6 CIDR."
           }
         },
-        "ListsListItemASNFull_object___id__asn__created_on__2_more__": {
-          "target": "smithy.api#Document",
+        "modified_on": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "ListsListItemASNFull object { id, asn, created_on, 2 more }"
+            "smithy.api#documentation": "The RFC 3339 timestamp of when the list was last modified."
+          }
+        },
+        "comment": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Defines an informative summary of the list item."
+          }
+        },
+        "hostname": {
+          "target": "com.cloudflare.rules#ListsItemsListResultItemHostname",
+          "traits": {
+            "smithy.api#documentation": "Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-)."
+          }
+        },
+        "redirect": {
+          "target": "com.cloudflare.rules#ListsItemsListResultItemRedirect",
+          "traits": {
+            "smithy.api#documentation": "The definition of the redirect."
+          }
+        },
+        "asn": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Defines a non-negative 32 bit integer."
           }
         }
       }
@@ -1127,35 +1435,119 @@
         "smithy.api#readonly": {}
       }
     },
+    "com.cloudflare.rules#ListsItemsUpdateRequestBodyItemRedirectStatusCode": {
+      "type": "structure",
+      "members": {
+        "_301": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "301"
+          }
+        },
+        "_302": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "302"
+          }
+        },
+        "_307": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "307"
+          }
+        },
+        "_308": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "308"
+          }
+        }
+      }
+    },
+    "com.cloudflare.rules#ListsItemsUpdateRequestBodyItemRedirect": {
+      "type": "structure",
+      "members": {
+        "source_url": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "target_url": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "include_subdomains": {
+          "target": "smithy.api#Boolean"
+        },
+        "preserve_path_suffix": {
+          "target": "smithy.api#Boolean"
+        },
+        "preserve_query_string": {
+          "target": "smithy.api#Boolean"
+        },
+        "status_code": {
+          "target": "com.cloudflare.rules#ListsItemsUpdateRequestBodyItemRedirectStatusCode"
+        },
+        "subpath_matching": {
+          "target": "smithy.api#Boolean"
+        }
+      }
+    },
+    "com.cloudflare.rules#ListsItemsUpdateRequestBodyItemHostname": {
+      "type": "structure",
+      "members": {
+        "url_hostname": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "exclude_exact_hostname": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Only applies to wildcard hostnames (e.g., *.example.com). When true (default), only subdomains are blocked. When false, both the root domain and subdomains are blocked."
+          }
+        }
+      }
+    },
     "com.cloudflare.rules#ListsItemsUpdateRequestBodyItem": {
       "type": "structure",
       "members": {
-        "ListsListItemIPComment_object___ip__comment__": {
-          "target": "smithy.api#Document",
+        "ip": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "ListsListItemIPComment object { ip, comment }"
+            "smithy.api#documentation": "An IPv4 address, an IPv4 CIDR, an IPv6 address, or an IPv6 CIDR."
           }
         },
-        "ListsListItemRedirectComment_object___redirect__comment__": {
-          "target": "smithy.api#Document",
+        "comment": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "ListsListItemRedirectComment object { redirect, comment }"
+            "smithy.api#documentation": "Defines an informative summary of the list item."
           }
         },
-        "ListsListItemHostnameComment_object___hostname__comment__": {
-          "target": "smithy.api#Document",
+        "redirect": {
+          "target": "com.cloudflare.rules#ListsItemsUpdateRequestBodyItemRedirect",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "ListsListItemHostnameComment object { hostname, comment }"
+            "smithy.api#documentation": "The definition of the redirect."
           }
         },
-        "ListsListItemASNComment_object___asn__comment__": {
-          "target": "smithy.api#Document",
+        "hostname": {
+          "target": "com.cloudflare.rules#ListsItemsUpdateRequestBodyItemHostname",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "ListsListItemASNComment object { asn, comment }"
+            "smithy.api#documentation": "Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-)."
+          }
+        },
+        "asn": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Defines a non-negative 32 bit integer."
           }
         }
       }

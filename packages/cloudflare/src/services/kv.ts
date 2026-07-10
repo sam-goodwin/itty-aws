@@ -201,19 +201,40 @@ export const BulkGetNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "BulkGetNamespacesRequest",
 }) as any as S.Schema<BulkGetNamespacesRequest>;
 
+export interface NamespacesBulkGetResponseValuesValue {
+  string: unknown;
+  number: unknown;
+  boolean: unknown;
+  mapUnknown_: unknown;
+}
+export const NamespacesBulkGetResponseValuesValue = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      string: S.Unknown,
+      number: S.Unknown,
+      boolean: S.Unknown,
+      mapUnknown_: S.Unknown.pipe(T.Body("map[unknown]")),
+    }),
+).annotate({
+  identifier: "NamespacesBulkGetResponseValuesValue",
+}) as any as S.Schema<NamespacesBulkGetResponseValuesValue>;
+
+export type NamespacesBulkGetResponseValuesMap = {
+  [key: string]: NamespacesBulkGetResponseValuesValue | undefined;
+};
+export const NamespacesBulkGetResponseValuesMap = /*@__PURE__*/ S.Record(
+  S.String,
+  NamespacesBulkGetResponseValuesValue,
+) as any as S.Schema<NamespacesBulkGetResponseValuesMap>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface BulkGetNamespacesResponse {
-  WorkersKVBulkGetResultObjectValues__: unknown;
-  WorkersKVBulkGetResultWithMetadataObjectValues__: unknown;
+  /** Requested keys are paired with their values in an object. */
+  values?: NamespacesBulkGetResponseValuesMap;
 }
 export const BulkGetNamespacesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    WorkersKVBulkGetResultObjectValues__: S.Unknown.pipe(
-      T.Body("WorkersKVBulkGetResult object { values }"),
-    ),
-    WorkersKVBulkGetResultWithMetadataObjectValues__: S.Unknown.pipe(
-      T.Body("WorkersKVBulkGetResultWithMetadata object { values }"),
-    ),
+    values: S.optional(NamespacesBulkGetResponseValuesMap),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "BulkGetNamespacesResponse",
@@ -773,19 +794,40 @@ export const NamespacesKeysBulkGetRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "NamespacesKeysBulkGetRequest",
 }) as any as S.Schema<NamespacesKeysBulkGetRequest>;
 
+export interface NamespacesKeysBulkGetResponseValuesValue {
+  string: unknown;
+  number: unknown;
+  boolean: unknown;
+  mapUnknown_: unknown;
+}
+export const NamespacesKeysBulkGetResponseValuesValue = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      string: S.Unknown,
+      number: S.Unknown,
+      boolean: S.Unknown,
+      mapUnknown_: S.Unknown.pipe(T.Body("map[unknown]")),
+    }),
+).annotate({
+  identifier: "NamespacesKeysBulkGetResponseValuesValue",
+}) as any as S.Schema<NamespacesKeysBulkGetResponseValuesValue>;
+
+export type NamespacesKeysBulkGetResponseValuesMap = {
+  [key: string]: NamespacesKeysBulkGetResponseValuesValue | undefined;
+};
+export const NamespacesKeysBulkGetResponseValuesMap = /*@__PURE__*/ S.Record(
+  S.String,
+  NamespacesKeysBulkGetResponseValuesValue,
+) as any as S.Schema<NamespacesKeysBulkGetResponseValuesMap>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface NamespacesKeysBulkGetResponse {
-  WorkersKVBulkGetResultObjectValues__: unknown;
-  WorkersKVBulkGetResultWithMetadataObjectValues__: unknown;
+  /** Requested keys are paired with their values in an object. */
+  values?: NamespacesKeysBulkGetResponseValuesMap;
 }
 export const NamespacesKeysBulkGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    WorkersKVBulkGetResultObjectValues__: S.Unknown.pipe(
-      T.Body("WorkersKVBulkGetResult object { values }"),
-    ),
-    WorkersKVBulkGetResultWithMetadataObjectValues__: S.Unknown.pipe(
-      T.Body("WorkersKVBulkGetResultWithMetadata object { values }"),
-    ),
+    values: S.optional(NamespacesKeysBulkGetResponseValuesMap),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "NamespacesKeysBulkGetResponse",
