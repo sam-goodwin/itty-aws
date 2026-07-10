@@ -1,0 +1,18 @@
+[
+  {
+    "alias": "deleteObject",
+    "target": "deleteBucketObject"
+  },
+  {
+    "alias": "getObject",
+    "target": "getBucketObject"
+  },
+  {
+    "alias": "listObjects",
+    "target": "listBucketObjects"
+  },
+  {
+    "alias": "putObject",
+    "target": "uploadBucketObject"
+  }
+]

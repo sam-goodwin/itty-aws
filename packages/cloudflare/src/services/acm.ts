@@ -710,3 +710,9 @@ export const updateTotalTl: API.OperationMethod<
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));
+
+// Alias of updateTotalTl (same route, alternate export name upstream).
+export const editTotalTl = updateTotalTl;
+export type EditTotalTlRequest = UpdateTotalTlRequest;
+export type EditTotalTlResponse = UpdateTotalTlResponse;
+export type EditTotalTlError = UpdateTotalTlError;

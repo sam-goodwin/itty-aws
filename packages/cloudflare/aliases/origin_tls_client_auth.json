@@ -1,0 +1,18 @@
+[
+  {
+    "alias": "createZoneCertificate",
+    "target": "createOriginTlsClientAuth"
+  },
+  {
+    "alias": "deleteZoneCertificate",
+    "target": "deleteOriginTlsClientAuth"
+  },
+  {
+    "alias": "getZoneCertificate",
+    "target": "getOriginTlsClientAuth"
+  },
+  {
+    "alias": "listZoneCertificates",
+    "target": "listOriginTlsClientAuths"
+  }
+]

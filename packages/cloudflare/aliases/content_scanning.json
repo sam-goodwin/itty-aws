@@ -1,0 +1,10 @@
+[
+  {
+    "alias": "getSetting",
+    "target": "getContentScanning"
+  },
+  {
+    "alias": "putContentScanning",
+    "target": "createContentScanning"
+  }
+]

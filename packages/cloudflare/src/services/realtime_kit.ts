@@ -17154,3 +17154,9 @@ export const updateMeetingByIdMeeting: API.OperationMethod<
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));
+
+// Alias of getOrgAnalyticsAnalytic (same route, alternate export name upstream).
+export const getOrgAnalyticsLivestream = getOrgAnalyticsAnalytic;
+export type GetOrgAnalyticsLivestreamRequest = GetOrgAnalyticsAnalyticRequest;
+export type GetOrgAnalyticsLivestreamResponse = GetOrgAnalyticsAnalyticResponse;
+export type GetOrgAnalyticsLivestreamError = GetOrgAnalyticsAnalyticError;

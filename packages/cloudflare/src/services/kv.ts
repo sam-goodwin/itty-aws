@@ -1407,3 +1407,21 @@ export const updateNamespace: API.OperationMethod<
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));
+
+// Alias of bulkDeleteNamespaces (same route, alternate export name upstream).
+export const bulkDeleteNamespaceKeys = bulkDeleteNamespaces;
+export type BulkDeleteNamespaceKeysRequest = BulkDeleteNamespacesRequest;
+export type BulkDeleteNamespaceKeysResponse = BulkDeleteNamespacesResponse;
+export type BulkDeleteNamespaceKeysError = BulkDeleteNamespacesError;
+
+// Alias of bulkGetNamespaces (same route, alternate export name upstream).
+export const bulkGetNamespaceKeys = bulkGetNamespaces;
+export type BulkGetNamespaceKeysRequest = BulkGetNamespacesRequest;
+export type BulkGetNamespaceKeysResponse = BulkGetNamespacesResponse;
+export type BulkGetNamespaceKeysError = BulkGetNamespacesError;
+
+// Alias of bulkPutNamespaces (same route, alternate export name upstream).
+export const bulkPutNamespaceKeys = bulkPutNamespaces;
+export type BulkPutNamespaceKeysRequest = BulkPutNamespacesRequest;
+export type BulkPutNamespaceKeysResponse = BulkPutNamespacesResponse;
+export type BulkPutNamespaceKeysError = BulkPutNamespacesError;

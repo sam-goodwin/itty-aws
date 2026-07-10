@@ -1,0 +1,6 @@
+[
+  {
+    "alias": "createAiToMarkdown",
+    "target": "transformToMarkdown"
+  }
+]

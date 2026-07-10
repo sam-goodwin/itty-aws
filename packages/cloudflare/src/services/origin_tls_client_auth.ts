@@ -1464,3 +1464,27 @@ export const zoneCertificatesList: API.PaginatedOperationMethod<
   }),
   cloudflarePaginate,
 );
+
+// Alias of createOriginTlsClientAuth (same route, alternate export name upstream).
+export const createZoneCertificate = createOriginTlsClientAuth;
+export type CreateZoneCertificateRequest = CreateOriginTlsClientAuthRequest;
+export type CreateZoneCertificateResponse = CreateOriginTlsClientAuthResponse;
+export type CreateZoneCertificateError = CreateOriginTlsClientAuthError;
+
+// Alias of deleteOriginTlsClientAuth (same route, alternate export name upstream).
+export const deleteZoneCertificate = deleteOriginTlsClientAuth;
+export type DeleteZoneCertificateRequest = DeleteOriginTlsClientAuthRequest;
+export type DeleteZoneCertificateResponse = DeleteOriginTlsClientAuthResponse;
+export type DeleteZoneCertificateError = DeleteOriginTlsClientAuthError;
+
+// Alias of getOriginTlsClientAuth (same route, alternate export name upstream).
+export const getZoneCertificate = getOriginTlsClientAuth;
+export type GetZoneCertificateRequest = GetOriginTlsClientAuthRequest;
+export type GetZoneCertificateResponse = GetOriginTlsClientAuthResponse;
+export type GetZoneCertificateError = GetOriginTlsClientAuthError;
+
+// Alias of listOriginTlsClientAuths (same route, alternate export name upstream).
+export const listZoneCertificates = listOriginTlsClientAuths;
+export type ListZoneCertificatesRequest = ListOriginTlsClientAuthsRequest;
+export type ListZoneCertificatesResponse = ListOriginTlsClientAuthsResponse;
+export type ListZoneCertificatesError = ListOriginTlsClientAuthsError;

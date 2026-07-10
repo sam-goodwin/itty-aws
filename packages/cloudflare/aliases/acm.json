@@ -1,0 +1,6 @@
+[
+  {
+    "alias": "editTotalTl",
+    "target": "updateTotalTl"
+  }
+]

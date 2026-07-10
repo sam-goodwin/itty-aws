@@ -121226,3 +121226,51 @@ export const validateDlpPattern: API.OperationMethod<
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));
+
+// Alias of createDlpEntry (same route, alternate export name upstream).
+export const createDlpEntryCustom = createDlpEntry;
+export type CreateDlpEntryCustomRequest = CreateDlpEntryRequest;
+export type CreateDlpEntryCustomResponse = CreateDlpEntryResponse;
+export type CreateDlpEntryCustomError = CreateDlpEntryError;
+
+// Alias of deleteDlpEntry (same route, alternate export name upstream).
+export const deleteDlpEntryCustom = deleteDlpEntry;
+export type DeleteDlpEntryCustomRequest = DeleteDlpEntryRequest;
+export type DeleteDlpEntryCustomResponse = DeleteDlpEntryResponse;
+export type DeleteDlpEntryCustomError = DeleteDlpEntryError;
+
+// Alias of getDlpEntry (same route, alternate export name upstream).
+export const getDlpEntryCustom = getDlpEntry;
+export type GetDlpEntryCustomRequest = GetDlpEntryRequest;
+export type GetDlpEntryCustomResponse = GetDlpEntryResponse;
+export type GetDlpEntryCustomError = GetDlpEntryError;
+
+// Alias of getDlpEntry (same route, alternate export name upstream).
+export const getDlpEntryIntegration = getDlpEntry;
+export type GetDlpEntryIntegrationRequest = GetDlpEntryRequest;
+export type GetDlpEntryIntegrationResponse = GetDlpEntryResponse;
+export type GetDlpEntryIntegrationError = GetDlpEntryError;
+
+// Alias of getDlpEntry (same route, alternate export name upstream).
+export const getDlpEntryPredefined = getDlpEntry;
+export type GetDlpEntryPredefinedRequest = GetDlpEntryRequest;
+export type GetDlpEntryPredefinedResponse = GetDlpEntryResponse;
+export type GetDlpEntryPredefinedError = GetDlpEntryError;
+
+// Alias of listDlpEntries (same route, alternate export name upstream).
+export const listDlpEntryCustoms = listDlpEntries;
+export type ListDlpEntryCustomsRequest = ListDlpEntriesRequest;
+export type ListDlpEntryCustomsResponse = ListDlpEntriesResponse;
+export type ListDlpEntryCustomsError = ListDlpEntriesError;
+
+// Alias of listDlpEntries (same route, alternate export name upstream).
+export const listDlpEntryIntegrations = listDlpEntries;
+export type ListDlpEntryIntegrationsRequest = ListDlpEntriesRequest;
+export type ListDlpEntryIntegrationsResponse = ListDlpEntriesResponse;
+export type ListDlpEntryIntegrationsError = ListDlpEntriesError;
+
+// Alias of listDlpEntries (same route, alternate export name upstream).
+export const listDlpEntryPredefineds = listDlpEntries;
+export type ListDlpEntryPredefinedsRequest = ListDlpEntriesRequest;
+export type ListDlpEntryPredefinedsResponse = ListDlpEntriesResponse;
+export type ListDlpEntryPredefinedsError = ListDlpEntriesError;

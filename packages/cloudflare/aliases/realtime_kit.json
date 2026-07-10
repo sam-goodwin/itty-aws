@@ -1,0 +1,6 @@
+[
+  {
+    "alias": "getOrgAnalyticsLivestream",
+    "target": "getOrgAnalyticsAnalytic"
+  }
+]

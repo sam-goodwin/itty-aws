@@ -1,0 +1,18 @@
+[
+  {
+    "alias": "createAiToMarkdown",
+    "target": "transformToMarkdown"
+  },
+  {
+    "alias": "summaryV2AiBot",
+    "target": "summaryAiTimeseriesGroup"
+  },
+  {
+    "alias": "timeseriesAiTimeseriesGroup",
+    "target": "timeseriesAiBot"
+  },
+  {
+    "alias": "timeseriesGroupsAiTimeseriesGroup",
+    "target": "timeseriesGroupsAiBot"
+  }
+]

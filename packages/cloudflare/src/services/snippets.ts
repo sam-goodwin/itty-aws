@@ -589,3 +589,9 @@ export const rulesList: API.OperationMethod<
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));
+
+// Alias of getRule (same route, alternate export name upstream).
+export const listRules = getRule;
+export type ListRulesRequest = GetRuleRequest;
+export type ListRulesResponse = GetRuleResponse;
+export type ListRulesError = GetRuleError;

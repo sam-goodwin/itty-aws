@@ -93351,3 +93351,29 @@ export const verticalAttackLayer7Top: API.OperationMethod<
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));
+
+// Alias of transformToMarkdown (same route, alternate export name upstream).
+export const createAiToMarkdown = transformToMarkdown;
+export type CreateAiToMarkdownRequest = TransformToMarkdownRequest;
+export type CreateAiToMarkdownResponse = TransformToMarkdownResponse;
+export type CreateAiToMarkdownError = TransformToMarkdownError;
+
+// Alias of summaryAiTimeseriesGroup (same route, alternate export name upstream).
+export const summaryV2AiBot = summaryAiTimeseriesGroup;
+export type SummaryV2AiBotRequest = SummaryAiTimeseriesGroupRequest;
+export type SummaryV2AiBotResponse = SummaryAiTimeseriesGroupResponse;
+export type SummaryV2AiBotError = SummaryAiTimeseriesGroupError;
+
+// Alias of timeseriesAiBot (same route, alternate export name upstream).
+export const timeseriesAiTimeseriesGroup = timeseriesAiBot;
+export type TimeseriesAiTimeseriesGroupRequest = TimeseriesAiBotRequest;
+export type TimeseriesAiTimeseriesGroupResponse = TimeseriesAiBotResponse;
+export type TimeseriesAiTimeseriesGroupError = TimeseriesAiBotError;
+
+// Alias of timeseriesGroupsAiBot (same route, alternate export name upstream).
+export const timeseriesGroupsAiTimeseriesGroup = timeseriesGroupsAiBot;
+export type TimeseriesGroupsAiTimeseriesGroupRequest =
+  TimeseriesGroupsAiBotRequest;
+export type TimeseriesGroupsAiTimeseriesGroupResponse =
+  TimeseriesGroupsAiBotResponse;
+export type TimeseriesGroupsAiTimeseriesGroupError = TimeseriesGroupsAiBotError;

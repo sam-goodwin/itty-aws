@@ -1,0 +1,14 @@
+[
+  {
+    "alias": "bulkDeleteNamespaceKeys",
+    "target": "bulkDeleteNamespaces"
+  },
+  {
+    "alias": "bulkGetNamespaceKeys",
+    "target": "bulkGetNamespaces"
+  },
+  {
+    "alias": "bulkPutNamespaceKeys",
+    "target": "bulkPutNamespaces"
+  }
+]

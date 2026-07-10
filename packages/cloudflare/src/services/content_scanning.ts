@@ -614,3 +614,15 @@ export const update: API.OperationMethod<
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));
+
+// Alias of getContentScanning (same route, alternate export name upstream).
+export const getSetting = getContentScanning;
+export type GetSettingRequest = GetContentScanningRequest;
+export type GetSettingResponse = GetContentScanningResponse;
+export type GetSettingError = GetContentScanningError;
+
+// Alias of createContentScanning (same route, alternate export name upstream).
+export const putContentScanning = createContentScanning;
+export type PutContentScanningRequest = CreateContentScanningRequest;
+export type PutContentScanningResponse = CreateContentScanningResponse;
+export type PutContentScanningError = CreateContentScanningError;

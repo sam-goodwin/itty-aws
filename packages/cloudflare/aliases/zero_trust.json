@@ -1,0 +1,34 @@
+[
+  {
+    "alias": "createDlpEntryCustom",
+    "target": "createDlpEntry"
+  },
+  {
+    "alias": "deleteDlpEntryCustom",
+    "target": "deleteDlpEntry"
+  },
+  {
+    "alias": "getDlpEntryCustom",
+    "target": "getDlpEntry"
+  },
+  {
+    "alias": "getDlpEntryIntegration",
+    "target": "getDlpEntry"
+  },
+  {
+    "alias": "getDlpEntryPredefined",
+    "target": "getDlpEntry"
+  },
+  {
+    "alias": "listDlpEntryCustoms",
+    "target": "listDlpEntries"
+  },
+  {
+    "alias": "listDlpEntryIntegrations",
+    "target": "listDlpEntries"
+  },
+  {
+    "alias": "listDlpEntryPredefineds",
+    "target": "listDlpEntries"
+  }
+]

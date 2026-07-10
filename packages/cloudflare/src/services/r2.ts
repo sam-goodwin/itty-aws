@@ -5158,3 +5158,27 @@ export const uploadBucketObject: API.OperationMethod<
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));
+
+// Alias of deleteBucketObject (same route, alternate export name upstream).
+export const deleteObject = deleteBucketObject;
+export type DeleteObjectRequest = DeleteBucketObjectRequest;
+export type DeleteObjectResponse = DeleteBucketObjectResponse;
+export type DeleteObjectError = DeleteBucketObjectError;
+
+// Alias of getBucketObject (same route, alternate export name upstream).
+export const getObject = getBucketObject;
+export type GetObjectRequest = GetBucketObjectRequest;
+export type GetObjectResponse = GetBucketObjectResponse;
+export type GetObjectError = GetBucketObjectError;
+
+// Alias of listBucketObjects (same route, alternate export name upstream).
+export const listObjects = listBucketObjects;
+export type ListObjectsRequest = ListBucketObjectsRequest;
+export type ListObjectsResponse = ListBucketObjectsResponse;
+export type ListObjectsError = ListBucketObjectsError;
+
+// Alias of uploadBucketObject (same route, alternate export name upstream).
+export const putObject = uploadBucketObject;
+export type PutObjectRequest = UploadBucketObjectRequest;
+export type PutObjectResponse = UploadBucketObjectResponse;
+export type PutObjectError = UploadBucketObjectError;
