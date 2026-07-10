@@ -200,9 +200,44 @@ export const CreateContainerApplicationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateContainerApplicationRequest",
 }) as any as S.Schema<CreateContainerApplicationRequest>;
 
-export type CreateContainerApplicationResponse = unknown;
+export interface ContainerApplicationItem {
+  id?: string;
+  name?: string;
+  accountId?: string;
+  schedulingPolicy?: string;
+  instances?: number;
+  maxInstances?: number;
+  constraints?: unknown;
+  affinities?: unknown;
+  configuration?: ContainerConfiguration;
+  durableObjects?: DurableObjectsRef;
+  createdAt?: string;
+  version?: number;
+}
+export const ContainerApplicationItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    accountId: S.optional(S.String.pipe(T.Body("account_id"))),
+    schedulingPolicy: S.optional(S.String.pipe(T.Body("scheduling_policy"))),
+    instances: S.optional(S.Number),
+    maxInstances: S.optional(S.Number.pipe(T.Body("max_instances"))),
+    constraints: S.optional(S.Unknown),
+    affinities: S.optional(S.Unknown),
+    configuration: S.optional(ContainerConfiguration),
+    durableObjects: S.optional(
+      DurableObjectsRef.pipe(T.Body("durable_objects")),
+    ),
+    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
+    version: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "ContainerApplicationItem",
+}) as any as S.Schema<ContainerApplicationItem>;
+
+export type CreateContainerApplicationResponse = ContainerApplicationItem;
 export const CreateContainerApplicationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.EnvelopePayloadRoot()),
+  ContainerApplicationItem.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "CreateContainerApplicationResponse",
 }) as any as S.Schema<CreateContainerApplicationResponse>;
@@ -239,10 +274,11 @@ export const CreateContainerApplicationRolloutRequest = /*@__PURE__*/ S.suspend(
   identifier: "CreateContainerApplicationRolloutRequest",
 }) as any as S.Schema<CreateContainerApplicationRolloutRequest>;
 
-export type CreateContainerApplicationRolloutResponse = unknown;
+export type CreateContainerApplicationRolloutResponse =
+  ContainerApplicationItem;
 export const CreateContainerApplicationRolloutResponse =
   /*@__PURE__*/ S.suspend(() =>
-    S.Unknown.pipe(T.EnvelopePayloadRoot()),
+    ContainerApplicationItem.pipe(T.EnvelopePayloadRoot()),
   ).annotate({
     identifier: "CreateContainerApplicationRolloutResponse",
   }) as any as S.Schema<CreateContainerApplicationRolloutResponse>;
@@ -324,9 +360,9 @@ export const GetContainerApplicationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetContainerApplicationRequest",
 }) as any as S.Schema<GetContainerApplicationRequest>;
 
-export type GetContainerApplicationResponse = unknown;
+export type GetContainerApplicationResponse = ContainerApplicationItem;
 export const GetContainerApplicationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.EnvelopePayloadRoot()),
+  ContainerApplicationItem.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "GetContainerApplicationResponse",
 }) as any as S.Schema<GetContainerApplicationResponse>;
@@ -372,9 +408,14 @@ export const ListContainerApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListContainerApplicationsRequest",
 }) as any as S.Schema<ListContainerApplicationsRequest>;
 
-export type ListContainerApplicationsResponse = unknown;
+export type ContainerApplicationItemList = ContainerApplicationItem[];
+export const ContainerApplicationItemList = /*@__PURE__*/ S.Array(
+  ContainerApplicationItem,
+) as any as S.Schema<ContainerApplicationItemList>;
+
+export type ListContainerApplicationsResponse = ContainerApplicationItemList;
 export const ListContainerApplicationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.EnvelopePayloadRoot()),
+  ContainerApplicationItemList.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "ListContainerApplicationsResponse",
 }) as any as S.Schema<ListContainerApplicationsResponse>;
@@ -410,9 +451,9 @@ export const UpdateContainerApplicationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateContainerApplicationRequest",
 }) as any as S.Schema<UpdateContainerApplicationRequest>;
 
-export type UpdateContainerApplicationResponse = unknown;
+export type UpdateContainerApplicationResponse = ContainerApplicationItem;
 export const UpdateContainerApplicationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.EnvelopePayloadRoot()),
+  ContainerApplicationItem.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "UpdateContainerApplicationResponse",
 }) as any as S.Schema<UpdateContainerApplicationResponse>;
