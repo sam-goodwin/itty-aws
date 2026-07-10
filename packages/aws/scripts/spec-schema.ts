@@ -41,7 +41,7 @@ export const CategorySchema = S.Literals([
   AbortedError,
   NotFoundError,
   AlreadyExistsError,
-  DependencyViolationError
+  DependencyViolationError,
 ]);
 export type CategorySchema = typeof CategorySchema.Type;
 
@@ -61,6 +61,48 @@ export const ErrorAlias = S.Struct({
 export type ErrorAlias = typeof ErrorAlias.Type;
 
 /**
+ * Message predicate for synthetic error matching.
+ * A plain string is an exact match; the object form supports substring
+ * (`includes`) and regular-expression (`matches`) predicates. An object
+ * must specify at least one of `includes`/`matches` — an empty object
+ * matches nothing.
+ */
+export const MessageMatcher = S.Union([
+  S.String,
+  S.Struct({
+    includes: S.optional(S.String),
+    matches: S.optional(S.String),
+  }),
+]);
+export type MessageMatcher = typeof MessageMatcher.Type;
+
+/**
+ * Synthetic error - carves a NEW typed error class out of an existing wire
+ * error using a message predicate. Some AWS services overload a single wire
+ * error (e.g. X-Ray's InvalidRequestException) for semantically distinct
+ * failures that are only distinguishable by message text. A synthetic error
+ * gives each failure mode its own tag in the operation's typed error union;
+ * the runtime checks synthetic matchers BEFORE the base wire-code lookup so
+ * the tag specializes the base error.
+ */
+export const SyntheticError = S.Struct({
+  /**
+   * The new error tag to synthesize (e.g., "SamplingRuleNotFound").
+   */
+  name: S.String,
+  /**
+   * The wire error code this error derives from (e.g., "InvalidRequestException").
+   * Compared against the wire code with Exception/Error suffix normalization.
+   */
+  from: S.String,
+  /**
+   * The message predicate that selects this error over the base wire error.
+   */
+  message: MessageMatcher,
+});
+export type SyntheticError = typeof SyntheticError.Type;
+
+/**
  * Patches for a single operation
  */
 export const OperationPatch = S.Struct({
@@ -74,6 +116,12 @@ export const OperationPatch = S.Struct({
    * Useful for deduplicating errors like "Error" vs "ErrorException".
    */
   aliases: S.optional(S.Array(ErrorAlias)),
+  /**
+   * Synthetic errors - new error classes carved out of an existing wire error
+   * by message predicate. Checked before the base error at runtime so the
+   * synthetic tag specializes the overloaded wire error.
+   */
+  syntheticErrors: S.optional(S.Array(SyntheticError)),
 });
 export type OperationPatch = typeof OperationPatch.Type;
 

@@ -2787,13 +2787,6 @@
         "UnauthorizedOperation"
       ]
     },
-    "cancelConversion": {
-      "errors": [
-        "RequestLimitExceeded",
-        "InvalidAction",
-        "UnauthorizedOperation"
-      ]
-    },
     "cancelDeclarativePoliciesReport": {
       "errors": [
         "RequestLimitExceeded",
@@ -3835,13 +3828,6 @@
       "errors": [
         "RequestLimitExceeded",
         "InvalidInstanceID.Malformed",
-        "UnauthorizedOperation"
-      ]
-    },
-    "modifyInstanceNetworkPerformance": {
-      "errors": [
-        "RequestLimitExceeded",
-        "InvalidAction",
         "UnauthorizedOperation"
       ]
     },

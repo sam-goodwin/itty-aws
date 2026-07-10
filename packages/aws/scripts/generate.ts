@@ -15,7 +15,11 @@ import {
 import * as FileSystem from "effect/FileSystem";
 import * as Path from "effect/Path";
 import * as ChildProcess from "effect/unstable/process/ChildProcess";
-import { loadServiceSpecPatch, type ServiceSpec } from "./spec-schema.ts";
+import {
+  loadServiceSpecPatch,
+  type ServiceSpec,
+  type SyntheticError,
+} from "./spec-schema.ts";
 import type { RuleSetObject } from "./compile-rules.ts";
 import { generateRuleSetCode } from "./compile-rules.ts";
 import {
@@ -117,6 +121,16 @@ class ShapeNotFound extends Data.TaggedError("ShapeNotFound")<{
   message: string;
 }> {}
 class ProtocolNotFound extends Data.TaggedError("ProtocolNotFound")<{}> {}
+
+// A patch file references an operation that does not exist in the Smithy
+// model — usually a typo'd key that would otherwise silently no-op.
+class OrphanedPatchOperations extends Data.TaggedError(
+  "OrphanedPatchOperations",
+)<{
+  sdkId: string;
+  operations: string[];
+  message: string;
+}> {}
 
 //* todo(pear): better error here - most of these need to be handled
 class UnableToTransformShapeToSchema extends Data.TaggedError(
@@ -1552,7 +1566,9 @@ const convertShapeToSchema: (
                 .map((v) => `"${v}"`)
                 .join("\n  | ");
               const typeAlias = `export type ${schemaName} =\n  | ${literalUnion}\n  | (string & {});`;
-              const schemaDef = annotatePureExportConst(`export const ${schemaName} = S.String;`);
+              const schemaDef = annotatePureExportConst(
+                `export const ${schemaName} = S.String;`,
+              );
               return addAlias(Effect.succeed(`${typeAlias}\n${schemaDef}`), []);
             },
           ),
@@ -1583,7 +1599,9 @@ const convertShapeToSchema: (
               const literals = enumValues.join(", ");
               const literalUnion = enumValues.join(" | ");
               const typeAlias = `export type ${schemaName} = ${literalUnion};`;
-              const schemaDef = annotatePureExportConst(`export const ${schemaName} = S.Literals([${literals}]);`);
+              const schemaDef = annotatePureExportConst(
+                `export const ${schemaName} = S.Literals([${literals}]);`,
+              );
               return addAlias(Effect.succeed(`${typeAlias}\n${schemaDef}`), []);
             },
           ),
@@ -1638,8 +1656,12 @@ const convertShapeToSchema: (
                       );
                       const typeAlias = `export type ${schemaName} = ${memberTsType}[];`;
                       const schemaDef = isCyclic
-                        ? annotatePureExportConst(`export const ${schemaName} = S.Array(${innerType})${sparsePipe} as any as S.Schema<${schemaName}>;`)
-                        : annotatePureExportConst(`export const ${schemaName} = S.Array(${innerType})${sparsePipe};`);
+                        ? annotatePureExportConst(
+                            `export const ${schemaName} = S.Array(${innerType})${sparsePipe} as any as S.Schema<${schemaName}>;`,
+                          )
+                        : annotatePureExportConst(
+                            `export const ${schemaName} = S.Array(${innerType})${sparsePipe};`,
+                          );
                       return `${typeAlias}\n${schemaDef}`;
                     }),
                   ),
@@ -2010,7 +2032,9 @@ const convertShapeToSchema: (
                     // Generate interface + suspend(struct) pattern
                     // Trait annotations inside suspend, identifier outside
                     const interfaceDef = `export interface ${exportedName} { ${interfaceFields} }`;
-                    const schemaDef = annotatePureExportConst(`export const ${exportedName} = S.suspend(() => S.Struct({${schemaFields}})${encodeKeysPipe}${innerPipe})${outerAnnotation} as any as S.Schema<${exportedName}>;`);
+                    const schemaDef = annotatePureExportConst(
+                      `export const ${exportedName} = S.suspend(() => S.Struct({${schemaFields}})${encodeKeysPipe}${innerPipe})${outerAnnotation} as any as S.Schema<${exportedName}>;`,
+                    );
 
                     return `${interfaceDef}\n${schemaDef}`;
                   }),
@@ -2259,8 +2283,12 @@ const convertShapeToSchema: (
                       }
 
                       const schemaDef = isCyclic
-                        ? annotatePureExportConst(`export const ${schemaName} = ${recordExpr} as any as S.Schema<${schemaName}>;`)
-                        : annotatePureExportConst(`export const ${schemaName} = ${recordExpr};`);
+                        ? annotatePureExportConst(
+                            `export const ${schemaName} = ${recordExpr} as any as S.Schema<${schemaName}>;`,
+                          )
+                        : annotatePureExportConst(
+                            `export const ${schemaName} = ${recordExpr};`,
+                          );
                       return `${typeAlias}\n${schemaDef}`;
                     }),
                   ),
@@ -2348,13 +2376,22 @@ const addError = Effect.fn(function* (error: {
   name: string;
   shapeId: string;
   tag?: string; // Original AWS error code (may contain dots)
+  // When set, this error is synthesized from an existing wire error + a
+  // message predicate (see spec-schema.ts SyntheticError). It inherits the
+  // base error's fields and carries a T.SyntheticError annotation that the
+  // response parser matches BEFORE the plain wire-code lookup.
+  synthetic?: SyntheticError;
 }) {
   const sdkFile = yield* SdkFile;
   const existingErrors = yield* Ref.get(sdkFile.errors);
   if (!existingErrors.some((e) => e.name === error.name)) {
-    // Get the inline fields from errorFields map (from Smithy model)
+    // Get the inline fields from errorFields map (from Smithy model).
+    // Synthetic errors reuse the fields of the wire error they derive from.
     const errorFieldsMap = yield* Ref.get(sdkFile.errorFields);
-    let fields = errorFieldsMap.get(error.name) ?? "{}";
+    let fields =
+      errorFieldsMap.get(
+        error.synthetic ? sanitizeErrorName(error.synthetic.from) : error.name,
+      ) ?? "{}";
 
     // Check for error member patches from spec file
     const errorPatches = sdkFile.serviceSpec.errors?.[error.name];
@@ -2416,6 +2453,18 @@ const addError = Effect.fn(function* (error: {
       } else {
         annotations.push(`T.Retryable()`);
       }
+    }
+
+    // Synthetic errors carry the matcher (base wire code + message
+    // predicate) as an annotation the response parser evaluates BEFORE the
+    // plain wire-code lookup.
+    if (error.synthetic) {
+      annotations.push(
+        `T.SyntheticError(${JSON.stringify({
+          from: error.synthetic.from,
+          message: error.synthetic.message,
+        })})`,
+      );
     }
 
     // Map HTTP status codes to categories
@@ -2627,7 +2676,9 @@ const generateClient = Effect.fn(function* (
             const outerAnnotation = `.annotate({ identifier: "${className}" })`;
 
             const interfaceDef = `export interface ${className} {}`;
-            const schemaDef = annotatePureExportConst(`export const ${className} = S.suspend(() => S.Struct({})${innerPipe})${outerAnnotation} as any as S.Schema<${className}>;`);
+            const schemaDef = annotatePureExportConst(
+              `export const ${className} = S.suspend(() => S.Struct({})${innerPipe})${outerAnnotation} as any as S.Schema<${className}>;`,
+            );
             const definition = `${interfaceDef}\n${schemaDef}`;
             yield* Ref.update(sdkFile.schemas, (arr) => [
               ...arr,
@@ -2661,7 +2712,9 @@ const generateClient = Effect.fn(function* (
             const outerAnnotation = `.annotate({ identifier: "${className}" })`;
 
             const interfaceDef = `export interface ${className} {}`;
-            const schemaDef = annotatePureExportConst(`export const ${className} = S.suspend(() => S.Struct({})${innerPipe})${outerAnnotation} as any as S.Schema<${className}>;`);
+            const schemaDef = annotatePureExportConst(
+              `export const ${className} = S.suspend(() => S.Struct({})${innerPipe})${outerAnnotation} as any as S.Schema<${className}>;`,
+            );
             const definition = `${interfaceDef}\n${schemaDef}`;
             yield* Ref.update(sdkFile.schemas, (arr) => [
               ...arr,
@@ -2676,9 +2729,12 @@ const generateClient = Effect.fn(function* (
 
         // Get patched errors from spec file for this operation
         // Use lowercase operation name to match spec file format
-        const patchedErrors =
-          sdkFile.serviceSpec.operations?.[formatName(operationShapeName, true)]
-            ?.errors ?? [];
+        const operationPatch =
+          sdkFile.serviceSpec.operations?.[
+            formatName(operationShapeName, true)
+          ];
+        const patchedErrors = operationPatch?.errors ?? [];
+        const patchedSyntheticErrors = operationPatch?.syntheticErrors ?? [];
 
         // Collect error names for both the runtime array and the type annotation
         const errorNames = yield* Effect.gen(function* () {
@@ -2714,8 +2770,24 @@ const generateClient = Effect.fn(function* (
               }),
           );
 
+          // Process synthetic errors: NEW tags carved out of an existing
+          // wire error by message predicate (see spec-schema.ts
+          // SyntheticError). Processed after model errors so the base
+          // error's fields are available in errorFields.
+          const syntheticErrors = yield* Effect.forEach(
+            patchedSyntheticErrors,
+            (synthetic) =>
+              addError({
+                name: sanitizeErrorName(synthetic.name),
+                shapeId: `synthetic#${synthetic.name}`,
+                synthetic,
+              }),
+          );
+
           // Combine and deduplicate
-          return [...new Set([...modelErrors, ...patchErrors])];
+          return [
+            ...new Set([...modelErrors, ...patchErrors, ...syntheticErrors]),
+          ];
         });
 
         // Build the errors array string for runtime
@@ -2958,6 +3030,32 @@ const generateClient = Effect.fn(function* (
         concurrency: "unbounded",
       },
     );
+
+    // Orphan detection: every operation key in patches/{sdkId}.json must
+    // correspond to a generated operation. A typo'd key would otherwise
+    // silently no-op — the exact failure mode patches exist to prevent.
+    const generatedOperationNames = new Set(
+      [...new Set(allOperationIds)].map((id) => formatName(id, true)),
+    );
+    const orphanedPatchOperations = Object.keys(
+      sdkFile.serviceSpec.operations ?? {},
+    ).filter((name) => !generatedOperationNames.has(name));
+    if (orphanedPatchOperations.length > 0) {
+      return yield* Effect.fail(
+        new OrphanedPatchOperations({
+          sdkId: sdkFile.serviceTraits.sdkId,
+          operations: orphanedPatchOperations,
+          message: `patches/${sdkFile.serviceTraits.sdkId
+            .toLowerCase()
+            .replaceAll(
+              " ",
+              "-",
+            )}.json patches unknown operation(s): ${orphanedPatchOperations.join(
+            ", ",
+          )}`,
+        }),
+      );
+    }
 
     // Get schemas and sort them topologically
     // Cycles were already computed before generation, so just sort
@@ -3286,14 +3384,24 @@ BunRuntime.runMain(
       "partition",
       "partitions.json",
     );
-    const partitionsExists = yield* fs.exists(partitionsSrc).pipe(Effect.catch(() => Effect.succeed(false)));
+    const partitionsExists = yield* fs
+      .exists(partitionsSrc)
+      .pipe(Effect.catch(() => Effect.succeed(false)));
     if (partitionsExists) {
-      yield* fs.makeDirectory(path.join("src", "rules-engine"), { recursive: true });
-      const partitionsDest = path.join("src", "rules-engine", "partitions.json");
+      yield* fs.makeDirectory(path.join("src", "rules-engine"), {
+        recursive: true,
+      });
+      const partitionsDest = path.join(
+        "src",
+        "rules-engine",
+        "partitions.json",
+      );
       yield* fs.copyFile(partitionsSrc, partitionsDest);
       yield* Console.log("✅ partitions.json");
     } else {
-      yield* Console.log("⚠️  partitions.json not found (smithy submodule not initialized)");
+      yield* Console.log(
+        "⚠️  partitions.json not found (smithy submodule not initialized)",
+      );
     }
 
     const rootModelsPath = path.join(AWS_MODELS_PATH, "models");

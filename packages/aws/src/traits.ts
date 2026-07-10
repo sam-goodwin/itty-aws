@@ -564,6 +564,28 @@ export interface AwsQueryErrorTrait {
 export const AwsQueryError = (trait: AwsQueryErrorTrait) =>
   makeAnnotation(awsQueryErrorSymbol, trait);
 
+/**
+ * distilled patch trait - synthesizes a NEW error class from an existing wire
+ * error plus a message predicate. Some AWS services overload a single wire
+ * error (e.g. X-Ray's InvalidRequestException) for semantically distinct
+ * failures that are only distinguishable by message text. The response parser
+ * checks synthetic matchers BEFORE the plain wire-code lookup so the
+ * synthetic tag specializes the base error.
+ */
+export const syntheticErrorSymbol = "distilled-aws/synthetic-error" as const;
+export interface SyntheticErrorTrait {
+  /** The wire error code this synthetic error derives from (e.g., "InvalidRequestException") */
+  from: string;
+  /**
+   * Message predicate: a plain string is an exact match; the object form
+   * supports substring (`includes`) and regular-expression (`matches`)
+   * predicates.
+   */
+  message: string | { includes?: string; matches?: string };
+}
+export const SyntheticError = (trait: SyntheticErrorTrait) =>
+  makeAnnotation(syntheticErrorSymbol, trait);
+
 /** aws.customizations#s3UnwrappedXmlOutput - S3 output not wrapped in operation-level XML node */
 export const s3UnwrappedXmlOutputSymbol =
   "distilled-aws/aws.customizations#s3UnwrappedXmlOutput" as const;
@@ -1050,6 +1072,11 @@ export const getAwsQueryError = (
   ast: AST.AST,
 ): AwsQueryErrorTrait | undefined =>
   getAnnotationUnwrap<AwsQueryErrorTrait>(ast, awsQueryErrorSymbol);
+
+export const getSyntheticError = (
+  ast: AST.AST,
+): SyntheticErrorTrait | undefined =>
+  getAnnotationUnwrap<SyntheticErrorTrait>(ast, syntheticErrorSymbol);
 
 export const getTimestampFormat = (
   prop: AST.PropertySignature,

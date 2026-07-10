@@ -14,7 +14,13 @@ import * as Effect from "effect/Effect";
 import * as Schema from "effect/Schema";
 import * as SchemaIssue from "effect/SchemaIssue";
 import { COMMON_ERRORS, UnknownAwsError } from "../errors.ts";
-import { getAwsQueryError, getHttpHeader, getProtocol } from "../traits.ts";
+import {
+  getAwsQueryError,
+  getHttpHeader,
+  getProtocol,
+  getSyntheticError,
+  type SyntheticErrorTrait,
+} from "../traits.ts";
 import { getIdentifier, getPropertySignatures } from "../util/ast.ts";
 import type { Operation } from "./operation.ts";
 import type { Protocol, ProtocolHandler } from "./protocol.ts";
@@ -35,6 +41,38 @@ export interface ResponseParserOptions {
 export type ResponseParser<A, R> = (
   response: Response,
 ) => Effect.Effect<A, SchemaIssue.Issue, R>;
+
+/**
+ * Strip the conventional Exception/Error suffix from a wire error code so
+ * synthetic `from` codes match both the full shape name and the short form.
+ */
+const stripErrorSuffix = (code: string): string => {
+  for (const suffix of ["Exception", "Error"]) {
+    if (code.endsWith(suffix)) return code.slice(0, -suffix.length);
+  }
+  return code;
+};
+
+const wireCodeMatches = (from: string, errorCode: string): boolean =>
+  from === errorCode || stripErrorSuffix(from) === stripErrorSuffix(errorCode);
+
+/**
+ * Evaluate a synthetic error's message predicate. A plain string is an exact
+ * match; the object form supports substring (`includes`) and regex
+ * (`matches`) predicates. An empty object predicate would match every error
+ * — reject it.
+ */
+const matchesMessage = (
+  matcher: SyntheticErrorTrait["message"],
+  message: string,
+): boolean => {
+  if (typeof matcher === "string") return matcher === message;
+  const { includes, matches } = matcher;
+  if (includes === undefined && matches === undefined) return false;
+  if (includes !== undefined && !message.includes(includes)) return false;
+  if (matches !== undefined && !new RegExp(matches).test(message)) return false;
+  return true;
+};
 
 /**
  * Create a response parser for a given operation.
@@ -99,11 +137,26 @@ export const makeResponseParser = <A>(
   // `Message` field) takes precedence over the field-less common error of the
   // same name. Otherwise the common error would clobber the specific one in
   // the map and the decoded error would drop its message/data.
+  // Synthetic errors (from spec patches) carve a new tag out of an existing
+  // wire error using a message predicate. They are matched BEFORE the plain
+  // wire-code lookup so the synthetic tag specializes the base error, and
+  // are intentionally NOT registered by wire code (the wire never returns
+  // the synthetic tag).
+  const syntheticErrors: Array<{
+    schema: Schema.Top;
+    trait: SyntheticErrorTrait;
+  }> = [];
+
   for (const err of COMMON_ERRORS) {
     registerError(err);
   }
   for (const err of operation.errors ?? []) {
-    registerError(err);
+    const synthetic = getSyntheticError(err.ast);
+    if (synthetic) {
+      syntheticErrors.push({ schema: err, trait: synthetic });
+    } else {
+      registerError(err);
+    }
   }
 
   // Return a function that parses responses
@@ -144,7 +197,25 @@ export const makeResponseParser = <A>(
       ).Message;
     }
 
-    const errorSchema = errorSchemas.get(errorCode);
+    // Synthetic errors specialize the base wire error. An exact-message
+    // matcher outranks a predicate matcher; ties resolve to declaration
+    // order (first registered wins).
+    const errorMessage =
+      data && typeof (data as Record<string, unknown>).message === "string"
+        ? ((data as Record<string, unknown>).message as string)
+        : "";
+    let errorSchema: Schema.Top | undefined;
+    let bestScore = 0;
+    for (const { schema, trait } of syntheticErrors) {
+      if (!wireCodeMatches(trait.from, errorCode)) continue;
+      if (!matchesMessage(trait.message, errorMessage)) continue;
+      const score = typeof trait.message === "string" ? 2 : 1;
+      if (score > bestScore) {
+        bestScore = score;
+        errorSchema = schema;
+      }
+    }
+    errorSchema ??= errorSchemas.get(errorCode);
 
     if (errorSchema) {
       // Extract headers for error members with HttpHeader traits

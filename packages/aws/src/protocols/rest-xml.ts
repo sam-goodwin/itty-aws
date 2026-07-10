@@ -517,9 +517,12 @@ function deserializeValue(ast: AST.AST, value: unknown): unknown {
     if (!elAST) return Array.isArray(value) ? value : [value];
 
     // Handle wrapped arrays: { Item: [...] }
-    // Use xmlName trait first, then fall back to class identifier
+    // Use xmlName trait first, then fall back to class identifier, then the
+    // Smithy default wrapper for non-flattened lists: <member> (e.g.
+    // CloudFront RealtimeLogConfig.EndPoints, whose list member carries no
+    // xmlName trait and arrives as <EndPoints><member>...</member>).
     const elTag = getXmlNameFromAST(elAST) ?? getIdentifier(elAST);
-    const unwrapped = unwrapArrayValue(value, elTag);
+    const unwrapped = unwrapArrayValue(value, elTag, ["member"]);
 
     const items = Array.isArray(unwrapped) ? unwrapped : [unwrapped];
     return items.map((item) => deserializeValue(elAST, item));

@@ -1259,7 +1259,7 @@ export const DelegationSet = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface CreateHostedZoneResponse {
   HostedZone: HostedZone;
   ChangeInfo: ChangeInfo;
-  DelegationSet: DelegationSet;
+  DelegationSet?: DelegationSet;
   VPC?: VPC;
   Location: string;
 }
@@ -1268,7 +1268,7 @@ export const CreateHostedZoneResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
     S.Struct({
       HostedZone: HostedZone,
       ChangeInfo: ChangeInfo,
-      DelegationSet: DelegationSet,
+      DelegationSet: S.optional(DelegationSet),
       VPC: S.optional(VPC),
       Location: S.String.pipe(T.HttpHeader("Location")),
     }).pipe(ns),
@@ -3161,13 +3161,13 @@ export const QueryLoggingConfigs = /*@__PURE__*/ /*#__PURE__*/ S.Array(
   }),
 );
 export interface ListQueryLoggingConfigsResponse {
-  QueryLoggingConfigs: QueryLoggingConfig[];
+  QueryLoggingConfigs?: QueryLoggingConfig[];
   NextToken?: string;
 }
 export const ListQueryLoggingConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     S.Struct({
-      QueryLoggingConfigs: QueryLoggingConfigs,
+      QueryLoggingConfigs: S.optional(QueryLoggingConfigs),
       NextToken: S.optional(S.String),
     }).pipe(ns),
   ).annotate({
@@ -3695,14 +3695,14 @@ export const ListVPCAssociationAuthorizationsRequest =
 export interface ListVPCAssociationAuthorizationsResponse {
   HostedZoneId: string;
   NextToken?: string;
-  VPCs: VPC[];
+  VPCs?: VPC[];
 }
 export const ListVPCAssociationAuthorizationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     S.Struct({
       HostedZoneId: S.String,
       NextToken: S.optional(S.String),
-      VPCs: VPCs,
+      VPCs: S.optional(VPCs),
     }).pipe(ns),
   ).annotate({
     identifier: "ListVPCAssociationAuthorizationsResponse",
