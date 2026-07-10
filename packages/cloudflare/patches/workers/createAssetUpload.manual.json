@@ -1,0 +1,16 @@
+{
+  "description": "Docs gap: the asset-upload session JWT is sent as the Authorization header (Bearer <jwt>), not a body field. Distilled binds jwtToken -> HttpHeader(Authorization). Add the member and drop the docs-absent body handling.",
+  "patches": [
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.workers#CreateAssetUploadRequest/members/jwt_token",
+      "value": {
+        "target": "smithy.api#String",
+        "traits": {
+          "smithy.api#httpHeader": "Authorization",
+          "smithy.api#documentation": "Asset-upload session JWT (sent as Bearer Authorization)."
+        }
+      }
+    }
+  ]
+}

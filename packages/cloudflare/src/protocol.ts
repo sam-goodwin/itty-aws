@@ -415,7 +415,17 @@ const encode = ({
         const token = nameOf(prop, labelSymbol);
         uri = uri.replace(`{${token}}`, encodeURIComponent(String(value)));
       } else if (hasPropAnn(prop, headerSymbol)) {
-        headers[nameOf(prop, headerSymbol).toLowerCase()] = String(value);
+        {
+          const hName = nameOf(prop, headerSymbol).toLowerCase();
+          let hVal = String(value);
+          // A member-supplied Authorization header (e.g. the asset-upload
+          // session JWT) is a raw token — Bearer-prefix it like distilled's
+          // request transform does.
+          if (hName === "authorization" && !/^Bearer\s/i.test(hVal)) {
+            hVal = `Bearer ${hVal}`;
+          }
+          headers[hName] = hVal;
+        }
       } else if (hasPropAnn(prop, querySymbol)) {
         const name = nameOf(prop, querySymbol);
         if (Array.isArray(value)) {

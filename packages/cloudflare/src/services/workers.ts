@@ -516,11 +516,14 @@ export interface CreateAssetUploadRequest {
   accountId: string;
   /** Whether the file contents are base64-encoded. Must be `true`. */
   base64: boolean;
+  /** Asset-upload session JWT (sent as Bearer Authorization). */
+  jwtToken?: string;
 }
 export const CreateAssetUploadRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     base64: S.Boolean.pipe(T.Query()),
+    jwtToken: S.optional(S.String.pipe(T.Header("Authorization"))),
   })
     .pipe(
       T.Http({
