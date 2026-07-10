@@ -4,7 +4,9 @@ import * as path from "node:path";
 import { execSync } from "node:child_process";
 import { createHash } from "node:crypto";
 import { fileURLToPath } from "node:url";
-import * as ts from "typescript";
+// typescript@7 (native) ships no JS compiler API — parse.ts needs the TS 5 API,
+// aliased as typescript-5 so its tsc bin cannot shadow the workspace typescript@7.
+import * as ts from "typescript-5";
 import { parse as parseYaml } from "yaml";
 import {
   type ErrorMatcherInfo,
