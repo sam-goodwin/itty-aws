@@ -8,6 +8,7 @@
     "outDir": "./lib",
     "rootDir": "./src",
     "resolveJsonModule": true,
+    "noCheck": true
   },
   "references": [
     {
