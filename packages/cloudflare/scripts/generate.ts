@@ -743,9 +743,15 @@ const command = Command.make(
         // patches fail the run.
         const patchDir = path.join(patchRoot, resource);
         if (yield* fs.exists(patchDir)) {
+          // Hand-written *.manual.json patches apply after the generated
+          // ones — they usually target post-rename shape names.
           const patchFiles = (yield* fs.readDirectory(patchDir))
             .filter((f) => f.endsWith(".json"))
-            .sort();
+            .sort(
+              (a, b) =>
+                Number(a.endsWith(".manual.json")) -
+                  Number(b.endsWith(".manual.json")) || a.localeCompare(b),
+            );
           for (const pf of patchFiles) {
             const parsed = JSON.parse(
               yield* fs.readFileString(path.join(patchDir, pf)),
