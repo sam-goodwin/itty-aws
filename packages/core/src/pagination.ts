@@ -64,6 +64,18 @@ export type PaginationStrategy = <
 const missingPaginationConfig = (kind: string) => Stream.die(new Error(kind));
 
 /**
+ * Whether a continuation token/cursor returned by a paginated operation
+ * means "no more pages".
+ *
+ * APIs mark the terminal page by omitting the output token, returning it
+ * as `null`, or returning it as an empty string. Treating `""` as a live
+ * token re-requests the first page forever (the request builders skip
+ * falsy cursors, so the same page is fetched in an infinite loop).
+ */
+export const isTerminalToken = (token: unknown): boolean =>
+  token === undefined || token === null || token === "";
+
+/**
  * Creates a stream for single-shot list endpoints that still expose the paginated API surface.
  */
 export const paginateSingle: PaginationStrategy = (
@@ -227,7 +239,7 @@ export const paginateCursor = <
 
       const nextState: State = {
         cursor: nextCursor ?? undefined,
-        done: nextCursor === null || nextCursor === undefined,
+        done: isTerminalToken(nextCursor),
       };
 
       return [response, nextState] as const;
@@ -294,7 +306,7 @@ export const paginateToken = <
 
       const nextState: State = {
         token: nextToken,
-        done: nextToken === undefined || nextToken === null,
+        done: isTerminalToken(nextToken),
       };
 
       return [response, nextState] as const;

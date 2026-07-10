@@ -11601,6 +11601,14 @@ export class TenantDatabaseQuotaExceededFault extends S.TaggedErrorClass<TenantD
     httpResponseCode: 400,
   }),
 ).pipe(C.withBadRequestError) {}
+export class InvalidParameterCombination extends S.TaggedErrorClass<InvalidParameterCombination>()(
+  "InvalidParameterCombination",
+  { message: S.optional(S.String) },
+).pipe(C.withBadRequestError) {}
+export class InvalidParameterValue extends S.TaggedErrorClass<InvalidParameterValue>()(
+  "InvalidParameterValue",
+  { message: S.optional(S.String) },
+).pipe(C.withBadRequestError) {}
 export class DBSubnetGroupNotAllowedFault extends S.TaggedErrorClass<DBSubnetGroupNotAllowedFault>()(
   "DBSubnetGroupNotAllowedFault",
   { message: S.optional(S.String) },
@@ -12726,6 +12734,8 @@ export type CreateDBInstanceError =
   | StorageTypeNotSupportedFault
   | TenantDatabaseQuotaExceededFault
   | VpcEncryptionControlViolationException
+  | InvalidParameterCombination
+  | InvalidParameterValue
   | CommonErrors;
 /**
  * Creates a new DB instance.
@@ -12768,6 +12778,8 @@ export const createDBInstance: API.OperationMethod<
     StorageTypeNotSupportedFault,
     TenantDatabaseQuotaExceededFault,
     VpcEncryptionControlViolationException,
+    InvalidParameterCombination,
+    InvalidParameterValue,
   ],
   operationName: "CreateDBInstance",
 }));
@@ -15906,6 +15918,8 @@ export type ModifyDBInstanceError =
   | StorageTypeNotSupportedFault
   | TenantDatabaseQuotaExceededFault
   | VpcEncryptionControlViolationException
+  | InvalidParameterCombination
+  | InvalidParameterValue
   | CommonErrors;
 /**
  * Modifies settings for a DB instance. You can change one or more database configuration parameters by specifying these parameters and the new values in the request. To learn what modifications you can make to your DB instance, call `DescribeValidDBInstanceModifications` before you call `ModifyDBInstance`.
@@ -15941,6 +15955,8 @@ export const modifyDBInstance: API.OperationMethod<
     StorageTypeNotSupportedFault,
     TenantDatabaseQuotaExceededFault,
     VpcEncryptionControlViolationException,
+    InvalidParameterCombination,
+    InvalidParameterValue,
   ],
   operationName: "ModifyDBInstance",
 }));

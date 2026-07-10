@@ -48,6 +48,11 @@
       "bun": "./src/errors.ts",
       "default": "./lib/errors.js"
     },
+    "./Presign": {
+      "types": "./lib/presign.d.ts",
+      "bun": "./src/presign.ts",
+      "default": "./lib/presign.js"
+    },
     "./Region": {
       "types": "./lib/region.d.ts",
       "bun": "./src/region.ts",

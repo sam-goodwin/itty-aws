@@ -237,17 +237,17 @@ export const BatchResultErrorEntryList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
   BatchResultErrorEntry,
 );
 export interface ChangeMessageVisibilityBatchResult {
-  Successful: ChangeMessageVisibilityBatchResultEntry[];
-  Failed: BatchResultErrorEntry[];
+  Successful?: ChangeMessageVisibilityBatchResultEntry[];
+  Failed?: BatchResultErrorEntry[];
 }
 export const ChangeMessageVisibilityBatchResult =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     S.Struct({
-      Successful: ChangeMessageVisibilityBatchResultEntryList.pipe(
+      Successful: S.optional(ChangeMessageVisibilityBatchResultEntryList).pipe(
         T.XmlName("ChangeMessageVisibilityBatchResultEntry"),
         T.XmlFlattened(),
       ),
-      Failed: BatchResultErrorEntryList.pipe(
+      Failed: S.optional(BatchResultErrorEntryList).pipe(
         T.XmlName("BatchResultErrorEntry"),
         T.XmlFlattened(),
       ),
@@ -379,17 +379,17 @@ export type DeleteMessageBatchResultEntryList = DeleteMessageBatchResultEntry[];
 export const DeleteMessageBatchResultEntryList =
   /*@__PURE__*/ /*#__PURE__*/ S.Array(DeleteMessageBatchResultEntry);
 export interface DeleteMessageBatchResult {
-  Successful: DeleteMessageBatchResultEntry[];
-  Failed: BatchResultErrorEntry[];
+  Successful?: DeleteMessageBatchResultEntry[];
+  Failed?: BatchResultErrorEntry[];
 }
 export const DeleteMessageBatchResult = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      Successful: DeleteMessageBatchResultEntryList.pipe(
+      Successful: S.optional(DeleteMessageBatchResultEntryList).pipe(
         T.XmlName("DeleteMessageBatchResultEntry"),
         T.XmlFlattened(),
       ),
-      Failed: BatchResultErrorEntryList.pipe(
+      Failed: S.optional(BatchResultErrorEntryList).pipe(
         T.XmlName("BatchResultErrorEntry"),
         T.XmlFlattened(),
       ),
@@ -956,13 +956,13 @@ export type SendMessageBatchResultEntryList = SendMessageBatchResultEntry[];
 export const SendMessageBatchResultEntryList =
   /*@__PURE__*/ /*#__PURE__*/ S.Array(SendMessageBatchResultEntry);
 export interface SendMessageBatchResult {
-  Successful: SendMessageBatchResultEntry[];
+  Successful?: SendMessageBatchResultEntry[];
   Failed?: BatchResultErrorEntry[];
 }
 export const SendMessageBatchResult = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      Successful: SendMessageBatchResultEntryList.pipe(
+      Successful: S.optional(SendMessageBatchResultEntryList).pipe(
         T.XmlName("SendMessageBatchResultEntry"),
         T.XmlFlattened(),
       ),

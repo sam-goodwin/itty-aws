@@ -338,6 +338,21 @@ export const make = <Op extends Operation<any, any, any>>(
   return Object.assign(outerFn, Proto);
 };
 
+/**
+ * Whether a continuation token returned by a paginated operation means
+ * "no more pages".
+ *
+ * AWS marks the terminal page by omitting the output token, returning it
+ * as `null`, or — for several services (e.g. SSM, CloudWatch Logs) — as an
+ * empty string. Treating `""` as a live token re-requests the first page
+ * with `NextToken: ""` forever (or fails with a ValidationException).
+ * This matches the official aws-sdk-js-v3 paginators, which stop on any
+ * falsy token (`hasNext = !!token`); object tokens like DynamoDB's
+ * `LastEvaluatedKey` are always truthy and unaffected.
+ */
+export const isTerminalPageToken = (token: unknown): boolean =>
+  token === undefined || token === null || token === "";
+
 export const makePaginated = <Op extends Operation<any, any, any>>(
   initOperation: () => Op,
 ): any => {
@@ -371,7 +386,7 @@ export const makePaginated = <Op extends Operation<any, any, any>>(
         // Return the full page and next state
         const nextState: State = {
           token: nextToken,
-          done: nextToken === undefined || nextToken === null,
+          done: isTerminalPageToken(nextToken),
         };
         return [response, nextState] as const;
       });

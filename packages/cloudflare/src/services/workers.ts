@@ -210,6 +210,14 @@ export class RouteNotFound extends T.applyErrorMatchers(
   [{ code: 10009 }, { status: 404 }],
 ) {}
 
+export class RouteScriptNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<RouteScriptNotFound>()("RouteScriptNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 10019 }],
+) {}
+
 export class ScriptModuleNotFound extends T.applyErrorMatchers(
   Schema.TaggedErrorClass<ScriptModuleNotFound>()("ScriptModuleNotFound", {
     code: Schema.Number,
@@ -14361,7 +14369,8 @@ export type CreateRouteError =
   | DefaultErrors
   | InvalidRoutePattern
   | InvalidRoute
-  | Forbidden;
+  | Forbidden
+  | RouteScriptNotFound;
 
 export const createRoute: API.OperationMethod<
   CreateRouteRequest,
@@ -14371,7 +14380,7 @@ export const createRoute: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateRouteRequest,
   output: CreateRouteResponse,
-  errors: [InvalidRoutePattern, InvalidRoute, Forbidden],
+  errors: [InvalidRoutePattern, InvalidRoute, Forbidden, RouteScriptNotFound],
 }));
 
 export interface UpdateRouteRequest {

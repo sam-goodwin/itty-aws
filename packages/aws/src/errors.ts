@@ -84,7 +84,14 @@ export class ValidationError extends S.TaggedErrorClass<ValidationError>()(
 
 export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
   "ValidationException",
-  {},
+  {
+    /** The human-readable validation failure reason from the service. */
+    message: S.optional(S.String),
+    /** Machine-readable reason code (e.g. "FIELD_VALIDATION_FAILED"). */
+    reason: S.optional(S.String),
+    /** Per-field validation failures, when the service reports them. */
+    fieldList: S.optional(S.Any),
+  },
 ).pipe(Category.withBadRequestError) {}
 
 export class OperationAborted extends S.TaggedErrorClass<OperationAborted>()(

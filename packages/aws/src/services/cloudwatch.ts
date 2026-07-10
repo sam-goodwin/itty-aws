@@ -3242,6 +3242,10 @@ export class InvalidNextToken extends S.TaggedErrorClass<InvalidNextToken>()(
   { message: S.optional(S.String) },
   T.AwsQueryError({ code: "InvalidNextToken", httpResponseCode: 400 }),
 ).pipe(C.withBadRequestError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  {},
+).pipe(C.withBadRequestError) {}
 export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
   "LimitExceededException",
   { Message: S.optional(S.String) },
@@ -3531,6 +3535,7 @@ export const deleteMetricStream: API.OperationMethod<
 export type DescribeAlarmContributorsError =
   | InvalidNextToken
   | ResourceNotFoundException
+  | ValidationException
   | CommonErrors;
 /**
  * Returns the information of the current alarm contributors that are in
@@ -3545,7 +3550,7 @@ export const describeAlarmContributors: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeAlarmContributorsInput,
   output: DescribeAlarmContributorsOutput,
-  errors: [InvalidNextToken, ResourceNotFoundException],
+  errors: [InvalidNextToken, ResourceNotFoundException, ValidationException],
   operationName: "DescribeAlarmContributors",
 }));
 export type DescribeAlarmHistoryError = InvalidNextToken | CommonErrors;

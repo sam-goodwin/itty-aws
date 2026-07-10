@@ -1,7 +1,24 @@
 {
   "errors": {
-    "InvalidRoutePattern": [{ "code": 10022 }],
-    "InvalidRoute": [{ "code": 7003 }],
-    "Forbidden": [{ "status": 403 }]
+    "InvalidRoutePattern": [
+      {
+        "code": 10022
+      }
+    ],
+    "InvalidRoute": [
+      {
+        "code": 7003
+      }
+    ],
+    "Forbidden": [
+      {
+        "status": 403
+      }
+    ],
+    "RouteScriptNotFound": [
+      {
+        "code": 10019
+      }
+    ]
   }
 }

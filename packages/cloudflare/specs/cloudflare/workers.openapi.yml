@@ -10995,6 +10995,8 @@ paths:
           - code: 7003
         Forbidden:
           - status: 403
+        RouteScriptNotFound:
+          - code: 10019
   /accounts/{account_id}/workers/scripts/{scriptName}:
     get:
       operationId: getScript
