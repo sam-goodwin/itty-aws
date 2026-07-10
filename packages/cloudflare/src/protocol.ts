@@ -70,6 +70,7 @@ import {
   httpBodySymbol,
   keyDictionarySymbol,
   resultInfoSymbol,
+  unionCasesSymbol,
 } from "./traits.ts";
 
 /**
@@ -212,6 +213,36 @@ const mapKeys = (
   const dict =
     (getAnn(ast, keyDictionarySymbol) as Record<string, string> | undefined) ??
     fallback;
+
+  // Discriminated union: Cloudflare returns every case's keys (null for the
+  // inactive ones). Camelize, then keep only the active case's keys — the
+  // case with the most present, non-null keys (ties break by declaration
+  // order). Mirrors distilled's Schema.Union decode.
+  const unionCases = getAnn(ast, unionCasesSymbol) as
+    | ReadonlyArray<ReadonlyArray<string>>
+    | undefined;
+  if (unionCases && direction === "decode" && !Array.isArray(value)) {
+    const obj = (
+      dict ? mapKeysByDictionary(dict, value, "decode") : value
+    ) as Record<string, unknown>;
+    let best: { keys: ReadonlyArray<string>; score: number } | undefined;
+    for (const keys of unionCases) {
+      let score = 0;
+      let viable = true;
+      for (const k of keys) {
+        if (obj[k] !== undefined && obj[k] !== null) score++;
+        else viable = false;
+      }
+      if (viable && (!best || score > best.score)) best = { keys, score };
+    }
+    if (best) {
+      const out: Record<string, unknown> = {};
+      for (const k of best.keys) out[k] = obj[k];
+      return out;
+    }
+    return obj;
+  }
+
   const node = resolveNode(ast);
 
   if (node._tag === "Arrays") {

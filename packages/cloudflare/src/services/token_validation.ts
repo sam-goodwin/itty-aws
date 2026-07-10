@@ -382,7 +382,10 @@ export type RulesBulkEditRequestBodyItemPosition =
   | RulesBulkEditRequestBodyItemPositionAPIShieldIndex
   | RulesBulkEditRequestBodyItemPositionAPIShieldBefore
   | RulesBulkEditRequestBodyItemPositionAPIShieldAfter;
-export const RulesBulkEditRequestBodyItemPosition = /*@__PURE__*/ S.Unknown;
+export const RulesBulkEditRequestBodyItemPosition =
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([["index"], ["before"], ["after"]]),
+  );
 
 export type RulesBulkEditRequestBodyItemSelectorExcludeItemOperationIdsList =
   string[];
@@ -1858,7 +1861,9 @@ export type RulesEditRequestPosition =
   | RulesEditRequestPositionAPIShieldIndex
   | RulesEditRequestPositionAPIShieldBefore
   | RulesEditRequestPositionAPIShieldAfter;
-export const RulesEditRequestPosition = /*@__PURE__*/ S.Unknown;
+export const RulesEditRequestPosition = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([["index"], ["before"], ["after"]]),
+);
 
 export type RulesEditRequestSelectorExcludeItemOperationIdsList = string[];
 export const RulesEditRequestSelectorExcludeItemOperationIdsList =

@@ -180,7 +180,21 @@ export type ConfigsCreateRequestOrigin =
   | ConfigsCreateRequestOriginPublicDatabase
   | ConfigsCreateRequestOriginAccessProtectedDatabaseBehindCloudflareTunnel
   | ConfigsCreateRequestOriginDatabaseReachableThroughAWorkersVPC;
-export const ConfigsCreateRequestOrigin = /*@__PURE__*/ S.Unknown;
+export const ConfigsCreateRequestOrigin = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["database", "host", "password", "port", "scheme", "user"],
+    [
+      "accessClientId",
+      "accessClientSecret",
+      "database",
+      "host",
+      "password",
+      "scheme",
+      "user",
+    ],
+    ["database", "password", "scheme", "serviceId", "user"],
+  ]),
+);
 
 export interface ConfigsCreateRequestCachingHyperdriveHyperdriveCachingCommon {
   /** Set to true to disable caching of SQL responses. Default is false. */
@@ -219,7 +233,9 @@ export const ConfigsCreateRequestCachingHyperdriveHyperdriveCachingEnabled =
 export type ConfigsCreateRequestCaching =
   | ConfigsCreateRequestCachingHyperdriveHyperdriveCachingCommon
   | ConfigsCreateRequestCachingHyperdriveHyperdriveCachingEnabled;
-export const ConfigsCreateRequestCaching = /*@__PURE__*/ S.Unknown;
+export const ConfigsCreateRequestCaching = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([["disabled"], ["disabled", "maxAge", "staleWhileRevalidate"]]),
+);
 
 export interface ConfigsCreateRequestMtls {
   /** Define CA certificate ID obtained after uploading CA cert. */
@@ -384,7 +400,21 @@ export type ConfigsCreateResponseOrigin =
   | ConfigsCreateResponseOriginPublicDatabase
   | ConfigsCreateResponseOriginAccessProtectedDatabaseBehindCloudflareTunnel
   | ConfigsCreateResponseOriginDatabaseReachableThroughAWorkersVPC;
-export const ConfigsCreateResponseOrigin = /*@__PURE__*/ S.Unknown;
+export const ConfigsCreateResponseOrigin = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["database", "host", "password", "port", "scheme", "user"],
+    [
+      "accessClientId",
+      "accessClientSecret",
+      "database",
+      "host",
+      "password",
+      "scheme",
+      "user",
+    ],
+    ["database", "password", "scheme", "serviceId", "user"],
+  ]),
+);
 
 export interface ConfigsCreateResponseCachingHyperdriveHyperdriveCachingCommon {
   /** Set to true to disable caching of SQL responses. Default is false. */
@@ -424,7 +454,9 @@ export const ConfigsCreateResponseCachingHyperdriveHyperdriveCachingEnabled =
 export type ConfigsCreateResponseCaching =
   | ConfigsCreateResponseCachingHyperdriveHyperdriveCachingCommon
   | ConfigsCreateResponseCachingHyperdriveHyperdriveCachingEnabled;
-export const ConfigsCreateResponseCaching = /*@__PURE__*/ S.Unknown;
+export const ConfigsCreateResponseCaching = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([["disabled"], ["disabled", "maxAge", "staleWhileRevalidate"]]),
+);
 
 export interface ConfigsCreateResponseMtls {
   /** Define CA certificate ID obtained after uploading CA cert. */
@@ -642,7 +674,21 @@ export type ConfigsGetResponseOrigin =
   | ConfigsGetResponseOriginPublicDatabase
   | ConfigsGetResponseOriginAccessProtectedDatabaseBehindCloudflareTunnel
   | ConfigsGetResponseOriginDatabaseReachableThroughAWorkersVPC;
-export const ConfigsGetResponseOrigin = /*@__PURE__*/ S.Unknown;
+export const ConfigsGetResponseOrigin = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["database", "host", "password", "port", "scheme", "user"],
+    [
+      "accessClientId",
+      "accessClientSecret",
+      "database",
+      "host",
+      "password",
+      "scheme",
+      "user",
+    ],
+    ["database", "password", "scheme", "serviceId", "user"],
+  ]),
+);
 
 export interface ConfigsGetResponseCachingHyperdriveHyperdriveCachingCommon {
   /** Set to true to disable caching of SQL responses. Default is false. */
@@ -681,7 +727,9 @@ export const ConfigsGetResponseCachingHyperdriveHyperdriveCachingEnabled =
 export type ConfigsGetResponseCaching =
   | ConfigsGetResponseCachingHyperdriveHyperdriveCachingCommon
   | ConfigsGetResponseCachingHyperdriveHyperdriveCachingEnabled;
-export const ConfigsGetResponseCaching = /*@__PURE__*/ S.Unknown;
+export const ConfigsGetResponseCaching = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([["disabled"], ["disabled", "maxAge", "staleWhileRevalidate"]]),
+);
 
 export interface ConfigsGetResponseMtls {
   /** Define CA certificate ID obtained after uploading CA cert. */
@@ -865,7 +913,21 @@ export type ConfigsListResultItemOrigin =
   | ConfigsListResultItemOriginPublicDatabase
   | ConfigsListResultItemOriginAccessProtectedDatabaseBehindCloudflareTunnel
   | ConfigsListResultItemOriginDatabaseReachableThroughAWorkersVPC;
-export const ConfigsListResultItemOrigin = /*@__PURE__*/ S.Unknown;
+export const ConfigsListResultItemOrigin = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["database", "host", "password", "port", "scheme", "user"],
+    [
+      "accessClientId",
+      "accessClientSecret",
+      "database",
+      "host",
+      "password",
+      "scheme",
+      "user",
+    ],
+    ["database", "password", "scheme", "serviceId", "user"],
+  ]),
+);
 
 export interface ConfigsListResultItemCachingHyperdriveHyperdriveCachingCommon {
   /** Set to true to disable caching of SQL responses. Default is false. */
@@ -905,7 +967,9 @@ export const ConfigsListResultItemCachingHyperdriveHyperdriveCachingEnabled =
 export type ConfigsListResultItemCaching =
   | ConfigsListResultItemCachingHyperdriveHyperdriveCachingCommon
   | ConfigsListResultItemCachingHyperdriveHyperdriveCachingEnabled;
-export const ConfigsListResultItemCaching = /*@__PURE__*/ S.Unknown;
+export const ConfigsListResultItemCaching = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([["disabled"], ["disabled", "maxAge", "staleWhileRevalidate"]]),
+);
 
 export interface ConfigsListResultItemMtls {
   /** Define CA certificate ID obtained after uploading CA cert. */
@@ -1015,7 +1079,9 @@ export const ConfigsEditRequestCachingHyperdriveHyperdriveCachingEnabled =
 export type ConfigsEditRequestCaching =
   | ConfigsEditRequestCachingHyperdriveHyperdriveCachingCommon
   | ConfigsEditRequestCachingHyperdriveHyperdriveCachingEnabled;
-export const ConfigsEditRequestCaching = /*@__PURE__*/ S.Unknown;
+export const ConfigsEditRequestCaching = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([["disabled"], ["disabled", "maxAge", "staleWhileRevalidate"]]),
+);
 
 export interface ConfigsEditRequestMtls {
   /** Define CA certificate ID obtained after uploading CA cert. */
@@ -1120,7 +1186,14 @@ export type ConfigsEditRequestOrigin =
   | ConfigsEditRequestOriginHyperdriveInternetOrigin
   | ConfigsEditRequestOriginHyperdriveOverAccessOrigin
   | ConfigsEditRequestOriginHyperdriveVPCServiceOrigin;
-export const ConfigsEditRequestOrigin = /*@__PURE__*/ S.Unknown;
+export const ConfigsEditRequestOrigin = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["database", "password", "scheme", "user"],
+    ["host", "port"],
+    ["accessClientId", "accessClientSecret", "host"],
+    ["serviceId"],
+  ]),
+);
 
 export interface PatchConfigRequest {
   /** Define configurations using a unique string identifier. */
@@ -1270,7 +1343,21 @@ export type ConfigsEditResponseOrigin =
   | ConfigsEditResponseOriginPublicDatabase
   | ConfigsEditResponseOriginAccessProtectedDatabaseBehindCloudflareTunnel
   | ConfigsEditResponseOriginDatabaseReachableThroughAWorkersVPC;
-export const ConfigsEditResponseOrigin = /*@__PURE__*/ S.Unknown;
+export const ConfigsEditResponseOrigin = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["database", "host", "password", "port", "scheme", "user"],
+    [
+      "accessClientId",
+      "accessClientSecret",
+      "database",
+      "host",
+      "password",
+      "scheme",
+      "user",
+    ],
+    ["database", "password", "scheme", "serviceId", "user"],
+  ]),
+);
 
 export interface ConfigsEditResponseCachingHyperdriveHyperdriveCachingCommon {
   /** Set to true to disable caching of SQL responses. Default is false. */
@@ -1309,7 +1396,9 @@ export const ConfigsEditResponseCachingHyperdriveHyperdriveCachingEnabled =
 export type ConfigsEditResponseCaching =
   | ConfigsEditResponseCachingHyperdriveHyperdriveCachingCommon
   | ConfigsEditResponseCachingHyperdriveHyperdriveCachingEnabled;
-export const ConfigsEditResponseCaching = /*@__PURE__*/ S.Unknown;
+export const ConfigsEditResponseCaching = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([["disabled"], ["disabled", "maxAge", "staleWhileRevalidate"]]),
+);
 
 export interface ConfigsEditResponseMtls {
   /** Define CA certificate ID obtained after uploading CA cert. */
@@ -1472,7 +1561,21 @@ export type ConfigsUpdateRequestOrigin =
   | ConfigsUpdateRequestOriginPublicDatabase
   | ConfigsUpdateRequestOriginAccessProtectedDatabaseBehindCloudflareTunnel
   | ConfigsUpdateRequestOriginDatabaseReachableThroughAWorkersVPC;
-export const ConfigsUpdateRequestOrigin = /*@__PURE__*/ S.Unknown;
+export const ConfigsUpdateRequestOrigin = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["database", "host", "password", "port", "scheme", "user"],
+    [
+      "accessClientId",
+      "accessClientSecret",
+      "database",
+      "host",
+      "password",
+      "scheme",
+      "user",
+    ],
+    ["database", "password", "scheme", "serviceId", "user"],
+  ]),
+);
 
 export interface ConfigsUpdateRequestCachingHyperdriveHyperdriveCachingCommon {
   /** Set to true to disable caching of SQL responses. Default is false. */
@@ -1511,7 +1614,9 @@ export const ConfigsUpdateRequestCachingHyperdriveHyperdriveCachingEnabled =
 export type ConfigsUpdateRequestCaching =
   | ConfigsUpdateRequestCachingHyperdriveHyperdriveCachingCommon
   | ConfigsUpdateRequestCachingHyperdriveHyperdriveCachingEnabled;
-export const ConfigsUpdateRequestCaching = /*@__PURE__*/ S.Unknown;
+export const ConfigsUpdateRequestCaching = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([["disabled"], ["disabled", "maxAge", "staleWhileRevalidate"]]),
+);
 
 export interface ConfigsUpdateRequestMtls {
   /** Define CA certificate ID obtained after uploading CA cert. */
@@ -1679,7 +1784,21 @@ export type ConfigsUpdateResponseOrigin =
   | ConfigsUpdateResponseOriginPublicDatabase
   | ConfigsUpdateResponseOriginAccessProtectedDatabaseBehindCloudflareTunnel
   | ConfigsUpdateResponseOriginDatabaseReachableThroughAWorkersVPC;
-export const ConfigsUpdateResponseOrigin = /*@__PURE__*/ S.Unknown;
+export const ConfigsUpdateResponseOrigin = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["database", "host", "password", "port", "scheme", "user"],
+    [
+      "accessClientId",
+      "accessClientSecret",
+      "database",
+      "host",
+      "password",
+      "scheme",
+      "user",
+    ],
+    ["database", "password", "scheme", "serviceId", "user"],
+  ]),
+);
 
 export interface ConfigsUpdateResponseCachingHyperdriveHyperdriveCachingCommon {
   /** Set to true to disable caching of SQL responses. Default is false. */
@@ -1719,7 +1838,9 @@ export const ConfigsUpdateResponseCachingHyperdriveHyperdriveCachingEnabled =
 export type ConfigsUpdateResponseCaching =
   | ConfigsUpdateResponseCachingHyperdriveHyperdriveCachingCommon
   | ConfigsUpdateResponseCachingHyperdriveHyperdriveCachingEnabled;
-export const ConfigsUpdateResponseCaching = /*@__PURE__*/ S.Unknown;
+export const ConfigsUpdateResponseCaching = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([["disabled"], ["disabled", "maxAge", "staleWhileRevalidate"]]),
+);
 
 export interface ConfigsUpdateResponseMtls {
   /** Define CA certificate ID obtained after uploading CA cert. */

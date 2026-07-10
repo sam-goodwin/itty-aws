@@ -2017,7 +2017,18 @@ export type BetaWorkersVersionsCreateRequestPlacement =
   | BetaWorkersVersionsCreateRequestPlacementObjectHostMode
   | BetaWorkersVersionsCreateRequestPlacementObjectModeTarget;
 export const BetaWorkersVersionsCreateRequestPlacement =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["mode"],
+      ["region"],
+      ["hostname"],
+      ["host"],
+      ["mode", "region"],
+      ["hostname", "mode"],
+      ["host", "mode"],
+      ["mode", "target"],
+    ]),
+  );
 
 export type BetaWorkersVersionsCreateRequestUsageModel =
   | "standard"
@@ -3052,7 +3063,18 @@ export type BetaWorkersVersionsCreateResponsePlacement =
   | BetaWorkersVersionsCreateResponsePlacementObjectHostMode
   | BetaWorkersVersionsCreateResponsePlacementObjectModeTarget;
 export const BetaWorkersVersionsCreateResponsePlacement =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["mode"],
+      ["region"],
+      ["hostname"],
+      ["host"],
+      ["mode", "region"],
+      ["hostname", "mode"],
+      ["host", "mode"],
+      ["mode", "target"],
+    ]),
+  );
 
 export type BetaWorkersVersionsCreateResponseUsageModel =
   | "standard"
@@ -7144,7 +7166,19 @@ export type BetaWorkersVersionsGetResponsePlacement =
   | BetaWorkersVersionsGetResponsePlacementObjectHostnameMode
   | BetaWorkersVersionsGetResponsePlacementObjectHostMode
   | BetaWorkersVersionsGetResponsePlacementObjectModeTarget;
-export const BetaWorkersVersionsGetResponsePlacement = /*@__PURE__*/ S.Unknown;
+export const BetaWorkersVersionsGetResponsePlacement =
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["mode"],
+      ["region"],
+      ["hostname"],
+      ["host"],
+      ["mode", "region"],
+      ["hostname", "mode"],
+      ["host", "mode"],
+      ["mode", "target"],
+    ]),
+  );
 
 export type BetaWorkersVersionsGetResponseUsageModel =
   | "standard"
@@ -8550,7 +8584,44 @@ export type ObservabilitySharedQueriesGetResponseEventsEventsItemWorkers =
   | ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersObjectEventTypeRequestIdScriptName10More
   | ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersObjectCpuTimeMsEventTypeOutcome14More;
 export const ObservabilitySharedQueriesGetResponseEventsEventsItemWorkers =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      [
+        "eventType",
+        "requestId",
+        "scriptName",
+        "durableObjectId",
+        "entrypoint",
+        "event",
+        "executionModel",
+        "outcome",
+        "preview",
+        "scriptVersion",
+        "spanId",
+        "traceId",
+        "truncated",
+      ],
+      [
+        "cpuTimeMs",
+        "eventType",
+        "outcome",
+        "requestId",
+        "scriptName",
+        "wallTimeMs",
+        "diagnosticsChannelEvents",
+        "dispatchNamespace",
+        "durableObjectId",
+        "entrypoint",
+        "event",
+        "executionModel",
+        "preview",
+        "scriptVersion",
+        "spanId",
+        "traceId",
+        "truncated",
+      ],
+    ]),
+  );
 
 export interface ObservabilitySharedQueriesGetResponseEventsEventsItem {
   /** Structured metadata extracted from the event. These fields are indexed and available for filtering and aggregation. */
@@ -10007,7 +10078,18 @@ export type ScriptsScriptAndVersionSettingsGetResponsePlacement =
   | ScriptsScriptAndVersionSettingsGetResponsePlacementObjectHostMode
   | ScriptsScriptAndVersionSettingsGetResponsePlacementObjectModeTarget;
 export const ScriptsScriptAndVersionSettingsGetResponsePlacement =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["mode"],
+      ["region"],
+      ["hostname"],
+      ["host"],
+      ["mode", "region"],
+      ["hostname", "mode"],
+      ["host", "mode"],
+      ["mode", "target"],
+    ]),
+  );
 
 export type ScriptsScriptAndVersionSettingsGetResponseTagsList = string[];
 export const ScriptsScriptAndVersionSettingsGetResponseTagsList =
@@ -12767,7 +12849,18 @@ export type BetaWorkersVersionsListResultItemPlacement =
   | BetaWorkersVersionsListResultItemPlacementObjectHostMode
   | BetaWorkersVersionsListResultItemPlacementObjectModeTarget;
 export const BetaWorkersVersionsListResultItemPlacement =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["mode"],
+      ["region"],
+      ["hostname"],
+      ["host"],
+      ["mode", "region"],
+      ["hostname", "mode"],
+      ["host", "mode"],
+      ["mode", "target"],
+    ]),
+  );
 
 export type BetaWorkersVersionsListResultItemUsageModel =
   | "standard"
@@ -14191,7 +14284,18 @@ export type ScriptsListResultItemPlacement =
   | ScriptsListResultItemPlacementObjectHostnameModeLastAnalyzedAtStatus
   | ScriptsListResultItemPlacementObjectHostModeLastAnalyzedAtStatus
   | ScriptsListResultItemPlacementObjectModeTargetLastAnalyzedAtStatus;
-export const ScriptsListResultItemPlacement = /*@__PURE__*/ S.Unknown;
+export const ScriptsListResultItemPlacement = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["mode", "lastAnalyzedAt", "status"],
+    ["region", "lastAnalyzedAt", "status"],
+    ["hostname", "lastAnalyzedAt", "status"],
+    ["host", "lastAnalyzedAt", "status"],
+    ["mode", "region", "lastAnalyzedAt", "status"],
+    ["hostname", "mode", "lastAnalyzedAt", "status"],
+    ["host", "mode", "lastAnalyzedAt", "status"],
+    ["mode", "target", "lastAnalyzedAt", "status"],
+  ]),
+);
 
 export type ScriptsListResultItemPlacementMode =
   | "smart"
@@ -16426,7 +16530,18 @@ export type ScriptsScriptAndVersionSettingsEditResponsePlacement =
   | ScriptsScriptAndVersionSettingsEditResponsePlacementObjectHostMode
   | ScriptsScriptAndVersionSettingsEditResponsePlacementObjectModeTarget;
 export const ScriptsScriptAndVersionSettingsEditResponsePlacement =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["mode"],
+      ["region"],
+      ["hostname"],
+      ["host"],
+      ["mode", "region"],
+      ["hostname", "mode"],
+      ["host", "mode"],
+      ["mode", "target"],
+    ]),
+  );
 
 export type ScriptsScriptAndVersionSettingsEditResponseTagsList = string[];
 export const ScriptsScriptAndVersionSettingsEditResponseTagsList =
@@ -18743,7 +18858,18 @@ export type ScriptsUpdateResponsePlacement =
   | ScriptsUpdateResponsePlacementObjectHostnameModeLastAnalyzedAtStatus
   | ScriptsUpdateResponsePlacementObjectHostModeLastAnalyzedAtStatus
   | ScriptsUpdateResponsePlacementObjectModeTargetLastAnalyzedAtStatus;
-export const ScriptsUpdateResponsePlacement = /*@__PURE__*/ S.Unknown;
+export const ScriptsUpdateResponsePlacement = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["mode", "lastAnalyzedAt", "status"],
+    ["region", "lastAnalyzedAt", "status"],
+    ["hostname", "lastAnalyzedAt", "status"],
+    ["host", "lastAnalyzedAt", "status"],
+    ["mode", "region", "lastAnalyzedAt", "status"],
+    ["hostname", "mode", "lastAnalyzedAt", "status"],
+    ["host", "mode", "lastAnalyzedAt", "status"],
+    ["mode", "target", "lastAnalyzedAt", "status"],
+  ]),
+);
 
 export type ScriptsUpdateResponsePlacementMode =
   | "smart"
@@ -19397,7 +19523,19 @@ export type ScriptsContentUpdateResponsePlacement =
   | ScriptsContentUpdateResponsePlacementObjectHostnameModeLastAnalyzedAtStatus
   | ScriptsContentUpdateResponsePlacementObjectHostModeLastAnalyzedAtStatus
   | ScriptsContentUpdateResponsePlacementObjectModeTargetLastAnalyzedAtStatus;
-export const ScriptsContentUpdateResponsePlacement = /*@__PURE__*/ S.Unknown;
+export const ScriptsContentUpdateResponsePlacement =
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["mode", "lastAnalyzedAt", "status"],
+      ["region", "lastAnalyzedAt", "status"],
+      ["hostname", "lastAnalyzedAt", "status"],
+      ["host", "lastAnalyzedAt", "status"],
+      ["mode", "region", "lastAnalyzedAt", "status"],
+      ["hostname", "mode", "lastAnalyzedAt", "status"],
+      ["host", "mode", "lastAnalyzedAt", "status"],
+      ["mode", "target", "lastAnalyzedAt", "status"],
+    ]),
+  );
 
 export type ScriptsContentUpdateResponsePlacementMode =
   | "smart"
@@ -19720,7 +19858,12 @@ export const ScriptsSecretsUpdateRequestBodySecretKey = /*@__PURE__*/ S.suspend(
 export type ScriptsSecretsUpdateRequestBody =
   | ScriptsSecretsUpdateRequestBodySecretText
   | ScriptsSecretsUpdateRequestBodySecretKey;
-export const ScriptsSecretsUpdateRequestBody = /*@__PURE__*/ S.Unknown;
+export const ScriptsSecretsUpdateRequestBody = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["name", "text", "type"],
+    ["algorithm", "format", "name", "type", "usages", "keyBase64", "keyJwk"],
+  ]),
+);
 
 export interface PutScriptSecretRequest {
   /** Identifier. */
@@ -21559,7 +21702,44 @@ export type ObservabilityTelemetryQueryResponseEventsEventsItemWorkers =
   | ObservabilityTelemetryQueryResponseEventsEventsItemWorkersObjectEventTypeRequestIdScriptName10More
   | ObservabilityTelemetryQueryResponseEventsEventsItemWorkersObjectCpuTimeMsEventTypeOutcome14More;
 export const ObservabilityTelemetryQueryResponseEventsEventsItemWorkers =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      [
+        "eventType",
+        "requestId",
+        "scriptName",
+        "durableObjectId",
+        "entrypoint",
+        "event",
+        "executionModel",
+        "outcome",
+        "preview",
+        "scriptVersion",
+        "spanId",
+        "traceId",
+        "truncated",
+      ],
+      [
+        "cpuTimeMs",
+        "eventType",
+        "outcome",
+        "requestId",
+        "scriptName",
+        "wallTimeMs",
+        "diagnosticsChannelEvents",
+        "dispatchNamespace",
+        "durableObjectId",
+        "entrypoint",
+        "event",
+        "executionModel",
+        "preview",
+        "scriptVersion",
+        "spanId",
+        "traceId",
+        "truncated",
+      ],
+    ]),
+  );
 
 export interface ObservabilityTelemetryQueryResponseEventsEventsItem {
   /** Structured metadata extracted from the event. These fields are indexed and available for filtering and aggregation. */

@@ -207,7 +207,14 @@ export type DirectoryServicesCreateRequestBodyInfraHTTPServiceConfigHost =
   | DirectoryServicesCreateRequestBodyInfraHTTPServiceConfigHostInfraDualStackHost
   | DirectoryServicesCreateRequestBodyInfraHTTPServiceConfigHostInfraHostnameHost;
 export const DirectoryServicesCreateRequestBodyInfraHTTPServiceConfigHost =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["ipv4", "network"],
+      ["ipv6", "network"],
+      ["ipv4", "ipv6", "network"],
+      ["hostname", "resolverNetwork"],
+    ]),
+  );
 
 export type DirectoryServicesCreateRequestBodyInfraHTTPServiceConfigType =
   | "tcp"
@@ -402,7 +409,14 @@ export type DirectoryServicesCreateRequestBodyInfraTCPServiceConfigHost =
   | DirectoryServicesCreateRequestBodyInfraTCPServiceConfigHostInfraDualStackHost
   | DirectoryServicesCreateRequestBodyInfraTCPServiceConfigHostInfraHostnameHost;
 export const DirectoryServicesCreateRequestBodyInfraTCPServiceConfigHost =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["ipv4", "network"],
+      ["ipv6", "network"],
+      ["ipv4", "ipv6", "network"],
+      ["hostname", "resolverNetwork"],
+    ]),
+  );
 
 export type DirectoryServicesCreateRequestBodyInfraTCPServiceConfigType =
   | "tcp"
@@ -470,7 +484,32 @@ export const DirectoryServicesCreateRequestBodyInfraTCPServiceConfig =
 export type DirectoryServicesCreateRequestBody =
   | DirectoryServicesCreateRequestBodyInfraHTTPServiceConfig
   | DirectoryServicesCreateRequestBodyInfraTCPServiceConfig;
-export const DirectoryServicesCreateRequestBody = /*@__PURE__*/ S.Unknown;
+export const DirectoryServicesCreateRequestBody = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    [
+      "host",
+      "name",
+      "type",
+      "createdAt",
+      "httpPort",
+      "httpsPort",
+      "serviceId",
+      "tlsSettings",
+      "updatedAt",
+    ],
+    [
+      "host",
+      "name",
+      "type",
+      "appProtocol",
+      "createdAt",
+      "serviceId",
+      "tcpPort",
+      "tlsSettings",
+      "updatedAt",
+    ],
+  ]),
+);
 
 export interface CreateDirectoryServiceRequest {
   /** Account identifier */
@@ -622,7 +661,14 @@ export type DirectoryServicesCreateResponseHost =
   | DirectoryServicesCreateResponseHostInfraIPv6Host
   | DirectoryServicesCreateResponseHostInfraDualStackHost
   | DirectoryServicesCreateResponseHostInfraHostnameHost;
-export const DirectoryServicesCreateResponseHost = /*@__PURE__*/ S.Unknown;
+export const DirectoryServicesCreateResponseHost = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["ipv4", "network"],
+    ["ipv6", "network"],
+    ["ipv4", "ipv6", "network"],
+    ["hostname", "resolverNetwork"],
+  ]),
+);
 
 export type DirectoryServicesCreateResponseType =
   | "tcp"
@@ -864,7 +910,14 @@ export type DirectoryServicesGetResponseHost =
   | DirectoryServicesGetResponseHostInfraIPv6Host
   | DirectoryServicesGetResponseHostInfraDualStackHost
   | DirectoryServicesGetResponseHostInfraHostnameHost;
-export const DirectoryServicesGetResponseHost = /*@__PURE__*/ S.Unknown;
+export const DirectoryServicesGetResponseHost = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["ipv4", "network"],
+    ["ipv6", "network"],
+    ["ipv4", "ipv6", "network"],
+    ["hostname", "resolverNetwork"],
+  ]),
+);
 
 export type DirectoryServicesGetResponseType = "tcp" | "http" | (string & {});
 export const DirectoryServicesGetResponseType = /*@__PURE__*/ S.String;
@@ -1084,7 +1137,14 @@ export type DirectoryServicesListResultItemHost =
   | DirectoryServicesListResultItemHostInfraIPv6Host
   | DirectoryServicesListResultItemHostInfraDualStackHost
   | DirectoryServicesListResultItemHostInfraHostnameHost;
-export const DirectoryServicesListResultItemHost = /*@__PURE__*/ S.Unknown;
+export const DirectoryServicesListResultItemHost = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["ipv4", "network"],
+    ["ipv6", "network"],
+    ["ipv4", "ipv6", "network"],
+    ["hostname", "resolverNetwork"],
+  ]),
+);
 
 export type DirectoryServicesListResultItemType =
   | "tcp"
@@ -1307,7 +1367,14 @@ export type DirectoryServicesUpdateRequestBodyInfraHTTPServiceConfigHost =
   | DirectoryServicesUpdateRequestBodyInfraHTTPServiceConfigHostInfraDualStackHost
   | DirectoryServicesUpdateRequestBodyInfraHTTPServiceConfigHostInfraHostnameHost;
 export const DirectoryServicesUpdateRequestBodyInfraHTTPServiceConfigHost =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["ipv4", "network"],
+      ["ipv6", "network"],
+      ["ipv4", "ipv6", "network"],
+      ["hostname", "resolverNetwork"],
+    ]),
+  );
 
 export type DirectoryServicesUpdateRequestBodyInfraHTTPServiceConfigType =
   | "tcp"
@@ -1502,7 +1569,14 @@ export type DirectoryServicesUpdateRequestBodyInfraTCPServiceConfigHost =
   | DirectoryServicesUpdateRequestBodyInfraTCPServiceConfigHostInfraDualStackHost
   | DirectoryServicesUpdateRequestBodyInfraTCPServiceConfigHostInfraHostnameHost;
 export const DirectoryServicesUpdateRequestBodyInfraTCPServiceConfigHost =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["ipv4", "network"],
+      ["ipv6", "network"],
+      ["ipv4", "ipv6", "network"],
+      ["hostname", "resolverNetwork"],
+    ]),
+  );
 
 export type DirectoryServicesUpdateRequestBodyInfraTCPServiceConfigType =
   | "tcp"
@@ -1570,7 +1644,32 @@ export const DirectoryServicesUpdateRequestBodyInfraTCPServiceConfig =
 export type DirectoryServicesUpdateRequestBody =
   | DirectoryServicesUpdateRequestBodyInfraHTTPServiceConfig
   | DirectoryServicesUpdateRequestBodyInfraTCPServiceConfig;
-export const DirectoryServicesUpdateRequestBody = /*@__PURE__*/ S.Unknown;
+export const DirectoryServicesUpdateRequestBody = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    [
+      "host",
+      "name",
+      "type",
+      "createdAt",
+      "httpPort",
+      "httpsPort",
+      "serviceId",
+      "tlsSettings",
+      "updatedAt",
+    ],
+    [
+      "host",
+      "name",
+      "type",
+      "appProtocol",
+      "createdAt",
+      "serviceId",
+      "tcpPort",
+      "tlsSettings",
+      "updatedAt",
+    ],
+  ]),
+);
 
 export interface UpdateDirectoryServiceRequest {
   accountId: string;
@@ -1723,7 +1822,14 @@ export type DirectoryServicesUpdateResponseHost =
   | DirectoryServicesUpdateResponseHostInfraIPv6Host
   | DirectoryServicesUpdateResponseHostInfraDualStackHost
   | DirectoryServicesUpdateResponseHostInfraHostnameHost;
-export const DirectoryServicesUpdateResponseHost = /*@__PURE__*/ S.Unknown;
+export const DirectoryServicesUpdateResponseHost = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["ipv4", "network"],
+    ["ipv6", "network"],
+    ["ipv4", "ipv6", "network"],
+    ["hostname", "resolverNetwork"],
+  ]),
+);
 
 export type DirectoryServicesUpdateResponseType =
   | "tcp"

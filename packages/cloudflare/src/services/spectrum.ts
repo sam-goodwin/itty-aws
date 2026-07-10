@@ -326,7 +326,28 @@ export const AppsCreateRequestBodySpectrumConfigPaygoAppConfig =
 export type AppsCreateRequestBody =
   | AppsCreateRequestBodySpectrumConfigAppConfig
   | AppsCreateRequestBodySpectrumConfigPaygoAppConfig;
-export const AppsCreateRequestBody = /*@__PURE__*/ S.Unknown;
+export const AppsCreateRequestBody = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    [
+      "id",
+      "createdOn",
+      "dns",
+      "modifiedOn",
+      "protocol",
+      "trafficType",
+      "argoSmartRouting",
+      "edgeIps",
+      "ipFirewall",
+      "originDirect",
+      "originDns",
+      "originPort",
+      "proxyProtocol",
+      "tls",
+      "virtualNetworkId",
+    ],
+    ["id", "createdOn", "dns", "modifiedOn", "protocol", "originDirect"],
+  ]),
+);
 
 export interface CreateAppRequest {
   /** Zone identifier. */
@@ -1849,7 +1870,28 @@ export const AppsUpdateRequestBodySpectrumConfigPaygoAppConfig =
 export type AppsUpdateRequestBody =
   | AppsUpdateRequestBodySpectrumConfigAppConfig
   | AppsUpdateRequestBodySpectrumConfigPaygoAppConfig;
-export const AppsUpdateRequestBody = /*@__PURE__*/ S.Unknown;
+export const AppsUpdateRequestBody = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    [
+      "id",
+      "createdOn",
+      "dns",
+      "modifiedOn",
+      "protocol",
+      "trafficType",
+      "argoSmartRouting",
+      "edgeIps",
+      "ipFirewall",
+      "originDirect",
+      "originDns",
+      "originPort",
+      "proxyProtocol",
+      "tls",
+      "virtualNetworkId",
+    ],
+    ["id", "createdOn", "dns", "modifiedOn", "protocol", "originDirect"],
+  ]),
+);
 
 export interface UpdateAppRequest {
   /** Zone identifier. */

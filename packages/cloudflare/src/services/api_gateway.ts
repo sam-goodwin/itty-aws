@@ -831,7 +831,16 @@ export type OperationsBulkCreateResultItemFeatures =
   | OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureAPIRouting
   | OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervals
   | OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureSchemaInfo;
-export const OperationsBulkCreateResultItemFeatures = /*@__PURE__*/ S.Unknown;
+export const OperationsBulkCreateResultItemFeatures =
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["thresholds"],
+      ["parameterSchemas"],
+      ["apiRouting"],
+      ["confidenceIntervals"],
+      ["schemaInfo"],
+    ]),
+  );
 
 export interface OperationsBulkCreateResultItem {
   /** The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with {varN}, starting with {var1}, during insertion. This will further be Cloudflare-normalized upon insertion. See: https://developers.cloudflare.com/rules/normalization/how-it-works/. */
@@ -1784,7 +1793,15 @@ export type OperationsCreateResponseFeatures =
   | OperationsCreateResponseFeaturesAPIShieldOperationFeatureAPIRouting
   | OperationsCreateResponseFeaturesAPIShieldOperationFeatureConfidenceIntervals
   | OperationsCreateResponseFeaturesAPIShieldOperationFeatureSchemaInfo;
-export const OperationsCreateResponseFeatures = /*@__PURE__*/ S.Unknown;
+export const OperationsCreateResponseFeatures = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["thresholds"],
+    ["parameterSchemas"],
+    ["apiRouting"],
+    ["confidenceIntervals"],
+    ["schemaInfo"],
+  ]),
+);
 
 export type OperationsCreateResponseSchemasLearnedParametersItemMap = {
   [key: string]: unknown | undefined;
@@ -2986,7 +3003,15 @@ export type OperationsGetResponseFeatures =
   | OperationsGetResponseFeaturesAPIShieldOperationFeatureAPIRouting
   | OperationsGetResponseFeaturesAPIShieldOperationFeatureConfidenceIntervals
   | OperationsGetResponseFeaturesAPIShieldOperationFeatureSchemaInfo;
-export const OperationsGetResponseFeatures = /*@__PURE__*/ S.Unknown;
+export const OperationsGetResponseFeatures = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["thresholds"],
+    ["parameterSchemas"],
+    ["apiRouting"],
+    ["confidenceIntervals"],
+    ["schemaInfo"],
+  ]),
+);
 
 export type OperationsGetResponseSchemasLearnedParametersItemMap = {
   [key: string]: unknown | undefined;
@@ -4036,7 +4061,15 @@ export type OperationsListResultItemFeatures =
   | OperationsListResultItemFeaturesAPIShieldOperationFeatureAPIRouting
   | OperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervals
   | OperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfo;
-export const OperationsListResultItemFeatures = /*@__PURE__*/ S.Unknown;
+export const OperationsListResultItemFeatures = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["thresholds"],
+    ["parameterSchemas"],
+    ["apiRouting"],
+    ["confidenceIntervals"],
+    ["schemaInfo"],
+  ]),
+);
 
 export interface OperationsListResultItem {
   /** The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with {varN}, starting with {var1}, during insertion. This will further be Cloudflare-normalized upon insertion. See: https://developers.cloudflare.com/rules/normalization/how-it-works/. */
@@ -4667,7 +4700,15 @@ export type UserSchemasOperationsListResultItemFeatures =
   | UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervals
   | UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfo;
 export const UserSchemasOperationsListResultItemFeatures =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["thresholds"],
+      ["parameterSchemas"],
+      ["apiRouting"],
+      ["confidenceIntervals"],
+      ["schemaInfo"],
+    ]),
+  );
 
 export interface UserSchemasOperationsListResultItem {
   /** The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with {varN}, starting with {var1}, during insertion. This will further be Cloudflare-normalized upon insertion. See: https://developers.cloudflare.com/rules/normalization/how-it-works/. */

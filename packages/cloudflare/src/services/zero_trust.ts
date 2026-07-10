@@ -12188,7 +12188,267 @@ export type AccessApplicationsCreateForAccountRequestBody =
   | AccessApplicationsCreateForAccountRequestBodyMcpServerApplication
   | AccessApplicationsCreateForAccountRequestBodyMcpServerPortalApplication;
 export const AccessApplicationsCreateForAccountRequestBody =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      [
+        "domain",
+        "type",
+        "allowAuthenticateViaWarp",
+        "allowIframe",
+        "allowedIdps",
+        "appLauncherVisible",
+        "autoRedirectToIdentity",
+        "corsHeaders",
+        "customDenyMessage",
+        "customDenyUrl",
+        "customNonIdentityDenyUrl",
+        "customPages",
+        "destinations",
+        "eagerRedirectCookieSetting",
+        "enableBindingCookie",
+        "httpOnlyCookieAttribute",
+        "logoUrl",
+        "mfaConfig",
+        "name",
+        "oauthConfiguration",
+        "optionsPreflightBypass",
+        "pathCookieAttribute",
+        "policies",
+        "readServiceTokensFromHeader",
+        "sameSiteCookieAttribute",
+        "scimConfig",
+        "selfHostedDomains",
+        "serviceAuth401Redirect",
+        "sessionDuration",
+        "skipInterstitial",
+        "tags",
+        "useClientlessIsolationAppLauncherUrl",
+      ],
+      [
+        "allowedIdps",
+        "appLauncherVisible",
+        "autoRedirectToIdentity",
+        "customPages",
+        "logoUrl",
+        "name",
+        "policies",
+        "saasApp",
+        "scimConfig",
+        "tags",
+        "type",
+      ],
+      [
+        "domain",
+        "type",
+        "allowAuthenticateViaWarp",
+        "allowIframe",
+        "allowedIdps",
+        "appLauncherVisible",
+        "autoRedirectToIdentity",
+        "corsHeaders",
+        "customDenyMessage",
+        "customDenyUrl",
+        "customNonIdentityDenyUrl",
+        "customPages",
+        "destinations",
+        "eagerRedirectCookieSetting",
+        "enableBindingCookie",
+        "httpOnlyCookieAttribute",
+        "logoUrl",
+        "mfaConfig",
+        "name",
+        "oauthConfiguration",
+        "optionsPreflightBypass",
+        "pathCookieAttribute",
+        "policies",
+        "readServiceTokensFromHeader",
+        "sameSiteCookieAttribute",
+        "scimConfig",
+        "selfHostedDomains",
+        "serviceAuth401Redirect",
+        "sessionDuration",
+        "skipInterstitial",
+        "tags",
+        "useClientlessIsolationAppLauncherUrl",
+      ],
+      [
+        "domain",
+        "type",
+        "allowAuthenticateViaWarp",
+        "allowIframe",
+        "allowedIdps",
+        "appLauncherVisible",
+        "autoRedirectToIdentity",
+        "corsHeaders",
+        "customDenyMessage",
+        "customDenyUrl",
+        "customNonIdentityDenyUrl",
+        "customPages",
+        "destinations",
+        "eagerRedirectCookieSetting",
+        "enableBindingCookie",
+        "httpOnlyCookieAttribute",
+        "logoUrl",
+        "mfaConfig",
+        "name",
+        "oauthConfiguration",
+        "optionsPreflightBypass",
+        "pathCookieAttribute",
+        "policies",
+        "readServiceTokensFromHeader",
+        "sameSiteCookieAttribute",
+        "scimConfig",
+        "selfHostedDomains",
+        "serviceAuth401Redirect",
+        "sessionDuration",
+        "skipInterstitial",
+        "tags",
+        "useClientlessIsolationAppLauncherUrl",
+      ],
+      [
+        "type",
+        "allowedIdps",
+        "appLauncherLogoUrl",
+        "autoRedirectToIdentity",
+        "bgColor",
+        "customDenyUrl",
+        "customNonIdentityDenyUrl",
+        "customPages",
+        "domain",
+        "footerLinks",
+        "headerBgColor",
+        "landingPageDesign",
+        "name",
+        "policies",
+        "sessionDuration",
+        "skipAppLauncherLoginPage",
+      ],
+      [
+        "type",
+        "allowedIdps",
+        "autoRedirectToIdentity",
+        "customDenyUrl",
+        "customNonIdentityDenyUrl",
+        "customPages",
+        "domain",
+        "name",
+        "policies",
+        "sessionDuration",
+      ],
+      [
+        "type",
+        "allowedIdps",
+        "autoRedirectToIdentity",
+        "customDenyUrl",
+        "customNonIdentityDenyUrl",
+        "customPages",
+        "domain",
+        "name",
+        "policies",
+        "sessionDuration",
+      ],
+      [
+        "type",
+        "allowedIdps",
+        "autoRedirectToIdentity",
+        "customDenyUrl",
+        "customNonIdentityDenyUrl",
+        "customPages",
+        "domain",
+        "name",
+        "policies",
+        "sessionDuration",
+      ],
+      [
+        "appLauncherVisible",
+        "domain",
+        "logoUrl",
+        "name",
+        "policies",
+        "tags",
+        "type",
+      ],
+      ["targetCriteria", "type", "name", "policies"],
+      [
+        "domain",
+        "targetCriteria",
+        "type",
+        "allowAuthenticateViaWarp",
+        "allowIframe",
+        "allowedIdps",
+        "appLauncherVisible",
+        "autoRedirectToIdentity",
+        "corsHeaders",
+        "customDenyMessage",
+        "customDenyUrl",
+        "customNonIdentityDenyUrl",
+        "customPages",
+        "destinations",
+        "eagerRedirectCookieSetting",
+        "enableBindingCookie",
+        "httpOnlyCookieAttribute",
+        "logoUrl",
+        "mfaConfig",
+        "name",
+        "oauthConfiguration",
+        "optionsPreflightBypass",
+        "pathCookieAttribute",
+        "policies",
+        "readServiceTokensFromHeader",
+        "sameSiteCookieAttribute",
+        "scimConfig",
+        "selfHostedDomains",
+        "serviceAuth401Redirect",
+        "sessionDuration",
+        "skipInterstitial",
+        "tags",
+        "useClientlessIsolationAppLauncherUrl",
+      ],
+      [
+        "type",
+        "allowAuthenticateViaWarp",
+        "allowedIdps",
+        "autoRedirectToIdentity",
+        "customDenyMessage",
+        "customDenyUrl",
+        "customNonIdentityDenyUrl",
+        "customPages",
+        "destinations",
+        "httpOnlyCookieAttribute",
+        "logoUrl",
+        "name",
+        "oauthConfiguration",
+        "optionsPreflightBypass",
+        "policies",
+        "sameSiteCookieAttribute",
+        "scimConfig",
+        "sessionDuration",
+        "tags",
+      ],
+      [
+        "type",
+        "allowAuthenticateViaWarp",
+        "allowedIdps",
+        "autoRedirectToIdentity",
+        "customDenyMessage",
+        "customDenyUrl",
+        "customNonIdentityDenyUrl",
+        "customPages",
+        "destinations",
+        "domain",
+        "httpOnlyCookieAttribute",
+        "logoUrl",
+        "name",
+        "oauthConfiguration",
+        "optionsPreflightBypass",
+        "policies",
+        "sameSiteCookieAttribute",
+        "scimConfig",
+        "sessionDuration",
+        "tags",
+      ],
+    ]),
+  );
 
 export interface CreateAccessApplicationForAccountRequest {
   /** The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
@@ -22299,7 +22559,267 @@ export type AccessApplicationsCreateForZoneRequestBody =
   | AccessApplicationsCreateForZoneRequestBodyMcpServerApplication
   | AccessApplicationsCreateForZoneRequestBodyMcpServerPortalApplication;
 export const AccessApplicationsCreateForZoneRequestBody =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      [
+        "domain",
+        "type",
+        "allowAuthenticateViaWarp",
+        "allowIframe",
+        "allowedIdps",
+        "appLauncherVisible",
+        "autoRedirectToIdentity",
+        "corsHeaders",
+        "customDenyMessage",
+        "customDenyUrl",
+        "customNonIdentityDenyUrl",
+        "customPages",
+        "destinations",
+        "eagerRedirectCookieSetting",
+        "enableBindingCookie",
+        "httpOnlyCookieAttribute",
+        "logoUrl",
+        "mfaConfig",
+        "name",
+        "oauthConfiguration",
+        "optionsPreflightBypass",
+        "pathCookieAttribute",
+        "policies",
+        "readServiceTokensFromHeader",
+        "sameSiteCookieAttribute",
+        "scimConfig",
+        "selfHostedDomains",
+        "serviceAuth401Redirect",
+        "sessionDuration",
+        "skipInterstitial",
+        "tags",
+        "useClientlessIsolationAppLauncherUrl",
+      ],
+      [
+        "allowedIdps",
+        "appLauncherVisible",
+        "autoRedirectToIdentity",
+        "customPages",
+        "logoUrl",
+        "name",
+        "policies",
+        "saasApp",
+        "scimConfig",
+        "tags",
+        "type",
+      ],
+      [
+        "domain",
+        "type",
+        "allowAuthenticateViaWarp",
+        "allowIframe",
+        "allowedIdps",
+        "appLauncherVisible",
+        "autoRedirectToIdentity",
+        "corsHeaders",
+        "customDenyMessage",
+        "customDenyUrl",
+        "customNonIdentityDenyUrl",
+        "customPages",
+        "destinations",
+        "eagerRedirectCookieSetting",
+        "enableBindingCookie",
+        "httpOnlyCookieAttribute",
+        "logoUrl",
+        "mfaConfig",
+        "name",
+        "oauthConfiguration",
+        "optionsPreflightBypass",
+        "pathCookieAttribute",
+        "policies",
+        "readServiceTokensFromHeader",
+        "sameSiteCookieAttribute",
+        "scimConfig",
+        "selfHostedDomains",
+        "serviceAuth401Redirect",
+        "sessionDuration",
+        "skipInterstitial",
+        "tags",
+        "useClientlessIsolationAppLauncherUrl",
+      ],
+      [
+        "domain",
+        "type",
+        "allowAuthenticateViaWarp",
+        "allowIframe",
+        "allowedIdps",
+        "appLauncherVisible",
+        "autoRedirectToIdentity",
+        "corsHeaders",
+        "customDenyMessage",
+        "customDenyUrl",
+        "customNonIdentityDenyUrl",
+        "customPages",
+        "destinations",
+        "eagerRedirectCookieSetting",
+        "enableBindingCookie",
+        "httpOnlyCookieAttribute",
+        "logoUrl",
+        "mfaConfig",
+        "name",
+        "oauthConfiguration",
+        "optionsPreflightBypass",
+        "pathCookieAttribute",
+        "policies",
+        "readServiceTokensFromHeader",
+        "sameSiteCookieAttribute",
+        "scimConfig",
+        "selfHostedDomains",
+        "serviceAuth401Redirect",
+        "sessionDuration",
+        "skipInterstitial",
+        "tags",
+        "useClientlessIsolationAppLauncherUrl",
+      ],
+      [
+        "type",
+        "allowedIdps",
+        "appLauncherLogoUrl",
+        "autoRedirectToIdentity",
+        "bgColor",
+        "customDenyUrl",
+        "customNonIdentityDenyUrl",
+        "customPages",
+        "domain",
+        "footerLinks",
+        "headerBgColor",
+        "landingPageDesign",
+        "name",
+        "policies",
+        "sessionDuration",
+        "skipAppLauncherLoginPage",
+      ],
+      [
+        "type",
+        "allowedIdps",
+        "autoRedirectToIdentity",
+        "customDenyUrl",
+        "customNonIdentityDenyUrl",
+        "customPages",
+        "domain",
+        "name",
+        "policies",
+        "sessionDuration",
+      ],
+      [
+        "type",
+        "allowedIdps",
+        "autoRedirectToIdentity",
+        "customDenyUrl",
+        "customNonIdentityDenyUrl",
+        "customPages",
+        "domain",
+        "name",
+        "policies",
+        "sessionDuration",
+      ],
+      [
+        "type",
+        "allowedIdps",
+        "autoRedirectToIdentity",
+        "customDenyUrl",
+        "customNonIdentityDenyUrl",
+        "customPages",
+        "domain",
+        "name",
+        "policies",
+        "sessionDuration",
+      ],
+      [
+        "appLauncherVisible",
+        "domain",
+        "logoUrl",
+        "name",
+        "policies",
+        "tags",
+        "type",
+      ],
+      ["targetCriteria", "type", "name", "policies"],
+      [
+        "domain",
+        "targetCriteria",
+        "type",
+        "allowAuthenticateViaWarp",
+        "allowIframe",
+        "allowedIdps",
+        "appLauncherVisible",
+        "autoRedirectToIdentity",
+        "corsHeaders",
+        "customDenyMessage",
+        "customDenyUrl",
+        "customNonIdentityDenyUrl",
+        "customPages",
+        "destinations",
+        "eagerRedirectCookieSetting",
+        "enableBindingCookie",
+        "httpOnlyCookieAttribute",
+        "logoUrl",
+        "mfaConfig",
+        "name",
+        "oauthConfiguration",
+        "optionsPreflightBypass",
+        "pathCookieAttribute",
+        "policies",
+        "readServiceTokensFromHeader",
+        "sameSiteCookieAttribute",
+        "scimConfig",
+        "selfHostedDomains",
+        "serviceAuth401Redirect",
+        "sessionDuration",
+        "skipInterstitial",
+        "tags",
+        "useClientlessIsolationAppLauncherUrl",
+      ],
+      [
+        "type",
+        "allowAuthenticateViaWarp",
+        "allowedIdps",
+        "autoRedirectToIdentity",
+        "customDenyMessage",
+        "customDenyUrl",
+        "customNonIdentityDenyUrl",
+        "customPages",
+        "destinations",
+        "httpOnlyCookieAttribute",
+        "logoUrl",
+        "name",
+        "oauthConfiguration",
+        "optionsPreflightBypass",
+        "policies",
+        "sameSiteCookieAttribute",
+        "scimConfig",
+        "sessionDuration",
+        "tags",
+      ],
+      [
+        "type",
+        "allowAuthenticateViaWarp",
+        "allowedIdps",
+        "autoRedirectToIdentity",
+        "customDenyMessage",
+        "customDenyUrl",
+        "customNonIdentityDenyUrl",
+        "customPages",
+        "destinations",
+        "domain",
+        "httpOnlyCookieAttribute",
+        "logoUrl",
+        "name",
+        "oauthConfiguration",
+        "optionsPreflightBypass",
+        "policies",
+        "sameSiteCookieAttribute",
+        "scimConfig",
+        "sessionDuration",
+        "tags",
+      ],
+    ]),
+  );
 
 export interface CreateAccessApplicationForZoneRequest {
   /** The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
@@ -36402,7 +36922,18 @@ export type DevicesPostureIntegrationsCreateRequestConfig =
   | DevicesPostureIntegrationsCreateRequestConfigTeamsDevicesSentineloneS2sConfigRequest
   | DevicesPostureIntegrationsCreateRequestConfigTeamsDevicesCustomS2sConfigRequest;
 export const DevicesPostureIntegrationsCreateRequestConfig =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["apiUrl", "authUrl", "clientId", "clientSecret"],
+      ["apiUrl", "clientId", "clientSecret", "customerId"],
+      ["apiUrl", "clientKey", "clientSecret", "customerId"],
+      ["clientId", "clientSecret", "customerId"],
+      ["clientId", "clientSecret"],
+      ["apiUrl", "clientSecret", "accessClientId", "accessClientSecret"],
+      ["apiUrl", "clientSecret"],
+      ["accessClientId", "accessClientSecret", "apiUrl"],
+    ]),
+  );
 
 export type DevicesPostureIntegrationsCreateRequestType =
   | "workspace_one"
@@ -36694,7 +37225,14 @@ export type DexCommandsCreateRequestCommandsItemArgs =
   | DexCommandsCreateRequestCommandsItemArgsWARPDiagArgs
   | DexCommandsCreateRequestCommandsItemArgsPCAPArgs
   | DexCommandsCreateRequestCommandsItemArgsSpeedTestArgs;
-export const DexCommandsCreateRequestCommandsItemArgs = /*@__PURE__*/ S.Unknown;
+export const DexCommandsCreateRequestCommandsItemArgs =
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["TestAllRoutes_"],
+      ["MaxFileSizeMb_", "PacketSizeBytes_", "TimeLimitMin_"],
+      ["interfaces"],
+    ]),
+  );
 
 export interface DexCommandsCreateRequestCommandsItem {
   /** Unique identifier for the physical device */
@@ -37685,7 +38223,9 @@ export type DlpEmailAccountMappingCreateRequestAuthRequirements =
   | DlpEmailAccountMappingCreateRequestAuthRequirementsObjectAllowedMicrosoftOrganizationsType
   | DlpEmailAccountMappingCreateRequestAuthRequirementsType;
 export const DlpEmailAccountMappingCreateRequestAuthRequirements =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([["allowedMicrosoftOrganizations", "type"], ["type"]]),
+  );
 
 export interface CreateDlpEmailAccountMappingRequest {
   accountId: string;
@@ -37762,7 +38302,9 @@ export type DlpEmailAccountMappingCreateResponseAuthRequirements =
   | DlpEmailAccountMappingCreateResponseAuthRequirementsObjectAllowedMicrosoftOrganizationsType
   | DlpEmailAccountMappingCreateResponseAuthRequirementsType;
 export const DlpEmailAccountMappingCreateResponseAuthRequirements =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([["allowedMicrosoftOrganizations", "type"], ["type"]]),
+  );
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateDlpEmailAccountMappingResponse {
@@ -38226,7 +38768,12 @@ export type DlpEntriesPredefinedCreateResponseVariant =
   | DlpEntriesPredefinedCreateResponseVariantObjectTopicTypeTypeDescription
   | DlpEntriesPredefinedCreateResponseVariantObjectTypeDescription;
 export const DlpEntriesPredefinedCreateResponseVariant =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["topicType", "type", "description"],
+      ["type", "description"],
+    ]),
+  );
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateDlpEntryPredefinedResponse {
@@ -38610,7 +39157,12 @@ export type DlpProfilesCustomCreateResponseEntriesItemVariant =
   | DlpProfilesCustomCreateResponseEntriesItemVariantObjectTopicTypeTypeDescription
   | DlpProfilesCustomCreateResponseEntriesItemVariantObjectTypeDescription;
 export const DlpProfilesCustomCreateResponseEntriesItemVariant =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["topicType", "type", "description"],
+      ["type", "description"],
+    ]),
+  );
 
 export interface DlpProfilesCustomCreateResponseEntriesItem {
   id?: string;
@@ -38759,7 +39311,12 @@ export type DlpProfilesCustomCreateResponseSharedEntriesItemVariant =
   | DlpProfilesCustomCreateResponseSharedEntriesItemVariantObjectTopicTypeTypeDescription
   | DlpProfilesCustomCreateResponseSharedEntriesItemVariantObjectTypeDescription;
 export const DlpProfilesCustomCreateResponseSharedEntriesItemVariant =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["topicType", "type", "description"],
+      ["type", "description"],
+    ]),
+  );
 
 export interface DlpProfilesCustomCreateResponseSharedEntriesItem {
   id?: string;
@@ -39867,7 +40424,13 @@ export const GatewayProxyEndpointsCreateRequestBodyIdentity =
 export type GatewayProxyEndpointsCreateRequestBody =
   | GatewayProxyEndpointsCreateRequestBodyIP
   | GatewayProxyEndpointsCreateRequestBodyIdentity;
-export const GatewayProxyEndpointsCreateRequestBody = /*@__PURE__*/ S.Unknown;
+export const GatewayProxyEndpointsCreateRequestBody =
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["name", "kind"],
+      ["kind", "name"],
+    ]),
+  );
 
 export interface CreateGatewayProxyEndpointRequest {
   accountId: string;
@@ -47835,7 +48398,12 @@ export const DlpEntriesCustomGetResponseVariantObjectTypeDescription =
 export type DlpEntriesCustomGetResponseVariant =
   | DlpEntriesCustomGetResponseVariantObjectTopicTypeTypeDescription
   | DlpEntriesCustomGetResponseVariantObjectTypeDescription;
-export const DlpEntriesCustomGetResponseVariant = /*@__PURE__*/ S.Unknown;
+export const DlpEntriesCustomGetResponseVariant = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["topicType", "type", "description"],
+    ["type", "description"],
+  ]),
+);
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DlpEntriesCustomGetResponse {
@@ -48004,7 +48572,13 @@ export const DlpEntriesCustomListResultItemVariantObjectTypeDescription =
 export type DlpEntriesCustomListResultItemVariant =
   | DlpEntriesCustomListResultItemVariantObjectTopicTypeTypeDescription
   | DlpEntriesCustomListResultItemVariantObjectTypeDescription;
-export const DlpEntriesCustomListResultItemVariant = /*@__PURE__*/ S.Unknown;
+export const DlpEntriesCustomListResultItemVariant =
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["topicType", "type", "description"],
+      ["type", "description"],
+    ]),
+  );
 
 export interface DlpEntriesCustomListResultItem {
   id?: string;
@@ -48213,7 +48787,13 @@ export const DlpEntriesIntegrationGetResponseVariantObjectTypeDescription =
 export type DlpEntriesIntegrationGetResponseVariant =
   | DlpEntriesIntegrationGetResponseVariantObjectTopicTypeTypeDescription
   | DlpEntriesIntegrationGetResponseVariantObjectTypeDescription;
-export const DlpEntriesIntegrationGetResponseVariant = /*@__PURE__*/ S.Unknown;
+export const DlpEntriesIntegrationGetResponseVariant =
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["topicType", "type", "description"],
+      ["type", "description"],
+    ]),
+  );
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DlpEntriesIntegrationGetResponse {
@@ -48387,7 +48967,12 @@ export type DlpEntriesIntegrationListResultItemVariant =
   | DlpEntriesIntegrationListResultItemVariantObjectTopicTypeTypeDescription
   | DlpEntriesIntegrationListResultItemVariantObjectTypeDescription;
 export const DlpEntriesIntegrationListResultItemVariant =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["topicType", "type", "description"],
+      ["type", "description"],
+    ]),
+  );
 
 export interface DlpEntriesIntegrationListResultItem {
   id?: string;
@@ -48599,7 +49184,13 @@ export const DlpEntriesPredefinedGetResponseVariantObjectTypeDescription =
 export type DlpEntriesPredefinedGetResponseVariant =
   | DlpEntriesPredefinedGetResponseVariantObjectTopicTypeTypeDescription
   | DlpEntriesPredefinedGetResponseVariantObjectTypeDescription;
-export const DlpEntriesPredefinedGetResponseVariant = /*@__PURE__*/ S.Unknown;
+export const DlpEntriesPredefinedGetResponseVariant =
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["topicType", "type", "description"],
+      ["type", "description"],
+    ]),
+  );
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DlpEntriesPredefinedGetResponse {
@@ -48771,7 +49362,12 @@ export type DlpEntriesPredefinedListResultItemVariant =
   | DlpEntriesPredefinedListResultItemVariantObjectTopicTypeTypeDescription
   | DlpEntriesPredefinedListResultItemVariantObjectTypeDescription;
 export const DlpEntriesPredefinedListResultItemVariant =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["topicType", "type", "description"],
+      ["type", "description"],
+    ]),
+  );
 
 export interface DlpEntriesPredefinedListResultItem {
   id?: string;
@@ -64662,7 +65258,9 @@ export type DlpEmailAccountMappingGetResponseAuthRequirements =
   | DlpEmailAccountMappingGetResponseAuthRequirementsObjectAllowedMicrosoftOrganizationsType
   | DlpEmailAccountMappingGetResponseAuthRequirementsType;
 export const DlpEmailAccountMappingGetResponseAuthRequirements =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([["allowedMicrosoftOrganizations", "type"], ["type"]]),
+  );
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetDlpEmailAccountMappingResponse {
@@ -64942,7 +65540,12 @@ export const DlpEntriesGetResponseVariantObjectTypeDescription =
 export type DlpEntriesGetResponseVariant =
   | DlpEntriesGetResponseVariantObjectTopicTypeTypeDescription
   | DlpEntriesGetResponseVariantObjectTypeDescription;
-export const DlpEntriesGetResponseVariant = /*@__PURE__*/ S.Unknown;
+export const DlpEntriesGetResponseVariant = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["topicType", "type", "description"],
+    ["type", "description"],
+  ]),
+);
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetDlpEntryResponse {
@@ -65204,7 +65807,13 @@ export const DlpProfilesGetResponseEntriesItemVariantObjectTypeDescription =
 export type DlpProfilesGetResponseEntriesItemVariant =
   | DlpProfilesGetResponseEntriesItemVariantObjectTopicTypeTypeDescription
   | DlpProfilesGetResponseEntriesItemVariantObjectTypeDescription;
-export const DlpProfilesGetResponseEntriesItemVariant = /*@__PURE__*/ S.Unknown;
+export const DlpProfilesGetResponseEntriesItemVariant =
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["topicType", "type", "description"],
+      ["type", "description"],
+    ]),
+  );
 
 export interface DlpProfilesGetResponseEntriesItem {
   id?: string;
@@ -65350,7 +65959,12 @@ export type DlpProfilesGetResponseSharedEntriesItemVariant =
   | DlpProfilesGetResponseSharedEntriesItemVariantObjectTopicTypeTypeDescription
   | DlpProfilesGetResponseSharedEntriesItemVariantObjectTypeDescription;
 export const DlpProfilesGetResponseSharedEntriesItemVariant =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["topicType", "type", "description"],
+      ["type", "description"],
+    ]),
+  );
 
 export interface DlpProfilesGetResponseSharedEntriesItem {
   id?: string;
@@ -65642,7 +66256,12 @@ export type DlpProfilesCustomGetResponseEntriesItemVariant =
   | DlpProfilesCustomGetResponseEntriesItemVariantObjectTopicTypeTypeDescription
   | DlpProfilesCustomGetResponseEntriesItemVariantObjectTypeDescription;
 export const DlpProfilesCustomGetResponseEntriesItemVariant =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["topicType", "type", "description"],
+      ["type", "description"],
+    ]),
+  );
 
 export interface DlpProfilesCustomGetResponseEntriesItem {
   id?: string;
@@ -65789,7 +66408,12 @@ export type DlpProfilesCustomGetResponseSharedEntriesItemVariant =
   | DlpProfilesCustomGetResponseSharedEntriesItemVariantObjectTopicTypeTypeDescription
   | DlpProfilesCustomGetResponseSharedEntriesItemVariantObjectTypeDescription;
 export const DlpProfilesCustomGetResponseSharedEntriesItemVariant =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["topicType", "type", "description"],
+      ["type", "description"],
+    ]),
+  );
 
 export interface DlpProfilesCustomGetResponseSharedEntriesItem {
   id?: string;
@@ -66042,7 +66666,12 @@ export type DlpProfilesPredefinedGetResponseEntriesItemVariant =
   | DlpProfilesPredefinedGetResponseEntriesItemVariantObjectTopicTypeTypeDescription
   | DlpProfilesPredefinedGetResponseEntriesItemVariantObjectTypeDescription;
 export const DlpProfilesPredefinedGetResponseEntriesItemVariant =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["topicType", "type", "description"],
+      ["type", "description"],
+    ]),
+  );
 
 export interface DlpProfilesPredefinedGetResponseEntriesItem {
   id?: string;
@@ -70512,7 +71141,9 @@ export type TunnelsWarpConnectorConfigurationsGetResponseConfig =
   | TunnelsWarpConnectorConfigurationsGetResponseConfigTunnelMeshAwsConfig
   | TunnelsWarpConnectorConfigurationsGetResponseConfigTunnelMeshLocalConfig;
 export const TunnelsWarpConnectorConfigurationsGetResponseConfig =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([["fnrId"], ["vips", "vipsPrevious"]]),
+  );
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetTunnelWarpConnectorConfigurationResponse {
@@ -87562,7 +88193,12 @@ export const DlpEntriesListResultItemVariantObjectTypeDescription =
 export type DlpEntriesListResultItemVariant =
   | DlpEntriesListResultItemVariantObjectTopicTypeTypeDescription
   | DlpEntriesListResultItemVariantObjectTypeDescription;
-export const DlpEntriesListResultItemVariant = /*@__PURE__*/ S.Unknown;
+export const DlpEntriesListResultItemVariant = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["topicType", "type", "description"],
+    ["type", "description"],
+  ]),
+);
 
 export interface DlpEntriesListResultItem {
   id?: string;
@@ -87846,7 +88482,12 @@ export type DlpProfilesListResultItemEntriesItemVariant =
   | DlpProfilesListResultItemEntriesItemVariantObjectTopicTypeTypeDescription
   | DlpProfilesListResultItemEntriesItemVariantObjectTypeDescription;
 export const DlpProfilesListResultItemEntriesItemVariant =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["topicType", "type", "description"],
+      ["type", "description"],
+    ]),
+  );
 
 export interface DlpProfilesListResultItemEntriesItem {
   id?: string;
@@ -87993,7 +88634,12 @@ export type DlpProfilesListResultItemSharedEntriesItemVariant =
   | DlpProfilesListResultItemSharedEntriesItemVariantObjectTopicTypeTypeDescription
   | DlpProfilesListResultItemSharedEntriesItemVariantObjectTypeDescription;
 export const DlpProfilesListResultItemSharedEntriesItemVariant =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["topicType", "type", "description"],
+      ["type", "description"],
+    ]),
+  );
 
 export interface DlpProfilesListResultItemSharedEntriesItem {
   id?: string;
@@ -95670,7 +96316,18 @@ export type DevicesPostureIntegrationsEditRequestConfig =
   | DevicesPostureIntegrationsEditRequestConfigTeamsDevicesSentineloneS2sConfigRequest
   | DevicesPostureIntegrationsEditRequestConfigTeamsDevicesCustomS2sConfigRequest;
 export const DevicesPostureIntegrationsEditRequestConfig =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["apiUrl", "authUrl", "clientId", "clientSecret"],
+      ["apiUrl", "clientId", "clientSecret", "customerId"],
+      ["apiUrl", "clientKey", "clientSecret", "customerId"],
+      ["clientId", "clientSecret", "customerId"],
+      ["clientId", "clientSecret"],
+      ["apiUrl", "clientSecret", "accessClientId", "accessClientSecret"],
+      ["apiUrl", "clientSecret"],
+      ["accessClientId", "accessClientSecret", "apiUrl"],
+    ]),
+  );
 
 export type DevicesPostureIntegrationsEditRequestType =
   | "workspace_one"
@@ -99329,7 +99986,12 @@ export type DlpProfilesPredefinedUpdateResponseEntriesItemVariant =
   | DlpProfilesPredefinedUpdateResponseEntriesItemVariantObjectTopicTypeTypeDescription
   | DlpProfilesPredefinedUpdateResponseEntriesItemVariantObjectTypeDescription;
 export const DlpProfilesPredefinedUpdateResponseEntriesItemVariant =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["topicType", "type", "description"],
+      ["type", "description"],
+    ]),
+  );
 
 export interface DlpProfilesPredefinedUpdateResponseEntriesItem {
   id?: string;
@@ -101513,7 +102175,9 @@ export type TunnelsWarpConnectorConfigurationsUpdateResponseConfig =
   | TunnelsWarpConnectorConfigurationsUpdateResponseConfigTunnelMeshAwsConfig
   | TunnelsWarpConnectorConfigurationsUpdateResponseConfigTunnelMeshLocalConfig;
 export const TunnelsWarpConnectorConfigurationsUpdateResponseConfig =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([["fnrId"], ["vips", "vipsPrevious"]]),
+  );
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PutTunnelWarpConnectorConfigurationResponse {
@@ -112003,7 +112667,267 @@ export type AccessApplicationsUpdateForAccountRequestBody =
   | AccessApplicationsUpdateForAccountRequestBodyMcpServerApplication
   | AccessApplicationsUpdateForAccountRequestBodyMcpServerPortalApplication;
 export const AccessApplicationsUpdateForAccountRequestBody =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      [
+        "domain",
+        "type",
+        "allowAuthenticateViaWarp",
+        "allowIframe",
+        "allowedIdps",
+        "appLauncherVisible",
+        "autoRedirectToIdentity",
+        "corsHeaders",
+        "customDenyMessage",
+        "customDenyUrl",
+        "customNonIdentityDenyUrl",
+        "customPages",
+        "destinations",
+        "eagerRedirectCookieSetting",
+        "enableBindingCookie",
+        "httpOnlyCookieAttribute",
+        "logoUrl",
+        "mfaConfig",
+        "name",
+        "oauthConfiguration",
+        "optionsPreflightBypass",
+        "pathCookieAttribute",
+        "policies",
+        "readServiceTokensFromHeader",
+        "sameSiteCookieAttribute",
+        "scimConfig",
+        "selfHostedDomains",
+        "serviceAuth401Redirect",
+        "sessionDuration",
+        "skipInterstitial",
+        "tags",
+        "useClientlessIsolationAppLauncherUrl",
+      ],
+      [
+        "allowedIdps",
+        "appLauncherVisible",
+        "autoRedirectToIdentity",
+        "customPages",
+        "logoUrl",
+        "name",
+        "policies",
+        "saasApp",
+        "scimConfig",
+        "tags",
+        "type",
+      ],
+      [
+        "domain",
+        "type",
+        "allowAuthenticateViaWarp",
+        "allowIframe",
+        "allowedIdps",
+        "appLauncherVisible",
+        "autoRedirectToIdentity",
+        "corsHeaders",
+        "customDenyMessage",
+        "customDenyUrl",
+        "customNonIdentityDenyUrl",
+        "customPages",
+        "destinations",
+        "eagerRedirectCookieSetting",
+        "enableBindingCookie",
+        "httpOnlyCookieAttribute",
+        "logoUrl",
+        "mfaConfig",
+        "name",
+        "oauthConfiguration",
+        "optionsPreflightBypass",
+        "pathCookieAttribute",
+        "policies",
+        "readServiceTokensFromHeader",
+        "sameSiteCookieAttribute",
+        "scimConfig",
+        "selfHostedDomains",
+        "serviceAuth401Redirect",
+        "sessionDuration",
+        "skipInterstitial",
+        "tags",
+        "useClientlessIsolationAppLauncherUrl",
+      ],
+      [
+        "domain",
+        "type",
+        "allowAuthenticateViaWarp",
+        "allowIframe",
+        "allowedIdps",
+        "appLauncherVisible",
+        "autoRedirectToIdentity",
+        "corsHeaders",
+        "customDenyMessage",
+        "customDenyUrl",
+        "customNonIdentityDenyUrl",
+        "customPages",
+        "destinations",
+        "eagerRedirectCookieSetting",
+        "enableBindingCookie",
+        "httpOnlyCookieAttribute",
+        "logoUrl",
+        "mfaConfig",
+        "name",
+        "oauthConfiguration",
+        "optionsPreflightBypass",
+        "pathCookieAttribute",
+        "policies",
+        "readServiceTokensFromHeader",
+        "sameSiteCookieAttribute",
+        "scimConfig",
+        "selfHostedDomains",
+        "serviceAuth401Redirect",
+        "sessionDuration",
+        "skipInterstitial",
+        "tags",
+        "useClientlessIsolationAppLauncherUrl",
+      ],
+      [
+        "type",
+        "allowedIdps",
+        "appLauncherLogoUrl",
+        "autoRedirectToIdentity",
+        "bgColor",
+        "customDenyUrl",
+        "customNonIdentityDenyUrl",
+        "customPages",
+        "domain",
+        "footerLinks",
+        "headerBgColor",
+        "landingPageDesign",
+        "name",
+        "policies",
+        "sessionDuration",
+        "skipAppLauncherLoginPage",
+      ],
+      [
+        "type",
+        "allowedIdps",
+        "autoRedirectToIdentity",
+        "customDenyUrl",
+        "customNonIdentityDenyUrl",
+        "customPages",
+        "domain",
+        "name",
+        "policies",
+        "sessionDuration",
+      ],
+      [
+        "type",
+        "allowedIdps",
+        "autoRedirectToIdentity",
+        "customDenyUrl",
+        "customNonIdentityDenyUrl",
+        "customPages",
+        "domain",
+        "name",
+        "policies",
+        "sessionDuration",
+      ],
+      [
+        "type",
+        "allowedIdps",
+        "autoRedirectToIdentity",
+        "customDenyUrl",
+        "customNonIdentityDenyUrl",
+        "customPages",
+        "domain",
+        "name",
+        "policies",
+        "sessionDuration",
+      ],
+      [
+        "appLauncherVisible",
+        "domain",
+        "logoUrl",
+        "name",
+        "policies",
+        "tags",
+        "type",
+      ],
+      ["targetCriteria", "type", "name", "policies"],
+      [
+        "domain",
+        "targetCriteria",
+        "type",
+        "allowAuthenticateViaWarp",
+        "allowIframe",
+        "allowedIdps",
+        "appLauncherVisible",
+        "autoRedirectToIdentity",
+        "corsHeaders",
+        "customDenyMessage",
+        "customDenyUrl",
+        "customNonIdentityDenyUrl",
+        "customPages",
+        "destinations",
+        "eagerRedirectCookieSetting",
+        "enableBindingCookie",
+        "httpOnlyCookieAttribute",
+        "logoUrl",
+        "mfaConfig",
+        "name",
+        "oauthConfiguration",
+        "optionsPreflightBypass",
+        "pathCookieAttribute",
+        "policies",
+        "readServiceTokensFromHeader",
+        "sameSiteCookieAttribute",
+        "scimConfig",
+        "selfHostedDomains",
+        "serviceAuth401Redirect",
+        "sessionDuration",
+        "skipInterstitial",
+        "tags",
+        "useClientlessIsolationAppLauncherUrl",
+      ],
+      [
+        "type",
+        "allowAuthenticateViaWarp",
+        "allowedIdps",
+        "autoRedirectToIdentity",
+        "customDenyMessage",
+        "customDenyUrl",
+        "customNonIdentityDenyUrl",
+        "customPages",
+        "destinations",
+        "httpOnlyCookieAttribute",
+        "logoUrl",
+        "name",
+        "oauthConfiguration",
+        "optionsPreflightBypass",
+        "policies",
+        "sameSiteCookieAttribute",
+        "scimConfig",
+        "sessionDuration",
+        "tags",
+      ],
+      [
+        "type",
+        "allowAuthenticateViaWarp",
+        "allowedIdps",
+        "autoRedirectToIdentity",
+        "customDenyMessage",
+        "customDenyUrl",
+        "customNonIdentityDenyUrl",
+        "customPages",
+        "destinations",
+        "domain",
+        "httpOnlyCookieAttribute",
+        "logoUrl",
+        "name",
+        "oauthConfiguration",
+        "optionsPreflightBypass",
+        "policies",
+        "sameSiteCookieAttribute",
+        "scimConfig",
+        "sessionDuration",
+        "tags",
+      ],
+    ]),
+  );
 
 export interface UpdateAccessApplicationForAccountRequest {
   /** The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
@@ -122117,7 +123041,267 @@ export type AccessApplicationsUpdateForZoneRequestBody =
   | AccessApplicationsUpdateForZoneRequestBodyMcpServerApplication
   | AccessApplicationsUpdateForZoneRequestBodyMcpServerPortalApplication;
 export const AccessApplicationsUpdateForZoneRequestBody =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      [
+        "domain",
+        "type",
+        "allowAuthenticateViaWarp",
+        "allowIframe",
+        "allowedIdps",
+        "appLauncherVisible",
+        "autoRedirectToIdentity",
+        "corsHeaders",
+        "customDenyMessage",
+        "customDenyUrl",
+        "customNonIdentityDenyUrl",
+        "customPages",
+        "destinations",
+        "eagerRedirectCookieSetting",
+        "enableBindingCookie",
+        "httpOnlyCookieAttribute",
+        "logoUrl",
+        "mfaConfig",
+        "name",
+        "oauthConfiguration",
+        "optionsPreflightBypass",
+        "pathCookieAttribute",
+        "policies",
+        "readServiceTokensFromHeader",
+        "sameSiteCookieAttribute",
+        "scimConfig",
+        "selfHostedDomains",
+        "serviceAuth401Redirect",
+        "sessionDuration",
+        "skipInterstitial",
+        "tags",
+        "useClientlessIsolationAppLauncherUrl",
+      ],
+      [
+        "allowedIdps",
+        "appLauncherVisible",
+        "autoRedirectToIdentity",
+        "customPages",
+        "logoUrl",
+        "name",
+        "policies",
+        "saasApp",
+        "scimConfig",
+        "tags",
+        "type",
+      ],
+      [
+        "domain",
+        "type",
+        "allowAuthenticateViaWarp",
+        "allowIframe",
+        "allowedIdps",
+        "appLauncherVisible",
+        "autoRedirectToIdentity",
+        "corsHeaders",
+        "customDenyMessage",
+        "customDenyUrl",
+        "customNonIdentityDenyUrl",
+        "customPages",
+        "destinations",
+        "eagerRedirectCookieSetting",
+        "enableBindingCookie",
+        "httpOnlyCookieAttribute",
+        "logoUrl",
+        "mfaConfig",
+        "name",
+        "oauthConfiguration",
+        "optionsPreflightBypass",
+        "pathCookieAttribute",
+        "policies",
+        "readServiceTokensFromHeader",
+        "sameSiteCookieAttribute",
+        "scimConfig",
+        "selfHostedDomains",
+        "serviceAuth401Redirect",
+        "sessionDuration",
+        "skipInterstitial",
+        "tags",
+        "useClientlessIsolationAppLauncherUrl",
+      ],
+      [
+        "domain",
+        "type",
+        "allowAuthenticateViaWarp",
+        "allowIframe",
+        "allowedIdps",
+        "appLauncherVisible",
+        "autoRedirectToIdentity",
+        "corsHeaders",
+        "customDenyMessage",
+        "customDenyUrl",
+        "customNonIdentityDenyUrl",
+        "customPages",
+        "destinations",
+        "eagerRedirectCookieSetting",
+        "enableBindingCookie",
+        "httpOnlyCookieAttribute",
+        "logoUrl",
+        "mfaConfig",
+        "name",
+        "oauthConfiguration",
+        "optionsPreflightBypass",
+        "pathCookieAttribute",
+        "policies",
+        "readServiceTokensFromHeader",
+        "sameSiteCookieAttribute",
+        "scimConfig",
+        "selfHostedDomains",
+        "serviceAuth401Redirect",
+        "sessionDuration",
+        "skipInterstitial",
+        "tags",
+        "useClientlessIsolationAppLauncherUrl",
+      ],
+      [
+        "type",
+        "allowedIdps",
+        "appLauncherLogoUrl",
+        "autoRedirectToIdentity",
+        "bgColor",
+        "customDenyUrl",
+        "customNonIdentityDenyUrl",
+        "customPages",
+        "domain",
+        "footerLinks",
+        "headerBgColor",
+        "landingPageDesign",
+        "name",
+        "policies",
+        "sessionDuration",
+        "skipAppLauncherLoginPage",
+      ],
+      [
+        "type",
+        "allowedIdps",
+        "autoRedirectToIdentity",
+        "customDenyUrl",
+        "customNonIdentityDenyUrl",
+        "customPages",
+        "domain",
+        "name",
+        "policies",
+        "sessionDuration",
+      ],
+      [
+        "type",
+        "allowedIdps",
+        "autoRedirectToIdentity",
+        "customDenyUrl",
+        "customNonIdentityDenyUrl",
+        "customPages",
+        "domain",
+        "name",
+        "policies",
+        "sessionDuration",
+      ],
+      [
+        "type",
+        "allowedIdps",
+        "autoRedirectToIdentity",
+        "customDenyUrl",
+        "customNonIdentityDenyUrl",
+        "customPages",
+        "domain",
+        "name",
+        "policies",
+        "sessionDuration",
+      ],
+      [
+        "appLauncherVisible",
+        "domain",
+        "logoUrl",
+        "name",
+        "policies",
+        "tags",
+        "type",
+      ],
+      ["targetCriteria", "type", "name", "policies"],
+      [
+        "domain",
+        "targetCriteria",
+        "type",
+        "allowAuthenticateViaWarp",
+        "allowIframe",
+        "allowedIdps",
+        "appLauncherVisible",
+        "autoRedirectToIdentity",
+        "corsHeaders",
+        "customDenyMessage",
+        "customDenyUrl",
+        "customNonIdentityDenyUrl",
+        "customPages",
+        "destinations",
+        "eagerRedirectCookieSetting",
+        "enableBindingCookie",
+        "httpOnlyCookieAttribute",
+        "logoUrl",
+        "mfaConfig",
+        "name",
+        "oauthConfiguration",
+        "optionsPreflightBypass",
+        "pathCookieAttribute",
+        "policies",
+        "readServiceTokensFromHeader",
+        "sameSiteCookieAttribute",
+        "scimConfig",
+        "selfHostedDomains",
+        "serviceAuth401Redirect",
+        "sessionDuration",
+        "skipInterstitial",
+        "tags",
+        "useClientlessIsolationAppLauncherUrl",
+      ],
+      [
+        "type",
+        "allowAuthenticateViaWarp",
+        "allowedIdps",
+        "autoRedirectToIdentity",
+        "customDenyMessage",
+        "customDenyUrl",
+        "customNonIdentityDenyUrl",
+        "customPages",
+        "destinations",
+        "httpOnlyCookieAttribute",
+        "logoUrl",
+        "name",
+        "oauthConfiguration",
+        "optionsPreflightBypass",
+        "policies",
+        "sameSiteCookieAttribute",
+        "scimConfig",
+        "sessionDuration",
+        "tags",
+      ],
+      [
+        "type",
+        "allowAuthenticateViaWarp",
+        "allowedIdps",
+        "autoRedirectToIdentity",
+        "customDenyMessage",
+        "customDenyUrl",
+        "customNonIdentityDenyUrl",
+        "customPages",
+        "destinations",
+        "domain",
+        "httpOnlyCookieAttribute",
+        "logoUrl",
+        "name",
+        "oauthConfiguration",
+        "optionsPreflightBypass",
+        "policies",
+        "sameSiteCookieAttribute",
+        "scimConfig",
+        "sessionDuration",
+        "tags",
+      ],
+    ]),
+  );
 
 export interface UpdateAccessApplicationForZoneRequest {
   /** The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
@@ -134842,7 +136026,13 @@ export type DlpEntriesUpdateRequestBody =
   | DlpEntriesUpdateRequestBodyCustom
   | DlpEntriesUpdateRequestBodyPredefined
   | DlpEntriesUpdateRequestBodyIntegration;
-export const DlpEntriesUpdateRequestBody = /*@__PURE__*/ S.Unknown;
+export const DlpEntriesUpdateRequestBody = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["name", "pattern", "type", "description", "enabled"],
+    ["type", "enabled"],
+    ["type", "enabled"],
+  ]),
+);
 
 export interface UpdateDlpEntryRequest {
   accountId: string;
@@ -134956,7 +136146,12 @@ export const DlpEntriesUpdateResponseVariantObjectTypeDescription =
 export type DlpEntriesUpdateResponseVariant =
   | DlpEntriesUpdateResponseVariantObjectTopicTypeTypeDescription
   | DlpEntriesUpdateResponseVariantObjectTypeDescription;
-export const DlpEntriesUpdateResponseVariant = /*@__PURE__*/ S.Unknown;
+export const DlpEntriesUpdateResponseVariant = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["topicType", "type", "description"],
+    ["type", "description"],
+  ]),
+);
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateDlpEntryResponse {
@@ -135233,7 +136428,12 @@ export type DlpEntriesPredefinedUpdateResponseVariant =
   | DlpEntriesPredefinedUpdateResponseVariantObjectTopicTypeTypeDescription
   | DlpEntriesPredefinedUpdateResponseVariantObjectTypeDescription;
 export const DlpEntriesPredefinedUpdateResponseVariant =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["topicType", "type", "description"],
+      ["type", "description"],
+    ]),
+  );
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateDlpEntryPredefinedResponse {
@@ -135613,7 +136813,12 @@ export type DlpProfilesCustomUpdateResponseEntriesItemVariant =
   | DlpProfilesCustomUpdateResponseEntriesItemVariantObjectTopicTypeTypeDescription
   | DlpProfilesCustomUpdateResponseEntriesItemVariantObjectTypeDescription;
 export const DlpProfilesCustomUpdateResponseEntriesItemVariant =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["topicType", "type", "description"],
+      ["type", "description"],
+    ]),
+  );
 
 export interface DlpProfilesCustomUpdateResponseEntriesItem {
   id?: string;
@@ -135762,7 +136967,12 @@ export type DlpProfilesCustomUpdateResponseSharedEntriesItemVariant =
   | DlpProfilesCustomUpdateResponseSharedEntriesItemVariantObjectTopicTypeTypeDescription
   | DlpProfilesCustomUpdateResponseSharedEntriesItemVariantObjectTypeDescription;
 export const DlpProfilesCustomUpdateResponseSharedEntriesItemVariant =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["topicType", "type", "description"],
+      ["type", "description"],
+    ]),
+  );
 
 export interface DlpProfilesCustomUpdateResponseSharedEntriesItem {
   id?: string;

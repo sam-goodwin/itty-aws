@@ -1179,7 +1179,7 @@ export type VersionsGraphResponseGraphWorkflowNodesItemPayload =
   | VersionsGraphResponseGraphWorkflowNodesItemPayloadType
   | VersionsGraphResponseGraphWorkflowNodesItemPayloadObjectFieldsType;
 export const VersionsGraphResponseGraphWorkflowNodesItemPayload =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([["type"], ["fields", "type"]]));
 
 export type VersionsGraphResponseGraphWorkflowNodesItemKind =
   | "all"
@@ -1439,7 +1439,7 @@ export type VersionsGraphResponseGraphWorkflowPayload =
   | VersionsGraphResponseGraphWorkflowPayloadType
   | VersionsGraphResponseGraphWorkflowPayloadObjectFieldsType;
 export const VersionsGraphResponseGraphWorkflowPayload =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([["type"], ["fields", "type"]]));
 
 export interface VersionsGraphResponseGraphWorkflow {
   className: string;
@@ -1920,7 +1920,14 @@ export type InstancesStatusEditRequestBody =
   | InstancesStatusEditRequestBodyStatus2
   | InstancesStatusEditRequestBodyObjectStatusRollback
   | InstancesStatusEditRequestBodyObjectStatusFrom;
-export const InstancesStatusEditRequestBody = /*@__PURE__*/ S.Unknown;
+export const InstancesStatusEditRequestBody = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["status"],
+    ["status"],
+    ["status", "rollback"],
+    ["status", "from"],
+  ]),
+);
 
 export interface PatchInstanceStatusRequest {
   accountId: string;

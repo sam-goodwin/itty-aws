@@ -827,7 +827,52 @@ export const ContentCreateRequestBodyObjectHtmlActionTimeoutAddScriptTag16More =
 export type ContentCreateRequestBody =
   | ContentCreateRequestBodyObjectUrlActionTimeoutAddScriptTag16More
   | ContentCreateRequestBodyObjectHtmlActionTimeoutAddScriptTag16More;
-export const ContentCreateRequestBody = /*@__PURE__*/ S.Unknown;
+export const ContentCreateRequestBody = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    [
+      "url",
+      "actionTimeout",
+      "addScriptTag",
+      "addStyleTag",
+      "allowRequestPattern",
+      "allowResourceTypes",
+      "authenticate",
+      "bestAttempt",
+      "cookies",
+      "emulateMediaType",
+      "gotoOptions",
+      "rejectRequestPattern",
+      "rejectResourceTypes",
+      "setExtraHTTPHeaders",
+      "setJavaScriptEnabled",
+      "userAgent",
+      "viewport",
+      "waitForSelector",
+      "waitForTimeout",
+    ],
+    [
+      "html",
+      "actionTimeout",
+      "addScriptTag",
+      "addStyleTag",
+      "allowRequestPattern",
+      "allowResourceTypes",
+      "authenticate",
+      "bestAttempt",
+      "cookies",
+      "emulateMediaType",
+      "gotoOptions",
+      "rejectRequestPattern",
+      "rejectResourceTypes",
+      "setExtraHTTPHeaders",
+      "setJavaScriptEnabled",
+      "userAgent",
+      "viewport",
+      "waitForSelector",
+      "waitForTimeout",
+    ],
+  ]),
+);
 
 export interface CreateContentRequest {
   /** Account ID. */
@@ -1595,7 +1640,53 @@ export const CrawlCreateRequestBodyObjectRenderUrlCrawlPurposes8More =
 export type CrawlCreateRequestBody =
   | CrawlCreateRequestBodyObjectUrlActionTimeoutAddScriptTag25More
   | CrawlCreateRequestBodyObjectRenderUrlCrawlPurposes8More;
-export const CrawlCreateRequestBody = /*@__PURE__*/ S.Unknown;
+export const CrawlCreateRequestBody = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    [
+      "url",
+      "actionTimeout",
+      "addScriptTag",
+      "addStyleTag",
+      "allowRequestPattern",
+      "allowResourceTypes",
+      "authenticate",
+      "bestAttempt",
+      "cookies",
+      "crawlPurposes",
+      "depth",
+      "emulateMediaType",
+      "formats",
+      "gotoOptions",
+      "jsonOptions",
+      "limit",
+      "maxAge",
+      "modifiedSince",
+      "options",
+      "rejectRequestPattern",
+      "rejectResourceTypes",
+      "render",
+      "setExtraHTTPHeaders",
+      "setJavaScriptEnabled",
+      "source",
+      "viewport",
+      "waitForSelector",
+      "waitForTimeout",
+    ],
+    [
+      "render",
+      "url",
+      "crawlPurposes",
+      "depth",
+      "formats",
+      "jsonOptions",
+      "limit",
+      "maxAge",
+      "modifiedSince",
+      "options",
+      "source",
+    ],
+  ]),
+);
 
 export interface CreateCrawlRequest {
   /** Account ID. */
@@ -2556,7 +2647,58 @@ export const JsonCreateRequestBodyObjectUrlActionTimeoutAddScriptTag19More =
 export type JsonCreateRequestBody =
   | JsonCreateRequestBodyObjectHtmlActionTimeoutAddScriptTag19More
   | JsonCreateRequestBodyObjectUrlActionTimeoutAddScriptTag19More;
-export const JsonCreateRequestBody = /*@__PURE__*/ S.Unknown;
+export const JsonCreateRequestBody = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    [
+      "html",
+      "actionTimeout",
+      "addScriptTag",
+      "addStyleTag",
+      "allowRequestPattern",
+      "allowResourceTypes",
+      "authenticate",
+      "bestAttempt",
+      "cookies",
+      "customAi",
+      "emulateMediaType",
+      "gotoOptions",
+      "prompt",
+      "rejectRequestPattern",
+      "rejectResourceTypes",
+      "responseFormat",
+      "setExtraHTTPHeaders",
+      "setJavaScriptEnabled",
+      "userAgent",
+      "viewport",
+      "waitForSelector",
+      "waitForTimeout",
+    ],
+    [
+      "url",
+      "actionTimeout",
+      "addScriptTag",
+      "addStyleTag",
+      "allowRequestPattern",
+      "allowResourceTypes",
+      "authenticate",
+      "bestAttempt",
+      "cookies",
+      "customAi",
+      "emulateMediaType",
+      "gotoOptions",
+      "prompt",
+      "rejectRequestPattern",
+      "rejectResourceTypes",
+      "responseFormat",
+      "setExtraHTTPHeaders",
+      "setJavaScriptEnabled",
+      "userAgent",
+      "viewport",
+      "waitForSelector",
+      "waitForTimeout",
+    ],
+  ]),
+);
 
 export interface CreateJsonRequest {
   /** Account ID. */
@@ -3289,7 +3431,56 @@ export const LinksCreateRequestBodyObjectUrlActionTimeoutAddScriptTag18More =
 export type LinksCreateRequestBody =
   | LinksCreateRequestBodyObjectHtmlActionTimeoutAddScriptTag18More
   | LinksCreateRequestBodyObjectUrlActionTimeoutAddScriptTag18More;
-export const LinksCreateRequestBody = /*@__PURE__*/ S.Unknown;
+export const LinksCreateRequestBody = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    [
+      "html",
+      "actionTimeout",
+      "addScriptTag",
+      "addStyleTag",
+      "allowRequestPattern",
+      "allowResourceTypes",
+      "authenticate",
+      "bestAttempt",
+      "cookies",
+      "emulateMediaType",
+      "excludeExternalLinks",
+      "gotoOptions",
+      "rejectRequestPattern",
+      "rejectResourceTypes",
+      "setExtraHTTPHeaders",
+      "setJavaScriptEnabled",
+      "userAgent",
+      "viewport",
+      "visibleLinksOnly",
+      "waitForSelector",
+      "waitForTimeout",
+    ],
+    [
+      "url",
+      "actionTimeout",
+      "addScriptTag",
+      "addStyleTag",
+      "allowRequestPattern",
+      "allowResourceTypes",
+      "authenticate",
+      "bestAttempt",
+      "cookies",
+      "emulateMediaType",
+      "excludeExternalLinks",
+      "gotoOptions",
+      "rejectRequestPattern",
+      "rejectResourceTypes",
+      "setExtraHTTPHeaders",
+      "setJavaScriptEnabled",
+      "userAgent",
+      "viewport",
+      "visibleLinksOnly",
+      "waitForSelector",
+      "waitForTimeout",
+    ],
+  ]),
+);
 
 export interface CreateLinkRequest {
   /** Account ID. */
@@ -4013,7 +4204,52 @@ export const MarkdownCreateRequestBodyObjectHtmlActionTimeoutAddScriptTag16More 
 export type MarkdownCreateRequestBody =
   | MarkdownCreateRequestBodyObjectUrlActionTimeoutAddScriptTag16More
   | MarkdownCreateRequestBodyObjectHtmlActionTimeoutAddScriptTag16More;
-export const MarkdownCreateRequestBody = /*@__PURE__*/ S.Unknown;
+export const MarkdownCreateRequestBody = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    [
+      "url",
+      "actionTimeout",
+      "addScriptTag",
+      "addStyleTag",
+      "allowRequestPattern",
+      "allowResourceTypes",
+      "authenticate",
+      "bestAttempt",
+      "cookies",
+      "emulateMediaType",
+      "gotoOptions",
+      "rejectRequestPattern",
+      "rejectResourceTypes",
+      "setExtraHTTPHeaders",
+      "setJavaScriptEnabled",
+      "userAgent",
+      "viewport",
+      "waitForSelector",
+      "waitForTimeout",
+    ],
+    [
+      "html",
+      "actionTimeout",
+      "addScriptTag",
+      "addStyleTag",
+      "allowRequestPattern",
+      "allowResourceTypes",
+      "authenticate",
+      "bestAttempt",
+      "cookies",
+      "emulateMediaType",
+      "gotoOptions",
+      "rejectRequestPattern",
+      "rejectResourceTypes",
+      "setExtraHTTPHeaders",
+      "setJavaScriptEnabled",
+      "userAgent",
+      "viewport",
+      "waitForSelector",
+      "waitForTimeout",
+    ],
+  ]),
+);
 
 export interface CreateMarkdownRequest {
   /** Account ID. */
@@ -5118,7 +5354,54 @@ export const PdfCreateRequestBodyObjectUrlActionTimeoutAddScriptTag17More =
 export type PdfCreateRequestBody =
   | PdfCreateRequestBodyObjectHtmlActionTimeoutAddScriptTag17More
   | PdfCreateRequestBodyObjectUrlActionTimeoutAddScriptTag17More;
-export const PdfCreateRequestBody = /*@__PURE__*/ S.Unknown;
+export const PdfCreateRequestBody = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    [
+      "html",
+      "actionTimeout",
+      "addScriptTag",
+      "addStyleTag",
+      "allowRequestPattern",
+      "allowResourceTypes",
+      "authenticate",
+      "bestAttempt",
+      "cookies",
+      "emulateMediaType",
+      "gotoOptions",
+      "pdfOptions",
+      "rejectRequestPattern",
+      "rejectResourceTypes",
+      "setExtraHTTPHeaders",
+      "setJavaScriptEnabled",
+      "userAgent",
+      "viewport",
+      "waitForSelector",
+      "waitForTimeout",
+    ],
+    [
+      "url",
+      "actionTimeout",
+      "addScriptTag",
+      "addStyleTag",
+      "allowRequestPattern",
+      "allowResourceTypes",
+      "authenticate",
+      "bestAttempt",
+      "cookies",
+      "emulateMediaType",
+      "gotoOptions",
+      "pdfOptions",
+      "rejectRequestPattern",
+      "rejectResourceTypes",
+      "setExtraHTTPHeaders",
+      "setJavaScriptEnabled",
+      "userAgent",
+      "viewport",
+      "waitForSelector",
+      "waitForTimeout",
+    ],
+  ]),
+);
 
 export interface CreatePdfRequest {
   /** Account ID. */
@@ -5881,7 +6164,54 @@ export const ScrapeCreateRequestBodyObjectElementsUrlActionTimeout17More =
 export type ScrapeCreateRequestBody =
   | ScrapeCreateRequestBodyObjectElementsHtmlActionTimeout17More
   | ScrapeCreateRequestBodyObjectElementsUrlActionTimeout17More;
-export const ScrapeCreateRequestBody = /*@__PURE__*/ S.Unknown;
+export const ScrapeCreateRequestBody = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    [
+      "elements",
+      "html",
+      "actionTimeout",
+      "addScriptTag",
+      "addStyleTag",
+      "allowRequestPattern",
+      "allowResourceTypes",
+      "authenticate",
+      "bestAttempt",
+      "cookies",
+      "emulateMediaType",
+      "gotoOptions",
+      "rejectRequestPattern",
+      "rejectResourceTypes",
+      "setExtraHTTPHeaders",
+      "setJavaScriptEnabled",
+      "userAgent",
+      "viewport",
+      "waitForSelector",
+      "waitForTimeout",
+    ],
+    [
+      "elements",
+      "url",
+      "actionTimeout",
+      "addScriptTag",
+      "addStyleTag",
+      "allowRequestPattern",
+      "allowResourceTypes",
+      "authenticate",
+      "bestAttempt",
+      "cookies",
+      "emulateMediaType",
+      "gotoOptions",
+      "rejectRequestPattern",
+      "rejectResourceTypes",
+      "setExtraHTTPHeaders",
+      "setJavaScriptEnabled",
+      "userAgent",
+      "viewport",
+      "waitForSelector",
+      "waitForTimeout",
+    ],
+  ]),
+);
 
 export interface CreateScrapeRequest {
   /** Account ID. */
@@ -6821,7 +7151,58 @@ export const ScreenshotCreateRequestBodyObjectUrlActionTimeoutAddScriptTag19More
 export type ScreenshotCreateRequestBody =
   | ScreenshotCreateRequestBodyObjectHtmlActionTimeoutAddScriptTag19More
   | ScreenshotCreateRequestBodyObjectUrlActionTimeoutAddScriptTag19More;
-export const ScreenshotCreateRequestBody = /*@__PURE__*/ S.Unknown;
+export const ScreenshotCreateRequestBody = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    [
+      "html",
+      "actionTimeout",
+      "addScriptTag",
+      "addStyleTag",
+      "allowRequestPattern",
+      "allowResourceTypes",
+      "authenticate",
+      "bestAttempt",
+      "cookies",
+      "emulateMediaType",
+      "gotoOptions",
+      "rejectRequestPattern",
+      "rejectResourceTypes",
+      "screenshotOptions",
+      "scrollPage",
+      "selector",
+      "setExtraHTTPHeaders",
+      "setJavaScriptEnabled",
+      "userAgent",
+      "viewport",
+      "waitForSelector",
+      "waitForTimeout",
+    ],
+    [
+      "url",
+      "actionTimeout",
+      "addScriptTag",
+      "addStyleTag",
+      "allowRequestPattern",
+      "allowResourceTypes",
+      "authenticate",
+      "bestAttempt",
+      "cookies",
+      "emulateMediaType",
+      "gotoOptions",
+      "rejectRequestPattern",
+      "rejectResourceTypes",
+      "screenshotOptions",
+      "scrollPage",
+      "selector",
+      "setExtraHTTPHeaders",
+      "setJavaScriptEnabled",
+      "userAgent",
+      "viewport",
+      "waitForSelector",
+      "waitForTimeout",
+    ],
+  ]),
+);
 
 export interface CreateScreenshotRequest {
   /** Account ID. */
@@ -7694,7 +8075,56 @@ export const SnapshotCreateRequestBodyObjectUrlActionTimeoutAddScriptTag18More =
 export type SnapshotCreateRequestBody =
   | SnapshotCreateRequestBodyObjectHtmlActionTimeoutAddScriptTag18More
   | SnapshotCreateRequestBodyObjectUrlActionTimeoutAddScriptTag18More;
-export const SnapshotCreateRequestBody = /*@__PURE__*/ S.Unknown;
+export const SnapshotCreateRequestBody = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    [
+      "html",
+      "actionTimeout",
+      "addScriptTag",
+      "addStyleTag",
+      "allowRequestPattern",
+      "allowResourceTypes",
+      "authenticate",
+      "bestAttempt",
+      "cookies",
+      "emulateMediaType",
+      "formats",
+      "gotoOptions",
+      "rejectRequestPattern",
+      "rejectResourceTypes",
+      "screenshotOptions",
+      "setExtraHTTPHeaders",
+      "setJavaScriptEnabled",
+      "userAgent",
+      "viewport",
+      "waitForSelector",
+      "waitForTimeout",
+    ],
+    [
+      "url",
+      "actionTimeout",
+      "addScriptTag",
+      "addStyleTag",
+      "allowRequestPattern",
+      "allowResourceTypes",
+      "authenticate",
+      "bestAttempt",
+      "cookies",
+      "emulateMediaType",
+      "formats",
+      "gotoOptions",
+      "rejectRequestPattern",
+      "rejectResourceTypes",
+      "screenshotOptions",
+      "setExtraHTTPHeaders",
+      "setJavaScriptEnabled",
+      "userAgent",
+      "viewport",
+      "waitForSelector",
+      "waitForTimeout",
+    ],
+  ]),
+);
 
 export interface CreateSnapshotRequest {
   /** Account ID. */

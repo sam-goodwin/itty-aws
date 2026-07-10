@@ -2435,7 +2435,9 @@ export type RulesEditRequestPosition =
   | RulesEditRequestPositionIndex
   | RulesEditRequestPositionBefore
   | RulesEditRequestPositionAfter;
-export const RulesEditRequestPosition = /*@__PURE__*/ S.Unknown;
+export const RulesEditRequestPosition = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([["index"], ["before"], ["after"]]),
+);
 
 export interface PatchRuleRequest {
   /** Identifier. */

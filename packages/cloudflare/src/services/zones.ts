@@ -2435,7 +2435,9 @@ export const SettingsEditRequestBodyValue = /*@__PURE__*/ S.suspend(() =>
 export type SettingsEditRequestBody =
   | SettingsEditRequestBodyEnabled
   | SettingsEditRequestBodyValue;
-export const SettingsEditRequestBody = /*@__PURE__*/ S.Unknown;
+export const SettingsEditRequestBody = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([["enabled"], ["value"]]),
+);
 
 export interface PatchSettingRequest {
   /** Identifier */

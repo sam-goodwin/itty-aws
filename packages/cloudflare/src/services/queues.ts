@@ -488,7 +488,12 @@ export const ConsumersCreateRequestBodyHTTPPull = /*@__PURE__*/ S.suspend(() =>
 export type ConsumersCreateRequestBody =
   | ConsumersCreateRequestBodyWorker
   | ConsumersCreateRequestBodyHTTPPull;
-export const ConsumersCreateRequestBody = /*@__PURE__*/ S.Unknown;
+export const ConsumersCreateRequestBody = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["scriptName", "type", "deadLetterQueue", "settings"],
+    ["type", "deadLetterQueue", "settings"],
+  ]),
+);
 
 export interface CreateConsumerRequest {
   /** A Resource identifier. */
@@ -931,7 +936,18 @@ export type SubscriptionsCreateRequestSource =
   | SubscriptionsCreateRequestSourceMqEventSourceWorkersAIModel
   | SubscriptionsCreateRequestSourceMqEventSourceWorkersBuildsWorker
   | SubscriptionsCreateRequestSourceMqEventSourceWorkflowsWorkflow;
-export const SubscriptionsCreateRequestSource = /*@__PURE__*/ S.Unknown;
+export const SubscriptionsCreateRequestSource = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["type"],
+    ["type"],
+    ["type"],
+    ["type"],
+    ["type"],
+    ["modelName", "type"],
+    ["type", "workerName"],
+    ["type", "workflowName"],
+  ]),
+);
 
 export interface CreateSubscriptionRequest {
   /** A Resource identifier. */
@@ -1177,7 +1193,18 @@ export type SubscriptionsCreateResponseSource =
   | SubscriptionsCreateResponseSourceMqEventSourceWorkersAIModel
   | SubscriptionsCreateResponseSourceMqEventSourceWorkersBuildsWorker
   | SubscriptionsCreateResponseSourceMqEventSourceWorkflowsWorkflow;
-export const SubscriptionsCreateResponseSource = /*@__PURE__*/ S.Unknown;
+export const SubscriptionsCreateResponseSource = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["type"],
+    ["type"],
+    ["type"],
+    ["type"],
+    ["type"],
+    ["modelName", "type"],
+    ["type", "workerName"],
+    ["type", "workflowName"],
+  ]),
+);
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateSubscriptionResponse {
@@ -1508,7 +1535,18 @@ export type SubscriptionsDeleteResponseSource =
   | SubscriptionsDeleteResponseSourceMqEventSourceWorkersAIModel
   | SubscriptionsDeleteResponseSourceMqEventSourceWorkersBuildsWorker
   | SubscriptionsDeleteResponseSourceMqEventSourceWorkflowsWorkflow;
-export const SubscriptionsDeleteResponseSource = /*@__PURE__*/ S.Unknown;
+export const SubscriptionsDeleteResponseSource = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["type"],
+    ["type"],
+    ["type"],
+    ["type"],
+    ["type"],
+    ["modelName", "type"],
+    ["type", "workerName"],
+    ["type", "workflowName"],
+  ]),
+);
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteSubscriptionResponse {
@@ -2052,7 +2090,18 @@ export type SubscriptionsGetResponseSource =
   | SubscriptionsGetResponseSourceMqEventSourceWorkersAIModel
   | SubscriptionsGetResponseSourceMqEventSourceWorkersBuildsWorker
   | SubscriptionsGetResponseSourceMqEventSourceWorkflowsWorkflow;
-export const SubscriptionsGetResponseSource = /*@__PURE__*/ S.Unknown;
+export const SubscriptionsGetResponseSource = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["type"],
+    ["type"],
+    ["type"],
+    ["type"],
+    ["type"],
+    ["modelName", "type"],
+    ["type", "workerName"],
+    ["type", "workflowName"],
+  ]),
+);
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetSubscriptionResponse {
@@ -2606,7 +2655,18 @@ export type SubscriptionsListResultItemSource =
   | SubscriptionsListResultItemSourceMqEventSourceWorkersAIModel
   | SubscriptionsListResultItemSourceMqEventSourceWorkersBuildsWorker
   | SubscriptionsListResultItemSourceMqEventSourceWorkflowsWorkflow;
-export const SubscriptionsListResultItemSource = /*@__PURE__*/ S.Unknown;
+export const SubscriptionsListResultItemSource = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["type"],
+    ["type"],
+    ["type"],
+    ["type"],
+    ["type"],
+    ["modelName", "type"],
+    ["type", "workerName"],
+    ["type", "workflowName"],
+  ]),
+);
 
 export interface SubscriptionsListResultItem {
   /** Unique identifier for the subscription */
@@ -3111,7 +3171,18 @@ export type SubscriptionsUpdateResponseSource =
   | SubscriptionsUpdateResponseSourceMqEventSourceWorkersAIModel
   | SubscriptionsUpdateResponseSourceMqEventSourceWorkersBuildsWorker
   | SubscriptionsUpdateResponseSourceMqEventSourceWorkflowsWorkflow;
-export const SubscriptionsUpdateResponseSource = /*@__PURE__*/ S.Unknown;
+export const SubscriptionsUpdateResponseSource = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["type"],
+    ["type"],
+    ["type"],
+    ["type"],
+    ["type"],
+    ["modelName", "type"],
+    ["type", "workerName"],
+    ["type", "workflowName"],
+  ]),
+);
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchSubscriptionResponse {
@@ -3314,7 +3385,12 @@ export const MessagesPushRequestBodyMqQueueMessageJson =
 export type MessagesPushRequestBody =
   | MessagesPushRequestBodyMqQueueMessageText
   | MessagesPushRequestBodyMqQueueMessageJson;
-export const MessagesPushRequestBody = /*@__PURE__*/ S.Unknown;
+export const MessagesPushRequestBody = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["body", "contentType", "delaySeconds"],
+    ["body", "contentType", "delaySeconds"],
+  ]),
+);
 
 export interface PushMessageRequest {
   /** A Resource identifier. */
@@ -3679,7 +3755,12 @@ export const ConsumersUpdateRequestBodyHTTPPull = /*@__PURE__*/ S.suspend(() =>
 export type ConsumersUpdateRequestBody =
   | ConsumersUpdateRequestBodyWorker
   | ConsumersUpdateRequestBodyHTTPPull;
-export const ConsumersUpdateRequestBody = /*@__PURE__*/ S.Unknown;
+export const ConsumersUpdateRequestBody = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["scriptName", "type", "deadLetterQueue", "settings"],
+    ["type", "deadLetterQueue", "settings"],
+  ]),
+);
 
 export interface UpdateConsumerRequest {
   /** A Resource identifier. */

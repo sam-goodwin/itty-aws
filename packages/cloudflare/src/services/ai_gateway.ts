@@ -419,7 +419,12 @@ export const CreateResponseDlpObjectEnabledPolicies = /*@__PURE__*/ S.suspend(
 export type CreateResponseDlp =
   | CreateResponseDlpObjectActionEnabledProfiles
   | CreateResponseDlpObjectEnabledPolicies;
-export const CreateResponseDlp = /*@__PURE__*/ S.Unknown;
+export const CreateResponseDlp = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["action", "enabled", "profiles"],
+    ["enabled", "policies"],
+  ]),
+);
 
 export type CreateResponseGuardrailsPromptP1 = "FLAG" | "BLOCK" | (string & {});
 export const CreateResponseGuardrailsPromptP1 = /*@__PURE__*/ S.String;
@@ -2337,7 +2342,12 @@ export const DeleteResponseDlpObjectEnabledPolicies = /*@__PURE__*/ S.suspend(
 export type DeleteResponseDlp =
   | DeleteResponseDlpObjectActionEnabledProfiles
   | DeleteResponseDlpObjectEnabledPolicies;
-export const DeleteResponseDlp = /*@__PURE__*/ S.Unknown;
+export const DeleteResponseDlp = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["action", "enabled", "profiles"],
+    ["enabled", "policies"],
+  ]),
+);
 
 export type DeleteResponseGuardrailsPromptP1 = "FLAG" | "BLOCK" | (string & {});
 export const DeleteResponseGuardrailsPromptP1 = /*@__PURE__*/ S.String;
@@ -3586,7 +3596,12 @@ export const GetResponseDlpObjectEnabledPolicies = /*@__PURE__*/ S.suspend(() =>
 export type GetResponseDlp =
   | GetResponseDlpObjectActionEnabledProfiles
   | GetResponseDlpObjectEnabledPolicies;
-export const GetResponseDlp = /*@__PURE__*/ S.Unknown;
+export const GetResponseDlp = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["action", "enabled", "profiles"],
+    ["enabled", "policies"],
+  ]),
+);
 
 export type GetResponseGuardrailsPromptP1 = "FLAG" | "BLOCK" | (string & {});
 export const GetResponseGuardrailsPromptP1 = /*@__PURE__*/ S.String;
@@ -5252,7 +5267,12 @@ export const ListResultItemDlpObjectEnabledPolicies = /*@__PURE__*/ S.suspend(
 export type ListResultItemDlp =
   | ListResultItemDlpObjectActionEnabledProfiles
   | ListResultItemDlpObjectEnabledPolicies;
-export const ListResultItemDlp = /*@__PURE__*/ S.Unknown;
+export const ListResultItemDlp = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["action", "enabled", "profiles"],
+    ["enabled", "policies"],
+  ]),
+);
 
 export type ListResultItemGuardrailsPromptP1 = "FLAG" | "BLOCK" | (string & {});
 export const ListResultItemGuardrailsPromptP1 = /*@__PURE__*/ S.String;
@@ -7365,7 +7385,12 @@ export const UpdateRequestDlpObjectEnabledPolicies = /*@__PURE__*/ S.suspend(
 export type UpdateRequestDlp =
   | UpdateRequestDlpObjectActionEnabledProfiles
   | UpdateRequestDlpObjectEnabledPolicies;
-export const UpdateRequestDlp = /*@__PURE__*/ S.Unknown;
+export const UpdateRequestDlp = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["action", "enabled", "profiles"],
+    ["enabled", "policies"],
+  ]),
+);
 
 export type UpdateRequestGuardrailsPromptP1 = "FLAG" | "BLOCK" | (string & {});
 export const UpdateRequestGuardrailsPromptP1 = /*@__PURE__*/ S.String;
@@ -7977,7 +8002,12 @@ export const UpdateResponseDlpObjectEnabledPolicies = /*@__PURE__*/ S.suspend(
 export type UpdateResponseDlp =
   | UpdateResponseDlpObjectActionEnabledProfiles
   | UpdateResponseDlpObjectEnabledPolicies;
-export const UpdateResponseDlp = /*@__PURE__*/ S.Unknown;
+export const UpdateResponseDlp = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["action", "enabled", "profiles"],
+    ["enabled", "policies"],
+  ]),
+);
 
 export type UpdateResponseGuardrailsPromptP1 = "FLAG" | "BLOCK" | (string & {});
 export const UpdateResponseGuardrailsPromptP1 = /*@__PURE__*/ S.String;

@@ -219,7 +219,12 @@ export const InterconnectsCreateRequestBodyNscInterconnectCreateGcpPartnerBody =
 export type InterconnectsCreateRequestBody =
   | InterconnectsCreateRequestBodyNscInterconnectCreatePhysicalBody
   | InterconnectsCreateRequestBodyNscInterconnectCreateGcpPartnerBody;
-export const InterconnectsCreateRequestBody = /*@__PURE__*/ S.Unknown;
+export const InterconnectsCreateRequestBody = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["account", "slotId", "type", "speed"],
+    ["account", "bandwidth", "pairingKey", "type"],
+  ]),
+);
 
 export interface CreateInterconnectRequest {
   /** Customer account tag */

@@ -2726,7 +2726,21 @@ export const PcapsCreateRequestBodyMagicVisibilityPCAPsPCAPsRequestFull =
 export type PcapsCreateRequestBody =
   | PcapsCreateRequestBodyMagicVisibilityPCAPsPCAPsRequestSimple
   | PcapsCreateRequestBodyMagicVisibilityPCAPsPCAPsRequestFull;
-export const PcapsCreateRequestBody = /*@__PURE__*/ S.Unknown;
+export const PcapsCreateRequestBody = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["packetLimit", "system", "timeLimit", "type", "filterV1", "offsetTime"],
+    [
+      "coloName",
+      "destinationConf",
+      "system",
+      "timeLimit",
+      "type",
+      "byteLimit",
+      "filterV1",
+      "packetLimit",
+    ],
+  ]),
+);
 
 export interface CreatePcapRequest {
   /** Identifier. */
@@ -6487,7 +6501,31 @@ export type ConnectorsEventsGetResponseE =
   | ConnectorsEventsGetResponseERekeyAdvance
   | ConnectorsEventsGetResponseERekeyComplete
   | ConnectorsEventsGetResponseERekeyReset;
-export const ConnectorsEventsGetResponseE = /*@__PURE__*/ S.Unknown;
+export const ConnectorsEventsGetResponseE = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["k"],
+    ["k"],
+    ["k"],
+    ["k"],
+    ["k"],
+    ["k"],
+    ["k"],
+    ["k"],
+    ["k"],
+    ["k"],
+    ["k"],
+    ["k", "url"],
+    ["k"],
+    ["k"],
+    ["k"],
+    ["k"],
+    ["k", "tunnelId"],
+    ["k", "tunnelId"],
+    ["k", "tunnelId"],
+    ["k", "tunnelId"],
+    ["k", "tunnelId"],
+  ]),
+);
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetConnectorEventResponse {
@@ -9884,7 +9922,31 @@ export type ConnectorsEventsLatestListResponseItemsItemE =
   | ConnectorsEventsLatestListResponseItemsItemERekeyComplete
   | ConnectorsEventsLatestListResponseItemsItemERekeyReset;
 export const ConnectorsEventsLatestListResponseItemsItemE =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["k"],
+      ["k"],
+      ["k"],
+      ["k"],
+      ["k"],
+      ["k"],
+      ["k"],
+      ["k"],
+      ["k"],
+      ["k"],
+      ["k"],
+      ["k", "url"],
+      ["k"],
+      ["k"],
+      ["k"],
+      ["k"],
+      ["k", "tunnelId"],
+      ["k", "tunnelId"],
+      ["k", "tunnelId"],
+      ["k", "tunnelId"],
+      ["k", "tunnelId"],
+    ]),
+  );
 
 export interface ConnectorsEventsLatestListResponseItemsItem {
   e: ConnectorsEventsLatestListResponseItemsItemE;
@@ -14391,7 +14453,13 @@ export const SitesAppConfigurationCreateRequestBodyManagedApp =
 export type SitesAppConfigurationCreateRequestBody =
   | SitesAppConfigurationCreateRequestBodyAccountApp
   | SitesAppConfigurationCreateRequestBodyManagedApp;
-export const SitesAppConfigurationCreateRequestBody = /*@__PURE__*/ S.Unknown;
+export const SitesAppConfigurationCreateRequestBody =
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["accountAppId", "breakout", "preferredWans", "priority"],
+      ["managedAppId", "breakout", "preferredWans", "priority"],
+    ]),
+  );
 
 export interface SitesAppConfigurationCreateRequest {
   /** Identifier */

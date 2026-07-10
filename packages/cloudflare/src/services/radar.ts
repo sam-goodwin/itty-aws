@@ -76402,7 +76402,25 @@ export type CtTimeseriesGroupsResponseSerie0 =
   | CtTimeseriesGroupsResponseSerie0ObjectNEGATIVEPOSITIVE
   | CtTimeseriesGroupsResponseSerie0ObjectDSAECDSARSA
   | CtTimeseriesGroupsResponseSerie0ObjectDomainExtendedOrganizationUnknown;
-export const CtTimeseriesGroupsResponseSerie0 = /*@__PURE__*/ S.Unknown;
+export const CtTimeseriesGroupsResponseSerie0 = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["timestamps"],
+    ["rfc6962", "static"],
+    [
+      "gt121d",
+      "gt16dLte31d",
+      "gt31dLte91d",
+      "gt3dLte16d",
+      "gt91dLte121d",
+      "lte3d",
+    ],
+    ["CERTIFICATE", "PRECERTIFICATE"],
+    ["EXPIRED", "VALID"],
+    ["NEGATIVE", "POSITIVE"],
+    ["DSA", "ECDSA", "RSA"],
+    ["domain", "extended", "organization", "unknown"],
+  ]),
+);
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface TimeseriesGroupsCtResponse {

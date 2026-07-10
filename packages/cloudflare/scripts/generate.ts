@@ -559,14 +559,25 @@ const generateModel = (
       );
     } else if (d.type === "union") {
       // Discriminated union of object cases. The TS type is the case union;
-      // the schema stays opaque (S.Unknown) so the protocol passes the value
-      // through — dict key-mapping still camelCases it — preserving each
-      // case's exact key set for consumers' `"key" in value` discrimination.
-      const cases = Object.values(d.members ?? {}).map((m: any) =>
-        tsRef(m.target),
+      // the schema is opaque (S.Unknown) carrying each case's camelCase key
+      // set. Cloudflare returns every case's keys (null for inactive ones),
+      // so the protocol picks the active case and drops the others — keeping
+      // each case's exact key set for `"key" in value` discrimination.
+      const caseTargets = Object.values(d.members ?? {}).map(
+        (m: any) => m.target,
       );
-      out.push(`export type ${name} = ${cases.join(" | ") || "unknown"};`);
-      out.push(`export const ${name} = /*@__PURE__*/ S.Unknown;\n`);
+      const caseKeys = caseTargets.map((t: string) => {
+        const cd = shapes[t];
+        return cd?.type === "structure"
+          ? memberInfos(cd).map((mi) => mi.tsName)
+          : [];
+      });
+      out.push(
+        `export type ${name} = ${caseTargets.map(tsRef).join(" | ") || "unknown"};`,
+      );
+      out.push(
+        `export const ${name} = /*@__PURE__*/ S.Unknown.pipe(T.UnionCases(${JSON.stringify(caseKeys)}));\n`,
+      );
     } else if (d.type === "enum") {
       // Open string union: literal members for autocomplete, `(string & {})`
       // so unknown / future values still pass. The schema stays S.String —

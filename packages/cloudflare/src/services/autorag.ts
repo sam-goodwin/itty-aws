@@ -123,7 +123,12 @@ export const AiSearchRequestFiltersObjectFiltersType = /*@__PURE__*/ S.suspend(
 export type AiSearchRequestFilters =
   | AiSearchRequestFiltersObjectKeyTypeValue
   | AiSearchRequestFiltersObjectFiltersType;
-export const AiSearchRequestFilters = /*@__PURE__*/ S.Unknown;
+export const AiSearchRequestFilters = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["key", "type", "value"],
+    ["filters", "type"],
+  ]),
+);
 
 export type AiSearchRequestModel =
   | "@cf/meta/llama-3.3-70b-instruct-fp8-fast"
@@ -596,7 +601,12 @@ export const SearchRequestFiltersObjectFiltersType = /*@__PURE__*/ S.suspend(
 export type SearchRequestFilters =
   | SearchRequestFiltersObjectKeyTypeValue
   | SearchRequestFiltersObjectFiltersType;
-export const SearchRequestFilters = /*@__PURE__*/ S.Unknown;
+export const SearchRequestFilters = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["key", "type", "value"],
+    ["filters", "type"],
+  ]),
+);
 
 export interface SearchRequestRankingOptions {
   ranker?: string;

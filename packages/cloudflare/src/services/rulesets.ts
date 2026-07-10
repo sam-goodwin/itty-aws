@@ -173,7 +173,9 @@ export type RulesCreateForAccountRequestBodyBlockRulePosition =
   | RulesCreateForAccountRequestBodyBlockRulePositionAfterPosition
   | RulesCreateForAccountRequestBodyBlockRulePositionIndexPosition;
 export const RulesCreateForAccountRequestBodyBlockRulePosition =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([["before"], ["after"], ["index"]]),
+  );
 
 export interface RulesCreateForAccountRequestBodyBlockRule {
   /** An object configuring where the rule will be placed. */
@@ -271,7 +273,10 @@ export type RulesCreateForAccountRequestBodyPosition =
   | RulesCreateForAccountRequestBodyPositionBeforePosition
   | RulesCreateForAccountRequestBodyPositionAfterPosition
   | RulesCreateForAccountRequestBodyPositionIndexPosition;
-export const RulesCreateForAccountRequestBodyPosition = /*@__PURE__*/ S.Unknown;
+export const RulesCreateForAccountRequestBodyPosition =
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([["before"], ["after"], ["index"]]),
+  );
 
 export type RulesCreateForAccountRequestBodyRatelimitCharacteristicsList =
   string[];
@@ -372,7 +377,9 @@ export type RulesCreateForAccountRequestBodyResponseCompressionRulePosition =
   | RulesCreateForAccountRequestBodyResponseCompressionRulePositionAfterPosition
   | RulesCreateForAccountRequestBodyResponseCompressionRulePositionIndexPosition;
 export const RulesCreateForAccountRequestBodyResponseCompressionRulePosition =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([["before"], ["after"], ["index"]]),
+  );
 
 export interface RulesCreateForAccountRequestBodyResponseCompressionRule {
   /** An object configuring where the rule will be placed. */
@@ -436,7 +443,9 @@ export type RulesCreateForAccountRequestBodyDDoSDynamicRulePosition =
   | RulesCreateForAccountRequestBodyDDoSDynamicRulePositionAfterPosition
   | RulesCreateForAccountRequestBodyDDoSDynamicRulePositionIndexPosition;
 export const RulesCreateForAccountRequestBodyDDoSDynamicRulePosition =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([["before"], ["after"], ["index"]]),
+  );
 
 export interface RulesCreateForAccountRequestBodyDDoSDynamicRule {
   /** An object configuring where the rule will be placed. */
@@ -500,7 +509,9 @@ export type RulesCreateForAccountRequestBodyExecuteRulePosition =
   | RulesCreateForAccountRequestBodyExecuteRulePositionAfterPosition
   | RulesCreateForAccountRequestBodyExecuteRulePositionIndexPosition;
 export const RulesCreateForAccountRequestBodyExecuteRulePosition =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([["before"], ["after"], ["index"]]),
+  );
 
 export interface RulesCreateForAccountRequestBodyExecuteRule {
   /** An object configuring where the rule will be placed. */
@@ -562,7 +573,9 @@ export type RulesCreateForAccountRequestBodyForceConnectionCloseRulePosition =
   | RulesCreateForAccountRequestBodyForceConnectionCloseRulePositionAfterPosition
   | RulesCreateForAccountRequestBodyForceConnectionCloseRulePositionIndexPosition;
 export const RulesCreateForAccountRequestBodyForceConnectionCloseRulePosition =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([["before"], ["after"], ["index"]]),
+  );
 
 export interface RulesCreateForAccountRequestBodyForceConnectionCloseRule {
   /** An object configuring where the rule will be placed. */
@@ -623,7 +636,9 @@ export type RulesCreateForAccountRequestBodyLogRulePosition =
   | RulesCreateForAccountRequestBodyLogRulePositionAfterPosition
   | RulesCreateForAccountRequestBodyLogRulePositionIndexPosition;
 export const RulesCreateForAccountRequestBodyLogRulePosition =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([["before"], ["after"], ["index"]]),
+  );
 
 export interface RulesCreateForAccountRequestBodyLogRule {
   /** An object configuring where the rule will be placed. */
@@ -685,7 +700,9 @@ export type RulesCreateForAccountRequestBodyLogCustomFieldRulePosition =
   | RulesCreateForAccountRequestBodyLogCustomFieldRulePositionAfterPosition
   | RulesCreateForAccountRequestBodyLogCustomFieldRulePositionIndexPosition;
 export const RulesCreateForAccountRequestBodyLogCustomFieldRulePosition =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([["before"], ["after"], ["index"]]),
+  );
 
 export interface RulesCreateForAccountRequestBodyLogCustomFieldRule {
   /** An object configuring where the rule will be placed. */
@@ -749,7 +766,9 @@ export type RulesCreateForAccountRequestBodyManagedChallengeRulePosition =
   | RulesCreateForAccountRequestBodyManagedChallengeRulePositionAfterPosition
   | RulesCreateForAccountRequestBodyManagedChallengeRulePositionIndexPosition;
 export const RulesCreateForAccountRequestBodyManagedChallengeRulePosition =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([["before"], ["after"], ["index"]]),
+  );
 
 export interface RulesCreateForAccountRequestBodyManagedChallengeRule {
   /** An object configuring where the rule will be placed. */
@@ -813,7 +832,9 @@ export type RulesCreateForAccountRequestBodyRedirectRulePosition =
   | RulesCreateForAccountRequestBodyRedirectRulePositionAfterPosition
   | RulesCreateForAccountRequestBodyRedirectRulePositionIndexPosition;
 export const RulesCreateForAccountRequestBodyRedirectRulePosition =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([["before"], ["after"], ["index"]]),
+  );
 
 export interface RulesCreateForAccountRequestBodyRedirectRule {
   /** An object configuring where the rule will be placed. */
@@ -877,7 +898,9 @@ export type RulesCreateForAccountRequestBodyRewriteRulePosition =
   | RulesCreateForAccountRequestBodyRewriteRulePositionAfterPosition
   | RulesCreateForAccountRequestBodyRewriteRulePositionIndexPosition;
 export const RulesCreateForAccountRequestBodyRewriteRulePosition =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([["before"], ["after"], ["index"]]),
+  );
 
 export interface RulesCreateForAccountRequestBodyRewriteRule {
   /** An object configuring where the rule will be placed. */
@@ -939,7 +962,9 @@ export type RulesCreateForAccountRequestBodyRouteRulePosition =
   | RulesCreateForAccountRequestBodyRouteRulePositionAfterPosition
   | RulesCreateForAccountRequestBodyRouteRulePositionIndexPosition;
 export const RulesCreateForAccountRequestBodyRouteRulePosition =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([["before"], ["after"], ["index"]]),
+  );
 
 export interface RulesCreateForAccountRequestBodyRouteRule {
   /** An object configuring where the rule will be placed. */
@@ -1001,7 +1026,9 @@ export type RulesCreateForAccountRequestBodyScoreRulePosition =
   | RulesCreateForAccountRequestBodyScoreRulePositionAfterPosition
   | RulesCreateForAccountRequestBodyScoreRulePositionIndexPosition;
 export const RulesCreateForAccountRequestBodyScoreRulePosition =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([["before"], ["after"], ["index"]]),
+  );
 
 export interface RulesCreateForAccountRequestBodyScoreRule {
   /** An object configuring where the rule will be placed. */
@@ -1063,7 +1090,9 @@ export type RulesCreateForAccountRequestBodyServeErrorRulePosition =
   | RulesCreateForAccountRequestBodyServeErrorRulePositionAfterPosition
   | RulesCreateForAccountRequestBodyServeErrorRulePositionIndexPosition;
 export const RulesCreateForAccountRequestBodyServeErrorRulePosition =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([["before"], ["after"], ["index"]]),
+  );
 
 export interface RulesCreateForAccountRequestBodyServeErrorRule {
   /** An object configuring where the rule will be placed. */
@@ -1127,7 +1156,9 @@ export type RulesCreateForAccountRequestBodySetCacheSettingsRulePosition =
   | RulesCreateForAccountRequestBodySetCacheSettingsRulePositionAfterPosition
   | RulesCreateForAccountRequestBodySetCacheSettingsRulePositionIndexPosition;
 export const RulesCreateForAccountRequestBodySetCacheSettingsRulePosition =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([["before"], ["after"], ["index"]]),
+  );
 
 export interface RulesCreateForAccountRequestBodySetCacheSettingsRule {
   /** An object configuring where the rule will be placed. */
@@ -1191,7 +1222,9 @@ export type RulesCreateForAccountRequestBodySetConfigurationRulePosition =
   | RulesCreateForAccountRequestBodySetConfigurationRulePositionAfterPosition
   | RulesCreateForAccountRequestBodySetConfigurationRulePositionIndexPosition;
 export const RulesCreateForAccountRequestBodySetConfigurationRulePosition =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([["before"], ["after"], ["index"]]),
+  );
 
 export interface RulesCreateForAccountRequestBodySetConfigurationRule {
   /** An object configuring where the rule will be placed. */
@@ -1253,7 +1286,9 @@ export type RulesCreateForAccountRequestBodySkipRulePosition =
   | RulesCreateForAccountRequestBodySkipRulePositionAfterPosition
   | RulesCreateForAccountRequestBodySkipRulePositionIndexPosition;
 export const RulesCreateForAccountRequestBodySkipRulePosition =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([["before"], ["after"], ["index"]]),
+  );
 
 export interface RulesCreateForAccountRequestBodySkipRule {
   /** An object configuring where the rule will be placed. */
@@ -1653,7 +1688,9 @@ export type RulesCreateForZoneRequestBodyBlockRulePosition =
   | RulesCreateForZoneRequestBodyBlockRulePositionAfterPosition
   | RulesCreateForZoneRequestBodyBlockRulePositionIndexPosition;
 export const RulesCreateForZoneRequestBodyBlockRulePosition =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([["before"], ["after"], ["index"]]),
+  );
 
 export interface RulesCreateForZoneRequestBodyBlockRule {
   /** An object configuring where the rule will be placed. */
@@ -1749,7 +1786,10 @@ export type RulesCreateForZoneRequestBodyPosition =
   | RulesCreateForZoneRequestBodyPositionBeforePosition
   | RulesCreateForZoneRequestBodyPositionAfterPosition
   | RulesCreateForZoneRequestBodyPositionIndexPosition;
-export const RulesCreateForZoneRequestBodyPosition = /*@__PURE__*/ S.Unknown;
+export const RulesCreateForZoneRequestBodyPosition =
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([["before"], ["after"], ["index"]]),
+  );
 
 export type RulesCreateForZoneRequestBodyRatelimitCharacteristicsList =
   string[];
@@ -1850,7 +1890,9 @@ export type RulesCreateForZoneRequestBodyResponseCompressionRulePosition =
   | RulesCreateForZoneRequestBodyResponseCompressionRulePositionAfterPosition
   | RulesCreateForZoneRequestBodyResponseCompressionRulePositionIndexPosition;
 export const RulesCreateForZoneRequestBodyResponseCompressionRulePosition =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([["before"], ["after"], ["index"]]),
+  );
 
 export interface RulesCreateForZoneRequestBodyResponseCompressionRule {
   /** An object configuring where the rule will be placed. */
@@ -1914,7 +1956,9 @@ export type RulesCreateForZoneRequestBodyDDoSDynamicRulePosition =
   | RulesCreateForZoneRequestBodyDDoSDynamicRulePositionAfterPosition
   | RulesCreateForZoneRequestBodyDDoSDynamicRulePositionIndexPosition;
 export const RulesCreateForZoneRequestBodyDDoSDynamicRulePosition =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([["before"], ["after"], ["index"]]),
+  );
 
 export interface RulesCreateForZoneRequestBodyDDoSDynamicRule {
   /** An object configuring where the rule will be placed. */
@@ -1976,7 +2020,9 @@ export type RulesCreateForZoneRequestBodyExecuteRulePosition =
   | RulesCreateForZoneRequestBodyExecuteRulePositionAfterPosition
   | RulesCreateForZoneRequestBodyExecuteRulePositionIndexPosition;
 export const RulesCreateForZoneRequestBodyExecuteRulePosition =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([["before"], ["after"], ["index"]]),
+  );
 
 export interface RulesCreateForZoneRequestBodyExecuteRule {
   /** An object configuring where the rule will be placed. */
@@ -2038,7 +2084,9 @@ export type RulesCreateForZoneRequestBodyForceConnectionCloseRulePosition =
   | RulesCreateForZoneRequestBodyForceConnectionCloseRulePositionAfterPosition
   | RulesCreateForZoneRequestBodyForceConnectionCloseRulePositionIndexPosition;
 export const RulesCreateForZoneRequestBodyForceConnectionCloseRulePosition =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([["before"], ["after"], ["index"]]),
+  );
 
 export interface RulesCreateForZoneRequestBodyForceConnectionCloseRule {
   /** An object configuring where the rule will be placed. */
@@ -2099,7 +2147,9 @@ export type RulesCreateForZoneRequestBodyLogRulePosition =
   | RulesCreateForZoneRequestBodyLogRulePositionAfterPosition
   | RulesCreateForZoneRequestBodyLogRulePositionIndexPosition;
 export const RulesCreateForZoneRequestBodyLogRulePosition =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([["before"], ["after"], ["index"]]),
+  );
 
 export interface RulesCreateForZoneRequestBodyLogRule {
   /** An object configuring where the rule will be placed. */
@@ -2161,7 +2211,9 @@ export type RulesCreateForZoneRequestBodyLogCustomFieldRulePosition =
   | RulesCreateForZoneRequestBodyLogCustomFieldRulePositionAfterPosition
   | RulesCreateForZoneRequestBodyLogCustomFieldRulePositionIndexPosition;
 export const RulesCreateForZoneRequestBodyLogCustomFieldRulePosition =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([["before"], ["after"], ["index"]]),
+  );
 
 export interface RulesCreateForZoneRequestBodyLogCustomFieldRule {
   /** An object configuring where the rule will be placed. */
@@ -2225,7 +2277,9 @@ export type RulesCreateForZoneRequestBodyManagedChallengeRulePosition =
   | RulesCreateForZoneRequestBodyManagedChallengeRulePositionAfterPosition
   | RulesCreateForZoneRequestBodyManagedChallengeRulePositionIndexPosition;
 export const RulesCreateForZoneRequestBodyManagedChallengeRulePosition =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([["before"], ["after"], ["index"]]),
+  );
 
 export interface RulesCreateForZoneRequestBodyManagedChallengeRule {
   /** An object configuring where the rule will be placed. */
@@ -2289,7 +2343,9 @@ export type RulesCreateForZoneRequestBodyRedirectRulePosition =
   | RulesCreateForZoneRequestBodyRedirectRulePositionAfterPosition
   | RulesCreateForZoneRequestBodyRedirectRulePositionIndexPosition;
 export const RulesCreateForZoneRequestBodyRedirectRulePosition =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([["before"], ["after"], ["index"]]),
+  );
 
 export interface RulesCreateForZoneRequestBodyRedirectRule {
   /** An object configuring where the rule will be placed. */
@@ -2349,7 +2405,9 @@ export type RulesCreateForZoneRequestBodyRewriteRulePosition =
   | RulesCreateForZoneRequestBodyRewriteRulePositionAfterPosition
   | RulesCreateForZoneRequestBodyRewriteRulePositionIndexPosition;
 export const RulesCreateForZoneRequestBodyRewriteRulePosition =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([["before"], ["after"], ["index"]]),
+  );
 
 export interface RulesCreateForZoneRequestBodyRewriteRule {
   /** An object configuring where the rule will be placed. */
@@ -2408,7 +2466,9 @@ export type RulesCreateForZoneRequestBodyRouteRulePosition =
   | RulesCreateForZoneRequestBodyRouteRulePositionAfterPosition
   | RulesCreateForZoneRequestBodyRouteRulePositionIndexPosition;
 export const RulesCreateForZoneRequestBodyRouteRulePosition =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([["before"], ["after"], ["index"]]),
+  );
 
 export interface RulesCreateForZoneRequestBodyRouteRule {
   /** An object configuring where the rule will be placed. */
@@ -2467,7 +2527,9 @@ export type RulesCreateForZoneRequestBodyScoreRulePosition =
   | RulesCreateForZoneRequestBodyScoreRulePositionAfterPosition
   | RulesCreateForZoneRequestBodyScoreRulePositionIndexPosition;
 export const RulesCreateForZoneRequestBodyScoreRulePosition =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([["before"], ["after"], ["index"]]),
+  );
 
 export interface RulesCreateForZoneRequestBodyScoreRule {
   /** An object configuring where the rule will be placed. */
@@ -2529,7 +2591,9 @@ export type RulesCreateForZoneRequestBodyServeErrorRulePosition =
   | RulesCreateForZoneRequestBodyServeErrorRulePositionAfterPosition
   | RulesCreateForZoneRequestBodyServeErrorRulePositionIndexPosition;
 export const RulesCreateForZoneRequestBodyServeErrorRulePosition =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([["before"], ["after"], ["index"]]),
+  );
 
 export interface RulesCreateForZoneRequestBodyServeErrorRule {
   /** An object configuring where the rule will be placed. */
@@ -2591,7 +2655,9 @@ export type RulesCreateForZoneRequestBodySetCacheSettingsRulePosition =
   | RulesCreateForZoneRequestBodySetCacheSettingsRulePositionAfterPosition
   | RulesCreateForZoneRequestBodySetCacheSettingsRulePositionIndexPosition;
 export const RulesCreateForZoneRequestBodySetCacheSettingsRulePosition =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([["before"], ["after"], ["index"]]),
+  );
 
 export interface RulesCreateForZoneRequestBodySetCacheSettingsRule {
   /** An object configuring where the rule will be placed. */
@@ -2655,7 +2721,9 @@ export type RulesCreateForZoneRequestBodySetConfigurationRulePosition =
   | RulesCreateForZoneRequestBodySetConfigurationRulePositionAfterPosition
   | RulesCreateForZoneRequestBodySetConfigurationRulePositionIndexPosition;
 export const RulesCreateForZoneRequestBodySetConfigurationRulePosition =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([["before"], ["after"], ["index"]]),
+  );
 
 export interface RulesCreateForZoneRequestBodySetConfigurationRule {
   /** An object configuring where the rule will be placed. */
@@ -2716,7 +2784,9 @@ export type RulesCreateForZoneRequestBodySkipRulePosition =
   | RulesCreateForZoneRequestBodySkipRulePositionAfterPosition
   | RulesCreateForZoneRequestBodySkipRulePositionIndexPosition;
 export const RulesCreateForZoneRequestBodySkipRulePosition =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([["before"], ["after"], ["index"]]),
+  );
 
 export interface RulesCreateForZoneRequestBodySkipRule {
   /** An object configuring where the rule will be placed. */
@@ -7035,7 +7105,9 @@ export type RulesEditForAccountRequestBodyBlockRulePosition =
   | RulesEditForAccountRequestBodyBlockRulePositionAfterPosition
   | RulesEditForAccountRequestBodyBlockRulePositionIndexPosition;
 export const RulesEditForAccountRequestBodyBlockRulePosition =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([["before"], ["after"], ["index"]]),
+  );
 
 export interface RulesEditForAccountRequestBodyBlockRule {
   /** An object configuring where the rule will be placed. */
@@ -7131,7 +7203,10 @@ export type RulesEditForAccountRequestBodyPosition =
   | RulesEditForAccountRequestBodyPositionBeforePosition
   | RulesEditForAccountRequestBodyPositionAfterPosition
   | RulesEditForAccountRequestBodyPositionIndexPosition;
-export const RulesEditForAccountRequestBodyPosition = /*@__PURE__*/ S.Unknown;
+export const RulesEditForAccountRequestBodyPosition =
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([["before"], ["after"], ["index"]]),
+  );
 
 export type RulesEditForAccountRequestBodyRatelimitCharacteristicsList =
   string[];
@@ -7232,7 +7307,9 @@ export type RulesEditForAccountRequestBodyResponseCompressionRulePosition =
   | RulesEditForAccountRequestBodyResponseCompressionRulePositionAfterPosition
   | RulesEditForAccountRequestBodyResponseCompressionRulePositionIndexPosition;
 export const RulesEditForAccountRequestBodyResponseCompressionRulePosition =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([["before"], ["after"], ["index"]]),
+  );
 
 export interface RulesEditForAccountRequestBodyResponseCompressionRule {
   /** An object configuring where the rule will be placed. */
@@ -7296,7 +7373,9 @@ export type RulesEditForAccountRequestBodyDDoSDynamicRulePosition =
   | RulesEditForAccountRequestBodyDDoSDynamicRulePositionAfterPosition
   | RulesEditForAccountRequestBodyDDoSDynamicRulePositionIndexPosition;
 export const RulesEditForAccountRequestBodyDDoSDynamicRulePosition =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([["before"], ["after"], ["index"]]),
+  );
 
 export interface RulesEditForAccountRequestBodyDDoSDynamicRule {
   /** An object configuring where the rule will be placed. */
@@ -7360,7 +7439,9 @@ export type RulesEditForAccountRequestBodyExecuteRulePosition =
   | RulesEditForAccountRequestBodyExecuteRulePositionAfterPosition
   | RulesEditForAccountRequestBodyExecuteRulePositionIndexPosition;
 export const RulesEditForAccountRequestBodyExecuteRulePosition =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([["before"], ["after"], ["index"]]),
+  );
 
 export interface RulesEditForAccountRequestBodyExecuteRule {
   /** An object configuring where the rule will be placed. */
@@ -7422,7 +7503,9 @@ export type RulesEditForAccountRequestBodyForceConnectionCloseRulePosition =
   | RulesEditForAccountRequestBodyForceConnectionCloseRulePositionAfterPosition
   | RulesEditForAccountRequestBodyForceConnectionCloseRulePositionIndexPosition;
 export const RulesEditForAccountRequestBodyForceConnectionCloseRulePosition =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([["before"], ["after"], ["index"]]),
+  );
 
 export interface RulesEditForAccountRequestBodyForceConnectionCloseRule {
   /** An object configuring where the rule will be placed. */
@@ -7483,7 +7566,9 @@ export type RulesEditForAccountRequestBodyLogRulePosition =
   | RulesEditForAccountRequestBodyLogRulePositionAfterPosition
   | RulesEditForAccountRequestBodyLogRulePositionIndexPosition;
 export const RulesEditForAccountRequestBodyLogRulePosition =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([["before"], ["after"], ["index"]]),
+  );
 
 export interface RulesEditForAccountRequestBodyLogRule {
   /** An object configuring where the rule will be placed. */
@@ -7545,7 +7630,9 @@ export type RulesEditForAccountRequestBodyLogCustomFieldRulePosition =
   | RulesEditForAccountRequestBodyLogCustomFieldRulePositionAfterPosition
   | RulesEditForAccountRequestBodyLogCustomFieldRulePositionIndexPosition;
 export const RulesEditForAccountRequestBodyLogCustomFieldRulePosition =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([["before"], ["after"], ["index"]]),
+  );
 
 export interface RulesEditForAccountRequestBodyLogCustomFieldRule {
   /** An object configuring where the rule will be placed. */
@@ -7609,7 +7696,9 @@ export type RulesEditForAccountRequestBodyManagedChallengeRulePosition =
   | RulesEditForAccountRequestBodyManagedChallengeRulePositionAfterPosition
   | RulesEditForAccountRequestBodyManagedChallengeRulePositionIndexPosition;
 export const RulesEditForAccountRequestBodyManagedChallengeRulePosition =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([["before"], ["after"], ["index"]]),
+  );
 
 export interface RulesEditForAccountRequestBodyManagedChallengeRule {
   /** An object configuring where the rule will be placed. */
@@ -7673,7 +7762,9 @@ export type RulesEditForAccountRequestBodyRedirectRulePosition =
   | RulesEditForAccountRequestBodyRedirectRulePositionAfterPosition
   | RulesEditForAccountRequestBodyRedirectRulePositionIndexPosition;
 export const RulesEditForAccountRequestBodyRedirectRulePosition =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([["before"], ["after"], ["index"]]),
+  );
 
 export interface RulesEditForAccountRequestBodyRedirectRule {
   /** An object configuring where the rule will be placed. */
@@ -7735,7 +7826,9 @@ export type RulesEditForAccountRequestBodyRewriteRulePosition =
   | RulesEditForAccountRequestBodyRewriteRulePositionAfterPosition
   | RulesEditForAccountRequestBodyRewriteRulePositionIndexPosition;
 export const RulesEditForAccountRequestBodyRewriteRulePosition =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([["before"], ["after"], ["index"]]),
+  );
 
 export interface RulesEditForAccountRequestBodyRewriteRule {
   /** An object configuring where the rule will be placed. */
@@ -7794,7 +7887,9 @@ export type RulesEditForAccountRequestBodyRouteRulePosition =
   | RulesEditForAccountRequestBodyRouteRulePositionAfterPosition
   | RulesEditForAccountRequestBodyRouteRulePositionIndexPosition;
 export const RulesEditForAccountRequestBodyRouteRulePosition =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([["before"], ["after"], ["index"]]),
+  );
 
 export interface RulesEditForAccountRequestBodyRouteRule {
   /** An object configuring where the rule will be placed. */
@@ -7853,7 +7948,9 @@ export type RulesEditForAccountRequestBodyScoreRulePosition =
   | RulesEditForAccountRequestBodyScoreRulePositionAfterPosition
   | RulesEditForAccountRequestBodyScoreRulePositionIndexPosition;
 export const RulesEditForAccountRequestBodyScoreRulePosition =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([["before"], ["after"], ["index"]]),
+  );
 
 export interface RulesEditForAccountRequestBodyScoreRule {
   /** An object configuring where the rule will be placed. */
@@ -7915,7 +8012,9 @@ export type RulesEditForAccountRequestBodyServeErrorRulePosition =
   | RulesEditForAccountRequestBodyServeErrorRulePositionAfterPosition
   | RulesEditForAccountRequestBodyServeErrorRulePositionIndexPosition;
 export const RulesEditForAccountRequestBodyServeErrorRulePosition =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([["before"], ["after"], ["index"]]),
+  );
 
 export interface RulesEditForAccountRequestBodyServeErrorRule {
   /** An object configuring where the rule will be placed. */
@@ -7979,7 +8078,9 @@ export type RulesEditForAccountRequestBodySetCacheSettingsRulePosition =
   | RulesEditForAccountRequestBodySetCacheSettingsRulePositionAfterPosition
   | RulesEditForAccountRequestBodySetCacheSettingsRulePositionIndexPosition;
 export const RulesEditForAccountRequestBodySetCacheSettingsRulePosition =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([["before"], ["after"], ["index"]]),
+  );
 
 export interface RulesEditForAccountRequestBodySetCacheSettingsRule {
   /** An object configuring where the rule will be placed. */
@@ -8043,7 +8144,9 @@ export type RulesEditForAccountRequestBodySetConfigurationRulePosition =
   | RulesEditForAccountRequestBodySetConfigurationRulePositionAfterPosition
   | RulesEditForAccountRequestBodySetConfigurationRulePositionIndexPosition;
 export const RulesEditForAccountRequestBodySetConfigurationRulePosition =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([["before"], ["after"], ["index"]]),
+  );
 
 export interface RulesEditForAccountRequestBodySetConfigurationRule {
   /** An object configuring where the rule will be placed. */
@@ -8104,7 +8207,9 @@ export type RulesEditForAccountRequestBodySkipRulePosition =
   | RulesEditForAccountRequestBodySkipRulePositionAfterPosition
   | RulesEditForAccountRequestBodySkipRulePositionIndexPosition;
 export const RulesEditForAccountRequestBodySkipRulePosition =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([["before"], ["after"], ["index"]]),
+  );
 
 export interface RulesEditForAccountRequestBodySkipRule {
   /** An object configuring where the rule will be placed. */
@@ -8506,7 +8611,9 @@ export type RulesEditForZoneRequestBodyBlockRulePosition =
   | RulesEditForZoneRequestBodyBlockRulePositionAfterPosition
   | RulesEditForZoneRequestBodyBlockRulePositionIndexPosition;
 export const RulesEditForZoneRequestBodyBlockRulePosition =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([["before"], ["after"], ["index"]]),
+  );
 
 export interface RulesEditForZoneRequestBodyBlockRule {
   /** An object configuring where the rule will be placed. */
@@ -8600,7 +8707,9 @@ export type RulesEditForZoneRequestBodyPosition =
   | RulesEditForZoneRequestBodyPositionBeforePosition
   | RulesEditForZoneRequestBodyPositionAfterPosition
   | RulesEditForZoneRequestBodyPositionIndexPosition;
-export const RulesEditForZoneRequestBodyPosition = /*@__PURE__*/ S.Unknown;
+export const RulesEditForZoneRequestBodyPosition = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([["before"], ["after"], ["index"]]),
+);
 
 export type RulesEditForZoneRequestBodyRatelimitCharacteristicsList = string[];
 export const RulesEditForZoneRequestBodyRatelimitCharacteristicsList =
@@ -8699,7 +8808,9 @@ export type RulesEditForZoneRequestBodyResponseCompressionRulePosition =
   | RulesEditForZoneRequestBodyResponseCompressionRulePositionAfterPosition
   | RulesEditForZoneRequestBodyResponseCompressionRulePositionIndexPosition;
 export const RulesEditForZoneRequestBodyResponseCompressionRulePosition =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([["before"], ["after"], ["index"]]),
+  );
 
 export interface RulesEditForZoneRequestBodyResponseCompressionRule {
   /** An object configuring where the rule will be placed. */
@@ -8763,7 +8874,9 @@ export type RulesEditForZoneRequestBodyDDoSDynamicRulePosition =
   | RulesEditForZoneRequestBodyDDoSDynamicRulePositionAfterPosition
   | RulesEditForZoneRequestBodyDDoSDynamicRulePositionIndexPosition;
 export const RulesEditForZoneRequestBodyDDoSDynamicRulePosition =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([["before"], ["after"], ["index"]]),
+  );
 
 export interface RulesEditForZoneRequestBodyDDoSDynamicRule {
   /** An object configuring where the rule will be placed. */
@@ -8822,7 +8935,9 @@ export type RulesEditForZoneRequestBodyExecuteRulePosition =
   | RulesEditForZoneRequestBodyExecuteRulePositionAfterPosition
   | RulesEditForZoneRequestBodyExecuteRulePositionIndexPosition;
 export const RulesEditForZoneRequestBodyExecuteRulePosition =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([["before"], ["after"], ["index"]]),
+  );
 
 export interface RulesEditForZoneRequestBodyExecuteRule {
   /** An object configuring where the rule will be placed. */
@@ -8884,7 +8999,9 @@ export type RulesEditForZoneRequestBodyForceConnectionCloseRulePosition =
   | RulesEditForZoneRequestBodyForceConnectionCloseRulePositionAfterPosition
   | RulesEditForZoneRequestBodyForceConnectionCloseRulePositionIndexPosition;
 export const RulesEditForZoneRequestBodyForceConnectionCloseRulePosition =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([["before"], ["after"], ["index"]]),
+  );
 
 export interface RulesEditForZoneRequestBodyForceConnectionCloseRule {
   /** An object configuring where the rule will be placed. */
@@ -8945,7 +9062,9 @@ export type RulesEditForZoneRequestBodyLogRulePosition =
   | RulesEditForZoneRequestBodyLogRulePositionAfterPosition
   | RulesEditForZoneRequestBodyLogRulePositionIndexPosition;
 export const RulesEditForZoneRequestBodyLogRulePosition =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([["before"], ["after"], ["index"]]),
+  );
 
 export interface RulesEditForZoneRequestBodyLogRule {
   /** An object configuring where the rule will be placed. */
@@ -9006,7 +9125,9 @@ export type RulesEditForZoneRequestBodyLogCustomFieldRulePosition =
   | RulesEditForZoneRequestBodyLogCustomFieldRulePositionAfterPosition
   | RulesEditForZoneRequestBodyLogCustomFieldRulePositionIndexPosition;
 export const RulesEditForZoneRequestBodyLogCustomFieldRulePosition =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([["before"], ["after"], ["index"]]),
+  );
 
 export interface RulesEditForZoneRequestBodyLogCustomFieldRule {
   /** An object configuring where the rule will be placed. */
@@ -9070,7 +9191,9 @@ export type RulesEditForZoneRequestBodyManagedChallengeRulePosition =
   | RulesEditForZoneRequestBodyManagedChallengeRulePositionAfterPosition
   | RulesEditForZoneRequestBodyManagedChallengeRulePositionIndexPosition;
 export const RulesEditForZoneRequestBodyManagedChallengeRulePosition =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([["before"], ["after"], ["index"]]),
+  );
 
 export interface RulesEditForZoneRequestBodyManagedChallengeRule {
   /** An object configuring where the rule will be placed. */
@@ -9131,7 +9254,9 @@ export type RulesEditForZoneRequestBodyRedirectRulePosition =
   | RulesEditForZoneRequestBodyRedirectRulePositionAfterPosition
   | RulesEditForZoneRequestBodyRedirectRulePositionIndexPosition;
 export const RulesEditForZoneRequestBodyRedirectRulePosition =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([["before"], ["after"], ["index"]]),
+  );
 
 export interface RulesEditForZoneRequestBodyRedirectRule {
   /** An object configuring where the rule will be placed. */
@@ -9190,7 +9315,9 @@ export type RulesEditForZoneRequestBodyRewriteRulePosition =
   | RulesEditForZoneRequestBodyRewriteRulePositionAfterPosition
   | RulesEditForZoneRequestBodyRewriteRulePositionIndexPosition;
 export const RulesEditForZoneRequestBodyRewriteRulePosition =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([["before"], ["after"], ["index"]]),
+  );
 
 export interface RulesEditForZoneRequestBodyRewriteRule {
   /** An object configuring where the rule will be placed. */
@@ -9249,7 +9376,9 @@ export type RulesEditForZoneRequestBodyRouteRulePosition =
   | RulesEditForZoneRequestBodyRouteRulePositionAfterPosition
   | RulesEditForZoneRequestBodyRouteRulePositionIndexPosition;
 export const RulesEditForZoneRequestBodyRouteRulePosition =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([["before"], ["after"], ["index"]]),
+  );
 
 export interface RulesEditForZoneRequestBodyRouteRule {
   /** An object configuring where the rule will be placed. */
@@ -9308,7 +9437,9 @@ export type RulesEditForZoneRequestBodyScoreRulePosition =
   | RulesEditForZoneRequestBodyScoreRulePositionAfterPosition
   | RulesEditForZoneRequestBodyScoreRulePositionIndexPosition;
 export const RulesEditForZoneRequestBodyScoreRulePosition =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([["before"], ["after"], ["index"]]),
+  );
 
 export interface RulesEditForZoneRequestBodyScoreRule {
   /** An object configuring where the rule will be placed. */
@@ -9370,7 +9501,9 @@ export type RulesEditForZoneRequestBodyServeErrorRulePosition =
   | RulesEditForZoneRequestBodyServeErrorRulePositionAfterPosition
   | RulesEditForZoneRequestBodyServeErrorRulePositionIndexPosition;
 export const RulesEditForZoneRequestBodyServeErrorRulePosition =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([["before"], ["after"], ["index"]]),
+  );
 
 export interface RulesEditForZoneRequestBodyServeErrorRule {
   /** An object configuring where the rule will be placed. */
@@ -9432,7 +9565,9 @@ export type RulesEditForZoneRequestBodySetCacheSettingsRulePosition =
   | RulesEditForZoneRequestBodySetCacheSettingsRulePositionAfterPosition
   | RulesEditForZoneRequestBodySetCacheSettingsRulePositionIndexPosition;
 export const RulesEditForZoneRequestBodySetCacheSettingsRulePosition =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([["before"], ["after"], ["index"]]),
+  );
 
 export interface RulesEditForZoneRequestBodySetCacheSettingsRule {
   /** An object configuring where the rule will be placed. */
@@ -9496,7 +9631,9 @@ export type RulesEditForZoneRequestBodySetConfigurationRulePosition =
   | RulesEditForZoneRequestBodySetConfigurationRulePositionAfterPosition
   | RulesEditForZoneRequestBodySetConfigurationRulePositionIndexPosition;
 export const RulesEditForZoneRequestBodySetConfigurationRulePosition =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([["before"], ["after"], ["index"]]),
+  );
 
 export interface RulesEditForZoneRequestBodySetConfigurationRule {
   /** An object configuring where the rule will be placed. */
@@ -9557,7 +9694,9 @@ export type RulesEditForZoneRequestBodySkipRulePosition =
   | RulesEditForZoneRequestBodySkipRulePositionAfterPosition
   | RulesEditForZoneRequestBodySkipRulePositionIndexPosition;
 export const RulesEditForZoneRequestBodySkipRulePosition =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([["before"], ["after"], ["index"]]),
+  );
 
 export interface RulesEditForZoneRequestBodySkipRule {
   /** An object configuring where the rule will be placed. */

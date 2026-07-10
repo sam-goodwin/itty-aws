@@ -2236,7 +2236,16 @@ export type PurgeRequestBody =
   | PurgeRequestBodyCachePurgeEverything
   | PurgeRequestBodyCachePurgeSingleFile
   | PurgeRequestBodyCachePurgeSingleFileWithURLAndHeaders;
-export const PurgeRequestBody = /*@__PURE__*/ S.Unknown;
+export const PurgeRequestBody = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["tags"],
+    ["hosts"],
+    ["prefixes"],
+    ["purgeEverything"],
+    ["files"],
+    ["files"],
+  ]),
+);
 
 export interface PurgeCacheRequest {
   zoneId: string;
@@ -2426,7 +2435,16 @@ export type PurgeEnvironmentRequestBody =
   | PurgeEnvironmentRequestBodyCachePurgeEverything
   | PurgeEnvironmentRequestBodyCachePurgeSingleFile
   | PurgeEnvironmentRequestBodyCachePurgeSingleFileWithURLAndHeaders;
-export const PurgeEnvironmentRequestBody = /*@__PURE__*/ S.Unknown;
+export const PurgeEnvironmentRequestBody = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["tags"],
+    ["hosts"],
+    ["prefixes"],
+    ["purgeEverything"],
+    ["files"],
+    ["files"],
+  ]),
+);
 
 export interface PurgeEnvironmentCacheRequest {
   zoneId: string;

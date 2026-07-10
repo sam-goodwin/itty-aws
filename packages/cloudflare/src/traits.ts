@@ -129,6 +129,20 @@ export const formDataFileSymbol = Symbol.for(
  */
 export const FormDataFile = () => makeAnnotation(formDataFileSymbol, true);
 
+export const unionCasesSymbol = Symbol.for(
+  "@distilled.cloud/cloudflare/union-cases",
+);
+
+/**
+ * Marks an opaque schema standing in for a discriminated union of object
+ * cases, carrying each case's camelCase key set. Cloudflare returns every
+ * case's keys with `null` for the inactive ones; the protocol uses these key
+ * sets to pick the active case and drop the others, so consumers' `"key" in
+ * value` discrimination works (mirrors distilled's Schema.Union decode).
+ */
+export const UnionCases = (cases: ReadonlyArray<ReadonlyArray<string>>) =>
+  makeAnnotation(unionCasesSymbol, cases);
+
 export const envelopePayloadRootSymbol = Symbol.for(
   "@distilled.cloud/cloudflare/envelope-payload-root",
 );

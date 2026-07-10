@@ -543,7 +543,12 @@ export const AccountTagsUpdateRequestBodyResourceTaggingSetTagsRequestAccountLev
 export type AccountTagsUpdateRequestBody =
   | AccountTagsUpdateRequestBodyResourceTaggingSetTagsRequestAccountLevelWorkerVersion
   | AccountTagsUpdateRequestBodyResourceTaggingSetTagsRequestAccountLevelBase;
-export const AccountTagsUpdateRequestBody = /*@__PURE__*/ S.Unknown;
+export const AccountTagsUpdateRequestBody = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["resourceId", "resourceType", "workerId", "tags"],
+    ["resourceId", "resourceType", "tags"],
+  ]),
+);
 
 export interface PutAccountTagRequest {
   /** Identifier. */
@@ -702,7 +707,12 @@ export const ZoneTagsUpdateRequestBodyResourceTaggingSetTagsRequestZoneLevelAcce
 export type ZoneTagsUpdateRequestBody =
   | ZoneTagsUpdateRequestBodyResourceTaggingSetTagsRequestZoneLevelBase
   | ZoneTagsUpdateRequestBodyResourceTaggingSetTagsRequestZoneLevelAccessApplicationPolicy;
-export const ZoneTagsUpdateRequestBody = /*@__PURE__*/ S.Unknown;
+export const ZoneTagsUpdateRequestBody = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["resourceId", "resourceType", "tags"],
+    ["accessApplicationId", "resourceId", "resourceType", "tags"],
+  ]),
+);
 
 export interface PutZoneTagRequest {
   /** Zone ID is required only for zone-level resources */

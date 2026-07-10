@@ -564,7 +564,12 @@ export const MembersCreateRequestBodyIAMCreateMemberWithPolicies =
 export type MembersCreateRequestBody =
   | MembersCreateRequestBodyIAMCreateMemberWithRoles
   | MembersCreateRequestBodyIAMCreateMemberWithPolicies;
-export const MembersCreateRequestBody = /*@__PURE__*/ S.Unknown;
+export const MembersCreateRequestBody = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["email", "roles", "status"],
+    ["email", "policies", "status"],
+  ]),
+);
 
 export interface CreateMemberRequest {
   /** Account identifier tag. */
@@ -4156,7 +4161,9 @@ export const MembersUpdateRequestBodyIAMUpdateMemberWithPolicies =
 export type MembersUpdateRequestBody =
   | MembersUpdateRequestBodyIAMUpdateMemberWithRoles
   | MembersUpdateRequestBodyIAMUpdateMemberWithPolicies;
-export const MembersUpdateRequestBody = /*@__PURE__*/ S.Unknown;
+export const MembersUpdateRequestBody = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([["id", "roles", "status", "user"], ["policies"]]),
+);
 
 export interface UpdateMemberRequest {
   /** Account identifier tag. */

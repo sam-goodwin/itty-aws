@@ -1118,7 +1118,18 @@ export type DispatchNamespacesScriptsGetResponseScriptPlacement =
   | DispatchNamespacesScriptsGetResponseScriptPlacementObjectHostModeLastAnalyzedAtStatus
   | DispatchNamespacesScriptsGetResponseScriptPlacementObjectModeTargetLastAnalyzedAtStatus;
 export const DispatchNamespacesScriptsGetResponseScriptPlacement =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["mode", "lastAnalyzedAt", "status"],
+      ["region", "lastAnalyzedAt", "status"],
+      ["hostname", "lastAnalyzedAt", "status"],
+      ["host", "lastAnalyzedAt", "status"],
+      ["mode", "region", "lastAnalyzedAt", "status"],
+      ["hostname", "mode", "lastAnalyzedAt", "status"],
+      ["host", "mode", "lastAnalyzedAt", "status"],
+      ["mode", "target", "lastAnalyzedAt", "status"],
+    ]),
+  );
 
 export type DispatchNamespacesScriptsGetResponseScriptPlacementMode =
   | "smart"
@@ -2685,7 +2696,18 @@ export type DispatchNamespacesScriptsSettingsGetResponsePlacement =
   | DispatchNamespacesScriptsSettingsGetResponsePlacementObjectHostMode
   | DispatchNamespacesScriptsSettingsGetResponsePlacementObjectModeTarget;
 export const DispatchNamespacesScriptsSettingsGetResponsePlacement =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["mode"],
+      ["region"],
+      ["hostname"],
+      ["host"],
+      ["mode", "region"],
+      ["hostname", "mode"],
+      ["host", "mode"],
+      ["mode", "target"],
+    ]),
+  );
 
 export type DispatchNamespacesScriptsSettingsGetResponseTagsList = string[];
 export const DispatchNamespacesScriptsSettingsGetResponseTagsList =
@@ -3955,7 +3977,18 @@ export type DispatchNamespacesScriptsSettingsEditResponsePlacement =
   | DispatchNamespacesScriptsSettingsEditResponsePlacementObjectHostMode
   | DispatchNamespacesScriptsSettingsEditResponsePlacementObjectModeTarget;
 export const DispatchNamespacesScriptsSettingsEditResponsePlacement =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["mode"],
+      ["region"],
+      ["hostname"],
+      ["host"],
+      ["mode", "region"],
+      ["hostname", "mode"],
+      ["host", "mode"],
+      ["mode", "target"],
+    ]),
+  );
 
 export type DispatchNamespacesScriptsSettingsEditResponseTagsList = string[];
 export const DispatchNamespacesScriptsSettingsEditResponseTagsList =
@@ -4596,7 +4629,18 @@ export type DispatchNamespacesScriptsUpdateResponsePlacement =
   | DispatchNamespacesScriptsUpdateResponsePlacementObjectHostModeLastAnalyzedAtStatus
   | DispatchNamespacesScriptsUpdateResponsePlacementObjectModeTargetLastAnalyzedAtStatus;
 export const DispatchNamespacesScriptsUpdateResponsePlacement =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["mode", "lastAnalyzedAt", "status"],
+      ["region", "lastAnalyzedAt", "status"],
+      ["hostname", "lastAnalyzedAt", "status"],
+      ["host", "lastAnalyzedAt", "status"],
+      ["mode", "region", "lastAnalyzedAt", "status"],
+      ["hostname", "mode", "lastAnalyzedAt", "status"],
+      ["host", "mode", "lastAnalyzedAt", "status"],
+      ["mode", "target", "lastAnalyzedAt", "status"],
+    ]),
+  );
 
 export type DispatchNamespacesScriptsUpdateResponsePlacementMode =
   | "smart"
@@ -5282,7 +5326,18 @@ export type DispatchNamespacesScriptsContentUpdateResponsePlacement =
   | DispatchNamespacesScriptsContentUpdateResponsePlacementObjectHostModeLastAnalyzedAtStatus
   | DispatchNamespacesScriptsContentUpdateResponsePlacementObjectModeTargetLastAnalyzedAtStatus;
 export const DispatchNamespacesScriptsContentUpdateResponsePlacement =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["mode", "lastAnalyzedAt", "status"],
+      ["region", "lastAnalyzedAt", "status"],
+      ["hostname", "lastAnalyzedAt", "status"],
+      ["host", "lastAnalyzedAt", "status"],
+      ["mode", "region", "lastAnalyzedAt", "status"],
+      ["hostname", "mode", "lastAnalyzedAt", "status"],
+      ["host", "mode", "lastAnalyzedAt", "status"],
+      ["mode", "target", "lastAnalyzedAt", "status"],
+    ]),
+  );
 
 export type DispatchNamespacesScriptsContentUpdateResponsePlacementMode =
   | "smart"
@@ -5541,7 +5596,12 @@ export type DispatchNamespacesScriptsSecretsUpdateRequestBody =
   | DispatchNamespacesScriptsSecretsUpdateRequestBodySecretText
   | DispatchNamespacesScriptsSecretsUpdateRequestBodySecretKey;
 export const DispatchNamespacesScriptsSecretsUpdateRequestBody =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["name", "text", "type"],
+      ["algorithm", "format", "name", "type", "usages", "keyBase64", "keyJwk"],
+    ]),
+  );
 
 export interface PutDispatchNamespaceScriptSecretRequest {
   /** Identifier. */

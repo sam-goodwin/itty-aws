@@ -593,7 +593,13 @@ export type SuperSlurperJobsCreateRequestSource =
   | SuperSlurperJobsCreateRequestSourceR2SlurperS3SourceSchema
   | SuperSlurperJobsCreateRequestSourceR2SlurperGcsSourceSchema
   | SuperSlurperJobsCreateRequestSourceR2SlurperR2SourceSchema;
-export const SuperSlurperJobsCreateRequestSource = /*@__PURE__*/ S.Unknown;
+export const SuperSlurperJobsCreateRequestSource = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["bucket", "secret", "vendor", "endpoint", "keys", "pathPrefix", "region"],
+    ["bucket", "secret", "vendor", "keys", "pathPrefix"],
+    ["bucket", "secret", "vendor", "jurisdiction", "keys", "pathPrefix"],
+  ]),
+);
 
 export interface SuperSlurperJobsCreateRequestTargetSecret {
   accessKeyId: string;
@@ -1648,7 +1654,12 @@ export type BucketsLifecycleGetResponseRulesItemDeleteObjectsTransitionCondition
     | BucketsLifecycleGetResponseRulesItemDeleteObjectsTransitionConditionR2LifecycleAgeCondition
     | BucketsLifecycleGetResponseRulesItemDeleteObjectsTransitionConditionR2LifecycleDateCondition;
 export const BucketsLifecycleGetResponseRulesItemDeleteObjectsTransitionCondition =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["maxAge", "type"],
+      ["date", "type"],
+    ]),
+  );
 
 export interface BucketsLifecycleGetResponseRulesItemDeleteObjectsTransition {
   /** Condition for lifecycle transitions to apply after an object reaches an age in seconds. */
@@ -1709,7 +1720,12 @@ export type BucketsLifecycleGetResponseRulesItemStorageClassTransitionsItemCondi
     | BucketsLifecycleGetResponseRulesItemStorageClassTransitionsItemConditionR2LifecycleAgeCondition
     | BucketsLifecycleGetResponseRulesItemStorageClassTransitionsItemConditionR2LifecycleDateCondition;
 export const BucketsLifecycleGetResponseRulesItemStorageClassTransitionsItemCondition =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["maxAge", "type"],
+      ["date", "type"],
+    ]),
+  );
 
 export type BucketsLifecycleGetResponseRulesItemStorageClassTransitionsItemStorageClass =
   "InfrequentAccess" | (string & {});
@@ -1893,7 +1909,9 @@ export type BucketsLocksGetResponseRulesItemCondition =
   | BucketsLocksGetResponseRulesItemConditionR2LockRuleDateCondition
   | BucketsLocksGetResponseRulesItemConditionR2LockRuleIndefiniteCondition;
 export const BucketsLocksGetResponseRulesItemCondition =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([["maxAgeSeconds", "type"], ["date", "type"], ["type"]]),
+  );
 
 export interface BucketsLocksGetResponseRulesItem {
   /** Unique identifier for this rule. */
@@ -2224,7 +2242,13 @@ export type SuperSlurperJobsGetResponseSource =
   | SuperSlurperJobsGetResponseSourceS3SourceResponseSchema
   | SuperSlurperJobsGetResponseSourceGcsSourceResponseSchema
   | SuperSlurperJobsGetResponseSourceR2SourceResponseSchema;
-export const SuperSlurperJobsGetResponseSource = /*@__PURE__*/ S.Unknown;
+export const SuperSlurperJobsGetResponseSource = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["bucket", "endpoint", "keys", "pathPrefix", "vendor"],
+    ["bucket", "keys", "pathPrefix", "vendor"],
+    ["bucket", "jurisdiction", "keys", "pathPrefix", "vendor"],
+  ]),
+);
 
 export type SuperSlurperJobsGetResponseStatus =
   | "running"
@@ -3233,7 +3257,14 @@ export type SuperSlurperJobsListResultItemSource =
   | SuperSlurperJobsListResultItemSourceS3SourceResponseSchema
   | SuperSlurperJobsListResultItemSourceGcsSourceResponseSchema
   | SuperSlurperJobsListResultItemSourceR2SourceResponseSchema;
-export const SuperSlurperJobsListResultItemSource = /*@__PURE__*/ S.Unknown;
+export const SuperSlurperJobsListResultItemSource =
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["bucket", "endpoint", "keys", "pathPrefix", "vendor"],
+      ["bucket", "keys", "pathPrefix", "vendor"],
+      ["bucket", "jurisdiction", "keys", "pathPrefix", "vendor"],
+    ]),
+  );
 
 export type SuperSlurperJobsListResultItemStatus =
   | "running"
@@ -3869,7 +3900,12 @@ export type BucketsLifecycleUpdateRequestRulesItemDeleteObjectsTransitionConditi
     | BucketsLifecycleUpdateRequestRulesItemDeleteObjectsTransitionConditionR2LifecycleAgeCondition
     | BucketsLifecycleUpdateRequestRulesItemDeleteObjectsTransitionConditionR2LifecycleDateCondition;
 export const BucketsLifecycleUpdateRequestRulesItemDeleteObjectsTransitionCondition =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["maxAge", "type"],
+      ["date", "type"],
+    ]),
+  );
 
 export interface BucketsLifecycleUpdateRequestRulesItemDeleteObjectsTransition {
   /** Condition for lifecycle transitions to apply after an object reaches an age in seconds. */
@@ -3930,7 +3966,12 @@ export type BucketsLifecycleUpdateRequestRulesItemStorageClassTransitionsItemCon
     | BucketsLifecycleUpdateRequestRulesItemStorageClassTransitionsItemConditionR2LifecycleAgeCondition
     | BucketsLifecycleUpdateRequestRulesItemStorageClassTransitionsItemConditionR2LifecycleDateCondition;
 export const BucketsLifecycleUpdateRequestRulesItemStorageClassTransitionsItemCondition =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["maxAge", "type"],
+      ["date", "type"],
+    ]),
+  );
 
 export type BucketsLifecycleUpdateRequestRulesItemStorageClassTransitionsItemStorageClass =
   "InfrequentAccess" | (string & {});
@@ -4111,7 +4152,9 @@ export type BucketsLocksUpdateRequestRulesItemCondition =
   | BucketsLocksUpdateRequestRulesItemConditionR2LockRuleDateCondition
   | BucketsLocksUpdateRequestRulesItemConditionR2LockRuleIndefiniteCondition;
 export const BucketsLocksUpdateRequestRulesItemCondition =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([["maxAgeSeconds", "type"], ["date", "type"], ["type"]]),
+  );
 
 export interface BucketsLocksUpdateRequestRulesItem {
   /** Unique identifier for this rule. */
@@ -4388,7 +4431,13 @@ export type BucketsSippyUpdateRequestBody =
   | BucketsSippyUpdateRequestBodyR2EnableSippyAws
   | BucketsSippyUpdateRequestBodyR2EnableSippyGcs
   | BucketsSippyUpdateRequestBodyR2EnableSippyS3;
-export const BucketsSippyUpdateRequestBody = /*@__PURE__*/ S.Unknown;
+export const BucketsSippyUpdateRequestBody = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["destination", "source"],
+    ["destination", "source"],
+    ["destination", "source"],
+  ]),
+);
 
 export interface PutBucketSippyRequest {
   /** Account ID. */
@@ -4685,7 +4734,21 @@ export type SuperSlurperConnectivityPrecheckSourceRequestBody =
   | SuperSlurperConnectivityPrecheckSourceRequestBodyR2SlurperGcsSourceSchema
   | SuperSlurperConnectivityPrecheckSourceRequestBodyR2SlurperR2SourceSchema;
 export const SuperSlurperConnectivityPrecheckSourceRequestBody =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      [
+        "bucket",
+        "secret",
+        "vendor",
+        "endpoint",
+        "keys",
+        "pathPrefix",
+        "region",
+      ],
+      ["bucket", "secret", "vendor", "keys", "pathPrefix"],
+      ["bucket", "secret", "vendor", "jurisdiction", "keys", "pathPrefix"],
+    ]),
+  );
 
 export interface SourceSuperSlurperConnectivityPrecheckRequest {
   accountId: string;

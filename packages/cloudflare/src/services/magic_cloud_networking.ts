@@ -2383,7 +2383,15 @@ export type ResourcesGetResponseSectionsItemHiddenItemsItemValue =
   | ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnResourcePreviewItem
   | ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItem;
 export const ResourcesGetResponseSectionsItemHiddenItemsItemValue =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["itemType", "string"],
+      ["itemType", "yaml"],
+      ["itemType", "yamlDiff"],
+      ["itemType", "resourcePreview"],
+      ["itemType", "list"],
+    ]),
+  );
 
 export interface ResourcesGetResponseSectionsItemHiddenItemsItem {
   helpText?: string;
@@ -2629,7 +2637,15 @@ export type ResourcesGetResponseSectionsItemVisibleItemsItemValue =
   | ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnResourcePreviewItem
   | ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItem;
 export const ResourcesGetResponseSectionsItemVisibleItemsItemValue =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["itemType", "string"],
+      ["itemType", "yaml"],
+      ["itemType", "yamlDiff"],
+      ["itemType", "resourcePreview"],
+      ["itemType", "list"],
+    ]),
+  );
 
 export interface ResourcesGetResponseSectionsItemVisibleItemsItem {
   helpText?: string;
@@ -4147,7 +4163,15 @@ export type ResourcesListResultItemSectionsItemHiddenItemsItemValue =
   | ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnResourcePreviewItem
   | ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItem;
 export const ResourcesListResultItemSectionsItemHiddenItemsItemValue =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["itemType", "string"],
+      ["itemType", "yaml"],
+      ["itemType", "yamlDiff"],
+      ["itemType", "resourcePreview"],
+      ["itemType", "list"],
+    ]),
+  );
 
 export interface ResourcesListResultItemSectionsItemHiddenItemsItem {
   helpText?: string;
@@ -4395,7 +4419,15 @@ export type ResourcesListResultItemSectionsItemVisibleItemsItemValue =
   | ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnResourcePreviewItem
   | ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItem;
 export const ResourcesListResultItemSectionsItemVisibleItemsItemValue =
-  /*@__PURE__*/ S.Unknown;
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["itemType", "string"],
+      ["itemType", "yaml"],
+      ["itemType", "yamlDiff"],
+      ["itemType", "resourcePreview"],
+      ["itemType", "list"],
+    ]),
+  );
 
 export interface ResourcesListResultItemSectionsItemVisibleItemsItem {
   helpText?: string;

@@ -587,7 +587,13 @@ export type DatabaseImportRequestBody =
   | DatabaseImportRequestBodyInit
   | DatabaseImportRequestBodyIngest
   | DatabaseImportRequestBodyPoll;
-export const DatabaseImportRequestBody = /*@__PURE__*/ S.Unknown;
+export const DatabaseImportRequestBody = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["action", "etag"],
+    ["action", "etag", "filename"],
+    ["action", "currentBookmark"],
+  ]),
+);
 
 export interface ImportDatabaseRequest {
   /** Account identifier tag. */
@@ -989,7 +995,9 @@ export const DatabaseQueryRequestBodyMultipleQueries = /*@__PURE__*/ S.suspend(
 export type DatabaseQueryRequestBody =
   | DatabaseQueryRequestBodyD1SingleQuery
   | DatabaseQueryRequestBodyMultipleQueries;
-export const DatabaseQueryRequestBody = /*@__PURE__*/ S.Unknown;
+export const DatabaseQueryRequestBody = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([["sql", "params"], ["batch"]]),
+);
 
 export interface QueryDatabaseRequest {
   /** Account identifier tag. */
@@ -1187,7 +1195,9 @@ export const DatabaseRawRequestBodyMultipleQueries = /*@__PURE__*/ S.suspend(
 export type DatabaseRawRequestBody =
   | DatabaseRawRequestBodyD1SingleQuery
   | DatabaseRawRequestBodyMultipleQueries;
-export const DatabaseRawRequestBody = /*@__PURE__*/ S.Unknown;
+export const DatabaseRawRequestBody = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([["sql", "params"], ["batch"]]),
+);
 
 export interface RawDatabaseRequest {
   /** Account identifier tag. */

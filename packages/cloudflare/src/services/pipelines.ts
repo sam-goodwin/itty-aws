@@ -684,7 +684,21 @@ export const SinksCreateRequestConfigCloudflarePipelinesR2DataCatalogTable =
 export type SinksCreateRequestConfig =
   | SinksCreateRequestConfigCloudflarePipelinesR2Table
   | SinksCreateRequestConfigCloudflarePipelinesR2DataCatalogTable;
-export const SinksCreateRequestConfig = /*@__PURE__*/ S.Unknown;
+export const SinksCreateRequestConfig = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    [
+      "accountId",
+      "bucket",
+      "credentials",
+      "fileNaming",
+      "jurisdiction",
+      "partitioning",
+      "path",
+      "rollingPolicy",
+    ],
+    ["token", "accountId", "bucket", "tableName", "namespace", "rollingPolicy"],
+  ]),
+);
 
 export type SinksCreateRequestFormatJsonType = "json" | (string & {});
 export const SinksCreateRequestFormatJsonType = /*@__PURE__*/ S.String;
@@ -758,7 +772,12 @@ export const SinksCreateRequestFormatParquet = /*@__PURE__*/ S.suspend(() =>
 export type SinksCreateRequestFormat =
   | SinksCreateRequestFormatJson
   | SinksCreateRequestFormatParquet;
-export const SinksCreateRequestFormat = /*@__PURE__*/ S.Unknown;
+export const SinksCreateRequestFormat = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["type", "decimalEncoding", "timestampFormat", "unstructured"],
+    ["type", "compression", "rowGroupBytes"],
+  ]),
+);
 
 export type SinksCreateRequestSchemaFieldsItemType = "int32" | (string & {});
 export const SinksCreateRequestSchemaFieldsItemType = /*@__PURE__*/ S.String;
@@ -877,7 +896,12 @@ export const SinksCreateRequestSchemaFormatParquet = /*@__PURE__*/ S.suspend(
 export type SinksCreateRequestSchemaFormat =
   | SinksCreateRequestSchemaFormatJson
   | SinksCreateRequestSchemaFormatParquet;
-export const SinksCreateRequestSchemaFormat = /*@__PURE__*/ S.Unknown;
+export const SinksCreateRequestSchemaFormat = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["type", "decimalEncoding", "timestampFormat", "unstructured"],
+    ["type", "compression", "rowGroupBytes"],
+  ]),
+);
 
 export interface SinksCreateRequestSchema {
   fields?: SinksCreateRequestSchemaFieldsList;
@@ -1111,7 +1135,21 @@ export const SinksCreateResponseConfigCloudflarePipelinesR2DataCatalogTable =
 export type SinksCreateResponseConfig =
   | SinksCreateResponseConfigCloudflarePipelinesR2Table
   | SinksCreateResponseConfigCloudflarePipelinesR2DataCatalogTable;
-export const SinksCreateResponseConfig = /*@__PURE__*/ S.Unknown;
+export const SinksCreateResponseConfig = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    [
+      "accountId",
+      "bucket",
+      "credentials",
+      "fileNaming",
+      "jurisdiction",
+      "partitioning",
+      "path",
+      "rollingPolicy",
+    ],
+    ["token", "accountId", "bucket", "tableName", "namespace", "rollingPolicy"],
+  ]),
+);
 
 export type SinksCreateResponseFormatJsonType = "json" | (string & {});
 export const SinksCreateResponseFormatJsonType = /*@__PURE__*/ S.String;
@@ -1185,7 +1223,12 @@ export const SinksCreateResponseFormatParquet = /*@__PURE__*/ S.suspend(() =>
 export type SinksCreateResponseFormat =
   | SinksCreateResponseFormatJson
   | SinksCreateResponseFormatParquet;
-export const SinksCreateResponseFormat = /*@__PURE__*/ S.Unknown;
+export const SinksCreateResponseFormat = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["type", "decimalEncoding", "timestampFormat", "unstructured"],
+    ["type", "compression", "rowGroupBytes"],
+  ]),
+);
 
 export type SinksCreateResponseSchemaFieldsItemType = "int32" | (string & {});
 export const SinksCreateResponseSchemaFieldsItemType = /*@__PURE__*/ S.String;
@@ -1307,7 +1350,12 @@ export const SinksCreateResponseSchemaFormatParquet = /*@__PURE__*/ S.suspend(
 export type SinksCreateResponseSchemaFormat =
   | SinksCreateResponseSchemaFormatJson
   | SinksCreateResponseSchemaFormatParquet;
-export const SinksCreateResponseSchemaFormat = /*@__PURE__*/ S.Unknown;
+export const SinksCreateResponseSchemaFormat = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["type", "decimalEncoding", "timestampFormat", "unstructured"],
+    ["type", "compression", "rowGroupBytes"],
+  ]),
+);
 
 export interface SinksCreateResponseSchema {
   fields?: SinksCreateResponseSchemaFieldsList;
@@ -1426,7 +1474,12 @@ export const StreamsCreateRequestFormatParquet = /*@__PURE__*/ S.suspend(() =>
 export type StreamsCreateRequestFormat =
   | StreamsCreateRequestFormatJson
   | StreamsCreateRequestFormatParquet;
-export const StreamsCreateRequestFormat = /*@__PURE__*/ S.Unknown;
+export const StreamsCreateRequestFormat = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["type", "decimalEncoding", "timestampFormat", "unstructured"],
+    ["type", "compression", "rowGroupBytes"],
+  ]),
+);
 
 export type StreamsCreateRequestHttpCorsOriginsList = string[];
 export const StreamsCreateRequestHttpCorsOriginsList = /*@__PURE__*/ S.Array(
@@ -1584,7 +1637,12 @@ export const StreamsCreateRequestSchemaFormatParquet = /*@__PURE__*/ S.suspend(
 export type StreamsCreateRequestSchemaFormat =
   | StreamsCreateRequestSchemaFormatJson
   | StreamsCreateRequestSchemaFormatParquet;
-export const StreamsCreateRequestSchemaFormat = /*@__PURE__*/ S.Unknown;
+export const StreamsCreateRequestSchemaFormat = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["type", "decimalEncoding", "timestampFormat", "unstructured"],
+    ["type", "compression", "rowGroupBytes"],
+  ]),
+);
 
 export interface StreamsCreateRequestSchema {
   fields?: StreamsCreateRequestSchemaFieldsList;
@@ -1764,7 +1822,12 @@ export const StreamsCreateResponseFormatParquet = /*@__PURE__*/ S.suspend(() =>
 export type StreamsCreateResponseFormat =
   | StreamsCreateResponseFormatJson
   | StreamsCreateResponseFormatParquet;
-export const StreamsCreateResponseFormat = /*@__PURE__*/ S.Unknown;
+export const StreamsCreateResponseFormat = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["type", "decimalEncoding", "timestampFormat", "unstructured"],
+    ["type", "compression", "rowGroupBytes"],
+  ]),
+);
 
 export type StreamsCreateResponseSchemaFieldsItemType = "int32" | (string & {});
 export const StreamsCreateResponseSchemaFieldsItemType = /*@__PURE__*/ S.String;
@@ -1888,7 +1951,12 @@ export const StreamsCreateResponseSchemaFormatParquet = /*@__PURE__*/ S.suspend(
 export type StreamsCreateResponseSchemaFormat =
   | StreamsCreateResponseSchemaFormatJson
   | StreamsCreateResponseSchemaFormatParquet;
-export const StreamsCreateResponseSchemaFormat = /*@__PURE__*/ S.Unknown;
+export const StreamsCreateResponseSchemaFormat = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["type", "decimalEncoding", "timestampFormat", "unstructured"],
+    ["type", "compression", "rowGroupBytes"],
+  ]),
+);
 
 export interface StreamsCreateResponseSchema {
   fields?: StreamsCreateResponseSchemaFieldsList;
@@ -2480,7 +2548,20 @@ export const SinksGetResponseConfigCloudflarePipelinesR2DataCatalogTablePublic =
 export type SinksGetResponseConfig =
   | SinksGetResponseConfigCloudflarePipelinesR2TablePublic
   | SinksGetResponseConfigCloudflarePipelinesR2DataCatalogTablePublic;
-export const SinksGetResponseConfig = /*@__PURE__*/ S.Unknown;
+export const SinksGetResponseConfig = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    [
+      "accountId",
+      "bucket",
+      "fileNaming",
+      "jurisdiction",
+      "partitioning",
+      "path",
+      "rollingPolicy",
+    ],
+    ["accountId", "bucket", "tableName", "namespace", "rollingPolicy"],
+  ]),
+);
 
 export type SinksGetResponseFormatJsonType = "json" | (string & {});
 export const SinksGetResponseFormatJsonType = /*@__PURE__*/ S.String;
@@ -2551,7 +2632,12 @@ export const SinksGetResponseFormatParquet = /*@__PURE__*/ S.suspend(() =>
 export type SinksGetResponseFormat =
   | SinksGetResponseFormatJson
   | SinksGetResponseFormatParquet;
-export const SinksGetResponseFormat = /*@__PURE__*/ S.Unknown;
+export const SinksGetResponseFormat = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["type", "decimalEncoding", "timestampFormat", "unstructured"],
+    ["type", "compression", "rowGroupBytes"],
+  ]),
+);
 
 export type SinksGetResponseSchemaFieldsItemType = "int32" | (string & {});
 export const SinksGetResponseSchemaFieldsItemType = /*@__PURE__*/ S.String;
@@ -2667,7 +2753,12 @@ export const SinksGetResponseSchemaFormatParquet = /*@__PURE__*/ S.suspend(() =>
 export type SinksGetResponseSchemaFormat =
   | SinksGetResponseSchemaFormatJson
   | SinksGetResponseSchemaFormatParquet;
-export const SinksGetResponseSchemaFormat = /*@__PURE__*/ S.Unknown;
+export const SinksGetResponseSchemaFormat = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["type", "decimalEncoding", "timestampFormat", "unstructured"],
+    ["type", "compression", "rowGroupBytes"],
+  ]),
+);
 
 export interface SinksGetResponseSchema {
   fields?: SinksGetResponseSchemaFieldsList;
@@ -2855,7 +2946,12 @@ export const StreamsGetResponseFormatParquet = /*@__PURE__*/ S.suspend(() =>
 export type StreamsGetResponseFormat =
   | StreamsGetResponseFormatJson
   | StreamsGetResponseFormatParquet;
-export const StreamsGetResponseFormat = /*@__PURE__*/ S.Unknown;
+export const StreamsGetResponseFormat = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["type", "decimalEncoding", "timestampFormat", "unstructured"],
+    ["type", "compression", "rowGroupBytes"],
+  ]),
+);
 
 export type StreamsGetResponseSchemaFieldsItemType = "int32" | (string & {});
 export const StreamsGetResponseSchemaFieldsItemType = /*@__PURE__*/ S.String;
@@ -2974,7 +3070,12 @@ export const StreamsGetResponseSchemaFormatParquet = /*@__PURE__*/ S.suspend(
 export type StreamsGetResponseSchemaFormat =
   | StreamsGetResponseSchemaFormatJson
   | StreamsGetResponseSchemaFormatParquet;
-export const StreamsGetResponseSchemaFormat = /*@__PURE__*/ S.Unknown;
+export const StreamsGetResponseSchemaFormat = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["type", "decimalEncoding", "timestampFormat", "unstructured"],
+    ["type", "compression", "rowGroupBytes"],
+  ]),
+);
 
 export interface StreamsGetResponseSchema {
   fields?: StreamsGetResponseSchemaFieldsList;
@@ -3512,7 +3613,20 @@ export const SinksListResultItemConfigCloudflarePipelinesR2DataCatalogTablePubli
 export type SinksListResultItemConfig =
   | SinksListResultItemConfigCloudflarePipelinesR2TablePublic
   | SinksListResultItemConfigCloudflarePipelinesR2DataCatalogTablePublic;
-export const SinksListResultItemConfig = /*@__PURE__*/ S.Unknown;
+export const SinksListResultItemConfig = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    [
+      "accountId",
+      "bucket",
+      "fileNaming",
+      "jurisdiction",
+      "partitioning",
+      "path",
+      "rollingPolicy",
+    ],
+    ["accountId", "bucket", "tableName", "namespace", "rollingPolicy"],
+  ]),
+);
 
 export type SinksListResultItemFormatJsonType = "json" | (string & {});
 export const SinksListResultItemFormatJsonType = /*@__PURE__*/ S.String;
@@ -3586,7 +3700,12 @@ export const SinksListResultItemFormatParquet = /*@__PURE__*/ S.suspend(() =>
 export type SinksListResultItemFormat =
   | SinksListResultItemFormatJson
   | SinksListResultItemFormatParquet;
-export const SinksListResultItemFormat = /*@__PURE__*/ S.Unknown;
+export const SinksListResultItemFormat = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["type", "decimalEncoding", "timestampFormat", "unstructured"],
+    ["type", "compression", "rowGroupBytes"],
+  ]),
+);
 
 export type SinksListResultItemSchemaFieldsItemType = "int32" | (string & {});
 export const SinksListResultItemSchemaFieldsItemType = /*@__PURE__*/ S.String;
@@ -3708,7 +3827,12 @@ export const SinksListResultItemSchemaFormatParquet = /*@__PURE__*/ S.suspend(
 export type SinksListResultItemSchemaFormat =
   | SinksListResultItemSchemaFormatJson
   | SinksListResultItemSchemaFormatParquet;
-export const SinksListResultItemSchemaFormat = /*@__PURE__*/ S.Unknown;
+export const SinksListResultItemSchemaFormat = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["type", "decimalEncoding", "timestampFormat", "unstructured"],
+    ["type", "compression", "rowGroupBytes"],
+  ]),
+);
 
 export interface SinksListResultItemSchema {
   fields?: SinksListResultItemSchemaFieldsList;
@@ -3922,7 +4046,12 @@ export const StreamsListResultItemFormatParquet = /*@__PURE__*/ S.suspend(() =>
 export type StreamsListResultItemFormat =
   | StreamsListResultItemFormatJson
   | StreamsListResultItemFormatParquet;
-export const StreamsListResultItemFormat = /*@__PURE__*/ S.Unknown;
+export const StreamsListResultItemFormat = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["type", "decimalEncoding", "timestampFormat", "unstructured"],
+    ["type", "compression", "rowGroupBytes"],
+  ]),
+);
 
 export type StreamsListResultItemSchemaFieldsItemType = "int32" | (string & {});
 export const StreamsListResultItemSchemaFieldsItemType = /*@__PURE__*/ S.String;
@@ -4046,7 +4175,12 @@ export const StreamsListResultItemSchemaFormatParquet = /*@__PURE__*/ S.suspend(
 export type StreamsListResultItemSchemaFormat =
   | StreamsListResultItemSchemaFormatJson
   | StreamsListResultItemSchemaFormatParquet;
-export const StreamsListResultItemSchemaFormat = /*@__PURE__*/ S.Unknown;
+export const StreamsListResultItemSchemaFormat = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["type", "decimalEncoding", "timestampFormat", "unstructured"],
+    ["type", "compression", "rowGroupBytes"],
+  ]),
+);
 
 export interface StreamsListResultItemSchema {
   fields?: StreamsListResultItemSchemaFieldsList;
@@ -4383,7 +4517,12 @@ export const StreamsUpdateResponseFormatParquet = /*@__PURE__*/ S.suspend(() =>
 export type StreamsUpdateResponseFormat =
   | StreamsUpdateResponseFormatJson
   | StreamsUpdateResponseFormatParquet;
-export const StreamsUpdateResponseFormat = /*@__PURE__*/ S.Unknown;
+export const StreamsUpdateResponseFormat = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["type", "decimalEncoding", "timestampFormat", "unstructured"],
+    ["type", "compression", "rowGroupBytes"],
+  ]),
+);
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchStreamResponse {
