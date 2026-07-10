@@ -270,14 +270,9 @@ export const DeleteDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteDatabaseRequest",
 }) as any as S.Schema<DeleteDatabaseRequest>;
 
-export interface DeleteDatabaseResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: unknown;
-}
+export type DeleteDatabaseResponse = unknown;
 export const DeleteDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.Unknown.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "DeleteDatabaseResponse",
 }) as any as S.Schema<DeleteDatabaseResponse>;

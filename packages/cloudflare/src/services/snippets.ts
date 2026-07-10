@@ -83,14 +83,9 @@ export const DeleteRuleRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteRuleRequest",
 }) as any as S.Schema<DeleteRuleRequest>;
 
-export interface DeleteRuleResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: unknown;
-}
+export type DeleteRuleResponse = unknown;
 export const DeleteRuleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.Unknown.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "DeleteRuleResponse",
 }) as any as S.Schema<DeleteRuleResponse>;
@@ -118,14 +113,9 @@ export const DeleteSnippetRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteSnippetRequest",
 }) as any as S.Schema<DeleteSnippetRequest>;
 
-export interface DeleteSnippetResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: unknown;
-}
+export type DeleteSnippetResponse = unknown;
 export const DeleteSnippetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.Unknown.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "DeleteSnippetResponse",
 }) as any as S.Schema<DeleteSnippetResponse>;
@@ -178,14 +168,9 @@ export const GetRuleRequest = /*@__PURE__*/ S.suspend(() =>
     .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "GetRuleRequest" }) as any as S.Schema<GetRuleRequest>;
 
-export interface GetRuleResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: unknown;
-}
+export type GetRuleResponse = unknown;
 export const GetRuleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.Unknown.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "GetRuleResponse",
 }) as any as S.Schema<GetRuleResponse>;
@@ -343,14 +328,9 @@ export const PutRuleRequest = /*@__PURE__*/ S.suspend(() =>
     .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "PutRuleRequest" }) as any as S.Schema<PutRuleRequest>;
 
-export interface PutRuleResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: unknown;
-}
+export type PutRuleResponse = unknown;
 export const PutRuleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.Unknown.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "PutRuleResponse",
 }) as any as S.Schema<PutRuleResponse>;
@@ -417,14 +397,9 @@ export const RulesListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "RulesListRequest",
 }) as any as S.Schema<RulesListRequest>;
 
-export interface RulesListResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: unknown;
-}
+export type RulesListResponse = unknown;
 export const RulesListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.Unknown.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "RulesListResponse",
 }) as any as S.Schema<RulesListResponse>;

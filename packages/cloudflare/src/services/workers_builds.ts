@@ -673,14 +673,9 @@ export const BuildsListResultList = /*@__PURE__*/ S.Array(
   BuildsListResultItem,
 ) as any as S.Schema<BuildsListResultList>;
 
-export interface BuildsListResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: BuildsListResultList;
-}
+export type BuildsListResponse = BuildsListResultList;
 export const BuildsListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(BuildsListResultList.pipe(T.EnvelopePayload())),
-  }),
+  BuildsListResultList.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "BuildsListResponse",
 }) as any as S.Schema<BuildsListResponse>;
@@ -966,14 +961,9 @@ export const DeployHooksListResultList = /*@__PURE__*/ S.Array(
   DeployHooksListResultItem,
 ) as any as S.Schema<DeployHooksListResultList>;
 
-export interface DeployHooksListResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: DeployHooksListResultList;
-}
+export type DeployHooksListResponse = DeployHooksListResultList;
 export const DeployHooksListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(DeployHooksListResultList.pipe(T.EnvelopePayload())),
-  }),
+  DeployHooksListResultList.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "DeployHooksListResponse",
 }) as any as S.Schema<DeployHooksListResponse>;
@@ -1315,14 +1305,9 @@ export const ReposConnectionsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ReposConnectionsDeleteRequest",
 }) as any as S.Schema<ReposConnectionsDeleteRequest>;
 
-export interface ReposConnectionsDeleteResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: unknown;
-}
+export type ReposConnectionsDeleteResponse = unknown;
 export const ReposConnectionsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }),
+  S.Unknown.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "ReposConnectionsDeleteResponse",
 }) as any as S.Schema<ReposConnectionsDeleteResponse>;
@@ -1475,14 +1460,9 @@ export const TokensDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "TokensDeleteRequest",
 }) as any as S.Schema<TokensDeleteRequest>;
 
-export interface TokensDeleteResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: unknown;
-}
+export type TokensDeleteResponse = unknown;
 export const TokensDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }),
+  S.Unknown.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "TokensDeleteResponse",
 }) as any as S.Schema<TokensDeleteResponse>;
@@ -1534,14 +1514,9 @@ export const TokensListResultList = /*@__PURE__*/ S.Array(
   TokensListResultItem,
 ) as any as S.Schema<TokensListResultList>;
 
-export interface TokensListResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: TokensListResultList;
-}
+export type TokensListResponse = TokensListResultList;
 export const TokensListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(TokensListResultList.pipe(T.EnvelopePayload())),
-  }),
+  TokensListResultList.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "TokensListResponse",
 }) as any as S.Schema<TokensListResponse>;
@@ -1874,14 +1849,9 @@ export const TriggersDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "TriggersDeleteRequest",
 }) as any as S.Schema<TriggersDeleteRequest>;
 
-export interface TriggersDeleteResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: unknown;
-}
+export type TriggersDeleteResponse = unknown;
 export const TriggersDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }),
+  S.Unknown.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "TriggersDeleteResponse",
 }) as any as S.Schema<TriggersDeleteResponse>;
@@ -1913,15 +1883,10 @@ export const TriggersEnvironmentVariablesDeleteRequest =
     identifier: "TriggersEnvironmentVariablesDeleteRequest",
   }) as any as S.Schema<TriggersEnvironmentVariablesDeleteRequest>;
 
-export interface TriggersEnvironmentVariablesDeleteResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: unknown;
-}
+export type TriggersEnvironmentVariablesDeleteResponse = unknown;
 export const TriggersEnvironmentVariablesDeleteResponse =
   /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-    }),
+    S.Unknown.pipe(T.EnvelopePayloadRoot()),
   ).annotate({
     identifier: "TriggersEnvironmentVariablesDeleteResponse",
   }) as any as S.Schema<TriggersEnvironmentVariablesDeleteResponse>;
@@ -1956,17 +1921,10 @@ export const TriggersEnvironmentVariablesListResultMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<TriggersEnvironmentVariablesListResultMap>;
 
-export interface TriggersEnvironmentVariablesListResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: TriggersEnvironmentVariablesListResultMap;
-}
+export type TriggersEnvironmentVariablesListResponse =
+  TriggersEnvironmentVariablesListResultMap;
 export const TriggersEnvironmentVariablesListResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      result: S.optional(
-        TriggersEnvironmentVariablesListResultMap.pipe(T.EnvelopePayload()),
-      ),
-    }),
+  () => TriggersEnvironmentVariablesListResultMap.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "TriggersEnvironmentVariablesListResponse",
 }) as any as S.Schema<TriggersEnvironmentVariablesListResponse>;
@@ -2013,17 +1971,11 @@ export const TriggersEnvironmentVariablesUpsertResultMap =
     S.Unknown,
   ) as any as S.Schema<TriggersEnvironmentVariablesUpsertResultMap>;
 
-export interface TriggersEnvironmentVariablesUpsertResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: TriggersEnvironmentVariablesUpsertResultMap;
-}
+export type TriggersEnvironmentVariablesUpsertResponse =
+  TriggersEnvironmentVariablesUpsertResultMap;
 export const TriggersEnvironmentVariablesUpsertResponse =
   /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      result: S.optional(
-        TriggersEnvironmentVariablesUpsertResultMap.pipe(T.EnvelopePayload()),
-      ),
-    }),
+    TriggersEnvironmentVariablesUpsertResultMap.pipe(T.EnvelopePayloadRoot()),
   ).annotate({
     identifier: "TriggersEnvironmentVariablesUpsertResponse",
   }) as any as S.Schema<TriggersEnvironmentVariablesUpsertResponse>;
@@ -2182,14 +2134,9 @@ export const TriggersListResultList = /*@__PURE__*/ S.Array(
   TriggersListResultItem,
 ) as any as S.Schema<TriggersListResultList>;
 
-export interface TriggersListResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: TriggersListResultList;
-}
+export type TriggersListResponse = TriggersListResultList;
 export const TriggersListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(TriggersListResultList.pipe(T.EnvelopePayload())),
-  }),
+  TriggersListResultList.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "TriggersListResponse",
 }) as any as S.Schema<TriggersListResponse>;
@@ -2215,14 +2162,9 @@ export const TriggersPurgeCacheRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "TriggersPurgeCacheRequest",
 }) as any as S.Schema<TriggersPurgeCacheRequest>;
 
-export interface TriggersPurgeCacheResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: unknown;
-}
+export type TriggersPurgeCacheResponse = unknown;
 export const TriggersPurgeCacheResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }),
+  S.Unknown.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "TriggersPurgeCacheResponse",
 }) as any as S.Schema<TriggersPurgeCacheResponse>;

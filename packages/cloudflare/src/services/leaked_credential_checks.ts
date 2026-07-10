@@ -147,14 +147,9 @@ export const DeleteDetectionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteDetectionRequest",
 }) as any as S.Schema<DeleteDetectionRequest>;
 
-export interface DeleteDetectionResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: unknown;
-}
+export type DeleteDetectionResponse = unknown;
 export const DeleteDetectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }),
+  S.Unknown.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "DeleteDetectionResponse",
 }) as any as S.Schema<DeleteDetectionResponse>;

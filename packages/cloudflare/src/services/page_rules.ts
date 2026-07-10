@@ -567,14 +567,9 @@ export const ListResultList = /*@__PURE__*/ S.Array(
   ListResultItem,
 ) as any as S.Schema<ListResultList>;
 
-export interface ListPageRulesResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: ListResultList;
-}
+export type ListPageRulesResponse = ListResultList;
 export const ListPageRulesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(ListResultList.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  ListResultList.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "ListPageRulesResponse",
 }) as any as S.Schema<ListPageRulesResponse>;

@@ -129,6 +129,20 @@ export const formDataFileSymbol = Symbol.for(
  */
 export const FormDataFile = () => makeAnnotation(formDataFileSymbol, true);
 
+export const envelopePayloadRootSymbol = Symbol.for(
+  "@distilled.cloud/cloudflare/envelope-payload-root",
+);
+
+/**
+ * Marks a response schema whose ENTIRE value is the envelope's `result`
+ * payload (used when `result` is an array or scalar — e.g. worker script
+ * search returns a bare array). The protocol returns `result` directly
+ * instead of wrapping it in `{ result: ... }`, matching how distilled types
+ * these responses.
+ */
+export const EnvelopePayloadRoot = () =>
+  makeAnnotation(envelopePayloadRootSymbol, true);
+
 export const resultInfoSymbol = Symbol.for(
   "@distilled.cloud/cloudflare/result-info",
 );

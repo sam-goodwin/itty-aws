@@ -1041,16 +1041,9 @@ export const DestinationsEligibleGetResultMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DestinationsEligibleGetResultMap>;
 
-export interface GetDestinationEligibleResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: DestinationsEligibleGetResultMap;
-}
+export type GetDestinationEligibleResponse = DestinationsEligibleGetResultMap;
 export const GetDestinationEligibleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(
-      DestinationsEligibleGetResultMap.pipe(T.EnvelopePayload()),
-    ),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  DestinationsEligibleGetResultMap.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "GetDestinationEligibleResponse",
 }) as any as S.Schema<GetDestinationEligibleResponse>;
@@ -1897,14 +1890,9 @@ export const AvailableAlertsListResultMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<AvailableAlertsListResultMap>;
 
-export interface ListAvailableAlertsResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: AvailableAlertsListResultMap;
-}
+export type ListAvailableAlertsResponse = AvailableAlertsListResultMap;
 export const ListAvailableAlertsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(AvailableAlertsListResultMap.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  AvailableAlertsListResultMap.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "ListAvailableAlertsResponse",
 }) as any as S.Schema<ListAvailableAlertsResponse>;

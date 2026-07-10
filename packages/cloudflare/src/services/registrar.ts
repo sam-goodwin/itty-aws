@@ -192,14 +192,9 @@ export const GetDomainRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetDomainRequest",
 }) as any as S.Schema<GetDomainRequest>;
 
-export interface GetDomainResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: unknown;
-}
+export type GetDomainResponse = unknown;
 export const GetDomainResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.Unknown.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "GetDomainResponse",
 }) as any as S.Schema<GetDomainResponse>;
@@ -649,14 +644,9 @@ export const PutDomainRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutDomainRequest",
 }) as any as S.Schema<PutDomainRequest>;
 
-export interface PutDomainResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: unknown;
-}
+export type PutDomainResponse = unknown;
 export const PutDomainResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.Unknown.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "PutDomainResponse",
 }) as any as S.Schema<PutDomainResponse>;
@@ -1117,14 +1107,9 @@ export const RegistrationsListResultList = /*@__PURE__*/ S.Array(
   RegistrationsListResultItem,
 ) as any as S.Schema<RegistrationsListResultList>;
 
-export interface RegistrationsListResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: RegistrationsListResultList;
-}
+export type RegistrationsListResponse = RegistrationsListResultList;
 export const RegistrationsListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(RegistrationsListResultList.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  RegistrationsListResultList.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "RegistrationsListResponse",
 }) as any as S.Schema<RegistrationsListResponse>;

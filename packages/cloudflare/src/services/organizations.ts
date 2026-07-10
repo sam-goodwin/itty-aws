@@ -419,14 +419,9 @@ export const BillingUsageGetResultList = /*@__PURE__*/ S.Array(
   BillingUsageGetResultItem,
 ) as any as S.Schema<BillingUsageGetResultList>;
 
-export interface GetBillingUsageResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: BillingUsageGetResultList;
-}
+export type GetBillingUsageResponse = BillingUsageGetResultList;
 export const GetBillingUsageResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(BillingUsageGetResultList.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  BillingUsageGetResultList.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "GetBillingUsageResponse",
 }) as any as S.Schema<GetBillingUsageResponse>;
@@ -1278,14 +1273,9 @@ export const MembersListResultList = /*@__PURE__*/ S.Array(
   MembersListResultItem,
 ) as any as S.Schema<MembersListResultList>;
 
-export interface MembersListResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: MembersListResultList;
-}
+export type MembersListResponse = MembersListResultList;
 export const MembersListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(MembersListResultList.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  MembersListResultList.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "MembersListResponse",
 }) as any as S.Schema<MembersListResponse>;
@@ -1397,16 +1387,9 @@ export const OrganizationAccountsGetResultList = /*@__PURE__*/ S.Array(
   OrganizationAccountsGetResultItem,
 ) as any as S.Schema<OrganizationAccountsGetResultList>;
 
-export interface OrganizationAccountsGetResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: OrganizationAccountsGetResultList;
-}
+export type OrganizationAccountsGetResponse = OrganizationAccountsGetResultList;
 export const OrganizationAccountsGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(
-      OrganizationAccountsGetResultList.pipe(T.EnvelopePayload()),
-    ),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  OrganizationAccountsGetResultList.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "OrganizationAccountsGetResponse",
 }) as any as S.Schema<OrganizationAccountsGetResponse>;

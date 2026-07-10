@@ -953,14 +953,9 @@ export const CreateBillingSpendingLimitRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateBillingSpendingLimitRequest",
 }) as any as S.Schema<CreateBillingSpendingLimitRequest>;
 
-export interface CreateBillingSpendingLimitResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: unknown;
-}
+export type CreateBillingSpendingLimitResponse = unknown;
 export const CreateBillingSpendingLimitResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.Unknown.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "CreateBillingSpendingLimitResponse",
 }) as any as S.Schema<CreateBillingSpendingLimitResponse>;
@@ -2823,14 +2818,9 @@ export const DeleteBillingSpendingLimitRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteBillingSpendingLimitRequest",
 }) as any as S.Schema<DeleteBillingSpendingLimitRequest>;
 
-export interface DeleteBillingSpendingLimitResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: unknown;
-}
+export type DeleteBillingSpendingLimitResponse = unknown;
 export const DeleteBillingSpendingLimitResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.Unknown.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "DeleteBillingSpendingLimitResponse",
 }) as any as S.Schema<DeleteBillingSpendingLimitResponse>;
@@ -2854,14 +2844,9 @@ export const DeleteBillingTopupConfigRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteBillingTopupConfigRequest",
 }) as any as S.Schema<DeleteBillingTopupConfigRequest>;
 
-export interface DeleteBillingTopupConfigResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: unknown;
-}
+export type DeleteBillingTopupConfigResponse = unknown;
 export const DeleteBillingTopupConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.Unknown.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "DeleteBillingTopupConfigResponse",
 }) as any as S.Schema<DeleteBillingTopupConfigResponse>;
@@ -3410,13 +3395,9 @@ export const DeleteProviderConfigRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteProviderConfigRequest",
 }) as any as S.Schema<DeleteProviderConfigRequest>;
 
-export interface DeleteProviderConfigResponse {
-  result?: unknown;
-}
+export type DeleteProviderConfigResponse = unknown;
 export const DeleteProviderConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.Unknown.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "DeleteProviderConfigResponse",
 }) as any as S.Schema<DeleteProviderConfigResponse>;
@@ -4662,14 +4643,9 @@ export const GetUrlRequest = /*@__PURE__*/ S.suspend(() =>
     .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "GetUrlRequest" }) as any as S.Schema<GetUrlRequest>;
 
-export interface GetUrlResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: string;
-}
+export type GetUrlResponse = string;
 export const GetUrlResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.String.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.String.pipe(T.EnvelopePayloadRoot()),
 ).annotate({ identifier: "GetUrlResponse" }) as any as S.Schema<GetUrlResponse>;
 
 export interface GetVersionDynamicRoutingRequest {
@@ -7049,14 +7025,9 @@ export const PatchLogRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchLogRequest",
 }) as any as S.Schema<PatchLogRequest>;
 
-export interface PatchLogResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: unknown;
-}
+export type PatchLogResponse = unknown;
 export const PatchLogResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.Unknown.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "PatchLogResponse",
 }) as any as S.Schema<PatchLogResponse>;

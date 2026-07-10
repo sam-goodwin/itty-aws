@@ -63,6 +63,7 @@ import {
   UnknownCloudflareError,
 } from "./errors.ts";
 import {
+  envelopePayloadRootSymbol,
   envelopePayloadSymbol,
   formDataFileSymbol,
   getErrorMatchers,
@@ -698,10 +699,17 @@ const makeDecode =
       const payload = ("result" in json ? json.result : json) as
         | Record<string, unknown>
         | unknown;
-      const result: Record<string, unknown> = {};
       const rootDict = getAnn(outputAst, keyDictionarySymbol) as
         | Record<string, string>
         | undefined;
+
+      // Bare-payload response: the whole value IS the envelope's `result`
+      // (array/scalar), returned directly rather than wrapped in a struct.
+      if (getAnn(outputAst, envelopePayloadRootSymbol) !== undefined) {
+        return mapKeys(outputAst, payload, "decode", rootDict);
+      }
+
+      const result: Record<string, unknown> = {};
 
       for (const prop of getProps(outputAst)) {
         const key = String(prop.name);

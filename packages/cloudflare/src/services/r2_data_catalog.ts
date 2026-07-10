@@ -112,14 +112,9 @@ export const CreateCredentialRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateCredentialRequest",
 }) as any as S.Schema<CreateCredentialRequest>;
 
-export interface CreateCredentialResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: unknown;
-}
+export type CreateCredentialResponse = unknown;
 export const CreateCredentialResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.Unknown.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "CreateCredentialResponse",
 }) as any as S.Schema<CreateCredentialResponse>;

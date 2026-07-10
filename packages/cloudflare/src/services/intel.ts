@@ -338,17 +338,10 @@ export const AttackSurfaceReportIssuesClassResultList = /*@__PURE__*/ S.Array(
   AttackSurfaceReportIssuesClassResultItem,
 ) as any as S.Schema<AttackSurfaceReportIssuesClassResultList>;
 
-export interface ClassAttackSurfaceReportIssueResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: AttackSurfaceReportIssuesClassResultList;
-}
+export type ClassAttackSurfaceReportIssueResponse =
+  AttackSurfaceReportIssuesClassResultList;
 export const ClassAttackSurfaceReportIssueResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      result: S.optional(
-        AttackSurfaceReportIssuesClassResultList.pipe(T.EnvelopePayload()),
-      ),
-    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  () => AttackSurfaceReportIssuesClassResultList.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "ClassAttackSurfaceReportIssueResponse",
 }) as any as S.Schema<ClassAttackSurfaceReportIssueResponse>;
@@ -677,14 +670,9 @@ export const GetAsnRequest = /*@__PURE__*/ S.suspend(() =>
     .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "GetAsnRequest" }) as any as S.Schema<GetAsnRequest>;
 
-export interface GetAsnResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: unknown;
-}
+export type GetAsnResponse = unknown;
 export const GetAsnResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.Unknown.pipe(T.EnvelopePayloadRoot()),
 ).annotate({ identifier: "GetAsnResponse" }) as any as S.Schema<GetAsnResponse>;
 
 export interface GetAsnSubnetRequest {
@@ -1217,14 +1205,9 @@ export const DomainsBulksGetResultList = /*@__PURE__*/ S.Array(
   DomainsBulksGetResultItem,
 ) as any as S.Schema<DomainsBulksGetResultList>;
 
-export interface GetDomainBulkResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: DomainsBulksGetResultList;
-}
+export type GetDomainBulkResponse = DomainsBulksGetResultList;
 export const GetDomainBulkResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(DomainsBulksGetResultList.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  DomainsBulksGetResultList.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "GetDomainBulkResponse",
 }) as any as S.Schema<GetDomainBulkResponse>;
@@ -1315,14 +1298,9 @@ export const DomainHistoryGetResultList = /*@__PURE__*/ S.Array(
   DomainHistoryGetResultItem,
 ) as any as S.Schema<DomainHistoryGetResultList>;
 
-export interface GetDomainHistoryResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: DomainHistoryGetResultList;
-}
+export type GetDomainHistoryResponse = DomainHistoryGetResultList;
 export const GetDomainHistoryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(DomainHistoryGetResultList.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  DomainHistoryGetResultList.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "GetDomainHistoryResponse",
 }) as any as S.Schema<GetDomainHistoryResponse>;
@@ -1596,14 +1574,9 @@ export const IpsGetResultList = /*@__PURE__*/ S.Array(
   IpsGetResultItem,
 ) as any as S.Schema<IpsGetResultList>;
 
-export interface GetIpResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: IpsGetResultList;
-}
+export type GetIpResponse = IpsGetResultList;
 export const GetIpResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(IpsGetResultList.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  IpsGetResultList.pipe(T.EnvelopePayloadRoot()),
 ).annotate({ identifier: "GetIpResponse" }) as any as S.Schema<GetIpResponse>;
 
 export interface GetWhoiRequest {
@@ -2251,17 +2224,10 @@ export const IndicatorFeedsPermissionsListResultList = /*@__PURE__*/ S.Array(
   IndicatorFeedsPermissionsListResultItem,
 ) as any as S.Schema<IndicatorFeedsPermissionsListResultList>;
 
-export interface ListIndicatorFeedPermissionsResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: IndicatorFeedsPermissionsListResultList;
-}
+export type ListIndicatorFeedPermissionsResponse =
+  IndicatorFeedsPermissionsListResultList;
 export const ListIndicatorFeedPermissionsResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      result: S.optional(
-        IndicatorFeedsPermissionsListResultList.pipe(T.EnvelopePayload()),
-      ),
-    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  () => IndicatorFeedsPermissionsListResultList.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "ListIndicatorFeedPermissionsResponse",
 }) as any as S.Schema<ListIndicatorFeedPermissionsResponse>;
@@ -2610,17 +2576,11 @@ export const AttackSurfaceReportIssuesSeverityResultList =
     AttackSurfaceReportIssuesSeverityResultItem,
   ) as any as S.Schema<AttackSurfaceReportIssuesSeverityResultList>;
 
-export interface SeverityAttackSurfaceReportIssueResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: AttackSurfaceReportIssuesSeverityResultList;
-}
+export type SeverityAttackSurfaceReportIssueResponse =
+  AttackSurfaceReportIssuesSeverityResultList;
 export const SeverityAttackSurfaceReportIssueResponse = /*@__PURE__*/ S.suspend(
   () =>
-    S.Struct({
-      result: S.optional(
-        AttackSurfaceReportIssuesSeverityResultList.pipe(T.EnvelopePayload()),
-      ),
-    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+    AttackSurfaceReportIssuesSeverityResultList.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "SeverityAttackSurfaceReportIssueResponse",
 }) as any as S.Schema<SeverityAttackSurfaceReportIssueResponse>;
@@ -2781,17 +2741,10 @@ export const AttackSurfaceReportIssuesTypeResultList = /*@__PURE__*/ S.Array(
   AttackSurfaceReportIssuesTypeResultItem,
 ) as any as S.Schema<AttackSurfaceReportIssuesTypeResultList>;
 
-export interface TypeAttackSurfaceReportIssueResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: AttackSurfaceReportIssuesTypeResultList;
-}
+export type TypeAttackSurfaceReportIssueResponse =
+  AttackSurfaceReportIssuesTypeResultList;
 export const TypeAttackSurfaceReportIssueResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      result: S.optional(
-        AttackSurfaceReportIssuesTypeResultList.pipe(T.EnvelopePayload()),
-      ),
-    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  () => AttackSurfaceReportIssuesTypeResultList.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "TypeAttackSurfaceReportIssueResponse",
 }) as any as S.Schema<TypeAttackSurfaceReportIssueResponse>;

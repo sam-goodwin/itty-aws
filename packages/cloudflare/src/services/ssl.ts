@@ -208,14 +208,9 @@ export const CreateAnalyzeRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateAnalyzeRequest",
 }) as any as S.Schema<CreateAnalyzeRequest>;
 
-export interface CreateAnalyzeResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: unknown;
-}
+export type CreateAnalyzeResponse = unknown;
 export const CreateAnalyzeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.Unknown.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "CreateAnalyzeResponse",
 }) as any as S.Schema<CreateAnalyzeResponse>;
@@ -1271,14 +1266,9 @@ export const VerificationGetResultList = /*@__PURE__*/ S.Array(
   VerificationGetResultItem,
 ) as any as S.Schema<VerificationGetResultList>;
 
-export interface GetVerificationResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: VerificationGetResultList;
-}
+export type GetVerificationResponse = VerificationGetResultList;
 export const GetVerificationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(VerificationGetResultList.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  VerificationGetResultList.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "GetVerificationResponse",
 }) as any as S.Schema<GetVerificationResponse>;

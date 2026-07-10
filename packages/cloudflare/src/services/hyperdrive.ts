@@ -329,14 +329,9 @@ export const DeleteConfigRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteConfigRequest",
 }) as any as S.Schema<DeleteConfigRequest>;
 
-export interface DeleteConfigResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: unknown;
-}
+export type DeleteConfigResponse = unknown;
 export const DeleteConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.Unknown.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "DeleteConfigResponse",
 }) as any as S.Schema<DeleteConfigResponse>;

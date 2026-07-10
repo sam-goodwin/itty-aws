@@ -1542,14 +1542,9 @@ export const DeleteScanConfigRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteScanConfigRequest",
 }) as any as S.Schema<DeleteScanConfigRequest>;
 
-export interface DeleteScanConfigResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: unknown;
-}
+export type DeleteScanConfigResponse = unknown;
 export const DeleteScanConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.Unknown.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "DeleteScanConfigResponse",
 }) as any as S.Schema<DeleteScanConfigResponse>;
@@ -2509,16 +2504,10 @@ export const ThreatEventsCountriesListResultList = /*@__PURE__*/ S.Array(
   ThreatEventsCountriesListResultItem,
 ) as any as S.Schema<ThreatEventsCountriesListResultList>;
 
-export interface ListThreatEventCountriesResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: ThreatEventsCountriesListResultList;
-}
+export type ListThreatEventCountriesResponse =
+  ThreatEventsCountriesListResultList;
 export const ListThreatEventCountriesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(
-      ThreatEventsCountriesListResultList.pipe(T.EnvelopePayload()),
-    ),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  ThreatEventsCountriesListResultList.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "ListThreatEventCountriesResponse",
 }) as any as S.Schema<ListThreatEventCountriesResponse>;
@@ -3415,14 +3404,9 @@ export const RequestsAssetsGetResultList = /*@__PURE__*/ S.Array(
   RequestsAssetsGetResultItem,
 ) as any as S.Schema<RequestsAssetsGetResultList>;
 
-export interface RequestsAssetsGetResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: RequestsAssetsGetResultList;
-}
+export type RequestsAssetsGetResponse = RequestsAssetsGetResultList;
 export const RequestsAssetsGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(RequestsAssetsGetResultList.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  RequestsAssetsGetResultList.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "RequestsAssetsGetResponse",
 }) as any as S.Schema<RequestsAssetsGetResponse>;
@@ -3664,14 +3648,9 @@ export const RequestsListResultList = /*@__PURE__*/ S.Array(
   RequestsListResultItem,
 ) as any as S.Schema<RequestsListResultList>;
 
-export interface RequestsListResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: RequestsListResultList;
-}
+export type RequestsListResponse = RequestsListResultList;
 export const RequestsListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(RequestsListResultList.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  RequestsListResultList.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "RequestsListResponse",
 }) as any as S.Schema<RequestsListResponse>;
@@ -3740,14 +3719,9 @@ export const RequestsTypesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "RequestsTypesRequest",
 }) as any as S.Schema<RequestsTypesRequest>;
 
-export interface RequestsTypesResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: unknown;
-}
+export type RequestsTypesResponse = unknown;
 export const RequestsTypesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.Unknown.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "RequestsTypesResponse",
 }) as any as S.Schema<RequestsTypesResponse>;

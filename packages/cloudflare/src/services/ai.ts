@@ -1059,14 +1059,9 @@ export const RunResultList = /*@__PURE__*/ S.Array(
   RunResultItem,
 ) as any as S.Schema<RunResultList>;
 
-export interface RunAiResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: RunResultList;
-}
+export type RunAiResponse = RunResultList;
 export const RunAiResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(RunResultList.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  RunResultList.pipe(T.EnvelopePayloadRoot()),
 ).annotate({ identifier: "RunAiResponse" }) as any as S.Schema<RunAiResponse>;
 
 export interface SupportedToMarkdownRequest {
@@ -1164,14 +1159,9 @@ export const ToMarkdownTransformResultList = /*@__PURE__*/ S.Array(
   ToMarkdownTransformResultItem,
 ) as any as S.Schema<ToMarkdownTransformResultList>;
 
-export interface TransformToMarkdownResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: ToMarkdownTransformResultList;
-}
+export type TransformToMarkdownResponse = ToMarkdownTransformResultList;
 export const TransformToMarkdownResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(ToMarkdownTransformResultList.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  ToMarkdownTransformResultList.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "TransformToMarkdownResponse",
 }) as any as S.Schema<TransformToMarkdownResponse>;

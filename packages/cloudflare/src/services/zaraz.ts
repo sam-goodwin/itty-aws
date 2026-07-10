@@ -60,14 +60,9 @@ export const CreatePublishRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreatePublishRequest",
 }) as any as S.Schema<CreatePublishRequest>;
 
-export interface CreatePublishResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: string;
-}
+export type CreatePublishResponse = string;
 export const CreatePublishResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.String.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.String.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "CreatePublishResponse",
 }) as any as S.Schema<CreatePublishResponse>;
@@ -984,14 +979,9 @@ export const HistoryConfigsGetResultMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<HistoryConfigsGetResultMap>;
 
-export interface GetHistoryConfigResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: HistoryConfigsGetResultMap;
-}
+export type GetHistoryConfigResponse = HistoryConfigsGetResultMap;
 export const GetHistoryConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(HistoryConfigsGetResultMap.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  HistoryConfigsGetResultMap.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "GetHistoryConfigResponse",
 }) as any as S.Schema<GetHistoryConfigResponse>;
@@ -1016,14 +1006,9 @@ export const GetWorkflowRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetWorkflowRequest",
 }) as any as S.Schema<GetWorkflowRequest>;
 
-export interface GetWorkflowResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: unknown;
-}
+export type GetWorkflowResponse = unknown;
 export const GetWorkflowResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.Unknown.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "GetWorkflowResponse",
 }) as any as S.Schema<GetWorkflowResponse>;
@@ -1992,14 +1977,9 @@ export const PutZarazRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutZarazRequest",
 }) as any as S.Schema<PutZarazRequest>;
 
-export interface PutZarazResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: unknown;
-}
+export type PutZarazResponse = unknown;
 export const PutZarazResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.Unknown.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "PutZarazResponse",
 }) as any as S.Schema<PutZarazResponse>;

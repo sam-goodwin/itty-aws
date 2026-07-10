@@ -504,16 +504,9 @@ export const ScriptsSecretsBulkUpdateResultMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<ScriptsSecretsBulkUpdateResultMap>;
 
-export interface BulkUpdateScriptSecretsResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: ScriptsSecretsBulkUpdateResultMap;
-}
+export type BulkUpdateScriptSecretsResponse = ScriptsSecretsBulkUpdateResultMap;
 export const BulkUpdateScriptSecretsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(
-      ScriptsSecretsBulkUpdateResultMap.pipe(T.EnvelopePayload()),
-    ),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  ScriptsSecretsBulkUpdateResultMap.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "BulkUpdateScriptSecretsResponse",
 }) as any as S.Schema<BulkUpdateScriptSecretsResponse>;
@@ -5348,14 +5341,9 @@ export const DeleteScriptRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteScriptRequest",
 }) as any as S.Schema<DeleteScriptRequest>;
 
-export interface DeleteScriptResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: unknown;
-}
+export type DeleteScriptResponse = unknown;
 export const DeleteScriptResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.Unknown.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "DeleteScriptResponse",
 }) as any as S.Schema<DeleteScriptResponse>;
@@ -5421,14 +5409,9 @@ export const DeleteScriptSecretRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteScriptSecretRequest",
 }) as any as S.Schema<DeleteScriptSecretRequest>;
 
-export interface DeleteScriptSecretResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: unknown;
-}
+export type DeleteScriptSecretResponse = unknown;
 export const DeleteScriptSecretResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.Unknown.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "DeleteScriptSecretResponse",
 }) as any as S.Schema<DeleteScriptSecretResponse>;
@@ -13627,15 +13610,10 @@ export const LiveTailHeartbeatObservabilityTelemetryRequest =
     identifier: "LiveTailHeartbeatObservabilityTelemetryRequest",
   }) as any as S.Schema<LiveTailHeartbeatObservabilityTelemetryRequest>;
 
-export interface LiveTailHeartbeatObservabilityTelemetryResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: unknown;
-}
+export type LiveTailHeartbeatObservabilityTelemetryResponse = unknown;
 export const LiveTailHeartbeatObservabilityTelemetryResponse =
   /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+    S.Unknown.pipe(T.EnvelopePayloadRoot()),
   ).annotate({
     identifier: "LiveTailHeartbeatObservabilityTelemetryResponse",
   }) as any as S.Schema<LiveTailHeartbeatObservabilityTelemetryResponse>;
@@ -20186,14 +20164,9 @@ export const ScriptsSearchResultList = /*@__PURE__*/ S.Array(
   ScriptsSearchResultItem,
 ) as any as S.Schema<ScriptsSearchResultList>;
 
-export interface SearchScriptResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: ScriptsSearchResultList;
-}
+export type SearchScriptResponse = ScriptsSearchResultList;
 export const SearchScriptResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(ScriptsSearchResultList.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  ScriptsSearchResultList.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "SearchScriptResponse",
 }) as any as S.Schema<SearchScriptResponse>;

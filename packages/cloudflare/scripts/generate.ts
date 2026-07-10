@@ -469,6 +469,27 @@ const generateModel = (
     if (doc) out.push(`/** ${doc} */`);
 
     if (d.type === "structure") {
+      // Bare-payload response: a single member tagged EnvelopePayload means
+      // `result` is an array/scalar and the whole response IS that payload
+      // (e.g. worker script search → a bare array). Emit the member's type
+      // directly + a root marker the protocol honors, matching distilled.
+      const memberEntriesAll = Object.entries(d.members ?? {});
+      if (
+        !paginatedOutputs.has(id) &&
+        memberEntriesAll.length === 1 &&
+        ENVELOPE_PAYLOAD_TRAIT in
+          ((memberEntriesAll[0]![1] as any).traits ?? {})
+      ) {
+        const [, m] = memberEntriesAll[0]! as [string, any];
+        out.push(`export type ${name} = ${tsRef(m.target)};`);
+        out.push(
+          `export const ${name} = /*@__PURE__*/ S.suspend(() =>\n` +
+            `${ref(m.target, i)}.pipe(T.EnvelopePayloadRoot()),\n` +
+            `).annotate({ identifier: ${q(name)} }) as any as S.Schema<${name}>;\n`,
+        );
+        return;
+      }
+
       // Paginated list responses always deliver their items member (the
       // protocol maps the envelope's `result`), so type it required even
       // though the docs mark `result` optional in the envelope.

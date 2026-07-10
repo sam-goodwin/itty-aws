@@ -350,14 +350,9 @@ export const UsageGetResultList = /*@__PURE__*/ S.Array(
   UsageGetResultItem,
 ) as any as S.Schema<UsageGetResultList>;
 
-export interface GetUsageResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: UsageGetResultList;
-}
+export type GetUsageResponse = UsageGetResultList;
 export const GetUsageResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(UsageGetResultList.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  UsageGetResultList.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "GetUsageResponse",
 }) as any as S.Schema<GetUsageResponse>;
@@ -447,14 +442,9 @@ export const UsagePaygoResultList = /*@__PURE__*/ S.Array(
   UsagePaygoResultItem,
 ) as any as S.Schema<UsagePaygoResultList>;
 
-export interface PaygoUsageResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: UsagePaygoResultList;
-}
+export type PaygoUsageResponse = UsagePaygoResultList;
 export const PaygoUsageResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(UsagePaygoResultList.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  UsagePaygoResultList.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "PaygoUsageResponse",
 }) as any as S.Schema<PaygoUsageResponse>;

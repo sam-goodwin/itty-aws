@@ -1072,17 +1072,10 @@ export const DiscoveryOperationsBulkEditResultMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DiscoveryOperationsBulkEditResultMap>;
 
-export interface BulkPatchDiscoveryOperationsResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: DiscoveryOperationsBulkEditResultMap;
-}
+export type BulkPatchDiscoveryOperationsResponse =
+  DiscoveryOperationsBulkEditResultMap;
 export const BulkPatchDiscoveryOperationsResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      result: S.optional(
-        DiscoveryOperationsBulkEditResultMap.pipe(T.EnvelopePayload()),
-      ),
-    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  () => DiscoveryOperationsBulkEditResultMap.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "BulkPatchDiscoveryOperationsResponse",
 }) as any as S.Schema<BulkPatchDiscoveryOperationsResponse>;

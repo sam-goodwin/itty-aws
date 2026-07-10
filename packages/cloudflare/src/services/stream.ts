@@ -1613,14 +1613,9 @@ export const DeleteAudioTrackRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteAudioTrackRequest",
 }) as any as S.Schema<DeleteAudioTrackRequest>;
 
-export interface DeleteAudioTrackResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: string;
-}
+export type DeleteAudioTrackResponse = string;
 export const DeleteAudioTrackResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.String.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.String.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "DeleteAudioTrackResponse",
 }) as any as S.Schema<DeleteAudioTrackResponse>;
@@ -1651,14 +1646,9 @@ export const DeleteCaptionLanguageRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteCaptionLanguageRequest",
 }) as any as S.Schema<DeleteCaptionLanguageRequest>;
 
-export interface DeleteCaptionLanguageResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: string;
-}
+export type DeleteCaptionLanguageResponse = string;
 export const DeleteCaptionLanguageResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.String.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.String.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "DeleteCaptionLanguageResponse",
 }) as any as S.Schema<DeleteCaptionLanguageResponse>;
@@ -1686,14 +1676,9 @@ export const DeleteDownloadRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteDownloadRequest",
 }) as any as S.Schema<DeleteDownloadRequest>;
 
-export interface DeleteDownloadResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: string;
-}
+export type DeleteDownloadResponse = string;
 export const DeleteDownloadResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.String.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.String.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "DeleteDownloadResponse",
 }) as any as S.Schema<DeleteDownloadResponse>;
@@ -1721,14 +1706,9 @@ export const DeleteKeyRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteKeyRequest",
 }) as any as S.Schema<DeleteKeyRequest>;
 
-export interface DeleteKeyResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: string;
-}
+export type DeleteKeyResponse = string;
 export const DeleteKeyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.String.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.String.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "DeleteKeyResponse",
 }) as any as S.Schema<DeleteKeyResponse>;
@@ -1849,14 +1829,9 @@ export const DeleteWatermarkRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteWatermarkRequest",
 }) as any as S.Schema<DeleteWatermarkRequest>;
 
-export interface DeleteWatermarkResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: string;
-}
+export type DeleteWatermarkResponse = string;
 export const DeleteWatermarkResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.String.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.String.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "DeleteWatermarkResponse",
 }) as any as S.Schema<DeleteWatermarkResponse>;
@@ -1881,14 +1856,9 @@ export const DeleteWebhookRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteWebhookRequest",
 }) as any as S.Schema<DeleteWebhookRequest>;
 
-export interface DeleteWebhookResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: string;
-}
+export type DeleteWebhookResponse = string;
 export const DeleteWebhookResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.String.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.String.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "DeleteWebhookResponse",
 }) as any as S.Schema<DeleteWebhookResponse>;

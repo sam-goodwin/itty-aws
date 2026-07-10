@@ -395,14 +395,9 @@ export const CreateVpcFlowTokenRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateVpcFlowTokenRequest",
 }) as any as S.Schema<CreateVpcFlowTokenRequest>;
 
-export interface CreateVpcFlowTokenResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: string;
-}
+export type CreateVpcFlowTokenResponse = string;
 export const CreateVpcFlowTokenResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.String.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.String.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "CreateVpcFlowTokenResponse",
 }) as any as S.Schema<CreateVpcFlowTokenResponse>;

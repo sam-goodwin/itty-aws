@@ -255,16 +255,10 @@ export const InsightsClassGetForAccountResultList = /*@__PURE__*/ S.Array(
   InsightsClassGetForAccountResultItem,
 ) as any as S.Schema<InsightsClassGetForAccountResultList>;
 
-export interface GetInsightClassForAccountResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: InsightsClassGetForAccountResultList;
-}
+export type GetInsightClassForAccountResponse =
+  InsightsClassGetForAccountResultList;
 export const GetInsightClassForAccountResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(
-      InsightsClassGetForAccountResultList.pipe(T.EnvelopePayload()),
-    ),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  InsightsClassGetForAccountResultList.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "GetInsightClassForAccountResponse",
 }) as any as S.Schema<GetInsightClassForAccountResponse>;
@@ -417,16 +411,9 @@ export const InsightsClassGetForZoneResultList = /*@__PURE__*/ S.Array(
   InsightsClassGetForZoneResultItem,
 ) as any as S.Schema<InsightsClassGetForZoneResultList>;
 
-export interface GetInsightClassForZoneResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: InsightsClassGetForZoneResultList;
-}
+export type GetInsightClassForZoneResponse = InsightsClassGetForZoneResultList;
 export const GetInsightClassForZoneResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(
-      InsightsClassGetForZoneResultList.pipe(T.EnvelopePayload()),
-    ),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  InsightsClassGetForZoneResultList.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "GetInsightClassForZoneResponse",
 }) as any as S.Schema<GetInsightClassForZoneResponse>;
@@ -461,14 +448,9 @@ export const InsightsContextGetResultMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<InsightsContextGetResultMap>;
 
-export interface GetInsightContextResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: InsightsContextGetResultMap;
-}
+export type GetInsightContextResponse = InsightsContextGetResultMap;
 export const GetInsightContextResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(InsightsContextGetResultMap.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  InsightsContextGetResultMap.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "GetInsightContextResponse",
 }) as any as S.Schema<GetInsightContextResponse>;
@@ -629,17 +611,10 @@ export const InsightsSeverityGetForAccountResultList = /*@__PURE__*/ S.Array(
   InsightsSeverityGetForAccountResultItem,
 ) as any as S.Schema<InsightsSeverityGetForAccountResultList>;
 
-export interface GetInsightSeverityForAccountResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: InsightsSeverityGetForAccountResultList;
-}
+export type GetInsightSeverityForAccountResponse =
+  InsightsSeverityGetForAccountResultList;
 export const GetInsightSeverityForAccountResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      result: S.optional(
-        InsightsSeverityGetForAccountResultList.pipe(T.EnvelopePayload()),
-      ),
-    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  () => InsightsSeverityGetForAccountResultList.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "GetInsightSeverityForAccountResponse",
 }) as any as S.Schema<GetInsightSeverityForAccountResponse>;
@@ -800,16 +775,10 @@ export const InsightsSeverityGetForZoneResultList = /*@__PURE__*/ S.Array(
   InsightsSeverityGetForZoneResultItem,
 ) as any as S.Schema<InsightsSeverityGetForZoneResultList>;
 
-export interface GetInsightSeverityForZoneResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: InsightsSeverityGetForZoneResultList;
-}
+export type GetInsightSeverityForZoneResponse =
+  InsightsSeverityGetForZoneResultList;
 export const GetInsightSeverityForZoneResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(
-      InsightsSeverityGetForZoneResultList.pipe(T.EnvelopePayload()),
-    ),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  InsightsSeverityGetForZoneResultList.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "GetInsightSeverityForZoneResponse",
 }) as any as S.Schema<GetInsightSeverityForZoneResponse>;
@@ -967,16 +936,10 @@ export const InsightsTypeGetForAccountResultList = /*@__PURE__*/ S.Array(
   InsightsTypeGetForAccountResultItem,
 ) as any as S.Schema<InsightsTypeGetForAccountResultList>;
 
-export interface GetInsightTypeForAccountResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: InsightsTypeGetForAccountResultList;
-}
+export type GetInsightTypeForAccountResponse =
+  InsightsTypeGetForAccountResultList;
 export const GetInsightTypeForAccountResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(
-      InsightsTypeGetForAccountResultList.pipe(T.EnvelopePayload()),
-    ),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  InsightsTypeGetForAccountResultList.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "GetInsightTypeForAccountResponse",
 }) as any as S.Schema<GetInsightTypeForAccountResponse>;
@@ -1128,16 +1091,9 @@ export const InsightsTypeGetForZoneResultList = /*@__PURE__*/ S.Array(
   InsightsTypeGetForZoneResultItem,
 ) as any as S.Schema<InsightsTypeGetForZoneResultList>;
 
-export interface GetInsightTypeForZoneResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: InsightsTypeGetForZoneResultList;
-}
+export type GetInsightTypeForZoneResponse = InsightsTypeGetForZoneResultList;
 export const GetInsightTypeForZoneResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(
-      InsightsTypeGetForZoneResultList.pipe(T.EnvelopePayload()),
-    ),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  InsightsTypeGetForZoneResultList.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "GetInsightTypeForZoneResponse",
 }) as any as S.Schema<GetInsightTypeForZoneResponse>;

@@ -287,14 +287,9 @@ export const FilesResultList = /*@__PURE__*/ S.Array(
   FilesResultItem,
 ) as any as S.Schema<FilesResultList>;
 
-export interface FilesResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: FilesResultList;
-}
+export type FilesResponse = FilesResultList;
 export const FilesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(FilesResultList.pipe(T.EnvelopePayload())),
-  }),
+  FilesResultList.pipe(T.EnvelopePayloadRoot()),
 ).annotate({ identifier: "FilesResponse" }) as any as S.Schema<FilesResponse>;
 
 export interface JobsGetRequest {
@@ -395,14 +390,9 @@ export const JobsListResultList = /*@__PURE__*/ S.Array(
   JobsListResultItem,
 ) as any as S.Schema<JobsListResultList>;
 
-export interface JobsListResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: JobsListResultList;
-}
+export type JobsListResponse = JobsListResultList;
 export const JobsListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(JobsListResultList.pipe(T.EnvelopePayload())),
-  }),
+  JobsListResultList.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "JobsListResponse",
 }) as any as S.Schema<JobsListResponse>;
@@ -455,14 +445,9 @@ export const JobsLogsResultList = /*@__PURE__*/ S.Array(
   JobsLogsResultItem,
 ) as any as S.Schema<JobsLogsResultList>;
 
-export interface JobsLogsResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: JobsLogsResultList;
-}
+export type JobsLogsResponse = JobsLogsResultList;
 export const JobsLogsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(JobsLogsResultList.pipe(T.EnvelopePayload())),
-  }),
+  JobsLogsResultList.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "JobsLogsResponse",
 }) as any as S.Schema<JobsLogsResponse>;

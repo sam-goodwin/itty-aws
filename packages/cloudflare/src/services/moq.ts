@@ -163,14 +163,9 @@ export const DeleteRelayRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteRelayRequest",
 }) as any as S.Schema<DeleteRelayRequest>;
 
-export interface DeleteRelayResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: unknown;
-}
+export type DeleteRelayResponse = unknown;
 export const DeleteRelayResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.Unknown.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "DeleteRelayResponse",
 }) as any as S.Schema<DeleteRelayResponse>;

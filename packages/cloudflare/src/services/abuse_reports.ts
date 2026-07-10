@@ -305,14 +305,9 @@ export const CreateAbuseReportRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateAbuseReportRequest",
 }) as any as S.Schema<CreateAbuseReportRequest>;
 
-export interface CreateAbuseReportResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: string;
-}
+export type CreateAbuseReportResponse = string;
 export const CreateAbuseReportResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.String.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.String.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "CreateAbuseReportResponse",
 }) as any as S.Schema<CreateAbuseReportResponse>;

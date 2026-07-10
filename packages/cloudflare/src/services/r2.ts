@@ -185,14 +185,9 @@ export const AbortAllSuperSlurperJobRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "AbortAllSuperSlurperJobRequest",
 }) as any as S.Schema<AbortAllSuperSlurperJobRequest>;
 
-export interface AbortAllSuperSlurperJobResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: string;
-}
+export type AbortAllSuperSlurperJobResponse = string;
 export const AbortAllSuperSlurperJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.String.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.String.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "AbortAllSuperSlurperJobResponse",
 }) as any as S.Schema<AbortAllSuperSlurperJobResponse>;
@@ -218,14 +213,9 @@ export const AbortSuperSlurperJobRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "AbortSuperSlurperJobRequest",
 }) as any as S.Schema<AbortSuperSlurperJobRequest>;
 
-export interface AbortSuperSlurperJobResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: string;
-}
+export type AbortSuperSlurperJobResponse = string;
 export const AbortSuperSlurperJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.String.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.String.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "AbortSuperSlurperJobResponse",
 }) as any as S.Schema<AbortSuperSlurperJobResponse>;
@@ -687,14 +677,9 @@ export const DeleteBucketRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteBucketRequest",
 }) as any as S.Schema<DeleteBucketRequest>;
 
-export interface DeleteBucketResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: unknown;
-}
+export type DeleteBucketResponse = unknown;
 export const DeleteBucketResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.Unknown.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "DeleteBucketResponse",
 }) as any as S.Schema<DeleteBucketResponse>;
@@ -736,14 +721,9 @@ export const DeleteBucketCorsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteBucketCorsRequest",
 }) as any as S.Schema<DeleteBucketCorsRequest>;
 
-export interface DeleteBucketCorsResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: unknown;
-}
+export type DeleteBucketCorsResponse = unknown;
 export const DeleteBucketCorsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.Unknown.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "DeleteBucketCorsResponse",
 }) as any as S.Schema<DeleteBucketCorsResponse>;
@@ -844,15 +824,9 @@ export const DeleteBucketEventNotificationRequest = /*@__PURE__*/ S.suspend(
   identifier: "DeleteBucketEventNotificationRequest",
 }) as any as S.Schema<DeleteBucketEventNotificationRequest>;
 
-export interface DeleteBucketEventNotificationResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: unknown;
-}
+export type DeleteBucketEventNotificationResponse = unknown;
 export const DeleteBucketEventNotificationResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  () => S.Unknown.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "DeleteBucketEventNotificationResponse",
 }) as any as S.Schema<DeleteBucketEventNotificationResponse>;
@@ -3066,14 +3040,9 @@ export const PauseSuperSlurperJobRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PauseSuperSlurperJobRequest",
 }) as any as S.Schema<PauseSuperSlurperJobRequest>;
 
-export interface PauseSuperSlurperJobResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: string;
-}
+export type PauseSuperSlurperJobResponse = string;
 export const PauseSuperSlurperJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.String.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.String.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "PauseSuperSlurperJobResponse",
 }) as any as S.Schema<PauseSuperSlurperJobResponse>;
@@ -3251,14 +3220,9 @@ export const PutBucketCorsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutBucketCorsRequest",
 }) as any as S.Schema<PutBucketCorsRequest>;
 
-export interface PutBucketCorsResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: unknown;
-}
+export type PutBucketCorsResponse = unknown;
 export const PutBucketCorsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.Unknown.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "PutBucketCorsResponse",
 }) as any as S.Schema<PutBucketCorsResponse>;
@@ -3411,14 +3375,9 @@ export const PutBucketEventNotificationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutBucketEventNotificationRequest",
 }) as any as S.Schema<PutBucketEventNotificationRequest>;
 
-export interface PutBucketEventNotificationResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: unknown;
-}
+export type PutBucketEventNotificationResponse = unknown;
 export const PutBucketEventNotificationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.Unknown.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "PutBucketEventNotificationResponse",
 }) as any as S.Schema<PutBucketEventNotificationResponse>;
@@ -3645,14 +3604,9 @@ export const PutBucketLifecycleRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutBucketLifecycleRequest",
 }) as any as S.Schema<PutBucketLifecycleRequest>;
 
-export interface PutBucketLifecycleResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: unknown;
-}
+export type PutBucketLifecycleResponse = unknown;
 export const PutBucketLifecycleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.Unknown.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "PutBucketLifecycleResponse",
 }) as any as S.Schema<PutBucketLifecycleResponse>;
@@ -3745,14 +3699,9 @@ export const PutBucketLockRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutBucketLockRequest",
 }) as any as S.Schema<PutBucketLockRequest>;
 
-export interface PutBucketLockResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: unknown;
-}
+export type PutBucketLockResponse = unknown;
 export const PutBucketLockResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.Unknown.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "PutBucketLockResponse",
 }) as any as S.Schema<PutBucketLockResponse>;
@@ -3943,14 +3892,9 @@ export const ResumeSuperSlurperJobRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ResumeSuperSlurperJobRequest",
 }) as any as S.Schema<ResumeSuperSlurperJobRequest>;
 
-export interface ResumeSuperSlurperJobResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: string;
-}
+export type ResumeSuperSlurperJobResponse = string;
 export const ResumeSuperSlurperJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.String.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.String.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "ResumeSuperSlurperJobResponse",
 }) as any as S.Schema<ResumeSuperSlurperJobResponse>;

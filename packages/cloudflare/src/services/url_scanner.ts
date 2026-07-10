@@ -118,14 +118,9 @@ export const BulkCreateScansRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "BulkCreateScansRequest",
 }) as any as S.Schema<BulkCreateScansRequest>;
 
-export interface BulkCreateScansResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: string;
-}
+export type BulkCreateScansResponse = string;
 export const BulkCreateScansResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.String.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.String.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "BulkCreateScansResponse",
 }) as any as S.Schema<BulkCreateScansResponse>;
@@ -205,14 +200,9 @@ export const CreateScanRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateScanRequest",
 }) as any as S.Schema<CreateScanRequest>;
 
-export interface CreateScanResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: string;
-}
+export type CreateScanResponse = string;
 export const CreateScanResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.String.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.String.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "CreateScanResponse",
 }) as any as S.Schema<CreateScanResponse>;

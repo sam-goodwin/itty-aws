@@ -1759,16 +1759,10 @@ export const NamespacesInstancesItemsChunksResultList = /*@__PURE__*/ S.Array(
   NamespacesInstancesItemsChunksResultItem,
 ) as any as S.Schema<NamespacesInstancesItemsChunksResultList>;
 
-export interface ChunksNamespaceInstanceItemResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: NamespacesInstancesItemsChunksResultList;
-}
+export type ChunksNamespaceInstanceItemResponse =
+  NamespacesInstancesItemsChunksResultList;
 export const ChunksNamespaceInstanceItemResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(
-      NamespacesInstancesItemsChunksResultList.pipe(T.EnvelopePayload()),
-    ),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  NamespacesInstancesItemsChunksResultList.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "ChunksNamespaceInstanceItemResponse",
 }) as any as S.Schema<ChunksNamespaceInstanceItemResponse>;
@@ -5400,14 +5394,9 @@ export const DeleteNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteNamespaceRequest",
 }) as any as S.Schema<DeleteNamespaceRequest>;
 
-export interface DeleteNamespaceResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: unknown;
-}
+export type DeleteNamespaceResponse = unknown;
 export const DeleteNamespaceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.Unknown.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "DeleteNamespaceResponse",
 }) as any as S.Schema<DeleteNamespaceResponse>;
@@ -6180,14 +6169,9 @@ export const DeleteTokenRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteTokenRequest",
 }) as any as S.Schema<DeleteTokenRequest>;
 
-export interface DeleteTokenResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: unknown;
-}
+export type DeleteTokenResponse = unknown;
 export const DeleteTokenResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.Unknown.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "DeleteTokenResponse",
 }) as any as S.Schema<DeleteTokenResponse>;
@@ -8365,14 +8349,9 @@ export const InstancesJobsLogsResultList = /*@__PURE__*/ S.Array(
   InstancesJobsLogsResultItem,
 ) as any as S.Schema<InstancesJobsLogsResultList>;
 
-export interface LogsInstanceJobResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: InstancesJobsLogsResultList;
-}
+export type LogsInstanceJobResponse = InstancesJobsLogsResultList;
 export const LogsInstanceJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(InstancesJobsLogsResultList.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  InstancesJobsLogsResultList.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "LogsInstanceJobResponse",
 }) as any as S.Schema<LogsInstanceJobResponse>;
@@ -8437,16 +8416,10 @@ export const NamespacesInstancesItemsLogsResultList = /*@__PURE__*/ S.Array(
   NamespacesInstancesItemsLogsResultItem,
 ) as any as S.Schema<NamespacesInstancesItemsLogsResultList>;
 
-export interface LogsNamespaceInstanceItemResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: NamespacesInstancesItemsLogsResultList;
-}
+export type LogsNamespaceInstanceItemResponse =
+  NamespacesInstancesItemsLogsResultList;
 export const LogsNamespaceInstanceItemResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(
-      NamespacesInstancesItemsLogsResultList.pipe(T.EnvelopePayload()),
-    ),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  NamespacesInstancesItemsLogsResultList.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "LogsNamespaceInstanceItemResponse",
 }) as any as S.Schema<LogsNamespaceInstanceItemResponse>;
@@ -8505,16 +8478,10 @@ export const NamespacesInstancesJobsLogsResultList = /*@__PURE__*/ S.Array(
   NamespacesInstancesJobsLogsResultItem,
 ) as any as S.Schema<NamespacesInstancesJobsLogsResultList>;
 
-export interface LogsNamespaceInstanceJobResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: NamespacesInstancesJobsLogsResultList;
-}
+export type LogsNamespaceInstanceJobResponse =
+  NamespacesInstancesJobsLogsResultList;
 export const LogsNamespaceInstanceJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(
-      NamespacesInstancesJobsLogsResultList.pipe(T.EnvelopePayload()),
-    ),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  NamespacesInstancesJobsLogsResultList.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "LogsNamespaceInstanceJobResponse",
 }) as any as S.Schema<LogsNamespaceInstanceJobResponse>;

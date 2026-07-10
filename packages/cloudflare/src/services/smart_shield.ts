@@ -1314,14 +1314,9 @@ export const HealthChecksListResultList = /*@__PURE__*/ S.Array(
   HealthChecksListResultItem,
 ) as any as S.Schema<HealthChecksListResultList>;
 
-export interface HealthChecksListResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: HealthChecksListResultList;
-}
+export type HealthChecksListResponse = HealthChecksListResultList;
 export const HealthChecksListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(HealthChecksListResultList.pipe(T.EnvelopePayload())),
-  }),
+  HealthChecksListResultList.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "HealthChecksListResponse",
 }) as any as S.Schema<HealthChecksListResponse>;

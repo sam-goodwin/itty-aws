@@ -3016,14 +3016,9 @@ export const SettingsBulkEditResultList = /*@__PURE__*/ S.Array(
   SettingsBulkEditResultItem,
 ) as any as S.Schema<SettingsBulkEditResultList>;
 
-export interface SettingsBulkEditResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: SettingsBulkEditResultList;
-}
+export type SettingsBulkEditResponse = SettingsBulkEditResultList;
 export const SettingsBulkEditResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(SettingsBulkEditResultList.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  SettingsBulkEditResultList.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "SettingsBulkEditResponse",
 }) as any as S.Schema<SettingsBulkEditResponse>;
@@ -3095,14 +3090,9 @@ export const SettingsListResultList = /*@__PURE__*/ S.Array(
   SettingsListResultItem,
 ) as any as S.Schema<SettingsListResultList>;
 
-export interface SettingsListResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: SettingsListResultList;
-}
+export type SettingsListResponse = SettingsListResultList;
 export const SettingsListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(SettingsListResultList.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  SettingsListResultList.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "SettingsListResponse",
 }) as any as S.Schema<SettingsListResponse>;

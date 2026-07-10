@@ -829,14 +829,9 @@ export const GetOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetOrganizationRequest",
 }) as any as S.Schema<GetOrganizationRequest>;
 
-export interface GetOrganizationResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: unknown;
-}
+export type GetOrganizationResponse = unknown;
 export const GetOrganizationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.Unknown.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "GetOrganizationResponse",
 }) as any as S.Schema<GetOrganizationResponse>;
@@ -2614,14 +2609,9 @@ export const PutTokenValueRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutTokenValueRequest",
 }) as any as S.Schema<PutTokenValueRequest>;
 
-export interface PutTokenValueResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: unknown;
-}
+export type PutTokenValueResponse = unknown;
 export const PutTokenValueResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.Unknown.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "PutTokenValueResponse",
 }) as any as S.Schema<PutTokenValueResponse>;

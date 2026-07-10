@@ -61,14 +61,9 @@ export const BulkDeleteResultList = /*@__PURE__*/ S.Array(
   BulkDeleteResultItem,
 ) as any as S.Schema<BulkDeleteResultList>;
 
-export interface BulkDeleteFiltersResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: BulkDeleteResultList;
-}
+export type BulkDeleteFiltersResponse = BulkDeleteResultList;
 export const BulkDeleteFiltersResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(BulkDeleteResultList.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  BulkDeleteResultList.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "BulkDeleteFiltersResponse",
 }) as any as S.Schema<BulkDeleteFiltersResponse>;

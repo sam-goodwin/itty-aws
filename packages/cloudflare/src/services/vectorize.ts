@@ -388,14 +388,9 @@ export const GetByIdsIndexRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetByIdsIndexRequest",
 }) as any as S.Schema<GetByIdsIndexRequest>;
 
-export interface GetByIdsIndexResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: unknown;
-}
+export type GetByIdsIndexResponse = unknown;
 export const GetByIdsIndexResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.Unknown.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "GetByIdsIndexResponse",
 }) as any as S.Schema<GetByIdsIndexResponse>;

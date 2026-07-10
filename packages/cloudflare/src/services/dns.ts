@@ -4457,14 +4457,9 @@ export const CreateZoneTransferForceAxfrRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateZoneTransferForceAxfrRequest",
 }) as any as S.Schema<CreateZoneTransferForceAxfrRequest>;
 
-export interface CreateZoneTransferForceAxfrResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: unknown;
-}
+export type CreateZoneTransferForceAxfrResponse = unknown;
 export const CreateZoneTransferForceAxfrResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.Unknown.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "CreateZoneTransferForceAxfrResponse",
 }) as any as S.Schema<CreateZoneTransferForceAxfrResponse>;
@@ -4727,14 +4722,9 @@ export const DeleteDnssecRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteDnssecRequest",
 }) as any as S.Schema<DeleteDnssecRequest>;
 
-export interface DeleteDnssecResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: string;
-}
+export type DeleteDnssecResponse = string;
 export const DeleteDnssecResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.String.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.String.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "DeleteDnssecResponse",
 }) as any as S.Schema<DeleteDnssecResponse>;
@@ -4993,14 +4983,9 @@ export const DisableZoneTransferOutgoingRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DisableZoneTransferOutgoingRequest",
 }) as any as S.Schema<DisableZoneTransferOutgoingRequest>;
 
-export interface DisableZoneTransferOutgoingResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: unknown;
-}
+export type DisableZoneTransferOutgoingResponse = unknown;
 export const DisableZoneTransferOutgoingResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.Unknown.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "DisableZoneTransferOutgoingResponse",
 }) as any as S.Schema<DisableZoneTransferOutgoingResponse>;
@@ -5026,14 +5011,9 @@ export const EnableZoneTransferOutgoingRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "EnableZoneTransferOutgoingRequest",
 }) as any as S.Schema<EnableZoneTransferOutgoingRequest>;
 
-export interface EnableZoneTransferOutgoingResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: unknown;
-}
+export type EnableZoneTransferOutgoingResponse = unknown;
 export const EnableZoneTransferOutgoingResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.Unknown.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "EnableZoneTransferOutgoingResponse",
 }) as any as S.Schema<EnableZoneTransferOutgoingResponse>;
@@ -5087,15 +5067,9 @@ export const ForceNotifyZoneTransferOutgoingRequest = /*@__PURE__*/ S.suspend(
   identifier: "ForceNotifyZoneTransferOutgoingRequest",
 }) as any as S.Schema<ForceNotifyZoneTransferOutgoingRequest>;
 
-export interface ForceNotifyZoneTransferOutgoingResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: string;
-}
+export type ForceNotifyZoneTransferOutgoingResponse = string;
 export const ForceNotifyZoneTransferOutgoingResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      result: S.optional(S.String.pipe(T.EnvelopePayload())),
-    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  () => S.String.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "ForceNotifyZoneTransferOutgoingResponse",
 }) as any as S.Schema<ForceNotifyZoneTransferOutgoingResponse>;
@@ -7539,15 +7513,9 @@ export const GetZoneTransferOutgoingStatusRequest = /*@__PURE__*/ S.suspend(
   identifier: "GetZoneTransferOutgoingStatusRequest",
 }) as any as S.Schema<GetZoneTransferOutgoingStatusRequest>;
 
-export interface GetZoneTransferOutgoingStatusResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: unknown;
-}
+export type GetZoneTransferOutgoingStatusResponse = unknown;
 export const GetZoneTransferOutgoingStatusResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  () => S.Unknown.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "GetZoneTransferOutgoingStatusResponse",
 }) as any as S.Schema<GetZoneTransferOutgoingStatusResponse>;

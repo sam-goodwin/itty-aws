@@ -117,16 +117,10 @@ export const SettingsOperationsBulkEditResultMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<SettingsOperationsBulkEditResultMap>;
 
-export interface BulkPatchSettingOperationsResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: SettingsOperationsBulkEditResultMap;
-}
+export type BulkPatchSettingOperationsResponse =
+  SettingsOperationsBulkEditResultMap;
 export const BulkPatchSettingOperationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(
-      SettingsOperationsBulkEditResultMap.pipe(T.EnvelopePayload()),
-    ),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  SettingsOperationsBulkEditResultMap.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "BulkPatchSettingOperationsResponse",
 }) as any as S.Schema<BulkPatchSettingOperationsResponse>;

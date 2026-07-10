@@ -1278,14 +1278,9 @@ export const GetDatasetFieldForAccountRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetDatasetFieldForAccountRequest",
 }) as any as S.Schema<GetDatasetFieldForAccountRequest>;
 
-export interface GetDatasetFieldForAccountResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: unknown;
-}
+export type GetDatasetFieldForAccountResponse = unknown;
 export const GetDatasetFieldForAccountResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.Unknown.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "GetDatasetFieldForAccountResponse",
 }) as any as S.Schema<GetDatasetFieldForAccountResponse>;
@@ -1322,14 +1317,9 @@ export const GetDatasetFieldForZoneRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetDatasetFieldForZoneRequest",
 }) as any as S.Schema<GetDatasetFieldForZoneRequest>;
 
-export interface GetDatasetFieldForZoneResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: unknown;
-}
+export type GetDatasetFieldForZoneResponse = unknown;
 export const GetDatasetFieldForZoneResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.Unknown.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "GetDatasetFieldForZoneResponse",
 }) as any as S.Schema<GetDatasetFieldForZoneResponse>;

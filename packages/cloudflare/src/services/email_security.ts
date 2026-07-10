@@ -1114,14 +1114,9 @@ export const CreateInvestigateReclassifyRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateInvestigateReclassifyRequest",
 }) as any as S.Schema<CreateInvestigateReclassifyRequest>;
 
-export interface CreateInvestigateReclassifyResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: unknown;
-}
+export type CreateInvestigateReclassifyResponse = unknown;
 export const CreateInvestigateReclassifyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.Unknown.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "CreateInvestigateReclassifyResponse",
 }) as any as S.Schema<CreateInvestigateReclassifyResponse>;

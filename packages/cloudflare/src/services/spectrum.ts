@@ -541,16 +541,10 @@ export const AnalyticsAggregatesCurrentsGetResultList = /*@__PURE__*/ S.Array(
   AnalyticsAggregatesCurrentsGetResultItem,
 ) as any as S.Schema<AnalyticsAggregatesCurrentsGetResultList>;
 
-export interface GetAnalyticAggregateCurrentResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: AnalyticsAggregatesCurrentsGetResultList;
-}
+export type GetAnalyticAggregateCurrentResponse =
+  AnalyticsAggregatesCurrentsGetResultList;
 export const GetAnalyticAggregateCurrentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(
-      AnalyticsAggregatesCurrentsGetResultList.pipe(T.EnvelopePayload()),
-    ),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  AnalyticsAggregatesCurrentsGetResultList.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "GetAnalyticAggregateCurrentResponse",
 }) as any as S.Schema<GetAnalyticAggregateCurrentResponse>;

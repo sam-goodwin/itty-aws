@@ -277,19 +277,13 @@ export const DispatchNamespacesScriptsSecretsBulkUpdateResultMap =
     S.Unknown,
   ) as any as S.Schema<DispatchNamespacesScriptsSecretsBulkUpdateResultMap>;
 
-export interface BulkUpdateDispatchNamespaceScriptSecretsResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: DispatchNamespacesScriptsSecretsBulkUpdateResultMap;
-}
+export type BulkUpdateDispatchNamespaceScriptSecretsResponse =
+  DispatchNamespacesScriptsSecretsBulkUpdateResultMap;
 export const BulkUpdateDispatchNamespaceScriptSecretsResponse =
   /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      result: S.optional(
-        DispatchNamespacesScriptsSecretsBulkUpdateResultMap.pipe(
-          T.EnvelopePayload(),
-        ),
-      ),
-    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+    DispatchNamespacesScriptsSecretsBulkUpdateResultMap.pipe(
+      T.EnvelopePayloadRoot(),
+    ),
   ).annotate({
     identifier: "BulkUpdateDispatchNamespaceScriptSecretsResponse",
   }) as any as S.Schema<BulkUpdateDispatchNamespaceScriptSecretsResponse>;
@@ -439,14 +433,9 @@ export const DeleteDispatchNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteDispatchNamespaceRequest",
 }) as any as S.Schema<DeleteDispatchNamespaceRequest>;
 
-export interface DeleteDispatchNamespaceResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: unknown;
-}
+export type DeleteDispatchNamespaceResponse = unknown;
 export const DeleteDispatchNamespaceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.Unknown.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "DeleteDispatchNamespaceResponse",
 }) as any as S.Schema<DeleteDispatchNamespaceResponse>;
@@ -481,15 +470,9 @@ export const DeleteDispatchNamespaceScriptRequest = /*@__PURE__*/ S.suspend(
   identifier: "DeleteDispatchNamespaceScriptRequest",
 }) as any as S.Schema<DeleteDispatchNamespaceScriptRequest>;
 
-export interface DeleteDispatchNamespaceScriptResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: unknown;
-}
+export type DeleteDispatchNamespaceScriptResponse = unknown;
 export const DeleteDispatchNamespaceScriptResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  () => S.Unknown.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "DeleteDispatchNamespaceScriptResponse",
 }) as any as S.Schema<DeleteDispatchNamespaceScriptResponse>;
@@ -527,15 +510,10 @@ export const DeleteDispatchNamespaceScriptSecretRequest =
     identifier: "DeleteDispatchNamespaceScriptSecretRequest",
   }) as any as S.Schema<DeleteDispatchNamespaceScriptSecretRequest>;
 
-export interface DeleteDispatchNamespaceScriptSecretResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: unknown;
-}
+export type DeleteDispatchNamespaceScriptSecretResponse = unknown;
 export const DeleteDispatchNamespaceScriptSecretResponse =
   /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+    S.Unknown.pipe(T.EnvelopePayloadRoot()),
   ).annotate({
     identifier: "DeleteDispatchNamespaceScriptSecretResponse",
   }) as any as S.Schema<DeleteDispatchNamespaceScriptSecretResponse>;
@@ -569,15 +547,9 @@ export const DeleteDispatchNamespaceScriptTagRequest = /*@__PURE__*/ S.suspend(
   identifier: "DeleteDispatchNamespaceScriptTagRequest",
 }) as any as S.Schema<DeleteDispatchNamespaceScriptTagRequest>;
 
-export interface DeleteDispatchNamespaceScriptTagResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: unknown;
-}
+export type DeleteDispatchNamespaceScriptTagResponse = unknown;
 export const DeleteDispatchNamespaceScriptTagResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  () => S.Unknown.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "DeleteDispatchNamespaceScriptTagResponse",
 }) as any as S.Schema<DeleteDispatchNamespaceScriptTagResponse>;

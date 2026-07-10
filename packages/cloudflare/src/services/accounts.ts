@@ -2494,16 +2494,10 @@ export const TokensPermissionGroupsGetResultList = /*@__PURE__*/ S.Array(
   TokensPermissionGroupsGetResultItem,
 ) as any as S.Schema<TokensPermissionGroupsGetResultList>;
 
-export interface GetTokenPermissionGroupResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: TokensPermissionGroupsGetResultList;
-}
+export type GetTokenPermissionGroupResponse =
+  TokensPermissionGroupsGetResultList;
 export const GetTokenPermissionGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(
-      TokensPermissionGroupsGetResultList.pipe(T.EnvelopePayload()),
-    ),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  TokensPermissionGroupsGetResultList.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "GetTokenPermissionGroupResponse",
 }) as any as S.Schema<GetTokenPermissionGroupResponse>;
@@ -3668,14 +3662,9 @@ export const PutTokenValueRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutTokenValueRequest",
 }) as any as S.Schema<PutTokenValueRequest>;
 
-export interface PutTokenValueResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: unknown;
-}
+export type PutTokenValueResponse = unknown;
 export const PutTokenValueResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.Unknown.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "PutTokenValueResponse",
 }) as any as S.Schema<PutTokenValueResponse>;
@@ -3758,16 +3747,10 @@ export const TokensPermissionGroupsListResultList = /*@__PURE__*/ S.Array(
   TokensPermissionGroupsListResultItem,
 ) as any as S.Schema<TokensPermissionGroupsListResultList>;
 
-export interface TokensPermissionGroupsListResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: TokensPermissionGroupsListResultList;
-}
+export type TokensPermissionGroupsListResponse =
+  TokensPermissionGroupsListResultList;
 export const TokensPermissionGroupsListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(
-      TokensPermissionGroupsListResultList.pipe(T.EnvelopePayload()),
-    ),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  TokensPermissionGroupsListResultList.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "TokensPermissionGroupsListResponse",
 }) as any as S.Schema<TokensPermissionGroupsListResponse>;

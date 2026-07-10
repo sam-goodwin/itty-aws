@@ -413,14 +413,9 @@ export const CreateInstanceEventRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateInstanceEventRequest",
 }) as any as S.Schema<CreateInstanceEventRequest>;
 
-export interface CreateInstanceEventResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: unknown;
-}
+export type CreateInstanceEventResponse = unknown;
 export const CreateInstanceEventResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.Unknown.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "CreateInstanceEventResponse",
 }) as any as S.Schema<CreateInstanceEventResponse>;

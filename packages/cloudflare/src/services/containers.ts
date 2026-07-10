@@ -184,13 +184,9 @@ export const CreateContainerApplicationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateContainerApplicationRequest",
 }) as any as S.Schema<CreateContainerApplicationRequest>;
 
-export interface CreateContainerApplicationResponse {
-  result?: unknown;
-}
+export type CreateContainerApplicationResponse = unknown;
 export const CreateContainerApplicationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }),
+  S.Unknown.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "CreateContainerApplicationResponse",
 }) as any as S.Schema<CreateContainerApplicationResponse>;
@@ -227,14 +223,10 @@ export const CreateContainerApplicationRolloutRequest = /*@__PURE__*/ S.suspend(
   identifier: "CreateContainerApplicationRolloutRequest",
 }) as any as S.Schema<CreateContainerApplicationRolloutRequest>;
 
-export interface CreateContainerApplicationRolloutResponse {
-  result?: unknown;
-}
+export type CreateContainerApplicationRolloutResponse = unknown;
 export const CreateContainerApplicationRolloutResponse =
   /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-    }),
+    S.Unknown.pipe(T.EnvelopePayloadRoot()),
   ).annotate({
     identifier: "CreateContainerApplicationRolloutResponse",
   }) as any as S.Schema<CreateContainerApplicationRolloutResponse>;
@@ -263,14 +255,10 @@ export const CreateContainerRegistryCredentialsRequest =
     identifier: "CreateContainerRegistryCredentialsRequest",
   }) as any as S.Schema<CreateContainerRegistryCredentialsRequest>;
 
-export interface CreateContainerRegistryCredentialsResponse {
-  result?: unknown;
-}
+export type CreateContainerRegistryCredentialsResponse = unknown;
 export const CreateContainerRegistryCredentialsResponse =
   /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-    }),
+    S.Unknown.pipe(T.EnvelopePayloadRoot()),
   ).annotate({
     identifier: "CreateContainerRegistryCredentialsResponse",
   }) as any as S.Schema<CreateContainerRegistryCredentialsResponse>;
@@ -294,13 +282,9 @@ export const DeleteContainerApplicationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteContainerApplicationRequest",
 }) as any as S.Schema<DeleteContainerApplicationRequest>;
 
-export interface DeleteContainerApplicationResponse {
-  result?: unknown;
-}
+export type DeleteContainerApplicationResponse = unknown;
 export const DeleteContainerApplicationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }),
+  S.Unknown.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "DeleteContainerApplicationResponse",
 }) as any as S.Schema<DeleteContainerApplicationResponse>;
@@ -324,13 +308,9 @@ export const GetContainerApplicationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetContainerApplicationRequest",
 }) as any as S.Schema<GetContainerApplicationRequest>;
 
-export interface GetContainerApplicationResponse {
-  result?: unknown;
-}
+export type GetContainerApplicationResponse = unknown;
 export const GetContainerApplicationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }),
+  S.Unknown.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "GetContainerApplicationResponse",
 }) as any as S.Schema<GetContainerApplicationResponse>;
@@ -352,13 +332,9 @@ export const GetContainerIdentityRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetContainerIdentityRequest",
 }) as any as S.Schema<GetContainerIdentityRequest>;
 
-export interface GetContainerIdentityResponse {
-  result?: unknown;
-}
+export type GetContainerIdentityResponse = unknown;
 export const GetContainerIdentityResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }),
+  S.Unknown.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "GetContainerIdentityResponse",
 }) as any as S.Schema<GetContainerIdentityResponse>;
@@ -380,13 +356,9 @@ export const ListContainerApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListContainerApplicationsRequest",
 }) as any as S.Schema<ListContainerApplicationsRequest>;
 
-export interface ListContainerApplicationsResponse {
-  result?: unknown;
-}
+export type ListContainerApplicationsResponse = unknown;
 export const ListContainerApplicationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }),
+  S.Unknown.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "ListContainerApplicationsResponse",
 }) as any as S.Schema<ListContainerApplicationsResponse>;
@@ -422,13 +394,9 @@ export const UpdateContainerApplicationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateContainerApplicationRequest",
 }) as any as S.Schema<UpdateContainerApplicationRequest>;
 
-export interface UpdateContainerApplicationResponse {
-  result?: unknown;
-}
+export type UpdateContainerApplicationResponse = unknown;
 export const UpdateContainerApplicationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }),
+  S.Unknown.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "UpdateContainerApplicationResponse",
 }) as any as S.Schema<UpdateContainerApplicationResponse>;

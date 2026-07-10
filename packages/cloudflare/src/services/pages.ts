@@ -2718,14 +2718,9 @@ export const DeleteProjectRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteProjectRequest",
 }) as any as S.Schema<DeleteProjectRequest>;
 
-export interface DeleteProjectResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: unknown;
-}
+export type DeleteProjectResponse = unknown;
 export const DeleteProjectResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.Unknown.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "DeleteProjectResponse",
 }) as any as S.Schema<DeleteProjectResponse>;
@@ -2759,14 +2754,9 @@ export const DeleteProjectDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteProjectDeploymentRequest",
 }) as any as S.Schema<DeleteProjectDeploymentRequest>;
 
-export interface DeleteProjectDeploymentResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: unknown;
-}
+export type DeleteProjectDeploymentResponse = unknown;
 export const DeleteProjectDeploymentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.Unknown.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "DeleteProjectDeploymentResponse",
 }) as any as S.Schema<DeleteProjectDeploymentResponse>;
@@ -2797,14 +2787,9 @@ export const DeleteProjectDomainRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteProjectDomainRequest",
 }) as any as S.Schema<DeleteProjectDomainRequest>;
 
-export interface DeleteProjectDomainResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: unknown;
-}
+export type DeleteProjectDomainResponse = unknown;
 export const DeleteProjectDomainResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.Unknown.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "DeleteProjectDomainResponse",
 }) as any as S.Schema<DeleteProjectDomainResponse>;
@@ -8527,14 +8512,9 @@ export const PurgeBuildCacheProjectRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PurgeBuildCacheProjectRequest",
 }) as any as S.Schema<PurgeBuildCacheProjectRequest>;
 
-export interface PurgeBuildCacheProjectResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: unknown;
-}
+export type PurgeBuildCacheProjectResponse = unknown;
 export const PurgeBuildCacheProjectResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.Unknown.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "PurgeBuildCacheProjectResponse",
 }) as any as S.Schema<PurgeBuildCacheProjectResponse>;

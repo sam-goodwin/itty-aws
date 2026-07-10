@@ -1194,17 +1194,10 @@ export const AccessAiControlsMcpPortalsListResultList = /*@__PURE__*/ S.Array(
   AccessAiControlsMcpPortalsListResultItem,
 ) as any as S.Schema<AccessAiControlsMcpPortalsListResultList>;
 
-export interface AccessAiControlsMcpPortalsListResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: AccessAiControlsMcpPortalsListResultList;
-}
+export type AccessAiControlsMcpPortalsListResponse =
+  AccessAiControlsMcpPortalsListResultList;
 export const AccessAiControlsMcpPortalsListResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      result: S.optional(
-        AccessAiControlsMcpPortalsListResultList.pipe(T.EnvelopePayload()),
-      ),
-    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  () => AccessAiControlsMcpPortalsListResultList.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "AccessAiControlsMcpPortalsListResponse",
 }) as any as S.Schema<AccessAiControlsMcpPortalsListResponse>;
@@ -1352,15 +1345,9 @@ export const BulkDeleteDeviceRegistrationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "BulkDeleteDeviceRegistrationsRequest",
 }) as any as S.Schema<BulkDeleteDeviceRegistrationsRequest>;
 
-export interface BulkDeleteDeviceRegistrationsResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: unknown;
-}
+export type BulkDeleteDeviceRegistrationsResponse = unknown;
 export const BulkDeleteDeviceRegistrationsResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  () => S.Unknown.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "BulkDeleteDeviceRegistrationsResponse",
 }) as any as S.Schema<BulkDeleteDeviceRegistrationsResponse>;
@@ -30471,15 +30458,10 @@ export const CreateTunnelCloudflaredManagementRequest = /*@__PURE__*/ S.suspend(
   identifier: "CreateTunnelCloudflaredManagementRequest",
 }) as any as S.Schema<CreateTunnelCloudflaredManagementRequest>;
 
-export interface CreateTunnelCloudflaredManagementResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: string;
-}
+export type CreateTunnelCloudflaredManagementResponse = string;
 export const CreateTunnelCloudflaredManagementResponse =
   /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      result: S.optional(S.String.pipe(T.EnvelopePayload())),
-    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+    S.String.pipe(T.EnvelopePayloadRoot()),
   ).annotate({
     identifier: "CreateTunnelCloudflaredManagementResponse",
   }) as any as S.Schema<CreateTunnelCloudflaredManagementResponse>;
@@ -31721,14 +31703,9 @@ export const DeleteAccessUserRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteAccessUserRequest",
 }) as any as S.Schema<DeleteAccessUserRequest>;
 
-export interface DeleteAccessUserResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: unknown;
-}
+export type DeleteAccessUserResponse = unknown;
 export const DeleteAccessUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.Unknown.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "DeleteAccessUserResponse",
 }) as any as S.Schema<DeleteAccessUserResponse>;
@@ -31788,14 +31765,9 @@ export const DeleteDeviceDevicesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteDeviceDevicesRequest",
 }) as any as S.Schema<DeleteDeviceDevicesRequest>;
 
-export interface DeleteDeviceDevicesResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: unknown;
-}
+export type DeleteDeviceDevicesResponse = unknown;
 export const DeleteDeviceDevicesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.Unknown.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "DeleteDeviceDevicesResponse",
 }) as any as S.Schema<DeleteDeviceDevicesResponse>;
@@ -32545,14 +32517,9 @@ export const DeleteDeviceRegistrationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteDeviceRegistrationRequest",
 }) as any as S.Schema<DeleteDeviceRegistrationRequest>;
 
-export interface DeleteDeviceRegistrationResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: unknown;
-}
+export type DeleteDeviceRegistrationResponse = unknown;
 export const DeleteDeviceRegistrationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.Unknown.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "DeleteDeviceRegistrationResponse",
 }) as any as S.Schema<DeleteDeviceRegistrationResponse>;
@@ -32650,14 +32617,9 @@ export const DeleteDexRuleRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteDexRuleRequest",
 }) as any as S.Schema<DeleteDexRuleRequest>;
 
-export interface DeleteDexRuleResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: boolean;
-}
+export type DeleteDexRuleResponse = boolean;
 export const DeleteDexRuleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.Boolean.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.Boolean.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "DeleteDexRuleResponse",
 }) as any as S.Schema<DeleteDexRuleResponse>;
@@ -32683,14 +32645,9 @@ export const DeleteDlpCustomPromptTopicRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteDlpCustomPromptTopicRequest",
 }) as any as S.Schema<DeleteDlpCustomPromptTopicRequest>;
 
-export interface DeleteDlpCustomPromptTopicResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: unknown;
-}
+export type DeleteDlpCustomPromptTopicResponse = unknown;
 export const DeleteDlpCustomPromptTopicResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.Unknown.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "DeleteDlpCustomPromptTopicResponse",
 }) as any as S.Schema<DeleteDlpCustomPromptTopicResponse>;
@@ -32716,14 +32673,9 @@ export const DeleteDlpDataClassRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteDlpDataClassRequest",
 }) as any as S.Schema<DeleteDlpDataClassRequest>;
 
-export interface DeleteDlpDataClassResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: unknown;
-}
+export type DeleteDlpDataClassResponse = unknown;
 export const DeleteDlpDataClassResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.Unknown.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "DeleteDlpDataClassResponse",
 }) as any as S.Schema<DeleteDlpDataClassResponse>;
@@ -32777,14 +32729,9 @@ export const DeleteDlpDataTagCategoryRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteDlpDataTagCategoryRequest",
 }) as any as S.Schema<DeleteDlpDataTagCategoryRequest>;
 
-export interface DeleteDlpDataTagCategoryResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: unknown;
-}
+export type DeleteDlpDataTagCategoryResponse = unknown;
 export const DeleteDlpDataTagCategoryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.Unknown.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "DeleteDlpDataTagCategoryResponse",
 }) as any as S.Schema<DeleteDlpDataTagCategoryResponse>;
@@ -32813,15 +32760,9 @@ export const DeleteDlpDataTagCategoryDataTagRequest = /*@__PURE__*/ S.suspend(
   identifier: "DeleteDlpDataTagCategoryDataTagRequest",
 }) as any as S.Schema<DeleteDlpDataTagCategoryDataTagRequest>;
 
-export interface DeleteDlpDataTagCategoryDataTagResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: unknown;
-}
+export type DeleteDlpDataTagCategoryDataTagResponse = unknown;
 export const DeleteDlpDataTagCategoryDataTagResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  () => S.Unknown.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "DeleteDlpDataTagCategoryDataTagResponse",
 }) as any as S.Schema<DeleteDlpDataTagCategoryDataTagResponse>;
@@ -32973,14 +32914,9 @@ export const DeleteDlpEntryRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteDlpEntryRequest",
 }) as any as S.Schema<DeleteDlpEntryRequest>;
 
-export interface DeleteDlpEntryResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: unknown;
-}
+export type DeleteDlpEntryResponse = unknown;
 export const DeleteDlpEntryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.Unknown.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "DeleteDlpEntryResponse",
 }) as any as S.Schema<DeleteDlpEntryResponse>;
@@ -33006,14 +32942,9 @@ export const DeleteDlpEntryIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteDlpEntryIntegrationRequest",
 }) as any as S.Schema<DeleteDlpEntryIntegrationRequest>;
 
-export interface DeleteDlpEntryIntegrationResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: unknown;
-}
+export type DeleteDlpEntryIntegrationResponse = unknown;
 export const DeleteDlpEntryIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.Unknown.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "DeleteDlpEntryIntegrationResponse",
 }) as any as S.Schema<DeleteDlpEntryIntegrationResponse>;
@@ -33039,14 +32970,9 @@ export const DeleteDlpEntryPredefinedRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteDlpEntryPredefinedRequest",
 }) as any as S.Schema<DeleteDlpEntryPredefinedRequest>;
 
-export interface DeleteDlpEntryPredefinedResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: unknown;
-}
+export type DeleteDlpEntryPredefinedResponse = unknown;
 export const DeleteDlpEntryPredefinedResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.Unknown.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "DeleteDlpEntryPredefinedResponse",
 }) as any as S.Schema<DeleteDlpEntryPredefinedResponse>;
@@ -33072,14 +32998,9 @@ export const DeleteDlpProfileCustomRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteDlpProfileCustomRequest",
 }) as any as S.Schema<DeleteDlpProfileCustomRequest>;
 
-export interface DeleteDlpProfileCustomResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: unknown;
-}
+export type DeleteDlpProfileCustomResponse = unknown;
 export const DeleteDlpProfileCustomResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.Unknown.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "DeleteDlpProfileCustomResponse",
 }) as any as S.Schema<DeleteDlpProfileCustomResponse>;
@@ -33105,14 +33026,9 @@ export const DeleteDlpProfilePredefinedRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteDlpProfilePredefinedRequest",
 }) as any as S.Schema<DeleteDlpProfilePredefinedRequest>;
 
-export interface DeleteDlpProfilePredefinedResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: unknown;
-}
+export type DeleteDlpProfilePredefinedResponse = unknown;
 export const DeleteDlpProfilePredefinedResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.Unknown.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "DeleteDlpProfilePredefinedResponse",
 }) as any as S.Schema<DeleteDlpProfilePredefinedResponse>;
@@ -33138,14 +33054,9 @@ export const DeleteDlpSensitivityGroupRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteDlpSensitivityGroupRequest",
 }) as any as S.Schema<DeleteDlpSensitivityGroupRequest>;
 
-export interface DeleteDlpSensitivityGroupResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: unknown;
-}
+export type DeleteDlpSensitivityGroupResponse = unknown;
 export const DeleteDlpSensitivityGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.Unknown.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "DeleteDlpSensitivityGroupResponse",
 }) as any as S.Schema<DeleteDlpSensitivityGroupResponse>;
@@ -33174,15 +33085,9 @@ export const DeleteDlpSensitivityGroupLevelRequest = /*@__PURE__*/ S.suspend(
   identifier: "DeleteDlpSensitivityGroupLevelRequest",
 }) as any as S.Schema<DeleteDlpSensitivityGroupLevelRequest>;
 
-export interface DeleteDlpSensitivityGroupLevelResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: unknown;
-}
+export type DeleteDlpSensitivityGroupLevelResponse = unknown;
 export const DeleteDlpSensitivityGroupLevelResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  () => S.Unknown.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "DeleteDlpSensitivityGroupLevelResponse",
 }) as any as S.Schema<DeleteDlpSensitivityGroupLevelResponse>;
@@ -33362,14 +33267,9 @@ export const DeleteGatewayListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteGatewayListRequest",
 }) as any as S.Schema<DeleteGatewayListRequest>;
 
-export interface DeleteGatewayListResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: unknown;
-}
+export type DeleteGatewayListResponse = unknown;
 export const DeleteGatewayListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.Unknown.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "DeleteGatewayListResponse",
 }) as any as S.Schema<DeleteGatewayListResponse>;
@@ -33395,14 +33295,9 @@ export const DeleteGatewayLocationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteGatewayLocationRequest",
 }) as any as S.Schema<DeleteGatewayLocationRequest>;
 
-export interface DeleteGatewayLocationResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: unknown;
-}
+export type DeleteGatewayLocationResponse = unknown;
 export const DeleteGatewayLocationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.Unknown.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "DeleteGatewayLocationResponse",
 }) as any as S.Schema<DeleteGatewayLocationResponse>;
@@ -33428,14 +33323,9 @@ export const DeleteGatewayPacfileRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteGatewayPacfileRequest",
 }) as any as S.Schema<DeleteGatewayPacfileRequest>;
 
-export interface DeleteGatewayPacfileResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: unknown;
-}
+export type DeleteGatewayPacfileResponse = unknown;
 export const DeleteGatewayPacfileResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.Unknown.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "DeleteGatewayPacfileResponse",
 }) as any as S.Schema<DeleteGatewayPacfileResponse>;
@@ -33461,14 +33351,9 @@ export const DeleteGatewayProxyEndpointRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteGatewayProxyEndpointRequest",
 }) as any as S.Schema<DeleteGatewayProxyEndpointRequest>;
 
-export interface DeleteGatewayProxyEndpointResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: unknown;
-}
+export type DeleteGatewayProxyEndpointResponse = unknown;
 export const DeleteGatewayProxyEndpointResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.Unknown.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "DeleteGatewayProxyEndpointResponse",
 }) as any as S.Schema<DeleteGatewayProxyEndpointResponse>;
@@ -33495,14 +33380,9 @@ export const DeleteGatewayRuleRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteGatewayRuleRequest",
 }) as any as S.Schema<DeleteGatewayRuleRequest>;
 
-export interface DeleteGatewayRuleResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: unknown;
-}
+export type DeleteGatewayRuleResponse = unknown;
 export const DeleteGatewayRuleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.Unknown.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "DeleteGatewayRuleResponse",
 }) as any as S.Schema<DeleteGatewayRuleResponse>;
@@ -33915,15 +33795,9 @@ export const DeleteRiskScoringIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteRiskScoringIntegrationRequest",
 }) as any as S.Schema<DeleteRiskScoringIntegrationRequest>;
 
-export interface DeleteRiskScoringIntegrationResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: unknown;
-}
+export type DeleteRiskScoringIntegrationResponse = unknown;
 export const DeleteRiskScoringIntegrationResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  () => S.Unknown.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "DeleteRiskScoringIntegrationResponse",
 }) as any as S.Schema<DeleteRiskScoringIntegrationResponse>;
@@ -34095,15 +33969,10 @@ export const DeleteTunnelCloudflaredConnectionRequest = /*@__PURE__*/ S.suspend(
   identifier: "DeleteTunnelCloudflaredConnectionRequest",
 }) as any as S.Schema<DeleteTunnelCloudflaredConnectionRequest>;
 
-export interface DeleteTunnelCloudflaredConnectionResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: unknown;
-}
+export type DeleteTunnelCloudflaredConnectionResponse = unknown;
 export const DeleteTunnelCloudflaredConnectionResponse =
   /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+    S.Unknown.pipe(T.EnvelopePayloadRoot()),
   ).annotate({
     identifier: "DeleteTunnelCloudflaredConnectionResponse",
   }) as any as S.Schema<DeleteTunnelCloudflaredConnectionResponse>;
@@ -34350,14 +34219,9 @@ export const DlpEntriesCustomDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DlpEntriesCustomDeleteRequest",
 }) as any as S.Schema<DlpEntriesCustomDeleteRequest>;
 
-export interface DlpEntriesCustomDeleteResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: unknown;
-}
+export type DlpEntriesCustomDeleteResponse = unknown;
 export const DlpEntriesCustomDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.Unknown.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "DlpEntriesCustomDeleteResponse",
 }) as any as S.Schema<DlpEntriesCustomDeleteResponse>;
@@ -50745,16 +50609,9 @@ export const DexWarpChangeEventsGetResultList = /*@__PURE__*/ S.Array(
   DexWarpChangeEventsGetResultItem,
 ) as any as S.Schema<DexWarpChangeEventsGetResultList>;
 
-export interface GetDexWarpChangeEventResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: DexWarpChangeEventsGetResultList;
-}
+export type GetDexWarpChangeEventResponse = DexWarpChangeEventsGetResultList;
 export const GetDexWarpChangeEventResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(
-      DexWarpChangeEventsGetResultList.pipe(T.EnvelopePayload()),
-    ),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  DexWarpChangeEventsGetResultList.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "GetDexWarpChangeEventResponse",
 }) as any as S.Schema<GetDexWarpChangeEventResponse>;
@@ -56625,14 +56482,9 @@ export const GetTunnelCloudflaredTokenRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetTunnelCloudflaredTokenRequest",
 }) as any as S.Schema<GetTunnelCloudflaredTokenRequest>;
 
-export interface GetTunnelCloudflaredTokenResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: string;
-}
+export type GetTunnelCloudflaredTokenResponse = string;
 export const GetTunnelCloudflaredTokenResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.String.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.String.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "GetTunnelCloudflaredTokenResponse",
 }) as any as S.Schema<GetTunnelCloudflaredTokenResponse>;
@@ -57165,14 +57017,9 @@ export const GetTunnelWarpConnectorTokenRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetTunnelWarpConnectorTokenRequest",
 }) as any as S.Schema<GetTunnelWarpConnectorTokenRequest>;
 
-export interface GetTunnelWarpConnectorTokenResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: string;
-}
+export type GetTunnelWarpConnectorTokenResponse = string;
 export const GetTunnelWarpConnectorTokenResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.String.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.String.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "GetTunnelWarpConnectorTokenResponse",
 }) as any as S.Schema<GetTunnelWarpConnectorTokenResponse>;
@@ -67038,17 +66885,10 @@ export const AccessIdpFederationGrantsListResultList = /*@__PURE__*/ S.Array(
   AccessIdpFederationGrantsListResultItem,
 ) as any as S.Schema<AccessIdpFederationGrantsListResultList>;
 
-export interface ListAccessIdpFederationGrantsResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: AccessIdpFederationGrantsListResultList;
-}
+export type ListAccessIdpFederationGrantsResponse =
+  AccessIdpFederationGrantsListResultList;
 export const ListAccessIdpFederationGrantsResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      result: S.optional(
-        AccessIdpFederationGrantsListResultList.pipe(T.EnvelopePayload()),
-      ),
-    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  () => AccessIdpFederationGrantsListResultList.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "ListAccessIdpFederationGrantsResponse",
 }) as any as S.Schema<ListAccessIdpFederationGrantsResponse>;
@@ -67480,16 +67320,10 @@ export const AccessLogsAccessRequestsListResultList = /*@__PURE__*/ S.Array(
   AccessLogsAccessRequestsListResultItem,
 ) as any as S.Schema<AccessLogsAccessRequestsListResultList>;
 
-export interface ListAccessLogAccessRequestsResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: AccessLogsAccessRequestsListResultList;
-}
+export type ListAccessLogAccessRequestsResponse =
+  AccessLogsAccessRequestsListResultList;
 export const ListAccessLogAccessRequestsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(
-      AccessLogsAccessRequestsListResultList.pipe(T.EnvelopePayload()),
-    ),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  AccessLogsAccessRequestsListResultList.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "ListAccessLogAccessRequestsResponse",
 }) as any as S.Schema<ListAccessLogAccessRequestsResponse>;
@@ -87681,15 +87515,9 @@ export const PutTunnelWarpConnectorFailoverRequest = /*@__PURE__*/ S.suspend(
   identifier: "PutTunnelWarpConnectorFailoverRequest",
 }) as any as S.Schema<PutTunnelWarpConnectorFailoverRequest>;
 
-export interface PutTunnelWarpConnectorFailoverResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: unknown;
-}
+export type PutTunnelWarpConnectorFailoverResponse = unknown;
 export const PutTunnelWarpConnectorFailoverResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  () => S.Unknown.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "PutTunnelWarpConnectorFailoverResponse",
 }) as any as S.Schema<PutTunnelWarpConnectorFailoverResponse>;
@@ -88992,14 +88820,9 @@ export const ResetRiskScoringRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ResetRiskScoringRequest",
 }) as any as S.Schema<ResetRiskScoringRequest>;
 
-export interface ResetRiskScoringResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: unknown;
-}
+export type ResetRiskScoringResponse = unknown;
 export const ResetRiskScoringResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.Unknown.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "ResetRiskScoringResponse",
 }) as any as S.Schema<ResetRiskScoringResponse>;
@@ -89025,14 +88848,9 @@ export const RevokeDeviceDevicesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "RevokeDeviceDevicesRequest",
 }) as any as S.Schema<RevokeDeviceDevicesRequest>;
 
-export interface RevokeDeviceDevicesResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: unknown;
-}
+export type RevokeDeviceDevicesResponse = unknown;
 export const RevokeDeviceDevicesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.Unknown.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "RevokeDeviceDevicesResponse",
 }) as any as S.Schema<RevokeDeviceDevicesResponse>;
@@ -89064,14 +88882,9 @@ export const RevokeDeviceRegistrationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "RevokeDeviceRegistrationRequest",
 }) as any as S.Schema<RevokeDeviceRegistrationRequest>;
 
-export interface RevokeDeviceRegistrationResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: unknown;
-}
+export type RevokeDeviceRegistrationResponse = unknown;
 export const RevokeDeviceRegistrationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.Unknown.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "RevokeDeviceRegistrationResponse",
 }) as any as S.Schema<RevokeDeviceRegistrationResponse>;
@@ -89100,15 +88913,10 @@ export const RevokeTokensAccessApplicationForAccountRequest =
     identifier: "RevokeTokensAccessApplicationForAccountRequest",
   }) as any as S.Schema<RevokeTokensAccessApplicationForAccountRequest>;
 
-export interface RevokeTokensAccessApplicationForAccountResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: unknown;
-}
+export type RevokeTokensAccessApplicationForAccountResponse = unknown;
 export const RevokeTokensAccessApplicationForAccountResponse =
   /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+    S.Unknown.pipe(T.EnvelopePayloadRoot()),
   ).annotate({
     identifier: "RevokeTokensAccessApplicationForAccountResponse",
   }) as any as S.Schema<RevokeTokensAccessApplicationForAccountResponse>;
@@ -89137,15 +88945,10 @@ export const RevokeTokensAccessApplicationForZoneRequest =
     identifier: "RevokeTokensAccessApplicationForZoneRequest",
   }) as any as S.Schema<RevokeTokensAccessApplicationForZoneRequest>;
 
-export interface RevokeTokensAccessApplicationForZoneResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: unknown;
-}
+export type RevokeTokensAccessApplicationForZoneResponse = unknown;
 export const RevokeTokensAccessApplicationForZoneResponse =
   /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+    S.Unknown.pipe(T.EnvelopePayloadRoot()),
   ).annotate({
     identifier: "RevokeTokensAccessApplicationForZoneResponse",
   }) as any as S.Schema<RevokeTokensAccessApplicationForZoneResponse>;
@@ -89566,14 +89369,9 @@ export const UnrevokeDeviceRegistrationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UnrevokeDeviceRegistrationRequest",
 }) as any as S.Schema<UnrevokeDeviceRegistrationRequest>;
 
-export interface UnrevokeDeviceRegistrationResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: unknown;
-}
+export type UnrevokeDeviceRegistrationResponse = unknown;
 export const UnrevokeDeviceRegistrationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.Unknown.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "UnrevokeDeviceRegistrationResponse",
 }) as any as S.Schema<UnrevokeDeviceRegistrationResponse>;

@@ -385,14 +385,9 @@ export const DeleteControlCmbConfigRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteControlCmbConfigRequest",
 }) as any as S.Schema<DeleteControlCmbConfigRequest>;
 
-export interface DeleteControlCmbConfigResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: unknown;
-}
+export type DeleteControlCmbConfigResponse = unknown;
 export const DeleteControlCmbConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.Unknown.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "DeleteControlCmbConfigResponse",
 }) as any as S.Schema<DeleteControlCmbConfigResponse>;

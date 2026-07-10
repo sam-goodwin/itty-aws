@@ -1734,14 +1734,9 @@ export const DeleteSinkRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteSinkRequest",
 }) as any as S.Schema<DeleteSinkRequest>;
 
-export interface DeleteSinkResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: unknown;
-}
+export type DeleteSinkResponse = unknown;
 export const DeleteSinkResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.Unknown.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "DeleteSinkResponse",
 }) as any as S.Schema<DeleteSinkResponse>;
@@ -1772,14 +1767,9 @@ export const DeleteStreamRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteStreamRequest",
 }) as any as S.Schema<DeleteStreamRequest>;
 
-export interface DeleteStreamResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: unknown;
-}
+export type DeleteStreamResponse = unknown;
 export const DeleteStreamResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.Unknown.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "DeleteStreamResponse",
 }) as any as S.Schema<DeleteStreamResponse>;
@@ -1807,14 +1797,9 @@ export const DeleteV1PipelineRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteV1PipelineRequest",
 }) as any as S.Schema<DeleteV1PipelineRequest>;
 
-export interface DeleteV1PipelineResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: unknown;
-}
+export type DeleteV1PipelineResponse = unknown;
 export const DeleteV1PipelineResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.Unknown.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "DeleteV1PipelineResponse",
 }) as any as S.Schema<DeleteV1PipelineResponse>;

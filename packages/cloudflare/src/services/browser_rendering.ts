@@ -488,14 +488,9 @@ export const CreateContentRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateContentRequest",
 }) as any as S.Schema<CreateContentRequest>;
 
-export interface CreateContentResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: string;
-}
+export type CreateContentResponse = string;
 export const CreateContentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.String.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.String.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "CreateContentResponse",
 }) as any as S.Schema<CreateContentResponse>;
@@ -1011,14 +1006,9 @@ export const CreateCrawlRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateCrawlRequest",
 }) as any as S.Schema<CreateCrawlRequest>;
 
-export interface CreateCrawlResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: string;
-}
+export type CreateCrawlResponse = string;
 export const CreateCrawlResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.String.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.String.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "CreateCrawlResponse",
 }) as any as S.Schema<CreateCrawlResponse>;
@@ -1537,14 +1527,9 @@ export const JsonCreateResultMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<JsonCreateResultMap>;
 
-export interface CreateJsonResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: JsonCreateResultMap;
-}
+export type CreateJsonResponse = JsonCreateResultMap;
 export const CreateJsonResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(JsonCreateResultMap.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  JsonCreateResultMap.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "CreateJsonResponse",
 }) as any as S.Schema<CreateJsonResponse>;
@@ -1901,14 +1886,9 @@ export const LinksCreateResultList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LinksCreateResultList>;
 
-export interface CreateLinkResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: LinksCreateResultList;
-}
+export type CreateLinkResponse = LinksCreateResultList;
 export const CreateLinkResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(LinksCreateResultList.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  LinksCreateResultList.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "CreateLinkResponse",
 }) as any as S.Schema<CreateLinkResponse>;
@@ -2263,14 +2243,9 @@ export const CreateMarkdownRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateMarkdownRequest",
 }) as any as S.Schema<CreateMarkdownRequest>;
 
-export interface CreateMarkdownResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: string;
-}
+export type CreateMarkdownResponse = string;
 export const CreateMarkdownResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.String.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.String.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "CreateMarkdownResponse",
 }) as any as S.Schema<CreateMarkdownResponse>;
@@ -3219,14 +3194,9 @@ export const ScrapeCreateResultList = /*@__PURE__*/ S.Array(
   ScrapeCreateResultItem,
 ) as any as S.Schema<ScrapeCreateResultList>;
 
-export interface CreateScrapeResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: ScrapeCreateResultList;
-}
+export type CreateScrapeResponse = ScrapeCreateResultList;
 export const CreateScrapeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(ScrapeCreateResultList.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  ScrapeCreateResultList.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "CreateScrapeResponse",
 }) as any as S.Schema<CreateScrapeResponse>;

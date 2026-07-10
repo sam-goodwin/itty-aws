@@ -5261,14 +5261,9 @@ export const PolicyPreviewResourceRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PolicyPreviewResourceRequest",
 }) as any as S.Schema<PolicyPreviewResourceRequest>;
 
-export interface PolicyPreviewResourceResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: string;
-}
+export type PolicyPreviewResourceResponse = string;
 export const PolicyPreviewResourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.String.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.String.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "PolicyPreviewResourceResponse",
 }) as any as S.Schema<PolicyPreviewResourceResponse>;
@@ -5339,14 +5334,9 @@ export const RefreshCatalogSyncRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "RefreshCatalogSyncRequest",
 }) as any as S.Schema<RefreshCatalogSyncRequest>;
 
-export interface RefreshCatalogSyncResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: string;
-}
+export type RefreshCatalogSyncResponse = string;
 export const RefreshCatalogSyncResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.String.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.String.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "RefreshCatalogSyncResponse",
 }) as any as S.Schema<RefreshCatalogSyncResponse>;

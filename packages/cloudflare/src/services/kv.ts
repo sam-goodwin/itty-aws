@@ -503,14 +503,9 @@ export const GetNamespaceMetadataRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetNamespaceMetadataRequest",
 }) as any as S.Schema<GetNamespaceMetadataRequest>;
 
-export interface GetNamespaceMetadataResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: unknown;
-}
+export type GetNamespaceMetadataResponse = unknown;
 export const GetNamespaceMetadataResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.Unknown.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "GetNamespaceMetadataResponse",
 }) as any as S.Schema<GetNamespaceMetadataResponse>;

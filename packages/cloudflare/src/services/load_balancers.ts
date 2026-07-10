@@ -3634,14 +3634,9 @@ export const PreviewsGetResultMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<PreviewsGetResultMap>;
 
-export interface GetPreviewResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: PreviewsGetResultMap;
-}
+export type GetPreviewResponse = PreviewsGetResultMap;
 export const GetPreviewResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(PreviewsGetResultMap.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  PreviewsGetResultMap.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "GetPreviewResponse",
 }) as any as S.Schema<GetPreviewResponse>;

@@ -227,14 +227,9 @@ export const DisableContentScanningRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DisableContentScanningRequest",
 }) as any as S.Schema<DisableContentScanningRequest>;
 
-export interface DisableContentScanningResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: unknown;
-}
+export type DisableContentScanningResponse = unknown;
 export const DisableContentScanningResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }),
+  S.Unknown.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "DisableContentScanningResponse",
 }) as any as S.Schema<DisableContentScanningResponse>;
@@ -257,14 +252,9 @@ export const EnableContentScanningRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "EnableContentScanningRequest",
 }) as any as S.Schema<EnableContentScanningRequest>;
 
-export interface EnableContentScanningResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: unknown;
-}
+export type EnableContentScanningResponse = unknown;
 export const EnableContentScanningResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }),
+  S.Unknown.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "EnableContentScanningResponse",
 }) as any as S.Schema<EnableContentScanningResponse>;

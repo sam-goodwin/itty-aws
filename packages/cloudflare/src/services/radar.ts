@@ -85690,14 +85690,9 @@ export const AiToMarkdownCreateResultList = /*@__PURE__*/ S.Array(
   AiToMarkdownCreateResultItem,
 ) as any as S.Schema<AiToMarkdownCreateResultList>;
 
-export interface TransformToMarkdownResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: AiToMarkdownCreateResultList;
-}
+export type TransformToMarkdownResponse = AiToMarkdownCreateResultList;
 export const TransformToMarkdownResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(AiToMarkdownCreateResultList.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  AiToMarkdownCreateResultList.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "TransformToMarkdownResponse",
 }) as any as S.Schema<TransformToMarkdownResponse>;

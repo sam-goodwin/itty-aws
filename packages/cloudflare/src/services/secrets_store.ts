@@ -118,14 +118,9 @@ export const BulkDeleteStoreSecretsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "BulkDeleteStoreSecretsRequest",
 }) as any as S.Schema<BulkDeleteStoreSecretsRequest>;
 
-export interface BulkDeleteStoreSecretsResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: unknown;
-}
+export type BulkDeleteStoreSecretsResponse = unknown;
 export const BulkDeleteStoreSecretsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.Unknown.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "BulkDeleteStoreSecretsResponse",
 }) as any as S.Schema<BulkDeleteStoreSecretsResponse>;
@@ -326,14 +321,9 @@ export const DeleteStoreRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteStoreRequest",
 }) as any as S.Schema<DeleteStoreRequest>;
 
-export interface DeleteStoreResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: unknown;
-}
+export type DeleteStoreResponse = unknown;
 export const DeleteStoreResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.Unknown.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "DeleteStoreResponse",
 }) as any as S.Schema<DeleteStoreResponse>;
@@ -364,14 +354,9 @@ export const DeleteStoreSecretRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteStoreSecretRequest",
 }) as any as S.Schema<DeleteStoreSecretRequest>;
 
-export interface DeleteStoreSecretResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: unknown;
-}
+export type DeleteStoreSecretResponse = unknown;
 export const DeleteStoreSecretResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.Unknown.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "DeleteStoreSecretResponse",
 }) as any as S.Schema<DeleteStoreSecretResponse>;
