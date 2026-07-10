@@ -3386,6 +3386,41 @@ export const DeleteLogResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteLogResponse",
 }) as any as S.Schema<DeleteLogResponse>;
 
+export interface DeleteProviderConfigRequest {
+  /** Identifier. */
+  accountId: string;
+  gatewayId: string;
+  id: string;
+}
+export const DeleteProviderConfigRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    gatewayId: S.String.pipe(T.Label("gateway_id")),
+    id: S.String.pipe(T.Label()),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/ai-gateway/gateways/{gateway_id}/provider_configs/{id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+).annotate({
+  identifier: "DeleteProviderConfigRequest",
+}) as any as S.Schema<DeleteProviderConfigRequest>;
+
+export interface DeleteProviderConfigResponse {
+  result?: unknown;
+}
+export const DeleteProviderConfigResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+).annotate({
+  identifier: "DeleteProviderConfigResponse",
+}) as any as S.Schema<DeleteProviderConfigResponse>;
+
 export interface GetAiGatewayRequest {
   accountId: string;
   /** gateway id */
@@ -8898,6 +8933,20 @@ export const deleteLog: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteLogRequest,
   output: DeleteLogResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteProviderConfigError = CloudflareOpError;
+export const deleteProviderConfig: API.OperationMethod<
+  DeleteProviderConfigRequest,
+  DeleteProviderConfigResponse,
+  DeleteProviderConfigError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteProviderConfigRequest,
+  output: DeleteProviderConfigResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
