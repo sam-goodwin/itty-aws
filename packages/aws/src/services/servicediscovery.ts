@@ -163,10 +163,10 @@ export const CreateHttpNamespaceResponse =
     identifier: "CreateHttpNamespaceResponse",
   }) as any as S.Schema<CreateHttpNamespaceResponse>;
 export interface SOA {
-  TTL: number;
+  TTL?: number;
 }
 export const SOA = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-  S.Struct({ TTL: S.Number }),
+  S.Struct({ TTL: S.optional(S.Number) }),
 ).annotate({ identifier: "SOA" }) as any as S.Schema<SOA>;
 export interface PrivateDnsPropertiesMutable {
   SOA: SOA;
@@ -279,13 +279,13 @@ export const DnsRecordList = /*@__PURE__*/ /*#__PURE__*/ S.Array(DnsRecord);
 export interface DnsConfig {
   NamespaceId?: string;
   RoutingPolicy?: RoutingPolicy;
-  DnsRecords: DnsRecord[];
+  DnsRecords?: DnsRecord[];
 }
 export const DnsConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
     NamespaceId: S.optional(S.String),
     RoutingPolicy: S.optional(RoutingPolicy),
-    DnsRecords: DnsRecordList,
+    DnsRecords: S.optional(DnsRecordList),
   }),
 ).annotate({ identifier: "DnsConfig" }) as any as S.Schema<DnsConfig>;
 export type HealthCheckType = "HTTP" | "HTTPS" | "TCP" | (string & {});
@@ -1800,6 +1800,7 @@ export const discoverInstances: API.OperationMethod<
     ServiceNotFound,
   ],
   operationName: "DiscoverInstances",
+  endpointHostPrefix: "data-",
 }));
 export type DiscoverInstancesRevisionError =
   | InvalidInput
@@ -1825,6 +1826,7 @@ export const discoverInstancesRevision: API.OperationMethod<
     ServiceNotFound,
   ],
   operationName: "DiscoverInstancesRevision",
+  endpointHostPrefix: "data-",
 }));
 export type GetInstanceError =
   | InstanceNotFound

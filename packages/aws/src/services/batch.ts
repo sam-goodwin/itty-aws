@@ -5004,6 +5004,62 @@ export class ServerException extends S.TaggedErrorClass<ServerException>()(
   "ServerException",
   { message: S.optional(S.String) },
 ).pipe(C.withServerError) {}
+export class ComputeEnvironmentNotValid extends S.TaggedErrorClass<ComputeEnvironmentNotValid>()(
+  "ComputeEnvironmentNotValid",
+  { message: S.optional(S.String) },
+  T.SyntheticError({
+    from: "ClientException",
+    message: { includes: "must be created and valid before attaching" },
+  }),
+).pipe(C.withDependencyViolationError, C.withRetryableError) {}
+export class JobQueueAlreadyExists extends S.TaggedErrorClass<JobQueueAlreadyExists>()(
+  "JobQueueAlreadyExists",
+  { message: S.optional(S.String) },
+  T.SyntheticError({
+    from: "ClientException",
+    message: { includes: "already exists" },
+  }),
+).pipe(C.withAlreadyExistsError, C.withConflictError) {}
+export class ComputeEnvironmentInUse extends S.TaggedErrorClass<ComputeEnvironmentInUse>()(
+  "ComputeEnvironmentInUse",
+  { message: S.optional(S.String) },
+  T.SyntheticError({
+    from: "ClientException",
+    message: { includes: "found existing JobQueue relationship" },
+  }),
+).pipe(C.withDependencyViolationError, C.withRetryableError) {}
+export class ComputeEnvironmentBeingModified extends S.TaggedErrorClass<ComputeEnvironmentBeingModified>()(
+  "ComputeEnvironmentBeingModified",
+  { message: S.optional(S.String) },
+  T.SyntheticError({
+    from: "ClientException",
+    message: { includes: "is being modified" },
+  }),
+).pipe(C.withConflictError, C.withRetryableError) {}
+export class JobQueueBeingModified extends S.TaggedErrorClass<JobQueueBeingModified>()(
+  "JobQueueBeingModified",
+  { message: S.optional(S.String) },
+  T.SyntheticError({
+    from: "ClientException",
+    message: { includes: "is being modified" },
+  }),
+).pipe(C.withConflictError, C.withRetryableError) {}
+export class ComputeEnvironmentNotFound extends S.TaggedErrorClass<ComputeEnvironmentNotFound>()(
+  "ComputeEnvironmentNotFound",
+  { message: S.optional(S.String) },
+  T.SyntheticError({
+    from: "ClientException",
+    message: { matches: "compute-environment/.* does not exist" },
+  }),
+).pipe(C.withNotFoundError) {}
+export class JobQueueNotFound extends S.TaggedErrorClass<JobQueueNotFound>()(
+  "JobQueueNotFound",
+  { message: S.optional(S.String) },
+  T.SyntheticError({
+    from: "ClientException",
+    message: { matches: "job-queue/.* does not exist" },
+  }),
+).pipe(C.withNotFoundError) {}
 
 //# Operations
 export type CancelJobError = ClientException | ServerException | CommonErrors;
@@ -5098,6 +5154,8 @@ export const createConsumableResource: API.OperationMethod<
 export type CreateJobQueueError =
   | ClientException
   | ServerException
+  | ComputeEnvironmentNotValid
+  | JobQueueAlreadyExists
   | CommonErrors;
 /**
  * Creates an Batch job queue. When you create a job queue, you associate one or more
@@ -5117,7 +5175,12 @@ export const createJobQueue: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateJobQueueRequest,
   output: CreateJobQueueResponse,
-  errors: [ClientException, ServerException],
+  errors: [
+    ClientException,
+    ServerException,
+    ComputeEnvironmentNotValid,
+    JobQueueAlreadyExists,
+  ],
   operationName: "CreateJobQueue",
 }));
 export type CreateQuotaShareError =
@@ -5177,6 +5240,8 @@ export const createServiceEnvironment: API.OperationMethod<
 export type DeleteComputeEnvironmentError =
   | ClientException
   | ServerException
+  | ComputeEnvironmentInUse
+  | ComputeEnvironmentBeingModified
   | CommonErrors;
 /**
  * Deletes an Batch compute environment.
@@ -5196,7 +5261,12 @@ export const deleteComputeEnvironment: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteComputeEnvironmentRequest,
   output: DeleteComputeEnvironmentResponse,
-  errors: [ClientException, ServerException],
+  errors: [
+    ClientException,
+    ServerException,
+    ComputeEnvironmentInUse,
+    ComputeEnvironmentBeingModified,
+  ],
   operationName: "DeleteComputeEnvironment",
 }));
 export type DeleteConsumableResourceError =
@@ -5220,6 +5290,7 @@ export const deleteConsumableResource: API.OperationMethod<
 export type DeleteJobQueueError =
   | ClientException
   | ServerException
+  | JobQueueBeingModified
   | CommonErrors;
 /**
  * Deletes the specified job queue. You must first disable submissions for a queue with the
@@ -5237,7 +5308,7 @@ export const deleteJobQueue: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteJobQueueRequest,
   output: DeleteJobQueueResponse,
-  errors: [ClientException, ServerException],
+  errors: [ClientException, ServerException, JobQueueBeingModified],
   operationName: "DeleteJobQueue",
 }));
 export type DeleteQuotaShareError =
@@ -5989,6 +6060,8 @@ export const untagResource: API.OperationMethod<
 export type UpdateComputeEnvironmentError =
   | ClientException
   | ServerException
+  | ComputeEnvironmentNotFound
+  | ComputeEnvironmentBeingModified
   | CommonErrors;
 /**
  * Updates an Batch compute environment.
@@ -6001,7 +6074,12 @@ export const updateComputeEnvironment: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateComputeEnvironmentRequest,
   output: UpdateComputeEnvironmentResponse,
-  errors: [ClientException, ServerException],
+  errors: [
+    ClientException,
+    ServerException,
+    ComputeEnvironmentNotFound,
+    ComputeEnvironmentBeingModified,
+  ],
   operationName: "UpdateComputeEnvironment",
 }));
 export type UpdateConsumableResourceError =
@@ -6025,6 +6103,8 @@ export const updateConsumableResource: API.OperationMethod<
 export type UpdateJobQueueError =
   | ClientException
   | ServerException
+  | JobQueueNotFound
+  | JobQueueBeingModified
   | CommonErrors;
 /**
  * Updates a job queue.
@@ -6037,7 +6117,12 @@ export const updateJobQueue: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateJobQueueRequest,
   output: UpdateJobQueueResponse,
-  errors: [ClientException, ServerException],
+  errors: [
+    ClientException,
+    ServerException,
+    JobQueueNotFound,
+    JobQueueBeingModified,
+  ],
   operationName: "UpdateJobQueue",
 }));
 export type UpdateQuotaShareError =

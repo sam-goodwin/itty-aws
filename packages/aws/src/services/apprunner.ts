@@ -287,6 +287,8 @@ export const CreateAutoScalingConfigurationRequest =
 export type AutoScalingConfigurationStatus =
   | "ACTIVE"
   | "INACTIVE"
+  | "active"
+  | "inactive"
   | (string & {});
 export const AutoScalingConfigurationStatus =
   /*@__PURE__*/ /*#__PURE__*/ S.String;
@@ -864,7 +866,12 @@ export const CreateVpcConnectorRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "CreateVpcConnectorRequest",
 }) as any as S.Schema<CreateVpcConnectorRequest>;
-export type VpcConnectorStatus = "ACTIVE" | "INACTIVE" | (string & {});
+export type VpcConnectorStatus =
+  | "ACTIVE"
+  | "INACTIVE"
+  | "active"
+  | "inactive"
+  | (string & {});
 export const VpcConnectorStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface VpcConnector {
   VpcConnectorName?: string;
