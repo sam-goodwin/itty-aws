@@ -145,6 +145,12 @@
           "com.cloudflare.protocols#errorMatchers": [
             {
               "code": 7001
+            },
+            {
+              "code": 10000
+            },
+            {
+              "code": 10405
             }
           ]
         }

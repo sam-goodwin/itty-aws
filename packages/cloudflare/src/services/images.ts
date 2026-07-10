@@ -81,7 +81,7 @@ export class VariantNotFound extends T.applyErrorMatchers(
     code: S.Number,
     message: S.String,
   }),
-  [{ code: 5401 }],
+  [{ code: 5401 }, { status: 404, message: { includes: "not found" } }],
 ) {}
 
 export interface CreateV1Request {

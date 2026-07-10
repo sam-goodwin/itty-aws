@@ -143,7 +143,7 @@ export class MethodNotAllowed extends T.applyErrorMatchers(
     code: S.Number,
     message: S.String,
   }),
-  [{ code: 7001 }],
+  [{ code: 7001 }, { code: 10000 }, { code: 10405 }],
 ) {}
 
 export class MissingAuthenticationToken extends T.applyErrorMatchers(

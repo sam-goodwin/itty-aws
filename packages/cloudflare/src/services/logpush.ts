@@ -41,6 +41,30 @@ const KEY_DICTIONARY: Record<string, string> = {
   timestampFormat: "timestamp_format",
 };
 
+export class Forbidden extends T.applyErrorMatchers(
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ status: 403 }],
+) {}
+
+export class JobNotFound extends T.applyErrorMatchers(
+  S.TaggedErrorClass<JobNotFound>()("JobNotFound", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ code: 1000, message: { includes: "job not found" } }, { status: 404 }],
+) {}
+
+export class NotFound extends T.applyErrorMatchers(
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ status: 404 }],
+) {}
+
 export interface CreateEdgeRequest {
   /** Identifier. */
   zoneId: string;
@@ -3938,7 +3962,7 @@ export const createOwnershipForZone: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteJobForAccountError = CloudflareOpError;
+export type DeleteJobForAccountError = JobNotFound | CloudflareOpError;
 /** Deletes a Logpush job. */
 export const deleteJobForAccount: API.OperationMethod<
   DeleteJobForAccountRequest,
@@ -3948,12 +3972,12 @@ export const deleteJobForAccount: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteJobForAccountRequest,
   output: DeleteJobForAccountResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  errors: [JobNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));
 
-export type DeleteJobForZoneError = CloudflareOpError;
+export type DeleteJobForZoneError = JobNotFound | CloudflareOpError;
 /** Deletes a Logpush job. */
 export const deleteJobForZone: API.OperationMethod<
   DeleteJobForZoneRequest,
@@ -3963,7 +3987,7 @@ export const deleteJobForZone: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteJobForZoneRequest,
   output: DeleteJobForZoneResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  errors: [JobNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));
@@ -4115,7 +4139,7 @@ export const getEdge: API.PaginatedOperationMethod<
   cloudflarePaginate,
 );
 
-export type GetJobForAccountError = CloudflareOpError;
+export type GetJobForAccountError = JobNotFound | Forbidden | CloudflareOpError;
 /** Gets the details of a Logpush job. */
 export const getJobForAccount: API.OperationMethod<
   GetJobForAccountRequest,
@@ -4125,12 +4149,12 @@ export const getJobForAccount: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: GetJobForAccountRequest,
   output: GetJobForAccountResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  errors: [JobNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));
 
-export type GetJobForZoneError = CloudflareOpError;
+export type GetJobForZoneError = JobNotFound | Forbidden | CloudflareOpError;
 /** Gets the details of a Logpush job. */
 export const getJobForZone: API.OperationMethod<
   GetJobForZoneRequest,
@@ -4140,12 +4164,12 @@ export const getJobForZone: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: GetJobForZoneRequest,
   output: GetJobForZoneResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  errors: [JobNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));
 
-export type ListJobsForAccountError = CloudflareOpError;
+export type ListJobsForAccountError = Forbidden | NotFound | CloudflareOpError;
 /** Lists Logpush jobs for an account or zone. */
 export const listJobsForAccount: API.PaginatedOperationMethod<
   ListJobsForAccountRequest,
@@ -4156,7 +4180,7 @@ export const listJobsForAccount: API.PaginatedOperationMethod<
   () => ({
     input: ListJobsForAccountRequest,
     output: ListJobsForAccountResponse,
-    errors: [CloudflareRateLimited, CloudflareError],
+    errors: [Forbidden, NotFound, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
     pagination: { mode: "single", items: "result" } as const,
@@ -4164,7 +4188,7 @@ export const listJobsForAccount: API.PaginatedOperationMethod<
   cloudflarePaginate,
 );
 
-export type ListJobsForZoneError = CloudflareOpError;
+export type ListJobsForZoneError = Forbidden | NotFound | CloudflareOpError;
 /** Lists Logpush jobs for an account or zone. */
 export const listJobsForZone: API.PaginatedOperationMethod<
   ListJobsForZoneRequest,
@@ -4175,7 +4199,7 @@ export const listJobsForZone: API.PaginatedOperationMethod<
   () => ({
     input: ListJobsForZoneRequest,
     output: ListJobsForZoneResponse,
-    errors: [CloudflareRateLimited, CloudflareError],
+    errors: [Forbidden, NotFound, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
     pagination: { mode: "single", items: "result" } as const,

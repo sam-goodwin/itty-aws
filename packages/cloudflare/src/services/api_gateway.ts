@@ -84,7 +84,7 @@ export class NotEntitled extends T.applyErrorMatchers(
     code: S.Number,
     message: S.String,
   }),
-  [{ code: 10403 }],
+  [{ code: 10403 }, { code: 10404 }],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(

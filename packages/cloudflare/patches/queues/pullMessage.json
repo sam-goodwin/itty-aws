@@ -96,6 +96,12 @@
               "message": {
                 "includes": "Queue does not exist"
               }
+            },
+            {
+              "status": 404,
+              "message": {
+                "includes": "Queue does not exist"
+              }
             }
           ]
         }

@@ -44,6 +44,12 @@
           "com.cloudflare.protocols#errorMatchers": [
             {
               "code": 7003
+            },
+            {
+              "code": 7003,
+              "message": {
+                "includes": "Could not route"
+              }
             }
           ]
         }
@@ -67,32 +73,6 @@
           "com.cloudflare.protocols#errorMatchers": [
             {
               "code": 10068
-            }
-          ]
-        }
-      }
-    },
-    {
-      "op": "add",
-      "path": "/shapes/com.cloudflare.workers#InternalServerError",
-      "value": {
-        "type": "structure",
-        "members": {
-          "code": {
-            "target": "smithy.api#Integer"
-          },
-          "message": {
-            "target": "smithy.api#String"
-          }
-        },
-        "traits": {
-          "smithy.api#error": "client",
-          "com.cloudflare.protocols#errorMatchers": [
-            {
-              "code": 10002,
-              "message": {
-                "includes": "An unknown error has occurred"
-              }
             }
           ]
         }
@@ -461,9 +441,6 @@
         },
         {
           "target": "com.cloudflare.workers#InvalidWorkerScript"
-        },
-        {
-          "target": "com.cloudflare.workers#InternalServerError"
         },
         {
           "target": "com.cloudflare.workers#DurableObjectMustBeSqlite"

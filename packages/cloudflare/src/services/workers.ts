@@ -226,20 +226,12 @@ export class HyperdriveConfigNotFound extends T.applyErrorMatchers(
   [{ code: 10157 }],
 ) {}
 
-export class InternalServerError extends T.applyErrorMatchers(
-  S.TaggedErrorClass<InternalServerError>()("InternalServerError", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 10002, message: { includes: "An unknown error has occurred" } }],
-) {}
-
 export class InvalidRoute extends T.applyErrorMatchers(
   S.TaggedErrorClass<InvalidRoute>()("InvalidRoute", {
     code: S.Number,
     message: S.String,
   }),
-  [{ code: 7003 }],
+  [{ code: 7003 }, { code: 7003, message: { includes: "Could not route" } }],
 ) {}
 
 export class InvalidRoutePattern extends T.applyErrorMatchers(
@@ -336,7 +328,7 @@ export class RouteNotFound extends T.applyErrorMatchers(
     code: S.Number,
     message: S.String,
   }),
-  [{ code: 10009 }],
+  [{ code: 10009 }, { status: 404 }],
 ) {}
 
 export class ScriptModuleNotFound extends T.applyErrorMatchers(
@@ -22251,7 +22243,6 @@ export const putDomain: API.OperationMethod<
 export type PutScriptError =
   | InvalidRoute
   | InvalidWorkerScript
-  | InternalServerError
   | DurableObjectMustBeSqlite
   | DuplicateMigrationTarget
   | ScriptStartupError
@@ -22280,7 +22271,6 @@ export const putScript: API.OperationMethod<
   errors: [
     InvalidRoute,
     InvalidWorkerScript,
-    InternalServerError,
     DurableObjectMustBeSqlite,
     DuplicateMigrationTarget,
     ScriptStartupError,

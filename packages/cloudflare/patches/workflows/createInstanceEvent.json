@@ -90,6 +90,9 @@
           "com.cloudflare.protocols#errorMatchers": [
             {
               "code": 10201
+            },
+            {
+              "code": 10400
             }
           ]
         }

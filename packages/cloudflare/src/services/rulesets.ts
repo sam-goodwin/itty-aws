@@ -102,6 +102,30 @@ const KEY_DICTIONARY: Record<string, string> = {
   usernameExpression: "username_expression",
 };
 
+export class Forbidden extends T.applyErrorMatchers(
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ status: 403 }],
+) {}
+
+export class PhaseNotEntitled extends T.applyErrorMatchers(
+  S.TaggedErrorClass<PhaseNotEntitled>()("PhaseNotEntitled", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ code: 50002 }, { status: 400, message: { includes: "not entitled" } }],
+) {}
+
+export class RulesetNotFound extends T.applyErrorMatchers(
+  S.TaggedErrorClass<RulesetNotFound>()("RulesetNotFound", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ code: 10003 }, { code: 10001 }],
+) {}
+
 export interface RulesCreateForAccountRequestBodyBlockRulePosition {
   /** The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top. */
   before?: string;
@@ -9736,7 +9760,10 @@ export const createRuleForZone: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateRulesetForAccountError = CloudflareOpError;
+export type CreateRulesetForAccountError =
+  | PhaseNotEntitled
+  | Forbidden
+  | CloudflareOpError;
 /** Creates a ruleset. */
 export const createRulesetForAccount: API.OperationMethod<
   CreateRulesetForAccountRequest,
@@ -9746,12 +9773,15 @@ export const createRulesetForAccount: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateRulesetForAccountRequest,
   output: CreateRulesetForAccountResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  errors: [PhaseNotEntitled, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));
 
-export type CreateRulesetForZoneError = CloudflareOpError;
+export type CreateRulesetForZoneError =
+  | PhaseNotEntitled
+  | Forbidden
+  | CloudflareOpError;
 /** Creates a ruleset. */
 export const createRulesetForZone: API.OperationMethod<
   CreateRulesetForZoneRequest,
@@ -9761,7 +9791,7 @@ export const createRulesetForZone: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateRulesetForZoneRequest,
   output: CreateRulesetForZoneResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  errors: [PhaseNotEntitled, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));
@@ -9796,7 +9826,10 @@ export const deleteRuleForZone: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteRulesetForAccountError = CloudflareOpError;
+export type DeleteRulesetForAccountError =
+  | RulesetNotFound
+  | Forbidden
+  | CloudflareOpError;
 /** Deletes all versions of an existing account or zone ruleset. */
 export const deleteRulesetForAccount: API.OperationMethod<
   DeleteRulesetForAccountRequest,
@@ -9806,12 +9839,15 @@ export const deleteRulesetForAccount: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteRulesetForAccountRequest,
   output: DeleteRulesetForAccountResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  errors: [RulesetNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));
 
-export type DeleteRulesetForZoneError = CloudflareOpError;
+export type DeleteRulesetForZoneError =
+  | RulesetNotFound
+  | Forbidden
+  | CloudflareOpError;
 /** Deletes all versions of an existing account or zone ruleset. */
 export const deleteRulesetForZone: API.OperationMethod<
   DeleteRulesetForZoneRequest,
@@ -9821,7 +9857,7 @@ export const deleteRulesetForZone: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteRulesetForZoneRequest,
   output: DeleteRulesetForZoneResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  errors: [RulesetNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));
@@ -9856,7 +9892,10 @@ export const deleteVersionForZone: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetPhasForAccountError = CloudflareOpError;
+export type GetPhasForAccountError =
+  | RulesetNotFound
+  | Forbidden
+  | CloudflareOpError;
 /** Fetches the latest version of the account or zone entry point ruleset for a given phase. */
 export const getPhasForAccount: API.OperationMethod<
   GetPhasForAccountRequest,
@@ -9866,12 +9905,15 @@ export const getPhasForAccount: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: GetPhasForAccountRequest,
   output: GetPhasForAccountResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  errors: [RulesetNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));
 
-export type GetPhasForZoneError = CloudflareOpError;
+export type GetPhasForZoneError =
+  | RulesetNotFound
+  | Forbidden
+  | CloudflareOpError;
 /** Fetches the latest version of the account or zone entry point ruleset for a given phase. */
 export const getPhasForZone: API.OperationMethod<
   GetPhasForZoneRequest,
@@ -9881,7 +9923,7 @@ export const getPhasForZone: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: GetPhasForZoneRequest,
   output: GetPhasForZoneResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  errors: [RulesetNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));
@@ -9916,7 +9958,10 @@ export const getPhasVersionForZone: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetRulesetForAccountError = CloudflareOpError;
+export type GetRulesetForAccountError =
+  | RulesetNotFound
+  | Forbidden
+  | CloudflareOpError;
 /** Fetches the latest version of an account or zone ruleset. */
 export const getRulesetForAccount: API.OperationMethod<
   GetRulesetForAccountRequest,
@@ -9926,12 +9971,15 @@ export const getRulesetForAccount: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: GetRulesetForAccountRequest,
   output: GetRulesetForAccountResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  errors: [RulesetNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));
 
-export type GetRulesetForZoneError = CloudflareOpError;
+export type GetRulesetForZoneError =
+  | RulesetNotFound
+  | Forbidden
+  | CloudflareOpError;
 /** Fetches the latest version of an account or zone ruleset. */
 export const getRulesetForZone: API.OperationMethod<
   GetRulesetForZoneRequest,
@@ -9941,7 +9989,7 @@ export const getRulesetForZone: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: GetRulesetForZoneRequest,
   output: GetRulesetForZoneResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  errors: [RulesetNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));
@@ -10132,7 +10180,11 @@ export const patchRuleForZone: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PutPhasForAccountError = CloudflareOpError;
+export type PutPhasForAccountError =
+  | RulesetNotFound
+  | PhaseNotEntitled
+  | Forbidden
+  | CloudflareOpError;
 /** Updates an account or zone entry point ruleset, creating a new version. */
 export const putPhasForAccount: API.OperationMethod<
   PutPhasForAccountRequest,
@@ -10142,12 +10194,22 @@ export const putPhasForAccount: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: PutPhasForAccountRequest,
   output: PutPhasForAccountResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  errors: [
+    RulesetNotFound,
+    PhaseNotEntitled,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));
 
-export type PutPhasForZoneError = CloudflareOpError;
+export type PutPhasForZoneError =
+  | RulesetNotFound
+  | PhaseNotEntitled
+  | Forbidden
+  | CloudflareOpError;
 /** Updates an account or zone entry point ruleset, creating a new version. */
 export const putPhasForZone: API.OperationMethod<
   PutPhasForZoneRequest,
@@ -10157,12 +10219,21 @@ export const putPhasForZone: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: PutPhasForZoneRequest,
   output: PutPhasForZoneResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  errors: [
+    RulesetNotFound,
+    PhaseNotEntitled,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));
 
-export type UpdateRulesetForAccountError = CloudflareOpError;
+export type UpdateRulesetForAccountError =
+  | RulesetNotFound
+  | Forbidden
+  | CloudflareOpError;
 /** Updates an account or zone ruleset, creating a new version. */
 export const updateRulesetForAccount: API.OperationMethod<
   UpdateRulesetForAccountRequest,
@@ -10172,12 +10243,15 @@ export const updateRulesetForAccount: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateRulesetForAccountRequest,
   output: UpdateRulesetForAccountResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  errors: [RulesetNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));
 
-export type UpdateRulesetForZoneError = CloudflareOpError;
+export type UpdateRulesetForZoneError =
+  | RulesetNotFound
+  | Forbidden
+  | CloudflareOpError;
 /** Updates an account or zone ruleset, creating a new version. */
 export const updateRulesetForZone: API.OperationMethod<
   UpdateRulesetForZoneRequest,
@@ -10187,7 +10261,7 @@ export const updateRulesetForZone: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateRulesetForZoneRequest,
   output: UpdateRulesetForZoneResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  errors: [RulesetNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));

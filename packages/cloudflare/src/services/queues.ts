@@ -85,7 +85,7 @@ export class InvalidMessageBody extends T.applyErrorMatchers(
     code: S.Number,
     message: S.String,
   }),
-  [{ code: 10207 }],
+  [{ code: 10207 }, { code: 10013 }],
 ) {}
 
 export class InvalidQueueId extends T.applyErrorMatchers(
@@ -155,7 +155,11 @@ export class QueueNotFound extends T.applyErrorMatchers(
     code: S.Number,
     message: S.String,
   }),
-  [{ code: 11000 }],
+  [
+    { code: 11000 },
+    { code: 0, message: { includes: "Queue does not exist" } },
+    { status: 404, message: { includes: "Queue does not exist" } },
+  ],
 ) {}
 
 export class SubscriptionAlreadyExists extends T.applyErrorMatchers(

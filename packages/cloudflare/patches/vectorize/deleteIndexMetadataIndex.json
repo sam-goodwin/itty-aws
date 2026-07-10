@@ -67,6 +67,11 @@
           "com.cloudflare.protocols#errorMatchers": [
             {
               "code": 3005
+            },
+            {
+              "message": {
+                "includes": "index deleted"
+              }
             }
           ]
         }

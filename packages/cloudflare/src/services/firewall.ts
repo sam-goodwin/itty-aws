@@ -31,6 +31,22 @@ const KEY_DICTIONARY: Record<string, string> = {
   totalCount: "total_count",
 };
 
+export class AccessRuleNotFound extends T.applyErrorMatchers(
+  S.TaggedErrorClass<AccessRuleNotFound>()("AccessRuleNotFound", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ code: 10001, message: { includes: "not_found" } }, { status: 404 }],
+) {}
+
+export class DuplicateAccessRule extends T.applyErrorMatchers(
+  S.TaggedErrorClass<DuplicateAccessRule>()("DuplicateAccessRule", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ code: 10009, message: { includes: "duplicate_of_existing" } }],
+) {}
+
 export class DuplicateLockdown extends T.applyErrorMatchers(
   S.TaggedErrorClass<DuplicateLockdown>()("DuplicateLockdown", {
     code: S.Number,
@@ -4984,7 +5000,10 @@ export const bulkPutRules: API.PaginatedOperationMethod<
   cloudflarePaginate,
 );
 
-export type CreateAccessRuleForAccountError = CloudflareOpError;
+export type CreateAccessRuleForAccountError =
+  | DuplicateAccessRule
+  | Forbidden
+  | CloudflareOpError;
 /** Creates a new IP Access rule for an account or zone. The rule will apply to all zones in the account or zone. Note: To create an IP Access rule that applies to a single zone, refer to the [IP Access rules for a zone](#ip-access-rules-for-a-zone) endpoints. */
 export const createAccessRuleForAccount: API.OperationMethod<
   CreateAccessRuleForAccountRequest,
@@ -4994,12 +5013,20 @@ export const createAccessRuleForAccount: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateAccessRuleForAccountRequest,
   output: CreateAccessRuleForAccountResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  errors: [
+    DuplicateAccessRule,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));
 
-export type CreateAccessRuleForZoneError = CloudflareOpError;
+export type CreateAccessRuleForZoneError =
+  | DuplicateAccessRule
+  | Forbidden
+  | CloudflareOpError;
 /** Creates a new IP Access rule for an account or zone. The rule will apply to all zones in the account or zone. Note: To create an IP Access rule that applies to a single zone, refer to the [IP Access rules for a zone](#ip-access-rules-for-a-zone) endpoints. */
 export const createAccessRuleForZone: API.OperationMethod<
   CreateAccessRuleForZoneRequest,
@@ -5009,7 +5036,12 @@ export const createAccessRuleForZone: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateAccessRuleForZoneRequest,
   output: CreateAccessRuleForZoneResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  errors: [
+    DuplicateAccessRule,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));
@@ -5086,7 +5118,10 @@ export const createWafOverride: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteAccessRuleForAccountError = CloudflareOpError;
+export type DeleteAccessRuleForAccountError =
+  | AccessRuleNotFound
+  | Forbidden
+  | CloudflareOpError;
 /** Deletes an existing IP Access rule defined. Note: This operation will affect all zones in the account or zone. */
 export const deleteAccessRuleForAccount: API.OperationMethod<
   DeleteAccessRuleForAccountRequest,
@@ -5096,12 +5131,20 @@ export const deleteAccessRuleForAccount: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteAccessRuleForAccountRequest,
   output: DeleteAccessRuleForAccountResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  errors: [
+    AccessRuleNotFound,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));
 
-export type DeleteAccessRuleForZoneError = CloudflareOpError;
+export type DeleteAccessRuleForZoneError =
+  | AccessRuleNotFound
+  | Forbidden
+  | CloudflareOpError;
 /** Deletes an existing IP Access rule defined. Note: This operation will affect all zones in the account or zone. */
 export const deleteAccessRuleForZone: API.OperationMethod<
   DeleteAccessRuleForZoneRequest,
@@ -5111,7 +5154,12 @@ export const deleteAccessRuleForZone: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteAccessRuleForZoneRequest,
   output: DeleteAccessRuleForZoneResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  errors: [
+    AccessRuleNotFound,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));
@@ -5179,7 +5227,10 @@ export const deleteWafOverride: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetAccessRuleForAccountError = CloudflareOpError;
+export type GetAccessRuleForAccountError =
+  | AccessRuleNotFound
+  | Forbidden
+  | CloudflareOpError;
 /** Fetches the details of an IP Access rule defined. */
 export const getAccessRuleForAccount: API.OperationMethod<
   GetAccessRuleForAccountRequest,
@@ -5189,12 +5240,20 @@ export const getAccessRuleForAccount: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: GetAccessRuleForAccountRequest,
   output: GetAccessRuleForAccountResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  errors: [
+    AccessRuleNotFound,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));
 
-export type GetAccessRuleForZoneError = CloudflareOpError;
+export type GetAccessRuleForZoneError =
+  | AccessRuleNotFound
+  | Forbidden
+  | CloudflareOpError;
 /** Fetches the details of an IP Access rule defined. */
 export const getAccessRuleForZone: API.OperationMethod<
   GetAccessRuleForZoneRequest,
@@ -5204,7 +5263,12 @@ export const getAccessRuleForZone: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: GetAccessRuleForZoneRequest,
   output: GetAccessRuleForZoneResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  errors: [
+    AccessRuleNotFound,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));
@@ -5314,7 +5378,7 @@ export const getWafPackageRule: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ListAccessRulesForAccountError = CloudflareOpError;
+export type ListAccessRulesForAccountError = Forbidden | CloudflareOpError;
 /** Fetches IP Access rules of an account or zone. These rules apply to all the zones in the account or zone. You can filter the results using several optional parameters. */
 export const listAccessRulesForAccount: API.PaginatedOperationMethod<
   ListAccessRulesForAccountRequest,
@@ -5325,7 +5389,7 @@ export const listAccessRulesForAccount: API.PaginatedOperationMethod<
   () => ({
     input: ListAccessRulesForAccountRequest,
     output: ListAccessRulesForAccountResponse,
-    errors: [CloudflareRateLimited, CloudflareError],
+    errors: [Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
     pagination: {
@@ -5339,7 +5403,7 @@ export const listAccessRulesForAccount: API.PaginatedOperationMethod<
   cloudflarePaginate,
 );
 
-export type ListAccessRulesForZoneError = CloudflareOpError;
+export type ListAccessRulesForZoneError = Forbidden | CloudflareOpError;
 /** Fetches IP Access rules of an account or zone. These rules apply to all the zones in the account or zone. You can filter the results using several optional parameters. */
 export const listAccessRulesForZone: API.PaginatedOperationMethod<
   ListAccessRulesForZoneRequest,
@@ -5350,7 +5414,7 @@ export const listAccessRulesForZone: API.PaginatedOperationMethod<
   () => ({
     input: ListAccessRulesForZoneRequest,
     output: ListAccessRulesForZoneResponse,
-    errors: [CloudflareRateLimited, CloudflareError],
+    errors: [Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
     pagination: {
@@ -5539,7 +5603,10 @@ export const listWafPackages: API.PaginatedOperationMethod<
   cloudflarePaginate,
 );
 
-export type PatchAccessRuleForAccountError = CloudflareOpError;
+export type PatchAccessRuleForAccountError =
+  | AccessRuleNotFound
+  | Forbidden
+  | CloudflareOpError;
 /** Updates an IP Access rule defined. Note: This operation will affect all zones in the account or zone. */
 export const patchAccessRuleForAccount: API.OperationMethod<
   PatchAccessRuleForAccountRequest,
@@ -5549,12 +5616,20 @@ export const patchAccessRuleForAccount: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: PatchAccessRuleForAccountRequest,
   output: PatchAccessRuleForAccountResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  errors: [
+    AccessRuleNotFound,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));
 
-export type PatchAccessRuleForZoneError = CloudflareOpError;
+export type PatchAccessRuleForZoneError =
+  | AccessRuleNotFound
+  | Forbidden
+  | CloudflareOpError;
 /** Updates an IP Access rule defined. Note: This operation will affect all zones in the account or zone. */
 export const patchAccessRuleForZone: API.OperationMethod<
   PatchAccessRuleForZoneRequest,
@@ -5564,7 +5639,12 @@ export const patchAccessRuleForZone: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: PatchAccessRuleForZoneRequest,
   output: PatchAccessRuleForZoneResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  errors: [
+    AccessRuleNotFound,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));

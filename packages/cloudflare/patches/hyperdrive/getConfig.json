@@ -67,6 +67,9 @@
           "com.cloudflare.protocols#errorMatchers": [
             {
               "code": 2006
+            },
+            {
+              "status": 404
             }
           ]
         }

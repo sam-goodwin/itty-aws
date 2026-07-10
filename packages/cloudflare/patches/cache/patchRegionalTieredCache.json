@@ -43,6 +43,12 @@
           "smithy.api#error": "client",
           "com.cloudflare.protocols#errorMatchers": [
             {
+              "status": 403,
+              "message": {
+                "includes": "not available for your plan"
+              }
+            },
+            {
               "code": 1135,
               "message": {
                 "includes": "not available for your plan"

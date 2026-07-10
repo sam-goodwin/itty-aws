@@ -39,7 +39,10 @@ export class CustomCertificateNotFound extends T.applyErrorMatchers(
     code: S.Number,
     message: S.String,
   }),
-  [{ status: 404 }],
+  [
+    { status: 404 },
+    { code: 1002, message: { includes: "Invalid certificate" } },
+  ],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(

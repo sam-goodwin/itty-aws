@@ -33,7 +33,7 @@ export class HyperdriveConfigNotFound extends T.applyErrorMatchers(
     code: S.Number,
     message: S.String,
   }),
-  [{ code: 2006 }],
+  [{ code: 2006 }, { status: 404 }],
 ) {}
 
 export class InvalidHyperdriveConfig extends T.applyErrorMatchers(

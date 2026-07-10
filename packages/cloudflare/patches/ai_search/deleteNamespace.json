@@ -44,6 +44,12 @@
           "com.cloudflare.protocols#errorMatchers": [
             {
               "code": 7063
+            },
+            {
+              "status": 404,
+              "message": {
+                "includes": "namespace_not_found"
+              }
             }
           ]
         }

@@ -4005,7 +4005,7 @@ export const listEvents: API.PaginatedOperationMethod<
   cloudflarePaginate,
 );
 
-export type ListWaitingRoomsForAccountError = CloudflareOpError;
+export type ListWaitingRoomsForAccountError = Forbidden | CloudflareOpError;
 /** Lists waiting rooms for account or zone. */
 export const listWaitingRoomsForAccount: API.PaginatedOperationMethod<
   ListWaitingRoomsForAccountRequest,
@@ -4016,7 +4016,7 @@ export const listWaitingRoomsForAccount: API.PaginatedOperationMethod<
   () => ({
     input: ListWaitingRoomsForAccountRequest,
     output: ListWaitingRoomsForAccountResponse,
-    errors: [CloudflareRateLimited, CloudflareError],
+    errors: [Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
     pagination: {
@@ -4030,7 +4030,7 @@ export const listWaitingRoomsForAccount: API.PaginatedOperationMethod<
   cloudflarePaginate,
 );
 
-export type ListWaitingRoomsForZoneError = CloudflareOpError;
+export type ListWaitingRoomsForZoneError = Forbidden | CloudflareOpError;
 /** Lists waiting rooms for account or zone. */
 export const listWaitingRoomsForZone: API.PaginatedOperationMethod<
   ListWaitingRoomsForZoneRequest,
@@ -4041,7 +4041,7 @@ export const listWaitingRoomsForZone: API.PaginatedOperationMethod<
   () => ({
     input: ListWaitingRoomsForZoneRequest,
     output: ListWaitingRoomsForZoneResponse,
-    errors: [CloudflareRateLimited, CloudflareError],
+    errors: [Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
     pagination: {

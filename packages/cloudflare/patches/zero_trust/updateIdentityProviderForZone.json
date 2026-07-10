@@ -25,6 +25,38 @@
       "op": "replace",
       "path": "/shapes/com.cloudflare.zero_trust#UpdateIdentityProviderForZone/output/target",
       "value": "com.cloudflare.zero_trust#UpdateIdentityProviderForZoneResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.zero_trust#AccessIdentityProviderNotFound",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 12135
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.zero_trust#UpdateIdentityProviderForZone/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.zero_trust#AccessIdentityProviderNotFound"
+        }
+      ]
     }
   ]
 }

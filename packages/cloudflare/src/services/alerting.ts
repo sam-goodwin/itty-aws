@@ -69,14 +69,6 @@ export class FiltersRequired extends T.applyErrorMatchers(
   [{ code: 17103 }],
 ) {}
 
-export class InternalServerError extends T.applyErrorMatchers(
-  S.TaggedErrorClass<InternalServerError>()("InternalServerError", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 15000 }],
-) {}
-
 export class InvalidAlertType extends T.applyErrorMatchers(
   S.TaggedErrorClass<InvalidAlertType>()("InvalidAlertType", {
     code: S.Number,
@@ -3631,10 +3623,7 @@ export const deleteDestinationPagerduty: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteDestinationWebhookError =
-  | InvalidRoute
-  | InternalServerError
-  | CloudflareOpError;
+export type DeleteDestinationWebhookError = InvalidRoute | CloudflareOpError;
 /** Delete a configured webhook destination. */
 export const deleteDestinationWebhook: API.OperationMethod<
   DeleteDestinationWebhookRequest,
@@ -3644,12 +3633,7 @@ export const deleteDestinationWebhook: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteDestinationWebhookRequest,
   output: DeleteDestinationWebhookResponse,
-  errors: [
-    InvalidRoute,
-    InternalServerError,
-    CloudflareRateLimited,
-    CloudflareError,
-  ],
+  errors: [InvalidRoute, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));
@@ -3779,7 +3763,6 @@ export const getPolicy: API.OperationMethod<
 
 export type GetSilenceError =
   | InvalidRoute
-  | InternalServerError
   | SilenceNotFound
   | CloudflareOpError;
 /** Gets a specific silence for an account. */
@@ -3793,7 +3776,6 @@ export const getSilence: API.OperationMethod<
   output: GetSilenceResponse,
   errors: [
     InvalidRoute,
-    InternalServerError,
     SilenceNotFound,
     CloudflareRateLimited,
     CloudflareError,

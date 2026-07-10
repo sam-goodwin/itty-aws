@@ -25,6 +25,70 @@
       "op": "replace",
       "path": "/shapes/com.cloudflare.logpush#GetJobForZone/output/target",
       "value": "com.cloudflare.logpush#GetJobForZoneResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.logpush#JobNotFound",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 1000,
+              "message": {
+                "includes": "job not found"
+              }
+            },
+            {
+              "status": 404
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.logpush#Forbidden",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "status": 403
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.logpush#GetJobForZone/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.logpush#JobNotFound"
+        },
+        {
+          "target": "com.cloudflare.logpush#Forbidden"
+        }
+      ]
     }
   ]
 }

@@ -59,7 +59,7 @@ export class NoSuchBucket extends T.applyErrorMatchers(
     code: S.Number,
     message: S.String,
   }),
-  [{ code: 10006 }],
+  [{ code: 10006 }, { code: 40406 }],
 ) {}
 
 export class TableNotFound extends T.applyErrorMatchers(

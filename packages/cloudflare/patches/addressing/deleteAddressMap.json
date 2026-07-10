@@ -118,6 +118,12 @@
           "com.cloudflare.protocols#errorMatchers": [
             {
               "code": 1000
+            },
+            {
+              "code": 1000,
+              "message": {
+                "includes": "not_found"
+              }
             }
           ]
         }

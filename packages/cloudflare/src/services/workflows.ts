@@ -65,7 +65,7 @@ export class InstanceNotFound extends T.applyErrorMatchers(
     code: S.Number,
     message: S.String,
   }),
-  [{ code: 10400 }],
+  [{ code: 10201 }, { code: 10400 }],
 ) {}
 
 export class InvalidBody extends T.applyErrorMatchers(

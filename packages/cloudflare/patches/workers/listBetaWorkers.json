@@ -55,6 +55,12 @@
           "com.cloudflare.protocols#errorMatchers": [
             {
               "code": 7003
+            },
+            {
+              "code": 7003,
+              "message": {
+                "includes": "Could not route"
+              }
             }
           ]
         }

@@ -34,6 +34,9 @@
           "com.cloudflare.protocols#errorMatchers": [
             {
               "code": 10006
+            },
+            {
+              "code": 40406
             }
           ]
         }

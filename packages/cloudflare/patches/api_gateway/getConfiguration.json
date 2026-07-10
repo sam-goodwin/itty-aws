@@ -67,6 +67,9 @@
           "com.cloudflare.protocols#errorMatchers": [
             {
               "code": 10403
+            },
+            {
+              "code": 10404
             }
           ]
         }

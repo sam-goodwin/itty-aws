@@ -44,6 +44,12 @@
           "com.cloudflare.protocols#errorMatchers": [
             {
               "status": 404
+            },
+            {
+              "code": 1002,
+              "message": {
+                "includes": "Invalid certificate"
+              }
             }
           ]
         }

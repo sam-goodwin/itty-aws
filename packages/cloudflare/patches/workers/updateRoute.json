@@ -44,6 +44,9 @@
           "com.cloudflare.protocols#errorMatchers": [
             {
               "code": 10009
+            },
+            {
+              "status": 404
             }
           ]
         }

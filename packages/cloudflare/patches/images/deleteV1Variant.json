@@ -90,6 +90,12 @@
           "com.cloudflare.protocols#errorMatchers": [
             {
               "code": 5401
+            },
+            {
+              "status": 404,
+              "message": {
+                "includes": "not found"
+              }
             }
           ]
         }

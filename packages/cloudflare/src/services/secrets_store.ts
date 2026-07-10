@@ -39,6 +39,14 @@ export class InvalidJsonBody extends T.applyErrorMatchers(
   [{ code: 1001, message: { includes: "invalid_json_body" } }],
 ) {}
 
+export class MaximumStoresExceeded extends T.applyErrorMatchers(
+  S.TaggedErrorClass<MaximumStoresExceeded>()("MaximumStoresExceeded", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ code: 1003, message: { includes: "maximum_stores_exceeded" } }],
+) {}
+
 export class NotFound extends T.applyErrorMatchers(
   S.TaggedErrorClass<NotFound>()("NotFound", {
     code: S.Number,
@@ -928,7 +936,10 @@ export const bulkDeleteStoreSecrets: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateStoreError = CloudflareOpError;
+export type CreateStoreError =
+  | InvalidAccountId
+  | MaximumStoresExceeded
+  | CloudflareOpError;
 /** Creates a store in the account */
 export const createStore: API.OperationMethod<
   CreateStoreRequest,
@@ -938,7 +949,12 @@ export const createStore: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateStoreRequest,
   output: CreateStoreResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  errors: [
+    InvalidAccountId,
+    MaximumStoresExceeded,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));

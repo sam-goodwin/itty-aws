@@ -25,6 +25,38 @@
       "op": "replace",
       "path": "/shapes/com.cloudflare.zero_trust#CreateOrganizationForZone/output/target",
       "value": "com.cloudflare.zero_trust#CreateOrganizationForZoneResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.zero_trust#OrganizationAlreadyExists",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 11002
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.zero_trust#CreateOrganizationForZone/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.zero_trust#OrganizationAlreadyExists"
+        }
+      ]
     }
   ]
 }

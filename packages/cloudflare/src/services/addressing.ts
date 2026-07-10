@@ -57,7 +57,7 @@ export class AddressMapNotFound extends T.applyErrorMatchers(
     code: S.Number,
     message: S.String,
   }),
-  [{ code: 1000, message: { includes: "not_found" } }],
+  [{ code: 1000 }, { code: 1000, message: { includes: "not_found" } }],
 ) {}
 
 export class BgpPrefixNotFound extends T.applyErrorMatchers(
@@ -188,7 +188,11 @@ export class PrefixNotFound extends T.applyErrorMatchers(
     code: S.Number,
     message: S.String,
   }),
-  [{ code: 1000, message: { includes: "not_found" } }],
+  [
+    { code: 1000 },
+    { code: 1000, message: { includes: "not_found" } },
+    { code: 1002, message: { includes: "forbidden" } },
+  ],
 ) {}
 
 export class RegionalHostnameEmpty extends T.applyErrorMatchers(

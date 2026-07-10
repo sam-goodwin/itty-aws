@@ -48,7 +48,10 @@ export class SettingUnavailableForPlan extends T.applyErrorMatchers(
     code: S.Number,
     message: S.String,
   }),
-  [{ code: 1135, message: { includes: "not available for your plan" } }],
+  [
+    { status: 403, message: { includes: "not available for your plan" } },
+    { code: 1135, message: { includes: "not available for your plan" } },
+  ],
 ) {}
 
 export class Unauthorized extends T.applyErrorMatchers(

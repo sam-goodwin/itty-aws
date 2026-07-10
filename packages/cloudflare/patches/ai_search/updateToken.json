@@ -159,6 +159,12 @@
           "com.cloudflare.protocols#errorMatchers": [
             {
               "code": 7012
+            },
+            {
+              "status": 400,
+              "message": {
+                "includes": "invalid_token"
+              }
             }
           ]
         }

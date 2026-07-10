@@ -158,7 +158,7 @@ export class InvalidTokenCredentials extends T.applyErrorMatchers(
     code: S.Number,
     message: S.String,
   }),
-  [{ code: 7012 }],
+  [{ code: 7012 }, { status: 400, message: { includes: "invalid_token" } }],
 ) {}
 
 export class MissingSitemap extends T.applyErrorMatchers(

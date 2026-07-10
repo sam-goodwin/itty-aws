@@ -47,6 +47,12 @@
               "message": {
                 "includes": "not available for your plan"
               }
+            },
+            {
+              "code": 1135,
+              "message": {
+                "includes": "not available for your plan"
+              }
             }
           ]
         }

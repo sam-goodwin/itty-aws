@@ -47,6 +47,9 @@
               "message": {
                 "includes": "schedule_not_found"
               }
+            },
+            {
+              "status": 404
             }
           ]
         }

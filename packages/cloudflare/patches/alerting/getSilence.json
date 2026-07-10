@@ -51,29 +51,6 @@
     },
     {
       "op": "add",
-      "path": "/shapes/com.cloudflare.alerting#InternalServerError",
-      "value": {
-        "type": "structure",
-        "members": {
-          "code": {
-            "target": "smithy.api#Integer"
-          },
-          "message": {
-            "target": "smithy.api#String"
-          }
-        },
-        "traits": {
-          "smithy.api#error": "client",
-          "com.cloudflare.protocols#errorMatchers": [
-            {
-              "code": 15000
-            }
-          ]
-        }
-      }
-    },
-    {
-      "op": "add",
       "path": "/shapes/com.cloudflare.alerting#SilenceNotFound",
       "value": {
         "type": "structure",
@@ -104,9 +81,6 @@
       "value": [
         {
           "target": "com.cloudflare.alerting#InvalidRoute"
-        },
-        {
-          "target": "com.cloudflare.alerting#InternalServerError"
         },
         {
           "target": "com.cloudflare.alerting#SilenceNotFound"

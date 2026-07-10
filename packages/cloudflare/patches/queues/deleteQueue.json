@@ -34,6 +34,18 @@
           "com.cloudflare.protocols#errorMatchers": [
             {
               "code": 11000
+            },
+            {
+              "code": 0,
+              "message": {
+                "includes": "Queue does not exist"
+              }
+            },
+            {
+              "status": 404,
+              "message": {
+                "includes": "Queue does not exist"
+              }
             }
           ]
         }

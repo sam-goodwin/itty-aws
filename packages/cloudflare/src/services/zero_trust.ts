@@ -584,6 +584,25 @@ export class AccessBookmarkNotFound extends T.applyErrorMatchers(
   [{ code: 12045 }, { code: 12135 }, { code: 11021 }],
 ) {}
 
+export class AccessCertificateNotFound extends T.applyErrorMatchers(
+  S.TaggedErrorClass<AccessCertificateNotFound>()("AccessCertificateNotFound", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ code: 12135 }],
+) {}
+
+export class AccessCertificateQuotaExceeded extends T.applyErrorMatchers(
+  S.TaggedErrorClass<AccessCertificateQuotaExceeded>()(
+    "AccessCertificateQuotaExceeded",
+    {
+      code: S.Number,
+      message: S.String,
+    },
+  ),
+  [{ code: 12130, message: { includes: "maximum number of certificates" } }],
+) {}
+
 export class AccessCustomPageNotFound extends T.applyErrorMatchers(
   S.TaggedErrorClass<AccessCustomPageNotFound>()("AccessCustomPageNotFound", {
     code: S.Number,
@@ -606,6 +625,44 @@ export class AccessCustomPagesNotEntitled extends T.applyErrorMatchers(
       message: { includes: "does not have permission for custom pages" },
     },
   ],
+) {}
+
+export class AccessGroupNotFound extends T.applyErrorMatchers(
+  S.TaggedErrorClass<AccessGroupNotFound>()("AccessGroupNotFound", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ code: 12152 }],
+) {}
+
+export class AccessIdentityProviderNotFound extends T.applyErrorMatchers(
+  S.TaggedErrorClass<AccessIdentityProviderNotFound>()(
+    "AccessIdentityProviderNotFound",
+    {
+      code: S.Number,
+      message: S.String,
+    },
+  ),
+  [{ code: 12135 }],
+) {}
+
+export class AccessReferenceNotFound extends T.applyErrorMatchers(
+  S.TaggedErrorClass<AccessReferenceNotFound>()("AccessReferenceNotFound", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ status: 400, message: { includes: "not found" } }],
+) {}
+
+export class AccessServiceTokenNotFound extends T.applyErrorMatchers(
+  S.TaggedErrorClass<AccessServiceTokenNotFound>()(
+    "AccessServiceTokenNotFound",
+    {
+      code: S.Number,
+      message: S.String,
+    },
+  ),
+  [{ code: 12135 }],
 ) {}
 
 export class AccessTagNotFound extends T.applyErrorMatchers(
@@ -825,6 +882,22 @@ export class McpPortalNotFound extends T.applyErrorMatchers(
   [{ status: 404 }],
 ) {}
 
+export class OrganizationAlreadyExists extends T.applyErrorMatchers(
+  S.TaggedErrorClass<OrganizationAlreadyExists>()("OrganizationAlreadyExists", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ code: 11002 }],
+) {}
+
+export class OrganizationNotFound extends T.applyErrorMatchers(
+  S.TaggedErrorClass<OrganizationNotFound>()("OrganizationNotFound", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ status: 404 }],
+) {}
+
 export class PostureRuleNotFound extends T.applyErrorMatchers(
   S.TaggedErrorClass<PostureRuleNotFound>()("PostureRuleNotFound", {
     code: S.Number,
@@ -876,7 +949,7 @@ export class TunnelNotFound extends T.applyErrorMatchers(
     code: S.Number,
     message: S.String,
   }),
-  [{ code: 1002 }],
+  [{ code: 1002 }, { status: 404 }],
 ) {}
 
 export class TunnelTokenNotFound extends T.applyErrorMatchers(
@@ -113215,7 +113288,9 @@ export const createAccessApplicationCaForZone: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateAccessApplicationForAccountError = CloudflareOpError;
+export type CreateAccessApplicationForAccountError =
+  | AccessReferenceNotFound
+  | CloudflareOpError;
 /** Adds a new application to Access. */
 export const createAccessApplicationForAccount: API.OperationMethod<
   CreateAccessApplicationForAccountRequest,
@@ -113225,12 +113300,14 @@ export const createAccessApplicationForAccount: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateAccessApplicationForAccountRequest,
   output: CreateAccessApplicationForAccountResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  errors: [AccessReferenceNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));
 
-export type CreateAccessApplicationForZoneError = CloudflareOpError;
+export type CreateAccessApplicationForZoneError =
+  | AccessReferenceNotFound
+  | CloudflareOpError;
 /** Adds a new application to Access. */
 export const createAccessApplicationForZone: API.OperationMethod<
   CreateAccessApplicationForZoneRequest,
@@ -113240,7 +113317,7 @@ export const createAccessApplicationForZone: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateAccessApplicationForZoneRequest,
   output: CreateAccessApplicationForZoneResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  errors: [AccessReferenceNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));
@@ -113307,7 +113384,9 @@ export const createAccessBookmark: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateAccessCertificateForAccountError = CloudflareOpError;
+export type CreateAccessCertificateForAccountError =
+  | AccessCertificateQuotaExceeded
+  | CloudflareOpError;
 /** Adds a new mTLS root certificate to Access. */
 export const createAccessCertificateForAccount: API.OperationMethod<
   CreateAccessCertificateForAccountRequest,
@@ -113317,12 +113396,18 @@ export const createAccessCertificateForAccount: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateAccessCertificateForAccountRequest,
   output: CreateAccessCertificateForAccountResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  errors: [
+    AccessCertificateQuotaExceeded,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));
 
-export type CreateAccessCertificateForZoneError = CloudflareOpError;
+export type CreateAccessCertificateForZoneError =
+  | AccessCertificateQuotaExceeded
+  | CloudflareOpError;
 /** Adds a new mTLS root certificate to Access. */
 export const createAccessCertificateForZone: API.OperationMethod<
   CreateAccessCertificateForZoneRequest,
@@ -113332,7 +113417,11 @@ export const createAccessCertificateForZone: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateAccessCertificateForZoneRequest,
   output: CreateAccessCertificateForZoneResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  errors: [
+    AccessCertificateQuotaExceeded,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));
@@ -114191,7 +114280,9 @@ export const createNetworkVirtualNetwork: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateOrganizationForAccountError = CloudflareOpError;
+export type CreateOrganizationForAccountError =
+  | OrganizationAlreadyExists
+  | CloudflareOpError;
 /** Sets up a Zero Trust organization for your account or zone. */
 export const createOrganizationForAccount: API.OperationMethod<
   CreateOrganizationForAccountRequest,
@@ -114201,12 +114292,14 @@ export const createOrganizationForAccount: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateOrganizationForAccountRequest,
   output: CreateOrganizationForAccountResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  errors: [OrganizationAlreadyExists, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));
 
-export type CreateOrganizationForZoneError = CloudflareOpError;
+export type CreateOrganizationForZoneError =
+  | OrganizationAlreadyExists
+  | CloudflareOpError;
 /** Sets up a Zero Trust organization for your account or zone. */
 export const createOrganizationForZone: API.OperationMethod<
   CreateOrganizationForZoneRequest,
@@ -114216,7 +114309,7 @@ export const createOrganizationForZone: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateOrganizationForZoneRequest,
   output: CreateOrganizationForZoneResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  errors: [OrganizationAlreadyExists, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));
@@ -114459,7 +114552,9 @@ export const deleteAccessBookmark: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteAccessCertificateForAccountError = CloudflareOpError;
+export type DeleteAccessCertificateForAccountError =
+  | AccessCertificateNotFound
+  | CloudflareOpError;
 /** Deletes an mTLS certificate. */
 export const deleteAccessCertificateForAccount: API.OperationMethod<
   DeleteAccessCertificateForAccountRequest,
@@ -114469,12 +114564,14 @@ export const deleteAccessCertificateForAccount: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteAccessCertificateForAccountRequest,
   output: DeleteAccessCertificateForAccountResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  errors: [AccessCertificateNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));
 
-export type DeleteAccessCertificateForZoneError = CloudflareOpError;
+export type DeleteAccessCertificateForZoneError =
+  | AccessCertificateNotFound
+  | CloudflareOpError;
 /** Deletes an mTLS certificate. */
 export const deleteAccessCertificateForZone: API.OperationMethod<
   DeleteAccessCertificateForZoneRequest,
@@ -114484,7 +114581,7 @@ export const deleteAccessCertificateForZone: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteAccessCertificateForZoneRequest,
   output: DeleteAccessCertificateForZoneResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  errors: [AccessCertificateNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));
@@ -114521,7 +114618,9 @@ export const deleteAccessGatewayCa: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteAccessGroupForAccountError = CloudflareOpError;
+export type DeleteAccessGroupForAccountError =
+  | AccessGroupNotFound
+  | CloudflareOpError;
 /** Deletes an Access group. */
 export const deleteAccessGroupForAccount: API.OperationMethod<
   DeleteAccessGroupForAccountRequest,
@@ -114531,12 +114630,14 @@ export const deleteAccessGroupForAccount: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteAccessGroupForAccountRequest,
   output: DeleteAccessGroupForAccountResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  errors: [AccessGroupNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));
 
-export type DeleteAccessGroupForZoneError = CloudflareOpError;
+export type DeleteAccessGroupForZoneError =
+  | AccessGroupNotFound
+  | CloudflareOpError;
 /** Deletes an Access group. */
 export const deleteAccessGroupForZone: API.OperationMethod<
   DeleteAccessGroupForZoneRequest,
@@ -114546,7 +114647,7 @@ export const deleteAccessGroupForZone: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteAccessGroupForZoneRequest,
   output: DeleteAccessGroupForZoneResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  errors: [AccessGroupNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));
@@ -114599,7 +114700,9 @@ export const deleteAccessPolicy: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteAccessServiceTokenForAccountError = CloudflareOpError;
+export type DeleteAccessServiceTokenForAccountError =
+  | AccessServiceTokenNotFound
+  | CloudflareOpError;
 /** Deletes a service token. */
 export const deleteAccessServiceTokenForAccount: API.OperationMethod<
   DeleteAccessServiceTokenForAccountRequest,
@@ -114609,12 +114712,14 @@ export const deleteAccessServiceTokenForAccount: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteAccessServiceTokenForAccountRequest,
   output: DeleteAccessServiceTokenForAccountResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  errors: [AccessServiceTokenNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));
 
-export type DeleteAccessServiceTokenForZoneError = CloudflareOpError;
+export type DeleteAccessServiceTokenForZoneError =
+  | AccessServiceTokenNotFound
+  | CloudflareOpError;
 /** Deletes a service token. */
 export const deleteAccessServiceTokenForZone: API.OperationMethod<
   DeleteAccessServiceTokenForZoneRequest,
@@ -114624,7 +114729,7 @@ export const deleteAccessServiceTokenForZone: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteAccessServiceTokenForZoneRequest,
   output: DeleteAccessServiceTokenForZoneResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  errors: [AccessServiceTokenNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));
@@ -115195,7 +115300,9 @@ export const deleteGatewayRule: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteIdentityProviderForAccountError = CloudflareOpError;
+export type DeleteIdentityProviderForAccountError =
+  | AccessIdentityProviderNotFound
+  | CloudflareOpError;
 /** Deletes an identity provider from Access. */
 export const deleteIdentityProviderForAccount: API.OperationMethod<
   DeleteIdentityProviderForAccountRequest,
@@ -115205,12 +115312,18 @@ export const deleteIdentityProviderForAccount: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteIdentityProviderForAccountRequest,
   output: DeleteIdentityProviderForAccountResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  errors: [
+    AccessIdentityProviderNotFound,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));
 
-export type DeleteIdentityProviderForZoneError = CloudflareOpError;
+export type DeleteIdentityProviderForZoneError =
+  | AccessIdentityProviderNotFound
+  | CloudflareOpError;
 /** Deletes an identity provider from Access. */
 export const deleteIdentityProviderForZone: API.OperationMethod<
   DeleteIdentityProviderForZoneRequest,
@@ -115220,7 +115333,11 @@ export const deleteIdentityProviderForZone: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteIdentityProviderForZoneRequest,
   output: DeleteIdentityProviderForZoneResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  errors: [
+    AccessIdentityProviderNotFound,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));
@@ -115654,7 +115771,9 @@ export const getAccessBookmark: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetAccessCertificateForAccountError = CloudflareOpError;
+export type GetAccessCertificateForAccountError =
+  | AccessCertificateNotFound
+  | CloudflareOpError;
 /** Fetches a single mTLS certificate. */
 export const getAccessCertificateForAccount: API.OperationMethod<
   GetAccessCertificateForAccountRequest,
@@ -115664,12 +115783,14 @@ export const getAccessCertificateForAccount: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: GetAccessCertificateForAccountRequest,
   output: GetAccessCertificateForAccountResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  errors: [AccessCertificateNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));
 
-export type GetAccessCertificateForZoneError = CloudflareOpError;
+export type GetAccessCertificateForZoneError =
+  | AccessCertificateNotFound
+  | CloudflareOpError;
 /** Fetches a single mTLS certificate. */
 export const getAccessCertificateForZone: API.OperationMethod<
   GetAccessCertificateForZoneRequest,
@@ -115679,7 +115800,7 @@ export const getAccessCertificateForZone: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: GetAccessCertificateForZoneRequest,
   output: GetAccessCertificateForZoneResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  errors: [AccessCertificateNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));
@@ -115739,7 +115860,9 @@ export const getAccessCustomPage: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetAccessGroupForAccountError = CloudflareOpError;
+export type GetAccessGroupForAccountError =
+  | AccessGroupNotFound
+  | CloudflareOpError;
 /** Fetches a single Access group. */
 export const getAccessGroupForAccount: API.OperationMethod<
   GetAccessGroupForAccountRequest,
@@ -115749,12 +115872,14 @@ export const getAccessGroupForAccount: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: GetAccessGroupForAccountRequest,
   output: GetAccessGroupForAccountResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  errors: [AccessGroupNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));
 
-export type GetAccessGroupForZoneError = CloudflareOpError;
+export type GetAccessGroupForZoneError =
+  | AccessGroupNotFound
+  | CloudflareOpError;
 /** Fetches a single Access group. */
 export const getAccessGroupForZone: API.OperationMethod<
   GetAccessGroupForZoneRequest,
@@ -115764,7 +115889,7 @@ export const getAccessGroupForZone: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: GetAccessGroupForZoneRequest,
   output: GetAccessGroupForZoneResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  errors: [AccessGroupNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));
@@ -115847,7 +115972,9 @@ export const getAccessSamlCertificate: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetAccessServiceTokenForAccountError = CloudflareOpError;
+export type GetAccessServiceTokenForAccountError =
+  | AccessServiceTokenNotFound
+  | CloudflareOpError;
 /** Fetches a single service token. */
 export const getAccessServiceTokenForAccount: API.OperationMethod<
   GetAccessServiceTokenForAccountRequest,
@@ -115857,12 +115984,14 @@ export const getAccessServiceTokenForAccount: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: GetAccessServiceTokenForAccountRequest,
   output: GetAccessServiceTokenForAccountResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  errors: [AccessServiceTokenNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));
 
-export type GetAccessServiceTokenForZoneError = CloudflareOpError;
+export type GetAccessServiceTokenForZoneError =
+  | AccessServiceTokenNotFound
+  | CloudflareOpError;
 /** Fetches a single service token. */
 export const getAccessServiceTokenForZone: API.OperationMethod<
   GetAccessServiceTokenForZoneRequest,
@@ -115872,7 +116001,7 @@ export const getAccessServiceTokenForZone: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: GetAccessServiceTokenForZoneRequest,
   output: GetAccessServiceTokenForZoneResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  errors: [AccessServiceTokenNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));
@@ -116915,7 +117044,10 @@ export const getGatewayRule: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetIdentityProviderForAccountError = CloudflareOpError;
+export type GetIdentityProviderForAccountError =
+  | AccessIdentityProviderNotFound
+  | Forbidden
+  | CloudflareOpError;
 /** Fetches a configured identity provider. */
 export const getIdentityProviderForAccount: API.OperationMethod<
   GetIdentityProviderForAccountRequest,
@@ -116925,12 +117057,20 @@ export const getIdentityProviderForAccount: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: GetIdentityProviderForAccountRequest,
   output: GetIdentityProviderForAccountResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  errors: [
+    AccessIdentityProviderNotFound,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));
 
-export type GetIdentityProviderForZoneError = CloudflareOpError;
+export type GetIdentityProviderForZoneError =
+  | AccessIdentityProviderNotFound
+  | Forbidden
+  | CloudflareOpError;
 /** Fetches a configured identity provider. */
 export const getIdentityProviderForZone: API.OperationMethod<
   GetIdentityProviderForZoneRequest,
@@ -116940,7 +117080,12 @@ export const getIdentityProviderForZone: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: GetIdentityProviderForZoneRequest,
   output: GetIdentityProviderForZoneResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  errors: [
+    AccessIdentityProviderNotFound,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));
@@ -117497,7 +117642,9 @@ export const listAccessApplicationPolicyTestUsers: API.PaginatedOperationMethod<
   cloudflarePaginate,
 );
 
-export type ListAccessApplicationsForAccountError = CloudflareOpError;
+export type ListAccessApplicationsForAccountError =
+  | AccessReferenceNotFound
+  | CloudflareOpError;
 /** Lists all Access applications in an account or zone. */
 export const listAccessApplicationsForAccount: API.PaginatedOperationMethod<
   ListAccessApplicationsForAccountRequest,
@@ -117508,7 +117655,7 @@ export const listAccessApplicationsForAccount: API.PaginatedOperationMethod<
   () => ({
     input: ListAccessApplicationsForAccountRequest,
     output: ListAccessApplicationsForAccountResponse,
-    errors: [CloudflareRateLimited, CloudflareError],
+    errors: [AccessReferenceNotFound, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
     pagination: {
@@ -117522,7 +117669,9 @@ export const listAccessApplicationsForAccount: API.PaginatedOperationMethod<
   cloudflarePaginate,
 );
 
-export type ListAccessApplicationsForZoneError = CloudflareOpError;
+export type ListAccessApplicationsForZoneError =
+  | AccessReferenceNotFound
+  | CloudflareOpError;
 /** Lists all Access applications in an account or zone. */
 export const listAccessApplicationsForZone: API.PaginatedOperationMethod<
   ListAccessApplicationsForZoneRequest,
@@ -117533,7 +117682,7 @@ export const listAccessApplicationsForZone: API.PaginatedOperationMethod<
   () => ({
     input: ListAccessApplicationsForZoneRequest,
     output: ListAccessApplicationsForZoneResponse,
-    errors: [CloudflareRateLimited, CloudflareError],
+    errors: [AccessReferenceNotFound, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
     pagination: {
@@ -118966,7 +119115,9 @@ export const listNetworkVirtualNetworks: API.PaginatedOperationMethod<
   cloudflarePaginate,
 );
 
-export type ListOrganizationsForAccountError = CloudflareOpError;
+export type ListOrganizationsForAccountError =
+  | OrganizationNotFound
+  | CloudflareOpError;
 /** Returns the configuration for your Zero Trust organization. */
 export const listOrganizationsForAccount: API.OperationMethod<
   ListOrganizationsForAccountRequest,
@@ -118976,12 +119127,14 @@ export const listOrganizationsForAccount: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: ListOrganizationsForAccountRequest,
   output: ListOrganizationsForAccountResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  errors: [OrganizationNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));
 
-export type ListOrganizationsForZoneError = CloudflareOpError;
+export type ListOrganizationsForZoneError =
+  | OrganizationNotFound
+  | CloudflareOpError;
 /** Returns the configuration for your Zero Trust organization. */
 export const listOrganizationsForZone: API.OperationMethod<
   ListOrganizationsForZoneRequest,
@@ -118991,7 +119144,7 @@ export const listOrganizationsForZone: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: ListOrganizationsForZoneRequest,
   output: ListOrganizationsForZoneResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  errors: [OrganizationNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));
@@ -120342,7 +120495,9 @@ export const updateAccessAiControlMcpServer: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateAccessApplicationForAccountError = CloudflareOpError;
+export type UpdateAccessApplicationForAccountError =
+  | AccessReferenceNotFound
+  | CloudflareOpError;
 /** Updates an Access application. */
 export const updateAccessApplicationForAccount: API.OperationMethod<
   UpdateAccessApplicationForAccountRequest,
@@ -120352,12 +120507,14 @@ export const updateAccessApplicationForAccount: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateAccessApplicationForAccountRequest,
   output: UpdateAccessApplicationForAccountResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  errors: [AccessReferenceNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));
 
-export type UpdateAccessApplicationForZoneError = CloudflareOpError;
+export type UpdateAccessApplicationForZoneError =
+  | AccessReferenceNotFound
+  | CloudflareOpError;
 /** Updates an Access application. */
 export const updateAccessApplicationForZone: API.OperationMethod<
   UpdateAccessApplicationForZoneRequest,
@@ -120367,7 +120524,7 @@ export const updateAccessApplicationForZone: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateAccessApplicationForZoneRequest,
   output: UpdateAccessApplicationForZoneResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  errors: [AccessReferenceNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));
@@ -120419,7 +120576,9 @@ export const updateAccessBookmark: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateAccessCertificateForAccountError = CloudflareOpError;
+export type UpdateAccessCertificateForAccountError =
+  | AccessCertificateNotFound
+  | CloudflareOpError;
 /** Updates a configured mTLS certificate. */
 export const updateAccessCertificateForAccount: API.OperationMethod<
   UpdateAccessCertificateForAccountRequest,
@@ -120429,12 +120588,14 @@ export const updateAccessCertificateForAccount: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateAccessCertificateForAccountRequest,
   output: UpdateAccessCertificateForAccountResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  errors: [AccessCertificateNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));
 
-export type UpdateAccessCertificateForZoneError = CloudflareOpError;
+export type UpdateAccessCertificateForZoneError =
+  | AccessCertificateNotFound
+  | CloudflareOpError;
 /** Updates a configured mTLS certificate. */
 export const updateAccessCertificateForZone: API.OperationMethod<
   UpdateAccessCertificateForZoneRequest,
@@ -120444,7 +120605,7 @@ export const updateAccessCertificateForZone: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateAccessCertificateForZoneRequest,
   output: UpdateAccessCertificateForZoneResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  errors: [AccessCertificateNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));
@@ -120927,7 +121088,9 @@ export const updateGatewayRule: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateIdentityProviderForAccountError = CloudflareOpError;
+export type UpdateIdentityProviderForAccountError =
+  | AccessIdentityProviderNotFound
+  | CloudflareOpError;
 /** Updates a configured identity provider. */
 export const updateIdentityProviderForAccount: API.OperationMethod<
   UpdateIdentityProviderForAccountRequest,
@@ -120937,12 +121100,18 @@ export const updateIdentityProviderForAccount: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateIdentityProviderForAccountRequest,
   output: UpdateIdentityProviderForAccountResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  errors: [
+    AccessIdentityProviderNotFound,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));
 
-export type UpdateIdentityProviderForZoneError = CloudflareOpError;
+export type UpdateIdentityProviderForZoneError =
+  | AccessIdentityProviderNotFound
+  | CloudflareOpError;
 /** Updates a configured identity provider. */
 export const updateIdentityProviderForZone: API.OperationMethod<
   UpdateIdentityProviderForZoneRequest,
@@ -120952,7 +121121,11 @@ export const updateIdentityProviderForZone: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateIdentityProviderForZoneRequest,
   output: UpdateIdentityProviderForZoneResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  errors: [
+    AccessIdentityProviderNotFound,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));
