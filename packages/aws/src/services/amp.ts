@@ -1032,7 +1032,7 @@ export const DescribeAlertManagerDefinitionRequest =
   }) as any as S.Schema<DescribeAlertManagerDefinitionRequest>;
 export interface AlertManagerDefinitionDescription {
   status: AlertManagerDefinitionStatus;
-  data: Uint8Array;
+  data?: Uint8Array;
   createdAt: Date;
   modifiedAt: Date;
 }
@@ -1040,7 +1040,7 @@ export const AlertManagerDefinitionDescription =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     S.Struct({
       status: AlertManagerDefinitionStatus,
-      data: T.Blob,
+      data: S.optional(T.Blob),
       createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
       modifiedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
     }),
@@ -1889,7 +1889,7 @@ export interface RuleGroupsNamespaceDescription {
   arn: string;
   name: string;
   status: RuleGroupsNamespaceStatus;
-  data: Uint8Array;
+  data?: Uint8Array;
   createdAt: Date;
   modifiedAt: Date;
   tags?: { [key: string]: string | undefined };
@@ -1900,7 +1900,7 @@ export const RuleGroupsNamespaceDescription =
       arn: S.String,
       name: S.String,
       status: RuleGroupsNamespaceStatus,
-      data: T.Blob,
+      data: S.optional(T.Blob),
       createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
       modifiedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
       tags: S.optional(TagMap),

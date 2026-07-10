@@ -18742,6 +18742,17 @@ export class ColumnStatisticsTaskRunningException extends S.TaggedErrorClass<Col
   "ColumnStatisticsTaskRunningException",
   { Message: S.optional(S.String) },
 ) {}
+export class GlueRoleNotAssumable extends S.TaggedErrorClass<GlueRoleNotAssumable>()(
+  "GlueRoleNotAssumable",
+  {
+    Message: S.optional(S.String),
+    FromFederationSource: S.optional(S.Boolean),
+  },
+  T.SyntheticError({
+    from: "InvalidInputException",
+    message: { includes: "unable to assume" },
+  }),
+).pipe(C.withRetryableError) {}
 export class IdempotentParameterMismatchException extends S.TaggedErrorClass<IdempotentParameterMismatchException>()(
   "IdempotentParameterMismatchException",
   { Message: S.optional(S.String) },
@@ -19672,6 +19683,7 @@ export type CreateCrawlerError =
   | InvalidInputException
   | OperationTimeoutException
   | ResourceNumberLimitExceededException
+  | GlueRoleNotAssumable
   | CommonErrors;
 /**
  * Creates a new crawler with specified targets, role, configuration, and optional schedule.
@@ -19691,6 +19703,7 @@ export const createCrawler: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
     ResourceNumberLimitExceededException,
+    GlueRoleNotAssumable,
   ],
   operationName: "CreateCrawler",
 }));
@@ -20029,6 +20042,7 @@ export type CreateJobError =
   | InvalidInputException
   | OperationTimeoutException
   | ResourceNumberLimitExceededException
+  | GlueRoleNotAssumable
   | CommonErrors;
 /**
  * Creates a new job definition.
@@ -20049,6 +20063,7 @@ export const createJob: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
     ResourceNumberLimitExceededException,
+    GlueRoleNotAssumable,
   ],
   operationName: "CreateJob",
 }));
@@ -27503,6 +27518,7 @@ export type UpdateCrawlerError =
   | InvalidInputException
   | OperationTimeoutException
   | VersionMismatchException
+  | GlueRoleNotAssumable
   | CommonErrors;
 /**
  * Updates a crawler. If a crawler is
@@ -27523,6 +27539,7 @@ export const updateCrawler: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
     VersionMismatchException,
+    GlueRoleNotAssumable,
   ],
   operationName: "UpdateCrawler",
 }));
@@ -27807,6 +27824,7 @@ export type UpdateJobError =
   | InternalServiceException
   | InvalidInputException
   | OperationTimeoutException
+  | GlueRoleNotAssumable
   | CommonErrors;
 /**
  * Updates an existing job definition. The previous job definition is completely overwritten by this information.
@@ -27825,6 +27843,7 @@ export const updateJob: API.OperationMethod<
     InternalServiceException,
     InvalidInputException,
     OperationTimeoutException,
+    GlueRoleNotAssumable,
   ],
   operationName: "UpdateJob",
 }));

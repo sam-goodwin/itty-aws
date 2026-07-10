@@ -2592,6 +2592,10 @@ export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuo
     quotaCode: S.optional(S.String),
   },
 ).pipe(C.withQuotaError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  {},
+) {}
 export class InvalidStateException extends S.TaggedErrorClass<InvalidStateException>()(
   "InvalidStateException",
   { message: S.String },
@@ -2684,6 +2688,7 @@ export const untagResource: API.OperationMethod<
 export type CreatePolicyStoreError =
   | ConflictException
   | ServiceQuotaExceededException
+  | ValidationException
   | CommonErrors;
 /**
  * Creates a policy store. A policy store is a container for policy resources.
@@ -2700,10 +2705,17 @@ export const createPolicyStore: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreatePolicyStoreInput,
   output: CreatePolicyStoreOutput,
-  errors: [ConflictException, ServiceQuotaExceededException],
+  errors: [
+    ConflictException,
+    ServiceQuotaExceededException,
+    ValidationException,
+  ],
   operationName: "CreatePolicyStore",
 }));
-export type GetPolicyStoreError = ResourceNotFoundException | CommonErrors;
+export type GetPolicyStoreError =
+  | ResourceNotFoundException
+  | ValidationException
+  | CommonErrors;
 /**
  * Retrieves details about a policy store.
  */
@@ -2715,12 +2727,13 @@ export const getPolicyStore: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetPolicyStoreInput,
   output: GetPolicyStoreOutput,
-  errors: [ResourceNotFoundException],
+  errors: [ResourceNotFoundException, ValidationException],
   operationName: "GetPolicyStore",
 }));
 export type UpdatePolicyStoreError =
   | ConflictException
   | ResourceNotFoundException
+  | ValidationException
   | CommonErrors;
 /**
  * Modifies the validation setting for a policy store.
@@ -2735,7 +2748,7 @@ export const updatePolicyStore: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdatePolicyStoreInput,
   output: UpdatePolicyStoreOutput,
-  errors: [ConflictException, ResourceNotFoundException],
+  errors: [ConflictException, ResourceNotFoundException, ValidationException],
   operationName: "UpdatePolicyStore",
 }));
 export type DeletePolicyStoreError = InvalidStateException | CommonErrors;
@@ -2791,7 +2804,10 @@ export const listPolicyStores: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
-export type BatchIsAuthorizedError = ResourceNotFoundException | CommonErrors;
+export type BatchIsAuthorizedError =
+  | ResourceNotFoundException
+  | ValidationException
+  | CommonErrors;
 /**
  * Makes a series of decisions about multiple authorization requests for one principal or resource. Each request contains the equivalent content of an `IsAuthorized` request: principal, action, resource, and context. Either the `principal` or the `resource` parameter must be identical across all requests. For example, Verified Permissions won't evaluate a pair of requests where `bob` views `photo1` and `alice` views `photo2`. Authorization of `bob` to view `photo1` and `photo2`, or `bob` and `alice` to view `photo1`, are valid batches.
  *
@@ -2809,7 +2825,7 @@ export const batchIsAuthorized: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchIsAuthorizedInput,
   output: BatchIsAuthorizedOutput,
-  errors: [ResourceNotFoundException],
+  errors: [ResourceNotFoundException, ValidationException],
   operationName: "BatchIsAuthorized",
 }));
 export type BatchIsAuthorizedWithTokenError =
@@ -2835,7 +2851,10 @@ export const batchIsAuthorizedWithToken: API.OperationMethod<
   errors: [ResourceNotFoundException],
   operationName: "BatchIsAuthorizedWithToken",
 }));
-export type GetSchemaError = ResourceNotFoundException | CommonErrors;
+export type GetSchemaError =
+  | ResourceNotFoundException
+  | ValidationException
+  | CommonErrors;
 /**
  * Retrieve the details for the specified schema in the specified policy store.
  */
@@ -2847,10 +2866,13 @@ export const getSchema: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSchemaInput,
   output: GetSchemaOutput,
-  errors: [ResourceNotFoundException],
+  errors: [ResourceNotFoundException, ValidationException],
   operationName: "GetSchema",
 }));
-export type IsAuthorizedError = ResourceNotFoundException | CommonErrors;
+export type IsAuthorizedError =
+  | ResourceNotFoundException
+  | ValidationException
+  | CommonErrors;
 /**
  * Makes an authorization decision about a service request described in the parameters. The information in the parameters can also define additional context that Verified Permissions can include in the evaluation. The request is evaluated against all matching policies in the specified policy store. The result of the decision is either `Allow` or `Deny`, along with a list of the policies that resulted in the decision.
  */
@@ -2862,11 +2884,12 @@ export const isAuthorized: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: IsAuthorizedInput,
   output: IsAuthorizedOutput,
-  errors: [ResourceNotFoundException],
+  errors: [ResourceNotFoundException, ValidationException],
   operationName: "IsAuthorized",
 }));
 export type IsAuthorizedWithTokenError =
   | ResourceNotFoundException
+  | ValidationException
   | CommonErrors;
 /**
  * Makes an authorization decision about a service request described in the parameters. The principal in this request comes from an external identity source in the form of an identity token formatted as a JSON web token (JWT). The information in the parameters can also define additional context that Verified Permissions can include in the evaluation. The request is evaluated against all matching policies in the specified policy store. The result of the decision is either `Allow` or `Deny`, along with a list of the policies that resulted in the decision.
@@ -2883,13 +2906,14 @@ export const isAuthorizedWithToken: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: IsAuthorizedWithTokenInput,
   output: IsAuthorizedWithTokenOutput,
-  errors: [ResourceNotFoundException],
+  errors: [ResourceNotFoundException, ValidationException],
   operationName: "IsAuthorizedWithToken",
 }));
 export type PutSchemaError =
   | ConflictException
   | ResourceNotFoundException
   | ServiceQuotaExceededException
+  | ValidationException
   | CommonErrors;
 /**
  * Creates or updates the policy schema in the specified policy store. The schema is used to validate any Cedar policies and policy templates submitted to the policy store. Any changes to the schema validate only policies and templates submitted after the schema change. Existing policies and templates are not re-evaluated against the changed schema. If you later update a policy, then it is evaluated against the new schema at that time.
@@ -2908,6 +2932,7 @@ export const putSchema: API.OperationMethod<
     ConflictException,
     ResourceNotFoundException,
     ServiceQuotaExceededException,
+    ValidationException,
   ],
   operationName: "PutSchema",
 }));
@@ -3056,6 +3081,7 @@ export type CreatePolicyError =
   | ConflictException
   | ResourceNotFoundException
   | ServiceQuotaExceededException
+  | ValidationException
   | CommonErrors;
 /**
  * Creates a Cedar policy and saves it in the specified policy store. You can create either a static policy or a policy linked to a policy template.
@@ -3080,10 +3106,14 @@ export const createPolicy: API.OperationMethod<
     ConflictException,
     ResourceNotFoundException,
     ServiceQuotaExceededException,
+    ValidationException,
   ],
   operationName: "CreatePolicy",
 }));
-export type GetPolicyError = ResourceNotFoundException | CommonErrors;
+export type GetPolicyError =
+  | ResourceNotFoundException
+  | ValidationException
+  | CommonErrors;
 /**
  * Retrieves information about the specified policy.
  */
@@ -3095,13 +3125,14 @@ export const getPolicy: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetPolicyInput,
   output: GetPolicyOutput,
-  errors: [ResourceNotFoundException],
+  errors: [ResourceNotFoundException, ValidationException],
   operationName: "GetPolicy",
 }));
 export type UpdatePolicyError =
   | ConflictException
   | ResourceNotFoundException
   | ServiceQuotaExceededException
+  | ValidationException
   | CommonErrors;
 /**
  * Modifies a Cedar static policy in the specified policy store. You can change only certain elements of the UpdatePolicyDefinition parameter. You can directly update only static policies. To change a template-linked policy, you must update the template instead, using UpdatePolicyTemplate.
@@ -3140,6 +3171,7 @@ export const updatePolicy: API.OperationMethod<
     ConflictException,
     ResourceNotFoundException,
     ServiceQuotaExceededException,
+    ValidationException,
   ],
   operationName: "UpdatePolicy",
 }));

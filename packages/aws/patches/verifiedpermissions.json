@@ -1,0 +1,15 @@
+{
+  "operations": {
+    "createPolicyStore": { "errors": ["ValidationException"] },
+    "updatePolicyStore": { "errors": ["ValidationException"] },
+    "getPolicyStore": { "errors": ["ValidationException"] },
+    "createPolicy": { "errors": ["ValidationException"] },
+    "updatePolicy": { "errors": ["ValidationException"] },
+    "getPolicy": { "errors": ["ValidationException"] },
+    "putSchema": { "errors": ["ValidationException"] },
+    "getSchema": { "errors": ["ValidationException"] },
+    "isAuthorized": { "errors": ["ValidationException"] },
+    "isAuthorizedWithToken": { "errors": ["ValidationException"] },
+    "batchIsAuthorized": { "errors": ["ValidationException"] }
+  }
+}

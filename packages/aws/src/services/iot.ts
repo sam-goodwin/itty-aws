@@ -15245,6 +15245,14 @@ export class CertificateStateException extends S.TaggedErrorClass<CertificateSta
   "CertificateStateException",
   { message: S.optional(S.String) },
 ).pipe(C.withBadRequestError) {}
+export class TopicRuleNotFound extends S.TaggedErrorClass<TopicRuleNotFound>()(
+  "TopicRuleNotFound",
+  { message: S.optional(S.String) },
+  T.SyntheticError({
+    from: "UnauthorizedException",
+    message: { includes: "Access to topic rule" },
+  }),
+).pipe(C.withNotFoundError) {}
 export class NotConfiguredException extends S.TaggedErrorClass<NotConfiguredException>()(
   "NotConfiguredException",
   { message: S.optional(S.String) },
@@ -17930,6 +17938,7 @@ export type DeleteTopicRuleError =
   | InvalidRequestException
   | ServiceUnavailableException
   | UnauthorizedException
+  | TopicRuleNotFound
   | CommonErrors;
 /**
  * Deletes the rule.
@@ -17950,6 +17959,7 @@ export const deleteTopicRule: API.OperationMethod<
     InvalidRequestException,
     ServiceUnavailableException,
     UnauthorizedException,
+    TopicRuleNotFound,
   ],
   operationName: "DeleteTopicRule",
 }));
@@ -19856,6 +19866,7 @@ export type GetTopicRuleError =
   | InvalidRequestException
   | ServiceUnavailableException
   | UnauthorizedException
+  | TopicRuleNotFound
   | CommonErrors;
 /**
  * Gets information about the rule.
@@ -19875,6 +19886,7 @@ export const getTopicRule: API.OperationMethod<
     InvalidRequestException,
     ServiceUnavailableException,
     UnauthorizedException,
+    TopicRuleNotFound,
   ],
   operationName: "GetTopicRule",
 }));

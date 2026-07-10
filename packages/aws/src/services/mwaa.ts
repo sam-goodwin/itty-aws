@@ -881,6 +881,7 @@ export const createCliToken: API.OperationMethod<
   output: CreateCliTokenResponse,
   errors: [ResourceNotFoundException],
   operationName: "CreateCliToken",
+  endpointHostPrefix: "env.",
 }));
 export type CreateEnvironmentError =
   | InternalServerException
@@ -904,6 +905,7 @@ export const createEnvironment: API.OperationMethod<
     ValidationException,
   ],
   operationName: "CreateEnvironment",
+  endpointHostPrefix: "api.",
 }));
 export type CreateWebLoginTokenError =
   | AccessDeniedException
@@ -929,6 +931,7 @@ export const createWebLoginToken: API.OperationMethod<
     ValidationException,
   ],
   operationName: "CreateWebLoginToken",
+  endpointHostPrefix: "env.",
 }));
 export type DeleteEnvironmentError =
   | InternalServerException
@@ -954,6 +957,7 @@ export const deleteEnvironment: API.OperationMethod<
     ValidationException,
   ],
   operationName: "DeleteEnvironment",
+  endpointHostPrefix: "api.",
 }));
 export type GetEnvironmentError =
   | InternalServerException
@@ -977,6 +981,7 @@ export const getEnvironment: API.OperationMethod<
     ValidationException,
   ],
   operationName: "GetEnvironment",
+  endpointHostPrefix: "api.",
 }));
 export type InvokeRestApiError =
   | AccessDeniedException
@@ -1006,6 +1011,7 @@ export const invokeRestApi: API.OperationMethod<
     ValidationException,
   ],
   operationName: "InvokeRestApi",
+  endpointHostPrefix: "env.",
 }));
 export type ListEnvironmentsError =
   | InternalServerException
@@ -1039,6 +1045,7 @@ export const listEnvironments: API.OperationMethod<
   output: ListEnvironmentsOutput,
   errors: [InternalServerException, ValidationException],
   operationName: "ListEnvironments",
+  endpointHostPrefix: "api.",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1068,6 +1075,7 @@ export const listTagsForResource: API.OperationMethod<
     ValidationException,
   ],
   operationName: "ListTagsForResource",
+  endpointHostPrefix: "api.",
 }));
 export type PublishMetricsError =
   | InternalServerException
@@ -1086,6 +1094,7 @@ export const publishMetrics: API.OperationMethod<
   output: PublishMetricsOutput,
   errors: [InternalServerException, ValidationException],
   operationName: "PublishMetrics",
+  endpointHostPrefix: "ops.",
 }));
 export type TagResourceError =
   | InternalServerException
@@ -1109,6 +1118,7 @@ export const tagResource: API.OperationMethod<
     ValidationException,
   ],
   operationName: "TagResource",
+  endpointHostPrefix: "api.",
 }));
 export type UntagResourceError =
   | InternalServerException
@@ -1132,6 +1142,7 @@ export const untagResource: API.OperationMethod<
     ValidationException,
   ],
   operationName: "UntagResource",
+  endpointHostPrefix: "api.",
 }));
 export type UpdateEnvironmentError =
   | InternalServerException
@@ -1157,4 +1168,5 @@ export const updateEnvironment: API.OperationMethod<
     ValidationException,
   ],
   operationName: "UpdateEnvironment",
+  endpointHostPrefix: "api.",
 }));

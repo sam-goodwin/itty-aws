@@ -5363,6 +5363,14 @@ export class ValidationException extends S.TaggedErrorClass<ValidationException>
   "ValidationException",
   { message: S.optional(S.String) },
 ).pipe(C.withBadRequestError) {}
+export class MacieNotEnabled extends S.TaggedErrorClass<MacieNotEnabled>()(
+  "MacieNotEnabled",
+  { message: S.optional(S.String) },
+  T.SyntheticError({
+    from: "AccessDeniedException",
+    message: { includes: "Macie is not enabled" },
+  }),
+).pipe(C.withRetryableError) {}
 export class UnprocessableEntityException extends S.TaggedErrorClass<UnprocessableEntityException>()(
   "UnprocessableEntityException",
   { message: S.optional(S.String) },
@@ -5497,6 +5505,7 @@ export type CreateClassificationJobError =
   | ServiceQuotaExceededException
   | ThrottlingException
   | ValidationException
+  | MacieNotEnabled
   | CommonErrors;
 /**
  * Creates and defines the settings for a classification job.
@@ -5517,6 +5526,7 @@ export const createClassificationJob: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
     ValidationException,
+    MacieNotEnabled,
   ],
   operationName: "CreateClassificationJob",
 }));

@@ -1240,6 +1240,16 @@ export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFou
   "ResourceNotFoundException",
   { Message: S.optional(S.String), ScheduledQueryArn: S.optional(S.String) },
 ).pipe(C.withBadRequestError) {}
+export class TimestreamNotOnboarded extends S.TaggedErrorClass<TimestreamNotOnboarded>()(
+  "TimestreamNotOnboarded",
+  { Message: S.optional(S.String) },
+  T.SyntheticError({
+    from: "AccessDeniedException",
+    message: {
+      includes: "Only existing Timestream for LiveAnalytics customers",
+    },
+  }),
+).pipe(C.withAuthError) {}
 export class QueryExecutionException extends S.TaggedErrorClass<QueryExecutionException>()(
   "QueryExecutionException",
   { Message: S.optional(S.String) },
@@ -1373,6 +1383,7 @@ export type DescribeEndpointsError =
   | InternalServerException
   | ThrottlingException
   | ValidationException
+  | TimestreamNotOnboarded
   | CommonErrors;
 /**
  * DescribeEndpoints returns a list of available endpoints to make Timestream
@@ -1400,7 +1411,12 @@ export const describeEndpoints: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeEndpointsRequest,
   output: DescribeEndpointsResponse,
-  errors: [InternalServerException, ThrottlingException, ValidationException],
+  errors: [
+    InternalServerException,
+    ThrottlingException,
+    ValidationException,
+    TimestreamNotOnboarded,
+  ],
   operationName: "DescribeEndpoints",
 }));
 export type DescribeScheduledQueryError =
@@ -1595,6 +1611,7 @@ export type QueryError =
   | QueryExecutionException
   | ThrottlingException
   | ValidationException
+  | TimestreamNotOnboarded
   | CommonErrors;
 /**
  * `Query` is a synchronous operation that enables you to run a query against
@@ -1659,6 +1676,7 @@ export const query: API.OperationMethod<
     QueryExecutionException,
     ThrottlingException,
     ValidationException,
+    TimestreamNotOnboarded,
   ],
   operationName: "Query",
   pagination: {

@@ -1,0 +1,16 @@
+{
+  "operations": {
+    "createClassificationJob": {
+      "syntheticErrors": [
+        {
+          "name": "MacieNotEnabled",
+          "from": "AccessDeniedException",
+          "message": { "includes": "Macie is not enabled" }
+        }
+      ]
+    }
+  },
+  "errorCategories": {
+    "MacieNotEnabled": ["RetryableError"]
+  }
+}

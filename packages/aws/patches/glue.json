@@ -1,0 +1,43 @@
+{
+  "operations": {
+    "createCrawler": {
+      "syntheticErrors": [
+        {
+          "name": "GlueRoleNotAssumable",
+          "from": "InvalidInputException",
+          "message": { "includes": "unable to assume" }
+        }
+      ]
+    },
+    "updateCrawler": {
+      "syntheticErrors": [
+        {
+          "name": "GlueRoleNotAssumable",
+          "from": "InvalidInputException",
+          "message": { "includes": "unable to assume" }
+        }
+      ]
+    },
+    "createJob": {
+      "syntheticErrors": [
+        {
+          "name": "GlueRoleNotAssumable",
+          "from": "InvalidInputException",
+          "message": { "includes": "unable to assume" }
+        }
+      ]
+    },
+    "updateJob": {
+      "syntheticErrors": [
+        {
+          "name": "GlueRoleNotAssumable",
+          "from": "InvalidInputException",
+          "message": { "includes": "unable to assume" }
+        }
+      ]
+    }
+  },
+  "errorCategories": {
+    "GlueRoleNotAssumable": ["RetryableError"]
+  }
+}

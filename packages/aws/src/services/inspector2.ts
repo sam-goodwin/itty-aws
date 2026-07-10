@@ -508,11 +508,15 @@ export const BatchGetAccountStatusRequest =
   }) as any as S.Schema<BatchGetAccountStatusRequest>;
 export interface State {
   status: string;
-  errorCode: string;
-  errorMessage: string;
+  errorCode?: string;
+  errorMessage?: string;
 }
 export const State = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-  S.Struct({ status: S.String, errorCode: S.String, errorMessage: S.String }),
+  S.Struct({
+    status: S.String,
+    errorCode: S.optional(S.String),
+    errorMessage: S.optional(S.String),
+  }),
 ).annotate({ identifier: "State" }) as any as S.Schema<State>;
 export interface ResourceState {
   ec2: State;
@@ -542,16 +546,16 @@ export type AccountStateList = AccountState[];
 export const AccountStateList =
   /*@__PURE__*/ /*#__PURE__*/ S.Array(AccountState);
 export interface ResourceStatus {
-  ec2: string;
-  ecr: string;
+  ec2?: string;
+  ecr?: string;
   lambda?: string;
   lambdaCode?: string;
   codeRepository?: string;
 }
 export const ResourceStatus = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
-    ec2: S.String,
-    ecr: S.String,
+    ec2: S.optional(S.String),
+    ecr: S.optional(S.String),
     lambda: S.optional(S.String),
     lambdaCode: S.optional(S.String),
     codeRepository: S.optional(S.String),
@@ -561,16 +565,16 @@ export interface FailedAccount {
   accountId: string;
   status?: string;
   resourceStatus?: ResourceStatus;
-  errorCode: string;
-  errorMessage: string;
+  errorCode?: string;
+  errorMessage?: string;
 }
 export const FailedAccount = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String,
     status: S.optional(S.String),
     resourceStatus: S.optional(ResourceStatus),
-    errorCode: S.String,
-    errorMessage: S.String,
+    errorCode: S.optional(S.String),
+    errorMessage: S.optional(S.String),
   }),
 ).annotate({ identifier: "FailedAccount" }) as any as S.Schema<FailedAccount>;
 export type FailedAccountList = FailedAccount[];

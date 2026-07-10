@@ -3285,10 +3285,34 @@ export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFou
   "ResourceNotFoundException",
   { Message: S.optional(S.String), ResourceName: S.optional(S.String) },
 ) {}
+export class DataCatalogNotFound extends S.TaggedErrorClass<DataCatalogNotFound>()(
+  "DataCatalogNotFound",
+  { AthenaErrorCode: S.optional(S.String), Message: S.optional(S.String) },
+  T.SyntheticError({
+    from: "InvalidRequestException",
+    message: { matches: "DataCatalog.*not found" },
+  }),
+).pipe(C.withNotFoundError) {}
+export class NamedQueryNotFound extends S.TaggedErrorClass<NamedQueryNotFound>()(
+  "NamedQueryNotFound",
+  { AthenaErrorCode: S.optional(S.String), Message: S.optional(S.String) },
+  T.SyntheticError({
+    from: "InvalidRequestException",
+    message: { matches: "NamedQuery.*does not exist" },
+  }),
+).pipe(C.withNotFoundError) {}
 export class MetadataException extends S.TaggedErrorClass<MetadataException>()(
   "MetadataException",
   { Message: S.optional(S.String) },
 ) {}
+export class WorkGroupNotFound extends S.TaggedErrorClass<WorkGroupNotFound>()(
+  "WorkGroupNotFound",
+  { AthenaErrorCode: S.optional(S.String), Message: S.optional(S.String) },
+  T.SyntheticError({
+    from: "InvalidRequestException",
+    message: { matches: "WorkGroup.*not found" },
+  }),
+).pipe(C.withNotFoundError) {}
 export class SessionAlreadyExistsException extends S.TaggedErrorClass<SessionAlreadyExistsException>()(
   "SessionAlreadyExistsException",
   { Message: S.optional(S.String) },
@@ -3573,6 +3597,7 @@ export const deleteCapacityReservation: API.OperationMethod<
 export type DeleteDataCatalogError =
   | InternalServerException
   | InvalidRequestException
+  | DataCatalogNotFound
   | CommonErrors;
 /**
  * Deletes a data catalog.
@@ -3585,12 +3610,17 @@ export const deleteDataCatalog: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteDataCatalogInput,
   output: DeleteDataCatalogOutput,
-  errors: [InternalServerException, InvalidRequestException],
+  errors: [
+    InternalServerException,
+    InvalidRequestException,
+    DataCatalogNotFound,
+  ],
   operationName: "DeleteDataCatalog",
 }));
 export type DeleteNamedQueryError =
   | InternalServerException
   | InvalidRequestException
+  | NamedQueryNotFound
   | CommonErrors;
 /**
  * Deletes the named query if you have access to the workgroup in which the query was
@@ -3604,7 +3634,11 @@ export const deleteNamedQuery: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteNamedQueryInput,
   output: DeleteNamedQueryOutput,
-  errors: [InternalServerException, InvalidRequestException],
+  errors: [
+    InternalServerException,
+    InvalidRequestException,
+    NamedQueryNotFound,
+  ],
   operationName: "DeleteNamedQuery",
 }));
 export type DeleteNotebookError =
@@ -3824,6 +3858,7 @@ export const getDatabase: API.OperationMethod<
 export type GetDataCatalogError =
   | InternalServerException
   | InvalidRequestException
+  | DataCatalogNotFound
   | CommonErrors;
 /**
  * Returns the specified data catalog.
@@ -3836,12 +3871,17 @@ export const getDataCatalog: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDataCatalogInput,
   output: GetDataCatalogOutput,
-  errors: [InternalServerException, InvalidRequestException],
+  errors: [
+    InternalServerException,
+    InvalidRequestException,
+    DataCatalogNotFound,
+  ],
   operationName: "GetDataCatalog",
 }));
 export type GetNamedQueryError =
   | InternalServerException
   | InvalidRequestException
+  | NamedQueryNotFound
   | CommonErrors;
 /**
  * Returns information about a single query. Requires that you have access to the
@@ -3855,7 +3895,11 @@ export const getNamedQuery: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetNamedQueryInput,
   output: GetNamedQueryOutput,
-  errors: [InternalServerException, InvalidRequestException],
+  errors: [
+    InternalServerException,
+    InvalidRequestException,
+    NamedQueryNotFound,
+  ],
   operationName: "GetNamedQuery",
 }));
 export type GetNotebookMetadataError =
@@ -4122,6 +4166,7 @@ export const getTableMetadata: API.OperationMethod<
 export type GetWorkGroupError =
   | InternalServerException
   | InvalidRequestException
+  | WorkGroupNotFound
   | CommonErrors;
 /**
  * Returns information about the workgroup with the specified name.
@@ -4134,7 +4179,7 @@ export const getWorkGroup: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetWorkGroupInput,
   output: GetWorkGroupOutput,
-  errors: [InternalServerException, InvalidRequestException],
+  errors: [InternalServerException, InvalidRequestException, WorkGroupNotFound],
   operationName: "GetWorkGroup",
 }));
 export type ImportNotebookError =
@@ -5053,6 +5098,7 @@ export const updateCapacityReservation: API.OperationMethod<
 export type UpdateDataCatalogError =
   | InternalServerException
   | InvalidRequestException
+  | DataCatalogNotFound
   | CommonErrors;
 /**
  * Updates the data catalog that has the specified name.
@@ -5065,12 +5111,17 @@ export const updateDataCatalog: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateDataCatalogInput,
   output: UpdateDataCatalogOutput,
-  errors: [InternalServerException, InvalidRequestException],
+  errors: [
+    InternalServerException,
+    InvalidRequestException,
+    DataCatalogNotFound,
+  ],
   operationName: "UpdateDataCatalog",
 }));
 export type UpdateNamedQueryError =
   | InternalServerException
   | InvalidRequestException
+  | NamedQueryNotFound
   | CommonErrors;
 /**
  * Updates a NamedQuery object. The database or workgroup cannot be
@@ -5084,7 +5135,11 @@ export const updateNamedQuery: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateNamedQueryInput,
   output: UpdateNamedQueryOutput,
-  errors: [InternalServerException, InvalidRequestException],
+  errors: [
+    InternalServerException,
+    InvalidRequestException,
+    NamedQueryNotFound,
+  ],
   operationName: "UpdateNamedQuery",
 }));
 export type UpdateNotebookError =
@@ -5159,6 +5214,7 @@ export const updatePreparedStatement: API.OperationMethod<
 export type UpdateWorkGroupError =
   | InternalServerException
   | InvalidRequestException
+  | WorkGroupNotFound
   | CommonErrors;
 /**
  * Updates the workgroup with the specified name. The workgroup's name cannot be changed.
@@ -5172,6 +5228,6 @@ export const updateWorkGroup: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateWorkGroupInput,
   output: UpdateWorkGroupOutput,
-  errors: [InternalServerException, InvalidRequestException],
+  errors: [InternalServerException, InvalidRequestException, WorkGroupNotFound],
   operationName: "UpdateWorkGroup",
 }));

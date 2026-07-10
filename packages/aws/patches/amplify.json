@@ -1,0 +1,15 @@
+{
+  "structures": {
+    "App": {
+      "members": {
+        "repository": { "optional": true },
+        "description": { "optional": true },
+        "environmentVariables": { "optional": true },
+        "enableBranchAutoBuild": { "optional": true },
+        "enableBasicAuth": { "optional": true },
+        "defaultDomain": { "optional": true },
+        "platform": { "optional": true }
+      }
+    }
+  }
+}

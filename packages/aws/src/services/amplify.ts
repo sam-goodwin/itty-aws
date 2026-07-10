@@ -379,18 +379,18 @@ export interface App {
   appArn: string;
   name: string;
   tags?: { [key: string]: string | undefined };
-  description: string;
-  repository: string;
-  platform: Platform;
+  description?: string;
+  repository?: string;
+  platform?: Platform;
   createTime: Date;
   updateTime: Date;
   computeRoleArn?: string;
   iamServiceRoleArn?: string;
-  environmentVariables: { [key: string]: string | undefined };
-  defaultDomain: string;
-  enableBranchAutoBuild: boolean;
+  environmentVariables?: { [key: string]: string | undefined };
+  defaultDomain?: string;
+  enableBranchAutoBuild?: boolean;
   enableBranchAutoDeletion?: boolean;
-  enableBasicAuth: boolean;
+  enableBasicAuth?: boolean;
   basicAuthCredentials?: string | redacted.Redacted<string>;
   customRules?: CustomRule[];
   productionBranch?: ProductionBranch;
@@ -411,18 +411,18 @@ export const App = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     appArn: S.String,
     name: S.String,
     tags: S.optional(TagMap),
-    description: S.String,
-    repository: S.String,
-    platform: Platform,
+    description: S.optional(S.String),
+    repository: S.optional(S.String),
+    platform: S.optional(Platform),
     createTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
     updateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
     computeRoleArn: S.optional(S.String),
     iamServiceRoleArn: S.optional(S.String),
-    environmentVariables: EnvironmentVariables,
-    defaultDomain: S.String,
-    enableBranchAutoBuild: S.Boolean,
+    environmentVariables: S.optional(EnvironmentVariables),
+    defaultDomain: S.optional(S.String),
+    enableBranchAutoBuild: S.optional(S.Boolean),
     enableBranchAutoDeletion: S.optional(S.Boolean),
-    enableBasicAuth: S.Boolean,
+    enableBasicAuth: S.optional(S.Boolean),
     basicAuthCredentials: S.optional(SensitiveString),
     customRules: S.optional(CustomRules),
     productionBranch: S.optional(ProductionBranch),

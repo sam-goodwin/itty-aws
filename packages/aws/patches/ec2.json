@@ -5,6 +5,10 @@
     ],
     "IncorrectState": [
       "ConflictError"
+    ],
+    "VolumeInUse": [
+      "ConflictError",
+      "RetryableError"
     ]
   },
   "operations": {
@@ -1091,6 +1095,7 @@
         "RequestLimitExceeded",
         "InvalidParameterValue",
         "InvalidVolume.NotFound",
+        "VolumeInUse",
         "UnauthorizedOperation"
       ]
     },
@@ -1111,6 +1116,7 @@
         "InvalidInstanceID.NotFound",
         "InvalidParameterValue",
         "InvalidVolume.NotFound",
+        "VolumeInUse",
         "UnauthorizedOperation"
       ]
     },

@@ -74647,6 +74647,14 @@ export class InvalidVolumeNotFound extends S.TaggedErrorClass<InvalidVolumeNotFo
   "InvalidVolume.NotFound",
   {},
 ) {}
+export class VolumeInUse extends S.TaggedErrorClass<VolumeInUse>()(
+  "VolumeInUse",
+  {},
+).pipe(
+  C.withConflictError,
+  C.withRetryableError,
+  C.withDependencyViolationError,
+) {}
 export class InvalidVpnGatewayIDNotFound extends S.TaggedErrorClass<InvalidVpnGatewayIDNotFound>()(
   "InvalidVpnGatewayID.NotFound",
   {},
@@ -76551,6 +76559,7 @@ export type AttachVolumeError =
   | InvalidInstanceIDNotFound
   | InvalidParameterValue
   | InvalidVolumeNotFound
+  | VolumeInUse
   | UnauthorizedOperation
   | CommonErrors;
 /**
@@ -76595,6 +76604,7 @@ export const attachVolume: API.OperationMethod<
     InvalidInstanceIDNotFound,
     InvalidParameterValue,
     InvalidVolumeNotFound,
+    VolumeInUse,
     UnauthorizedOperation,
   ],
   operationName: "AttachVolume",
@@ -82725,6 +82735,7 @@ export type DeleteVolumeError =
   | RequestLimitExceeded
   | InvalidParameterValue
   | InvalidVolumeNotFound
+  | VolumeInUse
   | UnauthorizedOperation
   | CommonErrors;
 /**
@@ -82748,6 +82759,7 @@ export const deleteVolume: API.OperationMethod<
     RequestLimitExceeded,
     InvalidParameterValue,
     InvalidVolumeNotFound,
+    VolumeInUse,
     UnauthorizedOperation,
   ],
   operationName: "DeleteVolume",

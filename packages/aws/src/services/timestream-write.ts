@@ -1110,6 +1110,16 @@ export class ValidationException extends S.TaggedErrorClass<ValidationException>
   "ValidationException",
   { Message: S.String },
 ).pipe(C.withBadRequestError) {}
+export class TimestreamNotOnboarded extends S.TaggedErrorClass<TimestreamNotOnboarded>()(
+  "TimestreamNotOnboarded",
+  { Message: S.String },
+  T.SyntheticError({
+    from: "AccessDeniedException",
+    message: {
+      includes: "Only existing Timestream for LiveAnalytics customers",
+    },
+  }),
+).pipe(C.withAuthError) {}
 export class RejectedRecordsException extends S.TaggedErrorClass<RejectedRecordsException>()(
   "RejectedRecordsException",
   {
@@ -1168,6 +1178,7 @@ export type CreateDatabaseError =
   | ServiceQuotaExceededException
   | ThrottlingException
   | ValidationException
+  | TimestreamNotOnboarded
   | CommonErrors;
 /**
  * Creates a new Timestream database. If the KMS key is not
@@ -1190,6 +1201,7 @@ export const createDatabase: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
     ValidationException,
+    TimestreamNotOnboarded,
   ],
   operationName: "CreateDatabase",
 }));
@@ -1374,6 +1386,7 @@ export type DescribeEndpointsError =
   | InternalServerException
   | ThrottlingException
   | ValidationException
+  | TimestreamNotOnboarded
   | CommonErrors;
 /**
  * Returns a list of available endpoints to make Timestream API calls against.
@@ -1402,7 +1415,12 @@ export const describeEndpoints: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeEndpointsRequest,
   output: DescribeEndpointsResponse,
-  errors: [InternalServerException, ThrottlingException, ValidationException],
+  errors: [
+    InternalServerException,
+    ThrottlingException,
+    ValidationException,
+    TimestreamNotOnboarded,
+  ],
   operationName: "DescribeEndpoints",
 }));
 export type DescribeTableError =

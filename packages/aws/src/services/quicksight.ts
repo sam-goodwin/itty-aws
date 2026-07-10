@@ -33248,6 +33248,18 @@ export class UnsupportedUserEditionException extends S.TaggedErrorClass<Unsuppor
   "UnsupportedUserEditionException",
   { Message: S.optional(S.String), RequestId: S.optional(S.String) },
 ).pipe(C.withAuthError) {}
+export class QuickSightSubscriptionRequired extends S.TaggedErrorClass<QuickSightSubscriptionRequired>()(
+  "QuickSightSubscriptionRequired",
+  {
+    Message: S.optional(S.String),
+    ResourceType: S.optional(ExceptionResourceType),
+    RequestId: S.optional(S.String),
+  },
+  T.SyntheticError({
+    from: "ResourceNotFoundException",
+    message: { includes: "Directory information" },
+  }),
+).pipe(C.withNotFoundError) {}
 export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
   "InternalServerException",
   { Message: S.String },
@@ -33600,6 +33612,7 @@ export type CreateAnalysisError =
   | ResourceNotFoundException
   | ThrottlingException
   | UnsupportedUserEditionException
+  | QuickSightSubscriptionRequired
   | CommonErrors;
 /**
  * Creates an analysis in Amazon Quick Sight. Analyses can be created either from a template or from an `AnalysisDefinition`.
@@ -33621,6 +33634,7 @@ export const createAnalysis: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
     UnsupportedUserEditionException,
+    QuickSightSubscriptionRequired,
   ],
   operationName: "CreateAnalysis",
 }));
@@ -33699,6 +33713,7 @@ export type CreateDashboardError =
   | ResourceNotFoundException
   | ThrottlingException
   | UnsupportedUserEditionException
+  | QuickSightSubscriptionRequired
   | CommonErrors;
 /**
  * Creates a dashboard from either a template or directly with a
@@ -33729,6 +33744,7 @@ export const createDashboard: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
     UnsupportedUserEditionException,
+    QuickSightSubscriptionRequired,
   ],
   operationName: "CreateDashboard",
 }));
@@ -33743,6 +33759,7 @@ export type CreateDataSetError =
   | ResourceNotFoundException
   | ThrottlingException
   | UnsupportedUserEditionException
+  | QuickSightSubscriptionRequired
   | CommonErrors;
 /**
  * Creates a dataset. This operation doesn't support datasets that include uploaded files
@@ -33767,6 +33784,7 @@ export const createDataSet: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
     UnsupportedUserEditionException,
+    QuickSightSubscriptionRequired,
   ],
   operationName: "CreateDataSet",
 }));
@@ -33780,6 +33798,7 @@ export type CreateDataSourceError =
   | ResourceExistsException
   | ResourceNotFoundException
   | ThrottlingException
+  | QuickSightSubscriptionRequired
   | CommonErrors;
 /**
  * Creates a data source.
@@ -33802,6 +33821,7 @@ export const createDataSource: API.OperationMethod<
     ResourceExistsException,
     ResourceNotFoundException,
     ThrottlingException,
+    QuickSightSubscriptionRequired,
   ],
   operationName: "CreateDataSource",
 }));

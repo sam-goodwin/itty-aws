@@ -1,0 +1,53 @@
+{
+  "operations": {
+    "createDataSource": {
+      "syntheticErrors": [
+        {
+          "name": "QuickSightSubscriptionRequired",
+          "from": "ResourceNotFoundException",
+          "message": {
+            "includes": "Directory information"
+          }
+        }
+      ]
+    },
+    "createDataSet": {
+      "syntheticErrors": [
+        {
+          "name": "QuickSightSubscriptionRequired",
+          "from": "ResourceNotFoundException",
+          "message": {
+            "includes": "Directory information"
+          }
+        }
+      ]
+    },
+    "createDashboard": {
+      "syntheticErrors": [
+        {
+          "name": "QuickSightSubscriptionRequired",
+          "from": "ResourceNotFoundException",
+          "message": {
+            "includes": "Directory information"
+          }
+        }
+      ]
+    },
+    "createAnalysis": {
+      "syntheticErrors": [
+        {
+          "name": "QuickSightSubscriptionRequired",
+          "from": "ResourceNotFoundException",
+          "message": {
+            "includes": "Directory information"
+          }
+        }
+      ]
+    }
+  },
+  "errorCategories": {
+    "QuickSightSubscriptionRequired": [
+      "NotFoundError"
+    ]
+  }
+}
