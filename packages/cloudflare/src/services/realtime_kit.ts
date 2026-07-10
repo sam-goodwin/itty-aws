@@ -11300,7 +11300,7 @@ export interface SessionsGetSessionSummaryResponseData {
 export const SessionsGetSessionSummaryResponseData = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      sessionId: S.String.pipe(T.Body("session_id")),
+      sessionId: S.String,
       summaryDownloadUrl: S.String,
       summaryDownloadUrlExpiry: S.String,
     }),
@@ -11369,7 +11369,7 @@ export interface SessionsGetSessionTranscriptsResponseData {
 export const SessionsGetSessionTranscriptsResponseData =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      sessionId: S.String.pipe(T.Body("session_id")),
+      sessionId: S.String,
       transcriptDownloadUrl: S.String.pipe(T.Body("transcript_download_url")),
       transcriptDownloadUrlExpiry: S.String.pipe(
         T.Body("transcript_download_url_expiry"),

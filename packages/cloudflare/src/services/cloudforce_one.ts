@@ -123,7 +123,7 @@ export const ThreatEventsBulkCreateRequestDataItem = /*@__PURE__*/ S.suspend(
       event: S.String,
       raw: ThreatEventsBulkCreateRequestDataItemRaw,
       tlp: S.String,
-      accountId: S.optional(S.Number.pipe(T.Body("account_id"))),
+      accountId: S.optional(S.Number),
       attacker: S.optional(S.String),
       attackerCountry: S.optional(S.String),
       datasetId: S.optional(S.String),
@@ -2258,7 +2258,7 @@ export interface GetThreatEventRawResponse {
 export const GetThreatEventRawResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-    accountId: S.Number.pipe(T.Body("account_id")),
+    accountId: S.Number,
     created: S.String,
     data: S.Unknown,
     source: S.String,
@@ -3339,7 +3339,7 @@ export interface RawThreatEventDatasetResponse {
 export const RawThreatEventDatasetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
-    accountId: S.Number.pipe(T.Body("account_id")),
+    accountId: S.Number,
     created: S.String,
     data: S.String,
     source: S.String,

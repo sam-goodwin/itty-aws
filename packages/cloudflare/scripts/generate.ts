@@ -306,7 +306,7 @@ const generateModel = (
                   : "smithy.api#httpPayload" in traits
                     ? "rawBody"
                     : "body";
-      let wire: string =
+      const wire =
         binding === "label"
           ? mn // URI placeholders use the smithy member name
           : binding === "query"
@@ -320,14 +320,6 @@ const generateModel = (
                 ? traits["smithy.api#httpHeader"]
                 : mn
               : (traits["smithy.api#jsonName"] ?? mn);
-
-      // The docs sometimes name a body field in camelCase (`storageClass`)
-      // while the wire is snake_case (`storage_class`). When a body member
-      // has no explicit wire name and the service key dictionary knows the
-      // TS name, take the dictionary's wire — distilled's authority.
-      if (binding === "body" && wire === tsName && keyDictionary?.[tsName]) {
-        wire = keyDictionary[tsName];
-      }
 
       return {
         tsName,
