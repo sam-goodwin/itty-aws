@@ -12,7 +12,7 @@ import * as Scope from "effect/Scope";
 import type * as Stream from "effect/Stream";
 import { SingleShotGen } from "effect/Utils";
 import * as Pagination from "./pagination.ts";
-import type { Policy as RetryPolicy } from "./retry.ts";
+import { makeDefault, type Policy as RetryPolicy } from "./retry.ts";
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import type * as HttpClientError from "effect/unstable/http/HttpClientError";
 import type * as HttpClientRequest from "effect/unstable/http/HttpClientRequest";
@@ -213,22 +213,25 @@ const applyRetry = (
 ): Effect.Effect<any, any, any> =>
   retryKey === undefined
     ? base
-    : Effect.flatMap(Effect.serviceOption(retryKey), (opt) => {
-        if (Option.isNone(opt)) return base;
-        return Effect.gen(function* () {
+    : Effect.flatMap(Effect.serviceOption(retryKey), (opt) =>
+        Effect.gen(function* () {
           const lastError = yield* Ref.make<unknown>(undefined);
-          const policy = opt.value;
+          // No policy in context → makeDefault (transient/throttling/server
+          // errors, capped exponential backoff + jitter, honors server
+          // retryAfter hints). Mirrors the distilled client.
+          const policy = Option.isSome(opt) ? opt.value : makeDefault;
           const opts =
             typeof policy === "function" ? policy(lastError) : policy;
+          if (!opts.while) return yield* base;
           return yield* base.pipe(
             Effect.tapError((e) => Ref.set(lastError, e)),
             Effect.retry({
-              ...(opts.while ? { while: (e: unknown) => opts.while!(e) } : {}),
+              while: (e: unknown) => opts.while!(e),
               ...(opts.schedule ? { schedule: opts.schedule as any } : {}),
             }),
           );
-        });
-      });
+        }),
+      );
 
 export function make<
   I extends S.Top,
