@@ -482,9 +482,15 @@ const encode = ({
     if (http.contentType === "multipart") {
       // Multipart upload (e.g. Worker module upload): each body member is a
       // form part (objects JSON-encoded under their wire name), each file
-      // appends under its own filename.
+      // appends under its own filename. A whole-body member (T.HttpBody) that
+      // is a record of files becomes one part per entry (worker asset upload:
+      // { <hash>: File }).
       const form = new FormData();
-      for (const [name, value] of Object.entries(body)) {
+      const parts =
+        rawBody !== undefined && typeof rawBody === "object"
+          ? (rawBody as Record<string, unknown>)
+          : body;
+      for (const [name, value] of Object.entries(parts)) {
         form.append(
           name,
           typeof value === "string"

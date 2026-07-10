@@ -934,6 +934,47 @@ export const DeleteBucketSippyResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteBucketSippyResponse",
 }) as any as S.Schema<DeleteBucketSippyResponse>;
 
+export type DeleteObjectsKeyList = string[];
+export const DeleteObjectsKeyList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<DeleteObjectsKeyList>;
+
+export interface DeleteObjectsRequest {
+  /** Account ID. */
+  accountId: string;
+  /** Name of the R2 bucket. */
+  bucketName: string;
+  prefix?: string;
+  cfR2Jurisdiction?: string;
+  body?: DeleteObjectsKeyList;
+}
+export const DeleteObjectsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    bucketName: S.String.pipe(T.Label("bucket_name")),
+    prefix: S.optional(S.String.pipe(T.Query())),
+    cfR2Jurisdiction: S.optional(S.String.pipe(T.Header("cf-r2-jurisdiction"))),
+    body: S.optional(DeleteObjectsKeyList.pipe(T.HttpBody())),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/r2/buckets/{bucket_name}/objects",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+).annotate({
+  identifier: "DeleteObjectsRequest",
+}) as any as S.Schema<DeleteObjectsRequest>;
+
+export type DeleteObjectsResponse = unknown;
+export const DeleteObjectsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Unknown.pipe(T.EnvelopePayloadRoot()),
+).annotate({
+  identifier: "DeleteObjectsResponse",
+}) as any as S.Schema<DeleteObjectsResponse>;
+
 export type BucketsGetRequestCfR2Jurisdiction =
   | "default"
   | "eu"
@@ -4512,6 +4553,20 @@ export const deleteBucketSippy: API.OperationMethod<
   input: DeleteBucketSippyRequest,
   output: DeleteBucketSippyResponse,
   errors: [NoSuchBucket, InvalidRoute, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteObjectsError = CloudflareOpError;
+export const deleteObjects: API.OperationMethod<
+  DeleteObjectsRequest,
+  DeleteObjectsResponse,
+  DeleteObjectsError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteObjectsRequest,
+  output: DeleteObjectsResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));

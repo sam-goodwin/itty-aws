@@ -518,18 +518,22 @@ export interface CreateAssetUploadRequest {
   base64: boolean;
   /** Asset-upload session JWT (sent as Bearer Authorization). */
   jwtToken?: string;
+  /** Map of asset hash -> base64 file content; each entry is a multipart form part. */
+  body?: unknown;
 }
 export const CreateAssetUploadRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     base64: S.Boolean.pipe(T.Query()),
     jwtToken: S.optional(S.String.pipe(T.Header("Authorization"))),
+    body: S.optional(S.Unknown.pipe(T.HttpBody())),
   })
     .pipe(
       T.Http({
         method: "POST",
         uri: "/accounts/{account_id}/workers/assets/upload",
         code: 200,
+        contentType: "multipart",
       }),
     )
     .pipe(T.KeyDictionary(KEY_DICTIONARY)),
