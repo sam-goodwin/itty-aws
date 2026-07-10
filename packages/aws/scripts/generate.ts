@@ -2765,15 +2765,34 @@ const generateClient = Effect.fn(function* (
             }
           : undefined;
 
+        // Extract the endpoint trait's hostPrefix (smithy.api#endpoint).
+        // Operations like SFN's StartSyncExecution must target a prefixed
+        // host (sync-states.{region}); the runtime applies this prefix to
+        // the resolved endpoint.
+        const endpointTrait = operationShape.traits?.["smithy.api#endpoint"] as
+          | { hostPrefix?: string }
+          | undefined;
+        const endpointHostPrefix = endpointTrait?.hostPrefix;
+
         // Build operation object - include pagination metadata if present
         // Use 'as const' on pagination to preserve literal types for type inference
         // Always emit the Smithy operation name: protocols use it as the wire
         // Action / X-Amz-Target instead of guessing it from the input shape
         // identifier (which fails for e.g. AutoScaling's `...NamesType` shapes).
         const exportedName = formatName(operationShapeName, true);
-        const metaObject = paginatedTrait
-          ? `{ input: ${input}, output: ${output}, errors: ${operationErrors}, operationName: ${JSON.stringify(opName)}, pagination: ${JSON.stringify(paginatedTrait)} as const }`
-          : `{ input: ${input}, output: ${output}, errors: ${operationErrors}, operationName: ${JSON.stringify(opName)} }`;
+        const metaParts = [
+          `input: ${input}`,
+          `output: ${output}`,
+          `errors: ${operationErrors}`,
+          `operationName: ${JSON.stringify(opName)}`,
+          ...(endpointHostPrefix !== undefined
+            ? [`endpointHostPrefix: ${JSON.stringify(endpointHostPrefix)}`]
+            : []),
+          ...(paginatedTrait
+            ? [`pagination: ${JSON.stringify(paginatedTrait)} as const`]
+            : []),
+        ];
+        const metaObject = `{ ${metaParts.join(", ")} }`;
 
         // Build the error type alias for the function signature
         // Errors include operation-specific errors plus common API errors

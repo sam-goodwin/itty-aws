@@ -143,6 +143,19 @@ export const make = <Op extends Operation<any, any, any>>(
       endpoint = `https://${serviceName}.${region}.amazonaws.com`;
     }
 
+    // Apply the Smithy `smithy.api#endpoint` hostPrefix (e.g. "sync-" for
+    // Step Functions StartSyncExecution -> sync-states.{region}). Skipped for
+    // custom endpoints, matching official AWS SDK behavior. Labels of the
+    // form {memberName} are substituted from the operation input.
+    if (op.endpointHostPrefix !== undefined && !customEndpoint) {
+      const resolvedPrefix = op.endpointHostPrefix.replace(
+        /\{(\w+)\}/g,
+        (_, member: string) =>
+          String((payload as Record<string, unknown>)?.[member] ?? ""),
+      );
+      endpoint = endpoint.replace("://", `://${resolvedPrefix}`);
+    }
+
     // Build full URL with query string
     const queryString = Object.entries(resolvedRequest.query)
       .filter(([_, v]) => v !== undefined)
