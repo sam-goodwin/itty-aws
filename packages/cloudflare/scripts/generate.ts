@@ -267,7 +267,14 @@ const generateModel = (
     tsName: string;
     wire: string;
     target: string;
-    binding: "label" | "query" | "header" | "payload" | "file" | "body";
+    binding:
+      | "label"
+      | "query"
+      | "header"
+      | "payload"
+      | "file"
+      | "rawBody"
+      | "body";
     required: boolean;
     nullable: boolean;
     doc: string | undefined;
@@ -295,7 +302,9 @@ const generateModel = (
                 ? "payload"
                 : FORM_DATA_FILE_TRAIT in traits
                   ? "file"
-                  : "body";
+                  : "smithy.api#httpPayload" in traits
+                    ? "rawBody"
+                    : "body";
       const wire =
         binding === "label"
           ? mn // URI placeholders use the smithy member name
@@ -352,6 +361,9 @@ const generateModel = (
         break;
       case "file":
         pipes.push("T.FormDataFile()");
+        break;
+      case "rawBody":
+        pipes.push("T.HttpBody()");
         break;
       case "body":
         if (info.wire !== info.tsName) pipes.push(`T.Body(${q(info.wire)})`);

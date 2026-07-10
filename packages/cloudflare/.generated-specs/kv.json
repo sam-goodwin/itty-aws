@@ -45,7 +45,8 @@
         "body": {
           "target": "com.cloudflare.kv#NamespacesBulkDeleteRequestBodyList",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#required": {},
+            "smithy.api#httpPayload": {}
           }
         }
       },
@@ -305,7 +306,8 @@
         "body": {
           "target": "com.cloudflare.kv#NamespacesBulkUpdateRequestBodyList",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#required": {},
+            "smithy.api#httpPayload": {}
           }
         }
       },
@@ -788,7 +790,8 @@
         "body": {
           "target": "com.cloudflare.kv#NamespacesKeysBulkDeleteRequestBodyList",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#required": {},
+            "smithy.api#httpPayload": {}
           }
         }
       },
@@ -1048,7 +1051,8 @@
         "body": {
           "target": "com.cloudflare.kv#NamespacesKeysBulkUpdateRequestBodyList",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#required": {},
+            "smithy.api#httpPayload": {}
           }
         }
       },

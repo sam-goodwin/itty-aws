@@ -1378,7 +1378,8 @@
           "target": "com.cloudflare.queues#ConsumersCreateRequestBody",
           "traits": {
             "smithy.api#documentation": "Request body for creating or updating a consumer",
-            "smithy.api#required": {}
+            "smithy.api#required": {},
+            "smithy.api#httpPayload": {}
           }
         }
       },
@@ -1914,7 +1915,8 @@
           "target": "com.cloudflare.queues#ConsumersUpdateRequestBody",
           "traits": {
             "smithy.api#documentation": "Request body for creating or updating a consumer",
-            "smithy.api#required": {}
+            "smithy.api#required": {},
+            "smithy.api#httpPayload": {}
           }
         }
       },
@@ -2472,7 +2474,10 @@
           }
         },
         "body": {
-          "target": "com.cloudflare.queues#MessagesPushRequestBody"
+          "target": "com.cloudflare.queues#MessagesPushRequestBody",
+          "traits": {
+            "smithy.api#httpPayload": {}
+          }
         }
       },
       "traits": {

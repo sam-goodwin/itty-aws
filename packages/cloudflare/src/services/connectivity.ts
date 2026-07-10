@@ -203,7 +203,7 @@ export interface CreateDirectoryServiceRequest {
 export const CreateDirectoryServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-    body: DirectoryServicesCreateRequestBody,
+    body: DirectoryServicesCreateRequestBody.pipe(T.HttpBody()),
   })
     .pipe(
       T.Http({
@@ -817,7 +817,7 @@ export const UpdateDirectoryServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     serviceId: S.String.pipe(T.Label("service_id")),
-    body: DirectoryServicesUpdateRequestBody,
+    body: DirectoryServicesUpdateRequestBody.pipe(T.HttpBody()),
   })
     .pipe(
       T.Http({

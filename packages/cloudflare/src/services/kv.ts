@@ -119,7 +119,7 @@ export const BulkDeleteNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     namespaceId: S.String.pipe(T.Label("namespace_id")),
-    body: NamespacesBulkDeleteRequestBodyList,
+    body: NamespacesBulkDeleteRequestBodyList.pipe(T.HttpBody()),
   })
     .pipe(
       T.Http({
@@ -284,7 +284,7 @@ export const BulkPutNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     namespaceId: S.String.pipe(T.Label("namespace_id")),
-    body: NamespacesBulkUpdateRequestBodyList,
+    body: NamespacesBulkUpdateRequestBodyList.pipe(T.HttpBody()),
   })
     .pipe(
       T.Http({
@@ -712,7 +712,7 @@ export const NamespacesKeysBulkDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     namespaceId: S.String.pipe(T.Label("namespace_id")),
-    body: NamespacesKeysBulkDeleteRequestBodyList,
+    body: NamespacesKeysBulkDeleteRequestBodyList.pipe(T.HttpBody()),
   })
     .pipe(
       T.Http({
@@ -878,7 +878,7 @@ export const NamespacesKeysBulkUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     namespaceId: S.String.pipe(T.Label("namespace_id")),
-    body: NamespacesKeysBulkUpdateRequestBodyList,
+    body: NamespacesKeysBulkUpdateRequestBodyList.pipe(T.HttpBody()),
   })
     .pipe(
       T.Http({

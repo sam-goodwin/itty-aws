@@ -21967,7 +21967,8 @@
         "body": {
           "target": "com.cloudflare.workers#ScriptsSchedulesUpdateRequestBodyList",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#required": {},
+            "smithy.api#httpPayload": {}
           }
         }
       },
@@ -24970,7 +24971,8 @@
           "target": "com.cloudflare.workers#ScriptsSecretsUpdateRequestBody",
           "traits": {
             "smithy.api#documentation": "A secret value accessible through a binding.",
-            "smithy.api#required": {}
+            "smithy.api#required": {},
+            "smithy.api#httpPayload": {}
           }
         }
       },
@@ -26025,7 +26027,8 @@
         "body": {
           "target": "smithy.api#Document",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#required": {},
+            "smithy.api#httpPayload": {}
           }
         }
       },

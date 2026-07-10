@@ -497,7 +497,10 @@
           }
         },
         "body": {
-          "target": "com.cloudflare.ai#RunRequestBody"
+          "target": "com.cloudflare.ai#RunRequestBody",
+          "traits": {
+            "smithy.api#httpPayload": {}
+          }
         }
       },
       "traits": {

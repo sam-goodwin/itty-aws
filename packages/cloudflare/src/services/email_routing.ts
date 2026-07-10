@@ -885,7 +885,7 @@ export interface DisableEmailRoutingRequest {
 export const DisableEmailRoutingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-    body: S.Unknown,
+    body: S.Unknown.pipe(T.HttpBody()),
   })
     .pipe(
       T.Http({
@@ -994,7 +994,7 @@ export interface EnableEmailRoutingRequest {
 export const EnableEmailRoutingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-    body: S.Unknown,
+    body: S.Unknown.pipe(T.HttpBody()),
   })
     .pipe(
       T.Http({

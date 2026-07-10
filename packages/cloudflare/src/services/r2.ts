@@ -3842,7 +3842,7 @@ export const PutBucketSippyRequest = /*@__PURE__*/ S.suspend(() =>
         T.Header('"cf-r2-jurisdiction"'),
       ),
     ),
-    body: BucketsSippyUpdateRequestBody,
+    body: BucketsSippyUpdateRequestBody.pipe(T.HttpBody()),
   })
     .pipe(
       T.Http({
@@ -4033,7 +4033,9 @@ export const SourceSuperSlurperConnectivityPrecheckRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
-      body: SuperSlurperConnectivityPrecheckSourceRequestBody,
+      body: SuperSlurperConnectivityPrecheckSourceRequestBody.pipe(
+        T.HttpBody(),
+      ),
     })
       .pipe(
         T.Http({

@@ -20,7 +20,7 @@ export interface CacheReserveClearClearRequest {
 export const CacheReserveClearClearRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-    body: S.Unknown,
+    body: S.Unknown.pipe(T.HttpBody()),
   }).pipe(
     T.Http({
       method: "POST",

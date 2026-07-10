@@ -4766,7 +4766,8 @@
         "body": {
           "target": "com.cloudflare.dns#RecordsCreateRequestBody",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#required": {},
+            "smithy.api#httpPayload": {}
           }
         }
       },
@@ -7071,7 +7072,8 @@
         "body": {
           "target": "com.cloudflare.dns#RecordsEditRequestBody",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#required": {},
+            "smithy.api#httpPayload": {}
           }
         }
       },
@@ -13627,7 +13629,8 @@
         "body": {
           "target": "smithy.api#Document",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#required": {},
+            "smithy.api#httpPayload": {}
           }
         }
       },
@@ -18260,7 +18263,8 @@
         "body": {
           "target": "com.cloudflare.dns#RecordsUpdateRequestBody",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#required": {},
+            "smithy.api#httpPayload": {}
           }
         }
       },
@@ -22730,7 +22734,8 @@
         "body": {
           "target": "smithy.api#Document",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#required": {},
+            "smithy.api#httpPayload": {}
           }
         }
       },
@@ -23311,7 +23316,8 @@
         "body": {
           "target": "smithy.api#Document",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#required": {},
+            "smithy.api#httpPayload": {}
           }
         }
       },
@@ -23364,7 +23370,8 @@
         "body": {
           "target": "smithy.api#Document",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#required": {},
+            "smithy.api#httpPayload": {}
           }
         }
       },
@@ -23417,7 +23424,8 @@
         "body": {
           "target": "smithy.api#Document",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#required": {},
+            "smithy.api#httpPayload": {}
           }
         }
       },

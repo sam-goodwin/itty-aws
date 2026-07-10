@@ -443,7 +443,7 @@ export const BulkPutCfInterconnectsRequest = /*@__PURE__*/ S.suspend(() =>
     XMagicNewHcTarget_: S.optional(
       S.Boolean.pipe(T.Header('"x-magic-new-hc-target"')),
     ),
-    body: S.Unknown,
+    body: S.Unknown.pipe(T.HttpBody()),
   })
     .pipe(
       T.Http({
@@ -613,7 +613,7 @@ export const BulkPutGreTunnelsRequest = /*@__PURE__*/ S.suspend(() =>
     XMagicNewHcTarget_: S.optional(
       S.Boolean.pipe(T.Header('"x-magic-new-hc-target"')),
     ),
-    body: S.Unknown,
+    body: S.Unknown.pipe(T.HttpBody()),
   })
     .pipe(
       T.Http({
@@ -855,7 +855,7 @@ export const BulkPutIpsecTunnelsRequest = /*@__PURE__*/ S.suspend(() =>
     XMagicNewHcTarget_: S.optional(
       S.Boolean.pipe(T.Header('"x-magic-new-hc-target"')),
     ),
-    body: S.Unknown,
+    body: S.Unknown.pipe(T.HttpBody()),
   })
     .pipe(
       T.Http({
@@ -1478,7 +1478,7 @@ export interface CreateCf1SiteRequest {
 export const CreateCf1SiteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-    body: Cf1SitesCreateRequestBodyList,
+    body: Cf1SitesCreateRequestBodyList.pipe(T.HttpBody()),
   })
     .pipe(
       T.Http({
@@ -1586,7 +1586,7 @@ export const CreateCf1SiteRampRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     cf1SiteId: S.String.pipe(T.Label("cf1_site_id")),
-    body: Cf1SitesRampsCreateRequestBodyList,
+    body: Cf1SitesRampsCreateRequestBodyList.pipe(T.HttpBody()),
   })
     .pipe(
       T.Http({
@@ -2681,7 +2681,7 @@ export interface CreatePcapRequest {
 export const CreatePcapRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-    body: PcapsCreateRequestBody,
+    body: PcapsCreateRequestBody.pipe(T.HttpBody()),
   })
     .pipe(
       T.Http({
@@ -13063,7 +13063,7 @@ export const PskGenerateIpsecTunnelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     ipsecTunnelId: S.String.pipe(T.Label("ipsec_tunnel_id")),
-    body: S.Unknown,
+    body: S.Unknown.pipe(T.HttpBody()),
   })
     .pipe(
       T.Http({
@@ -13486,7 +13486,7 @@ export const SitesAppConfigurationCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     siteId: S.String.pipe(T.Label("site_id")),
-    body: SitesAppConfigurationCreateRequestBody,
+    body: SitesAppConfigurationCreateRequestBody.pipe(T.HttpBody()),
   })
     .pipe(
       T.Http({

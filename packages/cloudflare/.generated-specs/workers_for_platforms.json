@@ -3658,7 +3658,8 @@
           "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSecretsUpdateRequestBody",
           "traits": {
             "smithy.api#documentation": "A secret value accessible through a binding.",
-            "smithy.api#required": {}
+            "smithy.api#required": {},
+            "smithy.api#httpPayload": {}
           }
         }
       },
@@ -6201,7 +6202,8 @@
           "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsTagsUpdateRequestBodyList",
           "traits": {
             "smithy.api#documentation": "Tags associated with the Worker.",
-            "smithy.api#required": {}
+            "smithy.api#required": {},
+            "smithy.api#httpPayload": {}
           }
         }
       },

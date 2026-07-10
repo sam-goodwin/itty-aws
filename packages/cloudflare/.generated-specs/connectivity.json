@@ -169,7 +169,8 @@
         "body": {
           "target": "com.cloudflare.connectivity#DirectoryServicesCreateRequestBody",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#required": {},
+            "smithy.api#httpPayload": {}
           }
         }
       },
@@ -946,7 +947,8 @@
         "body": {
           "target": "com.cloudflare.connectivity#DirectoryServicesUpdateRequestBody",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#required": {},
+            "smithy.api#httpPayload": {}
           }
         }
       },

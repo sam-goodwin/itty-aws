@@ -208,7 +208,7 @@ export interface CreateInterconnectRequest {
 export const CreateInterconnectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-    body: InterconnectsCreateRequestBody,
+    body: InterconnectsCreateRequestBody.pipe(T.HttpBody()),
   })
     .pipe(
       T.Http({

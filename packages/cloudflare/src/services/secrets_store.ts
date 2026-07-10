@@ -222,7 +222,7 @@ export const CreateStoreSecretRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     storeId: S.String.pipe(T.Label("store_id")),
-    body: StoresSecretsCreateRequestBodyList,
+    body: StoresSecretsCreateRequestBodyList.pipe(T.HttpBody()),
   })
     .pipe(
       T.Http({

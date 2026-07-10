@@ -566,7 +566,7 @@ export const ImportDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     databaseId: S.String.pipe(T.Label("database_id")),
-    body: DatabaseImportRequestBody,
+    body: DatabaseImportRequestBody.pipe(T.HttpBody()),
   })
     .pipe(
       T.Http({
@@ -947,7 +947,7 @@ export const QueryDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     databaseId: S.String.pipe(T.Label("database_id")),
-    body: DatabaseQueryRequestBody,
+    body: DatabaseQueryRequestBody.pipe(T.HttpBody()),
   })
     .pipe(
       T.Http({
@@ -1123,7 +1123,7 @@ export const RawDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     databaseId: S.String.pipe(T.Label("database_id")),
-    body: DatabaseRawRequestBody,
+    body: DatabaseRawRequestBody.pipe(T.HttpBody()),
   })
     .pipe(
       T.Http({

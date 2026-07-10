@@ -327,7 +327,7 @@ export interface BulkInvestigateReleaseRequest {
 export const BulkInvestigateReleaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-    body: InvestigateReleaseBulkRequestBodyList,
+    body: InvestigateReleaseBulkRequestBodyList.pipe(T.HttpBody()),
   })
     .pipe(
       T.Http({

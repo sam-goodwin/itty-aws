@@ -845,7 +845,7 @@ export const CreateRuleForAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     rulesetId: S.String.pipe(T.Label("ruleset_id")),
-    body: RulesCreateForAccountRequestBody,
+    body: RulesCreateForAccountRequestBody.pipe(T.HttpBody()),
   })
     .pipe(
       T.Http({
@@ -1821,7 +1821,7 @@ export const CreateRuleForZoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     rulesetId: S.String.pipe(T.Label("ruleset_id")),
-    body: RulesCreateForZoneRequestBody,
+    body: RulesCreateForZoneRequestBody.pipe(T.HttpBody()),
   })
     .pipe(
       T.Http({
@@ -6722,7 +6722,7 @@ export const PatchRuleForAccountRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     rulesetId: S.String.pipe(T.Label("ruleset_id")),
     ruleId: S.String.pipe(T.Label("rule_id")),
-    body: RulesEditForAccountRequestBody,
+    body: RulesEditForAccountRequestBody.pipe(T.HttpBody()),
   })
     .pipe(
       T.Http({
@@ -7690,7 +7690,7 @@ export const PatchRuleForZoneRequest = /*@__PURE__*/ S.suspend(() =>
     zoneId: S.String.pipe(T.Label("zone_id")),
     rulesetId: S.String.pipe(T.Label("ruleset_id")),
     ruleId: S.String.pipe(T.Label("rule_id")),
-    body: RulesEditForZoneRequestBody,
+    body: RulesEditForZoneRequestBody.pipe(T.HttpBody()),
   })
     .pipe(
       T.Http({

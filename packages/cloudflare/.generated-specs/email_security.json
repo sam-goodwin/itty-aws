@@ -4742,7 +4742,8 @@
         "body": {
           "target": "com.cloudflare.email_security#InvestigateReleaseBulkRequestBodyList",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#required": {},
+            "smithy.api#httpPayload": {}
           }
         }
       },

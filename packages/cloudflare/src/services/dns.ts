@@ -2889,7 +2889,7 @@ export const CreateRecordRequest = /*@__PURE__*/ S.suspend(() =>
     includeShadowMetadata: S.optional(
       S.Boolean.pipe(T.Query("include_shadow_metadata")),
     ),
-    body: RecordsCreateRequestBody,
+    body: RecordsCreateRequestBody.pipe(T.HttpBody()),
   })
     .pipe(
       T.Http({
@@ -4443,7 +4443,7 @@ export interface CreateZoneTransferForceAxfrRequest {
 export const CreateZoneTransferForceAxfrRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-    body: S.Unknown,
+    body: S.Unknown.pipe(T.HttpBody()),
   })
     .pipe(
       T.Http({
@@ -4979,7 +4979,7 @@ export interface DisableZoneTransferOutgoingRequest {
 export const DisableZoneTransferOutgoingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-    body: S.Unknown,
+    body: S.Unknown.pipe(T.HttpBody()),
   })
     .pipe(
       T.Http({
@@ -5012,7 +5012,7 @@ export interface EnableZoneTransferOutgoingRequest {
 export const EnableZoneTransferOutgoingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-    body: S.Unknown,
+    body: S.Unknown.pipe(T.HttpBody()),
   })
     .pipe(
       T.Http({
@@ -5073,7 +5073,7 @@ export const ForceNotifyZoneTransferOutgoingRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       zoneId: S.String.pipe(T.Label("zone_id")),
-      body: S.Unknown,
+      body: S.Unknown.pipe(T.HttpBody()),
     })
       .pipe(
         T.Http({
@@ -9709,7 +9709,7 @@ export const PatchRecordRequest = /*@__PURE__*/ S.suspend(() =>
     includeShadowMetadata: S.optional(
       S.Boolean.pipe(T.Query("include_shadow_metadata")),
     ),
-    body: RecordsEditRequestBody,
+    body: RecordsEditRequestBody.pipe(T.HttpBody()),
   })
     .pipe(
       T.Http({
@@ -13229,7 +13229,7 @@ export interface ScanRecordRequest {
 export const ScanRecordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-    body: S.Unknown,
+    body: S.Unknown.pipe(T.HttpBody()),
   })
     .pipe(
       T.Http({
@@ -15108,7 +15108,7 @@ export const UpdateRecordRequest = /*@__PURE__*/ S.suspend(() =>
     includeShadowMetadata: S.optional(
       S.Boolean.pipe(T.Query("include_shadow_metadata")),
     ),
-    body: RecordsUpdateRequestBody,
+    body: RecordsUpdateRequestBody.pipe(T.HttpBody()),
   })
     .pipe(
       T.Http({

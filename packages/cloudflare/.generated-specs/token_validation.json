@@ -1450,7 +1450,8 @@
         "body": {
           "target": "com.cloudflare.token_validation#RulesBulkCreateRequestBodyList",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#required": {},
+            "smithy.api#httpPayload": {}
           }
         }
       },
@@ -1812,7 +1813,8 @@
         "body": {
           "target": "com.cloudflare.token_validation#RulesBulkEditRequestBodyList",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#required": {},
+            "smithy.api#httpPayload": {}
           }
         }
       },

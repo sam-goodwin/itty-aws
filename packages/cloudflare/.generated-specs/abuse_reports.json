@@ -412,7 +412,8 @@
         "body": {
           "target": "com.cloudflare.abuse_reports#CreateRequestBody",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#required": {},
+            "smithy.api#httpPayload": {}
           }
         }
       },

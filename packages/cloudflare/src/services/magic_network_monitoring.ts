@@ -1245,7 +1245,7 @@ export const PatchRuleAdvertisementRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     ruleId: S.String.pipe(T.Label("rule_id")),
-    body: S.Unknown,
+    body: S.Unknown.pipe(T.HttpBody()),
   })
     .pipe(
       T.Http({

@@ -1217,7 +1217,8 @@
         "body": {
           "target": "com.cloudflare.spectrum#AppsCreateRequestBody",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#required": {},
+            "smithy.api#httpPayload": {}
           }
         }
       },
@@ -2887,7 +2888,8 @@
         "body": {
           "target": "com.cloudflare.spectrum#AppsUpdateRequestBody",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#required": {},
+            "smithy.api#httpPayload": {}
           }
         }
       },

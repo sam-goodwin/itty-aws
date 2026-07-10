@@ -104,7 +104,7 @@ export interface BulkCreateScansRequest {
 export const BulkCreateScansRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-    body: S.optional(ScansBulkCreateRequestBodyList),
+    body: S.optional(ScansBulkCreateRequestBodyList.pipe(T.HttpBody())),
   })
     .pipe(
       T.Http({

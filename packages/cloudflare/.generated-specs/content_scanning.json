@@ -358,7 +358,8 @@
         "body": {
           "target": "com.cloudflare.content_scanning#PayloadsCreateRequestBodyList",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#required": {},
+            "smithy.api#httpPayload": {}
           }
         }
       },

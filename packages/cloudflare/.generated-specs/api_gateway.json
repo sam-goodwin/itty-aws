@@ -339,7 +339,8 @@
         "body": {
           "target": "com.cloudflare.api_gateway#DiscoveryOperationsBulkEditRequestBodyMap",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#required": {},
+            "smithy.api#httpPayload": {}
           }
         }
       },
@@ -1387,7 +1388,8 @@
         "body": {
           "target": "com.cloudflare.api_gateway#LabelsUserBulkCreateRequestBodyList",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#required": {},
+            "smithy.api#httpPayload": {}
           }
         }
       },
@@ -2298,7 +2300,8 @@
         "body": {
           "target": "com.cloudflare.api_gateway#OperationsBulkCreateRequestBodyList",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#required": {},
+            "smithy.api#httpPayload": {}
           }
         }
       },

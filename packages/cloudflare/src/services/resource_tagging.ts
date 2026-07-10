@@ -510,7 +510,7 @@ export const PutAccountTagRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     IfMatch_: S.optional(S.String.pipe(T.Header('"If-Match"'))),
-    body: AccountTagsUpdateRequestBody,
+    body: AccountTagsUpdateRequestBody.pipe(T.HttpBody()),
   })
     .pipe(
       T.Http({ method: "PUT", uri: "/accounts/{account_id}/tags", code: 200 }),
@@ -619,7 +619,7 @@ export const PutZoneTagRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     IfMatch_: S.optional(S.String.pipe(T.Header('"If-Match"'))),
-    body: ZoneTagsUpdateRequestBody,
+    body: ZoneTagsUpdateRequestBody.pipe(T.HttpBody()),
   })
     .pipe(T.Http({ method: "PUT", uri: "/zones/{zone_id}/tags", code: 200 }))
     .pipe(T.KeyDictionary(KEY_DICTIONARY)),

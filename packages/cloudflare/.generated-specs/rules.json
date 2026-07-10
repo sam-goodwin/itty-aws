@@ -907,7 +907,8 @@
         "body": {
           "target": "com.cloudflare.rules#ListsItemsCreateRequestBodyList",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#required": {},
+            "smithy.api#httpPayload": {}
           }
         }
       },
@@ -1580,7 +1581,8 @@
         "body": {
           "target": "com.cloudflare.rules#ListsItemsUpdateRequestBodyList",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#required": {},
+            "smithy.api#httpPayload": {}
           }
         }
       },

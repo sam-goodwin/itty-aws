@@ -110,7 +110,7 @@ export interface BulkPutFiltersRequest {
 export const BulkPutFiltersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-    body: BulkUpdateRequestBodyList,
+    body: BulkUpdateRequestBodyList.pipe(T.HttpBody()),
   })
     .pipe(T.Http({ method: "PUT", uri: "/zones/{zone_id}/filters", code: 200 }))
     .pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -199,7 +199,7 @@ export interface CreateFilterRequest {
 export const CreateFilterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-    body: CreateRequestBodyList,
+    body: CreateRequestBodyList.pipe(T.HttpBody()),
   })
     .pipe(
       T.Http({ method: "POST", uri: "/zones/{zone_id}/filters", code: 200 }),

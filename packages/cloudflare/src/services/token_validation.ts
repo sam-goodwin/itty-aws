@@ -190,7 +190,7 @@ export interface BulkCreateRulesRequest {
 export const BulkCreateRulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-    body: RulesBulkCreateRequestBodyList,
+    body: RulesBulkCreateRequestBodyList.pipe(T.HttpBody()),
   })
     .pipe(
       T.Http({
@@ -477,7 +477,7 @@ export interface BulkPatchRulesRequest {
 export const BulkPatchRulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-    body: RulesBulkEditRequestBodyList,
+    body: RulesBulkEditRequestBodyList.pipe(T.HttpBody()),
   })
     .pipe(
       T.Http({

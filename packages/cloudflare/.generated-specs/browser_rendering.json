@@ -535,7 +535,8 @@
         "body": {
           "target": "com.cloudflare.browser_rendering#ContentCreateRequestBody",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#required": {},
+            "smithy.api#httpPayload": {}
           }
         }
       },
@@ -1333,7 +1334,8 @@
         "body": {
           "target": "com.cloudflare.browser_rendering#CrawlCreateRequestBody",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#required": {},
+            "smithy.api#httpPayload": {}
           }
         }
       },
@@ -3577,7 +3579,8 @@
         "body": {
           "target": "com.cloudflare.browser_rendering#JsonCreateRequestBody",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#required": {},
+            "smithy.api#httpPayload": {}
           }
         }
       },
@@ -4150,7 +4153,8 @@
         "body": {
           "target": "com.cloudflare.browser_rendering#LinksCreateRequestBody",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#required": {},
+            "smithy.api#httpPayload": {}
           }
         }
       },
@@ -4714,7 +4718,8 @@
         "body": {
           "target": "com.cloudflare.browser_rendering#MarkdownCreateRequestBody",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#required": {},
+            "smithy.api#httpPayload": {}
           }
         }
       },
@@ -5521,7 +5526,8 @@
         "body": {
           "target": "com.cloudflare.browser_rendering#PdfCreateRequestBody",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#required": {},
+            "smithy.api#httpPayload": {}
           }
         }
       },
@@ -6084,7 +6090,8 @@
         "body": {
           "target": "com.cloudflare.browser_rendering#ScrapeCreateRequestBody",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#required": {},
+            "smithy.api#httpPayload": {}
           }
         }
       },
@@ -6860,7 +6867,8 @@
         "body": {
           "target": "com.cloudflare.browser_rendering#ScreenshotCreateRequestBody",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#required": {},
+            "smithy.api#httpPayload": {}
           }
         }
       },
@@ -7528,7 +7536,8 @@
         "body": {
           "target": "com.cloudflare.browser_rendering#SnapshotCreateRequestBody",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#required": {},
+            "smithy.api#httpPayload": {}
           }
         }
       },

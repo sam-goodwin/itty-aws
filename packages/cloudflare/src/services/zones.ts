@@ -2433,7 +2433,7 @@ export const PatchSettingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     settingId: S.String.pipe(T.Label("setting_id")),
-    body: SettingsEditRequestBody,
+    body: SettingsEditRequestBody.pipe(T.HttpBody()),
   })
     .pipe(
       T.Http({
@@ -2955,7 +2955,7 @@ export interface SettingsBulkEditRequest {
 export const SettingsBulkEditRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-    body: SettingsBulkEditRequestBodyList,
+    body: SettingsBulkEditRequestBodyList.pipe(T.HttpBody()),
   })
     .pipe(
       T.Http({ method: "PATCH", uri: "/zones/{zone_id}/settings", code: 200 }),

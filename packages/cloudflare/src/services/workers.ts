@@ -4531,7 +4531,7 @@ export const CreateScriptTailRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     scriptName: S.String.pipe(T.Label("script_name")),
-    body: S.Unknown,
+    body: S.Unknown.pipe(T.HttpBody()),
   })
     .pipe(
       T.Http({
@@ -17989,7 +17989,7 @@ export const PutScriptScheduleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     scriptName: S.String.pipe(T.Label("script_name")),
-    body: ScriptsSchedulesUpdateRequestBodyList,
+    body: ScriptsSchedulesUpdateRequestBodyList.pipe(T.HttpBody()),
   })
     .pipe(
       T.Http({
@@ -18107,7 +18107,7 @@ export const PutScriptSecretRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     scriptName: S.String.pipe(T.Label("script_name")),
-    body: ScriptsSecretsUpdateRequestBody,
+    body: ScriptsSecretsUpdateRequestBody.pipe(T.HttpBody()),
   })
     .pipe(
       T.Http({

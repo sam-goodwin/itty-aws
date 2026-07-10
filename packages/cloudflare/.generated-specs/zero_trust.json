@@ -5114,7 +5114,8 @@
           "target": "com.cloudflare.zero_trust#AccessApplicationsCreateForAccountRequestBody",
           "traits": {
             "smithy.api#documentation": "Contains the targets secured by the application.",
-            "smithy.api#required": {}
+            "smithy.api#required": {},
+            "smithy.api#httpPayload": {}
           }
         }
       },
@@ -9325,7 +9326,8 @@
           "target": "com.cloudflare.zero_trust#AccessApplicationsCreateForZoneRequestBody",
           "traits": {
             "smithy.api#documentation": "Contains the targets secured by the application.",
-            "smithy.api#required": {}
+            "smithy.api#required": {},
+            "smithy.api#httpPayload": {}
           }
         }
       },
@@ -24352,7 +24354,8 @@
           "target": "com.cloudflare.zero_trust#AccessApplicationsUpdateForAccountRequestBody",
           "traits": {
             "smithy.api#documentation": "Contains the targets secured by the application.",
-            "smithy.api#required": {}
+            "smithy.api#required": {},
+            "smithy.api#httpPayload": {}
           }
         }
       },
@@ -28572,7 +28575,8 @@
           "target": "com.cloudflare.zero_trust#AccessApplicationsUpdateForZoneRequestBody",
           "traits": {
             "smithy.api#documentation": "Contains the targets secured by the application.",
-            "smithy.api#required": {}
+            "smithy.api#required": {},
+            "smithy.api#httpPayload": {}
           }
         }
       },
@@ -44723,7 +44727,8 @@
         "body": {
           "target": "smithy.api#Document",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#required": {},
+            "smithy.api#httpPayload": {}
           }
         }
       },
@@ -45033,7 +45038,8 @@
         "body": {
           "target": "smithy.api#Document",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#required": {},
+            "smithy.api#httpPayload": {}
           }
         }
       },
@@ -61414,7 +61420,8 @@
         "body": {
           "target": "com.cloudflare.zero_trust#AccessInfrastructureTargetsBulkUpdateRequestBodyList",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#required": {},
+            "smithy.api#httpPayload": {}
           }
         }
       },
@@ -84625,7 +84632,8 @@
         "body": {
           "target": "com.cloudflare.zero_trust#DevicesPoliciesCustomExcludesUpdateRequestBodyList",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#required": {},
+            "smithy.api#httpPayload": {}
           }
         }
       },
@@ -85052,7 +85060,8 @@
         "body": {
           "target": "com.cloudflare.zero_trust#DevicesPoliciesCustomIncludesUpdateRequestBodyList",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#required": {},
+            "smithy.api#httpPayload": {}
           }
         }
       },
@@ -86394,7 +86403,8 @@
         "body": {
           "target": "com.cloudflare.zero_trust#DevicesPoliciesDefaultExcludesUpdateRequestBodyList",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#required": {},
+            "smithy.api#httpPayload": {}
           }
         }
       },
@@ -86793,7 +86803,8 @@
         "body": {
           "target": "com.cloudflare.zero_trust#DevicesPoliciesDefaultIncludesUpdateRequestBodyList",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#required": {},
+            "smithy.api#httpPayload": {}
           }
         }
       },
@@ -93243,7 +93254,8 @@
           "target": "com.cloudflare.zero_trust#DevicesRevokeCreateRequestBodyList",
           "traits": {
             "smithy.api#documentation": "A list of Registration IDs to revoke.",
-            "smithy.api#required": {}
+            "smithy.api#required": {},
+            "smithy.api#httpPayload": {}
           }
         }
       },
@@ -93800,7 +93812,8 @@
           "target": "com.cloudflare.zero_trust#DevicesUnrevokeCreateRequestBodyList",
           "traits": {
             "smithy.api#documentation": "A list of Registration IDs to unrevoke.",
-            "smithy.api#required": {}
+            "smithy.api#required": {},
+            "smithy.api#httpPayload": {}
           }
         }
       },
@@ -103587,7 +103600,8 @@
         "body": {
           "target": "com.cloudflare.zero_trust#DlpDatasetsVersionsCreateRequestBodyList",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#required": {},
+            "smithy.api#httpPayload": {}
           }
         }
       },
@@ -106472,7 +106486,8 @@
         "body": {
           "target": "com.cloudflare.zero_trust#DlpEntriesUpdateRequestBody",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#required": {},
+            "smithy.api#httpPayload": {}
           }
         }
       },
@@ -115545,7 +115560,8 @@
         "body": {
           "target": "smithy.api#Document",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#required": {},
+            "smithy.api#httpPayload": {}
           }
         }
       },
@@ -115859,7 +115875,8 @@
         "body": {
           "target": "smithy.api#Document",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#required": {},
+            "smithy.api#httpPayload": {}
           }
         }
       },
@@ -122994,7 +123011,8 @@
         "body": {
           "target": "com.cloudflare.zero_trust#GatewayProxyEndpointsCreateRequestBody",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#required": {},
+            "smithy.api#httpPayload": {}
           }
         }
       },
@@ -145311,7 +145329,8 @@
         "body": {
           "target": "com.cloudflare.zero_trust#SeatsEditRequestBodyList",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#required": {},
+            "smithy.api#httpPayload": {}
           }
         }
       },

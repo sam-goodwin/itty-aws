@@ -671,7 +671,10 @@
           }
         },
         "body": {
-          "target": "com.cloudflare.workflows#InstancesBulkRequestBodyList"
+          "target": "com.cloudflare.workflows#InstancesBulkRequestBodyList",
+          "traits": {
+            "smithy.api#httpPayload": {}
+          }
         }
       },
       "traits": {
@@ -2015,7 +2018,10 @@
           }
         },
         "body": {
-          "target": "smithy.api#Document"
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#httpPayload": {}
+          }
         }
       },
       "traits": {
@@ -2151,7 +2157,10 @@
           }
         },
         "body": {
-          "target": "com.cloudflare.workflows#InstancesStatusEditRequestBody"
+          "target": "com.cloudflare.workflows#InstancesStatusEditRequestBody",
+          "traits": {
+            "smithy.api#httpPayload": {}
+          }
         }
       },
       "traits": {

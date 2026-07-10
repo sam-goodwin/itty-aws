@@ -875,7 +875,7 @@ export interface CreateSilenceRequest {
 export const CreateSilenceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-    body: SilencesCreateRequestBodyList,
+    body: SilencesCreateRequestBodyList.pipe(T.HttpBody()),
   })
     .pipe(
       T.Http({
@@ -3479,7 +3479,7 @@ export interface UpdateSilenceRequest {
 export const UpdateSilenceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-    body: SilencesUpdateRequestBodyList,
+    body: SilencesUpdateRequestBodyList.pipe(T.HttpBody()),
   })
     .pipe(
       T.Http({

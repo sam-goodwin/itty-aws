@@ -916,7 +916,8 @@
         "body": {
           "target": "com.cloudflare.network_interconnects#InterconnectsCreateRequestBody",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#required": {},
+            "smithy.api#httpPayload": {}
           }
         }
       },

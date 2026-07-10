@@ -4021,7 +4021,8 @@
         "body": {
           "target": "com.cloudflare.zones#SettingsBulkEditRequestBodyList",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#required": {},
+            "smithy.api#httpPayload": {}
           }
         }
       },
@@ -4312,7 +4313,8 @@
         "body": {
           "target": "com.cloudflare.zones#SettingsEditRequestBody",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#required": {},
+            "smithy.api#httpPayload": {}
           }
         }
       },

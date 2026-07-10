@@ -640,6 +640,20 @@ const buildOperation = (bag: Bag, opName: string, parsed: ParsedOp): string => {
   let inputTarget = PRELUDE.Unit;
   if (inputFields.length) {
     const members = buildMembers(bag, inputFields, `${opName}Request`, "input");
+    // Docs convention for raw (non-object) request bodies: a single body
+    // param literally named `body` (e.g. alerting silences POST an array,
+    // KV bulk delete POSTs an array of keys). Mark it httpPayload so the
+    // protocol sends the member's value AS the body instead of wrapping it.
+    const bodyMembers = Object.entries(members).filter(
+      ([, m]: [string, any]) =>
+        !m.traits?.["smithy.api#httpLabel"] &&
+        !m.traits?.["smithy.api#httpQuery"] &&
+        !m.traits?.["smithy.api#httpHeader"],
+    );
+    if (bodyMembers.length === 1 && bodyMembers[0]![0] === "body") {
+      const m = bodyMembers[0]![1] as any;
+      m.traits = { ...m.traits, "smithy.api#httpPayload": {} };
+    }
     inputTarget = addShape(bag, `${opName}Request`, {
       type: "structure",
       members,

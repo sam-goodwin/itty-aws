@@ -898,7 +898,8 @@
         "body": {
           "target": "com.cloudflare.d1#DatabaseImportRequestBody",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#required": {},
+            "smithy.api#httpPayload": {}
           }
         }
       },
@@ -1334,7 +1335,8 @@
           "target": "com.cloudflare.d1#DatabaseQueryRequestBody",
           "traits": {
             "smithy.api#documentation": "A single query object or a batch query object",
-            "smithy.api#required": {}
+            "smithy.api#required": {},
+            "smithy.api#httpPayload": {}
           }
         }
       },
@@ -1578,7 +1580,8 @@
           "target": "com.cloudflare.d1#DatabaseRawRequestBody",
           "traits": {
             "smithy.api#documentation": "A single query object or a batch query object",
-            "smithy.api#required": {}
+            "smithy.api#required": {},
+            "smithy.api#httpPayload": {}
           }
         }
       },

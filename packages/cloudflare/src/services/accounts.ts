@@ -535,7 +535,7 @@ export interface CreateMemberRequest {
 export const CreateMemberRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-    body: MembersCreateRequestBody,
+    body: MembersCreateRequestBody.pipe(T.HttpBody()),
   })
     .pipe(
       T.Http({
@@ -3654,7 +3654,7 @@ export const PutTokenValueRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     tokenId: S.String.pipe(T.Label("token_id")),
-    body: S.Unknown,
+    body: S.Unknown.pipe(T.HttpBody()),
   })
     .pipe(
       T.Http({
@@ -4117,7 +4117,7 @@ export const UpdateMemberRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     memberId: S.String.pipe(T.Label("member_id")),
-    body: MembersUpdateRequestBody,
+    body: MembersUpdateRequestBody.pipe(T.HttpBody()),
   })
     .pipe(
       T.Http({

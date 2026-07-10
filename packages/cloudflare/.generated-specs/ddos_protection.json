@@ -571,7 +571,8 @@
         "body": {
           "target": "com.cloudflare.ddos_protection#AdvancedTcpProtectionPrefixesBulkCreateRequestBodyList",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#required": {},
+            "smithy.api#httpPayload": {}
           }
         }
       },

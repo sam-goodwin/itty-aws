@@ -46,7 +46,7 @@ export interface CreatePublishRequest {
 export const CreatePublishRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-    body: S.optional(S.String),
+    body: S.optional(S.String.pipe(T.HttpBody())),
   })
     .pipe(
       T.Http({
@@ -1681,7 +1681,7 @@ export interface PutHistoryRequest {
 export const PutHistoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-    body: S.Number,
+    body: S.Number.pipe(T.HttpBody()),
   })
     .pipe(
       T.Http({

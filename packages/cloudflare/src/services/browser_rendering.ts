@@ -474,7 +474,7 @@ export const CreateContentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     cacheTTL: S.optional(S.Number.pipe(T.Query())),
-    body: ContentCreateRequestBody,
+    body: ContentCreateRequestBody.pipe(T.HttpBody()),
   })
     .pipe(
       T.Http({
@@ -997,7 +997,7 @@ export const CreateCrawlRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     cacheTTL: S.optional(S.Number.pipe(T.Query())),
-    body: CrawlCreateRequestBody,
+    body: CrawlCreateRequestBody.pipe(T.HttpBody()),
   })
     .pipe(
       T.Http({
@@ -1517,7 +1517,7 @@ export const CreateJsonRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     cacheTTL: S.optional(S.Number.pipe(T.Query())),
-    body: JsonCreateRequestBody,
+    body: JsonCreateRequestBody.pipe(T.HttpBody()),
   })
     .pipe(
       T.Http({
@@ -1882,7 +1882,7 @@ export const CreateLinkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     cacheTTL: S.optional(S.Number.pipe(T.Query())),
-    body: LinksCreateRequestBody,
+    body: LinksCreateRequestBody.pipe(T.HttpBody()),
   })
     .pipe(
       T.Http({
@@ -2249,7 +2249,7 @@ export const CreateMarkdownRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     cacheTTL: S.optional(S.Number.pipe(T.Query())),
-    body: MarkdownCreateRequestBody,
+    body: MarkdownCreateRequestBody.pipe(T.HttpBody()),
   })
     .pipe(
       T.Http({
@@ -2763,7 +2763,7 @@ export const CreatePdfRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     cacheTTL: S.optional(S.Number.pipe(T.Query())),
-    body: PdfCreateRequestBody,
+    body: PdfCreateRequestBody.pipe(T.HttpBody()),
   })
     .pipe(
       T.Http({
@@ -3134,7 +3134,7 @@ export const CreateScrapeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     cacheTTL: S.optional(S.Number.pipe(T.Query())),
-    body: ScrapeCreateRequestBody,
+    body: ScrapeCreateRequestBody.pipe(T.HttpBody()),
   })
     .pipe(
       T.Http({
@@ -3640,7 +3640,7 @@ export const CreateScreenshotRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     cacheTTL: S.optional(S.Number.pipe(T.Query())),
-    body: ScreenshotCreateRequestBody,
+    body: ScreenshotCreateRequestBody.pipe(T.HttpBody()),
   })
     .pipe(
       T.Http({
@@ -4069,7 +4069,7 @@ export const CreateSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     cacheTTL: S.optional(S.Number.pipe(T.Query())),
-    body: SnapshotCreateRequestBody,
+    body: SnapshotCreateRequestBody.pipe(T.HttpBody()),
   })
     .pipe(
       T.Http({

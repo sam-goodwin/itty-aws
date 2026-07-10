@@ -2246,7 +2246,8 @@
           "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "ID of the Zaraz configuration to restore.",
-            "smithy.api#required": {}
+            "smithy.api#required": {},
+            "smithy.api#httpPayload": {}
           }
         }
       },
@@ -2733,7 +2734,8 @@
         "body": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Zaraz configuration description."
+            "smithy.api#documentation": "Zaraz configuration description.",
+            "smithy.api#httpPayload": {}
           }
         }
       },

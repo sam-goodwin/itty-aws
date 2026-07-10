@@ -1992,7 +1992,7 @@ export const TriggersEnvironmentVariablesUpsertRequest =
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
       triggerUuid: S.String.pipe(T.Label("trigger_uuid")),
-      body: TriggersEnvironmentVariablesUpsertRequestBodyMap,
+      body: TriggersEnvironmentVariablesUpsertRequestBodyMap.pipe(T.HttpBody()),
     }).pipe(
       T.Http({
         method: "PATCH",

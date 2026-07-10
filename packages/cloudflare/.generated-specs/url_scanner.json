@@ -175,7 +175,8 @@
         "body": {
           "target": "com.cloudflare.url_scanner#ScansBulkCreateRequestBodyList",
           "traits": {
-            "smithy.api#documentation": "List of urls to scan (up to a 100)."
+            "smithy.api#documentation": "List of urls to scan (up to a 100).",
+            "smithy.api#httpPayload": {}
           }
         }
       },

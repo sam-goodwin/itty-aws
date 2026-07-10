@@ -106,7 +106,7 @@ export interface CreatePayloadRequest {
 export const CreatePayloadRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-    body: PayloadsCreateRequestBodyList,
+    body: PayloadsCreateRequestBodyList.pipe(T.HttpBody()),
   }).pipe(
     T.Http({
       method: "POST",

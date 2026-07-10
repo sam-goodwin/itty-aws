@@ -66,6 +66,7 @@ import {
   envelopePayloadSymbol,
   formDataFileSymbol,
   getErrorMatchers,
+  httpBodySymbol,
   keyDictionarySymbol,
   resultInfoSymbol,
 } from "./traits.ts";
@@ -391,6 +392,7 @@ const encode = ({
       ...formatHeaders(creds),
     };
     const body: Record<string, unknown> = {};
+    let rawBody: unknown; // whole-body member (T.HttpBody) — sent as-is
     const files: Array<Blob | File> = [];
     const query = new URLSearchParams();
     let uri = http.uri;
@@ -424,6 +426,8 @@ const encode = ({
         for (const f of Array.isArray(value) ? value : [value]) {
           files.push(f as Blob | File);
         }
+      } else if (hasPropAnn(prop, httpBodySymbol)) {
+        rawBody = mapKeys(prop.type, value, "encode", rootDict);
       } else {
         body[nameOf(prop, bodySymbol)] = mapKeys(
           prop.type,
@@ -484,6 +488,9 @@ const encode = ({
         form.append(filename, f, filename);
       }
       request = request.pipe(HttpClientRequest.bodyFormData(form));
+    } else if (rawBody !== undefined && !BODYLESS.has(http.method)) {
+      // Whole-body member (raw arrays/scalars) — sent as the body itself.
+      request = request.pipe(HttpClientRequest.bodyJsonUnsafe(rawBody));
     } else if (
       !BODYLESS.has(http.method) &&
       (Object.keys(body).length > 0 ||

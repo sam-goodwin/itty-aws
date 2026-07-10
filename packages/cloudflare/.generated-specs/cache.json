@@ -89,7 +89,8 @@
         "body": {
           "target": "com.cloudflare.cache#PurgeRequestBody",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#required": {},
+            "smithy.api#httpPayload": {}
           }
         }
       },
@@ -207,7 +208,8 @@
         "body": {
           "target": "com.cloudflare.cache#PurgeEnvironmentRequestBody",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#required": {},
+            "smithy.api#httpPayload": {}
           }
         }
       },
@@ -261,7 +263,8 @@
         "body": {
           "target": "smithy.api#Document",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#required": {},
+            "smithy.api#httpPayload": {}
           }
         }
       },
@@ -977,7 +980,8 @@
         "body": {
           "target": "com.cloudflare.cache#OriginCloudRegionsBulkEditV1RequestBodyList",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#required": {},
+            "smithy.api#httpPayload": {}
           }
         }
       },
@@ -1215,7 +1219,8 @@
         "body": {
           "target": "com.cloudflare.cache#OriginCloudRegionsBulkUpdateRequestBodyList",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#required": {},
+            "smithy.api#httpPayload": {}
           }
         }
       },

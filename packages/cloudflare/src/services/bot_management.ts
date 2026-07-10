@@ -544,7 +544,7 @@ export interface PutBotManagementRequest {
 export const PutBotManagementRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-    body: UpdateRequestBody,
+    body: UpdateRequestBody.pipe(T.HttpBody()),
   })
     .pipe(
       T.Http({

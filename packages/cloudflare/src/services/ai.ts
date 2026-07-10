@@ -827,7 +827,7 @@ export const RunAiRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     modelName: S.String.pipe(T.Label("model_name")),
-    body: S.optional(RunRequestBody),
+    body: S.optional(RunRequestBody.pipe(T.HttpBody())),
   })
     .pipe(
       T.Http({

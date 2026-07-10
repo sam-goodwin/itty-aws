@@ -92,6 +92,17 @@ export const getErrorMatchers = (
 ): ReadonlyArray<ErrorMatcher> | undefined =>
   (cls as any)?.[errorMatchersSymbol];
 
+export const httpBodySymbol = Symbol.for(
+  "@distilled.cloud/cloudflare/http-body",
+);
+
+/**
+ * Marks the input member whose value IS the entire request body (raw arrays/
+ * scalars — e.g. alerting silences POST a bare JSON array). Mirrors
+ * `smithy.api#httpPayload` in the Smithy models and distilled's `T.HttpBody`.
+ */
+export const HttpBody = () => makeAnnotation(httpBodySymbol, true);
+
 export const keyDictionarySymbol = Symbol.for(
   "@distilled.cloud/cloudflare/key-dictionary",
 );

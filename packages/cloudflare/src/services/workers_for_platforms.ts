@@ -4593,7 +4593,9 @@ export const PutDispatchNamespaceScriptSecretRequest = /*@__PURE__*/ S.suspend(
       accountId: S.String.pipe(T.Label("account_id")),
       dispatchNamespace: S.String.pipe(T.Label("dispatch_namespace")),
       scriptName: S.String.pipe(T.Label("script_name")),
-      body: DispatchNamespacesScriptsSecretsUpdateRequestBody,
+      body: DispatchNamespacesScriptsSecretsUpdateRequestBody.pipe(
+        T.HttpBody(),
+      ),
     })
       .pipe(
         T.Http({
@@ -4696,7 +4698,9 @@ export const PutDispatchNamespaceScriptTagRequest = /*@__PURE__*/ S.suspend(
       accountId: S.String.pipe(T.Label("account_id")),
       dispatchNamespace: S.String.pipe(T.Label("dispatch_namespace")),
       scriptName: S.String.pipe(T.Label("script_name")),
-      body: DispatchNamespacesScriptsTagsUpdateRequestBodyList,
+      body: DispatchNamespacesScriptsTagsUpdateRequestBodyList.pipe(
+        T.HttpBody(),
+      ),
     })
       .pipe(
         T.Http({

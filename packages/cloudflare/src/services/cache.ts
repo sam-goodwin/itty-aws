@@ -205,7 +205,7 @@ export interface BulkPutOriginCloudRegionsRequest {
 export const BulkPutOriginCloudRegionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-    body: OriginCloudRegionsBulkUpdateRequestBodyList,
+    body: OriginCloudRegionsBulkUpdateRequestBodyList.pipe(T.HttpBody()),
   })
     .pipe(
       T.Http({
@@ -301,7 +301,7 @@ export interface ClearCacheReserveRequest {
 export const ClearCacheReserveRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-    body: S.Unknown,
+    body: S.Unknown.pipe(T.HttpBody()),
   })
     .pipe(
       T.Http({
@@ -1091,7 +1091,7 @@ export interface OriginCloudRegionsBulkEditV1Request {
 export const OriginCloudRegionsBulkEditV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-    body: OriginCloudRegionsBulkEditV1RequestBodyList,
+    body: OriginCloudRegionsBulkEditV1RequestBodyList.pipe(T.HttpBody()),
   })
     .pipe(
       T.Http({
@@ -2136,7 +2136,7 @@ export interface PurgeCacheRequest {
 export const PurgeCacheRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-    body: PurgeRequestBody,
+    body: PurgeRequestBody.pipe(T.HttpBody()),
   })
     .pipe(
       T.Http({
@@ -2215,7 +2215,7 @@ export const PurgeEnvironmentCacheRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     environmentId: S.String.pipe(T.Label("environment_id")),
-    body: PurgeEnvironmentRequestBody,
+    body: PurgeEnvironmentRequestBody.pipe(T.HttpBody()),
   })
     .pipe(
       T.Http({

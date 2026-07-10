@@ -947,7 +947,8 @@
         "body": {
           "target": "com.cloudflare.schema_validation#SettingsOperationsBulkEditRequestBodyMap",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#required": {},
+            "smithy.api#httpPayload": {}
           }
         }
       },

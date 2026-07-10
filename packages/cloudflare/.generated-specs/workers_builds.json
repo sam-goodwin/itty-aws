@@ -3631,7 +3631,8 @@
         "body": {
           "target": "com.cloudflare.workers_builds#TriggersEnvironmentVariablesUpsertRequestBodyMap",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#required": {},
+            "smithy.api#httpPayload": {}
           }
         }
       },

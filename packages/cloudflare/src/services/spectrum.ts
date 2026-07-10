@@ -251,7 +251,7 @@ export interface CreateAppRequest {
 export const CreateAppRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-    body: AppsCreateRequestBody,
+    body: AppsCreateRequestBody.pipe(T.HttpBody()),
   })
     .pipe(
       T.Http({
@@ -1698,7 +1698,7 @@ export const UpdateAppRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     appId: S.String.pipe(T.Label("app_id")),
-    body: AppsUpdateRequestBody,
+    body: AppsUpdateRequestBody.pipe(T.HttpBody()),
   })
     .pipe(
       T.Http({

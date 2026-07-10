@@ -245,7 +245,7 @@ export const CreateListItemRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     listId: S.String.pipe(T.Label("list_id")),
-    body: ListsItemsCreateRequestBodyList,
+    body: ListsItemsCreateRequestBodyList.pipe(T.HttpBody()),
   })
     .pipe(
       T.Http({
@@ -1007,7 +1007,7 @@ export const UpdateListItemRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     listId: S.String.pipe(T.Label("list_id")),
-    body: ListsItemsUpdateRequestBodyList,
+    body: ListsItemsUpdateRequestBodyList.pipe(T.HttpBody()),
   })
     .pipe(
       T.Http({

@@ -151,7 +151,8 @@
         "body": {
           "target": "com.cloudflare.filters#BulkUpdateRequestBodyList",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#required": {},
+            "smithy.api#httpPayload": {}
           }
         }
       },
@@ -288,7 +289,8 @@
         "body": {
           "target": "com.cloudflare.filters#CreateRequestBodyList",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#required": {},
+            "smithy.api#httpPayload": {}
           }
         }
       },

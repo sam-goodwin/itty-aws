@@ -474,7 +474,8 @@
           "target": "com.cloudflare.resource_tagging#AccountTagsUpdateRequestBody",
           "traits": {
             "smithy.api#documentation": "Request body schema for setting tags on account-level resources.",
-            "smithy.api#required": {}
+            "smithy.api#required": {},
+            "smithy.api#httpPayload": {}
           }
         }
       },
@@ -1011,7 +1012,8 @@
           "target": "com.cloudflare.resource_tagging#ZoneTagsUpdateRequestBody",
           "traits": {
             "smithy.api#documentation": "Request body schema for setting tags on zone-level resources.",
-            "smithy.api#required": {}
+            "smithy.api#required": {},
+            "smithy.api#httpPayload": {}
           }
         }
       },

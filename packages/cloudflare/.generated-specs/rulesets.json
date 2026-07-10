@@ -7122,7 +7122,8 @@
         "body": {
           "target": "com.cloudflare.rulesets#RulesCreateForAccountRequestBody",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#required": {},
+            "smithy.api#httpPayload": {}
           }
         }
       },
@@ -8329,7 +8330,8 @@
         "body": {
           "target": "com.cloudflare.rulesets#RulesCreateForZoneRequestBody",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#required": {},
+            "smithy.api#httpPayload": {}
           }
         }
       },
@@ -10242,7 +10244,8 @@
         "body": {
           "target": "com.cloudflare.rulesets#RulesEditForAccountRequestBody",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#required": {},
+            "smithy.api#httpPayload": {}
           }
         }
       },
@@ -11457,7 +11460,8 @@
         "body": {
           "target": "com.cloudflare.rulesets#RulesEditForZoneRequestBody",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#required": {},
+            "smithy.api#httpPayload": {}
           }
         }
       },

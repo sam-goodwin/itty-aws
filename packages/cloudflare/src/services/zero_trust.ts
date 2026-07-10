@@ -1219,7 +1219,7 @@ export const ActivateGatewayCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     certificateId: S.String.pipe(T.Label("certificate_id")),
-    body: S.Unknown,
+    body: S.Unknown.pipe(T.HttpBody()),
   })
     .pipe(
       T.Http({
@@ -1629,7 +1629,9 @@ export const BulkPutAccessInfrastructureTargetsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
-      body: AccessInfrastructureTargetsBulkUpdateRequestBodyList,
+      body: AccessInfrastructureTargetsBulkUpdateRequestBodyList.pipe(
+        T.HttpBody(),
+      ),
     })
       .pipe(
         T.Http({
@@ -5596,7 +5598,7 @@ export const CreateAccessApplicationForAccountRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
-      body: AccessApplicationsCreateForAccountRequestBody,
+      body: AccessApplicationsCreateForAccountRequestBody.pipe(T.HttpBody()),
     })
       .pipe(
         T.Http({
@@ -9163,7 +9165,7 @@ export const CreateAccessApplicationForZoneRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       zoneId: S.String.pipe(T.Label("zone_id")),
-      body: AccessApplicationsCreateForZoneRequestBody,
+      body: AccessApplicationsCreateForZoneRequestBody.pipe(T.HttpBody()),
     })
       .pipe(
         T.Http({
@@ -14953,7 +14955,7 @@ export const CreateAccessBookmarkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     bookmarkId: S.String.pipe(T.Label("bookmark_id")),
-    body: S.Unknown,
+    body: S.Unknown.pipe(T.HttpBody()),
   })
     .pipe(
       T.Http({
@@ -23261,7 +23263,7 @@ export interface CreateDeviceRevokeRequest {
 export const CreateDeviceRevokeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-    body: DevicesRevokeCreateRequestBodyList,
+    body: DevicesRevokeCreateRequestBodyList.pipe(T.HttpBody()),
   })
     .pipe(
       T.Http({
@@ -23302,7 +23304,7 @@ export interface CreateDeviceUnrevokeRequest {
 export const CreateDeviceUnrevokeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-    body: DevicesUnrevokeCreateRequestBodyList,
+    body: DevicesUnrevokeCreateRequestBodyList.pipe(T.HttpBody()),
   })
     .pipe(
       T.Http({
@@ -24056,7 +24058,7 @@ export const CreateDlpDatasetVersionRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     datasetId: S.String.pipe(T.Label("dataset_id")),
     version: S.Number.pipe(T.Label()),
-    body: DlpDatasetsVersionsCreateRequestBodyList,
+    body: DlpDatasetsVersionsCreateRequestBodyList.pipe(T.HttpBody()),
   })
     .pipe(
       T.Http({
@@ -26419,7 +26421,7 @@ export interface CreateGatewayProxyEndpointRequest {
 export const CreateGatewayProxyEndpointRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-    body: GatewayProxyEndpointsCreateRequestBody,
+    body: GatewayProxyEndpointsCreateRequestBody.pipe(T.HttpBody()),
   })
     .pipe(
       T.Http({
@@ -30621,7 +30623,7 @@ export const DeactivateGatewayCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     certificateId: S.String.pipe(T.Label("certificate_id")),
-    body: S.Unknown,
+    body: S.Unknown.pipe(T.HttpBody()),
   })
     .pipe(
       T.Http({
@@ -83767,7 +83769,7 @@ export interface PatchSeatRequest {
 export const PatchSeatRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-    body: SeatsEditRequestBodyList,
+    body: SeatsEditRequestBodyList.pipe(T.HttpBody()),
   })
     .pipe(
       T.Http({
@@ -84556,7 +84558,7 @@ export const PutDevicePolicyCustomExcludeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     policyId: S.String.pipe(T.Label("policy_id")),
-    body: DevicesPoliciesCustomExcludesUpdateRequestBodyList,
+    body: DevicesPoliciesCustomExcludesUpdateRequestBodyList.pipe(T.HttpBody()),
   })
     .pipe(
       T.Http({
@@ -84765,7 +84767,7 @@ export const PutDevicePolicyCustomIncludeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     policyId: S.String.pipe(T.Label("policy_id")),
-    body: DevicesPoliciesCustomIncludesUpdateRequestBodyList,
+    body: DevicesPoliciesCustomIncludesUpdateRequestBodyList.pipe(T.HttpBody()),
   })
     .pipe(
       T.Http({
@@ -84857,7 +84859,9 @@ export const PutDevicePolicyDefaultExcludeRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
-      body: DevicesPoliciesDefaultExcludesUpdateRequestBodyList,
+      body: DevicesPoliciesDefaultExcludesUpdateRequestBodyList.pipe(
+        T.HttpBody(),
+      ),
     })
       .pipe(
         T.Http({
@@ -85063,7 +85067,9 @@ export const PutDevicePolicyDefaultIncludeRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
-      body: DevicesPoliciesDefaultIncludesUpdateRequestBodyList,
+      body: DevicesPoliciesDefaultIncludesUpdateRequestBodyList.pipe(
+        T.HttpBody(),
+      ),
     })
       .pipe(
         T.Http({
@@ -91612,7 +91618,7 @@ export const UpdateAccessApplicationForAccountRequest = /*@__PURE__*/ S.suspend(
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
       appId: S.String.pipe(T.Label("app_id")),
-      body: AccessApplicationsUpdateForAccountRequestBody,
+      body: AccessApplicationsUpdateForAccountRequestBody.pipe(T.HttpBody()),
     })
       .pipe(
         T.Http({
@@ -95182,7 +95188,7 @@ export const UpdateAccessApplicationForZoneRequest = /*@__PURE__*/ S.suspend(
     S.Struct({
       zoneId: S.String.pipe(T.Label("zone_id")),
       appId: S.String.pipe(T.Label("app_id")),
-      body: AccessApplicationsUpdateForZoneRequestBody,
+      body: AccessApplicationsUpdateForZoneRequestBody.pipe(T.HttpBody()),
     })
       .pipe(
         T.Http({
@@ -99889,7 +99895,7 @@ export const UpdateAccessBookmarkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     bookmarkId: S.String.pipe(T.Label("bookmark_id")),
-    body: S.Unknown,
+    body: S.Unknown.pipe(T.HttpBody()),
   })
     .pipe(
       T.Http({
@@ -107855,7 +107861,7 @@ export const UpdateDlpEntryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     entryId: S.String.pipe(T.Label("entry_id")),
-    body: DlpEntriesUpdateRequestBody,
+    body: DlpEntriesUpdateRequestBody.pipe(T.HttpBody()),
   })
     .pipe(
       T.Http({

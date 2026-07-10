@@ -95,7 +95,7 @@ export interface BulkPatchSettingOperationsRequest {
 export const BulkPatchSettingOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-    body: SettingsOperationsBulkEditRequestBodyMap,
+    body: SettingsOperationsBulkEditRequestBodyMap.pipe(T.HttpBody()),
   })
     .pipe(
       T.Http({

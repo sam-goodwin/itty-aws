@@ -448,7 +448,7 @@ export const CreateConsumerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     queueId: S.String.pipe(T.Label("queue_id")),
-    body: ConsumersCreateRequestBody,
+    body: ConsumersCreateRequestBody.pipe(T.HttpBody()),
   })
     .pipe(
       T.Http({
@@ -2279,7 +2279,7 @@ export const PushMessageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     queueId: S.String.pipe(T.Label("queue_id")),
-    body: S.optional(MessagesPushRequestBody),
+    body: S.optional(MessagesPushRequestBody.pipe(T.HttpBody())),
   })
     .pipe(
       T.Http({
@@ -2598,7 +2598,7 @@ export const UpdateConsumerRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     queueId: S.String.pipe(T.Label("queue_id")),
     consumerId: S.String.pipe(T.Label("consumer_id")),
-    body: ConsumersUpdateRequestBody,
+    body: ConsumersUpdateRequestBody.pipe(T.HttpBody()),
   })
     .pipe(
       T.Http({

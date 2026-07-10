@@ -639,7 +639,8 @@
         "body": {
           "target": "com.cloudflare.bot_management#UpdateRequestBody",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#required": {},
+            "smithy.api#httpPayload": {}
           }
         }
       },

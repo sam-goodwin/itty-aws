@@ -151,7 +151,7 @@ export interface BulkCreateLabelUsersRequest {
 export const BulkCreateLabelUsersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-    body: LabelsUserBulkCreateRequestBodyList,
+    body: LabelsUserBulkCreateRequestBodyList.pipe(T.HttpBody()),
   })
     .pipe(
       T.Http({
@@ -449,7 +449,7 @@ export interface BulkCreateOperationsRequest {
 export const BulkCreateOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-    body: OperationsBulkCreateRequestBodyList,
+    body: OperationsBulkCreateRequestBodyList.pipe(T.HttpBody()),
   })
     .pipe(
       T.Http({
@@ -1050,7 +1050,7 @@ export interface BulkPatchDiscoveryOperationsRequest {
 export const BulkPatchDiscoveryOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-    body: DiscoveryOperationsBulkEditRequestBodyMap,
+    body: DiscoveryOperationsBulkEditRequestBodyMap.pipe(T.HttpBody()),
   })
     .pipe(
       T.Http({

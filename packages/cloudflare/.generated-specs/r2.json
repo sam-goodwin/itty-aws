@@ -5305,7 +5305,8 @@
         "body": {
           "target": "com.cloudflare.r2#BucketsSippyUpdateRequestBody",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#required": {},
+            "smithy.api#httpPayload": {}
           }
         }
       },
@@ -5532,7 +5533,8 @@
         "body": {
           "target": "com.cloudflare.r2#SuperSlurperConnectivityPrecheckSourceRequestBody",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#required": {},
+            "smithy.api#httpPayload": {}
           }
         }
       },

@@ -195,7 +195,7 @@ export const BulkInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     workflowName: S.String.pipe(T.Label("workflow_name")),
-    body: S.optional(InstancesBulkRequestBodyList),
+    body: S.optional(InstancesBulkRequestBodyList.pipe(T.HttpBody())),
   })
     .pipe(
       T.Http({
@@ -399,7 +399,7 @@ export const CreateInstanceEventRequest = /*@__PURE__*/ S.suspend(() =>
     workflowName: S.String.pipe(T.Label("workflow_name")),
     instanceId: S.String.pipe(T.Label("instance_id")),
     eventType: S.String.pipe(T.Label("event_type")),
-    body: S.optional(S.Unknown),
+    body: S.optional(S.Unknown.pipe(T.HttpBody())),
   })
     .pipe(
       T.Http({
@@ -1826,7 +1826,7 @@ export const PatchInstanceStatusRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     workflowName: S.String.pipe(T.Label("workflow_name")),
     instanceId: S.String.pipe(T.Label("instance_id")),
-    body: S.optional(InstancesStatusEditRequestBody),
+    body: S.optional(InstancesStatusEditRequestBody.pipe(T.HttpBody())),
   })
     .pipe(
       T.Http({
