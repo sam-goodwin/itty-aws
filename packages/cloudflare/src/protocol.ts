@@ -36,14 +36,32 @@ import {
   responseCodeSymbol,
   type HttpTrait,
 } from "@distilled.cloud/core/trait";
-import { ConfigError } from "@distilled.cloud/core/errors";
+import { retryableKey } from "@distilled.cloud/core/category";
+import {
+  ConfigError,
+  Forbidden,
+  GatewayTimeout,
+  HTTP_STATUS_MAP,
+  InternalServerError,
+  TooManyRequests,
+  Unauthorized,
+} from "@distilled.cloud/core/errors";
+import {
+  parseRetryAfterForStatus,
+  parseServerRetryHint,
+} from "@distilled.cloud/core/retry-after";
 import {
   Credentials,
   formatHeaders,
   type OAuthRefreshError,
   type ResolvedCredentials,
 } from "./credentials.ts";
-import { CloudflareError, CloudflareRateLimited } from "./errors.ts";
+import {
+  CloudflareHttpError,
+  type DefaultErrors,
+  InvalidRoute,
+  UnknownCloudflareError,
+} from "./errors.ts";
 import {
   envelopePayloadSymbol,
   formDataFileSymbol,
@@ -59,8 +77,7 @@ import {
  * infers these back out of the schema generics.
  */
 export type CloudflareOpError =
-  | CloudflareError
-  | CloudflareRateLimited
+  | DefaultErrors
   | ConfigError
   | OAuthRefreshError
   | HttpClientError.HttpClientError;
@@ -212,9 +229,101 @@ const mapKeys = (
 // Cloudflare failures are real typed errors that an operation re-surfaces via
 // its `errors: [...]` list. Fail with the instance and erase the error type
 // here; `API.make`'s signature reintroduces it for callers.
-const fail = (
-  e: CloudflareError | CloudflareRateLimited,
-): Effect.Effect<never> => Effect.fail(e) as Effect.Effect<never>;
+const fail = (e: unknown): Effect.Effect<never> =>
+  Effect.fail(e) as Effect.Effect<never>;
+
+/**
+ * Mark an error instance retryable regardless of its class categories —
+ * used for dual-use Cloudflare codes whose transient variant is only
+ * identifiable from the message.
+ */
+const tagRetryable = <E>(error: E): E => {
+  (error as Record<string, unknown>)[retryableKey] = {};
+  return error;
+};
+
+const GLOBAL_RATE_LIMIT_MESSAGE =
+  /\b(rate ?limit(ed|ing)?|throttl(ed|ing) your request)\b/i;
+
+/**
+ * Cloudflare error codes that map to global/default errors regardless of
+ * operation — infrastructure-level errors that can occur on any endpoint.
+ * Transcribed from the distilled cloudflare client.
+ */
+const GLOBAL_ERROR_CODE_MAP: Record<
+  number,
+  (message: string, headers?: Record<string, string | undefined>) => unknown
+> = {
+  // "Please wait and consider throttling your request speed" — returned
+  // inside envelopes with arbitrary HTTP status (often 200).
+  971: (message, headers) =>
+    new TooManyRequests({
+      message,
+      retryAfter: parseServerRetryHint(headers),
+    }),
+  // Authentication-related codes — Cloudflare frequently returns these
+  // inside a 400/403 envelope rather than 401.
+  6003: (message) => new Unauthorized({ message }),
+  9103: (message) => new Unauthorized({ message }),
+  9106: (message) => new Unauthorized({ message }),
+  9109: (message) => new Unauthorized({ message }),
+  // Deliberately NOT retryable: the same message covers transient auth-edge
+  // blips and genuinely invalid tokens.
+  10000: (message) => new Unauthorized({ message }),
+  // Dual-use: "Method not allowed for token" is a real permission denial;
+  // "internal error" is a CF hiccup mistagged as 403 — only that variant is
+  // tagged retryable.
+  10001: (message) => {
+    const error = new Forbidden({ message });
+    return /internal error/i.test(message) ? tagRetryable(error) : error;
+  },
+  // "Invalid request: invalid route" — a path component (typically
+  // accountId/zoneId) doesn't resolve to a real resource.
+  7003: (message) => new InvalidRoute({ code: 7003, message }),
+  // Dual-use code 1000: several unrelated conditions, each unambiguous from
+  // the message.
+  1000: (message) => {
+    if (/\btimeout\b/i.test(message)) {
+      return new GatewayTimeout({ message });
+    }
+    if (/internal (server )?error/i.test(message)) {
+      return new InternalServerError({ message });
+    }
+    return new UnknownCloudflareError({ code: 1000, message });
+  },
+};
+
+/**
+ * Typed error for an HTTP status: the mapped class when one exists (with
+ * retry categories for 5xx), InternalServerError for unmapped 5xx (e.g.
+ * Cloudflare-specific 520-530), CloudflareHttpError otherwise.
+ */
+const httpStatusError = (
+  status: number,
+  body?: string,
+  headers?: Record<string, string | undefined>,
+): unknown => {
+  const ErrorClass = HTTP_STATUS_MAP[status as keyof typeof HTTP_STATUS_MAP];
+  const message = body ?? String(status);
+  if (ErrorClass) {
+    return new ErrorClass({
+      message,
+      retryAfter: parseRetryAfterForStatus(status, headers),
+    } as any);
+  }
+  if (status >= 500) {
+    return new InternalServerError({
+      message,
+      retryAfter: parseRetryAfterForStatus(status, headers),
+    });
+  }
+  return new CloudflareHttpError({
+    status,
+    statusText: String(status),
+    body: message,
+    message,
+  });
+};
 
 // The protocol layer is memoized per process by `API.make` (see
 // `OperationConfig.protocol`), so the build must not capture credentials —
@@ -432,40 +541,100 @@ const makeDecode =
     readonly errors: ReadonlyArray<unknown>;
   }) =>
     Effect.gen(function* () {
-      const json = ((yield* response.json.pipe(Effect.orDie)) ?? {}) as Record<
-        string,
-        unknown
-      >;
-
-      // Error envelope or non-2xx → typed Cloudflare error.
-      const failed = response.status >= 400 || json.success === false;
-      if (failed) {
-        const rawErrors = Array.isArray(json.errors) ? json.errors : [];
-        const errors = rawErrors.map((e: any) => ({
-          code: typeof e?.code === "number" ? e.code : undefined,
-          message: String(e?.message ?? `HTTP ${response.status}`),
-        }));
-        if (errors.length === 0) {
-          errors.push({
-            code: undefined,
-            message: `HTTP ${response.status}`,
-          });
+      // Read as text and parse tolerantly — Cloudflare answers some errors
+      // (HTML 5xx pages, bare plain-text 4xx) with non-JSON bodies.
+      const text = (yield* response.text.pipe(Effect.orDie)) ?? "";
+      let json: Record<string, unknown> = {};
+      let nonJson = false;
+      if (text.trim().length > 0) {
+        try {
+          const parsed = JSON.parse(text);
+          if (parsed !== null && typeof parsed === "object") {
+            json = parsed as Record<string, unknown>;
+          } else {
+            nonJson = true;
+          }
+        } catch {
+          nonJson = true;
         }
-        // Operation-specific typed error (matcher metadata on the class) wins
-        // over the generic envelope errors.
-        const typed = matchTypedError(errorClasses, response.status, errors);
+      }
+      const status = response.status;
+      const headers = response.headers as Record<string, string | undefined>;
+
+      // Error envelope or non-2xx → typed error, matched like the distilled
+      // cloudflare client: per-operation matchers, then global error codes,
+      // then throttling, then HTTP-status classes, then the unknown fallback.
+      const failed = status >= 400 || (!nonJson && json.success === false);
+      if (failed) {
+        const rawErrors =
+          !nonJson && Array.isArray(json.errors) ? json.errors : [];
+        const first = rawErrors[0] as
+          | { code?: number; message?: string }
+          | undefined;
+        // Cloudflare sometimes omits the code entirely (e.g. webhook errors);
+        // treat missing code as 0 so `{ code: 0 }` matchers can match.
+        const errorCode = first
+          ? typeof first.code === "number"
+            ? first.code
+            : 0
+          : undefined;
+        const errorMessage = nonJson
+          ? text
+          : (first?.message ?? `HTTP ${status}`);
+
+        // 1. Per-operation typed error (matcher metadata on the class).
+        const typed = matchTypedError(errorClasses, status, [
+          { code: errorCode, message: errorMessage },
+        ]);
         if (typed !== undefined) {
           return yield* Effect.fail(typed) as Effect.Effect<never>;
         }
-        if (response.status === 429) {
+
+        // 2. Global/infrastructure error codes (any endpoint, any status).
+        if (errorCode !== undefined && errorCode in GLOBAL_ERROR_CODE_MAP) {
           return yield* fail(
-            new CloudflareRateLimited({ status: response.status, errors }),
+            GLOBAL_ERROR_CODE_MAP[errorCode]!(errorMessage, headers),
           );
         }
+
+        // 3. Throttling — 429 or the global rate-limit message (Cloudflare
+        // returns it inside envelopes with arbitrary HTTP status, often 200).
+        if (status === 429 || GLOBAL_RATE_LIMIT_MESSAGE.test(errorMessage)) {
+          return yield* fail(
+            new TooManyRequests({
+              message: errorMessage,
+              retryAfter: parseServerRetryHint(headers),
+            }),
+          );
+        }
+
+        // 4. HTTP-status classes (4xx) / retryable 5xx.
+        if (status >= 400 && status < 500) {
+          const StatusErrorClass =
+            HTTP_STATUS_MAP[status as keyof typeof HTTP_STATUS_MAP];
+          if (StatusErrorClass) {
+            return yield* fail(
+              new StatusErrorClass({
+                message: errorMessage,
+                retryAfter: parseRetryAfterForStatus(status, headers),
+              } as any),
+            );
+          }
+        }
+        if (status >= 500) {
+          return yield* fail(httpStatusError(status, errorMessage, headers));
+        }
+
+        // 5. Unknown envelope error.
         return yield* fail(
-          new CloudflareError({ status: response.status, errors }),
+          new UnknownCloudflareError({
+            code: errorCode,
+            message: errorMessage,
+          }),
         );
       }
+
+      if (nonJson) json = {};
 
       // Unwrap the envelope: the payload is `result` (fall back to the whole
       // body for the handful of endpoints that don't use the envelope).
