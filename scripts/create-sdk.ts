@@ -490,13 +490,13 @@ bun run fetch-specs
           },
           workspaces: {
             catalog: {
-              "@typescript/native-preview": "latest",
+              typescript: "^7.0.2",
               oxfmt: "0.21.0",
               oxlint: "1.36.0",
             },
           },
           dependencies: {
-            "@typescript/native-preview": "catalog:",
+            typescript: "catalog:",
             yaml: "^2.6.0",
           },
           devDependencies: {
@@ -953,11 +953,11 @@ const scaffoldPackage = (
               },
             },
             scripts: {
-              typecheck: "tsgo",
-              build: "tsgo -b",
+              typecheck: "tsc",
+              build: "tsc -b",
               fmt: "oxfmt --write src",
               lint: "oxlint --fix src",
-              check: "tsgo && oxlint src && oxfmt --check src",
+              check: "tsc && oxlint src && oxfmt --check src",
               test: "bunx vitest run test --passWithNoTests",
               "publish:npm": "bun run build && bun publish --access public",
               generate:

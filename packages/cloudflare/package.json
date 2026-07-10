@@ -51,12 +51,12 @@
     }
   },
   "scripts": {
-    "typecheck": "tsgo",
-    "build": "tsgo -b",
+    "typecheck": "tsc",
+    "build": "tsc -b",
     "download:env": "doppler secrets download --no-file --format env > .env",
     "fmt": "oxfmt --write src",
     "lint": "oxlint --fix src",
-    "check": "tsgo && oxlint src && oxfmt --check src",
+    "check": "tsc && oxlint src && oxfmt --check src",
     "test": "vitest run --exclude specs --passWithNoTests",
     "publish:npm": "bun run build && bun publish --access public",
     "generate": "bun run scripts/generate.ts && oxlint --fix src && oxfmt --write src && oxfmt --write src",
@@ -72,7 +72,7 @@
     "@types/bun": "catalog:",
     "@types/node": "catalog:",
     "dotenv": "catalog:",
-    "typescript": "^5.9.3",
+    "typescript-5": "npm:typescript@^5.9.3",
     "vitest": "catalog:"
   },
   "peerDependencies": {
