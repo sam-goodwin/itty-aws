@@ -1,0 +1,10 @@
+{
+  "operations": {
+    "createConnectorProfile": {
+      "errors": ["ConnectorServerException"]
+    },
+    "updateConnectorProfile": {
+      "errors": ["ConnectorServerException"]
+    }
+  }
+}

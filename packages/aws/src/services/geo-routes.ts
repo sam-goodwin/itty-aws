@@ -2239,29 +2239,29 @@ export type RouteFerryTravelStepList = RouteFerryTravelStep[];
 export const RouteFerryTravelStepList =
   /*@__PURE__*/ /*#__PURE__*/ S.Array(RouteFerryTravelStep);
 export interface RouteFerryLegDetails {
-  AfterTravelSteps: RouteFerryAfterTravelStep[];
+  AfterTravelSteps?: RouteFerryAfterTravelStep[];
   Arrival: RouteFerryArrival;
-  BeforeTravelSteps: RouteFerryBeforeTravelStep[];
+  BeforeTravelSteps?: RouteFerryBeforeTravelStep[];
   Departure: RouteFerryDeparture;
-  Notices: RouteFerryNotice[];
-  PassThroughWaypoints: RoutePassThroughWaypoint[];
+  Notices?: RouteFerryNotice[];
+  PassThroughWaypoints?: RoutePassThroughWaypoint[];
   RouteName?: string | redacted.Redacted<string>;
-  Spans: RouteFerrySpan[];
+  Spans?: RouteFerrySpan[];
   Summary?: RouteFerrySummary;
-  TravelSteps: RouteFerryTravelStep[];
+  TravelSteps?: RouteFerryTravelStep[];
 }
 export const RouteFerryLegDetails = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
-    AfterTravelSteps: RouteFerryAfterTravelStepList,
+    AfterTravelSteps: S.optional(RouteFerryAfterTravelStepList),
     Arrival: RouteFerryArrival,
-    BeforeTravelSteps: RouteFerryBeforeTravelStepList,
+    BeforeTravelSteps: S.optional(RouteFerryBeforeTravelStepList),
     Departure: RouteFerryDeparture,
-    Notices: RouteFerryNoticeList,
-    PassThroughWaypoints: RoutePassThroughWaypointList,
+    Notices: S.optional(RouteFerryNoticeList),
+    PassThroughWaypoints: S.optional(RoutePassThroughWaypointList),
     RouteName: S.optional(SensitiveString),
-    Spans: RouteFerrySpanList,
+    Spans: S.optional(RouteFerrySpanList),
     Summary: S.optional(RouteFerrySummary),
-    TravelSteps: RouteFerryTravelStepList,
+    TravelSteps: S.optional(RouteFerryTravelStepList),
   }),
 ).annotate({
   identifier: "RouteFerryLegDetails",
@@ -2774,26 +2774,26 @@ export type RoutePedestrianTravelStepList = RoutePedestrianTravelStep[];
 export const RoutePedestrianTravelStepList =
   /*@__PURE__*/ /*#__PURE__*/ S.Array(RoutePedestrianTravelStep);
 export interface RoutePedestrianLegDetails {
-  AfterTravelSteps: RoutePedestrianAfterTravelStep[];
+  AfterTravelSteps?: RoutePedestrianAfterTravelStep[];
   Arrival: RoutePedestrianArrival;
   Departure: RoutePedestrianDeparture;
-  Notices: RoutePedestrianNotice[];
-  PassThroughWaypoints: RoutePassThroughWaypoint[];
-  Spans: RoutePedestrianSpan[];
+  Notices?: RoutePedestrianNotice[];
+  PassThroughWaypoints?: RoutePassThroughWaypoint[];
+  Spans?: RoutePedestrianSpan[];
   Summary?: RoutePedestrianSummary;
-  TravelSteps: RoutePedestrianTravelStep[];
+  TravelSteps?: RoutePedestrianTravelStep[];
 }
 export const RoutePedestrianLegDetails = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      AfterTravelSteps: RoutePedestrianAfterTravelStepList,
+      AfterTravelSteps: S.optional(RoutePedestrianAfterTravelStepList),
       Arrival: RoutePedestrianArrival,
       Departure: RoutePedestrianDeparture,
-      Notices: RoutePedestrianNoticeList,
-      PassThroughWaypoints: RoutePassThroughWaypointList,
-      Spans: RoutePedestrianSpanList,
+      Notices: S.optional(RoutePedestrianNoticeList),
+      PassThroughWaypoints: S.optional(RoutePassThroughWaypointList),
+      Spans: S.optional(RoutePedestrianSpanList),
       Summary: S.optional(RoutePedestrianSummary),
-      TravelSteps: RoutePedestrianTravelStepList,
+      TravelSteps: S.optional(RoutePedestrianTravelStepList),
     }),
 ).annotate({
   identifier: "RoutePedestrianLegDetails",
@@ -3560,36 +3560,36 @@ export const RouteZone = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export type RouteZoneList = RouteZone[];
 export const RouteZoneList = /*@__PURE__*/ /*#__PURE__*/ S.Array(RouteZone);
 export interface RouteVehicleLegDetails {
-  AfterTravelSteps: RouteVehicleAfterTravelStep[];
+  AfterTravelSteps?: RouteVehicleAfterTravelStep[];
   Arrival: RouteVehicleArrival;
   Departure: RouteVehicleDeparture;
-  Incidents: RouteVehicleIncident[];
-  Notices: RouteVehicleNotice[];
-  PassThroughWaypoints: RoutePassThroughWaypoint[];
-  Spans: RouteVehicleSpan[];
+  Incidents?: RouteVehicleIncident[];
+  Notices?: RouteVehicleNotice[];
+  PassThroughWaypoints?: RoutePassThroughWaypoint[];
+  Spans?: RouteVehicleSpan[];
   Summary?: RouteVehicleSummary;
-  Tolls: RouteToll[];
-  TollSystems: RouteTollSystem[];
-  TravelSteps: RouteVehicleTravelStep[];
-  TruckRoadTypes: string | redacted.Redacted<string>[];
-  Zones: RouteZone[];
+  Tolls?: RouteToll[];
+  TollSystems?: RouteTollSystem[];
+  TravelSteps?: RouteVehicleTravelStep[];
+  TruckRoadTypes?: string | redacted.Redacted<string>[];
+  Zones?: RouteZone[];
 }
 export const RouteVehicleLegDetails = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      AfterTravelSteps: RouteVehicleAfterTravelStepList,
+      AfterTravelSteps: S.optional(RouteVehicleAfterTravelStepList),
       Arrival: RouteVehicleArrival,
       Departure: RouteVehicleDeparture,
-      Incidents: RouteVehicleIncidentList,
-      Notices: RouteVehicleNoticeList,
-      PassThroughWaypoints: RoutePassThroughWaypointList,
-      Spans: RouteVehicleSpanList,
+      Incidents: S.optional(RouteVehicleIncidentList),
+      Notices: S.optional(RouteVehicleNoticeList),
+      PassThroughWaypoints: S.optional(RoutePassThroughWaypointList),
+      Spans: S.optional(RouteVehicleSpanList),
       Summary: S.optional(RouteVehicleSummary),
-      Tolls: RouteTollList,
-      TollSystems: RouteTollSystemList,
-      TravelSteps: RouteVehicleTravelStepList,
-      TruckRoadTypes: TruckRoadTypeList,
-      Zones: RouteZoneList,
+      Tolls: S.optional(RouteTollList),
+      TollSystems: S.optional(RouteTollSystemList),
+      TravelSteps: S.optional(RouteVehicleTravelStepList),
+      TruckRoadTypes: S.optional(TruckRoadTypeList),
+      Zones: S.optional(RouteZoneList),
     }),
 ).annotate({
   identifier: "RouteVehicleLegDetails",
@@ -3840,29 +3840,29 @@ export const RouteRentalTravelStepList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
   RouteRentalTravelStep,
 );
 export interface RouteRentalLegDetails {
-  AfterTravelSteps: RouteRentalAfterTravelStep[];
+  AfterTravelSteps?: RouteRentalAfterTravelStep[];
   Agency: RouteRentalAgency;
   Arrival: RouteRentalArrival;
-  Attributions: RouteAttribution[];
-  BeforeTravelSteps: RouteRentalBeforeTravelStep[];
-  BookingWebLinks: RouteWebLink[];
+  Attributions?: RouteAttribution[];
+  BeforeTravelSteps?: RouteRentalBeforeTravelStep[];
+  BookingWebLinks?: RouteWebLink[];
   Departure: RouteRentalDeparture;
   Summary?: RouteRentalSummary;
   Transport: RouteRentalTransportModeDetails;
-  TravelSteps: RouteRentalTravelStep[];
+  TravelSteps?: RouteRentalTravelStep[];
 }
 export const RouteRentalLegDetails = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
-    AfterTravelSteps: RouteRentalAfterTravelStepList,
+    AfterTravelSteps: S.optional(RouteRentalAfterTravelStepList),
     Agency: RouteRentalAgency,
     Arrival: RouteRentalArrival,
-    Attributions: RouteAttributionList,
-    BeforeTravelSteps: RouteRentalBeforeTravelStepList,
-    BookingWebLinks: RouteWebLinkList,
+    Attributions: S.optional(RouteAttributionList),
+    BeforeTravelSteps: S.optional(RouteRentalBeforeTravelStepList),
+    BookingWebLinks: S.optional(RouteWebLinkList),
     Departure: RouteRentalDeparture,
     Summary: S.optional(RouteRentalSummary),
     Transport: RouteRentalTransportModeDetails,
-    TravelSteps: RouteRentalTravelStepList,
+    TravelSteps: S.optional(RouteRentalTravelStepList),
   }),
 ).annotate({
   identifier: "RouteRentalLegDetails",
@@ -4089,31 +4089,31 @@ export type RouteTaxiTravelStepList = RouteTaxiTravelStep[];
 export const RouteTaxiTravelStepList =
   /*@__PURE__*/ /*#__PURE__*/ S.Array(RouteTaxiTravelStep);
 export interface RouteTaxiLegDetails {
-  AfterTravelSteps: RouteTaxiAfterTravelStep[];
+  AfterTravelSteps?: RouteTaxiAfterTravelStep[];
   Agency: RouteTaxiAgency;
   Arrival: RouteTaxiArrival;
-  Attributions: RouteAttribution[];
-  BeforeTravelSteps: RouteTaxiBeforeTravelStep[];
-  BookingWebLinks: RouteWebLink[];
+  Attributions?: RouteAttribution[];
+  BeforeTravelSteps?: RouteTaxiBeforeTravelStep[];
+  BookingWebLinks?: RouteWebLink[];
   Departure: RouteTaxiDeparture;
-  Notices: RouteTaxiNotice[];
+  Notices?: RouteTaxiNotice[];
   Summary?: RouteTaxiSummary;
   Transport: RouteTaxiTransportModeDetails;
-  TravelSteps: RouteTaxiTravelStep[];
+  TravelSteps?: RouteTaxiTravelStep[];
 }
 export const RouteTaxiLegDetails = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
-    AfterTravelSteps: RouteTaxiAfterTravelStepList,
+    AfterTravelSteps: S.optional(RouteTaxiAfterTravelStepList),
     Agency: RouteTaxiAgency,
     Arrival: RouteTaxiArrival,
-    Attributions: RouteAttributionList,
-    BeforeTravelSteps: RouteTaxiBeforeTravelStepList,
-    BookingWebLinks: RouteWebLinkList,
+    Attributions: S.optional(RouteAttributionList),
+    BeforeTravelSteps: S.optional(RouteTaxiBeforeTravelStepList),
+    BookingWebLinks: S.optional(RouteWebLinkList),
     Departure: RouteTaxiDeparture,
-    Notices: RouteTaxiNoticeList,
+    Notices: S.optional(RouteTaxiNoticeList),
     Summary: S.optional(RouteTaxiSummary),
     Transport: RouteTaxiTransportModeDetails,
-    TravelSteps: RouteTaxiTravelStepList,
+    TravelSteps: S.optional(RouteTaxiTravelStepList),
   }),
 ).annotate({
   identifier: "RouteTaxiLegDetails",
@@ -4467,42 +4467,42 @@ export const RouteTransitTravelStepList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
   RouteTransitTravelStep,
 );
 export interface RouteTransitLegDetails {
-  AfterTravelSteps: RouteTransitAfterTravelStep[];
+  AfterTravelSteps?: RouteTransitAfterTravelStep[];
   Agency?: RouteTransitAgency;
   Arrival: RouteTransitArrival;
-  Attributions: RouteAttribution[];
-  BeforeTravelSteps: RouteTransitBeforeTravelStep[];
-  BookingWebLinks: RouteWebLink[];
+  Attributions?: RouteAttribution[];
+  BeforeTravelSteps?: RouteTransitBeforeTravelStep[];
+  BookingWebLinks?: RouteWebLink[];
   Departure: RouteTransitDeparture;
-  Incidents: RouteTransitIncident[];
-  IntermediateStops: RouteTransitIntermediateStop[];
-  NextDepartures: RouteTransitNextDeparture[];
-  Notices: RouteTransitNotice[];
-  PassThroughWaypoints: RoutePassThroughWaypoint[];
-  Spans: RouteTransitSpan[];
+  Incidents?: RouteTransitIncident[];
+  IntermediateStops?: RouteTransitIntermediateStop[];
+  NextDepartures?: RouteTransitNextDeparture[];
+  Notices?: RouteTransitNotice[];
+  PassThroughWaypoints?: RoutePassThroughWaypoint[];
+  Spans?: RouteTransitSpan[];
   Summary?: RouteTransitSummary;
   Transport: RouteTransitTransportModeDetails;
-  TravelSteps: RouteTransitTravelStep[];
+  TravelSteps?: RouteTransitTravelStep[];
 }
 export const RouteTransitLegDetails = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      AfterTravelSteps: RouteTransitAfterTravelStepList,
+      AfterTravelSteps: S.optional(RouteTransitAfterTravelStepList),
       Agency: S.optional(RouteTransitAgency),
       Arrival: RouteTransitArrival,
-      Attributions: RouteAttributionList,
-      BeforeTravelSteps: RouteTransitBeforeTravelStepList,
-      BookingWebLinks: RouteWebLinkList,
+      Attributions: S.optional(RouteAttributionList),
+      BeforeTravelSteps: S.optional(RouteTransitBeforeTravelStepList),
+      BookingWebLinks: S.optional(RouteWebLinkList),
       Departure: RouteTransitDeparture,
-      Incidents: RouteTransitIncidentList,
-      IntermediateStops: RouteTransitIntermediateStopList,
-      NextDepartures: RouteTransitNextDepartureList,
-      Notices: RouteTransitNoticeList,
-      PassThroughWaypoints: RoutePassThroughWaypointList,
-      Spans: RouteTransitSpanList,
+      Incidents: S.optional(RouteTransitIncidentList),
+      IntermediateStops: S.optional(RouteTransitIntermediateStopList),
+      NextDepartures: S.optional(RouteTransitNextDepartureList),
+      Notices: S.optional(RouteTransitNoticeList),
+      PassThroughWaypoints: S.optional(RoutePassThroughWaypointList),
+      Spans: S.optional(RouteTransitSpanList),
       Summary: S.optional(RouteTransitSummary),
       Transport: RouteTransitTransportModeDetails,
-      TravelSteps: RouteTransitTravelStepList,
+      TravelSteps: S.optional(RouteTransitTravelStepList),
     }),
 ).annotate({
   identifier: "RouteTransitLegDetails",

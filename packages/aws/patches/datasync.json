@@ -6,6 +6,11 @@
           "name": "LocationRoleNotAssumable",
           "from": "InvalidRequestException",
           "message": { "includes": "Invalid IAM role" }
+        },
+        {
+          "name": "LocationAccessTestFailed",
+          "from": "InvalidRequestException",
+          "message": { "includes": "location access test failed" }
         }
       ]
     },
@@ -15,6 +20,11 @@
           "name": "LocationRoleNotAssumable",
           "from": "InvalidRequestException",
           "message": { "includes": "Invalid IAM role" }
+        },
+        {
+          "name": "LocationAccessTestFailed",
+          "from": "InvalidRequestException",
+          "message": { "includes": "location access test failed" }
         }
       ]
     },
@@ -71,11 +81,21 @@
           "message": { "matches": "^Task .* is not found" }
         }
       ]
+    },
+    "startTaskExecution": {
+      "syntheticErrors": [
+        {
+          "name": "LocationAccessTestFailed",
+          "from": "InvalidRequestException",
+          "message": { "includes": "location access test failed" }
+        }
+      ]
     }
   },
   "errorCategories": {
     "LocationNotFound": ["NotFoundError"],
     "TaskNotFound": ["NotFoundError"],
-    "LocationRoleNotAssumable": ["RetryableError"]
+    "LocationRoleNotAssumable": ["RetryableError"],
+    "LocationAccessTestFailed": ["RetryableError"]
   }
 }

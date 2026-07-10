@@ -3932,8 +3932,8 @@ export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuo
 ).pipe(C.withQuotaError) {}
 export class ConnectorServerException extends S.TaggedErrorClass<ConnectorServerException>()(
   "ConnectorServerException",
-  { message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
+  {},
+) {}
 export class UnsupportedOperationException extends S.TaggedErrorClass<UnsupportedOperationException>()(
   "UnsupportedOperationException",
   { message: S.optional(S.String) },
@@ -3993,6 +3993,7 @@ export type CreateConnectorProfileError =
   | InternalServerException
   | ServiceQuotaExceededException
   | ValidationException
+  | ConnectorServerException
   | CommonErrors;
 /**
  * Creates a new connector profile associated with your Amazon Web Services account. There is
@@ -4015,6 +4016,7 @@ export const createConnectorProfile: API.OperationMethod<
     InternalServerException,
     ServiceQuotaExceededException,
     ValidationException,
+    ConnectorServerException,
   ],
   operationName: "CreateConnectorProfile",
 }));
@@ -4629,6 +4631,7 @@ export type UpdateConnectorProfileError =
   | InternalServerException
   | ResourceNotFoundException
   | ValidationException
+  | ConnectorServerException
   | CommonErrors;
 /**
  * Updates a given connector profile associated with your account.
@@ -4647,6 +4650,7 @@ export const updateConnectorProfile: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
     ValidationException,
+    ConnectorServerException,
   ],
   operationName: "UpdateConnectorProfile",
 }));

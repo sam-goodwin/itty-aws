@@ -596,7 +596,7 @@ export const DescribeGeofenceCollectionRequest =
 export interface DescribeGeofenceCollectionResponse {
   CollectionName: string;
   CollectionArn: string;
-  Description: string;
+  Description?: string;
   PricingPlan?: string;
   PricingPlanDataSource?: string;
   KmsKeyId?: string;
@@ -610,7 +610,7 @@ export const DescribeGeofenceCollectionResponse =
     S.Struct({
       CollectionName: S.String,
       CollectionArn: S.String,
-      Description: S.String,
+      Description: S.optional(S.String),
       PricingPlan: S.optional(S.String),
       PricingPlanDataSource: S.optional(S.String),
       KmsKeyId: S.optional(S.String),
@@ -718,7 +718,7 @@ export const ListGeofenceCollectionsRequest =
   }) as any as S.Schema<ListGeofenceCollectionsRequest>;
 export interface ListGeofenceCollectionsResponseEntry {
   CollectionName: string;
-  Description: string;
+  Description?: string;
   PricingPlan?: string;
   PricingPlanDataSource?: string;
   CreateTime: Date;
@@ -728,7 +728,7 @@ export const ListGeofenceCollectionsResponseEntry =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     S.Struct({
       CollectionName: S.String,
-      Description: S.String,
+      Description: S.optional(S.String),
       PricingPlan: S.optional(S.String),
       PricingPlanDataSource: S.optional(S.String),
       CreateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
@@ -1593,7 +1593,7 @@ export interface DescribeMapResponse {
   PricingPlan?: string;
   DataSource: string;
   Configuration: MapConfiguration;
-  Description: string;
+  Description?: string;
   Tags?: { [key: string]: string | undefined };
   CreateTime: Date;
   UpdateTime: Date;
@@ -1605,7 +1605,7 @@ export const DescribeMapResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     PricingPlan: S.optional(S.String),
     DataSource: S.String,
     Configuration: MapConfiguration,
-    Description: S.String,
+    Description: S.optional(S.String),
     Tags: S.optional(TagMap),
     CreateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
     UpdateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
@@ -1711,7 +1711,7 @@ export const ListMapsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListMapsRequest>;
 export interface ListMapsResponseEntry {
   MapName: string;
-  Description: string;
+  Description?: string;
   DataSource: string;
   PricingPlan?: string;
   CreateTime: Date;
@@ -1720,7 +1720,7 @@ export interface ListMapsResponseEntry {
 export const ListMapsResponseEntry = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
     MapName: S.String,
-    Description: S.String,
+    Description: S.optional(S.String),
     DataSource: S.String,
     PricingPlan: S.optional(S.String),
     CreateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
@@ -1986,7 +1986,7 @@ export interface DescribePlaceIndexResponse {
   IndexName: string;
   IndexArn: string;
   PricingPlan?: string;
-  Description: string;
+  Description?: string;
   CreateTime: Date;
   UpdateTime: Date;
   DataSource: string;
@@ -1999,7 +1999,7 @@ export const DescribePlaceIndexResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       IndexName: S.String,
       IndexArn: S.String,
       PricingPlan: S.optional(S.String),
-      Description: S.String,
+      Description: S.optional(S.String),
       CreateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
       UpdateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
       DataSource: S.String,
@@ -2098,7 +2098,7 @@ export const ListPlaceIndexesRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 }) as any as S.Schema<ListPlaceIndexesRequest>;
 export interface ListPlaceIndexesResponseEntry {
   IndexName: string;
-  Description: string;
+  Description?: string;
   DataSource: string;
   PricingPlan?: string;
   CreateTime: Date;
@@ -2108,7 +2108,7 @@ export const ListPlaceIndexesResponseEntry =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     S.Struct({
       IndexName: S.String,
-      Description: S.String,
+      Description: S.optional(S.String),
       DataSource: S.String,
       PricingPlan: S.optional(S.String),
       CreateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
@@ -2583,7 +2583,7 @@ export interface DescribeRouteCalculatorResponse {
   CalculatorName: string;
   CalculatorArn: string;
   PricingPlan?: string;
-  Description: string;
+  Description?: string;
   CreateTime: Date;
   UpdateTime: Date;
   DataSource: string;
@@ -2595,7 +2595,7 @@ export const DescribeRouteCalculatorResponse =
       CalculatorName: S.String,
       CalculatorArn: S.String,
       PricingPlan: S.optional(S.String),
-      Description: S.String,
+      Description: S.optional(S.String),
       CreateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
       UpdateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
       DataSource: S.String,
@@ -2698,7 +2698,7 @@ export const ListRouteCalculatorsRequest =
   }) as any as S.Schema<ListRouteCalculatorsRequest>;
 export interface ListRouteCalculatorsResponseEntry {
   CalculatorName: string;
-  Description: string;
+  Description?: string;
   DataSource: string;
   PricingPlan?: string;
   CreateTime: Date;
@@ -2708,7 +2708,7 @@ export const ListRouteCalculatorsResponseEntry =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     S.Struct({
       CalculatorName: S.String,
-      Description: S.String,
+      Description: S.optional(S.String),
       DataSource: S.String,
       PricingPlan: S.optional(S.String),
       CreateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
@@ -3092,7 +3092,7 @@ export const DescribeTrackerRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 export interface DescribeTrackerResponse {
   TrackerName: string;
   TrackerArn: string;
-  Description: string;
+  Description?: string;
   PricingPlan?: string;
   PricingPlanDataSource?: string;
   Tags?: { [key: string]: string | undefined };
@@ -3108,7 +3108,7 @@ export const DescribeTrackerResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
     S.Struct({
       TrackerName: S.String,
       TrackerArn: S.String,
-      Description: S.String,
+      Description: S.optional(S.String),
       PricingPlan: S.optional(S.String),
       PricingPlanDataSource: S.optional(S.String),
       Tags: S.optional(TagMap),
@@ -3213,7 +3213,7 @@ export const ListTrackersRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListTrackersRequest>;
 export interface ListTrackersResponseEntry {
   TrackerName: string;
-  Description: string;
+  Description?: string;
   PricingPlan?: string;
   PricingPlanDataSource?: string;
   CreateTime: Date;
@@ -3223,7 +3223,7 @@ export const ListTrackersResponseEntry = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
     S.Struct({
       TrackerName: S.String,
-      Description: S.String,
+      Description: S.optional(S.String),
       PricingPlan: S.optional(S.String),
       PricingPlanDataSource: S.optional(S.String),
       CreateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
@@ -3915,6 +3915,7 @@ export const createKey: API.OperationMethod<
     ValidationException,
   ],
   operationName: "CreateKey",
+  endpointHostPrefix: "cp.metadata.",
 }));
 export type DescribeKeyError =
   | AccessDeniedException
@@ -3944,6 +3945,7 @@ export const describeKey: API.OperationMethod<
     ValidationException,
   ],
   operationName: "DescribeKey",
+  endpointHostPrefix: "cp.metadata.",
 }));
 export type UpdateKeyError =
   | AccessDeniedException
@@ -3971,6 +3973,7 @@ export const updateKey: API.OperationMethod<
     ValidationException,
   ],
   operationName: "UpdateKey",
+  endpointHostPrefix: "cp.metadata.",
 }));
 export type DeleteKeyError =
   | AccessDeniedException
@@ -4000,6 +4003,7 @@ export const deleteKey: API.OperationMethod<
     ValidationException,
   ],
   operationName: "DeleteKey",
+  endpointHostPrefix: "cp.metadata.",
 }));
 export type ListKeysError =
   | AccessDeniedException
@@ -4042,6 +4046,7 @@ export const listKeys: API.OperationMethod<
     ValidationException,
   ],
   operationName: "ListKeys",
+  endpointHostPrefix: "cp.metadata.",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4075,6 +4080,7 @@ export const listTagsForResource: API.OperationMethod<
     ValidationException,
   ],
   operationName: "ListTagsForResource",
+  endpointHostPrefix: "cp.metadata.",
 }));
 export type TagResourceError =
   | AccessDeniedException
@@ -4108,6 +4114,7 @@ export const tagResource: API.OperationMethod<
     ValidationException,
   ],
   operationName: "TagResource",
+  endpointHostPrefix: "cp.metadata.",
 }));
 export type UntagResourceError =
   | AccessDeniedException
@@ -4135,6 +4142,7 @@ export const untagResource: API.OperationMethod<
     ValidationException,
   ],
   operationName: "UntagResource",
+  endpointHostPrefix: "cp.metadata.",
 }));
 export type CreateGeofenceCollectionError =
   | AccessDeniedException
@@ -4164,6 +4172,7 @@ export const createGeofenceCollection: API.OperationMethod<
     ValidationException,
   ],
   operationName: "CreateGeofenceCollection",
+  endpointHostPrefix: "cp.geofencing.",
 }));
 export type DescribeGeofenceCollectionError =
   | AccessDeniedException
@@ -4191,6 +4200,7 @@ export const describeGeofenceCollection: API.OperationMethod<
     ValidationException,
   ],
   operationName: "DescribeGeofenceCollection",
+  endpointHostPrefix: "cp.geofencing.",
 }));
 export type UpdateGeofenceCollectionError =
   | AccessDeniedException
@@ -4218,6 +4228,7 @@ export const updateGeofenceCollection: API.OperationMethod<
     ValidationException,
   ],
   operationName: "UpdateGeofenceCollection",
+  endpointHostPrefix: "cp.geofencing.",
 }));
 export type DeleteGeofenceCollectionError =
   | AccessDeniedException
@@ -4247,6 +4258,7 @@ export const deleteGeofenceCollection: API.OperationMethod<
     ValidationException,
   ],
   operationName: "DeleteGeofenceCollection",
+  endpointHostPrefix: "cp.geofencing.",
 }));
 export type ListGeofenceCollectionsError =
   | AccessDeniedException
@@ -4287,6 +4299,7 @@ export const listGeofenceCollections: API.OperationMethod<
     ValidationException,
   ],
   operationName: "ListGeofenceCollections",
+  endpointHostPrefix: "cp.geofencing.",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4322,6 +4335,7 @@ export const batchDeleteGeofence: API.OperationMethod<
     ValidationException,
   ],
   operationName: "BatchDeleteGeofence",
+  endpointHostPrefix: "geofencing.",
 }));
 export type BatchEvaluateGeofencesError =
   | AccessDeniedException
@@ -4361,6 +4375,7 @@ export const batchEvaluateGeofences: API.OperationMethod<
     ValidationException,
   ],
   operationName: "BatchEvaluateGeofences",
+  endpointHostPrefix: "geofencing.",
 }));
 export type BatchPutGeofenceError =
   | AccessDeniedException
@@ -4388,6 +4403,7 @@ export const batchPutGeofence: API.OperationMethod<
     ValidationException,
   ],
   operationName: "BatchPutGeofence",
+  endpointHostPrefix: "geofencing.",
 }));
 export type ForecastGeofenceEventsError =
   | AccessDeniedException
@@ -4438,6 +4454,7 @@ export const forecastGeofenceEvents: API.OperationMethod<
     ValidationException,
   ],
   operationName: "ForecastGeofenceEvents",
+  endpointHostPrefix: "geofencing.",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4473,6 +4490,7 @@ export const getGeofence: API.OperationMethod<
     ValidationException,
   ],
   operationName: "GetGeofence",
+  endpointHostPrefix: "geofencing.",
 }));
 export type ListGeofencesError =
   | AccessDeniedException
@@ -4515,6 +4533,7 @@ export const listGeofences: API.OperationMethod<
     ValidationException,
   ],
   operationName: "ListGeofences",
+  endpointHostPrefix: "geofencing.",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4550,6 +4569,7 @@ export const putGeofence: API.OperationMethod<
     ValidationException,
   ],
   operationName: "PutGeofence",
+  endpointHostPrefix: "geofencing.",
 }));
 export type StartJobError =
   | AccessDeniedException
@@ -4577,6 +4597,7 @@ export const startJob: API.OperationMethod<
     ValidationException,
   ],
   operationName: "StartJob",
+  endpointHostPrefix: "metadata.",
 }));
 export type GetJobError =
   | AccessDeniedException
@@ -4606,6 +4627,7 @@ export const getJob: API.OperationMethod<
     ValidationException,
   ],
   operationName: "GetJob",
+  endpointHostPrefix: "metadata.",
 }));
 export type ListJobsError =
   | AccessDeniedException
@@ -4648,6 +4670,7 @@ export const listJobs: API.OperationMethod<
     ValidationException,
   ],
   operationName: "ListJobs",
+  endpointHostPrefix: "metadata.",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4681,6 +4704,7 @@ export const cancelJob: API.OperationMethod<
     ValidationException,
   ],
   operationName: "CancelJob",
+  endpointHostPrefix: "metadata.",
 }));
 export type CreateMapError =
   | AccessDeniedException
@@ -4724,6 +4748,7 @@ export const createMap: API.OperationMethod<
     ValidationException,
   ],
   operationName: "CreateMap",
+  endpointHostPrefix: "cp.maps.",
 }));
 export type DescribeMapError =
   | AccessDeniedException
@@ -4763,6 +4788,7 @@ export const describeMap: API.OperationMethod<
     ValidationException,
   ],
   operationName: "DescribeMap",
+  endpointHostPrefix: "cp.maps.",
 }));
 export type UpdateMapError =
   | AccessDeniedException
@@ -4802,6 +4828,7 @@ export const updateMap: API.OperationMethod<
     ValidationException,
   ],
   operationName: "UpdateMap",
+  endpointHostPrefix: "cp.maps.",
 }));
 export type DeleteMapError =
   | AccessDeniedException
@@ -4843,6 +4870,7 @@ export const deleteMap: API.OperationMethod<
     ValidationException,
   ],
   operationName: "DeleteMap",
+  endpointHostPrefix: "cp.maps.",
 }));
 export type ListMapsError =
   | AccessDeniedException
@@ -4895,6 +4923,7 @@ export const listMaps: API.OperationMethod<
     ValidationException,
   ],
   operationName: "ListMaps",
+  endpointHostPrefix: "cp.maps.",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4940,6 +4969,7 @@ export const getMapGlyphs: API.OperationMethod<
     ValidationException,
   ],
   operationName: "GetMapGlyphs",
+  endpointHostPrefix: "maps.",
 }));
 export type GetMapSpritesError =
   | AccessDeniedException
@@ -4979,6 +5009,7 @@ export const getMapSprites: API.OperationMethod<
     ValidationException,
   ],
   operationName: "GetMapSprites",
+  endpointHostPrefix: "maps.",
 }));
 export type GetMapStyleDescriptorError =
   | AccessDeniedException
@@ -5020,6 +5051,7 @@ export const getMapStyleDescriptor: API.OperationMethod<
     ValidationException,
   ],
   operationName: "GetMapStyleDescriptor",
+  endpointHostPrefix: "maps.",
 }));
 export type GetMapTileError =
   | AccessDeniedException
@@ -5061,6 +5093,7 @@ export const getMapTile: API.OperationMethod<
     ValidationException,
   ],
   operationName: "GetMapTile",
+  endpointHostPrefix: "maps.",
 }));
 export type CreatePlaceIndexError =
   | AccessDeniedException
@@ -5104,6 +5137,7 @@ export const createPlaceIndex: API.OperationMethod<
     ValidationException,
   ],
   operationName: "CreatePlaceIndex",
+  endpointHostPrefix: "cp.places.",
 }));
 export type DescribePlaceIndexError =
   | AccessDeniedException
@@ -5143,6 +5177,7 @@ export const describePlaceIndex: API.OperationMethod<
     ValidationException,
   ],
   operationName: "DescribePlaceIndex",
+  endpointHostPrefix: "cp.places.",
 }));
 export type UpdatePlaceIndexError =
   | AccessDeniedException
@@ -5182,6 +5217,7 @@ export const updatePlaceIndex: API.OperationMethod<
     ValidationException,
   ],
   operationName: "UpdatePlaceIndex",
+  endpointHostPrefix: "cp.places.",
 }));
 export type DeletePlaceIndexError =
   | AccessDeniedException
@@ -5223,6 +5259,7 @@ export const deletePlaceIndex: API.OperationMethod<
     ValidationException,
   ],
   operationName: "DeletePlaceIndex",
+  endpointHostPrefix: "cp.places.",
 }));
 export type ListPlaceIndexesError =
   | AccessDeniedException
@@ -5275,6 +5312,7 @@ export const listPlaceIndexes: API.OperationMethod<
     ValidationException,
   ],
   operationName: "ListPlaceIndexes",
+  endpointHostPrefix: "cp.places.",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -5330,6 +5368,7 @@ export const getPlace: API.OperationMethod<
     ValidationException,
   ],
   operationName: "GetPlace",
+  endpointHostPrefix: "places.",
 }));
 export type SearchPlaceIndexForPositionError =
   | AccessDeniedException
@@ -5367,6 +5406,7 @@ export const searchPlaceIndexForPosition: API.OperationMethod<
     ValidationException,
   ],
   operationName: "SearchPlaceIndexForPosition",
+  endpointHostPrefix: "places.",
 }));
 export type SearchPlaceIndexForSuggestionsError =
   | AccessDeniedException
@@ -5408,6 +5448,7 @@ export const searchPlaceIndexForSuggestions: API.OperationMethod<
     ValidationException,
   ],
   operationName: "SearchPlaceIndexForSuggestions",
+  endpointHostPrefix: "places.",
 }));
 export type SearchPlaceIndexForTextError =
   | AccessDeniedException
@@ -5451,6 +5492,7 @@ export const searchPlaceIndexForText: API.OperationMethod<
     ValidationException,
   ],
   operationName: "SearchPlaceIndexForText",
+  endpointHostPrefix: "places.",
 }));
 export type CreateRouteCalculatorError =
   | AccessDeniedException
@@ -5496,6 +5538,7 @@ export const createRouteCalculator: API.OperationMethod<
     ValidationException,
   ],
   operationName: "CreateRouteCalculator",
+  endpointHostPrefix: "cp.routes.",
 }));
 export type DescribeRouteCalculatorError =
   | AccessDeniedException
@@ -5535,6 +5578,7 @@ export const describeRouteCalculator: API.OperationMethod<
     ValidationException,
   ],
   operationName: "DescribeRouteCalculator",
+  endpointHostPrefix: "cp.routes.",
 }));
 export type UpdateRouteCalculatorError =
   | AccessDeniedException
@@ -5574,6 +5618,7 @@ export const updateRouteCalculator: API.OperationMethod<
     ValidationException,
   ],
   operationName: "UpdateRouteCalculator",
+  endpointHostPrefix: "cp.routes.",
 }));
 export type DeleteRouteCalculatorError =
   | AccessDeniedException
@@ -5615,6 +5660,7 @@ export const deleteRouteCalculator: API.OperationMethod<
     ValidationException,
   ],
   operationName: "DeleteRouteCalculator",
+  endpointHostPrefix: "cp.routes.",
 }));
 export type ListRouteCalculatorsError =
   | AccessDeniedException
@@ -5667,6 +5713,7 @@ export const listRouteCalculators: API.OperationMethod<
     ValidationException,
   ],
   operationName: "ListRouteCalculators",
+  endpointHostPrefix: "cp.routes.",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -5722,6 +5769,7 @@ export const calculateRoute: API.OperationMethod<
     ValidationException,
   ],
   operationName: "CalculateRoute",
+  endpointHostPrefix: "routes.",
 }));
 export type CalculateRouteMatrixError =
   | AccessDeniedException
@@ -5775,6 +5823,7 @@ export const calculateRouteMatrix: API.OperationMethod<
     ValidationException,
   ],
   operationName: "CalculateRouteMatrix",
+  endpointHostPrefix: "routes.",
 }));
 export type CreateTrackerError =
   | AccessDeniedException
@@ -5804,6 +5853,7 @@ export const createTracker: API.OperationMethod<
     ValidationException,
   ],
   operationName: "CreateTracker",
+  endpointHostPrefix: "cp.tracking.",
 }));
 export type DescribeTrackerError =
   | AccessDeniedException
@@ -5831,6 +5881,7 @@ export const describeTracker: API.OperationMethod<
     ValidationException,
   ],
   operationName: "DescribeTracker",
+  endpointHostPrefix: "cp.tracking.",
 }));
 export type UpdateTrackerError =
   | AccessDeniedException
@@ -5858,6 +5909,7 @@ export const updateTracker: API.OperationMethod<
     ValidationException,
   ],
   operationName: "UpdateTracker",
+  endpointHostPrefix: "cp.tracking.",
 }));
 export type DeleteTrackerError =
   | AccessDeniedException
@@ -5887,6 +5939,7 @@ export const deleteTracker: API.OperationMethod<
     ValidationException,
   ],
   operationName: "DeleteTracker",
+  endpointHostPrefix: "cp.tracking.",
 }));
 export type ListTrackersError =
   | AccessDeniedException
@@ -5927,6 +5980,7 @@ export const listTrackers: API.OperationMethod<
     ValidationException,
   ],
   operationName: "ListTrackers",
+  endpointHostPrefix: "cp.tracking.",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -5968,6 +6022,7 @@ export const associateTrackerConsumer: API.OperationMethod<
     ValidationException,
   ],
   operationName: "AssociateTrackerConsumer",
+  endpointHostPrefix: "cp.tracking.",
 }));
 export type BatchDeleteDevicePositionHistoryError =
   | AccessDeniedException
@@ -5995,6 +6050,7 @@ export const batchDeleteDevicePositionHistory: API.OperationMethod<
     ValidationException,
   ],
   operationName: "BatchDeleteDevicePositionHistory",
+  endpointHostPrefix: "tracking.",
 }));
 export type BatchGetDevicePositionError =
   | AccessDeniedException
@@ -6022,6 +6078,7 @@ export const batchGetDevicePosition: API.OperationMethod<
     ValidationException,
   ],
   operationName: "BatchGetDevicePosition",
+  endpointHostPrefix: "tracking.",
 }));
 export type BatchUpdateDevicePositionError =
   | AccessDeniedException
@@ -6055,6 +6112,7 @@ export const batchUpdateDevicePosition: API.OperationMethod<
     ValidationException,
   ],
   operationName: "BatchUpdateDevicePosition",
+  endpointHostPrefix: "tracking.",
 }));
 export type DisassociateTrackerConsumerError =
   | AccessDeniedException
@@ -6084,6 +6142,7 @@ export const disassociateTrackerConsumer: API.OperationMethod<
     ValidationException,
   ],
   operationName: "DisassociateTrackerConsumer",
+  endpointHostPrefix: "cp.tracking.",
 }));
 export type GetDevicePositionError =
   | AccessDeniedException
@@ -6113,6 +6172,7 @@ export const getDevicePosition: API.OperationMethod<
     ValidationException,
   ],
   operationName: "GetDevicePosition",
+  endpointHostPrefix: "tracking.",
 }));
 export type GetDevicePositionHistoryError =
   | AccessDeniedException
@@ -6157,6 +6217,7 @@ export const getDevicePositionHistory: API.OperationMethod<
     ValidationException,
   ],
   operationName: "GetDevicePositionHistory",
+  endpointHostPrefix: "tracking.",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -6203,6 +6264,7 @@ export const listDevicePositions: API.OperationMethod<
     ValidationException,
   ],
   operationName: "ListDevicePositions",
+  endpointHostPrefix: "tracking.",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -6251,6 +6313,7 @@ export const listTrackerConsumers: API.OperationMethod<
     ValidationException,
   ],
   operationName: "ListTrackerConsumers",
+  endpointHostPrefix: "cp.tracking.",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -6286,4 +6349,5 @@ export const verifyDevicePosition: API.OperationMethod<
     ValidationException,
   ],
   operationName: "VerifyDevicePosition",
+  endpointHostPrefix: "tracking.",
 }));

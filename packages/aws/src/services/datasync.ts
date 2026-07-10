@@ -2667,6 +2667,18 @@ export class LocationRoleNotAssumable extends S.TaggedErrorClass<LocationRoleNot
     message: { includes: "Invalid IAM role" },
   }),
 ).pipe(C.withRetryableError) {}
+export class LocationAccessTestFailed extends S.TaggedErrorClass<LocationAccessTestFailed>()(
+  "LocationAccessTestFailed",
+  {
+    message: S.optional(S.String),
+    errorCode: S.optional(S.String),
+    datasyncErrorCode: S.optional(S.String),
+  },
+  T.SyntheticError({
+    from: "InvalidRequestException",
+    message: { includes: "location access test failed" },
+  }),
+).pipe(C.withRetryableError) {}
 export class LocationNotFound extends S.TaggedErrorClass<LocationNotFound>()(
   "LocationNotFound",
   {
@@ -2767,6 +2779,7 @@ export type CreateLocationEfsError =
   | InternalException
   | InvalidRequestException
   | LocationRoleNotAssumable
+  | LocationAccessTestFailed
   | CommonErrors;
 /**
  * Creates a transfer *location* for an Amazon EFS file system.
@@ -2789,6 +2802,7 @@ export const createLocationEfs: API.OperationMethod<
     InternalException,
     InvalidRequestException,
     LocationRoleNotAssumable,
+    LocationAccessTestFailed,
   ],
   operationName: "CreateLocationEfs",
 }));
@@ -2963,6 +2977,7 @@ export type CreateLocationS3Error =
   | InternalException
   | InvalidRequestException
   | LocationRoleNotAssumable
+  | LocationAccessTestFailed
   | CommonErrors;
 /**
  * Creates a transfer *location* for an Amazon S3 bucket.
@@ -2991,6 +3006,7 @@ export const createLocationS3: API.OperationMethod<
     InternalException,
     InvalidRequestException,
     LocationRoleNotAssumable,
+    LocationAccessTestFailed,
   ],
   operationName: "CreateLocationS3",
 }));
@@ -3593,6 +3609,7 @@ export const listTasks: API.OperationMethod<
 export type StartTaskExecutionError =
   | InternalException
   | InvalidRequestException
+  | LocationAccessTestFailed
   | CommonErrors;
 /**
  * Starts an DataSync transfer task. For each task, you can only run one task
@@ -3613,7 +3630,11 @@ export const startTaskExecution: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StartTaskExecutionRequest,
   output: StartTaskExecutionResponse,
-  errors: [InternalException, InvalidRequestException],
+  errors: [
+    InternalException,
+    InvalidRequestException,
+    LocationAccessTestFailed,
+  ],
   operationName: "StartTaskExecution",
 }));
 export type TagResourceError =

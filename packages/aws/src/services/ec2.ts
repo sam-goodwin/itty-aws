@@ -84498,6 +84498,7 @@ export const describeDeclarativePoliciesReports: API.OperationMethod<
 export type DescribeDhcpOptionsError =
   | RequestLimitExceeded
   | InvalidDhcpOptionIDNotFound
+  | InvalidDhcpOptionsIDNotFound
   | InvalidParameterValue
   | ParseError
   | UnauthorizedOperation
@@ -84536,6 +84537,7 @@ export const describeDhcpOptions: API.OperationMethod<
   errors: [
     RequestLimitExceeded,
     InvalidDhcpOptionIDNotFound,
+    InvalidDhcpOptionsIDNotFound,
     InvalidParameterValue,
     ParseError,
     UnauthorizedOperation,
@@ -84874,6 +84876,7 @@ export const describeFleets: API.OperationMethod<
 }));
 export type DescribeFlowLogsError =
   | RequestLimitExceeded
+  | InvalidFlowLogIdNotFound
   | ParseError
   | UnauthorizedOperation
   | CommonErrors;
@@ -84906,7 +84909,12 @@ export const describeFlowLogs: API.OperationMethod<
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DescribeFlowLogsRequest,
   output: DescribeFlowLogsResult,
-  errors: [RequestLimitExceeded, ParseError, UnauthorizedOperation],
+  errors: [
+    RequestLimitExceeded,
+    InvalidFlowLogIdNotFound,
+    ParseError,
+    UnauthorizedOperation,
+  ],
   operationName: "DescribeFlowLogs",
   pagination: {
     inputToken: "NextToken",
@@ -90717,6 +90725,7 @@ export const describeVpcEndpointServices: API.OperationMethod<
 export type DescribeVpcPeeringConnectionsError =
   | RequestLimitExceeded
   | InvalidVpcPeeringConnectionIDNotFound
+  | InvalidVpcPeeringConnectionIdNotFound
   | ParseError
   | UnauthorizedOperation
   | CommonErrors;
@@ -90751,6 +90760,7 @@ export const describeVpcPeeringConnections: API.OperationMethod<
   errors: [
     RequestLimitExceeded,
     InvalidVpcPeeringConnectionIDNotFound,
+    InvalidVpcPeeringConnectionIdNotFound,
     ParseError,
     UnauthorizedOperation,
   ],
