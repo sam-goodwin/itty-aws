@@ -2603,13 +2603,19 @@ export const CreateIpsecTunnelResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateIpsecTunnelResponse",
 }) as any as S.Schema<CreateIpsecTunnelResponse>;
 
-export type PcapsCreateRequestBodySystem = "magic-transit" | (string & {});
-export const PcapsCreateRequestBodySystem = /*@__PURE__*/ S.String;
+export type PcapsCreateRequestBodyMagicVisibilityPCAPsPCAPsRequestSimpleSystem =
+  "magic-transit" | (string & {});
+export const PcapsCreateRequestBodyMagicVisibilityPCAPsPCAPsRequestSimpleSystem =
+  /*@__PURE__*/ S.String;
 
-export type PcapsCreateRequestBodyType = "simple" | "full" | (string & {});
-export const PcapsCreateRequestBodyType = /*@__PURE__*/ S.String;
+export type PcapsCreateRequestBodyMagicVisibilityPCAPsPCAPsRequestSimpleType =
+  | "simple"
+  | "full"
+  | (string & {});
+export const PcapsCreateRequestBodyMagicVisibilityPCAPsPCAPsRequestSimpleType =
+  /*@__PURE__*/ S.String;
 
-export interface PcapsCreateRequestBodyFilterV1 {
+export interface PcapsCreateRequestBodyMagicVisibilityPCAPsPCAPsRequestSimpleFilterV1 {
   /** The destination IP address of the packet. */
   destinationAddress?: string;
   /** The destination port of the packet. */
@@ -2621,57 +2627,106 @@ export interface PcapsCreateRequestBodyFilterV1 {
   /** The source port of the packet. */
   sourcePort?: number;
 }
-export const PcapsCreateRequestBodyFilterV1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    destinationAddress: S.optional(
-      S.String.pipe(T.Body("destination_address")),
-    ),
-    destinationPort: S.optional(S.Number.pipe(T.Body("destination_port"))),
-    protocol: S.optional(S.Number),
-    sourceAddress: S.optional(S.String.pipe(T.Body("source_address"))),
-    sourcePort: S.optional(S.Number.pipe(T.Body("source_port"))),
-  }),
-).annotate({
-  identifier: "PcapsCreateRequestBodyFilterV1",
-}) as any as S.Schema<PcapsCreateRequestBodyFilterV1>;
+export const PcapsCreateRequestBodyMagicVisibilityPCAPsPCAPsRequestSimpleFilterV1 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      destinationAddress: S.optional(
+        S.String.pipe(T.Body("destination_address")),
+      ),
+      destinationPort: S.optional(S.Number.pipe(T.Body("destination_port"))),
+      protocol: S.optional(S.Number),
+      sourceAddress: S.optional(S.String.pipe(T.Body("source_address"))),
+      sourcePort: S.optional(S.Number.pipe(T.Body("source_port"))),
+    }),
+  ).annotate({
+    identifier:
+      "PcapsCreateRequestBodyMagicVisibilityPCAPsPCAPsRequestSimpleFilterV1",
+  }) as any as S.Schema<PcapsCreateRequestBodyMagicVisibilityPCAPsPCAPsRequestSimpleFilterV1>;
 
-export interface PcapsCreateRequestBody {
+export interface PcapsCreateRequestBodyMagicVisibilityPCAPsPCAPsRequestSimple {
   /** The limit of packets contained in a packet capture. */
-  packetLimit?: number;
+  packetLimit: number;
   /** The system used to collect packet captures. */
-  system?: PcapsCreateRequestBodySystem;
+  system: PcapsCreateRequestBodyMagicVisibilityPCAPsPCAPsRequestSimpleSystem;
   /** The packet capture duration in seconds. */
-  timeLimit?: number;
+  timeLimit: number;
   /** The type of packet capture. `Simple` captures sampled packets, and `full` captures entire payloads and non-sampled packets. */
-  type?: PcapsCreateRequestBodyType;
+  type: PcapsCreateRequestBodyMagicVisibilityPCAPsPCAPsRequestSimpleType;
   /** The packet capture filter. When this field is empty, all packets are captured. */
-  filterV1?: PcapsCreateRequestBodyFilterV1;
+  filterV1?: PcapsCreateRequestBodyMagicVisibilityPCAPsPCAPsRequestSimpleFilterV1;
   /** The RFC 3339 offset timestamp from which to query backwards for packets. Must be within the last 24h. When this field is empty, defaults to time of request. */
   offsetTime?: string;
+}
+export const PcapsCreateRequestBodyMagicVisibilityPCAPsPCAPsRequestSimple =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      packetLimit: S.Number.pipe(T.Body("packet_limit")),
+      system:
+        PcapsCreateRequestBodyMagicVisibilityPCAPsPCAPsRequestSimpleSystem,
+      timeLimit: S.Number.pipe(T.Body("time_limit")),
+      type: PcapsCreateRequestBodyMagicVisibilityPCAPsPCAPsRequestSimpleType,
+      filterV1: S.optional(
+        PcapsCreateRequestBodyMagicVisibilityPCAPsPCAPsRequestSimpleFilterV1.pipe(
+          T.Body("filter_v1"),
+        ),
+      ),
+      offsetTime: S.optional(S.String.pipe(T.Body("offset_time"))),
+    }),
+  ).annotate({
+    identifier: "PcapsCreateRequestBodyMagicVisibilityPCAPsPCAPsRequestSimple",
+  }) as any as S.Schema<PcapsCreateRequestBodyMagicVisibilityPCAPsPCAPsRequestSimple>;
+
+export type PcapsCreateRequestBodyMagicVisibilityPCAPsPCAPsRequestFullSystem =
+  | "magic-transit"
+  | (string & {});
+export const PcapsCreateRequestBodyMagicVisibilityPCAPsPCAPsRequestFullSystem =
+  /*@__PURE__*/ S.String;
+
+export type PcapsCreateRequestBodyMagicVisibilityPCAPsPCAPsRequestFullType =
+  | "simple"
+  | "full"
+  | (string & {});
+export const PcapsCreateRequestBodyMagicVisibilityPCAPsPCAPsRequestFullType =
+  /*@__PURE__*/ S.String;
+
+export interface PcapsCreateRequestBodyMagicVisibilityPCAPsPCAPsRequestFull {
   /** The name of the data center used for the packet capture. This can be a specific colo (ord02) or a multi-colo name (ORD). This field only applies to `full` packet captures. */
-  coloName?: string;
+  coloName: string;
   /** The full URI for the bucket. This field only applies to `full` packet captures. */
-  destinationConf?: string;
+  destinationConf: string;
+  /** The system used to collect packet captures. */
+  system: PcapsCreateRequestBodyMagicVisibilityPCAPsPCAPsRequestFullSystem;
+  /** The packet capture duration in seconds. */
+  timeLimit: number;
+  /** The type of packet capture. `Simple` captures sampled packets, and `full` captures entire payloads and non-sampled packets. */
+  type: PcapsCreateRequestBodyMagicVisibilityPCAPsPCAPsRequestFullType;
   /** The maximum number of bytes to capture. This field only applies to `full` packet captures. */
   byteLimit?: number;
+  /** The packet capture filter. When this field is empty, all packets are captured. */
+  filterV1?: unknown;
+  /** The limit of packets contained in a packet capture. */
+  packetLimit?: number;
 }
-export const PcapsCreateRequestBody = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    packetLimit: S.optional(S.Number.pipe(T.Body("packet_limit"))),
-    system: S.optional(PcapsCreateRequestBodySystem),
-    timeLimit: S.optional(S.Number.pipe(T.Body("time_limit"))),
-    type: S.optional(PcapsCreateRequestBodyType),
-    filterV1: S.optional(
-      PcapsCreateRequestBodyFilterV1.pipe(T.Body("filter_v1")),
-    ),
-    offsetTime: S.optional(S.String.pipe(T.Body("offset_time"))),
-    coloName: S.optional(S.String.pipe(T.Body("colo_name"))),
-    destinationConf: S.optional(S.String.pipe(T.Body("destination_conf"))),
-    byteLimit: S.optional(S.Number.pipe(T.Body("byte_limit"))),
-  }),
-).annotate({
-  identifier: "PcapsCreateRequestBody",
-}) as any as S.Schema<PcapsCreateRequestBody>;
+export const PcapsCreateRequestBodyMagicVisibilityPCAPsPCAPsRequestFull =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      coloName: S.String.pipe(T.Body("colo_name")),
+      destinationConf: S.String.pipe(T.Body("destination_conf")),
+      system: PcapsCreateRequestBodyMagicVisibilityPCAPsPCAPsRequestFullSystem,
+      timeLimit: S.Number.pipe(T.Body("time_limit")),
+      type: PcapsCreateRequestBodyMagicVisibilityPCAPsPCAPsRequestFullType,
+      byteLimit: S.optional(S.Number.pipe(T.Body("byte_limit"))),
+      filterV1: S.optional(S.Unknown.pipe(T.Body("filter_v1"))),
+      packetLimit: S.optional(S.Number.pipe(T.Body("packet_limit"))),
+    }),
+  ).annotate({
+    identifier: "PcapsCreateRequestBodyMagicVisibilityPCAPsPCAPsRequestFull",
+  }) as any as S.Schema<PcapsCreateRequestBodyMagicVisibilityPCAPsPCAPsRequestFull>;
+
+export type PcapsCreateRequestBody =
+  | PcapsCreateRequestBodyMagicVisibilityPCAPsPCAPsRequestSimple
+  | PcapsCreateRequestBodyMagicVisibilityPCAPsPCAPsRequestFull;
+export const PcapsCreateRequestBody = /*@__PURE__*/ S.Unknown;
 
 export interface CreatePcapRequest {
   /** Identifier. */
@@ -6006,26 +6061,433 @@ export const GetConnectorEventRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetConnectorEventRequest",
 }) as any as S.Schema<GetConnectorEventRequest>;
 
-export type ConnectorsEventsGetResponseEK = "Init" | (string & {});
-export const ConnectorsEventsGetResponseEK = /*@__PURE__*/ S.String;
+export type ConnectorsEventsGetResponseEInitK = "Init" | (string & {});
+export const ConnectorsEventsGetResponseEInitK = /*@__PURE__*/ S.String;
 
-export interface ConnectorsEventsGetResponseE {
+export interface ConnectorsEventsGetResponseEInit {
   /** Initialized process */
-  k?: ConnectorsEventsGetResponseEK;
-  /** Location of upgrade bundle */
-  url?: string;
-  /** Tunnel identifier */
-  tunnelId?: string;
+  k: ConnectorsEventsGetResponseEInitK;
 }
-export const ConnectorsEventsGetResponseE = /*@__PURE__*/ S.suspend(() =>
+export const ConnectorsEventsGetResponseEInit = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    k: S.optional(ConnectorsEventsGetResponseEK),
-    url: S.optional(S.String),
-    tunnelId: S.optional(S.String.pipe(T.Body("tunnel_id"))),
+    k: ConnectorsEventsGetResponseEInitK,
   }),
 ).annotate({
-  identifier: "ConnectorsEventsGetResponseE",
-}) as any as S.Schema<ConnectorsEventsGetResponseE>;
+  identifier: "ConnectorsEventsGetResponseEInit",
+}) as any as S.Schema<ConnectorsEventsGetResponseEInit>;
+
+export type ConnectorsEventsGetResponseELeaveK = "Leave" | (string & {});
+export const ConnectorsEventsGetResponseELeaveK = /*@__PURE__*/ S.String;
+
+export interface ConnectorsEventsGetResponseELeave {
+  /** Stopped process */
+  k: ConnectorsEventsGetResponseELeaveK;
+}
+export const ConnectorsEventsGetResponseELeave = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    k: ConnectorsEventsGetResponseELeaveK,
+  }),
+).annotate({
+  identifier: "ConnectorsEventsGetResponseELeave",
+}) as any as S.Schema<ConnectorsEventsGetResponseELeave>;
+
+export type ConnectorsEventsGetResponseEStartAttestationK =
+  | "StartAttestation"
+  | (string & {});
+export const ConnectorsEventsGetResponseEStartAttestationK =
+  /*@__PURE__*/ S.String;
+
+export interface ConnectorsEventsGetResponseEStartAttestation {
+  /** Started attestation */
+  k: ConnectorsEventsGetResponseEStartAttestationK;
+}
+export const ConnectorsEventsGetResponseEStartAttestation =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      k: ConnectorsEventsGetResponseEStartAttestationK,
+    }),
+  ).annotate({
+    identifier: "ConnectorsEventsGetResponseEStartAttestation",
+  }) as any as S.Schema<ConnectorsEventsGetResponseEStartAttestation>;
+
+export type ConnectorsEventsGetResponseEFinishAttestationSuccessK =
+  | "FinishAttestationSuccess"
+  | (string & {});
+export const ConnectorsEventsGetResponseEFinishAttestationSuccessK =
+  /*@__PURE__*/ S.String;
+
+export interface ConnectorsEventsGetResponseEFinishAttestationSuccess {
+  /** Finished attestation */
+  k: ConnectorsEventsGetResponseEFinishAttestationSuccessK;
+}
+export const ConnectorsEventsGetResponseEFinishAttestationSuccess =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      k: ConnectorsEventsGetResponseEFinishAttestationSuccessK,
+    }),
+  ).annotate({
+    identifier: "ConnectorsEventsGetResponseEFinishAttestationSuccess",
+  }) as any as S.Schema<ConnectorsEventsGetResponseEFinishAttestationSuccess>;
+
+export type ConnectorsEventsGetResponseEFinishAttestationFailureK =
+  | "FinishAttestationFailure"
+  | (string & {});
+export const ConnectorsEventsGetResponseEFinishAttestationFailureK =
+  /*@__PURE__*/ S.String;
+
+export interface ConnectorsEventsGetResponseEFinishAttestationFailure {
+  /** Failed attestation */
+  k: ConnectorsEventsGetResponseEFinishAttestationFailureK;
+}
+export const ConnectorsEventsGetResponseEFinishAttestationFailure =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      k: ConnectorsEventsGetResponseEFinishAttestationFailureK,
+    }),
+  ).annotate({
+    identifier: "ConnectorsEventsGetResponseEFinishAttestationFailure",
+  }) as any as S.Schema<ConnectorsEventsGetResponseEFinishAttestationFailure>;
+
+export type ConnectorsEventsGetResponseEStartRotateCryptKeyK =
+  | "StartRotateCryptKey"
+  | (string & {});
+export const ConnectorsEventsGetResponseEStartRotateCryptKeyK =
+  /*@__PURE__*/ S.String;
+
+export interface ConnectorsEventsGetResponseEStartRotateCryptKey {
+  /** Started crypt key rotation */
+  k: ConnectorsEventsGetResponseEStartRotateCryptKeyK;
+}
+export const ConnectorsEventsGetResponseEStartRotateCryptKey =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      k: ConnectorsEventsGetResponseEStartRotateCryptKeyK,
+    }),
+  ).annotate({
+    identifier: "ConnectorsEventsGetResponseEStartRotateCryptKey",
+  }) as any as S.Schema<ConnectorsEventsGetResponseEStartRotateCryptKey>;
+
+export type ConnectorsEventsGetResponseEFinishRotateCryptKeySuccessK =
+  | "FinishRotateCryptKeySuccess"
+  | (string & {});
+export const ConnectorsEventsGetResponseEFinishRotateCryptKeySuccessK =
+  /*@__PURE__*/ S.String;
+
+export interface ConnectorsEventsGetResponseEFinishRotateCryptKeySuccess {
+  /** Finished crypt key rotation */
+  k: ConnectorsEventsGetResponseEFinishRotateCryptKeySuccessK;
+}
+export const ConnectorsEventsGetResponseEFinishRotateCryptKeySuccess =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      k: ConnectorsEventsGetResponseEFinishRotateCryptKeySuccessK,
+    }),
+  ).annotate({
+    identifier: "ConnectorsEventsGetResponseEFinishRotateCryptKeySuccess",
+  }) as any as S.Schema<ConnectorsEventsGetResponseEFinishRotateCryptKeySuccess>;
+
+export type ConnectorsEventsGetResponseEFinishRotateCryptKeyFailureK =
+  | "FinishRotateCryptKeyFailure"
+  | (string & {});
+export const ConnectorsEventsGetResponseEFinishRotateCryptKeyFailureK =
+  /*@__PURE__*/ S.String;
+
+export interface ConnectorsEventsGetResponseEFinishRotateCryptKeyFailure {
+  /** Failed crypt key rotation */
+  k: ConnectorsEventsGetResponseEFinishRotateCryptKeyFailureK;
+}
+export const ConnectorsEventsGetResponseEFinishRotateCryptKeyFailure =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      k: ConnectorsEventsGetResponseEFinishRotateCryptKeyFailureK,
+    }),
+  ).annotate({
+    identifier: "ConnectorsEventsGetResponseEFinishRotateCryptKeyFailure",
+  }) as any as S.Schema<ConnectorsEventsGetResponseEFinishRotateCryptKeyFailure>;
+
+export type ConnectorsEventsGetResponseEStartRotatePkiK =
+  | "StartRotatePki"
+  | (string & {});
+export const ConnectorsEventsGetResponseEStartRotatePkiK =
+  /*@__PURE__*/ S.String;
+
+export interface ConnectorsEventsGetResponseEStartRotatePki {
+  /** Started PKI rotation */
+  k: ConnectorsEventsGetResponseEStartRotatePkiK;
+}
+export const ConnectorsEventsGetResponseEStartRotatePki =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      k: ConnectorsEventsGetResponseEStartRotatePkiK,
+    }),
+  ).annotate({
+    identifier: "ConnectorsEventsGetResponseEStartRotatePki",
+  }) as any as S.Schema<ConnectorsEventsGetResponseEStartRotatePki>;
+
+export type ConnectorsEventsGetResponseEFinishRotatePkiSuccessK =
+  | "FinishRotatePkiSuccess"
+  | (string & {});
+export const ConnectorsEventsGetResponseEFinishRotatePkiSuccessK =
+  /*@__PURE__*/ S.String;
+
+export interface ConnectorsEventsGetResponseEFinishRotatePkiSuccess {
+  /** Finished PKI rotation */
+  k: ConnectorsEventsGetResponseEFinishRotatePkiSuccessK;
+}
+export const ConnectorsEventsGetResponseEFinishRotatePkiSuccess =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      k: ConnectorsEventsGetResponseEFinishRotatePkiSuccessK,
+    }),
+  ).annotate({
+    identifier: "ConnectorsEventsGetResponseEFinishRotatePkiSuccess",
+  }) as any as S.Schema<ConnectorsEventsGetResponseEFinishRotatePkiSuccess>;
+
+export type ConnectorsEventsGetResponseEFinishRotatePkiFailureK =
+  | "FinishRotatePkiFailure"
+  | (string & {});
+export const ConnectorsEventsGetResponseEFinishRotatePkiFailureK =
+  /*@__PURE__*/ S.String;
+
+export interface ConnectorsEventsGetResponseEFinishRotatePkiFailure {
+  /** Failed PKI rotation */
+  k: ConnectorsEventsGetResponseEFinishRotatePkiFailureK;
+}
+export const ConnectorsEventsGetResponseEFinishRotatePkiFailure =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      k: ConnectorsEventsGetResponseEFinishRotatePkiFailureK,
+    }),
+  ).annotate({
+    identifier: "ConnectorsEventsGetResponseEFinishRotatePkiFailure",
+  }) as any as S.Schema<ConnectorsEventsGetResponseEFinishRotatePkiFailure>;
+
+export type ConnectorsEventsGetResponseEStartUpgradeK =
+  | "StartUpgrade"
+  | (string & {});
+export const ConnectorsEventsGetResponseEStartUpgradeK = /*@__PURE__*/ S.String;
+
+export interface ConnectorsEventsGetResponseEStartUpgrade {
+  /** Started upgrade */
+  k: ConnectorsEventsGetResponseEStartUpgradeK;
+  /** Location of upgrade bundle */
+  url: string;
+}
+export const ConnectorsEventsGetResponseEStartUpgrade = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      k: ConnectorsEventsGetResponseEStartUpgradeK,
+      url: S.String,
+    }),
+).annotate({
+  identifier: "ConnectorsEventsGetResponseEStartUpgrade",
+}) as any as S.Schema<ConnectorsEventsGetResponseEStartUpgrade>;
+
+export type ConnectorsEventsGetResponseEFinishUpgradeSuccessK =
+  | "FinishUpgradeSuccess"
+  | (string & {});
+export const ConnectorsEventsGetResponseEFinishUpgradeSuccessK =
+  /*@__PURE__*/ S.String;
+
+export interface ConnectorsEventsGetResponseEFinishUpgradeSuccess {
+  /** Finished upgrade */
+  k: ConnectorsEventsGetResponseEFinishUpgradeSuccessK;
+}
+export const ConnectorsEventsGetResponseEFinishUpgradeSuccess =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      k: ConnectorsEventsGetResponseEFinishUpgradeSuccessK,
+    }),
+  ).annotate({
+    identifier: "ConnectorsEventsGetResponseEFinishUpgradeSuccess",
+  }) as any as S.Schema<ConnectorsEventsGetResponseEFinishUpgradeSuccess>;
+
+export type ConnectorsEventsGetResponseEFinishUpgradeFailureK =
+  | "FinishUpgradeFailure"
+  | (string & {});
+export const ConnectorsEventsGetResponseEFinishUpgradeFailureK =
+  /*@__PURE__*/ S.String;
+
+export interface ConnectorsEventsGetResponseEFinishUpgradeFailure {
+  /** Failed upgrade */
+  k: ConnectorsEventsGetResponseEFinishUpgradeFailureK;
+}
+export const ConnectorsEventsGetResponseEFinishUpgradeFailure =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      k: ConnectorsEventsGetResponseEFinishUpgradeFailureK,
+    }),
+  ).annotate({
+    identifier: "ConnectorsEventsGetResponseEFinishUpgradeFailure",
+  }) as any as S.Schema<ConnectorsEventsGetResponseEFinishUpgradeFailure>;
+
+export type ConnectorsEventsGetResponseEReconcileK =
+  | "Reconcile"
+  | (string & {});
+export const ConnectorsEventsGetResponseEReconcileK = /*@__PURE__*/ S.String;
+
+export interface ConnectorsEventsGetResponseEReconcile {
+  /** Reconciled */
+  k: ConnectorsEventsGetResponseEReconcileK;
+}
+export const ConnectorsEventsGetResponseEReconcile = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      k: ConnectorsEventsGetResponseEReconcileK,
+    }),
+).annotate({
+  identifier: "ConnectorsEventsGetResponseEReconcile",
+}) as any as S.Schema<ConnectorsEventsGetResponseEReconcile>;
+
+export type ConnectorsEventsGetResponseEConfigureCloudflaredTunnelK =
+  | "ConfigureCloudflaredTunnel"
+  | (string & {});
+export const ConnectorsEventsGetResponseEConfigureCloudflaredTunnelK =
+  /*@__PURE__*/ S.String;
+
+export interface ConnectorsEventsGetResponseEConfigureCloudflaredTunnel {
+  /** Configured Cloudflared tunnel */
+  k: ConnectorsEventsGetResponseEConfigureCloudflaredTunnelK;
+}
+export const ConnectorsEventsGetResponseEConfigureCloudflaredTunnel =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      k: ConnectorsEventsGetResponseEConfigureCloudflaredTunnelK,
+    }),
+  ).annotate({
+    identifier: "ConnectorsEventsGetResponseEConfigureCloudflaredTunnel",
+  }) as any as S.Schema<ConnectorsEventsGetResponseEConfigureCloudflaredTunnel>;
+
+export type ConnectorsEventsGetResponseERekeyInstallBothK =
+  | "RekeyInstallBoth"
+  | (string & {});
+export const ConnectorsEventsGetResponseERekeyInstallBothK =
+  /*@__PURE__*/ S.String;
+
+export interface ConnectorsEventsGetResponseERekeyInstallBoth {
+  /** Installed initial inbound and outbound keys */
+  k: ConnectorsEventsGetResponseERekeyInstallBothK;
+  /** Tunnel identifier */
+  tunnelId: string;
+}
+export const ConnectorsEventsGetResponseERekeyInstallBoth =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      k: ConnectorsEventsGetResponseERekeyInstallBothK,
+      tunnelId: S.String.pipe(T.Body("tunnel_id")),
+    }),
+  ).annotate({
+    identifier: "ConnectorsEventsGetResponseERekeyInstallBoth",
+  }) as any as S.Schema<ConnectorsEventsGetResponseERekeyInstallBoth>;
+
+export type ConnectorsEventsGetResponseERekeyStartK =
+  | "RekeyStart"
+  | (string & {});
+export const ConnectorsEventsGetResponseERekeyStartK = /*@__PURE__*/ S.String;
+
+export interface ConnectorsEventsGetResponseERekeyStart {
+  /** Installed new inbound key, kept old outbound */
+  k: ConnectorsEventsGetResponseERekeyStartK;
+  /** Tunnel identifier */
+  tunnelId: string;
+}
+export const ConnectorsEventsGetResponseERekeyStart = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      k: ConnectorsEventsGetResponseERekeyStartK,
+      tunnelId: S.String.pipe(T.Body("tunnel_id")),
+    }),
+).annotate({
+  identifier: "ConnectorsEventsGetResponseERekeyStart",
+}) as any as S.Schema<ConnectorsEventsGetResponseERekeyStart>;
+
+export type ConnectorsEventsGetResponseERekeyAdvanceK =
+  | "RekeyAdvance"
+  | (string & {});
+export const ConnectorsEventsGetResponseERekeyAdvanceK = /*@__PURE__*/ S.String;
+
+export interface ConnectorsEventsGetResponseERekeyAdvance {
+  /** Confirmed traffic on new inbound key, swapped outbound to new */
+  k: ConnectorsEventsGetResponseERekeyAdvanceK;
+  /** Tunnel identifier */
+  tunnelId: string;
+}
+export const ConnectorsEventsGetResponseERekeyAdvance = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      k: ConnectorsEventsGetResponseERekeyAdvanceK,
+      tunnelId: S.String.pipe(T.Body("tunnel_id")),
+    }),
+).annotate({
+  identifier: "ConnectorsEventsGetResponseERekeyAdvance",
+}) as any as S.Schema<ConnectorsEventsGetResponseERekeyAdvance>;
+
+export type ConnectorsEventsGetResponseERekeyCompleteK =
+  | "RekeyComplete"
+  | (string & {});
+export const ConnectorsEventsGetResponseERekeyCompleteK =
+  /*@__PURE__*/ S.String;
+
+export interface ConnectorsEventsGetResponseERekeyComplete {
+  /** Deleted old keys */
+  k: ConnectorsEventsGetResponseERekeyCompleteK;
+  /** Tunnel identifier */
+  tunnelId: string;
+}
+export const ConnectorsEventsGetResponseERekeyComplete =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      k: ConnectorsEventsGetResponseERekeyCompleteK,
+      tunnelId: S.String.pipe(T.Body("tunnel_id")),
+    }),
+  ).annotate({
+    identifier: "ConnectorsEventsGetResponseERekeyComplete",
+  }) as any as S.Schema<ConnectorsEventsGetResponseERekeyComplete>;
+
+export type ConnectorsEventsGetResponseERekeyResetK =
+  | "RekeyReset"
+  | (string & {});
+export const ConnectorsEventsGetResponseERekeyResetK = /*@__PURE__*/ S.String;
+
+export interface ConnectorsEventsGetResponseERekeyReset {
+  /** Deleted all keys after receiving an unexpected key */
+  k: ConnectorsEventsGetResponseERekeyResetK;
+  /** Tunnel identifier */
+  tunnelId: string;
+}
+export const ConnectorsEventsGetResponseERekeyReset = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      k: ConnectorsEventsGetResponseERekeyResetK,
+      tunnelId: S.String.pipe(T.Body("tunnel_id")),
+    }),
+).annotate({
+  identifier: "ConnectorsEventsGetResponseERekeyReset",
+}) as any as S.Schema<ConnectorsEventsGetResponseERekeyReset>;
+
+export type ConnectorsEventsGetResponseE =
+  | ConnectorsEventsGetResponseEInit
+  | ConnectorsEventsGetResponseELeave
+  | ConnectorsEventsGetResponseEStartAttestation
+  | ConnectorsEventsGetResponseEFinishAttestationSuccess
+  | ConnectorsEventsGetResponseEFinishAttestationFailure
+  | ConnectorsEventsGetResponseEStartRotateCryptKey
+  | ConnectorsEventsGetResponseEFinishRotateCryptKeySuccess
+  | ConnectorsEventsGetResponseEFinishRotateCryptKeyFailure
+  | ConnectorsEventsGetResponseEStartRotatePki
+  | ConnectorsEventsGetResponseEFinishRotatePkiSuccess
+  | ConnectorsEventsGetResponseEFinishRotatePkiFailure
+  | ConnectorsEventsGetResponseEStartUpgrade
+  | ConnectorsEventsGetResponseEFinishUpgradeSuccess
+  | ConnectorsEventsGetResponseEFinishUpgradeFailure
+  | ConnectorsEventsGetResponseEReconcile
+  | ConnectorsEventsGetResponseEConfigureCloudflaredTunnel
+  | ConnectorsEventsGetResponseERekeyInstallBoth
+  | ConnectorsEventsGetResponseERekeyStart
+  | ConnectorsEventsGetResponseERekeyAdvance
+  | ConnectorsEventsGetResponseERekeyComplete
+  | ConnectorsEventsGetResponseERekeyReset;
+export const ConnectorsEventsGetResponseE = /*@__PURE__*/ S.Unknown;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetConnectorEventResponse {
@@ -8979,30 +9441,450 @@ export const ListConnectorEventLatestsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListConnectorEventLatestsRequest",
 }) as any as S.Schema<ListConnectorEventLatestsRequest>;
 
-export type ConnectorsEventsLatestListResponseItemsItemEK =
+export type ConnectorsEventsLatestListResponseItemsItemEInitK =
   | "Init"
   | (string & {});
-export const ConnectorsEventsLatestListResponseItemsItemEK =
+export const ConnectorsEventsLatestListResponseItemsItemEInitK =
   /*@__PURE__*/ S.String;
 
-export interface ConnectorsEventsLatestListResponseItemsItemE {
+export interface ConnectorsEventsLatestListResponseItemsItemEInit {
   /** Initialized process */
-  k?: ConnectorsEventsLatestListResponseItemsItemEK;
-  /** Location of upgrade bundle */
-  url?: string;
-  /** Tunnel identifier */
-  tunnelId?: string;
+  k: ConnectorsEventsLatestListResponseItemsItemEInitK;
 }
-export const ConnectorsEventsLatestListResponseItemsItemE =
+export const ConnectorsEventsLatestListResponseItemsItemEInit =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      k: S.optional(ConnectorsEventsLatestListResponseItemsItemEK),
-      url: S.optional(S.String),
-      tunnelId: S.optional(S.String.pipe(T.Body("tunnel_id"))),
+      k: ConnectorsEventsLatestListResponseItemsItemEInitK,
     }),
   ).annotate({
-    identifier: "ConnectorsEventsLatestListResponseItemsItemE",
-  }) as any as S.Schema<ConnectorsEventsLatestListResponseItemsItemE>;
+    identifier: "ConnectorsEventsLatestListResponseItemsItemEInit",
+  }) as any as S.Schema<ConnectorsEventsLatestListResponseItemsItemEInit>;
+
+export type ConnectorsEventsLatestListResponseItemsItemELeaveK =
+  | "Leave"
+  | (string & {});
+export const ConnectorsEventsLatestListResponseItemsItemELeaveK =
+  /*@__PURE__*/ S.String;
+
+export interface ConnectorsEventsLatestListResponseItemsItemELeave {
+  /** Stopped process */
+  k: ConnectorsEventsLatestListResponseItemsItemELeaveK;
+}
+export const ConnectorsEventsLatestListResponseItemsItemELeave =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      k: ConnectorsEventsLatestListResponseItemsItemELeaveK,
+    }),
+  ).annotate({
+    identifier: "ConnectorsEventsLatestListResponseItemsItemELeave",
+  }) as any as S.Schema<ConnectorsEventsLatestListResponseItemsItemELeave>;
+
+export type ConnectorsEventsLatestListResponseItemsItemEStartAttestationK =
+  | "StartAttestation"
+  | (string & {});
+export const ConnectorsEventsLatestListResponseItemsItemEStartAttestationK =
+  /*@__PURE__*/ S.String;
+
+export interface ConnectorsEventsLatestListResponseItemsItemEStartAttestation {
+  /** Started attestation */
+  k: ConnectorsEventsLatestListResponseItemsItemEStartAttestationK;
+}
+export const ConnectorsEventsLatestListResponseItemsItemEStartAttestation =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      k: ConnectorsEventsLatestListResponseItemsItemEStartAttestationK,
+    }),
+  ).annotate({
+    identifier: "ConnectorsEventsLatestListResponseItemsItemEStartAttestation",
+  }) as any as S.Schema<ConnectorsEventsLatestListResponseItemsItemEStartAttestation>;
+
+export type ConnectorsEventsLatestListResponseItemsItemEFinishAttestationSuccessK =
+  "FinishAttestationSuccess" | (string & {});
+export const ConnectorsEventsLatestListResponseItemsItemEFinishAttestationSuccessK =
+  /*@__PURE__*/ S.String;
+
+export interface ConnectorsEventsLatestListResponseItemsItemEFinishAttestationSuccess {
+  /** Finished attestation */
+  k: ConnectorsEventsLatestListResponseItemsItemEFinishAttestationSuccessK;
+}
+export const ConnectorsEventsLatestListResponseItemsItemEFinishAttestationSuccess =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      k: ConnectorsEventsLatestListResponseItemsItemEFinishAttestationSuccessK,
+    }),
+  ).annotate({
+    identifier:
+      "ConnectorsEventsLatestListResponseItemsItemEFinishAttestationSuccess",
+  }) as any as S.Schema<ConnectorsEventsLatestListResponseItemsItemEFinishAttestationSuccess>;
+
+export type ConnectorsEventsLatestListResponseItemsItemEFinishAttestationFailureK =
+  "FinishAttestationFailure" | (string & {});
+export const ConnectorsEventsLatestListResponseItemsItemEFinishAttestationFailureK =
+  /*@__PURE__*/ S.String;
+
+export interface ConnectorsEventsLatestListResponseItemsItemEFinishAttestationFailure {
+  /** Failed attestation */
+  k: ConnectorsEventsLatestListResponseItemsItemEFinishAttestationFailureK;
+}
+export const ConnectorsEventsLatestListResponseItemsItemEFinishAttestationFailure =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      k: ConnectorsEventsLatestListResponseItemsItemEFinishAttestationFailureK,
+    }),
+  ).annotate({
+    identifier:
+      "ConnectorsEventsLatestListResponseItemsItemEFinishAttestationFailure",
+  }) as any as S.Schema<ConnectorsEventsLatestListResponseItemsItemEFinishAttestationFailure>;
+
+export type ConnectorsEventsLatestListResponseItemsItemEStartRotateCryptKeyK =
+  | "StartRotateCryptKey"
+  | (string & {});
+export const ConnectorsEventsLatestListResponseItemsItemEStartRotateCryptKeyK =
+  /*@__PURE__*/ S.String;
+
+export interface ConnectorsEventsLatestListResponseItemsItemEStartRotateCryptKey {
+  /** Started crypt key rotation */
+  k: ConnectorsEventsLatestListResponseItemsItemEStartRotateCryptKeyK;
+}
+export const ConnectorsEventsLatestListResponseItemsItemEStartRotateCryptKey =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      k: ConnectorsEventsLatestListResponseItemsItemEStartRotateCryptKeyK,
+    }),
+  ).annotate({
+    identifier:
+      "ConnectorsEventsLatestListResponseItemsItemEStartRotateCryptKey",
+  }) as any as S.Schema<ConnectorsEventsLatestListResponseItemsItemEStartRotateCryptKey>;
+
+export type ConnectorsEventsLatestListResponseItemsItemEFinishRotateCryptKeySuccessK =
+  "FinishRotateCryptKeySuccess" | (string & {});
+export const ConnectorsEventsLatestListResponseItemsItemEFinishRotateCryptKeySuccessK =
+  /*@__PURE__*/ S.String;
+
+export interface ConnectorsEventsLatestListResponseItemsItemEFinishRotateCryptKeySuccess {
+  /** Finished crypt key rotation */
+  k: ConnectorsEventsLatestListResponseItemsItemEFinishRotateCryptKeySuccessK;
+}
+export const ConnectorsEventsLatestListResponseItemsItemEFinishRotateCryptKeySuccess =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      k: ConnectorsEventsLatestListResponseItemsItemEFinishRotateCryptKeySuccessK,
+    }),
+  ).annotate({
+    identifier:
+      "ConnectorsEventsLatestListResponseItemsItemEFinishRotateCryptKeySuccess",
+  }) as any as S.Schema<ConnectorsEventsLatestListResponseItemsItemEFinishRotateCryptKeySuccess>;
+
+export type ConnectorsEventsLatestListResponseItemsItemEFinishRotateCryptKeyFailureK =
+  "FinishRotateCryptKeyFailure" | (string & {});
+export const ConnectorsEventsLatestListResponseItemsItemEFinishRotateCryptKeyFailureK =
+  /*@__PURE__*/ S.String;
+
+export interface ConnectorsEventsLatestListResponseItemsItemEFinishRotateCryptKeyFailure {
+  /** Failed crypt key rotation */
+  k: ConnectorsEventsLatestListResponseItemsItemEFinishRotateCryptKeyFailureK;
+}
+export const ConnectorsEventsLatestListResponseItemsItemEFinishRotateCryptKeyFailure =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      k: ConnectorsEventsLatestListResponseItemsItemEFinishRotateCryptKeyFailureK,
+    }),
+  ).annotate({
+    identifier:
+      "ConnectorsEventsLatestListResponseItemsItemEFinishRotateCryptKeyFailure",
+  }) as any as S.Schema<ConnectorsEventsLatestListResponseItemsItemEFinishRotateCryptKeyFailure>;
+
+export type ConnectorsEventsLatestListResponseItemsItemEStartRotatePkiK =
+  | "StartRotatePki"
+  | (string & {});
+export const ConnectorsEventsLatestListResponseItemsItemEStartRotatePkiK =
+  /*@__PURE__*/ S.String;
+
+export interface ConnectorsEventsLatestListResponseItemsItemEStartRotatePki {
+  /** Started PKI rotation */
+  k: ConnectorsEventsLatestListResponseItemsItemEStartRotatePkiK;
+}
+export const ConnectorsEventsLatestListResponseItemsItemEStartRotatePki =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      k: ConnectorsEventsLatestListResponseItemsItemEStartRotatePkiK,
+    }),
+  ).annotate({
+    identifier: "ConnectorsEventsLatestListResponseItemsItemEStartRotatePki",
+  }) as any as S.Schema<ConnectorsEventsLatestListResponseItemsItemEStartRotatePki>;
+
+export type ConnectorsEventsLatestListResponseItemsItemEFinishRotatePkiSuccessK =
+  "FinishRotatePkiSuccess" | (string & {});
+export const ConnectorsEventsLatestListResponseItemsItemEFinishRotatePkiSuccessK =
+  /*@__PURE__*/ S.String;
+
+export interface ConnectorsEventsLatestListResponseItemsItemEFinishRotatePkiSuccess {
+  /** Finished PKI rotation */
+  k: ConnectorsEventsLatestListResponseItemsItemEFinishRotatePkiSuccessK;
+}
+export const ConnectorsEventsLatestListResponseItemsItemEFinishRotatePkiSuccess =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      k: ConnectorsEventsLatestListResponseItemsItemEFinishRotatePkiSuccessK,
+    }),
+  ).annotate({
+    identifier:
+      "ConnectorsEventsLatestListResponseItemsItemEFinishRotatePkiSuccess",
+  }) as any as S.Schema<ConnectorsEventsLatestListResponseItemsItemEFinishRotatePkiSuccess>;
+
+export type ConnectorsEventsLatestListResponseItemsItemEFinishRotatePkiFailureK =
+  "FinishRotatePkiFailure" | (string & {});
+export const ConnectorsEventsLatestListResponseItemsItemEFinishRotatePkiFailureK =
+  /*@__PURE__*/ S.String;
+
+export interface ConnectorsEventsLatestListResponseItemsItemEFinishRotatePkiFailure {
+  /** Failed PKI rotation */
+  k: ConnectorsEventsLatestListResponseItemsItemEFinishRotatePkiFailureK;
+}
+export const ConnectorsEventsLatestListResponseItemsItemEFinishRotatePkiFailure =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      k: ConnectorsEventsLatestListResponseItemsItemEFinishRotatePkiFailureK,
+    }),
+  ).annotate({
+    identifier:
+      "ConnectorsEventsLatestListResponseItemsItemEFinishRotatePkiFailure",
+  }) as any as S.Schema<ConnectorsEventsLatestListResponseItemsItemEFinishRotatePkiFailure>;
+
+export type ConnectorsEventsLatestListResponseItemsItemEStartUpgradeK =
+  | "StartUpgrade"
+  | (string & {});
+export const ConnectorsEventsLatestListResponseItemsItemEStartUpgradeK =
+  /*@__PURE__*/ S.String;
+
+export interface ConnectorsEventsLatestListResponseItemsItemEStartUpgrade {
+  /** Started upgrade */
+  k: ConnectorsEventsLatestListResponseItemsItemEStartUpgradeK;
+  /** Location of upgrade bundle */
+  url: string;
+}
+export const ConnectorsEventsLatestListResponseItemsItemEStartUpgrade =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      k: ConnectorsEventsLatestListResponseItemsItemEStartUpgradeK,
+      url: S.String,
+    }),
+  ).annotate({
+    identifier: "ConnectorsEventsLatestListResponseItemsItemEStartUpgrade",
+  }) as any as S.Schema<ConnectorsEventsLatestListResponseItemsItemEStartUpgrade>;
+
+export type ConnectorsEventsLatestListResponseItemsItemEFinishUpgradeSuccessK =
+  | "FinishUpgradeSuccess"
+  | (string & {});
+export const ConnectorsEventsLatestListResponseItemsItemEFinishUpgradeSuccessK =
+  /*@__PURE__*/ S.String;
+
+export interface ConnectorsEventsLatestListResponseItemsItemEFinishUpgradeSuccess {
+  /** Finished upgrade */
+  k: ConnectorsEventsLatestListResponseItemsItemEFinishUpgradeSuccessK;
+}
+export const ConnectorsEventsLatestListResponseItemsItemEFinishUpgradeSuccess =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      k: ConnectorsEventsLatestListResponseItemsItemEFinishUpgradeSuccessK,
+    }),
+  ).annotate({
+    identifier:
+      "ConnectorsEventsLatestListResponseItemsItemEFinishUpgradeSuccess",
+  }) as any as S.Schema<ConnectorsEventsLatestListResponseItemsItemEFinishUpgradeSuccess>;
+
+export type ConnectorsEventsLatestListResponseItemsItemEFinishUpgradeFailureK =
+  | "FinishUpgradeFailure"
+  | (string & {});
+export const ConnectorsEventsLatestListResponseItemsItemEFinishUpgradeFailureK =
+  /*@__PURE__*/ S.String;
+
+export interface ConnectorsEventsLatestListResponseItemsItemEFinishUpgradeFailure {
+  /** Failed upgrade */
+  k: ConnectorsEventsLatestListResponseItemsItemEFinishUpgradeFailureK;
+}
+export const ConnectorsEventsLatestListResponseItemsItemEFinishUpgradeFailure =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      k: ConnectorsEventsLatestListResponseItemsItemEFinishUpgradeFailureK,
+    }),
+  ).annotate({
+    identifier:
+      "ConnectorsEventsLatestListResponseItemsItemEFinishUpgradeFailure",
+  }) as any as S.Schema<ConnectorsEventsLatestListResponseItemsItemEFinishUpgradeFailure>;
+
+export type ConnectorsEventsLatestListResponseItemsItemEReconcileK =
+  | "Reconcile"
+  | (string & {});
+export const ConnectorsEventsLatestListResponseItemsItemEReconcileK =
+  /*@__PURE__*/ S.String;
+
+export interface ConnectorsEventsLatestListResponseItemsItemEReconcile {
+  /** Reconciled */
+  k: ConnectorsEventsLatestListResponseItemsItemEReconcileK;
+}
+export const ConnectorsEventsLatestListResponseItemsItemEReconcile =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      k: ConnectorsEventsLatestListResponseItemsItemEReconcileK,
+    }),
+  ).annotate({
+    identifier: "ConnectorsEventsLatestListResponseItemsItemEReconcile",
+  }) as any as S.Schema<ConnectorsEventsLatestListResponseItemsItemEReconcile>;
+
+export type ConnectorsEventsLatestListResponseItemsItemEConfigureCloudflaredTunnelK =
+  "ConfigureCloudflaredTunnel" | (string & {});
+export const ConnectorsEventsLatestListResponseItemsItemEConfigureCloudflaredTunnelK =
+  /*@__PURE__*/ S.String;
+
+export interface ConnectorsEventsLatestListResponseItemsItemEConfigureCloudflaredTunnel {
+  /** Configured Cloudflared tunnel */
+  k: ConnectorsEventsLatestListResponseItemsItemEConfigureCloudflaredTunnelK;
+}
+export const ConnectorsEventsLatestListResponseItemsItemEConfigureCloudflaredTunnel =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      k: ConnectorsEventsLatestListResponseItemsItemEConfigureCloudflaredTunnelK,
+    }),
+  ).annotate({
+    identifier:
+      "ConnectorsEventsLatestListResponseItemsItemEConfigureCloudflaredTunnel",
+  }) as any as S.Schema<ConnectorsEventsLatestListResponseItemsItemEConfigureCloudflaredTunnel>;
+
+export type ConnectorsEventsLatestListResponseItemsItemERekeyInstallBothK =
+  | "RekeyInstallBoth"
+  | (string & {});
+export const ConnectorsEventsLatestListResponseItemsItemERekeyInstallBothK =
+  /*@__PURE__*/ S.String;
+
+export interface ConnectorsEventsLatestListResponseItemsItemERekeyInstallBoth {
+  /** Installed initial inbound and outbound keys */
+  k: ConnectorsEventsLatestListResponseItemsItemERekeyInstallBothK;
+  /** Tunnel identifier */
+  tunnelId: string;
+}
+export const ConnectorsEventsLatestListResponseItemsItemERekeyInstallBoth =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      k: ConnectorsEventsLatestListResponseItemsItemERekeyInstallBothK,
+      tunnelId: S.String.pipe(T.Body("tunnel_id")),
+    }),
+  ).annotate({
+    identifier: "ConnectorsEventsLatestListResponseItemsItemERekeyInstallBoth",
+  }) as any as S.Schema<ConnectorsEventsLatestListResponseItemsItemERekeyInstallBoth>;
+
+export type ConnectorsEventsLatestListResponseItemsItemERekeyStartK =
+  | "RekeyStart"
+  | (string & {});
+export const ConnectorsEventsLatestListResponseItemsItemERekeyStartK =
+  /*@__PURE__*/ S.String;
+
+export interface ConnectorsEventsLatestListResponseItemsItemERekeyStart {
+  /** Installed new inbound key, kept old outbound */
+  k: ConnectorsEventsLatestListResponseItemsItemERekeyStartK;
+  /** Tunnel identifier */
+  tunnelId: string;
+}
+export const ConnectorsEventsLatestListResponseItemsItemERekeyStart =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      k: ConnectorsEventsLatestListResponseItemsItemERekeyStartK,
+      tunnelId: S.String.pipe(T.Body("tunnel_id")),
+    }),
+  ).annotate({
+    identifier: "ConnectorsEventsLatestListResponseItemsItemERekeyStart",
+  }) as any as S.Schema<ConnectorsEventsLatestListResponseItemsItemERekeyStart>;
+
+export type ConnectorsEventsLatestListResponseItemsItemERekeyAdvanceK =
+  | "RekeyAdvance"
+  | (string & {});
+export const ConnectorsEventsLatestListResponseItemsItemERekeyAdvanceK =
+  /*@__PURE__*/ S.String;
+
+export interface ConnectorsEventsLatestListResponseItemsItemERekeyAdvance {
+  /** Confirmed traffic on new inbound key, swapped outbound to new */
+  k: ConnectorsEventsLatestListResponseItemsItemERekeyAdvanceK;
+  /** Tunnel identifier */
+  tunnelId: string;
+}
+export const ConnectorsEventsLatestListResponseItemsItemERekeyAdvance =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      k: ConnectorsEventsLatestListResponseItemsItemERekeyAdvanceK,
+      tunnelId: S.String.pipe(T.Body("tunnel_id")),
+    }),
+  ).annotate({
+    identifier: "ConnectorsEventsLatestListResponseItemsItemERekeyAdvance",
+  }) as any as S.Schema<ConnectorsEventsLatestListResponseItemsItemERekeyAdvance>;
+
+export type ConnectorsEventsLatestListResponseItemsItemERekeyCompleteK =
+  | "RekeyComplete"
+  | (string & {});
+export const ConnectorsEventsLatestListResponseItemsItemERekeyCompleteK =
+  /*@__PURE__*/ S.String;
+
+export interface ConnectorsEventsLatestListResponseItemsItemERekeyComplete {
+  /** Deleted old keys */
+  k: ConnectorsEventsLatestListResponseItemsItemERekeyCompleteK;
+  /** Tunnel identifier */
+  tunnelId: string;
+}
+export const ConnectorsEventsLatestListResponseItemsItemERekeyComplete =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      k: ConnectorsEventsLatestListResponseItemsItemERekeyCompleteK,
+      tunnelId: S.String.pipe(T.Body("tunnel_id")),
+    }),
+  ).annotate({
+    identifier: "ConnectorsEventsLatestListResponseItemsItemERekeyComplete",
+  }) as any as S.Schema<ConnectorsEventsLatestListResponseItemsItemERekeyComplete>;
+
+export type ConnectorsEventsLatestListResponseItemsItemERekeyResetK =
+  | "RekeyReset"
+  | (string & {});
+export const ConnectorsEventsLatestListResponseItemsItemERekeyResetK =
+  /*@__PURE__*/ S.String;
+
+export interface ConnectorsEventsLatestListResponseItemsItemERekeyReset {
+  /** Deleted all keys after receiving an unexpected key */
+  k: ConnectorsEventsLatestListResponseItemsItemERekeyResetK;
+  /** Tunnel identifier */
+  tunnelId: string;
+}
+export const ConnectorsEventsLatestListResponseItemsItemERekeyReset =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      k: ConnectorsEventsLatestListResponseItemsItemERekeyResetK,
+      tunnelId: S.String.pipe(T.Body("tunnel_id")),
+    }),
+  ).annotate({
+    identifier: "ConnectorsEventsLatestListResponseItemsItemERekeyReset",
+  }) as any as S.Schema<ConnectorsEventsLatestListResponseItemsItemERekeyReset>;
+
+export type ConnectorsEventsLatestListResponseItemsItemE =
+  | ConnectorsEventsLatestListResponseItemsItemEInit
+  | ConnectorsEventsLatestListResponseItemsItemELeave
+  | ConnectorsEventsLatestListResponseItemsItemEStartAttestation
+  | ConnectorsEventsLatestListResponseItemsItemEFinishAttestationSuccess
+  | ConnectorsEventsLatestListResponseItemsItemEFinishAttestationFailure
+  | ConnectorsEventsLatestListResponseItemsItemEStartRotateCryptKey
+  | ConnectorsEventsLatestListResponseItemsItemEFinishRotateCryptKeySuccess
+  | ConnectorsEventsLatestListResponseItemsItemEFinishRotateCryptKeyFailure
+  | ConnectorsEventsLatestListResponseItemsItemEStartRotatePki
+  | ConnectorsEventsLatestListResponseItemsItemEFinishRotatePkiSuccess
+  | ConnectorsEventsLatestListResponseItemsItemEFinishRotatePkiFailure
+  | ConnectorsEventsLatestListResponseItemsItemEStartUpgrade
+  | ConnectorsEventsLatestListResponseItemsItemEFinishUpgradeSuccess
+  | ConnectorsEventsLatestListResponseItemsItemEFinishUpgradeFailure
+  | ConnectorsEventsLatestListResponseItemsItemEReconcile
+  | ConnectorsEventsLatestListResponseItemsItemEConfigureCloudflaredTunnel
+  | ConnectorsEventsLatestListResponseItemsItemERekeyInstallBoth
+  | ConnectorsEventsLatestListResponseItemsItemERekeyStart
+  | ConnectorsEventsLatestListResponseItemsItemERekeyAdvance
+  | ConnectorsEventsLatestListResponseItemsItemERekeyComplete
+  | ConnectorsEventsLatestListResponseItemsItemERekeyReset;
+export const ConnectorsEventsLatestListResponseItemsItemE =
+  /*@__PURE__*/ S.Unknown;
 
 export interface ConnectorsEventsLatestListResponseItemsItem {
   e: ConnectorsEventsLatestListResponseItemsItemE;
@@ -13440,40 +14322,76 @@ export const PutCfInterconnectResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutCfInterconnectResponse",
 }) as any as S.Schema<PutCfInterconnectResponse>;
 
-export type SitesAppConfigurationCreateRequestBodyPreferredWansList = string[];
-export const SitesAppConfigurationCreateRequestBodyPreferredWansList =
+export type SitesAppConfigurationCreateRequestBodyAccountAppPreferredWansList =
+  string[];
+export const SitesAppConfigurationCreateRequestBodyAccountAppPreferredWansList =
   /*@__PURE__*/ S.Array(
     S.String,
-  ) as any as S.Schema<SitesAppConfigurationCreateRequestBodyPreferredWansList>;
+  ) as any as S.Schema<SitesAppConfigurationCreateRequestBodyAccountAppPreferredWansList>;
 
-export interface SitesAppConfigurationCreateRequestBody {
+export interface SitesAppConfigurationCreateRequestBodyAccountApp {
   /** Magic account app ID. */
-  accountAppId?: string;
+  accountAppId: string;
   /** Whether to breakout traffic to the app's endpoints directly. Null preserves default behavior. */
   breakout?: boolean;
   /** WAN interfaces to prefer over default WANs, highest-priority first. Can only be specified for breakout rules (breakout must be true). */
-  preferredWans?: SitesAppConfigurationCreateRequestBodyPreferredWansList;
+  preferredWans?: SitesAppConfigurationCreateRequestBodyAccountAppPreferredWansList;
   /** Priority of traffic. 0 is default, anything greater is prioritized. (Currently only 0 and 1 are supported) */
   priority?: number;
-  /** Managed app ID. */
-  managedAppId?: string;
 }
-export const SitesAppConfigurationCreateRequestBody = /*@__PURE__*/ S.suspend(
-  () =>
+export const SitesAppConfigurationCreateRequestBodyAccountApp =
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      accountAppId: S.optional(S.String.pipe(T.Body("account_app_id"))),
+      accountAppId: S.String.pipe(T.Body("account_app_id")),
       breakout: S.optional(S.Boolean),
       preferredWans: S.optional(
-        SitesAppConfigurationCreateRequestBodyPreferredWansList.pipe(
+        SitesAppConfigurationCreateRequestBodyAccountAppPreferredWansList.pipe(
           T.Body("preferred_wans"),
         ),
       ),
       priority: S.optional(S.Number),
-      managedAppId: S.optional(S.String.pipe(T.Body("managed_app_id"))),
     }),
-).annotate({
-  identifier: "SitesAppConfigurationCreateRequestBody",
-}) as any as S.Schema<SitesAppConfigurationCreateRequestBody>;
+  ).annotate({
+    identifier: "SitesAppConfigurationCreateRequestBodyAccountApp",
+  }) as any as S.Schema<SitesAppConfigurationCreateRequestBodyAccountApp>;
+
+export type SitesAppConfigurationCreateRequestBodyManagedAppPreferredWansList =
+  string[];
+export const SitesAppConfigurationCreateRequestBodyManagedAppPreferredWansList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<SitesAppConfigurationCreateRequestBodyManagedAppPreferredWansList>;
+
+export interface SitesAppConfigurationCreateRequestBodyManagedApp {
+  /** Managed app ID. */
+  managedAppId: string;
+  /** Whether to breakout traffic to the app's endpoints directly. Null preserves default behavior. */
+  breakout?: boolean;
+  /** WAN interfaces to prefer over default WANs, highest-priority first. Can only be specified for breakout rules (breakout must be true). */
+  preferredWans?: SitesAppConfigurationCreateRequestBodyManagedAppPreferredWansList;
+  /** Priority of traffic. 0 is default, anything greater is prioritized. (Currently only 0 and 1 are supported) */
+  priority?: number;
+}
+export const SitesAppConfigurationCreateRequestBodyManagedApp =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      managedAppId: S.String.pipe(T.Body("managed_app_id")),
+      breakout: S.optional(S.Boolean),
+      preferredWans: S.optional(
+        SitesAppConfigurationCreateRequestBodyManagedAppPreferredWansList.pipe(
+          T.Body("preferred_wans"),
+        ),
+      ),
+      priority: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier: "SitesAppConfigurationCreateRequestBodyManagedApp",
+  }) as any as S.Schema<SitesAppConfigurationCreateRequestBodyManagedApp>;
+
+export type SitesAppConfigurationCreateRequestBody =
+  | SitesAppConfigurationCreateRequestBodyAccountApp
+  | SitesAppConfigurationCreateRequestBodyManagedApp;
+export const SitesAppConfigurationCreateRequestBody = /*@__PURE__*/ S.Unknown;
 
 export interface SitesAppConfigurationCreateRequest {
   /** Identifier */

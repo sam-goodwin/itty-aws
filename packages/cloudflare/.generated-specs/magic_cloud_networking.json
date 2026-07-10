@@ -7569,7 +7569,41 @@
         }
       }
     },
-    "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemHiddenItemsItemValueYamlDiff": {
+    "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnStringItem": {
+      "type": "structure",
+      "members": {
+        "item_type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "string": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnYamlItem": {
+      "type": "structure",
+      "members": {
+        "item_type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "yaml": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnYamlDiffItemYamlDiff": {
       "type": "structure",
       "members": {
         "diff": {
@@ -7604,7 +7638,24 @@
         }
       }
     },
-    "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemHiddenItemsItemValueResourcePreviewCloudType": {
+    "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnYamlDiffItem": {
+      "type": "structure",
+      "members": {
+        "item_type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "yaml_diff": {
+          "target": "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnYamlDiffItemYamlDiff",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType": {
       "type": "enum",
       "members": {
         "AWS": {
@@ -7633,7 +7684,7 @@
         }
       }
     },
-    "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemHiddenItemsItemValueResourcePreviewResourceType": {
+    "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType": {
       "type": "enum",
       "members": {
         "AWS_CUSTOMER_GATEWAY": {
@@ -7656,7 +7707,7 @@
         }
       }
     },
-    "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemHiddenItemsItemValueResourcePreview": {
+    "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview": {
       "type": "structure",
       "members": {
         "id": {
@@ -7666,7 +7717,7 @@
           }
         },
         "cloud_type": {
-          "target": "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemHiddenItemsItemValueResourcePreviewCloudType",
+          "target": "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType",
           "traits": {
             "smithy.api#required": {}
           }
@@ -7684,7 +7735,7 @@
           }
         },
         "resource_type": {
-          "target": "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemHiddenItemsItemValueResourcePreviewResourceType",
+          "target": "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType",
           "traits": {
             "smithy.api#required": {}
           }
@@ -7697,7 +7748,24 @@
         }
       }
     },
-    "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemHiddenItemsItemValueListItemResourcePreviewCloudType": {
+    "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnResourcePreviewItem": {
+      "type": "structure",
+      "members": {
+        "item_type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "resource_preview": {
+          "target": "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItemListItemResourcePreviewCloudType": {
       "type": "enum",
       "members": {
         "AWS": {
@@ -7726,7 +7794,7 @@
         }
       }
     },
-    "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemHiddenItemsItemValueListItemResourcePreviewResourceType": {
+    "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItemListItemResourcePreviewResourceType": {
       "type": "enum",
       "members": {
         "AWS_CUSTOMER_GATEWAY": {
@@ -7749,7 +7817,7 @@
         }
       }
     },
-    "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemHiddenItemsItemValueListItemResourcePreview": {
+    "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItemListItemResourcePreview": {
       "type": "structure",
       "members": {
         "id": {
@@ -7759,7 +7827,7 @@
           }
         },
         "cloud_type": {
-          "target": "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemHiddenItemsItemValueListItemResourcePreviewCloudType",
+          "target": "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItemListItemResourcePreviewCloudType",
           "traits": {
             "smithy.api#required": {}
           }
@@ -7777,7 +7845,7 @@
           }
         },
         "resource_type": {
-          "target": "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemHiddenItemsItemValueListItemResourcePreviewResourceType",
+          "target": "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItemListItemResourcePreviewResourceType",
           "traits": {
             "smithy.api#required": {}
           }
@@ -7790,7 +7858,7 @@
         }
       }
     },
-    "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemHiddenItemsItemValueListItem": {
+    "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItemListItem": {
       "type": "structure",
       "members": {
         "item_type": {
@@ -7800,36 +7868,50 @@
           "target": "smithy.api#String"
         },
         "resource_preview": {
-          "target": "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemHiddenItemsItemValueListItemResourcePreview"
+          "target": "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItemListItemResourcePreview"
         }
       }
     },
-    "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemHiddenItemsItemValueListList": {
+    "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItemListList": {
       "type": "list",
       "member": {
-        "target": "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemHiddenItemsItemValueListItem"
+        "target": "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItemListItem"
+      }
+    },
+    "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItem": {
+      "type": "structure",
+      "members": {
+        "item_type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "list": {
+          "target": "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItemListList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
       }
     },
     "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemHiddenItemsItemValue": {
-      "type": "structure",
+      "type": "union",
       "members": {
-        "item_type": {
-          "target": "smithy.api#String"
+        "McnStringItem": {
+          "target": "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnStringItem"
         },
-        "string": {
-          "target": "smithy.api#String"
+        "McnYamlItem": {
+          "target": "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnYamlItem"
         },
-        "yaml": {
-          "target": "smithy.api#String"
+        "McnYamlDiffItem": {
+          "target": "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnYamlDiffItem"
         },
-        "yaml_diff": {
-          "target": "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemHiddenItemsItemValueYamlDiff"
+        "McnResourcePreviewItem": {
+          "target": "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnResourcePreviewItem"
         },
-        "resource_preview": {
-          "target": "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemHiddenItemsItemValueResourcePreview"
-        },
-        "list": {
-          "target": "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemHiddenItemsItemValueListList"
+        "McnListItem": {
+          "target": "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItem"
         }
       }
     },
@@ -7853,7 +7935,41 @@
         "target": "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemHiddenItemsItem"
       }
     },
-    "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemVisibleItemsItemValueYamlDiff": {
+    "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnStringItem": {
+      "type": "structure",
+      "members": {
+        "item_type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "string": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnYamlItem": {
+      "type": "structure",
+      "members": {
+        "item_type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "yaml": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnYamlDiffItemYamlDiff": {
       "type": "structure",
       "members": {
         "diff": {
@@ -7888,7 +8004,24 @@
         }
       }
     },
-    "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemVisibleItemsItemValueResourcePreviewCloudType": {
+    "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnYamlDiffItem": {
+      "type": "structure",
+      "members": {
+        "item_type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "yaml_diff": {
+          "target": "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnYamlDiffItemYamlDiff",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType": {
       "type": "enum",
       "members": {
         "AWS": {
@@ -7917,7 +8050,7 @@
         }
       }
     },
-    "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemVisibleItemsItemValueResourcePreviewResourceType": {
+    "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType": {
       "type": "enum",
       "members": {
         "AWS_CUSTOMER_GATEWAY": {
@@ -7940,7 +8073,7 @@
         }
       }
     },
-    "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemVisibleItemsItemValueResourcePreview": {
+    "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview": {
       "type": "structure",
       "members": {
         "id": {
@@ -7950,7 +8083,7 @@
           }
         },
         "cloud_type": {
-          "target": "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemVisibleItemsItemValueResourcePreviewCloudType",
+          "target": "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType",
           "traits": {
             "smithy.api#required": {}
           }
@@ -7968,7 +8101,7 @@
           }
         },
         "resource_type": {
-          "target": "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemVisibleItemsItemValueResourcePreviewResourceType",
+          "target": "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType",
           "traits": {
             "smithy.api#required": {}
           }
@@ -7981,7 +8114,24 @@
         }
       }
     },
-    "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemVisibleItemsItemValueListItemResourcePreviewCloudType": {
+    "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnResourcePreviewItem": {
+      "type": "structure",
+      "members": {
+        "item_type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "resource_preview": {
+          "target": "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItemListItemResourcePreviewCloudType": {
       "type": "enum",
       "members": {
         "AWS": {
@@ -8010,7 +8160,7 @@
         }
       }
     },
-    "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemVisibleItemsItemValueListItemResourcePreviewResourceType": {
+    "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItemListItemResourcePreviewResourceType": {
       "type": "enum",
       "members": {
         "AWS_CUSTOMER_GATEWAY": {
@@ -8033,7 +8183,7 @@
         }
       }
     },
-    "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemVisibleItemsItemValueListItemResourcePreview": {
+    "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItemListItemResourcePreview": {
       "type": "structure",
       "members": {
         "id": {
@@ -8043,7 +8193,7 @@
           }
         },
         "cloud_type": {
-          "target": "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemVisibleItemsItemValueListItemResourcePreviewCloudType",
+          "target": "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItemListItemResourcePreviewCloudType",
           "traits": {
             "smithy.api#required": {}
           }
@@ -8061,7 +8211,7 @@
           }
         },
         "resource_type": {
-          "target": "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemVisibleItemsItemValueListItemResourcePreviewResourceType",
+          "target": "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItemListItemResourcePreviewResourceType",
           "traits": {
             "smithy.api#required": {}
           }
@@ -8074,7 +8224,7 @@
         }
       }
     },
-    "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemVisibleItemsItemValueListItem": {
+    "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItemListItem": {
       "type": "structure",
       "members": {
         "item_type": {
@@ -8084,36 +8234,50 @@
           "target": "smithy.api#String"
         },
         "resource_preview": {
-          "target": "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemVisibleItemsItemValueListItemResourcePreview"
+          "target": "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItemListItemResourcePreview"
         }
       }
     },
-    "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemVisibleItemsItemValueListList": {
+    "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItemListList": {
       "type": "list",
       "member": {
-        "target": "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemVisibleItemsItemValueListItem"
+        "target": "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItemListItem"
+      }
+    },
+    "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItem": {
+      "type": "structure",
+      "members": {
+        "item_type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "list": {
+          "target": "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItemListList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
       }
     },
     "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemVisibleItemsItemValue": {
-      "type": "structure",
+      "type": "union",
       "members": {
-        "item_type": {
-          "target": "smithy.api#String"
+        "McnStringItem": {
+          "target": "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnStringItem"
         },
-        "string": {
-          "target": "smithy.api#String"
+        "McnYamlItem": {
+          "target": "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnYamlItem"
         },
-        "yaml": {
-          "target": "smithy.api#String"
+        "McnYamlDiffItem": {
+          "target": "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnYamlDiffItem"
         },
-        "yaml_diff": {
-          "target": "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemVisibleItemsItemValueYamlDiff"
+        "McnResourcePreviewItem": {
+          "target": "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnResourcePreviewItem"
         },
-        "resource_preview": {
-          "target": "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemVisibleItemsItemValueResourcePreview"
-        },
-        "list": {
-          "target": "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemVisibleItemsItemValueListList"
+        "McnListItem": {
+          "target": "com.cloudflare.magic_cloud_networking#ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItem"
         }
       }
     },
@@ -8614,7 +8778,41 @@
         }
       }
     },
-    "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemHiddenItemsItemValueYamlDiff": {
+    "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnStringItem": {
+      "type": "structure",
+      "members": {
+        "item_type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "string": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnYamlItem": {
+      "type": "structure",
+      "members": {
+        "item_type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "yaml": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnYamlDiffItemYamlDiff": {
       "type": "structure",
       "members": {
         "diff": {
@@ -8649,7 +8847,24 @@
         }
       }
     },
-    "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemHiddenItemsItemValueResourcePreviewCloudType": {
+    "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnYamlDiffItem": {
+      "type": "structure",
+      "members": {
+        "item_type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "yaml_diff": {
+          "target": "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnYamlDiffItemYamlDiff",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType": {
       "type": "enum",
       "members": {
         "AWS": {
@@ -8678,7 +8893,7 @@
         }
       }
     },
-    "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemHiddenItemsItemValueResourcePreviewResourceType": {
+    "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType": {
       "type": "enum",
       "members": {
         "AWS_CUSTOMER_GATEWAY": {
@@ -8701,7 +8916,7 @@
         }
       }
     },
-    "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemHiddenItemsItemValueResourcePreview": {
+    "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview": {
       "type": "structure",
       "members": {
         "id": {
@@ -8711,7 +8926,7 @@
           }
         },
         "cloud_type": {
-          "target": "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemHiddenItemsItemValueResourcePreviewCloudType",
+          "target": "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType",
           "traits": {
             "smithy.api#required": {}
           }
@@ -8729,7 +8944,7 @@
           }
         },
         "resource_type": {
-          "target": "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemHiddenItemsItemValueResourcePreviewResourceType",
+          "target": "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType",
           "traits": {
             "smithy.api#required": {}
           }
@@ -8742,7 +8957,24 @@
         }
       }
     },
-    "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemHiddenItemsItemValueListItemResourcePreviewCloudType": {
+    "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnResourcePreviewItem": {
+      "type": "structure",
+      "members": {
+        "item_type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "resource_preview": {
+          "target": "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItemListItemResourcePreviewCloudType": {
       "type": "enum",
       "members": {
         "AWS": {
@@ -8771,7 +9003,7 @@
         }
       }
     },
-    "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemHiddenItemsItemValueListItemResourcePreviewResourceType": {
+    "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItemListItemResourcePreviewResourceType": {
       "type": "enum",
       "members": {
         "AWS_CUSTOMER_GATEWAY": {
@@ -8794,7 +9026,7 @@
         }
       }
     },
-    "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemHiddenItemsItemValueListItemResourcePreview": {
+    "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItemListItemResourcePreview": {
       "type": "structure",
       "members": {
         "id": {
@@ -8804,7 +9036,7 @@
           }
         },
         "cloud_type": {
-          "target": "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemHiddenItemsItemValueListItemResourcePreviewCloudType",
+          "target": "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItemListItemResourcePreviewCloudType",
           "traits": {
             "smithy.api#required": {}
           }
@@ -8822,7 +9054,7 @@
           }
         },
         "resource_type": {
-          "target": "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemHiddenItemsItemValueListItemResourcePreviewResourceType",
+          "target": "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItemListItemResourcePreviewResourceType",
           "traits": {
             "smithy.api#required": {}
           }
@@ -8835,7 +9067,7 @@
         }
       }
     },
-    "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemHiddenItemsItemValueListItem": {
+    "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItemListItem": {
       "type": "structure",
       "members": {
         "item_type": {
@@ -8845,36 +9077,50 @@
           "target": "smithy.api#String"
         },
         "resource_preview": {
-          "target": "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemHiddenItemsItemValueListItemResourcePreview"
+          "target": "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItemListItemResourcePreview"
         }
       }
     },
-    "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemHiddenItemsItemValueListList": {
+    "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItemListList": {
       "type": "list",
       "member": {
-        "target": "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemHiddenItemsItemValueListItem"
+        "target": "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItemListItem"
+      }
+    },
+    "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItem": {
+      "type": "structure",
+      "members": {
+        "item_type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "list": {
+          "target": "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItemListList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
       }
     },
     "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemHiddenItemsItemValue": {
-      "type": "structure",
+      "type": "union",
       "members": {
-        "item_type": {
-          "target": "smithy.api#String"
+        "McnStringItem": {
+          "target": "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnStringItem"
         },
-        "string": {
-          "target": "smithy.api#String"
+        "McnYamlItem": {
+          "target": "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnYamlItem"
         },
-        "yaml": {
-          "target": "smithy.api#String"
+        "McnYamlDiffItem": {
+          "target": "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnYamlDiffItem"
         },
-        "yaml_diff": {
-          "target": "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemHiddenItemsItemValueYamlDiff"
+        "McnResourcePreviewItem": {
+          "target": "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnResourcePreviewItem"
         },
-        "resource_preview": {
-          "target": "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemHiddenItemsItemValueResourcePreview"
-        },
-        "list": {
-          "target": "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemHiddenItemsItemValueListList"
+        "McnListItem": {
+          "target": "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItem"
         }
       }
     },
@@ -8898,7 +9144,41 @@
         "target": "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemHiddenItemsItem"
       }
     },
-    "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemVisibleItemsItemValueYamlDiff": {
+    "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnStringItem": {
+      "type": "structure",
+      "members": {
+        "item_type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "string": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnYamlItem": {
+      "type": "structure",
+      "members": {
+        "item_type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "yaml": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnYamlDiffItemYamlDiff": {
       "type": "structure",
       "members": {
         "diff": {
@@ -8933,7 +9213,24 @@
         }
       }
     },
-    "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemVisibleItemsItemValueResourcePreviewCloudType": {
+    "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnYamlDiffItem": {
+      "type": "structure",
+      "members": {
+        "item_type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "yaml_diff": {
+          "target": "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnYamlDiffItemYamlDiff",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType": {
       "type": "enum",
       "members": {
         "AWS": {
@@ -8962,7 +9259,7 @@
         }
       }
     },
-    "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemVisibleItemsItemValueResourcePreviewResourceType": {
+    "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType": {
       "type": "enum",
       "members": {
         "AWS_CUSTOMER_GATEWAY": {
@@ -8985,7 +9282,7 @@
         }
       }
     },
-    "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemVisibleItemsItemValueResourcePreview": {
+    "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview": {
       "type": "structure",
       "members": {
         "id": {
@@ -8995,7 +9292,7 @@
           }
         },
         "cloud_type": {
-          "target": "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemVisibleItemsItemValueResourcePreviewCloudType",
+          "target": "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType",
           "traits": {
             "smithy.api#required": {}
           }
@@ -9013,7 +9310,7 @@
           }
         },
         "resource_type": {
-          "target": "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemVisibleItemsItemValueResourcePreviewResourceType",
+          "target": "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType",
           "traits": {
             "smithy.api#required": {}
           }
@@ -9026,7 +9323,24 @@
         }
       }
     },
-    "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemVisibleItemsItemValueListItemResourcePreviewCloudType": {
+    "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnResourcePreviewItem": {
+      "type": "structure",
+      "members": {
+        "item_type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "resource_preview": {
+          "target": "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItemListItemResourcePreviewCloudType": {
       "type": "enum",
       "members": {
         "AWS": {
@@ -9055,7 +9369,7 @@
         }
       }
     },
-    "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemVisibleItemsItemValueListItemResourcePreviewResourceType": {
+    "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItemListItemResourcePreviewResourceType": {
       "type": "enum",
       "members": {
         "AWS_CUSTOMER_GATEWAY": {
@@ -9078,7 +9392,7 @@
         }
       }
     },
-    "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemVisibleItemsItemValueListItemResourcePreview": {
+    "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItemListItemResourcePreview": {
       "type": "structure",
       "members": {
         "id": {
@@ -9088,7 +9402,7 @@
           }
         },
         "cloud_type": {
-          "target": "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemVisibleItemsItemValueListItemResourcePreviewCloudType",
+          "target": "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItemListItemResourcePreviewCloudType",
           "traits": {
             "smithy.api#required": {}
           }
@@ -9106,7 +9420,7 @@
           }
         },
         "resource_type": {
-          "target": "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemVisibleItemsItemValueListItemResourcePreviewResourceType",
+          "target": "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItemListItemResourcePreviewResourceType",
           "traits": {
             "smithy.api#required": {}
           }
@@ -9119,7 +9433,7 @@
         }
       }
     },
-    "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemVisibleItemsItemValueListItem": {
+    "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItemListItem": {
       "type": "structure",
       "members": {
         "item_type": {
@@ -9129,36 +9443,50 @@
           "target": "smithy.api#String"
         },
         "resource_preview": {
-          "target": "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemVisibleItemsItemValueListItemResourcePreview"
+          "target": "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItemListItemResourcePreview"
         }
       }
     },
-    "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemVisibleItemsItemValueListList": {
+    "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItemListList": {
       "type": "list",
       "member": {
-        "target": "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemVisibleItemsItemValueListItem"
+        "target": "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItemListItem"
+      }
+    },
+    "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItem": {
+      "type": "structure",
+      "members": {
+        "item_type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "list": {
+          "target": "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItemListList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
       }
     },
     "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemVisibleItemsItemValue": {
-      "type": "structure",
+      "type": "union",
       "members": {
-        "item_type": {
-          "target": "smithy.api#String"
+        "McnStringItem": {
+          "target": "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnStringItem"
         },
-        "string": {
-          "target": "smithy.api#String"
+        "McnYamlItem": {
+          "target": "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnYamlItem"
         },
-        "yaml": {
-          "target": "smithy.api#String"
+        "McnYamlDiffItem": {
+          "target": "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnYamlDiffItem"
         },
-        "yaml_diff": {
-          "target": "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemVisibleItemsItemValueYamlDiff"
+        "McnResourcePreviewItem": {
+          "target": "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnResourcePreviewItem"
         },
-        "resource_preview": {
-          "target": "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemVisibleItemsItemValueResourcePreview"
-        },
-        "list": {
-          "target": "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemVisibleItemsItemValueListList"
+        "McnListItem": {
+          "target": "com.cloudflare.magic_cloud_networking#ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItem"
         }
       }
     },

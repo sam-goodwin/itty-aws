@@ -129,27 +129,72 @@ export const EntitlementsGetResponseCnameSetupAllowed = /*@__PURE__*/ S.suspend(
   identifier: "EntitlementsGetResponseCnameSetupAllowed",
 }) as any as S.Schema<EntitlementsGetResponseCnameSetupAllowed>;
 
-export type EntitlementsGetResponseCustomEntitlementsItemAllocationType =
-  | "max_count"
-  | (string & {});
-export const EntitlementsGetResponseCustomEntitlementsItemAllocationType =
+export type EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPIMaxCountAllocationType =
+  "max_count" | (string & {});
+export const EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPIMaxCountAllocationType =
   /*@__PURE__*/ S.String;
 
-export interface EntitlementsGetResponseCustomEntitlementsItemAllocation {
-  type?: EntitlementsGetResponseCustomEntitlementsItemAllocationType;
-  value?: number;
+export interface EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPIMaxCountAllocation {
+  type: EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPIMaxCountAllocationType;
+  value: number;
 }
-export const EntitlementsGetResponseCustomEntitlementsItemAllocation =
+export const EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPIMaxCountAllocation =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      type: S.optional(
-        EntitlementsGetResponseCustomEntitlementsItemAllocationType,
-      ),
-      value: S.optional(S.Number),
+      type: EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPIMaxCountAllocationType,
+      value: S.Number,
     }),
   ).annotate({
-    identifier: "EntitlementsGetResponseCustomEntitlementsItemAllocation",
-  }) as any as S.Schema<EntitlementsGetResponseCustomEntitlementsItemAllocation>;
+    identifier:
+      "EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPIMaxCountAllocation",
+  }) as any as S.Schema<EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPIMaxCountAllocation>;
+
+export type EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPIBoolAllocationType =
+  "bool" | (string & {});
+export const EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPIBoolAllocationType =
+  /*@__PURE__*/ S.String;
+
+export interface EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPIBoolAllocation {
+  type: EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPIBoolAllocationType;
+  value: boolean;
+}
+export const EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPIBoolAllocation =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPIBoolAllocationType,
+      value: S.Boolean,
+    }),
+  ).annotate({
+    identifier:
+      "EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPIBoolAllocation",
+  }) as any as S.Schema<EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPIBoolAllocation>;
+
+export type EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPINullAllocationType =
+  "" | (string & {});
+export const EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPINullAllocationType =
+  /*@__PURE__*/ S.String;
+
+export interface EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPINullAllocation {
+  type: EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPINullAllocationType;
+  value?: unknown;
+}
+export const EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPINullAllocation =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPINullAllocationType,
+      value: S.optional(S.Unknown),
+    }),
+  ).annotate({
+    identifier:
+      "EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPINullAllocation",
+  }) as any as S.Schema<EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPINullAllocation>;
+
+export type EntitlementsGetResponseCustomEntitlementsItemAllocation =
+  | EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPIMaxCountAllocation
+  | EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPIBoolAllocation
+  | EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPINullAllocation;
+export const EntitlementsGetResponseCustomEntitlementsItemAllocation =
+  /*@__PURE__*/ S.Unknown;
 
 export interface EntitlementsGetResponseCustomEntitlementsItemFeature {
   key: string;

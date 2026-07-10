@@ -470,7 +470,7 @@ export type OperationsBulkCreateResultItemMethod =
   | (string & {});
 export const OperationsBulkCreateResultItemMethod = /*@__PURE__*/ S.String;
 
-export interface OperationsBulkCreateResultItemFeaturesThresholds {
+export interface OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureThresholdsThresholds {
   /** The total number of auth-ids seen across this calculation. */
   authIdTokens?: number;
   /** The number of data points used for the threshold suggestion calculation. */
@@ -489,7 +489,7 @@ export interface OperationsBulkCreateResultItemFeaturesThresholds {
   /** The suggested threshold in requests done by the same auth_id or period_seconds. */
   suggestedThreshold?: number;
 }
-export const OperationsBulkCreateResultItemFeaturesThresholds =
+export const OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureThresholdsThresholds =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       authIdTokens: S.optional(S.Number.pipe(T.Body("auth_id_tokens"))),
@@ -505,76 +505,128 @@ export const OperationsBulkCreateResultItemFeaturesThresholds =
       ),
     }),
   ).annotate({
-    identifier: "OperationsBulkCreateResultItemFeaturesThresholds",
-  }) as any as S.Schema<OperationsBulkCreateResultItemFeaturesThresholds>;
+    identifier:
+      "OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureThresholdsThresholds",
+  }) as any as S.Schema<OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureThresholdsThresholds>;
 
-export type OperationsBulkCreateResultItemFeaturesParameterSchemasParameterSchemasParametersList =
+export interface OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureThresholds {
+  thresholds?: OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureThresholdsThresholds;
+}
+export const OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureThresholds =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      thresholds: S.optional(
+        OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureThresholdsThresholds,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureThresholds",
+  }) as any as S.Schema<OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureThresholds>;
+
+export type OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemasParametersList =
   unknown[];
-export const OperationsBulkCreateResultItemFeaturesParameterSchemasParameterSchemasParametersList =
+export const OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemasParametersList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
-  ) as any as S.Schema<OperationsBulkCreateResultItemFeaturesParameterSchemasParameterSchemasParametersList>;
+  ) as any as S.Schema<OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemasParametersList>;
 
-export interface OperationsBulkCreateResultItemFeaturesParameterSchemasParameterSchemas {
+export interface OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas {
   /** An array containing the learned parameter schemas. */
-  parameters?: OperationsBulkCreateResultItemFeaturesParameterSchemasParameterSchemasParametersList;
+  parameters?: OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemasParametersList;
   /** An empty response object. This field is required to yield a valid operation schema. */
   responses?: unknown;
 }
-export const OperationsBulkCreateResultItemFeaturesParameterSchemasParameterSchemas =
+export const OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       parameters: S.optional(
-        OperationsBulkCreateResultItemFeaturesParameterSchemasParameterSchemasParametersList,
+        OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemasParametersList,
       ),
       responses: S.optional(S.Unknown),
     }),
   ).annotate({
     identifier:
-      "OperationsBulkCreateResultItemFeaturesParameterSchemasParameterSchemas",
-  }) as any as S.Schema<OperationsBulkCreateResultItemFeaturesParameterSchemasParameterSchemas>;
+      "OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas",
+  }) as any as S.Schema<OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas>;
 
-export interface OperationsBulkCreateResultItemFeaturesParameterSchemas {
+export interface OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemas {
   lastUpdated?: string;
   /** An operation schema object containing a response. */
-  parameterSchemas?: OperationsBulkCreateResultItemFeaturesParameterSchemasParameterSchemas;
+  parameterSchemas?: OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas;
 }
-export const OperationsBulkCreateResultItemFeaturesParameterSchemas =
+export const OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemas =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       lastUpdated: S.optional(S.String.pipe(T.Body("last_updated"))),
       parameterSchemas: S.optional(
-        OperationsBulkCreateResultItemFeaturesParameterSchemasParameterSchemas.pipe(
+        OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas.pipe(
           T.Body("parameter_schemas"),
         ),
       ),
     }),
   ).annotate({
-    identifier: "OperationsBulkCreateResultItemFeaturesParameterSchemas",
-  }) as any as S.Schema<OperationsBulkCreateResultItemFeaturesParameterSchemas>;
+    identifier:
+      "OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemas",
+  }) as any as S.Schema<OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemas>;
 
-export interface OperationsBulkCreateResultItemFeaturesApiRouting {
+export interface OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureParameterSchemas {
+  parameterSchemas: OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemas;
+}
+export const OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureParameterSchemas =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parameterSchemas:
+        OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemas.pipe(
+          T.Body("parameter_schemas"),
+        ),
+    }),
+  ).annotate({
+    identifier:
+      "OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureParameterSchemas",
+  }) as any as S.Schema<OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureParameterSchemas>;
+
+export interface OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureAPIRoutingApiRouting {
   lastUpdated?: string;
   /** Target route. */
   route?: string;
 }
-export const OperationsBulkCreateResultItemFeaturesApiRouting =
+export const OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureAPIRoutingApiRouting =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       lastUpdated: S.optional(S.String.pipe(T.Body("last_updated"))),
       route: S.optional(S.String),
     }),
   ).annotate({
-    identifier: "OperationsBulkCreateResultItemFeaturesApiRouting",
-  }) as any as S.Schema<OperationsBulkCreateResultItemFeaturesApiRouting>;
+    identifier:
+      "OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureAPIRoutingApiRouting",
+  }) as any as S.Schema<OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureAPIRoutingApiRouting>;
 
-export interface OperationsBulkCreateResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90 {
+export interface OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureAPIRouting {
+  /** API Routing settings on endpoint. */
+  apiRouting?: OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureAPIRoutingApiRouting;
+}
+export const OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureAPIRouting =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      apiRouting: S.optional(
+        OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureAPIRoutingApiRouting.pipe(
+          T.Body("api_routing"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureAPIRouting",
+  }) as any as S.Schema<OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureAPIRouting>;
+
+export interface OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90 {
   /** Lower bound for percentile estimate */
   lower?: number;
   /** Upper bound for percentile estimate */
   upper?: number;
 }
-export const OperationsBulkCreateResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90 =
+export const OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       lower: S.optional(S.Number),
@@ -582,16 +634,16 @@ export const OperationsBulkCreateResultItemFeaturesConfidenceIntervalsSuggestedT
     }),
   ).annotate({
     identifier:
-      "OperationsBulkCreateResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90",
-  }) as any as S.Schema<OperationsBulkCreateResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90>;
+      "OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90",
+  }) as any as S.Schema<OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90>;
 
-export interface OperationsBulkCreateResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95 {
+export interface OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95 {
   /** Lower bound for percentile estimate */
   lower?: number;
   /** Upper bound for percentile estimate */
   upper?: number;
 }
-export const OperationsBulkCreateResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95 =
+export const OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       lower: S.optional(S.Number),
@@ -599,16 +651,16 @@ export const OperationsBulkCreateResultItemFeaturesConfidenceIntervalsSuggestedT
     }),
   ).annotate({
     identifier:
-      "OperationsBulkCreateResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95",
-  }) as any as S.Schema<OperationsBulkCreateResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95>;
+      "OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95",
+  }) as any as S.Schema<OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95>;
 
-export interface OperationsBulkCreateResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99 {
+export interface OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99 {
   /** Lower bound for percentile estimate */
   lower?: number;
   /** Upper bound for percentile estimate */
   upper?: number;
 }
-export const OperationsBulkCreateResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99 =
+export const OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       lower: S.optional(S.Number),
@@ -616,45 +668,45 @@ export const OperationsBulkCreateResultItemFeaturesConfidenceIntervalsSuggestedT
     }),
   ).annotate({
     identifier:
-      "OperationsBulkCreateResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99",
-  }) as any as S.Schema<OperationsBulkCreateResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99>;
+      "OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99",
+  }) as any as S.Schema<OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99>;
 
-export interface OperationsBulkCreateResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervals {
+export interface OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervals {
   /** Upper and lower bound for percentile estimate */
-  p90?: OperationsBulkCreateResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90;
+  p90?: OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90;
   /** Upper and lower bound for percentile estimate */
-  p95?: OperationsBulkCreateResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95;
+  p95?: OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95;
   /** Upper and lower bound for percentile estimate */
-  p99?: OperationsBulkCreateResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99;
+  p99?: OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99;
 }
-export const OperationsBulkCreateResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervals =
+export const OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervals =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       p90: S.optional(
-        OperationsBulkCreateResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90,
+        OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90,
       ),
       p95: S.optional(
-        OperationsBulkCreateResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95,
+        OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95,
       ),
       p99: S.optional(
-        OperationsBulkCreateResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99,
+        OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99,
       ),
     }),
   ).annotate({
     identifier:
-      "OperationsBulkCreateResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervals",
-  }) as any as S.Schema<OperationsBulkCreateResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervals>;
+      "OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervals",
+  }) as any as S.Schema<OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervals>;
 
-export interface OperationsBulkCreateResultItemFeaturesConfidenceIntervalsSuggestedThreshold {
-  confidenceIntervals?: OperationsBulkCreateResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervals;
+export interface OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThreshold {
+  confidenceIntervals?: OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervals;
   /** Suggested threshold. */
   mean?: number;
 }
-export const OperationsBulkCreateResultItemFeaturesConfidenceIntervalsSuggestedThreshold =
+export const OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThreshold =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       confidenceIntervals: S.optional(
-        OperationsBulkCreateResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervals.pipe(
+        OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervals.pipe(
           T.Body("confidence_intervals"),
         ),
       ),
@@ -662,28 +714,46 @@ export const OperationsBulkCreateResultItemFeaturesConfidenceIntervalsSuggestedT
     }),
   ).annotate({
     identifier:
-      "OperationsBulkCreateResultItemFeaturesConfidenceIntervalsSuggestedThreshold",
-  }) as any as S.Schema<OperationsBulkCreateResultItemFeaturesConfidenceIntervalsSuggestedThreshold>;
+      "OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThreshold",
+  }) as any as S.Schema<OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThreshold>;
 
-export interface OperationsBulkCreateResultItemFeaturesConfidenceIntervals {
+export interface OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervals {
   lastUpdated?: string;
-  suggestedThreshold?: OperationsBulkCreateResultItemFeaturesConfidenceIntervalsSuggestedThreshold;
+  suggestedThreshold?: OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThreshold;
 }
-export const OperationsBulkCreateResultItemFeaturesConfidenceIntervals =
+export const OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervals =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       lastUpdated: S.optional(S.String.pipe(T.Body("last_updated"))),
       suggestedThreshold: S.optional(
-        OperationsBulkCreateResultItemFeaturesConfidenceIntervalsSuggestedThreshold.pipe(
+        OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThreshold.pipe(
           T.Body("suggested_threshold"),
         ),
       ),
     }),
   ).annotate({
-    identifier: "OperationsBulkCreateResultItemFeaturesConfidenceIntervals",
-  }) as any as S.Schema<OperationsBulkCreateResultItemFeaturesConfidenceIntervals>;
+    identifier:
+      "OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervals",
+  }) as any as S.Schema<OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervals>;
 
-export interface OperationsBulkCreateResultItemFeaturesSchemaInfoActiveSchema {
+export interface OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervals {
+  confidenceIntervals?: OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervals;
+}
+export const OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervals =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      confidenceIntervals: S.optional(
+        OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervals.pipe(
+          T.Body("confidence_intervals"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervals",
+  }) as any as S.Schema<OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervals>;
+
+export interface OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoActiveSchema {
   /** UUID. */
   id?: string;
   createdAt?: string;
@@ -692,7 +762,7 @@ export interface OperationsBulkCreateResultItemFeaturesSchemaInfoActiveSchema {
   /** Schema file name. */
   name?: string;
 }
-export const OperationsBulkCreateResultItemFeaturesSchemaInfoActiveSchema =
+export const OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoActiveSchema =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.optional(S.String),
@@ -701,80 +771,67 @@ export const OperationsBulkCreateResultItemFeaturesSchemaInfoActiveSchema =
       name: S.optional(S.String),
     }),
   ).annotate({
-    identifier: "OperationsBulkCreateResultItemFeaturesSchemaInfoActiveSchema",
-  }) as any as S.Schema<OperationsBulkCreateResultItemFeaturesSchemaInfoActiveSchema>;
+    identifier:
+      "OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoActiveSchema",
+  }) as any as S.Schema<OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoActiveSchema>;
 
-export type OperationsBulkCreateResultItemFeaturesSchemaInfoMitigationAction =
-  | "none"
-  | "log"
-  | "block"
-  | (string & {});
-export const OperationsBulkCreateResultItemFeaturesSchemaInfoMitigationAction =
+export type OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoMitigationAction =
+  "none" | "log" | "block" | (string & {});
+export const OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoMitigationAction =
   /*@__PURE__*/ S.String;
 
-export interface OperationsBulkCreateResultItemFeaturesSchemaInfo {
+export interface OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfo {
   /** Schema active on endpoint. */
-  activeSchema?: OperationsBulkCreateResultItemFeaturesSchemaInfoActiveSchema;
+  activeSchema?: OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoActiveSchema;
   /** True if a Cloudflare-provided learned schema is available for this endpoint. */
   learnedAvailable?: boolean;
   /** Action taken on requests failing validation. */
-  mitigationAction?: OperationsBulkCreateResultItemFeaturesSchemaInfoMitigationAction;
+  mitigationAction?: OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoMitigationAction;
 }
-export const OperationsBulkCreateResultItemFeaturesSchemaInfo =
+export const OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfo =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       activeSchema: S.optional(
-        OperationsBulkCreateResultItemFeaturesSchemaInfoActiveSchema.pipe(
+        OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoActiveSchema.pipe(
           T.Body("active_schema"),
         ),
       ),
       learnedAvailable: S.optional(S.Boolean.pipe(T.Body("learned_available"))),
       mitigationAction: S.optional(
-        OperationsBulkCreateResultItemFeaturesSchemaInfoMitigationAction.pipe(
+        OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoMitigationAction.pipe(
           T.Body("mitigation_action"),
         ),
       ),
     }),
   ).annotate({
-    identifier: "OperationsBulkCreateResultItemFeaturesSchemaInfo",
-  }) as any as S.Schema<OperationsBulkCreateResultItemFeaturesSchemaInfo>;
+    identifier:
+      "OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfo",
+  }) as any as S.Schema<OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfo>;
 
-export interface OperationsBulkCreateResultItemFeatures {
-  thresholds?: OperationsBulkCreateResultItemFeaturesThresholds;
-  parameterSchemas?: OperationsBulkCreateResultItemFeaturesParameterSchemas;
-  /** API Routing settings on endpoint. */
-  apiRouting?: OperationsBulkCreateResultItemFeaturesApiRouting;
-  confidenceIntervals?: OperationsBulkCreateResultItemFeaturesConfidenceIntervals;
-  schemaInfo?: OperationsBulkCreateResultItemFeaturesSchemaInfo;
+export interface OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureSchemaInfo {
+  schemaInfo?: OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfo;
 }
-export const OperationsBulkCreateResultItemFeatures = /*@__PURE__*/ S.suspend(
-  () =>
+export const OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureSchemaInfo =
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      thresholds: S.optional(OperationsBulkCreateResultItemFeaturesThresholds),
-      parameterSchemas: S.optional(
-        OperationsBulkCreateResultItemFeaturesParameterSchemas.pipe(
-          T.Body("parameter_schemas"),
-        ),
-      ),
-      apiRouting: S.optional(
-        OperationsBulkCreateResultItemFeaturesApiRouting.pipe(
-          T.Body("api_routing"),
-        ),
-      ),
-      confidenceIntervals: S.optional(
-        OperationsBulkCreateResultItemFeaturesConfidenceIntervals.pipe(
-          T.Body("confidence_intervals"),
-        ),
-      ),
       schemaInfo: S.optional(
-        OperationsBulkCreateResultItemFeaturesSchemaInfo.pipe(
+        OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfo.pipe(
           T.Body("schema_info"),
         ),
       ),
     }),
-).annotate({
-  identifier: "OperationsBulkCreateResultItemFeatures",
-}) as any as S.Schema<OperationsBulkCreateResultItemFeatures>;
+  ).annotate({
+    identifier:
+      "OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureSchemaInfo",
+  }) as any as S.Schema<OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureSchemaInfo>;
+
+export type OperationsBulkCreateResultItemFeatures =
+  | OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureThresholds
+  | OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureParameterSchemas
+  | OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureAPIRouting
+  | OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervals
+  | OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureSchemaInfo;
+export const OperationsBulkCreateResultItemFeatures = /*@__PURE__*/ S.Unknown;
 
 export interface OperationsBulkCreateResultItem {
   /** The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with {varN}, starting with {var1}, during insertion. This will further be Cloudflare-normalized upon insertion. See: https://developers.cloudflare.com/rules/normalization/how-it-works/. */
@@ -1366,7 +1423,7 @@ export type OperationsCreateResponseMethod =
   | (string & {});
 export const OperationsCreateResponseMethod = /*@__PURE__*/ S.String;
 
-export interface OperationsCreateResponseFeaturesThresholds {
+export interface OperationsCreateResponseFeaturesAPIShieldOperationFeatureThresholdsThresholds {
   /** The total number of auth-ids seen across this calculation. */
   authIdTokens?: number;
   /** The number of data points used for the threshold suggestion calculation. */
@@ -1385,7 +1442,7 @@ export interface OperationsCreateResponseFeaturesThresholds {
   /** The suggested threshold in requests done by the same auth_id or period_seconds. */
   suggestedThreshold?: number;
 }
-export const OperationsCreateResponseFeaturesThresholds =
+export const OperationsCreateResponseFeaturesAPIShieldOperationFeatureThresholdsThresholds =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       authIdTokens: S.optional(S.Number.pipe(T.Body("auth_id_tokens"))),
@@ -1401,76 +1458,128 @@ export const OperationsCreateResponseFeaturesThresholds =
       ),
     }),
   ).annotate({
-    identifier: "OperationsCreateResponseFeaturesThresholds",
-  }) as any as S.Schema<OperationsCreateResponseFeaturesThresholds>;
+    identifier:
+      "OperationsCreateResponseFeaturesAPIShieldOperationFeatureThresholdsThresholds",
+  }) as any as S.Schema<OperationsCreateResponseFeaturesAPIShieldOperationFeatureThresholdsThresholds>;
 
-export type OperationsCreateResponseFeaturesParameterSchemasParameterSchemasParametersList =
+export interface OperationsCreateResponseFeaturesAPIShieldOperationFeatureThresholds {
+  thresholds?: OperationsCreateResponseFeaturesAPIShieldOperationFeatureThresholdsThresholds;
+}
+export const OperationsCreateResponseFeaturesAPIShieldOperationFeatureThresholds =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      thresholds: S.optional(
+        OperationsCreateResponseFeaturesAPIShieldOperationFeatureThresholdsThresholds,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "OperationsCreateResponseFeaturesAPIShieldOperationFeatureThresholds",
+  }) as any as S.Schema<OperationsCreateResponseFeaturesAPIShieldOperationFeatureThresholds>;
+
+export type OperationsCreateResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemasParametersList =
   unknown[];
-export const OperationsCreateResponseFeaturesParameterSchemasParameterSchemasParametersList =
+export const OperationsCreateResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemasParametersList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
-  ) as any as S.Schema<OperationsCreateResponseFeaturesParameterSchemasParameterSchemasParametersList>;
+  ) as any as S.Schema<OperationsCreateResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemasParametersList>;
 
-export interface OperationsCreateResponseFeaturesParameterSchemasParameterSchemas {
+export interface OperationsCreateResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas {
   /** An array containing the learned parameter schemas. */
-  parameters?: OperationsCreateResponseFeaturesParameterSchemasParameterSchemasParametersList;
+  parameters?: OperationsCreateResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemasParametersList;
   /** An empty response object. This field is required to yield a valid operation schema. */
   responses?: unknown;
 }
-export const OperationsCreateResponseFeaturesParameterSchemasParameterSchemas =
+export const OperationsCreateResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       parameters: S.optional(
-        OperationsCreateResponseFeaturesParameterSchemasParameterSchemasParametersList,
+        OperationsCreateResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemasParametersList,
       ),
       responses: S.optional(S.Unknown),
     }),
   ).annotate({
     identifier:
-      "OperationsCreateResponseFeaturesParameterSchemasParameterSchemas",
-  }) as any as S.Schema<OperationsCreateResponseFeaturesParameterSchemasParameterSchemas>;
+      "OperationsCreateResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas",
+  }) as any as S.Schema<OperationsCreateResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas>;
 
-export interface OperationsCreateResponseFeaturesParameterSchemas {
+export interface OperationsCreateResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemas {
   lastUpdated?: string;
   /** An operation schema object containing a response. */
-  parameterSchemas?: OperationsCreateResponseFeaturesParameterSchemasParameterSchemas;
+  parameterSchemas?: OperationsCreateResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas;
 }
-export const OperationsCreateResponseFeaturesParameterSchemas =
+export const OperationsCreateResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemas =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       lastUpdated: S.optional(S.String.pipe(T.Body("last_updated"))),
       parameterSchemas: S.optional(
-        OperationsCreateResponseFeaturesParameterSchemasParameterSchemas.pipe(
+        OperationsCreateResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas.pipe(
           T.Body("parameter_schemas"),
         ),
       ),
     }),
   ).annotate({
-    identifier: "OperationsCreateResponseFeaturesParameterSchemas",
-  }) as any as S.Schema<OperationsCreateResponseFeaturesParameterSchemas>;
+    identifier:
+      "OperationsCreateResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemas",
+  }) as any as S.Schema<OperationsCreateResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemas>;
 
-export interface OperationsCreateResponseFeaturesApiRouting {
+export interface OperationsCreateResponseFeaturesAPIShieldOperationFeatureParameterSchemas {
+  parameterSchemas: OperationsCreateResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemas;
+}
+export const OperationsCreateResponseFeaturesAPIShieldOperationFeatureParameterSchemas =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parameterSchemas:
+        OperationsCreateResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemas.pipe(
+          T.Body("parameter_schemas"),
+        ),
+    }),
+  ).annotate({
+    identifier:
+      "OperationsCreateResponseFeaturesAPIShieldOperationFeatureParameterSchemas",
+  }) as any as S.Schema<OperationsCreateResponseFeaturesAPIShieldOperationFeatureParameterSchemas>;
+
+export interface OperationsCreateResponseFeaturesAPIShieldOperationFeatureAPIRoutingApiRouting {
   lastUpdated?: string;
   /** Target route. */
   route?: string;
 }
-export const OperationsCreateResponseFeaturesApiRouting =
+export const OperationsCreateResponseFeaturesAPIShieldOperationFeatureAPIRoutingApiRouting =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       lastUpdated: S.optional(S.String.pipe(T.Body("last_updated"))),
       route: S.optional(S.String),
     }),
   ).annotate({
-    identifier: "OperationsCreateResponseFeaturesApiRouting",
-  }) as any as S.Schema<OperationsCreateResponseFeaturesApiRouting>;
+    identifier:
+      "OperationsCreateResponseFeaturesAPIShieldOperationFeatureAPIRoutingApiRouting",
+  }) as any as S.Schema<OperationsCreateResponseFeaturesAPIShieldOperationFeatureAPIRoutingApiRouting>;
 
-export interface OperationsCreateResponseFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90 {
+export interface OperationsCreateResponseFeaturesAPIShieldOperationFeatureAPIRouting {
+  /** API Routing settings on endpoint. */
+  apiRouting?: OperationsCreateResponseFeaturesAPIShieldOperationFeatureAPIRoutingApiRouting;
+}
+export const OperationsCreateResponseFeaturesAPIShieldOperationFeatureAPIRouting =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      apiRouting: S.optional(
+        OperationsCreateResponseFeaturesAPIShieldOperationFeatureAPIRoutingApiRouting.pipe(
+          T.Body("api_routing"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "OperationsCreateResponseFeaturesAPIShieldOperationFeatureAPIRouting",
+  }) as any as S.Schema<OperationsCreateResponseFeaturesAPIShieldOperationFeatureAPIRouting>;
+
+export interface OperationsCreateResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90 {
   /** Lower bound for percentile estimate */
   lower?: number;
   /** Upper bound for percentile estimate */
   upper?: number;
 }
-export const OperationsCreateResponseFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90 =
+export const OperationsCreateResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       lower: S.optional(S.Number),
@@ -1478,16 +1587,16 @@ export const OperationsCreateResponseFeaturesConfidenceIntervalsSuggestedThresho
     }),
   ).annotate({
     identifier:
-      "OperationsCreateResponseFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90",
-  }) as any as S.Schema<OperationsCreateResponseFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90>;
+      "OperationsCreateResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90",
+  }) as any as S.Schema<OperationsCreateResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90>;
 
-export interface OperationsCreateResponseFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95 {
+export interface OperationsCreateResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95 {
   /** Lower bound for percentile estimate */
   lower?: number;
   /** Upper bound for percentile estimate */
   upper?: number;
 }
-export const OperationsCreateResponseFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95 =
+export const OperationsCreateResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       lower: S.optional(S.Number),
@@ -1495,16 +1604,16 @@ export const OperationsCreateResponseFeaturesConfidenceIntervalsSuggestedThresho
     }),
   ).annotate({
     identifier:
-      "OperationsCreateResponseFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95",
-  }) as any as S.Schema<OperationsCreateResponseFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95>;
+      "OperationsCreateResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95",
+  }) as any as S.Schema<OperationsCreateResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95>;
 
-export interface OperationsCreateResponseFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99 {
+export interface OperationsCreateResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99 {
   /** Lower bound for percentile estimate */
   lower?: number;
   /** Upper bound for percentile estimate */
   upper?: number;
 }
-export const OperationsCreateResponseFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99 =
+export const OperationsCreateResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       lower: S.optional(S.Number),
@@ -1512,45 +1621,45 @@ export const OperationsCreateResponseFeaturesConfidenceIntervalsSuggestedThresho
     }),
   ).annotate({
     identifier:
-      "OperationsCreateResponseFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99",
-  }) as any as S.Schema<OperationsCreateResponseFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99>;
+      "OperationsCreateResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99",
+  }) as any as S.Schema<OperationsCreateResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99>;
 
-export interface OperationsCreateResponseFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervals {
+export interface OperationsCreateResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervals {
   /** Upper and lower bound for percentile estimate */
-  p90?: OperationsCreateResponseFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90;
+  p90?: OperationsCreateResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90;
   /** Upper and lower bound for percentile estimate */
-  p95?: OperationsCreateResponseFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95;
+  p95?: OperationsCreateResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95;
   /** Upper and lower bound for percentile estimate */
-  p99?: OperationsCreateResponseFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99;
+  p99?: OperationsCreateResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99;
 }
-export const OperationsCreateResponseFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervals =
+export const OperationsCreateResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervals =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       p90: S.optional(
-        OperationsCreateResponseFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90,
+        OperationsCreateResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90,
       ),
       p95: S.optional(
-        OperationsCreateResponseFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95,
+        OperationsCreateResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95,
       ),
       p99: S.optional(
-        OperationsCreateResponseFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99,
+        OperationsCreateResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99,
       ),
     }),
   ).annotate({
     identifier:
-      "OperationsCreateResponseFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervals",
-  }) as any as S.Schema<OperationsCreateResponseFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervals>;
+      "OperationsCreateResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervals",
+  }) as any as S.Schema<OperationsCreateResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervals>;
 
-export interface OperationsCreateResponseFeaturesConfidenceIntervalsSuggestedThreshold {
-  confidenceIntervals?: OperationsCreateResponseFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervals;
+export interface OperationsCreateResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThreshold {
+  confidenceIntervals?: OperationsCreateResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervals;
   /** Suggested threshold. */
   mean?: number;
 }
-export const OperationsCreateResponseFeaturesConfidenceIntervalsSuggestedThreshold =
+export const OperationsCreateResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThreshold =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       confidenceIntervals: S.optional(
-        OperationsCreateResponseFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervals.pipe(
+        OperationsCreateResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervals.pipe(
           T.Body("confidence_intervals"),
         ),
       ),
@@ -1558,28 +1667,46 @@ export const OperationsCreateResponseFeaturesConfidenceIntervalsSuggestedThresho
     }),
   ).annotate({
     identifier:
-      "OperationsCreateResponseFeaturesConfidenceIntervalsSuggestedThreshold",
-  }) as any as S.Schema<OperationsCreateResponseFeaturesConfidenceIntervalsSuggestedThreshold>;
+      "OperationsCreateResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThreshold",
+  }) as any as S.Schema<OperationsCreateResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThreshold>;
 
-export interface OperationsCreateResponseFeaturesConfidenceIntervals {
+export interface OperationsCreateResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervals {
   lastUpdated?: string;
-  suggestedThreshold?: OperationsCreateResponseFeaturesConfidenceIntervalsSuggestedThreshold;
+  suggestedThreshold?: OperationsCreateResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThreshold;
 }
-export const OperationsCreateResponseFeaturesConfidenceIntervals =
+export const OperationsCreateResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervals =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       lastUpdated: S.optional(S.String.pipe(T.Body("last_updated"))),
       suggestedThreshold: S.optional(
-        OperationsCreateResponseFeaturesConfidenceIntervalsSuggestedThreshold.pipe(
+        OperationsCreateResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThreshold.pipe(
           T.Body("suggested_threshold"),
         ),
       ),
     }),
   ).annotate({
-    identifier: "OperationsCreateResponseFeaturesConfidenceIntervals",
-  }) as any as S.Schema<OperationsCreateResponseFeaturesConfidenceIntervals>;
+    identifier:
+      "OperationsCreateResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervals",
+  }) as any as S.Schema<OperationsCreateResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervals>;
 
-export interface OperationsCreateResponseFeaturesSchemaInfoActiveSchema {
+export interface OperationsCreateResponseFeaturesAPIShieldOperationFeatureConfidenceIntervals {
+  confidenceIntervals?: OperationsCreateResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervals;
+}
+export const OperationsCreateResponseFeaturesAPIShieldOperationFeatureConfidenceIntervals =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      confidenceIntervals: S.optional(
+        OperationsCreateResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervals.pipe(
+          T.Body("confidence_intervals"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "OperationsCreateResponseFeaturesAPIShieldOperationFeatureConfidenceIntervals",
+  }) as any as S.Schema<OperationsCreateResponseFeaturesAPIShieldOperationFeatureConfidenceIntervals>;
+
+export interface OperationsCreateResponseFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoActiveSchema {
   /** UUID. */
   id?: string;
   createdAt?: string;
@@ -1588,7 +1715,7 @@ export interface OperationsCreateResponseFeaturesSchemaInfoActiveSchema {
   /** Schema file name. */
   name?: string;
 }
-export const OperationsCreateResponseFeaturesSchemaInfoActiveSchema =
+export const OperationsCreateResponseFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoActiveSchema =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.optional(S.String),
@@ -1597,75 +1724,67 @@ export const OperationsCreateResponseFeaturesSchemaInfoActiveSchema =
       name: S.optional(S.String),
     }),
   ).annotate({
-    identifier: "OperationsCreateResponseFeaturesSchemaInfoActiveSchema",
-  }) as any as S.Schema<OperationsCreateResponseFeaturesSchemaInfoActiveSchema>;
+    identifier:
+      "OperationsCreateResponseFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoActiveSchema",
+  }) as any as S.Schema<OperationsCreateResponseFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoActiveSchema>;
 
-export type OperationsCreateResponseFeaturesSchemaInfoMitigationAction =
-  | "none"
-  | "log"
-  | "block"
-  | (string & {});
-export const OperationsCreateResponseFeaturesSchemaInfoMitigationAction =
+export type OperationsCreateResponseFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoMitigationAction =
+  "none" | "log" | "block" | (string & {});
+export const OperationsCreateResponseFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoMitigationAction =
   /*@__PURE__*/ S.String;
 
-export interface OperationsCreateResponseFeaturesSchemaInfo {
+export interface OperationsCreateResponseFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfo {
   /** Schema active on endpoint. */
-  activeSchema?: OperationsCreateResponseFeaturesSchemaInfoActiveSchema;
+  activeSchema?: OperationsCreateResponseFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoActiveSchema;
   /** True if a Cloudflare-provided learned schema is available for this endpoint. */
   learnedAvailable?: boolean;
   /** Action taken on requests failing validation. */
-  mitigationAction?: OperationsCreateResponseFeaturesSchemaInfoMitigationAction;
+  mitigationAction?: OperationsCreateResponseFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoMitigationAction;
 }
-export const OperationsCreateResponseFeaturesSchemaInfo =
+export const OperationsCreateResponseFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfo =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       activeSchema: S.optional(
-        OperationsCreateResponseFeaturesSchemaInfoActiveSchema.pipe(
+        OperationsCreateResponseFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoActiveSchema.pipe(
           T.Body("active_schema"),
         ),
       ),
       learnedAvailable: S.optional(S.Boolean.pipe(T.Body("learned_available"))),
       mitigationAction: S.optional(
-        OperationsCreateResponseFeaturesSchemaInfoMitigationAction.pipe(
+        OperationsCreateResponseFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoMitigationAction.pipe(
           T.Body("mitigation_action"),
         ),
       ),
     }),
   ).annotate({
-    identifier: "OperationsCreateResponseFeaturesSchemaInfo",
-  }) as any as S.Schema<OperationsCreateResponseFeaturesSchemaInfo>;
+    identifier:
+      "OperationsCreateResponseFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfo",
+  }) as any as S.Schema<OperationsCreateResponseFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfo>;
 
-export interface OperationsCreateResponseFeatures {
-  thresholds?: OperationsCreateResponseFeaturesThresholds;
-  parameterSchemas?: OperationsCreateResponseFeaturesParameterSchemas;
-  /** API Routing settings on endpoint. */
-  apiRouting?: OperationsCreateResponseFeaturesApiRouting;
-  confidenceIntervals?: OperationsCreateResponseFeaturesConfidenceIntervals;
-  schemaInfo?: OperationsCreateResponseFeaturesSchemaInfo;
+export interface OperationsCreateResponseFeaturesAPIShieldOperationFeatureSchemaInfo {
+  schemaInfo?: OperationsCreateResponseFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfo;
 }
-export const OperationsCreateResponseFeatures = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    thresholds: S.optional(OperationsCreateResponseFeaturesThresholds),
-    parameterSchemas: S.optional(
-      OperationsCreateResponseFeaturesParameterSchemas.pipe(
-        T.Body("parameter_schemas"),
+export const OperationsCreateResponseFeaturesAPIShieldOperationFeatureSchemaInfo =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      schemaInfo: S.optional(
+        OperationsCreateResponseFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfo.pipe(
+          T.Body("schema_info"),
+        ),
       ),
-    ),
-    apiRouting: S.optional(
-      OperationsCreateResponseFeaturesApiRouting.pipe(T.Body("api_routing")),
-    ),
-    confidenceIntervals: S.optional(
-      OperationsCreateResponseFeaturesConfidenceIntervals.pipe(
-        T.Body("confidence_intervals"),
-      ),
-    ),
-    schemaInfo: S.optional(
-      OperationsCreateResponseFeaturesSchemaInfo.pipe(T.Body("schema_info")),
-    ),
-  }),
-).annotate({
-  identifier: "OperationsCreateResponseFeatures",
-}) as any as S.Schema<OperationsCreateResponseFeatures>;
+    }),
+  ).annotate({
+    identifier:
+      "OperationsCreateResponseFeaturesAPIShieldOperationFeatureSchemaInfo",
+  }) as any as S.Schema<OperationsCreateResponseFeaturesAPIShieldOperationFeatureSchemaInfo>;
+
+export type OperationsCreateResponseFeatures =
+  | OperationsCreateResponseFeaturesAPIShieldOperationFeatureThresholds
+  | OperationsCreateResponseFeaturesAPIShieldOperationFeatureParameterSchemas
+  | OperationsCreateResponseFeaturesAPIShieldOperationFeatureAPIRouting
+  | OperationsCreateResponseFeaturesAPIShieldOperationFeatureConfidenceIntervals
+  | OperationsCreateResponseFeaturesAPIShieldOperationFeatureSchemaInfo;
+export const OperationsCreateResponseFeatures = /*@__PURE__*/ S.Unknown;
 
 export type OperationsCreateResponseSchemasLearnedParametersItemMap = {
   [key: string]: unknown | undefined;
@@ -2506,7 +2625,7 @@ export type OperationsGetResponseMethod =
   | (string & {});
 export const OperationsGetResponseMethod = /*@__PURE__*/ S.String;
 
-export interface OperationsGetResponseFeaturesThresholds {
+export interface OperationsGetResponseFeaturesAPIShieldOperationFeatureThresholdsThresholds {
   /** The total number of auth-ids seen across this calculation. */
   authIdTokens?: number;
   /** The number of data points used for the threshold suggestion calculation. */
@@ -2525,8 +2644,8 @@ export interface OperationsGetResponseFeaturesThresholds {
   /** The suggested threshold in requests done by the same auth_id or period_seconds. */
   suggestedThreshold?: number;
 }
-export const OperationsGetResponseFeaturesThresholds = /*@__PURE__*/ S.suspend(
-  () =>
+export const OperationsGetResponseFeaturesAPIShieldOperationFeatureThresholdsThresholds =
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       authIdTokens: S.optional(S.Number.pipe(T.Body("auth_id_tokens"))),
       dataPoints: S.optional(S.Number.pipe(T.Body("data_points"))),
@@ -2540,76 +2659,129 @@ export const OperationsGetResponseFeaturesThresholds = /*@__PURE__*/ S.suspend(
         S.Number.pipe(T.Body("suggested_threshold")),
       ),
     }),
-).annotate({
-  identifier: "OperationsGetResponseFeaturesThresholds",
-}) as any as S.Schema<OperationsGetResponseFeaturesThresholds>;
+  ).annotate({
+    identifier:
+      "OperationsGetResponseFeaturesAPIShieldOperationFeatureThresholdsThresholds",
+  }) as any as S.Schema<OperationsGetResponseFeaturesAPIShieldOperationFeatureThresholdsThresholds>;
 
-export type OperationsGetResponseFeaturesParameterSchemasParameterSchemasParametersList =
+export interface OperationsGetResponseFeaturesAPIShieldOperationFeatureThresholds {
+  thresholds?: OperationsGetResponseFeaturesAPIShieldOperationFeatureThresholdsThresholds;
+}
+export const OperationsGetResponseFeaturesAPIShieldOperationFeatureThresholds =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      thresholds: S.optional(
+        OperationsGetResponseFeaturesAPIShieldOperationFeatureThresholdsThresholds,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "OperationsGetResponseFeaturesAPIShieldOperationFeatureThresholds",
+  }) as any as S.Schema<OperationsGetResponseFeaturesAPIShieldOperationFeatureThresholds>;
+
+export type OperationsGetResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemasParametersList =
   unknown[];
-export const OperationsGetResponseFeaturesParameterSchemasParameterSchemasParametersList =
+export const OperationsGetResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemasParametersList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
-  ) as any as S.Schema<OperationsGetResponseFeaturesParameterSchemasParameterSchemasParametersList>;
+  ) as any as S.Schema<OperationsGetResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemasParametersList>;
 
-export interface OperationsGetResponseFeaturesParameterSchemasParameterSchemas {
+export interface OperationsGetResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas {
   /** An array containing the learned parameter schemas. */
-  parameters?: OperationsGetResponseFeaturesParameterSchemasParameterSchemasParametersList;
+  parameters?: OperationsGetResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemasParametersList;
   /** An empty response object. This field is required to yield a valid operation schema. */
   responses?: unknown;
 }
-export const OperationsGetResponseFeaturesParameterSchemasParameterSchemas =
+export const OperationsGetResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       parameters: S.optional(
-        OperationsGetResponseFeaturesParameterSchemasParameterSchemasParametersList,
+        OperationsGetResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemasParametersList,
       ),
       responses: S.optional(S.Unknown),
     }),
   ).annotate({
-    identifier: "OperationsGetResponseFeaturesParameterSchemasParameterSchemas",
-  }) as any as S.Schema<OperationsGetResponseFeaturesParameterSchemasParameterSchemas>;
+    identifier:
+      "OperationsGetResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas",
+  }) as any as S.Schema<OperationsGetResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas>;
 
-export interface OperationsGetResponseFeaturesParameterSchemas {
+export interface OperationsGetResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemas {
   lastUpdated?: string;
   /** An operation schema object containing a response. */
-  parameterSchemas?: OperationsGetResponseFeaturesParameterSchemasParameterSchemas;
+  parameterSchemas?: OperationsGetResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas;
 }
-export const OperationsGetResponseFeaturesParameterSchemas =
+export const OperationsGetResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemas =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       lastUpdated: S.optional(S.String.pipe(T.Body("last_updated"))),
       parameterSchemas: S.optional(
-        OperationsGetResponseFeaturesParameterSchemasParameterSchemas.pipe(
+        OperationsGetResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas.pipe(
           T.Body("parameter_schemas"),
         ),
       ),
     }),
   ).annotate({
-    identifier: "OperationsGetResponseFeaturesParameterSchemas",
-  }) as any as S.Schema<OperationsGetResponseFeaturesParameterSchemas>;
+    identifier:
+      "OperationsGetResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemas",
+  }) as any as S.Schema<OperationsGetResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemas>;
 
-export interface OperationsGetResponseFeaturesApiRouting {
+export interface OperationsGetResponseFeaturesAPIShieldOperationFeatureParameterSchemas {
+  parameterSchemas: OperationsGetResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemas;
+}
+export const OperationsGetResponseFeaturesAPIShieldOperationFeatureParameterSchemas =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parameterSchemas:
+        OperationsGetResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemas.pipe(
+          T.Body("parameter_schemas"),
+        ),
+    }),
+  ).annotate({
+    identifier:
+      "OperationsGetResponseFeaturesAPIShieldOperationFeatureParameterSchemas",
+  }) as any as S.Schema<OperationsGetResponseFeaturesAPIShieldOperationFeatureParameterSchemas>;
+
+export interface OperationsGetResponseFeaturesAPIShieldOperationFeatureAPIRoutingApiRouting {
   lastUpdated?: string;
   /** Target route. */
   route?: string;
 }
-export const OperationsGetResponseFeaturesApiRouting = /*@__PURE__*/ S.suspend(
-  () =>
+export const OperationsGetResponseFeaturesAPIShieldOperationFeatureAPIRoutingApiRouting =
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       lastUpdated: S.optional(S.String.pipe(T.Body("last_updated"))),
       route: S.optional(S.String),
     }),
-).annotate({
-  identifier: "OperationsGetResponseFeaturesApiRouting",
-}) as any as S.Schema<OperationsGetResponseFeaturesApiRouting>;
+  ).annotate({
+    identifier:
+      "OperationsGetResponseFeaturesAPIShieldOperationFeatureAPIRoutingApiRouting",
+  }) as any as S.Schema<OperationsGetResponseFeaturesAPIShieldOperationFeatureAPIRoutingApiRouting>;
 
-export interface OperationsGetResponseFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90 {
+export interface OperationsGetResponseFeaturesAPIShieldOperationFeatureAPIRouting {
+  /** API Routing settings on endpoint. */
+  apiRouting?: OperationsGetResponseFeaturesAPIShieldOperationFeatureAPIRoutingApiRouting;
+}
+export const OperationsGetResponseFeaturesAPIShieldOperationFeatureAPIRouting =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      apiRouting: S.optional(
+        OperationsGetResponseFeaturesAPIShieldOperationFeatureAPIRoutingApiRouting.pipe(
+          T.Body("api_routing"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "OperationsGetResponseFeaturesAPIShieldOperationFeatureAPIRouting",
+  }) as any as S.Schema<OperationsGetResponseFeaturesAPIShieldOperationFeatureAPIRouting>;
+
+export interface OperationsGetResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90 {
   /** Lower bound for percentile estimate */
   lower?: number;
   /** Upper bound for percentile estimate */
   upper?: number;
 }
-export const OperationsGetResponseFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90 =
+export const OperationsGetResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       lower: S.optional(S.Number),
@@ -2617,16 +2789,16 @@ export const OperationsGetResponseFeaturesConfidenceIntervalsSuggestedThresholdC
     }),
   ).annotate({
     identifier:
-      "OperationsGetResponseFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90",
-  }) as any as S.Schema<OperationsGetResponseFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90>;
+      "OperationsGetResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90",
+  }) as any as S.Schema<OperationsGetResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90>;
 
-export interface OperationsGetResponseFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95 {
+export interface OperationsGetResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95 {
   /** Lower bound for percentile estimate */
   lower?: number;
   /** Upper bound for percentile estimate */
   upper?: number;
 }
-export const OperationsGetResponseFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95 =
+export const OperationsGetResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       lower: S.optional(S.Number),
@@ -2634,16 +2806,16 @@ export const OperationsGetResponseFeaturesConfidenceIntervalsSuggestedThresholdC
     }),
   ).annotate({
     identifier:
-      "OperationsGetResponseFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95",
-  }) as any as S.Schema<OperationsGetResponseFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95>;
+      "OperationsGetResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95",
+  }) as any as S.Schema<OperationsGetResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95>;
 
-export interface OperationsGetResponseFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99 {
+export interface OperationsGetResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99 {
   /** Lower bound for percentile estimate */
   lower?: number;
   /** Upper bound for percentile estimate */
   upper?: number;
 }
-export const OperationsGetResponseFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99 =
+export const OperationsGetResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       lower: S.optional(S.Number),
@@ -2651,45 +2823,45 @@ export const OperationsGetResponseFeaturesConfidenceIntervalsSuggestedThresholdC
     }),
   ).annotate({
     identifier:
-      "OperationsGetResponseFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99",
-  }) as any as S.Schema<OperationsGetResponseFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99>;
+      "OperationsGetResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99",
+  }) as any as S.Schema<OperationsGetResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99>;
 
-export interface OperationsGetResponseFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervals {
+export interface OperationsGetResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervals {
   /** Upper and lower bound for percentile estimate */
-  p90?: OperationsGetResponseFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90;
+  p90?: OperationsGetResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90;
   /** Upper and lower bound for percentile estimate */
-  p95?: OperationsGetResponseFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95;
+  p95?: OperationsGetResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95;
   /** Upper and lower bound for percentile estimate */
-  p99?: OperationsGetResponseFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99;
+  p99?: OperationsGetResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99;
 }
-export const OperationsGetResponseFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervals =
+export const OperationsGetResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervals =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       p90: S.optional(
-        OperationsGetResponseFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90,
+        OperationsGetResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90,
       ),
       p95: S.optional(
-        OperationsGetResponseFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95,
+        OperationsGetResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95,
       ),
       p99: S.optional(
-        OperationsGetResponseFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99,
+        OperationsGetResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99,
       ),
     }),
   ).annotate({
     identifier:
-      "OperationsGetResponseFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervals",
-  }) as any as S.Schema<OperationsGetResponseFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervals>;
+      "OperationsGetResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervals",
+  }) as any as S.Schema<OperationsGetResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervals>;
 
-export interface OperationsGetResponseFeaturesConfidenceIntervalsSuggestedThreshold {
-  confidenceIntervals?: OperationsGetResponseFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervals;
+export interface OperationsGetResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThreshold {
+  confidenceIntervals?: OperationsGetResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervals;
   /** Suggested threshold. */
   mean?: number;
 }
-export const OperationsGetResponseFeaturesConfidenceIntervalsSuggestedThreshold =
+export const OperationsGetResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThreshold =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       confidenceIntervals: S.optional(
-        OperationsGetResponseFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervals.pipe(
+        OperationsGetResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervals.pipe(
           T.Body("confidence_intervals"),
         ),
       ),
@@ -2697,28 +2869,46 @@ export const OperationsGetResponseFeaturesConfidenceIntervalsSuggestedThreshold 
     }),
   ).annotate({
     identifier:
-      "OperationsGetResponseFeaturesConfidenceIntervalsSuggestedThreshold",
-  }) as any as S.Schema<OperationsGetResponseFeaturesConfidenceIntervalsSuggestedThreshold>;
+      "OperationsGetResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThreshold",
+  }) as any as S.Schema<OperationsGetResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThreshold>;
 
-export interface OperationsGetResponseFeaturesConfidenceIntervals {
+export interface OperationsGetResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervals {
   lastUpdated?: string;
-  suggestedThreshold?: OperationsGetResponseFeaturesConfidenceIntervalsSuggestedThreshold;
+  suggestedThreshold?: OperationsGetResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThreshold;
 }
-export const OperationsGetResponseFeaturesConfidenceIntervals =
+export const OperationsGetResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervals =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       lastUpdated: S.optional(S.String.pipe(T.Body("last_updated"))),
       suggestedThreshold: S.optional(
-        OperationsGetResponseFeaturesConfidenceIntervalsSuggestedThreshold.pipe(
+        OperationsGetResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThreshold.pipe(
           T.Body("suggested_threshold"),
         ),
       ),
     }),
   ).annotate({
-    identifier: "OperationsGetResponseFeaturesConfidenceIntervals",
-  }) as any as S.Schema<OperationsGetResponseFeaturesConfidenceIntervals>;
+    identifier:
+      "OperationsGetResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervals",
+  }) as any as S.Schema<OperationsGetResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervals>;
 
-export interface OperationsGetResponseFeaturesSchemaInfoActiveSchema {
+export interface OperationsGetResponseFeaturesAPIShieldOperationFeatureConfidenceIntervals {
+  confidenceIntervals?: OperationsGetResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervals;
+}
+export const OperationsGetResponseFeaturesAPIShieldOperationFeatureConfidenceIntervals =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      confidenceIntervals: S.optional(
+        OperationsGetResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervals.pipe(
+          T.Body("confidence_intervals"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "OperationsGetResponseFeaturesAPIShieldOperationFeatureConfidenceIntervals",
+  }) as any as S.Schema<OperationsGetResponseFeaturesAPIShieldOperationFeatureConfidenceIntervals>;
+
+export interface OperationsGetResponseFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoActiveSchema {
   /** UUID. */
   id?: string;
   createdAt?: string;
@@ -2727,7 +2917,7 @@ export interface OperationsGetResponseFeaturesSchemaInfoActiveSchema {
   /** Schema file name. */
   name?: string;
 }
-export const OperationsGetResponseFeaturesSchemaInfoActiveSchema =
+export const OperationsGetResponseFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoActiveSchema =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.optional(S.String),
@@ -2736,75 +2926,67 @@ export const OperationsGetResponseFeaturesSchemaInfoActiveSchema =
       name: S.optional(S.String),
     }),
   ).annotate({
-    identifier: "OperationsGetResponseFeaturesSchemaInfoActiveSchema",
-  }) as any as S.Schema<OperationsGetResponseFeaturesSchemaInfoActiveSchema>;
+    identifier:
+      "OperationsGetResponseFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoActiveSchema",
+  }) as any as S.Schema<OperationsGetResponseFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoActiveSchema>;
 
-export type OperationsGetResponseFeaturesSchemaInfoMitigationAction =
-  | "none"
-  | "log"
-  | "block"
-  | (string & {});
-export const OperationsGetResponseFeaturesSchemaInfoMitigationAction =
+export type OperationsGetResponseFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoMitigationAction =
+  "none" | "log" | "block" | (string & {});
+export const OperationsGetResponseFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoMitigationAction =
   /*@__PURE__*/ S.String;
 
-export interface OperationsGetResponseFeaturesSchemaInfo {
+export interface OperationsGetResponseFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfo {
   /** Schema active on endpoint. */
-  activeSchema?: OperationsGetResponseFeaturesSchemaInfoActiveSchema;
+  activeSchema?: OperationsGetResponseFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoActiveSchema;
   /** True if a Cloudflare-provided learned schema is available for this endpoint. */
   learnedAvailable?: boolean;
   /** Action taken on requests failing validation. */
-  mitigationAction?: OperationsGetResponseFeaturesSchemaInfoMitigationAction;
+  mitigationAction?: OperationsGetResponseFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoMitigationAction;
 }
-export const OperationsGetResponseFeaturesSchemaInfo = /*@__PURE__*/ S.suspend(
-  () =>
+export const OperationsGetResponseFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfo =
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       activeSchema: S.optional(
-        OperationsGetResponseFeaturesSchemaInfoActiveSchema.pipe(
+        OperationsGetResponseFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoActiveSchema.pipe(
           T.Body("active_schema"),
         ),
       ),
       learnedAvailable: S.optional(S.Boolean.pipe(T.Body("learned_available"))),
       mitigationAction: S.optional(
-        OperationsGetResponseFeaturesSchemaInfoMitigationAction.pipe(
+        OperationsGetResponseFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoMitigationAction.pipe(
           T.Body("mitigation_action"),
         ),
       ),
     }),
-).annotate({
-  identifier: "OperationsGetResponseFeaturesSchemaInfo",
-}) as any as S.Schema<OperationsGetResponseFeaturesSchemaInfo>;
+  ).annotate({
+    identifier:
+      "OperationsGetResponseFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfo",
+  }) as any as S.Schema<OperationsGetResponseFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfo>;
 
-export interface OperationsGetResponseFeatures {
-  thresholds?: OperationsGetResponseFeaturesThresholds;
-  parameterSchemas?: OperationsGetResponseFeaturesParameterSchemas;
-  /** API Routing settings on endpoint. */
-  apiRouting?: OperationsGetResponseFeaturesApiRouting;
-  confidenceIntervals?: OperationsGetResponseFeaturesConfidenceIntervals;
-  schemaInfo?: OperationsGetResponseFeaturesSchemaInfo;
+export interface OperationsGetResponseFeaturesAPIShieldOperationFeatureSchemaInfo {
+  schemaInfo?: OperationsGetResponseFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfo;
 }
-export const OperationsGetResponseFeatures = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    thresholds: S.optional(OperationsGetResponseFeaturesThresholds),
-    parameterSchemas: S.optional(
-      OperationsGetResponseFeaturesParameterSchemas.pipe(
-        T.Body("parameter_schemas"),
+export const OperationsGetResponseFeaturesAPIShieldOperationFeatureSchemaInfo =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      schemaInfo: S.optional(
+        OperationsGetResponseFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfo.pipe(
+          T.Body("schema_info"),
+        ),
       ),
-    ),
-    apiRouting: S.optional(
-      OperationsGetResponseFeaturesApiRouting.pipe(T.Body("api_routing")),
-    ),
-    confidenceIntervals: S.optional(
-      OperationsGetResponseFeaturesConfidenceIntervals.pipe(
-        T.Body("confidence_intervals"),
-      ),
-    ),
-    schemaInfo: S.optional(
-      OperationsGetResponseFeaturesSchemaInfo.pipe(T.Body("schema_info")),
-    ),
-  }),
-).annotate({
-  identifier: "OperationsGetResponseFeatures",
-}) as any as S.Schema<OperationsGetResponseFeatures>;
+    }),
+  ).annotate({
+    identifier:
+      "OperationsGetResponseFeaturesAPIShieldOperationFeatureSchemaInfo",
+  }) as any as S.Schema<OperationsGetResponseFeaturesAPIShieldOperationFeatureSchemaInfo>;
+
+export type OperationsGetResponseFeatures =
+  | OperationsGetResponseFeaturesAPIShieldOperationFeatureThresholds
+  | OperationsGetResponseFeaturesAPIShieldOperationFeatureParameterSchemas
+  | OperationsGetResponseFeaturesAPIShieldOperationFeatureAPIRouting
+  | OperationsGetResponseFeaturesAPIShieldOperationFeatureConfidenceIntervals
+  | OperationsGetResponseFeaturesAPIShieldOperationFeatureSchemaInfo;
+export const OperationsGetResponseFeatures = /*@__PURE__*/ S.Unknown;
 
 export type OperationsGetResponseSchemasLearnedParametersItemMap = {
   [key: string]: unknown | undefined;
@@ -3493,7 +3675,7 @@ export type OperationsListResultItemMethod =
   | (string & {});
 export const OperationsListResultItemMethod = /*@__PURE__*/ S.String;
 
-export interface OperationsListResultItemFeaturesThresholds {
+export interface OperationsListResultItemFeaturesAPIShieldOperationFeatureThresholdsThresholds {
   /** The total number of auth-ids seen across this calculation. */
   authIdTokens?: number;
   /** The number of data points used for the threshold suggestion calculation. */
@@ -3512,7 +3694,7 @@ export interface OperationsListResultItemFeaturesThresholds {
   /** The suggested threshold in requests done by the same auth_id or period_seconds. */
   suggestedThreshold?: number;
 }
-export const OperationsListResultItemFeaturesThresholds =
+export const OperationsListResultItemFeaturesAPIShieldOperationFeatureThresholdsThresholds =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       authIdTokens: S.optional(S.Number.pipe(T.Body("auth_id_tokens"))),
@@ -3528,76 +3710,128 @@ export const OperationsListResultItemFeaturesThresholds =
       ),
     }),
   ).annotate({
-    identifier: "OperationsListResultItemFeaturesThresholds",
-  }) as any as S.Schema<OperationsListResultItemFeaturesThresholds>;
+    identifier:
+      "OperationsListResultItemFeaturesAPIShieldOperationFeatureThresholdsThresholds",
+  }) as any as S.Schema<OperationsListResultItemFeaturesAPIShieldOperationFeatureThresholdsThresholds>;
 
-export type OperationsListResultItemFeaturesParameterSchemasParameterSchemasParametersList =
+export interface OperationsListResultItemFeaturesAPIShieldOperationFeatureThresholds {
+  thresholds?: OperationsListResultItemFeaturesAPIShieldOperationFeatureThresholdsThresholds;
+}
+export const OperationsListResultItemFeaturesAPIShieldOperationFeatureThresholds =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      thresholds: S.optional(
+        OperationsListResultItemFeaturesAPIShieldOperationFeatureThresholdsThresholds,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "OperationsListResultItemFeaturesAPIShieldOperationFeatureThresholds",
+  }) as any as S.Schema<OperationsListResultItemFeaturesAPIShieldOperationFeatureThresholds>;
+
+export type OperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemasParametersList =
   unknown[];
-export const OperationsListResultItemFeaturesParameterSchemasParameterSchemasParametersList =
+export const OperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemasParametersList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
-  ) as any as S.Schema<OperationsListResultItemFeaturesParameterSchemasParameterSchemasParametersList>;
+  ) as any as S.Schema<OperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemasParametersList>;
 
-export interface OperationsListResultItemFeaturesParameterSchemasParameterSchemas {
+export interface OperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas {
   /** An array containing the learned parameter schemas. */
-  parameters?: OperationsListResultItemFeaturesParameterSchemasParameterSchemasParametersList;
+  parameters?: OperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemasParametersList;
   /** An empty response object. This field is required to yield a valid operation schema. */
   responses?: unknown;
 }
-export const OperationsListResultItemFeaturesParameterSchemasParameterSchemas =
+export const OperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       parameters: S.optional(
-        OperationsListResultItemFeaturesParameterSchemasParameterSchemasParametersList,
+        OperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemasParametersList,
       ),
       responses: S.optional(S.Unknown),
     }),
   ).annotate({
     identifier:
-      "OperationsListResultItemFeaturesParameterSchemasParameterSchemas",
-  }) as any as S.Schema<OperationsListResultItemFeaturesParameterSchemasParameterSchemas>;
+      "OperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas",
+  }) as any as S.Schema<OperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas>;
 
-export interface OperationsListResultItemFeaturesParameterSchemas {
+export interface OperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemas {
   lastUpdated?: string;
   /** An operation schema object containing a response. */
-  parameterSchemas?: OperationsListResultItemFeaturesParameterSchemasParameterSchemas;
+  parameterSchemas?: OperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas;
 }
-export const OperationsListResultItemFeaturesParameterSchemas =
+export const OperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemas =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       lastUpdated: S.optional(S.String.pipe(T.Body("last_updated"))),
       parameterSchemas: S.optional(
-        OperationsListResultItemFeaturesParameterSchemasParameterSchemas.pipe(
+        OperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas.pipe(
           T.Body("parameter_schemas"),
         ),
       ),
     }),
   ).annotate({
-    identifier: "OperationsListResultItemFeaturesParameterSchemas",
-  }) as any as S.Schema<OperationsListResultItemFeaturesParameterSchemas>;
+    identifier:
+      "OperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemas",
+  }) as any as S.Schema<OperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemas>;
 
-export interface OperationsListResultItemFeaturesApiRouting {
+export interface OperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemas {
+  parameterSchemas: OperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemas;
+}
+export const OperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemas =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parameterSchemas:
+        OperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemas.pipe(
+          T.Body("parameter_schemas"),
+        ),
+    }),
+  ).annotate({
+    identifier:
+      "OperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemas",
+  }) as any as S.Schema<OperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemas>;
+
+export interface OperationsListResultItemFeaturesAPIShieldOperationFeatureAPIRoutingApiRouting {
   lastUpdated?: string;
   /** Target route. */
   route?: string;
 }
-export const OperationsListResultItemFeaturesApiRouting =
+export const OperationsListResultItemFeaturesAPIShieldOperationFeatureAPIRoutingApiRouting =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       lastUpdated: S.optional(S.String.pipe(T.Body("last_updated"))),
       route: S.optional(S.String),
     }),
   ).annotate({
-    identifier: "OperationsListResultItemFeaturesApiRouting",
-  }) as any as S.Schema<OperationsListResultItemFeaturesApiRouting>;
+    identifier:
+      "OperationsListResultItemFeaturesAPIShieldOperationFeatureAPIRoutingApiRouting",
+  }) as any as S.Schema<OperationsListResultItemFeaturesAPIShieldOperationFeatureAPIRoutingApiRouting>;
 
-export interface OperationsListResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90 {
+export interface OperationsListResultItemFeaturesAPIShieldOperationFeatureAPIRouting {
+  /** API Routing settings on endpoint. */
+  apiRouting?: OperationsListResultItemFeaturesAPIShieldOperationFeatureAPIRoutingApiRouting;
+}
+export const OperationsListResultItemFeaturesAPIShieldOperationFeatureAPIRouting =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      apiRouting: S.optional(
+        OperationsListResultItemFeaturesAPIShieldOperationFeatureAPIRoutingApiRouting.pipe(
+          T.Body("api_routing"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "OperationsListResultItemFeaturesAPIShieldOperationFeatureAPIRouting",
+  }) as any as S.Schema<OperationsListResultItemFeaturesAPIShieldOperationFeatureAPIRouting>;
+
+export interface OperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90 {
   /** Lower bound for percentile estimate */
   lower?: number;
   /** Upper bound for percentile estimate */
   upper?: number;
 }
-export const OperationsListResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90 =
+export const OperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       lower: S.optional(S.Number),
@@ -3605,16 +3839,16 @@ export const OperationsListResultItemFeaturesConfidenceIntervalsSuggestedThresho
     }),
   ).annotate({
     identifier:
-      "OperationsListResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90",
-  }) as any as S.Schema<OperationsListResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90>;
+      "OperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90",
+  }) as any as S.Schema<OperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90>;
 
-export interface OperationsListResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95 {
+export interface OperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95 {
   /** Lower bound for percentile estimate */
   lower?: number;
   /** Upper bound for percentile estimate */
   upper?: number;
 }
-export const OperationsListResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95 =
+export const OperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       lower: S.optional(S.Number),
@@ -3622,16 +3856,16 @@ export const OperationsListResultItemFeaturesConfidenceIntervalsSuggestedThresho
     }),
   ).annotate({
     identifier:
-      "OperationsListResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95",
-  }) as any as S.Schema<OperationsListResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95>;
+      "OperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95",
+  }) as any as S.Schema<OperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95>;
 
-export interface OperationsListResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99 {
+export interface OperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99 {
   /** Lower bound for percentile estimate */
   lower?: number;
   /** Upper bound for percentile estimate */
   upper?: number;
 }
-export const OperationsListResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99 =
+export const OperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       lower: S.optional(S.Number),
@@ -3639,45 +3873,45 @@ export const OperationsListResultItemFeaturesConfidenceIntervalsSuggestedThresho
     }),
   ).annotate({
     identifier:
-      "OperationsListResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99",
-  }) as any as S.Schema<OperationsListResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99>;
+      "OperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99",
+  }) as any as S.Schema<OperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99>;
 
-export interface OperationsListResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervals {
+export interface OperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervals {
   /** Upper and lower bound for percentile estimate */
-  p90?: OperationsListResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90;
+  p90?: OperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90;
   /** Upper and lower bound for percentile estimate */
-  p95?: OperationsListResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95;
+  p95?: OperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95;
   /** Upper and lower bound for percentile estimate */
-  p99?: OperationsListResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99;
+  p99?: OperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99;
 }
-export const OperationsListResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervals =
+export const OperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervals =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       p90: S.optional(
-        OperationsListResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90,
+        OperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90,
       ),
       p95: S.optional(
-        OperationsListResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95,
+        OperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95,
       ),
       p99: S.optional(
-        OperationsListResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99,
+        OperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99,
       ),
     }),
   ).annotate({
     identifier:
-      "OperationsListResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervals",
-  }) as any as S.Schema<OperationsListResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervals>;
+      "OperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervals",
+  }) as any as S.Schema<OperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervals>;
 
-export interface OperationsListResultItemFeaturesConfidenceIntervalsSuggestedThreshold {
-  confidenceIntervals?: OperationsListResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervals;
+export interface OperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThreshold {
+  confidenceIntervals?: OperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervals;
   /** Suggested threshold. */
   mean?: number;
 }
-export const OperationsListResultItemFeaturesConfidenceIntervalsSuggestedThreshold =
+export const OperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThreshold =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       confidenceIntervals: S.optional(
-        OperationsListResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervals.pipe(
+        OperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervals.pipe(
           T.Body("confidence_intervals"),
         ),
       ),
@@ -3685,28 +3919,46 @@ export const OperationsListResultItemFeaturesConfidenceIntervalsSuggestedThresho
     }),
   ).annotate({
     identifier:
-      "OperationsListResultItemFeaturesConfidenceIntervalsSuggestedThreshold",
-  }) as any as S.Schema<OperationsListResultItemFeaturesConfidenceIntervalsSuggestedThreshold>;
+      "OperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThreshold",
+  }) as any as S.Schema<OperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThreshold>;
 
-export interface OperationsListResultItemFeaturesConfidenceIntervals {
+export interface OperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervals {
   lastUpdated?: string;
-  suggestedThreshold?: OperationsListResultItemFeaturesConfidenceIntervalsSuggestedThreshold;
+  suggestedThreshold?: OperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThreshold;
 }
-export const OperationsListResultItemFeaturesConfidenceIntervals =
+export const OperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervals =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       lastUpdated: S.optional(S.String.pipe(T.Body("last_updated"))),
       suggestedThreshold: S.optional(
-        OperationsListResultItemFeaturesConfidenceIntervalsSuggestedThreshold.pipe(
+        OperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThreshold.pipe(
           T.Body("suggested_threshold"),
         ),
       ),
     }),
   ).annotate({
-    identifier: "OperationsListResultItemFeaturesConfidenceIntervals",
-  }) as any as S.Schema<OperationsListResultItemFeaturesConfidenceIntervals>;
+    identifier:
+      "OperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervals",
+  }) as any as S.Schema<OperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervals>;
 
-export interface OperationsListResultItemFeaturesSchemaInfoActiveSchema {
+export interface OperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervals {
+  confidenceIntervals?: OperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervals;
+}
+export const OperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervals =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      confidenceIntervals: S.optional(
+        OperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervals.pipe(
+          T.Body("confidence_intervals"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "OperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervals",
+  }) as any as S.Schema<OperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervals>;
+
+export interface OperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoActiveSchema {
   /** UUID. */
   id?: string;
   createdAt?: string;
@@ -3715,7 +3967,7 @@ export interface OperationsListResultItemFeaturesSchemaInfoActiveSchema {
   /** Schema file name. */
   name?: string;
 }
-export const OperationsListResultItemFeaturesSchemaInfoActiveSchema =
+export const OperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoActiveSchema =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.optional(S.String),
@@ -3724,75 +3976,67 @@ export const OperationsListResultItemFeaturesSchemaInfoActiveSchema =
       name: S.optional(S.String),
     }),
   ).annotate({
-    identifier: "OperationsListResultItemFeaturesSchemaInfoActiveSchema",
-  }) as any as S.Schema<OperationsListResultItemFeaturesSchemaInfoActiveSchema>;
+    identifier:
+      "OperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoActiveSchema",
+  }) as any as S.Schema<OperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoActiveSchema>;
 
-export type OperationsListResultItemFeaturesSchemaInfoMitigationAction =
-  | "none"
-  | "log"
-  | "block"
-  | (string & {});
-export const OperationsListResultItemFeaturesSchemaInfoMitigationAction =
+export type OperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoMitigationAction =
+  "none" | "log" | "block" | (string & {});
+export const OperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoMitigationAction =
   /*@__PURE__*/ S.String;
 
-export interface OperationsListResultItemFeaturesSchemaInfo {
+export interface OperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfo {
   /** Schema active on endpoint. */
-  activeSchema?: OperationsListResultItemFeaturesSchemaInfoActiveSchema;
+  activeSchema?: OperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoActiveSchema;
   /** True if a Cloudflare-provided learned schema is available for this endpoint. */
   learnedAvailable?: boolean;
   /** Action taken on requests failing validation. */
-  mitigationAction?: OperationsListResultItemFeaturesSchemaInfoMitigationAction;
+  mitigationAction?: OperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoMitigationAction;
 }
-export const OperationsListResultItemFeaturesSchemaInfo =
+export const OperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfo =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       activeSchema: S.optional(
-        OperationsListResultItemFeaturesSchemaInfoActiveSchema.pipe(
+        OperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoActiveSchema.pipe(
           T.Body("active_schema"),
         ),
       ),
       learnedAvailable: S.optional(S.Boolean.pipe(T.Body("learned_available"))),
       mitigationAction: S.optional(
-        OperationsListResultItemFeaturesSchemaInfoMitigationAction.pipe(
+        OperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoMitigationAction.pipe(
           T.Body("mitigation_action"),
         ),
       ),
     }),
   ).annotate({
-    identifier: "OperationsListResultItemFeaturesSchemaInfo",
-  }) as any as S.Schema<OperationsListResultItemFeaturesSchemaInfo>;
+    identifier:
+      "OperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfo",
+  }) as any as S.Schema<OperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfo>;
 
-export interface OperationsListResultItemFeatures {
-  thresholds?: OperationsListResultItemFeaturesThresholds;
-  parameterSchemas?: OperationsListResultItemFeaturesParameterSchemas;
-  /** API Routing settings on endpoint. */
-  apiRouting?: OperationsListResultItemFeaturesApiRouting;
-  confidenceIntervals?: OperationsListResultItemFeaturesConfidenceIntervals;
-  schemaInfo?: OperationsListResultItemFeaturesSchemaInfo;
+export interface OperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfo {
+  schemaInfo?: OperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfo;
 }
-export const OperationsListResultItemFeatures = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    thresholds: S.optional(OperationsListResultItemFeaturesThresholds),
-    parameterSchemas: S.optional(
-      OperationsListResultItemFeaturesParameterSchemas.pipe(
-        T.Body("parameter_schemas"),
+export const OperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfo =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      schemaInfo: S.optional(
+        OperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfo.pipe(
+          T.Body("schema_info"),
+        ),
       ),
-    ),
-    apiRouting: S.optional(
-      OperationsListResultItemFeaturesApiRouting.pipe(T.Body("api_routing")),
-    ),
-    confidenceIntervals: S.optional(
-      OperationsListResultItemFeaturesConfidenceIntervals.pipe(
-        T.Body("confidence_intervals"),
-      ),
-    ),
-    schemaInfo: S.optional(
-      OperationsListResultItemFeaturesSchemaInfo.pipe(T.Body("schema_info")),
-    ),
-  }),
-).annotate({
-  identifier: "OperationsListResultItemFeatures",
-}) as any as S.Schema<OperationsListResultItemFeatures>;
+    }),
+  ).annotate({
+    identifier:
+      "OperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfo",
+  }) as any as S.Schema<OperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfo>;
+
+export type OperationsListResultItemFeatures =
+  | OperationsListResultItemFeaturesAPIShieldOperationFeatureThresholds
+  | OperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemas
+  | OperationsListResultItemFeaturesAPIShieldOperationFeatureAPIRouting
+  | OperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervals
+  | OperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfo;
+export const OperationsListResultItemFeatures = /*@__PURE__*/ S.Unknown;
 
 export interface OperationsListResultItem {
   /** The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with {varN}, starting with {var1}, during insertion. This will further be Cloudflare-normalized upon insertion. See: https://developers.cloudflare.com/rules/normalization/how-it-works/. */
@@ -4061,7 +4305,7 @@ export type UserSchemasOperationsListResultItemMethod =
   | (string & {});
 export const UserSchemasOperationsListResultItemMethod = /*@__PURE__*/ S.String;
 
-export interface UserSchemasOperationsListResultItemFeaturesThresholds {
+export interface UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureThresholdsThresholds {
   /** The total number of auth-ids seen across this calculation. */
   authIdTokens?: number;
   /** The number of data points used for the threshold suggestion calculation. */
@@ -4080,7 +4324,7 @@ export interface UserSchemasOperationsListResultItemFeaturesThresholds {
   /** The suggested threshold in requests done by the same auth_id or period_seconds. */
   suggestedThreshold?: number;
 }
-export const UserSchemasOperationsListResultItemFeaturesThresholds =
+export const UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureThresholdsThresholds =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       authIdTokens: S.optional(S.Number.pipe(T.Body("auth_id_tokens"))),
@@ -4096,76 +4340,128 @@ export const UserSchemasOperationsListResultItemFeaturesThresholds =
       ),
     }),
   ).annotate({
-    identifier: "UserSchemasOperationsListResultItemFeaturesThresholds",
-  }) as any as S.Schema<UserSchemasOperationsListResultItemFeaturesThresholds>;
+    identifier:
+      "UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureThresholdsThresholds",
+  }) as any as S.Schema<UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureThresholdsThresholds>;
 
-export type UserSchemasOperationsListResultItemFeaturesParameterSchemasParameterSchemasParametersList =
+export interface UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureThresholds {
+  thresholds?: UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureThresholdsThresholds;
+}
+export const UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureThresholds =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      thresholds: S.optional(
+        UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureThresholdsThresholds,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureThresholds",
+  }) as any as S.Schema<UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureThresholds>;
+
+export type UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemasParametersList =
   unknown[];
-export const UserSchemasOperationsListResultItemFeaturesParameterSchemasParameterSchemasParametersList =
+export const UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemasParametersList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
-  ) as any as S.Schema<UserSchemasOperationsListResultItemFeaturesParameterSchemasParameterSchemasParametersList>;
+  ) as any as S.Schema<UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemasParametersList>;
 
-export interface UserSchemasOperationsListResultItemFeaturesParameterSchemasParameterSchemas {
+export interface UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas {
   /** An array containing the learned parameter schemas. */
-  parameters?: UserSchemasOperationsListResultItemFeaturesParameterSchemasParameterSchemasParametersList;
+  parameters?: UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemasParametersList;
   /** An empty response object. This field is required to yield a valid operation schema. */
   responses?: unknown;
 }
-export const UserSchemasOperationsListResultItemFeaturesParameterSchemasParameterSchemas =
+export const UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       parameters: S.optional(
-        UserSchemasOperationsListResultItemFeaturesParameterSchemasParameterSchemasParametersList,
+        UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemasParametersList,
       ),
       responses: S.optional(S.Unknown),
     }),
   ).annotate({
     identifier:
-      "UserSchemasOperationsListResultItemFeaturesParameterSchemasParameterSchemas",
-  }) as any as S.Schema<UserSchemasOperationsListResultItemFeaturesParameterSchemasParameterSchemas>;
+      "UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas",
+  }) as any as S.Schema<UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas>;
 
-export interface UserSchemasOperationsListResultItemFeaturesParameterSchemas {
+export interface UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemas {
   lastUpdated?: string;
   /** An operation schema object containing a response. */
-  parameterSchemas?: UserSchemasOperationsListResultItemFeaturesParameterSchemasParameterSchemas;
+  parameterSchemas?: UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas;
 }
-export const UserSchemasOperationsListResultItemFeaturesParameterSchemas =
+export const UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemas =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       lastUpdated: S.optional(S.String.pipe(T.Body("last_updated"))),
       parameterSchemas: S.optional(
-        UserSchemasOperationsListResultItemFeaturesParameterSchemasParameterSchemas.pipe(
+        UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas.pipe(
           T.Body("parameter_schemas"),
         ),
       ),
     }),
   ).annotate({
-    identifier: "UserSchemasOperationsListResultItemFeaturesParameterSchemas",
-  }) as any as S.Schema<UserSchemasOperationsListResultItemFeaturesParameterSchemas>;
+    identifier:
+      "UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemas",
+  }) as any as S.Schema<UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemas>;
 
-export interface UserSchemasOperationsListResultItemFeaturesApiRouting {
+export interface UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemas {
+  parameterSchemas: UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemas;
+}
+export const UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemas =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parameterSchemas:
+        UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemas.pipe(
+          T.Body("parameter_schemas"),
+        ),
+    }),
+  ).annotate({
+    identifier:
+      "UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemas",
+  }) as any as S.Schema<UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemas>;
+
+export interface UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureAPIRoutingApiRouting {
   lastUpdated?: string;
   /** Target route. */
   route?: string;
 }
-export const UserSchemasOperationsListResultItemFeaturesApiRouting =
+export const UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureAPIRoutingApiRouting =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       lastUpdated: S.optional(S.String.pipe(T.Body("last_updated"))),
       route: S.optional(S.String),
     }),
   ).annotate({
-    identifier: "UserSchemasOperationsListResultItemFeaturesApiRouting",
-  }) as any as S.Schema<UserSchemasOperationsListResultItemFeaturesApiRouting>;
+    identifier:
+      "UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureAPIRoutingApiRouting",
+  }) as any as S.Schema<UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureAPIRoutingApiRouting>;
 
-export interface UserSchemasOperationsListResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90 {
+export interface UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureAPIRouting {
+  /** API Routing settings on endpoint. */
+  apiRouting?: UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureAPIRoutingApiRouting;
+}
+export const UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureAPIRouting =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      apiRouting: S.optional(
+        UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureAPIRoutingApiRouting.pipe(
+          T.Body("api_routing"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureAPIRouting",
+  }) as any as S.Schema<UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureAPIRouting>;
+
+export interface UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90 {
   /** Lower bound for percentile estimate */
   lower?: number;
   /** Upper bound for percentile estimate */
   upper?: number;
 }
-export const UserSchemasOperationsListResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90 =
+export const UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       lower: S.optional(S.Number),
@@ -4173,16 +4469,16 @@ export const UserSchemasOperationsListResultItemFeaturesConfidenceIntervalsSugge
     }),
   ).annotate({
     identifier:
-      "UserSchemasOperationsListResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90",
-  }) as any as S.Schema<UserSchemasOperationsListResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90>;
+      "UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90",
+  }) as any as S.Schema<UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90>;
 
-export interface UserSchemasOperationsListResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95 {
+export interface UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95 {
   /** Lower bound for percentile estimate */
   lower?: number;
   /** Upper bound for percentile estimate */
   upper?: number;
 }
-export const UserSchemasOperationsListResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95 =
+export const UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       lower: S.optional(S.Number),
@@ -4190,16 +4486,16 @@ export const UserSchemasOperationsListResultItemFeaturesConfidenceIntervalsSugge
     }),
   ).annotate({
     identifier:
-      "UserSchemasOperationsListResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95",
-  }) as any as S.Schema<UserSchemasOperationsListResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95>;
+      "UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95",
+  }) as any as S.Schema<UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95>;
 
-export interface UserSchemasOperationsListResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99 {
+export interface UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99 {
   /** Lower bound for percentile estimate */
   lower?: number;
   /** Upper bound for percentile estimate */
   upper?: number;
 }
-export const UserSchemasOperationsListResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99 =
+export const UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       lower: S.optional(S.Number),
@@ -4207,45 +4503,45 @@ export const UserSchemasOperationsListResultItemFeaturesConfidenceIntervalsSugge
     }),
   ).annotate({
     identifier:
-      "UserSchemasOperationsListResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99",
-  }) as any as S.Schema<UserSchemasOperationsListResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99>;
+      "UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99",
+  }) as any as S.Schema<UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99>;
 
-export interface UserSchemasOperationsListResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervals {
+export interface UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervals {
   /** Upper and lower bound for percentile estimate */
-  p90?: UserSchemasOperationsListResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90;
+  p90?: UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90;
   /** Upper and lower bound for percentile estimate */
-  p95?: UserSchemasOperationsListResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95;
+  p95?: UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95;
   /** Upper and lower bound for percentile estimate */
-  p99?: UserSchemasOperationsListResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99;
+  p99?: UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99;
 }
-export const UserSchemasOperationsListResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervals =
+export const UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervals =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       p90: S.optional(
-        UserSchemasOperationsListResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90,
+        UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90,
       ),
       p95: S.optional(
-        UserSchemasOperationsListResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95,
+        UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95,
       ),
       p99: S.optional(
-        UserSchemasOperationsListResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99,
+        UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99,
       ),
     }),
   ).annotate({
     identifier:
-      "UserSchemasOperationsListResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervals",
-  }) as any as S.Schema<UserSchemasOperationsListResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervals>;
+      "UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervals",
+  }) as any as S.Schema<UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervals>;
 
-export interface UserSchemasOperationsListResultItemFeaturesConfidenceIntervalsSuggestedThreshold {
-  confidenceIntervals?: UserSchemasOperationsListResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervals;
+export interface UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThreshold {
+  confidenceIntervals?: UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervals;
   /** Suggested threshold. */
   mean?: number;
 }
-export const UserSchemasOperationsListResultItemFeaturesConfidenceIntervalsSuggestedThreshold =
+export const UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThreshold =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       confidenceIntervals: S.optional(
-        UserSchemasOperationsListResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervals.pipe(
+        UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervals.pipe(
           T.Body("confidence_intervals"),
         ),
       ),
@@ -4253,29 +4549,46 @@ export const UserSchemasOperationsListResultItemFeaturesConfidenceIntervalsSugge
     }),
   ).annotate({
     identifier:
-      "UserSchemasOperationsListResultItemFeaturesConfidenceIntervalsSuggestedThreshold",
-  }) as any as S.Schema<UserSchemasOperationsListResultItemFeaturesConfidenceIntervalsSuggestedThreshold>;
+      "UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThreshold",
+  }) as any as S.Schema<UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThreshold>;
 
-export interface UserSchemasOperationsListResultItemFeaturesConfidenceIntervals {
+export interface UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervals {
   lastUpdated?: string;
-  suggestedThreshold?: UserSchemasOperationsListResultItemFeaturesConfidenceIntervalsSuggestedThreshold;
+  suggestedThreshold?: UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThreshold;
 }
-export const UserSchemasOperationsListResultItemFeaturesConfidenceIntervals =
+export const UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervals =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       lastUpdated: S.optional(S.String.pipe(T.Body("last_updated"))),
       suggestedThreshold: S.optional(
-        UserSchemasOperationsListResultItemFeaturesConfidenceIntervalsSuggestedThreshold.pipe(
+        UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThreshold.pipe(
           T.Body("suggested_threshold"),
         ),
       ),
     }),
   ).annotate({
     identifier:
-      "UserSchemasOperationsListResultItemFeaturesConfidenceIntervals",
-  }) as any as S.Schema<UserSchemasOperationsListResultItemFeaturesConfidenceIntervals>;
+      "UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervals",
+  }) as any as S.Schema<UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervals>;
 
-export interface UserSchemasOperationsListResultItemFeaturesSchemaInfoActiveSchema {
+export interface UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervals {
+  confidenceIntervals?: UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervals;
+}
+export const UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervals =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      confidenceIntervals: S.optional(
+        UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervals.pipe(
+          T.Body("confidence_intervals"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervals",
+  }) as any as S.Schema<UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervals>;
+
+export interface UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoActiveSchema {
   /** UUID. */
   id?: string;
   createdAt?: string;
@@ -4284,7 +4597,7 @@ export interface UserSchemasOperationsListResultItemFeaturesSchemaInfoActiveSche
   /** Schema file name. */
   name?: string;
 }
-export const UserSchemasOperationsListResultItemFeaturesSchemaInfoActiveSchema =
+export const UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoActiveSchema =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.optional(S.String),
@@ -4294,79 +4607,67 @@ export const UserSchemasOperationsListResultItemFeaturesSchemaInfoActiveSchema =
     }),
   ).annotate({
     identifier:
-      "UserSchemasOperationsListResultItemFeaturesSchemaInfoActiveSchema",
-  }) as any as S.Schema<UserSchemasOperationsListResultItemFeaturesSchemaInfoActiveSchema>;
+      "UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoActiveSchema",
+  }) as any as S.Schema<UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoActiveSchema>;
 
-export type UserSchemasOperationsListResultItemFeaturesSchemaInfoMitigationAction =
+export type UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoMitigationAction =
   "none" | "log" | "block" | (string & {});
-export const UserSchemasOperationsListResultItemFeaturesSchemaInfoMitigationAction =
+export const UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoMitigationAction =
   /*@__PURE__*/ S.String;
 
-export interface UserSchemasOperationsListResultItemFeaturesSchemaInfo {
+export interface UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfo {
   /** Schema active on endpoint. */
-  activeSchema?: UserSchemasOperationsListResultItemFeaturesSchemaInfoActiveSchema;
+  activeSchema?: UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoActiveSchema;
   /** True if a Cloudflare-provided learned schema is available for this endpoint. */
   learnedAvailable?: boolean;
   /** Action taken on requests failing validation. */
-  mitigationAction?: UserSchemasOperationsListResultItemFeaturesSchemaInfoMitigationAction;
+  mitigationAction?: UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoMitigationAction;
 }
-export const UserSchemasOperationsListResultItemFeaturesSchemaInfo =
+export const UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfo =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       activeSchema: S.optional(
-        UserSchemasOperationsListResultItemFeaturesSchemaInfoActiveSchema.pipe(
+        UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoActiveSchema.pipe(
           T.Body("active_schema"),
         ),
       ),
       learnedAvailable: S.optional(S.Boolean.pipe(T.Body("learned_available"))),
       mitigationAction: S.optional(
-        UserSchemasOperationsListResultItemFeaturesSchemaInfoMitigationAction.pipe(
+        UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoMitigationAction.pipe(
           T.Body("mitigation_action"),
         ),
       ),
     }),
   ).annotate({
-    identifier: "UserSchemasOperationsListResultItemFeaturesSchemaInfo",
-  }) as any as S.Schema<UserSchemasOperationsListResultItemFeaturesSchemaInfo>;
+    identifier:
+      "UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfo",
+  }) as any as S.Schema<UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfo>;
 
-export interface UserSchemasOperationsListResultItemFeatures {
-  thresholds?: UserSchemasOperationsListResultItemFeaturesThresholds;
-  parameterSchemas?: UserSchemasOperationsListResultItemFeaturesParameterSchemas;
-  /** API Routing settings on endpoint. */
-  apiRouting?: UserSchemasOperationsListResultItemFeaturesApiRouting;
-  confidenceIntervals?: UserSchemasOperationsListResultItemFeaturesConfidenceIntervals;
-  schemaInfo?: UserSchemasOperationsListResultItemFeaturesSchemaInfo;
+export interface UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfo {
+  schemaInfo?: UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfo;
 }
-export const UserSchemasOperationsListResultItemFeatures =
+export const UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfo =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      thresholds: S.optional(
-        UserSchemasOperationsListResultItemFeaturesThresholds,
-      ),
-      parameterSchemas: S.optional(
-        UserSchemasOperationsListResultItemFeaturesParameterSchemas.pipe(
-          T.Body("parameter_schemas"),
-        ),
-      ),
-      apiRouting: S.optional(
-        UserSchemasOperationsListResultItemFeaturesApiRouting.pipe(
-          T.Body("api_routing"),
-        ),
-      ),
-      confidenceIntervals: S.optional(
-        UserSchemasOperationsListResultItemFeaturesConfidenceIntervals.pipe(
-          T.Body("confidence_intervals"),
-        ),
-      ),
       schemaInfo: S.optional(
-        UserSchemasOperationsListResultItemFeaturesSchemaInfo.pipe(
+        UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfo.pipe(
           T.Body("schema_info"),
         ),
       ),
     }),
   ).annotate({
-    identifier: "UserSchemasOperationsListResultItemFeatures",
-  }) as any as S.Schema<UserSchemasOperationsListResultItemFeatures>;
+    identifier:
+      "UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfo",
+  }) as any as S.Schema<UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfo>;
+
+export type UserSchemasOperationsListResultItemFeatures =
+  | UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureThresholds
+  | UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemas
+  | UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureAPIRouting
+  | UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervals
+  | UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfo;
+export const UserSchemasOperationsListResultItemFeatures =
+  /*@__PURE__*/ S.Unknown;
 
 export interface UserSchemasOperationsListResultItem {
   /** The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with {varN}, starting with {var1}, during insertion. This will further be Cloudflare-normalized upon insertion. See: https://developers.cloudflare.com/rules/normalization/how-it-works/. */

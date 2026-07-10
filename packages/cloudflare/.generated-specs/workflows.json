@@ -2060,7 +2060,7 @@
         "smithy.api#documentation": "Sends an event to a running workflow instance to trigger state transitions."
       }
     },
-    "com.cloudflare.workflows#InstancesStatusEditRequestBodyStatus": {
+    "com.cloudflare.workflows#InstancesStatusEditRequestBodyStatusStatus": {
       "type": "enum",
       "members": {
         "PAUSE": {
@@ -2071,7 +2071,79 @@
         }
       }
     },
-    "com.cloudflare.workflows#InstancesStatusEditRequestBodyFromType": {
+    "com.cloudflare.workflows#InstancesStatusEditRequestBodyStatus": {
+      "type": "structure",
+      "members": {
+        "status": {
+          "target": "com.cloudflare.workflows#InstancesStatusEditRequestBodyStatusStatus",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.workflows#InstancesStatusEditRequestBodyStatusStatus2": {
+      "type": "enum",
+      "members": {
+        "RESUME": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "resume"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workflows#InstancesStatusEditRequestBodyStatus2": {
+      "type": "structure",
+      "members": {
+        "status": {
+          "target": "com.cloudflare.workflows#InstancesStatusEditRequestBodyStatusStatus2",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.workflows#InstancesStatusEditRequestBodyObjectStatusRollbackStatus": {
+      "type": "enum",
+      "members": {
+        "TERMINATE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "terminate"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workflows#InstancesStatusEditRequestBodyObjectStatusRollback": {
+      "type": "structure",
+      "members": {
+        "status": {
+          "target": "com.cloudflare.workflows#InstancesStatusEditRequestBodyObjectStatusRollbackStatus",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "rollback": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Run rollback before terminating."
+          }
+        }
+      }
+    },
+    "com.cloudflare.workflows#InstancesStatusEditRequestBodyObjectStatusFromStatus": {
+      "type": "enum",
+      "members": {
+        "RESTART": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "restart"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workflows#InstancesStatusEditRequestBodyObjectStatusFromFromType": {
       "type": "enum",
       "members": {
         "DO": {
@@ -2094,7 +2166,7 @@
         }
       }
     },
-    "com.cloudflare.workflows#InstancesStatusEditRequestBodyFrom": {
+    "com.cloudflare.workflows#InstancesStatusEditRequestBodyObjectStatusFromFrom": {
       "type": "structure",
       "members": {
         "name": {
@@ -2107,27 +2179,41 @@
           "target": "smithy.api#Double"
         },
         "type": {
-          "target": "com.cloudflare.workflows#InstancesStatusEditRequestBodyFromType"
+          "target": "com.cloudflare.workflows#InstancesStatusEditRequestBodyObjectStatusFromFromType"
+        }
+      }
+    },
+    "com.cloudflare.workflows#InstancesStatusEditRequestBodyObjectStatusFrom": {
+      "type": "structure",
+      "members": {
+        "status": {
+          "target": "com.cloudflare.workflows#InstancesStatusEditRequestBodyObjectStatusFromStatus",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "from": {
+          "target": "com.cloudflare.workflows#InstancesStatusEditRequestBodyObjectStatusFromFrom",
+          "traits": {
+            "smithy.api#documentation": "Step to restart from."
+          }
         }
       }
     },
     "com.cloudflare.workflows#InstancesStatusEditRequestBody": {
-      "type": "structure",
+      "type": "union",
       "members": {
-        "status": {
+        "Status": {
           "target": "com.cloudflare.workflows#InstancesStatusEditRequestBodyStatus"
         },
-        "rollback": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Run rollback before terminating."
-          }
+        "Status_": {
+          "target": "com.cloudflare.workflows#InstancesStatusEditRequestBodyStatus2"
         },
-        "from": {
-          "target": "com.cloudflare.workflows#InstancesStatusEditRequestBodyFrom",
-          "traits": {
-            "smithy.api#documentation": "Step to restart from."
-          }
+        "ObjectStatusRollback": {
+          "target": "com.cloudflare.workflows#InstancesStatusEditRequestBodyObjectStatusRollback"
+        },
+        "ObjectStatusFrom": {
+          "target": "com.cloudflare.workflows#InstancesStatusEditRequestBodyObjectStatusFrom"
         }
       }
     },
@@ -2564,7 +2650,7 @@
         }
       }
     },
-    "com.cloudflare.workflows#VersionsGraphResponseGraphWorkflowNodesItemPayloadType": {
+    "com.cloudflare.workflows#VersionsGraphResponseGraphWorkflowNodesItemPayloadTypeType": {
       "type": "enum",
       "members": {
         "UNKNOWN": {
@@ -2575,7 +2661,18 @@
         }
       }
     },
-    "com.cloudflare.workflows#VersionsGraphResponseGraphWorkflowNodesItemPayloadFieldsMap": {
+    "com.cloudflare.workflows#VersionsGraphResponseGraphWorkflowNodesItemPayloadType": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.cloudflare.workflows#VersionsGraphResponseGraphWorkflowNodesItemPayloadTypeType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.workflows#VersionsGraphResponseGraphWorkflowNodesItemPayloadObjectFieldsTypeFieldsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -2584,17 +2681,43 @@
         "target": "smithy.api#Document"
       }
     },
-    "com.cloudflare.workflows#VersionsGraphResponseGraphWorkflowNodesItemPayload": {
+    "com.cloudflare.workflows#VersionsGraphResponseGraphWorkflowNodesItemPayloadObjectFieldsTypeType": {
+      "type": "enum",
+      "members": {
+        "OBJECT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "object"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workflows#VersionsGraphResponseGraphWorkflowNodesItemPayloadObjectFieldsType": {
       "type": "structure",
       "members": {
+        "fields": {
+          "target": "com.cloudflare.workflows#VersionsGraphResponseGraphWorkflowNodesItemPayloadObjectFieldsTypeFieldsMap",
+          "traits": {
+            "smithy.api#documentation": "Nested JsonShape fields (recursive structure).",
+            "smithy.api#required": {}
+          }
+        },
         "type": {
+          "target": "com.cloudflare.workflows#VersionsGraphResponseGraphWorkflowNodesItemPayloadObjectFieldsTypeType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.workflows#VersionsGraphResponseGraphWorkflowNodesItemPayload": {
+      "type": "union",
+      "members": {
+        "Type": {
           "target": "com.cloudflare.workflows#VersionsGraphResponseGraphWorkflowNodesItemPayloadType"
         },
-        "fields": {
-          "target": "com.cloudflare.workflows#VersionsGraphResponseGraphWorkflowNodesItemPayloadFieldsMap",
-          "traits": {
-            "smithy.api#documentation": "Nested JsonShape fields (recursive structure)."
-          }
+        "ObjectFieldsType": {
+          "target": "com.cloudflare.workflows#VersionsGraphResponseGraphWorkflowNodesItemPayloadObjectFieldsType"
         }
       }
     },
@@ -2854,7 +2977,7 @@
         "target": "com.cloudflare.workflows#VersionsGraphResponseGraphWorkflowNodesItem"
       }
     },
-    "com.cloudflare.workflows#VersionsGraphResponseGraphWorkflowPayloadType": {
+    "com.cloudflare.workflows#VersionsGraphResponseGraphWorkflowPayloadTypeType": {
       "type": "enum",
       "members": {
         "UNKNOWN": {
@@ -2865,7 +2988,18 @@
         }
       }
     },
-    "com.cloudflare.workflows#VersionsGraphResponseGraphWorkflowPayloadFieldsMap": {
+    "com.cloudflare.workflows#VersionsGraphResponseGraphWorkflowPayloadType": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.cloudflare.workflows#VersionsGraphResponseGraphWorkflowPayloadTypeType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.workflows#VersionsGraphResponseGraphWorkflowPayloadObjectFieldsTypeFieldsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -2874,17 +3008,43 @@
         "target": "smithy.api#Document"
       }
     },
-    "com.cloudflare.workflows#VersionsGraphResponseGraphWorkflowPayload": {
+    "com.cloudflare.workflows#VersionsGraphResponseGraphWorkflowPayloadObjectFieldsTypeType": {
+      "type": "enum",
+      "members": {
+        "OBJECT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "object"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workflows#VersionsGraphResponseGraphWorkflowPayloadObjectFieldsType": {
       "type": "structure",
       "members": {
+        "fields": {
+          "target": "com.cloudflare.workflows#VersionsGraphResponseGraphWorkflowPayloadObjectFieldsTypeFieldsMap",
+          "traits": {
+            "smithy.api#documentation": "Nested JsonShape fields (recursive structure).",
+            "smithy.api#required": {}
+          }
+        },
         "type": {
+          "target": "com.cloudflare.workflows#VersionsGraphResponseGraphWorkflowPayloadObjectFieldsTypeType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.workflows#VersionsGraphResponseGraphWorkflowPayload": {
+      "type": "union",
+      "members": {
+        "Type": {
           "target": "com.cloudflare.workflows#VersionsGraphResponseGraphWorkflowPayloadType"
         },
-        "fields": {
-          "target": "com.cloudflare.workflows#VersionsGraphResponseGraphWorkflowPayloadFieldsMap",
-          "traits": {
-            "smithy.api#documentation": "Nested JsonShape fields (recursive structure)."
-          }
+        "ObjectFieldsType": {
+          "target": "com.cloudflare.workflows#VersionsGraphResponseGraphWorkflowPayloadObjectFieldsType"
         }
       }
     },

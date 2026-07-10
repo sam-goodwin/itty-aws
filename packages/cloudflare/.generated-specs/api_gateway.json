@@ -2332,7 +2332,7 @@
         }
       }
     },
-    "com.cloudflare.api_gateway#OperationsBulkCreateResultItemFeaturesThresholds": {
+    "com.cloudflare.api_gateway#OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureThresholdsThresholds": {
       "type": "structure",
       "members": {
         "auth_id_tokens": {
@@ -2388,17 +2388,25 @@
         }
       }
     },
-    "com.cloudflare.api_gateway#OperationsBulkCreateResultItemFeaturesParameterSchemasParameterSchemasParametersList": {
+    "com.cloudflare.api_gateway#OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureThresholds": {
+      "type": "structure",
+      "members": {
+        "thresholds": {
+          "target": "com.cloudflare.api_gateway#OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureThresholdsThresholds"
+        }
+      }
+    },
+    "com.cloudflare.api_gateway#OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemasParametersList": {
       "type": "list",
       "member": {
         "target": "smithy.api#Document"
       }
     },
-    "com.cloudflare.api_gateway#OperationsBulkCreateResultItemFeaturesParameterSchemasParameterSchemas": {
+    "com.cloudflare.api_gateway#OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas": {
       "type": "structure",
       "members": {
         "parameters": {
-          "target": "com.cloudflare.api_gateway#OperationsBulkCreateResultItemFeaturesParameterSchemasParameterSchemasParametersList",
+          "target": "com.cloudflare.api_gateway#OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemasParametersList",
           "traits": {
             "smithy.api#documentation": "An array containing the learned parameter schemas."
           }
@@ -2411,21 +2419,32 @@
         }
       }
     },
-    "com.cloudflare.api_gateway#OperationsBulkCreateResultItemFeaturesParameterSchemas": {
+    "com.cloudflare.api_gateway#OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemas": {
       "type": "structure",
       "members": {
         "last_updated": {
           "target": "smithy.api#String"
         },
         "parameter_schemas": {
-          "target": "com.cloudflare.api_gateway#OperationsBulkCreateResultItemFeaturesParameterSchemasParameterSchemas",
+          "target": "com.cloudflare.api_gateway#OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas",
           "traits": {
             "smithy.api#documentation": "An operation schema object containing a response."
           }
         }
       }
     },
-    "com.cloudflare.api_gateway#OperationsBulkCreateResultItemFeaturesApiRouting": {
+    "com.cloudflare.api_gateway#OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureParameterSchemas": {
+      "type": "structure",
+      "members": {
+        "parameter_schemas": {
+          "target": "com.cloudflare.api_gateway#OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemas",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.api_gateway#OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureAPIRoutingApiRouting": {
       "type": "structure",
       "members": {
         "last_updated": {
@@ -2439,7 +2458,18 @@
         }
       }
     },
-    "com.cloudflare.api_gateway#OperationsBulkCreateResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90": {
+    "com.cloudflare.api_gateway#OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureAPIRouting": {
+      "type": "structure",
+      "members": {
+        "api_routing": {
+          "target": "com.cloudflare.api_gateway#OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureAPIRoutingApiRouting",
+          "traits": {
+            "smithy.api#documentation": "API Routing settings on endpoint."
+          }
+        }
+      }
+    },
+    "com.cloudflare.api_gateway#OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90": {
       "type": "structure",
       "members": {
         "lower": {
@@ -2456,7 +2486,7 @@
         }
       }
     },
-    "com.cloudflare.api_gateway#OperationsBulkCreateResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95": {
+    "com.cloudflare.api_gateway#OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95": {
       "type": "structure",
       "members": {
         "lower": {
@@ -2473,7 +2503,7 @@
         }
       }
     },
-    "com.cloudflare.api_gateway#OperationsBulkCreateResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99": {
+    "com.cloudflare.api_gateway#OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99": {
       "type": "structure",
       "members": {
         "lower": {
@@ -2490,34 +2520,34 @@
         }
       }
     },
-    "com.cloudflare.api_gateway#OperationsBulkCreateResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervals": {
+    "com.cloudflare.api_gateway#OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervals": {
       "type": "structure",
       "members": {
         "p90": {
-          "target": "com.cloudflare.api_gateway#OperationsBulkCreateResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90",
+          "target": "com.cloudflare.api_gateway#OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90",
           "traits": {
             "smithy.api#documentation": "Upper and lower bound for percentile estimate"
           }
         },
         "p95": {
-          "target": "com.cloudflare.api_gateway#OperationsBulkCreateResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95",
+          "target": "com.cloudflare.api_gateway#OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95",
           "traits": {
             "smithy.api#documentation": "Upper and lower bound for percentile estimate"
           }
         },
         "p99": {
-          "target": "com.cloudflare.api_gateway#OperationsBulkCreateResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99",
+          "target": "com.cloudflare.api_gateway#OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99",
           "traits": {
             "smithy.api#documentation": "Upper and lower bound for percentile estimate"
           }
         }
       }
     },
-    "com.cloudflare.api_gateway#OperationsBulkCreateResultItemFeaturesConfidenceIntervalsSuggestedThreshold": {
+    "com.cloudflare.api_gateway#OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThreshold": {
       "type": "structure",
       "members": {
         "confidence_intervals": {
-          "target": "com.cloudflare.api_gateway#OperationsBulkCreateResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervals"
+          "target": "com.cloudflare.api_gateway#OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervals"
         },
         "mean": {
           "target": "smithy.api#Double",
@@ -2527,18 +2557,26 @@
         }
       }
     },
-    "com.cloudflare.api_gateway#OperationsBulkCreateResultItemFeaturesConfidenceIntervals": {
+    "com.cloudflare.api_gateway#OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervals": {
       "type": "structure",
       "members": {
         "last_updated": {
           "target": "smithy.api#String"
         },
         "suggested_threshold": {
-          "target": "com.cloudflare.api_gateway#OperationsBulkCreateResultItemFeaturesConfidenceIntervalsSuggestedThreshold"
+          "target": "com.cloudflare.api_gateway#OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThreshold"
         }
       }
     },
-    "com.cloudflare.api_gateway#OperationsBulkCreateResultItemFeaturesSchemaInfoActiveSchema": {
+    "com.cloudflare.api_gateway#OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervals": {
+      "type": "structure",
+      "members": {
+        "confidence_intervals": {
+          "target": "com.cloudflare.api_gateway#OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervals"
+        }
+      }
+    },
+    "com.cloudflare.api_gateway#OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoActiveSchema": {
       "type": "structure",
       "members": {
         "id": {
@@ -2564,7 +2602,7 @@
         }
       }
     },
-    "com.cloudflare.api_gateway#OperationsBulkCreateResultItemFeaturesSchemaInfoMitigationAction": {
+    "com.cloudflare.api_gateway#OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoMitigationAction": {
       "type": "enum",
       "members": {
         "NONE": {
@@ -2587,11 +2625,11 @@
         }
       }
     },
-    "com.cloudflare.api_gateway#OperationsBulkCreateResultItemFeaturesSchemaInfo": {
+    "com.cloudflare.api_gateway#OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfo": {
       "type": "structure",
       "members": {
         "active_schema": {
-          "target": "com.cloudflare.api_gateway#OperationsBulkCreateResultItemFeaturesSchemaInfoActiveSchema",
+          "target": "com.cloudflare.api_gateway#OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoActiveSchema",
           "traits": {
             "smithy.api#documentation": "Schema active on endpoint."
           }
@@ -2603,33 +2641,38 @@
           }
         },
         "mitigation_action": {
-          "target": "com.cloudflare.api_gateway#OperationsBulkCreateResultItemFeaturesSchemaInfoMitigationAction",
+          "target": "com.cloudflare.api_gateway#OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoMitigationAction",
           "traits": {
             "smithy.api#documentation": "Action taken on requests failing validation."
           }
         }
       }
     },
-    "com.cloudflare.api_gateway#OperationsBulkCreateResultItemFeatures": {
+    "com.cloudflare.api_gateway#OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureSchemaInfo": {
       "type": "structure",
       "members": {
-        "thresholds": {
-          "target": "com.cloudflare.api_gateway#OperationsBulkCreateResultItemFeaturesThresholds"
-        },
-        "parameter_schemas": {
-          "target": "com.cloudflare.api_gateway#OperationsBulkCreateResultItemFeaturesParameterSchemas"
-        },
-        "api_routing": {
-          "target": "com.cloudflare.api_gateway#OperationsBulkCreateResultItemFeaturesApiRouting",
-          "traits": {
-            "smithy.api#documentation": "API Routing settings on endpoint."
-          }
-        },
-        "confidence_intervals": {
-          "target": "com.cloudflare.api_gateway#OperationsBulkCreateResultItemFeaturesConfidenceIntervals"
-        },
         "schema_info": {
-          "target": "com.cloudflare.api_gateway#OperationsBulkCreateResultItemFeaturesSchemaInfo"
+          "target": "com.cloudflare.api_gateway#OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfo"
+        }
+      }
+    },
+    "com.cloudflare.api_gateway#OperationsBulkCreateResultItemFeatures": {
+      "type": "union",
+      "members": {
+        "APIShieldOperationFeatureThresholds": {
+          "target": "com.cloudflare.api_gateway#OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureThresholds"
+        },
+        "APIShieldOperationFeatureParameterSchemas": {
+          "target": "com.cloudflare.api_gateway#OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureParameterSchemas"
+        },
+        "APIShieldOperationFeatureAPIRouting": {
+          "target": "com.cloudflare.api_gateway#OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureAPIRouting"
+        },
+        "APIShieldOperationFeatureConfidenceIntervals": {
+          "target": "com.cloudflare.api_gateway#OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervals"
+        },
+        "APIShieldOperationFeatureSchemaInfo": {
+          "target": "com.cloudflare.api_gateway#OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureSchemaInfo"
         }
       }
     },
@@ -2830,7 +2873,7 @@
         }
       }
     },
-    "com.cloudflare.api_gateway#OperationsCreateResponseFeaturesThresholds": {
+    "com.cloudflare.api_gateway#OperationsCreateResponseFeaturesAPIShieldOperationFeatureThresholdsThresholds": {
       "type": "structure",
       "members": {
         "auth_id_tokens": {
@@ -2886,17 +2929,25 @@
         }
       }
     },
-    "com.cloudflare.api_gateway#OperationsCreateResponseFeaturesParameterSchemasParameterSchemasParametersList": {
+    "com.cloudflare.api_gateway#OperationsCreateResponseFeaturesAPIShieldOperationFeatureThresholds": {
+      "type": "structure",
+      "members": {
+        "thresholds": {
+          "target": "com.cloudflare.api_gateway#OperationsCreateResponseFeaturesAPIShieldOperationFeatureThresholdsThresholds"
+        }
+      }
+    },
+    "com.cloudflare.api_gateway#OperationsCreateResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemasParametersList": {
       "type": "list",
       "member": {
         "target": "smithy.api#Document"
       }
     },
-    "com.cloudflare.api_gateway#OperationsCreateResponseFeaturesParameterSchemasParameterSchemas": {
+    "com.cloudflare.api_gateway#OperationsCreateResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas": {
       "type": "structure",
       "members": {
         "parameters": {
-          "target": "com.cloudflare.api_gateway#OperationsCreateResponseFeaturesParameterSchemasParameterSchemasParametersList",
+          "target": "com.cloudflare.api_gateway#OperationsCreateResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemasParametersList",
           "traits": {
             "smithy.api#documentation": "An array containing the learned parameter schemas."
           }
@@ -2909,21 +2960,32 @@
         }
       }
     },
-    "com.cloudflare.api_gateway#OperationsCreateResponseFeaturesParameterSchemas": {
+    "com.cloudflare.api_gateway#OperationsCreateResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemas": {
       "type": "structure",
       "members": {
         "last_updated": {
           "target": "smithy.api#String"
         },
         "parameter_schemas": {
-          "target": "com.cloudflare.api_gateway#OperationsCreateResponseFeaturesParameterSchemasParameterSchemas",
+          "target": "com.cloudflare.api_gateway#OperationsCreateResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas",
           "traits": {
             "smithy.api#documentation": "An operation schema object containing a response."
           }
         }
       }
     },
-    "com.cloudflare.api_gateway#OperationsCreateResponseFeaturesApiRouting": {
+    "com.cloudflare.api_gateway#OperationsCreateResponseFeaturesAPIShieldOperationFeatureParameterSchemas": {
+      "type": "structure",
+      "members": {
+        "parameter_schemas": {
+          "target": "com.cloudflare.api_gateway#OperationsCreateResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemas",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.api_gateway#OperationsCreateResponseFeaturesAPIShieldOperationFeatureAPIRoutingApiRouting": {
       "type": "structure",
       "members": {
         "last_updated": {
@@ -2937,7 +2999,18 @@
         }
       }
     },
-    "com.cloudflare.api_gateway#OperationsCreateResponseFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90": {
+    "com.cloudflare.api_gateway#OperationsCreateResponseFeaturesAPIShieldOperationFeatureAPIRouting": {
+      "type": "structure",
+      "members": {
+        "api_routing": {
+          "target": "com.cloudflare.api_gateway#OperationsCreateResponseFeaturesAPIShieldOperationFeatureAPIRoutingApiRouting",
+          "traits": {
+            "smithy.api#documentation": "API Routing settings on endpoint."
+          }
+        }
+      }
+    },
+    "com.cloudflare.api_gateway#OperationsCreateResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90": {
       "type": "structure",
       "members": {
         "lower": {
@@ -2954,7 +3027,7 @@
         }
       }
     },
-    "com.cloudflare.api_gateway#OperationsCreateResponseFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95": {
+    "com.cloudflare.api_gateway#OperationsCreateResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95": {
       "type": "structure",
       "members": {
         "lower": {
@@ -2971,7 +3044,7 @@
         }
       }
     },
-    "com.cloudflare.api_gateway#OperationsCreateResponseFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99": {
+    "com.cloudflare.api_gateway#OperationsCreateResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99": {
       "type": "structure",
       "members": {
         "lower": {
@@ -2988,34 +3061,34 @@
         }
       }
     },
-    "com.cloudflare.api_gateway#OperationsCreateResponseFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervals": {
+    "com.cloudflare.api_gateway#OperationsCreateResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervals": {
       "type": "structure",
       "members": {
         "p90": {
-          "target": "com.cloudflare.api_gateway#OperationsCreateResponseFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90",
+          "target": "com.cloudflare.api_gateway#OperationsCreateResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90",
           "traits": {
             "smithy.api#documentation": "Upper and lower bound for percentile estimate"
           }
         },
         "p95": {
-          "target": "com.cloudflare.api_gateway#OperationsCreateResponseFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95",
+          "target": "com.cloudflare.api_gateway#OperationsCreateResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95",
           "traits": {
             "smithy.api#documentation": "Upper and lower bound for percentile estimate"
           }
         },
         "p99": {
-          "target": "com.cloudflare.api_gateway#OperationsCreateResponseFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99",
+          "target": "com.cloudflare.api_gateway#OperationsCreateResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99",
           "traits": {
             "smithy.api#documentation": "Upper and lower bound for percentile estimate"
           }
         }
       }
     },
-    "com.cloudflare.api_gateway#OperationsCreateResponseFeaturesConfidenceIntervalsSuggestedThreshold": {
+    "com.cloudflare.api_gateway#OperationsCreateResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThreshold": {
       "type": "structure",
       "members": {
         "confidence_intervals": {
-          "target": "com.cloudflare.api_gateway#OperationsCreateResponseFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervals"
+          "target": "com.cloudflare.api_gateway#OperationsCreateResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervals"
         },
         "mean": {
           "target": "smithy.api#Double",
@@ -3025,18 +3098,26 @@
         }
       }
     },
-    "com.cloudflare.api_gateway#OperationsCreateResponseFeaturesConfidenceIntervals": {
+    "com.cloudflare.api_gateway#OperationsCreateResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervals": {
       "type": "structure",
       "members": {
         "last_updated": {
           "target": "smithy.api#String"
         },
         "suggested_threshold": {
-          "target": "com.cloudflare.api_gateway#OperationsCreateResponseFeaturesConfidenceIntervalsSuggestedThreshold"
+          "target": "com.cloudflare.api_gateway#OperationsCreateResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThreshold"
         }
       }
     },
-    "com.cloudflare.api_gateway#OperationsCreateResponseFeaturesSchemaInfoActiveSchema": {
+    "com.cloudflare.api_gateway#OperationsCreateResponseFeaturesAPIShieldOperationFeatureConfidenceIntervals": {
+      "type": "structure",
+      "members": {
+        "confidence_intervals": {
+          "target": "com.cloudflare.api_gateway#OperationsCreateResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervals"
+        }
+      }
+    },
+    "com.cloudflare.api_gateway#OperationsCreateResponseFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoActiveSchema": {
       "type": "structure",
       "members": {
         "id": {
@@ -3062,7 +3143,7 @@
         }
       }
     },
-    "com.cloudflare.api_gateway#OperationsCreateResponseFeaturesSchemaInfoMitigationAction": {
+    "com.cloudflare.api_gateway#OperationsCreateResponseFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoMitigationAction": {
       "type": "enum",
       "members": {
         "NONE": {
@@ -3085,11 +3166,11 @@
         }
       }
     },
-    "com.cloudflare.api_gateway#OperationsCreateResponseFeaturesSchemaInfo": {
+    "com.cloudflare.api_gateway#OperationsCreateResponseFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfo": {
       "type": "structure",
       "members": {
         "active_schema": {
-          "target": "com.cloudflare.api_gateway#OperationsCreateResponseFeaturesSchemaInfoActiveSchema",
+          "target": "com.cloudflare.api_gateway#OperationsCreateResponseFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoActiveSchema",
           "traits": {
             "smithy.api#documentation": "Schema active on endpoint."
           }
@@ -3101,33 +3182,38 @@
           }
         },
         "mitigation_action": {
-          "target": "com.cloudflare.api_gateway#OperationsCreateResponseFeaturesSchemaInfoMitigationAction",
+          "target": "com.cloudflare.api_gateway#OperationsCreateResponseFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoMitigationAction",
           "traits": {
             "smithy.api#documentation": "Action taken on requests failing validation."
           }
         }
       }
     },
-    "com.cloudflare.api_gateway#OperationsCreateResponseFeatures": {
+    "com.cloudflare.api_gateway#OperationsCreateResponseFeaturesAPIShieldOperationFeatureSchemaInfo": {
       "type": "structure",
       "members": {
-        "thresholds": {
-          "target": "com.cloudflare.api_gateway#OperationsCreateResponseFeaturesThresholds"
-        },
-        "parameter_schemas": {
-          "target": "com.cloudflare.api_gateway#OperationsCreateResponseFeaturesParameterSchemas"
-        },
-        "api_routing": {
-          "target": "com.cloudflare.api_gateway#OperationsCreateResponseFeaturesApiRouting",
-          "traits": {
-            "smithy.api#documentation": "API Routing settings on endpoint."
-          }
-        },
-        "confidence_intervals": {
-          "target": "com.cloudflare.api_gateway#OperationsCreateResponseFeaturesConfidenceIntervals"
-        },
         "schema_info": {
-          "target": "com.cloudflare.api_gateway#OperationsCreateResponseFeaturesSchemaInfo"
+          "target": "com.cloudflare.api_gateway#OperationsCreateResponseFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfo"
+        }
+      }
+    },
+    "com.cloudflare.api_gateway#OperationsCreateResponseFeatures": {
+      "type": "union",
+      "members": {
+        "APIShieldOperationFeatureThresholds": {
+          "target": "com.cloudflare.api_gateway#OperationsCreateResponseFeaturesAPIShieldOperationFeatureThresholds"
+        },
+        "APIShieldOperationFeatureParameterSchemas": {
+          "target": "com.cloudflare.api_gateway#OperationsCreateResponseFeaturesAPIShieldOperationFeatureParameterSchemas"
+        },
+        "APIShieldOperationFeatureAPIRouting": {
+          "target": "com.cloudflare.api_gateway#OperationsCreateResponseFeaturesAPIShieldOperationFeatureAPIRouting"
+        },
+        "APIShieldOperationFeatureConfidenceIntervals": {
+          "target": "com.cloudflare.api_gateway#OperationsCreateResponseFeaturesAPIShieldOperationFeatureConfidenceIntervals"
+        },
+        "APIShieldOperationFeatureSchemaInfo": {
+          "target": "com.cloudflare.api_gateway#OperationsCreateResponseFeaturesAPIShieldOperationFeatureSchemaInfo"
         }
       }
     },
@@ -3431,7 +3517,7 @@
         }
       }
     },
-    "com.cloudflare.api_gateway#OperationsGetResponseFeaturesThresholds": {
+    "com.cloudflare.api_gateway#OperationsGetResponseFeaturesAPIShieldOperationFeatureThresholdsThresholds": {
       "type": "structure",
       "members": {
         "auth_id_tokens": {
@@ -3487,17 +3573,25 @@
         }
       }
     },
-    "com.cloudflare.api_gateway#OperationsGetResponseFeaturesParameterSchemasParameterSchemasParametersList": {
+    "com.cloudflare.api_gateway#OperationsGetResponseFeaturesAPIShieldOperationFeatureThresholds": {
+      "type": "structure",
+      "members": {
+        "thresholds": {
+          "target": "com.cloudflare.api_gateway#OperationsGetResponseFeaturesAPIShieldOperationFeatureThresholdsThresholds"
+        }
+      }
+    },
+    "com.cloudflare.api_gateway#OperationsGetResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemasParametersList": {
       "type": "list",
       "member": {
         "target": "smithy.api#Document"
       }
     },
-    "com.cloudflare.api_gateway#OperationsGetResponseFeaturesParameterSchemasParameterSchemas": {
+    "com.cloudflare.api_gateway#OperationsGetResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas": {
       "type": "structure",
       "members": {
         "parameters": {
-          "target": "com.cloudflare.api_gateway#OperationsGetResponseFeaturesParameterSchemasParameterSchemasParametersList",
+          "target": "com.cloudflare.api_gateway#OperationsGetResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemasParametersList",
           "traits": {
             "smithy.api#documentation": "An array containing the learned parameter schemas."
           }
@@ -3510,21 +3604,32 @@
         }
       }
     },
-    "com.cloudflare.api_gateway#OperationsGetResponseFeaturesParameterSchemas": {
+    "com.cloudflare.api_gateway#OperationsGetResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemas": {
       "type": "structure",
       "members": {
         "last_updated": {
           "target": "smithy.api#String"
         },
         "parameter_schemas": {
-          "target": "com.cloudflare.api_gateway#OperationsGetResponseFeaturesParameterSchemasParameterSchemas",
+          "target": "com.cloudflare.api_gateway#OperationsGetResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas",
           "traits": {
             "smithy.api#documentation": "An operation schema object containing a response."
           }
         }
       }
     },
-    "com.cloudflare.api_gateway#OperationsGetResponseFeaturesApiRouting": {
+    "com.cloudflare.api_gateway#OperationsGetResponseFeaturesAPIShieldOperationFeatureParameterSchemas": {
+      "type": "structure",
+      "members": {
+        "parameter_schemas": {
+          "target": "com.cloudflare.api_gateway#OperationsGetResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemas",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.api_gateway#OperationsGetResponseFeaturesAPIShieldOperationFeatureAPIRoutingApiRouting": {
       "type": "structure",
       "members": {
         "last_updated": {
@@ -3538,7 +3643,18 @@
         }
       }
     },
-    "com.cloudflare.api_gateway#OperationsGetResponseFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90": {
+    "com.cloudflare.api_gateway#OperationsGetResponseFeaturesAPIShieldOperationFeatureAPIRouting": {
+      "type": "structure",
+      "members": {
+        "api_routing": {
+          "target": "com.cloudflare.api_gateway#OperationsGetResponseFeaturesAPIShieldOperationFeatureAPIRoutingApiRouting",
+          "traits": {
+            "smithy.api#documentation": "API Routing settings on endpoint."
+          }
+        }
+      }
+    },
+    "com.cloudflare.api_gateway#OperationsGetResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90": {
       "type": "structure",
       "members": {
         "lower": {
@@ -3555,7 +3671,7 @@
         }
       }
     },
-    "com.cloudflare.api_gateway#OperationsGetResponseFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95": {
+    "com.cloudflare.api_gateway#OperationsGetResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95": {
       "type": "structure",
       "members": {
         "lower": {
@@ -3572,7 +3688,7 @@
         }
       }
     },
-    "com.cloudflare.api_gateway#OperationsGetResponseFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99": {
+    "com.cloudflare.api_gateway#OperationsGetResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99": {
       "type": "structure",
       "members": {
         "lower": {
@@ -3589,34 +3705,34 @@
         }
       }
     },
-    "com.cloudflare.api_gateway#OperationsGetResponseFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervals": {
+    "com.cloudflare.api_gateway#OperationsGetResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervals": {
       "type": "structure",
       "members": {
         "p90": {
-          "target": "com.cloudflare.api_gateway#OperationsGetResponseFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90",
+          "target": "com.cloudflare.api_gateway#OperationsGetResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90",
           "traits": {
             "smithy.api#documentation": "Upper and lower bound for percentile estimate"
           }
         },
         "p95": {
-          "target": "com.cloudflare.api_gateway#OperationsGetResponseFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95",
+          "target": "com.cloudflare.api_gateway#OperationsGetResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95",
           "traits": {
             "smithy.api#documentation": "Upper and lower bound for percentile estimate"
           }
         },
         "p99": {
-          "target": "com.cloudflare.api_gateway#OperationsGetResponseFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99",
+          "target": "com.cloudflare.api_gateway#OperationsGetResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99",
           "traits": {
             "smithy.api#documentation": "Upper and lower bound for percentile estimate"
           }
         }
       }
     },
-    "com.cloudflare.api_gateway#OperationsGetResponseFeaturesConfidenceIntervalsSuggestedThreshold": {
+    "com.cloudflare.api_gateway#OperationsGetResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThreshold": {
       "type": "structure",
       "members": {
         "confidence_intervals": {
-          "target": "com.cloudflare.api_gateway#OperationsGetResponseFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervals"
+          "target": "com.cloudflare.api_gateway#OperationsGetResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervals"
         },
         "mean": {
           "target": "smithy.api#Double",
@@ -3626,18 +3742,26 @@
         }
       }
     },
-    "com.cloudflare.api_gateway#OperationsGetResponseFeaturesConfidenceIntervals": {
+    "com.cloudflare.api_gateway#OperationsGetResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervals": {
       "type": "structure",
       "members": {
         "last_updated": {
           "target": "smithy.api#String"
         },
         "suggested_threshold": {
-          "target": "com.cloudflare.api_gateway#OperationsGetResponseFeaturesConfidenceIntervalsSuggestedThreshold"
+          "target": "com.cloudflare.api_gateway#OperationsGetResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThreshold"
         }
       }
     },
-    "com.cloudflare.api_gateway#OperationsGetResponseFeaturesSchemaInfoActiveSchema": {
+    "com.cloudflare.api_gateway#OperationsGetResponseFeaturesAPIShieldOperationFeatureConfidenceIntervals": {
+      "type": "structure",
+      "members": {
+        "confidence_intervals": {
+          "target": "com.cloudflare.api_gateway#OperationsGetResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervals"
+        }
+      }
+    },
+    "com.cloudflare.api_gateway#OperationsGetResponseFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoActiveSchema": {
       "type": "structure",
       "members": {
         "id": {
@@ -3663,7 +3787,7 @@
         }
       }
     },
-    "com.cloudflare.api_gateway#OperationsGetResponseFeaturesSchemaInfoMitigationAction": {
+    "com.cloudflare.api_gateway#OperationsGetResponseFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoMitigationAction": {
       "type": "enum",
       "members": {
         "NONE": {
@@ -3686,11 +3810,11 @@
         }
       }
     },
-    "com.cloudflare.api_gateway#OperationsGetResponseFeaturesSchemaInfo": {
+    "com.cloudflare.api_gateway#OperationsGetResponseFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfo": {
       "type": "structure",
       "members": {
         "active_schema": {
-          "target": "com.cloudflare.api_gateway#OperationsGetResponseFeaturesSchemaInfoActiveSchema",
+          "target": "com.cloudflare.api_gateway#OperationsGetResponseFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoActiveSchema",
           "traits": {
             "smithy.api#documentation": "Schema active on endpoint."
           }
@@ -3702,33 +3826,38 @@
           }
         },
         "mitigation_action": {
-          "target": "com.cloudflare.api_gateway#OperationsGetResponseFeaturesSchemaInfoMitigationAction",
+          "target": "com.cloudflare.api_gateway#OperationsGetResponseFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoMitigationAction",
           "traits": {
             "smithy.api#documentation": "Action taken on requests failing validation."
           }
         }
       }
     },
-    "com.cloudflare.api_gateway#OperationsGetResponseFeatures": {
+    "com.cloudflare.api_gateway#OperationsGetResponseFeaturesAPIShieldOperationFeatureSchemaInfo": {
       "type": "structure",
       "members": {
-        "thresholds": {
-          "target": "com.cloudflare.api_gateway#OperationsGetResponseFeaturesThresholds"
-        },
-        "parameter_schemas": {
-          "target": "com.cloudflare.api_gateway#OperationsGetResponseFeaturesParameterSchemas"
-        },
-        "api_routing": {
-          "target": "com.cloudflare.api_gateway#OperationsGetResponseFeaturesApiRouting",
-          "traits": {
-            "smithy.api#documentation": "API Routing settings on endpoint."
-          }
-        },
-        "confidence_intervals": {
-          "target": "com.cloudflare.api_gateway#OperationsGetResponseFeaturesConfidenceIntervals"
-        },
         "schema_info": {
-          "target": "com.cloudflare.api_gateway#OperationsGetResponseFeaturesSchemaInfo"
+          "target": "com.cloudflare.api_gateway#OperationsGetResponseFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfo"
+        }
+      }
+    },
+    "com.cloudflare.api_gateway#OperationsGetResponseFeatures": {
+      "type": "union",
+      "members": {
+        "APIShieldOperationFeatureThresholds": {
+          "target": "com.cloudflare.api_gateway#OperationsGetResponseFeaturesAPIShieldOperationFeatureThresholds"
+        },
+        "APIShieldOperationFeatureParameterSchemas": {
+          "target": "com.cloudflare.api_gateway#OperationsGetResponseFeaturesAPIShieldOperationFeatureParameterSchemas"
+        },
+        "APIShieldOperationFeatureAPIRouting": {
+          "target": "com.cloudflare.api_gateway#OperationsGetResponseFeaturesAPIShieldOperationFeatureAPIRouting"
+        },
+        "APIShieldOperationFeatureConfidenceIntervals": {
+          "target": "com.cloudflare.api_gateway#OperationsGetResponseFeaturesAPIShieldOperationFeatureConfidenceIntervals"
+        },
+        "APIShieldOperationFeatureSchemaInfo": {
+          "target": "com.cloudflare.api_gateway#OperationsGetResponseFeaturesAPIShieldOperationFeatureSchemaInfo"
         }
       }
     },
@@ -4083,7 +4212,7 @@
         }
       }
     },
-    "com.cloudflare.api_gateway#OperationsListResultItemFeaturesThresholds": {
+    "com.cloudflare.api_gateway#OperationsListResultItemFeaturesAPIShieldOperationFeatureThresholdsThresholds": {
       "type": "structure",
       "members": {
         "auth_id_tokens": {
@@ -4139,17 +4268,25 @@
         }
       }
     },
-    "com.cloudflare.api_gateway#OperationsListResultItemFeaturesParameterSchemasParameterSchemasParametersList": {
+    "com.cloudflare.api_gateway#OperationsListResultItemFeaturesAPIShieldOperationFeatureThresholds": {
+      "type": "structure",
+      "members": {
+        "thresholds": {
+          "target": "com.cloudflare.api_gateway#OperationsListResultItemFeaturesAPIShieldOperationFeatureThresholdsThresholds"
+        }
+      }
+    },
+    "com.cloudflare.api_gateway#OperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemasParametersList": {
       "type": "list",
       "member": {
         "target": "smithy.api#Document"
       }
     },
-    "com.cloudflare.api_gateway#OperationsListResultItemFeaturesParameterSchemasParameterSchemas": {
+    "com.cloudflare.api_gateway#OperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas": {
       "type": "structure",
       "members": {
         "parameters": {
-          "target": "com.cloudflare.api_gateway#OperationsListResultItemFeaturesParameterSchemasParameterSchemasParametersList",
+          "target": "com.cloudflare.api_gateway#OperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemasParametersList",
           "traits": {
             "smithy.api#documentation": "An array containing the learned parameter schemas."
           }
@@ -4162,21 +4299,32 @@
         }
       }
     },
-    "com.cloudflare.api_gateway#OperationsListResultItemFeaturesParameterSchemas": {
+    "com.cloudflare.api_gateway#OperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemas": {
       "type": "structure",
       "members": {
         "last_updated": {
           "target": "smithy.api#String"
         },
         "parameter_schemas": {
-          "target": "com.cloudflare.api_gateway#OperationsListResultItemFeaturesParameterSchemasParameterSchemas",
+          "target": "com.cloudflare.api_gateway#OperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas",
           "traits": {
             "smithy.api#documentation": "An operation schema object containing a response."
           }
         }
       }
     },
-    "com.cloudflare.api_gateway#OperationsListResultItemFeaturesApiRouting": {
+    "com.cloudflare.api_gateway#OperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemas": {
+      "type": "structure",
+      "members": {
+        "parameter_schemas": {
+          "target": "com.cloudflare.api_gateway#OperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemas",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.api_gateway#OperationsListResultItemFeaturesAPIShieldOperationFeatureAPIRoutingApiRouting": {
       "type": "structure",
       "members": {
         "last_updated": {
@@ -4190,7 +4338,18 @@
         }
       }
     },
-    "com.cloudflare.api_gateway#OperationsListResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90": {
+    "com.cloudflare.api_gateway#OperationsListResultItemFeaturesAPIShieldOperationFeatureAPIRouting": {
+      "type": "structure",
+      "members": {
+        "api_routing": {
+          "target": "com.cloudflare.api_gateway#OperationsListResultItemFeaturesAPIShieldOperationFeatureAPIRoutingApiRouting",
+          "traits": {
+            "smithy.api#documentation": "API Routing settings on endpoint."
+          }
+        }
+      }
+    },
+    "com.cloudflare.api_gateway#OperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90": {
       "type": "structure",
       "members": {
         "lower": {
@@ -4207,7 +4366,7 @@
         }
       }
     },
-    "com.cloudflare.api_gateway#OperationsListResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95": {
+    "com.cloudflare.api_gateway#OperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95": {
       "type": "structure",
       "members": {
         "lower": {
@@ -4224,7 +4383,7 @@
         }
       }
     },
-    "com.cloudflare.api_gateway#OperationsListResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99": {
+    "com.cloudflare.api_gateway#OperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99": {
       "type": "structure",
       "members": {
         "lower": {
@@ -4241,34 +4400,34 @@
         }
       }
     },
-    "com.cloudflare.api_gateway#OperationsListResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervals": {
+    "com.cloudflare.api_gateway#OperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervals": {
       "type": "structure",
       "members": {
         "p90": {
-          "target": "com.cloudflare.api_gateway#OperationsListResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90",
+          "target": "com.cloudflare.api_gateway#OperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90",
           "traits": {
             "smithy.api#documentation": "Upper and lower bound for percentile estimate"
           }
         },
         "p95": {
-          "target": "com.cloudflare.api_gateway#OperationsListResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95",
+          "target": "com.cloudflare.api_gateway#OperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95",
           "traits": {
             "smithy.api#documentation": "Upper and lower bound for percentile estimate"
           }
         },
         "p99": {
-          "target": "com.cloudflare.api_gateway#OperationsListResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99",
+          "target": "com.cloudflare.api_gateway#OperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99",
           "traits": {
             "smithy.api#documentation": "Upper and lower bound for percentile estimate"
           }
         }
       }
     },
-    "com.cloudflare.api_gateway#OperationsListResultItemFeaturesConfidenceIntervalsSuggestedThreshold": {
+    "com.cloudflare.api_gateway#OperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThreshold": {
       "type": "structure",
       "members": {
         "confidence_intervals": {
-          "target": "com.cloudflare.api_gateway#OperationsListResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervals"
+          "target": "com.cloudflare.api_gateway#OperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervals"
         },
         "mean": {
           "target": "smithy.api#Double",
@@ -4278,18 +4437,26 @@
         }
       }
     },
-    "com.cloudflare.api_gateway#OperationsListResultItemFeaturesConfidenceIntervals": {
+    "com.cloudflare.api_gateway#OperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervals": {
       "type": "structure",
       "members": {
         "last_updated": {
           "target": "smithy.api#String"
         },
         "suggested_threshold": {
-          "target": "com.cloudflare.api_gateway#OperationsListResultItemFeaturesConfidenceIntervalsSuggestedThreshold"
+          "target": "com.cloudflare.api_gateway#OperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThreshold"
         }
       }
     },
-    "com.cloudflare.api_gateway#OperationsListResultItemFeaturesSchemaInfoActiveSchema": {
+    "com.cloudflare.api_gateway#OperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervals": {
+      "type": "structure",
+      "members": {
+        "confidence_intervals": {
+          "target": "com.cloudflare.api_gateway#OperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervals"
+        }
+      }
+    },
+    "com.cloudflare.api_gateway#OperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoActiveSchema": {
       "type": "structure",
       "members": {
         "id": {
@@ -4315,7 +4482,7 @@
         }
       }
     },
-    "com.cloudflare.api_gateway#OperationsListResultItemFeaturesSchemaInfoMitigationAction": {
+    "com.cloudflare.api_gateway#OperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoMitigationAction": {
       "type": "enum",
       "members": {
         "NONE": {
@@ -4338,11 +4505,11 @@
         }
       }
     },
-    "com.cloudflare.api_gateway#OperationsListResultItemFeaturesSchemaInfo": {
+    "com.cloudflare.api_gateway#OperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfo": {
       "type": "structure",
       "members": {
         "active_schema": {
-          "target": "com.cloudflare.api_gateway#OperationsListResultItemFeaturesSchemaInfoActiveSchema",
+          "target": "com.cloudflare.api_gateway#OperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoActiveSchema",
           "traits": {
             "smithy.api#documentation": "Schema active on endpoint."
           }
@@ -4354,33 +4521,38 @@
           }
         },
         "mitigation_action": {
-          "target": "com.cloudflare.api_gateway#OperationsListResultItemFeaturesSchemaInfoMitigationAction",
+          "target": "com.cloudflare.api_gateway#OperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoMitigationAction",
           "traits": {
             "smithy.api#documentation": "Action taken on requests failing validation."
           }
         }
       }
     },
-    "com.cloudflare.api_gateway#OperationsListResultItemFeatures": {
+    "com.cloudflare.api_gateway#OperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfo": {
       "type": "structure",
       "members": {
-        "thresholds": {
-          "target": "com.cloudflare.api_gateway#OperationsListResultItemFeaturesThresholds"
-        },
-        "parameter_schemas": {
-          "target": "com.cloudflare.api_gateway#OperationsListResultItemFeaturesParameterSchemas"
-        },
-        "api_routing": {
-          "target": "com.cloudflare.api_gateway#OperationsListResultItemFeaturesApiRouting",
-          "traits": {
-            "smithy.api#documentation": "API Routing settings on endpoint."
-          }
-        },
-        "confidence_intervals": {
-          "target": "com.cloudflare.api_gateway#OperationsListResultItemFeaturesConfidenceIntervals"
-        },
         "schema_info": {
-          "target": "com.cloudflare.api_gateway#OperationsListResultItemFeaturesSchemaInfo"
+          "target": "com.cloudflare.api_gateway#OperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfo"
+        }
+      }
+    },
+    "com.cloudflare.api_gateway#OperationsListResultItemFeatures": {
+      "type": "union",
+      "members": {
+        "APIShieldOperationFeatureThresholds": {
+          "target": "com.cloudflare.api_gateway#OperationsListResultItemFeaturesAPIShieldOperationFeatureThresholds"
+        },
+        "APIShieldOperationFeatureParameterSchemas": {
+          "target": "com.cloudflare.api_gateway#OperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemas"
+        },
+        "APIShieldOperationFeatureAPIRouting": {
+          "target": "com.cloudflare.api_gateway#OperationsListResultItemFeaturesAPIShieldOperationFeatureAPIRouting"
+        },
+        "APIShieldOperationFeatureConfidenceIntervals": {
+          "target": "com.cloudflare.api_gateway#OperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervals"
+        },
+        "APIShieldOperationFeatureSchemaInfo": {
+          "target": "com.cloudflare.api_gateway#OperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfo"
         }
       }
     },
@@ -7363,7 +7535,7 @@
         }
       }
     },
-    "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesThresholds": {
+    "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureThresholdsThresholds": {
       "type": "structure",
       "members": {
         "auth_id_tokens": {
@@ -7419,17 +7591,25 @@
         }
       }
     },
-    "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesParameterSchemasParameterSchemasParametersList": {
+    "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureThresholds": {
+      "type": "structure",
+      "members": {
+        "thresholds": {
+          "target": "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureThresholdsThresholds"
+        }
+      }
+    },
+    "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemasParametersList": {
       "type": "list",
       "member": {
         "target": "smithy.api#Document"
       }
     },
-    "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesParameterSchemasParameterSchemas": {
+    "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas": {
       "type": "structure",
       "members": {
         "parameters": {
-          "target": "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesParameterSchemasParameterSchemasParametersList",
+          "target": "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemasParametersList",
           "traits": {
             "smithy.api#documentation": "An array containing the learned parameter schemas."
           }
@@ -7442,21 +7622,32 @@
         }
       }
     },
-    "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesParameterSchemas": {
+    "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemas": {
       "type": "structure",
       "members": {
         "last_updated": {
           "target": "smithy.api#String"
         },
         "parameter_schemas": {
-          "target": "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesParameterSchemasParameterSchemas",
+          "target": "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas",
           "traits": {
             "smithy.api#documentation": "An operation schema object containing a response."
           }
         }
       }
     },
-    "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesApiRouting": {
+    "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemas": {
+      "type": "structure",
+      "members": {
+        "parameter_schemas": {
+          "target": "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemas",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureAPIRoutingApiRouting": {
       "type": "structure",
       "members": {
         "last_updated": {
@@ -7470,7 +7661,18 @@
         }
       }
     },
-    "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90": {
+    "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureAPIRouting": {
+      "type": "structure",
+      "members": {
+        "api_routing": {
+          "target": "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureAPIRoutingApiRouting",
+          "traits": {
+            "smithy.api#documentation": "API Routing settings on endpoint."
+          }
+        }
+      }
+    },
+    "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90": {
       "type": "structure",
       "members": {
         "lower": {
@@ -7487,7 +7689,7 @@
         }
       }
     },
-    "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95": {
+    "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95": {
       "type": "structure",
       "members": {
         "lower": {
@@ -7504,7 +7706,7 @@
         }
       }
     },
-    "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99": {
+    "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99": {
       "type": "structure",
       "members": {
         "lower": {
@@ -7521,34 +7723,34 @@
         }
       }
     },
-    "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervals": {
+    "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervals": {
       "type": "structure",
       "members": {
         "p90": {
-          "target": "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90",
+          "target": "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90",
           "traits": {
             "smithy.api#documentation": "Upper and lower bound for percentile estimate"
           }
         },
         "p95": {
-          "target": "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95",
+          "target": "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95",
           "traits": {
             "smithy.api#documentation": "Upper and lower bound for percentile estimate"
           }
         },
         "p99": {
-          "target": "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99",
+          "target": "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99",
           "traits": {
             "smithy.api#documentation": "Upper and lower bound for percentile estimate"
           }
         }
       }
     },
-    "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesConfidenceIntervalsSuggestedThreshold": {
+    "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThreshold": {
       "type": "structure",
       "members": {
         "confidence_intervals": {
-          "target": "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervals"
+          "target": "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervals"
         },
         "mean": {
           "target": "smithy.api#Double",
@@ -7558,18 +7760,26 @@
         }
       }
     },
-    "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesConfidenceIntervals": {
+    "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervals": {
       "type": "structure",
       "members": {
         "last_updated": {
           "target": "smithy.api#String"
         },
         "suggested_threshold": {
-          "target": "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesConfidenceIntervalsSuggestedThreshold"
+          "target": "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThreshold"
         }
       }
     },
-    "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesSchemaInfoActiveSchema": {
+    "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervals": {
+      "type": "structure",
+      "members": {
+        "confidence_intervals": {
+          "target": "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervals"
+        }
+      }
+    },
+    "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoActiveSchema": {
       "type": "structure",
       "members": {
         "id": {
@@ -7595,7 +7805,7 @@
         }
       }
     },
-    "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesSchemaInfoMitigationAction": {
+    "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoMitigationAction": {
       "type": "enum",
       "members": {
         "NONE": {
@@ -7618,11 +7828,11 @@
         }
       }
     },
-    "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesSchemaInfo": {
+    "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfo": {
       "type": "structure",
       "members": {
         "active_schema": {
-          "target": "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesSchemaInfoActiveSchema",
+          "target": "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoActiveSchema",
           "traits": {
             "smithy.api#documentation": "Schema active on endpoint."
           }
@@ -7634,33 +7844,38 @@
           }
         },
         "mitigation_action": {
-          "target": "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesSchemaInfoMitigationAction",
+          "target": "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoMitigationAction",
           "traits": {
             "smithy.api#documentation": "Action taken on requests failing validation."
           }
         }
       }
     },
-    "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeatures": {
+    "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfo": {
       "type": "structure",
       "members": {
-        "thresholds": {
-          "target": "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesThresholds"
-        },
-        "parameter_schemas": {
-          "target": "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesParameterSchemas"
-        },
-        "api_routing": {
-          "target": "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesApiRouting",
-          "traits": {
-            "smithy.api#documentation": "API Routing settings on endpoint."
-          }
-        },
-        "confidence_intervals": {
-          "target": "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesConfidenceIntervals"
-        },
         "schema_info": {
-          "target": "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesSchemaInfo"
+          "target": "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfo"
+        }
+      }
+    },
+    "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeatures": {
+      "type": "union",
+      "members": {
+        "APIShieldOperationFeatureThresholds": {
+          "target": "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureThresholds"
+        },
+        "APIShieldOperationFeatureParameterSchemas": {
+          "target": "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemas"
+        },
+        "APIShieldOperationFeatureAPIRouting": {
+          "target": "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureAPIRouting"
+        },
+        "APIShieldOperationFeatureConfidenceIntervals": {
+          "target": "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervals"
+        },
+        "APIShieldOperationFeatureSchemaInfo": {
+          "target": "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfo"
         }
       }
     },

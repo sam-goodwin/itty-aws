@@ -12,84 +12,118 @@ import * as Retry from "../retry.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
-export type AiSearchRequestFiltersType = "eq" | "ne" | "gt" | (string & {});
-export const AiSearchRequestFiltersType = /*@__PURE__*/ S.String;
-
-export interface AiSearchRequestFiltersValue {
-  string: unknown;
-  number: unknown;
-  boolean: unknown;
-}
-export const AiSearchRequestFiltersValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    string: S.Unknown,
-    number: S.Unknown,
-    boolean: S.Unknown,
-  }),
-).annotate({
-  identifier: "AiSearchRequestFiltersValue",
-}) as any as S.Schema<AiSearchRequestFiltersValue>;
-
-export type AiSearchRequestFiltersFiltersItemType =
+export type AiSearchRequestFiltersObjectKeyTypeValueType =
   | "eq"
   | "ne"
   | "gt"
   | (string & {});
-export const AiSearchRequestFiltersFiltersItemType = /*@__PURE__*/ S.String;
+export const AiSearchRequestFiltersObjectKeyTypeValueType =
+  /*@__PURE__*/ S.String;
 
-export interface AiSearchRequestFiltersFiltersItemValue {
+export interface AiSearchRequestFiltersObjectKeyTypeValueValue {
   string: unknown;
   number: unknown;
   boolean: unknown;
 }
-export const AiSearchRequestFiltersFiltersItemValue = /*@__PURE__*/ S.suspend(
-  () =>
+export const AiSearchRequestFiltersObjectKeyTypeValueValue =
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       string: S.Unknown,
       number: S.Unknown,
       boolean: S.Unknown,
     }),
-).annotate({
-  identifier: "AiSearchRequestFiltersFiltersItemValue",
-}) as any as S.Schema<AiSearchRequestFiltersFiltersItemValue>;
+  ).annotate({
+    identifier: "AiSearchRequestFiltersObjectKeyTypeValueValue",
+  }) as any as S.Schema<AiSearchRequestFiltersObjectKeyTypeValueValue>;
 
-export interface AiSearchRequestFiltersFiltersItem {
+export interface AiSearchRequestFiltersObjectKeyTypeValue {
   key: string;
-  type: AiSearchRequestFiltersFiltersItemType;
-  value: AiSearchRequestFiltersFiltersItemValue;
+  type: AiSearchRequestFiltersObjectKeyTypeValueType;
+  value: AiSearchRequestFiltersObjectKeyTypeValueValue;
 }
-export const AiSearchRequestFiltersFiltersItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.String,
-    type: AiSearchRequestFiltersFiltersItemType,
-    value: AiSearchRequestFiltersFiltersItemValue,
-  }),
+export const AiSearchRequestFiltersObjectKeyTypeValue = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      key: S.String,
+      type: AiSearchRequestFiltersObjectKeyTypeValueType,
+      value: AiSearchRequestFiltersObjectKeyTypeValueValue,
+    }),
 ).annotate({
-  identifier: "AiSearchRequestFiltersFiltersItem",
-}) as any as S.Schema<AiSearchRequestFiltersFiltersItem>;
+  identifier: "AiSearchRequestFiltersObjectKeyTypeValue",
+}) as any as S.Schema<AiSearchRequestFiltersObjectKeyTypeValue>;
 
-export type AiSearchRequestFiltersFiltersList =
-  AiSearchRequestFiltersFiltersItem[];
-export const AiSearchRequestFiltersFiltersList = /*@__PURE__*/ S.Array(
-  AiSearchRequestFiltersFiltersItem,
-) as any as S.Schema<AiSearchRequestFiltersFiltersList>;
+export type AiSearchRequestFiltersObjectFiltersTypeFiltersItemType =
+  | "eq"
+  | "ne"
+  | "gt"
+  | (string & {});
+export const AiSearchRequestFiltersObjectFiltersTypeFiltersItemType =
+  /*@__PURE__*/ S.String;
 
-export interface AiSearchRequestFilters {
-  key?: string;
-  type?: AiSearchRequestFiltersType;
-  value?: AiSearchRequestFiltersValue;
-  filters?: AiSearchRequestFiltersFiltersList;
+export interface AiSearchRequestFiltersObjectFiltersTypeFiltersItemValue {
+  string: unknown;
+  number: unknown;
+  boolean: unknown;
 }
-export const AiSearchRequestFilters = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    type: S.optional(AiSearchRequestFiltersType),
-    value: S.optional(AiSearchRequestFiltersValue),
-    filters: S.optional(AiSearchRequestFiltersFiltersList),
-  }),
+export const AiSearchRequestFiltersObjectFiltersTypeFiltersItemValue =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      string: S.Unknown,
+      number: S.Unknown,
+      boolean: S.Unknown,
+    }),
+  ).annotate({
+    identifier: "AiSearchRequestFiltersObjectFiltersTypeFiltersItemValue",
+  }) as any as S.Schema<AiSearchRequestFiltersObjectFiltersTypeFiltersItemValue>;
+
+export interface AiSearchRequestFiltersObjectFiltersTypeFiltersItem {
+  key: string;
+  type: AiSearchRequestFiltersObjectFiltersTypeFiltersItemType;
+  value: AiSearchRequestFiltersObjectFiltersTypeFiltersItemValue;
+}
+export const AiSearchRequestFiltersObjectFiltersTypeFiltersItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      key: S.String,
+      type: AiSearchRequestFiltersObjectFiltersTypeFiltersItemType,
+      value: AiSearchRequestFiltersObjectFiltersTypeFiltersItemValue,
+    }),
+  ).annotate({
+    identifier: "AiSearchRequestFiltersObjectFiltersTypeFiltersItem",
+  }) as any as S.Schema<AiSearchRequestFiltersObjectFiltersTypeFiltersItem>;
+
+export type AiSearchRequestFiltersObjectFiltersTypeFiltersList =
+  AiSearchRequestFiltersObjectFiltersTypeFiltersItem[];
+export const AiSearchRequestFiltersObjectFiltersTypeFiltersList =
+  /*@__PURE__*/ S.Array(
+    AiSearchRequestFiltersObjectFiltersTypeFiltersItem,
+  ) as any as S.Schema<AiSearchRequestFiltersObjectFiltersTypeFiltersList>;
+
+export type AiSearchRequestFiltersObjectFiltersTypeType =
+  | "and"
+  | "or"
+  | (string & {});
+export const AiSearchRequestFiltersObjectFiltersTypeType =
+  /*@__PURE__*/ S.String;
+
+export interface AiSearchRequestFiltersObjectFiltersType {
+  filters: AiSearchRequestFiltersObjectFiltersTypeFiltersList;
+  type: AiSearchRequestFiltersObjectFiltersTypeType;
+}
+export const AiSearchRequestFiltersObjectFiltersType = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      filters: AiSearchRequestFiltersObjectFiltersTypeFiltersList,
+      type: AiSearchRequestFiltersObjectFiltersTypeType,
+    }),
 ).annotate({
-  identifier: "AiSearchRequestFilters",
-}) as any as S.Schema<AiSearchRequestFilters>;
+  identifier: "AiSearchRequestFiltersObjectFiltersType",
+}) as any as S.Schema<AiSearchRequestFiltersObjectFiltersType>;
+
+export type AiSearchRequestFilters =
+  | AiSearchRequestFiltersObjectKeyTypeValue
+  | AiSearchRequestFiltersObjectFiltersType;
+export const AiSearchRequestFilters = /*@__PURE__*/ S.Unknown;
 
 export type AiSearchRequestModel =
   | "@cf/meta/llama-3.3-70b-instruct-fp8-fast"
@@ -452,83 +486,117 @@ export const JobsLogsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "JobsLogsResponse",
 }) as any as S.Schema<JobsLogsResponse>;
 
-export type SearchRequestFiltersType = "eq" | "ne" | "gt" | (string & {});
-export const SearchRequestFiltersType = /*@__PURE__*/ S.String;
-
-export interface SearchRequestFiltersValue {
-  string: unknown;
-  number: unknown;
-  boolean: unknown;
-}
-export const SearchRequestFiltersValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    string: S.Unknown,
-    number: S.Unknown,
-    boolean: S.Unknown,
-  }),
-).annotate({
-  identifier: "SearchRequestFiltersValue",
-}) as any as S.Schema<SearchRequestFiltersValue>;
-
-export type SearchRequestFiltersFiltersItemType =
+export type SearchRequestFiltersObjectKeyTypeValueType =
   | "eq"
   | "ne"
   | "gt"
   | (string & {});
-export const SearchRequestFiltersFiltersItemType = /*@__PURE__*/ S.String;
+export const SearchRequestFiltersObjectKeyTypeValueType =
+  /*@__PURE__*/ S.String;
 
-export interface SearchRequestFiltersFiltersItemValue {
+export interface SearchRequestFiltersObjectKeyTypeValueValue {
   string: unknown;
   number: unknown;
   boolean: unknown;
 }
-export const SearchRequestFiltersFiltersItemValue = /*@__PURE__*/ S.suspend(
-  () =>
+export const SearchRequestFiltersObjectKeyTypeValueValue =
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       string: S.Unknown,
       number: S.Unknown,
       boolean: S.Unknown,
     }),
-).annotate({
-  identifier: "SearchRequestFiltersFiltersItemValue",
-}) as any as S.Schema<SearchRequestFiltersFiltersItemValue>;
+  ).annotate({
+    identifier: "SearchRequestFiltersObjectKeyTypeValueValue",
+  }) as any as S.Schema<SearchRequestFiltersObjectKeyTypeValueValue>;
 
-export interface SearchRequestFiltersFiltersItem {
+export interface SearchRequestFiltersObjectKeyTypeValue {
   key: string;
-  type: SearchRequestFiltersFiltersItemType;
-  value: SearchRequestFiltersFiltersItemValue;
+  type: SearchRequestFiltersObjectKeyTypeValueType;
+  value: SearchRequestFiltersObjectKeyTypeValueValue;
 }
-export const SearchRequestFiltersFiltersItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.String,
-    type: SearchRequestFiltersFiltersItemType,
-    value: SearchRequestFiltersFiltersItemValue,
-  }),
+export const SearchRequestFiltersObjectKeyTypeValue = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      key: S.String,
+      type: SearchRequestFiltersObjectKeyTypeValueType,
+      value: SearchRequestFiltersObjectKeyTypeValueValue,
+    }),
 ).annotate({
-  identifier: "SearchRequestFiltersFiltersItem",
-}) as any as S.Schema<SearchRequestFiltersFiltersItem>;
+  identifier: "SearchRequestFiltersObjectKeyTypeValue",
+}) as any as S.Schema<SearchRequestFiltersObjectKeyTypeValue>;
 
-export type SearchRequestFiltersFiltersList = SearchRequestFiltersFiltersItem[];
-export const SearchRequestFiltersFiltersList = /*@__PURE__*/ S.Array(
-  SearchRequestFiltersFiltersItem,
-) as any as S.Schema<SearchRequestFiltersFiltersList>;
+export type SearchRequestFiltersObjectFiltersTypeFiltersItemType =
+  | "eq"
+  | "ne"
+  | "gt"
+  | (string & {});
+export const SearchRequestFiltersObjectFiltersTypeFiltersItemType =
+  /*@__PURE__*/ S.String;
 
-export interface SearchRequestFilters {
-  key?: string;
-  type?: SearchRequestFiltersType;
-  value?: SearchRequestFiltersValue;
-  filters?: SearchRequestFiltersFiltersList;
+export interface SearchRequestFiltersObjectFiltersTypeFiltersItemValue {
+  string: unknown;
+  number: unknown;
+  boolean: unknown;
 }
-export const SearchRequestFilters = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    type: S.optional(SearchRequestFiltersType),
-    value: S.optional(SearchRequestFiltersValue),
-    filters: S.optional(SearchRequestFiltersFiltersList),
-  }),
+export const SearchRequestFiltersObjectFiltersTypeFiltersItemValue =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      string: S.Unknown,
+      number: S.Unknown,
+      boolean: S.Unknown,
+    }),
+  ).annotate({
+    identifier: "SearchRequestFiltersObjectFiltersTypeFiltersItemValue",
+  }) as any as S.Schema<SearchRequestFiltersObjectFiltersTypeFiltersItemValue>;
+
+export interface SearchRequestFiltersObjectFiltersTypeFiltersItem {
+  key: string;
+  type: SearchRequestFiltersObjectFiltersTypeFiltersItemType;
+  value: SearchRequestFiltersObjectFiltersTypeFiltersItemValue;
+}
+export const SearchRequestFiltersObjectFiltersTypeFiltersItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      key: S.String,
+      type: SearchRequestFiltersObjectFiltersTypeFiltersItemType,
+      value: SearchRequestFiltersObjectFiltersTypeFiltersItemValue,
+    }),
+  ).annotate({
+    identifier: "SearchRequestFiltersObjectFiltersTypeFiltersItem",
+  }) as any as S.Schema<SearchRequestFiltersObjectFiltersTypeFiltersItem>;
+
+export type SearchRequestFiltersObjectFiltersTypeFiltersList =
+  SearchRequestFiltersObjectFiltersTypeFiltersItem[];
+export const SearchRequestFiltersObjectFiltersTypeFiltersList =
+  /*@__PURE__*/ S.Array(
+    SearchRequestFiltersObjectFiltersTypeFiltersItem,
+  ) as any as S.Schema<SearchRequestFiltersObjectFiltersTypeFiltersList>;
+
+export type SearchRequestFiltersObjectFiltersTypeType =
+  | "and"
+  | "or"
+  | (string & {});
+export const SearchRequestFiltersObjectFiltersTypeType = /*@__PURE__*/ S.String;
+
+export interface SearchRequestFiltersObjectFiltersType {
+  filters: SearchRequestFiltersObjectFiltersTypeFiltersList;
+  type: SearchRequestFiltersObjectFiltersTypeType;
+}
+export const SearchRequestFiltersObjectFiltersType = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      filters: SearchRequestFiltersObjectFiltersTypeFiltersList,
+      type: SearchRequestFiltersObjectFiltersTypeType,
+    }),
 ).annotate({
-  identifier: "SearchRequestFilters",
-}) as any as S.Schema<SearchRequestFilters>;
+  identifier: "SearchRequestFiltersObjectFiltersType",
+}) as any as S.Schema<SearchRequestFiltersObjectFiltersType>;
+
+export type SearchRequestFilters =
+  | SearchRequestFiltersObjectKeyTypeValue
+  | SearchRequestFiltersObjectFiltersType;
+export const SearchRequestFilters = /*@__PURE__*/ S.Unknown;
 
 export interface SearchRequestRankingOptions {
   ranker?: string;

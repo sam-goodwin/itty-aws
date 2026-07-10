@@ -1653,26 +1653,51 @@
         }
       }
     },
-    "com.cloudflare.token_validation#RulesBulkEditRequestBodyItemPosition": {
+    "com.cloudflare.token_validation#RulesBulkEditRequestBodyItemPositionAPIShieldIndex": {
       "type": "structure",
       "members": {
         "index": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#documentation": "Move rule to this position"
+            "smithy.api#documentation": "Move rule to this position",
+            "smithy.api#required": {}
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.token_validation#RulesBulkEditRequestBodyItemPositionAPIShieldBefore": {
+      "type": "structure",
+      "members": {
         "before": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Move rule to before rule with this ID."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.token_validation#RulesBulkEditRequestBodyItemPositionAPIShieldAfter": {
+      "type": "structure",
+      "members": {
         "after": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Move rule to after rule with this ID."
           }
+        }
+      }
+    },
+    "com.cloudflare.token_validation#RulesBulkEditRequestBodyItemPosition": {
+      "type": "union",
+      "members": {
+        "APIShieldIndex": {
+          "target": "com.cloudflare.token_validation#RulesBulkEditRequestBodyItemPositionAPIShieldIndex"
+        },
+        "APIShieldBefore": {
+          "target": "com.cloudflare.token_validation#RulesBulkEditRequestBodyItemPositionAPIShieldBefore"
+        },
+        "APIShieldAfter": {
+          "target": "com.cloudflare.token_validation#RulesBulkEditRequestBodyItemPositionAPIShieldAfter"
         }
       }
     },
@@ -2371,26 +2396,51 @@
         }
       }
     },
-    "com.cloudflare.token_validation#RulesEditRequestPosition": {
+    "com.cloudflare.token_validation#RulesEditRequestPositionAPIShieldIndex": {
       "type": "structure",
       "members": {
         "index": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#documentation": "Move rule to this position"
+            "smithy.api#documentation": "Move rule to this position",
+            "smithy.api#required": {}
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.token_validation#RulesEditRequestPositionAPIShieldBefore": {
+      "type": "structure",
+      "members": {
         "before": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Move rule to before rule with this ID."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.token_validation#RulesEditRequestPositionAPIShieldAfter": {
+      "type": "structure",
+      "members": {
         "after": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Move rule to after rule with this ID."
           }
+        }
+      }
+    },
+    "com.cloudflare.token_validation#RulesEditRequestPosition": {
+      "type": "union",
+      "members": {
+        "APIShieldIndex": {
+          "target": "com.cloudflare.token_validation#RulesEditRequestPositionAPIShieldIndex"
+        },
+        "APIShieldBefore": {
+          "target": "com.cloudflare.token_validation#RulesEditRequestPositionAPIShieldBefore"
+        },
+        "APIShieldAfter": {
+          "target": "com.cloudflare.token_validation#RulesEditRequestPositionAPIShieldAfter"
         }
       }
     },

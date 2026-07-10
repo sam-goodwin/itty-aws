@@ -1497,13 +1497,13 @@
         "smithy.api#readonly": {}
       }
     },
-    "com.cloudflare.accounts#MembersCreateRequestBodyRolesList": {
+    "com.cloudflare.accounts#MembersCreateRequestBodyIAMCreateMemberWithRolesRolesList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
       }
     },
-    "com.cloudflare.accounts#MembersCreateRequestBodyStatus": {
+    "com.cloudflare.accounts#MembersCreateRequestBodyIAMCreateMemberWithRolesStatus": {
       "type": "enum",
       "members": {
         "ACCEPTED": {
@@ -1520,7 +1520,32 @@
         }
       }
     },
-    "com.cloudflare.accounts#MembersCreateRequestBodyPoliciesItemAccess": {
+    "com.cloudflare.accounts#MembersCreateRequestBodyIAMCreateMemberWithRoles": {
+      "type": "structure",
+      "members": {
+        "email": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The contact email address of the user.",
+            "smithy.api#required": {}
+          }
+        },
+        "roles": {
+          "target": "com.cloudflare.accounts#MembersCreateRequestBodyIAMCreateMemberWithRolesRolesList",
+          "traits": {
+            "smithy.api#documentation": "Array of roles associated with this member.",
+            "smithy.api#required": {}
+          }
+        },
+        "status": {
+          "target": "com.cloudflare.accounts#MembersCreateRequestBodyIAMCreateMemberWithRolesStatus",
+          "traits": {
+            "smithy.api#documentation": "Status of the member invitation. If not provided during creation, defaults to 'pending'."
+          }
+        }
+      }
+    },
+    "com.cloudflare.accounts#MembersCreateRequestBodyIAMCreateMemberWithPoliciesPoliciesItemAccess": {
       "type": "enum",
       "members": {
         "ALLOW": {
@@ -1537,7 +1562,7 @@
         }
       }
     },
-    "com.cloudflare.accounts#MembersCreateRequestBodyPoliciesItemPermissionGroupsItem": {
+    "com.cloudflare.accounts#MembersCreateRequestBodyIAMCreateMemberWithPoliciesPoliciesItemPermissionGroupsItem": {
       "type": "structure",
       "members": {
         "id": {
@@ -1549,13 +1574,13 @@
         }
       }
     },
-    "com.cloudflare.accounts#MembersCreateRequestBodyPoliciesItemPermissionGroupsList": {
+    "com.cloudflare.accounts#MembersCreateRequestBodyIAMCreateMemberWithPoliciesPoliciesItemPermissionGroupsList": {
       "type": "list",
       "member": {
-        "target": "com.cloudflare.accounts#MembersCreateRequestBodyPoliciesItemPermissionGroupsItem"
+        "target": "com.cloudflare.accounts#MembersCreateRequestBodyIAMCreateMemberWithPoliciesPoliciesItemPermissionGroupsItem"
       }
     },
-    "com.cloudflare.accounts#MembersCreateRequestBodyPoliciesItemResourceGroupsItem": {
+    "com.cloudflare.accounts#MembersCreateRequestBodyIAMCreateMemberWithPoliciesPoliciesItemResourceGroupsItem": {
       "type": "structure",
       "members": {
         "id": {
@@ -1567,13 +1592,13 @@
         }
       }
     },
-    "com.cloudflare.accounts#MembersCreateRequestBodyPoliciesItemResourceGroupsList": {
+    "com.cloudflare.accounts#MembersCreateRequestBodyIAMCreateMemberWithPoliciesPoliciesItemResourceGroupsList": {
       "type": "list",
       "member": {
-        "target": "com.cloudflare.accounts#MembersCreateRequestBodyPoliciesItemResourceGroupsItem"
+        "target": "com.cloudflare.accounts#MembersCreateRequestBodyIAMCreateMemberWithPoliciesPoliciesItemResourceGroupsItem"
       }
     },
-    "com.cloudflare.accounts#MembersCreateRequestBodyPoliciesItem": {
+    "com.cloudflare.accounts#MembersCreateRequestBodyIAMCreateMemberWithPoliciesPoliciesItem": {
       "type": "structure",
       "members": {
         "id": {
@@ -1584,21 +1609,21 @@
           }
         },
         "access": {
-          "target": "com.cloudflare.accounts#MembersCreateRequestBodyPoliciesItemAccess",
+          "target": "com.cloudflare.accounts#MembersCreateRequestBodyIAMCreateMemberWithPoliciesPoliciesItemAccess",
           "traits": {
             "smithy.api#documentation": "Allow or deny operations against the resources.",
             "smithy.api#required": {}
           }
         },
         "permission_groups": {
-          "target": "com.cloudflare.accounts#MembersCreateRequestBodyPoliciesItemPermissionGroupsList",
+          "target": "com.cloudflare.accounts#MembersCreateRequestBodyIAMCreateMemberWithPoliciesPoliciesItemPermissionGroupsList",
           "traits": {
             "smithy.api#documentation": "A set of permission groups that are specified to the policy.",
             "smithy.api#required": {}
           }
         },
         "resource_groups": {
-          "target": "com.cloudflare.accounts#MembersCreateRequestBodyPoliciesItemResourceGroupsList",
+          "target": "com.cloudflare.accounts#MembersCreateRequestBodyIAMCreateMemberWithPoliciesPoliciesItemResourceGroupsList",
           "traits": {
             "smithy.api#documentation": "A list of resource groups that the policy applies to.",
             "smithy.api#required": {}
@@ -1606,38 +1631,62 @@
         }
       }
     },
-    "com.cloudflare.accounts#MembersCreateRequestBodyPoliciesList": {
+    "com.cloudflare.accounts#MembersCreateRequestBodyIAMCreateMemberWithPoliciesPoliciesList": {
       "type": "list",
       "member": {
-        "target": "com.cloudflare.accounts#MembersCreateRequestBodyPoliciesItem"
+        "target": "com.cloudflare.accounts#MembersCreateRequestBodyIAMCreateMemberWithPoliciesPoliciesItem"
       }
     },
-    "com.cloudflare.accounts#MembersCreateRequestBody": {
+    "com.cloudflare.accounts#MembersCreateRequestBodyIAMCreateMemberWithPoliciesStatus": {
+      "type": "enum",
+      "members": {
+        "ACCEPTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "accepted"
+          }
+        },
+        "PENDING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pending"
+          }
+        }
+      }
+    },
+    "com.cloudflare.accounts#MembersCreateRequestBodyIAMCreateMemberWithPolicies": {
       "type": "structure",
       "members": {
         "email": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The contact email address of the user."
-          }
-        },
-        "roles": {
-          "target": "com.cloudflare.accounts#MembersCreateRequestBodyRolesList",
-          "traits": {
-            "smithy.api#documentation": "Array of roles associated with this member."
-          }
-        },
-        "status": {
-          "target": "com.cloudflare.accounts#MembersCreateRequestBodyStatus",
-          "traits": {
-            "smithy.api#documentation": "Status of the member invitation. If not provided during creation, defaults to 'pending'."
+            "smithy.api#documentation": "The contact email address of the user.",
+            "smithy.api#required": {}
           }
         },
         "policies": {
-          "target": "com.cloudflare.accounts#MembersCreateRequestBodyPoliciesList",
+          "target": "com.cloudflare.accounts#MembersCreateRequestBodyIAMCreateMemberWithPoliciesPoliciesList",
           "traits": {
-            "smithy.api#documentation": "Array of policies associated with this member."
+            "smithy.api#documentation": "Array of policies associated with this member.",
+            "smithy.api#required": {}
           }
+        },
+        "status": {
+          "target": "com.cloudflare.accounts#MembersCreateRequestBodyIAMCreateMemberWithPoliciesStatus",
+          "traits": {
+            "smithy.api#documentation": "Status of the member invitation. If not provided during creation, defaults to 'pending'."
+          }
+        }
+      }
+    },
+    "com.cloudflare.accounts#MembersCreateRequestBody": {
+      "type": "union",
+      "members": {
+        "IAMCreateMemberWithRoles": {
+          "target": "com.cloudflare.accounts#MembersCreateRequestBodyIAMCreateMemberWithRoles"
+        },
+        "IAMCreateMemberWithPolicies": {
+          "target": "com.cloudflare.accounts#MembersCreateRequestBodyIAMCreateMemberWithPolicies"
         }
       }
     },
@@ -3052,7 +3101,7 @@
         "smithy.api#readonly": {}
       }
     },
-    "com.cloudflare.accounts#MembersUpdateRequestBodyRolesItemPermissionsAnalytics": {
+    "com.cloudflare.accounts#MembersUpdateRequestBodyIAMUpdateMemberWithRolesRolesItemPermissionsAnalytics": {
       "type": "structure",
       "members": {
         "read": {
@@ -3063,11 +3112,11 @@
         }
       }
     },
-    "com.cloudflare.accounts#MembersUpdateRequestBodyRolesItemPermissions": {
+    "com.cloudflare.accounts#MembersUpdateRequestBodyIAMUpdateMemberWithRolesRolesItemPermissions": {
       "type": "structure",
       "members": {
         "analytics": {
-          "target": "com.cloudflare.accounts#MembersUpdateRequestBodyRolesItemPermissionsAnalytics"
+          "target": "com.cloudflare.accounts#MembersUpdateRequestBodyIAMUpdateMemberWithRolesRolesItemPermissionsAnalytics"
         },
         "billing": {
           "target": "smithy.api#Document"
@@ -3104,7 +3153,7 @@
         }
       }
     },
-    "com.cloudflare.accounts#MembersUpdateRequestBodyRolesItem": {
+    "com.cloudflare.accounts#MembersUpdateRequestBodyIAMUpdateMemberWithRolesRolesItem": {
       "type": "structure",
       "members": {
         "id": {
@@ -3129,20 +3178,20 @@
           }
         },
         "permissions": {
-          "target": "com.cloudflare.accounts#MembersUpdateRequestBodyRolesItemPermissions",
+          "target": "com.cloudflare.accounts#MembersUpdateRequestBodyIAMUpdateMemberWithRolesRolesItemPermissions",
           "traits": {
             "smithy.api#required": {}
           }
         }
       }
     },
-    "com.cloudflare.accounts#MembersUpdateRequestBodyRolesList": {
+    "com.cloudflare.accounts#MembersUpdateRequestBodyIAMUpdateMemberWithRolesRolesList": {
       "type": "list",
       "member": {
-        "target": "com.cloudflare.accounts#MembersUpdateRequestBodyRolesItem"
+        "target": "com.cloudflare.accounts#MembersUpdateRequestBodyIAMUpdateMemberWithRolesRolesItem"
       }
     },
-    "com.cloudflare.accounts#MembersUpdateRequestBodyStatus": {
+    "com.cloudflare.accounts#MembersUpdateRequestBodyIAMUpdateMemberWithRolesStatus": {
       "type": "enum",
       "members": {
         "ACCEPTED": {
@@ -3159,7 +3208,7 @@
         }
       }
     },
-    "com.cloudflare.accounts#MembersUpdateRequestBodyUser": {
+    "com.cloudflare.accounts#MembersUpdateRequestBodyIAMUpdateMemberWithRolesUser": {
       "type": "structure",
       "members": {
         "email": {
@@ -3195,7 +3244,36 @@
         }
       }
     },
-    "com.cloudflare.accounts#MembersUpdateRequestBodyPoliciesItemAccess": {
+    "com.cloudflare.accounts#MembersUpdateRequestBodyIAMUpdateMemberWithRoles": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Membership identifier tag."
+          }
+        },
+        "roles": {
+          "target": "com.cloudflare.accounts#MembersUpdateRequestBodyIAMUpdateMemberWithRolesRolesList",
+          "traits": {
+            "smithy.api#documentation": "Roles assigned to this member."
+          }
+        },
+        "status": {
+          "target": "com.cloudflare.accounts#MembersUpdateRequestBodyIAMUpdateMemberWithRolesStatus",
+          "traits": {
+            "smithy.api#documentation": "A member's status in the account."
+          }
+        },
+        "user": {
+          "target": "com.cloudflare.accounts#MembersUpdateRequestBodyIAMUpdateMemberWithRolesUser",
+          "traits": {
+            "smithy.api#documentation": "Details of the user associated to the membership."
+          }
+        }
+      }
+    },
+    "com.cloudflare.accounts#MembersUpdateRequestBodyIAMUpdateMemberWithPoliciesPoliciesItemAccess": {
       "type": "enum",
       "members": {
         "ALLOW": {
@@ -3212,7 +3290,7 @@
         }
       }
     },
-    "com.cloudflare.accounts#MembersUpdateRequestBodyPoliciesItemPermissionGroupsItem": {
+    "com.cloudflare.accounts#MembersUpdateRequestBodyIAMUpdateMemberWithPoliciesPoliciesItemPermissionGroupsItem": {
       "type": "structure",
       "members": {
         "id": {
@@ -3224,13 +3302,13 @@
         }
       }
     },
-    "com.cloudflare.accounts#MembersUpdateRequestBodyPoliciesItemPermissionGroupsList": {
+    "com.cloudflare.accounts#MembersUpdateRequestBodyIAMUpdateMemberWithPoliciesPoliciesItemPermissionGroupsList": {
       "type": "list",
       "member": {
-        "target": "com.cloudflare.accounts#MembersUpdateRequestBodyPoliciesItemPermissionGroupsItem"
+        "target": "com.cloudflare.accounts#MembersUpdateRequestBodyIAMUpdateMemberWithPoliciesPoliciesItemPermissionGroupsItem"
       }
     },
-    "com.cloudflare.accounts#MembersUpdateRequestBodyPoliciesItemResourceGroupsItem": {
+    "com.cloudflare.accounts#MembersUpdateRequestBodyIAMUpdateMemberWithPoliciesPoliciesItemResourceGroupsItem": {
       "type": "structure",
       "members": {
         "id": {
@@ -3242,13 +3320,13 @@
         }
       }
     },
-    "com.cloudflare.accounts#MembersUpdateRequestBodyPoliciesItemResourceGroupsList": {
+    "com.cloudflare.accounts#MembersUpdateRequestBodyIAMUpdateMemberWithPoliciesPoliciesItemResourceGroupsList": {
       "type": "list",
       "member": {
-        "target": "com.cloudflare.accounts#MembersUpdateRequestBodyPoliciesItemResourceGroupsItem"
+        "target": "com.cloudflare.accounts#MembersUpdateRequestBodyIAMUpdateMemberWithPoliciesPoliciesItemResourceGroupsItem"
       }
     },
-    "com.cloudflare.accounts#MembersUpdateRequestBodyPoliciesItem": {
+    "com.cloudflare.accounts#MembersUpdateRequestBodyIAMUpdateMemberWithPoliciesPoliciesItem": {
       "type": "structure",
       "members": {
         "id": {
@@ -3259,21 +3337,21 @@
           }
         },
         "access": {
-          "target": "com.cloudflare.accounts#MembersUpdateRequestBodyPoliciesItemAccess",
+          "target": "com.cloudflare.accounts#MembersUpdateRequestBodyIAMUpdateMemberWithPoliciesPoliciesItemAccess",
           "traits": {
             "smithy.api#documentation": "Allow or deny operations against the resources.",
             "smithy.api#required": {}
           }
         },
         "permission_groups": {
-          "target": "com.cloudflare.accounts#MembersUpdateRequestBodyPoliciesItemPermissionGroupsList",
+          "target": "com.cloudflare.accounts#MembersUpdateRequestBodyIAMUpdateMemberWithPoliciesPoliciesItemPermissionGroupsList",
           "traits": {
             "smithy.api#documentation": "A set of permission groups that are specified to the policy.",
             "smithy.api#required": {}
           }
         },
         "resource_groups": {
-          "target": "com.cloudflare.accounts#MembersUpdateRequestBodyPoliciesItemResourceGroupsList",
+          "target": "com.cloudflare.accounts#MembersUpdateRequestBodyIAMUpdateMemberWithPoliciesPoliciesItemResourceGroupsList",
           "traits": {
             "smithy.api#documentation": "A list of resource groups that the policy applies to.",
             "smithy.api#required": {}
@@ -3281,44 +3359,32 @@
         }
       }
     },
-    "com.cloudflare.accounts#MembersUpdateRequestBodyPoliciesList": {
+    "com.cloudflare.accounts#MembersUpdateRequestBodyIAMUpdateMemberWithPoliciesPoliciesList": {
       "type": "list",
       "member": {
-        "target": "com.cloudflare.accounts#MembersUpdateRequestBodyPoliciesItem"
+        "target": "com.cloudflare.accounts#MembersUpdateRequestBodyIAMUpdateMemberWithPoliciesPoliciesItem"
+      }
+    },
+    "com.cloudflare.accounts#MembersUpdateRequestBodyIAMUpdateMemberWithPolicies": {
+      "type": "structure",
+      "members": {
+        "policies": {
+          "target": "com.cloudflare.accounts#MembersUpdateRequestBodyIAMUpdateMemberWithPoliciesPoliciesList",
+          "traits": {
+            "smithy.api#documentation": "Array of policies associated with this member.",
+            "smithy.api#required": {}
+          }
+        }
       }
     },
     "com.cloudflare.accounts#MembersUpdateRequestBody": {
-      "type": "structure",
+      "type": "union",
       "members": {
-        "id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Membership identifier tag."
-          }
+        "IAMUpdateMemberWithRoles": {
+          "target": "com.cloudflare.accounts#MembersUpdateRequestBodyIAMUpdateMemberWithRoles"
         },
-        "roles": {
-          "target": "com.cloudflare.accounts#MembersUpdateRequestBodyRolesList",
-          "traits": {
-            "smithy.api#documentation": "Roles assigned to this member."
-          }
-        },
-        "status": {
-          "target": "com.cloudflare.accounts#MembersUpdateRequestBodyStatus",
-          "traits": {
-            "smithy.api#documentation": "A member's status in the account."
-          }
-        },
-        "user": {
-          "target": "com.cloudflare.accounts#MembersUpdateRequestBodyUser",
-          "traits": {
-            "smithy.api#documentation": "Details of the user associated to the membership."
-          }
-        },
-        "policies": {
-          "target": "com.cloudflare.accounts#MembersUpdateRequestBodyPoliciesList",
-          "traits": {
-            "smithy.api#documentation": "Array of policies associated with this member."
-          }
+        "IAMUpdateMemberWithPolicies": {
+          "target": "com.cloudflare.accounts#MembersUpdateRequestBodyIAMUpdateMemberWithPolicies"
         }
       }
     },

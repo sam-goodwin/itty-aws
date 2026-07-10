@@ -2088,49 +2088,155 @@ export const PatchVariantResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchVariantResponse",
 }) as any as S.Schema<PatchVariantResponse>;
 
-export type PurgeRequestBodyTagsList = string[];
-export const PurgeRequestBodyTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PurgeRequestBodyTagsList>;
+export type PurgeRequestBodyCachePurgeFlexPurgeByTagsTagsList = string[];
+export const PurgeRequestBodyCachePurgeFlexPurgeByTagsTagsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<PurgeRequestBodyCachePurgeFlexPurgeByTagsTagsList>;
 
-export type PurgeRequestBodyHostsList = string[];
-export const PurgeRequestBodyHostsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PurgeRequestBodyHostsList>;
-
-export type PurgeRequestBodyPrefixesList = string[];
-export const PurgeRequestBodyPrefixesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PurgeRequestBodyPrefixesList>;
-
-export type PurgeRequestBodyFilesList = string[];
-export const PurgeRequestBodyFilesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PurgeRequestBodyFilesList>;
-
-export interface PurgeRequestBody {
+export interface PurgeRequestBodyCachePurgeFlexPurgeByTags {
   /** For more information on cache tags and purging by tags, please refer to [purge by cache-tags documentation page](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-tags/). */
-  tags?: PurgeRequestBodyTagsList;
+  tags?: PurgeRequestBodyCachePurgeFlexPurgeByTagsTagsList;
+}
+export const PurgeRequestBodyCachePurgeFlexPurgeByTags =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      tags: S.optional(PurgeRequestBodyCachePurgeFlexPurgeByTagsTagsList),
+    }),
+  ).annotate({
+    identifier: "PurgeRequestBodyCachePurgeFlexPurgeByTags",
+  }) as any as S.Schema<PurgeRequestBodyCachePurgeFlexPurgeByTags>;
+
+export type PurgeRequestBodyCachePurgeFlexPurgeByHostnamesHostsList = string[];
+export const PurgeRequestBodyCachePurgeFlexPurgeByHostnamesHostsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<PurgeRequestBodyCachePurgeFlexPurgeByHostnamesHostsList>;
+
+export interface PurgeRequestBodyCachePurgeFlexPurgeByHostnames {
   /** For more information purging by hostnames, please refer to [purge by hostname documentation page](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-hostname/). */
-  hosts?: PurgeRequestBodyHostsList;
+  hosts?: PurgeRequestBodyCachePurgeFlexPurgeByHostnamesHostsList;
+}
+export const PurgeRequestBodyCachePurgeFlexPurgeByHostnames =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      hosts: S.optional(
+        PurgeRequestBodyCachePurgeFlexPurgeByHostnamesHostsList,
+      ),
+    }),
+  ).annotate({
+    identifier: "PurgeRequestBodyCachePurgeFlexPurgeByHostnames",
+  }) as any as S.Schema<PurgeRequestBodyCachePurgeFlexPurgeByHostnames>;
+
+export type PurgeRequestBodyCachePurgeFlexPurgeByPrefixesPrefixesList =
+  string[];
+export const PurgeRequestBodyCachePurgeFlexPurgeByPrefixesPrefixesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<PurgeRequestBodyCachePurgeFlexPurgeByPrefixesPrefixesList>;
+
+export interface PurgeRequestBodyCachePurgeFlexPurgeByPrefixes {
   /** For more information on purging by prefixes, please refer to [purge by prefix documentation page](https://developers.cloudflare.com/cache/how-to/purge-cache/purge_by_prefix/). */
-  prefixes?: PurgeRequestBodyPrefixesList;
+  prefixes?: PurgeRequestBodyCachePurgeFlexPurgeByPrefixesPrefixesList;
+}
+export const PurgeRequestBodyCachePurgeFlexPurgeByPrefixes =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      prefixes: S.optional(
+        PurgeRequestBodyCachePurgeFlexPurgeByPrefixesPrefixesList,
+      ),
+    }),
+  ).annotate({
+    identifier: "PurgeRequestBodyCachePurgeFlexPurgeByPrefixes",
+  }) as any as S.Schema<PurgeRequestBodyCachePurgeFlexPurgeByPrefixes>;
+
+export interface PurgeRequestBodyCachePurgeEverything {
   /** For more information, please refer to [purge everything documentation page](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-everything/). */
   purgeEverything?: boolean;
-  /** For more information on purging files, please refer to [purge by single-file documentation page](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-single-file/). */
-  files?: PurgeRequestBodyFilesList;
 }
-export const PurgeRequestBody = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tags: S.optional(PurgeRequestBodyTagsList),
-    hosts: S.optional(PurgeRequestBodyHostsList),
-    prefixes: S.optional(PurgeRequestBodyPrefixesList),
-    purgeEverything: S.optional(S.Boolean.pipe(T.Body("purge_everything"))),
-    files: S.optional(PurgeRequestBodyFilesList),
-  }),
+export const PurgeRequestBodyCachePurgeEverything = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      purgeEverything: S.optional(S.Boolean.pipe(T.Body("purge_everything"))),
+    }),
 ).annotate({
-  identifier: "PurgeRequestBody",
-}) as any as S.Schema<PurgeRequestBody>;
+  identifier: "PurgeRequestBodyCachePurgeEverything",
+}) as any as S.Schema<PurgeRequestBodyCachePurgeEverything>;
+
+export type PurgeRequestBodyCachePurgeSingleFileFilesList = string[];
+export const PurgeRequestBodyCachePurgeSingleFileFilesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<PurgeRequestBodyCachePurgeSingleFileFilesList>;
+
+export interface PurgeRequestBodyCachePurgeSingleFile {
+  /** For more information on purging files, please refer to [purge by single-file documentation page](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-single-file/). */
+  files?: PurgeRequestBodyCachePurgeSingleFileFilesList;
+}
+export const PurgeRequestBodyCachePurgeSingleFile = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      files: S.optional(PurgeRequestBodyCachePurgeSingleFileFilesList),
+    }),
+).annotate({
+  identifier: "PurgeRequestBodyCachePurgeSingleFile",
+}) as any as S.Schema<PurgeRequestBodyCachePurgeSingleFile>;
+
+export type PurgeRequestBodyCachePurgeSingleFileWithURLAndHeadersFilesItemHeadersMap =
+  { [key: string]: unknown | undefined };
+export const PurgeRequestBodyCachePurgeSingleFileWithURLAndHeadersFilesItemHeadersMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<PurgeRequestBodyCachePurgeSingleFileWithURLAndHeadersFilesItemHeadersMap>;
+
+export interface PurgeRequestBodyCachePurgeSingleFileWithURLAndHeadersFilesItem {
+  headers?: PurgeRequestBodyCachePurgeSingleFileWithURLAndHeadersFilesItemHeadersMap;
+  url?: string;
+}
+export const PurgeRequestBodyCachePurgeSingleFileWithURLAndHeadersFilesItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      headers: S.optional(
+        PurgeRequestBodyCachePurgeSingleFileWithURLAndHeadersFilesItemHeadersMap,
+      ),
+      url: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "PurgeRequestBodyCachePurgeSingleFileWithURLAndHeadersFilesItem",
+  }) as any as S.Schema<PurgeRequestBodyCachePurgeSingleFileWithURLAndHeadersFilesItem>;
+
+export type PurgeRequestBodyCachePurgeSingleFileWithURLAndHeadersFilesList =
+  PurgeRequestBodyCachePurgeSingleFileWithURLAndHeadersFilesItem[];
+export const PurgeRequestBodyCachePurgeSingleFileWithURLAndHeadersFilesList =
+  /*@__PURE__*/ S.Array(
+    PurgeRequestBodyCachePurgeSingleFileWithURLAndHeadersFilesItem,
+  ) as any as S.Schema<PurgeRequestBodyCachePurgeSingleFileWithURLAndHeadersFilesList>;
+
+export interface PurgeRequestBodyCachePurgeSingleFileWithURLAndHeaders {
+  /** For more information on purging files with URL and headers, please refer to [purge by single-file documentation page](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-single-file/). */
+  files?: PurgeRequestBodyCachePurgeSingleFileWithURLAndHeadersFilesList;
+}
+export const PurgeRequestBodyCachePurgeSingleFileWithURLAndHeaders =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      files: S.optional(
+        PurgeRequestBodyCachePurgeSingleFileWithURLAndHeadersFilesList,
+      ),
+    }),
+  ).annotate({
+    identifier: "PurgeRequestBodyCachePurgeSingleFileWithURLAndHeaders",
+  }) as any as S.Schema<PurgeRequestBodyCachePurgeSingleFileWithURLAndHeaders>;
+
+export type PurgeRequestBody =
+  | PurgeRequestBodyCachePurgeFlexPurgeByTags
+  | PurgeRequestBodyCachePurgeFlexPurgeByHostnames
+  | PurgeRequestBodyCachePurgeFlexPurgeByPrefixes
+  | PurgeRequestBodyCachePurgeEverything
+  | PurgeRequestBodyCachePurgeSingleFile
+  | PurgeRequestBodyCachePurgeSingleFileWithURLAndHeaders;
+export const PurgeRequestBody = /*@__PURE__*/ S.Unknown;
 
 export interface PurgeCacheRequest {
   zoneId: string;
@@ -2165,49 +2271,162 @@ export const PurgeCacheResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PurgeCacheResponse",
 }) as any as S.Schema<PurgeCacheResponse>;
 
-export type PurgeEnvironmentRequestBodyTagsList = string[];
-export const PurgeEnvironmentRequestBodyTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PurgeEnvironmentRequestBodyTagsList>;
+export type PurgeEnvironmentRequestBodyCachePurgeFlexPurgeByTagsTagsList =
+  string[];
+export const PurgeEnvironmentRequestBodyCachePurgeFlexPurgeByTagsTagsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<PurgeEnvironmentRequestBodyCachePurgeFlexPurgeByTagsTagsList>;
 
-export type PurgeEnvironmentRequestBodyHostsList = string[];
-export const PurgeEnvironmentRequestBodyHostsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PurgeEnvironmentRequestBodyHostsList>;
-
-export type PurgeEnvironmentRequestBodyPrefixesList = string[];
-export const PurgeEnvironmentRequestBodyPrefixesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PurgeEnvironmentRequestBodyPrefixesList>;
-
-export type PurgeEnvironmentRequestBodyFilesList = string[];
-export const PurgeEnvironmentRequestBodyFilesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PurgeEnvironmentRequestBodyFilesList>;
-
-export interface PurgeEnvironmentRequestBody {
+export interface PurgeEnvironmentRequestBodyCachePurgeFlexPurgeByTags {
   /** For more information on cache tags and purging by tags, please refer to [purge by cache-tags documentation page](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-tags/). */
-  tags?: PurgeEnvironmentRequestBodyTagsList;
+  tags?: PurgeEnvironmentRequestBodyCachePurgeFlexPurgeByTagsTagsList;
+}
+export const PurgeEnvironmentRequestBodyCachePurgeFlexPurgeByTags =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      tags: S.optional(
+        PurgeEnvironmentRequestBodyCachePurgeFlexPurgeByTagsTagsList,
+      ),
+    }),
+  ).annotate({
+    identifier: "PurgeEnvironmentRequestBodyCachePurgeFlexPurgeByTags",
+  }) as any as S.Schema<PurgeEnvironmentRequestBodyCachePurgeFlexPurgeByTags>;
+
+export type PurgeEnvironmentRequestBodyCachePurgeFlexPurgeByHostnamesHostsList =
+  string[];
+export const PurgeEnvironmentRequestBodyCachePurgeFlexPurgeByHostnamesHostsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<PurgeEnvironmentRequestBodyCachePurgeFlexPurgeByHostnamesHostsList>;
+
+export interface PurgeEnvironmentRequestBodyCachePurgeFlexPurgeByHostnames {
   /** For more information purging by hostnames, please refer to [purge by hostname documentation page](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-hostname/). */
-  hosts?: PurgeEnvironmentRequestBodyHostsList;
+  hosts?: PurgeEnvironmentRequestBodyCachePurgeFlexPurgeByHostnamesHostsList;
+}
+export const PurgeEnvironmentRequestBodyCachePurgeFlexPurgeByHostnames =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      hosts: S.optional(
+        PurgeEnvironmentRequestBodyCachePurgeFlexPurgeByHostnamesHostsList,
+      ),
+    }),
+  ).annotate({
+    identifier: "PurgeEnvironmentRequestBodyCachePurgeFlexPurgeByHostnames",
+  }) as any as S.Schema<PurgeEnvironmentRequestBodyCachePurgeFlexPurgeByHostnames>;
+
+export type PurgeEnvironmentRequestBodyCachePurgeFlexPurgeByPrefixesPrefixesList =
+  string[];
+export const PurgeEnvironmentRequestBodyCachePurgeFlexPurgeByPrefixesPrefixesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<PurgeEnvironmentRequestBodyCachePurgeFlexPurgeByPrefixesPrefixesList>;
+
+export interface PurgeEnvironmentRequestBodyCachePurgeFlexPurgeByPrefixes {
   /** For more information on purging by prefixes, please refer to [purge by prefix documentation page](https://developers.cloudflare.com/cache/how-to/purge-cache/purge_by_prefix/). */
-  prefixes?: PurgeEnvironmentRequestBodyPrefixesList;
+  prefixes?: PurgeEnvironmentRequestBodyCachePurgeFlexPurgeByPrefixesPrefixesList;
+}
+export const PurgeEnvironmentRequestBodyCachePurgeFlexPurgeByPrefixes =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      prefixes: S.optional(
+        PurgeEnvironmentRequestBodyCachePurgeFlexPurgeByPrefixesPrefixesList,
+      ),
+    }),
+  ).annotate({
+    identifier: "PurgeEnvironmentRequestBodyCachePurgeFlexPurgeByPrefixes",
+  }) as any as S.Schema<PurgeEnvironmentRequestBodyCachePurgeFlexPurgeByPrefixes>;
+
+export interface PurgeEnvironmentRequestBodyCachePurgeEverything {
   /** For more information, please refer to [purge everything documentation page](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-everything/). */
   purgeEverything?: boolean;
-  /** For more information on purging files, please refer to [purge by single-file documentation page](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-single-file/). */
-  files?: PurgeEnvironmentRequestBodyFilesList;
 }
-export const PurgeEnvironmentRequestBody = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tags: S.optional(PurgeEnvironmentRequestBodyTagsList),
-    hosts: S.optional(PurgeEnvironmentRequestBodyHostsList),
-    prefixes: S.optional(PurgeEnvironmentRequestBodyPrefixesList),
-    purgeEverything: S.optional(S.Boolean.pipe(T.Body("purge_everything"))),
-    files: S.optional(PurgeEnvironmentRequestBodyFilesList),
-  }),
-).annotate({
-  identifier: "PurgeEnvironmentRequestBody",
-}) as any as S.Schema<PurgeEnvironmentRequestBody>;
+export const PurgeEnvironmentRequestBodyCachePurgeEverything =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      purgeEverything: S.optional(S.Boolean.pipe(T.Body("purge_everything"))),
+    }),
+  ).annotate({
+    identifier: "PurgeEnvironmentRequestBodyCachePurgeEverything",
+  }) as any as S.Schema<PurgeEnvironmentRequestBodyCachePurgeEverything>;
+
+export type PurgeEnvironmentRequestBodyCachePurgeSingleFileFilesList = string[];
+export const PurgeEnvironmentRequestBodyCachePurgeSingleFileFilesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<PurgeEnvironmentRequestBodyCachePurgeSingleFileFilesList>;
+
+export interface PurgeEnvironmentRequestBodyCachePurgeSingleFile {
+  /** For more information on purging files, please refer to [purge by single-file documentation page](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-single-file/). */
+  files?: PurgeEnvironmentRequestBodyCachePurgeSingleFileFilesList;
+}
+export const PurgeEnvironmentRequestBodyCachePurgeSingleFile =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      files: S.optional(
+        PurgeEnvironmentRequestBodyCachePurgeSingleFileFilesList,
+      ),
+    }),
+  ).annotate({
+    identifier: "PurgeEnvironmentRequestBodyCachePurgeSingleFile",
+  }) as any as S.Schema<PurgeEnvironmentRequestBodyCachePurgeSingleFile>;
+
+export type PurgeEnvironmentRequestBodyCachePurgeSingleFileWithURLAndHeadersFilesItemHeadersMap =
+  { [key: string]: unknown | undefined };
+export const PurgeEnvironmentRequestBodyCachePurgeSingleFileWithURLAndHeadersFilesItemHeadersMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<PurgeEnvironmentRequestBodyCachePurgeSingleFileWithURLAndHeadersFilesItemHeadersMap>;
+
+export interface PurgeEnvironmentRequestBodyCachePurgeSingleFileWithURLAndHeadersFilesItem {
+  headers?: PurgeEnvironmentRequestBodyCachePurgeSingleFileWithURLAndHeadersFilesItemHeadersMap;
+  url?: string;
+}
+export const PurgeEnvironmentRequestBodyCachePurgeSingleFileWithURLAndHeadersFilesItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      headers: S.optional(
+        PurgeEnvironmentRequestBodyCachePurgeSingleFileWithURLAndHeadersFilesItemHeadersMap,
+      ),
+      url: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "PurgeEnvironmentRequestBodyCachePurgeSingleFileWithURLAndHeadersFilesItem",
+  }) as any as S.Schema<PurgeEnvironmentRequestBodyCachePurgeSingleFileWithURLAndHeadersFilesItem>;
+
+export type PurgeEnvironmentRequestBodyCachePurgeSingleFileWithURLAndHeadersFilesList =
+  PurgeEnvironmentRequestBodyCachePurgeSingleFileWithURLAndHeadersFilesItem[];
+export const PurgeEnvironmentRequestBodyCachePurgeSingleFileWithURLAndHeadersFilesList =
+  /*@__PURE__*/ S.Array(
+    PurgeEnvironmentRequestBodyCachePurgeSingleFileWithURLAndHeadersFilesItem,
+  ) as any as S.Schema<PurgeEnvironmentRequestBodyCachePurgeSingleFileWithURLAndHeadersFilesList>;
+
+export interface PurgeEnvironmentRequestBodyCachePurgeSingleFileWithURLAndHeaders {
+  /** For more information on purging files with URL and headers, please refer to [purge by single-file documentation page](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-single-file/). */
+  files?: PurgeEnvironmentRequestBodyCachePurgeSingleFileWithURLAndHeadersFilesList;
+}
+export const PurgeEnvironmentRequestBodyCachePurgeSingleFileWithURLAndHeaders =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      files: S.optional(
+        PurgeEnvironmentRequestBodyCachePurgeSingleFileWithURLAndHeadersFilesList,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "PurgeEnvironmentRequestBodyCachePurgeSingleFileWithURLAndHeaders",
+  }) as any as S.Schema<PurgeEnvironmentRequestBodyCachePurgeSingleFileWithURLAndHeaders>;
+
+export type PurgeEnvironmentRequestBody =
+  | PurgeEnvironmentRequestBodyCachePurgeFlexPurgeByTags
+  | PurgeEnvironmentRequestBodyCachePurgeFlexPurgeByHostnames
+  | PurgeEnvironmentRequestBodyCachePurgeFlexPurgeByPrefixes
+  | PurgeEnvironmentRequestBodyCachePurgeEverything
+  | PurgeEnvironmentRequestBodyCachePurgeSingleFile
+  | PurgeEnvironmentRequestBodyCachePurgeSingleFileWithURLAndHeaders;
+export const PurgeEnvironmentRequestBody = /*@__PURE__*/ S.Unknown;
 
 export interface PurgeEnvironmentCacheRequest {
   zoneId: string;

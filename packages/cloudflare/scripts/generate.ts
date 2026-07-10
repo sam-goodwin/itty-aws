@@ -211,7 +211,7 @@ const generateModel = (
   const deps = (id: string): string[] => {
     const d = shapes[id];
     if (!d) return [];
-    if (d.type === "structure")
+    if (d.type === "structure" || d.type === "union")
       return Object.values(d.members ?? {}).map((m: any) => m.target);
     if (d.type === "list") return [d.member.target];
     if (d.type === "map") return [d.value.target];
@@ -557,6 +557,16 @@ const generateModel = (
       out.push(
         `export const ${name} = /*@__PURE__*/ S.Record(S.String, ${ref(d.value.target, i)}) as any as S.Schema<${name}>;\n`,
       );
+    } else if (d.type === "union") {
+      // Discriminated union of object cases. The TS type is the case union;
+      // the schema stays opaque (S.Unknown) so the protocol passes the value
+      // through — dict key-mapping still camelCases it — preserving each
+      // case's exact key set for consumers' `"key" in value` discrimination.
+      const cases = Object.values(d.members ?? {}).map((m: any) =>
+        tsRef(m.target),
+      );
+      out.push(`export type ${name} = ${cases.join(" | ") || "unknown"};`);
+      out.push(`export const ${name} = /*@__PURE__*/ S.Unknown;\n`);
     } else if (d.type === "enum") {
       // Open string union: literal members for autocomplete, `(string & {})`
       // so unknown / future values still pass. The schema stays S.String —

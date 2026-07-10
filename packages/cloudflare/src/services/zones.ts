@@ -2322,18 +2322,31 @@ export const PatchHoldResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchHoldResponse",
 }) as any as S.Schema<PatchHoldResponse>;
 
-export type SettingsEditRequestBodyValueZonesCiphersValueList = string[];
-export const SettingsEditRequestBodyValueZonesCiphersValueList =
+export interface SettingsEditRequestBodyEnabled {
+  /** ssl-recommender enrollment setting. */
+  enabled?: boolean;
+}
+export const SettingsEditRequestBodyEnabled = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    enabled: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "SettingsEditRequestBodyEnabled",
+}) as any as S.Schema<SettingsEditRequestBodyEnabled>;
+
+export type SettingsEditRequestBodyValueValueZonesCiphersValueList = string[];
+export const SettingsEditRequestBodyValueValueZonesCiphersValueList =
   /*@__PURE__*/ S.Array(
     S.String,
-  ) as any as S.Schema<SettingsEditRequestBodyValueZonesCiphersValueList>;
+  ) as any as S.Schema<SettingsEditRequestBodyValueValueZonesCiphersValueList>;
 
-export type SettingsEditRequestBodyValueHostnamesList = string[];
-export const SettingsEditRequestBodyValueHostnamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SettingsEditRequestBodyValueHostnamesList>;
+export type SettingsEditRequestBodyValueValueHostnamesList = string[];
+export const SettingsEditRequestBodyValueValueHostnamesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<SettingsEditRequestBodyValueValueHostnamesList>;
 
-export interface SettingsEditRequestBodyValueStrictTransportSecurity {
+export interface SettingsEditRequestBodyValueValueStrictTransportSecurity {
   /** Whether or not strict transport security is enabled. */
   enabled?: boolean;
   /** Include all subdomains for strict transport security. */
@@ -2345,7 +2358,7 @@ export interface SettingsEditRequestBodyValueStrictTransportSecurity {
   /** Enable automatic preload of the HSTS configuration. */
   preload?: boolean;
 }
-export const SettingsEditRequestBodyValueStrictTransportSecurity =
+export const SettingsEditRequestBodyValueValueStrictTransportSecurity =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       enabled: S.optional(S.Boolean),
@@ -2357,17 +2370,17 @@ export const SettingsEditRequestBodyValueStrictTransportSecurity =
       preload: S.optional(S.Boolean),
     }),
   ).annotate({
-    identifier: "SettingsEditRequestBodyValueStrictTransportSecurity",
-  }) as any as S.Schema<SettingsEditRequestBodyValueStrictTransportSecurity>;
+    identifier: "SettingsEditRequestBodyValueValueStrictTransportSecurity",
+  }) as any as S.Schema<SettingsEditRequestBodyValueValueStrictTransportSecurity>;
 
-export interface SettingsEditRequestBodyValue {
+export interface SettingsEditRequestBodyValueValue {
   unknown: unknown;
   /** Whether the feature is enabled or not. */
   enabled?: boolean;
   /** Egress pool id which refers to a grouping of dedicated egress IPs through which Cloudflare will connect to origin. */
   poolId?: string;
   /** Value of the zone setting. */
-  ZonesCiphersValue: SettingsEditRequestBodyValueZonesCiphersValueList;
+  ZonesCiphersValue: SettingsEditRequestBodyValueValueZonesCiphersValueList;
   /** Value of the zone setting. */
   ZonesProxyReadTimeoutValue: number;
   /** Indicates whether or not [cache by device type](https://developers.cloudflare.com/automatic-platform-optimization/reference/cache-device-type/) is enabled. */
@@ -2375,52 +2388,54 @@ export interface SettingsEditRequestBodyValue {
   /** Indicates whether or not Cloudflare proxy is enabled. */
   cf?: boolean;
   /** An array of hostnames where Automatic Platform Optimization for WordPress is activated. */
-  hostnames?: SettingsEditRequestBodyValueHostnamesList;
+  hostnames?: SettingsEditRequestBodyValueValueHostnamesList;
   /** Indicates whether or not site is powered by WordPress. */
   wordpress?: boolean;
   /** Indicates whether or not [Cloudflare for WordPress plugin](https://wordpress.org/plugins/cloudflare/) is installed. */
   wpPlugin?: boolean;
   /** Strict Transport Security. */
-  strictTransportSecurity?: SettingsEditRequestBodyValueStrictTransportSecurity;
+  strictTransportSecurity?: SettingsEditRequestBodyValueValueStrictTransportSecurity;
 }
-export const SettingsEditRequestBodyValue = /*@__PURE__*/ S.suspend(() =>
+export const SettingsEditRequestBodyValueValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unknown: S.Unknown,
     enabled: S.optional(S.Boolean),
     poolId: S.optional(S.String.pipe(T.Body("pool_id"))),
-    ZonesCiphersValue: SettingsEditRequestBodyValueZonesCiphersValueList,
+    ZonesCiphersValue: SettingsEditRequestBodyValueValueZonesCiphersValueList,
     ZonesProxyReadTimeoutValue: S.Number,
     cacheByDeviceType: S.optional(
       S.Boolean.pipe(T.Body("cache_by_device_type")),
     ),
     cf: S.optional(S.Boolean),
-    hostnames: S.optional(SettingsEditRequestBodyValueHostnamesList),
+    hostnames: S.optional(SettingsEditRequestBodyValueValueHostnamesList),
     wordpress: S.optional(S.Boolean),
     wpPlugin: S.optional(S.Boolean.pipe(T.Body("wp_plugin"))),
     strictTransportSecurity: S.optional(
-      SettingsEditRequestBodyValueStrictTransportSecurity.pipe(
+      SettingsEditRequestBodyValueValueStrictTransportSecurity.pipe(
         T.Body("strict_transport_security"),
       ),
     ),
   }),
 ).annotate({
+  identifier: "SettingsEditRequestBodyValueValue",
+}) as any as S.Schema<SettingsEditRequestBodyValueValue>;
+
+export interface SettingsEditRequestBodyValue {
+  /** Value of the zone setting. */
+  value?: SettingsEditRequestBodyValueValue;
+}
+export const SettingsEditRequestBodyValue = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(SettingsEditRequestBodyValueValue),
+  }),
+).annotate({
   identifier: "SettingsEditRequestBodyValue",
 }) as any as S.Schema<SettingsEditRequestBodyValue>;
 
-export interface SettingsEditRequestBody {
-  /** ssl-recommender enrollment setting. */
-  enabled?: boolean;
-  /** Value of the zone setting. */
-  value?: SettingsEditRequestBodyValue;
-}
-export const SettingsEditRequestBody = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-    value: S.optional(SettingsEditRequestBodyValue),
-  }),
-).annotate({
-  identifier: "SettingsEditRequestBody",
-}) as any as S.Schema<SettingsEditRequestBody>;
+export type SettingsEditRequestBody =
+  | SettingsEditRequestBodyEnabled
+  | SettingsEditRequestBodyValue;
+export const SettingsEditRequestBody = /*@__PURE__*/ S.Unknown;
 
 export interface PatchSettingRequest {
   /** Identifier */

@@ -318,77 +318,108 @@ export const CreateAiGatewayRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateAiGatewayRequest",
 }) as any as S.Schema<CreateAiGatewayRequest>;
 
-export type CreateResponseDlpAction = "BLOCK" | "FLAG" | (string & {});
-export const CreateResponseDlpAction = /*@__PURE__*/ S.String;
+export type CreateResponseDlpObjectActionEnabledProfilesAction =
+  | "BLOCK"
+  | "FLAG"
+  | (string & {});
+export const CreateResponseDlpObjectActionEnabledProfilesAction =
+  /*@__PURE__*/ S.String;
 
-export type CreateResponseDlpProfilesList = string[];
-export const CreateResponseDlpProfilesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateResponseDlpProfilesList>;
+export type CreateResponseDlpObjectActionEnabledProfilesProfilesList = string[];
+export const CreateResponseDlpObjectActionEnabledProfilesProfilesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<CreateResponseDlpObjectActionEnabledProfilesProfilesList>;
 
-export type CreateResponseDlpPoliciesItemAction =
+export interface CreateResponseDlpObjectActionEnabledProfiles {
+  action: CreateResponseDlpObjectActionEnabledProfilesAction;
+  enabled: boolean;
+  profiles: CreateResponseDlpObjectActionEnabledProfilesProfilesList;
+}
+export const CreateResponseDlpObjectActionEnabledProfiles =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      action: CreateResponseDlpObjectActionEnabledProfilesAction,
+      enabled: S.Boolean,
+      profiles: CreateResponseDlpObjectActionEnabledProfilesProfilesList,
+    }),
+  ).annotate({
+    identifier: "CreateResponseDlpObjectActionEnabledProfiles",
+  }) as any as S.Schema<CreateResponseDlpObjectActionEnabledProfiles>;
+
+export type CreateResponseDlpObjectEnabledPoliciesPoliciesItemAction =
   | "FLAG"
   | "BLOCK"
   | (string & {});
-export const CreateResponseDlpPoliciesItemAction = /*@__PURE__*/ S.String;
+export const CreateResponseDlpObjectEnabledPoliciesPoliciesItemAction =
+  /*@__PURE__*/ S.String;
 
-export type CreateResponseDlpPoliciesItemCheckItem =
+export type CreateResponseDlpObjectEnabledPoliciesPoliciesItemCheckItem =
   | "REQUEST"
   | "RESPONSE"
   | (string & {});
-export const CreateResponseDlpPoliciesItemCheckItem = /*@__PURE__*/ S.String;
+export const CreateResponseDlpObjectEnabledPoliciesPoliciesItemCheckItem =
+  /*@__PURE__*/ S.String;
 
-export type CreateResponseDlpPoliciesItemCheckList =
-  CreateResponseDlpPoliciesItemCheckItem[];
-export const CreateResponseDlpPoliciesItemCheckList = /*@__PURE__*/ S.Array(
-  CreateResponseDlpPoliciesItemCheckItem,
-) as any as S.Schema<CreateResponseDlpPoliciesItemCheckList>;
+export type CreateResponseDlpObjectEnabledPoliciesPoliciesItemCheckList =
+  CreateResponseDlpObjectEnabledPoliciesPoliciesItemCheckItem[];
+export const CreateResponseDlpObjectEnabledPoliciesPoliciesItemCheckList =
+  /*@__PURE__*/ S.Array(
+    CreateResponseDlpObjectEnabledPoliciesPoliciesItemCheckItem,
+  ) as any as S.Schema<CreateResponseDlpObjectEnabledPoliciesPoliciesItemCheckList>;
 
-export type CreateResponseDlpPoliciesItemProfilesList = string[];
-export const CreateResponseDlpPoliciesItemProfilesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateResponseDlpPoliciesItemProfilesList>;
+export type CreateResponseDlpObjectEnabledPoliciesPoliciesItemProfilesList =
+  string[];
+export const CreateResponseDlpObjectEnabledPoliciesPoliciesItemProfilesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<CreateResponseDlpObjectEnabledPoliciesPoliciesItemProfilesList>;
 
-export interface CreateResponseDlpPoliciesItem {
+export interface CreateResponseDlpObjectEnabledPoliciesPoliciesItem {
   id: string;
-  action: CreateResponseDlpPoliciesItemAction;
-  check: CreateResponseDlpPoliciesItemCheckList;
+  action: CreateResponseDlpObjectEnabledPoliciesPoliciesItemAction;
+  check: CreateResponseDlpObjectEnabledPoliciesPoliciesItemCheckList;
   enabled: boolean;
-  profiles: CreateResponseDlpPoliciesItemProfilesList;
+  profiles: CreateResponseDlpObjectEnabledPoliciesPoliciesItemProfilesList;
 }
-export const CreateResponseDlpPoliciesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    action: CreateResponseDlpPoliciesItemAction,
-    check: CreateResponseDlpPoliciesItemCheckList,
-    enabled: S.Boolean,
-    profiles: CreateResponseDlpPoliciesItemProfilesList,
-  }),
-).annotate({
-  identifier: "CreateResponseDlpPoliciesItem",
-}) as any as S.Schema<CreateResponseDlpPoliciesItem>;
+export const CreateResponseDlpObjectEnabledPoliciesPoliciesItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+      action: CreateResponseDlpObjectEnabledPoliciesPoliciesItemAction,
+      check: CreateResponseDlpObjectEnabledPoliciesPoliciesItemCheckList,
+      enabled: S.Boolean,
+      profiles: CreateResponseDlpObjectEnabledPoliciesPoliciesItemProfilesList,
+    }),
+  ).annotate({
+    identifier: "CreateResponseDlpObjectEnabledPoliciesPoliciesItem",
+  }) as any as S.Schema<CreateResponseDlpObjectEnabledPoliciesPoliciesItem>;
 
-export type CreateResponseDlpPoliciesList = CreateResponseDlpPoliciesItem[];
-export const CreateResponseDlpPoliciesList = /*@__PURE__*/ S.Array(
-  CreateResponseDlpPoliciesItem,
-) as any as S.Schema<CreateResponseDlpPoliciesList>;
+export type CreateResponseDlpObjectEnabledPoliciesPoliciesList =
+  CreateResponseDlpObjectEnabledPoliciesPoliciesItem[];
+export const CreateResponseDlpObjectEnabledPoliciesPoliciesList =
+  /*@__PURE__*/ S.Array(
+    CreateResponseDlpObjectEnabledPoliciesPoliciesItem,
+  ) as any as S.Schema<CreateResponseDlpObjectEnabledPoliciesPoliciesList>;
 
-export interface CreateResponseDlp {
-  action?: CreateResponseDlpAction;
-  enabled?: boolean;
-  profiles?: CreateResponseDlpProfilesList;
-  policies?: CreateResponseDlpPoliciesList;
+export interface CreateResponseDlpObjectEnabledPolicies {
+  enabled: boolean;
+  policies: CreateResponseDlpObjectEnabledPoliciesPoliciesList;
 }
-export const CreateResponseDlp = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    action: S.optional(CreateResponseDlpAction),
-    enabled: S.optional(S.Boolean),
-    profiles: S.optional(CreateResponseDlpProfilesList),
-    policies: S.optional(CreateResponseDlpPoliciesList),
-  }),
+export const CreateResponseDlpObjectEnabledPolicies = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      enabled: S.Boolean,
+      policies: CreateResponseDlpObjectEnabledPoliciesPoliciesList,
+    }),
 ).annotate({
-  identifier: "CreateResponseDlp",
-}) as any as S.Schema<CreateResponseDlp>;
+  identifier: "CreateResponseDlpObjectEnabledPolicies",
+}) as any as S.Schema<CreateResponseDlpObjectEnabledPolicies>;
+
+export type CreateResponseDlp =
+  | CreateResponseDlpObjectActionEnabledProfiles
+  | CreateResponseDlpObjectEnabledPolicies;
+export const CreateResponseDlp = /*@__PURE__*/ S.Unknown;
 
 export type CreateResponseGuardrailsPromptP1 = "FLAG" | "BLOCK" | (string & {});
 export const CreateResponseGuardrailsPromptP1 = /*@__PURE__*/ S.String;
@@ -2205,77 +2236,108 @@ export const DeleteAiGatewayRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteAiGatewayRequest",
 }) as any as S.Schema<DeleteAiGatewayRequest>;
 
-export type DeleteResponseDlpAction = "BLOCK" | "FLAG" | (string & {});
-export const DeleteResponseDlpAction = /*@__PURE__*/ S.String;
+export type DeleteResponseDlpObjectActionEnabledProfilesAction =
+  | "BLOCK"
+  | "FLAG"
+  | (string & {});
+export const DeleteResponseDlpObjectActionEnabledProfilesAction =
+  /*@__PURE__*/ S.String;
 
-export type DeleteResponseDlpProfilesList = string[];
-export const DeleteResponseDlpProfilesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DeleteResponseDlpProfilesList>;
+export type DeleteResponseDlpObjectActionEnabledProfilesProfilesList = string[];
+export const DeleteResponseDlpObjectActionEnabledProfilesProfilesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<DeleteResponseDlpObjectActionEnabledProfilesProfilesList>;
 
-export type DeleteResponseDlpPoliciesItemAction =
+export interface DeleteResponseDlpObjectActionEnabledProfiles {
+  action: DeleteResponseDlpObjectActionEnabledProfilesAction;
+  enabled: boolean;
+  profiles: DeleteResponseDlpObjectActionEnabledProfilesProfilesList;
+}
+export const DeleteResponseDlpObjectActionEnabledProfiles =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      action: DeleteResponseDlpObjectActionEnabledProfilesAction,
+      enabled: S.Boolean,
+      profiles: DeleteResponseDlpObjectActionEnabledProfilesProfilesList,
+    }),
+  ).annotate({
+    identifier: "DeleteResponseDlpObjectActionEnabledProfiles",
+  }) as any as S.Schema<DeleteResponseDlpObjectActionEnabledProfiles>;
+
+export type DeleteResponseDlpObjectEnabledPoliciesPoliciesItemAction =
   | "FLAG"
   | "BLOCK"
   | (string & {});
-export const DeleteResponseDlpPoliciesItemAction = /*@__PURE__*/ S.String;
+export const DeleteResponseDlpObjectEnabledPoliciesPoliciesItemAction =
+  /*@__PURE__*/ S.String;
 
-export type DeleteResponseDlpPoliciesItemCheckItem =
+export type DeleteResponseDlpObjectEnabledPoliciesPoliciesItemCheckItem =
   | "REQUEST"
   | "RESPONSE"
   | (string & {});
-export const DeleteResponseDlpPoliciesItemCheckItem = /*@__PURE__*/ S.String;
+export const DeleteResponseDlpObjectEnabledPoliciesPoliciesItemCheckItem =
+  /*@__PURE__*/ S.String;
 
-export type DeleteResponseDlpPoliciesItemCheckList =
-  DeleteResponseDlpPoliciesItemCheckItem[];
-export const DeleteResponseDlpPoliciesItemCheckList = /*@__PURE__*/ S.Array(
-  DeleteResponseDlpPoliciesItemCheckItem,
-) as any as S.Schema<DeleteResponseDlpPoliciesItemCheckList>;
+export type DeleteResponseDlpObjectEnabledPoliciesPoliciesItemCheckList =
+  DeleteResponseDlpObjectEnabledPoliciesPoliciesItemCheckItem[];
+export const DeleteResponseDlpObjectEnabledPoliciesPoliciesItemCheckList =
+  /*@__PURE__*/ S.Array(
+    DeleteResponseDlpObjectEnabledPoliciesPoliciesItemCheckItem,
+  ) as any as S.Schema<DeleteResponseDlpObjectEnabledPoliciesPoliciesItemCheckList>;
 
-export type DeleteResponseDlpPoliciesItemProfilesList = string[];
-export const DeleteResponseDlpPoliciesItemProfilesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DeleteResponseDlpPoliciesItemProfilesList>;
+export type DeleteResponseDlpObjectEnabledPoliciesPoliciesItemProfilesList =
+  string[];
+export const DeleteResponseDlpObjectEnabledPoliciesPoliciesItemProfilesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<DeleteResponseDlpObjectEnabledPoliciesPoliciesItemProfilesList>;
 
-export interface DeleteResponseDlpPoliciesItem {
+export interface DeleteResponseDlpObjectEnabledPoliciesPoliciesItem {
   id: string;
-  action: DeleteResponseDlpPoliciesItemAction;
-  check: DeleteResponseDlpPoliciesItemCheckList;
+  action: DeleteResponseDlpObjectEnabledPoliciesPoliciesItemAction;
+  check: DeleteResponseDlpObjectEnabledPoliciesPoliciesItemCheckList;
   enabled: boolean;
-  profiles: DeleteResponseDlpPoliciesItemProfilesList;
+  profiles: DeleteResponseDlpObjectEnabledPoliciesPoliciesItemProfilesList;
 }
-export const DeleteResponseDlpPoliciesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    action: DeleteResponseDlpPoliciesItemAction,
-    check: DeleteResponseDlpPoliciesItemCheckList,
-    enabled: S.Boolean,
-    profiles: DeleteResponseDlpPoliciesItemProfilesList,
-  }),
-).annotate({
-  identifier: "DeleteResponseDlpPoliciesItem",
-}) as any as S.Schema<DeleteResponseDlpPoliciesItem>;
+export const DeleteResponseDlpObjectEnabledPoliciesPoliciesItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+      action: DeleteResponseDlpObjectEnabledPoliciesPoliciesItemAction,
+      check: DeleteResponseDlpObjectEnabledPoliciesPoliciesItemCheckList,
+      enabled: S.Boolean,
+      profiles: DeleteResponseDlpObjectEnabledPoliciesPoliciesItemProfilesList,
+    }),
+  ).annotate({
+    identifier: "DeleteResponseDlpObjectEnabledPoliciesPoliciesItem",
+  }) as any as S.Schema<DeleteResponseDlpObjectEnabledPoliciesPoliciesItem>;
 
-export type DeleteResponseDlpPoliciesList = DeleteResponseDlpPoliciesItem[];
-export const DeleteResponseDlpPoliciesList = /*@__PURE__*/ S.Array(
-  DeleteResponseDlpPoliciesItem,
-) as any as S.Schema<DeleteResponseDlpPoliciesList>;
+export type DeleteResponseDlpObjectEnabledPoliciesPoliciesList =
+  DeleteResponseDlpObjectEnabledPoliciesPoliciesItem[];
+export const DeleteResponseDlpObjectEnabledPoliciesPoliciesList =
+  /*@__PURE__*/ S.Array(
+    DeleteResponseDlpObjectEnabledPoliciesPoliciesItem,
+  ) as any as S.Schema<DeleteResponseDlpObjectEnabledPoliciesPoliciesList>;
 
-export interface DeleteResponseDlp {
-  action?: DeleteResponseDlpAction;
-  enabled?: boolean;
-  profiles?: DeleteResponseDlpProfilesList;
-  policies?: DeleteResponseDlpPoliciesList;
+export interface DeleteResponseDlpObjectEnabledPolicies {
+  enabled: boolean;
+  policies: DeleteResponseDlpObjectEnabledPoliciesPoliciesList;
 }
-export const DeleteResponseDlp = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    action: S.optional(DeleteResponseDlpAction),
-    enabled: S.optional(S.Boolean),
-    profiles: S.optional(DeleteResponseDlpProfilesList),
-    policies: S.optional(DeleteResponseDlpPoliciesList),
-  }),
+export const DeleteResponseDlpObjectEnabledPolicies = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      enabled: S.Boolean,
+      policies: DeleteResponseDlpObjectEnabledPoliciesPoliciesList,
+    }),
 ).annotate({
-  identifier: "DeleteResponseDlp",
-}) as any as S.Schema<DeleteResponseDlp>;
+  identifier: "DeleteResponseDlpObjectEnabledPolicies",
+}) as any as S.Schema<DeleteResponseDlpObjectEnabledPolicies>;
+
+export type DeleteResponseDlp =
+  | DeleteResponseDlpObjectActionEnabledProfiles
+  | DeleteResponseDlpObjectEnabledPolicies;
+export const DeleteResponseDlp = /*@__PURE__*/ S.Unknown;
 
 export type DeleteResponseGuardrailsPromptP1 = "FLAG" | "BLOCK" | (string & {});
 export const DeleteResponseGuardrailsPromptP1 = /*@__PURE__*/ S.String;
@@ -3424,72 +3486,107 @@ export const GetAiGatewayRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetAiGatewayRequest",
 }) as any as S.Schema<GetAiGatewayRequest>;
 
-export type GetResponseDlpAction = "BLOCK" | "FLAG" | (string & {});
-export const GetResponseDlpAction = /*@__PURE__*/ S.String;
+export type GetResponseDlpObjectActionEnabledProfilesAction =
+  | "BLOCK"
+  | "FLAG"
+  | (string & {});
+export const GetResponseDlpObjectActionEnabledProfilesAction =
+  /*@__PURE__*/ S.String;
 
-export type GetResponseDlpProfilesList = string[];
-export const GetResponseDlpProfilesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetResponseDlpProfilesList>;
+export type GetResponseDlpObjectActionEnabledProfilesProfilesList = string[];
+export const GetResponseDlpObjectActionEnabledProfilesProfilesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<GetResponseDlpObjectActionEnabledProfilesProfilesList>;
 
-export type GetResponseDlpPoliciesItemAction = "FLAG" | "BLOCK" | (string & {});
-export const GetResponseDlpPoliciesItemAction = /*@__PURE__*/ S.String;
+export interface GetResponseDlpObjectActionEnabledProfiles {
+  action: GetResponseDlpObjectActionEnabledProfilesAction;
+  enabled: boolean;
+  profiles: GetResponseDlpObjectActionEnabledProfilesProfilesList;
+}
+export const GetResponseDlpObjectActionEnabledProfiles =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      action: GetResponseDlpObjectActionEnabledProfilesAction,
+      enabled: S.Boolean,
+      profiles: GetResponseDlpObjectActionEnabledProfilesProfilesList,
+    }),
+  ).annotate({
+    identifier: "GetResponseDlpObjectActionEnabledProfiles",
+  }) as any as S.Schema<GetResponseDlpObjectActionEnabledProfiles>;
 
-export type GetResponseDlpPoliciesItemCheckItem =
+export type GetResponseDlpObjectEnabledPoliciesPoliciesItemAction =
+  | "FLAG"
+  | "BLOCK"
+  | (string & {});
+export const GetResponseDlpObjectEnabledPoliciesPoliciesItemAction =
+  /*@__PURE__*/ S.String;
+
+export type GetResponseDlpObjectEnabledPoliciesPoliciesItemCheckItem =
   | "REQUEST"
   | "RESPONSE"
   | (string & {});
-export const GetResponseDlpPoliciesItemCheckItem = /*@__PURE__*/ S.String;
+export const GetResponseDlpObjectEnabledPoliciesPoliciesItemCheckItem =
+  /*@__PURE__*/ S.String;
 
-export type GetResponseDlpPoliciesItemCheckList =
-  GetResponseDlpPoliciesItemCheckItem[];
-export const GetResponseDlpPoliciesItemCheckList = /*@__PURE__*/ S.Array(
-  GetResponseDlpPoliciesItemCheckItem,
-) as any as S.Schema<GetResponseDlpPoliciesItemCheckList>;
+export type GetResponseDlpObjectEnabledPoliciesPoliciesItemCheckList =
+  GetResponseDlpObjectEnabledPoliciesPoliciesItemCheckItem[];
+export const GetResponseDlpObjectEnabledPoliciesPoliciesItemCheckList =
+  /*@__PURE__*/ S.Array(
+    GetResponseDlpObjectEnabledPoliciesPoliciesItemCheckItem,
+  ) as any as S.Schema<GetResponseDlpObjectEnabledPoliciesPoliciesItemCheckList>;
 
-export type GetResponseDlpPoliciesItemProfilesList = string[];
-export const GetResponseDlpPoliciesItemProfilesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetResponseDlpPoliciesItemProfilesList>;
+export type GetResponseDlpObjectEnabledPoliciesPoliciesItemProfilesList =
+  string[];
+export const GetResponseDlpObjectEnabledPoliciesPoliciesItemProfilesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<GetResponseDlpObjectEnabledPoliciesPoliciesItemProfilesList>;
 
-export interface GetResponseDlpPoliciesItem {
+export interface GetResponseDlpObjectEnabledPoliciesPoliciesItem {
   id: string;
-  action: GetResponseDlpPoliciesItemAction;
-  check: GetResponseDlpPoliciesItemCheckList;
+  action: GetResponseDlpObjectEnabledPoliciesPoliciesItemAction;
+  check: GetResponseDlpObjectEnabledPoliciesPoliciesItemCheckList;
   enabled: boolean;
-  profiles: GetResponseDlpPoliciesItemProfilesList;
+  profiles: GetResponseDlpObjectEnabledPoliciesPoliciesItemProfilesList;
 }
-export const GetResponseDlpPoliciesItem = /*@__PURE__*/ S.suspend(() =>
+export const GetResponseDlpObjectEnabledPoliciesPoliciesItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+      action: GetResponseDlpObjectEnabledPoliciesPoliciesItemAction,
+      check: GetResponseDlpObjectEnabledPoliciesPoliciesItemCheckList,
+      enabled: S.Boolean,
+      profiles: GetResponseDlpObjectEnabledPoliciesPoliciesItemProfilesList,
+    }),
+  ).annotate({
+    identifier: "GetResponseDlpObjectEnabledPoliciesPoliciesItem",
+  }) as any as S.Schema<GetResponseDlpObjectEnabledPoliciesPoliciesItem>;
+
+export type GetResponseDlpObjectEnabledPoliciesPoliciesList =
+  GetResponseDlpObjectEnabledPoliciesPoliciesItem[];
+export const GetResponseDlpObjectEnabledPoliciesPoliciesList =
+  /*@__PURE__*/ S.Array(
+    GetResponseDlpObjectEnabledPoliciesPoliciesItem,
+  ) as any as S.Schema<GetResponseDlpObjectEnabledPoliciesPoliciesList>;
+
+export interface GetResponseDlpObjectEnabledPolicies {
+  enabled: boolean;
+  policies: GetResponseDlpObjectEnabledPoliciesPoliciesList;
+}
+export const GetResponseDlpObjectEnabledPolicies = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.String,
-    action: GetResponseDlpPoliciesItemAction,
-    check: GetResponseDlpPoliciesItemCheckList,
     enabled: S.Boolean,
-    profiles: GetResponseDlpPoliciesItemProfilesList,
+    policies: GetResponseDlpObjectEnabledPoliciesPoliciesList,
   }),
 ).annotate({
-  identifier: "GetResponseDlpPoliciesItem",
-}) as any as S.Schema<GetResponseDlpPoliciesItem>;
+  identifier: "GetResponseDlpObjectEnabledPolicies",
+}) as any as S.Schema<GetResponseDlpObjectEnabledPolicies>;
 
-export type GetResponseDlpPoliciesList = GetResponseDlpPoliciesItem[];
-export const GetResponseDlpPoliciesList = /*@__PURE__*/ S.Array(
-  GetResponseDlpPoliciesItem,
-) as any as S.Schema<GetResponseDlpPoliciesList>;
-
-export interface GetResponseDlp {
-  action?: GetResponseDlpAction;
-  enabled?: boolean;
-  profiles?: GetResponseDlpProfilesList;
-  policies?: GetResponseDlpPoliciesList;
-}
-export const GetResponseDlp = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    action: S.optional(GetResponseDlpAction),
-    enabled: S.optional(S.Boolean),
-    profiles: S.optional(GetResponseDlpProfilesList),
-    policies: S.optional(GetResponseDlpPoliciesList),
-  }),
-).annotate({ identifier: "GetResponseDlp" }) as any as S.Schema<GetResponseDlp>;
+export type GetResponseDlp =
+  | GetResponseDlpObjectActionEnabledProfiles
+  | GetResponseDlpObjectEnabledPolicies;
+export const GetResponseDlp = /*@__PURE__*/ S.Unknown;
 
 export type GetResponseGuardrailsPromptP1 = "FLAG" | "BLOCK" | (string & {});
 export const GetResponseGuardrailsPromptP1 = /*@__PURE__*/ S.String;
@@ -5054,77 +5151,108 @@ export const ListAiGatewaysRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAiGatewaysRequest",
 }) as any as S.Schema<ListAiGatewaysRequest>;
 
-export type ListResultItemDlpAction = "BLOCK" | "FLAG" | (string & {});
-export const ListResultItemDlpAction = /*@__PURE__*/ S.String;
+export type ListResultItemDlpObjectActionEnabledProfilesAction =
+  | "BLOCK"
+  | "FLAG"
+  | (string & {});
+export const ListResultItemDlpObjectActionEnabledProfilesAction =
+  /*@__PURE__*/ S.String;
 
-export type ListResultItemDlpProfilesList = string[];
-export const ListResultItemDlpProfilesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListResultItemDlpProfilesList>;
+export type ListResultItemDlpObjectActionEnabledProfilesProfilesList = string[];
+export const ListResultItemDlpObjectActionEnabledProfilesProfilesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<ListResultItemDlpObjectActionEnabledProfilesProfilesList>;
 
-export type ListResultItemDlpPoliciesItemAction =
+export interface ListResultItemDlpObjectActionEnabledProfiles {
+  action: ListResultItemDlpObjectActionEnabledProfilesAction;
+  enabled: boolean;
+  profiles: ListResultItemDlpObjectActionEnabledProfilesProfilesList;
+}
+export const ListResultItemDlpObjectActionEnabledProfiles =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      action: ListResultItemDlpObjectActionEnabledProfilesAction,
+      enabled: S.Boolean,
+      profiles: ListResultItemDlpObjectActionEnabledProfilesProfilesList,
+    }),
+  ).annotate({
+    identifier: "ListResultItemDlpObjectActionEnabledProfiles",
+  }) as any as S.Schema<ListResultItemDlpObjectActionEnabledProfiles>;
+
+export type ListResultItemDlpObjectEnabledPoliciesPoliciesItemAction =
   | "FLAG"
   | "BLOCK"
   | (string & {});
-export const ListResultItemDlpPoliciesItemAction = /*@__PURE__*/ S.String;
+export const ListResultItemDlpObjectEnabledPoliciesPoliciesItemAction =
+  /*@__PURE__*/ S.String;
 
-export type ListResultItemDlpPoliciesItemCheckItem =
+export type ListResultItemDlpObjectEnabledPoliciesPoliciesItemCheckItem =
   | "REQUEST"
   | "RESPONSE"
   | (string & {});
-export const ListResultItemDlpPoliciesItemCheckItem = /*@__PURE__*/ S.String;
+export const ListResultItemDlpObjectEnabledPoliciesPoliciesItemCheckItem =
+  /*@__PURE__*/ S.String;
 
-export type ListResultItemDlpPoliciesItemCheckList =
-  ListResultItemDlpPoliciesItemCheckItem[];
-export const ListResultItemDlpPoliciesItemCheckList = /*@__PURE__*/ S.Array(
-  ListResultItemDlpPoliciesItemCheckItem,
-) as any as S.Schema<ListResultItemDlpPoliciesItemCheckList>;
+export type ListResultItemDlpObjectEnabledPoliciesPoliciesItemCheckList =
+  ListResultItemDlpObjectEnabledPoliciesPoliciesItemCheckItem[];
+export const ListResultItemDlpObjectEnabledPoliciesPoliciesItemCheckList =
+  /*@__PURE__*/ S.Array(
+    ListResultItemDlpObjectEnabledPoliciesPoliciesItemCheckItem,
+  ) as any as S.Schema<ListResultItemDlpObjectEnabledPoliciesPoliciesItemCheckList>;
 
-export type ListResultItemDlpPoliciesItemProfilesList = string[];
-export const ListResultItemDlpPoliciesItemProfilesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListResultItemDlpPoliciesItemProfilesList>;
+export type ListResultItemDlpObjectEnabledPoliciesPoliciesItemProfilesList =
+  string[];
+export const ListResultItemDlpObjectEnabledPoliciesPoliciesItemProfilesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<ListResultItemDlpObjectEnabledPoliciesPoliciesItemProfilesList>;
 
-export interface ListResultItemDlpPoliciesItem {
+export interface ListResultItemDlpObjectEnabledPoliciesPoliciesItem {
   id: string;
-  action: ListResultItemDlpPoliciesItemAction;
-  check: ListResultItemDlpPoliciesItemCheckList;
+  action: ListResultItemDlpObjectEnabledPoliciesPoliciesItemAction;
+  check: ListResultItemDlpObjectEnabledPoliciesPoliciesItemCheckList;
   enabled: boolean;
-  profiles: ListResultItemDlpPoliciesItemProfilesList;
+  profiles: ListResultItemDlpObjectEnabledPoliciesPoliciesItemProfilesList;
 }
-export const ListResultItemDlpPoliciesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    action: ListResultItemDlpPoliciesItemAction,
-    check: ListResultItemDlpPoliciesItemCheckList,
-    enabled: S.Boolean,
-    profiles: ListResultItemDlpPoliciesItemProfilesList,
-  }),
-).annotate({
-  identifier: "ListResultItemDlpPoliciesItem",
-}) as any as S.Schema<ListResultItemDlpPoliciesItem>;
+export const ListResultItemDlpObjectEnabledPoliciesPoliciesItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+      action: ListResultItemDlpObjectEnabledPoliciesPoliciesItemAction,
+      check: ListResultItemDlpObjectEnabledPoliciesPoliciesItemCheckList,
+      enabled: S.Boolean,
+      profiles: ListResultItemDlpObjectEnabledPoliciesPoliciesItemProfilesList,
+    }),
+  ).annotate({
+    identifier: "ListResultItemDlpObjectEnabledPoliciesPoliciesItem",
+  }) as any as S.Schema<ListResultItemDlpObjectEnabledPoliciesPoliciesItem>;
 
-export type ListResultItemDlpPoliciesList = ListResultItemDlpPoliciesItem[];
-export const ListResultItemDlpPoliciesList = /*@__PURE__*/ S.Array(
-  ListResultItemDlpPoliciesItem,
-) as any as S.Schema<ListResultItemDlpPoliciesList>;
+export type ListResultItemDlpObjectEnabledPoliciesPoliciesList =
+  ListResultItemDlpObjectEnabledPoliciesPoliciesItem[];
+export const ListResultItemDlpObjectEnabledPoliciesPoliciesList =
+  /*@__PURE__*/ S.Array(
+    ListResultItemDlpObjectEnabledPoliciesPoliciesItem,
+  ) as any as S.Schema<ListResultItemDlpObjectEnabledPoliciesPoliciesList>;
 
-export interface ListResultItemDlp {
-  action?: ListResultItemDlpAction;
-  enabled?: boolean;
-  profiles?: ListResultItemDlpProfilesList;
-  policies?: ListResultItemDlpPoliciesList;
+export interface ListResultItemDlpObjectEnabledPolicies {
+  enabled: boolean;
+  policies: ListResultItemDlpObjectEnabledPoliciesPoliciesList;
 }
-export const ListResultItemDlp = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    action: S.optional(ListResultItemDlpAction),
-    enabled: S.optional(S.Boolean),
-    profiles: S.optional(ListResultItemDlpProfilesList),
-    policies: S.optional(ListResultItemDlpPoliciesList),
-  }),
+export const ListResultItemDlpObjectEnabledPolicies = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      enabled: S.Boolean,
+      policies: ListResultItemDlpObjectEnabledPoliciesPoliciesList,
+    }),
 ).annotate({
-  identifier: "ListResultItemDlp",
-}) as any as S.Schema<ListResultItemDlp>;
+  identifier: "ListResultItemDlpObjectEnabledPolicies",
+}) as any as S.Schema<ListResultItemDlpObjectEnabledPolicies>;
+
+export type ListResultItemDlp =
+  | ListResultItemDlpObjectActionEnabledProfiles
+  | ListResultItemDlpObjectEnabledPolicies;
+export const ListResultItemDlp = /*@__PURE__*/ S.Unknown;
 
 export type ListResultItemGuardrailsPromptP1 = "FLAG" | "BLOCK" | (string & {});
 export const ListResultItemGuardrailsPromptP1 = /*@__PURE__*/ S.String;
@@ -7136,77 +7264,108 @@ export const StatusBillingTopupResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "StatusBillingTopupResponse",
 }) as any as S.Schema<StatusBillingTopupResponse>;
 
-export type UpdateRequestDlpAction = "BLOCK" | "FLAG" | (string & {});
-export const UpdateRequestDlpAction = /*@__PURE__*/ S.String;
+export type UpdateRequestDlpObjectActionEnabledProfilesAction =
+  | "BLOCK"
+  | "FLAG"
+  | (string & {});
+export const UpdateRequestDlpObjectActionEnabledProfilesAction =
+  /*@__PURE__*/ S.String;
 
-export type UpdateRequestDlpProfilesList = string[];
-export const UpdateRequestDlpProfilesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateRequestDlpProfilesList>;
+export type UpdateRequestDlpObjectActionEnabledProfilesProfilesList = string[];
+export const UpdateRequestDlpObjectActionEnabledProfilesProfilesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<UpdateRequestDlpObjectActionEnabledProfilesProfilesList>;
 
-export type UpdateRequestDlpPoliciesItemAction =
+export interface UpdateRequestDlpObjectActionEnabledProfiles {
+  action: UpdateRequestDlpObjectActionEnabledProfilesAction;
+  enabled: boolean;
+  profiles: UpdateRequestDlpObjectActionEnabledProfilesProfilesList;
+}
+export const UpdateRequestDlpObjectActionEnabledProfiles =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      action: UpdateRequestDlpObjectActionEnabledProfilesAction,
+      enabled: S.Boolean,
+      profiles: UpdateRequestDlpObjectActionEnabledProfilesProfilesList,
+    }),
+  ).annotate({
+    identifier: "UpdateRequestDlpObjectActionEnabledProfiles",
+  }) as any as S.Schema<UpdateRequestDlpObjectActionEnabledProfiles>;
+
+export type UpdateRequestDlpObjectEnabledPoliciesPoliciesItemAction =
   | "FLAG"
   | "BLOCK"
   | (string & {});
-export const UpdateRequestDlpPoliciesItemAction = /*@__PURE__*/ S.String;
+export const UpdateRequestDlpObjectEnabledPoliciesPoliciesItemAction =
+  /*@__PURE__*/ S.String;
 
-export type UpdateRequestDlpPoliciesItemCheckItem =
+export type UpdateRequestDlpObjectEnabledPoliciesPoliciesItemCheckItem =
   | "REQUEST"
   | "RESPONSE"
   | (string & {});
-export const UpdateRequestDlpPoliciesItemCheckItem = /*@__PURE__*/ S.String;
+export const UpdateRequestDlpObjectEnabledPoliciesPoliciesItemCheckItem =
+  /*@__PURE__*/ S.String;
 
-export type UpdateRequestDlpPoliciesItemCheckList =
-  UpdateRequestDlpPoliciesItemCheckItem[];
-export const UpdateRequestDlpPoliciesItemCheckList = /*@__PURE__*/ S.Array(
-  UpdateRequestDlpPoliciesItemCheckItem,
-) as any as S.Schema<UpdateRequestDlpPoliciesItemCheckList>;
+export type UpdateRequestDlpObjectEnabledPoliciesPoliciesItemCheckList =
+  UpdateRequestDlpObjectEnabledPoliciesPoliciesItemCheckItem[];
+export const UpdateRequestDlpObjectEnabledPoliciesPoliciesItemCheckList =
+  /*@__PURE__*/ S.Array(
+    UpdateRequestDlpObjectEnabledPoliciesPoliciesItemCheckItem,
+  ) as any as S.Schema<UpdateRequestDlpObjectEnabledPoliciesPoliciesItemCheckList>;
 
-export type UpdateRequestDlpPoliciesItemProfilesList = string[];
-export const UpdateRequestDlpPoliciesItemProfilesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateRequestDlpPoliciesItemProfilesList>;
+export type UpdateRequestDlpObjectEnabledPoliciesPoliciesItemProfilesList =
+  string[];
+export const UpdateRequestDlpObjectEnabledPoliciesPoliciesItemProfilesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<UpdateRequestDlpObjectEnabledPoliciesPoliciesItemProfilesList>;
 
-export interface UpdateRequestDlpPoliciesItem {
+export interface UpdateRequestDlpObjectEnabledPoliciesPoliciesItem {
   id: string;
-  action: UpdateRequestDlpPoliciesItemAction;
-  check: UpdateRequestDlpPoliciesItemCheckList;
+  action: UpdateRequestDlpObjectEnabledPoliciesPoliciesItemAction;
+  check: UpdateRequestDlpObjectEnabledPoliciesPoliciesItemCheckList;
   enabled: boolean;
-  profiles: UpdateRequestDlpPoliciesItemProfilesList;
+  profiles: UpdateRequestDlpObjectEnabledPoliciesPoliciesItemProfilesList;
 }
-export const UpdateRequestDlpPoliciesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    action: UpdateRequestDlpPoliciesItemAction,
-    check: UpdateRequestDlpPoliciesItemCheckList,
-    enabled: S.Boolean,
-    profiles: UpdateRequestDlpPoliciesItemProfilesList,
-  }),
-).annotate({
-  identifier: "UpdateRequestDlpPoliciesItem",
-}) as any as S.Schema<UpdateRequestDlpPoliciesItem>;
+export const UpdateRequestDlpObjectEnabledPoliciesPoliciesItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+      action: UpdateRequestDlpObjectEnabledPoliciesPoliciesItemAction,
+      check: UpdateRequestDlpObjectEnabledPoliciesPoliciesItemCheckList,
+      enabled: S.Boolean,
+      profiles: UpdateRequestDlpObjectEnabledPoliciesPoliciesItemProfilesList,
+    }),
+  ).annotate({
+    identifier: "UpdateRequestDlpObjectEnabledPoliciesPoliciesItem",
+  }) as any as S.Schema<UpdateRequestDlpObjectEnabledPoliciesPoliciesItem>;
 
-export type UpdateRequestDlpPoliciesList = UpdateRequestDlpPoliciesItem[];
-export const UpdateRequestDlpPoliciesList = /*@__PURE__*/ S.Array(
-  UpdateRequestDlpPoliciesItem,
-) as any as S.Schema<UpdateRequestDlpPoliciesList>;
+export type UpdateRequestDlpObjectEnabledPoliciesPoliciesList =
+  UpdateRequestDlpObjectEnabledPoliciesPoliciesItem[];
+export const UpdateRequestDlpObjectEnabledPoliciesPoliciesList =
+  /*@__PURE__*/ S.Array(
+    UpdateRequestDlpObjectEnabledPoliciesPoliciesItem,
+  ) as any as S.Schema<UpdateRequestDlpObjectEnabledPoliciesPoliciesList>;
 
-export interface UpdateRequestDlp {
-  action?: UpdateRequestDlpAction;
-  enabled?: boolean;
-  profiles?: UpdateRequestDlpProfilesList;
-  policies?: UpdateRequestDlpPoliciesList;
+export interface UpdateRequestDlpObjectEnabledPolicies {
+  enabled: boolean;
+  policies: UpdateRequestDlpObjectEnabledPoliciesPoliciesList;
 }
-export const UpdateRequestDlp = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    action: S.optional(UpdateRequestDlpAction),
-    enabled: S.optional(S.Boolean),
-    profiles: S.optional(UpdateRequestDlpProfilesList),
-    policies: S.optional(UpdateRequestDlpPoliciesList),
-  }),
+export const UpdateRequestDlpObjectEnabledPolicies = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      enabled: S.Boolean,
+      policies: UpdateRequestDlpObjectEnabledPoliciesPoliciesList,
+    }),
 ).annotate({
-  identifier: "UpdateRequestDlp",
-}) as any as S.Schema<UpdateRequestDlp>;
+  identifier: "UpdateRequestDlpObjectEnabledPolicies",
+}) as any as S.Schema<UpdateRequestDlpObjectEnabledPolicies>;
+
+export type UpdateRequestDlp =
+  | UpdateRequestDlpObjectActionEnabledProfiles
+  | UpdateRequestDlpObjectEnabledPolicies;
+export const UpdateRequestDlp = /*@__PURE__*/ S.Unknown;
 
 export type UpdateRequestGuardrailsPromptP1 = "FLAG" | "BLOCK" | (string & {});
 export const UpdateRequestGuardrailsPromptP1 = /*@__PURE__*/ S.String;
@@ -7717,77 +7876,108 @@ export const UpdateAiGatewayRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateAiGatewayRequest",
 }) as any as S.Schema<UpdateAiGatewayRequest>;
 
-export type UpdateResponseDlpAction = "BLOCK" | "FLAG" | (string & {});
-export const UpdateResponseDlpAction = /*@__PURE__*/ S.String;
+export type UpdateResponseDlpObjectActionEnabledProfilesAction =
+  | "BLOCK"
+  | "FLAG"
+  | (string & {});
+export const UpdateResponseDlpObjectActionEnabledProfilesAction =
+  /*@__PURE__*/ S.String;
 
-export type UpdateResponseDlpProfilesList = string[];
-export const UpdateResponseDlpProfilesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateResponseDlpProfilesList>;
+export type UpdateResponseDlpObjectActionEnabledProfilesProfilesList = string[];
+export const UpdateResponseDlpObjectActionEnabledProfilesProfilesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<UpdateResponseDlpObjectActionEnabledProfilesProfilesList>;
 
-export type UpdateResponseDlpPoliciesItemAction =
+export interface UpdateResponseDlpObjectActionEnabledProfiles {
+  action: UpdateResponseDlpObjectActionEnabledProfilesAction;
+  enabled: boolean;
+  profiles: UpdateResponseDlpObjectActionEnabledProfilesProfilesList;
+}
+export const UpdateResponseDlpObjectActionEnabledProfiles =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      action: UpdateResponseDlpObjectActionEnabledProfilesAction,
+      enabled: S.Boolean,
+      profiles: UpdateResponseDlpObjectActionEnabledProfilesProfilesList,
+    }),
+  ).annotate({
+    identifier: "UpdateResponseDlpObjectActionEnabledProfiles",
+  }) as any as S.Schema<UpdateResponseDlpObjectActionEnabledProfiles>;
+
+export type UpdateResponseDlpObjectEnabledPoliciesPoliciesItemAction =
   | "FLAG"
   | "BLOCK"
   | (string & {});
-export const UpdateResponseDlpPoliciesItemAction = /*@__PURE__*/ S.String;
+export const UpdateResponseDlpObjectEnabledPoliciesPoliciesItemAction =
+  /*@__PURE__*/ S.String;
 
-export type UpdateResponseDlpPoliciesItemCheckItem =
+export type UpdateResponseDlpObjectEnabledPoliciesPoliciesItemCheckItem =
   | "REQUEST"
   | "RESPONSE"
   | (string & {});
-export const UpdateResponseDlpPoliciesItemCheckItem = /*@__PURE__*/ S.String;
+export const UpdateResponseDlpObjectEnabledPoliciesPoliciesItemCheckItem =
+  /*@__PURE__*/ S.String;
 
-export type UpdateResponseDlpPoliciesItemCheckList =
-  UpdateResponseDlpPoliciesItemCheckItem[];
-export const UpdateResponseDlpPoliciesItemCheckList = /*@__PURE__*/ S.Array(
-  UpdateResponseDlpPoliciesItemCheckItem,
-) as any as S.Schema<UpdateResponseDlpPoliciesItemCheckList>;
+export type UpdateResponseDlpObjectEnabledPoliciesPoliciesItemCheckList =
+  UpdateResponseDlpObjectEnabledPoliciesPoliciesItemCheckItem[];
+export const UpdateResponseDlpObjectEnabledPoliciesPoliciesItemCheckList =
+  /*@__PURE__*/ S.Array(
+    UpdateResponseDlpObjectEnabledPoliciesPoliciesItemCheckItem,
+  ) as any as S.Schema<UpdateResponseDlpObjectEnabledPoliciesPoliciesItemCheckList>;
 
-export type UpdateResponseDlpPoliciesItemProfilesList = string[];
-export const UpdateResponseDlpPoliciesItemProfilesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateResponseDlpPoliciesItemProfilesList>;
+export type UpdateResponseDlpObjectEnabledPoliciesPoliciesItemProfilesList =
+  string[];
+export const UpdateResponseDlpObjectEnabledPoliciesPoliciesItemProfilesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<UpdateResponseDlpObjectEnabledPoliciesPoliciesItemProfilesList>;
 
-export interface UpdateResponseDlpPoliciesItem {
+export interface UpdateResponseDlpObjectEnabledPoliciesPoliciesItem {
   id: string;
-  action: UpdateResponseDlpPoliciesItemAction;
-  check: UpdateResponseDlpPoliciesItemCheckList;
+  action: UpdateResponseDlpObjectEnabledPoliciesPoliciesItemAction;
+  check: UpdateResponseDlpObjectEnabledPoliciesPoliciesItemCheckList;
   enabled: boolean;
-  profiles: UpdateResponseDlpPoliciesItemProfilesList;
+  profiles: UpdateResponseDlpObjectEnabledPoliciesPoliciesItemProfilesList;
 }
-export const UpdateResponseDlpPoliciesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    action: UpdateResponseDlpPoliciesItemAction,
-    check: UpdateResponseDlpPoliciesItemCheckList,
-    enabled: S.Boolean,
-    profiles: UpdateResponseDlpPoliciesItemProfilesList,
-  }),
-).annotate({
-  identifier: "UpdateResponseDlpPoliciesItem",
-}) as any as S.Schema<UpdateResponseDlpPoliciesItem>;
+export const UpdateResponseDlpObjectEnabledPoliciesPoliciesItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+      action: UpdateResponseDlpObjectEnabledPoliciesPoliciesItemAction,
+      check: UpdateResponseDlpObjectEnabledPoliciesPoliciesItemCheckList,
+      enabled: S.Boolean,
+      profiles: UpdateResponseDlpObjectEnabledPoliciesPoliciesItemProfilesList,
+    }),
+  ).annotate({
+    identifier: "UpdateResponseDlpObjectEnabledPoliciesPoliciesItem",
+  }) as any as S.Schema<UpdateResponseDlpObjectEnabledPoliciesPoliciesItem>;
 
-export type UpdateResponseDlpPoliciesList = UpdateResponseDlpPoliciesItem[];
-export const UpdateResponseDlpPoliciesList = /*@__PURE__*/ S.Array(
-  UpdateResponseDlpPoliciesItem,
-) as any as S.Schema<UpdateResponseDlpPoliciesList>;
+export type UpdateResponseDlpObjectEnabledPoliciesPoliciesList =
+  UpdateResponseDlpObjectEnabledPoliciesPoliciesItem[];
+export const UpdateResponseDlpObjectEnabledPoliciesPoliciesList =
+  /*@__PURE__*/ S.Array(
+    UpdateResponseDlpObjectEnabledPoliciesPoliciesItem,
+  ) as any as S.Schema<UpdateResponseDlpObjectEnabledPoliciesPoliciesList>;
 
-export interface UpdateResponseDlp {
-  action?: UpdateResponseDlpAction;
-  enabled?: boolean;
-  profiles?: UpdateResponseDlpProfilesList;
-  policies?: UpdateResponseDlpPoliciesList;
+export interface UpdateResponseDlpObjectEnabledPolicies {
+  enabled: boolean;
+  policies: UpdateResponseDlpObjectEnabledPoliciesPoliciesList;
 }
-export const UpdateResponseDlp = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    action: S.optional(UpdateResponseDlpAction),
-    enabled: S.optional(S.Boolean),
-    profiles: S.optional(UpdateResponseDlpProfilesList),
-    policies: S.optional(UpdateResponseDlpPoliciesList),
-  }),
+export const UpdateResponseDlpObjectEnabledPolicies = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      enabled: S.Boolean,
+      policies: UpdateResponseDlpObjectEnabledPoliciesPoliciesList,
+    }),
 ).annotate({
-  identifier: "UpdateResponseDlp",
-}) as any as S.Schema<UpdateResponseDlp>;
+  identifier: "UpdateResponseDlpObjectEnabledPolicies",
+}) as any as S.Schema<UpdateResponseDlpObjectEnabledPolicies>;
+
+export type UpdateResponseDlp =
+  | UpdateResponseDlpObjectActionEnabledProfiles
+  | UpdateResponseDlpObjectEnabledPolicies;
+export const UpdateResponseDlp = /*@__PURE__*/ S.Unknown;
 
 export type UpdateResponseGuardrailsPromptP1 = "FLAG" | "BLOCK" | (string & {});
 export const UpdateResponseGuardrailsPromptP1 = /*@__PURE__*/ S.String;

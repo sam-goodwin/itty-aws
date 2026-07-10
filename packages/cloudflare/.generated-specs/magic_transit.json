@@ -4458,7 +4458,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.cloudflare.magic_transit#ConnectorsEventsGetResponseEK": {
+    "com.cloudflare.magic_transit#ConnectorsEventsGetResponseEInitK": {
       "type": "enum",
       "members": {
         "INIT": {
@@ -4469,26 +4469,585 @@
         }
       }
     },
-    "com.cloudflare.magic_transit#ConnectorsEventsGetResponseE": {
+    "com.cloudflare.magic_transit#ConnectorsEventsGetResponseEInit": {
       "type": "structure",
       "members": {
         "k": {
-          "target": "com.cloudflare.magic_transit#ConnectorsEventsGetResponseEK",
+          "target": "com.cloudflare.magic_transit#ConnectorsEventsGetResponseEInitK",
           "traits": {
-            "smithy.api#documentation": "Initialized process"
+            "smithy.api#documentation": "Initialized process",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#ConnectorsEventsGetResponseELeaveK": {
+      "type": "enum",
+      "members": {
+        "LEAVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Leave"
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#ConnectorsEventsGetResponseELeave": {
+      "type": "structure",
+      "members": {
+        "k": {
+          "target": "com.cloudflare.magic_transit#ConnectorsEventsGetResponseELeaveK",
+          "traits": {
+            "smithy.api#documentation": "Stopped process",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#ConnectorsEventsGetResponseEStartAttestationK": {
+      "type": "enum",
+      "members": {
+        "STARTATTESTATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "StartAttestation"
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#ConnectorsEventsGetResponseEStartAttestation": {
+      "type": "structure",
+      "members": {
+        "k": {
+          "target": "com.cloudflare.magic_transit#ConnectorsEventsGetResponseEStartAttestationK",
+          "traits": {
+            "smithy.api#documentation": "Started attestation",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#ConnectorsEventsGetResponseEFinishAttestationSuccessK": {
+      "type": "enum",
+      "members": {
+        "FINISHATTESTATIONSUCCESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "FinishAttestationSuccess"
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#ConnectorsEventsGetResponseEFinishAttestationSuccess": {
+      "type": "structure",
+      "members": {
+        "k": {
+          "target": "com.cloudflare.magic_transit#ConnectorsEventsGetResponseEFinishAttestationSuccessK",
+          "traits": {
+            "smithy.api#documentation": "Finished attestation",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#ConnectorsEventsGetResponseEFinishAttestationFailureK": {
+      "type": "enum",
+      "members": {
+        "FINISHATTESTATIONFAILURE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "FinishAttestationFailure"
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#ConnectorsEventsGetResponseEFinishAttestationFailure": {
+      "type": "structure",
+      "members": {
+        "k": {
+          "target": "com.cloudflare.magic_transit#ConnectorsEventsGetResponseEFinishAttestationFailureK",
+          "traits": {
+            "smithy.api#documentation": "Failed attestation",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#ConnectorsEventsGetResponseEStartRotateCryptKeyK": {
+      "type": "enum",
+      "members": {
+        "STARTROTATECRYPTKEY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "StartRotateCryptKey"
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#ConnectorsEventsGetResponseEStartRotateCryptKey": {
+      "type": "structure",
+      "members": {
+        "k": {
+          "target": "com.cloudflare.magic_transit#ConnectorsEventsGetResponseEStartRotateCryptKeyK",
+          "traits": {
+            "smithy.api#documentation": "Started crypt key rotation",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#ConnectorsEventsGetResponseEFinishRotateCryptKeySuccessK": {
+      "type": "enum",
+      "members": {
+        "FINISHROTATECRYPTKEYSUCCESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "FinishRotateCryptKeySuccess"
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#ConnectorsEventsGetResponseEFinishRotateCryptKeySuccess": {
+      "type": "structure",
+      "members": {
+        "k": {
+          "target": "com.cloudflare.magic_transit#ConnectorsEventsGetResponseEFinishRotateCryptKeySuccessK",
+          "traits": {
+            "smithy.api#documentation": "Finished crypt key rotation",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#ConnectorsEventsGetResponseEFinishRotateCryptKeyFailureK": {
+      "type": "enum",
+      "members": {
+        "FINISHROTATECRYPTKEYFAILURE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "FinishRotateCryptKeyFailure"
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#ConnectorsEventsGetResponseEFinishRotateCryptKeyFailure": {
+      "type": "structure",
+      "members": {
+        "k": {
+          "target": "com.cloudflare.magic_transit#ConnectorsEventsGetResponseEFinishRotateCryptKeyFailureK",
+          "traits": {
+            "smithy.api#documentation": "Failed crypt key rotation",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#ConnectorsEventsGetResponseEStartRotatePkiK": {
+      "type": "enum",
+      "members": {
+        "STARTROTATEPKI": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "StartRotatePki"
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#ConnectorsEventsGetResponseEStartRotatePki": {
+      "type": "structure",
+      "members": {
+        "k": {
+          "target": "com.cloudflare.magic_transit#ConnectorsEventsGetResponseEStartRotatePkiK",
+          "traits": {
+            "smithy.api#documentation": "Started PKI rotation",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#ConnectorsEventsGetResponseEFinishRotatePkiSuccessK": {
+      "type": "enum",
+      "members": {
+        "FINISHROTATEPKISUCCESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "FinishRotatePkiSuccess"
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#ConnectorsEventsGetResponseEFinishRotatePkiSuccess": {
+      "type": "structure",
+      "members": {
+        "k": {
+          "target": "com.cloudflare.magic_transit#ConnectorsEventsGetResponseEFinishRotatePkiSuccessK",
+          "traits": {
+            "smithy.api#documentation": "Finished PKI rotation",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#ConnectorsEventsGetResponseEFinishRotatePkiFailureK": {
+      "type": "enum",
+      "members": {
+        "FINISHROTATEPKIFAILURE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "FinishRotatePkiFailure"
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#ConnectorsEventsGetResponseEFinishRotatePkiFailure": {
+      "type": "structure",
+      "members": {
+        "k": {
+          "target": "com.cloudflare.magic_transit#ConnectorsEventsGetResponseEFinishRotatePkiFailureK",
+          "traits": {
+            "smithy.api#documentation": "Failed PKI rotation",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#ConnectorsEventsGetResponseEStartUpgradeK": {
+      "type": "enum",
+      "members": {
+        "STARTUPGRADE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "StartUpgrade"
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#ConnectorsEventsGetResponseEStartUpgrade": {
+      "type": "structure",
+      "members": {
+        "k": {
+          "target": "com.cloudflare.magic_transit#ConnectorsEventsGetResponseEStartUpgradeK",
+          "traits": {
+            "smithy.api#documentation": "Started upgrade",
+            "smithy.api#required": {}
           }
         },
         "url": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Location of upgrade bundle"
+            "smithy.api#documentation": "Location of upgrade bundle",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#ConnectorsEventsGetResponseEFinishUpgradeSuccessK": {
+      "type": "enum",
+      "members": {
+        "FINISHUPGRADESUCCESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "FinishUpgradeSuccess"
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#ConnectorsEventsGetResponseEFinishUpgradeSuccess": {
+      "type": "structure",
+      "members": {
+        "k": {
+          "target": "com.cloudflare.magic_transit#ConnectorsEventsGetResponseEFinishUpgradeSuccessK",
+          "traits": {
+            "smithy.api#documentation": "Finished upgrade",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#ConnectorsEventsGetResponseEFinishUpgradeFailureK": {
+      "type": "enum",
+      "members": {
+        "FINISHUPGRADEFAILURE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "FinishUpgradeFailure"
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#ConnectorsEventsGetResponseEFinishUpgradeFailure": {
+      "type": "structure",
+      "members": {
+        "k": {
+          "target": "com.cloudflare.magic_transit#ConnectorsEventsGetResponseEFinishUpgradeFailureK",
+          "traits": {
+            "smithy.api#documentation": "Failed upgrade",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#ConnectorsEventsGetResponseEReconcileK": {
+      "type": "enum",
+      "members": {
+        "RECONCILE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Reconcile"
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#ConnectorsEventsGetResponseEReconcile": {
+      "type": "structure",
+      "members": {
+        "k": {
+          "target": "com.cloudflare.magic_transit#ConnectorsEventsGetResponseEReconcileK",
+          "traits": {
+            "smithy.api#documentation": "Reconciled",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#ConnectorsEventsGetResponseEConfigureCloudflaredTunnelK": {
+      "type": "enum",
+      "members": {
+        "CONFIGURECLOUDFLAREDTUNNEL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ConfigureCloudflaredTunnel"
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#ConnectorsEventsGetResponseEConfigureCloudflaredTunnel": {
+      "type": "structure",
+      "members": {
+        "k": {
+          "target": "com.cloudflare.magic_transit#ConnectorsEventsGetResponseEConfigureCloudflaredTunnelK",
+          "traits": {
+            "smithy.api#documentation": "Configured Cloudflared tunnel",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#ConnectorsEventsGetResponseERekeyInstallBothK": {
+      "type": "enum",
+      "members": {
+        "REKEYINSTALLBOTH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RekeyInstallBoth"
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#ConnectorsEventsGetResponseERekeyInstallBoth": {
+      "type": "structure",
+      "members": {
+        "k": {
+          "target": "com.cloudflare.magic_transit#ConnectorsEventsGetResponseERekeyInstallBothK",
+          "traits": {
+            "smithy.api#documentation": "Installed initial inbound and outbound keys",
+            "smithy.api#required": {}
           }
         },
         "tunnel_id": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Tunnel identifier"
+            "smithy.api#documentation": "Tunnel identifier",
+            "smithy.api#required": {}
           }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#ConnectorsEventsGetResponseERekeyStartK": {
+      "type": "enum",
+      "members": {
+        "REKEYSTART": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RekeyStart"
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#ConnectorsEventsGetResponseERekeyStart": {
+      "type": "structure",
+      "members": {
+        "k": {
+          "target": "com.cloudflare.magic_transit#ConnectorsEventsGetResponseERekeyStartK",
+          "traits": {
+            "smithy.api#documentation": "Installed new inbound key, kept old outbound",
+            "smithy.api#required": {}
+          }
+        },
+        "tunnel_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Tunnel identifier",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#ConnectorsEventsGetResponseERekeyAdvanceK": {
+      "type": "enum",
+      "members": {
+        "REKEYADVANCE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RekeyAdvance"
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#ConnectorsEventsGetResponseERekeyAdvance": {
+      "type": "structure",
+      "members": {
+        "k": {
+          "target": "com.cloudflare.magic_transit#ConnectorsEventsGetResponseERekeyAdvanceK",
+          "traits": {
+            "smithy.api#documentation": "Confirmed traffic on new inbound key, swapped outbound to new",
+            "smithy.api#required": {}
+          }
+        },
+        "tunnel_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Tunnel identifier",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#ConnectorsEventsGetResponseERekeyCompleteK": {
+      "type": "enum",
+      "members": {
+        "REKEYCOMPLETE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RekeyComplete"
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#ConnectorsEventsGetResponseERekeyComplete": {
+      "type": "structure",
+      "members": {
+        "k": {
+          "target": "com.cloudflare.magic_transit#ConnectorsEventsGetResponseERekeyCompleteK",
+          "traits": {
+            "smithy.api#documentation": "Deleted old keys",
+            "smithy.api#required": {}
+          }
+        },
+        "tunnel_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Tunnel identifier",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#ConnectorsEventsGetResponseERekeyResetK": {
+      "type": "enum",
+      "members": {
+        "REKEYRESET": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RekeyReset"
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#ConnectorsEventsGetResponseERekeyReset": {
+      "type": "structure",
+      "members": {
+        "k": {
+          "target": "com.cloudflare.magic_transit#ConnectorsEventsGetResponseERekeyResetK",
+          "traits": {
+            "smithy.api#documentation": "Deleted all keys after receiving an unexpected key",
+            "smithy.api#required": {}
+          }
+        },
+        "tunnel_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Tunnel identifier",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#ConnectorsEventsGetResponseE": {
+      "type": "union",
+      "members": {
+        "Init": {
+          "target": "com.cloudflare.magic_transit#ConnectorsEventsGetResponseEInit"
+        },
+        "Leave": {
+          "target": "com.cloudflare.magic_transit#ConnectorsEventsGetResponseELeave"
+        },
+        "StartAttestation": {
+          "target": "com.cloudflare.magic_transit#ConnectorsEventsGetResponseEStartAttestation"
+        },
+        "FinishAttestationSuccess": {
+          "target": "com.cloudflare.magic_transit#ConnectorsEventsGetResponseEFinishAttestationSuccess"
+        },
+        "FinishAttestationFailure": {
+          "target": "com.cloudflare.magic_transit#ConnectorsEventsGetResponseEFinishAttestationFailure"
+        },
+        "StartRotateCryptKey": {
+          "target": "com.cloudflare.magic_transit#ConnectorsEventsGetResponseEStartRotateCryptKey"
+        },
+        "FinishRotateCryptKeySuccess": {
+          "target": "com.cloudflare.magic_transit#ConnectorsEventsGetResponseEFinishRotateCryptKeySuccess"
+        },
+        "FinishRotateCryptKeyFailure": {
+          "target": "com.cloudflare.magic_transit#ConnectorsEventsGetResponseEFinishRotateCryptKeyFailure"
+        },
+        "StartRotatePki": {
+          "target": "com.cloudflare.magic_transit#ConnectorsEventsGetResponseEStartRotatePki"
+        },
+        "FinishRotatePkiSuccess": {
+          "target": "com.cloudflare.magic_transit#ConnectorsEventsGetResponseEFinishRotatePkiSuccess"
+        },
+        "FinishRotatePkiFailure": {
+          "target": "com.cloudflare.magic_transit#ConnectorsEventsGetResponseEFinishRotatePkiFailure"
+        },
+        "StartUpgrade": {
+          "target": "com.cloudflare.magic_transit#ConnectorsEventsGetResponseEStartUpgrade"
+        },
+        "FinishUpgradeSuccess": {
+          "target": "com.cloudflare.magic_transit#ConnectorsEventsGetResponseEFinishUpgradeSuccess"
+        },
+        "FinishUpgradeFailure": {
+          "target": "com.cloudflare.magic_transit#ConnectorsEventsGetResponseEFinishUpgradeFailure"
+        },
+        "Reconcile": {
+          "target": "com.cloudflare.magic_transit#ConnectorsEventsGetResponseEReconcile"
+        },
+        "ConfigureCloudflaredTunnel": {
+          "target": "com.cloudflare.magic_transit#ConnectorsEventsGetResponseEConfigureCloudflaredTunnel"
+        },
+        "RekeyInstallBoth": {
+          "target": "com.cloudflare.magic_transit#ConnectorsEventsGetResponseERekeyInstallBoth"
+        },
+        "RekeyStart": {
+          "target": "com.cloudflare.magic_transit#ConnectorsEventsGetResponseERekeyStart"
+        },
+        "RekeyAdvance": {
+          "target": "com.cloudflare.magic_transit#ConnectorsEventsGetResponseERekeyAdvance"
+        },
+        "RekeyComplete": {
+          "target": "com.cloudflare.magic_transit#ConnectorsEventsGetResponseERekeyComplete"
+        },
+        "RekeyReset": {
+          "target": "com.cloudflare.magic_transit#ConnectorsEventsGetResponseERekeyReset"
         }
       }
     },
@@ -4705,7 +5264,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.cloudflare.magic_transit#ConnectorsEventsLatestListResponseItemsItemEK": {
+    "com.cloudflare.magic_transit#ConnectorsEventsLatestListResponseItemsItemEInitK": {
       "type": "enum",
       "members": {
         "INIT": {
@@ -4716,26 +5275,585 @@
         }
       }
     },
-    "com.cloudflare.magic_transit#ConnectorsEventsLatestListResponseItemsItemE": {
+    "com.cloudflare.magic_transit#ConnectorsEventsLatestListResponseItemsItemEInit": {
       "type": "structure",
       "members": {
         "k": {
-          "target": "com.cloudflare.magic_transit#ConnectorsEventsLatestListResponseItemsItemEK",
+          "target": "com.cloudflare.magic_transit#ConnectorsEventsLatestListResponseItemsItemEInitK",
           "traits": {
-            "smithy.api#documentation": "Initialized process"
+            "smithy.api#documentation": "Initialized process",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#ConnectorsEventsLatestListResponseItemsItemELeaveK": {
+      "type": "enum",
+      "members": {
+        "LEAVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Leave"
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#ConnectorsEventsLatestListResponseItemsItemELeave": {
+      "type": "structure",
+      "members": {
+        "k": {
+          "target": "com.cloudflare.magic_transit#ConnectorsEventsLatestListResponseItemsItemELeaveK",
+          "traits": {
+            "smithy.api#documentation": "Stopped process",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#ConnectorsEventsLatestListResponseItemsItemEStartAttestationK": {
+      "type": "enum",
+      "members": {
+        "STARTATTESTATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "StartAttestation"
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#ConnectorsEventsLatestListResponseItemsItemEStartAttestation": {
+      "type": "structure",
+      "members": {
+        "k": {
+          "target": "com.cloudflare.magic_transit#ConnectorsEventsLatestListResponseItemsItemEStartAttestationK",
+          "traits": {
+            "smithy.api#documentation": "Started attestation",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#ConnectorsEventsLatestListResponseItemsItemEFinishAttestationSuccessK": {
+      "type": "enum",
+      "members": {
+        "FINISHATTESTATIONSUCCESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "FinishAttestationSuccess"
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#ConnectorsEventsLatestListResponseItemsItemEFinishAttestationSuccess": {
+      "type": "structure",
+      "members": {
+        "k": {
+          "target": "com.cloudflare.magic_transit#ConnectorsEventsLatestListResponseItemsItemEFinishAttestationSuccessK",
+          "traits": {
+            "smithy.api#documentation": "Finished attestation",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#ConnectorsEventsLatestListResponseItemsItemEFinishAttestationFailureK": {
+      "type": "enum",
+      "members": {
+        "FINISHATTESTATIONFAILURE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "FinishAttestationFailure"
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#ConnectorsEventsLatestListResponseItemsItemEFinishAttestationFailure": {
+      "type": "structure",
+      "members": {
+        "k": {
+          "target": "com.cloudflare.magic_transit#ConnectorsEventsLatestListResponseItemsItemEFinishAttestationFailureK",
+          "traits": {
+            "smithy.api#documentation": "Failed attestation",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#ConnectorsEventsLatestListResponseItemsItemEStartRotateCryptKeyK": {
+      "type": "enum",
+      "members": {
+        "STARTROTATECRYPTKEY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "StartRotateCryptKey"
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#ConnectorsEventsLatestListResponseItemsItemEStartRotateCryptKey": {
+      "type": "structure",
+      "members": {
+        "k": {
+          "target": "com.cloudflare.magic_transit#ConnectorsEventsLatestListResponseItemsItemEStartRotateCryptKeyK",
+          "traits": {
+            "smithy.api#documentation": "Started crypt key rotation",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#ConnectorsEventsLatestListResponseItemsItemEFinishRotateCryptKeySuccessK": {
+      "type": "enum",
+      "members": {
+        "FINISHROTATECRYPTKEYSUCCESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "FinishRotateCryptKeySuccess"
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#ConnectorsEventsLatestListResponseItemsItemEFinishRotateCryptKeySuccess": {
+      "type": "structure",
+      "members": {
+        "k": {
+          "target": "com.cloudflare.magic_transit#ConnectorsEventsLatestListResponseItemsItemEFinishRotateCryptKeySuccessK",
+          "traits": {
+            "smithy.api#documentation": "Finished crypt key rotation",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#ConnectorsEventsLatestListResponseItemsItemEFinishRotateCryptKeyFailureK": {
+      "type": "enum",
+      "members": {
+        "FINISHROTATECRYPTKEYFAILURE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "FinishRotateCryptKeyFailure"
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#ConnectorsEventsLatestListResponseItemsItemEFinishRotateCryptKeyFailure": {
+      "type": "structure",
+      "members": {
+        "k": {
+          "target": "com.cloudflare.magic_transit#ConnectorsEventsLatestListResponseItemsItemEFinishRotateCryptKeyFailureK",
+          "traits": {
+            "smithy.api#documentation": "Failed crypt key rotation",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#ConnectorsEventsLatestListResponseItemsItemEStartRotatePkiK": {
+      "type": "enum",
+      "members": {
+        "STARTROTATEPKI": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "StartRotatePki"
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#ConnectorsEventsLatestListResponseItemsItemEStartRotatePki": {
+      "type": "structure",
+      "members": {
+        "k": {
+          "target": "com.cloudflare.magic_transit#ConnectorsEventsLatestListResponseItemsItemEStartRotatePkiK",
+          "traits": {
+            "smithy.api#documentation": "Started PKI rotation",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#ConnectorsEventsLatestListResponseItemsItemEFinishRotatePkiSuccessK": {
+      "type": "enum",
+      "members": {
+        "FINISHROTATEPKISUCCESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "FinishRotatePkiSuccess"
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#ConnectorsEventsLatestListResponseItemsItemEFinishRotatePkiSuccess": {
+      "type": "structure",
+      "members": {
+        "k": {
+          "target": "com.cloudflare.magic_transit#ConnectorsEventsLatestListResponseItemsItemEFinishRotatePkiSuccessK",
+          "traits": {
+            "smithy.api#documentation": "Finished PKI rotation",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#ConnectorsEventsLatestListResponseItemsItemEFinishRotatePkiFailureK": {
+      "type": "enum",
+      "members": {
+        "FINISHROTATEPKIFAILURE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "FinishRotatePkiFailure"
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#ConnectorsEventsLatestListResponseItemsItemEFinishRotatePkiFailure": {
+      "type": "structure",
+      "members": {
+        "k": {
+          "target": "com.cloudflare.magic_transit#ConnectorsEventsLatestListResponseItemsItemEFinishRotatePkiFailureK",
+          "traits": {
+            "smithy.api#documentation": "Failed PKI rotation",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#ConnectorsEventsLatestListResponseItemsItemEStartUpgradeK": {
+      "type": "enum",
+      "members": {
+        "STARTUPGRADE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "StartUpgrade"
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#ConnectorsEventsLatestListResponseItemsItemEStartUpgrade": {
+      "type": "structure",
+      "members": {
+        "k": {
+          "target": "com.cloudflare.magic_transit#ConnectorsEventsLatestListResponseItemsItemEStartUpgradeK",
+          "traits": {
+            "smithy.api#documentation": "Started upgrade",
+            "smithy.api#required": {}
           }
         },
         "url": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Location of upgrade bundle"
+            "smithy.api#documentation": "Location of upgrade bundle",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#ConnectorsEventsLatestListResponseItemsItemEFinishUpgradeSuccessK": {
+      "type": "enum",
+      "members": {
+        "FINISHUPGRADESUCCESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "FinishUpgradeSuccess"
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#ConnectorsEventsLatestListResponseItemsItemEFinishUpgradeSuccess": {
+      "type": "structure",
+      "members": {
+        "k": {
+          "target": "com.cloudflare.magic_transit#ConnectorsEventsLatestListResponseItemsItemEFinishUpgradeSuccessK",
+          "traits": {
+            "smithy.api#documentation": "Finished upgrade",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#ConnectorsEventsLatestListResponseItemsItemEFinishUpgradeFailureK": {
+      "type": "enum",
+      "members": {
+        "FINISHUPGRADEFAILURE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "FinishUpgradeFailure"
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#ConnectorsEventsLatestListResponseItemsItemEFinishUpgradeFailure": {
+      "type": "structure",
+      "members": {
+        "k": {
+          "target": "com.cloudflare.magic_transit#ConnectorsEventsLatestListResponseItemsItemEFinishUpgradeFailureK",
+          "traits": {
+            "smithy.api#documentation": "Failed upgrade",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#ConnectorsEventsLatestListResponseItemsItemEReconcileK": {
+      "type": "enum",
+      "members": {
+        "RECONCILE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Reconcile"
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#ConnectorsEventsLatestListResponseItemsItemEReconcile": {
+      "type": "structure",
+      "members": {
+        "k": {
+          "target": "com.cloudflare.magic_transit#ConnectorsEventsLatestListResponseItemsItemEReconcileK",
+          "traits": {
+            "smithy.api#documentation": "Reconciled",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#ConnectorsEventsLatestListResponseItemsItemEConfigureCloudflaredTunnelK": {
+      "type": "enum",
+      "members": {
+        "CONFIGURECLOUDFLAREDTUNNEL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ConfigureCloudflaredTunnel"
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#ConnectorsEventsLatestListResponseItemsItemEConfigureCloudflaredTunnel": {
+      "type": "structure",
+      "members": {
+        "k": {
+          "target": "com.cloudflare.magic_transit#ConnectorsEventsLatestListResponseItemsItemEConfigureCloudflaredTunnelK",
+          "traits": {
+            "smithy.api#documentation": "Configured Cloudflared tunnel",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#ConnectorsEventsLatestListResponseItemsItemERekeyInstallBothK": {
+      "type": "enum",
+      "members": {
+        "REKEYINSTALLBOTH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RekeyInstallBoth"
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#ConnectorsEventsLatestListResponseItemsItemERekeyInstallBoth": {
+      "type": "structure",
+      "members": {
+        "k": {
+          "target": "com.cloudflare.magic_transit#ConnectorsEventsLatestListResponseItemsItemERekeyInstallBothK",
+          "traits": {
+            "smithy.api#documentation": "Installed initial inbound and outbound keys",
+            "smithy.api#required": {}
           }
         },
         "tunnel_id": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Tunnel identifier"
+            "smithy.api#documentation": "Tunnel identifier",
+            "smithy.api#required": {}
           }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#ConnectorsEventsLatestListResponseItemsItemERekeyStartK": {
+      "type": "enum",
+      "members": {
+        "REKEYSTART": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RekeyStart"
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#ConnectorsEventsLatestListResponseItemsItemERekeyStart": {
+      "type": "structure",
+      "members": {
+        "k": {
+          "target": "com.cloudflare.magic_transit#ConnectorsEventsLatestListResponseItemsItemERekeyStartK",
+          "traits": {
+            "smithy.api#documentation": "Installed new inbound key, kept old outbound",
+            "smithy.api#required": {}
+          }
+        },
+        "tunnel_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Tunnel identifier",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#ConnectorsEventsLatestListResponseItemsItemERekeyAdvanceK": {
+      "type": "enum",
+      "members": {
+        "REKEYADVANCE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RekeyAdvance"
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#ConnectorsEventsLatestListResponseItemsItemERekeyAdvance": {
+      "type": "structure",
+      "members": {
+        "k": {
+          "target": "com.cloudflare.magic_transit#ConnectorsEventsLatestListResponseItemsItemERekeyAdvanceK",
+          "traits": {
+            "smithy.api#documentation": "Confirmed traffic on new inbound key, swapped outbound to new",
+            "smithy.api#required": {}
+          }
+        },
+        "tunnel_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Tunnel identifier",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#ConnectorsEventsLatestListResponseItemsItemERekeyCompleteK": {
+      "type": "enum",
+      "members": {
+        "REKEYCOMPLETE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RekeyComplete"
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#ConnectorsEventsLatestListResponseItemsItemERekeyComplete": {
+      "type": "structure",
+      "members": {
+        "k": {
+          "target": "com.cloudflare.magic_transit#ConnectorsEventsLatestListResponseItemsItemERekeyCompleteK",
+          "traits": {
+            "smithy.api#documentation": "Deleted old keys",
+            "smithy.api#required": {}
+          }
+        },
+        "tunnel_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Tunnel identifier",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#ConnectorsEventsLatestListResponseItemsItemERekeyResetK": {
+      "type": "enum",
+      "members": {
+        "REKEYRESET": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RekeyReset"
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#ConnectorsEventsLatestListResponseItemsItemERekeyReset": {
+      "type": "structure",
+      "members": {
+        "k": {
+          "target": "com.cloudflare.magic_transit#ConnectorsEventsLatestListResponseItemsItemERekeyResetK",
+          "traits": {
+            "smithy.api#documentation": "Deleted all keys after receiving an unexpected key",
+            "smithy.api#required": {}
+          }
+        },
+        "tunnel_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Tunnel identifier",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#ConnectorsEventsLatestListResponseItemsItemE": {
+      "type": "union",
+      "members": {
+        "Init": {
+          "target": "com.cloudflare.magic_transit#ConnectorsEventsLatestListResponseItemsItemEInit"
+        },
+        "Leave": {
+          "target": "com.cloudflare.magic_transit#ConnectorsEventsLatestListResponseItemsItemELeave"
+        },
+        "StartAttestation": {
+          "target": "com.cloudflare.magic_transit#ConnectorsEventsLatestListResponseItemsItemEStartAttestation"
+        },
+        "FinishAttestationSuccess": {
+          "target": "com.cloudflare.magic_transit#ConnectorsEventsLatestListResponseItemsItemEFinishAttestationSuccess"
+        },
+        "FinishAttestationFailure": {
+          "target": "com.cloudflare.magic_transit#ConnectorsEventsLatestListResponseItemsItemEFinishAttestationFailure"
+        },
+        "StartRotateCryptKey": {
+          "target": "com.cloudflare.magic_transit#ConnectorsEventsLatestListResponseItemsItemEStartRotateCryptKey"
+        },
+        "FinishRotateCryptKeySuccess": {
+          "target": "com.cloudflare.magic_transit#ConnectorsEventsLatestListResponseItemsItemEFinishRotateCryptKeySuccess"
+        },
+        "FinishRotateCryptKeyFailure": {
+          "target": "com.cloudflare.magic_transit#ConnectorsEventsLatestListResponseItemsItemEFinishRotateCryptKeyFailure"
+        },
+        "StartRotatePki": {
+          "target": "com.cloudflare.magic_transit#ConnectorsEventsLatestListResponseItemsItemEStartRotatePki"
+        },
+        "FinishRotatePkiSuccess": {
+          "target": "com.cloudflare.magic_transit#ConnectorsEventsLatestListResponseItemsItemEFinishRotatePkiSuccess"
+        },
+        "FinishRotatePkiFailure": {
+          "target": "com.cloudflare.magic_transit#ConnectorsEventsLatestListResponseItemsItemEFinishRotatePkiFailure"
+        },
+        "StartUpgrade": {
+          "target": "com.cloudflare.magic_transit#ConnectorsEventsLatestListResponseItemsItemEStartUpgrade"
+        },
+        "FinishUpgradeSuccess": {
+          "target": "com.cloudflare.magic_transit#ConnectorsEventsLatestListResponseItemsItemEFinishUpgradeSuccess"
+        },
+        "FinishUpgradeFailure": {
+          "target": "com.cloudflare.magic_transit#ConnectorsEventsLatestListResponseItemsItemEFinishUpgradeFailure"
+        },
+        "Reconcile": {
+          "target": "com.cloudflare.magic_transit#ConnectorsEventsLatestListResponseItemsItemEReconcile"
+        },
+        "ConfigureCloudflaredTunnel": {
+          "target": "com.cloudflare.magic_transit#ConnectorsEventsLatestListResponseItemsItemEConfigureCloudflaredTunnel"
+        },
+        "RekeyInstallBoth": {
+          "target": "com.cloudflare.magic_transit#ConnectorsEventsLatestListResponseItemsItemERekeyInstallBoth"
+        },
+        "RekeyStart": {
+          "target": "com.cloudflare.magic_transit#ConnectorsEventsLatestListResponseItemsItemERekeyStart"
+        },
+        "RekeyAdvance": {
+          "target": "com.cloudflare.magic_transit#ConnectorsEventsLatestListResponseItemsItemERekeyAdvance"
+        },
+        "RekeyComplete": {
+          "target": "com.cloudflare.magic_transit#ConnectorsEventsLatestListResponseItemsItemERekeyComplete"
+        },
+        "RekeyReset": {
+          "target": "com.cloudflare.magic_transit#ConnectorsEventsLatestListResponseItemsItemERekeyReset"
         }
       }
     },
@@ -13317,7 +14435,7 @@
         "smithy.api#idempotent": {}
       }
     },
-    "com.cloudflare.magic_transit#PcapsCreateRequestBodySystem": {
+    "com.cloudflare.magic_transit#PcapsCreateRequestBodyMagicVisibilityPCAPsPCAPsRequestSimpleSystem": {
       "type": "enum",
       "members": {
         "MAGIC_TRANSIT": {
@@ -13328,7 +14446,7 @@
         }
       }
     },
-    "com.cloudflare.magic_transit#PcapsCreateRequestBodyType": {
+    "com.cloudflare.magic_transit#PcapsCreateRequestBodyMagicVisibilityPCAPsPCAPsRequestSimpleType": {
       "type": "enum",
       "members": {
         "SIMPLE": {
@@ -13345,7 +14463,7 @@
         }
       }
     },
-    "com.cloudflare.magic_transit#PcapsCreateRequestBodyFilterV1": {
+    "com.cloudflare.magic_transit#PcapsCreateRequestBodyMagicVisibilityPCAPsPCAPsRequestSimpleFilterV1": {
       "type": "structure",
       "members": {
         "destination_address": {
@@ -13380,35 +14498,39 @@
         }
       }
     },
-    "com.cloudflare.magic_transit#PcapsCreateRequestBody": {
+    "com.cloudflare.magic_transit#PcapsCreateRequestBodyMagicVisibilityPCAPsPCAPsRequestSimple": {
       "type": "structure",
       "members": {
         "packet_limit": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#documentation": "The limit of packets contained in a packet capture."
+            "smithy.api#documentation": "The limit of packets contained in a packet capture.",
+            "smithy.api#required": {}
           }
         },
         "system": {
-          "target": "com.cloudflare.magic_transit#PcapsCreateRequestBodySystem",
+          "target": "com.cloudflare.magic_transit#PcapsCreateRequestBodyMagicVisibilityPCAPsPCAPsRequestSimpleSystem",
           "traits": {
-            "smithy.api#documentation": "The system used to collect packet captures."
+            "smithy.api#documentation": "The system used to collect packet captures.",
+            "smithy.api#required": {}
           }
         },
         "time_limit": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#documentation": "The packet capture duration in seconds."
+            "smithy.api#documentation": "The packet capture duration in seconds.",
+            "smithy.api#required": {}
           }
         },
         "type": {
-          "target": "com.cloudflare.magic_transit#PcapsCreateRequestBodyType",
+          "target": "com.cloudflare.magic_transit#PcapsCreateRequestBodyMagicVisibilityPCAPsPCAPsRequestSimpleType",
           "traits": {
-            "smithy.api#documentation": "The type of packet capture. `Simple` captures sampled packets, and `full` captures entire payloads and non-sampled packets."
+            "smithy.api#documentation": "The type of packet capture. `Simple` captures sampled packets, and `full` captures entire payloads and non-sampled packets.",
+            "smithy.api#required": {}
           }
         },
         "filter_v1": {
-          "target": "com.cloudflare.magic_transit#PcapsCreateRequestBodyFilterV1",
+          "target": "com.cloudflare.magic_transit#PcapsCreateRequestBodyMagicVisibilityPCAPsPCAPsRequestSimpleFilterV1",
           "traits": {
             "smithy.api#documentation": "The packet capture filter. When this field is empty, all packets are captured."
           }
@@ -13418,17 +14540,73 @@
           "traits": {
             "smithy.api#documentation": "The RFC 3339 offset timestamp from which to query backwards for packets. Must be within the last 24h. When this field is empty, defaults to time of request."
           }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#PcapsCreateRequestBodyMagicVisibilityPCAPsPCAPsRequestFullSystem": {
+      "type": "enum",
+      "members": {
+        "MAGIC_TRANSIT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "magic-transit"
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#PcapsCreateRequestBodyMagicVisibilityPCAPsPCAPsRequestFullType": {
+      "type": "enum",
+      "members": {
+        "SIMPLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "simple"
+          }
         },
+        "FULL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "full"
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#PcapsCreateRequestBodyMagicVisibilityPCAPsPCAPsRequestFull": {
+      "type": "structure",
+      "members": {
         "colo_name": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The name of the data center used for the packet capture. This can be a specific colo (ord02) or a multi-colo name (ORD). This field only applies to `full` packet captures."
+            "smithy.api#documentation": "The name of the data center used for the packet capture. This can be a specific colo (ord02) or a multi-colo name (ORD). This field only applies to `full` packet captures.",
+            "smithy.api#required": {}
           }
         },
         "destination_conf": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The full URI for the bucket. This field only applies to `full` packet captures."
+            "smithy.api#documentation": "The full URI for the bucket. This field only applies to `full` packet captures.",
+            "smithy.api#required": {}
+          }
+        },
+        "system": {
+          "target": "com.cloudflare.magic_transit#PcapsCreateRequestBodyMagicVisibilityPCAPsPCAPsRequestFullSystem",
+          "traits": {
+            "smithy.api#documentation": "The system used to collect packet captures.",
+            "smithy.api#required": {}
+          }
+        },
+        "time_limit": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The packet capture duration in seconds.",
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "com.cloudflare.magic_transit#PcapsCreateRequestBodyMagicVisibilityPCAPsPCAPsRequestFullType",
+          "traits": {
+            "smithy.api#documentation": "The type of packet capture. `Simple` captures sampled packets, and `full` captures entire payloads and non-sampled packets.",
+            "smithy.api#required": {}
           }
         },
         "byte_limit": {
@@ -13436,6 +14614,29 @@
           "traits": {
             "smithy.api#documentation": "The maximum number of bytes to capture. This field only applies to `full` packet captures."
           }
+        },
+        "filter_v1": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "The packet capture filter. When this field is empty, all packets are captured."
+          }
+        },
+        "packet_limit": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The limit of packets contained in a packet capture."
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#PcapsCreateRequestBody": {
+      "type": "union",
+      "members": {
+        "MagicVisibilityPCAPsPCAPsRequestSimple": {
+          "target": "com.cloudflare.magic_transit#PcapsCreateRequestBodyMagicVisibilityPCAPsPCAPsRequestSimple"
+        },
+        "MagicVisibilityPCAPsPCAPsRequestFull": {
+          "target": "com.cloudflare.magic_transit#PcapsCreateRequestBodyMagicVisibilityPCAPsPCAPsRequestFull"
         }
       }
     },
@@ -17857,19 +19058,20 @@
         "smithy.api#idempotent": {}
       }
     },
-    "com.cloudflare.magic_transit#SitesAppConfigurationCreateRequestBodyPreferredWansList": {
+    "com.cloudflare.magic_transit#SitesAppConfigurationCreateRequestBodyAccountAppPreferredWansList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
       }
     },
-    "com.cloudflare.magic_transit#SitesAppConfigurationCreateRequestBody": {
+    "com.cloudflare.magic_transit#SitesAppConfigurationCreateRequestBodyAccountApp": {
       "type": "structure",
       "members": {
         "account_app_id": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Magic account app ID."
+            "smithy.api#documentation": "Magic account app ID.",
+            "smithy.api#required": {}
           }
         },
         "breakout": {
@@ -17879,7 +19081,7 @@
           }
         },
         "preferred_wans": {
-          "target": "com.cloudflare.magic_transit#SitesAppConfigurationCreateRequestBodyPreferredWansList",
+          "target": "com.cloudflare.magic_transit#SitesAppConfigurationCreateRequestBodyAccountAppPreferredWansList",
           "traits": {
             "smithy.api#documentation": "WAN interfaces to prefer over default WANs, highest-priority first. Can only be specified for breakout rules (breakout must be true)."
           }
@@ -17889,12 +19091,53 @@
           "traits": {
             "smithy.api#documentation": "Priority of traffic. 0 is default, anything greater is prioritized. (Currently only 0 and 1 are supported)"
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#SitesAppConfigurationCreateRequestBodyManagedAppPreferredWansList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.magic_transit#SitesAppConfigurationCreateRequestBodyManagedApp": {
+      "type": "structure",
+      "members": {
         "managed_app_id": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Managed app ID."
+            "smithy.api#documentation": "Managed app ID.",
+            "smithy.api#required": {}
           }
+        },
+        "breakout": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether to breakout traffic to the app's endpoints directly. Null preserves default behavior."
+          }
+        },
+        "preferred_wans": {
+          "target": "com.cloudflare.magic_transit#SitesAppConfigurationCreateRequestBodyManagedAppPreferredWansList",
+          "traits": {
+            "smithy.api#documentation": "WAN interfaces to prefer over default WANs, highest-priority first. Can only be specified for breakout rules (breakout must be true)."
+          }
+        },
+        "priority": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Priority of traffic. 0 is default, anything greater is prioritized. (Currently only 0 and 1 are supported)"
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#SitesAppConfigurationCreateRequestBody": {
+      "type": "union",
+      "members": {
+        "AccountApp": {
+          "target": "com.cloudflare.magic_transit#SitesAppConfigurationCreateRequestBodyAccountApp"
+        },
+        "ManagedApp": {
+          "target": "com.cloudflare.magic_transit#SitesAppConfigurationCreateRequestBodyManagedApp"
         }
       }
     },

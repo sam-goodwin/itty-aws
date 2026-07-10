@@ -4421,7 +4421,7 @@
         "target": "com.cloudflare.workers#BetaWorkersVersionsCreateRequestPackageDependenciesItem"
       }
     },
-    "com.cloudflare.workers#BetaWorkersVersionsCreateRequestPlacementMode": {
+    "com.cloudflare.workers#BetaWorkersVersionsCreateRequestPlacementModeMode": {
       "type": "enum",
       "members": {
         "SMART": {
@@ -4432,7 +4432,156 @@
         }
       }
     },
-    "com.cloudflare.workers#BetaWorkersVersionsCreateRequestPlacementTargetItem": {
+    "com.cloudflare.workers#BetaWorkersVersionsCreateRequestPlacementMode": {
+      "type": "structure",
+      "members": {
+        "mode": {
+          "target": "com.cloudflare.workers#BetaWorkersVersionsCreateRequestPlacementModeMode",
+          "traits": {
+            "smithy.api#documentation": "Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#BetaWorkersVersionsCreateRequestPlacementRegion": {
+      "type": "structure",
+      "members": {
+        "region": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Cloud region for targeted placement in format 'provider:region'.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#BetaWorkersVersionsCreateRequestPlacementHostname": {
+      "type": "structure",
+      "members": {
+        "hostname": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "HTTP hostname for targeted placement.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#BetaWorkersVersionsCreateRequestPlacementHost": {
+      "type": "structure",
+      "members": {
+        "host": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "TCP host and port for targeted placement.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#BetaWorkersVersionsCreateRequestPlacementObjectModeRegionMode": {
+      "type": "enum",
+      "members": {
+        "TARGETED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "targeted"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#BetaWorkersVersionsCreateRequestPlacementObjectModeRegion": {
+      "type": "structure",
+      "members": {
+        "mode": {
+          "target": "com.cloudflare.workers#BetaWorkersVersionsCreateRequestPlacementObjectModeRegionMode",
+          "traits": {
+            "smithy.api#documentation": "Targeted placement mode.",
+            "smithy.api#required": {}
+          }
+        },
+        "region": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Cloud region for targeted placement in format 'provider:region'.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#BetaWorkersVersionsCreateRequestPlacementObjectHostnameModeMode": {
+      "type": "enum",
+      "members": {
+        "TARGETED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "targeted"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#BetaWorkersVersionsCreateRequestPlacementObjectHostnameMode": {
+      "type": "structure",
+      "members": {
+        "hostname": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "HTTP hostname for targeted placement.",
+            "smithy.api#required": {}
+          }
+        },
+        "mode": {
+          "target": "com.cloudflare.workers#BetaWorkersVersionsCreateRequestPlacementObjectHostnameModeMode",
+          "traits": {
+            "smithy.api#documentation": "Targeted placement mode.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#BetaWorkersVersionsCreateRequestPlacementObjectHostModeMode": {
+      "type": "enum",
+      "members": {
+        "TARGETED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "targeted"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#BetaWorkersVersionsCreateRequestPlacementObjectHostMode": {
+      "type": "structure",
+      "members": {
+        "host": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "TCP host and port for targeted placement.",
+            "smithy.api#required": {}
+          }
+        },
+        "mode": {
+          "target": "com.cloudflare.workers#BetaWorkersVersionsCreateRequestPlacementObjectHostModeMode",
+          "traits": {
+            "smithy.api#documentation": "Targeted placement mode.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#BetaWorkersVersionsCreateRequestPlacementObjectModeTargetMode": {
+      "type": "enum",
+      "members": {
+        "TARGETED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "targeted"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#BetaWorkersVersionsCreateRequestPlacementObjectModeTargetTargetItem": {
       "type": "structure",
       "members": {
         "region": {
@@ -4455,44 +4604,57 @@
         }
       }
     },
-    "com.cloudflare.workers#BetaWorkersVersionsCreateRequestPlacementTargetList": {
+    "com.cloudflare.workers#BetaWorkersVersionsCreateRequestPlacementObjectModeTargetTargetList": {
       "type": "list",
       "member": {
-        "target": "com.cloudflare.workers#BetaWorkersVersionsCreateRequestPlacementTargetItem"
+        "target": "com.cloudflare.workers#BetaWorkersVersionsCreateRequestPlacementObjectModeTargetTargetItem"
       }
     },
-    "com.cloudflare.workers#BetaWorkersVersionsCreateRequestPlacement": {
+    "com.cloudflare.workers#BetaWorkersVersionsCreateRequestPlacementObjectModeTarget": {
       "type": "structure",
       "members": {
         "mode": {
-          "target": "com.cloudflare.workers#BetaWorkersVersionsCreateRequestPlacementMode",
+          "target": "com.cloudflare.workers#BetaWorkersVersionsCreateRequestPlacementObjectModeTargetMode",
           "traits": {
-            "smithy.api#documentation": "Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement)."
-          }
-        },
-        "region": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Cloud region for targeted placement in format 'provider:region'."
-          }
-        },
-        "hostname": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "HTTP hostname for targeted placement."
-          }
-        },
-        "host": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "TCP host and port for targeted placement."
+            "smithy.api#documentation": "Targeted placement mode.",
+            "smithy.api#required": {}
           }
         },
         "target": {
-          "target": "com.cloudflare.workers#BetaWorkersVersionsCreateRequestPlacementTargetList",
+          "target": "com.cloudflare.workers#BetaWorkersVersionsCreateRequestPlacementObjectModeTargetTargetList",
           "traits": {
-            "smithy.api#documentation": "Array of placement targets (currently limited to single target)."
+            "smithy.api#documentation": "Array of placement targets (currently limited to single target).",
+            "smithy.api#required": {}
           }
+        }
+      }
+    },
+    "com.cloudflare.workers#BetaWorkersVersionsCreateRequestPlacement": {
+      "type": "union",
+      "members": {
+        "Mode": {
+          "target": "com.cloudflare.workers#BetaWorkersVersionsCreateRequestPlacementMode"
+        },
+        "Region": {
+          "target": "com.cloudflare.workers#BetaWorkersVersionsCreateRequestPlacementRegion"
+        },
+        "Hostname": {
+          "target": "com.cloudflare.workers#BetaWorkersVersionsCreateRequestPlacementHostname"
+        },
+        "Host": {
+          "target": "com.cloudflare.workers#BetaWorkersVersionsCreateRequestPlacementHost"
+        },
+        "ObjectModeRegion": {
+          "target": "com.cloudflare.workers#BetaWorkersVersionsCreateRequestPlacementObjectModeRegion"
+        },
+        "ObjectHostnameMode": {
+          "target": "com.cloudflare.workers#BetaWorkersVersionsCreateRequestPlacementObjectHostnameMode"
+        },
+        "ObjectHostMode": {
+          "target": "com.cloudflare.workers#BetaWorkersVersionsCreateRequestPlacementObjectHostMode"
+        },
+        "ObjectModeTarget": {
+          "target": "com.cloudflare.workers#BetaWorkersVersionsCreateRequestPlacementObjectModeTarget"
         }
       }
     },
@@ -5561,7 +5723,7 @@
         "target": "com.cloudflare.workers#BetaWorkersVersionsCreateResponsePackageDependenciesItem"
       }
     },
-    "com.cloudflare.workers#BetaWorkersVersionsCreateResponsePlacementMode": {
+    "com.cloudflare.workers#BetaWorkersVersionsCreateResponsePlacementModeMode": {
       "type": "enum",
       "members": {
         "SMART": {
@@ -5572,7 +5734,156 @@
         }
       }
     },
-    "com.cloudflare.workers#BetaWorkersVersionsCreateResponsePlacementTargetItem": {
+    "com.cloudflare.workers#BetaWorkersVersionsCreateResponsePlacementMode": {
+      "type": "structure",
+      "members": {
+        "mode": {
+          "target": "com.cloudflare.workers#BetaWorkersVersionsCreateResponsePlacementModeMode",
+          "traits": {
+            "smithy.api#documentation": "Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#BetaWorkersVersionsCreateResponsePlacementRegion": {
+      "type": "structure",
+      "members": {
+        "region": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Cloud region for targeted placement in format 'provider:region'.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#BetaWorkersVersionsCreateResponsePlacementHostname": {
+      "type": "structure",
+      "members": {
+        "hostname": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "HTTP hostname for targeted placement.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#BetaWorkersVersionsCreateResponsePlacementHost": {
+      "type": "structure",
+      "members": {
+        "host": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "TCP host and port for targeted placement.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#BetaWorkersVersionsCreateResponsePlacementObjectModeRegionMode": {
+      "type": "enum",
+      "members": {
+        "TARGETED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "targeted"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#BetaWorkersVersionsCreateResponsePlacementObjectModeRegion": {
+      "type": "structure",
+      "members": {
+        "mode": {
+          "target": "com.cloudflare.workers#BetaWorkersVersionsCreateResponsePlacementObjectModeRegionMode",
+          "traits": {
+            "smithy.api#documentation": "Targeted placement mode.",
+            "smithy.api#required": {}
+          }
+        },
+        "region": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Cloud region for targeted placement in format 'provider:region'.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#BetaWorkersVersionsCreateResponsePlacementObjectHostnameModeMode": {
+      "type": "enum",
+      "members": {
+        "TARGETED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "targeted"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#BetaWorkersVersionsCreateResponsePlacementObjectHostnameMode": {
+      "type": "structure",
+      "members": {
+        "hostname": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "HTTP hostname for targeted placement.",
+            "smithy.api#required": {}
+          }
+        },
+        "mode": {
+          "target": "com.cloudflare.workers#BetaWorkersVersionsCreateResponsePlacementObjectHostnameModeMode",
+          "traits": {
+            "smithy.api#documentation": "Targeted placement mode.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#BetaWorkersVersionsCreateResponsePlacementObjectHostModeMode": {
+      "type": "enum",
+      "members": {
+        "TARGETED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "targeted"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#BetaWorkersVersionsCreateResponsePlacementObjectHostMode": {
+      "type": "structure",
+      "members": {
+        "host": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "TCP host and port for targeted placement.",
+            "smithy.api#required": {}
+          }
+        },
+        "mode": {
+          "target": "com.cloudflare.workers#BetaWorkersVersionsCreateResponsePlacementObjectHostModeMode",
+          "traits": {
+            "smithy.api#documentation": "Targeted placement mode.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#BetaWorkersVersionsCreateResponsePlacementObjectModeTargetMode": {
+      "type": "enum",
+      "members": {
+        "TARGETED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "targeted"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#BetaWorkersVersionsCreateResponsePlacementObjectModeTargetTargetItem": {
       "type": "structure",
       "members": {
         "region": {
@@ -5595,44 +5906,57 @@
         }
       }
     },
-    "com.cloudflare.workers#BetaWorkersVersionsCreateResponsePlacementTargetList": {
+    "com.cloudflare.workers#BetaWorkersVersionsCreateResponsePlacementObjectModeTargetTargetList": {
       "type": "list",
       "member": {
-        "target": "com.cloudflare.workers#BetaWorkersVersionsCreateResponsePlacementTargetItem"
+        "target": "com.cloudflare.workers#BetaWorkersVersionsCreateResponsePlacementObjectModeTargetTargetItem"
       }
     },
-    "com.cloudflare.workers#BetaWorkersVersionsCreateResponsePlacement": {
+    "com.cloudflare.workers#BetaWorkersVersionsCreateResponsePlacementObjectModeTarget": {
       "type": "structure",
       "members": {
         "mode": {
-          "target": "com.cloudflare.workers#BetaWorkersVersionsCreateResponsePlacementMode",
+          "target": "com.cloudflare.workers#BetaWorkersVersionsCreateResponsePlacementObjectModeTargetMode",
           "traits": {
-            "smithy.api#documentation": "Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement)."
-          }
-        },
-        "region": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Cloud region for targeted placement in format 'provider:region'."
-          }
-        },
-        "hostname": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "HTTP hostname for targeted placement."
-          }
-        },
-        "host": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "TCP host and port for targeted placement."
+            "smithy.api#documentation": "Targeted placement mode.",
+            "smithy.api#required": {}
           }
         },
         "target": {
-          "target": "com.cloudflare.workers#BetaWorkersVersionsCreateResponsePlacementTargetList",
+          "target": "com.cloudflare.workers#BetaWorkersVersionsCreateResponsePlacementObjectModeTargetTargetList",
           "traits": {
-            "smithy.api#documentation": "Array of placement targets (currently limited to single target)."
+            "smithy.api#documentation": "Array of placement targets (currently limited to single target).",
+            "smithy.api#required": {}
           }
+        }
+      }
+    },
+    "com.cloudflare.workers#BetaWorkersVersionsCreateResponsePlacement": {
+      "type": "union",
+      "members": {
+        "Mode": {
+          "target": "com.cloudflare.workers#BetaWorkersVersionsCreateResponsePlacementMode"
+        },
+        "Region": {
+          "target": "com.cloudflare.workers#BetaWorkersVersionsCreateResponsePlacementRegion"
+        },
+        "Hostname": {
+          "target": "com.cloudflare.workers#BetaWorkersVersionsCreateResponsePlacementHostname"
+        },
+        "Host": {
+          "target": "com.cloudflare.workers#BetaWorkersVersionsCreateResponsePlacementHost"
+        },
+        "ObjectModeRegion": {
+          "target": "com.cloudflare.workers#BetaWorkersVersionsCreateResponsePlacementObjectModeRegion"
+        },
+        "ObjectHostnameMode": {
+          "target": "com.cloudflare.workers#BetaWorkersVersionsCreateResponsePlacementObjectHostnameMode"
+        },
+        "ObjectHostMode": {
+          "target": "com.cloudflare.workers#BetaWorkersVersionsCreateResponsePlacementObjectHostMode"
+        },
+        "ObjectModeTarget": {
+          "target": "com.cloudflare.workers#BetaWorkersVersionsCreateResponsePlacementObjectModeTarget"
         }
       }
     },
@@ -6842,7 +7166,7 @@
         "target": "com.cloudflare.workers#BetaWorkersVersionsGetResponsePackageDependenciesItem"
       }
     },
-    "com.cloudflare.workers#BetaWorkersVersionsGetResponsePlacementMode": {
+    "com.cloudflare.workers#BetaWorkersVersionsGetResponsePlacementModeMode": {
       "type": "enum",
       "members": {
         "SMART": {
@@ -6853,7 +7177,156 @@
         }
       }
     },
-    "com.cloudflare.workers#BetaWorkersVersionsGetResponsePlacementTargetItem": {
+    "com.cloudflare.workers#BetaWorkersVersionsGetResponsePlacementMode": {
+      "type": "structure",
+      "members": {
+        "mode": {
+          "target": "com.cloudflare.workers#BetaWorkersVersionsGetResponsePlacementModeMode",
+          "traits": {
+            "smithy.api#documentation": "Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#BetaWorkersVersionsGetResponsePlacementRegion": {
+      "type": "structure",
+      "members": {
+        "region": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Cloud region for targeted placement in format 'provider:region'.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#BetaWorkersVersionsGetResponsePlacementHostname": {
+      "type": "structure",
+      "members": {
+        "hostname": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "HTTP hostname for targeted placement.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#BetaWorkersVersionsGetResponsePlacementHost": {
+      "type": "structure",
+      "members": {
+        "host": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "TCP host and port for targeted placement.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#BetaWorkersVersionsGetResponsePlacementObjectModeRegionMode": {
+      "type": "enum",
+      "members": {
+        "TARGETED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "targeted"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#BetaWorkersVersionsGetResponsePlacementObjectModeRegion": {
+      "type": "structure",
+      "members": {
+        "mode": {
+          "target": "com.cloudflare.workers#BetaWorkersVersionsGetResponsePlacementObjectModeRegionMode",
+          "traits": {
+            "smithy.api#documentation": "Targeted placement mode.",
+            "smithy.api#required": {}
+          }
+        },
+        "region": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Cloud region for targeted placement in format 'provider:region'.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#BetaWorkersVersionsGetResponsePlacementObjectHostnameModeMode": {
+      "type": "enum",
+      "members": {
+        "TARGETED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "targeted"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#BetaWorkersVersionsGetResponsePlacementObjectHostnameMode": {
+      "type": "structure",
+      "members": {
+        "hostname": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "HTTP hostname for targeted placement.",
+            "smithy.api#required": {}
+          }
+        },
+        "mode": {
+          "target": "com.cloudflare.workers#BetaWorkersVersionsGetResponsePlacementObjectHostnameModeMode",
+          "traits": {
+            "smithy.api#documentation": "Targeted placement mode.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#BetaWorkersVersionsGetResponsePlacementObjectHostModeMode": {
+      "type": "enum",
+      "members": {
+        "TARGETED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "targeted"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#BetaWorkersVersionsGetResponsePlacementObjectHostMode": {
+      "type": "structure",
+      "members": {
+        "host": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "TCP host and port for targeted placement.",
+            "smithy.api#required": {}
+          }
+        },
+        "mode": {
+          "target": "com.cloudflare.workers#BetaWorkersVersionsGetResponsePlacementObjectHostModeMode",
+          "traits": {
+            "smithy.api#documentation": "Targeted placement mode.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#BetaWorkersVersionsGetResponsePlacementObjectModeTargetMode": {
+      "type": "enum",
+      "members": {
+        "TARGETED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "targeted"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#BetaWorkersVersionsGetResponsePlacementObjectModeTargetTargetItem": {
       "type": "structure",
       "members": {
         "region": {
@@ -6876,44 +7349,57 @@
         }
       }
     },
-    "com.cloudflare.workers#BetaWorkersVersionsGetResponsePlacementTargetList": {
+    "com.cloudflare.workers#BetaWorkersVersionsGetResponsePlacementObjectModeTargetTargetList": {
       "type": "list",
       "member": {
-        "target": "com.cloudflare.workers#BetaWorkersVersionsGetResponsePlacementTargetItem"
+        "target": "com.cloudflare.workers#BetaWorkersVersionsGetResponsePlacementObjectModeTargetTargetItem"
       }
     },
-    "com.cloudflare.workers#BetaWorkersVersionsGetResponsePlacement": {
+    "com.cloudflare.workers#BetaWorkersVersionsGetResponsePlacementObjectModeTarget": {
       "type": "structure",
       "members": {
         "mode": {
-          "target": "com.cloudflare.workers#BetaWorkersVersionsGetResponsePlacementMode",
+          "target": "com.cloudflare.workers#BetaWorkersVersionsGetResponsePlacementObjectModeTargetMode",
           "traits": {
-            "smithy.api#documentation": "Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement)."
-          }
-        },
-        "region": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Cloud region for targeted placement in format 'provider:region'."
-          }
-        },
-        "hostname": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "HTTP hostname for targeted placement."
-          }
-        },
-        "host": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "TCP host and port for targeted placement."
+            "smithy.api#documentation": "Targeted placement mode.",
+            "smithy.api#required": {}
           }
         },
         "target": {
-          "target": "com.cloudflare.workers#BetaWorkersVersionsGetResponsePlacementTargetList",
+          "target": "com.cloudflare.workers#BetaWorkersVersionsGetResponsePlacementObjectModeTargetTargetList",
           "traits": {
-            "smithy.api#documentation": "Array of placement targets (currently limited to single target)."
+            "smithy.api#documentation": "Array of placement targets (currently limited to single target).",
+            "smithy.api#required": {}
           }
+        }
+      }
+    },
+    "com.cloudflare.workers#BetaWorkersVersionsGetResponsePlacement": {
+      "type": "union",
+      "members": {
+        "Mode": {
+          "target": "com.cloudflare.workers#BetaWorkersVersionsGetResponsePlacementMode"
+        },
+        "Region": {
+          "target": "com.cloudflare.workers#BetaWorkersVersionsGetResponsePlacementRegion"
+        },
+        "Hostname": {
+          "target": "com.cloudflare.workers#BetaWorkersVersionsGetResponsePlacementHostname"
+        },
+        "Host": {
+          "target": "com.cloudflare.workers#BetaWorkersVersionsGetResponsePlacementHost"
+        },
+        "ObjectModeRegion": {
+          "target": "com.cloudflare.workers#BetaWorkersVersionsGetResponsePlacementObjectModeRegion"
+        },
+        "ObjectHostnameMode": {
+          "target": "com.cloudflare.workers#BetaWorkersVersionsGetResponsePlacementObjectHostnameMode"
+        },
+        "ObjectHostMode": {
+          "target": "com.cloudflare.workers#BetaWorkersVersionsGetResponsePlacementObjectHostMode"
+        },
+        "ObjectModeTarget": {
+          "target": "com.cloudflare.workers#BetaWorkersVersionsGetResponsePlacementObjectModeTarget"
         }
       }
     },
@@ -8062,7 +8548,7 @@
         "target": "com.cloudflare.workers#BetaWorkersVersionsListResultItemPackageDependenciesItem"
       }
     },
-    "com.cloudflare.workers#BetaWorkersVersionsListResultItemPlacementMode": {
+    "com.cloudflare.workers#BetaWorkersVersionsListResultItemPlacementModeMode": {
       "type": "enum",
       "members": {
         "SMART": {
@@ -8073,7 +8559,156 @@
         }
       }
     },
-    "com.cloudflare.workers#BetaWorkersVersionsListResultItemPlacementTargetItem": {
+    "com.cloudflare.workers#BetaWorkersVersionsListResultItemPlacementMode": {
+      "type": "structure",
+      "members": {
+        "mode": {
+          "target": "com.cloudflare.workers#BetaWorkersVersionsListResultItemPlacementModeMode",
+          "traits": {
+            "smithy.api#documentation": "Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#BetaWorkersVersionsListResultItemPlacementRegion": {
+      "type": "structure",
+      "members": {
+        "region": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Cloud region for targeted placement in format 'provider:region'.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#BetaWorkersVersionsListResultItemPlacementHostname": {
+      "type": "structure",
+      "members": {
+        "hostname": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "HTTP hostname for targeted placement.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#BetaWorkersVersionsListResultItemPlacementHost": {
+      "type": "structure",
+      "members": {
+        "host": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "TCP host and port for targeted placement.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#BetaWorkersVersionsListResultItemPlacementObjectModeRegionMode": {
+      "type": "enum",
+      "members": {
+        "TARGETED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "targeted"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#BetaWorkersVersionsListResultItemPlacementObjectModeRegion": {
+      "type": "structure",
+      "members": {
+        "mode": {
+          "target": "com.cloudflare.workers#BetaWorkersVersionsListResultItemPlacementObjectModeRegionMode",
+          "traits": {
+            "smithy.api#documentation": "Targeted placement mode.",
+            "smithy.api#required": {}
+          }
+        },
+        "region": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Cloud region for targeted placement in format 'provider:region'.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#BetaWorkersVersionsListResultItemPlacementObjectHostnameModeMode": {
+      "type": "enum",
+      "members": {
+        "TARGETED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "targeted"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#BetaWorkersVersionsListResultItemPlacementObjectHostnameMode": {
+      "type": "structure",
+      "members": {
+        "hostname": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "HTTP hostname for targeted placement.",
+            "smithy.api#required": {}
+          }
+        },
+        "mode": {
+          "target": "com.cloudflare.workers#BetaWorkersVersionsListResultItemPlacementObjectHostnameModeMode",
+          "traits": {
+            "smithy.api#documentation": "Targeted placement mode.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#BetaWorkersVersionsListResultItemPlacementObjectHostModeMode": {
+      "type": "enum",
+      "members": {
+        "TARGETED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "targeted"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#BetaWorkersVersionsListResultItemPlacementObjectHostMode": {
+      "type": "structure",
+      "members": {
+        "host": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "TCP host and port for targeted placement.",
+            "smithy.api#required": {}
+          }
+        },
+        "mode": {
+          "target": "com.cloudflare.workers#BetaWorkersVersionsListResultItemPlacementObjectHostModeMode",
+          "traits": {
+            "smithy.api#documentation": "Targeted placement mode.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#BetaWorkersVersionsListResultItemPlacementObjectModeTargetMode": {
+      "type": "enum",
+      "members": {
+        "TARGETED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "targeted"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#BetaWorkersVersionsListResultItemPlacementObjectModeTargetTargetItem": {
       "type": "structure",
       "members": {
         "region": {
@@ -8096,44 +8731,57 @@
         }
       }
     },
-    "com.cloudflare.workers#BetaWorkersVersionsListResultItemPlacementTargetList": {
+    "com.cloudflare.workers#BetaWorkersVersionsListResultItemPlacementObjectModeTargetTargetList": {
       "type": "list",
       "member": {
-        "target": "com.cloudflare.workers#BetaWorkersVersionsListResultItemPlacementTargetItem"
+        "target": "com.cloudflare.workers#BetaWorkersVersionsListResultItemPlacementObjectModeTargetTargetItem"
       }
     },
-    "com.cloudflare.workers#BetaWorkersVersionsListResultItemPlacement": {
+    "com.cloudflare.workers#BetaWorkersVersionsListResultItemPlacementObjectModeTarget": {
       "type": "structure",
       "members": {
         "mode": {
-          "target": "com.cloudflare.workers#BetaWorkersVersionsListResultItemPlacementMode",
+          "target": "com.cloudflare.workers#BetaWorkersVersionsListResultItemPlacementObjectModeTargetMode",
           "traits": {
-            "smithy.api#documentation": "Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement)."
-          }
-        },
-        "region": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Cloud region for targeted placement in format 'provider:region'."
-          }
-        },
-        "hostname": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "HTTP hostname for targeted placement."
-          }
-        },
-        "host": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "TCP host and port for targeted placement."
+            "smithy.api#documentation": "Targeted placement mode.",
+            "smithy.api#required": {}
           }
         },
         "target": {
-          "target": "com.cloudflare.workers#BetaWorkersVersionsListResultItemPlacementTargetList",
+          "target": "com.cloudflare.workers#BetaWorkersVersionsListResultItemPlacementObjectModeTargetTargetList",
           "traits": {
-            "smithy.api#documentation": "Array of placement targets (currently limited to single target)."
+            "smithy.api#documentation": "Array of placement targets (currently limited to single target).",
+            "smithy.api#required": {}
           }
+        }
+      }
+    },
+    "com.cloudflare.workers#BetaWorkersVersionsListResultItemPlacement": {
+      "type": "union",
+      "members": {
+        "Mode": {
+          "target": "com.cloudflare.workers#BetaWorkersVersionsListResultItemPlacementMode"
+        },
+        "Region": {
+          "target": "com.cloudflare.workers#BetaWorkersVersionsListResultItemPlacementRegion"
+        },
+        "Hostname": {
+          "target": "com.cloudflare.workers#BetaWorkersVersionsListResultItemPlacementHostname"
+        },
+        "Host": {
+          "target": "com.cloudflare.workers#BetaWorkersVersionsListResultItemPlacementHost"
+        },
+        "ObjectModeRegion": {
+          "target": "com.cloudflare.workers#BetaWorkersVersionsListResultItemPlacementObjectModeRegion"
+        },
+        "ObjectHostnameMode": {
+          "target": "com.cloudflare.workers#BetaWorkersVersionsListResultItemPlacementObjectHostnameMode"
+        },
+        "ObjectHostMode": {
+          "target": "com.cloudflare.workers#BetaWorkersVersionsListResultItemPlacementObjectHostMode"
+        },
+        "ObjectModeTarget": {
+          "target": "com.cloudflare.workers#BetaWorkersVersionsListResultItemPlacementObjectModeTarget"
         }
       }
     },
@@ -13749,7 +14397,7 @@
         "target": "smithy.api#Document"
       }
     },
-    "com.cloudflare.workers#ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersEventType": {
+    "com.cloudflare.workers#ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersObjectEventTypeRequestIdScriptName10MoreEventType": {
       "type": "enum",
       "members": {
         "FETCH": {
@@ -13772,7 +14420,7 @@
         }
       }
     },
-    "com.cloudflare.workers#ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersEventMap": {
+    "com.cloudflare.workers#ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersObjectEventTypeRequestIdScriptName10MoreEventMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -13781,7 +14429,7 @@
         "target": "smithy.api#Document"
       }
     },
-    "com.cloudflare.workers#ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersExecutionModel": {
+    "com.cloudflare.workers#ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersObjectEventTypeRequestIdScriptName10MoreExecutionModel": {
       "type": "enum",
       "members": {
         "DURABLEOBJECT": {
@@ -13798,7 +14446,7 @@
         }
       }
     },
-    "com.cloudflare.workers#ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersPreview": {
+    "com.cloudflare.workers#ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersObjectEventTypeRequestIdScriptName10MorePreview": {
       "type": "structure",
       "members": {
         "id": {
@@ -13812,7 +14460,7 @@
         }
       }
     },
-    "com.cloudflare.workers#ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersScriptVersion": {
+    "com.cloudflare.workers#ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersObjectEventTypeRequestIdScriptName10MoreScriptVersion": {
       "type": "structure",
       "members": {
         "id": {
@@ -13826,7 +14474,83 @@
         }
       }
     },
-    "com.cloudflare.workers#ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersDiagnosticsChannelEventsItem": {
+    "com.cloudflare.workers#ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersObjectEventTypeRequestIdScriptName10More": {
+      "type": "structure",
+      "members": {
+        "eventType": {
+          "target": "com.cloudflare.workers#ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersObjectEventTypeRequestIdScriptName10MoreEventType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "requestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "scriptName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "durableObjectId": {
+          "target": "smithy.api#String"
+        },
+        "entrypoint": {
+          "target": "smithy.api#String"
+        },
+        "event": {
+          "target": "com.cloudflare.workers#ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersObjectEventTypeRequestIdScriptName10MoreEventMap"
+        },
+        "executionModel": {
+          "target": "com.cloudflare.workers#ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersObjectEventTypeRequestIdScriptName10MoreExecutionModel"
+        },
+        "outcome": {
+          "target": "smithy.api#String"
+        },
+        "preview": {
+          "target": "com.cloudflare.workers#ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersObjectEventTypeRequestIdScriptName10MorePreview"
+        },
+        "scriptVersion": {
+          "target": "com.cloudflare.workers#ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersObjectEventTypeRequestIdScriptName10MoreScriptVersion"
+        },
+        "spanId": {
+          "target": "smithy.api#String"
+        },
+        "traceId": {
+          "target": "smithy.api#String"
+        },
+        "truncated": {
+          "target": "smithy.api#Boolean"
+        }
+      }
+    },
+    "com.cloudflare.workers#ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersObjectCpuTimeMsEventTypeOutcome14MoreEventType": {
+      "type": "enum",
+      "members": {
+        "FETCH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fetch"
+          }
+        },
+        "SCHEDULED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "scheduled"
+          }
+        },
+        "ALARM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "alarm"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersObjectCpuTimeMsEventTypeOutcome14MoreDiagnosticsChannelEventsItem": {
       "type": "structure",
       "members": {
         "channel": {
@@ -13849,22 +14573,109 @@
         }
       }
     },
-    "com.cloudflare.workers#ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersDiagnosticsChannelEventsList": {
+    "com.cloudflare.workers#ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersObjectCpuTimeMsEventTypeOutcome14MoreDiagnosticsChannelEventsList": {
       "type": "list",
       "member": {
-        "target": "com.cloudflare.workers#ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersDiagnosticsChannelEventsItem"
+        "target": "com.cloudflare.workers#ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersObjectCpuTimeMsEventTypeOutcome14MoreDiagnosticsChannelEventsItem"
       }
     },
-    "com.cloudflare.workers#ObservabilitySharedQueriesGetResponseEventsEventsItemWorkers": {
+    "com.cloudflare.workers#ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersObjectCpuTimeMsEventTypeOutcome14MoreEventMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.workers#ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersObjectCpuTimeMsEventTypeOutcome14MoreExecutionModel": {
+      "type": "enum",
+      "members": {
+        "DURABLEOBJECT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "durableObject"
+          }
+        },
+        "STATELESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "stateless"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersObjectCpuTimeMsEventTypeOutcome14MorePreview": {
       "type": "structure",
       "members": {
-        "eventType": {
-          "target": "com.cloudflare.workers#ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersEventType"
-        },
-        "requestId": {
+        "id": {
           "target": "smithy.api#String"
         },
+        "name": {
+          "target": "smithy.api#String"
+        },
+        "slug": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.workers#ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersObjectCpuTimeMsEventTypeOutcome14MoreScriptVersion": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String"
+        },
+        "message": {
+          "target": "smithy.api#String"
+        },
+        "tag": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.workers#ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersObjectCpuTimeMsEventTypeOutcome14More": {
+      "type": "structure",
+      "members": {
+        "cpuTimeMs": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "eventType": {
+          "target": "com.cloudflare.workers#ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersObjectCpuTimeMsEventTypeOutcome14MoreEventType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "outcome": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "requestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
         "scriptName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "wallTimeMs": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "diagnosticsChannelEvents": {
+          "target": "com.cloudflare.workers#ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersObjectCpuTimeMsEventTypeOutcome14MoreDiagnosticsChannelEventsList"
+        },
+        "dispatchNamespace": {
           "target": "smithy.api#String"
         },
         "durableObjectId": {
@@ -13874,19 +14685,16 @@
           "target": "smithy.api#String"
         },
         "event": {
-          "target": "com.cloudflare.workers#ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersEventMap"
+          "target": "com.cloudflare.workers#ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersObjectCpuTimeMsEventTypeOutcome14MoreEventMap"
         },
         "executionModel": {
-          "target": "com.cloudflare.workers#ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersExecutionModel"
-        },
-        "outcome": {
-          "target": "smithy.api#String"
+          "target": "com.cloudflare.workers#ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersObjectCpuTimeMsEventTypeOutcome14MoreExecutionModel"
         },
         "preview": {
-          "target": "com.cloudflare.workers#ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersPreview"
+          "target": "com.cloudflare.workers#ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersObjectCpuTimeMsEventTypeOutcome14MorePreview"
         },
         "scriptVersion": {
-          "target": "com.cloudflare.workers#ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersScriptVersion"
+          "target": "com.cloudflare.workers#ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersObjectCpuTimeMsEventTypeOutcome14MoreScriptVersion"
         },
         "spanId": {
           "target": "smithy.api#String"
@@ -13896,18 +14704,17 @@
         },
         "truncated": {
           "target": "smithy.api#Boolean"
+        }
+      }
+    },
+    "com.cloudflare.workers#ObservabilitySharedQueriesGetResponseEventsEventsItemWorkers": {
+      "type": "union",
+      "members": {
+        "ObjectEventTypeRequestIdScriptName10More": {
+          "target": "com.cloudflare.workers#ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersObjectEventTypeRequestIdScriptName10More"
         },
-        "cpuTimeMs": {
-          "target": "smithy.api#Double"
-        },
-        "wallTimeMs": {
-          "target": "smithy.api#Double"
-        },
-        "diagnosticsChannelEvents": {
-          "target": "com.cloudflare.workers#ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersDiagnosticsChannelEventsList"
-        },
-        "dispatchNamespace": {
-          "target": "smithy.api#String"
+        "ObjectCpuTimeMsEventTypeOutcome14More": {
+          "target": "com.cloudflare.workers#ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersObjectCpuTimeMsEventTypeOutcome14More"
         }
       }
     },
@@ -17568,7 +18375,7 @@
         "target": "smithy.api#Document"
       }
     },
-    "com.cloudflare.workers#ObservabilityTelemetryQueryResponseEventsEventsItemWorkersEventType": {
+    "com.cloudflare.workers#ObservabilityTelemetryQueryResponseEventsEventsItemWorkersObjectEventTypeRequestIdScriptName10MoreEventType": {
       "type": "enum",
       "members": {
         "FETCH": {
@@ -17591,7 +18398,7 @@
         }
       }
     },
-    "com.cloudflare.workers#ObservabilityTelemetryQueryResponseEventsEventsItemWorkersEventMap": {
+    "com.cloudflare.workers#ObservabilityTelemetryQueryResponseEventsEventsItemWorkersObjectEventTypeRequestIdScriptName10MoreEventMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -17600,7 +18407,7 @@
         "target": "smithy.api#Document"
       }
     },
-    "com.cloudflare.workers#ObservabilityTelemetryQueryResponseEventsEventsItemWorkersExecutionModel": {
+    "com.cloudflare.workers#ObservabilityTelemetryQueryResponseEventsEventsItemWorkersObjectEventTypeRequestIdScriptName10MoreExecutionModel": {
       "type": "enum",
       "members": {
         "DURABLEOBJECT": {
@@ -17617,7 +18424,7 @@
         }
       }
     },
-    "com.cloudflare.workers#ObservabilityTelemetryQueryResponseEventsEventsItemWorkersPreview": {
+    "com.cloudflare.workers#ObservabilityTelemetryQueryResponseEventsEventsItemWorkersObjectEventTypeRequestIdScriptName10MorePreview": {
       "type": "structure",
       "members": {
         "id": {
@@ -17631,7 +18438,7 @@
         }
       }
     },
-    "com.cloudflare.workers#ObservabilityTelemetryQueryResponseEventsEventsItemWorkersScriptVersion": {
+    "com.cloudflare.workers#ObservabilityTelemetryQueryResponseEventsEventsItemWorkersObjectEventTypeRequestIdScriptName10MoreScriptVersion": {
       "type": "structure",
       "members": {
         "id": {
@@ -17645,7 +18452,83 @@
         }
       }
     },
-    "com.cloudflare.workers#ObservabilityTelemetryQueryResponseEventsEventsItemWorkersDiagnosticsChannelEventsItem": {
+    "com.cloudflare.workers#ObservabilityTelemetryQueryResponseEventsEventsItemWorkersObjectEventTypeRequestIdScriptName10More": {
+      "type": "structure",
+      "members": {
+        "eventType": {
+          "target": "com.cloudflare.workers#ObservabilityTelemetryQueryResponseEventsEventsItemWorkersObjectEventTypeRequestIdScriptName10MoreEventType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "requestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "scriptName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "durableObjectId": {
+          "target": "smithy.api#String"
+        },
+        "entrypoint": {
+          "target": "smithy.api#String"
+        },
+        "event": {
+          "target": "com.cloudflare.workers#ObservabilityTelemetryQueryResponseEventsEventsItemWorkersObjectEventTypeRequestIdScriptName10MoreEventMap"
+        },
+        "executionModel": {
+          "target": "com.cloudflare.workers#ObservabilityTelemetryQueryResponseEventsEventsItemWorkersObjectEventTypeRequestIdScriptName10MoreExecutionModel"
+        },
+        "outcome": {
+          "target": "smithy.api#String"
+        },
+        "preview": {
+          "target": "com.cloudflare.workers#ObservabilityTelemetryQueryResponseEventsEventsItemWorkersObjectEventTypeRequestIdScriptName10MorePreview"
+        },
+        "scriptVersion": {
+          "target": "com.cloudflare.workers#ObservabilityTelemetryQueryResponseEventsEventsItemWorkersObjectEventTypeRequestIdScriptName10MoreScriptVersion"
+        },
+        "spanId": {
+          "target": "smithy.api#String"
+        },
+        "traceId": {
+          "target": "smithy.api#String"
+        },
+        "truncated": {
+          "target": "smithy.api#Boolean"
+        }
+      }
+    },
+    "com.cloudflare.workers#ObservabilityTelemetryQueryResponseEventsEventsItemWorkersObjectCpuTimeMsEventTypeOutcome14MoreEventType": {
+      "type": "enum",
+      "members": {
+        "FETCH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fetch"
+          }
+        },
+        "SCHEDULED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "scheduled"
+          }
+        },
+        "ALARM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "alarm"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#ObservabilityTelemetryQueryResponseEventsEventsItemWorkersObjectCpuTimeMsEventTypeOutcome14MoreDiagnosticsChannelEventsItem": {
       "type": "structure",
       "members": {
         "channel": {
@@ -17668,22 +18551,109 @@
         }
       }
     },
-    "com.cloudflare.workers#ObservabilityTelemetryQueryResponseEventsEventsItemWorkersDiagnosticsChannelEventsList": {
+    "com.cloudflare.workers#ObservabilityTelemetryQueryResponseEventsEventsItemWorkersObjectCpuTimeMsEventTypeOutcome14MoreDiagnosticsChannelEventsList": {
       "type": "list",
       "member": {
-        "target": "com.cloudflare.workers#ObservabilityTelemetryQueryResponseEventsEventsItemWorkersDiagnosticsChannelEventsItem"
+        "target": "com.cloudflare.workers#ObservabilityTelemetryQueryResponseEventsEventsItemWorkersObjectCpuTimeMsEventTypeOutcome14MoreDiagnosticsChannelEventsItem"
       }
     },
-    "com.cloudflare.workers#ObservabilityTelemetryQueryResponseEventsEventsItemWorkers": {
+    "com.cloudflare.workers#ObservabilityTelemetryQueryResponseEventsEventsItemWorkersObjectCpuTimeMsEventTypeOutcome14MoreEventMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.workers#ObservabilityTelemetryQueryResponseEventsEventsItemWorkersObjectCpuTimeMsEventTypeOutcome14MoreExecutionModel": {
+      "type": "enum",
+      "members": {
+        "DURABLEOBJECT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "durableObject"
+          }
+        },
+        "STATELESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "stateless"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#ObservabilityTelemetryQueryResponseEventsEventsItemWorkersObjectCpuTimeMsEventTypeOutcome14MorePreview": {
       "type": "structure",
       "members": {
-        "eventType": {
-          "target": "com.cloudflare.workers#ObservabilityTelemetryQueryResponseEventsEventsItemWorkersEventType"
-        },
-        "requestId": {
+        "id": {
           "target": "smithy.api#String"
         },
+        "name": {
+          "target": "smithy.api#String"
+        },
+        "slug": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.workers#ObservabilityTelemetryQueryResponseEventsEventsItemWorkersObjectCpuTimeMsEventTypeOutcome14MoreScriptVersion": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String"
+        },
+        "message": {
+          "target": "smithy.api#String"
+        },
+        "tag": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.workers#ObservabilityTelemetryQueryResponseEventsEventsItemWorkersObjectCpuTimeMsEventTypeOutcome14More": {
+      "type": "structure",
+      "members": {
+        "cpuTimeMs": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "eventType": {
+          "target": "com.cloudflare.workers#ObservabilityTelemetryQueryResponseEventsEventsItemWorkersObjectCpuTimeMsEventTypeOutcome14MoreEventType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "outcome": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "requestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
         "scriptName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "wallTimeMs": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "diagnosticsChannelEvents": {
+          "target": "com.cloudflare.workers#ObservabilityTelemetryQueryResponseEventsEventsItemWorkersObjectCpuTimeMsEventTypeOutcome14MoreDiagnosticsChannelEventsList"
+        },
+        "dispatchNamespace": {
           "target": "smithy.api#String"
         },
         "durableObjectId": {
@@ -17693,19 +18663,16 @@
           "target": "smithy.api#String"
         },
         "event": {
-          "target": "com.cloudflare.workers#ObservabilityTelemetryQueryResponseEventsEventsItemWorkersEventMap"
+          "target": "com.cloudflare.workers#ObservabilityTelemetryQueryResponseEventsEventsItemWorkersObjectCpuTimeMsEventTypeOutcome14MoreEventMap"
         },
         "executionModel": {
-          "target": "com.cloudflare.workers#ObservabilityTelemetryQueryResponseEventsEventsItemWorkersExecutionModel"
-        },
-        "outcome": {
-          "target": "smithy.api#String"
+          "target": "com.cloudflare.workers#ObservabilityTelemetryQueryResponseEventsEventsItemWorkersObjectCpuTimeMsEventTypeOutcome14MoreExecutionModel"
         },
         "preview": {
-          "target": "com.cloudflare.workers#ObservabilityTelemetryQueryResponseEventsEventsItemWorkersPreview"
+          "target": "com.cloudflare.workers#ObservabilityTelemetryQueryResponseEventsEventsItemWorkersObjectCpuTimeMsEventTypeOutcome14MorePreview"
         },
         "scriptVersion": {
-          "target": "com.cloudflare.workers#ObservabilityTelemetryQueryResponseEventsEventsItemWorkersScriptVersion"
+          "target": "com.cloudflare.workers#ObservabilityTelemetryQueryResponseEventsEventsItemWorkersObjectCpuTimeMsEventTypeOutcome14MoreScriptVersion"
         },
         "spanId": {
           "target": "smithy.api#String"
@@ -17715,18 +18682,17 @@
         },
         "truncated": {
           "target": "smithy.api#Boolean"
+        }
+      }
+    },
+    "com.cloudflare.workers#ObservabilityTelemetryQueryResponseEventsEventsItemWorkers": {
+      "type": "union",
+      "members": {
+        "ObjectEventTypeRequestIdScriptName10More": {
+          "target": "com.cloudflare.workers#ObservabilityTelemetryQueryResponseEventsEventsItemWorkersObjectEventTypeRequestIdScriptName10More"
         },
-        "cpuTimeMs": {
-          "target": "smithy.api#Double"
-        },
-        "wallTimeMs": {
-          "target": "smithy.api#Double"
-        },
-        "diagnosticsChannelEvents": {
-          "target": "com.cloudflare.workers#ObservabilityTelemetryQueryResponseEventsEventsItemWorkersDiagnosticsChannelEventsList"
-        },
-        "dispatchNamespace": {
-          "target": "smithy.api#String"
+        "ObjectCpuTimeMsEventTypeOutcome14More": {
+          "target": "com.cloudflare.workers#ObservabilityTelemetryQueryResponseEventsEventsItemWorkersObjectCpuTimeMsEventTypeOutcome14More"
         }
       }
     },
@@ -19369,7 +20335,7 @@
         }
       }
     },
-    "com.cloudflare.workers#ScriptsListResultItemPlacementMode": {
+    "com.cloudflare.workers#ScriptsListResultItemPlacementObjectModeLastAnalyzedAtStatusMode": {
       "type": "enum",
       "members": {
         "SMART": {
@@ -19380,7 +20346,7 @@
         }
       }
     },
-    "com.cloudflare.workers#ScriptsListResultItemPlacementStatus": {
+    "com.cloudflare.workers#ScriptsListResultItemPlacementObjectModeLastAnalyzedAtStatusStatus": {
       "type": "enum",
       "members": {
         "SUCCESS": {
@@ -19403,7 +20369,378 @@
         }
       }
     },
-    "com.cloudflare.workers#ScriptsListResultItemPlacementTargetItem": {
+    "com.cloudflare.workers#ScriptsListResultItemPlacementObjectModeLastAnalyzedAtStatus": {
+      "type": "structure",
+      "members": {
+        "mode": {
+          "target": "com.cloudflare.workers#ScriptsListResultItemPlacementObjectModeLastAnalyzedAtStatusMode",
+          "traits": {
+            "smithy.api#documentation": "Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).",
+            "smithy.api#required": {}
+          }
+        },
+        "last_analyzed_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement)."
+          }
+        },
+        "status": {
+          "target": "com.cloudflare.workers#ScriptsListResultItemPlacementObjectModeLastAnalyzedAtStatusStatus",
+          "traits": {
+            "smithy.api#documentation": "Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement)."
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#ScriptsListResultItemPlacementObjectRegionLastAnalyzedAtStatusStatus": {
+      "type": "enum",
+      "members": {
+        "SUCCESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SUCCESS"
+          }
+        },
+        "UNSUPPORTED_APPLICATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "UNSUPPORTED_APPLICATION"
+          }
+        },
+        "INSUFFICIENT_INVOCATIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "INSUFFICIENT_INVOCATIONS"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#ScriptsListResultItemPlacementObjectRegionLastAnalyzedAtStatus": {
+      "type": "structure",
+      "members": {
+        "region": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Cloud region for targeted placement in format 'provider:region'.",
+            "smithy.api#required": {}
+          }
+        },
+        "last_analyzed_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement)."
+          }
+        },
+        "status": {
+          "target": "com.cloudflare.workers#ScriptsListResultItemPlacementObjectRegionLastAnalyzedAtStatusStatus",
+          "traits": {
+            "smithy.api#documentation": "Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement)."
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#ScriptsListResultItemPlacementObjectHostnameLastAnalyzedAtStatusStatus": {
+      "type": "enum",
+      "members": {
+        "SUCCESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SUCCESS"
+          }
+        },
+        "UNSUPPORTED_APPLICATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "UNSUPPORTED_APPLICATION"
+          }
+        },
+        "INSUFFICIENT_INVOCATIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "INSUFFICIENT_INVOCATIONS"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#ScriptsListResultItemPlacementObjectHostnameLastAnalyzedAtStatus": {
+      "type": "structure",
+      "members": {
+        "hostname": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "HTTP hostname for targeted placement.",
+            "smithy.api#required": {}
+          }
+        },
+        "last_analyzed_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement)."
+          }
+        },
+        "status": {
+          "target": "com.cloudflare.workers#ScriptsListResultItemPlacementObjectHostnameLastAnalyzedAtStatusStatus",
+          "traits": {
+            "smithy.api#documentation": "Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement)."
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#ScriptsListResultItemPlacementObjectHostLastAnalyzedAtStatusStatus": {
+      "type": "enum",
+      "members": {
+        "SUCCESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SUCCESS"
+          }
+        },
+        "UNSUPPORTED_APPLICATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "UNSUPPORTED_APPLICATION"
+          }
+        },
+        "INSUFFICIENT_INVOCATIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "INSUFFICIENT_INVOCATIONS"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#ScriptsListResultItemPlacementObjectHostLastAnalyzedAtStatus": {
+      "type": "structure",
+      "members": {
+        "host": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "TCP host and port for targeted placement.",
+            "smithy.api#required": {}
+          }
+        },
+        "last_analyzed_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement)."
+          }
+        },
+        "status": {
+          "target": "com.cloudflare.workers#ScriptsListResultItemPlacementObjectHostLastAnalyzedAtStatusStatus",
+          "traits": {
+            "smithy.api#documentation": "Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement)."
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#ScriptsListResultItemPlacementObjectModeRegionLastAnalyzedAtStatusMode": {
+      "type": "enum",
+      "members": {
+        "TARGETED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "targeted"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#ScriptsListResultItemPlacementObjectModeRegionLastAnalyzedAtStatusStatus": {
+      "type": "enum",
+      "members": {
+        "SUCCESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SUCCESS"
+          }
+        },
+        "UNSUPPORTED_APPLICATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "UNSUPPORTED_APPLICATION"
+          }
+        },
+        "INSUFFICIENT_INVOCATIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "INSUFFICIENT_INVOCATIONS"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#ScriptsListResultItemPlacementObjectModeRegionLastAnalyzedAtStatus": {
+      "type": "structure",
+      "members": {
+        "mode": {
+          "target": "com.cloudflare.workers#ScriptsListResultItemPlacementObjectModeRegionLastAnalyzedAtStatusMode",
+          "traits": {
+            "smithy.api#documentation": "Targeted placement mode.",
+            "smithy.api#required": {}
+          }
+        },
+        "region": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Cloud region for targeted placement in format 'provider:region'.",
+            "smithy.api#required": {}
+          }
+        },
+        "last_analyzed_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement)."
+          }
+        },
+        "status": {
+          "target": "com.cloudflare.workers#ScriptsListResultItemPlacementObjectModeRegionLastAnalyzedAtStatusStatus",
+          "traits": {
+            "smithy.api#documentation": "Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement)."
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#ScriptsListResultItemPlacementObjectHostnameModeLastAnalyzedAtStatusMode": {
+      "type": "enum",
+      "members": {
+        "TARGETED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "targeted"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#ScriptsListResultItemPlacementObjectHostnameModeLastAnalyzedAtStatusStatus": {
+      "type": "enum",
+      "members": {
+        "SUCCESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SUCCESS"
+          }
+        },
+        "UNSUPPORTED_APPLICATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "UNSUPPORTED_APPLICATION"
+          }
+        },
+        "INSUFFICIENT_INVOCATIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "INSUFFICIENT_INVOCATIONS"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#ScriptsListResultItemPlacementObjectHostnameModeLastAnalyzedAtStatus": {
+      "type": "structure",
+      "members": {
+        "hostname": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "HTTP hostname for targeted placement.",
+            "smithy.api#required": {}
+          }
+        },
+        "mode": {
+          "target": "com.cloudflare.workers#ScriptsListResultItemPlacementObjectHostnameModeLastAnalyzedAtStatusMode",
+          "traits": {
+            "smithy.api#documentation": "Targeted placement mode.",
+            "smithy.api#required": {}
+          }
+        },
+        "last_analyzed_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement)."
+          }
+        },
+        "status": {
+          "target": "com.cloudflare.workers#ScriptsListResultItemPlacementObjectHostnameModeLastAnalyzedAtStatusStatus",
+          "traits": {
+            "smithy.api#documentation": "Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement)."
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#ScriptsListResultItemPlacementObjectHostModeLastAnalyzedAtStatusMode": {
+      "type": "enum",
+      "members": {
+        "TARGETED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "targeted"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#ScriptsListResultItemPlacementObjectHostModeLastAnalyzedAtStatusStatus": {
+      "type": "enum",
+      "members": {
+        "SUCCESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SUCCESS"
+          }
+        },
+        "UNSUPPORTED_APPLICATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "UNSUPPORTED_APPLICATION"
+          }
+        },
+        "INSUFFICIENT_INVOCATIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "INSUFFICIENT_INVOCATIONS"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#ScriptsListResultItemPlacementObjectHostModeLastAnalyzedAtStatus": {
+      "type": "structure",
+      "members": {
+        "host": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "TCP host and port for targeted placement.",
+            "smithy.api#required": {}
+          }
+        },
+        "mode": {
+          "target": "com.cloudflare.workers#ScriptsListResultItemPlacementObjectHostModeLastAnalyzedAtStatusMode",
+          "traits": {
+            "smithy.api#documentation": "Targeted placement mode.",
+            "smithy.api#required": {}
+          }
+        },
+        "last_analyzed_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement)."
+          }
+        },
+        "status": {
+          "target": "com.cloudflare.workers#ScriptsListResultItemPlacementObjectHostModeLastAnalyzedAtStatusStatus",
+          "traits": {
+            "smithy.api#documentation": "Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement)."
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#ScriptsListResultItemPlacementObjectModeTargetLastAnalyzedAtStatusMode": {
+      "type": "enum",
+      "members": {
+        "TARGETED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "targeted"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#ScriptsListResultItemPlacementObjectModeTargetLastAnalyzedAtStatusTargetItem": {
       "type": "structure",
       "members": {
         "region": {
@@ -19426,19 +20763,50 @@
         }
       }
     },
-    "com.cloudflare.workers#ScriptsListResultItemPlacementTargetList": {
+    "com.cloudflare.workers#ScriptsListResultItemPlacementObjectModeTargetLastAnalyzedAtStatusTargetList": {
       "type": "list",
       "member": {
-        "target": "com.cloudflare.workers#ScriptsListResultItemPlacementTargetItem"
+        "target": "com.cloudflare.workers#ScriptsListResultItemPlacementObjectModeTargetLastAnalyzedAtStatusTargetItem"
       }
     },
-    "com.cloudflare.workers#ScriptsListResultItemPlacement": {
+    "com.cloudflare.workers#ScriptsListResultItemPlacementObjectModeTargetLastAnalyzedAtStatusStatus": {
+      "type": "enum",
+      "members": {
+        "SUCCESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SUCCESS"
+          }
+        },
+        "UNSUPPORTED_APPLICATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "UNSUPPORTED_APPLICATION"
+          }
+        },
+        "INSUFFICIENT_INVOCATIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "INSUFFICIENT_INVOCATIONS"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#ScriptsListResultItemPlacementObjectModeTargetLastAnalyzedAtStatus": {
       "type": "structure",
       "members": {
         "mode": {
-          "target": "com.cloudflare.workers#ScriptsListResultItemPlacementMode",
+          "target": "com.cloudflare.workers#ScriptsListResultItemPlacementObjectModeTargetLastAnalyzedAtStatusMode",
           "traits": {
-            "smithy.api#documentation": "Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement)."
+            "smithy.api#documentation": "Targeted placement mode.",
+            "smithy.api#required": {}
+          }
+        },
+        "target": {
+          "target": "com.cloudflare.workers#ScriptsListResultItemPlacementObjectModeTargetLastAnalyzedAtStatusTargetList",
+          "traits": {
+            "smithy.api#documentation": "Array of placement targets (currently limited to single target).",
+            "smithy.api#required": {}
           }
         },
         "last_analyzed_at": {
@@ -19448,38 +20816,43 @@
           }
         },
         "status": {
-          "target": "com.cloudflare.workers#ScriptsListResultItemPlacementStatus",
+          "target": "com.cloudflare.workers#ScriptsListResultItemPlacementObjectModeTargetLastAnalyzedAtStatusStatus",
           "traits": {
             "smithy.api#documentation": "Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement)."
-          }
-        },
-        "region": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Cloud region for targeted placement in format 'provider:region'."
-          }
-        },
-        "hostname": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "HTTP hostname for targeted placement."
-          }
-        },
-        "host": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "TCP host and port for targeted placement."
-          }
-        },
-        "target": {
-          "target": "com.cloudflare.workers#ScriptsListResultItemPlacementTargetList",
-          "traits": {
-            "smithy.api#documentation": "Array of placement targets (currently limited to single target)."
           }
         }
       }
     },
-    "com.cloudflare.workers#ScriptsListResultItemPlacementMode2": {
+    "com.cloudflare.workers#ScriptsListResultItemPlacement": {
+      "type": "union",
+      "members": {
+        "ObjectModeLastAnalyzedAtStatus": {
+          "target": "com.cloudflare.workers#ScriptsListResultItemPlacementObjectModeLastAnalyzedAtStatus"
+        },
+        "ObjectRegionLastAnalyzedAtStatus": {
+          "target": "com.cloudflare.workers#ScriptsListResultItemPlacementObjectRegionLastAnalyzedAtStatus"
+        },
+        "ObjectHostnameLastAnalyzedAtStatus": {
+          "target": "com.cloudflare.workers#ScriptsListResultItemPlacementObjectHostnameLastAnalyzedAtStatus"
+        },
+        "ObjectHostLastAnalyzedAtStatus": {
+          "target": "com.cloudflare.workers#ScriptsListResultItemPlacementObjectHostLastAnalyzedAtStatus"
+        },
+        "ObjectModeRegionLastAnalyzedAtStatus": {
+          "target": "com.cloudflare.workers#ScriptsListResultItemPlacementObjectModeRegionLastAnalyzedAtStatus"
+        },
+        "ObjectHostnameModeLastAnalyzedAtStatus": {
+          "target": "com.cloudflare.workers#ScriptsListResultItemPlacementObjectHostnameModeLastAnalyzedAtStatus"
+        },
+        "ObjectHostModeLastAnalyzedAtStatus": {
+          "target": "com.cloudflare.workers#ScriptsListResultItemPlacementObjectHostModeLastAnalyzedAtStatus"
+        },
+        "ObjectModeTargetLastAnalyzedAtStatus": {
+          "target": "com.cloudflare.workers#ScriptsListResultItemPlacementObjectModeTargetLastAnalyzedAtStatus"
+        }
+      }
+    },
+    "com.cloudflare.workers#ScriptsListResultItemPlacementMode": {
       "type": "enum",
       "members": {
         "SMART": {
@@ -19496,7 +20869,7 @@
         }
       }
     },
-    "com.cloudflare.workers#ScriptsListResultItemPlacementStatus2": {
+    "com.cloudflare.workers#ScriptsListResultItemPlacementStatus": {
       "type": "enum",
       "members": {
         "SUCCESS": {
@@ -19709,10 +21082,10 @@
           }
         },
         "placement_mode": {
-          "target": "com.cloudflare.workers#ScriptsListResultItemPlacementMode2"
+          "target": "com.cloudflare.workers#ScriptsListResultItemPlacementMode"
         },
         "placement_status": {
-          "target": "com.cloudflare.workers#ScriptsListResultItemPlacementStatus2"
+          "target": "com.cloudflare.workers#ScriptsListResultItemPlacementStatus"
         },
         "routes": {
           "target": "com.cloudflare.workers#ScriptsListResultItemRoutesList",
@@ -20181,7 +21554,7 @@
         }
       }
     },
-    "com.cloudflare.workers#ScriptsUpdateResponsePlacementMode": {
+    "com.cloudflare.workers#ScriptsUpdateResponsePlacementObjectModeLastAnalyzedAtStatusMode": {
       "type": "enum",
       "members": {
         "SMART": {
@@ -20192,7 +21565,7 @@
         }
       }
     },
-    "com.cloudflare.workers#ScriptsUpdateResponsePlacementStatus": {
+    "com.cloudflare.workers#ScriptsUpdateResponsePlacementObjectModeLastAnalyzedAtStatusStatus": {
       "type": "enum",
       "members": {
         "SUCCESS": {
@@ -20215,7 +21588,378 @@
         }
       }
     },
-    "com.cloudflare.workers#ScriptsUpdateResponsePlacementTargetItem": {
+    "com.cloudflare.workers#ScriptsUpdateResponsePlacementObjectModeLastAnalyzedAtStatus": {
+      "type": "structure",
+      "members": {
+        "mode": {
+          "target": "com.cloudflare.workers#ScriptsUpdateResponsePlacementObjectModeLastAnalyzedAtStatusMode",
+          "traits": {
+            "smithy.api#documentation": "Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).",
+            "smithy.api#required": {}
+          }
+        },
+        "last_analyzed_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement)."
+          }
+        },
+        "status": {
+          "target": "com.cloudflare.workers#ScriptsUpdateResponsePlacementObjectModeLastAnalyzedAtStatusStatus",
+          "traits": {
+            "smithy.api#documentation": "Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement)."
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#ScriptsUpdateResponsePlacementObjectRegionLastAnalyzedAtStatusStatus": {
+      "type": "enum",
+      "members": {
+        "SUCCESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SUCCESS"
+          }
+        },
+        "UNSUPPORTED_APPLICATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "UNSUPPORTED_APPLICATION"
+          }
+        },
+        "INSUFFICIENT_INVOCATIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "INSUFFICIENT_INVOCATIONS"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#ScriptsUpdateResponsePlacementObjectRegionLastAnalyzedAtStatus": {
+      "type": "structure",
+      "members": {
+        "region": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Cloud region for targeted placement in format 'provider:region'.",
+            "smithy.api#required": {}
+          }
+        },
+        "last_analyzed_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement)."
+          }
+        },
+        "status": {
+          "target": "com.cloudflare.workers#ScriptsUpdateResponsePlacementObjectRegionLastAnalyzedAtStatusStatus",
+          "traits": {
+            "smithy.api#documentation": "Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement)."
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#ScriptsUpdateResponsePlacementObjectHostnameLastAnalyzedAtStatusStatus": {
+      "type": "enum",
+      "members": {
+        "SUCCESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SUCCESS"
+          }
+        },
+        "UNSUPPORTED_APPLICATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "UNSUPPORTED_APPLICATION"
+          }
+        },
+        "INSUFFICIENT_INVOCATIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "INSUFFICIENT_INVOCATIONS"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#ScriptsUpdateResponsePlacementObjectHostnameLastAnalyzedAtStatus": {
+      "type": "structure",
+      "members": {
+        "hostname": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "HTTP hostname for targeted placement.",
+            "smithy.api#required": {}
+          }
+        },
+        "last_analyzed_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement)."
+          }
+        },
+        "status": {
+          "target": "com.cloudflare.workers#ScriptsUpdateResponsePlacementObjectHostnameLastAnalyzedAtStatusStatus",
+          "traits": {
+            "smithy.api#documentation": "Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement)."
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#ScriptsUpdateResponsePlacementObjectHostLastAnalyzedAtStatusStatus": {
+      "type": "enum",
+      "members": {
+        "SUCCESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SUCCESS"
+          }
+        },
+        "UNSUPPORTED_APPLICATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "UNSUPPORTED_APPLICATION"
+          }
+        },
+        "INSUFFICIENT_INVOCATIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "INSUFFICIENT_INVOCATIONS"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#ScriptsUpdateResponsePlacementObjectHostLastAnalyzedAtStatus": {
+      "type": "structure",
+      "members": {
+        "host": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "TCP host and port for targeted placement.",
+            "smithy.api#required": {}
+          }
+        },
+        "last_analyzed_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement)."
+          }
+        },
+        "status": {
+          "target": "com.cloudflare.workers#ScriptsUpdateResponsePlacementObjectHostLastAnalyzedAtStatusStatus",
+          "traits": {
+            "smithy.api#documentation": "Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement)."
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#ScriptsUpdateResponsePlacementObjectModeRegionLastAnalyzedAtStatusMode": {
+      "type": "enum",
+      "members": {
+        "TARGETED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "targeted"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#ScriptsUpdateResponsePlacementObjectModeRegionLastAnalyzedAtStatusStatus": {
+      "type": "enum",
+      "members": {
+        "SUCCESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SUCCESS"
+          }
+        },
+        "UNSUPPORTED_APPLICATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "UNSUPPORTED_APPLICATION"
+          }
+        },
+        "INSUFFICIENT_INVOCATIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "INSUFFICIENT_INVOCATIONS"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#ScriptsUpdateResponsePlacementObjectModeRegionLastAnalyzedAtStatus": {
+      "type": "structure",
+      "members": {
+        "mode": {
+          "target": "com.cloudflare.workers#ScriptsUpdateResponsePlacementObjectModeRegionLastAnalyzedAtStatusMode",
+          "traits": {
+            "smithy.api#documentation": "Targeted placement mode.",
+            "smithy.api#required": {}
+          }
+        },
+        "region": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Cloud region for targeted placement in format 'provider:region'.",
+            "smithy.api#required": {}
+          }
+        },
+        "last_analyzed_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement)."
+          }
+        },
+        "status": {
+          "target": "com.cloudflare.workers#ScriptsUpdateResponsePlacementObjectModeRegionLastAnalyzedAtStatusStatus",
+          "traits": {
+            "smithy.api#documentation": "Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement)."
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#ScriptsUpdateResponsePlacementObjectHostnameModeLastAnalyzedAtStatusMode": {
+      "type": "enum",
+      "members": {
+        "TARGETED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "targeted"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#ScriptsUpdateResponsePlacementObjectHostnameModeLastAnalyzedAtStatusStatus": {
+      "type": "enum",
+      "members": {
+        "SUCCESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SUCCESS"
+          }
+        },
+        "UNSUPPORTED_APPLICATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "UNSUPPORTED_APPLICATION"
+          }
+        },
+        "INSUFFICIENT_INVOCATIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "INSUFFICIENT_INVOCATIONS"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#ScriptsUpdateResponsePlacementObjectHostnameModeLastAnalyzedAtStatus": {
+      "type": "structure",
+      "members": {
+        "hostname": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "HTTP hostname for targeted placement.",
+            "smithy.api#required": {}
+          }
+        },
+        "mode": {
+          "target": "com.cloudflare.workers#ScriptsUpdateResponsePlacementObjectHostnameModeLastAnalyzedAtStatusMode",
+          "traits": {
+            "smithy.api#documentation": "Targeted placement mode.",
+            "smithy.api#required": {}
+          }
+        },
+        "last_analyzed_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement)."
+          }
+        },
+        "status": {
+          "target": "com.cloudflare.workers#ScriptsUpdateResponsePlacementObjectHostnameModeLastAnalyzedAtStatusStatus",
+          "traits": {
+            "smithy.api#documentation": "Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement)."
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#ScriptsUpdateResponsePlacementObjectHostModeLastAnalyzedAtStatusMode": {
+      "type": "enum",
+      "members": {
+        "TARGETED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "targeted"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#ScriptsUpdateResponsePlacementObjectHostModeLastAnalyzedAtStatusStatus": {
+      "type": "enum",
+      "members": {
+        "SUCCESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SUCCESS"
+          }
+        },
+        "UNSUPPORTED_APPLICATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "UNSUPPORTED_APPLICATION"
+          }
+        },
+        "INSUFFICIENT_INVOCATIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "INSUFFICIENT_INVOCATIONS"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#ScriptsUpdateResponsePlacementObjectHostModeLastAnalyzedAtStatus": {
+      "type": "structure",
+      "members": {
+        "host": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "TCP host and port for targeted placement.",
+            "smithy.api#required": {}
+          }
+        },
+        "mode": {
+          "target": "com.cloudflare.workers#ScriptsUpdateResponsePlacementObjectHostModeLastAnalyzedAtStatusMode",
+          "traits": {
+            "smithy.api#documentation": "Targeted placement mode.",
+            "smithy.api#required": {}
+          }
+        },
+        "last_analyzed_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement)."
+          }
+        },
+        "status": {
+          "target": "com.cloudflare.workers#ScriptsUpdateResponsePlacementObjectHostModeLastAnalyzedAtStatusStatus",
+          "traits": {
+            "smithy.api#documentation": "Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement)."
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#ScriptsUpdateResponsePlacementObjectModeTargetLastAnalyzedAtStatusMode": {
+      "type": "enum",
+      "members": {
+        "TARGETED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "targeted"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#ScriptsUpdateResponsePlacementObjectModeTargetLastAnalyzedAtStatusTargetItem": {
       "type": "structure",
       "members": {
         "region": {
@@ -20238,19 +21982,50 @@
         }
       }
     },
-    "com.cloudflare.workers#ScriptsUpdateResponsePlacementTargetList": {
+    "com.cloudflare.workers#ScriptsUpdateResponsePlacementObjectModeTargetLastAnalyzedAtStatusTargetList": {
       "type": "list",
       "member": {
-        "target": "com.cloudflare.workers#ScriptsUpdateResponsePlacementTargetItem"
+        "target": "com.cloudflare.workers#ScriptsUpdateResponsePlacementObjectModeTargetLastAnalyzedAtStatusTargetItem"
       }
     },
-    "com.cloudflare.workers#ScriptsUpdateResponsePlacement": {
+    "com.cloudflare.workers#ScriptsUpdateResponsePlacementObjectModeTargetLastAnalyzedAtStatusStatus": {
+      "type": "enum",
+      "members": {
+        "SUCCESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SUCCESS"
+          }
+        },
+        "UNSUPPORTED_APPLICATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "UNSUPPORTED_APPLICATION"
+          }
+        },
+        "INSUFFICIENT_INVOCATIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "INSUFFICIENT_INVOCATIONS"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#ScriptsUpdateResponsePlacementObjectModeTargetLastAnalyzedAtStatus": {
       "type": "structure",
       "members": {
         "mode": {
-          "target": "com.cloudflare.workers#ScriptsUpdateResponsePlacementMode",
+          "target": "com.cloudflare.workers#ScriptsUpdateResponsePlacementObjectModeTargetLastAnalyzedAtStatusMode",
           "traits": {
-            "smithy.api#documentation": "Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement)."
+            "smithy.api#documentation": "Targeted placement mode.",
+            "smithy.api#required": {}
+          }
+        },
+        "target": {
+          "target": "com.cloudflare.workers#ScriptsUpdateResponsePlacementObjectModeTargetLastAnalyzedAtStatusTargetList",
+          "traits": {
+            "smithy.api#documentation": "Array of placement targets (currently limited to single target).",
+            "smithy.api#required": {}
           }
         },
         "last_analyzed_at": {
@@ -20260,38 +22035,43 @@
           }
         },
         "status": {
-          "target": "com.cloudflare.workers#ScriptsUpdateResponsePlacementStatus",
+          "target": "com.cloudflare.workers#ScriptsUpdateResponsePlacementObjectModeTargetLastAnalyzedAtStatusStatus",
           "traits": {
             "smithy.api#documentation": "Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement)."
-          }
-        },
-        "region": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Cloud region for targeted placement in format 'provider:region'."
-          }
-        },
-        "hostname": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "HTTP hostname for targeted placement."
-          }
-        },
-        "host": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "TCP host and port for targeted placement."
-          }
-        },
-        "target": {
-          "target": "com.cloudflare.workers#ScriptsUpdateResponsePlacementTargetList",
-          "traits": {
-            "smithy.api#documentation": "Array of placement targets (currently limited to single target)."
           }
         }
       }
     },
-    "com.cloudflare.workers#ScriptsUpdateResponsePlacementMode2": {
+    "com.cloudflare.workers#ScriptsUpdateResponsePlacement": {
+      "type": "union",
+      "members": {
+        "ObjectModeLastAnalyzedAtStatus": {
+          "target": "com.cloudflare.workers#ScriptsUpdateResponsePlacementObjectModeLastAnalyzedAtStatus"
+        },
+        "ObjectRegionLastAnalyzedAtStatus": {
+          "target": "com.cloudflare.workers#ScriptsUpdateResponsePlacementObjectRegionLastAnalyzedAtStatus"
+        },
+        "ObjectHostnameLastAnalyzedAtStatus": {
+          "target": "com.cloudflare.workers#ScriptsUpdateResponsePlacementObjectHostnameLastAnalyzedAtStatus"
+        },
+        "ObjectHostLastAnalyzedAtStatus": {
+          "target": "com.cloudflare.workers#ScriptsUpdateResponsePlacementObjectHostLastAnalyzedAtStatus"
+        },
+        "ObjectModeRegionLastAnalyzedAtStatus": {
+          "target": "com.cloudflare.workers#ScriptsUpdateResponsePlacementObjectModeRegionLastAnalyzedAtStatus"
+        },
+        "ObjectHostnameModeLastAnalyzedAtStatus": {
+          "target": "com.cloudflare.workers#ScriptsUpdateResponsePlacementObjectHostnameModeLastAnalyzedAtStatus"
+        },
+        "ObjectHostModeLastAnalyzedAtStatus": {
+          "target": "com.cloudflare.workers#ScriptsUpdateResponsePlacementObjectHostModeLastAnalyzedAtStatus"
+        },
+        "ObjectModeTargetLastAnalyzedAtStatus": {
+          "target": "com.cloudflare.workers#ScriptsUpdateResponsePlacementObjectModeTargetLastAnalyzedAtStatus"
+        }
+      }
+    },
+    "com.cloudflare.workers#ScriptsUpdateResponsePlacementMode": {
       "type": "enum",
       "members": {
         "SMART": {
@@ -20308,7 +22088,7 @@
         }
       }
     },
-    "com.cloudflare.workers#ScriptsUpdateResponsePlacementStatus2": {
+    "com.cloudflare.workers#ScriptsUpdateResponsePlacementStatus": {
       "type": "enum",
       "members": {
         "SUCCESS": {
@@ -20502,10 +22282,10 @@
           }
         },
         "placement_mode": {
-          "target": "com.cloudflare.workers#ScriptsUpdateResponsePlacementMode2"
+          "target": "com.cloudflare.workers#ScriptsUpdateResponsePlacementMode"
         },
         "placement_status": {
-          "target": "com.cloudflare.workers#ScriptsUpdateResponsePlacementStatus2"
+          "target": "com.cloudflare.workers#ScriptsUpdateResponsePlacementStatus"
         },
         "tag": {
           "target": "smithy.api#String",
@@ -20907,7 +22687,7 @@
         }
       }
     },
-    "com.cloudflare.workers#ScriptsContentUpdateResponsePlacementMode": {
+    "com.cloudflare.workers#ScriptsContentUpdateResponsePlacementObjectModeLastAnalyzedAtStatusMode": {
       "type": "enum",
       "members": {
         "SMART": {
@@ -20918,7 +22698,7 @@
         }
       }
     },
-    "com.cloudflare.workers#ScriptsContentUpdateResponsePlacementStatus": {
+    "com.cloudflare.workers#ScriptsContentUpdateResponsePlacementObjectModeLastAnalyzedAtStatusStatus": {
       "type": "enum",
       "members": {
         "SUCCESS": {
@@ -20941,7 +22721,378 @@
         }
       }
     },
-    "com.cloudflare.workers#ScriptsContentUpdateResponsePlacementTargetItem": {
+    "com.cloudflare.workers#ScriptsContentUpdateResponsePlacementObjectModeLastAnalyzedAtStatus": {
+      "type": "structure",
+      "members": {
+        "mode": {
+          "target": "com.cloudflare.workers#ScriptsContentUpdateResponsePlacementObjectModeLastAnalyzedAtStatusMode",
+          "traits": {
+            "smithy.api#documentation": "Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).",
+            "smithy.api#required": {}
+          }
+        },
+        "last_analyzed_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement)."
+          }
+        },
+        "status": {
+          "target": "com.cloudflare.workers#ScriptsContentUpdateResponsePlacementObjectModeLastAnalyzedAtStatusStatus",
+          "traits": {
+            "smithy.api#documentation": "Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement)."
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#ScriptsContentUpdateResponsePlacementObjectRegionLastAnalyzedAtStatusStatus": {
+      "type": "enum",
+      "members": {
+        "SUCCESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SUCCESS"
+          }
+        },
+        "UNSUPPORTED_APPLICATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "UNSUPPORTED_APPLICATION"
+          }
+        },
+        "INSUFFICIENT_INVOCATIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "INSUFFICIENT_INVOCATIONS"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#ScriptsContentUpdateResponsePlacementObjectRegionLastAnalyzedAtStatus": {
+      "type": "structure",
+      "members": {
+        "region": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Cloud region for targeted placement in format 'provider:region'.",
+            "smithy.api#required": {}
+          }
+        },
+        "last_analyzed_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement)."
+          }
+        },
+        "status": {
+          "target": "com.cloudflare.workers#ScriptsContentUpdateResponsePlacementObjectRegionLastAnalyzedAtStatusStatus",
+          "traits": {
+            "smithy.api#documentation": "Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement)."
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#ScriptsContentUpdateResponsePlacementObjectHostnameLastAnalyzedAtStatusStatus": {
+      "type": "enum",
+      "members": {
+        "SUCCESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SUCCESS"
+          }
+        },
+        "UNSUPPORTED_APPLICATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "UNSUPPORTED_APPLICATION"
+          }
+        },
+        "INSUFFICIENT_INVOCATIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "INSUFFICIENT_INVOCATIONS"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#ScriptsContentUpdateResponsePlacementObjectHostnameLastAnalyzedAtStatus": {
+      "type": "structure",
+      "members": {
+        "hostname": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "HTTP hostname for targeted placement.",
+            "smithy.api#required": {}
+          }
+        },
+        "last_analyzed_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement)."
+          }
+        },
+        "status": {
+          "target": "com.cloudflare.workers#ScriptsContentUpdateResponsePlacementObjectHostnameLastAnalyzedAtStatusStatus",
+          "traits": {
+            "smithy.api#documentation": "Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement)."
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#ScriptsContentUpdateResponsePlacementObjectHostLastAnalyzedAtStatusStatus": {
+      "type": "enum",
+      "members": {
+        "SUCCESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SUCCESS"
+          }
+        },
+        "UNSUPPORTED_APPLICATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "UNSUPPORTED_APPLICATION"
+          }
+        },
+        "INSUFFICIENT_INVOCATIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "INSUFFICIENT_INVOCATIONS"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#ScriptsContentUpdateResponsePlacementObjectHostLastAnalyzedAtStatus": {
+      "type": "structure",
+      "members": {
+        "host": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "TCP host and port for targeted placement.",
+            "smithy.api#required": {}
+          }
+        },
+        "last_analyzed_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement)."
+          }
+        },
+        "status": {
+          "target": "com.cloudflare.workers#ScriptsContentUpdateResponsePlacementObjectHostLastAnalyzedAtStatusStatus",
+          "traits": {
+            "smithy.api#documentation": "Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement)."
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#ScriptsContentUpdateResponsePlacementObjectModeRegionLastAnalyzedAtStatusMode": {
+      "type": "enum",
+      "members": {
+        "TARGETED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "targeted"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#ScriptsContentUpdateResponsePlacementObjectModeRegionLastAnalyzedAtStatusStatus": {
+      "type": "enum",
+      "members": {
+        "SUCCESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SUCCESS"
+          }
+        },
+        "UNSUPPORTED_APPLICATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "UNSUPPORTED_APPLICATION"
+          }
+        },
+        "INSUFFICIENT_INVOCATIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "INSUFFICIENT_INVOCATIONS"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#ScriptsContentUpdateResponsePlacementObjectModeRegionLastAnalyzedAtStatus": {
+      "type": "structure",
+      "members": {
+        "mode": {
+          "target": "com.cloudflare.workers#ScriptsContentUpdateResponsePlacementObjectModeRegionLastAnalyzedAtStatusMode",
+          "traits": {
+            "smithy.api#documentation": "Targeted placement mode.",
+            "smithy.api#required": {}
+          }
+        },
+        "region": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Cloud region for targeted placement in format 'provider:region'.",
+            "smithy.api#required": {}
+          }
+        },
+        "last_analyzed_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement)."
+          }
+        },
+        "status": {
+          "target": "com.cloudflare.workers#ScriptsContentUpdateResponsePlacementObjectModeRegionLastAnalyzedAtStatusStatus",
+          "traits": {
+            "smithy.api#documentation": "Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement)."
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#ScriptsContentUpdateResponsePlacementObjectHostnameModeLastAnalyzedAtStatusMode": {
+      "type": "enum",
+      "members": {
+        "TARGETED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "targeted"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#ScriptsContentUpdateResponsePlacementObjectHostnameModeLastAnalyzedAtStatusStatus": {
+      "type": "enum",
+      "members": {
+        "SUCCESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SUCCESS"
+          }
+        },
+        "UNSUPPORTED_APPLICATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "UNSUPPORTED_APPLICATION"
+          }
+        },
+        "INSUFFICIENT_INVOCATIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "INSUFFICIENT_INVOCATIONS"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#ScriptsContentUpdateResponsePlacementObjectHostnameModeLastAnalyzedAtStatus": {
+      "type": "structure",
+      "members": {
+        "hostname": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "HTTP hostname for targeted placement.",
+            "smithy.api#required": {}
+          }
+        },
+        "mode": {
+          "target": "com.cloudflare.workers#ScriptsContentUpdateResponsePlacementObjectHostnameModeLastAnalyzedAtStatusMode",
+          "traits": {
+            "smithy.api#documentation": "Targeted placement mode.",
+            "smithy.api#required": {}
+          }
+        },
+        "last_analyzed_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement)."
+          }
+        },
+        "status": {
+          "target": "com.cloudflare.workers#ScriptsContentUpdateResponsePlacementObjectHostnameModeLastAnalyzedAtStatusStatus",
+          "traits": {
+            "smithy.api#documentation": "Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement)."
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#ScriptsContentUpdateResponsePlacementObjectHostModeLastAnalyzedAtStatusMode": {
+      "type": "enum",
+      "members": {
+        "TARGETED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "targeted"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#ScriptsContentUpdateResponsePlacementObjectHostModeLastAnalyzedAtStatusStatus": {
+      "type": "enum",
+      "members": {
+        "SUCCESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SUCCESS"
+          }
+        },
+        "UNSUPPORTED_APPLICATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "UNSUPPORTED_APPLICATION"
+          }
+        },
+        "INSUFFICIENT_INVOCATIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "INSUFFICIENT_INVOCATIONS"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#ScriptsContentUpdateResponsePlacementObjectHostModeLastAnalyzedAtStatus": {
+      "type": "structure",
+      "members": {
+        "host": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "TCP host and port for targeted placement.",
+            "smithy.api#required": {}
+          }
+        },
+        "mode": {
+          "target": "com.cloudflare.workers#ScriptsContentUpdateResponsePlacementObjectHostModeLastAnalyzedAtStatusMode",
+          "traits": {
+            "smithy.api#documentation": "Targeted placement mode.",
+            "smithy.api#required": {}
+          }
+        },
+        "last_analyzed_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement)."
+          }
+        },
+        "status": {
+          "target": "com.cloudflare.workers#ScriptsContentUpdateResponsePlacementObjectHostModeLastAnalyzedAtStatusStatus",
+          "traits": {
+            "smithy.api#documentation": "Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement)."
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#ScriptsContentUpdateResponsePlacementObjectModeTargetLastAnalyzedAtStatusMode": {
+      "type": "enum",
+      "members": {
+        "TARGETED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "targeted"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#ScriptsContentUpdateResponsePlacementObjectModeTargetLastAnalyzedAtStatusTargetItem": {
       "type": "structure",
       "members": {
         "region": {
@@ -20964,19 +23115,50 @@
         }
       }
     },
-    "com.cloudflare.workers#ScriptsContentUpdateResponsePlacementTargetList": {
+    "com.cloudflare.workers#ScriptsContentUpdateResponsePlacementObjectModeTargetLastAnalyzedAtStatusTargetList": {
       "type": "list",
       "member": {
-        "target": "com.cloudflare.workers#ScriptsContentUpdateResponsePlacementTargetItem"
+        "target": "com.cloudflare.workers#ScriptsContentUpdateResponsePlacementObjectModeTargetLastAnalyzedAtStatusTargetItem"
       }
     },
-    "com.cloudflare.workers#ScriptsContentUpdateResponsePlacement": {
+    "com.cloudflare.workers#ScriptsContentUpdateResponsePlacementObjectModeTargetLastAnalyzedAtStatusStatus": {
+      "type": "enum",
+      "members": {
+        "SUCCESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SUCCESS"
+          }
+        },
+        "UNSUPPORTED_APPLICATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "UNSUPPORTED_APPLICATION"
+          }
+        },
+        "INSUFFICIENT_INVOCATIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "INSUFFICIENT_INVOCATIONS"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#ScriptsContentUpdateResponsePlacementObjectModeTargetLastAnalyzedAtStatus": {
       "type": "structure",
       "members": {
         "mode": {
-          "target": "com.cloudflare.workers#ScriptsContentUpdateResponsePlacementMode",
+          "target": "com.cloudflare.workers#ScriptsContentUpdateResponsePlacementObjectModeTargetLastAnalyzedAtStatusMode",
           "traits": {
-            "smithy.api#documentation": "Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement)."
+            "smithy.api#documentation": "Targeted placement mode.",
+            "smithy.api#required": {}
+          }
+        },
+        "target": {
+          "target": "com.cloudflare.workers#ScriptsContentUpdateResponsePlacementObjectModeTargetLastAnalyzedAtStatusTargetList",
+          "traits": {
+            "smithy.api#documentation": "Array of placement targets (currently limited to single target).",
+            "smithy.api#required": {}
           }
         },
         "last_analyzed_at": {
@@ -20986,38 +23168,43 @@
           }
         },
         "status": {
-          "target": "com.cloudflare.workers#ScriptsContentUpdateResponsePlacementStatus",
+          "target": "com.cloudflare.workers#ScriptsContentUpdateResponsePlacementObjectModeTargetLastAnalyzedAtStatusStatus",
           "traits": {
             "smithy.api#documentation": "Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement)."
-          }
-        },
-        "region": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Cloud region for targeted placement in format 'provider:region'."
-          }
-        },
-        "hostname": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "HTTP hostname for targeted placement."
-          }
-        },
-        "host": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "TCP host and port for targeted placement."
-          }
-        },
-        "target": {
-          "target": "com.cloudflare.workers#ScriptsContentUpdateResponsePlacementTargetList",
-          "traits": {
-            "smithy.api#documentation": "Array of placement targets (currently limited to single target)."
           }
         }
       }
     },
-    "com.cloudflare.workers#ScriptsContentUpdateResponsePlacementMode2": {
+    "com.cloudflare.workers#ScriptsContentUpdateResponsePlacement": {
+      "type": "union",
+      "members": {
+        "ObjectModeLastAnalyzedAtStatus": {
+          "target": "com.cloudflare.workers#ScriptsContentUpdateResponsePlacementObjectModeLastAnalyzedAtStatus"
+        },
+        "ObjectRegionLastAnalyzedAtStatus": {
+          "target": "com.cloudflare.workers#ScriptsContentUpdateResponsePlacementObjectRegionLastAnalyzedAtStatus"
+        },
+        "ObjectHostnameLastAnalyzedAtStatus": {
+          "target": "com.cloudflare.workers#ScriptsContentUpdateResponsePlacementObjectHostnameLastAnalyzedAtStatus"
+        },
+        "ObjectHostLastAnalyzedAtStatus": {
+          "target": "com.cloudflare.workers#ScriptsContentUpdateResponsePlacementObjectHostLastAnalyzedAtStatus"
+        },
+        "ObjectModeRegionLastAnalyzedAtStatus": {
+          "target": "com.cloudflare.workers#ScriptsContentUpdateResponsePlacementObjectModeRegionLastAnalyzedAtStatus"
+        },
+        "ObjectHostnameModeLastAnalyzedAtStatus": {
+          "target": "com.cloudflare.workers#ScriptsContentUpdateResponsePlacementObjectHostnameModeLastAnalyzedAtStatus"
+        },
+        "ObjectHostModeLastAnalyzedAtStatus": {
+          "target": "com.cloudflare.workers#ScriptsContentUpdateResponsePlacementObjectHostModeLastAnalyzedAtStatus"
+        },
+        "ObjectModeTargetLastAnalyzedAtStatus": {
+          "target": "com.cloudflare.workers#ScriptsContentUpdateResponsePlacementObjectModeTargetLastAnalyzedAtStatus"
+        }
+      }
+    },
+    "com.cloudflare.workers#ScriptsContentUpdateResponsePlacementMode": {
       "type": "enum",
       "members": {
         "SMART": {
@@ -21034,7 +23221,7 @@
         }
       }
     },
-    "com.cloudflare.workers#ScriptsContentUpdateResponsePlacementStatus2": {
+    "com.cloudflare.workers#ScriptsContentUpdateResponsePlacementStatus": {
       "type": "enum",
       "members": {
         "SUCCESS": {
@@ -21216,13 +23403,13 @@
           }
         },
         "placement_mode": {
-          "target": "com.cloudflare.workers#ScriptsContentUpdateResponsePlacementMode2",
+          "target": "com.cloudflare.workers#ScriptsContentUpdateResponsePlacementMode",
           "traits": {
             "smithy.api#documentation": "Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host."
           }
         },
         "placement_status": {
-          "target": "com.cloudflare.workers#ScriptsContentUpdateResponsePlacementStatus2",
+          "target": "com.cloudflare.workers#ScriptsContentUpdateResponsePlacementStatus",
           "traits": {
             "smithy.api#documentation": "Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement)."
           }
@@ -22917,7 +25104,7 @@
         }
       }
     },
-    "com.cloudflare.workers#ScriptsScriptAndVersionSettingsEditResponsePlacementMode": {
+    "com.cloudflare.workers#ScriptsScriptAndVersionSettingsEditResponsePlacementModeMode": {
       "type": "enum",
       "members": {
         "SMART": {
@@ -22928,7 +25115,156 @@
         }
       }
     },
-    "com.cloudflare.workers#ScriptsScriptAndVersionSettingsEditResponsePlacementTargetItem": {
+    "com.cloudflare.workers#ScriptsScriptAndVersionSettingsEditResponsePlacementMode": {
+      "type": "structure",
+      "members": {
+        "mode": {
+          "target": "com.cloudflare.workers#ScriptsScriptAndVersionSettingsEditResponsePlacementModeMode",
+          "traits": {
+            "smithy.api#documentation": "Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#ScriptsScriptAndVersionSettingsEditResponsePlacementRegion": {
+      "type": "structure",
+      "members": {
+        "region": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Cloud region for targeted placement in format 'provider:region'.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#ScriptsScriptAndVersionSettingsEditResponsePlacementHostname": {
+      "type": "structure",
+      "members": {
+        "hostname": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "HTTP hostname for targeted placement.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#ScriptsScriptAndVersionSettingsEditResponsePlacementHost": {
+      "type": "structure",
+      "members": {
+        "host": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "TCP host and port for targeted placement.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#ScriptsScriptAndVersionSettingsEditResponsePlacementObjectModeRegionMode": {
+      "type": "enum",
+      "members": {
+        "TARGETED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "targeted"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#ScriptsScriptAndVersionSettingsEditResponsePlacementObjectModeRegion": {
+      "type": "structure",
+      "members": {
+        "mode": {
+          "target": "com.cloudflare.workers#ScriptsScriptAndVersionSettingsEditResponsePlacementObjectModeRegionMode",
+          "traits": {
+            "smithy.api#documentation": "Targeted placement mode.",
+            "smithy.api#required": {}
+          }
+        },
+        "region": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Cloud region for targeted placement in format 'provider:region'.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#ScriptsScriptAndVersionSettingsEditResponsePlacementObjectHostnameModeMode": {
+      "type": "enum",
+      "members": {
+        "TARGETED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "targeted"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#ScriptsScriptAndVersionSettingsEditResponsePlacementObjectHostnameMode": {
+      "type": "structure",
+      "members": {
+        "hostname": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "HTTP hostname for targeted placement.",
+            "smithy.api#required": {}
+          }
+        },
+        "mode": {
+          "target": "com.cloudflare.workers#ScriptsScriptAndVersionSettingsEditResponsePlacementObjectHostnameModeMode",
+          "traits": {
+            "smithy.api#documentation": "Targeted placement mode.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#ScriptsScriptAndVersionSettingsEditResponsePlacementObjectHostModeMode": {
+      "type": "enum",
+      "members": {
+        "TARGETED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "targeted"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#ScriptsScriptAndVersionSettingsEditResponsePlacementObjectHostMode": {
+      "type": "structure",
+      "members": {
+        "host": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "TCP host and port for targeted placement.",
+            "smithy.api#required": {}
+          }
+        },
+        "mode": {
+          "target": "com.cloudflare.workers#ScriptsScriptAndVersionSettingsEditResponsePlacementObjectHostModeMode",
+          "traits": {
+            "smithy.api#documentation": "Targeted placement mode.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#ScriptsScriptAndVersionSettingsEditResponsePlacementObjectModeTargetMode": {
+      "type": "enum",
+      "members": {
+        "TARGETED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "targeted"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#ScriptsScriptAndVersionSettingsEditResponsePlacementObjectModeTargetTargetItem": {
       "type": "structure",
       "members": {
         "region": {
@@ -22951,44 +25287,57 @@
         }
       }
     },
-    "com.cloudflare.workers#ScriptsScriptAndVersionSettingsEditResponsePlacementTargetList": {
+    "com.cloudflare.workers#ScriptsScriptAndVersionSettingsEditResponsePlacementObjectModeTargetTargetList": {
       "type": "list",
       "member": {
-        "target": "com.cloudflare.workers#ScriptsScriptAndVersionSettingsEditResponsePlacementTargetItem"
+        "target": "com.cloudflare.workers#ScriptsScriptAndVersionSettingsEditResponsePlacementObjectModeTargetTargetItem"
       }
     },
-    "com.cloudflare.workers#ScriptsScriptAndVersionSettingsEditResponsePlacement": {
+    "com.cloudflare.workers#ScriptsScriptAndVersionSettingsEditResponsePlacementObjectModeTarget": {
       "type": "structure",
       "members": {
         "mode": {
-          "target": "com.cloudflare.workers#ScriptsScriptAndVersionSettingsEditResponsePlacementMode",
+          "target": "com.cloudflare.workers#ScriptsScriptAndVersionSettingsEditResponsePlacementObjectModeTargetMode",
           "traits": {
-            "smithy.api#documentation": "Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement)."
-          }
-        },
-        "region": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Cloud region for targeted placement in format 'provider:region'."
-          }
-        },
-        "hostname": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "HTTP hostname for targeted placement."
-          }
-        },
-        "host": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "TCP host and port for targeted placement."
+            "smithy.api#documentation": "Targeted placement mode.",
+            "smithy.api#required": {}
           }
         },
         "target": {
-          "target": "com.cloudflare.workers#ScriptsScriptAndVersionSettingsEditResponsePlacementTargetList",
+          "target": "com.cloudflare.workers#ScriptsScriptAndVersionSettingsEditResponsePlacementObjectModeTargetTargetList",
           "traits": {
-            "smithy.api#documentation": "Array of placement targets (currently limited to single target)."
+            "smithy.api#documentation": "Array of placement targets (currently limited to single target).",
+            "smithy.api#required": {}
           }
+        }
+      }
+    },
+    "com.cloudflare.workers#ScriptsScriptAndVersionSettingsEditResponsePlacement": {
+      "type": "union",
+      "members": {
+        "Mode": {
+          "target": "com.cloudflare.workers#ScriptsScriptAndVersionSettingsEditResponsePlacementMode"
+        },
+        "Region": {
+          "target": "com.cloudflare.workers#ScriptsScriptAndVersionSettingsEditResponsePlacementRegion"
+        },
+        "Hostname": {
+          "target": "com.cloudflare.workers#ScriptsScriptAndVersionSettingsEditResponsePlacementHostname"
+        },
+        "Host": {
+          "target": "com.cloudflare.workers#ScriptsScriptAndVersionSettingsEditResponsePlacementHost"
+        },
+        "ObjectModeRegion": {
+          "target": "com.cloudflare.workers#ScriptsScriptAndVersionSettingsEditResponsePlacementObjectModeRegion"
+        },
+        "ObjectHostnameMode": {
+          "target": "com.cloudflare.workers#ScriptsScriptAndVersionSettingsEditResponsePlacementObjectHostnameMode"
+        },
+        "ObjectHostMode": {
+          "target": "com.cloudflare.workers#ScriptsScriptAndVersionSettingsEditResponsePlacementObjectHostMode"
+        },
+        "ObjectModeTarget": {
+          "target": "com.cloudflare.workers#ScriptsScriptAndVersionSettingsEditResponsePlacementObjectModeTarget"
         }
       }
     },
@@ -24046,7 +26395,7 @@
         }
       }
     },
-    "com.cloudflare.workers#ScriptsScriptAndVersionSettingsGetResponsePlacementMode": {
+    "com.cloudflare.workers#ScriptsScriptAndVersionSettingsGetResponsePlacementModeMode": {
       "type": "enum",
       "members": {
         "SMART": {
@@ -24057,7 +26406,156 @@
         }
       }
     },
-    "com.cloudflare.workers#ScriptsScriptAndVersionSettingsGetResponsePlacementTargetItem": {
+    "com.cloudflare.workers#ScriptsScriptAndVersionSettingsGetResponsePlacementMode": {
+      "type": "structure",
+      "members": {
+        "mode": {
+          "target": "com.cloudflare.workers#ScriptsScriptAndVersionSettingsGetResponsePlacementModeMode",
+          "traits": {
+            "smithy.api#documentation": "Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#ScriptsScriptAndVersionSettingsGetResponsePlacementRegion": {
+      "type": "structure",
+      "members": {
+        "region": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Cloud region for targeted placement in format 'provider:region'.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#ScriptsScriptAndVersionSettingsGetResponsePlacementHostname": {
+      "type": "structure",
+      "members": {
+        "hostname": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "HTTP hostname for targeted placement.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#ScriptsScriptAndVersionSettingsGetResponsePlacementHost": {
+      "type": "structure",
+      "members": {
+        "host": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "TCP host and port for targeted placement.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#ScriptsScriptAndVersionSettingsGetResponsePlacementObjectModeRegionMode": {
+      "type": "enum",
+      "members": {
+        "TARGETED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "targeted"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#ScriptsScriptAndVersionSettingsGetResponsePlacementObjectModeRegion": {
+      "type": "structure",
+      "members": {
+        "mode": {
+          "target": "com.cloudflare.workers#ScriptsScriptAndVersionSettingsGetResponsePlacementObjectModeRegionMode",
+          "traits": {
+            "smithy.api#documentation": "Targeted placement mode.",
+            "smithy.api#required": {}
+          }
+        },
+        "region": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Cloud region for targeted placement in format 'provider:region'.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#ScriptsScriptAndVersionSettingsGetResponsePlacementObjectHostnameModeMode": {
+      "type": "enum",
+      "members": {
+        "TARGETED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "targeted"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#ScriptsScriptAndVersionSettingsGetResponsePlacementObjectHostnameMode": {
+      "type": "structure",
+      "members": {
+        "hostname": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "HTTP hostname for targeted placement.",
+            "smithy.api#required": {}
+          }
+        },
+        "mode": {
+          "target": "com.cloudflare.workers#ScriptsScriptAndVersionSettingsGetResponsePlacementObjectHostnameModeMode",
+          "traits": {
+            "smithy.api#documentation": "Targeted placement mode.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#ScriptsScriptAndVersionSettingsGetResponsePlacementObjectHostModeMode": {
+      "type": "enum",
+      "members": {
+        "TARGETED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "targeted"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#ScriptsScriptAndVersionSettingsGetResponsePlacementObjectHostMode": {
+      "type": "structure",
+      "members": {
+        "host": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "TCP host and port for targeted placement.",
+            "smithy.api#required": {}
+          }
+        },
+        "mode": {
+          "target": "com.cloudflare.workers#ScriptsScriptAndVersionSettingsGetResponsePlacementObjectHostModeMode",
+          "traits": {
+            "smithy.api#documentation": "Targeted placement mode.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#ScriptsScriptAndVersionSettingsGetResponsePlacementObjectModeTargetMode": {
+      "type": "enum",
+      "members": {
+        "TARGETED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "targeted"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#ScriptsScriptAndVersionSettingsGetResponsePlacementObjectModeTargetTargetItem": {
       "type": "structure",
       "members": {
         "region": {
@@ -24080,44 +26578,57 @@
         }
       }
     },
-    "com.cloudflare.workers#ScriptsScriptAndVersionSettingsGetResponsePlacementTargetList": {
+    "com.cloudflare.workers#ScriptsScriptAndVersionSettingsGetResponsePlacementObjectModeTargetTargetList": {
       "type": "list",
       "member": {
-        "target": "com.cloudflare.workers#ScriptsScriptAndVersionSettingsGetResponsePlacementTargetItem"
+        "target": "com.cloudflare.workers#ScriptsScriptAndVersionSettingsGetResponsePlacementObjectModeTargetTargetItem"
       }
     },
-    "com.cloudflare.workers#ScriptsScriptAndVersionSettingsGetResponsePlacement": {
+    "com.cloudflare.workers#ScriptsScriptAndVersionSettingsGetResponsePlacementObjectModeTarget": {
       "type": "structure",
       "members": {
         "mode": {
-          "target": "com.cloudflare.workers#ScriptsScriptAndVersionSettingsGetResponsePlacementMode",
+          "target": "com.cloudflare.workers#ScriptsScriptAndVersionSettingsGetResponsePlacementObjectModeTargetMode",
           "traits": {
-            "smithy.api#documentation": "Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement)."
-          }
-        },
-        "region": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Cloud region for targeted placement in format 'provider:region'."
-          }
-        },
-        "hostname": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "HTTP hostname for targeted placement."
-          }
-        },
-        "host": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "TCP host and port for targeted placement."
+            "smithy.api#documentation": "Targeted placement mode.",
+            "smithy.api#required": {}
           }
         },
         "target": {
-          "target": "com.cloudflare.workers#ScriptsScriptAndVersionSettingsGetResponsePlacementTargetList",
+          "target": "com.cloudflare.workers#ScriptsScriptAndVersionSettingsGetResponsePlacementObjectModeTargetTargetList",
           "traits": {
-            "smithy.api#documentation": "Array of placement targets (currently limited to single target)."
+            "smithy.api#documentation": "Array of placement targets (currently limited to single target).",
+            "smithy.api#required": {}
           }
+        }
+      }
+    },
+    "com.cloudflare.workers#ScriptsScriptAndVersionSettingsGetResponsePlacement": {
+      "type": "union",
+      "members": {
+        "Mode": {
+          "target": "com.cloudflare.workers#ScriptsScriptAndVersionSettingsGetResponsePlacementMode"
+        },
+        "Region": {
+          "target": "com.cloudflare.workers#ScriptsScriptAndVersionSettingsGetResponsePlacementRegion"
+        },
+        "Hostname": {
+          "target": "com.cloudflare.workers#ScriptsScriptAndVersionSettingsGetResponsePlacementHostname"
+        },
+        "Host": {
+          "target": "com.cloudflare.workers#ScriptsScriptAndVersionSettingsGetResponsePlacementHost"
+        },
+        "ObjectModeRegion": {
+          "target": "com.cloudflare.workers#ScriptsScriptAndVersionSettingsGetResponsePlacementObjectModeRegion"
+        },
+        "ObjectHostnameMode": {
+          "target": "com.cloudflare.workers#ScriptsScriptAndVersionSettingsGetResponsePlacementObjectHostnameMode"
+        },
+        "ObjectHostMode": {
+          "target": "com.cloudflare.workers#ScriptsScriptAndVersionSettingsGetResponsePlacementObjectHostMode"
+        },
+        "ObjectModeTarget": {
+          "target": "com.cloudflare.workers#ScriptsScriptAndVersionSettingsGetResponsePlacementObjectModeTarget"
         }
       }
     },
@@ -24826,7 +27337,7 @@
         "smithy.api#readonly": {}
       }
     },
-    "com.cloudflare.workers#ScriptsSecretsUpdateRequestBodyType": {
+    "com.cloudflare.workers#ScriptsSecretsUpdateRequestBodySecretTextType": {
       "type": "enum",
       "members": {
         "SECRET_TEXT": {
@@ -24837,7 +27348,33 @@
         }
       }
     },
-    "com.cloudflare.workers#ScriptsSecretsUpdateRequestBodyFormat": {
+    "com.cloudflare.workers#ScriptsSecretsUpdateRequestBodySecretText": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A JavaScript variable name for the binding.",
+            "smithy.api#required": {}
+          }
+        },
+        "text": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The secret value to use.",
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "com.cloudflare.workers#ScriptsSecretsUpdateRequestBodySecretTextType",
+          "traits": {
+            "smithy.api#documentation": "The kind of resource that the binding provides.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#ScriptsSecretsUpdateRequestBodySecretKeyFormat": {
       "type": "enum",
       "members": {
         "RAW": {
@@ -24866,7 +27403,18 @@
         }
       }
     },
-    "com.cloudflare.workers#ScriptsSecretsUpdateRequestBodyUsagesItem": {
+    "com.cloudflare.workers#ScriptsSecretsUpdateRequestBodySecretKeyType": {
+      "type": "enum",
+      "members": {
+        "SECRET_KEY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "secret_key"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#ScriptsSecretsUpdateRequestBodySecretKeyUsagesItem": {
       "type": "enum",
       "members": {
         "ENCRYPT": {
@@ -24889,49 +27437,48 @@
         }
       }
     },
-    "com.cloudflare.workers#ScriptsSecretsUpdateRequestBodyUsagesList": {
+    "com.cloudflare.workers#ScriptsSecretsUpdateRequestBodySecretKeyUsagesList": {
       "type": "list",
       "member": {
-        "target": "com.cloudflare.workers#ScriptsSecretsUpdateRequestBodyUsagesItem"
+        "target": "com.cloudflare.workers#ScriptsSecretsUpdateRequestBodySecretKeyUsagesItem"
       }
     },
-    "com.cloudflare.workers#ScriptsSecretsUpdateRequestBody": {
+    "com.cloudflare.workers#ScriptsSecretsUpdateRequestBodySecretKey": {
       "type": "structure",
       "members": {
-        "name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "A JavaScript variable name for the binding."
-          }
-        },
-        "text": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The secret value to use."
-          }
-        },
-        "type": {
-          "target": "com.cloudflare.workers#ScriptsSecretsUpdateRequestBodyType",
-          "traits": {
-            "smithy.api#documentation": "The kind of resource that the binding provides."
-          }
-        },
         "algorithm": {
           "target": "smithy.api#Document",
           "traits": {
-            "smithy.api#documentation": "Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm)."
+            "smithy.api#documentation": "Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm).",
+            "smithy.api#required": {}
           }
         },
         "format": {
-          "target": "com.cloudflare.workers#ScriptsSecretsUpdateRequestBodyFormat",
+          "target": "com.cloudflare.workers#ScriptsSecretsUpdateRequestBodySecretKeyFormat",
           "traits": {
-            "smithy.api#documentation": "Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format)."
+            "smithy.api#documentation": "Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format).",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A JavaScript variable name for the binding.",
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "com.cloudflare.workers#ScriptsSecretsUpdateRequestBodySecretKeyType",
+          "traits": {
+            "smithy.api#documentation": "The kind of resource that the binding provides.",
+            "smithy.api#required": {}
           }
         },
         "usages": {
-          "target": "com.cloudflare.workers#ScriptsSecretsUpdateRequestBodyUsagesList",
+          "target": "com.cloudflare.workers#ScriptsSecretsUpdateRequestBodySecretKeyUsagesList",
           "traits": {
-            "smithy.api#documentation": "Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages)."
+            "smithy.api#documentation": "Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages).",
+            "smithy.api#required": {}
           }
         },
         "key_base64": {
@@ -24945,6 +27492,17 @@
           "traits": {
             "smithy.api#documentation": "Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is \"jwk\"."
           }
+        }
+      }
+    },
+    "com.cloudflare.workers#ScriptsSecretsUpdateRequestBody": {
+      "type": "union",
+      "members": {
+        "SecretText": {
+          "target": "com.cloudflare.workers#ScriptsSecretsUpdateRequestBodySecretText"
+        },
+        "SecretKey": {
+          "target": "com.cloudflare.workers#ScriptsSecretsUpdateRequestBodySecretKey"
         }
       }
     },

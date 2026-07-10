@@ -170,35 +170,56 @@ export const CreateCniResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateCniResponse",
 }) as any as S.Schema<CreateCniResponse>;
 
-export type InterconnectsCreateRequestBodyBandwidth =
-  | "50M"
-  | "100M"
-  | "200M"
-  | (string & {});
-export const InterconnectsCreateRequestBodyBandwidth = /*@__PURE__*/ S.String;
-
-export interface InterconnectsCreateRequestBody {
-  account?: string;
-  slotId?: string;
-  type?: string;
+export interface InterconnectsCreateRequestBodyNscInterconnectCreatePhysicalBody {
+  account: string;
+  slotId: string;
+  type: string;
   speed?: string;
-  /** Bandwidth structure as visible through the customer-facing API. */
-  bandwidth?: InterconnectsCreateRequestBodyBandwidth;
-  /** Pairing key provided by GCP */
-  pairingKey?: string;
 }
-export const InterconnectsCreateRequestBody = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    account: S.optional(S.String),
-    slotId: S.optional(S.String.pipe(T.Body("slot_id"))),
-    type: S.optional(S.String),
-    speed: S.optional(S.String),
-    bandwidth: S.optional(InterconnectsCreateRequestBodyBandwidth),
-    pairingKey: S.optional(S.String.pipe(T.Body("pairing_key"))),
-  }),
-).annotate({
-  identifier: "InterconnectsCreateRequestBody",
-}) as any as S.Schema<InterconnectsCreateRequestBody>;
+export const InterconnectsCreateRequestBodyNscInterconnectCreatePhysicalBody =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      account: S.String,
+      slotId: S.String.pipe(T.Body("slot_id")),
+      type: S.String,
+      speed: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "InterconnectsCreateRequestBodyNscInterconnectCreatePhysicalBody",
+  }) as any as S.Schema<InterconnectsCreateRequestBodyNscInterconnectCreatePhysicalBody>;
+
+export type InterconnectsCreateRequestBodyNscInterconnectCreateGcpPartnerBodyBandwidth =
+  "50M" | "100M" | "200M" | (string & {});
+export const InterconnectsCreateRequestBodyNscInterconnectCreateGcpPartnerBodyBandwidth =
+  /*@__PURE__*/ S.String;
+
+export interface InterconnectsCreateRequestBodyNscInterconnectCreateGcpPartnerBody {
+  account: string;
+  /** Bandwidth structure as visible through the customer-facing API. */
+  bandwidth: InterconnectsCreateRequestBodyNscInterconnectCreateGcpPartnerBodyBandwidth;
+  /** Pairing key provided by GCP */
+  pairingKey: string;
+  type: string;
+}
+export const InterconnectsCreateRequestBodyNscInterconnectCreateGcpPartnerBody =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      account: S.String,
+      bandwidth:
+        InterconnectsCreateRequestBodyNscInterconnectCreateGcpPartnerBodyBandwidth,
+      pairingKey: S.String.pipe(T.Body("pairing_key")),
+      type: S.String,
+    }),
+  ).annotate({
+    identifier:
+      "InterconnectsCreateRequestBodyNscInterconnectCreateGcpPartnerBody",
+  }) as any as S.Schema<InterconnectsCreateRequestBodyNscInterconnectCreateGcpPartnerBody>;
+
+export type InterconnectsCreateRequestBody =
+  | InterconnectsCreateRequestBodyNscInterconnectCreatePhysicalBody
+  | InterconnectsCreateRequestBodyNscInterconnectCreateGcpPartnerBody;
+export const InterconnectsCreateRequestBody = /*@__PURE__*/ S.Unknown;
 
 export interface CreateInterconnectRequest {
   /** Customer account tag */

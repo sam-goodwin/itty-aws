@@ -395,10 +395,10 @@ export const BulkPushMessagesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "BulkPushMessagesResponse",
 }) as any as S.Schema<BulkPushMessagesResponse>;
 
-export type ConsumersCreateRequestBodyType = "worker" | (string & {});
-export const ConsumersCreateRequestBodyType = /*@__PURE__*/ S.String;
+export type ConsumersCreateRequestBodyWorkerType = "worker" | (string & {});
+export const ConsumersCreateRequestBodyWorkerType = /*@__PURE__*/ S.String;
 
-export interface ConsumersCreateRequestBodySettings {
+export interface ConsumersCreateRequestBodyWorkerSettings {
   /** The maximum number of messages to include in a batch. */
   batchSize?: number;
   /** Maximum number of concurrent consumers that may consume from this Queue. Set to `null` to automatically opt in to the platform's maximum (recommended). */
@@ -410,35 +410,85 @@ export interface ConsumersCreateRequestBodySettings {
   /** The number of seconds to delay before making the message available for another attempt. */
   retryDelay?: number;
 }
-export const ConsumersCreateRequestBodySettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    batchSize: S.optional(S.Number.pipe(T.Body("batch_size"))),
-    maxConcurrency: S.optional(S.Number.pipe(T.Body("max_concurrency"))),
-    maxRetries: S.optional(S.Number.pipe(T.Body("max_retries"))),
-    maxWaitTimeMs: S.optional(S.Number.pipe(T.Body("max_wait_time_ms"))),
-    retryDelay: S.optional(S.Number.pipe(T.Body("retry_delay"))),
-  }),
+export const ConsumersCreateRequestBodyWorkerSettings = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      batchSize: S.optional(S.Number.pipe(T.Body("batch_size"))),
+      maxConcurrency: S.optional(S.Number.pipe(T.Body("max_concurrency"))),
+      maxRetries: S.optional(S.Number.pipe(T.Body("max_retries"))),
+      maxWaitTimeMs: S.optional(S.Number.pipe(T.Body("max_wait_time_ms"))),
+      retryDelay: S.optional(S.Number.pipe(T.Body("retry_delay"))),
+    }),
 ).annotate({
-  identifier: "ConsumersCreateRequestBodySettings",
-}) as any as S.Schema<ConsumersCreateRequestBodySettings>;
+  identifier: "ConsumersCreateRequestBodyWorkerSettings",
+}) as any as S.Schema<ConsumersCreateRequestBodyWorkerSettings>;
 
-export interface ConsumersCreateRequestBody {
+export interface ConsumersCreateRequestBodyWorker {
   /** Name of a Worker */
-  scriptName?: string;
-  type?: ConsumersCreateRequestBodyType;
+  scriptName: string;
+  type: ConsumersCreateRequestBodyWorkerType;
   deadLetterQueue?: string;
-  settings?: ConsumersCreateRequestBodySettings;
+  settings?: ConsumersCreateRequestBodyWorkerSettings;
 }
-export const ConsumersCreateRequestBody = /*@__PURE__*/ S.suspend(() =>
+export const ConsumersCreateRequestBodyWorker = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    scriptName: S.optional(S.String.pipe(T.Body("script_name"))),
-    type: S.optional(ConsumersCreateRequestBodyType),
+    scriptName: S.String.pipe(T.Body("script_name")),
+    type: ConsumersCreateRequestBodyWorkerType,
     deadLetterQueue: S.optional(S.String.pipe(T.Body("dead_letter_queue"))),
-    settings: S.optional(ConsumersCreateRequestBodySettings),
+    settings: S.optional(ConsumersCreateRequestBodyWorkerSettings),
   }),
 ).annotate({
-  identifier: "ConsumersCreateRequestBody",
-}) as any as S.Schema<ConsumersCreateRequestBody>;
+  identifier: "ConsumersCreateRequestBodyWorker",
+}) as any as S.Schema<ConsumersCreateRequestBodyWorker>;
+
+export type ConsumersCreateRequestBodyHTTPPullType =
+  | "http_pull"
+  | (string & {});
+export const ConsumersCreateRequestBodyHTTPPullType = /*@__PURE__*/ S.String;
+
+export interface ConsumersCreateRequestBodyHTTPPullSettings {
+  /** The maximum number of messages to include in a batch. */
+  batchSize?: number;
+  /** The maximum number of retries */
+  maxRetries?: number;
+  /** The number of seconds to delay before making the message available for another attempt. */
+  retryDelay?: number;
+  /** The number of milliseconds that a message is exclusively leased. After the timeout, the message becomes available for another attempt. */
+  visibilityTimeoutMs?: number;
+}
+export const ConsumersCreateRequestBodyHTTPPullSettings =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      batchSize: S.optional(S.Number.pipe(T.Body("batch_size"))),
+      maxRetries: S.optional(S.Number.pipe(T.Body("max_retries"))),
+      retryDelay: S.optional(S.Number.pipe(T.Body("retry_delay"))),
+      visibilityTimeoutMs: S.optional(
+        S.Number.pipe(T.Body("visibility_timeout_ms")),
+      ),
+    }),
+  ).annotate({
+    identifier: "ConsumersCreateRequestBodyHTTPPullSettings",
+  }) as any as S.Schema<ConsumersCreateRequestBodyHTTPPullSettings>;
+
+export interface ConsumersCreateRequestBodyHTTPPull {
+  type: ConsumersCreateRequestBodyHTTPPullType;
+  deadLetterQueue?: string;
+  settings?: ConsumersCreateRequestBodyHTTPPullSettings;
+}
+export const ConsumersCreateRequestBodyHTTPPull = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: ConsumersCreateRequestBodyHTTPPullType,
+    deadLetterQueue: S.optional(S.String.pipe(T.Body("dead_letter_queue"))),
+    settings: S.optional(ConsumersCreateRequestBodyHTTPPullSettings),
+  }),
+).annotate({
+  identifier: "ConsumersCreateRequestBodyHTTPPull",
+}) as any as S.Schema<ConsumersCreateRequestBodyHTTPPull>;
+
+export type ConsumersCreateRequestBody =
+  | ConsumersCreateRequestBodyWorker
+  | ConsumersCreateRequestBodyHTTPPull;
+export const ConsumersCreateRequestBody = /*@__PURE__*/ S.Unknown;
 
 export interface CreateConsumerRequest {
   /** A Resource identifier. */
@@ -701,29 +751,187 @@ export const SubscriptionsCreateRequestEventsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SubscriptionsCreateRequestEventsList>;
 
-export type SubscriptionsCreateRequestSourceType = "images" | (string & {});
-export const SubscriptionsCreateRequestSourceType = /*@__PURE__*/ S.String;
+export type SubscriptionsCreateRequestSourceMqEventSourceImagesType =
+  | "images"
+  | (string & {});
+export const SubscriptionsCreateRequestSourceMqEventSourceImagesType =
+  /*@__PURE__*/ S.String;
 
-export interface SubscriptionsCreateRequestSource {
+export interface SubscriptionsCreateRequestSourceMqEventSourceImages {
   /** Type of source */
-  type?: SubscriptionsCreateRequestSourceType;
+  type?: SubscriptionsCreateRequestSourceMqEventSourceImagesType;
+}
+export const SubscriptionsCreateRequestSourceMqEventSourceImages =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.optional(SubscriptionsCreateRequestSourceMqEventSourceImagesType),
+    }),
+  ).annotate({
+    identifier: "SubscriptionsCreateRequestSourceMqEventSourceImages",
+  }) as any as S.Schema<SubscriptionsCreateRequestSourceMqEventSourceImages>;
+
+export type SubscriptionsCreateRequestSourceMqEventSourceKVType =
+  | "kv"
+  | (string & {});
+export const SubscriptionsCreateRequestSourceMqEventSourceKVType =
+  /*@__PURE__*/ S.String;
+
+export interface SubscriptionsCreateRequestSourceMqEventSourceKV {
+  /** Type of source */
+  type?: SubscriptionsCreateRequestSourceMqEventSourceKVType;
+}
+export const SubscriptionsCreateRequestSourceMqEventSourceKV =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.optional(SubscriptionsCreateRequestSourceMqEventSourceKVType),
+    }),
+  ).annotate({
+    identifier: "SubscriptionsCreateRequestSourceMqEventSourceKV",
+  }) as any as S.Schema<SubscriptionsCreateRequestSourceMqEventSourceKV>;
+
+export type SubscriptionsCreateRequestSourceMqEventSourceR2Type =
+  | "r2"
+  | (string & {});
+export const SubscriptionsCreateRequestSourceMqEventSourceR2Type =
+  /*@__PURE__*/ S.String;
+
+export interface SubscriptionsCreateRequestSourceMqEventSourceR2 {
+  /** Type of source */
+  type?: SubscriptionsCreateRequestSourceMqEventSourceR2Type;
+}
+export const SubscriptionsCreateRequestSourceMqEventSourceR2 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.optional(SubscriptionsCreateRequestSourceMqEventSourceR2Type),
+    }),
+  ).annotate({
+    identifier: "SubscriptionsCreateRequestSourceMqEventSourceR2",
+  }) as any as S.Schema<SubscriptionsCreateRequestSourceMqEventSourceR2>;
+
+export type SubscriptionsCreateRequestSourceMqEventSourceSuperSlurperType =
+  | "superSlurper"
+  | (string & {});
+export const SubscriptionsCreateRequestSourceMqEventSourceSuperSlurperType =
+  /*@__PURE__*/ S.String;
+
+export interface SubscriptionsCreateRequestSourceMqEventSourceSuperSlurper {
+  /** Type of source */
+  type?: SubscriptionsCreateRequestSourceMqEventSourceSuperSlurperType;
+}
+export const SubscriptionsCreateRequestSourceMqEventSourceSuperSlurper =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.optional(
+        SubscriptionsCreateRequestSourceMqEventSourceSuperSlurperType,
+      ),
+    }),
+  ).annotate({
+    identifier: "SubscriptionsCreateRequestSourceMqEventSourceSuperSlurper",
+  }) as any as S.Schema<SubscriptionsCreateRequestSourceMqEventSourceSuperSlurper>;
+
+export type SubscriptionsCreateRequestSourceMqEventSourceVectorizeType =
+  | "vectorize"
+  | (string & {});
+export const SubscriptionsCreateRequestSourceMqEventSourceVectorizeType =
+  /*@__PURE__*/ S.String;
+
+export interface SubscriptionsCreateRequestSourceMqEventSourceVectorize {
+  /** Type of source */
+  type?: SubscriptionsCreateRequestSourceMqEventSourceVectorizeType;
+}
+export const SubscriptionsCreateRequestSourceMqEventSourceVectorize =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.optional(
+        SubscriptionsCreateRequestSourceMqEventSourceVectorizeType,
+      ),
+    }),
+  ).annotate({
+    identifier: "SubscriptionsCreateRequestSourceMqEventSourceVectorize",
+  }) as any as S.Schema<SubscriptionsCreateRequestSourceMqEventSourceVectorize>;
+
+export type SubscriptionsCreateRequestSourceMqEventSourceWorkersAIModelType =
+  | "workersAi.model"
+  | (string & {});
+export const SubscriptionsCreateRequestSourceMqEventSourceWorkersAIModelType =
+  /*@__PURE__*/ S.String;
+
+export interface SubscriptionsCreateRequestSourceMqEventSourceWorkersAIModel {
   /** Name of the Workers AI model */
   modelName?: string;
+  /** Type of source */
+  type?: SubscriptionsCreateRequestSourceMqEventSourceWorkersAIModelType;
+}
+export const SubscriptionsCreateRequestSourceMqEventSourceWorkersAIModel =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      modelName: S.optional(S.String.pipe(T.Body("model_name"))),
+      type: S.optional(
+        SubscriptionsCreateRequestSourceMqEventSourceWorkersAIModelType,
+      ),
+    }),
+  ).annotate({
+    identifier: "SubscriptionsCreateRequestSourceMqEventSourceWorkersAIModel",
+  }) as any as S.Schema<SubscriptionsCreateRequestSourceMqEventSourceWorkersAIModel>;
+
+export type SubscriptionsCreateRequestSourceMqEventSourceWorkersBuildsWorkerType =
+  "workersBuilds.worker" | (string & {});
+export const SubscriptionsCreateRequestSourceMqEventSourceWorkersBuildsWorkerType =
+  /*@__PURE__*/ S.String;
+
+export interface SubscriptionsCreateRequestSourceMqEventSourceWorkersBuildsWorker {
+  /** Type of source */
+  type?: SubscriptionsCreateRequestSourceMqEventSourceWorkersBuildsWorkerType;
   /** Name of the worker */
   workerName?: string;
+}
+export const SubscriptionsCreateRequestSourceMqEventSourceWorkersBuildsWorker =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.optional(
+        SubscriptionsCreateRequestSourceMqEventSourceWorkersBuildsWorkerType,
+      ),
+      workerName: S.optional(S.String.pipe(T.Body("worker_name"))),
+    }),
+  ).annotate({
+    identifier:
+      "SubscriptionsCreateRequestSourceMqEventSourceWorkersBuildsWorker",
+  }) as any as S.Schema<SubscriptionsCreateRequestSourceMqEventSourceWorkersBuildsWorker>;
+
+export type SubscriptionsCreateRequestSourceMqEventSourceWorkflowsWorkflowType =
+  "workflows.workflow" | (string & {});
+export const SubscriptionsCreateRequestSourceMqEventSourceWorkflowsWorkflowType =
+  /*@__PURE__*/ S.String;
+
+export interface SubscriptionsCreateRequestSourceMqEventSourceWorkflowsWorkflow {
+  /** Type of source */
+  type?: SubscriptionsCreateRequestSourceMqEventSourceWorkflowsWorkflowType;
   /** Name of the workflow */
   workflowName?: string;
 }
-export const SubscriptionsCreateRequestSource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(SubscriptionsCreateRequestSourceType),
-    modelName: S.optional(S.String.pipe(T.Body("model_name"))),
-    workerName: S.optional(S.String.pipe(T.Body("worker_name"))),
-    workflowName: S.optional(S.String.pipe(T.Body("workflow_name"))),
-  }),
-).annotate({
-  identifier: "SubscriptionsCreateRequestSource",
-}) as any as S.Schema<SubscriptionsCreateRequestSource>;
+export const SubscriptionsCreateRequestSourceMqEventSourceWorkflowsWorkflow =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.optional(
+        SubscriptionsCreateRequestSourceMqEventSourceWorkflowsWorkflowType,
+      ),
+      workflowName: S.optional(S.String.pipe(T.Body("workflow_name"))),
+    }),
+  ).annotate({
+    identifier:
+      "SubscriptionsCreateRequestSourceMqEventSourceWorkflowsWorkflow",
+  }) as any as S.Schema<SubscriptionsCreateRequestSourceMqEventSourceWorkflowsWorkflow>;
+
+export type SubscriptionsCreateRequestSource =
+  | SubscriptionsCreateRequestSourceMqEventSourceImages
+  | SubscriptionsCreateRequestSourceMqEventSourceKV
+  | SubscriptionsCreateRequestSourceMqEventSourceR2
+  | SubscriptionsCreateRequestSourceMqEventSourceSuperSlurper
+  | SubscriptionsCreateRequestSourceMqEventSourceVectorize
+  | SubscriptionsCreateRequestSourceMqEventSourceWorkersAIModel
+  | SubscriptionsCreateRequestSourceMqEventSourceWorkersBuildsWorker
+  | SubscriptionsCreateRequestSourceMqEventSourceWorkflowsWorkflow;
+export const SubscriptionsCreateRequestSource = /*@__PURE__*/ S.Unknown;
 
 export interface CreateSubscriptionRequest {
   /** A Resource identifier. */
@@ -787,29 +995,189 @@ export const SubscriptionsCreateResponseEventsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SubscriptionsCreateResponseEventsList>;
 
-export type SubscriptionsCreateResponseSourceType = "images" | (string & {});
-export const SubscriptionsCreateResponseSourceType = /*@__PURE__*/ S.String;
+export type SubscriptionsCreateResponseSourceMqEventSourceImagesType =
+  | "images"
+  | (string & {});
+export const SubscriptionsCreateResponseSourceMqEventSourceImagesType =
+  /*@__PURE__*/ S.String;
 
-export interface SubscriptionsCreateResponseSource {
+export interface SubscriptionsCreateResponseSourceMqEventSourceImages {
   /** Type of source */
-  type?: SubscriptionsCreateResponseSourceType;
+  type?: SubscriptionsCreateResponseSourceMqEventSourceImagesType;
+}
+export const SubscriptionsCreateResponseSourceMqEventSourceImages =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.optional(
+        SubscriptionsCreateResponseSourceMqEventSourceImagesType,
+      ),
+    }),
+  ).annotate({
+    identifier: "SubscriptionsCreateResponseSourceMqEventSourceImages",
+  }) as any as S.Schema<SubscriptionsCreateResponseSourceMqEventSourceImages>;
+
+export type SubscriptionsCreateResponseSourceMqEventSourceKVType =
+  | "kv"
+  | (string & {});
+export const SubscriptionsCreateResponseSourceMqEventSourceKVType =
+  /*@__PURE__*/ S.String;
+
+export interface SubscriptionsCreateResponseSourceMqEventSourceKV {
+  /** Type of source */
+  type?: SubscriptionsCreateResponseSourceMqEventSourceKVType;
+}
+export const SubscriptionsCreateResponseSourceMqEventSourceKV =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.optional(SubscriptionsCreateResponseSourceMqEventSourceKVType),
+    }),
+  ).annotate({
+    identifier: "SubscriptionsCreateResponseSourceMqEventSourceKV",
+  }) as any as S.Schema<SubscriptionsCreateResponseSourceMqEventSourceKV>;
+
+export type SubscriptionsCreateResponseSourceMqEventSourceR2Type =
+  | "r2"
+  | (string & {});
+export const SubscriptionsCreateResponseSourceMqEventSourceR2Type =
+  /*@__PURE__*/ S.String;
+
+export interface SubscriptionsCreateResponseSourceMqEventSourceR2 {
+  /** Type of source */
+  type?: SubscriptionsCreateResponseSourceMqEventSourceR2Type;
+}
+export const SubscriptionsCreateResponseSourceMqEventSourceR2 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.optional(SubscriptionsCreateResponseSourceMqEventSourceR2Type),
+    }),
+  ).annotate({
+    identifier: "SubscriptionsCreateResponseSourceMqEventSourceR2",
+  }) as any as S.Schema<SubscriptionsCreateResponseSourceMqEventSourceR2>;
+
+export type SubscriptionsCreateResponseSourceMqEventSourceSuperSlurperType =
+  | "superSlurper"
+  | (string & {});
+export const SubscriptionsCreateResponseSourceMqEventSourceSuperSlurperType =
+  /*@__PURE__*/ S.String;
+
+export interface SubscriptionsCreateResponseSourceMqEventSourceSuperSlurper {
+  /** Type of source */
+  type?: SubscriptionsCreateResponseSourceMqEventSourceSuperSlurperType;
+}
+export const SubscriptionsCreateResponseSourceMqEventSourceSuperSlurper =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.optional(
+        SubscriptionsCreateResponseSourceMqEventSourceSuperSlurperType,
+      ),
+    }),
+  ).annotate({
+    identifier: "SubscriptionsCreateResponseSourceMqEventSourceSuperSlurper",
+  }) as any as S.Schema<SubscriptionsCreateResponseSourceMqEventSourceSuperSlurper>;
+
+export type SubscriptionsCreateResponseSourceMqEventSourceVectorizeType =
+  | "vectorize"
+  | (string & {});
+export const SubscriptionsCreateResponseSourceMqEventSourceVectorizeType =
+  /*@__PURE__*/ S.String;
+
+export interface SubscriptionsCreateResponseSourceMqEventSourceVectorize {
+  /** Type of source */
+  type?: SubscriptionsCreateResponseSourceMqEventSourceVectorizeType;
+}
+export const SubscriptionsCreateResponseSourceMqEventSourceVectorize =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.optional(
+        SubscriptionsCreateResponseSourceMqEventSourceVectorizeType,
+      ),
+    }),
+  ).annotate({
+    identifier: "SubscriptionsCreateResponseSourceMqEventSourceVectorize",
+  }) as any as S.Schema<SubscriptionsCreateResponseSourceMqEventSourceVectorize>;
+
+export type SubscriptionsCreateResponseSourceMqEventSourceWorkersAIModelType =
+  | "workersAi.model"
+  | (string & {});
+export const SubscriptionsCreateResponseSourceMqEventSourceWorkersAIModelType =
+  /*@__PURE__*/ S.String;
+
+export interface SubscriptionsCreateResponseSourceMqEventSourceWorkersAIModel {
   /** Name of the Workers AI model */
   modelName?: string;
+  /** Type of source */
+  type?: SubscriptionsCreateResponseSourceMqEventSourceWorkersAIModelType;
+}
+export const SubscriptionsCreateResponseSourceMqEventSourceWorkersAIModel =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      modelName: S.optional(S.String.pipe(T.Body("model_name"))),
+      type: S.optional(
+        SubscriptionsCreateResponseSourceMqEventSourceWorkersAIModelType,
+      ),
+    }),
+  ).annotate({
+    identifier: "SubscriptionsCreateResponseSourceMqEventSourceWorkersAIModel",
+  }) as any as S.Schema<SubscriptionsCreateResponseSourceMqEventSourceWorkersAIModel>;
+
+export type SubscriptionsCreateResponseSourceMqEventSourceWorkersBuildsWorkerType =
+  "workersBuilds.worker" | (string & {});
+export const SubscriptionsCreateResponseSourceMqEventSourceWorkersBuildsWorkerType =
+  /*@__PURE__*/ S.String;
+
+export interface SubscriptionsCreateResponseSourceMqEventSourceWorkersBuildsWorker {
+  /** Type of source */
+  type?: SubscriptionsCreateResponseSourceMqEventSourceWorkersBuildsWorkerType;
   /** Name of the worker */
   workerName?: string;
+}
+export const SubscriptionsCreateResponseSourceMqEventSourceWorkersBuildsWorker =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.optional(
+        SubscriptionsCreateResponseSourceMqEventSourceWorkersBuildsWorkerType,
+      ),
+      workerName: S.optional(S.String.pipe(T.Body("worker_name"))),
+    }),
+  ).annotate({
+    identifier:
+      "SubscriptionsCreateResponseSourceMqEventSourceWorkersBuildsWorker",
+  }) as any as S.Schema<SubscriptionsCreateResponseSourceMqEventSourceWorkersBuildsWorker>;
+
+export type SubscriptionsCreateResponseSourceMqEventSourceWorkflowsWorkflowType =
+  "workflows.workflow" | (string & {});
+export const SubscriptionsCreateResponseSourceMqEventSourceWorkflowsWorkflowType =
+  /*@__PURE__*/ S.String;
+
+export interface SubscriptionsCreateResponseSourceMqEventSourceWorkflowsWorkflow {
+  /** Type of source */
+  type?: SubscriptionsCreateResponseSourceMqEventSourceWorkflowsWorkflowType;
   /** Name of the workflow */
   workflowName?: string;
 }
-export const SubscriptionsCreateResponseSource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(SubscriptionsCreateResponseSourceType),
-    modelName: S.optional(S.String.pipe(T.Body("model_name"))),
-    workerName: S.optional(S.String.pipe(T.Body("worker_name"))),
-    workflowName: S.optional(S.String.pipe(T.Body("workflow_name"))),
-  }),
-).annotate({
-  identifier: "SubscriptionsCreateResponseSource",
-}) as any as S.Schema<SubscriptionsCreateResponseSource>;
+export const SubscriptionsCreateResponseSourceMqEventSourceWorkflowsWorkflow =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.optional(
+        SubscriptionsCreateResponseSourceMqEventSourceWorkflowsWorkflowType,
+      ),
+      workflowName: S.optional(S.String.pipe(T.Body("workflow_name"))),
+    }),
+  ).annotate({
+    identifier:
+      "SubscriptionsCreateResponseSourceMqEventSourceWorkflowsWorkflow",
+  }) as any as S.Schema<SubscriptionsCreateResponseSourceMqEventSourceWorkflowsWorkflow>;
+
+export type SubscriptionsCreateResponseSource =
+  | SubscriptionsCreateResponseSourceMqEventSourceImages
+  | SubscriptionsCreateResponseSourceMqEventSourceKV
+  | SubscriptionsCreateResponseSourceMqEventSourceR2
+  | SubscriptionsCreateResponseSourceMqEventSourceSuperSlurper
+  | SubscriptionsCreateResponseSourceMqEventSourceVectorize
+  | SubscriptionsCreateResponseSourceMqEventSourceWorkersAIModel
+  | SubscriptionsCreateResponseSourceMqEventSourceWorkersBuildsWorker
+  | SubscriptionsCreateResponseSourceMqEventSourceWorkflowsWorkflow;
+export const SubscriptionsCreateResponseSource = /*@__PURE__*/ S.Unknown;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateSubscriptionResponse {
@@ -958,29 +1326,189 @@ export const SubscriptionsDeleteResponseEventsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SubscriptionsDeleteResponseEventsList>;
 
-export type SubscriptionsDeleteResponseSourceType = "images" | (string & {});
-export const SubscriptionsDeleteResponseSourceType = /*@__PURE__*/ S.String;
+export type SubscriptionsDeleteResponseSourceMqEventSourceImagesType =
+  | "images"
+  | (string & {});
+export const SubscriptionsDeleteResponseSourceMqEventSourceImagesType =
+  /*@__PURE__*/ S.String;
 
-export interface SubscriptionsDeleteResponseSource {
+export interface SubscriptionsDeleteResponseSourceMqEventSourceImages {
   /** Type of source */
-  type?: SubscriptionsDeleteResponseSourceType;
+  type?: SubscriptionsDeleteResponseSourceMqEventSourceImagesType;
+}
+export const SubscriptionsDeleteResponseSourceMqEventSourceImages =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.optional(
+        SubscriptionsDeleteResponseSourceMqEventSourceImagesType,
+      ),
+    }),
+  ).annotate({
+    identifier: "SubscriptionsDeleteResponseSourceMqEventSourceImages",
+  }) as any as S.Schema<SubscriptionsDeleteResponseSourceMqEventSourceImages>;
+
+export type SubscriptionsDeleteResponseSourceMqEventSourceKVType =
+  | "kv"
+  | (string & {});
+export const SubscriptionsDeleteResponseSourceMqEventSourceKVType =
+  /*@__PURE__*/ S.String;
+
+export interface SubscriptionsDeleteResponseSourceMqEventSourceKV {
+  /** Type of source */
+  type?: SubscriptionsDeleteResponseSourceMqEventSourceKVType;
+}
+export const SubscriptionsDeleteResponseSourceMqEventSourceKV =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.optional(SubscriptionsDeleteResponseSourceMqEventSourceKVType),
+    }),
+  ).annotate({
+    identifier: "SubscriptionsDeleteResponseSourceMqEventSourceKV",
+  }) as any as S.Schema<SubscriptionsDeleteResponseSourceMqEventSourceKV>;
+
+export type SubscriptionsDeleteResponseSourceMqEventSourceR2Type =
+  | "r2"
+  | (string & {});
+export const SubscriptionsDeleteResponseSourceMqEventSourceR2Type =
+  /*@__PURE__*/ S.String;
+
+export interface SubscriptionsDeleteResponseSourceMqEventSourceR2 {
+  /** Type of source */
+  type?: SubscriptionsDeleteResponseSourceMqEventSourceR2Type;
+}
+export const SubscriptionsDeleteResponseSourceMqEventSourceR2 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.optional(SubscriptionsDeleteResponseSourceMqEventSourceR2Type),
+    }),
+  ).annotate({
+    identifier: "SubscriptionsDeleteResponseSourceMqEventSourceR2",
+  }) as any as S.Schema<SubscriptionsDeleteResponseSourceMqEventSourceR2>;
+
+export type SubscriptionsDeleteResponseSourceMqEventSourceSuperSlurperType =
+  | "superSlurper"
+  | (string & {});
+export const SubscriptionsDeleteResponseSourceMqEventSourceSuperSlurperType =
+  /*@__PURE__*/ S.String;
+
+export interface SubscriptionsDeleteResponseSourceMqEventSourceSuperSlurper {
+  /** Type of source */
+  type?: SubscriptionsDeleteResponseSourceMqEventSourceSuperSlurperType;
+}
+export const SubscriptionsDeleteResponseSourceMqEventSourceSuperSlurper =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.optional(
+        SubscriptionsDeleteResponseSourceMqEventSourceSuperSlurperType,
+      ),
+    }),
+  ).annotate({
+    identifier: "SubscriptionsDeleteResponseSourceMqEventSourceSuperSlurper",
+  }) as any as S.Schema<SubscriptionsDeleteResponseSourceMqEventSourceSuperSlurper>;
+
+export type SubscriptionsDeleteResponseSourceMqEventSourceVectorizeType =
+  | "vectorize"
+  | (string & {});
+export const SubscriptionsDeleteResponseSourceMqEventSourceVectorizeType =
+  /*@__PURE__*/ S.String;
+
+export interface SubscriptionsDeleteResponseSourceMqEventSourceVectorize {
+  /** Type of source */
+  type?: SubscriptionsDeleteResponseSourceMqEventSourceVectorizeType;
+}
+export const SubscriptionsDeleteResponseSourceMqEventSourceVectorize =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.optional(
+        SubscriptionsDeleteResponseSourceMqEventSourceVectorizeType,
+      ),
+    }),
+  ).annotate({
+    identifier: "SubscriptionsDeleteResponseSourceMqEventSourceVectorize",
+  }) as any as S.Schema<SubscriptionsDeleteResponseSourceMqEventSourceVectorize>;
+
+export type SubscriptionsDeleteResponseSourceMqEventSourceWorkersAIModelType =
+  | "workersAi.model"
+  | (string & {});
+export const SubscriptionsDeleteResponseSourceMqEventSourceWorkersAIModelType =
+  /*@__PURE__*/ S.String;
+
+export interface SubscriptionsDeleteResponseSourceMqEventSourceWorkersAIModel {
   /** Name of the Workers AI model */
   modelName?: string;
+  /** Type of source */
+  type?: SubscriptionsDeleteResponseSourceMqEventSourceWorkersAIModelType;
+}
+export const SubscriptionsDeleteResponseSourceMqEventSourceWorkersAIModel =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      modelName: S.optional(S.String.pipe(T.Body("model_name"))),
+      type: S.optional(
+        SubscriptionsDeleteResponseSourceMqEventSourceWorkersAIModelType,
+      ),
+    }),
+  ).annotate({
+    identifier: "SubscriptionsDeleteResponseSourceMqEventSourceWorkersAIModel",
+  }) as any as S.Schema<SubscriptionsDeleteResponseSourceMqEventSourceWorkersAIModel>;
+
+export type SubscriptionsDeleteResponseSourceMqEventSourceWorkersBuildsWorkerType =
+  "workersBuilds.worker" | (string & {});
+export const SubscriptionsDeleteResponseSourceMqEventSourceWorkersBuildsWorkerType =
+  /*@__PURE__*/ S.String;
+
+export interface SubscriptionsDeleteResponseSourceMqEventSourceWorkersBuildsWorker {
+  /** Type of source */
+  type?: SubscriptionsDeleteResponseSourceMqEventSourceWorkersBuildsWorkerType;
   /** Name of the worker */
   workerName?: string;
+}
+export const SubscriptionsDeleteResponseSourceMqEventSourceWorkersBuildsWorker =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.optional(
+        SubscriptionsDeleteResponseSourceMqEventSourceWorkersBuildsWorkerType,
+      ),
+      workerName: S.optional(S.String.pipe(T.Body("worker_name"))),
+    }),
+  ).annotate({
+    identifier:
+      "SubscriptionsDeleteResponseSourceMqEventSourceWorkersBuildsWorker",
+  }) as any as S.Schema<SubscriptionsDeleteResponseSourceMqEventSourceWorkersBuildsWorker>;
+
+export type SubscriptionsDeleteResponseSourceMqEventSourceWorkflowsWorkflowType =
+  "workflows.workflow" | (string & {});
+export const SubscriptionsDeleteResponseSourceMqEventSourceWorkflowsWorkflowType =
+  /*@__PURE__*/ S.String;
+
+export interface SubscriptionsDeleteResponseSourceMqEventSourceWorkflowsWorkflow {
+  /** Type of source */
+  type?: SubscriptionsDeleteResponseSourceMqEventSourceWorkflowsWorkflowType;
   /** Name of the workflow */
   workflowName?: string;
 }
-export const SubscriptionsDeleteResponseSource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(SubscriptionsDeleteResponseSourceType),
-    modelName: S.optional(S.String.pipe(T.Body("model_name"))),
-    workerName: S.optional(S.String.pipe(T.Body("worker_name"))),
-    workflowName: S.optional(S.String.pipe(T.Body("workflow_name"))),
-  }),
-).annotate({
-  identifier: "SubscriptionsDeleteResponseSource",
-}) as any as S.Schema<SubscriptionsDeleteResponseSource>;
+export const SubscriptionsDeleteResponseSourceMqEventSourceWorkflowsWorkflow =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.optional(
+        SubscriptionsDeleteResponseSourceMqEventSourceWorkflowsWorkflowType,
+      ),
+      workflowName: S.optional(S.String.pipe(T.Body("workflow_name"))),
+    }),
+  ).annotate({
+    identifier:
+      "SubscriptionsDeleteResponseSourceMqEventSourceWorkflowsWorkflow",
+  }) as any as S.Schema<SubscriptionsDeleteResponseSourceMqEventSourceWorkflowsWorkflow>;
+
+export type SubscriptionsDeleteResponseSource =
+  | SubscriptionsDeleteResponseSourceMqEventSourceImages
+  | SubscriptionsDeleteResponseSourceMqEventSourceKV
+  | SubscriptionsDeleteResponseSourceMqEventSourceR2
+  | SubscriptionsDeleteResponseSourceMqEventSourceSuperSlurper
+  | SubscriptionsDeleteResponseSourceMqEventSourceVectorize
+  | SubscriptionsDeleteResponseSourceMqEventSourceWorkersAIModel
+  | SubscriptionsDeleteResponseSourceMqEventSourceWorkersBuildsWorker
+  | SubscriptionsDeleteResponseSourceMqEventSourceWorkflowsWorkflow;
+export const SubscriptionsDeleteResponseSource = /*@__PURE__*/ S.Unknown;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteSubscriptionResponse {
@@ -1344,29 +1872,187 @@ export const SubscriptionsGetResponseEventsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SubscriptionsGetResponseEventsList>;
 
-export type SubscriptionsGetResponseSourceType = "images" | (string & {});
-export const SubscriptionsGetResponseSourceType = /*@__PURE__*/ S.String;
+export type SubscriptionsGetResponseSourceMqEventSourceImagesType =
+  | "images"
+  | (string & {});
+export const SubscriptionsGetResponseSourceMqEventSourceImagesType =
+  /*@__PURE__*/ S.String;
 
-export interface SubscriptionsGetResponseSource {
+export interface SubscriptionsGetResponseSourceMqEventSourceImages {
   /** Type of source */
-  type?: SubscriptionsGetResponseSourceType;
+  type?: SubscriptionsGetResponseSourceMqEventSourceImagesType;
+}
+export const SubscriptionsGetResponseSourceMqEventSourceImages =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.optional(SubscriptionsGetResponseSourceMqEventSourceImagesType),
+    }),
+  ).annotate({
+    identifier: "SubscriptionsGetResponseSourceMqEventSourceImages",
+  }) as any as S.Schema<SubscriptionsGetResponseSourceMqEventSourceImages>;
+
+export type SubscriptionsGetResponseSourceMqEventSourceKVType =
+  | "kv"
+  | (string & {});
+export const SubscriptionsGetResponseSourceMqEventSourceKVType =
+  /*@__PURE__*/ S.String;
+
+export interface SubscriptionsGetResponseSourceMqEventSourceKV {
+  /** Type of source */
+  type?: SubscriptionsGetResponseSourceMqEventSourceKVType;
+}
+export const SubscriptionsGetResponseSourceMqEventSourceKV =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.optional(SubscriptionsGetResponseSourceMqEventSourceKVType),
+    }),
+  ).annotate({
+    identifier: "SubscriptionsGetResponseSourceMqEventSourceKV",
+  }) as any as S.Schema<SubscriptionsGetResponseSourceMqEventSourceKV>;
+
+export type SubscriptionsGetResponseSourceMqEventSourceR2Type =
+  | "r2"
+  | (string & {});
+export const SubscriptionsGetResponseSourceMqEventSourceR2Type =
+  /*@__PURE__*/ S.String;
+
+export interface SubscriptionsGetResponseSourceMqEventSourceR2 {
+  /** Type of source */
+  type?: SubscriptionsGetResponseSourceMqEventSourceR2Type;
+}
+export const SubscriptionsGetResponseSourceMqEventSourceR2 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.optional(SubscriptionsGetResponseSourceMqEventSourceR2Type),
+    }),
+  ).annotate({
+    identifier: "SubscriptionsGetResponseSourceMqEventSourceR2",
+  }) as any as S.Schema<SubscriptionsGetResponseSourceMqEventSourceR2>;
+
+export type SubscriptionsGetResponseSourceMqEventSourceSuperSlurperType =
+  | "superSlurper"
+  | (string & {});
+export const SubscriptionsGetResponseSourceMqEventSourceSuperSlurperType =
+  /*@__PURE__*/ S.String;
+
+export interface SubscriptionsGetResponseSourceMqEventSourceSuperSlurper {
+  /** Type of source */
+  type?: SubscriptionsGetResponseSourceMqEventSourceSuperSlurperType;
+}
+export const SubscriptionsGetResponseSourceMqEventSourceSuperSlurper =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.optional(
+        SubscriptionsGetResponseSourceMqEventSourceSuperSlurperType,
+      ),
+    }),
+  ).annotate({
+    identifier: "SubscriptionsGetResponseSourceMqEventSourceSuperSlurper",
+  }) as any as S.Schema<SubscriptionsGetResponseSourceMqEventSourceSuperSlurper>;
+
+export type SubscriptionsGetResponseSourceMqEventSourceVectorizeType =
+  | "vectorize"
+  | (string & {});
+export const SubscriptionsGetResponseSourceMqEventSourceVectorizeType =
+  /*@__PURE__*/ S.String;
+
+export interface SubscriptionsGetResponseSourceMqEventSourceVectorize {
+  /** Type of source */
+  type?: SubscriptionsGetResponseSourceMqEventSourceVectorizeType;
+}
+export const SubscriptionsGetResponseSourceMqEventSourceVectorize =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.optional(
+        SubscriptionsGetResponseSourceMqEventSourceVectorizeType,
+      ),
+    }),
+  ).annotate({
+    identifier: "SubscriptionsGetResponseSourceMqEventSourceVectorize",
+  }) as any as S.Schema<SubscriptionsGetResponseSourceMqEventSourceVectorize>;
+
+export type SubscriptionsGetResponseSourceMqEventSourceWorkersAIModelType =
+  | "workersAi.model"
+  | (string & {});
+export const SubscriptionsGetResponseSourceMqEventSourceWorkersAIModelType =
+  /*@__PURE__*/ S.String;
+
+export interface SubscriptionsGetResponseSourceMqEventSourceWorkersAIModel {
   /** Name of the Workers AI model */
   modelName?: string;
+  /** Type of source */
+  type?: SubscriptionsGetResponseSourceMqEventSourceWorkersAIModelType;
+}
+export const SubscriptionsGetResponseSourceMqEventSourceWorkersAIModel =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      modelName: S.optional(S.String.pipe(T.Body("model_name"))),
+      type: S.optional(
+        SubscriptionsGetResponseSourceMqEventSourceWorkersAIModelType,
+      ),
+    }),
+  ).annotate({
+    identifier: "SubscriptionsGetResponseSourceMqEventSourceWorkersAIModel",
+  }) as any as S.Schema<SubscriptionsGetResponseSourceMqEventSourceWorkersAIModel>;
+
+export type SubscriptionsGetResponseSourceMqEventSourceWorkersBuildsWorkerType =
+  "workersBuilds.worker" | (string & {});
+export const SubscriptionsGetResponseSourceMqEventSourceWorkersBuildsWorkerType =
+  /*@__PURE__*/ S.String;
+
+export interface SubscriptionsGetResponseSourceMqEventSourceWorkersBuildsWorker {
+  /** Type of source */
+  type?: SubscriptionsGetResponseSourceMqEventSourceWorkersBuildsWorkerType;
   /** Name of the worker */
   workerName?: string;
+}
+export const SubscriptionsGetResponseSourceMqEventSourceWorkersBuildsWorker =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.optional(
+        SubscriptionsGetResponseSourceMqEventSourceWorkersBuildsWorkerType,
+      ),
+      workerName: S.optional(S.String.pipe(T.Body("worker_name"))),
+    }),
+  ).annotate({
+    identifier:
+      "SubscriptionsGetResponseSourceMqEventSourceWorkersBuildsWorker",
+  }) as any as S.Schema<SubscriptionsGetResponseSourceMqEventSourceWorkersBuildsWorker>;
+
+export type SubscriptionsGetResponseSourceMqEventSourceWorkflowsWorkflowType =
+  | "workflows.workflow"
+  | (string & {});
+export const SubscriptionsGetResponseSourceMqEventSourceWorkflowsWorkflowType =
+  /*@__PURE__*/ S.String;
+
+export interface SubscriptionsGetResponseSourceMqEventSourceWorkflowsWorkflow {
+  /** Type of source */
+  type?: SubscriptionsGetResponseSourceMqEventSourceWorkflowsWorkflowType;
   /** Name of the workflow */
   workflowName?: string;
 }
-export const SubscriptionsGetResponseSource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(SubscriptionsGetResponseSourceType),
-    modelName: S.optional(S.String.pipe(T.Body("model_name"))),
-    workerName: S.optional(S.String.pipe(T.Body("worker_name"))),
-    workflowName: S.optional(S.String.pipe(T.Body("workflow_name"))),
-  }),
-).annotate({
-  identifier: "SubscriptionsGetResponseSource",
-}) as any as S.Schema<SubscriptionsGetResponseSource>;
+export const SubscriptionsGetResponseSourceMqEventSourceWorkflowsWorkflow =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.optional(
+        SubscriptionsGetResponseSourceMqEventSourceWorkflowsWorkflowType,
+      ),
+      workflowName: S.optional(S.String.pipe(T.Body("workflow_name"))),
+    }),
+  ).annotate({
+    identifier: "SubscriptionsGetResponseSourceMqEventSourceWorkflowsWorkflow",
+  }) as any as S.Schema<SubscriptionsGetResponseSourceMqEventSourceWorkflowsWorkflow>;
+
+export type SubscriptionsGetResponseSource =
+  | SubscriptionsGetResponseSourceMqEventSourceImages
+  | SubscriptionsGetResponseSourceMqEventSourceKV
+  | SubscriptionsGetResponseSourceMqEventSourceR2
+  | SubscriptionsGetResponseSourceMqEventSourceSuperSlurper
+  | SubscriptionsGetResponseSourceMqEventSourceVectorize
+  | SubscriptionsGetResponseSourceMqEventSourceWorkersAIModel
+  | SubscriptionsGetResponseSourceMqEventSourceWorkersBuildsWorker
+  | SubscriptionsGetResponseSourceMqEventSourceWorkflowsWorkflow;
+export const SubscriptionsGetResponseSource = /*@__PURE__*/ S.Unknown;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetSubscriptionResponse {
@@ -1738,29 +2424,189 @@ export const SubscriptionsListResultItemEventsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SubscriptionsListResultItemEventsList>;
 
-export type SubscriptionsListResultItemSourceType = "images" | (string & {});
-export const SubscriptionsListResultItemSourceType = /*@__PURE__*/ S.String;
+export type SubscriptionsListResultItemSourceMqEventSourceImagesType =
+  | "images"
+  | (string & {});
+export const SubscriptionsListResultItemSourceMqEventSourceImagesType =
+  /*@__PURE__*/ S.String;
 
-export interface SubscriptionsListResultItemSource {
+export interface SubscriptionsListResultItemSourceMqEventSourceImages {
   /** Type of source */
-  type?: SubscriptionsListResultItemSourceType;
+  type?: SubscriptionsListResultItemSourceMqEventSourceImagesType;
+}
+export const SubscriptionsListResultItemSourceMqEventSourceImages =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.optional(
+        SubscriptionsListResultItemSourceMqEventSourceImagesType,
+      ),
+    }),
+  ).annotate({
+    identifier: "SubscriptionsListResultItemSourceMqEventSourceImages",
+  }) as any as S.Schema<SubscriptionsListResultItemSourceMqEventSourceImages>;
+
+export type SubscriptionsListResultItemSourceMqEventSourceKVType =
+  | "kv"
+  | (string & {});
+export const SubscriptionsListResultItemSourceMqEventSourceKVType =
+  /*@__PURE__*/ S.String;
+
+export interface SubscriptionsListResultItemSourceMqEventSourceKV {
+  /** Type of source */
+  type?: SubscriptionsListResultItemSourceMqEventSourceKVType;
+}
+export const SubscriptionsListResultItemSourceMqEventSourceKV =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.optional(SubscriptionsListResultItemSourceMqEventSourceKVType),
+    }),
+  ).annotate({
+    identifier: "SubscriptionsListResultItemSourceMqEventSourceKV",
+  }) as any as S.Schema<SubscriptionsListResultItemSourceMqEventSourceKV>;
+
+export type SubscriptionsListResultItemSourceMqEventSourceR2Type =
+  | "r2"
+  | (string & {});
+export const SubscriptionsListResultItemSourceMqEventSourceR2Type =
+  /*@__PURE__*/ S.String;
+
+export interface SubscriptionsListResultItemSourceMqEventSourceR2 {
+  /** Type of source */
+  type?: SubscriptionsListResultItemSourceMqEventSourceR2Type;
+}
+export const SubscriptionsListResultItemSourceMqEventSourceR2 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.optional(SubscriptionsListResultItemSourceMqEventSourceR2Type),
+    }),
+  ).annotate({
+    identifier: "SubscriptionsListResultItemSourceMqEventSourceR2",
+  }) as any as S.Schema<SubscriptionsListResultItemSourceMqEventSourceR2>;
+
+export type SubscriptionsListResultItemSourceMqEventSourceSuperSlurperType =
+  | "superSlurper"
+  | (string & {});
+export const SubscriptionsListResultItemSourceMqEventSourceSuperSlurperType =
+  /*@__PURE__*/ S.String;
+
+export interface SubscriptionsListResultItemSourceMqEventSourceSuperSlurper {
+  /** Type of source */
+  type?: SubscriptionsListResultItemSourceMqEventSourceSuperSlurperType;
+}
+export const SubscriptionsListResultItemSourceMqEventSourceSuperSlurper =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.optional(
+        SubscriptionsListResultItemSourceMqEventSourceSuperSlurperType,
+      ),
+    }),
+  ).annotate({
+    identifier: "SubscriptionsListResultItemSourceMqEventSourceSuperSlurper",
+  }) as any as S.Schema<SubscriptionsListResultItemSourceMqEventSourceSuperSlurper>;
+
+export type SubscriptionsListResultItemSourceMqEventSourceVectorizeType =
+  | "vectorize"
+  | (string & {});
+export const SubscriptionsListResultItemSourceMqEventSourceVectorizeType =
+  /*@__PURE__*/ S.String;
+
+export interface SubscriptionsListResultItemSourceMqEventSourceVectorize {
+  /** Type of source */
+  type?: SubscriptionsListResultItemSourceMqEventSourceVectorizeType;
+}
+export const SubscriptionsListResultItemSourceMqEventSourceVectorize =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.optional(
+        SubscriptionsListResultItemSourceMqEventSourceVectorizeType,
+      ),
+    }),
+  ).annotate({
+    identifier: "SubscriptionsListResultItemSourceMqEventSourceVectorize",
+  }) as any as S.Schema<SubscriptionsListResultItemSourceMqEventSourceVectorize>;
+
+export type SubscriptionsListResultItemSourceMqEventSourceWorkersAIModelType =
+  | "workersAi.model"
+  | (string & {});
+export const SubscriptionsListResultItemSourceMqEventSourceWorkersAIModelType =
+  /*@__PURE__*/ S.String;
+
+export interface SubscriptionsListResultItemSourceMqEventSourceWorkersAIModel {
   /** Name of the Workers AI model */
   modelName?: string;
+  /** Type of source */
+  type?: SubscriptionsListResultItemSourceMqEventSourceWorkersAIModelType;
+}
+export const SubscriptionsListResultItemSourceMqEventSourceWorkersAIModel =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      modelName: S.optional(S.String.pipe(T.Body("model_name"))),
+      type: S.optional(
+        SubscriptionsListResultItemSourceMqEventSourceWorkersAIModelType,
+      ),
+    }),
+  ).annotate({
+    identifier: "SubscriptionsListResultItemSourceMqEventSourceWorkersAIModel",
+  }) as any as S.Schema<SubscriptionsListResultItemSourceMqEventSourceWorkersAIModel>;
+
+export type SubscriptionsListResultItemSourceMqEventSourceWorkersBuildsWorkerType =
+  "workersBuilds.worker" | (string & {});
+export const SubscriptionsListResultItemSourceMqEventSourceWorkersBuildsWorkerType =
+  /*@__PURE__*/ S.String;
+
+export interface SubscriptionsListResultItemSourceMqEventSourceWorkersBuildsWorker {
+  /** Type of source */
+  type?: SubscriptionsListResultItemSourceMqEventSourceWorkersBuildsWorkerType;
   /** Name of the worker */
   workerName?: string;
+}
+export const SubscriptionsListResultItemSourceMqEventSourceWorkersBuildsWorker =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.optional(
+        SubscriptionsListResultItemSourceMqEventSourceWorkersBuildsWorkerType,
+      ),
+      workerName: S.optional(S.String.pipe(T.Body("worker_name"))),
+    }),
+  ).annotate({
+    identifier:
+      "SubscriptionsListResultItemSourceMqEventSourceWorkersBuildsWorker",
+  }) as any as S.Schema<SubscriptionsListResultItemSourceMqEventSourceWorkersBuildsWorker>;
+
+export type SubscriptionsListResultItemSourceMqEventSourceWorkflowsWorkflowType =
+  "workflows.workflow" | (string & {});
+export const SubscriptionsListResultItemSourceMqEventSourceWorkflowsWorkflowType =
+  /*@__PURE__*/ S.String;
+
+export interface SubscriptionsListResultItemSourceMqEventSourceWorkflowsWorkflow {
+  /** Type of source */
+  type?: SubscriptionsListResultItemSourceMqEventSourceWorkflowsWorkflowType;
   /** Name of the workflow */
   workflowName?: string;
 }
-export const SubscriptionsListResultItemSource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(SubscriptionsListResultItemSourceType),
-    modelName: S.optional(S.String.pipe(T.Body("model_name"))),
-    workerName: S.optional(S.String.pipe(T.Body("worker_name"))),
-    workflowName: S.optional(S.String.pipe(T.Body("workflow_name"))),
-  }),
-).annotate({
-  identifier: "SubscriptionsListResultItemSource",
-}) as any as S.Schema<SubscriptionsListResultItemSource>;
+export const SubscriptionsListResultItemSourceMqEventSourceWorkflowsWorkflow =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.optional(
+        SubscriptionsListResultItemSourceMqEventSourceWorkflowsWorkflowType,
+      ),
+      workflowName: S.optional(S.String.pipe(T.Body("workflow_name"))),
+    }),
+  ).annotate({
+    identifier:
+      "SubscriptionsListResultItemSourceMqEventSourceWorkflowsWorkflow",
+  }) as any as S.Schema<SubscriptionsListResultItemSourceMqEventSourceWorkflowsWorkflow>;
+
+export type SubscriptionsListResultItemSource =
+  | SubscriptionsListResultItemSourceMqEventSourceImages
+  | SubscriptionsListResultItemSourceMqEventSourceKV
+  | SubscriptionsListResultItemSourceMqEventSourceR2
+  | SubscriptionsListResultItemSourceMqEventSourceSuperSlurper
+  | SubscriptionsListResultItemSourceMqEventSourceVectorize
+  | SubscriptionsListResultItemSourceMqEventSourceWorkersAIModel
+  | SubscriptionsListResultItemSourceMqEventSourceWorkersBuildsWorker
+  | SubscriptionsListResultItemSourceMqEventSourceWorkflowsWorkflow;
+export const SubscriptionsListResultItemSource = /*@__PURE__*/ S.Unknown;
 
 export interface SubscriptionsListResultItem {
   /** Unique identifier for the subscription */
@@ -2083,29 +2929,189 @@ export const SubscriptionsUpdateResponseEventsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SubscriptionsUpdateResponseEventsList>;
 
-export type SubscriptionsUpdateResponseSourceType = "images" | (string & {});
-export const SubscriptionsUpdateResponseSourceType = /*@__PURE__*/ S.String;
+export type SubscriptionsUpdateResponseSourceMqEventSourceImagesType =
+  | "images"
+  | (string & {});
+export const SubscriptionsUpdateResponseSourceMqEventSourceImagesType =
+  /*@__PURE__*/ S.String;
 
-export interface SubscriptionsUpdateResponseSource {
+export interface SubscriptionsUpdateResponseSourceMqEventSourceImages {
   /** Type of source */
-  type?: SubscriptionsUpdateResponseSourceType;
+  type?: SubscriptionsUpdateResponseSourceMqEventSourceImagesType;
+}
+export const SubscriptionsUpdateResponseSourceMqEventSourceImages =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.optional(
+        SubscriptionsUpdateResponseSourceMqEventSourceImagesType,
+      ),
+    }),
+  ).annotate({
+    identifier: "SubscriptionsUpdateResponseSourceMqEventSourceImages",
+  }) as any as S.Schema<SubscriptionsUpdateResponseSourceMqEventSourceImages>;
+
+export type SubscriptionsUpdateResponseSourceMqEventSourceKVType =
+  | "kv"
+  | (string & {});
+export const SubscriptionsUpdateResponseSourceMqEventSourceKVType =
+  /*@__PURE__*/ S.String;
+
+export interface SubscriptionsUpdateResponseSourceMqEventSourceKV {
+  /** Type of source */
+  type?: SubscriptionsUpdateResponseSourceMqEventSourceKVType;
+}
+export const SubscriptionsUpdateResponseSourceMqEventSourceKV =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.optional(SubscriptionsUpdateResponseSourceMqEventSourceKVType),
+    }),
+  ).annotate({
+    identifier: "SubscriptionsUpdateResponseSourceMqEventSourceKV",
+  }) as any as S.Schema<SubscriptionsUpdateResponseSourceMqEventSourceKV>;
+
+export type SubscriptionsUpdateResponseSourceMqEventSourceR2Type =
+  | "r2"
+  | (string & {});
+export const SubscriptionsUpdateResponseSourceMqEventSourceR2Type =
+  /*@__PURE__*/ S.String;
+
+export interface SubscriptionsUpdateResponseSourceMqEventSourceR2 {
+  /** Type of source */
+  type?: SubscriptionsUpdateResponseSourceMqEventSourceR2Type;
+}
+export const SubscriptionsUpdateResponseSourceMqEventSourceR2 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.optional(SubscriptionsUpdateResponseSourceMqEventSourceR2Type),
+    }),
+  ).annotate({
+    identifier: "SubscriptionsUpdateResponseSourceMqEventSourceR2",
+  }) as any as S.Schema<SubscriptionsUpdateResponseSourceMqEventSourceR2>;
+
+export type SubscriptionsUpdateResponseSourceMqEventSourceSuperSlurperType =
+  | "superSlurper"
+  | (string & {});
+export const SubscriptionsUpdateResponseSourceMqEventSourceSuperSlurperType =
+  /*@__PURE__*/ S.String;
+
+export interface SubscriptionsUpdateResponseSourceMqEventSourceSuperSlurper {
+  /** Type of source */
+  type?: SubscriptionsUpdateResponseSourceMqEventSourceSuperSlurperType;
+}
+export const SubscriptionsUpdateResponseSourceMqEventSourceSuperSlurper =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.optional(
+        SubscriptionsUpdateResponseSourceMqEventSourceSuperSlurperType,
+      ),
+    }),
+  ).annotate({
+    identifier: "SubscriptionsUpdateResponseSourceMqEventSourceSuperSlurper",
+  }) as any as S.Schema<SubscriptionsUpdateResponseSourceMqEventSourceSuperSlurper>;
+
+export type SubscriptionsUpdateResponseSourceMqEventSourceVectorizeType =
+  | "vectorize"
+  | (string & {});
+export const SubscriptionsUpdateResponseSourceMqEventSourceVectorizeType =
+  /*@__PURE__*/ S.String;
+
+export interface SubscriptionsUpdateResponseSourceMqEventSourceVectorize {
+  /** Type of source */
+  type?: SubscriptionsUpdateResponseSourceMqEventSourceVectorizeType;
+}
+export const SubscriptionsUpdateResponseSourceMqEventSourceVectorize =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.optional(
+        SubscriptionsUpdateResponseSourceMqEventSourceVectorizeType,
+      ),
+    }),
+  ).annotate({
+    identifier: "SubscriptionsUpdateResponseSourceMqEventSourceVectorize",
+  }) as any as S.Schema<SubscriptionsUpdateResponseSourceMqEventSourceVectorize>;
+
+export type SubscriptionsUpdateResponseSourceMqEventSourceWorkersAIModelType =
+  | "workersAi.model"
+  | (string & {});
+export const SubscriptionsUpdateResponseSourceMqEventSourceWorkersAIModelType =
+  /*@__PURE__*/ S.String;
+
+export interface SubscriptionsUpdateResponseSourceMqEventSourceWorkersAIModel {
   /** Name of the Workers AI model */
   modelName?: string;
+  /** Type of source */
+  type?: SubscriptionsUpdateResponseSourceMqEventSourceWorkersAIModelType;
+}
+export const SubscriptionsUpdateResponseSourceMqEventSourceWorkersAIModel =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      modelName: S.optional(S.String.pipe(T.Body("model_name"))),
+      type: S.optional(
+        SubscriptionsUpdateResponseSourceMqEventSourceWorkersAIModelType,
+      ),
+    }),
+  ).annotate({
+    identifier: "SubscriptionsUpdateResponseSourceMqEventSourceWorkersAIModel",
+  }) as any as S.Schema<SubscriptionsUpdateResponseSourceMqEventSourceWorkersAIModel>;
+
+export type SubscriptionsUpdateResponseSourceMqEventSourceWorkersBuildsWorkerType =
+  "workersBuilds.worker" | (string & {});
+export const SubscriptionsUpdateResponseSourceMqEventSourceWorkersBuildsWorkerType =
+  /*@__PURE__*/ S.String;
+
+export interface SubscriptionsUpdateResponseSourceMqEventSourceWorkersBuildsWorker {
+  /** Type of source */
+  type?: SubscriptionsUpdateResponseSourceMqEventSourceWorkersBuildsWorkerType;
   /** Name of the worker */
   workerName?: string;
+}
+export const SubscriptionsUpdateResponseSourceMqEventSourceWorkersBuildsWorker =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.optional(
+        SubscriptionsUpdateResponseSourceMqEventSourceWorkersBuildsWorkerType,
+      ),
+      workerName: S.optional(S.String.pipe(T.Body("worker_name"))),
+    }),
+  ).annotate({
+    identifier:
+      "SubscriptionsUpdateResponseSourceMqEventSourceWorkersBuildsWorker",
+  }) as any as S.Schema<SubscriptionsUpdateResponseSourceMqEventSourceWorkersBuildsWorker>;
+
+export type SubscriptionsUpdateResponseSourceMqEventSourceWorkflowsWorkflowType =
+  "workflows.workflow" | (string & {});
+export const SubscriptionsUpdateResponseSourceMqEventSourceWorkflowsWorkflowType =
+  /*@__PURE__*/ S.String;
+
+export interface SubscriptionsUpdateResponseSourceMqEventSourceWorkflowsWorkflow {
+  /** Type of source */
+  type?: SubscriptionsUpdateResponseSourceMqEventSourceWorkflowsWorkflowType;
   /** Name of the workflow */
   workflowName?: string;
 }
-export const SubscriptionsUpdateResponseSource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(SubscriptionsUpdateResponseSourceType),
-    modelName: S.optional(S.String.pipe(T.Body("model_name"))),
-    workerName: S.optional(S.String.pipe(T.Body("worker_name"))),
-    workflowName: S.optional(S.String.pipe(T.Body("workflow_name"))),
-  }),
-).annotate({
-  identifier: "SubscriptionsUpdateResponseSource",
-}) as any as S.Schema<SubscriptionsUpdateResponseSource>;
+export const SubscriptionsUpdateResponseSourceMqEventSourceWorkflowsWorkflow =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.optional(
+        SubscriptionsUpdateResponseSourceMqEventSourceWorkflowsWorkflowType,
+      ),
+      workflowName: S.optional(S.String.pipe(T.Body("workflow_name"))),
+    }),
+  ).annotate({
+    identifier:
+      "SubscriptionsUpdateResponseSourceMqEventSourceWorkflowsWorkflow",
+  }) as any as S.Schema<SubscriptionsUpdateResponseSourceMqEventSourceWorkflowsWorkflow>;
+
+export type SubscriptionsUpdateResponseSource =
+  | SubscriptionsUpdateResponseSourceMqEventSourceImages
+  | SubscriptionsUpdateResponseSourceMqEventSourceKV
+  | SubscriptionsUpdateResponseSourceMqEventSourceR2
+  | SubscriptionsUpdateResponseSourceMqEventSourceSuperSlurper
+  | SubscriptionsUpdateResponseSourceMqEventSourceVectorize
+  | SubscriptionsUpdateResponseSourceMqEventSourceWorkersAIModel
+  | SubscriptionsUpdateResponseSourceMqEventSourceWorkersBuildsWorker
+  | SubscriptionsUpdateResponseSourceMqEventSourceWorkflowsWorkflow;
+export const SubscriptionsUpdateResponseSource = /*@__PURE__*/ S.Unknown;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchSubscriptionResponse {
@@ -2251,26 +3257,64 @@ export const PullMessageResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PullMessageResponse",
 }) as any as S.Schema<PullMessageResponse>;
 
-export type MessagesPushRequestBodyContentType = "text" | (string & {});
-export const MessagesPushRequestBodyContentType = /*@__PURE__*/ S.String;
+export type MessagesPushRequestBodyMqQueueMessageTextContentType =
+  | "text"
+  | (string & {});
+export const MessagesPushRequestBodyMqQueueMessageTextContentType =
+  /*@__PURE__*/ S.String;
 
-export interface MessagesPushRequestBody {
+export interface MessagesPushRequestBodyMqQueueMessageText {
   body?: string;
-  contentType?: MessagesPushRequestBodyContentType;
+  contentType?: MessagesPushRequestBodyMqQueueMessageTextContentType;
   /** The number of seconds to wait for attempting to deliver this message to consumers */
   delaySeconds?: number;
 }
-export const MessagesPushRequestBody = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    body: S.optional(S.String),
-    contentType: S.optional(
-      MessagesPushRequestBodyContentType.pipe(T.Body("content_type")),
-    ),
-    delaySeconds: S.optional(S.Number.pipe(T.Body("delay_seconds"))),
-  }),
-).annotate({
-  identifier: "MessagesPushRequestBody",
-}) as any as S.Schema<MessagesPushRequestBody>;
+export const MessagesPushRequestBodyMqQueueMessageText =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      body: S.optional(S.String),
+      contentType: S.optional(
+        MessagesPushRequestBodyMqQueueMessageTextContentType.pipe(
+          T.Body("content_type"),
+        ),
+      ),
+      delaySeconds: S.optional(S.Number.pipe(T.Body("delay_seconds"))),
+    }),
+  ).annotate({
+    identifier: "MessagesPushRequestBodyMqQueueMessageText",
+  }) as any as S.Schema<MessagesPushRequestBodyMqQueueMessageText>;
+
+export type MessagesPushRequestBodyMqQueueMessageJsonContentType =
+  | "json"
+  | (string & {});
+export const MessagesPushRequestBodyMqQueueMessageJsonContentType =
+  /*@__PURE__*/ S.String;
+
+export interface MessagesPushRequestBodyMqQueueMessageJson {
+  body?: unknown;
+  contentType?: MessagesPushRequestBodyMqQueueMessageJsonContentType;
+  /** The number of seconds to wait for attempting to deliver this message to consumers */
+  delaySeconds?: number;
+}
+export const MessagesPushRequestBodyMqQueueMessageJson =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      body: S.optional(S.Unknown),
+      contentType: S.optional(
+        MessagesPushRequestBodyMqQueueMessageJsonContentType.pipe(
+          T.Body("content_type"),
+        ),
+      ),
+      delaySeconds: S.optional(S.Number.pipe(T.Body("delay_seconds"))),
+    }),
+  ).annotate({
+    identifier: "MessagesPushRequestBodyMqQueueMessageJson",
+  }) as any as S.Schema<MessagesPushRequestBodyMqQueueMessageJson>;
+
+export type MessagesPushRequestBody =
+  | MessagesPushRequestBodyMqQueueMessageText
+  | MessagesPushRequestBodyMqQueueMessageJson;
+export const MessagesPushRequestBody = /*@__PURE__*/ S.Unknown;
 
 export interface PushMessageRequest {
   /** A Resource identifier. */
@@ -2542,10 +3586,10 @@ export const StatusPurgeResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "StatusPurgeResponse",
 }) as any as S.Schema<StatusPurgeResponse>;
 
-export type ConsumersUpdateRequestBodyType = "worker" | (string & {});
-export const ConsumersUpdateRequestBodyType = /*@__PURE__*/ S.String;
+export type ConsumersUpdateRequestBodyWorkerType = "worker" | (string & {});
+export const ConsumersUpdateRequestBodyWorkerType = /*@__PURE__*/ S.String;
 
-export interface ConsumersUpdateRequestBodySettings {
+export interface ConsumersUpdateRequestBodyWorkerSettings {
   /** The maximum number of messages to include in a batch. */
   batchSize?: number;
   /** Maximum number of concurrent consumers that may consume from this Queue. Set to `null` to automatically opt in to the platform's maximum (recommended). */
@@ -2557,35 +3601,85 @@ export interface ConsumersUpdateRequestBodySettings {
   /** The number of seconds to delay before making the message available for another attempt. */
   retryDelay?: number;
 }
-export const ConsumersUpdateRequestBodySettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    batchSize: S.optional(S.Number.pipe(T.Body("batch_size"))),
-    maxConcurrency: S.optional(S.Number.pipe(T.Body("max_concurrency"))),
-    maxRetries: S.optional(S.Number.pipe(T.Body("max_retries"))),
-    maxWaitTimeMs: S.optional(S.Number.pipe(T.Body("max_wait_time_ms"))),
-    retryDelay: S.optional(S.Number.pipe(T.Body("retry_delay"))),
-  }),
+export const ConsumersUpdateRequestBodyWorkerSettings = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      batchSize: S.optional(S.Number.pipe(T.Body("batch_size"))),
+      maxConcurrency: S.optional(S.Number.pipe(T.Body("max_concurrency"))),
+      maxRetries: S.optional(S.Number.pipe(T.Body("max_retries"))),
+      maxWaitTimeMs: S.optional(S.Number.pipe(T.Body("max_wait_time_ms"))),
+      retryDelay: S.optional(S.Number.pipe(T.Body("retry_delay"))),
+    }),
 ).annotate({
-  identifier: "ConsumersUpdateRequestBodySettings",
-}) as any as S.Schema<ConsumersUpdateRequestBodySettings>;
+  identifier: "ConsumersUpdateRequestBodyWorkerSettings",
+}) as any as S.Schema<ConsumersUpdateRequestBodyWorkerSettings>;
 
-export interface ConsumersUpdateRequestBody {
+export interface ConsumersUpdateRequestBodyWorker {
   /** Name of a Worker */
-  scriptName?: string;
-  type?: ConsumersUpdateRequestBodyType;
+  scriptName: string;
+  type: ConsumersUpdateRequestBodyWorkerType;
   deadLetterQueue?: string;
-  settings?: ConsumersUpdateRequestBodySettings;
+  settings?: ConsumersUpdateRequestBodyWorkerSettings;
 }
-export const ConsumersUpdateRequestBody = /*@__PURE__*/ S.suspend(() =>
+export const ConsumersUpdateRequestBodyWorker = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    scriptName: S.optional(S.String.pipe(T.Body("script_name"))),
-    type: S.optional(ConsumersUpdateRequestBodyType),
+    scriptName: S.String.pipe(T.Body("script_name")),
+    type: ConsumersUpdateRequestBodyWorkerType,
     deadLetterQueue: S.optional(S.String.pipe(T.Body("dead_letter_queue"))),
-    settings: S.optional(ConsumersUpdateRequestBodySettings),
+    settings: S.optional(ConsumersUpdateRequestBodyWorkerSettings),
   }),
 ).annotate({
-  identifier: "ConsumersUpdateRequestBody",
-}) as any as S.Schema<ConsumersUpdateRequestBody>;
+  identifier: "ConsumersUpdateRequestBodyWorker",
+}) as any as S.Schema<ConsumersUpdateRequestBodyWorker>;
+
+export type ConsumersUpdateRequestBodyHTTPPullType =
+  | "http_pull"
+  | (string & {});
+export const ConsumersUpdateRequestBodyHTTPPullType = /*@__PURE__*/ S.String;
+
+export interface ConsumersUpdateRequestBodyHTTPPullSettings {
+  /** The maximum number of messages to include in a batch. */
+  batchSize?: number;
+  /** The maximum number of retries */
+  maxRetries?: number;
+  /** The number of seconds to delay before making the message available for another attempt. */
+  retryDelay?: number;
+  /** The number of milliseconds that a message is exclusively leased. After the timeout, the message becomes available for another attempt. */
+  visibilityTimeoutMs?: number;
+}
+export const ConsumersUpdateRequestBodyHTTPPullSettings =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      batchSize: S.optional(S.Number.pipe(T.Body("batch_size"))),
+      maxRetries: S.optional(S.Number.pipe(T.Body("max_retries"))),
+      retryDelay: S.optional(S.Number.pipe(T.Body("retry_delay"))),
+      visibilityTimeoutMs: S.optional(
+        S.Number.pipe(T.Body("visibility_timeout_ms")),
+      ),
+    }),
+  ).annotate({
+    identifier: "ConsumersUpdateRequestBodyHTTPPullSettings",
+  }) as any as S.Schema<ConsumersUpdateRequestBodyHTTPPullSettings>;
+
+export interface ConsumersUpdateRequestBodyHTTPPull {
+  type: ConsumersUpdateRequestBodyHTTPPullType;
+  deadLetterQueue?: string;
+  settings?: ConsumersUpdateRequestBodyHTTPPullSettings;
+}
+export const ConsumersUpdateRequestBodyHTTPPull = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: ConsumersUpdateRequestBodyHTTPPullType,
+    deadLetterQueue: S.optional(S.String.pipe(T.Body("dead_letter_queue"))),
+    settings: S.optional(ConsumersUpdateRequestBodyHTTPPullSettings),
+  }),
+).annotate({
+  identifier: "ConsumersUpdateRequestBodyHTTPPull",
+}) as any as S.Schema<ConsumersUpdateRequestBodyHTTPPull>;
+
+export type ConsumersUpdateRequestBody =
+  | ConsumersUpdateRequestBodyWorker
+  | ConsumersUpdateRequestBodyHTTPPull;
+export const ConsumersUpdateRequestBody = /*@__PURE__*/ S.Unknown;
 
 export interface UpdateConsumerRequest {
   /** A Resource identifier. */

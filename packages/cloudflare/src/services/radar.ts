@@ -76086,204 +76086,323 @@ export const CtTimeseriesGroupsResponseMeta = /*@__PURE__*/ S.suspend(() =>
   identifier: "CtTimeseriesGroupsResponseMeta",
 }) as any as S.Schema<CtTimeseriesGroupsResponseMeta>;
 
-export type CtTimeseriesGroupsResponseSerie0TimestampsList = string[];
-export const CtTimeseriesGroupsResponseSerie0TimestampsList =
+export type CtTimeseriesGroupsResponseSerie0UnnamedSchemaRef7826220e105d84352ba1108d9ed88e55TimestampsList =
+  string[];
+export const CtTimeseriesGroupsResponseSerie0UnnamedSchemaRef7826220e105d84352ba1108d9ed88e55TimestampsList =
   /*@__PURE__*/ S.Array(
     S.String,
-  ) as any as S.Schema<CtTimeseriesGroupsResponseSerie0TimestampsList>;
+  ) as any as S.Schema<CtTimeseriesGroupsResponseSerie0UnnamedSchemaRef7826220e105d84352ba1108d9ed88e55TimestampsList>;
 
-export type CtTimeseriesGroupsResponseSerie0Rfc6962List = string[];
-export const CtTimeseriesGroupsResponseSerie0Rfc6962List =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CtTimeseriesGroupsResponseSerie0Rfc6962List>;
-
-export type CtTimeseriesGroupsResponseSerie0StaticList = string[];
-export const CtTimeseriesGroupsResponseSerie0StaticList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CtTimeseriesGroupsResponseSerie0StaticList>;
-
-export type CtTimeseriesGroupsResponseSerie0Gt121dList = string[];
-export const CtTimeseriesGroupsResponseSerie0Gt121dList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CtTimeseriesGroupsResponseSerie0Gt121dList>;
-
-export type CtTimeseriesGroupsResponseSerie0Gt16dLte31dList = string[];
-export const CtTimeseriesGroupsResponseSerie0Gt16dLte31dList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CtTimeseriesGroupsResponseSerie0Gt16dLte31dList>;
-
-export type CtTimeseriesGroupsResponseSerie0Gt31dLte91dList = string[];
-export const CtTimeseriesGroupsResponseSerie0Gt31dLte91dList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CtTimeseriesGroupsResponseSerie0Gt31dLte91dList>;
-
-export type CtTimeseriesGroupsResponseSerie0Gt3dLte16dList = string[];
-export const CtTimeseriesGroupsResponseSerie0Gt3dLte16dList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CtTimeseriesGroupsResponseSerie0Gt3dLte16dList>;
-
-export type CtTimeseriesGroupsResponseSerie0Gt91dLte121dList = string[];
-export const CtTimeseriesGroupsResponseSerie0Gt91dLte121dList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CtTimeseriesGroupsResponseSerie0Gt91dLte121dList>;
-
-export type CtTimeseriesGroupsResponseSerie0Lte3dList = string[];
-export const CtTimeseriesGroupsResponseSerie0Lte3dList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CtTimeseriesGroupsResponseSerie0Lte3dList>;
-
-export type CtTimeseriesGroupsResponseSerie0CERTIFICATEList = string[];
-export const CtTimeseriesGroupsResponseSerie0CERTIFICATEList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CtTimeseriesGroupsResponseSerie0CERTIFICATEList>;
-
-export type CtTimeseriesGroupsResponseSerie0PRECERTIFICATEList = string[];
-export const CtTimeseriesGroupsResponseSerie0PRECERTIFICATEList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CtTimeseriesGroupsResponseSerie0PRECERTIFICATEList>;
-
-export type CtTimeseriesGroupsResponseSerie0EXPIREDList = string[];
-export const CtTimeseriesGroupsResponseSerie0EXPIREDList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CtTimeseriesGroupsResponseSerie0EXPIREDList>;
-
-export type CtTimeseriesGroupsResponseSerie0VALIDList = string[];
-export const CtTimeseriesGroupsResponseSerie0VALIDList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CtTimeseriesGroupsResponseSerie0VALIDList>;
-
-export type CtTimeseriesGroupsResponseSerie0NEGATIVEList = string[];
-export const CtTimeseriesGroupsResponseSerie0NEGATIVEList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CtTimeseriesGroupsResponseSerie0NEGATIVEList>;
-
-export type CtTimeseriesGroupsResponseSerie0POSITIVEList = string[];
-export const CtTimeseriesGroupsResponseSerie0POSITIVEList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CtTimeseriesGroupsResponseSerie0POSITIVEList>;
-
-export type CtTimeseriesGroupsResponseSerie0DSAList = string[];
-export const CtTimeseriesGroupsResponseSerie0DSAList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CtTimeseriesGroupsResponseSerie0DSAList>;
-
-export type CtTimeseriesGroupsResponseSerie0ECDSAList = string[];
-export const CtTimeseriesGroupsResponseSerie0ECDSAList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CtTimeseriesGroupsResponseSerie0ECDSAList>;
-
-export type CtTimeseriesGroupsResponseSerie0RSAList = string[];
-export const CtTimeseriesGroupsResponseSerie0RSAList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CtTimeseriesGroupsResponseSerie0RSAList>;
-
-export type CtTimeseriesGroupsResponseSerie0DomainList = string[];
-export const CtTimeseriesGroupsResponseSerie0DomainList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CtTimeseriesGroupsResponseSerie0DomainList>;
-
-export type CtTimeseriesGroupsResponseSerie0ExtendedList = string[];
-export const CtTimeseriesGroupsResponseSerie0ExtendedList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CtTimeseriesGroupsResponseSerie0ExtendedList>;
-
-export type CtTimeseriesGroupsResponseSerie0OrganizationList = string[];
-export const CtTimeseriesGroupsResponseSerie0OrganizationList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CtTimeseriesGroupsResponseSerie0OrganizationList>;
-
-export type CtTimeseriesGroupsResponseSerie0UnknownList = string[];
-export const CtTimeseriesGroupsResponseSerie0UnknownList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CtTimeseriesGroupsResponseSerie0UnknownList>;
-
-export interface CtTimeseriesGroupsResponseSerie0 {
-  timestamps?: CtTimeseriesGroupsResponseSerie0TimestampsList;
-  rfc6962?: CtTimeseriesGroupsResponseSerie0Rfc6962List;
-  static?: CtTimeseriesGroupsResponseSerie0StaticList;
-  gt121d?: CtTimeseriesGroupsResponseSerie0Gt121dList;
-  gt16dLte31d?: CtTimeseriesGroupsResponseSerie0Gt16dLte31dList;
-  gt31dLte91d?: CtTimeseriesGroupsResponseSerie0Gt31dLte91dList;
-  gt3dLte16d?: CtTimeseriesGroupsResponseSerie0Gt3dLte16dList;
-  gt91dLte121d?: CtTimeseriesGroupsResponseSerie0Gt91dLte121dList;
-  lte3d?: CtTimeseriesGroupsResponseSerie0Lte3dList;
-  CERTIFICATE?: CtTimeseriesGroupsResponseSerie0CERTIFICATEList;
-  PRECERTIFICATE?: CtTimeseriesGroupsResponseSerie0PRECERTIFICATEList;
-  EXPIRED?: CtTimeseriesGroupsResponseSerie0EXPIREDList;
-  VALID?: CtTimeseriesGroupsResponseSerie0VALIDList;
-  NEGATIVE?: CtTimeseriesGroupsResponseSerie0NEGATIVEList;
-  POSITIVE?: CtTimeseriesGroupsResponseSerie0POSITIVEList;
-  DSA?: CtTimeseriesGroupsResponseSerie0DSAList;
-  ECDSA?: CtTimeseriesGroupsResponseSerie0ECDSAList;
-  RSA?: CtTimeseriesGroupsResponseSerie0RSAList;
-  domain?: CtTimeseriesGroupsResponseSerie0DomainList;
-  extended?: CtTimeseriesGroupsResponseSerie0ExtendedList;
-  organization?: CtTimeseriesGroupsResponseSerie0OrganizationList;
-  unknown?: CtTimeseriesGroupsResponseSerie0UnknownList;
+export interface CtTimeseriesGroupsResponseSerie0UnnamedSchemaRef7826220e105d84352ba1108d9ed88e55 {
+  timestamps: CtTimeseriesGroupsResponseSerie0UnnamedSchemaRef7826220e105d84352ba1108d9ed88e55TimestampsList;
 }
-export const CtTimeseriesGroupsResponseSerie0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    timestamps: S.optional(CtTimeseriesGroupsResponseSerie0TimestampsList),
-    rfc6962: S.optional(CtTimeseriesGroupsResponseSerie0Rfc6962List),
-    static: S.optional(CtTimeseriesGroupsResponseSerie0StaticList),
-    gt121d: S.optional(
-      CtTimeseriesGroupsResponseSerie0Gt121dList.pipe(T.Body("gt_121d")),
-    ),
-    gt16dLte31d: S.optional(
-      CtTimeseriesGroupsResponseSerie0Gt16dLte31dList.pipe(
-        T.Body("gt_16d_lte_31d"),
-      ),
-    ),
-    gt31dLte91d: S.optional(
-      CtTimeseriesGroupsResponseSerie0Gt31dLte91dList.pipe(
-        T.Body("gt_31d_lte_91d"),
-      ),
-    ),
-    gt3dLte16d: S.optional(
-      CtTimeseriesGroupsResponseSerie0Gt3dLte16dList.pipe(
-        T.Body("gt_3d_lte_16d"),
-      ),
-    ),
-    gt91dLte121d: S.optional(
-      CtTimeseriesGroupsResponseSerie0Gt91dLte121dList.pipe(
-        T.Body("gt_91d_lte_121d"),
-      ),
-    ),
-    lte3d: S.optional(
-      CtTimeseriesGroupsResponseSerie0Lte3dList.pipe(T.Body("lte_3d")),
-    ),
-    CERTIFICATE: S.optional(CtTimeseriesGroupsResponseSerie0CERTIFICATEList),
-    PRECERTIFICATE: S.optional(
-      CtTimeseriesGroupsResponseSerie0PRECERTIFICATEList,
-    ),
-    EXPIRED: S.optional(CtTimeseriesGroupsResponseSerie0EXPIREDList),
-    VALID: S.optional(CtTimeseriesGroupsResponseSerie0VALIDList),
-    NEGATIVE: S.optional(CtTimeseriesGroupsResponseSerie0NEGATIVEList),
-    POSITIVE: S.optional(CtTimeseriesGroupsResponseSerie0POSITIVEList),
-    DSA: S.optional(CtTimeseriesGroupsResponseSerie0DSAList),
-    ECDSA: S.optional(CtTimeseriesGroupsResponseSerie0ECDSAList),
-    RSA: S.optional(CtTimeseriesGroupsResponseSerie0RSAList),
-    domain: S.optional(CtTimeseriesGroupsResponseSerie0DomainList),
-    extended: S.optional(CtTimeseriesGroupsResponseSerie0ExtendedList),
-    organization: S.optional(CtTimeseriesGroupsResponseSerie0OrganizationList),
-    unknown: S.optional(CtTimeseriesGroupsResponseSerie0UnknownList),
-  }),
-).annotate({
-  identifier: "CtTimeseriesGroupsResponseSerie0",
-}) as any as S.Schema<CtTimeseriesGroupsResponseSerie0>;
+export const CtTimeseriesGroupsResponseSerie0UnnamedSchemaRef7826220e105d84352ba1108d9ed88e55 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      timestamps:
+        CtTimeseriesGroupsResponseSerie0UnnamedSchemaRef7826220e105d84352ba1108d9ed88e55TimestampsList,
+    }),
+  ).annotate({
+    identifier:
+      "CtTimeseriesGroupsResponseSerie0UnnamedSchemaRef7826220e105d84352ba1108d9ed88e55",
+  }) as any as S.Schema<CtTimeseriesGroupsResponseSerie0UnnamedSchemaRef7826220e105d84352ba1108d9ed88e55>;
+
+export type CtTimeseriesGroupsResponseSerie0ObjectRfc6962StaticRfc6962List =
+  string[];
+export const CtTimeseriesGroupsResponseSerie0ObjectRfc6962StaticRfc6962List =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<CtTimeseriesGroupsResponseSerie0ObjectRfc6962StaticRfc6962List>;
+
+export type CtTimeseriesGroupsResponseSerie0ObjectRfc6962StaticStaticList =
+  string[];
+export const CtTimeseriesGroupsResponseSerie0ObjectRfc6962StaticStaticList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<CtTimeseriesGroupsResponseSerie0ObjectRfc6962StaticStaticList>;
+
+export interface CtTimeseriesGroupsResponseSerie0ObjectRfc6962Static {
+  rfc6962: CtTimeseriesGroupsResponseSerie0ObjectRfc6962StaticRfc6962List;
+  static: CtTimeseriesGroupsResponseSerie0ObjectRfc6962StaticStaticList;
+}
+export const CtTimeseriesGroupsResponseSerie0ObjectRfc6962Static =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      rfc6962: CtTimeseriesGroupsResponseSerie0ObjectRfc6962StaticRfc6962List,
+      static: CtTimeseriesGroupsResponseSerie0ObjectRfc6962StaticStaticList,
+    }),
+  ).annotate({
+    identifier: "CtTimeseriesGroupsResponseSerie0ObjectRfc6962Static",
+  }) as any as S.Schema<CtTimeseriesGroupsResponseSerie0ObjectRfc6962Static>;
+
+export type CtTimeseriesGroupsResponseSerie0ObjectGt121dGt16dLte31dGt31dLte91d3MoreGt121dList =
+  string[];
+export const CtTimeseriesGroupsResponseSerie0ObjectGt121dGt16dLte31dGt31dLte91d3MoreGt121dList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<CtTimeseriesGroupsResponseSerie0ObjectGt121dGt16dLte31dGt31dLte91d3MoreGt121dList>;
+
+export type CtTimeseriesGroupsResponseSerie0ObjectGt121dGt16dLte31dGt31dLte91d3MoreGt16dLte31dList =
+  string[];
+export const CtTimeseriesGroupsResponseSerie0ObjectGt121dGt16dLte31dGt31dLte91d3MoreGt16dLte31dList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<CtTimeseriesGroupsResponseSerie0ObjectGt121dGt16dLte31dGt31dLte91d3MoreGt16dLte31dList>;
+
+export type CtTimeseriesGroupsResponseSerie0ObjectGt121dGt16dLte31dGt31dLte91d3MoreGt31dLte91dList =
+  string[];
+export const CtTimeseriesGroupsResponseSerie0ObjectGt121dGt16dLte31dGt31dLte91d3MoreGt31dLte91dList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<CtTimeseriesGroupsResponseSerie0ObjectGt121dGt16dLte31dGt31dLte91d3MoreGt31dLte91dList>;
+
+export type CtTimeseriesGroupsResponseSerie0ObjectGt121dGt16dLte31dGt31dLte91d3MoreGt3dLte16dList =
+  string[];
+export const CtTimeseriesGroupsResponseSerie0ObjectGt121dGt16dLte31dGt31dLte91d3MoreGt3dLte16dList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<CtTimeseriesGroupsResponseSerie0ObjectGt121dGt16dLte31dGt31dLte91d3MoreGt3dLte16dList>;
+
+export type CtTimeseriesGroupsResponseSerie0ObjectGt121dGt16dLte31dGt31dLte91d3MoreGt91dLte121dList =
+  string[];
+export const CtTimeseriesGroupsResponseSerie0ObjectGt121dGt16dLte31dGt31dLte91d3MoreGt91dLte121dList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<CtTimeseriesGroupsResponseSerie0ObjectGt121dGt16dLte31dGt31dLte91d3MoreGt91dLte121dList>;
+
+export type CtTimeseriesGroupsResponseSerie0ObjectGt121dGt16dLte31dGt31dLte91d3MoreLte3dList =
+  string[];
+export const CtTimeseriesGroupsResponseSerie0ObjectGt121dGt16dLte31dGt31dLte91d3MoreLte3dList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<CtTimeseriesGroupsResponseSerie0ObjectGt121dGt16dLte31dGt31dLte91d3MoreLte3dList>;
+
+export interface CtTimeseriesGroupsResponseSerie0ObjectGt121dGt16dLte31dGt31dLte91d3More {
+  gt121d: CtTimeseriesGroupsResponseSerie0ObjectGt121dGt16dLte31dGt31dLte91d3MoreGt121dList;
+  gt16dLte31d: CtTimeseriesGroupsResponseSerie0ObjectGt121dGt16dLte31dGt31dLte91d3MoreGt16dLte31dList;
+  gt31dLte91d: CtTimeseriesGroupsResponseSerie0ObjectGt121dGt16dLte31dGt31dLte91d3MoreGt31dLte91dList;
+  gt3dLte16d: CtTimeseriesGroupsResponseSerie0ObjectGt121dGt16dLte31dGt31dLte91d3MoreGt3dLte16dList;
+  gt91dLte121d: CtTimeseriesGroupsResponseSerie0ObjectGt121dGt16dLte31dGt31dLte91d3MoreGt91dLte121dList;
+  lte3d: CtTimeseriesGroupsResponseSerie0ObjectGt121dGt16dLte31dGt31dLte91d3MoreLte3dList;
+}
+export const CtTimeseriesGroupsResponseSerie0ObjectGt121dGt16dLte31dGt31dLte91d3More =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      gt121d:
+        CtTimeseriesGroupsResponseSerie0ObjectGt121dGt16dLte31dGt31dLte91d3MoreGt121dList.pipe(
+          T.Body("gt_121d"),
+        ),
+      gt16dLte31d:
+        CtTimeseriesGroupsResponseSerie0ObjectGt121dGt16dLte31dGt31dLte91d3MoreGt16dLte31dList.pipe(
+          T.Body("gt_16d_lte_31d"),
+        ),
+      gt31dLte91d:
+        CtTimeseriesGroupsResponseSerie0ObjectGt121dGt16dLte31dGt31dLte91d3MoreGt31dLte91dList.pipe(
+          T.Body("gt_31d_lte_91d"),
+        ),
+      gt3dLte16d:
+        CtTimeseriesGroupsResponseSerie0ObjectGt121dGt16dLte31dGt31dLte91d3MoreGt3dLte16dList.pipe(
+          T.Body("gt_3d_lte_16d"),
+        ),
+      gt91dLte121d:
+        CtTimeseriesGroupsResponseSerie0ObjectGt121dGt16dLte31dGt31dLte91d3MoreGt91dLte121dList.pipe(
+          T.Body("gt_91d_lte_121d"),
+        ),
+      lte3d:
+        CtTimeseriesGroupsResponseSerie0ObjectGt121dGt16dLte31dGt31dLte91d3MoreLte3dList.pipe(
+          T.Body("lte_3d"),
+        ),
+    }),
+  ).annotate({
+    identifier:
+      "CtTimeseriesGroupsResponseSerie0ObjectGt121dGt16dLte31dGt31dLte91d3More",
+  }) as any as S.Schema<CtTimeseriesGroupsResponseSerie0ObjectGt121dGt16dLte31dGt31dLte91d3More>;
+
+export type CtTimeseriesGroupsResponseSerie0ObjectCERTIFICATEPRECERTIFICATECERTIFICATEList =
+  string[];
+export const CtTimeseriesGroupsResponseSerie0ObjectCERTIFICATEPRECERTIFICATECERTIFICATEList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<CtTimeseriesGroupsResponseSerie0ObjectCERTIFICATEPRECERTIFICATECERTIFICATEList>;
+
+export type CtTimeseriesGroupsResponseSerie0ObjectCERTIFICATEPRECERTIFICATEPRECERTIFICATEList =
+  string[];
+export const CtTimeseriesGroupsResponseSerie0ObjectCERTIFICATEPRECERTIFICATEPRECERTIFICATEList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<CtTimeseriesGroupsResponseSerie0ObjectCERTIFICATEPRECERTIFICATEPRECERTIFICATEList>;
+
+export interface CtTimeseriesGroupsResponseSerie0ObjectCERTIFICATEPRECERTIFICATE {
+  CERTIFICATE: CtTimeseriesGroupsResponseSerie0ObjectCERTIFICATEPRECERTIFICATECERTIFICATEList;
+  PRECERTIFICATE: CtTimeseriesGroupsResponseSerie0ObjectCERTIFICATEPRECERTIFICATEPRECERTIFICATEList;
+}
+export const CtTimeseriesGroupsResponseSerie0ObjectCERTIFICATEPRECERTIFICATE =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      CERTIFICATE:
+        CtTimeseriesGroupsResponseSerie0ObjectCERTIFICATEPRECERTIFICATECERTIFICATEList,
+      PRECERTIFICATE:
+        CtTimeseriesGroupsResponseSerie0ObjectCERTIFICATEPRECERTIFICATEPRECERTIFICATEList,
+    }),
+  ).annotate({
+    identifier:
+      "CtTimeseriesGroupsResponseSerie0ObjectCERTIFICATEPRECERTIFICATE",
+  }) as any as S.Schema<CtTimeseriesGroupsResponseSerie0ObjectCERTIFICATEPRECERTIFICATE>;
+
+export type CtTimeseriesGroupsResponseSerie0ObjectEXPIREDVALIDEXPIREDList =
+  string[];
+export const CtTimeseriesGroupsResponseSerie0ObjectEXPIREDVALIDEXPIREDList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<CtTimeseriesGroupsResponseSerie0ObjectEXPIREDVALIDEXPIREDList>;
+
+export type CtTimeseriesGroupsResponseSerie0ObjectEXPIREDVALIDVALIDList =
+  string[];
+export const CtTimeseriesGroupsResponseSerie0ObjectEXPIREDVALIDVALIDList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<CtTimeseriesGroupsResponseSerie0ObjectEXPIREDVALIDVALIDList>;
+
+export interface CtTimeseriesGroupsResponseSerie0ObjectEXPIREDVALID {
+  EXPIRED: CtTimeseriesGroupsResponseSerie0ObjectEXPIREDVALIDEXPIREDList;
+  VALID: CtTimeseriesGroupsResponseSerie0ObjectEXPIREDVALIDVALIDList;
+}
+export const CtTimeseriesGroupsResponseSerie0ObjectEXPIREDVALID =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      EXPIRED: CtTimeseriesGroupsResponseSerie0ObjectEXPIREDVALIDEXPIREDList,
+      VALID: CtTimeseriesGroupsResponseSerie0ObjectEXPIREDVALIDVALIDList,
+    }),
+  ).annotate({
+    identifier: "CtTimeseriesGroupsResponseSerie0ObjectEXPIREDVALID",
+  }) as any as S.Schema<CtTimeseriesGroupsResponseSerie0ObjectEXPIREDVALID>;
+
+export type CtTimeseriesGroupsResponseSerie0ObjectNEGATIVEPOSITIVENEGATIVEList =
+  string[];
+export const CtTimeseriesGroupsResponseSerie0ObjectNEGATIVEPOSITIVENEGATIVEList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<CtTimeseriesGroupsResponseSerie0ObjectNEGATIVEPOSITIVENEGATIVEList>;
+
+export type CtTimeseriesGroupsResponseSerie0ObjectNEGATIVEPOSITIVEPOSITIVEList =
+  string[];
+export const CtTimeseriesGroupsResponseSerie0ObjectNEGATIVEPOSITIVEPOSITIVEList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<CtTimeseriesGroupsResponseSerie0ObjectNEGATIVEPOSITIVEPOSITIVEList>;
+
+export interface CtTimeseriesGroupsResponseSerie0ObjectNEGATIVEPOSITIVE {
+  NEGATIVE: CtTimeseriesGroupsResponseSerie0ObjectNEGATIVEPOSITIVENEGATIVEList;
+  POSITIVE: CtTimeseriesGroupsResponseSerie0ObjectNEGATIVEPOSITIVEPOSITIVEList;
+}
+export const CtTimeseriesGroupsResponseSerie0ObjectNEGATIVEPOSITIVE =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      NEGATIVE:
+        CtTimeseriesGroupsResponseSerie0ObjectNEGATIVEPOSITIVENEGATIVEList,
+      POSITIVE:
+        CtTimeseriesGroupsResponseSerie0ObjectNEGATIVEPOSITIVEPOSITIVEList,
+    }),
+  ).annotate({
+    identifier: "CtTimeseriesGroupsResponseSerie0ObjectNEGATIVEPOSITIVE",
+  }) as any as S.Schema<CtTimeseriesGroupsResponseSerie0ObjectNEGATIVEPOSITIVE>;
+
+export type CtTimeseriesGroupsResponseSerie0ObjectDSAECDSARSADSAList = string[];
+export const CtTimeseriesGroupsResponseSerie0ObjectDSAECDSARSADSAList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<CtTimeseriesGroupsResponseSerie0ObjectDSAECDSARSADSAList>;
+
+export type CtTimeseriesGroupsResponseSerie0ObjectDSAECDSARSAECDSAList =
+  string[];
+export const CtTimeseriesGroupsResponseSerie0ObjectDSAECDSARSAECDSAList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<CtTimeseriesGroupsResponseSerie0ObjectDSAECDSARSAECDSAList>;
+
+export type CtTimeseriesGroupsResponseSerie0ObjectDSAECDSARSARSAList = string[];
+export const CtTimeseriesGroupsResponseSerie0ObjectDSAECDSARSARSAList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<CtTimeseriesGroupsResponseSerie0ObjectDSAECDSARSARSAList>;
+
+export interface CtTimeseriesGroupsResponseSerie0ObjectDSAECDSARSA {
+  DSA: CtTimeseriesGroupsResponseSerie0ObjectDSAECDSARSADSAList;
+  ECDSA: CtTimeseriesGroupsResponseSerie0ObjectDSAECDSARSAECDSAList;
+  RSA: CtTimeseriesGroupsResponseSerie0ObjectDSAECDSARSARSAList;
+}
+export const CtTimeseriesGroupsResponseSerie0ObjectDSAECDSARSA =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      DSA: CtTimeseriesGroupsResponseSerie0ObjectDSAECDSARSADSAList,
+      ECDSA: CtTimeseriesGroupsResponseSerie0ObjectDSAECDSARSAECDSAList,
+      RSA: CtTimeseriesGroupsResponseSerie0ObjectDSAECDSARSARSAList,
+    }),
+  ).annotate({
+    identifier: "CtTimeseriesGroupsResponseSerie0ObjectDSAECDSARSA",
+  }) as any as S.Schema<CtTimeseriesGroupsResponseSerie0ObjectDSAECDSARSA>;
+
+export type CtTimeseriesGroupsResponseSerie0ObjectDomainExtendedOrganizationUnknownDomainList =
+  string[];
+export const CtTimeseriesGroupsResponseSerie0ObjectDomainExtendedOrganizationUnknownDomainList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<CtTimeseriesGroupsResponseSerie0ObjectDomainExtendedOrganizationUnknownDomainList>;
+
+export type CtTimeseriesGroupsResponseSerie0ObjectDomainExtendedOrganizationUnknownExtendedList =
+  string[];
+export const CtTimeseriesGroupsResponseSerie0ObjectDomainExtendedOrganizationUnknownExtendedList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<CtTimeseriesGroupsResponseSerie0ObjectDomainExtendedOrganizationUnknownExtendedList>;
+
+export type CtTimeseriesGroupsResponseSerie0ObjectDomainExtendedOrganizationUnknownOrganizationList =
+  string[];
+export const CtTimeseriesGroupsResponseSerie0ObjectDomainExtendedOrganizationUnknownOrganizationList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<CtTimeseriesGroupsResponseSerie0ObjectDomainExtendedOrganizationUnknownOrganizationList>;
+
+export type CtTimeseriesGroupsResponseSerie0ObjectDomainExtendedOrganizationUnknownUnknownList =
+  string[];
+export const CtTimeseriesGroupsResponseSerie0ObjectDomainExtendedOrganizationUnknownUnknownList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<CtTimeseriesGroupsResponseSerie0ObjectDomainExtendedOrganizationUnknownUnknownList>;
+
+export interface CtTimeseriesGroupsResponseSerie0ObjectDomainExtendedOrganizationUnknown {
+  domain: CtTimeseriesGroupsResponseSerie0ObjectDomainExtendedOrganizationUnknownDomainList;
+  extended: CtTimeseriesGroupsResponseSerie0ObjectDomainExtendedOrganizationUnknownExtendedList;
+  organization: CtTimeseriesGroupsResponseSerie0ObjectDomainExtendedOrganizationUnknownOrganizationList;
+  unknown: CtTimeseriesGroupsResponseSerie0ObjectDomainExtendedOrganizationUnknownUnknownList;
+}
+export const CtTimeseriesGroupsResponseSerie0ObjectDomainExtendedOrganizationUnknown =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      domain:
+        CtTimeseriesGroupsResponseSerie0ObjectDomainExtendedOrganizationUnknownDomainList,
+      extended:
+        CtTimeseriesGroupsResponseSerie0ObjectDomainExtendedOrganizationUnknownExtendedList,
+      organization:
+        CtTimeseriesGroupsResponseSerie0ObjectDomainExtendedOrganizationUnknownOrganizationList,
+      unknown:
+        CtTimeseriesGroupsResponseSerie0ObjectDomainExtendedOrganizationUnknownUnknownList,
+    }),
+  ).annotate({
+    identifier:
+      "CtTimeseriesGroupsResponseSerie0ObjectDomainExtendedOrganizationUnknown",
+  }) as any as S.Schema<CtTimeseriesGroupsResponseSerie0ObjectDomainExtendedOrganizationUnknown>;
+
+export type CtTimeseriesGroupsResponseSerie0 =
+  | CtTimeseriesGroupsResponseSerie0UnnamedSchemaRef7826220e105d84352ba1108d9ed88e55
+  | CtTimeseriesGroupsResponseSerie0ObjectRfc6962Static
+  | CtTimeseriesGroupsResponseSerie0ObjectGt121dGt16dLte31dGt31dLte91d3More
+  | CtTimeseriesGroupsResponseSerie0ObjectCERTIFICATEPRECERTIFICATE
+  | CtTimeseriesGroupsResponseSerie0ObjectEXPIREDVALID
+  | CtTimeseriesGroupsResponseSerie0ObjectNEGATIVEPOSITIVE
+  | CtTimeseriesGroupsResponseSerie0ObjectDSAECDSARSA
+  | CtTimeseriesGroupsResponseSerie0ObjectDomainExtendedOrganizationUnknown;
+export const CtTimeseriesGroupsResponseSerie0 = /*@__PURE__*/ S.Unknown;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface TimeseriesGroupsCtResponse {

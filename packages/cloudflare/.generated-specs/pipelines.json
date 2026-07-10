@@ -2394,7 +2394,7 @@
         }
       }
     },
-    "com.cloudflare.pipelines#SinksCreateRequestConfigCredentials": {
+    "com.cloudflare.pipelines#SinksCreateRequestConfigCloudflarePipelinesR2TableCredentials": {
       "type": "structure",
       "members": {
         "access_key_id": {
@@ -2413,7 +2413,7 @@
         }
       }
     },
-    "com.cloudflare.pipelines#SinksCreateRequestConfigFileNamingStrategy": {
+    "com.cloudflare.pipelines#SinksCreateRequestConfigCloudflarePipelinesR2TableFileNamingStrategy": {
       "type": "enum",
       "members": {
         "SERIAL": {
@@ -2442,7 +2442,7 @@
         }
       }
     },
-    "com.cloudflare.pipelines#SinksCreateRequestConfigFileNaming": {
+    "com.cloudflare.pipelines#SinksCreateRequestConfigCloudflarePipelinesR2TableFileNaming": {
       "type": "structure",
       "members": {
         "prefix": {
@@ -2452,7 +2452,7 @@
           }
         },
         "strategy": {
-          "target": "com.cloudflare.pipelines#SinksCreateRequestConfigFileNamingStrategy",
+          "target": "com.cloudflare.pipelines#SinksCreateRequestConfigCloudflarePipelinesR2TableFileNamingStrategy",
           "traits": {
             "smithy.api#documentation": "Filename generation strategy."
           }
@@ -2465,7 +2465,7 @@
         }
       }
     },
-    "com.cloudflare.pipelines#SinksCreateRequestConfigPartitioning": {
+    "com.cloudflare.pipelines#SinksCreateRequestConfigCloudflarePipelinesR2TablePartitioning": {
       "type": "structure",
       "members": {
         "time_pattern": {
@@ -2476,7 +2476,7 @@
         }
       }
     },
-    "com.cloudflare.pipelines#SinksCreateRequestConfigRollingPolicy": {
+    "com.cloudflare.pipelines#SinksCreateRequestConfigCloudflarePipelinesR2TableRollingPolicy": {
       "type": "structure",
       "members": {
         "file_size_bytes": {
@@ -2499,26 +2499,31 @@
         }
       }
     },
-    "com.cloudflare.pipelines#SinksCreateRequestConfig": {
+    "com.cloudflare.pipelines#SinksCreateRequestConfigCloudflarePipelinesR2Table": {
       "type": "structure",
       "members": {
         "account_id": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Cloudflare Account ID for the bucket"
+            "smithy.api#documentation": "Cloudflare Account ID for the bucket",
+            "smithy.api#required": {}
           }
         },
         "bucket": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "R2 Bucket to write to"
+            "smithy.api#documentation": "R2 Bucket to write to",
+            "smithy.api#required": {}
           }
         },
         "credentials": {
-          "target": "com.cloudflare.pipelines#SinksCreateRequestConfigCredentials"
+          "target": "com.cloudflare.pipelines#SinksCreateRequestConfigCloudflarePipelinesR2TableCredentials",
+          "traits": {
+            "smithy.api#required": {}
+          }
         },
         "file_naming": {
-          "target": "com.cloudflare.pipelines#SinksCreateRequestConfigFileNaming",
+          "target": "com.cloudflare.pipelines#SinksCreateRequestConfigCloudflarePipelinesR2TableFileNaming",
           "traits": {
             "smithy.api#documentation": "Controls filename prefix/suffix and strategy."
           }
@@ -2530,7 +2535,7 @@
           }
         },
         "partitioning": {
-          "target": "com.cloudflare.pipelines#SinksCreateRequestConfigPartitioning",
+          "target": "com.cloudflare.pipelines#SinksCreateRequestConfigCloudflarePipelinesR2TablePartitioning",
           "traits": {
             "smithy.api#documentation": "Data-layout partitioning for sinks."
           }
@@ -2542,21 +2547,65 @@
           }
         },
         "rolling_policy": {
-          "target": "com.cloudflare.pipelines#SinksCreateRequestConfigRollingPolicy",
+          "target": "com.cloudflare.pipelines#SinksCreateRequestConfigCloudflarePipelinesR2TableRollingPolicy",
           "traits": {
             "smithy.api#documentation": "Rolling policy for file sinks (when & why to close a file and open a new one)."
           }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksCreateRequestConfigCloudflarePipelinesR2DataCatalogTableRollingPolicy": {
+      "type": "structure",
+      "members": {
+        "file_size_bytes": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Files will be rolled after reaching this number of bytes"
+          }
         },
+        "inactivity_seconds": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Number of seconds of inactivity to wait before rolling over to a new file"
+          }
+        },
+        "interval_seconds": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Number of seconds to wait before rolling over to a new file"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksCreateRequestConfigCloudflarePipelinesR2DataCatalogTable": {
+      "type": "structure",
+      "members": {
         "token": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Authentication token"
+            "smithy.api#documentation": "Authentication token",
+            "smithy.api#required": {}
+          }
+        },
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Cloudflare Account ID",
+            "smithy.api#required": {}
+          }
+        },
+        "bucket": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The R2 Bucket that hosts this catalog",
+            "smithy.api#required": {}
           }
         },
         "table_name": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Table name"
+            "smithy.api#documentation": "Table name",
+            "smithy.api#required": {}
           }
         },
         "namespace": {
@@ -2564,10 +2613,27 @@
           "traits": {
             "smithy.api#documentation": "Table namespace"
           }
+        },
+        "rolling_policy": {
+          "target": "com.cloudflare.pipelines#SinksCreateRequestConfigCloudflarePipelinesR2DataCatalogTableRollingPolicy",
+          "traits": {
+            "smithy.api#documentation": "Rolling policy for file sinks (when & why to close a file and open a new one)."
+          }
         }
       }
     },
-    "com.cloudflare.pipelines#SinksCreateRequestFormatType": {
+    "com.cloudflare.pipelines#SinksCreateRequestConfig": {
+      "type": "union",
+      "members": {
+        "CloudflarePipelinesR2Table": {
+          "target": "com.cloudflare.pipelines#SinksCreateRequestConfigCloudflarePipelinesR2Table"
+        },
+        "CloudflarePipelinesR2DataCatalogTable": {
+          "target": "com.cloudflare.pipelines#SinksCreateRequestConfigCloudflarePipelinesR2DataCatalogTable"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksCreateRequestFormatJsonType": {
       "type": "enum",
       "members": {
         "JSON": {
@@ -2578,7 +2644,7 @@
         }
       }
     },
-    "com.cloudflare.pipelines#SinksCreateRequestFormatDecimalEncoding": {
+    "com.cloudflare.pipelines#SinksCreateRequestFormatJsonDecimalEncoding": {
       "type": "enum",
       "members": {
         "NUMBER": {
@@ -2601,7 +2667,7 @@
         }
       }
     },
-    "com.cloudflare.pipelines#SinksCreateRequestFormatTimestampFormat": {
+    "com.cloudflare.pipelines#SinksCreateRequestFormatJsonTimestampFormat": {
       "type": "enum",
       "members": {
         "RFC3339": {
@@ -2618,7 +2684,38 @@
         }
       }
     },
-    "com.cloudflare.pipelines#SinksCreateRequestFormatCompression": {
+    "com.cloudflare.pipelines#SinksCreateRequestFormatJson": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.cloudflare.pipelines#SinksCreateRequestFormatJsonType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "decimal_encoding": {
+          "target": "com.cloudflare.pipelines#SinksCreateRequestFormatJsonDecimalEncoding"
+        },
+        "timestamp_format": {
+          "target": "com.cloudflare.pipelines#SinksCreateRequestFormatJsonTimestampFormat"
+        },
+        "unstructured": {
+          "target": "smithy.api#Boolean"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksCreateRequestFormatParquetType": {
+      "type": "enum",
+      "members": {
+        "PARQUET": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "parquet"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksCreateRequestFormatParquetCompression": {
       "type": "enum",
       "members": {
         "UNCOMPRESSED": {
@@ -2641,26 +2738,31 @@
         }
       }
     },
-    "com.cloudflare.pipelines#SinksCreateRequestFormat": {
+    "com.cloudflare.pipelines#SinksCreateRequestFormatParquet": {
       "type": "structure",
       "members": {
         "type": {
-          "target": "com.cloudflare.pipelines#SinksCreateRequestFormatType"
-        },
-        "decimal_encoding": {
-          "target": "com.cloudflare.pipelines#SinksCreateRequestFormatDecimalEncoding"
-        },
-        "timestamp_format": {
-          "target": "com.cloudflare.pipelines#SinksCreateRequestFormatTimestampFormat"
-        },
-        "unstructured": {
-          "target": "smithy.api#Boolean"
+          "target": "com.cloudflare.pipelines#SinksCreateRequestFormatParquetType",
+          "traits": {
+            "smithy.api#required": {}
+          }
         },
         "compression": {
-          "target": "com.cloudflare.pipelines#SinksCreateRequestFormatCompression"
+          "target": "com.cloudflare.pipelines#SinksCreateRequestFormatParquetCompression"
         },
         "row_group_bytes": {
           "target": "smithy.api#Double"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksCreateRequestFormat": {
+      "type": "union",
+      "members": {
+        "Json": {
+          "target": "com.cloudflare.pipelines#SinksCreateRequestFormatJson"
+        },
+        "Parquet": {
+          "target": "com.cloudflare.pipelines#SinksCreateRequestFormatParquet"
         }
       }
     },
@@ -2745,7 +2847,7 @@
         "target": "com.cloudflare.pipelines#SinksCreateRequestSchemaFieldsItem"
       }
     },
-    "com.cloudflare.pipelines#SinksCreateRequestSchemaFormatType": {
+    "com.cloudflare.pipelines#SinksCreateRequestSchemaFormatJsonType": {
       "type": "enum",
       "members": {
         "JSON": {
@@ -2756,7 +2858,7 @@
         }
       }
     },
-    "com.cloudflare.pipelines#SinksCreateRequestSchemaFormatDecimalEncoding": {
+    "com.cloudflare.pipelines#SinksCreateRequestSchemaFormatJsonDecimalEncoding": {
       "type": "enum",
       "members": {
         "NUMBER": {
@@ -2779,7 +2881,7 @@
         }
       }
     },
-    "com.cloudflare.pipelines#SinksCreateRequestSchemaFormatTimestampFormat": {
+    "com.cloudflare.pipelines#SinksCreateRequestSchemaFormatJsonTimestampFormat": {
       "type": "enum",
       "members": {
         "RFC3339": {
@@ -2796,7 +2898,38 @@
         }
       }
     },
-    "com.cloudflare.pipelines#SinksCreateRequestSchemaFormatCompression": {
+    "com.cloudflare.pipelines#SinksCreateRequestSchemaFormatJson": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.cloudflare.pipelines#SinksCreateRequestSchemaFormatJsonType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "decimal_encoding": {
+          "target": "com.cloudflare.pipelines#SinksCreateRequestSchemaFormatJsonDecimalEncoding"
+        },
+        "timestamp_format": {
+          "target": "com.cloudflare.pipelines#SinksCreateRequestSchemaFormatJsonTimestampFormat"
+        },
+        "unstructured": {
+          "target": "smithy.api#Boolean"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksCreateRequestSchemaFormatParquetType": {
+      "type": "enum",
+      "members": {
+        "PARQUET": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "parquet"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksCreateRequestSchemaFormatParquetCompression": {
       "type": "enum",
       "members": {
         "UNCOMPRESSED": {
@@ -2819,26 +2952,31 @@
         }
       }
     },
-    "com.cloudflare.pipelines#SinksCreateRequestSchemaFormat": {
+    "com.cloudflare.pipelines#SinksCreateRequestSchemaFormatParquet": {
       "type": "structure",
       "members": {
         "type": {
-          "target": "com.cloudflare.pipelines#SinksCreateRequestSchemaFormatType"
-        },
-        "decimal_encoding": {
-          "target": "com.cloudflare.pipelines#SinksCreateRequestSchemaFormatDecimalEncoding"
-        },
-        "timestamp_format": {
-          "target": "com.cloudflare.pipelines#SinksCreateRequestSchemaFormatTimestampFormat"
-        },
-        "unstructured": {
-          "target": "smithy.api#Boolean"
+          "target": "com.cloudflare.pipelines#SinksCreateRequestSchemaFormatParquetType",
+          "traits": {
+            "smithy.api#required": {}
+          }
         },
         "compression": {
-          "target": "com.cloudflare.pipelines#SinksCreateRequestSchemaFormatCompression"
+          "target": "com.cloudflare.pipelines#SinksCreateRequestSchemaFormatParquetCompression"
         },
         "row_group_bytes": {
           "target": "smithy.api#Double"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksCreateRequestSchemaFormat": {
+      "type": "union",
+      "members": {
+        "Json": {
+          "target": "com.cloudflare.pipelines#SinksCreateRequestSchemaFormatJson"
+        },
+        "Parquet": {
+          "target": "com.cloudflare.pipelines#SinksCreateRequestSchemaFormatParquet"
         }
       }
     },
@@ -2915,7 +3053,7 @@
         }
       }
     },
-    "com.cloudflare.pipelines#SinksCreateResponseConfigCredentials": {
+    "com.cloudflare.pipelines#SinksCreateResponseConfigCloudflarePipelinesR2TableCredentials": {
       "type": "structure",
       "members": {
         "access_key_id": {
@@ -2934,7 +3072,7 @@
         }
       }
     },
-    "com.cloudflare.pipelines#SinksCreateResponseConfigFileNamingStrategy": {
+    "com.cloudflare.pipelines#SinksCreateResponseConfigCloudflarePipelinesR2TableFileNamingStrategy": {
       "type": "enum",
       "members": {
         "SERIAL": {
@@ -2963,7 +3101,7 @@
         }
       }
     },
-    "com.cloudflare.pipelines#SinksCreateResponseConfigFileNaming": {
+    "com.cloudflare.pipelines#SinksCreateResponseConfigCloudflarePipelinesR2TableFileNaming": {
       "type": "structure",
       "members": {
         "prefix": {
@@ -2973,7 +3111,7 @@
           }
         },
         "strategy": {
-          "target": "com.cloudflare.pipelines#SinksCreateResponseConfigFileNamingStrategy",
+          "target": "com.cloudflare.pipelines#SinksCreateResponseConfigCloudflarePipelinesR2TableFileNamingStrategy",
           "traits": {
             "smithy.api#documentation": "Filename generation strategy."
           }
@@ -2986,7 +3124,7 @@
         }
       }
     },
-    "com.cloudflare.pipelines#SinksCreateResponseConfigPartitioning": {
+    "com.cloudflare.pipelines#SinksCreateResponseConfigCloudflarePipelinesR2TablePartitioning": {
       "type": "structure",
       "members": {
         "time_pattern": {
@@ -2997,7 +3135,7 @@
         }
       }
     },
-    "com.cloudflare.pipelines#SinksCreateResponseConfigRollingPolicy": {
+    "com.cloudflare.pipelines#SinksCreateResponseConfigCloudflarePipelinesR2TableRollingPolicy": {
       "type": "structure",
       "members": {
         "file_size_bytes": {
@@ -3020,26 +3158,31 @@
         }
       }
     },
-    "com.cloudflare.pipelines#SinksCreateResponseConfig": {
+    "com.cloudflare.pipelines#SinksCreateResponseConfigCloudflarePipelinesR2Table": {
       "type": "structure",
       "members": {
         "account_id": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Cloudflare Account ID for the bucket"
+            "smithy.api#documentation": "Cloudflare Account ID for the bucket",
+            "smithy.api#required": {}
           }
         },
         "bucket": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "R2 Bucket to write to"
+            "smithy.api#documentation": "R2 Bucket to write to",
+            "smithy.api#required": {}
           }
         },
         "credentials": {
-          "target": "com.cloudflare.pipelines#SinksCreateResponseConfigCredentials"
+          "target": "com.cloudflare.pipelines#SinksCreateResponseConfigCloudflarePipelinesR2TableCredentials",
+          "traits": {
+            "smithy.api#required": {}
+          }
         },
         "file_naming": {
-          "target": "com.cloudflare.pipelines#SinksCreateResponseConfigFileNaming",
+          "target": "com.cloudflare.pipelines#SinksCreateResponseConfigCloudflarePipelinesR2TableFileNaming",
           "traits": {
             "smithy.api#documentation": "Controls filename prefix/suffix and strategy."
           }
@@ -3051,7 +3194,7 @@
           }
         },
         "partitioning": {
-          "target": "com.cloudflare.pipelines#SinksCreateResponseConfigPartitioning",
+          "target": "com.cloudflare.pipelines#SinksCreateResponseConfigCloudflarePipelinesR2TablePartitioning",
           "traits": {
             "smithy.api#documentation": "Data-layout partitioning for sinks."
           }
@@ -3063,21 +3206,65 @@
           }
         },
         "rolling_policy": {
-          "target": "com.cloudflare.pipelines#SinksCreateResponseConfigRollingPolicy",
+          "target": "com.cloudflare.pipelines#SinksCreateResponseConfigCloudflarePipelinesR2TableRollingPolicy",
           "traits": {
             "smithy.api#documentation": "Rolling policy for file sinks (when & why to close a file and open a new one)."
           }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksCreateResponseConfigCloudflarePipelinesR2DataCatalogTableRollingPolicy": {
+      "type": "structure",
+      "members": {
+        "file_size_bytes": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Files will be rolled after reaching this number of bytes"
+          }
         },
+        "inactivity_seconds": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Number of seconds of inactivity to wait before rolling over to a new file"
+          }
+        },
+        "interval_seconds": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Number of seconds to wait before rolling over to a new file"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksCreateResponseConfigCloudflarePipelinesR2DataCatalogTable": {
+      "type": "structure",
+      "members": {
         "token": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Authentication token"
+            "smithy.api#documentation": "Authentication token",
+            "smithy.api#required": {}
+          }
+        },
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Cloudflare Account ID",
+            "smithy.api#required": {}
+          }
+        },
+        "bucket": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The R2 Bucket that hosts this catalog",
+            "smithy.api#required": {}
           }
         },
         "table_name": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Table name"
+            "smithy.api#documentation": "Table name",
+            "smithy.api#required": {}
           }
         },
         "namespace": {
@@ -3085,10 +3272,27 @@
           "traits": {
             "smithy.api#documentation": "Table namespace"
           }
+        },
+        "rolling_policy": {
+          "target": "com.cloudflare.pipelines#SinksCreateResponseConfigCloudflarePipelinesR2DataCatalogTableRollingPolicy",
+          "traits": {
+            "smithy.api#documentation": "Rolling policy for file sinks (when & why to close a file and open a new one)."
+          }
         }
       }
     },
-    "com.cloudflare.pipelines#SinksCreateResponseFormatType": {
+    "com.cloudflare.pipelines#SinksCreateResponseConfig": {
+      "type": "union",
+      "members": {
+        "CloudflarePipelinesR2Table": {
+          "target": "com.cloudflare.pipelines#SinksCreateResponseConfigCloudflarePipelinesR2Table"
+        },
+        "CloudflarePipelinesR2DataCatalogTable": {
+          "target": "com.cloudflare.pipelines#SinksCreateResponseConfigCloudflarePipelinesR2DataCatalogTable"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksCreateResponseFormatJsonType": {
       "type": "enum",
       "members": {
         "JSON": {
@@ -3099,7 +3303,7 @@
         }
       }
     },
-    "com.cloudflare.pipelines#SinksCreateResponseFormatDecimalEncoding": {
+    "com.cloudflare.pipelines#SinksCreateResponseFormatJsonDecimalEncoding": {
       "type": "enum",
       "members": {
         "NUMBER": {
@@ -3122,7 +3326,7 @@
         }
       }
     },
-    "com.cloudflare.pipelines#SinksCreateResponseFormatTimestampFormat": {
+    "com.cloudflare.pipelines#SinksCreateResponseFormatJsonTimestampFormat": {
       "type": "enum",
       "members": {
         "RFC3339": {
@@ -3139,7 +3343,38 @@
         }
       }
     },
-    "com.cloudflare.pipelines#SinksCreateResponseFormatCompression": {
+    "com.cloudflare.pipelines#SinksCreateResponseFormatJson": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.cloudflare.pipelines#SinksCreateResponseFormatJsonType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "decimal_encoding": {
+          "target": "com.cloudflare.pipelines#SinksCreateResponseFormatJsonDecimalEncoding"
+        },
+        "timestamp_format": {
+          "target": "com.cloudflare.pipelines#SinksCreateResponseFormatJsonTimestampFormat"
+        },
+        "unstructured": {
+          "target": "smithy.api#Boolean"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksCreateResponseFormatParquetType": {
+      "type": "enum",
+      "members": {
+        "PARQUET": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "parquet"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksCreateResponseFormatParquetCompression": {
       "type": "enum",
       "members": {
         "UNCOMPRESSED": {
@@ -3162,26 +3397,31 @@
         }
       }
     },
-    "com.cloudflare.pipelines#SinksCreateResponseFormat": {
+    "com.cloudflare.pipelines#SinksCreateResponseFormatParquet": {
       "type": "structure",
       "members": {
         "type": {
-          "target": "com.cloudflare.pipelines#SinksCreateResponseFormatType"
-        },
-        "decimal_encoding": {
-          "target": "com.cloudflare.pipelines#SinksCreateResponseFormatDecimalEncoding"
-        },
-        "timestamp_format": {
-          "target": "com.cloudflare.pipelines#SinksCreateResponseFormatTimestampFormat"
-        },
-        "unstructured": {
-          "target": "smithy.api#Boolean"
+          "target": "com.cloudflare.pipelines#SinksCreateResponseFormatParquetType",
+          "traits": {
+            "smithy.api#required": {}
+          }
         },
         "compression": {
-          "target": "com.cloudflare.pipelines#SinksCreateResponseFormatCompression"
+          "target": "com.cloudflare.pipelines#SinksCreateResponseFormatParquetCompression"
         },
         "row_group_bytes": {
           "target": "smithy.api#Double"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksCreateResponseFormat": {
+      "type": "union",
+      "members": {
+        "Json": {
+          "target": "com.cloudflare.pipelines#SinksCreateResponseFormatJson"
+        },
+        "Parquet": {
+          "target": "com.cloudflare.pipelines#SinksCreateResponseFormatParquet"
         }
       }
     },
@@ -3266,7 +3506,7 @@
         "target": "com.cloudflare.pipelines#SinksCreateResponseSchemaFieldsItem"
       }
     },
-    "com.cloudflare.pipelines#SinksCreateResponseSchemaFormatType": {
+    "com.cloudflare.pipelines#SinksCreateResponseSchemaFormatJsonType": {
       "type": "enum",
       "members": {
         "JSON": {
@@ -3277,7 +3517,7 @@
         }
       }
     },
-    "com.cloudflare.pipelines#SinksCreateResponseSchemaFormatDecimalEncoding": {
+    "com.cloudflare.pipelines#SinksCreateResponseSchemaFormatJsonDecimalEncoding": {
       "type": "enum",
       "members": {
         "NUMBER": {
@@ -3300,7 +3540,7 @@
         }
       }
     },
-    "com.cloudflare.pipelines#SinksCreateResponseSchemaFormatTimestampFormat": {
+    "com.cloudflare.pipelines#SinksCreateResponseSchemaFormatJsonTimestampFormat": {
       "type": "enum",
       "members": {
         "RFC3339": {
@@ -3317,7 +3557,38 @@
         }
       }
     },
-    "com.cloudflare.pipelines#SinksCreateResponseSchemaFormatCompression": {
+    "com.cloudflare.pipelines#SinksCreateResponseSchemaFormatJson": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.cloudflare.pipelines#SinksCreateResponseSchemaFormatJsonType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "decimal_encoding": {
+          "target": "com.cloudflare.pipelines#SinksCreateResponseSchemaFormatJsonDecimalEncoding"
+        },
+        "timestamp_format": {
+          "target": "com.cloudflare.pipelines#SinksCreateResponseSchemaFormatJsonTimestampFormat"
+        },
+        "unstructured": {
+          "target": "smithy.api#Boolean"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksCreateResponseSchemaFormatParquetType": {
+      "type": "enum",
+      "members": {
+        "PARQUET": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "parquet"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksCreateResponseSchemaFormatParquetCompression": {
       "type": "enum",
       "members": {
         "UNCOMPRESSED": {
@@ -3340,26 +3611,31 @@
         }
       }
     },
-    "com.cloudflare.pipelines#SinksCreateResponseSchemaFormat": {
+    "com.cloudflare.pipelines#SinksCreateResponseSchemaFormatParquet": {
       "type": "structure",
       "members": {
         "type": {
-          "target": "com.cloudflare.pipelines#SinksCreateResponseSchemaFormatType"
-        },
-        "decimal_encoding": {
-          "target": "com.cloudflare.pipelines#SinksCreateResponseSchemaFormatDecimalEncoding"
-        },
-        "timestamp_format": {
-          "target": "com.cloudflare.pipelines#SinksCreateResponseSchemaFormatTimestampFormat"
-        },
-        "unstructured": {
-          "target": "smithy.api#Boolean"
+          "target": "com.cloudflare.pipelines#SinksCreateResponseSchemaFormatParquetType",
+          "traits": {
+            "smithy.api#required": {}
+          }
         },
         "compression": {
-          "target": "com.cloudflare.pipelines#SinksCreateResponseSchemaFormatCompression"
+          "target": "com.cloudflare.pipelines#SinksCreateResponseSchemaFormatParquetCompression"
         },
         "row_group_bytes": {
           "target": "smithy.api#Double"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksCreateResponseSchemaFormat": {
+      "type": "union",
+      "members": {
+        "Json": {
+          "target": "com.cloudflare.pipelines#SinksCreateResponseSchemaFormatJson"
+        },
+        "Parquet": {
+          "target": "com.cloudflare.pipelines#SinksCreateResponseSchemaFormatParquet"
         }
       }
     },
@@ -3553,7 +3829,7 @@
         }
       }
     },
-    "com.cloudflare.pipelines#SinksGetResponseConfigFileNamingStrategy": {
+    "com.cloudflare.pipelines#SinksGetResponseConfigCloudflarePipelinesR2TablePublicFileNamingStrategy": {
       "type": "enum",
       "members": {
         "SERIAL": {
@@ -3582,7 +3858,7 @@
         }
       }
     },
-    "com.cloudflare.pipelines#SinksGetResponseConfigFileNaming": {
+    "com.cloudflare.pipelines#SinksGetResponseConfigCloudflarePipelinesR2TablePublicFileNaming": {
       "type": "structure",
       "members": {
         "prefix": {
@@ -3592,7 +3868,7 @@
           }
         },
         "strategy": {
-          "target": "com.cloudflare.pipelines#SinksGetResponseConfigFileNamingStrategy",
+          "target": "com.cloudflare.pipelines#SinksGetResponseConfigCloudflarePipelinesR2TablePublicFileNamingStrategy",
           "traits": {
             "smithy.api#documentation": "Filename generation strategy."
           }
@@ -3605,7 +3881,7 @@
         }
       }
     },
-    "com.cloudflare.pipelines#SinksGetResponseConfigPartitioning": {
+    "com.cloudflare.pipelines#SinksGetResponseConfigCloudflarePipelinesR2TablePublicPartitioning": {
       "type": "structure",
       "members": {
         "time_pattern": {
@@ -3616,7 +3892,7 @@
         }
       }
     },
-    "com.cloudflare.pipelines#SinksGetResponseConfigRollingPolicy": {
+    "com.cloudflare.pipelines#SinksGetResponseConfigCloudflarePipelinesR2TablePublicRollingPolicy": {
       "type": "structure",
       "members": {
         "file_size_bytes": {
@@ -3639,23 +3915,25 @@
         }
       }
     },
-    "com.cloudflare.pipelines#SinksGetResponseConfig": {
+    "com.cloudflare.pipelines#SinksGetResponseConfigCloudflarePipelinesR2TablePublic": {
       "type": "structure",
       "members": {
         "account_id": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Cloudflare Account ID for the bucket"
+            "smithy.api#documentation": "Cloudflare Account ID for the bucket",
+            "smithy.api#required": {}
           }
         },
         "bucket": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "R2 Bucket to write to"
+            "smithy.api#documentation": "R2 Bucket to write to",
+            "smithy.api#required": {}
           }
         },
         "file_naming": {
-          "target": "com.cloudflare.pipelines#SinksGetResponseConfigFileNaming",
+          "target": "com.cloudflare.pipelines#SinksGetResponseConfigCloudflarePipelinesR2TablePublicFileNaming",
           "traits": {
             "smithy.api#documentation": "Controls filename prefix/suffix and strategy."
           }
@@ -3667,7 +3945,7 @@
           }
         },
         "partitioning": {
-          "target": "com.cloudflare.pipelines#SinksGetResponseConfigPartitioning",
+          "target": "com.cloudflare.pipelines#SinksGetResponseConfigCloudflarePipelinesR2TablePublicPartitioning",
           "traits": {
             "smithy.api#documentation": "Data-layout partitioning for sinks."
           }
@@ -3679,15 +3957,58 @@
           }
         },
         "rolling_policy": {
-          "target": "com.cloudflare.pipelines#SinksGetResponseConfigRollingPolicy",
+          "target": "com.cloudflare.pipelines#SinksGetResponseConfigCloudflarePipelinesR2TablePublicRollingPolicy",
           "traits": {
             "smithy.api#documentation": "Rolling policy for file sinks (when & why to close a file and open a new one)."
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksGetResponseConfigCloudflarePipelinesR2DataCatalogTablePublicRollingPolicy": {
+      "type": "structure",
+      "members": {
+        "file_size_bytes": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Files will be rolled after reaching this number of bytes"
+          }
+        },
+        "inactivity_seconds": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Number of seconds of inactivity to wait before rolling over to a new file"
+          }
+        },
+        "interval_seconds": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Number of seconds to wait before rolling over to a new file"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksGetResponseConfigCloudflarePipelinesR2DataCatalogTablePublic": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Cloudflare Account ID",
+            "smithy.api#required": {}
+          }
+        },
+        "bucket": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The R2 Bucket that hosts this catalog",
+            "smithy.api#required": {}
           }
         },
         "table_name": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Table name"
+            "smithy.api#documentation": "Table name",
+            "smithy.api#required": {}
           }
         },
         "namespace": {
@@ -3695,10 +4016,27 @@
           "traits": {
             "smithy.api#documentation": "Table namespace"
           }
+        },
+        "rolling_policy": {
+          "target": "com.cloudflare.pipelines#SinksGetResponseConfigCloudflarePipelinesR2DataCatalogTablePublicRollingPolicy",
+          "traits": {
+            "smithy.api#documentation": "Rolling policy for file sinks (when & why to close a file and open a new one)."
+          }
         }
       }
     },
-    "com.cloudflare.pipelines#SinksGetResponseFormatType": {
+    "com.cloudflare.pipelines#SinksGetResponseConfig": {
+      "type": "union",
+      "members": {
+        "CloudflarePipelinesR2TablePublic": {
+          "target": "com.cloudflare.pipelines#SinksGetResponseConfigCloudflarePipelinesR2TablePublic"
+        },
+        "CloudflarePipelinesR2DataCatalogTablePublic": {
+          "target": "com.cloudflare.pipelines#SinksGetResponseConfigCloudflarePipelinesR2DataCatalogTablePublic"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksGetResponseFormatJsonType": {
       "type": "enum",
       "members": {
         "JSON": {
@@ -3709,7 +4047,7 @@
         }
       }
     },
-    "com.cloudflare.pipelines#SinksGetResponseFormatDecimalEncoding": {
+    "com.cloudflare.pipelines#SinksGetResponseFormatJsonDecimalEncoding": {
       "type": "enum",
       "members": {
         "NUMBER": {
@@ -3732,7 +4070,7 @@
         }
       }
     },
-    "com.cloudflare.pipelines#SinksGetResponseFormatTimestampFormat": {
+    "com.cloudflare.pipelines#SinksGetResponseFormatJsonTimestampFormat": {
       "type": "enum",
       "members": {
         "RFC3339": {
@@ -3749,7 +4087,38 @@
         }
       }
     },
-    "com.cloudflare.pipelines#SinksGetResponseFormatCompression": {
+    "com.cloudflare.pipelines#SinksGetResponseFormatJson": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.cloudflare.pipelines#SinksGetResponseFormatJsonType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "decimal_encoding": {
+          "target": "com.cloudflare.pipelines#SinksGetResponseFormatJsonDecimalEncoding"
+        },
+        "timestamp_format": {
+          "target": "com.cloudflare.pipelines#SinksGetResponseFormatJsonTimestampFormat"
+        },
+        "unstructured": {
+          "target": "smithy.api#Boolean"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksGetResponseFormatParquetType": {
+      "type": "enum",
+      "members": {
+        "PARQUET": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "parquet"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksGetResponseFormatParquetCompression": {
       "type": "enum",
       "members": {
         "UNCOMPRESSED": {
@@ -3772,26 +4141,31 @@
         }
       }
     },
-    "com.cloudflare.pipelines#SinksGetResponseFormat": {
+    "com.cloudflare.pipelines#SinksGetResponseFormatParquet": {
       "type": "structure",
       "members": {
         "type": {
-          "target": "com.cloudflare.pipelines#SinksGetResponseFormatType"
-        },
-        "decimal_encoding": {
-          "target": "com.cloudflare.pipelines#SinksGetResponseFormatDecimalEncoding"
-        },
-        "timestamp_format": {
-          "target": "com.cloudflare.pipelines#SinksGetResponseFormatTimestampFormat"
-        },
-        "unstructured": {
-          "target": "smithy.api#Boolean"
+          "target": "com.cloudflare.pipelines#SinksGetResponseFormatParquetType",
+          "traits": {
+            "smithy.api#required": {}
+          }
         },
         "compression": {
-          "target": "com.cloudflare.pipelines#SinksGetResponseFormatCompression"
+          "target": "com.cloudflare.pipelines#SinksGetResponseFormatParquetCompression"
         },
         "row_group_bytes": {
           "target": "smithy.api#Double"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksGetResponseFormat": {
+      "type": "union",
+      "members": {
+        "Json": {
+          "target": "com.cloudflare.pipelines#SinksGetResponseFormatJson"
+        },
+        "Parquet": {
+          "target": "com.cloudflare.pipelines#SinksGetResponseFormatParquet"
         }
       }
     },
@@ -3876,7 +4250,7 @@
         "target": "com.cloudflare.pipelines#SinksGetResponseSchemaFieldsItem"
       }
     },
-    "com.cloudflare.pipelines#SinksGetResponseSchemaFormatType": {
+    "com.cloudflare.pipelines#SinksGetResponseSchemaFormatJsonType": {
       "type": "enum",
       "members": {
         "JSON": {
@@ -3887,7 +4261,7 @@
         }
       }
     },
-    "com.cloudflare.pipelines#SinksGetResponseSchemaFormatDecimalEncoding": {
+    "com.cloudflare.pipelines#SinksGetResponseSchemaFormatJsonDecimalEncoding": {
       "type": "enum",
       "members": {
         "NUMBER": {
@@ -3910,7 +4284,7 @@
         }
       }
     },
-    "com.cloudflare.pipelines#SinksGetResponseSchemaFormatTimestampFormat": {
+    "com.cloudflare.pipelines#SinksGetResponseSchemaFormatJsonTimestampFormat": {
       "type": "enum",
       "members": {
         "RFC3339": {
@@ -3927,7 +4301,38 @@
         }
       }
     },
-    "com.cloudflare.pipelines#SinksGetResponseSchemaFormatCompression": {
+    "com.cloudflare.pipelines#SinksGetResponseSchemaFormatJson": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.cloudflare.pipelines#SinksGetResponseSchemaFormatJsonType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "decimal_encoding": {
+          "target": "com.cloudflare.pipelines#SinksGetResponseSchemaFormatJsonDecimalEncoding"
+        },
+        "timestamp_format": {
+          "target": "com.cloudflare.pipelines#SinksGetResponseSchemaFormatJsonTimestampFormat"
+        },
+        "unstructured": {
+          "target": "smithy.api#Boolean"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksGetResponseSchemaFormatParquetType": {
+      "type": "enum",
+      "members": {
+        "PARQUET": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "parquet"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksGetResponseSchemaFormatParquetCompression": {
       "type": "enum",
       "members": {
         "UNCOMPRESSED": {
@@ -3950,26 +4355,31 @@
         }
       }
     },
-    "com.cloudflare.pipelines#SinksGetResponseSchemaFormat": {
+    "com.cloudflare.pipelines#SinksGetResponseSchemaFormatParquet": {
       "type": "structure",
       "members": {
         "type": {
-          "target": "com.cloudflare.pipelines#SinksGetResponseSchemaFormatType"
-        },
-        "decimal_encoding": {
-          "target": "com.cloudflare.pipelines#SinksGetResponseSchemaFormatDecimalEncoding"
-        },
-        "timestamp_format": {
-          "target": "com.cloudflare.pipelines#SinksGetResponseSchemaFormatTimestampFormat"
-        },
-        "unstructured": {
-          "target": "smithy.api#Boolean"
+          "target": "com.cloudflare.pipelines#SinksGetResponseSchemaFormatParquetType",
+          "traits": {
+            "smithy.api#required": {}
+          }
         },
         "compression": {
-          "target": "com.cloudflare.pipelines#SinksGetResponseSchemaFormatCompression"
+          "target": "com.cloudflare.pipelines#SinksGetResponseSchemaFormatParquetCompression"
         },
         "row_group_bytes": {
           "target": "smithy.api#Double"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksGetResponseSchemaFormat": {
+      "type": "union",
+      "members": {
+        "Json": {
+          "target": "com.cloudflare.pipelines#SinksGetResponseSchemaFormatJson"
+        },
+        "Parquet": {
+          "target": "com.cloudflare.pipelines#SinksGetResponseSchemaFormatParquet"
         }
       }
     },
@@ -4117,7 +4527,7 @@
         }
       }
     },
-    "com.cloudflare.pipelines#SinksListResultItemConfigFileNamingStrategy": {
+    "com.cloudflare.pipelines#SinksListResultItemConfigCloudflarePipelinesR2TablePublicFileNamingStrategy": {
       "type": "enum",
       "members": {
         "SERIAL": {
@@ -4146,7 +4556,7 @@
         }
       }
     },
-    "com.cloudflare.pipelines#SinksListResultItemConfigFileNaming": {
+    "com.cloudflare.pipelines#SinksListResultItemConfigCloudflarePipelinesR2TablePublicFileNaming": {
       "type": "structure",
       "members": {
         "prefix": {
@@ -4156,7 +4566,7 @@
           }
         },
         "strategy": {
-          "target": "com.cloudflare.pipelines#SinksListResultItemConfigFileNamingStrategy",
+          "target": "com.cloudflare.pipelines#SinksListResultItemConfigCloudflarePipelinesR2TablePublicFileNamingStrategy",
           "traits": {
             "smithy.api#documentation": "Filename generation strategy."
           }
@@ -4169,7 +4579,7 @@
         }
       }
     },
-    "com.cloudflare.pipelines#SinksListResultItemConfigPartitioning": {
+    "com.cloudflare.pipelines#SinksListResultItemConfigCloudflarePipelinesR2TablePublicPartitioning": {
       "type": "structure",
       "members": {
         "time_pattern": {
@@ -4180,7 +4590,7 @@
         }
       }
     },
-    "com.cloudflare.pipelines#SinksListResultItemConfigRollingPolicy": {
+    "com.cloudflare.pipelines#SinksListResultItemConfigCloudflarePipelinesR2TablePublicRollingPolicy": {
       "type": "structure",
       "members": {
         "file_size_bytes": {
@@ -4203,23 +4613,25 @@
         }
       }
     },
-    "com.cloudflare.pipelines#SinksListResultItemConfig": {
+    "com.cloudflare.pipelines#SinksListResultItemConfigCloudflarePipelinesR2TablePublic": {
       "type": "structure",
       "members": {
         "account_id": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Cloudflare Account ID for the bucket"
+            "smithy.api#documentation": "Cloudflare Account ID for the bucket",
+            "smithy.api#required": {}
           }
         },
         "bucket": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "R2 Bucket to write to"
+            "smithy.api#documentation": "R2 Bucket to write to",
+            "smithy.api#required": {}
           }
         },
         "file_naming": {
-          "target": "com.cloudflare.pipelines#SinksListResultItemConfigFileNaming",
+          "target": "com.cloudflare.pipelines#SinksListResultItemConfigCloudflarePipelinesR2TablePublicFileNaming",
           "traits": {
             "smithy.api#documentation": "Controls filename prefix/suffix and strategy."
           }
@@ -4231,7 +4643,7 @@
           }
         },
         "partitioning": {
-          "target": "com.cloudflare.pipelines#SinksListResultItemConfigPartitioning",
+          "target": "com.cloudflare.pipelines#SinksListResultItemConfigCloudflarePipelinesR2TablePublicPartitioning",
           "traits": {
             "smithy.api#documentation": "Data-layout partitioning for sinks."
           }
@@ -4243,15 +4655,58 @@
           }
         },
         "rolling_policy": {
-          "target": "com.cloudflare.pipelines#SinksListResultItemConfigRollingPolicy",
+          "target": "com.cloudflare.pipelines#SinksListResultItemConfigCloudflarePipelinesR2TablePublicRollingPolicy",
           "traits": {
             "smithy.api#documentation": "Rolling policy for file sinks (when & why to close a file and open a new one)."
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksListResultItemConfigCloudflarePipelinesR2DataCatalogTablePublicRollingPolicy": {
+      "type": "structure",
+      "members": {
+        "file_size_bytes": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Files will be rolled after reaching this number of bytes"
+          }
+        },
+        "inactivity_seconds": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Number of seconds of inactivity to wait before rolling over to a new file"
+          }
+        },
+        "interval_seconds": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Number of seconds to wait before rolling over to a new file"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksListResultItemConfigCloudflarePipelinesR2DataCatalogTablePublic": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Cloudflare Account ID",
+            "smithy.api#required": {}
+          }
+        },
+        "bucket": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The R2 Bucket that hosts this catalog",
+            "smithy.api#required": {}
           }
         },
         "table_name": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Table name"
+            "smithy.api#documentation": "Table name",
+            "smithy.api#required": {}
           }
         },
         "namespace": {
@@ -4259,10 +4714,27 @@
           "traits": {
             "smithy.api#documentation": "Table namespace"
           }
+        },
+        "rolling_policy": {
+          "target": "com.cloudflare.pipelines#SinksListResultItemConfigCloudflarePipelinesR2DataCatalogTablePublicRollingPolicy",
+          "traits": {
+            "smithy.api#documentation": "Rolling policy for file sinks (when & why to close a file and open a new one)."
+          }
         }
       }
     },
-    "com.cloudflare.pipelines#SinksListResultItemFormatType": {
+    "com.cloudflare.pipelines#SinksListResultItemConfig": {
+      "type": "union",
+      "members": {
+        "CloudflarePipelinesR2TablePublic": {
+          "target": "com.cloudflare.pipelines#SinksListResultItemConfigCloudflarePipelinesR2TablePublic"
+        },
+        "CloudflarePipelinesR2DataCatalogTablePublic": {
+          "target": "com.cloudflare.pipelines#SinksListResultItemConfigCloudflarePipelinesR2DataCatalogTablePublic"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksListResultItemFormatJsonType": {
       "type": "enum",
       "members": {
         "JSON": {
@@ -4273,7 +4745,7 @@
         }
       }
     },
-    "com.cloudflare.pipelines#SinksListResultItemFormatDecimalEncoding": {
+    "com.cloudflare.pipelines#SinksListResultItemFormatJsonDecimalEncoding": {
       "type": "enum",
       "members": {
         "NUMBER": {
@@ -4296,7 +4768,7 @@
         }
       }
     },
-    "com.cloudflare.pipelines#SinksListResultItemFormatTimestampFormat": {
+    "com.cloudflare.pipelines#SinksListResultItemFormatJsonTimestampFormat": {
       "type": "enum",
       "members": {
         "RFC3339": {
@@ -4313,7 +4785,38 @@
         }
       }
     },
-    "com.cloudflare.pipelines#SinksListResultItemFormatCompression": {
+    "com.cloudflare.pipelines#SinksListResultItemFormatJson": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.cloudflare.pipelines#SinksListResultItemFormatJsonType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "decimal_encoding": {
+          "target": "com.cloudflare.pipelines#SinksListResultItemFormatJsonDecimalEncoding"
+        },
+        "timestamp_format": {
+          "target": "com.cloudflare.pipelines#SinksListResultItemFormatJsonTimestampFormat"
+        },
+        "unstructured": {
+          "target": "smithy.api#Boolean"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksListResultItemFormatParquetType": {
+      "type": "enum",
+      "members": {
+        "PARQUET": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "parquet"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksListResultItemFormatParquetCompression": {
       "type": "enum",
       "members": {
         "UNCOMPRESSED": {
@@ -4336,26 +4839,31 @@
         }
       }
     },
-    "com.cloudflare.pipelines#SinksListResultItemFormat": {
+    "com.cloudflare.pipelines#SinksListResultItemFormatParquet": {
       "type": "structure",
       "members": {
         "type": {
-          "target": "com.cloudflare.pipelines#SinksListResultItemFormatType"
-        },
-        "decimal_encoding": {
-          "target": "com.cloudflare.pipelines#SinksListResultItemFormatDecimalEncoding"
-        },
-        "timestamp_format": {
-          "target": "com.cloudflare.pipelines#SinksListResultItemFormatTimestampFormat"
-        },
-        "unstructured": {
-          "target": "smithy.api#Boolean"
+          "target": "com.cloudflare.pipelines#SinksListResultItemFormatParquetType",
+          "traits": {
+            "smithy.api#required": {}
+          }
         },
         "compression": {
-          "target": "com.cloudflare.pipelines#SinksListResultItemFormatCompression"
+          "target": "com.cloudflare.pipelines#SinksListResultItemFormatParquetCompression"
         },
         "row_group_bytes": {
           "target": "smithy.api#Double"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksListResultItemFormat": {
+      "type": "union",
+      "members": {
+        "Json": {
+          "target": "com.cloudflare.pipelines#SinksListResultItemFormatJson"
+        },
+        "Parquet": {
+          "target": "com.cloudflare.pipelines#SinksListResultItemFormatParquet"
         }
       }
     },
@@ -4440,7 +4948,7 @@
         "target": "com.cloudflare.pipelines#SinksListResultItemSchemaFieldsItem"
       }
     },
-    "com.cloudflare.pipelines#SinksListResultItemSchemaFormatType": {
+    "com.cloudflare.pipelines#SinksListResultItemSchemaFormatJsonType": {
       "type": "enum",
       "members": {
         "JSON": {
@@ -4451,7 +4959,7 @@
         }
       }
     },
-    "com.cloudflare.pipelines#SinksListResultItemSchemaFormatDecimalEncoding": {
+    "com.cloudflare.pipelines#SinksListResultItemSchemaFormatJsonDecimalEncoding": {
       "type": "enum",
       "members": {
         "NUMBER": {
@@ -4474,7 +4982,7 @@
         }
       }
     },
-    "com.cloudflare.pipelines#SinksListResultItemSchemaFormatTimestampFormat": {
+    "com.cloudflare.pipelines#SinksListResultItemSchemaFormatJsonTimestampFormat": {
       "type": "enum",
       "members": {
         "RFC3339": {
@@ -4491,7 +4999,38 @@
         }
       }
     },
-    "com.cloudflare.pipelines#SinksListResultItemSchemaFormatCompression": {
+    "com.cloudflare.pipelines#SinksListResultItemSchemaFormatJson": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.cloudflare.pipelines#SinksListResultItemSchemaFormatJsonType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "decimal_encoding": {
+          "target": "com.cloudflare.pipelines#SinksListResultItemSchemaFormatJsonDecimalEncoding"
+        },
+        "timestamp_format": {
+          "target": "com.cloudflare.pipelines#SinksListResultItemSchemaFormatJsonTimestampFormat"
+        },
+        "unstructured": {
+          "target": "smithy.api#Boolean"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksListResultItemSchemaFormatParquetType": {
+      "type": "enum",
+      "members": {
+        "PARQUET": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "parquet"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksListResultItemSchemaFormatParquetCompression": {
       "type": "enum",
       "members": {
         "UNCOMPRESSED": {
@@ -4514,26 +5053,31 @@
         }
       }
     },
-    "com.cloudflare.pipelines#SinksListResultItemSchemaFormat": {
+    "com.cloudflare.pipelines#SinksListResultItemSchemaFormatParquet": {
       "type": "structure",
       "members": {
         "type": {
-          "target": "com.cloudflare.pipelines#SinksListResultItemSchemaFormatType"
-        },
-        "decimal_encoding": {
-          "target": "com.cloudflare.pipelines#SinksListResultItemSchemaFormatDecimalEncoding"
-        },
-        "timestamp_format": {
-          "target": "com.cloudflare.pipelines#SinksListResultItemSchemaFormatTimestampFormat"
-        },
-        "unstructured": {
-          "target": "smithy.api#Boolean"
+          "target": "com.cloudflare.pipelines#SinksListResultItemSchemaFormatParquetType",
+          "traits": {
+            "smithy.api#required": {}
+          }
         },
         "compression": {
-          "target": "com.cloudflare.pipelines#SinksListResultItemSchemaFormatCompression"
+          "target": "com.cloudflare.pipelines#SinksListResultItemSchemaFormatParquetCompression"
         },
         "row_group_bytes": {
           "target": "smithy.api#Double"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksListResultItemSchemaFormat": {
+      "type": "union",
+      "members": {
+        "Json": {
+          "target": "com.cloudflare.pipelines#SinksListResultItemSchemaFormatJson"
+        },
+        "Parquet": {
+          "target": "com.cloudflare.pipelines#SinksListResultItemSchemaFormatParquet"
         }
       }
     },
@@ -4640,7 +5184,7 @@
         "smithy.api#readonly": {}
       }
     },
-    "com.cloudflare.pipelines#StreamsCreateRequestFormatType": {
+    "com.cloudflare.pipelines#StreamsCreateRequestFormatJsonType": {
       "type": "enum",
       "members": {
         "JSON": {
@@ -4651,7 +5195,7 @@
         }
       }
     },
-    "com.cloudflare.pipelines#StreamsCreateRequestFormatDecimalEncoding": {
+    "com.cloudflare.pipelines#StreamsCreateRequestFormatJsonDecimalEncoding": {
       "type": "enum",
       "members": {
         "NUMBER": {
@@ -4674,7 +5218,7 @@
         }
       }
     },
-    "com.cloudflare.pipelines#StreamsCreateRequestFormatTimestampFormat": {
+    "com.cloudflare.pipelines#StreamsCreateRequestFormatJsonTimestampFormat": {
       "type": "enum",
       "members": {
         "RFC3339": {
@@ -4691,7 +5235,38 @@
         }
       }
     },
-    "com.cloudflare.pipelines#StreamsCreateRequestFormatCompression": {
+    "com.cloudflare.pipelines#StreamsCreateRequestFormatJson": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.cloudflare.pipelines#StreamsCreateRequestFormatJsonType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "decimal_encoding": {
+          "target": "com.cloudflare.pipelines#StreamsCreateRequestFormatJsonDecimalEncoding"
+        },
+        "timestamp_format": {
+          "target": "com.cloudflare.pipelines#StreamsCreateRequestFormatJsonTimestampFormat"
+        },
+        "unstructured": {
+          "target": "smithy.api#Boolean"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsCreateRequestFormatParquetType": {
+      "type": "enum",
+      "members": {
+        "PARQUET": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "parquet"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsCreateRequestFormatParquetCompression": {
       "type": "enum",
       "members": {
         "UNCOMPRESSED": {
@@ -4714,26 +5289,31 @@
         }
       }
     },
-    "com.cloudflare.pipelines#StreamsCreateRequestFormat": {
+    "com.cloudflare.pipelines#StreamsCreateRequestFormatParquet": {
       "type": "structure",
       "members": {
         "type": {
-          "target": "com.cloudflare.pipelines#StreamsCreateRequestFormatType"
-        },
-        "decimal_encoding": {
-          "target": "com.cloudflare.pipelines#StreamsCreateRequestFormatDecimalEncoding"
-        },
-        "timestamp_format": {
-          "target": "com.cloudflare.pipelines#StreamsCreateRequestFormatTimestampFormat"
-        },
-        "unstructured": {
-          "target": "smithy.api#Boolean"
+          "target": "com.cloudflare.pipelines#StreamsCreateRequestFormatParquetType",
+          "traits": {
+            "smithy.api#required": {}
+          }
         },
         "compression": {
-          "target": "com.cloudflare.pipelines#StreamsCreateRequestFormatCompression"
+          "target": "com.cloudflare.pipelines#StreamsCreateRequestFormatParquetCompression"
         },
         "row_group_bytes": {
           "target": "smithy.api#Double"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsCreateRequestFormat": {
+      "type": "union",
+      "members": {
+        "Json": {
+          "target": "com.cloudflare.pipelines#StreamsCreateRequestFormatJson"
+        },
+        "Parquet": {
+          "target": "com.cloudflare.pipelines#StreamsCreateRequestFormatParquet"
         }
       }
     },
@@ -4857,7 +5437,7 @@
         "target": "com.cloudflare.pipelines#StreamsCreateRequestSchemaFieldsItem"
       }
     },
-    "com.cloudflare.pipelines#StreamsCreateRequestSchemaFormatType": {
+    "com.cloudflare.pipelines#StreamsCreateRequestSchemaFormatJsonType": {
       "type": "enum",
       "members": {
         "JSON": {
@@ -4868,7 +5448,7 @@
         }
       }
     },
-    "com.cloudflare.pipelines#StreamsCreateRequestSchemaFormatDecimalEncoding": {
+    "com.cloudflare.pipelines#StreamsCreateRequestSchemaFormatJsonDecimalEncoding": {
       "type": "enum",
       "members": {
         "NUMBER": {
@@ -4891,7 +5471,7 @@
         }
       }
     },
-    "com.cloudflare.pipelines#StreamsCreateRequestSchemaFormatTimestampFormat": {
+    "com.cloudflare.pipelines#StreamsCreateRequestSchemaFormatJsonTimestampFormat": {
       "type": "enum",
       "members": {
         "RFC3339": {
@@ -4908,7 +5488,38 @@
         }
       }
     },
-    "com.cloudflare.pipelines#StreamsCreateRequestSchemaFormatCompression": {
+    "com.cloudflare.pipelines#StreamsCreateRequestSchemaFormatJson": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.cloudflare.pipelines#StreamsCreateRequestSchemaFormatJsonType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "decimal_encoding": {
+          "target": "com.cloudflare.pipelines#StreamsCreateRequestSchemaFormatJsonDecimalEncoding"
+        },
+        "timestamp_format": {
+          "target": "com.cloudflare.pipelines#StreamsCreateRequestSchemaFormatJsonTimestampFormat"
+        },
+        "unstructured": {
+          "target": "smithy.api#Boolean"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsCreateRequestSchemaFormatParquetType": {
+      "type": "enum",
+      "members": {
+        "PARQUET": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "parquet"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsCreateRequestSchemaFormatParquetCompression": {
       "type": "enum",
       "members": {
         "UNCOMPRESSED": {
@@ -4931,26 +5542,31 @@
         }
       }
     },
-    "com.cloudflare.pipelines#StreamsCreateRequestSchemaFormat": {
+    "com.cloudflare.pipelines#StreamsCreateRequestSchemaFormatParquet": {
       "type": "structure",
       "members": {
         "type": {
-          "target": "com.cloudflare.pipelines#StreamsCreateRequestSchemaFormatType"
-        },
-        "decimal_encoding": {
-          "target": "com.cloudflare.pipelines#StreamsCreateRequestSchemaFormatDecimalEncoding"
-        },
-        "timestamp_format": {
-          "target": "com.cloudflare.pipelines#StreamsCreateRequestSchemaFormatTimestampFormat"
-        },
-        "unstructured": {
-          "target": "smithy.api#Boolean"
+          "target": "com.cloudflare.pipelines#StreamsCreateRequestSchemaFormatParquetType",
+          "traits": {
+            "smithy.api#required": {}
+          }
         },
         "compression": {
-          "target": "com.cloudflare.pipelines#StreamsCreateRequestSchemaFormatCompression"
+          "target": "com.cloudflare.pipelines#StreamsCreateRequestSchemaFormatParquetCompression"
         },
         "row_group_bytes": {
           "target": "smithy.api#Double"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsCreateRequestSchemaFormat": {
+      "type": "union",
+      "members": {
+        "Json": {
+          "target": "com.cloudflare.pipelines#StreamsCreateRequestSchemaFormatJson"
+        },
+        "Parquet": {
+          "target": "com.cloudflare.pipelines#StreamsCreateRequestSchemaFormatParquet"
         }
       }
     },
@@ -5066,7 +5682,7 @@
         }
       }
     },
-    "com.cloudflare.pipelines#StreamsCreateResponseFormatType": {
+    "com.cloudflare.pipelines#StreamsCreateResponseFormatJsonType": {
       "type": "enum",
       "members": {
         "JSON": {
@@ -5077,7 +5693,7 @@
         }
       }
     },
-    "com.cloudflare.pipelines#StreamsCreateResponseFormatDecimalEncoding": {
+    "com.cloudflare.pipelines#StreamsCreateResponseFormatJsonDecimalEncoding": {
       "type": "enum",
       "members": {
         "NUMBER": {
@@ -5100,7 +5716,7 @@
         }
       }
     },
-    "com.cloudflare.pipelines#StreamsCreateResponseFormatTimestampFormat": {
+    "com.cloudflare.pipelines#StreamsCreateResponseFormatJsonTimestampFormat": {
       "type": "enum",
       "members": {
         "RFC3339": {
@@ -5117,7 +5733,38 @@
         }
       }
     },
-    "com.cloudflare.pipelines#StreamsCreateResponseFormatCompression": {
+    "com.cloudflare.pipelines#StreamsCreateResponseFormatJson": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.cloudflare.pipelines#StreamsCreateResponseFormatJsonType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "decimal_encoding": {
+          "target": "com.cloudflare.pipelines#StreamsCreateResponseFormatJsonDecimalEncoding"
+        },
+        "timestamp_format": {
+          "target": "com.cloudflare.pipelines#StreamsCreateResponseFormatJsonTimestampFormat"
+        },
+        "unstructured": {
+          "target": "smithy.api#Boolean"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsCreateResponseFormatParquetType": {
+      "type": "enum",
+      "members": {
+        "PARQUET": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "parquet"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsCreateResponseFormatParquetCompression": {
       "type": "enum",
       "members": {
         "UNCOMPRESSED": {
@@ -5140,26 +5787,31 @@
         }
       }
     },
-    "com.cloudflare.pipelines#StreamsCreateResponseFormat": {
+    "com.cloudflare.pipelines#StreamsCreateResponseFormatParquet": {
       "type": "structure",
       "members": {
         "type": {
-          "target": "com.cloudflare.pipelines#StreamsCreateResponseFormatType"
-        },
-        "decimal_encoding": {
-          "target": "com.cloudflare.pipelines#StreamsCreateResponseFormatDecimalEncoding"
-        },
-        "timestamp_format": {
-          "target": "com.cloudflare.pipelines#StreamsCreateResponseFormatTimestampFormat"
-        },
-        "unstructured": {
-          "target": "smithy.api#Boolean"
+          "target": "com.cloudflare.pipelines#StreamsCreateResponseFormatParquetType",
+          "traits": {
+            "smithy.api#required": {}
+          }
         },
         "compression": {
-          "target": "com.cloudflare.pipelines#StreamsCreateResponseFormatCompression"
+          "target": "com.cloudflare.pipelines#StreamsCreateResponseFormatParquetCompression"
         },
         "row_group_bytes": {
           "target": "smithy.api#Double"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsCreateResponseFormat": {
+      "type": "union",
+      "members": {
+        "Json": {
+          "target": "com.cloudflare.pipelines#StreamsCreateResponseFormatJson"
+        },
+        "Parquet": {
+          "target": "com.cloudflare.pipelines#StreamsCreateResponseFormatParquet"
         }
       }
     },
@@ -5244,7 +5896,7 @@
         "target": "com.cloudflare.pipelines#StreamsCreateResponseSchemaFieldsItem"
       }
     },
-    "com.cloudflare.pipelines#StreamsCreateResponseSchemaFormatType": {
+    "com.cloudflare.pipelines#StreamsCreateResponseSchemaFormatJsonType": {
       "type": "enum",
       "members": {
         "JSON": {
@@ -5255,7 +5907,7 @@
         }
       }
     },
-    "com.cloudflare.pipelines#StreamsCreateResponseSchemaFormatDecimalEncoding": {
+    "com.cloudflare.pipelines#StreamsCreateResponseSchemaFormatJsonDecimalEncoding": {
       "type": "enum",
       "members": {
         "NUMBER": {
@@ -5278,7 +5930,7 @@
         }
       }
     },
-    "com.cloudflare.pipelines#StreamsCreateResponseSchemaFormatTimestampFormat": {
+    "com.cloudflare.pipelines#StreamsCreateResponseSchemaFormatJsonTimestampFormat": {
       "type": "enum",
       "members": {
         "RFC3339": {
@@ -5295,7 +5947,38 @@
         }
       }
     },
-    "com.cloudflare.pipelines#StreamsCreateResponseSchemaFormatCompression": {
+    "com.cloudflare.pipelines#StreamsCreateResponseSchemaFormatJson": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.cloudflare.pipelines#StreamsCreateResponseSchemaFormatJsonType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "decimal_encoding": {
+          "target": "com.cloudflare.pipelines#StreamsCreateResponseSchemaFormatJsonDecimalEncoding"
+        },
+        "timestamp_format": {
+          "target": "com.cloudflare.pipelines#StreamsCreateResponseSchemaFormatJsonTimestampFormat"
+        },
+        "unstructured": {
+          "target": "smithy.api#Boolean"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsCreateResponseSchemaFormatParquetType": {
+      "type": "enum",
+      "members": {
+        "PARQUET": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "parquet"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsCreateResponseSchemaFormatParquetCompression": {
       "type": "enum",
       "members": {
         "UNCOMPRESSED": {
@@ -5318,26 +6001,31 @@
         }
       }
     },
-    "com.cloudflare.pipelines#StreamsCreateResponseSchemaFormat": {
+    "com.cloudflare.pipelines#StreamsCreateResponseSchemaFormatParquet": {
       "type": "structure",
       "members": {
         "type": {
-          "target": "com.cloudflare.pipelines#StreamsCreateResponseSchemaFormatType"
-        },
-        "decimal_encoding": {
-          "target": "com.cloudflare.pipelines#StreamsCreateResponseSchemaFormatDecimalEncoding"
-        },
-        "timestamp_format": {
-          "target": "com.cloudflare.pipelines#StreamsCreateResponseSchemaFormatTimestampFormat"
-        },
-        "unstructured": {
-          "target": "smithy.api#Boolean"
+          "target": "com.cloudflare.pipelines#StreamsCreateResponseSchemaFormatParquetType",
+          "traits": {
+            "smithy.api#required": {}
+          }
         },
         "compression": {
-          "target": "com.cloudflare.pipelines#StreamsCreateResponseSchemaFormatCompression"
+          "target": "com.cloudflare.pipelines#StreamsCreateResponseSchemaFormatParquetCompression"
         },
         "row_group_bytes": {
           "target": "smithy.api#Double"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsCreateResponseSchemaFormat": {
+      "type": "union",
+      "members": {
+        "Json": {
+          "target": "com.cloudflare.pipelines#StreamsCreateResponseSchemaFormatJson"
+        },
+        "Parquet": {
+          "target": "com.cloudflare.pipelines#StreamsCreateResponseSchemaFormatParquet"
         }
       }
     },
@@ -5577,7 +6265,7 @@
         }
       }
     },
-    "com.cloudflare.pipelines#StreamsGetResponseFormatType": {
+    "com.cloudflare.pipelines#StreamsGetResponseFormatJsonType": {
       "type": "enum",
       "members": {
         "JSON": {
@@ -5588,7 +6276,7 @@
         }
       }
     },
-    "com.cloudflare.pipelines#StreamsGetResponseFormatDecimalEncoding": {
+    "com.cloudflare.pipelines#StreamsGetResponseFormatJsonDecimalEncoding": {
       "type": "enum",
       "members": {
         "NUMBER": {
@@ -5611,7 +6299,7 @@
         }
       }
     },
-    "com.cloudflare.pipelines#StreamsGetResponseFormatTimestampFormat": {
+    "com.cloudflare.pipelines#StreamsGetResponseFormatJsonTimestampFormat": {
       "type": "enum",
       "members": {
         "RFC3339": {
@@ -5628,7 +6316,38 @@
         }
       }
     },
-    "com.cloudflare.pipelines#StreamsGetResponseFormatCompression": {
+    "com.cloudflare.pipelines#StreamsGetResponseFormatJson": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.cloudflare.pipelines#StreamsGetResponseFormatJsonType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "decimal_encoding": {
+          "target": "com.cloudflare.pipelines#StreamsGetResponseFormatJsonDecimalEncoding"
+        },
+        "timestamp_format": {
+          "target": "com.cloudflare.pipelines#StreamsGetResponseFormatJsonTimestampFormat"
+        },
+        "unstructured": {
+          "target": "smithy.api#Boolean"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsGetResponseFormatParquetType": {
+      "type": "enum",
+      "members": {
+        "PARQUET": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "parquet"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsGetResponseFormatParquetCompression": {
       "type": "enum",
       "members": {
         "UNCOMPRESSED": {
@@ -5651,26 +6370,31 @@
         }
       }
     },
-    "com.cloudflare.pipelines#StreamsGetResponseFormat": {
+    "com.cloudflare.pipelines#StreamsGetResponseFormatParquet": {
       "type": "structure",
       "members": {
         "type": {
-          "target": "com.cloudflare.pipelines#StreamsGetResponseFormatType"
-        },
-        "decimal_encoding": {
-          "target": "com.cloudflare.pipelines#StreamsGetResponseFormatDecimalEncoding"
-        },
-        "timestamp_format": {
-          "target": "com.cloudflare.pipelines#StreamsGetResponseFormatTimestampFormat"
-        },
-        "unstructured": {
-          "target": "smithy.api#Boolean"
+          "target": "com.cloudflare.pipelines#StreamsGetResponseFormatParquetType",
+          "traits": {
+            "smithy.api#required": {}
+          }
         },
         "compression": {
-          "target": "com.cloudflare.pipelines#StreamsGetResponseFormatCompression"
+          "target": "com.cloudflare.pipelines#StreamsGetResponseFormatParquetCompression"
         },
         "row_group_bytes": {
           "target": "smithy.api#Double"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsGetResponseFormat": {
+      "type": "union",
+      "members": {
+        "Json": {
+          "target": "com.cloudflare.pipelines#StreamsGetResponseFormatJson"
+        },
+        "Parquet": {
+          "target": "com.cloudflare.pipelines#StreamsGetResponseFormatParquet"
         }
       }
     },
@@ -5755,7 +6479,7 @@
         "target": "com.cloudflare.pipelines#StreamsGetResponseSchemaFieldsItem"
       }
     },
-    "com.cloudflare.pipelines#StreamsGetResponseSchemaFormatType": {
+    "com.cloudflare.pipelines#StreamsGetResponseSchemaFormatJsonType": {
       "type": "enum",
       "members": {
         "JSON": {
@@ -5766,7 +6490,7 @@
         }
       }
     },
-    "com.cloudflare.pipelines#StreamsGetResponseSchemaFormatDecimalEncoding": {
+    "com.cloudflare.pipelines#StreamsGetResponseSchemaFormatJsonDecimalEncoding": {
       "type": "enum",
       "members": {
         "NUMBER": {
@@ -5789,7 +6513,7 @@
         }
       }
     },
-    "com.cloudflare.pipelines#StreamsGetResponseSchemaFormatTimestampFormat": {
+    "com.cloudflare.pipelines#StreamsGetResponseSchemaFormatJsonTimestampFormat": {
       "type": "enum",
       "members": {
         "RFC3339": {
@@ -5806,7 +6530,38 @@
         }
       }
     },
-    "com.cloudflare.pipelines#StreamsGetResponseSchemaFormatCompression": {
+    "com.cloudflare.pipelines#StreamsGetResponseSchemaFormatJson": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.cloudflare.pipelines#StreamsGetResponseSchemaFormatJsonType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "decimal_encoding": {
+          "target": "com.cloudflare.pipelines#StreamsGetResponseSchemaFormatJsonDecimalEncoding"
+        },
+        "timestamp_format": {
+          "target": "com.cloudflare.pipelines#StreamsGetResponseSchemaFormatJsonTimestampFormat"
+        },
+        "unstructured": {
+          "target": "smithy.api#Boolean"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsGetResponseSchemaFormatParquetType": {
+      "type": "enum",
+      "members": {
+        "PARQUET": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "parquet"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsGetResponseSchemaFormatParquetCompression": {
       "type": "enum",
       "members": {
         "UNCOMPRESSED": {
@@ -5829,26 +6584,31 @@
         }
       }
     },
-    "com.cloudflare.pipelines#StreamsGetResponseSchemaFormat": {
+    "com.cloudflare.pipelines#StreamsGetResponseSchemaFormatParquet": {
       "type": "structure",
       "members": {
         "type": {
-          "target": "com.cloudflare.pipelines#StreamsGetResponseSchemaFormatType"
-        },
-        "decimal_encoding": {
-          "target": "com.cloudflare.pipelines#StreamsGetResponseSchemaFormatDecimalEncoding"
-        },
-        "timestamp_format": {
-          "target": "com.cloudflare.pipelines#StreamsGetResponseSchemaFormatTimestampFormat"
-        },
-        "unstructured": {
-          "target": "smithy.api#Boolean"
+          "target": "com.cloudflare.pipelines#StreamsGetResponseSchemaFormatParquetType",
+          "traits": {
+            "smithy.api#required": {}
+          }
         },
         "compression": {
-          "target": "com.cloudflare.pipelines#StreamsGetResponseSchemaFormatCompression"
+          "target": "com.cloudflare.pipelines#StreamsGetResponseSchemaFormatParquetCompression"
         },
         "row_group_bytes": {
           "target": "smithy.api#Double"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsGetResponseSchemaFormat": {
+      "type": "union",
+      "members": {
+        "Json": {
+          "target": "com.cloudflare.pipelines#StreamsGetResponseSchemaFormatJson"
+        },
+        "Parquet": {
+          "target": "com.cloudflare.pipelines#StreamsGetResponseSchemaFormatParquet"
         }
       }
     },
@@ -6043,7 +6803,7 @@
         }
       }
     },
-    "com.cloudflare.pipelines#StreamsListResultItemFormatType": {
+    "com.cloudflare.pipelines#StreamsListResultItemFormatJsonType": {
       "type": "enum",
       "members": {
         "JSON": {
@@ -6054,7 +6814,7 @@
         }
       }
     },
-    "com.cloudflare.pipelines#StreamsListResultItemFormatDecimalEncoding": {
+    "com.cloudflare.pipelines#StreamsListResultItemFormatJsonDecimalEncoding": {
       "type": "enum",
       "members": {
         "NUMBER": {
@@ -6077,7 +6837,7 @@
         }
       }
     },
-    "com.cloudflare.pipelines#StreamsListResultItemFormatTimestampFormat": {
+    "com.cloudflare.pipelines#StreamsListResultItemFormatJsonTimestampFormat": {
       "type": "enum",
       "members": {
         "RFC3339": {
@@ -6094,7 +6854,38 @@
         }
       }
     },
-    "com.cloudflare.pipelines#StreamsListResultItemFormatCompression": {
+    "com.cloudflare.pipelines#StreamsListResultItemFormatJson": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.cloudflare.pipelines#StreamsListResultItemFormatJsonType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "decimal_encoding": {
+          "target": "com.cloudflare.pipelines#StreamsListResultItemFormatJsonDecimalEncoding"
+        },
+        "timestamp_format": {
+          "target": "com.cloudflare.pipelines#StreamsListResultItemFormatJsonTimestampFormat"
+        },
+        "unstructured": {
+          "target": "smithy.api#Boolean"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsListResultItemFormatParquetType": {
+      "type": "enum",
+      "members": {
+        "PARQUET": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "parquet"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsListResultItemFormatParquetCompression": {
       "type": "enum",
       "members": {
         "UNCOMPRESSED": {
@@ -6117,26 +6908,31 @@
         }
       }
     },
-    "com.cloudflare.pipelines#StreamsListResultItemFormat": {
+    "com.cloudflare.pipelines#StreamsListResultItemFormatParquet": {
       "type": "structure",
       "members": {
         "type": {
-          "target": "com.cloudflare.pipelines#StreamsListResultItemFormatType"
-        },
-        "decimal_encoding": {
-          "target": "com.cloudflare.pipelines#StreamsListResultItemFormatDecimalEncoding"
-        },
-        "timestamp_format": {
-          "target": "com.cloudflare.pipelines#StreamsListResultItemFormatTimestampFormat"
-        },
-        "unstructured": {
-          "target": "smithy.api#Boolean"
+          "target": "com.cloudflare.pipelines#StreamsListResultItemFormatParquetType",
+          "traits": {
+            "smithy.api#required": {}
+          }
         },
         "compression": {
-          "target": "com.cloudflare.pipelines#StreamsListResultItemFormatCompression"
+          "target": "com.cloudflare.pipelines#StreamsListResultItemFormatParquetCompression"
         },
         "row_group_bytes": {
           "target": "smithy.api#Double"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsListResultItemFormat": {
+      "type": "union",
+      "members": {
+        "Json": {
+          "target": "com.cloudflare.pipelines#StreamsListResultItemFormatJson"
+        },
+        "Parquet": {
+          "target": "com.cloudflare.pipelines#StreamsListResultItemFormatParquet"
         }
       }
     },
@@ -6221,7 +7017,7 @@
         "target": "com.cloudflare.pipelines#StreamsListResultItemSchemaFieldsItem"
       }
     },
-    "com.cloudflare.pipelines#StreamsListResultItemSchemaFormatType": {
+    "com.cloudflare.pipelines#StreamsListResultItemSchemaFormatJsonType": {
       "type": "enum",
       "members": {
         "JSON": {
@@ -6232,7 +7028,7 @@
         }
       }
     },
-    "com.cloudflare.pipelines#StreamsListResultItemSchemaFormatDecimalEncoding": {
+    "com.cloudflare.pipelines#StreamsListResultItemSchemaFormatJsonDecimalEncoding": {
       "type": "enum",
       "members": {
         "NUMBER": {
@@ -6255,7 +7051,7 @@
         }
       }
     },
-    "com.cloudflare.pipelines#StreamsListResultItemSchemaFormatTimestampFormat": {
+    "com.cloudflare.pipelines#StreamsListResultItemSchemaFormatJsonTimestampFormat": {
       "type": "enum",
       "members": {
         "RFC3339": {
@@ -6272,7 +7068,38 @@
         }
       }
     },
-    "com.cloudflare.pipelines#StreamsListResultItemSchemaFormatCompression": {
+    "com.cloudflare.pipelines#StreamsListResultItemSchemaFormatJson": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.cloudflare.pipelines#StreamsListResultItemSchemaFormatJsonType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "decimal_encoding": {
+          "target": "com.cloudflare.pipelines#StreamsListResultItemSchemaFormatJsonDecimalEncoding"
+        },
+        "timestamp_format": {
+          "target": "com.cloudflare.pipelines#StreamsListResultItemSchemaFormatJsonTimestampFormat"
+        },
+        "unstructured": {
+          "target": "smithy.api#Boolean"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsListResultItemSchemaFormatParquetType": {
+      "type": "enum",
+      "members": {
+        "PARQUET": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "parquet"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsListResultItemSchemaFormatParquetCompression": {
       "type": "enum",
       "members": {
         "UNCOMPRESSED": {
@@ -6295,26 +7122,31 @@
         }
       }
     },
-    "com.cloudflare.pipelines#StreamsListResultItemSchemaFormat": {
+    "com.cloudflare.pipelines#StreamsListResultItemSchemaFormatParquet": {
       "type": "structure",
       "members": {
         "type": {
-          "target": "com.cloudflare.pipelines#StreamsListResultItemSchemaFormatType"
-        },
-        "decimal_encoding": {
-          "target": "com.cloudflare.pipelines#StreamsListResultItemSchemaFormatDecimalEncoding"
-        },
-        "timestamp_format": {
-          "target": "com.cloudflare.pipelines#StreamsListResultItemSchemaFormatTimestampFormat"
-        },
-        "unstructured": {
-          "target": "smithy.api#Boolean"
+          "target": "com.cloudflare.pipelines#StreamsListResultItemSchemaFormatParquetType",
+          "traits": {
+            "smithy.api#required": {}
+          }
         },
         "compression": {
-          "target": "com.cloudflare.pipelines#StreamsListResultItemSchemaFormatCompression"
+          "target": "com.cloudflare.pipelines#StreamsListResultItemSchemaFormatParquetCompression"
         },
         "row_group_bytes": {
           "target": "smithy.api#Double"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsListResultItemSchemaFormat": {
+      "type": "union",
+      "members": {
+        "Json": {
+          "target": "com.cloudflare.pipelines#StreamsListResultItemSchemaFormatJson"
+        },
+        "Parquet": {
+          "target": "com.cloudflare.pipelines#StreamsListResultItemSchemaFormatParquet"
         }
       }
     },
@@ -6565,7 +7397,7 @@
         }
       }
     },
-    "com.cloudflare.pipelines#StreamsUpdateResponseFormatType": {
+    "com.cloudflare.pipelines#StreamsUpdateResponseFormatJsonType": {
       "type": "enum",
       "members": {
         "JSON": {
@@ -6576,7 +7408,7 @@
         }
       }
     },
-    "com.cloudflare.pipelines#StreamsUpdateResponseFormatDecimalEncoding": {
+    "com.cloudflare.pipelines#StreamsUpdateResponseFormatJsonDecimalEncoding": {
       "type": "enum",
       "members": {
         "NUMBER": {
@@ -6599,7 +7431,7 @@
         }
       }
     },
-    "com.cloudflare.pipelines#StreamsUpdateResponseFormatTimestampFormat": {
+    "com.cloudflare.pipelines#StreamsUpdateResponseFormatJsonTimestampFormat": {
       "type": "enum",
       "members": {
         "RFC3339": {
@@ -6616,7 +7448,38 @@
         }
       }
     },
-    "com.cloudflare.pipelines#StreamsUpdateResponseFormatCompression": {
+    "com.cloudflare.pipelines#StreamsUpdateResponseFormatJson": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.cloudflare.pipelines#StreamsUpdateResponseFormatJsonType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "decimal_encoding": {
+          "target": "com.cloudflare.pipelines#StreamsUpdateResponseFormatJsonDecimalEncoding"
+        },
+        "timestamp_format": {
+          "target": "com.cloudflare.pipelines#StreamsUpdateResponseFormatJsonTimestampFormat"
+        },
+        "unstructured": {
+          "target": "smithy.api#Boolean"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsUpdateResponseFormatParquetType": {
+      "type": "enum",
+      "members": {
+        "PARQUET": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "parquet"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsUpdateResponseFormatParquetCompression": {
       "type": "enum",
       "members": {
         "UNCOMPRESSED": {
@@ -6639,26 +7502,31 @@
         }
       }
     },
-    "com.cloudflare.pipelines#StreamsUpdateResponseFormat": {
+    "com.cloudflare.pipelines#StreamsUpdateResponseFormatParquet": {
       "type": "structure",
       "members": {
         "type": {
-          "target": "com.cloudflare.pipelines#StreamsUpdateResponseFormatType"
-        },
-        "decimal_encoding": {
-          "target": "com.cloudflare.pipelines#StreamsUpdateResponseFormatDecimalEncoding"
-        },
-        "timestamp_format": {
-          "target": "com.cloudflare.pipelines#StreamsUpdateResponseFormatTimestampFormat"
-        },
-        "unstructured": {
-          "target": "smithy.api#Boolean"
+          "target": "com.cloudflare.pipelines#StreamsUpdateResponseFormatParquetType",
+          "traits": {
+            "smithy.api#required": {}
+          }
         },
         "compression": {
-          "target": "com.cloudflare.pipelines#StreamsUpdateResponseFormatCompression"
+          "target": "com.cloudflare.pipelines#StreamsUpdateResponseFormatParquetCompression"
         },
         "row_group_bytes": {
           "target": "smithy.api#Double"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsUpdateResponseFormat": {
+      "type": "union",
+      "members": {
+        "Json": {
+          "target": "com.cloudflare.pipelines#StreamsUpdateResponseFormatJson"
+        },
+        "Parquet": {
+          "target": "com.cloudflare.pipelines#StreamsUpdateResponseFormatParquet"
         }
       }
     },

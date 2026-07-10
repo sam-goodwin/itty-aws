@@ -4154,19 +4154,30 @@
         "smithy.api#documentation": "Edit settings for a zone."
       }
     },
-    "com.cloudflare.zones#SettingsEditRequestBodyValueZonesCiphersValueList": {
+    "com.cloudflare.zones#SettingsEditRequestBodyEnabled": {
+      "type": "structure",
+      "members": {
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "ssl-recommender enrollment setting."
+          }
+        }
+      }
+    },
+    "com.cloudflare.zones#SettingsEditRequestBodyValueValueZonesCiphersValueList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
       }
     },
-    "com.cloudflare.zones#SettingsEditRequestBodyValueHostnamesList": {
+    "com.cloudflare.zones#SettingsEditRequestBodyValueValueHostnamesList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
       }
     },
-    "com.cloudflare.zones#SettingsEditRequestBodyValueStrictTransportSecurity": {
+    "com.cloudflare.zones#SettingsEditRequestBodyValueValueStrictTransportSecurity": {
       "type": "structure",
       "members": {
         "enabled": {
@@ -4201,7 +4212,7 @@
         }
       }
     },
-    "com.cloudflare.zones#SettingsEditRequestBodyValue": {
+    "com.cloudflare.zones#SettingsEditRequestBodyValueValue": {
       "type": "structure",
       "members": {
         "unknown": {
@@ -4223,7 +4234,7 @@
           }
         },
         "ZonesCiphersValue": {
-          "target": "com.cloudflare.zones#SettingsEditRequestBodyValueZonesCiphersValueList",
+          "target": "com.cloudflare.zones#SettingsEditRequestBodyValueValueZonesCiphersValueList",
           "traits": {
             "smithy.api#documentation": "Value of the zone setting.",
             "smithy.api#required": {}
@@ -4249,7 +4260,7 @@
           }
         },
         "hostnames": {
-          "target": "com.cloudflare.zones#SettingsEditRequestBodyValueHostnamesList",
+          "target": "com.cloudflare.zones#SettingsEditRequestBodyValueValueHostnamesList",
           "traits": {
             "smithy.api#documentation": "An array of hostnames where Automatic Platform Optimization for WordPress is activated."
           }
@@ -4267,27 +4278,32 @@
           }
         },
         "strict_transport_security": {
-          "target": "com.cloudflare.zones#SettingsEditRequestBodyValueStrictTransportSecurity",
+          "target": "com.cloudflare.zones#SettingsEditRequestBodyValueValueStrictTransportSecurity",
           "traits": {
             "smithy.api#documentation": "Strict Transport Security."
           }
         }
       }
     },
-    "com.cloudflare.zones#SettingsEditRequestBody": {
+    "com.cloudflare.zones#SettingsEditRequestBodyValue": {
       "type": "structure",
       "members": {
-        "enabled": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "ssl-recommender enrollment setting."
-          }
-        },
         "value": {
-          "target": "com.cloudflare.zones#SettingsEditRequestBodyValue",
+          "target": "com.cloudflare.zones#SettingsEditRequestBodyValueValue",
           "traits": {
             "smithy.api#documentation": "Value of the zone setting."
           }
+        }
+      }
+    },
+    "com.cloudflare.zones#SettingsEditRequestBody": {
+      "type": "union",
+      "members": {
+        "Enabled": {
+          "target": "com.cloudflare.zones#SettingsEditRequestBodyEnabled"
+        },
+        "Value": {
+          "target": "com.cloudflare.zones#SettingsEditRequestBodyValue"
         }
       }
     },

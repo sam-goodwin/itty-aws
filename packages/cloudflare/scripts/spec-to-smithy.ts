@@ -329,6 +329,26 @@ const parseTypeCore = (
   // Object: real fields are the indented children.
   if (t.startsWith("object")) {
     if (!node.children.length) return PRELUDE.Document;
+    // Discriminated union of object cases (`object { a } or object { b }`):
+    // the docs render each case as a named child. Build a real union so
+    // consumers can pattern-match; flattening would merge all cases'
+    // discriminant keys into one struct and break `"key" in value` checks.
+    if (node.children.length > 1 && node.children.every(isUnionCase)) {
+      const caseMembers: Record<string, any> = {};
+      const usedCases = new Set<string>();
+      node.children.forEach((c, idx) => {
+        let cname = pascal(c.name.replace(/\s+object.*$/, "")) || `Case${idx}`;
+        while (usedCases.has(cname)) cname = `${cname}_`;
+        usedCases.add(cname);
+        caseMembers[cname] = {
+          target: addShape(bag, `${hint}${cname}`, {
+            type: "structure",
+            members: buildMembers(bag, c.children, `${hint}${cname}`, "nested"),
+          }),
+        };
+      });
+      return addShape(bag, hint, { type: "union", members: caseMembers });
+    }
     const members = buildMembers(bag, node.children, hint, "nested");
     return addShape(bag, hint, { type: "structure", members });
   }

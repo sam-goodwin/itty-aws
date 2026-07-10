@@ -182,7 +182,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.cloudflare.ai_gateway#CreateResponseDlpAction": {
+    "com.cloudflare.ai_gateway#CreateResponseDlpObjectActionEnabledProfilesAction": {
       "type": "enum",
       "members": {
         "BLOCK": {
@@ -199,13 +199,36 @@
         }
       }
     },
-    "com.cloudflare.ai_gateway#CreateResponseDlpProfilesList": {
+    "com.cloudflare.ai_gateway#CreateResponseDlpObjectActionEnabledProfilesProfilesList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
       }
     },
-    "com.cloudflare.ai_gateway#CreateResponseDlpPoliciesItemAction": {
+    "com.cloudflare.ai_gateway#CreateResponseDlpObjectActionEnabledProfiles": {
+      "type": "structure",
+      "members": {
+        "action": {
+          "target": "com.cloudflare.ai_gateway#CreateResponseDlpObjectActionEnabledProfilesAction",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "profiles": {
+          "target": "com.cloudflare.ai_gateway#CreateResponseDlpObjectActionEnabledProfilesProfilesList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.ai_gateway#CreateResponseDlpObjectEnabledPoliciesPoliciesItemAction": {
       "type": "enum",
       "members": {
         "FLAG": {
@@ -222,7 +245,7 @@
         }
       }
     },
-    "com.cloudflare.ai_gateway#CreateResponseDlpPoliciesItemCheckItem": {
+    "com.cloudflare.ai_gateway#CreateResponseDlpObjectEnabledPoliciesPoliciesItemCheckItem": {
       "type": "enum",
       "members": {
         "REQUEST": {
@@ -239,19 +262,19 @@
         }
       }
     },
-    "com.cloudflare.ai_gateway#CreateResponseDlpPoliciesItemCheckList": {
+    "com.cloudflare.ai_gateway#CreateResponseDlpObjectEnabledPoliciesPoliciesItemCheckList": {
       "type": "list",
       "member": {
-        "target": "com.cloudflare.ai_gateway#CreateResponseDlpPoliciesItemCheckItem"
+        "target": "com.cloudflare.ai_gateway#CreateResponseDlpObjectEnabledPoliciesPoliciesItemCheckItem"
       }
     },
-    "com.cloudflare.ai_gateway#CreateResponseDlpPoliciesItemProfilesList": {
+    "com.cloudflare.ai_gateway#CreateResponseDlpObjectEnabledPoliciesPoliciesItemProfilesList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
       }
     },
-    "com.cloudflare.ai_gateway#CreateResponseDlpPoliciesItem": {
+    "com.cloudflare.ai_gateway#CreateResponseDlpObjectEnabledPoliciesPoliciesItem": {
       "type": "structure",
       "members": {
         "id": {
@@ -261,13 +284,13 @@
           }
         },
         "action": {
-          "target": "com.cloudflare.ai_gateway#CreateResponseDlpPoliciesItemAction",
+          "target": "com.cloudflare.ai_gateway#CreateResponseDlpObjectEnabledPoliciesPoliciesItemAction",
           "traits": {
             "smithy.api#required": {}
           }
         },
         "check": {
-          "target": "com.cloudflare.ai_gateway#CreateResponseDlpPoliciesItemCheckList",
+          "target": "com.cloudflare.ai_gateway#CreateResponseDlpObjectEnabledPoliciesPoliciesItemCheckList",
           "traits": {
             "smithy.api#required": {}
           }
@@ -279,33 +302,44 @@
           }
         },
         "profiles": {
-          "target": "com.cloudflare.ai_gateway#CreateResponseDlpPoliciesItemProfilesList",
+          "target": "com.cloudflare.ai_gateway#CreateResponseDlpObjectEnabledPoliciesPoliciesItemProfilesList",
           "traits": {
             "smithy.api#required": {}
           }
         }
       }
     },
-    "com.cloudflare.ai_gateway#CreateResponseDlpPoliciesList": {
+    "com.cloudflare.ai_gateway#CreateResponseDlpObjectEnabledPoliciesPoliciesList": {
       "type": "list",
       "member": {
-        "target": "com.cloudflare.ai_gateway#CreateResponseDlpPoliciesItem"
+        "target": "com.cloudflare.ai_gateway#CreateResponseDlpObjectEnabledPoliciesPoliciesItem"
+      }
+    },
+    "com.cloudflare.ai_gateway#CreateResponseDlpObjectEnabledPolicies": {
+      "type": "structure",
+      "members": {
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "policies": {
+          "target": "com.cloudflare.ai_gateway#CreateResponseDlpObjectEnabledPoliciesPoliciesList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
       }
     },
     "com.cloudflare.ai_gateway#CreateResponseDlp": {
-      "type": "structure",
+      "type": "union",
       "members": {
-        "action": {
-          "target": "com.cloudflare.ai_gateway#CreateResponseDlpAction"
+        "ObjectActionEnabledProfiles": {
+          "target": "com.cloudflare.ai_gateway#CreateResponseDlpObjectActionEnabledProfiles"
         },
-        "enabled": {
-          "target": "smithy.api#Boolean"
-        },
-        "profiles": {
-          "target": "com.cloudflare.ai_gateway#CreateResponseDlpProfilesList"
-        },
-        "policies": {
-          "target": "com.cloudflare.ai_gateway#CreateResponseDlpPoliciesList"
+        "ObjectEnabledPolicies": {
+          "target": "com.cloudflare.ai_gateway#CreateResponseDlpObjectEnabledPolicies"
         }
       }
     },
@@ -1380,7 +1414,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.cloudflare.ai_gateway#DeleteResponseDlpAction": {
+    "com.cloudflare.ai_gateway#DeleteResponseDlpObjectActionEnabledProfilesAction": {
       "type": "enum",
       "members": {
         "BLOCK": {
@@ -1397,13 +1431,36 @@
         }
       }
     },
-    "com.cloudflare.ai_gateway#DeleteResponseDlpProfilesList": {
+    "com.cloudflare.ai_gateway#DeleteResponseDlpObjectActionEnabledProfilesProfilesList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
       }
     },
-    "com.cloudflare.ai_gateway#DeleteResponseDlpPoliciesItemAction": {
+    "com.cloudflare.ai_gateway#DeleteResponseDlpObjectActionEnabledProfiles": {
+      "type": "structure",
+      "members": {
+        "action": {
+          "target": "com.cloudflare.ai_gateway#DeleteResponseDlpObjectActionEnabledProfilesAction",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "profiles": {
+          "target": "com.cloudflare.ai_gateway#DeleteResponseDlpObjectActionEnabledProfilesProfilesList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.ai_gateway#DeleteResponseDlpObjectEnabledPoliciesPoliciesItemAction": {
       "type": "enum",
       "members": {
         "FLAG": {
@@ -1420,7 +1477,7 @@
         }
       }
     },
-    "com.cloudflare.ai_gateway#DeleteResponseDlpPoliciesItemCheckItem": {
+    "com.cloudflare.ai_gateway#DeleteResponseDlpObjectEnabledPoliciesPoliciesItemCheckItem": {
       "type": "enum",
       "members": {
         "REQUEST": {
@@ -1437,19 +1494,19 @@
         }
       }
     },
-    "com.cloudflare.ai_gateway#DeleteResponseDlpPoliciesItemCheckList": {
+    "com.cloudflare.ai_gateway#DeleteResponseDlpObjectEnabledPoliciesPoliciesItemCheckList": {
       "type": "list",
       "member": {
-        "target": "com.cloudflare.ai_gateway#DeleteResponseDlpPoliciesItemCheckItem"
+        "target": "com.cloudflare.ai_gateway#DeleteResponseDlpObjectEnabledPoliciesPoliciesItemCheckItem"
       }
     },
-    "com.cloudflare.ai_gateway#DeleteResponseDlpPoliciesItemProfilesList": {
+    "com.cloudflare.ai_gateway#DeleteResponseDlpObjectEnabledPoliciesPoliciesItemProfilesList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
       }
     },
-    "com.cloudflare.ai_gateway#DeleteResponseDlpPoliciesItem": {
+    "com.cloudflare.ai_gateway#DeleteResponseDlpObjectEnabledPoliciesPoliciesItem": {
       "type": "structure",
       "members": {
         "id": {
@@ -1459,13 +1516,13 @@
           }
         },
         "action": {
-          "target": "com.cloudflare.ai_gateway#DeleteResponseDlpPoliciesItemAction",
+          "target": "com.cloudflare.ai_gateway#DeleteResponseDlpObjectEnabledPoliciesPoliciesItemAction",
           "traits": {
             "smithy.api#required": {}
           }
         },
         "check": {
-          "target": "com.cloudflare.ai_gateway#DeleteResponseDlpPoliciesItemCheckList",
+          "target": "com.cloudflare.ai_gateway#DeleteResponseDlpObjectEnabledPoliciesPoliciesItemCheckList",
           "traits": {
             "smithy.api#required": {}
           }
@@ -1477,33 +1534,44 @@
           }
         },
         "profiles": {
-          "target": "com.cloudflare.ai_gateway#DeleteResponseDlpPoliciesItemProfilesList",
+          "target": "com.cloudflare.ai_gateway#DeleteResponseDlpObjectEnabledPoliciesPoliciesItemProfilesList",
           "traits": {
             "smithy.api#required": {}
           }
         }
       }
     },
-    "com.cloudflare.ai_gateway#DeleteResponseDlpPoliciesList": {
+    "com.cloudflare.ai_gateway#DeleteResponseDlpObjectEnabledPoliciesPoliciesList": {
       "type": "list",
       "member": {
-        "target": "com.cloudflare.ai_gateway#DeleteResponseDlpPoliciesItem"
+        "target": "com.cloudflare.ai_gateway#DeleteResponseDlpObjectEnabledPoliciesPoliciesItem"
+      }
+    },
+    "com.cloudflare.ai_gateway#DeleteResponseDlpObjectEnabledPolicies": {
+      "type": "structure",
+      "members": {
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "policies": {
+          "target": "com.cloudflare.ai_gateway#DeleteResponseDlpObjectEnabledPoliciesPoliciesList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
       }
     },
     "com.cloudflare.ai_gateway#DeleteResponseDlp": {
-      "type": "structure",
+      "type": "union",
       "members": {
-        "action": {
-          "target": "com.cloudflare.ai_gateway#DeleteResponseDlpAction"
+        "ObjectActionEnabledProfiles": {
+          "target": "com.cloudflare.ai_gateway#DeleteResponseDlpObjectActionEnabledProfiles"
         },
-        "enabled": {
-          "target": "smithy.api#Boolean"
-        },
-        "profiles": {
-          "target": "com.cloudflare.ai_gateway#DeleteResponseDlpProfilesList"
-        },
-        "policies": {
-          "target": "com.cloudflare.ai_gateway#DeleteResponseDlpPoliciesList"
+        "ObjectEnabledPolicies": {
+          "target": "com.cloudflare.ai_gateway#DeleteResponseDlpObjectEnabledPolicies"
         }
       }
     },
@@ -2579,7 +2647,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.cloudflare.ai_gateway#GetResponseDlpAction": {
+    "com.cloudflare.ai_gateway#GetResponseDlpObjectActionEnabledProfilesAction": {
       "type": "enum",
       "members": {
         "BLOCK": {
@@ -2596,13 +2664,36 @@
         }
       }
     },
-    "com.cloudflare.ai_gateway#GetResponseDlpProfilesList": {
+    "com.cloudflare.ai_gateway#GetResponseDlpObjectActionEnabledProfilesProfilesList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
       }
     },
-    "com.cloudflare.ai_gateway#GetResponseDlpPoliciesItemAction": {
+    "com.cloudflare.ai_gateway#GetResponseDlpObjectActionEnabledProfiles": {
+      "type": "structure",
+      "members": {
+        "action": {
+          "target": "com.cloudflare.ai_gateway#GetResponseDlpObjectActionEnabledProfilesAction",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "profiles": {
+          "target": "com.cloudflare.ai_gateway#GetResponseDlpObjectActionEnabledProfilesProfilesList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.ai_gateway#GetResponseDlpObjectEnabledPoliciesPoliciesItemAction": {
       "type": "enum",
       "members": {
         "FLAG": {
@@ -2619,7 +2710,7 @@
         }
       }
     },
-    "com.cloudflare.ai_gateway#GetResponseDlpPoliciesItemCheckItem": {
+    "com.cloudflare.ai_gateway#GetResponseDlpObjectEnabledPoliciesPoliciesItemCheckItem": {
       "type": "enum",
       "members": {
         "REQUEST": {
@@ -2636,19 +2727,19 @@
         }
       }
     },
-    "com.cloudflare.ai_gateway#GetResponseDlpPoliciesItemCheckList": {
+    "com.cloudflare.ai_gateway#GetResponseDlpObjectEnabledPoliciesPoliciesItemCheckList": {
       "type": "list",
       "member": {
-        "target": "com.cloudflare.ai_gateway#GetResponseDlpPoliciesItemCheckItem"
+        "target": "com.cloudflare.ai_gateway#GetResponseDlpObjectEnabledPoliciesPoliciesItemCheckItem"
       }
     },
-    "com.cloudflare.ai_gateway#GetResponseDlpPoliciesItemProfilesList": {
+    "com.cloudflare.ai_gateway#GetResponseDlpObjectEnabledPoliciesPoliciesItemProfilesList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
       }
     },
-    "com.cloudflare.ai_gateway#GetResponseDlpPoliciesItem": {
+    "com.cloudflare.ai_gateway#GetResponseDlpObjectEnabledPoliciesPoliciesItem": {
       "type": "structure",
       "members": {
         "id": {
@@ -2658,13 +2749,13 @@
           }
         },
         "action": {
-          "target": "com.cloudflare.ai_gateway#GetResponseDlpPoliciesItemAction",
+          "target": "com.cloudflare.ai_gateway#GetResponseDlpObjectEnabledPoliciesPoliciesItemAction",
           "traits": {
             "smithy.api#required": {}
           }
         },
         "check": {
-          "target": "com.cloudflare.ai_gateway#GetResponseDlpPoliciesItemCheckList",
+          "target": "com.cloudflare.ai_gateway#GetResponseDlpObjectEnabledPoliciesPoliciesItemCheckList",
           "traits": {
             "smithy.api#required": {}
           }
@@ -2676,33 +2767,44 @@
           }
         },
         "profiles": {
-          "target": "com.cloudflare.ai_gateway#GetResponseDlpPoliciesItemProfilesList",
+          "target": "com.cloudflare.ai_gateway#GetResponseDlpObjectEnabledPoliciesPoliciesItemProfilesList",
           "traits": {
             "smithy.api#required": {}
           }
         }
       }
     },
-    "com.cloudflare.ai_gateway#GetResponseDlpPoliciesList": {
+    "com.cloudflare.ai_gateway#GetResponseDlpObjectEnabledPoliciesPoliciesList": {
       "type": "list",
       "member": {
-        "target": "com.cloudflare.ai_gateway#GetResponseDlpPoliciesItem"
+        "target": "com.cloudflare.ai_gateway#GetResponseDlpObjectEnabledPoliciesPoliciesItem"
+      }
+    },
+    "com.cloudflare.ai_gateway#GetResponseDlpObjectEnabledPolicies": {
+      "type": "structure",
+      "members": {
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "policies": {
+          "target": "com.cloudflare.ai_gateway#GetResponseDlpObjectEnabledPoliciesPoliciesList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
       }
     },
     "com.cloudflare.ai_gateway#GetResponseDlp": {
-      "type": "structure",
+      "type": "union",
       "members": {
-        "action": {
-          "target": "com.cloudflare.ai_gateway#GetResponseDlpAction"
+        "ObjectActionEnabledProfiles": {
+          "target": "com.cloudflare.ai_gateway#GetResponseDlpObjectActionEnabledProfiles"
         },
-        "enabled": {
-          "target": "smithy.api#Boolean"
-        },
-        "profiles": {
-          "target": "com.cloudflare.ai_gateway#GetResponseDlpProfilesList"
-        },
-        "policies": {
-          "target": "com.cloudflare.ai_gateway#GetResponseDlpPoliciesList"
+        "ObjectEnabledPolicies": {
+          "target": "com.cloudflare.ai_gateway#GetResponseDlpObjectEnabledPolicies"
         }
       }
     },
@@ -3789,7 +3891,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.cloudflare.ai_gateway#ListResultItemDlpAction": {
+    "com.cloudflare.ai_gateway#ListResultItemDlpObjectActionEnabledProfilesAction": {
       "type": "enum",
       "members": {
         "BLOCK": {
@@ -3806,13 +3908,36 @@
         }
       }
     },
-    "com.cloudflare.ai_gateway#ListResultItemDlpProfilesList": {
+    "com.cloudflare.ai_gateway#ListResultItemDlpObjectActionEnabledProfilesProfilesList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
       }
     },
-    "com.cloudflare.ai_gateway#ListResultItemDlpPoliciesItemAction": {
+    "com.cloudflare.ai_gateway#ListResultItemDlpObjectActionEnabledProfiles": {
+      "type": "structure",
+      "members": {
+        "action": {
+          "target": "com.cloudflare.ai_gateway#ListResultItemDlpObjectActionEnabledProfilesAction",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "profiles": {
+          "target": "com.cloudflare.ai_gateway#ListResultItemDlpObjectActionEnabledProfilesProfilesList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.ai_gateway#ListResultItemDlpObjectEnabledPoliciesPoliciesItemAction": {
       "type": "enum",
       "members": {
         "FLAG": {
@@ -3829,7 +3954,7 @@
         }
       }
     },
-    "com.cloudflare.ai_gateway#ListResultItemDlpPoliciesItemCheckItem": {
+    "com.cloudflare.ai_gateway#ListResultItemDlpObjectEnabledPoliciesPoliciesItemCheckItem": {
       "type": "enum",
       "members": {
         "REQUEST": {
@@ -3846,19 +3971,19 @@
         }
       }
     },
-    "com.cloudflare.ai_gateway#ListResultItemDlpPoliciesItemCheckList": {
+    "com.cloudflare.ai_gateway#ListResultItemDlpObjectEnabledPoliciesPoliciesItemCheckList": {
       "type": "list",
       "member": {
-        "target": "com.cloudflare.ai_gateway#ListResultItemDlpPoliciesItemCheckItem"
+        "target": "com.cloudflare.ai_gateway#ListResultItemDlpObjectEnabledPoliciesPoliciesItemCheckItem"
       }
     },
-    "com.cloudflare.ai_gateway#ListResultItemDlpPoliciesItemProfilesList": {
+    "com.cloudflare.ai_gateway#ListResultItemDlpObjectEnabledPoliciesPoliciesItemProfilesList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
       }
     },
-    "com.cloudflare.ai_gateway#ListResultItemDlpPoliciesItem": {
+    "com.cloudflare.ai_gateway#ListResultItemDlpObjectEnabledPoliciesPoliciesItem": {
       "type": "structure",
       "members": {
         "id": {
@@ -3868,13 +3993,13 @@
           }
         },
         "action": {
-          "target": "com.cloudflare.ai_gateway#ListResultItemDlpPoliciesItemAction",
+          "target": "com.cloudflare.ai_gateway#ListResultItemDlpObjectEnabledPoliciesPoliciesItemAction",
           "traits": {
             "smithy.api#required": {}
           }
         },
         "check": {
-          "target": "com.cloudflare.ai_gateway#ListResultItemDlpPoliciesItemCheckList",
+          "target": "com.cloudflare.ai_gateway#ListResultItemDlpObjectEnabledPoliciesPoliciesItemCheckList",
           "traits": {
             "smithy.api#required": {}
           }
@@ -3886,33 +4011,44 @@
           }
         },
         "profiles": {
-          "target": "com.cloudflare.ai_gateway#ListResultItemDlpPoliciesItemProfilesList",
+          "target": "com.cloudflare.ai_gateway#ListResultItemDlpObjectEnabledPoliciesPoliciesItemProfilesList",
           "traits": {
             "smithy.api#required": {}
           }
         }
       }
     },
-    "com.cloudflare.ai_gateway#ListResultItemDlpPoliciesList": {
+    "com.cloudflare.ai_gateway#ListResultItemDlpObjectEnabledPoliciesPoliciesList": {
       "type": "list",
       "member": {
-        "target": "com.cloudflare.ai_gateway#ListResultItemDlpPoliciesItem"
+        "target": "com.cloudflare.ai_gateway#ListResultItemDlpObjectEnabledPoliciesPoliciesItem"
+      }
+    },
+    "com.cloudflare.ai_gateway#ListResultItemDlpObjectEnabledPolicies": {
+      "type": "structure",
+      "members": {
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "policies": {
+          "target": "com.cloudflare.ai_gateway#ListResultItemDlpObjectEnabledPoliciesPoliciesList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
       }
     },
     "com.cloudflare.ai_gateway#ListResultItemDlp": {
-      "type": "structure",
+      "type": "union",
       "members": {
-        "action": {
-          "target": "com.cloudflare.ai_gateway#ListResultItemDlpAction"
+        "ObjectActionEnabledProfiles": {
+          "target": "com.cloudflare.ai_gateway#ListResultItemDlpObjectActionEnabledProfiles"
         },
-        "enabled": {
-          "target": "smithy.api#Boolean"
-        },
-        "profiles": {
-          "target": "com.cloudflare.ai_gateway#ListResultItemDlpProfilesList"
-        },
-        "policies": {
-          "target": "com.cloudflare.ai_gateway#ListResultItemDlpPoliciesList"
+        "ObjectEnabledPolicies": {
+          "target": "com.cloudflare.ai_gateway#ListResultItemDlpObjectEnabledPolicies"
         }
       }
     },
@@ -4982,7 +5118,7 @@
         "smithy.api#readonly": {}
       }
     },
-    "com.cloudflare.ai_gateway#UpdateRequestDlpAction": {
+    "com.cloudflare.ai_gateway#UpdateRequestDlpObjectActionEnabledProfilesAction": {
       "type": "enum",
       "members": {
         "BLOCK": {
@@ -4999,13 +5135,36 @@
         }
       }
     },
-    "com.cloudflare.ai_gateway#UpdateRequestDlpProfilesList": {
+    "com.cloudflare.ai_gateway#UpdateRequestDlpObjectActionEnabledProfilesProfilesList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
       }
     },
-    "com.cloudflare.ai_gateway#UpdateRequestDlpPoliciesItemAction": {
+    "com.cloudflare.ai_gateway#UpdateRequestDlpObjectActionEnabledProfiles": {
+      "type": "structure",
+      "members": {
+        "action": {
+          "target": "com.cloudflare.ai_gateway#UpdateRequestDlpObjectActionEnabledProfilesAction",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "profiles": {
+          "target": "com.cloudflare.ai_gateway#UpdateRequestDlpObjectActionEnabledProfilesProfilesList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.ai_gateway#UpdateRequestDlpObjectEnabledPoliciesPoliciesItemAction": {
       "type": "enum",
       "members": {
         "FLAG": {
@@ -5022,7 +5181,7 @@
         }
       }
     },
-    "com.cloudflare.ai_gateway#UpdateRequestDlpPoliciesItemCheckItem": {
+    "com.cloudflare.ai_gateway#UpdateRequestDlpObjectEnabledPoliciesPoliciesItemCheckItem": {
       "type": "enum",
       "members": {
         "REQUEST": {
@@ -5039,19 +5198,19 @@
         }
       }
     },
-    "com.cloudflare.ai_gateway#UpdateRequestDlpPoliciesItemCheckList": {
+    "com.cloudflare.ai_gateway#UpdateRequestDlpObjectEnabledPoliciesPoliciesItemCheckList": {
       "type": "list",
       "member": {
-        "target": "com.cloudflare.ai_gateway#UpdateRequestDlpPoliciesItemCheckItem"
+        "target": "com.cloudflare.ai_gateway#UpdateRequestDlpObjectEnabledPoliciesPoliciesItemCheckItem"
       }
     },
-    "com.cloudflare.ai_gateway#UpdateRequestDlpPoliciesItemProfilesList": {
+    "com.cloudflare.ai_gateway#UpdateRequestDlpObjectEnabledPoliciesPoliciesItemProfilesList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
       }
     },
-    "com.cloudflare.ai_gateway#UpdateRequestDlpPoliciesItem": {
+    "com.cloudflare.ai_gateway#UpdateRequestDlpObjectEnabledPoliciesPoliciesItem": {
       "type": "structure",
       "members": {
         "id": {
@@ -5061,13 +5220,13 @@
           }
         },
         "action": {
-          "target": "com.cloudflare.ai_gateway#UpdateRequestDlpPoliciesItemAction",
+          "target": "com.cloudflare.ai_gateway#UpdateRequestDlpObjectEnabledPoliciesPoliciesItemAction",
           "traits": {
             "smithy.api#required": {}
           }
         },
         "check": {
-          "target": "com.cloudflare.ai_gateway#UpdateRequestDlpPoliciesItemCheckList",
+          "target": "com.cloudflare.ai_gateway#UpdateRequestDlpObjectEnabledPoliciesPoliciesItemCheckList",
           "traits": {
             "smithy.api#required": {}
           }
@@ -5079,33 +5238,44 @@
           }
         },
         "profiles": {
-          "target": "com.cloudflare.ai_gateway#UpdateRequestDlpPoliciesItemProfilesList",
+          "target": "com.cloudflare.ai_gateway#UpdateRequestDlpObjectEnabledPoliciesPoliciesItemProfilesList",
           "traits": {
             "smithy.api#required": {}
           }
         }
       }
     },
-    "com.cloudflare.ai_gateway#UpdateRequestDlpPoliciesList": {
+    "com.cloudflare.ai_gateway#UpdateRequestDlpObjectEnabledPoliciesPoliciesList": {
       "type": "list",
       "member": {
-        "target": "com.cloudflare.ai_gateway#UpdateRequestDlpPoliciesItem"
+        "target": "com.cloudflare.ai_gateway#UpdateRequestDlpObjectEnabledPoliciesPoliciesItem"
+      }
+    },
+    "com.cloudflare.ai_gateway#UpdateRequestDlpObjectEnabledPolicies": {
+      "type": "structure",
+      "members": {
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "policies": {
+          "target": "com.cloudflare.ai_gateway#UpdateRequestDlpObjectEnabledPoliciesPoliciesList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
       }
     },
     "com.cloudflare.ai_gateway#UpdateRequestDlp": {
-      "type": "structure",
+      "type": "union",
       "members": {
-        "action": {
-          "target": "com.cloudflare.ai_gateway#UpdateRequestDlpAction"
+        "ObjectActionEnabledProfiles": {
+          "target": "com.cloudflare.ai_gateway#UpdateRequestDlpObjectActionEnabledProfiles"
         },
-        "enabled": {
-          "target": "smithy.api#Boolean"
-        },
-        "profiles": {
-          "target": "com.cloudflare.ai_gateway#UpdateRequestDlpProfilesList"
-        },
-        "policies": {
-          "target": "com.cloudflare.ai_gateway#UpdateRequestDlpPoliciesList"
+        "ObjectEnabledPolicies": {
+          "target": "com.cloudflare.ai_gateway#UpdateRequestDlpObjectEnabledPolicies"
         }
       }
     },
@@ -6132,7 +6302,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.cloudflare.ai_gateway#UpdateResponseDlpAction": {
+    "com.cloudflare.ai_gateway#UpdateResponseDlpObjectActionEnabledProfilesAction": {
       "type": "enum",
       "members": {
         "BLOCK": {
@@ -6149,13 +6319,36 @@
         }
       }
     },
-    "com.cloudflare.ai_gateway#UpdateResponseDlpProfilesList": {
+    "com.cloudflare.ai_gateway#UpdateResponseDlpObjectActionEnabledProfilesProfilesList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
       }
     },
-    "com.cloudflare.ai_gateway#UpdateResponseDlpPoliciesItemAction": {
+    "com.cloudflare.ai_gateway#UpdateResponseDlpObjectActionEnabledProfiles": {
+      "type": "structure",
+      "members": {
+        "action": {
+          "target": "com.cloudflare.ai_gateway#UpdateResponseDlpObjectActionEnabledProfilesAction",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "profiles": {
+          "target": "com.cloudflare.ai_gateway#UpdateResponseDlpObjectActionEnabledProfilesProfilesList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.ai_gateway#UpdateResponseDlpObjectEnabledPoliciesPoliciesItemAction": {
       "type": "enum",
       "members": {
         "FLAG": {
@@ -6172,7 +6365,7 @@
         }
       }
     },
-    "com.cloudflare.ai_gateway#UpdateResponseDlpPoliciesItemCheckItem": {
+    "com.cloudflare.ai_gateway#UpdateResponseDlpObjectEnabledPoliciesPoliciesItemCheckItem": {
       "type": "enum",
       "members": {
         "REQUEST": {
@@ -6189,19 +6382,19 @@
         }
       }
     },
-    "com.cloudflare.ai_gateway#UpdateResponseDlpPoliciesItemCheckList": {
+    "com.cloudflare.ai_gateway#UpdateResponseDlpObjectEnabledPoliciesPoliciesItemCheckList": {
       "type": "list",
       "member": {
-        "target": "com.cloudflare.ai_gateway#UpdateResponseDlpPoliciesItemCheckItem"
+        "target": "com.cloudflare.ai_gateway#UpdateResponseDlpObjectEnabledPoliciesPoliciesItemCheckItem"
       }
     },
-    "com.cloudflare.ai_gateway#UpdateResponseDlpPoliciesItemProfilesList": {
+    "com.cloudflare.ai_gateway#UpdateResponseDlpObjectEnabledPoliciesPoliciesItemProfilesList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
       }
     },
-    "com.cloudflare.ai_gateway#UpdateResponseDlpPoliciesItem": {
+    "com.cloudflare.ai_gateway#UpdateResponseDlpObjectEnabledPoliciesPoliciesItem": {
       "type": "structure",
       "members": {
         "id": {
@@ -6211,13 +6404,13 @@
           }
         },
         "action": {
-          "target": "com.cloudflare.ai_gateway#UpdateResponseDlpPoliciesItemAction",
+          "target": "com.cloudflare.ai_gateway#UpdateResponseDlpObjectEnabledPoliciesPoliciesItemAction",
           "traits": {
             "smithy.api#required": {}
           }
         },
         "check": {
-          "target": "com.cloudflare.ai_gateway#UpdateResponseDlpPoliciesItemCheckList",
+          "target": "com.cloudflare.ai_gateway#UpdateResponseDlpObjectEnabledPoliciesPoliciesItemCheckList",
           "traits": {
             "smithy.api#required": {}
           }
@@ -6229,33 +6422,44 @@
           }
         },
         "profiles": {
-          "target": "com.cloudflare.ai_gateway#UpdateResponseDlpPoliciesItemProfilesList",
+          "target": "com.cloudflare.ai_gateway#UpdateResponseDlpObjectEnabledPoliciesPoliciesItemProfilesList",
           "traits": {
             "smithy.api#required": {}
           }
         }
       }
     },
-    "com.cloudflare.ai_gateway#UpdateResponseDlpPoliciesList": {
+    "com.cloudflare.ai_gateway#UpdateResponseDlpObjectEnabledPoliciesPoliciesList": {
       "type": "list",
       "member": {
-        "target": "com.cloudflare.ai_gateway#UpdateResponseDlpPoliciesItem"
+        "target": "com.cloudflare.ai_gateway#UpdateResponseDlpObjectEnabledPoliciesPoliciesItem"
+      }
+    },
+    "com.cloudflare.ai_gateway#UpdateResponseDlpObjectEnabledPolicies": {
+      "type": "structure",
+      "members": {
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "policies": {
+          "target": "com.cloudflare.ai_gateway#UpdateResponseDlpObjectEnabledPoliciesPoliciesList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
       }
     },
     "com.cloudflare.ai_gateway#UpdateResponseDlp": {
-      "type": "structure",
+      "type": "union",
       "members": {
-        "action": {
-          "target": "com.cloudflare.ai_gateway#UpdateResponseDlpAction"
+        "ObjectActionEnabledProfiles": {
+          "target": "com.cloudflare.ai_gateway#UpdateResponseDlpObjectActionEnabledProfiles"
         },
-        "enabled": {
-          "target": "smithy.api#Boolean"
-        },
-        "profiles": {
-          "target": "com.cloudflare.ai_gateway#UpdateResponseDlpProfilesList"
-        },
-        "policies": {
-          "target": "com.cloudflare.ai_gateway#UpdateResponseDlpPoliciesList"
+        "ObjectEnabledPolicies": {
+          "target": "com.cloudflare.ai_gateway#UpdateResponseDlpObjectEnabledPolicies"
         }
       }
     },

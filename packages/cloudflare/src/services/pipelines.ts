@@ -505,62 +505,63 @@ export const CreatePipelineResponse = /*@__PURE__*/ S.suspend(() =>
 export type SinksCreateRequestType = "r2" | "r2_data_catalog" | (string & {});
 export const SinksCreateRequestType = /*@__PURE__*/ S.String;
 
-export interface SinksCreateRequestConfigCredentials {
+export interface SinksCreateRequestConfigCloudflarePipelinesR2TableCredentials {
   /** Cloudflare Account ID for the bucket */
   accessKeyId: string;
   /** Cloudflare Account ID for the bucket */
   secretAccessKey: string;
 }
-export const SinksCreateRequestConfigCredentials = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accessKeyId: S.String.pipe(T.Body("access_key_id")),
-    secretAccessKey: S.String.pipe(T.Body("secret_access_key")),
-  }),
-).annotate({
-  identifier: "SinksCreateRequestConfigCredentials",
-}) as any as S.Schema<SinksCreateRequestConfigCredentials>;
+export const SinksCreateRequestConfigCloudflarePipelinesR2TableCredentials =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      accessKeyId: S.String.pipe(T.Body("access_key_id")),
+      secretAccessKey: S.String.pipe(T.Body("secret_access_key")),
+    }),
+  ).annotate({
+    identifier: "SinksCreateRequestConfigCloudflarePipelinesR2TableCredentials",
+  }) as any as S.Schema<SinksCreateRequestConfigCloudflarePipelinesR2TableCredentials>;
 
-export type SinksCreateRequestConfigFileNamingStrategy =
-  | "serial"
-  | "uuid"
-  | "uuid_v7"
-  | "ulid"
-  | (string & {});
-export const SinksCreateRequestConfigFileNamingStrategy =
+export type SinksCreateRequestConfigCloudflarePipelinesR2TableFileNamingStrategy =
+  "serial" | "uuid" | "uuid_v7" | "ulid" | (string & {});
+export const SinksCreateRequestConfigCloudflarePipelinesR2TableFileNamingStrategy =
   /*@__PURE__*/ S.String;
 
-export interface SinksCreateRequestConfigFileNaming {
+export interface SinksCreateRequestConfigCloudflarePipelinesR2TableFileNaming {
   /** The prefix to use in file name. i.e prefix-<uuid>.parquet */
   prefix?: string;
   /** Filename generation strategy. */
-  strategy?: SinksCreateRequestConfigFileNamingStrategy;
+  strategy?: SinksCreateRequestConfigCloudflarePipelinesR2TableFileNamingStrategy;
   /** This will overwrite the default file suffix. i.e .parquet, use with caution */
   suffix?: string;
 }
-export const SinksCreateRequestConfigFileNaming = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    prefix: S.optional(S.String),
-    strategy: S.optional(SinksCreateRequestConfigFileNamingStrategy),
-    suffix: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SinksCreateRequestConfigFileNaming",
-}) as any as S.Schema<SinksCreateRequestConfigFileNaming>;
+export const SinksCreateRequestConfigCloudflarePipelinesR2TableFileNaming =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      prefix: S.optional(S.String),
+      strategy: S.optional(
+        SinksCreateRequestConfigCloudflarePipelinesR2TableFileNamingStrategy,
+      ),
+      suffix: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "SinksCreateRequestConfigCloudflarePipelinesR2TableFileNaming",
+  }) as any as S.Schema<SinksCreateRequestConfigCloudflarePipelinesR2TableFileNaming>;
 
-export interface SinksCreateRequestConfigPartitioning {
+export interface SinksCreateRequestConfigCloudflarePipelinesR2TablePartitioning {
   /** The pattern of the date string */
   timePattern?: string;
 }
-export const SinksCreateRequestConfigPartitioning = /*@__PURE__*/ S.suspend(
-  () =>
+export const SinksCreateRequestConfigCloudflarePipelinesR2TablePartitioning =
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       timePattern: S.optional(S.String.pipe(T.Body("time_pattern"))),
     }),
-).annotate({
-  identifier: "SinksCreateRequestConfigPartitioning",
-}) as any as S.Schema<SinksCreateRequestConfigPartitioning>;
+  ).annotate({
+    identifier:
+      "SinksCreateRequestConfigCloudflarePipelinesR2TablePartitioning",
+  }) as any as S.Schema<SinksCreateRequestConfigCloudflarePipelinesR2TablePartitioning>;
 
-export interface SinksCreateRequestConfigRollingPolicy {
+export interface SinksCreateRequestConfigCloudflarePipelinesR2TableRollingPolicy {
   /** Files will be rolled after reaching this number of bytes */
   fileSizeBytes?: number;
   /** Number of seconds of inactivity to wait before rolling over to a new file */
@@ -568,8 +569,8 @@ export interface SinksCreateRequestConfigRollingPolicy {
   /** Number of seconds to wait before rolling over to a new file */
   intervalSeconds?: number;
 }
-export const SinksCreateRequestConfigRollingPolicy = /*@__PURE__*/ S.suspend(
-  () =>
+export const SinksCreateRequestConfigCloudflarePipelinesR2TableRollingPolicy =
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       fileSizeBytes: S.optional(S.Number.pipe(T.Body("file_size_bytes"))),
       inactivitySeconds: S.optional(
@@ -577,102 +578,187 @@ export const SinksCreateRequestConfigRollingPolicy = /*@__PURE__*/ S.suspend(
       ),
       intervalSeconds: S.optional(S.Number.pipe(T.Body("interval_seconds"))),
     }),
-).annotate({
-  identifier: "SinksCreateRequestConfigRollingPolicy",
-}) as any as S.Schema<SinksCreateRequestConfigRollingPolicy>;
+  ).annotate({
+    identifier:
+      "SinksCreateRequestConfigCloudflarePipelinesR2TableRollingPolicy",
+  }) as any as S.Schema<SinksCreateRequestConfigCloudflarePipelinesR2TableRollingPolicy>;
 
-export interface SinksCreateRequestConfig {
+export interface SinksCreateRequestConfigCloudflarePipelinesR2Table {
   /** Cloudflare Account ID for the bucket */
-  accountId?: string;
+  accountId: string;
   /** R2 Bucket to write to */
-  bucket?: string;
-  credentials?: SinksCreateRequestConfigCredentials;
+  bucket: string;
+  credentials: SinksCreateRequestConfigCloudflarePipelinesR2TableCredentials;
   /** Controls filename prefix/suffix and strategy. */
-  fileNaming?: SinksCreateRequestConfigFileNaming;
+  fileNaming?: SinksCreateRequestConfigCloudflarePipelinesR2TableFileNaming;
   /** Jurisdiction this bucket is hosted in */
   jurisdiction?: string;
   /** Data-layout partitioning for sinks. */
-  partitioning?: SinksCreateRequestConfigPartitioning;
+  partitioning?: SinksCreateRequestConfigCloudflarePipelinesR2TablePartitioning;
   /** Subpath within the bucket to write to */
   path?: string;
   /** Rolling policy for file sinks (when & why to close a file and open a new one). */
-  rollingPolicy?: SinksCreateRequestConfigRollingPolicy;
+  rollingPolicy?: SinksCreateRequestConfigCloudflarePipelinesR2TableRollingPolicy;
+}
+export const SinksCreateRequestConfigCloudflarePipelinesR2Table =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      accountId: S.String.pipe(T.Body("account_id")),
+      bucket: S.String,
+      credentials:
+        SinksCreateRequestConfigCloudflarePipelinesR2TableCredentials,
+      fileNaming: S.optional(
+        SinksCreateRequestConfigCloudflarePipelinesR2TableFileNaming.pipe(
+          T.Body("file_naming"),
+        ),
+      ),
+      jurisdiction: S.optional(S.String),
+      partitioning: S.optional(
+        SinksCreateRequestConfigCloudflarePipelinesR2TablePartitioning,
+      ),
+      path: S.optional(S.String),
+      rollingPolicy: S.optional(
+        SinksCreateRequestConfigCloudflarePipelinesR2TableRollingPolicy.pipe(
+          T.Body("rolling_policy"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "SinksCreateRequestConfigCloudflarePipelinesR2Table",
+  }) as any as S.Schema<SinksCreateRequestConfigCloudflarePipelinesR2Table>;
+
+export interface SinksCreateRequestConfigCloudflarePipelinesR2DataCatalogTableRollingPolicy {
+  /** Files will be rolled after reaching this number of bytes */
+  fileSizeBytes?: number;
+  /** Number of seconds of inactivity to wait before rolling over to a new file */
+  inactivitySeconds?: number;
+  /** Number of seconds to wait before rolling over to a new file */
+  intervalSeconds?: number;
+}
+export const SinksCreateRequestConfigCloudflarePipelinesR2DataCatalogTableRollingPolicy =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      fileSizeBytes: S.optional(S.Number.pipe(T.Body("file_size_bytes"))),
+      inactivitySeconds: S.optional(
+        S.Number.pipe(T.Body("inactivity_seconds")),
+      ),
+      intervalSeconds: S.optional(S.Number.pipe(T.Body("interval_seconds"))),
+    }),
+  ).annotate({
+    identifier:
+      "SinksCreateRequestConfigCloudflarePipelinesR2DataCatalogTableRollingPolicy",
+  }) as any as S.Schema<SinksCreateRequestConfigCloudflarePipelinesR2DataCatalogTableRollingPolicy>;
+
+export interface SinksCreateRequestConfigCloudflarePipelinesR2DataCatalogTable {
   /** Authentication token */
-  token?: string;
+  token: string;
+  /** Cloudflare Account ID */
+  accountId: string;
+  /** The R2 Bucket that hosts this catalog */
+  bucket: string;
   /** Table name */
-  tableName?: string;
+  tableName: string;
   /** Table namespace */
   namespace?: string;
+  /** Rolling policy for file sinks (when & why to close a file and open a new one). */
+  rollingPolicy?: SinksCreateRequestConfigCloudflarePipelinesR2DataCatalogTableRollingPolicy;
 }
-export const SinksCreateRequestConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.optional(S.String.pipe(T.Body("account_id"))),
-    bucket: S.optional(S.String),
-    credentials: S.optional(SinksCreateRequestConfigCredentials),
-    fileNaming: S.optional(
-      SinksCreateRequestConfigFileNaming.pipe(T.Body("file_naming")),
-    ),
-    jurisdiction: S.optional(S.String),
-    partitioning: S.optional(SinksCreateRequestConfigPartitioning),
-    path: S.optional(S.String),
-    rollingPolicy: S.optional(
-      SinksCreateRequestConfigRollingPolicy.pipe(T.Body("rolling_policy")),
-    ),
-    token: S.optional(S.String),
-    tableName: S.optional(S.String.pipe(T.Body("table_name"))),
-    namespace: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SinksCreateRequestConfig",
-}) as any as S.Schema<SinksCreateRequestConfig>;
+export const SinksCreateRequestConfigCloudflarePipelinesR2DataCatalogTable =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      token: S.String,
+      accountId: S.String.pipe(T.Body("account_id")),
+      bucket: S.String,
+      tableName: S.String.pipe(T.Body("table_name")),
+      namespace: S.optional(S.String),
+      rollingPolicy: S.optional(
+        SinksCreateRequestConfigCloudflarePipelinesR2DataCatalogTableRollingPolicy.pipe(
+          T.Body("rolling_policy"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "SinksCreateRequestConfigCloudflarePipelinesR2DataCatalogTable",
+  }) as any as S.Schema<SinksCreateRequestConfigCloudflarePipelinesR2DataCatalogTable>;
 
-export type SinksCreateRequestFormatType = "json" | (string & {});
-export const SinksCreateRequestFormatType = /*@__PURE__*/ S.String;
+export type SinksCreateRequestConfig =
+  | SinksCreateRequestConfigCloudflarePipelinesR2Table
+  | SinksCreateRequestConfigCloudflarePipelinesR2DataCatalogTable;
+export const SinksCreateRequestConfig = /*@__PURE__*/ S.Unknown;
 
-export type SinksCreateRequestFormatDecimalEncoding =
+export type SinksCreateRequestFormatJsonType = "json" | (string & {});
+export const SinksCreateRequestFormatJsonType = /*@__PURE__*/ S.String;
+
+export type SinksCreateRequestFormatJsonDecimalEncoding =
   | "number"
   | "string"
   | "bytes"
   | (string & {});
-export const SinksCreateRequestFormatDecimalEncoding = /*@__PURE__*/ S.String;
+export const SinksCreateRequestFormatJsonDecimalEncoding =
+  /*@__PURE__*/ S.String;
 
-export type SinksCreateRequestFormatTimestampFormat =
+export type SinksCreateRequestFormatJsonTimestampFormat =
   | "rfc3339"
   | "unix_millis"
   | (string & {});
-export const SinksCreateRequestFormatTimestampFormat = /*@__PURE__*/ S.String;
+export const SinksCreateRequestFormatJsonTimestampFormat =
+  /*@__PURE__*/ S.String;
 
-export type SinksCreateRequestFormatCompression =
+export interface SinksCreateRequestFormatJson {
+  type: SinksCreateRequestFormatJsonType;
+  decimalEncoding?: SinksCreateRequestFormatJsonDecimalEncoding;
+  timestampFormat?: SinksCreateRequestFormatJsonTimestampFormat;
+  unstructured?: boolean;
+}
+export const SinksCreateRequestFormatJson = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: SinksCreateRequestFormatJsonType,
+    decimalEncoding: S.optional(
+      SinksCreateRequestFormatJsonDecimalEncoding.pipe(
+        T.Body("decimal_encoding"),
+      ),
+    ),
+    timestampFormat: S.optional(
+      SinksCreateRequestFormatJsonTimestampFormat.pipe(
+        T.Body("timestamp_format"),
+      ),
+    ),
+    unstructured: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "SinksCreateRequestFormatJson",
+}) as any as S.Schema<SinksCreateRequestFormatJson>;
+
+export type SinksCreateRequestFormatParquetType = "parquet" | (string & {});
+export const SinksCreateRequestFormatParquetType = /*@__PURE__*/ S.String;
+
+export type SinksCreateRequestFormatParquetCompression =
   | "uncompressed"
   | "snappy"
   | "gzip"
   | (string & {});
-export const SinksCreateRequestFormatCompression = /*@__PURE__*/ S.String;
+export const SinksCreateRequestFormatParquetCompression =
+  /*@__PURE__*/ S.String;
 
-export interface SinksCreateRequestFormat {
-  type?: SinksCreateRequestFormatType;
-  decimalEncoding?: SinksCreateRequestFormatDecimalEncoding;
-  timestampFormat?: SinksCreateRequestFormatTimestampFormat;
-  unstructured?: boolean;
-  compression?: SinksCreateRequestFormatCompression;
+export interface SinksCreateRequestFormatParquet {
+  type: SinksCreateRequestFormatParquetType;
+  compression?: SinksCreateRequestFormatParquetCompression;
   rowGroupBytes?: number;
 }
-export const SinksCreateRequestFormat = /*@__PURE__*/ S.suspend(() =>
+export const SinksCreateRequestFormatParquet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    type: S.optional(SinksCreateRequestFormatType),
-    decimalEncoding: S.optional(
-      SinksCreateRequestFormatDecimalEncoding.pipe(T.Body("decimal_encoding")),
-    ),
-    timestampFormat: S.optional(
-      SinksCreateRequestFormatTimestampFormat.pipe(T.Body("timestamp_format")),
-    ),
-    unstructured: S.optional(S.Boolean),
-    compression: S.optional(SinksCreateRequestFormatCompression),
+    type: SinksCreateRequestFormatParquetType,
+    compression: S.optional(SinksCreateRequestFormatParquetCompression),
     rowGroupBytes: S.optional(S.Number.pipe(T.Body("row_group_bytes"))),
   }),
 ).annotate({
-  identifier: "SinksCreateRequestFormat",
-}) as any as S.Schema<SinksCreateRequestFormat>;
+  identifier: "SinksCreateRequestFormatParquet",
+}) as any as S.Schema<SinksCreateRequestFormatParquet>;
+
+export type SinksCreateRequestFormat =
+  | SinksCreateRequestFormatJson
+  | SinksCreateRequestFormatParquet;
+export const SinksCreateRequestFormat = /*@__PURE__*/ S.Unknown;
 
 export type SinksCreateRequestSchemaFieldsItemType = "int32" | (string & {});
 export const SinksCreateRequestSchemaFieldsItemType = /*@__PURE__*/ S.String;
@@ -716,59 +802,82 @@ export const SinksCreateRequestSchemaFieldsList = /*@__PURE__*/ S.Array(
   SinksCreateRequestSchemaFieldsItem,
 ) as any as S.Schema<SinksCreateRequestSchemaFieldsList>;
 
-export type SinksCreateRequestSchemaFormatType = "json" | (string & {});
-export const SinksCreateRequestSchemaFormatType = /*@__PURE__*/ S.String;
+export type SinksCreateRequestSchemaFormatJsonType = "json" | (string & {});
+export const SinksCreateRequestSchemaFormatJsonType = /*@__PURE__*/ S.String;
 
-export type SinksCreateRequestSchemaFormatDecimalEncoding =
+export type SinksCreateRequestSchemaFormatJsonDecimalEncoding =
   | "number"
   | "string"
   | "bytes"
   | (string & {});
-export const SinksCreateRequestSchemaFormatDecimalEncoding =
+export const SinksCreateRequestSchemaFormatJsonDecimalEncoding =
   /*@__PURE__*/ S.String;
 
-export type SinksCreateRequestSchemaFormatTimestampFormat =
+export type SinksCreateRequestSchemaFormatJsonTimestampFormat =
   | "rfc3339"
   | "unix_millis"
   | (string & {});
-export const SinksCreateRequestSchemaFormatTimestampFormat =
+export const SinksCreateRequestSchemaFormatJsonTimestampFormat =
   /*@__PURE__*/ S.String;
 
-export type SinksCreateRequestSchemaFormatCompression =
-  | "uncompressed"
-  | "snappy"
-  | "gzip"
-  | (string & {});
-export const SinksCreateRequestSchemaFormatCompression = /*@__PURE__*/ S.String;
-
-export interface SinksCreateRequestSchemaFormat {
-  type?: SinksCreateRequestSchemaFormatType;
-  decimalEncoding?: SinksCreateRequestSchemaFormatDecimalEncoding;
-  timestampFormat?: SinksCreateRequestSchemaFormatTimestampFormat;
+export interface SinksCreateRequestSchemaFormatJson {
+  type: SinksCreateRequestSchemaFormatJsonType;
+  decimalEncoding?: SinksCreateRequestSchemaFormatJsonDecimalEncoding;
+  timestampFormat?: SinksCreateRequestSchemaFormatJsonTimestampFormat;
   unstructured?: boolean;
-  compression?: SinksCreateRequestSchemaFormatCompression;
-  rowGroupBytes?: number;
 }
-export const SinksCreateRequestSchemaFormat = /*@__PURE__*/ S.suspend(() =>
+export const SinksCreateRequestSchemaFormatJson = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    type: S.optional(SinksCreateRequestSchemaFormatType),
+    type: SinksCreateRequestSchemaFormatJsonType,
     decimalEncoding: S.optional(
-      SinksCreateRequestSchemaFormatDecimalEncoding.pipe(
+      SinksCreateRequestSchemaFormatJsonDecimalEncoding.pipe(
         T.Body("decimal_encoding"),
       ),
     ),
     timestampFormat: S.optional(
-      SinksCreateRequestSchemaFormatTimestampFormat.pipe(
+      SinksCreateRequestSchemaFormatJsonTimestampFormat.pipe(
         T.Body("timestamp_format"),
       ),
     ),
     unstructured: S.optional(S.Boolean),
-    compression: S.optional(SinksCreateRequestSchemaFormatCompression),
-    rowGroupBytes: S.optional(S.Number.pipe(T.Body("row_group_bytes"))),
   }),
 ).annotate({
-  identifier: "SinksCreateRequestSchemaFormat",
-}) as any as S.Schema<SinksCreateRequestSchemaFormat>;
+  identifier: "SinksCreateRequestSchemaFormatJson",
+}) as any as S.Schema<SinksCreateRequestSchemaFormatJson>;
+
+export type SinksCreateRequestSchemaFormatParquetType =
+  | "parquet"
+  | (string & {});
+export const SinksCreateRequestSchemaFormatParquetType = /*@__PURE__*/ S.String;
+
+export type SinksCreateRequestSchemaFormatParquetCompression =
+  | "uncompressed"
+  | "snappy"
+  | "gzip"
+  | (string & {});
+export const SinksCreateRequestSchemaFormatParquetCompression =
+  /*@__PURE__*/ S.String;
+
+export interface SinksCreateRequestSchemaFormatParquet {
+  type: SinksCreateRequestSchemaFormatParquetType;
+  compression?: SinksCreateRequestSchemaFormatParquetCompression;
+  rowGroupBytes?: number;
+}
+export const SinksCreateRequestSchemaFormatParquet = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      type: SinksCreateRequestSchemaFormatParquetType,
+      compression: S.optional(SinksCreateRequestSchemaFormatParquetCompression),
+      rowGroupBytes: S.optional(S.Number.pipe(T.Body("row_group_bytes"))),
+    }),
+).annotate({
+  identifier: "SinksCreateRequestSchemaFormatParquet",
+}) as any as S.Schema<SinksCreateRequestSchemaFormatParquet>;
+
+export type SinksCreateRequestSchemaFormat =
+  | SinksCreateRequestSchemaFormatJson
+  | SinksCreateRequestSchemaFormatParquet;
+export const SinksCreateRequestSchemaFormat = /*@__PURE__*/ S.Unknown;
 
 export interface SinksCreateRequestSchema {
   fields?: SinksCreateRequestSchemaFieldsList;
@@ -821,63 +930,64 @@ export const CreateSinkRequest = /*@__PURE__*/ S.suspend(() =>
 export type SinksCreateResponseType = "r2" | "r2_data_catalog" | (string & {});
 export const SinksCreateResponseType = /*@__PURE__*/ S.String;
 
-export interface SinksCreateResponseConfigCredentials {
+export interface SinksCreateResponseConfigCloudflarePipelinesR2TableCredentials {
   /** Cloudflare Account ID for the bucket */
   accessKeyId: string;
   /** Cloudflare Account ID for the bucket */
   secretAccessKey: string;
 }
-export const SinksCreateResponseConfigCredentials = /*@__PURE__*/ S.suspend(
-  () =>
+export const SinksCreateResponseConfigCloudflarePipelinesR2TableCredentials =
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       accessKeyId: S.String.pipe(T.Body("access_key_id")),
       secretAccessKey: S.String.pipe(T.Body("secret_access_key")),
     }),
-).annotate({
-  identifier: "SinksCreateResponseConfigCredentials",
-}) as any as S.Schema<SinksCreateResponseConfigCredentials>;
+  ).annotate({
+    identifier:
+      "SinksCreateResponseConfigCloudflarePipelinesR2TableCredentials",
+  }) as any as S.Schema<SinksCreateResponseConfigCloudflarePipelinesR2TableCredentials>;
 
-export type SinksCreateResponseConfigFileNamingStrategy =
-  | "serial"
-  | "uuid"
-  | "uuid_v7"
-  | "ulid"
-  | (string & {});
-export const SinksCreateResponseConfigFileNamingStrategy =
+export type SinksCreateResponseConfigCloudflarePipelinesR2TableFileNamingStrategy =
+  "serial" | "uuid" | "uuid_v7" | "ulid" | (string & {});
+export const SinksCreateResponseConfigCloudflarePipelinesR2TableFileNamingStrategy =
   /*@__PURE__*/ S.String;
 
-export interface SinksCreateResponseConfigFileNaming {
+export interface SinksCreateResponseConfigCloudflarePipelinesR2TableFileNaming {
   /** The prefix to use in file name. i.e prefix-<uuid>.parquet */
   prefix?: string;
   /** Filename generation strategy. */
-  strategy?: SinksCreateResponseConfigFileNamingStrategy;
+  strategy?: SinksCreateResponseConfigCloudflarePipelinesR2TableFileNamingStrategy;
   /** This will overwrite the default file suffix. i.e .parquet, use with caution */
   suffix?: string;
 }
-export const SinksCreateResponseConfigFileNaming = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    prefix: S.optional(S.String),
-    strategy: S.optional(SinksCreateResponseConfigFileNamingStrategy),
-    suffix: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SinksCreateResponseConfigFileNaming",
-}) as any as S.Schema<SinksCreateResponseConfigFileNaming>;
+export const SinksCreateResponseConfigCloudflarePipelinesR2TableFileNaming =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      prefix: S.optional(S.String),
+      strategy: S.optional(
+        SinksCreateResponseConfigCloudflarePipelinesR2TableFileNamingStrategy,
+      ),
+      suffix: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "SinksCreateResponseConfigCloudflarePipelinesR2TableFileNaming",
+  }) as any as S.Schema<SinksCreateResponseConfigCloudflarePipelinesR2TableFileNaming>;
 
-export interface SinksCreateResponseConfigPartitioning {
+export interface SinksCreateResponseConfigCloudflarePipelinesR2TablePartitioning {
   /** The pattern of the date string */
   timePattern?: string;
 }
-export const SinksCreateResponseConfigPartitioning = /*@__PURE__*/ S.suspend(
-  () =>
+export const SinksCreateResponseConfigCloudflarePipelinesR2TablePartitioning =
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       timePattern: S.optional(S.String.pipe(T.Body("time_pattern"))),
     }),
-).annotate({
-  identifier: "SinksCreateResponseConfigPartitioning",
-}) as any as S.Schema<SinksCreateResponseConfigPartitioning>;
+  ).annotate({
+    identifier:
+      "SinksCreateResponseConfigCloudflarePipelinesR2TablePartitioning",
+  }) as any as S.Schema<SinksCreateResponseConfigCloudflarePipelinesR2TablePartitioning>;
 
-export interface SinksCreateResponseConfigRollingPolicy {
+export interface SinksCreateResponseConfigCloudflarePipelinesR2TableRollingPolicy {
   /** Files will be rolled after reaching this number of bytes */
   fileSizeBytes?: number;
   /** Number of seconds of inactivity to wait before rolling over to a new file */
@@ -885,8 +995,8 @@ export interface SinksCreateResponseConfigRollingPolicy {
   /** Number of seconds to wait before rolling over to a new file */
   intervalSeconds?: number;
 }
-export const SinksCreateResponseConfigRollingPolicy = /*@__PURE__*/ S.suspend(
-  () =>
+export const SinksCreateResponseConfigCloudflarePipelinesR2TableRollingPolicy =
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       fileSizeBytes: S.optional(S.Number.pipe(T.Body("file_size_bytes"))),
       inactivitySeconds: S.optional(
@@ -894,102 +1004,188 @@ export const SinksCreateResponseConfigRollingPolicy = /*@__PURE__*/ S.suspend(
       ),
       intervalSeconds: S.optional(S.Number.pipe(T.Body("interval_seconds"))),
     }),
-).annotate({
-  identifier: "SinksCreateResponseConfigRollingPolicy",
-}) as any as S.Schema<SinksCreateResponseConfigRollingPolicy>;
+  ).annotate({
+    identifier:
+      "SinksCreateResponseConfigCloudflarePipelinesR2TableRollingPolicy",
+  }) as any as S.Schema<SinksCreateResponseConfigCloudflarePipelinesR2TableRollingPolicy>;
 
-export interface SinksCreateResponseConfig {
+export interface SinksCreateResponseConfigCloudflarePipelinesR2Table {
   /** Cloudflare Account ID for the bucket */
-  accountId?: string;
+  accountId: string;
   /** R2 Bucket to write to */
-  bucket?: string;
-  credentials?: SinksCreateResponseConfigCredentials;
+  bucket: string;
+  credentials: SinksCreateResponseConfigCloudflarePipelinesR2TableCredentials;
   /** Controls filename prefix/suffix and strategy. */
-  fileNaming?: SinksCreateResponseConfigFileNaming;
+  fileNaming?: SinksCreateResponseConfigCloudflarePipelinesR2TableFileNaming;
   /** Jurisdiction this bucket is hosted in */
   jurisdiction?: string;
   /** Data-layout partitioning for sinks. */
-  partitioning?: SinksCreateResponseConfigPartitioning;
+  partitioning?: SinksCreateResponseConfigCloudflarePipelinesR2TablePartitioning;
   /** Subpath within the bucket to write to */
   path?: string;
   /** Rolling policy for file sinks (when & why to close a file and open a new one). */
-  rollingPolicy?: SinksCreateResponseConfigRollingPolicy;
+  rollingPolicy?: SinksCreateResponseConfigCloudflarePipelinesR2TableRollingPolicy;
+}
+export const SinksCreateResponseConfigCloudflarePipelinesR2Table =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      accountId: S.String.pipe(T.Body("account_id")),
+      bucket: S.String,
+      credentials:
+        SinksCreateResponseConfigCloudflarePipelinesR2TableCredentials,
+      fileNaming: S.optional(
+        SinksCreateResponseConfigCloudflarePipelinesR2TableFileNaming.pipe(
+          T.Body("file_naming"),
+        ),
+      ),
+      jurisdiction: S.optional(S.String),
+      partitioning: S.optional(
+        SinksCreateResponseConfigCloudflarePipelinesR2TablePartitioning,
+      ),
+      path: S.optional(S.String),
+      rollingPolicy: S.optional(
+        SinksCreateResponseConfigCloudflarePipelinesR2TableRollingPolicy.pipe(
+          T.Body("rolling_policy"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "SinksCreateResponseConfigCloudflarePipelinesR2Table",
+  }) as any as S.Schema<SinksCreateResponseConfigCloudflarePipelinesR2Table>;
+
+export interface SinksCreateResponseConfigCloudflarePipelinesR2DataCatalogTableRollingPolicy {
+  /** Files will be rolled after reaching this number of bytes */
+  fileSizeBytes?: number;
+  /** Number of seconds of inactivity to wait before rolling over to a new file */
+  inactivitySeconds?: number;
+  /** Number of seconds to wait before rolling over to a new file */
+  intervalSeconds?: number;
+}
+export const SinksCreateResponseConfigCloudflarePipelinesR2DataCatalogTableRollingPolicy =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      fileSizeBytes: S.optional(S.Number.pipe(T.Body("file_size_bytes"))),
+      inactivitySeconds: S.optional(
+        S.Number.pipe(T.Body("inactivity_seconds")),
+      ),
+      intervalSeconds: S.optional(S.Number.pipe(T.Body("interval_seconds"))),
+    }),
+  ).annotate({
+    identifier:
+      "SinksCreateResponseConfigCloudflarePipelinesR2DataCatalogTableRollingPolicy",
+  }) as any as S.Schema<SinksCreateResponseConfigCloudflarePipelinesR2DataCatalogTableRollingPolicy>;
+
+export interface SinksCreateResponseConfigCloudflarePipelinesR2DataCatalogTable {
   /** Authentication token */
-  token?: string;
+  token: string;
+  /** Cloudflare Account ID */
+  accountId: string;
+  /** The R2 Bucket that hosts this catalog */
+  bucket: string;
   /** Table name */
-  tableName?: string;
+  tableName: string;
   /** Table namespace */
   namespace?: string;
+  /** Rolling policy for file sinks (when & why to close a file and open a new one). */
+  rollingPolicy?: SinksCreateResponseConfigCloudflarePipelinesR2DataCatalogTableRollingPolicy;
 }
-export const SinksCreateResponseConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.optional(S.String.pipe(T.Body("account_id"))),
-    bucket: S.optional(S.String),
-    credentials: S.optional(SinksCreateResponseConfigCredentials),
-    fileNaming: S.optional(
-      SinksCreateResponseConfigFileNaming.pipe(T.Body("file_naming")),
-    ),
-    jurisdiction: S.optional(S.String),
-    partitioning: S.optional(SinksCreateResponseConfigPartitioning),
-    path: S.optional(S.String),
-    rollingPolicy: S.optional(
-      SinksCreateResponseConfigRollingPolicy.pipe(T.Body("rolling_policy")),
-    ),
-    token: S.optional(S.String),
-    tableName: S.optional(S.String.pipe(T.Body("table_name"))),
-    namespace: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SinksCreateResponseConfig",
-}) as any as S.Schema<SinksCreateResponseConfig>;
+export const SinksCreateResponseConfigCloudflarePipelinesR2DataCatalogTable =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      token: S.String,
+      accountId: S.String.pipe(T.Body("account_id")),
+      bucket: S.String,
+      tableName: S.String.pipe(T.Body("table_name")),
+      namespace: S.optional(S.String),
+      rollingPolicy: S.optional(
+        SinksCreateResponseConfigCloudflarePipelinesR2DataCatalogTableRollingPolicy.pipe(
+          T.Body("rolling_policy"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "SinksCreateResponseConfigCloudflarePipelinesR2DataCatalogTable",
+  }) as any as S.Schema<SinksCreateResponseConfigCloudflarePipelinesR2DataCatalogTable>;
 
-export type SinksCreateResponseFormatType = "json" | (string & {});
-export const SinksCreateResponseFormatType = /*@__PURE__*/ S.String;
+export type SinksCreateResponseConfig =
+  | SinksCreateResponseConfigCloudflarePipelinesR2Table
+  | SinksCreateResponseConfigCloudflarePipelinesR2DataCatalogTable;
+export const SinksCreateResponseConfig = /*@__PURE__*/ S.Unknown;
 
-export type SinksCreateResponseFormatDecimalEncoding =
+export type SinksCreateResponseFormatJsonType = "json" | (string & {});
+export const SinksCreateResponseFormatJsonType = /*@__PURE__*/ S.String;
+
+export type SinksCreateResponseFormatJsonDecimalEncoding =
   | "number"
   | "string"
   | "bytes"
   | (string & {});
-export const SinksCreateResponseFormatDecimalEncoding = /*@__PURE__*/ S.String;
+export const SinksCreateResponseFormatJsonDecimalEncoding =
+  /*@__PURE__*/ S.String;
 
-export type SinksCreateResponseFormatTimestampFormat =
+export type SinksCreateResponseFormatJsonTimestampFormat =
   | "rfc3339"
   | "unix_millis"
   | (string & {});
-export const SinksCreateResponseFormatTimestampFormat = /*@__PURE__*/ S.String;
+export const SinksCreateResponseFormatJsonTimestampFormat =
+  /*@__PURE__*/ S.String;
 
-export type SinksCreateResponseFormatCompression =
+export interface SinksCreateResponseFormatJson {
+  type: SinksCreateResponseFormatJsonType;
+  decimalEncoding?: SinksCreateResponseFormatJsonDecimalEncoding;
+  timestampFormat?: SinksCreateResponseFormatJsonTimestampFormat;
+  unstructured?: boolean;
+}
+export const SinksCreateResponseFormatJson = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: SinksCreateResponseFormatJsonType,
+    decimalEncoding: S.optional(
+      SinksCreateResponseFormatJsonDecimalEncoding.pipe(
+        T.Body("decimal_encoding"),
+      ),
+    ),
+    timestampFormat: S.optional(
+      SinksCreateResponseFormatJsonTimestampFormat.pipe(
+        T.Body("timestamp_format"),
+      ),
+    ),
+    unstructured: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "SinksCreateResponseFormatJson",
+}) as any as S.Schema<SinksCreateResponseFormatJson>;
+
+export type SinksCreateResponseFormatParquetType = "parquet" | (string & {});
+export const SinksCreateResponseFormatParquetType = /*@__PURE__*/ S.String;
+
+export type SinksCreateResponseFormatParquetCompression =
   | "uncompressed"
   | "snappy"
   | "gzip"
   | (string & {});
-export const SinksCreateResponseFormatCompression = /*@__PURE__*/ S.String;
+export const SinksCreateResponseFormatParquetCompression =
+  /*@__PURE__*/ S.String;
 
-export interface SinksCreateResponseFormat {
-  type?: SinksCreateResponseFormatType;
-  decimalEncoding?: SinksCreateResponseFormatDecimalEncoding;
-  timestampFormat?: SinksCreateResponseFormatTimestampFormat;
-  unstructured?: boolean;
-  compression?: SinksCreateResponseFormatCompression;
+export interface SinksCreateResponseFormatParquet {
+  type: SinksCreateResponseFormatParquetType;
+  compression?: SinksCreateResponseFormatParquetCompression;
   rowGroupBytes?: number;
 }
-export const SinksCreateResponseFormat = /*@__PURE__*/ S.suspend(() =>
+export const SinksCreateResponseFormatParquet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    type: S.optional(SinksCreateResponseFormatType),
-    decimalEncoding: S.optional(
-      SinksCreateResponseFormatDecimalEncoding.pipe(T.Body("decimal_encoding")),
-    ),
-    timestampFormat: S.optional(
-      SinksCreateResponseFormatTimestampFormat.pipe(T.Body("timestamp_format")),
-    ),
-    unstructured: S.optional(S.Boolean),
-    compression: S.optional(SinksCreateResponseFormatCompression),
+    type: SinksCreateResponseFormatParquetType,
+    compression: S.optional(SinksCreateResponseFormatParquetCompression),
     rowGroupBytes: S.optional(S.Number.pipe(T.Body("row_group_bytes"))),
   }),
 ).annotate({
-  identifier: "SinksCreateResponseFormat",
-}) as any as S.Schema<SinksCreateResponseFormat>;
+  identifier: "SinksCreateResponseFormatParquet",
+}) as any as S.Schema<SinksCreateResponseFormatParquet>;
+
+export type SinksCreateResponseFormat =
+  | SinksCreateResponseFormatJson
+  | SinksCreateResponseFormatParquet;
+export const SinksCreateResponseFormat = /*@__PURE__*/ S.Unknown;
 
 export type SinksCreateResponseSchemaFieldsItemType = "int32" | (string & {});
 export const SinksCreateResponseSchemaFieldsItemType = /*@__PURE__*/ S.String;
@@ -1033,60 +1229,85 @@ export const SinksCreateResponseSchemaFieldsList = /*@__PURE__*/ S.Array(
   SinksCreateResponseSchemaFieldsItem,
 ) as any as S.Schema<SinksCreateResponseSchemaFieldsList>;
 
-export type SinksCreateResponseSchemaFormatType = "json" | (string & {});
-export const SinksCreateResponseSchemaFormatType = /*@__PURE__*/ S.String;
+export type SinksCreateResponseSchemaFormatJsonType = "json" | (string & {});
+export const SinksCreateResponseSchemaFormatJsonType = /*@__PURE__*/ S.String;
 
-export type SinksCreateResponseSchemaFormatDecimalEncoding =
+export type SinksCreateResponseSchemaFormatJsonDecimalEncoding =
   | "number"
   | "string"
   | "bytes"
   | (string & {});
-export const SinksCreateResponseSchemaFormatDecimalEncoding =
+export const SinksCreateResponseSchemaFormatJsonDecimalEncoding =
   /*@__PURE__*/ S.String;
 
-export type SinksCreateResponseSchemaFormatTimestampFormat =
+export type SinksCreateResponseSchemaFormatJsonTimestampFormat =
   | "rfc3339"
   | "unix_millis"
   | (string & {});
-export const SinksCreateResponseSchemaFormatTimestampFormat =
+export const SinksCreateResponseSchemaFormatJsonTimestampFormat =
   /*@__PURE__*/ S.String;
 
-export type SinksCreateResponseSchemaFormatCompression =
-  | "uncompressed"
-  | "snappy"
-  | "gzip"
-  | (string & {});
-export const SinksCreateResponseSchemaFormatCompression =
-  /*@__PURE__*/ S.String;
-
-export interface SinksCreateResponseSchemaFormat {
-  type?: SinksCreateResponseSchemaFormatType;
-  decimalEncoding?: SinksCreateResponseSchemaFormatDecimalEncoding;
-  timestampFormat?: SinksCreateResponseSchemaFormatTimestampFormat;
+export interface SinksCreateResponseSchemaFormatJson {
+  type: SinksCreateResponseSchemaFormatJsonType;
+  decimalEncoding?: SinksCreateResponseSchemaFormatJsonDecimalEncoding;
+  timestampFormat?: SinksCreateResponseSchemaFormatJsonTimestampFormat;
   unstructured?: boolean;
-  compression?: SinksCreateResponseSchemaFormatCompression;
-  rowGroupBytes?: number;
 }
-export const SinksCreateResponseSchemaFormat = /*@__PURE__*/ S.suspend(() =>
+export const SinksCreateResponseSchemaFormatJson = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    type: S.optional(SinksCreateResponseSchemaFormatType),
+    type: SinksCreateResponseSchemaFormatJsonType,
     decimalEncoding: S.optional(
-      SinksCreateResponseSchemaFormatDecimalEncoding.pipe(
+      SinksCreateResponseSchemaFormatJsonDecimalEncoding.pipe(
         T.Body("decimal_encoding"),
       ),
     ),
     timestampFormat: S.optional(
-      SinksCreateResponseSchemaFormatTimestampFormat.pipe(
+      SinksCreateResponseSchemaFormatJsonTimestampFormat.pipe(
         T.Body("timestamp_format"),
       ),
     ),
     unstructured: S.optional(S.Boolean),
-    compression: S.optional(SinksCreateResponseSchemaFormatCompression),
-    rowGroupBytes: S.optional(S.Number.pipe(T.Body("row_group_bytes"))),
   }),
 ).annotate({
-  identifier: "SinksCreateResponseSchemaFormat",
-}) as any as S.Schema<SinksCreateResponseSchemaFormat>;
+  identifier: "SinksCreateResponseSchemaFormatJson",
+}) as any as S.Schema<SinksCreateResponseSchemaFormatJson>;
+
+export type SinksCreateResponseSchemaFormatParquetType =
+  | "parquet"
+  | (string & {});
+export const SinksCreateResponseSchemaFormatParquetType =
+  /*@__PURE__*/ S.String;
+
+export type SinksCreateResponseSchemaFormatParquetCompression =
+  | "uncompressed"
+  | "snappy"
+  | "gzip"
+  | (string & {});
+export const SinksCreateResponseSchemaFormatParquetCompression =
+  /*@__PURE__*/ S.String;
+
+export interface SinksCreateResponseSchemaFormatParquet {
+  type: SinksCreateResponseSchemaFormatParquetType;
+  compression?: SinksCreateResponseSchemaFormatParquetCompression;
+  rowGroupBytes?: number;
+}
+export const SinksCreateResponseSchemaFormatParquet = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      type: SinksCreateResponseSchemaFormatParquetType,
+      compression: S.optional(
+        SinksCreateResponseSchemaFormatParquetCompression,
+      ),
+      rowGroupBytes: S.optional(S.Number.pipe(T.Body("row_group_bytes"))),
+    }),
+).annotate({
+  identifier: "SinksCreateResponseSchemaFormatParquet",
+}) as any as S.Schema<SinksCreateResponseSchemaFormatParquet>;
+
+export type SinksCreateResponseSchemaFormat =
+  | SinksCreateResponseSchemaFormatJson
+  | SinksCreateResponseSchemaFormatParquet;
+export const SinksCreateResponseSchemaFormat = /*@__PURE__*/ S.Unknown;
 
 export interface SinksCreateResponseSchema {
   fields?: SinksCreateResponseSchemaFieldsList;
@@ -1133,57 +1354,79 @@ export const CreateSinkResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateSinkResponse",
 }) as any as S.Schema<CreateSinkResponse>;
 
-export type StreamsCreateRequestFormatType = "json" | (string & {});
-export const StreamsCreateRequestFormatType = /*@__PURE__*/ S.String;
+export type StreamsCreateRequestFormatJsonType = "json" | (string & {});
+export const StreamsCreateRequestFormatJsonType = /*@__PURE__*/ S.String;
 
-export type StreamsCreateRequestFormatDecimalEncoding =
+export type StreamsCreateRequestFormatJsonDecimalEncoding =
   | "number"
   | "string"
   | "bytes"
   | (string & {});
-export const StreamsCreateRequestFormatDecimalEncoding = /*@__PURE__*/ S.String;
+export const StreamsCreateRequestFormatJsonDecimalEncoding =
+  /*@__PURE__*/ S.String;
 
-export type StreamsCreateRequestFormatTimestampFormat =
+export type StreamsCreateRequestFormatJsonTimestampFormat =
   | "rfc3339"
   | "unix_millis"
   | (string & {});
-export const StreamsCreateRequestFormatTimestampFormat = /*@__PURE__*/ S.String;
+export const StreamsCreateRequestFormatJsonTimestampFormat =
+  /*@__PURE__*/ S.String;
 
-export type StreamsCreateRequestFormatCompression =
-  | "uncompressed"
-  | "snappy"
-  | "gzip"
-  | (string & {});
-export const StreamsCreateRequestFormatCompression = /*@__PURE__*/ S.String;
-
-export interface StreamsCreateRequestFormat {
-  type?: StreamsCreateRequestFormatType;
-  decimalEncoding?: StreamsCreateRequestFormatDecimalEncoding;
-  timestampFormat?: StreamsCreateRequestFormatTimestampFormat;
+export interface StreamsCreateRequestFormatJson {
+  type: StreamsCreateRequestFormatJsonType;
+  decimalEncoding?: StreamsCreateRequestFormatJsonDecimalEncoding;
+  timestampFormat?: StreamsCreateRequestFormatJsonTimestampFormat;
   unstructured?: boolean;
-  compression?: StreamsCreateRequestFormatCompression;
-  rowGroupBytes?: number;
 }
-export const StreamsCreateRequestFormat = /*@__PURE__*/ S.suspend(() =>
+export const StreamsCreateRequestFormatJson = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    type: S.optional(StreamsCreateRequestFormatType),
+    type: StreamsCreateRequestFormatJsonType,
     decimalEncoding: S.optional(
-      StreamsCreateRequestFormatDecimalEncoding.pipe(
+      StreamsCreateRequestFormatJsonDecimalEncoding.pipe(
         T.Body("decimal_encoding"),
       ),
     ),
     timestampFormat: S.optional(
-      StreamsCreateRequestFormatTimestampFormat.pipe(
+      StreamsCreateRequestFormatJsonTimestampFormat.pipe(
         T.Body("timestamp_format"),
       ),
     ),
     unstructured: S.optional(S.Boolean),
-    compression: S.optional(StreamsCreateRequestFormatCompression),
+  }),
+).annotate({
+  identifier: "StreamsCreateRequestFormatJson",
+}) as any as S.Schema<StreamsCreateRequestFormatJson>;
+
+export type StreamsCreateRequestFormatParquetType = "parquet" | (string & {});
+export const StreamsCreateRequestFormatParquetType = /*@__PURE__*/ S.String;
+
+export type StreamsCreateRequestFormatParquetCompression =
+  | "uncompressed"
+  | "snappy"
+  | "gzip"
+  | (string & {});
+export const StreamsCreateRequestFormatParquetCompression =
+  /*@__PURE__*/ S.String;
+
+export interface StreamsCreateRequestFormatParquet {
+  type: StreamsCreateRequestFormatParquetType;
+  compression?: StreamsCreateRequestFormatParquetCompression;
+  rowGroupBytes?: number;
+}
+export const StreamsCreateRequestFormatParquet = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: StreamsCreateRequestFormatParquetType,
+    compression: S.optional(StreamsCreateRequestFormatParquetCompression),
     rowGroupBytes: S.optional(S.Number.pipe(T.Body("row_group_bytes"))),
   }),
 ).annotate({
-  identifier: "StreamsCreateRequestFormat",
-}) as any as S.Schema<StreamsCreateRequestFormat>;
+  identifier: "StreamsCreateRequestFormatParquet",
+}) as any as S.Schema<StreamsCreateRequestFormatParquet>;
+
+export type StreamsCreateRequestFormat =
+  | StreamsCreateRequestFormatJson
+  | StreamsCreateRequestFormatParquet;
+export const StreamsCreateRequestFormat = /*@__PURE__*/ S.Unknown;
 
 export type StreamsCreateRequestHttpCorsOriginsList = string[];
 export const StreamsCreateRequestHttpCorsOriginsList = /*@__PURE__*/ S.Array(
@@ -1262,60 +1505,86 @@ export const StreamsCreateRequestSchemaFieldsList = /*@__PURE__*/ S.Array(
   StreamsCreateRequestSchemaFieldsItem,
 ) as any as S.Schema<StreamsCreateRequestSchemaFieldsList>;
 
-export type StreamsCreateRequestSchemaFormatType = "json" | (string & {});
-export const StreamsCreateRequestSchemaFormatType = /*@__PURE__*/ S.String;
+export type StreamsCreateRequestSchemaFormatJsonType = "json" | (string & {});
+export const StreamsCreateRequestSchemaFormatJsonType = /*@__PURE__*/ S.String;
 
-export type StreamsCreateRequestSchemaFormatDecimalEncoding =
+export type StreamsCreateRequestSchemaFormatJsonDecimalEncoding =
   | "number"
   | "string"
   | "bytes"
   | (string & {});
-export const StreamsCreateRequestSchemaFormatDecimalEncoding =
+export const StreamsCreateRequestSchemaFormatJsonDecimalEncoding =
   /*@__PURE__*/ S.String;
 
-export type StreamsCreateRequestSchemaFormatTimestampFormat =
+export type StreamsCreateRequestSchemaFormatJsonTimestampFormat =
   | "rfc3339"
   | "unix_millis"
   | (string & {});
-export const StreamsCreateRequestSchemaFormatTimestampFormat =
+export const StreamsCreateRequestSchemaFormatJsonTimestampFormat =
   /*@__PURE__*/ S.String;
 
-export type StreamsCreateRequestSchemaFormatCompression =
+export interface StreamsCreateRequestSchemaFormatJson {
+  type: StreamsCreateRequestSchemaFormatJsonType;
+  decimalEncoding?: StreamsCreateRequestSchemaFormatJsonDecimalEncoding;
+  timestampFormat?: StreamsCreateRequestSchemaFormatJsonTimestampFormat;
+  unstructured?: boolean;
+}
+export const StreamsCreateRequestSchemaFormatJson = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      type: StreamsCreateRequestSchemaFormatJsonType,
+      decimalEncoding: S.optional(
+        StreamsCreateRequestSchemaFormatJsonDecimalEncoding.pipe(
+          T.Body("decimal_encoding"),
+        ),
+      ),
+      timestampFormat: S.optional(
+        StreamsCreateRequestSchemaFormatJsonTimestampFormat.pipe(
+          T.Body("timestamp_format"),
+        ),
+      ),
+      unstructured: S.optional(S.Boolean),
+    }),
+).annotate({
+  identifier: "StreamsCreateRequestSchemaFormatJson",
+}) as any as S.Schema<StreamsCreateRequestSchemaFormatJson>;
+
+export type StreamsCreateRequestSchemaFormatParquetType =
+  | "parquet"
+  | (string & {});
+export const StreamsCreateRequestSchemaFormatParquetType =
+  /*@__PURE__*/ S.String;
+
+export type StreamsCreateRequestSchemaFormatParquetCompression =
   | "uncompressed"
   | "snappy"
   | "gzip"
   | (string & {});
-export const StreamsCreateRequestSchemaFormatCompression =
+export const StreamsCreateRequestSchemaFormatParquetCompression =
   /*@__PURE__*/ S.String;
 
-export interface StreamsCreateRequestSchemaFormat {
-  type?: StreamsCreateRequestSchemaFormatType;
-  decimalEncoding?: StreamsCreateRequestSchemaFormatDecimalEncoding;
-  timestampFormat?: StreamsCreateRequestSchemaFormatTimestampFormat;
-  unstructured?: boolean;
-  compression?: StreamsCreateRequestSchemaFormatCompression;
+export interface StreamsCreateRequestSchemaFormatParquet {
+  type: StreamsCreateRequestSchemaFormatParquetType;
+  compression?: StreamsCreateRequestSchemaFormatParquetCompression;
   rowGroupBytes?: number;
 }
-export const StreamsCreateRequestSchemaFormat = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(StreamsCreateRequestSchemaFormatType),
-    decimalEncoding: S.optional(
-      StreamsCreateRequestSchemaFormatDecimalEncoding.pipe(
-        T.Body("decimal_encoding"),
+export const StreamsCreateRequestSchemaFormatParquet = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      type: StreamsCreateRequestSchemaFormatParquetType,
+      compression: S.optional(
+        StreamsCreateRequestSchemaFormatParquetCompression,
       ),
-    ),
-    timestampFormat: S.optional(
-      StreamsCreateRequestSchemaFormatTimestampFormat.pipe(
-        T.Body("timestamp_format"),
-      ),
-    ),
-    unstructured: S.optional(S.Boolean),
-    compression: S.optional(StreamsCreateRequestSchemaFormatCompression),
-    rowGroupBytes: S.optional(S.Number.pipe(T.Body("row_group_bytes"))),
-  }),
+      rowGroupBytes: S.optional(S.Number.pipe(T.Body("row_group_bytes"))),
+    }),
 ).annotate({
-  identifier: "StreamsCreateRequestSchemaFormat",
-}) as any as S.Schema<StreamsCreateRequestSchemaFormat>;
+  identifier: "StreamsCreateRequestSchemaFormatParquet",
+}) as any as S.Schema<StreamsCreateRequestSchemaFormatParquet>;
+
+export type StreamsCreateRequestSchemaFormat =
+  | StreamsCreateRequestSchemaFormatJson
+  | StreamsCreateRequestSchemaFormatParquet;
+export const StreamsCreateRequestSchemaFormat = /*@__PURE__*/ S.Unknown;
 
 export interface StreamsCreateRequestSchema {
   fields?: StreamsCreateRequestSchemaFieldsList;
@@ -1423,59 +1692,79 @@ export const StreamsCreateResponseWorkerBinding = /*@__PURE__*/ S.suspend(() =>
   identifier: "StreamsCreateResponseWorkerBinding",
 }) as any as S.Schema<StreamsCreateResponseWorkerBinding>;
 
-export type StreamsCreateResponseFormatType = "json" | (string & {});
-export const StreamsCreateResponseFormatType = /*@__PURE__*/ S.String;
+export type StreamsCreateResponseFormatJsonType = "json" | (string & {});
+export const StreamsCreateResponseFormatJsonType = /*@__PURE__*/ S.String;
 
-export type StreamsCreateResponseFormatDecimalEncoding =
+export type StreamsCreateResponseFormatJsonDecimalEncoding =
   | "number"
   | "string"
   | "bytes"
   | (string & {});
-export const StreamsCreateResponseFormatDecimalEncoding =
+export const StreamsCreateResponseFormatJsonDecimalEncoding =
   /*@__PURE__*/ S.String;
 
-export type StreamsCreateResponseFormatTimestampFormat =
+export type StreamsCreateResponseFormatJsonTimestampFormat =
   | "rfc3339"
   | "unix_millis"
   | (string & {});
-export const StreamsCreateResponseFormatTimestampFormat =
+export const StreamsCreateResponseFormatJsonTimestampFormat =
   /*@__PURE__*/ S.String;
 
-export type StreamsCreateResponseFormatCompression =
-  | "uncompressed"
-  | "snappy"
-  | "gzip"
-  | (string & {});
-export const StreamsCreateResponseFormatCompression = /*@__PURE__*/ S.String;
-
-export interface StreamsCreateResponseFormat {
-  type?: StreamsCreateResponseFormatType;
-  decimalEncoding?: StreamsCreateResponseFormatDecimalEncoding;
-  timestampFormat?: StreamsCreateResponseFormatTimestampFormat;
+export interface StreamsCreateResponseFormatJson {
+  type: StreamsCreateResponseFormatJsonType;
+  decimalEncoding?: StreamsCreateResponseFormatJsonDecimalEncoding;
+  timestampFormat?: StreamsCreateResponseFormatJsonTimestampFormat;
   unstructured?: boolean;
-  compression?: StreamsCreateResponseFormatCompression;
-  rowGroupBytes?: number;
 }
-export const StreamsCreateResponseFormat = /*@__PURE__*/ S.suspend(() =>
+export const StreamsCreateResponseFormatJson = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    type: S.optional(StreamsCreateResponseFormatType),
+    type: StreamsCreateResponseFormatJsonType,
     decimalEncoding: S.optional(
-      StreamsCreateResponseFormatDecimalEncoding.pipe(
+      StreamsCreateResponseFormatJsonDecimalEncoding.pipe(
         T.Body("decimal_encoding"),
       ),
     ),
     timestampFormat: S.optional(
-      StreamsCreateResponseFormatTimestampFormat.pipe(
+      StreamsCreateResponseFormatJsonTimestampFormat.pipe(
         T.Body("timestamp_format"),
       ),
     ),
     unstructured: S.optional(S.Boolean),
-    compression: S.optional(StreamsCreateResponseFormatCompression),
+  }),
+).annotate({
+  identifier: "StreamsCreateResponseFormatJson",
+}) as any as S.Schema<StreamsCreateResponseFormatJson>;
+
+export type StreamsCreateResponseFormatParquetType = "parquet" | (string & {});
+export const StreamsCreateResponseFormatParquetType = /*@__PURE__*/ S.String;
+
+export type StreamsCreateResponseFormatParquetCompression =
+  | "uncompressed"
+  | "snappy"
+  | "gzip"
+  | (string & {});
+export const StreamsCreateResponseFormatParquetCompression =
+  /*@__PURE__*/ S.String;
+
+export interface StreamsCreateResponseFormatParquet {
+  type: StreamsCreateResponseFormatParquetType;
+  compression?: StreamsCreateResponseFormatParquetCompression;
+  rowGroupBytes?: number;
+}
+export const StreamsCreateResponseFormatParquet = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: StreamsCreateResponseFormatParquetType,
+    compression: S.optional(StreamsCreateResponseFormatParquetCompression),
     rowGroupBytes: S.optional(S.Number.pipe(T.Body("row_group_bytes"))),
   }),
 ).annotate({
-  identifier: "StreamsCreateResponseFormat",
-}) as any as S.Schema<StreamsCreateResponseFormat>;
+  identifier: "StreamsCreateResponseFormatParquet",
+}) as any as S.Schema<StreamsCreateResponseFormatParquet>;
+
+export type StreamsCreateResponseFormat =
+  | StreamsCreateResponseFormatJson
+  | StreamsCreateResponseFormatParquet;
+export const StreamsCreateResponseFormat = /*@__PURE__*/ S.Unknown;
 
 export type StreamsCreateResponseSchemaFieldsItemType = "int32" | (string & {});
 export const StreamsCreateResponseSchemaFieldsItemType = /*@__PURE__*/ S.String;
@@ -1520,60 +1809,86 @@ export const StreamsCreateResponseSchemaFieldsList = /*@__PURE__*/ S.Array(
   StreamsCreateResponseSchemaFieldsItem,
 ) as any as S.Schema<StreamsCreateResponseSchemaFieldsList>;
 
-export type StreamsCreateResponseSchemaFormatType = "json" | (string & {});
-export const StreamsCreateResponseSchemaFormatType = /*@__PURE__*/ S.String;
+export type StreamsCreateResponseSchemaFormatJsonType = "json" | (string & {});
+export const StreamsCreateResponseSchemaFormatJsonType = /*@__PURE__*/ S.String;
 
-export type StreamsCreateResponseSchemaFormatDecimalEncoding =
+export type StreamsCreateResponseSchemaFormatJsonDecimalEncoding =
   | "number"
   | "string"
   | "bytes"
   | (string & {});
-export const StreamsCreateResponseSchemaFormatDecimalEncoding =
+export const StreamsCreateResponseSchemaFormatJsonDecimalEncoding =
   /*@__PURE__*/ S.String;
 
-export type StreamsCreateResponseSchemaFormatTimestampFormat =
+export type StreamsCreateResponseSchemaFormatJsonTimestampFormat =
   | "rfc3339"
   | "unix_millis"
   | (string & {});
-export const StreamsCreateResponseSchemaFormatTimestampFormat =
+export const StreamsCreateResponseSchemaFormatJsonTimestampFormat =
   /*@__PURE__*/ S.String;
 
-export type StreamsCreateResponseSchemaFormatCompression =
+export interface StreamsCreateResponseSchemaFormatJson {
+  type: StreamsCreateResponseSchemaFormatJsonType;
+  decimalEncoding?: StreamsCreateResponseSchemaFormatJsonDecimalEncoding;
+  timestampFormat?: StreamsCreateResponseSchemaFormatJsonTimestampFormat;
+  unstructured?: boolean;
+}
+export const StreamsCreateResponseSchemaFormatJson = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      type: StreamsCreateResponseSchemaFormatJsonType,
+      decimalEncoding: S.optional(
+        StreamsCreateResponseSchemaFormatJsonDecimalEncoding.pipe(
+          T.Body("decimal_encoding"),
+        ),
+      ),
+      timestampFormat: S.optional(
+        StreamsCreateResponseSchemaFormatJsonTimestampFormat.pipe(
+          T.Body("timestamp_format"),
+        ),
+      ),
+      unstructured: S.optional(S.Boolean),
+    }),
+).annotate({
+  identifier: "StreamsCreateResponseSchemaFormatJson",
+}) as any as S.Schema<StreamsCreateResponseSchemaFormatJson>;
+
+export type StreamsCreateResponseSchemaFormatParquetType =
+  | "parquet"
+  | (string & {});
+export const StreamsCreateResponseSchemaFormatParquetType =
+  /*@__PURE__*/ S.String;
+
+export type StreamsCreateResponseSchemaFormatParquetCompression =
   | "uncompressed"
   | "snappy"
   | "gzip"
   | (string & {});
-export const StreamsCreateResponseSchemaFormatCompression =
+export const StreamsCreateResponseSchemaFormatParquetCompression =
   /*@__PURE__*/ S.String;
 
-export interface StreamsCreateResponseSchemaFormat {
-  type?: StreamsCreateResponseSchemaFormatType;
-  decimalEncoding?: StreamsCreateResponseSchemaFormatDecimalEncoding;
-  timestampFormat?: StreamsCreateResponseSchemaFormatTimestampFormat;
-  unstructured?: boolean;
-  compression?: StreamsCreateResponseSchemaFormatCompression;
+export interface StreamsCreateResponseSchemaFormatParquet {
+  type: StreamsCreateResponseSchemaFormatParquetType;
+  compression?: StreamsCreateResponseSchemaFormatParquetCompression;
   rowGroupBytes?: number;
 }
-export const StreamsCreateResponseSchemaFormat = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(StreamsCreateResponseSchemaFormatType),
-    decimalEncoding: S.optional(
-      StreamsCreateResponseSchemaFormatDecimalEncoding.pipe(
-        T.Body("decimal_encoding"),
+export const StreamsCreateResponseSchemaFormatParquet = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      type: StreamsCreateResponseSchemaFormatParquetType,
+      compression: S.optional(
+        StreamsCreateResponseSchemaFormatParquetCompression,
       ),
-    ),
-    timestampFormat: S.optional(
-      StreamsCreateResponseSchemaFormatTimestampFormat.pipe(
-        T.Body("timestamp_format"),
-      ),
-    ),
-    unstructured: S.optional(S.Boolean),
-    compression: S.optional(StreamsCreateResponseSchemaFormatCompression),
-    rowGroupBytes: S.optional(S.Number.pipe(T.Body("row_group_bytes"))),
-  }),
+      rowGroupBytes: S.optional(S.Number.pipe(T.Body("row_group_bytes"))),
+    }),
 ).annotate({
-  identifier: "StreamsCreateResponseSchemaFormat",
-}) as any as S.Schema<StreamsCreateResponseSchemaFormat>;
+  identifier: "StreamsCreateResponseSchemaFormatParquet",
+}) as any as S.Schema<StreamsCreateResponseSchemaFormatParquet>;
+
+export type StreamsCreateResponseSchemaFormat =
+  | StreamsCreateResponseSchemaFormatJson
+  | StreamsCreateResponseSchemaFormatParquet;
+export const StreamsCreateResponseSchemaFormat = /*@__PURE__*/ S.Unknown;
 
 export interface StreamsCreateResponseSchema {
   fields?: StreamsCreateResponseSchemaFieldsList;
@@ -2006,45 +2321,48 @@ export const GetSinkRequest = /*@__PURE__*/ S.suspend(() =>
 export type SinksGetResponseType = "r2" | "r2_data_catalog" | (string & {});
 export const SinksGetResponseType = /*@__PURE__*/ S.String;
 
-export type SinksGetResponseConfigFileNamingStrategy =
-  | "serial"
-  | "uuid"
-  | "uuid_v7"
-  | "ulid"
-  | (string & {});
-export const SinksGetResponseConfigFileNamingStrategy = /*@__PURE__*/ S.String;
+export type SinksGetResponseConfigCloudflarePipelinesR2TablePublicFileNamingStrategy =
+  "serial" | "uuid" | "uuid_v7" | "ulid" | (string & {});
+export const SinksGetResponseConfigCloudflarePipelinesR2TablePublicFileNamingStrategy =
+  /*@__PURE__*/ S.String;
 
-export interface SinksGetResponseConfigFileNaming {
+export interface SinksGetResponseConfigCloudflarePipelinesR2TablePublicFileNaming {
   /** The prefix to use in file name. i.e prefix-<uuid>.parquet */
   prefix?: string;
   /** Filename generation strategy. */
-  strategy?: SinksGetResponseConfigFileNamingStrategy;
+  strategy?: SinksGetResponseConfigCloudflarePipelinesR2TablePublicFileNamingStrategy;
   /** This will overwrite the default file suffix. i.e .parquet, use with caution */
   suffix?: string;
 }
-export const SinksGetResponseConfigFileNaming = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    prefix: S.optional(S.String),
-    strategy: S.optional(SinksGetResponseConfigFileNamingStrategy),
-    suffix: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SinksGetResponseConfigFileNaming",
-}) as any as S.Schema<SinksGetResponseConfigFileNaming>;
+export const SinksGetResponseConfigCloudflarePipelinesR2TablePublicFileNaming =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      prefix: S.optional(S.String),
+      strategy: S.optional(
+        SinksGetResponseConfigCloudflarePipelinesR2TablePublicFileNamingStrategy,
+      ),
+      suffix: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "SinksGetResponseConfigCloudflarePipelinesR2TablePublicFileNaming",
+  }) as any as S.Schema<SinksGetResponseConfigCloudflarePipelinesR2TablePublicFileNaming>;
 
-export interface SinksGetResponseConfigPartitioning {
+export interface SinksGetResponseConfigCloudflarePipelinesR2TablePublicPartitioning {
   /** The pattern of the date string */
   timePattern?: string;
 }
-export const SinksGetResponseConfigPartitioning = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    timePattern: S.optional(S.String.pipe(T.Body("time_pattern"))),
-  }),
-).annotate({
-  identifier: "SinksGetResponseConfigPartitioning",
-}) as any as S.Schema<SinksGetResponseConfigPartitioning>;
+export const SinksGetResponseConfigCloudflarePipelinesR2TablePublicPartitioning =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      timePattern: S.optional(S.String.pipe(T.Body("time_pattern"))),
+    }),
+  ).annotate({
+    identifier:
+      "SinksGetResponseConfigCloudflarePipelinesR2TablePublicPartitioning",
+  }) as any as S.Schema<SinksGetResponseConfigCloudflarePipelinesR2TablePublicPartitioning>;
 
-export interface SinksGetResponseConfigRollingPolicy {
+export interface SinksGetResponseConfigCloudflarePipelinesR2TablePublicRollingPolicy {
   /** Files will be rolled after reaching this number of bytes */
   fileSizeBytes?: number;
   /** Number of seconds of inactivity to wait before rolling over to a new file */
@@ -2052,103 +2370,188 @@ export interface SinksGetResponseConfigRollingPolicy {
   /** Number of seconds to wait before rolling over to a new file */
   intervalSeconds?: number;
 }
-export const SinksGetResponseConfigRollingPolicy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fileSizeBytes: S.optional(S.Number.pipe(T.Body("file_size_bytes"))),
-    inactivitySeconds: S.optional(S.Number.pipe(T.Body("inactivity_seconds"))),
-    intervalSeconds: S.optional(S.Number.pipe(T.Body("interval_seconds"))),
-  }),
-).annotate({
-  identifier: "SinksGetResponseConfigRollingPolicy",
-}) as any as S.Schema<SinksGetResponseConfigRollingPolicy>;
+export const SinksGetResponseConfigCloudflarePipelinesR2TablePublicRollingPolicy =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      fileSizeBytes: S.optional(S.Number.pipe(T.Body("file_size_bytes"))),
+      inactivitySeconds: S.optional(
+        S.Number.pipe(T.Body("inactivity_seconds")),
+      ),
+      intervalSeconds: S.optional(S.Number.pipe(T.Body("interval_seconds"))),
+    }),
+  ).annotate({
+    identifier:
+      "SinksGetResponseConfigCloudflarePipelinesR2TablePublicRollingPolicy",
+  }) as any as S.Schema<SinksGetResponseConfigCloudflarePipelinesR2TablePublicRollingPolicy>;
 
-export interface SinksGetResponseConfig {
+export interface SinksGetResponseConfigCloudflarePipelinesR2TablePublic {
   /** Cloudflare Account ID for the bucket */
-  accountId?: string;
+  accountId: string;
   /** R2 Bucket to write to */
-  bucket?: string;
+  bucket: string;
   /** Controls filename prefix/suffix and strategy. */
-  fileNaming?: SinksGetResponseConfigFileNaming;
+  fileNaming?: SinksGetResponseConfigCloudflarePipelinesR2TablePublicFileNaming;
   /** Jurisdiction this bucket is hosted in */
   jurisdiction?: string;
   /** Data-layout partitioning for sinks. */
-  partitioning?: SinksGetResponseConfigPartitioning;
+  partitioning?: SinksGetResponseConfigCloudflarePipelinesR2TablePublicPartitioning;
   /** Subpath within the bucket to write to */
   path?: string;
   /** Rolling policy for file sinks (when & why to close a file and open a new one). */
-  rollingPolicy?: SinksGetResponseConfigRollingPolicy;
+  rollingPolicy?: SinksGetResponseConfigCloudflarePipelinesR2TablePublicRollingPolicy;
+}
+export const SinksGetResponseConfigCloudflarePipelinesR2TablePublic =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      accountId: S.String.pipe(T.Body("account_id")),
+      bucket: S.String,
+      fileNaming: S.optional(
+        SinksGetResponseConfigCloudflarePipelinesR2TablePublicFileNaming.pipe(
+          T.Body("file_naming"),
+        ),
+      ),
+      jurisdiction: S.optional(S.String),
+      partitioning: S.optional(
+        SinksGetResponseConfigCloudflarePipelinesR2TablePublicPartitioning,
+      ),
+      path: S.optional(S.String),
+      rollingPolicy: S.optional(
+        SinksGetResponseConfigCloudflarePipelinesR2TablePublicRollingPolicy.pipe(
+          T.Body("rolling_policy"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "SinksGetResponseConfigCloudflarePipelinesR2TablePublic",
+  }) as any as S.Schema<SinksGetResponseConfigCloudflarePipelinesR2TablePublic>;
+
+export interface SinksGetResponseConfigCloudflarePipelinesR2DataCatalogTablePublicRollingPolicy {
+  /** Files will be rolled after reaching this number of bytes */
+  fileSizeBytes?: number;
+  /** Number of seconds of inactivity to wait before rolling over to a new file */
+  inactivitySeconds?: number;
+  /** Number of seconds to wait before rolling over to a new file */
+  intervalSeconds?: number;
+}
+export const SinksGetResponseConfigCloudflarePipelinesR2DataCatalogTablePublicRollingPolicy =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      fileSizeBytes: S.optional(S.Number.pipe(T.Body("file_size_bytes"))),
+      inactivitySeconds: S.optional(
+        S.Number.pipe(T.Body("inactivity_seconds")),
+      ),
+      intervalSeconds: S.optional(S.Number.pipe(T.Body("interval_seconds"))),
+    }),
+  ).annotate({
+    identifier:
+      "SinksGetResponseConfigCloudflarePipelinesR2DataCatalogTablePublicRollingPolicy",
+  }) as any as S.Schema<SinksGetResponseConfigCloudflarePipelinesR2DataCatalogTablePublicRollingPolicy>;
+
+export interface SinksGetResponseConfigCloudflarePipelinesR2DataCatalogTablePublic {
+  /** Cloudflare Account ID */
+  accountId: string;
+  /** The R2 Bucket that hosts this catalog */
+  bucket: string;
   /** Table name */
-  tableName?: string;
+  tableName: string;
   /** Table namespace */
   namespace?: string;
+  /** Rolling policy for file sinks (when & why to close a file and open a new one). */
+  rollingPolicy?: SinksGetResponseConfigCloudflarePipelinesR2DataCatalogTablePublicRollingPolicy;
 }
-export const SinksGetResponseConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.optional(S.String.pipe(T.Body("account_id"))),
-    bucket: S.optional(S.String),
-    fileNaming: S.optional(
-      SinksGetResponseConfigFileNaming.pipe(T.Body("file_naming")),
-    ),
-    jurisdiction: S.optional(S.String),
-    partitioning: S.optional(SinksGetResponseConfigPartitioning),
-    path: S.optional(S.String),
-    rollingPolicy: S.optional(
-      SinksGetResponseConfigRollingPolicy.pipe(T.Body("rolling_policy")),
-    ),
-    tableName: S.optional(S.String.pipe(T.Body("table_name"))),
-    namespace: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SinksGetResponseConfig",
-}) as any as S.Schema<SinksGetResponseConfig>;
+export const SinksGetResponseConfigCloudflarePipelinesR2DataCatalogTablePublic =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      accountId: S.String.pipe(T.Body("account_id")),
+      bucket: S.String,
+      tableName: S.String.pipe(T.Body("table_name")),
+      namespace: S.optional(S.String),
+      rollingPolicy: S.optional(
+        SinksGetResponseConfigCloudflarePipelinesR2DataCatalogTablePublicRollingPolicy.pipe(
+          T.Body("rolling_policy"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "SinksGetResponseConfigCloudflarePipelinesR2DataCatalogTablePublic",
+  }) as any as S.Schema<SinksGetResponseConfigCloudflarePipelinesR2DataCatalogTablePublic>;
 
-export type SinksGetResponseFormatType = "json" | (string & {});
-export const SinksGetResponseFormatType = /*@__PURE__*/ S.String;
+export type SinksGetResponseConfig =
+  | SinksGetResponseConfigCloudflarePipelinesR2TablePublic
+  | SinksGetResponseConfigCloudflarePipelinesR2DataCatalogTablePublic;
+export const SinksGetResponseConfig = /*@__PURE__*/ S.Unknown;
 
-export type SinksGetResponseFormatDecimalEncoding =
+export type SinksGetResponseFormatJsonType = "json" | (string & {});
+export const SinksGetResponseFormatJsonType = /*@__PURE__*/ S.String;
+
+export type SinksGetResponseFormatJsonDecimalEncoding =
   | "number"
   | "string"
   | "bytes"
   | (string & {});
-export const SinksGetResponseFormatDecimalEncoding = /*@__PURE__*/ S.String;
+export const SinksGetResponseFormatJsonDecimalEncoding = /*@__PURE__*/ S.String;
 
-export type SinksGetResponseFormatTimestampFormat =
+export type SinksGetResponseFormatJsonTimestampFormat =
   | "rfc3339"
   | "unix_millis"
   | (string & {});
-export const SinksGetResponseFormatTimestampFormat = /*@__PURE__*/ S.String;
+export const SinksGetResponseFormatJsonTimestampFormat = /*@__PURE__*/ S.String;
 
-export type SinksGetResponseFormatCompression =
+export interface SinksGetResponseFormatJson {
+  type: SinksGetResponseFormatJsonType;
+  decimalEncoding?: SinksGetResponseFormatJsonDecimalEncoding;
+  timestampFormat?: SinksGetResponseFormatJsonTimestampFormat;
+  unstructured?: boolean;
+}
+export const SinksGetResponseFormatJson = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: SinksGetResponseFormatJsonType,
+    decimalEncoding: S.optional(
+      SinksGetResponseFormatJsonDecimalEncoding.pipe(
+        T.Body("decimal_encoding"),
+      ),
+    ),
+    timestampFormat: S.optional(
+      SinksGetResponseFormatJsonTimestampFormat.pipe(
+        T.Body("timestamp_format"),
+      ),
+    ),
+    unstructured: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "SinksGetResponseFormatJson",
+}) as any as S.Schema<SinksGetResponseFormatJson>;
+
+export type SinksGetResponseFormatParquetType = "parquet" | (string & {});
+export const SinksGetResponseFormatParquetType = /*@__PURE__*/ S.String;
+
+export type SinksGetResponseFormatParquetCompression =
   | "uncompressed"
   | "snappy"
   | "gzip"
   | (string & {});
-export const SinksGetResponseFormatCompression = /*@__PURE__*/ S.String;
+export const SinksGetResponseFormatParquetCompression = /*@__PURE__*/ S.String;
 
-export interface SinksGetResponseFormat {
-  type?: SinksGetResponseFormatType;
-  decimalEncoding?: SinksGetResponseFormatDecimalEncoding;
-  timestampFormat?: SinksGetResponseFormatTimestampFormat;
-  unstructured?: boolean;
-  compression?: SinksGetResponseFormatCompression;
+export interface SinksGetResponseFormatParquet {
+  type: SinksGetResponseFormatParquetType;
+  compression?: SinksGetResponseFormatParquetCompression;
   rowGroupBytes?: number;
 }
-export const SinksGetResponseFormat = /*@__PURE__*/ S.suspend(() =>
+export const SinksGetResponseFormatParquet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    type: S.optional(SinksGetResponseFormatType),
-    decimalEncoding: S.optional(
-      SinksGetResponseFormatDecimalEncoding.pipe(T.Body("decimal_encoding")),
-    ),
-    timestampFormat: S.optional(
-      SinksGetResponseFormatTimestampFormat.pipe(T.Body("timestamp_format")),
-    ),
-    unstructured: S.optional(S.Boolean),
-    compression: S.optional(SinksGetResponseFormatCompression),
+    type: SinksGetResponseFormatParquetType,
+    compression: S.optional(SinksGetResponseFormatParquetCompression),
     rowGroupBytes: S.optional(S.Number.pipe(T.Body("row_group_bytes"))),
   }),
 ).annotate({
-  identifier: "SinksGetResponseFormat",
-}) as any as S.Schema<SinksGetResponseFormat>;
+  identifier: "SinksGetResponseFormatParquet",
+}) as any as S.Schema<SinksGetResponseFormatParquet>;
+
+export type SinksGetResponseFormat =
+  | SinksGetResponseFormatJson
+  | SinksGetResponseFormatParquet;
+export const SinksGetResponseFormat = /*@__PURE__*/ S.Unknown;
 
 export type SinksGetResponseSchemaFieldsItemType = "int32" | (string & {});
 export const SinksGetResponseSchemaFieldsItemType = /*@__PURE__*/ S.String;
@@ -2192,59 +2595,79 @@ export const SinksGetResponseSchemaFieldsList = /*@__PURE__*/ S.Array(
   SinksGetResponseSchemaFieldsItem,
 ) as any as S.Schema<SinksGetResponseSchemaFieldsList>;
 
-export type SinksGetResponseSchemaFormatType = "json" | (string & {});
-export const SinksGetResponseSchemaFormatType = /*@__PURE__*/ S.String;
+export type SinksGetResponseSchemaFormatJsonType = "json" | (string & {});
+export const SinksGetResponseSchemaFormatJsonType = /*@__PURE__*/ S.String;
 
-export type SinksGetResponseSchemaFormatDecimalEncoding =
+export type SinksGetResponseSchemaFormatJsonDecimalEncoding =
   | "number"
   | "string"
   | "bytes"
   | (string & {});
-export const SinksGetResponseSchemaFormatDecimalEncoding =
+export const SinksGetResponseSchemaFormatJsonDecimalEncoding =
   /*@__PURE__*/ S.String;
 
-export type SinksGetResponseSchemaFormatTimestampFormat =
+export type SinksGetResponseSchemaFormatJsonTimestampFormat =
   | "rfc3339"
   | "unix_millis"
   | (string & {});
-export const SinksGetResponseSchemaFormatTimestampFormat =
+export const SinksGetResponseSchemaFormatJsonTimestampFormat =
   /*@__PURE__*/ S.String;
 
-export type SinksGetResponseSchemaFormatCompression =
-  | "uncompressed"
-  | "snappy"
-  | "gzip"
-  | (string & {});
-export const SinksGetResponseSchemaFormatCompression = /*@__PURE__*/ S.String;
-
-export interface SinksGetResponseSchemaFormat {
-  type?: SinksGetResponseSchemaFormatType;
-  decimalEncoding?: SinksGetResponseSchemaFormatDecimalEncoding;
-  timestampFormat?: SinksGetResponseSchemaFormatTimestampFormat;
+export interface SinksGetResponseSchemaFormatJson {
+  type: SinksGetResponseSchemaFormatJsonType;
+  decimalEncoding?: SinksGetResponseSchemaFormatJsonDecimalEncoding;
+  timestampFormat?: SinksGetResponseSchemaFormatJsonTimestampFormat;
   unstructured?: boolean;
-  compression?: SinksGetResponseSchemaFormatCompression;
-  rowGroupBytes?: number;
 }
-export const SinksGetResponseSchemaFormat = /*@__PURE__*/ S.suspend(() =>
+export const SinksGetResponseSchemaFormatJson = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    type: S.optional(SinksGetResponseSchemaFormatType),
+    type: SinksGetResponseSchemaFormatJsonType,
     decimalEncoding: S.optional(
-      SinksGetResponseSchemaFormatDecimalEncoding.pipe(
+      SinksGetResponseSchemaFormatJsonDecimalEncoding.pipe(
         T.Body("decimal_encoding"),
       ),
     ),
     timestampFormat: S.optional(
-      SinksGetResponseSchemaFormatTimestampFormat.pipe(
+      SinksGetResponseSchemaFormatJsonTimestampFormat.pipe(
         T.Body("timestamp_format"),
       ),
     ),
     unstructured: S.optional(S.Boolean),
-    compression: S.optional(SinksGetResponseSchemaFormatCompression),
+  }),
+).annotate({
+  identifier: "SinksGetResponseSchemaFormatJson",
+}) as any as S.Schema<SinksGetResponseSchemaFormatJson>;
+
+export type SinksGetResponseSchemaFormatParquetType = "parquet" | (string & {});
+export const SinksGetResponseSchemaFormatParquetType = /*@__PURE__*/ S.String;
+
+export type SinksGetResponseSchemaFormatParquetCompression =
+  | "uncompressed"
+  | "snappy"
+  | "gzip"
+  | (string & {});
+export const SinksGetResponseSchemaFormatParquetCompression =
+  /*@__PURE__*/ S.String;
+
+export interface SinksGetResponseSchemaFormatParquet {
+  type: SinksGetResponseSchemaFormatParquetType;
+  compression?: SinksGetResponseSchemaFormatParquetCompression;
+  rowGroupBytes?: number;
+}
+export const SinksGetResponseSchemaFormatParquet = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: SinksGetResponseSchemaFormatParquetType,
+    compression: S.optional(SinksGetResponseSchemaFormatParquetCompression),
     rowGroupBytes: S.optional(S.Number.pipe(T.Body("row_group_bytes"))),
   }),
 ).annotate({
-  identifier: "SinksGetResponseSchemaFormat",
-}) as any as S.Schema<SinksGetResponseSchemaFormat>;
+  identifier: "SinksGetResponseSchemaFormatParquet",
+}) as any as S.Schema<SinksGetResponseSchemaFormatParquet>;
+
+export type SinksGetResponseSchemaFormat =
+  | SinksGetResponseSchemaFormatJson
+  | SinksGetResponseSchemaFormatParquet;
+export const SinksGetResponseSchemaFormat = /*@__PURE__*/ S.Unknown;
 
 export interface SinksGetResponseSchema {
   fields?: SinksGetResponseSchemaFieldsList;
@@ -2360,53 +2783,79 @@ export const StreamsGetResponseWorkerBinding = /*@__PURE__*/ S.suspend(() =>
   identifier: "StreamsGetResponseWorkerBinding",
 }) as any as S.Schema<StreamsGetResponseWorkerBinding>;
 
-export type StreamsGetResponseFormatType = "json" | (string & {});
-export const StreamsGetResponseFormatType = /*@__PURE__*/ S.String;
+export type StreamsGetResponseFormatJsonType = "json" | (string & {});
+export const StreamsGetResponseFormatJsonType = /*@__PURE__*/ S.String;
 
-export type StreamsGetResponseFormatDecimalEncoding =
+export type StreamsGetResponseFormatJsonDecimalEncoding =
   | "number"
   | "string"
   | "bytes"
   | (string & {});
-export const StreamsGetResponseFormatDecimalEncoding = /*@__PURE__*/ S.String;
+export const StreamsGetResponseFormatJsonDecimalEncoding =
+  /*@__PURE__*/ S.String;
 
-export type StreamsGetResponseFormatTimestampFormat =
+export type StreamsGetResponseFormatJsonTimestampFormat =
   | "rfc3339"
   | "unix_millis"
   | (string & {});
-export const StreamsGetResponseFormatTimestampFormat = /*@__PURE__*/ S.String;
+export const StreamsGetResponseFormatJsonTimestampFormat =
+  /*@__PURE__*/ S.String;
 
-export type StreamsGetResponseFormatCompression =
+export interface StreamsGetResponseFormatJson {
+  type: StreamsGetResponseFormatJsonType;
+  decimalEncoding?: StreamsGetResponseFormatJsonDecimalEncoding;
+  timestampFormat?: StreamsGetResponseFormatJsonTimestampFormat;
+  unstructured?: boolean;
+}
+export const StreamsGetResponseFormatJson = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: StreamsGetResponseFormatJsonType,
+    decimalEncoding: S.optional(
+      StreamsGetResponseFormatJsonDecimalEncoding.pipe(
+        T.Body("decimal_encoding"),
+      ),
+    ),
+    timestampFormat: S.optional(
+      StreamsGetResponseFormatJsonTimestampFormat.pipe(
+        T.Body("timestamp_format"),
+      ),
+    ),
+    unstructured: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "StreamsGetResponseFormatJson",
+}) as any as S.Schema<StreamsGetResponseFormatJson>;
+
+export type StreamsGetResponseFormatParquetType = "parquet" | (string & {});
+export const StreamsGetResponseFormatParquetType = /*@__PURE__*/ S.String;
+
+export type StreamsGetResponseFormatParquetCompression =
   | "uncompressed"
   | "snappy"
   | "gzip"
   | (string & {});
-export const StreamsGetResponseFormatCompression = /*@__PURE__*/ S.String;
+export const StreamsGetResponseFormatParquetCompression =
+  /*@__PURE__*/ S.String;
 
-export interface StreamsGetResponseFormat {
-  type?: StreamsGetResponseFormatType;
-  decimalEncoding?: StreamsGetResponseFormatDecimalEncoding;
-  timestampFormat?: StreamsGetResponseFormatTimestampFormat;
-  unstructured?: boolean;
-  compression?: StreamsGetResponseFormatCompression;
+export interface StreamsGetResponseFormatParquet {
+  type: StreamsGetResponseFormatParquetType;
+  compression?: StreamsGetResponseFormatParquetCompression;
   rowGroupBytes?: number;
 }
-export const StreamsGetResponseFormat = /*@__PURE__*/ S.suspend(() =>
+export const StreamsGetResponseFormatParquet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    type: S.optional(StreamsGetResponseFormatType),
-    decimalEncoding: S.optional(
-      StreamsGetResponseFormatDecimalEncoding.pipe(T.Body("decimal_encoding")),
-    ),
-    timestampFormat: S.optional(
-      StreamsGetResponseFormatTimestampFormat.pipe(T.Body("timestamp_format")),
-    ),
-    unstructured: S.optional(S.Boolean),
-    compression: S.optional(StreamsGetResponseFormatCompression),
+    type: StreamsGetResponseFormatParquetType,
+    compression: S.optional(StreamsGetResponseFormatParquetCompression),
     rowGroupBytes: S.optional(S.Number.pipe(T.Body("row_group_bytes"))),
   }),
 ).annotate({
-  identifier: "StreamsGetResponseFormat",
-}) as any as S.Schema<StreamsGetResponseFormat>;
+  identifier: "StreamsGetResponseFormatParquet",
+}) as any as S.Schema<StreamsGetResponseFormatParquet>;
+
+export type StreamsGetResponseFormat =
+  | StreamsGetResponseFormatJson
+  | StreamsGetResponseFormatParquet;
+export const StreamsGetResponseFormat = /*@__PURE__*/ S.Unknown;
 
 export type StreamsGetResponseSchemaFieldsItemType = "int32" | (string & {});
 export const StreamsGetResponseSchemaFieldsItemType = /*@__PURE__*/ S.String;
@@ -2450,59 +2899,82 @@ export const StreamsGetResponseSchemaFieldsList = /*@__PURE__*/ S.Array(
   StreamsGetResponseSchemaFieldsItem,
 ) as any as S.Schema<StreamsGetResponseSchemaFieldsList>;
 
-export type StreamsGetResponseSchemaFormatType = "json" | (string & {});
-export const StreamsGetResponseSchemaFormatType = /*@__PURE__*/ S.String;
+export type StreamsGetResponseSchemaFormatJsonType = "json" | (string & {});
+export const StreamsGetResponseSchemaFormatJsonType = /*@__PURE__*/ S.String;
 
-export type StreamsGetResponseSchemaFormatDecimalEncoding =
+export type StreamsGetResponseSchemaFormatJsonDecimalEncoding =
   | "number"
   | "string"
   | "bytes"
   | (string & {});
-export const StreamsGetResponseSchemaFormatDecimalEncoding =
+export const StreamsGetResponseSchemaFormatJsonDecimalEncoding =
   /*@__PURE__*/ S.String;
 
-export type StreamsGetResponseSchemaFormatTimestampFormat =
+export type StreamsGetResponseSchemaFormatJsonTimestampFormat =
   | "rfc3339"
   | "unix_millis"
   | (string & {});
-export const StreamsGetResponseSchemaFormatTimestampFormat =
+export const StreamsGetResponseSchemaFormatJsonTimestampFormat =
   /*@__PURE__*/ S.String;
 
-export type StreamsGetResponseSchemaFormatCompression =
-  | "uncompressed"
-  | "snappy"
-  | "gzip"
-  | (string & {});
-export const StreamsGetResponseSchemaFormatCompression = /*@__PURE__*/ S.String;
-
-export interface StreamsGetResponseSchemaFormat {
-  type?: StreamsGetResponseSchemaFormatType;
-  decimalEncoding?: StreamsGetResponseSchemaFormatDecimalEncoding;
-  timestampFormat?: StreamsGetResponseSchemaFormatTimestampFormat;
+export interface StreamsGetResponseSchemaFormatJson {
+  type: StreamsGetResponseSchemaFormatJsonType;
+  decimalEncoding?: StreamsGetResponseSchemaFormatJsonDecimalEncoding;
+  timestampFormat?: StreamsGetResponseSchemaFormatJsonTimestampFormat;
   unstructured?: boolean;
-  compression?: StreamsGetResponseSchemaFormatCompression;
-  rowGroupBytes?: number;
 }
-export const StreamsGetResponseSchemaFormat = /*@__PURE__*/ S.suspend(() =>
+export const StreamsGetResponseSchemaFormatJson = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    type: S.optional(StreamsGetResponseSchemaFormatType),
+    type: StreamsGetResponseSchemaFormatJsonType,
     decimalEncoding: S.optional(
-      StreamsGetResponseSchemaFormatDecimalEncoding.pipe(
+      StreamsGetResponseSchemaFormatJsonDecimalEncoding.pipe(
         T.Body("decimal_encoding"),
       ),
     ),
     timestampFormat: S.optional(
-      StreamsGetResponseSchemaFormatTimestampFormat.pipe(
+      StreamsGetResponseSchemaFormatJsonTimestampFormat.pipe(
         T.Body("timestamp_format"),
       ),
     ),
     unstructured: S.optional(S.Boolean),
-    compression: S.optional(StreamsGetResponseSchemaFormatCompression),
-    rowGroupBytes: S.optional(S.Number.pipe(T.Body("row_group_bytes"))),
   }),
 ).annotate({
-  identifier: "StreamsGetResponseSchemaFormat",
-}) as any as S.Schema<StreamsGetResponseSchemaFormat>;
+  identifier: "StreamsGetResponseSchemaFormatJson",
+}) as any as S.Schema<StreamsGetResponseSchemaFormatJson>;
+
+export type StreamsGetResponseSchemaFormatParquetType =
+  | "parquet"
+  | (string & {});
+export const StreamsGetResponseSchemaFormatParquetType = /*@__PURE__*/ S.String;
+
+export type StreamsGetResponseSchemaFormatParquetCompression =
+  | "uncompressed"
+  | "snappy"
+  | "gzip"
+  | (string & {});
+export const StreamsGetResponseSchemaFormatParquetCompression =
+  /*@__PURE__*/ S.String;
+
+export interface StreamsGetResponseSchemaFormatParquet {
+  type: StreamsGetResponseSchemaFormatParquetType;
+  compression?: StreamsGetResponseSchemaFormatParquetCompression;
+  rowGroupBytes?: number;
+}
+export const StreamsGetResponseSchemaFormatParquet = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      type: StreamsGetResponseSchemaFormatParquetType,
+      compression: S.optional(StreamsGetResponseSchemaFormatParquetCompression),
+      rowGroupBytes: S.optional(S.Number.pipe(T.Body("row_group_bytes"))),
+    }),
+).annotate({
+  identifier: "StreamsGetResponseSchemaFormatParquet",
+}) as any as S.Schema<StreamsGetResponseSchemaFormatParquet>;
+
+export type StreamsGetResponseSchemaFormat =
+  | StreamsGetResponseSchemaFormatJson
+  | StreamsGetResponseSchemaFormatParquet;
+export const StreamsGetResponseSchemaFormat = /*@__PURE__*/ S.Unknown;
 
 export interface StreamsGetResponseSchema {
   fields?: StreamsGetResponseSchemaFieldsList;
@@ -2881,47 +3353,48 @@ export const ListSinksRequest = /*@__PURE__*/ S.suspend(() =>
 export type SinksListResultItemType = "r2" | "r2_data_catalog" | (string & {});
 export const SinksListResultItemType = /*@__PURE__*/ S.String;
 
-export type SinksListResultItemConfigFileNamingStrategy =
-  | "serial"
-  | "uuid"
-  | "uuid_v7"
-  | "ulid"
-  | (string & {});
-export const SinksListResultItemConfigFileNamingStrategy =
+export type SinksListResultItemConfigCloudflarePipelinesR2TablePublicFileNamingStrategy =
+  "serial" | "uuid" | "uuid_v7" | "ulid" | (string & {});
+export const SinksListResultItemConfigCloudflarePipelinesR2TablePublicFileNamingStrategy =
   /*@__PURE__*/ S.String;
 
-export interface SinksListResultItemConfigFileNaming {
+export interface SinksListResultItemConfigCloudflarePipelinesR2TablePublicFileNaming {
   /** The prefix to use in file name. i.e prefix-<uuid>.parquet */
   prefix?: string;
   /** Filename generation strategy. */
-  strategy?: SinksListResultItemConfigFileNamingStrategy;
+  strategy?: SinksListResultItemConfigCloudflarePipelinesR2TablePublicFileNamingStrategy;
   /** This will overwrite the default file suffix. i.e .parquet, use with caution */
   suffix?: string;
 }
-export const SinksListResultItemConfigFileNaming = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    prefix: S.optional(S.String),
-    strategy: S.optional(SinksListResultItemConfigFileNamingStrategy),
-    suffix: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SinksListResultItemConfigFileNaming",
-}) as any as S.Schema<SinksListResultItemConfigFileNaming>;
+export const SinksListResultItemConfigCloudflarePipelinesR2TablePublicFileNaming =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      prefix: S.optional(S.String),
+      strategy: S.optional(
+        SinksListResultItemConfigCloudflarePipelinesR2TablePublicFileNamingStrategy,
+      ),
+      suffix: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "SinksListResultItemConfigCloudflarePipelinesR2TablePublicFileNaming",
+  }) as any as S.Schema<SinksListResultItemConfigCloudflarePipelinesR2TablePublicFileNaming>;
 
-export interface SinksListResultItemConfigPartitioning {
+export interface SinksListResultItemConfigCloudflarePipelinesR2TablePublicPartitioning {
   /** The pattern of the date string */
   timePattern?: string;
 }
-export const SinksListResultItemConfigPartitioning = /*@__PURE__*/ S.suspend(
-  () =>
+export const SinksListResultItemConfigCloudflarePipelinesR2TablePublicPartitioning =
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       timePattern: S.optional(S.String.pipe(T.Body("time_pattern"))),
     }),
-).annotate({
-  identifier: "SinksListResultItemConfigPartitioning",
-}) as any as S.Schema<SinksListResultItemConfigPartitioning>;
+  ).annotate({
+    identifier:
+      "SinksListResultItemConfigCloudflarePipelinesR2TablePublicPartitioning",
+  }) as any as S.Schema<SinksListResultItemConfigCloudflarePipelinesR2TablePublicPartitioning>;
 
-export interface SinksListResultItemConfigRollingPolicy {
+export interface SinksListResultItemConfigCloudflarePipelinesR2TablePublicRollingPolicy {
   /** Files will be rolled after reaching this number of bytes */
   fileSizeBytes?: number;
   /** Number of seconds of inactivity to wait before rolling over to a new file */
@@ -2929,8 +3402,8 @@ export interface SinksListResultItemConfigRollingPolicy {
   /** Number of seconds to wait before rolling over to a new file */
   intervalSeconds?: number;
 }
-export const SinksListResultItemConfigRollingPolicy = /*@__PURE__*/ S.suspend(
-  () =>
+export const SinksListResultItemConfigCloudflarePipelinesR2TablePublicRollingPolicy =
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       fileSizeBytes: S.optional(S.Number.pipe(T.Body("file_size_bytes"))),
       inactivitySeconds: S.optional(
@@ -2938,97 +3411,182 @@ export const SinksListResultItemConfigRollingPolicy = /*@__PURE__*/ S.suspend(
       ),
       intervalSeconds: S.optional(S.Number.pipe(T.Body("interval_seconds"))),
     }),
-).annotate({
-  identifier: "SinksListResultItemConfigRollingPolicy",
-}) as any as S.Schema<SinksListResultItemConfigRollingPolicy>;
+  ).annotate({
+    identifier:
+      "SinksListResultItemConfigCloudflarePipelinesR2TablePublicRollingPolicy",
+  }) as any as S.Schema<SinksListResultItemConfigCloudflarePipelinesR2TablePublicRollingPolicy>;
 
-export interface SinksListResultItemConfig {
+export interface SinksListResultItemConfigCloudflarePipelinesR2TablePublic {
   /** Cloudflare Account ID for the bucket */
-  accountId?: string;
+  accountId: string;
   /** R2 Bucket to write to */
-  bucket?: string;
+  bucket: string;
   /** Controls filename prefix/suffix and strategy. */
-  fileNaming?: SinksListResultItemConfigFileNaming;
+  fileNaming?: SinksListResultItemConfigCloudflarePipelinesR2TablePublicFileNaming;
   /** Jurisdiction this bucket is hosted in */
   jurisdiction?: string;
   /** Data-layout partitioning for sinks. */
-  partitioning?: SinksListResultItemConfigPartitioning;
+  partitioning?: SinksListResultItemConfigCloudflarePipelinesR2TablePublicPartitioning;
   /** Subpath within the bucket to write to */
   path?: string;
   /** Rolling policy for file sinks (when & why to close a file and open a new one). */
-  rollingPolicy?: SinksListResultItemConfigRollingPolicy;
+  rollingPolicy?: SinksListResultItemConfigCloudflarePipelinesR2TablePublicRollingPolicy;
+}
+export const SinksListResultItemConfigCloudflarePipelinesR2TablePublic =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      accountId: S.String.pipe(T.Body("account_id")),
+      bucket: S.String,
+      fileNaming: S.optional(
+        SinksListResultItemConfigCloudflarePipelinesR2TablePublicFileNaming.pipe(
+          T.Body("file_naming"),
+        ),
+      ),
+      jurisdiction: S.optional(S.String),
+      partitioning: S.optional(
+        SinksListResultItemConfigCloudflarePipelinesR2TablePublicPartitioning,
+      ),
+      path: S.optional(S.String),
+      rollingPolicy: S.optional(
+        SinksListResultItemConfigCloudflarePipelinesR2TablePublicRollingPolicy.pipe(
+          T.Body("rolling_policy"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "SinksListResultItemConfigCloudflarePipelinesR2TablePublic",
+  }) as any as S.Schema<SinksListResultItemConfigCloudflarePipelinesR2TablePublic>;
+
+export interface SinksListResultItemConfigCloudflarePipelinesR2DataCatalogTablePublicRollingPolicy {
+  /** Files will be rolled after reaching this number of bytes */
+  fileSizeBytes?: number;
+  /** Number of seconds of inactivity to wait before rolling over to a new file */
+  inactivitySeconds?: number;
+  /** Number of seconds to wait before rolling over to a new file */
+  intervalSeconds?: number;
+}
+export const SinksListResultItemConfigCloudflarePipelinesR2DataCatalogTablePublicRollingPolicy =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      fileSizeBytes: S.optional(S.Number.pipe(T.Body("file_size_bytes"))),
+      inactivitySeconds: S.optional(
+        S.Number.pipe(T.Body("inactivity_seconds")),
+      ),
+      intervalSeconds: S.optional(S.Number.pipe(T.Body("interval_seconds"))),
+    }),
+  ).annotate({
+    identifier:
+      "SinksListResultItemConfigCloudflarePipelinesR2DataCatalogTablePublicRollingPolicy",
+  }) as any as S.Schema<SinksListResultItemConfigCloudflarePipelinesR2DataCatalogTablePublicRollingPolicy>;
+
+export interface SinksListResultItemConfigCloudflarePipelinesR2DataCatalogTablePublic {
+  /** Cloudflare Account ID */
+  accountId: string;
+  /** The R2 Bucket that hosts this catalog */
+  bucket: string;
   /** Table name */
-  tableName?: string;
+  tableName: string;
   /** Table namespace */
   namespace?: string;
+  /** Rolling policy for file sinks (when & why to close a file and open a new one). */
+  rollingPolicy?: SinksListResultItemConfigCloudflarePipelinesR2DataCatalogTablePublicRollingPolicy;
 }
-export const SinksListResultItemConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.optional(S.String.pipe(T.Body("account_id"))),
-    bucket: S.optional(S.String),
-    fileNaming: S.optional(
-      SinksListResultItemConfigFileNaming.pipe(T.Body("file_naming")),
-    ),
-    jurisdiction: S.optional(S.String),
-    partitioning: S.optional(SinksListResultItemConfigPartitioning),
-    path: S.optional(S.String),
-    rollingPolicy: S.optional(
-      SinksListResultItemConfigRollingPolicy.pipe(T.Body("rolling_policy")),
-    ),
-    tableName: S.optional(S.String.pipe(T.Body("table_name"))),
-    namespace: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SinksListResultItemConfig",
-}) as any as S.Schema<SinksListResultItemConfig>;
+export const SinksListResultItemConfigCloudflarePipelinesR2DataCatalogTablePublic =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      accountId: S.String.pipe(T.Body("account_id")),
+      bucket: S.String,
+      tableName: S.String.pipe(T.Body("table_name")),
+      namespace: S.optional(S.String),
+      rollingPolicy: S.optional(
+        SinksListResultItemConfigCloudflarePipelinesR2DataCatalogTablePublicRollingPolicy.pipe(
+          T.Body("rolling_policy"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "SinksListResultItemConfigCloudflarePipelinesR2DataCatalogTablePublic",
+  }) as any as S.Schema<SinksListResultItemConfigCloudflarePipelinesR2DataCatalogTablePublic>;
 
-export type SinksListResultItemFormatType = "json" | (string & {});
-export const SinksListResultItemFormatType = /*@__PURE__*/ S.String;
+export type SinksListResultItemConfig =
+  | SinksListResultItemConfigCloudflarePipelinesR2TablePublic
+  | SinksListResultItemConfigCloudflarePipelinesR2DataCatalogTablePublic;
+export const SinksListResultItemConfig = /*@__PURE__*/ S.Unknown;
 
-export type SinksListResultItemFormatDecimalEncoding =
+export type SinksListResultItemFormatJsonType = "json" | (string & {});
+export const SinksListResultItemFormatJsonType = /*@__PURE__*/ S.String;
+
+export type SinksListResultItemFormatJsonDecimalEncoding =
   | "number"
   | "string"
   | "bytes"
   | (string & {});
-export const SinksListResultItemFormatDecimalEncoding = /*@__PURE__*/ S.String;
+export const SinksListResultItemFormatJsonDecimalEncoding =
+  /*@__PURE__*/ S.String;
 
-export type SinksListResultItemFormatTimestampFormat =
+export type SinksListResultItemFormatJsonTimestampFormat =
   | "rfc3339"
   | "unix_millis"
   | (string & {});
-export const SinksListResultItemFormatTimestampFormat = /*@__PURE__*/ S.String;
+export const SinksListResultItemFormatJsonTimestampFormat =
+  /*@__PURE__*/ S.String;
 
-export type SinksListResultItemFormatCompression =
+export interface SinksListResultItemFormatJson {
+  type: SinksListResultItemFormatJsonType;
+  decimalEncoding?: SinksListResultItemFormatJsonDecimalEncoding;
+  timestampFormat?: SinksListResultItemFormatJsonTimestampFormat;
+  unstructured?: boolean;
+}
+export const SinksListResultItemFormatJson = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: SinksListResultItemFormatJsonType,
+    decimalEncoding: S.optional(
+      SinksListResultItemFormatJsonDecimalEncoding.pipe(
+        T.Body("decimal_encoding"),
+      ),
+    ),
+    timestampFormat: S.optional(
+      SinksListResultItemFormatJsonTimestampFormat.pipe(
+        T.Body("timestamp_format"),
+      ),
+    ),
+    unstructured: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "SinksListResultItemFormatJson",
+}) as any as S.Schema<SinksListResultItemFormatJson>;
+
+export type SinksListResultItemFormatParquetType = "parquet" | (string & {});
+export const SinksListResultItemFormatParquetType = /*@__PURE__*/ S.String;
+
+export type SinksListResultItemFormatParquetCompression =
   | "uncompressed"
   | "snappy"
   | "gzip"
   | (string & {});
-export const SinksListResultItemFormatCompression = /*@__PURE__*/ S.String;
+export const SinksListResultItemFormatParquetCompression =
+  /*@__PURE__*/ S.String;
 
-export interface SinksListResultItemFormat {
-  type?: SinksListResultItemFormatType;
-  decimalEncoding?: SinksListResultItemFormatDecimalEncoding;
-  timestampFormat?: SinksListResultItemFormatTimestampFormat;
-  unstructured?: boolean;
-  compression?: SinksListResultItemFormatCompression;
+export interface SinksListResultItemFormatParquet {
+  type: SinksListResultItemFormatParquetType;
+  compression?: SinksListResultItemFormatParquetCompression;
   rowGroupBytes?: number;
 }
-export const SinksListResultItemFormat = /*@__PURE__*/ S.suspend(() =>
+export const SinksListResultItemFormatParquet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    type: S.optional(SinksListResultItemFormatType),
-    decimalEncoding: S.optional(
-      SinksListResultItemFormatDecimalEncoding.pipe(T.Body("decimal_encoding")),
-    ),
-    timestampFormat: S.optional(
-      SinksListResultItemFormatTimestampFormat.pipe(T.Body("timestamp_format")),
-    ),
-    unstructured: S.optional(S.Boolean),
-    compression: S.optional(SinksListResultItemFormatCompression),
+    type: SinksListResultItemFormatParquetType,
+    compression: S.optional(SinksListResultItemFormatParquetCompression),
     rowGroupBytes: S.optional(S.Number.pipe(T.Body("row_group_bytes"))),
   }),
 ).annotate({
-  identifier: "SinksListResultItemFormat",
-}) as any as S.Schema<SinksListResultItemFormat>;
+  identifier: "SinksListResultItemFormatParquet",
+}) as any as S.Schema<SinksListResultItemFormatParquet>;
+
+export type SinksListResultItemFormat =
+  | SinksListResultItemFormatJson
+  | SinksListResultItemFormatParquet;
+export const SinksListResultItemFormat = /*@__PURE__*/ S.Unknown;
 
 export type SinksListResultItemSchemaFieldsItemType = "int32" | (string & {});
 export const SinksListResultItemSchemaFieldsItemType = /*@__PURE__*/ S.String;
@@ -3072,60 +3630,85 @@ export const SinksListResultItemSchemaFieldsList = /*@__PURE__*/ S.Array(
   SinksListResultItemSchemaFieldsItem,
 ) as any as S.Schema<SinksListResultItemSchemaFieldsList>;
 
-export type SinksListResultItemSchemaFormatType = "json" | (string & {});
-export const SinksListResultItemSchemaFormatType = /*@__PURE__*/ S.String;
+export type SinksListResultItemSchemaFormatJsonType = "json" | (string & {});
+export const SinksListResultItemSchemaFormatJsonType = /*@__PURE__*/ S.String;
 
-export type SinksListResultItemSchemaFormatDecimalEncoding =
+export type SinksListResultItemSchemaFormatJsonDecimalEncoding =
   | "number"
   | "string"
   | "bytes"
   | (string & {});
-export const SinksListResultItemSchemaFormatDecimalEncoding =
+export const SinksListResultItemSchemaFormatJsonDecimalEncoding =
   /*@__PURE__*/ S.String;
 
-export type SinksListResultItemSchemaFormatTimestampFormat =
+export type SinksListResultItemSchemaFormatJsonTimestampFormat =
   | "rfc3339"
   | "unix_millis"
   | (string & {});
-export const SinksListResultItemSchemaFormatTimestampFormat =
+export const SinksListResultItemSchemaFormatJsonTimestampFormat =
   /*@__PURE__*/ S.String;
 
-export type SinksListResultItemSchemaFormatCompression =
-  | "uncompressed"
-  | "snappy"
-  | "gzip"
-  | (string & {});
-export const SinksListResultItemSchemaFormatCompression =
-  /*@__PURE__*/ S.String;
-
-export interface SinksListResultItemSchemaFormat {
-  type?: SinksListResultItemSchemaFormatType;
-  decimalEncoding?: SinksListResultItemSchemaFormatDecimalEncoding;
-  timestampFormat?: SinksListResultItemSchemaFormatTimestampFormat;
+export interface SinksListResultItemSchemaFormatJson {
+  type: SinksListResultItemSchemaFormatJsonType;
+  decimalEncoding?: SinksListResultItemSchemaFormatJsonDecimalEncoding;
+  timestampFormat?: SinksListResultItemSchemaFormatJsonTimestampFormat;
   unstructured?: boolean;
-  compression?: SinksListResultItemSchemaFormatCompression;
-  rowGroupBytes?: number;
 }
-export const SinksListResultItemSchemaFormat = /*@__PURE__*/ S.suspend(() =>
+export const SinksListResultItemSchemaFormatJson = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    type: S.optional(SinksListResultItemSchemaFormatType),
+    type: SinksListResultItemSchemaFormatJsonType,
     decimalEncoding: S.optional(
-      SinksListResultItemSchemaFormatDecimalEncoding.pipe(
+      SinksListResultItemSchemaFormatJsonDecimalEncoding.pipe(
         T.Body("decimal_encoding"),
       ),
     ),
     timestampFormat: S.optional(
-      SinksListResultItemSchemaFormatTimestampFormat.pipe(
+      SinksListResultItemSchemaFormatJsonTimestampFormat.pipe(
         T.Body("timestamp_format"),
       ),
     ),
     unstructured: S.optional(S.Boolean),
-    compression: S.optional(SinksListResultItemSchemaFormatCompression),
-    rowGroupBytes: S.optional(S.Number.pipe(T.Body("row_group_bytes"))),
   }),
 ).annotate({
-  identifier: "SinksListResultItemSchemaFormat",
-}) as any as S.Schema<SinksListResultItemSchemaFormat>;
+  identifier: "SinksListResultItemSchemaFormatJson",
+}) as any as S.Schema<SinksListResultItemSchemaFormatJson>;
+
+export type SinksListResultItemSchemaFormatParquetType =
+  | "parquet"
+  | (string & {});
+export const SinksListResultItemSchemaFormatParquetType =
+  /*@__PURE__*/ S.String;
+
+export type SinksListResultItemSchemaFormatParquetCompression =
+  | "uncompressed"
+  | "snappy"
+  | "gzip"
+  | (string & {});
+export const SinksListResultItemSchemaFormatParquetCompression =
+  /*@__PURE__*/ S.String;
+
+export interface SinksListResultItemSchemaFormatParquet {
+  type: SinksListResultItemSchemaFormatParquetType;
+  compression?: SinksListResultItemSchemaFormatParquetCompression;
+  rowGroupBytes?: number;
+}
+export const SinksListResultItemSchemaFormatParquet = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      type: SinksListResultItemSchemaFormatParquetType,
+      compression: S.optional(
+        SinksListResultItemSchemaFormatParquetCompression,
+      ),
+      rowGroupBytes: S.optional(S.Number.pipe(T.Body("row_group_bytes"))),
+    }),
+).annotate({
+  identifier: "SinksListResultItemSchemaFormatParquet",
+}) as any as S.Schema<SinksListResultItemSchemaFormatParquet>;
+
+export type SinksListResultItemSchemaFormat =
+  | SinksListResultItemSchemaFormatJson
+  | SinksListResultItemSchemaFormatParquet;
+export const SinksListResultItemSchemaFormat = /*@__PURE__*/ S.Unknown;
 
 export interface SinksListResultItemSchema {
   fields?: SinksListResultItemSchemaFieldsList;
@@ -3267,59 +3850,79 @@ export const StreamsListResultItemWorkerBinding = /*@__PURE__*/ S.suspend(() =>
   identifier: "StreamsListResultItemWorkerBinding",
 }) as any as S.Schema<StreamsListResultItemWorkerBinding>;
 
-export type StreamsListResultItemFormatType = "json" | (string & {});
-export const StreamsListResultItemFormatType = /*@__PURE__*/ S.String;
+export type StreamsListResultItemFormatJsonType = "json" | (string & {});
+export const StreamsListResultItemFormatJsonType = /*@__PURE__*/ S.String;
 
-export type StreamsListResultItemFormatDecimalEncoding =
+export type StreamsListResultItemFormatJsonDecimalEncoding =
   | "number"
   | "string"
   | "bytes"
   | (string & {});
-export const StreamsListResultItemFormatDecimalEncoding =
+export const StreamsListResultItemFormatJsonDecimalEncoding =
   /*@__PURE__*/ S.String;
 
-export type StreamsListResultItemFormatTimestampFormat =
+export type StreamsListResultItemFormatJsonTimestampFormat =
   | "rfc3339"
   | "unix_millis"
   | (string & {});
-export const StreamsListResultItemFormatTimestampFormat =
+export const StreamsListResultItemFormatJsonTimestampFormat =
   /*@__PURE__*/ S.String;
 
-export type StreamsListResultItemFormatCompression =
-  | "uncompressed"
-  | "snappy"
-  | "gzip"
-  | (string & {});
-export const StreamsListResultItemFormatCompression = /*@__PURE__*/ S.String;
-
-export interface StreamsListResultItemFormat {
-  type?: StreamsListResultItemFormatType;
-  decimalEncoding?: StreamsListResultItemFormatDecimalEncoding;
-  timestampFormat?: StreamsListResultItemFormatTimestampFormat;
+export interface StreamsListResultItemFormatJson {
+  type: StreamsListResultItemFormatJsonType;
+  decimalEncoding?: StreamsListResultItemFormatJsonDecimalEncoding;
+  timestampFormat?: StreamsListResultItemFormatJsonTimestampFormat;
   unstructured?: boolean;
-  compression?: StreamsListResultItemFormatCompression;
-  rowGroupBytes?: number;
 }
-export const StreamsListResultItemFormat = /*@__PURE__*/ S.suspend(() =>
+export const StreamsListResultItemFormatJson = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    type: S.optional(StreamsListResultItemFormatType),
+    type: StreamsListResultItemFormatJsonType,
     decimalEncoding: S.optional(
-      StreamsListResultItemFormatDecimalEncoding.pipe(
+      StreamsListResultItemFormatJsonDecimalEncoding.pipe(
         T.Body("decimal_encoding"),
       ),
     ),
     timestampFormat: S.optional(
-      StreamsListResultItemFormatTimestampFormat.pipe(
+      StreamsListResultItemFormatJsonTimestampFormat.pipe(
         T.Body("timestamp_format"),
       ),
     ),
     unstructured: S.optional(S.Boolean),
-    compression: S.optional(StreamsListResultItemFormatCompression),
+  }),
+).annotate({
+  identifier: "StreamsListResultItemFormatJson",
+}) as any as S.Schema<StreamsListResultItemFormatJson>;
+
+export type StreamsListResultItemFormatParquetType = "parquet" | (string & {});
+export const StreamsListResultItemFormatParquetType = /*@__PURE__*/ S.String;
+
+export type StreamsListResultItemFormatParquetCompression =
+  | "uncompressed"
+  | "snappy"
+  | "gzip"
+  | (string & {});
+export const StreamsListResultItemFormatParquetCompression =
+  /*@__PURE__*/ S.String;
+
+export interface StreamsListResultItemFormatParquet {
+  type: StreamsListResultItemFormatParquetType;
+  compression?: StreamsListResultItemFormatParquetCompression;
+  rowGroupBytes?: number;
+}
+export const StreamsListResultItemFormatParquet = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: StreamsListResultItemFormatParquetType,
+    compression: S.optional(StreamsListResultItemFormatParquetCompression),
     rowGroupBytes: S.optional(S.Number.pipe(T.Body("row_group_bytes"))),
   }),
 ).annotate({
-  identifier: "StreamsListResultItemFormat",
-}) as any as S.Schema<StreamsListResultItemFormat>;
+  identifier: "StreamsListResultItemFormatParquet",
+}) as any as S.Schema<StreamsListResultItemFormatParquet>;
+
+export type StreamsListResultItemFormat =
+  | StreamsListResultItemFormatJson
+  | StreamsListResultItemFormatParquet;
+export const StreamsListResultItemFormat = /*@__PURE__*/ S.Unknown;
 
 export type StreamsListResultItemSchemaFieldsItemType = "int32" | (string & {});
 export const StreamsListResultItemSchemaFieldsItemType = /*@__PURE__*/ S.String;
@@ -3364,60 +3967,86 @@ export const StreamsListResultItemSchemaFieldsList = /*@__PURE__*/ S.Array(
   StreamsListResultItemSchemaFieldsItem,
 ) as any as S.Schema<StreamsListResultItemSchemaFieldsList>;
 
-export type StreamsListResultItemSchemaFormatType = "json" | (string & {});
-export const StreamsListResultItemSchemaFormatType = /*@__PURE__*/ S.String;
+export type StreamsListResultItemSchemaFormatJsonType = "json" | (string & {});
+export const StreamsListResultItemSchemaFormatJsonType = /*@__PURE__*/ S.String;
 
-export type StreamsListResultItemSchemaFormatDecimalEncoding =
+export type StreamsListResultItemSchemaFormatJsonDecimalEncoding =
   | "number"
   | "string"
   | "bytes"
   | (string & {});
-export const StreamsListResultItemSchemaFormatDecimalEncoding =
+export const StreamsListResultItemSchemaFormatJsonDecimalEncoding =
   /*@__PURE__*/ S.String;
 
-export type StreamsListResultItemSchemaFormatTimestampFormat =
+export type StreamsListResultItemSchemaFormatJsonTimestampFormat =
   | "rfc3339"
   | "unix_millis"
   | (string & {});
-export const StreamsListResultItemSchemaFormatTimestampFormat =
+export const StreamsListResultItemSchemaFormatJsonTimestampFormat =
   /*@__PURE__*/ S.String;
 
-export type StreamsListResultItemSchemaFormatCompression =
+export interface StreamsListResultItemSchemaFormatJson {
+  type: StreamsListResultItemSchemaFormatJsonType;
+  decimalEncoding?: StreamsListResultItemSchemaFormatJsonDecimalEncoding;
+  timestampFormat?: StreamsListResultItemSchemaFormatJsonTimestampFormat;
+  unstructured?: boolean;
+}
+export const StreamsListResultItemSchemaFormatJson = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      type: StreamsListResultItemSchemaFormatJsonType,
+      decimalEncoding: S.optional(
+        StreamsListResultItemSchemaFormatJsonDecimalEncoding.pipe(
+          T.Body("decimal_encoding"),
+        ),
+      ),
+      timestampFormat: S.optional(
+        StreamsListResultItemSchemaFormatJsonTimestampFormat.pipe(
+          T.Body("timestamp_format"),
+        ),
+      ),
+      unstructured: S.optional(S.Boolean),
+    }),
+).annotate({
+  identifier: "StreamsListResultItemSchemaFormatJson",
+}) as any as S.Schema<StreamsListResultItemSchemaFormatJson>;
+
+export type StreamsListResultItemSchemaFormatParquetType =
+  | "parquet"
+  | (string & {});
+export const StreamsListResultItemSchemaFormatParquetType =
+  /*@__PURE__*/ S.String;
+
+export type StreamsListResultItemSchemaFormatParquetCompression =
   | "uncompressed"
   | "snappy"
   | "gzip"
   | (string & {});
-export const StreamsListResultItemSchemaFormatCompression =
+export const StreamsListResultItemSchemaFormatParquetCompression =
   /*@__PURE__*/ S.String;
 
-export interface StreamsListResultItemSchemaFormat {
-  type?: StreamsListResultItemSchemaFormatType;
-  decimalEncoding?: StreamsListResultItemSchemaFormatDecimalEncoding;
-  timestampFormat?: StreamsListResultItemSchemaFormatTimestampFormat;
-  unstructured?: boolean;
-  compression?: StreamsListResultItemSchemaFormatCompression;
+export interface StreamsListResultItemSchemaFormatParquet {
+  type: StreamsListResultItemSchemaFormatParquetType;
+  compression?: StreamsListResultItemSchemaFormatParquetCompression;
   rowGroupBytes?: number;
 }
-export const StreamsListResultItemSchemaFormat = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(StreamsListResultItemSchemaFormatType),
-    decimalEncoding: S.optional(
-      StreamsListResultItemSchemaFormatDecimalEncoding.pipe(
-        T.Body("decimal_encoding"),
+export const StreamsListResultItemSchemaFormatParquet = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      type: StreamsListResultItemSchemaFormatParquetType,
+      compression: S.optional(
+        StreamsListResultItemSchemaFormatParquetCompression,
       ),
-    ),
-    timestampFormat: S.optional(
-      StreamsListResultItemSchemaFormatTimestampFormat.pipe(
-        T.Body("timestamp_format"),
-      ),
-    ),
-    unstructured: S.optional(S.Boolean),
-    compression: S.optional(StreamsListResultItemSchemaFormatCompression),
-    rowGroupBytes: S.optional(S.Number.pipe(T.Body("row_group_bytes"))),
-  }),
+      rowGroupBytes: S.optional(S.Number.pipe(T.Body("row_group_bytes"))),
+    }),
 ).annotate({
-  identifier: "StreamsListResultItemSchemaFormat",
-}) as any as S.Schema<StreamsListResultItemSchemaFormat>;
+  identifier: "StreamsListResultItemSchemaFormatParquet",
+}) as any as S.Schema<StreamsListResultItemSchemaFormatParquet>;
+
+export type StreamsListResultItemSchemaFormat =
+  | StreamsListResultItemSchemaFormatJson
+  | StreamsListResultItemSchemaFormatParquet;
+export const StreamsListResultItemSchemaFormat = /*@__PURE__*/ S.Unknown;
 
 export interface StreamsListResultItemSchema {
   fields?: StreamsListResultItemSchemaFieldsList;
@@ -3682,59 +4311,79 @@ export const StreamsUpdateResponseWorkerBinding = /*@__PURE__*/ S.suspend(() =>
   identifier: "StreamsUpdateResponseWorkerBinding",
 }) as any as S.Schema<StreamsUpdateResponseWorkerBinding>;
 
-export type StreamsUpdateResponseFormatType = "json" | (string & {});
-export const StreamsUpdateResponseFormatType = /*@__PURE__*/ S.String;
+export type StreamsUpdateResponseFormatJsonType = "json" | (string & {});
+export const StreamsUpdateResponseFormatJsonType = /*@__PURE__*/ S.String;
 
-export type StreamsUpdateResponseFormatDecimalEncoding =
+export type StreamsUpdateResponseFormatJsonDecimalEncoding =
   | "number"
   | "string"
   | "bytes"
   | (string & {});
-export const StreamsUpdateResponseFormatDecimalEncoding =
+export const StreamsUpdateResponseFormatJsonDecimalEncoding =
   /*@__PURE__*/ S.String;
 
-export type StreamsUpdateResponseFormatTimestampFormat =
+export type StreamsUpdateResponseFormatJsonTimestampFormat =
   | "rfc3339"
   | "unix_millis"
   | (string & {});
-export const StreamsUpdateResponseFormatTimestampFormat =
+export const StreamsUpdateResponseFormatJsonTimestampFormat =
   /*@__PURE__*/ S.String;
 
-export type StreamsUpdateResponseFormatCompression =
-  | "uncompressed"
-  | "snappy"
-  | "gzip"
-  | (string & {});
-export const StreamsUpdateResponseFormatCompression = /*@__PURE__*/ S.String;
-
-export interface StreamsUpdateResponseFormat {
-  type?: StreamsUpdateResponseFormatType;
-  decimalEncoding?: StreamsUpdateResponseFormatDecimalEncoding;
-  timestampFormat?: StreamsUpdateResponseFormatTimestampFormat;
+export interface StreamsUpdateResponseFormatJson {
+  type: StreamsUpdateResponseFormatJsonType;
+  decimalEncoding?: StreamsUpdateResponseFormatJsonDecimalEncoding;
+  timestampFormat?: StreamsUpdateResponseFormatJsonTimestampFormat;
   unstructured?: boolean;
-  compression?: StreamsUpdateResponseFormatCompression;
-  rowGroupBytes?: number;
 }
-export const StreamsUpdateResponseFormat = /*@__PURE__*/ S.suspend(() =>
+export const StreamsUpdateResponseFormatJson = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    type: S.optional(StreamsUpdateResponseFormatType),
+    type: StreamsUpdateResponseFormatJsonType,
     decimalEncoding: S.optional(
-      StreamsUpdateResponseFormatDecimalEncoding.pipe(
+      StreamsUpdateResponseFormatJsonDecimalEncoding.pipe(
         T.Body("decimal_encoding"),
       ),
     ),
     timestampFormat: S.optional(
-      StreamsUpdateResponseFormatTimestampFormat.pipe(
+      StreamsUpdateResponseFormatJsonTimestampFormat.pipe(
         T.Body("timestamp_format"),
       ),
     ),
     unstructured: S.optional(S.Boolean),
-    compression: S.optional(StreamsUpdateResponseFormatCompression),
+  }),
+).annotate({
+  identifier: "StreamsUpdateResponseFormatJson",
+}) as any as S.Schema<StreamsUpdateResponseFormatJson>;
+
+export type StreamsUpdateResponseFormatParquetType = "parquet" | (string & {});
+export const StreamsUpdateResponseFormatParquetType = /*@__PURE__*/ S.String;
+
+export type StreamsUpdateResponseFormatParquetCompression =
+  | "uncompressed"
+  | "snappy"
+  | "gzip"
+  | (string & {});
+export const StreamsUpdateResponseFormatParquetCompression =
+  /*@__PURE__*/ S.String;
+
+export interface StreamsUpdateResponseFormatParquet {
+  type: StreamsUpdateResponseFormatParquetType;
+  compression?: StreamsUpdateResponseFormatParquetCompression;
+  rowGroupBytes?: number;
+}
+export const StreamsUpdateResponseFormatParquet = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: StreamsUpdateResponseFormatParquetType,
+    compression: S.optional(StreamsUpdateResponseFormatParquetCompression),
     rowGroupBytes: S.optional(S.Number.pipe(T.Body("row_group_bytes"))),
   }),
 ).annotate({
-  identifier: "StreamsUpdateResponseFormat",
-}) as any as S.Schema<StreamsUpdateResponseFormat>;
+  identifier: "StreamsUpdateResponseFormatParquet",
+}) as any as S.Schema<StreamsUpdateResponseFormatParquet>;
+
+export type StreamsUpdateResponseFormat =
+  | StreamsUpdateResponseFormatJson
+  | StreamsUpdateResponseFormatParquet;
+export const StreamsUpdateResponseFormat = /*@__PURE__*/ S.Unknown;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchStreamResponse {

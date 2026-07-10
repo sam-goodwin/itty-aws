@@ -2395,23 +2395,47 @@ export const PatchEventResponse = /*@__PURE__*/ S.suspend(() =>
 export type RulesEditRequestAction = "bypass_waiting_room" | (string & {});
 export const RulesEditRequestAction = /*@__PURE__*/ S.String;
 
-export interface RulesEditRequestPosition {
+export interface RulesEditRequestPositionIndex {
   /** Places the rule in the exact position specified by the integer number <POSITION_NUMBER>. Position numbers start with 1. Existing rules in the ruleset from the specified position number onward are shifted one position (no rule is overwritten). */
   index?: number;
+}
+export const RulesEditRequestPositionIndex = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    index: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "RulesEditRequestPositionIndex",
+}) as any as S.Schema<RulesEditRequestPositionIndex>;
+
+export interface RulesEditRequestPositionBefore {
   /** Places the rule before rule <RULE_ID>. Use this argument with an empty rule ID value ("") to set the rule as the first rule in the ruleset. */
   before?: string;
+}
+export const RulesEditRequestPositionBefore = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    before: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "RulesEditRequestPositionBefore",
+}) as any as S.Schema<RulesEditRequestPositionBefore>;
+
+export interface RulesEditRequestPositionAfter {
   /** Places the rule after rule <RULE_ID>. Use this argument with an empty rule ID value ("") to set the rule as the last rule in the ruleset. */
   after?: string;
 }
-export const RulesEditRequestPosition = /*@__PURE__*/ S.suspend(() =>
+export const RulesEditRequestPositionAfter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    index: S.optional(S.Number),
-    before: S.optional(S.String),
     after: S.optional(S.String),
   }),
 ).annotate({
-  identifier: "RulesEditRequestPosition",
-}) as any as S.Schema<RulesEditRequestPosition>;
+  identifier: "RulesEditRequestPositionAfter",
+}) as any as S.Schema<RulesEditRequestPositionAfter>;
+
+export type RulesEditRequestPosition =
+  | RulesEditRequestPositionIndex
+  | RulesEditRequestPositionBefore
+  | RulesEditRequestPositionAfter;
+export const RulesEditRequestPosition = /*@__PURE__*/ S.Unknown;
 
 export interface PatchRuleRequest {
   /** Identifier. */

@@ -68,138 +68,61 @@ export class InvalidRequest extends T.applyErrorMatchers(
   [{ code: 7003 }],
 ) {}
 
-export type CreateRequestBodyAct = "abuse_dmca" | (string & {});
-export const CreateRequestBodyAct = /*@__PURE__*/ S.String;
+export type CreateRequestBodyAbuseDmcaAct = "abuse_dmca" | (string & {});
+export const CreateRequestBodyAbuseDmcaAct = /*@__PURE__*/ S.String;
 
-export interface CreateRequestBodyAgree {
+export interface CreateRequestBodyAbuseDmcaAgree {
   "1": unknown;
 }
-export const CreateRequestBodyAgree = /*@__PURE__*/ S.suspend(() =>
+export const CreateRequestBodyAbuseDmcaAgree = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     "1": S.Unknown,
   }),
 ).annotate({
-  identifier: "CreateRequestBodyAgree",
-}) as any as S.Schema<CreateRequestBodyAgree>;
+  identifier: "CreateRequestBodyAbuseDmcaAgree",
+}) as any as S.Schema<CreateRequestBodyAbuseDmcaAgree>;
 
-export type CreateRequestBodyHostNotification = "send" | (string & {});
-export const CreateRequestBodyHostNotification = /*@__PURE__*/ S.String;
+export type CreateRequestBodyAbuseDmcaHostNotification = "send" | (string & {});
+export const CreateRequestBodyAbuseDmcaHostNotification =
+  /*@__PURE__*/ S.String;
 
-export type CreateRequestBodyOwnerNotification = "send" | (string & {});
-export const CreateRequestBodyOwnerNotification = /*@__PURE__*/ S.String;
-
-export type CreateRequestBodyNcmecNotification =
+export type CreateRequestBodyAbuseDmcaOwnerNotification =
   | "send"
-  | "send-anon"
   | (string & {});
-export const CreateRequestBodyNcmecNotification = /*@__PURE__*/ S.String;
-
-export type CreateRequestBodyRegWhoRequestRegWhoRequestType =
-  | "disclosure"
-  | "invalid_whois"
-  | (string & {});
-export const CreateRequestBodyRegWhoRequestRegWhoRequestType =
+export const CreateRequestBodyAbuseDmcaOwnerNotification =
   /*@__PURE__*/ S.String;
 
-export type CreateRequestBodyRegWhoRequestRegWhoRequestedDataElementsItem =
-  | "registrant_name"
-  | "registrant_organization"
-  | "registrant_email"
-  | (string & {});
-export const CreateRequestBodyRegWhoRequestRegWhoRequestedDataElementsItem =
-  /*@__PURE__*/ S.String;
-
-export type CreateRequestBodyRegWhoRequestRegWhoRequestedDataElementsList =
-  CreateRequestBodyRegWhoRequestRegWhoRequestedDataElementsItem[];
-export const CreateRequestBodyRegWhoRequestRegWhoRequestedDataElementsList =
-  /*@__PURE__*/ S.Array(
-    CreateRequestBodyRegWhoRequestRegWhoRequestedDataElementsItem,
-  ) as any as S.Schema<CreateRequestBodyRegWhoRequestRegWhoRequestedDataElementsList>;
-
-export type CreateRequestBodyRegWhoRequestRegWhoRequestorType =
-  | "government"
-  | "corporation"
-  | "individual"
-  | (string & {});
-export const CreateRequestBodyRegWhoRequestRegWhoRequestorType =
-  /*@__PURE__*/ S.String;
-
-export interface CreateRequestBodyRegWhoRequest {
-  /** Affirmation that the request is made in good faith per RDP 10.2.4. Must be true. */
-  regWhoGoodFaithAffirmation: boolean;
-  /** Agreement to process data lawfully per RDP 10.2.5. Must be true. */
-  regWhoLawfulProcessingAgreement: boolean;
-  /** Legal rights and rationale for the request per RDP 10.2.3. Required for all WHOIS requests. */
-  regWhoLegalBasis: string;
-  /** The type of WHOIS data request per RDP procedure. */
-  regWhoRequestType: CreateRequestBodyRegWhoRequestRegWhoRequestType;
-  /** The specific WHOIS data elements being requested per RDP 10.2.2. Required for all WHOIS requests. */
-  regWhoRequestedDataElements: CreateRequestBodyRegWhoRequestRegWhoRequestedDataElementsList;
-  /** Optional authorization statement or power of attorney per RDP 10.2.1.3. */
-  regWhoAuthorizationStatement?: string;
-  /** The nature of the requestor per RDP 10.2.1.2. */
-  regWhoRequestorType?: CreateRequestBodyRegWhoRequestRegWhoRequestorType;
-}
-export const CreateRequestBodyRegWhoRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    regWhoGoodFaithAffirmation: S.Boolean.pipe(
-      T.Body("reg_who_good_faith_affirmation"),
-    ),
-    regWhoLawfulProcessingAgreement: S.Boolean.pipe(
-      T.Body("reg_who_lawful_processing_agreement"),
-    ),
-    regWhoLegalBasis: S.String.pipe(T.Body("reg_who_legal_basis")),
-    regWhoRequestType: CreateRequestBodyRegWhoRequestRegWhoRequestType.pipe(
-      T.Body("reg_who_request_type"),
-    ),
-    regWhoRequestedDataElements:
-      CreateRequestBodyRegWhoRequestRegWhoRequestedDataElementsList.pipe(
-        T.Body("reg_who_requested_data_elements"),
-      ),
-    regWhoAuthorizationStatement: S.optional(
-      S.String.pipe(T.Body("reg_who_authorization_statement")),
-    ),
-    regWhoRequestorType: S.optional(
-      CreateRequestBodyRegWhoRequestRegWhoRequestorType.pipe(
-        T.Body("reg_who_requestor_type"),
-      ),
-    ),
-  }),
-).annotate({
-  identifier: "CreateRequestBodyRegWhoRequest",
-}) as any as S.Schema<CreateRequestBodyRegWhoRequest>;
-
-export interface CreateRequestBody {
+export interface CreateRequestBodyAbuseDmca {
   /** The report type for submitted reports. */
-  act?: CreateRequestBodyAct;
+  act: CreateRequestBodyAbuseDmcaAct;
   /** Text not exceeding 100 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/). */
-  address1?: string;
+  address1: string;
   /** The name of the copyright holder. Text not exceeding 60 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/). */
-  agentName?: string;
+  agentName: string;
   /** Can be `0` for false or `1` for true. Must be value: 1 for DMCA reports */
-  agree?: CreateRequestBodyAgree;
+  agree: CreateRequestBodyAbuseDmcaAgree;
   /** Text not exceeding 255 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/). */
-  city?: string;
+  city: string;
   /** Text not exceeding 255 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/). */
-  country?: string;
+  country: string;
   /** A valid email of the abuse reporter. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/). */
-  email?: string;
+  email: string;
   /** Should match the value provided in `email` */
-  email2?: string;
+  email2: string;
   /** Notification type based on the abuse type. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous. */
-  hostNotification?: CreateRequestBodyHostNotification;
+  hostNotification: CreateRequestBodyAbuseDmcaHostNotification;
   /** Text not exceeding 255 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/). */
-  name?: string;
+  name: string;
   /** Text not exceeding 255 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/). */
-  originalWork?: string;
+  originalWork: string;
   /** Notification type based on the abuse type. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous. */
-  ownerNotification?: CreateRequestBodyOwnerNotification;
+  ownerNotification: CreateRequestBodyAbuseDmcaOwnerNotification;
   /** Required for DMCA reports, should be same as Name. An affirmation that all information in the report is true and accurate while agreeing to the policies of Cloudflare's abuse reports */
-  signature?: string;
+  signature: string;
   /** Text not exceeding 255 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/). */
-  state?: string;
+  state: string;
   /** A list of valid URLs separated by ‘\n’ (new line character). The list of the URLs should not exceed 250 URLs. All URLs should have the same hostname. Each URL should be unique. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/). */
-  urls?: string;
+  urls: string;
   /** Any additional comments about the infringement not exceeding 2000 characters */
   comments?: string;
   /** Text not exceeding 100 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/). */
@@ -212,74 +135,671 @@ export interface CreateRequestBody {
   tele?: string;
   /** Text not exceeding 255 characters */
   title?: string;
-  /** A detailed description of the infringement, including any necessary access details and the exact steps needed to view the content, not exceeding 5000 characters. */
-  justification?: string;
-  /** Text not exceeding 1000 characters */
-  trademarkNumber?: string;
-  /** Text not exceeding 1000 characters */
-  trademarkOffice?: string;
-  /** Text not exceeding 1000 characters */
-  trademarkSymbol?: string;
-  /** A list of IP addresses separated by ‘\n’ (new line character). The list of destination IPs should not exceed 30 IP addresses. Each one of the IP addresses ought to be unique. */
-  destinationIps?: string;
-  /** A comma separated list of ports and protocols e.g. 80/TCP, 22/UDP. The total size of the field should not exceed 2000 characters. Each individual port/protocol should not exceed 100 characters. The list should not have more than 30 unique ports and protocols. */
-  portsProtocols?: string;
-  /** A list of IP addresses separated by ‘\n’ (new line character). The list of source IPs should not exceed 30 IP addresses. Each one of the IP addresses ought to be unique. */
-  sourceIps?: string;
-  /** Notification type based on the abuse type. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous. */
-  ncmecNotification?: CreateRequestBodyNcmecNotification;
-  /** RDP-mandated fields for registrar WHOIS data disclosure requests. */
-  regWhoRequest?: CreateRequestBodyRegWhoRequest;
-  /** If the submitter is the target of NCSEI in the URLs of the abuse report. */
-  ncseiSubjectRepresentation?: boolean;
 }
-export const CreateRequestBody = /*@__PURE__*/ S.suspend(() =>
+export const CreateRequestBodyAbuseDmca = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    act: S.optional(CreateRequestBodyAct),
-    address1: S.optional(S.String),
-    agentName: S.optional(S.String.pipe(T.Body("agent_name"))),
-    agree: S.optional(CreateRequestBodyAgree),
-    city: S.optional(S.String),
-    country: S.optional(S.String),
-    email: S.optional(S.String),
-    email2: S.optional(S.String),
-    hostNotification: S.optional(
-      CreateRequestBodyHostNotification.pipe(T.Body("host_notification")),
+    act: CreateRequestBodyAbuseDmcaAct,
+    address1: S.String,
+    agentName: S.String.pipe(T.Body("agent_name")),
+    agree: CreateRequestBodyAbuseDmcaAgree,
+    city: S.String,
+    country: S.String,
+    email: S.String,
+    email2: S.String,
+    hostNotification: CreateRequestBodyAbuseDmcaHostNotification.pipe(
+      T.Body("host_notification"),
     ),
-    name: S.optional(S.String),
-    originalWork: S.optional(S.String.pipe(T.Body("original_work"))),
-    ownerNotification: S.optional(
-      CreateRequestBodyOwnerNotification.pipe(T.Body("owner_notification")),
+    name: S.String,
+    originalWork: S.String.pipe(T.Body("original_work")),
+    ownerNotification: CreateRequestBodyAbuseDmcaOwnerNotification.pipe(
+      T.Body("owner_notification"),
     ),
-    signature: S.optional(S.String),
-    state: S.optional(S.String),
-    urls: S.optional(S.String),
+    signature: S.String,
+    state: S.String,
+    urls: S.String,
     comments: S.optional(S.String),
     company: S.optional(S.String),
     reportedCountry: S.optional(S.String.pipe(T.Body("reported_country"))),
     reportedUserAgent: S.optional(S.String.pipe(T.Body("reported_user_agent"))),
     tele: S.optional(S.String),
     title: S.optional(S.String),
-    justification: S.optional(S.String),
-    trademarkNumber: S.optional(S.String.pipe(T.Body("trademark_number"))),
-    trademarkOffice: S.optional(S.String.pipe(T.Body("trademark_office"))),
-    trademarkSymbol: S.optional(S.String.pipe(T.Body("trademark_symbol"))),
-    destinationIps: S.optional(S.String.pipe(T.Body("destination_ips"))),
-    portsProtocols: S.optional(S.String.pipe(T.Body("ports_protocols"))),
-    sourceIps: S.optional(S.String.pipe(T.Body("source_ips"))),
-    ncmecNotification: S.optional(
-      CreateRequestBodyNcmecNotification.pipe(T.Body("ncmec_notification")),
-    ),
-    regWhoRequest: S.optional(
-      CreateRequestBodyRegWhoRequest.pipe(T.Body("reg_who_request")),
-    ),
-    ncseiSubjectRepresentation: S.optional(
-      S.Boolean.pipe(T.Body("ncsei_subject_representation")),
-    ),
   }),
 ).annotate({
-  identifier: "CreateRequestBody",
-}) as any as S.Schema<CreateRequestBody>;
+  identifier: "CreateRequestBodyAbuseDmca",
+}) as any as S.Schema<CreateRequestBodyAbuseDmca>;
+
+export type CreateRequestBodyAbuseTrademarkAct =
+  | "abuse_trademark"
+  | (string & {});
+export const CreateRequestBodyAbuseTrademarkAct = /*@__PURE__*/ S.String;
+
+export type CreateRequestBodyAbuseTrademarkHostNotification =
+  | "send"
+  | (string & {});
+export const CreateRequestBodyAbuseTrademarkHostNotification =
+  /*@__PURE__*/ S.String;
+
+export type CreateRequestBodyAbuseTrademarkOwnerNotification =
+  | "send"
+  | (string & {});
+export const CreateRequestBodyAbuseTrademarkOwnerNotification =
+  /*@__PURE__*/ S.String;
+
+export interface CreateRequestBodyAbuseTrademark {
+  /** The report type for submitted reports. */
+  act: CreateRequestBodyAbuseTrademarkAct;
+  /** A valid email of the abuse reporter. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/). */
+  email: string;
+  /** Should match the value provided in `email` */
+  email2: string;
+  /** Notification type based on the abuse type. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous. */
+  hostNotification: CreateRequestBodyAbuseTrademarkHostNotification;
+  /** A detailed description of the infringement, including any necessary access details and the exact steps needed to view the content, not exceeding 5000 characters. */
+  justification: string;
+  /** Text not exceeding 255 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/). */
+  name: string;
+  /** Notification type based on the abuse type. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous. */
+  ownerNotification: CreateRequestBodyAbuseTrademarkOwnerNotification;
+  /** Text not exceeding 1000 characters */
+  trademarkNumber: string;
+  /** Text not exceeding 1000 characters */
+  trademarkOffice: string;
+  /** Text not exceeding 1000 characters */
+  trademarkSymbol: string;
+  /** A list of valid URLs separated by ‘\n’ (new line character). The list of the URLs should not exceed 250 URLs. All URLs should have the same hostname. Each URL should be unique. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/). */
+  urls: string;
+  /** Any additional comments about the infringement not exceeding 2000 characters */
+  comments?: string;
+  /** Text not exceeding 100 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/). */
+  company?: string;
+  /** Text containing 2 characters */
+  reportedCountry?: string;
+  /** Text not exceeding 255 characters */
+  reportedUserAgent?: string;
+  /** Text not exceeding 20 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/). */
+  tele?: string;
+  /** Text not exceeding 255 characters */
+  title?: string;
+}
+export const CreateRequestBodyAbuseTrademark = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    act: CreateRequestBodyAbuseTrademarkAct,
+    email: S.String,
+    email2: S.String,
+    hostNotification: CreateRequestBodyAbuseTrademarkHostNotification.pipe(
+      T.Body("host_notification"),
+    ),
+    justification: S.String,
+    name: S.String,
+    ownerNotification: CreateRequestBodyAbuseTrademarkOwnerNotification.pipe(
+      T.Body("owner_notification"),
+    ),
+    trademarkNumber: S.String.pipe(T.Body("trademark_number")),
+    trademarkOffice: S.String.pipe(T.Body("trademark_office")),
+    trademarkSymbol: S.String.pipe(T.Body("trademark_symbol")),
+    urls: S.String,
+    comments: S.optional(S.String),
+    company: S.optional(S.String),
+    reportedCountry: S.optional(S.String.pipe(T.Body("reported_country"))),
+    reportedUserAgent: S.optional(S.String.pipe(T.Body("reported_user_agent"))),
+    tele: S.optional(S.String),
+    title: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CreateRequestBodyAbuseTrademark",
+}) as any as S.Schema<CreateRequestBodyAbuseTrademark>;
+
+export type CreateRequestBodyAbuseGeneralAct = "abuse_general" | (string & {});
+export const CreateRequestBodyAbuseGeneralAct = /*@__PURE__*/ S.String;
+
+export type CreateRequestBodyAbuseGeneralHostNotification =
+  | "send"
+  | "send-anon"
+  | (string & {});
+export const CreateRequestBodyAbuseGeneralHostNotification =
+  /*@__PURE__*/ S.String;
+
+export type CreateRequestBodyAbuseGeneralOwnerNotification =
+  | "send"
+  | "send-anon"
+  | (string & {});
+export const CreateRequestBodyAbuseGeneralOwnerNotification =
+  /*@__PURE__*/ S.String;
+
+export interface CreateRequestBodyAbuseGeneral {
+  /** The report type for submitted reports. */
+  act: CreateRequestBodyAbuseGeneralAct;
+  /** A valid email of the abuse reporter. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/). */
+  email: string;
+  /** Should match the value provided in `email` */
+  email2: string;
+  /** Notification type based on the abuse type. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous. */
+  hostNotification: CreateRequestBodyAbuseGeneralHostNotification;
+  /** A detailed description of the infringement, including any necessary access details and the exact steps needed to view the content, not exceeding 5000 characters. */
+  justification: string;
+  /** Text not exceeding 255 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/). */
+  name: string;
+  /** Notification type based on the abuse type. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous. */
+  ownerNotification: CreateRequestBodyAbuseGeneralOwnerNotification;
+  /** A list of valid URLs separated by ‘\n’ (new line character). The list of the URLs should not exceed 250 URLs. All URLs should have the same hostname. Each URL should be unique. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/). */
+  urls: string;
+  /** Any additional comments about the infringement not exceeding 2000 characters */
+  comments?: string;
+  /** Text not exceeding 100 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/). */
+  company?: string;
+  /** A list of IP addresses separated by ‘\n’ (new line character). The list of destination IPs should not exceed 30 IP addresses. Each one of the IP addresses ought to be unique. */
+  destinationIps?: string;
+  /** A comma separated list of ports and protocols e.g. 80/TCP, 22/UDP. The total size of the field should not exceed 2000 characters. Each individual port/protocol should not exceed 100 characters. The list should not have more than 30 unique ports and protocols. */
+  portsProtocols?: string;
+  /** Text containing 2 characters */
+  reportedCountry?: string;
+  /** Text not exceeding 255 characters */
+  reportedUserAgent?: string;
+  /** A list of IP addresses separated by ‘\n’ (new line character). The list of source IPs should not exceed 30 IP addresses. Each one of the IP addresses ought to be unique. */
+  sourceIps?: string;
+  /** Text not exceeding 20 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/). */
+  tele?: string;
+  /** Text not exceeding 255 characters */
+  title?: string;
+}
+export const CreateRequestBodyAbuseGeneral = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    act: CreateRequestBodyAbuseGeneralAct,
+    email: S.String,
+    email2: S.String,
+    hostNotification: CreateRequestBodyAbuseGeneralHostNotification.pipe(
+      T.Body("host_notification"),
+    ),
+    justification: S.String,
+    name: S.String,
+    ownerNotification: CreateRequestBodyAbuseGeneralOwnerNotification.pipe(
+      T.Body("owner_notification"),
+    ),
+    urls: S.String,
+    comments: S.optional(S.String),
+    company: S.optional(S.String),
+    destinationIps: S.optional(S.String.pipe(T.Body("destination_ips"))),
+    portsProtocols: S.optional(S.String.pipe(T.Body("ports_protocols"))),
+    reportedCountry: S.optional(S.String.pipe(T.Body("reported_country"))),
+    reportedUserAgent: S.optional(S.String.pipe(T.Body("reported_user_agent"))),
+    sourceIps: S.optional(S.String.pipe(T.Body("source_ips"))),
+    tele: S.optional(S.String),
+    title: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CreateRequestBodyAbuseGeneral",
+}) as any as S.Schema<CreateRequestBodyAbuseGeneral>;
+
+export type CreateRequestBodyAbusePhishingAct =
+  | "abuse_phishing"
+  | (string & {});
+export const CreateRequestBodyAbusePhishingAct = /*@__PURE__*/ S.String;
+
+export type CreateRequestBodyAbusePhishingHostNotification =
+  | "send"
+  | "send-anon"
+  | (string & {});
+export const CreateRequestBodyAbusePhishingHostNotification =
+  /*@__PURE__*/ S.String;
+
+export type CreateRequestBodyAbusePhishingOwnerNotification =
+  | "send"
+  | "send-anon"
+  | (string & {});
+export const CreateRequestBodyAbusePhishingOwnerNotification =
+  /*@__PURE__*/ S.String;
+
+export interface CreateRequestBodyAbusePhishing {
+  /** The report type for submitted reports. */
+  act: CreateRequestBodyAbusePhishingAct;
+  /** A valid email of the abuse reporter. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/). */
+  email: string;
+  /** Should match the value provided in `email` */
+  email2: string;
+  /** Notification type based on the abuse type. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous. */
+  hostNotification: CreateRequestBodyAbusePhishingHostNotification;
+  /** A detailed description of the infringement, including any necessary access details and the exact steps needed to view the content, not exceeding 5000 characters. */
+  justification: string;
+  /** Text not exceeding 255 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/). */
+  name: string;
+  /** Notification type based on the abuse type. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous. */
+  ownerNotification: CreateRequestBodyAbusePhishingOwnerNotification;
+  /** A list of valid URLs separated by ‘\n’ (new line character). The list of the URLs should not exceed 250 URLs. All URLs should have the same hostname. Each URL should be unique. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/). */
+  urls: string;
+  /** Any additional comments about the infringement not exceeding 2000 characters */
+  comments?: string;
+  /** Text not exceeding 100 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/). */
+  company?: string;
+  /** Text not exceeding 255 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/). */
+  originalWork?: string;
+  /** Text containing 2 characters */
+  reportedCountry?: string;
+  /** Text not exceeding 255 characters */
+  reportedUserAgent?: string;
+  /** Text not exceeding 20 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/). */
+  tele?: string;
+  /** Text not exceeding 255 characters */
+  title?: string;
+}
+export const CreateRequestBodyAbusePhishing = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    act: CreateRequestBodyAbusePhishingAct,
+    email: S.String,
+    email2: S.String,
+    hostNotification: CreateRequestBodyAbusePhishingHostNotification.pipe(
+      T.Body("host_notification"),
+    ),
+    justification: S.String,
+    name: S.String,
+    ownerNotification: CreateRequestBodyAbusePhishingOwnerNotification.pipe(
+      T.Body("owner_notification"),
+    ),
+    urls: S.String,
+    comments: S.optional(S.String),
+    company: S.optional(S.String),
+    originalWork: S.optional(S.String.pipe(T.Body("original_work"))),
+    reportedCountry: S.optional(S.String.pipe(T.Body("reported_country"))),
+    reportedUserAgent: S.optional(S.String.pipe(T.Body("reported_user_agent"))),
+    tele: S.optional(S.String),
+    title: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CreateRequestBodyAbusePhishing",
+}) as any as S.Schema<CreateRequestBodyAbusePhishing>;
+
+export type CreateRequestBodyAbuseChildrenAct =
+  | "abuse_children"
+  | (string & {});
+export const CreateRequestBodyAbuseChildrenAct = /*@__PURE__*/ S.String;
+
+export type CreateRequestBodyAbuseChildrenHostNotification =
+  | "send"
+  | "send-anon"
+  | (string & {});
+export const CreateRequestBodyAbuseChildrenHostNotification =
+  /*@__PURE__*/ S.String;
+
+export type CreateRequestBodyAbuseChildrenNcmecNotification =
+  | "send"
+  | "send-anon"
+  | (string & {});
+export const CreateRequestBodyAbuseChildrenNcmecNotification =
+  /*@__PURE__*/ S.String;
+
+export type CreateRequestBodyAbuseChildrenOwnerNotification =
+  | "send"
+  | "send-anon"
+  | "none"
+  | (string & {});
+export const CreateRequestBodyAbuseChildrenOwnerNotification =
+  /*@__PURE__*/ S.String;
+
+export interface CreateRequestBodyAbuseChildren {
+  /** The report type for submitted reports. */
+  act: CreateRequestBodyAbuseChildrenAct;
+  /** A valid email of the abuse reporter. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/). */
+  email: string;
+  /** Should match the value provided in `email` */
+  email2: string;
+  /** Notification type based on the abuse type. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous. */
+  hostNotification: CreateRequestBodyAbuseChildrenHostNotification;
+  /** A detailed description of the infringement, including any necessary access details and the exact steps needed to view the content, not exceeding 5000 characters. */
+  justification: string;
+  /** Text not exceeding 255 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/). */
+  name: string;
+  /** Notification type based on the abuse type. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous. */
+  ncmecNotification: CreateRequestBodyAbuseChildrenNcmecNotification;
+  /** Notification type based on the abuse type. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous. */
+  ownerNotification: CreateRequestBodyAbuseChildrenOwnerNotification;
+  /** A list of valid URLs separated by ‘\n’ (new line character). The list of the URLs should not exceed 250 URLs. All URLs should have the same hostname. Each URL should be unique. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/). */
+  urls: string;
+  /** Any additional comments about the infringement not exceeding 2000 characters */
+  comments?: string;
+  /** Text not exceeding 100 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/). */
+  company?: string;
+  /** Text not exceeding 255 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/). */
+  country?: string;
+  /** Text containing 2 characters */
+  reportedCountry?: string;
+  /** Text not exceeding 255 characters */
+  reportedUserAgent?: string;
+  /** Text not exceeding 20 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/). */
+  tele?: string;
+  /** Text not exceeding 255 characters */
+  title?: string;
+}
+export const CreateRequestBodyAbuseChildren = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    act: CreateRequestBodyAbuseChildrenAct,
+    email: S.String,
+    email2: S.String,
+    hostNotification: CreateRequestBodyAbuseChildrenHostNotification.pipe(
+      T.Body("host_notification"),
+    ),
+    justification: S.String,
+    name: S.String,
+    ncmecNotification: CreateRequestBodyAbuseChildrenNcmecNotification.pipe(
+      T.Body("ncmec_notification"),
+    ),
+    ownerNotification: CreateRequestBodyAbuseChildrenOwnerNotification.pipe(
+      T.Body("owner_notification"),
+    ),
+    urls: S.String,
+    comments: S.optional(S.String),
+    company: S.optional(S.String),
+    country: S.optional(S.String),
+    reportedCountry: S.optional(S.String.pipe(T.Body("reported_country"))),
+    reportedUserAgent: S.optional(S.String.pipe(T.Body("reported_user_agent"))),
+    tele: S.optional(S.String),
+    title: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CreateRequestBodyAbuseChildren",
+}) as any as S.Schema<CreateRequestBodyAbuseChildren>;
+
+export type CreateRequestBodyAbuseThreatAct = "abuse_threat" | (string & {});
+export const CreateRequestBodyAbuseThreatAct = /*@__PURE__*/ S.String;
+
+export type CreateRequestBodyAbuseThreatHostNotification =
+  | "send"
+  | "send-anon"
+  | (string & {});
+export const CreateRequestBodyAbuseThreatHostNotification =
+  /*@__PURE__*/ S.String;
+
+export type CreateRequestBodyAbuseThreatOwnerNotification =
+  | "send"
+  | "send-anon"
+  | (string & {});
+export const CreateRequestBodyAbuseThreatOwnerNotification =
+  /*@__PURE__*/ S.String;
+
+export interface CreateRequestBodyAbuseThreat {
+  /** The report type for submitted reports. */
+  act: CreateRequestBodyAbuseThreatAct;
+  /** A valid email of the abuse reporter. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/). */
+  email: string;
+  /** Should match the value provided in `email` */
+  email2: string;
+  /** Notification type based on the abuse type. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous. */
+  hostNotification: CreateRequestBodyAbuseThreatHostNotification;
+  /** A detailed description of the infringement, including any necessary access details and the exact steps needed to view the content, not exceeding 5000 characters. */
+  justification: string;
+  /** Text not exceeding 255 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/). */
+  name: string;
+  /** Notification type based on the abuse type. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous. */
+  ownerNotification: CreateRequestBodyAbuseThreatOwnerNotification;
+  /** A list of valid URLs separated by ‘\n’ (new line character). The list of the URLs should not exceed 250 URLs. All URLs should have the same hostname. Each URL should be unique. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/). */
+  urls: string;
+  /** Any additional comments about the infringement not exceeding 2000 characters */
+  comments?: string;
+  /** Text not exceeding 100 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/). */
+  company?: string;
+  /** Text containing 2 characters */
+  reportedCountry?: string;
+  /** Text not exceeding 255 characters */
+  reportedUserAgent?: string;
+  /** Text not exceeding 20 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/). */
+  tele?: string;
+  /** Text not exceeding 255 characters */
+  title?: string;
+}
+export const CreateRequestBodyAbuseThreat = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    act: CreateRequestBodyAbuseThreatAct,
+    email: S.String,
+    email2: S.String,
+    hostNotification: CreateRequestBodyAbuseThreatHostNotification.pipe(
+      T.Body("host_notification"),
+    ),
+    justification: S.String,
+    name: S.String,
+    ownerNotification: CreateRequestBodyAbuseThreatOwnerNotification.pipe(
+      T.Body("owner_notification"),
+    ),
+    urls: S.String,
+    comments: S.optional(S.String),
+    company: S.optional(S.String),
+    reportedCountry: S.optional(S.String.pipe(T.Body("reported_country"))),
+    reportedUserAgent: S.optional(S.String.pipe(T.Body("reported_user_agent"))),
+    tele: S.optional(S.String),
+    title: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CreateRequestBodyAbuseThreat",
+}) as any as S.Schema<CreateRequestBodyAbuseThreat>;
+
+export type CreateRequestBodyAbuseRegistrarWhoisAct =
+  | "abuse_registrar_whois"
+  | (string & {});
+export const CreateRequestBodyAbuseRegistrarWhoisAct = /*@__PURE__*/ S.String;
+
+export type CreateRequestBodyAbuseRegistrarWhoisOwnerNotification =
+  | "send"
+  | "send-anon"
+  | "none"
+  | (string & {});
+export const CreateRequestBodyAbuseRegistrarWhoisOwnerNotification =
+  /*@__PURE__*/ S.String;
+
+export type CreateRequestBodyAbuseRegistrarWhoisRegWhoRequestRegWhoRequestType =
+  "disclosure" | "invalid_whois" | (string & {});
+export const CreateRequestBodyAbuseRegistrarWhoisRegWhoRequestRegWhoRequestType =
+  /*@__PURE__*/ S.String;
+
+export type CreateRequestBodyAbuseRegistrarWhoisRegWhoRequestRegWhoRequestedDataElementsItem =
+    | "registrant_name"
+    | "registrant_organization"
+    | "registrant_email"
+    | (string & {});
+export const CreateRequestBodyAbuseRegistrarWhoisRegWhoRequestRegWhoRequestedDataElementsItem =
+  /*@__PURE__*/ S.String;
+
+export type CreateRequestBodyAbuseRegistrarWhoisRegWhoRequestRegWhoRequestedDataElementsList =
+  CreateRequestBodyAbuseRegistrarWhoisRegWhoRequestRegWhoRequestedDataElementsItem[];
+export const CreateRequestBodyAbuseRegistrarWhoisRegWhoRequestRegWhoRequestedDataElementsList =
+  /*@__PURE__*/ S.Array(
+    CreateRequestBodyAbuseRegistrarWhoisRegWhoRequestRegWhoRequestedDataElementsItem,
+  ) as any as S.Schema<CreateRequestBodyAbuseRegistrarWhoisRegWhoRequestRegWhoRequestedDataElementsList>;
+
+export type CreateRequestBodyAbuseRegistrarWhoisRegWhoRequestRegWhoRequestorType =
+  "government" | "corporation" | "individual" | (string & {});
+export const CreateRequestBodyAbuseRegistrarWhoisRegWhoRequestRegWhoRequestorType =
+  /*@__PURE__*/ S.String;
+
+export interface CreateRequestBodyAbuseRegistrarWhoisRegWhoRequest {
+  /** Affirmation that the request is made in good faith per RDP 10.2.4. Must be true. */
+  regWhoGoodFaithAffirmation: boolean;
+  /** Agreement to process data lawfully per RDP 10.2.5. Must be true. */
+  regWhoLawfulProcessingAgreement: boolean;
+  /** Legal rights and rationale for the request per RDP 10.2.3. Required for all WHOIS requests. */
+  regWhoLegalBasis: string;
+  /** The type of WHOIS data request per RDP procedure. */
+  regWhoRequestType: CreateRequestBodyAbuseRegistrarWhoisRegWhoRequestRegWhoRequestType;
+  /** The specific WHOIS data elements being requested per RDP 10.2.2. Required for all WHOIS requests. */
+  regWhoRequestedDataElements: CreateRequestBodyAbuseRegistrarWhoisRegWhoRequestRegWhoRequestedDataElementsList;
+  /** Optional authorization statement or power of attorney per RDP 10.2.1.3. */
+  regWhoAuthorizationStatement?: string;
+  /** The nature of the requestor per RDP 10.2.1.2. */
+  regWhoRequestorType?: CreateRequestBodyAbuseRegistrarWhoisRegWhoRequestRegWhoRequestorType;
+}
+export const CreateRequestBodyAbuseRegistrarWhoisRegWhoRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      regWhoGoodFaithAffirmation: S.Boolean.pipe(
+        T.Body("reg_who_good_faith_affirmation"),
+      ),
+      regWhoLawfulProcessingAgreement: S.Boolean.pipe(
+        T.Body("reg_who_lawful_processing_agreement"),
+      ),
+      regWhoLegalBasis: S.String.pipe(T.Body("reg_who_legal_basis")),
+      regWhoRequestType:
+        CreateRequestBodyAbuseRegistrarWhoisRegWhoRequestRegWhoRequestType.pipe(
+          T.Body("reg_who_request_type"),
+        ),
+      regWhoRequestedDataElements:
+        CreateRequestBodyAbuseRegistrarWhoisRegWhoRequestRegWhoRequestedDataElementsList.pipe(
+          T.Body("reg_who_requested_data_elements"),
+        ),
+      regWhoAuthorizationStatement: S.optional(
+        S.String.pipe(T.Body("reg_who_authorization_statement")),
+      ),
+      regWhoRequestorType: S.optional(
+        CreateRequestBodyAbuseRegistrarWhoisRegWhoRequestRegWhoRequestorType.pipe(
+          T.Body("reg_who_requestor_type"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "CreateRequestBodyAbuseRegistrarWhoisRegWhoRequest",
+  }) as any as S.Schema<CreateRequestBodyAbuseRegistrarWhoisRegWhoRequest>;
+
+export interface CreateRequestBodyAbuseRegistrarWhois {
+  /** The report type for submitted reports. */
+  act: CreateRequestBodyAbuseRegistrarWhoisAct;
+  /** A valid email of the abuse reporter. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/). */
+  email: string;
+  /** Should match the value provided in `email` */
+  email2: string;
+  /** Text not exceeding 255 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/). */
+  name: string;
+  /** Notification type based on the abuse type. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous. */
+  ownerNotification: CreateRequestBodyAbuseRegistrarWhoisOwnerNotification;
+  /** A list of valid URLs separated by ‘\n’ (new line character). The list of the URLs should not exceed 250 URLs. All URLs should have the same hostname. Each URL should be unique. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/). */
+  urls: string;
+  /** Any additional comments about the infringement not exceeding 2000 characters */
+  comments?: string;
+  /** Text not exceeding 100 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/). */
+  company?: string;
+  /** RDP-mandated fields for registrar WHOIS data disclosure requests. */
+  regWhoRequest?: CreateRequestBodyAbuseRegistrarWhoisRegWhoRequest;
+  /** Text containing 2 characters */
+  reportedCountry?: string;
+  /** Text not exceeding 255 characters */
+  reportedUserAgent?: string;
+  /** Text not exceeding 20 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/). */
+  tele?: string;
+  /** Text not exceeding 255 characters */
+  title?: string;
+}
+export const CreateRequestBodyAbuseRegistrarWhois = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      act: CreateRequestBodyAbuseRegistrarWhoisAct,
+      email: S.String,
+      email2: S.String,
+      name: S.String,
+      ownerNotification:
+        CreateRequestBodyAbuseRegistrarWhoisOwnerNotification.pipe(
+          T.Body("owner_notification"),
+        ),
+      urls: S.String,
+      comments: S.optional(S.String),
+      company: S.optional(S.String),
+      regWhoRequest: S.optional(
+        CreateRequestBodyAbuseRegistrarWhoisRegWhoRequest.pipe(
+          T.Body("reg_who_request"),
+        ),
+      ),
+      reportedCountry: S.optional(S.String.pipe(T.Body("reported_country"))),
+      reportedUserAgent: S.optional(
+        S.String.pipe(T.Body("reported_user_agent")),
+      ),
+      tele: S.optional(S.String),
+      title: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "CreateRequestBodyAbuseRegistrarWhois",
+}) as any as S.Schema<CreateRequestBodyAbuseRegistrarWhois>;
+
+export type CreateRequestBodyAbuseNcseiAct = "abuse_ncsei" | (string & {});
+export const CreateRequestBodyAbuseNcseiAct = /*@__PURE__*/ S.String;
+
+export type CreateRequestBodyAbuseNcseiHostNotification =
+  | "send"
+  | "send-anon"
+  | (string & {});
+export const CreateRequestBodyAbuseNcseiHostNotification =
+  /*@__PURE__*/ S.String;
+
+export type CreateRequestBodyAbuseNcseiOwnerNotification =
+  | "send"
+  | "send-anon"
+  | "none"
+  | (string & {});
+export const CreateRequestBodyAbuseNcseiOwnerNotification =
+  /*@__PURE__*/ S.String;
+
+export interface CreateRequestBodyAbuseNcsei {
+  /** The report type for submitted reports. */
+  act: CreateRequestBodyAbuseNcseiAct;
+  /** A valid email of the abuse reporter. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/). */
+  email: string;
+  /** Should match the value provided in `email` */
+  email2: string;
+  /** Notification type based on the abuse type. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous. */
+  hostNotification: CreateRequestBodyAbuseNcseiHostNotification;
+  /** Text not exceeding 255 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/). */
+  name: string;
+  /** If the submitter is the target of NCSEI in the URLs of the abuse report. */
+  ncseiSubjectRepresentation: boolean;
+  /** Notification type based on the abuse type. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous. */
+  ownerNotification: CreateRequestBodyAbuseNcseiOwnerNotification;
+  /** A list of valid URLs separated by ‘\n’ (new line character). The list of the URLs should not exceed 250 URLs. All URLs should have the same hostname. Each URL should be unique. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/). */
+  urls: string;
+  /** Any additional comments about the infringement not exceeding 2000 characters */
+  comments?: string;
+  /** Text not exceeding 100 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/). */
+  company?: string;
+  /** Text not exceeding 255 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/). */
+  country?: string;
+  /** Text containing 2 characters */
+  reportedCountry?: string;
+  /** Text not exceeding 255 characters */
+  reportedUserAgent?: string;
+  /** Text not exceeding 20 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/). */
+  tele?: string;
+  /** Text not exceeding 255 characters */
+  title?: string;
+}
+export const CreateRequestBodyAbuseNcsei = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    act: CreateRequestBodyAbuseNcseiAct,
+    email: S.String,
+    email2: S.String,
+    hostNotification: CreateRequestBodyAbuseNcseiHostNotification.pipe(
+      T.Body("host_notification"),
+    ),
+    name: S.String,
+    ncseiSubjectRepresentation: S.Boolean.pipe(
+      T.Body("ncsei_subject_representation"),
+    ),
+    ownerNotification: CreateRequestBodyAbuseNcseiOwnerNotification.pipe(
+      T.Body("owner_notification"),
+    ),
+    urls: S.String,
+    comments: S.optional(S.String),
+    company: S.optional(S.String),
+    country: S.optional(S.String),
+    reportedCountry: S.optional(S.String.pipe(T.Body("reported_country"))),
+    reportedUserAgent: S.optional(S.String.pipe(T.Body("reported_user_agent"))),
+    tele: S.optional(S.String),
+    title: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CreateRequestBodyAbuseNcsei",
+}) as any as S.Schema<CreateRequestBodyAbuseNcsei>;
+
+export type CreateRequestBody =
+  | CreateRequestBodyAbuseDmca
+  | CreateRequestBodyAbuseTrademark
+  | CreateRequestBodyAbuseGeneral
+  | CreateRequestBodyAbusePhishing
+  | CreateRequestBodyAbuseChildren
+  | CreateRequestBodyAbuseThreat
+  | CreateRequestBodyAbuseRegistrarWhois
+  | CreateRequestBodyAbuseNcsei;
+export const CreateRequestBody = /*@__PURE__*/ S.Unknown;
 
 export interface CreateAbuseReportRequest {
   accountId: string;

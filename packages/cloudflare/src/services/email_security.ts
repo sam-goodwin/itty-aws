@@ -541,49 +541,71 @@ export const CreateInvestigateBulkRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateInvestigateBulkRequest",
 }) as any as S.Schema<CreateInvestigateBulkRequest>;
 
-export type InvestigateBulkCreateResponseActionParamsDestination =
+export type InvestigateBulkCreateResponseActionParamsMoveDestination =
   | "Inbox"
   | "JunkEmail"
   | "DeletedItems"
   | (string & {});
-export const InvestigateBulkCreateResponseActionParamsDestination =
+export const InvestigateBulkCreateResponseActionParamsMoveDestination =
   /*@__PURE__*/ S.String;
 
-export type InvestigateBulkCreateResponseActionParamsType =
+export type InvestigateBulkCreateResponseActionParamsMoveType =
   | "MOVE"
   | (string & {});
-export const InvestigateBulkCreateResponseActionParamsType =
+export const InvestigateBulkCreateResponseActionParamsMoveType =
   /*@__PURE__*/ S.String;
 
-export type InvestigateBulkCreateResponseActionParamsExpectedDisposition =
+export type InvestigateBulkCreateResponseActionParamsMoveExpectedDisposition =
   | "MALICIOUS"
   | "MALICIOUS-BEC"
   | "SUSPICIOUS"
   | (string & {});
-export const InvestigateBulkCreateResponseActionParamsExpectedDisposition =
+export const InvestigateBulkCreateResponseActionParamsMoveExpectedDisposition =
   /*@__PURE__*/ S.String;
 
-export interface InvestigateBulkCreateResponseActionParams {
-  destination?: InvestigateBulkCreateResponseActionParamsDestination;
-  type?: InvestigateBulkCreateResponseActionParamsType;
-  expectedDisposition?: InvestigateBulkCreateResponseActionParamsExpectedDisposition;
+export interface InvestigateBulkCreateResponseActionParamsMove {
+  destination: InvestigateBulkCreateResponseActionParamsMoveDestination;
+  type: InvestigateBulkCreateResponseActionParamsMoveType;
+  expectedDisposition?: InvestigateBulkCreateResponseActionParamsMoveExpectedDisposition;
 }
-export const InvestigateBulkCreateResponseActionParams =
+export const InvestigateBulkCreateResponseActionParamsMove =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      destination: S.optional(
-        InvestigateBulkCreateResponseActionParamsDestination,
-      ),
-      type: S.optional(InvestigateBulkCreateResponseActionParamsType),
+      destination: InvestigateBulkCreateResponseActionParamsMoveDestination,
+      type: InvestigateBulkCreateResponseActionParamsMoveType,
       expectedDisposition: S.optional(
-        InvestigateBulkCreateResponseActionParamsExpectedDisposition.pipe(
+        InvestigateBulkCreateResponseActionParamsMoveExpectedDisposition.pipe(
           T.Body("expected_disposition"),
         ),
       ),
     }),
   ).annotate({
-    identifier: "InvestigateBulkCreateResponseActionParams",
-  }) as any as S.Schema<InvestigateBulkCreateResponseActionParams>;
+    identifier: "InvestigateBulkCreateResponseActionParamsMove",
+  }) as any as S.Schema<InvestigateBulkCreateResponseActionParamsMove>;
+
+export type InvestigateBulkCreateResponseActionParamsReleaseType =
+  | "RELEASE"
+  | (string & {});
+export const InvestigateBulkCreateResponseActionParamsReleaseType =
+  /*@__PURE__*/ S.String;
+
+export interface InvestigateBulkCreateResponseActionParamsRelease {
+  type: InvestigateBulkCreateResponseActionParamsReleaseType;
+}
+export const InvestigateBulkCreateResponseActionParamsRelease =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: InvestigateBulkCreateResponseActionParamsReleaseType,
+    }),
+  ).annotate({
+    identifier: "InvestigateBulkCreateResponseActionParamsRelease",
+  }) as any as S.Schema<InvestigateBulkCreateResponseActionParamsRelease>;
+
+export type InvestigateBulkCreateResponseActionParams =
+  | InvestigateBulkCreateResponseActionParamsMove
+  | InvestigateBulkCreateResponseActionParamsRelease;
+export const InvestigateBulkCreateResponseActionParams =
+  /*@__PURE__*/ S.Unknown;
 
 export type InvestigateBulkCreateResponseActionType =
   | "MOVE"
@@ -748,46 +770,69 @@ export const CreateInvestigateBulkCancelRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateInvestigateBulkCancelRequest",
 }) as any as S.Schema<CreateInvestigateBulkCancelRequest>;
 
-export type InvestigateBulkCancelCreateResponseActionParamsDestination =
+export type InvestigateBulkCancelCreateResponseActionParamsMoveDestination =
   | "Inbox"
   | "JunkEmail"
   | "DeletedItems"
   | (string & {});
-export const InvestigateBulkCancelCreateResponseActionParamsDestination =
+export const InvestigateBulkCancelCreateResponseActionParamsMoveDestination =
   /*@__PURE__*/ S.String;
 
-export type InvestigateBulkCancelCreateResponseActionParamsType =
+export type InvestigateBulkCancelCreateResponseActionParamsMoveType =
   | "MOVE"
   | (string & {});
-export const InvestigateBulkCancelCreateResponseActionParamsType =
+export const InvestigateBulkCancelCreateResponseActionParamsMoveType =
   /*@__PURE__*/ S.String;
 
-export type InvestigateBulkCancelCreateResponseActionParamsExpectedDisposition =
+export type InvestigateBulkCancelCreateResponseActionParamsMoveExpectedDisposition =
   "MALICIOUS" | "MALICIOUS-BEC" | "SUSPICIOUS" | (string & {});
-export const InvestigateBulkCancelCreateResponseActionParamsExpectedDisposition =
+export const InvestigateBulkCancelCreateResponseActionParamsMoveExpectedDisposition =
   /*@__PURE__*/ S.String;
 
-export interface InvestigateBulkCancelCreateResponseActionParams {
-  destination?: InvestigateBulkCancelCreateResponseActionParamsDestination;
-  type?: InvestigateBulkCancelCreateResponseActionParamsType;
-  expectedDisposition?: InvestigateBulkCancelCreateResponseActionParamsExpectedDisposition;
+export interface InvestigateBulkCancelCreateResponseActionParamsMove {
+  destination: InvestigateBulkCancelCreateResponseActionParamsMoveDestination;
+  type: InvestigateBulkCancelCreateResponseActionParamsMoveType;
+  expectedDisposition?: InvestigateBulkCancelCreateResponseActionParamsMoveExpectedDisposition;
 }
-export const InvestigateBulkCancelCreateResponseActionParams =
+export const InvestigateBulkCancelCreateResponseActionParamsMove =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      destination: S.optional(
-        InvestigateBulkCancelCreateResponseActionParamsDestination,
-      ),
-      type: S.optional(InvestigateBulkCancelCreateResponseActionParamsType),
+      destination:
+        InvestigateBulkCancelCreateResponseActionParamsMoveDestination,
+      type: InvestigateBulkCancelCreateResponseActionParamsMoveType,
       expectedDisposition: S.optional(
-        InvestigateBulkCancelCreateResponseActionParamsExpectedDisposition.pipe(
+        InvestigateBulkCancelCreateResponseActionParamsMoveExpectedDisposition.pipe(
           T.Body("expected_disposition"),
         ),
       ),
     }),
   ).annotate({
-    identifier: "InvestigateBulkCancelCreateResponseActionParams",
-  }) as any as S.Schema<InvestigateBulkCancelCreateResponseActionParams>;
+    identifier: "InvestigateBulkCancelCreateResponseActionParamsMove",
+  }) as any as S.Schema<InvestigateBulkCancelCreateResponseActionParamsMove>;
+
+export type InvestigateBulkCancelCreateResponseActionParamsReleaseType =
+  | "RELEASE"
+  | (string & {});
+export const InvestigateBulkCancelCreateResponseActionParamsReleaseType =
+  /*@__PURE__*/ S.String;
+
+export interface InvestigateBulkCancelCreateResponseActionParamsRelease {
+  type: InvestigateBulkCancelCreateResponseActionParamsReleaseType;
+}
+export const InvestigateBulkCancelCreateResponseActionParamsRelease =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: InvestigateBulkCancelCreateResponseActionParamsReleaseType,
+    }),
+  ).annotate({
+    identifier: "InvestigateBulkCancelCreateResponseActionParamsRelease",
+  }) as any as S.Schema<InvestigateBulkCancelCreateResponseActionParamsRelease>;
+
+export type InvestigateBulkCancelCreateResponseActionParams =
+  | InvestigateBulkCancelCreateResponseActionParamsMove
+  | InvestigateBulkCancelCreateResponseActionParamsRelease;
+export const InvestigateBulkCancelCreateResponseActionParams =
+  /*@__PURE__*/ S.Unknown;
 
 export type InvestigateBulkCancelCreateResponseActionType =
   | "MOVE"
@@ -2344,47 +2389,70 @@ export const GetInvestigateBulkRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetInvestigateBulkRequest",
 }) as any as S.Schema<GetInvestigateBulkRequest>;
 
-export type InvestigateBulkGetResponseActionParamsDestination =
+export type InvestigateBulkGetResponseActionParamsMoveDestination =
   | "Inbox"
   | "JunkEmail"
   | "DeletedItems"
   | (string & {});
-export const InvestigateBulkGetResponseActionParamsDestination =
+export const InvestigateBulkGetResponseActionParamsMoveDestination =
   /*@__PURE__*/ S.String;
 
-export type InvestigateBulkGetResponseActionParamsType = "MOVE" | (string & {});
-export const InvestigateBulkGetResponseActionParamsType =
+export type InvestigateBulkGetResponseActionParamsMoveType =
+  | "MOVE"
+  | (string & {});
+export const InvestigateBulkGetResponseActionParamsMoveType =
   /*@__PURE__*/ S.String;
 
-export type InvestigateBulkGetResponseActionParamsExpectedDisposition =
+export type InvestigateBulkGetResponseActionParamsMoveExpectedDisposition =
   | "MALICIOUS"
   | "MALICIOUS-BEC"
   | "SUSPICIOUS"
   | (string & {});
-export const InvestigateBulkGetResponseActionParamsExpectedDisposition =
+export const InvestigateBulkGetResponseActionParamsMoveExpectedDisposition =
   /*@__PURE__*/ S.String;
 
-export interface InvestigateBulkGetResponseActionParams {
-  destination?: InvestigateBulkGetResponseActionParamsDestination;
-  type?: InvestigateBulkGetResponseActionParamsType;
-  expectedDisposition?: InvestigateBulkGetResponseActionParamsExpectedDisposition;
+export interface InvestigateBulkGetResponseActionParamsMove {
+  destination: InvestigateBulkGetResponseActionParamsMoveDestination;
+  type: InvestigateBulkGetResponseActionParamsMoveType;
+  expectedDisposition?: InvestigateBulkGetResponseActionParamsMoveExpectedDisposition;
 }
-export const InvestigateBulkGetResponseActionParams = /*@__PURE__*/ S.suspend(
-  () =>
+export const InvestigateBulkGetResponseActionParamsMove =
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      destination: S.optional(
-        InvestigateBulkGetResponseActionParamsDestination,
-      ),
-      type: S.optional(InvestigateBulkGetResponseActionParamsType),
+      destination: InvestigateBulkGetResponseActionParamsMoveDestination,
+      type: InvestigateBulkGetResponseActionParamsMoveType,
       expectedDisposition: S.optional(
-        InvestigateBulkGetResponseActionParamsExpectedDisposition.pipe(
+        InvestigateBulkGetResponseActionParamsMoveExpectedDisposition.pipe(
           T.Body("expected_disposition"),
         ),
       ),
     }),
-).annotate({
-  identifier: "InvestigateBulkGetResponseActionParams",
-}) as any as S.Schema<InvestigateBulkGetResponseActionParams>;
+  ).annotate({
+    identifier: "InvestigateBulkGetResponseActionParamsMove",
+  }) as any as S.Schema<InvestigateBulkGetResponseActionParamsMove>;
+
+export type InvestigateBulkGetResponseActionParamsReleaseType =
+  | "RELEASE"
+  | (string & {});
+export const InvestigateBulkGetResponseActionParamsReleaseType =
+  /*@__PURE__*/ S.String;
+
+export interface InvestigateBulkGetResponseActionParamsRelease {
+  type: InvestigateBulkGetResponseActionParamsReleaseType;
+}
+export const InvestigateBulkGetResponseActionParamsRelease =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: InvestigateBulkGetResponseActionParamsReleaseType,
+    }),
+  ).annotate({
+    identifier: "InvestigateBulkGetResponseActionParamsRelease",
+  }) as any as S.Schema<InvestigateBulkGetResponseActionParamsRelease>;
+
+export type InvestigateBulkGetResponseActionParams =
+  | InvestigateBulkGetResponseActionParamsMove
+  | InvestigateBulkGetResponseActionParamsRelease;
+export const InvestigateBulkGetResponseActionParams = /*@__PURE__*/ S.Unknown;
 
 export type InvestigateBulkGetResponseActionType =
   | "MOVE"
@@ -3665,48 +3733,73 @@ export const ListInvestigateBulkMessagesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListInvestigateBulkMessagesRequest",
 }) as any as S.Schema<ListInvestigateBulkMessagesRequest>;
 
-export type InvestigateBulkMessagesListResultItemActionParamsDestination =
+export type InvestigateBulkMessagesListResultItemActionParamsMoveDestination =
   | "Inbox"
   | "JunkEmail"
   | "DeletedItems"
   | (string & {});
-export const InvestigateBulkMessagesListResultItemActionParamsDestination =
+export const InvestigateBulkMessagesListResultItemActionParamsMoveDestination =
   /*@__PURE__*/ S.String;
 
-export type InvestigateBulkMessagesListResultItemActionParamsType =
+export type InvestigateBulkMessagesListResultItemActionParamsMoveType =
   | "MOVE"
   | (string & {});
-export const InvestigateBulkMessagesListResultItemActionParamsType =
+export const InvestigateBulkMessagesListResultItemActionParamsMoveType =
   /*@__PURE__*/ S.String;
 
-export type InvestigateBulkMessagesListResultItemActionParamsExpectedDisposition =
+export type InvestigateBulkMessagesListResultItemActionParamsMoveExpectedDisposition =
   "MALICIOUS" | "MALICIOUS-BEC" | "SUSPICIOUS" | (string & {});
-export const InvestigateBulkMessagesListResultItemActionParamsExpectedDisposition =
+export const InvestigateBulkMessagesListResultItemActionParamsMoveExpectedDisposition =
   /*@__PURE__*/ S.String;
 
-export interface InvestigateBulkMessagesListResultItemActionParams {
-  clientRecipient?: string;
-  destination?: InvestigateBulkMessagesListResultItemActionParamsDestination;
-  type?: InvestigateBulkMessagesListResultItemActionParamsType;
-  expectedDisposition?: InvestigateBulkMessagesListResultItemActionParamsExpectedDisposition;
+export interface InvestigateBulkMessagesListResultItemActionParamsMove {
+  clientRecipient: string;
+  destination: InvestigateBulkMessagesListResultItemActionParamsMoveDestination;
+  type: InvestigateBulkMessagesListResultItemActionParamsMoveType;
+  expectedDisposition?: InvestigateBulkMessagesListResultItemActionParamsMoveExpectedDisposition;
 }
-export const InvestigateBulkMessagesListResultItemActionParams =
+export const InvestigateBulkMessagesListResultItemActionParamsMove =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      clientRecipient: S.optional(S.String.pipe(T.Body("client_recipient"))),
-      destination: S.optional(
-        InvestigateBulkMessagesListResultItemActionParamsDestination,
-      ),
-      type: S.optional(InvestigateBulkMessagesListResultItemActionParamsType),
+      clientRecipient: S.String.pipe(T.Body("client_recipient")),
+      destination:
+        InvestigateBulkMessagesListResultItemActionParamsMoveDestination,
+      type: InvestigateBulkMessagesListResultItemActionParamsMoveType,
       expectedDisposition: S.optional(
-        InvestigateBulkMessagesListResultItemActionParamsExpectedDisposition.pipe(
+        InvestigateBulkMessagesListResultItemActionParamsMoveExpectedDisposition.pipe(
           T.Body("expected_disposition"),
         ),
       ),
     }),
   ).annotate({
-    identifier: "InvestigateBulkMessagesListResultItemActionParams",
-  }) as any as S.Schema<InvestigateBulkMessagesListResultItemActionParams>;
+    identifier: "InvestigateBulkMessagesListResultItemActionParamsMove",
+  }) as any as S.Schema<InvestigateBulkMessagesListResultItemActionParamsMove>;
+
+export type InvestigateBulkMessagesListResultItemActionParamsReleaseType =
+  | "RELEASE"
+  | (string & {});
+export const InvestigateBulkMessagesListResultItemActionParamsReleaseType =
+  /*@__PURE__*/ S.String;
+
+export interface InvestigateBulkMessagesListResultItemActionParamsRelease {
+  clientRecipient: string;
+  type: InvestigateBulkMessagesListResultItemActionParamsReleaseType;
+}
+export const InvestigateBulkMessagesListResultItemActionParamsRelease =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      clientRecipient: S.String.pipe(T.Body("client_recipient")),
+      type: InvestigateBulkMessagesListResultItemActionParamsReleaseType,
+    }),
+  ).annotate({
+    identifier: "InvestigateBulkMessagesListResultItemActionParamsRelease",
+  }) as any as S.Schema<InvestigateBulkMessagesListResultItemActionParamsRelease>;
+
+export type InvestigateBulkMessagesListResultItemActionParams =
+  | InvestigateBulkMessagesListResultItemActionParamsMove
+  | InvestigateBulkMessagesListResultItemActionParamsRelease;
+export const InvestigateBulkMessagesListResultItemActionParams =
+  /*@__PURE__*/ S.Unknown;
 
 export type InvestigateBulkMessagesListResultItemActionType =
   | "MOVE"
@@ -3828,49 +3921,71 @@ export const ListInvestigateBulksRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListInvestigateBulksRequest",
 }) as any as S.Schema<ListInvestigateBulksRequest>;
 
-export type InvestigateBulkListResultItemActionParamsDestination =
+export type InvestigateBulkListResultItemActionParamsMoveDestination =
   | "Inbox"
   | "JunkEmail"
   | "DeletedItems"
   | (string & {});
-export const InvestigateBulkListResultItemActionParamsDestination =
+export const InvestigateBulkListResultItemActionParamsMoveDestination =
   /*@__PURE__*/ S.String;
 
-export type InvestigateBulkListResultItemActionParamsType =
+export type InvestigateBulkListResultItemActionParamsMoveType =
   | "MOVE"
   | (string & {});
-export const InvestigateBulkListResultItemActionParamsType =
+export const InvestigateBulkListResultItemActionParamsMoveType =
   /*@__PURE__*/ S.String;
 
-export type InvestigateBulkListResultItemActionParamsExpectedDisposition =
+export type InvestigateBulkListResultItemActionParamsMoveExpectedDisposition =
   | "MALICIOUS"
   | "MALICIOUS-BEC"
   | "SUSPICIOUS"
   | (string & {});
-export const InvestigateBulkListResultItemActionParamsExpectedDisposition =
+export const InvestigateBulkListResultItemActionParamsMoveExpectedDisposition =
   /*@__PURE__*/ S.String;
 
-export interface InvestigateBulkListResultItemActionParams {
-  destination?: InvestigateBulkListResultItemActionParamsDestination;
-  type?: InvestigateBulkListResultItemActionParamsType;
-  expectedDisposition?: InvestigateBulkListResultItemActionParamsExpectedDisposition;
+export interface InvestigateBulkListResultItemActionParamsMove {
+  destination: InvestigateBulkListResultItemActionParamsMoveDestination;
+  type: InvestigateBulkListResultItemActionParamsMoveType;
+  expectedDisposition?: InvestigateBulkListResultItemActionParamsMoveExpectedDisposition;
 }
-export const InvestigateBulkListResultItemActionParams =
+export const InvestigateBulkListResultItemActionParamsMove =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      destination: S.optional(
-        InvestigateBulkListResultItemActionParamsDestination,
-      ),
-      type: S.optional(InvestigateBulkListResultItemActionParamsType),
+      destination: InvestigateBulkListResultItemActionParamsMoveDestination,
+      type: InvestigateBulkListResultItemActionParamsMoveType,
       expectedDisposition: S.optional(
-        InvestigateBulkListResultItemActionParamsExpectedDisposition.pipe(
+        InvestigateBulkListResultItemActionParamsMoveExpectedDisposition.pipe(
           T.Body("expected_disposition"),
         ),
       ),
     }),
   ).annotate({
-    identifier: "InvestigateBulkListResultItemActionParams",
-  }) as any as S.Schema<InvestigateBulkListResultItemActionParams>;
+    identifier: "InvestigateBulkListResultItemActionParamsMove",
+  }) as any as S.Schema<InvestigateBulkListResultItemActionParamsMove>;
+
+export type InvestigateBulkListResultItemActionParamsReleaseType =
+  | "RELEASE"
+  | (string & {});
+export const InvestigateBulkListResultItemActionParamsReleaseType =
+  /*@__PURE__*/ S.String;
+
+export interface InvestigateBulkListResultItemActionParamsRelease {
+  type: InvestigateBulkListResultItemActionParamsReleaseType;
+}
+export const InvestigateBulkListResultItemActionParamsRelease =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: InvestigateBulkListResultItemActionParamsReleaseType,
+    }),
+  ).annotate({
+    identifier: "InvestigateBulkListResultItemActionParamsRelease",
+  }) as any as S.Schema<InvestigateBulkListResultItemActionParamsRelease>;
+
+export type InvestigateBulkListResultItemActionParams =
+  | InvestigateBulkListResultItemActionParamsMove
+  | InvestigateBulkListResultItemActionParamsRelease;
+export const InvestigateBulkListResultItemActionParams =
+  /*@__PURE__*/ S.Unknown;
 
 export type InvestigateBulkListResultItemActionType =
   | "MOVE"

@@ -461,43 +461,89 @@ export const ListValuesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListValuesResponse",
 }) as any as S.Schema<ListValuesResponse>;
 
-export type AccountTagsUpdateRequestBodyResourceType =
-  | "access_application"
-  | "access_group"
-  | "account"
-  | (string & {});
-export const AccountTagsUpdateRequestBodyResourceType = /*@__PURE__*/ S.String;
+export type AccountTagsUpdateRequestBodyResourceTaggingSetTagsRequestAccountLevelWorkerVersionResourceType =
+  "access_application" | "access_group" | "account" | (string & {});
+export const AccountTagsUpdateRequestBodyResourceTaggingSetTagsRequestAccountLevelWorkerVersionResourceType =
+  /*@__PURE__*/ S.String;
 
-export type AccountTagsUpdateRequestBodyTagsMap = {
-  [key: string]: unknown | undefined;
-};
-export const AccountTagsUpdateRequestBodyTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<AccountTagsUpdateRequestBodyTagsMap>;
+export type AccountTagsUpdateRequestBodyResourceTaggingSetTagsRequestAccountLevelWorkerVersionTagsMap =
+  { [key: string]: unknown | undefined };
+export const AccountTagsUpdateRequestBodyResourceTaggingSetTagsRequestAccountLevelWorkerVersionTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<AccountTagsUpdateRequestBodyResourceTaggingSetTagsRequestAccountLevelWorkerVersionTagsMap>;
 
-export interface AccountTagsUpdateRequestBody {
+export interface AccountTagsUpdateRequestBodyResourceTaggingSetTagsRequestAccountLevelWorkerVersion {
   /** Identifies the unique resource. */
-  resourceId?: string;
+  resourceId: string;
   /** Enum for base account-level resource types (those with no extra required fields). */
-  resourceType?: AccountTagsUpdateRequestBodyResourceType;
+  resourceType: AccountTagsUpdateRequestBodyResourceTaggingSetTagsRequestAccountLevelWorkerVersionResourceType;
   /** Worker ID is required only for worker_version resources */
-  workerId?: string;
+  workerId: string;
   /** Contains key-value pairs of tags. */
-  tags?: AccountTagsUpdateRequestBodyTagsMap;
+  tags?: AccountTagsUpdateRequestBodyResourceTaggingSetTagsRequestAccountLevelWorkerVersionTagsMap;
 }
-export const AccountTagsUpdateRequestBody = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceId: S.optional(S.String.pipe(T.Body("resource_id"))),
-    resourceType: S.optional(
-      AccountTagsUpdateRequestBodyResourceType.pipe(T.Body("resource_type")),
-    ),
-    workerId: S.optional(S.String.pipe(T.Body("worker_id"))),
-    tags: S.optional(AccountTagsUpdateRequestBodyTagsMap),
-  }),
-).annotate({
-  identifier: "AccountTagsUpdateRequestBody",
-}) as any as S.Schema<AccountTagsUpdateRequestBody>;
+export const AccountTagsUpdateRequestBodyResourceTaggingSetTagsRequestAccountLevelWorkerVersion =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      resourceId: S.String.pipe(T.Body("resource_id")),
+      resourceType:
+        AccountTagsUpdateRequestBodyResourceTaggingSetTagsRequestAccountLevelWorkerVersionResourceType.pipe(
+          T.Body("resource_type"),
+        ),
+      workerId: S.String.pipe(T.Body("worker_id")),
+      tags: S.optional(
+        AccountTagsUpdateRequestBodyResourceTaggingSetTagsRequestAccountLevelWorkerVersionTagsMap,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "AccountTagsUpdateRequestBodyResourceTaggingSetTagsRequestAccountLevelWorkerVersion",
+  }) as any as S.Schema<AccountTagsUpdateRequestBodyResourceTaggingSetTagsRequestAccountLevelWorkerVersion>;
+
+export type AccountTagsUpdateRequestBodyResourceTaggingSetTagsRequestAccountLevelBaseResourceType =
+  "access_application" | "access_group" | "account" | (string & {});
+export const AccountTagsUpdateRequestBodyResourceTaggingSetTagsRequestAccountLevelBaseResourceType =
+  /*@__PURE__*/ S.String;
+
+export type AccountTagsUpdateRequestBodyResourceTaggingSetTagsRequestAccountLevelBaseTagsMap =
+  { [key: string]: unknown | undefined };
+export const AccountTagsUpdateRequestBodyResourceTaggingSetTagsRequestAccountLevelBaseTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<AccountTagsUpdateRequestBodyResourceTaggingSetTagsRequestAccountLevelBaseTagsMap>;
+
+export interface AccountTagsUpdateRequestBodyResourceTaggingSetTagsRequestAccountLevelBase {
+  /** Identifies the unique resource. */
+  resourceId: string;
+  /** Enum for base account-level resource types (those with no extra required fields). */
+  resourceType: AccountTagsUpdateRequestBodyResourceTaggingSetTagsRequestAccountLevelBaseResourceType;
+  /** Contains key-value pairs of tags. */
+  tags?: AccountTagsUpdateRequestBodyResourceTaggingSetTagsRequestAccountLevelBaseTagsMap;
+}
+export const AccountTagsUpdateRequestBodyResourceTaggingSetTagsRequestAccountLevelBase =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      resourceId: S.String.pipe(T.Body("resource_id")),
+      resourceType:
+        AccountTagsUpdateRequestBodyResourceTaggingSetTagsRequestAccountLevelBaseResourceType.pipe(
+          T.Body("resource_type"),
+        ),
+      tags: S.optional(
+        AccountTagsUpdateRequestBodyResourceTaggingSetTagsRequestAccountLevelBaseTagsMap,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "AccountTagsUpdateRequestBodyResourceTaggingSetTagsRequestAccountLevelBase",
+  }) as any as S.Schema<AccountTagsUpdateRequestBodyResourceTaggingSetTagsRequestAccountLevelBase>;
+
+export type AccountTagsUpdateRequestBody =
+  | AccountTagsUpdateRequestBodyResourceTaggingSetTagsRequestAccountLevelWorkerVersion
+  | AccountTagsUpdateRequestBodyResourceTaggingSetTagsRequestAccountLevelBase;
+export const AccountTagsUpdateRequestBody = /*@__PURE__*/ S.Unknown;
 
 export interface PutAccountTagRequest {
   /** Identifier. */
@@ -568,45 +614,95 @@ export const PutAccountTagResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutAccountTagResponse",
 }) as any as S.Schema<PutAccountTagResponse>;
 
-export type ZoneTagsUpdateRequestBodyResourceType =
-  | "api_gateway_operation"
-  | "custom_certificate"
-  | "custom_hostname"
-  | (string & {});
-export const ZoneTagsUpdateRequestBodyResourceType = /*@__PURE__*/ S.String;
+export type ZoneTagsUpdateRequestBodyResourceTaggingSetTagsRequestZoneLevelBaseResourceType =
+    | "api_gateway_operation"
+    | "custom_certificate"
+    | "custom_hostname"
+    | (string & {});
+export const ZoneTagsUpdateRequestBodyResourceTaggingSetTagsRequestZoneLevelBaseResourceType =
+  /*@__PURE__*/ S.String;
 
-export type ZoneTagsUpdateRequestBodyTagsMap = {
-  [key: string]: unknown | undefined;
-};
-export const ZoneTagsUpdateRequestBodyTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ZoneTagsUpdateRequestBodyTagsMap>;
+export type ZoneTagsUpdateRequestBodyResourceTaggingSetTagsRequestZoneLevelBaseTagsMap =
+  { [key: string]: unknown | undefined };
+export const ZoneTagsUpdateRequestBodyResourceTaggingSetTagsRequestZoneLevelBaseTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<ZoneTagsUpdateRequestBodyResourceTaggingSetTagsRequestZoneLevelBaseTagsMap>;
 
-export interface ZoneTagsUpdateRequestBody {
+export interface ZoneTagsUpdateRequestBodyResourceTaggingSetTagsRequestZoneLevelBase {
   /** Identifies the unique resource. */
-  resourceId?: string;
+  resourceId: string;
   /** Enum for base zone-level resource types (those with no extra required fields). */
-  resourceType?: ZoneTagsUpdateRequestBodyResourceType;
+  resourceType: ZoneTagsUpdateRequestBodyResourceTaggingSetTagsRequestZoneLevelBaseResourceType;
   /** Contains key-value pairs of tags. */
-  tags?: ZoneTagsUpdateRequestBodyTagsMap;
-  /** Access application ID is required only for access_application_policy resources */
-  accessApplicationId?: string;
+  tags?: ZoneTagsUpdateRequestBodyResourceTaggingSetTagsRequestZoneLevelBaseTagsMap;
 }
-export const ZoneTagsUpdateRequestBody = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceId: S.optional(S.String.pipe(T.Body("resource_id"))),
-    resourceType: S.optional(
-      ZoneTagsUpdateRequestBodyResourceType.pipe(T.Body("resource_type")),
-    ),
-    tags: S.optional(ZoneTagsUpdateRequestBodyTagsMap),
-    accessApplicationId: S.optional(
-      S.String.pipe(T.Body("access_application_id")),
-    ),
-  }),
-).annotate({
-  identifier: "ZoneTagsUpdateRequestBody",
-}) as any as S.Schema<ZoneTagsUpdateRequestBody>;
+export const ZoneTagsUpdateRequestBodyResourceTaggingSetTagsRequestZoneLevelBase =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      resourceId: S.String.pipe(T.Body("resource_id")),
+      resourceType:
+        ZoneTagsUpdateRequestBodyResourceTaggingSetTagsRequestZoneLevelBaseResourceType.pipe(
+          T.Body("resource_type"),
+        ),
+      tags: S.optional(
+        ZoneTagsUpdateRequestBodyResourceTaggingSetTagsRequestZoneLevelBaseTagsMap,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "ZoneTagsUpdateRequestBodyResourceTaggingSetTagsRequestZoneLevelBase",
+  }) as any as S.Schema<ZoneTagsUpdateRequestBodyResourceTaggingSetTagsRequestZoneLevelBase>;
+
+export type ZoneTagsUpdateRequestBodyResourceTaggingSetTagsRequestZoneLevelAccessApplicationPolicyResourceType =
+    | "api_gateway_operation"
+    | "custom_certificate"
+    | "custom_hostname"
+    | (string & {});
+export const ZoneTagsUpdateRequestBodyResourceTaggingSetTagsRequestZoneLevelAccessApplicationPolicyResourceType =
+  /*@__PURE__*/ S.String;
+
+export type ZoneTagsUpdateRequestBodyResourceTaggingSetTagsRequestZoneLevelAccessApplicationPolicyTagsMap =
+  { [key: string]: unknown | undefined };
+export const ZoneTagsUpdateRequestBodyResourceTaggingSetTagsRequestZoneLevelAccessApplicationPolicyTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<ZoneTagsUpdateRequestBodyResourceTaggingSetTagsRequestZoneLevelAccessApplicationPolicyTagsMap>;
+
+export interface ZoneTagsUpdateRequestBodyResourceTaggingSetTagsRequestZoneLevelAccessApplicationPolicy {
+  /** Access application ID is required only for access_application_policy resources */
+  accessApplicationId: string;
+  /** Identifies the unique resource. */
+  resourceId: string;
+  /** Enum for base zone-level resource types (those with no extra required fields). */
+  resourceType: ZoneTagsUpdateRequestBodyResourceTaggingSetTagsRequestZoneLevelAccessApplicationPolicyResourceType;
+  /** Contains key-value pairs of tags. */
+  tags?: ZoneTagsUpdateRequestBodyResourceTaggingSetTagsRequestZoneLevelAccessApplicationPolicyTagsMap;
+}
+export const ZoneTagsUpdateRequestBodyResourceTaggingSetTagsRequestZoneLevelAccessApplicationPolicy =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      accessApplicationId: S.String.pipe(T.Body("access_application_id")),
+      resourceId: S.String.pipe(T.Body("resource_id")),
+      resourceType:
+        ZoneTagsUpdateRequestBodyResourceTaggingSetTagsRequestZoneLevelAccessApplicationPolicyResourceType.pipe(
+          T.Body("resource_type"),
+        ),
+      tags: S.optional(
+        ZoneTagsUpdateRequestBodyResourceTaggingSetTagsRequestZoneLevelAccessApplicationPolicyTagsMap,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "ZoneTagsUpdateRequestBodyResourceTaggingSetTagsRequestZoneLevelAccessApplicationPolicy",
+  }) as any as S.Schema<ZoneTagsUpdateRequestBodyResourceTaggingSetTagsRequestZoneLevelAccessApplicationPolicy>;
+
+export type ZoneTagsUpdateRequestBody =
+  | ZoneTagsUpdateRequestBodyResourceTaggingSetTagsRequestZoneLevelBase
+  | ZoneTagsUpdateRequestBodyResourceTaggingSetTagsRequestZoneLevelAccessApplicationPolicy;
+export const ZoneTagsUpdateRequestBody = /*@__PURE__*/ S.Unknown;
 
 export interface PutZoneTagRequest {
   /** Zone ID is required only for zone-level resources */

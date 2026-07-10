@@ -803,8 +803,326 @@ export const DispatchNamespacesScriptsGetResponseScriptObservability =
     identifier: "DispatchNamespacesScriptsGetResponseScriptObservability",
   }) as any as S.Schema<DispatchNamespacesScriptsGetResponseScriptObservability>;
 
+export type DispatchNamespacesScriptsGetResponseScriptPlacementObjectModeLastAnalyzedAtStatusMode =
+  "smart" | (string & {});
+export const DispatchNamespacesScriptsGetResponseScriptPlacementObjectModeLastAnalyzedAtStatusMode =
+  /*@__PURE__*/ S.String;
+
+export type DispatchNamespacesScriptsGetResponseScriptPlacementObjectModeLastAnalyzedAtStatusStatus =
+    | "SUCCESS"
+    | "UNSUPPORTED_APPLICATION"
+    | "INSUFFICIENT_INVOCATIONS"
+    | (string & {});
+export const DispatchNamespacesScriptsGetResponseScriptPlacementObjectModeLastAnalyzedAtStatusStatus =
+  /*@__PURE__*/ S.String;
+
+export interface DispatchNamespacesScriptsGetResponseScriptPlacementObjectModeLastAnalyzedAtStatus {
+  /** Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
+  mode: DispatchNamespacesScriptsGetResponseScriptPlacementObjectModeLastAnalyzedAtStatusMode;
+  /** The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
+  lastAnalyzedAt?: string;
+  /** Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
+  status?: DispatchNamespacesScriptsGetResponseScriptPlacementObjectModeLastAnalyzedAtStatusStatus;
+}
+export const DispatchNamespacesScriptsGetResponseScriptPlacementObjectModeLastAnalyzedAtStatus =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      mode: DispatchNamespacesScriptsGetResponseScriptPlacementObjectModeLastAnalyzedAtStatusMode,
+      lastAnalyzedAt: S.optional(S.String.pipe(T.Body("last_analyzed_at"))),
+      status: S.optional(
+        DispatchNamespacesScriptsGetResponseScriptPlacementObjectModeLastAnalyzedAtStatusStatus,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "DispatchNamespacesScriptsGetResponseScriptPlacementObjectModeLastAnalyzedAtStatus",
+  }) as any as S.Schema<DispatchNamespacesScriptsGetResponseScriptPlacementObjectModeLastAnalyzedAtStatus>;
+
+export type DispatchNamespacesScriptsGetResponseScriptPlacementObjectRegionLastAnalyzedAtStatusStatus =
+    | "SUCCESS"
+    | "UNSUPPORTED_APPLICATION"
+    | "INSUFFICIENT_INVOCATIONS"
+    | (string & {});
+export const DispatchNamespacesScriptsGetResponseScriptPlacementObjectRegionLastAnalyzedAtStatusStatus =
+  /*@__PURE__*/ S.String;
+
+export interface DispatchNamespacesScriptsGetResponseScriptPlacementObjectRegionLastAnalyzedAtStatus {
+  /** Cloud region for targeted placement in format 'provider:region'. */
+  region: string;
+  /** The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
+  lastAnalyzedAt?: string;
+  /** Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
+  status?: DispatchNamespacesScriptsGetResponseScriptPlacementObjectRegionLastAnalyzedAtStatusStatus;
+}
+export const DispatchNamespacesScriptsGetResponseScriptPlacementObjectRegionLastAnalyzedAtStatus =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      region: S.String,
+      lastAnalyzedAt: S.optional(S.String.pipe(T.Body("last_analyzed_at"))),
+      status: S.optional(
+        DispatchNamespacesScriptsGetResponseScriptPlacementObjectRegionLastAnalyzedAtStatusStatus,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "DispatchNamespacesScriptsGetResponseScriptPlacementObjectRegionLastAnalyzedAtStatus",
+  }) as any as S.Schema<DispatchNamespacesScriptsGetResponseScriptPlacementObjectRegionLastAnalyzedAtStatus>;
+
+export type DispatchNamespacesScriptsGetResponseScriptPlacementObjectHostnameLastAnalyzedAtStatusStatus =
+    | "SUCCESS"
+    | "UNSUPPORTED_APPLICATION"
+    | "INSUFFICIENT_INVOCATIONS"
+    | (string & {});
+export const DispatchNamespacesScriptsGetResponseScriptPlacementObjectHostnameLastAnalyzedAtStatusStatus =
+  /*@__PURE__*/ S.String;
+
+export interface DispatchNamespacesScriptsGetResponseScriptPlacementObjectHostnameLastAnalyzedAtStatus {
+  /** HTTP hostname for targeted placement. */
+  hostname: string;
+  /** The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
+  lastAnalyzedAt?: string;
+  /** Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
+  status?: DispatchNamespacesScriptsGetResponseScriptPlacementObjectHostnameLastAnalyzedAtStatusStatus;
+}
+export const DispatchNamespacesScriptsGetResponseScriptPlacementObjectHostnameLastAnalyzedAtStatus =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      hostname: S.String,
+      lastAnalyzedAt: S.optional(S.String.pipe(T.Body("last_analyzed_at"))),
+      status: S.optional(
+        DispatchNamespacesScriptsGetResponseScriptPlacementObjectHostnameLastAnalyzedAtStatusStatus,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "DispatchNamespacesScriptsGetResponseScriptPlacementObjectHostnameLastAnalyzedAtStatus",
+  }) as any as S.Schema<DispatchNamespacesScriptsGetResponseScriptPlacementObjectHostnameLastAnalyzedAtStatus>;
+
+export type DispatchNamespacesScriptsGetResponseScriptPlacementObjectHostLastAnalyzedAtStatusStatus =
+    | "SUCCESS"
+    | "UNSUPPORTED_APPLICATION"
+    | "INSUFFICIENT_INVOCATIONS"
+    | (string & {});
+export const DispatchNamespacesScriptsGetResponseScriptPlacementObjectHostLastAnalyzedAtStatusStatus =
+  /*@__PURE__*/ S.String;
+
+export interface DispatchNamespacesScriptsGetResponseScriptPlacementObjectHostLastAnalyzedAtStatus {
+  /** TCP host and port for targeted placement. */
+  host: string;
+  /** The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
+  lastAnalyzedAt?: string;
+  /** Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
+  status?: DispatchNamespacesScriptsGetResponseScriptPlacementObjectHostLastAnalyzedAtStatusStatus;
+}
+export const DispatchNamespacesScriptsGetResponseScriptPlacementObjectHostLastAnalyzedAtStatus =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      host: S.String,
+      lastAnalyzedAt: S.optional(S.String.pipe(T.Body("last_analyzed_at"))),
+      status: S.optional(
+        DispatchNamespacesScriptsGetResponseScriptPlacementObjectHostLastAnalyzedAtStatusStatus,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "DispatchNamespacesScriptsGetResponseScriptPlacementObjectHostLastAnalyzedAtStatus",
+  }) as any as S.Schema<DispatchNamespacesScriptsGetResponseScriptPlacementObjectHostLastAnalyzedAtStatus>;
+
+export type DispatchNamespacesScriptsGetResponseScriptPlacementObjectModeRegionLastAnalyzedAtStatusMode =
+  "targeted" | (string & {});
+export const DispatchNamespacesScriptsGetResponseScriptPlacementObjectModeRegionLastAnalyzedAtStatusMode =
+  /*@__PURE__*/ S.String;
+
+export type DispatchNamespacesScriptsGetResponseScriptPlacementObjectModeRegionLastAnalyzedAtStatusStatus =
+    | "SUCCESS"
+    | "UNSUPPORTED_APPLICATION"
+    | "INSUFFICIENT_INVOCATIONS"
+    | (string & {});
+export const DispatchNamespacesScriptsGetResponseScriptPlacementObjectModeRegionLastAnalyzedAtStatusStatus =
+  /*@__PURE__*/ S.String;
+
+export interface DispatchNamespacesScriptsGetResponseScriptPlacementObjectModeRegionLastAnalyzedAtStatus {
+  /** Targeted placement mode. */
+  mode: DispatchNamespacesScriptsGetResponseScriptPlacementObjectModeRegionLastAnalyzedAtStatusMode;
+  /** Cloud region for targeted placement in format 'provider:region'. */
+  region: string;
+  /** The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
+  lastAnalyzedAt?: string;
+  /** Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
+  status?: DispatchNamespacesScriptsGetResponseScriptPlacementObjectModeRegionLastAnalyzedAtStatusStatus;
+}
+export const DispatchNamespacesScriptsGetResponseScriptPlacementObjectModeRegionLastAnalyzedAtStatus =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      mode: DispatchNamespacesScriptsGetResponseScriptPlacementObjectModeRegionLastAnalyzedAtStatusMode,
+      region: S.String,
+      lastAnalyzedAt: S.optional(S.String.pipe(T.Body("last_analyzed_at"))),
+      status: S.optional(
+        DispatchNamespacesScriptsGetResponseScriptPlacementObjectModeRegionLastAnalyzedAtStatusStatus,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "DispatchNamespacesScriptsGetResponseScriptPlacementObjectModeRegionLastAnalyzedAtStatus",
+  }) as any as S.Schema<DispatchNamespacesScriptsGetResponseScriptPlacementObjectModeRegionLastAnalyzedAtStatus>;
+
+export type DispatchNamespacesScriptsGetResponseScriptPlacementObjectHostnameModeLastAnalyzedAtStatusMode =
+  "targeted" | (string & {});
+export const DispatchNamespacesScriptsGetResponseScriptPlacementObjectHostnameModeLastAnalyzedAtStatusMode =
+  /*@__PURE__*/ S.String;
+
+export type DispatchNamespacesScriptsGetResponseScriptPlacementObjectHostnameModeLastAnalyzedAtStatusStatus =
+    | "SUCCESS"
+    | "UNSUPPORTED_APPLICATION"
+    | "INSUFFICIENT_INVOCATIONS"
+    | (string & {});
+export const DispatchNamespacesScriptsGetResponseScriptPlacementObjectHostnameModeLastAnalyzedAtStatusStatus =
+  /*@__PURE__*/ S.String;
+
+export interface DispatchNamespacesScriptsGetResponseScriptPlacementObjectHostnameModeLastAnalyzedAtStatus {
+  /** HTTP hostname for targeted placement. */
+  hostname: string;
+  /** Targeted placement mode. */
+  mode: DispatchNamespacesScriptsGetResponseScriptPlacementObjectHostnameModeLastAnalyzedAtStatusMode;
+  /** The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
+  lastAnalyzedAt?: string;
+  /** Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
+  status?: DispatchNamespacesScriptsGetResponseScriptPlacementObjectHostnameModeLastAnalyzedAtStatusStatus;
+}
+export const DispatchNamespacesScriptsGetResponseScriptPlacementObjectHostnameModeLastAnalyzedAtStatus =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      hostname: S.String,
+      mode: DispatchNamespacesScriptsGetResponseScriptPlacementObjectHostnameModeLastAnalyzedAtStatusMode,
+      lastAnalyzedAt: S.optional(S.String.pipe(T.Body("last_analyzed_at"))),
+      status: S.optional(
+        DispatchNamespacesScriptsGetResponseScriptPlacementObjectHostnameModeLastAnalyzedAtStatusStatus,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "DispatchNamespacesScriptsGetResponseScriptPlacementObjectHostnameModeLastAnalyzedAtStatus",
+  }) as any as S.Schema<DispatchNamespacesScriptsGetResponseScriptPlacementObjectHostnameModeLastAnalyzedAtStatus>;
+
+export type DispatchNamespacesScriptsGetResponseScriptPlacementObjectHostModeLastAnalyzedAtStatusMode =
+  "targeted" | (string & {});
+export const DispatchNamespacesScriptsGetResponseScriptPlacementObjectHostModeLastAnalyzedAtStatusMode =
+  /*@__PURE__*/ S.String;
+
+export type DispatchNamespacesScriptsGetResponseScriptPlacementObjectHostModeLastAnalyzedAtStatusStatus =
+    | "SUCCESS"
+    | "UNSUPPORTED_APPLICATION"
+    | "INSUFFICIENT_INVOCATIONS"
+    | (string & {});
+export const DispatchNamespacesScriptsGetResponseScriptPlacementObjectHostModeLastAnalyzedAtStatusStatus =
+  /*@__PURE__*/ S.String;
+
+export interface DispatchNamespacesScriptsGetResponseScriptPlacementObjectHostModeLastAnalyzedAtStatus {
+  /** TCP host and port for targeted placement. */
+  host: string;
+  /** Targeted placement mode. */
+  mode: DispatchNamespacesScriptsGetResponseScriptPlacementObjectHostModeLastAnalyzedAtStatusMode;
+  /** The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
+  lastAnalyzedAt?: string;
+  /** Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
+  status?: DispatchNamespacesScriptsGetResponseScriptPlacementObjectHostModeLastAnalyzedAtStatusStatus;
+}
+export const DispatchNamespacesScriptsGetResponseScriptPlacementObjectHostModeLastAnalyzedAtStatus =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      host: S.String,
+      mode: DispatchNamespacesScriptsGetResponseScriptPlacementObjectHostModeLastAnalyzedAtStatusMode,
+      lastAnalyzedAt: S.optional(S.String.pipe(T.Body("last_analyzed_at"))),
+      status: S.optional(
+        DispatchNamespacesScriptsGetResponseScriptPlacementObjectHostModeLastAnalyzedAtStatusStatus,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "DispatchNamespacesScriptsGetResponseScriptPlacementObjectHostModeLastAnalyzedAtStatus",
+  }) as any as S.Schema<DispatchNamespacesScriptsGetResponseScriptPlacementObjectHostModeLastAnalyzedAtStatus>;
+
+export type DispatchNamespacesScriptsGetResponseScriptPlacementObjectModeTargetLastAnalyzedAtStatusMode =
+  "targeted" | (string & {});
+export const DispatchNamespacesScriptsGetResponseScriptPlacementObjectModeTargetLastAnalyzedAtStatusMode =
+  /*@__PURE__*/ S.String;
+
+export interface DispatchNamespacesScriptsGetResponseScriptPlacementObjectModeTargetLastAnalyzedAtStatusTargetItem {
+  /** Cloud region in format 'provider:region'. */
+  region?: string;
+  /** HTTP hostname for targeted placement. */
+  hostname?: string;
+  /** TCP host:port for targeted placement. */
+  host?: string;
+}
+export const DispatchNamespacesScriptsGetResponseScriptPlacementObjectModeTargetLastAnalyzedAtStatusTargetItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      region: S.optional(S.String),
+      hostname: S.optional(S.String),
+      host: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "DispatchNamespacesScriptsGetResponseScriptPlacementObjectModeTargetLastAnalyzedAtStatusTargetItem",
+  }) as any as S.Schema<DispatchNamespacesScriptsGetResponseScriptPlacementObjectModeTargetLastAnalyzedAtStatusTargetItem>;
+
+export type DispatchNamespacesScriptsGetResponseScriptPlacementObjectModeTargetLastAnalyzedAtStatusTargetList =
+  DispatchNamespacesScriptsGetResponseScriptPlacementObjectModeTargetLastAnalyzedAtStatusTargetItem[];
+export const DispatchNamespacesScriptsGetResponseScriptPlacementObjectModeTargetLastAnalyzedAtStatusTargetList =
+  /*@__PURE__*/ S.Array(
+    DispatchNamespacesScriptsGetResponseScriptPlacementObjectModeTargetLastAnalyzedAtStatusTargetItem,
+  ) as any as S.Schema<DispatchNamespacesScriptsGetResponseScriptPlacementObjectModeTargetLastAnalyzedAtStatusTargetList>;
+
+export type DispatchNamespacesScriptsGetResponseScriptPlacementObjectModeTargetLastAnalyzedAtStatusStatus =
+    | "SUCCESS"
+    | "UNSUPPORTED_APPLICATION"
+    | "INSUFFICIENT_INVOCATIONS"
+    | (string & {});
+export const DispatchNamespacesScriptsGetResponseScriptPlacementObjectModeTargetLastAnalyzedAtStatusStatus =
+  /*@__PURE__*/ S.String;
+
+export interface DispatchNamespacesScriptsGetResponseScriptPlacementObjectModeTargetLastAnalyzedAtStatus {
+  /** Targeted placement mode. */
+  mode: DispatchNamespacesScriptsGetResponseScriptPlacementObjectModeTargetLastAnalyzedAtStatusMode;
+  /** Array of placement targets (currently limited to single target). */
+  target: DispatchNamespacesScriptsGetResponseScriptPlacementObjectModeTargetLastAnalyzedAtStatusTargetList;
+  /** The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
+  lastAnalyzedAt?: string;
+  /** Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
+  status?: DispatchNamespacesScriptsGetResponseScriptPlacementObjectModeTargetLastAnalyzedAtStatusStatus;
+}
+export const DispatchNamespacesScriptsGetResponseScriptPlacementObjectModeTargetLastAnalyzedAtStatus =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      mode: DispatchNamespacesScriptsGetResponseScriptPlacementObjectModeTargetLastAnalyzedAtStatusMode,
+      target:
+        DispatchNamespacesScriptsGetResponseScriptPlacementObjectModeTargetLastAnalyzedAtStatusTargetList,
+      lastAnalyzedAt: S.optional(S.String.pipe(T.Body("last_analyzed_at"))),
+      status: S.optional(
+        DispatchNamespacesScriptsGetResponseScriptPlacementObjectModeTargetLastAnalyzedAtStatusStatus,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "DispatchNamespacesScriptsGetResponseScriptPlacementObjectModeTargetLastAnalyzedAtStatus",
+  }) as any as S.Schema<DispatchNamespacesScriptsGetResponseScriptPlacementObjectModeTargetLastAnalyzedAtStatus>;
+
+export type DispatchNamespacesScriptsGetResponseScriptPlacement =
+  | DispatchNamespacesScriptsGetResponseScriptPlacementObjectModeLastAnalyzedAtStatus
+  | DispatchNamespacesScriptsGetResponseScriptPlacementObjectRegionLastAnalyzedAtStatus
+  | DispatchNamespacesScriptsGetResponseScriptPlacementObjectHostnameLastAnalyzedAtStatus
+  | DispatchNamespacesScriptsGetResponseScriptPlacementObjectHostLastAnalyzedAtStatus
+  | DispatchNamespacesScriptsGetResponseScriptPlacementObjectModeRegionLastAnalyzedAtStatus
+  | DispatchNamespacesScriptsGetResponseScriptPlacementObjectHostnameModeLastAnalyzedAtStatus
+  | DispatchNamespacesScriptsGetResponseScriptPlacementObjectHostModeLastAnalyzedAtStatus
+  | DispatchNamespacesScriptsGetResponseScriptPlacementObjectModeTargetLastAnalyzedAtStatus;
+export const DispatchNamespacesScriptsGetResponseScriptPlacement =
+  /*@__PURE__*/ S.Unknown;
+
 export type DispatchNamespacesScriptsGetResponseScriptPlacementMode =
   | "smart"
+  | "targeted"
   | (string & {});
 export const DispatchNamespacesScriptsGetResponseScriptPlacementMode =
   /*@__PURE__*/ S.String;
@@ -815,82 +1133,6 @@ export type DispatchNamespacesScriptsGetResponseScriptPlacementStatus =
   | "INSUFFICIENT_INVOCATIONS"
   | (string & {});
 export const DispatchNamespacesScriptsGetResponseScriptPlacementStatus =
-  /*@__PURE__*/ S.String;
-
-export interface DispatchNamespacesScriptsGetResponseScriptPlacementTargetItem {
-  /** Cloud region in format 'provider:region'. */
-  region?: string;
-  /** HTTP hostname for targeted placement. */
-  hostname?: string;
-  /** TCP host:port for targeted placement. */
-  host?: string;
-}
-export const DispatchNamespacesScriptsGetResponseScriptPlacementTargetItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      region: S.optional(S.String),
-      hostname: S.optional(S.String),
-      host: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsGetResponseScriptPlacementTargetItem",
-  }) as any as S.Schema<DispatchNamespacesScriptsGetResponseScriptPlacementTargetItem>;
-
-export type DispatchNamespacesScriptsGetResponseScriptPlacementTargetList =
-  DispatchNamespacesScriptsGetResponseScriptPlacementTargetItem[];
-export const DispatchNamespacesScriptsGetResponseScriptPlacementTargetList =
-  /*@__PURE__*/ S.Array(
-    DispatchNamespacesScriptsGetResponseScriptPlacementTargetItem,
-  ) as any as S.Schema<DispatchNamespacesScriptsGetResponseScriptPlacementTargetList>;
-
-export interface DispatchNamespacesScriptsGetResponseScriptPlacement {
-  /** Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
-  mode?: DispatchNamespacesScriptsGetResponseScriptPlacementMode;
-  /** The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
-  lastAnalyzedAt?: string;
-  /** Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
-  status?: DispatchNamespacesScriptsGetResponseScriptPlacementStatus;
-  /** Cloud region for targeted placement in format 'provider:region'. */
-  region?: string;
-  /** HTTP hostname for targeted placement. */
-  hostname?: string;
-  /** TCP host and port for targeted placement. */
-  host?: string;
-  /** Array of placement targets (currently limited to single target). */
-  target?: DispatchNamespacesScriptsGetResponseScriptPlacementTargetList;
-}
-export const DispatchNamespacesScriptsGetResponseScriptPlacement =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      mode: S.optional(DispatchNamespacesScriptsGetResponseScriptPlacementMode),
-      lastAnalyzedAt: S.optional(S.String.pipe(T.Body("last_analyzed_at"))),
-      status: S.optional(
-        DispatchNamespacesScriptsGetResponseScriptPlacementStatus,
-      ),
-      region: S.optional(S.String),
-      hostname: S.optional(S.String),
-      host: S.optional(S.String),
-      target: S.optional(
-        DispatchNamespacesScriptsGetResponseScriptPlacementTargetList,
-      ),
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsGetResponseScriptPlacement",
-  }) as any as S.Schema<DispatchNamespacesScriptsGetResponseScriptPlacement>;
-
-export type DispatchNamespacesScriptsGetResponseScriptPlacementMode2 =
-  | "smart"
-  | "targeted"
-  | (string & {});
-export const DispatchNamespacesScriptsGetResponseScriptPlacementMode2 =
-  /*@__PURE__*/ S.String;
-
-export type DispatchNamespacesScriptsGetResponseScriptPlacementStatus2 =
-  | "SUCCESS"
-  | "UNSUPPORTED_APPLICATION"
-  | "INSUFFICIENT_INVOCATIONS"
-  | (string & {});
-export const DispatchNamespacesScriptsGetResponseScriptPlacementStatus2 =
   /*@__PURE__*/ S.String;
 
 export type DispatchNamespacesScriptsGetResponseScriptTagsList = string[];
@@ -967,9 +1209,9 @@ export interface DispatchNamespacesScriptsGetResponseScript {
   /** Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host. */
   placement?: DispatchNamespacesScriptsGetResponseScriptPlacement;
   /** Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host. */
-  placementMode?: DispatchNamespacesScriptsGetResponseScriptPlacementMode2;
+  placementMode?: DispatchNamespacesScriptsGetResponseScriptPlacementMode;
   /** Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
-  placementStatus?: DispatchNamespacesScriptsGetResponseScriptPlacementStatus2;
+  placementStatus?: DispatchNamespacesScriptsGetResponseScriptPlacementStatus;
   /** The immutable ID of the script. */
   tag?: string;
   /** Tags associated with the Worker. */
@@ -1019,12 +1261,12 @@ export const DispatchNamespacesScriptsGetResponseScript =
         DispatchNamespacesScriptsGetResponseScriptPlacement,
       ),
       placementMode: S.optional(
-        DispatchNamespacesScriptsGetResponseScriptPlacementMode2.pipe(
+        DispatchNamespacesScriptsGetResponseScriptPlacementMode.pipe(
           T.Body("placement_mode"),
         ),
       ),
       placementStatus: S.optional(
-        DispatchNamespacesScriptsGetResponseScriptPlacementStatus2.pipe(
+        DispatchNamespacesScriptsGetResponseScriptPlacementStatus.pipe(
           T.Body("placement_status"),
         ),
       ),
@@ -2259,13 +2501,136 @@ export const DispatchNamespacesScriptsSettingsGetResponseObservability =
     identifier: "DispatchNamespacesScriptsSettingsGetResponseObservability",
   }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseObservability>;
 
-export type DispatchNamespacesScriptsSettingsGetResponsePlacementMode =
+export type DispatchNamespacesScriptsSettingsGetResponsePlacementModeMode =
   | "smart"
   | (string & {});
-export const DispatchNamespacesScriptsSettingsGetResponsePlacementMode =
+export const DispatchNamespacesScriptsSettingsGetResponsePlacementModeMode =
   /*@__PURE__*/ S.String;
 
-export interface DispatchNamespacesScriptsSettingsGetResponsePlacementTargetItem {
+export interface DispatchNamespacesScriptsSettingsGetResponsePlacementMode {
+  /** Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
+  mode: DispatchNamespacesScriptsSettingsGetResponsePlacementModeMode;
+}
+export const DispatchNamespacesScriptsSettingsGetResponsePlacementMode =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      mode: DispatchNamespacesScriptsSettingsGetResponsePlacementModeMode,
+    }),
+  ).annotate({
+    identifier: "DispatchNamespacesScriptsSettingsGetResponsePlacementMode",
+  }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponsePlacementMode>;
+
+export interface DispatchNamespacesScriptsSettingsGetResponsePlacementRegion {
+  /** Cloud region for targeted placement in format 'provider:region'. */
+  region: string;
+}
+export const DispatchNamespacesScriptsSettingsGetResponsePlacementRegion =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      region: S.String,
+    }),
+  ).annotate({
+    identifier: "DispatchNamespacesScriptsSettingsGetResponsePlacementRegion",
+  }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponsePlacementRegion>;
+
+export interface DispatchNamespacesScriptsSettingsGetResponsePlacementHostname {
+  /** HTTP hostname for targeted placement. */
+  hostname: string;
+}
+export const DispatchNamespacesScriptsSettingsGetResponsePlacementHostname =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      hostname: S.String,
+    }),
+  ).annotate({
+    identifier: "DispatchNamespacesScriptsSettingsGetResponsePlacementHostname",
+  }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponsePlacementHostname>;
+
+export interface DispatchNamespacesScriptsSettingsGetResponsePlacementHost {
+  /** TCP host and port for targeted placement. */
+  host: string;
+}
+export const DispatchNamespacesScriptsSettingsGetResponsePlacementHost =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      host: S.String,
+    }),
+  ).annotate({
+    identifier: "DispatchNamespacesScriptsSettingsGetResponsePlacementHost",
+  }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponsePlacementHost>;
+
+export type DispatchNamespacesScriptsSettingsGetResponsePlacementObjectModeRegionMode =
+  "targeted" | (string & {});
+export const DispatchNamespacesScriptsSettingsGetResponsePlacementObjectModeRegionMode =
+  /*@__PURE__*/ S.String;
+
+export interface DispatchNamespacesScriptsSettingsGetResponsePlacementObjectModeRegion {
+  /** Targeted placement mode. */
+  mode: DispatchNamespacesScriptsSettingsGetResponsePlacementObjectModeRegionMode;
+  /** Cloud region for targeted placement in format 'provider:region'. */
+  region: string;
+}
+export const DispatchNamespacesScriptsSettingsGetResponsePlacementObjectModeRegion =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      mode: DispatchNamespacesScriptsSettingsGetResponsePlacementObjectModeRegionMode,
+      region: S.String,
+    }),
+  ).annotate({
+    identifier:
+      "DispatchNamespacesScriptsSettingsGetResponsePlacementObjectModeRegion",
+  }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponsePlacementObjectModeRegion>;
+
+export type DispatchNamespacesScriptsSettingsGetResponsePlacementObjectHostnameModeMode =
+  "targeted" | (string & {});
+export const DispatchNamespacesScriptsSettingsGetResponsePlacementObjectHostnameModeMode =
+  /*@__PURE__*/ S.String;
+
+export interface DispatchNamespacesScriptsSettingsGetResponsePlacementObjectHostnameMode {
+  /** HTTP hostname for targeted placement. */
+  hostname: string;
+  /** Targeted placement mode. */
+  mode: DispatchNamespacesScriptsSettingsGetResponsePlacementObjectHostnameModeMode;
+}
+export const DispatchNamespacesScriptsSettingsGetResponsePlacementObjectHostnameMode =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      hostname: S.String,
+      mode: DispatchNamespacesScriptsSettingsGetResponsePlacementObjectHostnameModeMode,
+    }),
+  ).annotate({
+    identifier:
+      "DispatchNamespacesScriptsSettingsGetResponsePlacementObjectHostnameMode",
+  }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponsePlacementObjectHostnameMode>;
+
+export type DispatchNamespacesScriptsSettingsGetResponsePlacementObjectHostModeMode =
+  "targeted" | (string & {});
+export const DispatchNamespacesScriptsSettingsGetResponsePlacementObjectHostModeMode =
+  /*@__PURE__*/ S.String;
+
+export interface DispatchNamespacesScriptsSettingsGetResponsePlacementObjectHostMode {
+  /** TCP host and port for targeted placement. */
+  host: string;
+  /** Targeted placement mode. */
+  mode: DispatchNamespacesScriptsSettingsGetResponsePlacementObjectHostModeMode;
+}
+export const DispatchNamespacesScriptsSettingsGetResponsePlacementObjectHostMode =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      host: S.String,
+      mode: DispatchNamespacesScriptsSettingsGetResponsePlacementObjectHostModeMode,
+    }),
+  ).annotate({
+    identifier:
+      "DispatchNamespacesScriptsSettingsGetResponsePlacementObjectHostMode",
+  }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponsePlacementObjectHostMode>;
+
+export type DispatchNamespacesScriptsSettingsGetResponsePlacementObjectModeTargetMode =
+  "targeted" | (string & {});
+export const DispatchNamespacesScriptsSettingsGetResponsePlacementObjectModeTargetMode =
+  /*@__PURE__*/ S.String;
+
+export interface DispatchNamespacesScriptsSettingsGetResponsePlacementObjectModeTargetTargetItem {
   /** Cloud region in format 'provider:region'. */
   region?: string;
   /** HTTP hostname for targeted placement. */
@@ -2273,7 +2638,7 @@ export interface DispatchNamespacesScriptsSettingsGetResponsePlacementTargetItem
   /** TCP host:port for targeted placement. */
   host?: string;
 }
-export const DispatchNamespacesScriptsSettingsGetResponsePlacementTargetItem =
+export const DispatchNamespacesScriptsSettingsGetResponsePlacementObjectModeTargetTargetItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       region: S.optional(S.String),
@@ -2282,44 +2647,45 @@ export const DispatchNamespacesScriptsSettingsGetResponsePlacementTargetItem =
     }),
   ).annotate({
     identifier:
-      "DispatchNamespacesScriptsSettingsGetResponsePlacementTargetItem",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponsePlacementTargetItem>;
+      "DispatchNamespacesScriptsSettingsGetResponsePlacementObjectModeTargetTargetItem",
+  }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponsePlacementObjectModeTargetTargetItem>;
 
-export type DispatchNamespacesScriptsSettingsGetResponsePlacementTargetList =
-  DispatchNamespacesScriptsSettingsGetResponsePlacementTargetItem[];
-export const DispatchNamespacesScriptsSettingsGetResponsePlacementTargetList =
+export type DispatchNamespacesScriptsSettingsGetResponsePlacementObjectModeTargetTargetList =
+  DispatchNamespacesScriptsSettingsGetResponsePlacementObjectModeTargetTargetItem[];
+export const DispatchNamespacesScriptsSettingsGetResponsePlacementObjectModeTargetTargetList =
   /*@__PURE__*/ S.Array(
-    DispatchNamespacesScriptsSettingsGetResponsePlacementTargetItem,
-  ) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponsePlacementTargetList>;
+    DispatchNamespacesScriptsSettingsGetResponsePlacementObjectModeTargetTargetItem,
+  ) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponsePlacementObjectModeTargetTargetList>;
 
-export interface DispatchNamespacesScriptsSettingsGetResponsePlacement {
-  /** Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
-  mode?: DispatchNamespacesScriptsSettingsGetResponsePlacementMode;
-  /** Cloud region for targeted placement in format 'provider:region'. */
-  region?: string;
-  /** HTTP hostname for targeted placement. */
-  hostname?: string;
-  /** TCP host and port for targeted placement. */
-  host?: string;
+export interface DispatchNamespacesScriptsSettingsGetResponsePlacementObjectModeTarget {
+  /** Targeted placement mode. */
+  mode: DispatchNamespacesScriptsSettingsGetResponsePlacementObjectModeTargetMode;
   /** Array of placement targets (currently limited to single target). */
-  target?: DispatchNamespacesScriptsSettingsGetResponsePlacementTargetList;
+  target: DispatchNamespacesScriptsSettingsGetResponsePlacementObjectModeTargetTargetList;
 }
-export const DispatchNamespacesScriptsSettingsGetResponsePlacement =
+export const DispatchNamespacesScriptsSettingsGetResponsePlacementObjectModeTarget =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      mode: S.optional(
-        DispatchNamespacesScriptsSettingsGetResponsePlacementMode,
-      ),
-      region: S.optional(S.String),
-      hostname: S.optional(S.String),
-      host: S.optional(S.String),
-      target: S.optional(
-        DispatchNamespacesScriptsSettingsGetResponsePlacementTargetList,
-      ),
+      mode: DispatchNamespacesScriptsSettingsGetResponsePlacementObjectModeTargetMode,
+      target:
+        DispatchNamespacesScriptsSettingsGetResponsePlacementObjectModeTargetTargetList,
     }),
   ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsGetResponsePlacement",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponsePlacement>;
+    identifier:
+      "DispatchNamespacesScriptsSettingsGetResponsePlacementObjectModeTarget",
+  }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponsePlacementObjectModeTarget>;
+
+export type DispatchNamespacesScriptsSettingsGetResponsePlacement =
+  | DispatchNamespacesScriptsSettingsGetResponsePlacementMode
+  | DispatchNamespacesScriptsSettingsGetResponsePlacementRegion
+  | DispatchNamespacesScriptsSettingsGetResponsePlacementHostname
+  | DispatchNamespacesScriptsSettingsGetResponsePlacementHost
+  | DispatchNamespacesScriptsSettingsGetResponsePlacementObjectModeRegion
+  | DispatchNamespacesScriptsSettingsGetResponsePlacementObjectHostnameMode
+  | DispatchNamespacesScriptsSettingsGetResponsePlacementObjectHostMode
+  | DispatchNamespacesScriptsSettingsGetResponsePlacementObjectModeTarget;
+export const DispatchNamespacesScriptsSettingsGetResponsePlacement =
+  /*@__PURE__*/ S.Unknown;
 
 export type DispatchNamespacesScriptsSettingsGetResponseTagsList = string[];
 export const DispatchNamespacesScriptsSettingsGetResponseTagsList =
@@ -3404,13 +3770,137 @@ export const DispatchNamespacesScriptsSettingsEditResponseObservability =
     identifier: "DispatchNamespacesScriptsSettingsEditResponseObservability",
   }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseObservability>;
 
-export type DispatchNamespacesScriptsSettingsEditResponsePlacementMode =
+export type DispatchNamespacesScriptsSettingsEditResponsePlacementModeMode =
   | "smart"
   | (string & {});
-export const DispatchNamespacesScriptsSettingsEditResponsePlacementMode =
+export const DispatchNamespacesScriptsSettingsEditResponsePlacementModeMode =
   /*@__PURE__*/ S.String;
 
-export interface DispatchNamespacesScriptsSettingsEditResponsePlacementTargetItem {
+export interface DispatchNamespacesScriptsSettingsEditResponsePlacementMode {
+  /** Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
+  mode: DispatchNamespacesScriptsSettingsEditResponsePlacementModeMode;
+}
+export const DispatchNamespacesScriptsSettingsEditResponsePlacementMode =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      mode: DispatchNamespacesScriptsSettingsEditResponsePlacementModeMode,
+    }),
+  ).annotate({
+    identifier: "DispatchNamespacesScriptsSettingsEditResponsePlacementMode",
+  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponsePlacementMode>;
+
+export interface DispatchNamespacesScriptsSettingsEditResponsePlacementRegion {
+  /** Cloud region for targeted placement in format 'provider:region'. */
+  region: string;
+}
+export const DispatchNamespacesScriptsSettingsEditResponsePlacementRegion =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      region: S.String,
+    }),
+  ).annotate({
+    identifier: "DispatchNamespacesScriptsSettingsEditResponsePlacementRegion",
+  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponsePlacementRegion>;
+
+export interface DispatchNamespacesScriptsSettingsEditResponsePlacementHostname {
+  /** HTTP hostname for targeted placement. */
+  hostname: string;
+}
+export const DispatchNamespacesScriptsSettingsEditResponsePlacementHostname =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      hostname: S.String,
+    }),
+  ).annotate({
+    identifier:
+      "DispatchNamespacesScriptsSettingsEditResponsePlacementHostname",
+  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponsePlacementHostname>;
+
+export interface DispatchNamespacesScriptsSettingsEditResponsePlacementHost {
+  /** TCP host and port for targeted placement. */
+  host: string;
+}
+export const DispatchNamespacesScriptsSettingsEditResponsePlacementHost =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      host: S.String,
+    }),
+  ).annotate({
+    identifier: "DispatchNamespacesScriptsSettingsEditResponsePlacementHost",
+  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponsePlacementHost>;
+
+export type DispatchNamespacesScriptsSettingsEditResponsePlacementObjectModeRegionMode =
+  "targeted" | (string & {});
+export const DispatchNamespacesScriptsSettingsEditResponsePlacementObjectModeRegionMode =
+  /*@__PURE__*/ S.String;
+
+export interface DispatchNamespacesScriptsSettingsEditResponsePlacementObjectModeRegion {
+  /** Targeted placement mode. */
+  mode: DispatchNamespacesScriptsSettingsEditResponsePlacementObjectModeRegionMode;
+  /** Cloud region for targeted placement in format 'provider:region'. */
+  region: string;
+}
+export const DispatchNamespacesScriptsSettingsEditResponsePlacementObjectModeRegion =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      mode: DispatchNamespacesScriptsSettingsEditResponsePlacementObjectModeRegionMode,
+      region: S.String,
+    }),
+  ).annotate({
+    identifier:
+      "DispatchNamespacesScriptsSettingsEditResponsePlacementObjectModeRegion",
+  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponsePlacementObjectModeRegion>;
+
+export type DispatchNamespacesScriptsSettingsEditResponsePlacementObjectHostnameModeMode =
+  "targeted" | (string & {});
+export const DispatchNamespacesScriptsSettingsEditResponsePlacementObjectHostnameModeMode =
+  /*@__PURE__*/ S.String;
+
+export interface DispatchNamespacesScriptsSettingsEditResponsePlacementObjectHostnameMode {
+  /** HTTP hostname for targeted placement. */
+  hostname: string;
+  /** Targeted placement mode. */
+  mode: DispatchNamespacesScriptsSettingsEditResponsePlacementObjectHostnameModeMode;
+}
+export const DispatchNamespacesScriptsSettingsEditResponsePlacementObjectHostnameMode =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      hostname: S.String,
+      mode: DispatchNamespacesScriptsSettingsEditResponsePlacementObjectHostnameModeMode,
+    }),
+  ).annotate({
+    identifier:
+      "DispatchNamespacesScriptsSettingsEditResponsePlacementObjectHostnameMode",
+  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponsePlacementObjectHostnameMode>;
+
+export type DispatchNamespacesScriptsSettingsEditResponsePlacementObjectHostModeMode =
+  "targeted" | (string & {});
+export const DispatchNamespacesScriptsSettingsEditResponsePlacementObjectHostModeMode =
+  /*@__PURE__*/ S.String;
+
+export interface DispatchNamespacesScriptsSettingsEditResponsePlacementObjectHostMode {
+  /** TCP host and port for targeted placement. */
+  host: string;
+  /** Targeted placement mode. */
+  mode: DispatchNamespacesScriptsSettingsEditResponsePlacementObjectHostModeMode;
+}
+export const DispatchNamespacesScriptsSettingsEditResponsePlacementObjectHostMode =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      host: S.String,
+      mode: DispatchNamespacesScriptsSettingsEditResponsePlacementObjectHostModeMode,
+    }),
+  ).annotate({
+    identifier:
+      "DispatchNamespacesScriptsSettingsEditResponsePlacementObjectHostMode",
+  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponsePlacementObjectHostMode>;
+
+export type DispatchNamespacesScriptsSettingsEditResponsePlacementObjectModeTargetMode =
+  "targeted" | (string & {});
+export const DispatchNamespacesScriptsSettingsEditResponsePlacementObjectModeTargetMode =
+  /*@__PURE__*/ S.String;
+
+export interface DispatchNamespacesScriptsSettingsEditResponsePlacementObjectModeTargetTargetItem {
   /** Cloud region in format 'provider:region'. */
   region?: string;
   /** HTTP hostname for targeted placement. */
@@ -3418,7 +3908,7 @@ export interface DispatchNamespacesScriptsSettingsEditResponsePlacementTargetIte
   /** TCP host:port for targeted placement. */
   host?: string;
 }
-export const DispatchNamespacesScriptsSettingsEditResponsePlacementTargetItem =
+export const DispatchNamespacesScriptsSettingsEditResponsePlacementObjectModeTargetTargetItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       region: S.optional(S.String),
@@ -3427,44 +3917,45 @@ export const DispatchNamespacesScriptsSettingsEditResponsePlacementTargetItem =
     }),
   ).annotate({
     identifier:
-      "DispatchNamespacesScriptsSettingsEditResponsePlacementTargetItem",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponsePlacementTargetItem>;
+      "DispatchNamespacesScriptsSettingsEditResponsePlacementObjectModeTargetTargetItem",
+  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponsePlacementObjectModeTargetTargetItem>;
 
-export type DispatchNamespacesScriptsSettingsEditResponsePlacementTargetList =
-  DispatchNamespacesScriptsSettingsEditResponsePlacementTargetItem[];
-export const DispatchNamespacesScriptsSettingsEditResponsePlacementTargetList =
+export type DispatchNamespacesScriptsSettingsEditResponsePlacementObjectModeTargetTargetList =
+  DispatchNamespacesScriptsSettingsEditResponsePlacementObjectModeTargetTargetItem[];
+export const DispatchNamespacesScriptsSettingsEditResponsePlacementObjectModeTargetTargetList =
   /*@__PURE__*/ S.Array(
-    DispatchNamespacesScriptsSettingsEditResponsePlacementTargetItem,
-  ) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponsePlacementTargetList>;
+    DispatchNamespacesScriptsSettingsEditResponsePlacementObjectModeTargetTargetItem,
+  ) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponsePlacementObjectModeTargetTargetList>;
 
-export interface DispatchNamespacesScriptsSettingsEditResponsePlacement {
-  /** Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
-  mode?: DispatchNamespacesScriptsSettingsEditResponsePlacementMode;
-  /** Cloud region for targeted placement in format 'provider:region'. */
-  region?: string;
-  /** HTTP hostname for targeted placement. */
-  hostname?: string;
-  /** TCP host and port for targeted placement. */
-  host?: string;
+export interface DispatchNamespacesScriptsSettingsEditResponsePlacementObjectModeTarget {
+  /** Targeted placement mode. */
+  mode: DispatchNamespacesScriptsSettingsEditResponsePlacementObjectModeTargetMode;
   /** Array of placement targets (currently limited to single target). */
-  target?: DispatchNamespacesScriptsSettingsEditResponsePlacementTargetList;
+  target: DispatchNamespacesScriptsSettingsEditResponsePlacementObjectModeTargetTargetList;
 }
-export const DispatchNamespacesScriptsSettingsEditResponsePlacement =
+export const DispatchNamespacesScriptsSettingsEditResponsePlacementObjectModeTarget =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      mode: S.optional(
-        DispatchNamespacesScriptsSettingsEditResponsePlacementMode,
-      ),
-      region: S.optional(S.String),
-      hostname: S.optional(S.String),
-      host: S.optional(S.String),
-      target: S.optional(
-        DispatchNamespacesScriptsSettingsEditResponsePlacementTargetList,
-      ),
+      mode: DispatchNamespacesScriptsSettingsEditResponsePlacementObjectModeTargetMode,
+      target:
+        DispatchNamespacesScriptsSettingsEditResponsePlacementObjectModeTargetTargetList,
     }),
   ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsEditResponsePlacement",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponsePlacement>;
+    identifier:
+      "DispatchNamespacesScriptsSettingsEditResponsePlacementObjectModeTarget",
+  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponsePlacementObjectModeTarget>;
+
+export type DispatchNamespacesScriptsSettingsEditResponsePlacement =
+  | DispatchNamespacesScriptsSettingsEditResponsePlacementMode
+  | DispatchNamespacesScriptsSettingsEditResponsePlacementRegion
+  | DispatchNamespacesScriptsSettingsEditResponsePlacementHostname
+  | DispatchNamespacesScriptsSettingsEditResponsePlacementHost
+  | DispatchNamespacesScriptsSettingsEditResponsePlacementObjectModeRegion
+  | DispatchNamespacesScriptsSettingsEditResponsePlacementObjectHostnameMode
+  | DispatchNamespacesScriptsSettingsEditResponsePlacementObjectHostMode
+  | DispatchNamespacesScriptsSettingsEditResponsePlacementObjectModeTarget;
+export const DispatchNamespacesScriptsSettingsEditResponsePlacement =
+  /*@__PURE__*/ S.Unknown;
 
 export type DispatchNamespacesScriptsSettingsEditResponseTagsList = string[];
 export const DispatchNamespacesScriptsSettingsEditResponseTagsList =
@@ -3790,8 +4281,326 @@ export const DispatchNamespacesScriptsUpdateResponseObservability =
     identifier: "DispatchNamespacesScriptsUpdateResponseObservability",
   }) as any as S.Schema<DispatchNamespacesScriptsUpdateResponseObservability>;
 
+export type DispatchNamespacesScriptsUpdateResponsePlacementObjectModeLastAnalyzedAtStatusMode =
+  "smart" | (string & {});
+export const DispatchNamespacesScriptsUpdateResponsePlacementObjectModeLastAnalyzedAtStatusMode =
+  /*@__PURE__*/ S.String;
+
+export type DispatchNamespacesScriptsUpdateResponsePlacementObjectModeLastAnalyzedAtStatusStatus =
+    | "SUCCESS"
+    | "UNSUPPORTED_APPLICATION"
+    | "INSUFFICIENT_INVOCATIONS"
+    | (string & {});
+export const DispatchNamespacesScriptsUpdateResponsePlacementObjectModeLastAnalyzedAtStatusStatus =
+  /*@__PURE__*/ S.String;
+
+export interface DispatchNamespacesScriptsUpdateResponsePlacementObjectModeLastAnalyzedAtStatus {
+  /** Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
+  mode: DispatchNamespacesScriptsUpdateResponsePlacementObjectModeLastAnalyzedAtStatusMode;
+  /** The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
+  lastAnalyzedAt?: string;
+  /** Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
+  status?: DispatchNamespacesScriptsUpdateResponsePlacementObjectModeLastAnalyzedAtStatusStatus;
+}
+export const DispatchNamespacesScriptsUpdateResponsePlacementObjectModeLastAnalyzedAtStatus =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      mode: DispatchNamespacesScriptsUpdateResponsePlacementObjectModeLastAnalyzedAtStatusMode,
+      lastAnalyzedAt: S.optional(S.String.pipe(T.Body("last_analyzed_at"))),
+      status: S.optional(
+        DispatchNamespacesScriptsUpdateResponsePlacementObjectModeLastAnalyzedAtStatusStatus,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "DispatchNamespacesScriptsUpdateResponsePlacementObjectModeLastAnalyzedAtStatus",
+  }) as any as S.Schema<DispatchNamespacesScriptsUpdateResponsePlacementObjectModeLastAnalyzedAtStatus>;
+
+export type DispatchNamespacesScriptsUpdateResponsePlacementObjectRegionLastAnalyzedAtStatusStatus =
+    | "SUCCESS"
+    | "UNSUPPORTED_APPLICATION"
+    | "INSUFFICIENT_INVOCATIONS"
+    | (string & {});
+export const DispatchNamespacesScriptsUpdateResponsePlacementObjectRegionLastAnalyzedAtStatusStatus =
+  /*@__PURE__*/ S.String;
+
+export interface DispatchNamespacesScriptsUpdateResponsePlacementObjectRegionLastAnalyzedAtStatus {
+  /** Cloud region for targeted placement in format 'provider:region'. */
+  region: string;
+  /** The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
+  lastAnalyzedAt?: string;
+  /** Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
+  status?: DispatchNamespacesScriptsUpdateResponsePlacementObjectRegionLastAnalyzedAtStatusStatus;
+}
+export const DispatchNamespacesScriptsUpdateResponsePlacementObjectRegionLastAnalyzedAtStatus =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      region: S.String,
+      lastAnalyzedAt: S.optional(S.String.pipe(T.Body("last_analyzed_at"))),
+      status: S.optional(
+        DispatchNamespacesScriptsUpdateResponsePlacementObjectRegionLastAnalyzedAtStatusStatus,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "DispatchNamespacesScriptsUpdateResponsePlacementObjectRegionLastAnalyzedAtStatus",
+  }) as any as S.Schema<DispatchNamespacesScriptsUpdateResponsePlacementObjectRegionLastAnalyzedAtStatus>;
+
+export type DispatchNamespacesScriptsUpdateResponsePlacementObjectHostnameLastAnalyzedAtStatusStatus =
+    | "SUCCESS"
+    | "UNSUPPORTED_APPLICATION"
+    | "INSUFFICIENT_INVOCATIONS"
+    | (string & {});
+export const DispatchNamespacesScriptsUpdateResponsePlacementObjectHostnameLastAnalyzedAtStatusStatus =
+  /*@__PURE__*/ S.String;
+
+export interface DispatchNamespacesScriptsUpdateResponsePlacementObjectHostnameLastAnalyzedAtStatus {
+  /** HTTP hostname for targeted placement. */
+  hostname: string;
+  /** The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
+  lastAnalyzedAt?: string;
+  /** Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
+  status?: DispatchNamespacesScriptsUpdateResponsePlacementObjectHostnameLastAnalyzedAtStatusStatus;
+}
+export const DispatchNamespacesScriptsUpdateResponsePlacementObjectHostnameLastAnalyzedAtStatus =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      hostname: S.String,
+      lastAnalyzedAt: S.optional(S.String.pipe(T.Body("last_analyzed_at"))),
+      status: S.optional(
+        DispatchNamespacesScriptsUpdateResponsePlacementObjectHostnameLastAnalyzedAtStatusStatus,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "DispatchNamespacesScriptsUpdateResponsePlacementObjectHostnameLastAnalyzedAtStatus",
+  }) as any as S.Schema<DispatchNamespacesScriptsUpdateResponsePlacementObjectHostnameLastAnalyzedAtStatus>;
+
+export type DispatchNamespacesScriptsUpdateResponsePlacementObjectHostLastAnalyzedAtStatusStatus =
+    | "SUCCESS"
+    | "UNSUPPORTED_APPLICATION"
+    | "INSUFFICIENT_INVOCATIONS"
+    | (string & {});
+export const DispatchNamespacesScriptsUpdateResponsePlacementObjectHostLastAnalyzedAtStatusStatus =
+  /*@__PURE__*/ S.String;
+
+export interface DispatchNamespacesScriptsUpdateResponsePlacementObjectHostLastAnalyzedAtStatus {
+  /** TCP host and port for targeted placement. */
+  host: string;
+  /** The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
+  lastAnalyzedAt?: string;
+  /** Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
+  status?: DispatchNamespacesScriptsUpdateResponsePlacementObjectHostLastAnalyzedAtStatusStatus;
+}
+export const DispatchNamespacesScriptsUpdateResponsePlacementObjectHostLastAnalyzedAtStatus =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      host: S.String,
+      lastAnalyzedAt: S.optional(S.String.pipe(T.Body("last_analyzed_at"))),
+      status: S.optional(
+        DispatchNamespacesScriptsUpdateResponsePlacementObjectHostLastAnalyzedAtStatusStatus,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "DispatchNamespacesScriptsUpdateResponsePlacementObjectHostLastAnalyzedAtStatus",
+  }) as any as S.Schema<DispatchNamespacesScriptsUpdateResponsePlacementObjectHostLastAnalyzedAtStatus>;
+
+export type DispatchNamespacesScriptsUpdateResponsePlacementObjectModeRegionLastAnalyzedAtStatusMode =
+  "targeted" | (string & {});
+export const DispatchNamespacesScriptsUpdateResponsePlacementObjectModeRegionLastAnalyzedAtStatusMode =
+  /*@__PURE__*/ S.String;
+
+export type DispatchNamespacesScriptsUpdateResponsePlacementObjectModeRegionLastAnalyzedAtStatusStatus =
+    | "SUCCESS"
+    | "UNSUPPORTED_APPLICATION"
+    | "INSUFFICIENT_INVOCATIONS"
+    | (string & {});
+export const DispatchNamespacesScriptsUpdateResponsePlacementObjectModeRegionLastAnalyzedAtStatusStatus =
+  /*@__PURE__*/ S.String;
+
+export interface DispatchNamespacesScriptsUpdateResponsePlacementObjectModeRegionLastAnalyzedAtStatus {
+  /** Targeted placement mode. */
+  mode: DispatchNamespacesScriptsUpdateResponsePlacementObjectModeRegionLastAnalyzedAtStatusMode;
+  /** Cloud region for targeted placement in format 'provider:region'. */
+  region: string;
+  /** The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
+  lastAnalyzedAt?: string;
+  /** Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
+  status?: DispatchNamespacesScriptsUpdateResponsePlacementObjectModeRegionLastAnalyzedAtStatusStatus;
+}
+export const DispatchNamespacesScriptsUpdateResponsePlacementObjectModeRegionLastAnalyzedAtStatus =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      mode: DispatchNamespacesScriptsUpdateResponsePlacementObjectModeRegionLastAnalyzedAtStatusMode,
+      region: S.String,
+      lastAnalyzedAt: S.optional(S.String.pipe(T.Body("last_analyzed_at"))),
+      status: S.optional(
+        DispatchNamespacesScriptsUpdateResponsePlacementObjectModeRegionLastAnalyzedAtStatusStatus,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "DispatchNamespacesScriptsUpdateResponsePlacementObjectModeRegionLastAnalyzedAtStatus",
+  }) as any as S.Schema<DispatchNamespacesScriptsUpdateResponsePlacementObjectModeRegionLastAnalyzedAtStatus>;
+
+export type DispatchNamespacesScriptsUpdateResponsePlacementObjectHostnameModeLastAnalyzedAtStatusMode =
+  "targeted" | (string & {});
+export const DispatchNamespacesScriptsUpdateResponsePlacementObjectHostnameModeLastAnalyzedAtStatusMode =
+  /*@__PURE__*/ S.String;
+
+export type DispatchNamespacesScriptsUpdateResponsePlacementObjectHostnameModeLastAnalyzedAtStatusStatus =
+    | "SUCCESS"
+    | "UNSUPPORTED_APPLICATION"
+    | "INSUFFICIENT_INVOCATIONS"
+    | (string & {});
+export const DispatchNamespacesScriptsUpdateResponsePlacementObjectHostnameModeLastAnalyzedAtStatusStatus =
+  /*@__PURE__*/ S.String;
+
+export interface DispatchNamespacesScriptsUpdateResponsePlacementObjectHostnameModeLastAnalyzedAtStatus {
+  /** HTTP hostname for targeted placement. */
+  hostname: string;
+  /** Targeted placement mode. */
+  mode: DispatchNamespacesScriptsUpdateResponsePlacementObjectHostnameModeLastAnalyzedAtStatusMode;
+  /** The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
+  lastAnalyzedAt?: string;
+  /** Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
+  status?: DispatchNamespacesScriptsUpdateResponsePlacementObjectHostnameModeLastAnalyzedAtStatusStatus;
+}
+export const DispatchNamespacesScriptsUpdateResponsePlacementObjectHostnameModeLastAnalyzedAtStatus =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      hostname: S.String,
+      mode: DispatchNamespacesScriptsUpdateResponsePlacementObjectHostnameModeLastAnalyzedAtStatusMode,
+      lastAnalyzedAt: S.optional(S.String.pipe(T.Body("last_analyzed_at"))),
+      status: S.optional(
+        DispatchNamespacesScriptsUpdateResponsePlacementObjectHostnameModeLastAnalyzedAtStatusStatus,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "DispatchNamespacesScriptsUpdateResponsePlacementObjectHostnameModeLastAnalyzedAtStatus",
+  }) as any as S.Schema<DispatchNamespacesScriptsUpdateResponsePlacementObjectHostnameModeLastAnalyzedAtStatus>;
+
+export type DispatchNamespacesScriptsUpdateResponsePlacementObjectHostModeLastAnalyzedAtStatusMode =
+  "targeted" | (string & {});
+export const DispatchNamespacesScriptsUpdateResponsePlacementObjectHostModeLastAnalyzedAtStatusMode =
+  /*@__PURE__*/ S.String;
+
+export type DispatchNamespacesScriptsUpdateResponsePlacementObjectHostModeLastAnalyzedAtStatusStatus =
+    | "SUCCESS"
+    | "UNSUPPORTED_APPLICATION"
+    | "INSUFFICIENT_INVOCATIONS"
+    | (string & {});
+export const DispatchNamespacesScriptsUpdateResponsePlacementObjectHostModeLastAnalyzedAtStatusStatus =
+  /*@__PURE__*/ S.String;
+
+export interface DispatchNamespacesScriptsUpdateResponsePlacementObjectHostModeLastAnalyzedAtStatus {
+  /** TCP host and port for targeted placement. */
+  host: string;
+  /** Targeted placement mode. */
+  mode: DispatchNamespacesScriptsUpdateResponsePlacementObjectHostModeLastAnalyzedAtStatusMode;
+  /** The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
+  lastAnalyzedAt?: string;
+  /** Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
+  status?: DispatchNamespacesScriptsUpdateResponsePlacementObjectHostModeLastAnalyzedAtStatusStatus;
+}
+export const DispatchNamespacesScriptsUpdateResponsePlacementObjectHostModeLastAnalyzedAtStatus =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      host: S.String,
+      mode: DispatchNamespacesScriptsUpdateResponsePlacementObjectHostModeLastAnalyzedAtStatusMode,
+      lastAnalyzedAt: S.optional(S.String.pipe(T.Body("last_analyzed_at"))),
+      status: S.optional(
+        DispatchNamespacesScriptsUpdateResponsePlacementObjectHostModeLastAnalyzedAtStatusStatus,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "DispatchNamespacesScriptsUpdateResponsePlacementObjectHostModeLastAnalyzedAtStatus",
+  }) as any as S.Schema<DispatchNamespacesScriptsUpdateResponsePlacementObjectHostModeLastAnalyzedAtStatus>;
+
+export type DispatchNamespacesScriptsUpdateResponsePlacementObjectModeTargetLastAnalyzedAtStatusMode =
+  "targeted" | (string & {});
+export const DispatchNamespacesScriptsUpdateResponsePlacementObjectModeTargetLastAnalyzedAtStatusMode =
+  /*@__PURE__*/ S.String;
+
+export interface DispatchNamespacesScriptsUpdateResponsePlacementObjectModeTargetLastAnalyzedAtStatusTargetItem {
+  /** Cloud region in format 'provider:region'. */
+  region?: string;
+  /** HTTP hostname for targeted placement. */
+  hostname?: string;
+  /** TCP host:port for targeted placement. */
+  host?: string;
+}
+export const DispatchNamespacesScriptsUpdateResponsePlacementObjectModeTargetLastAnalyzedAtStatusTargetItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      region: S.optional(S.String),
+      hostname: S.optional(S.String),
+      host: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "DispatchNamespacesScriptsUpdateResponsePlacementObjectModeTargetLastAnalyzedAtStatusTargetItem",
+  }) as any as S.Schema<DispatchNamespacesScriptsUpdateResponsePlacementObjectModeTargetLastAnalyzedAtStatusTargetItem>;
+
+export type DispatchNamespacesScriptsUpdateResponsePlacementObjectModeTargetLastAnalyzedAtStatusTargetList =
+  DispatchNamespacesScriptsUpdateResponsePlacementObjectModeTargetLastAnalyzedAtStatusTargetItem[];
+export const DispatchNamespacesScriptsUpdateResponsePlacementObjectModeTargetLastAnalyzedAtStatusTargetList =
+  /*@__PURE__*/ S.Array(
+    DispatchNamespacesScriptsUpdateResponsePlacementObjectModeTargetLastAnalyzedAtStatusTargetItem,
+  ) as any as S.Schema<DispatchNamespacesScriptsUpdateResponsePlacementObjectModeTargetLastAnalyzedAtStatusTargetList>;
+
+export type DispatchNamespacesScriptsUpdateResponsePlacementObjectModeTargetLastAnalyzedAtStatusStatus =
+    | "SUCCESS"
+    | "UNSUPPORTED_APPLICATION"
+    | "INSUFFICIENT_INVOCATIONS"
+    | (string & {});
+export const DispatchNamespacesScriptsUpdateResponsePlacementObjectModeTargetLastAnalyzedAtStatusStatus =
+  /*@__PURE__*/ S.String;
+
+export interface DispatchNamespacesScriptsUpdateResponsePlacementObjectModeTargetLastAnalyzedAtStatus {
+  /** Targeted placement mode. */
+  mode: DispatchNamespacesScriptsUpdateResponsePlacementObjectModeTargetLastAnalyzedAtStatusMode;
+  /** Array of placement targets (currently limited to single target). */
+  target: DispatchNamespacesScriptsUpdateResponsePlacementObjectModeTargetLastAnalyzedAtStatusTargetList;
+  /** The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
+  lastAnalyzedAt?: string;
+  /** Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
+  status?: DispatchNamespacesScriptsUpdateResponsePlacementObjectModeTargetLastAnalyzedAtStatusStatus;
+}
+export const DispatchNamespacesScriptsUpdateResponsePlacementObjectModeTargetLastAnalyzedAtStatus =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      mode: DispatchNamespacesScriptsUpdateResponsePlacementObjectModeTargetLastAnalyzedAtStatusMode,
+      target:
+        DispatchNamespacesScriptsUpdateResponsePlacementObjectModeTargetLastAnalyzedAtStatusTargetList,
+      lastAnalyzedAt: S.optional(S.String.pipe(T.Body("last_analyzed_at"))),
+      status: S.optional(
+        DispatchNamespacesScriptsUpdateResponsePlacementObjectModeTargetLastAnalyzedAtStatusStatus,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "DispatchNamespacesScriptsUpdateResponsePlacementObjectModeTargetLastAnalyzedAtStatus",
+  }) as any as S.Schema<DispatchNamespacesScriptsUpdateResponsePlacementObjectModeTargetLastAnalyzedAtStatus>;
+
+export type DispatchNamespacesScriptsUpdateResponsePlacement =
+  | DispatchNamespacesScriptsUpdateResponsePlacementObjectModeLastAnalyzedAtStatus
+  | DispatchNamespacesScriptsUpdateResponsePlacementObjectRegionLastAnalyzedAtStatus
+  | DispatchNamespacesScriptsUpdateResponsePlacementObjectHostnameLastAnalyzedAtStatus
+  | DispatchNamespacesScriptsUpdateResponsePlacementObjectHostLastAnalyzedAtStatus
+  | DispatchNamespacesScriptsUpdateResponsePlacementObjectModeRegionLastAnalyzedAtStatus
+  | DispatchNamespacesScriptsUpdateResponsePlacementObjectHostnameModeLastAnalyzedAtStatus
+  | DispatchNamespacesScriptsUpdateResponsePlacementObjectHostModeLastAnalyzedAtStatus
+  | DispatchNamespacesScriptsUpdateResponsePlacementObjectModeTargetLastAnalyzedAtStatus;
+export const DispatchNamespacesScriptsUpdateResponsePlacement =
+  /*@__PURE__*/ S.Unknown;
+
 export type DispatchNamespacesScriptsUpdateResponsePlacementMode =
   | "smart"
+  | "targeted"
   | (string & {});
 export const DispatchNamespacesScriptsUpdateResponsePlacementMode =
   /*@__PURE__*/ S.String;
@@ -3802,82 +4611,6 @@ export type DispatchNamespacesScriptsUpdateResponsePlacementStatus =
   | "INSUFFICIENT_INVOCATIONS"
   | (string & {});
 export const DispatchNamespacesScriptsUpdateResponsePlacementStatus =
-  /*@__PURE__*/ S.String;
-
-export interface DispatchNamespacesScriptsUpdateResponsePlacementTargetItem {
-  /** Cloud region in format 'provider:region'. */
-  region?: string;
-  /** HTTP hostname for targeted placement. */
-  hostname?: string;
-  /** TCP host:port for targeted placement. */
-  host?: string;
-}
-export const DispatchNamespacesScriptsUpdateResponsePlacementTargetItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      region: S.optional(S.String),
-      hostname: S.optional(S.String),
-      host: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsUpdateResponsePlacementTargetItem",
-  }) as any as S.Schema<DispatchNamespacesScriptsUpdateResponsePlacementTargetItem>;
-
-export type DispatchNamespacesScriptsUpdateResponsePlacementTargetList =
-  DispatchNamespacesScriptsUpdateResponsePlacementTargetItem[];
-export const DispatchNamespacesScriptsUpdateResponsePlacementTargetList =
-  /*@__PURE__*/ S.Array(
-    DispatchNamespacesScriptsUpdateResponsePlacementTargetItem,
-  ) as any as S.Schema<DispatchNamespacesScriptsUpdateResponsePlacementTargetList>;
-
-export interface DispatchNamespacesScriptsUpdateResponsePlacement {
-  /** Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
-  mode?: DispatchNamespacesScriptsUpdateResponsePlacementMode;
-  /** The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
-  lastAnalyzedAt?: string;
-  /** Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
-  status?: DispatchNamespacesScriptsUpdateResponsePlacementStatus;
-  /** Cloud region for targeted placement in format 'provider:region'. */
-  region?: string;
-  /** HTTP hostname for targeted placement. */
-  hostname?: string;
-  /** TCP host and port for targeted placement. */
-  host?: string;
-  /** Array of placement targets (currently limited to single target). */
-  target?: DispatchNamespacesScriptsUpdateResponsePlacementTargetList;
-}
-export const DispatchNamespacesScriptsUpdateResponsePlacement =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      mode: S.optional(DispatchNamespacesScriptsUpdateResponsePlacementMode),
-      lastAnalyzedAt: S.optional(S.String.pipe(T.Body("last_analyzed_at"))),
-      status: S.optional(
-        DispatchNamespacesScriptsUpdateResponsePlacementStatus,
-      ),
-      region: S.optional(S.String),
-      hostname: S.optional(S.String),
-      host: S.optional(S.String),
-      target: S.optional(
-        DispatchNamespacesScriptsUpdateResponsePlacementTargetList,
-      ),
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsUpdateResponsePlacement",
-  }) as any as S.Schema<DispatchNamespacesScriptsUpdateResponsePlacement>;
-
-export type DispatchNamespacesScriptsUpdateResponsePlacementMode2 =
-  | "smart"
-  | "targeted"
-  | (string & {});
-export const DispatchNamespacesScriptsUpdateResponsePlacementMode2 =
-  /*@__PURE__*/ S.String;
-
-export type DispatchNamespacesScriptsUpdateResponsePlacementStatus2 =
-  | "SUCCESS"
-  | "UNSUPPORTED_APPLICATION"
-  | "INSUFFICIENT_INVOCATIONS"
-  | (string & {});
-export const DispatchNamespacesScriptsUpdateResponsePlacementStatus2 =
   /*@__PURE__*/ S.String;
 
 export type DispatchNamespacesScriptsUpdateResponseTagsList = string[];
@@ -3957,8 +4690,8 @@ export interface PutDispatchNamespaceScriptResponse {
   observability?: DispatchNamespacesScriptsUpdateResponseObservability;
   /** Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host. */
   placement?: DispatchNamespacesScriptsUpdateResponsePlacement;
-  placementMode?: DispatchNamespacesScriptsUpdateResponsePlacementMode2;
-  placementStatus?: DispatchNamespacesScriptsUpdateResponsePlacementStatus2;
+  placementMode?: DispatchNamespacesScriptsUpdateResponsePlacementMode;
+  placementStatus?: DispatchNamespacesScriptsUpdateResponsePlacementStatus;
   /** The immutable ID of the script. */
   tag?: string;
   /** Tags associated with the Worker. */
@@ -4003,12 +4736,12 @@ export const PutDispatchNamespaceScriptResponse = /*@__PURE__*/ S.suspend(() =>
     ),
     placement: S.optional(DispatchNamespacesScriptsUpdateResponsePlacement),
     placementMode: S.optional(
-      DispatchNamespacesScriptsUpdateResponsePlacementMode2.pipe(
+      DispatchNamespacesScriptsUpdateResponsePlacementMode.pipe(
         T.Body("placement_mode"),
       ),
     ),
     placementStatus: S.optional(
-      DispatchNamespacesScriptsUpdateResponsePlacementStatus2.pipe(
+      DispatchNamespacesScriptsUpdateResponsePlacementStatus.pipe(
         T.Body("placement_status"),
       ),
     ),
@@ -4234,8 +4967,326 @@ export const DispatchNamespacesScriptsContentUpdateResponseObservability =
     identifier: "DispatchNamespacesScriptsContentUpdateResponseObservability",
   }) as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponseObservability>;
 
+export type DispatchNamespacesScriptsContentUpdateResponsePlacementObjectModeLastAnalyzedAtStatusMode =
+  "smart" | (string & {});
+export const DispatchNamespacesScriptsContentUpdateResponsePlacementObjectModeLastAnalyzedAtStatusMode =
+  /*@__PURE__*/ S.String;
+
+export type DispatchNamespacesScriptsContentUpdateResponsePlacementObjectModeLastAnalyzedAtStatusStatus =
+    | "SUCCESS"
+    | "UNSUPPORTED_APPLICATION"
+    | "INSUFFICIENT_INVOCATIONS"
+    | (string & {});
+export const DispatchNamespacesScriptsContentUpdateResponsePlacementObjectModeLastAnalyzedAtStatusStatus =
+  /*@__PURE__*/ S.String;
+
+export interface DispatchNamespacesScriptsContentUpdateResponsePlacementObjectModeLastAnalyzedAtStatus {
+  /** Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
+  mode: DispatchNamespacesScriptsContentUpdateResponsePlacementObjectModeLastAnalyzedAtStatusMode;
+  /** The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
+  lastAnalyzedAt?: string;
+  /** Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
+  status?: DispatchNamespacesScriptsContentUpdateResponsePlacementObjectModeLastAnalyzedAtStatusStatus;
+}
+export const DispatchNamespacesScriptsContentUpdateResponsePlacementObjectModeLastAnalyzedAtStatus =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      mode: DispatchNamespacesScriptsContentUpdateResponsePlacementObjectModeLastAnalyzedAtStatusMode,
+      lastAnalyzedAt: S.optional(S.String.pipe(T.Body("last_analyzed_at"))),
+      status: S.optional(
+        DispatchNamespacesScriptsContentUpdateResponsePlacementObjectModeLastAnalyzedAtStatusStatus,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "DispatchNamespacesScriptsContentUpdateResponsePlacementObjectModeLastAnalyzedAtStatus",
+  }) as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponsePlacementObjectModeLastAnalyzedAtStatus>;
+
+export type DispatchNamespacesScriptsContentUpdateResponsePlacementObjectRegionLastAnalyzedAtStatusStatus =
+    | "SUCCESS"
+    | "UNSUPPORTED_APPLICATION"
+    | "INSUFFICIENT_INVOCATIONS"
+    | (string & {});
+export const DispatchNamespacesScriptsContentUpdateResponsePlacementObjectRegionLastAnalyzedAtStatusStatus =
+  /*@__PURE__*/ S.String;
+
+export interface DispatchNamespacesScriptsContentUpdateResponsePlacementObjectRegionLastAnalyzedAtStatus {
+  /** Cloud region for targeted placement in format 'provider:region'. */
+  region: string;
+  /** The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
+  lastAnalyzedAt?: string;
+  /** Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
+  status?: DispatchNamespacesScriptsContentUpdateResponsePlacementObjectRegionLastAnalyzedAtStatusStatus;
+}
+export const DispatchNamespacesScriptsContentUpdateResponsePlacementObjectRegionLastAnalyzedAtStatus =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      region: S.String,
+      lastAnalyzedAt: S.optional(S.String.pipe(T.Body("last_analyzed_at"))),
+      status: S.optional(
+        DispatchNamespacesScriptsContentUpdateResponsePlacementObjectRegionLastAnalyzedAtStatusStatus,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "DispatchNamespacesScriptsContentUpdateResponsePlacementObjectRegionLastAnalyzedAtStatus",
+  }) as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponsePlacementObjectRegionLastAnalyzedAtStatus>;
+
+export type DispatchNamespacesScriptsContentUpdateResponsePlacementObjectHostnameLastAnalyzedAtStatusStatus =
+    | "SUCCESS"
+    | "UNSUPPORTED_APPLICATION"
+    | "INSUFFICIENT_INVOCATIONS"
+    | (string & {});
+export const DispatchNamespacesScriptsContentUpdateResponsePlacementObjectHostnameLastAnalyzedAtStatusStatus =
+  /*@__PURE__*/ S.String;
+
+export interface DispatchNamespacesScriptsContentUpdateResponsePlacementObjectHostnameLastAnalyzedAtStatus {
+  /** HTTP hostname for targeted placement. */
+  hostname: string;
+  /** The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
+  lastAnalyzedAt?: string;
+  /** Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
+  status?: DispatchNamespacesScriptsContentUpdateResponsePlacementObjectHostnameLastAnalyzedAtStatusStatus;
+}
+export const DispatchNamespacesScriptsContentUpdateResponsePlacementObjectHostnameLastAnalyzedAtStatus =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      hostname: S.String,
+      lastAnalyzedAt: S.optional(S.String.pipe(T.Body("last_analyzed_at"))),
+      status: S.optional(
+        DispatchNamespacesScriptsContentUpdateResponsePlacementObjectHostnameLastAnalyzedAtStatusStatus,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "DispatchNamespacesScriptsContentUpdateResponsePlacementObjectHostnameLastAnalyzedAtStatus",
+  }) as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponsePlacementObjectHostnameLastAnalyzedAtStatus>;
+
+export type DispatchNamespacesScriptsContentUpdateResponsePlacementObjectHostLastAnalyzedAtStatusStatus =
+    | "SUCCESS"
+    | "UNSUPPORTED_APPLICATION"
+    | "INSUFFICIENT_INVOCATIONS"
+    | (string & {});
+export const DispatchNamespacesScriptsContentUpdateResponsePlacementObjectHostLastAnalyzedAtStatusStatus =
+  /*@__PURE__*/ S.String;
+
+export interface DispatchNamespacesScriptsContentUpdateResponsePlacementObjectHostLastAnalyzedAtStatus {
+  /** TCP host and port for targeted placement. */
+  host: string;
+  /** The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
+  lastAnalyzedAt?: string;
+  /** Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
+  status?: DispatchNamespacesScriptsContentUpdateResponsePlacementObjectHostLastAnalyzedAtStatusStatus;
+}
+export const DispatchNamespacesScriptsContentUpdateResponsePlacementObjectHostLastAnalyzedAtStatus =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      host: S.String,
+      lastAnalyzedAt: S.optional(S.String.pipe(T.Body("last_analyzed_at"))),
+      status: S.optional(
+        DispatchNamespacesScriptsContentUpdateResponsePlacementObjectHostLastAnalyzedAtStatusStatus,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "DispatchNamespacesScriptsContentUpdateResponsePlacementObjectHostLastAnalyzedAtStatus",
+  }) as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponsePlacementObjectHostLastAnalyzedAtStatus>;
+
+export type DispatchNamespacesScriptsContentUpdateResponsePlacementObjectModeRegionLastAnalyzedAtStatusMode =
+  "targeted" | (string & {});
+export const DispatchNamespacesScriptsContentUpdateResponsePlacementObjectModeRegionLastAnalyzedAtStatusMode =
+  /*@__PURE__*/ S.String;
+
+export type DispatchNamespacesScriptsContentUpdateResponsePlacementObjectModeRegionLastAnalyzedAtStatusStatus =
+    | "SUCCESS"
+    | "UNSUPPORTED_APPLICATION"
+    | "INSUFFICIENT_INVOCATIONS"
+    | (string & {});
+export const DispatchNamespacesScriptsContentUpdateResponsePlacementObjectModeRegionLastAnalyzedAtStatusStatus =
+  /*@__PURE__*/ S.String;
+
+export interface DispatchNamespacesScriptsContentUpdateResponsePlacementObjectModeRegionLastAnalyzedAtStatus {
+  /** Targeted placement mode. */
+  mode: DispatchNamespacesScriptsContentUpdateResponsePlacementObjectModeRegionLastAnalyzedAtStatusMode;
+  /** Cloud region for targeted placement in format 'provider:region'. */
+  region: string;
+  /** The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
+  lastAnalyzedAt?: string;
+  /** Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
+  status?: DispatchNamespacesScriptsContentUpdateResponsePlacementObjectModeRegionLastAnalyzedAtStatusStatus;
+}
+export const DispatchNamespacesScriptsContentUpdateResponsePlacementObjectModeRegionLastAnalyzedAtStatus =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      mode: DispatchNamespacesScriptsContentUpdateResponsePlacementObjectModeRegionLastAnalyzedAtStatusMode,
+      region: S.String,
+      lastAnalyzedAt: S.optional(S.String.pipe(T.Body("last_analyzed_at"))),
+      status: S.optional(
+        DispatchNamespacesScriptsContentUpdateResponsePlacementObjectModeRegionLastAnalyzedAtStatusStatus,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "DispatchNamespacesScriptsContentUpdateResponsePlacementObjectModeRegionLastAnalyzedAtStatus",
+  }) as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponsePlacementObjectModeRegionLastAnalyzedAtStatus>;
+
+export type DispatchNamespacesScriptsContentUpdateResponsePlacementObjectHostnameModeLastAnalyzedAtStatusMode =
+  "targeted" | (string & {});
+export const DispatchNamespacesScriptsContentUpdateResponsePlacementObjectHostnameModeLastAnalyzedAtStatusMode =
+  /*@__PURE__*/ S.String;
+
+export type DispatchNamespacesScriptsContentUpdateResponsePlacementObjectHostnameModeLastAnalyzedAtStatusStatus =
+    | "SUCCESS"
+    | "UNSUPPORTED_APPLICATION"
+    | "INSUFFICIENT_INVOCATIONS"
+    | (string & {});
+export const DispatchNamespacesScriptsContentUpdateResponsePlacementObjectHostnameModeLastAnalyzedAtStatusStatus =
+  /*@__PURE__*/ S.String;
+
+export interface DispatchNamespacesScriptsContentUpdateResponsePlacementObjectHostnameModeLastAnalyzedAtStatus {
+  /** HTTP hostname for targeted placement. */
+  hostname: string;
+  /** Targeted placement mode. */
+  mode: DispatchNamespacesScriptsContentUpdateResponsePlacementObjectHostnameModeLastAnalyzedAtStatusMode;
+  /** The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
+  lastAnalyzedAt?: string;
+  /** Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
+  status?: DispatchNamespacesScriptsContentUpdateResponsePlacementObjectHostnameModeLastAnalyzedAtStatusStatus;
+}
+export const DispatchNamespacesScriptsContentUpdateResponsePlacementObjectHostnameModeLastAnalyzedAtStatus =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      hostname: S.String,
+      mode: DispatchNamespacesScriptsContentUpdateResponsePlacementObjectHostnameModeLastAnalyzedAtStatusMode,
+      lastAnalyzedAt: S.optional(S.String.pipe(T.Body("last_analyzed_at"))),
+      status: S.optional(
+        DispatchNamespacesScriptsContentUpdateResponsePlacementObjectHostnameModeLastAnalyzedAtStatusStatus,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "DispatchNamespacesScriptsContentUpdateResponsePlacementObjectHostnameModeLastAnalyzedAtStatus",
+  }) as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponsePlacementObjectHostnameModeLastAnalyzedAtStatus>;
+
+export type DispatchNamespacesScriptsContentUpdateResponsePlacementObjectHostModeLastAnalyzedAtStatusMode =
+  "targeted" | (string & {});
+export const DispatchNamespacesScriptsContentUpdateResponsePlacementObjectHostModeLastAnalyzedAtStatusMode =
+  /*@__PURE__*/ S.String;
+
+export type DispatchNamespacesScriptsContentUpdateResponsePlacementObjectHostModeLastAnalyzedAtStatusStatus =
+    | "SUCCESS"
+    | "UNSUPPORTED_APPLICATION"
+    | "INSUFFICIENT_INVOCATIONS"
+    | (string & {});
+export const DispatchNamespacesScriptsContentUpdateResponsePlacementObjectHostModeLastAnalyzedAtStatusStatus =
+  /*@__PURE__*/ S.String;
+
+export interface DispatchNamespacesScriptsContentUpdateResponsePlacementObjectHostModeLastAnalyzedAtStatus {
+  /** TCP host and port for targeted placement. */
+  host: string;
+  /** Targeted placement mode. */
+  mode: DispatchNamespacesScriptsContentUpdateResponsePlacementObjectHostModeLastAnalyzedAtStatusMode;
+  /** The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
+  lastAnalyzedAt?: string;
+  /** Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
+  status?: DispatchNamespacesScriptsContentUpdateResponsePlacementObjectHostModeLastAnalyzedAtStatusStatus;
+}
+export const DispatchNamespacesScriptsContentUpdateResponsePlacementObjectHostModeLastAnalyzedAtStatus =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      host: S.String,
+      mode: DispatchNamespacesScriptsContentUpdateResponsePlacementObjectHostModeLastAnalyzedAtStatusMode,
+      lastAnalyzedAt: S.optional(S.String.pipe(T.Body("last_analyzed_at"))),
+      status: S.optional(
+        DispatchNamespacesScriptsContentUpdateResponsePlacementObjectHostModeLastAnalyzedAtStatusStatus,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "DispatchNamespacesScriptsContentUpdateResponsePlacementObjectHostModeLastAnalyzedAtStatus",
+  }) as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponsePlacementObjectHostModeLastAnalyzedAtStatus>;
+
+export type DispatchNamespacesScriptsContentUpdateResponsePlacementObjectModeTargetLastAnalyzedAtStatusMode =
+  "targeted" | (string & {});
+export const DispatchNamespacesScriptsContentUpdateResponsePlacementObjectModeTargetLastAnalyzedAtStatusMode =
+  /*@__PURE__*/ S.String;
+
+export interface DispatchNamespacesScriptsContentUpdateResponsePlacementObjectModeTargetLastAnalyzedAtStatusTargetItem {
+  /** Cloud region in format 'provider:region'. */
+  region?: string;
+  /** HTTP hostname for targeted placement. */
+  hostname?: string;
+  /** TCP host:port for targeted placement. */
+  host?: string;
+}
+export const DispatchNamespacesScriptsContentUpdateResponsePlacementObjectModeTargetLastAnalyzedAtStatusTargetItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      region: S.optional(S.String),
+      hostname: S.optional(S.String),
+      host: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "DispatchNamespacesScriptsContentUpdateResponsePlacementObjectModeTargetLastAnalyzedAtStatusTargetItem",
+  }) as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponsePlacementObjectModeTargetLastAnalyzedAtStatusTargetItem>;
+
+export type DispatchNamespacesScriptsContentUpdateResponsePlacementObjectModeTargetLastAnalyzedAtStatusTargetList =
+  DispatchNamespacesScriptsContentUpdateResponsePlacementObjectModeTargetLastAnalyzedAtStatusTargetItem[];
+export const DispatchNamespacesScriptsContentUpdateResponsePlacementObjectModeTargetLastAnalyzedAtStatusTargetList =
+  /*@__PURE__*/ S.Array(
+    DispatchNamespacesScriptsContentUpdateResponsePlacementObjectModeTargetLastAnalyzedAtStatusTargetItem,
+  ) as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponsePlacementObjectModeTargetLastAnalyzedAtStatusTargetList>;
+
+export type DispatchNamespacesScriptsContentUpdateResponsePlacementObjectModeTargetLastAnalyzedAtStatusStatus =
+    | "SUCCESS"
+    | "UNSUPPORTED_APPLICATION"
+    | "INSUFFICIENT_INVOCATIONS"
+    | (string & {});
+export const DispatchNamespacesScriptsContentUpdateResponsePlacementObjectModeTargetLastAnalyzedAtStatusStatus =
+  /*@__PURE__*/ S.String;
+
+export interface DispatchNamespacesScriptsContentUpdateResponsePlacementObjectModeTargetLastAnalyzedAtStatus {
+  /** Targeted placement mode. */
+  mode: DispatchNamespacesScriptsContentUpdateResponsePlacementObjectModeTargetLastAnalyzedAtStatusMode;
+  /** Array of placement targets (currently limited to single target). */
+  target: DispatchNamespacesScriptsContentUpdateResponsePlacementObjectModeTargetLastAnalyzedAtStatusTargetList;
+  /** The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
+  lastAnalyzedAt?: string;
+  /** Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
+  status?: DispatchNamespacesScriptsContentUpdateResponsePlacementObjectModeTargetLastAnalyzedAtStatusStatus;
+}
+export const DispatchNamespacesScriptsContentUpdateResponsePlacementObjectModeTargetLastAnalyzedAtStatus =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      mode: DispatchNamespacesScriptsContentUpdateResponsePlacementObjectModeTargetLastAnalyzedAtStatusMode,
+      target:
+        DispatchNamespacesScriptsContentUpdateResponsePlacementObjectModeTargetLastAnalyzedAtStatusTargetList,
+      lastAnalyzedAt: S.optional(S.String.pipe(T.Body("last_analyzed_at"))),
+      status: S.optional(
+        DispatchNamespacesScriptsContentUpdateResponsePlacementObjectModeTargetLastAnalyzedAtStatusStatus,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "DispatchNamespacesScriptsContentUpdateResponsePlacementObjectModeTargetLastAnalyzedAtStatus",
+  }) as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponsePlacementObjectModeTargetLastAnalyzedAtStatus>;
+
+export type DispatchNamespacesScriptsContentUpdateResponsePlacement =
+  | DispatchNamespacesScriptsContentUpdateResponsePlacementObjectModeLastAnalyzedAtStatus
+  | DispatchNamespacesScriptsContentUpdateResponsePlacementObjectRegionLastAnalyzedAtStatus
+  | DispatchNamespacesScriptsContentUpdateResponsePlacementObjectHostnameLastAnalyzedAtStatus
+  | DispatchNamespacesScriptsContentUpdateResponsePlacementObjectHostLastAnalyzedAtStatus
+  | DispatchNamespacesScriptsContentUpdateResponsePlacementObjectModeRegionLastAnalyzedAtStatus
+  | DispatchNamespacesScriptsContentUpdateResponsePlacementObjectHostnameModeLastAnalyzedAtStatus
+  | DispatchNamespacesScriptsContentUpdateResponsePlacementObjectHostModeLastAnalyzedAtStatus
+  | DispatchNamespacesScriptsContentUpdateResponsePlacementObjectModeTargetLastAnalyzedAtStatus;
+export const DispatchNamespacesScriptsContentUpdateResponsePlacement =
+  /*@__PURE__*/ S.Unknown;
+
 export type DispatchNamespacesScriptsContentUpdateResponsePlacementMode =
   | "smart"
+  | "targeted"
   | (string & {});
 export const DispatchNamespacesScriptsContentUpdateResponsePlacementMode =
   /*@__PURE__*/ S.String;
@@ -4246,85 +5297,6 @@ export type DispatchNamespacesScriptsContentUpdateResponsePlacementStatus =
   | "INSUFFICIENT_INVOCATIONS"
   | (string & {});
 export const DispatchNamespacesScriptsContentUpdateResponsePlacementStatus =
-  /*@__PURE__*/ S.String;
-
-export interface DispatchNamespacesScriptsContentUpdateResponsePlacementTargetItem {
-  /** Cloud region in format 'provider:region'. */
-  region?: string;
-  /** HTTP hostname for targeted placement. */
-  hostname?: string;
-  /** TCP host:port for targeted placement. */
-  host?: string;
-}
-export const DispatchNamespacesScriptsContentUpdateResponsePlacementTargetItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      region: S.optional(S.String),
-      hostname: S.optional(S.String),
-      host: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "DispatchNamespacesScriptsContentUpdateResponsePlacementTargetItem",
-  }) as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponsePlacementTargetItem>;
-
-export type DispatchNamespacesScriptsContentUpdateResponsePlacementTargetList =
-  DispatchNamespacesScriptsContentUpdateResponsePlacementTargetItem[];
-export const DispatchNamespacesScriptsContentUpdateResponsePlacementTargetList =
-  /*@__PURE__*/ S.Array(
-    DispatchNamespacesScriptsContentUpdateResponsePlacementTargetItem,
-  ) as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponsePlacementTargetList>;
-
-export interface DispatchNamespacesScriptsContentUpdateResponsePlacement {
-  /** Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
-  mode?: DispatchNamespacesScriptsContentUpdateResponsePlacementMode;
-  /** The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
-  lastAnalyzedAt?: string;
-  /** Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
-  status?: DispatchNamespacesScriptsContentUpdateResponsePlacementStatus;
-  /** Cloud region for targeted placement in format 'provider:region'. */
-  region?: string;
-  /** HTTP hostname for targeted placement. */
-  hostname?: string;
-  /** TCP host and port for targeted placement. */
-  host?: string;
-  /** Array of placement targets (currently limited to single target). */
-  target?: DispatchNamespacesScriptsContentUpdateResponsePlacementTargetList;
-}
-export const DispatchNamespacesScriptsContentUpdateResponsePlacement =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      mode: S.optional(
-        DispatchNamespacesScriptsContentUpdateResponsePlacementMode,
-      ),
-      lastAnalyzedAt: S.optional(S.String.pipe(T.Body("last_analyzed_at"))),
-      status: S.optional(
-        DispatchNamespacesScriptsContentUpdateResponsePlacementStatus,
-      ),
-      region: S.optional(S.String),
-      hostname: S.optional(S.String),
-      host: S.optional(S.String),
-      target: S.optional(
-        DispatchNamespacesScriptsContentUpdateResponsePlacementTargetList,
-      ),
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsContentUpdateResponsePlacement",
-  }) as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponsePlacement>;
-
-export type DispatchNamespacesScriptsContentUpdateResponsePlacementMode2 =
-  | "smart"
-  | "targeted"
-  | (string & {});
-export const DispatchNamespacesScriptsContentUpdateResponsePlacementMode2 =
-  /*@__PURE__*/ S.String;
-
-export type DispatchNamespacesScriptsContentUpdateResponsePlacementStatus2 =
-  | "SUCCESS"
-  | "UNSUPPORTED_APPLICATION"
-  | "INSUFFICIENT_INVOCATIONS"
-  | (string & {});
-export const DispatchNamespacesScriptsContentUpdateResponsePlacementStatus2 =
   /*@__PURE__*/ S.String;
 
 export type DispatchNamespacesScriptsContentUpdateResponseTagsList = string[];
@@ -4403,9 +5375,9 @@ export interface PutDispatchNamespaceScriptContentResponse {
   /** Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host. */
   placement?: DispatchNamespacesScriptsContentUpdateResponsePlacement;
   /** Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host. */
-  placementMode?: DispatchNamespacesScriptsContentUpdateResponsePlacementMode2;
+  placementMode?: DispatchNamespacesScriptsContentUpdateResponsePlacementMode;
   /** Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
-  placementStatus?: DispatchNamespacesScriptsContentUpdateResponsePlacementStatus2;
+  placementStatus?: DispatchNamespacesScriptsContentUpdateResponsePlacementStatus;
   /** The immutable ID of the script. */
   tag?: string;
   /** Tags associated with the Worker. */
@@ -4455,12 +5427,12 @@ export const PutDispatchNamespaceScriptContentResponse =
         DispatchNamespacesScriptsContentUpdateResponsePlacement,
       ),
       placementMode: S.optional(
-        DispatchNamespacesScriptsContentUpdateResponsePlacementMode2.pipe(
+        DispatchNamespacesScriptsContentUpdateResponsePlacementMode.pipe(
           T.Body("placement_mode"),
         ),
       ),
       placementStatus: S.optional(
-        DispatchNamespacesScriptsContentUpdateResponsePlacementStatus2.pipe(
+        DispatchNamespacesScriptsContentUpdateResponsePlacementStatus.pipe(
           T.Body("placement_status"),
         ),
       ),
@@ -4481,73 +5453,95 @@ export const PutDispatchNamespaceScriptContentResponse =
     identifier: "PutDispatchNamespaceScriptContentResponse",
   }) as any as S.Schema<PutDispatchNamespaceScriptContentResponse>;
 
-export type DispatchNamespacesScriptsSecretsUpdateRequestBodyType =
+export type DispatchNamespacesScriptsSecretsUpdateRequestBodySecretTextType =
   | "secret_text"
   | (string & {});
-export const DispatchNamespacesScriptsSecretsUpdateRequestBodyType =
+export const DispatchNamespacesScriptsSecretsUpdateRequestBodySecretTextType =
   /*@__PURE__*/ S.String;
 
-export type DispatchNamespacesScriptsSecretsUpdateRequestBodyFormat =
+export interface DispatchNamespacesScriptsSecretsUpdateRequestBodySecretText {
+  /** A JavaScript variable name for the binding. */
+  name: string;
+  /** The secret value to use. */
+  text: string;
+  /** The kind of resource that the binding provides. */
+  type: DispatchNamespacesScriptsSecretsUpdateRequestBodySecretTextType;
+}
+export const DispatchNamespacesScriptsSecretsUpdateRequestBodySecretText =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String,
+      text: S.String,
+      type: DispatchNamespacesScriptsSecretsUpdateRequestBodySecretTextType,
+    }),
+  ).annotate({
+    identifier: "DispatchNamespacesScriptsSecretsUpdateRequestBodySecretText",
+  }) as any as S.Schema<DispatchNamespacesScriptsSecretsUpdateRequestBodySecretText>;
+
+export type DispatchNamespacesScriptsSecretsUpdateRequestBodySecretKeyFormat =
   | "raw"
   | "pkcs8"
   | "spki"
   | "jwk"
   | (string & {});
-export const DispatchNamespacesScriptsSecretsUpdateRequestBodyFormat =
+export const DispatchNamespacesScriptsSecretsUpdateRequestBodySecretKeyFormat =
   /*@__PURE__*/ S.String;
 
-export type DispatchNamespacesScriptsSecretsUpdateRequestBodyUsagesItem =
-  | "encrypt"
-  | "decrypt"
-  | "sign"
+export type DispatchNamespacesScriptsSecretsUpdateRequestBodySecretKeyType =
+  | "secret_key"
   | (string & {});
-export const DispatchNamespacesScriptsSecretsUpdateRequestBodyUsagesItem =
+export const DispatchNamespacesScriptsSecretsUpdateRequestBodySecretKeyType =
   /*@__PURE__*/ S.String;
 
-export type DispatchNamespacesScriptsSecretsUpdateRequestBodyUsagesList =
-  DispatchNamespacesScriptsSecretsUpdateRequestBodyUsagesItem[];
-export const DispatchNamespacesScriptsSecretsUpdateRequestBodyUsagesList =
-  /*@__PURE__*/ S.Array(
-    DispatchNamespacesScriptsSecretsUpdateRequestBodyUsagesItem,
-  ) as any as S.Schema<DispatchNamespacesScriptsSecretsUpdateRequestBodyUsagesList>;
+export type DispatchNamespacesScriptsSecretsUpdateRequestBodySecretKeyUsagesItem =
+  "encrypt" | "decrypt" | "sign" | (string & {});
+export const DispatchNamespacesScriptsSecretsUpdateRequestBodySecretKeyUsagesItem =
+  /*@__PURE__*/ S.String;
 
-export interface DispatchNamespacesScriptsSecretsUpdateRequestBody {
-  /** A JavaScript variable name for the binding. */
-  name?: string;
-  /** The secret value to use. */
-  text?: string;
-  /** The kind of resource that the binding provides. */
-  type?: DispatchNamespacesScriptsSecretsUpdateRequestBodyType;
+export type DispatchNamespacesScriptsSecretsUpdateRequestBodySecretKeyUsagesList =
+  DispatchNamespacesScriptsSecretsUpdateRequestBodySecretKeyUsagesItem[];
+export const DispatchNamespacesScriptsSecretsUpdateRequestBodySecretKeyUsagesList =
+  /*@__PURE__*/ S.Array(
+    DispatchNamespacesScriptsSecretsUpdateRequestBodySecretKeyUsagesItem,
+  ) as any as S.Schema<DispatchNamespacesScriptsSecretsUpdateRequestBodySecretKeyUsagesList>;
+
+export interface DispatchNamespacesScriptsSecretsUpdateRequestBodySecretKey {
   /** Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm). */
-  algorithm?: unknown;
+  algorithm: unknown;
   /** Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format). */
-  format?: DispatchNamespacesScriptsSecretsUpdateRequestBodyFormat;
+  format: DispatchNamespacesScriptsSecretsUpdateRequestBodySecretKeyFormat;
+  /** A JavaScript variable name for the binding. */
+  name: string;
+  /** The kind of resource that the binding provides. */
+  type: DispatchNamespacesScriptsSecretsUpdateRequestBodySecretKeyType;
   /** Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages). */
-  usages?: DispatchNamespacesScriptsSecretsUpdateRequestBodyUsagesList;
+  usages: DispatchNamespacesScriptsSecretsUpdateRequestBodySecretKeyUsagesList;
   /** Base64-encoded key data. Required if `format` is "raw", "pkcs8", or "spki". */
   keyBase64?: string;
   /** Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is "jwk". */
   keyJwk?: unknown;
 }
-export const DispatchNamespacesScriptsSecretsUpdateRequestBody =
+export const DispatchNamespacesScriptsSecretsUpdateRequestBodySecretKey =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      name: S.optional(S.String),
-      text: S.optional(S.String),
-      type: S.optional(DispatchNamespacesScriptsSecretsUpdateRequestBodyType),
-      algorithm: S.optional(S.Unknown),
-      format: S.optional(
-        DispatchNamespacesScriptsSecretsUpdateRequestBodyFormat,
-      ),
-      usages: S.optional(
-        DispatchNamespacesScriptsSecretsUpdateRequestBodyUsagesList,
-      ),
+      algorithm: S.Unknown,
+      format: DispatchNamespacesScriptsSecretsUpdateRequestBodySecretKeyFormat,
+      name: S.String,
+      type: DispatchNamespacesScriptsSecretsUpdateRequestBodySecretKeyType,
+      usages:
+        DispatchNamespacesScriptsSecretsUpdateRequestBodySecretKeyUsagesList,
       keyBase64: S.optional(S.String.pipe(T.Body("key_base64"))),
       keyJwk: S.optional(S.Unknown.pipe(T.Body("key_jwk"))),
     }),
   ).annotate({
-    identifier: "DispatchNamespacesScriptsSecretsUpdateRequestBody",
-  }) as any as S.Schema<DispatchNamespacesScriptsSecretsUpdateRequestBody>;
+    identifier: "DispatchNamespacesScriptsSecretsUpdateRequestBodySecretKey",
+  }) as any as S.Schema<DispatchNamespacesScriptsSecretsUpdateRequestBodySecretKey>;
+
+export type DispatchNamespacesScriptsSecretsUpdateRequestBody =
+  | DispatchNamespacesScriptsSecretsUpdateRequestBodySecretText
+  | DispatchNamespacesScriptsSecretsUpdateRequestBodySecretKey;
+export const DispatchNamespacesScriptsSecretsUpdateRequestBody =
+  /*@__PURE__*/ S.Unknown;
 
 export interface PutDispatchNamespaceScriptSecretRequest {
   /** Identifier. */

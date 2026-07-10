@@ -6239,7 +6239,7 @@
         "smithy.api#readonly": {}
       }
     },
-    "com.cloudflare.rulesets#RulesCreateForAccountRequestBodyBlockRulePosition": {
+    "com.cloudflare.rulesets#RulesCreateForAccountRequestBodyBlockRulePositionBeforePosition": {
       "type": "structure",
       "members": {
         "before": {
@@ -6247,18 +6247,42 @@
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateForAccountRequestBodyBlockRulePositionAfterPosition": {
+      "type": "structure",
+      "members": {
         "after": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateForAccountRequestBodyBlockRulePositionIndexPosition": {
+      "type": "structure",
+      "members": {
         "index": {
           "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "An index at which to place the rule, where index 1 is the first rule."
           }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateForAccountRequestBodyBlockRulePosition": {
+      "type": "union",
+      "members": {
+        "BeforePosition": {
+          "target": "com.cloudflare.rulesets#RulesCreateForAccountRequestBodyBlockRulePositionBeforePosition"
+        },
+        "AfterPosition": {
+          "target": "com.cloudflare.rulesets#RulesCreateForAccountRequestBodyBlockRulePositionAfterPosition"
+        },
+        "IndexPosition": {
+          "target": "com.cloudflare.rulesets#RulesCreateForAccountRequestBodyBlockRulePositionIndexPosition"
         }
       }
     },
@@ -6321,7 +6345,7 @@
         }
       }
     },
-    "com.cloudflare.rulesets#RulesCreateForAccountRequestBodyPosition": {
+    "com.cloudflare.rulesets#RulesCreateForAccountRequestBodyPositionBeforePosition": {
       "type": "structure",
       "members": {
         "before": {
@@ -6329,18 +6353,42 @@
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateForAccountRequestBodyPositionAfterPosition": {
+      "type": "structure",
+      "members": {
         "after": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateForAccountRequestBodyPositionIndexPosition": {
+      "type": "structure",
+      "members": {
         "index": {
           "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "An index at which to place the rule, where index 1 is the first rule."
           }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateForAccountRequestBodyPosition": {
+      "type": "union",
+      "members": {
+        "BeforePosition": {
+          "target": "com.cloudflare.rulesets#RulesCreateForAccountRequestBodyPositionBeforePosition"
+        },
+        "AfterPosition": {
+          "target": "com.cloudflare.rulesets#RulesCreateForAccountRequestBodyPositionAfterPosition"
+        },
+        "IndexPosition": {
+          "target": "com.cloudflare.rulesets#RulesCreateForAccountRequestBodyPositionIndexPosition"
         }
       }
     },
@@ -6405,7 +6453,7 @@
         }
       }
     },
-    "com.cloudflare.rulesets#RulesCreateForAccountRequestBodyResponseCompressionRulePosition": {
+    "com.cloudflare.rulesets#RulesCreateForAccountRequestBodyResponseCompressionRulePositionBeforePosition": {
       "type": "structure",
       "members": {
         "before": {
@@ -6413,18 +6461,42 @@
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateForAccountRequestBodyResponseCompressionRulePositionAfterPosition": {
+      "type": "structure",
+      "members": {
         "after": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateForAccountRequestBodyResponseCompressionRulePositionIndexPosition": {
+      "type": "structure",
+      "members": {
         "index": {
           "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "An index at which to place the rule, where index 1 is the first rule."
           }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateForAccountRequestBodyResponseCompressionRulePosition": {
+      "type": "union",
+      "members": {
+        "BeforePosition": {
+          "target": "com.cloudflare.rulesets#RulesCreateForAccountRequestBodyResponseCompressionRulePositionBeforePosition"
+        },
+        "AfterPosition": {
+          "target": "com.cloudflare.rulesets#RulesCreateForAccountRequestBodyResponseCompressionRulePositionAfterPosition"
+        },
+        "IndexPosition": {
+          "target": "com.cloudflare.rulesets#RulesCreateForAccountRequestBodyResponseCompressionRulePositionIndexPosition"
         }
       }
     },
@@ -6439,7 +6511,7 @@
         }
       }
     },
-    "com.cloudflare.rulesets#RulesCreateForAccountRequestBodyDDoSDynamicRulePosition": {
+    "com.cloudflare.rulesets#RulesCreateForAccountRequestBodyDDoSDynamicRulePositionBeforePosition": {
       "type": "structure",
       "members": {
         "before": {
@@ -6447,18 +6519,42 @@
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateForAccountRequestBodyDDoSDynamicRulePositionAfterPosition": {
+      "type": "structure",
+      "members": {
         "after": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateForAccountRequestBodyDDoSDynamicRulePositionIndexPosition": {
+      "type": "structure",
+      "members": {
         "index": {
           "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "An index at which to place the rule, where index 1 is the first rule."
           }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateForAccountRequestBodyDDoSDynamicRulePosition": {
+      "type": "union",
+      "members": {
+        "BeforePosition": {
+          "target": "com.cloudflare.rulesets#RulesCreateForAccountRequestBodyDDoSDynamicRulePositionBeforePosition"
+        },
+        "AfterPosition": {
+          "target": "com.cloudflare.rulesets#RulesCreateForAccountRequestBodyDDoSDynamicRulePositionAfterPosition"
+        },
+        "IndexPosition": {
+          "target": "com.cloudflare.rulesets#RulesCreateForAccountRequestBodyDDoSDynamicRulePositionIndexPosition"
         }
       }
     },
@@ -6473,7 +6569,7 @@
         }
       }
     },
-    "com.cloudflare.rulesets#RulesCreateForAccountRequestBodyExecuteRulePosition": {
+    "com.cloudflare.rulesets#RulesCreateForAccountRequestBodyExecuteRulePositionBeforePosition": {
       "type": "structure",
       "members": {
         "before": {
@@ -6481,18 +6577,42 @@
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateForAccountRequestBodyExecuteRulePositionAfterPosition": {
+      "type": "structure",
+      "members": {
         "after": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateForAccountRequestBodyExecuteRulePositionIndexPosition": {
+      "type": "structure",
+      "members": {
         "index": {
           "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "An index at which to place the rule, where index 1 is the first rule."
           }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateForAccountRequestBodyExecuteRulePosition": {
+      "type": "union",
+      "members": {
+        "BeforePosition": {
+          "target": "com.cloudflare.rulesets#RulesCreateForAccountRequestBodyExecuteRulePositionBeforePosition"
+        },
+        "AfterPosition": {
+          "target": "com.cloudflare.rulesets#RulesCreateForAccountRequestBodyExecuteRulePositionAfterPosition"
+        },
+        "IndexPosition": {
+          "target": "com.cloudflare.rulesets#RulesCreateForAccountRequestBodyExecuteRulePositionIndexPosition"
         }
       }
     },
@@ -6507,7 +6627,7 @@
         }
       }
     },
-    "com.cloudflare.rulesets#RulesCreateForAccountRequestBodyForceConnectionCloseRulePosition": {
+    "com.cloudflare.rulesets#RulesCreateForAccountRequestBodyForceConnectionCloseRulePositionBeforePosition": {
       "type": "structure",
       "members": {
         "before": {
@@ -6515,18 +6635,42 @@
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateForAccountRequestBodyForceConnectionCloseRulePositionAfterPosition": {
+      "type": "structure",
+      "members": {
         "after": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateForAccountRequestBodyForceConnectionCloseRulePositionIndexPosition": {
+      "type": "structure",
+      "members": {
         "index": {
           "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "An index at which to place the rule, where index 1 is the first rule."
           }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateForAccountRequestBodyForceConnectionCloseRulePosition": {
+      "type": "union",
+      "members": {
+        "BeforePosition": {
+          "target": "com.cloudflare.rulesets#RulesCreateForAccountRequestBodyForceConnectionCloseRulePositionBeforePosition"
+        },
+        "AfterPosition": {
+          "target": "com.cloudflare.rulesets#RulesCreateForAccountRequestBodyForceConnectionCloseRulePositionAfterPosition"
+        },
+        "IndexPosition": {
+          "target": "com.cloudflare.rulesets#RulesCreateForAccountRequestBodyForceConnectionCloseRulePositionIndexPosition"
         }
       }
     },
@@ -6541,7 +6685,7 @@
         }
       }
     },
-    "com.cloudflare.rulesets#RulesCreateForAccountRequestBodyLogRulePosition": {
+    "com.cloudflare.rulesets#RulesCreateForAccountRequestBodyLogRulePositionBeforePosition": {
       "type": "structure",
       "members": {
         "before": {
@@ -6549,18 +6693,42 @@
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateForAccountRequestBodyLogRulePositionAfterPosition": {
+      "type": "structure",
+      "members": {
         "after": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateForAccountRequestBodyLogRulePositionIndexPosition": {
+      "type": "structure",
+      "members": {
         "index": {
           "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "An index at which to place the rule, where index 1 is the first rule."
           }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateForAccountRequestBodyLogRulePosition": {
+      "type": "union",
+      "members": {
+        "BeforePosition": {
+          "target": "com.cloudflare.rulesets#RulesCreateForAccountRequestBodyLogRulePositionBeforePosition"
+        },
+        "AfterPosition": {
+          "target": "com.cloudflare.rulesets#RulesCreateForAccountRequestBodyLogRulePositionAfterPosition"
+        },
+        "IndexPosition": {
+          "target": "com.cloudflare.rulesets#RulesCreateForAccountRequestBodyLogRulePositionIndexPosition"
         }
       }
     },
@@ -6575,7 +6743,7 @@
         }
       }
     },
-    "com.cloudflare.rulesets#RulesCreateForAccountRequestBodyLogCustomFieldRulePosition": {
+    "com.cloudflare.rulesets#RulesCreateForAccountRequestBodyLogCustomFieldRulePositionBeforePosition": {
       "type": "structure",
       "members": {
         "before": {
@@ -6583,18 +6751,42 @@
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateForAccountRequestBodyLogCustomFieldRulePositionAfterPosition": {
+      "type": "structure",
+      "members": {
         "after": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateForAccountRequestBodyLogCustomFieldRulePositionIndexPosition": {
+      "type": "structure",
+      "members": {
         "index": {
           "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "An index at which to place the rule, where index 1 is the first rule."
           }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateForAccountRequestBodyLogCustomFieldRulePosition": {
+      "type": "union",
+      "members": {
+        "BeforePosition": {
+          "target": "com.cloudflare.rulesets#RulesCreateForAccountRequestBodyLogCustomFieldRulePositionBeforePosition"
+        },
+        "AfterPosition": {
+          "target": "com.cloudflare.rulesets#RulesCreateForAccountRequestBodyLogCustomFieldRulePositionAfterPosition"
+        },
+        "IndexPosition": {
+          "target": "com.cloudflare.rulesets#RulesCreateForAccountRequestBodyLogCustomFieldRulePositionIndexPosition"
         }
       }
     },
@@ -6609,7 +6801,7 @@
         }
       }
     },
-    "com.cloudflare.rulesets#RulesCreateForAccountRequestBodyManagedChallengeRulePosition": {
+    "com.cloudflare.rulesets#RulesCreateForAccountRequestBodyManagedChallengeRulePositionBeforePosition": {
       "type": "structure",
       "members": {
         "before": {
@@ -6617,18 +6809,42 @@
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateForAccountRequestBodyManagedChallengeRulePositionAfterPosition": {
+      "type": "structure",
+      "members": {
         "after": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateForAccountRequestBodyManagedChallengeRulePositionIndexPosition": {
+      "type": "structure",
+      "members": {
         "index": {
           "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "An index at which to place the rule, where index 1 is the first rule."
           }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateForAccountRequestBodyManagedChallengeRulePosition": {
+      "type": "union",
+      "members": {
+        "BeforePosition": {
+          "target": "com.cloudflare.rulesets#RulesCreateForAccountRequestBodyManagedChallengeRulePositionBeforePosition"
+        },
+        "AfterPosition": {
+          "target": "com.cloudflare.rulesets#RulesCreateForAccountRequestBodyManagedChallengeRulePositionAfterPosition"
+        },
+        "IndexPosition": {
+          "target": "com.cloudflare.rulesets#RulesCreateForAccountRequestBodyManagedChallengeRulePositionIndexPosition"
         }
       }
     },
@@ -6643,7 +6859,7 @@
         }
       }
     },
-    "com.cloudflare.rulesets#RulesCreateForAccountRequestBodyRedirectRulePosition": {
+    "com.cloudflare.rulesets#RulesCreateForAccountRequestBodyRedirectRulePositionBeforePosition": {
       "type": "structure",
       "members": {
         "before": {
@@ -6651,18 +6867,42 @@
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateForAccountRequestBodyRedirectRulePositionAfterPosition": {
+      "type": "structure",
+      "members": {
         "after": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateForAccountRequestBodyRedirectRulePositionIndexPosition": {
+      "type": "structure",
+      "members": {
         "index": {
           "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "An index at which to place the rule, where index 1 is the first rule."
           }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateForAccountRequestBodyRedirectRulePosition": {
+      "type": "union",
+      "members": {
+        "BeforePosition": {
+          "target": "com.cloudflare.rulesets#RulesCreateForAccountRequestBodyRedirectRulePositionBeforePosition"
+        },
+        "AfterPosition": {
+          "target": "com.cloudflare.rulesets#RulesCreateForAccountRequestBodyRedirectRulePositionAfterPosition"
+        },
+        "IndexPosition": {
+          "target": "com.cloudflare.rulesets#RulesCreateForAccountRequestBodyRedirectRulePositionIndexPosition"
         }
       }
     },
@@ -6677,7 +6917,7 @@
         }
       }
     },
-    "com.cloudflare.rulesets#RulesCreateForAccountRequestBodyRewriteRulePosition": {
+    "com.cloudflare.rulesets#RulesCreateForAccountRequestBodyRewriteRulePositionBeforePosition": {
       "type": "structure",
       "members": {
         "before": {
@@ -6685,18 +6925,42 @@
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateForAccountRequestBodyRewriteRulePositionAfterPosition": {
+      "type": "structure",
+      "members": {
         "after": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateForAccountRequestBodyRewriteRulePositionIndexPosition": {
+      "type": "structure",
+      "members": {
         "index": {
           "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "An index at which to place the rule, where index 1 is the first rule."
           }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateForAccountRequestBodyRewriteRulePosition": {
+      "type": "union",
+      "members": {
+        "BeforePosition": {
+          "target": "com.cloudflare.rulesets#RulesCreateForAccountRequestBodyRewriteRulePositionBeforePosition"
+        },
+        "AfterPosition": {
+          "target": "com.cloudflare.rulesets#RulesCreateForAccountRequestBodyRewriteRulePositionAfterPosition"
+        },
+        "IndexPosition": {
+          "target": "com.cloudflare.rulesets#RulesCreateForAccountRequestBodyRewriteRulePositionIndexPosition"
         }
       }
     },
@@ -6711,7 +6975,7 @@
         }
       }
     },
-    "com.cloudflare.rulesets#RulesCreateForAccountRequestBodyRouteRulePosition": {
+    "com.cloudflare.rulesets#RulesCreateForAccountRequestBodyRouteRulePositionBeforePosition": {
       "type": "structure",
       "members": {
         "before": {
@@ -6719,18 +6983,42 @@
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateForAccountRequestBodyRouteRulePositionAfterPosition": {
+      "type": "structure",
+      "members": {
         "after": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateForAccountRequestBodyRouteRulePositionIndexPosition": {
+      "type": "structure",
+      "members": {
         "index": {
           "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "An index at which to place the rule, where index 1 is the first rule."
           }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateForAccountRequestBodyRouteRulePosition": {
+      "type": "union",
+      "members": {
+        "BeforePosition": {
+          "target": "com.cloudflare.rulesets#RulesCreateForAccountRequestBodyRouteRulePositionBeforePosition"
+        },
+        "AfterPosition": {
+          "target": "com.cloudflare.rulesets#RulesCreateForAccountRequestBodyRouteRulePositionAfterPosition"
+        },
+        "IndexPosition": {
+          "target": "com.cloudflare.rulesets#RulesCreateForAccountRequestBodyRouteRulePositionIndexPosition"
         }
       }
     },
@@ -6745,7 +7033,7 @@
         }
       }
     },
-    "com.cloudflare.rulesets#RulesCreateForAccountRequestBodyScoreRulePosition": {
+    "com.cloudflare.rulesets#RulesCreateForAccountRequestBodyScoreRulePositionBeforePosition": {
       "type": "structure",
       "members": {
         "before": {
@@ -6753,18 +7041,42 @@
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateForAccountRequestBodyScoreRulePositionAfterPosition": {
+      "type": "structure",
+      "members": {
         "after": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateForAccountRequestBodyScoreRulePositionIndexPosition": {
+      "type": "structure",
+      "members": {
         "index": {
           "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "An index at which to place the rule, where index 1 is the first rule."
           }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateForAccountRequestBodyScoreRulePosition": {
+      "type": "union",
+      "members": {
+        "BeforePosition": {
+          "target": "com.cloudflare.rulesets#RulesCreateForAccountRequestBodyScoreRulePositionBeforePosition"
+        },
+        "AfterPosition": {
+          "target": "com.cloudflare.rulesets#RulesCreateForAccountRequestBodyScoreRulePositionAfterPosition"
+        },
+        "IndexPosition": {
+          "target": "com.cloudflare.rulesets#RulesCreateForAccountRequestBodyScoreRulePositionIndexPosition"
         }
       }
     },
@@ -6779,7 +7091,7 @@
         }
       }
     },
-    "com.cloudflare.rulesets#RulesCreateForAccountRequestBodyServeErrorRulePosition": {
+    "com.cloudflare.rulesets#RulesCreateForAccountRequestBodyServeErrorRulePositionBeforePosition": {
       "type": "structure",
       "members": {
         "before": {
@@ -6787,18 +7099,42 @@
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateForAccountRequestBodyServeErrorRulePositionAfterPosition": {
+      "type": "structure",
+      "members": {
         "after": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateForAccountRequestBodyServeErrorRulePositionIndexPosition": {
+      "type": "structure",
+      "members": {
         "index": {
           "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "An index at which to place the rule, where index 1 is the first rule."
           }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateForAccountRequestBodyServeErrorRulePosition": {
+      "type": "union",
+      "members": {
+        "BeforePosition": {
+          "target": "com.cloudflare.rulesets#RulesCreateForAccountRequestBodyServeErrorRulePositionBeforePosition"
+        },
+        "AfterPosition": {
+          "target": "com.cloudflare.rulesets#RulesCreateForAccountRequestBodyServeErrorRulePositionAfterPosition"
+        },
+        "IndexPosition": {
+          "target": "com.cloudflare.rulesets#RulesCreateForAccountRequestBodyServeErrorRulePositionIndexPosition"
         }
       }
     },
@@ -6813,7 +7149,7 @@
         }
       }
     },
-    "com.cloudflare.rulesets#RulesCreateForAccountRequestBodySetCacheSettingsRulePosition": {
+    "com.cloudflare.rulesets#RulesCreateForAccountRequestBodySetCacheSettingsRulePositionBeforePosition": {
       "type": "structure",
       "members": {
         "before": {
@@ -6821,18 +7157,42 @@
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateForAccountRequestBodySetCacheSettingsRulePositionAfterPosition": {
+      "type": "structure",
+      "members": {
         "after": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateForAccountRequestBodySetCacheSettingsRulePositionIndexPosition": {
+      "type": "structure",
+      "members": {
         "index": {
           "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "An index at which to place the rule, where index 1 is the first rule."
           }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateForAccountRequestBodySetCacheSettingsRulePosition": {
+      "type": "union",
+      "members": {
+        "BeforePosition": {
+          "target": "com.cloudflare.rulesets#RulesCreateForAccountRequestBodySetCacheSettingsRulePositionBeforePosition"
+        },
+        "AfterPosition": {
+          "target": "com.cloudflare.rulesets#RulesCreateForAccountRequestBodySetCacheSettingsRulePositionAfterPosition"
+        },
+        "IndexPosition": {
+          "target": "com.cloudflare.rulesets#RulesCreateForAccountRequestBodySetCacheSettingsRulePositionIndexPosition"
         }
       }
     },
@@ -6847,7 +7207,7 @@
         }
       }
     },
-    "com.cloudflare.rulesets#RulesCreateForAccountRequestBodySetConfigurationRulePosition": {
+    "com.cloudflare.rulesets#RulesCreateForAccountRequestBodySetConfigurationRulePositionBeforePosition": {
       "type": "structure",
       "members": {
         "before": {
@@ -6855,18 +7215,42 @@
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateForAccountRequestBodySetConfigurationRulePositionAfterPosition": {
+      "type": "structure",
+      "members": {
         "after": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateForAccountRequestBodySetConfigurationRulePositionIndexPosition": {
+      "type": "structure",
+      "members": {
         "index": {
           "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "An index at which to place the rule, where index 1 is the first rule."
           }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateForAccountRequestBodySetConfigurationRulePosition": {
+      "type": "union",
+      "members": {
+        "BeforePosition": {
+          "target": "com.cloudflare.rulesets#RulesCreateForAccountRequestBodySetConfigurationRulePositionBeforePosition"
+        },
+        "AfterPosition": {
+          "target": "com.cloudflare.rulesets#RulesCreateForAccountRequestBodySetConfigurationRulePositionAfterPosition"
+        },
+        "IndexPosition": {
+          "target": "com.cloudflare.rulesets#RulesCreateForAccountRequestBodySetConfigurationRulePositionIndexPosition"
         }
       }
     },
@@ -6881,7 +7265,7 @@
         }
       }
     },
-    "com.cloudflare.rulesets#RulesCreateForAccountRequestBodySkipRulePosition": {
+    "com.cloudflare.rulesets#RulesCreateForAccountRequestBodySkipRulePositionBeforePosition": {
       "type": "structure",
       "members": {
         "before": {
@@ -6889,18 +7273,42 @@
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateForAccountRequestBodySkipRulePositionAfterPosition": {
+      "type": "structure",
+      "members": {
         "after": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateForAccountRequestBodySkipRulePositionIndexPosition": {
+      "type": "structure",
+      "members": {
         "index": {
           "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "An index at which to place the rule, where index 1 is the first rule."
           }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateForAccountRequestBodySkipRulePosition": {
+      "type": "union",
+      "members": {
+        "BeforePosition": {
+          "target": "com.cloudflare.rulesets#RulesCreateForAccountRequestBodySkipRulePositionBeforePosition"
+        },
+        "AfterPosition": {
+          "target": "com.cloudflare.rulesets#RulesCreateForAccountRequestBodySkipRulePositionAfterPosition"
+        },
+        "IndexPosition": {
+          "target": "com.cloudflare.rulesets#RulesCreateForAccountRequestBodySkipRulePositionIndexPosition"
         }
       }
     },
@@ -7447,7 +7855,7 @@
         "smithy.api#documentation": "Adds a new rule to an account or zone ruleset. The rule will be added to the end of the existing list of rules in the ruleset by default."
       }
     },
-    "com.cloudflare.rulesets#RulesCreateForZoneRequestBodyBlockRulePosition": {
+    "com.cloudflare.rulesets#RulesCreateForZoneRequestBodyBlockRulePositionBeforePosition": {
       "type": "structure",
       "members": {
         "before": {
@@ -7455,18 +7863,42 @@
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateForZoneRequestBodyBlockRulePositionAfterPosition": {
+      "type": "structure",
+      "members": {
         "after": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateForZoneRequestBodyBlockRulePositionIndexPosition": {
+      "type": "structure",
+      "members": {
         "index": {
           "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "An index at which to place the rule, where index 1 is the first rule."
           }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateForZoneRequestBodyBlockRulePosition": {
+      "type": "union",
+      "members": {
+        "BeforePosition": {
+          "target": "com.cloudflare.rulesets#RulesCreateForZoneRequestBodyBlockRulePositionBeforePosition"
+        },
+        "AfterPosition": {
+          "target": "com.cloudflare.rulesets#RulesCreateForZoneRequestBodyBlockRulePositionAfterPosition"
+        },
+        "IndexPosition": {
+          "target": "com.cloudflare.rulesets#RulesCreateForZoneRequestBodyBlockRulePositionIndexPosition"
         }
       }
     },
@@ -7529,7 +7961,7 @@
         }
       }
     },
-    "com.cloudflare.rulesets#RulesCreateForZoneRequestBodyPosition": {
+    "com.cloudflare.rulesets#RulesCreateForZoneRequestBodyPositionBeforePosition": {
       "type": "structure",
       "members": {
         "before": {
@@ -7537,18 +7969,42 @@
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateForZoneRequestBodyPositionAfterPosition": {
+      "type": "structure",
+      "members": {
         "after": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateForZoneRequestBodyPositionIndexPosition": {
+      "type": "structure",
+      "members": {
         "index": {
           "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "An index at which to place the rule, where index 1 is the first rule."
           }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateForZoneRequestBodyPosition": {
+      "type": "union",
+      "members": {
+        "BeforePosition": {
+          "target": "com.cloudflare.rulesets#RulesCreateForZoneRequestBodyPositionBeforePosition"
+        },
+        "AfterPosition": {
+          "target": "com.cloudflare.rulesets#RulesCreateForZoneRequestBodyPositionAfterPosition"
+        },
+        "IndexPosition": {
+          "target": "com.cloudflare.rulesets#RulesCreateForZoneRequestBodyPositionIndexPosition"
         }
       }
     },
@@ -7613,7 +8069,7 @@
         }
       }
     },
-    "com.cloudflare.rulesets#RulesCreateForZoneRequestBodyResponseCompressionRulePosition": {
+    "com.cloudflare.rulesets#RulesCreateForZoneRequestBodyResponseCompressionRulePositionBeforePosition": {
       "type": "structure",
       "members": {
         "before": {
@@ -7621,18 +8077,42 @@
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateForZoneRequestBodyResponseCompressionRulePositionAfterPosition": {
+      "type": "structure",
+      "members": {
         "after": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateForZoneRequestBodyResponseCompressionRulePositionIndexPosition": {
+      "type": "structure",
+      "members": {
         "index": {
           "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "An index at which to place the rule, where index 1 is the first rule."
           }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateForZoneRequestBodyResponseCompressionRulePosition": {
+      "type": "union",
+      "members": {
+        "BeforePosition": {
+          "target": "com.cloudflare.rulesets#RulesCreateForZoneRequestBodyResponseCompressionRulePositionBeforePosition"
+        },
+        "AfterPosition": {
+          "target": "com.cloudflare.rulesets#RulesCreateForZoneRequestBodyResponseCompressionRulePositionAfterPosition"
+        },
+        "IndexPosition": {
+          "target": "com.cloudflare.rulesets#RulesCreateForZoneRequestBodyResponseCompressionRulePositionIndexPosition"
         }
       }
     },
@@ -7647,7 +8127,7 @@
         }
       }
     },
-    "com.cloudflare.rulesets#RulesCreateForZoneRequestBodyDDoSDynamicRulePosition": {
+    "com.cloudflare.rulesets#RulesCreateForZoneRequestBodyDDoSDynamicRulePositionBeforePosition": {
       "type": "structure",
       "members": {
         "before": {
@@ -7655,18 +8135,42 @@
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateForZoneRequestBodyDDoSDynamicRulePositionAfterPosition": {
+      "type": "structure",
+      "members": {
         "after": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateForZoneRequestBodyDDoSDynamicRulePositionIndexPosition": {
+      "type": "structure",
+      "members": {
         "index": {
           "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "An index at which to place the rule, where index 1 is the first rule."
           }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateForZoneRequestBodyDDoSDynamicRulePosition": {
+      "type": "union",
+      "members": {
+        "BeforePosition": {
+          "target": "com.cloudflare.rulesets#RulesCreateForZoneRequestBodyDDoSDynamicRulePositionBeforePosition"
+        },
+        "AfterPosition": {
+          "target": "com.cloudflare.rulesets#RulesCreateForZoneRequestBodyDDoSDynamicRulePositionAfterPosition"
+        },
+        "IndexPosition": {
+          "target": "com.cloudflare.rulesets#RulesCreateForZoneRequestBodyDDoSDynamicRulePositionIndexPosition"
         }
       }
     },
@@ -7681,7 +8185,7 @@
         }
       }
     },
-    "com.cloudflare.rulesets#RulesCreateForZoneRequestBodyExecuteRulePosition": {
+    "com.cloudflare.rulesets#RulesCreateForZoneRequestBodyExecuteRulePositionBeforePosition": {
       "type": "structure",
       "members": {
         "before": {
@@ -7689,18 +8193,42 @@
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateForZoneRequestBodyExecuteRulePositionAfterPosition": {
+      "type": "structure",
+      "members": {
         "after": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateForZoneRequestBodyExecuteRulePositionIndexPosition": {
+      "type": "structure",
+      "members": {
         "index": {
           "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "An index at which to place the rule, where index 1 is the first rule."
           }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateForZoneRequestBodyExecuteRulePosition": {
+      "type": "union",
+      "members": {
+        "BeforePosition": {
+          "target": "com.cloudflare.rulesets#RulesCreateForZoneRequestBodyExecuteRulePositionBeforePosition"
+        },
+        "AfterPosition": {
+          "target": "com.cloudflare.rulesets#RulesCreateForZoneRequestBodyExecuteRulePositionAfterPosition"
+        },
+        "IndexPosition": {
+          "target": "com.cloudflare.rulesets#RulesCreateForZoneRequestBodyExecuteRulePositionIndexPosition"
         }
       }
     },
@@ -7715,7 +8243,7 @@
         }
       }
     },
-    "com.cloudflare.rulesets#RulesCreateForZoneRequestBodyForceConnectionCloseRulePosition": {
+    "com.cloudflare.rulesets#RulesCreateForZoneRequestBodyForceConnectionCloseRulePositionBeforePosition": {
       "type": "structure",
       "members": {
         "before": {
@@ -7723,18 +8251,42 @@
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateForZoneRequestBodyForceConnectionCloseRulePositionAfterPosition": {
+      "type": "structure",
+      "members": {
         "after": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateForZoneRequestBodyForceConnectionCloseRulePositionIndexPosition": {
+      "type": "structure",
+      "members": {
         "index": {
           "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "An index at which to place the rule, where index 1 is the first rule."
           }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateForZoneRequestBodyForceConnectionCloseRulePosition": {
+      "type": "union",
+      "members": {
+        "BeforePosition": {
+          "target": "com.cloudflare.rulesets#RulesCreateForZoneRequestBodyForceConnectionCloseRulePositionBeforePosition"
+        },
+        "AfterPosition": {
+          "target": "com.cloudflare.rulesets#RulesCreateForZoneRequestBodyForceConnectionCloseRulePositionAfterPosition"
+        },
+        "IndexPosition": {
+          "target": "com.cloudflare.rulesets#RulesCreateForZoneRequestBodyForceConnectionCloseRulePositionIndexPosition"
         }
       }
     },
@@ -7749,7 +8301,7 @@
         }
       }
     },
-    "com.cloudflare.rulesets#RulesCreateForZoneRequestBodyLogRulePosition": {
+    "com.cloudflare.rulesets#RulesCreateForZoneRequestBodyLogRulePositionBeforePosition": {
       "type": "structure",
       "members": {
         "before": {
@@ -7757,18 +8309,42 @@
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateForZoneRequestBodyLogRulePositionAfterPosition": {
+      "type": "structure",
+      "members": {
         "after": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateForZoneRequestBodyLogRulePositionIndexPosition": {
+      "type": "structure",
+      "members": {
         "index": {
           "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "An index at which to place the rule, where index 1 is the first rule."
           }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateForZoneRequestBodyLogRulePosition": {
+      "type": "union",
+      "members": {
+        "BeforePosition": {
+          "target": "com.cloudflare.rulesets#RulesCreateForZoneRequestBodyLogRulePositionBeforePosition"
+        },
+        "AfterPosition": {
+          "target": "com.cloudflare.rulesets#RulesCreateForZoneRequestBodyLogRulePositionAfterPosition"
+        },
+        "IndexPosition": {
+          "target": "com.cloudflare.rulesets#RulesCreateForZoneRequestBodyLogRulePositionIndexPosition"
         }
       }
     },
@@ -7783,7 +8359,7 @@
         }
       }
     },
-    "com.cloudflare.rulesets#RulesCreateForZoneRequestBodyLogCustomFieldRulePosition": {
+    "com.cloudflare.rulesets#RulesCreateForZoneRequestBodyLogCustomFieldRulePositionBeforePosition": {
       "type": "structure",
       "members": {
         "before": {
@@ -7791,18 +8367,42 @@
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateForZoneRequestBodyLogCustomFieldRulePositionAfterPosition": {
+      "type": "structure",
+      "members": {
         "after": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateForZoneRequestBodyLogCustomFieldRulePositionIndexPosition": {
+      "type": "structure",
+      "members": {
         "index": {
           "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "An index at which to place the rule, where index 1 is the first rule."
           }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateForZoneRequestBodyLogCustomFieldRulePosition": {
+      "type": "union",
+      "members": {
+        "BeforePosition": {
+          "target": "com.cloudflare.rulesets#RulesCreateForZoneRequestBodyLogCustomFieldRulePositionBeforePosition"
+        },
+        "AfterPosition": {
+          "target": "com.cloudflare.rulesets#RulesCreateForZoneRequestBodyLogCustomFieldRulePositionAfterPosition"
+        },
+        "IndexPosition": {
+          "target": "com.cloudflare.rulesets#RulesCreateForZoneRequestBodyLogCustomFieldRulePositionIndexPosition"
         }
       }
     },
@@ -7817,7 +8417,7 @@
         }
       }
     },
-    "com.cloudflare.rulesets#RulesCreateForZoneRequestBodyManagedChallengeRulePosition": {
+    "com.cloudflare.rulesets#RulesCreateForZoneRequestBodyManagedChallengeRulePositionBeforePosition": {
       "type": "structure",
       "members": {
         "before": {
@@ -7825,18 +8425,42 @@
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateForZoneRequestBodyManagedChallengeRulePositionAfterPosition": {
+      "type": "structure",
+      "members": {
         "after": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateForZoneRequestBodyManagedChallengeRulePositionIndexPosition": {
+      "type": "structure",
+      "members": {
         "index": {
           "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "An index at which to place the rule, where index 1 is the first rule."
           }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateForZoneRequestBodyManagedChallengeRulePosition": {
+      "type": "union",
+      "members": {
+        "BeforePosition": {
+          "target": "com.cloudflare.rulesets#RulesCreateForZoneRequestBodyManagedChallengeRulePositionBeforePosition"
+        },
+        "AfterPosition": {
+          "target": "com.cloudflare.rulesets#RulesCreateForZoneRequestBodyManagedChallengeRulePositionAfterPosition"
+        },
+        "IndexPosition": {
+          "target": "com.cloudflare.rulesets#RulesCreateForZoneRequestBodyManagedChallengeRulePositionIndexPosition"
         }
       }
     },
@@ -7851,7 +8475,7 @@
         }
       }
     },
-    "com.cloudflare.rulesets#RulesCreateForZoneRequestBodyRedirectRulePosition": {
+    "com.cloudflare.rulesets#RulesCreateForZoneRequestBodyRedirectRulePositionBeforePosition": {
       "type": "structure",
       "members": {
         "before": {
@@ -7859,18 +8483,42 @@
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateForZoneRequestBodyRedirectRulePositionAfterPosition": {
+      "type": "structure",
+      "members": {
         "after": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateForZoneRequestBodyRedirectRulePositionIndexPosition": {
+      "type": "structure",
+      "members": {
         "index": {
           "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "An index at which to place the rule, where index 1 is the first rule."
           }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateForZoneRequestBodyRedirectRulePosition": {
+      "type": "union",
+      "members": {
+        "BeforePosition": {
+          "target": "com.cloudflare.rulesets#RulesCreateForZoneRequestBodyRedirectRulePositionBeforePosition"
+        },
+        "AfterPosition": {
+          "target": "com.cloudflare.rulesets#RulesCreateForZoneRequestBodyRedirectRulePositionAfterPosition"
+        },
+        "IndexPosition": {
+          "target": "com.cloudflare.rulesets#RulesCreateForZoneRequestBodyRedirectRulePositionIndexPosition"
         }
       }
     },
@@ -7885,7 +8533,7 @@
         }
       }
     },
-    "com.cloudflare.rulesets#RulesCreateForZoneRequestBodyRewriteRulePosition": {
+    "com.cloudflare.rulesets#RulesCreateForZoneRequestBodyRewriteRulePositionBeforePosition": {
       "type": "structure",
       "members": {
         "before": {
@@ -7893,18 +8541,42 @@
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateForZoneRequestBodyRewriteRulePositionAfterPosition": {
+      "type": "structure",
+      "members": {
         "after": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateForZoneRequestBodyRewriteRulePositionIndexPosition": {
+      "type": "structure",
+      "members": {
         "index": {
           "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "An index at which to place the rule, where index 1 is the first rule."
           }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateForZoneRequestBodyRewriteRulePosition": {
+      "type": "union",
+      "members": {
+        "BeforePosition": {
+          "target": "com.cloudflare.rulesets#RulesCreateForZoneRequestBodyRewriteRulePositionBeforePosition"
+        },
+        "AfterPosition": {
+          "target": "com.cloudflare.rulesets#RulesCreateForZoneRequestBodyRewriteRulePositionAfterPosition"
+        },
+        "IndexPosition": {
+          "target": "com.cloudflare.rulesets#RulesCreateForZoneRequestBodyRewriteRulePositionIndexPosition"
         }
       }
     },
@@ -7919,7 +8591,7 @@
         }
       }
     },
-    "com.cloudflare.rulesets#RulesCreateForZoneRequestBodyRouteRulePosition": {
+    "com.cloudflare.rulesets#RulesCreateForZoneRequestBodyRouteRulePositionBeforePosition": {
       "type": "structure",
       "members": {
         "before": {
@@ -7927,18 +8599,42 @@
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateForZoneRequestBodyRouteRulePositionAfterPosition": {
+      "type": "structure",
+      "members": {
         "after": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateForZoneRequestBodyRouteRulePositionIndexPosition": {
+      "type": "structure",
+      "members": {
         "index": {
           "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "An index at which to place the rule, where index 1 is the first rule."
           }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateForZoneRequestBodyRouteRulePosition": {
+      "type": "union",
+      "members": {
+        "BeforePosition": {
+          "target": "com.cloudflare.rulesets#RulesCreateForZoneRequestBodyRouteRulePositionBeforePosition"
+        },
+        "AfterPosition": {
+          "target": "com.cloudflare.rulesets#RulesCreateForZoneRequestBodyRouteRulePositionAfterPosition"
+        },
+        "IndexPosition": {
+          "target": "com.cloudflare.rulesets#RulesCreateForZoneRequestBodyRouteRulePositionIndexPosition"
         }
       }
     },
@@ -7953,7 +8649,7 @@
         }
       }
     },
-    "com.cloudflare.rulesets#RulesCreateForZoneRequestBodyScoreRulePosition": {
+    "com.cloudflare.rulesets#RulesCreateForZoneRequestBodyScoreRulePositionBeforePosition": {
       "type": "structure",
       "members": {
         "before": {
@@ -7961,18 +8657,42 @@
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateForZoneRequestBodyScoreRulePositionAfterPosition": {
+      "type": "structure",
+      "members": {
         "after": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateForZoneRequestBodyScoreRulePositionIndexPosition": {
+      "type": "structure",
+      "members": {
         "index": {
           "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "An index at which to place the rule, where index 1 is the first rule."
           }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateForZoneRequestBodyScoreRulePosition": {
+      "type": "union",
+      "members": {
+        "BeforePosition": {
+          "target": "com.cloudflare.rulesets#RulesCreateForZoneRequestBodyScoreRulePositionBeforePosition"
+        },
+        "AfterPosition": {
+          "target": "com.cloudflare.rulesets#RulesCreateForZoneRequestBodyScoreRulePositionAfterPosition"
+        },
+        "IndexPosition": {
+          "target": "com.cloudflare.rulesets#RulesCreateForZoneRequestBodyScoreRulePositionIndexPosition"
         }
       }
     },
@@ -7987,7 +8707,7 @@
         }
       }
     },
-    "com.cloudflare.rulesets#RulesCreateForZoneRequestBodyServeErrorRulePosition": {
+    "com.cloudflare.rulesets#RulesCreateForZoneRequestBodyServeErrorRulePositionBeforePosition": {
       "type": "structure",
       "members": {
         "before": {
@@ -7995,18 +8715,42 @@
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateForZoneRequestBodyServeErrorRulePositionAfterPosition": {
+      "type": "structure",
+      "members": {
         "after": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateForZoneRequestBodyServeErrorRulePositionIndexPosition": {
+      "type": "structure",
+      "members": {
         "index": {
           "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "An index at which to place the rule, where index 1 is the first rule."
           }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateForZoneRequestBodyServeErrorRulePosition": {
+      "type": "union",
+      "members": {
+        "BeforePosition": {
+          "target": "com.cloudflare.rulesets#RulesCreateForZoneRequestBodyServeErrorRulePositionBeforePosition"
+        },
+        "AfterPosition": {
+          "target": "com.cloudflare.rulesets#RulesCreateForZoneRequestBodyServeErrorRulePositionAfterPosition"
+        },
+        "IndexPosition": {
+          "target": "com.cloudflare.rulesets#RulesCreateForZoneRequestBodyServeErrorRulePositionIndexPosition"
         }
       }
     },
@@ -8021,7 +8765,7 @@
         }
       }
     },
-    "com.cloudflare.rulesets#RulesCreateForZoneRequestBodySetCacheSettingsRulePosition": {
+    "com.cloudflare.rulesets#RulesCreateForZoneRequestBodySetCacheSettingsRulePositionBeforePosition": {
       "type": "structure",
       "members": {
         "before": {
@@ -8029,18 +8773,42 @@
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateForZoneRequestBodySetCacheSettingsRulePositionAfterPosition": {
+      "type": "structure",
+      "members": {
         "after": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateForZoneRequestBodySetCacheSettingsRulePositionIndexPosition": {
+      "type": "structure",
+      "members": {
         "index": {
           "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "An index at which to place the rule, where index 1 is the first rule."
           }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateForZoneRequestBodySetCacheSettingsRulePosition": {
+      "type": "union",
+      "members": {
+        "BeforePosition": {
+          "target": "com.cloudflare.rulesets#RulesCreateForZoneRequestBodySetCacheSettingsRulePositionBeforePosition"
+        },
+        "AfterPosition": {
+          "target": "com.cloudflare.rulesets#RulesCreateForZoneRequestBodySetCacheSettingsRulePositionAfterPosition"
+        },
+        "IndexPosition": {
+          "target": "com.cloudflare.rulesets#RulesCreateForZoneRequestBodySetCacheSettingsRulePositionIndexPosition"
         }
       }
     },
@@ -8055,7 +8823,7 @@
         }
       }
     },
-    "com.cloudflare.rulesets#RulesCreateForZoneRequestBodySetConfigurationRulePosition": {
+    "com.cloudflare.rulesets#RulesCreateForZoneRequestBodySetConfigurationRulePositionBeforePosition": {
       "type": "structure",
       "members": {
         "before": {
@@ -8063,18 +8831,42 @@
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateForZoneRequestBodySetConfigurationRulePositionAfterPosition": {
+      "type": "structure",
+      "members": {
         "after": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateForZoneRequestBodySetConfigurationRulePositionIndexPosition": {
+      "type": "structure",
+      "members": {
         "index": {
           "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "An index at which to place the rule, where index 1 is the first rule."
           }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateForZoneRequestBodySetConfigurationRulePosition": {
+      "type": "union",
+      "members": {
+        "BeforePosition": {
+          "target": "com.cloudflare.rulesets#RulesCreateForZoneRequestBodySetConfigurationRulePositionBeforePosition"
+        },
+        "AfterPosition": {
+          "target": "com.cloudflare.rulesets#RulesCreateForZoneRequestBodySetConfigurationRulePositionAfterPosition"
+        },
+        "IndexPosition": {
+          "target": "com.cloudflare.rulesets#RulesCreateForZoneRequestBodySetConfigurationRulePositionIndexPosition"
         }
       }
     },
@@ -8089,7 +8881,7 @@
         }
       }
     },
-    "com.cloudflare.rulesets#RulesCreateForZoneRequestBodySkipRulePosition": {
+    "com.cloudflare.rulesets#RulesCreateForZoneRequestBodySkipRulePositionBeforePosition": {
       "type": "structure",
       "members": {
         "before": {
@@ -8097,18 +8889,42 @@
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateForZoneRequestBodySkipRulePositionAfterPosition": {
+      "type": "structure",
+      "members": {
         "after": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateForZoneRequestBodySkipRulePositionIndexPosition": {
+      "type": "structure",
+      "members": {
         "index": {
           "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "An index at which to place the rule, where index 1 is the first rule."
           }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateForZoneRequestBodySkipRulePosition": {
+      "type": "union",
+      "members": {
+        "BeforePosition": {
+          "target": "com.cloudflare.rulesets#RulesCreateForZoneRequestBodySkipRulePositionBeforePosition"
+        },
+        "AfterPosition": {
+          "target": "com.cloudflare.rulesets#RulesCreateForZoneRequestBodySkipRulePositionAfterPosition"
+        },
+        "IndexPosition": {
+          "target": "com.cloudflare.rulesets#RulesCreateForZoneRequestBodySkipRulePositionIndexPosition"
         }
       }
     },
@@ -9353,7 +10169,7 @@
         "smithy.api#idempotent": {}
       }
     },
-    "com.cloudflare.rulesets#RulesEditForAccountRequestBodyBlockRulePosition": {
+    "com.cloudflare.rulesets#RulesEditForAccountRequestBodyBlockRulePositionBeforePosition": {
       "type": "structure",
       "members": {
         "before": {
@@ -9361,18 +10177,42 @@
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditForAccountRequestBodyBlockRulePositionAfterPosition": {
+      "type": "structure",
+      "members": {
         "after": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditForAccountRequestBodyBlockRulePositionIndexPosition": {
+      "type": "structure",
+      "members": {
         "index": {
           "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "An index at which to place the rule, where index 1 is the first rule."
           }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditForAccountRequestBodyBlockRulePosition": {
+      "type": "union",
+      "members": {
+        "BeforePosition": {
+          "target": "com.cloudflare.rulesets#RulesEditForAccountRequestBodyBlockRulePositionBeforePosition"
+        },
+        "AfterPosition": {
+          "target": "com.cloudflare.rulesets#RulesEditForAccountRequestBodyBlockRulePositionAfterPosition"
+        },
+        "IndexPosition": {
+          "target": "com.cloudflare.rulesets#RulesEditForAccountRequestBodyBlockRulePositionIndexPosition"
         }
       }
     },
@@ -9435,7 +10275,7 @@
         }
       }
     },
-    "com.cloudflare.rulesets#RulesEditForAccountRequestBodyPosition": {
+    "com.cloudflare.rulesets#RulesEditForAccountRequestBodyPositionBeforePosition": {
       "type": "structure",
       "members": {
         "before": {
@@ -9443,18 +10283,42 @@
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditForAccountRequestBodyPositionAfterPosition": {
+      "type": "structure",
+      "members": {
         "after": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditForAccountRequestBodyPositionIndexPosition": {
+      "type": "structure",
+      "members": {
         "index": {
           "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "An index at which to place the rule, where index 1 is the first rule."
           }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditForAccountRequestBodyPosition": {
+      "type": "union",
+      "members": {
+        "BeforePosition": {
+          "target": "com.cloudflare.rulesets#RulesEditForAccountRequestBodyPositionBeforePosition"
+        },
+        "AfterPosition": {
+          "target": "com.cloudflare.rulesets#RulesEditForAccountRequestBodyPositionAfterPosition"
+        },
+        "IndexPosition": {
+          "target": "com.cloudflare.rulesets#RulesEditForAccountRequestBodyPositionIndexPosition"
         }
       }
     },
@@ -9519,7 +10383,7 @@
         }
       }
     },
-    "com.cloudflare.rulesets#RulesEditForAccountRequestBodyResponseCompressionRulePosition": {
+    "com.cloudflare.rulesets#RulesEditForAccountRequestBodyResponseCompressionRulePositionBeforePosition": {
       "type": "structure",
       "members": {
         "before": {
@@ -9527,18 +10391,42 @@
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditForAccountRequestBodyResponseCompressionRulePositionAfterPosition": {
+      "type": "structure",
+      "members": {
         "after": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditForAccountRequestBodyResponseCompressionRulePositionIndexPosition": {
+      "type": "structure",
+      "members": {
         "index": {
           "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "An index at which to place the rule, where index 1 is the first rule."
           }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditForAccountRequestBodyResponseCompressionRulePosition": {
+      "type": "union",
+      "members": {
+        "BeforePosition": {
+          "target": "com.cloudflare.rulesets#RulesEditForAccountRequestBodyResponseCompressionRulePositionBeforePosition"
+        },
+        "AfterPosition": {
+          "target": "com.cloudflare.rulesets#RulesEditForAccountRequestBodyResponseCompressionRulePositionAfterPosition"
+        },
+        "IndexPosition": {
+          "target": "com.cloudflare.rulesets#RulesEditForAccountRequestBodyResponseCompressionRulePositionIndexPosition"
         }
       }
     },
@@ -9553,7 +10441,7 @@
         }
       }
     },
-    "com.cloudflare.rulesets#RulesEditForAccountRequestBodyDDoSDynamicRulePosition": {
+    "com.cloudflare.rulesets#RulesEditForAccountRequestBodyDDoSDynamicRulePositionBeforePosition": {
       "type": "structure",
       "members": {
         "before": {
@@ -9561,18 +10449,42 @@
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditForAccountRequestBodyDDoSDynamicRulePositionAfterPosition": {
+      "type": "structure",
+      "members": {
         "after": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditForAccountRequestBodyDDoSDynamicRulePositionIndexPosition": {
+      "type": "structure",
+      "members": {
         "index": {
           "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "An index at which to place the rule, where index 1 is the first rule."
           }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditForAccountRequestBodyDDoSDynamicRulePosition": {
+      "type": "union",
+      "members": {
+        "BeforePosition": {
+          "target": "com.cloudflare.rulesets#RulesEditForAccountRequestBodyDDoSDynamicRulePositionBeforePosition"
+        },
+        "AfterPosition": {
+          "target": "com.cloudflare.rulesets#RulesEditForAccountRequestBodyDDoSDynamicRulePositionAfterPosition"
+        },
+        "IndexPosition": {
+          "target": "com.cloudflare.rulesets#RulesEditForAccountRequestBodyDDoSDynamicRulePositionIndexPosition"
         }
       }
     },
@@ -9587,7 +10499,7 @@
         }
       }
     },
-    "com.cloudflare.rulesets#RulesEditForAccountRequestBodyExecuteRulePosition": {
+    "com.cloudflare.rulesets#RulesEditForAccountRequestBodyExecuteRulePositionBeforePosition": {
       "type": "structure",
       "members": {
         "before": {
@@ -9595,18 +10507,42 @@
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditForAccountRequestBodyExecuteRulePositionAfterPosition": {
+      "type": "structure",
+      "members": {
         "after": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditForAccountRequestBodyExecuteRulePositionIndexPosition": {
+      "type": "structure",
+      "members": {
         "index": {
           "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "An index at which to place the rule, where index 1 is the first rule."
           }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditForAccountRequestBodyExecuteRulePosition": {
+      "type": "union",
+      "members": {
+        "BeforePosition": {
+          "target": "com.cloudflare.rulesets#RulesEditForAccountRequestBodyExecuteRulePositionBeforePosition"
+        },
+        "AfterPosition": {
+          "target": "com.cloudflare.rulesets#RulesEditForAccountRequestBodyExecuteRulePositionAfterPosition"
+        },
+        "IndexPosition": {
+          "target": "com.cloudflare.rulesets#RulesEditForAccountRequestBodyExecuteRulePositionIndexPosition"
         }
       }
     },
@@ -9621,7 +10557,7 @@
         }
       }
     },
-    "com.cloudflare.rulesets#RulesEditForAccountRequestBodyForceConnectionCloseRulePosition": {
+    "com.cloudflare.rulesets#RulesEditForAccountRequestBodyForceConnectionCloseRulePositionBeforePosition": {
       "type": "structure",
       "members": {
         "before": {
@@ -9629,18 +10565,42 @@
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditForAccountRequestBodyForceConnectionCloseRulePositionAfterPosition": {
+      "type": "structure",
+      "members": {
         "after": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditForAccountRequestBodyForceConnectionCloseRulePositionIndexPosition": {
+      "type": "structure",
+      "members": {
         "index": {
           "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "An index at which to place the rule, where index 1 is the first rule."
           }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditForAccountRequestBodyForceConnectionCloseRulePosition": {
+      "type": "union",
+      "members": {
+        "BeforePosition": {
+          "target": "com.cloudflare.rulesets#RulesEditForAccountRequestBodyForceConnectionCloseRulePositionBeforePosition"
+        },
+        "AfterPosition": {
+          "target": "com.cloudflare.rulesets#RulesEditForAccountRequestBodyForceConnectionCloseRulePositionAfterPosition"
+        },
+        "IndexPosition": {
+          "target": "com.cloudflare.rulesets#RulesEditForAccountRequestBodyForceConnectionCloseRulePositionIndexPosition"
         }
       }
     },
@@ -9655,7 +10615,7 @@
         }
       }
     },
-    "com.cloudflare.rulesets#RulesEditForAccountRequestBodyLogRulePosition": {
+    "com.cloudflare.rulesets#RulesEditForAccountRequestBodyLogRulePositionBeforePosition": {
       "type": "structure",
       "members": {
         "before": {
@@ -9663,18 +10623,42 @@
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditForAccountRequestBodyLogRulePositionAfterPosition": {
+      "type": "structure",
+      "members": {
         "after": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditForAccountRequestBodyLogRulePositionIndexPosition": {
+      "type": "structure",
+      "members": {
         "index": {
           "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "An index at which to place the rule, where index 1 is the first rule."
           }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditForAccountRequestBodyLogRulePosition": {
+      "type": "union",
+      "members": {
+        "BeforePosition": {
+          "target": "com.cloudflare.rulesets#RulesEditForAccountRequestBodyLogRulePositionBeforePosition"
+        },
+        "AfterPosition": {
+          "target": "com.cloudflare.rulesets#RulesEditForAccountRequestBodyLogRulePositionAfterPosition"
+        },
+        "IndexPosition": {
+          "target": "com.cloudflare.rulesets#RulesEditForAccountRequestBodyLogRulePositionIndexPosition"
         }
       }
     },
@@ -9689,7 +10673,7 @@
         }
       }
     },
-    "com.cloudflare.rulesets#RulesEditForAccountRequestBodyLogCustomFieldRulePosition": {
+    "com.cloudflare.rulesets#RulesEditForAccountRequestBodyLogCustomFieldRulePositionBeforePosition": {
       "type": "structure",
       "members": {
         "before": {
@@ -9697,18 +10681,42 @@
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditForAccountRequestBodyLogCustomFieldRulePositionAfterPosition": {
+      "type": "structure",
+      "members": {
         "after": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditForAccountRequestBodyLogCustomFieldRulePositionIndexPosition": {
+      "type": "structure",
+      "members": {
         "index": {
           "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "An index at which to place the rule, where index 1 is the first rule."
           }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditForAccountRequestBodyLogCustomFieldRulePosition": {
+      "type": "union",
+      "members": {
+        "BeforePosition": {
+          "target": "com.cloudflare.rulesets#RulesEditForAccountRequestBodyLogCustomFieldRulePositionBeforePosition"
+        },
+        "AfterPosition": {
+          "target": "com.cloudflare.rulesets#RulesEditForAccountRequestBodyLogCustomFieldRulePositionAfterPosition"
+        },
+        "IndexPosition": {
+          "target": "com.cloudflare.rulesets#RulesEditForAccountRequestBodyLogCustomFieldRulePositionIndexPosition"
         }
       }
     },
@@ -9723,7 +10731,7 @@
         }
       }
     },
-    "com.cloudflare.rulesets#RulesEditForAccountRequestBodyManagedChallengeRulePosition": {
+    "com.cloudflare.rulesets#RulesEditForAccountRequestBodyManagedChallengeRulePositionBeforePosition": {
       "type": "structure",
       "members": {
         "before": {
@@ -9731,18 +10739,42 @@
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditForAccountRequestBodyManagedChallengeRulePositionAfterPosition": {
+      "type": "structure",
+      "members": {
         "after": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditForAccountRequestBodyManagedChallengeRulePositionIndexPosition": {
+      "type": "structure",
+      "members": {
         "index": {
           "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "An index at which to place the rule, where index 1 is the first rule."
           }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditForAccountRequestBodyManagedChallengeRulePosition": {
+      "type": "union",
+      "members": {
+        "BeforePosition": {
+          "target": "com.cloudflare.rulesets#RulesEditForAccountRequestBodyManagedChallengeRulePositionBeforePosition"
+        },
+        "AfterPosition": {
+          "target": "com.cloudflare.rulesets#RulesEditForAccountRequestBodyManagedChallengeRulePositionAfterPosition"
+        },
+        "IndexPosition": {
+          "target": "com.cloudflare.rulesets#RulesEditForAccountRequestBodyManagedChallengeRulePositionIndexPosition"
         }
       }
     },
@@ -9757,7 +10789,7 @@
         }
       }
     },
-    "com.cloudflare.rulesets#RulesEditForAccountRequestBodyRedirectRulePosition": {
+    "com.cloudflare.rulesets#RulesEditForAccountRequestBodyRedirectRulePositionBeforePosition": {
       "type": "structure",
       "members": {
         "before": {
@@ -9765,18 +10797,42 @@
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditForAccountRequestBodyRedirectRulePositionAfterPosition": {
+      "type": "structure",
+      "members": {
         "after": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditForAccountRequestBodyRedirectRulePositionIndexPosition": {
+      "type": "structure",
+      "members": {
         "index": {
           "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "An index at which to place the rule, where index 1 is the first rule."
           }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditForAccountRequestBodyRedirectRulePosition": {
+      "type": "union",
+      "members": {
+        "BeforePosition": {
+          "target": "com.cloudflare.rulesets#RulesEditForAccountRequestBodyRedirectRulePositionBeforePosition"
+        },
+        "AfterPosition": {
+          "target": "com.cloudflare.rulesets#RulesEditForAccountRequestBodyRedirectRulePositionAfterPosition"
+        },
+        "IndexPosition": {
+          "target": "com.cloudflare.rulesets#RulesEditForAccountRequestBodyRedirectRulePositionIndexPosition"
         }
       }
     },
@@ -9791,7 +10847,7 @@
         }
       }
     },
-    "com.cloudflare.rulesets#RulesEditForAccountRequestBodyRewriteRulePosition": {
+    "com.cloudflare.rulesets#RulesEditForAccountRequestBodyRewriteRulePositionBeforePosition": {
       "type": "structure",
       "members": {
         "before": {
@@ -9799,18 +10855,42 @@
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditForAccountRequestBodyRewriteRulePositionAfterPosition": {
+      "type": "structure",
+      "members": {
         "after": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditForAccountRequestBodyRewriteRulePositionIndexPosition": {
+      "type": "structure",
+      "members": {
         "index": {
           "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "An index at which to place the rule, where index 1 is the first rule."
           }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditForAccountRequestBodyRewriteRulePosition": {
+      "type": "union",
+      "members": {
+        "BeforePosition": {
+          "target": "com.cloudflare.rulesets#RulesEditForAccountRequestBodyRewriteRulePositionBeforePosition"
+        },
+        "AfterPosition": {
+          "target": "com.cloudflare.rulesets#RulesEditForAccountRequestBodyRewriteRulePositionAfterPosition"
+        },
+        "IndexPosition": {
+          "target": "com.cloudflare.rulesets#RulesEditForAccountRequestBodyRewriteRulePositionIndexPosition"
         }
       }
     },
@@ -9825,7 +10905,7 @@
         }
       }
     },
-    "com.cloudflare.rulesets#RulesEditForAccountRequestBodyRouteRulePosition": {
+    "com.cloudflare.rulesets#RulesEditForAccountRequestBodyRouteRulePositionBeforePosition": {
       "type": "structure",
       "members": {
         "before": {
@@ -9833,18 +10913,42 @@
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditForAccountRequestBodyRouteRulePositionAfterPosition": {
+      "type": "structure",
+      "members": {
         "after": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditForAccountRequestBodyRouteRulePositionIndexPosition": {
+      "type": "structure",
+      "members": {
         "index": {
           "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "An index at which to place the rule, where index 1 is the first rule."
           }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditForAccountRequestBodyRouteRulePosition": {
+      "type": "union",
+      "members": {
+        "BeforePosition": {
+          "target": "com.cloudflare.rulesets#RulesEditForAccountRequestBodyRouteRulePositionBeforePosition"
+        },
+        "AfterPosition": {
+          "target": "com.cloudflare.rulesets#RulesEditForAccountRequestBodyRouteRulePositionAfterPosition"
+        },
+        "IndexPosition": {
+          "target": "com.cloudflare.rulesets#RulesEditForAccountRequestBodyRouteRulePositionIndexPosition"
         }
       }
     },
@@ -9859,7 +10963,7 @@
         }
       }
     },
-    "com.cloudflare.rulesets#RulesEditForAccountRequestBodyScoreRulePosition": {
+    "com.cloudflare.rulesets#RulesEditForAccountRequestBodyScoreRulePositionBeforePosition": {
       "type": "structure",
       "members": {
         "before": {
@@ -9867,18 +10971,42 @@
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditForAccountRequestBodyScoreRulePositionAfterPosition": {
+      "type": "structure",
+      "members": {
         "after": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditForAccountRequestBodyScoreRulePositionIndexPosition": {
+      "type": "structure",
+      "members": {
         "index": {
           "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "An index at which to place the rule, where index 1 is the first rule."
           }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditForAccountRequestBodyScoreRulePosition": {
+      "type": "union",
+      "members": {
+        "BeforePosition": {
+          "target": "com.cloudflare.rulesets#RulesEditForAccountRequestBodyScoreRulePositionBeforePosition"
+        },
+        "AfterPosition": {
+          "target": "com.cloudflare.rulesets#RulesEditForAccountRequestBodyScoreRulePositionAfterPosition"
+        },
+        "IndexPosition": {
+          "target": "com.cloudflare.rulesets#RulesEditForAccountRequestBodyScoreRulePositionIndexPosition"
         }
       }
     },
@@ -9893,7 +11021,7 @@
         }
       }
     },
-    "com.cloudflare.rulesets#RulesEditForAccountRequestBodyServeErrorRulePosition": {
+    "com.cloudflare.rulesets#RulesEditForAccountRequestBodyServeErrorRulePositionBeforePosition": {
       "type": "structure",
       "members": {
         "before": {
@@ -9901,18 +11029,42 @@
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditForAccountRequestBodyServeErrorRulePositionAfterPosition": {
+      "type": "structure",
+      "members": {
         "after": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditForAccountRequestBodyServeErrorRulePositionIndexPosition": {
+      "type": "structure",
+      "members": {
         "index": {
           "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "An index at which to place the rule, where index 1 is the first rule."
           }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditForAccountRequestBodyServeErrorRulePosition": {
+      "type": "union",
+      "members": {
+        "BeforePosition": {
+          "target": "com.cloudflare.rulesets#RulesEditForAccountRequestBodyServeErrorRulePositionBeforePosition"
+        },
+        "AfterPosition": {
+          "target": "com.cloudflare.rulesets#RulesEditForAccountRequestBodyServeErrorRulePositionAfterPosition"
+        },
+        "IndexPosition": {
+          "target": "com.cloudflare.rulesets#RulesEditForAccountRequestBodyServeErrorRulePositionIndexPosition"
         }
       }
     },
@@ -9927,7 +11079,7 @@
         }
       }
     },
-    "com.cloudflare.rulesets#RulesEditForAccountRequestBodySetCacheSettingsRulePosition": {
+    "com.cloudflare.rulesets#RulesEditForAccountRequestBodySetCacheSettingsRulePositionBeforePosition": {
       "type": "structure",
       "members": {
         "before": {
@@ -9935,18 +11087,42 @@
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditForAccountRequestBodySetCacheSettingsRulePositionAfterPosition": {
+      "type": "structure",
+      "members": {
         "after": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditForAccountRequestBodySetCacheSettingsRulePositionIndexPosition": {
+      "type": "structure",
+      "members": {
         "index": {
           "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "An index at which to place the rule, where index 1 is the first rule."
           }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditForAccountRequestBodySetCacheSettingsRulePosition": {
+      "type": "union",
+      "members": {
+        "BeforePosition": {
+          "target": "com.cloudflare.rulesets#RulesEditForAccountRequestBodySetCacheSettingsRulePositionBeforePosition"
+        },
+        "AfterPosition": {
+          "target": "com.cloudflare.rulesets#RulesEditForAccountRequestBodySetCacheSettingsRulePositionAfterPosition"
+        },
+        "IndexPosition": {
+          "target": "com.cloudflare.rulesets#RulesEditForAccountRequestBodySetCacheSettingsRulePositionIndexPosition"
         }
       }
     },
@@ -9961,7 +11137,7 @@
         }
       }
     },
-    "com.cloudflare.rulesets#RulesEditForAccountRequestBodySetConfigurationRulePosition": {
+    "com.cloudflare.rulesets#RulesEditForAccountRequestBodySetConfigurationRulePositionBeforePosition": {
       "type": "structure",
       "members": {
         "before": {
@@ -9969,18 +11145,42 @@
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditForAccountRequestBodySetConfigurationRulePositionAfterPosition": {
+      "type": "structure",
+      "members": {
         "after": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditForAccountRequestBodySetConfigurationRulePositionIndexPosition": {
+      "type": "structure",
+      "members": {
         "index": {
           "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "An index at which to place the rule, where index 1 is the first rule."
           }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditForAccountRequestBodySetConfigurationRulePosition": {
+      "type": "union",
+      "members": {
+        "BeforePosition": {
+          "target": "com.cloudflare.rulesets#RulesEditForAccountRequestBodySetConfigurationRulePositionBeforePosition"
+        },
+        "AfterPosition": {
+          "target": "com.cloudflare.rulesets#RulesEditForAccountRequestBodySetConfigurationRulePositionAfterPosition"
+        },
+        "IndexPosition": {
+          "target": "com.cloudflare.rulesets#RulesEditForAccountRequestBodySetConfigurationRulePositionIndexPosition"
         }
       }
     },
@@ -9995,7 +11195,7 @@
         }
       }
     },
-    "com.cloudflare.rulesets#RulesEditForAccountRequestBodySkipRulePosition": {
+    "com.cloudflare.rulesets#RulesEditForAccountRequestBodySkipRulePositionBeforePosition": {
       "type": "structure",
       "members": {
         "before": {
@@ -10003,18 +11203,42 @@
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditForAccountRequestBodySkipRulePositionAfterPosition": {
+      "type": "structure",
+      "members": {
         "after": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditForAccountRequestBodySkipRulePositionIndexPosition": {
+      "type": "structure",
+      "members": {
         "index": {
           "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "An index at which to place the rule, where index 1 is the first rule."
           }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditForAccountRequestBodySkipRulePosition": {
+      "type": "union",
+      "members": {
+        "BeforePosition": {
+          "target": "com.cloudflare.rulesets#RulesEditForAccountRequestBodySkipRulePositionBeforePosition"
+        },
+        "AfterPosition": {
+          "target": "com.cloudflare.rulesets#RulesEditForAccountRequestBodySkipRulePositionAfterPosition"
+        },
+        "IndexPosition": {
+          "target": "com.cloudflare.rulesets#RulesEditForAccountRequestBodySkipRulePositionIndexPosition"
         }
       }
     },
@@ -10569,7 +11793,7 @@
         "smithy.api#documentation": "Updates an existing rule in an account or zone ruleset."
       }
     },
-    "com.cloudflare.rulesets#RulesEditForZoneRequestBodyBlockRulePosition": {
+    "com.cloudflare.rulesets#RulesEditForZoneRequestBodyBlockRulePositionBeforePosition": {
       "type": "structure",
       "members": {
         "before": {
@@ -10577,18 +11801,42 @@
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditForZoneRequestBodyBlockRulePositionAfterPosition": {
+      "type": "structure",
+      "members": {
         "after": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditForZoneRequestBodyBlockRulePositionIndexPosition": {
+      "type": "structure",
+      "members": {
         "index": {
           "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "An index at which to place the rule, where index 1 is the first rule."
           }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditForZoneRequestBodyBlockRulePosition": {
+      "type": "union",
+      "members": {
+        "BeforePosition": {
+          "target": "com.cloudflare.rulesets#RulesEditForZoneRequestBodyBlockRulePositionBeforePosition"
+        },
+        "AfterPosition": {
+          "target": "com.cloudflare.rulesets#RulesEditForZoneRequestBodyBlockRulePositionAfterPosition"
+        },
+        "IndexPosition": {
+          "target": "com.cloudflare.rulesets#RulesEditForZoneRequestBodyBlockRulePositionIndexPosition"
         }
       }
     },
@@ -10651,7 +11899,7 @@
         }
       }
     },
-    "com.cloudflare.rulesets#RulesEditForZoneRequestBodyPosition": {
+    "com.cloudflare.rulesets#RulesEditForZoneRequestBodyPositionBeforePosition": {
       "type": "structure",
       "members": {
         "before": {
@@ -10659,18 +11907,42 @@
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditForZoneRequestBodyPositionAfterPosition": {
+      "type": "structure",
+      "members": {
         "after": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditForZoneRequestBodyPositionIndexPosition": {
+      "type": "structure",
+      "members": {
         "index": {
           "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "An index at which to place the rule, where index 1 is the first rule."
           }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditForZoneRequestBodyPosition": {
+      "type": "union",
+      "members": {
+        "BeforePosition": {
+          "target": "com.cloudflare.rulesets#RulesEditForZoneRequestBodyPositionBeforePosition"
+        },
+        "AfterPosition": {
+          "target": "com.cloudflare.rulesets#RulesEditForZoneRequestBodyPositionAfterPosition"
+        },
+        "IndexPosition": {
+          "target": "com.cloudflare.rulesets#RulesEditForZoneRequestBodyPositionIndexPosition"
         }
       }
     },
@@ -10735,7 +12007,7 @@
         }
       }
     },
-    "com.cloudflare.rulesets#RulesEditForZoneRequestBodyResponseCompressionRulePosition": {
+    "com.cloudflare.rulesets#RulesEditForZoneRequestBodyResponseCompressionRulePositionBeforePosition": {
       "type": "structure",
       "members": {
         "before": {
@@ -10743,18 +12015,42 @@
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditForZoneRequestBodyResponseCompressionRulePositionAfterPosition": {
+      "type": "structure",
+      "members": {
         "after": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditForZoneRequestBodyResponseCompressionRulePositionIndexPosition": {
+      "type": "structure",
+      "members": {
         "index": {
           "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "An index at which to place the rule, where index 1 is the first rule."
           }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditForZoneRequestBodyResponseCompressionRulePosition": {
+      "type": "union",
+      "members": {
+        "BeforePosition": {
+          "target": "com.cloudflare.rulesets#RulesEditForZoneRequestBodyResponseCompressionRulePositionBeforePosition"
+        },
+        "AfterPosition": {
+          "target": "com.cloudflare.rulesets#RulesEditForZoneRequestBodyResponseCompressionRulePositionAfterPosition"
+        },
+        "IndexPosition": {
+          "target": "com.cloudflare.rulesets#RulesEditForZoneRequestBodyResponseCompressionRulePositionIndexPosition"
         }
       }
     },
@@ -10769,7 +12065,7 @@
         }
       }
     },
-    "com.cloudflare.rulesets#RulesEditForZoneRequestBodyDDoSDynamicRulePosition": {
+    "com.cloudflare.rulesets#RulesEditForZoneRequestBodyDDoSDynamicRulePositionBeforePosition": {
       "type": "structure",
       "members": {
         "before": {
@@ -10777,18 +12073,42 @@
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditForZoneRequestBodyDDoSDynamicRulePositionAfterPosition": {
+      "type": "structure",
+      "members": {
         "after": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditForZoneRequestBodyDDoSDynamicRulePositionIndexPosition": {
+      "type": "structure",
+      "members": {
         "index": {
           "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "An index at which to place the rule, where index 1 is the first rule."
           }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditForZoneRequestBodyDDoSDynamicRulePosition": {
+      "type": "union",
+      "members": {
+        "BeforePosition": {
+          "target": "com.cloudflare.rulesets#RulesEditForZoneRequestBodyDDoSDynamicRulePositionBeforePosition"
+        },
+        "AfterPosition": {
+          "target": "com.cloudflare.rulesets#RulesEditForZoneRequestBodyDDoSDynamicRulePositionAfterPosition"
+        },
+        "IndexPosition": {
+          "target": "com.cloudflare.rulesets#RulesEditForZoneRequestBodyDDoSDynamicRulePositionIndexPosition"
         }
       }
     },
@@ -10803,7 +12123,7 @@
         }
       }
     },
-    "com.cloudflare.rulesets#RulesEditForZoneRequestBodyExecuteRulePosition": {
+    "com.cloudflare.rulesets#RulesEditForZoneRequestBodyExecuteRulePositionBeforePosition": {
       "type": "structure",
       "members": {
         "before": {
@@ -10811,18 +12131,42 @@
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditForZoneRequestBodyExecuteRulePositionAfterPosition": {
+      "type": "structure",
+      "members": {
         "after": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditForZoneRequestBodyExecuteRulePositionIndexPosition": {
+      "type": "structure",
+      "members": {
         "index": {
           "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "An index at which to place the rule, where index 1 is the first rule."
           }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditForZoneRequestBodyExecuteRulePosition": {
+      "type": "union",
+      "members": {
+        "BeforePosition": {
+          "target": "com.cloudflare.rulesets#RulesEditForZoneRequestBodyExecuteRulePositionBeforePosition"
+        },
+        "AfterPosition": {
+          "target": "com.cloudflare.rulesets#RulesEditForZoneRequestBodyExecuteRulePositionAfterPosition"
+        },
+        "IndexPosition": {
+          "target": "com.cloudflare.rulesets#RulesEditForZoneRequestBodyExecuteRulePositionIndexPosition"
         }
       }
     },
@@ -10837,7 +12181,7 @@
         }
       }
     },
-    "com.cloudflare.rulesets#RulesEditForZoneRequestBodyForceConnectionCloseRulePosition": {
+    "com.cloudflare.rulesets#RulesEditForZoneRequestBodyForceConnectionCloseRulePositionBeforePosition": {
       "type": "structure",
       "members": {
         "before": {
@@ -10845,18 +12189,42 @@
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditForZoneRequestBodyForceConnectionCloseRulePositionAfterPosition": {
+      "type": "structure",
+      "members": {
         "after": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditForZoneRequestBodyForceConnectionCloseRulePositionIndexPosition": {
+      "type": "structure",
+      "members": {
         "index": {
           "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "An index at which to place the rule, where index 1 is the first rule."
           }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditForZoneRequestBodyForceConnectionCloseRulePosition": {
+      "type": "union",
+      "members": {
+        "BeforePosition": {
+          "target": "com.cloudflare.rulesets#RulesEditForZoneRequestBodyForceConnectionCloseRulePositionBeforePosition"
+        },
+        "AfterPosition": {
+          "target": "com.cloudflare.rulesets#RulesEditForZoneRequestBodyForceConnectionCloseRulePositionAfterPosition"
+        },
+        "IndexPosition": {
+          "target": "com.cloudflare.rulesets#RulesEditForZoneRequestBodyForceConnectionCloseRulePositionIndexPosition"
         }
       }
     },
@@ -10871,7 +12239,7 @@
         }
       }
     },
-    "com.cloudflare.rulesets#RulesEditForZoneRequestBodyLogRulePosition": {
+    "com.cloudflare.rulesets#RulesEditForZoneRequestBodyLogRulePositionBeforePosition": {
       "type": "structure",
       "members": {
         "before": {
@@ -10879,18 +12247,42 @@
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditForZoneRequestBodyLogRulePositionAfterPosition": {
+      "type": "structure",
+      "members": {
         "after": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditForZoneRequestBodyLogRulePositionIndexPosition": {
+      "type": "structure",
+      "members": {
         "index": {
           "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "An index at which to place the rule, where index 1 is the first rule."
           }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditForZoneRequestBodyLogRulePosition": {
+      "type": "union",
+      "members": {
+        "BeforePosition": {
+          "target": "com.cloudflare.rulesets#RulesEditForZoneRequestBodyLogRulePositionBeforePosition"
+        },
+        "AfterPosition": {
+          "target": "com.cloudflare.rulesets#RulesEditForZoneRequestBodyLogRulePositionAfterPosition"
+        },
+        "IndexPosition": {
+          "target": "com.cloudflare.rulesets#RulesEditForZoneRequestBodyLogRulePositionIndexPosition"
         }
       }
     },
@@ -10905,7 +12297,7 @@
         }
       }
     },
-    "com.cloudflare.rulesets#RulesEditForZoneRequestBodyLogCustomFieldRulePosition": {
+    "com.cloudflare.rulesets#RulesEditForZoneRequestBodyLogCustomFieldRulePositionBeforePosition": {
       "type": "structure",
       "members": {
         "before": {
@@ -10913,18 +12305,42 @@
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditForZoneRequestBodyLogCustomFieldRulePositionAfterPosition": {
+      "type": "structure",
+      "members": {
         "after": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditForZoneRequestBodyLogCustomFieldRulePositionIndexPosition": {
+      "type": "structure",
+      "members": {
         "index": {
           "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "An index at which to place the rule, where index 1 is the first rule."
           }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditForZoneRequestBodyLogCustomFieldRulePosition": {
+      "type": "union",
+      "members": {
+        "BeforePosition": {
+          "target": "com.cloudflare.rulesets#RulesEditForZoneRequestBodyLogCustomFieldRulePositionBeforePosition"
+        },
+        "AfterPosition": {
+          "target": "com.cloudflare.rulesets#RulesEditForZoneRequestBodyLogCustomFieldRulePositionAfterPosition"
+        },
+        "IndexPosition": {
+          "target": "com.cloudflare.rulesets#RulesEditForZoneRequestBodyLogCustomFieldRulePositionIndexPosition"
         }
       }
     },
@@ -10939,7 +12355,7 @@
         }
       }
     },
-    "com.cloudflare.rulesets#RulesEditForZoneRequestBodyManagedChallengeRulePosition": {
+    "com.cloudflare.rulesets#RulesEditForZoneRequestBodyManagedChallengeRulePositionBeforePosition": {
       "type": "structure",
       "members": {
         "before": {
@@ -10947,18 +12363,42 @@
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditForZoneRequestBodyManagedChallengeRulePositionAfterPosition": {
+      "type": "structure",
+      "members": {
         "after": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditForZoneRequestBodyManagedChallengeRulePositionIndexPosition": {
+      "type": "structure",
+      "members": {
         "index": {
           "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "An index at which to place the rule, where index 1 is the first rule."
           }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditForZoneRequestBodyManagedChallengeRulePosition": {
+      "type": "union",
+      "members": {
+        "BeforePosition": {
+          "target": "com.cloudflare.rulesets#RulesEditForZoneRequestBodyManagedChallengeRulePositionBeforePosition"
+        },
+        "AfterPosition": {
+          "target": "com.cloudflare.rulesets#RulesEditForZoneRequestBodyManagedChallengeRulePositionAfterPosition"
+        },
+        "IndexPosition": {
+          "target": "com.cloudflare.rulesets#RulesEditForZoneRequestBodyManagedChallengeRulePositionIndexPosition"
         }
       }
     },
@@ -10973,7 +12413,7 @@
         }
       }
     },
-    "com.cloudflare.rulesets#RulesEditForZoneRequestBodyRedirectRulePosition": {
+    "com.cloudflare.rulesets#RulesEditForZoneRequestBodyRedirectRulePositionBeforePosition": {
       "type": "structure",
       "members": {
         "before": {
@@ -10981,18 +12421,42 @@
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditForZoneRequestBodyRedirectRulePositionAfterPosition": {
+      "type": "structure",
+      "members": {
         "after": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditForZoneRequestBodyRedirectRulePositionIndexPosition": {
+      "type": "structure",
+      "members": {
         "index": {
           "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "An index at which to place the rule, where index 1 is the first rule."
           }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditForZoneRequestBodyRedirectRulePosition": {
+      "type": "union",
+      "members": {
+        "BeforePosition": {
+          "target": "com.cloudflare.rulesets#RulesEditForZoneRequestBodyRedirectRulePositionBeforePosition"
+        },
+        "AfterPosition": {
+          "target": "com.cloudflare.rulesets#RulesEditForZoneRequestBodyRedirectRulePositionAfterPosition"
+        },
+        "IndexPosition": {
+          "target": "com.cloudflare.rulesets#RulesEditForZoneRequestBodyRedirectRulePositionIndexPosition"
         }
       }
     },
@@ -11007,7 +12471,7 @@
         }
       }
     },
-    "com.cloudflare.rulesets#RulesEditForZoneRequestBodyRewriteRulePosition": {
+    "com.cloudflare.rulesets#RulesEditForZoneRequestBodyRewriteRulePositionBeforePosition": {
       "type": "structure",
       "members": {
         "before": {
@@ -11015,18 +12479,42 @@
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditForZoneRequestBodyRewriteRulePositionAfterPosition": {
+      "type": "structure",
+      "members": {
         "after": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditForZoneRequestBodyRewriteRulePositionIndexPosition": {
+      "type": "structure",
+      "members": {
         "index": {
           "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "An index at which to place the rule, where index 1 is the first rule."
           }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditForZoneRequestBodyRewriteRulePosition": {
+      "type": "union",
+      "members": {
+        "BeforePosition": {
+          "target": "com.cloudflare.rulesets#RulesEditForZoneRequestBodyRewriteRulePositionBeforePosition"
+        },
+        "AfterPosition": {
+          "target": "com.cloudflare.rulesets#RulesEditForZoneRequestBodyRewriteRulePositionAfterPosition"
+        },
+        "IndexPosition": {
+          "target": "com.cloudflare.rulesets#RulesEditForZoneRequestBodyRewriteRulePositionIndexPosition"
         }
       }
     },
@@ -11041,7 +12529,7 @@
         }
       }
     },
-    "com.cloudflare.rulesets#RulesEditForZoneRequestBodyRouteRulePosition": {
+    "com.cloudflare.rulesets#RulesEditForZoneRequestBodyRouteRulePositionBeforePosition": {
       "type": "structure",
       "members": {
         "before": {
@@ -11049,18 +12537,42 @@
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditForZoneRequestBodyRouteRulePositionAfterPosition": {
+      "type": "structure",
+      "members": {
         "after": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditForZoneRequestBodyRouteRulePositionIndexPosition": {
+      "type": "structure",
+      "members": {
         "index": {
           "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "An index at which to place the rule, where index 1 is the first rule."
           }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditForZoneRequestBodyRouteRulePosition": {
+      "type": "union",
+      "members": {
+        "BeforePosition": {
+          "target": "com.cloudflare.rulesets#RulesEditForZoneRequestBodyRouteRulePositionBeforePosition"
+        },
+        "AfterPosition": {
+          "target": "com.cloudflare.rulesets#RulesEditForZoneRequestBodyRouteRulePositionAfterPosition"
+        },
+        "IndexPosition": {
+          "target": "com.cloudflare.rulesets#RulesEditForZoneRequestBodyRouteRulePositionIndexPosition"
         }
       }
     },
@@ -11075,7 +12587,7 @@
         }
       }
     },
-    "com.cloudflare.rulesets#RulesEditForZoneRequestBodyScoreRulePosition": {
+    "com.cloudflare.rulesets#RulesEditForZoneRequestBodyScoreRulePositionBeforePosition": {
       "type": "structure",
       "members": {
         "before": {
@@ -11083,18 +12595,42 @@
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditForZoneRequestBodyScoreRulePositionAfterPosition": {
+      "type": "structure",
+      "members": {
         "after": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditForZoneRequestBodyScoreRulePositionIndexPosition": {
+      "type": "structure",
+      "members": {
         "index": {
           "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "An index at which to place the rule, where index 1 is the first rule."
           }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditForZoneRequestBodyScoreRulePosition": {
+      "type": "union",
+      "members": {
+        "BeforePosition": {
+          "target": "com.cloudflare.rulesets#RulesEditForZoneRequestBodyScoreRulePositionBeforePosition"
+        },
+        "AfterPosition": {
+          "target": "com.cloudflare.rulesets#RulesEditForZoneRequestBodyScoreRulePositionAfterPosition"
+        },
+        "IndexPosition": {
+          "target": "com.cloudflare.rulesets#RulesEditForZoneRequestBodyScoreRulePositionIndexPosition"
         }
       }
     },
@@ -11109,7 +12645,7 @@
         }
       }
     },
-    "com.cloudflare.rulesets#RulesEditForZoneRequestBodyServeErrorRulePosition": {
+    "com.cloudflare.rulesets#RulesEditForZoneRequestBodyServeErrorRulePositionBeforePosition": {
       "type": "structure",
       "members": {
         "before": {
@@ -11117,18 +12653,42 @@
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditForZoneRequestBodyServeErrorRulePositionAfterPosition": {
+      "type": "structure",
+      "members": {
         "after": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditForZoneRequestBodyServeErrorRulePositionIndexPosition": {
+      "type": "structure",
+      "members": {
         "index": {
           "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "An index at which to place the rule, where index 1 is the first rule."
           }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditForZoneRequestBodyServeErrorRulePosition": {
+      "type": "union",
+      "members": {
+        "BeforePosition": {
+          "target": "com.cloudflare.rulesets#RulesEditForZoneRequestBodyServeErrorRulePositionBeforePosition"
+        },
+        "AfterPosition": {
+          "target": "com.cloudflare.rulesets#RulesEditForZoneRequestBodyServeErrorRulePositionAfterPosition"
+        },
+        "IndexPosition": {
+          "target": "com.cloudflare.rulesets#RulesEditForZoneRequestBodyServeErrorRulePositionIndexPosition"
         }
       }
     },
@@ -11143,7 +12703,7 @@
         }
       }
     },
-    "com.cloudflare.rulesets#RulesEditForZoneRequestBodySetCacheSettingsRulePosition": {
+    "com.cloudflare.rulesets#RulesEditForZoneRequestBodySetCacheSettingsRulePositionBeforePosition": {
       "type": "structure",
       "members": {
         "before": {
@@ -11151,18 +12711,42 @@
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditForZoneRequestBodySetCacheSettingsRulePositionAfterPosition": {
+      "type": "structure",
+      "members": {
         "after": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditForZoneRequestBodySetCacheSettingsRulePositionIndexPosition": {
+      "type": "structure",
+      "members": {
         "index": {
           "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "An index at which to place the rule, where index 1 is the first rule."
           }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditForZoneRequestBodySetCacheSettingsRulePosition": {
+      "type": "union",
+      "members": {
+        "BeforePosition": {
+          "target": "com.cloudflare.rulesets#RulesEditForZoneRequestBodySetCacheSettingsRulePositionBeforePosition"
+        },
+        "AfterPosition": {
+          "target": "com.cloudflare.rulesets#RulesEditForZoneRequestBodySetCacheSettingsRulePositionAfterPosition"
+        },
+        "IndexPosition": {
+          "target": "com.cloudflare.rulesets#RulesEditForZoneRequestBodySetCacheSettingsRulePositionIndexPosition"
         }
       }
     },
@@ -11177,7 +12761,7 @@
         }
       }
     },
-    "com.cloudflare.rulesets#RulesEditForZoneRequestBodySetConfigurationRulePosition": {
+    "com.cloudflare.rulesets#RulesEditForZoneRequestBodySetConfigurationRulePositionBeforePosition": {
       "type": "structure",
       "members": {
         "before": {
@@ -11185,18 +12769,42 @@
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditForZoneRequestBodySetConfigurationRulePositionAfterPosition": {
+      "type": "structure",
+      "members": {
         "after": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditForZoneRequestBodySetConfigurationRulePositionIndexPosition": {
+      "type": "structure",
+      "members": {
         "index": {
           "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "An index at which to place the rule, where index 1 is the first rule."
           }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditForZoneRequestBodySetConfigurationRulePosition": {
+      "type": "union",
+      "members": {
+        "BeforePosition": {
+          "target": "com.cloudflare.rulesets#RulesEditForZoneRequestBodySetConfigurationRulePositionBeforePosition"
+        },
+        "AfterPosition": {
+          "target": "com.cloudflare.rulesets#RulesEditForZoneRequestBodySetConfigurationRulePositionAfterPosition"
+        },
+        "IndexPosition": {
+          "target": "com.cloudflare.rulesets#RulesEditForZoneRequestBodySetConfigurationRulePositionIndexPosition"
         }
       }
     },
@@ -11211,7 +12819,7 @@
         }
       }
     },
-    "com.cloudflare.rulesets#RulesEditForZoneRequestBodySkipRulePosition": {
+    "com.cloudflare.rulesets#RulesEditForZoneRequestBodySkipRulePositionBeforePosition": {
       "type": "structure",
       "members": {
         "before": {
@@ -11219,18 +12827,42 @@
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditForZoneRequestBodySkipRulePositionAfterPosition": {
+      "type": "structure",
+      "members": {
         "after": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditForZoneRequestBodySkipRulePositionIndexPosition": {
+      "type": "structure",
+      "members": {
         "index": {
           "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "An index at which to place the rule, where index 1 is the first rule."
           }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditForZoneRequestBodySkipRulePosition": {
+      "type": "union",
+      "members": {
+        "BeforePosition": {
+          "target": "com.cloudflare.rulesets#RulesEditForZoneRequestBodySkipRulePositionBeforePosition"
+        },
+        "AfterPosition": {
+          "target": "com.cloudflare.rulesets#RulesEditForZoneRequestBodySkipRulePositionAfterPosition"
+        },
+        "IndexPosition": {
+          "target": "com.cloudflare.rulesets#RulesEditForZoneRequestBodySkipRulePositionIndexPosition"
         }
       }
     },

@@ -524,7 +524,7 @@
         }
       }
     },
-    "com.cloudflare.tenants#EntitlementsGetResponseCustomEntitlementsItemAllocationType": {
+    "com.cloudflare.tenants#EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPIMaxCountAllocationType": {
       "type": "enum",
       "members": {
         "MAX_COUNT": {
@@ -535,14 +535,87 @@
         }
       }
     },
-    "com.cloudflare.tenants#EntitlementsGetResponseCustomEntitlementsItemAllocation": {
+    "com.cloudflare.tenants#EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPIMaxCountAllocation": {
       "type": "structure",
       "members": {
         "type": {
-          "target": "com.cloudflare.tenants#EntitlementsGetResponseCustomEntitlementsItemAllocationType"
+          "target": "com.cloudflare.tenants#EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPIMaxCountAllocationType",
+          "traits": {
+            "smithy.api#required": {}
+          }
         },
         "value": {
-          "target": "smithy.api#Double"
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.tenants#EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPIBoolAllocationType": {
+      "type": "enum",
+      "members": {
+        "BOOL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "bool"
+          }
+        }
+      }
+    },
+    "com.cloudflare.tenants#EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPIBoolAllocation": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.cloudflare.tenants#EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPIBoolAllocationType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "value": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.tenants#EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPINullAllocationType": {
+      "type": "enum",
+      "members": {
+        "VALUE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": ""
+          }
+        }
+      }
+    },
+    "com.cloudflare.tenants#EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPINullAllocation": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.cloudflare.tenants#EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPINullAllocationType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "value": {
+          "target": "smithy.api#Document"
+        }
+      }
+    },
+    "com.cloudflare.tenants#EntitlementsGetResponseCustomEntitlementsItemAllocation": {
+      "type": "union",
+      "members": {
+        "OrganizationsAPIMaxCountAllocation": {
+          "target": "com.cloudflare.tenants#EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPIMaxCountAllocation"
+        },
+        "OrganizationsAPIBoolAllocation": {
+          "target": "com.cloudflare.tenants#EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPIBoolAllocation"
+        },
+        "OrganizationsAPINullAllocation": {
+          "target": "com.cloudflare.tenants#EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPINullAllocation"
         }
       }
     },

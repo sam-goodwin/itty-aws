@@ -126,24 +126,54 @@ export class RulesetNotFound extends T.applyErrorMatchers(
   [{ code: 10003 }, { code: 10001 }],
 ) {}
 
-export interface RulesCreateForAccountRequestBodyBlockRulePosition {
+export interface RulesCreateForAccountRequestBodyBlockRulePositionBeforePosition {
   /** The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top. */
   before?: string;
-  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
-  after?: string;
-  /** An index at which to place the rule, where index 1 is the first rule. */
-  index?: number;
 }
-export const RulesCreateForAccountRequestBodyBlockRulePosition =
+export const RulesCreateForAccountRequestBodyBlockRulePositionBeforePosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       before: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "RulesCreateForAccountRequestBodyBlockRulePositionBeforePosition",
+  }) as any as S.Schema<RulesCreateForAccountRequestBodyBlockRulePositionBeforePosition>;
+
+export interface RulesCreateForAccountRequestBodyBlockRulePositionAfterPosition {
+  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
+  after?: string;
+}
+export const RulesCreateForAccountRequestBodyBlockRulePositionAfterPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       after: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "RulesCreateForAccountRequestBodyBlockRulePositionAfterPosition",
+  }) as any as S.Schema<RulesCreateForAccountRequestBodyBlockRulePositionAfterPosition>;
+
+export interface RulesCreateForAccountRequestBodyBlockRulePositionIndexPosition {
+  /** An index at which to place the rule, where index 1 is the first rule. */
+  index?: number;
+}
+export const RulesCreateForAccountRequestBodyBlockRulePositionIndexPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       index: S.optional(S.Number),
     }),
   ).annotate({
-    identifier: "RulesCreateForAccountRequestBodyBlockRulePosition",
-  }) as any as S.Schema<RulesCreateForAccountRequestBodyBlockRulePosition>;
+    identifier:
+      "RulesCreateForAccountRequestBodyBlockRulePositionIndexPosition",
+  }) as any as S.Schema<RulesCreateForAccountRequestBodyBlockRulePositionIndexPosition>;
+
+export type RulesCreateForAccountRequestBodyBlockRulePosition =
+  | RulesCreateForAccountRequestBodyBlockRulePositionBeforePosition
+  | RulesCreateForAccountRequestBodyBlockRulePositionAfterPosition
+  | RulesCreateForAccountRequestBodyBlockRulePositionIndexPosition;
+export const RulesCreateForAccountRequestBodyBlockRulePosition =
+  /*@__PURE__*/ S.Unknown;
 
 export interface RulesCreateForAccountRequestBodyBlockRule {
   /** An object configuring where the rule will be placed. */
@@ -198,24 +228,50 @@ export const RulesCreateForAccountRequestBodyLogging = /*@__PURE__*/ S.suspend(
   identifier: "RulesCreateForAccountRequestBodyLogging",
 }) as any as S.Schema<RulesCreateForAccountRequestBodyLogging>;
 
-export interface RulesCreateForAccountRequestBodyPosition {
+export interface RulesCreateForAccountRequestBodyPositionBeforePosition {
   /** The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top. */
   before?: string;
+}
+export const RulesCreateForAccountRequestBodyPositionBeforePosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      before: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "RulesCreateForAccountRequestBodyPositionBeforePosition",
+  }) as any as S.Schema<RulesCreateForAccountRequestBodyPositionBeforePosition>;
+
+export interface RulesCreateForAccountRequestBodyPositionAfterPosition {
   /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
   after?: string;
+}
+export const RulesCreateForAccountRequestBodyPositionAfterPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      after: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "RulesCreateForAccountRequestBodyPositionAfterPosition",
+  }) as any as S.Schema<RulesCreateForAccountRequestBodyPositionAfterPosition>;
+
+export interface RulesCreateForAccountRequestBodyPositionIndexPosition {
   /** An index at which to place the rule, where index 1 is the first rule. */
   index?: number;
 }
-export const RulesCreateForAccountRequestBodyPosition = /*@__PURE__*/ S.suspend(
-  () =>
+export const RulesCreateForAccountRequestBodyPositionIndexPosition =
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      before: S.optional(S.String),
-      after: S.optional(S.String),
       index: S.optional(S.Number),
     }),
-).annotate({
-  identifier: "RulesCreateForAccountRequestBodyPosition",
-}) as any as S.Schema<RulesCreateForAccountRequestBodyPosition>;
+  ).annotate({
+    identifier: "RulesCreateForAccountRequestBodyPositionIndexPosition",
+  }) as any as S.Schema<RulesCreateForAccountRequestBodyPositionIndexPosition>;
+
+export type RulesCreateForAccountRequestBodyPosition =
+  | RulesCreateForAccountRequestBodyPositionBeforePosition
+  | RulesCreateForAccountRequestBodyPositionAfterPosition
+  | RulesCreateForAccountRequestBodyPositionIndexPosition;
+export const RulesCreateForAccountRequestBodyPosition = /*@__PURE__*/ S.Unknown;
 
 export type RulesCreateForAccountRequestBodyRatelimitCharacteristicsList =
   string[];
@@ -269,25 +325,54 @@ export const RulesCreateForAccountRequestBodyRatelimit =
     identifier: "RulesCreateForAccountRequestBodyRatelimit",
   }) as any as S.Schema<RulesCreateForAccountRequestBodyRatelimit>;
 
-export interface RulesCreateForAccountRequestBodyResponseCompressionRulePosition {
+export interface RulesCreateForAccountRequestBodyResponseCompressionRulePositionBeforePosition {
   /** The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top. */
   before?: string;
-  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
-  after?: string;
-  /** An index at which to place the rule, where index 1 is the first rule. */
-  index?: number;
 }
-export const RulesCreateForAccountRequestBodyResponseCompressionRulePosition =
+export const RulesCreateForAccountRequestBodyResponseCompressionRulePositionBeforePosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       before: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "RulesCreateForAccountRequestBodyResponseCompressionRulePositionBeforePosition",
+  }) as any as S.Schema<RulesCreateForAccountRequestBodyResponseCompressionRulePositionBeforePosition>;
+
+export interface RulesCreateForAccountRequestBodyResponseCompressionRulePositionAfterPosition {
+  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
+  after?: string;
+}
+export const RulesCreateForAccountRequestBodyResponseCompressionRulePositionAfterPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       after: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "RulesCreateForAccountRequestBodyResponseCompressionRulePositionAfterPosition",
+  }) as any as S.Schema<RulesCreateForAccountRequestBodyResponseCompressionRulePositionAfterPosition>;
+
+export interface RulesCreateForAccountRequestBodyResponseCompressionRulePositionIndexPosition {
+  /** An index at which to place the rule, where index 1 is the first rule. */
+  index?: number;
+}
+export const RulesCreateForAccountRequestBodyResponseCompressionRulePositionIndexPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       index: S.optional(S.Number),
     }),
   ).annotate({
     identifier:
-      "RulesCreateForAccountRequestBodyResponseCompressionRulePosition",
-  }) as any as S.Schema<RulesCreateForAccountRequestBodyResponseCompressionRulePosition>;
+      "RulesCreateForAccountRequestBodyResponseCompressionRulePositionIndexPosition",
+  }) as any as S.Schema<RulesCreateForAccountRequestBodyResponseCompressionRulePositionIndexPosition>;
+
+export type RulesCreateForAccountRequestBodyResponseCompressionRulePosition =
+  | RulesCreateForAccountRequestBodyResponseCompressionRulePositionBeforePosition
+  | RulesCreateForAccountRequestBodyResponseCompressionRulePositionAfterPosition
+  | RulesCreateForAccountRequestBodyResponseCompressionRulePositionIndexPosition;
+export const RulesCreateForAccountRequestBodyResponseCompressionRulePosition =
+  /*@__PURE__*/ S.Unknown;
 
 export interface RulesCreateForAccountRequestBodyResponseCompressionRule {
   /** An object configuring where the rule will be placed. */
@@ -304,24 +389,54 @@ export const RulesCreateForAccountRequestBodyResponseCompressionRule =
     identifier: "RulesCreateForAccountRequestBodyResponseCompressionRule",
   }) as any as S.Schema<RulesCreateForAccountRequestBodyResponseCompressionRule>;
 
-export interface RulesCreateForAccountRequestBodyDDoSDynamicRulePosition {
+export interface RulesCreateForAccountRequestBodyDDoSDynamicRulePositionBeforePosition {
   /** The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top. */
   before?: string;
-  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
-  after?: string;
-  /** An index at which to place the rule, where index 1 is the first rule. */
-  index?: number;
 }
-export const RulesCreateForAccountRequestBodyDDoSDynamicRulePosition =
+export const RulesCreateForAccountRequestBodyDDoSDynamicRulePositionBeforePosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       before: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "RulesCreateForAccountRequestBodyDDoSDynamicRulePositionBeforePosition",
+  }) as any as S.Schema<RulesCreateForAccountRequestBodyDDoSDynamicRulePositionBeforePosition>;
+
+export interface RulesCreateForAccountRequestBodyDDoSDynamicRulePositionAfterPosition {
+  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
+  after?: string;
+}
+export const RulesCreateForAccountRequestBodyDDoSDynamicRulePositionAfterPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       after: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "RulesCreateForAccountRequestBodyDDoSDynamicRulePositionAfterPosition",
+  }) as any as S.Schema<RulesCreateForAccountRequestBodyDDoSDynamicRulePositionAfterPosition>;
+
+export interface RulesCreateForAccountRequestBodyDDoSDynamicRulePositionIndexPosition {
+  /** An index at which to place the rule, where index 1 is the first rule. */
+  index?: number;
+}
+export const RulesCreateForAccountRequestBodyDDoSDynamicRulePositionIndexPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       index: S.optional(S.Number),
     }),
   ).annotate({
-    identifier: "RulesCreateForAccountRequestBodyDDoSDynamicRulePosition",
-  }) as any as S.Schema<RulesCreateForAccountRequestBodyDDoSDynamicRulePosition>;
+    identifier:
+      "RulesCreateForAccountRequestBodyDDoSDynamicRulePositionIndexPosition",
+  }) as any as S.Schema<RulesCreateForAccountRequestBodyDDoSDynamicRulePositionIndexPosition>;
+
+export type RulesCreateForAccountRequestBodyDDoSDynamicRulePosition =
+  | RulesCreateForAccountRequestBodyDDoSDynamicRulePositionBeforePosition
+  | RulesCreateForAccountRequestBodyDDoSDynamicRulePositionAfterPosition
+  | RulesCreateForAccountRequestBodyDDoSDynamicRulePositionIndexPosition;
+export const RulesCreateForAccountRequestBodyDDoSDynamicRulePosition =
+  /*@__PURE__*/ S.Unknown;
 
 export interface RulesCreateForAccountRequestBodyDDoSDynamicRule {
   /** An object configuring where the rule will be placed. */
@@ -338,24 +453,54 @@ export const RulesCreateForAccountRequestBodyDDoSDynamicRule =
     identifier: "RulesCreateForAccountRequestBodyDDoSDynamicRule",
   }) as any as S.Schema<RulesCreateForAccountRequestBodyDDoSDynamicRule>;
 
-export interface RulesCreateForAccountRequestBodyExecuteRulePosition {
+export interface RulesCreateForAccountRequestBodyExecuteRulePositionBeforePosition {
   /** The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top. */
   before?: string;
-  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
-  after?: string;
-  /** An index at which to place the rule, where index 1 is the first rule. */
-  index?: number;
 }
-export const RulesCreateForAccountRequestBodyExecuteRulePosition =
+export const RulesCreateForAccountRequestBodyExecuteRulePositionBeforePosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       before: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "RulesCreateForAccountRequestBodyExecuteRulePositionBeforePosition",
+  }) as any as S.Schema<RulesCreateForAccountRequestBodyExecuteRulePositionBeforePosition>;
+
+export interface RulesCreateForAccountRequestBodyExecuteRulePositionAfterPosition {
+  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
+  after?: string;
+}
+export const RulesCreateForAccountRequestBodyExecuteRulePositionAfterPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       after: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "RulesCreateForAccountRequestBodyExecuteRulePositionAfterPosition",
+  }) as any as S.Schema<RulesCreateForAccountRequestBodyExecuteRulePositionAfterPosition>;
+
+export interface RulesCreateForAccountRequestBodyExecuteRulePositionIndexPosition {
+  /** An index at which to place the rule, where index 1 is the first rule. */
+  index?: number;
+}
+export const RulesCreateForAccountRequestBodyExecuteRulePositionIndexPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       index: S.optional(S.Number),
     }),
   ).annotate({
-    identifier: "RulesCreateForAccountRequestBodyExecuteRulePosition",
-  }) as any as S.Schema<RulesCreateForAccountRequestBodyExecuteRulePosition>;
+    identifier:
+      "RulesCreateForAccountRequestBodyExecuteRulePositionIndexPosition",
+  }) as any as S.Schema<RulesCreateForAccountRequestBodyExecuteRulePositionIndexPosition>;
+
+export type RulesCreateForAccountRequestBodyExecuteRulePosition =
+  | RulesCreateForAccountRequestBodyExecuteRulePositionBeforePosition
+  | RulesCreateForAccountRequestBodyExecuteRulePositionAfterPosition
+  | RulesCreateForAccountRequestBodyExecuteRulePositionIndexPosition;
+export const RulesCreateForAccountRequestBodyExecuteRulePosition =
+  /*@__PURE__*/ S.Unknown;
 
 export interface RulesCreateForAccountRequestBodyExecuteRule {
   /** An object configuring where the rule will be placed. */
@@ -370,25 +515,54 @@ export const RulesCreateForAccountRequestBodyExecuteRule =
     identifier: "RulesCreateForAccountRequestBodyExecuteRule",
   }) as any as S.Schema<RulesCreateForAccountRequestBodyExecuteRule>;
 
-export interface RulesCreateForAccountRequestBodyForceConnectionCloseRulePosition {
+export interface RulesCreateForAccountRequestBodyForceConnectionCloseRulePositionBeforePosition {
   /** The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top. */
   before?: string;
-  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
-  after?: string;
-  /** An index at which to place the rule, where index 1 is the first rule. */
-  index?: number;
 }
-export const RulesCreateForAccountRequestBodyForceConnectionCloseRulePosition =
+export const RulesCreateForAccountRequestBodyForceConnectionCloseRulePositionBeforePosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       before: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "RulesCreateForAccountRequestBodyForceConnectionCloseRulePositionBeforePosition",
+  }) as any as S.Schema<RulesCreateForAccountRequestBodyForceConnectionCloseRulePositionBeforePosition>;
+
+export interface RulesCreateForAccountRequestBodyForceConnectionCloseRulePositionAfterPosition {
+  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
+  after?: string;
+}
+export const RulesCreateForAccountRequestBodyForceConnectionCloseRulePositionAfterPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       after: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "RulesCreateForAccountRequestBodyForceConnectionCloseRulePositionAfterPosition",
+  }) as any as S.Schema<RulesCreateForAccountRequestBodyForceConnectionCloseRulePositionAfterPosition>;
+
+export interface RulesCreateForAccountRequestBodyForceConnectionCloseRulePositionIndexPosition {
+  /** An index at which to place the rule, where index 1 is the first rule. */
+  index?: number;
+}
+export const RulesCreateForAccountRequestBodyForceConnectionCloseRulePositionIndexPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       index: S.optional(S.Number),
     }),
   ).annotate({
     identifier:
-      "RulesCreateForAccountRequestBodyForceConnectionCloseRulePosition",
-  }) as any as S.Schema<RulesCreateForAccountRequestBodyForceConnectionCloseRulePosition>;
+      "RulesCreateForAccountRequestBodyForceConnectionCloseRulePositionIndexPosition",
+  }) as any as S.Schema<RulesCreateForAccountRequestBodyForceConnectionCloseRulePositionIndexPosition>;
+
+export type RulesCreateForAccountRequestBodyForceConnectionCloseRulePosition =
+  | RulesCreateForAccountRequestBodyForceConnectionCloseRulePositionBeforePosition
+  | RulesCreateForAccountRequestBodyForceConnectionCloseRulePositionAfterPosition
+  | RulesCreateForAccountRequestBodyForceConnectionCloseRulePositionIndexPosition;
+export const RulesCreateForAccountRequestBodyForceConnectionCloseRulePosition =
+  /*@__PURE__*/ S.Unknown;
 
 export interface RulesCreateForAccountRequestBodyForceConnectionCloseRule {
   /** An object configuring where the rule will be placed. */
@@ -405,24 +579,51 @@ export const RulesCreateForAccountRequestBodyForceConnectionCloseRule =
     identifier: "RulesCreateForAccountRequestBodyForceConnectionCloseRule",
   }) as any as S.Schema<RulesCreateForAccountRequestBodyForceConnectionCloseRule>;
 
-export interface RulesCreateForAccountRequestBodyLogRulePosition {
+export interface RulesCreateForAccountRequestBodyLogRulePositionBeforePosition {
   /** The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top. */
   before?: string;
-  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
-  after?: string;
-  /** An index at which to place the rule, where index 1 is the first rule. */
-  index?: number;
 }
-export const RulesCreateForAccountRequestBodyLogRulePosition =
+export const RulesCreateForAccountRequestBodyLogRulePositionBeforePosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       before: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "RulesCreateForAccountRequestBodyLogRulePositionBeforePosition",
+  }) as any as S.Schema<RulesCreateForAccountRequestBodyLogRulePositionBeforePosition>;
+
+export interface RulesCreateForAccountRequestBodyLogRulePositionAfterPosition {
+  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
+  after?: string;
+}
+export const RulesCreateForAccountRequestBodyLogRulePositionAfterPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       after: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "RulesCreateForAccountRequestBodyLogRulePositionAfterPosition",
+  }) as any as S.Schema<RulesCreateForAccountRequestBodyLogRulePositionAfterPosition>;
+
+export interface RulesCreateForAccountRequestBodyLogRulePositionIndexPosition {
+  /** An index at which to place the rule, where index 1 is the first rule. */
+  index?: number;
+}
+export const RulesCreateForAccountRequestBodyLogRulePositionIndexPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       index: S.optional(S.Number),
     }),
   ).annotate({
-    identifier: "RulesCreateForAccountRequestBodyLogRulePosition",
-  }) as any as S.Schema<RulesCreateForAccountRequestBodyLogRulePosition>;
+    identifier: "RulesCreateForAccountRequestBodyLogRulePositionIndexPosition",
+  }) as any as S.Schema<RulesCreateForAccountRequestBodyLogRulePositionIndexPosition>;
+
+export type RulesCreateForAccountRequestBodyLogRulePosition =
+  | RulesCreateForAccountRequestBodyLogRulePositionBeforePosition
+  | RulesCreateForAccountRequestBodyLogRulePositionAfterPosition
+  | RulesCreateForAccountRequestBodyLogRulePositionIndexPosition;
+export const RulesCreateForAccountRequestBodyLogRulePosition =
+  /*@__PURE__*/ S.Unknown;
 
 export interface RulesCreateForAccountRequestBodyLogRule {
   /** An object configuring where the rule will be placed. */
@@ -437,24 +638,54 @@ export const RulesCreateForAccountRequestBodyLogRule = /*@__PURE__*/ S.suspend(
   identifier: "RulesCreateForAccountRequestBodyLogRule",
 }) as any as S.Schema<RulesCreateForAccountRequestBodyLogRule>;
 
-export interface RulesCreateForAccountRequestBodyLogCustomFieldRulePosition {
+export interface RulesCreateForAccountRequestBodyLogCustomFieldRulePositionBeforePosition {
   /** The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top. */
   before?: string;
-  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
-  after?: string;
-  /** An index at which to place the rule, where index 1 is the first rule. */
-  index?: number;
 }
-export const RulesCreateForAccountRequestBodyLogCustomFieldRulePosition =
+export const RulesCreateForAccountRequestBodyLogCustomFieldRulePositionBeforePosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       before: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "RulesCreateForAccountRequestBodyLogCustomFieldRulePositionBeforePosition",
+  }) as any as S.Schema<RulesCreateForAccountRequestBodyLogCustomFieldRulePositionBeforePosition>;
+
+export interface RulesCreateForAccountRequestBodyLogCustomFieldRulePositionAfterPosition {
+  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
+  after?: string;
+}
+export const RulesCreateForAccountRequestBodyLogCustomFieldRulePositionAfterPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       after: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "RulesCreateForAccountRequestBodyLogCustomFieldRulePositionAfterPosition",
+  }) as any as S.Schema<RulesCreateForAccountRequestBodyLogCustomFieldRulePositionAfterPosition>;
+
+export interface RulesCreateForAccountRequestBodyLogCustomFieldRulePositionIndexPosition {
+  /** An index at which to place the rule, where index 1 is the first rule. */
+  index?: number;
+}
+export const RulesCreateForAccountRequestBodyLogCustomFieldRulePositionIndexPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       index: S.optional(S.Number),
     }),
   ).annotate({
-    identifier: "RulesCreateForAccountRequestBodyLogCustomFieldRulePosition",
-  }) as any as S.Schema<RulesCreateForAccountRequestBodyLogCustomFieldRulePosition>;
+    identifier:
+      "RulesCreateForAccountRequestBodyLogCustomFieldRulePositionIndexPosition",
+  }) as any as S.Schema<RulesCreateForAccountRequestBodyLogCustomFieldRulePositionIndexPosition>;
+
+export type RulesCreateForAccountRequestBodyLogCustomFieldRulePosition =
+  | RulesCreateForAccountRequestBodyLogCustomFieldRulePositionBeforePosition
+  | RulesCreateForAccountRequestBodyLogCustomFieldRulePositionAfterPosition
+  | RulesCreateForAccountRequestBodyLogCustomFieldRulePositionIndexPosition;
+export const RulesCreateForAccountRequestBodyLogCustomFieldRulePosition =
+  /*@__PURE__*/ S.Unknown;
 
 export interface RulesCreateForAccountRequestBodyLogCustomFieldRule {
   /** An object configuring where the rule will be placed. */
@@ -471,24 +702,54 @@ export const RulesCreateForAccountRequestBodyLogCustomFieldRule =
     identifier: "RulesCreateForAccountRequestBodyLogCustomFieldRule",
   }) as any as S.Schema<RulesCreateForAccountRequestBodyLogCustomFieldRule>;
 
-export interface RulesCreateForAccountRequestBodyManagedChallengeRulePosition {
+export interface RulesCreateForAccountRequestBodyManagedChallengeRulePositionBeforePosition {
   /** The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top. */
   before?: string;
-  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
-  after?: string;
-  /** An index at which to place the rule, where index 1 is the first rule. */
-  index?: number;
 }
-export const RulesCreateForAccountRequestBodyManagedChallengeRulePosition =
+export const RulesCreateForAccountRequestBodyManagedChallengeRulePositionBeforePosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       before: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "RulesCreateForAccountRequestBodyManagedChallengeRulePositionBeforePosition",
+  }) as any as S.Schema<RulesCreateForAccountRequestBodyManagedChallengeRulePositionBeforePosition>;
+
+export interface RulesCreateForAccountRequestBodyManagedChallengeRulePositionAfterPosition {
+  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
+  after?: string;
+}
+export const RulesCreateForAccountRequestBodyManagedChallengeRulePositionAfterPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       after: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "RulesCreateForAccountRequestBodyManagedChallengeRulePositionAfterPosition",
+  }) as any as S.Schema<RulesCreateForAccountRequestBodyManagedChallengeRulePositionAfterPosition>;
+
+export interface RulesCreateForAccountRequestBodyManagedChallengeRulePositionIndexPosition {
+  /** An index at which to place the rule, where index 1 is the first rule. */
+  index?: number;
+}
+export const RulesCreateForAccountRequestBodyManagedChallengeRulePositionIndexPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       index: S.optional(S.Number),
     }),
   ).annotate({
-    identifier: "RulesCreateForAccountRequestBodyManagedChallengeRulePosition",
-  }) as any as S.Schema<RulesCreateForAccountRequestBodyManagedChallengeRulePosition>;
+    identifier:
+      "RulesCreateForAccountRequestBodyManagedChallengeRulePositionIndexPosition",
+  }) as any as S.Schema<RulesCreateForAccountRequestBodyManagedChallengeRulePositionIndexPosition>;
+
+export type RulesCreateForAccountRequestBodyManagedChallengeRulePosition =
+  | RulesCreateForAccountRequestBodyManagedChallengeRulePositionBeforePosition
+  | RulesCreateForAccountRequestBodyManagedChallengeRulePositionAfterPosition
+  | RulesCreateForAccountRequestBodyManagedChallengeRulePositionIndexPosition;
+export const RulesCreateForAccountRequestBodyManagedChallengeRulePosition =
+  /*@__PURE__*/ S.Unknown;
 
 export interface RulesCreateForAccountRequestBodyManagedChallengeRule {
   /** An object configuring where the rule will be placed. */
@@ -505,24 +766,54 @@ export const RulesCreateForAccountRequestBodyManagedChallengeRule =
     identifier: "RulesCreateForAccountRequestBodyManagedChallengeRule",
   }) as any as S.Schema<RulesCreateForAccountRequestBodyManagedChallengeRule>;
 
-export interface RulesCreateForAccountRequestBodyRedirectRulePosition {
+export interface RulesCreateForAccountRequestBodyRedirectRulePositionBeforePosition {
   /** The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top. */
   before?: string;
-  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
-  after?: string;
-  /** An index at which to place the rule, where index 1 is the first rule. */
-  index?: number;
 }
-export const RulesCreateForAccountRequestBodyRedirectRulePosition =
+export const RulesCreateForAccountRequestBodyRedirectRulePositionBeforePosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       before: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "RulesCreateForAccountRequestBodyRedirectRulePositionBeforePosition",
+  }) as any as S.Schema<RulesCreateForAccountRequestBodyRedirectRulePositionBeforePosition>;
+
+export interface RulesCreateForAccountRequestBodyRedirectRulePositionAfterPosition {
+  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
+  after?: string;
+}
+export const RulesCreateForAccountRequestBodyRedirectRulePositionAfterPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       after: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "RulesCreateForAccountRequestBodyRedirectRulePositionAfterPosition",
+  }) as any as S.Schema<RulesCreateForAccountRequestBodyRedirectRulePositionAfterPosition>;
+
+export interface RulesCreateForAccountRequestBodyRedirectRulePositionIndexPosition {
+  /** An index at which to place the rule, where index 1 is the first rule. */
+  index?: number;
+}
+export const RulesCreateForAccountRequestBodyRedirectRulePositionIndexPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       index: S.optional(S.Number),
     }),
   ).annotate({
-    identifier: "RulesCreateForAccountRequestBodyRedirectRulePosition",
-  }) as any as S.Schema<RulesCreateForAccountRequestBodyRedirectRulePosition>;
+    identifier:
+      "RulesCreateForAccountRequestBodyRedirectRulePositionIndexPosition",
+  }) as any as S.Schema<RulesCreateForAccountRequestBodyRedirectRulePositionIndexPosition>;
+
+export type RulesCreateForAccountRequestBodyRedirectRulePosition =
+  | RulesCreateForAccountRequestBodyRedirectRulePositionBeforePosition
+  | RulesCreateForAccountRequestBodyRedirectRulePositionAfterPosition
+  | RulesCreateForAccountRequestBodyRedirectRulePositionIndexPosition;
+export const RulesCreateForAccountRequestBodyRedirectRulePosition =
+  /*@__PURE__*/ S.Unknown;
 
 export interface RulesCreateForAccountRequestBodyRedirectRule {
   /** An object configuring where the rule will be placed. */
@@ -539,24 +830,54 @@ export const RulesCreateForAccountRequestBodyRedirectRule =
     identifier: "RulesCreateForAccountRequestBodyRedirectRule",
   }) as any as S.Schema<RulesCreateForAccountRequestBodyRedirectRule>;
 
-export interface RulesCreateForAccountRequestBodyRewriteRulePosition {
+export interface RulesCreateForAccountRequestBodyRewriteRulePositionBeforePosition {
   /** The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top. */
   before?: string;
-  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
-  after?: string;
-  /** An index at which to place the rule, where index 1 is the first rule. */
-  index?: number;
 }
-export const RulesCreateForAccountRequestBodyRewriteRulePosition =
+export const RulesCreateForAccountRequestBodyRewriteRulePositionBeforePosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       before: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "RulesCreateForAccountRequestBodyRewriteRulePositionBeforePosition",
+  }) as any as S.Schema<RulesCreateForAccountRequestBodyRewriteRulePositionBeforePosition>;
+
+export interface RulesCreateForAccountRequestBodyRewriteRulePositionAfterPosition {
+  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
+  after?: string;
+}
+export const RulesCreateForAccountRequestBodyRewriteRulePositionAfterPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       after: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "RulesCreateForAccountRequestBodyRewriteRulePositionAfterPosition",
+  }) as any as S.Schema<RulesCreateForAccountRequestBodyRewriteRulePositionAfterPosition>;
+
+export interface RulesCreateForAccountRequestBodyRewriteRulePositionIndexPosition {
+  /** An index at which to place the rule, where index 1 is the first rule. */
+  index?: number;
+}
+export const RulesCreateForAccountRequestBodyRewriteRulePositionIndexPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       index: S.optional(S.Number),
     }),
   ).annotate({
-    identifier: "RulesCreateForAccountRequestBodyRewriteRulePosition",
-  }) as any as S.Schema<RulesCreateForAccountRequestBodyRewriteRulePosition>;
+    identifier:
+      "RulesCreateForAccountRequestBodyRewriteRulePositionIndexPosition",
+  }) as any as S.Schema<RulesCreateForAccountRequestBodyRewriteRulePositionIndexPosition>;
+
+export type RulesCreateForAccountRequestBodyRewriteRulePosition =
+  | RulesCreateForAccountRequestBodyRewriteRulePositionBeforePosition
+  | RulesCreateForAccountRequestBodyRewriteRulePositionAfterPosition
+  | RulesCreateForAccountRequestBodyRewriteRulePositionIndexPosition;
+export const RulesCreateForAccountRequestBodyRewriteRulePosition =
+  /*@__PURE__*/ S.Unknown;
 
 export interface RulesCreateForAccountRequestBodyRewriteRule {
   /** An object configuring where the rule will be placed. */
@@ -571,24 +892,54 @@ export const RulesCreateForAccountRequestBodyRewriteRule =
     identifier: "RulesCreateForAccountRequestBodyRewriteRule",
   }) as any as S.Schema<RulesCreateForAccountRequestBodyRewriteRule>;
 
-export interface RulesCreateForAccountRequestBodyRouteRulePosition {
+export interface RulesCreateForAccountRequestBodyRouteRulePositionBeforePosition {
   /** The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top. */
   before?: string;
-  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
-  after?: string;
-  /** An index at which to place the rule, where index 1 is the first rule. */
-  index?: number;
 }
-export const RulesCreateForAccountRequestBodyRouteRulePosition =
+export const RulesCreateForAccountRequestBodyRouteRulePositionBeforePosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       before: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "RulesCreateForAccountRequestBodyRouteRulePositionBeforePosition",
+  }) as any as S.Schema<RulesCreateForAccountRequestBodyRouteRulePositionBeforePosition>;
+
+export interface RulesCreateForAccountRequestBodyRouteRulePositionAfterPosition {
+  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
+  after?: string;
+}
+export const RulesCreateForAccountRequestBodyRouteRulePositionAfterPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       after: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "RulesCreateForAccountRequestBodyRouteRulePositionAfterPosition",
+  }) as any as S.Schema<RulesCreateForAccountRequestBodyRouteRulePositionAfterPosition>;
+
+export interface RulesCreateForAccountRequestBodyRouteRulePositionIndexPosition {
+  /** An index at which to place the rule, where index 1 is the first rule. */
+  index?: number;
+}
+export const RulesCreateForAccountRequestBodyRouteRulePositionIndexPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       index: S.optional(S.Number),
     }),
   ).annotate({
-    identifier: "RulesCreateForAccountRequestBodyRouteRulePosition",
-  }) as any as S.Schema<RulesCreateForAccountRequestBodyRouteRulePosition>;
+    identifier:
+      "RulesCreateForAccountRequestBodyRouteRulePositionIndexPosition",
+  }) as any as S.Schema<RulesCreateForAccountRequestBodyRouteRulePositionIndexPosition>;
+
+export type RulesCreateForAccountRequestBodyRouteRulePosition =
+  | RulesCreateForAccountRequestBodyRouteRulePositionBeforePosition
+  | RulesCreateForAccountRequestBodyRouteRulePositionAfterPosition
+  | RulesCreateForAccountRequestBodyRouteRulePositionIndexPosition;
+export const RulesCreateForAccountRequestBodyRouteRulePosition =
+  /*@__PURE__*/ S.Unknown;
 
 export interface RulesCreateForAccountRequestBodyRouteRule {
   /** An object configuring where the rule will be placed. */
@@ -603,24 +954,54 @@ export const RulesCreateForAccountRequestBodyRouteRule =
     identifier: "RulesCreateForAccountRequestBodyRouteRule",
   }) as any as S.Schema<RulesCreateForAccountRequestBodyRouteRule>;
 
-export interface RulesCreateForAccountRequestBodyScoreRulePosition {
+export interface RulesCreateForAccountRequestBodyScoreRulePositionBeforePosition {
   /** The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top. */
   before?: string;
-  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
-  after?: string;
-  /** An index at which to place the rule, where index 1 is the first rule. */
-  index?: number;
 }
-export const RulesCreateForAccountRequestBodyScoreRulePosition =
+export const RulesCreateForAccountRequestBodyScoreRulePositionBeforePosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       before: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "RulesCreateForAccountRequestBodyScoreRulePositionBeforePosition",
+  }) as any as S.Schema<RulesCreateForAccountRequestBodyScoreRulePositionBeforePosition>;
+
+export interface RulesCreateForAccountRequestBodyScoreRulePositionAfterPosition {
+  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
+  after?: string;
+}
+export const RulesCreateForAccountRequestBodyScoreRulePositionAfterPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       after: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "RulesCreateForAccountRequestBodyScoreRulePositionAfterPosition",
+  }) as any as S.Schema<RulesCreateForAccountRequestBodyScoreRulePositionAfterPosition>;
+
+export interface RulesCreateForAccountRequestBodyScoreRulePositionIndexPosition {
+  /** An index at which to place the rule, where index 1 is the first rule. */
+  index?: number;
+}
+export const RulesCreateForAccountRequestBodyScoreRulePositionIndexPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       index: S.optional(S.Number),
     }),
   ).annotate({
-    identifier: "RulesCreateForAccountRequestBodyScoreRulePosition",
-  }) as any as S.Schema<RulesCreateForAccountRequestBodyScoreRulePosition>;
+    identifier:
+      "RulesCreateForAccountRequestBodyScoreRulePositionIndexPosition",
+  }) as any as S.Schema<RulesCreateForAccountRequestBodyScoreRulePositionIndexPosition>;
+
+export type RulesCreateForAccountRequestBodyScoreRulePosition =
+  | RulesCreateForAccountRequestBodyScoreRulePositionBeforePosition
+  | RulesCreateForAccountRequestBodyScoreRulePositionAfterPosition
+  | RulesCreateForAccountRequestBodyScoreRulePositionIndexPosition;
+export const RulesCreateForAccountRequestBodyScoreRulePosition =
+  /*@__PURE__*/ S.Unknown;
 
 export interface RulesCreateForAccountRequestBodyScoreRule {
   /** An object configuring where the rule will be placed. */
@@ -635,24 +1016,54 @@ export const RulesCreateForAccountRequestBodyScoreRule =
     identifier: "RulesCreateForAccountRequestBodyScoreRule",
   }) as any as S.Schema<RulesCreateForAccountRequestBodyScoreRule>;
 
-export interface RulesCreateForAccountRequestBodyServeErrorRulePosition {
+export interface RulesCreateForAccountRequestBodyServeErrorRulePositionBeforePosition {
   /** The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top. */
   before?: string;
-  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
-  after?: string;
-  /** An index at which to place the rule, where index 1 is the first rule. */
-  index?: number;
 }
-export const RulesCreateForAccountRequestBodyServeErrorRulePosition =
+export const RulesCreateForAccountRequestBodyServeErrorRulePositionBeforePosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       before: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "RulesCreateForAccountRequestBodyServeErrorRulePositionBeforePosition",
+  }) as any as S.Schema<RulesCreateForAccountRequestBodyServeErrorRulePositionBeforePosition>;
+
+export interface RulesCreateForAccountRequestBodyServeErrorRulePositionAfterPosition {
+  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
+  after?: string;
+}
+export const RulesCreateForAccountRequestBodyServeErrorRulePositionAfterPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       after: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "RulesCreateForAccountRequestBodyServeErrorRulePositionAfterPosition",
+  }) as any as S.Schema<RulesCreateForAccountRequestBodyServeErrorRulePositionAfterPosition>;
+
+export interface RulesCreateForAccountRequestBodyServeErrorRulePositionIndexPosition {
+  /** An index at which to place the rule, where index 1 is the first rule. */
+  index?: number;
+}
+export const RulesCreateForAccountRequestBodyServeErrorRulePositionIndexPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       index: S.optional(S.Number),
     }),
   ).annotate({
-    identifier: "RulesCreateForAccountRequestBodyServeErrorRulePosition",
-  }) as any as S.Schema<RulesCreateForAccountRequestBodyServeErrorRulePosition>;
+    identifier:
+      "RulesCreateForAccountRequestBodyServeErrorRulePositionIndexPosition",
+  }) as any as S.Schema<RulesCreateForAccountRequestBodyServeErrorRulePositionIndexPosition>;
+
+export type RulesCreateForAccountRequestBodyServeErrorRulePosition =
+  | RulesCreateForAccountRequestBodyServeErrorRulePositionBeforePosition
+  | RulesCreateForAccountRequestBodyServeErrorRulePositionAfterPosition
+  | RulesCreateForAccountRequestBodyServeErrorRulePositionIndexPosition;
+export const RulesCreateForAccountRequestBodyServeErrorRulePosition =
+  /*@__PURE__*/ S.Unknown;
 
 export interface RulesCreateForAccountRequestBodyServeErrorRule {
   /** An object configuring where the rule will be placed. */
@@ -669,24 +1080,54 @@ export const RulesCreateForAccountRequestBodyServeErrorRule =
     identifier: "RulesCreateForAccountRequestBodyServeErrorRule",
   }) as any as S.Schema<RulesCreateForAccountRequestBodyServeErrorRule>;
 
-export interface RulesCreateForAccountRequestBodySetCacheSettingsRulePosition {
+export interface RulesCreateForAccountRequestBodySetCacheSettingsRulePositionBeforePosition {
   /** The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top. */
   before?: string;
-  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
-  after?: string;
-  /** An index at which to place the rule, where index 1 is the first rule. */
-  index?: number;
 }
-export const RulesCreateForAccountRequestBodySetCacheSettingsRulePosition =
+export const RulesCreateForAccountRequestBodySetCacheSettingsRulePositionBeforePosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       before: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "RulesCreateForAccountRequestBodySetCacheSettingsRulePositionBeforePosition",
+  }) as any as S.Schema<RulesCreateForAccountRequestBodySetCacheSettingsRulePositionBeforePosition>;
+
+export interface RulesCreateForAccountRequestBodySetCacheSettingsRulePositionAfterPosition {
+  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
+  after?: string;
+}
+export const RulesCreateForAccountRequestBodySetCacheSettingsRulePositionAfterPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       after: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "RulesCreateForAccountRequestBodySetCacheSettingsRulePositionAfterPosition",
+  }) as any as S.Schema<RulesCreateForAccountRequestBodySetCacheSettingsRulePositionAfterPosition>;
+
+export interface RulesCreateForAccountRequestBodySetCacheSettingsRulePositionIndexPosition {
+  /** An index at which to place the rule, where index 1 is the first rule. */
+  index?: number;
+}
+export const RulesCreateForAccountRequestBodySetCacheSettingsRulePositionIndexPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       index: S.optional(S.Number),
     }),
   ).annotate({
-    identifier: "RulesCreateForAccountRequestBodySetCacheSettingsRulePosition",
-  }) as any as S.Schema<RulesCreateForAccountRequestBodySetCacheSettingsRulePosition>;
+    identifier:
+      "RulesCreateForAccountRequestBodySetCacheSettingsRulePositionIndexPosition",
+  }) as any as S.Schema<RulesCreateForAccountRequestBodySetCacheSettingsRulePositionIndexPosition>;
+
+export type RulesCreateForAccountRequestBodySetCacheSettingsRulePosition =
+  | RulesCreateForAccountRequestBodySetCacheSettingsRulePositionBeforePosition
+  | RulesCreateForAccountRequestBodySetCacheSettingsRulePositionAfterPosition
+  | RulesCreateForAccountRequestBodySetCacheSettingsRulePositionIndexPosition;
+export const RulesCreateForAccountRequestBodySetCacheSettingsRulePosition =
+  /*@__PURE__*/ S.Unknown;
 
 export interface RulesCreateForAccountRequestBodySetCacheSettingsRule {
   /** An object configuring where the rule will be placed. */
@@ -703,24 +1144,54 @@ export const RulesCreateForAccountRequestBodySetCacheSettingsRule =
     identifier: "RulesCreateForAccountRequestBodySetCacheSettingsRule",
   }) as any as S.Schema<RulesCreateForAccountRequestBodySetCacheSettingsRule>;
 
-export interface RulesCreateForAccountRequestBodySetConfigurationRulePosition {
+export interface RulesCreateForAccountRequestBodySetConfigurationRulePositionBeforePosition {
   /** The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top. */
   before?: string;
-  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
-  after?: string;
-  /** An index at which to place the rule, where index 1 is the first rule. */
-  index?: number;
 }
-export const RulesCreateForAccountRequestBodySetConfigurationRulePosition =
+export const RulesCreateForAccountRequestBodySetConfigurationRulePositionBeforePosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       before: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "RulesCreateForAccountRequestBodySetConfigurationRulePositionBeforePosition",
+  }) as any as S.Schema<RulesCreateForAccountRequestBodySetConfigurationRulePositionBeforePosition>;
+
+export interface RulesCreateForAccountRequestBodySetConfigurationRulePositionAfterPosition {
+  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
+  after?: string;
+}
+export const RulesCreateForAccountRequestBodySetConfigurationRulePositionAfterPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       after: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "RulesCreateForAccountRequestBodySetConfigurationRulePositionAfterPosition",
+  }) as any as S.Schema<RulesCreateForAccountRequestBodySetConfigurationRulePositionAfterPosition>;
+
+export interface RulesCreateForAccountRequestBodySetConfigurationRulePositionIndexPosition {
+  /** An index at which to place the rule, where index 1 is the first rule. */
+  index?: number;
+}
+export const RulesCreateForAccountRequestBodySetConfigurationRulePositionIndexPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       index: S.optional(S.Number),
     }),
   ).annotate({
-    identifier: "RulesCreateForAccountRequestBodySetConfigurationRulePosition",
-  }) as any as S.Schema<RulesCreateForAccountRequestBodySetConfigurationRulePosition>;
+    identifier:
+      "RulesCreateForAccountRequestBodySetConfigurationRulePositionIndexPosition",
+  }) as any as S.Schema<RulesCreateForAccountRequestBodySetConfigurationRulePositionIndexPosition>;
+
+export type RulesCreateForAccountRequestBodySetConfigurationRulePosition =
+  | RulesCreateForAccountRequestBodySetConfigurationRulePositionBeforePosition
+  | RulesCreateForAccountRequestBodySetConfigurationRulePositionAfterPosition
+  | RulesCreateForAccountRequestBodySetConfigurationRulePositionIndexPosition;
+export const RulesCreateForAccountRequestBodySetConfigurationRulePosition =
+  /*@__PURE__*/ S.Unknown;
 
 export interface RulesCreateForAccountRequestBodySetConfigurationRule {
   /** An object configuring where the rule will be placed. */
@@ -737,24 +1208,52 @@ export const RulesCreateForAccountRequestBodySetConfigurationRule =
     identifier: "RulesCreateForAccountRequestBodySetConfigurationRule",
   }) as any as S.Schema<RulesCreateForAccountRequestBodySetConfigurationRule>;
 
-export interface RulesCreateForAccountRequestBodySkipRulePosition {
+export interface RulesCreateForAccountRequestBodySkipRulePositionBeforePosition {
   /** The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top. */
   before?: string;
-  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
-  after?: string;
-  /** An index at which to place the rule, where index 1 is the first rule. */
-  index?: number;
 }
-export const RulesCreateForAccountRequestBodySkipRulePosition =
+export const RulesCreateForAccountRequestBodySkipRulePositionBeforePosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       before: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "RulesCreateForAccountRequestBodySkipRulePositionBeforePosition",
+  }) as any as S.Schema<RulesCreateForAccountRequestBodySkipRulePositionBeforePosition>;
+
+export interface RulesCreateForAccountRequestBodySkipRulePositionAfterPosition {
+  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
+  after?: string;
+}
+export const RulesCreateForAccountRequestBodySkipRulePositionAfterPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       after: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "RulesCreateForAccountRequestBodySkipRulePositionAfterPosition",
+  }) as any as S.Schema<RulesCreateForAccountRequestBodySkipRulePositionAfterPosition>;
+
+export interface RulesCreateForAccountRequestBodySkipRulePositionIndexPosition {
+  /** An index at which to place the rule, where index 1 is the first rule. */
+  index?: number;
+}
+export const RulesCreateForAccountRequestBodySkipRulePositionIndexPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       index: S.optional(S.Number),
     }),
   ).annotate({
-    identifier: "RulesCreateForAccountRequestBodySkipRulePosition",
-  }) as any as S.Schema<RulesCreateForAccountRequestBodySkipRulePosition>;
+    identifier: "RulesCreateForAccountRequestBodySkipRulePositionIndexPosition",
+  }) as any as S.Schema<RulesCreateForAccountRequestBodySkipRulePositionIndexPosition>;
+
+export type RulesCreateForAccountRequestBodySkipRulePosition =
+  | RulesCreateForAccountRequestBodySkipRulePositionBeforePosition
+  | RulesCreateForAccountRequestBodySkipRulePositionAfterPosition
+  | RulesCreateForAccountRequestBodySkipRulePositionIndexPosition;
+export const RulesCreateForAccountRequestBodySkipRulePosition =
+  /*@__PURE__*/ S.Unknown;
 
 export interface RulesCreateForAccountRequestBodySkipRule {
   /** An object configuring where the rule will be placed. */
@@ -1110,24 +1609,51 @@ export const CreateRuleForAccountResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateRuleForAccountResponse",
 }) as any as S.Schema<CreateRuleForAccountResponse>;
 
-export interface RulesCreateForZoneRequestBodyBlockRulePosition {
+export interface RulesCreateForZoneRequestBodyBlockRulePositionBeforePosition {
   /** The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top. */
   before?: string;
-  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
-  after?: string;
-  /** An index at which to place the rule, where index 1 is the first rule. */
-  index?: number;
 }
-export const RulesCreateForZoneRequestBodyBlockRulePosition =
+export const RulesCreateForZoneRequestBodyBlockRulePositionBeforePosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       before: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "RulesCreateForZoneRequestBodyBlockRulePositionBeforePosition",
+  }) as any as S.Schema<RulesCreateForZoneRequestBodyBlockRulePositionBeforePosition>;
+
+export interface RulesCreateForZoneRequestBodyBlockRulePositionAfterPosition {
+  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
+  after?: string;
+}
+export const RulesCreateForZoneRequestBodyBlockRulePositionAfterPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       after: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "RulesCreateForZoneRequestBodyBlockRulePositionAfterPosition",
+  }) as any as S.Schema<RulesCreateForZoneRequestBodyBlockRulePositionAfterPosition>;
+
+export interface RulesCreateForZoneRequestBodyBlockRulePositionIndexPosition {
+  /** An index at which to place the rule, where index 1 is the first rule. */
+  index?: number;
+}
+export const RulesCreateForZoneRequestBodyBlockRulePositionIndexPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       index: S.optional(S.Number),
     }),
   ).annotate({
-    identifier: "RulesCreateForZoneRequestBodyBlockRulePosition",
-  }) as any as S.Schema<RulesCreateForZoneRequestBodyBlockRulePosition>;
+    identifier: "RulesCreateForZoneRequestBodyBlockRulePositionIndexPosition",
+  }) as any as S.Schema<RulesCreateForZoneRequestBodyBlockRulePositionIndexPosition>;
+
+export type RulesCreateForZoneRequestBodyBlockRulePosition =
+  | RulesCreateForZoneRequestBodyBlockRulePositionBeforePosition
+  | RulesCreateForZoneRequestBodyBlockRulePositionAfterPosition
+  | RulesCreateForZoneRequestBodyBlockRulePositionIndexPosition;
+export const RulesCreateForZoneRequestBodyBlockRulePosition =
+  /*@__PURE__*/ S.Unknown;
 
 export interface RulesCreateForZoneRequestBodyBlockRule {
   /** An object configuring where the rule will be placed. */
@@ -1180,24 +1706,50 @@ export const RulesCreateForZoneRequestBodyLogging = /*@__PURE__*/ S.suspend(
   identifier: "RulesCreateForZoneRequestBodyLogging",
 }) as any as S.Schema<RulesCreateForZoneRequestBodyLogging>;
 
-export interface RulesCreateForZoneRequestBodyPosition {
+export interface RulesCreateForZoneRequestBodyPositionBeforePosition {
   /** The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top. */
   before?: string;
+}
+export const RulesCreateForZoneRequestBodyPositionBeforePosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      before: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "RulesCreateForZoneRequestBodyPositionBeforePosition",
+  }) as any as S.Schema<RulesCreateForZoneRequestBodyPositionBeforePosition>;
+
+export interface RulesCreateForZoneRequestBodyPositionAfterPosition {
   /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
   after?: string;
+}
+export const RulesCreateForZoneRequestBodyPositionAfterPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      after: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "RulesCreateForZoneRequestBodyPositionAfterPosition",
+  }) as any as S.Schema<RulesCreateForZoneRequestBodyPositionAfterPosition>;
+
+export interface RulesCreateForZoneRequestBodyPositionIndexPosition {
   /** An index at which to place the rule, where index 1 is the first rule. */
   index?: number;
 }
-export const RulesCreateForZoneRequestBodyPosition = /*@__PURE__*/ S.suspend(
-  () =>
+export const RulesCreateForZoneRequestBodyPositionIndexPosition =
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      before: S.optional(S.String),
-      after: S.optional(S.String),
       index: S.optional(S.Number),
     }),
-).annotate({
-  identifier: "RulesCreateForZoneRequestBodyPosition",
-}) as any as S.Schema<RulesCreateForZoneRequestBodyPosition>;
+  ).annotate({
+    identifier: "RulesCreateForZoneRequestBodyPositionIndexPosition",
+  }) as any as S.Schema<RulesCreateForZoneRequestBodyPositionIndexPosition>;
+
+export type RulesCreateForZoneRequestBodyPosition =
+  | RulesCreateForZoneRequestBodyPositionBeforePosition
+  | RulesCreateForZoneRequestBodyPositionAfterPosition
+  | RulesCreateForZoneRequestBodyPositionIndexPosition;
+export const RulesCreateForZoneRequestBodyPosition = /*@__PURE__*/ S.Unknown;
 
 export type RulesCreateForZoneRequestBodyRatelimitCharacteristicsList =
   string[];
@@ -1251,24 +1803,54 @@ export const RulesCreateForZoneRequestBodyRatelimit = /*@__PURE__*/ S.suspend(
   identifier: "RulesCreateForZoneRequestBodyRatelimit",
 }) as any as S.Schema<RulesCreateForZoneRequestBodyRatelimit>;
 
-export interface RulesCreateForZoneRequestBodyResponseCompressionRulePosition {
+export interface RulesCreateForZoneRequestBodyResponseCompressionRulePositionBeforePosition {
   /** The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top. */
   before?: string;
-  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
-  after?: string;
-  /** An index at which to place the rule, where index 1 is the first rule. */
-  index?: number;
 }
-export const RulesCreateForZoneRequestBodyResponseCompressionRulePosition =
+export const RulesCreateForZoneRequestBodyResponseCompressionRulePositionBeforePosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       before: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "RulesCreateForZoneRequestBodyResponseCompressionRulePositionBeforePosition",
+  }) as any as S.Schema<RulesCreateForZoneRequestBodyResponseCompressionRulePositionBeforePosition>;
+
+export interface RulesCreateForZoneRequestBodyResponseCompressionRulePositionAfterPosition {
+  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
+  after?: string;
+}
+export const RulesCreateForZoneRequestBodyResponseCompressionRulePositionAfterPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       after: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "RulesCreateForZoneRequestBodyResponseCompressionRulePositionAfterPosition",
+  }) as any as S.Schema<RulesCreateForZoneRequestBodyResponseCompressionRulePositionAfterPosition>;
+
+export interface RulesCreateForZoneRequestBodyResponseCompressionRulePositionIndexPosition {
+  /** An index at which to place the rule, where index 1 is the first rule. */
+  index?: number;
+}
+export const RulesCreateForZoneRequestBodyResponseCompressionRulePositionIndexPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       index: S.optional(S.Number),
     }),
   ).annotate({
-    identifier: "RulesCreateForZoneRequestBodyResponseCompressionRulePosition",
-  }) as any as S.Schema<RulesCreateForZoneRequestBodyResponseCompressionRulePosition>;
+    identifier:
+      "RulesCreateForZoneRequestBodyResponseCompressionRulePositionIndexPosition",
+  }) as any as S.Schema<RulesCreateForZoneRequestBodyResponseCompressionRulePositionIndexPosition>;
+
+export type RulesCreateForZoneRequestBodyResponseCompressionRulePosition =
+  | RulesCreateForZoneRequestBodyResponseCompressionRulePositionBeforePosition
+  | RulesCreateForZoneRequestBodyResponseCompressionRulePositionAfterPosition
+  | RulesCreateForZoneRequestBodyResponseCompressionRulePositionIndexPosition;
+export const RulesCreateForZoneRequestBodyResponseCompressionRulePosition =
+  /*@__PURE__*/ S.Unknown;
 
 export interface RulesCreateForZoneRequestBodyResponseCompressionRule {
   /** An object configuring where the rule will be placed. */
@@ -1285,24 +1867,54 @@ export const RulesCreateForZoneRequestBodyResponseCompressionRule =
     identifier: "RulesCreateForZoneRequestBodyResponseCompressionRule",
   }) as any as S.Schema<RulesCreateForZoneRequestBodyResponseCompressionRule>;
 
-export interface RulesCreateForZoneRequestBodyDDoSDynamicRulePosition {
+export interface RulesCreateForZoneRequestBodyDDoSDynamicRulePositionBeforePosition {
   /** The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top. */
   before?: string;
-  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
-  after?: string;
-  /** An index at which to place the rule, where index 1 is the first rule. */
-  index?: number;
 }
-export const RulesCreateForZoneRequestBodyDDoSDynamicRulePosition =
+export const RulesCreateForZoneRequestBodyDDoSDynamicRulePositionBeforePosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       before: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "RulesCreateForZoneRequestBodyDDoSDynamicRulePositionBeforePosition",
+  }) as any as S.Schema<RulesCreateForZoneRequestBodyDDoSDynamicRulePositionBeforePosition>;
+
+export interface RulesCreateForZoneRequestBodyDDoSDynamicRulePositionAfterPosition {
+  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
+  after?: string;
+}
+export const RulesCreateForZoneRequestBodyDDoSDynamicRulePositionAfterPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       after: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "RulesCreateForZoneRequestBodyDDoSDynamicRulePositionAfterPosition",
+  }) as any as S.Schema<RulesCreateForZoneRequestBodyDDoSDynamicRulePositionAfterPosition>;
+
+export interface RulesCreateForZoneRequestBodyDDoSDynamicRulePositionIndexPosition {
+  /** An index at which to place the rule, where index 1 is the first rule. */
+  index?: number;
+}
+export const RulesCreateForZoneRequestBodyDDoSDynamicRulePositionIndexPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       index: S.optional(S.Number),
     }),
   ).annotate({
-    identifier: "RulesCreateForZoneRequestBodyDDoSDynamicRulePosition",
-  }) as any as S.Schema<RulesCreateForZoneRequestBodyDDoSDynamicRulePosition>;
+    identifier:
+      "RulesCreateForZoneRequestBodyDDoSDynamicRulePositionIndexPosition",
+  }) as any as S.Schema<RulesCreateForZoneRequestBodyDDoSDynamicRulePositionIndexPosition>;
+
+export type RulesCreateForZoneRequestBodyDDoSDynamicRulePosition =
+  | RulesCreateForZoneRequestBodyDDoSDynamicRulePositionBeforePosition
+  | RulesCreateForZoneRequestBodyDDoSDynamicRulePositionAfterPosition
+  | RulesCreateForZoneRequestBodyDDoSDynamicRulePositionIndexPosition;
+export const RulesCreateForZoneRequestBodyDDoSDynamicRulePosition =
+  /*@__PURE__*/ S.Unknown;
 
 export interface RulesCreateForZoneRequestBodyDDoSDynamicRule {
   /** An object configuring where the rule will be placed. */
@@ -1319,24 +1931,52 @@ export const RulesCreateForZoneRequestBodyDDoSDynamicRule =
     identifier: "RulesCreateForZoneRequestBodyDDoSDynamicRule",
   }) as any as S.Schema<RulesCreateForZoneRequestBodyDDoSDynamicRule>;
 
-export interface RulesCreateForZoneRequestBodyExecuteRulePosition {
+export interface RulesCreateForZoneRequestBodyExecuteRulePositionBeforePosition {
   /** The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top. */
   before?: string;
-  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
-  after?: string;
-  /** An index at which to place the rule, where index 1 is the first rule. */
-  index?: number;
 }
-export const RulesCreateForZoneRequestBodyExecuteRulePosition =
+export const RulesCreateForZoneRequestBodyExecuteRulePositionBeforePosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       before: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "RulesCreateForZoneRequestBodyExecuteRulePositionBeforePosition",
+  }) as any as S.Schema<RulesCreateForZoneRequestBodyExecuteRulePositionBeforePosition>;
+
+export interface RulesCreateForZoneRequestBodyExecuteRulePositionAfterPosition {
+  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
+  after?: string;
+}
+export const RulesCreateForZoneRequestBodyExecuteRulePositionAfterPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       after: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "RulesCreateForZoneRequestBodyExecuteRulePositionAfterPosition",
+  }) as any as S.Schema<RulesCreateForZoneRequestBodyExecuteRulePositionAfterPosition>;
+
+export interface RulesCreateForZoneRequestBodyExecuteRulePositionIndexPosition {
+  /** An index at which to place the rule, where index 1 is the first rule. */
+  index?: number;
+}
+export const RulesCreateForZoneRequestBodyExecuteRulePositionIndexPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       index: S.optional(S.Number),
     }),
   ).annotate({
-    identifier: "RulesCreateForZoneRequestBodyExecuteRulePosition",
-  }) as any as S.Schema<RulesCreateForZoneRequestBodyExecuteRulePosition>;
+    identifier: "RulesCreateForZoneRequestBodyExecuteRulePositionIndexPosition",
+  }) as any as S.Schema<RulesCreateForZoneRequestBodyExecuteRulePositionIndexPosition>;
+
+export type RulesCreateForZoneRequestBodyExecuteRulePosition =
+  | RulesCreateForZoneRequestBodyExecuteRulePositionBeforePosition
+  | RulesCreateForZoneRequestBodyExecuteRulePositionAfterPosition
+  | RulesCreateForZoneRequestBodyExecuteRulePositionIndexPosition;
+export const RulesCreateForZoneRequestBodyExecuteRulePosition =
+  /*@__PURE__*/ S.Unknown;
 
 export interface RulesCreateForZoneRequestBodyExecuteRule {
   /** An object configuring where the rule will be placed. */
@@ -1351,24 +1991,54 @@ export const RulesCreateForZoneRequestBodyExecuteRule = /*@__PURE__*/ S.suspend(
   identifier: "RulesCreateForZoneRequestBodyExecuteRule",
 }) as any as S.Schema<RulesCreateForZoneRequestBodyExecuteRule>;
 
-export interface RulesCreateForZoneRequestBodyForceConnectionCloseRulePosition {
+export interface RulesCreateForZoneRequestBodyForceConnectionCloseRulePositionBeforePosition {
   /** The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top. */
   before?: string;
-  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
-  after?: string;
-  /** An index at which to place the rule, where index 1 is the first rule. */
-  index?: number;
 }
-export const RulesCreateForZoneRequestBodyForceConnectionCloseRulePosition =
+export const RulesCreateForZoneRequestBodyForceConnectionCloseRulePositionBeforePosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       before: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "RulesCreateForZoneRequestBodyForceConnectionCloseRulePositionBeforePosition",
+  }) as any as S.Schema<RulesCreateForZoneRequestBodyForceConnectionCloseRulePositionBeforePosition>;
+
+export interface RulesCreateForZoneRequestBodyForceConnectionCloseRulePositionAfterPosition {
+  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
+  after?: string;
+}
+export const RulesCreateForZoneRequestBodyForceConnectionCloseRulePositionAfterPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       after: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "RulesCreateForZoneRequestBodyForceConnectionCloseRulePositionAfterPosition",
+  }) as any as S.Schema<RulesCreateForZoneRequestBodyForceConnectionCloseRulePositionAfterPosition>;
+
+export interface RulesCreateForZoneRequestBodyForceConnectionCloseRulePositionIndexPosition {
+  /** An index at which to place the rule, where index 1 is the first rule. */
+  index?: number;
+}
+export const RulesCreateForZoneRequestBodyForceConnectionCloseRulePositionIndexPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       index: S.optional(S.Number),
     }),
   ).annotate({
-    identifier: "RulesCreateForZoneRequestBodyForceConnectionCloseRulePosition",
-  }) as any as S.Schema<RulesCreateForZoneRequestBodyForceConnectionCloseRulePosition>;
+    identifier:
+      "RulesCreateForZoneRequestBodyForceConnectionCloseRulePositionIndexPosition",
+  }) as any as S.Schema<RulesCreateForZoneRequestBodyForceConnectionCloseRulePositionIndexPosition>;
+
+export type RulesCreateForZoneRequestBodyForceConnectionCloseRulePosition =
+  | RulesCreateForZoneRequestBodyForceConnectionCloseRulePositionBeforePosition
+  | RulesCreateForZoneRequestBodyForceConnectionCloseRulePositionAfterPosition
+  | RulesCreateForZoneRequestBodyForceConnectionCloseRulePositionIndexPosition;
+export const RulesCreateForZoneRequestBodyForceConnectionCloseRulePosition =
+  /*@__PURE__*/ S.Unknown;
 
 export interface RulesCreateForZoneRequestBodyForceConnectionCloseRule {
   /** An object configuring where the rule will be placed. */
@@ -1385,24 +2055,51 @@ export const RulesCreateForZoneRequestBodyForceConnectionCloseRule =
     identifier: "RulesCreateForZoneRequestBodyForceConnectionCloseRule",
   }) as any as S.Schema<RulesCreateForZoneRequestBodyForceConnectionCloseRule>;
 
-export interface RulesCreateForZoneRequestBodyLogRulePosition {
+export interface RulesCreateForZoneRequestBodyLogRulePositionBeforePosition {
   /** The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top. */
   before?: string;
-  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
-  after?: string;
-  /** An index at which to place the rule, where index 1 is the first rule. */
-  index?: number;
 }
-export const RulesCreateForZoneRequestBodyLogRulePosition =
+export const RulesCreateForZoneRequestBodyLogRulePositionBeforePosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       before: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "RulesCreateForZoneRequestBodyLogRulePositionBeforePosition",
+  }) as any as S.Schema<RulesCreateForZoneRequestBodyLogRulePositionBeforePosition>;
+
+export interface RulesCreateForZoneRequestBodyLogRulePositionAfterPosition {
+  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
+  after?: string;
+}
+export const RulesCreateForZoneRequestBodyLogRulePositionAfterPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       after: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "RulesCreateForZoneRequestBodyLogRulePositionAfterPosition",
+  }) as any as S.Schema<RulesCreateForZoneRequestBodyLogRulePositionAfterPosition>;
+
+export interface RulesCreateForZoneRequestBodyLogRulePositionIndexPosition {
+  /** An index at which to place the rule, where index 1 is the first rule. */
+  index?: number;
+}
+export const RulesCreateForZoneRequestBodyLogRulePositionIndexPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       index: S.optional(S.Number),
     }),
   ).annotate({
-    identifier: "RulesCreateForZoneRequestBodyLogRulePosition",
-  }) as any as S.Schema<RulesCreateForZoneRequestBodyLogRulePosition>;
+    identifier: "RulesCreateForZoneRequestBodyLogRulePositionIndexPosition",
+  }) as any as S.Schema<RulesCreateForZoneRequestBodyLogRulePositionIndexPosition>;
+
+export type RulesCreateForZoneRequestBodyLogRulePosition =
+  | RulesCreateForZoneRequestBodyLogRulePositionBeforePosition
+  | RulesCreateForZoneRequestBodyLogRulePositionAfterPosition
+  | RulesCreateForZoneRequestBodyLogRulePositionIndexPosition;
+export const RulesCreateForZoneRequestBodyLogRulePosition =
+  /*@__PURE__*/ S.Unknown;
 
 export interface RulesCreateForZoneRequestBodyLogRule {
   /** An object configuring where the rule will be placed. */
@@ -1417,24 +2114,54 @@ export const RulesCreateForZoneRequestBodyLogRule = /*@__PURE__*/ S.suspend(
   identifier: "RulesCreateForZoneRequestBodyLogRule",
 }) as any as S.Schema<RulesCreateForZoneRequestBodyLogRule>;
 
-export interface RulesCreateForZoneRequestBodyLogCustomFieldRulePosition {
+export interface RulesCreateForZoneRequestBodyLogCustomFieldRulePositionBeforePosition {
   /** The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top. */
   before?: string;
-  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
-  after?: string;
-  /** An index at which to place the rule, where index 1 is the first rule. */
-  index?: number;
 }
-export const RulesCreateForZoneRequestBodyLogCustomFieldRulePosition =
+export const RulesCreateForZoneRequestBodyLogCustomFieldRulePositionBeforePosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       before: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "RulesCreateForZoneRequestBodyLogCustomFieldRulePositionBeforePosition",
+  }) as any as S.Schema<RulesCreateForZoneRequestBodyLogCustomFieldRulePositionBeforePosition>;
+
+export interface RulesCreateForZoneRequestBodyLogCustomFieldRulePositionAfterPosition {
+  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
+  after?: string;
+}
+export const RulesCreateForZoneRequestBodyLogCustomFieldRulePositionAfterPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       after: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "RulesCreateForZoneRequestBodyLogCustomFieldRulePositionAfterPosition",
+  }) as any as S.Schema<RulesCreateForZoneRequestBodyLogCustomFieldRulePositionAfterPosition>;
+
+export interface RulesCreateForZoneRequestBodyLogCustomFieldRulePositionIndexPosition {
+  /** An index at which to place the rule, where index 1 is the first rule. */
+  index?: number;
+}
+export const RulesCreateForZoneRequestBodyLogCustomFieldRulePositionIndexPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       index: S.optional(S.Number),
     }),
   ).annotate({
-    identifier: "RulesCreateForZoneRequestBodyLogCustomFieldRulePosition",
-  }) as any as S.Schema<RulesCreateForZoneRequestBodyLogCustomFieldRulePosition>;
+    identifier:
+      "RulesCreateForZoneRequestBodyLogCustomFieldRulePositionIndexPosition",
+  }) as any as S.Schema<RulesCreateForZoneRequestBodyLogCustomFieldRulePositionIndexPosition>;
+
+export type RulesCreateForZoneRequestBodyLogCustomFieldRulePosition =
+  | RulesCreateForZoneRequestBodyLogCustomFieldRulePositionBeforePosition
+  | RulesCreateForZoneRequestBodyLogCustomFieldRulePositionAfterPosition
+  | RulesCreateForZoneRequestBodyLogCustomFieldRulePositionIndexPosition;
+export const RulesCreateForZoneRequestBodyLogCustomFieldRulePosition =
+  /*@__PURE__*/ S.Unknown;
 
 export interface RulesCreateForZoneRequestBodyLogCustomFieldRule {
   /** An object configuring where the rule will be placed. */
@@ -1451,24 +2178,54 @@ export const RulesCreateForZoneRequestBodyLogCustomFieldRule =
     identifier: "RulesCreateForZoneRequestBodyLogCustomFieldRule",
   }) as any as S.Schema<RulesCreateForZoneRequestBodyLogCustomFieldRule>;
 
-export interface RulesCreateForZoneRequestBodyManagedChallengeRulePosition {
+export interface RulesCreateForZoneRequestBodyManagedChallengeRulePositionBeforePosition {
   /** The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top. */
   before?: string;
-  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
-  after?: string;
-  /** An index at which to place the rule, where index 1 is the first rule. */
-  index?: number;
 }
-export const RulesCreateForZoneRequestBodyManagedChallengeRulePosition =
+export const RulesCreateForZoneRequestBodyManagedChallengeRulePositionBeforePosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       before: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "RulesCreateForZoneRequestBodyManagedChallengeRulePositionBeforePosition",
+  }) as any as S.Schema<RulesCreateForZoneRequestBodyManagedChallengeRulePositionBeforePosition>;
+
+export interface RulesCreateForZoneRequestBodyManagedChallengeRulePositionAfterPosition {
+  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
+  after?: string;
+}
+export const RulesCreateForZoneRequestBodyManagedChallengeRulePositionAfterPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       after: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "RulesCreateForZoneRequestBodyManagedChallengeRulePositionAfterPosition",
+  }) as any as S.Schema<RulesCreateForZoneRequestBodyManagedChallengeRulePositionAfterPosition>;
+
+export interface RulesCreateForZoneRequestBodyManagedChallengeRulePositionIndexPosition {
+  /** An index at which to place the rule, where index 1 is the first rule. */
+  index?: number;
+}
+export const RulesCreateForZoneRequestBodyManagedChallengeRulePositionIndexPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       index: S.optional(S.Number),
     }),
   ).annotate({
-    identifier: "RulesCreateForZoneRequestBodyManagedChallengeRulePosition",
-  }) as any as S.Schema<RulesCreateForZoneRequestBodyManagedChallengeRulePosition>;
+    identifier:
+      "RulesCreateForZoneRequestBodyManagedChallengeRulePositionIndexPosition",
+  }) as any as S.Schema<RulesCreateForZoneRequestBodyManagedChallengeRulePositionIndexPosition>;
+
+export type RulesCreateForZoneRequestBodyManagedChallengeRulePosition =
+  | RulesCreateForZoneRequestBodyManagedChallengeRulePositionBeforePosition
+  | RulesCreateForZoneRequestBodyManagedChallengeRulePositionAfterPosition
+  | RulesCreateForZoneRequestBodyManagedChallengeRulePositionIndexPosition;
+export const RulesCreateForZoneRequestBodyManagedChallengeRulePosition =
+  /*@__PURE__*/ S.Unknown;
 
 export interface RulesCreateForZoneRequestBodyManagedChallengeRule {
   /** An object configuring where the rule will be placed. */
@@ -1485,24 +2242,54 @@ export const RulesCreateForZoneRequestBodyManagedChallengeRule =
     identifier: "RulesCreateForZoneRequestBodyManagedChallengeRule",
   }) as any as S.Schema<RulesCreateForZoneRequestBodyManagedChallengeRule>;
 
-export interface RulesCreateForZoneRequestBodyRedirectRulePosition {
+export interface RulesCreateForZoneRequestBodyRedirectRulePositionBeforePosition {
   /** The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top. */
   before?: string;
-  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
-  after?: string;
-  /** An index at which to place the rule, where index 1 is the first rule. */
-  index?: number;
 }
-export const RulesCreateForZoneRequestBodyRedirectRulePosition =
+export const RulesCreateForZoneRequestBodyRedirectRulePositionBeforePosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       before: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "RulesCreateForZoneRequestBodyRedirectRulePositionBeforePosition",
+  }) as any as S.Schema<RulesCreateForZoneRequestBodyRedirectRulePositionBeforePosition>;
+
+export interface RulesCreateForZoneRequestBodyRedirectRulePositionAfterPosition {
+  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
+  after?: string;
+}
+export const RulesCreateForZoneRequestBodyRedirectRulePositionAfterPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       after: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "RulesCreateForZoneRequestBodyRedirectRulePositionAfterPosition",
+  }) as any as S.Schema<RulesCreateForZoneRequestBodyRedirectRulePositionAfterPosition>;
+
+export interface RulesCreateForZoneRequestBodyRedirectRulePositionIndexPosition {
+  /** An index at which to place the rule, where index 1 is the first rule. */
+  index?: number;
+}
+export const RulesCreateForZoneRequestBodyRedirectRulePositionIndexPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       index: S.optional(S.Number),
     }),
   ).annotate({
-    identifier: "RulesCreateForZoneRequestBodyRedirectRulePosition",
-  }) as any as S.Schema<RulesCreateForZoneRequestBodyRedirectRulePosition>;
+    identifier:
+      "RulesCreateForZoneRequestBodyRedirectRulePositionIndexPosition",
+  }) as any as S.Schema<RulesCreateForZoneRequestBodyRedirectRulePositionIndexPosition>;
+
+export type RulesCreateForZoneRequestBodyRedirectRulePosition =
+  | RulesCreateForZoneRequestBodyRedirectRulePositionBeforePosition
+  | RulesCreateForZoneRequestBodyRedirectRulePositionAfterPosition
+  | RulesCreateForZoneRequestBodyRedirectRulePositionIndexPosition;
+export const RulesCreateForZoneRequestBodyRedirectRulePosition =
+  /*@__PURE__*/ S.Unknown;
 
 export interface RulesCreateForZoneRequestBodyRedirectRule {
   /** An object configuring where the rule will be placed. */
@@ -1517,24 +2304,52 @@ export const RulesCreateForZoneRequestBodyRedirectRule =
     identifier: "RulesCreateForZoneRequestBodyRedirectRule",
   }) as any as S.Schema<RulesCreateForZoneRequestBodyRedirectRule>;
 
-export interface RulesCreateForZoneRequestBodyRewriteRulePosition {
+export interface RulesCreateForZoneRequestBodyRewriteRulePositionBeforePosition {
   /** The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top. */
   before?: string;
-  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
-  after?: string;
-  /** An index at which to place the rule, where index 1 is the first rule. */
-  index?: number;
 }
-export const RulesCreateForZoneRequestBodyRewriteRulePosition =
+export const RulesCreateForZoneRequestBodyRewriteRulePositionBeforePosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       before: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "RulesCreateForZoneRequestBodyRewriteRulePositionBeforePosition",
+  }) as any as S.Schema<RulesCreateForZoneRequestBodyRewriteRulePositionBeforePosition>;
+
+export interface RulesCreateForZoneRequestBodyRewriteRulePositionAfterPosition {
+  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
+  after?: string;
+}
+export const RulesCreateForZoneRequestBodyRewriteRulePositionAfterPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       after: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "RulesCreateForZoneRequestBodyRewriteRulePositionAfterPosition",
+  }) as any as S.Schema<RulesCreateForZoneRequestBodyRewriteRulePositionAfterPosition>;
+
+export interface RulesCreateForZoneRequestBodyRewriteRulePositionIndexPosition {
+  /** An index at which to place the rule, where index 1 is the first rule. */
+  index?: number;
+}
+export const RulesCreateForZoneRequestBodyRewriteRulePositionIndexPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       index: S.optional(S.Number),
     }),
   ).annotate({
-    identifier: "RulesCreateForZoneRequestBodyRewriteRulePosition",
-  }) as any as S.Schema<RulesCreateForZoneRequestBodyRewriteRulePosition>;
+    identifier: "RulesCreateForZoneRequestBodyRewriteRulePositionIndexPosition",
+  }) as any as S.Schema<RulesCreateForZoneRequestBodyRewriteRulePositionIndexPosition>;
+
+export type RulesCreateForZoneRequestBodyRewriteRulePosition =
+  | RulesCreateForZoneRequestBodyRewriteRulePositionBeforePosition
+  | RulesCreateForZoneRequestBodyRewriteRulePositionAfterPosition
+  | RulesCreateForZoneRequestBodyRewriteRulePositionIndexPosition;
+export const RulesCreateForZoneRequestBodyRewriteRulePosition =
+  /*@__PURE__*/ S.Unknown;
 
 export interface RulesCreateForZoneRequestBodyRewriteRule {
   /** An object configuring where the rule will be placed. */
@@ -1549,24 +2364,51 @@ export const RulesCreateForZoneRequestBodyRewriteRule = /*@__PURE__*/ S.suspend(
   identifier: "RulesCreateForZoneRequestBodyRewriteRule",
 }) as any as S.Schema<RulesCreateForZoneRequestBodyRewriteRule>;
 
-export interface RulesCreateForZoneRequestBodyRouteRulePosition {
+export interface RulesCreateForZoneRequestBodyRouteRulePositionBeforePosition {
   /** The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top. */
   before?: string;
-  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
-  after?: string;
-  /** An index at which to place the rule, where index 1 is the first rule. */
-  index?: number;
 }
-export const RulesCreateForZoneRequestBodyRouteRulePosition =
+export const RulesCreateForZoneRequestBodyRouteRulePositionBeforePosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       before: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "RulesCreateForZoneRequestBodyRouteRulePositionBeforePosition",
+  }) as any as S.Schema<RulesCreateForZoneRequestBodyRouteRulePositionBeforePosition>;
+
+export interface RulesCreateForZoneRequestBodyRouteRulePositionAfterPosition {
+  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
+  after?: string;
+}
+export const RulesCreateForZoneRequestBodyRouteRulePositionAfterPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       after: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "RulesCreateForZoneRequestBodyRouteRulePositionAfterPosition",
+  }) as any as S.Schema<RulesCreateForZoneRequestBodyRouteRulePositionAfterPosition>;
+
+export interface RulesCreateForZoneRequestBodyRouteRulePositionIndexPosition {
+  /** An index at which to place the rule, where index 1 is the first rule. */
+  index?: number;
+}
+export const RulesCreateForZoneRequestBodyRouteRulePositionIndexPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       index: S.optional(S.Number),
     }),
   ).annotate({
-    identifier: "RulesCreateForZoneRequestBodyRouteRulePosition",
-  }) as any as S.Schema<RulesCreateForZoneRequestBodyRouteRulePosition>;
+    identifier: "RulesCreateForZoneRequestBodyRouteRulePositionIndexPosition",
+  }) as any as S.Schema<RulesCreateForZoneRequestBodyRouteRulePositionIndexPosition>;
+
+export type RulesCreateForZoneRequestBodyRouteRulePosition =
+  | RulesCreateForZoneRequestBodyRouteRulePositionBeforePosition
+  | RulesCreateForZoneRequestBodyRouteRulePositionAfterPosition
+  | RulesCreateForZoneRequestBodyRouteRulePositionIndexPosition;
+export const RulesCreateForZoneRequestBodyRouteRulePosition =
+  /*@__PURE__*/ S.Unknown;
 
 export interface RulesCreateForZoneRequestBodyRouteRule {
   /** An object configuring where the rule will be placed. */
@@ -1581,24 +2423,51 @@ export const RulesCreateForZoneRequestBodyRouteRule = /*@__PURE__*/ S.suspend(
   identifier: "RulesCreateForZoneRequestBodyRouteRule",
 }) as any as S.Schema<RulesCreateForZoneRequestBodyRouteRule>;
 
-export interface RulesCreateForZoneRequestBodyScoreRulePosition {
+export interface RulesCreateForZoneRequestBodyScoreRulePositionBeforePosition {
   /** The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top. */
   before?: string;
-  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
-  after?: string;
-  /** An index at which to place the rule, where index 1 is the first rule. */
-  index?: number;
 }
-export const RulesCreateForZoneRequestBodyScoreRulePosition =
+export const RulesCreateForZoneRequestBodyScoreRulePositionBeforePosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       before: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "RulesCreateForZoneRequestBodyScoreRulePositionBeforePosition",
+  }) as any as S.Schema<RulesCreateForZoneRequestBodyScoreRulePositionBeforePosition>;
+
+export interface RulesCreateForZoneRequestBodyScoreRulePositionAfterPosition {
+  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
+  after?: string;
+}
+export const RulesCreateForZoneRequestBodyScoreRulePositionAfterPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       after: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "RulesCreateForZoneRequestBodyScoreRulePositionAfterPosition",
+  }) as any as S.Schema<RulesCreateForZoneRequestBodyScoreRulePositionAfterPosition>;
+
+export interface RulesCreateForZoneRequestBodyScoreRulePositionIndexPosition {
+  /** An index at which to place the rule, where index 1 is the first rule. */
+  index?: number;
+}
+export const RulesCreateForZoneRequestBodyScoreRulePositionIndexPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       index: S.optional(S.Number),
     }),
   ).annotate({
-    identifier: "RulesCreateForZoneRequestBodyScoreRulePosition",
-  }) as any as S.Schema<RulesCreateForZoneRequestBodyScoreRulePosition>;
+    identifier: "RulesCreateForZoneRequestBodyScoreRulePositionIndexPosition",
+  }) as any as S.Schema<RulesCreateForZoneRequestBodyScoreRulePositionIndexPosition>;
+
+export type RulesCreateForZoneRequestBodyScoreRulePosition =
+  | RulesCreateForZoneRequestBodyScoreRulePositionBeforePosition
+  | RulesCreateForZoneRequestBodyScoreRulePositionAfterPosition
+  | RulesCreateForZoneRequestBodyScoreRulePositionIndexPosition;
+export const RulesCreateForZoneRequestBodyScoreRulePosition =
+  /*@__PURE__*/ S.Unknown;
 
 export interface RulesCreateForZoneRequestBodyScoreRule {
   /** An object configuring where the rule will be placed. */
@@ -1613,24 +2482,54 @@ export const RulesCreateForZoneRequestBodyScoreRule = /*@__PURE__*/ S.suspend(
   identifier: "RulesCreateForZoneRequestBodyScoreRule",
 }) as any as S.Schema<RulesCreateForZoneRequestBodyScoreRule>;
 
-export interface RulesCreateForZoneRequestBodyServeErrorRulePosition {
+export interface RulesCreateForZoneRequestBodyServeErrorRulePositionBeforePosition {
   /** The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top. */
   before?: string;
-  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
-  after?: string;
-  /** An index at which to place the rule, where index 1 is the first rule. */
-  index?: number;
 }
-export const RulesCreateForZoneRequestBodyServeErrorRulePosition =
+export const RulesCreateForZoneRequestBodyServeErrorRulePositionBeforePosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       before: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "RulesCreateForZoneRequestBodyServeErrorRulePositionBeforePosition",
+  }) as any as S.Schema<RulesCreateForZoneRequestBodyServeErrorRulePositionBeforePosition>;
+
+export interface RulesCreateForZoneRequestBodyServeErrorRulePositionAfterPosition {
+  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
+  after?: string;
+}
+export const RulesCreateForZoneRequestBodyServeErrorRulePositionAfterPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       after: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "RulesCreateForZoneRequestBodyServeErrorRulePositionAfterPosition",
+  }) as any as S.Schema<RulesCreateForZoneRequestBodyServeErrorRulePositionAfterPosition>;
+
+export interface RulesCreateForZoneRequestBodyServeErrorRulePositionIndexPosition {
+  /** An index at which to place the rule, where index 1 is the first rule. */
+  index?: number;
+}
+export const RulesCreateForZoneRequestBodyServeErrorRulePositionIndexPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       index: S.optional(S.Number),
     }),
   ).annotate({
-    identifier: "RulesCreateForZoneRequestBodyServeErrorRulePosition",
-  }) as any as S.Schema<RulesCreateForZoneRequestBodyServeErrorRulePosition>;
+    identifier:
+      "RulesCreateForZoneRequestBodyServeErrorRulePositionIndexPosition",
+  }) as any as S.Schema<RulesCreateForZoneRequestBodyServeErrorRulePositionIndexPosition>;
+
+export type RulesCreateForZoneRequestBodyServeErrorRulePosition =
+  | RulesCreateForZoneRequestBodyServeErrorRulePositionBeforePosition
+  | RulesCreateForZoneRequestBodyServeErrorRulePositionAfterPosition
+  | RulesCreateForZoneRequestBodyServeErrorRulePositionIndexPosition;
+export const RulesCreateForZoneRequestBodyServeErrorRulePosition =
+  /*@__PURE__*/ S.Unknown;
 
 export interface RulesCreateForZoneRequestBodyServeErrorRule {
   /** An object configuring where the rule will be placed. */
@@ -1645,24 +2544,54 @@ export const RulesCreateForZoneRequestBodyServeErrorRule =
     identifier: "RulesCreateForZoneRequestBodyServeErrorRule",
   }) as any as S.Schema<RulesCreateForZoneRequestBodyServeErrorRule>;
 
-export interface RulesCreateForZoneRequestBodySetCacheSettingsRulePosition {
+export interface RulesCreateForZoneRequestBodySetCacheSettingsRulePositionBeforePosition {
   /** The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top. */
   before?: string;
-  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
-  after?: string;
-  /** An index at which to place the rule, where index 1 is the first rule. */
-  index?: number;
 }
-export const RulesCreateForZoneRequestBodySetCacheSettingsRulePosition =
+export const RulesCreateForZoneRequestBodySetCacheSettingsRulePositionBeforePosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       before: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "RulesCreateForZoneRequestBodySetCacheSettingsRulePositionBeforePosition",
+  }) as any as S.Schema<RulesCreateForZoneRequestBodySetCacheSettingsRulePositionBeforePosition>;
+
+export interface RulesCreateForZoneRequestBodySetCacheSettingsRulePositionAfterPosition {
+  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
+  after?: string;
+}
+export const RulesCreateForZoneRequestBodySetCacheSettingsRulePositionAfterPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       after: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "RulesCreateForZoneRequestBodySetCacheSettingsRulePositionAfterPosition",
+  }) as any as S.Schema<RulesCreateForZoneRequestBodySetCacheSettingsRulePositionAfterPosition>;
+
+export interface RulesCreateForZoneRequestBodySetCacheSettingsRulePositionIndexPosition {
+  /** An index at which to place the rule, where index 1 is the first rule. */
+  index?: number;
+}
+export const RulesCreateForZoneRequestBodySetCacheSettingsRulePositionIndexPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       index: S.optional(S.Number),
     }),
   ).annotate({
-    identifier: "RulesCreateForZoneRequestBodySetCacheSettingsRulePosition",
-  }) as any as S.Schema<RulesCreateForZoneRequestBodySetCacheSettingsRulePosition>;
+    identifier:
+      "RulesCreateForZoneRequestBodySetCacheSettingsRulePositionIndexPosition",
+  }) as any as S.Schema<RulesCreateForZoneRequestBodySetCacheSettingsRulePositionIndexPosition>;
+
+export type RulesCreateForZoneRequestBodySetCacheSettingsRulePosition =
+  | RulesCreateForZoneRequestBodySetCacheSettingsRulePositionBeforePosition
+  | RulesCreateForZoneRequestBodySetCacheSettingsRulePositionAfterPosition
+  | RulesCreateForZoneRequestBodySetCacheSettingsRulePositionIndexPosition;
+export const RulesCreateForZoneRequestBodySetCacheSettingsRulePosition =
+  /*@__PURE__*/ S.Unknown;
 
 export interface RulesCreateForZoneRequestBodySetCacheSettingsRule {
   /** An object configuring where the rule will be placed. */
@@ -1679,24 +2608,54 @@ export const RulesCreateForZoneRequestBodySetCacheSettingsRule =
     identifier: "RulesCreateForZoneRequestBodySetCacheSettingsRule",
   }) as any as S.Schema<RulesCreateForZoneRequestBodySetCacheSettingsRule>;
 
-export interface RulesCreateForZoneRequestBodySetConfigurationRulePosition {
+export interface RulesCreateForZoneRequestBodySetConfigurationRulePositionBeforePosition {
   /** The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top. */
   before?: string;
-  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
-  after?: string;
-  /** An index at which to place the rule, where index 1 is the first rule. */
-  index?: number;
 }
-export const RulesCreateForZoneRequestBodySetConfigurationRulePosition =
+export const RulesCreateForZoneRequestBodySetConfigurationRulePositionBeforePosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       before: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "RulesCreateForZoneRequestBodySetConfigurationRulePositionBeforePosition",
+  }) as any as S.Schema<RulesCreateForZoneRequestBodySetConfigurationRulePositionBeforePosition>;
+
+export interface RulesCreateForZoneRequestBodySetConfigurationRulePositionAfterPosition {
+  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
+  after?: string;
+}
+export const RulesCreateForZoneRequestBodySetConfigurationRulePositionAfterPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       after: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "RulesCreateForZoneRequestBodySetConfigurationRulePositionAfterPosition",
+  }) as any as S.Schema<RulesCreateForZoneRequestBodySetConfigurationRulePositionAfterPosition>;
+
+export interface RulesCreateForZoneRequestBodySetConfigurationRulePositionIndexPosition {
+  /** An index at which to place the rule, where index 1 is the first rule. */
+  index?: number;
+}
+export const RulesCreateForZoneRequestBodySetConfigurationRulePositionIndexPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       index: S.optional(S.Number),
     }),
   ).annotate({
-    identifier: "RulesCreateForZoneRequestBodySetConfigurationRulePosition",
-  }) as any as S.Schema<RulesCreateForZoneRequestBodySetConfigurationRulePosition>;
+    identifier:
+      "RulesCreateForZoneRequestBodySetConfigurationRulePositionIndexPosition",
+  }) as any as S.Schema<RulesCreateForZoneRequestBodySetConfigurationRulePositionIndexPosition>;
+
+export type RulesCreateForZoneRequestBodySetConfigurationRulePosition =
+  | RulesCreateForZoneRequestBodySetConfigurationRulePositionBeforePosition
+  | RulesCreateForZoneRequestBodySetConfigurationRulePositionAfterPosition
+  | RulesCreateForZoneRequestBodySetConfigurationRulePositionIndexPosition;
+export const RulesCreateForZoneRequestBodySetConfigurationRulePosition =
+  /*@__PURE__*/ S.Unknown;
 
 export interface RulesCreateForZoneRequestBodySetConfigurationRule {
   /** An object configuring where the rule will be placed. */
@@ -1713,24 +2672,51 @@ export const RulesCreateForZoneRequestBodySetConfigurationRule =
     identifier: "RulesCreateForZoneRequestBodySetConfigurationRule",
   }) as any as S.Schema<RulesCreateForZoneRequestBodySetConfigurationRule>;
 
-export interface RulesCreateForZoneRequestBodySkipRulePosition {
+export interface RulesCreateForZoneRequestBodySkipRulePositionBeforePosition {
   /** The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top. */
   before?: string;
-  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
-  after?: string;
-  /** An index at which to place the rule, where index 1 is the first rule. */
-  index?: number;
 }
-export const RulesCreateForZoneRequestBodySkipRulePosition =
+export const RulesCreateForZoneRequestBodySkipRulePositionBeforePosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       before: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "RulesCreateForZoneRequestBodySkipRulePositionBeforePosition",
+  }) as any as S.Schema<RulesCreateForZoneRequestBodySkipRulePositionBeforePosition>;
+
+export interface RulesCreateForZoneRequestBodySkipRulePositionAfterPosition {
+  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
+  after?: string;
+}
+export const RulesCreateForZoneRequestBodySkipRulePositionAfterPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       after: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "RulesCreateForZoneRequestBodySkipRulePositionAfterPosition",
+  }) as any as S.Schema<RulesCreateForZoneRequestBodySkipRulePositionAfterPosition>;
+
+export interface RulesCreateForZoneRequestBodySkipRulePositionIndexPosition {
+  /** An index at which to place the rule, where index 1 is the first rule. */
+  index?: number;
+}
+export const RulesCreateForZoneRequestBodySkipRulePositionIndexPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       index: S.optional(S.Number),
     }),
   ).annotate({
-    identifier: "RulesCreateForZoneRequestBodySkipRulePosition",
-  }) as any as S.Schema<RulesCreateForZoneRequestBodySkipRulePosition>;
+    identifier: "RulesCreateForZoneRequestBodySkipRulePositionIndexPosition",
+  }) as any as S.Schema<RulesCreateForZoneRequestBodySkipRulePositionIndexPosition>;
+
+export type RulesCreateForZoneRequestBodySkipRulePosition =
+  | RulesCreateForZoneRequestBodySkipRulePositionBeforePosition
+  | RulesCreateForZoneRequestBodySkipRulePositionAfterPosition
+  | RulesCreateForZoneRequestBodySkipRulePositionIndexPosition;
+export const RulesCreateForZoneRequestBodySkipRulePosition =
+  /*@__PURE__*/ S.Unknown;
 
 export interface RulesCreateForZoneRequestBodySkipRule {
   /** An object configuring where the rule will be placed. */
@@ -6005,24 +6991,51 @@ export const ListVersionsForZoneResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListVersionsForZoneResponse",
 }) as any as S.Schema<ListVersionsForZoneResponse>;
 
-export interface RulesEditForAccountRequestBodyBlockRulePosition {
+export interface RulesEditForAccountRequestBodyBlockRulePositionBeforePosition {
   /** The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top. */
   before?: string;
-  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
-  after?: string;
-  /** An index at which to place the rule, where index 1 is the first rule. */
-  index?: number;
 }
-export const RulesEditForAccountRequestBodyBlockRulePosition =
+export const RulesEditForAccountRequestBodyBlockRulePositionBeforePosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       before: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "RulesEditForAccountRequestBodyBlockRulePositionBeforePosition",
+  }) as any as S.Schema<RulesEditForAccountRequestBodyBlockRulePositionBeforePosition>;
+
+export interface RulesEditForAccountRequestBodyBlockRulePositionAfterPosition {
+  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
+  after?: string;
+}
+export const RulesEditForAccountRequestBodyBlockRulePositionAfterPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       after: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "RulesEditForAccountRequestBodyBlockRulePositionAfterPosition",
+  }) as any as S.Schema<RulesEditForAccountRequestBodyBlockRulePositionAfterPosition>;
+
+export interface RulesEditForAccountRequestBodyBlockRulePositionIndexPosition {
+  /** An index at which to place the rule, where index 1 is the first rule. */
+  index?: number;
+}
+export const RulesEditForAccountRequestBodyBlockRulePositionIndexPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       index: S.optional(S.Number),
     }),
   ).annotate({
-    identifier: "RulesEditForAccountRequestBodyBlockRulePosition",
-  }) as any as S.Schema<RulesEditForAccountRequestBodyBlockRulePosition>;
+    identifier: "RulesEditForAccountRequestBodyBlockRulePositionIndexPosition",
+  }) as any as S.Schema<RulesEditForAccountRequestBodyBlockRulePositionIndexPosition>;
+
+export type RulesEditForAccountRequestBodyBlockRulePosition =
+  | RulesEditForAccountRequestBodyBlockRulePositionBeforePosition
+  | RulesEditForAccountRequestBodyBlockRulePositionAfterPosition
+  | RulesEditForAccountRequestBodyBlockRulePositionIndexPosition;
+export const RulesEditForAccountRequestBodyBlockRulePosition =
+  /*@__PURE__*/ S.Unknown;
 
 export interface RulesEditForAccountRequestBodyBlockRule {
   /** An object configuring where the rule will be placed. */
@@ -6075,24 +7088,50 @@ export const RulesEditForAccountRequestBodyLogging = /*@__PURE__*/ S.suspend(
   identifier: "RulesEditForAccountRequestBodyLogging",
 }) as any as S.Schema<RulesEditForAccountRequestBodyLogging>;
 
-export interface RulesEditForAccountRequestBodyPosition {
+export interface RulesEditForAccountRequestBodyPositionBeforePosition {
   /** The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top. */
   before?: string;
+}
+export const RulesEditForAccountRequestBodyPositionBeforePosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      before: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "RulesEditForAccountRequestBodyPositionBeforePosition",
+  }) as any as S.Schema<RulesEditForAccountRequestBodyPositionBeforePosition>;
+
+export interface RulesEditForAccountRequestBodyPositionAfterPosition {
   /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
   after?: string;
+}
+export const RulesEditForAccountRequestBodyPositionAfterPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      after: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "RulesEditForAccountRequestBodyPositionAfterPosition",
+  }) as any as S.Schema<RulesEditForAccountRequestBodyPositionAfterPosition>;
+
+export interface RulesEditForAccountRequestBodyPositionIndexPosition {
   /** An index at which to place the rule, where index 1 is the first rule. */
   index?: number;
 }
-export const RulesEditForAccountRequestBodyPosition = /*@__PURE__*/ S.suspend(
-  () =>
+export const RulesEditForAccountRequestBodyPositionIndexPosition =
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      before: S.optional(S.String),
-      after: S.optional(S.String),
       index: S.optional(S.Number),
     }),
-).annotate({
-  identifier: "RulesEditForAccountRequestBodyPosition",
-}) as any as S.Schema<RulesEditForAccountRequestBodyPosition>;
+  ).annotate({
+    identifier: "RulesEditForAccountRequestBodyPositionIndexPosition",
+  }) as any as S.Schema<RulesEditForAccountRequestBodyPositionIndexPosition>;
+
+export type RulesEditForAccountRequestBodyPosition =
+  | RulesEditForAccountRequestBodyPositionBeforePosition
+  | RulesEditForAccountRequestBodyPositionAfterPosition
+  | RulesEditForAccountRequestBodyPositionIndexPosition;
+export const RulesEditForAccountRequestBodyPosition = /*@__PURE__*/ S.Unknown;
 
 export type RulesEditForAccountRequestBodyRatelimitCharacteristicsList =
   string[];
@@ -6146,24 +7185,54 @@ export const RulesEditForAccountRequestBodyRatelimit = /*@__PURE__*/ S.suspend(
   identifier: "RulesEditForAccountRequestBodyRatelimit",
 }) as any as S.Schema<RulesEditForAccountRequestBodyRatelimit>;
 
-export interface RulesEditForAccountRequestBodyResponseCompressionRulePosition {
+export interface RulesEditForAccountRequestBodyResponseCompressionRulePositionBeforePosition {
   /** The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top. */
   before?: string;
-  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
-  after?: string;
-  /** An index at which to place the rule, where index 1 is the first rule. */
-  index?: number;
 }
-export const RulesEditForAccountRequestBodyResponseCompressionRulePosition =
+export const RulesEditForAccountRequestBodyResponseCompressionRulePositionBeforePosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       before: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "RulesEditForAccountRequestBodyResponseCompressionRulePositionBeforePosition",
+  }) as any as S.Schema<RulesEditForAccountRequestBodyResponseCompressionRulePositionBeforePosition>;
+
+export interface RulesEditForAccountRequestBodyResponseCompressionRulePositionAfterPosition {
+  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
+  after?: string;
+}
+export const RulesEditForAccountRequestBodyResponseCompressionRulePositionAfterPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       after: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "RulesEditForAccountRequestBodyResponseCompressionRulePositionAfterPosition",
+  }) as any as S.Schema<RulesEditForAccountRequestBodyResponseCompressionRulePositionAfterPosition>;
+
+export interface RulesEditForAccountRequestBodyResponseCompressionRulePositionIndexPosition {
+  /** An index at which to place the rule, where index 1 is the first rule. */
+  index?: number;
+}
+export const RulesEditForAccountRequestBodyResponseCompressionRulePositionIndexPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       index: S.optional(S.Number),
     }),
   ).annotate({
-    identifier: "RulesEditForAccountRequestBodyResponseCompressionRulePosition",
-  }) as any as S.Schema<RulesEditForAccountRequestBodyResponseCompressionRulePosition>;
+    identifier:
+      "RulesEditForAccountRequestBodyResponseCompressionRulePositionIndexPosition",
+  }) as any as S.Schema<RulesEditForAccountRequestBodyResponseCompressionRulePositionIndexPosition>;
+
+export type RulesEditForAccountRequestBodyResponseCompressionRulePosition =
+  | RulesEditForAccountRequestBodyResponseCompressionRulePositionBeforePosition
+  | RulesEditForAccountRequestBodyResponseCompressionRulePositionAfterPosition
+  | RulesEditForAccountRequestBodyResponseCompressionRulePositionIndexPosition;
+export const RulesEditForAccountRequestBodyResponseCompressionRulePosition =
+  /*@__PURE__*/ S.Unknown;
 
 export interface RulesEditForAccountRequestBodyResponseCompressionRule {
   /** An object configuring where the rule will be placed. */
@@ -6180,24 +7249,54 @@ export const RulesEditForAccountRequestBodyResponseCompressionRule =
     identifier: "RulesEditForAccountRequestBodyResponseCompressionRule",
   }) as any as S.Schema<RulesEditForAccountRequestBodyResponseCompressionRule>;
 
-export interface RulesEditForAccountRequestBodyDDoSDynamicRulePosition {
+export interface RulesEditForAccountRequestBodyDDoSDynamicRulePositionBeforePosition {
   /** The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top. */
   before?: string;
-  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
-  after?: string;
-  /** An index at which to place the rule, where index 1 is the first rule. */
-  index?: number;
 }
-export const RulesEditForAccountRequestBodyDDoSDynamicRulePosition =
+export const RulesEditForAccountRequestBodyDDoSDynamicRulePositionBeforePosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       before: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "RulesEditForAccountRequestBodyDDoSDynamicRulePositionBeforePosition",
+  }) as any as S.Schema<RulesEditForAccountRequestBodyDDoSDynamicRulePositionBeforePosition>;
+
+export interface RulesEditForAccountRequestBodyDDoSDynamicRulePositionAfterPosition {
+  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
+  after?: string;
+}
+export const RulesEditForAccountRequestBodyDDoSDynamicRulePositionAfterPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       after: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "RulesEditForAccountRequestBodyDDoSDynamicRulePositionAfterPosition",
+  }) as any as S.Schema<RulesEditForAccountRequestBodyDDoSDynamicRulePositionAfterPosition>;
+
+export interface RulesEditForAccountRequestBodyDDoSDynamicRulePositionIndexPosition {
+  /** An index at which to place the rule, where index 1 is the first rule. */
+  index?: number;
+}
+export const RulesEditForAccountRequestBodyDDoSDynamicRulePositionIndexPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       index: S.optional(S.Number),
     }),
   ).annotate({
-    identifier: "RulesEditForAccountRequestBodyDDoSDynamicRulePosition",
-  }) as any as S.Schema<RulesEditForAccountRequestBodyDDoSDynamicRulePosition>;
+    identifier:
+      "RulesEditForAccountRequestBodyDDoSDynamicRulePositionIndexPosition",
+  }) as any as S.Schema<RulesEditForAccountRequestBodyDDoSDynamicRulePositionIndexPosition>;
+
+export type RulesEditForAccountRequestBodyDDoSDynamicRulePosition =
+  | RulesEditForAccountRequestBodyDDoSDynamicRulePositionBeforePosition
+  | RulesEditForAccountRequestBodyDDoSDynamicRulePositionAfterPosition
+  | RulesEditForAccountRequestBodyDDoSDynamicRulePositionIndexPosition;
+export const RulesEditForAccountRequestBodyDDoSDynamicRulePosition =
+  /*@__PURE__*/ S.Unknown;
 
 export interface RulesEditForAccountRequestBodyDDoSDynamicRule {
   /** An object configuring where the rule will be placed. */
@@ -6214,24 +7313,54 @@ export const RulesEditForAccountRequestBodyDDoSDynamicRule =
     identifier: "RulesEditForAccountRequestBodyDDoSDynamicRule",
   }) as any as S.Schema<RulesEditForAccountRequestBodyDDoSDynamicRule>;
 
-export interface RulesEditForAccountRequestBodyExecuteRulePosition {
+export interface RulesEditForAccountRequestBodyExecuteRulePositionBeforePosition {
   /** The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top. */
   before?: string;
-  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
-  after?: string;
-  /** An index at which to place the rule, where index 1 is the first rule. */
-  index?: number;
 }
-export const RulesEditForAccountRequestBodyExecuteRulePosition =
+export const RulesEditForAccountRequestBodyExecuteRulePositionBeforePosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       before: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "RulesEditForAccountRequestBodyExecuteRulePositionBeforePosition",
+  }) as any as S.Schema<RulesEditForAccountRequestBodyExecuteRulePositionBeforePosition>;
+
+export interface RulesEditForAccountRequestBodyExecuteRulePositionAfterPosition {
+  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
+  after?: string;
+}
+export const RulesEditForAccountRequestBodyExecuteRulePositionAfterPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       after: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "RulesEditForAccountRequestBodyExecuteRulePositionAfterPosition",
+  }) as any as S.Schema<RulesEditForAccountRequestBodyExecuteRulePositionAfterPosition>;
+
+export interface RulesEditForAccountRequestBodyExecuteRulePositionIndexPosition {
+  /** An index at which to place the rule, where index 1 is the first rule. */
+  index?: number;
+}
+export const RulesEditForAccountRequestBodyExecuteRulePositionIndexPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       index: S.optional(S.Number),
     }),
   ).annotate({
-    identifier: "RulesEditForAccountRequestBodyExecuteRulePosition",
-  }) as any as S.Schema<RulesEditForAccountRequestBodyExecuteRulePosition>;
+    identifier:
+      "RulesEditForAccountRequestBodyExecuteRulePositionIndexPosition",
+  }) as any as S.Schema<RulesEditForAccountRequestBodyExecuteRulePositionIndexPosition>;
+
+export type RulesEditForAccountRequestBodyExecuteRulePosition =
+  | RulesEditForAccountRequestBodyExecuteRulePositionBeforePosition
+  | RulesEditForAccountRequestBodyExecuteRulePositionAfterPosition
+  | RulesEditForAccountRequestBodyExecuteRulePositionIndexPosition;
+export const RulesEditForAccountRequestBodyExecuteRulePosition =
+  /*@__PURE__*/ S.Unknown;
 
 export interface RulesEditForAccountRequestBodyExecuteRule {
   /** An object configuring where the rule will be placed. */
@@ -6246,25 +7375,54 @@ export const RulesEditForAccountRequestBodyExecuteRule =
     identifier: "RulesEditForAccountRequestBodyExecuteRule",
   }) as any as S.Schema<RulesEditForAccountRequestBodyExecuteRule>;
 
-export interface RulesEditForAccountRequestBodyForceConnectionCloseRulePosition {
+export interface RulesEditForAccountRequestBodyForceConnectionCloseRulePositionBeforePosition {
   /** The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top. */
   before?: string;
-  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
-  after?: string;
-  /** An index at which to place the rule, where index 1 is the first rule. */
-  index?: number;
 }
-export const RulesEditForAccountRequestBodyForceConnectionCloseRulePosition =
+export const RulesEditForAccountRequestBodyForceConnectionCloseRulePositionBeforePosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       before: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "RulesEditForAccountRequestBodyForceConnectionCloseRulePositionBeforePosition",
+  }) as any as S.Schema<RulesEditForAccountRequestBodyForceConnectionCloseRulePositionBeforePosition>;
+
+export interface RulesEditForAccountRequestBodyForceConnectionCloseRulePositionAfterPosition {
+  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
+  after?: string;
+}
+export const RulesEditForAccountRequestBodyForceConnectionCloseRulePositionAfterPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       after: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "RulesEditForAccountRequestBodyForceConnectionCloseRulePositionAfterPosition",
+  }) as any as S.Schema<RulesEditForAccountRequestBodyForceConnectionCloseRulePositionAfterPosition>;
+
+export interface RulesEditForAccountRequestBodyForceConnectionCloseRulePositionIndexPosition {
+  /** An index at which to place the rule, where index 1 is the first rule. */
+  index?: number;
+}
+export const RulesEditForAccountRequestBodyForceConnectionCloseRulePositionIndexPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       index: S.optional(S.Number),
     }),
   ).annotate({
     identifier:
-      "RulesEditForAccountRequestBodyForceConnectionCloseRulePosition",
-  }) as any as S.Schema<RulesEditForAccountRequestBodyForceConnectionCloseRulePosition>;
+      "RulesEditForAccountRequestBodyForceConnectionCloseRulePositionIndexPosition",
+  }) as any as S.Schema<RulesEditForAccountRequestBodyForceConnectionCloseRulePositionIndexPosition>;
+
+export type RulesEditForAccountRequestBodyForceConnectionCloseRulePosition =
+  | RulesEditForAccountRequestBodyForceConnectionCloseRulePositionBeforePosition
+  | RulesEditForAccountRequestBodyForceConnectionCloseRulePositionAfterPosition
+  | RulesEditForAccountRequestBodyForceConnectionCloseRulePositionIndexPosition;
+export const RulesEditForAccountRequestBodyForceConnectionCloseRulePosition =
+  /*@__PURE__*/ S.Unknown;
 
 export interface RulesEditForAccountRequestBodyForceConnectionCloseRule {
   /** An object configuring where the rule will be placed. */
@@ -6281,24 +7439,51 @@ export const RulesEditForAccountRequestBodyForceConnectionCloseRule =
     identifier: "RulesEditForAccountRequestBodyForceConnectionCloseRule",
   }) as any as S.Schema<RulesEditForAccountRequestBodyForceConnectionCloseRule>;
 
-export interface RulesEditForAccountRequestBodyLogRulePosition {
+export interface RulesEditForAccountRequestBodyLogRulePositionBeforePosition {
   /** The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top. */
   before?: string;
-  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
-  after?: string;
-  /** An index at which to place the rule, where index 1 is the first rule. */
-  index?: number;
 }
-export const RulesEditForAccountRequestBodyLogRulePosition =
+export const RulesEditForAccountRequestBodyLogRulePositionBeforePosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       before: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "RulesEditForAccountRequestBodyLogRulePositionBeforePosition",
+  }) as any as S.Schema<RulesEditForAccountRequestBodyLogRulePositionBeforePosition>;
+
+export interface RulesEditForAccountRequestBodyLogRulePositionAfterPosition {
+  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
+  after?: string;
+}
+export const RulesEditForAccountRequestBodyLogRulePositionAfterPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       after: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "RulesEditForAccountRequestBodyLogRulePositionAfterPosition",
+  }) as any as S.Schema<RulesEditForAccountRequestBodyLogRulePositionAfterPosition>;
+
+export interface RulesEditForAccountRequestBodyLogRulePositionIndexPosition {
+  /** An index at which to place the rule, where index 1 is the first rule. */
+  index?: number;
+}
+export const RulesEditForAccountRequestBodyLogRulePositionIndexPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       index: S.optional(S.Number),
     }),
   ).annotate({
-    identifier: "RulesEditForAccountRequestBodyLogRulePosition",
-  }) as any as S.Schema<RulesEditForAccountRequestBodyLogRulePosition>;
+    identifier: "RulesEditForAccountRequestBodyLogRulePositionIndexPosition",
+  }) as any as S.Schema<RulesEditForAccountRequestBodyLogRulePositionIndexPosition>;
+
+export type RulesEditForAccountRequestBodyLogRulePosition =
+  | RulesEditForAccountRequestBodyLogRulePositionBeforePosition
+  | RulesEditForAccountRequestBodyLogRulePositionAfterPosition
+  | RulesEditForAccountRequestBodyLogRulePositionIndexPosition;
+export const RulesEditForAccountRequestBodyLogRulePosition =
+  /*@__PURE__*/ S.Unknown;
 
 export interface RulesEditForAccountRequestBodyLogRule {
   /** An object configuring where the rule will be placed. */
@@ -6313,24 +7498,54 @@ export const RulesEditForAccountRequestBodyLogRule = /*@__PURE__*/ S.suspend(
   identifier: "RulesEditForAccountRequestBodyLogRule",
 }) as any as S.Schema<RulesEditForAccountRequestBodyLogRule>;
 
-export interface RulesEditForAccountRequestBodyLogCustomFieldRulePosition {
+export interface RulesEditForAccountRequestBodyLogCustomFieldRulePositionBeforePosition {
   /** The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top. */
   before?: string;
-  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
-  after?: string;
-  /** An index at which to place the rule, where index 1 is the first rule. */
-  index?: number;
 }
-export const RulesEditForAccountRequestBodyLogCustomFieldRulePosition =
+export const RulesEditForAccountRequestBodyLogCustomFieldRulePositionBeforePosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       before: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "RulesEditForAccountRequestBodyLogCustomFieldRulePositionBeforePosition",
+  }) as any as S.Schema<RulesEditForAccountRequestBodyLogCustomFieldRulePositionBeforePosition>;
+
+export interface RulesEditForAccountRequestBodyLogCustomFieldRulePositionAfterPosition {
+  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
+  after?: string;
+}
+export const RulesEditForAccountRequestBodyLogCustomFieldRulePositionAfterPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       after: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "RulesEditForAccountRequestBodyLogCustomFieldRulePositionAfterPosition",
+  }) as any as S.Schema<RulesEditForAccountRequestBodyLogCustomFieldRulePositionAfterPosition>;
+
+export interface RulesEditForAccountRequestBodyLogCustomFieldRulePositionIndexPosition {
+  /** An index at which to place the rule, where index 1 is the first rule. */
+  index?: number;
+}
+export const RulesEditForAccountRequestBodyLogCustomFieldRulePositionIndexPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       index: S.optional(S.Number),
     }),
   ).annotate({
-    identifier: "RulesEditForAccountRequestBodyLogCustomFieldRulePosition",
-  }) as any as S.Schema<RulesEditForAccountRequestBodyLogCustomFieldRulePosition>;
+    identifier:
+      "RulesEditForAccountRequestBodyLogCustomFieldRulePositionIndexPosition",
+  }) as any as S.Schema<RulesEditForAccountRequestBodyLogCustomFieldRulePositionIndexPosition>;
+
+export type RulesEditForAccountRequestBodyLogCustomFieldRulePosition =
+  | RulesEditForAccountRequestBodyLogCustomFieldRulePositionBeforePosition
+  | RulesEditForAccountRequestBodyLogCustomFieldRulePositionAfterPosition
+  | RulesEditForAccountRequestBodyLogCustomFieldRulePositionIndexPosition;
+export const RulesEditForAccountRequestBodyLogCustomFieldRulePosition =
+  /*@__PURE__*/ S.Unknown;
 
 export interface RulesEditForAccountRequestBodyLogCustomFieldRule {
   /** An object configuring where the rule will be placed. */
@@ -6347,24 +7562,54 @@ export const RulesEditForAccountRequestBodyLogCustomFieldRule =
     identifier: "RulesEditForAccountRequestBodyLogCustomFieldRule",
   }) as any as S.Schema<RulesEditForAccountRequestBodyLogCustomFieldRule>;
 
-export interface RulesEditForAccountRequestBodyManagedChallengeRulePosition {
+export interface RulesEditForAccountRequestBodyManagedChallengeRulePositionBeforePosition {
   /** The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top. */
   before?: string;
-  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
-  after?: string;
-  /** An index at which to place the rule, where index 1 is the first rule. */
-  index?: number;
 }
-export const RulesEditForAccountRequestBodyManagedChallengeRulePosition =
+export const RulesEditForAccountRequestBodyManagedChallengeRulePositionBeforePosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       before: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "RulesEditForAccountRequestBodyManagedChallengeRulePositionBeforePosition",
+  }) as any as S.Schema<RulesEditForAccountRequestBodyManagedChallengeRulePositionBeforePosition>;
+
+export interface RulesEditForAccountRequestBodyManagedChallengeRulePositionAfterPosition {
+  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
+  after?: string;
+}
+export const RulesEditForAccountRequestBodyManagedChallengeRulePositionAfterPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       after: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "RulesEditForAccountRequestBodyManagedChallengeRulePositionAfterPosition",
+  }) as any as S.Schema<RulesEditForAccountRequestBodyManagedChallengeRulePositionAfterPosition>;
+
+export interface RulesEditForAccountRequestBodyManagedChallengeRulePositionIndexPosition {
+  /** An index at which to place the rule, where index 1 is the first rule. */
+  index?: number;
+}
+export const RulesEditForAccountRequestBodyManagedChallengeRulePositionIndexPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       index: S.optional(S.Number),
     }),
   ).annotate({
-    identifier: "RulesEditForAccountRequestBodyManagedChallengeRulePosition",
-  }) as any as S.Schema<RulesEditForAccountRequestBodyManagedChallengeRulePosition>;
+    identifier:
+      "RulesEditForAccountRequestBodyManagedChallengeRulePositionIndexPosition",
+  }) as any as S.Schema<RulesEditForAccountRequestBodyManagedChallengeRulePositionIndexPosition>;
+
+export type RulesEditForAccountRequestBodyManagedChallengeRulePosition =
+  | RulesEditForAccountRequestBodyManagedChallengeRulePositionBeforePosition
+  | RulesEditForAccountRequestBodyManagedChallengeRulePositionAfterPosition
+  | RulesEditForAccountRequestBodyManagedChallengeRulePositionIndexPosition;
+export const RulesEditForAccountRequestBodyManagedChallengeRulePosition =
+  /*@__PURE__*/ S.Unknown;
 
 export interface RulesEditForAccountRequestBodyManagedChallengeRule {
   /** An object configuring where the rule will be placed. */
@@ -6381,24 +7626,54 @@ export const RulesEditForAccountRequestBodyManagedChallengeRule =
     identifier: "RulesEditForAccountRequestBodyManagedChallengeRule",
   }) as any as S.Schema<RulesEditForAccountRequestBodyManagedChallengeRule>;
 
-export interface RulesEditForAccountRequestBodyRedirectRulePosition {
+export interface RulesEditForAccountRequestBodyRedirectRulePositionBeforePosition {
   /** The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top. */
   before?: string;
-  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
-  after?: string;
-  /** An index at which to place the rule, where index 1 is the first rule. */
-  index?: number;
 }
-export const RulesEditForAccountRequestBodyRedirectRulePosition =
+export const RulesEditForAccountRequestBodyRedirectRulePositionBeforePosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       before: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "RulesEditForAccountRequestBodyRedirectRulePositionBeforePosition",
+  }) as any as S.Schema<RulesEditForAccountRequestBodyRedirectRulePositionBeforePosition>;
+
+export interface RulesEditForAccountRequestBodyRedirectRulePositionAfterPosition {
+  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
+  after?: string;
+}
+export const RulesEditForAccountRequestBodyRedirectRulePositionAfterPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       after: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "RulesEditForAccountRequestBodyRedirectRulePositionAfterPosition",
+  }) as any as S.Schema<RulesEditForAccountRequestBodyRedirectRulePositionAfterPosition>;
+
+export interface RulesEditForAccountRequestBodyRedirectRulePositionIndexPosition {
+  /** An index at which to place the rule, where index 1 is the first rule. */
+  index?: number;
+}
+export const RulesEditForAccountRequestBodyRedirectRulePositionIndexPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       index: S.optional(S.Number),
     }),
   ).annotate({
-    identifier: "RulesEditForAccountRequestBodyRedirectRulePosition",
-  }) as any as S.Schema<RulesEditForAccountRequestBodyRedirectRulePosition>;
+    identifier:
+      "RulesEditForAccountRequestBodyRedirectRulePositionIndexPosition",
+  }) as any as S.Schema<RulesEditForAccountRequestBodyRedirectRulePositionIndexPosition>;
+
+export type RulesEditForAccountRequestBodyRedirectRulePosition =
+  | RulesEditForAccountRequestBodyRedirectRulePositionBeforePosition
+  | RulesEditForAccountRequestBodyRedirectRulePositionAfterPosition
+  | RulesEditForAccountRequestBodyRedirectRulePositionIndexPosition;
+export const RulesEditForAccountRequestBodyRedirectRulePosition =
+  /*@__PURE__*/ S.Unknown;
 
 export interface RulesEditForAccountRequestBodyRedirectRule {
   /** An object configuring where the rule will be placed. */
@@ -6413,24 +7688,54 @@ export const RulesEditForAccountRequestBodyRedirectRule =
     identifier: "RulesEditForAccountRequestBodyRedirectRule",
   }) as any as S.Schema<RulesEditForAccountRequestBodyRedirectRule>;
 
-export interface RulesEditForAccountRequestBodyRewriteRulePosition {
+export interface RulesEditForAccountRequestBodyRewriteRulePositionBeforePosition {
   /** The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top. */
   before?: string;
-  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
-  after?: string;
-  /** An index at which to place the rule, where index 1 is the first rule. */
-  index?: number;
 }
-export const RulesEditForAccountRequestBodyRewriteRulePosition =
+export const RulesEditForAccountRequestBodyRewriteRulePositionBeforePosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       before: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "RulesEditForAccountRequestBodyRewriteRulePositionBeforePosition",
+  }) as any as S.Schema<RulesEditForAccountRequestBodyRewriteRulePositionBeforePosition>;
+
+export interface RulesEditForAccountRequestBodyRewriteRulePositionAfterPosition {
+  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
+  after?: string;
+}
+export const RulesEditForAccountRequestBodyRewriteRulePositionAfterPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       after: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "RulesEditForAccountRequestBodyRewriteRulePositionAfterPosition",
+  }) as any as S.Schema<RulesEditForAccountRequestBodyRewriteRulePositionAfterPosition>;
+
+export interface RulesEditForAccountRequestBodyRewriteRulePositionIndexPosition {
+  /** An index at which to place the rule, where index 1 is the first rule. */
+  index?: number;
+}
+export const RulesEditForAccountRequestBodyRewriteRulePositionIndexPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       index: S.optional(S.Number),
     }),
   ).annotate({
-    identifier: "RulesEditForAccountRequestBodyRewriteRulePosition",
-  }) as any as S.Schema<RulesEditForAccountRequestBodyRewriteRulePosition>;
+    identifier:
+      "RulesEditForAccountRequestBodyRewriteRulePositionIndexPosition",
+  }) as any as S.Schema<RulesEditForAccountRequestBodyRewriteRulePositionIndexPosition>;
+
+export type RulesEditForAccountRequestBodyRewriteRulePosition =
+  | RulesEditForAccountRequestBodyRewriteRulePositionBeforePosition
+  | RulesEditForAccountRequestBodyRewriteRulePositionAfterPosition
+  | RulesEditForAccountRequestBodyRewriteRulePositionIndexPosition;
+export const RulesEditForAccountRequestBodyRewriteRulePosition =
+  /*@__PURE__*/ S.Unknown;
 
 export interface RulesEditForAccountRequestBodyRewriteRule {
   /** An object configuring where the rule will be placed. */
@@ -6445,24 +7750,51 @@ export const RulesEditForAccountRequestBodyRewriteRule =
     identifier: "RulesEditForAccountRequestBodyRewriteRule",
   }) as any as S.Schema<RulesEditForAccountRequestBodyRewriteRule>;
 
-export interface RulesEditForAccountRequestBodyRouteRulePosition {
+export interface RulesEditForAccountRequestBodyRouteRulePositionBeforePosition {
   /** The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top. */
   before?: string;
-  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
-  after?: string;
-  /** An index at which to place the rule, where index 1 is the first rule. */
-  index?: number;
 }
-export const RulesEditForAccountRequestBodyRouteRulePosition =
+export const RulesEditForAccountRequestBodyRouteRulePositionBeforePosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       before: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "RulesEditForAccountRequestBodyRouteRulePositionBeforePosition",
+  }) as any as S.Schema<RulesEditForAccountRequestBodyRouteRulePositionBeforePosition>;
+
+export interface RulesEditForAccountRequestBodyRouteRulePositionAfterPosition {
+  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
+  after?: string;
+}
+export const RulesEditForAccountRequestBodyRouteRulePositionAfterPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       after: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "RulesEditForAccountRequestBodyRouteRulePositionAfterPosition",
+  }) as any as S.Schema<RulesEditForAccountRequestBodyRouteRulePositionAfterPosition>;
+
+export interface RulesEditForAccountRequestBodyRouteRulePositionIndexPosition {
+  /** An index at which to place the rule, where index 1 is the first rule. */
+  index?: number;
+}
+export const RulesEditForAccountRequestBodyRouteRulePositionIndexPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       index: S.optional(S.Number),
     }),
   ).annotate({
-    identifier: "RulesEditForAccountRequestBodyRouteRulePosition",
-  }) as any as S.Schema<RulesEditForAccountRequestBodyRouteRulePosition>;
+    identifier: "RulesEditForAccountRequestBodyRouteRulePositionIndexPosition",
+  }) as any as S.Schema<RulesEditForAccountRequestBodyRouteRulePositionIndexPosition>;
+
+export type RulesEditForAccountRequestBodyRouteRulePosition =
+  | RulesEditForAccountRequestBodyRouteRulePositionBeforePosition
+  | RulesEditForAccountRequestBodyRouteRulePositionAfterPosition
+  | RulesEditForAccountRequestBodyRouteRulePositionIndexPosition;
+export const RulesEditForAccountRequestBodyRouteRulePosition =
+  /*@__PURE__*/ S.Unknown;
 
 export interface RulesEditForAccountRequestBodyRouteRule {
   /** An object configuring where the rule will be placed. */
@@ -6477,24 +7809,51 @@ export const RulesEditForAccountRequestBodyRouteRule = /*@__PURE__*/ S.suspend(
   identifier: "RulesEditForAccountRequestBodyRouteRule",
 }) as any as S.Schema<RulesEditForAccountRequestBodyRouteRule>;
 
-export interface RulesEditForAccountRequestBodyScoreRulePosition {
+export interface RulesEditForAccountRequestBodyScoreRulePositionBeforePosition {
   /** The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top. */
   before?: string;
-  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
-  after?: string;
-  /** An index at which to place the rule, where index 1 is the first rule. */
-  index?: number;
 }
-export const RulesEditForAccountRequestBodyScoreRulePosition =
+export const RulesEditForAccountRequestBodyScoreRulePositionBeforePosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       before: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "RulesEditForAccountRequestBodyScoreRulePositionBeforePosition",
+  }) as any as S.Schema<RulesEditForAccountRequestBodyScoreRulePositionBeforePosition>;
+
+export interface RulesEditForAccountRequestBodyScoreRulePositionAfterPosition {
+  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
+  after?: string;
+}
+export const RulesEditForAccountRequestBodyScoreRulePositionAfterPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       after: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "RulesEditForAccountRequestBodyScoreRulePositionAfterPosition",
+  }) as any as S.Schema<RulesEditForAccountRequestBodyScoreRulePositionAfterPosition>;
+
+export interface RulesEditForAccountRequestBodyScoreRulePositionIndexPosition {
+  /** An index at which to place the rule, where index 1 is the first rule. */
+  index?: number;
+}
+export const RulesEditForAccountRequestBodyScoreRulePositionIndexPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       index: S.optional(S.Number),
     }),
   ).annotate({
-    identifier: "RulesEditForAccountRequestBodyScoreRulePosition",
-  }) as any as S.Schema<RulesEditForAccountRequestBodyScoreRulePosition>;
+    identifier: "RulesEditForAccountRequestBodyScoreRulePositionIndexPosition",
+  }) as any as S.Schema<RulesEditForAccountRequestBodyScoreRulePositionIndexPosition>;
+
+export type RulesEditForAccountRequestBodyScoreRulePosition =
+  | RulesEditForAccountRequestBodyScoreRulePositionBeforePosition
+  | RulesEditForAccountRequestBodyScoreRulePositionAfterPosition
+  | RulesEditForAccountRequestBodyScoreRulePositionIndexPosition;
+export const RulesEditForAccountRequestBodyScoreRulePosition =
+  /*@__PURE__*/ S.Unknown;
 
 export interface RulesEditForAccountRequestBodyScoreRule {
   /** An object configuring where the rule will be placed. */
@@ -6509,24 +7868,54 @@ export const RulesEditForAccountRequestBodyScoreRule = /*@__PURE__*/ S.suspend(
   identifier: "RulesEditForAccountRequestBodyScoreRule",
 }) as any as S.Schema<RulesEditForAccountRequestBodyScoreRule>;
 
-export interface RulesEditForAccountRequestBodyServeErrorRulePosition {
+export interface RulesEditForAccountRequestBodyServeErrorRulePositionBeforePosition {
   /** The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top. */
   before?: string;
-  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
-  after?: string;
-  /** An index at which to place the rule, where index 1 is the first rule. */
-  index?: number;
 }
-export const RulesEditForAccountRequestBodyServeErrorRulePosition =
+export const RulesEditForAccountRequestBodyServeErrorRulePositionBeforePosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       before: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "RulesEditForAccountRequestBodyServeErrorRulePositionBeforePosition",
+  }) as any as S.Schema<RulesEditForAccountRequestBodyServeErrorRulePositionBeforePosition>;
+
+export interface RulesEditForAccountRequestBodyServeErrorRulePositionAfterPosition {
+  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
+  after?: string;
+}
+export const RulesEditForAccountRequestBodyServeErrorRulePositionAfterPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       after: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "RulesEditForAccountRequestBodyServeErrorRulePositionAfterPosition",
+  }) as any as S.Schema<RulesEditForAccountRequestBodyServeErrorRulePositionAfterPosition>;
+
+export interface RulesEditForAccountRequestBodyServeErrorRulePositionIndexPosition {
+  /** An index at which to place the rule, where index 1 is the first rule. */
+  index?: number;
+}
+export const RulesEditForAccountRequestBodyServeErrorRulePositionIndexPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       index: S.optional(S.Number),
     }),
   ).annotate({
-    identifier: "RulesEditForAccountRequestBodyServeErrorRulePosition",
-  }) as any as S.Schema<RulesEditForAccountRequestBodyServeErrorRulePosition>;
+    identifier:
+      "RulesEditForAccountRequestBodyServeErrorRulePositionIndexPosition",
+  }) as any as S.Schema<RulesEditForAccountRequestBodyServeErrorRulePositionIndexPosition>;
+
+export type RulesEditForAccountRequestBodyServeErrorRulePosition =
+  | RulesEditForAccountRequestBodyServeErrorRulePositionBeforePosition
+  | RulesEditForAccountRequestBodyServeErrorRulePositionAfterPosition
+  | RulesEditForAccountRequestBodyServeErrorRulePositionIndexPosition;
+export const RulesEditForAccountRequestBodyServeErrorRulePosition =
+  /*@__PURE__*/ S.Unknown;
 
 export interface RulesEditForAccountRequestBodyServeErrorRule {
   /** An object configuring where the rule will be placed. */
@@ -6543,24 +7932,54 @@ export const RulesEditForAccountRequestBodyServeErrorRule =
     identifier: "RulesEditForAccountRequestBodyServeErrorRule",
   }) as any as S.Schema<RulesEditForAccountRequestBodyServeErrorRule>;
 
-export interface RulesEditForAccountRequestBodySetCacheSettingsRulePosition {
+export interface RulesEditForAccountRequestBodySetCacheSettingsRulePositionBeforePosition {
   /** The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top. */
   before?: string;
-  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
-  after?: string;
-  /** An index at which to place the rule, where index 1 is the first rule. */
-  index?: number;
 }
-export const RulesEditForAccountRequestBodySetCacheSettingsRulePosition =
+export const RulesEditForAccountRequestBodySetCacheSettingsRulePositionBeforePosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       before: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "RulesEditForAccountRequestBodySetCacheSettingsRulePositionBeforePosition",
+  }) as any as S.Schema<RulesEditForAccountRequestBodySetCacheSettingsRulePositionBeforePosition>;
+
+export interface RulesEditForAccountRequestBodySetCacheSettingsRulePositionAfterPosition {
+  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
+  after?: string;
+}
+export const RulesEditForAccountRequestBodySetCacheSettingsRulePositionAfterPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       after: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "RulesEditForAccountRequestBodySetCacheSettingsRulePositionAfterPosition",
+  }) as any as S.Schema<RulesEditForAccountRequestBodySetCacheSettingsRulePositionAfterPosition>;
+
+export interface RulesEditForAccountRequestBodySetCacheSettingsRulePositionIndexPosition {
+  /** An index at which to place the rule, where index 1 is the first rule. */
+  index?: number;
+}
+export const RulesEditForAccountRequestBodySetCacheSettingsRulePositionIndexPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       index: S.optional(S.Number),
     }),
   ).annotate({
-    identifier: "RulesEditForAccountRequestBodySetCacheSettingsRulePosition",
-  }) as any as S.Schema<RulesEditForAccountRequestBodySetCacheSettingsRulePosition>;
+    identifier:
+      "RulesEditForAccountRequestBodySetCacheSettingsRulePositionIndexPosition",
+  }) as any as S.Schema<RulesEditForAccountRequestBodySetCacheSettingsRulePositionIndexPosition>;
+
+export type RulesEditForAccountRequestBodySetCacheSettingsRulePosition =
+  | RulesEditForAccountRequestBodySetCacheSettingsRulePositionBeforePosition
+  | RulesEditForAccountRequestBodySetCacheSettingsRulePositionAfterPosition
+  | RulesEditForAccountRequestBodySetCacheSettingsRulePositionIndexPosition;
+export const RulesEditForAccountRequestBodySetCacheSettingsRulePosition =
+  /*@__PURE__*/ S.Unknown;
 
 export interface RulesEditForAccountRequestBodySetCacheSettingsRule {
   /** An object configuring where the rule will be placed. */
@@ -6577,24 +7996,54 @@ export const RulesEditForAccountRequestBodySetCacheSettingsRule =
     identifier: "RulesEditForAccountRequestBodySetCacheSettingsRule",
   }) as any as S.Schema<RulesEditForAccountRequestBodySetCacheSettingsRule>;
 
-export interface RulesEditForAccountRequestBodySetConfigurationRulePosition {
+export interface RulesEditForAccountRequestBodySetConfigurationRulePositionBeforePosition {
   /** The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top. */
   before?: string;
-  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
-  after?: string;
-  /** An index at which to place the rule, where index 1 is the first rule. */
-  index?: number;
 }
-export const RulesEditForAccountRequestBodySetConfigurationRulePosition =
+export const RulesEditForAccountRequestBodySetConfigurationRulePositionBeforePosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       before: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "RulesEditForAccountRequestBodySetConfigurationRulePositionBeforePosition",
+  }) as any as S.Schema<RulesEditForAccountRequestBodySetConfigurationRulePositionBeforePosition>;
+
+export interface RulesEditForAccountRequestBodySetConfigurationRulePositionAfterPosition {
+  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
+  after?: string;
+}
+export const RulesEditForAccountRequestBodySetConfigurationRulePositionAfterPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       after: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "RulesEditForAccountRequestBodySetConfigurationRulePositionAfterPosition",
+  }) as any as S.Schema<RulesEditForAccountRequestBodySetConfigurationRulePositionAfterPosition>;
+
+export interface RulesEditForAccountRequestBodySetConfigurationRulePositionIndexPosition {
+  /** An index at which to place the rule, where index 1 is the first rule. */
+  index?: number;
+}
+export const RulesEditForAccountRequestBodySetConfigurationRulePositionIndexPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       index: S.optional(S.Number),
     }),
   ).annotate({
-    identifier: "RulesEditForAccountRequestBodySetConfigurationRulePosition",
-  }) as any as S.Schema<RulesEditForAccountRequestBodySetConfigurationRulePosition>;
+    identifier:
+      "RulesEditForAccountRequestBodySetConfigurationRulePositionIndexPosition",
+  }) as any as S.Schema<RulesEditForAccountRequestBodySetConfigurationRulePositionIndexPosition>;
+
+export type RulesEditForAccountRequestBodySetConfigurationRulePosition =
+  | RulesEditForAccountRequestBodySetConfigurationRulePositionBeforePosition
+  | RulesEditForAccountRequestBodySetConfigurationRulePositionAfterPosition
+  | RulesEditForAccountRequestBodySetConfigurationRulePositionIndexPosition;
+export const RulesEditForAccountRequestBodySetConfigurationRulePosition =
+  /*@__PURE__*/ S.Unknown;
 
 export interface RulesEditForAccountRequestBodySetConfigurationRule {
   /** An object configuring where the rule will be placed. */
@@ -6611,24 +8060,51 @@ export const RulesEditForAccountRequestBodySetConfigurationRule =
     identifier: "RulesEditForAccountRequestBodySetConfigurationRule",
   }) as any as S.Schema<RulesEditForAccountRequestBodySetConfigurationRule>;
 
-export interface RulesEditForAccountRequestBodySkipRulePosition {
+export interface RulesEditForAccountRequestBodySkipRulePositionBeforePosition {
   /** The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top. */
   before?: string;
-  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
-  after?: string;
-  /** An index at which to place the rule, where index 1 is the first rule. */
-  index?: number;
 }
-export const RulesEditForAccountRequestBodySkipRulePosition =
+export const RulesEditForAccountRequestBodySkipRulePositionBeforePosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       before: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "RulesEditForAccountRequestBodySkipRulePositionBeforePosition",
+  }) as any as S.Schema<RulesEditForAccountRequestBodySkipRulePositionBeforePosition>;
+
+export interface RulesEditForAccountRequestBodySkipRulePositionAfterPosition {
+  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
+  after?: string;
+}
+export const RulesEditForAccountRequestBodySkipRulePositionAfterPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       after: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "RulesEditForAccountRequestBodySkipRulePositionAfterPosition",
+  }) as any as S.Schema<RulesEditForAccountRequestBodySkipRulePositionAfterPosition>;
+
+export interface RulesEditForAccountRequestBodySkipRulePositionIndexPosition {
+  /** An index at which to place the rule, where index 1 is the first rule. */
+  index?: number;
+}
+export const RulesEditForAccountRequestBodySkipRulePositionIndexPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       index: S.optional(S.Number),
     }),
   ).annotate({
-    identifier: "RulesEditForAccountRequestBodySkipRulePosition",
-  }) as any as S.Schema<RulesEditForAccountRequestBodySkipRulePosition>;
+    identifier: "RulesEditForAccountRequestBodySkipRulePositionIndexPosition",
+  }) as any as S.Schema<RulesEditForAccountRequestBodySkipRulePositionIndexPosition>;
+
+export type RulesEditForAccountRequestBodySkipRulePosition =
+  | RulesEditForAccountRequestBodySkipRulePositionBeforePosition
+  | RulesEditForAccountRequestBodySkipRulePositionAfterPosition
+  | RulesEditForAccountRequestBodySkipRulePositionIndexPosition;
+export const RulesEditForAccountRequestBodySkipRulePosition =
+  /*@__PURE__*/ S.Unknown;
 
 export interface RulesEditForAccountRequestBodySkipRule {
   /** An object configuring where the rule will be placed. */
@@ -6986,24 +8462,51 @@ export const PatchRuleForAccountResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchRuleForAccountResponse",
 }) as any as S.Schema<PatchRuleForAccountResponse>;
 
-export interface RulesEditForZoneRequestBodyBlockRulePosition {
+export interface RulesEditForZoneRequestBodyBlockRulePositionBeforePosition {
   /** The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top. */
   before?: string;
-  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
-  after?: string;
-  /** An index at which to place the rule, where index 1 is the first rule. */
-  index?: number;
 }
-export const RulesEditForZoneRequestBodyBlockRulePosition =
+export const RulesEditForZoneRequestBodyBlockRulePositionBeforePosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       before: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "RulesEditForZoneRequestBodyBlockRulePositionBeforePosition",
+  }) as any as S.Schema<RulesEditForZoneRequestBodyBlockRulePositionBeforePosition>;
+
+export interface RulesEditForZoneRequestBodyBlockRulePositionAfterPosition {
+  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
+  after?: string;
+}
+export const RulesEditForZoneRequestBodyBlockRulePositionAfterPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       after: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "RulesEditForZoneRequestBodyBlockRulePositionAfterPosition",
+  }) as any as S.Schema<RulesEditForZoneRequestBodyBlockRulePositionAfterPosition>;
+
+export interface RulesEditForZoneRequestBodyBlockRulePositionIndexPosition {
+  /** An index at which to place the rule, where index 1 is the first rule. */
+  index?: number;
+}
+export const RulesEditForZoneRequestBodyBlockRulePositionIndexPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       index: S.optional(S.Number),
     }),
   ).annotate({
-    identifier: "RulesEditForZoneRequestBodyBlockRulePosition",
-  }) as any as S.Schema<RulesEditForZoneRequestBodyBlockRulePosition>;
+    identifier: "RulesEditForZoneRequestBodyBlockRulePositionIndexPosition",
+  }) as any as S.Schema<RulesEditForZoneRequestBodyBlockRulePositionIndexPosition>;
+
+export type RulesEditForZoneRequestBodyBlockRulePosition =
+  | RulesEditForZoneRequestBodyBlockRulePositionBeforePosition
+  | RulesEditForZoneRequestBodyBlockRulePositionAfterPosition
+  | RulesEditForZoneRequestBodyBlockRulePositionIndexPosition;
+export const RulesEditForZoneRequestBodyBlockRulePosition =
+  /*@__PURE__*/ S.Unknown;
 
 export interface RulesEditForZoneRequestBodyBlockRule {
   /** An object configuring where the rule will be placed. */
@@ -7054,23 +8557,50 @@ export const RulesEditForZoneRequestBodyLogging = /*@__PURE__*/ S.suspend(() =>
   identifier: "RulesEditForZoneRequestBodyLogging",
 }) as any as S.Schema<RulesEditForZoneRequestBodyLogging>;
 
-export interface RulesEditForZoneRequestBodyPosition {
+export interface RulesEditForZoneRequestBodyPositionBeforePosition {
   /** The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top. */
   before?: string;
+}
+export const RulesEditForZoneRequestBodyPositionBeforePosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      before: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "RulesEditForZoneRequestBodyPositionBeforePosition",
+  }) as any as S.Schema<RulesEditForZoneRequestBodyPositionBeforePosition>;
+
+export interface RulesEditForZoneRequestBodyPositionAfterPosition {
   /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
   after?: string;
+}
+export const RulesEditForZoneRequestBodyPositionAfterPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      after: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "RulesEditForZoneRequestBodyPositionAfterPosition",
+  }) as any as S.Schema<RulesEditForZoneRequestBodyPositionAfterPosition>;
+
+export interface RulesEditForZoneRequestBodyPositionIndexPosition {
   /** An index at which to place the rule, where index 1 is the first rule. */
   index?: number;
 }
-export const RulesEditForZoneRequestBodyPosition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    before: S.optional(S.String),
-    after: S.optional(S.String),
-    index: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "RulesEditForZoneRequestBodyPosition",
-}) as any as S.Schema<RulesEditForZoneRequestBodyPosition>;
+export const RulesEditForZoneRequestBodyPositionIndexPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      index: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier: "RulesEditForZoneRequestBodyPositionIndexPosition",
+  }) as any as S.Schema<RulesEditForZoneRequestBodyPositionIndexPosition>;
+
+export type RulesEditForZoneRequestBodyPosition =
+  | RulesEditForZoneRequestBodyPositionBeforePosition
+  | RulesEditForZoneRequestBodyPositionAfterPosition
+  | RulesEditForZoneRequestBodyPositionIndexPosition;
+export const RulesEditForZoneRequestBodyPosition = /*@__PURE__*/ S.Unknown;
 
 export type RulesEditForZoneRequestBodyRatelimitCharacteristicsList = string[];
 export const RulesEditForZoneRequestBodyRatelimitCharacteristicsList =
@@ -7122,24 +8652,54 @@ export const RulesEditForZoneRequestBodyRatelimit = /*@__PURE__*/ S.suspend(
   identifier: "RulesEditForZoneRequestBodyRatelimit",
 }) as any as S.Schema<RulesEditForZoneRequestBodyRatelimit>;
 
-export interface RulesEditForZoneRequestBodyResponseCompressionRulePosition {
+export interface RulesEditForZoneRequestBodyResponseCompressionRulePositionBeforePosition {
   /** The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top. */
   before?: string;
-  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
-  after?: string;
-  /** An index at which to place the rule, where index 1 is the first rule. */
-  index?: number;
 }
-export const RulesEditForZoneRequestBodyResponseCompressionRulePosition =
+export const RulesEditForZoneRequestBodyResponseCompressionRulePositionBeforePosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       before: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "RulesEditForZoneRequestBodyResponseCompressionRulePositionBeforePosition",
+  }) as any as S.Schema<RulesEditForZoneRequestBodyResponseCompressionRulePositionBeforePosition>;
+
+export interface RulesEditForZoneRequestBodyResponseCompressionRulePositionAfterPosition {
+  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
+  after?: string;
+}
+export const RulesEditForZoneRequestBodyResponseCompressionRulePositionAfterPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       after: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "RulesEditForZoneRequestBodyResponseCompressionRulePositionAfterPosition",
+  }) as any as S.Schema<RulesEditForZoneRequestBodyResponseCompressionRulePositionAfterPosition>;
+
+export interface RulesEditForZoneRequestBodyResponseCompressionRulePositionIndexPosition {
+  /** An index at which to place the rule, where index 1 is the first rule. */
+  index?: number;
+}
+export const RulesEditForZoneRequestBodyResponseCompressionRulePositionIndexPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       index: S.optional(S.Number),
     }),
   ).annotate({
-    identifier: "RulesEditForZoneRequestBodyResponseCompressionRulePosition",
-  }) as any as S.Schema<RulesEditForZoneRequestBodyResponseCompressionRulePosition>;
+    identifier:
+      "RulesEditForZoneRequestBodyResponseCompressionRulePositionIndexPosition",
+  }) as any as S.Schema<RulesEditForZoneRequestBodyResponseCompressionRulePositionIndexPosition>;
+
+export type RulesEditForZoneRequestBodyResponseCompressionRulePosition =
+  | RulesEditForZoneRequestBodyResponseCompressionRulePositionBeforePosition
+  | RulesEditForZoneRequestBodyResponseCompressionRulePositionAfterPosition
+  | RulesEditForZoneRequestBodyResponseCompressionRulePositionIndexPosition;
+export const RulesEditForZoneRequestBodyResponseCompressionRulePosition =
+  /*@__PURE__*/ S.Unknown;
 
 export interface RulesEditForZoneRequestBodyResponseCompressionRule {
   /** An object configuring where the rule will be placed. */
@@ -7156,24 +8716,54 @@ export const RulesEditForZoneRequestBodyResponseCompressionRule =
     identifier: "RulesEditForZoneRequestBodyResponseCompressionRule",
   }) as any as S.Schema<RulesEditForZoneRequestBodyResponseCompressionRule>;
 
-export interface RulesEditForZoneRequestBodyDDoSDynamicRulePosition {
+export interface RulesEditForZoneRequestBodyDDoSDynamicRulePositionBeforePosition {
   /** The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top. */
   before?: string;
-  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
-  after?: string;
-  /** An index at which to place the rule, where index 1 is the first rule. */
-  index?: number;
 }
-export const RulesEditForZoneRequestBodyDDoSDynamicRulePosition =
+export const RulesEditForZoneRequestBodyDDoSDynamicRulePositionBeforePosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       before: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "RulesEditForZoneRequestBodyDDoSDynamicRulePositionBeforePosition",
+  }) as any as S.Schema<RulesEditForZoneRequestBodyDDoSDynamicRulePositionBeforePosition>;
+
+export interface RulesEditForZoneRequestBodyDDoSDynamicRulePositionAfterPosition {
+  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
+  after?: string;
+}
+export const RulesEditForZoneRequestBodyDDoSDynamicRulePositionAfterPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       after: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "RulesEditForZoneRequestBodyDDoSDynamicRulePositionAfterPosition",
+  }) as any as S.Schema<RulesEditForZoneRequestBodyDDoSDynamicRulePositionAfterPosition>;
+
+export interface RulesEditForZoneRequestBodyDDoSDynamicRulePositionIndexPosition {
+  /** An index at which to place the rule, where index 1 is the first rule. */
+  index?: number;
+}
+export const RulesEditForZoneRequestBodyDDoSDynamicRulePositionIndexPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       index: S.optional(S.Number),
     }),
   ).annotate({
-    identifier: "RulesEditForZoneRequestBodyDDoSDynamicRulePosition",
-  }) as any as S.Schema<RulesEditForZoneRequestBodyDDoSDynamicRulePosition>;
+    identifier:
+      "RulesEditForZoneRequestBodyDDoSDynamicRulePositionIndexPosition",
+  }) as any as S.Schema<RulesEditForZoneRequestBodyDDoSDynamicRulePositionIndexPosition>;
+
+export type RulesEditForZoneRequestBodyDDoSDynamicRulePosition =
+  | RulesEditForZoneRequestBodyDDoSDynamicRulePositionBeforePosition
+  | RulesEditForZoneRequestBodyDDoSDynamicRulePositionAfterPosition
+  | RulesEditForZoneRequestBodyDDoSDynamicRulePositionIndexPosition;
+export const RulesEditForZoneRequestBodyDDoSDynamicRulePosition =
+  /*@__PURE__*/ S.Unknown;
 
 export interface RulesEditForZoneRequestBodyDDoSDynamicRule {
   /** An object configuring where the rule will be placed. */
@@ -7188,24 +8778,51 @@ export const RulesEditForZoneRequestBodyDDoSDynamicRule =
     identifier: "RulesEditForZoneRequestBodyDDoSDynamicRule",
   }) as any as S.Schema<RulesEditForZoneRequestBodyDDoSDynamicRule>;
 
-export interface RulesEditForZoneRequestBodyExecuteRulePosition {
+export interface RulesEditForZoneRequestBodyExecuteRulePositionBeforePosition {
   /** The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top. */
   before?: string;
-  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
-  after?: string;
-  /** An index at which to place the rule, where index 1 is the first rule. */
-  index?: number;
 }
-export const RulesEditForZoneRequestBodyExecuteRulePosition =
+export const RulesEditForZoneRequestBodyExecuteRulePositionBeforePosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       before: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "RulesEditForZoneRequestBodyExecuteRulePositionBeforePosition",
+  }) as any as S.Schema<RulesEditForZoneRequestBodyExecuteRulePositionBeforePosition>;
+
+export interface RulesEditForZoneRequestBodyExecuteRulePositionAfterPosition {
+  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
+  after?: string;
+}
+export const RulesEditForZoneRequestBodyExecuteRulePositionAfterPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       after: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "RulesEditForZoneRequestBodyExecuteRulePositionAfterPosition",
+  }) as any as S.Schema<RulesEditForZoneRequestBodyExecuteRulePositionAfterPosition>;
+
+export interface RulesEditForZoneRequestBodyExecuteRulePositionIndexPosition {
+  /** An index at which to place the rule, where index 1 is the first rule. */
+  index?: number;
+}
+export const RulesEditForZoneRequestBodyExecuteRulePositionIndexPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       index: S.optional(S.Number),
     }),
   ).annotate({
-    identifier: "RulesEditForZoneRequestBodyExecuteRulePosition",
-  }) as any as S.Schema<RulesEditForZoneRequestBodyExecuteRulePosition>;
+    identifier: "RulesEditForZoneRequestBodyExecuteRulePositionIndexPosition",
+  }) as any as S.Schema<RulesEditForZoneRequestBodyExecuteRulePositionIndexPosition>;
+
+export type RulesEditForZoneRequestBodyExecuteRulePosition =
+  | RulesEditForZoneRequestBodyExecuteRulePositionBeforePosition
+  | RulesEditForZoneRequestBodyExecuteRulePositionAfterPosition
+  | RulesEditForZoneRequestBodyExecuteRulePositionIndexPosition;
+export const RulesEditForZoneRequestBodyExecuteRulePosition =
+  /*@__PURE__*/ S.Unknown;
 
 export interface RulesEditForZoneRequestBodyExecuteRule {
   /** An object configuring where the rule will be placed. */
@@ -7220,24 +8837,54 @@ export const RulesEditForZoneRequestBodyExecuteRule = /*@__PURE__*/ S.suspend(
   identifier: "RulesEditForZoneRequestBodyExecuteRule",
 }) as any as S.Schema<RulesEditForZoneRequestBodyExecuteRule>;
 
-export interface RulesEditForZoneRequestBodyForceConnectionCloseRulePosition {
+export interface RulesEditForZoneRequestBodyForceConnectionCloseRulePositionBeforePosition {
   /** The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top. */
   before?: string;
-  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
-  after?: string;
-  /** An index at which to place the rule, where index 1 is the first rule. */
-  index?: number;
 }
-export const RulesEditForZoneRequestBodyForceConnectionCloseRulePosition =
+export const RulesEditForZoneRequestBodyForceConnectionCloseRulePositionBeforePosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       before: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "RulesEditForZoneRequestBodyForceConnectionCloseRulePositionBeforePosition",
+  }) as any as S.Schema<RulesEditForZoneRequestBodyForceConnectionCloseRulePositionBeforePosition>;
+
+export interface RulesEditForZoneRequestBodyForceConnectionCloseRulePositionAfterPosition {
+  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
+  after?: string;
+}
+export const RulesEditForZoneRequestBodyForceConnectionCloseRulePositionAfterPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       after: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "RulesEditForZoneRequestBodyForceConnectionCloseRulePositionAfterPosition",
+  }) as any as S.Schema<RulesEditForZoneRequestBodyForceConnectionCloseRulePositionAfterPosition>;
+
+export interface RulesEditForZoneRequestBodyForceConnectionCloseRulePositionIndexPosition {
+  /** An index at which to place the rule, where index 1 is the first rule. */
+  index?: number;
+}
+export const RulesEditForZoneRequestBodyForceConnectionCloseRulePositionIndexPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       index: S.optional(S.Number),
     }),
   ).annotate({
-    identifier: "RulesEditForZoneRequestBodyForceConnectionCloseRulePosition",
-  }) as any as S.Schema<RulesEditForZoneRequestBodyForceConnectionCloseRulePosition>;
+    identifier:
+      "RulesEditForZoneRequestBodyForceConnectionCloseRulePositionIndexPosition",
+  }) as any as S.Schema<RulesEditForZoneRequestBodyForceConnectionCloseRulePositionIndexPosition>;
+
+export type RulesEditForZoneRequestBodyForceConnectionCloseRulePosition =
+  | RulesEditForZoneRequestBodyForceConnectionCloseRulePositionBeforePosition
+  | RulesEditForZoneRequestBodyForceConnectionCloseRulePositionAfterPosition
+  | RulesEditForZoneRequestBodyForceConnectionCloseRulePositionIndexPosition;
+export const RulesEditForZoneRequestBodyForceConnectionCloseRulePosition =
+  /*@__PURE__*/ S.Unknown;
 
 export interface RulesEditForZoneRequestBodyForceConnectionCloseRule {
   /** An object configuring where the rule will be placed. */
@@ -7254,24 +8901,51 @@ export const RulesEditForZoneRequestBodyForceConnectionCloseRule =
     identifier: "RulesEditForZoneRequestBodyForceConnectionCloseRule",
   }) as any as S.Schema<RulesEditForZoneRequestBodyForceConnectionCloseRule>;
 
-export interface RulesEditForZoneRequestBodyLogRulePosition {
+export interface RulesEditForZoneRequestBodyLogRulePositionBeforePosition {
   /** The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top. */
   before?: string;
-  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
-  after?: string;
-  /** An index at which to place the rule, where index 1 is the first rule. */
-  index?: number;
 }
-export const RulesEditForZoneRequestBodyLogRulePosition =
+export const RulesEditForZoneRequestBodyLogRulePositionBeforePosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       before: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "RulesEditForZoneRequestBodyLogRulePositionBeforePosition",
+  }) as any as S.Schema<RulesEditForZoneRequestBodyLogRulePositionBeforePosition>;
+
+export interface RulesEditForZoneRequestBodyLogRulePositionAfterPosition {
+  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
+  after?: string;
+}
+export const RulesEditForZoneRequestBodyLogRulePositionAfterPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       after: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "RulesEditForZoneRequestBodyLogRulePositionAfterPosition",
+  }) as any as S.Schema<RulesEditForZoneRequestBodyLogRulePositionAfterPosition>;
+
+export interface RulesEditForZoneRequestBodyLogRulePositionIndexPosition {
+  /** An index at which to place the rule, where index 1 is the first rule. */
+  index?: number;
+}
+export const RulesEditForZoneRequestBodyLogRulePositionIndexPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       index: S.optional(S.Number),
     }),
   ).annotate({
-    identifier: "RulesEditForZoneRequestBodyLogRulePosition",
-  }) as any as S.Schema<RulesEditForZoneRequestBodyLogRulePosition>;
+    identifier: "RulesEditForZoneRequestBodyLogRulePositionIndexPosition",
+  }) as any as S.Schema<RulesEditForZoneRequestBodyLogRulePositionIndexPosition>;
+
+export type RulesEditForZoneRequestBodyLogRulePosition =
+  | RulesEditForZoneRequestBodyLogRulePositionBeforePosition
+  | RulesEditForZoneRequestBodyLogRulePositionAfterPosition
+  | RulesEditForZoneRequestBodyLogRulePositionIndexPosition;
+export const RulesEditForZoneRequestBodyLogRulePosition =
+  /*@__PURE__*/ S.Unknown;
 
 export interface RulesEditForZoneRequestBodyLogRule {
   /** An object configuring where the rule will be placed. */
@@ -7285,24 +8959,54 @@ export const RulesEditForZoneRequestBodyLogRule = /*@__PURE__*/ S.suspend(() =>
   identifier: "RulesEditForZoneRequestBodyLogRule",
 }) as any as S.Schema<RulesEditForZoneRequestBodyLogRule>;
 
-export interface RulesEditForZoneRequestBodyLogCustomFieldRulePosition {
+export interface RulesEditForZoneRequestBodyLogCustomFieldRulePositionBeforePosition {
   /** The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top. */
   before?: string;
-  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
-  after?: string;
-  /** An index at which to place the rule, where index 1 is the first rule. */
-  index?: number;
 }
-export const RulesEditForZoneRequestBodyLogCustomFieldRulePosition =
+export const RulesEditForZoneRequestBodyLogCustomFieldRulePositionBeforePosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       before: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "RulesEditForZoneRequestBodyLogCustomFieldRulePositionBeforePosition",
+  }) as any as S.Schema<RulesEditForZoneRequestBodyLogCustomFieldRulePositionBeforePosition>;
+
+export interface RulesEditForZoneRequestBodyLogCustomFieldRulePositionAfterPosition {
+  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
+  after?: string;
+}
+export const RulesEditForZoneRequestBodyLogCustomFieldRulePositionAfterPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       after: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "RulesEditForZoneRequestBodyLogCustomFieldRulePositionAfterPosition",
+  }) as any as S.Schema<RulesEditForZoneRequestBodyLogCustomFieldRulePositionAfterPosition>;
+
+export interface RulesEditForZoneRequestBodyLogCustomFieldRulePositionIndexPosition {
+  /** An index at which to place the rule, where index 1 is the first rule. */
+  index?: number;
+}
+export const RulesEditForZoneRequestBodyLogCustomFieldRulePositionIndexPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       index: S.optional(S.Number),
     }),
   ).annotate({
-    identifier: "RulesEditForZoneRequestBodyLogCustomFieldRulePosition",
-  }) as any as S.Schema<RulesEditForZoneRequestBodyLogCustomFieldRulePosition>;
+    identifier:
+      "RulesEditForZoneRequestBodyLogCustomFieldRulePositionIndexPosition",
+  }) as any as S.Schema<RulesEditForZoneRequestBodyLogCustomFieldRulePositionIndexPosition>;
+
+export type RulesEditForZoneRequestBodyLogCustomFieldRulePosition =
+  | RulesEditForZoneRequestBodyLogCustomFieldRulePositionBeforePosition
+  | RulesEditForZoneRequestBodyLogCustomFieldRulePositionAfterPosition
+  | RulesEditForZoneRequestBodyLogCustomFieldRulePositionIndexPosition;
+export const RulesEditForZoneRequestBodyLogCustomFieldRulePosition =
+  /*@__PURE__*/ S.Unknown;
 
 export interface RulesEditForZoneRequestBodyLogCustomFieldRule {
   /** An object configuring where the rule will be placed. */
@@ -7319,24 +9023,54 @@ export const RulesEditForZoneRequestBodyLogCustomFieldRule =
     identifier: "RulesEditForZoneRequestBodyLogCustomFieldRule",
   }) as any as S.Schema<RulesEditForZoneRequestBodyLogCustomFieldRule>;
 
-export interface RulesEditForZoneRequestBodyManagedChallengeRulePosition {
+export interface RulesEditForZoneRequestBodyManagedChallengeRulePositionBeforePosition {
   /** The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top. */
   before?: string;
-  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
-  after?: string;
-  /** An index at which to place the rule, where index 1 is the first rule. */
-  index?: number;
 }
-export const RulesEditForZoneRequestBodyManagedChallengeRulePosition =
+export const RulesEditForZoneRequestBodyManagedChallengeRulePositionBeforePosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       before: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "RulesEditForZoneRequestBodyManagedChallengeRulePositionBeforePosition",
+  }) as any as S.Schema<RulesEditForZoneRequestBodyManagedChallengeRulePositionBeforePosition>;
+
+export interface RulesEditForZoneRequestBodyManagedChallengeRulePositionAfterPosition {
+  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
+  after?: string;
+}
+export const RulesEditForZoneRequestBodyManagedChallengeRulePositionAfterPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       after: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "RulesEditForZoneRequestBodyManagedChallengeRulePositionAfterPosition",
+  }) as any as S.Schema<RulesEditForZoneRequestBodyManagedChallengeRulePositionAfterPosition>;
+
+export interface RulesEditForZoneRequestBodyManagedChallengeRulePositionIndexPosition {
+  /** An index at which to place the rule, where index 1 is the first rule. */
+  index?: number;
+}
+export const RulesEditForZoneRequestBodyManagedChallengeRulePositionIndexPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       index: S.optional(S.Number),
     }),
   ).annotate({
-    identifier: "RulesEditForZoneRequestBodyManagedChallengeRulePosition",
-  }) as any as S.Schema<RulesEditForZoneRequestBodyManagedChallengeRulePosition>;
+    identifier:
+      "RulesEditForZoneRequestBodyManagedChallengeRulePositionIndexPosition",
+  }) as any as S.Schema<RulesEditForZoneRequestBodyManagedChallengeRulePositionIndexPosition>;
+
+export type RulesEditForZoneRequestBodyManagedChallengeRulePosition =
+  | RulesEditForZoneRequestBodyManagedChallengeRulePositionBeforePosition
+  | RulesEditForZoneRequestBodyManagedChallengeRulePositionAfterPosition
+  | RulesEditForZoneRequestBodyManagedChallengeRulePositionIndexPosition;
+export const RulesEditForZoneRequestBodyManagedChallengeRulePosition =
+  /*@__PURE__*/ S.Unknown;
 
 export interface RulesEditForZoneRequestBodyManagedChallengeRule {
   /** An object configuring where the rule will be placed. */
@@ -7353,24 +9087,51 @@ export const RulesEditForZoneRequestBodyManagedChallengeRule =
     identifier: "RulesEditForZoneRequestBodyManagedChallengeRule",
   }) as any as S.Schema<RulesEditForZoneRequestBodyManagedChallengeRule>;
 
-export interface RulesEditForZoneRequestBodyRedirectRulePosition {
+export interface RulesEditForZoneRequestBodyRedirectRulePositionBeforePosition {
   /** The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top. */
   before?: string;
-  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
-  after?: string;
-  /** An index at which to place the rule, where index 1 is the first rule. */
-  index?: number;
 }
-export const RulesEditForZoneRequestBodyRedirectRulePosition =
+export const RulesEditForZoneRequestBodyRedirectRulePositionBeforePosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       before: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "RulesEditForZoneRequestBodyRedirectRulePositionBeforePosition",
+  }) as any as S.Schema<RulesEditForZoneRequestBodyRedirectRulePositionBeforePosition>;
+
+export interface RulesEditForZoneRequestBodyRedirectRulePositionAfterPosition {
+  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
+  after?: string;
+}
+export const RulesEditForZoneRequestBodyRedirectRulePositionAfterPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       after: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "RulesEditForZoneRequestBodyRedirectRulePositionAfterPosition",
+  }) as any as S.Schema<RulesEditForZoneRequestBodyRedirectRulePositionAfterPosition>;
+
+export interface RulesEditForZoneRequestBodyRedirectRulePositionIndexPosition {
+  /** An index at which to place the rule, where index 1 is the first rule. */
+  index?: number;
+}
+export const RulesEditForZoneRequestBodyRedirectRulePositionIndexPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       index: S.optional(S.Number),
     }),
   ).annotate({
-    identifier: "RulesEditForZoneRequestBodyRedirectRulePosition",
-  }) as any as S.Schema<RulesEditForZoneRequestBodyRedirectRulePosition>;
+    identifier: "RulesEditForZoneRequestBodyRedirectRulePositionIndexPosition",
+  }) as any as S.Schema<RulesEditForZoneRequestBodyRedirectRulePositionIndexPosition>;
+
+export type RulesEditForZoneRequestBodyRedirectRulePosition =
+  | RulesEditForZoneRequestBodyRedirectRulePositionBeforePosition
+  | RulesEditForZoneRequestBodyRedirectRulePositionAfterPosition
+  | RulesEditForZoneRequestBodyRedirectRulePositionIndexPosition;
+export const RulesEditForZoneRequestBodyRedirectRulePosition =
+  /*@__PURE__*/ S.Unknown;
 
 export interface RulesEditForZoneRequestBodyRedirectRule {
   /** An object configuring where the rule will be placed. */
@@ -7385,24 +9146,51 @@ export const RulesEditForZoneRequestBodyRedirectRule = /*@__PURE__*/ S.suspend(
   identifier: "RulesEditForZoneRequestBodyRedirectRule",
 }) as any as S.Schema<RulesEditForZoneRequestBodyRedirectRule>;
 
-export interface RulesEditForZoneRequestBodyRewriteRulePosition {
+export interface RulesEditForZoneRequestBodyRewriteRulePositionBeforePosition {
   /** The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top. */
   before?: string;
-  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
-  after?: string;
-  /** An index at which to place the rule, where index 1 is the first rule. */
-  index?: number;
 }
-export const RulesEditForZoneRequestBodyRewriteRulePosition =
+export const RulesEditForZoneRequestBodyRewriteRulePositionBeforePosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       before: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "RulesEditForZoneRequestBodyRewriteRulePositionBeforePosition",
+  }) as any as S.Schema<RulesEditForZoneRequestBodyRewriteRulePositionBeforePosition>;
+
+export interface RulesEditForZoneRequestBodyRewriteRulePositionAfterPosition {
+  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
+  after?: string;
+}
+export const RulesEditForZoneRequestBodyRewriteRulePositionAfterPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       after: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "RulesEditForZoneRequestBodyRewriteRulePositionAfterPosition",
+  }) as any as S.Schema<RulesEditForZoneRequestBodyRewriteRulePositionAfterPosition>;
+
+export interface RulesEditForZoneRequestBodyRewriteRulePositionIndexPosition {
+  /** An index at which to place the rule, where index 1 is the first rule. */
+  index?: number;
+}
+export const RulesEditForZoneRequestBodyRewriteRulePositionIndexPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       index: S.optional(S.Number),
     }),
   ).annotate({
-    identifier: "RulesEditForZoneRequestBodyRewriteRulePosition",
-  }) as any as S.Schema<RulesEditForZoneRequestBodyRewriteRulePosition>;
+    identifier: "RulesEditForZoneRequestBodyRewriteRulePositionIndexPosition",
+  }) as any as S.Schema<RulesEditForZoneRequestBodyRewriteRulePositionIndexPosition>;
+
+export type RulesEditForZoneRequestBodyRewriteRulePosition =
+  | RulesEditForZoneRequestBodyRewriteRulePositionBeforePosition
+  | RulesEditForZoneRequestBodyRewriteRulePositionAfterPosition
+  | RulesEditForZoneRequestBodyRewriteRulePositionIndexPosition;
+export const RulesEditForZoneRequestBodyRewriteRulePosition =
+  /*@__PURE__*/ S.Unknown;
 
 export interface RulesEditForZoneRequestBodyRewriteRule {
   /** An object configuring where the rule will be placed. */
@@ -7417,24 +9205,51 @@ export const RulesEditForZoneRequestBodyRewriteRule = /*@__PURE__*/ S.suspend(
   identifier: "RulesEditForZoneRequestBodyRewriteRule",
 }) as any as S.Schema<RulesEditForZoneRequestBodyRewriteRule>;
 
-export interface RulesEditForZoneRequestBodyRouteRulePosition {
+export interface RulesEditForZoneRequestBodyRouteRulePositionBeforePosition {
   /** The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top. */
   before?: string;
-  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
-  after?: string;
-  /** An index at which to place the rule, where index 1 is the first rule. */
-  index?: number;
 }
-export const RulesEditForZoneRequestBodyRouteRulePosition =
+export const RulesEditForZoneRequestBodyRouteRulePositionBeforePosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       before: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "RulesEditForZoneRequestBodyRouteRulePositionBeforePosition",
+  }) as any as S.Schema<RulesEditForZoneRequestBodyRouteRulePositionBeforePosition>;
+
+export interface RulesEditForZoneRequestBodyRouteRulePositionAfterPosition {
+  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
+  after?: string;
+}
+export const RulesEditForZoneRequestBodyRouteRulePositionAfterPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       after: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "RulesEditForZoneRequestBodyRouteRulePositionAfterPosition",
+  }) as any as S.Schema<RulesEditForZoneRequestBodyRouteRulePositionAfterPosition>;
+
+export interface RulesEditForZoneRequestBodyRouteRulePositionIndexPosition {
+  /** An index at which to place the rule, where index 1 is the first rule. */
+  index?: number;
+}
+export const RulesEditForZoneRequestBodyRouteRulePositionIndexPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       index: S.optional(S.Number),
     }),
   ).annotate({
-    identifier: "RulesEditForZoneRequestBodyRouteRulePosition",
-  }) as any as S.Schema<RulesEditForZoneRequestBodyRouteRulePosition>;
+    identifier: "RulesEditForZoneRequestBodyRouteRulePositionIndexPosition",
+  }) as any as S.Schema<RulesEditForZoneRequestBodyRouteRulePositionIndexPosition>;
+
+export type RulesEditForZoneRequestBodyRouteRulePosition =
+  | RulesEditForZoneRequestBodyRouteRulePositionBeforePosition
+  | RulesEditForZoneRequestBodyRouteRulePositionAfterPosition
+  | RulesEditForZoneRequestBodyRouteRulePositionIndexPosition;
+export const RulesEditForZoneRequestBodyRouteRulePosition =
+  /*@__PURE__*/ S.Unknown;
 
 export interface RulesEditForZoneRequestBodyRouteRule {
   /** An object configuring where the rule will be placed. */
@@ -7449,24 +9264,51 @@ export const RulesEditForZoneRequestBodyRouteRule = /*@__PURE__*/ S.suspend(
   identifier: "RulesEditForZoneRequestBodyRouteRule",
 }) as any as S.Schema<RulesEditForZoneRequestBodyRouteRule>;
 
-export interface RulesEditForZoneRequestBodyScoreRulePosition {
+export interface RulesEditForZoneRequestBodyScoreRulePositionBeforePosition {
   /** The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top. */
   before?: string;
-  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
-  after?: string;
-  /** An index at which to place the rule, where index 1 is the first rule. */
-  index?: number;
 }
-export const RulesEditForZoneRequestBodyScoreRulePosition =
+export const RulesEditForZoneRequestBodyScoreRulePositionBeforePosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       before: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "RulesEditForZoneRequestBodyScoreRulePositionBeforePosition",
+  }) as any as S.Schema<RulesEditForZoneRequestBodyScoreRulePositionBeforePosition>;
+
+export interface RulesEditForZoneRequestBodyScoreRulePositionAfterPosition {
+  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
+  after?: string;
+}
+export const RulesEditForZoneRequestBodyScoreRulePositionAfterPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       after: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "RulesEditForZoneRequestBodyScoreRulePositionAfterPosition",
+  }) as any as S.Schema<RulesEditForZoneRequestBodyScoreRulePositionAfterPosition>;
+
+export interface RulesEditForZoneRequestBodyScoreRulePositionIndexPosition {
+  /** An index at which to place the rule, where index 1 is the first rule. */
+  index?: number;
+}
+export const RulesEditForZoneRequestBodyScoreRulePositionIndexPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       index: S.optional(S.Number),
     }),
   ).annotate({
-    identifier: "RulesEditForZoneRequestBodyScoreRulePosition",
-  }) as any as S.Schema<RulesEditForZoneRequestBodyScoreRulePosition>;
+    identifier: "RulesEditForZoneRequestBodyScoreRulePositionIndexPosition",
+  }) as any as S.Schema<RulesEditForZoneRequestBodyScoreRulePositionIndexPosition>;
+
+export type RulesEditForZoneRequestBodyScoreRulePosition =
+  | RulesEditForZoneRequestBodyScoreRulePositionBeforePosition
+  | RulesEditForZoneRequestBodyScoreRulePositionAfterPosition
+  | RulesEditForZoneRequestBodyScoreRulePositionIndexPosition;
+export const RulesEditForZoneRequestBodyScoreRulePosition =
+  /*@__PURE__*/ S.Unknown;
 
 export interface RulesEditForZoneRequestBodyScoreRule {
   /** An object configuring where the rule will be placed. */
@@ -7481,24 +9323,54 @@ export const RulesEditForZoneRequestBodyScoreRule = /*@__PURE__*/ S.suspend(
   identifier: "RulesEditForZoneRequestBodyScoreRule",
 }) as any as S.Schema<RulesEditForZoneRequestBodyScoreRule>;
 
-export interface RulesEditForZoneRequestBodyServeErrorRulePosition {
+export interface RulesEditForZoneRequestBodyServeErrorRulePositionBeforePosition {
   /** The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top. */
   before?: string;
-  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
-  after?: string;
-  /** An index at which to place the rule, where index 1 is the first rule. */
-  index?: number;
 }
-export const RulesEditForZoneRequestBodyServeErrorRulePosition =
+export const RulesEditForZoneRequestBodyServeErrorRulePositionBeforePosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       before: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "RulesEditForZoneRequestBodyServeErrorRulePositionBeforePosition",
+  }) as any as S.Schema<RulesEditForZoneRequestBodyServeErrorRulePositionBeforePosition>;
+
+export interface RulesEditForZoneRequestBodyServeErrorRulePositionAfterPosition {
+  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
+  after?: string;
+}
+export const RulesEditForZoneRequestBodyServeErrorRulePositionAfterPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       after: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "RulesEditForZoneRequestBodyServeErrorRulePositionAfterPosition",
+  }) as any as S.Schema<RulesEditForZoneRequestBodyServeErrorRulePositionAfterPosition>;
+
+export interface RulesEditForZoneRequestBodyServeErrorRulePositionIndexPosition {
+  /** An index at which to place the rule, where index 1 is the first rule. */
+  index?: number;
+}
+export const RulesEditForZoneRequestBodyServeErrorRulePositionIndexPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       index: S.optional(S.Number),
     }),
   ).annotate({
-    identifier: "RulesEditForZoneRequestBodyServeErrorRulePosition",
-  }) as any as S.Schema<RulesEditForZoneRequestBodyServeErrorRulePosition>;
+    identifier:
+      "RulesEditForZoneRequestBodyServeErrorRulePositionIndexPosition",
+  }) as any as S.Schema<RulesEditForZoneRequestBodyServeErrorRulePositionIndexPosition>;
+
+export type RulesEditForZoneRequestBodyServeErrorRulePosition =
+  | RulesEditForZoneRequestBodyServeErrorRulePositionBeforePosition
+  | RulesEditForZoneRequestBodyServeErrorRulePositionAfterPosition
+  | RulesEditForZoneRequestBodyServeErrorRulePositionIndexPosition;
+export const RulesEditForZoneRequestBodyServeErrorRulePosition =
+  /*@__PURE__*/ S.Unknown;
 
 export interface RulesEditForZoneRequestBodyServeErrorRule {
   /** An object configuring where the rule will be placed. */
@@ -7513,24 +9385,54 @@ export const RulesEditForZoneRequestBodyServeErrorRule =
     identifier: "RulesEditForZoneRequestBodyServeErrorRule",
   }) as any as S.Schema<RulesEditForZoneRequestBodyServeErrorRule>;
 
-export interface RulesEditForZoneRequestBodySetCacheSettingsRulePosition {
+export interface RulesEditForZoneRequestBodySetCacheSettingsRulePositionBeforePosition {
   /** The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top. */
   before?: string;
-  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
-  after?: string;
-  /** An index at which to place the rule, where index 1 is the first rule. */
-  index?: number;
 }
-export const RulesEditForZoneRequestBodySetCacheSettingsRulePosition =
+export const RulesEditForZoneRequestBodySetCacheSettingsRulePositionBeforePosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       before: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "RulesEditForZoneRequestBodySetCacheSettingsRulePositionBeforePosition",
+  }) as any as S.Schema<RulesEditForZoneRequestBodySetCacheSettingsRulePositionBeforePosition>;
+
+export interface RulesEditForZoneRequestBodySetCacheSettingsRulePositionAfterPosition {
+  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
+  after?: string;
+}
+export const RulesEditForZoneRequestBodySetCacheSettingsRulePositionAfterPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       after: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "RulesEditForZoneRequestBodySetCacheSettingsRulePositionAfterPosition",
+  }) as any as S.Schema<RulesEditForZoneRequestBodySetCacheSettingsRulePositionAfterPosition>;
+
+export interface RulesEditForZoneRequestBodySetCacheSettingsRulePositionIndexPosition {
+  /** An index at which to place the rule, where index 1 is the first rule. */
+  index?: number;
+}
+export const RulesEditForZoneRequestBodySetCacheSettingsRulePositionIndexPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       index: S.optional(S.Number),
     }),
   ).annotate({
-    identifier: "RulesEditForZoneRequestBodySetCacheSettingsRulePosition",
-  }) as any as S.Schema<RulesEditForZoneRequestBodySetCacheSettingsRulePosition>;
+    identifier:
+      "RulesEditForZoneRequestBodySetCacheSettingsRulePositionIndexPosition",
+  }) as any as S.Schema<RulesEditForZoneRequestBodySetCacheSettingsRulePositionIndexPosition>;
+
+export type RulesEditForZoneRequestBodySetCacheSettingsRulePosition =
+  | RulesEditForZoneRequestBodySetCacheSettingsRulePositionBeforePosition
+  | RulesEditForZoneRequestBodySetCacheSettingsRulePositionAfterPosition
+  | RulesEditForZoneRequestBodySetCacheSettingsRulePositionIndexPosition;
+export const RulesEditForZoneRequestBodySetCacheSettingsRulePosition =
+  /*@__PURE__*/ S.Unknown;
 
 export interface RulesEditForZoneRequestBodySetCacheSettingsRule {
   /** An object configuring where the rule will be placed. */
@@ -7547,24 +9449,54 @@ export const RulesEditForZoneRequestBodySetCacheSettingsRule =
     identifier: "RulesEditForZoneRequestBodySetCacheSettingsRule",
   }) as any as S.Schema<RulesEditForZoneRequestBodySetCacheSettingsRule>;
 
-export interface RulesEditForZoneRequestBodySetConfigurationRulePosition {
+export interface RulesEditForZoneRequestBodySetConfigurationRulePositionBeforePosition {
   /** The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top. */
   before?: string;
-  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
-  after?: string;
-  /** An index at which to place the rule, where index 1 is the first rule. */
-  index?: number;
 }
-export const RulesEditForZoneRequestBodySetConfigurationRulePosition =
+export const RulesEditForZoneRequestBodySetConfigurationRulePositionBeforePosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       before: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "RulesEditForZoneRequestBodySetConfigurationRulePositionBeforePosition",
+  }) as any as S.Schema<RulesEditForZoneRequestBodySetConfigurationRulePositionBeforePosition>;
+
+export interface RulesEditForZoneRequestBodySetConfigurationRulePositionAfterPosition {
+  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
+  after?: string;
+}
+export const RulesEditForZoneRequestBodySetConfigurationRulePositionAfterPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       after: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "RulesEditForZoneRequestBodySetConfigurationRulePositionAfterPosition",
+  }) as any as S.Schema<RulesEditForZoneRequestBodySetConfigurationRulePositionAfterPosition>;
+
+export interface RulesEditForZoneRequestBodySetConfigurationRulePositionIndexPosition {
+  /** An index at which to place the rule, where index 1 is the first rule. */
+  index?: number;
+}
+export const RulesEditForZoneRequestBodySetConfigurationRulePositionIndexPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       index: S.optional(S.Number),
     }),
   ).annotate({
-    identifier: "RulesEditForZoneRequestBodySetConfigurationRulePosition",
-  }) as any as S.Schema<RulesEditForZoneRequestBodySetConfigurationRulePosition>;
+    identifier:
+      "RulesEditForZoneRequestBodySetConfigurationRulePositionIndexPosition",
+  }) as any as S.Schema<RulesEditForZoneRequestBodySetConfigurationRulePositionIndexPosition>;
+
+export type RulesEditForZoneRequestBodySetConfigurationRulePosition =
+  | RulesEditForZoneRequestBodySetConfigurationRulePositionBeforePosition
+  | RulesEditForZoneRequestBodySetConfigurationRulePositionAfterPosition
+  | RulesEditForZoneRequestBodySetConfigurationRulePositionIndexPosition;
+export const RulesEditForZoneRequestBodySetConfigurationRulePosition =
+  /*@__PURE__*/ S.Unknown;
 
 export interface RulesEditForZoneRequestBodySetConfigurationRule {
   /** An object configuring where the rule will be placed. */
@@ -7581,24 +9513,51 @@ export const RulesEditForZoneRequestBodySetConfigurationRule =
     identifier: "RulesEditForZoneRequestBodySetConfigurationRule",
   }) as any as S.Schema<RulesEditForZoneRequestBodySetConfigurationRule>;
 
-export interface RulesEditForZoneRequestBodySkipRulePosition {
+export interface RulesEditForZoneRequestBodySkipRulePositionBeforePosition {
   /** The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top. */
   before?: string;
-  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
-  after?: string;
-  /** An index at which to place the rule, where index 1 is the first rule. */
-  index?: number;
 }
-export const RulesEditForZoneRequestBodySkipRulePosition =
+export const RulesEditForZoneRequestBodySkipRulePositionBeforePosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       before: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "RulesEditForZoneRequestBodySkipRulePositionBeforePosition",
+  }) as any as S.Schema<RulesEditForZoneRequestBodySkipRulePositionBeforePosition>;
+
+export interface RulesEditForZoneRequestBodySkipRulePositionAfterPosition {
+  /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
+  after?: string;
+}
+export const RulesEditForZoneRequestBodySkipRulePositionAfterPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       after: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "RulesEditForZoneRequestBodySkipRulePositionAfterPosition",
+  }) as any as S.Schema<RulesEditForZoneRequestBodySkipRulePositionAfterPosition>;
+
+export interface RulesEditForZoneRequestBodySkipRulePositionIndexPosition {
+  /** An index at which to place the rule, where index 1 is the first rule. */
+  index?: number;
+}
+export const RulesEditForZoneRequestBodySkipRulePositionIndexPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
       index: S.optional(S.Number),
     }),
   ).annotate({
-    identifier: "RulesEditForZoneRequestBodySkipRulePosition",
-  }) as any as S.Schema<RulesEditForZoneRequestBodySkipRulePosition>;
+    identifier: "RulesEditForZoneRequestBodySkipRulePositionIndexPosition",
+  }) as any as S.Schema<RulesEditForZoneRequestBodySkipRulePositionIndexPosition>;
+
+export type RulesEditForZoneRequestBodySkipRulePosition =
+  | RulesEditForZoneRequestBodySkipRulePositionBeforePosition
+  | RulesEditForZoneRequestBodySkipRulePositionAfterPosition
+  | RulesEditForZoneRequestBodySkipRulePositionIndexPosition;
+export const RulesEditForZoneRequestBodySkipRulePosition =
+  /*@__PURE__*/ S.Unknown;
 
 export interface RulesEditForZoneRequestBodySkipRule {
   /** An object configuring where the rule will be placed. */

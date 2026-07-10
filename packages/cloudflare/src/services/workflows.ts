@@ -1127,37 +1127,59 @@ export const VersionsGraphResponseGraphWorkflowNodesItemOptions =
     identifier: "VersionsGraphResponseGraphWorkflowNodesItemOptions",
   }) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemOptions>;
 
-export type VersionsGraphResponseGraphWorkflowNodesItemPayloadType =
+export type VersionsGraphResponseGraphWorkflowNodesItemPayloadTypeType =
   | "unknown"
   | (string & {});
-export const VersionsGraphResponseGraphWorkflowNodesItemPayloadType =
+export const VersionsGraphResponseGraphWorkflowNodesItemPayloadTypeType =
   /*@__PURE__*/ S.String;
 
-export type VersionsGraphResponseGraphWorkflowNodesItemPayloadFieldsMap = {
-  [key: string]: unknown | undefined;
-};
-export const VersionsGraphResponseGraphWorkflowNodesItemPayloadFieldsMap =
+export interface VersionsGraphResponseGraphWorkflowNodesItemPayloadType {
+  type: VersionsGraphResponseGraphWorkflowNodesItemPayloadTypeType;
+}
+export const VersionsGraphResponseGraphWorkflowNodesItemPayloadType =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: VersionsGraphResponseGraphWorkflowNodesItemPayloadTypeType,
+    }),
+  ).annotate({
+    identifier: "VersionsGraphResponseGraphWorkflowNodesItemPayloadType",
+  }) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemPayloadType>;
+
+export type VersionsGraphResponseGraphWorkflowNodesItemPayloadObjectFieldsTypeFieldsMap =
+  { [key: string]: unknown | undefined };
+export const VersionsGraphResponseGraphWorkflowNodesItemPayloadObjectFieldsTypeFieldsMap =
   /*@__PURE__*/ S.Record(
     S.String,
     S.Unknown,
-  ) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemPayloadFieldsMap>;
+  ) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemPayloadObjectFieldsTypeFieldsMap>;
 
-export interface VersionsGraphResponseGraphWorkflowNodesItemPayload {
-  type?: VersionsGraphResponseGraphWorkflowNodesItemPayloadType;
+export type VersionsGraphResponseGraphWorkflowNodesItemPayloadObjectFieldsTypeType =
+  "object" | (string & {});
+export const VersionsGraphResponseGraphWorkflowNodesItemPayloadObjectFieldsTypeType =
+  /*@__PURE__*/ S.String;
+
+export interface VersionsGraphResponseGraphWorkflowNodesItemPayloadObjectFieldsType {
   /** Nested JsonShape fields (recursive structure). */
-  fields?: VersionsGraphResponseGraphWorkflowNodesItemPayloadFieldsMap;
+  fields: VersionsGraphResponseGraphWorkflowNodesItemPayloadObjectFieldsTypeFieldsMap;
+  type: VersionsGraphResponseGraphWorkflowNodesItemPayloadObjectFieldsTypeType;
 }
-export const VersionsGraphResponseGraphWorkflowNodesItemPayload =
+export const VersionsGraphResponseGraphWorkflowNodesItemPayloadObjectFieldsType =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      type: S.optional(VersionsGraphResponseGraphWorkflowNodesItemPayloadType),
-      fields: S.optional(
-        VersionsGraphResponseGraphWorkflowNodesItemPayloadFieldsMap,
-      ),
+      fields:
+        VersionsGraphResponseGraphWorkflowNodesItemPayloadObjectFieldsTypeFieldsMap,
+      type: VersionsGraphResponseGraphWorkflowNodesItemPayloadObjectFieldsTypeType,
     }),
   ).annotate({
-    identifier: "VersionsGraphResponseGraphWorkflowNodesItemPayload",
-  }) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemPayload>;
+    identifier:
+      "VersionsGraphResponseGraphWorkflowNodesItemPayloadObjectFieldsType",
+  }) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemPayloadObjectFieldsType>;
+
+export type VersionsGraphResponseGraphWorkflowNodesItemPayload =
+  | VersionsGraphResponseGraphWorkflowNodesItemPayloadType
+  | VersionsGraphResponseGraphWorkflowNodesItemPayloadObjectFieldsType;
+export const VersionsGraphResponseGraphWorkflowNodesItemPayload =
+  /*@__PURE__*/ S.Unknown;
 
 export type VersionsGraphResponseGraphWorkflowNodesItemKind =
   | "all"
@@ -1365,35 +1387,59 @@ export const VersionsGraphResponseGraphWorkflowNodesList =
     VersionsGraphResponseGraphWorkflowNodesItem,
   ) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesList>;
 
-export type VersionsGraphResponseGraphWorkflowPayloadType =
+export type VersionsGraphResponseGraphWorkflowPayloadTypeType =
   | "unknown"
   | (string & {});
-export const VersionsGraphResponseGraphWorkflowPayloadType =
+export const VersionsGraphResponseGraphWorkflowPayloadTypeType =
   /*@__PURE__*/ S.String;
 
-export type VersionsGraphResponseGraphWorkflowPayloadFieldsMap = {
-  [key: string]: unknown | undefined;
-};
-export const VersionsGraphResponseGraphWorkflowPayloadFieldsMap =
+export interface VersionsGraphResponseGraphWorkflowPayloadType {
+  type: VersionsGraphResponseGraphWorkflowPayloadTypeType;
+}
+export const VersionsGraphResponseGraphWorkflowPayloadType =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: VersionsGraphResponseGraphWorkflowPayloadTypeType,
+    }),
+  ).annotate({
+    identifier: "VersionsGraphResponseGraphWorkflowPayloadType",
+  }) as any as S.Schema<VersionsGraphResponseGraphWorkflowPayloadType>;
+
+export type VersionsGraphResponseGraphWorkflowPayloadObjectFieldsTypeFieldsMap =
+  { [key: string]: unknown | undefined };
+export const VersionsGraphResponseGraphWorkflowPayloadObjectFieldsTypeFieldsMap =
   /*@__PURE__*/ S.Record(
     S.String,
     S.Unknown,
-  ) as any as S.Schema<VersionsGraphResponseGraphWorkflowPayloadFieldsMap>;
+  ) as any as S.Schema<VersionsGraphResponseGraphWorkflowPayloadObjectFieldsTypeFieldsMap>;
 
-export interface VersionsGraphResponseGraphWorkflowPayload {
-  type?: VersionsGraphResponseGraphWorkflowPayloadType;
+export type VersionsGraphResponseGraphWorkflowPayloadObjectFieldsTypeType =
+  | "object"
+  | (string & {});
+export const VersionsGraphResponseGraphWorkflowPayloadObjectFieldsTypeType =
+  /*@__PURE__*/ S.String;
+
+export interface VersionsGraphResponseGraphWorkflowPayloadObjectFieldsType {
   /** Nested JsonShape fields (recursive structure). */
-  fields?: VersionsGraphResponseGraphWorkflowPayloadFieldsMap;
+  fields: VersionsGraphResponseGraphWorkflowPayloadObjectFieldsTypeFieldsMap;
+  type: VersionsGraphResponseGraphWorkflowPayloadObjectFieldsTypeType;
 }
-export const VersionsGraphResponseGraphWorkflowPayload =
+export const VersionsGraphResponseGraphWorkflowPayloadObjectFieldsType =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      type: S.optional(VersionsGraphResponseGraphWorkflowPayloadType),
-      fields: S.optional(VersionsGraphResponseGraphWorkflowPayloadFieldsMap),
+      fields:
+        VersionsGraphResponseGraphWorkflowPayloadObjectFieldsTypeFieldsMap,
+      type: VersionsGraphResponseGraphWorkflowPayloadObjectFieldsTypeType,
     }),
   ).annotate({
-    identifier: "VersionsGraphResponseGraphWorkflowPayload",
-  }) as any as S.Schema<VersionsGraphResponseGraphWorkflowPayload>;
+    identifier: "VersionsGraphResponseGraphWorkflowPayloadObjectFieldsType",
+  }) as any as S.Schema<VersionsGraphResponseGraphWorkflowPayloadObjectFieldsType>;
+
+export type VersionsGraphResponseGraphWorkflowPayload =
+  | VersionsGraphResponseGraphWorkflowPayloadType
+  | VersionsGraphResponseGraphWorkflowPayloadObjectFieldsType;
+export const VersionsGraphResponseGraphWorkflowPayload =
+  /*@__PURE__*/ S.Unknown;
 
 export interface VersionsGraphResponseGraphWorkflow {
   className: string;
@@ -1767,47 +1813,114 @@ export const ListWorkflowsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListWorkflowsResponse",
 }) as any as S.Schema<ListWorkflowsResponse>;
 
-export type InstancesStatusEditRequestBodyStatus = "pause" | (string & {});
-export const InstancesStatusEditRequestBodyStatus = /*@__PURE__*/ S.String;
+export type InstancesStatusEditRequestBodyStatusStatus =
+  | "pause"
+  | (string & {});
+export const InstancesStatusEditRequestBodyStatusStatus =
+  /*@__PURE__*/ S.String;
 
-export type InstancesStatusEditRequestBodyFromType =
+export interface InstancesStatusEditRequestBodyStatus {
+  status: InstancesStatusEditRequestBodyStatusStatus;
+}
+export const InstancesStatusEditRequestBodyStatus = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      status: InstancesStatusEditRequestBodyStatusStatus,
+    }),
+).annotate({
+  identifier: "InstancesStatusEditRequestBodyStatus",
+}) as any as S.Schema<InstancesStatusEditRequestBodyStatus>;
+
+export type InstancesStatusEditRequestBodyStatusStatus2 =
+  | "resume"
+  | (string & {});
+export const InstancesStatusEditRequestBodyStatusStatus2 =
+  /*@__PURE__*/ S.String;
+
+export interface InstancesStatusEditRequestBodyStatus2 {
+  status: InstancesStatusEditRequestBodyStatusStatus2;
+}
+export const InstancesStatusEditRequestBodyStatus2 = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      status: InstancesStatusEditRequestBodyStatusStatus2,
+    }),
+).annotate({
+  identifier: "InstancesStatusEditRequestBodyStatus2",
+}) as any as S.Schema<InstancesStatusEditRequestBodyStatus2>;
+
+export type InstancesStatusEditRequestBodyObjectStatusRollbackStatus =
+  | "terminate"
+  | (string & {});
+export const InstancesStatusEditRequestBodyObjectStatusRollbackStatus =
+  /*@__PURE__*/ S.String;
+
+export interface InstancesStatusEditRequestBodyObjectStatusRollback {
+  status: InstancesStatusEditRequestBodyObjectStatusRollbackStatus;
+  /** Run rollback before terminating. */
+  rollback?: boolean;
+}
+export const InstancesStatusEditRequestBodyObjectStatusRollback =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      status: InstancesStatusEditRequestBodyObjectStatusRollbackStatus,
+      rollback: S.optional(S.Boolean),
+    }),
+  ).annotate({
+    identifier: "InstancesStatusEditRequestBodyObjectStatusRollback",
+  }) as any as S.Schema<InstancesStatusEditRequestBodyObjectStatusRollback>;
+
+export type InstancesStatusEditRequestBodyObjectStatusFromStatus =
+  | "restart"
+  | (string & {});
+export const InstancesStatusEditRequestBodyObjectStatusFromStatus =
+  /*@__PURE__*/ S.String;
+
+export type InstancesStatusEditRequestBodyObjectStatusFromFromType =
   | "do"
   | "sleep"
   | "waitForEvent"
   | (string & {});
-export const InstancesStatusEditRequestBodyFromType = /*@__PURE__*/ S.String;
+export const InstancesStatusEditRequestBodyObjectStatusFromFromType =
+  /*@__PURE__*/ S.String;
 
-export interface InstancesStatusEditRequestBodyFrom {
+export interface InstancesStatusEditRequestBodyObjectStatusFromFrom {
   name: string;
   count?: number;
-  type?: InstancesStatusEditRequestBodyFromType;
+  type?: InstancesStatusEditRequestBodyObjectStatusFromFromType;
 }
-export const InstancesStatusEditRequestBodyFrom = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    count: S.optional(S.Number),
-    type: S.optional(InstancesStatusEditRequestBodyFromType),
-  }),
-).annotate({
-  identifier: "InstancesStatusEditRequestBodyFrom",
-}) as any as S.Schema<InstancesStatusEditRequestBodyFrom>;
+export const InstancesStatusEditRequestBodyObjectStatusFromFrom =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String,
+      count: S.optional(S.Number),
+      type: S.optional(InstancesStatusEditRequestBodyObjectStatusFromFromType),
+    }),
+  ).annotate({
+    identifier: "InstancesStatusEditRequestBodyObjectStatusFromFrom",
+  }) as any as S.Schema<InstancesStatusEditRequestBodyObjectStatusFromFrom>;
 
-export interface InstancesStatusEditRequestBody {
-  status?: InstancesStatusEditRequestBodyStatus;
-  /** Run rollback before terminating. */
-  rollback?: boolean;
+export interface InstancesStatusEditRequestBodyObjectStatusFrom {
+  status: InstancesStatusEditRequestBodyObjectStatusFromStatus;
   /** Step to restart from. */
-  from?: InstancesStatusEditRequestBodyFrom;
+  from?: InstancesStatusEditRequestBodyObjectStatusFromFrom;
 }
-export const InstancesStatusEditRequestBody = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.optional(InstancesStatusEditRequestBodyStatus),
-    rollback: S.optional(S.Boolean),
-    from: S.optional(InstancesStatusEditRequestBodyFrom),
-  }),
-).annotate({
-  identifier: "InstancesStatusEditRequestBody",
-}) as any as S.Schema<InstancesStatusEditRequestBody>;
+export const InstancesStatusEditRequestBodyObjectStatusFrom =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      status: InstancesStatusEditRequestBodyObjectStatusFromStatus,
+      from: S.optional(InstancesStatusEditRequestBodyObjectStatusFromFrom),
+    }),
+  ).annotate({
+    identifier: "InstancesStatusEditRequestBodyObjectStatusFrom",
+  }) as any as S.Schema<InstancesStatusEditRequestBodyObjectStatusFrom>;
+
+export type InstancesStatusEditRequestBody =
+  | InstancesStatusEditRequestBodyStatus
+  | InstancesStatusEditRequestBodyStatus2
+  | InstancesStatusEditRequestBodyObjectStatusRollback
+  | InstancesStatusEditRequestBodyObjectStatusFrom;
+export const InstancesStatusEditRequestBody = /*@__PURE__*/ S.Unknown;
 
 export interface PatchInstanceStatusRequest {
   accountId: string;
