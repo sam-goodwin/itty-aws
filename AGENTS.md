@@ -186,9 +186,10 @@ The `while` option on `Effect.retry` is useful for retrying only specific errors
 ```typescript
 Effect.retry({
   while: (err) => err === "not ready yet",
-  schedule: Schedule.spaced("1 second").pipe(
-    Schedule.both(Schedule.recurs(10)),
-  ),
+  schedule: Schedule.max([
+    Schedule.spaced("1 second"),
+    Schedule.recurs(10),
+  ]),
 })
 ```
 
@@ -200,12 +201,14 @@ someOperation().pipe(
   Effect.catch(() => Effect.succeed(fallback)),
 );
 
-// Retry with schedule
+// Retry with schedule (Schedule.max replaces the removed Schedule.both;
+// Schedule.min replaces Schedule.either)
 someOperation().pipe(
   Effect.retry({
-    schedule: Schedule.spaced("1 second").pipe(
-      Schedule.both(Schedule.recurs(10)),
-    ),
+    schedule: Schedule.max([
+      Schedule.spaced("1 second"),
+      Schedule.recurs(10),
+    ]),
   }),
 );
 

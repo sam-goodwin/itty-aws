@@ -300,9 +300,7 @@ describe("AISearch", () => {
           }),
           Effect.retry({
             while: (e) => e === "token not visible yet",
-            schedule: Schedule.spaced("2 seconds").pipe(
-              Schedule.both(Schedule.recurs(45)),
-            ),
+            schedule: Schedule.max([Schedule.spaced("2 seconds"), Schedule.recurs(45)]),
           }),
           Effect.map((token) => {
             expect(token).toBeDefined();

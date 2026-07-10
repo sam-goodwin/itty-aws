@@ -343,9 +343,10 @@ it("happy path - gets queue after creation", async () => {
       const result = yield* getQueue({ name: \`test-\${testRunId}\` }).pipe(
         Effect.retry({
           while: (err) => err._tag === "QueueDoesNotExist",
-          schedule: Schedule.spaced("1 second").pipe(
-            Schedule.both(Schedule.recurs(10)),
-          ),
+          schedule: Schedule.max([
+            Schedule.spaced("1 second"),
+            Schedule.recurs(10),
+          ]),
         }),
       );
       expect(result).toBeDefined();

@@ -113,10 +113,7 @@ const pollUntilFewer = (
     ),
     Effect.retry({
       while: (e) => e === "still-full",
-      schedule: Schedule.both(
-        Schedule.spaced("5 seconds"),
-        Schedule.recurs(24),
-      ),
+      schedule: Schedule.max([Schedule.spaced("5 seconds"), Schedule.recurs(24)]),
     }),
     Effect.match({
       onSuccess: () => undefined as void,

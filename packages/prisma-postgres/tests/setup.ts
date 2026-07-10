@@ -83,10 +83,7 @@ const waitForDatabase = (projectId: string, prefix: string) =>
         }),
       ),
       {
-        schedule: Schedule.both(
-          Schedule.recurs(60),
-          Schedule.spaced("5 seconds"),
-        ),
+        schedule: Schedule.max([Schedule.recurs(60), Schedule.spaced("5 seconds")]),
         while: (e) =>
           typeof e === "object" &&
           e !== null &&

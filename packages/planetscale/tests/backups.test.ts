@@ -48,10 +48,7 @@ const waitForBackupComplete = (
       ),
     ),
     {
-      schedule: Schedule.both(
-        Schedule.recurs(120),
-        Schedule.spaced("5 seconds"),
-      ),
+      schedule: Schedule.max([Schedule.recurs(120), Schedule.spaced("5 seconds")]),
       while: (e) => "_tag" in e && e._tag === "NotComplete",
     },
   );

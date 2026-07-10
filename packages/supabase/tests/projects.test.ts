@@ -355,9 +355,7 @@ describe("Projects", () => {
           ),
           Effect.retry({
             while: (err) => err === "not paused yet",
-            schedule: Schedule.spaced("3 seconds").pipe(
-              Schedule.both(Schedule.recurs(Math.ceil(durationSec / 3))),
-            ),
+            schedule: Schedule.max([Schedule.spaced("3 seconds"), Schedule.recurs(Math.ceil(durationSec / 3))]),
           }),
         );
       await runEffect(
@@ -428,9 +426,7 @@ describe("Projects", () => {
           ),
           Effect.retry({
             while: (err) => err === "not paused yet",
-            schedule: Schedule.spaced("3 seconds").pipe(
-              Schedule.both(Schedule.recurs(20)),
-            ),
+            schedule: Schedule.max([Schedule.spaced("3 seconds"), Schedule.recurs(20)]),
           }),
         ),
       );

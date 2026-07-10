@@ -153,10 +153,7 @@ export const setupTestDatabase = (
         ),
       ),
       {
-        schedule: Schedule.both(
-          Schedule.recurs(maxAttempts),
-          Schedule.spaced("5 seconds"),
-        ),
+        schedule: Schedule.max([Schedule.recurs(maxAttempts), Schedule.spaced("5 seconds")]),
         while: (e) => "_tag" in e && e._tag === "NotReady",
       },
     );

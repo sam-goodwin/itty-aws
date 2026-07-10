@@ -23,13 +23,8 @@ type ManagedTable = {
   TableArn: string;
 };
 
-const retrySchedule = Schedule.both(
-  Schedule.recurs(30),
-  Schedule.spaced("1 second"),
-);
-const eventualRetrySchedule = Schedule.exponential(250).pipe(
-  Schedule.both(Schedule.recurs(20)),
-);
+const retrySchedule = Schedule.max([Schedule.recurs(30), Schedule.spaced("1 second")]);
+const eventualRetrySchedule = Schedule.max([Schedule.exponential(250), Schedule.recurs(20)]);
 
 // Helper to wait for table to become active
 const waitForTableActive = (tableName: string) =>
@@ -753,9 +748,7 @@ test(
               while: (e) =>
                 e._tag === "InternalServerError" ||
                 e._tag === "ResourceNotFoundException",
-              schedule: Schedule.exponential(250).pipe(
-                Schedule.both(Schedule.recurs(20)),
-              ),
+              schedule: Schedule.max([Schedule.exponential(250), Schedule.recurs(20)]),
             }),
           );
 
