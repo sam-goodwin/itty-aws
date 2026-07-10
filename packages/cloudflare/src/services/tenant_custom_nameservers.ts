@@ -14,6 +14,14 @@ import * as Retry from "../retry.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
+/** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
+const KEY_DICTIONARY: Record<string, string> = {
+  dnsRecords: "dns_records",
+  nsName: "ns_name",
+  nsSet: "ns_set",
+  zoneTag: "zone_tag",
+};
+
 export interface CreateTenantCustomNameserverRequest {
   /** Tenant identifier tag. */
   tenantTag: string;
@@ -27,13 +35,15 @@ export const CreateTenantCustomNameserverRequest = /*@__PURE__*/ S.suspend(() =>
     tenantTag: S.String.pipe(T.Label("tenant_tag")),
     nsName: S.String.pipe(T.Body("ns_name")),
     nsSet: S.optional(S.Number.pipe(T.Body("ns_set"))),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/tenants/{tenant_tag}/custom_ns",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/tenants/{tenant_tag}/custom_ns",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateTenantCustomNameserverRequest",
 }) as any as S.Schema<CreateTenantCustomNameserverRequest>;
@@ -89,7 +99,7 @@ export const CreateTenantCustomNameserverResponse = /*@__PURE__*/ S.suspend(
       status: CreateResponseStatus,
       zoneTag: S.String.pipe(T.Body("zone_tag")),
       nsSet: S.optional(S.Number.pipe(T.Body("ns_set"))),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateTenantCustomNameserverResponse",
 }) as any as S.Schema<CreateTenantCustomNameserverResponse>;
@@ -104,13 +114,15 @@ export const DeleteTenantCustomNameserverRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tenantTag: S.String.pipe(T.Label("tenant_tag")),
     customNsId: S.String.pipe(T.Label("custom_ns_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/tenants/{tenant_tag}/custom_ns/{custom_ns_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/tenants/{tenant_tag}/custom_ns/{custom_ns_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteTenantCustomNameserverRequest",
 }) as any as S.Schema<DeleteTenantCustomNameserverRequest>;
@@ -131,7 +143,7 @@ export const DeleteTenantCustomNameserverResponse = /*@__PURE__*/ S.suspend(
     S.Struct({
       result: DeleteResultList.pipe(T.EnvelopePayload()),
       resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteTenantCustomNameserverResponse",
 }) as any as S.Schema<DeleteTenantCustomNameserverResponse>;
@@ -143,13 +155,15 @@ export interface GetTenantCustomNameserverRequest {
 export const GetTenantCustomNameserverRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tenantTag: S.String.pipe(T.Label("tenant_tag")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/tenants/{tenant_tag}/custom_ns",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/tenants/{tenant_tag}/custom_ns",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetTenantCustomNameserverRequest",
 }) as any as S.Schema<GetTenantCustomNameserverRequest>;
@@ -221,7 +235,7 @@ export const GetTenantCustomNameserverResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: GetResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetTenantCustomNameserverResponse",
 }) as any as S.Schema<GetTenantCustomNameserverResponse>;

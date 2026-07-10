@@ -14,6 +14,39 @@ import * as Retry from "../retry.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
+/** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
+const KEY_DICTIONARY: Record<string, string> = {
+  activeSchema: "active_schema",
+  apiRouting: "api_routing",
+  authIdCharacteristics: "auth_id_characteristics",
+  authIdTokens: "auth_id_tokens",
+  confidenceIntervals: "confidence_intervals",
+  createdAt: "created_at",
+  dataPoints: "data_points",
+  documentationUrl: "documentation_url",
+  isLearned: "is_learned",
+  lastUpdated: "last_updated",
+  learnedAvailable: "learned_available",
+  mappedResources: "mapped_resources",
+  mitigationAction: "mitigation_action",
+  operationId: "operation_id",
+  operationIds: "operation_ids",
+  parameterSchemas: "parameter_schemas",
+  perPage: "per_page",
+  periodSeconds: "period_seconds",
+  resultInfo: "result_info",
+  schemaId: "schema_id",
+  schemaInfo: "schema_info",
+  settingsMultipleRequest: "settings_multiple_request",
+  suggestedThreshold: "suggested_threshold",
+  totalCount: "total_count",
+  trafficStats: "traffic_stats",
+  uploadDetails: "upload_details",
+  validationDefaultMitigationAction: "validation_default_mitigation_action",
+  validationEnabled: "validation_enabled",
+  validationOverrideMitigationAction: "validation_override_mitigation_action",
+};
+
 export class Forbidden extends T.applyErrorMatchers(
   S.TaggedErrorClass<Forbidden>()("Forbidden", {
     code: S.Number,
@@ -119,13 +152,15 @@ export const BulkCreateLabelUsersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     body: LabelsUserBulkCreateRequestBodyList,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/zones/{zone_id}/api_gateway/labels/user",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/zones/{zone_id}/api_gateway/labels/user",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "BulkCreateLabelUsersRequest",
 }) as any as S.Schema<BulkCreateLabelUsersRequest>;
@@ -176,7 +211,7 @@ export const BulkCreateLabelUsersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: LabelsUserBulkCreateResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "BulkCreateLabelUsersResponse",
 }) as any as S.Schema<BulkCreateLabelUsersResponse>;
@@ -267,13 +302,15 @@ export const BulkCreateOperationLabelsRequest = /*@__PURE__*/ S.suspend(() =>
     selector: OperationsLabelsBulkCreateRequestSelector,
     managed: S.optional(OperationsLabelsBulkCreateRequestManaged),
     user: S.optional(OperationsLabelsBulkCreateRequestUser),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/zones/{zone_id}/api_gateway/operations/labels",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/zones/{zone_id}/api_gateway/operations/labels",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "BulkCreateOperationLabelsRequest",
 }) as any as S.Schema<BulkCreateOperationLabelsRequest>;
@@ -368,7 +405,7 @@ export const BulkCreateOperationLabelsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: OperationsLabelsBulkCreateResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "BulkCreateOperationLabelsResponse",
 }) as any as S.Schema<BulkCreateOperationLabelsResponse>;
@@ -413,13 +450,15 @@ export const BulkCreateOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     body: OperationsBulkCreateRequestBodyList,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/zones/{zone_id}/api_gateway/operations",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/zones/{zone_id}/api_gateway/operations",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "BulkCreateOperationsRequest",
 }) as any as S.Schema<BulkCreateOperationsRequest>;
@@ -507,7 +546,7 @@ export const BulkCreateOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: OperationsBulkCreateResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "BulkCreateOperationsResponse",
 }) as any as S.Schema<BulkCreateOperationsResponse>;
@@ -519,13 +558,15 @@ export interface BulkDeleteLabelUsersRequest {
 export const BulkDeleteLabelUsersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/zones/{zone_id}/api_gateway/labels/user",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/zones/{zone_id}/api_gateway/labels/user",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "BulkDeleteLabelUsersRequest",
 }) as any as S.Schema<BulkDeleteLabelUsersRequest>;
@@ -576,7 +617,7 @@ export const BulkDeleteLabelUsersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: LabelsUserBulkDeleteResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "BulkDeleteLabelUsersResponse",
 }) as any as S.Schema<BulkDeleteLabelUsersResponse>;
@@ -588,13 +629,15 @@ export interface BulkDeleteOperationLabelsRequest {
 export const BulkDeleteOperationLabelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/zones/{zone_id}/api_gateway/operations/labels",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/zones/{zone_id}/api_gateway/operations/labels",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "BulkDeleteOperationLabelsRequest",
 }) as any as S.Schema<BulkDeleteOperationLabelsRequest>;
@@ -689,7 +732,7 @@ export const BulkDeleteOperationLabelsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: OperationsLabelsBulkDeleteResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "BulkDeleteOperationLabelsResponse",
 }) as any as S.Schema<BulkDeleteOperationLabelsResponse>;
@@ -701,20 +744,22 @@ export interface BulkDeleteOperationsRequest {
 export const BulkDeleteOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/zones/{zone_id}/api_gateway/operations",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/zones/{zone_id}/api_gateway/operations",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "BulkDeleteOperationsRequest",
 }) as any as S.Schema<BulkDeleteOperationsRequest>;
 
 export interface BulkDeleteOperationsResponse {}
 export const BulkDeleteOperationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
+  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "BulkDeleteOperationsResponse",
 }) as any as S.Schema<BulkDeleteOperationsResponse>;
@@ -736,13 +781,15 @@ export const BulkPatchDiscoveryOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     body: DiscoveryOperationsBulkEditRequestBodyMap,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/zones/{zone_id}/api_gateway/discovery/operations",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/zones/{zone_id}/api_gateway/discovery/operations",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "BulkPatchDiscoveryOperationsRequest",
 }) as any as S.Schema<BulkPatchDiscoveryOperationsRequest>;
@@ -765,7 +812,7 @@ export const BulkPatchDiscoveryOperationsResponse = /*@__PURE__*/ S.suspend(
       result: S.optional(
         DiscoveryOperationsBulkEditResultMap.pipe(T.EnvelopePayload()),
       ),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "BulkPatchDiscoveryOperationsResponse",
 }) as any as S.Schema<BulkPatchDiscoveryOperationsResponse>;
@@ -858,13 +905,15 @@ export const BulkUpdateOperationLabelsRequest = /*@__PURE__*/ S.suspend(() =>
     managed: OperationsLabelsBulkUpdateRequestManaged,
     selector: OperationsLabelsBulkUpdateRequestSelector,
     user: OperationsLabelsBulkUpdateRequestUser,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/zones/{zone_id}/api_gateway/operations/labels",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/zones/{zone_id}/api_gateway/operations/labels",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "BulkUpdateOperationLabelsRequest",
 }) as any as S.Schema<BulkUpdateOperationLabelsRequest>;
@@ -959,7 +1008,7 @@ export const BulkUpdateOperationLabelsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: OperationsLabelsBulkUpdateResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "BulkUpdateOperationLabelsResponse",
 }) as any as S.Schema<BulkUpdateOperationLabelsResponse>;
@@ -981,13 +1030,15 @@ export const CreateExpressionTemplateFallthroughRequest =
     S.Struct({
       zoneId: S.String.pipe(T.Label("zone_id")),
       hosts: ExpressionTemplateFallthroughCreateRequestHostsList,
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/zones/{zone_id}/api_gateway/expression-template/fallthrough",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "POST",
+          uri: "/zones/{zone_id}/api_gateway/expression-template/fallthrough",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "CreateExpressionTemplateFallthroughRequest",
   }) as any as S.Schema<CreateExpressionTemplateFallthroughRequest>;
@@ -1004,7 +1055,7 @@ export const CreateExpressionTemplateFallthroughResponse =
     S.Struct({
       expression: S.String,
       title: S.String,
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "CreateExpressionTemplateFallthroughResponse",
   }) as any as S.Schema<CreateExpressionTemplateFallthroughResponse>;
@@ -1032,13 +1083,15 @@ export const CreateOperationRequest = /*@__PURE__*/ S.suspend(() =>
     endpoint: S.String,
     host: S.String,
     method: OperationsCreateRequestMethod,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/zones/{zone_id}/api_gateway/operations/item",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/zones/{zone_id}/api_gateway/operations/item",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateOperationRequest",
 }) as any as S.Schema<CreateOperationRequest>;
@@ -1214,7 +1267,7 @@ export const CreateOperationResponse = /*@__PURE__*/ S.suspend(() =>
     operationId: S.String.pipe(T.Body("operation_id")),
     features: S.optional(OperationsCreateResponseFeatures),
     schemas: S.optional(OperationsCreateResponseSchemas),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateOperationResponse",
 }) as any as S.Schema<CreateOperationResponse>;
@@ -1245,13 +1298,15 @@ export const CreateOperationLabelRequest = /*@__PURE__*/ S.suspend(() =>
     operationId: S.String.pipe(T.Label("operation_id")),
     managed: S.optional(OperationsLabelsCreateRequestManagedList),
     user: S.optional(OperationsLabelsCreateRequestUserList),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/zones/{zone_id}/api_gateway/operations/{operation_id}/labels",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/zones/{zone_id}/api_gateway/operations/{operation_id}/labels",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateOperationLabelRequest",
 }) as any as S.Schema<CreateOperationLabelRequest>;
@@ -1323,7 +1378,7 @@ export const CreateOperationLabelResponse = /*@__PURE__*/ S.suspend(() =>
     method: OperationsLabelsCreateResponseMethod,
     operationId: S.String.pipe(T.Body("operation_id")),
     labels: S.optional(OperationsLabelsCreateResponseLabelsList),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateOperationLabelResponse",
 }) as any as S.Schema<CreateOperationLabelResponse>;
@@ -1335,13 +1390,15 @@ export interface CreateUserSchemaRequest {
 export const CreateUserSchemaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/zones/{zone_id}/api_gateway/user_schemas",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/zones/{zone_id}/api_gateway/user_schemas",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateUserSchemaRequest",
 }) as any as S.Schema<CreateUserSchemaRequest>;
@@ -1434,7 +1491,7 @@ export const CreateUserSchemaResponse = /*@__PURE__*/ S.suspend(() =>
     uploadDetails: S.optional(
       UserSchemasCreateResponseUploadDetails.pipe(T.Body("upload_details")),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateUserSchemaResponse",
 }) as any as S.Schema<CreateUserSchemaResponse>;
@@ -1449,13 +1506,15 @@ export const DeleteLabelUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/zones/{zone_id}/api_gateway/labels/user/{name}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/zones/{zone_id}/api_gateway/labels/user/{name}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteLabelUserRequest",
 }) as any as S.Schema<DeleteLabelUserRequest>;
@@ -1484,7 +1543,7 @@ export const DeleteLabelUserResponse = /*@__PURE__*/ S.suspend(() =>
     metadata: S.Unknown,
     name: S.String,
     source: LabelsUserDeleteResponseSource,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteLabelUserResponse",
 }) as any as S.Schema<DeleteLabelUserResponse>;
@@ -1499,20 +1558,22 @@ export const DeleteOperationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     operationId: S.String.pipe(T.Label("operation_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/zones/{zone_id}/api_gateway/operations/{operation_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/zones/{zone_id}/api_gateway/operations/{operation_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteOperationRequest",
 }) as any as S.Schema<DeleteOperationRequest>;
 
 export interface DeleteOperationResponse {}
 export const DeleteOperationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
+  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteOperationResponse",
 }) as any as S.Schema<DeleteOperationResponse>;
@@ -1527,13 +1588,15 @@ export const DeleteOperationLabelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     operationId: S.String.pipe(T.Label("operation_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/zones/{zone_id}/api_gateway/operations/{operation_id}/labels",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/zones/{zone_id}/api_gateway/operations/{operation_id}/labels",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteOperationLabelRequest",
 }) as any as S.Schema<DeleteOperationLabelRequest>;
@@ -1605,7 +1668,7 @@ export const DeleteOperationLabelResponse = /*@__PURE__*/ S.suspend(() =>
     method: OperationsLabelsDeleteResponseMethod,
     operationId: S.String.pipe(T.Body("operation_id")),
     labels: S.optional(OperationsLabelsDeleteResponseLabelsList),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteOperationLabelResponse",
 }) as any as S.Schema<DeleteOperationLabelResponse>;
@@ -1619,20 +1682,22 @@ export const DeleteUserSchemaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     schemaId: S.String.pipe(T.Label("schema_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/zones/{zone_id}/api_gateway/user_schemas/{schema_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/zones/{zone_id}/api_gateway/user_schemas/{schema_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteUserSchemaRequest",
 }) as any as S.Schema<DeleteUserSchemaRequest>;
 
 export interface DeleteUserSchemaResponse {}
 export const DeleteUserSchemaResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
+  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteUserSchemaResponse",
 }) as any as S.Schema<DeleteUserSchemaResponse>;
@@ -1647,13 +1712,15 @@ export const GetConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     normalize: S.optional(S.Boolean.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/api_gateway/configuration",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/api_gateway/configuration",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetConfigurationRequest",
 }) as any as S.Schema<GetConfigurationRequest>;
@@ -1695,7 +1762,7 @@ export const GetConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
       ConfigurationsGetResponseAuthIdCharacteristicsList.pipe(
         T.Body("auth_id_characteristics"),
       ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetConfigurationResponse",
 }) as any as S.Schema<GetConfigurationResponse>;
@@ -1707,13 +1774,15 @@ export interface GetDiscoveryRequest {
 export const GetDiscoveryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/api_gateway/discovery",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/api_gateway/discovery",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDiscoveryRequest",
 }) as any as S.Schema<GetDiscoveryRequest>;
@@ -1732,7 +1801,7 @@ export const GetDiscoveryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     schemas: DiscoveryGetResponseSchemasList,
     timestamp: S.String,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDiscoveryResponse",
 }) as any as S.Schema<GetDiscoveryResponse>;
@@ -1752,13 +1821,15 @@ export const GetLabelManagedRequest = /*@__PURE__*/ S.suspend(() =>
     withMappedResourceCounts: S.optional(
       S.Boolean.pipe(T.Query("with_mapped_resource_counts")),
     ),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/api_gateway/labels/managed/{name}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/api_gateway/labels/managed/{name}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetLabelManagedRequest",
 }) as any as S.Schema<GetLabelManagedRequest>;
@@ -1790,7 +1861,7 @@ export const GetLabelManagedResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.String,
     source: LabelsManagedGetResponseSource,
     mappedResources: S.optional(S.Unknown.pipe(T.Body("mapped_resources"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetLabelManagedResponse",
 }) as any as S.Schema<GetLabelManagedResponse>;
@@ -1810,13 +1881,15 @@ export const GetLabelUserRequest = /*@__PURE__*/ S.suspend(() =>
     withMappedResourceCounts: S.optional(
       S.Boolean.pipe(T.Query("with_mapped_resource_counts")),
     ),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/api_gateway/labels/user/{name}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/api_gateway/labels/user/{name}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetLabelUserRequest",
 }) as any as S.Schema<GetLabelUserRequest>;
@@ -1848,7 +1921,7 @@ export const GetLabelUserResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.String,
     source: LabelsUserGetResponseSource,
     mappedResources: S.optional(S.Unknown.pipe(T.Body("mapped_resources"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetLabelUserResponse",
 }) as any as S.Schema<GetLabelUserResponse>;
@@ -1881,13 +1954,15 @@ export const GetOperationRequest = /*@__PURE__*/ S.suspend(() =>
     operationId: S.String.pipe(T.Label("operation_id")),
     feature: S.optional(OperationsGetRequestFeatureList.pipe(T.Query())),
     withSchemas: S.optional(S.Boolean.pipe(T.Query("with_schemas"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/api_gateway/operations/{operation_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/api_gateway/operations/{operation_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetOperationRequest",
 }) as any as S.Schema<GetOperationRequest>;
@@ -2058,7 +2133,7 @@ export const GetOperationResponse = /*@__PURE__*/ S.suspend(() =>
     operationId: S.String.pipe(T.Body("operation_id")),
     features: S.optional(OperationsGetResponseFeatures),
     schemas: S.optional(OperationsGetResponseSchemas),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetOperationResponse",
 }) as any as S.Schema<GetOperationResponse>;
@@ -2073,13 +2148,15 @@ export const GetOperationSchemaValidationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     operationId: S.String.pipe(T.Label("operation_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/api_gateway/operations/{operation_id}/schema_validation",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/api_gateway/operations/{operation_id}/schema_validation",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetOperationSchemaValidationRequest",
 }) as any as S.Schema<GetOperationSchemaValidationRequest>;
@@ -2108,7 +2185,7 @@ export const GetOperationSchemaValidationResponse = /*@__PURE__*/ S.suspend(
         ),
       ),
       operationId: S.optional(S.String.pipe(T.Body("operation_id"))),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetOperationSchemaValidationResponse",
 }) as any as S.Schema<GetOperationSchemaValidationResponse>;
@@ -2120,13 +2197,15 @@ export interface GetSettingSchemaValidationRequest {
 export const GetSettingSchemaValidationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/api_gateway/settings/schema_validation",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/api_gateway/settings/schema_validation",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetSettingSchemaValidationRequest",
 }) as any as S.Schema<GetSettingSchemaValidationRequest>;
@@ -2143,7 +2222,7 @@ export const GetSettingSchemaValidationResponse = /*@__PURE__*/ S.suspend(() =>
           "Settings object { validation_default_mitigation_action, validation_override_mitigation_action }",
         ),
       ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetSettingSchemaValidationResponse",
 }) as any as S.Schema<GetSettingSchemaValidationResponse>;
@@ -2160,13 +2239,15 @@ export const GetUserSchemaRequest = /*@__PURE__*/ S.suspend(() =>
     zoneId: S.String.pipe(T.Label("zone_id")),
     schemaId: S.String.pipe(T.Label("schema_id")),
     omitSource: S.optional(S.Boolean.pipe(T.Query("omit_source"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/api_gateway/user_schemas/{schema_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/api_gateway/user_schemas/{schema_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetUserSchemaRequest",
 }) as any as S.Schema<GetUserSchemaRequest>;
@@ -2196,7 +2277,7 @@ export const GetUserSchemaResponse = /*@__PURE__*/ S.suspend(() =>
     schemaId: S.String.pipe(T.Body("schema_id")),
     source: S.optional(S.String),
     validationEnabled: S.optional(S.Boolean.pipe(T.Body("validation_enabled"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetUserSchemaResponse",
 }) as any as S.Schema<GetUserSchemaResponse>;
@@ -2279,13 +2360,15 @@ export const ListDiscoveryOperationsRequest = /*@__PURE__*/ S.suspend(() =>
     page: S.optional(S.Number.pipe(T.Query())),
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
     state: S.optional(DiscoveryOperationsListRequestState.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/api_gateway/discovery/operations",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/api_gateway/discovery/operations",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListDiscoveryOperationsRequest",
 }) as any as S.Schema<ListDiscoveryOperationsRequest>;
@@ -2400,7 +2483,7 @@ export const ListDiscoveryOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: DiscoveryOperationsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListDiscoveryOperationsResponse",
 }) as any as S.Schema<ListDiscoveryOperationsResponse>;
@@ -2448,13 +2531,15 @@ export const ListLabelsRequest = /*@__PURE__*/ S.suspend(() =>
     withMappedResourceCounts: S.optional(
       S.Boolean.pipe(T.Query("with_mapped_resource_counts")),
     ),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/api_gateway/labels",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/api_gateway/labels",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListLabelsRequest",
 }) as any as S.Schema<ListLabelsRequest>;
@@ -2505,7 +2590,7 @@ export const ListLabelsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: LabelsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListLabelsResponse",
 }) as any as S.Schema<ListLabelsResponse>;
@@ -2574,13 +2659,15 @@ export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
     order: S.optional(OperationsListRequestOrder.pipe(T.Query())),
     page: S.optional(S.Number.pipe(T.Query())),
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/api_gateway/operations",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/api_gateway/operations",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListOperationsRequest",
 }) as any as S.Schema<ListOperationsRequest>;
@@ -2667,7 +2754,7 @@ export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: OperationsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListOperationsResponse",
 }) as any as S.Schema<ListOperationsResponse>;
@@ -2702,13 +2789,15 @@ export const ListSchemasRequest = /*@__PURE__*/ S.suspend(() =>
     zoneId: S.String.pipe(T.Label("zone_id")),
     feature: S.optional(SchemasListRequestFeatureList.pipe(T.Query())),
     host: S.optional(SchemasListRequestHostList.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/api_gateway/schemas",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/api_gateway/schemas",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListSchemasRequest",
 }) as any as S.Schema<ListSchemasRequest>;
@@ -2727,7 +2816,7 @@ export const ListSchemasResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     schemas: S.optional(SchemasListResponseSchemasList),
     timestamp: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListSchemasResponse",
 }) as any as S.Schema<ListSchemasResponse>;
@@ -2745,13 +2834,15 @@ export const ListUserSchemaHostsRequest = /*@__PURE__*/ S.suspend(() =>
     zoneId: S.String.pipe(T.Label("zone_id")),
     page: S.optional(S.Number.pipe(T.Query())),
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/api_gateway/user_schemas/hosts",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/api_gateway/user_schemas/hosts",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListUserSchemaHostsRequest",
 }) as any as S.Schema<ListUserSchemaHostsRequest>;
@@ -2796,7 +2887,7 @@ export const ListUserSchemaHostsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: UserSchemasHostsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListUserSchemaHostsResponse",
 }) as any as S.Schema<ListUserSchemaHostsResponse>;
@@ -2870,13 +2961,15 @@ export const ListUserSchemaOperationsRequest = /*@__PURE__*/ S.suspend(() =>
     ),
     page: S.optional(S.Number.pipe(T.Query())),
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/api_gateway/user_schemas/{schema_id}/operations",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/api_gateway/user_schemas/{schema_id}/operations",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListUserSchemaOperationsRequest",
 }) as any as S.Schema<ListUserSchemaOperationsRequest>;
@@ -2916,7 +3009,7 @@ export const ListUserSchemaOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: UserSchemasOperationsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListUserSchemaOperationsResponse",
 }) as any as S.Schema<ListUserSchemaOperationsResponse>;
@@ -2942,13 +3035,15 @@ export const ListUserSchemasRequest = /*@__PURE__*/ S.suspend(() =>
     validationEnabled: S.optional(
       S.Boolean.pipe(T.Query("validation_enabled")),
     ),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/api_gateway/user_schemas",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/api_gateway/user_schemas",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListUserSchemasRequest",
 }) as any as S.Schema<ListUserSchemasRequest>;
@@ -2997,7 +3092,7 @@ export const ListUserSchemasResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: UserSchemasListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListUserSchemasResponse",
 }) as any as S.Schema<ListUserSchemasResponse>;
@@ -3018,13 +3113,15 @@ export const PatchLabelUserRequest = /*@__PURE__*/ S.suspend(() =>
     name: S.String.pipe(T.Label()),
     description: S.optional(S.String),
     metadata: S.optional(S.Unknown),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/zones/{zone_id}/api_gateway/labels/user/{name}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/zones/{zone_id}/api_gateway/labels/user/{name}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchLabelUserRequest",
 }) as any as S.Schema<PatchLabelUserRequest>;
@@ -3053,7 +3150,7 @@ export const PatchLabelUserResponse = /*@__PURE__*/ S.suspend(() =>
     metadata: S.Unknown,
     name: S.String,
     source: LabelsUserEditResponseSource,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchLabelUserResponse",
 }) as any as S.Schema<PatchLabelUserResponse>;
@@ -3093,13 +3190,15 @@ export const PatchOperationSchemaValidationRequest = /*@__PURE__*/ S.suspend(
         OperationsSchemaValidationEditRequestSettingsMultipleRequest.pipe(
           T.Body("settings_multiple_request"),
         ),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "/zones/{zone_id}/api_gateway/operations/schema_validation",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "PATCH",
+          uri: "/zones/{zone_id}/api_gateway/operations/schema_validation",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchOperationSchemaValidationRequest",
 }) as any as S.Schema<PatchOperationSchemaValidationRequest>;
@@ -3125,7 +3224,7 @@ export const PatchOperationSchemaValidationResponse = /*@__PURE__*/ S.suspend(
           T.Body("mitigation_action"),
         ),
       ),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchOperationSchemaValidationResponse",
 }) as any as S.Schema<PatchOperationSchemaValidationResponse>;
@@ -3161,13 +3260,15 @@ export const PatchSettingSchemaValidationRequest = /*@__PURE__*/ S.suspend(() =>
         T.Body("validation_override_mitigation_action"),
       ),
     ),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/zones/{zone_id}/api_gateway/settings/schema_validation",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/zones/{zone_id}/api_gateway/settings/schema_validation",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchSettingSchemaValidationRequest",
 }) as any as S.Schema<PatchSettingSchemaValidationRequest>;
@@ -3185,7 +3286,7 @@ export const PatchSettingSchemaValidationResponse = /*@__PURE__*/ S.suspend(
             "Settings object { validation_default_mitigation_action, validation_override_mitigation_action }",
           ),
         ),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchSettingSchemaValidationResponse",
 }) as any as S.Schema<PatchSettingSchemaValidationResponse>;
@@ -3202,13 +3303,15 @@ export const PatchUserSchemaRequest = /*@__PURE__*/ S.suspend(() =>
     zoneId: S.String.pipe(T.Label("zone_id")),
     schemaId: S.String.pipe(T.Label("schema_id")),
     validationEnabled: S.optional(S.Boolean.pipe(T.Body("validation_enabled"))),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/zones/{zone_id}/api_gateway/user_schemas/{schema_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/zones/{zone_id}/api_gateway/user_schemas/{schema_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchUserSchemaRequest",
 }) as any as S.Schema<PatchUserSchemaRequest>;
@@ -3238,7 +3341,7 @@ export const PatchUserSchemaResponse = /*@__PURE__*/ S.suspend(() =>
     schemaId: S.String.pipe(T.Body("schema_id")),
     source: S.optional(S.String),
     validationEnabled: S.optional(S.Boolean.pipe(T.Body("validation_enabled"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchUserSchemaResponse",
 }) as any as S.Schema<PatchUserSchemaResponse>;
@@ -3285,13 +3388,15 @@ export const PutConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
       ConfigurationsUpdateRequestAuthIdCharacteristicsList.pipe(
         T.Body("auth_id_characteristics"),
       ),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/zones/{zone_id}/api_gateway/configuration",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/zones/{zone_id}/api_gateway/configuration",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutConfigurationRequest",
 }) as any as S.Schema<PutConfigurationRequest>;
@@ -3333,7 +3438,7 @@ export const PutConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
       ConfigurationsUpdateResponseAuthIdCharacteristicsList.pipe(
         T.Body("auth_id_characteristics"),
       ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutConfigurationResponse",
 }) as any as S.Schema<PutConfigurationResponse>;
@@ -3386,13 +3491,15 @@ export const PutLabelManagedResourceOperationRequest = /*@__PURE__*/ S.suspend(
       zoneId: S.String.pipe(T.Label("zone_id")),
       name: S.String.pipe(T.Label()),
       selector: LabelsManagedResourcesOperationUpdateRequestSelector,
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/zones/{zone_id}/api_gateway/labels/managed/{name}/resources/operation",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "PUT",
+          uri: "/zones/{zone_id}/api_gateway/labels/managed/{name}/resources/operation",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutLabelManagedResourceOperationRequest",
 }) as any as S.Schema<PutLabelManagedResourceOperationRequest>;
@@ -3429,7 +3536,7 @@ export const PutLabelManagedResourceOperationResponse = /*@__PURE__*/ S.suspend(
       name: S.String,
       source: LabelsManagedResourcesOperationUpdateResponseSource,
       mappedResources: S.optional(S.Unknown.pipe(T.Body("mapped_resources"))),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutLabelManagedResourceOperationResponse",
 }) as any as S.Schema<PutLabelManagedResourceOperationResponse>;
@@ -3450,13 +3557,15 @@ export const PutLabelUserRequest = /*@__PURE__*/ S.suspend(() =>
     name: S.String.pipe(T.Label()),
     description: S.optional(S.String),
     metadata: S.optional(S.Unknown),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/zones/{zone_id}/api_gateway/labels/user/{name}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/zones/{zone_id}/api_gateway/labels/user/{name}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutLabelUserRequest",
 }) as any as S.Schema<PutLabelUserRequest>;
@@ -3485,7 +3594,7 @@ export const PutLabelUserResponse = /*@__PURE__*/ S.suspend(() =>
     metadata: S.Unknown,
     name: S.String,
     source: LabelsUserUpdateResponseSource,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutLabelUserResponse",
 }) as any as S.Schema<PutLabelUserResponse>;
@@ -3538,13 +3647,15 @@ export const PutLabelUserResourceOperationRequest = /*@__PURE__*/ S.suspend(
       zoneId: S.String.pipe(T.Label("zone_id")),
       name: S.String.pipe(T.Label()),
       selector: LabelsUserResourcesOperationUpdateRequestSelector,
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/zones/{zone_id}/api_gateway/labels/user/{name}/resources/operation",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "PUT",
+          uri: "/zones/{zone_id}/api_gateway/labels/user/{name}/resources/operation",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutLabelUserResourceOperationRequest",
 }) as any as S.Schema<PutLabelUserResourceOperationRequest>;
@@ -3581,7 +3692,7 @@ export const PutLabelUserResourceOperationResponse = /*@__PURE__*/ S.suspend(
       name: S.String,
       source: LabelsUserResourcesOperationUpdateResponseSource,
       mappedResources: S.optional(S.Unknown.pipe(T.Body("mapped_resources"))),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutLabelUserResourceOperationResponse",
 }) as any as S.Schema<PutLabelUserResourceOperationResponse>;
@@ -3611,13 +3722,15 @@ export const PutOperationSchemaValidationRequest = /*@__PURE__*/ S.suspend(() =>
         T.Body("mitigation_action"),
       ),
     ),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/zones/{zone_id}/api_gateway/operations/{operation_id}/schema_validation",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/zones/{zone_id}/api_gateway/operations/{operation_id}/schema_validation",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutOperationSchemaValidationRequest",
 }) as any as S.Schema<PutOperationSchemaValidationRequest>;
@@ -3646,7 +3759,7 @@ export const PutOperationSchemaValidationResponse = /*@__PURE__*/ S.suspend(
         ),
       ),
       operationId: S.optional(S.String.pipe(T.Body("operation_id"))),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutOperationSchemaValidationResponse",
 }) as any as S.Schema<PutOperationSchemaValidationResponse>;
@@ -3681,13 +3794,15 @@ export const PutSettingSchemaValidationRequest = /*@__PURE__*/ S.suspend(() =>
         T.Body("validation_override_mitigation_action"),
       ),
     ),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/zones/{zone_id}/api_gateway/settings/schema_validation",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/zones/{zone_id}/api_gateway/settings/schema_validation",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutSettingSchemaValidationRequest",
 }) as any as S.Schema<PutSettingSchemaValidationRequest>;
@@ -3704,7 +3819,7 @@ export const PutSettingSchemaValidationResponse = /*@__PURE__*/ S.suspend(() =>
           "Settings object { validation_default_mitigation_action, validation_override_mitigation_action }",
         ),
       ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutSettingSchemaValidationResponse",
 }) as any as S.Schema<PutSettingSchemaValidationResponse>;
@@ -3735,13 +3850,15 @@ export const UpdateOperationLabelRequest = /*@__PURE__*/ S.suspend(() =>
     operationId: S.String.pipe(T.Label("operation_id")),
     managed: S.optional(OperationsLabelsUpdateRequestManagedList),
     user: S.optional(OperationsLabelsUpdateRequestUserList),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/zones/{zone_id}/api_gateway/operations/{operation_id}/labels",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/zones/{zone_id}/api_gateway/operations/{operation_id}/labels",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateOperationLabelRequest",
 }) as any as S.Schema<UpdateOperationLabelRequest>;
@@ -3813,7 +3930,7 @@ export const UpdateOperationLabelResponse = /*@__PURE__*/ S.suspend(() =>
     method: OperationsLabelsUpdateResponseMethod,
     operationId: S.String.pipe(T.Body("operation_id")),
     labels: S.optional(OperationsLabelsUpdateResponseLabelsList),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateOperationLabelResponse",
 }) as any as S.Schema<UpdateOperationLabelResponse>;

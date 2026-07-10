@@ -14,6 +14,26 @@ import * as Retry from "../retry.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
+/** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
+const KEY_DICTIONARY: Record<string, string> = {
+  accountId: "account_id",
+  anniversaryDate: "anniversary_date",
+  completedAfter: "completed_after",
+  completedBefore: "completed_before",
+  contentType: "content_type",
+  createdAfter: "created_after",
+  createdBefore: "created_before",
+  documentationUrl: "documentation_url",
+  fileType: "file_type",
+  messageTokens: "message_tokens",
+  perPage: "per_page",
+  quarterAnniversaryDate: "quarter_anniversary_date",
+  readableId: "readable_id",
+  requestType: "request_type",
+  sortBy: "sort_by",
+  sortOrder: "sort_order",
+};
+
 export class ScanConfigNotFound extends T.applyErrorMatchers(
   S.TaggedErrorClass<ScanConfigNotFound>()("ScanConfigNotFound", {
     code: S.Number,
@@ -141,13 +161,15 @@ export const BulkCreateThreatEventsRequest = /*@__PURE__*/ S.suspend(() =>
     data: ThreatEventsBulkCreateRequestDataList,
     datasetId: S.String,
     includeCreatedEvents: S.optional(S.Boolean),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/cloudforce-one/events/create/bulk",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/cloudforce-one/events/create/bulk",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "BulkCreateThreatEventsRequest",
 }) as any as S.Schema<BulkCreateThreatEventsRequest>;
@@ -201,7 +223,7 @@ export const BulkCreateThreatEventsResponse = /*@__PURE__*/ S.suspend(() =>
     queuedIndicatorsCount: S.Number,
     createBulkEventsRequestId: S.optional(S.String),
     createdEvents: S.optional(ThreatEventsBulkCreateResponseCreatedEventsList),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "BulkCreateThreatEventsResponse",
 }) as any as S.Schema<BulkCreateThreatEventsResponse>;
@@ -213,13 +235,15 @@ export interface CreateBinaryStorageRequest {
 export const CreateBinaryStorageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/cloudforce-one/binary",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/cloudforce-one/binary",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateBinaryStorageRequest",
 }) as any as S.Schema<CreateBinaryStorageRequest>;
@@ -237,7 +261,7 @@ export const CreateBinaryStorageResponse = /*@__PURE__*/ S.suspend(() =>
     md5: S.String,
     sha1: S.String,
     sha256: S.String,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateBinaryStorageResponse",
 }) as any as S.Schema<CreateBinaryStorageResponse>;
@@ -271,13 +295,15 @@ export const CreateRequestRequest = /*@__PURE__*/ S.suspend(() =>
     requestType: S.optional(S.String.pipe(T.Body("request_type"))),
     summary: S.optional(S.String),
     tlp: S.optional(RequestsCreateRequestTlp),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/cloudforce-one/requests/new",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/cloudforce-one/requests/new",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateRequestRequest",
 }) as any as S.Schema<CreateRequestRequest>;
@@ -336,7 +362,7 @@ export const CreateRequestResponse = /*@__PURE__*/ S.suspend(() =>
     readableId: S.optional(S.String.pipe(T.Body("readable_id"))),
     status: S.optional(RequestsCreateResponseStatus),
     tokens: S.optional(S.Number),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateRequestResponse",
 }) as any as S.Schema<CreateRequestResponse>;
@@ -357,13 +383,15 @@ export const CreateRequestAssetRequest = /*@__PURE__*/ S.suspend(() =>
     requestId: S.String.pipe(T.Label("request_id")),
     page: S.Number,
     perPage: S.Number.pipe(T.Body("per_page")),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/cloudforce-one/requests/{request_id}/asset",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/cloudforce-one/requests/{request_id}/asset",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateRequestAssetRequest",
 }) as any as S.Schema<CreateRequestAssetRequest>;
@@ -407,7 +435,7 @@ export const CreateRequestAssetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: RequestsAssetsCreateResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateRequestAssetResponse",
 }) as any as S.Schema<CreateRequestAssetResponse>;
@@ -425,13 +453,15 @@ export const CreateRequestMessageRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     requestId: S.String.pipe(T.Label("request_id")),
     content: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/cloudforce-one/requests/{request_id}/message/new",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/cloudforce-one/requests/{request_id}/message/new",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateRequestMessageRequest",
 }) as any as S.Schema<CreateRequestMessageRequest>;
@@ -459,7 +489,7 @@ export const CreateRequestMessageResponse = /*@__PURE__*/ S.suspend(() =>
     isFollowOnRequest: S.Boolean.pipe(T.Body("is_follow_on_request")),
     updated: S.String,
     created: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateRequestMessageResponse",
 }) as any as S.Schema<CreateRequestMessageResponse>;
@@ -495,13 +525,15 @@ export const CreateRequestPriorityRequest = /*@__PURE__*/ S.suspend(() =>
     priority: S.Number,
     requirement: S.String,
     tlp: RequestsPriorityCreateRequestTlp,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/cloudforce-one/requests/priority/new",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/cloudforce-one/requests/priority/new",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateRequestPriorityRequest",
 }) as any as S.Schema<CreateRequestPriorityRequest>;
@@ -544,7 +576,7 @@ export const CreateRequestPriorityResponse = /*@__PURE__*/ S.suspend(() =>
     requirement: S.String,
     tlp: RequestsPriorityCreateResponseTlp,
     updated: S.String,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateRequestPriorityResponse",
 }) as any as S.Schema<CreateRequestPriorityResponse>;
@@ -575,13 +607,15 @@ export const CreateScanConfigRequest = /*@__PURE__*/ S.suspend(() =>
     ips: ScansConfigCreateRequestIpsList,
     frequency: S.optional(S.Number),
     ports: S.optional(ScansConfigCreateRequestPortsList),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/cloudforce-one/scans/config",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/cloudforce-one/scans/config",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateScanConfigRequest",
 }) as any as S.Schema<CreateScanConfigRequest>;
@@ -615,7 +649,7 @@ export const CreateScanConfigResponse = /*@__PURE__*/ S.suspend(() =>
     frequency: S.Number,
     ips: ScansConfigCreateResponseIpsList,
     ports: ScansConfigCreateResponsePortsList,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateScanConfigResponse",
 }) as any as S.Schema<CreateScanConfigResponse>;
@@ -710,13 +744,15 @@ export const CreateThreatEventRequest = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(ThreatEventsCreateRequestTagsList),
     targetCountry: S.optional(S.String),
     targetIndustry: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/cloudforce-one/events/create",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/cloudforce-one/events/create",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateThreatEventRequest",
 }) as any as S.Schema<CreateThreatEventRequest>;
@@ -821,7 +857,7 @@ export const CreateThreatEventResponse = /*@__PURE__*/ S.suspend(() =>
     uuid: S.String,
     insight: S.optional(S.String),
     releasabilityId: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateThreatEventResponse",
 }) as any as S.Schema<CreateThreatEventResponse>;
@@ -855,13 +891,15 @@ export const CreateThreatEventCategoryRequest = /*@__PURE__*/ S.suspend(() =>
     mitreAttack: S.optional(ThreatEventsCategoriesCreateRequestMitreAttackList),
     mitreCapec: S.optional(ThreatEventsCategoriesCreateRequestMitreCapecList),
     shortname: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/cloudforce-one/events/categories/create",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/cloudforce-one/events/categories/create",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateThreatEventCategoryRequest",
 }) as any as S.Schema<CreateThreatEventCategoryRequest>;
@@ -897,7 +935,7 @@ export const CreateThreatEventCategoryResponse = /*@__PURE__*/ S.suspend(() =>
     ),
     mitreCapec: S.optional(ThreatEventsCategoriesCreateResponseMitreCapecList),
     shortname: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateThreatEventCategoryResponse",
 }) as any as S.Schema<CreateThreatEventCategoryResponse>;
@@ -915,13 +953,15 @@ export const CreateThreatEventDatasetRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     isPublic: S.Boolean,
     name: S.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/cloudforce-one/events/dataset/create",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/cloudforce-one/events/dataset/create",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateThreatEventDatasetRequest",
 }) as any as S.Schema<CreateThreatEventDatasetRequest>;
@@ -939,7 +979,7 @@ export const CreateThreatEventDatasetResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.String,
     uuid: S.String,
     deletedAt: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateThreatEventDatasetResponse",
 }) as any as S.Schema<CreateThreatEventDatasetResponse>;
@@ -961,13 +1001,15 @@ export const CreateThreatEventEventTagRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     eventId: S.String.pipe(T.Label("event_id")),
     tags: ThreatEventsEventTagsCreateRequestTagsList,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/cloudforce-one/events/event_tag/{event_id}/create",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/cloudforce-one/events/event_tag/{event_id}/create",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateThreatEventEventTagRequest",
 }) as any as S.Schema<CreateThreatEventEventTagRequest>;
@@ -979,7 +1021,7 @@ export interface CreateThreatEventEventTagResponse {
 export const CreateThreatEventEventTagResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     success: S.Boolean,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateThreatEventEventTagResponse",
 }) as any as S.Schema<CreateThreatEventEventTagResponse>;
@@ -1172,13 +1214,15 @@ export const CreateThreatEventTagRequest = /*@__PURE__*/ S.suspend(() =>
     originCountryTlp: S.optional(ThreatEventsTagsCreateRequestOriginCountryTlp),
     priority: S.optional(S.Number),
     sophisticationLevel: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/cloudforce-one/events/tags/create",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/cloudforce-one/events/tags/create",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateThreatEventTagRequest",
 }) as any as S.Schema<CreateThreatEventTagRequest>;
@@ -1375,7 +1419,7 @@ export const CreateThreatEventTagResponse = /*@__PURE__*/ S.suspend(() =>
     ),
     priority: S.optional(S.Number),
     sophisticationLevel: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateThreatEventTagResponse",
 }) as any as S.Schema<CreateThreatEventTagResponse>;
@@ -1393,20 +1437,22 @@ export const DeleteRequestAssetRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     requestId: S.String.pipe(T.Label("request_id")),
     assetId: S.String.pipe(T.Label("asset_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/cloudforce-one/requests/{request_id}/asset/{asset_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/cloudforce-one/requests/{request_id}/asset/{asset_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteRequestAssetRequest",
 }) as any as S.Schema<DeleteRequestAssetRequest>;
 
 export interface DeleteRequestAssetResponse {}
 export const DeleteRequestAssetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
+  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteRequestAssetResponse",
 }) as any as S.Schema<DeleteRequestAssetResponse>;
@@ -1423,20 +1469,22 @@ export const DeleteRequestMessageRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     requestId: S.String.pipe(T.Label("request_id")),
     messageId: S.Number.pipe(T.Label("message_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/cloudforce-one/requests/{request_id}/message/{message_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/cloudforce-one/requests/{request_id}/message/{message_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteRequestMessageRequest",
 }) as any as S.Schema<DeleteRequestMessageRequest>;
 
 export interface DeleteRequestMessageResponse {}
 export const DeleteRequestMessageResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
+  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteRequestMessageResponse",
 }) as any as S.Schema<DeleteRequestMessageResponse>;
@@ -1451,20 +1499,22 @@ export const DeleteRequestPriorityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     priorityId: S.String.pipe(T.Label("priority_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/cloudforce-one/requests/priority/{priority_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/cloudforce-one/requests/priority/{priority_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteRequestPriorityRequest",
 }) as any as S.Schema<DeleteRequestPriorityRequest>;
 
 export interface DeleteRequestPriorityResponse {}
 export const DeleteRequestPriorityResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
+  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteRequestPriorityResponse",
 }) as any as S.Schema<DeleteRequestPriorityResponse>;
@@ -1479,13 +1529,15 @@ export const DeleteScanConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     configId: S.String.pipe(T.Label("config_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/cloudforce-one/scans/config/{config_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/cloudforce-one/scans/config/{config_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteScanConfigRequest",
 }) as any as S.Schema<DeleteScanConfigRequest>;
@@ -1497,7 +1549,7 @@ export interface DeleteScanConfigResponse {
 export const DeleteScanConfigResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteScanConfigResponse",
 }) as any as S.Schema<DeleteScanConfigResponse>;
@@ -1512,13 +1564,15 @@ export const DeleteThreatEventCategoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     categoryId: S.String.pipe(T.Label("category_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/cloudforce-one/events/categories/{category_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/cloudforce-one/events/categories/{category_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteThreatEventCategoryRequest",
 }) as any as S.Schema<DeleteThreatEventCategoryRequest>;
@@ -1530,7 +1584,7 @@ export interface DeleteThreatEventCategoryResponse {
 export const DeleteThreatEventCategoryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uuid: S.String,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteThreatEventCategoryResponse",
 }) as any as S.Schema<DeleteThreatEventCategoryResponse>;
@@ -1545,13 +1599,15 @@ export const DeleteThreatEventEventTagRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     eventId: S.String.pipe(T.Label("event_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/cloudforce-one/events/event_tag/{event_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/cloudforce-one/events/event_tag/{event_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteThreatEventEventTagRequest",
 }) as any as S.Schema<DeleteThreatEventEventTagRequest>;
@@ -1563,7 +1619,7 @@ export interface DeleteThreatEventEventTagResponse {
 export const DeleteThreatEventEventTagResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     success: S.Boolean,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteThreatEventEventTagResponse",
 }) as any as S.Schema<DeleteThreatEventEventTagResponse>;
@@ -1578,13 +1634,15 @@ export const DeleteThreatEventRelateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     eventId: S.String.pipe(T.Label("event_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/cloudforce-one/events/relate/{event_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/cloudforce-one/events/relate/{event_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteThreatEventRelateRequest",
 }) as any as S.Schema<DeleteThreatEventRelateRequest>;
@@ -1596,7 +1654,7 @@ export interface DeleteThreatEventRelateResponse {
 export const DeleteThreatEventRelateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     success: S.Boolean,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteThreatEventRelateResponse",
 }) as any as S.Schema<DeleteThreatEventRelateResponse>;
@@ -1611,20 +1669,22 @@ export const GetBinaryStorageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     hash: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/cloudforce-one/binary/{hash}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/cloudforce-one/binary/{hash}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetBinaryStorageRequest",
 }) as any as S.Schema<GetBinaryStorageRequest>;
 
 export interface GetBinaryStorageResponse {}
 export const GetBinaryStorageResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
+  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetBinaryStorageResponse",
 }) as any as S.Schema<GetBinaryStorageResponse>;
@@ -1639,13 +1699,15 @@ export const GetRequestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     requestId: S.String.pipe(T.Label("request_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/cloudforce-one/requests/{request_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/cloudforce-one/requests/{request_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetRequestRequest",
 }) as any as S.Schema<GetRequestRequest>;
@@ -1704,7 +1766,7 @@ export const GetRequestResponse = /*@__PURE__*/ S.suspend(() =>
     readableId: S.optional(S.String.pipe(T.Body("readable_id"))),
     status: S.optional(RequestsGetResponseStatus),
     tokens: S.optional(S.Number),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetRequestResponse",
 }) as any as S.Schema<GetRequestResponse>;
@@ -1742,13 +1804,15 @@ export const GetRequestMessageRequest = /*@__PURE__*/ S.suspend(() =>
     sortOrder: S.optional(
       RequestsMessageGetRequestSortOrder.pipe(T.Body("sort_order")),
     ),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/cloudforce-one/requests/{request_id}/message",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/cloudforce-one/requests/{request_id}/message",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetRequestMessageRequest",
 }) as any as S.Schema<GetRequestMessageRequest>;
@@ -1795,7 +1859,7 @@ export const GetRequestMessageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: RequestsMessageGetResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetRequestMessageResponse",
 }) as any as S.Schema<GetRequestMessageResponse>;
@@ -1810,13 +1874,15 @@ export const GetRequestPriorityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     priorityId: S.String.pipe(T.Label("priority_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/cloudforce-one/requests/priority/{priority_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/cloudforce-one/requests/priority/{priority_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetRequestPriorityRequest",
 }) as any as S.Schema<GetRequestPriorityRequest>;
@@ -1875,7 +1941,7 @@ export const GetRequestPriorityResponse = /*@__PURE__*/ S.suspend(() =>
     readableId: S.optional(S.String.pipe(T.Body("readable_id"))),
     status: S.optional(RequestsPriorityGetResponseStatus),
     tokens: S.optional(S.Number),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetRequestPriorityResponse",
 }) as any as S.Schema<GetRequestPriorityResponse>;
@@ -1890,13 +1956,15 @@ export const GetScanResultRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     configId: S.String.pipe(T.Label("config_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/cloudforce-one/scans/results/{config_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/cloudforce-one/scans/results/{config_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetScanResultRequest",
 }) as any as S.Schema<GetScanResultRequest>;
@@ -1928,7 +1996,7 @@ export interface GetScanResultResponse {
 export const GetScanResultResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     "1111_": ScansResultsGetResponse1111List.pipe(T.Body('"1.1.1.1"')),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetScanResultResponse",
 }) as any as S.Schema<GetScanResultResponse>;
@@ -1943,13 +2011,15 @@ export const GetThreatEventRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     eventId: S.String.pipe(T.Label("event_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/cloudforce-one/events/{event_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/cloudforce-one/events/{event_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetThreatEventRequest",
 }) as any as S.Schema<GetThreatEventRequest>;
@@ -2052,7 +2122,7 @@ export const GetThreatEventResponse = /*@__PURE__*/ S.suspend(() =>
     uuid: S.String,
     insight: S.optional(S.String),
     releasabilityId: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetThreatEventResponse",
 }) as any as S.Schema<GetThreatEventResponse>;
@@ -2067,13 +2137,15 @@ export const GetThreatEventCategoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     categoryId: S.String.pipe(T.Label("category_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/cloudforce-one/events/categories/{category_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/cloudforce-one/events/categories/{category_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetThreatEventCategoryRequest",
 }) as any as S.Schema<GetThreatEventCategoryRequest>;
@@ -2107,7 +2179,7 @@ export const GetThreatEventCategoryResponse = /*@__PURE__*/ S.suspend(() =>
     mitreAttack: S.optional(ThreatEventsCategoriesGetResponseMitreAttackList),
     mitreCapec: S.optional(ThreatEventsCategoriesGetResponseMitreCapecList),
     shortname: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetThreatEventCategoryResponse",
 }) as any as S.Schema<GetThreatEventCategoryResponse>;
@@ -2122,13 +2194,15 @@ export const GetThreatEventDatasetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     datasetId: S.String.pipe(T.Label("dataset_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetThreatEventDatasetRequest",
 }) as any as S.Schema<GetThreatEventDatasetRequest>;
@@ -2146,7 +2220,7 @@ export const GetThreatEventDatasetResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.String,
     uuid: S.String,
     deletedAt: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetThreatEventDatasetResponse",
 }) as any as S.Schema<GetThreatEventDatasetResponse>;
@@ -2164,13 +2238,15 @@ export const GetThreatEventRawRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     eventId: S.String.pipe(T.Label("event_id")),
     rawId: S.String.pipe(T.Label("raw_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/cloudforce-one/events/{event_id}/raw/{raw_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/cloudforce-one/events/{event_id}/raw/{raw_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetThreatEventRawRequest",
 }) as any as S.Schema<GetThreatEventRawRequest>;
@@ -2192,7 +2268,7 @@ export const GetThreatEventRawResponse = /*@__PURE__*/ S.suspend(() =>
     data: S.Unknown,
     source: S.String,
     tlp: S.String,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetThreatEventRawResponse",
 }) as any as S.Schema<GetThreatEventRawResponse>;
@@ -2204,13 +2280,15 @@ export interface ListScanConfigsRequest {
 export const ListScanConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/cloudforce-one/scans/config",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/cloudforce-one/scans/config",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListScanConfigsRequest",
 }) as any as S.Schema<ListScanConfigsRequest>;
@@ -2263,7 +2341,7 @@ export const ListScanConfigsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: ScansConfigListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListScanConfigsResponse",
 }) as any as S.Schema<ListScanConfigsResponse>;
@@ -2286,13 +2364,15 @@ export const ListThreatEventAttackersRequest = /*@__PURE__*/ S.suspend(() =>
     datasetIds: S.optional(
       ThreatEventsAttackersListRequestDatasetIdsList.pipe(T.Query()),
     ),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/cloudforce-one/events/attackers",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/cloudforce-one/events/attackers",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListThreatEventAttackersRequest",
 }) as any as S.Schema<ListThreatEventAttackersRequest>;
@@ -2318,7 +2398,7 @@ export const ListThreatEventAttackersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: ThreatEventsAttackersListResponseItems,
     type: S.String,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListThreatEventAttackersResponse",
 }) as any as S.Schema<ListThreatEventAttackersResponse>;
@@ -2341,13 +2421,15 @@ export const ListThreatEventCategoriesRequest = /*@__PURE__*/ S.suspend(() =>
     datasetIds: S.optional(
       ThreatEventsCategoriesListRequestDatasetIdsList.pipe(T.Query()),
     ),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/cloudforce-one/events/categories",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/cloudforce-one/events/categories",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListThreatEventCategoriesRequest",
 }) as any as S.Schema<ListThreatEventCategoriesRequest>;
@@ -2381,7 +2463,7 @@ export const ListThreatEventCategoriesResponse = /*@__PURE__*/ S.suspend(() =>
     mitreAttack: S.optional(ThreatEventsCategoriesListResponseMitreAttackList),
     mitreCapec: S.optional(ThreatEventsCategoriesListResponseMitreCapecList),
     shortname: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListThreatEventCategoriesResponse",
 }) as any as S.Schema<ListThreatEventCategoriesResponse>;
@@ -2393,13 +2475,15 @@ export interface ListThreatEventCountriesRequest {
 export const ListThreatEventCountriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/cloudforce-one/events/countries",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/cloudforce-one/events/countries",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListThreatEventCountriesRequest",
 }) as any as S.Schema<ListThreatEventCountriesRequest>;
@@ -2434,7 +2518,7 @@ export const ListThreatEventCountriesResponse = /*@__PURE__*/ S.suspend(() =>
     result: S.optional(
       ThreatEventsCountriesListResultList.pipe(T.EnvelopePayload()),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListThreatEventCountriesResponse",
 }) as any as S.Schema<ListThreatEventCountriesResponse>;
@@ -2449,13 +2533,15 @@ export const ListThreatEventDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     includeDeleted: S.optional(S.Boolean.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/cloudforce-one/events/dataset",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/cloudforce-one/events/dataset",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListThreatEventDatasetsRequest",
 }) as any as S.Schema<ListThreatEventDatasetsRequest>;
@@ -2473,7 +2559,7 @@ export const ListThreatEventDatasetsResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.String,
     uuid: S.String,
     deletedAt: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListThreatEventDatasetsResponse",
 }) as any as S.Schema<ListThreatEventDatasetsResponse>;
@@ -2486,13 +2572,15 @@ export const ListThreatEventIndicatorTypesRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/accounts/{account_id}/cloudforce-one/events/indicatorTypes",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "GET",
+          uri: "/accounts/{account_id}/cloudforce-one/events/indicatorTypes",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListThreatEventIndicatorTypesRequest",
 }) as any as S.Schema<ListThreatEventIndicatorTypesRequest>;
@@ -2519,7 +2607,7 @@ export const ListThreatEventIndicatorTypesResponse = /*@__PURE__*/ S.suspend(
     S.Struct({
       items: ThreatEventsIndicatorTypesListResponseItems,
       type: S.String,
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListThreatEventIndicatorTypesResponse",
 }) as any as S.Schema<ListThreatEventIndicatorTypesResponse>;
@@ -2579,13 +2667,15 @@ export const ListThreatEventsRequest = /*@__PURE__*/ S.suspend(() =>
     pageSize: S.optional(S.Number.pipe(T.Query())),
     search: S.optional(ThreatEventsListRequestSearchList.pipe(T.Query())),
     source: S.optional(ThreatEventsListRequestSource.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/cloudforce-one/events",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/cloudforce-one/events",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListThreatEventsRequest",
 }) as any as S.Schema<ListThreatEventsRequest>;
@@ -2688,7 +2778,7 @@ export const ListThreatEventsResponse = /*@__PURE__*/ S.suspend(() =>
     uuid: S.String,
     insight: S.optional(S.String),
     releasabilityId: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListThreatEventsResponse",
 }) as any as S.Schema<ListThreatEventsResponse>;
@@ -2712,13 +2802,15 @@ export const ListThreatEventTargetIndustriesRequest = /*@__PURE__*/ S.suspend(
       datasetIds: S.optional(
         ThreatEventsTargetIndustriesListRequestDatasetIdsList.pipe(T.Query()),
       ),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/accounts/{account_id}/cloudforce-one/events/targetIndustries",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "GET",
+          uri: "/accounts/{account_id}/cloudforce-one/events/targetIndustries",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListThreatEventTargetIndustriesRequest",
 }) as any as S.Schema<ListThreatEventTargetIndustriesRequest>;
@@ -2745,7 +2837,7 @@ export const ListThreatEventTargetIndustriesResponse = /*@__PURE__*/ S.suspend(
     S.Struct({
       items: ThreatEventsTargetIndustriesListResponseItems,
       type: S.String,
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListThreatEventTargetIndustriesResponse",
 }) as any as S.Schema<ListThreatEventTargetIndustriesResponse>;
@@ -2779,13 +2871,15 @@ export const PatchScanConfigRequest = /*@__PURE__*/ S.suspend(() =>
     frequency: S.optional(S.Number),
     ips: S.optional(ScansConfigEditRequestIpsList),
     ports: S.optional(ScansConfigEditRequestPortsList),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/accounts/{account_id}/cloudforce-one/scans/config/{config_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/accounts/{account_id}/cloudforce-one/scans/config/{config_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchScanConfigRequest",
 }) as any as S.Schema<PatchScanConfigRequest>;
@@ -2819,7 +2913,7 @@ export const PatchScanConfigResponse = /*@__PURE__*/ S.suspend(() =>
     frequency: S.Number,
     ips: ScansConfigEditResponseIpsList,
     ports: ScansConfigEditResponsePortsList,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchScanConfigResponse",
 }) as any as S.Schema<PatchScanConfigResponse>;
@@ -2886,13 +2980,15 @@ export const PatchThreatEventRequest = /*@__PURE__*/ S.suspend(() =>
     targetCountry: S.optional(S.String),
     targetIndustry: S.optional(S.String),
     tlp: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/accounts/{account_id}/cloudforce-one/events/{event_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/accounts/{account_id}/cloudforce-one/events/{event_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchThreatEventRequest",
 }) as any as S.Schema<PatchThreatEventRequest>;
@@ -2995,7 +3091,7 @@ export const PatchThreatEventResponse = /*@__PURE__*/ S.suspend(() =>
     uuid: S.String,
     insight: S.optional(S.String),
     releasabilityId: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchThreatEventResponse",
 }) as any as S.Schema<PatchThreatEventResponse>;
@@ -3032,13 +3128,15 @@ export const PatchThreatEventCategoryRequest = /*@__PURE__*/ S.suspend(() =>
     mitreCapec: S.optional(ThreatEventsCategoriesEditRequestMitreCapecList),
     name: S.optional(S.String),
     shortname: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/accounts/{account_id}/cloudforce-one/events/categories/{category_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/accounts/{account_id}/cloudforce-one/events/categories/{category_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchThreatEventCategoryRequest",
 }) as any as S.Schema<PatchThreatEventCategoryRequest>;
@@ -3072,7 +3170,7 @@ export const PatchThreatEventCategoryResponse = /*@__PURE__*/ S.suspend(() =>
     mitreAttack: S.optional(ThreatEventsCategoriesEditResponseMitreAttackList),
     mitreCapec: S.optional(ThreatEventsCategoriesEditResponseMitreCapecList),
     shortname: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchThreatEventCategoryResponse",
 }) as any as S.Schema<PatchThreatEventCategoryResponse>;
@@ -3093,13 +3191,15 @@ export const PatchThreatEventDatasetRequest = /*@__PURE__*/ S.suspend(() =>
     datasetId: S.String.pipe(T.Label("dataset_id")),
     isPublic: S.Boolean,
     name: S.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchThreatEventDatasetRequest",
 }) as any as S.Schema<PatchThreatEventDatasetRequest>;
@@ -3117,7 +3217,7 @@ export const PatchThreatEventDatasetResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.String,
     uuid: S.String,
     deletedAt: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchThreatEventDatasetResponse",
 }) as any as S.Schema<PatchThreatEventDatasetResponse>;
@@ -3141,13 +3241,15 @@ export const PatchThreatEventRawRequest = /*@__PURE__*/ S.suspend(() =>
     data: S.optional(S.Unknown),
     source: S.optional(S.String),
     tlp: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/accounts/{account_id}/cloudforce-one/events/{event_id}/raw/{raw_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/accounts/{account_id}/cloudforce-one/events/{event_id}/raw/{raw_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchThreatEventRawRequest",
 }) as any as S.Schema<PatchThreatEventRawRequest>;
@@ -3161,7 +3263,7 @@ export const PatchThreatEventRawResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     data: S.Unknown,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchThreatEventRawResponse",
 }) as any as S.Schema<PatchThreatEventRawResponse>;
@@ -3173,13 +3275,15 @@ export interface QuotaRequestPriorityRequest {
 export const QuotaRequestPriorityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/cloudforce-one/requests/priority/quota",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/cloudforce-one/requests/priority/quota",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "QuotaRequestPriorityRequest",
 }) as any as S.Schema<QuotaRequestPriorityRequest>;
@@ -3203,7 +3307,7 @@ export const QuotaRequestPriorityResponse = /*@__PURE__*/ S.suspend(() =>
     ),
     quota: S.optional(S.Number),
     remaining: S.optional(S.Number),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "QuotaRequestPriorityResponse",
 }) as any as S.Schema<QuotaRequestPriorityResponse>;
@@ -3221,13 +3325,15 @@ export const RawThreatEventDatasetRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     datasetId: S.String.pipe(T.Label("dataset_id")),
     eventId: S.String.pipe(T.Label("event_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/cloudforce-one/events/raw/{dataset_id}/{event_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/cloudforce-one/events/raw/{dataset_id}/{event_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "RawThreatEventDatasetRequest",
 }) as any as S.Schema<RawThreatEventDatasetRequest>;
@@ -3249,7 +3355,7 @@ export const RawThreatEventDatasetResponse = /*@__PURE__*/ S.suspend(() =>
     data: S.String,
     source: S.String,
     tlp: S.String,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "RawThreatEventDatasetResponse",
 }) as any as S.Schema<RawThreatEventDatasetResponse>;
@@ -3267,13 +3373,15 @@ export const RequestsAssetsGetRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     requestId: S.String.pipe(T.Label("request_id")),
     assetId: S.String.pipe(T.Label("asset_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/cloudforce-one/requests/{request_id}/asset/{asset_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/cloudforce-one/requests/{request_id}/asset/{asset_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "RequestsAssetsGetRequest",
 }) as any as S.Schema<RequestsAssetsGetRequest>;
@@ -3314,7 +3422,7 @@ export interface RequestsAssetsGetResponse {
 export const RequestsAssetsGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(RequestsAssetsGetResultList.pipe(T.EnvelopePayload())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "RequestsAssetsGetResponse",
 }) as any as S.Schema<RequestsAssetsGetResponse>;
@@ -3326,13 +3434,15 @@ export interface RequestsConstantsRequest {
 export const RequestsConstantsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/cloudforce-one/requests/constants",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/cloudforce-one/requests/constants",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "RequestsConstantsRequest",
 }) as any as S.Schema<RequestsConstantsRequest>;
@@ -3387,7 +3497,7 @@ export const RequestsConstantsResponse = /*@__PURE__*/ S.suspend(() =>
     priority: S.optional(RequestsConstantsResponsePriorityList),
     status: S.optional(RequestsConstantsResponseStatusList),
     tlp: S.optional(RequestsConstantsResponseTlpList),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "RequestsConstantsResponse",
 }) as any as S.Schema<RequestsConstantsResponse>;
@@ -3402,20 +3512,22 @@ export const RequestsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     requestId: S.String.pipe(T.Label("request_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/cloudforce-one/requests/{request_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/cloudforce-one/requests/{request_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "RequestsDeleteRequest",
 }) as any as S.Schema<RequestsDeleteRequest>;
 
 export interface RequestsDeleteResponse {}
 export const RequestsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
+  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "RequestsDeleteResponse",
 }) as any as S.Schema<RequestsDeleteResponse>;
@@ -3469,13 +3581,15 @@ export const RequestsListRequest = /*@__PURE__*/ S.suspend(() =>
       RequestsListRequestSortOrder.pipe(T.Body("sort_order")),
     ),
     status: S.optional(RequestsListRequestStatus),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/cloudforce-one/requests",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/cloudforce-one/requests",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "RequestsListRequest",
 }) as any as S.Schema<RequestsListRequest>;
@@ -3557,7 +3671,7 @@ export interface RequestsListResponse {
 export const RequestsListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(RequestsListResultList.pipe(T.EnvelopePayload())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "RequestsListResponse",
 }) as any as S.Schema<RequestsListResponse>;
@@ -3569,13 +3683,15 @@ export interface RequestsQuotaRequest {
 export const RequestsQuotaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/cloudforce-one/requests/quota",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/cloudforce-one/requests/quota",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "RequestsQuotaRequest",
 }) as any as S.Schema<RequestsQuotaRequest>;
@@ -3599,7 +3715,7 @@ export const RequestsQuotaResponse = /*@__PURE__*/ S.suspend(() =>
     ),
     quota: S.optional(S.Number),
     remaining: S.optional(S.Number),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "RequestsQuotaResponse",
 }) as any as S.Schema<RequestsQuotaResponse>;
@@ -3611,13 +3727,15 @@ export interface RequestsTypesRequest {
 export const RequestsTypesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/cloudforce-one/requests/types",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/cloudforce-one/requests/types",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "RequestsTypesRequest",
 }) as any as S.Schema<RequestsTypesRequest>;
@@ -3629,7 +3747,7 @@ export interface RequestsTypesResponse {
 export const RequestsTypesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "RequestsTypesResponse",
 }) as any as S.Schema<RequestsTypesResponse>;
@@ -3666,13 +3784,15 @@ export const RequestsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     requestType: S.optional(S.String.pipe(T.Body("request_type"))),
     summary: S.optional(S.String),
     tlp: S.optional(RequestsUpdateRequestTlp),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/cloudforce-one/requests/{request_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/cloudforce-one/requests/{request_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "RequestsUpdateRequest",
 }) as any as S.Schema<RequestsUpdateRequest>;
@@ -3731,7 +3851,7 @@ export const RequestsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     readableId: S.optional(S.String.pipe(T.Body("readable_id"))),
     status: S.optional(RequestsUpdateResponseStatus),
     tokens: S.optional(S.Number),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "RequestsUpdateResponse",
 }) as any as S.Schema<RequestsUpdateResponse>;
@@ -3752,13 +3872,15 @@ export const UpdateRequestAssetRequest = /*@__PURE__*/ S.suspend(() =>
     requestId: S.String.pipe(T.Label("request_id")),
     assetId: S.String.pipe(T.Label("asset_id")),
     source: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/cloudforce-one/requests/{request_id}/asset/{asset_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/cloudforce-one/requests/{request_id}/asset/{asset_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateRequestAssetRequest",
 }) as any as S.Schema<UpdateRequestAssetRequest>;
@@ -3783,7 +3905,7 @@ export const UpdateRequestAssetResponse = /*@__PURE__*/ S.suspend(() =>
     created: S.optional(S.String),
     description: S.optional(S.String),
     fileType: S.optional(S.String.pipe(T.Body("file_type"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateRequestAssetResponse",
 }) as any as S.Schema<UpdateRequestAssetResponse>;
@@ -3803,13 +3925,15 @@ export const UpdateRequestMessageRequest = /*@__PURE__*/ S.suspend(() =>
     requestId: S.String.pipe(T.Label("request_id")),
     messageId: S.Number.pipe(T.Label("message_id")),
     content: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/cloudforce-one/requests/{request_id}/message/{message_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/cloudforce-one/requests/{request_id}/message/{message_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateRequestMessageRequest",
 }) as any as S.Schema<UpdateRequestMessageRequest>;
@@ -3837,7 +3961,7 @@ export const UpdateRequestMessageResponse = /*@__PURE__*/ S.suspend(() =>
     isFollowOnRequest: S.Boolean.pipe(T.Body("is_follow_on_request")),
     updated: S.String,
     created: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateRequestMessageResponse",
 }) as any as S.Schema<UpdateRequestMessageResponse>;
@@ -3876,13 +4000,15 @@ export const UpdateRequestPriorityRequest = /*@__PURE__*/ S.suspend(() =>
     priority: S.Number,
     requirement: S.String,
     tlp: RequestsPriorityUpdateRequestTlp,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/cloudforce-one/requests/priority/{priority_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/cloudforce-one/requests/priority/{priority_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateRequestPriorityRequest",
 }) as any as S.Schema<UpdateRequestPriorityRequest>;
@@ -3941,7 +4067,7 @@ export const UpdateRequestPriorityResponse = /*@__PURE__*/ S.suspend(() =>
     readableId: S.optional(S.String.pipe(T.Body("readable_id"))),
     status: S.optional(RequestsPriorityUpdateResponseStatus),
     tokens: S.optional(S.Number),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateRequestPriorityResponse",
 }) as any as S.Schema<UpdateRequestPriorityResponse>;

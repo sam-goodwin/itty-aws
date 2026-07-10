@@ -1,0 +1,11 @@
+{
+  "browser": "Browser",
+  "customAi": "custom_ai",
+  "jobId": "job_id",
+  "jsonSchema": "json_schema",
+  "protocolVersion": "Protocol-Version",
+  "responseFormat": "response_format",
+  "userAgent": "User-Agent",
+  "v8Version": "V8-Version",
+  "webKitVersion": "WebKit-Version"
+}

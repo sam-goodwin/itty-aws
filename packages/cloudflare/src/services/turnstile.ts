@@ -14,6 +14,19 @@ import * as Retry from "../retry.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
+/** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
+const KEY_DICTIONARY: Record<string, string> = {
+  botFightMode: "bot_fight_mode",
+  clearanceLevel: "clearance_level",
+  createdOn: "created_on",
+  ephemeralId: "ephemeral_id",
+  invalidateImmediately: "invalidate_immediately",
+  modifiedOn: "modified_on",
+  perPage: "per_page",
+  resultInfo: "result_info",
+  totalCount: "total_count",
+};
+
 export class Forbidden extends T.applyErrorMatchers(
   S.TaggedErrorClass<Forbidden>()("Forbidden", {
     code: S.Number,
@@ -110,13 +123,15 @@ export const CreateWidgetRequest = /*@__PURE__*/ S.suspend(() =>
     ephemeralId: S.optional(S.Boolean.pipe(T.Body("ephemeral_id"))),
     offlabel: S.optional(S.Boolean),
     region: S.optional(WidgetsCreateRequestRegion),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/challenges/widgets",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/challenges/widgets",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateWidgetRequest",
 }) as any as S.Schema<CreateWidgetRequest>;
@@ -186,7 +201,7 @@ export const CreateWidgetResponse = /*@__PURE__*/ S.suspend(() =>
     region: WidgetsCreateResponseRegion,
     secret: S.String,
     sitekey: S.String,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateWidgetResponse",
 }) as any as S.Schema<CreateWidgetResponse>;
@@ -201,13 +216,15 @@ export const DeleteWidgetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     sitekey: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/challenges/widgets/{sitekey}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/challenges/widgets/{sitekey}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteWidgetRequest",
 }) as any as S.Schema<DeleteWidgetRequest>;
@@ -277,7 +294,7 @@ export const DeleteWidgetResponse = /*@__PURE__*/ S.suspend(() =>
     region: WidgetsDeleteResponseRegion,
     secret: S.String,
     sitekey: S.String,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteWidgetResponse",
 }) as any as S.Schema<DeleteWidgetResponse>;
@@ -292,13 +309,15 @@ export const GetWidgetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     sitekey: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/challenges/widgets/{sitekey}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/challenges/widgets/{sitekey}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetWidgetRequest",
 }) as any as S.Schema<GetWidgetRequest>;
@@ -368,7 +387,7 @@ export const GetWidgetResponse = /*@__PURE__*/ S.suspend(() =>
     region: WidgetsGetResponseRegion,
     secret: S.String,
     sitekey: S.String,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetWidgetResponse",
 }) as any as S.Schema<GetWidgetResponse>;
@@ -401,13 +420,15 @@ export const ListWidgetsRequest = /*@__PURE__*/ S.suspend(() =>
     order: S.optional(WidgetsListRequestOrder.pipe(T.Query())),
     page: S.optional(S.Number.pipe(T.Query())),
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/challenges/widgets",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/challenges/widgets",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListWidgetsRequest",
 }) as any as S.Schema<ListWidgetsRequest>;
@@ -493,7 +514,7 @@ export const ListWidgetsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: WidgetsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListWidgetsResponse",
 }) as any as S.Schema<ListWidgetsResponse>;
@@ -513,13 +534,15 @@ export const RotateSecretWidgetRequest = /*@__PURE__*/ S.suspend(() =>
     invalidateImmediately: S.optional(
       S.Boolean.pipe(T.Body("invalidate_immediately")),
     ),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/challenges/widgets/{sitekey}/rotate_secret",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/challenges/widgets/{sitekey}/rotate_secret",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "RotateSecretWidgetRequest",
 }) as any as S.Schema<RotateSecretWidgetRequest>;
@@ -592,7 +615,7 @@ export const RotateSecretWidgetResponse = /*@__PURE__*/ S.suspend(() =>
     region: WidgetsRotateSecretResponseRegion,
     secret: S.String,
     sitekey: S.String,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "RotateSecretWidgetResponse",
 }) as any as S.Schema<RotateSecretWidgetResponse>;
@@ -655,13 +678,15 @@ export const UpdateWidgetRequest = /*@__PURE__*/ S.suspend(() =>
     ephemeralId: S.optional(S.Boolean.pipe(T.Body("ephemeral_id"))),
     offlabel: S.optional(S.Boolean),
     region: S.optional(WidgetsUpdateRequestRegion),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/challenges/widgets/{sitekey}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/challenges/widgets/{sitekey}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateWidgetRequest",
 }) as any as S.Schema<UpdateWidgetRequest>;
@@ -731,7 +756,7 @@ export const UpdateWidgetResponse = /*@__PURE__*/ S.suspend(() =>
     region: WidgetsUpdateResponseRegion,
     secret: S.String,
     sitekey: S.String,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateWidgetResponse",
 }) as any as S.Schema<UpdateWidgetResponse>;

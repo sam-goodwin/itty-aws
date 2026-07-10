@@ -14,6 +14,18 @@ import * as Retry from "../retry.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
+/** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
+const KEY_DICTIONARY: Record<string, string> = {
+  creationDate: "creation_date",
+  customMetadata: "custom_metadata",
+  httpMetadata: "http_metadata",
+  lastModified: "last_modified",
+  perPage: "per_page",
+  queueId: "queue",
+  resultInfo: "result_info",
+  storageClass: "storage_class",
+};
+
 export class BucketAlreadyExists extends T.applyErrorMatchers(
   S.TaggedErrorClass<BucketAlreadyExists>()("BucketAlreadyExists", {
     code: S.Number,
@@ -160,13 +172,15 @@ export interface AbortAllSuperSlurperJobRequest {
 export const AbortAllSuperSlurperJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/slurper/jobs/abortAll",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/slurper/jobs/abortAll",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "AbortAllSuperSlurperJobRequest",
 }) as any as S.Schema<AbortAllSuperSlurperJobRequest>;
@@ -178,7 +192,7 @@ export interface AbortAllSuperSlurperJobResponse {
 export const AbortAllSuperSlurperJobResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(S.String.pipe(T.EnvelopePayload())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "AbortAllSuperSlurperJobResponse",
 }) as any as S.Schema<AbortAllSuperSlurperJobResponse>;
@@ -191,13 +205,15 @@ export const AbortSuperSlurperJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     jobId: S.String.pipe(T.Label("job_id")),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/slurper/jobs/{job_id}/abort",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/slurper/jobs/{job_id}/abort",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "AbortSuperSlurperJobRequest",
 }) as any as S.Schema<AbortSuperSlurperJobRequest>;
@@ -209,7 +225,7 @@ export interface AbortSuperSlurperJobResponse {
 export const AbortSuperSlurperJobResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(S.String.pipe(T.EnvelopePayload())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "AbortSuperSlurperJobResponse",
 }) as any as S.Schema<AbortSuperSlurperJobResponse>;
@@ -257,13 +273,15 @@ export const CreateBucketRequest = /*@__PURE__*/ S.suspend(() =>
     name: S.String,
     locationHint: S.optional(BucketsCreateRequestLocationHint),
     storageClass: S.optional(BucketsCreateRequestStorageClass),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/r2/buckets",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/r2/buckets",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateBucketRequest",
 }) as any as S.Schema<CreateBucketRequest>;
@@ -310,7 +328,7 @@ export const CreateBucketResponse = /*@__PURE__*/ S.suspend(() =>
     storageClass: S.optional(
       BucketsCreateResponseStorageClass.pipe(T.Body("storage_class")),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateBucketResponse",
 }) as any as S.Schema<CreateBucketResponse>;
@@ -369,13 +387,15 @@ export const CreateBucketDomainCustomRequest = /*@__PURE__*/ S.suspend(() =>
     zoneId: S.String,
     ciphers: S.optional(BucketsDomainsCustomCreateRequestCiphersList),
     minTLS: S.optional(BucketsDomainsCustomCreateRequestMinTLS),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/r2/buckets/{bucket_name}/domains/custom",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/r2/buckets/{bucket_name}/domains/custom",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateBucketDomainCustomRequest",
 }) as any as S.Schema<CreateBucketDomainCustomRequest>;
@@ -414,7 +434,7 @@ export const CreateBucketDomainCustomResponse = /*@__PURE__*/ S.suspend(() =>
     zoneId: S.String,
     ciphers: S.optional(BucketsDomainsCustomCreateResponseCiphersList),
     minTLS: S.optional(BucketsDomainsCustomCreateResponseMinTLS),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateBucketDomainCustomResponse",
 }) as any as S.Schema<CreateBucketDomainCustomResponse>;
@@ -497,13 +517,15 @@ export const CreateSuperSlurperJobRequest = /*@__PURE__*/ S.suspend(() =>
     overwrite: S.optional(S.Boolean),
     source: S.optional(SuperSlurperJobsCreateRequestSource),
     target: S.optional(SuperSlurperJobsCreateRequestTarget),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/slurper/jobs",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/slurper/jobs",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateSuperSlurperJobRequest",
 }) as any as S.Schema<CreateSuperSlurperJobRequest>;
@@ -515,7 +537,7 @@ export interface CreateSuperSlurperJobResponse {
 export const CreateSuperSlurperJobResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateSuperSlurperJobResponse",
 }) as any as S.Schema<CreateSuperSlurperJobResponse>;
@@ -566,13 +588,15 @@ export const CreateTemporaryCredentialRequest = /*@__PURE__*/ S.suspend(() =>
     ttlSeconds: S.Number,
     objects: S.optional(TemporaryCredentialsCreateRequestObjectsList),
     prefixes: S.optional(TemporaryCredentialsCreateRequestPrefixesList),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/r2/temp-access-credentials",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/r2/temp-access-credentials",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateTemporaryCredentialRequest",
 }) as any as S.Schema<CreateTemporaryCredentialRequest>;
@@ -591,7 +615,7 @@ export const CreateTemporaryCredentialResponse = /*@__PURE__*/ S.suspend(() =>
     accessKeyId: S.optional(S.String),
     secretAccessKey: S.optional(S.String),
     sessionToken: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateTemporaryCredentialResponse",
 }) as any as S.Schema<CreateTemporaryCredentialResponse>;
@@ -620,13 +644,15 @@ export const DeleteBucketRequest = /*@__PURE__*/ S.suspend(() =>
         T.Header('"cf-r2-jurisdiction"'),
       ),
     ),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/r2/buckets/{bucket_name}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/r2/buckets/{bucket_name}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteBucketRequest",
 }) as any as S.Schema<DeleteBucketRequest>;
@@ -638,7 +664,7 @@ export interface DeleteBucketResponse {
 export const DeleteBucketResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteBucketResponse",
 }) as any as S.Schema<DeleteBucketResponse>;
@@ -667,13 +693,15 @@ export const DeleteBucketCorsRequest = /*@__PURE__*/ S.suspend(() =>
         T.Header('"cf-r2-jurisdiction"'),
       ),
     ),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/r2/buckets/{bucket_name}/cors",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/r2/buckets/{bucket_name}/cors",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteBucketCorsRequest",
 }) as any as S.Schema<DeleteBucketCorsRequest>;
@@ -685,7 +713,7 @@ export interface DeleteBucketCorsResponse {
 export const DeleteBucketCorsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteBucketCorsResponse",
 }) as any as S.Schema<DeleteBucketCorsResponse>;
@@ -718,13 +746,15 @@ export const DeleteBucketDomainCustomRequest = /*@__PURE__*/ S.suspend(() =>
         T.Header('"cf-r2-jurisdiction"'),
       ),
     ),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/r2/buckets/{bucket_name}/domains/custom/{domain}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/r2/buckets/{bucket_name}/domains/custom/{domain}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteBucketDomainCustomRequest",
 }) as any as S.Schema<DeleteBucketDomainCustomRequest>;
@@ -737,7 +767,7 @@ export interface DeleteBucketDomainCustomResponse {
 export const DeleteBucketDomainCustomResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteBucketDomainCustomResponse",
 }) as any as S.Schema<DeleteBucketDomainCustomResponse>;
@@ -771,13 +801,15 @@ export const DeleteBucketEventNotificationRequest = /*@__PURE__*/ S.suspend(
           T.Header('"cf-r2-jurisdiction"'),
         ),
       ),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/accounts/{account_id}/event_notifications/r2/{bucket_name}/configuration/queues/{queue_id}",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "DELETE",
+          uri: "/accounts/{account_id}/event_notifications/r2/{bucket_name}/configuration/queues/{queue_id}",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteBucketEventNotificationRequest",
 }) as any as S.Schema<DeleteBucketEventNotificationRequest>;
@@ -790,7 +822,7 @@ export const DeleteBucketEventNotificationResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteBucketEventNotificationResponse",
 }) as any as S.Schema<DeleteBucketEventNotificationResponse>;
@@ -823,13 +855,15 @@ export const DeleteBucketObjectRequest = /*@__PURE__*/ S.suspend(() =>
         T.Header('"cf-r2-jurisdiction"'),
       ),
     ),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/r2/buckets/{bucket_name}/objects/{object_key}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/r2/buckets/{bucket_name}/objects/{object_key}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteBucketObjectRequest",
 }) as any as S.Schema<DeleteBucketObjectRequest>;
@@ -842,7 +876,7 @@ export interface DeleteBucketObjectResponse {
 export const DeleteBucketObjectResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteBucketObjectResponse",
 }) as any as S.Schema<DeleteBucketObjectResponse>;
@@ -871,13 +905,15 @@ export const DeleteBucketSippyRequest = /*@__PURE__*/ S.suspend(() =>
         T.Header('"cf-r2-jurisdiction"'),
       ),
     ),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/r2/buckets/{bucket_name}/sippy",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/r2/buckets/{bucket_name}/sippy",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteBucketSippyRequest",
 }) as any as S.Schema<DeleteBucketSippyRequest>;
@@ -889,7 +925,7 @@ export interface DeleteBucketSippyResponse {
 export const DeleteBucketSippyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.optional(S.Boolean),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteBucketSippyResponse",
 }) as any as S.Schema<DeleteBucketSippyResponse>;
@@ -916,13 +952,15 @@ export const GetBucketRequest = /*@__PURE__*/ S.suspend(() =>
     CfR2Jurisdiction_: S.optional(
       BucketsGetRequestCfR2Jurisdiction.pipe(T.Header('"cf-r2-jurisdiction"')),
     ),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/r2/buckets/{bucket_name}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/r2/buckets/{bucket_name}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetBucketRequest",
 }) as any as S.Schema<GetBucketRequest>;
@@ -969,7 +1007,7 @@ export const GetBucketResponse = /*@__PURE__*/ S.suspend(() =>
     storageClass: S.optional(
       BucketsGetResponseStorageClass.pipe(T.Body("storage_class")),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetBucketResponse",
 }) as any as S.Schema<GetBucketResponse>;
@@ -998,13 +1036,15 @@ export const GetBucketCorsRequest = /*@__PURE__*/ S.suspend(() =>
         T.Header('"cf-r2-jurisdiction"'),
       ),
     ),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/r2/buckets/{bucket_name}/cors",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/r2/buckets/{bucket_name}/cors",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetBucketCorsRequest",
 }) as any as S.Schema<GetBucketCorsRequest>;
@@ -1094,7 +1134,7 @@ export interface GetBucketCorsResponse {
 export const GetBucketCorsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rules: S.optional(BucketsCorsGetResponseRulesList),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetBucketCorsResponse",
 }) as any as S.Schema<GetBucketCorsResponse>;
@@ -1127,13 +1167,15 @@ export const GetBucketDomainCustomRequest = /*@__PURE__*/ S.suspend(() =>
         T.Header('"cf-r2-jurisdiction"'),
       ),
     ),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/r2/buckets/{bucket_name}/domains/custom/{domain}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/r2/buckets/{bucket_name}/domains/custom/{domain}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetBucketDomainCustomRequest",
 }) as any as S.Schema<GetBucketDomainCustomRequest>;
@@ -1207,7 +1249,7 @@ export const GetBucketDomainCustomResponse = /*@__PURE__*/ S.suspend(() =>
     minTLS: S.optional(BucketsDomainsCustomGetResponseMinTLS),
     zoneId: S.optional(S.String),
     zoneName: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetBucketDomainCustomResponse",
 }) as any as S.Schema<GetBucketDomainCustomResponse>;
@@ -1240,13 +1282,15 @@ export const GetBucketEventNotificationRequest = /*@__PURE__*/ S.suspend(() =>
         T.Header('"cf-r2-jurisdiction"'),
       ),
     ),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/event_notifications/r2/{bucket_name}/configuration/queues/{queue_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/event_notifications/r2/{bucket_name}/configuration/queues/{queue_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetBucketEventNotificationRequest",
 }) as any as S.Schema<GetBucketEventNotificationRequest>;
@@ -1314,7 +1358,7 @@ export const GetBucketEventNotificationResponse = /*@__PURE__*/ S.suspend(() =>
     queueId: S.optional(S.String),
     queueName: S.optional(S.String),
     rules: S.optional(BucketsEventNotificationsGetResponseRulesList),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetBucketEventNotificationResponse",
 }) as any as S.Schema<GetBucketEventNotificationResponse>;
@@ -1344,13 +1388,15 @@ export const GetBucketLifecycleRequest = /*@__PURE__*/ S.suspend(() =>
         T.Header('"cf-r2-jurisdiction"'),
       ),
     ),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/r2/buckets/{bucket_name}/lifecycle",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/r2/buckets/{bucket_name}/lifecycle",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetBucketLifecycleRequest",
 }) as any as S.Schema<GetBucketLifecycleRequest>;
@@ -1538,7 +1584,7 @@ export interface GetBucketLifecycleResponse {
 export const GetBucketLifecycleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rules: S.optional(BucketsLifecycleGetResponseRulesList),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetBucketLifecycleResponse",
 }) as any as S.Schema<GetBucketLifecycleResponse>;
@@ -1567,13 +1613,15 @@ export const GetBucketLockRequest = /*@__PURE__*/ S.suspend(() =>
         T.Header('"cf-r2-jurisdiction"'),
       ),
     ),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/r2/buckets/{bucket_name}/lock",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/r2/buckets/{bucket_name}/lock",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetBucketLockRequest",
 }) as any as S.Schema<GetBucketLockRequest>;
@@ -1637,7 +1685,7 @@ export interface GetBucketLockResponse {
 export const GetBucketLockResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rules: S.optional(BucketsLocksGetResponseRulesList),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetBucketLockResponse",
 }) as any as S.Schema<GetBucketLockResponse>;
@@ -1677,20 +1725,22 @@ export const GetBucketObjectRequest = /*@__PURE__*/ S.suspend(() =>
       S.String.pipe(T.Header('"If-Modified-Since"')),
     ),
     IfNoneMatch_: S.optional(S.String.pipe(T.Header('"If-None-Match"'))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/r2/buckets/{bucket_name}/objects/{object_key}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/r2/buckets/{bucket_name}/objects/{object_key}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetBucketObjectRequest",
 }) as any as S.Schema<GetBucketObjectRequest>;
 
 export interface GetBucketObjectResponse {}
 export const GetBucketObjectResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
+  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetBucketObjectResponse",
 }) as any as S.Schema<GetBucketObjectResponse>;
@@ -1719,13 +1769,15 @@ export const GetBucketSippyRequest = /*@__PURE__*/ S.suspend(() =>
         T.Header('"cf-r2-jurisdiction"'),
       ),
     ),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/r2/buckets/{bucket_name}/sippy",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/r2/buckets/{bucket_name}/sippy",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetBucketSippyRequest",
 }) as any as S.Schema<GetBucketSippyRequest>;
@@ -1790,7 +1842,7 @@ export const GetBucketSippyResponse = /*@__PURE__*/ S.suspend(() =>
     destination: S.optional(BucketsSippyGetResponseDestination),
     enabled: S.optional(S.Boolean),
     source: S.optional(BucketsSippyGetResponseSource),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetBucketSippyResponse",
 }) as any as S.Schema<GetBucketSippyResponse>;
@@ -1803,13 +1855,15 @@ export const GetSuperSlurperJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     jobId: S.String.pipe(T.Label("job_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/slurper/jobs/{job_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/slurper/jobs/{job_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetSuperSlurperJobRequest",
 }) as any as S.Schema<GetSuperSlurperJobRequest>;
@@ -1891,7 +1945,7 @@ export const GetSuperSlurperJobResponse = /*@__PURE__*/ S.suspend(() =>
     source: S.optional(SuperSlurperJobsGetResponseSource),
     status: S.optional(SuperSlurperJobsGetResponseStatus),
     target: S.optional(SuperSlurperJobsGetResponseTarget),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetSuperSlurperJobResponse",
 }) as any as S.Schema<GetSuperSlurperJobResponse>;
@@ -1921,13 +1975,15 @@ export const ListBucketDomainCustomsRequest = /*@__PURE__*/ S.suspend(() =>
         T.Header('"cf-r2-jurisdiction"'),
       ),
     ),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/r2/buckets/{bucket_name}/domains/custom",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/r2/buckets/{bucket_name}/domains/custom",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListBucketDomainCustomsRequest",
 }) as any as S.Schema<ListBucketDomainCustomsRequest>;
@@ -2025,7 +2081,7 @@ export interface ListBucketDomainCustomsResponse {
 export const ListBucketDomainCustomsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domains: BucketsDomainsCustomListResponseDomainsList,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListBucketDomainCustomsResponse",
 }) as any as S.Schema<ListBucketDomainCustomsResponse>;
@@ -2055,13 +2111,15 @@ export const ListBucketDomainManagedsRequest = /*@__PURE__*/ S.suspend(() =>
         T.Header('"cf-r2-jurisdiction"'),
       ),
     ),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/r2/buckets/{bucket_name}/domains/managed",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/r2/buckets/{bucket_name}/domains/managed",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListBucketDomainManagedsRequest",
 }) as any as S.Schema<ListBucketDomainManagedsRequest>;
@@ -2080,7 +2138,7 @@ export const ListBucketDomainManagedsResponse = /*@__PURE__*/ S.suspend(() =>
     bucketId: S.String,
     domain: S.String,
     enabled: S.Boolean,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListBucketDomainManagedsResponse",
 }) as any as S.Schema<ListBucketDomainManagedsResponse>;
@@ -2110,13 +2168,15 @@ export const ListBucketEventNotificationsRequest = /*@__PURE__*/ S.suspend(() =>
         T.Header('"cf-r2-jurisdiction"'),
       ),
     ),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/event_notifications/r2/{bucket_name}/configuration",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/event_notifications/r2/{bucket_name}/configuration",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListBucketEventNotificationsRequest",
 }) as any as S.Schema<ListBucketEventNotificationsRequest>;
@@ -2208,7 +2268,7 @@ export const ListBucketEventNotificationsResponse = /*@__PURE__*/ S.suspend(
     S.Struct({
       bucketName: S.optional(S.String),
       queues: S.optional(BucketsEventNotificationsListResponseQueuesList),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListBucketEventNotificationsResponse",
 }) as any as S.Schema<ListBucketEventNotificationsResponse>;
@@ -2220,13 +2280,15 @@ export interface ListBucketMetricsRequest {
 export const ListBucketMetricsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/r2/metrics",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/r2/metrics",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListBucketMetricsRequest",
 }) as any as S.Schema<ListBucketMetricsRequest>;
@@ -2351,7 +2413,7 @@ export const ListBucketMetricsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     infrequentAccess: S.optional(BucketsMetricsListResponseInfrequentAccess),
     standard: S.optional(BucketsMetricsListResponseStandard),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListBucketMetricsResponse",
 }) as any as S.Schema<ListBucketMetricsResponse>;
@@ -2395,13 +2457,15 @@ export const ListBucketObjectsRequest = /*@__PURE__*/ S.suspend(() =>
         T.Header('"cf-r2-jurisdiction"'),
       ),
     ),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/r2/buckets/{bucket_name}/objects",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/r2/buckets/{bucket_name}/objects",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListBucketObjectsRequest",
 }) as any as S.Schema<ListBucketObjectsRequest>;
@@ -2505,7 +2569,7 @@ export const ListBucketObjectsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: BucketsObjectsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListBucketObjectsResponse",
 }) as any as S.Schema<ListBucketObjectsResponse>;
@@ -2553,13 +2617,15 @@ export const ListBucketsRequest = /*@__PURE__*/ S.suspend(() =>
     CfR2Jurisdiction_: S.optional(
       BucketsListRequestCfR2Jurisdiction.pipe(T.Header('"cf-r2-jurisdiction"')),
     ),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/r2/buckets",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/r2/buckets",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListBucketsRequest",
 }) as any as S.Schema<ListBucketsRequest>;
@@ -2624,7 +2690,7 @@ export interface ListBucketsResponse {
 export const ListBucketsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     buckets: S.optional(BucketsListResponseBucketsList),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListBucketsResponse",
 }) as any as S.Schema<ListBucketsResponse>;
@@ -2641,13 +2707,15 @@ export const ListSuperSlurperJobLogsRequest = /*@__PURE__*/ S.suspend(() =>
     jobId: S.String.pipe(T.Label("job_id")),
     limit: S.optional(S.Number.pipe(T.Query())),
     offset: S.optional(S.Number.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/slurper/jobs/{job_id}/logs",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/slurper/jobs/{job_id}/logs",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListSuperSlurperJobLogsRequest",
 }) as any as S.Schema<ListSuperSlurperJobLogsRequest>;
@@ -2694,7 +2762,7 @@ export const ListSuperSlurperJobLogsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: SuperSlurperJobsLogsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListSuperSlurperJobLogsResponse",
 }) as any as S.Schema<ListSuperSlurperJobLogsResponse>;
@@ -2709,13 +2777,15 @@ export const ListSuperSlurperJobsRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     limit: S.optional(S.Number.pipe(T.Query())),
     offset: S.optional(S.Number.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/slurper/jobs",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/slurper/jobs",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListSuperSlurperJobsRequest",
 }) as any as S.Schema<ListSuperSlurperJobsRequest>;
@@ -2820,7 +2890,7 @@ export const ListSuperSlurperJobsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: SuperSlurperJobsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListSuperSlurperJobsResponse",
 }) as any as S.Schema<ListSuperSlurperJobsResponse>;
@@ -2858,13 +2928,15 @@ export const PatchBucketRequest = /*@__PURE__*/ S.suspend(() =>
     CfR2Jurisdiction_: S.optional(
       BucketsEditRequestCfR2Jurisdiction.pipe(T.Header('"cf-r2-jurisdiction"')),
     ),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/accounts/{account_id}/r2/buckets/{bucket_name}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/accounts/{account_id}/r2/buckets/{bucket_name}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchBucketRequest",
 }) as any as S.Schema<PatchBucketRequest>;
@@ -2911,7 +2983,7 @@ export const PatchBucketResponse = /*@__PURE__*/ S.suspend(() =>
     storageClass: S.optional(
       BucketsEditResponseStorageClass.pipe(T.Body("storage_class")),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchBucketResponse",
 }) as any as S.Schema<PatchBucketResponse>;
@@ -2924,13 +2996,15 @@ export const PauseSuperSlurperJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     jobId: S.String.pipe(T.Label("job_id")),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/slurper/jobs/{job_id}/pause",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/slurper/jobs/{job_id}/pause",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PauseSuperSlurperJobRequest",
 }) as any as S.Schema<PauseSuperSlurperJobRequest>;
@@ -2942,7 +3016,7 @@ export interface PauseSuperSlurperJobResponse {
 export const PauseSuperSlurperJobResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(S.String.pipe(T.EnvelopePayload())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PauseSuperSlurperJobResponse",
 }) as any as S.Schema<PauseSuperSlurperJobResponse>;
@@ -2955,13 +3029,15 @@ export const ProgressSuperSlurperJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     jobId: S.String.pipe(T.Label("job_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/slurper/jobs/{job_id}/progress",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/slurper/jobs/{job_id}/progress",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ProgressSuperSlurperJobRequest",
 }) as any as S.Schema<ProgressSuperSlurperJobRequest>;
@@ -2993,7 +3069,7 @@ export const ProgressSuperSlurperJobResponse = /*@__PURE__*/ S.suspend(() =>
     skippedObjects: S.optional(S.Number),
     status: S.optional(SuperSlurperJobsProgressResponseStatus),
     transferredObjects: S.optional(S.Number),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ProgressSuperSlurperJobResponse",
 }) as any as S.Schema<ProgressSuperSlurperJobResponse>;
@@ -3105,13 +3181,15 @@ export const PutBucketCorsRequest = /*@__PURE__*/ S.suspend(() =>
       ),
     ),
     rules: S.optional(BucketsCorsUpdateRequestRulesList),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/r2/buckets/{bucket_name}/cors",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/r2/buckets/{bucket_name}/cors",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutBucketCorsRequest",
 }) as any as S.Schema<PutBucketCorsRequest>;
@@ -3123,7 +3201,7 @@ export interface PutBucketCorsResponse {
 export const PutBucketCorsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutBucketCorsResponse",
 }) as any as S.Schema<PutBucketCorsResponse>;
@@ -3156,13 +3234,15 @@ export const PutBucketDomainManagedRequest = /*@__PURE__*/ S.suspend(() =>
       ),
     ),
     enabled: S.Boolean,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/r2/buckets/{bucket_name}/domains/managed",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/r2/buckets/{bucket_name}/domains/managed",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutBucketDomainManagedRequest",
 }) as any as S.Schema<PutBucketDomainManagedRequest>;
@@ -3181,7 +3261,7 @@ export const PutBucketDomainManagedResponse = /*@__PURE__*/ S.suspend(() =>
     bucketId: S.String,
     domain: S.String,
     enabled: S.Boolean,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutBucketDomainManagedResponse",
 }) as any as S.Schema<PutBucketDomainManagedResponse>;
@@ -3261,13 +3341,15 @@ export const PutBucketEventNotificationRequest = /*@__PURE__*/ S.suspend(() =>
       ),
     ),
     rules: BucketsEventNotificationsUpdateRequestRulesList,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/event_notifications/r2/{bucket_name}/configuration/queues/{queue_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/event_notifications/r2/{bucket_name}/configuration/queues/{queue_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutBucketEventNotificationRequest",
 }) as any as S.Schema<PutBucketEventNotificationRequest>;
@@ -3279,7 +3361,7 @@ export interface PutBucketEventNotificationResponse {
 export const PutBucketEventNotificationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutBucketEventNotificationResponse",
 }) as any as S.Schema<PutBucketEventNotificationResponse>;
@@ -3487,13 +3569,15 @@ export const PutBucketLifecycleRequest = /*@__PURE__*/ S.suspend(() =>
       ),
     ),
     rules: S.optional(BucketsLifecycleUpdateRequestRulesList),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/r2/buckets/{bucket_name}/lifecycle",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/r2/buckets/{bucket_name}/lifecycle",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutBucketLifecycleRequest",
 }) as any as S.Schema<PutBucketLifecycleRequest>;
@@ -3505,7 +3589,7 @@ export interface PutBucketLifecycleResponse {
 export const PutBucketLifecycleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutBucketLifecycleResponse",
 }) as any as S.Schema<PutBucketLifecycleResponse>;
@@ -3588,13 +3672,15 @@ export const PutBucketLockRequest = /*@__PURE__*/ S.suspend(() =>
       ),
     ),
     rules: S.optional(BucketsLocksUpdateRequestRulesList),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/r2/buckets/{bucket_name}/lock",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/r2/buckets/{bucket_name}/lock",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutBucketLockRequest",
 }) as any as S.Schema<PutBucketLockRequest>;
@@ -3606,7 +3692,7 @@ export interface PutBucketLockResponse {
 export const PutBucketLockResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutBucketLockResponse",
 }) as any as S.Schema<PutBucketLockResponse>;
@@ -3658,13 +3744,15 @@ export const PutBucketSippyRequest = /*@__PURE__*/ S.suspend(() =>
       ),
     ),
     body: BucketsSippyUpdateRequestBody,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/r2/buckets/{bucket_name}/sippy",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/r2/buckets/{bucket_name}/sippy",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutBucketSippyRequest",
 }) as any as S.Schema<PutBucketSippyRequest>;
@@ -3730,7 +3818,7 @@ export const PutBucketSippyResponse = /*@__PURE__*/ S.suspend(() =>
     destination: S.optional(BucketsSippyUpdateResponseDestination),
     enabled: S.optional(S.Boolean),
     source: S.optional(BucketsSippyUpdateResponseSource),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutBucketSippyResponse",
 }) as any as S.Schema<PutBucketSippyResponse>;
@@ -3743,13 +3831,15 @@ export const ResumeSuperSlurperJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     jobId: S.String.pipe(T.Label("job_id")),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/slurper/jobs/{job_id}/resume",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/slurper/jobs/{job_id}/resume",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ResumeSuperSlurperJobRequest",
 }) as any as S.Schema<ResumeSuperSlurperJobRequest>;
@@ -3761,7 +3851,7 @@ export interface ResumeSuperSlurperJobResponse {
 export const ResumeSuperSlurperJobResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(S.String.pipe(T.EnvelopePayload())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ResumeSuperSlurperJobResponse",
 }) as any as S.Schema<ResumeSuperSlurperJobResponse>;
@@ -3803,13 +3893,15 @@ export const SourceSuperSlurperConnectivityPrecheckRequest =
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
       body: SuperSlurperConnectivityPrecheckSourceRequestBody,
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/accounts/{account_id}/slurper/source/connectivity-precheck",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "PUT",
+          uri: "/accounts/{account_id}/slurper/source/connectivity-precheck",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "SourceSuperSlurperConnectivityPrecheckRequest",
   }) as any as S.Schema<SourceSuperSlurperConnectivityPrecheckRequest>;
@@ -3831,7 +3923,7 @@ export const SourceSuperSlurperConnectivityPrecheckResponse =
       connectivityStatus: S.optional(
         SuperSlurperConnectivityPrecheckSourceResponseConnectivityStatus,
       ),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "SourceSuperSlurperConnectivityPrecheckResponse",
   }) as any as S.Schema<SourceSuperSlurperConnectivityPrecheckResponse>;
@@ -3875,13 +3967,15 @@ export const TargetSuperSlurperConnectivityPrecheckRequest =
       jurisdiction: S.optional(
         SuperSlurperConnectivityPrecheckTargetRequestJurisdiction,
       ),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/accounts/{account_id}/slurper/target/connectivity-precheck",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "PUT",
+          uri: "/accounts/{account_id}/slurper/target/connectivity-precheck",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "TargetSuperSlurperConnectivityPrecheckRequest",
   }) as any as S.Schema<TargetSuperSlurperConnectivityPrecheckRequest>;
@@ -3903,7 +3997,7 @@ export const TargetSuperSlurperConnectivityPrecheckResponse =
       connectivityStatus: S.optional(
         SuperSlurperConnectivityPrecheckTargetResponseConnectivityStatus,
       ),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "TargetSuperSlurperConnectivityPrecheckResponse",
   }) as any as S.Schema<TargetSuperSlurperConnectivityPrecheckResponse>;
@@ -3959,13 +4053,15 @@ export const UpdateBucketDomainCustomRequest = /*@__PURE__*/ S.suspend(() =>
     ciphers: S.optional(BucketsDomainsCustomUpdateRequestCiphersList),
     enabled: S.optional(S.Boolean),
     minTLS: S.optional(BucketsDomainsCustomUpdateRequestMinTLS),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/r2/buckets/{bucket_name}/domains/custom/{domain}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/r2/buckets/{bucket_name}/domains/custom/{domain}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateBucketDomainCustomRequest",
 }) as any as S.Schema<UpdateBucketDomainCustomRequest>;
@@ -4001,7 +4097,7 @@ export const UpdateBucketDomainCustomResponse = /*@__PURE__*/ S.suspend(() =>
     ciphers: S.optional(BucketsDomainsCustomUpdateResponseCiphersList),
     enabled: S.optional(S.Boolean),
     minTLS: S.optional(BucketsDomainsCustomUpdateResponseMinTLS),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateBucketDomainCustomResponse",
 }) as any as S.Schema<UpdateBucketDomainCustomResponse>;
@@ -4048,13 +4144,15 @@ export const UploadBucketObjectRequest = /*@__PURE__*/ S.suspend(() =>
         T.Header('"cf-r2-storage-class"'),
       ),
     ),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/r2/buckets/{bucket_name}/objects/{object_key}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/r2/buckets/{bucket_name}/objects/{object_key}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UploadBucketObjectRequest",
 }) as any as S.Schema<UploadBucketObjectRequest>;
@@ -4090,7 +4188,7 @@ export const UploadBucketObjectResponse = /*@__PURE__*/ S.suspend(() =>
     ),
     uploaded: S.optional(S.String),
     version: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UploadBucketObjectResponse",
 }) as any as S.Schema<UploadBucketObjectResponse>;

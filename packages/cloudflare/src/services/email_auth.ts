@@ -12,6 +12,24 @@ import * as Retry from "../retry.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
+/** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
+const KEY_DICTIONARY: Record<string, string> = {
+  approvedSources: "approved_sources",
+  bimiRecords: "bimi_records",
+  cnameDkimRecords: "cname_dkim_records",
+  cnameDmarcRecords: "cname_dmarc_records",
+  cnameSpfRecords: "cname_spf_records",
+  createdAt: "created_at",
+  dkimRecords: "dkim_records",
+  dmarcRecords: "dmarc_records",
+  modifiedAt: "modified_at",
+  ruaPrefix: "rua_prefix",
+  skipWizard: "skip_wizard",
+  spfRecords: "spf_records",
+  totalLookups: "total_lookups",
+  zoneId: "zone_id",
+};
+
 export interface GetDmarcReportRequest {
   /** Identifier. */
   zoneId: string;
@@ -19,13 +37,15 @@ export interface GetDmarcReportRequest {
 export const GetDmarcReportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/email/auth/dmarc-reports",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/email/auth/dmarc-reports",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDmarcReportRequest",
 }) as any as S.Schema<GetDmarcReportRequest>;
@@ -412,7 +432,7 @@ export const GetDmarcReportResponse = /*@__PURE__*/ S.suspend(() =>
     status: S.optional(DmarcReportsGetResponseStatus),
     tag: S.optional(S.String),
     zoneId: S.optional(S.String.pipe(T.Body("zone_id"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDmarcReportResponse",
 }) as any as S.Schema<GetDmarcReportResponse>;
@@ -427,13 +447,15 @@ export const GetSpfInspectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     id: S.String.pipe(T.Query()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/email/auth/spf/inspect",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/email/auth/spf/inspect",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetSpfInspectRequest",
 }) as any as S.Schema<GetSpfInspectRequest>;
@@ -489,7 +511,7 @@ export const GetSpfInspectResponse = /*@__PURE__*/ S.suspend(() =>
     record: S.String,
     totalLookups: S.Number.pipe(T.Body("total_lookups")),
     errors: S.optional(SpfInspectGetResponseErrorsList),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetSpfInspectResponse",
 }) as any as S.Schema<GetSpfInspectResponse>;
@@ -507,13 +529,15 @@ export const PatchDmarcReportRequest = /*@__PURE__*/ S.suspend(() =>
     zoneId: S.String.pipe(T.Label("zone_id")),
     enabled: S.optional(S.Boolean),
     skipWizard: S.optional(S.Boolean.pipe(T.Body("skip_wizard"))),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/zones/{zone_id}/email/auth/dmarc-reports",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/zones/{zone_id}/email/auth/dmarc-reports",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchDmarcReportRequest",
 }) as any as S.Schema<PatchDmarcReportRequest>;
@@ -901,7 +925,7 @@ export const PatchDmarcReportResponse = /*@__PURE__*/ S.suspend(() =>
     status: S.optional(DmarcReportsEditResponseStatus),
     tag: S.optional(S.String),
     zoneId: S.optional(S.String.pipe(T.Body("zone_id"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchDmarcReportResponse",
 }) as any as S.Schema<PatchDmarcReportResponse>;

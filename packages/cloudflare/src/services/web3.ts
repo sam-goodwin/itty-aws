@@ -14,6 +14,12 @@ import * as Retry from "../retry.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
+/** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
+const KEY_DICTIONARY: Record<string, string> = {
+  createdOn: "created_on",
+  modifiedOn: "modified_on",
+};
+
 export class Forbidden extends T.applyErrorMatchers(
   S.TaggedErrorClass<Forbidden>()("Forbidden", {
     code: S.Number,
@@ -72,13 +78,15 @@ export const CreateHostnameRequest = /*@__PURE__*/ S.suspend(() =>
     target: HostnamesCreateRequestTarget,
     description: S.optional(S.String),
     dnslink: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/zones/{zone_id}/web3/hostnames",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/zones/{zone_id}/web3/hostnames",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateHostnameRequest",
 }) as any as S.Schema<CreateHostnameRequest>;
@@ -125,7 +133,7 @@ export const CreateHostnameResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     status: S.optional(HostnamesCreateResponseStatus),
     target: S.optional(HostnamesCreateResponseTarget),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateHostnameResponse",
 }) as any as S.Schema<CreateHostnameResponse>;
@@ -157,13 +165,15 @@ export const CreateHostnameIpfsUniversalPathContentListEntryRequest =
       content: S.String,
       type: HostnamesIpfsUniversalPathsContentListsEntriesCreateRequestType,
       description: S.optional(S.String),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/zones/{zone_id}/web3/hostnames/{identifier}/ipfs_universal_path/content_list/entries",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "POST",
+          uri: "/zones/{zone_id}/web3/hostnames/{identifier}/ipfs_universal_path/content_list/entries",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "CreateHostnameIpfsUniversalPathContentListEntryRequest",
   }) as any as S.Schema<CreateHostnameIpfsUniversalPathContentListEntryRequest>;
@@ -199,7 +209,7 @@ export const CreateHostnameIpfsUniversalPathContentListEntryResponse =
       type: S.optional(
         HostnamesIpfsUniversalPathsContentListsEntriesCreateResponseType,
       ),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "CreateHostnameIpfsUniversalPathContentListEntryResponse",
   }) as any as S.Schema<CreateHostnameIpfsUniversalPathContentListEntryResponse>;
@@ -214,13 +224,15 @@ export const DeleteHostnameRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     identifier: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/zones/{zone_id}/web3/hostnames/{identifier}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/zones/{zone_id}/web3/hostnames/{identifier}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteHostnameRequest",
 }) as any as S.Schema<DeleteHostnameRequest>;
@@ -233,7 +245,7 @@ export interface DeleteHostnameResponse {
 export const DeleteHostnameResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteHostnameResponse",
 }) as any as S.Schema<DeleteHostnameResponse>;
@@ -254,13 +266,15 @@ export const DeleteHostnameIpfsUniversalPathContentListEntryRequest =
       contentListEntryIdentifier: S.String.pipe(
         T.Label("content_list_entry_identifier"),
       ),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/zones/{zone_id}/web3/hostnames/{identifier}/ipfs_universal_path/content_list/entries/{content_list_entry_identifier}",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "DELETE",
+          uri: "/zones/{zone_id}/web3/hostnames/{identifier}/ipfs_universal_path/content_list/entries/{content_list_entry_identifier}",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "DeleteHostnameIpfsUniversalPathContentListEntryRequest",
   }) as any as S.Schema<DeleteHostnameIpfsUniversalPathContentListEntryRequest>;
@@ -274,7 +288,7 @@ export const DeleteHostnameIpfsUniversalPathContentListEntryResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.String,
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "DeleteHostnameIpfsUniversalPathContentListEntryResponse",
   }) as any as S.Schema<DeleteHostnameIpfsUniversalPathContentListEntryResponse>;
@@ -289,13 +303,15 @@ export const GetHostnameRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     identifier: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/web3/hostnames/{identifier}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/web3/hostnames/{identifier}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetHostnameRequest",
 }) as any as S.Schema<GetHostnameRequest>;
@@ -342,7 +358,7 @@ export const GetHostnameResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     status: S.optional(HostnamesGetResponseStatus),
     target: S.optional(HostnamesGetResponseTarget),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetHostnameResponse",
 }) as any as S.Schema<GetHostnameResponse>;
@@ -358,13 +374,15 @@ export const GetHostnameIpfsUniversalPathContentListRequest =
     S.Struct({
       zoneId: S.String.pipe(T.Label("zone_id")),
       identifier: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/zones/{zone_id}/web3/hostnames/{identifier}/ipfs_universal_path/content_list",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "GET",
+          uri: "/zones/{zone_id}/web3/hostnames/{identifier}/ipfs_universal_path/content_list",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "GetHostnameIpfsUniversalPathContentListRequest",
   }) as any as S.Schema<GetHostnameIpfsUniversalPathContentListRequest>;
@@ -386,7 +404,7 @@ export const GetHostnameIpfsUniversalPathContentListResponse =
       action: S.optional(
         HostnamesIpfsUniversalPathsContentListsGetResponseAction,
       ),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "GetHostnameIpfsUniversalPathContentListResponse",
   }) as any as S.Schema<GetHostnameIpfsUniversalPathContentListResponse>;
@@ -407,13 +425,15 @@ export const GetHostnameIpfsUniversalPathContentListEntryRequest =
       contentListEntryIdentifier: S.String.pipe(
         T.Label("content_list_entry_identifier"),
       ),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/zones/{zone_id}/web3/hostnames/{identifier}/ipfs_universal_path/content_list/entries/{content_list_entry_identifier}",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "GET",
+          uri: "/zones/{zone_id}/web3/hostnames/{identifier}/ipfs_universal_path/content_list/entries/{content_list_entry_identifier}",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "GetHostnameIpfsUniversalPathContentListEntryRequest",
   }) as any as S.Schema<GetHostnameIpfsUniversalPathContentListEntryRequest>;
@@ -449,7 +469,7 @@ export const GetHostnameIpfsUniversalPathContentListEntryResponse =
       type: S.optional(
         HostnamesIpfsUniversalPathsContentListsEntriesGetResponseType,
       ),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "GetHostnameIpfsUniversalPathContentListEntryResponse",
   }) as any as S.Schema<GetHostnameIpfsUniversalPathContentListEntryResponse>;
@@ -465,13 +485,15 @@ export const ListHostnameIpfsUniversalPathContentListEntriesRequest =
     S.Struct({
       zoneId: S.String.pipe(T.Label("zone_id")),
       identifier: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/zones/{zone_id}/web3/hostnames/{identifier}/ipfs_universal_path/content_list/entries",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "GET",
+          uri: "/zones/{zone_id}/web3/hostnames/{identifier}/ipfs_universal_path/content_list/entries",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "ListHostnameIpfsUniversalPathContentListEntriesRequest",
   }) as any as S.Schema<ListHostnameIpfsUniversalPathContentListEntriesRequest>;
@@ -528,7 +550,7 @@ export const ListHostnameIpfsUniversalPathContentListEntriesResponse =
       entries: S.optional(
         HostnamesIpfsUniversalPathsContentListsEntriesListResponseEntriesList,
       ),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "ListHostnameIpfsUniversalPathContentListEntriesResponse",
   }) as any as S.Schema<ListHostnameIpfsUniversalPathContentListEntriesResponse>;
@@ -540,13 +562,15 @@ export interface ListHostnamesRequest {
 export const ListHostnamesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/web3/hostnames",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/web3/hostnames",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListHostnamesRequest",
 }) as any as S.Schema<ListHostnamesRequest>;
@@ -612,7 +636,7 @@ export const ListHostnamesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: HostnamesListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListHostnamesResponse",
 }) as any as S.Schema<ListHostnamesResponse>;
@@ -633,13 +657,15 @@ export const PatchHostnameRequest = /*@__PURE__*/ S.suspend(() =>
     identifier: S.String.pipe(T.Label()),
     description: S.optional(S.String),
     dnslink: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/zones/{zone_id}/web3/hostnames/{identifier}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/zones/{zone_id}/web3/hostnames/{identifier}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchHostnameRequest",
 }) as any as S.Schema<PatchHostnameRequest>;
@@ -686,7 +712,7 @@ export const PatchHostnameResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     status: S.optional(HostnamesEditResponseStatus),
     target: S.optional(HostnamesEditResponseTarget),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchHostnameResponse",
 }) as any as S.Schema<PatchHostnameResponse>;
@@ -755,13 +781,15 @@ export const PutHostnameIpfsUniversalPathContentListRequest =
       identifier: S.String.pipe(T.Label()),
       action: HostnamesIpfsUniversalPathsContentListsUpdateRequestAction,
       entries: HostnamesIpfsUniversalPathsContentListsUpdateRequestEntriesList,
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/zones/{zone_id}/web3/hostnames/{identifier}/ipfs_universal_path/content_list",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "PUT",
+          uri: "/zones/{zone_id}/web3/hostnames/{identifier}/ipfs_universal_path/content_list",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "PutHostnameIpfsUniversalPathContentListRequest",
   }) as any as S.Schema<PutHostnameIpfsUniversalPathContentListRequest>;
@@ -783,7 +811,7 @@ export const PutHostnameIpfsUniversalPathContentListResponse =
       action: S.optional(
         HostnamesIpfsUniversalPathsContentListsUpdateResponseAction,
       ),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "PutHostnameIpfsUniversalPathContentListResponse",
   }) as any as S.Schema<PutHostnameIpfsUniversalPathContentListResponse>;
@@ -820,13 +848,15 @@ export const UpdateHostnameIpfsUniversalPathContentListEntryRequest =
       content: S.String,
       type: HostnamesIpfsUniversalPathsContentListsEntriesUpdateRequestType,
       description: S.optional(S.String),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/zones/{zone_id}/web3/hostnames/{identifier}/ipfs_universal_path/content_list/entries/{content_list_entry_identifier}",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "PUT",
+          uri: "/zones/{zone_id}/web3/hostnames/{identifier}/ipfs_universal_path/content_list/entries/{content_list_entry_identifier}",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "UpdateHostnameIpfsUniversalPathContentListEntryRequest",
   }) as any as S.Schema<UpdateHostnameIpfsUniversalPathContentListEntryRequest>;
@@ -862,7 +892,7 @@ export const UpdateHostnameIpfsUniversalPathContentListEntryResponse =
       type: S.optional(
         HostnamesIpfsUniversalPathsContentListsEntriesUpdateResponseType,
       ),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "UpdateHostnameIpfsUniversalPathContentListEntryResponse",
   }) as any as S.Schema<UpdateHostnameIpfsUniversalPathContentListEntryResponse>;

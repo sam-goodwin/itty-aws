@@ -12,6 +12,27 @@ import * as Retry from "../retry.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
+/** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
+const KEY_DICTIONARY: Record<string, string> = {
+  aiBotsProtection: "ai_bots_protection",
+  autoUpdateModel: "auto_update_model",
+  bmCookieEnabled: "bm_cookie_enabled",
+  cfRobotsVariant: "cf_robots_variant",
+  contentBotsProtection: "content_bots_protection",
+  crawlerProtection: "crawler_protection",
+  enableJs: "enable_js",
+  fightMode: "fight_mode",
+  isRobotsTxtManaged: "is_robots_txt_managed",
+  optimizeWordpress: "optimize_wordpress",
+  sbfmDefinitelyAutomated: "sbfm_definitely_automated",
+  sbfmLikelyAutomated: "sbfm_likely_automated",
+  sbfmStaticResourceProtection: "sbfm_static_resource_protection",
+  sbfmVerifiedBots: "sbfm_verified_bots",
+  staleZoneConfiguration: "stale_zone_configuration",
+  suppressSessionScore: "suppress_session_score",
+  usingLatestModel: "using_latest_model",
+};
+
 export class Forbidden extends T.applyErrorMatchers(
   S.TaggedErrorClass<Forbidden>()("Forbidden", {
     code: S.Number,
@@ -68,20 +89,22 @@ export const FeedbackCreateRequest = /*@__PURE__*/ S.suspend(() =>
     requestsByScoreSrc: S.Unknown.pipe(T.Body("requests_by_score_src")),
     type: S.Unknown,
     subtype: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/zones/{zone_id}/bot_management/feedback",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/zones/{zone_id}/bot_management/feedback",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "FeedbackCreateRequest",
 }) as any as S.Schema<FeedbackCreateRequest>;
 
 export interface FeedbackCreateResponse {}
 export const FeedbackCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
+  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "FeedbackCreateResponse",
 }) as any as S.Schema<FeedbackCreateResponse>;
@@ -93,13 +116,15 @@ export interface FeedbackListRequest {
 export const FeedbackListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/bot_management/feedback",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/bot_management/feedback",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "FeedbackListRequest",
 }) as any as S.Schema<FeedbackListRequest>;
@@ -152,7 +177,7 @@ export const FeedbackListResponse = /*@__PURE__*/ S.suspend(() =>
     type: S.Unknown,
     createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
     subtype: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "FeedbackListResponse",
 }) as any as S.Schema<FeedbackListResponse>;
@@ -164,13 +189,15 @@ export interface GetBotManagementRequest {
 export const GetBotManagementRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/bot_management",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/bot_management",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetBotManagementRequest",
 }) as any as S.Schema<GetBotManagementRequest>;
@@ -208,7 +235,7 @@ export const GetBotManagementResponse = /*@__PURE__*/ S.suspend(() =>
           "SubscriptionConfiguration object { ai_bots_protection, auto_update_model, bm_cookie_enabled, 8 more }",
         ),
       ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetBotManagementResponse",
 }) as any as S.Schema<GetBotManagementResponse>;
@@ -259,13 +286,15 @@ export const PutBotManagementRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     body: UpdateRequestBody,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/zones/{zone_id}/bot_management",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/zones/{zone_id}/bot_management",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutBotManagementRequest",
 }) as any as S.Schema<PutBotManagementRequest>;
@@ -303,7 +332,7 @@ export const PutBotManagementResponse = /*@__PURE__*/ S.suspend(() =>
           "SubscriptionConfiguration object { ai_bots_protection, auto_update_model, bm_cookie_enabled, 8 more }",
         ),
       ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutBotManagementResponse",
 }) as any as S.Schema<PutBotManagementResponse>;

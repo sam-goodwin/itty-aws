@@ -14,6 +14,29 @@ import * as Retry from "../retry.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
+/** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
+const KEY_DICTIONARY: Record<string, string> = {
+  changedAt: "changed_at",
+  changedBy: "changed_by",
+  currentValue: "current_value",
+  detectionMethod: "detection_method",
+  documentationUrl: "documentation_url",
+  fieldChanged: "field_changed",
+  hasExtendedContext: "has_extended_context",
+  issueClass: "issue_class",
+  issueId: "issue_id",
+  issueType: "issue_type",
+  perPage: "per_page",
+  previousValue: "previous_value",
+  resolveLink: "resolve_link",
+  resolveText: "resolve_text",
+  resultInfo: "result_info",
+  totalCount: "total_count",
+  userClassification: "user_classification",
+  zoneId: "zone_id",
+  zoneTag: "zone_tag",
+};
+
 export interface DismissInsightForAccountRequest {
   /** The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
   accountId: string;
@@ -25,20 +48,22 @@ export const DismissInsightForAccountRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     issueId: S.String.pipe(T.Label("issue_id")),
     dismiss: S.optional(S.Boolean),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/security-center/insights/{issue_id}/dismiss",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/security-center/insights/{issue_id}/dismiss",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DismissInsightForAccountRequest",
 }) as any as S.Schema<DismissInsightForAccountRequest>;
 
 export interface DismissInsightForAccountResponse {}
 export const DismissInsightForAccountResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
+  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DismissInsightForAccountResponse",
 }) as any as S.Schema<DismissInsightForAccountResponse>;
@@ -54,20 +79,22 @@ export const DismissInsightForZoneRequest = /*@__PURE__*/ S.suspend(() =>
     zoneId: S.String.pipe(T.Label("zone_id")),
     issueId: S.String.pipe(T.Label("issue_id")),
     dismiss: S.optional(S.Boolean),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/zones/{zone_id}/security-center/insights/{issue_id}/dismiss",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/zones/{zone_id}/security-center/insights/{issue_id}/dismiss",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DismissInsightForZoneRequest",
 }) as any as S.Schema<DismissInsightForZoneRequest>;
 
 export interface DismissInsightForZoneResponse {}
 export const DismissInsightForZoneResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
+  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DismissInsightForZoneResponse",
 }) as any as S.Schema<DismissInsightForZoneResponse>;
@@ -195,13 +222,15 @@ export const GetInsightClassForAccountRequest = /*@__PURE__*/ S.suspend(() =>
         T.Query('"subject~neq"'),
       ),
     ),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/security-center/insights/class",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/security-center/insights/class",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetInsightClassForAccountRequest",
 }) as any as S.Schema<GetInsightClassForAccountRequest>;
@@ -235,7 +264,7 @@ export const GetInsightClassForAccountResponse = /*@__PURE__*/ S.suspend(() =>
     result: S.optional(
       InsightsClassGetForAccountResultList.pipe(T.EnvelopePayload()),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetInsightClassForAccountResponse",
 }) as any as S.Schema<GetInsightClassForAccountResponse>;
@@ -356,13 +385,15 @@ export const GetInsightClassForZoneRequest = /*@__PURE__*/ S.suspend(() =>
         T.Query('"subject~neq"'),
       ),
     ),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/security-center/insights/class",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/security-center/insights/class",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetInsightClassForZoneRequest",
 }) as any as S.Schema<GetInsightClassForZoneRequest>;
@@ -395,7 +426,7 @@ export const GetInsightClassForZoneResponse = /*@__PURE__*/ S.suspend(() =>
     result: S.optional(
       InsightsClassGetForZoneResultList.pipe(T.EnvelopePayload()),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetInsightClassForZoneResponse",
 }) as any as S.Schema<GetInsightClassForZoneResponse>;
@@ -409,13 +440,15 @@ export const GetInsightContextRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     issueId: S.String.pipe(T.Label("issue_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/security-center/insights/{issue_id}/context",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/security-center/insights/{issue_id}/context",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetInsightContextRequest",
 }) as any as S.Schema<GetInsightContextRequest>;
@@ -435,7 +468,7 @@ export interface GetInsightContextResponse {
 export const GetInsightContextResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(InsightsContextGetResultMap.pipe(T.EnvelopePayload())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetInsightContextResponse",
 }) as any as S.Schema<GetInsightContextResponse>;
@@ -563,13 +596,15 @@ export const GetInsightSeverityForAccountRequest = /*@__PURE__*/ S.suspend(() =>
         T.Query('"subject~neq"'),
       ),
     ),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/security-center/insights/severity",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/security-center/insights/severity",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetInsightSeverityForAccountRequest",
 }) as any as S.Schema<GetInsightSeverityForAccountRequest>;
@@ -604,7 +639,7 @@ export const GetInsightSeverityForAccountResponse = /*@__PURE__*/ S.suspend(
       result: S.optional(
         InsightsSeverityGetForAccountResultList.pipe(T.EnvelopePayload()),
       ),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetInsightSeverityForAccountResponse",
 }) as any as S.Schema<GetInsightSeverityForAccountResponse>;
@@ -732,13 +767,15 @@ export const GetInsightSeverityForZoneRequest = /*@__PURE__*/ S.suspend(() =>
         T.Query('"subject~neq"'),
       ),
     ),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/security-center/insights/severity",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/security-center/insights/severity",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetInsightSeverityForZoneRequest",
 }) as any as S.Schema<GetInsightSeverityForZoneRequest>;
@@ -772,7 +809,7 @@ export const GetInsightSeverityForZoneResponse = /*@__PURE__*/ S.suspend(() =>
     result: S.optional(
       InsightsSeverityGetForZoneResultList.pipe(T.EnvelopePayload()),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetInsightSeverityForZoneResponse",
 }) as any as S.Schema<GetInsightSeverityForZoneResponse>;
@@ -898,13 +935,15 @@ export const GetInsightTypeForAccountRequest = /*@__PURE__*/ S.suspend(() =>
         T.Query('"subject~neq"'),
       ),
     ),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/security-center/insights/type",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/security-center/insights/type",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetInsightTypeForAccountRequest",
 }) as any as S.Schema<GetInsightTypeForAccountRequest>;
@@ -937,7 +976,7 @@ export const GetInsightTypeForAccountResponse = /*@__PURE__*/ S.suspend(() =>
     result: S.optional(
       InsightsTypeGetForAccountResultList.pipe(T.EnvelopePayload()),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetInsightTypeForAccountResponse",
 }) as any as S.Schema<GetInsightTypeForAccountResponse>;
@@ -1057,13 +1096,15 @@ export const GetInsightTypeForZoneRequest = /*@__PURE__*/ S.suspend(() =>
         T.Query('"subject~neq"'),
       ),
     ),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/security-center/insights/type",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/security-center/insights/type",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetInsightTypeForZoneRequest",
 }) as any as S.Schema<GetInsightTypeForZoneRequest>;
@@ -1096,7 +1137,7 @@ export const GetInsightTypeForZoneResponse = /*@__PURE__*/ S.suspend(() =>
     result: S.optional(
       InsightsTypeGetForZoneResultList.pipe(T.EnvelopePayload()),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetInsightTypeForZoneResponse",
 }) as any as S.Schema<GetInsightTypeForZoneResponse>;
@@ -1152,13 +1193,15 @@ export const ListByInsightInsightAuditLogForAccountRequest =
       ),
       perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
       since: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/accounts/{account_id}/security-center/insights/{issue_id}/audit-log",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "GET",
+          uri: "/accounts/{account_id}/security-center/insights/{issue_id}/audit-log",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "ListByInsightInsightAuditLogForAccountRequest",
   }) as any as S.Schema<ListByInsightInsightAuditLogForAccountRequest>;
@@ -1231,7 +1274,7 @@ export const ListByInsightInsightAuditLogForAccountResponse =
         T.EnvelopePayload(),
       ),
       resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "ListByInsightInsightAuditLogForAccountResponse",
   }) as any as S.Schema<ListByInsightInsightAuditLogForAccountResponse>;
@@ -1287,13 +1330,15 @@ export const ListByInsightInsightAuditLogForZoneRequest =
       ),
       perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
       since: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/zones/{zone_id}/security-center/insights/{issue_id}/audit-log",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "GET",
+          uri: "/zones/{zone_id}/security-center/insights/{issue_id}/audit-log",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "ListByInsightInsightAuditLogForZoneRequest",
   }) as any as S.Schema<ListByInsightInsightAuditLogForZoneRequest>;
@@ -1366,7 +1411,7 @@ export const ListByInsightInsightAuditLogForZoneResponse =
         T.EnvelopePayload(),
       ),
       resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "ListByInsightInsightAuditLogForZoneResponse",
   }) as any as S.Schema<ListByInsightInsightAuditLogForZoneResponse>;
@@ -1420,13 +1465,15 @@ export const ListInsightAuditLogsForAccountRequest = /*@__PURE__*/ S.suspend(
       ),
       perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
       since: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/accounts/{account_id}/security-center/insights/audit-log",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "GET",
+          uri: "/accounts/{account_id}/security-center/insights/audit-log",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListInsightAuditLogsForAccountRequest",
 }) as any as S.Schema<ListInsightAuditLogsForAccountRequest>;
@@ -1498,7 +1545,7 @@ export const ListInsightAuditLogsForAccountResponse = /*@__PURE__*/ S.suspend(
         T.EnvelopePayload(),
       ),
       resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListInsightAuditLogsForAccountResponse",
 }) as any as S.Schema<ListInsightAuditLogsForAccountResponse>;
@@ -1548,13 +1595,15 @@ export const ListInsightAuditLogsForZoneRequest = /*@__PURE__*/ S.suspend(() =>
     order: S.optional(InsightsAuditLogsListForZoneRequestOrder.pipe(T.Query())),
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
     since: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/security-center/insights/audit-log",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/security-center/insights/audit-log",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListInsightAuditLogsForZoneRequest",
 }) as any as S.Schema<ListInsightAuditLogsForZoneRequest>;
@@ -1623,7 +1672,7 @@ export const ListInsightAuditLogsForZoneResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: InsightsAuditLogsListForZoneResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListInsightAuditLogsForZoneResponse",
 }) as any as S.Schema<ListInsightAuditLogsForZoneResponse>;
@@ -1749,13 +1798,15 @@ export const ListInsightsForAccountRequest = /*@__PURE__*/ S.suspend(() =>
         T.Query('"subject~neq"'),
       ),
     ),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/security-center/insights",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/security-center/insights",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListInsightsForAccountRequest",
 }) as any as S.Schema<ListInsightsForAccountRequest>;
@@ -1867,7 +1918,7 @@ export const ListInsightsForAccountResponse = /*@__PURE__*/ S.suspend(() =>
     issues: S.optional(InsightsListForAccountResponseIssuesList),
     page: S.optional(S.Number),
     perPage: S.optional(S.Number.pipe(T.Body("per_page"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListInsightsForAccountResponse",
 }) as any as S.Schema<ListInsightsForAccountResponse>;
@@ -1978,13 +2029,15 @@ export const ListInsightsForZoneRequest = /*@__PURE__*/ S.suspend(() =>
     SubjectNeq_: S.optional(
       InsightsListForZoneRequestSubjectNeqList.pipe(T.Query('"subject~neq"')),
     ),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/security-center/insights",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/security-center/insights",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListInsightsForZoneRequest",
 }) as any as S.Schema<ListInsightsForZoneRequest>;
@@ -2096,7 +2149,7 @@ export const ListInsightsForZoneResponse = /*@__PURE__*/ S.suspend(() =>
     issues: S.optional(InsightsListForZoneResponseIssuesList),
     page: S.optional(S.Number),
     perPage: S.optional(S.Number.pipe(T.Body("per_page"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListInsightsForZoneResponse",
 }) as any as S.Schema<ListInsightsForZoneResponse>;
@@ -2127,20 +2180,24 @@ export const PatchInsightClassificationForAccountRequest =
         InsightsClassificationUpdateForAccountRequestClassification,
       ),
       rationale: S.optional(S.String),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "/accounts/{account_id}/security-center/insights/{issue_id}/classification",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "PATCH",
+          uri: "/accounts/{account_id}/security-center/insights/{issue_id}/classification",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "PatchInsightClassificationForAccountRequest",
   }) as any as S.Schema<PatchInsightClassificationForAccountRequest>;
 
 export interface PatchInsightClassificationForAccountResponse {}
 export const PatchInsightClassificationForAccountResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  ).annotate({
     identifier: "PatchInsightClassificationForAccountResponse",
   }) as any as S.Schema<PatchInsightClassificationForAccountResponse>;
 
@@ -2170,20 +2227,24 @@ export const PatchInsightClassificationForZoneRequest = /*@__PURE__*/ S.suspend(
         InsightsClassificationUpdateForZoneRequestClassification,
       ),
       rationale: S.optional(S.String),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "/zones/{zone_id}/security-center/insights/{issue_id}/classification",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "PATCH",
+          uri: "/zones/{zone_id}/security-center/insights/{issue_id}/classification",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchInsightClassificationForZoneRequest",
 }) as any as S.Schema<PatchInsightClassificationForZoneRequest>;
 
 export interface PatchInsightClassificationForZoneResponse {}
 export const PatchInsightClassificationForZoneResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  ).annotate({
     identifier: "PatchInsightClassificationForZoneResponse",
   }) as any as S.Schema<PatchInsightClassificationForZoneResponse>;
 

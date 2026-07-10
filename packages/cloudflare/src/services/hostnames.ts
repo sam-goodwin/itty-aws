@@ -14,6 +14,12 @@ import * as Retry from "../retry.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
+/** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
+const KEY_DICTIONARY: Record<string, string> = {
+  createdAt: "created_at",
+  updatedAt: "updated_at",
+};
+
 export class AdvancedCertificateManagerRequired extends T.applyErrorMatchers(
   S.TaggedErrorClass<AdvancedCertificateManagerRequired>()(
     "AdvancedCertificateManagerRequired",
@@ -64,13 +70,15 @@ export const DeleteSettingTlsRequest = /*@__PURE__*/ S.suspend(() =>
     zoneId: S.String.pipe(T.Label("zone_id")),
     settingId: SettingsTlsDeleteRequestSettingId.pipe(T.Label("setting_id")),
     hostname: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/zones/{zone_id}/hostnames/settings/{setting_id}/{hostname}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/zones/{zone_id}/hostnames/settings/{setting_id}/{hostname}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteSettingTlsRequest",
 }) as any as S.Schema<DeleteSettingTlsRequest>;
@@ -111,7 +119,7 @@ export const DeleteSettingTlsResponse = /*@__PURE__*/ S.suspend(() =>
     status: S.optional(S.String),
     updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
     value: S.optional(SettingsTlsDeleteResponseValue),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteSettingTlsResponse",
 }) as any as S.Schema<DeleteSettingTlsResponse>;
@@ -133,13 +141,15 @@ export const GetSettingTlsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     settingId: SettingsTlsGetRequestSettingId.pipe(T.Label("setting_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/hostnames/settings/{setting_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/hostnames/settings/{setting_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetSettingTlsRequest",
 }) as any as S.Schema<GetSettingTlsRequest>;
@@ -199,7 +209,7 @@ export const GetSettingTlsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: SettingsTlsGetResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetSettingTlsResponse",
 }) as any as S.Schema<GetSettingTlsResponse>;
@@ -243,13 +253,15 @@ export const PutSettingTlsRequest = /*@__PURE__*/ S.suspend(() =>
     settingId: SettingsTlsUpdateRequestSettingId.pipe(T.Label("setting_id")),
     hostname: S.String.pipe(T.Label()),
     value: SettingsTlsUpdateRequestValue,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/zones/{zone_id}/hostnames/settings/{setting_id}/{hostname}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/zones/{zone_id}/hostnames/settings/{setting_id}/{hostname}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutSettingTlsRequest",
 }) as any as S.Schema<PutSettingTlsRequest>;
@@ -290,7 +302,7 @@ export const PutSettingTlsResponse = /*@__PURE__*/ S.suspend(() =>
     status: S.optional(S.String),
     updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
     value: S.optional(SettingsTlsUpdateResponseValue),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutSettingTlsResponse",
 }) as any as S.Schema<PutSettingTlsResponse>;

@@ -14,6 +14,17 @@ import * as Retry from "../retry.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
+/** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
+const KEY_DICTIONARY: Record<string, string> = {
+  allowOutOfRegionAccess: "allow_out_of_region_access",
+  createdAt: "created_at",
+  datasetId: "dataset_id",
+  objectId: "object_id",
+  objectType: "object_type",
+  timestampField: "timestamp_field",
+  updatedAt: "updated_at",
+};
+
 export class CmbConfigNotFound extends T.applyErrorMatchers(
   S.TaggedErrorClass<CmbConfigNotFound>()("CmbConfigNotFound", {
     code: S.Number,
@@ -53,13 +64,15 @@ export const CreateControlCmbConfigRequest = /*@__PURE__*/ S.suspend(() =>
       S.Boolean.pipe(T.Body("allow_out_of_region_access")),
     ),
     regions: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/logs/control/cmb/config",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/logs/control/cmb/config",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateControlCmbConfigRequest",
 }) as any as S.Schema<CreateControlCmbConfigRequest>;
@@ -77,7 +90,7 @@ export const CreateControlCmbConfigResponse = /*@__PURE__*/ S.suspend(() =>
       S.Boolean.pipe(T.Body("allow_out_of_region_access")),
     ),
     regions: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateControlCmbConfigResponse",
 }) as any as S.Schema<CreateControlCmbConfigResponse>;
@@ -92,13 +105,15 @@ export const CreateControlRetentionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     flag: S.optional(S.Boolean),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/zones/{zone_id}/logs/control/retention/flag",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/zones/{zone_id}/logs/control/retention/flag",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateControlRetentionRequest",
 }) as any as S.Schema<CreateControlRetentionRequest>;
@@ -111,7 +126,7 @@ export interface CreateControlRetentionResponse {
 export const CreateControlRetentionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     flag: S.optional(S.Boolean),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateControlRetentionResponse",
 }) as any as S.Schema<CreateControlRetentionResponse>;
@@ -153,13 +168,15 @@ export const CreateLogExplorerDatasetForAccountRequest =
       accountId: S.String.pipe(T.Label("account_id")),
       dataset: S.String,
       fields: S.optional(LogExplorerDatasetsCreateForAccountRequestFieldsList),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/accounts/{account_id}/logs/explorer/datasets",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "POST",
+          uri: "/accounts/{account_id}/logs/explorer/datasets",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "CreateLogExplorerDatasetForAccountRequest",
   }) as any as S.Schema<CreateLogExplorerDatasetForAccountRequest>;
@@ -226,7 +243,7 @@ export const CreateLogExplorerDatasetForAccountResponse =
       ),
       updatedAt: S.String.pipe(T.Body("updated_at")),
       fields: S.optional(LogExplorerDatasetsCreateForAccountResponseFieldsList),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "CreateLogExplorerDatasetForAccountResponse",
   }) as any as S.Schema<CreateLogExplorerDatasetForAccountResponse>;
@@ -268,13 +285,15 @@ export const CreateLogExplorerDatasetForZoneRequest = /*@__PURE__*/ S.suspend(
       zoneId: S.String.pipe(T.Label("zone_id")),
       dataset: S.String,
       fields: S.optional(LogExplorerDatasetsCreateForZoneRequestFieldsList),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/zones/{zone_id}/logs/explorer/datasets",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "POST",
+          uri: "/zones/{zone_id}/logs/explorer/datasets",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateLogExplorerDatasetForZoneRequest",
 }) as any as S.Schema<CreateLogExplorerDatasetForZoneRequest>;
@@ -341,7 +360,7 @@ export const CreateLogExplorerDatasetForZoneResponse = /*@__PURE__*/ S.suspend(
       ),
       updatedAt: S.String.pipe(T.Body("updated_at")),
       fields: S.optional(LogExplorerDatasetsCreateForZoneResponseFieldsList),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateLogExplorerDatasetForZoneResponse",
 }) as any as S.Schema<CreateLogExplorerDatasetForZoneResponse>;
@@ -353,13 +372,15 @@ export interface DeleteControlCmbConfigRequest {
 export const DeleteControlCmbConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/logs/control/cmb/config",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/logs/control/cmb/config",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteControlCmbConfigRequest",
 }) as any as S.Schema<DeleteControlCmbConfigRequest>;
@@ -371,7 +392,7 @@ export interface DeleteControlCmbConfigResponse {
 export const DeleteControlCmbConfigResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteControlCmbConfigResponse",
 }) as any as S.Schema<DeleteControlCmbConfigResponse>;
@@ -383,13 +404,15 @@ export interface GetControlCmbConfigRequest {
 export const GetControlCmbConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/logs/control/cmb/config",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/logs/control/cmb/config",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetControlCmbConfigRequest",
 }) as any as S.Schema<GetControlCmbConfigRequest>;
@@ -407,7 +430,7 @@ export const GetControlCmbConfigResponse = /*@__PURE__*/ S.suspend(() =>
       S.Boolean.pipe(T.Body("allow_out_of_region_access")),
     ),
     regions: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetControlCmbConfigResponse",
 }) as any as S.Schema<GetControlCmbConfigResponse>;
@@ -419,13 +442,15 @@ export interface GetControlRetentionRequest {
 export const GetControlRetentionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/logs/control/retention/flag",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/logs/control/retention/flag",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetControlRetentionRequest",
 }) as any as S.Schema<GetControlRetentionRequest>;
@@ -438,7 +463,7 @@ export interface GetControlRetentionResponse {
 export const GetControlRetentionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     flag: S.optional(S.Boolean),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetControlRetentionResponse",
 }) as any as S.Schema<GetControlRetentionResponse>;
@@ -453,13 +478,15 @@ export const GetLogExplorerDatasetForAccountRequest = /*@__PURE__*/ S.suspend(
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
       datasetId: S.String.pipe(T.Label("dataset_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/accounts/{account_id}/logs/explorer/datasets/{dataset_id}",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "GET",
+          uri: "/accounts/{account_id}/logs/explorer/datasets/{dataset_id}",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetLogExplorerDatasetForAccountRequest",
 }) as any as S.Schema<GetLogExplorerDatasetForAccountRequest>;
@@ -526,7 +553,7 @@ export const GetLogExplorerDatasetForAccountResponse = /*@__PURE__*/ S.suspend(
       ),
       updatedAt: S.String.pipe(T.Body("updated_at")),
       fields: S.optional(LogExplorerDatasetsGetForAccountResponseFieldsList),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetLogExplorerDatasetForAccountResponse",
 }) as any as S.Schema<GetLogExplorerDatasetForAccountResponse>;
@@ -540,13 +567,15 @@ export const GetLogExplorerDatasetForZoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     datasetId: S.String.pipe(T.Label("dataset_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/logs/explorer/datasets/{dataset_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/logs/explorer/datasets/{dataset_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetLogExplorerDatasetForZoneRequest",
 }) as any as S.Schema<GetLogExplorerDatasetForZoneRequest>;
@@ -613,7 +642,7 @@ export const GetLogExplorerDatasetForZoneResponse = /*@__PURE__*/ S.suspend(
       ),
       updatedAt: S.String.pipe(T.Body("updated_at")),
       fields: S.optional(LogExplorerDatasetsGetForZoneResponseFieldsList),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetLogExplorerDatasetForZoneResponse",
 }) as any as S.Schema<GetLogExplorerDatasetForZoneResponse>;
@@ -641,13 +670,15 @@ export const GetRayidRequest = /*@__PURE__*/ S.suspend(() =>
     rayId: S.String.pipe(T.Label("ray_id")),
     fields: S.optional(S.String.pipe(T.Query())),
     timestamps: S.optional(RayidGetRequestTimestamps.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/logs/rayids/{ray_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/logs/rayids/{ray_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetRayidRequest",
 }) as any as S.Schema<GetRayidRequest>;
@@ -661,7 +692,7 @@ export const GetRayidResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     string: S.Unknown,
     unknown: S.Unknown,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetRayidResponse",
 }) as any as S.Schema<GetRayidResponse>;
@@ -698,9 +729,15 @@ export const GetReceivedRequest = /*@__PURE__*/ S.suspend(() =>
     sample: S.optional(S.Number.pipe(T.Query())),
     start: S.optional(S.String.pipe(T.Query())),
     timestamps: S.optional(ReceivedGetRequestTimestamps.pipe(T.Query())),
-  }).pipe(
-    T.Http({ method: "GET", uri: "/zones/{zone_id}/logs/received", code: 200 }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/logs/received",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetReceivedRequest",
 }) as any as S.Schema<GetReceivedRequest>;
@@ -714,7 +751,7 @@ export const GetReceivedResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     string: S.Unknown,
     unknown: S.Unknown,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetReceivedResponse",
 }) as any as S.Schema<GetReceivedResponse>;
@@ -726,13 +763,15 @@ export interface GetReceivedFieldRequest {
 export const GetReceivedFieldRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/logs/received/fields",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/logs/received/fields",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetReceivedFieldRequest",
 }) as any as S.Schema<GetReceivedFieldRequest>;
@@ -744,7 +783,7 @@ export interface GetReceivedFieldResponse {
 export const GetReceivedFieldResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetReceivedFieldResponse",
 }) as any as S.Schema<GetReceivedFieldResponse>;
@@ -757,13 +796,15 @@ export const ListLogExplorerDatasetAvailablesForAccountRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/accounts/{account_id}/logs/explorer/datasets/available",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "GET",
+          uri: "/accounts/{account_id}/logs/explorer/datasets/available",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "ListLogExplorerDatasetAvailablesForAccountRequest",
   }) as any as S.Schema<ListLogExplorerDatasetAvailablesForAccountRequest>;
@@ -778,7 +819,7 @@ export const ListLogExplorerDatasetAvailablesForAccountResponse =
       AvailableListObjectErrorsMessagesSuccessResult__: S.Unknown.pipe(
         T.Body("AvailableList object { errors, messages, success, result }"),
       ),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "ListLogExplorerDatasetAvailablesForAccountResponse",
   }) as any as S.Schema<ListLogExplorerDatasetAvailablesForAccountResponse>;
@@ -791,13 +832,15 @@ export const ListLogExplorerDatasetAvailablesForZoneRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       zoneId: S.String.pipe(T.Label("zone_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/zones/{zone_id}/logs/explorer/datasets/available",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "GET",
+          uri: "/zones/{zone_id}/logs/explorer/datasets/available",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "ListLogExplorerDatasetAvailablesForZoneRequest",
   }) as any as S.Schema<ListLogExplorerDatasetAvailablesForZoneRequest>;
@@ -812,7 +855,7 @@ export const ListLogExplorerDatasetAvailablesForZoneResponse =
       AvailableListObjectErrorsMessagesSuccessResult__: S.Unknown.pipe(
         T.Body("AvailableList object { errors, messages, success, result }"),
       ),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "ListLogExplorerDatasetAvailablesForZoneResponse",
   }) as any as S.Schema<ListLogExplorerDatasetAvailablesForZoneResponse>;
@@ -828,13 +871,15 @@ export const ListLogExplorerDatasetsForAccountRequest = /*@__PURE__*/ S.suspend(
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
       includeZones: S.optional(S.Boolean.pipe(T.Query("include_zones"))),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/accounts/{account_id}/logs/explorer/datasets",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "GET",
+          uri: "/accounts/{account_id}/logs/explorer/datasets",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListLogExplorerDatasetsForAccountRequest",
 }) as any as S.Schema<ListLogExplorerDatasetsForAccountRequest>;
@@ -899,7 +944,7 @@ export const ListLogExplorerDatasetsForAccountResponse =
         T.EnvelopePayload(),
       ),
       resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "ListLogExplorerDatasetsForAccountResponse",
   }) as any as S.Schema<ListLogExplorerDatasetsForAccountResponse>;
@@ -915,13 +960,15 @@ export const ListLogExplorerDatasetsForZoneRequest = /*@__PURE__*/ S.suspend(
     S.Struct({
       zoneId: S.String.pipe(T.Label("zone_id")),
       includeZones: S.optional(S.Boolean.pipe(T.Query("include_zones"))),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/zones/{zone_id}/logs/explorer/datasets",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "GET",
+          uri: "/zones/{zone_id}/logs/explorer/datasets",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListLogExplorerDatasetsForZoneRequest",
 }) as any as S.Schema<ListLogExplorerDatasetsForZoneRequest>;
@@ -985,7 +1032,7 @@ export const ListLogExplorerDatasetsForZoneResponse = /*@__PURE__*/ S.suspend(
         T.EnvelopePayload(),
       ),
       resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListLogExplorerDatasetsForZoneResponse",
 }) as any as S.Schema<ListLogExplorerDatasetsForZoneResponse>;
@@ -998,13 +1045,15 @@ export const SqlLogExplorerQueryForAccountRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/accounts/{account_id}/logs/explorer/query/sql",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "POST",
+          uri: "/accounts/{account_id}/logs/explorer/query/sql",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "SqlLogExplorerQueryForAccountRequest",
 }) as any as S.Schema<SqlLogExplorerQueryForAccountRequest>;
@@ -1035,7 +1084,7 @@ export const SqlLogExplorerQueryForAccountResponse = /*@__PURE__*/ S.suspend(
     S.Struct({
       result: LogExplorerQuerySqlForAccountResultList.pipe(T.EnvelopePayload()),
       resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "SqlLogExplorerQueryForAccountResponse",
 }) as any as S.Schema<SqlLogExplorerQueryForAccountResponse>;
@@ -1047,13 +1096,15 @@ export interface SqlLogExplorerQueryForZoneRequest {
 export const SqlLogExplorerQueryForZoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/zones/{zone_id}/logs/explorer/query/sql",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/zones/{zone_id}/logs/explorer/query/sql",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "SqlLogExplorerQueryForZoneRequest",
 }) as any as S.Schema<SqlLogExplorerQueryForZoneRequest>;
@@ -1082,7 +1133,7 @@ export const SqlLogExplorerQueryForZoneResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: LogExplorerQuerySqlForZoneResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "SqlLogExplorerQueryForZoneResponse",
 }) as any as S.Schema<SqlLogExplorerQueryForZoneResponse>;
@@ -1126,13 +1177,15 @@ export const UpdateLogExplorerDatasetForAccountRequest =
       datasetId: S.String.pipe(T.Label("dataset_id")),
       enabled: S.Boolean,
       fields: S.optional(LogExplorerDatasetsUpdateForAccountRequestFieldsList),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/accounts/{account_id}/logs/explorer/datasets/{dataset_id}",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "PUT",
+          uri: "/accounts/{account_id}/logs/explorer/datasets/{dataset_id}",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "UpdateLogExplorerDatasetForAccountRequest",
   }) as any as S.Schema<UpdateLogExplorerDatasetForAccountRequest>;
@@ -1199,7 +1252,7 @@ export const UpdateLogExplorerDatasetForAccountResponse =
       ),
       updatedAt: S.String.pipe(T.Body("updated_at")),
       fields: S.optional(LogExplorerDatasetsUpdateForAccountResponseFieldsList),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "UpdateLogExplorerDatasetForAccountResponse",
   }) as any as S.Schema<UpdateLogExplorerDatasetForAccountResponse>;
@@ -1243,13 +1296,15 @@ export const UpdateLogExplorerDatasetForZoneRequest = /*@__PURE__*/ S.suspend(
       datasetId: S.String.pipe(T.Label("dataset_id")),
       enabled: S.Boolean,
       fields: S.optional(LogExplorerDatasetsUpdateForZoneRequestFieldsList),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/zones/{zone_id}/logs/explorer/datasets/{dataset_id}",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "PUT",
+          uri: "/zones/{zone_id}/logs/explorer/datasets/{dataset_id}",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateLogExplorerDatasetForZoneRequest",
 }) as any as S.Schema<UpdateLogExplorerDatasetForZoneRequest>;
@@ -1316,7 +1371,7 @@ export const UpdateLogExplorerDatasetForZoneResponse = /*@__PURE__*/ S.suspend(
       ),
       updatedAt: S.String.pipe(T.Body("updated_at")),
       fields: S.optional(LogExplorerDatasetsUpdateForZoneResponseFieldsList),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateLogExplorerDatasetForZoneResponse",
 }) as any as S.Schema<UpdateLogExplorerDatasetForZoneResponse>;

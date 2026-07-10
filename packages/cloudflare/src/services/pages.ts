@@ -14,6 +14,87 @@ import * as Retry from "../retry.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
+/** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
+const KEY_DICTIONARY: Record<string, string> = {
+  aiBindings: "ai_bindings",
+  alwaysUseLatestCompatibilityDate: "always_use_latest_compatibility_date",
+  analyticsEngineDatasets: "analytics_engine_datasets",
+  buildCaching: "build_caching",
+  buildCommand: "build_command",
+  buildConfig: "build_config",
+  buildImageMajorVersion: "build_image_major_version",
+  canonicalDeployment: "canonical_deployment",
+  certificateAuthority: "certificate_authority",
+  commitDirty: "commit_dirty",
+  commitHash: "commit_hash",
+  commitMessage: "commit_message",
+  compatibilityDate: "compatibility_date",
+  compatibilityFlags: "compatibility_flags",
+  cpuMs: "cpu_ms",
+  createdOn: "created_on",
+  d1Databases: "d1_databases",
+  deploymentConfigs: "deployment_configs",
+  deploymentTrigger: "deployment_trigger",
+  deploymentsEnabled: "deployments_enabled",
+  destinationDir: "destination_dir",
+  domainId: "domain_id",
+  durableObjectNamespaces: "durable_object_namespaces",
+  endedOn: "ended_on",
+  envVars: "env_vars",
+  errorMessage: "error_message",
+  failOpen: "fail_open",
+  frameworkVersion: "framework_version",
+  functionsFilepathRoutingConfigJson: "functions-filepath-routing-config.json",
+  headers: "_headers",
+  hyperdriveBindings: "hyperdrive_bindings",
+  includesContainerLogs: "includes_container_logs",
+  isSkipped: "is_skipped",
+  kvNamespaces: "kv_namespaces",
+  latestDeployment: "latest_deployment",
+  latestStage: "latest_stage",
+  modifiedOn: "modified_on",
+  mtlsCertificates: "mtls_certificates",
+  ownerId: "owner_id",
+  pagesBuildOutputDir: "pages_build_output_dir",
+  pathExcludes: "path_excludes",
+  pathIncludes: "path_includes",
+  perPage: "per_page",
+  prCommentsEnabled: "pr_comments_enabled",
+  previewBranchExcludes: "preview_branch_excludes",
+  previewBranchIncludes: "preview_branch_includes",
+  previewDeploymentSetting: "preview_deployment_setting",
+  previewScriptName: "preview_script_name",
+  productionBranch: "production_branch",
+  productionDeploymentsEnabled: "production_deployments_enabled",
+  productionScriptName: "production_script_name",
+  projectId: "project_id",
+  projectName: "project_name",
+  queueProducers: "queue_producers",
+  r2Buckets: "r2_buckets",
+  redirects: "_redirects",
+  repoId: "repo_id",
+  repoName: "repo_name",
+  resultInfo: "result_info",
+  rootDir: "root_dir",
+  routesJson: "_routes.json",
+  shortId: "short_id",
+  startedOn: "started_on",
+  totalCount: "total_count",
+  txtName: "txt_name",
+  txtValue: "txt_value",
+  usageModel: "usage_model",
+  usesFunctions: "uses_functions",
+  validationData: "validation_data",
+  vectorizeBindings: "vectorize_bindings",
+  verificationData: "verification_data",
+  webAnalyticsTag: "web_analytics_tag",
+  webAnalyticsToken: "web_analytics_token",
+  workerBundle: "_worker.bundle",
+  workerJs: "_worker.js",
+  wranglerConfigHash: "wrangler_config_hash",
+  zoneTag: "zone_tag",
+};
+
 export class ActiveProductionDeployment extends T.applyErrorMatchers(
   S.TaggedErrorClass<ActiveProductionDeployment>()(
     "ActiveProductionDeployment",
@@ -862,13 +943,15 @@ export const CreateProjectRequest = /*@__PURE__*/ S.suspend(() =>
       ProjectsCreateRequestDeploymentConfigs.pipe(T.Body("deployment_configs")),
     ),
     source: S.optional(ProjectsCreateRequestSource),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/pages/projects",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/pages/projects",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateProjectRequest",
 }) as any as S.Schema<CreateProjectRequest>;
@@ -2047,7 +2130,7 @@ export const CreateProjectResponse = /*@__PURE__*/ S.suspend(() =>
     domains: S.optional(ProjectsCreateResponseDomainsList),
     source: S.optional(ProjectsCreateResponseSource),
     subdomain: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateProjectResponse",
 }) as any as S.Schema<CreateProjectResponse>;
@@ -2096,14 +2179,16 @@ export const CreateProjectDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
     functionsFilepathRoutingConfigJson: S.optional(
       S.Unknown.pipe(T.Body("functions-filepath-routing-config.json")),
     ),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/pages/projects/{project_name}/deployments",
-      code: 200,
-      contentType: "multipart",
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/pages/projects/{project_name}/deployments",
+        code: 200,
+        contentType: "multipart",
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateProjectDeploymentRequest",
 }) as any as S.Schema<CreateProjectDeploymentRequest>;
@@ -2472,7 +2557,7 @@ export const CreateProjectDeploymentResponse = /*@__PURE__*/ S.suspend(() =>
     stages: ProjectsDeploymentsCreateResponseStagesList,
     url: S.String,
     usesFunctions: S.optional(S.Boolean.pipe(T.Body("uses_functions"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateProjectDeploymentResponse",
 }) as any as S.Schema<CreateProjectDeploymentResponse>;
@@ -2490,13 +2575,15 @@ export const CreateProjectDomainRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     projectName: S.String.pipe(T.Label("project_name")),
     name: S.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/pages/projects/{project_name}/domains",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/pages/projects/{project_name}/domains",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateProjectDomainRequest",
 }) as any as S.Schema<CreateProjectDomainRequest>;
@@ -2603,7 +2690,7 @@ export const CreateProjectDomainResponse = /*@__PURE__*/ S.suspend(() =>
       T.Body("verification_data"),
     ),
     zoneTag: S.String.pipe(T.Body("zone_tag")),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateProjectDomainResponse",
 }) as any as S.Schema<CreateProjectDomainResponse>;
@@ -2618,13 +2705,15 @@ export const DeleteProjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     projectName: S.String.pipe(T.Label("project_name")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/pages/projects/{project_name}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/pages/projects/{project_name}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteProjectRequest",
 }) as any as S.Schema<DeleteProjectRequest>;
@@ -2636,7 +2725,7 @@ export interface DeleteProjectResponse {
 export const DeleteProjectResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteProjectResponse",
 }) as any as S.Schema<DeleteProjectResponse>;
@@ -2657,13 +2746,15 @@ export const DeleteProjectDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
     projectName: S.String.pipe(T.Label("project_name")),
     deploymentId: S.String.pipe(T.Label("deployment_id")),
     force: S.optional(S.Boolean.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/pages/projects/{project_name}/deployments/{deployment_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/pages/projects/{project_name}/deployments/{deployment_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteProjectDeploymentRequest",
 }) as any as S.Schema<DeleteProjectDeploymentRequest>;
@@ -2675,7 +2766,7 @@ export interface DeleteProjectDeploymentResponse {
 export const DeleteProjectDeploymentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteProjectDeploymentResponse",
 }) as any as S.Schema<DeleteProjectDeploymentResponse>;
@@ -2693,13 +2784,15 @@ export const DeleteProjectDomainRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     projectName: S.String.pipe(T.Label("project_name")),
     domainName: S.String.pipe(T.Label("domain_name")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/pages/projects/{project_name}/domains/{domain_name}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/pages/projects/{project_name}/domains/{domain_name}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteProjectDomainRequest",
 }) as any as S.Schema<DeleteProjectDomainRequest>;
@@ -2711,7 +2804,7 @@ export interface DeleteProjectDomainResponse {
 export const DeleteProjectDomainResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteProjectDomainResponse",
 }) as any as S.Schema<DeleteProjectDomainResponse>;
@@ -2726,13 +2819,15 @@ export const GetProjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     projectName: S.String.pipe(T.Label("project_name")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/pages/projects/{project_name}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/pages/projects/{project_name}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetProjectRequest",
 }) as any as S.Schema<GetProjectRequest>;
@@ -3906,7 +4001,7 @@ export const GetProjectResponse = /*@__PURE__*/ S.suspend(() =>
     domains: S.optional(ProjectsGetResponseDomainsList),
     source: S.optional(ProjectsGetResponseSource),
     subdomain: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetProjectResponse",
 }) as any as S.Schema<GetProjectResponse>;
@@ -3924,13 +4019,15 @@ export const GetProjectDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     projectName: S.String.pipe(T.Label("project_name")),
     deploymentId: S.String.pipe(T.Label("deployment_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/pages/projects/{project_name}/deployments/{deployment_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/pages/projects/{project_name}/deployments/{deployment_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetProjectDeploymentRequest",
 }) as any as S.Schema<GetProjectDeploymentRequest>;
@@ -4292,7 +4389,7 @@ export const GetProjectDeploymentResponse = /*@__PURE__*/ S.suspend(() =>
     stages: ProjectsDeploymentsGetResponseStagesList,
     url: S.String,
     usesFunctions: S.optional(S.Boolean.pipe(T.Body("uses_functions"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetProjectDeploymentResponse",
 }) as any as S.Schema<GetProjectDeploymentResponse>;
@@ -4311,13 +4408,15 @@ export const GetProjectDeploymentHistoryLogRequest = /*@__PURE__*/ S.suspend(
       accountId: S.String.pipe(T.Label("account_id")),
       projectName: S.String.pipe(T.Label("project_name")),
       deploymentId: S.String.pipe(T.Label("deployment_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/accounts/{account_id}/pages/projects/{project_name}/deployments/{deployment_id}/history/logs",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "GET",
+          uri: "/accounts/{account_id}/pages/projects/{project_name}/deployments/{deployment_id}/history/logs",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetProjectDeploymentHistoryLogRequest",
 }) as any as S.Schema<GetProjectDeploymentHistoryLogRequest>;
@@ -4355,7 +4454,7 @@ export const GetProjectDeploymentHistoryLogResponse = /*@__PURE__*/ S.suspend(
       data: ProjectsDeploymentsHistoryLogsGetResponseDataList,
       includesContainerLogs: S.Boolean.pipe(T.Body("includes_container_logs")),
       total: S.Number,
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetProjectDeploymentHistoryLogResponse",
 }) as any as S.Schema<GetProjectDeploymentHistoryLogResponse>;
@@ -4373,13 +4472,15 @@ export const GetProjectDomainRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     projectName: S.String.pipe(T.Label("project_name")),
     domainName: S.String.pipe(T.Label("domain_name")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/pages/projects/{project_name}/domains/{domain_name}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/pages/projects/{project_name}/domains/{domain_name}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetProjectDomainRequest",
 }) as any as S.Schema<GetProjectDomainRequest>;
@@ -4485,7 +4586,7 @@ export const GetProjectDomainResponse = /*@__PURE__*/ S.suspend(() =>
       T.Body("verification_data"),
     ),
     zoneTag: S.String.pipe(T.Body("zone_tag")),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetProjectDomainResponse",
 }) as any as S.Schema<GetProjectDomainResponse>;
@@ -4515,13 +4616,15 @@ export const ListProjectDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
     env: S.optional(ProjectsDeploymentsListRequestEnv.pipe(T.Query())),
     page: S.optional(S.Number.pipe(T.Query())),
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/pages/projects/{project_name}/deployments",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/pages/projects/{project_name}/deployments",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListProjectDeploymentsRequest",
 }) as any as S.Schema<ListProjectDeploymentsRequest>;
@@ -4910,7 +5013,7 @@ export const ListProjectDeploymentsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: ProjectsDeploymentsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListProjectDeploymentsResponse",
 }) as any as S.Schema<ListProjectDeploymentsResponse>;
@@ -4925,13 +5028,15 @@ export const ListProjectDomainsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     projectName: S.String.pipe(T.Label("project_name")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/pages/projects/{project_name}/domains",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/pages/projects/{project_name}/domains",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListProjectDomainsRequest",
 }) as any as S.Schema<ListProjectDomainsRequest>;
@@ -5057,7 +5162,7 @@ export const ListProjectDomainsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: ProjectsDomainsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListProjectDomainsResponse",
 }) as any as S.Schema<ListProjectDomainsResponse>;
@@ -5075,13 +5180,15 @@ export const ListProjectsRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     page: S.optional(S.Number.pipe(T.Query())),
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/pages/projects",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/pages/projects",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListProjectsRequest",
 }) as any as S.Schema<ListProjectsRequest>;
@@ -6279,7 +6386,7 @@ export const ListProjectsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: ProjectsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListProjectsResponse",
 }) as any as S.Schema<ListProjectsResponse>;
@@ -7072,13 +7179,15 @@ export const PatchProjectRequest = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     productionBranch: S.optional(S.String.pipe(T.Body("production_branch"))),
     source: S.optional(ProjectsEditRequestSource),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/accounts/{account_id}/pages/projects/{project_name}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/accounts/{account_id}/pages/projects/{project_name}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchProjectRequest",
 }) as any as S.Schema<PatchProjectRequest>;
@@ -8258,7 +8367,7 @@ export const PatchProjectResponse = /*@__PURE__*/ S.suspend(() =>
     domains: S.optional(ProjectsEditResponseDomainsList),
     source: S.optional(ProjectsEditResponseSource),
     subdomain: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchProjectResponse",
 }) as any as S.Schema<PatchProjectResponse>;
@@ -8276,13 +8385,15 @@ export const PatchProjectDomainRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     projectName: S.String.pipe(T.Label("project_name")),
     domainName: S.String.pipe(T.Label("domain_name")),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/accounts/{account_id}/pages/projects/{project_name}/domains/{domain_name}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/accounts/{account_id}/pages/projects/{project_name}/domains/{domain_name}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchProjectDomainRequest",
 }) as any as S.Schema<PatchProjectDomainRequest>;
@@ -8388,7 +8499,7 @@ export const PatchProjectDomainResponse = /*@__PURE__*/ S.suspend(() =>
       T.Body("verification_data"),
     ),
     zoneTag: S.String.pipe(T.Body("zone_tag")),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchProjectDomainResponse",
 }) as any as S.Schema<PatchProjectDomainResponse>;
@@ -8403,13 +8514,15 @@ export const PurgeBuildCacheProjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     projectName: S.String.pipe(T.Label("project_name")),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/pages/projects/{project_name}/purge_build_cache",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/pages/projects/{project_name}/purge_build_cache",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PurgeBuildCacheProjectRequest",
 }) as any as S.Schema<PurgeBuildCacheProjectRequest>;
@@ -8421,7 +8534,7 @@ export interface PurgeBuildCacheProjectResponse {
 export const PurgeBuildCacheProjectResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PurgeBuildCacheProjectResponse",
 }) as any as S.Schema<PurgeBuildCacheProjectResponse>;
@@ -8439,13 +8552,15 @@ export const RetryProjectDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     projectName: S.String.pipe(T.Label("project_name")),
     deploymentId: S.String.pipe(T.Label("deployment_id")),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/pages/projects/{project_name}/deployments/{deployment_id}/retry",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/pages/projects/{project_name}/deployments/{deployment_id}/retry",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "RetryProjectDeploymentRequest",
 }) as any as S.Schema<RetryProjectDeploymentRequest>;
@@ -8813,7 +8928,7 @@ export const RetryProjectDeploymentResponse = /*@__PURE__*/ S.suspend(() =>
     stages: ProjectsDeploymentsRetryResponseStagesList,
     url: S.String,
     usesFunctions: S.optional(S.Boolean.pipe(T.Body("uses_functions"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "RetryProjectDeploymentResponse",
 }) as any as S.Schema<RetryProjectDeploymentResponse>;
@@ -8831,13 +8946,15 @@ export const RollbackProjectDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     projectName: S.String.pipe(T.Label("project_name")),
     deploymentId: S.String.pipe(T.Label("deployment_id")),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/pages/projects/{project_name}/deployments/{deployment_id}/rollback",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/pages/projects/{project_name}/deployments/{deployment_id}/rollback",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "RollbackProjectDeploymentRequest",
 }) as any as S.Schema<RollbackProjectDeploymentRequest>;
@@ -9207,7 +9324,7 @@ export const RollbackProjectDeploymentResponse = /*@__PURE__*/ S.suspend(() =>
     stages: ProjectsDeploymentsRollbackResponseStagesList,
     url: S.String,
     usesFunctions: S.optional(S.Boolean.pipe(T.Body("uses_functions"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "RollbackProjectDeploymentResponse",
 }) as any as S.Schema<RollbackProjectDeploymentResponse>;

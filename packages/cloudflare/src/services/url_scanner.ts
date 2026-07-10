@@ -12,6 +12,25 @@ import * as Retry from "../retry.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
+/** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
+const KEY_DICTIONARY: Record<string, string> = {
+  aiInput: "ai-input",
+  aiTrain: "ai-train",
+  countryName: "country_name",
+  dnssecValid: "dnssec_valid",
+  id: "_id",
+  initialPriority: "_initialPriority",
+  initiatorType: "_initiator_type",
+  ipv6Percentage: "IPv6Percentage",
+  phishingV2: "phishing_v2",
+  priority: "_priority",
+  requestId: "_requestId",
+  requestTime: "_requestTime",
+  resourceType: "_resourceType",
+  superCategoryId: "super_category_id",
+  transferSize: "_transferSize",
+};
+
 export type ScansBulkCreateRequestBodyItemCustomHeadersMap = {
   [key: string]: unknown | undefined;
 };
@@ -86,13 +105,15 @@ export const BulkCreateScansRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     body: S.optional(ScansBulkCreateRequestBodyList),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/urlscanner/v2/bulk",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/urlscanner/v2/bulk",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "BulkCreateScansRequest",
 }) as any as S.Schema<BulkCreateScansRequest>;
@@ -104,7 +125,7 @@ export interface BulkCreateScansResponse {
 export const BulkCreateScansResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(S.String.pipe(T.EnvelopePayload())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "BulkCreateScansResponse",
 }) as any as S.Schema<BulkCreateScansResponse>;
@@ -171,13 +192,15 @@ export const CreateScanRequest = /*@__PURE__*/ S.suspend(() =>
       ScansCreateRequestScreenshotsResolutionsList,
     ),
     visibility: S.optional(ScansCreateRequestVisibility),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/urlscanner/v2/scan",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/urlscanner/v2/scan",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateScanRequest",
 }) as any as S.Schema<CreateScanRequest>;
@@ -189,7 +212,7 @@ export interface CreateScanResponse {
 export const CreateScanResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(S.String.pipe(T.EnvelopePayload())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateScanResponse",
 }) as any as S.Schema<CreateScanResponse>;
@@ -204,18 +227,20 @@ export const DomScanRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     scanId: S.String.pipe(T.Label("scan_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/urlscanner/v2/dom/{scan_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/urlscanner/v2/dom/{scan_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "DomScanRequest" }) as any as S.Schema<DomScanRequest>;
 
 export interface DomScanResponse {}
 export const DomScanResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
+  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DomScanResponse",
 }) as any as S.Schema<DomScanResponse>;
@@ -230,20 +255,22 @@ export const GetResponsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     responseId: S.String.pipe(T.Label("response_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/urlscanner/v2/responses/{response_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/urlscanner/v2/responses/{response_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetResponsRequest",
 }) as any as S.Schema<GetResponsRequest>;
 
 export interface GetResponsResponse {}
 export const GetResponsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
+  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetResponsResponse",
 }) as any as S.Schema<GetResponsResponse>;
@@ -258,13 +285,15 @@ export const GetScanRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     scanId: S.String.pipe(T.Label("scan_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/urlscanner/v2/result/{scan_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/urlscanner/v2/result/{scan_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "GetScanRequest" }) as any as S.Schema<GetScanRequest>;
 
 export interface ScansGetResponseDataConsoleItemMessage {
@@ -4453,7 +4482,7 @@ export const GetScanResponse = /*@__PURE__*/ S.suspend(() =>
     stats: ScansGetResponseStats,
     task: ScansGetResponseTask,
     verdicts: ScansGetResponseVerdicts,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetScanResponse",
 }) as any as S.Schema<GetScanResponse>;
@@ -4468,13 +4497,15 @@ export const HarScanRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     scanId: S.String.pipe(T.Label("scan_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/urlscanner/v2/har/{scan_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/urlscanner/v2/har/{scan_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "HarScanRequest" }) as any as S.Schema<HarScanRequest>;
 
 export interface ScansHarResponseLogCreator {
@@ -4702,7 +4733,7 @@ export interface HarScanResponse {
 export const HarScanResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     log: ScansHarResponseLog,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "HarScanResponse",
 }) as any as S.Schema<HarScanResponse>;
@@ -4720,13 +4751,15 @@ export const ListScansRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     q: S.optional(S.String.pipe(T.Query())),
     size: S.optional(S.Number.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/urlscanner/v2/search",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/urlscanner/v2/search",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListScansRequest",
 }) as any as S.Schema<ListScansRequest>;
@@ -4827,7 +4860,7 @@ export interface ListScansResponse {
 export const ListScansResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: ScansListResponseResultsList,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListScansResponse",
 }) as any as S.Schema<ListScansResponse>;
@@ -4852,20 +4885,22 @@ export const ScreenshotScanRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     scanId: S.String.pipe(T.Label("scan_id")),
     resolution: S.optional(ScansScreenshotRequestResolution.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/urlscanner/v2/screenshots/{scan_id}.png",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/urlscanner/v2/screenshots/{scan_id}.png",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ScreenshotScanRequest",
 }) as any as S.Schema<ScreenshotScanRequest>;
 
 export interface ScreenshotScanResponse {}
 export const ScreenshotScanResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
+  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ScreenshotScanResponse",
 }) as any as S.Schema<ScreenshotScanResponse>;

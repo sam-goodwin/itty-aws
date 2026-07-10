@@ -14,6 +14,17 @@ import * as Retry from "../retry.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
+/** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
+const KEY_DICTIONARY: Record<string, string> = {
+  expiresOn: "expires_on",
+  perPage: "per_page",
+  requestType: "request_type",
+  requestedValidity: "requested_validity",
+  resultInfo: "result_info",
+  revokedAt: "revoked_at",
+  totalCount: "total_count",
+};
+
 export class CertificateAlreadyRevoked extends T.applyErrorMatchers(
   S.TaggedErrorClass<CertificateAlreadyRevoked>()("CertificateAlreadyRevoked", {
     code: S.Number,
@@ -103,7 +114,9 @@ export const CreateOriginCaCertificateRequest = /*@__PURE__*/ S.suspend(() =>
     requestedValidity: S.optional(
       CreateRequestRequestedValidity.pipe(T.Body("requested_validity")),
     ),
-  }).pipe(T.Http({ method: "POST", uri: "/certificates", code: 200 })),
+  })
+    .pipe(T.Http({ method: "POST", uri: "/certificates", code: 200 }))
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateOriginCaCertificateRequest",
 }) as any as S.Schema<CreateOriginCaCertificateRequest>;
@@ -164,7 +177,7 @@ export const CreateOriginCaCertificateResponse = /*@__PURE__*/ S.suspend(() =>
     id: S.optional(S.String),
     certificate: S.optional(S.String),
     expiresOn: S.optional(S.String.pipe(T.Body("expires_on"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateOriginCaCertificateResponse",
 }) as any as S.Schema<CreateOriginCaCertificateResponse>;
@@ -176,13 +189,15 @@ export interface DeleteOriginCaCertificateRequest {
 export const DeleteOriginCaCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     certificateId: S.String.pipe(T.Label("certificate_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/certificates/{certificate_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/certificates/{certificate_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteOriginCaCertificateRequest",
 }) as any as S.Schema<DeleteOriginCaCertificateRequest>;
@@ -198,7 +213,7 @@ export const DeleteOriginCaCertificateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     revokedAt: S.optional(S.String.pipe(T.Body("revoked_at"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteOriginCaCertificateResponse",
 }) as any as S.Schema<DeleteOriginCaCertificateResponse>;
@@ -210,9 +225,15 @@ export interface GetOriginCaCertificateRequest {
 export const GetOriginCaCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     certificateId: S.String.pipe(T.Label("certificate_id")),
-  }).pipe(
-    T.Http({ method: "GET", uri: "/certificates/{certificate_id}", code: 200 }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/certificates/{certificate_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetOriginCaCertificateRequest",
 }) as any as S.Schema<GetOriginCaCertificateRequest>;
@@ -273,7 +294,7 @@ export const GetOriginCaCertificateResponse = /*@__PURE__*/ S.suspend(() =>
     id: S.optional(S.String),
     certificate: S.optional(S.String),
     expiresOn: S.optional(S.String.pipe(T.Body("expires_on"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetOriginCaCertificateResponse",
 }) as any as S.Schema<GetOriginCaCertificateResponse>;
@@ -297,7 +318,9 @@ export const ListOriginCaCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
     offset: S.optional(S.Number.pipe(T.Query())),
     page: S.optional(S.Number.pipe(T.Query())),
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-  }).pipe(T.Http({ method: "GET", uri: "/certificates", code: 200 })),
+  })
+    .pipe(T.Http({ method: "GET", uri: "/certificates", code: 200 }))
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListOriginCaCertificatesRequest",
 }) as any as S.Schema<ListOriginCaCertificatesRequest>;
@@ -375,7 +398,7 @@ export const ListOriginCaCertificatesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: ListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListOriginCaCertificatesResponse",
 }) as any as S.Schema<ListOriginCaCertificatesResponse>;

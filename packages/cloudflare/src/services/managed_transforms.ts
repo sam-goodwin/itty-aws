@@ -12,6 +12,14 @@ import * as Retry from "../retry.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
+/** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
+const KEY_DICTIONARY: Record<string, string> = {
+  conflictsWith: "conflicts_with",
+  hasConflict: "has_conflict",
+  managedRequestHeaders: "managed_request_headers",
+  managedResponseHeaders: "managed_response_headers",
+};
+
 export class Forbidden extends T.applyErrorMatchers(
   S.TaggedErrorClass<Forbidden>()("Forbidden", {
     code: S.Number,
@@ -27,20 +35,22 @@ export interface DeleteManagedTransformRequest {
 export const DeleteManagedTransformRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/zones/{zone_id}/managed_headers",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/zones/{zone_id}/managed_headers",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteManagedTransformRequest",
 }) as any as S.Schema<DeleteManagedTransformRequest>;
 
 export interface DeleteManagedTransformResponse {}
 export const DeleteManagedTransformResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
+  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteManagedTransformResponse",
 }) as any as S.Schema<DeleteManagedTransformResponse>;
@@ -52,13 +62,15 @@ export interface ListManagedTransformsRequest {
 export const ListManagedTransformsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/managed_headers",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/managed_headers",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListManagedTransformsRequest",
 }) as any as S.Schema<ListManagedTransformsRequest>;
@@ -154,7 +166,7 @@ export const ListManagedTransformsResponse = /*@__PURE__*/ S.suspend(() =>
     managedResponseHeaders: ListResponseManagedResponseHeadersList.pipe(
       T.Body("managed_response_headers"),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListManagedTransformsResponse",
 }) as any as S.Schema<ListManagedTransformsResponse>;
@@ -256,13 +268,15 @@ export const PatchManagedTransformRequest = /*@__PURE__*/ S.suspend(() =>
         T.Body("managed_response_headers"),
       ),
     ),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/zones/{zone_id}/managed_headers",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/zones/{zone_id}/managed_headers",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchManagedTransformRequest",
 }) as any as S.Schema<PatchManagedTransformRequest>;
@@ -358,7 +372,7 @@ export const PatchManagedTransformResponse = /*@__PURE__*/ S.suspend(() =>
     managedResponseHeaders: EditResponseManagedResponseHeadersList.pipe(
       T.Body("managed_response_headers"),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchManagedTransformResponse",
 }) as any as S.Schema<PatchManagedTransformResponse>;

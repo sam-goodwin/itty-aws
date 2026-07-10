@@ -14,6 +14,13 @@ import * as Retry from "../retry.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
+/** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
+const KEY_DICTIONARY: Record<string, string> = {
+  perPage: "per_page",
+  resultInfo: "result_info",
+  totalCount: "total_count",
+};
+
 export type BulkDeleteRequestIdList = string[];
 export const BulkDeleteRequestIdList = /*@__PURE__*/ S.Array(
   S.String,
@@ -28,9 +35,11 @@ export const BulkDeleteFiltersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     id: BulkDeleteRequestIdList.pipe(T.Query()),
-  }).pipe(
-    T.Http({ method: "DELETE", uri: "/zones/{zone_id}/filters", code: 200 }),
-  ),
+  })
+    .pipe(
+      T.Http({ method: "DELETE", uri: "/zones/{zone_id}/filters", code: 200 }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "BulkDeleteFiltersRequest",
 }) as any as S.Schema<BulkDeleteFiltersRequest>;
@@ -59,7 +68,7 @@ export interface BulkDeleteFiltersResponse {
 export const BulkDeleteFiltersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(BulkDeleteResultList.pipe(T.EnvelopePayload())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "BulkDeleteFiltersResponse",
 }) as any as S.Schema<BulkDeleteFiltersResponse>;
@@ -102,9 +111,9 @@ export const BulkPutFiltersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     body: BulkUpdateRequestBodyList,
-  }).pipe(
-    T.Http({ method: "PUT", uri: "/zones/{zone_id}/filters", code: 200 }),
-  ),
+  })
+    .pipe(T.Http({ method: "PUT", uri: "/zones/{zone_id}/filters", code: 200 }))
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "BulkPutFiltersRequest",
 }) as any as S.Schema<BulkPutFiltersRequest>;
@@ -148,7 +157,7 @@ export const BulkPutFiltersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: BulkUpdateResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "BulkPutFiltersResponse",
 }) as any as S.Schema<BulkPutFiltersResponse>;
@@ -191,9 +200,11 @@ export const CreateFilterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     body: CreateRequestBodyList,
-  }).pipe(
-    T.Http({ method: "POST", uri: "/zones/{zone_id}/filters", code: 200 }),
-  ),
+  })
+    .pipe(
+      T.Http({ method: "POST", uri: "/zones/{zone_id}/filters", code: 200 }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateFilterRequest",
 }) as any as S.Schema<CreateFilterRequest>;
@@ -237,7 +248,7 @@ export const CreateFilterResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: CreateResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateFilterResponse",
 }) as any as S.Schema<CreateFilterResponse>;
@@ -252,13 +263,15 @@ export const DeleteFilterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     filterId: S.String.pipe(T.Label("filter_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/zones/{zone_id}/filters/{filter_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/zones/{zone_id}/filters/{filter_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteFilterRequest",
 }) as any as S.Schema<DeleteFilterRequest>;
@@ -271,7 +284,7 @@ export interface DeleteFilterResponse {
 export const DeleteFilterResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteFilterResponse",
 }) as any as S.Schema<DeleteFilterResponse>;
@@ -286,13 +299,15 @@ export const GetFilterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     filterId: S.String.pipe(T.Label("filter_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/filters/{filter_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/filters/{filter_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetFilterRequest",
 }) as any as S.Schema<GetFilterRequest>;
@@ -317,7 +332,7 @@ export const GetFilterResponse = /*@__PURE__*/ S.suspend(() =>
     expression: S.optional(S.String),
     paused: S.optional(S.Boolean),
     ref: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetFilterResponse",
 }) as any as S.Schema<GetFilterResponse>;
@@ -350,9 +365,9 @@ export const ListFiltersRequest = /*@__PURE__*/ S.suspend(() =>
     paused: S.optional(S.Boolean.pipe(T.Query())),
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
     ref: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({ method: "GET", uri: "/zones/{zone_id}/filters", code: 200 }),
-  ),
+  })
+    .pipe(T.Http({ method: "GET", uri: "/zones/{zone_id}/filters", code: 200 }))
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListFiltersRequest",
 }) as any as S.Schema<ListFiltersRequest>;
@@ -394,7 +409,7 @@ export const ListFiltersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: ListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListFiltersResponse",
 }) as any as S.Schema<ListFiltersResponse>;
@@ -421,13 +436,15 @@ export const UpdateFilterRequest = /*@__PURE__*/ S.suspend(() =>
     expression: S.optional(S.String),
     paused: S.optional(S.Boolean),
     ref: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/zones/{zone_id}/filters/{filter_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/zones/{zone_id}/filters/{filter_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateFilterRequest",
 }) as any as S.Schema<UpdateFilterRequest>;
@@ -452,7 +469,7 @@ export const UpdateFilterResponse = /*@__PURE__*/ S.suspend(() =>
     expression: S.optional(S.String),
     paused: S.optional(S.Boolean),
     ref: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateFilterResponse",
 }) as any as S.Schema<UpdateFilterResponse>;

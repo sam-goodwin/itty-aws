@@ -160,6 +160,7 @@ interface Generated {
 const generateModel = (
   model: any,
   limitRef: { remaining: number },
+  keyDictionary?: Record<string, string>,
 ): Generated => {
   const shapes: Record<string, any> = model.shapes;
 
@@ -365,6 +366,14 @@ const generateModel = (
     return `  ${q(info.tsName)}: ${expr},`;
   };
 
+  // Operation input/output shape ids — these roots carry the service key
+  // dictionary annotation when one exists.
+  const opIoShapes = new Set<string>();
+  for (const op of selected) {
+    opIoShapes.add(op.def.__input);
+    opIoShapes.add(op.def.__output);
+  }
+
   // 5. Validate pagination traits (added via patches). A paginated op must
   //    actually carry its page/cursor token on the input and its items member
   //    on the output — otherwise `.pages()` would loop or yield nothing, so
@@ -490,9 +499,16 @@ const generateModel = (
         : `S.Struct({})`;
       const http = httpFor[id];
       const tail = http ? `.pipe(T.Http(${JSON.stringify(http)}))` : "";
+      // Op I/O roots carry the service key dictionary (inside the suspend, so
+      // it survives core's Suspend resolution): the protocol reads it off the
+      // root AST as the fallback wire mapping for opaque content.
+      const dictPipe =
+        keyDictionary && opIoShapes.has(id)
+          ? `.pipe(T.KeyDictionary(KEY_DICTIONARY))`
+          : "";
       out.push(
         `export const ${name} = /*@__PURE__*/ S.suspend(() =>\n` +
-          `${struct}${tail},\n` +
+          `${struct}${tail}${dictPipe},\n` +
           `).annotate({ identifier: ${q(name)} }) as any as S.Schema<${name}>;\n`,
       );
     } else if (d.type === "list") {
@@ -586,7 +602,11 @@ const generateModel = (
     `import { CloudflareError, CloudflareRateLimited } from "../errors.ts";\n` +
     `import * as Retry from "../retry.ts";\n\n` +
     // Re-exported so inferred provider types downstream can always name them.
-    `export type { CloudflareOpError, CloudflareOpContext };\n\n`;
+    `export type { CloudflareOpError, CloudflareOpContext };\n\n` +
+    (keyDictionary
+      ? `/** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */\n` +
+        `const KEY_DICTIONARY: Record<string, string> = ${JSON.stringify(keyDictionary)};\n\n`
+      : "");
 
   return { code: header + out.join("\n") + "\n", operations: selected.length };
 };
@@ -720,7 +740,21 @@ const command = Command.make(
           }
         }
 
-        const { code, operations } = generateModel(model, limitRef);
+        // Per-service fallback key dictionary (written by
+        // import-distilled-patches.ts), attached to op I/O roots.
+        const dictPath = path.join(root, "dictionaries", `${resource}.json`);
+        const keyDictionary = (yield* fs.exists(dictPath))
+          ? (JSON.parse(yield* fs.readFileString(dictPath)) as Record<
+              string,
+              string
+            >)
+          : undefined;
+
+        const { code, operations } = generateModel(
+          model,
+          limitRef,
+          keyDictionary,
+        );
         if (operations === 0) continue;
 
         yield* fs.writeFileString(path.join(outDir, `${resource}.ts`), code);

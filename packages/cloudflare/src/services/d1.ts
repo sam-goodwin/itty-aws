@@ -14,6 +14,38 @@ import * as Retry from "../retry.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
+/** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
+const KEY_DICTIONARY: Record<string, string> = {
+  atBookmark: "at_bookmark",
+  changedDb: "changed_db",
+  createdAt: "created_at",
+  currentBookmark: "current_bookmark",
+  dumpOptions: "dump_options",
+  fileSize: "file_size",
+  finalBookmark: "final_bookmark",
+  lastRowId: "last_row_id",
+  noData: "no_data",
+  noSchema: "no_schema",
+  numQueries: "num_queries",
+  numTables: "num_tables",
+  outputFormat: "output_format",
+  perPage: "per_page",
+  previousBookmark: "previous_bookmark",
+  primaryLocationHint: "primary_location_hint",
+  readReplication: "read_replication",
+  resultInfo: "result_info",
+  rowsRead: "rows_read",
+  rowsWritten: "rows_written",
+  servedByColo: "served_by_colo",
+  servedByPrimary: "served_by_primary",
+  servedByRegion: "served_by_region",
+  signedUrl: "signed_url",
+  sizeAfter: "size_after",
+  sqlDurationMs: "sql_duration_ms",
+  totalCount: "total_count",
+  uploadUrl: "upload_url",
+};
+
 export class DatabaseAlreadyExists extends T.applyErrorMatchers(
   S.TaggedErrorClass<DatabaseAlreadyExists>()("DatabaseAlreadyExists", {
     code: S.Number,
@@ -143,13 +175,15 @@ export const CreateDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
     readReplication: S.optional(
       DatabaseCreateRequestReadReplication.pipe(T.Body("read_replication")),
     ),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/d1/database",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/d1/database",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateDatabaseRequest",
 }) as any as S.Schema<CreateDatabaseRequest>;
@@ -208,7 +242,7 @@ export const CreateDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
     ),
     uuid: S.optional(S.String),
     version: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateDatabaseResponse",
 }) as any as S.Schema<CreateDatabaseResponse>;
@@ -223,13 +257,15 @@ export const DeleteDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     databaseId: S.String.pipe(T.Label("database_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/d1/database/{database_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/d1/database/{database_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteDatabaseRequest",
 }) as any as S.Schema<DeleteDatabaseRequest>;
@@ -241,7 +277,7 @@ export interface DeleteDatabaseResponse {
 export const DeleteDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteDatabaseResponse",
 }) as any as S.Schema<DeleteDatabaseResponse>;
@@ -294,13 +330,15 @@ export const ExportDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
     dumpOptions: S.optional(
       DatabaseExportRequestDumpOptions.pipe(T.Body("dump_options")),
     ),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/d1/database/{database_id}/export",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/d1/database/{database_id}/export",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ExportDatabaseRequest",
 }) as any as S.Schema<ExportDatabaseRequest>;
@@ -354,7 +392,7 @@ export const ExportDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
     status: S.optional(DatabaseExportResponseStatus),
     success: S.optional(S.Boolean),
     type: S.optional(DatabaseExportResponseType),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ExportDatabaseResponse",
 }) as any as S.Schema<ExportDatabaseResponse>;
@@ -373,13 +411,15 @@ export const GetBookmarkDatabaseTimeTravelRequest = /*@__PURE__*/ S.suspend(
       accountId: S.String.pipe(T.Label("account_id")),
       databaseId: S.String.pipe(T.Label("database_id")),
       timestamp: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/accounts/{account_id}/d1/database/{database_id}/time_travel/bookmark",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "GET",
+          uri: "/accounts/{account_id}/d1/database/{database_id}/time_travel/bookmark",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetBookmarkDatabaseTimeTravelRequest",
 }) as any as S.Schema<GetBookmarkDatabaseTimeTravelRequest>;
@@ -393,7 +433,7 @@ export const GetBookmarkDatabaseTimeTravelResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       bookmark: S.optional(S.String),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetBookmarkDatabaseTimeTravelResponse",
 }) as any as S.Schema<GetBookmarkDatabaseTimeTravelResponse>;
@@ -423,13 +463,15 @@ export const GetDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     databaseId: S.String.pipe(T.Label("database_id")),
     fields: S.optional(DatabaseGetRequestFieldsList.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/d1/database/{database_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/d1/database/{database_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDatabaseRequest",
 }) as any as S.Schema<GetDatabaseRequest>;
@@ -484,7 +526,7 @@ export const GetDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
     ),
     uuid: S.optional(S.String),
     version: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDatabaseResponse",
 }) as any as S.Schema<GetDatabaseResponse>;
@@ -522,13 +564,15 @@ export const ImportDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     databaseId: S.String.pipe(T.Label("database_id")),
     body: DatabaseImportRequestBody,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/d1/database/{database_id}/import",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/d1/database/{database_id}/import",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ImportDatabaseRequest",
 }) as any as S.Schema<ImportDatabaseRequest>;
@@ -657,7 +701,7 @@ export const ImportDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
     success: S.optional(S.Boolean),
     type: S.optional(DatabaseImportResponseType),
     uploadUrl: S.optional(S.String.pipe(T.Body("upload_url"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ImportDatabaseResponse",
 }) as any as S.Schema<ImportDatabaseResponse>;
@@ -678,13 +722,15 @@ export const ListDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String.pipe(T.Query())),
     page: S.optional(S.Number.pipe(T.Query())),
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/d1/database",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/d1/database",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListDatabasesRequest",
 }) as any as S.Schema<ListDatabasesRequest>;
@@ -733,7 +779,7 @@ export const ListDatabasesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: DatabaseListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListDatabasesResponse",
 }) as any as S.Schema<ListDatabasesResponse>;
@@ -771,13 +817,15 @@ export const PatchDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
     readReplication: S.optional(
       DatabaseEditRequestReadReplication.pipe(T.Body("read_replication")),
     ),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/accounts/{account_id}/d1/database/{database_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/accounts/{account_id}/d1/database/{database_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchDatabaseRequest",
 }) as any as S.Schema<PatchDatabaseRequest>;
@@ -832,7 +880,7 @@ export const PatchDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
     ),
     uuid: S.optional(S.String),
     version: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchDatabaseResponse",
 }) as any as S.Schema<PatchDatabaseResponse>;
@@ -868,13 +916,15 @@ export const QueryDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     databaseId: S.String.pipe(T.Label("database_id")),
     body: DatabaseQueryRequestBody,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/d1/database/{database_id}/query",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/d1/database/{database_id}/query",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "QueryDatabaseRequest",
 }) as any as S.Schema<QueryDatabaseRequest>;
@@ -979,7 +1029,7 @@ export const QueryDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: DatabaseQueryResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "QueryDatabaseResponse",
 }) as any as S.Schema<QueryDatabaseResponse>;
@@ -1015,13 +1065,15 @@ export const RawDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     databaseId: S.String.pipe(T.Label("database_id")),
     body: DatabaseRawRequestBody,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/d1/database/{database_id}/raw",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/d1/database/{database_id}/raw",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "RawDatabaseRequest",
 }) as any as S.Schema<RawDatabaseRequest>;
@@ -1159,7 +1211,7 @@ export const RawDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: DatabaseRawResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "RawDatabaseResponse",
 }) as any as S.Schema<RawDatabaseResponse>;
@@ -1180,13 +1232,15 @@ export const RestoreDatabaseTimeTravelRequest = /*@__PURE__*/ S.suspend(() =>
     databaseId: S.String.pipe(T.Label("database_id")),
     bookmark: S.optional(S.String.pipe(T.Query())),
     timestamp: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/d1/database/{database_id}/time_travel/restore",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/d1/database/{database_id}/time_travel/restore",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "RestoreDatabaseTimeTravelRequest",
 }) as any as S.Schema<RestoreDatabaseTimeTravelRequest>;
@@ -1205,7 +1259,7 @@ export const RestoreDatabaseTimeTravelResponse = /*@__PURE__*/ S.suspend(() =>
     bookmark: S.optional(S.String),
     message: S.optional(S.String),
     previousBookmark: S.optional(S.String.pipe(T.Body("previous_bookmark"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "RestoreDatabaseTimeTravelResponse",
 }) as any as S.Schema<RestoreDatabaseTimeTravelResponse>;
@@ -1244,13 +1298,15 @@ export const UpdateDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
     readReplication: DatabaseUpdateRequestReadReplication.pipe(
       T.Body("read_replication"),
     ),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/d1/database/{database_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/d1/database/{database_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateDatabaseRequest",
 }) as any as S.Schema<UpdateDatabaseRequest>;
@@ -1309,7 +1365,7 @@ export const UpdateDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
     ),
     uuid: S.optional(S.String),
     version: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateDatabaseResponse",
 }) as any as S.Schema<UpdateDatabaseResponse>;

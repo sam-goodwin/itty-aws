@@ -14,6 +14,45 @@ import * as Retry from "../retry.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
+/** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
+const KEY_DICTIONARY: Record<string, string> = {
+  additionalRoutes: "additional_routes",
+  cookieAttributes: "cookie_attributes",
+  cookieSuffix: "cookie_suffix",
+  createdOn: "created_on",
+  customHtml: "custom_html",
+  customPageHtml: "custom_page_html",
+  defaultTemplateLanguage: "default_template_language",
+  disableSessionRenewal: "disable_session_renewal",
+  enabledOriginCommands: "enabled_origin_commands",
+  estimatedQueuedUsers: "estimated_queued_users",
+  estimatedTotalActiveUsers: "estimated_total_active_users",
+  eventEndTime: "event_end_time",
+  eventId: "event_id",
+  eventStartTime: "event_start_time",
+  jsonResponseEnabled: "json_response_enabled",
+  lastUpdated: "last_updated",
+  maxEstimatedTimeMinutes: "max_estimated_time_minutes",
+  modifiedOn: "modified_on",
+  newUsersPerMinute: "new_users_per_minute",
+  nextEventPrequeueStartTime: "next_event_prequeue_start_time",
+  nextEventStartTime: "next_event_start_time",
+  perPage: "per_page",
+  prequeueStartTime: "prequeue_start_time",
+  previewUrl: "preview_url",
+  queueAll: "queue_all",
+  queueingMethod: "queueing_method",
+  queueingStatusCode: "queueing_status_code",
+  resultInfo: "result_info",
+  searchEngineCrawlerBypass: "search_engine_crawler_bypass",
+  sessionDuration: "session_duration",
+  shuffleAtEventStart: "shuffle_at_event_start",
+  totalActiveUsers: "total_active_users",
+  totalCount: "total_count",
+  turnstileAction: "turnstile_action",
+  turnstileMode: "turnstile_mode",
+};
+
 export class Forbidden extends T.applyErrorMatchers(
   S.TaggedErrorClass<Forbidden>()("Forbidden", {
     code: S.Number,
@@ -116,13 +155,15 @@ export const CreateEventRequest = /*@__PURE__*/ S.suspend(() =>
     turnstileMode: S.optional(
       EventsCreateRequestTurnstileMode.pipe(T.Body("turnstile_mode")),
     ),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/zones/{zone_id}/waiting_rooms/{waiting_room_id}/events",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/zones/{zone_id}/waiting_rooms/{waiting_room_id}/events",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateEventRequest",
 }) as any as S.Schema<CreateEventRequest>;
@@ -207,7 +248,7 @@ export const CreateEventResponse = /*@__PURE__*/ S.suspend(() =>
     turnstileMode: S.optional(
       EventsCreateResponseTurnstileMode.pipe(T.Body("turnstile_mode")),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateEventResponse",
 }) as any as S.Schema<CreateEventResponse>;
@@ -249,13 +290,15 @@ export const CreateRuleRequest = /*@__PURE__*/ S.suspend(() =>
     zoneId: S.String.pipe(T.Label("zone_id")),
     waitingRoomId: S.String.pipe(T.Label("waiting_room_id")),
     rules: RulesCreateRequestRules,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/zones/{zone_id}/waiting_rooms/{waiting_room_id}/rules",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/zones/{zone_id}/waiting_rooms/{waiting_room_id}/rules",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateRuleRequest",
 }) as any as S.Schema<CreateRuleRequest>;
@@ -307,7 +350,7 @@ export const CreateRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: RulesCreateResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateRuleResponse",
 }) as any as S.Schema<CreateRuleResponse>;
@@ -510,13 +553,15 @@ export const CreateWaitingRoomRequest = /*@__PURE__*/ S.suspend(() =>
     turnstileMode: S.optional(
       CreateRequestTurnstileMode.pipe(T.Body("turnstile_mode")),
     ),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/zones/{zone_id}/waiting_rooms",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/zones/{zone_id}/waiting_rooms",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateWaitingRoomRequest",
 }) as any as S.Schema<CreateWaitingRoomRequest>;
@@ -735,7 +780,7 @@ export const CreateWaitingRoomResponse = /*@__PURE__*/ S.suspend(() =>
     turnstileMode: S.optional(
       CreateResponseTurnstileMode.pipe(T.Body("turnstile_mode")),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateWaitingRoomResponse",
 }) as any as S.Schema<CreateWaitingRoomResponse>;
@@ -751,13 +796,15 @@ export const DeleteEventRequest = /*@__PURE__*/ S.suspend(() =>
     zoneId: S.String.pipe(T.Label("zone_id")),
     waitingRoomId: S.String.pipe(T.Label("waiting_room_id")),
     eventId: S.String.pipe(T.Label("event_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/zones/{zone_id}/waiting_rooms/{waiting_room_id}/events/{event_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/zones/{zone_id}/waiting_rooms/{waiting_room_id}/events/{event_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteEventRequest",
 }) as any as S.Schema<DeleteEventRequest>;
@@ -769,7 +816,7 @@ export interface DeleteEventResponse {
 export const DeleteEventResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteEventResponse",
 }) as any as S.Schema<DeleteEventResponse>;
@@ -786,13 +833,15 @@ export const DeleteRuleRequest = /*@__PURE__*/ S.suspend(() =>
     zoneId: S.String.pipe(T.Label("zone_id")),
     waitingRoomId: S.String.pipe(T.Label("waiting_room_id")),
     ruleId: S.String.pipe(T.Label("rule_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/zones/{zone_id}/waiting_rooms/{waiting_room_id}/rules/{rule_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/zones/{zone_id}/waiting_rooms/{waiting_room_id}/rules/{rule_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteRuleRequest",
 }) as any as S.Schema<DeleteRuleRequest>;
@@ -844,7 +893,7 @@ export const DeleteRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: RulesDeleteResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteRuleResponse",
 }) as any as S.Schema<DeleteRuleResponse>;
@@ -858,13 +907,15 @@ export const DeleteWaitingRoomRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     waitingRoomId: S.String.pipe(T.Label("waiting_room_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/zones/{zone_id}/waiting_rooms/{waiting_room_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/zones/{zone_id}/waiting_rooms/{waiting_room_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteWaitingRoomRequest",
 }) as any as S.Schema<DeleteWaitingRoomRequest>;
@@ -876,7 +927,7 @@ export interface DeleteWaitingRoomResponse {
 export const DeleteWaitingRoomResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteWaitingRoomResponse",
 }) as any as S.Schema<DeleteWaitingRoomResponse>;
@@ -892,13 +943,15 @@ export const GetEventRequest = /*@__PURE__*/ S.suspend(() =>
     zoneId: S.String.pipe(T.Label("zone_id")),
     waitingRoomId: S.String.pipe(T.Label("waiting_room_id")),
     eventId: S.String.pipe(T.Label("event_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/waiting_rooms/{waiting_room_id}/events/{event_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/waiting_rooms/{waiting_room_id}/events/{event_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetEventRequest",
 }) as any as S.Schema<GetEventRequest>;
@@ -983,7 +1036,7 @@ export const GetEventResponse = /*@__PURE__*/ S.suspend(() =>
     turnstileMode: S.optional(
       EventsGetResponseTurnstileMode.pipe(T.Body("turnstile_mode")),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetEventResponse",
 }) as any as S.Schema<GetEventResponse>;
@@ -999,13 +1052,15 @@ export const GetEventDetailRequest = /*@__PURE__*/ S.suspend(() =>
     zoneId: S.String.pipe(T.Label("zone_id")),
     waitingRoomId: S.String.pipe(T.Label("waiting_room_id")),
     eventId: S.String.pipe(T.Label("event_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/waiting_rooms/{waiting_room_id}/events/{event_id}/details",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/waiting_rooms/{waiting_room_id}/events/{event_id}/details",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetEventDetailRequest",
 }) as any as S.Schema<GetEventDetailRequest>;
@@ -1060,7 +1115,7 @@ export const GetEventDetailResponse = /*@__PURE__*/ S.suspend(() =>
     ),
     suspended: S.optional(S.Boolean),
     totalActiveUsers: S.optional(S.Number.pipe(T.Body("total_active_users"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetEventDetailResponse",
 }) as any as S.Schema<GetEventDetailResponse>;
@@ -1074,13 +1129,15 @@ export const GetRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     waitingRoomId: S.String.pipe(T.Label("waiting_room_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/waiting_rooms/{waiting_room_id}/rules",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/waiting_rooms/{waiting_room_id}/rules",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "GetRuleRequest" }) as any as S.Schema<GetRuleRequest>;
 
 export type RulesGetResultItemAction = "bypass_waiting_room" | (string & {});
@@ -1130,7 +1187,7 @@ export const GetRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: RulesGetResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetRuleResponse",
 }) as any as S.Schema<GetRuleResponse>;
@@ -1142,13 +1199,15 @@ export interface GetSettingRequest {
 export const GetSettingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/waiting_rooms/settings",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/waiting_rooms/settings",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetSettingRequest",
 }) as any as S.Schema<GetSettingRequest>;
@@ -1163,7 +1222,7 @@ export const GetSettingResponse = /*@__PURE__*/ S.suspend(() =>
     searchEngineCrawlerBypass: S.Boolean.pipe(
       T.Body("search_engine_crawler_bypass"),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetSettingResponse",
 }) as any as S.Schema<GetSettingResponse>;
@@ -1177,13 +1236,15 @@ export const GetStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     waitingRoomId: S.String.pipe(T.Label("waiting_room_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/waiting_rooms/{waiting_room_id}/status",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/waiting_rooms/{waiting_room_id}/status",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetStatusRequest",
 }) as any as S.Schema<GetStatusRequest>;
@@ -1217,7 +1278,7 @@ export const GetStatusResponse = /*@__PURE__*/ S.suspend(() =>
       S.Number.pipe(T.Body("max_estimated_time_minutes")),
     ),
     status: S.optional(StatusesGetResponseStatus),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetStatusResponse",
 }) as any as S.Schema<GetStatusResponse>;
@@ -1231,13 +1292,15 @@ export const GetWaitingRoomRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     waitingRoomId: S.String.pipe(T.Label("waiting_room_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/waiting_rooms/{waiting_room_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/waiting_rooms/{waiting_room_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetWaitingRoomRequest",
 }) as any as S.Schema<GetWaitingRoomRequest>;
@@ -1455,7 +1518,7 @@ export const GetWaitingRoomResponse = /*@__PURE__*/ S.suspend(() =>
     turnstileMode: S.optional(
       GetResponseTurnstileMode.pipe(T.Body("turnstile_mode")),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetWaitingRoomResponse",
 }) as any as S.Schema<GetWaitingRoomResponse>;
@@ -1475,13 +1538,15 @@ export const ListEventsRequest = /*@__PURE__*/ S.suspend(() =>
     waitingRoomId: S.String.pipe(T.Label("waiting_room_id")),
     page: S.optional(S.Number.pipe(T.Query())),
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/waiting_rooms/{waiting_room_id}/events",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/waiting_rooms/{waiting_room_id}/events",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListEventsRequest",
 }) as any as S.Schema<ListEventsRequest>;
@@ -1585,7 +1650,7 @@ export const ListEventsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: EventsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListEventsResponse",
 }) as any as S.Schema<ListEventsResponse>;
@@ -1603,13 +1668,15 @@ export const ListWaitingRoomsForAccountRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     page: S.optional(S.Number.pipe(T.Query())),
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/waiting_rooms",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/waiting_rooms",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListWaitingRoomsForAccountRequest",
 }) as any as S.Schema<ListWaitingRoomsForAccountRequest>;
@@ -1864,7 +1931,7 @@ export const ListWaitingRoomsForAccountResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: ListForAccountResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListWaitingRoomsForAccountResponse",
 }) as any as S.Schema<ListWaitingRoomsForAccountResponse>;
@@ -1882,9 +1949,15 @@ export const ListWaitingRoomsForZoneRequest = /*@__PURE__*/ S.suspend(() =>
     zoneId: S.String.pipe(T.Label("zone_id")),
     page: S.optional(S.Number.pipe(T.Query())),
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-  }).pipe(
-    T.Http({ method: "GET", uri: "/zones/{zone_id}/waiting_rooms", code: 200 }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/waiting_rooms",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListWaitingRoomsForZoneRequest",
 }) as any as S.Schema<ListWaitingRoomsForZoneRequest>;
@@ -2136,7 +2209,7 @@ export const ListWaitingRoomsForZoneResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: ListForZoneResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListWaitingRoomsForZoneResponse",
 }) as any as S.Schema<ListWaitingRoomsForZoneResponse>;
@@ -2221,13 +2294,15 @@ export const PatchEventRequest = /*@__PURE__*/ S.suspend(() =>
     turnstileMode: S.optional(
       EventsEditRequestTurnstileMode.pipe(T.Body("turnstile_mode")),
     ),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/zones/{zone_id}/waiting_rooms/{waiting_room_id}/events/{event_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/zones/{zone_id}/waiting_rooms/{waiting_room_id}/events/{event_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchEventRequest",
 }) as any as S.Schema<PatchEventRequest>;
@@ -2312,7 +2387,7 @@ export const PatchEventResponse = /*@__PURE__*/ S.suspend(() =>
     turnstileMode: S.optional(
       EventsEditResponseTurnstileMode.pipe(T.Body("turnstile_mode")),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchEventResponse",
 }) as any as S.Schema<PatchEventResponse>;
@@ -2362,13 +2437,15 @@ export const PatchRuleRequest = /*@__PURE__*/ S.suspend(() =>
     description: S.optional(S.String),
     enabled: S.optional(S.Boolean),
     position: S.optional(RulesEditRequestPosition),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/zones/{zone_id}/waiting_rooms/{waiting_room_id}/rules/{rule_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/zones/{zone_id}/waiting_rooms/{waiting_room_id}/rules/{rule_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchRuleRequest",
 }) as any as S.Schema<PatchRuleRequest>;
@@ -2420,7 +2497,7 @@ export const PatchRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: RulesEditResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchRuleResponse",
 }) as any as S.Schema<PatchRuleResponse>;
@@ -2437,13 +2514,15 @@ export const PatchSettingRequest = /*@__PURE__*/ S.suspend(() =>
     searchEngineCrawlerBypass: S.optional(
       S.Boolean.pipe(T.Body("search_engine_crawler_bypass")),
     ),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/zones/{zone_id}/waiting_rooms/settings",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/zones/{zone_id}/waiting_rooms/settings",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchSettingRequest",
 }) as any as S.Schema<PatchSettingRequest>;
@@ -2458,7 +2537,7 @@ export const PatchSettingResponse = /*@__PURE__*/ S.suspend(() =>
     searchEngineCrawlerBypass: S.Boolean.pipe(
       T.Body("search_engine_crawler_bypass"),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchSettingResponse",
 }) as any as S.Schema<PatchSettingResponse>;
@@ -2662,13 +2741,15 @@ export const PatchWaitingRoomRequest = /*@__PURE__*/ S.suspend(() =>
     turnstileMode: S.optional(
       EditRequestTurnstileMode.pipe(T.Body("turnstile_mode")),
     ),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/zones/{zone_id}/waiting_rooms/{waiting_room_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/zones/{zone_id}/waiting_rooms/{waiting_room_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchWaitingRoomRequest",
 }) as any as S.Schema<PatchWaitingRoomRequest>;
@@ -2887,7 +2968,7 @@ export const PatchWaitingRoomResponse = /*@__PURE__*/ S.suspend(() =>
     turnstileMode: S.optional(
       EditResponseTurnstileMode.pipe(T.Body("turnstile_mode")),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchWaitingRoomResponse",
 }) as any as S.Schema<PatchWaitingRoomResponse>;
@@ -2902,13 +2983,15 @@ export const PreviewPageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     customHtml: S.String.pipe(T.Body("custom_html")),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/zones/{zone_id}/waiting_rooms/preview",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/zones/{zone_id}/waiting_rooms/preview",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PreviewPageRequest",
 }) as any as S.Schema<PreviewPageRequest>;
@@ -2921,7 +3004,7 @@ export interface PreviewPageResponse {
 export const PreviewPageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     previewUrl: S.optional(S.String.pipe(T.Body("preview_url"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PreviewPageResponse",
 }) as any as S.Schema<PreviewPageResponse>;
@@ -2938,13 +3021,15 @@ export const PutSettingRequest = /*@__PURE__*/ S.suspend(() =>
     searchEngineCrawlerBypass: S.optional(
       S.Boolean.pipe(T.Body("search_engine_crawler_bypass")),
     ),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/zones/{zone_id}/waiting_rooms/settings",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/zones/{zone_id}/waiting_rooms/settings",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutSettingRequest",
 }) as any as S.Schema<PutSettingRequest>;
@@ -2959,7 +3044,7 @@ export const PutSettingResponse = /*@__PURE__*/ S.suspend(() =>
     searchEngineCrawlerBypass: S.Boolean.pipe(
       T.Body("search_engine_crawler_bypass"),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutSettingResponse",
 }) as any as S.Schema<PutSettingResponse>;
@@ -3044,13 +3129,15 @@ export const UpdateEventRequest = /*@__PURE__*/ S.suspend(() =>
     turnstileMode: S.optional(
       EventsUpdateRequestTurnstileMode.pipe(T.Body("turnstile_mode")),
     ),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/zones/{zone_id}/waiting_rooms/{waiting_room_id}/events/{event_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/zones/{zone_id}/waiting_rooms/{waiting_room_id}/events/{event_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateEventRequest",
 }) as any as S.Schema<UpdateEventRequest>;
@@ -3135,7 +3222,7 @@ export const UpdateEventResponse = /*@__PURE__*/ S.suspend(() =>
     turnstileMode: S.optional(
       EventsUpdateResponseTurnstileMode.pipe(T.Body("turnstile_mode")),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateEventResponse",
 }) as any as S.Schema<UpdateEventResponse>;
@@ -3182,13 +3269,15 @@ export const UpdateRuleRequest = /*@__PURE__*/ S.suspend(() =>
     zoneId: S.String.pipe(T.Label("zone_id")),
     waitingRoomId: S.String.pipe(T.Label("waiting_room_id")),
     rules: RulesUpdateRequestRulesList,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/zones/{zone_id}/waiting_rooms/{waiting_room_id}/rules",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/zones/{zone_id}/waiting_rooms/{waiting_room_id}/rules",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateRuleRequest",
 }) as any as S.Schema<UpdateRuleRequest>;
@@ -3240,7 +3329,7 @@ export const UpdateRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: RulesUpdateResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateRuleResponse",
 }) as any as S.Schema<UpdateRuleResponse>;
@@ -3445,13 +3534,15 @@ export const UpdateWaitingRoomRequest = /*@__PURE__*/ S.suspend(() =>
     turnstileMode: S.optional(
       UpdateRequestTurnstileMode.pipe(T.Body("turnstile_mode")),
     ),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/zones/{zone_id}/waiting_rooms/{waiting_room_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/zones/{zone_id}/waiting_rooms/{waiting_room_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateWaitingRoomRequest",
 }) as any as S.Schema<UpdateWaitingRoomRequest>;
@@ -3670,7 +3761,7 @@ export const UpdateWaitingRoomResponse = /*@__PURE__*/ S.suspend(() =>
     turnstileMode: S.optional(
       UpdateResponseTurnstileMode.pipe(T.Body("turnstile_mode")),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateWaitingRoomResponse",
 }) as any as S.Schema<UpdateWaitingRoomResponse>;

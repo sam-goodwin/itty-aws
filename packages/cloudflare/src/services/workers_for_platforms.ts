@@ -14,6 +14,79 @@ import * as Retry from "../retry.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
+/** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
+const KEY_DICTIONARY: Record<string, string> = {
+  allowedDestinationAddresses: "allowed_destination_addresses",
+  allowedSenderAddresses: "allowed_sender_addresses",
+  appId: "app_id",
+  bodyPart: "body_part",
+  bucketName: "bucket_name",
+  certificateId: "certificate_id",
+  className: "class_name",
+  compatibilityDate: "compatibility_date",
+  compatibilityFlags: "compatibility_flags",
+  cpuMs: "cpu_ms",
+  createdBy: "created_by",
+  createdOn: "created_on",
+  databaseId: "database_id",
+  deletedClasses: "deleted_classes",
+  destinationAddress: "destination_address",
+  dispatchNamespace: "dispatch_namespace",
+  entryPoint: "entry_point",
+  fromScript: "from_script",
+  hasAssets: "has_assets",
+  hasModules: "has_modules",
+  headSamplingRate: "head_sampling_rate",
+  headers: "_headers",
+  htmlHandling: "html_handling",
+  indexName: "index_name",
+  instanceName: "instance_name",
+  invocationLogs: "invocation_logs",
+  keepAssets: "keep_assets",
+  keepBindings: "keep_bindings",
+  keyBase64: "key_base64",
+  keyJwk: "key_jwk",
+  lastAnalyzedAt: "last_analyzed_at",
+  lastDeployedFrom: "last_deployed_from",
+  mainModule: "main_module",
+  migrationTag: "migration_tag",
+  mitigationTimeout: "mitigation_timeout",
+  modifiedBy: "modified_by",
+  modifiedOn: "modified_on",
+  namedHandlers: "named_handlers",
+  namespaceId: "namespace_id",
+  namespaceName: "namespace_name",
+  networkId: "network_id",
+  newClasses: "new_classes",
+  newSqliteClasses: "new_sqlite_classes",
+  newTag: "new_tag",
+  notFoundHandling: "not_found_handling",
+  oldName: "old_name",
+  oldTag: "old_tag",
+  placementMode: "placement_mode",
+  placementStatus: "placement_status",
+  propagationPolicy: "propagation_policy",
+  queueName: "queue_name",
+  redirects: "_redirects",
+  renamedClasses: "renamed_classes",
+  runWorkerFirst: "run_worker_first",
+  scriptCount: "script_count",
+  scriptName: "script_name",
+  secretName: "secret_name",
+  serveDirectly: "serve_directly",
+  serviceId: "service_id",
+  startupTimeMs: "startup_time_ms",
+  storeId: "store_id",
+  tailConsumers: "tail_consumers",
+  transferredClasses: "transferred_classes",
+  trustedWorkers: "trusted_workers",
+  tunnelId: "tunnel_id",
+  usageModel: "usage_model",
+  versionId: "version_id",
+  versionTags: "version_tags",
+  workflowName: "workflow_name",
+};
+
 export class D1DatabaseNotFound extends T.applyErrorMatchers(
   S.TaggedErrorClass<D1DatabaseNotFound>()("D1DatabaseNotFound", {
     code: S.Number,
@@ -182,13 +255,15 @@ export const BulkUpdateDispatchNamespaceScriptSecretsRequest =
           T.Body("version_tags"),
         ),
       ),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "/accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}/secrets-bulk",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "PATCH",
+          uri: "/accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}/secrets-bulk",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "BulkUpdateDispatchNamespaceScriptSecretsRequest",
   }) as any as S.Schema<BulkUpdateDispatchNamespaceScriptSecretsRequest>;
@@ -214,7 +289,7 @@ export const BulkUpdateDispatchNamespaceScriptSecretsResponse =
           T.EnvelopePayload(),
         ),
       ),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "BulkUpdateDispatchNamespaceScriptSecretsResponse",
   }) as any as S.Schema<BulkUpdateDispatchNamespaceScriptSecretsResponse>;
@@ -229,13 +304,15 @@ export const CreateDispatchNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     name: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/workers/dispatch/namespaces",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/workers/dispatch/namespaces",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateDispatchNamespaceRequest",
 }) as any as S.Schema<CreateDispatchNamespaceRequest>;
@@ -269,7 +346,7 @@ export const CreateDispatchNamespaceResponse = /*@__PURE__*/ S.suspend(() =>
     namespaceName: S.optional(S.String.pipe(T.Body("namespace_name"))),
     scriptCount: S.optional(S.Number.pipe(T.Body("script_count"))),
     trustedWorkers: S.optional(S.Boolean.pipe(T.Body("trusted_workers"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateDispatchNamespaceResponse",
 }) as any as S.Schema<CreateDispatchNamespaceResponse>;
@@ -300,13 +377,15 @@ export const CreateDispatchNamespaceScriptAssetUploadRequest =
       dispatchNamespace: S.String.pipe(T.Label("dispatch_namespace")),
       scriptName: S.String.pipe(T.Label("script_name")),
       manifest: DispatchNamespacesScriptsAssetUploadCreateRequestManifestMap,
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}/assets-upload-session",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "POST",
+          uri: "/accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}/assets-upload-session",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "CreateDispatchNamespaceScriptAssetUploadRequest",
   }) as any as S.Schema<CreateDispatchNamespaceScriptAssetUploadRequest>;
@@ -332,7 +411,7 @@ export const CreateDispatchNamespaceScriptAssetUploadResponse =
         DispatchNamespacesScriptsAssetUploadCreateResponseBucketsList,
       ),
       jwt: S.optional(S.String),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "CreateDispatchNamespaceScriptAssetUploadResponse",
   }) as any as S.Schema<CreateDispatchNamespaceScriptAssetUploadResponse>;
@@ -347,13 +426,15 @@ export const DeleteDispatchNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     dispatchNamespace: S.String.pipe(T.Label("dispatch_namespace")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteDispatchNamespaceRequest",
 }) as any as S.Schema<DeleteDispatchNamespaceRequest>;
@@ -365,7 +446,7 @@ export interface DeleteDispatchNamespaceResponse {
 export const DeleteDispatchNamespaceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteDispatchNamespaceResponse",
 }) as any as S.Schema<DeleteDispatchNamespaceResponse>;
@@ -387,13 +468,15 @@ export const DeleteDispatchNamespaceScriptRequest = /*@__PURE__*/ S.suspend(
       dispatchNamespace: S.String.pipe(T.Label("dispatch_namespace")),
       scriptName: S.String.pipe(T.Label("script_name")),
       force: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "DELETE",
+          uri: "/accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteDispatchNamespaceScriptRequest",
 }) as any as S.Schema<DeleteDispatchNamespaceScriptRequest>;
@@ -406,7 +489,7 @@ export const DeleteDispatchNamespaceScriptResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteDispatchNamespaceScriptResponse",
 }) as any as S.Schema<DeleteDispatchNamespaceScriptResponse>;
@@ -431,13 +514,15 @@ export const DeleteDispatchNamespaceScriptSecretRequest =
       scriptName: S.String.pipe(T.Label("script_name")),
       secretName: S.String.pipe(T.Label("secret_name")),
       urlEncoded: S.optional(S.Boolean.pipe(T.Query("url_encoded"))),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}/secrets/{secret_name}",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "DELETE",
+          uri: "/accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}/secrets/{secret_name}",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "DeleteDispatchNamespaceScriptSecretRequest",
   }) as any as S.Schema<DeleteDispatchNamespaceScriptSecretRequest>;
@@ -450,7 +535,7 @@ export const DeleteDispatchNamespaceScriptSecretResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "DeleteDispatchNamespaceScriptSecretResponse",
   }) as any as S.Schema<DeleteDispatchNamespaceScriptSecretResponse>;
@@ -471,13 +556,15 @@ export const DeleteDispatchNamespaceScriptTagRequest = /*@__PURE__*/ S.suspend(
       dispatchNamespace: S.String.pipe(T.Label("dispatch_namespace")),
       scriptName: S.String.pipe(T.Label("script_name")),
       tag: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}/tags/{tag}",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "DELETE",
+          uri: "/accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}/tags/{tag}",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteDispatchNamespaceScriptTagRequest",
 }) as any as S.Schema<DeleteDispatchNamespaceScriptTagRequest>;
@@ -490,7 +577,7 @@ export const DeleteDispatchNamespaceScriptTagResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteDispatchNamespaceScriptTagResponse",
 }) as any as S.Schema<DeleteDispatchNamespaceScriptTagResponse>;
@@ -505,13 +592,15 @@ export const GetDispatchNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     dispatchNamespace: S.String.pipe(T.Label("dispatch_namespace")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDispatchNamespaceRequest",
 }) as any as S.Schema<GetDispatchNamespaceRequest>;
@@ -545,7 +634,7 @@ export const GetDispatchNamespaceResponse = /*@__PURE__*/ S.suspend(() =>
     namespaceName: S.optional(S.String.pipe(T.Body("namespace_name"))),
     scriptCount: S.optional(S.Number.pipe(T.Body("script_count"))),
     trustedWorkers: S.optional(S.Boolean.pipe(T.Body("trusted_workers"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDispatchNamespaceResponse",
 }) as any as S.Schema<GetDispatchNamespaceResponse>;
@@ -563,13 +652,15 @@ export const GetDispatchNamespaceScriptRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     dispatchNamespace: S.String.pipe(T.Label("dispatch_namespace")),
     scriptName: S.String.pipe(T.Label("script_name")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDispatchNamespaceScriptRequest",
 }) as any as S.Schema<GetDispatchNamespaceScriptRequest>;
@@ -965,7 +1056,7 @@ export const GetDispatchNamespaceScriptResponse = /*@__PURE__*/ S.suspend(() =>
     dispatchNamespace: S.optional(S.String.pipe(T.Body("dispatch_namespace"))),
     modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
     script: S.optional(DispatchNamespacesScriptsGetResponseScript),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDispatchNamespaceScriptResponse",
 }) as any as S.Schema<GetDispatchNamespaceScriptResponse>;
@@ -984,13 +1075,15 @@ export const GetDispatchNamespaceScriptBindingRequest = /*@__PURE__*/ S.suspend(
       accountId: S.String.pipe(T.Label("account_id")),
       dispatchNamespace: S.String.pipe(T.Label("dispatch_namespace")),
       scriptName: S.String.pipe(T.Label("script_name")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}/bindings",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "GET",
+          uri: "/accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}/bindings",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDispatchNamespaceScriptBindingRequest",
 }) as any as S.Schema<GetDispatchNamespaceScriptBindingRequest>;
@@ -1169,7 +1262,7 @@ export const GetDispatchNamespaceScriptBindingResponse =
         T.EnvelopePayload(),
       ),
       resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "GetDispatchNamespaceScriptBindingResponse",
   }) as any as S.Schema<GetDispatchNamespaceScriptBindingResponse>;
@@ -1188,20 +1281,24 @@ export const GetDispatchNamespaceScriptContentRequest = /*@__PURE__*/ S.suspend(
       accountId: S.String.pipe(T.Label("account_id")),
       dispatchNamespace: S.String.pipe(T.Label("dispatch_namespace")),
       scriptName: S.String.pipe(T.Label("script_name")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}/content",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "GET",
+          uri: "/accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}/content",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDispatchNamespaceScriptContentRequest",
 }) as any as S.Schema<GetDispatchNamespaceScriptContentRequest>;
 
 export interface GetDispatchNamespaceScriptContentResponse {}
 export const GetDispatchNamespaceScriptContentResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  ).annotate({
     identifier: "GetDispatchNamespaceScriptContentResponse",
   }) as any as S.Schema<GetDispatchNamespaceScriptContentResponse>;
 
@@ -1225,13 +1322,15 @@ export const GetDispatchNamespaceScriptSecretRequest = /*@__PURE__*/ S.suspend(
       scriptName: S.String.pipe(T.Label("script_name")),
       secretName: S.String.pipe(T.Label("secret_name")),
       urlEncoded: S.optional(S.Boolean.pipe(T.Query("url_encoded"))),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}/secrets/{secret_name}",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "GET",
+          uri: "/accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}/secrets/{secret_name}",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDispatchNamespaceScriptSecretRequest",
 }) as any as S.Schema<GetDispatchNamespaceScriptSecretRequest>;
@@ -1250,7 +1349,7 @@ export const GetDispatchNamespaceScriptSecretResponse = /*@__PURE__*/ S.suspend(
       SecretKeyObjectAlgorithmFormatName4More__: S.Unknown.pipe(
         T.Body("SecretKey object { algorithm, format, name, 4 more }"),
       ),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDispatchNamespaceScriptSecretResponse",
 }) as any as S.Schema<GetDispatchNamespaceScriptSecretResponse>;
@@ -1269,13 +1368,15 @@ export const GetDispatchNamespaceScriptSettingRequest = /*@__PURE__*/ S.suspend(
       accountId: S.String.pipe(T.Label("account_id")),
       dispatchNamespace: S.String.pipe(T.Label("dispatch_namespace")),
       scriptName: S.String.pipe(T.Label("script_name")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}/settings",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "GET",
+          uri: "/accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}/settings",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDispatchNamespaceScriptSettingRequest",
 }) as any as S.Schema<GetDispatchNamespaceScriptSettingRequest>;
@@ -1760,7 +1861,7 @@ export const GetDispatchNamespaceScriptSettingResponse =
           T.Body("usage_model"),
         ),
       ),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "GetDispatchNamespaceScriptSettingResponse",
   }) as any as S.Schema<GetDispatchNamespaceScriptSettingResponse>;
@@ -1772,13 +1873,15 @@ export interface ListDispatchNamespacesRequest {
 export const ListDispatchNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/workers/dispatch/namespaces",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/workers/dispatch/namespaces",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListDispatchNamespacesRequest",
 }) as any as S.Schema<ListDispatchNamespacesRequest>;
@@ -1832,7 +1935,7 @@ export const ListDispatchNamespacesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: DispatchNamespacesListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListDispatchNamespacesResponse",
 }) as any as S.Schema<ListDispatchNamespacesResponse>;
@@ -1851,13 +1954,15 @@ export const ListDispatchNamespaceScriptSecretsRequest =
       accountId: S.String.pipe(T.Label("account_id")),
       dispatchNamespace: S.String.pipe(T.Label("dispatch_namespace")),
       scriptName: S.String.pipe(T.Label("script_name")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}/secrets",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "GET",
+          uri: "/accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}/secrets",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "ListDispatchNamespaceScriptSecretsRequest",
   }) as any as S.Schema<ListDispatchNamespaceScriptSecretsRequest>;
@@ -1900,7 +2005,7 @@ export const ListDispatchNamespaceScriptSecretsResponse =
         T.EnvelopePayload(),
       ),
       resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "ListDispatchNamespaceScriptSecretsResponse",
   }) as any as S.Schema<ListDispatchNamespaceScriptSecretsResponse>;
@@ -1919,13 +2024,15 @@ export const ListDispatchNamespaceScriptTagsRequest = /*@__PURE__*/ S.suspend(
       accountId: S.String.pipe(T.Label("account_id")),
       dispatchNamespace: S.String.pipe(T.Label("dispatch_namespace")),
       scriptName: S.String.pipe(T.Label("script_name")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}/tags",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "GET",
+          uri: "/accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}/tags",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListDispatchNamespaceScriptTagsRequest",
 }) as any as S.Schema<ListDispatchNamespaceScriptTagsRequest>;
@@ -1949,7 +2056,7 @@ export const ListDispatchNamespaceScriptTagsResponse = /*@__PURE__*/ S.suspend(
         T.EnvelopePayload(),
       ),
       resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListDispatchNamespaceScriptTagsResponse",
 }) as any as S.Schema<ListDispatchNamespaceScriptTagsResponse>;
@@ -1968,13 +2075,15 @@ export const PatchDispatchNamespaceScriptSettingRequest =
       accountId: S.String.pipe(T.Label("account_id")),
       dispatchNamespace: S.String.pipe(T.Label("dispatch_namespace")),
       scriptName: S.String.pipe(T.Label("script_name")),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "/accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}/settings",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "PATCH",
+          uri: "/accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}/settings",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "PatchDispatchNamespaceScriptSettingRequest",
   }) as any as S.Schema<PatchDispatchNamespaceScriptSettingRequest>;
@@ -2461,7 +2570,7 @@ export const PatchDispatchNamespaceScriptSettingResponse =
           T.Body("usage_model"),
         ),
       ),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "PatchDispatchNamespaceScriptSettingResponse",
   }) as any as S.Schema<PatchDispatchNamespaceScriptSettingResponse>;
@@ -2492,13 +2601,15 @@ export const PutDispatchNamespaceScriptRequest = /*@__PURE__*/ S.suspend(() =>
         T.Query("bindings_inherit"),
       ),
     ),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutDispatchNamespaceScriptRequest",
 }) as any as S.Schema<PutDispatchNamespaceScriptRequest>;
@@ -2870,7 +2981,7 @@ export const PutDispatchNamespaceScriptResponse = /*@__PURE__*/ S.suspend(() =>
         T.Body("usage_model"),
       ),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutDispatchNamespaceScriptResponse",
 }) as any as S.Schema<PutDispatchNamespaceScriptResponse>;
@@ -2897,13 +3008,15 @@ export const PutDispatchNamespaceScriptContentRequest = /*@__PURE__*/ S.suspend(
       CFWORKERMAINMODULEPART_: S.optional(
         S.String.pipe(T.Header('"CF-WORKER-MAIN-MODULE-PART"')),
       ),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}/content",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "PUT",
+          uri: "/accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}/content",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutDispatchNamespaceScriptContentRequest",
 }) as any as S.Schema<PutDispatchNamespaceScriptContentRequest>;
@@ -3284,7 +3397,7 @@ export const PutDispatchNamespaceScriptContentResponse =
           T.Body("usage_model"),
         ),
       ),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "PutDispatchNamespaceScriptContentResponse",
   }) as any as S.Schema<PutDispatchNamespaceScriptContentResponse>;
@@ -3324,13 +3437,15 @@ export const PutDispatchNamespaceScriptSecretRequest = /*@__PURE__*/ S.suspend(
       dispatchNamespace: S.String.pipe(T.Label("dispatch_namespace")),
       scriptName: S.String.pipe(T.Label("script_name")),
       body: DispatchNamespacesScriptsSecretsUpdateRequestBody,
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}/secrets",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "PUT",
+          uri: "/accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}/secrets",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutDispatchNamespaceScriptSecretRequest",
 }) as any as S.Schema<PutDispatchNamespaceScriptSecretRequest>;
@@ -3349,7 +3464,7 @@ export const PutDispatchNamespaceScriptSecretResponse = /*@__PURE__*/ S.suspend(
       SecretKeyObjectAlgorithmFormatName4More__: S.Unknown.pipe(
         T.Body("SecretKey object { algorithm, format, name, 4 more }"),
       ),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutDispatchNamespaceScriptSecretResponse",
 }) as any as S.Schema<PutDispatchNamespaceScriptSecretResponse>;
@@ -3377,13 +3492,15 @@ export const PutDispatchNamespaceScriptTagRequest = /*@__PURE__*/ S.suspend(
       dispatchNamespace: S.String.pipe(T.Label("dispatch_namespace")),
       scriptName: S.String.pipe(T.Label("script_name")),
       body: DispatchNamespacesScriptsTagsUpdateRequestBodyList,
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}/tags",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "PUT",
+          uri: "/accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}/tags",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutDispatchNamespaceScriptTagRequest",
 }) as any as S.Schema<PutDispatchNamespaceScriptTagRequest>;
@@ -3407,7 +3524,7 @@ export const PutDispatchNamespaceScriptTagResponse = /*@__PURE__*/ S.suspend(
         T.EnvelopePayload(),
       ),
       resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutDispatchNamespaceScriptTagResponse",
 }) as any as S.Schema<PutDispatchNamespaceScriptTagResponse>;

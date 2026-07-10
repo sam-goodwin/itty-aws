@@ -14,6 +14,19 @@ import * as Retry from "../retry.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
+/** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
+const KEY_DICTIONARY: Record<string, string> = {
+  burstSensitivity: "burst_sensitivity",
+  createdOn: "created_on",
+  documentationUrl: "documentation_url",
+  mitigationType: "mitigation_type",
+  modifiedOn: "modified_on",
+  perPage: "per_page",
+  rateSensitivity: "rate_sensitivity",
+  resultInfo: "result_info",
+  totalCount: "total_count",
+};
+
 export class AdvancedTcpProtectionNotEntitled extends T.applyErrorMatchers(
   S.TaggedErrorClass<AdvancedTcpProtectionNotEntitled>()(
     "AdvancedTcpProtectionNotEntitled",
@@ -118,13 +131,15 @@ export const BulkCreateAdvancedTcpProtectionPrefixesRequest =
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
       body: AdvancedTcpProtectionPrefixesBulkCreateRequestBodyList,
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/prefixes/bulk",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "POST",
+          uri: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/prefixes/bulk",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "BulkCreateAdvancedTcpProtectionPrefixesRequest",
   }) as any as S.Schema<BulkCreateAdvancedTcpProtectionPrefixesRequest>;
@@ -177,7 +192,7 @@ export const BulkCreateAdvancedTcpProtectionPrefixesResponse =
         T.EnvelopePayload(),
       ),
       resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "BulkCreateAdvancedTcpProtectionPrefixesResponse",
   }) as any as S.Schema<BulkCreateAdvancedTcpProtectionPrefixesResponse>;
@@ -190,20 +205,24 @@ export const BulkDeleteAdvancedTcpProtectionAllowlistsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/allowlist",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "DELETE",
+          uri: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/allowlist",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "BulkDeleteAdvancedTcpProtectionAllowlistsRequest",
   }) as any as S.Schema<BulkDeleteAdvancedTcpProtectionAllowlistsRequest>;
 
 export interface BulkDeleteAdvancedTcpProtectionAllowlistsResponse {}
 export const BulkDeleteAdvancedTcpProtectionAllowlistsResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  ).annotate({
     identifier: "BulkDeleteAdvancedTcpProtectionAllowlistsResponse",
   }) as any as S.Schema<BulkDeleteAdvancedTcpProtectionAllowlistsResponse>;
 
@@ -215,20 +234,24 @@ export const BulkDeleteAdvancedTcpProtectionPrefixesRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/prefixes",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "DELETE",
+          uri: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/prefixes",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "BulkDeleteAdvancedTcpProtectionPrefixesRequest",
   }) as any as S.Schema<BulkDeleteAdvancedTcpProtectionPrefixesRequest>;
 
 export interface BulkDeleteAdvancedTcpProtectionPrefixesResponse {}
 export const BulkDeleteAdvancedTcpProtectionPrefixesResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  ).annotate({
     identifier: "BulkDeleteAdvancedTcpProtectionPrefixesResponse",
   }) as any as S.Schema<BulkDeleteAdvancedTcpProtectionPrefixesResponse>;
 
@@ -240,20 +263,24 @@ export const BulkDeleteAdvancedTcpProtectionSynProtectionFiltersRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/syn_protection/filters",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "DELETE",
+          uri: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/syn_protection/filters",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "BulkDeleteAdvancedTcpProtectionSynProtectionFiltersRequest",
   }) as any as S.Schema<BulkDeleteAdvancedTcpProtectionSynProtectionFiltersRequest>;
 
 export interface BulkDeleteAdvancedTcpProtectionSynProtectionFiltersResponse {}
 export const BulkDeleteAdvancedTcpProtectionSynProtectionFiltersResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  ).annotate({
     identifier: "BulkDeleteAdvancedTcpProtectionSynProtectionFiltersResponse",
   }) as any as S.Schema<BulkDeleteAdvancedTcpProtectionSynProtectionFiltersResponse>;
 
@@ -265,20 +292,24 @@ export const BulkDeleteAdvancedTcpProtectionSynProtectionRulesRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/syn_protection/rules",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "DELETE",
+          uri: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/syn_protection/rules",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "BulkDeleteAdvancedTcpProtectionSynProtectionRulesRequest",
   }) as any as S.Schema<BulkDeleteAdvancedTcpProtectionSynProtectionRulesRequest>;
 
 export interface BulkDeleteAdvancedTcpProtectionSynProtectionRulesResponse {}
 export const BulkDeleteAdvancedTcpProtectionSynProtectionRulesResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  ).annotate({
     identifier: "BulkDeleteAdvancedTcpProtectionSynProtectionRulesResponse",
   }) as any as S.Schema<BulkDeleteAdvancedTcpProtectionSynProtectionRulesResponse>;
 
@@ -290,13 +321,15 @@ export const BulkDeleteAdvancedTcpProtectionTcpFlowProtectionFiltersRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/tcp_flow_protection/filters",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "DELETE",
+          uri: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/tcp_flow_protection/filters",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier:
       "BulkDeleteAdvancedTcpProtectionTcpFlowProtectionFiltersRequest",
@@ -304,7 +337,9 @@ export const BulkDeleteAdvancedTcpProtectionTcpFlowProtectionFiltersRequest =
 
 export interface BulkDeleteAdvancedTcpProtectionTcpFlowProtectionFiltersResponse {}
 export const BulkDeleteAdvancedTcpProtectionTcpFlowProtectionFiltersResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  ).annotate({
     identifier:
       "BulkDeleteAdvancedTcpProtectionTcpFlowProtectionFiltersResponse",
   }) as any as S.Schema<BulkDeleteAdvancedTcpProtectionTcpFlowProtectionFiltersResponse>;
@@ -317,20 +352,24 @@ export const BulkDeleteAdvancedTcpProtectionTcpFlowProtectionRulesRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/tcp_flow_protection/rules",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "DELETE",
+          uri: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/tcp_flow_protection/rules",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "BulkDeleteAdvancedTcpProtectionTcpFlowProtectionRulesRequest",
   }) as any as S.Schema<BulkDeleteAdvancedTcpProtectionTcpFlowProtectionRulesRequest>;
 
 export interface BulkDeleteAdvancedTcpProtectionTcpFlowProtectionRulesResponse {}
 export const BulkDeleteAdvancedTcpProtectionTcpFlowProtectionRulesResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  ).annotate({
     identifier: "BulkDeleteAdvancedTcpProtectionTcpFlowProtectionRulesResponse",
   }) as any as S.Schema<BulkDeleteAdvancedTcpProtectionTcpFlowProtectionRulesResponse>;
 
@@ -351,13 +390,15 @@ export const CreateAdvancedTcpProtectionAllowlistRequest =
       comment: S.String,
       enabled: S.Boolean,
       prefix: S.String,
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/allowlist",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "POST",
+          uri: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/allowlist",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "CreateAdvancedTcpProtectionAllowlistRequest",
   }) as any as S.Schema<CreateAdvancedTcpProtectionAllowlistRequest>;
@@ -386,7 +427,7 @@ export const CreateAdvancedTcpProtectionAllowlistResponse =
       enabled: S.Boolean,
       modifiedOn: S.String.pipe(T.Body("modified_on")),
       prefix: S.String,
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "CreateAdvancedTcpProtectionAllowlistResponse",
   }) as any as S.Schema<CreateAdvancedTcpProtectionAllowlistResponse>;
@@ -408,13 +449,15 @@ export const CreateAdvancedTcpProtectionPrefixRequest = /*@__PURE__*/ S.suspend(
       comment: S.String,
       excluded: S.Boolean,
       prefix: S.String,
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/prefixes",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "POST",
+          uri: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/prefixes",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateAdvancedTcpProtectionPrefixRequest",
 }) as any as S.Schema<CreateAdvancedTcpProtectionPrefixRequest>;
@@ -443,7 +486,7 @@ export const CreateAdvancedTcpProtectionPrefixResponse =
       excluded: S.Boolean,
       modifiedOn: S.String.pipe(T.Body("modified_on")),
       prefix: S.String,
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "CreateAdvancedTcpProtectionPrefixResponse",
   }) as any as S.Schema<CreateAdvancedTcpProtectionPrefixResponse>;
@@ -462,13 +505,15 @@ export const CreateAdvancedTcpProtectionSynProtectionFilterRequest =
       accountId: S.String.pipe(T.Label("account_id")),
       expression: S.String,
       mode: S.String,
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/syn_protection/filters",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "POST",
+          uri: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/syn_protection/filters",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "CreateAdvancedTcpProtectionSynProtectionFilterRequest",
   }) as any as S.Schema<CreateAdvancedTcpProtectionSynProtectionFilterRequest>;
@@ -494,7 +539,7 @@ export const CreateAdvancedTcpProtectionSynProtectionFilterResponse =
       expression: S.String,
       mode: S.String,
       modifiedOn: S.String.pipe(T.Body("modified_on")),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "CreateAdvancedTcpProtectionSynProtectionFilterResponse",
   }) as any as S.Schema<CreateAdvancedTcpProtectionSynProtectionFilterResponse>;
@@ -525,13 +570,15 @@ export const CreateAdvancedTcpProtectionSynProtectionRuleRequest =
       rateSensitivity: S.String.pipe(T.Body("rate_sensitivity")),
       scope: S.String,
       mitigationType: S.optional(S.String.pipe(T.Body("mitigation_type"))),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/syn_protection/rules",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "POST",
+          uri: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/syn_protection/rules",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "CreateAdvancedTcpProtectionSynProtectionRuleRequest",
   }) as any as S.Schema<CreateAdvancedTcpProtectionSynProtectionRuleRequest>;
@@ -569,7 +616,7 @@ export const CreateAdvancedTcpProtectionSynProtectionRuleResponse =
       name: S.String,
       rateSensitivity: S.String.pipe(T.Body("rate_sensitivity")),
       scope: S.String,
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "CreateAdvancedTcpProtectionSynProtectionRuleResponse",
   }) as any as S.Schema<CreateAdvancedTcpProtectionSynProtectionRuleResponse>;
@@ -588,13 +635,15 @@ export const CreateAdvancedTcpProtectionTcpFlowProtectionFilterRequest =
       accountId: S.String.pipe(T.Label("account_id")),
       expression: S.String,
       mode: S.String,
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/tcp_flow_protection/filters",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "POST",
+          uri: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/tcp_flow_protection/filters",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "CreateAdvancedTcpProtectionTcpFlowProtectionFilterRequest",
   }) as any as S.Schema<CreateAdvancedTcpProtectionTcpFlowProtectionFilterRequest>;
@@ -620,7 +669,7 @@ export const CreateAdvancedTcpProtectionTcpFlowProtectionFilterResponse =
       expression: S.String,
       mode: S.String,
       modifiedOn: S.String.pipe(T.Body("modified_on")),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "CreateAdvancedTcpProtectionTcpFlowProtectionFilterResponse",
   }) as any as S.Schema<CreateAdvancedTcpProtectionTcpFlowProtectionFilterResponse>;
@@ -648,13 +697,15 @@ export const CreateAdvancedTcpProtectionTcpFlowProtectionRuleRequest =
       name: S.String,
       rateSensitivity: S.String.pipe(T.Body("rate_sensitivity")),
       scope: S.String,
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/tcp_flow_protection/rules",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "POST",
+          uri: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/tcp_flow_protection/rules",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "CreateAdvancedTcpProtectionTcpFlowProtectionRuleRequest",
   }) as any as S.Schema<CreateAdvancedTcpProtectionTcpFlowProtectionRuleRequest>;
@@ -689,7 +740,7 @@ export const CreateAdvancedTcpProtectionTcpFlowProtectionRuleResponse =
       name: S.String,
       rateSensitivity: S.String.pipe(T.Body("rate_sensitivity")),
       scope: S.String,
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "CreateAdvancedTcpProtectionTcpFlowProtectionRuleResponse",
   }) as any as S.Schema<CreateAdvancedTcpProtectionTcpFlowProtectionRuleResponse>;
@@ -705,20 +756,24 @@ export const DeleteAdvancedTcpProtectionAllowlistItemRequest =
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
       prefixId: S.String.pipe(T.Label("prefix_id")),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/allowlist/{prefix_id}",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "DELETE",
+          uri: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/allowlist/{prefix_id}",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "DeleteAdvancedTcpProtectionAllowlistItemRequest",
   }) as any as S.Schema<DeleteAdvancedTcpProtectionAllowlistItemRequest>;
 
 export interface DeleteAdvancedTcpProtectionAllowlistItemResponse {}
 export const DeleteAdvancedTcpProtectionAllowlistItemResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  ).annotate({
     identifier: "DeleteAdvancedTcpProtectionAllowlistItemResponse",
   }) as any as S.Schema<DeleteAdvancedTcpProtectionAllowlistItemResponse>;
 
@@ -733,20 +788,24 @@ export const DeleteAdvancedTcpProtectionPrefixItemRequest =
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
       prefixId: S.String.pipe(T.Label("prefix_id")),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/prefixes/{prefix_id}",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "DELETE",
+          uri: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/prefixes/{prefix_id}",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "DeleteAdvancedTcpProtectionPrefixItemRequest",
   }) as any as S.Schema<DeleteAdvancedTcpProtectionPrefixItemRequest>;
 
 export interface DeleteAdvancedTcpProtectionPrefixItemResponse {}
 export const DeleteAdvancedTcpProtectionPrefixItemResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  ).annotate({
     identifier: "DeleteAdvancedTcpProtectionPrefixItemResponse",
   }) as any as S.Schema<DeleteAdvancedTcpProtectionPrefixItemResponse>;
 
@@ -761,20 +820,24 @@ export const DeleteAdvancedTcpProtectionSynProtectionFilterItemRequest =
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
       filterId: S.String.pipe(T.Label("filter_id")),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/syn_protection/filters/{filter_id}",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "DELETE",
+          uri: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/syn_protection/filters/{filter_id}",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "DeleteAdvancedTcpProtectionSynProtectionFilterItemRequest",
   }) as any as S.Schema<DeleteAdvancedTcpProtectionSynProtectionFilterItemRequest>;
 
 export interface DeleteAdvancedTcpProtectionSynProtectionFilterItemResponse {}
 export const DeleteAdvancedTcpProtectionSynProtectionFilterItemResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  ).annotate({
     identifier: "DeleteAdvancedTcpProtectionSynProtectionFilterItemResponse",
   }) as any as S.Schema<DeleteAdvancedTcpProtectionSynProtectionFilterItemResponse>;
 
@@ -789,20 +852,24 @@ export const DeleteAdvancedTcpProtectionSynProtectionRuleItemRequest =
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
       ruleId: S.String.pipe(T.Label("rule_id")),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/syn_protection/rules/{rule_id}",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "DELETE",
+          uri: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/syn_protection/rules/{rule_id}",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "DeleteAdvancedTcpProtectionSynProtectionRuleItemRequest",
   }) as any as S.Schema<DeleteAdvancedTcpProtectionSynProtectionRuleItemRequest>;
 
 export interface DeleteAdvancedTcpProtectionSynProtectionRuleItemResponse {}
 export const DeleteAdvancedTcpProtectionSynProtectionRuleItemResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  ).annotate({
     identifier: "DeleteAdvancedTcpProtectionSynProtectionRuleItemResponse",
   }) as any as S.Schema<DeleteAdvancedTcpProtectionSynProtectionRuleItemResponse>;
 
@@ -817,20 +884,24 @@ export const DeleteAdvancedTcpProtectionTcpFlowProtectionFilterItemRequest =
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
       filterId: S.String.pipe(T.Label("filter_id")),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/tcp_flow_protection/filters/{filter_id}",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "DELETE",
+          uri: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/tcp_flow_protection/filters/{filter_id}",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "DeleteAdvancedTcpProtectionTcpFlowProtectionFilterItemRequest",
   }) as any as S.Schema<DeleteAdvancedTcpProtectionTcpFlowProtectionFilterItemRequest>;
 
 export interface DeleteAdvancedTcpProtectionTcpFlowProtectionFilterItemResponse {}
 export const DeleteAdvancedTcpProtectionTcpFlowProtectionFilterItemResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  ).annotate({
     identifier:
       "DeleteAdvancedTcpProtectionTcpFlowProtectionFilterItemResponse",
   }) as any as S.Schema<DeleteAdvancedTcpProtectionTcpFlowProtectionFilterItemResponse>;
@@ -846,20 +917,24 @@ export const DeleteAdvancedTcpProtectionTcpFlowProtectionRuleItemRequest =
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
       ruleId: S.String.pipe(T.Label("rule_id")),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/tcp_flow_protection/rules/{rule_id}",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "DELETE",
+          uri: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/tcp_flow_protection/rules/{rule_id}",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "DeleteAdvancedTcpProtectionTcpFlowProtectionRuleItemRequest",
   }) as any as S.Schema<DeleteAdvancedTcpProtectionTcpFlowProtectionRuleItemRequest>;
 
 export interface DeleteAdvancedTcpProtectionTcpFlowProtectionRuleItemResponse {}
 export const DeleteAdvancedTcpProtectionTcpFlowProtectionRuleItemResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  ).annotate({
     identifier: "DeleteAdvancedTcpProtectionTcpFlowProtectionRuleItemResponse",
   }) as any as S.Schema<DeleteAdvancedTcpProtectionTcpFlowProtectionRuleItemResponse>;
 
@@ -874,13 +949,15 @@ export const GetAdvancedTcpProtectionAllowlistItemRequest =
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
       prefixId: S.String.pipe(T.Label("prefix_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/allowlist/{prefix_id}",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "GET",
+          uri: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/allowlist/{prefix_id}",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "GetAdvancedTcpProtectionAllowlistItemRequest",
   }) as any as S.Schema<GetAdvancedTcpProtectionAllowlistItemRequest>;
@@ -909,7 +986,7 @@ export const GetAdvancedTcpProtectionAllowlistItemResponse =
       enabled: S.Boolean,
       modifiedOn: S.String.pipe(T.Body("modified_on")),
       prefix: S.String,
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "GetAdvancedTcpProtectionAllowlistItemResponse",
   }) as any as S.Schema<GetAdvancedTcpProtectionAllowlistItemResponse>;
@@ -925,13 +1002,15 @@ export const GetAdvancedTcpProtectionPrefixItemRequest =
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
       prefixId: S.String.pipe(T.Label("prefix_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/prefixes/{prefix_id}",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "GET",
+          uri: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/prefixes/{prefix_id}",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "GetAdvancedTcpProtectionPrefixItemRequest",
   }) as any as S.Schema<GetAdvancedTcpProtectionPrefixItemRequest>;
@@ -960,7 +1039,7 @@ export const GetAdvancedTcpProtectionPrefixItemResponse =
       excluded: S.Boolean,
       modifiedOn: S.String.pipe(T.Body("modified_on")),
       prefix: S.String,
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "GetAdvancedTcpProtectionPrefixItemResponse",
   }) as any as S.Schema<GetAdvancedTcpProtectionPrefixItemResponse>;
@@ -973,13 +1052,15 @@ export const GetAdvancedTcpProtectionStatusRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/tcp_protection_status",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "GET",
+          uri: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/tcp_protection_status",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetAdvancedTcpProtectionStatusRequest",
 }) as any as S.Schema<GetAdvancedTcpProtectionStatusRequest>;
@@ -992,7 +1073,7 @@ export const GetAdvancedTcpProtectionStatusResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       enabled: S.Boolean,
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetAdvancedTcpProtectionStatusResponse",
 }) as any as S.Schema<GetAdvancedTcpProtectionStatusResponse>;
@@ -1008,13 +1089,15 @@ export const GetAdvancedTcpProtectionSynProtectionFilterItemRequest =
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
       filterId: S.String.pipe(T.Label("filter_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/syn_protection/filters/{filter_id}",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "GET",
+          uri: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/syn_protection/filters/{filter_id}",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "GetAdvancedTcpProtectionSynProtectionFilterItemRequest",
   }) as any as S.Schema<GetAdvancedTcpProtectionSynProtectionFilterItemRequest>;
@@ -1040,7 +1123,7 @@ export const GetAdvancedTcpProtectionSynProtectionFilterItemResponse =
       expression: S.String,
       mode: S.String,
       modifiedOn: S.String.pipe(T.Body("modified_on")),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "GetAdvancedTcpProtectionSynProtectionFilterItemResponse",
   }) as any as S.Schema<GetAdvancedTcpProtectionSynProtectionFilterItemResponse>;
@@ -1056,13 +1139,15 @@ export const GetAdvancedTcpProtectionSynProtectionRuleItemRequest =
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
       ruleId: S.String.pipe(T.Label("rule_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/syn_protection/rules/{rule_id}",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "GET",
+          uri: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/syn_protection/rules/{rule_id}",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "GetAdvancedTcpProtectionSynProtectionRuleItemRequest",
   }) as any as S.Schema<GetAdvancedTcpProtectionSynProtectionRuleItemRequest>;
@@ -1100,7 +1185,7 @@ export const GetAdvancedTcpProtectionSynProtectionRuleItemResponse =
       name: S.String,
       rateSensitivity: S.String.pipe(T.Body("rate_sensitivity")),
       scope: S.String,
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "GetAdvancedTcpProtectionSynProtectionRuleItemResponse",
   }) as any as S.Schema<GetAdvancedTcpProtectionSynProtectionRuleItemResponse>;
@@ -1116,13 +1201,15 @@ export const GetAdvancedTcpProtectionTcpFlowProtectionFilterItemRequest =
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
       filterId: S.String.pipe(T.Label("filter_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/tcp_flow_protection/filters/{filter_id}",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "GET",
+          uri: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/tcp_flow_protection/filters/{filter_id}",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "GetAdvancedTcpProtectionTcpFlowProtectionFilterItemRequest",
   }) as any as S.Schema<GetAdvancedTcpProtectionTcpFlowProtectionFilterItemRequest>;
@@ -1148,7 +1235,7 @@ export const GetAdvancedTcpProtectionTcpFlowProtectionFilterItemResponse =
       expression: S.String,
       mode: S.String,
       modifiedOn: S.String.pipe(T.Body("modified_on")),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "GetAdvancedTcpProtectionTcpFlowProtectionFilterItemResponse",
   }) as any as S.Schema<GetAdvancedTcpProtectionTcpFlowProtectionFilterItemResponse>;
@@ -1164,13 +1251,15 @@ export const GetAdvancedTcpProtectionTcpFlowProtectionRuleItemRequest =
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
       ruleId: S.String.pipe(T.Label("rule_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/tcp_flow_protection/rules/{rule_id}",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "GET",
+          uri: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/tcp_flow_protection/rules/{rule_id}",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "GetAdvancedTcpProtectionTcpFlowProtectionRuleItemRequest",
   }) as any as S.Schema<GetAdvancedTcpProtectionTcpFlowProtectionRuleItemRequest>;
@@ -1205,7 +1294,7 @@ export const GetAdvancedTcpProtectionTcpFlowProtectionRuleItemResponse =
       name: S.String,
       rateSensitivity: S.String.pipe(T.Body("rate_sensitivity")),
       scope: S.String,
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "GetAdvancedTcpProtectionTcpFlowProtectionRuleItemResponse",
   }) as any as S.Schema<GetAdvancedTcpProtectionTcpFlowProtectionRuleItemResponse>;
@@ -1230,13 +1319,15 @@ export const ListAdvancedTcpProtectionAllowlistsRequest =
       order: S.optional(S.String.pipe(T.Query())),
       page: S.optional(S.Number.pipe(T.Query())),
       perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/allowlist",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "GET",
+          uri: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/allowlist",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "ListAdvancedTcpProtectionAllowlistsRequest",
   }) as any as S.Schema<ListAdvancedTcpProtectionAllowlistsRequest>;
@@ -1289,7 +1380,7 @@ export const ListAdvancedTcpProtectionAllowlistsResponse =
         T.EnvelopePayload(),
       ),
       resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "ListAdvancedTcpProtectionAllowlistsResponse",
   }) as any as S.Schema<ListAdvancedTcpProtectionAllowlistsResponse>;
@@ -1314,13 +1405,15 @@ export const ListAdvancedTcpProtectionPrefixesRequest = /*@__PURE__*/ S.suspend(
       order: S.optional(S.String.pipe(T.Query())),
       page: S.optional(S.Number.pipe(T.Query())),
       perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/prefixes",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "GET",
+          uri: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/prefixes",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListAdvancedTcpProtectionPrefixesRequest",
 }) as any as S.Schema<ListAdvancedTcpProtectionPrefixesRequest>;
@@ -1373,7 +1466,7 @@ export const ListAdvancedTcpProtectionPrefixesResponse =
         T.EnvelopePayload(),
       ),
       resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "ListAdvancedTcpProtectionPrefixesResponse",
   }) as any as S.Schema<ListAdvancedTcpProtectionPrefixesResponse>;
@@ -1401,13 +1494,15 @@ export const ListAdvancedTcpProtectionSynProtectionFiltersRequest =
       order: S.optional(S.String.pipe(T.Query())),
       page: S.optional(S.Number.pipe(T.Query())),
       perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/syn_protection/filters",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "GET",
+          uri: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/syn_protection/filters",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "ListAdvancedTcpProtectionSynProtectionFiltersRequest",
   }) as any as S.Schema<ListAdvancedTcpProtectionSynProtectionFiltersRequest>;
@@ -1457,7 +1552,7 @@ export const ListAdvancedTcpProtectionSynProtectionFiltersResponse =
         T.EnvelopePayload(),
       ),
       resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "ListAdvancedTcpProtectionSynProtectionFiltersResponse",
   }) as any as S.Schema<ListAdvancedTcpProtectionSynProtectionFiltersResponse>;
@@ -1482,13 +1577,15 @@ export const ListAdvancedTcpProtectionSynProtectionRulesRequest =
       order: S.optional(S.String.pipe(T.Query())),
       page: S.optional(S.Number.pipe(T.Query())),
       perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/syn_protection/rules",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "GET",
+          uri: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/syn_protection/rules",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "ListAdvancedTcpProtectionSynProtectionRulesRequest",
   }) as any as S.Schema<ListAdvancedTcpProtectionSynProtectionRulesRequest>;
@@ -1550,7 +1647,7 @@ export const ListAdvancedTcpProtectionSynProtectionRulesResponse =
         T.EnvelopePayload(),
       ),
       resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "ListAdvancedTcpProtectionSynProtectionRulesResponse",
   }) as any as S.Schema<ListAdvancedTcpProtectionSynProtectionRulesResponse>;
@@ -1578,13 +1675,15 @@ export const ListAdvancedTcpProtectionTcpFlowProtectionFiltersRequest =
       order: S.optional(S.String.pipe(T.Query())),
       page: S.optional(S.Number.pipe(T.Query())),
       perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/tcp_flow_protection/filters",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "GET",
+          uri: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/tcp_flow_protection/filters",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "ListAdvancedTcpProtectionTcpFlowProtectionFiltersRequest",
   }) as any as S.Schema<ListAdvancedTcpProtectionTcpFlowProtectionFiltersRequest>;
@@ -1634,7 +1733,7 @@ export const ListAdvancedTcpProtectionTcpFlowProtectionFiltersResponse =
         T.EnvelopePayload(),
       ),
       resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "ListAdvancedTcpProtectionTcpFlowProtectionFiltersResponse",
   }) as any as S.Schema<ListAdvancedTcpProtectionTcpFlowProtectionFiltersResponse>;
@@ -1659,13 +1758,15 @@ export const ListAdvancedTcpProtectionTcpFlowProtectionRulesRequest =
       order: S.optional(S.String.pipe(T.Query())),
       page: S.optional(S.Number.pipe(T.Query())),
       perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/tcp_flow_protection/rules",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "GET",
+          uri: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/tcp_flow_protection/rules",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "ListAdvancedTcpProtectionTcpFlowProtectionRulesRequest",
   }) as any as S.Schema<ListAdvancedTcpProtectionTcpFlowProtectionRulesRequest>;
@@ -1724,7 +1825,7 @@ export const ListAdvancedTcpProtectionTcpFlowProtectionRulesResponse =
         T.EnvelopePayload(),
       ),
       resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "ListAdvancedTcpProtectionTcpFlowProtectionRulesResponse",
   }) as any as S.Schema<ListAdvancedTcpProtectionTcpFlowProtectionRulesResponse>;
@@ -1746,13 +1847,15 @@ export const PatchAdvancedTcpProtectionAllowlistItemRequest =
       prefixId: S.String.pipe(T.Label("prefix_id")),
       comment: S.optional(S.String),
       enabled: S.optional(S.Boolean),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/allowlist/{prefix_id}",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "PATCH",
+          uri: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/allowlist/{prefix_id}",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "PatchAdvancedTcpProtectionAllowlistItemRequest",
   }) as any as S.Schema<PatchAdvancedTcpProtectionAllowlistItemRequest>;
@@ -1781,7 +1884,7 @@ export const PatchAdvancedTcpProtectionAllowlistItemResponse =
       enabled: S.Boolean,
       modifiedOn: S.String.pipe(T.Body("modified_on")),
       prefix: S.String,
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "PatchAdvancedTcpProtectionAllowlistItemResponse",
   }) as any as S.Schema<PatchAdvancedTcpProtectionAllowlistItemResponse>;
@@ -1803,13 +1906,15 @@ export const PatchAdvancedTcpProtectionPrefixItemRequest =
       prefixId: S.String.pipe(T.Label("prefix_id")),
       comment: S.optional(S.String),
       excluded: S.optional(S.Boolean),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/prefixes/{prefix_id}",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "PATCH",
+          uri: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/prefixes/{prefix_id}",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "PatchAdvancedTcpProtectionPrefixItemRequest",
   }) as any as S.Schema<PatchAdvancedTcpProtectionPrefixItemRequest>;
@@ -1838,7 +1943,7 @@ export const PatchAdvancedTcpProtectionPrefixItemResponse =
       excluded: S.Boolean,
       modifiedOn: S.String.pipe(T.Body("modified_on")),
       prefix: S.String,
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "PatchAdvancedTcpProtectionPrefixItemResponse",
   }) as any as S.Schema<PatchAdvancedTcpProtectionPrefixItemResponse>;
@@ -1854,13 +1959,15 @@ export const PatchAdvancedTcpProtectionStatusRequest = /*@__PURE__*/ S.suspend(
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
       enabled: S.Boolean,
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/tcp_protection_status",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "PATCH",
+          uri: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/tcp_protection_status",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchAdvancedTcpProtectionStatusRequest",
 }) as any as S.Schema<PatchAdvancedTcpProtectionStatusRequest>;
@@ -1873,7 +1980,7 @@ export const PatchAdvancedTcpProtectionStatusResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       enabled: S.Boolean,
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchAdvancedTcpProtectionStatusResponse",
 }) as any as S.Schema<PatchAdvancedTcpProtectionStatusResponse>;
@@ -1895,13 +2002,15 @@ export const PatchAdvancedTcpProtectionSynProtectionFilterItemRequest =
       filterId: S.String.pipe(T.Label("filter_id")),
       expression: S.optional(S.String),
       mode: S.optional(S.String),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/syn_protection/filters/{filter_id}",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "PATCH",
+          uri: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/syn_protection/filters/{filter_id}",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "PatchAdvancedTcpProtectionSynProtectionFilterItemRequest",
   }) as any as S.Schema<PatchAdvancedTcpProtectionSynProtectionFilterItemRequest>;
@@ -1927,7 +2036,7 @@ export const PatchAdvancedTcpProtectionSynProtectionFilterItemResponse =
       expression: S.String,
       mode: S.String,
       modifiedOn: S.String.pipe(T.Body("modified_on")),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "PatchAdvancedTcpProtectionSynProtectionFilterItemResponse",
   }) as any as S.Schema<PatchAdvancedTcpProtectionSynProtectionFilterItemResponse>;
@@ -1955,13 +2064,15 @@ export const PatchAdvancedTcpProtectionSynProtectionRuleItemRequest =
       mitigationType: S.optional(S.String.pipe(T.Body("mitigation_type"))),
       mode: S.optional(S.String),
       rateSensitivity: S.optional(S.String.pipe(T.Body("rate_sensitivity"))),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/syn_protection/rules/{rule_id}",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "PATCH",
+          uri: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/syn_protection/rules/{rule_id}",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "PatchAdvancedTcpProtectionSynProtectionRuleItemRequest",
   }) as any as S.Schema<PatchAdvancedTcpProtectionSynProtectionRuleItemRequest>;
@@ -1999,7 +2110,7 @@ export const PatchAdvancedTcpProtectionSynProtectionRuleItemResponse =
       name: S.String,
       rateSensitivity: S.String.pipe(T.Body("rate_sensitivity")),
       scope: S.String,
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "PatchAdvancedTcpProtectionSynProtectionRuleItemResponse",
   }) as any as S.Schema<PatchAdvancedTcpProtectionSynProtectionRuleItemResponse>;
@@ -2021,13 +2132,15 @@ export const PatchAdvancedTcpProtectionTcpFlowProtectionFilterItemRequest =
       filterId: S.String.pipe(T.Label("filter_id")),
       expression: S.optional(S.String),
       mode: S.optional(S.String),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/tcp_flow_protection/filters/{filter_id}",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "PATCH",
+          uri: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/tcp_flow_protection/filters/{filter_id}",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "PatchAdvancedTcpProtectionTcpFlowProtectionFilterItemRequest",
   }) as any as S.Schema<PatchAdvancedTcpProtectionTcpFlowProtectionFilterItemRequest>;
@@ -2053,7 +2166,7 @@ export const PatchAdvancedTcpProtectionTcpFlowProtectionFilterItemResponse =
       expression: S.String,
       mode: S.String,
       modifiedOn: S.String.pipe(T.Body("modified_on")),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "PatchAdvancedTcpProtectionTcpFlowProtectionFilterItemResponse",
   }) as any as S.Schema<PatchAdvancedTcpProtectionTcpFlowProtectionFilterItemResponse>;
@@ -2078,13 +2191,15 @@ export const PatchAdvancedTcpProtectionTcpFlowProtectionRuleItemRequest =
       burstSensitivity: S.optional(S.String.pipe(T.Body("burst_sensitivity"))),
       mode: S.optional(S.String),
       rateSensitivity: S.optional(S.String.pipe(T.Body("rate_sensitivity"))),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/tcp_flow_protection/rules/{rule_id}",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "PATCH",
+          uri: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/tcp_flow_protection/rules/{rule_id}",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "PatchAdvancedTcpProtectionTcpFlowProtectionRuleItemRequest",
   }) as any as S.Schema<PatchAdvancedTcpProtectionTcpFlowProtectionRuleItemRequest>;
@@ -2119,7 +2234,7 @@ export const PatchAdvancedTcpProtectionTcpFlowProtectionRuleItemResponse =
       name: S.String,
       rateSensitivity: S.String.pipe(T.Body("rate_sensitivity")),
       scope: S.String,
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "PatchAdvancedTcpProtectionTcpFlowProtectionRuleItemResponse",
   }) as any as S.Schema<PatchAdvancedTcpProtectionTcpFlowProtectionRuleItemResponse>;

@@ -12,6 +12,9 @@ import * as Retry from "../retry.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
+/** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
+const KEY_DICTIONARY: Record<string, string> = { modifiedOn: "modified_on" };
+
 export class Forbidden extends T.applyErrorMatchers(
   S.TaggedErrorClass<Forbidden>()("Forbidden", {
     code: S.Number,
@@ -44,13 +47,15 @@ export const GetOriginPostQuantumEncryptionRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       zoneId: S.String.pipe(T.Label("zone_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/zones/{zone_id}/cache/origin_post_quantum_encryption",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "GET",
+          uri: "/zones/{zone_id}/cache/origin_post_quantum_encryption",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetOriginPostQuantumEncryptionRequest",
 }) as any as S.Schema<GetOriginPostQuantumEncryptionRequest>;
@@ -83,7 +88,7 @@ export const GetOriginPostQuantumEncryptionResponse = /*@__PURE__*/ S.suspend(
       editable: S.Boolean,
       value: GetResponseValue,
       modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetOriginPostQuantumEncryptionResponse",
 }) as any as S.Schema<GetOriginPostQuantumEncryptionResponse>;
@@ -106,13 +111,15 @@ export const PutOriginPostQuantumEncryptionRequest = /*@__PURE__*/ S.suspend(
     S.Struct({
       zoneId: S.String.pipe(T.Label("zone_id")),
       value: UpdateRequestValue,
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/zones/{zone_id}/cache/origin_post_quantum_encryption",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "PUT",
+          uri: "/zones/{zone_id}/cache/origin_post_quantum_encryption",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutOriginPostQuantumEncryptionRequest",
 }) as any as S.Schema<PutOriginPostQuantumEncryptionRequest>;
@@ -145,7 +152,7 @@ export const PutOriginPostQuantumEncryptionResponse = /*@__PURE__*/ S.suspend(
       editable: S.Boolean,
       value: UpdateResponseValue,
       modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutOriginPostQuantumEncryptionResponse",
 }) as any as S.Schema<PutOriginPostQuantumEncryptionResponse>;

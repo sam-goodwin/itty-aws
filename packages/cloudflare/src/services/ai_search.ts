@@ -14,6 +14,110 @@ import * as Retry from "../retry.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
+/** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
+const KEY_DICTIONARY: Record<string, string> = {
+  aiGatewayId: "ai_gateway_id",
+  aiSearchModel: "ai_search_model",
+  aiSearchOptions: "ai_search_options",
+  authorizedHosts: "authorized_hosts",
+  boostBy: "boost_by",
+  cacheThreshold: "cache_threshold",
+  cacheTtl: "cache_ttl",
+  cfApiId: "cf_api_id",
+  cfApiKey: "cf_api_key",
+  chatCompletionsEndpoint: "chat_completions_endpoint",
+  chunkOverlap: "chunk_overlap",
+  chunkSize: "chunk_size",
+  chunksCount: "chunks_count",
+  contentSelector: "content_selector",
+  contextExpansion: "context_expansion",
+  crawlOptions: "crawl_options",
+  createdAt: "created_at",
+  createdBy: "created_by",
+  createdFromAisearchWizard: "created_from_aisearch_wizard",
+  customMetadata: "custom_metadata",
+  dataType: "data_type",
+  embeddingModel: "embedding_model",
+  endByte: "end_byte",
+  endReason: "end_reason",
+  endedAt: "ended_at",
+  engineVersion: "engine_version",
+  excludeItems: "exclude_items",
+  fieldName: "field_name",
+  fileEmbedErrors: "file_embed_errors",
+  fileSize: "file_size",
+  fusionMethod: "fusion_method",
+  hybridSearchEnabled: "hybrid_search_enabled",
+  imageUrl: "image_url",
+  includeExternalLinks: "include_external_links",
+  includeHeaders: "include_headers",
+  includeImages: "include_images",
+  includeItems: "include_items",
+  includeSubdomains: "include_subdomains",
+  indexMethod: "index_method",
+  indexSourceErrors: "index_source_errors",
+  indexingOptions: "indexing_options",
+  instanceId: "instance_id",
+  instanceIds: "instance_ids",
+  keywordMatchMode: "keyword_match_mode",
+  keywordRank: "keyword_rank",
+  keywordScore: "keyword_score",
+  keywordTokenizer: "keyword_tokenizer",
+  lastActivity: "last_activity",
+  lastSeenAt: "last_seen_at",
+  matchThreshold: "match_threshold",
+  maxAge: "max_age",
+  maxNumResults: "max_num_results",
+  messageType: "message_type",
+  modifiedAt: "modified_at",
+  modifiedBy: "modified_by",
+  nextAction: "next_action",
+  parseOptions: "parse_options",
+  parseType: "parse_type",
+  perPage: "per_page",
+  periodMs: "period_ms",
+  publicEndpointId: "public_endpoint_id",
+  publicEndpointParams: "public_endpoint_params",
+  queryKind: "query_kind",
+  queryRewrite: "query_rewrite",
+  r2Jurisdiction: "r2_jurisdiction",
+  rateLimit: "rate_limit",
+  rerankingModel: "reranking_model",
+  rerankingScore: "reranking_score",
+  resultInfo: "result_info",
+  retrievalOptions: "retrieval_options",
+  retrievalType: "retrieval_type",
+  returnOnFailure: "return_on_failure",
+  rewriteModel: "rewrite_model",
+  rewritePrompt: "rewrite_prompt",
+  rewriteQuery: "rewrite_query",
+  scoreThreshold: "score_threshold",
+  scoringDetails: "scoring_details",
+  searchEndpoint: "search_endpoint",
+  searchQuery: "search_query",
+  sourceId: "source_id",
+  sourceParams: "source_params",
+  specificSitemaps: "specific_sitemaps",
+  startByte: "start_byte",
+  startedAt: "started_at",
+  storageId: "storage_id",
+  storageType: "storage_type",
+  storeOptions: "store_options",
+  summarizationModel: "summarization_model",
+  syncInterval: "sync_interval",
+  systemPromptAiSearch: "system_prompt_ai_search",
+  systemPromptIndexSummarization: "system_prompt_index_summarization",
+  systemPromptRewriteQuery: "system_prompt_rewrite_query",
+  tokenId: "token_id",
+  totalCount: "total_count",
+  useBrowserRendering: "use_browser_rendering",
+  vectorRank: "vector_rank",
+  vectorScore: "vector_score",
+  waitForCompletion: "wait_for_completion",
+  webCrawler: "web_crawler",
+  workerDomain: "worker_domain",
+};
+
 export class AiSearchInstanceNotFound extends T.applyErrorMatchers(
   S.TaggedErrorClass<AiSearchInstanceNotFound>()("AiSearchInstanceNotFound", {
     code: S.Number,
@@ -419,13 +523,15 @@ export const ChatCompletionsInstanceRequest = /*@__PURE__*/ S.suspend(() =>
     ),
     model: S.optional(InstancesChatCompletionsRequestModel),
     stream: S.optional(S.Boolean),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/ai-search/instances/{id}/chat/completions",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/ai-search/instances/{id}/chat/completions",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ChatCompletionsInstanceRequest",
 }) as any as S.Schema<ChatCompletionsInstanceRequest>;
@@ -594,7 +700,7 @@ export const ChatCompletionsInstanceResponse = /*@__PURE__*/ S.suspend(() =>
     id: S.optional(S.String),
     model: S.optional(S.String),
     object: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ChatCompletionsInstanceResponse",
 }) as any as S.Schema<ChatCompletionsInstanceResponse>;
@@ -887,13 +993,15 @@ export const ChatCompletionsNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
     messages: NamespacesChatCompletionsRequestMessagesList,
     model: S.optional(NamespacesChatCompletionsRequestModel),
     stream: S.optional(S.Boolean),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/ai-search/namespaces/{name}/chat/completions",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/ai-search/namespaces/{name}/chat/completions",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ChatCompletionsNamespaceRequest",
 }) as any as S.Schema<ChatCompletionsNamespaceRequest>;
@@ -1065,7 +1173,7 @@ export const ChatCompletionsNamespaceResponse = /*@__PURE__*/ S.suspend(() =>
     id: S.optional(S.String),
     model: S.optional(S.String),
     object: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ChatCompletionsNamespaceResponse",
 }) as any as S.Schema<ChatCompletionsNamespaceResponse>;
@@ -1356,13 +1464,15 @@ export const ChatCompletionsNamespaceInstanceRequest = /*@__PURE__*/ S.suspend(
       ),
       model: S.optional(NamespacesInstancesChatCompletionsRequestModel),
       stream: S.optional(S.Boolean),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}/chat/completions",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "POST",
+          uri: "/accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}/chat/completions",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ChatCompletionsNamespaceInstanceRequest",
 }) as any as S.Schema<ChatCompletionsNamespaceInstanceRequest>;
@@ -1537,7 +1647,7 @@ export const ChatCompletionsNamespaceInstanceResponse = /*@__PURE__*/ S.suspend(
       id: S.optional(S.String),
       model: S.optional(S.String),
       object: S.optional(S.String),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ChatCompletionsNamespaceInstanceResponse",
 }) as any as S.Schema<ChatCompletionsNamespaceInstanceResponse>;
@@ -1559,13 +1669,15 @@ export const ChunksNamespaceInstanceItemRequest = /*@__PURE__*/ S.suspend(() =>
     itemId: S.String.pipe(T.Label("item_id")),
     limit: S.optional(S.Number.pipe(T.Query())),
     offset: S.optional(S.Number.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}/items/{item_id}/chunks",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}/items/{item_id}/chunks",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ChunksNamespaceInstanceItemRequest",
 }) as any as S.Schema<ChunksNamespaceInstanceItemRequest>;
@@ -1632,7 +1744,7 @@ export const ChunksNamespaceInstanceItemResponse = /*@__PURE__*/ S.suspend(() =>
     result: S.optional(
       NamespacesInstancesItemsChunksResultList.pipe(T.EnvelopePayload()),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ChunksNamespaceInstanceItemResponse",
 }) as any as S.Schema<ChunksNamespaceInstanceItemResponse>;
@@ -2257,13 +2369,15 @@ export const CreateInstanceRequest = /*@__PURE__*/ S.suspend(() =>
     ),
     tokenId: S.optional(S.String.pipe(T.Body("token_id"))),
     type: S.optional(InstancesCreateRequestType),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/ai-search/instances",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/ai-search/instances",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateInstanceRequest",
 }) as any as S.Schema<CreateInstanceRequest>;
@@ -2907,7 +3021,7 @@ export const CreateInstanceResponse = /*@__PURE__*/ S.suspend(() =>
     ),
     tokenId: S.optional(S.String.pipe(T.Body("token_id"))),
     type: S.optional(InstancesCreateResponseType),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateInstanceResponse",
 }) as any as S.Schema<CreateInstanceResponse>;
@@ -2923,13 +3037,15 @@ export const CreateInstanceJobRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     id: S.String.pipe(T.Label()),
     description: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/ai-search/instances/{id}/jobs",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/ai-search/instances/{id}/jobs",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateInstanceJobRequest",
 }) as any as S.Schema<CreateInstanceJobRequest>;
@@ -2959,7 +3075,7 @@ export const CreateInstanceJobResponse = /*@__PURE__*/ S.suspend(() =>
     endedAt: S.optional(S.String.pipe(T.Body("ended_at"))),
     lastSeenAt: S.optional(S.String.pipe(T.Body("last_seen_at"))),
     startedAt: S.optional(S.String.pipe(T.Body("started_at"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateInstanceJobResponse",
 }) as any as S.Schema<CreateInstanceJobResponse>;
@@ -2975,13 +3091,15 @@ export const CreateNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     name: S.String,
     description: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/ai-search/namespaces",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/ai-search/namespaces",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateNamespaceRequest",
 }) as any as S.Schema<CreateNamespaceRequest>;
@@ -2998,7 +3116,7 @@ export const CreateNamespaceResponse = /*@__PURE__*/ S.suspend(() =>
     createdAt: S.String.pipe(T.Body("created_at")),
     name: S.String,
     description: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateNamespaceResponse",
 }) as any as S.Schema<CreateNamespaceResponse>;
@@ -3665,13 +3783,15 @@ export const CreateNamespaceInstanceRequest = /*@__PURE__*/ S.suspend(() =>
     ),
     tokenId: S.optional(S.String.pipe(T.Body("token_id"))),
     type: S.optional(NamespacesInstancesCreateRequestType),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/ai-search/namespaces/{name}/instances",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/ai-search/namespaces/{name}/instances",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateNamespaceInstanceRequest",
 }) as any as S.Schema<CreateNamespaceInstanceRequest>;
@@ -4357,7 +4477,7 @@ export const CreateNamespaceInstanceResponse = /*@__PURE__*/ S.suspend(() =>
     ),
     tokenId: S.optional(S.String.pipe(T.Body("token_id"))),
     type: S.optional(NamespacesInstancesCreateResponseType),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateNamespaceInstanceResponse",
 }) as any as S.Schema<CreateNamespaceInstanceResponse>;
@@ -4375,13 +4495,15 @@ export const CreateNamespaceInstanceJobRequest = /*@__PURE__*/ S.suspend(() =>
     name: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
     description: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}/jobs",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}/jobs",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateNamespaceInstanceJobRequest",
 }) as any as S.Schema<CreateNamespaceInstanceJobRequest>;
@@ -4412,7 +4534,7 @@ export const CreateNamespaceInstanceJobResponse = /*@__PURE__*/ S.suspend(() =>
     endedAt: S.optional(S.String.pipe(T.Body("ended_at"))),
     lastSeenAt: S.optional(S.String.pipe(T.Body("last_seen_at"))),
     startedAt: S.optional(S.String.pipe(T.Body("started_at"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateNamespaceInstanceJobResponse",
 }) as any as S.Schema<CreateNamespaceInstanceJobResponse>;
@@ -4447,13 +4569,15 @@ export const CreateOrUpdateNamespaceInstanceItemRequest =
       waitForCompletion: S.optional(
         S.Boolean.pipe(T.Body("wait_for_completion")),
       ),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}/items",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "PUT",
+          uri: "/accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}/items",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "CreateOrUpdateNamespaceInstanceItemRequest",
   }) as any as S.Schema<CreateOrUpdateNamespaceInstanceItemRequest>;
@@ -4506,7 +4630,7 @@ export const CreateOrUpdateNamespaceInstanceItemResponse =
       sourceId: S.String.pipe(T.Body("source_id")),
       status: NamespacesInstancesItemsCreateOrUpdateResponseStatus,
       error: S.optional(S.String),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "CreateOrUpdateNamespaceInstanceItemResponse",
   }) as any as S.Schema<CreateOrUpdateNamespaceInstanceItemResponse>;
@@ -4525,13 +4649,15 @@ export const CreateTokenRequest = /*@__PURE__*/ S.suspend(() =>
     cfApiKey: S.String.pipe(T.Body("cf_api_key")),
     name: S.String,
     legacy: S.optional(S.Boolean),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/ai-search/tokens",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/ai-search/tokens",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateTokenRequest",
 }) as any as S.Schema<CreateTokenRequest>;
@@ -4559,7 +4685,7 @@ export const CreateTokenResponse = /*@__PURE__*/ S.suspend(() =>
     enabled: S.optional(S.Boolean),
     legacy: S.optional(S.Boolean),
     modifiedBy: S.optional(S.String.pipe(T.Body("modified_by"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateTokenResponse",
 }) as any as S.Schema<CreateTokenResponse>;
@@ -4572,13 +4698,15 @@ export const DeleteInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/ai-search/instances/{id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/ai-search/instances/{id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteInstanceRequest",
 }) as any as S.Schema<DeleteInstanceRequest>;
@@ -5222,7 +5350,7 @@ export const DeleteInstanceResponse = /*@__PURE__*/ S.suspend(() =>
     ),
     tokenId: S.optional(S.String.pipe(T.Body("token_id"))),
     type: S.optional(InstancesDeleteResponseType),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteInstanceResponse",
 }) as any as S.Schema<DeleteInstanceResponse>;
@@ -5235,13 +5363,15 @@ export const DeleteNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/ai-search/namespaces/{name}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/ai-search/namespaces/{name}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteNamespaceRequest",
 }) as any as S.Schema<DeleteNamespaceRequest>;
@@ -5253,7 +5383,7 @@ export interface DeleteNamespaceResponse {
 export const DeleteNamespaceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteNamespaceResponse",
 }) as any as S.Schema<DeleteNamespaceResponse>;
@@ -5268,13 +5398,15 @@ export const DeleteNamespaceInstanceRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     name: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteNamespaceInstanceRequest",
 }) as any as S.Schema<DeleteNamespaceInstanceRequest>;
@@ -5960,7 +6092,7 @@ export const DeleteNamespaceInstanceResponse = /*@__PURE__*/ S.suspend(() =>
     ),
     tokenId: S.optional(S.String.pipe(T.Body("token_id"))),
     type: S.optional(NamespacesInstancesDeleteResponseType),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteNamespaceInstanceResponse",
 }) as any as S.Schema<DeleteNamespaceInstanceResponse>;
@@ -5978,13 +6110,15 @@ export const DeleteNamespaceInstanceItemRequest = /*@__PURE__*/ S.suspend(() =>
     name: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
     itemId: S.String.pipe(T.Label("item_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}/items/{item_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}/items/{item_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteNamespaceInstanceItemRequest",
 }) as any as S.Schema<DeleteNamespaceInstanceItemRequest>;
@@ -5996,7 +6130,7 @@ export interface DeleteNamespaceInstanceItemResponse {
 export const DeleteNamespaceInstanceItemResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteNamespaceInstanceItemResponse",
 }) as any as S.Schema<DeleteNamespaceInstanceItemResponse>;
@@ -6009,13 +6143,15 @@ export const DeleteTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/ai-search/tokens/{id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/ai-search/tokens/{id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteTokenRequest",
 }) as any as S.Schema<DeleteTokenRequest>;
@@ -6027,7 +6163,7 @@ export interface DeleteTokenResponse {
 export const DeleteTokenResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteTokenResponse",
 }) as any as S.Schema<DeleteTokenResponse>;
@@ -6046,20 +6182,22 @@ export const DownloadNamespaceInstanceItemRequest = /*@__PURE__*/ S.suspend(
       name: S.String.pipe(T.Label()),
       id: S.String.pipe(T.Label()),
       itemId: S.String.pipe(T.Label("item_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}/items/{item_id}/download",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "GET",
+          uri: "/accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}/items/{item_id}/download",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DownloadNamespaceInstanceItemRequest",
 }) as any as S.Schema<DownloadNamespaceInstanceItemRequest>;
 
 export interface DownloadNamespaceInstanceItemResponse {}
 export const DownloadNamespaceInstanceItemResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
+  () => S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DownloadNamespaceInstanceItemResponse",
 }) as any as S.Schema<DownloadNamespaceInstanceItemResponse>;
@@ -6075,13 +6213,15 @@ export const GetInstanceJobRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     id: S.String.pipe(T.Label()),
     jobId: S.String.pipe(T.Label("job_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/ai-search/instances/{id}/jobs/{job_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/ai-search/instances/{id}/jobs/{job_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetInstanceJobRequest",
 }) as any as S.Schema<GetInstanceJobRequest>;
@@ -6111,7 +6251,7 @@ export const GetInstanceJobResponse = /*@__PURE__*/ S.suspend(() =>
     endedAt: S.optional(S.String.pipe(T.Body("ended_at"))),
     lastSeenAt: S.optional(S.String.pipe(T.Body("last_seen_at"))),
     startedAt: S.optional(S.String.pipe(T.Body("started_at"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetInstanceJobResponse",
 }) as any as S.Schema<GetInstanceJobResponse>;
@@ -6129,13 +6269,15 @@ export const GetNamespaceInstanceItemRequest = /*@__PURE__*/ S.suspend(() =>
     name: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
     itemId: S.String.pipe(T.Label("item_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}/items/{item_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}/items/{item_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetNamespaceInstanceItemRequest",
 }) as any as S.Schema<GetNamespaceInstanceItemRequest>;
@@ -6186,7 +6328,7 @@ export const GetNamespaceInstanceItemResponse = /*@__PURE__*/ S.suspend(() =>
     sourceId: S.String.pipe(T.Body("source_id")),
     status: NamespacesInstancesItemsGetResponseStatus,
     error: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetNamespaceInstanceItemResponse",
 }) as any as S.Schema<GetNamespaceInstanceItemResponse>;
@@ -6204,13 +6346,15 @@ export const GetNamespaceInstanceJobRequest = /*@__PURE__*/ S.suspend(() =>
     name: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
     jobId: S.String.pipe(T.Label("job_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}/jobs/{job_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}/jobs/{job_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetNamespaceInstanceJobRequest",
 }) as any as S.Schema<GetNamespaceInstanceJobRequest>;
@@ -6240,7 +6384,7 @@ export const GetNamespaceInstanceJobResponse = /*@__PURE__*/ S.suspend(() =>
     endedAt: S.optional(S.String.pipe(T.Body("ended_at"))),
     lastSeenAt: S.optional(S.String.pipe(T.Body("last_seen_at"))),
     startedAt: S.optional(S.String.pipe(T.Body("started_at"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetNamespaceInstanceJobResponse",
 }) as any as S.Schema<GetNamespaceInstanceJobResponse>;
@@ -6258,13 +6402,15 @@ export const ListInstanceJobsRequest = /*@__PURE__*/ S.suspend(() =>
     id: S.String.pipe(T.Label()),
     page: S.optional(S.Number.pipe(T.Query())),
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/ai-search/instances/{id}/jobs",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/ai-search/instances/{id}/jobs",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListInstanceJobsRequest",
 }) as any as S.Schema<ListInstanceJobsRequest>;
@@ -6313,7 +6459,7 @@ export const ListInstanceJobsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: InstancesJobsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListInstanceJobsResponse",
 }) as any as S.Schema<ListInstanceJobsResponse>;
@@ -6353,13 +6499,15 @@ export const ListInstancesRequest = /*@__PURE__*/ S.suspend(() =>
     page: S.optional(S.Number.pipe(T.Query())),
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
     search: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/ai-search/instances",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/ai-search/instances",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListInstancesRequest",
 }) as any as S.Schema<ListInstancesRequest>;
@@ -7022,7 +7170,7 @@ export const ListInstancesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: InstancesListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListInstancesResponse",
 }) as any as S.Schema<ListInstancesResponse>;
@@ -7075,13 +7223,15 @@ export const ListNamespaceInstanceItemsRequest = /*@__PURE__*/ S.suspend(() =>
     status: S.optional(
       NamespacesInstancesItemsListRequestStatus.pipe(T.Query()),
     ),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}/items",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}/items",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListNamespaceInstanceItemsRequest",
 }) as any as S.Schema<ListNamespaceInstanceItemsRequest>;
@@ -7154,7 +7304,7 @@ export const ListNamespaceInstanceItemsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: NamespacesInstancesItemsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListNamespaceInstanceItemsResponse",
 }) as any as S.Schema<ListNamespaceInstanceItemsResponse>;
@@ -7174,13 +7324,15 @@ export const ListNamespaceInstanceJobsRequest = /*@__PURE__*/ S.suspend(() =>
     id: S.String.pipe(T.Label()),
     page: S.optional(S.Number.pipe(T.Query())),
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}/jobs",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}/jobs",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListNamespaceInstanceJobsRequest",
 }) as any as S.Schema<ListNamespaceInstanceJobsRequest>;
@@ -7232,7 +7384,7 @@ export const ListNamespaceInstanceJobsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: NamespacesInstancesJobsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListNamespaceInstanceJobsResponse",
 }) as any as S.Schema<ListNamespaceInstanceJobsResponse>;
@@ -7281,13 +7433,15 @@ export const ListNamespaceInstancesRequest = /*@__PURE__*/ S.suspend(() =>
     page: S.optional(S.Number.pipe(T.Query())),
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
     search: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/ai-search/namespaces/{name}/instances",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/ai-search/namespaces/{name}/instances",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListNamespaceInstancesRequest",
 }) as any as S.Schema<ListNamespaceInstancesRequest>;
@@ -7993,7 +8147,7 @@ export const ListNamespaceInstancesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: NamespacesInstancesListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListNamespaceInstancesResponse",
 }) as any as S.Schema<ListNamespaceInstancesResponse>;
@@ -8013,13 +8167,15 @@ export const ListNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
     page: S.optional(S.Number.pipe(T.Query())),
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
     search: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/ai-search/namespaces",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/ai-search/namespaces",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListNamespacesRequest",
 }) as any as S.Schema<ListNamespacesRequest>;
@@ -8055,7 +8211,7 @@ export const ListNamespacesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: NamespacesListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListNamespacesResponse",
 }) as any as S.Schema<ListNamespacesResponse>;
@@ -8075,13 +8231,15 @@ export const ListTokensRequest = /*@__PURE__*/ S.suspend(() =>
     page: S.optional(S.Number.pipe(T.Query())),
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
     search: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/ai-search/tokens",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/ai-search/tokens",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListTokensRequest",
 }) as any as S.Schema<ListTokensRequest>;
@@ -8128,7 +8286,7 @@ export const ListTokensResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: TokensListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListTokensResponse",
 }) as any as S.Schema<ListTokensResponse>;
@@ -8148,13 +8306,15 @@ export const LogsInstanceJobRequest = /*@__PURE__*/ S.suspend(() =>
     jobId: S.String.pipe(T.Label("job_id")),
     page: S.optional(S.Number.pipe(T.Query())),
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/ai-search/instances/{id}/jobs/{job_id}/logs",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/ai-search/instances/{id}/jobs/{job_id}/logs",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "LogsInstanceJobRequest",
 }) as any as S.Schema<LogsInstanceJobRequest>;
@@ -8188,7 +8348,7 @@ export interface LogsInstanceJobResponse {
 export const LogsInstanceJobResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(InstancesJobsLogsResultList.pipe(T.EnvelopePayload())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "LogsInstanceJobResponse",
 }) as any as S.Schema<LogsInstanceJobResponse>;
@@ -8210,13 +8370,15 @@ export const LogsNamespaceInstanceItemRequest = /*@__PURE__*/ S.suspend(() =>
     itemId: S.String.pipe(T.Label("item_id")),
     cursor: S.optional(S.String.pipe(T.Query())),
     limit: S.optional(S.Number.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}/items/{item_id}/logs",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}/items/{item_id}/logs",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "LogsNamespaceInstanceItemRequest",
 }) as any as S.Schema<LogsNamespaceInstanceItemRequest>;
@@ -8260,7 +8422,7 @@ export const LogsNamespaceInstanceItemResponse = /*@__PURE__*/ S.suspend(() =>
     result: S.optional(
       NamespacesInstancesItemsLogsResultList.pipe(T.EnvelopePayload()),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "LogsNamespaceInstanceItemResponse",
 }) as any as S.Schema<LogsNamespaceInstanceItemResponse>;
@@ -8282,13 +8444,15 @@ export const LogsNamespaceInstanceJobRequest = /*@__PURE__*/ S.suspend(() =>
     jobId: S.String.pipe(T.Label("job_id")),
     page: S.optional(S.Number.pipe(T.Query())),
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}/jobs/{job_id}/logs",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}/jobs/{job_id}/logs",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "LogsNamespaceInstanceJobRequest",
 }) as any as S.Schema<LogsNamespaceInstanceJobRequest>;
@@ -8326,7 +8490,7 @@ export const LogsNamespaceInstanceJobResponse = /*@__PURE__*/ S.suspend(() =>
     result: S.optional(
       NamespacesInstancesJobsLogsResultList.pipe(T.EnvelopePayload()),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "LogsNamespaceInstanceJobResponse",
 }) as any as S.Schema<LogsNamespaceInstanceJobResponse>;
@@ -8352,13 +8516,15 @@ export const PatchNamespaceInstanceJobRequest = /*@__PURE__*/ S.suspend(() =>
     id: S.String.pipe(T.Label()),
     jobId: S.String.pipe(T.Label("job_id")),
     action: NamespacesInstancesJobsUpdateRequestAction,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}/jobs/{job_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}/jobs/{job_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchNamespaceInstanceJobRequest",
 }) as any as S.Schema<PatchNamespaceInstanceJobRequest>;
@@ -8389,7 +8555,7 @@ export const PatchNamespaceInstanceJobResponse = /*@__PURE__*/ S.suspend(() =>
     endedAt: S.optional(S.String.pipe(T.Body("ended_at"))),
     lastSeenAt: S.optional(S.String.pipe(T.Body("last_seen_at"))),
     startedAt: S.optional(S.String.pipe(T.Body("started_at"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchNamespaceInstanceJobResponse",
 }) as any as S.Schema<PatchNamespaceInstanceJobResponse>;
@@ -8402,13 +8568,15 @@ export const ReadInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/ai-search/instances/{id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/ai-search/instances/{id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ReadInstanceRequest",
 }) as any as S.Schema<ReadInstanceRequest>;
@@ -9052,7 +9220,7 @@ export const ReadInstanceResponse = /*@__PURE__*/ S.suspend(() =>
     ),
     tokenId: S.optional(S.String.pipe(T.Body("token_id"))),
     type: S.optional(InstancesReadResponseType),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ReadInstanceResponse",
 }) as any as S.Schema<ReadInstanceResponse>;
@@ -9065,13 +9233,15 @@ export const ReadNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/ai-search/namespaces/{name}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/ai-search/namespaces/{name}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ReadNamespaceRequest",
 }) as any as S.Schema<ReadNamespaceRequest>;
@@ -9088,7 +9258,7 @@ export const ReadNamespaceResponse = /*@__PURE__*/ S.suspend(() =>
     createdAt: S.String.pipe(T.Body("created_at")),
     name: S.String,
     description: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ReadNamespaceResponse",
 }) as any as S.Schema<ReadNamespaceResponse>;
@@ -9103,13 +9273,15 @@ export const ReadNamespaceInstanceRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     name: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ReadNamespaceInstanceRequest",
 }) as any as S.Schema<ReadNamespaceInstanceRequest>;
@@ -9785,7 +9957,7 @@ export const ReadNamespaceInstanceResponse = /*@__PURE__*/ S.suspend(() =>
     ),
     tokenId: S.optional(S.String.pipe(T.Body("token_id"))),
     type: S.optional(NamespacesInstancesReadResponseType),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ReadNamespaceInstanceResponse",
 }) as any as S.Schema<ReadNamespaceInstanceResponse>;
@@ -9798,13 +9970,15 @@ export const ReadTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/ai-search/tokens/{id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/ai-search/tokens/{id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ReadTokenRequest",
 }) as any as S.Schema<ReadTokenRequest>;
@@ -9832,7 +10006,7 @@ export const ReadTokenResponse = /*@__PURE__*/ S.suspend(() =>
     enabled: S.optional(S.Boolean),
     legacy: S.optional(S.Boolean),
     modifiedBy: S.optional(S.String.pipe(T.Body("modified_by"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ReadTokenResponse",
 }) as any as S.Schema<ReadTokenResponse>;
@@ -10103,13 +10277,15 @@ export const SearchInstanceRequest = /*@__PURE__*/ S.suspend(() =>
     ),
     messages: S.optional(InstancesSearchRequestMessagesList),
     query: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/ai-search/instances/{id}/search",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/ai-search/instances/{id}/search",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "SearchInstanceRequest",
 }) as any as S.Schema<SearchInstanceRequest>;
@@ -10221,7 +10397,7 @@ export const SearchInstanceResponse = /*@__PURE__*/ S.suspend(() =>
     chunks: InstancesSearchResponseChunksList,
     queryKind: InstancesSearchResponseQueryKind.pipe(T.Body("query_kind")),
     searchQuery: S.optional(S.String.pipe(T.Body("search_query"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "SearchInstanceResponse",
 }) as any as S.Schema<SearchInstanceResponse>;
@@ -10503,13 +10679,15 @@ export const SearchNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
     ),
     messages: S.optional(NamespacesSearchRequestMessagesList),
     query: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/ai-search/namespaces/{name}/search",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/ai-search/namespaces/{name}/search",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "SearchNamespaceRequest",
 }) as any as S.Schema<SearchNamespaceRequest>;
@@ -10644,7 +10822,7 @@ export const SearchNamespaceResponse = /*@__PURE__*/ S.suspend(() =>
     queryKind: NamespacesSearchResponseQueryKind.pipe(T.Body("query_kind")),
     errors: S.optional(NamespacesSearchResponseErrorsList),
     searchQuery: S.optional(S.String.pipe(T.Body("search_query"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "SearchNamespaceResponse",
 }) as any as S.Schema<SearchNamespaceResponse>;
@@ -10923,13 +11101,15 @@ export const SearchNamespaceInstanceRequest = /*@__PURE__*/ S.suspend(() =>
     ),
     messages: S.optional(NamespacesInstancesSearchRequestMessagesList),
     query: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}/search",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}/search",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "SearchNamespaceInstanceRequest",
 }) as any as S.Schema<SearchNamespaceInstanceRequest>;
@@ -11046,7 +11226,7 @@ export const SearchNamespaceInstanceResponse = /*@__PURE__*/ S.suspend(() =>
       T.Body("query_kind"),
     ),
     searchQuery: S.optional(S.String.pipe(T.Body("search_query"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "SearchNamespaceInstanceResponse",
 }) as any as S.Schema<SearchNamespaceInstanceResponse>;
@@ -11060,13 +11240,15 @@ export const StatsInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/ai-search/instances/{id}/stats",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/ai-search/instances/{id}/stats",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "StatsInstanceRequest",
 }) as any as S.Schema<StatsInstanceRequest>;
@@ -11169,7 +11351,7 @@ export const StatsInstanceResponse = /*@__PURE__*/ S.suspend(() =>
     queued: S.optional(S.Number),
     running: S.optional(S.Number),
     skipped: S.optional(S.Number),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "StatsInstanceResponse",
 }) as any as S.Schema<StatsInstanceResponse>;
@@ -11185,13 +11367,15 @@ export const StatsNamespaceInstanceRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     name: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}/stats",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}/stats",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "StatsNamespaceInstanceRequest",
 }) as any as S.Schema<StatsNamespaceInstanceRequest>;
@@ -11297,7 +11481,7 @@ export const StatsNamespaceInstanceResponse = /*@__PURE__*/ S.suspend(() =>
     queued: S.optional(S.Number),
     running: S.optional(S.Number),
     skipped: S.optional(S.Number),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "StatsNamespaceInstanceResponse",
 }) as any as S.Schema<StatsNamespaceInstanceResponse>;
@@ -11330,13 +11514,15 @@ export const SyncNamespaceInstanceItemRequest = /*@__PURE__*/ S.suspend(() =>
     waitForCompletion: S.optional(
       S.Boolean.pipe(T.Body("wait_for_completion")),
     ),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}/items/{item_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}/items/{item_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "SyncNamespaceInstanceItemRequest",
 }) as any as S.Schema<SyncNamespaceInstanceItemRequest>;
@@ -11388,7 +11574,7 @@ export const SyncNamespaceInstanceItemResponse = /*@__PURE__*/ S.suspend(() =>
     sourceId: S.String.pipe(T.Body("source_id")),
     status: NamespacesInstancesItemsSyncResponseStatus,
     error: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "SyncNamespaceInstanceItemResponse",
 }) as any as S.Schema<SyncNamespaceInstanceItemResponse>;
@@ -12031,13 +12217,15 @@ export const UpdateInstanceRequest = /*@__PURE__*/ S.suspend(() =>
       S.String.pipe(T.Body("system_prompt_rewrite_query")),
     ),
     tokenId: S.optional(S.String.pipe(T.Body("token_id"))),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/ai-search/instances/{id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/ai-search/instances/{id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateInstanceRequest",
 }) as any as S.Schema<UpdateInstanceRequest>;
@@ -12681,7 +12869,7 @@ export const UpdateInstanceResponse = /*@__PURE__*/ S.suspend(() =>
     ),
     tokenId: S.optional(S.String.pipe(T.Body("token_id"))),
     type: S.optional(InstancesUpdateResponseType),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateInstanceResponse",
 }) as any as S.Schema<UpdateInstanceResponse>;
@@ -12697,13 +12885,15 @@ export const UpdateNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     name: S.String.pipe(T.Label()),
     description: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/ai-search/namespaces/{name}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/ai-search/namespaces/{name}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateNamespaceRequest",
 }) as any as S.Schema<UpdateNamespaceRequest>;
@@ -12720,7 +12910,7 @@ export const UpdateNamespaceResponse = /*@__PURE__*/ S.suspend(() =>
     createdAt: S.String.pipe(T.Body("created_at")),
     name: S.String,
     description: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateNamespaceResponse",
 }) as any as S.Schema<UpdateNamespaceResponse>;
@@ -13403,13 +13593,15 @@ export const UpdateNamespaceInstanceRequest = /*@__PURE__*/ S.suspend(() =>
       S.String.pipe(T.Body("system_prompt_rewrite_query")),
     ),
     tokenId: S.optional(S.String.pipe(T.Body("token_id"))),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateNamespaceInstanceRequest",
 }) as any as S.Schema<UpdateNamespaceInstanceRequest>;
@@ -14095,7 +14287,7 @@ export const UpdateNamespaceInstanceResponse = /*@__PURE__*/ S.suspend(() =>
     ),
     tokenId: S.optional(S.String.pipe(T.Body("token_id"))),
     type: S.optional(NamespacesInstancesUpdateResponseType),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateNamespaceInstanceResponse",
 }) as any as S.Schema<UpdateNamespaceInstanceResponse>;
@@ -14116,13 +14308,15 @@ export const UpdateTokenRequest = /*@__PURE__*/ S.suspend(() =>
     cfApiKey: S.String.pipe(T.Body("cf_api_key")),
     name: S.String,
     legacy: S.optional(S.Boolean),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/ai-search/tokens/{id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/ai-search/tokens/{id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateTokenRequest",
 }) as any as S.Schema<UpdateTokenRequest>;
@@ -14150,7 +14344,7 @@ export const UpdateTokenResponse = /*@__PURE__*/ S.suspend(() =>
     enabled: S.optional(S.Boolean),
     legacy: S.optional(S.Boolean),
     modifiedBy: S.optional(S.String.pipe(T.Body("modified_by"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateTokenResponse",
 }) as any as S.Schema<UpdateTokenResponse>;
@@ -14166,13 +14360,15 @@ export const UploadNamespaceInstanceItemRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     name: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}/items",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}/items",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UploadNamespaceInstanceItemRequest",
 }) as any as S.Schema<UploadNamespaceInstanceItemRequest>;
@@ -14224,7 +14420,7 @@ export const UploadNamespaceInstanceItemResponse = /*@__PURE__*/ S.suspend(() =>
     sourceId: S.String.pipe(T.Body("source_id")),
     status: NamespacesInstancesItemsUploadResponseStatus,
     error: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UploadNamespaceInstanceItemResponse",
 }) as any as S.Schema<UploadNamespaceInstanceItemResponse>;

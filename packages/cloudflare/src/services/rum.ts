@@ -14,6 +14,20 @@ import * as Retry from "../retry.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
+/** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
+const KEY_DICTIONARY: Record<string, string> = {
+  autoInstall: "auto_install",
+  deleteRules: "delete_rules",
+  isPaused: "is_paused",
+  perPage: "per_page",
+  resultInfo: "result_info",
+  siteTag: "site_tag",
+  siteToken: "site_token",
+  totalCount: "total_count",
+  zoneName: "zone_name",
+  zoneTag: "zone_tag",
+};
+
 export class Forbidden extends T.applyErrorMatchers(
   S.TaggedErrorClass<Forbidden>()("Forbidden", {
     code: S.Number,
@@ -107,13 +121,15 @@ export const BulkCreateRulesRequest = /*@__PURE__*/ S.suspend(() =>
       RulesBulkCreateRequestDeleteRulesList.pipe(T.Body("delete_rules")),
     ),
     rules: S.optional(RulesBulkCreateRequestRulesList),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/rum/v2/{ruleset_id}/rules",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/rum/v2/{ruleset_id}/rules",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "BulkCreateRulesRequest",
 }) as any as S.Schema<BulkCreateRulesRequest>;
@@ -187,7 +203,7 @@ export const BulkCreateRulesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rules: S.optional(RulesBulkCreateResponseRulesList),
     ruleset: S.optional(RulesBulkCreateResponseRuleset),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "BulkCreateRulesResponse",
 }) as any as S.Schema<BulkCreateRulesResponse>;
@@ -217,13 +233,15 @@ export const CreateRuleRequest = /*@__PURE__*/ S.suspend(() =>
     inclusive: S.optional(S.Boolean),
     isPaused: S.optional(S.Boolean.pipe(T.Body("is_paused"))),
     paths: S.optional(RulesCreateRequestPathsList),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/rum/v2/{ruleset_id}/rule",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/rum/v2/{ruleset_id}/rule",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateRuleRequest",
 }) as any as S.Schema<CreateRuleRequest>;
@@ -257,7 +275,7 @@ export const CreateRuleResponse = /*@__PURE__*/ S.suspend(() =>
     isPaused: S.optional(S.Boolean.pipe(T.Body("is_paused"))),
     paths: S.optional(RulesCreateResponsePathsList),
     priority: S.optional(S.Number),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateRuleResponse",
 }) as any as S.Schema<CreateRuleResponse>;
@@ -278,13 +296,15 @@ export const CreateSiteInfoRequest = /*@__PURE__*/ S.suspend(() =>
     autoInstall: S.optional(S.Boolean.pipe(T.Body("auto_install"))),
     host: S.optional(S.String),
     zoneTag: S.optional(S.String.pipe(T.Body("zone_tag"))),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/rum/site_info",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/rum/site_info",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateSiteInfoRequest",
 }) as any as S.Schema<CreateSiteInfoRequest>;
@@ -371,7 +391,7 @@ export const CreateSiteInfoResponse = /*@__PURE__*/ S.suspend(() =>
     siteTag: S.optional(S.String.pipe(T.Body("site_tag"))),
     siteToken: S.optional(S.String.pipe(T.Body("site_token"))),
     snippet: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateSiteInfoResponse",
 }) as any as S.Schema<CreateSiteInfoResponse>;
@@ -389,13 +409,15 @@ export const DeleteRuleRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     rulesetId: S.String.pipe(T.Label("ruleset_id")),
     ruleId: S.String.pipe(T.Label("rule_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/rum/v2/{ruleset_id}/rule/{rule_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/rum/v2/{ruleset_id}/rule/{rule_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteRuleRequest",
 }) as any as S.Schema<DeleteRuleRequest>;
@@ -408,7 +430,7 @@ export interface DeleteRuleResponse {
 export const DeleteRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteRuleResponse",
 }) as any as S.Schema<DeleteRuleResponse>;
@@ -423,13 +445,15 @@ export const DeleteSiteInfoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     siteId: S.String.pipe(T.Label("site_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/rum/site_info/{site_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/rum/site_info/{site_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteSiteInfoRequest",
 }) as any as S.Schema<DeleteSiteInfoRequest>;
@@ -442,7 +466,7 @@ export interface DeleteSiteInfoResponse {
 export const DeleteSiteInfoResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     siteTag: S.optional(S.String.pipe(T.Body("site_tag"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteSiteInfoResponse",
 }) as any as S.Schema<DeleteSiteInfoResponse>;
@@ -457,13 +481,15 @@ export const GetSiteInfoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     siteId: S.String.pipe(T.Label("site_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/rum/site_info/{site_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/rum/site_info/{site_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetSiteInfoRequest",
 }) as any as S.Schema<GetSiteInfoRequest>;
@@ -550,7 +576,7 @@ export const GetSiteInfoResponse = /*@__PURE__*/ S.suspend(() =>
     siteTag: S.optional(S.String.pipe(T.Body("site_tag"))),
     siteToken: S.optional(S.String.pipe(T.Body("site_token"))),
     snippet: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetSiteInfoResponse",
 }) as any as S.Schema<GetSiteInfoResponse>;
@@ -565,13 +591,15 @@ export const ListRulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     rulesetId: S.String.pipe(T.Label("ruleset_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/rum/v2/{ruleset_id}/rules",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/rum/v2/{ruleset_id}/rules",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListRulesRequest",
 }) as any as S.Schema<ListRulesRequest>;
@@ -644,7 +672,7 @@ export const ListRulesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rules: S.optional(RulesListResponseRulesList),
     ruleset: S.optional(RulesListResponseRuleset),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListRulesResponse",
 }) as any as S.Schema<ListRulesResponse>;
@@ -668,13 +696,15 @@ export const ListSiteInfosRequest = /*@__PURE__*/ S.suspend(() =>
     orderBy: S.optional(SiteInfoListRequestOrderBy.pipe(T.Query("order_by"))),
     page: S.optional(S.Number.pipe(T.Query())),
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/rum/site_info/list",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/rum/site_info/list",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListSiteInfosRequest",
 }) as any as S.Schema<ListSiteInfosRequest>;
@@ -780,7 +810,7 @@ export const ListSiteInfosResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: SiteInfoListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListSiteInfosResponse",
 }) as any as S.Schema<ListSiteInfosResponse>;
@@ -813,13 +843,15 @@ export const UpdateRuleRequest = /*@__PURE__*/ S.suspend(() =>
     inclusive: S.optional(S.Boolean),
     isPaused: S.optional(S.Boolean.pipe(T.Body("is_paused"))),
     paths: S.optional(RulesUpdateRequestPathsList),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/rum/v2/{ruleset_id}/rule/{rule_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/rum/v2/{ruleset_id}/rule/{rule_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateRuleRequest",
 }) as any as S.Schema<UpdateRuleRequest>;
@@ -853,7 +885,7 @@ export const UpdateRuleResponse = /*@__PURE__*/ S.suspend(() =>
     isPaused: S.optional(S.Boolean.pipe(T.Body("is_paused"))),
     paths: S.optional(RulesUpdateResponsePathsList),
     priority: S.optional(S.Number),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateRuleResponse",
 }) as any as S.Schema<UpdateRuleResponse>;
@@ -883,13 +915,15 @@ export const UpdateSiteInfoRequest = /*@__PURE__*/ S.suspend(() =>
     host: S.optional(S.String),
     lite: S.optional(S.Boolean),
     zoneTag: S.optional(S.String.pipe(T.Body("zone_tag"))),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/rum/site_info/{site_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/rum/site_info/{site_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateSiteInfoRequest",
 }) as any as S.Schema<UpdateSiteInfoRequest>;
@@ -976,7 +1010,7 @@ export const UpdateSiteInfoResponse = /*@__PURE__*/ S.suspend(() =>
     siteTag: S.optional(S.String.pipe(T.Body("site_tag"))),
     siteToken: S.optional(S.String.pipe(T.Body("site_token"))),
     snippet: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateSiteInfoResponse",
 }) as any as S.Schema<UpdateSiteInfoResponse>;

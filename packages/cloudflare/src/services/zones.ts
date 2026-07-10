@@ -14,6 +14,55 @@ import * as Retry from "../retry.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
+/** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
+const KEY_DICTIONARY: Record<string, string> = {
+  activatedOn: "activated_on",
+  cacheByDeviceType: "cache_by_device_type",
+  canSubscribe: "can_subscribe",
+  cdnOnly: "cdn_only",
+  cnameSuffix: "cname_suffix",
+  createdOn: "created_on",
+  currentPeriodEnd: "current_period_end",
+  currentPeriodStart: "current_period_start",
+  customCertificateQuota: "custom_certificate_quota",
+  developmentMode: "development_mode",
+  dnsOnly: "dns_only",
+  documentationUrl: "documentation_url",
+  externallyManaged: "externally_managed",
+  foundationDns: "foundation_dns",
+  holdAfter: "hold_after",
+  httpApplicationId: "http_application_id",
+  includeSubdomains: "include_subdomains",
+  isContract: "is_contract",
+  isSubscribed: "is_subscribed",
+  legacyDiscount: "legacy_discount",
+  legacyId: "legacy_id",
+  lockedOnDeployment: "locked_on_deployment",
+  maxAge: "max_age",
+  modifiedOn: "modified_on",
+  nameServers: "name_servers",
+  nsSet: "ns_set",
+  originalDnshost: "original_dnshost",
+  originalNameServers: "original_name_servers",
+  originalRegistrar: "original_registrar",
+  pageRuleQuota: "page_rule_quota",
+  perPage: "per_page",
+  phishingDetected: "phishing_detected",
+  poolId: "pool_id",
+  publicName: "public_name",
+  ratePlan: "rate_plan",
+  resultInfo: "result_info",
+  strictTransportSecurity: "strict_transport_security",
+  tenantUnit: "tenant_unit",
+  timeRemaining: "time_remaining",
+  totalCount: "total_count",
+  totalPages: "total_pages",
+  unitPrice: "unit_price",
+  vanityNameServers: "vanity_name_servers",
+  verificationKey: "verification_key",
+  wpPlugin: "wp_plugin",
+};
+
 export class CustomNameserverSetNotFound extends T.applyErrorMatchers(
   S.TaggedErrorClass<CustomNameserverSetNotFound>()(
     "CustomNameserverSetNotFound",
@@ -166,9 +215,15 @@ export const CreateEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     environments: EnvironmentsCreateRequestEnvironmentsList,
-  }).pipe(
-    T.Http({ method: "POST", uri: "/zones/{zone_id}/environments", code: 200 }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/zones/{zone_id}/environments",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateEnvironmentRequest",
 }) as any as S.Schema<CreateEnvironmentRequest>;
@@ -226,7 +281,7 @@ export interface CreateEnvironmentResponse {
 export const CreateEnvironmentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     environments: EnvironmentsCreateResponseEnvironmentsList,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateEnvironmentResponse",
 }) as any as S.Schema<CreateEnvironmentResponse>;
@@ -243,7 +298,9 @@ export const CreateHoldRequest = /*@__PURE__*/ S.suspend(() =>
     includeSubdomains: S.optional(
       S.Boolean.pipe(T.Query("include_subdomains")),
     ),
-  }).pipe(T.Http({ method: "POST", uri: "/zones/{zone_id}/hold", code: 200 })),
+  })
+    .pipe(T.Http({ method: "POST", uri: "/zones/{zone_id}/hold", code: 200 }))
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateHoldRequest",
 }) as any as S.Schema<CreateHoldRequest>;
@@ -259,7 +316,7 @@ export const CreateHoldResponse = /*@__PURE__*/ S.suspend(() =>
     hold: S.optional(S.Boolean),
     holdAfter: S.optional(S.String.pipe(T.Body("hold_after"))),
     includeSubdomains: S.optional(S.String.pipe(T.Body("include_subdomains"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateHoldResponse",
 }) as any as S.Schema<CreateHoldResponse>;
@@ -329,9 +386,15 @@ export const CreateSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
     ratePlan: S.optional(
       SubscriptionsCreateRequestRatePlan.pipe(T.Body("rate_plan")),
     ),
-  }).pipe(
-    T.Http({ method: "POST", uri: "/zones/{zone_id}/subscription", code: 200 }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/zones/{zone_id}/subscription",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateSubscriptionRequest",
 }) as any as S.Schema<CreateSubscriptionRequest>;
@@ -426,7 +489,7 @@ export const CreateSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
       SubscriptionsCreateResponseRatePlan.pipe(T.Body("rate_plan")),
     ),
     state: S.optional(SubscriptionsCreateResponseState),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateSubscriptionResponse",
 }) as any as S.Schema<CreateSubscriptionResponse>;
@@ -455,7 +518,9 @@ export const CreateZoneRequest = /*@__PURE__*/ S.suspend(() =>
     account: CreateRequestAccount,
     name: S.String,
     type: S.optional(S.Unknown),
-  }).pipe(T.Http({ method: "POST", uri: "/zones", code: 200 })),
+  })
+    .pipe(T.Http({ method: "POST", uri: "/zones", code: 200 }))
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateZoneRequest",
 }) as any as S.Schema<CreateZoneRequest>;
@@ -698,7 +763,7 @@ export const CreateZoneResponse = /*@__PURE__*/ S.suspend(() =>
       CreateResponseVanityNameServersList.pipe(T.Body("vanity_name_servers")),
     ),
     verificationKey: S.optional(S.String.pipe(T.Body("verification_key"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateZoneResponse",
 }) as any as S.Schema<CreateZoneResponse>;
@@ -711,13 +776,15 @@ export const DeleteEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     environmentId: S.String.pipe(T.Label("environment_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/zones/{zone_id}/environments/{environment_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/zones/{zone_id}/environments/{environment_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteEnvironmentRequest",
 }) as any as S.Schema<DeleteEnvironmentRequest>;
@@ -775,7 +842,7 @@ export interface DeleteEnvironmentResponse {
 export const DeleteEnvironmentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     environments: EnvironmentsDeleteResponseEnvironmentsList,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteEnvironmentResponse",
 }) as any as S.Schema<DeleteEnvironmentResponse>;
@@ -790,9 +857,9 @@ export const DeleteHoldRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     holdAfter: S.optional(S.String.pipe(T.Query("hold_after"))),
-  }).pipe(
-    T.Http({ method: "DELETE", uri: "/zones/{zone_id}/hold", code: 200 }),
-  ),
+  })
+    .pipe(T.Http({ method: "DELETE", uri: "/zones/{zone_id}/hold", code: 200 }))
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteHoldRequest",
 }) as any as S.Schema<DeleteHoldRequest>;
@@ -808,7 +875,7 @@ export const DeleteHoldResponse = /*@__PURE__*/ S.suspend(() =>
     hold: S.optional(S.Boolean),
     holdAfter: S.optional(S.String.pipe(T.Body("hold_after"))),
     includeSubdomains: S.optional(S.String.pipe(T.Body("include_subdomains"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteHoldResponse",
 }) as any as S.Schema<DeleteHoldResponse>;
@@ -820,7 +887,9 @@ export interface DeleteZoneRequest {
 export const DeleteZoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-  }).pipe(T.Http({ method: "DELETE", uri: "/zones/{zone_id}", code: 200 })),
+  })
+    .pipe(T.Http({ method: "DELETE", uri: "/zones/{zone_id}", code: 200 }))
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteZoneRequest",
 }) as any as S.Schema<DeleteZoneRequest>;
@@ -833,7 +902,7 @@ export interface DeleteZoneResponse {
 export const DeleteZoneResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteZoneResponse",
 }) as any as S.Schema<DeleteZoneResponse>;
@@ -845,9 +914,11 @@ export interface GetCtAlertingRequest {
 export const GetCtAlertingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-  }).pipe(
-    T.Http({ method: "GET", uri: "/zones/{zone_id}/ct/alerting", code: 200 }),
-  ),
+  })
+    .pipe(
+      T.Http({ method: "GET", uri: "/zones/{zone_id}/ct/alerting", code: 200 }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetCtAlertingRequest",
 }) as any as S.Schema<GetCtAlertingRequest>;
@@ -868,7 +939,7 @@ export const GetCtAlertingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.Boolean,
     emails: S.optional(CtAlertingGetResponseEmailsList),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetCtAlertingResponse",
 }) as any as S.Schema<GetCtAlertingResponse>;
@@ -880,9 +951,11 @@ export interface GetCustomNameserverRequest {
 export const GetCustomNameserverRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-  }).pipe(
-    T.Http({ method: "GET", uri: "/zones/{zone_id}/custom_ns", code: 200 }),
-  ),
+  })
+    .pipe(
+      T.Http({ method: "GET", uri: "/zones/{zone_id}/custom_ns", code: 200 }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetCustomNameserverRequest",
 }) as any as S.Schema<GetCustomNameserverRequest>;
@@ -898,7 +971,7 @@ export const GetCustomNameserverResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.optional(S.Boolean),
     nsSet: S.optional(S.Number.pipe(T.Body("ns_set"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetCustomNameserverResponse",
 }) as any as S.Schema<GetCustomNameserverResponse>;
@@ -910,7 +983,9 @@ export interface GetHoldRequest {
 export const GetHoldRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-  }).pipe(T.Http({ method: "GET", uri: "/zones/{zone_id}/hold", code: 200 })),
+  })
+    .pipe(T.Http({ method: "GET", uri: "/zones/{zone_id}/hold", code: 200 }))
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "GetHoldRequest" }) as any as S.Schema<GetHoldRequest>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -924,7 +999,7 @@ export const GetHoldResponse = /*@__PURE__*/ S.suspend(() =>
     hold: S.optional(S.Boolean),
     holdAfter: S.optional(S.String.pipe(T.Body("hold_after"))),
     includeSubdomains: S.optional(S.String.pipe(T.Body("include_subdomains"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetHoldResponse",
 }) as any as S.Schema<GetHoldResponse>;
@@ -939,13 +1014,15 @@ export const GetPlanRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     planIdentifier: S.String.pipe(T.Label("plan_identifier")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/available_plans/{plan_identifier}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/available_plans/{plan_identifier}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "GetPlanRequest" }) as any as S.Schema<GetPlanRequest>;
 
 export type PlansGetResponseFrequency =
@@ -991,7 +1068,7 @@ export const GetPlanResponse = /*@__PURE__*/ S.suspend(() =>
     legacyId: S.optional(S.String.pipe(T.Body("legacy_id"))),
     name: S.optional(S.String),
     price: S.optional(S.Number),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetPlanResponse",
 }) as any as S.Schema<GetPlanResponse>;
@@ -1003,13 +1080,15 @@ export interface GetRatePlanRequest {
 export const GetRatePlanRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/available_rate_plans",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/available_rate_plans",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetRatePlanRequest",
 }) as any as S.Schema<GetRatePlanRequest>;
@@ -1097,7 +1176,7 @@ export const GetRatePlanResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: RatePlansGetResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetRatePlanResponse",
 }) as any as S.Schema<GetRatePlanResponse>;
@@ -1112,13 +1191,15 @@ export const GetSettingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     settingId: S.String.pipe(T.Label("setting_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/settings/{setting_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/settings/{setting_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetSettingRequest",
 }) as any as S.Schema<GetSettingRequest>;
@@ -1507,7 +1588,7 @@ export const GetSettingResponse = /*@__PURE__*/ S.suspend(() =>
     WebsocketObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
       T.Body("Websocket object { id, value, editable, modified_on }"),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetSettingResponse",
 }) as any as S.Schema<GetSettingResponse>;
@@ -1519,9 +1600,15 @@ export interface GetSubscriptionRequest {
 export const GetSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-  }).pipe(
-    T.Http({ method: "GET", uri: "/zones/{zone_id}/subscription", code: 200 }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/subscription",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetSubscriptionRequest",
 }) as any as S.Schema<GetSubscriptionRequest>;
@@ -1615,7 +1702,7 @@ export const GetSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
       SubscriptionsGetResponseRatePlan.pipe(T.Body("rate_plan")),
     ),
     state: S.optional(SubscriptionsGetResponseState),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetSubscriptionResponse",
 }) as any as S.Schema<GetSubscriptionResponse>;
@@ -1627,7 +1714,9 @@ export interface GetZoneRequest {
 export const GetZoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-  }).pipe(T.Http({ method: "GET", uri: "/zones/{zone_id}", code: 200 })),
+  })
+    .pipe(T.Http({ method: "GET", uri: "/zones/{zone_id}", code: 200 }))
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "GetZoneRequest" }) as any as S.Schema<GetZoneRequest>;
 
 export interface GetResponseAccount {
@@ -1866,7 +1955,7 @@ export const GetZoneResponse = /*@__PURE__*/ S.suspend(() =>
       GetResponseVanityNameServersList.pipe(T.Body("vanity_name_servers")),
     ),
     verificationKey: S.optional(S.String.pipe(T.Body("verification_key"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetZoneResponse",
 }) as any as S.Schema<GetZoneResponse>;
@@ -1877,9 +1966,15 @@ export interface ListEnvironmentsRequest {
 export const ListEnvironmentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-  }).pipe(
-    T.Http({ method: "GET", uri: "/zones/{zone_id}/environments", code: 200 }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/environments",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListEnvironmentsRequest",
 }) as any as S.Schema<ListEnvironmentsRequest>;
@@ -1937,7 +2032,7 @@ export interface ListEnvironmentsResponse {
 export const ListEnvironmentsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     environments: EnvironmentsListResponseEnvironmentsList,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListEnvironmentsResponse",
 }) as any as S.Schema<ListEnvironmentsResponse>;
@@ -1949,13 +2044,15 @@ export interface ListPlansRequest {
 export const ListPlansRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/available_plans",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/available_plans",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListPlansRequest",
 }) as any as S.Schema<ListPlansRequest>;
@@ -2022,7 +2119,7 @@ export const ListPlansResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: PlansListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListPlansResponse",
 }) as any as S.Schema<ListPlansResponse>;
@@ -2087,7 +2184,9 @@ export const ListZonesRequest = /*@__PURE__*/ S.suspend(() =>
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
     status: S.optional(ListRequestStatus.pipe(T.Query())),
     type: S.optional(ListRequestTypeList.pipe(T.Query())),
-  }).pipe(T.Http({ method: "GET", uri: "/zones", code: 200 })),
+  })
+    .pipe(T.Http({ method: "GET", uri: "/zones", code: 200 }))
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListZonesRequest",
 }) as any as S.Schema<ListZonesRequest>;
@@ -2347,7 +2446,7 @@ export const ListZonesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: ListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListZonesResponse",
 }) as any as S.Schema<ListZonesResponse>;
@@ -2370,9 +2469,15 @@ export const PatchCtAlertingRequest = /*@__PURE__*/ S.suspend(() =>
     zoneId: S.String.pipe(T.Label("zone_id")),
     enabled: S.Boolean,
     emails: S.optional(CtAlertingEditRequestEmailsList),
-  }).pipe(
-    T.Http({ method: "PATCH", uri: "/zones/{zone_id}/ct/alerting", code: 200 }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/zones/{zone_id}/ct/alerting",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchCtAlertingRequest",
 }) as any as S.Schema<PatchCtAlertingRequest>;
@@ -2393,7 +2498,7 @@ export const PatchCtAlertingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.Boolean,
     emails: S.optional(CtAlertingEditResponseEmailsList),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchCtAlertingResponse",
 }) as any as S.Schema<PatchCtAlertingResponse>;
@@ -2452,13 +2557,15 @@ export const PatchEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     environments: EnvironmentsEditRequestEnvironmentsList,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/zones/{zone_id}/environments",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/zones/{zone_id}/environments",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchEnvironmentRequest",
 }) as any as S.Schema<PatchEnvironmentRequest>;
@@ -2516,7 +2623,7 @@ export interface PatchEnvironmentResponse {
 export const PatchEnvironmentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     environments: EnvironmentsEditResponseEnvironmentsList,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchEnvironmentResponse",
 }) as any as S.Schema<PatchEnvironmentResponse>;
@@ -2534,7 +2641,9 @@ export const PatchHoldRequest = /*@__PURE__*/ S.suspend(() =>
     zoneId: S.String.pipe(T.Label("zone_id")),
     holdAfter: S.optional(S.String.pipe(T.Body("hold_after"))),
     includeSubdomains: S.optional(S.Boolean.pipe(T.Body("include_subdomains"))),
-  }).pipe(T.Http({ method: "PATCH", uri: "/zones/{zone_id}/hold", code: 200 })),
+  })
+    .pipe(T.Http({ method: "PATCH", uri: "/zones/{zone_id}/hold", code: 200 }))
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchHoldRequest",
 }) as any as S.Schema<PatchHoldRequest>;
@@ -2550,7 +2659,7 @@ export const PatchHoldResponse = /*@__PURE__*/ S.suspend(() =>
     hold: S.optional(S.Boolean),
     holdAfter: S.optional(S.String.pipe(T.Body("hold_after"))),
     includeSubdomains: S.optional(S.String.pipe(T.Body("include_subdomains"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchHoldResponse",
 }) as any as S.Schema<PatchHoldResponse>;
@@ -2582,13 +2691,15 @@ export const PatchSettingRequest = /*@__PURE__*/ S.suspend(() =>
     zoneId: S.String.pipe(T.Label("zone_id")),
     settingId: S.String.pipe(T.Label("setting_id")),
     body: SettingsEditRequestBody,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/zones/{zone_id}/settings/{setting_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/zones/{zone_id}/settings/{setting_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchSettingRequest",
 }) as any as S.Schema<PatchSettingRequest>;
@@ -2977,7 +3088,7 @@ export const PatchSettingResponse = /*@__PURE__*/ S.suspend(() =>
     WebsocketObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
       T.Body("Websocket object { id, value, editable, modified_on }"),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchSettingResponse",
 }) as any as S.Schema<PatchSettingResponse>;
@@ -3013,7 +3124,9 @@ export const PatchZoneRequest = /*@__PURE__*/ S.suspend(() =>
     vanityNameServers: S.optional(
       EditRequestVanityNameServersList.pipe(T.Body("vanity_name_servers")),
     ),
-  }).pipe(T.Http({ method: "PATCH", uri: "/zones/{zone_id}", code: 200 })),
+  })
+    .pipe(T.Http({ method: "PATCH", uri: "/zones/{zone_id}", code: 200 }))
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchZoneRequest",
 }) as any as S.Schema<PatchZoneRequest>;
@@ -3254,7 +3367,7 @@ export const PatchZoneResponse = /*@__PURE__*/ S.suspend(() =>
       EditResponseVanityNameServersList.pipe(T.Body("vanity_name_servers")),
     ),
     verificationKey: S.optional(S.String.pipe(T.Body("verification_key"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchZoneResponse",
 }) as any as S.Schema<PatchZoneResponse>;
@@ -3272,9 +3385,11 @@ export const PutCustomNameserverRequest = /*@__PURE__*/ S.suspend(() =>
     zoneId: S.String.pipe(T.Label("zone_id")),
     enabled: S.optional(S.Boolean),
     nsSet: S.optional(S.Number.pipe(T.Body("ns_set"))),
-  }).pipe(
-    T.Http({ method: "PUT", uri: "/zones/{zone_id}/custom_ns", code: 200 }),
-  ),
+  })
+    .pipe(
+      T.Http({ method: "PUT", uri: "/zones/{zone_id}/custom_ns", code: 200 }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutCustomNameserverRequest",
 }) as any as S.Schema<PutCustomNameserverRequest>;
@@ -3294,7 +3409,7 @@ export const PutCustomNameserverResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: CustomNameserversUpdateResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutCustomNameserverResponse",
 }) as any as S.Schema<PutCustomNameserverResponse>;
@@ -3307,13 +3422,15 @@ export const RollbackEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     environmentId: S.String.pipe(T.Label("environment_id")),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/zones/{zone_id}/environments/{environment_id}/rollback",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/zones/{zone_id}/environments/{environment_id}/rollback",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "RollbackEnvironmentRequest",
 }) as any as S.Schema<RollbackEnvironmentRequest>;
@@ -3372,7 +3489,7 @@ export interface RollbackEnvironmentResponse {
 export const RollbackEnvironmentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     environments: EnvironmentsRollbackResponseEnvironmentsList,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "RollbackEnvironmentResponse",
 }) as any as S.Schema<RollbackEnvironmentResponse>;
@@ -3759,9 +3876,11 @@ export const SettingsBulkEditRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     body: SettingsBulkEditRequestBodyList,
-  }).pipe(
-    T.Http({ method: "PATCH", uri: "/zones/{zone_id}/settings", code: 200 }),
-  ),
+  })
+    .pipe(
+      T.Http({ method: "PATCH", uri: "/zones/{zone_id}/settings", code: 200 }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "SettingsBulkEditRequest",
 }) as any as S.Schema<SettingsBulkEditRequest>;
@@ -4159,7 +4278,7 @@ export interface SettingsBulkEditResponse {
 export const SettingsBulkEditResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(SettingsBulkEditResultList.pipe(T.EnvelopePayload())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "SettingsBulkEditResponse",
 }) as any as S.Schema<SettingsBulkEditResponse>;
@@ -4171,9 +4290,11 @@ export interface SettingsListRequest {
 export const SettingsListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-  }).pipe(
-    T.Http({ method: "GET", uri: "/zones/{zone_id}/settings", code: 200 }),
-  ),
+  })
+    .pipe(
+      T.Http({ method: "GET", uri: "/zones/{zone_id}/settings", code: 200 }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "SettingsListRequest",
 }) as any as S.Schema<SettingsListRequest>;
@@ -4571,7 +4692,7 @@ export interface SettingsListResponse {
 export const SettingsListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(SettingsListResultList.pipe(T.EnvelopePayload())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "SettingsListResponse",
 }) as any as S.Schema<SettingsListResponse>;
@@ -4583,13 +4704,15 @@ export interface TriggerActivationCheckRequest {
 export const TriggerActivationCheckRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/zones/{zone_id}/activation_check",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/zones/{zone_id}/activation_check",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "TriggerActivationCheckRequest",
 }) as any as S.Schema<TriggerActivationCheckRequest>;
@@ -4602,7 +4725,7 @@ export interface TriggerActivationCheckResponse {
 export const TriggerActivationCheckResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "TriggerActivationCheckResponse",
 }) as any as S.Schema<TriggerActivationCheckResponse>;
@@ -4661,9 +4784,15 @@ export const UpdateEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     environments: EnvironmentsUpdateRequestEnvironmentsList,
-  }).pipe(
-    T.Http({ method: "PUT", uri: "/zones/{zone_id}/environments", code: 200 }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/zones/{zone_id}/environments",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateEnvironmentRequest",
 }) as any as S.Schema<UpdateEnvironmentRequest>;
@@ -4721,7 +4850,7 @@ export interface UpdateEnvironmentResponse {
 export const UpdateEnvironmentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     environments: EnvironmentsUpdateResponseEnvironmentsList,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateEnvironmentResponse",
 }) as any as S.Schema<UpdateEnvironmentResponse>;
@@ -4791,9 +4920,15 @@ export const UpdateSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
     ratePlan: S.optional(
       SubscriptionsUpdateRequestRatePlan.pipe(T.Body("rate_plan")),
     ),
-  }).pipe(
-    T.Http({ method: "PUT", uri: "/zones/{zone_id}/subscription", code: 200 }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/zones/{zone_id}/subscription",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateSubscriptionRequest",
 }) as any as S.Schema<UpdateSubscriptionRequest>;
@@ -4888,7 +5023,7 @@ export const UpdateSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
       SubscriptionsUpdateResponseRatePlan.pipe(T.Body("rate_plan")),
     ),
     state: S.optional(SubscriptionsUpdateResponseState),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateSubscriptionResponse",
 }) as any as S.Schema<UpdateSubscriptionResponse>;

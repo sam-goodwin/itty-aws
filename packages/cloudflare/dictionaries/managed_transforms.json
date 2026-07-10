@@ -1,0 +1,6 @@
+{
+  "conflictsWith": "conflicts_with",
+  "hasConflict": "has_conflict",
+  "managedRequestHeaders": "managed_request_headers",
+  "managedResponseHeaders": "managed_response_headers"
+}

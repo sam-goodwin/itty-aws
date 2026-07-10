@@ -14,6 +14,21 @@ import * as Retry from "../retry.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
+/** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
+const KEY_DICTIONARY: Record<string, string> = {
+  certificateAuthority: "certificate_authority",
+  commonName: "common_name",
+  expiresOn: "expires_on",
+  fingerprintSha256: "fingerprint_sha256",
+  issuedOn: "issued_on",
+  organizationalUnit: "organizational_unit",
+  perPage: "per_page",
+  resultInfo: "result_info",
+  serialNumber: "serial_number",
+  totalCount: "total_count",
+  validityDays: "validity_days",
+};
+
 export class ClientCertificateAlreadyRevoked extends T.applyErrorMatchers(
   S.TaggedErrorClass<ClientCertificateAlreadyRevoked>()(
     "ClientCertificateAlreadyRevoked",
@@ -57,13 +72,15 @@ export const CreateClientCertificateRequest = /*@__PURE__*/ S.suspend(() =>
     zoneId: S.String.pipe(T.Label("zone_id")),
     csr: S.String,
     validityDays: S.Number.pipe(T.Body("validity_days")),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/zones/{zone_id}/client_certificates",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/zones/{zone_id}/client_certificates",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateClientCertificateRequest",
 }) as any as S.Schema<CreateClientCertificateRequest>;
@@ -144,7 +161,7 @@ export const CreateClientCertificateResponse = /*@__PURE__*/ S.suspend(() =>
     state: S.optional(S.String),
     status: S.optional(S.Unknown),
     validityDays: S.optional(S.Number.pipe(T.Body("validity_days"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateClientCertificateResponse",
 }) as any as S.Schema<CreateClientCertificateResponse>;
@@ -159,13 +176,15 @@ export const DeleteClientCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     clientCertificateId: S.String.pipe(T.Label("client_certificate_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/zones/{zone_id}/client_certificates/{client_certificate_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/zones/{zone_id}/client_certificates/{client_certificate_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteClientCertificateRequest",
 }) as any as S.Schema<DeleteClientCertificateRequest>;
@@ -246,7 +265,7 @@ export const DeleteClientCertificateResponse = /*@__PURE__*/ S.suspend(() =>
     state: S.optional(S.String),
     status: S.optional(S.Unknown),
     validityDays: S.optional(S.Number.pipe(T.Body("validity_days"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteClientCertificateResponse",
 }) as any as S.Schema<DeleteClientCertificateResponse>;
@@ -261,13 +280,15 @@ export const GetClientCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     clientCertificateId: S.String.pipe(T.Label("client_certificate_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/client_certificates/{client_certificate_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/client_certificates/{client_certificate_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetClientCertificateRequest",
 }) as any as S.Schema<GetClientCertificateRequest>;
@@ -348,7 +369,7 @@ export const GetClientCertificateResponse = /*@__PURE__*/ S.suspend(() =>
     state: S.optional(S.String),
     status: S.optional(S.Unknown),
     validityDays: S.optional(S.Number.pipe(T.Body("validity_days"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetClientCertificateResponse",
 }) as any as S.Schema<GetClientCertificateResponse>;
@@ -382,13 +403,15 @@ export const ListClientCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
     page: S.optional(S.Number.pipe(T.Query())),
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
     status: S.optional(ListRequestStatus.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/client_certificates",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/client_certificates",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListClientCertificatesRequest",
 }) as any as S.Schema<ListClientCertificatesRequest>;
@@ -486,7 +509,7 @@ export const ListClientCertificatesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: ListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListClientCertificatesResponse",
 }) as any as S.Schema<ListClientCertificatesResponse>;
@@ -503,13 +526,15 @@ export const PatchClientCertificateRequest = /*@__PURE__*/ S.suspend(() =>
     zoneId: S.String.pipe(T.Label("zone_id")),
     clientCertificateId: S.String.pipe(T.Label("client_certificate_id")),
     reactivate: S.optional(S.Boolean),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/zones/{zone_id}/client_certificates/{client_certificate_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/zones/{zone_id}/client_certificates/{client_certificate_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchClientCertificateRequest",
 }) as any as S.Schema<PatchClientCertificateRequest>;
@@ -590,7 +615,7 @@ export const PatchClientCertificateResponse = /*@__PURE__*/ S.suspend(() =>
     state: S.optional(S.String),
     status: S.optional(S.Unknown),
     validityDays: S.optional(S.Number.pipe(T.Body("validity_days"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchClientCertificateResponse",
 }) as any as S.Schema<PatchClientCertificateResponse>;

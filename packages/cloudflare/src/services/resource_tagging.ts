@@ -14,6 +14,16 @@ import * as Retry from "../retry.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
+/** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
+const KEY_DICTIONARY: Record<string, string> = {
+  accessApplicationId: "access_application_id",
+  resourceId: "resource_id",
+  resourceType: "resource_type",
+  resultInfo: "result_info",
+  workerId: "worker_id",
+  zoneId: "zone_id",
+};
+
 export class Forbidden extends T.applyErrorMatchers(
   S.TaggedErrorClass<Forbidden>()("Forbidden", {
     code: S.Number,
@@ -47,16 +57,22 @@ export const DeleteAccountTagRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     IfMatch_: S.optional(S.String.pipe(T.Header('"If-Match"'))),
-  }).pipe(
-    T.Http({ method: "DELETE", uri: "/accounts/{account_id}/tags", code: 200 }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/tags",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteAccountTagRequest",
 }) as any as S.Schema<DeleteAccountTagRequest>;
 
 export interface DeleteAccountTagResponse {}
 export const DeleteAccountTagResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
+  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteAccountTagResponse",
 }) as any as S.Schema<DeleteAccountTagResponse>;
@@ -70,16 +86,16 @@ export const DeleteZoneTagRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     IfMatch_: S.optional(S.String.pipe(T.Header('"If-Match"'))),
-  }).pipe(
-    T.Http({ method: "DELETE", uri: "/zones/{zone_id}/tags", code: 200 }),
-  ),
+  })
+    .pipe(T.Http({ method: "DELETE", uri: "/zones/{zone_id}/tags", code: 200 }))
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteZoneTagRequest",
 }) as any as S.Schema<DeleteZoneTagRequest>;
 
 export interface DeleteZoneTagResponse {}
 export const DeleteZoneTagResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
+  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteZoneTagResponse",
 }) as any as S.Schema<DeleteZoneTagResponse>;
@@ -109,9 +125,11 @@ export const GetAccountTagRequest = /*@__PURE__*/ S.suspend(() =>
       T.Query("resource_type"),
     ),
     workerId: S.optional(S.String.pipe(T.Query("worker_id"))),
-  }).pipe(
-    T.Http({ method: "GET", uri: "/accounts/{account_id}/tags", code: 200 }),
-  ),
+  })
+    .pipe(
+      T.Http({ method: "GET", uri: "/accounts/{account_id}/tags", code: 200 }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetAccountTagRequest",
 }) as any as S.Schema<GetAccountTagRequest>;
@@ -259,7 +277,7 @@ export const GetAccountTagResponse = /*@__PURE__*/ S.suspend(() =>
     ZoneObjectIdEtagName3More__: S.Unknown.pipe(
       T.Body("Zone object { id, etag, name, 3 more }"),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetAccountTagResponse",
 }) as any as S.Schema<GetAccountTagResponse>;
@@ -289,7 +307,9 @@ export const GetZoneTagRequest = /*@__PURE__*/ S.suspend(() =>
     accessApplicationId: S.optional(
       S.String.pipe(T.Query("access_application_id")),
     ),
-  }).pipe(T.Http({ method: "GET", uri: "/zones/{zone_id}/tags", code: 200 })),
+  })
+    .pipe(T.Http({ method: "GET", uri: "/zones/{zone_id}/tags", code: 200 }))
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetZoneTagRequest",
 }) as any as S.Schema<GetZoneTagRequest>;
@@ -437,7 +457,7 @@ export const GetZoneTagResponse = /*@__PURE__*/ S.suspend(() =>
     ZoneObjectIdEtagName3More__: S.Unknown.pipe(
       T.Body("Zone object { id, etag, name, 3 more }"),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetZoneTagResponse",
 }) as any as S.Schema<GetZoneTagResponse>;
@@ -452,13 +472,15 @@ export const ListKeysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     cursor: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/tags/keys",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/tags/keys",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListKeysRequest",
 }) as any as S.Schema<ListKeysRequest>;
@@ -478,7 +500,7 @@ export const ListKeysResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: KeysListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListKeysResponse",
 }) as any as S.Schema<ListKeysResponse>;
@@ -516,13 +538,15 @@ export const ListResourceTaggingsRequest = /*@__PURE__*/ S.suspend(() =>
     cursor: S.optional(S.String.pipe(T.Query())),
     tag: S.optional(ListRequestTagList.pipe(T.Query())),
     type: S.optional(ListRequestTypeList.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/tags/resources",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/tags/resources",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListResourceTaggingsRequest",
 }) as any as S.Schema<ListResourceTaggingsRequest>;
@@ -687,7 +711,7 @@ export const ListResourceTaggingsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: ListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListResourceTaggingsResponse",
 }) as any as S.Schema<ListResourceTaggingsResponse>;
@@ -714,13 +738,15 @@ export const ListValuesRequest = /*@__PURE__*/ S.suspend(() =>
     tagKey: S.String.pipe(T.Label("tag_key")),
     cursor: S.optional(S.String.pipe(T.Query())),
     type: S.optional(ValuesListRequestType.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/tags/values/{tag_key}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/tags/values/{tag_key}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListValuesRequest",
 }) as any as S.Schema<ListValuesRequest>;
@@ -740,7 +766,7 @@ export const ListValuesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: ValuesListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListValuesResponse",
 }) as any as S.Schema<ListValuesResponse>;
@@ -782,9 +808,11 @@ export const PutAccountTagRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     IfMatch_: S.optional(S.String.pipe(T.Header('"If-Match"'))),
     body: AccountTagsUpdateRequestBody,
-  }).pipe(
-    T.Http({ method: "PUT", uri: "/accounts/{account_id}/tags", code: 200 }),
-  ),
+  })
+    .pipe(
+      T.Http({ method: "PUT", uri: "/accounts/{account_id}/tags", code: 200 }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutAccountTagRequest",
 }) as any as S.Schema<PutAccountTagRequest>;
@@ -932,7 +960,7 @@ export const PutAccountTagResponse = /*@__PURE__*/ S.suspend(() =>
     ZoneObjectIdEtagName3More__: S.Unknown.pipe(
       T.Body("Zone object { id, etag, name, 3 more }"),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutAccountTagResponse",
 }) as any as S.Schema<PutAccountTagResponse>;
@@ -974,7 +1002,9 @@ export const PutZoneTagRequest = /*@__PURE__*/ S.suspend(() =>
     zoneId: S.String.pipe(T.Label("zone_id")),
     IfMatch_: S.optional(S.String.pipe(T.Header('"If-Match"'))),
     body: ZoneTagsUpdateRequestBody,
-  }).pipe(T.Http({ method: "PUT", uri: "/zones/{zone_id}/tags", code: 200 })),
+  })
+    .pipe(T.Http({ method: "PUT", uri: "/zones/{zone_id}/tags", code: 200 }))
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutZoneTagRequest",
 }) as any as S.Schema<PutZoneTagRequest>;
@@ -1122,7 +1152,7 @@ export const PutZoneTagResponse = /*@__PURE__*/ S.suspend(() =>
     ZoneObjectIdEtagName3More__: S.Unknown.pipe(
       T.Body("Zone object { id, etag, name, 3 more }"),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutZoneTagResponse",
 }) as any as S.Schema<PutZoneTagResponse>;

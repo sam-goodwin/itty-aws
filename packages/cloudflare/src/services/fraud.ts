@@ -12,6 +12,16 @@ import * as Retry from "../retry.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
+/** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
+const KEY_DICTIONARY: Record<string, string> = {
+  authenticationSettings: "authentication_settings",
+  failureCriteria: "failure_criteria",
+  statusCodes: "status_codes",
+  successCriteria: "success_criteria",
+  userProfiles: "user_profiles",
+  usernameExpressions: "username_expressions",
+};
+
 export class Forbidden extends T.applyErrorMatchers(
   S.TaggedErrorClass<Forbidden>()("Forbidden", {
     code: S.Number,
@@ -35,13 +45,15 @@ export interface GetFraudRequest {
 export const GetFraudRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/fraud_detection/settings",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/fraud_detection/settings",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetFraudRequest",
 }) as any as S.Schema<GetFraudRequest>;
@@ -163,7 +175,7 @@ export const GetFraudResponse = /*@__PURE__*/ S.suspend(() =>
     usernameExpressions: S.optional(
       GetResponseUsernameExpressionsList.pipe(T.Body("username_expressions")),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetFraudResponse",
 }) as any as S.Schema<GetFraudResponse>;
@@ -289,13 +301,15 @@ export const PutFraudRequest = /*@__PURE__*/ S.suspend(() =>
     usernameExpressions: S.optional(
       UpdateRequestUsernameExpressionsList.pipe(T.Body("username_expressions")),
     ),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/zones/{zone_id}/fraud_detection/settings",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/zones/{zone_id}/fraud_detection/settings",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutFraudRequest",
 }) as any as S.Schema<PutFraudRequest>;
@@ -422,7 +436,7 @@ export const PutFraudResponse = /*@__PURE__*/ S.suspend(() =>
         T.Body("username_expressions"),
       ),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutFraudResponse",
 }) as any as S.Schema<PutFraudResponse>;

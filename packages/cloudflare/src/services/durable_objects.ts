@@ -14,6 +14,14 @@ import * as Retry from "../retry.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
+/** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
+const KEY_DICTIONARY: Record<string, string> = {
+  perPage: "per_page",
+  resultInfo: "result_info",
+  totalCount: "total_count",
+  useSqlite: "use_sqlite",
+};
+
 export class InvalidIdentifier extends T.applyErrorMatchers(
   S.TaggedErrorClass<InvalidIdentifier>()("InvalidIdentifier", {
     code: S.Number,
@@ -54,13 +62,15 @@ export const ListNamespaceObjectsRequest = /*@__PURE__*/ S.suspend(() =>
     id: S.String.pipe(T.Label()),
     cursor: S.optional(S.String.pipe(T.Query())),
     limit: S.optional(S.Number.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/workers/durable_objects/namespaces/{id}/objects",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/workers/durable_objects/namespaces/{id}/objects",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListNamespaceObjectsRequest",
 }) as any as S.Schema<ListNamespaceObjectsRequest>;
@@ -95,7 +105,7 @@ export const ListNamespaceObjectsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: NamespacesObjectsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListNamespaceObjectsResponse",
 }) as any as S.Schema<ListNamespaceObjectsResponse>;
@@ -113,13 +123,15 @@ export const ListNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     page: S.optional(S.Number.pipe(T.Query())),
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/workers/durable_objects/namespaces",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/workers/durable_objects/namespaces",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListNamespacesRequest",
 }) as any as S.Schema<ListNamespacesRequest>;
@@ -158,7 +170,7 @@ export const ListNamespacesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: NamespacesListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListNamespacesResponse",
 }) as any as S.Schema<ListNamespacesResponse>;

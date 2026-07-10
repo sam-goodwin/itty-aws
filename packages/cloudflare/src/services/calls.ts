@@ -14,6 +14,9 @@ import * as Retry from "../retry.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
+/** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
+const KEY_DICTIONARY: Record<string, string> = { key: "secret" };
+
 export class CallsAppNotFound extends T.applyErrorMatchers(
   S.TaggedErrorClass<CallsAppNotFound>()("CallsAppNotFound", {
     code: S.Number,
@@ -48,13 +51,15 @@ export const CreateSfuRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     name: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/calls/apps",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/calls/apps",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateSfuRequest",
 }) as any as S.Schema<CreateSfuRequest>;
@@ -79,7 +84,7 @@ export const CreateSfuResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     secret: S.optional(S.String),
     uid: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateSfuResponse",
 }) as any as S.Schema<CreateSfuResponse>;
@@ -94,13 +99,15 @@ export const CreateTurnRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     name: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/calls/turn_keys",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/calls/turn_keys",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateTurnRequest",
 }) as any as S.Schema<CreateTurnRequest>;
@@ -125,7 +132,7 @@ export const CreateTurnResponse = /*@__PURE__*/ S.suspend(() =>
     modified: S.optional(S.String),
     name: S.optional(S.String),
     uid: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateTurnResponse",
 }) as any as S.Schema<CreateTurnResponse>;
@@ -140,13 +147,15 @@ export const DeleteSfuRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     appId: S.String.pipe(T.Label("app_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/calls/apps/{app_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/calls/apps/{app_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteSfuRequest",
 }) as any as S.Schema<DeleteSfuRequest>;
@@ -168,7 +177,7 @@ export const DeleteSfuResponse = /*@__PURE__*/ S.suspend(() =>
     modified: S.optional(S.String),
     name: S.optional(S.String),
     uid: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteSfuResponse",
 }) as any as S.Schema<DeleteSfuResponse>;
@@ -183,13 +192,15 @@ export const DeleteTurnRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     keyId: S.String.pipe(T.Label("key_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/calls/turn_keys/{key_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/calls/turn_keys/{key_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteTurnRequest",
 }) as any as S.Schema<DeleteTurnRequest>;
@@ -211,7 +222,7 @@ export const DeleteTurnResponse = /*@__PURE__*/ S.suspend(() =>
     modified: S.optional(S.String),
     name: S.optional(S.String),
     uid: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteTurnResponse",
 }) as any as S.Schema<DeleteTurnResponse>;
@@ -226,13 +237,15 @@ export const GetSfuRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     appId: S.String.pipe(T.Label("app_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/calls/apps/{app_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/calls/apps/{app_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "GetSfuRequest" }) as any as S.Schema<GetSfuRequest>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -252,7 +265,7 @@ export const GetSfuResponse = /*@__PURE__*/ S.suspend(() =>
     modified: S.optional(S.String),
     name: S.optional(S.String),
     uid: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "GetSfuResponse" }) as any as S.Schema<GetSfuResponse>;
 
 export interface GetTurnRequest {
@@ -265,13 +278,15 @@ export const GetTurnRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     keyId: S.String.pipe(T.Label("key_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/calls/turn_keys/{key_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/calls/turn_keys/{key_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "GetTurnRequest" }) as any as S.Schema<GetTurnRequest>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -291,7 +306,7 @@ export const GetTurnResponse = /*@__PURE__*/ S.suspend(() =>
     modified: S.optional(S.String),
     name: S.optional(S.String),
     uid: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetTurnResponse",
 }) as any as S.Schema<GetTurnResponse>;
@@ -303,13 +318,15 @@ export interface ListSfusRequest {
 export const ListSfusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/calls/apps",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/calls/apps",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListSfusRequest",
 }) as any as S.Schema<ListSfusRequest>;
@@ -350,7 +367,7 @@ export const ListSfusResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: SfuListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListSfusResponse",
 }) as any as S.Schema<ListSfusResponse>;
@@ -362,13 +379,15 @@ export interface ListTurnsRequest {
 export const ListTurnsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/calls/turn_keys",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/calls/turn_keys",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListTurnsRequest",
 }) as any as S.Schema<ListTurnsRequest>;
@@ -409,7 +428,7 @@ export const ListTurnsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: TurnListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListTurnsResponse",
 }) as any as S.Schema<ListTurnsResponse>;
@@ -427,13 +446,15 @@ export const UpdateSfuRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     appId: S.String.pipe(T.Label("app_id")),
     name: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/calls/apps/{app_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/calls/apps/{app_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateSfuRequest",
 }) as any as S.Schema<UpdateSfuRequest>;
@@ -455,7 +476,7 @@ export const UpdateSfuResponse = /*@__PURE__*/ S.suspend(() =>
     modified: S.optional(S.String),
     name: S.optional(S.String),
     uid: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateSfuResponse",
 }) as any as S.Schema<UpdateSfuResponse>;
@@ -473,13 +494,15 @@ export const UpdateTurnRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     keyId: S.String.pipe(T.Label("key_id")),
     name: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/calls/turn_keys/{key_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/calls/turn_keys/{key_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateTurnRequest",
 }) as any as S.Schema<UpdateTurnRequest>;
@@ -501,7 +524,7 @@ export const UpdateTurnResponse = /*@__PURE__*/ S.suspend(() =>
     modified: S.optional(S.String),
     name: S.optional(S.String),
     uid: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateTurnResponse",
 }) as any as S.Schema<UpdateTurnResponse>;

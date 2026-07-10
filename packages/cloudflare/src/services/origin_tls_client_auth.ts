@@ -14,6 +14,20 @@ import * as Retry from "../retry.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
+/** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
+const KEY_DICTIONARY: Record<string, string> = {
+  certId: "cert_id",
+  certStatus: "cert_status",
+  certUpdatedAt: "cert_updated_at",
+  certUploadedOn: "cert_uploaded_on",
+  createdAt: "created_at",
+  expiresOn: "expires_on",
+  privateKey: "private_key",
+  serialNumber: "serial_number",
+  updatedAt: "updated_at",
+  uploadedOn: "uploaded_on",
+};
+
 export class CertificateAlreadyDeleted extends T.applyErrorMatchers(
   S.TaggedErrorClass<CertificateAlreadyDeleted>()("CertificateAlreadyDeleted", {
     code: S.Number,
@@ -163,13 +177,15 @@ export const CreateHostnameCertificateRequest = /*@__PURE__*/ S.suspend(() =>
     zoneId: S.String.pipe(T.Label("zone_id")),
     certificate: S.String,
     privateKey: S.String.pipe(T.Body("private_key")),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/zones/{zone_id}/origin_tls_client_auth/hostnames/certificates",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/zones/{zone_id}/origin_tls_client_auth/hostnames/certificates",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateHostnameCertificateRequest",
 }) as any as S.Schema<CreateHostnameCertificateRequest>;
@@ -210,7 +226,7 @@ export const CreateHostnameCertificateResponse = /*@__PURE__*/ S.suspend(() =>
     signature: S.optional(S.String),
     status: S.optional(HostnameCertificatesCreateResponseStatus),
     uploadedOn: S.optional(S.String.pipe(T.Body("uploaded_on"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateHostnameCertificateResponse",
 }) as any as S.Schema<CreateHostnameCertificateResponse>;
@@ -228,13 +244,15 @@ export const CreateOriginTlsClientAuthRequest = /*@__PURE__*/ S.suspend(() =>
     zoneId: S.String.pipe(T.Label("zone_id")),
     certificate: S.String,
     privateKey: S.String.pipe(T.Body("private_key")),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/zones/{zone_id}/origin_tls_client_auth",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/zones/{zone_id}/origin_tls_client_auth",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateOriginTlsClientAuthRequest",
 }) as any as S.Schema<CreateOriginTlsClientAuthRequest>;
@@ -256,7 +274,7 @@ export const CreateOriginTlsClientAuthResponse = /*@__PURE__*/ S.suspend(() =>
     certificate: S.optional(S.String),
     enabled: S.optional(S.Boolean),
     privateKey: S.optional(S.String.pipe(T.Body("private_key"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateOriginTlsClientAuthResponse",
 }) as any as S.Schema<CreateOriginTlsClientAuthResponse>;
@@ -271,13 +289,15 @@ export const DeleteHostnameCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     certificateId: S.String.pipe(T.Label("certificate_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/zones/{zone_id}/origin_tls_client_auth/hostnames/certificates/{certificate_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/zones/{zone_id}/origin_tls_client_auth/hostnames/certificates/{certificate_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteHostnameCertificateRequest",
 }) as any as S.Schema<DeleteHostnameCertificateRequest>;
@@ -318,7 +338,7 @@ export const DeleteHostnameCertificateResponse = /*@__PURE__*/ S.suspend(() =>
     signature: S.optional(S.String),
     status: S.optional(HostnameCertificatesDeleteResponseStatus),
     uploadedOn: S.optional(S.String.pipe(T.Body("uploaded_on"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteHostnameCertificateResponse",
 }) as any as S.Schema<DeleteHostnameCertificateResponse>;
@@ -333,13 +353,15 @@ export const DeleteOriginTlsClientAuthRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     certificateId: S.String.pipe(T.Label("certificate_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/zones/{zone_id}/origin_tls_client_auth/{certificate_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/zones/{zone_id}/origin_tls_client_auth/{certificate_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteOriginTlsClientAuthRequest",
 }) as any as S.Schema<DeleteOriginTlsClientAuthRequest>;
@@ -361,7 +383,7 @@ export const DeleteOriginTlsClientAuthResponse = /*@__PURE__*/ S.suspend(() =>
     certificate: S.optional(S.String),
     enabled: S.optional(S.Boolean),
     privateKey: S.optional(S.String.pipe(T.Body("private_key"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteOriginTlsClientAuthResponse",
 }) as any as S.Schema<DeleteOriginTlsClientAuthResponse>;
@@ -376,13 +398,15 @@ export const GetHostnameRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     hostname: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/origin_tls_client_auth/hostnames/{hostname}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/origin_tls_client_auth/hostnames/{hostname}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetHostnameRequest",
 }) as any as S.Schema<GetHostnameRequest>;
@@ -450,7 +474,7 @@ export const GetHostnameResponse = /*@__PURE__*/ S.suspend(() =>
     signature: S.optional(S.String),
     status: S.optional(HostnamesGetResponseStatus),
     updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetHostnameResponse",
 }) as any as S.Schema<GetHostnameResponse>;
@@ -465,13 +489,15 @@ export const GetHostnameCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     certificateId: S.String.pipe(T.Label("certificate_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/origin_tls_client_auth/hostnames/certificates/{certificate_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/origin_tls_client_auth/hostnames/certificates/{certificate_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetHostnameCertificateRequest",
 }) as any as S.Schema<GetHostnameCertificateRequest>;
@@ -512,7 +538,7 @@ export const GetHostnameCertificateResponse = /*@__PURE__*/ S.suspend(() =>
     signature: S.optional(S.String),
     status: S.optional(HostnameCertificatesGetResponseStatus),
     uploadedOn: S.optional(S.String.pipe(T.Body("uploaded_on"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetHostnameCertificateResponse",
 }) as any as S.Schema<GetHostnameCertificateResponse>;
@@ -527,13 +553,15 @@ export const GetOriginTlsClientAuthRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     certificateId: S.String.pipe(T.Label("certificate_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/origin_tls_client_auth/{certificate_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/origin_tls_client_auth/{certificate_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetOriginTlsClientAuthRequest",
 }) as any as S.Schema<GetOriginTlsClientAuthRequest>;
@@ -555,7 +583,7 @@ export const GetOriginTlsClientAuthResponse = /*@__PURE__*/ S.suspend(() =>
     certificate: S.optional(S.String),
     enabled: S.optional(S.Boolean),
     privateKey: S.optional(S.String.pipe(T.Body("private_key"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetOriginTlsClientAuthResponse",
 }) as any as S.Schema<GetOriginTlsClientAuthResponse>;
@@ -567,13 +595,15 @@ export interface GetSettingRequest {
 export const GetSettingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/origin_tls_client_auth/settings",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/origin_tls_client_auth/settings",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetSettingRequest",
 }) as any as S.Schema<GetSettingRequest>;
@@ -586,7 +616,7 @@ export interface GetSettingResponse {
 export const GetSettingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.optional(S.Boolean),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetSettingResponse",
 }) as any as S.Schema<GetSettingResponse>;
@@ -598,13 +628,15 @@ export interface ListHostnameCertificatesRequest {
 export const ListHostnameCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/origin_tls_client_auth/hostnames/certificates",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/origin_tls_client_auth/hostnames/certificates",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListHostnameCertificatesRequest",
 }) as any as S.Schema<ListHostnameCertificatesRequest>;
@@ -665,7 +697,7 @@ export const ListHostnameCertificatesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: HostnameCertificatesListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListHostnameCertificatesResponse",
 }) as any as S.Schema<ListHostnameCertificatesResponse>;
@@ -677,13 +709,15 @@ export interface ListOriginTlsClientAuthsRequest {
 export const ListOriginTlsClientAuthsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/origin_tls_client_auth",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/origin_tls_client_auth",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListOriginTlsClientAuthsRequest",
 }) as any as S.Schema<ListOriginTlsClientAuthsRequest>;
@@ -722,7 +756,7 @@ export const ListOriginTlsClientAuthsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: ListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListOriginTlsClientAuthsResponse",
 }) as any as S.Schema<ListOriginTlsClientAuthsResponse>;
@@ -760,13 +794,15 @@ export const PutHostnameRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     config: HostnamesUpdateRequestConfigList,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/zones/{zone_id}/origin_tls_client_auth/hostnames",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/zones/{zone_id}/origin_tls_client_auth/hostnames",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutHostnameRequest",
 }) as any as S.Schema<PutHostnameRequest>;
@@ -813,7 +849,7 @@ export const PutHostnameResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: HostnamesUpdateResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutHostnameResponse",
 }) as any as S.Schema<PutHostnameResponse>;
@@ -828,13 +864,15 @@ export const PutSettingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     enabled: S.Boolean,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/zones/{zone_id}/origin_tls_client_auth/settings",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/zones/{zone_id}/origin_tls_client_auth/settings",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutSettingRequest",
 }) as any as S.Schema<PutSettingRequest>;
@@ -847,7 +885,7 @@ export interface PutSettingResponse {
 export const PutSettingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.optional(S.Boolean),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutSettingResponse",
 }) as any as S.Schema<PutSettingResponse>;
@@ -865,13 +903,15 @@ export const ZoneCertificatesCreateRequest = /*@__PURE__*/ S.suspend(() =>
     zoneId: S.String.pipe(T.Label("zone_id")),
     certificate: S.String,
     privateKey: S.String.pipe(T.Body("private_key")),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/zones/{zone_id}/origin_tls_client_auth",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/zones/{zone_id}/origin_tls_client_auth",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ZoneCertificatesCreateRequest",
 }) as any as S.Schema<ZoneCertificatesCreateRequest>;
@@ -893,7 +933,7 @@ export const ZoneCertificatesCreateResponse = /*@__PURE__*/ S.suspend(() =>
     certificate: S.optional(S.String),
     enabled: S.optional(S.Boolean),
     privateKey: S.optional(S.String.pipe(T.Body("private_key"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ZoneCertificatesCreateResponse",
 }) as any as S.Schema<ZoneCertificatesCreateResponse>;
@@ -908,13 +948,15 @@ export const ZoneCertificatesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     certificateId: S.String.pipe(T.Label("certificate_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/zones/{zone_id}/origin_tls_client_auth/{certificate_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/zones/{zone_id}/origin_tls_client_auth/{certificate_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ZoneCertificatesDeleteRequest",
 }) as any as S.Schema<ZoneCertificatesDeleteRequest>;
@@ -936,7 +978,7 @@ export const ZoneCertificatesDeleteResponse = /*@__PURE__*/ S.suspend(() =>
     certificate: S.optional(S.String),
     enabled: S.optional(S.Boolean),
     privateKey: S.optional(S.String.pipe(T.Body("private_key"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ZoneCertificatesDeleteResponse",
 }) as any as S.Schema<ZoneCertificatesDeleteResponse>;
@@ -951,13 +993,15 @@ export const ZoneCertificatesGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     certificateId: S.String.pipe(T.Label("certificate_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/origin_tls_client_auth/{certificate_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/origin_tls_client_auth/{certificate_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ZoneCertificatesGetRequest",
 }) as any as S.Schema<ZoneCertificatesGetRequest>;
@@ -979,7 +1023,7 @@ export const ZoneCertificatesGetResponse = /*@__PURE__*/ S.suspend(() =>
     certificate: S.optional(S.String),
     enabled: S.optional(S.Boolean),
     privateKey: S.optional(S.String.pipe(T.Body("private_key"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ZoneCertificatesGetResponse",
 }) as any as S.Schema<ZoneCertificatesGetResponse>;
@@ -991,13 +1035,15 @@ export interface ZoneCertificatesListRequest {
 export const ZoneCertificatesListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/origin_tls_client_auth",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/origin_tls_client_auth",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ZoneCertificatesListRequest",
 }) as any as S.Schema<ZoneCertificatesListRequest>;
@@ -1038,7 +1084,7 @@ export const ZoneCertificatesListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: ZoneCertificatesListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ZoneCertificatesListResponse",
 }) as any as S.Schema<ZoneCertificatesListResponse>;

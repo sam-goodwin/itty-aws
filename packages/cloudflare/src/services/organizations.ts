@@ -14,6 +14,63 @@ import * as Retry from "../retry.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
+/** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
+const KEY_DICTIONARY: Record<string, string> = {
+  accountCreation: "account_creation",
+  accountDeletion: "account_deletion",
+  accountMigration: "account_migration",
+  accountMobility: "account_mobility",
+  billedCost: "BilledCost",
+  billingAccountId: "BillingAccountId",
+  billingAccountName: "BillingAccountName",
+  billingCurrency: "BillingCurrency",
+  billingPeriodEnd: "BillingPeriodEnd",
+  billingPeriodStart: "BillingPeriodStart",
+  businessAddress: "business_address",
+  businessEmail: "business_email",
+  businessName: "business_name",
+  businessPhone: "business_phone",
+  cfRayId: "cf_ray_id",
+  chargeCategory: "ChargeCategory",
+  chargeClass: "ChargeClass",
+  chargeDescription: "ChargeDescription",
+  chargeFrequency: "ChargeFrequency",
+  chargePeriodEnd: "ChargePeriodEnd",
+  chargePeriodStart: "ChargePeriodStart",
+  consumedQuantity: "ConsumedQuantity",
+  consumedUnit: "ConsumedUnit",
+  contractedCost: "ContractedCost",
+  contractedUnitPrice: "ContractedUnitPrice",
+  createTime: "create_time",
+  effectiveCost: "EffectiveCost",
+  externalMetadata: "external_metadata",
+  hierarchyTags: "hierarchy_tags",
+  hostProviderName: "HostProviderName",
+  invoiceIssuerName: "InvoiceIssuerName",
+  ipAddress: "ip_address",
+  listCost: "ListCost",
+  listUnitPrice: "ListUnitPrice",
+  managedBy: "managed_by",
+  pricingQuantity: "PricingQuantity",
+  pricingUnit: "PricingUnit",
+  regionId: "RegionId",
+  regionName: "RegionName",
+  resultInfo: "result_info",
+  serviceProviderName: "ServiceProviderName",
+  statusCode: "status_code",
+  subAccountId: "SubAccountId",
+  subAccountName: "SubAccountName",
+  subOrgCreation: "sub_org_creation",
+  tokenId: "token_id",
+  tokenName: "token_name",
+  userAgent: "user_agent",
+  xBillableMetricId: "x_BillableMetricId",
+  xBillableMetricName: "x_BillableMetricName",
+  xProductFamilyName: "x_ProductFamilyName",
+  xZoneId: "x_ZoneId",
+  xZoneName: "x_ZoneName",
+};
+
 export class Forbidden extends T.applyErrorMatchers(
   S.TaggedErrorClass<Forbidden>()("Forbidden", {
     code: S.Number,
@@ -72,7 +129,9 @@ export const CreateOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
     name: S.String,
     parent: S.optional(CreateRequestParent),
     profile: S.optional(CreateRequestProfile),
-  }).pipe(T.Http({ method: "POST", uri: "/organizations", code: 200 })),
+  })
+    .pipe(T.Http({ method: "POST", uri: "/organizations", code: 200 }))
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateOrganizationRequest",
 }) as any as S.Schema<CreateOrganizationRequest>;
@@ -169,7 +228,7 @@ export const CreateOrganizationResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.String,
     parent: S.optional(CreateResponseParent),
     profile: S.optional(CreateResponseProfile),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateOrganizationResponse",
 }) as any as S.Schema<CreateOrganizationResponse>;
@@ -180,13 +239,15 @@ export interface DeleteOrganizationRequest {
 export const DeleteOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organizationId: S.String.pipe(T.Label("organization_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/organizations/{organization_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/organizations/{organization_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteOrganizationRequest",
 }) as any as S.Schema<DeleteOrganizationRequest>;
@@ -198,7 +259,7 @@ export interface DeleteOrganizationResponse {
 export const DeleteOrganizationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteOrganizationResponse",
 }) as any as S.Schema<DeleteOrganizationResponse>;
@@ -219,13 +280,15 @@ export const GetBillingUsageRequest = /*@__PURE__*/ S.suspend(() =>
     from: S.optional(S.String.pipe(T.Query())),
     metric: S.optional(S.String.pipe(T.Query())),
     to: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/organizations/{organization_id}/billable/usage",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/organizations/{organization_id}/billable/usage",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetBillingUsageRequest",
 }) as any as S.Schema<GetBillingUsageRequest>;
@@ -363,7 +426,7 @@ export interface GetBillingUsageResponse {
 export const GetBillingUsageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(BillingUsageGetResultList.pipe(T.EnvelopePayload())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetBillingUsageResponse",
 }) as any as S.Schema<GetBillingUsageResponse>;
@@ -374,13 +437,15 @@ export interface GetOrganizationRequest {
 export const GetOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organizationId: S.String.pipe(T.Label("organization_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/organizations/{organization_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/organizations/{organization_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetOrganizationRequest",
 }) as any as S.Schema<GetOrganizationRequest>;
@@ -477,7 +542,7 @@ export const GetOrganizationResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.String,
     parent: S.optional(GetResponseParent),
     profile: S.optional(GetResponseProfile),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetOrganizationResponse",
 }) as any as S.Schema<GetOrganizationResponse>;
@@ -488,13 +553,15 @@ export interface GetOrganizationProfileRequest {
 export const GetOrganizationProfileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organizationId: S.String.pipe(T.Label("organization_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/organizations/{organization_id}/profile",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/organizations/{organization_id}/profile",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetOrganizationProfileRequest",
 }) as any as S.Schema<GetOrganizationProfileRequest>;
@@ -514,7 +581,7 @@ export const GetOrganizationProfileResponse = /*@__PURE__*/ S.suspend(() =>
     businessName: S.String.pipe(T.Body("business_name")),
     businessPhone: S.String.pipe(T.Body("business_phone")),
     externalMetadata: S.String.pipe(T.Body("external_metadata")),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetOrganizationProfileResponse",
 }) as any as S.Schema<GetOrganizationProfileResponse>;
@@ -580,13 +647,15 @@ export const ListLogAuditsRequest = /*@__PURE__*/ S.suspend(() =>
     resourceProduct: S.optional(S.String.pipe(T.Query("resource_product"))),
     resourceScope: S.optional(S.String.pipe(T.Query("resource_scope"))),
     resourceType: S.optional(S.String.pipe(T.Query("resource_type"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/organizations/{organization_id}/logs/audit",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/organizations/{organization_id}/logs/audit",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListLogAuditsRequest",
 }) as any as S.Schema<ListLogAuditsRequest>;
@@ -758,7 +827,7 @@ export const ListLogAuditsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: LogsAuditListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListLogAuditsResponse",
 }) as any as S.Schema<ListLogAuditsResponse>;
@@ -787,7 +856,9 @@ export const ListOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
     pageSize: S.optional(S.Number.pipe(T.Query("page_size"))),
     pageToken: S.optional(S.String.pipe(T.Query("page_token"))),
     parent: S.optional(S.String.pipe(T.Query())),
-  }).pipe(T.Http({ method: "GET", uri: "/organizations", code: 200 })),
+  })
+    .pipe(T.Http({ method: "GET", uri: "/organizations", code: 200 }))
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListOrganizationsRequest",
 }) as any as S.Schema<ListOrganizationsRequest>;
@@ -901,7 +972,7 @@ export const ListOrganizationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: ListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListOrganizationsResponse",
 }) as any as S.Schema<ListOrganizationsResponse>;
@@ -944,13 +1015,15 @@ export const MembersCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organizationId: S.String.pipe(T.Label("organization_id")),
     member: MembersCreateRequestMember,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/organizations/{organization_id}/members",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/organizations/{organization_id}/members",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "MembersCreateRequest",
 }) as any as S.Schema<MembersCreateRequest>;
@@ -1003,7 +1076,7 @@ export const MembersCreateResponse = /*@__PURE__*/ S.suspend(() =>
     status: MembersCreateResponseStatus,
     updateTime: S.String.pipe(T.Body("update_time")),
     user: MembersCreateResponseUser,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "MembersCreateResponse",
 }) as any as S.Schema<MembersCreateResponse>;
@@ -1017,20 +1090,22 @@ export const MembersDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organizationId: S.String.pipe(T.Label("organization_id")),
     memberId: S.String.pipe(T.Label("member_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/organizations/{organization_id}/members/{member_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/organizations/{organization_id}/members/{member_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "MembersDeleteRequest",
 }) as any as S.Schema<MembersDeleteRequest>;
 
 export interface MembersDeleteResponse {}
 export const MembersDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
+  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "MembersDeleteResponse",
 }) as any as S.Schema<MembersDeleteResponse>;
@@ -1044,13 +1119,15 @@ export const MembersGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organizationId: S.String.pipe(T.Label("organization_id")),
     memberId: S.String.pipe(T.Label("member_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/organizations/{organization_id}/members/{member_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/organizations/{organization_id}/members/{member_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "MembersGetRequest",
 }) as any as S.Schema<MembersGetRequest>;
@@ -1101,7 +1178,7 @@ export const MembersGetResponse = /*@__PURE__*/ S.suspend(() =>
     status: MembersGetResponseStatus,
     updateTime: S.String.pipe(T.Body("update_time")),
     user: MembersGetResponseUser,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "MembersGetResponse",
 }) as any as S.Schema<MembersGetResponse>;
@@ -1131,13 +1208,15 @@ export const MembersListRequest = /*@__PURE__*/ S.suspend(() =>
     pageToken: S.optional(S.String.pipe(T.Query("page_token"))),
     status: S.optional(MembersListRequestStatusList.pipe(T.Query())),
     user: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/organizations/{organization_id}/members",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/organizations/{organization_id}/members",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "MembersListRequest",
 }) as any as S.Schema<MembersListRequest>;
@@ -1206,7 +1285,7 @@ export interface MembersListResponse {
 export const MembersListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(MembersListResultList.pipe(T.EnvelopePayload())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "MembersListResponse",
 }) as any as S.Schema<MembersListResponse>;
@@ -1248,13 +1327,15 @@ export const OrganizationAccountsGetRequest = /*@__PURE__*/ S.suspend(() =>
     ),
     pageSize: S.optional(S.Number.pipe(T.Query("page_size"))),
     pageToken: S.optional(S.String.pipe(T.Query("page_token"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/organizations/{organization_id}/accounts",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/organizations/{organization_id}/accounts",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "OrganizationAccountsGetRequest",
 }) as any as S.Schema<OrganizationAccountsGetRequest>;
@@ -1325,7 +1406,7 @@ export const OrganizationAccountsGetResponse = /*@__PURE__*/ S.suspend(() =>
     result: S.optional(
       OrganizationAccountsGetResultList.pipe(T.EnvelopePayload()),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "OrganizationAccountsGetResponse",
 }) as any as S.Schema<OrganizationAccountsGetResponse>;
@@ -1346,20 +1427,22 @@ export const PutOrganizationProfileRequest = /*@__PURE__*/ S.suspend(() =>
     businessName: S.String.pipe(T.Body("business_name")),
     businessPhone: S.String.pipe(T.Body("business_phone")),
     externalMetadata: S.String.pipe(T.Body("external_metadata")),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/organizations/{organization_id}/profile",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/organizations/{organization_id}/profile",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutOrganizationProfileRequest",
 }) as any as S.Schema<PutOrganizationProfileRequest>;
 
 export interface PutOrganizationProfileResponse {}
 export const PutOrganizationProfileResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
+  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutOrganizationProfileResponse",
 }) as any as S.Schema<PutOrganizationProfileResponse>;
@@ -1408,13 +1491,15 @@ export const UpdateOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
     name: S.String,
     parent: S.optional(UpdateRequestParent),
     profile: S.optional(UpdateRequestProfile),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/organizations/{organization_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/organizations/{organization_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateOrganizationRequest",
 }) as any as S.Schema<UpdateOrganizationRequest>;
@@ -1511,7 +1596,7 @@ export const UpdateOrganizationResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.String,
     parent: S.optional(UpdateResponseParent),
     profile: S.optional(UpdateResponseProfile),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateOrganizationResponse",
 }) as any as S.Schema<UpdateOrganizationResponse>;

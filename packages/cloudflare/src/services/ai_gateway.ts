@@ -14,6 +14,108 @@ import * as Retry from "../retry.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
+/** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
+const KEY_DICTIONARY: Record<string, string> = {
+  accountId: "account_id",
+  accountTag: "account_tag",
+  aggregatedValue: "aggregated_value",
+  amountDue: "amount_due",
+  amountPaid: "amount_paid",
+  amountRemaining: "amount_remaining",
+  attemptCount: "attempt_count",
+  autoAdvance: "auto_advance",
+  baseUrl: "base_url",
+  cacheInvalidateOnUpdate: "cache_invalidate_on_update",
+  cacheTtl: "cache_ttl",
+  clientSecret: "client_secret",
+  collectLogs: "collect_logs",
+  contentType: "content_type",
+  createdAt: "created_at",
+  createdBy: "created_by",
+  creditBalanceTransaction: "credit_balance_transaction",
+  curlExample: "curl_example",
+  customCost: "custom_cost",
+  datasetIds: "dataset_ids",
+  defaultConfig: "default_config",
+  deploymentId: "deployment_id",
+  endTime: "end_time",
+  evaluationId: "evaluation_id",
+  evaluationTypeId: "evaluation_type_id",
+  evaluationTypeIds: "evaluation_type_ids",
+  firstTopupSuccess: "first_topup_success",
+  gatewayId: "gateway_id",
+  hasDefaultPaymentMethod: "has_default_payment_method",
+  hasMore: "has_more",
+  invoiceLines: "invoice_lines",
+  invoiceOrigin: "invoice_origin",
+  invoicePdf: "invoice_pdf",
+  isDefault: "is_default",
+  isValid: "is_valid",
+  jsExample: "js_example",
+  logManagement: "log_management",
+  logManagementStrategy: "log_management_strategy",
+  logpushPublicKey: "logpush_public_key",
+  modelType: "model_type",
+  modifiedAt: "modified_at",
+  orderBy: "order_by",
+  orderByDirection: "order_by_direction",
+  p1: "P1",
+  paymentIntentId: "payment_intent_id",
+  paymentMethod: "payment_method",
+  perPage: "per_page",
+  periodEnd: "period_end",
+  periodStart: "period_start",
+  pretaxCreditAmounts: "pretax_credit_amounts",
+  providerSlug: "provider_slug",
+  rateLimit: "rate_limit",
+  rateLimitPeriod: "rate_limit_period",
+  rateLimitingInterval: "rate_limiting_interval",
+  rateLimitingLimit: "rate_limiting_limit",
+  rateLimitingTechnique: "rate_limiting_technique",
+  requestContentType: "request_content_type",
+  requestHead: "request_head",
+  requestHeadComplete: "request_head_complete",
+  requestSize: "request_size",
+  requestType: "request_type",
+  responseContentType: "response_content_type",
+  responseHead: "response_head",
+  responseHeadComplete: "response_head_complete",
+  responseSize: "response_size",
+  resultInfo: "result_info",
+  retryBackoff: "retry_backoff",
+  retryDelay: "retry_delay",
+  retryMaxAttempts: "retry_max_attempts",
+  s1: "S1",
+  s10: "S10",
+  s11: "S11",
+  s12: "S12",
+  s13: "S13",
+  s2: "S2",
+  s3: "S3",
+  s4: "S4",
+  s5: "S5",
+  s6: "S6",
+  s7: "S7",
+  s8: "S8",
+  s9: "S9",
+  secretId: "secret_id",
+  secretPreview: "secret_preview",
+  spendLimits: "spend_limits",
+  startTime: "start_time",
+  statusCode: "status_code",
+  statusDescription: "status_description",
+  storeId: "store_id",
+  tokensIn: "tokens_in",
+  tokensOut: "tokens_out",
+  topupConfig: "topup_config",
+  totalCount: "total_count",
+  totalLogs: "total_logs",
+  unitAmountDecimal: "unit_amount_decimal",
+  usageEvents: "usage_events",
+  versionId: "version_id",
+  workersAiBillingMode: "workers_ai_billing_mode",
+};
+
 export class AiGatewaySpendingLimitDeprecated extends T.applyErrorMatchers(
   S.TaggedErrorClass<AiGatewaySpendingLimitDeprecated>()(
     "AiGatewaySpendingLimitDeprecated",
@@ -203,13 +305,15 @@ export const CreateAiGatewayRequest = /*@__PURE__*/ S.suspend(() =>
       CreateRequestWorkersAiBillingMode.pipe(T.Body("workers_ai_billing_mode")),
     ),
     zdr: S.optional(S.Boolean),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/ai-gateway/gateways",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/ai-gateway/gateways",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateAiGatewayRequest",
 }) as any as S.Schema<CreateAiGatewayRequest>;
@@ -748,7 +852,7 @@ export const CreateAiGatewayResponse = /*@__PURE__*/ S.suspend(() =>
       ),
     ),
     zdr: S.optional(S.Boolean),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateAiGatewayResponse",
 }) as any as S.Schema<CreateAiGatewayResponse>;
@@ -781,13 +885,15 @@ export const CreateBillingSpendingLimitRequest = /*@__PURE__*/ S.suspend(() =>
     amount: S.Number,
     duration: BillingSpendingLimitCreateRequestDuration,
     strategy: BillingSpendingLimitCreateRequestStrategy,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/ai-gateway/billing/spending-limit",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/ai-gateway/billing/spending-limit",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateBillingSpendingLimitRequest",
 }) as any as S.Schema<CreateBillingSpendingLimitRequest>;
@@ -799,7 +905,7 @@ export interface CreateBillingSpendingLimitResponse {
 export const CreateBillingSpendingLimitResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateBillingSpendingLimitResponse",
 }) as any as S.Schema<CreateBillingSpendingLimitResponse>;
@@ -813,13 +919,15 @@ export const CreateBillingTopupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     amount: S.Number,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/ai-gateway/billing/topup",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/ai-gateway/billing/topup",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateBillingTopupRequest",
 }) as any as S.Schema<CreateBillingTopupRequest>;
@@ -844,7 +952,7 @@ export const CreateBillingTopupResponse = /*@__PURE__*/ S.suspend(() =>
     paymentIntentId: S.String.pipe(T.Body("payment_intent_id")),
     brand: S.optional(S.String),
     last4: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateBillingTopupResponse",
 }) as any as S.Schema<CreateBillingTopupResponse>;
@@ -861,13 +969,15 @@ export const CreateBillingTopupConfigRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     amount: S.Number,
     threshold: S.Number,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/ai-gateway/billing/topup/config",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/ai-gateway/billing/topup/config",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateBillingTopupConfigRequest",
 }) as any as S.Schema<CreateBillingTopupConfigRequest>;
@@ -881,7 +991,7 @@ export const CreateBillingTopupConfigResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amount: S.Number,
     threshold: S.Number,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateBillingTopupConfigResponse",
 }) as any as S.Schema<CreateBillingTopupConfigResponse>;
@@ -914,13 +1024,15 @@ export const CreateCustomProviderRequest = /*@__PURE__*/ S.suspend(() =>
     jsExample: S.optional(S.String.pipe(T.Body("js_example"))),
     link: S.optional(S.String),
     position: S.optional(S.Number),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/ai-gateway/custom-providers",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/ai-gateway/custom-providers",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateCustomProviderRequest",
 }) as any as S.Schema<CreateCustomProviderRequest>;
@@ -960,7 +1072,7 @@ export const CreateCustomProviderResponse = /*@__PURE__*/ S.suspend(() =>
     link: S.optional(S.String),
     logo: S.optional(S.String),
     position: S.optional(S.Number),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateCustomProviderResponse",
 }) as any as S.Schema<CreateCustomProviderResponse>;
@@ -1038,13 +1150,15 @@ export const CreateDatasetRequest = /*@__PURE__*/ S.suspend(() =>
     enable: S.Boolean,
     filters: DatasetsCreateRequestFiltersList,
     name: S.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/ai-gateway/gateways/{gateway_id}/datasets",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/ai-gateway/gateways/{gateway_id}/datasets",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateDatasetRequest",
 }) as any as S.Schema<CreateDatasetRequest>;
@@ -1127,7 +1241,7 @@ export const CreateDatasetResponse = /*@__PURE__*/ S.suspend(() =>
     gatewayId: S.String.pipe(T.Body("gateway_id")),
     modifiedAt: S.String.pipe(T.Body("modified_at")),
     name: S.String,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateDatasetResponse",
 }) as any as S.Schema<CreateDatasetResponse>;
@@ -1145,13 +1259,15 @@ export const CreateDeploymentDynamicRoutingRequest = /*@__PURE__*/ S.suspend(
       gatewayId: S.String.pipe(T.Label("gateway_id")),
       id: S.String.pipe(T.Label()),
       versionId: S.String.pipe(T.Body("version_id")),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/accounts/{account_id}/ai-gateway/gateways/{gateway_id}/routes/{id}/deployments",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "POST",
+          uri: "/accounts/{account_id}/ai-gateway/gateways/{gateway_id}/routes/{id}/deployments",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateDeploymentDynamicRoutingRequest",
 }) as any as S.Schema<CreateDeploymentDynamicRoutingRequest>;
@@ -1215,7 +1331,7 @@ export const CreateDeploymentDynamicRoutingResponse = /*@__PURE__*/ S.suspend(
       gatewayId: S.String.pipe(T.Body("gateway_id")),
       modifiedAt: S.String.pipe(T.Body("modified_at")),
       name: S.String,
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateDeploymentDynamicRoutingResponse",
 }) as any as S.Schema<CreateDeploymentDynamicRoutingResponse>;
@@ -1272,13 +1388,15 @@ export const CreateDynamicRoutingRequest = /*@__PURE__*/ S.suspend(() =>
     gatewayId: S.String.pipe(T.Label("gateway_id")),
     elements: DynamicRoutingCreateRequestElementsList,
     name: S.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/ai-gateway/gateways/{gateway_id}/routes",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/ai-gateway/gateways/{gateway_id}/routes",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateDynamicRoutingRequest",
 }) as any as S.Schema<CreateDynamicRoutingRequest>;
@@ -1385,7 +1503,7 @@ export const CreateDynamicRoutingResponse = /*@__PURE__*/ S.suspend(() =>
     modifiedAt: S.String.pipe(T.Body("modified_at")),
     name: S.String,
     version: DynamicRoutingCreateResponseVersion,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateDynamicRoutingResponse",
 }) as any as S.Schema<CreateDynamicRoutingResponse>;
@@ -1420,13 +1538,15 @@ export const CreateEvaluationRequest = /*@__PURE__*/ S.suspend(() =>
       T.Body("evaluation_type_ids"),
     ),
     name: S.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/ai-gateway/gateways/{gateway_id}/evaluations",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/ai-gateway/gateways/{gateway_id}/evaluations",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateEvaluationRequest",
 }) as any as S.Schema<CreateEvaluationRequest>;
@@ -1587,7 +1707,7 @@ export const CreateEvaluationResponse = /*@__PURE__*/ S.suspend(() =>
     processed: S.Boolean,
     results: EvaluationsCreateResponseResultsList,
     totalLogs: S.Number.pipe(T.Body("total_logs")),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateEvaluationResponse",
 }) as any as S.Schema<CreateEvaluationResponse>;
@@ -1615,13 +1735,15 @@ export const CreateProviderConfigRequest = /*@__PURE__*/ S.suspend(() =>
     rateLimitPeriod: S.optional(S.Number.pipe(T.Body("rate_limit_period"))),
     secret: S.optional(S.String),
     secretId: S.optional(S.String.pipe(T.Body("secret_id"))),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/ai-gateway/gateways/{gateway_id}/provider_configs",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/ai-gateway/gateways/{gateway_id}/provider_configs",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateProviderConfigRequest",
 }) as any as S.Schema<CreateProviderConfigRequest>;
@@ -1652,7 +1774,7 @@ export const CreateProviderConfigResponse = /*@__PURE__*/ S.suspend(() =>
     secretPreview: S.String.pipe(T.Body("secret_preview")),
     rateLimit: S.optional(S.Number.pipe(T.Body("rate_limit"))),
     rateLimitPeriod: S.optional(S.Number.pipe(T.Body("rate_limit_period"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateProviderConfigResponse",
 }) as any as S.Schema<CreateProviderConfigResponse>;
@@ -1710,13 +1832,15 @@ export const CreateVersionDynamicRoutingRequest = /*@__PURE__*/ S.suspend(() =>
     gatewayId: S.String.pipe(T.Label("gateway_id")),
     id: S.String.pipe(T.Label()),
     elements: DynamicRoutingCreateVersionRequestElementsList,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/ai-gateway/gateways/{gateway_id}/routes/{id}/versions",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/ai-gateway/gateways/{gateway_id}/routes/{id}/versions",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateVersionDynamicRoutingRequest",
 }) as any as S.Schema<CreateVersionDynamicRoutingRequest>;
@@ -1779,7 +1903,7 @@ export const CreateVersionDynamicRoutingResponse = /*@__PURE__*/ S.suspend(() =>
     gatewayId: S.String.pipe(T.Body("gateway_id")),
     modifiedAt: S.String.pipe(T.Body("modified_at")),
     name: S.String,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateVersionDynamicRoutingResponse",
 }) as any as S.Schema<CreateVersionDynamicRoutingResponse>;
@@ -1790,13 +1914,15 @@ export interface CreditBalanceBillingRequest {
 export const CreditBalanceBillingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/ai-gateway/billing/credit-balance",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/ai-gateway/billing/credit-balance",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreditBalanceBillingRequest",
 }) as any as S.Schema<CreditBalanceBillingRequest>;
@@ -1858,7 +1984,7 @@ export const CreditBalanceBillingResponse = /*@__PURE__*/ S.suspend(() =>
     firstTopupSuccess: S.optional(
       S.Boolean.pipe(T.Body("first_topup_success")),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreditBalanceBillingResponse",
 }) as any as S.Schema<CreditBalanceBillingResponse>;
@@ -1872,13 +1998,15 @@ export const DeleteAiGatewayRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/ai-gateway/gateways/{id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/ai-gateway/gateways/{id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteAiGatewayRequest",
 }) as any as S.Schema<DeleteAiGatewayRequest>;
@@ -2417,7 +2545,7 @@ export const DeleteAiGatewayResponse = /*@__PURE__*/ S.suspend(() =>
       ),
     ),
     zdr: S.optional(S.Boolean),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteAiGatewayResponse",
 }) as any as S.Schema<DeleteAiGatewayResponse>;
@@ -2428,13 +2556,15 @@ export interface DeleteBillingSpendingLimitRequest {
 export const DeleteBillingSpendingLimitRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/ai-gateway/billing/spending-limit",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/ai-gateway/billing/spending-limit",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteBillingSpendingLimitRequest",
 }) as any as S.Schema<DeleteBillingSpendingLimitRequest>;
@@ -2446,7 +2576,7 @@ export interface DeleteBillingSpendingLimitResponse {
 export const DeleteBillingSpendingLimitResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteBillingSpendingLimitResponse",
 }) as any as S.Schema<DeleteBillingSpendingLimitResponse>;
@@ -2457,13 +2587,15 @@ export interface DeleteBillingTopupConfigRequest {
 export const DeleteBillingTopupConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/ai-gateway/billing/topup/config",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/ai-gateway/billing/topup/config",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteBillingTopupConfigRequest",
 }) as any as S.Schema<DeleteBillingTopupConfigRequest>;
@@ -2475,7 +2607,7 @@ export interface DeleteBillingTopupConfigResponse {
 export const DeleteBillingTopupConfigResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteBillingTopupConfigResponse",
 }) as any as S.Schema<DeleteBillingTopupConfigResponse>;
@@ -2488,13 +2620,15 @@ export const DeleteCustomProviderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/ai-gateway/custom-providers/{id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/ai-gateway/custom-providers/{id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteCustomProviderRequest",
 }) as any as S.Schema<DeleteCustomProviderRequest>;
@@ -2534,7 +2668,7 @@ export const DeleteCustomProviderResponse = /*@__PURE__*/ S.suspend(() =>
     link: S.optional(S.String),
     logo: S.optional(S.String),
     position: S.optional(S.Number),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteCustomProviderResponse",
 }) as any as S.Schema<DeleteCustomProviderResponse>;
@@ -2550,13 +2684,15 @@ export const DeleteDatasetRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     gatewayId: S.String.pipe(T.Label("gateway_id")),
     id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/ai-gateway/gateways/{gateway_id}/datasets/{id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/ai-gateway/gateways/{gateway_id}/datasets/{id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteDatasetRequest",
 }) as any as S.Schema<DeleteDatasetRequest>;
@@ -2639,7 +2775,7 @@ export const DeleteDatasetResponse = /*@__PURE__*/ S.suspend(() =>
     gatewayId: S.String.pipe(T.Body("gateway_id")),
     modifiedAt: S.String.pipe(T.Body("modified_at")),
     name: S.String,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteDatasetResponse",
 }) as any as S.Schema<DeleteDatasetResponse>;
@@ -2654,13 +2790,15 @@ export const DeleteDynamicRoutingRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     gatewayId: S.String.pipe(T.Label("gateway_id")),
     id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/ai-gateway/gateways/{gateway_id}/routes/{id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/ai-gateway/gateways/{gateway_id}/routes/{id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteDynamicRoutingRequest",
 }) as any as S.Schema<DeleteDynamicRoutingRequest>;
@@ -2722,7 +2860,7 @@ export const DeleteDynamicRoutingResponse = /*@__PURE__*/ S.suspend(() =>
     gatewayId: S.String.pipe(T.Body("gateway_id")),
     modifiedAt: S.String.pipe(T.Body("modified_at")),
     name: S.String,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteDynamicRoutingResponse",
 }) as any as S.Schema<DeleteDynamicRoutingResponse>;
@@ -2738,13 +2876,15 @@ export const DeleteEvaluationRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     gatewayId: S.String.pipe(T.Label("gateway_id")),
     id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/ai-gateway/gateways/{gateway_id}/evaluations/{id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/ai-gateway/gateways/{gateway_id}/evaluations/{id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteEvaluationRequest",
 }) as any as S.Schema<DeleteEvaluationRequest>;
@@ -2905,7 +3045,7 @@ export const DeleteEvaluationResponse = /*@__PURE__*/ S.suspend(() =>
     processed: S.Boolean,
     results: EvaluationsDeleteResponseResultsList,
     totalLogs: S.Number.pipe(T.Body("total_logs")),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteEvaluationResponse",
 }) as any as S.Schema<DeleteEvaluationResponse>;
@@ -2944,20 +3084,22 @@ export const DeleteLogRequest = /*@__PURE__*/ S.suspend(() =>
     orderByDirection: S.optional(
       LogsDeleteRequestOrderByDirection.pipe(T.Query("order_by_direction")),
     ),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/ai-gateway/gateways/{gateway_id}/logs",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/ai-gateway/gateways/{gateway_id}/logs",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteLogRequest",
 }) as any as S.Schema<DeleteLogRequest>;
 
 export interface DeleteLogResponse {}
 export const DeleteLogResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
+  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteLogResponse",
 }) as any as S.Schema<DeleteLogResponse>;
@@ -2971,13 +3113,15 @@ export const GetAiGatewayRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/ai-gateway/gateways/{id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/ai-gateway/gateways/{id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetAiGatewayRequest",
 }) as any as S.Schema<GetAiGatewayRequest>;
@@ -3444,7 +3588,7 @@ export const GetAiGatewayResponse = /*@__PURE__*/ S.suspend(() =>
       GetResponseWorkersAiBillingMode.pipe(T.Body("workers_ai_billing_mode")),
     ),
     zdr: S.optional(S.Boolean),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetAiGatewayResponse",
 }) as any as S.Schema<GetAiGatewayResponse>;
@@ -3455,13 +3599,15 @@ export interface GetBillingSpendingLimitRequest {
 export const GetBillingSpendingLimitRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/ai-gateway/billing/spending-limit",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/ai-gateway/billing/spending-limit",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetBillingSpendingLimitRequest",
 }) as any as S.Schema<GetBillingSpendingLimitRequest>;
@@ -3491,7 +3637,7 @@ export const GetBillingSpendingLimitResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     config: BillingSpendingLimitGetResponseConfig,
     enabled: S.Boolean,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetBillingSpendingLimitResponse",
 }) as any as S.Schema<GetBillingSpendingLimitResponse>;
@@ -3502,13 +3648,15 @@ export interface GetBillingTopupConfigRequest {
 export const GetBillingTopupConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/ai-gateway/billing/topup/config",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/ai-gateway/billing/topup/config",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetBillingTopupConfigRequest",
 }) as any as S.Schema<GetBillingTopupConfigRequest>;
@@ -3528,7 +3676,7 @@ export const GetBillingTopupConfigResponse = /*@__PURE__*/ S.suspend(() =>
     error: S.String,
     lastFailedAt: S.Number,
     threshold: S.Number,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetBillingTopupConfigResponse",
 }) as any as S.Schema<GetBillingTopupConfigResponse>;
@@ -3541,13 +3689,15 @@ export const GetCustomProviderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/ai-gateway/custom-providers/{id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/ai-gateway/custom-providers/{id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetCustomProviderRequest",
 }) as any as S.Schema<GetCustomProviderRequest>;
@@ -3587,7 +3737,7 @@ export const GetCustomProviderResponse = /*@__PURE__*/ S.suspend(() =>
     link: S.optional(S.String),
     logo: S.optional(S.String),
     position: S.optional(S.Number),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetCustomProviderResponse",
 }) as any as S.Schema<GetCustomProviderResponse>;
@@ -3603,13 +3753,15 @@ export const GetDatasetRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     gatewayId: S.String.pipe(T.Label("gateway_id")),
     id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/ai-gateway/gateways/{gateway_id}/datasets/{id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/ai-gateway/gateways/{gateway_id}/datasets/{id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDatasetRequest",
 }) as any as S.Schema<GetDatasetRequest>;
@@ -3691,7 +3843,7 @@ export const GetDatasetResponse = /*@__PURE__*/ S.suspend(() =>
     gatewayId: S.String.pipe(T.Body("gateway_id")),
     modifiedAt: S.String.pipe(T.Body("modified_at")),
     name: S.String,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDatasetResponse",
 }) as any as S.Schema<GetDatasetResponse>;
@@ -3706,13 +3858,15 @@ export const GetDynamicRoutingRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     gatewayId: S.String.pipe(T.Label("gateway_id")),
     id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/ai-gateway/gateways/{gateway_id}/routes/{id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/ai-gateway/gateways/{gateway_id}/routes/{id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDynamicRoutingRequest",
 }) as any as S.Schema<GetDynamicRoutingRequest>;
@@ -3818,7 +3972,7 @@ export const GetDynamicRoutingResponse = /*@__PURE__*/ S.suspend(() =>
     modifiedAt: S.String.pipe(T.Body("modified_at")),
     name: S.String,
     version: DynamicRoutingGetResponseVersion,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDynamicRoutingResponse",
 }) as any as S.Schema<GetDynamicRoutingResponse>;
@@ -3834,13 +3988,15 @@ export const GetEvaluationRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     gatewayId: S.String.pipe(T.Label("gateway_id")),
     id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/ai-gateway/gateways/{gateway_id}/evaluations/{id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/ai-gateway/gateways/{gateway_id}/evaluations/{id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetEvaluationRequest",
 }) as any as S.Schema<GetEvaluationRequest>;
@@ -3999,7 +4155,7 @@ export const GetEvaluationResponse = /*@__PURE__*/ S.suspend(() =>
     processed: S.Boolean,
     results: EvaluationsGetResponseResultsList,
     totalLogs: S.Number.pipe(T.Body("total_logs")),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetEvaluationResponse",
 }) as any as S.Schema<GetEvaluationResponse>;
@@ -4015,13 +4171,15 @@ export const GetLogRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     gatewayId: S.String.pipe(T.Label("gateway_id")),
     id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/ai-gateway/gateways/{gateway_id}/logs/{id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/ai-gateway/gateways/{gateway_id}/logs/{id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "GetLogRequest" }) as any as S.Schema<GetLogRequest>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -4087,7 +4245,7 @@ export const GetLogResponse = /*@__PURE__*/ S.suspend(() =>
     responseSize: S.optional(S.Number.pipe(T.Body("response_size"))),
     statusCode: S.optional(S.Number.pipe(T.Body("status_code"))),
     step: S.optional(S.Number),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "GetLogResponse" }) as any as S.Schema<GetLogResponse>;
 
 export interface GetUrlRequest {
@@ -4101,13 +4259,15 @@ export const GetUrlRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     gatewayId: S.String.pipe(T.Label("gateway_id")),
     provider: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/ai-gateway/gateways/{gateway_id}/url/{provider}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/ai-gateway/gateways/{gateway_id}/url/{provider}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "GetUrlRequest" }) as any as S.Schema<GetUrlRequest>;
 
 export interface GetUrlResponse {
@@ -4117,7 +4277,7 @@ export interface GetUrlResponse {
 export const GetUrlResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(S.String.pipe(T.EnvelopePayload())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "GetUrlResponse" }) as any as S.Schema<GetUrlResponse>;
 
 export interface GetVersionDynamicRoutingRequest {
@@ -4132,13 +4292,15 @@ export const GetVersionDynamicRoutingRequest = /*@__PURE__*/ S.suspend(() =>
     gatewayId: S.String.pipe(T.Label("gateway_id")),
     id: S.String.pipe(T.Label()),
     versionId: S.String.pipe(T.Label("version_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/ai-gateway/gateways/{gateway_id}/routes/{id}/versions/{version_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/ai-gateway/gateways/{gateway_id}/routes/{id}/versions/{version_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetVersionDynamicRoutingRequest",
 }) as any as S.Schema<GetVersionDynamicRoutingRequest>;
@@ -4215,7 +4377,7 @@ export const GetVersionDynamicRoutingResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.String,
     versionId: S.String.pipe(T.Body("version_id")),
     isValid: S.optional(S.Boolean.pipe(T.Body("is_valid"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetVersionDynamicRoutingResponse",
 }) as any as S.Schema<GetVersionDynamicRoutingResponse>;
@@ -4236,13 +4398,15 @@ export const InvoiceHistoryBillingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     type: S.optional(BillingInvoiceHistoryRequestType.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/ai-gateway/billing/invoice-history",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/ai-gateway/billing/invoice-history",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "InvoiceHistoryBillingRequest",
 }) as any as S.Schema<InvoiceHistoryBillingRequest>;
@@ -4318,7 +4482,7 @@ export const InvoiceHistoryBillingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     invoices: BillingInvoiceHistoryResponseInvoicesList,
     pagination: BillingInvoiceHistoryResponsePagination,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "InvoiceHistoryBillingResponse",
 }) as any as S.Schema<InvoiceHistoryBillingResponse>;
@@ -4329,13 +4493,15 @@ export interface InvoicePreviewBillingRequest {
 export const InvoicePreviewBillingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/ai-gateway/billing/invoice-preview",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/ai-gateway/billing/invoice-preview",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "InvoicePreviewBillingRequest",
 }) as any as S.Schema<InvoicePreviewBillingRequest>;
@@ -4461,7 +4627,7 @@ export const InvoicePreviewBillingResponse = /*@__PURE__*/ S.suspend(() =>
     periodEnd: S.Number.pipe(T.Body("period_end")),
     periodStart: S.Number.pipe(T.Body("period_start")),
     status: BillingInvoicePreviewResponseStatus,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "InvoicePreviewBillingResponse",
 }) as any as S.Schema<InvoicePreviewBillingResponse>;
@@ -4479,13 +4645,15 @@ export const ListAiGatewaysRequest = /*@__PURE__*/ S.suspend(() =>
     page: S.optional(S.Number.pipe(T.Query())),
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
     search: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/ai-gateway/gateways",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/ai-gateway/gateways",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListAiGatewaysRequest",
 }) as any as S.Schema<ListAiGatewaysRequest>;
@@ -5041,7 +5209,7 @@ export const ListAiGatewaysResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: ListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListAiGatewaysResponse",
 }) as any as S.Schema<ListAiGatewaysResponse>;
@@ -5063,13 +5231,15 @@ export const ListCustomProvidersRequest = /*@__PURE__*/ S.suspend(() =>
     page: S.optional(S.Number.pipe(T.Query())),
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
     search: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/ai-gateway/custom-providers",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/ai-gateway/custom-providers",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListCustomProvidersRequest",
 }) as any as S.Schema<ListCustomProvidersRequest>;
@@ -5128,7 +5298,7 @@ export const ListCustomProvidersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: CustomProvidersListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListCustomProvidersResponse",
 }) as any as S.Schema<ListCustomProvidersResponse>;
@@ -5153,13 +5323,15 @@ export const ListDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
     page: S.optional(S.Number.pipe(T.Query())),
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
     search: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/ai-gateway/gateways/{gateway_id}/datasets",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/ai-gateway/gateways/{gateway_id}/datasets",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListDatasetsRequest",
 }) as any as S.Schema<ListDatasetsRequest>;
@@ -5261,7 +5433,7 @@ export const ListDatasetsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: DatasetsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListDatasetsResponse",
 }) as any as S.Schema<ListDatasetsResponse>;
@@ -5277,13 +5449,15 @@ export const ListDeploymentsDynamicRoutingRequest = /*@__PURE__*/ S.suspend(
       accountId: S.String.pipe(T.Label("account_id")),
       gatewayId: S.String.pipe(T.Label("gateway_id")),
       id: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/accounts/{account_id}/ai-gateway/gateways/{gateway_id}/routes/{id}/deployments",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "GET",
+          uri: "/accounts/{account_id}/ai-gateway/gateways/{gateway_id}/routes/{id}/deployments",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListDeploymentsDynamicRoutingRequest",
 }) as any as S.Schema<ListDeploymentsDynamicRoutingRequest>;
@@ -5339,7 +5513,7 @@ export const ListDeploymentsDynamicRoutingResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       data: DynamicRoutingListDeploymentsResponseData,
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListDeploymentsDynamicRoutingResponse",
 }) as any as S.Schema<ListDeploymentsDynamicRoutingResponse>;
@@ -5358,13 +5532,15 @@ export const ListDynamicRoutingsRequest = /*@__PURE__*/ S.suspend(() =>
     gatewayId: S.String.pipe(T.Label("gateway_id")),
     page: S.optional(S.Number.pipe(T.Query())),
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/ai-gateway/gateways/{gateway_id}/routes",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/ai-gateway/gateways/{gateway_id}/routes",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListDynamicRoutingsRequest",
 }) as any as S.Schema<ListDynamicRoutingsRequest>;
@@ -5513,7 +5689,7 @@ export interface ListDynamicRoutingsResponse {
 export const ListDynamicRoutingsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: DynamicRoutingListResponseData,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListDynamicRoutingsResponse",
 }) as any as S.Schema<ListDynamicRoutingsResponse>;
@@ -5538,13 +5714,15 @@ export const ListEvaluationsRequest = /*@__PURE__*/ S.suspend(() =>
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
     processed: S.optional(S.Boolean.pipe(T.Query())),
     search: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/ai-gateway/gateways/{gateway_id}/evaluations",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/ai-gateway/gateways/{gateway_id}/evaluations",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListEvaluationsRequest",
 }) as any as S.Schema<ListEvaluationsRequest>;
@@ -5724,7 +5902,7 @@ export const ListEvaluationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: EvaluationsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListEvaluationsResponse",
 }) as any as S.Schema<ListEvaluationsResponse>;
@@ -5754,13 +5932,15 @@ export const ListEvaluationTypesRequest = /*@__PURE__*/ S.suspend(() =>
     ),
     page: S.optional(S.Number.pipe(T.Query())),
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/ai-gateway/evaluation-types",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/ai-gateway/evaluation-types",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListEvaluationTypesRequest",
 }) as any as S.Schema<ListEvaluationTypesRequest>;
@@ -5805,7 +5985,7 @@ export const ListEvaluationTypesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: EvaluationTypesListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListEvaluationTypesResponse",
 }) as any as S.Schema<ListEvaluationTypesResponse>;
@@ -5899,13 +6079,15 @@ export const ListLogsRequest = /*@__PURE__*/ S.suspend(() =>
     search: S.optional(S.String.pipe(T.Query())),
     startDate: S.optional(S.String.pipe(T.Query("start_date"))),
     success: S.optional(S.Boolean.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/ai-gateway/gateways/{gateway_id}/logs",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/ai-gateway/gateways/{gateway_id}/logs",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListLogsRequest",
 }) as any as S.Schema<ListLogsRequest>;
@@ -5976,7 +6158,7 @@ export const ListLogsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: LogsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListLogsResponse",
 }) as any as S.Schema<ListLogsResponse>;
@@ -5994,13 +6176,15 @@ export const ListProviderConfigsRequest = /*@__PURE__*/ S.suspend(() =>
     gatewayId: S.String.pipe(T.Label("gateway_id")),
     page: S.optional(S.Number.pipe(T.Query())),
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/ai-gateway/gateways/{gateway_id}/provider_configs",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/ai-gateway/gateways/{gateway_id}/provider_configs",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListProviderConfigsRequest",
 }) as any as S.Schema<ListProviderConfigsRequest>;
@@ -6050,7 +6234,7 @@ export const ListProviderConfigsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: ProviderConfigsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListProviderConfigsResponse",
 }) as any as S.Schema<ListProviderConfigsResponse>;
@@ -6065,13 +6249,15 @@ export const ListVersionsDynamicRoutingRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     gatewayId: S.String.pipe(T.Label("gateway_id")),
     id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/ai-gateway/gateways/{gateway_id}/routes/{id}/versions",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/ai-gateway/gateways/{gateway_id}/routes/{id}/versions",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListVersionsDynamicRoutingRequest",
 }) as any as S.Schema<ListVersionsDynamicRoutingRequest>;
@@ -6137,7 +6323,7 @@ export interface ListVersionsDynamicRoutingResponse {
 export const ListVersionsDynamicRoutingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: DynamicRoutingListVersionsResponseData,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListVersionsDynamicRoutingResponse",
 }) as any as S.Schema<ListVersionsDynamicRoutingResponse>;
@@ -6154,13 +6340,15 @@ export const PatchDynamicRoutingRequest = /*@__PURE__*/ S.suspend(() =>
     gatewayId: S.String.pipe(T.Label("gateway_id")),
     id: S.String.pipe(T.Label()),
     name: S.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/accounts/{account_id}/ai-gateway/gateways/{gateway_id}/routes/{id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/accounts/{account_id}/ai-gateway/gateways/{gateway_id}/routes/{id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchDynamicRoutingRequest",
 }) as any as S.Schema<PatchDynamicRoutingRequest>;
@@ -6283,7 +6471,7 @@ export interface PatchDynamicRoutingResponse {
 export const PatchDynamicRoutingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     route: DynamicRoutingUpdateResponseRoute,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchDynamicRoutingResponse",
 }) as any as S.Schema<PatchDynamicRoutingResponse>;
@@ -6311,13 +6499,15 @@ export const PatchLogRequest = /*@__PURE__*/ S.suspend(() =>
     feedback: S.optional(S.Number),
     metadata: S.optional(LogsEditRequestMetadataMap),
     score: S.optional(S.Number),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/accounts/{account_id}/ai-gateway/gateways/{gateway_id}/logs/{id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/accounts/{account_id}/ai-gateway/gateways/{gateway_id}/logs/{id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchLogRequest",
 }) as any as S.Schema<PatchLogRequest>;
@@ -6329,7 +6519,7 @@ export interface PatchLogResponse {
 export const PatchLogResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchLogResponse",
 }) as any as S.Schema<PatchLogResponse>;
@@ -6345,20 +6535,22 @@ export const RequestLogRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     gatewayId: S.String.pipe(T.Label("gateway_id")),
     id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/ai-gateway/gateways/{gateway_id}/logs/{id}/request",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/ai-gateway/gateways/{gateway_id}/logs/{id}/request",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "RequestLogRequest",
 }) as any as S.Schema<RequestLogRequest>;
 
 export interface RequestLogResponse {}
 export const RequestLogResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
+  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "RequestLogResponse",
 }) as any as S.Schema<RequestLogResponse>;
@@ -6374,20 +6566,22 @@ export const ResponseLogRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     gatewayId: S.String.pipe(T.Label("gateway_id")),
     id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/ai-gateway/gateways/{gateway_id}/logs/{id}/response",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/ai-gateway/gateways/{gateway_id}/logs/{id}/response",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ResponseLogRequest",
 }) as any as S.Schema<ResponseLogRequest>;
 
 export interface ResponseLogResponse {}
 export const ResponseLogResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
+  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ResponseLogResponse",
 }) as any as S.Schema<ResponseLogResponse>;
@@ -6401,13 +6595,15 @@ export const StatusBillingTopupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     paymentIntentId: S.String.pipe(T.Body("payment_intent_id")),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/ai-gateway/billing/topup/status",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/ai-gateway/billing/topup/status",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "StatusBillingTopupRequest",
 }) as any as S.Schema<StatusBillingTopupRequest>;
@@ -6427,7 +6623,7 @@ export const StatusBillingTopupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     paymentIntentId: S.String.pipe(T.Body("payment_intent_id")),
     status: BillingTopupStatusResponseStatus,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "StatusBillingTopupResponse",
 }) as any as S.Schema<StatusBillingTopupResponse>;
@@ -6945,13 +7141,15 @@ export const UpdateAiGatewayRequest = /*@__PURE__*/ S.suspend(() =>
       UpdateRequestWorkersAiBillingMode.pipe(T.Body("workers_ai_billing_mode")),
     ),
     zdr: S.optional(S.Boolean),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/ai-gateway/gateways/{id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/ai-gateway/gateways/{id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateAiGatewayRequest",
 }) as any as S.Schema<UpdateAiGatewayRequest>;
@@ -7490,7 +7688,7 @@ export const UpdateAiGatewayResponse = /*@__PURE__*/ S.suspend(() =>
       ),
     ),
     zdr: S.optional(S.Boolean),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateAiGatewayResponse",
 }) as any as S.Schema<UpdateAiGatewayResponse>;
@@ -7570,13 +7768,15 @@ export const UpdateDatasetRequest = /*@__PURE__*/ S.suspend(() =>
     enable: S.Boolean,
     filters: DatasetsUpdateRequestFiltersList,
     name: S.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/ai-gateway/gateways/{gateway_id}/datasets/{id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/ai-gateway/gateways/{gateway_id}/datasets/{id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateDatasetRequest",
 }) as any as S.Schema<UpdateDatasetRequest>;
@@ -7659,7 +7859,7 @@ export const UpdateDatasetResponse = /*@__PURE__*/ S.suspend(() =>
     gatewayId: S.String.pipe(T.Body("gateway_id")),
     modifiedAt: S.String.pipe(T.Body("modified_at")),
     name: S.String,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateDatasetResponse",
 }) as any as S.Schema<UpdateDatasetResponse>;
@@ -7688,13 +7888,15 @@ export const UsageHistoryBillingRequest = /*@__PURE__*/ S.suspend(() =>
     ),
     endTime: S.optional(S.Number.pipe(T.Query("end_time"))),
     startTime: S.optional(S.Number.pipe(T.Query("start_time"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/ai-gateway/billing/usage-history",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/ai-gateway/billing/usage-history",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UsageHistoryBillingRequest",
 }) as any as S.Schema<UsageHistoryBillingRequest>;
@@ -7730,7 +7932,7 @@ export interface UsageHistoryBillingResponse {
 export const UsageHistoryBillingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     history: BillingUsageHistoryResponseHistoryList,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UsageHistoryBillingResponse",
 }) as any as S.Schema<UsageHistoryBillingResponse>;

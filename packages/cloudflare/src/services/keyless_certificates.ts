@@ -14,6 +14,15 @@ import * as Retry from "../retry.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
+/** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
+const KEY_DICTIONARY: Record<string, string> = {
+  bundleMethod: "bundle_method",
+  createdOn: "created_on",
+  modifiedOn: "modified_on",
+  privateIp: "private_ip",
+  vnetId: "vnet_id",
+};
+
 export class Forbidden extends T.applyErrorMatchers(
   S.TaggedErrorClass<Forbidden>()("Forbidden", {
     code: S.Number,
@@ -81,13 +90,15 @@ export const CreateKeylessCertificateRequest = /*@__PURE__*/ S.suspend(() =>
     bundleMethod: S.optional(S.Unknown.pipe(T.Body("bundle_method"))),
     name: S.optional(S.String),
     tunnel: S.optional(CreateRequestTunnel),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/zones/{zone_id}/keyless_certificates",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/zones/{zone_id}/keyless_certificates",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateKeylessCertificateRequest",
 }) as any as S.Schema<CreateKeylessCertificateRequest>;
@@ -150,7 +161,7 @@ export const CreateKeylessCertificateResponse = /*@__PURE__*/ S.suspend(() =>
     port: S.Number,
     status: CreateResponseStatus,
     tunnel: S.optional(CreateResponseTunnel),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateKeylessCertificateResponse",
 }) as any as S.Schema<CreateKeylessCertificateResponse>;
@@ -165,13 +176,15 @@ export const DeleteKeylessCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     keylessCertificateId: S.String.pipe(T.Label("keyless_certificate_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/zones/{zone_id}/keyless_certificates/{keyless_certificate_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/zones/{zone_id}/keyless_certificates/{keyless_certificate_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteKeylessCertificateRequest",
 }) as any as S.Schema<DeleteKeylessCertificateRequest>;
@@ -184,7 +197,7 @@ export interface DeleteKeylessCertificateResponse {
 export const DeleteKeylessCertificateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteKeylessCertificateResponse",
 }) as any as S.Schema<DeleteKeylessCertificateResponse>;
@@ -199,13 +212,15 @@ export const GetKeylessCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     keylessCertificateId: S.String.pipe(T.Label("keyless_certificate_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/keyless_certificates/{keyless_certificate_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/keyless_certificates/{keyless_certificate_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetKeylessCertificateRequest",
 }) as any as S.Schema<GetKeylessCertificateRequest>;
@@ -268,7 +283,7 @@ export const GetKeylessCertificateResponse = /*@__PURE__*/ S.suspend(() =>
     port: S.Number,
     status: GetResponseStatus,
     tunnel: S.optional(GetResponseTunnel),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetKeylessCertificateResponse",
 }) as any as S.Schema<GetKeylessCertificateResponse>;
@@ -280,13 +295,15 @@ export interface ListKeylessCertificatesRequest {
 export const ListKeylessCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/keyless_certificates",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/keyless_certificates",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListKeylessCertificatesRequest",
 }) as any as S.Schema<ListKeylessCertificatesRequest>;
@@ -366,7 +383,7 @@ export const ListKeylessCertificatesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: ListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListKeylessCertificatesResponse",
 }) as any as S.Schema<ListKeylessCertificatesResponse>;
@@ -411,13 +428,15 @@ export const PatchKeylessCertificateRequest = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     port: S.optional(S.Number),
     tunnel: S.optional(EditRequestTunnel),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/zones/{zone_id}/keyless_certificates/{keyless_certificate_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/zones/{zone_id}/keyless_certificates/{keyless_certificate_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchKeylessCertificateRequest",
 }) as any as S.Schema<PatchKeylessCertificateRequest>;
@@ -480,7 +499,7 @@ export const PatchKeylessCertificateResponse = /*@__PURE__*/ S.suspend(() =>
     port: S.Number,
     status: EditResponseStatus,
     tunnel: S.optional(EditResponseTunnel),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchKeylessCertificateResponse",
 }) as any as S.Schema<PatchKeylessCertificateResponse>;

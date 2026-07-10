@@ -14,6 +14,25 @@ import * as Retry from "../retry.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
+/** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
+const KEY_DICTIONARY: Record<string, string> = {
+  createdOn: "created_on",
+  excludeExactHostname: "exclude_exact_hostname",
+  includeSubdomains: "include_subdomains",
+  modifiedOn: "modified_on",
+  numItems: "num_items",
+  numReferencingFilters: "num_referencing_filters",
+  operationId: "operation_id",
+  preservePathSuffix: "preserve_path_suffix",
+  preserveQueryString: "preserve_query_string",
+  resultInfo: "result_info",
+  sourceUrl: "source_url",
+  statusCode: "status_code",
+  subpathMatching: "subpath_matching",
+  targetUrl: "target_url",
+  urlHostname: "url_hostname",
+};
+
 export class Forbidden extends T.applyErrorMatchers(
   S.TaggedErrorClass<Forbidden>()("Forbidden", {
     code: S.Number,
@@ -62,13 +81,15 @@ export const CreateListRequest = /*@__PURE__*/ S.suspend(() =>
     kind: ListsCreateRequestKind,
     name: S.String,
     description: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/rules/lists",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/rules/lists",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateListRequest",
 }) as any as S.Schema<CreateListRequest>;
@@ -110,7 +131,7 @@ export const CreateListResponse = /*@__PURE__*/ S.suspend(() =>
     numItems: S.Number.pipe(T.Body("num_items")),
     numReferencingFilters: S.Number.pipe(T.Body("num_referencing_filters")),
     description: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateListResponse",
 }) as any as S.Schema<CreateListResponse>;
@@ -157,13 +178,15 @@ export const CreateListItemRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     listId: S.String.pipe(T.Label("list_id")),
     body: ListsItemsCreateRequestBodyList,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/rules/lists/{list_id}/items",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/rules/lists/{list_id}/items",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateListItemRequest",
 }) as any as S.Schema<CreateListItemRequest>;
@@ -176,7 +199,7 @@ export interface CreateListItemResponse {
 export const CreateListItemResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     operationId: S.String.pipe(T.Body("operation_id")),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateListItemResponse",
 }) as any as S.Schema<CreateListItemResponse>;
@@ -191,13 +214,15 @@ export const DeleteListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     listId: S.String.pipe(T.Label("list_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/rules/lists/{list_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/rules/lists/{list_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteListRequest",
 }) as any as S.Schema<DeleteListRequest>;
@@ -210,7 +235,7 @@ export interface DeleteListResponse {
 export const DeleteListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteListResponse",
 }) as any as S.Schema<DeleteListResponse>;
@@ -245,13 +270,15 @@ export const DeleteListItemRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     listId: S.String.pipe(T.Label("list_id")),
     items: S.optional(ListsItemsDeleteRequestItemsList),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/rules/lists/{list_id}/items",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/rules/lists/{list_id}/items",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteListItemRequest",
 }) as any as S.Schema<DeleteListItemRequest>;
@@ -264,7 +291,7 @@ export interface DeleteListItemResponse {
 export const DeleteListItemResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     operationId: S.String.pipe(T.Body("operation_id")),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteListItemResponse",
 }) as any as S.Schema<DeleteListItemResponse>;
@@ -279,13 +306,15 @@ export const GetListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     listId: S.String.pipe(T.Label("list_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/rules/lists/{list_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/rules/lists/{list_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "GetListRequest" }) as any as S.Schema<GetListRequest>;
 
 export type ListsGetResponseKind =
@@ -325,7 +354,7 @@ export const GetListResponse = /*@__PURE__*/ S.suspend(() =>
     numItems: S.Number.pipe(T.Body("num_items")),
     numReferencingFilters: S.Number.pipe(T.Body("num_referencing_filters")),
     description: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetListResponse",
 }) as any as S.Schema<GetListResponse>;
@@ -340,13 +369,15 @@ export const GetListBulkOperationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     operationId: S.String.pipe(T.Label("operation_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/rules/lists/bulk_operations/{operation_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/rules/lists/bulk_operations/{operation_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetListBulkOperationRequest",
 }) as any as S.Schema<GetListBulkOperationRequest>;
@@ -370,7 +401,7 @@ export const GetListBulkOperationResponse = /*@__PURE__*/ S.suspend(() =>
         "ListsBulkOperationFailed object { id, completed, error, status }",
       ),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetListBulkOperationResponse",
 }) as any as S.Schema<GetListBulkOperationResponse>;
@@ -388,13 +419,15 @@ export const GetListItemRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     listId: S.String.pipe(T.Label("list_id")),
     itemId: S.String.pipe(T.Label("item_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/rules/lists/{list_id}/items/{item_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/rules/lists/{list_id}/items/{item_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetListItemRequest",
 }) as any as S.Schema<GetListItemRequest>;
@@ -424,7 +457,7 @@ export const GetListItemResponse = /*@__PURE__*/ S.suspend(() =>
     ListsListItemASNFullObjectIdAsnCreatedOn2More__: S.Unknown.pipe(
       T.Body("ListsListItemASNFull object { id, asn, created_on, 2 more }"),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetListItemResponse",
 }) as any as S.Schema<GetListItemResponse>;
@@ -448,13 +481,15 @@ export const ListListItemsRequest = /*@__PURE__*/ S.suspend(() =>
     cursor: S.optional(S.String.pipe(T.Query())),
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
     search: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/rules/lists/{list_id}/items",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/rules/lists/{list_id}/items",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListListItemsRequest",
 }) as any as S.Schema<ListListItemsRequest>;
@@ -503,7 +538,7 @@ export const ListListItemsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: ListsItemsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListListItemsResponse",
 }) as any as S.Schema<ListListItemsResponse>;
@@ -515,13 +550,15 @@ export interface ListListsRequest {
 export const ListListsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/rules/lists",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/rules/lists",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListListsRequest",
 }) as any as S.Schema<ListListsRequest>;
@@ -582,7 +619,7 @@ export const ListListsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: ListsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListListsResponse",
 }) as any as S.Schema<ListListsResponse>;
@@ -600,13 +637,15 @@ export const UpdateListRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     listId: S.String.pipe(T.Label("list_id")),
     description: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/rules/lists/{list_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/rules/lists/{list_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateListRequest",
 }) as any as S.Schema<UpdateListRequest>;
@@ -648,7 +687,7 @@ export const UpdateListResponse = /*@__PURE__*/ S.suspend(() =>
     numItems: S.Number.pipe(T.Body("num_items")),
     numReferencingFilters: S.Number.pipe(T.Body("num_referencing_filters")),
     description: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateListResponse",
 }) as any as S.Schema<UpdateListResponse>;
@@ -695,13 +734,15 @@ export const UpdateListItemRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     listId: S.String.pipe(T.Label("list_id")),
     body: ListsItemsUpdateRequestBodyList,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/rules/lists/{list_id}/items",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/rules/lists/{list_id}/items",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateListItemRequest",
 }) as any as S.Schema<UpdateListItemRequest>;
@@ -714,7 +755,7 @@ export interface UpdateListItemResponse {
 export const UpdateListItemResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     operationId: S.String.pipe(T.Body("operation_id")),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateListItemResponse",
 }) as any as S.Schema<UpdateListItemResponse>;

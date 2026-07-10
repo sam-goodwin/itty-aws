@@ -12,6 +12,13 @@ import * as Retry from "../retry.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
+/** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
+const KEY_DICTIONARY: Record<string, string> = {
+  perPage: "per_page",
+  resultInfo: "result_info",
+  totalCount: "total_count",
+};
+
 export type ListRequestDirection = "desc" | "asc" | (string & {});
 export const ListRequestDirection = /*@__PURE__*/ S.String;
 
@@ -52,13 +59,15 @@ export const ListAuditLogsRequest = /*@__PURE__*/ S.suspend(() =>
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
     since: S.optional(S.String.pipe(T.Query())),
     zone: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/audit_logs",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/audit_logs",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListAuditLogsRequest",
 }) as any as S.Schema<ListAuditLogsRequest>;
@@ -76,7 +85,7 @@ export const ListAuditLogsResponse = /*@__PURE__*/ S.suspend(() =>
     AaaAPIResponseCommonObjectErrorsMessagesSuccess__: S.Unknown.pipe(
       T.Body("AaaAPIResponseCommon object { errors, messages, success }"),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListAuditLogsResponse",
 }) as any as S.Schema<ListAuditLogsResponse>;

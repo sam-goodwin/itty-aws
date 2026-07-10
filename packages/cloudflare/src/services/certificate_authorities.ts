@@ -12,6 +12,11 @@ import * as Retry from "../retry.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
+/** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
+const KEY_DICTIONARY: Record<string, string> = {
+  mtlsCertificateId: "mtls_certificate_id",
+};
+
 export class Forbidden extends T.applyErrorMatchers(
   S.TaggedErrorClass<Forbidden>()("Forbidden", {
     code: S.Number,
@@ -32,13 +37,15 @@ export const GetHostnameAssociationRequest = /*@__PURE__*/ S.suspend(() =>
     mtlsCertificateId: S.optional(
       S.String.pipe(T.Query("mtls_certificate_id")),
     ),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/certificate_authorities/hostname_associations",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/certificate_authorities/hostname_associations",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetHostnameAssociationRequest",
 }) as any as S.Schema<GetHostnameAssociationRequest>;
@@ -56,7 +63,7 @@ export interface GetHostnameAssociationResponse {
 export const GetHostnameAssociationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hostnames: S.optional(HostnameAssociationsGetResponseHostnamesList),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetHostnameAssociationResponse",
 }) as any as S.Schema<GetHostnameAssociationResponse>;
@@ -79,13 +86,15 @@ export const PutHostnameAssociationRequest = /*@__PURE__*/ S.suspend(() =>
     zoneId: S.String.pipe(T.Label("zone_id")),
     hostnames: S.optional(HostnameAssociationsUpdateRequestHostnamesList),
     mtlsCertificateId: S.optional(S.String.pipe(T.Body("mtls_certificate_id"))),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/zones/{zone_id}/certificate_authorities/hostname_associations",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/zones/{zone_id}/certificate_authorities/hostname_associations",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutHostnameAssociationRequest",
 }) as any as S.Schema<PutHostnameAssociationRequest>;
@@ -103,7 +112,7 @@ export interface PutHostnameAssociationResponse {
 export const PutHostnameAssociationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hostnames: S.optional(HostnameAssociationsUpdateResponseHostnamesList),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutHostnameAssociationResponse",
 }) as any as S.Schema<PutHostnameAssociationResponse>;

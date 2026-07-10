@@ -14,6 +14,20 @@ import * as Retry from "../retry.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
+/** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
+const KEY_DICTIONARY: Record<string, string> = {
+  automaticAdvertisement: "automatic_advertisement",
+  bandwidthThreshold: "bandwidth_threshold",
+  defaultSampling: "default_sampling",
+  packetThreshold: "packet_threshold",
+  prefixMatch: "prefix_match",
+  routerIp: "router_ip",
+  routerIps: "router_ips",
+  warpDevices: "warp_devices",
+  zscoreSensitivity: "zscore_sensitivity",
+  zscoreTarget: "zscore_target",
+};
+
 export class DuplicateMnmRuleName extends T.applyErrorMatchers(
   S.TaggedErrorClass<DuplicateMnmRuleName>()("DuplicateMnmRuleName", {
     code: S.Number,
@@ -124,13 +138,15 @@ export const CreateConfigRequest = /*@__PURE__*/ S.suspend(() =>
     warpDevices: S.optional(
       ConfigsCreateRequestWarpDevicesList.pipe(T.Body("warp_devices")),
     ),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/mnm/config",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/mnm/config",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateConfigRequest",
 }) as any as S.Schema<CreateConfigRequest>;
@@ -182,7 +198,7 @@ export const CreateConfigResponse = /*@__PURE__*/ S.suspend(() =>
     warpDevices: ConfigsCreateResponseWarpDevicesList.pipe(
       T.Body("warp_devices"),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateConfigResponse",
 }) as any as S.Schema<CreateConfigResponse>;
@@ -262,13 +278,15 @@ export const CreateRuleRequest = /*@__PURE__*/ S.suspend(() =>
     zscoreTarget: S.optional(
       RulesCreateRequestZscoreTarget.pipe(T.Body("zscore_target")),
     ),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/mnm/rules",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/mnm/rules",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateRuleRequest",
 }) as any as S.Schema<CreateRuleRequest>;
@@ -353,7 +371,7 @@ export const CreateRuleResponse = /*@__PURE__*/ S.suspend(() =>
     zscoreTarget: S.optional(
       RulesCreateResponseZscoreTarget.pipe(T.Body("zscore_target")),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateRuleResponse",
 }) as any as S.Schema<CreateRuleResponse>;
@@ -364,13 +382,15 @@ export interface CreateVpcFlowTokenRequest {
 export const CreateVpcFlowTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/mnm/vpc-flows/token",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/mnm/vpc-flows/token",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateVpcFlowTokenRequest",
 }) as any as S.Schema<CreateVpcFlowTokenRequest>;
@@ -382,7 +402,7 @@ export interface CreateVpcFlowTokenResponse {
 export const CreateVpcFlowTokenResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(S.String.pipe(T.EnvelopePayload())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateVpcFlowTokenResponse",
 }) as any as S.Schema<CreateVpcFlowTokenResponse>;
@@ -393,13 +413,15 @@ export interface DeleteConfigRequest {
 export const DeleteConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/mnm/config",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/mnm/config",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteConfigRequest",
 }) as any as S.Schema<DeleteConfigRequest>;
@@ -451,7 +473,7 @@ export const DeleteConfigResponse = /*@__PURE__*/ S.suspend(() =>
     warpDevices: ConfigsDeleteResponseWarpDevicesList.pipe(
       T.Body("warp_devices"),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteConfigResponse",
 }) as any as S.Schema<DeleteConfigResponse>;
@@ -465,13 +487,15 @@ export const DeleteRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     ruleId: S.String.pipe(T.Label("rule_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/mnm/rules/{rule_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/mnm/rules/{rule_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteRuleRequest",
 }) as any as S.Schema<DeleteRuleRequest>;
@@ -556,7 +580,7 @@ export const DeleteRuleResponse = /*@__PURE__*/ S.suspend(() =>
     zscoreTarget: S.optional(
       RulesDeleteResponseZscoreTarget.pipe(T.Body("zscore_target")),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteRuleResponse",
 }) as any as S.Schema<DeleteRuleResponse>;
@@ -567,13 +591,15 @@ export interface GetConfigRequest {
 export const GetConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/mnm/config",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/mnm/config",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetConfigRequest",
 }) as any as S.Schema<GetConfigRequest>;
@@ -622,7 +648,7 @@ export const GetConfigResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.String,
     routerIps: ConfigsGetResponseRouterIpsList.pipe(T.Body("router_ips")),
     warpDevices: ConfigsGetResponseWarpDevicesList.pipe(T.Body("warp_devices")),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetConfigResponse",
 }) as any as S.Schema<GetConfigResponse>;
@@ -633,13 +659,15 @@ export interface GetConfigFullRequest {
 export const GetConfigFullRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/mnm/config/full",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/mnm/config/full",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetConfigFullRequest",
 }) as any as S.Schema<GetConfigFullRequest>;
@@ -691,7 +719,7 @@ export const GetConfigFullResponse = /*@__PURE__*/ S.suspend(() =>
     warpDevices: ConfigsFullGetResponseWarpDevicesList.pipe(
       T.Body("warp_devices"),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetConfigFullResponse",
 }) as any as S.Schema<GetConfigFullResponse>;
@@ -705,13 +733,15 @@ export const GetRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     ruleId: S.String.pipe(T.Label("rule_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/mnm/rules/{rule_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/mnm/rules/{rule_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "GetRuleRequest" }) as any as S.Schema<GetRuleRequest>;
 
 export type RulesGetResponsePrefixesList = string[];
@@ -791,7 +821,7 @@ export const GetRuleResponse = /*@__PURE__*/ S.suspend(() =>
     zscoreTarget: S.optional(
       RulesGetResponseZscoreTarget.pipe(T.Body("zscore_target")),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetRuleResponse",
 }) as any as S.Schema<GetRuleResponse>;
@@ -802,13 +832,15 @@ export interface ListRulesRequest {
 export const ListRulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/mnm/rules",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/mnm/rules",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListRulesRequest",
 }) as any as S.Schema<ListRulesRequest>;
@@ -912,7 +944,7 @@ export const ListRulesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: RulesListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListRulesResponse",
 }) as any as S.Schema<ListRulesResponse>;
@@ -966,13 +998,15 @@ export const PatchConfigRequest = /*@__PURE__*/ S.suspend(() =>
     warpDevices: S.optional(
       ConfigsEditRequestWarpDevicesList.pipe(T.Body("warp_devices")),
     ),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/accounts/{account_id}/mnm/config",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/accounts/{account_id}/mnm/config",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchConfigRequest",
 }) as any as S.Schema<PatchConfigRequest>;
@@ -1023,7 +1057,7 @@ export const PatchConfigResponse = /*@__PURE__*/ S.suspend(() =>
     warpDevices: ConfigsEditResponseWarpDevicesList.pipe(
       T.Body("warp_devices"),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchConfigResponse",
 }) as any as S.Schema<PatchConfigResponse>;
@@ -1106,13 +1140,15 @@ export const PatchRuleRequest = /*@__PURE__*/ S.suspend(() =>
     zscoreTarget: S.optional(
       RulesEditRequestZscoreTarget.pipe(T.Body("zscore_target")),
     ),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/accounts/{account_id}/mnm/rules/{rule_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/accounts/{account_id}/mnm/rules/{rule_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchRuleRequest",
 }) as any as S.Schema<PatchRuleRequest>;
@@ -1194,7 +1230,7 @@ export const PatchRuleResponse = /*@__PURE__*/ S.suspend(() =>
     zscoreTarget: S.optional(
       RulesEditResponseZscoreTarget.pipe(T.Body("zscore_target")),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchRuleResponse",
 }) as any as S.Schema<PatchRuleResponse>;
@@ -1210,13 +1246,15 @@ export const PatchRuleAdvertisementRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     ruleId: S.String.pipe(T.Label("rule_id")),
     body: S.Unknown,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/accounts/{account_id}/mnm/rules/{rule_id}/advertisement",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/accounts/{account_id}/mnm/rules/{rule_id}/advertisement",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchRuleAdvertisementRequest",
 }) as any as S.Schema<PatchRuleAdvertisementRequest>;
@@ -1229,7 +1267,7 @@ export interface PatchRuleAdvertisementResponse {
 export const PatchRuleAdvertisementResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     automaticAdvertisement: S.Boolean.pipe(T.Body("automatic_advertisement")),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchRuleAdvertisementResponse",
 }) as any as S.Schema<PatchRuleAdvertisementResponse>;
@@ -1283,13 +1321,15 @@ export const UpdateConfigRequest = /*@__PURE__*/ S.suspend(() =>
     warpDevices: S.optional(
       ConfigsUpdateRequestWarpDevicesList.pipe(T.Body("warp_devices")),
     ),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/mnm/config",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/mnm/config",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateConfigRequest",
 }) as any as S.Schema<UpdateConfigRequest>;
@@ -1341,7 +1381,7 @@ export const UpdateConfigResponse = /*@__PURE__*/ S.suspend(() =>
     warpDevices: ConfigsUpdateResponseWarpDevicesList.pipe(
       T.Body("warp_devices"),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateConfigResponse",
 }) as any as S.Schema<UpdateConfigResponse>;
@@ -1421,13 +1461,15 @@ export const UpdateRuleRequest = /*@__PURE__*/ S.suspend(() =>
     zscoreTarget: S.optional(
       RulesUpdateRequestZscoreTarget.pipe(T.Body("zscore_target")),
     ),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/mnm/rules",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/mnm/rules",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateRuleRequest",
 }) as any as S.Schema<UpdateRuleRequest>;
@@ -1512,7 +1554,7 @@ export const UpdateRuleResponse = /*@__PURE__*/ S.suspend(() =>
     zscoreTarget: S.optional(
       RulesUpdateResponseZscoreTarget.pipe(T.Body("zscore_target")),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateRuleResponse",
 }) as any as S.Schema<UpdateRuleResponse>;

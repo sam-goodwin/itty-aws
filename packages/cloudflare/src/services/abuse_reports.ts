@@ -14,6 +14,44 @@ import * as Retry from "../retry.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
+/** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
+const KEY_DICTIONARY: Record<string, string> = {
+  acceptedUrlCount: "accepted_url_count",
+  activeCount: "active_count",
+  agentName: "agent_name",
+  destinationIps: "destination_ips",
+  effectiveDate: "effective_date",
+  entityId: "entity_id",
+  entityType: "entity_type",
+  externalHostNotified: "external_host_notified",
+  hostNotification: "host_notification",
+  inReviewCount: "in_review_count",
+  mitigationSummary: "mitigation_summary",
+  ncmecNotification: "ncmec_notification",
+  ncseiSubjectRepresentation: "ncsei_subject_representation",
+  originalWork: "original_work",
+  ownerNotification: "owner_notification",
+  pendingCount: "pending_count",
+  perPage: "per_page",
+  portsProtocols: "ports_protocols",
+  regWhoAuthorizationStatement: "reg_who_authorization_statement",
+  regWhoGoodFaithAffirmation: "reg_who_good_faith_affirmation",
+  regWhoLawfulProcessingAgreement: "reg_who_lawful_processing_agreement",
+  regWhoLegalBasis: "reg_who_legal_basis",
+  regWhoRequest: "reg_who_request",
+  regWhoRequestType: "reg_who_request_type",
+  regWhoRequestedDataElements: "reg_who_requested_data_elements",
+  regWhoRequestorType: "reg_who_requestor_type",
+  reportedCountry: "reported_country",
+  reportedUserAgent: "reported_user_agent",
+  resultInfo: "result_info",
+  sourceIps: "source_ips",
+  totalCount: "total_count",
+  trademarkNumber: "trademark_number",
+  trademarkOffice: "trademark_office",
+  trademarkSymbol: "trademark_symbol",
+};
+
 export class InvalidAccountId extends T.applyErrorMatchers(
   S.TaggedErrorClass<InvalidAccountId>()("InvalidAccountId", {
     code: S.Number,
@@ -82,13 +120,15 @@ export const CreateAbuseReportRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     reportParam: S.String.pipe(T.Label("report_param")),
     body: CreateRequestBody,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/abuse-reports/{report_param}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/abuse-reports/{report_param}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateAbuseReportRequest",
 }) as any as S.Schema<CreateAbuseReportRequest>;
@@ -100,7 +140,7 @@ export interface CreateAbuseReportResponse {
 export const CreateAbuseReportResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(S.String.pipe(T.EnvelopePayload())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateAbuseReportResponse",
 }) as any as S.Schema<CreateAbuseReportResponse>;
@@ -113,13 +153,15 @@ export const GetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     reportParam: S.String.pipe(T.Label("report_param")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/abuse-reports/{report_param}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/abuse-reports/{report_param}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "GetRequest" }) as any as S.Schema<GetRequest>;
 
 export interface GetResponseMitigationSummary {
@@ -210,7 +252,7 @@ export const GetResponse = /*@__PURE__*/ S.suspend(() =>
     originalWork: S.optional(S.String.pipe(T.Body("original_work"))),
     submitter: S.optional(GetResponseSubmitter),
     urls: S.optional(GetResponseUrlsList),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "GetResponse" }) as any as S.Schema<GetResponse>;
 
 export type ListRequestMitigationStatus =
@@ -261,13 +303,15 @@ export const ListAbuseReportsRequest = /*@__PURE__*/ S.suspend(() =>
     sort: S.optional(S.String.pipe(T.Query())),
     status: S.optional(ListRequestStatus.pipe(T.Query())),
     type: S.optional(ListRequestType.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/abuse-reports",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/abuse-reports",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListAbuseReportsRequest",
 }) as any as S.Schema<ListAbuseReportsRequest>;
@@ -384,7 +428,7 @@ export interface ListAbuseReportsResponse {
 export const ListAbuseReportsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reports: ListResponseReportsList,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListAbuseReportsResponse",
 }) as any as S.Schema<ListAbuseReportsResponse>;
@@ -451,13 +495,15 @@ export const ListMitigationsRequest = /*@__PURE__*/ S.suspend(() =>
     sort: S.optional(MitigationsListRequestSort.pipe(T.Query())),
     status: S.optional(MitigationsListRequestStatus.pipe(T.Query())),
     type: S.optional(MitigationsListRequestType.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/abuse-reports/{report_id}/mitigations",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/abuse-reports/{report_id}/mitigations",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListMitigationsRequest",
 }) as any as S.Schema<ListMitigationsRequest>;
@@ -528,7 +574,7 @@ export interface ListMitigationsResponse {
 export const ListMitigationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mitigations: MitigationsListResponseMitigationsList,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListMitigationsResponse",
 }) as any as S.Schema<ListMitigationsResponse>;
@@ -571,13 +617,15 @@ export const ReviewMitigationRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     reportId: S.String.pipe(T.Label("report_id")),
     appeals: MitigationsReviewRequestAppealsList,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/abuse-reports/{report_id}/mitigations/appeal",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/abuse-reports/{report_id}/mitigations/appeal",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ReviewMitigationRequest",
 }) as any as S.Schema<ReviewMitigationRequest>;
@@ -646,7 +694,7 @@ export const ReviewMitigationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: MitigationsReviewResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ReviewMitigationResponse",
 }) as any as S.Schema<ReviewMitigationResponse>;

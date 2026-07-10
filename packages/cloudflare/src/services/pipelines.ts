@@ -14,6 +14,42 @@ import * as Retry from "../retry.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
+/** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
+const KEY_DICTIONARY: Record<string, string> = {
+  accessKeyId: "access_key_id",
+  accountId: "account_id",
+  createdAt: "created_at",
+  decimalEncoding: "decimal_encoding",
+  destId: "dest_id",
+  edgeType: "edge_type",
+  failureReason: "failure_reason",
+  fileNaming: "file_naming",
+  fileSizeBytes: "file_size_bytes",
+  inactivitySeconds: "inactivity_seconds",
+  intervalSeconds: "interval_seconds",
+  keyType: "key_type",
+  maxBytes: "max_bytes",
+  maxDurationS: "max_duration_s",
+  maxRows: "max_rows",
+  metadataKey: "metadata_key",
+  modifiedAt: "modified_at",
+  nodeId: "node_id",
+  perPage: "per_page",
+  resultInfo: "result_info",
+  results: "result",
+  rollingPolicy: "rolling_policy",
+  rowGroupBytes: "row_group_bytes",
+  secretAccessKey: "secret_access_key",
+  sqlName: "sql_name",
+  srcId: "src_id",
+  tableName: "table_name",
+  timePattern: "time_pattern",
+  timestampFormat: "timestamp_format",
+  totalCount: "total_count",
+  valueType: "value_type",
+  workerBinding: "worker_binding",
+};
+
 export class InvalidSinkConfig extends T.applyErrorMatchers(
   S.TaggedErrorClass<InvalidSinkConfig>()("InvalidSinkConfig", {
     code: S.Number,
@@ -283,13 +319,15 @@ export const CreatePipelineRequest = /*@__PURE__*/ S.suspend(() =>
     destination: CreateRequestDestination,
     name: S.String,
     source: CreateRequestSourceList,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/pipelines",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/pipelines",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreatePipelineRequest",
 }) as any as S.Schema<CreatePipelineRequest>;
@@ -431,7 +469,7 @@ export const CreatePipelineResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.String,
     source: CreateResponseSourceList,
     version: S.Number,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreatePipelineResponse",
 }) as any as S.Schema<CreatePipelineResponse>;
@@ -591,13 +629,15 @@ export const CreateSinkRequest = /*@__PURE__*/ S.suspend(() =>
     config: S.optional(SinksCreateRequestConfig),
     format: S.optional(SinksCreateRequestFormat),
     schema: S.optional(SinksCreateRequestSchema),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/pipelines/v1/sinks",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/pipelines/v1/sinks",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateSinkRequest",
 }) as any as S.Schema<CreateSinkRequest>;
@@ -762,7 +802,7 @@ export const CreateSinkResponse = /*@__PURE__*/ S.suspend(() =>
     config: S.optional(SinksCreateResponseConfig),
     format: S.optional(SinksCreateResponseFormat),
     schema: S.optional(SinksCreateResponseSchema),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateSinkResponse",
 }) as any as S.Schema<CreateSinkResponse>;
@@ -942,13 +982,15 @@ export const CreateStreamRequest = /*@__PURE__*/ S.suspend(() =>
     workerBinding: S.optional(
       StreamsCreateRequestWorkerBinding.pipe(T.Body("worker_binding")),
     ),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/pipelines/v1/streams",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/pipelines/v1/streams",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateStreamRequest",
 }) as any as S.Schema<CreateStreamRequest>;
@@ -1139,7 +1181,7 @@ export const CreateStreamResponse = /*@__PURE__*/ S.suspend(() =>
     endpoint: S.optional(S.String),
     format: S.optional(StreamsCreateResponseFormat),
     schema: S.optional(StreamsCreateResponseSchema),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateStreamResponse",
 }) as any as S.Schema<CreateStreamResponse>;
@@ -1157,13 +1199,15 @@ export const CreateV1PipelineRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     name: S.String,
     sql: S.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/pipelines/v1/pipelines",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/pipelines/v1/pipelines",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateV1PipelineRequest",
 }) as any as S.Schema<CreateV1PipelineRequest>;
@@ -1189,7 +1233,7 @@ export const CreateV1PipelineResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.String,
     sql: S.String,
     status: S.String,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateV1PipelineResponse",
 }) as any as S.Schema<CreateV1PipelineResponse>;
@@ -1204,20 +1248,22 @@ export const DeletePipelineRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     pipelineName: S.String.pipe(T.Label("pipeline_name")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/pipelines/{pipeline_name}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/pipelines/{pipeline_name}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeletePipelineRequest",
 }) as any as S.Schema<DeletePipelineRequest>;
 
 export interface DeletePipelineResponse {}
 export const DeletePipelineResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
+  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeletePipelineResponse",
 }) as any as S.Schema<DeletePipelineResponse>;
@@ -1235,13 +1281,15 @@ export const DeleteSinkRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     sinkId: S.String.pipe(T.Label("sink_id")),
     force: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/pipelines/v1/sinks/{sink_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/pipelines/v1/sinks/{sink_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteSinkRequest",
 }) as any as S.Schema<DeleteSinkRequest>;
@@ -1253,7 +1301,7 @@ export interface DeleteSinkResponse {
 export const DeleteSinkResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteSinkResponse",
 }) as any as S.Schema<DeleteSinkResponse>;
@@ -1271,13 +1319,15 @@ export const DeleteStreamRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     streamId: S.String.pipe(T.Label("stream_id")),
     force: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/pipelines/v1/streams/{stream_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/pipelines/v1/streams/{stream_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteStreamRequest",
 }) as any as S.Schema<DeleteStreamRequest>;
@@ -1289,7 +1339,7 @@ export interface DeleteStreamResponse {
 export const DeleteStreamResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteStreamResponse",
 }) as any as S.Schema<DeleteStreamResponse>;
@@ -1304,13 +1354,15 @@ export const DeleteV1PipelineRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     pipelineId: S.String.pipe(T.Label("pipeline_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/pipelines/v1/pipelines/{pipeline_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/pipelines/v1/pipelines/{pipeline_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteV1PipelineRequest",
 }) as any as S.Schema<DeleteV1PipelineRequest>;
@@ -1322,7 +1374,7 @@ export interface DeleteV1PipelineResponse {
 export const DeleteV1PipelineResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteV1PipelineResponse",
 }) as any as S.Schema<DeleteV1PipelineResponse>;
@@ -1337,13 +1389,15 @@ export const GetPipelineRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     pipelineName: S.String.pipe(T.Label("pipeline_name")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/pipelines/{pipeline_name}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/pipelines/{pipeline_name}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetPipelineRequest",
 }) as any as S.Schema<GetPipelineRequest>;
@@ -1484,7 +1538,7 @@ export const GetPipelineResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.String,
     source: GetResponseSourceList,
     version: S.Number,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetPipelineResponse",
 }) as any as S.Schema<GetPipelineResponse>;
@@ -1499,13 +1553,15 @@ export const GetSinkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     sinkId: S.String.pipe(T.Label("sink_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/pipelines/v1/sinks/{sink_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/pipelines/v1/sinks/{sink_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "GetSinkRequest" }) as any as S.Schema<GetSinkRequest>;
 
 export type SinksGetResponseType = "r2" | "r2_data_catalog" | (string & {});
@@ -1669,7 +1725,7 @@ export const GetSinkResponse = /*@__PURE__*/ S.suspend(() =>
     config: S.optional(SinksGetResponseConfig),
     format: S.optional(SinksGetResponseFormat),
     schema: S.optional(SinksGetResponseSchema),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetSinkResponse",
 }) as any as S.Schema<GetSinkResponse>;
@@ -1684,13 +1740,15 @@ export const GetStreamRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     streamId: S.String.pipe(T.Label("stream_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/pipelines/v1/streams/{stream_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/pipelines/v1/streams/{stream_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetStreamRequest",
 }) as any as S.Schema<GetStreamRequest>;
@@ -1880,7 +1938,7 @@ export const GetStreamResponse = /*@__PURE__*/ S.suspend(() =>
     endpoint: S.optional(S.String),
     format: S.optional(StreamsGetResponseFormat),
     schema: S.optional(StreamsGetResponseSchema),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetStreamResponse",
 }) as any as S.Schema<GetStreamResponse>;
@@ -1895,13 +1953,15 @@ export const GetV1PipelineRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     pipelineId: S.String.pipe(T.Label("pipeline_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/pipelines/v1/pipelines/{pipeline_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/pipelines/v1/pipelines/{pipeline_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetV1PipelineRequest",
 }) as any as S.Schema<GetV1PipelineRequest>;
@@ -1965,7 +2025,7 @@ export const GetV1PipelineResponse = /*@__PURE__*/ S.suspend(() =>
     status: S.String,
     tables: GetV1ResponseTablesList,
     failureReason: S.optional(S.String.pipe(T.Body("failure_reason"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetV1PipelineResponse",
 }) as any as S.Schema<GetV1PipelineResponse>;
@@ -1986,13 +2046,15 @@ export const ListPipelinesRequest = /*@__PURE__*/ S.suspend(() =>
     page: S.optional(S.String.pipe(T.Query())),
     perPage: S.optional(S.String.pipe(T.Query("per_page"))),
     search: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/pipelines",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/pipelines",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListPipelinesRequest",
 }) as any as S.Schema<ListPipelinesRequest>;
@@ -2154,7 +2216,7 @@ export interface ListPipelinesResponse {
 export const ListPipelinesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: ListResponseResultsList,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListPipelinesResponse",
 }) as any as S.Schema<ListPipelinesResponse>;
@@ -2175,13 +2237,15 @@ export const ListSinksRequest = /*@__PURE__*/ S.suspend(() =>
     page: S.optional(S.Number.pipe(T.Query())),
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
     pipelineId: S.optional(S.String.pipe(T.Query("pipeline_id"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/pipelines/v1/sinks",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/pipelines/v1/sinks",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListSinksRequest",
 }) as any as S.Schema<ListSinksRequest>;
@@ -2366,7 +2430,7 @@ export const ListSinksResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: SinksListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListSinksResponse",
 }) as any as S.Schema<ListSinksResponse>;
@@ -2388,13 +2452,15 @@ export const ListStreamsRequest = /*@__PURE__*/ S.suspend(() =>
     page: S.optional(S.Number.pipe(T.Query())),
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
     pipelineId: S.optional(S.String.pipe(T.Query("pipeline_id"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/pipelines/v1/streams",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/pipelines/v1/streams",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListStreamsRequest",
 }) as any as S.Schema<ListStreamsRequest>;
@@ -2604,7 +2670,7 @@ export const ListStreamsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: StreamsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListStreamsResponse",
 }) as any as S.Schema<ListStreamsResponse>;
@@ -2623,13 +2689,15 @@ export const ListV1PipelineRequest = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String.pipe(T.Query())),
     page: S.optional(S.Number.pipe(T.Query())),
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/pipelines/v1/pipelines",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/pipelines/v1/pipelines",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListV1PipelineRequest",
 }) as any as S.Schema<ListV1PipelineRequest>;
@@ -2674,7 +2742,7 @@ export const ListV1PipelineResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: ListV1ResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListV1PipelineResponse",
 }) as any as S.Schema<ListV1PipelineResponse>;
@@ -2741,13 +2809,15 @@ export const PatchStreamRequest = /*@__PURE__*/ S.suspend(() =>
     workerBinding: S.optional(
       StreamsUpdateRequestWorkerBinding.pipe(T.Body("worker_binding")),
     ),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/accounts/{account_id}/pipelines/v1/streams/{stream_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/accounts/{account_id}/pipelines/v1/streams/{stream_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchStreamRequest",
 }) as any as S.Schema<PatchStreamRequest>;
@@ -2846,7 +2916,7 @@ export const PatchStreamResponse = /*@__PURE__*/ S.suspend(() =>
     ),
     endpoint: S.optional(S.String),
     format: S.optional(StreamsUpdateResponseFormat),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchStreamResponse",
 }) as any as S.Schema<PatchStreamResponse>;
@@ -3003,13 +3073,15 @@ export const UpdatePipelineRequest = /*@__PURE__*/ S.suspend(() =>
     destination: UpdateRequestDestination,
     name: S.String,
     source: UpdateRequestSourceList,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/pipelines/{pipeline_name}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/pipelines/{pipeline_name}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdatePipelineRequest",
 }) as any as S.Schema<UpdatePipelineRequest>;
@@ -3151,7 +3223,7 @@ export const UpdatePipelineResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.String,
     source: UpdateResponseSourceList,
     version: S.Number,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdatePipelineResponse",
 }) as any as S.Schema<UpdatePipelineResponse>;
@@ -3166,13 +3238,15 @@ export const ValidateSqlPipelineRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     sql: S.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/pipelines/v1/validate_sql",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/pipelines/v1/validate_sql",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ValidateSqlPipelineRequest",
 }) as any as S.Schema<ValidateSqlPipelineRequest>;
@@ -3256,7 +3330,7 @@ export const ValidateSqlPipelineResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tables: ValidateSqlResponseTablesMap,
     graph: S.optional(ValidateSqlResponseGraph),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ValidateSqlPipelineResponse",
 }) as any as S.Schema<ValidateSqlPipelineResponse>;

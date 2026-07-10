@@ -14,6 +14,19 @@ import * as Retry from "../retry.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
+/** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
+const KEY_DICTIONARY: Record<string, string> = {
+  createdOn: "created_on",
+  lastUpdated: "last_updated",
+  modifiedOn: "modified_on",
+  perPage: "per_page",
+  previewTarget: "preview_target",
+  requiredTokens: "required_tokens",
+  resultInfo: "result_info",
+  sizeBytes: "size_bytes",
+  totalCount: "total_count",
+};
+
 export interface CreateAssetForAccountRequest {
   /** The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
   accountId: string;
@@ -30,13 +43,15 @@ export const CreateAssetForAccountRequest = /*@__PURE__*/ S.suspend(() =>
     description: S.String,
     name: S.String,
     url: S.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/custom_pages/assets",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/custom_pages/assets",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateAssetForAccountRequest",
 }) as any as S.Schema<CreateAssetForAccountRequest>;
@@ -60,7 +75,7 @@ export const CreateAssetForAccountResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     sizeBytes: S.optional(S.Number.pipe(T.Body("size_bytes"))),
     url: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateAssetForAccountResponse",
 }) as any as S.Schema<CreateAssetForAccountResponse>;
@@ -81,13 +96,15 @@ export const CreateAssetForZoneRequest = /*@__PURE__*/ S.suspend(() =>
     description: S.String,
     name: S.String,
     url: S.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/zones/{zone_id}/custom_pages/assets",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/zones/{zone_id}/custom_pages/assets",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateAssetForZoneRequest",
 }) as any as S.Schema<CreateAssetForZoneRequest>;
@@ -111,7 +128,7 @@ export const CreateAssetForZoneResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     sizeBytes: S.optional(S.Number.pipe(T.Body("size_bytes"))),
     url: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateAssetForZoneResponse",
 }) as any as S.Schema<CreateAssetForZoneResponse>;
@@ -126,20 +143,22 @@ export const DeleteAssetForAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     assetName: S.String.pipe(T.Label("asset_name")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/custom_pages/assets/{asset_name}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/custom_pages/assets/{asset_name}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteAssetForAccountRequest",
 }) as any as S.Schema<DeleteAssetForAccountRequest>;
 
 export interface DeleteAssetForAccountResponse {}
 export const DeleteAssetForAccountResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
+  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteAssetForAccountResponse",
 }) as any as S.Schema<DeleteAssetForAccountResponse>;
@@ -154,20 +173,22 @@ export const DeleteAssetForZoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     assetName: S.String.pipe(T.Label("asset_name")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/zones/{zone_id}/custom_pages/assets/{asset_name}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/zones/{zone_id}/custom_pages/assets/{asset_name}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteAssetForZoneRequest",
 }) as any as S.Schema<DeleteAssetForZoneRequest>;
 
 export interface DeleteAssetForZoneResponse {}
 export const DeleteAssetForZoneResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
+  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteAssetForZoneResponse",
 }) as any as S.Schema<DeleteAssetForZoneResponse>;
@@ -182,13 +203,15 @@ export const GetAssetForAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     assetName: S.String.pipe(T.Label("asset_name")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/custom_pages/assets/{asset_name}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/custom_pages/assets/{asset_name}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetAssetForAccountRequest",
 }) as any as S.Schema<GetAssetForAccountRequest>;
@@ -212,7 +235,7 @@ export const GetAssetForAccountResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     sizeBytes: S.optional(S.Number.pipe(T.Body("size_bytes"))),
     url: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetAssetForAccountResponse",
 }) as any as S.Schema<GetAssetForAccountResponse>;
@@ -227,13 +250,15 @@ export const GetAssetForZoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     assetName: S.String.pipe(T.Label("asset_name")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/custom_pages/assets/{asset_name}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/custom_pages/assets/{asset_name}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetAssetForZoneRequest",
 }) as any as S.Schema<GetAssetForZoneRequest>;
@@ -257,7 +282,7 @@ export const GetAssetForZoneResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     sizeBytes: S.optional(S.Number.pipe(T.Body("size_bytes"))),
     url: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetAssetForZoneResponse",
 }) as any as S.Schema<GetAssetForZoneResponse>;
@@ -279,13 +304,15 @@ export const GetCustomPageForAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     identifier: GetForAccountRequestIdentifier.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/custom_pages/{identifier}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/custom_pages/{identifier}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetCustomPageForAccountRequest",
 }) as any as S.Schema<GetCustomPageForAccountRequest>;
@@ -326,7 +353,7 @@ export const GetCustomPageForAccountResponse = /*@__PURE__*/ S.suspend(() =>
     ),
     state: S.optional(GetForAccountResponseState),
     url: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetCustomPageForAccountResponse",
 }) as any as S.Schema<GetCustomPageForAccountResponse>;
@@ -348,13 +375,15 @@ export const GetCustomPageForZoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     identifier: GetForZoneRequestIdentifier.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/custom_pages/{identifier}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/custom_pages/{identifier}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetCustomPageForZoneRequest",
 }) as any as S.Schema<GetCustomPageForZoneRequest>;
@@ -392,7 +421,7 @@ export const GetCustomPageForZoneResponse = /*@__PURE__*/ S.suspend(() =>
     ),
     state: S.optional(GetForZoneResponseState),
     url: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetCustomPageForZoneResponse",
 }) as any as S.Schema<GetCustomPageForZoneResponse>;
@@ -408,13 +437,15 @@ export const ListAssetsForAccountRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     page: S.optional(S.Number.pipe(T.Query())),
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/custom_pages/assets",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/custom_pages/assets",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListAssetsForAccountRequest",
 }) as any as S.Schema<ListAssetsForAccountRequest>;
@@ -457,7 +488,7 @@ export const ListAssetsForAccountResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: AssetsListForAccountResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListAssetsForAccountResponse",
 }) as any as S.Schema<ListAssetsForAccountResponse>;
@@ -473,13 +504,15 @@ export const ListAssetsForZoneRequest = /*@__PURE__*/ S.suspend(() =>
     zoneId: S.String.pipe(T.Label("zone_id")),
     page: S.optional(S.Number.pipe(T.Query())),
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/custom_pages/assets",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/custom_pages/assets",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListAssetsForZoneRequest",
 }) as any as S.Schema<ListAssetsForZoneRequest>;
@@ -522,7 +555,7 @@ export const ListAssetsForZoneResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: AssetsListForZoneResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListAssetsForZoneResponse",
 }) as any as S.Schema<ListAssetsForZoneResponse>;
@@ -534,13 +567,15 @@ export interface ListCustomPagesForAccountRequest {
 export const ListCustomPagesForAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/custom_pages",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/custom_pages",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListCustomPagesForAccountRequest",
 }) as any as S.Schema<ListCustomPagesForAccountRequest>;
@@ -602,7 +637,7 @@ export const ListCustomPagesForAccountResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: ListForAccountResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListCustomPagesForAccountResponse",
 }) as any as S.Schema<ListCustomPagesForAccountResponse>;
@@ -614,9 +649,15 @@ export interface ListCustomPagesForZoneRequest {
 export const ListCustomPagesForZoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-  }).pipe(
-    T.Http({ method: "GET", uri: "/zones/{zone_id}/custom_pages", code: 200 }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/custom_pages",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListCustomPagesForZoneRequest",
 }) as any as S.Schema<ListCustomPagesForZoneRequest>;
@@ -676,7 +717,7 @@ export const ListCustomPagesForZoneResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: ListForZoneResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListCustomPagesForZoneResponse",
 }) as any as S.Schema<ListCustomPagesForZoneResponse>;
@@ -710,13 +751,15 @@ export const PutCustomPageForAccountRequest = /*@__PURE__*/ S.suspend(() =>
     identifier: UpdateForAccountRequestIdentifier.pipe(T.Label()),
     state: UpdateForAccountRequestState,
     url: S.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/custom_pages/{identifier}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/custom_pages/{identifier}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutCustomPageForAccountRequest",
 }) as any as S.Schema<PutCustomPageForAccountRequest>;
@@ -759,7 +802,7 @@ export const PutCustomPageForAccountResponse = /*@__PURE__*/ S.suspend(() =>
     ),
     state: S.optional(UpdateForAccountResponseState),
     url: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutCustomPageForAccountResponse",
 }) as any as S.Schema<PutCustomPageForAccountResponse>;
@@ -793,13 +836,15 @@ export const PutCustomPageForZoneRequest = /*@__PURE__*/ S.suspend(() =>
     identifier: UpdateForZoneRequestIdentifier.pipe(T.Label()),
     state: UpdateForZoneRequestState,
     url: S.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/zones/{zone_id}/custom_pages/{identifier}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/zones/{zone_id}/custom_pages/{identifier}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutCustomPageForZoneRequest",
 }) as any as S.Schema<PutCustomPageForZoneRequest>;
@@ -840,7 +885,7 @@ export const PutCustomPageForZoneResponse = /*@__PURE__*/ S.suspend(() =>
     ),
     state: S.optional(UpdateForZoneResponseState),
     url: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutCustomPageForZoneResponse",
 }) as any as S.Schema<PutCustomPageForZoneResponse>;
@@ -861,13 +906,15 @@ export const UpdateAssetForAccountRequest = /*@__PURE__*/ S.suspend(() =>
     assetName: S.String.pipe(T.Label("asset_name")),
     description: S.String,
     url: S.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/custom_pages/assets/{asset_name}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/custom_pages/assets/{asset_name}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateAssetForAccountRequest",
 }) as any as S.Schema<UpdateAssetForAccountRequest>;
@@ -891,7 +938,7 @@ export const UpdateAssetForAccountResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     sizeBytes: S.optional(S.Number.pipe(T.Body("size_bytes"))),
     url: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateAssetForAccountResponse",
 }) as any as S.Schema<UpdateAssetForAccountResponse>;
@@ -912,13 +959,15 @@ export const UpdateAssetForZoneRequest = /*@__PURE__*/ S.suspend(() =>
     assetName: S.String.pipe(T.Label("asset_name")),
     description: S.String,
     url: S.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/zones/{zone_id}/custom_pages/assets/{asset_name}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/zones/{zone_id}/custom_pages/assets/{asset_name}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateAssetForZoneRequest",
 }) as any as S.Schema<UpdateAssetForZoneRequest>;
@@ -942,7 +991,7 @@ export const UpdateAssetForZoneResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     sizeBytes: S.optional(S.Number.pipe(T.Body("size_bytes"))),
     url: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateAssetForZoneResponse",
 }) as any as S.Schema<UpdateAssetForZoneResponse>;

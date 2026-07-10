@@ -14,6 +14,25 @@ import * as Retry from "../retry.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
+/** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
+const KEY_DICTIONARY: Record<string, string> = {
+  appProtocol: "app_protocol",
+  certVerificationMode: "cert_verification_mode",
+  createdAt: "created_at",
+  httpPort: "http_port",
+  httpsPort: "https_port",
+  perPage: "per_page",
+  resolverIps: "resolver_ips",
+  resolverNetwork: "resolver_network",
+  resultInfo: "result_info",
+  serviceId: "service_id",
+  tcpPort: "tcp_port",
+  tlsSettings: "tls_settings",
+  totalCount: "total_count",
+  tunnelId: "tunnel_id",
+  updatedAt: "updated_at",
+};
+
 export class Forbidden extends T.applyErrorMatchers(
   S.TaggedErrorClass<Forbidden>()("Forbidden", {
     code: S.Number,
@@ -75,13 +94,15 @@ export const CreateDirectoryServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     body: DirectoryServicesCreateRequestBody,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/connectivity/directory/services",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/connectivity/directory/services",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateDirectoryServiceRequest",
 }) as any as S.Schema<CreateDirectoryServiceRequest>;
@@ -99,7 +120,7 @@ export const CreateDirectoryServiceResponse = /*@__PURE__*/ S.suspend(() =>
     InfraTCPServiceConfigObjectHostNameType6More__: S.Unknown.pipe(
       T.Body("InfraTCPServiceConfig object { host, name, type, 6 more }"),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateDirectoryServiceResponse",
 }) as any as S.Schema<CreateDirectoryServiceResponse>;
@@ -112,20 +133,22 @@ export const DeleteDirectoryServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     serviceId: S.String.pipe(T.Label("service_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/connectivity/directory/services/{service_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/connectivity/directory/services/{service_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteDirectoryServiceRequest",
 }) as any as S.Schema<DeleteDirectoryServiceRequest>;
 
 export interface DeleteDirectoryServiceResponse {}
 export const DeleteDirectoryServiceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
+  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteDirectoryServiceResponse",
 }) as any as S.Schema<DeleteDirectoryServiceResponse>;
@@ -138,13 +161,15 @@ export const GetDirectoryServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     serviceId: S.String.pipe(T.Label("service_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/connectivity/directory/services/{service_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/connectivity/directory/services/{service_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDirectoryServiceRequest",
 }) as any as S.Schema<GetDirectoryServiceRequest>;
@@ -162,7 +187,7 @@ export const GetDirectoryServiceResponse = /*@__PURE__*/ S.suspend(() =>
     InfraTCPServiceConfigObjectHostNameType6More__: S.Unknown.pipe(
       T.Body("InfraTCPServiceConfig object { host, name, type, 6 more }"),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDirectoryServiceResponse",
 }) as any as S.Schema<GetDirectoryServiceResponse>;
@@ -185,13 +210,15 @@ export const ListDirectoryServicesRequest = /*@__PURE__*/ S.suspend(() =>
     page: S.optional(S.Number.pipe(T.Query())),
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
     type: S.optional(DirectoryServicesListRequestType.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/connectivity/directory/services",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/connectivity/directory/services",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListDirectoryServicesRequest",
 }) as any as S.Schema<ListDirectoryServicesRequest>;
@@ -228,7 +255,7 @@ export const ListDirectoryServicesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: DirectoryServicesListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListDirectoryServicesResponse",
 }) as any as S.Schema<ListDirectoryServicesResponse>;
@@ -260,13 +287,15 @@ export const UpdateDirectoryServiceRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     serviceId: S.String.pipe(T.Label("service_id")),
     body: DirectoryServicesUpdateRequestBody,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/connectivity/directory/services/{service_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/connectivity/directory/services/{service_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateDirectoryServiceRequest",
 }) as any as S.Schema<UpdateDirectoryServiceRequest>;
@@ -284,7 +313,7 @@ export const UpdateDirectoryServiceResponse = /*@__PURE__*/ S.suspend(() =>
     InfraTCPServiceConfigObjectHostNameType6More__: S.Unknown.pipe(
       T.Body("InfraTCPServiceConfig object { host, name, type, 6 more }"),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateDirectoryServiceResponse",
 }) as any as S.Schema<UpdateDirectoryServiceResponse>;

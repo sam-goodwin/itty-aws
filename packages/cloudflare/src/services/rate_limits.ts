@@ -14,6 +14,15 @@ import * as Retry from "../retry.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
+/** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
+const KEY_DICTIONARY: Record<string, string> = {
+  contentType: "content_type",
+  originTraffic: "origin_traffic",
+  perPage: "per_page",
+  resultInfo: "result_info",
+  totalCount: "total_count",
+};
+
 export type CreateRequestActionMode =
   | "simulate"
   | "ban"
@@ -162,9 +171,15 @@ export const CreateRateLimitRequest = /*@__PURE__*/ S.suspend(() =>
     match: CreateRequestMatch,
     period: S.Number,
     threshold: S.Number,
-  }).pipe(
-    T.Http({ method: "POST", uri: "/zones/{zone_id}/rate_limits", code: 200 }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/zones/{zone_id}/rate_limits",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateRateLimitRequest",
 }) as any as S.Schema<CreateRateLimitRequest>;
@@ -349,7 +364,7 @@ export const CreateRateLimitResponse = /*@__PURE__*/ S.suspend(() =>
     match: S.optional(CreateResponseMatch),
     period: S.optional(S.Number),
     threshold: S.optional(S.Number),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateRateLimitResponse",
 }) as any as S.Schema<CreateRateLimitResponse>;
@@ -364,13 +379,15 @@ export const DeleteRateLimitRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     rateLimitId: S.String.pipe(T.Label("rate_limit_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/zones/{zone_id}/rate_limits/{rate_limit_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/zones/{zone_id}/rate_limits/{rate_limit_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteRateLimitRequest",
 }) as any as S.Schema<DeleteRateLimitRequest>;
@@ -555,7 +572,7 @@ export const DeleteRateLimitResponse = /*@__PURE__*/ S.suspend(() =>
     match: S.optional(DeleteResponseMatch),
     period: S.optional(S.Number),
     threshold: S.optional(S.Number),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteRateLimitResponse",
 }) as any as S.Schema<DeleteRateLimitResponse>;
@@ -711,13 +728,15 @@ export const EditRateLimitRequest = /*@__PURE__*/ S.suspend(() =>
     match: EditRequestMatch,
     period: S.Number,
     threshold: S.Number,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/zones/{zone_id}/rate_limits/{rate_limit_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/zones/{zone_id}/rate_limits/{rate_limit_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "EditRateLimitRequest",
 }) as any as S.Schema<EditRateLimitRequest>;
@@ -902,7 +921,7 @@ export const EditRateLimitResponse = /*@__PURE__*/ S.suspend(() =>
     match: S.optional(EditResponseMatch),
     period: S.optional(S.Number),
     threshold: S.optional(S.Number),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "EditRateLimitResponse",
 }) as any as S.Schema<EditRateLimitResponse>;
@@ -917,13 +936,15 @@ export const GetRateLimitRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     rateLimitId: S.String.pipe(T.Label("rate_limit_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/rate_limits/{rate_limit_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/rate_limits/{rate_limit_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetRateLimitRequest",
 }) as any as S.Schema<GetRateLimitRequest>;
@@ -1108,7 +1129,7 @@ export const GetRateLimitResponse = /*@__PURE__*/ S.suspend(() =>
     match: S.optional(GetResponseMatch),
     period: S.optional(S.Number),
     threshold: S.optional(S.Number),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetRateLimitResponse",
 }) as any as S.Schema<GetRateLimitResponse>;
@@ -1126,9 +1147,11 @@ export const ListRateLimitsRequest = /*@__PURE__*/ S.suspend(() =>
     zoneId: S.String.pipe(T.Label("zone_id")),
     page: S.optional(S.Number.pipe(T.Query())),
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-  }).pipe(
-    T.Http({ method: "GET", uri: "/zones/{zone_id}/rate_limits", code: 200 }),
-  ),
+  })
+    .pipe(
+      T.Http({ method: "GET", uri: "/zones/{zone_id}/rate_limits", code: 200 }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListRateLimitsRequest",
 }) as any as S.Schema<ListRateLimitsRequest>;
@@ -1330,7 +1353,7 @@ export const ListRateLimitsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: ListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListRateLimitsResponse",
 }) as any as S.Schema<ListRateLimitsResponse>;

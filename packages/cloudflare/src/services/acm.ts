@@ -14,6 +14,18 @@ import * as Retry from "../retry.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
+/** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
+const KEY_DICTIONARY: Record<string, string> = {
+  certificateAuthority: "certificate_authority",
+  expiresOn: "expires_on",
+  perPage: "per_page",
+  resultInfo: "result_info",
+  totalCount: "total_count",
+  updatedAt: "updated_at",
+  uploadedOn: "uploaded_on",
+  validityPeriod: "validity_period",
+};
+
 export class AdvancedCertificateManagerRequired extends T.applyErrorMatchers(
   S.TaggedErrorClass<AdvancedCertificateManagerRequired>()(
     "AdvancedCertificateManagerRequired",
@@ -75,13 +87,15 @@ export const CreateCustomTrustStoreRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     certificate: S.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/zones/{zone_id}/acm/custom_trust_store",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/zones/{zone_id}/acm/custom_trust_store",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateCustomTrustStoreRequest",
 }) as any as S.Schema<CreateCustomTrustStoreRequest>;
@@ -122,7 +136,7 @@ export const CreateCustomTrustStoreResponse = /*@__PURE__*/ S.suspend(() =>
     status: CustomTrustStoreCreateResponseStatus,
     updatedAt: S.String.pipe(T.Body("updated_at")),
     uploadedOn: S.String.pipe(T.Body("uploaded_on")),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateCustomTrustStoreResponse",
 }) as any as S.Schema<CreateCustomTrustStoreResponse>;
@@ -139,13 +153,15 @@ export const DeleteCustomTrustStoreRequest = /*@__PURE__*/ S.suspend(() =>
     customOriginTrustStoreId: S.String.pipe(
       T.Label("custom_origin_trust_store_id"),
     ),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/zones/{zone_id}/acm/custom_trust_store/{custom_origin_trust_store_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/zones/{zone_id}/acm/custom_trust_store/{custom_origin_trust_store_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteCustomTrustStoreRequest",
 }) as any as S.Schema<DeleteCustomTrustStoreRequest>;
@@ -158,7 +174,7 @@ export interface DeleteCustomTrustStoreResponse {
 export const DeleteCustomTrustStoreResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteCustomTrustStoreResponse",
 }) as any as S.Schema<DeleteCustomTrustStoreResponse>;
@@ -175,13 +191,15 @@ export const GetCustomTrustStoreRequest = /*@__PURE__*/ S.suspend(() =>
     customOriginTrustStoreId: S.String.pipe(
       T.Label("custom_origin_trust_store_id"),
     ),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/acm/custom_trust_store/{custom_origin_trust_store_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/acm/custom_trust_store/{custom_origin_trust_store_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetCustomTrustStoreRequest",
 }) as any as S.Schema<GetCustomTrustStoreRequest>;
@@ -222,7 +240,7 @@ export const GetCustomTrustStoreResponse = /*@__PURE__*/ S.suspend(() =>
     status: CustomTrustStoreGetResponseStatus,
     updatedAt: S.String.pipe(T.Body("updated_at")),
     uploadedOn: S.String.pipe(T.Body("uploaded_on")),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetCustomTrustStoreResponse",
 }) as any as S.Schema<GetCustomTrustStoreResponse>;
@@ -234,9 +252,15 @@ export interface GetTotalTlRequest {
 export const GetTotalTlRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-  }).pipe(
-    T.Http({ method: "GET", uri: "/zones/{zone_id}/acm/total_tls", code: 200 }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/acm/total_tls",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetTotalTlRequest",
 }) as any as S.Schema<GetTotalTlRequest>;
@@ -270,7 +294,7 @@ export const GetTotalTlResponse = /*@__PURE__*/ S.suspend(() =>
     validityPeriod: S.optional(
       TotalTlsGetResponseValidityPeriod.pipe(T.Body("validity_period")),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetTotalTlResponse",
 }) as any as S.Schema<GetTotalTlResponse>;
@@ -294,13 +318,15 @@ export const ListCustomTrustStoresRequest = /*@__PURE__*/ S.suspend(() =>
     offset: S.optional(S.Number.pipe(T.Query())),
     page: S.optional(S.Number.pipe(T.Query())),
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/acm/custom_trust_store",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/acm/custom_trust_store",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListCustomTrustStoresRequest",
 }) as any as S.Schema<ListCustomTrustStoresRequest>;
@@ -360,7 +386,7 @@ export const ListCustomTrustStoresResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: CustomTrustStoreListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListCustomTrustStoresResponse",
 }) as any as S.Schema<ListCustomTrustStoresResponse>;
@@ -380,13 +406,15 @@ export const TotalTlsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     certificateAuthority: S.optional(
       S.Unknown.pipe(T.Body("certificate_authority")),
     ),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/zones/{zone_id}/acm/total_tls",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/zones/{zone_id}/acm/total_tls",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "TotalTlsUpdateRequest",
 }) as any as S.Schema<TotalTlsUpdateRequest>;
@@ -421,7 +449,7 @@ export const TotalTlsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     validityPeriod: S.optional(
       TotalTlsUpdateResponseValidityPeriod.pipe(T.Body("validity_period")),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "TotalTlsUpdateResponse",
 }) as any as S.Schema<TotalTlsUpdateResponse>;
@@ -441,13 +469,15 @@ export const UpdateTotalTlRequest = /*@__PURE__*/ S.suspend(() =>
     certificateAuthority: S.optional(
       S.Unknown.pipe(T.Body("certificate_authority")),
     ),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/zones/{zone_id}/acm/total_tls",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/zones/{zone_id}/acm/total_tls",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateTotalTlRequest",
 }) as any as S.Schema<UpdateTotalTlRequest>;
@@ -481,7 +511,7 @@ export const UpdateTotalTlResponse = /*@__PURE__*/ S.suspend(() =>
     validityPeriod: S.optional(
       TotalTlsEditResponseValidityPeriod.pipe(T.Body("validity_period")),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateTotalTlResponse",
 }) as any as S.Schema<UpdateTotalTlResponse>;

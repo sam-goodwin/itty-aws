@@ -14,6 +14,26 @@ import * as Retry from "../retry.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
+/** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
+const KEY_DICTIONARY: Record<string, string> = {
+  checkType: "check_type",
+  documentationUrl: "documentation_url",
+  maxRttMs: "max_rtt_ms",
+  maxTtl: "max_ttl",
+  meanRttMs: "mean_rtt_ms",
+  minRttMs: "min_rtt_ms",
+  packetCount: "packet_count",
+  packetType: "packet_type",
+  packetsLost: "packets_lost",
+  packetsPerTtl: "packets_per_ttl",
+  packetsSent: "packets_sent",
+  packetsTtl: "packets_ttl",
+  stdDevRttMs: "std_dev_rtt_ms",
+  targetSummary: "target_summary",
+  tracerouteTimeMs: "traceroute_time_ms",
+  waitTime: "wait_time",
+};
+
 export class EndpointHealthcheckNotFound extends T.applyErrorMatchers(
   S.TaggedErrorClass<EndpointHealthcheckNotFound>()(
     "EndpointHealthcheckNotFound",
@@ -66,13 +86,15 @@ export const CreateEndpointHealthcheckRequest = /*@__PURE__*/ S.suspend(() =>
     ),
     endpoint: S.String,
     name: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/diagnostics/endpoint-healthchecks",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/diagnostics/endpoint-healthchecks",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateEndpointHealthcheckRequest",
 }) as any as S.Schema<CreateEndpointHealthcheckRequest>;
@@ -102,7 +124,7 @@ export const CreateEndpointHealthcheckResponse = /*@__PURE__*/ S.suspend(() =>
     endpoint: S.String,
     id: S.optional(S.String),
     name: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateEndpointHealthcheckResponse",
 }) as any as S.Schema<CreateEndpointHealthcheckResponse>;
@@ -164,13 +186,15 @@ export const CreateTracerouteRequest = /*@__PURE__*/ S.suspend(() =>
     targets: TraceroutesCreateRequestTargetsList,
     colos: S.optional(TraceroutesCreateRequestColosList),
     options: S.optional(TraceroutesCreateRequestOptions),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/diagnostics/traceroute",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/diagnostics/traceroute",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateTracerouteRequest",
 }) as any as S.Schema<CreateTracerouteRequest>;
@@ -338,7 +362,7 @@ export const CreateTracerouteResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: TraceroutesCreateResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateTracerouteResponse",
 }) as any as S.Schema<CreateTracerouteResponse>;
@@ -353,20 +377,22 @@ export const DeleteEndpointHealthcheckRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/diagnostics/endpoint-healthchecks/{id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/diagnostics/endpoint-healthchecks/{id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteEndpointHealthcheckRequest",
 }) as any as S.Schema<DeleteEndpointHealthcheckRequest>;
 
 export interface DeleteEndpointHealthcheckResponse {}
 export const DeleteEndpointHealthcheckResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
+  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteEndpointHealthcheckResponse",
 }) as any as S.Schema<DeleteEndpointHealthcheckResponse>;
@@ -381,13 +407,15 @@ export const GetEndpointHealthcheckRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/diagnostics/endpoint-healthchecks/{id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/diagnostics/endpoint-healthchecks/{id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetEndpointHealthcheckRequest",
 }) as any as S.Schema<GetEndpointHealthcheckRequest>;
@@ -414,7 +442,7 @@ export const GetEndpointHealthcheckResponse = /*@__PURE__*/ S.suspend(() =>
     endpoint: S.String,
     id: S.optional(S.String),
     name: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetEndpointHealthcheckResponse",
 }) as any as S.Schema<GetEndpointHealthcheckResponse>;
@@ -426,13 +454,15 @@ export interface ListEndpointHealthchecksRequest {
 export const ListEndpointHealthchecksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/diagnostics/endpoint-healthchecks",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/diagnostics/endpoint-healthchecks",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListEndpointHealthchecksRequest",
 }) as any as S.Schema<ListEndpointHealthchecksRequest>;
@@ -459,7 +489,7 @@ export const ListEndpointHealthchecksResponse = /*@__PURE__*/ S.suspend(() =>
     endpoint: S.String,
     id: S.optional(S.String),
     name: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListEndpointHealthchecksResponse",
 }) as any as S.Schema<ListEndpointHealthchecksResponse>;
@@ -489,13 +519,15 @@ export const UpdateEndpointHealthcheckRequest = /*@__PURE__*/ S.suspend(() =>
     ),
     endpoint: S.String,
     name: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/diagnostics/endpoint-healthchecks/{id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/diagnostics/endpoint-healthchecks/{id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateEndpointHealthcheckRequest",
 }) as any as S.Schema<UpdateEndpointHealthcheckRequest>;
@@ -525,7 +557,7 @@ export const UpdateEndpointHealthcheckResponse = /*@__PURE__*/ S.suspend(() =>
     endpoint: S.String,
     id: S.optional(S.String),
     name: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateEndpointHealthcheckResponse",
 }) as any as S.Schema<UpdateEndpointHealthcheckResponse>;

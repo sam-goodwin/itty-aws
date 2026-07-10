@@ -14,6 +14,120 @@ import * as Retry from "../retry.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
+/** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
+const KEY_DICTIONARY: Record<string, string> = {
+  actionLog: "action_log",
+  actionParams: "action_params",
+  actionType: "action_type",
+  alertId: "alert_id",
+  allowedDeliveryModes: "allowed_delivery_modes",
+  allowlistedPattern: "allowlisted_pattern",
+  allowlistedPatternType: "allowlisted_pattern_type",
+  asName: "as_name",
+  asNumber: "as_number",
+  blocklistedMessage: "blocklisted_message",
+  blocklistedPattern: "blocklisted_pattern",
+  clientRecipient: "client_recipient",
+  clientRecipients: "client_recipients",
+  completedAt: "completed_at",
+  completedTimestamp: "completed_timestamp",
+  contentType: "content_type",
+  createdAt: "created_at",
+  customerStatus: "customer_status",
+  deliveryMode: "delivery_mode",
+  deliveryStatus: "delivery_status",
+  detectionReasons: "detection_reasons",
+  detectionsOnly: "detections_only",
+  directoryId: "directory_id",
+  directoryNodeId: "directory_node_id",
+  dmarcStatus: "dmarc_status",
+  dropDispositions: "drop_dispositions",
+  edfHash: "edf_hash",
+  emailMessageId: "email_message_id",
+  emailsProcessed: "emails_processed",
+  emlContent: "eml_content",
+  envelopeFrom: "envelope_from",
+  envelopeTo: "envelope_to",
+  escalatedAs: "escalated_as",
+  escalatedAt: "escalated_at",
+  escalatedBy: "escalated_by",
+  escalatedSubmissionId: "escalated_submission_id",
+  exactSubject: "exact_subject",
+  expectedDisposition: "expected_disposition",
+  externalDirectoryNodeId: "external_directory_node_id",
+  finalDisposition: "final_disposition",
+  fromName: "from_name",
+  htmltextStructureHash: "htmltext_structure_hash",
+  inboxProvider: "inbox_provider",
+  integrationId: "integration_id",
+  ipRestrictions: "ip_restrictions",
+  isAcceptableSender: "is_acceptable_sender",
+  isEmailRegex: "is_email_regex",
+  isExemptRecipient: "is_exempt_recipient",
+  isPhishSubmission: "is_phish_submission",
+  isQuarantined: "is_quarantined",
+  isRecent: "is_recent",
+  isRecipient: "is_recipient",
+  isRegex: "is_regex",
+  isSender: "is_sender",
+  isSimilarity: "is_similarity",
+  isSpoof: "is_spoof",
+  isTrustedSender: "is_trusted_sender",
+  itemCount: "item_count",
+  jobId: "job_id",
+  lastModified: "last_modified",
+  loggedAt: "logged_at",
+  lookbackHops: "lookback_hops",
+  messageAction: "message_action",
+  messageId: "message_id",
+  messagesFailed: "messages_failed",
+  messagesPending: "messages_pending",
+  messagesSuccessful: "messages_successful",
+  modifiedAt: "modified_at",
+  o365TenantId: "o365_tenant_id",
+  occurredAt: "occurred_at",
+  originalDisposition: "original_disposition",
+  originalEdfHash: "original_edf_hash",
+  originalPostfixId: "original_postfix_id",
+  outcomeDisposition: "outcome_disposition",
+  patternType: "pattern_type",
+  perPage: "per_page",
+  postDeliveryOperations: "post_delivery_operations",
+  postfixId: "postfix_id",
+  postfixIdOutbound: "postfix_id_outbound",
+  processedAt: "processed_at",
+  requestedAt: "requested_at",
+  requestedBy: "requested_by",
+  requestedDisposition: "requested_disposition",
+  requestedTs: "requested_ts",
+  requireTlsInbound: "require_tls_inbound",
+  requireTlsOutbound: "require_tls_outbound",
+  resultInfo: "result_info",
+  retryAfter: "retry_after",
+  retryCount: "retry_count",
+  scannedAt: "scanned_at",
+  searchParams: "search_params",
+  senderInfo: "sender_info",
+  sentAt: "sent_at",
+  sentDate: "sent_date",
+  smtpHeloServerIp: "smtp_helo_server_ip",
+  smtpPreviousHopIp: "smtp_previous_hop_ip",
+  spfStatus: "spf_status",
+  startedAt: "started_at",
+  statusMessage: "status_message",
+  submissionId: "submission_id",
+  threatCategories: "threat_categories",
+  toName: "to_name",
+  totalCount: "total_count",
+  totalEmailsProcessed: "total_emails_processed",
+  totalEmailsProcessedPrevious: "total_emails_processed_previous",
+  totalMessagesDiscovered: "total_messages_discovered",
+  updatedAt: "updated_at",
+  verifySender: "verify_sender",
+  whitelistedPatternType: "whitelisted_pattern_type",
+  xOriginatingIp: "x_originating_ip",
+};
+
 export class AllowPolicyNotFound extends T.applyErrorMatchers(
   S.TaggedErrorClass<AllowPolicyNotFound>()("AllowPolicyNotFound", {
     code: S.Number,
@@ -129,13 +243,15 @@ export const BulkInvestigateMoveRequest = /*@__PURE__*/ S.suspend(() =>
     postfixIds: S.optional(
       InvestigateMoveBulkRequestPostfixIdsList.pipe(T.Body("postfix_ids")),
     ),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/email-security/investigate/move",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/email-security/investigate/move",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "BulkInvestigateMoveRequest",
 }) as any as S.Schema<BulkInvestigateMoveRequest>;
@@ -193,7 +309,7 @@ export const BulkInvestigateMoveResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: InvestigateMoveBulkResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "BulkInvestigateMoveResponse",
 }) as any as S.Schema<BulkInvestigateMoveResponse>;
@@ -212,13 +328,15 @@ export const BulkInvestigateReleaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     body: InvestigateReleaseBulkRequestBodyList,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/email-security/investigate/release",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/email-security/investigate/release",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "BulkInvestigateReleaseRequest",
 }) as any as S.Schema<BulkInvestigateReleaseRequest>;
@@ -277,7 +395,7 @@ export const BulkInvestigateReleaseResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: InvestigateReleaseBulkResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "BulkInvestigateReleaseResponse",
 }) as any as S.Schema<BulkInvestigateReleaseResponse>;
@@ -410,13 +528,15 @@ export const CreateInvestigateBulkRequest = /*@__PURE__*/ S.suspend(() =>
         T.Body("expected_disposition"),
       ),
     ),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/email-security/investigate/bulk",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/email-security/investigate/bulk",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateInvestigateBulkRequest",
 }) as any as S.Schema<CreateInvestigateBulkRequest>;
@@ -573,7 +693,7 @@ export const CreateInvestigateBulkResponse = /*@__PURE__*/ S.suspend(() =>
     completedAt: S.optional(S.String.pipe(T.Body("completed_at"))),
     startedAt: S.optional(S.String.pipe(T.Body("started_at"))),
     statusMessage: S.optional(S.String.pipe(T.Body("status_message"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateInvestigateBulkResponse",
 }) as any as S.Schema<CreateInvestigateBulkResponse>;
@@ -587,13 +707,15 @@ export const CreateInvestigateBulkCancelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     jobId: S.String.pipe(T.Label("job_id")),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/email-security/investigate/bulk/{job_id}/cancel",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/email-security/investigate/bulk/{job_id}/cancel",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateInvestigateBulkCancelRequest",
 }) as any as S.Schema<CreateInvestigateBulkCancelRequest>;
@@ -751,7 +873,7 @@ export const CreateInvestigateBulkCancelResponse = /*@__PURE__*/ S.suspend(() =>
     completedAt: S.optional(S.String.pipe(T.Body("completed_at"))),
     startedAt: S.optional(S.String.pipe(T.Body("started_at"))),
     statusMessage: S.optional(S.String.pipe(T.Body("status_message"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateInvestigateBulkCancelResponse",
 }) as any as S.Schema<CreateInvestigateBulkCancelResponse>;
@@ -789,13 +911,15 @@ export const CreateInvestigateMoveRequest = /*@__PURE__*/ S.suspend(() =>
         T.Body("expected_disposition"),
       ),
     ),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/email-security/investigate/{investigate_id}/move",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/email-security/investigate/{investigate_id}/move",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateInvestigateMoveRequest",
 }) as any as S.Schema<CreateInvestigateMoveRequest>;
@@ -853,7 +977,7 @@ export const CreateInvestigateMoveResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: InvestigateMoveCreateResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateInvestigateMoveResponse",
 }) as any as S.Schema<CreateInvestigateMoveResponse>;
@@ -868,13 +992,15 @@ export const CreateInvestigatePreviewRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     postfixId: S.String.pipe(T.Body("postfix_id")),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/email-security/investigate/preview",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/email-security/investigate/preview",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateInvestigatePreviewRequest",
 }) as any as S.Schema<CreateInvestigatePreviewRequest>;
@@ -887,7 +1013,7 @@ export interface CreateInvestigatePreviewResponse {
 export const CreateInvestigatePreviewResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     screenshot: S.String,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateInvestigatePreviewResponse",
 }) as any as S.Schema<CreateInvestigatePreviewResponse>;
@@ -922,13 +1048,15 @@ export const CreateInvestigateReclassifyRequest = /*@__PURE__*/ S.suspend(() =>
     escalatedSubmissionId: S.optional(
       S.String.pipe(T.Body("escalated_submission_id")),
     ),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/email-security/investigate/{investigate_id}/reclassify",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/email-security/investigate/{investigate_id}/reclassify",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateInvestigateReclassifyRequest",
 }) as any as S.Schema<CreateInvestigateReclassifyRequest>;
@@ -940,7 +1068,7 @@ export interface CreateInvestigateReclassifyResponse {
 export const CreateInvestigateReclassifyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateInvestigateReclassifyResponse",
 }) as any as S.Schema<CreateInvestigateReclassifyResponse>;
@@ -993,13 +1121,15 @@ export const CreateSettingAllowPolicyRequest = /*@__PURE__*/ S.suspend(() =>
     isRecipient: S.optional(S.Boolean.pipe(T.Body("is_recipient"))),
     isSender: S.optional(S.Boolean.pipe(T.Body("is_sender"))),
     isSpoof: S.optional(S.Boolean.pipe(T.Body("is_spoof"))),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/email-security/settings/allow_policies",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/email-security/settings/allow_policies",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateSettingAllowPolicyRequest",
 }) as any as S.Schema<CreateSettingAllowPolicyRequest>;
@@ -1066,7 +1196,7 @@ export const CreateSettingAllowPolicyResponse = /*@__PURE__*/ S.suspend(() =>
       ),
     ),
     verifySender: S.optional(S.Boolean.pipe(T.Body("verify_sender"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateSettingAllowPolicyResponse",
 }) as any as S.Schema<CreateSettingAllowPolicyResponse>;
@@ -1098,13 +1228,15 @@ export const CreateSettingBlockSenderRequest = /*@__PURE__*/ S.suspend(() =>
       T.Body("pattern_type"),
     ),
     comments: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/email-security/settings/block_senders",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/email-security/settings/block_senders",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateSettingBlockSenderRequest",
 }) as any as S.Schema<CreateSettingBlockSenderRequest>;
@@ -1146,7 +1278,7 @@ export const CreateSettingBlockSenderResponse = /*@__PURE__*/ S.suspend(() =>
         T.Body("pattern_type"),
       ),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateSettingBlockSenderResponse",
 }) as any as S.Schema<CreateSettingBlockSenderResponse>;
@@ -1188,13 +1320,15 @@ export const CreateSettingImpersonationRegistryRequest =
       provenance: S.optional(
         SettingsImpersonationRegistryCreateRequestProvenance,
       ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/accounts/{account_id}/email-security/settings/impersonation_registry",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "POST",
+          uri: "/accounts/{account_id}/email-security/settings/impersonation_registry",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "CreateSettingImpersonationRegistryRequest",
   }) as any as S.Schema<CreateSettingImpersonationRegistryRequest>;
@@ -1244,7 +1378,7 @@ export const CreateSettingImpersonationRegistryResponse =
       provenance: S.optional(
         SettingsImpersonationRegistryCreateResponseProvenance,
       ),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "CreateSettingImpersonationRegistryResponse",
   }) as any as S.Schema<CreateSettingImpersonationRegistryResponse>;
@@ -1272,13 +1406,15 @@ export const CreateSettingSendingDomainRestrictionRequest =
       domain: S.String,
       exclude: SettingsSendingDomainRestrictionsCreateRequestExcludeList,
       comments: S.optional(S.String),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/accounts/{account_id}/email-security/settings/sending_domain_restrictions",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "POST",
+          uri: "/accounts/{account_id}/email-security/settings/sending_domain_restrictions",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "CreateSettingSendingDomainRestrictionRequest",
   }) as any as S.Schema<CreateSettingSendingDomainRestrictionRequest>;
@@ -1316,7 +1452,7 @@ export const CreateSettingSendingDomainRestrictionResponse =
       ),
       lastModified: S.optional(S.String.pipe(T.Body("last_modified"))),
       modifiedAt: S.optional(S.String.pipe(T.Body("modified_at"))),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "CreateSettingSendingDomainRestrictionResponse",
   }) as any as S.Schema<CreateSettingSendingDomainRestrictionResponse>;
@@ -1340,13 +1476,15 @@ export const CreateSettingTrustedDomainRequest = /*@__PURE__*/ S.suspend(() =>
     isSimilarity: S.Boolean.pipe(T.Body("is_similarity")),
     pattern: S.String,
     comments: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/email-security/settings/trusted_domains",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/email-security/settings/trusted_domains",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateSettingTrustedDomainRequest",
 }) as any as S.Schema<CreateSettingTrustedDomainRequest>;
@@ -1378,7 +1516,7 @@ export const CreateSettingTrustedDomainResponse = /*@__PURE__*/ S.suspend(() =>
     lastModified: S.optional(S.String.pipe(T.Body("last_modified"))),
     modifiedAt: S.optional(S.String.pipe(T.Body("modified_at"))),
     pattern: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateSettingTrustedDomainResponse",
 }) as any as S.Schema<CreateSettingTrustedDomainResponse>;
@@ -1397,13 +1535,15 @@ export const CreateSettingUrlIgnorePatternRequest = /*@__PURE__*/ S.suspend(
       accountId: S.String.pipe(T.Label("account_id")),
       pattern: S.String,
       comments: S.optional(S.String),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/accounts/{account_id}/email-security/settings/url_ignore_patterns",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "POST",
+          uri: "/accounts/{account_id}/email-security/settings/url_ignore_patterns",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateSettingUrlIgnorePatternRequest",
 }) as any as S.Schema<CreateSettingUrlIgnorePatternRequest>;
@@ -1430,7 +1570,7 @@ export const CreateSettingUrlIgnorePatternResponse = /*@__PURE__*/ S.suspend(
       comments: S.optional(S.String),
       lastModified: S.optional(S.String.pipe(T.Body("last_modified"))),
       modifiedAt: S.optional(S.String.pipe(T.Body("modified_at"))),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateSettingUrlIgnorePatternResponse",
 }) as any as S.Schema<CreateSettingUrlIgnorePatternResponse>;
@@ -1444,13 +1584,15 @@ export const DeleteInvestigateBulkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     jobId: S.String.pipe(T.Label("job_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/email-security/investigate/bulk/{job_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/email-security/investigate/bulk/{job_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteInvestigateBulkRequest",
 }) as any as S.Schema<DeleteInvestigateBulkRequest>;
@@ -1462,7 +1604,7 @@ export interface DeleteInvestigateBulkResponse {
 export const DeleteInvestigateBulkResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteInvestigateBulkResponse",
 }) as any as S.Schema<DeleteInvestigateBulkResponse>;
@@ -1477,13 +1619,15 @@ export const DeleteSettingAllowPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     policyId: S.String.pipe(T.Label("policy_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/email-security/settings/allow_policies/{policy_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/email-security/settings/allow_policies/{policy_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteSettingAllowPolicyRequest",
 }) as any as S.Schema<DeleteSettingAllowPolicyRequest>;
@@ -1496,7 +1640,7 @@ export interface DeleteSettingAllowPolicyResponse {
 export const DeleteSettingAllowPolicyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteSettingAllowPolicyResponse",
 }) as any as S.Schema<DeleteSettingAllowPolicyResponse>;
@@ -1511,13 +1655,15 @@ export const DeleteSettingBlockSenderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     patternId: S.String.pipe(T.Label("pattern_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/email-security/settings/block_senders/{pattern_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/email-security/settings/block_senders/{pattern_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteSettingBlockSenderRequest",
 }) as any as S.Schema<DeleteSettingBlockSenderRequest>;
@@ -1530,7 +1676,7 @@ export interface DeleteSettingBlockSenderResponse {
 export const DeleteSettingBlockSenderResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteSettingBlockSenderResponse",
 }) as any as S.Schema<DeleteSettingBlockSenderResponse>;
@@ -1545,13 +1691,15 @@ export const DeleteSettingDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     domainId: S.String.pipe(T.Label("domain_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/email-security/settings/domains/{domain_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/email-security/settings/domains/{domain_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteSettingDomainRequest",
 }) as any as S.Schema<DeleteSettingDomainRequest>;
@@ -1564,7 +1712,7 @@ export interface DeleteSettingDomainResponse {
 export const DeleteSettingDomainResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteSettingDomainResponse",
 }) as any as S.Schema<DeleteSettingDomainResponse>;
@@ -1582,13 +1730,15 @@ export const DeleteSettingImpersonationRegistryRequest =
       impersonationRegistryId: S.String.pipe(
         T.Label("impersonation_registry_id"),
       ),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/accounts/{account_id}/email-security/settings/impersonation_registry/{impersonation_registry_id}",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "DELETE",
+          uri: "/accounts/{account_id}/email-security/settings/impersonation_registry/{impersonation_registry_id}",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "DeleteSettingImpersonationRegistryRequest",
   }) as any as S.Schema<DeleteSettingImpersonationRegistryRequest>;
@@ -1602,7 +1752,7 @@ export const DeleteSettingImpersonationRegistryResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.String,
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "DeleteSettingImpersonationRegistryResponse",
   }) as any as S.Schema<DeleteSettingImpersonationRegistryResponse>;
@@ -1620,13 +1770,15 @@ export const DeleteSettingSendingDomainRestrictionRequest =
       sendingDomainRestrictionId: S.String.pipe(
         T.Label("sending_domain_restriction_id"),
       ),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/accounts/{account_id}/email-security/settings/sending_domain_restrictions/{sending_domain_restriction_id}",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "DELETE",
+          uri: "/accounts/{account_id}/email-security/settings/sending_domain_restrictions/{sending_domain_restriction_id}",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "DeleteSettingSendingDomainRestrictionRequest",
   }) as any as S.Schema<DeleteSettingSendingDomainRestrictionRequest>;
@@ -1640,7 +1792,7 @@ export const DeleteSettingSendingDomainRestrictionResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.String,
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "DeleteSettingSendingDomainRestrictionResponse",
   }) as any as S.Schema<DeleteSettingSendingDomainRestrictionResponse>;
@@ -1655,13 +1807,15 @@ export const DeleteSettingTrustedDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     trustedDomainId: S.String.pipe(T.Label("trusted_domain_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/email-security/settings/trusted_domains/{trusted_domain_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/email-security/settings/trusted_domains/{trusted_domain_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteSettingTrustedDomainRequest",
 }) as any as S.Schema<DeleteSettingTrustedDomainRequest>;
@@ -1674,7 +1828,7 @@ export interface DeleteSettingTrustedDomainResponse {
 export const DeleteSettingTrustedDomainResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteSettingTrustedDomainResponse",
 }) as any as S.Schema<DeleteSettingTrustedDomainResponse>;
@@ -1690,13 +1844,15 @@ export const DeleteSettingUrlIgnorePatternRequest = /*@__PURE__*/ S.suspend(
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
       patternId: S.String.pipe(T.Label("pattern_id")),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/accounts/{account_id}/email-security/settings/url_ignore_patterns/{pattern_id}",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "DELETE",
+          uri: "/accounts/{account_id}/email-security/settings/url_ignore_patterns/{pattern_id}",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteSettingUrlIgnorePatternRequest",
 }) as any as S.Schema<DeleteSettingUrlIgnorePatternRequest>;
@@ -1710,7 +1866,7 @@ export const DeleteSettingUrlIgnorePatternResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       id: S.String,
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteSettingUrlIgnorePatternResponse",
 }) as any as S.Schema<DeleteSettingUrlIgnorePatternResponse>;
@@ -1728,13 +1884,15 @@ export const GetInvestigateRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     investigateId: S.String.pipe(T.Label("investigate_id")),
     submission: S.optional(S.Boolean.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/email-security/investigate/{investigate_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/email-security/investigate/{investigate_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetInvestigateRequest",
 }) as any as S.Schema<GetInvestigateRequest>;
@@ -2111,7 +2269,7 @@ export const GetInvestigateResponse = /*@__PURE__*/ S.suspend(() =>
     ),
     validation: S.optional(InvestigateGetResponseValidation),
     xOriginatingIp: S.optional(S.String.pipe(T.Body("x_originating_ip"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetInvestigateResponse",
 }) as any as S.Schema<GetInvestigateResponse>;
@@ -2125,13 +2283,15 @@ export const GetInvestigateBulkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     jobId: S.String.pipe(T.Label("job_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/email-security/investigate/bulk/{job_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/email-security/investigate/bulk/{job_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetInvestigateBulkRequest",
 }) as any as S.Schema<GetInvestigateBulkRequest>;
@@ -2288,7 +2448,7 @@ export const GetInvestigateBulkResponse = /*@__PURE__*/ S.suspend(() =>
     completedAt: S.optional(S.String.pipe(T.Body("completed_at"))),
     startedAt: S.optional(S.String.pipe(T.Body("started_at"))),
     statusMessage: S.optional(S.String.pipe(T.Body("status_message"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetInvestigateBulkResponse",
 }) as any as S.Schema<GetInvestigateBulkResponse>;
@@ -2303,13 +2463,15 @@ export const GetInvestigateDetectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     investigateId: S.String.pipe(T.Label("investigate_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/email-security/investigate/{investigate_id}/detections",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/email-security/investigate/{investigate_id}/detections",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetInvestigateDetectionRequest",
 }) as any as S.Schema<GetInvestigateDetectionRequest>;
@@ -2580,7 +2742,7 @@ export const GetInvestigateDetectionResponse = /*@__PURE__*/ S.suspend(() =>
         T.Body("final_disposition"),
       ),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetInvestigateDetectionResponse",
 }) as any as S.Schema<GetInvestigateDetectionResponse>;
@@ -2595,13 +2757,15 @@ export const GetInvestigatePreviewRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     investigateId: S.String.pipe(T.Label("investigate_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/email-security/investigate/{investigate_id}/preview",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/email-security/investigate/{investigate_id}/preview",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetInvestigatePreviewRequest",
 }) as any as S.Schema<GetInvestigatePreviewRequest>;
@@ -2614,7 +2778,7 @@ export interface GetInvestigatePreviewResponse {
 export const GetInvestigatePreviewResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     screenshot: S.String,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetInvestigatePreviewResponse",
 }) as any as S.Schema<GetInvestigatePreviewResponse>;
@@ -2629,13 +2793,15 @@ export const GetInvestigateRawRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     investigateId: S.String.pipe(T.Label("investigate_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/email-security/investigate/{investigate_id}/raw",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/email-security/investigate/{investigate_id}/raw",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetInvestigateRawRequest",
 }) as any as S.Schema<GetInvestigateRawRequest>;
@@ -2648,7 +2814,7 @@ export interface GetInvestigateRawResponse {
 export const GetInvestigateRawResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     raw: S.String,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetInvestigateRawResponse",
 }) as any as S.Schema<GetInvestigateRawResponse>;
@@ -2663,13 +2829,15 @@ export const GetInvestigateTraceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     investigateId: S.String.pipe(T.Label("investigate_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/email-security/investigate/{investigate_id}/trace",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/email-security/investigate/{investigate_id}/trace",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetInvestigateTraceRequest",
 }) as any as S.Schema<GetInvestigateTraceRequest>;
@@ -2763,7 +2931,7 @@ export const GetInvestigateTraceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     inbound: InvestigateTraceGetResponseInbound,
     outbound: InvestigateTraceGetResponseOutbound,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetInvestigateTraceResponse",
 }) as any as S.Schema<GetInvestigateTraceResponse>;
@@ -2778,13 +2946,15 @@ export const GetSettingAllowPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     policyId: S.String.pipe(T.Label("policy_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/email-security/settings/allow_policies/{policy_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/email-security/settings/allow_policies/{policy_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetSettingAllowPolicyRequest",
 }) as any as S.Schema<GetSettingAllowPolicyRequest>;
@@ -2849,7 +3019,7 @@ export const GetSettingAllowPolicyResponse = /*@__PURE__*/ S.suspend(() =>
       SettingsAllowPoliciesGetResponsePatternType.pipe(T.Body("pattern_type")),
     ),
     verifySender: S.optional(S.Boolean.pipe(T.Body("verify_sender"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetSettingAllowPolicyResponse",
 }) as any as S.Schema<GetSettingAllowPolicyResponse>;
@@ -2864,13 +3034,15 @@ export const GetSettingBlockSenderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     patternId: S.String.pipe(T.Label("pattern_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/email-security/settings/block_senders/{pattern_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/email-security/settings/block_senders/{pattern_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetSettingBlockSenderRequest",
 }) as any as S.Schema<GetSettingBlockSenderRequest>;
@@ -2910,7 +3082,7 @@ export const GetSettingBlockSenderResponse = /*@__PURE__*/ S.suspend(() =>
     patternType: S.optional(
       SettingsBlockSendersGetResponsePatternType.pipe(T.Body("pattern_type")),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetSettingBlockSenderResponse",
 }) as any as S.Schema<GetSettingBlockSenderResponse>;
@@ -2925,13 +3097,15 @@ export const GetSettingDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     domainId: S.String.pipe(T.Label("domain_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/email-security/settings/domains/{domain_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/email-security/settings/domains/{domain_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetSettingDomainRequest",
 }) as any as S.Schema<GetSettingDomainRequest>;
@@ -3130,7 +3304,7 @@ export const GetSettingDomainResponse = /*@__PURE__*/ S.suspend(() =>
     ),
     status: S.optional(SettingsDomainsGetResponseStatus),
     transport: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetSettingDomainResponse",
 }) as any as S.Schema<GetSettingDomainResponse>;
@@ -3148,13 +3322,15 @@ export const GetSettingImpersonationRegistryRequest = /*@__PURE__*/ S.suspend(
       impersonationRegistryId: S.String.pipe(
         T.Label("impersonation_registry_id"),
       ),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/accounts/{account_id}/email-security/settings/impersonation_registry/{impersonation_registry_id}",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "GET",
+          uri: "/accounts/{account_id}/email-security/settings/impersonation_registry/{impersonation_registry_id}",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetSettingImpersonationRegistryRequest",
 }) as any as S.Schema<GetSettingImpersonationRegistryRequest>;
@@ -3204,7 +3380,7 @@ export const GetSettingImpersonationRegistryResponse = /*@__PURE__*/ S.suspend(
       provenance: S.optional(
         SettingsImpersonationRegistryGetResponseProvenance,
       ),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetSettingImpersonationRegistryResponse",
 }) as any as S.Schema<GetSettingImpersonationRegistryResponse>;
@@ -3222,13 +3398,15 @@ export const GetSettingSendingDomainRestrictionRequest =
       sendingDomainRestrictionId: S.String.pipe(
         T.Label("sending_domain_restriction_id"),
       ),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/accounts/{account_id}/email-security/settings/sending_domain_restrictions/{sending_domain_restriction_id}",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "GET",
+          uri: "/accounts/{account_id}/email-security/settings/sending_domain_restrictions/{sending_domain_restriction_id}",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "GetSettingSendingDomainRestrictionRequest",
   }) as any as S.Schema<GetSettingSendingDomainRestrictionRequest>;
@@ -3265,7 +3443,7 @@ export const GetSettingSendingDomainRestrictionResponse =
       ),
       lastModified: S.optional(S.String.pipe(T.Body("last_modified"))),
       modifiedAt: S.optional(S.String.pipe(T.Body("modified_at"))),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "GetSettingSendingDomainRestrictionResponse",
   }) as any as S.Schema<GetSettingSendingDomainRestrictionResponse>;
@@ -3280,13 +3458,15 @@ export const GetSettingTrustedDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     trustedDomainId: S.String.pipe(T.Label("trusted_domain_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/email-security/settings/trusted_domains/{trusted_domain_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/email-security/settings/trusted_domains/{trusted_domain_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetSettingTrustedDomainRequest",
 }) as any as S.Schema<GetSettingTrustedDomainRequest>;
@@ -3318,7 +3498,7 @@ export const GetSettingTrustedDomainResponse = /*@__PURE__*/ S.suspend(() =>
     lastModified: S.optional(S.String.pipe(T.Body("last_modified"))),
     modifiedAt: S.optional(S.String.pipe(T.Body("modified_at"))),
     pattern: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetSettingTrustedDomainResponse",
 }) as any as S.Schema<GetSettingTrustedDomainResponse>;
@@ -3333,13 +3513,15 @@ export const GetSettingUrlIgnorePatternRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     patternId: S.String.pipe(T.Label("pattern_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/email-security/settings/url_ignore_patterns/{pattern_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/email-security/settings/url_ignore_patterns/{pattern_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetSettingUrlIgnorePatternRequest",
 }) as any as S.Schema<GetSettingUrlIgnorePatternRequest>;
@@ -3365,7 +3547,7 @@ export const GetSettingUrlIgnorePatternResponse = /*@__PURE__*/ S.suspend(() =>
     comments: S.optional(S.String),
     lastModified: S.optional(S.String.pipe(T.Body("last_modified"))),
     modifiedAt: S.optional(S.String.pipe(T.Body("modified_at"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetSettingUrlIgnorePatternResponse",
 }) as any as S.Schema<GetSettingUrlIgnorePatternResponse>;
@@ -3396,13 +3578,15 @@ export const ListInvestigateBulkMessagesRequest = /*@__PURE__*/ S.suspend(() =>
     status: S.optional(
       InvestigateBulkMessagesListRequestStatus.pipe(T.Query()),
     ),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/email-security/investigate/bulk/{job_id}/messages",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/email-security/investigate/bulk/{job_id}/messages",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListInvestigateBulkMessagesRequest",
 }) as any as S.Schema<ListInvestigateBulkMessagesRequest>;
@@ -3498,7 +3682,7 @@ export const ListInvestigateBulkMessagesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: InvestigateBulkMessagesListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListInvestigateBulkMessagesResponse",
 }) as any as S.Schema<ListInvestigateBulkMessagesResponse>;
@@ -3535,13 +3719,15 @@ export const ListInvestigateBulksRequest = /*@__PURE__*/ S.suspend(() =>
     page: S.optional(S.Number.pipe(T.Query())),
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
     status: S.optional(InvestigateBulkListRequestStatus.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/email-security/investigate/bulk",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/email-security/investigate/bulk",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListInvestigateBulksRequest",
 }) as any as S.Schema<ListInvestigateBulksRequest>;
@@ -3717,7 +3903,7 @@ export const ListInvestigateBulksResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: InvestigateBulkListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListInvestigateBulksResponse",
 }) as any as S.Schema<ListInvestigateBulksResponse>;
@@ -3800,13 +3986,15 @@ export const ListInvestigatesRequest = /*@__PURE__*/ S.suspend(() =>
     sender: S.optional(S.String.pipe(T.Query())),
     start: S.optional(S.String.pipe(T.Query())),
     subject: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/email-security/investigate",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/email-security/investigate",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListInvestigatesRequest",
 }) as any as S.Schema<ListInvestigatesRequest>;
@@ -4215,7 +4403,7 @@ export const ListInvestigatesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: InvestigateListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListInvestigatesResponse",
 }) as any as S.Schema<ListInvestigatesResponse>;
@@ -4239,13 +4427,15 @@ export const ListPhishguardReportsRequest = /*@__PURE__*/ S.suspend(() =>
     fromDate: S.optional(S.String.pipe(T.Query("from_date"))),
     start: S.optional(S.String.pipe(T.Query())),
     toDate: S.optional(S.String.pipe(T.Query("to_date"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/email-security/phishguard/reports",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/email-security/phishguard/reports",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListPhishguardReportsRequest",
 }) as any as S.Schema<ListPhishguardReportsRequest>;
@@ -4350,7 +4540,7 @@ export const ListPhishguardReportsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: PhishguardReportsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListPhishguardReportsResponse",
 }) as any as S.Schema<ListPhishguardReportsResponse>;
@@ -4423,13 +4613,15 @@ export const ListSettingAllowPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
     search: S.optional(S.String.pipe(T.Query())),
     verifySender: S.optional(S.Boolean.pipe(T.Query("verify_sender"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/email-security/settings/allow_policies",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/email-security/settings/allow_policies",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListSettingAllowPoliciesRequest",
 }) as any as S.Schema<ListSettingAllowPoliciesRequest>;
@@ -4516,7 +4708,7 @@ export const ListSettingAllowPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: SettingsAllowPoliciesListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListSettingAllowPoliciesResponse",
 }) as any as S.Schema<ListSettingAllowPoliciesResponse>;
@@ -4574,13 +4766,15 @@ export const ListSettingBlockSendersRequest = /*@__PURE__*/ S.suspend(() =>
     ),
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
     search: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/email-security/settings/block_senders",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/email-security/settings/block_senders",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListSettingBlockSendersRequest",
 }) as any as S.Schema<ListSettingBlockSendersRequest>;
@@ -4642,7 +4836,7 @@ export const ListSettingBlockSendersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: SettingsBlockSendersListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListSettingBlockSendersResponse",
 }) as any as S.Schema<ListSettingBlockSendersResponse>;
@@ -4733,13 +4927,15 @@ export const ListSettingDomainsRequest = /*@__PURE__*/ S.suspend(() =>
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
     search: S.optional(S.String.pipe(T.Query())),
     status: S.optional(SettingsDomainsListRequestStatus.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/email-security/settings/domains",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/email-security/settings/domains",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListSettingDomainsRequest",
 }) as any as S.Schema<ListSettingDomainsRequest>;
@@ -4958,7 +5154,7 @@ export const ListSettingDomainsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: SettingsDomainsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListSettingDomainsResponse",
 }) as any as S.Schema<ListSettingDomainsResponse>;
@@ -5018,13 +5214,15 @@ export const ListSettingImpersonationRegistriesRequest =
         SettingsImpersonationRegistryListRequestProvenance.pipe(T.Query()),
       ),
       search: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/accounts/{account_id}/email-security/settings/impersonation_registry",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "GET",
+          uri: "/accounts/{account_id}/email-security/settings/impersonation_registry",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "ListSettingImpersonationRegistriesRequest",
   }) as any as S.Schema<ListSettingImpersonationRegistriesRequest>;
@@ -5098,7 +5296,7 @@ export const ListSettingImpersonationRegistriesResponse =
         T.EnvelopePayload(),
       ),
       resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "ListSettingImpersonationRegistriesResponse",
   }) as any as S.Schema<ListSettingImpersonationRegistriesResponse>;
@@ -5144,13 +5342,15 @@ export const ListSettingSendingDomainRestrictionsRequest =
       page: S.optional(S.Number.pipe(T.Query())),
       perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
       search: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/accounts/{account_id}/email-security/settings/sending_domain_restrictions",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "GET",
+          uri: "/accounts/{account_id}/email-security/settings/sending_domain_restrictions",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "ListSettingSendingDomainRestrictionsRequest",
   }) as any as S.Schema<ListSettingSendingDomainRestrictionsRequest>;
@@ -5212,7 +5412,7 @@ export const ListSettingSendingDomainRestrictionsResponse =
         T.EnvelopePayload(),
       ),
       resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "ListSettingSendingDomainRestrictionsResponse",
   }) as any as S.Schema<ListSettingSendingDomainRestrictionsResponse>;
@@ -5262,13 +5462,15 @@ export const ListSettingTrustedDomainsRequest = /*@__PURE__*/ S.suspend(() =>
     pattern: S.optional(S.String.pipe(T.Query())),
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
     search: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/email-security/settings/trusted_domains",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/email-security/settings/trusted_domains",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListSettingTrustedDomainsRequest",
 }) as any as S.Schema<ListSettingTrustedDomainsRequest>;
@@ -5321,7 +5523,7 @@ export const ListSettingTrustedDomainsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: SettingsTrustedDomainsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListSettingTrustedDomainsResponse",
 }) as any as S.Schema<ListSettingTrustedDomainsResponse>;
@@ -5339,13 +5541,15 @@ export const ListSettingUrlIgnorePatternsRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     page: S.optional(S.Number.pipe(T.Query())),
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/email-security/settings/url_ignore_patterns",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/email-security/settings/url_ignore_patterns",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListSettingUrlIgnorePatternsRequest",
 }) as any as S.Schema<ListSettingUrlIgnorePatternsRequest>;
@@ -5393,7 +5597,7 @@ export const ListSettingUrlIgnorePatternsResponse = /*@__PURE__*/ S.suspend(
     S.Struct({
       result: SettingsUrlIgnorePatternsListResultList.pipe(T.EnvelopePayload()),
       resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListSettingUrlIgnorePatternsResponse",
 }) as any as S.Schema<ListSettingUrlIgnorePatternsResponse>;
@@ -5473,13 +5677,15 @@ export const ListSubmissionsRequest = /*@__PURE__*/ S.suspend(() =>
     status: S.optional(S.String.pipe(T.Query())),
     submissionId: S.optional(S.String.pipe(T.Query("submission_id"))),
     type: S.optional(SubmissionsListRequestType.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/email-security/submissions",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/email-security/submissions",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListSubmissionsRequest",
 }) as any as S.Schema<ListSubmissionsRequest>;
@@ -5607,7 +5813,7 @@ export const ListSubmissionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: SubmissionsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListSubmissionsResponse",
 }) as any as S.Schema<ListSubmissionsResponse>;
@@ -5667,13 +5873,15 @@ export const PatchSettingAllowPolicyRequest = /*@__PURE__*/ S.suspend(() =>
       SettingsAllowPoliciesEditRequestPatternType.pipe(T.Body("pattern_type")),
     ),
     verifySender: S.optional(S.Boolean.pipe(T.Body("verify_sender"))),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/accounts/{account_id}/email-security/settings/allow_policies/{policy_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/accounts/{account_id}/email-security/settings/allow_policies/{policy_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchSettingAllowPolicyRequest",
 }) as any as S.Schema<PatchSettingAllowPolicyRequest>;
@@ -5738,7 +5946,7 @@ export const PatchSettingAllowPolicyResponse = /*@__PURE__*/ S.suspend(() =>
       SettingsAllowPoliciesEditResponsePatternType.pipe(T.Body("pattern_type")),
     ),
     verifySender: S.optional(S.Boolean.pipe(T.Body("verify_sender"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchSettingAllowPolicyResponse",
 }) as any as S.Schema<PatchSettingAllowPolicyResponse>;
@@ -5773,13 +5981,15 @@ export const PatchSettingBlockSenderRequest = /*@__PURE__*/ S.suspend(() =>
     patternType: S.optional(
       SettingsBlockSendersEditRequestPatternType.pipe(T.Body("pattern_type")),
     ),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/accounts/{account_id}/email-security/settings/block_senders/{pattern_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/accounts/{account_id}/email-security/settings/block_senders/{pattern_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchSettingBlockSenderRequest",
 }) as any as S.Schema<PatchSettingBlockSenderRequest>;
@@ -5819,7 +6029,7 @@ export const PatchSettingBlockSenderResponse = /*@__PURE__*/ S.suspend(() =>
     patternType: S.optional(
       SettingsBlockSendersEditResponsePatternType.pipe(T.Body("pattern_type")),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchSettingBlockSenderResponse",
 }) as any as S.Schema<PatchSettingBlockSenderResponse>;
@@ -5927,13 +6137,15 @@ export const PatchSettingDomainRequest = /*@__PURE__*/ S.suspend(() =>
       S.Boolean.pipe(T.Body("require_tls_outbound")),
     ),
     transport: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/accounts/{account_id}/email-security/settings/domains/{domain_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/accounts/{account_id}/email-security/settings/domains/{domain_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchSettingDomainRequest",
 }) as any as S.Schema<PatchSettingDomainRequest>;
@@ -6132,7 +6344,7 @@ export const PatchSettingDomainResponse = /*@__PURE__*/ S.suspend(() =>
     ),
     status: S.optional(SettingsDomainsEditResponseStatus),
     transport: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchSettingDomainResponse",
 }) as any as S.Schema<PatchSettingDomainResponse>;
@@ -6179,13 +6391,15 @@ export const PatchSettingImpersonationRegistryRequest = /*@__PURE__*/ S.suspend(
       provenance: S.optional(
         SettingsImpersonationRegistryEditRequestProvenance,
       ),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "/accounts/{account_id}/email-security/settings/impersonation_registry/{impersonation_registry_id}",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "PATCH",
+          uri: "/accounts/{account_id}/email-security/settings/impersonation_registry/{impersonation_registry_id}",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchSettingImpersonationRegistryRequest",
 }) as any as S.Schema<PatchSettingImpersonationRegistryRequest>;
@@ -6235,7 +6449,7 @@ export const PatchSettingImpersonationRegistryResponse =
       provenance: S.optional(
         SettingsImpersonationRegistryEditResponseProvenance,
       ),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "PatchSettingImpersonationRegistryResponse",
   }) as any as S.Schema<PatchSettingImpersonationRegistryResponse>;
@@ -6269,13 +6483,15 @@ export const PatchSettingSendingDomainRestrictionRequest =
       exclude: S.optional(
         SettingsSendingDomainRestrictionsEditRequestExcludeList,
       ),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "/accounts/{account_id}/email-security/settings/sending_domain_restrictions/{sending_domain_restriction_id}",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "PATCH",
+          uri: "/accounts/{account_id}/email-security/settings/sending_domain_restrictions/{sending_domain_restriction_id}",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "PatchSettingSendingDomainRestrictionRequest",
   }) as any as S.Schema<PatchSettingSendingDomainRestrictionRequest>;
@@ -6312,7 +6528,7 @@ export const PatchSettingSendingDomainRestrictionResponse =
       ),
       lastModified: S.optional(S.String.pipe(T.Body("last_modified"))),
       modifiedAt: S.optional(S.String.pipe(T.Body("modified_at"))),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "PatchSettingSendingDomainRestrictionResponse",
   }) as any as S.Schema<PatchSettingSendingDomainRestrictionResponse>;
@@ -6339,13 +6555,15 @@ export const PatchSettingTrustedDomainRequest = /*@__PURE__*/ S.suspend(() =>
     isRegex: S.optional(S.Boolean.pipe(T.Body("is_regex"))),
     isSimilarity: S.optional(S.Boolean.pipe(T.Body("is_similarity"))),
     pattern: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/accounts/{account_id}/email-security/settings/trusted_domains/{trusted_domain_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/accounts/{account_id}/email-security/settings/trusted_domains/{trusted_domain_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchSettingTrustedDomainRequest",
 }) as any as S.Schema<PatchSettingTrustedDomainRequest>;
@@ -6377,7 +6595,7 @@ export const PatchSettingTrustedDomainResponse = /*@__PURE__*/ S.suspend(() =>
     lastModified: S.optional(S.String.pipe(T.Body("last_modified"))),
     modifiedAt: S.optional(S.String.pipe(T.Body("modified_at"))),
     pattern: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchSettingTrustedDomainResponse",
 }) as any as S.Schema<PatchSettingTrustedDomainResponse>;
@@ -6398,13 +6616,15 @@ export const PatchSettingUrlIgnorePatternRequest = /*@__PURE__*/ S.suspend(() =>
     patternId: S.String.pipe(T.Label("pattern_id")),
     comments: S.optional(S.String),
     pattern: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/accounts/{account_id}/email-security/settings/url_ignore_patterns/{pattern_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/accounts/{account_id}/email-security/settings/url_ignore_patterns/{pattern_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchSettingUrlIgnorePatternRequest",
 }) as any as S.Schema<PatchSettingUrlIgnorePatternRequest>;
@@ -6431,7 +6651,7 @@ export const PatchSettingUrlIgnorePatternResponse = /*@__PURE__*/ S.suspend(
       comments: S.optional(S.String),
       lastModified: S.optional(S.String.pipe(T.Body("last_modified"))),
       modifiedAt: S.optional(S.String.pipe(T.Body("modified_at"))),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchSettingUrlIgnorePatternResponse",
 }) as any as S.Schema<PatchSettingUrlIgnorePatternResponse>;

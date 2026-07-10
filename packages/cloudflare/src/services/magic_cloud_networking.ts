@@ -14,6 +14,109 @@ import * as Retry from "../retry.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
+/** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
+const KEY_DICTIONARY: Record<string, string> = {
+  accountId: "account_id",
+  adoptedHubId: "adopted_hub_id",
+  applicableDestinations: "applicable_destinations",
+  applyProgress: "apply_progress",
+  attachedHubs: "attached_hubs",
+  attachedVpcs: "attached_vpcs",
+  awsArn: "aws_arn",
+  awsTrustPolicy: "aws_trust_policy",
+  azureConsentUrl: "azure_consent_url",
+  azureSubscriptionId: "azure_subscription_id",
+  azureTenantId: "azure_tenant_id",
+  clientType: "client_type",
+  cloudAsn: "cloud_asn",
+  cloudType: "cloud_type",
+  credentialsGoodSince: "credentials_good_since",
+  credentialsMissingSince: "credentials_missing_since",
+  credentialsRejectedSince: "credentials_rejected_since",
+  currentMonthlyCost: "current_monthly_cost",
+  deploymentProvider: "deployment_provider",
+  destinationId: "destination_id",
+  destinationType: "destination_type",
+  discoveryMessage: "discovery_message",
+  discoveryMessageV2: "discovery_message_v2",
+  discoveryProgress: "discovery_progress",
+  discoveryProgressV2: "discovery_progress_v2",
+  documentationUrl: "documentation_url",
+  dynamicRouting: "dynamic_routing",
+  friendlyName: "friendly_name",
+  gcpProjectId: "gcp_project_id",
+  gcpServiceAccountEmail: "gcp_service_account_email",
+  helpText: "help_text",
+  hiddenItems: "hidden_items",
+  hubProviderId: "hub_provider_id",
+  inUseBy: "in_use_by",
+  includesDiscoveriesUntil: "includes_discoveries_until",
+  installRoutesInCloud: "install_routes_in_cloud",
+  installRoutesInMagicWan: "install_routes_in_magic_wan",
+  integrationIdentityTag: "integration_identity_tag",
+  itemType: "item_type",
+  keysRequireReplace: "keys_require_replace",
+  l10nKey: "l10n_key",
+  lastAppliedAt: "last_applied_at",
+  lastAttemptedUpdateAt: "last_attempted_update_at",
+  lastDiscoveryCompletedAt: "last_discovery_completed_at",
+  lastDiscoveryCompletedAtV2: "last_discovery_completed_at_v2",
+  lastDiscoveryStartedAt: "last_discovery_started_at",
+  lastDiscoveryStartedAtV2: "last_discovery_started_at_v2",
+  lastDiscoveryStatus: "last_discovery_status",
+  lastDiscoveryStatusV2: "last_discovery_status_v2",
+  lastExportedAt: "last_exported_at",
+  lastPlannedAt: "last_planned_at",
+  lastSuccessfulUpdateAt: "last_successful_update_at",
+  lastUpdated: "last_updated",
+  lastUserUpdateAt: "last_user_update_at",
+  leftDescription: "left_description",
+  leftYaml: "left_yaml",
+  lifecycleErrors: "lifecycle_errors",
+  lifecycleState: "lifecycle_state",
+  loggableError: "loggable_error",
+  manageHubToHubAttachments: "manage_hub_to_hub_attachments",
+  manageVpcToHubAttachments: "manage_vpc_to_hub_attachments",
+  managedBy: "managed_by",
+  monthlyCost: "monthly_cost",
+  monthlyCostEstimate: "monthly_cost_estimate",
+  monthlyCostEstimateDiff: "monthly_cost_estimate_diff",
+  nativeId: "native_id",
+  parameterValueIndex: "parameter_value_index",
+  perPage: "per_page",
+  planProgress: "plan_progress",
+  plannedAction: "planned_action",
+  plannedMonthlyCostEstimate: "planned_monthly_cost_estimate",
+  plannedResources: "planned_resources",
+  plannedResourcesUnavailable: "planned_resources_unavailable",
+  policyDescription: "policy_description",
+  policyName: "policy_name",
+  policyString: "policy_string",
+  postApplyMonthlyCostEstimate: "post_apply_monthly_cost_estimate",
+  postApplyResources: "post_apply_resources",
+  postApplyResourcesUnavailable: "post_apply_resources_unavailable",
+  proposedMonthlyCost: "proposed_monthly_cost",
+  providerIds: "provider_ids",
+  providerNamesById: "provider_names_by_id",
+  resourceGroup: "resource_group",
+  resourcePreview: "resource_preview",
+  resourceType: "resource_type",
+  resultInfo: "result_info",
+  rightDescription: "right_description",
+  rightYaml: "right_yaml",
+  stateV2: "state_v2",
+  tagCliCommand: "tag_cli_command",
+  templateData: "template_data",
+  totalCount: "total_count",
+  traceId: "trace_id",
+  updateMode: "update_mode",
+  updatedAt: "updated_at",
+  visibleItems: "visible_items",
+  vpcsById: "vpcs_by_id",
+  vpcsByIdUnavailable: "vpcs_by_id_unavailable",
+  yamlDiff: "yaml_diff",
+};
+
 export class CatalogSyncNotFound extends T.applyErrorMatchers(
   S.TaggedErrorClass<CatalogSyncNotFound>()("CatalogSyncNotFound", {
     code: S.Number,
@@ -62,20 +165,22 @@ export const ApplyOnRampRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     onrampId: S.String.pipe(T.Label("onramp_id")),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/magic/cloud/onramps/{onramp_id}/apply",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/magic/cloud/onramps/{onramp_id}/apply",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ApplyOnRampRequest",
 }) as any as S.Schema<ApplyOnRampRequest>;
 
 export interface ApplyOnRampResponse {}
 export const ApplyOnRampResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
+  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ApplyOnRampResponse",
 }) as any as S.Schema<ApplyOnRampResponse>;
@@ -112,13 +217,15 @@ export const CreateCatalogSyncRequest = /*@__PURE__*/ S.suspend(() =>
     updateMode: CatalogSyncsCreateRequestUpdateMode.pipe(T.Body("update_mode")),
     description: S.optional(S.String),
     policy: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/magic/cloud/catalog-syncs",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/magic/cloud/catalog-syncs",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateCatalogSyncRequest",
 }) as any as S.Schema<CreateCatalogSyncRequest>;
@@ -182,7 +289,7 @@ export const CreateCatalogSyncResponse = /*@__PURE__*/ S.suspend(() =>
     lastSuccessfulUpdateAt: S.optional(
       S.String.pipe(T.Body("last_successful_update_at")),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateCatalogSyncResponse",
 }) as any as S.Schema<CreateCatalogSyncResponse>;
@@ -211,13 +318,15 @@ export const CreateCloudIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
     ),
     friendlyName: S.String.pipe(T.Body("friendly_name")),
     description: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/magic/cloud/providers",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/magic/cloud/providers",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateCloudIntegrationRequest",
 }) as any as S.Schema<CreateCloudIntegrationRequest>;
@@ -453,7 +562,7 @@ export const CreateCloudIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
       S.String.pipe(T.Body("gcp_service_account_email")),
     ),
     status: S.optional(CloudIntegrationsCreateResponseStatus),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateCloudIntegrationResponse",
 }) as any as S.Schema<CreateCloudIntegrationResponse>;
@@ -533,13 +642,15 @@ export const CreateOnRampRequest = /*@__PURE__*/ S.suspend(() =>
     ),
     region: S.optional(S.String),
     vpc: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/magic/cloud/onramps",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/magic/cloud/onramps",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateOnRampRequest",
 }) as any as S.Schema<CreateOnRampRequest>;
@@ -941,7 +1052,7 @@ export const CreateOnRampResponse = /*@__PURE__*/ S.suspend(() =>
         T.Body("vpcs_by_id_unavailable"),
       ),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateOnRampResponse",
 }) as any as S.Schema<CreateOnRampResponse>;
@@ -958,13 +1069,15 @@ export const DeleteCatalogSyncRequest = /*@__PURE__*/ S.suspend(() =>
     deleteDestination: S.optional(
       S.Boolean.pipe(T.Query("delete_destination")),
     ),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/magic/cloud/catalog-syncs/{sync_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/magic/cloud/catalog-syncs/{sync_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteCatalogSyncRequest",
 }) as any as S.Schema<DeleteCatalogSyncRequest>;
@@ -976,7 +1089,7 @@ export interface DeleteCatalogSyncResponse {
 export const DeleteCatalogSyncResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteCatalogSyncResponse",
 }) as any as S.Schema<DeleteCatalogSyncResponse>;
@@ -989,13 +1102,15 @@ export const DeleteCloudIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     providerId: S.String.pipe(T.Label("provider_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/magic/cloud/providers/{provider_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/magic/cloud/providers/{provider_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteCloudIntegrationRequest",
 }) as any as S.Schema<DeleteCloudIntegrationRequest>;
@@ -1007,7 +1122,7 @@ export interface DeleteCloudIntegrationResponse {
 export const DeleteCloudIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteCloudIntegrationResponse",
 }) as any as S.Schema<DeleteCloudIntegrationResponse>;
@@ -1024,13 +1139,15 @@ export const DeleteOnRampRequest = /*@__PURE__*/ S.suspend(() =>
     onrampId: S.String.pipe(T.Label("onramp_id")),
     destroy: S.optional(S.Boolean.pipe(T.Query())),
     force: S.optional(S.Boolean.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/magic/cloud/onramps/{onramp_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/magic/cloud/onramps/{onramp_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteOnRampRequest",
 }) as any as S.Schema<DeleteOnRampRequest>;
@@ -1042,7 +1159,7 @@ export interface DeleteOnRampResponse {
 export const DeleteOnRampResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteOnRampResponse",
 }) as any as S.Schema<DeleteOnRampResponse>;
@@ -1053,20 +1170,22 @@ export interface DiscoverAllCloudIntegrationRequest {
 export const DiscoverAllCloudIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/magic/cloud/providers/discover",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/magic/cloud/providers/discover",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DiscoverAllCloudIntegrationRequest",
 }) as any as S.Schema<DiscoverAllCloudIntegrationRequest>;
 
 export interface DiscoverAllCloudIntegrationResponse {}
 export const DiscoverAllCloudIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
+  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DiscoverAllCloudIntegrationResponse",
 }) as any as S.Schema<DiscoverAllCloudIntegrationResponse>;
@@ -1081,20 +1200,22 @@ export const DiscoverCloudIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     providerId: S.String.pipe(T.Label("provider_id")),
     v2: S.optional(S.Boolean.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/magic/cloud/providers/{provider_id}/discover",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/magic/cloud/providers/{provider_id}/discover",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DiscoverCloudIntegrationRequest",
 }) as any as S.Schema<DiscoverCloudIntegrationRequest>;
 
 export interface DiscoverCloudIntegrationResponse {}
 export const DiscoverCloudIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
+  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DiscoverCloudIntegrationResponse",
 }) as any as S.Schema<DiscoverCloudIntegrationResponse>;
@@ -1107,20 +1228,22 @@ export const ExportOnRampRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     onrampId: S.String.pipe(T.Label("onramp_id")),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/magic/cloud/onramps/{onramp_id}/export",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/magic/cloud/onramps/{onramp_id}/export",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ExportOnRampRequest",
 }) as any as S.Schema<ExportOnRampRequest>;
 
 export interface ExportOnRampResponse {}
 export const ExportOnRampResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
+  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ExportOnRampResponse",
 }) as any as S.Schema<ExportOnRampResponse>;
@@ -1177,20 +1300,22 @@ export const ExportResourceRequest = /*@__PURE__*/ S.suspend(() =>
     ),
     search: S.optional(ResourcesExportRequestSearchList.pipe(T.Query())),
     v2: S.optional(S.Boolean.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/magic/cloud/resources/export",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/magic/cloud/resources/export",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ExportResourceRequest",
 }) as any as S.Schema<ExportResourceRequest>;
 
 export interface ExportResourceResponse {}
 export const ExportResourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
+  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ExportResourceResponse",
 }) as any as S.Schema<ExportResourceResponse>;
@@ -1203,13 +1328,15 @@ export const GetCatalogSyncRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     syncId: S.String.pipe(T.Label("sync_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/magic/cloud/catalog-syncs/{sync_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/magic/cloud/catalog-syncs/{sync_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetCatalogSyncRequest",
 }) as any as S.Schema<GetCatalogSyncRequest>;
@@ -1271,7 +1398,7 @@ export const GetCatalogSyncResponse = /*@__PURE__*/ S.suspend(() =>
     lastSuccessfulUpdateAt: S.optional(
       S.String.pipe(T.Body("last_successful_update_at")),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetCatalogSyncResponse",
 }) as any as S.Schema<GetCatalogSyncResponse>;
@@ -1286,13 +1413,15 @@ export const GetCloudIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     providerId: S.String.pipe(T.Label("provider_id")),
     status: S.optional(S.Boolean.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/magic/cloud/providers/{provider_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/magic/cloud/providers/{provider_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetCloudIntegrationRequest",
 }) as any as S.Schema<GetCloudIntegrationRequest>;
@@ -1521,7 +1650,7 @@ export const GetCloudIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
       S.String.pipe(T.Body("gcp_service_account_email")),
     ),
     status: S.optional(CloudIntegrationsGetResponseStatus),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetCloudIntegrationResponse",
 }) as any as S.Schema<GetCloudIntegrationResponse>;
@@ -1544,13 +1673,15 @@ export const GetOnRampRequest = /*@__PURE__*/ S.suspend(() =>
     ),
     status: S.optional(S.Boolean.pipe(T.Query())),
     vpcs: S.optional(S.Boolean.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/magic/cloud/onramps/{onramp_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/magic/cloud/onramps/{onramp_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetOnRampRequest",
 }) as any as S.Schema<GetOnRampRequest>;
@@ -1945,7 +2076,7 @@ export const GetOnRampResponse = /*@__PURE__*/ S.suspend(() =>
         T.Body("vpcs_by_id_unavailable"),
       ),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetOnRampResponse",
 }) as any as S.Schema<GetOnRampResponse>;
@@ -1960,13 +2091,15 @@ export const GetResourceRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     resourceId: S.String.pipe(T.Label("resource_id")),
     v2: S.optional(S.Boolean.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/magic/cloud/resources/{resource_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/magic/cloud/resources/{resource_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetResourceRequest",
 }) as any as S.Schema<GetResourceRequest>;
@@ -2264,7 +2397,7 @@ export const GetResourceResponse = /*@__PURE__*/ S.suspend(() =>
     managedBy: S.optional(
       ResourcesGetResponseManagedByList.pipe(T.Body("managed_by")),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetResourceResponse",
 }) as any as S.Schema<GetResourceResponse>;
@@ -2277,13 +2410,15 @@ export const InitialSetupCloudIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     providerId: S.String.pipe(T.Label("provider_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/magic/cloud/providers/{provider_id}/initial_setup",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/magic/cloud/providers/{provider_id}/initial_setup",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "InitialSetupCloudIntegrationRequest",
 }) as any as S.Schema<InitialSetupCloudIntegrationRequest>;
@@ -2312,7 +2447,7 @@ export const InitialSetupCloudIntegrationResponse = /*@__PURE__*/ S.suspend(
             "McnGcpSetup object { integration_identity_tag, item_type, tag_cli_command }",
           ),
         ),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "InitialSetupCloudIntegrationResponse",
 }) as any as S.Schema<InitialSetupCloudIntegrationResponse>;
@@ -2338,13 +2473,15 @@ export const ListCatalogSyncPrebuiltPoliciesRequest = /*@__PURE__*/ S.suspend(
           T.Query("destination_type"),
         ),
       ),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/accounts/{account_id}/magic/cloud/catalog-syncs/prebuilt-policies",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "GET",
+          uri: "/accounts/{account_id}/magic/cloud/catalog-syncs/prebuilt-policies",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListCatalogSyncPrebuiltPoliciesRequest",
 }) as any as S.Schema<ListCatalogSyncPrebuiltPoliciesRequest>;
@@ -2401,7 +2538,7 @@ export const ListCatalogSyncPrebuiltPoliciesResponse = /*@__PURE__*/ S.suspend(
         T.EnvelopePayload(),
       ),
       resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListCatalogSyncPrebuiltPoliciesResponse",
 }) as any as S.Schema<ListCatalogSyncPrebuiltPoliciesResponse>;
@@ -2412,13 +2549,15 @@ export interface ListCatalogSyncsRequest {
 export const ListCatalogSyncsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/magic/cloud/catalog-syncs",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/magic/cloud/catalog-syncs",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListCatalogSyncsRequest",
 }) as any as S.Schema<ListCatalogSyncsRequest>;
@@ -2501,7 +2640,7 @@ export const ListCatalogSyncsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: CatalogSyncsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListCatalogSyncsResponse",
 }) as any as S.Schema<ListCatalogSyncsResponse>;
@@ -2521,13 +2660,15 @@ export const ListCloudIntegrationsRequest = /*@__PURE__*/ S.suspend(() =>
     desc: S.optional(S.Boolean.pipe(T.Query())),
     orderBy: S.optional(S.String.pipe(T.Query("order_by"))),
     status: S.optional(S.Boolean.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/magic/cloud/providers",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/magic/cloud/providers",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListCloudIntegrationsRequest",
 }) as any as S.Schema<ListCloudIntegrationsRequest>;
@@ -2782,7 +2923,7 @@ export const ListCloudIntegrationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: CloudIntegrationsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListCloudIntegrationsResponse",
 }) as any as S.Schema<ListCloudIntegrationsResponse>;
@@ -2793,13 +2934,15 @@ export interface ListOnRampAddressSpacesRequest {
 export const ListOnRampAddressSpacesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/magic/cloud/onramps/magic_wan_address_space",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/magic/cloud/onramps/magic_wan_address_space",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListOnRampAddressSpacesRequest",
 }) as any as S.Schema<ListOnRampAddressSpacesRequest>;
@@ -2817,7 +2960,7 @@ export interface ListOnRampAddressSpacesResponse {
 export const ListOnRampAddressSpacesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     prefixes: OnRampsAddressSpacesListResponsePrefixesList,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListOnRampAddressSpacesResponse",
 }) as any as S.Schema<ListOnRampAddressSpacesResponse>;
@@ -2837,13 +2980,15 @@ export const ListOnRampsRequest = /*@__PURE__*/ S.suspend(() =>
     orderBy: S.optional(S.String.pipe(T.Query("order_by"))),
     status: S.optional(S.Boolean.pipe(T.Query())),
     vpcs: S.optional(S.Boolean.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/magic/cloud/onramps",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/magic/cloud/onramps",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListOnRampsRequest",
 }) as any as S.Schema<ListOnRampsRequest>;
@@ -3264,7 +3409,7 @@ export const ListOnRampsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: OnRampsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListOnRampsResponse",
 }) as any as S.Schema<ListOnRampsResponse>;
@@ -3329,13 +3474,15 @@ export const ListResourcesRequest = /*@__PURE__*/ S.suspend(() =>
     ),
     search: S.optional(ResourcesListRequestSearchList.pipe(T.Query())),
     v2: S.optional(S.Boolean.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/magic/cloud/resources",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/magic/cloud/resources",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListResourcesRequest",
 }) as any as S.Schema<ListResourcesRequest>;
@@ -3658,7 +3805,7 @@ export const ListResourcesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: ResourcesListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListResourcesResponse",
 }) as any as S.Schema<ListResourcesResponse>;
@@ -3687,13 +3834,15 @@ export const PatchCatalogSyncRequest = /*@__PURE__*/ S.suspend(() =>
     updateMode: S.optional(
       CatalogSyncsEditRequestUpdateMode.pipe(T.Body("update_mode")),
     ),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/accounts/{account_id}/magic/cloud/catalog-syncs/{sync_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/accounts/{account_id}/magic/cloud/catalog-syncs/{sync_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchCatalogSyncRequest",
 }) as any as S.Schema<PatchCatalogSyncRequest>;
@@ -3755,7 +3904,7 @@ export const PatchCatalogSyncResponse = /*@__PURE__*/ S.suspend(() =>
     lastSuccessfulUpdateAt: S.optional(
       S.String.pipe(T.Body("last_successful_update_at")),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchCatalogSyncResponse",
 }) as any as S.Schema<PatchCatalogSyncResponse>;
@@ -3786,13 +3935,15 @@ export const PatchCloudIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
     gcpServiceAccountEmail: S.optional(
       S.String.pipe(T.Body("gcp_service_account_email")),
     ),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/accounts/{account_id}/magic/cloud/providers/{provider_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/accounts/{account_id}/magic/cloud/providers/{provider_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchCloudIntegrationRequest",
 }) as any as S.Schema<PatchCloudIntegrationRequest>;
@@ -4024,7 +4175,7 @@ export const PatchCloudIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
       S.String.pipe(T.Body("gcp_service_account_email")),
     ),
     status: S.optional(CloudIntegrationsEditResponseStatus),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchCloudIntegrationResponse",
 }) as any as S.Schema<PatchCloudIntegrationResponse>;
@@ -4077,13 +4228,15 @@ export const PatchOnRampRequest = /*@__PURE__*/ S.suspend(() =>
     ),
     name: S.optional(S.String),
     vpc: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/accounts/{account_id}/magic/cloud/onramps/{onramp_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/accounts/{account_id}/magic/cloud/onramps/{onramp_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchOnRampRequest",
 }) as any as S.Schema<PatchOnRampRequest>;
@@ -4479,7 +4632,7 @@ export const PatchOnRampResponse = /*@__PURE__*/ S.suspend(() =>
         T.Body("vpcs_by_id_unavailable"),
       ),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchOnRampResponse",
 }) as any as S.Schema<PatchOnRampResponse>;
@@ -4498,13 +4651,15 @@ export const PatchOnRampAddressSpaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     prefixes: OnRampsAddressSpacesEditRequestPrefixesList,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/accounts/{account_id}/magic/cloud/onramps/magic_wan_address_space",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/accounts/{account_id}/magic/cloud/onramps/magic_wan_address_space",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchOnRampAddressSpaceRequest",
 }) as any as S.Schema<PatchOnRampAddressSpaceRequest>;
@@ -4522,7 +4677,7 @@ export interface PatchOnRampAddressSpaceResponse {
 export const PatchOnRampAddressSpaceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     prefixes: OnRampsAddressSpacesEditResponsePrefixesList,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchOnRampAddressSpaceResponse",
 }) as any as S.Schema<PatchOnRampAddressSpaceResponse>;
@@ -4535,20 +4690,22 @@ export const PlanOnRampRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     onrampId: S.String.pipe(T.Label("onramp_id")),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/magic/cloud/onramps/{onramp_id}/plan",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/magic/cloud/onramps/{onramp_id}/plan",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PlanOnRampRequest",
 }) as any as S.Schema<PlanOnRampRequest>;
 
 export interface PlanOnRampResponse {}
 export const PlanOnRampResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
+  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PlanOnRampResponse",
 }) as any as S.Schema<PlanOnRampResponse>;
@@ -4561,13 +4718,15 @@ export const PolicyPreviewResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     policy: S.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/magic/cloud/resources/policy-preview",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/magic/cloud/resources/policy-preview",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PolicyPreviewResourceRequest",
 }) as any as S.Schema<PolicyPreviewResourceRequest>;
@@ -4579,7 +4738,7 @@ export interface PolicyPreviewResourceResponse {
 export const PolicyPreviewResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(S.String.pipe(T.EnvelopePayload())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PolicyPreviewResourceResponse",
 }) as any as S.Schema<PolicyPreviewResourceResponse>;
@@ -4598,13 +4757,15 @@ export const PutOnRampAddressSpaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     prefixes: OnRampsAddressSpacesUpdateRequestPrefixesList,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/magic/cloud/onramps/magic_wan_address_space",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/magic/cloud/onramps/magic_wan_address_space",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutOnRampAddressSpaceRequest",
 }) as any as S.Schema<PutOnRampAddressSpaceRequest>;
@@ -4622,7 +4783,7 @@ export interface PutOnRampAddressSpaceResponse {
 export const PutOnRampAddressSpaceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     prefixes: OnRampsAddressSpacesUpdateResponsePrefixesList,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutOnRampAddressSpaceResponse",
 }) as any as S.Schema<PutOnRampAddressSpaceResponse>;
@@ -4635,13 +4796,15 @@ export const RefreshCatalogSyncRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     syncId: S.String.pipe(T.Label("sync_id")),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/magic/cloud/catalog-syncs/{sync_id}/refresh",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/magic/cloud/catalog-syncs/{sync_id}/refresh",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "RefreshCatalogSyncRequest",
 }) as any as S.Schema<RefreshCatalogSyncRequest>;
@@ -4653,7 +4816,7 @@ export interface RefreshCatalogSyncResponse {
 export const RefreshCatalogSyncResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(S.String.pipe(T.EnvelopePayload())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "RefreshCatalogSyncResponse",
 }) as any as S.Schema<RefreshCatalogSyncResponse>;
@@ -4682,13 +4845,15 @@ export const UpdateCatalogSyncRequest = /*@__PURE__*/ S.suspend(() =>
     updateMode: S.optional(
       CatalogSyncsUpdateRequestUpdateMode.pipe(T.Body("update_mode")),
     ),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/magic/cloud/catalog-syncs/{sync_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/magic/cloud/catalog-syncs/{sync_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateCatalogSyncRequest",
 }) as any as S.Schema<UpdateCatalogSyncRequest>;
@@ -4752,7 +4917,7 @@ export const UpdateCatalogSyncResponse = /*@__PURE__*/ S.suspend(() =>
     lastSuccessfulUpdateAt: S.optional(
       S.String.pipe(T.Body("last_successful_update_at")),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateCatalogSyncResponse",
 }) as any as S.Schema<UpdateCatalogSyncResponse>;
@@ -4783,13 +4948,15 @@ export const UpdateCloudIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
     gcpServiceAccountEmail: S.optional(
       S.String.pipe(T.Body("gcp_service_account_email")),
     ),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/magic/cloud/providers/{provider_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/magic/cloud/providers/{provider_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateCloudIntegrationRequest",
 }) as any as S.Schema<UpdateCloudIntegrationRequest>;
@@ -5025,7 +5192,7 @@ export const UpdateCloudIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
       S.String.pipe(T.Body("gcp_service_account_email")),
     ),
     status: S.optional(CloudIntegrationsUpdateResponseStatus),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateCloudIntegrationResponse",
 }) as any as S.Schema<UpdateCloudIntegrationResponse>;
@@ -5078,13 +5245,15 @@ export const UpdateOnRampRequest = /*@__PURE__*/ S.suspend(() =>
     ),
     name: S.optional(S.String),
     vpc: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/magic/cloud/onramps/{onramp_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/magic/cloud/onramps/{onramp_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateOnRampRequest",
 }) as any as S.Schema<UpdateOnRampRequest>;
@@ -5486,7 +5655,7 @@ export const UpdateOnRampResponse = /*@__PURE__*/ S.suspend(() =>
         T.Body("vpcs_by_id_unavailable"),
       ),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateOnRampResponse",
 }) as any as S.Schema<UpdateOnRampResponse>;

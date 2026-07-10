@@ -1,0 +1,7 @@
+{
+  "bundleMethod": "bundle_method",
+  "createdOn": "created_on",
+  "modifiedOn": "modified_on",
+  "privateIp": "private_ip",
+  "vnetId": "vnet_id"
+}

@@ -12,6 +12,24 @@ import * as Retry from "../retry.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
+/** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
+const KEY_DICTIONARY: Record<string, string> = {
+  createdAt: "created_at",
+  credentialStatus: "credential_status",
+  maintenanceConfig: "maintenance_config",
+  maxSnapshotAge: "max_snapshot_age",
+  metadataLocation: "metadata_location",
+  minSnapshotsToKeep: "min_snapshots_to_keep",
+  namespaceUuid: "namespace_uuid",
+  namespaceUuids: "namespace_uuids",
+  nextPageToken: "next_page_token",
+  snapshotExpiration: "snapshot_expiration",
+  tableUuid: "table_uuid",
+  tableUuids: "table_uuids",
+  targetSizeMb: "target_size_mb",
+  updatedAt: "updated_at",
+};
+
 export class Forbidden extends T.applyErrorMatchers(
   S.TaggedErrorClass<Forbidden>()("Forbidden", {
     code: S.Number,
@@ -81,13 +99,15 @@ export const CreateCredentialRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     bucketName: S.String.pipe(T.Label("bucket_name")),
     token: S.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/r2-catalog/{bucket_name}/credential",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/r2-catalog/{bucket_name}/credential",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateCredentialRequest",
 }) as any as S.Schema<CreateCredentialRequest>;
@@ -99,7 +119,7 @@ export interface CreateCredentialResponse {
 export const CreateCredentialResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateCredentialResponse",
 }) as any as S.Schema<CreateCredentialResponse>;
@@ -114,20 +134,22 @@ export const DisableR2DataCatalogRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     bucketName: S.String.pipe(T.Label("bucket_name")),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/r2-catalog/{bucket_name}/disable",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/r2-catalog/{bucket_name}/disable",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DisableR2DataCatalogRequest",
 }) as any as S.Schema<DisableR2DataCatalogRequest>;
 
 export interface DisableR2DataCatalogResponse {}
 export const DisableR2DataCatalogResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
+  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DisableR2DataCatalogResponse",
 }) as any as S.Schema<DisableR2DataCatalogResponse>;
@@ -142,13 +164,15 @@ export const EnableR2DataCatalogRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     bucketName: S.String.pipe(T.Label("bucket_name")),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/r2-catalog/{bucket_name}/enable",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/r2-catalog/{bucket_name}/enable",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "EnableR2DataCatalogRequest",
 }) as any as S.Schema<EnableR2DataCatalogRequest>;
@@ -164,7 +188,7 @@ export const EnableR2DataCatalogResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "EnableR2DataCatalogResponse",
 }) as any as S.Schema<EnableR2DataCatalogResponse>;
@@ -179,13 +203,15 @@ export const GetMaintenanceConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     bucketName: S.String.pipe(T.Label("bucket_name")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/r2-catalog/{bucket_name}/maintenance-configs",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/r2-catalog/{bucket_name}/maintenance-configs",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetMaintenanceConfigRequest",
 }) as any as S.Schema<GetMaintenanceConfigRequest>;
@@ -291,7 +317,7 @@ export const GetMaintenanceConfigResponse = /*@__PURE__*/ S.suspend(() =>
     maintenanceConfig: MaintenanceConfigsGetResponseMaintenanceConfig.pipe(
       T.Body("maintenance_config"),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetMaintenanceConfigResponse",
 }) as any as S.Schema<GetMaintenanceConfigResponse>;
@@ -311,13 +337,15 @@ export const GetNamespaceTableMaintenanceConfigRequest =
       bucketName: S.String.pipe(T.Label("bucket_name")),
       namespace: S.String.pipe(T.Label()),
       tableName: S.String.pipe(T.Label("table_name")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/accounts/{account_id}/r2-catalog/{bucket_name}/namespaces/{namespace}/tables/{table_name}/maintenance-configs",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "GET",
+          uri: "/accounts/{account_id}/r2-catalog/{bucket_name}/namespaces/{namespace}/tables/{table_name}/maintenance-configs",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "GetNamespaceTableMaintenanceConfigRequest",
   }) as any as S.Schema<GetNamespaceTableMaintenanceConfigRequest>;
@@ -414,7 +442,7 @@ export const GetNamespaceTableMaintenanceConfigResponse =
         NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfig.pipe(
           T.Body("maintenance_config"),
         ),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "GetNamespaceTableMaintenanceConfigResponse",
   }) as any as S.Schema<GetNamespaceTableMaintenanceConfigResponse>;
@@ -429,13 +457,15 @@ export const GetR2DataCatalogRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     bucketName: S.String.pipe(T.Label("bucket_name")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/r2-catalog/{bucket_name}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/r2-catalog/{bucket_name}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetR2DataCatalogRequest",
 }) as any as S.Schema<GetR2DataCatalogRequest>;
@@ -552,7 +582,7 @@ export const GetR2DataCatalogResponse = /*@__PURE__*/ S.suspend(() =>
     maintenanceConfig: S.optional(
       GetResponseMaintenanceConfig.pipe(T.Body("maintenance_config")),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetR2DataCatalogResponse",
 }) as any as S.Schema<GetR2DataCatalogResponse>;
@@ -582,13 +612,15 @@ export const ListNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
     parent: S.optional(S.String.pipe(T.Query())),
     returnDetails: S.optional(S.Boolean.pipe(T.Query("return_details"))),
     returnUuids: S.optional(S.Boolean.pipe(T.Query("return_uuids"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/r2-catalog/{bucket_name}/namespaces",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/r2-catalog/{bucket_name}/namespaces",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListNamespacesRequest",
 }) as any as S.Schema<ListNamespacesRequest>;
@@ -655,7 +687,7 @@ export const ListNamespacesResponse = /*@__PURE__*/ S.suspend(() =>
       NamespacesListResponseNamespaceUuidsList.pipe(T.Body("namespace_uuids")),
     ),
     nextPageToken: S.optional(S.String.pipe(T.Body("next_page_token"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListNamespacesResponse",
 }) as any as S.Schema<ListNamespacesResponse>;
@@ -684,13 +716,15 @@ export const ListNamespaceTablesRequest = /*@__PURE__*/ S.suspend(() =>
     pageToken: S.optional(S.String.pipe(T.Query("page_token"))),
     returnDetails: S.optional(S.Boolean.pipe(T.Query("return_details"))),
     returnUuids: S.optional(S.Boolean.pipe(T.Query("return_uuids"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/r2-catalog/{bucket_name}/namespaces/{namespace}/tables",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/r2-catalog/{bucket_name}/namespaces/{namespace}/tables",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListNamespaceTablesRequest",
 }) as any as S.Schema<ListNamespaceTablesRequest>;
@@ -805,7 +839,7 @@ export const ListNamespaceTablesResponse = /*@__PURE__*/ S.suspend(() =>
     tableUuids: S.optional(
       NamespacesTablesListResponseTableUuidsList.pipe(T.Body("table_uuids")),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListNamespaceTablesResponse",
 }) as any as S.Schema<ListNamespaceTablesResponse>;
@@ -817,13 +851,15 @@ export interface ListR2DataCatalogsRequest {
 export const ListR2DataCatalogsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/r2-catalog",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/r2-catalog",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListR2DataCatalogsRequest",
 }) as any as S.Schema<ListR2DataCatalogsRequest>;
@@ -970,7 +1006,7 @@ export interface ListR2DataCatalogsResponse {
 export const ListR2DataCatalogsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     warehouses: ListResponseWarehousesList,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListR2DataCatalogsResponse",
 }) as any as S.Schema<ListR2DataCatalogsResponse>;
@@ -1059,13 +1095,15 @@ export const UpdateMaintenanceConfigRequest = /*@__PURE__*/ S.suspend(() =>
         T.Body("snapshot_expiration"),
       ),
     ),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/r2-catalog/{bucket_name}/maintenance-configs",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/r2-catalog/{bucket_name}/maintenance-configs",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateMaintenanceConfigRequest",
 }) as any as S.Schema<UpdateMaintenanceConfigRequest>;
@@ -1145,7 +1183,7 @@ export const UpdateMaintenanceConfigResponse = /*@__PURE__*/ S.suspend(() =>
         T.Body("snapshot_expiration"),
       ),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateMaintenanceConfigResponse",
 }) as any as S.Schema<UpdateMaintenanceConfigResponse>;
@@ -1240,13 +1278,15 @@ export const UpdateNamespaceTableMaintenanceConfigRequest =
           T.Body("snapshot_expiration"),
         ),
       ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/accounts/{account_id}/r2-catalog/{bucket_name}/namespaces/{namespace}/tables/{table_name}/maintenance-configs",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "POST",
+          uri: "/accounts/{account_id}/r2-catalog/{bucket_name}/namespaces/{namespace}/tables/{table_name}/maintenance-configs",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "UpdateNamespaceTableMaintenanceConfigRequest",
   }) as any as S.Schema<UpdateNamespaceTableMaintenanceConfigRequest>;
@@ -1326,7 +1366,7 @@ export const UpdateNamespaceTableMaintenanceConfigResponse =
           T.Body("snapshot_expiration"),
         ),
       ),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "UpdateNamespaceTableMaintenanceConfigResponse",
   }) as any as S.Schema<UpdateNamespaceTableMaintenanceConfigResponse>;

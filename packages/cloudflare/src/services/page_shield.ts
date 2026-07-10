@@ -14,6 +14,37 @@ import * as Retry from "../retry.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
+/** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
+const KEY_DICTIONARY: Record<string, string> = {
+  addedAt: "added_at",
+  cryptominingScore: "cryptomining_score",
+  dataflowScore: "dataflow_score",
+  domainAttribute: "domain_attribute",
+  domainReportedMalicious: "domain_reported_malicious",
+  expiresAttribute: "expires_attribute",
+  fetchedAt: "fetched_at",
+  firstPageUrl: "first_page_url",
+  firstSeenAt: "first_seen_at",
+  httpOnlyAttribute: "http_only_attribute",
+  jsIntegrityScore: "js_integrity_score",
+  lastSeenAt: "last_seen_at",
+  magecartScore: "magecart_score",
+  maliciousDomainCategories: "malicious_domain_categories",
+  maliciousUrlCategories: "malicious_url_categories",
+  malwareScore: "malware_score",
+  maxAgeAttribute: "max_age_attribute",
+  obfuscationScore: "obfuscation_score",
+  pageUrls: "page_urls",
+  pathAttribute: "path_attribute",
+  sameSiteAttribute: "same_site_attribute",
+  secureAttribute: "secure_attribute",
+  updatedAt: "updated_at",
+  urlContainsCdnCgiPath: "url_contains_cdn_cgi_path",
+  urlReportedMalicious: "url_reported_malicious",
+  useCloudflareReportingEndpoint: "use_cloudflare_reporting_endpoint",
+  useConnectionUrlPath: "use_connection_url_path",
+};
+
 export class Forbidden extends T.applyErrorMatchers(
   S.TaggedErrorClass<Forbidden>()("Forbidden", {
     code: S.Number,
@@ -83,13 +114,15 @@ export const CreatePolicyRequest = /*@__PURE__*/ S.suspend(() =>
     enabled: S.Boolean,
     expression: S.String,
     value: S.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/zones/{zone_id}/page_shield/policies",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/zones/{zone_id}/page_shield/policies",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreatePolicyRequest",
 }) as any as S.Schema<CreatePolicyRequest>;
@@ -124,7 +157,7 @@ export const CreatePolicyResponse = /*@__PURE__*/ S.suspend(() =>
     enabled: S.Boolean,
     expression: S.String,
     value: S.String,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreatePolicyResponse",
 }) as any as S.Schema<CreatePolicyResponse>;
@@ -139,20 +172,22 @@ export const DeletePolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     policyId: S.String.pipe(T.Label("policy_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/zones/{zone_id}/page_shield/policies/{policy_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/zones/{zone_id}/page_shield/policies/{policy_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeletePolicyRequest",
 }) as any as S.Schema<DeletePolicyRequest>;
 
 export interface DeletePolicyResponse {}
 export const DeletePolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
+  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeletePolicyResponse",
 }) as any as S.Schema<DeletePolicyResponse>;
@@ -167,13 +202,15 @@ export const GetConnectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     connectionId: S.String.pipe(T.Label("connection_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/page_shield/connections/{connection_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/page_shield/connections/{connection_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetConnectionRequest",
 }) as any as S.Schema<GetConnectionRequest>;
@@ -241,7 +278,7 @@ export const GetConnectionResponse = /*@__PURE__*/ S.suspend(() =>
     urlReportedMalicious: S.optional(
       S.Boolean.pipe(T.Body("url_reported_malicious")),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetConnectionResponse",
 }) as any as S.Schema<GetConnectionResponse>;
@@ -256,13 +293,15 @@ export const GetCookyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     cookieId: S.String.pipe(T.Label("cookie_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/page_shield/cookies/{cookie_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/page_shield/cookies/{cookie_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetCookyRequest",
 }) as any as S.Schema<GetCookyRequest>;
@@ -322,7 +361,7 @@ export const GetCookyResponse = /*@__PURE__*/ S.suspend(() =>
       CookiesGetResponseSameSiteAttribute.pipe(T.Body("same_site_attribute")),
     ),
     secureAttribute: S.optional(S.Boolean.pipe(T.Body("secure_attribute"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetCookyResponse",
 }) as any as S.Schema<GetCookyResponse>;
@@ -334,9 +373,11 @@ export interface GetPageShieldRequest {
 export const GetPageShieldRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-  }).pipe(
-    T.Http({ method: "GET", uri: "/zones/{zone_id}/page_shield", code: 200 }),
-  ),
+  })
+    .pipe(
+      T.Http({ method: "GET", uri: "/zones/{zone_id}/page_shield", code: 200 }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetPageShieldRequest",
 }) as any as S.Schema<GetPageShieldRequest>;
@@ -360,7 +401,7 @@ export const GetPageShieldResponse = /*@__PURE__*/ S.suspend(() =>
       T.Body("use_cloudflare_reporting_endpoint"),
     ),
     useConnectionUrlPath: S.Boolean.pipe(T.Body("use_connection_url_path")),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetPageShieldResponse",
 }) as any as S.Schema<GetPageShieldResponse>;
@@ -375,13 +416,15 @@ export const GetPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     policyId: S.String.pipe(T.Label("policy_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/page_shield/policies/{policy_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/page_shield/policies/{policy_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetPolicyRequest",
 }) as any as S.Schema<GetPolicyRequest>;
@@ -416,7 +459,7 @@ export const GetPolicyResponse = /*@__PURE__*/ S.suspend(() =>
     enabled: S.Boolean,
     expression: S.String,
     value: S.String,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetPolicyResponse",
 }) as any as S.Schema<GetPolicyResponse>;
@@ -431,13 +474,15 @@ export const GetScriptRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     scriptId: S.String.pipe(T.Label("script_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/page_shield/scripts/{script_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/page_shield/scripts/{script_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetScriptRequest",
 }) as any as S.Schema<GetScriptRequest>;
@@ -569,7 +614,7 @@ export const GetScriptResponse = /*@__PURE__*/ S.suspend(() =>
       S.Boolean.pipe(T.Body("url_reported_malicious")),
     ),
     versions: S.optional(ScriptsGetResponseVersionsList),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetScriptResponse",
 }) as any as S.Schema<GetScriptResponse>;
@@ -633,13 +678,15 @@ export const ListConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
     ),
     status: S.optional(S.String.pipe(T.Query())),
     urls: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/page_shield/connections",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/page_shield/connections",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListConnectionsRequest",
 }) as any as S.Schema<ListConnectionsRequest>;
@@ -726,7 +773,7 @@ export const ListConnectionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: ConnectionsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListConnectionsResponse",
 }) as any as S.Schema<ListConnectionsResponse>;
@@ -802,13 +849,15 @@ export const ListCookiesRequest = /*@__PURE__*/ S.suspend(() =>
     sameSite: S.optional(CookiesListRequestSameSite.pipe(T.Query("same_site"))),
     secure: S.optional(S.Boolean.pipe(T.Query())),
     type: S.optional(CookiesListRequestType.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/page_shield/cookies",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/page_shield/cookies",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListCookiesRequest",
 }) as any as S.Schema<ListCookiesRequest>;
@@ -892,7 +941,7 @@ export const ListCookiesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: CookiesListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListCookiesResponse",
 }) as any as S.Schema<ListCookiesResponse>;
@@ -904,13 +953,15 @@ export interface ListPoliciesRequest {
 export const ListPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/page_shield/policies",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/page_shield/policies",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListPoliciesRequest",
 }) as any as S.Schema<ListPoliciesRequest>;
@@ -964,7 +1015,7 @@ export const ListPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: PoliciesListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListPoliciesResponse",
 }) as any as S.Schema<ListPoliciesResponse>;
@@ -1031,13 +1082,15 @@ export const ListScriptsRequest = /*@__PURE__*/ S.suspend(() =>
     ),
     status: S.optional(S.String.pipe(T.Query())),
     urls: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/page_shield/scripts",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/page_shield/scripts",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListScriptsRequest",
 }) as any as S.Schema<ListScriptsRequest>;
@@ -1148,7 +1201,7 @@ export const ListScriptsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: ScriptsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListScriptsResponse",
 }) as any as S.Schema<ListScriptsResponse>;
@@ -1173,9 +1226,11 @@ export const PutPageShieldRequest = /*@__PURE__*/ S.suspend(() =>
     useConnectionUrlPath: S.optional(
       S.Boolean.pipe(T.Body("use_connection_url_path")),
     ),
-  }).pipe(
-    T.Http({ method: "PUT", uri: "/zones/{zone_id}/page_shield", code: 200 }),
-  ),
+  })
+    .pipe(
+      T.Http({ method: "PUT", uri: "/zones/{zone_id}/page_shield", code: 200 }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutPageShieldRequest",
 }) as any as S.Schema<PutPageShieldRequest>;
@@ -1199,7 +1254,7 @@ export const PutPageShieldResponse = /*@__PURE__*/ S.suspend(() =>
       T.Body("use_cloudflare_reporting_endpoint"),
     ),
     useConnectionUrlPath: S.Boolean.pipe(T.Body("use_connection_url_path")),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutPageShieldResponse",
 }) as any as S.Schema<PutPageShieldResponse>;
@@ -1236,13 +1291,15 @@ export const UpdatePolicyRequest = /*@__PURE__*/ S.suspend(() =>
     enabled: S.optional(S.Boolean),
     expression: S.optional(S.String),
     value: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/zones/{zone_id}/page_shield/policies/{policy_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/zones/{zone_id}/page_shield/policies/{policy_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdatePolicyRequest",
 }) as any as S.Schema<UpdatePolicyRequest>;
@@ -1277,7 +1334,7 @@ export const UpdatePolicyResponse = /*@__PURE__*/ S.suspend(() =>
     enabled: S.Boolean,
     expression: S.String,
     value: S.String,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdatePolicyResponse",
 }) as any as S.Schema<UpdatePolicyResponse>;

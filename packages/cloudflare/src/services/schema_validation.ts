@@ -14,6 +14,20 @@ import * as Retry from "../retry.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
+/** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
+const KEY_DICTIONARY: Record<string, string> = {
+  createdAt: "created_at",
+  mitigationAction: "mitigation_action",
+  operationId: "operation_id",
+  perPage: "per_page",
+  resultInfo: "result_info",
+  schemaId: "schema_id",
+  totalCount: "total_count",
+  validationDefaultMitigationAction: "validation_default_mitigation_action",
+  validationEnabled: "validation_enabled",
+  validationOverrideMitigationAction: "validation_override_mitigation_action",
+};
+
 export class Forbidden extends T.applyErrorMatchers(
   S.TaggedErrorClass<Forbidden>()("Forbidden", {
     code: S.Number,
@@ -82,13 +96,15 @@ export const BulkPatchSettingOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     body: SettingsOperationsBulkEditRequestBodyMap,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/zones/{zone_id}/schema_validation/settings/operations",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/zones/{zone_id}/schema_validation/settings/operations",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "BulkPatchSettingOperationsRequest",
 }) as any as S.Schema<BulkPatchSettingOperationsRequest>;
@@ -110,7 +126,7 @@ export const BulkPatchSettingOperationsResponse = /*@__PURE__*/ S.suspend(() =>
     result: S.optional(
       SettingsOperationsBulkEditResultMap.pipe(T.EnvelopePayload()),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "BulkPatchSettingOperationsResponse",
 }) as any as S.Schema<BulkPatchSettingOperationsResponse>;
@@ -137,13 +153,15 @@ export const CreateSchemaRequest = /*@__PURE__*/ S.suspend(() =>
     name: S.String,
     source: S.String,
     validationEnabled: S.Boolean.pipe(T.Body("validation_enabled")),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/zones/{zone_id}/schema_validation/schemas",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/zones/{zone_id}/schema_validation/schemas",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateSchemaRequest",
 }) as any as S.Schema<CreateSchemaRequest>;
@@ -173,7 +191,7 @@ export const CreateSchemaResponse = /*@__PURE__*/ S.suspend(() =>
     schemaId: S.String.pipe(T.Body("schema_id")),
     source: S.String,
     validationEnabled: S.optional(S.Boolean.pipe(T.Body("validation_enabled"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateSchemaResponse",
 }) as any as S.Schema<CreateSchemaResponse>;
@@ -188,13 +206,15 @@ export const DeleteSchemaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     schemaId: S.String.pipe(T.Label("schema_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/zones/{zone_id}/schema_validation/schemas/{schema_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/zones/{zone_id}/schema_validation/schemas/{schema_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteSchemaRequest",
 }) as any as S.Schema<DeleteSchemaRequest>;
@@ -207,7 +227,7 @@ export interface DeleteSchemaResponse {
 export const DeleteSchemaResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteSchemaResponse",
 }) as any as S.Schema<DeleteSchemaResponse>;
@@ -222,13 +242,15 @@ export const DeleteSettingOperationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     operationId: S.String.pipe(T.Label("operation_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/zones/{zone_id}/schema_validation/settings/operations/{operation_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/zones/{zone_id}/schema_validation/settings/operations/{operation_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteSettingOperationRequest",
 }) as any as S.Schema<DeleteSettingOperationRequest>;
@@ -241,7 +263,7 @@ export interface DeleteSettingOperationResponse {
 export const DeleteSettingOperationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     operationId: S.optional(S.String.pipe(T.Body("operation_id"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteSettingOperationResponse",
 }) as any as S.Schema<DeleteSettingOperationResponse>;
@@ -259,13 +281,15 @@ export const GetSchemaRequest = /*@__PURE__*/ S.suspend(() =>
     zoneId: S.String.pipe(T.Label("zone_id")),
     schemaId: S.String.pipe(T.Label("schema_id")),
     omitSource: S.optional(S.Boolean.pipe(T.Query("omit_source"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/schema_validation/schemas/{schema_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/schema_validation/schemas/{schema_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetSchemaRequest",
 }) as any as S.Schema<GetSchemaRequest>;
@@ -295,7 +319,7 @@ export const GetSchemaResponse = /*@__PURE__*/ S.suspend(() =>
     schemaId: S.String.pipe(T.Body("schema_id")),
     source: S.String,
     validationEnabled: S.optional(S.Boolean.pipe(T.Body("validation_enabled"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetSchemaResponse",
 }) as any as S.Schema<GetSchemaResponse>;
@@ -307,13 +331,15 @@ export interface GetSettingRequest {
 export const GetSettingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/schema_validation/settings",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/schema_validation/settings",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetSettingRequest",
 }) as any as S.Schema<GetSettingRequest>;
@@ -350,7 +376,7 @@ export const GetSettingResponse = /*@__PURE__*/ S.suspend(() =>
         T.Body("validation_override_mitigation_action"),
       ),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetSettingResponse",
 }) as any as S.Schema<GetSettingResponse>;
@@ -365,13 +391,15 @@ export const GetSettingOperationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     operationId: S.String.pipe(T.Label("operation_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/schema_validation/settings/operations/{operation_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/schema_validation/settings/operations/{operation_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetSettingOperationRequest",
 }) as any as S.Schema<GetSettingOperationRequest>;
@@ -397,7 +425,7 @@ export const GetSettingOperationResponse = /*@__PURE__*/ S.suspend(() =>
       T.Body("mitigation_action"),
     ),
     operationId: S.String.pipe(T.Body("operation_id")),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetSettingOperationResponse",
 }) as any as S.Schema<GetSettingOperationResponse>;
@@ -423,13 +451,15 @@ export const ListSchemasRequest = /*@__PURE__*/ S.suspend(() =>
     validationEnabled: S.optional(
       S.Boolean.pipe(T.Query("validation_enabled")),
     ),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/schema_validation/schemas",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/schema_validation/schemas",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListSchemasRequest",
 }) as any as S.Schema<ListSchemasRequest>;
@@ -478,7 +508,7 @@ export const ListSchemasResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: SchemasListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListSchemasResponse",
 }) as any as S.Schema<ListSchemasResponse>;
@@ -496,13 +526,15 @@ export const ListSettingOperationsRequest = /*@__PURE__*/ S.suspend(() =>
     zoneId: S.String.pipe(T.Label("zone_id")),
     page: S.optional(S.Number.pipe(T.Query())),
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/schema_validation/settings/operations",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/schema_validation/settings/operations",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListSettingOperationsRequest",
 }) as any as S.Schema<ListSettingOperationsRequest>;
@@ -548,7 +580,7 @@ export const ListSettingOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: SettingsOperationsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListSettingOperationsResponse",
 }) as any as S.Schema<ListSettingOperationsResponse>;
@@ -566,13 +598,15 @@ export const PatchSchemaRequest = /*@__PURE__*/ S.suspend(() =>
     zoneId: S.String.pipe(T.Label("zone_id")),
     schemaId: S.String.pipe(T.Label("schema_id")),
     validationEnabled: S.optional(S.Boolean.pipe(T.Body("validation_enabled"))),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/zones/{zone_id}/schema_validation/schemas/{schema_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/zones/{zone_id}/schema_validation/schemas/{schema_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchSchemaRequest",
 }) as any as S.Schema<PatchSchemaRequest>;
@@ -602,7 +636,7 @@ export const PatchSchemaResponse = /*@__PURE__*/ S.suspend(() =>
     schemaId: S.String.pipe(T.Body("schema_id")),
     source: S.String,
     validationEnabled: S.optional(S.Boolean.pipe(T.Body("validation_enabled"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchSchemaResponse",
 }) as any as S.Schema<PatchSchemaResponse>;
@@ -642,13 +676,15 @@ export const PatchSettingRequest = /*@__PURE__*/ S.suspend(() =>
         T.Body("validation_override_mitigation_action"),
       ),
     ),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/zones/{zone_id}/schema_validation/settings",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/zones/{zone_id}/schema_validation/settings",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchSettingRequest",
 }) as any as S.Schema<PatchSettingRequest>;
@@ -685,7 +721,7 @@ export const PatchSettingResponse = /*@__PURE__*/ S.suspend(() =>
         T.Body("validation_override_mitigation_action"),
       ),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchSettingResponse",
 }) as any as S.Schema<PatchSettingResponse>;
@@ -724,13 +760,15 @@ export const PutSettingRequest = /*@__PURE__*/ S.suspend(() =>
         T.Body("validation_override_mitigation_action"),
       ),
     ),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/zones/{zone_id}/schema_validation/settings",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/zones/{zone_id}/schema_validation/settings",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutSettingRequest",
 }) as any as S.Schema<PutSettingRequest>;
@@ -767,7 +805,7 @@ export const PutSettingResponse = /*@__PURE__*/ S.suspend(() =>
         T.Body("validation_override_mitigation_action"),
       ),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutSettingResponse",
 }) as any as S.Schema<PutSettingResponse>;
@@ -795,13 +833,15 @@ export const PutSettingOperationRequest = /*@__PURE__*/ S.suspend(() =>
     mitigationAction: SettingsOperationsUpdateRequestMitigationAction.pipe(
       T.Body("mitigation_action"),
     ),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/zones/{zone_id}/schema_validation/settings/operations/{operation_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/zones/{zone_id}/schema_validation/settings/operations/{operation_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutSettingOperationRequest",
 }) as any as S.Schema<PutSettingOperationRequest>;
@@ -827,7 +867,7 @@ export const PutSettingOperationResponse = /*@__PURE__*/ S.suspend(() =>
       T.Body("mitigation_action"),
     ),
     operationId: S.String.pipe(T.Body("operation_id")),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutSettingOperationResponse",
 }) as any as S.Schema<PutSettingOperationResponse>;

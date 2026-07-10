@@ -14,6 +14,14 @@ import * as Retry from "../retry.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
+/** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
+const KEY_DICTIONARY: Record<string, string> = {
+  dnsRecords: "dns_records",
+  nsName: "ns_name",
+  nsSet: "ns_set",
+  zoneTag: "zone_tag",
+};
+
 export class CustomNameserverAlreadyExists extends T.applyErrorMatchers(
   S.TaggedErrorClass<CustomNameserverAlreadyExists>()(
     "CustomNameserverAlreadyExists",
@@ -65,13 +73,15 @@ export const CreateCustomNameserverRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     nsName: S.String.pipe(T.Body("ns_name")),
     nsSet: S.optional(S.Number.pipe(T.Body("ns_set"))),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/custom_ns",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/custom_ns",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateCustomNameserverRequest",
 }) as any as S.Schema<CreateCustomNameserverRequest>;
@@ -126,7 +136,7 @@ export const CreateCustomNameserverResponse = /*@__PURE__*/ S.suspend(() =>
     status: CreateResponseStatus,
     zoneTag: S.String.pipe(T.Body("zone_tag")),
     nsSet: S.optional(S.Number.pipe(T.Body("ns_set"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateCustomNameserverResponse",
 }) as any as S.Schema<CreateCustomNameserverResponse>;
@@ -141,13 +151,15 @@ export const DeleteCustomNameserverRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     customNsId: S.String.pipe(T.Label("custom_ns_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/custom_ns/{custom_ns_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/custom_ns/{custom_ns_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteCustomNameserverRequest",
 }) as any as S.Schema<DeleteCustomNameserverRequest>;
@@ -167,7 +179,7 @@ export const DeleteCustomNameserverResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: DeleteResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteCustomNameserverResponse",
 }) as any as S.Schema<DeleteCustomNameserverResponse>;
@@ -179,13 +191,15 @@ export interface GetCustomNameserverRequest {
 export const GetCustomNameserverRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/custom_ns",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/custom_ns",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetCustomNameserverRequest",
 }) as any as S.Schema<GetCustomNameserverRequest>;
@@ -257,7 +271,7 @@ export const GetCustomNameserverResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: GetResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetCustomNameserverResponse",
 }) as any as S.Schema<GetCustomNameserverResponse>;

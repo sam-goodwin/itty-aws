@@ -14,6 +14,18 @@ import * as Retry from "../retry.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
+/** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
+const KEY_DICTIONARY: Record<string, string> = {
+  contentId: "content_id",
+  dkimSelector: "dkim_selector",
+  documentationUrl: "documentation_url",
+  messageId: "message_id",
+  mimeMessage: "mime_message",
+  permanentBounces: "permanent_bounces",
+  replyTo: "reply_to",
+  returnPathDomain: "return_path_domain",
+};
+
 export class Forbidden extends T.applyErrorMatchers(
   S.TaggedErrorClass<Forbidden>()("Forbidden", {
     code: S.Number,
@@ -51,13 +63,15 @@ export const CreateSubdomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     name: S.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/zones/{zone_id}/email/sending/subdomains",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/zones/{zone_id}/email/sending/subdomains",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateSubdomainRequest",
 }) as any as S.Schema<CreateSubdomainRequest>;
@@ -91,7 +105,7 @@ export const CreateSubdomainResponse = /*@__PURE__*/ S.suspend(() =>
     modified: S.optional(S.String),
     previewEnabled: S.optional(S.Boolean.pipe(T.Body("preview_enabled"))),
     returnPathDomain: S.optional(S.String.pipe(T.Body("return_path_domain"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateSubdomainResponse",
 }) as any as S.Schema<CreateSubdomainResponse>;
@@ -106,20 +120,22 @@ export const DeleteSubdomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     subdomainId: S.String.pipe(T.Label("subdomain_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/zones/{zone_id}/email/sending/subdomains/{subdomain_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/zones/{zone_id}/email/sending/subdomains/{subdomain_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteSubdomainRequest",
 }) as any as S.Schema<DeleteSubdomainRequest>;
 
 export interface DeleteSubdomainResponse {}
 export const DeleteSubdomainResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
+  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteSubdomainResponse",
 }) as any as S.Schema<DeleteSubdomainResponse>;
@@ -134,13 +150,15 @@ export const GetSubdomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     subdomainId: S.String.pipe(T.Label("subdomain_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/email/sending/subdomains/{subdomain_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/email/sending/subdomains/{subdomain_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetSubdomainRequest",
 }) as any as S.Schema<GetSubdomainRequest>;
@@ -174,7 +192,7 @@ export const GetSubdomainResponse = /*@__PURE__*/ S.suspend(() =>
     modified: S.optional(S.String),
     previewEnabled: S.optional(S.Boolean.pipe(T.Body("preview_enabled"))),
     returnPathDomain: S.optional(S.String.pipe(T.Body("return_path_domain"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetSubdomainResponse",
 }) as any as S.Schema<GetSubdomainResponse>;
@@ -189,13 +207,15 @@ export const GetSubdomainDnsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     subdomainId: S.String.pipe(T.Label("subdomain_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/email/sending/subdomains/{subdomain_id}/dns",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/email/sending/subdomains/{subdomain_id}/dns",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetSubdomainDnsRequest",
 }) as any as S.Schema<GetSubdomainDnsRequest>;
@@ -260,7 +280,7 @@ export const GetSubdomainDnsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: SubdomainsDnsGetResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetSubdomainDnsResponse",
 }) as any as S.Schema<GetSubdomainDnsResponse>;
@@ -272,13 +292,15 @@ export interface ListSubdomainsRequest {
 export const ListSubdomainsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/email/sending/subdomains",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/email/sending/subdomains",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListSubdomainsRequest",
 }) as any as S.Schema<ListSubdomainsRequest>;
@@ -331,7 +353,7 @@ export const ListSubdomainsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: SubdomainsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListSubdomainsResponse",
 }) as any as S.Schema<ListSubdomainsResponse>;
@@ -487,13 +509,15 @@ export const SendEmailSendingRequest = /*@__PURE__*/ S.suspend(() =>
     replyTo: S.optional(SendRequestReplyTo.pipe(T.Body("reply_to"))),
     text: S.optional(S.String),
     to: S.optional(SendRequestTo),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/email/sending/send",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/email/sending/send",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "SendEmailSendingRequest",
 }) as any as S.Schema<SendEmailSendingRequest>;
@@ -532,7 +556,7 @@ export const SendEmailSendingResponse = /*@__PURE__*/ S.suspend(() =>
       T.Body("permanent_bounces"),
     ),
     queued: SendResponseQueuedList,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "SendEmailSendingResponse",
 }) as any as S.Schema<SendEmailSendingResponse>;
@@ -558,13 +582,15 @@ export const SendRawEmailSendingRequest = /*@__PURE__*/ S.suspend(() =>
     from: S.String,
     mimeMessage: S.String.pipe(T.Body("mime_message")),
     recipients: SendRawRequestRecipientsList,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/email/sending/send_raw",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/email/sending/send_raw",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "SendRawEmailSendingRequest",
 }) as any as S.Schema<SendRawEmailSendingRequest>;
@@ -603,7 +629,7 @@ export const SendRawEmailSendingResponse = /*@__PURE__*/ S.suspend(() =>
       T.Body("permanent_bounces"),
     ),
     queued: SendRawResponseQueuedList,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "SendRawEmailSendingResponse",
 }) as any as S.Schema<SendRawEmailSendingResponse>;

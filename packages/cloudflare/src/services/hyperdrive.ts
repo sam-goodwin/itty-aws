@@ -14,6 +14,20 @@ import * as Retry from "../retry.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
+/** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
+const KEY_DICTIONARY: Record<string, string> = {
+  accessClientId: "access_client_id",
+  accessClientSecret: "access_client_secret",
+  caCertificateId: "ca_certificate_id",
+  createdOn: "created_on",
+  maxAge: "max_age",
+  modifiedOn: "modified_on",
+  mtlsCertificateId: "mtls_certificate_id",
+  originConnectionLimit: "origin_connection_limit",
+  serviceId: "service_id",
+  staleWhileRevalidate: "stale_while_revalidate",
+};
+
 export class HyperdriveConfigNotFound extends T.applyErrorMatchers(
   S.TaggedErrorClass<HyperdriveConfigNotFound>()("HyperdriveConfigNotFound", {
     code: S.Number,
@@ -144,13 +158,15 @@ export const CreateConfigRequest = /*@__PURE__*/ S.suspend(() =>
     originConnectionLimit: S.optional(
       S.Number.pipe(T.Body("origin_connection_limit")),
     ),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/hyperdrive/configs",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/hyperdrive/configs",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateConfigRequest",
 }) as any as S.Schema<CreateConfigRequest>;
@@ -249,7 +265,7 @@ export const CreateConfigResponse = /*@__PURE__*/ S.suspend(() =>
     originConnectionLimit: S.optional(
       S.Number.pipe(T.Body("origin_connection_limit")),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateConfigResponse",
 }) as any as S.Schema<CreateConfigResponse>;
@@ -264,13 +280,15 @@ export const DeleteConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     hyperdriveId: S.String.pipe(T.Label("hyperdrive_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/hyperdrive/configs/{hyperdrive_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/hyperdrive/configs/{hyperdrive_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteConfigRequest",
 }) as any as S.Schema<DeleteConfigRequest>;
@@ -282,7 +300,7 @@ export interface DeleteConfigResponse {
 export const DeleteConfigResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteConfigResponse",
 }) as any as S.Schema<DeleteConfigResponse>;
@@ -297,13 +315,15 @@ export const GetConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     hyperdriveId: S.String.pipe(T.Label("hyperdrive_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/hyperdrive/configs/{hyperdrive_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/hyperdrive/configs/{hyperdrive_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetConfigRequest",
 }) as any as S.Schema<GetConfigRequest>;
@@ -402,7 +422,7 @@ export const GetConfigResponse = /*@__PURE__*/ S.suspend(() =>
     originConnectionLimit: S.optional(
       S.Number.pipe(T.Body("origin_connection_limit")),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetConfigResponse",
 }) as any as S.Schema<GetConfigResponse>;
@@ -414,13 +434,15 @@ export interface ListConfigsRequest {
 export const ListConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/hyperdrive/configs",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/hyperdrive/configs",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListConfigsRequest",
 }) as any as S.Schema<ListConfigsRequest>;
@@ -538,7 +560,7 @@ export const ListConfigsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: ConfigsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListConfigsResponse",
 }) as any as S.Schema<ListConfigsResponse>;
@@ -639,13 +661,15 @@ export const PatchConfigRequest = /*@__PURE__*/ S.suspend(() =>
     originConnectionLimit: S.optional(
       S.Number.pipe(T.Body("origin_connection_limit")),
     ),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/accounts/{account_id}/hyperdrive/configs/{hyperdrive_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/accounts/{account_id}/hyperdrive/configs/{hyperdrive_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchConfigRequest",
 }) as any as S.Schema<PatchConfigRequest>;
@@ -744,7 +768,7 @@ export const PatchConfigResponse = /*@__PURE__*/ S.suspend(() =>
     originConnectionLimit: S.optional(
       S.Number.pipe(T.Body("origin_connection_limit")),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchConfigResponse",
 }) as any as S.Schema<PatchConfigResponse>;
@@ -839,13 +863,15 @@ export const UpdateConfigRequest = /*@__PURE__*/ S.suspend(() =>
     originConnectionLimit: S.optional(
       S.Number.pipe(T.Body("origin_connection_limit")),
     ),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/hyperdrive/configs/{hyperdrive_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/hyperdrive/configs/{hyperdrive_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateConfigRequest",
 }) as any as S.Schema<UpdateConfigRequest>;
@@ -944,7 +970,7 @@ export const UpdateConfigResponse = /*@__PURE__*/ S.suspend(() =>
     originConnectionLimit: S.optional(
       S.Number.pipe(T.Body("origin_connection_limit")),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateConfigResponse",
 }) as any as S.Schema<UpdateConfigResponse>;

@@ -12,6 +12,11 @@ import * as Retry from "../retry.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
+/** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
+const KEY_DICTIONARY: Record<string, string> = {
+  offenseCount: "offense_count",
+};
+
 export interface DayReportAsnRequest {
   /** Identifier. */
   accountId: string;
@@ -23,13 +28,15 @@ export const DayReportAsnRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     asnId: S.Number.pipe(T.Label("asn_id")),
     date: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/botnet_feed/asn/{asn_id}/day_report",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/botnet_feed/asn/{asn_id}/day_report",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DayReportAsnRequest",
 }) as any as S.Schema<DayReportAsnRequest>;
@@ -45,7 +52,7 @@ export const DayReportAsnResponse = /*@__PURE__*/ S.suspend(() =>
     cidr: S.optional(S.String),
     date: S.optional(S.String),
     offenseCount: S.optional(S.Number.pipe(T.Body("offense_count"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DayReportAsnResponse",
 }) as any as S.Schema<DayReportAsnResponse>;
@@ -59,13 +66,15 @@ export const DeleteConfigAsnRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     asnId: S.Number.pipe(T.Label("asn_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/botnet_feed/configs/asn/{asn_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/botnet_feed/configs/asn/{asn_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteConfigAsnRequest",
 }) as any as S.Schema<DeleteConfigAsnRequest>;
@@ -77,7 +86,7 @@ export interface DeleteConfigAsnResponse {
 export const DeleteConfigAsnResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     asn: S.optional(S.Number),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteConfigAsnResponse",
 }) as any as S.Schema<DeleteConfigAsnResponse>;
@@ -91,13 +100,15 @@ export const FullReportAsnRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     asnId: S.Number.pipe(T.Label("asn_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/botnet_feed/asn/{asn_id}/full_report",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/botnet_feed/asn/{asn_id}/full_report",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "FullReportAsnRequest",
 }) as any as S.Schema<FullReportAsnRequest>;
@@ -113,7 +124,7 @@ export const FullReportAsnResponse = /*@__PURE__*/ S.suspend(() =>
     cidr: S.optional(S.String),
     date: S.optional(S.String),
     offenseCount: S.optional(S.Number.pipe(T.Body("offense_count"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "FullReportAsnResponse",
 }) as any as S.Schema<FullReportAsnResponse>;
@@ -125,13 +136,15 @@ export interface GetConfigAsnRequest {
 export const GetConfigAsnRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/botnet_feed/configs/asn",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/botnet_feed/configs/asn",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetConfigAsnRequest",
 }) as any as S.Schema<GetConfigAsnRequest>;
@@ -143,7 +156,7 @@ export interface GetConfigAsnResponse {
 export const GetConfigAsnResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     asn: S.optional(S.Number),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetConfigAsnResponse",
 }) as any as S.Schema<GetConfigAsnResponse>;

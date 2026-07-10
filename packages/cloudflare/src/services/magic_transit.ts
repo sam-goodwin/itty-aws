@@ -14,6 +14,335 @@ import * as Retry from "../retry.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
+/** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
+const KEY_DICTIONARY: Record<string, string> = {
+  accountAppId: "account_app_id",
+  allowNullCipher: "allow_null_cipher",
+  automaticReturnRouting: "automatic_return_routing",
+  availableBytes: "available_bytes",
+  availableInodes: "available_inodes",
+  bgpState: "bgp_state",
+  bgpStatus: "bgp_status",
+  bondId: "bond_id",
+  byteLimit: "byte_limit",
+  cfSpeakerIp: "cf_speaker_ip",
+  cfSpeakerPort: "cf_speaker_port",
+  clientId: "client_id",
+  cloudflareEndpoint: "cloudflare_endpoint",
+  cloudflareGreEndpoint: "cloudflare_gre_endpoint",
+  coloName: "colo_name",
+  coloNames: "colo_names",
+  coloRegions: "colo_regions",
+  connectorId: "connector_id",
+  countReclaimFailures: "count_reclaim_failures",
+  countReclaimedPaths: "count_reclaimed_paths",
+  countRecordFailed: "count_record_failed",
+  countTransmitFailures: "count_transmit_failures",
+  cpuCount: "cpu_count",
+  cpuPressureTotalUs: "cpu_pressure_total_us",
+  cpuPressure_10s: "cpu_pressure_10s",
+  cpuPressure_300s: "cpu_pressure_300s",
+  cpuPressure_60s: "cpu_pressure_60s",
+  cpuTimeGuestMs: "cpu_time_guest_ms",
+  cpuTimeGuestNiceMs: "cpu_time_guest_nice_ms",
+  cpuTimeIdleMs: "cpu_time_idle_ms",
+  cpuTimeIowaitMs: "cpu_time_iowait_ms",
+  cpuTimeIrqMs: "cpu_time_irq_ms",
+  cpuTimeNiceMs: "cpu_time_nice_ms",
+  cpuTimeSoftirqMs: "cpu_time_softirq_ms",
+  cpuTimeStealMs: "cpu_time_steal_ms",
+  cpuTimeSystemMs: "cpu_time_system_ms",
+  cpuTimeUserMs: "cpu_time_user_ms",
+  createdOn: "created_on",
+  criticalCelcius: "critical_celcius",
+  currentCelcius: "current_celcius",
+  customRemoteIdentities: "custom_remote_identities",
+  customerAsn: "customer_asn",
+  customerEndpoint: "customer_endpoint",
+  customerGreEndpoint: "customer_gre_endpoint",
+  customerSpeakerIp: "customer_speaker_ip",
+  customerSpeakerPort: "customer_speaker_port",
+  deletedGreTunnel: "deleted_gre_tunnel",
+  deletedIpsecTunnel: "deleted_ipsec_tunnel",
+  deletedRoute: "deleted_route",
+  deletedRoutes: "deleted_routes",
+  destinationAddress: "destination_address",
+  destinationConf: "destination_conf",
+  destinationPort: "destination_port",
+  dhcpLeases: "dhcp_leases",
+  dhcpOptions: "dhcp_options",
+  dhcpPoolEnd: "dhcp_pool_end",
+  dhcpPoolStart: "dhcp_pool_start",
+  dhcpRelay: "dhcp_relay",
+  dhcpServer: "dhcp_server",
+  discardsMerged: "discards_merged",
+  dnsServer: "dns_server",
+  dnsServers: "dns_servers",
+  errorMessage: "error_message",
+  expiryTime: "expiry_time",
+  exportFilterId: "export_filter_id",
+  extraPrefixes: "extra_prefixes",
+  fileSystem: "file_system",
+  filterV1: "filter_v1",
+  forwardLocally: "forward_locally",
+  fqdnId: "fqdn_id",
+  gatewayAddress: "gateway_address",
+  greInterconnect: "gre_interconnect",
+  greTunnel: "gre_tunnel",
+  greTunnels: "gre_tunnels",
+  haLink: "ha_link",
+  haMode: "ha_mode",
+  haState: "ha_state",
+  haValue: "ha_value",
+  healthCheck: "health_check",
+  healthCheckRate: "health_check_rate",
+  healthState: "health_state",
+  healthValue: "health_value",
+  importFilterId: "import_filter_id",
+  inProgress: "in_progress",
+  interfaceAddress: "interface_address",
+  interfaceAddress6: "interface_address6",
+  interfaceName: "interface_name",
+  interruptWindowDaysOfWeek: "interrupt_window_days_of_week",
+  interruptWindowDurationHours: "interrupt_window_duration_hours",
+  interruptWindowEmbargoDates: "interrupt_window_embargo_dates",
+  interruptWindowHourOfDay: "interrupt_window_hour_of_day",
+  ioPressureFullTotalUs: "io_pressure_full_total_us",
+  ioPressureFull_10s: "io_pressure_full_10s",
+  ioPressureFull_300s: "io_pressure_full_300s",
+  ioPressureFull_60s: "io_pressure_full_60s",
+  ioPressureSomeTotalUs: "io_pressure_some_total_us",
+  ioPressureSome_10s: "io_pressure_some_10s",
+  ioPressureSome_300s: "io_pressure_some_300s",
+  ioPressureSome_60s: "io_pressure_some_60s",
+  ipAddress: "ip_address",
+  ipAddresses: "ip_addresses",
+  ipSubnets: "ip_subnets",
+  ipsecTunnel: "ipsec_tunnel",
+  ipsecTunnelId: "ipsec_tunnel_id",
+  ipsecTunnels: "ipsec_tunnels",
+  isBreakout: "is_breakout",
+  isPrioritized: "is_prioritized",
+  isReadOnly: "is_read_only",
+  isRemovable: "is_removable",
+  kernelBtime: "kernel_btime",
+  kernelCtxt: "kernel_ctxt",
+  kernelProcesses: "kernel_processes",
+  kernelProcessesBlocked: "kernel_processes_blocked",
+  kernelProcessesRunning: "kernel_processes_running",
+  lanId: "lan_id",
+  lanName: "lan_name",
+  lastGeneratedOn: "last_generated_on",
+  lastHeartbeat: "last_heartbeat",
+  lastSeenVersion: "last_seen_version",
+  lastUpdated: "last_updated",
+  licenseKey: "license_key",
+  loadAverageCur: "load_average_cur",
+  loadAverageMax: "load_average_max",
+  loadAverage_15m: "load_average_15m",
+  loadAverage_1m: "load_average_1m",
+  loadAverage_5m: "load_average_5m",
+  macAddress: "mac_address",
+  managedAppId: "managed_app_id",
+  managedBy: "managed_by",
+  maxCelcius: "max_celcius",
+  md5Key: "md5_key",
+  memoryActiveBytes: "memory_active_bytes",
+  memoryAnonHugepagesBytes: "memory_anon_hugepages_bytes",
+  memoryAnonPagesBytes: "memory_anon_pages_bytes",
+  memoryAvailableBytes: "memory_available_bytes",
+  memoryBounceBytes: "memory_bounce_bytes",
+  memoryBuffersBytes: "memory_buffers_bytes",
+  memoryCachedBytes: "memory_cached_bytes",
+  memoryCmaFreeBytes: "memory_cma_free_bytes",
+  memoryCmaTotalBytes: "memory_cma_total_bytes",
+  memoryCommitLimitBytes: "memory_commit_limit_bytes",
+  memoryCommittedAsBytes: "memory_committed_as_bytes",
+  memoryDirtyBytes: "memory_dirty_bytes",
+  memoryFreeBytes: "memory_free_bytes",
+  memoryHighFreeBytes: "memory_high_free_bytes",
+  memoryHighTotalBytes: "memory_high_total_bytes",
+  memoryHugepagesFree: "memory_hugepages_free",
+  memoryHugepagesRsvd: "memory_hugepages_rsvd",
+  memoryHugepagesSurp: "memory_hugepages_surp",
+  memoryHugepagesTotal: "memory_hugepages_total",
+  memoryHugepagesizeBytes: "memory_hugepagesize_bytes",
+  memoryInactiveBytes: "memory_inactive_bytes",
+  memoryKReclaimableBytes: "memory_k_reclaimable_bytes",
+  memoryKernelStackBytes: "memory_kernel_stack_bytes",
+  memoryLowFreeBytes: "memory_low_free_bytes",
+  memoryLowTotalBytes: "memory_low_total_bytes",
+  memoryMappedBytes: "memory_mapped_bytes",
+  memoryPageTablesBytes: "memory_page_tables_bytes",
+  memoryPerCpuBytes: "memory_per_cpu_bytes",
+  memoryPressureFullTotalUs: "memory_pressure_full_total_us",
+  memoryPressureFull_10s: "memory_pressure_full_10s",
+  memoryPressureFull_300s: "memory_pressure_full_300s",
+  memoryPressureFull_60s: "memory_pressure_full_60s",
+  memoryPressureSomeTotalUs: "memory_pressure_some_total_us",
+  memoryPressureSome_10s: "memory_pressure_some_10s",
+  memoryPressureSome_300s: "memory_pressure_some_300s",
+  memoryPressureSome_60s: "memory_pressure_some_60s",
+  memorySReclaimableBytes: "memory_s_reclaimable_bytes",
+  memorySUnreclaimBytes: "memory_s_unreclaim_bytes",
+  memorySecondaryPageTablesBytes: "memory_secondary_page_tables_bytes",
+  memoryShmemBytes: "memory_shmem_bytes",
+  memoryShmemHugepagesBytes: "memory_shmem_hugepages_bytes",
+  memoryShmemPmdMappedBytes: "memory_shmem_pmd_mapped_bytes",
+  memorySlabBytes: "memory_slab_bytes",
+  memorySwapCachedBytes: "memory_swap_cached_bytes",
+  memorySwapFreeBytes: "memory_swap_free_bytes",
+  memorySwapTotalBytes: "memory_swap_total_bytes",
+  memoryTotalBytes: "memory_total_bytes",
+  memoryVmallocChunkBytes: "memory_vmalloc_chunk_bytes",
+  memoryVmallocTotalBytes: "memory_vmalloc_total_bytes",
+  memoryVmallocUsedBytes: "memory_vmalloc_used_bytes",
+  memoryWritebackBytes: "memory_writeback_bytes",
+  memoryWritebackTmpBytes: "memory_writeback_tmp_bytes",
+  memoryZSwapBytes: "memory_z_swap_bytes",
+  memoryZSwappedBytes: "memory_z_swapped_bytes",
+  modifiedGreTunnel: "modified_gre_tunnel",
+  modifiedGreTunnels: "modified_gre_tunnels",
+  modifiedInterconnect: "modified_interconnect",
+  modifiedInterconnects: "modified_interconnects",
+  modifiedIpsecTunnel: "modified_ipsec_tunnel",
+  modifiedIpsecTunnels: "modified_ipsec_tunnels",
+  modifiedOn: "modified_on",
+  modifiedRoute: "modified_route",
+  modifiedRoutes: "modified_routes",
+  mountPoint: "mount_point",
+  mplsInterconnect: "mpls_interconnect",
+  nextHop: "next_hop",
+  offsetTime: "offset_time",
+  ownershipChallenge: "ownership_challenge",
+  packetLimit: "packet_limit",
+  packetsCaptured: "packets_captured",
+  portRanges: "port_ranges",
+  probedMtu: "probed_mtu",
+  provisionLicense: "provision_license",
+  pskMetadata: "psk_metadata",
+  recentHealthyPings: "recent_healthy_pings",
+  recentUnhealthyPings: "recent_unhealthy_pings",
+  recvBytes: "recv_bytes",
+  recvCompressed: "recv_compressed",
+  recvDrop: "recv_drop",
+  recvErrs: "recv_errs",
+  recvFifo: "recv_fifo",
+  recvFrame: "recv_frame",
+  recvMulticast: "recv_multicast",
+  recvPackets: "recv_packets",
+  replayProtection: "replay_protection",
+  routedSubnets: "routed_subnets",
+  secondaryAddress: "secondary_address",
+  secondaryConnectorId: "secondary_connector_id",
+  sectorsDiscarded: "sectors_discarded",
+  sectorsRead: "sectors_read",
+  sectorsWritten: "sectors_written",
+  sentBytes: "sent_bytes",
+  sentCarrier: "sent_carrier",
+  sentColls: "sent_colls",
+  sentCompressed: "sent_compressed",
+  sentDrop: "sent_drop",
+  sentErrs: "sent_errs",
+  sentFifo: "sent_fifo",
+  sentPackets: "sent_packets",
+  serialNumber: "serial_number",
+  serverAddresses: "server_addresses",
+  siteId: "site_id",
+  snmpIcmpInAddrMaskReps: "snmp_icmp_in_addr_mask_reps",
+  snmpIcmpInAddrMasks: "snmp_icmp_in_addr_masks",
+  snmpIcmpInCsumErrors: "snmp_icmp_in_csum_errors",
+  snmpIcmpInDestUnreachs: "snmp_icmp_in_dest_unreachs",
+  snmpIcmpInEchoReps: "snmp_icmp_in_echo_reps",
+  snmpIcmpInEchos: "snmp_icmp_in_echos",
+  snmpIcmpInErrors: "snmp_icmp_in_errors",
+  snmpIcmpInMsgs: "snmp_icmp_in_msgs",
+  snmpIcmpInParmProbs: "snmp_icmp_in_parm_probs",
+  snmpIcmpInRedirects: "snmp_icmp_in_redirects",
+  snmpIcmpInSrcQuenchs: "snmp_icmp_in_src_quenchs",
+  snmpIcmpInTimeExcds: "snmp_icmp_in_time_excds",
+  snmpIcmpInTimestampReps: "snmp_icmp_in_timestamp_reps",
+  snmpIcmpInTimestamps: "snmp_icmp_in_timestamps",
+  snmpIcmpOutAddrMaskReps: "snmp_icmp_out_addr_mask_reps",
+  snmpIcmpOutAddrMasks: "snmp_icmp_out_addr_masks",
+  snmpIcmpOutDestUnreachs: "snmp_icmp_out_dest_unreachs",
+  snmpIcmpOutEchoReps: "snmp_icmp_out_echo_reps",
+  snmpIcmpOutEchos: "snmp_icmp_out_echos",
+  snmpIcmpOutErrors: "snmp_icmp_out_errors",
+  snmpIcmpOutMsgs: "snmp_icmp_out_msgs",
+  snmpIcmpOutParmProbs: "snmp_icmp_out_parm_probs",
+  snmpIcmpOutRedirects: "snmp_icmp_out_redirects",
+  snmpIcmpOutSrcQuenchs: "snmp_icmp_out_src_quenchs",
+  snmpIcmpOutTimeExcds: "snmp_icmp_out_time_excds",
+  snmpIcmpOutTimestampReps: "snmp_icmp_out_timestamp_reps",
+  snmpIcmpOutTimestamps: "snmp_icmp_out_timestamps",
+  snmpIpDefaultTtl: "snmp_ip_default_ttl",
+  snmpIpForwDatagrams: "snmp_ip_forw_datagrams",
+  snmpIpForwardingEnabled: "snmp_ip_forwarding_enabled",
+  snmpIpFragCreates: "snmp_ip_frag_creates",
+  snmpIpFragFails: "snmp_ip_frag_fails",
+  snmpIpFragOks: "snmp_ip_frag_oks",
+  snmpIpInAddrErrors: "snmp_ip_in_addr_errors",
+  snmpIpInDelivers: "snmp_ip_in_delivers",
+  snmpIpInDiscards: "snmp_ip_in_discards",
+  snmpIpInHdrErrors: "snmp_ip_in_hdr_errors",
+  snmpIpInReceives: "snmp_ip_in_receives",
+  snmpIpInUnknownProtos: "snmp_ip_in_unknown_protos",
+  snmpIpOutDiscards: "snmp_ip_out_discards",
+  snmpIpOutNoRoutes: "snmp_ip_out_no_routes",
+  snmpIpOutRequests: "snmp_ip_out_requests",
+  snmpIpReasmFails: "snmp_ip_reasm_fails",
+  snmpIpReasmOks: "snmp_ip_reasm_oks",
+  snmpIpReasmReqds: "snmp_ip_reasm_reqds",
+  snmpIpReasmTimeout: "snmp_ip_reasm_timeout",
+  snmpTcpActiveOpens: "snmp_tcp_active_opens",
+  snmpTcpAttemptFails: "snmp_tcp_attempt_fails",
+  snmpTcpCurrEstab: "snmp_tcp_curr_estab",
+  snmpTcpEstabResets: "snmp_tcp_estab_resets",
+  snmpTcpInCsumErrors: "snmp_tcp_in_csum_errors",
+  snmpTcpInErrs: "snmp_tcp_in_errs",
+  snmpTcpInSegs: "snmp_tcp_in_segs",
+  snmpTcpMaxConn: "snmp_tcp_max_conn",
+  snmpTcpOutRsts: "snmp_tcp_out_rsts",
+  snmpTcpOutSegs: "snmp_tcp_out_segs",
+  snmpTcpPassiveOpens: "snmp_tcp_passive_opens",
+  snmpTcpRetransSegs: "snmp_tcp_retrans_segs",
+  snmpTcpRtoMax: "snmp_tcp_rto_max",
+  snmpTcpRtoMin: "snmp_tcp_rto_min",
+  snmpUdpInDatagrams: "snmp_udp_in_datagrams",
+  snmpUdpInErrors: "snmp_udp_in_errors",
+  snmpUdpNoPorts: "snmp_udp_no_ports",
+  snmpUdpOutDatagrams: "snmp_udp_out_datagrams",
+  sourceAddress: "source_address",
+  sourcePort: "source_port",
+  sourceRampId: "source_ramp_id",
+  sourceSubnets: "source_subnets",
+  staticAddressing: "static_addressing",
+  staticPrefix: "static_prefix",
+  stopRequested: "stop_requested",
+  successfullyAppliedPsks: "successfully_applied_psks",
+  systemBootTimeS: "system_boot_time_s",
+  tcpEstablished: "tcp_established",
+  timeDiscardingMs: "time_discarding_ms",
+  timeFlushingMs: "time_flushing_ms",
+  timeInProgressMs: "time_in_progress_ms",
+  timeLimit: "time_limit",
+  timeReadingMs: "time_reading_ms",
+  timeWritingMs: "time_writing_ms",
+  totalBytes: "total_bytes",
+  totalInodes: "total_inodes",
+  tunnelId: "tunnel_id",
+  unappliedPsks: "unapplied_psks",
+  updatedAt: "updated_at",
+  uptimeIdleMs: "uptime_idle_ms",
+  uptimeTotalMs: "uptime_total_ms",
+  virtualAddress: "virtual_address",
+  virtualPortReservationId: "virtual_port_reservation_id",
+  vlanTag: "vlan_tag",
+  weightedTimeInProgressMs: "weighted_time_in_progress_ms",
+  writesMerged: "writes_merged",
+};
+
 export class AppNotFound extends T.applyErrorMatchers(
   S.TaggedErrorClass<AppNotFound>()("AppNotFound", {
     code: S.Number,
@@ -115,13 +444,15 @@ export const BulkPutCfInterconnectsRequest = /*@__PURE__*/ S.suspend(() =>
       S.Boolean.pipe(T.Header('"x-magic-new-hc-target"')),
     ),
     body: S.Unknown,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/magic/cf_interconnects",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/magic/cf_interconnects",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "BulkPutCfInterconnectsRequest",
 }) as any as S.Schema<BulkPutCfInterconnectsRequest>;
@@ -264,7 +595,7 @@ export const BulkPutCfInterconnectsResponse = /*@__PURE__*/ S.suspend(() =>
         T.Body("modified_interconnects"),
       ),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "BulkPutCfInterconnectsResponse",
 }) as any as S.Schema<BulkPutCfInterconnectsResponse>;
@@ -282,13 +613,15 @@ export const BulkPutGreTunnelsRequest = /*@__PURE__*/ S.suspend(() =>
       S.Boolean.pipe(T.Header('"x-magic-new-hc-target"')),
     ),
     body: S.Unknown,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/magic/gre_tunnels",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/magic/gre_tunnels",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "BulkPutGreTunnelsRequest",
 }) as any as S.Schema<BulkPutGreTunnelsRequest>;
@@ -503,7 +836,7 @@ export const BulkPutGreTunnelsResponse = /*@__PURE__*/ S.suspend(() =>
         T.Body("modified_gre_tunnels"),
       ),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "BulkPutGreTunnelsResponse",
 }) as any as S.Schema<BulkPutGreTunnelsResponse>;
@@ -521,13 +854,15 @@ export const BulkPutIpsecTunnelsRequest = /*@__PURE__*/ S.suspend(() =>
       S.Boolean.pipe(T.Header('"x-magic-new-hc-target"')),
     ),
     body: S.Unknown,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/magic/ipsec_tunnels",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/magic/ipsec_tunnels",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "BulkPutIpsecTunnelsRequest",
 }) as any as S.Schema<BulkPutIpsecTunnelsRequest>;
@@ -785,7 +1120,7 @@ export const BulkPutIpsecTunnelsResponse = /*@__PURE__*/ S.suspend(() =>
         T.Body("modified_ipsec_tunnels"),
       ),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "BulkPutIpsecTunnelsResponse",
 }) as any as S.Schema<BulkPutIpsecTunnelsResponse>;
@@ -871,13 +1206,15 @@ export const BulkPutRoutesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     routes: RoutesBulkUpdateRequestRoutesList,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/magic/routes",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/magic/routes",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "BulkPutRoutesRequest",
 }) as any as S.Schema<BulkPutRoutesRequest>;
@@ -976,7 +1313,7 @@ export const BulkPutRoutesResponse = /*@__PURE__*/ S.suspend(() =>
         T.Body("modified_routes"),
       ),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "BulkPutRoutesResponse",
 }) as any as S.Schema<BulkPutRoutesResponse>;
@@ -1022,13 +1359,15 @@ export const CreateAppRequest = /*@__PURE__*/ S.suspend(() =>
     sourceSubnets: S.optional(
       AppsCreateRequestSourceSubnetsList.pipe(T.Body("source_subnets")),
     ),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/magic/apps",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/magic/apps",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateAppRequest",
 }) as any as S.Schema<CreateAppRequest>;
@@ -1075,7 +1414,7 @@ export const CreateAppResponse = /*@__PURE__*/ S.suspend(() =>
       AppsCreateResponseSourceSubnetsList.pipe(T.Body("source_subnets")),
     ),
     type: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateAppResponse",
 }) as any as S.Schema<CreateAppResponse>;
@@ -1137,13 +1476,15 @@ export const CreateCf1SiteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     body: Cf1SitesCreateRequestBodyList,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/magic/cf1_sites",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/magic/cf1_sites",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateCf1SiteRequest",
 }) as any as S.Schema<CreateCf1SiteRequest>;
@@ -1205,7 +1546,7 @@ export const CreateCf1SiteResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: Cf1SitesCreateResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateCf1SiteResponse",
 }) as any as S.Schema<CreateCf1SiteResponse>;
@@ -1243,13 +1584,15 @@ export const CreateCf1SiteRampRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     cf1SiteId: S.String.pipe(T.Label("cf1_site_id")),
     body: Cf1SitesRampsCreateRequestBodyList,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/magic/cf1_sites/{cf1_site_id}/ramps",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/magic/cf1_sites/{cf1_site_id}/ramps",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateCf1SiteRampRequest",
 }) as any as S.Schema<CreateCf1SiteRampRequest>;
@@ -1374,7 +1717,7 @@ export const CreateCf1SiteRampResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: Cf1SitesRampsCreateResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateCf1SiteRampResponse",
 }) as any as S.Schema<CreateCf1SiteRampResponse>;
@@ -1458,13 +1801,15 @@ export const CreateConnectorRequest = /*@__PURE__*/ S.suspend(() =>
     primary: S.optional(S.Boolean),
     siteId: S.optional(S.String.pipe(T.Body("site_id"))),
     timezone: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/magic/connectors",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/magic/connectors",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateConnectorRequest",
 }) as any as S.Schema<CreateConnectorRequest>;
@@ -1558,7 +1903,7 @@ export const CreateConnectorResponse = /*@__PURE__*/ S.suspend(() =>
     lastSeenVersion: S.optional(S.String.pipe(T.Body("last_seen_version"))),
     licenseKey: S.optional(S.String.pipe(T.Body("license_key"))),
     siteId: S.optional(S.String.pipe(T.Body("site_id"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateConnectorResponse",
 }) as any as S.Schema<CreateConnectorResponse>;
@@ -1691,13 +2036,15 @@ export const CreateGreTunnelRequest = /*@__PURE__*/ S.suspend(() =>
     interfaceAddress6: S.optional(S.String.pipe(T.Body("interface_address6"))),
     mtu: S.optional(S.Number),
     ttl: S.optional(S.Number),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/magic/gre_tunnels",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/magic/gre_tunnels",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateGreTunnelRequest",
 }) as any as S.Schema<CreateGreTunnelRequest>;
@@ -1871,7 +2218,7 @@ export const CreateGreTunnelResponse = /*@__PURE__*/ S.suspend(() =>
     modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
     mtu: S.optional(S.Number),
     ttl: S.optional(S.Number),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateGreTunnelResponse",
 }) as any as S.Schema<CreateGreTunnelResponse>;
@@ -2024,13 +2371,15 @@ export const CreateIpsecTunnelRequest = /*@__PURE__*/ S.suspend(() =>
     interfaceAddress6: S.optional(S.String.pipe(T.Body("interface_address6"))),
     psk: S.optional(S.String),
     replayProtection: S.optional(S.Boolean.pipe(T.Body("replay_protection"))),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/magic/ipsec_tunnels",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/magic/ipsec_tunnels",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateIpsecTunnelRequest",
 }) as any as S.Schema<CreateIpsecTunnelRequest>;
@@ -2242,7 +2591,7 @@ export const CreateIpsecTunnelResponse = /*@__PURE__*/ S.suspend(() =>
       IpsecTunnelsCreateResponsePskMetadata.pipe(T.Body("psk_metadata")),
     ),
     replayProtection: S.optional(S.Boolean.pipe(T.Body("replay_protection"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateIpsecTunnelResponse",
 }) as any as S.Schema<CreateIpsecTunnelResponse>;
@@ -2279,9 +2628,15 @@ export const CreatePcapRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     body: PcapsCreateRequestBody,
-  }).pipe(
-    T.Http({ method: "POST", uri: "/accounts/{account_id}/pcaps", code: 200 }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/pcaps",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreatePcapRequest",
 }) as any as S.Schema<CreatePcapRequest>;
@@ -2302,7 +2657,7 @@ export const CreatePcapResponse = /*@__PURE__*/ S.suspend(() =>
           "MagicVisibilityPCAPsPCAPsResponseFull object { id, byte_limit, colo_name, 10 more }",
         ),
       ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreatePcapResponse",
 }) as any as S.Schema<CreatePcapResponse>;
@@ -2317,13 +2672,15 @@ export const CreatePcapOwnershipRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     destinationConf: S.String.pipe(T.Body("destination_conf")),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/pcaps/ownership",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/pcaps/ownership",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreatePcapOwnershipRequest",
 }) as any as S.Schema<CreatePcapOwnershipRequest>;
@@ -2358,7 +2715,7 @@ export const CreatePcapOwnershipResponse = /*@__PURE__*/ S.suspend(() =>
     status: PcapsOwnershipCreateResponseStatus,
     submitted: S.String,
     validated: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreatePcapOwnershipResponse",
 }) as any as S.Schema<CreatePcapOwnershipResponse>;
@@ -2417,13 +2774,15 @@ export const CreateRouteRequest = /*@__PURE__*/ S.suspend(() =>
     description: S.optional(S.String),
     scope: S.optional(RoutesCreateRequestScope),
     weight: S.optional(S.Number),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/magic/routes",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/magic/routes",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateRouteRequest",
 }) as any as S.Schema<CreateRouteRequest>;
@@ -2489,7 +2848,7 @@ export const CreateRouteResponse = /*@__PURE__*/ S.suspend(() =>
     modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
     scope: S.optional(RoutesCreateResponseScope),
     weight: S.optional(S.Number),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateRouteResponse",
 }) as any as S.Schema<CreateRouteResponse>;
@@ -2535,13 +2894,15 @@ export const CreateSiteRequest = /*@__PURE__*/ S.suspend(() =>
     secondaryConnectorId: S.optional(
       S.String.pipe(T.Body("secondary_connector_id")),
     ),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/magic/sites",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/magic/sites",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateSiteRequest",
 }) as any as S.Schema<CreateSiteRequest>;
@@ -2588,7 +2949,7 @@ export const CreateSiteResponse = /*@__PURE__*/ S.suspend(() =>
     secondaryConnectorId: S.optional(
       S.String.pipe(T.Body("secondary_connector_id")),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateSiteResponse",
 }) as any as S.Schema<CreateSiteResponse>;
@@ -2667,13 +3028,15 @@ export const CreateSiteAclRequest = /*@__PURE__*/ S.suspend(() =>
     forwardLocally: S.optional(S.Boolean.pipe(T.Body("forward_locally"))),
     protocols: S.optional(SitesAclsCreateRequestProtocolsList),
     unidirectional: S.optional(S.Boolean),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/magic/sites/{site_id}/acls",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/magic/sites/{site_id}/acls",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateSiteAclRequest",
 }) as any as S.Schema<CreateSiteAclRequest>;
@@ -2750,7 +3113,7 @@ export const CreateSiteAclResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     protocols: S.optional(SitesAclsCreateResponseProtocolsList),
     unidirectional: S.optional(S.Boolean),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateSiteAclResponse",
 }) as any as S.Schema<CreateSiteAclResponse>;
@@ -2970,13 +3333,15 @@ export const CreateSiteLanRequest = /*@__PURE__*/ S.suspend(() =>
       SitesLansCreateRequestStaticAddressing.pipe(T.Body("static_addressing")),
     ),
     vlanTag: S.optional(S.Number.pipe(T.Body("vlan_tag"))),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/magic/sites/{site_id}/lans",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/magic/sites/{site_id}/lans",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateSiteLanRequest",
 }) as any as S.Schema<CreateSiteLanRequest>;
@@ -3217,7 +3582,7 @@ export const CreateSiteLanResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: SitesLansCreateResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateSiteLanResponse",
 }) as any as S.Schema<CreateSiteLanResponse>;
@@ -3265,13 +3630,15 @@ export const CreateSiteWanRequest = /*@__PURE__*/ S.suspend(() =>
       SitesWansCreateRequestStaticAddressing.pipe(T.Body("static_addressing")),
     ),
     vlanTag: S.optional(S.Number.pipe(T.Body("vlan_tag"))),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/magic/sites/{site_id}/wans",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/magic/sites/{site_id}/wans",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateSiteWanRequest",
 }) as any as S.Schema<CreateSiteWanRequest>;
@@ -3356,7 +3723,7 @@ export const CreateSiteWanResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: SitesWansCreateResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateSiteWanResponse",
 }) as any as S.Schema<CreateSiteWanResponse>;
@@ -3371,13 +3738,15 @@ export const DeleteAppRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     accountAppId: S.String.pipe(T.Label("account_app_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/magic/apps/{account_app_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/magic/apps/{account_app_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteAppRequest",
 }) as any as S.Schema<DeleteAppRequest>;
@@ -3424,7 +3793,7 @@ export const DeleteAppResponse = /*@__PURE__*/ S.suspend(() =>
       AppsDeleteResponseSourceSubnetsList.pipe(T.Body("source_subnets")),
     ),
     type: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteAppResponse",
 }) as any as S.Schema<DeleteAppResponse>;
@@ -3439,13 +3808,15 @@ export const DeleteCf1SiteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     cf1SiteId: S.String.pipe(T.Label("cf1_site_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/magic/cf1_sites/{cf1_site_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/magic/cf1_sites/{cf1_site_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteCf1SiteRequest",
 }) as any as S.Schema<DeleteCf1SiteRequest>;
@@ -3488,7 +3859,7 @@ export const DeleteCf1SiteResponse = /*@__PURE__*/ S.suspend(() =>
     description: S.optional(S.String),
     location: S.optional(Cf1SitesDeleteResponseLocation),
     modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteCf1SiteResponse",
 }) as any as S.Schema<DeleteCf1SiteResponse>;
@@ -3506,13 +3877,15 @@ export const DeleteCf1SiteRampRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     cf1SiteId: S.String.pipe(T.Label("cf1_site_id")),
     rampId: S.String.pipe(T.Label("ramp_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/magic/cf1_sites/{cf1_site_id}/ramps/{ramp_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/magic/cf1_sites/{cf1_site_id}/ramps/{ramp_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteCf1SiteRampRequest",
 }) as any as S.Schema<DeleteCf1SiteRampRequest>;
@@ -3618,7 +3991,7 @@ export const DeleteCf1SiteRampResponse = /*@__PURE__*/ S.suspend(() =>
         T.Body("mpls_interconnect"),
       ),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteCf1SiteRampResponse",
 }) as any as S.Schema<DeleteCf1SiteRampResponse>;
@@ -3632,13 +4005,15 @@ export const DeleteConnectorRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     connectorId: S.String.pipe(T.Label("connector_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/magic/connectors/{connector_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/magic/connectors/{connector_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteConnectorRequest",
 }) as any as S.Schema<DeleteConnectorRequest>;
@@ -3732,7 +4107,7 @@ export const DeleteConnectorResponse = /*@__PURE__*/ S.suspend(() =>
     lastSeenVersion: S.optional(S.String.pipe(T.Body("last_seen_version"))),
     licenseKey: S.optional(S.String.pipe(T.Body("license_key"))),
     siteId: S.optional(S.String.pipe(T.Body("site_id"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteConnectorResponse",
 }) as any as S.Schema<DeleteConnectorResponse>;
@@ -3751,13 +4126,15 @@ export const DeleteGreTunnelRequest = /*@__PURE__*/ S.suspend(() =>
     XMagicNewHcTarget_: S.optional(
       S.Boolean.pipe(T.Header('"x-magic-new-hc-target"')),
     ),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/magic/gre_tunnels/{gre_tunnel_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/magic/gre_tunnels/{gre_tunnel_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteGreTunnelRequest",
 }) as any as S.Schema<DeleteGreTunnelRequest>;
@@ -3966,7 +4343,7 @@ export const DeleteGreTunnelResponse = /*@__PURE__*/ S.suspend(() =>
         T.Body("deleted_gre_tunnel"),
       ),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteGreTunnelResponse",
 }) as any as S.Schema<DeleteGreTunnelResponse>;
@@ -3985,13 +4362,15 @@ export const DeleteIpsecTunnelRequest = /*@__PURE__*/ S.suspend(() =>
     XMagicNewHcTarget_: S.optional(
       S.Boolean.pipe(T.Header('"x-magic-new-hc-target"')),
     ),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/magic/ipsec_tunnels/{ipsec_tunnel_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/magic/ipsec_tunnels/{ipsec_tunnel_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteIpsecTunnelRequest",
 }) as any as S.Schema<DeleteIpsecTunnelRequest>;
@@ -4240,7 +4619,7 @@ export const DeleteIpsecTunnelResponse = /*@__PURE__*/ S.suspend(() =>
         T.Body("deleted_ipsec_tunnel"),
       ),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteIpsecTunnelResponse",
 }) as any as S.Schema<DeleteIpsecTunnelResponse>;
@@ -4255,20 +4634,22 @@ export const DeletePcapOwnershipRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     ownershipId: S.String.pipe(T.Label("ownership_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/pcaps/ownership/{ownership_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/pcaps/ownership/{ownership_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeletePcapOwnershipRequest",
 }) as any as S.Schema<DeletePcapOwnershipRequest>;
 
 export interface DeletePcapOwnershipResponse {}
 export const DeletePcapOwnershipResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
+  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeletePcapOwnershipResponse",
 }) as any as S.Schema<DeletePcapOwnershipResponse>;
@@ -4283,13 +4664,15 @@ export const DeleteRouteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     routeId: S.String.pipe(T.Label("route_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/magic/routes/{route_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/magic/routes/{route_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteRouteRequest",
 }) as any as S.Schema<DeleteRouteRequest>;
@@ -4377,7 +4760,7 @@ export const DeleteRouteResponse = /*@__PURE__*/ S.suspend(() =>
     deletedRoute: S.optional(
       RoutesDeleteResponseDeletedRoute.pipe(T.Body("deleted_route")),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteRouteResponse",
 }) as any as S.Schema<DeleteRouteResponse>;
@@ -4392,13 +4775,15 @@ export const DeleteSiteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     siteId: S.String.pipe(T.Label("site_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/magic/sites/{site_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/magic/sites/{site_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteSiteRequest",
 }) as any as S.Schema<DeleteSiteRequest>;
@@ -4445,7 +4830,7 @@ export const DeleteSiteResponse = /*@__PURE__*/ S.suspend(() =>
     secondaryConnectorId: S.optional(
       S.String.pipe(T.Body("secondary_connector_id")),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteSiteResponse",
 }) as any as S.Schema<DeleteSiteResponse>;
@@ -4463,13 +4848,15 @@ export const DeleteSiteAclRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     siteId: S.String.pipe(T.Label("site_id")),
     aclId: S.String.pipe(T.Label("acl_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/magic/sites/{site_id}/acls/{acl_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/magic/sites/{site_id}/acls/{acl_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteSiteAclRequest",
 }) as any as S.Schema<DeleteSiteAclRequest>;
@@ -4546,7 +4933,7 @@ export const DeleteSiteAclResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     protocols: S.optional(SitesAclsDeleteResponseProtocolsList),
     unidirectional: S.optional(S.Boolean),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteSiteAclResponse",
 }) as any as S.Schema<DeleteSiteAclResponse>;
@@ -4564,13 +4951,15 @@ export const DeleteSiteLanRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     siteId: S.String.pipe(T.Label("site_id")),
     lanId: S.String.pipe(T.Label("lan_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/magic/sites/{site_id}/lans/{lan_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/magic/sites/{site_id}/lans/{lan_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteSiteLanRequest",
 }) as any as S.Schema<DeleteSiteLanRequest>;
@@ -4791,7 +5180,7 @@ export const DeleteSiteLanResponse = /*@__PURE__*/ S.suspend(() =>
       SitesLansDeleteResponseStaticAddressing.pipe(T.Body("static_addressing")),
     ),
     vlanTag: S.optional(S.Number.pipe(T.Body("vlan_tag"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteSiteLanResponse",
 }) as any as S.Schema<DeleteSiteLanResponse>;
@@ -4809,13 +5198,15 @@ export const DeleteSiteWanRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     siteId: S.String.pipe(T.Label("site_id")),
     wanId: S.String.pipe(T.Label("wan_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/magic/sites/{site_id}/wans/{wan_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/magic/sites/{site_id}/wans/{wan_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteSiteWanRequest",
 }) as any as S.Schema<DeleteSiteWanRequest>;
@@ -4877,7 +5268,7 @@ export const DeleteSiteWanResponse = /*@__PURE__*/ S.suspend(() =>
       SitesWansDeleteResponseStaticAddressing.pipe(T.Body("static_addressing")),
     ),
     vlanTag: S.optional(S.Number.pipe(T.Body("vlan_tag"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteSiteWanResponse",
 }) as any as S.Schema<DeleteSiteWanResponse>;
@@ -4889,13 +5280,15 @@ export interface EmptyRouteRequest {
 export const EmptyRouteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/magic/routes",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/magic/routes",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "EmptyRouteRequest",
 }) as any as S.Schema<EmptyRouteRequest>;
@@ -4990,7 +5383,7 @@ export const EmptyRouteResponse = /*@__PURE__*/ S.suspend(() =>
     deletedRoutes: S.optional(
       RoutesEmptyResponseDeletedRoutesList.pipe(T.Body("deleted_routes")),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "EmptyRouteResponse",
 }) as any as S.Schema<EmptyRouteResponse>;
@@ -5005,13 +5398,15 @@ export const GetCf1SiteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     cf1SiteId: S.String.pipe(T.Label("cf1_site_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/magic/cf1_sites/{cf1_site_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/magic/cf1_sites/{cf1_site_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetCf1SiteRequest",
 }) as any as S.Schema<GetCf1SiteRequest>;
@@ -5054,7 +5449,7 @@ export const GetCf1SiteResponse = /*@__PURE__*/ S.suspend(() =>
     description: S.optional(S.String),
     location: S.optional(Cf1SitesGetResponseLocation),
     modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetCf1SiteResponse",
 }) as any as S.Schema<GetCf1SiteResponse>;
@@ -5072,13 +5467,15 @@ export const GetCf1SiteRampRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     cf1SiteId: S.String.pipe(T.Label("cf1_site_id")),
     rampId: S.String.pipe(T.Label("ramp_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/magic/cf1_sites/{cf1_site_id}/ramps/{ramp_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/magic/cf1_sites/{cf1_site_id}/ramps/{ramp_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetCf1SiteRampRequest",
 }) as any as S.Schema<GetCf1SiteRampRequest>;
@@ -5182,7 +5579,7 @@ export const GetCf1SiteRampResponse = /*@__PURE__*/ S.suspend(() =>
         T.Body("mpls_interconnect"),
       ),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetCf1SiteRampResponse",
 }) as any as S.Schema<GetCf1SiteRampResponse>;
@@ -5201,13 +5598,15 @@ export const GetCfInterconnectRequest = /*@__PURE__*/ S.suspend(() =>
     XMagicNewHcTarget_: S.optional(
       S.Boolean.pipe(T.Header('"x-magic-new-hc-target"')),
     ),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/magic/cf_interconnects/{cf_interconnect_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/magic/cf_interconnects/{cf_interconnect_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetCfInterconnectRequest",
 }) as any as S.Schema<GetCfInterconnectRequest>;
@@ -5333,7 +5732,7 @@ export interface GetCfInterconnectResponse {
 export const GetCfInterconnectResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     interconnect: S.optional(CfInterconnectsGetResponseInterconnect),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetCfInterconnectResponse",
 }) as any as S.Schema<GetCfInterconnectResponse>;
@@ -5347,13 +5746,15 @@ export const GetConnectorRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     connectorId: S.String.pipe(T.Label("connector_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/magic/connectors/{connector_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/magic/connectors/{connector_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetConnectorRequest",
 }) as any as S.Schema<GetConnectorRequest>;
@@ -5447,7 +5848,7 @@ export const GetConnectorResponse = /*@__PURE__*/ S.suspend(() =>
     lastSeenVersion: S.optional(S.String.pipe(T.Body("last_seen_version"))),
     licenseKey: S.optional(S.String.pipe(T.Body("license_key"))),
     siteId: S.optional(S.String.pipe(T.Body("site_id"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetConnectorResponse",
 }) as any as S.Schema<GetConnectorResponse>;
@@ -5465,13 +5866,15 @@ export const GetConnectorEventRequest = /*@__PURE__*/ S.suspend(() =>
     connectorId: S.String.pipe(T.Label("connector_id")),
     eventT: S.Number.pipe(T.Label("event_t")),
     eventN: S.Number.pipe(T.Label("event_n")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/magic/connectors/{connector_id}/telemetry/events/{event_t}.{event_n}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/magic/connectors/{connector_id}/telemetry/events/{event_t}.{event_n}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetConnectorEventRequest",
 }) as any as S.Schema<GetConnectorEventRequest>;
@@ -5579,7 +5982,7 @@ export const GetConnectorEventResponse = /*@__PURE__*/ S.suspend(() =>
     n: S.Number,
     t: S.Number,
     v: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetConnectorEventResponse",
 }) as any as S.Schema<GetConnectorEventResponse>;
@@ -5595,13 +5998,15 @@ export const GetConnectorSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     connectorId: S.String.pipe(T.Label("connector_id")),
     snapshotT: S.Number.pipe(T.Label("snapshot_t")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/magic/connectors/{connector_id}/telemetry/snapshots/{snapshot_t}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/magic/connectors/{connector_id}/telemetry/snapshots/{snapshot_t}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetConnectorSnapshotRequest",
 }) as any as S.Schema<GetConnectorSnapshotRequest>;
@@ -6697,7 +7102,7 @@ export const GetConnectorSnapshotResponse = /*@__PURE__*/ S.suspend(() =>
     tunnels: S.optional(ConnectorsSnapshotsGetResponseTunnelsList),
     uptimeIdleMs: S.optional(S.Number.pipe(T.Body("uptime_idle_ms"))),
     uptimeTotalMs: S.optional(S.Number.pipe(T.Body("uptime_total_ms"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetConnectorSnapshotResponse",
 }) as any as S.Schema<GetConnectorSnapshotResponse>;
@@ -6716,13 +7121,15 @@ export const GetGreTunnelRequest = /*@__PURE__*/ S.suspend(() =>
     XMagicNewHcTarget_: S.optional(
       S.Boolean.pipe(T.Header('"x-magic-new-hc-target"')),
     ),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/magic/gre_tunnels/{gre_tunnel_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/magic/gre_tunnels/{gre_tunnel_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetGreTunnelRequest",
 }) as any as S.Schema<GetGreTunnelRequest>;
@@ -6914,7 +7321,7 @@ export const GetGreTunnelResponse = /*@__PURE__*/ S.suspend(() =>
     greTunnel: S.optional(
       GreTunnelsGetResponseGreTunnel.pipe(T.Body("gre_tunnel")),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetGreTunnelResponse",
 }) as any as S.Schema<GetGreTunnelResponse>;
@@ -6933,13 +7340,15 @@ export const GetIpsecTunnelRequest = /*@__PURE__*/ S.suspend(() =>
     XMagicNewHcTarget_: S.optional(
       S.Boolean.pipe(T.Header('"x-magic-new-hc-target"')),
     ),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/magic/ipsec_tunnels/{ipsec_tunnel_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/magic/ipsec_tunnels/{ipsec_tunnel_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetIpsecTunnelRequest",
 }) as any as S.Schema<GetIpsecTunnelRequest>;
@@ -7175,7 +7584,7 @@ export const GetIpsecTunnelResponse = /*@__PURE__*/ S.suspend(() =>
     ipsecTunnel: S.optional(
       IpsecTunnelsGetResponseIpsecTunnel.pipe(T.Body("ipsec_tunnel")),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetIpsecTunnelResponse",
 }) as any as S.Schema<GetIpsecTunnelResponse>;
@@ -7190,13 +7599,15 @@ export const GetPcapRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     pcapId: S.String.pipe(T.Label("pcap_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/pcaps/{pcap_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/pcaps/{pcap_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "GetPcapRequest" }) as any as S.Schema<GetPcapRequest>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -7215,7 +7626,7 @@ export const GetPcapResponse = /*@__PURE__*/ S.suspend(() =>
           "MagicVisibilityPCAPsPCAPsResponseFull object { id, byte_limit, colo_name, 10 more }",
         ),
       ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetPcapResponse",
 }) as any as S.Schema<GetPcapResponse>;
@@ -7230,20 +7641,22 @@ export const GetPcapDownloadRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     pcapId: S.String.pipe(T.Label("pcap_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/pcaps/{pcap_id}/download",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/pcaps/{pcap_id}/download",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetPcapDownloadRequest",
 }) as any as S.Schema<GetPcapDownloadRequest>;
 
 export interface GetPcapDownloadResponse {}
 export const GetPcapDownloadResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
+  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetPcapDownloadResponse",
 }) as any as S.Schema<GetPcapDownloadResponse>;
@@ -7255,13 +7668,15 @@ export interface GetPcapOwnershipRequest {
 export const GetPcapOwnershipRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/pcaps/ownership",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/pcaps/ownership",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetPcapOwnershipRequest",
 }) as any as S.Schema<GetPcapOwnershipRequest>;
@@ -7315,7 +7730,7 @@ export const GetPcapOwnershipResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: PcapsOwnershipGetResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetPcapOwnershipResponse",
 }) as any as S.Schema<GetPcapOwnershipResponse>;
@@ -7330,13 +7745,15 @@ export const GetRouteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     routeId: S.String.pipe(T.Label("route_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/magic/routes/{route_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/magic/routes/{route_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetRouteRequest",
 }) as any as S.Schema<GetRouteRequest>;
@@ -7413,7 +7830,7 @@ export interface GetRouteResponse {
 export const GetRouteResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     route: S.optional(RoutesGetResponseRoute),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetRouteResponse",
 }) as any as S.Schema<GetRouteResponse>;
@@ -7432,13 +7849,15 @@ export const GetSiteRequest = /*@__PURE__*/ S.suspend(() =>
     XMagicNewHcTarget_: S.optional(
       S.Boolean.pipe(T.Header('"x-magic-new-hc-target"')),
     ),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/magic/sites/{site_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/magic/sites/{site_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "GetSiteRequest" }) as any as S.Schema<GetSiteRequest>;
 
 export interface SitesGetResponseLocation {
@@ -7483,7 +7902,7 @@ export const GetSiteResponse = /*@__PURE__*/ S.suspend(() =>
     secondaryConnectorId: S.optional(
       S.String.pipe(T.Body("secondary_connector_id")),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetSiteResponse",
 }) as any as S.Schema<GetSiteResponse>;
@@ -7501,13 +7920,15 @@ export const GetSiteAclRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     siteId: S.String.pipe(T.Label("site_id")),
     aclId: S.String.pipe(T.Label("acl_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/magic/sites/{site_id}/acls/{acl_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/magic/sites/{site_id}/acls/{acl_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetSiteAclRequest",
 }) as any as S.Schema<GetSiteAclRequest>;
@@ -7584,7 +8005,7 @@ export const GetSiteAclResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     protocols: S.optional(SitesAclsGetResponseProtocolsList),
     unidirectional: S.optional(S.Boolean),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetSiteAclResponse",
 }) as any as S.Schema<GetSiteAclResponse>;
@@ -7602,13 +8023,15 @@ export const GetSiteLanRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     siteId: S.String.pipe(T.Label("site_id")),
     lanId: S.String.pipe(T.Label("lan_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/magic/sites/{site_id}/lans/{lan_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/magic/sites/{site_id}/lans/{lan_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetSiteLanRequest",
 }) as any as S.Schema<GetSiteLanRequest>;
@@ -7831,7 +8254,7 @@ export const GetSiteLanResponse = /*@__PURE__*/ S.suspend(() =>
       SitesLansGetResponseStaticAddressing.pipe(T.Body("static_addressing")),
     ),
     vlanTag: S.optional(S.Number.pipe(T.Body("vlan_tag"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetSiteLanResponse",
 }) as any as S.Schema<GetSiteLanResponse>;
@@ -7849,13 +8272,15 @@ export const GetSiteWanRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     siteId: S.String.pipe(T.Label("site_id")),
     wanId: S.String.pipe(T.Label("wan_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/magic/sites/{site_id}/wans/{wan_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/magic/sites/{site_id}/wans/{wan_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetSiteWanRequest",
 }) as any as S.Schema<GetSiteWanRequest>;
@@ -7917,7 +8342,7 @@ export const GetSiteWanResponse = /*@__PURE__*/ S.suspend(() =>
       SitesWansGetResponseStaticAddressing.pipe(T.Body("static_addressing")),
     ),
     vlanTag: S.optional(S.Number.pipe(T.Body("vlan_tag"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetSiteWanResponse",
 }) as any as S.Schema<GetSiteWanResponse>;
@@ -7929,13 +8354,15 @@ export interface ListAppsRequest {
 export const ListAppsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/magic/apps",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/magic/apps",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListAppsRequest",
 }) as any as S.Schema<ListAppsRequest>;
@@ -7978,7 +8405,7 @@ export const ListAppsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: AppsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListAppsResponse",
 }) as any as S.Schema<ListAppsResponse>;
@@ -7993,13 +8420,15 @@ export const ListCf1SiteRampsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     cf1SiteId: S.String.pipe(T.Label("cf1_site_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/magic/cf1_sites/{cf1_site_id}/ramps",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/magic/cf1_sites/{cf1_site_id}/ramps",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListCf1SiteRampsRequest",
 }) as any as S.Schema<ListCf1SiteRampsRequest>;
@@ -8124,7 +8553,7 @@ export const ListCf1SiteRampsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: Cf1SitesRampsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListCf1SiteRampsResponse",
 }) as any as S.Schema<ListCf1SiteRampsResponse>;
@@ -8136,13 +8565,15 @@ export interface ListCf1SitesRequest {
 export const ListCf1SitesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/magic/cf1_sites",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/magic/cf1_sites",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListCf1SitesRequest",
 }) as any as S.Schema<ListCf1SitesRequest>;
@@ -8204,7 +8635,7 @@ export const ListCf1SitesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: Cf1SitesListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListCf1SitesResponse",
 }) as any as S.Schema<ListCf1SitesResponse>;
@@ -8220,13 +8651,15 @@ export const ListCfInterconnectsRequest = /*@__PURE__*/ S.suspend(() =>
     XMagicNewHcTarget_: S.optional(
       S.Boolean.pipe(T.Header('"x-magic-new-hc-target"')),
     ),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/magic/cf_interconnects",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/magic/cf_interconnects",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListCfInterconnectsRequest",
 }) as any as S.Schema<ListCfInterconnectsRequest>;
@@ -8359,7 +8792,7 @@ export interface ListCfInterconnectsResponse {
 export const ListCfInterconnectsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     interconnects: S.optional(CfInterconnectsListResponseInterconnectsList),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListCfInterconnectsResponse",
 }) as any as S.Schema<ListCfInterconnectsResponse>;
@@ -8373,13 +8806,15 @@ export const ListConnectorEventLatestsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     connectorId: S.String.pipe(T.Label("connector_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/magic/connectors/{connector_id}/telemetry/events/latest",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/magic/connectors/{connector_id}/telemetry/events/latest",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListConnectorEventLatestsRequest",
 }) as any as S.Schema<ListConnectorEventLatestsRequest>;
@@ -8509,7 +8944,7 @@ export const ListConnectorEventLatestsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     items: ConnectorsEventsLatestListResponseItemsList,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListConnectorEventLatestsResponse",
 }) as any as S.Schema<ListConnectorEventLatestsResponse>;
@@ -8534,13 +8969,15 @@ export const ListConnectorEventsRequest = /*@__PURE__*/ S.suspend(() =>
     cursor: S.optional(S.String.pipe(T.Query())),
     k: S.optional(S.String.pipe(T.Query())),
     limit: S.optional(S.Number.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/magic/connectors/{connector_id}/telemetry/events",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/magic/connectors/{connector_id}/telemetry/events",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListConnectorEventsRequest",
 }) as any as S.Schema<ListConnectorEventsRequest>;
@@ -8584,7 +9021,7 @@ export const ListConnectorEventsResponse = /*@__PURE__*/ S.suspend(() =>
     count: S.Number,
     items: ConnectorsEventsListResponseItemsList,
     cursor: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListConnectorEventsResponse",
 }) as any as S.Schema<ListConnectorEventsResponse>;
@@ -8607,13 +9044,15 @@ export const ListConnectorsRequest = /*@__PURE__*/ S.suspend(() =>
     deviceType: S.optional(
       ConnectorsListRequestDeviceType.pipe(T.Query("device_type")),
     ),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/magic/connectors",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/magic/connectors",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListConnectorsRequest",
 }) as any as S.Schema<ListConnectorsRequest>;
@@ -8726,7 +9165,7 @@ export const ListConnectorsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: ConnectorsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListConnectorsResponse",
 }) as any as S.Schema<ListConnectorsResponse>;
@@ -8740,13 +9179,15 @@ export const ListConnectorSnapshotLatestsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     connectorId: S.String.pipe(T.Label("connector_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/magic/connectors/{connector_id}/telemetry/snapshots/latest",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/magic/connectors/{connector_id}/telemetry/snapshots/latest",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListConnectorSnapshotLatestsRequest",
 }) as any as S.Schema<ListConnectorSnapshotLatestsRequest>;
@@ -9917,7 +10358,7 @@ export const ListConnectorSnapshotLatestsResponse = /*@__PURE__*/ S.suspend(
     S.Struct({
       count: S.Number,
       items: ConnectorsSnapshotsLatestListResponseItemsList,
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListConnectorSnapshotLatestsResponse",
 }) as any as S.Schema<ListConnectorSnapshotLatestsResponse>;
@@ -9939,13 +10380,15 @@ export const ListConnectorSnapshotsRequest = /*@__PURE__*/ S.suspend(() =>
     to: S.Number.pipe(T.Query()),
     cursor: S.optional(S.String.pipe(T.Query())),
     limit: S.optional(S.Number.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/magic/connectors/{connector_id}/telemetry/snapshots",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/magic/connectors/{connector_id}/telemetry/snapshots",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListConnectorSnapshotsRequest",
 }) as any as S.Schema<ListConnectorSnapshotsRequest>;
@@ -9983,7 +10426,7 @@ export const ListConnectorSnapshotsResponse = /*@__PURE__*/ S.suspend(() =>
     count: S.Number,
     items: ConnectorsSnapshotsListResponseItemsList,
     cursor: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListConnectorSnapshotsResponse",
 }) as any as S.Schema<ListConnectorSnapshotsResponse>;
@@ -9999,13 +10442,15 @@ export const ListGreTunnelsRequest = /*@__PURE__*/ S.suspend(() =>
     XMagicNewHcTarget_: S.optional(
       S.Boolean.pipe(T.Header('"x-magic-new-hc-target"')),
     ),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/magic/gre_tunnels",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/magic/gre_tunnels",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListGreTunnelsRequest",
 }) as any as S.Schema<ListGreTunnelsRequest>;
@@ -10213,7 +10658,7 @@ export const ListGreTunnelsResponse = /*@__PURE__*/ S.suspend(() =>
     greTunnels: S.optional(
       GreTunnelsListResponseGreTunnelsList.pipe(T.Body("gre_tunnels")),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListGreTunnelsResponse",
 }) as any as S.Schema<ListGreTunnelsResponse>;
@@ -10229,13 +10674,15 @@ export const ListIpsecTunnelsRequest = /*@__PURE__*/ S.suspend(() =>
     XMagicNewHcTarget_: S.optional(
       S.Boolean.pipe(T.Header('"x-magic-new-hc-target"')),
     ),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/magic/ipsec_tunnels",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/magic/ipsec_tunnels",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListIpsecTunnelsRequest",
 }) as any as S.Schema<ListIpsecTunnelsRequest>;
@@ -10486,7 +10933,7 @@ export const ListIpsecTunnelsResponse = /*@__PURE__*/ S.suspend(() =>
     ipsecTunnels: S.optional(
       IpsecTunnelsListResponseIpsecTunnelsList.pipe(T.Body("ipsec_tunnels")),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListIpsecTunnelsResponse",
 }) as any as S.Schema<ListIpsecTunnelsResponse>;
@@ -10498,9 +10945,11 @@ export interface ListPcapsRequest {
 export const ListPcapsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({ method: "GET", uri: "/accounts/{account_id}/pcaps", code: 200 }),
-  ),
+  })
+    .pipe(
+      T.Http({ method: "GET", uri: "/accounts/{account_id}/pcaps", code: 200 }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListPcapsRequest",
 }) as any as S.Schema<ListPcapsRequest>;
@@ -10540,7 +10989,7 @@ export const ListPcapsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: PcapsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListPcapsResponse",
 }) as any as S.Schema<ListPcapsResponse>;
@@ -10552,13 +11001,15 @@ export interface ListRoutesRequest {
 export const ListRoutesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/magic/routes",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/magic/routes",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListRoutesRequest",
 }) as any as S.Schema<ListRoutesRequest>;
@@ -10644,7 +11095,7 @@ export interface ListRoutesResponse {
 export const ListRoutesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     routes: S.optional(RoutesListResponseRoutesList),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListRoutesResponse",
 }) as any as S.Schema<ListRoutesResponse>;
@@ -10659,13 +11110,15 @@ export const ListSiteAclsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     siteId: S.String.pipe(T.Label("site_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/magic/sites/{site_id}/acls",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/magic/sites/{site_id}/acls",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListSiteAclsRequest",
 }) as any as S.Schema<ListSiteAclsRequest>;
@@ -10761,7 +11214,7 @@ export const ListSiteAclsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: SitesAclsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListSiteAclsResponse",
 }) as any as S.Schema<ListSiteAclsResponse>;
@@ -10776,13 +11229,15 @@ export const ListSiteLansRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     siteId: S.String.pipe(T.Label("site_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/magic/sites/{site_id}/lans",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/magic/sites/{site_id}/lans",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListSiteLansRequest",
 }) as any as S.Schema<ListSiteLansRequest>;
@@ -11022,7 +11477,7 @@ export const ListSiteLansResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: SitesLansListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListSiteLansResponse",
 }) as any as S.Schema<ListSiteLansResponse>;
@@ -11037,13 +11492,15 @@ export const ListSitesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     connectorid: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/magic/sites",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/magic/sites",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListSitesRequest",
 }) as any as S.Schema<ListSitesRequest>;
@@ -11109,7 +11566,7 @@ export const ListSitesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: SitesListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListSitesResponse",
 }) as any as S.Schema<ListSitesResponse>;
@@ -11124,13 +11581,15 @@ export const ListSiteWansRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     siteId: S.String.pipe(T.Label("site_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/magic/sites/{site_id}/wans",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/magic/sites/{site_id}/wans",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListSiteWansRequest",
 }) as any as S.Schema<ListSiteWansRequest>;
@@ -11211,7 +11670,7 @@ export const ListSiteWansResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: SitesWansListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListSiteWansResponse",
 }) as any as S.Schema<ListSiteWansResponse>;
@@ -11260,13 +11719,15 @@ export const PatchAppRequest = /*@__PURE__*/ S.suspend(() =>
       AppsEditRequestSourceSubnetsList.pipe(T.Body("source_subnets")),
     ),
     type: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/accounts/{account_id}/magic/apps/{account_app_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/accounts/{account_id}/magic/apps/{account_app_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchAppRequest",
 }) as any as S.Schema<PatchAppRequest>;
@@ -11313,7 +11774,7 @@ export const PatchAppResponse = /*@__PURE__*/ S.suspend(() =>
       AppsEditResponseSourceSubnetsList.pipe(T.Body("source_subnets")),
     ),
     type: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchAppResponse",
 }) as any as S.Schema<PatchAppResponse>;
@@ -11354,13 +11815,15 @@ export const PatchCf1SiteRequest = /*@__PURE__*/ S.suspend(() =>
     description: S.optional(S.String),
     location: S.optional(Cf1SitesUpdateRequestLocation),
     name: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/accounts/{account_id}/magic/cf1_sites/{cf1_site_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/accounts/{account_id}/magic/cf1_sites/{cf1_site_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchCf1SiteRequest",
 }) as any as S.Schema<PatchCf1SiteRequest>;
@@ -11403,7 +11866,7 @@ export const PatchCf1SiteResponse = /*@__PURE__*/ S.suspend(() =>
     description: S.optional(S.String),
     location: S.optional(Cf1SitesUpdateResponseLocation),
     modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchCf1SiteResponse",
 }) as any as S.Schema<PatchCf1SiteResponse>;
@@ -11473,13 +11936,15 @@ export const PatchConnectorRequest = /*@__PURE__*/ S.suspend(() =>
     provisionLicense: S.optional(S.Boolean.pipe(T.Body("provision_license"))),
     siteId: S.optional(S.String.pipe(T.Body("site_id"))),
     timezone: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/accounts/{account_id}/magic/connectors/{connector_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/accounts/{account_id}/magic/connectors/{connector_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchConnectorRequest",
 }) as any as S.Schema<PatchConnectorRequest>;
@@ -11573,7 +12038,7 @@ export const PatchConnectorResponse = /*@__PURE__*/ S.suspend(() =>
     lastSeenVersion: S.optional(S.String.pipe(T.Body("last_seen_version"))),
     licenseKey: S.optional(S.String.pipe(T.Body("license_key"))),
     siteId: S.optional(S.String.pipe(T.Body("site_id"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchConnectorResponse",
 }) as any as S.Schema<PatchConnectorResponse>;
@@ -11619,13 +12084,15 @@ export const PatchSiteRequest = /*@__PURE__*/ S.suspend(() =>
     secondaryConnectorId: S.optional(
       S.String.pipe(T.Body("secondary_connector_id")),
     ),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/accounts/{account_id}/magic/sites/{site_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/accounts/{account_id}/magic/sites/{site_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchSiteRequest",
 }) as any as S.Schema<PatchSiteRequest>;
@@ -11672,7 +12139,7 @@ export const PatchSiteResponse = /*@__PURE__*/ S.suspend(() =>
     secondaryConnectorId: S.optional(
       S.String.pipe(T.Body("secondary_connector_id")),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchSiteResponse",
 }) as any as S.Schema<PatchSiteResponse>;
@@ -11754,13 +12221,15 @@ export const PatchSiteAclRequest = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     protocols: S.optional(SitesAclsEditRequestProtocolsList),
     unidirectional: S.optional(S.Boolean),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/accounts/{account_id}/magic/sites/{site_id}/acls/{acl_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/accounts/{account_id}/magic/sites/{site_id}/acls/{acl_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchSiteAclRequest",
 }) as any as S.Schema<PatchSiteAclRequest>;
@@ -11837,7 +12306,7 @@ export const PatchSiteAclResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     protocols: S.optional(SitesAclsEditResponseProtocolsList),
     unidirectional: S.optional(S.Boolean),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchSiteAclResponse",
 }) as any as S.Schema<PatchSiteAclResponse>;
@@ -12059,13 +12528,15 @@ export const PatchSiteLanRequest = /*@__PURE__*/ S.suspend(() =>
       SitesLansEditRequestStaticAddressing.pipe(T.Body("static_addressing")),
     ),
     vlanTag: S.optional(S.Number.pipe(T.Body("vlan_tag"))),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/accounts/{account_id}/magic/sites/{site_id}/lans/{lan_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/accounts/{account_id}/magic/sites/{site_id}/lans/{lan_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchSiteLanRequest",
 }) as any as S.Schema<PatchSiteLanRequest>;
@@ -12286,7 +12757,7 @@ export const PatchSiteLanResponse = /*@__PURE__*/ S.suspend(() =>
       SitesLansEditResponseStaticAddressing.pipe(T.Body("static_addressing")),
     ),
     vlanTag: S.optional(S.Number.pipe(T.Body("vlan_tag"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchSiteLanResponse",
 }) as any as S.Schema<PatchSiteLanResponse>;
@@ -12337,13 +12808,15 @@ export const PatchSiteWanRequest = /*@__PURE__*/ S.suspend(() =>
       SitesWansEditRequestStaticAddressing.pipe(T.Body("static_addressing")),
     ),
     vlanTag: S.optional(S.Number.pipe(T.Body("vlan_tag"))),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/accounts/{account_id}/magic/sites/{site_id}/wans/{wan_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/accounts/{account_id}/magic/sites/{site_id}/wans/{wan_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchSiteWanRequest",
 }) as any as S.Schema<PatchSiteWanRequest>;
@@ -12405,7 +12878,7 @@ export const PatchSiteWanResponse = /*@__PURE__*/ S.suspend(() =>
       SitesWansEditResponseStaticAddressing.pipe(T.Body("static_addressing")),
     ),
     vlanTag: S.optional(S.Number.pipe(T.Body("vlan_tag"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchSiteWanResponse",
 }) as any as S.Schema<PatchSiteWanResponse>;
@@ -12422,13 +12895,15 @@ export const PskGenerateIpsecTunnelRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     ipsecTunnelId: S.String.pipe(T.Label("ipsec_tunnel_id")),
     body: S.Unknown,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/magic/ipsec_tunnels/{ipsec_tunnel_id}/psk_generate",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/magic/ipsec_tunnels/{ipsec_tunnel_id}/psk_generate",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PskGenerateIpsecTunnelRequest",
 }) as any as S.Schema<PskGenerateIpsecTunnelRequest>;
@@ -12462,7 +12937,7 @@ export const PskGenerateIpsecTunnelResponse = /*@__PURE__*/ S.suspend(() =>
     pskMetadata: S.optional(
       IpsecTunnelsPskGenerateResponsePskMetadata.pipe(T.Body("psk_metadata")),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PskGenerateIpsecTunnelResponse",
 }) as any as S.Schema<PskGenerateIpsecTunnelResponse>;
@@ -12501,13 +12976,15 @@ export const PskSetIpsecTunnelRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     validateOnly: S.optional(S.Boolean.pipe(T.Query("validate_only"))),
     psks: IpsecTunnelsPskSetRequestPsksList,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/magic/ipsec_tunnels/psk",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/magic/ipsec_tunnels/psk",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PskSetIpsecTunnelRequest",
 }) as any as S.Schema<PskSetIpsecTunnelRequest>;
@@ -12547,7 +13024,7 @@ export const PskSetIpsecTunnelResponse = /*@__PURE__*/ S.suspend(() =>
     unappliedPsks: S.optional(
       IpsecTunnelsPskSetResponseUnappliedPsksMap.pipe(T.Body("unapplied_psks")),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PskSetIpsecTunnelResponse",
 }) as any as S.Schema<PskSetIpsecTunnelResponse>;
@@ -12646,13 +13123,15 @@ export const PutCfInterconnectRequest = /*@__PURE__*/ S.suspend(() =>
     interfaceAddress6: S.optional(S.String.pipe(T.Body("interface_address6"))),
     mtu: S.optional(S.Number),
     name: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/magic/cf_interconnects/{cf_interconnect_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/magic/cf_interconnects/{cf_interconnect_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutCfInterconnectRequest",
 }) as any as S.Schema<PutCfInterconnectRequest>;
@@ -12785,7 +13264,7 @@ export const PutCfInterconnectResponse = /*@__PURE__*/ S.suspend(() =>
         T.Body("modified_interconnect"),
       ),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutCfInterconnectResponse",
 }) as any as S.Schema<PutCfInterconnectResponse>;
@@ -12826,13 +13305,15 @@ export const SitesAppConfigurationCreateRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     siteId: S.String.pipe(T.Label("site_id")),
     body: SitesAppConfigurationCreateRequestBody,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/magic/sites/{site_id}/app_configs",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/magic/sites/{site_id}/app_configs",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "SitesAppConfigurationCreateRequest",
 }) as any as S.Schema<SitesAppConfigurationCreateRequest>;
@@ -12850,7 +13331,7 @@ export const SitesAppConfigurationCreateResponse = /*@__PURE__*/ S.suspend(() =>
     ManagedAppObjectManagedAppIdIdBreakout3More__: S.Unknown.pipe(
       T.Body("ManagedApp object { managed_app_id, id, breakout, 3 more }"),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "SitesAppConfigurationCreateResponse",
 }) as any as S.Schema<SitesAppConfigurationCreateResponse>;
@@ -12868,13 +13349,15 @@ export const SitesAppConfigurationDeleteRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     siteId: S.String.pipe(T.Label("site_id")),
     appConfigId: S.String.pipe(T.Label("app_config_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/magic/sites/{site_id}/app_configs/{app_config_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/magic/sites/{site_id}/app_configs/{app_config_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "SitesAppConfigurationDeleteRequest",
 }) as any as S.Schema<SitesAppConfigurationDeleteRequest>;
@@ -12892,7 +13375,7 @@ export const SitesAppConfigurationDeleteResponse = /*@__PURE__*/ S.suspend(() =>
     ManagedAppObjectManagedAppIdIdBreakout3More__: S.Unknown.pipe(
       T.Body("ManagedApp object { managed_app_id, id, breakout, 3 more }"),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "SitesAppConfigurationDeleteResponse",
 }) as any as S.Schema<SitesAppConfigurationDeleteResponse>;
@@ -12935,13 +13418,15 @@ export const SitesAppConfigurationEditRequest = /*@__PURE__*/ S.suspend(() =>
       ),
     ),
     priority: S.optional(S.Number),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/accounts/{account_id}/magic/sites/{site_id}/app_configs/{app_config_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/accounts/{account_id}/magic/sites/{site_id}/app_configs/{app_config_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "SitesAppConfigurationEditRequest",
 }) as any as S.Schema<SitesAppConfigurationEditRequest>;
@@ -12959,7 +13444,7 @@ export const SitesAppConfigurationEditResponse = /*@__PURE__*/ S.suspend(() =>
     ManagedAppObjectManagedAppIdIdBreakout3More__: S.Unknown.pipe(
       T.Body("ManagedApp object { managed_app_id, id, breakout, 3 more }"),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "SitesAppConfigurationEditResponse",
 }) as any as S.Schema<SitesAppConfigurationEditResponse>;
@@ -12974,13 +13459,15 @@ export const SitesAppConfigurationListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     siteId: S.String.pipe(T.Label("site_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/magic/sites/{site_id}/app_configs",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/magic/sites/{site_id}/app_configs",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "SitesAppConfigurationListRequest",
 }) as any as S.Schema<SitesAppConfigurationListRequest>;
@@ -13017,7 +13504,7 @@ export const SitesAppConfigurationListResponse = /*@__PURE__*/ S.suspend(() =>
     result: S.optional(
       SitesAppConfigurationListResultList.pipe(T.EnvelopePayload()),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "SitesAppConfigurationListResponse",
 }) as any as S.Schema<SitesAppConfigurationListResponse>;
@@ -13060,13 +13547,15 @@ export const SitesAppConfigurationUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       ),
     ),
     priority: S.optional(S.Number),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/magic/sites/{site_id}/app_configs/{app_config_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/magic/sites/{site_id}/app_configs/{app_config_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "SitesAppConfigurationUpdateRequest",
 }) as any as S.Schema<SitesAppConfigurationUpdateRequest>;
@@ -13084,7 +13573,7 @@ export const SitesAppConfigurationUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     ManagedAppObjectManagedAppIdIdBreakout3More__: S.Unknown.pipe(
       T.Body("ManagedApp object { managed_app_id, id, breakout, 3 more }"),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "SitesAppConfigurationUpdateResponse",
 }) as any as S.Schema<SitesAppConfigurationUpdateResponse>;
@@ -13099,20 +13588,22 @@ export const StopPcapRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     pcapId: S.String.pipe(T.Label("pcap_id")),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/pcaps/{pcap_id}/stop",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/pcaps/{pcap_id}/stop",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "StopPcapRequest",
 }) as any as S.Schema<StopPcapRequest>;
 
 export interface StopPcapResponse {}
 export const StopPcapResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
+  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "StopPcapResponse",
 }) as any as S.Schema<StopPcapResponse>;
@@ -13161,13 +13652,15 @@ export const UpdateAppRequest = /*@__PURE__*/ S.suspend(() =>
       AppsUpdateRequestSourceSubnetsList.pipe(T.Body("source_subnets")),
     ),
     type: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/magic/apps/{account_app_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/magic/apps/{account_app_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateAppRequest",
 }) as any as S.Schema<UpdateAppRequest>;
@@ -13214,7 +13707,7 @@ export const UpdateAppResponse = /*@__PURE__*/ S.suspend(() =>
       AppsUpdateResponseSourceSubnetsList.pipe(T.Body("source_subnets")),
     ),
     type: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateAppResponse",
 }) as any as S.Schema<UpdateAppResponse>;
@@ -13284,13 +13777,15 @@ export const UpdateConnectorRequest = /*@__PURE__*/ S.suspend(() =>
     provisionLicense: S.optional(S.Boolean.pipe(T.Body("provision_license"))),
     siteId: S.optional(S.String.pipe(T.Body("site_id"))),
     timezone: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/magic/connectors/{connector_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/magic/connectors/{connector_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateConnectorRequest",
 }) as any as S.Schema<UpdateConnectorRequest>;
@@ -13384,7 +13879,7 @@ export const UpdateConnectorResponse = /*@__PURE__*/ S.suspend(() =>
     lastSeenVersion: S.optional(S.String.pipe(T.Body("last_seen_version"))),
     licenseKey: S.optional(S.String.pipe(T.Body("license_key"))),
     siteId: S.optional(S.String.pipe(T.Body("site_id"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateConnectorResponse",
 }) as any as S.Schema<UpdateConnectorResponse>;
@@ -13484,13 +13979,15 @@ export const UpdateGreTunnelRequest = /*@__PURE__*/ S.suspend(() =>
     interfaceAddress6: S.optional(S.String.pipe(T.Body("interface_address6"))),
     mtu: S.optional(S.Number),
     ttl: S.optional(S.Number),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/magic/gre_tunnels/{gre_tunnel_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/magic/gre_tunnels/{gre_tunnel_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateGreTunnelRequest",
 }) as any as S.Schema<UpdateGreTunnelRequest>;
@@ -13699,7 +14196,7 @@ export const UpdateGreTunnelResponse = /*@__PURE__*/ S.suspend(() =>
         T.Body("modified_gre_tunnel"),
       ),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateGreTunnelResponse",
 }) as any as S.Schema<UpdateGreTunnelResponse>;
@@ -13855,13 +14352,15 @@ export const UpdateIpsecTunnelRequest = /*@__PURE__*/ S.suspend(() =>
     interfaceAddress6: S.optional(S.String.pipe(T.Body("interface_address6"))),
     psk: S.optional(S.String),
     replayProtection: S.optional(S.Boolean.pipe(T.Body("replay_protection"))),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/magic/ipsec_tunnels/{ipsec_tunnel_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/magic/ipsec_tunnels/{ipsec_tunnel_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateIpsecTunnelRequest",
 }) as any as S.Schema<UpdateIpsecTunnelRequest>;
@@ -14111,7 +14610,7 @@ export const UpdateIpsecTunnelResponse = /*@__PURE__*/ S.suspend(() =>
         T.Body("modified_ipsec_tunnel"),
       ),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateIpsecTunnelResponse",
 }) as any as S.Schema<UpdateIpsecTunnelResponse>;
@@ -14173,13 +14672,15 @@ export const UpdateRouteRequest = /*@__PURE__*/ S.suspend(() =>
     description: S.optional(S.String),
     scope: S.optional(RoutesUpdateRequestScope),
     weight: S.optional(S.Number),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/magic/routes/{route_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/magic/routes/{route_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateRouteRequest",
 }) as any as S.Schema<UpdateRouteRequest>;
@@ -14267,7 +14768,7 @@ export const UpdateRouteResponse = /*@__PURE__*/ S.suspend(() =>
     modifiedRoute: S.optional(
       RoutesUpdateResponseModifiedRoute.pipe(T.Body("modified_route")),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateRouteResponse",
 }) as any as S.Schema<UpdateRouteResponse>;
@@ -14313,13 +14814,15 @@ export const UpdateSiteRequest = /*@__PURE__*/ S.suspend(() =>
     secondaryConnectorId: S.optional(
       S.String.pipe(T.Body("secondary_connector_id")),
     ),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/magic/sites/{site_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/magic/sites/{site_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateSiteRequest",
 }) as any as S.Schema<UpdateSiteRequest>;
@@ -14366,7 +14869,7 @@ export const UpdateSiteResponse = /*@__PURE__*/ S.suspend(() =>
     secondaryConnectorId: S.optional(
       S.String.pipe(T.Body("secondary_connector_id")),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateSiteResponse",
 }) as any as S.Schema<UpdateSiteResponse>;
@@ -14448,13 +14951,15 @@ export const UpdateSiteAclRequest = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     protocols: S.optional(SitesAclsUpdateRequestProtocolsList),
     unidirectional: S.optional(S.Boolean),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/magic/sites/{site_id}/acls/{acl_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/magic/sites/{site_id}/acls/{acl_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateSiteAclRequest",
 }) as any as S.Schema<UpdateSiteAclRequest>;
@@ -14531,7 +15036,7 @@ export const UpdateSiteAclResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     protocols: S.optional(SitesAclsUpdateResponseProtocolsList),
     unidirectional: S.optional(S.Boolean),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateSiteAclResponse",
 }) as any as S.Schema<UpdateSiteAclResponse>;
@@ -14751,13 +15256,15 @@ export const UpdateSiteLanRequest = /*@__PURE__*/ S.suspend(() =>
       SitesLansUpdateRequestStaticAddressing.pipe(T.Body("static_addressing")),
     ),
     vlanTag: S.optional(S.Number.pipe(T.Body("vlan_tag"))),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/magic/sites/{site_id}/lans/{lan_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/magic/sites/{site_id}/lans/{lan_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateSiteLanRequest",
 }) as any as S.Schema<UpdateSiteLanRequest>;
@@ -14978,7 +15485,7 @@ export const UpdateSiteLanResponse = /*@__PURE__*/ S.suspend(() =>
       SitesLansUpdateResponseStaticAddressing.pipe(T.Body("static_addressing")),
     ),
     vlanTag: S.optional(S.Number.pipe(T.Body("vlan_tag"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateSiteLanResponse",
 }) as any as S.Schema<UpdateSiteLanResponse>;
@@ -15029,13 +15536,15 @@ export const UpdateSiteWanRequest = /*@__PURE__*/ S.suspend(() =>
       SitesWansUpdateRequestStaticAddressing.pipe(T.Body("static_addressing")),
     ),
     vlanTag: S.optional(S.Number.pipe(T.Body("vlan_tag"))),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/magic/sites/{site_id}/wans/{wan_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/magic/sites/{site_id}/wans/{wan_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateSiteWanRequest",
 }) as any as S.Schema<UpdateSiteWanRequest>;
@@ -15097,7 +15606,7 @@ export const UpdateSiteWanResponse = /*@__PURE__*/ S.suspend(() =>
       SitesWansUpdateResponseStaticAddressing.pipe(T.Body("static_addressing")),
     ),
     vlanTag: S.optional(S.Number.pipe(T.Body("vlan_tag"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateSiteWanResponse",
 }) as any as S.Schema<UpdateSiteWanResponse>;
@@ -15115,13 +15624,15 @@ export const ValidatePcapOwnershipRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     destinationConf: S.String.pipe(T.Body("destination_conf")),
     ownershipChallenge: S.String.pipe(T.Body("ownership_challenge")),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/pcaps/ownership/validate",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/pcaps/ownership/validate",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ValidatePcapOwnershipRequest",
 }) as any as S.Schema<ValidatePcapOwnershipRequest>;
@@ -15156,7 +15667,7 @@ export const ValidatePcapOwnershipResponse = /*@__PURE__*/ S.suspend(() =>
     status: PcapsOwnershipValidateResponseStatus,
     submitted: S.String,
     validated: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ValidatePcapOwnershipResponse",
 }) as any as S.Schema<ValidatePcapOwnershipResponse>;

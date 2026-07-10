@@ -14,6 +14,18 @@ import * as Retry from "../retry.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
+/** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
+const KEY_DICTIONARY: Record<string, string> = {
+  createdAt: "created_at",
+  defaultVariation: "default_variation",
+  flagKey: "flag_key",
+  logicalOperator: "logical_operator",
+  resultInfo: "result_info",
+  serveVariation: "serve_variation",
+  updatedAt: "updated_at",
+  updatedBy: "updated_by",
+};
+
 export class FlagshipAppNotFound extends T.applyErrorMatchers(
   S.TaggedErrorClass<FlagshipAppNotFound>()("FlagshipAppNotFound", {
     code: S.Number,
@@ -47,13 +59,15 @@ export const CreateAppRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     name: S.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/flagship/apps",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/flagship/apps",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateAppRequest",
 }) as any as S.Schema<CreateAppRequest>;
@@ -74,7 +88,7 @@ export const CreateAppResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.String,
     updatedAt: S.String.pipe(T.Body("updated_at")),
     updatedBy: S.String.pipe(T.Body("updated_by")),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateAppResponse",
 }) as any as S.Schema<CreateAppResponse>;
@@ -191,13 +205,15 @@ export const CreateAppFlagRequest = /*@__PURE__*/ S.suspend(() =>
     variations: AppsFlagsCreateRequestVariationsMap,
     description: S.optional(S.String),
     type: S.optional(AppsFlagsCreateRequestType),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/flagship/apps/{app_id}/flags",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/flagship/apps/{app_id}/flags",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateAppFlagRequest",
 }) as any as S.Schema<CreateAppFlagRequest>;
@@ -314,7 +330,7 @@ export const CreateAppFlagResponse = /*@__PURE__*/ S.suspend(() =>
     type: S.optional(AppsFlagsCreateResponseType),
     updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
     updatedBy: S.optional(S.String.pipe(T.Body("updated_by"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateAppFlagResponse",
 }) as any as S.Schema<CreateAppFlagResponse>;
@@ -329,13 +345,15 @@ export const DeleteAppRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     appId: S.String.pipe(T.Label("app_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/flagship/apps/{app_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/flagship/apps/{app_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteAppRequest",
 }) as any as S.Schema<DeleteAppRequest>;
@@ -347,7 +365,7 @@ export interface DeleteAppResponse {
 export const DeleteAppResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteAppResponse",
 }) as any as S.Schema<DeleteAppResponse>;
@@ -365,13 +383,15 @@ export const DeleteAppFlagRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     appId: S.String.pipe(T.Label("app_id")),
     flagKey: S.String.pipe(T.Label("flag_key")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/flagship/apps/{app_id}/flags/{flag_key}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/flagship/apps/{app_id}/flags/{flag_key}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteAppFlagRequest",
 }) as any as S.Schema<DeleteAppFlagRequest>;
@@ -383,7 +403,7 @@ export interface DeleteAppFlagResponse {
 export const DeleteAppFlagResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteAppFlagResponse",
 }) as any as S.Schema<DeleteAppFlagResponse>;
@@ -398,13 +418,15 @@ export const GetAppRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     appId: S.String.pipe(T.Label("app_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/flagship/apps/{app_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/flagship/apps/{app_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "GetAppRequest" }) as any as S.Schema<GetAppRequest>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -423,7 +445,7 @@ export const GetAppResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.String,
     updatedAt: S.String.pipe(T.Body("updated_at")),
     updatedBy: S.String.pipe(T.Body("updated_by")),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "GetAppResponse" }) as any as S.Schema<GetAppResponse>;
 
 export interface GetAppEvaluateRequest {
@@ -442,13 +464,15 @@ export const GetAppEvaluateRequest = /*@__PURE__*/ S.suspend(() =>
     appId: S.String.pipe(T.Label("app_id")),
     flagKey: S.String.pipe(T.Query()),
     targetingKey: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/flagship/apps/{app_id}/evaluate",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/flagship/apps/{app_id}/evaluate",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetAppEvaluateRequest",
 }) as any as S.Schema<GetAppEvaluateRequest>;
@@ -493,7 +517,7 @@ export const GetAppEvaluateResponse = /*@__PURE__*/ S.suspend(() =>
     reason: AppsEvaluateGetResponseReason,
     variant: S.String,
     value: S.optional(AppsEvaluateGetResponseValue),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetAppEvaluateResponse",
 }) as any as S.Schema<GetAppEvaluateResponse>;
@@ -511,13 +535,15 @@ export const GetAppFlagRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     appId: S.String.pipe(T.Label("app_id")),
     flagKey: S.String.pipe(T.Label("flag_key")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/flagship/apps/{app_id}/flags/{flag_key}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/flagship/apps/{app_id}/flags/{flag_key}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetAppFlagRequest",
 }) as any as S.Schema<GetAppFlagRequest>;
@@ -633,7 +659,7 @@ export const GetAppFlagResponse = /*@__PURE__*/ S.suspend(() =>
     type: S.optional(AppsFlagsGetResponseType),
     updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
     updatedBy: S.optional(S.String.pipe(T.Body("updated_by"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetAppFlagResponse",
 }) as any as S.Schema<GetAppFlagResponse>;
@@ -657,13 +683,15 @@ export const ListAppFlagChangelogsRequest = /*@__PURE__*/ S.suspend(() =>
     flagKey: S.String.pipe(T.Label("flag_key")),
     cursor: S.optional(S.String.pipe(T.Query())),
     limit: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/flagship/apps/{app_id}/flags/{flag_key}/changelog",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/flagship/apps/{app_id}/flags/{flag_key}/changelog",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListAppFlagChangelogsRequest",
 }) as any as S.Schema<ListAppFlagChangelogsRequest>;
@@ -705,7 +733,7 @@ export const ListAppFlagChangelogsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: AppsFlagsChangelogListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListAppFlagChangelogsResponse",
 }) as any as S.Schema<ListAppFlagChangelogsResponse>;
@@ -726,13 +754,15 @@ export const ListAppFlagsRequest = /*@__PURE__*/ S.suspend(() =>
     appId: S.String.pipe(T.Label("app_id")),
     cursor: S.optional(S.String.pipe(T.Query())),
     limit: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/flagship/apps/{app_id}/flags",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/flagship/apps/{app_id}/flags",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListAppFlagsRequest",
 }) as any as S.Schema<ListAppFlagsRequest>;
@@ -868,7 +898,7 @@ export const ListAppFlagsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: AppsFlagsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListAppFlagsResponse",
 }) as any as S.Schema<ListAppFlagsResponse>;
@@ -880,13 +910,15 @@ export interface ListAppsRequest {
 export const ListAppsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/flagship/apps",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/flagship/apps",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListAppsRequest",
 }) as any as S.Schema<ListAppsRequest>;
@@ -926,7 +958,7 @@ export const ListAppsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: AppsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListAppsResponse",
 }) as any as S.Schema<ListAppsResponse>;
@@ -943,13 +975,15 @@ export const UpdateAppRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     appId: S.String.pipe(T.Label("app_id")),
     name: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/flagship/apps/{app_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/flagship/apps/{app_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateAppRequest",
 }) as any as S.Schema<UpdateAppRequest>;
@@ -970,7 +1004,7 @@ export const UpdateAppResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.String,
     updatedAt: S.String.pipe(T.Body("updated_at")),
     updatedBy: S.String.pipe(T.Body("updated_by")),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateAppResponse",
 }) as any as S.Schema<UpdateAppResponse>;
@@ -1090,13 +1124,15 @@ export const UpdateAppFlagRequest = /*@__PURE__*/ S.suspend(() =>
     variations: AppsFlagsUpdateRequestVariationsMap,
     description: S.optional(S.String),
     type: S.optional(AppsFlagsUpdateRequestType),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/flagship/apps/{app_id}/flags/{flag_key}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/flagship/apps/{app_id}/flags/{flag_key}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateAppFlagRequest",
 }) as any as S.Schema<UpdateAppFlagRequest>;
@@ -1213,7 +1249,7 @@ export const UpdateAppFlagResponse = /*@__PURE__*/ S.suspend(() =>
     type: S.optional(AppsFlagsUpdateResponseType),
     updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
     updatedBy: S.optional(S.String.pipe(T.Body("updated_by"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateAppFlagResponse",
 }) as any as S.Schema<UpdateAppFlagResponse>;

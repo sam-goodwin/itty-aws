@@ -14,6 +14,23 @@ import * as Retry from "../retry.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
+/** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
+const KEY_DICTIONARY: Record<string, string> = {
+  allowedModes: "allowed_modes",
+  contentType: "content_type",
+  createdOn: "created_on",
+  defaultMode: "default_mode",
+  documentationUrl: "documentation_url",
+  modifiedOn: "modified_on",
+  modifiedRulesCount: "modified_rules_count",
+  packageId: "package_id",
+  perPage: "per_page",
+  resultInfo: "result_info",
+  rewriteAction: "rewrite_action",
+  rulesCount: "rules_count",
+  totalCount: "total_count",
+};
+
 export class DuplicateLockdown extends T.applyErrorMatchers(
   S.TaggedErrorClass<DuplicateLockdown>()("DuplicateLockdown", {
     code: S.Number,
@@ -77,13 +94,15 @@ export interface BulkDeleteRulesRequest {
 export const BulkDeleteRulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/zones/{zone_id}/firewall/rules",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/zones/{zone_id}/firewall/rules",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "BulkDeleteRulesRequest",
 }) as any as S.Schema<BulkDeleteRulesRequest>;
@@ -156,7 +175,7 @@ export const BulkDeleteRulesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: RulesBulkDeleteResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "BulkDeleteRulesResponse",
 }) as any as S.Schema<BulkDeleteRulesResponse>;
@@ -170,13 +189,15 @@ export const BulkPatchRulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     body: S.Unknown,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/zones/{zone_id}/firewall/rules",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/zones/{zone_id}/firewall/rules",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "BulkPatchRulesRequest",
 }) as any as S.Schema<BulkPatchRulesRequest>;
@@ -249,7 +270,7 @@ export const BulkPatchRulesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: RulesBulkEditResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "BulkPatchRulesResponse",
 }) as any as S.Schema<BulkPatchRulesResponse>;
@@ -263,13 +284,15 @@ export const BulkPutRulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     body: S.Unknown,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/zones/{zone_id}/firewall/rules",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/zones/{zone_id}/firewall/rules",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "BulkPutRulesRequest",
 }) as any as S.Schema<BulkPutRulesRequest>;
@@ -342,7 +365,7 @@ export const BulkPutRulesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: RulesBulkUpdateResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "BulkPutRulesResponse",
 }) as any as S.Schema<BulkPutRulesResponse>;
@@ -400,13 +423,15 @@ export const CreateAccessRuleForAccountRequest = /*@__PURE__*/ S.suspend(() =>
     configuration: AccessRulesCreateForAccountRequestConfiguration,
     mode: AccessRulesCreateForAccountRequestMode,
     notes: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/firewall/access_rules/rules",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/firewall/access_rules/rules",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateAccessRuleForAccountRequest",
 }) as any as S.Schema<CreateAccessRuleForAccountRequest>;
@@ -520,7 +545,7 @@ export const CreateAccessRuleForAccountResponse = /*@__PURE__*/ S.suspend(() =>
     modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
     notes: S.optional(S.String),
     scope: S.optional(AccessRulesCreateForAccountResponseScope),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateAccessRuleForAccountResponse",
 }) as any as S.Schema<CreateAccessRuleForAccountResponse>;
@@ -578,13 +603,15 @@ export const CreateAccessRuleForZoneRequest = /*@__PURE__*/ S.suspend(() =>
     configuration: AccessRulesCreateForZoneRequestConfiguration,
     mode: AccessRulesCreateForZoneRequestMode,
     notes: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/zones/{zone_id}/firewall/access_rules/rules",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/zones/{zone_id}/firewall/access_rules/rules",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateAccessRuleForZoneRequest",
 }) as any as S.Schema<CreateAccessRuleForZoneRequest>;
@@ -697,7 +724,7 @@ export const CreateAccessRuleForZoneResponse = /*@__PURE__*/ S.suspend(() =>
     modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
     notes: S.optional(S.String),
     scope: S.optional(AccessRulesCreateForZoneResponseScope),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateAccessRuleForZoneResponse",
 }) as any as S.Schema<CreateAccessRuleForZoneResponse>;
@@ -747,13 +774,15 @@ export const CreateLockdownRequest = /*@__PURE__*/ S.suspend(() =>
     description: S.optional(S.String),
     paused: S.optional(S.Boolean),
     priority: S.optional(S.Number),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/zones/{zone_id}/firewall/lockdowns",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/zones/{zone_id}/firewall/lockdowns",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateLockdownRequest",
 }) as any as S.Schema<CreateLockdownRequest>;
@@ -807,7 +836,7 @@ export const CreateLockdownResponse = /*@__PURE__*/ S.suspend(() =>
     modifiedOn: S.String.pipe(T.Body("modified_on")),
     paused: S.Boolean,
     urls: LockdownsCreateResponseUrlsList,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateLockdownResponse",
 }) as any as S.Schema<CreateLockdownResponse>;
@@ -888,13 +917,15 @@ export const CreateRuleRequest = /*@__PURE__*/ S.suspend(() =>
     zoneId: S.String.pipe(T.Label("zone_id")),
     action: RulesCreateRequestAction,
     filter: RulesCreateRequestFilter,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/zones/{zone_id}/firewall/rules",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/zones/{zone_id}/firewall/rules",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateRuleRequest",
 }) as any as S.Schema<CreateRuleRequest>;
@@ -967,7 +998,7 @@ export const CreateRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: RulesCreateResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateRuleResponse",
 }) as any as S.Schema<CreateRuleResponse>;
@@ -1015,13 +1046,15 @@ export const CreateUaRuleRequest = /*@__PURE__*/ S.suspend(() =>
     mode: UaRulesCreateRequestMode,
     description: S.optional(S.String),
     paused: S.optional(S.Boolean),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/zones/{zone_id}/firewall/ua_rules",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/zones/{zone_id}/firewall/ua_rules",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateUaRuleRequest",
 }) as any as S.Schema<CreateUaRuleRequest>;
@@ -1069,7 +1102,7 @@ export const CreateUaRuleResponse = /*@__PURE__*/ S.suspend(() =>
     description: S.optional(S.String),
     mode: S.optional(UaRulesCreateResponseMode),
     paused: S.optional(S.Boolean),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateUaRuleResponse",
 }) as any as S.Schema<CreateUaRuleResponse>;
@@ -1089,13 +1122,15 @@ export const CreateWafOverrideRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     urls: WafOverridesCreateRequestUrlsList,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/zones/{zone_id}/firewall/waf/overrides",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/zones/{zone_id}/firewall/waf/overrides",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateWafOverrideRequest",
 }) as any as S.Schema<CreateWafOverrideRequest>;
@@ -1209,7 +1244,7 @@ export const CreateWafOverrideResponse = /*@__PURE__*/ S.suspend(() =>
     ),
     rules: S.optional(S.Unknown),
     urls: S.optional(WafOverridesCreateResponseUrlsList),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateWafOverrideResponse",
 }) as any as S.Schema<CreateWafOverrideResponse>;
@@ -1224,13 +1259,15 @@ export const DeleteAccessRuleForAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     ruleId: S.String.pipe(T.Label("rule_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/firewall/access_rules/rules/{rule_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/firewall/access_rules/rules/{rule_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteAccessRuleForAccountRequest",
 }) as any as S.Schema<DeleteAccessRuleForAccountRequest>;
@@ -1243,7 +1280,7 @@ export interface DeleteAccessRuleForAccountResponse {
 export const DeleteAccessRuleForAccountResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteAccessRuleForAccountResponse",
 }) as any as S.Schema<DeleteAccessRuleForAccountResponse>;
@@ -1258,13 +1295,15 @@ export const DeleteAccessRuleForZoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     ruleId: S.String.pipe(T.Label("rule_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/zones/{zone_id}/firewall/access_rules/rules/{rule_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/zones/{zone_id}/firewall/access_rules/rules/{rule_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteAccessRuleForZoneRequest",
 }) as any as S.Schema<DeleteAccessRuleForZoneRequest>;
@@ -1277,7 +1316,7 @@ export interface DeleteAccessRuleForZoneResponse {
 export const DeleteAccessRuleForZoneResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteAccessRuleForZoneResponse",
 }) as any as S.Schema<DeleteAccessRuleForZoneResponse>;
@@ -1292,13 +1331,15 @@ export const DeleteLockdownRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     lockDownsId: S.String.pipe(T.Label("lock_downs_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/zones/{zone_id}/firewall/lockdowns/{lock_downs_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/zones/{zone_id}/firewall/lockdowns/{lock_downs_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteLockdownRequest",
 }) as any as S.Schema<DeleteLockdownRequest>;
@@ -1311,7 +1352,7 @@ export interface DeleteLockdownResponse {
 export const DeleteLockdownResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteLockdownResponse",
 }) as any as S.Schema<DeleteLockdownResponse>;
@@ -1326,13 +1367,15 @@ export const DeleteRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     ruleId: S.String.pipe(T.Label("rule_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/zones/{zone_id}/firewall/rules/{rule_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/zones/{zone_id}/firewall/rules/{rule_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteRuleRequest",
 }) as any as S.Schema<DeleteRuleRequest>;
@@ -1386,7 +1429,7 @@ export const DeleteRuleResponse = /*@__PURE__*/ S.suspend(() =>
     priority: S.optional(S.Number),
     products: S.optional(RulesDeleteResponseProductsList),
     ref: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteRuleResponse",
 }) as any as S.Schema<DeleteRuleResponse>;
@@ -1401,13 +1444,15 @@ export const DeleteUaRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     uaRuleId: S.String.pipe(T.Label("ua_rule_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/zones/{zone_id}/firewall/ua_rules/{ua_rule_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/zones/{zone_id}/firewall/ua_rules/{ua_rule_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteUaRuleRequest",
 }) as any as S.Schema<DeleteUaRuleRequest>;
@@ -1455,7 +1500,7 @@ export const DeleteUaRuleResponse = /*@__PURE__*/ S.suspend(() =>
     description: S.optional(S.String),
     mode: S.optional(UaRulesDeleteResponseMode),
     paused: S.optional(S.Boolean),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteUaRuleResponse",
 }) as any as S.Schema<DeleteUaRuleResponse>;
@@ -1470,13 +1515,15 @@ export const DeleteWafOverrideRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     overridesId: S.String.pipe(T.Label("overrides_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/zones/{zone_id}/firewall/waf/overrides/{overrides_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/zones/{zone_id}/firewall/waf/overrides/{overrides_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteWafOverrideRequest",
 }) as any as S.Schema<DeleteWafOverrideRequest>;
@@ -1489,7 +1536,7 @@ export interface DeleteWafOverrideResponse {
 export const DeleteWafOverrideResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteWafOverrideResponse",
 }) as any as S.Schema<DeleteWafOverrideResponse>;
@@ -1504,13 +1551,15 @@ export const GetAccessRuleForAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     ruleId: S.String.pipe(T.Label("rule_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/firewall/access_rules/rules/{rule_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/firewall/access_rules/rules/{rule_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetAccessRuleForAccountRequest",
 }) as any as S.Schema<GetAccessRuleForAccountRequest>;
@@ -1623,7 +1672,7 @@ export const GetAccessRuleForAccountResponse = /*@__PURE__*/ S.suspend(() =>
     modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
     notes: S.optional(S.String),
     scope: S.optional(AccessRulesGetForAccountResponseScope),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetAccessRuleForAccountResponse",
 }) as any as S.Schema<GetAccessRuleForAccountResponse>;
@@ -1638,13 +1687,15 @@ export const GetAccessRuleForZoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     ruleId: S.String.pipe(T.Label("rule_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/firewall/access_rules/rules/{rule_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/firewall/access_rules/rules/{rule_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetAccessRuleForZoneRequest",
 }) as any as S.Schema<GetAccessRuleForZoneRequest>;
@@ -1756,7 +1807,7 @@ export const GetAccessRuleForZoneResponse = /*@__PURE__*/ S.suspend(() =>
     modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
     notes: S.optional(S.String),
     scope: S.optional(AccessRulesGetForZoneResponseScope),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetAccessRuleForZoneResponse",
 }) as any as S.Schema<GetAccessRuleForZoneResponse>;
@@ -1771,13 +1822,15 @@ export const GetLockdownRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     lockDownsId: S.String.pipe(T.Label("lock_downs_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/firewall/lockdowns/{lock_downs_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/firewall/lockdowns/{lock_downs_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetLockdownRequest",
 }) as any as S.Schema<GetLockdownRequest>;
@@ -1830,7 +1883,7 @@ export const GetLockdownResponse = /*@__PURE__*/ S.suspend(() =>
     modifiedOn: S.String.pipe(T.Body("modified_on")),
     paused: S.Boolean,
     urls: LockdownsGetResponseUrlsList,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetLockdownResponse",
 }) as any as S.Schema<GetLockdownResponse>;
@@ -1845,13 +1898,15 @@ export const GetRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     ruleId: S.String.pipe(T.Label("rule_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/firewall/rules/{rule_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/firewall/rules/{rule_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "GetRuleRequest" }) as any as S.Schema<GetRuleRequest>;
 
 export interface RulesGetResponseFilter {
@@ -1903,7 +1958,7 @@ export const GetRuleResponse = /*@__PURE__*/ S.suspend(() =>
     priority: S.optional(S.Number),
     products: S.optional(RulesGetResponseProductsList),
     ref: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetRuleResponse",
 }) as any as S.Schema<GetRuleResponse>;
@@ -1918,13 +1973,15 @@ export const GetUaRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     uaRuleId: S.String.pipe(T.Label("ua_rule_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/firewall/ua_rules/{ua_rule_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/firewall/ua_rules/{ua_rule_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetUaRuleRequest",
 }) as any as S.Schema<GetUaRuleRequest>;
@@ -1972,7 +2029,7 @@ export const GetUaRuleResponse = /*@__PURE__*/ S.suspend(() =>
     description: S.optional(S.String),
     mode: S.optional(UaRulesGetResponseMode),
     paused: S.optional(S.Boolean),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetUaRuleResponse",
 }) as any as S.Schema<GetUaRuleResponse>;
@@ -1987,13 +2044,15 @@ export const GetWafOverrideRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     overridesId: S.String.pipe(T.Label("overrides_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/firewall/waf/overrides/{overrides_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/firewall/waf/overrides/{overrides_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetWafOverrideRequest",
 }) as any as S.Schema<GetWafOverrideRequest>;
@@ -2106,7 +2165,7 @@ export const GetWafOverrideResponse = /*@__PURE__*/ S.suspend(() =>
     ),
     rules: S.optional(S.Unknown),
     urls: S.optional(WafOverridesGetResponseUrlsList),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetWafOverrideResponse",
 }) as any as S.Schema<GetWafOverrideResponse>;
@@ -2121,13 +2180,15 @@ export const GetWafPackageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     packageId: S.String.pipe(T.Label("package_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/firewall/waf/packages/{package_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/firewall/waf/packages/{package_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetWafPackageRequest",
 }) as any as S.Schema<GetWafPackageRequest>;
@@ -2146,7 +2207,7 @@ export const GetWafPackageResponse = /*@__PURE__*/ S.suspend(() =>
         ),
       ),
     ResultObjectResult__: S.Unknown.pipe(T.Body("Result object { result }")),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetWafPackageResponse",
 }) as any as S.Schema<GetWafPackageResponse>;
@@ -2164,13 +2225,15 @@ export const GetWafPackageGroupRequest = /*@__PURE__*/ S.suspend(() =>
     zoneId: S.String.pipe(T.Label("zone_id")),
     packageId: S.String.pipe(T.Label("package_id")),
     groupId: S.String.pipe(T.Label("group_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/firewall/waf/packages/{package_id}/groups/{group_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/firewall/waf/packages/{package_id}/groups/{group_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetWafPackageGroupRequest",
 }) as any as S.Schema<GetWafPackageGroupRequest>;
@@ -2184,7 +2247,7 @@ export const GetWafPackageGroupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unknown: S.Unknown,
     string: S.Unknown,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetWafPackageGroupResponse",
 }) as any as S.Schema<GetWafPackageGroupResponse>;
@@ -2202,13 +2265,15 @@ export const GetWafPackageRuleRequest = /*@__PURE__*/ S.suspend(() =>
     zoneId: S.String.pipe(T.Label("zone_id")),
     packageId: S.String.pipe(T.Label("package_id")),
     ruleId: S.String.pipe(T.Label("rule_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/firewall/waf/packages/{package_id}/rules/{rule_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/firewall/waf/packages/{package_id}/rules/{rule_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetWafPackageRuleRequest",
 }) as any as S.Schema<GetWafPackageRuleRequest>;
@@ -2222,7 +2287,7 @@ export const GetWafPackageRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unknown: S.Unknown,
     string: S.Unknown,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetWafPackageRuleResponse",
 }) as any as S.Schema<GetWafPackageRuleResponse>;
@@ -2285,13 +2350,15 @@ export const ListAccessRulesForAccountRequest = /*@__PURE__*/ S.suspend(() =>
     order: S.optional(AccessRulesListForAccountRequestOrder.pipe(T.Query())),
     page: S.optional(S.Number.pipe(T.Query())),
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/firewall/access_rules/rules",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/firewall/access_rules/rules",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListAccessRulesForAccountRequest",
 }) as any as S.Schema<ListAccessRulesForAccountRequest>;
@@ -2425,7 +2492,7 @@ export const ListAccessRulesForAccountResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: AccessRulesListForAccountResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListAccessRulesForAccountResponse",
 }) as any as S.Schema<ListAccessRulesForAccountResponse>;
@@ -2485,13 +2552,15 @@ export const ListAccessRulesForZoneRequest = /*@__PURE__*/ S.suspend(() =>
     order: S.optional(AccessRulesListForZoneRequestOrder.pipe(T.Query())),
     page: S.optional(S.Number.pipe(T.Query())),
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/firewall/access_rules/rules",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/firewall/access_rules/rules",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListAccessRulesForZoneRequest",
 }) as any as S.Schema<ListAccessRulesForZoneRequest>;
@@ -2624,7 +2693,7 @@ export const ListAccessRulesForZoneResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: AccessRulesListForZoneResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListAccessRulesForZoneResponse",
 }) as any as S.Schema<ListAccessRulesForZoneResponse>;
@@ -2669,13 +2738,15 @@ export const ListLockdownsRequest = /*@__PURE__*/ S.suspend(() =>
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
     priority: S.optional(S.Number.pipe(T.Query())),
     uriSearch: S.optional(S.String.pipe(T.Query("uri_search"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/firewall/lockdowns",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/firewall/lockdowns",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListLockdownsRequest",
 }) as any as S.Schema<ListLockdownsRequest>;
@@ -2748,7 +2819,7 @@ export const ListLockdownsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: LockdownsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListLockdownsResponse",
 }) as any as S.Schema<ListLockdownsResponse>;
@@ -2778,13 +2849,15 @@ export const ListRulesRequest = /*@__PURE__*/ S.suspend(() =>
     page: S.optional(S.Number.pipe(T.Query())),
     paused: S.optional(S.Boolean.pipe(T.Query())),
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/firewall/rules",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/firewall/rules",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListRulesRequest",
 }) as any as S.Schema<ListRulesRequest>;
@@ -2857,7 +2930,7 @@ export const ListRulesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: RulesListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListRulesResponse",
 }) as any as S.Schema<ListRulesResponse>;
@@ -2884,13 +2957,15 @@ export const ListUaRulesRequest = /*@__PURE__*/ S.suspend(() =>
     paused: S.optional(S.Boolean.pipe(T.Query())),
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
     userAgent: S.optional(S.String.pipe(T.Query("user_agent"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/firewall/ua_rules",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/firewall/ua_rules",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListUaRulesRequest",
 }) as any as S.Schema<ListUaRulesRequest>;
@@ -2957,7 +3032,7 @@ export const ListUaRulesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: UaRulesListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListUaRulesResponse",
 }) as any as S.Schema<ListUaRulesResponse>;
@@ -2975,13 +3050,15 @@ export const ListWafOverridesRequest = /*@__PURE__*/ S.suspend(() =>
     zoneId: S.String.pipe(T.Label("zone_id")),
     page: S.optional(S.Number.pipe(T.Query())),
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/firewall/waf/overrides",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/firewall/waf/overrides",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListWafOverridesRequest",
 }) as any as S.Schema<ListWafOverridesRequest>;
@@ -3114,7 +3191,7 @@ export const ListWafOverridesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: WafOverridesListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListWafOverridesResponse",
 }) as any as S.Schema<ListWafOverridesResponse>;
@@ -3173,13 +3250,15 @@ export const ListWafPackageGroupsRequest = /*@__PURE__*/ S.suspend(() =>
     page: S.optional(S.Number.pipe(T.Query())),
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
     rulesCount: S.optional(S.Number.pipe(T.Query("rules_count"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/firewall/waf/packages/{package_id}/groups",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/firewall/waf/packages/{package_id}/groups",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListWafPackageGroupsRequest",
 }) as any as S.Schema<ListWafPackageGroupsRequest>;
@@ -3255,7 +3334,7 @@ export const ListWafPackageGroupsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: WafPackagesGroupsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListWafPackageGroupsResponse",
 }) as any as S.Schema<ListWafPackageGroupsResponse>;
@@ -3321,13 +3400,15 @@ export const ListWafPackageRulesRequest = /*@__PURE__*/ S.suspend(() =>
     page: S.optional(S.Number.pipe(T.Query())),
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
     priority: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/firewall/waf/packages/{package_id}/rules",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/firewall/waf/packages/{package_id}/rules",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListWafPackageRulesRequest",
 }) as any as S.Schema<ListWafPackageRulesRequest>;
@@ -3380,7 +3461,7 @@ export const ListWafPackageRulesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: WafPackagesRulesListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListWafPackageRulesResponse",
 }) as any as S.Schema<ListWafPackageRulesResponse>;
@@ -3419,13 +3500,15 @@ export const ListWafPackagesRequest = /*@__PURE__*/ S.suspend(() =>
     order: S.optional(WafPackagesListRequestOrder.pipe(T.Query())),
     page: S.optional(S.Number.pipe(T.Query())),
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/firewall/waf/packages",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/firewall/waf/packages",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListWafPackagesRequest",
 }) as any as S.Schema<ListWafPackagesRequest>;
@@ -3444,7 +3527,7 @@ export const ListWafPackagesResponse = /*@__PURE__*/ S.suspend(() =>
         ),
       ),
     ResultObjectResult__: S.Unknown.pipe(T.Body("Result object { result }")),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListWafPackagesResponse",
 }) as any as S.Schema<ListWafPackagesResponse>;
@@ -3505,13 +3588,15 @@ export const PatchAccessRuleForAccountRequest = /*@__PURE__*/ S.suspend(() =>
     configuration: AccessRulesEditForAccountRequestConfiguration,
     mode: AccessRulesEditForAccountRequestMode,
     notes: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/accounts/{account_id}/firewall/access_rules/rules/{rule_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/accounts/{account_id}/firewall/access_rules/rules/{rule_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchAccessRuleForAccountRequest",
 }) as any as S.Schema<PatchAccessRuleForAccountRequest>;
@@ -3625,7 +3710,7 @@ export const PatchAccessRuleForAccountResponse = /*@__PURE__*/ S.suspend(() =>
     modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
     notes: S.optional(S.String),
     scope: S.optional(AccessRulesEditForAccountResponseScope),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchAccessRuleForAccountResponse",
 }) as any as S.Schema<PatchAccessRuleForAccountResponse>;
@@ -3686,13 +3771,15 @@ export const PatchAccessRuleForZoneRequest = /*@__PURE__*/ S.suspend(() =>
     configuration: AccessRulesEditForZoneRequestConfiguration,
     mode: AccessRulesEditForZoneRequestMode,
     notes: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/zones/{zone_id}/firewall/access_rules/rules/{rule_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/zones/{zone_id}/firewall/access_rules/rules/{rule_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchAccessRuleForZoneRequest",
 }) as any as S.Schema<PatchAccessRuleForZoneRequest>;
@@ -3804,7 +3891,7 @@ export const PatchAccessRuleForZoneResponse = /*@__PURE__*/ S.suspend(() =>
     modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
     notes: S.optional(S.String),
     scope: S.optional(AccessRulesEditForZoneResponseScope),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchAccessRuleForZoneResponse",
 }) as any as S.Schema<PatchAccessRuleForZoneResponse>;
@@ -3819,13 +3906,15 @@ export const PatchRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     ruleId: S.String.pipe(T.Label("rule_id")),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/zones/{zone_id}/firewall/rules/{rule_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/zones/{zone_id}/firewall/rules/{rule_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchRuleRequest",
 }) as any as S.Schema<PatchRuleRequest>;
@@ -3898,7 +3987,7 @@ export const PatchRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: RulesEditResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchRuleResponse",
 }) as any as S.Schema<PatchRuleResponse>;
@@ -3922,13 +4011,15 @@ export const PatchWafPackageGroupRequest = /*@__PURE__*/ S.suspend(() =>
     packageId: S.String.pipe(T.Label("package_id")),
     groupId: S.String.pipe(T.Label("group_id")),
     mode: S.optional(WafPackagesGroupsEditRequestMode),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/zones/{zone_id}/firewall/waf/packages/{package_id}/groups/{group_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/zones/{zone_id}/firewall/waf/packages/{package_id}/groups/{group_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchWafPackageGroupRequest",
 }) as any as S.Schema<PatchWafPackageGroupRequest>;
@@ -3942,7 +4033,7 @@ export const PatchWafPackageGroupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unknown: S.Unknown,
     string: S.Unknown,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchWafPackageGroupResponse",
 }) as any as S.Schema<PatchWafPackageGroupResponse>;
@@ -3970,13 +4061,15 @@ export const PatchWafPackageRuleRequest = /*@__PURE__*/ S.suspend(() =>
     packageId: S.String.pipe(T.Label("package_id")),
     ruleId: S.String.pipe(T.Label("rule_id")),
     mode: S.optional(WafPackagesRulesEditRequestMode),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/zones/{zone_id}/firewall/waf/packages/{package_id}/rules/{rule_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/zones/{zone_id}/firewall/waf/packages/{package_id}/rules/{rule_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchWafPackageRuleRequest",
 }) as any as S.Schema<PatchWafPackageRuleRequest>;
@@ -4010,7 +4103,7 @@ export const PatchWafPackageRuleResponse = /*@__PURE__*/ S.suspend(() =>
           "WAFManagedRulesTraditionalAllowRule object { id, allowed_modes, description, 4 more }",
         ),
       ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchWafPackageRuleResponse",
 }) as any as S.Schema<PatchWafPackageRuleResponse>;
@@ -4054,13 +4147,15 @@ export const UpdateLockdownRequest = /*@__PURE__*/ S.suspend(() =>
     lockDownsId: S.String.pipe(T.Label("lock_downs_id")),
     configurations: LockdownsUpdateRequestConfigurations,
     urls: LockdownsUpdateRequestUrlsList,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/zones/{zone_id}/firewall/lockdowns/{lock_downs_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/zones/{zone_id}/firewall/lockdowns/{lock_downs_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateLockdownRequest",
 }) as any as S.Schema<UpdateLockdownRequest>;
@@ -4114,7 +4209,7 @@ export const UpdateLockdownResponse = /*@__PURE__*/ S.suspend(() =>
     modifiedOn: S.String.pipe(T.Body("modified_on")),
     paused: S.Boolean,
     urls: LockdownsUpdateResponseUrlsList,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateLockdownResponse",
 }) as any as S.Schema<UpdateLockdownResponse>;
@@ -4198,13 +4293,15 @@ export const UpdateRuleRequest = /*@__PURE__*/ S.suspend(() =>
     ruleId: S.String.pipe(T.Label("rule_id")),
     action: RulesUpdateRequestAction,
     filter: RulesUpdateRequestFilter,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/zones/{zone_id}/firewall/rules/{rule_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/zones/{zone_id}/firewall/rules/{rule_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateRuleRequest",
 }) as any as S.Schema<UpdateRuleRequest>;
@@ -4258,7 +4355,7 @@ export const UpdateRuleResponse = /*@__PURE__*/ S.suspend(() =>
     priority: S.optional(S.Number),
     products: S.optional(RulesUpdateResponseProductsList),
     ref: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateRuleResponse",
 }) as any as S.Schema<UpdateRuleResponse>;
@@ -4321,13 +4418,15 @@ export const UpdateUaRuleRequest = /*@__PURE__*/ S.suspend(() =>
     mode: UaRulesUpdateRequestMode,
     description: S.optional(S.String),
     paused: S.optional(S.Boolean),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/zones/{zone_id}/firewall/ua_rules/{ua_rule_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/zones/{zone_id}/firewall/ua_rules/{ua_rule_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateUaRuleRequest",
 }) as any as S.Schema<UpdateUaRuleRequest>;
@@ -4375,7 +4474,7 @@ export const UpdateUaRuleResponse = /*@__PURE__*/ S.suspend(() =>
     description: S.optional(S.String),
     mode: S.optional(UaRulesUpdateResponseMode),
     paused: S.optional(S.Boolean),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateUaRuleResponse",
 }) as any as S.Schema<UpdateUaRuleResponse>;
@@ -4474,13 +4573,15 @@ export const UpdateWafOverrideRequest = /*@__PURE__*/ S.suspend(() =>
     ),
     rules: S.Unknown,
     urls: WafOverridesUpdateRequestUrlsList,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/zones/{zone_id}/firewall/waf/overrides/{overrides_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/zones/{zone_id}/firewall/waf/overrides/{overrides_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateWafOverrideRequest",
 }) as any as S.Schema<UpdateWafOverrideRequest>;
@@ -4594,7 +4695,7 @@ export const UpdateWafOverrideResponse = /*@__PURE__*/ S.suspend(() =>
     ),
     rules: S.optional(S.Unknown),
     urls: S.optional(WafOverridesUpdateResponseUrlsList),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateWafOverrideResponse",
 }) as any as S.Schema<UpdateWafOverrideResponse>;

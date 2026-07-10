@@ -14,19 +14,57 @@ import * as Retry from "../retry.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
+/** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
+const KEY_DICTIONARY: Record<string, string> = {
+  abuseContactEmail: "abuse_contact_email",
+  accessApprovalExpiry: "access_approval_expiry",
+  allowAddSubdomain: "allow_add_subdomain",
+  allowAutoAcceptInvites: "allow_auto_accept_invites",
+  apiAccessEnabled: "api_access_enabled",
+  cnameSetupAllowed: "cname_setup_allowed",
+  createdOn: "created_on",
+  customEntitlements: "custom_entitlements",
+  customerId: "customer_id",
+  defaultNameservers: "default_nameservers",
+  enforceTwofactor: "enforce_twofactor",
+  mhsCertificateCount: "mhs_certificate_count",
+  nsPool: "ns_pool",
+  partialSetupAllowed: "partial_setup_allowed",
+  tenantContacts: "tenant_contacts",
+  tenantLabels: "tenant_labels",
+  tenantMetadata: "tenant_metadata",
+  tenantName: "tenant_name",
+  tenantNetwork: "tenant_network",
+  tenantStatus: "tenant_status",
+  tenantTag: "tenant_tag",
+  tenantType: "tenant_type",
+  tenantUnits: "tenant_units",
+  unitMemberships: "unit_memberships",
+  unitMetadata: "unit_metadata",
+  unitName: "unit_name",
+  unitStatus: "unit_status",
+  unitTag: "unit_tag",
+  useAccountCustomNsByDefault: "use_account_custom_ns_by_default",
+  userEmail: "user_email",
+  userName: "user_name",
+  userTag: "user_tag",
+};
+
 export interface GetEntitlementRequest {
   tenantId: string;
 }
 export const GetEntitlementRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tenantId: S.String.pipe(T.Label("tenant_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/tenants/{tenant_id}/entitlements",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/tenants/{tenant_id}/entitlements",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetEntitlementRequest",
 }) as any as S.Schema<GetEntitlementRequest>;
@@ -215,7 +253,7 @@ export const GetEntitlementResponse = /*@__PURE__*/ S.suspend(() =>
     partialSetupAllowed: EntitlementsGetResponsePartialSetupAllowed.pipe(
       T.Body("partial_setup_allowed"),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetEntitlementResponse",
 }) as any as S.Schema<GetEntitlementResponse>;
@@ -226,7 +264,9 @@ export interface GetTenantRequest {
 export const GetTenantRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tenantId: S.String.pipe(T.Label("tenant_id")),
-  }).pipe(T.Http({ method: "GET", uri: "/tenants/{tenant_id}", code: 200 })),
+  })
+    .pipe(T.Http({ method: "GET", uri: "/tenants/{tenant_id}", code: 200 }))
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetTenantRequest",
 }) as any as S.Schema<GetTenantRequest>;
@@ -345,7 +385,7 @@ export const GetTenantResponse = /*@__PURE__*/ S.suspend(() =>
     tenantType: S.String.pipe(T.Body("tenant_type")),
     tenantUnits: GetResponseTenantUnitsList.pipe(T.Body("tenant_units")),
     customerId: S.optional(S.String.pipe(T.Body("customer_id"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetTenantResponse",
 }) as any as S.Schema<GetTenantResponse>;
@@ -356,9 +396,15 @@ export interface ListAccountsRequest {
 export const ListAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tenantId: S.String.pipe(T.Label("tenant_id")),
-  }).pipe(
-    T.Http({ method: "GET", uri: "/tenants/{tenant_id}/accounts", code: 200 }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/tenants/{tenant_id}/accounts",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListAccountsRequest",
 }) as any as S.Schema<ListAccountsRequest>;
@@ -428,7 +474,7 @@ export const ListAccountsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: AccountsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListAccountsResponse",
 }) as any as S.Schema<ListAccountsResponse>;
@@ -439,13 +485,15 @@ export interface ListAccountTypesRequest {
 export const ListAccountTypesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tenantId: S.String.pipe(T.Label("tenant_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/tenants/{tenant_id}/account_types",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/tenants/{tenant_id}/account_types",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListAccountTypesRequest",
 }) as any as S.Schema<ListAccountTypesRequest>;
@@ -465,7 +513,7 @@ export const ListAccountTypesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: AccountTypesListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListAccountTypesResponse",
 }) as any as S.Schema<ListAccountTypesResponse>;
@@ -476,13 +524,15 @@ export interface ListMembershipsRequest {
 export const ListMembershipsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tenantId: S.String.pipe(T.Label("tenant_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/tenants/{tenant_id}/memberships",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/tenants/{tenant_id}/memberships",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListMembershipsRequest",
 }) as any as S.Schema<ListMembershipsRequest>;
@@ -517,7 +567,7 @@ export const ListMembershipsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: MembershipsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListMembershipsResponse",
 }) as any as S.Schema<ListMembershipsResponse>;

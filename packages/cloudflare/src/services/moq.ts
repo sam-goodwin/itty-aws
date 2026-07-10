@@ -14,6 +14,15 @@ import * as Retry from "../retry.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
+/** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
+const KEY_DICTIONARY: Record<string, string> = {
+  lingeringSubscribe: "lingering_subscribe",
+  maxTimeoutMs: "max_timeout_ms",
+  originFallback: "origin_fallback",
+  tokenPublishSubscribe: "token_publish_subscribe",
+  tokenSubscribe: "token_subscribe",
+};
+
 export interface CreateRelayRequest {
   /** Cloudflare account identifier. */
   accountId: string;
@@ -24,13 +33,15 @@ export const CreateRelayRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     name: S.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/moq/relays",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/moq/relays",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateRelayRequest",
 }) as any as S.Schema<CreateRelayRequest>;
@@ -125,7 +136,7 @@ export const CreateRelayResponse = /*@__PURE__*/ S.suspend(() =>
     tokenPublishSubscribe: S.String.pipe(T.Body("token_publish_subscribe")),
     tokenSubscribe: S.String.pipe(T.Body("token_subscribe")),
     uid: S.String,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateRelayResponse",
 }) as any as S.Schema<CreateRelayResponse>;
@@ -139,13 +150,15 @@ export const DeleteRelayRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     relayId: S.String.pipe(T.Label("relay_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/moq/relays/{relay_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/moq/relays/{relay_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteRelayRequest",
 }) as any as S.Schema<DeleteRelayRequest>;
@@ -157,7 +170,7 @@ export interface DeleteRelayResponse {
 export const DeleteRelayResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteRelayResponse",
 }) as any as S.Schema<DeleteRelayResponse>;
@@ -171,13 +184,15 @@ export const GetRelayRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     relayId: S.String.pipe(T.Label("relay_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/moq/relays/{relay_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/moq/relays/{relay_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetRelayRequest",
 }) as any as S.Schema<GetRelayRequest>;
@@ -271,7 +286,7 @@ export const GetRelayResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.String,
     uid: S.String,
     status: S.optional(RelaysGetResponseStatus),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetRelayResponse",
 }) as any as S.Schema<GetRelayResponse>;
@@ -295,13 +310,15 @@ export const ListRelaysRequest = /*@__PURE__*/ S.suspend(() =>
     createdAfter: S.optional(S.String.pipe(T.Query("created_after"))),
     createdBefore: S.optional(S.String.pipe(T.Query("created_before"))),
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/moq/relays",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/moq/relays",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListRelaysRequest",
 }) as any as S.Schema<ListRelaysRequest>;
@@ -338,7 +355,7 @@ export const ListRelaysResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: RelaysListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListRelaysResponse",
 }) as any as S.Schema<ListRelaysResponse>;
@@ -361,13 +378,15 @@ export const RotateRelayTokenRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     relayId: S.String.pipe(T.Label("relay_id")),
     type: RelaysTokensRotateRequestType,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/moq/relays/{relay_id}/tokens/rotate",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/moq/relays/{relay_id}/tokens/rotate",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "RotateRelayTokenRequest",
 }) as any as S.Schema<RotateRelayTokenRequest>;
@@ -388,7 +407,7 @@ export const RotateRelayTokenResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     token: S.String,
     type: RelaysTokensRotateResponseType,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "RotateRelayTokenResponse",
 }) as any as S.Schema<RotateRelayTokenResponse>;
@@ -474,13 +493,15 @@ export const UpdateRelayRequest = /*@__PURE__*/ S.suspend(() =>
     relayId: S.String.pipe(T.Label("relay_id")),
     config: S.optional(RelaysUpdateRequestConfig),
     name: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/moq/relays/{relay_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/moq/relays/{relay_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateRelayRequest",
 }) as any as S.Schema<UpdateRelayRequest>;
@@ -574,7 +595,7 @@ export const UpdateRelayResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.String,
     uid: S.String,
     status: S.optional(RelaysUpdateResponseStatus),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateRelayResponse",
 }) as any as S.Schema<UpdateRelayResponse>;

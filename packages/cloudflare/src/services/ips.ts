@@ -12,6 +12,13 @@ import * as Retry from "../retry.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
+/** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
+const KEY_DICTIONARY: Record<string, string> = {
+  ipv4Cidrs: "ipv4_cidrs",
+  ipv6Cidrs: "ipv6_cidrs",
+  jdcloudCidrs: "jdcloud_cidrs",
+};
+
 export interface ListIpsRequest {
   /** Specified as `jdcloud` to list IPs used by JD Cloud data centers. */
   networks?: string;
@@ -19,7 +26,9 @@ export interface ListIpsRequest {
 export const ListIpsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     networks: S.optional(S.String.pipe(T.Query())),
-  }).pipe(T.Http({ method: "GET", uri: "/ips", code: 200 })),
+  })
+    .pipe(T.Http({ method: "GET", uri: "/ips", code: 200 }))
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "ListIpsRequest" }) as any as S.Schema<ListIpsRequest>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -38,7 +47,7 @@ export const ListIpsResponse = /*@__PURE__*/ S.suspend(() =>
           "PublicIPIPsJDCloud object { etag, ipv4_cidrs, ipv6_cidrs, jdcloud_cidrs }",
         ),
       ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListIpsResponse",
 }) as any as S.Schema<ListIpsResponse>;

@@ -174,25 +174,37 @@ const mapKeysByDictionary = (
   return out;
 };
 
-/** Recursively rename keys between TS names and wire names, per the schema. */
+/**
+ * Recursively rename keys between TS names and wire names, per the schema.
+ *
+ * `fallback` is the nearest ancestor `T.KeyDictionary` — schema-known members
+ * always map via their own annotations, but opaque values (Document members,
+ * keys the schema doesn't know) deep-rename via the dictionary so nested
+ * camelCase content still reaches the wire as snake_case. Content with no
+ * dictionary in scope passes through verbatim.
+ */
 const mapKeys = (
   ast: AST.AST,
   value: unknown,
   direction: "encode" | "decode",
+  fallback?: Record<string, string>,
 ): unknown => {
   if (value === null || value === undefined || typeof value !== "object") {
     return value;
   }
-  const dict = getAnn(ast, keyDictionarySymbol) as
-    | Record<string, string>
-    | undefined;
-  if (dict) return mapKeysByDictionary(dict, value, direction);
+  const dict =
+    (getAnn(ast, keyDictionarySymbol) as Record<string, string> | undefined) ??
+    fallback;
   const node = resolveNode(ast);
 
   if (node._tag === "Arrays") {
     if (!Array.isArray(value)) return value;
     const elem = (node as any).rest?.[0] as AST.AST | undefined;
-    return elem ? value.map((v) => mapKeys(elem, v, direction)) : value;
+    return elem
+      ? value.map((v) => mapKeys(elem, v, direction, dict))
+      : dict
+        ? mapKeysByDictionary(dict, value, direction)
+        : value;
   }
 
   if (node._tag === "Objects" && !Array.isArray(value)) {
@@ -201,7 +213,10 @@ const mapKeys = (
     const isigs = (node as any).indexSignatures as
       | readonly { type: AST.AST }[]
       | undefined;
-    if (props.length === 0 && !(isigs && isigs.length)) return value; // opaque
+    if (props.length === 0 && !(isigs && isigs.length)) {
+      // opaque object — dictionary fallback or verbatim
+      return dict ? mapKeysByDictionary(dict, value, direction) : value;
+    }
     const out: Record<string, unknown> = {};
     const consumed = new Set<string>();
     for (const p of props) {
@@ -212,17 +227,28 @@ const mapKeys = (
       consumed.add(from);
       const v = (value as Record<string, unknown>)[from];
       if (v === undefined) continue;
-      out[to] = mapKeys(p.type, v, direction);
+      out[to] = mapKeys(p.type, v, direction, dict);
     }
     for (const [k, v] of Object.entries(value as Record<string, unknown>)) {
       if (consumed.has(k) || v === undefined) continue;
-      out[k] =
-        isigs && isigs.length ? mapKeys(isigs[0]!.type, v, direction) : v;
+      const renamed = dict
+        ? direction === "encode"
+          ? (dict[k] ?? k)
+          : (Object.entries(dict).find(([, w]) => w === k)?.[0] ?? k)
+        : k;
+      out[renamed] =
+        isigs && isigs.length
+          ? mapKeys(isigs[0]!.type, v, direction, dict)
+          : dict
+            ? mapKeysByDictionary(dict, v, direction)
+            : v;
     }
     return out;
   }
 
-  return value;
+  // Scalar-typed schema node holding object content (docs drift) — dictionary
+  // fallback or verbatim.
+  return dict ? mapKeysByDictionary(dict, value, direction) : value;
 };
 
 // Bridge: Protocol.decode is typed as Effect<unknown> (no error channel), but
@@ -354,6 +380,12 @@ const encode = ({
         new Error("operation input is missing the Http() trait"),
       );
     }
+    // Service-level key dictionary (mined from the distilled SDK): fallback
+    // wire mapping for opaque/unknown content the docs-sourced schema
+    // doesn't model.
+    const rootDict = getAnn(inputAst, keyDictionarySymbol) as
+      | Record<string, string>
+      | undefined;
 
     const headers: Record<string, string> = {
       ...formatHeaders(creds),
@@ -393,18 +425,28 @@ const encode = ({
           files.push(f as Blob | File);
         }
       } else {
-        body[nameOf(prop, bodySymbol)] = mapKeys(prop.type, value, "encode");
+        body[nameOf(prop, bodySymbol)] = mapKeys(
+          prop.type,
+          value,
+          "encode",
+          rootDict,
+        );
       }
     }
 
     // Input keys the schema doesn't know pass through as body fields — the
     // docs-sourced schemas can lag the real API, and silently dropping them
     // would break working callers. Callers write camelCase against the
-    // TS-facing surface while Cloudflare's wire is snake_case, so unknown
-    // top-level keys are snake_cased (nested content passes verbatim).
+    // TS-facing surface while Cloudflare's wire is snake_case: the service
+    // key dictionary maps them when it knows the key, otherwise snake_case.
     for (const [key, value] of Object.entries(inputObj)) {
       if (consumed.has(key) || value === undefined) continue;
-      body[key.replace(/([a-z0-9])([A-Z])/g, "$1_$2").toLowerCase()] = value;
+      const wire =
+        rootDict?.[key] ??
+        key.replace(/([a-z0-9])([A-Z])/g, "$1_$2").toLowerCase();
+      body[wire] = rootDict
+        ? mapKeysByDictionary(rootDict, value, "encode")
+        : value;
       hasBodyMembers = true;
     }
 
@@ -642,6 +684,9 @@ const makeDecode =
         | Record<string, unknown>
         | unknown;
       const result: Record<string, unknown> = {};
+      const rootDict = getAnn(outputAst, keyDictionarySymbol) as
+        | Record<string, string>
+        | undefined;
 
       for (const prop of getProps(outputAst)) {
         const key = String(prop.name);
@@ -650,7 +695,7 @@ const makeDecode =
             result[key] = camelizeKeys(json.result_info);
           }
         } else if (hasPropAnn(prop, envelopePayloadSymbol)) {
-          result[key] = mapKeys(prop.type, payload, "decode");
+          result[key] = mapKeys(prop.type, payload, "decode", rootDict);
         } else if (hasPropAnn(prop, headerSymbol)) {
           const v = response.headers[nameOf(prop, headerSymbol).toLowerCase()];
           if (v !== undefined) result[key] = v;
@@ -663,6 +708,7 @@ const makeDecode =
               prop.type,
               (payload as Record<string, unknown>)[wire],
               "decode",
+              rootDict,
             );
           }
         }

@@ -14,6 +14,94 @@ import * as Retry from "../retry.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
+/** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
+const KEY_DICTIONARY: Record<string, string> = {
+  actionParameters: "action_parameters",
+  additionalCacheablePorts: "additional_cacheable_ports",
+  assetName: "asset_name",
+  automaticHttpsRewrites: "automatic_https_rewrites",
+  browserTtl: "browser_ttl",
+  cacheByDeviceType: "cache_by_device_type",
+  cacheDeceptionArmor: "cache_deception_armor",
+  cacheKey: "cache_key",
+  cacheReserve: "cache_reserve",
+  checkPresence: "check_presence",
+  cloudflareOnly: "cloudflare_only",
+  contentConverter: "content_converter",
+  contentType: "content_type",
+  cookieFields: "cookie_fields",
+  countingExpression: "counting_expression",
+  customKey: "custom_key",
+  deviceType: "device_type",
+  disableApps: "disable_apps",
+  disablePayPerCrawl: "disable_pay_per_crawl",
+  disableRum: "disable_rum",
+  disableStaleWhileUpdating: "disable_stale_while_updating",
+  disableZaraz: "disable_zaraz",
+  edgeTtl: "edge_ttl",
+  emailObfuscation: "email_obfuscation",
+  excludeOrigin: "exclude_origin",
+  exposedCredentialCheck: "exposed_credential_check",
+  fromList: "from_list",
+  fromValue: "from_value",
+  hostHeader: "host_header",
+  hotlinkProtection: "hotlink_protection",
+  ignoreQueryStringsOrder: "ignore_query_strings_order",
+  lastUpdated: "last_updated",
+  matchPattern: "match_pattern",
+  matchedData: "matched_data",
+  maxAge: "max-age",
+  minimumFileSize: "minimum_file_size",
+  mitigationTimeout: "mitigation_timeout",
+  mustRevalidate: "must-revalidate",
+  mustUnderstand: "must-understand",
+  noCache: "no-cache",
+  noStore: "no-store",
+  noTransform: "no-transform",
+  opportunisticEncryption: "opportunistic_encryption",
+  originCacheControl: "origin_cache_control",
+  originErrorPagePassthru: "origin_error_page_passthru",
+  passwordExpression: "password_expression",
+  perPage: "per_page",
+  preserveDuplicates: "preserve_duplicates",
+  preserveQueryString: "preserve_query_string",
+  proxyRevalidate: "proxy-revalidate",
+  publicKey: "public_key",
+  queryString: "query_string",
+  rawResponseFields: "raw_response_fields",
+  readTimeout: "read_timeout",
+  redirectsForAiTraining: "redirects_for_ai_training",
+  requestBodyBuffering: "request_body_buffering",
+  requestFields: "request_fields",
+  requestsPerPeriod: "requests_per_period",
+  requestsToOrigin: "requests_to_origin",
+  respectStrongEtags: "respect_strong_etags",
+  responseBodyBuffering: "response_body_buffering",
+  responseFields: "response_fields",
+  resultInfo: "result_info",
+  rocketLoader: "rocket_loader",
+  sMaxage: "s-maxage",
+  scorePerPeriod: "score_per_period",
+  scoreResponseHeaderName: "score_response_header_name",
+  scoreThreshold: "score_threshold",
+  securityLevel: "security_level",
+  sensitivityLevel: "sensitivity_level",
+  serveStale: "serve_stale",
+  serverSideExcludes: "server_side_excludes",
+  sharedDictionary: "shared_dictionary",
+  staleIfError: "stale-if-error",
+  staleWhileRevalidate: "stale-while-revalidate",
+  statusCode: "status_code",
+  statusCodeRange: "status_code_range",
+  statusCodeTtl: "status_code_ttl",
+  stripEtags: "strip_etags",
+  stripLastModified: "strip_last_modified",
+  stripSetCookie: "strip_set_cookie",
+  targetUrl: "target_url",
+  transformedRequestFields: "transformed_request_fields",
+  usernameExpression: "username_expression",
+};
+
 export interface RulesCreateForAccountRequestBodyBlockRulePosition {
   /** An object configuring where the rule will be placed. */
   BeforePositionObjectBefore__: unknown;
@@ -723,13 +811,15 @@ export const CreateRuleForAccountRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     rulesetId: S.String.pipe(T.Label("ruleset_id")),
     body: RulesCreateForAccountRequestBody,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/rulesets/{ruleset_id}/rules",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/rulesets/{ruleset_id}/rules",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateRuleForAccountRequest",
 }) as any as S.Schema<CreateRuleForAccountRequest>;
@@ -876,7 +966,7 @@ export const CreateRuleForAccountResponse = /*@__PURE__*/ S.suspend(() =>
     rules: RulesCreateForAccountResponseRulesList,
     version: S.String,
     description: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateRuleForAccountResponse",
 }) as any as S.Schema<CreateRuleForAccountResponse>;
@@ -1584,13 +1674,15 @@ export const CreateRuleForZoneRequest = /*@__PURE__*/ S.suspend(() =>
     zoneId: S.String.pipe(T.Label("zone_id")),
     rulesetId: S.String.pipe(T.Label("ruleset_id")),
     body: RulesCreateForZoneRequestBody,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/zones/{zone_id}/rulesets/{ruleset_id}/rules",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/zones/{zone_id}/rulesets/{ruleset_id}/rules",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateRuleForZoneRequest",
 }) as any as S.Schema<CreateRuleForZoneRequest>;
@@ -1735,7 +1827,7 @@ export const CreateRuleForZoneResponse = /*@__PURE__*/ S.suspend(() =>
     rules: RulesCreateForZoneResponseRulesList,
     version: S.String,
     description: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateRuleForZoneResponse",
 }) as any as S.Schema<CreateRuleForZoneResponse>;
@@ -1873,13 +1965,15 @@ export const CreateRulesetForAccountRequest = /*@__PURE__*/ S.suspend(() =>
     phase: S.Unknown,
     description: S.optional(S.String),
     rules: S.optional(CreateForAccountRequestRulesList),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/rulesets",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/rulesets",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateRulesetForAccountRequest",
 }) as any as S.Schema<CreateRulesetForAccountRequest>;
@@ -2024,7 +2118,7 @@ export const CreateRulesetForAccountResponse = /*@__PURE__*/ S.suspend(() =>
     rules: CreateForAccountResponseRulesList,
     version: S.String,
     description: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateRulesetForAccountResponse",
 }) as any as S.Schema<CreateRulesetForAccountResponse>;
@@ -2161,9 +2255,11 @@ export const CreateRulesetForZoneRequest = /*@__PURE__*/ S.suspend(() =>
     phase: S.Unknown,
     description: S.optional(S.String),
     rules: S.optional(CreateForZoneRequestRulesList),
-  }).pipe(
-    T.Http({ method: "POST", uri: "/zones/{zone_id}/rulesets", code: 200 }),
-  ),
+  })
+    .pipe(
+      T.Http({ method: "POST", uri: "/zones/{zone_id}/rulesets", code: 200 }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateRulesetForZoneRequest",
 }) as any as S.Schema<CreateRulesetForZoneRequest>;
@@ -2307,7 +2403,7 @@ export const CreateRulesetForZoneResponse = /*@__PURE__*/ S.suspend(() =>
     rules: CreateForZoneResponseRulesList,
     version: S.String,
     description: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateRulesetForZoneResponse",
 }) as any as S.Schema<CreateRulesetForZoneResponse>;
@@ -2325,13 +2421,15 @@ export const DeleteRuleForAccountRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     rulesetId: S.String.pipe(T.Label("ruleset_id")),
     ruleId: S.String.pipe(T.Label("rule_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/rulesets/{ruleset_id}/rules/{rule_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/rulesets/{ruleset_id}/rules/{rule_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteRuleForAccountRequest",
 }) as any as S.Schema<DeleteRuleForAccountRequest>;
@@ -2478,7 +2576,7 @@ export const DeleteRuleForAccountResponse = /*@__PURE__*/ S.suspend(() =>
     rules: RulesDeleteForAccountResponseRulesList,
     version: S.String,
     description: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteRuleForAccountResponse",
 }) as any as S.Schema<DeleteRuleForAccountResponse>;
@@ -2496,13 +2594,15 @@ export const DeleteRuleForZoneRequest = /*@__PURE__*/ S.suspend(() =>
     zoneId: S.String.pipe(T.Label("zone_id")),
     rulesetId: S.String.pipe(T.Label("ruleset_id")),
     ruleId: S.String.pipe(T.Label("rule_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/zones/{zone_id}/rulesets/{ruleset_id}/rules/{rule_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/zones/{zone_id}/rulesets/{ruleset_id}/rules/{rule_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteRuleForZoneRequest",
 }) as any as S.Schema<DeleteRuleForZoneRequest>;
@@ -2647,7 +2747,7 @@ export const DeleteRuleForZoneResponse = /*@__PURE__*/ S.suspend(() =>
     rules: RulesDeleteForZoneResponseRulesList,
     version: S.String,
     description: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteRuleForZoneResponse",
 }) as any as S.Schema<DeleteRuleForZoneResponse>;
@@ -2662,20 +2762,22 @@ export const DeleteRulesetForAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     rulesetId: S.String.pipe(T.Label("ruleset_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/rulesets/{ruleset_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/rulesets/{ruleset_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteRulesetForAccountRequest",
 }) as any as S.Schema<DeleteRulesetForAccountRequest>;
 
 export interface DeleteRulesetForAccountResponse {}
 export const DeleteRulesetForAccountResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
+  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteRulesetForAccountResponse",
 }) as any as S.Schema<DeleteRulesetForAccountResponse>;
@@ -2690,20 +2792,22 @@ export const DeleteRulesetForZoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     rulesetId: S.String.pipe(T.Label("ruleset_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/zones/{zone_id}/rulesets/{ruleset_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/zones/{zone_id}/rulesets/{ruleset_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteRulesetForZoneRequest",
 }) as any as S.Schema<DeleteRulesetForZoneRequest>;
 
 export interface DeleteRulesetForZoneResponse {}
 export const DeleteRulesetForZoneResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
+  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteRulesetForZoneResponse",
 }) as any as S.Schema<DeleteRulesetForZoneResponse>;
@@ -2721,20 +2825,22 @@ export const DeleteVersionForAccountRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     rulesetId: S.String.pipe(T.Label("ruleset_id")),
     rulesetVersion: S.String.pipe(T.Label("ruleset_version")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/rulesets/{ruleset_id}/versions/{ruleset_version}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/rulesets/{ruleset_id}/versions/{ruleset_version}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteVersionForAccountRequest",
 }) as any as S.Schema<DeleteVersionForAccountRequest>;
 
 export interface DeleteVersionForAccountResponse {}
 export const DeleteVersionForAccountResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
+  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteVersionForAccountResponse",
 }) as any as S.Schema<DeleteVersionForAccountResponse>;
@@ -2752,20 +2858,22 @@ export const DeleteVersionForZoneRequest = /*@__PURE__*/ S.suspend(() =>
     zoneId: S.String.pipe(T.Label("zone_id")),
     rulesetId: S.String.pipe(T.Label("ruleset_id")),
     rulesetVersion: S.String.pipe(T.Label("ruleset_version")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/zones/{zone_id}/rulesets/{ruleset_id}/versions/{ruleset_version}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/zones/{zone_id}/rulesets/{ruleset_id}/versions/{ruleset_version}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteVersionForZoneRequest",
 }) as any as S.Schema<DeleteVersionForZoneRequest>;
 
 export interface DeleteVersionForZoneResponse {}
 export const DeleteVersionForZoneResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
+  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteVersionForZoneResponse",
 }) as any as S.Schema<DeleteVersionForZoneResponse>;
@@ -2780,13 +2888,15 @@ export const GetPhasForAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     rulesetPhase: S.String.pipe(T.Label("ruleset_phase")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/rulesets/phases/{ruleset_phase}/entrypoint",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/rulesets/phases/{ruleset_phase}/entrypoint",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetPhasForAccountRequest",
 }) as any as S.Schema<GetPhasForAccountRequest>;
@@ -2933,7 +3043,7 @@ export const GetPhasForAccountResponse = /*@__PURE__*/ S.suspend(() =>
     rules: PhasesGetForAccountResponseRulesList,
     version: S.String,
     description: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetPhasForAccountResponse",
 }) as any as S.Schema<GetPhasForAccountResponse>;
@@ -2948,13 +3058,15 @@ export const GetPhasForZoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     rulesetPhase: S.String.pipe(T.Label("ruleset_phase")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/rulesets/phases/{ruleset_phase}/entrypoint",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/rulesets/phases/{ruleset_phase}/entrypoint",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetPhasForZoneRequest",
 }) as any as S.Schema<GetPhasForZoneRequest>;
@@ -3099,7 +3211,7 @@ export const GetPhasForZoneResponse = /*@__PURE__*/ S.suspend(() =>
     rules: PhasesGetForZoneResponseRulesList,
     version: S.String,
     description: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetPhasForZoneResponse",
 }) as any as S.Schema<GetPhasForZoneResponse>;
@@ -3117,13 +3229,15 @@ export const GetPhasVersionForAccountRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     rulesetPhase: S.String.pipe(T.Label("ruleset_phase")),
     rulesetVersion: S.String.pipe(T.Label("ruleset_version")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/rulesets/phases/{ruleset_phase}/entrypoint/versions/{ruleset_version}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/rulesets/phases/{ruleset_phase}/entrypoint/versions/{ruleset_version}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetPhasVersionForAccountRequest",
 }) as any as S.Schema<GetPhasVersionForAccountRequest>;
@@ -3271,7 +3385,7 @@ export const GetPhasVersionForAccountResponse = /*@__PURE__*/ S.suspend(() =>
     rules: PhasesVersionsGetForAccountResponseRulesList,
     version: S.String,
     description: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetPhasVersionForAccountResponse",
 }) as any as S.Schema<GetPhasVersionForAccountResponse>;
@@ -3289,13 +3403,15 @@ export const GetPhasVersionForZoneRequest = /*@__PURE__*/ S.suspend(() =>
     zoneId: S.String.pipe(T.Label("zone_id")),
     rulesetPhase: S.String.pipe(T.Label("ruleset_phase")),
     rulesetVersion: S.String.pipe(T.Label("ruleset_version")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/rulesets/phases/{ruleset_phase}/entrypoint/versions/{ruleset_version}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/rulesets/phases/{ruleset_phase}/entrypoint/versions/{ruleset_version}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetPhasVersionForZoneRequest",
 }) as any as S.Schema<GetPhasVersionForZoneRequest>;
@@ -3442,7 +3558,7 @@ export const GetPhasVersionForZoneResponse = /*@__PURE__*/ S.suspend(() =>
     rules: PhasesVersionsGetForZoneResponseRulesList,
     version: S.String,
     description: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetPhasVersionForZoneResponse",
 }) as any as S.Schema<GetPhasVersionForZoneResponse>;
@@ -3457,13 +3573,15 @@ export const GetRulesetForAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     rulesetId: S.String.pipe(T.Label("ruleset_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/rulesets/{ruleset_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/rulesets/{ruleset_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetRulesetForAccountRequest",
 }) as any as S.Schema<GetRulesetForAccountRequest>;
@@ -3607,7 +3725,7 @@ export const GetRulesetForAccountResponse = /*@__PURE__*/ S.suspend(() =>
     rules: GetForAccountResponseRulesList,
     version: S.String,
     description: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetRulesetForAccountResponse",
 }) as any as S.Schema<GetRulesetForAccountResponse>;
@@ -3622,13 +3740,15 @@ export const GetRulesetForZoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     rulesetId: S.String.pipe(T.Label("ruleset_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/rulesets/{ruleset_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/rulesets/{ruleset_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetRulesetForZoneRequest",
 }) as any as S.Schema<GetRulesetForZoneRequest>;
@@ -3772,7 +3892,7 @@ export const GetRulesetForZoneResponse = /*@__PURE__*/ S.suspend(() =>
     rules: GetForZoneResponseRulesList,
     version: S.String,
     description: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetRulesetForZoneResponse",
 }) as any as S.Schema<GetRulesetForZoneResponse>;
@@ -3790,13 +3910,15 @@ export const GetVersionForAccountRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     rulesetId: S.String.pipe(T.Label("ruleset_id")),
     rulesetVersion: S.String.pipe(T.Label("ruleset_version")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/rulesets/{ruleset_id}/versions/{ruleset_version}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/rulesets/{ruleset_id}/versions/{ruleset_version}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetVersionForAccountRequest",
 }) as any as S.Schema<GetVersionForAccountRequest>;
@@ -3943,7 +4065,7 @@ export const GetVersionForAccountResponse = /*@__PURE__*/ S.suspend(() =>
     rules: VersionsGetForAccountResponseRulesList,
     version: S.String,
     description: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetVersionForAccountResponse",
 }) as any as S.Schema<GetVersionForAccountResponse>;
@@ -3961,13 +4083,15 @@ export const GetVersionForZoneRequest = /*@__PURE__*/ S.suspend(() =>
     zoneId: S.String.pipe(T.Label("zone_id")),
     rulesetId: S.String.pipe(T.Label("ruleset_id")),
     rulesetVersion: S.String.pipe(T.Label("ruleset_version")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/rulesets/{ruleset_id}/versions/{ruleset_version}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/rulesets/{ruleset_id}/versions/{ruleset_version}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetVersionForZoneRequest",
 }) as any as S.Schema<GetVersionForZoneRequest>;
@@ -4112,7 +4236,7 @@ export const GetVersionForZoneResponse = /*@__PURE__*/ S.suspend(() =>
     rules: VersionsGetForZoneResponseRulesList,
     version: S.String,
     description: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetVersionForZoneResponse",
 }) as any as S.Schema<GetVersionForZoneResponse>;
@@ -4127,13 +4251,15 @@ export const ListPhasVersionsForAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     rulesetPhase: S.String.pipe(T.Label("ruleset_phase")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/rulesets/phases/{ruleset_phase}/entrypoint/versions",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/rulesets/phases/{ruleset_phase}/entrypoint/versions",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListPhasVersionsForAccountRequest",
 }) as any as S.Schema<ListPhasVersionsForAccountRequest>;
@@ -4185,7 +4311,7 @@ export const ListPhasVersionsForAccountResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: PhasesVersionsListForAccountResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListPhasVersionsForAccountResponse",
 }) as any as S.Schema<ListPhasVersionsForAccountResponse>;
@@ -4200,13 +4326,15 @@ export const ListPhasVersionsForZoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     rulesetPhase: S.String.pipe(T.Label("ruleset_phase")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/rulesets/phases/{ruleset_phase}/entrypoint/versions",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/rulesets/phases/{ruleset_phase}/entrypoint/versions",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListPhasVersionsForZoneRequest",
 }) as any as S.Schema<ListPhasVersionsForZoneRequest>;
@@ -4257,7 +4385,7 @@ export const ListPhasVersionsForZoneResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: PhasesVersionsListForZoneResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListPhasVersionsForZoneResponse",
 }) as any as S.Schema<ListPhasVersionsForZoneResponse>;
@@ -4275,13 +4403,15 @@ export const ListRulesetsForAccountRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     cursor: S.optional(S.String.pipe(T.Query())),
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/rulesets",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/rulesets",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListRulesetsForAccountRequest",
 }) as any as S.Schema<ListRulesetsForAccountRequest>;
@@ -4331,7 +4461,7 @@ export const ListRulesetsForAccountResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: ListForAccountResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListRulesetsForAccountResponse",
 }) as any as S.Schema<ListRulesetsForAccountResponse>;
@@ -4349,9 +4479,11 @@ export const ListRulesetsForZoneRequest = /*@__PURE__*/ S.suspend(() =>
     zoneId: S.String.pipe(T.Label("zone_id")),
     cursor: S.optional(S.String.pipe(T.Query())),
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-  }).pipe(
-    T.Http({ method: "GET", uri: "/zones/{zone_id}/rulesets", code: 200 }),
-  ),
+  })
+    .pipe(
+      T.Http({ method: "GET", uri: "/zones/{zone_id}/rulesets", code: 200 }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListRulesetsForZoneRequest",
 }) as any as S.Schema<ListRulesetsForZoneRequest>;
@@ -4401,7 +4533,7 @@ export const ListRulesetsForZoneResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: ListForZoneResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListRulesetsForZoneResponse",
 }) as any as S.Schema<ListRulesetsForZoneResponse>;
@@ -4416,13 +4548,15 @@ export const ListVersionsForAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     rulesetId: S.String.pipe(T.Label("ruleset_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/rulesets/{ruleset_id}/versions",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/rulesets/{ruleset_id}/versions",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListVersionsForAccountRequest",
 }) as any as S.Schema<ListVersionsForAccountRequest>;
@@ -4473,7 +4607,7 @@ export const ListVersionsForAccountResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: VersionsListForAccountResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListVersionsForAccountResponse",
 }) as any as S.Schema<ListVersionsForAccountResponse>;
@@ -4488,13 +4622,15 @@ export const ListVersionsForZoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     rulesetId: S.String.pipe(T.Label("ruleset_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/rulesets/{ruleset_id}/versions",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/rulesets/{ruleset_id}/versions",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListVersionsForZoneRequest",
 }) as any as S.Schema<ListVersionsForZoneRequest>;
@@ -4544,7 +4680,7 @@ export const ListVersionsForZoneResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: VersionsListForZoneResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListVersionsForZoneResponse",
 }) as any as S.Schema<ListVersionsForZoneResponse>;
@@ -5258,13 +5394,15 @@ export const PatchRuleForAccountRequest = /*@__PURE__*/ S.suspend(() =>
     rulesetId: S.String.pipe(T.Label("ruleset_id")),
     ruleId: S.String.pipe(T.Label("rule_id")),
     body: RulesEditForAccountRequestBody,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/accounts/{account_id}/rulesets/{ruleset_id}/rules/{rule_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/accounts/{account_id}/rulesets/{ruleset_id}/rules/{rule_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchRuleForAccountRequest",
 }) as any as S.Schema<PatchRuleForAccountRequest>;
@@ -5411,7 +5549,7 @@ export const PatchRuleForAccountResponse = /*@__PURE__*/ S.suspend(() =>
     rules: RulesEditForAccountResponseRulesList,
     version: S.String,
     description: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchRuleForAccountResponse",
 }) as any as S.Schema<PatchRuleForAccountResponse>;
@@ -6117,13 +6255,15 @@ export const PatchRuleForZoneRequest = /*@__PURE__*/ S.suspend(() =>
     rulesetId: S.String.pipe(T.Label("ruleset_id")),
     ruleId: S.String.pipe(T.Label("rule_id")),
     body: RulesEditForZoneRequestBody,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/zones/{zone_id}/rulesets/{ruleset_id}/rules/{rule_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/zones/{zone_id}/rulesets/{ruleset_id}/rules/{rule_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchRuleForZoneRequest",
 }) as any as S.Schema<PatchRuleForZoneRequest>;
@@ -6268,7 +6408,7 @@ export const PatchRuleForZoneResponse = /*@__PURE__*/ S.suspend(() =>
     rules: RulesEditForZoneResponseRulesList,
     version: S.String,
     description: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchRuleForZoneResponse",
 }) as any as S.Schema<PatchRuleForZoneResponse>;
@@ -6405,13 +6545,15 @@ export const PutPhasForAccountRequest = /*@__PURE__*/ S.suspend(() =>
     description: S.optional(S.String),
     name: S.optional(S.String),
     rules: S.optional(PhasesUpdateForAccountRequestRulesList),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/rulesets/phases/{ruleset_phase}/entrypoint",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/rulesets/phases/{ruleset_phase}/entrypoint",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutPhasForAccountRequest",
 }) as any as S.Schema<PutPhasForAccountRequest>;
@@ -6558,7 +6700,7 @@ export const PutPhasForAccountResponse = /*@__PURE__*/ S.suspend(() =>
     rules: PhasesUpdateForAccountResponseRulesList,
     version: S.String,
     description: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutPhasForAccountResponse",
 }) as any as S.Schema<PutPhasForAccountResponse>;
@@ -6693,13 +6835,15 @@ export const PutPhasForZoneRequest = /*@__PURE__*/ S.suspend(() =>
     description: S.optional(S.String),
     name: S.optional(S.String),
     rules: S.optional(PhasesUpdateForZoneRequestRulesList),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/zones/{zone_id}/rulesets/phases/{ruleset_phase}/entrypoint",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/zones/{zone_id}/rulesets/phases/{ruleset_phase}/entrypoint",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutPhasForZoneRequest",
 }) as any as S.Schema<PutPhasForZoneRequest>;
@@ -6846,7 +6990,7 @@ export const PutPhasForZoneResponse = /*@__PURE__*/ S.suspend(() =>
     rules: PhasesUpdateForZoneResponseRulesList,
     version: S.String,
     description: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutPhasForZoneResponse",
 }) as any as S.Schema<PutPhasForZoneResponse>;
@@ -6987,13 +7131,15 @@ export const UpdateRulesetForAccountRequest = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     phase: S.optional(S.Unknown),
     rules: S.optional(UpdateForAccountRequestRulesList),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/rulesets/{ruleset_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/rulesets/{ruleset_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateRulesetForAccountRequest",
 }) as any as S.Schema<UpdateRulesetForAccountRequest>;
@@ -7138,7 +7284,7 @@ export const UpdateRulesetForAccountResponse = /*@__PURE__*/ S.suspend(() =>
     rules: UpdateForAccountResponseRulesList,
     version: S.String,
     description: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateRulesetForAccountResponse",
 }) as any as S.Schema<UpdateRulesetForAccountResponse>;
@@ -7278,13 +7424,15 @@ export const UpdateRulesetForZoneRequest = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     phase: S.optional(S.Unknown),
     rules: S.optional(UpdateForZoneRequestRulesList),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/zones/{zone_id}/rulesets/{ruleset_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/zones/{zone_id}/rulesets/{ruleset_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateRulesetForZoneRequest",
 }) as any as S.Schema<UpdateRulesetForZoneRequest>;
@@ -7428,7 +7576,7 @@ export const UpdateRulesetForZoneResponse = /*@__PURE__*/ S.suspend(() =>
     rules: UpdateForZoneResponseRulesList,
     version: S.String,
     description: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateRulesetForZoneResponse",
 }) as any as S.Schema<UpdateRulesetForZoneResponse>;

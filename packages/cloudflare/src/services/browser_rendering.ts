@@ -12,6 +12,19 @@ import * as Retry from "../retry.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
+/** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
+const KEY_DICTIONARY: Record<string, string> = {
+  browser: "Browser",
+  customAi: "custom_ai",
+  jobId: "job_id",
+  jsonSchema: "json_schema",
+  protocolVersion: "Protocol-Version",
+  responseFormat: "response_format",
+  userAgent: "User-Agent",
+  v8Version: "V8-Version",
+  webKitVersion: "WebKit-Version",
+};
+
 export interface ActivateDevtoolBrowserTargetRequest {
   /** Account ID. */
   accountId: string;
@@ -25,13 +38,15 @@ export const ActivateDevtoolBrowserTargetRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     sessionId: S.String.pipe(T.Label("session_id")),
     targetId: S.String.pipe(T.Label("target_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/browser-rendering/devtools/browser/{session_id}/json/activate/{target_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/browser-rendering/devtools/browser/{session_id}/json/activate/{target_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ActivateDevtoolBrowserTargetRequest",
 }) as any as S.Schema<ActivateDevtoolBrowserTargetRequest>;
@@ -45,7 +60,7 @@ export const ActivateDevtoolBrowserTargetResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       message: S.String,
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ActivateDevtoolBrowserTargetResponse",
 }) as any as S.Schema<ActivateDevtoolBrowserTargetResponse>;
@@ -63,13 +78,15 @@ export const CloseDevtoolBrowserTargetRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     sessionId: S.String.pipe(T.Label("session_id")),
     targetId: S.String.pipe(T.Label("target_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/browser-rendering/devtools/browser/{session_id}/json/close/{target_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/browser-rendering/devtools/browser/{session_id}/json/close/{target_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CloseDevtoolBrowserTargetRequest",
 }) as any as S.Schema<CloseDevtoolBrowserTargetRequest>;
@@ -82,7 +99,7 @@ export interface CloseDevtoolBrowserTargetResponse {
 export const CloseDevtoolBrowserTargetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.String,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CloseDevtoolBrowserTargetResponse",
 }) as any as S.Schema<CloseDevtoolBrowserTargetResponse>;
@@ -105,20 +122,22 @@ export const ConnectDevtoolBrowserRequest = /*@__PURE__*/ S.suspend(() =>
     keepAlive: S.optional(S.Number.pipe(T.Query("keep_alive"))),
     lab: S.optional(S.Boolean.pipe(T.Query())),
     recording: S.optional(S.Boolean.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/browser-rendering/devtools/browser/{session_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/browser-rendering/devtools/browser/{session_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ConnectDevtoolBrowserRequest",
 }) as any as S.Schema<ConnectDevtoolBrowserRequest>;
 
 export interface ConnectDevtoolBrowserResponse {}
 export const ConnectDevtoolBrowserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
+  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ConnectDevtoolBrowserResponse",
 }) as any as S.Schema<ConnectDevtoolBrowserResponse>;
@@ -152,13 +171,15 @@ export const CreateContentRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     cacheTTL: S.optional(S.Number.pipe(T.Query())),
     body: ContentCreateRequestBody,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/browser-rendering/content",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/browser-rendering/content",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateContentRequest",
 }) as any as S.Schema<CreateContentRequest>;
@@ -170,7 +191,7 @@ export interface CreateContentResponse {
 export const CreateContentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(S.String.pipe(T.EnvelopePayload())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateContentResponse",
 }) as any as S.Schema<CreateContentResponse>;
@@ -204,13 +225,15 @@ export const CreateCrawlRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     cacheTTL: S.optional(S.Number.pipe(T.Query())),
     body: CrawlCreateRequestBody,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/browser-rendering/crawl",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/browser-rendering/crawl",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateCrawlRequest",
 }) as any as S.Schema<CreateCrawlRequest>;
@@ -222,7 +245,7 @@ export interface CreateCrawlResponse {
 export const CreateCrawlResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(S.String.pipe(T.EnvelopePayload())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateCrawlResponse",
 }) as any as S.Schema<CreateCrawlResponse>;
@@ -248,13 +271,15 @@ export const CreateDevtoolBrowserRequest = /*@__PURE__*/ S.suspend(() =>
     liveViewUrlExpiresInMs: S.optional(S.Number.pipe(T.Query())),
     recording: S.optional(S.Boolean.pipe(T.Query())),
     targets: S.optional(S.Boolean.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/browser-rendering/devtools/browser",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/browser-rendering/devtools/browser",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateDevtoolBrowserRequest",
 }) as any as S.Schema<CreateDevtoolBrowserRequest>;
@@ -270,7 +295,7 @@ export const CreateDevtoolBrowserResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sessionId: S.String,
     webSocketDebuggerUrl: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateDevtoolBrowserResponse",
 }) as any as S.Schema<CreateDevtoolBrowserResponse>;
@@ -290,13 +315,15 @@ export const CreateDevtoolBrowserTargetRequest = /*@__PURE__*/ S.suspend(() =>
     sessionId: S.String.pipe(T.Label("session_id")),
     liveViewUrlExpiresInMs: S.optional(S.Number.pipe(T.Query())),
     url: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/browser-rendering/devtools/browser/{session_id}/json/new",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/browser-rendering/devtools/browser/{session_id}/json/new",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateDevtoolBrowserTargetRequest",
 }) as any as S.Schema<CreateDevtoolBrowserTargetRequest>;
@@ -327,7 +354,7 @@ export const CreateDevtoolBrowserTargetResponse = /*@__PURE__*/ S.suspend(() =>
     devtoolsFrontendUrl: S.optional(S.String),
     title: S.optional(S.String),
     webSocketDebuggerUrl: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateDevtoolBrowserTargetResponse",
 }) as any as S.Schema<CreateDevtoolBrowserTargetResponse>;
@@ -361,13 +388,15 @@ export const CreateJsonRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     cacheTTL: S.optional(S.Number.pipe(T.Query())),
     body: JsonCreateRequestBody,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/browser-rendering/json",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/browser-rendering/json",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateJsonRequest",
 }) as any as S.Schema<CreateJsonRequest>;
@@ -385,7 +414,7 @@ export interface CreateJsonResponse {
 export const CreateJsonResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(JsonCreateResultMap.pipe(T.EnvelopePayload())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateJsonResponse",
 }) as any as S.Schema<CreateJsonResponse>;
@@ -419,13 +448,15 @@ export const CreateLinkRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     cacheTTL: S.optional(S.Number.pipe(T.Query())),
     body: LinksCreateRequestBody,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/browser-rendering/links",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/browser-rendering/links",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateLinkRequest",
 }) as any as S.Schema<CreateLinkRequest>;
@@ -442,7 +473,7 @@ export interface CreateLinkResponse {
 export const CreateLinkResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(LinksCreateResultList.pipe(T.EnvelopePayload())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateLinkResponse",
 }) as any as S.Schema<CreateLinkResponse>;
@@ -476,13 +507,15 @@ export const CreateMarkdownRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     cacheTTL: S.optional(S.Number.pipe(T.Query())),
     body: MarkdownCreateRequestBody,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/browser-rendering/markdown",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/browser-rendering/markdown",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateMarkdownRequest",
 }) as any as S.Schema<CreateMarkdownRequest>;
@@ -494,7 +527,7 @@ export interface CreateMarkdownResponse {
 export const CreateMarkdownResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(S.String.pipe(T.EnvelopePayload())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateMarkdownResponse",
 }) as any as S.Schema<CreateMarkdownResponse>;
@@ -528,20 +561,22 @@ export const CreatePdfRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     cacheTTL: S.optional(S.Number.pipe(T.Query())),
     body: PdfCreateRequestBody,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/browser-rendering/pdf",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/browser-rendering/pdf",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreatePdfRequest",
 }) as any as S.Schema<CreatePdfRequest>;
 
 export interface CreatePdfResponse {}
 export const CreatePdfResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
+  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreatePdfResponse",
 }) as any as S.Schema<CreatePdfResponse>;
@@ -575,13 +610,15 @@ export const CreateScrapeRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     cacheTTL: S.optional(S.Number.pipe(T.Query())),
     body: ScrapeCreateRequestBody,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/browser-rendering/scrape",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/browser-rendering/scrape",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateScrapeRequest",
 }) as any as S.Schema<CreateScrapeRequest>;
@@ -664,7 +701,7 @@ export interface CreateScrapeResponse {
 export const CreateScrapeResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(ScrapeCreateResultList.pipe(T.EnvelopePayload())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateScrapeResponse",
 }) as any as S.Schema<CreateScrapeResponse>;
@@ -698,20 +735,22 @@ export const CreateScreenshotRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     cacheTTL: S.optional(S.Number.pipe(T.Query())),
     body: ScreenshotCreateRequestBody,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/browser-rendering/screenshot",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/browser-rendering/screenshot",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateScreenshotRequest",
 }) as any as S.Schema<CreateScreenshotRequest>;
 
 export interface CreateScreenshotResponse {}
 export const CreateScreenshotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
+  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateScreenshotResponse",
 }) as any as S.Schema<CreateScreenshotResponse>;
@@ -745,13 +784,15 @@ export const CreateSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     cacheTTL: S.optional(S.Number.pipe(T.Query())),
     body: SnapshotCreateRequestBody,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/browser-rendering/snapshot",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/browser-rendering/snapshot",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateSnapshotRequest",
 }) as any as S.Schema<CreateSnapshotRequest>;
@@ -879,7 +920,7 @@ export const CreateSnapshotResponse = /*@__PURE__*/ S.suspend(() =>
     content: S.optional(S.String),
     markdown: S.optional(S.String),
     screenshot: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateSnapshotResponse",
 }) as any as S.Schema<CreateSnapshotResponse>;
@@ -894,13 +935,15 @@ export const DeleteCrawlRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     jobId: S.String.pipe(T.Label("job_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/browser-rendering/crawl/{job_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/browser-rendering/crawl/{job_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteCrawlRequest",
 }) as any as S.Schema<DeleteCrawlRequest>;
@@ -916,7 +959,7 @@ export const DeleteCrawlResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     jobId: S.String.pipe(T.Body("job_id")),
     message: S.String,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteCrawlResponse",
 }) as any as S.Schema<DeleteCrawlResponse>;
@@ -931,13 +974,15 @@ export const DeleteDevtoolBrowserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     sessionId: S.String.pipe(T.Label("session_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/browser-rendering/devtools/browser/{session_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/browser-rendering/devtools/browser/{session_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteDevtoolBrowserRequest",
 }) as any as S.Schema<DeleteDevtoolBrowserRequest>;
@@ -955,7 +1000,7 @@ export interface DeleteDevtoolBrowserResponse {
 export const DeleteDevtoolBrowserResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: DevtoolsBrowserDeleteResponseStatus,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteDevtoolBrowserResponse",
 }) as any as S.Schema<DeleteDevtoolBrowserResponse>;
@@ -989,13 +1034,15 @@ export const GetCrawlRequest = /*@__PURE__*/ S.suspend(() =>
     cursor: S.optional(S.Number.pipe(T.Query())),
     limit: S.optional(S.Number.pipe(T.Query())),
     status: S.optional(CrawlGetRequestStatus.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/browser-rendering/crawl/{job_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/browser-rendering/crawl/{job_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetCrawlRequest",
 }) as any as S.Schema<GetCrawlRequest>;
@@ -1093,7 +1140,7 @@ export const GetCrawlResponse = /*@__PURE__*/ S.suspend(() =>
     status: S.String,
     total: S.Number,
     cursor: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetCrawlResponse",
 }) as any as S.Schema<GetCrawlResponse>;
@@ -1111,20 +1158,22 @@ export const GetDevtoolBrowserPageRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     sessionId: S.String.pipe(T.Label("session_id")),
     targetId: S.String.pipe(T.Label("target_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/browser-rendering/devtools/browser/{session_id}/page/{target_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/browser-rendering/devtools/browser/{session_id}/page/{target_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDevtoolBrowserPageRequest",
 }) as any as S.Schema<GetDevtoolBrowserPageRequest>;
 
 export interface GetDevtoolBrowserPageResponse {}
 export const GetDevtoolBrowserPageResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
+  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDevtoolBrowserPageResponse",
 }) as any as S.Schema<GetDevtoolBrowserPageResponse>;
@@ -1142,13 +1191,15 @@ export const GetDevtoolBrowserTargetRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     sessionId: S.String.pipe(T.Label("session_id")),
     targetId: S.String.pipe(T.Label("target_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/browser-rendering/devtools/browser/{session_id}/json/list/{target_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/browser-rendering/devtools/browser/{session_id}/json/list/{target_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDevtoolBrowserTargetRequest",
 }) as any as S.Schema<GetDevtoolBrowserTargetRequest>;
@@ -1179,7 +1230,7 @@ export const GetDevtoolBrowserTargetResponse = /*@__PURE__*/ S.suspend(() =>
     devtoolsFrontendUrl: S.optional(S.String),
     title: S.optional(S.String),
     webSocketDebuggerUrl: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDevtoolBrowserTargetResponse",
 }) as any as S.Schema<GetDevtoolBrowserTargetResponse>;
@@ -1194,13 +1245,15 @@ export const GetDevtoolSessionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     sessionId: S.String.pipe(T.Label("session_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/browser-rendering/devtools/session/{session_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/browser-rendering/devtools/session/{session_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDevtoolSessionRequest",
 }) as any as S.Schema<GetDevtoolSessionRequest>;
@@ -1243,7 +1296,7 @@ export const GetDevtoolSessionResponse = /*@__PURE__*/ S.suspend(() =>
     lastUpdated: S.optional(S.Number),
     startTime: S.optional(S.Number),
     webSocketDebuggerUrl: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDevtoolSessionResponse",
 }) as any as S.Schema<GetDevtoolSessionResponse>;
@@ -1263,20 +1316,22 @@ export const LaunchDevtoolBrowserRequest = /*@__PURE__*/ S.suspend(() =>
     keepAlive: S.optional(S.Number.pipe(T.Query("keep_alive"))),
     lab: S.optional(S.Boolean.pipe(T.Query())),
     recording: S.optional(S.Boolean.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/browser-rendering/devtools/browser",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/browser-rendering/devtools/browser",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "LaunchDevtoolBrowserRequest",
 }) as any as S.Schema<LaunchDevtoolBrowserRequest>;
 
 export interface LaunchDevtoolBrowserResponse {}
 export const LaunchDevtoolBrowserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
+  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "LaunchDevtoolBrowserResponse",
 }) as any as S.Schema<LaunchDevtoolBrowserResponse>;
@@ -1294,13 +1349,15 @@ export const ListDevtoolBrowserTargetsRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     sessionId: S.String.pipe(T.Label("session_id")),
     liveViewUrlExpiresInMs: S.optional(S.Number.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/browser-rendering/devtools/browser/{session_id}/json/list",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/browser-rendering/devtools/browser/{session_id}/json/list",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListDevtoolBrowserTargetsRequest",
 }) as any as S.Schema<ListDevtoolBrowserTargetsRequest>;
@@ -1331,7 +1388,7 @@ export const ListDevtoolBrowserTargetsResponse = /*@__PURE__*/ S.suspend(() =>
     devtoolsFrontendUrl: S.optional(S.String),
     title: S.optional(S.String),
     webSocketDebuggerUrl: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListDevtoolBrowserTargetsResponse",
 }) as any as S.Schema<ListDevtoolBrowserTargetsResponse>;
@@ -1347,13 +1404,15 @@ export const ListDevtoolSessionsRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     limit: S.optional(S.Number.pipe(T.Query())),
     offset: S.optional(S.Number.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/browser-rendering/devtools/session",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/browser-rendering/devtools/session",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListDevtoolSessionsRequest",
 }) as any as S.Schema<ListDevtoolSessionsRequest>;
@@ -1396,7 +1455,7 @@ export const ListDevtoolSessionsResponse = /*@__PURE__*/ S.suspend(() =>
     lastUpdated: S.optional(S.Number),
     startTime: S.optional(S.Number),
     webSocketDebuggerUrl: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListDevtoolSessionsResponse",
 }) as any as S.Schema<ListDevtoolSessionsResponse>;
@@ -1411,13 +1470,15 @@ export const ProtocolDevtoolBrowserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     sessionId: S.String.pipe(T.Label("session_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/browser-rendering/devtools/browser/{session_id}/json/protocol",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/browser-rendering/devtools/browser/{session_id}/json/protocol",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ProtocolDevtoolBrowserRequest",
 }) as any as S.Schema<ProtocolDevtoolBrowserRequest>;
@@ -1542,7 +1603,7 @@ export const ProtocolDevtoolBrowserResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domains: DevtoolsBrowserProtocolResponseDomainsList,
     version: S.optional(DevtoolsBrowserProtocolResponseVersion),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ProtocolDevtoolBrowserResponse",
 }) as any as S.Schema<ProtocolDevtoolBrowserResponse>;
@@ -1557,13 +1618,15 @@ export const VersionDevtoolBrowserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     sessionId: S.String.pipe(T.Label("session_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/browser-rendering/devtools/browser/{session_id}/json/version",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/browser-rendering/devtools/browser/{session_id}/json/version",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "VersionDevtoolBrowserRequest",
 }) as any as S.Schema<VersionDevtoolBrowserRequest>;
@@ -1591,7 +1654,7 @@ export const VersionDevtoolBrowserResponse = /*@__PURE__*/ S.suspend(() =>
     V8Version_: S.String.pipe(T.Body('"V8-Version"')),
     WebKitVersion_: S.String.pipe(T.Body('"WebKit-Version"')),
     webSocketDebuggerUrl: S.String,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "VersionDevtoolBrowserResponse",
 }) as any as S.Schema<VersionDevtoolBrowserResponse>;

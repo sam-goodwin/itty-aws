@@ -1,0 +1,10 @@
+{
+  "creationDate": "creation_date",
+  "customMetadata": "custom_metadata",
+  "httpMetadata": "http_metadata",
+  "lastModified": "last_modified",
+  "perPage": "per_page",
+  "queueId": "queue",
+  "resultInfo": "result_info",
+  "storageClass": "storage_class"
+}

@@ -14,6 +14,122 @@ import * as Retry from "../retry.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
+/** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
+const KEY_DICTIONARY: Record<string, string> = {
+  abrLevel: "abr_level",
+  allowedDestinationAddresses: "allowed_destination_addresses",
+  allowedSenderAddresses: "allowed_sender_addresses",
+  appId: "app_id",
+  authorEmail: "author_email",
+  authorId: "author_id",
+  bodyPart: "body_part",
+  bucketName: "bucket_name",
+  bytesRead: "bytes_read",
+  cache: "cache_options",
+  capnpSchema: "capnp_schema",
+  certId: "cert_id",
+  certificateId: "certificate_id",
+  className: "class_name",
+  compatibilityDate: "compatibility_date",
+  compatibilityFlags: "compatibility_flags",
+  contentBase64: "content_base64",
+  contentType: "content_type",
+  count: "_count",
+  countErrors: "_countErrors",
+  cpuMs: "cpu_ms",
+  createdOn: "created_on",
+  crossAccountGrant: "cross_account_grant",
+  crossVersionCache: "cross_version_cache",
+  databaseId: "database_id",
+  defaultUsageModel: "default_usage_model",
+  deletedClasses: "deleted_classes",
+  deliveryDelay: "delivery_delay",
+  destinationAddress: "destination_address",
+  destinationConf: "destination_conf",
+  dispatchNamespace: "dispatch_namespace",
+  documentationUrl: "documentation_url",
+  enableTimer: "enable_timer",
+  entryPoint: "entry_point",
+  environmentIsDefault: "environment_is_default",
+  environmentName: "environment_name",
+  errorMessage: "error_message",
+  exchangeUrl: "exchange_url",
+  expiresAt: "expires_at",
+  firstSeen: "_firstSeen",
+  fromScript: "from_script",
+  greenCompute: "green_compute",
+  hasAssets: "has_assets",
+  hasModules: "has_modules",
+  headSamplingRate: "head_sampling_rate",
+  headers: "_headers",
+  htmlHandling: "html_handling",
+  indexName: "index_name",
+  instanceName: "instance_name",
+  interval: "_interval",
+  invocationLogs: "invocation_logs",
+  keepAssets: "keep_assets",
+  keepBindings: "keep_bindings",
+  keyBase64: "key_base64",
+  keyJwk: "key_jwk",
+  lastAnalyzedAt: "last_analyzed_at",
+  lastComplete: "last_complete",
+  lastDeployedFrom: "last_deployed_from",
+  lastError: "last_error",
+  lastSeen: "_lastSeen",
+  mainModule: "main_module",
+  migrationTag: "migration_tag",
+  minimalMode: "minimal_mode",
+  mitigationTimeout: "mitigation_timeout",
+  modifiedOn: "modified_on",
+  namedHandlers: "named_handlers",
+  namespaceId: "namespace_id",
+  networkId: "network_id",
+  newClasses: "new_classes",
+  newSqliteClasses: "new_sqlite_classes",
+  newTag: "new_tag",
+  notFoundHandling: "not_found_handling",
+  oldName: "old_name",
+  oldTag: "old_tag",
+  perPage: "per_page",
+  placementMode: "placement_mode",
+  placementStatus: "placement_status",
+  previewToken: "preview_token",
+  previewsEnabled: "previews_enabled",
+  propagationPolicy: "propagation_policy",
+  queueName: "queue_name",
+  redirects: "_redirects",
+  renamedClasses: "renamed_classes",
+  resultInfo: "result_info",
+  rowsRead: "rows_read",
+  runWorkerFirst: "run_worker_first",
+  scriptName: "script_name",
+  scriptRuntime: "script_runtime",
+  secretName: "secret_name",
+  serveDirectly: "serve_directly",
+  serviceId: "service_id",
+  serviceName: "service_name",
+  startupTimeMs: "startup_time_ms",
+  storeId: "store_id",
+  streamingTailConsumers: "streaming_tail_consumers",
+  tailConsumers: "tail_consumers",
+  tailUrl: "tail_url",
+  totalCount: "total_count",
+  transferredClasses: "transferred_classes",
+  tunnelId: "tunnel_id",
+  usageModel: "usage_model",
+  versionId: "version_id",
+  versionTags: "version_tags",
+  workersAlias: "workers/alias",
+  workersDev: "workers_dev",
+  workersMessage: "workers/message",
+  workersTag: "workers/tag",
+  workersTriggeredBy: "workers/triggered_by",
+  workflowName: "workflow_name",
+  wranglerSessionConfig: "wrangler-session-config",
+  zoneId: "zone_id",
+  zoneName: "zone_name",
+};
+
 export class ContentTypeRequired extends T.applyErrorMatchers(
   S.TaggedErrorClass<ContentTypeRequired>()("ContentTypeRequired", {
     code: S.Number,
@@ -367,13 +483,15 @@ export const BulkUpdateScriptSecretsRequest = /*@__PURE__*/ S.suspend(() =>
         T.Body("version_tags"),
       ),
     ),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/accounts/{account_id}/workers/scripts/{script_name}/secrets-bulk",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/accounts/{account_id}/workers/scripts/{script_name}/secrets-bulk",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "BulkUpdateScriptSecretsRequest",
 }) as any as S.Schema<BulkUpdateScriptSecretsRequest>;
@@ -395,7 +513,7 @@ export const BulkUpdateScriptSecretsResponse = /*@__PURE__*/ S.suspend(() =>
     result: S.optional(
       ScriptsSecretsBulkUpdateResultMap.pipe(T.EnvelopePayload()),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "BulkUpdateScriptSecretsResponse",
 }) as any as S.Schema<BulkUpdateScriptSecretsResponse>;
@@ -410,13 +528,15 @@ export const CreateAssetUploadRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     base64: S.Boolean.pipe(T.Query()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/workers/assets/upload",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/workers/assets/upload",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateAssetUploadRequest",
 }) as any as S.Schema<CreateAssetUploadRequest>;
@@ -429,7 +549,7 @@ export interface CreateAssetUploadResponse {
 export const CreateAssetUploadResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     jwt: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateAssetUploadResponse",
 }) as any as S.Schema<CreateAssetUploadResponse>;
@@ -601,13 +721,15 @@ export const CreateBetaWorkerRequest = /*@__PURE__*/ S.suspend(() =>
     tailConsumers: S.optional(
       BetaWorkersCreateRequestTailConsumersList.pipe(T.Body("tail_consumers")),
     ),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/workers/workers",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/workers/workers",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateBetaWorkerRequest",
 }) as any as S.Schema<CreateBetaWorkerRequest>;
@@ -961,7 +1083,7 @@ export const CreateBetaWorkerResponse = /*@__PURE__*/ S.suspend(() =>
     ),
     updatedOn: S.String.pipe(T.Body("updated_on")),
     deployedOn: S.optional(S.String.pipe(T.Body("deployed_on"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateBetaWorkerResponse",
 }) as any as S.Schema<CreateBetaWorkerResponse>;
@@ -1477,13 +1599,15 @@ export const CreateBetaWorkerVersionRequest = /*@__PURE__*/ S.suspend(() =>
     usageModel: S.optional(
       BetaWorkersVersionsCreateRequestUsageModel.pipe(T.Body("usage_model")),
     ),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/workers/workers/{worker_id}/versions",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/workers/workers/{worker_id}/versions",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateBetaWorkerVersionRequest",
 }) as any as S.Schema<CreateBetaWorkerVersionRequest>;
@@ -2017,7 +2141,7 @@ export const CreateBetaWorkerVersionResponse = /*@__PURE__*/ S.suspend(() =>
     usageModel: S.optional(
       BetaWorkersVersionsCreateResponseUsageModel.pipe(T.Body("usage_model")),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateBetaWorkerVersionResponse",
 }) as any as S.Schema<CreateBetaWorkerVersionResponse>;
@@ -2079,13 +2203,15 @@ export const CreateObservabilityDestinationRequest = /*@__PURE__*/ S.suspend(
       enabled: S.Boolean,
       name: S.String,
       skipPreflightCheck: S.optional(S.Boolean),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/accounts/{account_id}/workers/observability/destinations",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "POST",
+          uri: "/accounts/{account_id}/workers/observability/destinations",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateObservabilityDestinationRequest",
 }) as any as S.Schema<CreateObservabilityDestinationRequest>;
@@ -2147,7 +2273,7 @@ export const CreateObservabilityDestinationResponse = /*@__PURE__*/ S.suspend(
       name: S.String,
       scripts: ObservabilityDestinationsCreateResponseScriptsList,
       slug: S.String,
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateObservabilityDestinationResponse",
 }) as any as S.Schema<CreateObservabilityDestinationResponse>;
@@ -2414,13 +2540,15 @@ export const CreateObservabilityQueryRequest = /*@__PURE__*/ S.suspend(() =>
     description: S.String,
     name: S.String,
     parameters: ObservabilityQueriesCreateRequestParameters,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/workers/observability/queries",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/workers/observability/queries",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateObservabilityQueryRequest",
 }) as any as S.Schema<CreateObservabilityQueryRequest>;
@@ -2699,7 +2827,7 @@ export const CreateObservabilityQueryResponse = /*@__PURE__*/ S.suspend(() =>
     parameters: ObservabilityQueriesCreateResponseParameters,
     updated: S.String,
     updatedBy: S.String,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateObservabilityQueryResponse",
 }) as any as S.Schema<CreateObservabilityQueryResponse>;
@@ -3034,13 +3162,15 @@ export const CreateObservabilitySharedQueryRequest = /*@__PURE__*/ S.suspend(
       offsetDirection: S.optional(S.String),
       parameters: S.optional(ObservabilitySharedQueriesCreateRequestParameters),
       view: S.optional(ObservabilitySharedQueriesCreateRequestView),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/accounts/{account_id}/workers/observability/shared/query",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "POST",
+          uri: "/accounts/{account_id}/workers/observability/shared/query",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateObservabilitySharedQueryRequest",
 }) as any as S.Schema<CreateObservabilitySharedQueryRequest>;
@@ -3054,7 +3184,7 @@ export const CreateObservabilitySharedQueryResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       id: S.String,
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateObservabilitySharedQueryResponse",
 }) as any as S.Schema<CreateObservabilitySharedQueryResponse>;
@@ -3072,13 +3202,15 @@ export const CreateRouteRequest = /*@__PURE__*/ S.suspend(() =>
     zoneId: S.String.pipe(T.Label("zone_id")),
     pattern: S.String,
     script: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/zones/{zone_id}/workers/routes",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/zones/{zone_id}/workers/routes",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateRouteRequest",
 }) as any as S.Schema<CreateRouteRequest>;
@@ -3097,7 +3229,7 @@ export const CreateRouteResponse = /*@__PURE__*/ S.suspend(() =>
     id: S.String,
     pattern: S.String,
     script: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateRouteResponse",
 }) as any as S.Schema<CreateRouteResponse>;
@@ -3124,13 +3256,15 @@ export const CreateScriptAssetUploadRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     scriptName: S.String.pipe(T.Label("script_name")),
     manifest: ScriptsAssetsUploadCreateRequestManifestMap,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/workers/scripts/{script_name}/assets-upload-session",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/workers/scripts/{script_name}/assets-upload-session",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateScriptAssetUploadRequest",
 }) as any as S.Schema<CreateScriptAssetUploadRequest>;
@@ -3152,7 +3286,7 @@ export const CreateScriptAssetUploadResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     buckets: S.optional(ScriptsAssetsUploadCreateResponseBucketsList),
     jwt: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateScriptAssetUploadResponse",
 }) as any as S.Schema<CreateScriptAssetUploadResponse>;
@@ -3220,13 +3354,15 @@ export const CreateScriptDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
     strategy: ScriptsDeploymentsCreateRequestStrategy,
     versions: ScriptsDeploymentsCreateRequestVersionsList,
     annotations: S.optional(ScriptsDeploymentsCreateRequestAnnotations),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/workers/scripts/{script_name}/deployments",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/workers/scripts/{script_name}/deployments",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateScriptDeploymentRequest",
 }) as any as S.Schema<CreateScriptDeploymentRequest>;
@@ -3294,7 +3430,7 @@ export const CreateScriptDeploymentResponse = /*@__PURE__*/ S.suspend(() =>
     versions: ScriptsDeploymentsCreateResponseVersionsList,
     annotations: S.optional(ScriptsDeploymentsCreateResponseAnnotations),
     authorEmail: S.optional(S.String.pipe(T.Body("author_email"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateScriptDeploymentResponse",
 }) as any as S.Schema<CreateScriptDeploymentResponse>;
@@ -3315,13 +3451,15 @@ export const CreateScriptSubdomainRequest = /*@__PURE__*/ S.suspend(() =>
     scriptName: S.String.pipe(T.Label("script_name")),
     enabled: S.Boolean,
     previewsEnabled: S.optional(S.Boolean.pipe(T.Body("previews_enabled"))),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/workers/scripts/{script_name}/subdomain",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/workers/scripts/{script_name}/subdomain",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateScriptSubdomainRequest",
 }) as any as S.Schema<CreateScriptSubdomainRequest>;
@@ -3337,7 +3475,7 @@ export const CreateScriptSubdomainResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.Boolean,
     previewsEnabled: S.Boolean.pipe(T.Body("previews_enabled")),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateScriptSubdomainResponse",
 }) as any as S.Schema<CreateScriptSubdomainResponse>;
@@ -3354,13 +3492,15 @@ export const CreateScriptTailRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     scriptName: S.String.pipe(T.Label("script_name")),
     body: S.Unknown,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/workers/scripts/{script_name}/tails",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/workers/scripts/{script_name}/tails",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateScriptTailRequest",
 }) as any as S.Schema<CreateScriptTailRequest>;
@@ -3377,7 +3517,7 @@ export const CreateScriptTailResponse = /*@__PURE__*/ S.suspend(() =>
     id: S.String,
     expiresAt: S.String.pipe(T.Body("expires_at")),
     url: S.String,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateScriptTailResponse",
 }) as any as S.Schema<CreateScriptTailResponse>;
@@ -3405,13 +3545,15 @@ export const CreateScriptVersionRequest = /*@__PURE__*/ S.suspend(() =>
         T.Query("bindings_inherit"),
       ),
     ),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/workers/scripts/{script_name}/versions",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/workers/scripts/{script_name}/versions",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateScriptVersionRequest",
 }) as any as S.Schema<CreateScriptVersionRequest>;
@@ -3784,7 +3926,7 @@ export const CreateScriptVersionResponse = /*@__PURE__*/ S.suspend(() =>
     metadata: S.optional(ScriptsVersionsCreateResponseMetadata),
     number: S.optional(S.Number),
     startupTimeMs: S.optional(S.Number.pipe(T.Body("startup_time_ms"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateScriptVersionResponse",
 }) as any as S.Schema<CreateScriptVersionResponse>;
@@ -3799,20 +3941,22 @@ export const DeleteBetaWorkerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     workerId: S.String.pipe(T.Label("worker_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/workers/workers/{worker_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/workers/workers/{worker_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteBetaWorkerRequest",
 }) as any as S.Schema<DeleteBetaWorkerRequest>;
 
 export interface DeleteBetaWorkerResponse {}
 export const DeleteBetaWorkerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
+  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteBetaWorkerResponse",
 }) as any as S.Schema<DeleteBetaWorkerResponse>;
@@ -3830,20 +3974,22 @@ export const DeleteBetaWorkerVersionRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     workerId: S.String.pipe(T.Label("worker_id")),
     versionId: S.String.pipe(T.Label("version_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/workers/workers/{worker_id}/versions/{version_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/workers/workers/{worker_id}/versions/{version_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteBetaWorkerVersionRequest",
 }) as any as S.Schema<DeleteBetaWorkerVersionRequest>;
 
 export interface DeleteBetaWorkerVersionResponse {}
 export const DeleteBetaWorkerVersionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
+  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteBetaWorkerVersionResponse",
 }) as any as S.Schema<DeleteBetaWorkerVersionResponse>;
@@ -3858,20 +4004,22 @@ export const DeleteDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     domainId: S.String.pipe(T.Label("domain_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/workers/domains/{domain_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/workers/domains/{domain_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteDomainRequest",
 }) as any as S.Schema<DeleteDomainRequest>;
 
 export interface DeleteDomainResponse {}
 export const DeleteDomainResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
+  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteDomainResponse",
 }) as any as S.Schema<DeleteDomainResponse>;
@@ -3885,13 +4033,15 @@ export const DeleteObservabilityDestinationRequest = /*@__PURE__*/ S.suspend(
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
       slug: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/accounts/{account_id}/workers/observability/destinations/{slug}",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "DELETE",
+          uri: "/accounts/{account_id}/workers/observability/destinations/{slug}",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteObservabilityDestinationRequest",
 }) as any as S.Schema<DeleteObservabilityDestinationRequest>;
@@ -3953,7 +4103,7 @@ export const DeleteObservabilityDestinationResponse = /*@__PURE__*/ S.suspend(
       name: S.String,
       scripts: ObservabilityDestinationsDeleteResponseScriptsList,
       slug: S.String,
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteObservabilityDestinationResponse",
 }) as any as S.Schema<DeleteObservabilityDestinationResponse>;
@@ -3968,13 +4118,15 @@ export const DeleteRouteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     routeId: S.String.pipe(T.Label("route_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/zones/{zone_id}/workers/routes/{route_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/zones/{zone_id}/workers/routes/{route_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteRouteRequest",
 }) as any as S.Schema<DeleteRouteRequest>;
@@ -3987,7 +4139,7 @@ export interface DeleteRouteResponse {
 export const DeleteRouteResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteRouteResponse",
 }) as any as S.Schema<DeleteRouteResponse>;
@@ -4005,13 +4157,15 @@ export const DeleteScriptRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     scriptName: S.String.pipe(T.Label("script_name")),
     force: S.optional(S.Boolean.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/workers/scripts/{script_name}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/workers/scripts/{script_name}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteScriptRequest",
 }) as any as S.Schema<DeleteScriptRequest>;
@@ -4023,7 +4177,7 @@ export interface DeleteScriptResponse {
 export const DeleteScriptResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteScriptResponse",
 }) as any as S.Schema<DeleteScriptResponse>;
@@ -4040,20 +4194,22 @@ export const DeleteScriptDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     scriptName: S.String.pipe(T.Label("script_name")),
     deploymentId: S.String.pipe(T.Label("deployment_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/workers/scripts/{script_name}/deployments/{deployment_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/workers/scripts/{script_name}/deployments/{deployment_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteScriptDeploymentRequest",
 }) as any as S.Schema<DeleteScriptDeploymentRequest>;
 
 export interface DeleteScriptDeploymentResponse {}
 export const DeleteScriptDeploymentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
+  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteScriptDeploymentResponse",
 }) as any as S.Schema<DeleteScriptDeploymentResponse>;
@@ -4074,13 +4230,15 @@ export const DeleteScriptSecretRequest = /*@__PURE__*/ S.suspend(() =>
     scriptName: S.String.pipe(T.Label("script_name")),
     secretName: S.String.pipe(T.Label("secret_name")),
     urlEncoded: S.optional(S.Boolean.pipe(T.Query("url_encoded"))),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/workers/scripts/{script_name}/secrets/{secret_name}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/workers/scripts/{script_name}/secrets/{secret_name}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteScriptSecretRequest",
 }) as any as S.Schema<DeleteScriptSecretRequest>;
@@ -4092,7 +4250,7 @@ export interface DeleteScriptSecretResponse {
 export const DeleteScriptSecretResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteScriptSecretResponse",
 }) as any as S.Schema<DeleteScriptSecretResponse>;
@@ -4107,13 +4265,15 @@ export const DeleteScriptSubdomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     scriptName: S.String.pipe(T.Label("script_name")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/workers/scripts/{script_name}/subdomain",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/workers/scripts/{script_name}/subdomain",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteScriptSubdomainRequest",
 }) as any as S.Schema<DeleteScriptSubdomainRequest>;
@@ -4129,7 +4289,7 @@ export const DeleteScriptSubdomainResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.Boolean,
     previewsEnabled: S.Boolean.pipe(T.Body("previews_enabled")),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteScriptSubdomainResponse",
 }) as any as S.Schema<DeleteScriptSubdomainResponse>;
@@ -4147,20 +4307,22 @@ export const DeleteScriptTailRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     scriptName: S.String.pipe(T.Label("script_name")),
     id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/workers/scripts/{script_name}/tails/{id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/workers/scripts/{script_name}/tails/{id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteScriptTailRequest",
 }) as any as S.Schema<DeleteScriptTailRequest>;
 
 export interface DeleteScriptTailResponse {}
 export const DeleteScriptTailResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
+  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteScriptTailResponse",
 }) as any as S.Schema<DeleteScriptTailResponse>;
@@ -4172,20 +4334,22 @@ export interface DeleteSubdomainRequest {
 export const DeleteSubdomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/workers/subdomain",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/workers/subdomain",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteSubdomainRequest",
 }) as any as S.Schema<DeleteSubdomainRequest>;
 
 export interface DeleteSubdomainResponse {}
 export const DeleteSubdomainResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
+  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteSubdomainResponse",
 }) as any as S.Schema<DeleteSubdomainResponse>;
@@ -4197,13 +4361,15 @@ export interface GetAccountSettingRequest {
 export const GetAccountSettingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/workers/account-settings",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/workers/account-settings",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetAccountSettingRequest",
 }) as any as S.Schema<GetAccountSettingRequest>;
@@ -4217,7 +4383,7 @@ export const GetAccountSettingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     defaultUsageModel: S.optional(S.String.pipe(T.Body("default_usage_model"))),
     greenCompute: S.optional(S.Boolean.pipe(T.Body("green_compute"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetAccountSettingResponse",
 }) as any as S.Schema<GetAccountSettingResponse>;
@@ -4232,13 +4398,15 @@ export const GetBetaWorkerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     workerId: S.String.pipe(T.Label("worker_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/workers/workers/{worker_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/workers/workers/{worker_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetBetaWorkerRequest",
 }) as any as S.Schema<GetBetaWorkerRequest>;
@@ -4589,7 +4757,7 @@ export const GetBetaWorkerResponse = /*@__PURE__*/ S.suspend(() =>
     ),
     updatedOn: S.String.pipe(T.Body("updated_on")),
     deployedOn: S.optional(S.String.pipe(T.Body("deployed_on"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetBetaWorkerResponse",
 }) as any as S.Schema<GetBetaWorkerResponse>;
@@ -4613,13 +4781,15 @@ export const GetBetaWorkerVersionRequest = /*@__PURE__*/ S.suspend(() =>
     workerId: S.String.pipe(T.Label("worker_id")),
     versionId: S.String.pipe(T.Label("version_id")),
     include: S.optional(BetaWorkersVersionsGetRequestInclude.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/workers/workers/{worker_id}/versions/{version_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/workers/workers/{worker_id}/versions/{version_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetBetaWorkerVersionRequest",
 }) as any as S.Schema<GetBetaWorkerVersionRequest>;
@@ -5147,7 +5317,7 @@ export const GetBetaWorkerVersionResponse = /*@__PURE__*/ S.suspend(() =>
     usageModel: S.optional(
       BetaWorkersVersionsGetResponseUsageModel.pipe(T.Body("usage_model")),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetBetaWorkerVersionResponse",
 }) as any as S.Schema<GetBetaWorkerVersionResponse>;
@@ -5162,13 +5332,15 @@ export const GetDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     domainId: S.String.pipe(T.Label("domain_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/workers/domains/{domain_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/workers/domains/{domain_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDomainRequest",
 }) as any as S.Schema<GetDomainRequest>;
@@ -5199,7 +5371,7 @@ export const GetDomainResponse = /*@__PURE__*/ S.suspend(() =>
     service: S.String,
     zoneId: S.String.pipe(T.Body("zone_id")),
     zoneName: S.String.pipe(T.Body("zone_name")),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDomainResponse",
 }) as any as S.Schema<GetDomainResponse>;
@@ -5223,13 +5395,15 @@ export const GetObservabilitySharedQueryRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     id: S.String.pipe(T.Label()),
     view: S.optional(ObservabilitySharedQueriesGetRequestView.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/workers/observability/shared/query/{id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/workers/observability/shared/query/{id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetObservabilitySharedQueryRequest",
 }) as any as S.Schema<GetObservabilitySharedQueryRequest>;
@@ -6458,7 +6632,7 @@ export const GetObservabilitySharedQueryResponse = /*@__PURE__*/ S.suspend(() =>
       ObservabilitySharedQueriesGetResponseInvocationsMap,
     ),
     traces: S.optional(ObservabilitySharedQueriesGetResponseTracesList),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetObservabilitySharedQueryResponse",
 }) as any as S.Schema<GetObservabilitySharedQueryResponse>;
@@ -6473,13 +6647,15 @@ export const GetRouteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     routeId: S.String.pipe(T.Label("route_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/workers/routes/{route_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/workers/routes/{route_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetRouteRequest",
 }) as any as S.Schema<GetRouteRequest>;
@@ -6498,7 +6674,7 @@ export const GetRouteResponse = /*@__PURE__*/ S.suspend(() =>
     id: S.String,
     pattern: S.String,
     script: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetRouteResponse",
 }) as any as S.Schema<GetRouteResponse>;
@@ -6513,20 +6689,22 @@ export const GetScriptRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     scriptName: S.String.pipe(T.Label("script_name")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/workers/scripts/{script_name}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/workers/scripts/{script_name}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetScriptRequest",
 }) as any as S.Schema<GetScriptRequest>;
 
 export interface GetScriptResponse {}
 export const GetScriptResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
+  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetScriptResponse",
 }) as any as S.Schema<GetScriptResponse>;
@@ -6541,20 +6719,22 @@ export const GetScriptContentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     scriptName: S.String.pipe(T.Label("script_name")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/workers/scripts/{script_name}/content/v2",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/workers/scripts/{script_name}/content/v2",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetScriptContentRequest",
 }) as any as S.Schema<GetScriptContentRequest>;
 
 export interface GetScriptContentResponse {}
 export const GetScriptContentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
+  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetScriptContentResponse",
 }) as any as S.Schema<GetScriptContentResponse>;
@@ -6571,13 +6751,15 @@ export const GetScriptDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     scriptName: S.String.pipe(T.Label("script_name")),
     deploymentId: S.String.pipe(T.Label("deployment_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/workers/scripts/{script_name}/deployments/{deployment_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/workers/scripts/{script_name}/deployments/{deployment_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetScriptDeploymentRequest",
 }) as any as S.Schema<GetScriptDeploymentRequest>;
@@ -6644,7 +6826,7 @@ export const GetScriptDeploymentResponse = /*@__PURE__*/ S.suspend(() =>
     versions: ScriptsDeploymentsGetResponseVersionsList,
     annotations: S.optional(ScriptsDeploymentsGetResponseAnnotations),
     authorEmail: S.optional(S.String.pipe(T.Body("author_email"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetScriptDeploymentResponse",
 }) as any as S.Schema<GetScriptDeploymentResponse>;
@@ -6659,13 +6841,15 @@ export const GetScriptScheduleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     scriptName: S.String.pipe(T.Label("script_name")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/workers/scripts/{script_name}/schedules",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/workers/scripts/{script_name}/schedules",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetScriptScheduleRequest",
 }) as any as S.Schema<GetScriptScheduleRequest>;
@@ -6699,7 +6883,7 @@ export interface GetScriptScheduleResponse {
 export const GetScriptScheduleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     schedules: ScriptsSchedulesGetResponseSchedulesList,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetScriptScheduleResponse",
 }) as any as S.Schema<GetScriptScheduleResponse>;
@@ -6715,13 +6899,15 @@ export const GetScriptScriptAndVersionSettingRequest = /*@__PURE__*/ S.suspend(
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
       scriptName: S.String.pipe(T.Label("script_name")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/accounts/{account_id}/workers/scripts/{script_name}/settings",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "GET",
+          uri: "/accounts/{account_id}/workers/scripts/{script_name}/settings",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetScriptScriptAndVersionSettingRequest",
 }) as any as S.Schema<GetScriptScriptAndVersionSettingRequest>;
@@ -7229,7 +7415,7 @@ export const GetScriptScriptAndVersionSettingResponse = /*@__PURE__*/ S.suspend(
           T.Body("usage_model"),
         ),
       ),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetScriptScriptAndVersionSettingResponse",
 }) as any as S.Schema<GetScriptScriptAndVersionSettingResponse>;
@@ -7250,13 +7436,15 @@ export const GetScriptSecretRequest = /*@__PURE__*/ S.suspend(() =>
     scriptName: S.String.pipe(T.Label("script_name")),
     secretName: S.String.pipe(T.Label("secret_name")),
     urlEncoded: S.optional(S.Boolean.pipe(T.Query("url_encoded"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/workers/scripts/{script_name}/secrets/{secret_name}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/workers/scripts/{script_name}/secrets/{secret_name}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetScriptSecretRequest",
 }) as any as S.Schema<GetScriptSecretRequest>;
@@ -7274,7 +7462,7 @@ export const GetScriptSecretResponse = /*@__PURE__*/ S.suspend(() =>
     SecretKeyObjectAlgorithmFormatName4More__: S.Unknown.pipe(
       T.Body("SecretKey object { algorithm, format, name, 4 more }"),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetScriptSecretResponse",
 }) as any as S.Schema<GetScriptSecretResponse>;
@@ -7289,13 +7477,15 @@ export const GetScriptSettingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     scriptName: S.String.pipe(T.Label("script_name")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/workers/scripts/{script_name}/script-settings",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/workers/scripts/{script_name}/script-settings",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetScriptSettingRequest",
 }) as any as S.Schema<GetScriptSettingRequest>;
@@ -7453,7 +7643,7 @@ export const GetScriptSettingResponse = /*@__PURE__*/ S.suspend(() =>
         T.Body("tail_consumers"),
       ),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetScriptSettingResponse",
 }) as any as S.Schema<GetScriptSettingResponse>;
@@ -7468,13 +7658,15 @@ export const GetScriptSubdomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     scriptName: S.String.pipe(T.Label("script_name")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/workers/scripts/{script_name}/subdomain",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/workers/scripts/{script_name}/subdomain",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetScriptSubdomainRequest",
 }) as any as S.Schema<GetScriptSubdomainRequest>;
@@ -7490,7 +7682,7 @@ export const GetScriptSubdomainResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.Boolean,
     previewsEnabled: S.Boolean.pipe(T.Body("previews_enabled")),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetScriptSubdomainResponse",
 }) as any as S.Schema<GetScriptSubdomainResponse>;
@@ -7505,13 +7697,15 @@ export const GetScriptTailRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     scriptName: S.String.pipe(T.Label("script_name")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/workers/scripts/{script_name}/tails",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/workers/scripts/{script_name}/tails",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetScriptTailRequest",
 }) as any as S.Schema<GetScriptTailRequest>;
@@ -7528,7 +7722,7 @@ export const GetScriptTailResponse = /*@__PURE__*/ S.suspend(() =>
     id: S.String,
     expiresAt: S.String.pipe(T.Body("expires_at")),
     url: S.String,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetScriptTailResponse",
 }) as any as S.Schema<GetScriptTailResponse>;
@@ -7545,13 +7739,15 @@ export const GetScriptVersionRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     scriptName: S.String.pipe(T.Label("script_name")),
     versionId: S.String.pipe(T.Label("version_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/workers/scripts/{script_name}/versions/{version_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/workers/scripts/{script_name}/versions/{version_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetScriptVersionRequest",
 }) as any as S.Schema<GetScriptVersionRequest>;
@@ -7918,7 +8114,7 @@ export const GetScriptVersionResponse = /*@__PURE__*/ S.suspend(() =>
     id: S.optional(S.String),
     metadata: S.optional(ScriptsVersionsGetResponseMetadata),
     number: S.optional(S.Number),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetScriptVersionResponse",
 }) as any as S.Schema<GetScriptVersionResponse>;
@@ -7930,13 +8126,15 @@ export interface GetSubdomainRequest {
 export const GetSubdomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/workers/subdomain",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/workers/subdomain",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetSubdomainRequest",
 }) as any as S.Schema<GetSubdomainRequest>;
@@ -7948,7 +8146,7 @@ export interface GetSubdomainResponse {
 export const GetSubdomainResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subdomain: S.String,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetSubdomainResponse",
 }) as any as S.Schema<GetSubdomainResponse>;
@@ -8083,13 +8281,15 @@ export const KeysObservabilityTelemetryRequest = /*@__PURE__*/ S.suspend(() =>
     limit: S.optional(S.Number),
     needle: S.optional(ObservabilityTelemetryKeysRequestNeedle),
     to: S.optional(S.Number),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/workers/observability/telemetry/keys",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/workers/observability/telemetry/keys",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "KeysObservabilityTelemetryRequest",
 }) as any as S.Schema<KeysObservabilityTelemetryRequest>;
@@ -8133,7 +8333,7 @@ export const KeysObservabilityTelemetryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: ObservabilityTelemetryKeysResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "KeysObservabilityTelemetryResponse",
 }) as any as S.Schema<KeysObservabilityTelemetryResponse>;
@@ -8170,13 +8370,15 @@ export const ListBetaWorkersRequest = /*@__PURE__*/ S.suspend(() =>
     ),
     page: S.optional(S.Number.pipe(T.Query())),
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/workers/workers",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/workers/workers",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListBetaWorkersRequest",
 }) as any as S.Schema<ListBetaWorkersRequest>;
@@ -8549,7 +8751,7 @@ export const ListBetaWorkersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: BetaWorkersListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListBetaWorkersResponse",
 }) as any as S.Schema<ListBetaWorkersResponse>;
@@ -8570,13 +8772,15 @@ export const ListBetaWorkerVersionsRequest = /*@__PURE__*/ S.suspend(() =>
     workerId: S.String.pipe(T.Label("worker_id")),
     page: S.optional(S.Number.pipe(T.Query())),
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/workers/workers/{worker_id}/versions",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/workers/workers/{worker_id}/versions",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListBetaWorkerVersionsRequest",
 }) as any as S.Schema<ListBetaWorkerVersionsRequest>;
@@ -9130,7 +9334,7 @@ export const ListBetaWorkerVersionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: BetaWorkersVersionsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListBetaWorkerVersionsResponse",
 }) as any as S.Schema<ListBetaWorkerVersionsResponse>;
@@ -9157,13 +9361,15 @@ export const ListDomainsRequest = /*@__PURE__*/ S.suspend(() =>
     service: S.optional(S.String.pipe(T.Query())),
     zoneId: S.optional(S.String.pipe(T.Query("zone_id"))),
     zoneName: S.optional(S.String.pipe(T.Query("zone_name"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/workers/domains",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/workers/domains",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListDomainsRequest",
 }) as any as S.Schema<ListDomainsRequest>;
@@ -9213,7 +9419,7 @@ export const ListDomainsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: DomainsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListDomainsResponse",
 }) as any as S.Schema<ListDomainsResponse>;
@@ -9250,13 +9456,15 @@ export const ListObservabilityDestinationsRequest = /*@__PURE__*/ S.suspend(
       ),
       page: S.optional(S.Number.pipe(T.Query())),
       perPage: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/accounts/{account_id}/workers/observability/destinations",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "GET",
+          uri: "/accounts/{account_id}/workers/observability/destinations",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListObservabilityDestinationsRequest",
 }) as any as S.Schema<ListObservabilityDestinationsRequest>;
@@ -9366,7 +9574,7 @@ export const ListObservabilityDestinationsResponse = /*@__PURE__*/ S.suspend(
     S.Struct({
       result: ObservabilityDestinationsListResultList.pipe(T.EnvelopePayload()),
       resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListObservabilityDestinationsResponse",
 }) as any as S.Schema<ListObservabilityDestinationsResponse>;
@@ -9397,13 +9605,15 @@ export const ListObservabilityQueriesRequest = /*@__PURE__*/ S.suspend(() =>
     orderBy: S.optional(ObservabilityQueriesListRequestOrderBy.pipe(T.Query())),
     page: S.optional(S.Number.pipe(T.Query())),
     perPage: S.optional(S.Number.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/workers/observability/queries",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/workers/observability/queries",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListObservabilityQueriesRequest",
 }) as any as S.Schema<ListObservabilityQueriesRequest>;
@@ -9702,7 +9912,7 @@ export const ListObservabilityQueriesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: ObservabilityQueriesListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListObservabilityQueriesResponse",
 }) as any as S.Schema<ListObservabilityQueriesResponse>;
@@ -9714,13 +9924,15 @@ export interface ListRoutesRequest {
 export const ListRoutesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/workers/routes",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/workers/routes",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListRoutesRequest",
 }) as any as S.Schema<ListRoutesRequest>;
@@ -9758,7 +9970,7 @@ export const ListRoutesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: RoutesListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListRoutesResponse",
 }) as any as S.Schema<ListRoutesResponse>;
@@ -9773,13 +9985,15 @@ export const ListScriptDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     scriptName: S.String.pipe(T.Label("script_name")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/workers/scripts/{script_name}/deployments",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/workers/scripts/{script_name}/deployments",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListScriptDeploymentsRequest",
 }) as any as S.Schema<ListScriptDeploymentsRequest>;
@@ -9869,7 +10083,7 @@ export interface ListScriptDeploymentsResponse {
 export const ListScriptDeploymentsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deployments: ScriptsDeploymentsListResponseDeploymentsList,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListScriptDeploymentsResponse",
 }) as any as S.Schema<ListScriptDeploymentsResponse>;
@@ -9884,13 +10098,15 @@ export const ListScriptsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     tags: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/workers/scripts",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/workers/scripts",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListScriptsRequest",
 }) as any as S.Schema<ListScriptsRequest>;
@@ -10270,7 +10486,7 @@ export const ListScriptsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: ScriptsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListScriptsResponse",
 }) as any as S.Schema<ListScriptsResponse>;
@@ -10285,13 +10501,15 @@ export const ListScriptSecretsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     scriptName: S.String.pipe(T.Label("script_name")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/workers/scripts/{script_name}/secrets",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/workers/scripts/{script_name}/secrets",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListScriptSecretsRequest",
 }) as any as S.Schema<ListScriptSecretsRequest>;
@@ -10328,7 +10546,7 @@ export const ListScriptSecretsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: ScriptsSecretsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListScriptSecretsResponse",
 }) as any as S.Schema<ListScriptSecretsResponse>;
@@ -10352,13 +10570,15 @@ export const ListScriptVersionsRequest = /*@__PURE__*/ S.suspend(() =>
     deployable: S.optional(S.Boolean.pipe(T.Query())),
     page: S.optional(S.Number.pipe(T.Query())),
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/workers/scripts/{script_name}/versions",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/workers/scripts/{script_name}/versions",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListScriptVersionsRequest",
 }) as any as S.Schema<ListScriptVersionsRequest>;
@@ -10430,7 +10650,7 @@ export interface ListScriptVersionsResponse {
 export const ListScriptVersionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: S.optional(ScriptsVersionsListResponseItemsList),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListScriptVersionsResponse",
 }) as any as S.Schema<ListScriptVersionsResponse>;
@@ -10444,13 +10664,15 @@ export const LiveTailHeartbeatObservabilityTelemetryRequest =
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
       scriptId: S.optional(S.String),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/accounts/{account_id}/workers/observability/telemetry/live-tail/heartbeat",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "POST",
+          uri: "/accounts/{account_id}/workers/observability/telemetry/live-tail/heartbeat",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "LiveTailHeartbeatObservabilityTelemetryRequest",
   }) as any as S.Schema<LiveTailHeartbeatObservabilityTelemetryRequest>;
@@ -10463,7 +10685,7 @@ export const LiveTailHeartbeatObservabilityTelemetryResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "LiveTailHeartbeatObservabilityTelemetryResponse",
   }) as any as S.Schema<LiveTailHeartbeatObservabilityTelemetryResponse>;
@@ -10523,13 +10745,15 @@ export const LiveTailObservabilityTelemetryRequest = /*@__PURE__*/ S.suspend(
       ),
       filters: S.optional(ObservabilityTelemetryLiveTailRequestFiltersList),
       scriptId: S.optional(S.String),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/accounts/{account_id}/workers/observability/telemetry/live-tail",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "POST",
+          uri: "/accounts/{account_id}/workers/observability/telemetry/live-tail",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "LiveTailObservabilityTelemetryRequest",
 }) as any as S.Schema<LiveTailObservabilityTelemetryRequest>;
@@ -10543,7 +10767,7 @@ export const LiveTailObservabilityTelemetryResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       wsUrl: S.String,
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "LiveTailObservabilityTelemetryResponse",
 }) as any as S.Schema<LiveTailObservabilityTelemetryResponse>;
@@ -10716,13 +10940,15 @@ export const PatchBetaWorkerRequest = /*@__PURE__*/ S.suspend(() =>
     tailConsumers: BetaWorkersEditRequestTailConsumersList.pipe(
       T.Body("tail_consumers"),
     ),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/accounts/{account_id}/workers/workers/{worker_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/accounts/{account_id}/workers/workers/{worker_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchBetaWorkerRequest",
 }) as any as S.Schema<PatchBetaWorkerRequest>;
@@ -11075,7 +11301,7 @@ export const PatchBetaWorkerResponse = /*@__PURE__*/ S.suspend(() =>
     ),
     updatedOn: S.String.pipe(T.Body("updated_on")),
     deployedOn: S.optional(S.String.pipe(T.Body("deployed_on"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchBetaWorkerResponse",
 }) as any as S.Schema<PatchBetaWorkerResponse>;
@@ -11124,13 +11350,15 @@ export const PatchObservabilityDestinationRequest = /*@__PURE__*/ S.suspend(
       slug: S.String.pipe(T.Label()),
       configuration: ObservabilityDestinationsUpdateRequestConfiguration,
       enabled: S.Boolean,
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "/accounts/{account_id}/workers/observability/destinations/{slug}",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "PATCH",
+          uri: "/accounts/{account_id}/workers/observability/destinations/{slug}",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchObservabilityDestinationRequest",
 }) as any as S.Schema<PatchObservabilityDestinationRequest>;
@@ -11192,7 +11420,7 @@ export const PatchObservabilityDestinationResponse = /*@__PURE__*/ S.suspend(
       name: S.String,
       scripts: ObservabilityDestinationsUpdateResponseScriptsList,
       slug: S.String,
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchObservabilityDestinationResponse",
 }) as any as S.Schema<PatchObservabilityDestinationResponse>;
@@ -11208,13 +11436,15 @@ export const PatchScriptScriptAndVersionSettingRequest =
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
       scriptName: S.String.pipe(T.Label("script_name")),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "/accounts/{account_id}/workers/scripts/{script_name}/settings",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "PATCH",
+          uri: "/accounts/{account_id}/workers/scripts/{script_name}/settings",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "PatchScriptScriptAndVersionSettingRequest",
   }) as any as S.Schema<PatchScriptScriptAndVersionSettingRequest>;
@@ -11725,7 +11955,7 @@ export const PatchScriptScriptAndVersionSettingResponse =
           T.Body("usage_model"),
         ),
       ),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "PatchScriptScriptAndVersionSettingResponse",
   }) as any as S.Schema<PatchScriptScriptAndVersionSettingResponse>;
@@ -11888,13 +12118,15 @@ export const PatchScriptSettingRequest = /*@__PURE__*/ S.suspend(() =>
         T.Body("tail_consumers"),
       ),
     ),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/accounts/{account_id}/workers/scripts/{script_name}/script-settings",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/accounts/{account_id}/workers/scripts/{script_name}/script-settings",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchScriptSettingRequest",
 }) as any as S.Schema<PatchScriptSettingRequest>;
@@ -12052,7 +12284,7 @@ export const PatchScriptSettingResponse = /*@__PURE__*/ S.suspend(() =>
         T.Body("tail_consumers"),
       ),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchScriptSettingResponse",
 }) as any as S.Schema<PatchScriptSettingResponse>;
@@ -12068,13 +12300,15 @@ export const PutAccountSettingRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     defaultUsageModel: S.optional(S.String.pipe(T.Body("default_usage_model"))),
     greenCompute: S.optional(S.Boolean.pipe(T.Body("green_compute"))),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/workers/account-settings",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/workers/account-settings",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutAccountSettingRequest",
 }) as any as S.Schema<PutAccountSettingRequest>;
@@ -12088,7 +12322,7 @@ export const PutAccountSettingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     defaultUsageModel: S.optional(S.String.pipe(T.Body("default_usage_model"))),
     greenCompute: S.optional(S.Boolean.pipe(T.Body("green_compute"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutAccountSettingResponse",
 }) as any as S.Schema<PutAccountSettingResponse>;
@@ -12115,13 +12349,15 @@ export const PutDomainRequest = /*@__PURE__*/ S.suspend(() =>
     environment: S.optional(S.String),
     zoneId: S.optional(S.String.pipe(T.Body("zone_id"))),
     zoneName: S.optional(S.String.pipe(T.Body("zone_name"))),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/workers/domains",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/workers/domains",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutDomainRequest",
 }) as any as S.Schema<PutDomainRequest>;
@@ -12152,7 +12388,7 @@ export const PutDomainResponse = /*@__PURE__*/ S.suspend(() =>
     service: S.String,
     zoneId: S.String.pipe(T.Body("zone_id")),
     zoneName: S.String.pipe(T.Body("zone_name")),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutDomainResponse",
 }) as any as S.Schema<PutDomainResponse>;
@@ -13435,14 +13671,16 @@ export const PutScriptRequest = /*@__PURE__*/ S.suspend(() =>
       }),
     ),
     files: S.optional(S.Unknown.pipe(T.FormDataFile())),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/workers/scripts/{script_name}",
-      code: 200,
-      contentType: "multipart",
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/workers/scripts/{script_name}",
+        code: 200,
+        contentType: "multipart",
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutScriptRequest",
 }) as any as S.Schema<PutScriptRequest>;
@@ -13782,7 +14020,7 @@ export const PutScriptResponse = /*@__PURE__*/ S.suspend(() =>
     usageModel: S.optional(
       ScriptsUpdateResponseUsageModel.pipe(T.Body("usage_model")),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutScriptResponse",
 }) as any as S.Schema<PutScriptResponse>;
@@ -13805,13 +14043,15 @@ export const PutScriptContentRequest = /*@__PURE__*/ S.suspend(() =>
     CFWORKERMAINMODULEPART_: S.optional(
       S.String.pipe(T.Header('"CF-WORKER-MAIN-MODULE-PART"')),
     ),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/workers/scripts/{script_name}/content",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/workers/scripts/{script_name}/content",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutScriptContentRequest",
 }) as any as S.Schema<PutScriptContentRequest>;
@@ -14165,7 +14405,7 @@ export const PutScriptContentResponse = /*@__PURE__*/ S.suspend(() =>
     usageModel: S.optional(
       ScriptsContentUpdateResponseUsageModel.pipe(T.Body("usage_model")),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutScriptContentResponse",
 }) as any as S.Schema<PutScriptContentResponse>;
@@ -14204,13 +14444,15 @@ export const PutScriptScheduleRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     scriptName: S.String.pipe(T.Label("script_name")),
     body: ScriptsSchedulesUpdateRequestBodyList,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/workers/scripts/{script_name}/schedules",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/workers/scripts/{script_name}/schedules",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutScriptScheduleRequest",
 }) as any as S.Schema<PutScriptScheduleRequest>;
@@ -14245,7 +14487,7 @@ export interface PutScriptScheduleResponse {
 export const PutScriptScheduleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     schedules: ScriptsSchedulesUpdateResponseSchedulesList,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutScriptScheduleResponse",
 }) as any as S.Schema<PutScriptScheduleResponse>;
@@ -14280,13 +14522,15 @@ export const PutScriptSecretRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     scriptName: S.String.pipe(T.Label("script_name")),
     body: ScriptsSecretsUpdateRequestBody,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/workers/scripts/{script_name}/secrets",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/workers/scripts/{script_name}/secrets",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutScriptSecretRequest",
 }) as any as S.Schema<PutScriptSecretRequest>;
@@ -14304,7 +14548,7 @@ export const PutScriptSecretResponse = /*@__PURE__*/ S.suspend(() =>
     SecretKeyObjectAlgorithmFormatName4More__: S.Unknown.pipe(
       T.Body("SecretKey object { algorithm, format, name, 4 more }"),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutScriptSecretResponse",
 }) as any as S.Schema<PutScriptSecretResponse>;
@@ -14318,13 +14562,15 @@ export const PutSubdomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     subdomain: S.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/workers/subdomain",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/workers/subdomain",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutSubdomainRequest",
 }) as any as S.Schema<PutSubdomainRequest>;
@@ -14336,7 +14582,7 @@ export interface PutSubdomainResponse {
 export const PutSubdomainResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subdomain: S.String,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutSubdomainResponse",
 }) as any as S.Schema<PutSubdomainResponse>;
@@ -14670,13 +14916,15 @@ export const QueryObservabilityTelemetryRequest = /*@__PURE__*/ S.suspend(() =>
     offsetDirection: S.optional(S.String),
     parameters: S.optional(ObservabilityTelemetryQueryRequestParameters),
     view: S.optional(ObservabilityTelemetryQueryRequestView),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/workers/observability/telemetry/query",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/workers/observability/telemetry/query",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "QueryObservabilityTelemetryRequest",
 }) as any as S.Schema<QueryObservabilityTelemetryRequest>;
@@ -15899,7 +16147,7 @@ export const QueryObservabilityTelemetryResponse = /*@__PURE__*/ S.suspend(() =>
     events: S.optional(ObservabilityTelemetryQueryResponseEvents),
     invocations: S.optional(ObservabilityTelemetryQueryResponseInvocationsMap),
     traces: S.optional(ObservabilityTelemetryQueryResponseTracesList),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "QueryObservabilityTelemetryResponse",
 }) as any as S.Schema<QueryObservabilityTelemetryResponse>;
@@ -15933,13 +16181,15 @@ export const SearchScriptRequest = /*@__PURE__*/ S.suspend(() =>
     orderBy: S.optional(ScriptsSearchRequestOrderBy.pipe(T.Query("order_by"))),
     page: S.optional(S.Number.pipe(T.Query())),
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/workers/scripts-search",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/workers/scripts-search",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "SearchScriptRequest",
 }) as any as S.Schema<SearchScriptRequest>;
@@ -15988,7 +16238,7 @@ export interface SearchScriptResponse {
 export const SearchScriptResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(ScriptsSearchResultList.pipe(T.EnvelopePayload())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "SearchScriptResponse",
 }) as any as S.Schema<SearchScriptResponse>;
@@ -16163,13 +16413,15 @@ export const UpdateBetaWorkerRequest = /*@__PURE__*/ S.suspend(() =>
     tailConsumers: S.optional(
       BetaWorkersUpdateRequestTailConsumersList.pipe(T.Body("tail_consumers")),
     ),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/workers/workers/{worker_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/workers/workers/{worker_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateBetaWorkerRequest",
 }) as any as S.Schema<UpdateBetaWorkerRequest>;
@@ -16523,7 +16775,7 @@ export const UpdateBetaWorkerResponse = /*@__PURE__*/ S.suspend(() =>
     ),
     updatedOn: S.String.pipe(T.Body("updated_on")),
     deployedOn: S.optional(S.String.pipe(T.Body("deployed_on"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateBetaWorkerResponse",
 }) as any as S.Schema<UpdateBetaWorkerResponse>;
@@ -16544,13 +16796,15 @@ export const UpdateRouteRequest = /*@__PURE__*/ S.suspend(() =>
     routeId: S.String.pipe(T.Label("route_id")),
     pattern: S.String,
     script: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/zones/{zone_id}/workers/routes/{route_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/zones/{zone_id}/workers/routes/{route_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateRouteRequest",
 }) as any as S.Schema<UpdateRouteRequest>;
@@ -16569,7 +16823,7 @@ export const UpdateRouteResponse = /*@__PURE__*/ S.suspend(() =>
     id: S.String,
     pattern: S.String,
     script: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateRouteResponse",
 }) as any as S.Schema<UpdateRouteResponse>;
@@ -16688,13 +16942,15 @@ export const ValuesObservabilityTelemetryRequest = /*@__PURE__*/ S.suspend(() =>
     filters: S.optional(ObservabilityTelemetryValuesRequestFiltersList),
     limit: S.optional(S.Number),
     needle: S.optional(ObservabilityTelemetryValuesRequestNeedle),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/workers/observability/telemetry/values",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/workers/observability/telemetry/values",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ValuesObservabilityTelemetryRequest",
 }) as any as S.Schema<ValuesObservabilityTelemetryRequest>;
@@ -16758,7 +17014,7 @@ export const ValuesObservabilityTelemetryResponse = /*@__PURE__*/ S.suspend(
     S.Struct({
       result: ObservabilityTelemetryValuesResultList.pipe(T.EnvelopePayload()),
       resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ValuesObservabilityTelemetryResponse",
 }) as any as S.Schema<ValuesObservabilityTelemetryResponse>;

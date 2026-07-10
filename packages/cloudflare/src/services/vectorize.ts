@@ -14,6 +14,12 @@ import * as Retry from "../retry.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
+/** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
+const KEY_DICTIONARY: Record<string, string> = {
+  createdOn: "created_on",
+  modifiedOn: "modified_on",
+};
+
 export class Gone extends T.applyErrorMatchers(
   S.TaggedErrorClass<Gone>()("Gone", {
     code: S.Number,
@@ -113,13 +119,15 @@ export const CreateIndexRequest = /*@__PURE__*/ S.suspend(() =>
     config: IndexesCreateRequestConfig,
     name: S.String,
     description: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/vectorize/v2/indexes",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/vectorize/v2/indexes",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateIndexRequest",
 }) as any as S.Schema<CreateIndexRequest>;
@@ -164,7 +172,7 @@ export const CreateIndexResponse = /*@__PURE__*/ S.suspend(() =>
     description: S.optional(S.String),
     modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
     name: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateIndexResponse",
 }) as any as S.Schema<CreateIndexResponse>;
@@ -192,13 +200,15 @@ export const CreateIndexMetadataIndexRequest = /*@__PURE__*/ S.suspend(() =>
     indexName: S.String.pipe(T.Label("index_name")),
     indexType: IndexesMetadataIndexCreateRequestIndexType,
     propertyName: S.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/vectorize/v2/indexes/{index_name}/metadata_index/create",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/vectorize/v2/indexes/{index_name}/metadata_index/create",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateIndexMetadataIndexRequest",
 }) as any as S.Schema<CreateIndexMetadataIndexRequest>;
@@ -211,7 +221,7 @@ export interface CreateIndexMetadataIndexResponse {
 export const CreateIndexMetadataIndexResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mutationId: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateIndexMetadataIndexResponse",
 }) as any as S.Schema<CreateIndexMetadataIndexResponse>;
@@ -233,13 +243,15 @@ export const DeleteByIdsIndexRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     indexName: S.String.pipe(T.Label("index_name")),
     ids: S.optional(IndexesDeleteByIdsRequestIdsList),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/vectorize/v2/indexes/{index_name}/delete_by_ids",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/vectorize/v2/indexes/{index_name}/delete_by_ids",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteByIdsIndexRequest",
 }) as any as S.Schema<DeleteByIdsIndexRequest>;
@@ -252,7 +264,7 @@ export interface DeleteByIdsIndexResponse {
 export const DeleteByIdsIndexResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mutationId: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteByIdsIndexResponse",
 }) as any as S.Schema<DeleteByIdsIndexResponse>;
@@ -266,13 +278,15 @@ export const DeleteIndexRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     indexName: S.String.pipe(T.Label("index_name")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/vectorize/v2/indexes/{index_name}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/vectorize/v2/indexes/{index_name}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteIndexRequest",
 }) as any as S.Schema<DeleteIndexRequest>;
@@ -286,7 +300,7 @@ export const DeleteIndexResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unknown: S.Unknown,
     string: S.Unknown,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteIndexResponse",
 }) as any as S.Schema<DeleteIndexResponse>;
@@ -303,13 +317,15 @@ export const DeleteIndexMetadataIndexRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     indexName: S.String.pipe(T.Label("index_name")),
     propertyName: S.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/vectorize/v2/indexes/{index_name}/metadata_index/delete",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/vectorize/v2/indexes/{index_name}/metadata_index/delete",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteIndexMetadataIndexRequest",
 }) as any as S.Schema<DeleteIndexMetadataIndexRequest>;
@@ -322,7 +338,7 @@ export interface DeleteIndexMetadataIndexResponse {
 export const DeleteIndexMetadataIndexResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mutationId: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteIndexMetadataIndexResponse",
 }) as any as S.Schema<DeleteIndexMetadataIndexResponse>;
@@ -344,13 +360,15 @@ export const GetByIdsIndexRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     indexName: S.String.pipe(T.Label("index_name")),
     ids: S.optional(IndexesGetByIdsRequestIdsList),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/vectorize/v2/indexes/{index_name}/get_by_ids",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/vectorize/v2/indexes/{index_name}/get_by_ids",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetByIdsIndexRequest",
 }) as any as S.Schema<GetByIdsIndexRequest>;
@@ -362,7 +380,7 @@ export interface GetByIdsIndexResponse {
 export const GetByIdsIndexResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetByIdsIndexResponse",
 }) as any as S.Schema<GetByIdsIndexResponse>;
@@ -376,13 +394,15 @@ export const GetIndexRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     indexName: S.String.pipe(T.Label("index_name")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/vectorize/v2/indexes/{index_name}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/vectorize/v2/indexes/{index_name}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetIndexRequest",
 }) as any as S.Schema<GetIndexRequest>;
@@ -427,7 +447,7 @@ export const GetIndexResponse = /*@__PURE__*/ S.suspend(() =>
     description: S.optional(S.String),
     modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
     name: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetIndexResponse",
 }) as any as S.Schema<GetIndexResponse>;
@@ -441,13 +461,15 @@ export const InfoIndexRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     indexName: S.String.pipe(T.Label("index_name")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/vectorize/v2/indexes/{index_name}/info",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/vectorize/v2/indexes/{index_name}/info",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "InfoIndexRequest",
 }) as any as S.Schema<InfoIndexRequest>;
@@ -469,7 +491,7 @@ export const InfoIndexResponse = /*@__PURE__*/ S.suspend(() =>
     processedUpToDatetime: S.optional(S.String),
     processedUpToMutation: S.optional(S.String),
     vectorCount: S.optional(S.Number),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "InfoIndexResponse",
 }) as any as S.Schema<InfoIndexResponse>;
@@ -496,13 +518,15 @@ export const InsertIndexRequest = /*@__PURE__*/ S.suspend(() =>
         T.Query('"unparsable-behavior"'),
       ),
     ),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/vectorize/v2/indexes/{index_name}/insert",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/vectorize/v2/indexes/{index_name}/insert",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "InsertIndexRequest",
 }) as any as S.Schema<InsertIndexRequest>;
@@ -515,7 +539,7 @@ export interface InsertIndexResponse {
 export const InsertIndexResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mutationId: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "InsertIndexResponse",
 }) as any as S.Schema<InsertIndexResponse>;
@@ -527,13 +551,15 @@ export interface ListIndexesRequest {
 export const ListIndexesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/vectorize/v2/indexes",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/vectorize/v2/indexes",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListIndexesRequest",
 }) as any as S.Schema<ListIndexesRequest>;
@@ -597,7 +623,7 @@ export const ListIndexesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: IndexesListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListIndexesResponse",
 }) as any as S.Schema<ListIndexesResponse>;
@@ -611,13 +637,15 @@ export const ListIndexMetadataIndexesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     indexName: S.String.pipe(T.Label("index_name")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/vectorize/v2/indexes/{index_name}/metadata_index/list",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/vectorize/v2/indexes/{index_name}/metadata_index/list",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListIndexMetadataIndexesRequest",
 }) as any as S.Schema<ListIndexMetadataIndexesRequest>;
@@ -665,7 +693,7 @@ export const ListIndexMetadataIndexesResponse = /*@__PURE__*/ S.suspend(() =>
     metadataIndexes: S.optional(
       IndexesMetadataIndexListResponseMetadataIndexesList,
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListIndexMetadataIndexesResponse",
 }) as any as S.Schema<ListIndexMetadataIndexesResponse>;
@@ -685,13 +713,15 @@ export const ListVectorsIndexRequest = /*@__PURE__*/ S.suspend(() =>
     indexName: S.String.pipe(T.Label("index_name")),
     count: S.optional(S.Number.pipe(T.Query())),
     cursor: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/vectorize/v2/indexes/{index_name}/list",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/vectorize/v2/indexes/{index_name}/list",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListVectorsIndexRequest",
 }) as any as S.Schema<ListVectorsIndexRequest>;
@@ -738,7 +768,7 @@ export const ListVectorsIndexResponse = /*@__PURE__*/ S.suspend(() =>
     vectors: IndexesListVectorsResponseVectorsList,
     cursorExpirationTimestamp: S.optional(S.String),
     nextCursor: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListVectorsIndexResponse",
 }) as any as S.Schema<ListVectorsIndexResponse>;
@@ -779,13 +809,15 @@ export const QueryIndexRequest = /*@__PURE__*/ S.suspend(() =>
     returnMetadata: S.optional(IndexesQueryRequestReturnMetadata),
     returnValues: S.optional(S.Boolean),
     topK: S.optional(S.Number),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/vectorize/v2/indexes/{index_name}/query",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/vectorize/v2/indexes/{index_name}/query",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "QueryIndexRequest",
 }) as any as S.Schema<QueryIndexRequest>;
@@ -832,7 +864,7 @@ export const QueryIndexResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     matches: S.optional(IndexesQueryResponseMatchesList),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "QueryIndexResponse",
 }) as any as S.Schema<QueryIndexResponse>;
@@ -859,13 +891,15 @@ export const UpsertIndexRequest = /*@__PURE__*/ S.suspend(() =>
         T.Query('"unparsable-behavior"'),
       ),
     ),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/vectorize/v2/indexes/{index_name}/upsert",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/vectorize/v2/indexes/{index_name}/upsert",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpsertIndexRequest",
 }) as any as S.Schema<UpsertIndexRequest>;
@@ -878,7 +912,7 @@ export interface UpsertIndexResponse {
 export const UpsertIndexResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mutationId: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpsertIndexResponse",
 }) as any as S.Schema<UpsertIndexResponse>;

@@ -14,6 +14,17 @@ import * as Retry from "../retry.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
+/** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
+const KEY_DICTIONARY: Record<string, string> = {
+  expirationTtl: "expiration_ttl",
+  perPage: "per_page",
+  resultInfo: "result_info",
+  successfulKeyCount: "successful_key_count",
+  supportsUrlEncoding: "supports_url_encoding",
+  totalCount: "total_count",
+  unsuccessfulKeys: "unsuccessful_keys",
+};
+
 export class InvalidExpirationTtl extends T.applyErrorMatchers(
   S.TaggedErrorClass<InvalidExpirationTtl>()("InvalidExpirationTtl", {
     code: S.Number,
@@ -109,13 +120,15 @@ export const BulkDeleteNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     namespaceId: S.String.pipe(T.Label("namespace_id")),
     body: NamespacesBulkDeleteRequestBodyList,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/storage/kv/namespaces/{namespace_id}/bulk/delete",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/storage/kv/namespaces/{namespace_id}/bulk/delete",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "BulkDeleteNamespacesRequest",
 }) as any as S.Schema<BulkDeleteNamespacesRequest>;
@@ -143,7 +156,7 @@ export const BulkDeleteNamespacesResponse = /*@__PURE__*/ S.suspend(() =>
         T.Body("unsuccessful_keys"),
       ),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "BulkDeleteNamespacesResponse",
 }) as any as S.Schema<BulkDeleteNamespacesResponse>;
@@ -175,13 +188,15 @@ export const BulkGetNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
     keys: NamespacesBulkGetRequestKeysList,
     type: S.optional(NamespacesBulkGetRequestType),
     withMetadata: S.optional(S.Boolean),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/storage/kv/namespaces/{namespace_id}/bulk/get",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/storage/kv/namespaces/{namespace_id}/bulk/get",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "BulkGetNamespacesRequest",
 }) as any as S.Schema<BulkGetNamespacesRequest>;
@@ -199,7 +214,7 @@ export const BulkGetNamespacesResponse = /*@__PURE__*/ S.suspend(() =>
     WorkersKVBulkGetResultWithMetadataObjectValues__: S.Unknown.pipe(
       T.Body("WorkersKVBulkGetResultWithMetadata object { values }"),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "BulkGetNamespacesResponse",
 }) as any as S.Schema<BulkGetNamespacesResponse>;
@@ -249,13 +264,15 @@ export const BulkPutNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     namespaceId: S.String.pipe(T.Label("namespace_id")),
     body: NamespacesBulkUpdateRequestBodyList,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/storage/kv/namespaces/{namespace_id}/bulk",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/storage/kv/namespaces/{namespace_id}/bulk",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "BulkPutNamespacesRequest",
 }) as any as S.Schema<BulkPutNamespacesRequest>;
@@ -283,7 +300,7 @@ export const BulkPutNamespacesResponse = /*@__PURE__*/ S.suspend(() =>
         T.Body("unsuccessful_keys"),
       ),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "BulkPutNamespacesResponse",
 }) as any as S.Schema<BulkPutNamespacesResponse>;
@@ -298,13 +315,15 @@ export const CreateNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     title: S.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/storage/kv/namespaces",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/storage/kv/namespaces",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateNamespaceRequest",
 }) as any as S.Schema<CreateNamespaceRequest>;
@@ -325,7 +344,7 @@ export const CreateNamespaceResponse = /*@__PURE__*/ S.suspend(() =>
     supportsUrlEncoding: S.optional(
       S.Boolean.pipe(T.Body("supports_url_encoding")),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateNamespaceResponse",
 }) as any as S.Schema<CreateNamespaceResponse>;
@@ -340,20 +359,22 @@ export const DeleteNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     namespaceId: S.String.pipe(T.Label("namespace_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/storage/kv/namespaces/{namespace_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/storage/kv/namespaces/{namespace_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteNamespaceRequest",
 }) as any as S.Schema<DeleteNamespaceRequest>;
 
 export interface DeleteNamespaceResponse {}
 export const DeleteNamespaceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
+  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteNamespaceResponse",
 }) as any as S.Schema<DeleteNamespaceResponse>;
@@ -371,20 +392,22 @@ export const DeleteNamespaceValueRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     namespaceId: S.String.pipe(T.Label("namespace_id")),
     keyName: S.String.pipe(T.Label("key_name")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/storage/kv/namespaces/{namespace_id}/values/{key_name}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/storage/kv/namespaces/{namespace_id}/values/{key_name}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteNamespaceValueRequest",
 }) as any as S.Schema<DeleteNamespaceValueRequest>;
 
 export interface DeleteNamespaceValueResponse {}
 export const DeleteNamespaceValueResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
+  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteNamespaceValueResponse",
 }) as any as S.Schema<DeleteNamespaceValueResponse>;
@@ -399,13 +422,15 @@ export const GetNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     namespaceId: S.String.pipe(T.Label("namespace_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/storage/kv/namespaces/{namespace_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/storage/kv/namespaces/{namespace_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetNamespaceRequest",
 }) as any as S.Schema<GetNamespaceRequest>;
@@ -426,7 +451,7 @@ export const GetNamespaceResponse = /*@__PURE__*/ S.suspend(() =>
     supportsUrlEncoding: S.optional(
       S.Boolean.pipe(T.Body("supports_url_encoding")),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetNamespaceResponse",
 }) as any as S.Schema<GetNamespaceResponse>;
@@ -444,13 +469,15 @@ export const GetNamespaceMetadataRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     namespaceId: S.String.pipe(T.Label("namespace_id")),
     keyName: S.String.pipe(T.Label("key_name")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/storage/kv/namespaces/{namespace_id}/metadata/{key_name}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/storage/kv/namespaces/{namespace_id}/metadata/{key_name}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetNamespaceMetadataRequest",
 }) as any as S.Schema<GetNamespaceMetadataRequest>;
@@ -462,7 +489,7 @@ export interface GetNamespaceMetadataResponse {
 export const GetNamespaceMetadataResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetNamespaceMetadataResponse",
 }) as any as S.Schema<GetNamespaceMetadataResponse>;
@@ -480,20 +507,22 @@ export const GetNamespaceValueRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     namespaceId: S.String.pipe(T.Label("namespace_id")),
     keyName: S.String.pipe(T.Label("key_name")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/storage/kv/namespaces/{namespace_id}/values/{key_name}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/storage/kv/namespaces/{namespace_id}/values/{key_name}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetNamespaceValueRequest",
 }) as any as S.Schema<GetNamespaceValueRequest>;
 
 export interface GetNamespaceValueResponse {}
 export const GetNamespaceValueResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
+  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetNamespaceValueResponse",
 }) as any as S.Schema<GetNamespaceValueResponse>;
@@ -517,13 +546,15 @@ export const ListNamespaceKeysRequest = /*@__PURE__*/ S.suspend(() =>
     cursor: S.optional(S.String.pipe(T.Query())),
     limit: S.optional(S.Number.pipe(T.Query())),
     prefix: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/storage/kv/namespaces/{namespace_id}/keys",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/storage/kv/namespaces/{namespace_id}/keys",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListNamespaceKeysRequest",
 }) as any as S.Schema<ListNamespaceKeysRequest>;
@@ -561,7 +592,7 @@ export const ListNamespaceKeysResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: NamespacesKeysListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListNamespaceKeysResponse",
 }) as any as S.Schema<ListNamespaceKeysResponse>;
@@ -591,13 +622,15 @@ export const ListNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
     order: S.optional(NamespacesListRequestOrder.pipe(T.Query())),
     page: S.optional(S.Number.pipe(T.Query())),
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/storage/kv/namespaces",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/storage/kv/namespaces",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListNamespacesRequest",
 }) as any as S.Schema<ListNamespacesRequest>;
@@ -637,7 +670,7 @@ export const ListNamespacesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: NamespacesListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListNamespacesResponse",
 }) as any as S.Schema<ListNamespacesResponse>;
@@ -659,13 +692,15 @@ export const NamespacesKeysBulkDeleteRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     namespaceId: S.String.pipe(T.Label("namespace_id")),
     body: NamespacesKeysBulkDeleteRequestBodyList,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/storage/kv/namespaces/{namespace_id}/bulk/delete",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/storage/kv/namespaces/{namespace_id}/bulk/delete",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "NamespacesKeysBulkDeleteRequest",
 }) as any as S.Schema<NamespacesKeysBulkDeleteRequest>;
@@ -693,7 +728,7 @@ export const NamespacesKeysBulkDeleteResponse = /*@__PURE__*/ S.suspend(() =>
         T.Body("unsuccessful_keys"),
       ),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "NamespacesKeysBulkDeleteResponse",
 }) as any as S.Schema<NamespacesKeysBulkDeleteResponse>;
@@ -725,13 +760,15 @@ export const NamespacesKeysBulkGetRequest = /*@__PURE__*/ S.suspend(() =>
     keys: NamespacesKeysBulkGetRequestKeysList,
     type: S.optional(NamespacesKeysBulkGetRequestType),
     withMetadata: S.optional(S.Boolean),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/storage/kv/namespaces/{namespace_id}/bulk/get",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/storage/kv/namespaces/{namespace_id}/bulk/get",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "NamespacesKeysBulkGetRequest",
 }) as any as S.Schema<NamespacesKeysBulkGetRequest>;
@@ -749,7 +786,7 @@ export const NamespacesKeysBulkGetResponse = /*@__PURE__*/ S.suspend(() =>
     WorkersKVBulkGetResultWithMetadataObjectValues__: S.Unknown.pipe(
       T.Body("WorkersKVBulkGetResultWithMetadata object { values }"),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "NamespacesKeysBulkGetResponse",
 }) as any as S.Schema<NamespacesKeysBulkGetResponse>;
@@ -800,13 +837,15 @@ export const NamespacesKeysBulkUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     namespaceId: S.String.pipe(T.Label("namespace_id")),
     body: NamespacesKeysBulkUpdateRequestBodyList,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/storage/kv/namespaces/{namespace_id}/bulk",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/storage/kv/namespaces/{namespace_id}/bulk",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "NamespacesKeysBulkUpdateRequest",
 }) as any as S.Schema<NamespacesKeysBulkUpdateRequest>;
@@ -834,7 +873,7 @@ export const NamespacesKeysBulkUpdateResponse = /*@__PURE__*/ S.suspend(() =>
         T.Body("unsuccessful_keys"),
       ),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "NamespacesKeysBulkUpdateResponse",
 }) as any as S.Schema<NamespacesKeysBulkUpdateResponse>;
@@ -858,20 +897,22 @@ export const PutNamespaceValueRequest = /*@__PURE__*/ S.suspend(() =>
     keyName: S.String.pipe(T.Label("key_name")),
     expiration: S.optional(S.Number.pipe(T.Query())),
     expirationTtl: S.optional(S.Number.pipe(T.Query("expiration_ttl"))),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/storage/kv/namespaces/{namespace_id}/values/{key_name}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/storage/kv/namespaces/{namespace_id}/values/{key_name}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutNamespaceValueRequest",
 }) as any as S.Schema<PutNamespaceValueRequest>;
 
 export interface PutNamespaceValueResponse {}
 export const PutNamespaceValueResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
+  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutNamespaceValueResponse",
 }) as any as S.Schema<PutNamespaceValueResponse>;
@@ -889,13 +930,15 @@ export const UpdateNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     namespaceId: S.String.pipe(T.Label("namespace_id")),
     title: S.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/storage/kv/namespaces/{namespace_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/storage/kv/namespaces/{namespace_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateNamespaceRequest",
 }) as any as S.Schema<UpdateNamespaceRequest>;
@@ -916,7 +959,7 @@ export const UpdateNamespaceResponse = /*@__PURE__*/ S.suspend(() =>
     supportsUrlEncoding: S.optional(
       S.Boolean.pipe(T.Body("supports_url_encoding")),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateNamespaceResponse",
 }) as any as S.Schema<UpdateNamespaceResponse>;

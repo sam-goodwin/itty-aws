@@ -14,6 +14,15 @@ import * as Retry from "../retry.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
+/** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
+const KEY_DICTIONARY: Record<string, string> = {
+  accountId: "account_id",
+  perPage: "per_page",
+  resultInfo: "result_info",
+  storeId: "store_id",
+  totalCount: "total_count",
+};
+
 export class InvalidAccountId extends T.applyErrorMatchers(
   S.TaggedErrorClass<InvalidAccountId>()("InvalidAccountId", {
     code: S.Number,
@@ -96,13 +105,15 @@ export const BulkDeleteStoreSecretsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     storeId: S.String.pipe(T.Label("store_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/secrets_store/stores/{store_id}/secrets",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/secrets_store/stores/{store_id}/secrets",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "BulkDeleteStoreSecretsRequest",
 }) as any as S.Schema<BulkDeleteStoreSecretsRequest>;
@@ -114,7 +125,7 @@ export interface BulkDeleteStoreSecretsResponse {
 export const BulkDeleteStoreSecretsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "BulkDeleteStoreSecretsResponse",
 }) as any as S.Schema<BulkDeleteStoreSecretsResponse>;
@@ -129,13 +140,15 @@ export const CreateStoreRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     name: S.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/secrets_store/stores",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/secrets_store/stores",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateStoreRequest",
 }) as any as S.Schema<CreateStoreRequest>;
@@ -160,7 +173,7 @@ export const CreateStoreResponse = /*@__PURE__*/ S.suspend(() =>
     modified: S.String,
     name: S.String,
     accountId: S.optional(S.String.pipe(T.Body("account_id"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateStoreResponse",
 }) as any as S.Schema<CreateStoreResponse>;
@@ -210,13 +223,15 @@ export const CreateStoreSecretRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     storeId: S.String.pipe(T.Label("store_id")),
     body: StoresSecretsCreateRequestBodyList,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/secrets_store/stores/{store_id}/secrets",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/secrets_store/stores/{store_id}/secrets",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateStoreSecretRequest",
 }) as any as S.Schema<CreateStoreSecretRequest>;
@@ -280,7 +295,7 @@ export const CreateStoreSecretResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: StoresSecretsCreateResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateStoreSecretResponse",
 }) as any as S.Schema<CreateStoreSecretResponse>;
@@ -298,13 +313,15 @@ export const DeleteStoreRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     storeId: S.String.pipe(T.Label("store_id")),
     force: S.optional(S.Boolean.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/secrets_store/stores/{store_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/secrets_store/stores/{store_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteStoreRequest",
 }) as any as S.Schema<DeleteStoreRequest>;
@@ -316,7 +333,7 @@ export interface DeleteStoreResponse {
 export const DeleteStoreResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteStoreResponse",
 }) as any as S.Schema<DeleteStoreResponse>;
@@ -334,13 +351,15 @@ export const DeleteStoreSecretRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     storeId: S.String.pipe(T.Label("store_id")),
     secretId: S.String.pipe(T.Label("secret_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/secrets_store/stores/{store_id}/secrets/{secret_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/secrets_store/stores/{store_id}/secrets/{secret_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteStoreSecretRequest",
 }) as any as S.Schema<DeleteStoreSecretRequest>;
@@ -352,7 +371,7 @@ export interface DeleteStoreSecretResponse {
 export const DeleteStoreSecretResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteStoreSecretResponse",
 }) as any as S.Schema<DeleteStoreSecretResponse>;
@@ -384,13 +403,15 @@ export const DuplicateStoreSecretRequest = /*@__PURE__*/ S.suspend(() =>
     name: S.String,
     scopes: StoresSecretsDuplicateRequestScopesList,
     comment: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/secrets_store/stores/{store_id}/secrets/{secret_id}/duplicate",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/secrets_store/stores/{store_id}/secrets/{secret_id}/duplicate",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DuplicateStoreSecretRequest",
 }) as any as S.Schema<DuplicateStoreSecretRequest>;
@@ -435,7 +456,7 @@ export const DuplicateStoreSecretResponse = /*@__PURE__*/ S.suspend(() =>
     storeId: S.String.pipe(T.Body("store_id")),
     comment: S.optional(S.String),
     scopes: S.optional(StoresSecretsDuplicateResponseScopesList),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DuplicateStoreSecretResponse",
 }) as any as S.Schema<DuplicateStoreSecretResponse>;
@@ -447,13 +468,15 @@ export interface GetQuotaRequest {
 export const GetQuotaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/secrets_store/quota",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/secrets_store/quota",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetQuotaRequest",
 }) as any as S.Schema<GetQuotaRequest>;
@@ -480,7 +503,7 @@ export interface GetQuotaResponse {
 export const GetQuotaResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     secrets: QuotaGetResponseSecrets,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetQuotaResponse",
 }) as any as S.Schema<GetQuotaResponse>;
@@ -495,13 +518,15 @@ export const GetStoreRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     storeId: S.String.pipe(T.Label("store_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/secrets_store/stores/{store_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/secrets_store/stores/{store_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetStoreRequest",
 }) as any as S.Schema<GetStoreRequest>;
@@ -526,7 +551,7 @@ export const GetStoreResponse = /*@__PURE__*/ S.suspend(() =>
     modified: S.String,
     name: S.String,
     accountId: S.optional(S.String.pipe(T.Body("account_id"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetStoreResponse",
 }) as any as S.Schema<GetStoreResponse>;
@@ -544,13 +569,15 @@ export const GetStoreSecretRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     storeId: S.String.pipe(T.Label("store_id")),
     secretId: S.String.pipe(T.Label("secret_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/secrets_store/stores/{store_id}/secrets/{secret_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/secrets_store/stores/{store_id}/secrets/{secret_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetStoreSecretRequest",
 }) as any as S.Schema<GetStoreSecretRequest>;
@@ -595,7 +622,7 @@ export const GetStoreSecretResponse = /*@__PURE__*/ S.suspend(() =>
     storeId: S.String.pipe(T.Body("store_id")),
     comment: S.optional(S.String),
     scopes: S.optional(StoresSecretsGetResponseScopesList),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetStoreSecretResponse",
 }) as any as S.Schema<GetStoreSecretResponse>;
@@ -629,13 +656,15 @@ export const ListStoresRequest = /*@__PURE__*/ S.suspend(() =>
     order: S.optional(StoresListRequestOrder.pipe(T.Query())),
     page: S.optional(S.Number.pipe(T.Query())),
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/secrets_store/stores",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/secrets_store/stores",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListStoresRequest",
 }) as any as S.Schema<ListStoresRequest>;
@@ -679,7 +708,7 @@ export const ListStoresResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: StoresListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListStoresResponse",
 }) as any as S.Schema<ListStoresResponse>;
@@ -727,13 +756,15 @@ export const ListStoreSecretsRequest = /*@__PURE__*/ S.suspend(() =>
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
     scopes: S.optional(StoresSecretsListRequestScopesList.pipe(T.Query())),
     search: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/secrets_store/stores/{store_id}/secrets",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/secrets_store/stores/{store_id}/secrets",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListStoreSecretsRequest",
 }) as any as S.Schema<ListStoreSecretsRequest>;
@@ -797,7 +828,7 @@ export const ListStoreSecretsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: StoresSecretsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListStoreSecretsResponse",
 }) as any as S.Schema<ListStoreSecretsResponse>;
@@ -829,13 +860,15 @@ export const PatchStoreSecretRequest = /*@__PURE__*/ S.suspend(() =>
     comment: S.optional(S.String),
     scopes: S.optional(StoresSecretsEditRequestScopesList),
     value: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/accounts/{account_id}/secrets_store/stores/{store_id}/secrets/{secret_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/accounts/{account_id}/secrets_store/stores/{store_id}/secrets/{secret_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchStoreSecretRequest",
 }) as any as S.Schema<PatchStoreSecretRequest>;
@@ -880,7 +913,7 @@ export const PatchStoreSecretResponse = /*@__PURE__*/ S.suspend(() =>
     storeId: S.String.pipe(T.Body("store_id")),
     comment: S.optional(S.String),
     scopes: S.optional(StoresSecretsEditResponseScopesList),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchStoreSecretResponse",
 }) as any as S.Schema<PatchStoreSecretResponse>;

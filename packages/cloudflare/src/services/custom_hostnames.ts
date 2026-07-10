@@ -14,6 +14,41 @@ import * as Retry from "../retry.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
+/** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
+const KEY_DICTIONARY: Record<string, string> = {
+  bundleMethod: "bundle_method",
+  certificateAuthority: "certificate_authority",
+  cloudflareBranding: "cloudflare_branding",
+  cnameTarget: "cname_target",
+  createdAt: "created_at",
+  customCertBundle: "custom_cert_bundle",
+  customCertificate: "custom_certificate",
+  customCsrId: "custom_csr_id",
+  customKey: "custom_key",
+  customMetadata: "custom_metadata",
+  customOriginServer: "custom_origin_server",
+  customOriginSni: "custom_origin_sni",
+  dcvDelegationRecords: "dcv_delegation_records",
+  earlyHints: "early_hints",
+  expiresOn: "expires_on",
+  httpBody: "http_body",
+  httpUrl: "http_url",
+  minTlsVersion: "min_tls_version",
+  ownershipVerification: "ownership_verification",
+  ownershipVerificationHttp: "ownership_verification_http",
+  perPage: "per_page",
+  resultInfo: "result_info",
+  serialNumber: "serial_number",
+  totalCount: "total_count",
+  txtName: "txt_name",
+  txtValue: "txt_value",
+  updatedAt: "updated_at",
+  uploadedOn: "uploaded_on",
+  validationErrors: "validation_errors",
+  validationRecords: "validation_records",
+  verificationErrors: "verification_errors",
+};
+
 export class CustomHostnameNotFound extends T.applyErrorMatchers(
   S.TaggedErrorClass<CustomHostnameNotFound>()("CustomHostnameNotFound", {
     code: S.Number,
@@ -200,13 +235,15 @@ export const CreateCustomHostnameRequest = /*@__PURE__*/ S.suspend(() =>
       CreateRequestCustomMetadataMap.pipe(T.Body("custom_metadata")),
     ),
     ssl: S.optional(CreateRequestSsl),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/zones/{zone_id}/custom_hostnames",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/zones/{zone_id}/custom_hostnames",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateCustomHostnameRequest",
 }) as any as S.Schema<CreateCustomHostnameRequest>;
@@ -569,7 +606,7 @@ export const CreateCustomHostnameResponse = /*@__PURE__*/ S.suspend(() =>
     verificationErrors: S.optional(
       CreateResponseVerificationErrorsList.pipe(T.Body("verification_errors")),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateCustomHostnameResponse",
 }) as any as S.Schema<CreateCustomHostnameResponse>;
@@ -591,13 +628,15 @@ export const DeleteCertificatePackCertificateRequest = /*@__PURE__*/ S.suspend(
       customHostnameId: S.String.pipe(T.Label("custom_hostname_id")),
       certificatePackId: S.String.pipe(T.Label("certificate_pack_id")),
       certificateId: S.String.pipe(T.Label("certificate_id")),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/zones/{zone_id}/custom_hostnames/{custom_hostname_id}/certificate_pack/{certificate_pack_id}/certificates/{certificate_id}",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "DELETE",
+          uri: "/zones/{zone_id}/custom_hostnames/{custom_hostname_id}/certificate_pack/{certificate_pack_id}/certificates/{certificate_id}",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteCertificatePackCertificateRequest",
 }) as any as S.Schema<DeleteCertificatePackCertificateRequest>;
@@ -611,7 +650,7 @@ export const DeleteCertificatePackCertificateResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       id: S.optional(S.String),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteCertificatePackCertificateResponse",
 }) as any as S.Schema<DeleteCertificatePackCertificateResponse>;
@@ -626,13 +665,15 @@ export const DeleteCustomHostnameRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     customHostnameId: S.String.pipe(T.Label("custom_hostname_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/zones/{zone_id}/custom_hostnames/{custom_hostname_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/zones/{zone_id}/custom_hostnames/{custom_hostname_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteCustomHostnameRequest",
 }) as any as S.Schema<DeleteCustomHostnameRequest>;
@@ -645,7 +686,7 @@ export interface DeleteCustomHostnameResponse {
 export const DeleteCustomHostnameResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteCustomHostnameResponse",
 }) as any as S.Schema<DeleteCustomHostnameResponse>;
@@ -657,13 +698,15 @@ export interface DeleteFallbackOriginRequest {
 export const DeleteFallbackOriginRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/zones/{zone_id}/custom_hostnames/fallback_origin",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/zones/{zone_id}/custom_hostnames/fallback_origin",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteFallbackOriginRequest",
 }) as any as S.Schema<DeleteFallbackOriginRequest>;
@@ -700,7 +743,7 @@ export const DeleteFallbackOriginResponse = /*@__PURE__*/ S.suspend(() =>
     origin: S.optional(S.String),
     status: S.optional(FallbackOriginDeleteResponseStatus),
     updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteFallbackOriginResponse",
 }) as any as S.Schema<DeleteFallbackOriginResponse>;
@@ -715,13 +758,15 @@ export const GetCustomHostnameRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     customHostnameId: S.String.pipe(T.Label("custom_hostname_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/custom_hostnames/{custom_hostname_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/custom_hostnames/{custom_hostname_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetCustomHostnameRequest",
 }) as any as S.Schema<GetCustomHostnameRequest>;
@@ -1078,7 +1123,7 @@ export const GetCustomHostnameResponse = /*@__PURE__*/ S.suspend(() =>
     verificationErrors: S.optional(
       GetResponseVerificationErrorsList.pipe(T.Body("verification_errors")),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetCustomHostnameResponse",
 }) as any as S.Schema<GetCustomHostnameResponse>;
@@ -1090,13 +1135,15 @@ export interface GetFallbackOriginRequest {
 export const GetFallbackOriginRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/custom_hostnames/fallback_origin",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/custom_hostnames/fallback_origin",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetFallbackOriginRequest",
 }) as any as S.Schema<GetFallbackOriginRequest>;
@@ -1133,7 +1180,7 @@ export const GetFallbackOriginResponse = /*@__PURE__*/ S.suspend(() =>
     origin: S.optional(S.String),
     status: S.optional(FallbackOriginGetResponseStatus),
     updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetFallbackOriginResponse",
 }) as any as S.Schema<GetFallbackOriginResponse>;
@@ -1213,13 +1260,15 @@ export const ListCustomHostnamesRequest = /*@__PURE__*/ S.suspend(() =>
     ssl: S.optional(S.String.pipe(T.Query())),
     sslStatus: S.optional(ListRequestSslStatus.pipe(T.Query("ssl_status"))),
     wildcard: S.optional(S.Boolean.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/custom_hostnames",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/custom_hostnames",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListCustomHostnamesRequest",
 }) as any as S.Schema<ListCustomHostnamesRequest>;
@@ -1599,7 +1648,7 @@ export const ListCustomHostnamesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: ListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListCustomHostnamesResponse",
 }) as any as S.Schema<ListCustomHostnamesResponse>;
@@ -1755,13 +1804,15 @@ export const PatchCustomHostnameRequest = /*@__PURE__*/ S.suspend(() =>
     ),
     customOriginSni: S.optional(S.String.pipe(T.Body("custom_origin_sni"))),
     ssl: S.optional(EditRequestSsl),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/zones/{zone_id}/custom_hostnames/{custom_hostname_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/zones/{zone_id}/custom_hostnames/{custom_hostname_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchCustomHostnameRequest",
 }) as any as S.Schema<PatchCustomHostnameRequest>;
@@ -2121,7 +2172,7 @@ export const PatchCustomHostnameResponse = /*@__PURE__*/ S.suspend(() =>
     verificationErrors: S.optional(
       EditResponseVerificationErrorsList.pipe(T.Body("verification_errors")),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchCustomHostnameResponse",
 }) as any as S.Schema<PatchCustomHostnameResponse>;
@@ -2149,13 +2200,15 @@ export const PutCertificatePackCertificateRequest = /*@__PURE__*/ S.suspend(
       certificateId: S.String.pipe(T.Label("certificate_id")),
       customCertificate: S.String.pipe(T.Body("custom_certificate")),
       customKey: S.String.pipe(T.Body("custom_key")),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/zones/{zone_id}/custom_hostnames/{custom_hostname_id}/certificate_pack/{certificate_pack_id}/certificates/{certificate_id}",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "PUT",
+          uri: "/zones/{zone_id}/custom_hostnames/{custom_hostname_id}/certificate_pack/{certificate_pack_id}/certificates/{certificate_id}",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutCertificatePackCertificateRequest",
 }) as any as S.Schema<PutCertificatePackCertificateRequest>;
@@ -2585,7 +2638,7 @@ export const PutCertificatePackCertificateResponse = /*@__PURE__*/ S.suspend(
           T.Body("verification_errors"),
         ),
       ),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutCertificatePackCertificateResponse",
 }) as any as S.Schema<PutCertificatePackCertificateResponse>;
@@ -2600,13 +2653,15 @@ export const PutFallbackOriginRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     origin: S.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/zones/{zone_id}/custom_hostnames/fallback_origin",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/zones/{zone_id}/custom_hostnames/fallback_origin",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutFallbackOriginRequest",
 }) as any as S.Schema<PutFallbackOriginRequest>;
@@ -2643,7 +2698,7 @@ export const PutFallbackOriginResponse = /*@__PURE__*/ S.suspend(() =>
     origin: S.optional(S.String),
     status: S.optional(FallbackOriginUpdateResponseStatus),
     updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutFallbackOriginResponse",
 }) as any as S.Schema<PutFallbackOriginResponse>;

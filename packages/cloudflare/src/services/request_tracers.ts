@@ -12,6 +12,23 @@ import * as Retry from "../retry.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
+/** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
+const KEY_DICTIONARY: Record<string, string> = {
+  actionParameters: "action_parameters",
+  botScore: "bot_score",
+  isEuCountry: "is_eu_country",
+  isoCode: "iso_code",
+  plainText: "plain_text",
+  postalCode: "postal_code",
+  regionCode: "region_code",
+  skipChallenge: "skip_challenge",
+  skipResponse: "skip_response",
+  statusCode: "status_code",
+  stepName: "step_name",
+  subdivision_2IsoCode: "subdivision_2_iso_code",
+  threatScore: "threat_score",
+};
+
 export interface TracesCreateRequestBody {
   /** Base64 encoded request body */
   base64?: string;
@@ -128,13 +145,15 @@ export const CreateTraceRequest = /*@__PURE__*/ S.suspend(() =>
     headers: S.optional(TracesCreateRequestHeadersMap),
     protocol: S.optional(S.String),
     skipResponse: S.optional(S.Boolean.pipe(T.Body("skip_response"))),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/request-tracer/trace",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/request-tracer/trace",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateTraceRequest",
 }) as any as S.Schema<CreateTraceRequest>;
@@ -149,7 +168,7 @@ export const CreateTraceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     statusCode: S.optional(S.Number.pipe(T.Body("status_code"))),
     trace: S.optional(S.Unknown),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateTraceResponse",
 }) as any as S.Schema<CreateTraceResponse>;

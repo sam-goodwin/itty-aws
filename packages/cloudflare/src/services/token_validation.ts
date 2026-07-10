@@ -14,6 +14,19 @@ import * as Retry from "../retry.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
+/** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
+const KEY_DICTIONARY: Record<string, string> = {
+  createdAt: "created_at",
+  documentationUrl: "documentation_url",
+  lastUpdated: "last_updated",
+  operationIds: "operation_ids",
+  perPage: "per_page",
+  resultInfo: "result_info",
+  tokenSources: "token_sources",
+  tokenType: "token_type",
+  totalCount: "total_count",
+};
+
 export class Forbidden extends T.applyErrorMatchers(
   S.TaggedErrorClass<Forbidden>()("Forbidden", {
     code: S.Number,
@@ -178,13 +191,15 @@ export const BulkCreateRulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     body: RulesBulkCreateRequestBodyList,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/zones/{zone_id}/token_validation/rules/bulk",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/zones/{zone_id}/token_validation/rules/bulk",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "BulkCreateRulesRequest",
 }) as any as S.Schema<BulkCreateRulesRequest>;
@@ -313,7 +328,7 @@ export const BulkCreateRulesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: RulesBulkCreateResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "BulkCreateRulesResponse",
 }) as any as S.Schema<BulkCreateRulesResponse>;
@@ -468,13 +483,15 @@ export const BulkPatchRulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     body: RulesBulkEditRequestBodyList,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/zones/{zone_id}/token_validation/rules/bulk",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/zones/{zone_id}/token_validation/rules/bulk",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "BulkPatchRulesRequest",
 }) as any as S.Schema<BulkPatchRulesRequest>;
@@ -601,7 +618,7 @@ export const BulkPatchRulesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: RulesBulkEditResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "BulkPatchRulesResponse",
 }) as any as S.Schema<BulkPatchRulesResponse>;
@@ -681,13 +698,15 @@ export const CreateConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
       T.Body("token_sources"),
     ),
     tokenType: ConfigurationCreateRequestTokenType.pipe(T.Body("token_type")),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/zones/{zone_id}/token_validation/config",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/zones/{zone_id}/token_validation/config",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateConfigurationRequest",
 }) as any as S.Schema<CreateConfigurationRequest>;
@@ -773,7 +792,7 @@ export const CreateConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
       T.Body("token_sources"),
     ),
     tokenType: ConfigurationCreateResponseTokenType.pipe(T.Body("token_type")),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateConfigurationResponse",
 }) as any as S.Schema<CreateConfigurationResponse>;
@@ -875,13 +894,15 @@ export const CreateRuleRequest = /*@__PURE__*/ S.suspend(() =>
     expression: S.String,
     selector: RulesCreateRequestSelector,
     title: S.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/zones/{zone_id}/token_validation/rules",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/zones/{zone_id}/token_validation/rules",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateRuleRequest",
 }) as any as S.Schema<CreateRuleRequest>;
@@ -988,7 +1009,7 @@ export const CreateRuleResponse = /*@__PURE__*/ S.suspend(() =>
     id: S.optional(S.String),
     createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
     lastUpdated: S.optional(S.String.pipe(T.Body("last_updated"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateRuleResponse",
 }) as any as S.Schema<CreateRuleResponse>;
@@ -1003,13 +1024,15 @@ export const DeleteConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     configId: S.String.pipe(T.Label("config_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/zones/{zone_id}/token_validation/config/{config_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/zones/{zone_id}/token_validation/config/{config_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteConfigurationRequest",
 }) as any as S.Schema<DeleteConfigurationRequest>;
@@ -1022,7 +1045,7 @@ export interface DeleteConfigurationResponse {
 export const DeleteConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteConfigurationResponse",
 }) as any as S.Schema<DeleteConfigurationResponse>;
@@ -1037,13 +1060,15 @@ export const DeleteRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     ruleId: S.String.pipe(T.Label("rule_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/zones/{zone_id}/token_validation/rules/{rule_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/zones/{zone_id}/token_validation/rules/{rule_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteRuleRequest",
 }) as any as S.Schema<DeleteRuleRequest>;
@@ -1055,7 +1080,7 @@ export interface DeleteRuleResponse {
 export const DeleteRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteRuleResponse",
 }) as any as S.Schema<DeleteRuleResponse>;
@@ -1070,13 +1095,15 @@ export const GetConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     configId: S.String.pipe(T.Label("config_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/token_validation/config/{config_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/token_validation/config/{config_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetConfigurationRequest",
 }) as any as S.Schema<GetConfigurationRequest>;
@@ -1160,7 +1187,7 @@ export const GetConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
       T.Body("token_sources"),
     ),
     tokenType: ConfigurationGetResponseTokenType.pipe(T.Body("token_type")),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetConfigurationResponse",
 }) as any as S.Schema<GetConfigurationResponse>;
@@ -1175,13 +1202,15 @@ export const GetRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     ruleId: S.String.pipe(T.Label("rule_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/token_validation/rules/{rule_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/token_validation/rules/{rule_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "GetRuleRequest" }) as any as S.Schema<GetRuleRequest>;
 
 export type RulesGetResponseAction = "log" | "block" | (string & {});
@@ -1284,7 +1313,7 @@ export const GetRuleResponse = /*@__PURE__*/ S.suspend(() =>
     id: S.optional(S.String),
     createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
     lastUpdated: S.optional(S.String.pipe(T.Body("last_updated"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetRuleResponse",
 }) as any as S.Schema<GetRuleResponse>;
@@ -1302,13 +1331,15 @@ export const ListConfigurationsRequest = /*@__PURE__*/ S.suspend(() =>
     zoneId: S.String.pipe(T.Label("zone_id")),
     page: S.optional(S.Number.pipe(T.Query())),
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/token_validation/config",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/token_validation/config",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListConfigurationsRequest",
 }) as any as S.Schema<ListConfigurationsRequest>;
@@ -1413,7 +1444,7 @@ export const ListConfigurationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: ConfigurationListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListConfigurationsResponse",
 }) as any as S.Schema<ListConfigurationsResponse>;
@@ -1464,13 +1495,15 @@ export const ListRulesRequest = /*@__PURE__*/ S.suspend(() =>
         T.Query("token_configuration"),
       ),
     ),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/token_validation/rules",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/token_validation/rules",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListRulesRequest",
 }) as any as S.Schema<ListRulesRequest>;
@@ -1596,7 +1629,7 @@ export const ListRulesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: RulesListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListRulesResponse",
 }) as any as S.Schema<ListRulesResponse>;
@@ -1624,13 +1657,15 @@ export const PatchConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
     tokenSources: S.optional(
       ConfigurationEditRequestTokenSourcesList.pipe(T.Body("token_sources")),
     ),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/zones/{zone_id}/token_validation/config/{config_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/zones/{zone_id}/token_validation/config/{config_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchConfigurationRequest",
 }) as any as S.Schema<PatchConfigurationRequest>;
@@ -1656,7 +1691,7 @@ export const PatchConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
     tokenSources: S.optional(
       ConfigurationEditResponseTokenSourcesList.pipe(T.Body("token_sources")),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchConfigurationResponse",
 }) as any as S.Schema<PatchConfigurationResponse>;
@@ -1785,13 +1820,15 @@ export const PatchRuleRequest = /*@__PURE__*/ S.suspend(() =>
     position: S.optional(RulesEditRequestPosition),
     selector: S.optional(RulesEditRequestSelector),
     title: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/zones/{zone_id}/token_validation/rules/{rule_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/zones/{zone_id}/token_validation/rules/{rule_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchRuleRequest",
 }) as any as S.Schema<PatchRuleRequest>;
@@ -1898,7 +1935,7 @@ export const PatchRuleResponse = /*@__PURE__*/ S.suspend(() =>
     id: S.optional(S.String),
     createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
     lastUpdated: S.optional(S.String.pipe(T.Body("last_updated"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchRuleResponse",
 }) as any as S.Schema<PatchRuleResponse>;
@@ -1951,13 +1988,15 @@ export const PutConfigurationCredentialRequest = /*@__PURE__*/ S.suspend(() =>
     zoneId: S.String.pipe(T.Label("zone_id")),
     configId: S.String.pipe(T.Label("config_id")),
     keys: ConfigurationCredentialsUpdateRequestKeysList,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/zones/{zone_id}/token_validation/config/{config_id}/credentials",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/zones/{zone_id}/token_validation/config/{config_id}/credentials",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutConfigurationCredentialRequest",
 }) as any as S.Schema<PutConfigurationCredentialRequest>;
@@ -2005,7 +2044,7 @@ export interface PutConfigurationCredentialResponse {
 export const PutConfigurationCredentialResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     keys: ConfigurationCredentialsUpdateResponseKeysList,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutConfigurationCredentialResponse",
 }) as any as S.Schema<PutConfigurationCredentialResponse>;

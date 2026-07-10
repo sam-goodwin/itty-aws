@@ -14,6 +14,75 @@ import * as Retry from "../retry.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
+/** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
+const KEY_DICTIONARY: Record<string, string> = {
+  adaptiveRouting: "adaptive_routing",
+  allowInsecure: "allow_insecure",
+  checkRegions: "check_regions",
+  consecutiveDown: "consecutive_down",
+  consecutiveUp: "consecutive_up",
+  contentType: "content_type",
+  countryPools: "country_pools",
+  createdAt: "created_at",
+  createdOn: "created_on",
+  defaultPercent: "default_percent",
+  defaultPolicy: "default_policy",
+  defaultPools: "default_pools",
+  defaultWeight: "default_weight",
+  disabledAt: "disabled_at",
+  drainDuration: "drain_duration",
+  expectedBody: "expected_body",
+  expectedCodes: "expected_codes",
+  failoverAcrossPools: "failover_across_pools",
+  failureReason: "failure_reason",
+  fallbackPool: "fallback_pool",
+  fixedResponse: "fixed_response",
+  flattenCname: "flatten_cname",
+  followRedirects: "follow_redirects",
+  host: "Host",
+  loadShedding: "load_shedding",
+  locationStrategy: "location_strategy",
+  messageBody: "message_body",
+  minimumOrigins: "minimum_origins",
+  modifiedOn: "modified_on",
+  monitorGroup: "monitor_group",
+  monitorId: "monitor_id",
+  monitoringOnly: "monitoring_only",
+  mustBeHealthy: "must_be_healthy",
+  notificationEmail: "notification_email",
+  notificationFilter: "notification_filter",
+  originSteering: "origin_steering",
+  perPage: "per_page",
+  poolId: "pool_id",
+  poolWeights: "pool_weights",
+  popHealth: "pop_health",
+  popPools: "pop_pools",
+  preferEcs: "prefer_ecs",
+  previewId: "preview_id",
+  probeZone: "probe_zone",
+  randomSteering: "random_steering",
+  referenceType: "reference_type",
+  regionPools: "region_pools",
+  requireAllHeaders: "require_all_headers",
+  resourceId: "resource_id",
+  resourceName: "resource_name",
+  resourceType: "resource_type",
+  responseCode: "response_code",
+  resultInfo: "result_info",
+  sessionAffinity: "session_affinity",
+  sessionAffinityAttributes: "session_affinity_attributes",
+  sessionAffinityTtl: "session_affinity_ttl",
+  sessionPercent: "session_percent",
+  sessionPolicy: "session_policy",
+  statusCode: "status_code",
+  steeringPolicy: "steering_policy",
+  totalCount: "total_count",
+  updatedAt: "updated_at",
+  virtualNetworkId: "virtual_network_id",
+  zeroDowntimeFailover: "zero_downtime_failover",
+  zoneName: "zone_name",
+};
+
 export class Forbidden extends T.applyErrorMatchers(
   S.TaggedErrorClass<Forbidden>()("Forbidden", {
     code: S.Number,
@@ -128,13 +197,15 @@ export const BulkPatchPoolsRequest = /*@__PURE__*/ S.suspend(() =>
     notificationEmail: S.optional(
       PoolsBulkEditRequestNotificationEmail.pipe(T.Body("notification_email")),
     ),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/accounts/{account_id}/load_balancers/pools",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/accounts/{account_id}/load_balancers/pools",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "BulkPatchPoolsRequest",
 }) as any as S.Schema<BulkPatchPoolsRequest>;
@@ -394,7 +465,7 @@ export const BulkPatchPoolsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: PoolsBulkEditResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "BulkPatchPoolsResponse",
 }) as any as S.Schema<BulkPatchPoolsResponse>;
@@ -803,13 +874,15 @@ export const CreateLoadBalancerRequest = /*@__PURE__*/ S.suspend(() =>
     ),
     steeringPolicy: S.optional(S.Unknown.pipe(T.Body("steering_policy"))),
     ttl: S.optional(S.Number),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/zones/{zone_id}/load_balancers",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/zones/{zone_id}/load_balancers",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateLoadBalancerRequest",
 }) as any as S.Schema<CreateLoadBalancerRequest>;
@@ -1232,7 +1305,7 @@ export const CreateLoadBalancerResponse = /*@__PURE__*/ S.suspend(() =>
     steeringPolicy: S.optional(S.Unknown.pipe(T.Body("steering_policy"))),
     ttl: S.optional(S.Number),
     zoneName: S.optional(S.String.pipe(T.Body("zone_name"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateLoadBalancerResponse",
 }) as any as S.Schema<CreateLoadBalancerResponse>;
@@ -1307,13 +1380,15 @@ export const CreateMonitorRequest = /*@__PURE__*/ S.suspend(() =>
     retries: S.optional(S.Number),
     timeout: S.optional(S.Number),
     type: S.optional(MonitorsCreateRequestType),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/load_balancers/monitors",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/load_balancers/monitors",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateMonitorRequest",
 }) as any as S.Schema<CreateMonitorRequest>;
@@ -1392,7 +1467,7 @@ export const CreateMonitorResponse = /*@__PURE__*/ S.suspend(() =>
     retries: S.optional(S.Number),
     timeout: S.optional(S.Number),
     type: S.optional(MonitorsCreateResponseType),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateMonitorResponse",
 }) as any as S.Schema<CreateMonitorResponse>;
@@ -1444,13 +1519,15 @@ export const CreateMonitorGroupRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     description: S.String,
     members: MonitorGroupsCreateRequestMembersList,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/load_balancers/monitor_groups",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/load_balancers/monitor_groups",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateMonitorGroupRequest",
 }) as any as S.Schema<CreateMonitorGroupRequest>;
@@ -1509,7 +1586,7 @@ export const CreateMonitorGroupResponse = /*@__PURE__*/ S.suspend(() =>
     members: MonitorGroupsCreateResponseMembersList,
     createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
     modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateMonitorGroupResponse",
 }) as any as S.Schema<CreateMonitorGroupResponse>;
@@ -1586,13 +1663,15 @@ export const CreateMonitorPreviewRequest = /*@__PURE__*/ S.suspend(() =>
     retries: S.optional(S.Number),
     timeout: S.optional(S.Number),
     type: S.optional(MonitorsPreviewsCreateRequestType),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/load_balancers/monitors/{monitor_id}/preview",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/load_balancers/monitors/{monitor_id}/preview",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateMonitorPreviewRequest",
 }) as any as S.Schema<CreateMonitorPreviewRequest>;
@@ -1615,7 +1694,7 @@ export const CreateMonitorPreviewResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pools: S.optional(MonitorsPreviewsCreateResponsePoolsMap),
     previewId: S.optional(S.String.pipe(T.Body("preview_id"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateMonitorPreviewResponse",
 }) as any as S.Schema<CreateMonitorPreviewResponse>;
@@ -1825,13 +1904,15 @@ export const CreatePoolRequest = /*@__PURE__*/ S.suspend(() =>
     originSteering: S.optional(
       PoolsCreateRequestOriginSteering.pipe(T.Body("origin_steering")),
     ),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/load_balancers/pools",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/load_balancers/pools",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreatePoolRequest",
 }) as any as S.Schema<CreatePoolRequest>;
@@ -2067,7 +2148,7 @@ export const CreatePoolResponse = /*@__PURE__*/ S.suspend(() =>
       PoolsCreateResponseOriginSteering.pipe(T.Body("origin_steering")),
     ),
     origins: S.optional(PoolsCreateResponseOriginsList),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreatePoolResponse",
 }) as any as S.Schema<CreatePoolResponse>;
@@ -2144,13 +2225,15 @@ export const CreatePoolHealthRequest = /*@__PURE__*/ S.suspend(() =>
     retries: S.optional(S.Number),
     timeout: S.optional(S.Number),
     type: S.optional(PoolsHealthCreateRequestType),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/load_balancers/pools/{pool_id}/preview",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/load_balancers/pools/{pool_id}/preview",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreatePoolHealthRequest",
 }) as any as S.Schema<CreatePoolHealthRequest>;
@@ -2173,7 +2256,7 @@ export const CreatePoolHealthResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pools: S.optional(PoolsHealthCreateResponsePoolsMap),
     previewId: S.optional(S.String.pipe(T.Body("preview_id"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreatePoolHealthResponse",
 }) as any as S.Schema<CreatePoolHealthResponse>;
@@ -2186,13 +2269,15 @@ export const DeleteLoadBalancerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     loadBalancerId: S.String.pipe(T.Label("load_balancer_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/zones/{zone_id}/load_balancers/{load_balancer_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/zones/{zone_id}/load_balancers/{load_balancer_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteLoadBalancerRequest",
 }) as any as S.Schema<DeleteLoadBalancerRequest>;
@@ -2204,7 +2289,7 @@ export interface DeleteLoadBalancerResponse {
 export const DeleteLoadBalancerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteLoadBalancerResponse",
 }) as any as S.Schema<DeleteLoadBalancerResponse>;
@@ -2218,13 +2303,15 @@ export const DeleteMonitorRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     monitorId: S.String.pipe(T.Label("monitor_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/load_balancers/monitors/{monitor_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/load_balancers/monitors/{monitor_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteMonitorRequest",
 }) as any as S.Schema<DeleteMonitorRequest>;
@@ -2236,7 +2323,7 @@ export interface DeleteMonitorResponse {
 export const DeleteMonitorResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteMonitorResponse",
 }) as any as S.Schema<DeleteMonitorResponse>;
@@ -2250,13 +2337,15 @@ export const DeleteMonitorGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     monitorGroupId: S.String.pipe(T.Label("monitor_group_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/load_balancers/monitor_groups/{monitor_group_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/load_balancers/monitor_groups/{monitor_group_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteMonitorGroupRequest",
 }) as any as S.Schema<DeleteMonitorGroupRequest>;
@@ -2315,7 +2404,7 @@ export const DeleteMonitorGroupResponse = /*@__PURE__*/ S.suspend(() =>
     members: MonitorGroupsDeleteResponseMembersList,
     createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
     modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteMonitorGroupResponse",
 }) as any as S.Schema<DeleteMonitorGroupResponse>;
@@ -2329,13 +2418,15 @@ export const DeletePoolRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     poolId: S.String.pipe(T.Label("pool_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/load_balancers/pools/{pool_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/load_balancers/pools/{pool_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeletePoolRequest",
 }) as any as S.Schema<DeletePoolRequest>;
@@ -2347,7 +2438,7 @@ export interface DeletePoolResponse {
 export const DeletePoolResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeletePoolResponse",
 }) as any as S.Schema<DeletePoolResponse>;
@@ -2360,13 +2451,15 @@ export const GetLoadBalancerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     loadBalancerId: S.String.pipe(T.Label("load_balancer_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/load_balancers/{load_balancer_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/load_balancers/{load_balancer_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetLoadBalancerRequest",
 }) as any as S.Schema<GetLoadBalancerRequest>;
@@ -2780,7 +2873,7 @@ export const GetLoadBalancerResponse = /*@__PURE__*/ S.suspend(() =>
     steeringPolicy: S.optional(S.Unknown.pipe(T.Body("steering_policy"))),
     ttl: S.optional(S.Number),
     zoneName: S.optional(S.String.pipe(T.Body("zone_name"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetLoadBalancerResponse",
 }) as any as S.Schema<GetLoadBalancerResponse>;
@@ -2794,13 +2887,15 @@ export const GetMonitorRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     monitorId: S.String.pipe(T.Label("monitor_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/load_balancers/monitors/{monitor_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/load_balancers/monitors/{monitor_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetMonitorRequest",
 }) as any as S.Schema<GetMonitorRequest>;
@@ -2875,7 +2970,7 @@ export const GetMonitorResponse = /*@__PURE__*/ S.suspend(() =>
     retries: S.optional(S.Number),
     timeout: S.optional(S.Number),
     type: S.optional(MonitorsGetResponseType),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetMonitorResponse",
 }) as any as S.Schema<GetMonitorResponse>;
@@ -2889,13 +2984,15 @@ export const GetMonitorGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     monitorGroupId: S.String.pipe(T.Label("monitor_group_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/load_balancers/monitor_groups/{monitor_group_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/load_balancers/monitor_groups/{monitor_group_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetMonitorGroupRequest",
 }) as any as S.Schema<GetMonitorGroupRequest>;
@@ -2953,7 +3050,7 @@ export const GetMonitorGroupResponse = /*@__PURE__*/ S.suspend(() =>
     members: MonitorGroupsGetResponseMembersList,
     createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
     modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetMonitorGroupResponse",
 }) as any as S.Schema<GetMonitorGroupResponse>;
@@ -2967,13 +3064,15 @@ export const GetMonitorGroupReferenceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     monitorGroupId: S.String.pipe(T.Label("monitor_group_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/load_balancers/monitor_groups/{monitor_group_id}/references",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/load_balancers/monitor_groups/{monitor_group_id}/references",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetMonitorGroupReferenceRequest",
 }) as any as S.Schema<GetMonitorGroupReferenceRequest>;
@@ -3024,7 +3123,7 @@ export const GetMonitorGroupReferenceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: MonitorGroupsReferencesGetResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetMonitorGroupReferenceResponse",
 }) as any as S.Schema<GetMonitorGroupReferenceResponse>;
@@ -3038,13 +3137,15 @@ export const GetMonitorReferenceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     monitorId: S.String.pipe(T.Label("monitor_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/load_balancers/monitors/{monitor_id}/references",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/load_balancers/monitors/{monitor_id}/references",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetMonitorReferenceRequest",
 }) as any as S.Schema<GetMonitorReferenceRequest>;
@@ -3093,7 +3194,7 @@ export const GetMonitorReferenceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: MonitorsReferencesGetResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetMonitorReferenceResponse",
 }) as any as S.Schema<GetMonitorReferenceResponse>;
@@ -3107,13 +3208,15 @@ export const GetPoolRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     poolId: S.String.pipe(T.Label("pool_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/load_balancers/pools/{pool_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/load_balancers/pools/{pool_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "GetPoolRequest" }) as any as S.Schema<GetPoolRequest>;
 
 export type PoolsGetResponseCheckRegionsList = unknown[];
@@ -3336,7 +3439,7 @@ export const GetPoolResponse = /*@__PURE__*/ S.suspend(() =>
       PoolsGetResponseOriginSteering.pipe(T.Body("origin_steering")),
     ),
     origins: S.optional(PoolsGetResponseOriginsList),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetPoolResponse",
 }) as any as S.Schema<GetPoolResponse>;
@@ -3350,13 +3453,15 @@ export const GetPoolHealthRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     poolId: S.String.pipe(T.Label("pool_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/load_balancers/pools/{pool_id}/health",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/load_balancers/pools/{pool_id}/health",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetPoolHealthRequest",
 }) as any as S.Schema<GetPoolHealthRequest>;
@@ -3428,7 +3533,7 @@ export const GetPoolHealthResponse = /*@__PURE__*/ S.suspend(() =>
     popHealth: S.optional(
       PoolsHealthGetResponsePopHealth.pipe(T.Body("pop_health")),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetPoolHealthResponse",
 }) as any as S.Schema<GetPoolHealthResponse>;
@@ -3442,13 +3547,15 @@ export const GetPoolReferenceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     poolId: S.String.pipe(T.Label("pool_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/load_balancers/pools/{pool_id}/references",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/load_balancers/pools/{pool_id}/references",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetPoolReferenceRequest",
 }) as any as S.Schema<GetPoolReferenceRequest>;
@@ -3494,7 +3601,7 @@ export const GetPoolReferenceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: PoolsReferencesGetResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetPoolReferenceResponse",
 }) as any as S.Schema<GetPoolReferenceResponse>;
@@ -3508,13 +3615,15 @@ export const GetPreviewRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     previewId: S.String.pipe(T.Label("preview_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/load_balancers/preview/{preview_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/load_balancers/preview/{preview_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetPreviewRequest",
 }) as any as S.Schema<GetPreviewRequest>;
@@ -3532,7 +3641,7 @@ export interface GetPreviewResponse {
 export const GetPreviewResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(PreviewsGetResultMap.pipe(T.EnvelopePayload())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetPreviewResponse",
 }) as any as S.Schema<GetPreviewResponse>;
@@ -3550,13 +3659,15 @@ export const GetRegionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     regionId: RegionsGetRequestRegionId.pipe(T.Label("region_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/load_balancers/regions/{region_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/load_balancers/regions/{region_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetRegionRequest",
 }) as any as S.Schema<GetRegionRequest>;
@@ -3570,7 +3681,7 @@ export const GetRegionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unknown: S.Unknown,
     string: S.Unknown,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetRegionResponse",
 }) as any as S.Schema<GetRegionResponse>;
@@ -3581,13 +3692,15 @@ export interface ListLoadBalancersRequest {
 export const ListLoadBalancersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/load_balancers",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/load_balancers",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListLoadBalancersRequest",
 }) as any as S.Schema<ListLoadBalancersRequest>;
@@ -4027,7 +4140,7 @@ export const ListLoadBalancersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: ListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListLoadBalancersResponse",
 }) as any as S.Schema<ListLoadBalancersResponse>;
@@ -4039,13 +4152,15 @@ export interface ListMonitorGroupsRequest {
 export const ListMonitorGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/load_balancers/monitor_groups",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/load_balancers/monitor_groups",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListMonitorGroupsRequest",
 }) as any as S.Schema<ListMonitorGroupsRequest>;
@@ -4123,7 +4238,7 @@ export const ListMonitorGroupsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: MonitorGroupsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListMonitorGroupsResponse",
 }) as any as S.Schema<ListMonitorGroupsResponse>;
@@ -4135,13 +4250,15 @@ export interface ListMonitorsRequest {
 export const ListMonitorsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/load_balancers/monitors",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/load_balancers/monitors",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListMonitorsRequest",
 }) as any as S.Schema<ListMonitorsRequest>;
@@ -4239,7 +4356,7 @@ export const ListMonitorsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: MonitorsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListMonitorsResponse",
 }) as any as S.Schema<ListMonitorsResponse>;
@@ -4254,13 +4371,15 @@ export const ListPoolsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     monitor: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/load_balancers/pools",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/load_balancers/pools",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListPoolsRequest",
 }) as any as S.Schema<ListPoolsRequest>;
@@ -4515,7 +4634,7 @@ export const ListPoolsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: PoolsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListPoolsResponse",
 }) as any as S.Schema<ListPoolsResponse>;
@@ -4538,13 +4657,15 @@ export const ListRegionsRequest = /*@__PURE__*/ S.suspend(() =>
     subdivisionCodeA2: S.optional(
       S.String.pipe(T.Query("subdivision_code_a2")),
     ),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/load_balancers/regions",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/load_balancers/regions",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListRegionsRequest",
 }) as any as S.Schema<ListRegionsRequest>;
@@ -4558,7 +4679,7 @@ export const ListRegionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unknown: S.Unknown,
     string: S.Unknown,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListRegionsResponse",
 }) as any as S.Schema<ListRegionsResponse>;
@@ -4588,13 +4709,15 @@ export const ListSearchesRequest = /*@__PURE__*/ S.suspend(() =>
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
     query: S.optional(S.String.pipe(T.Query())),
     references: S.optional(SearchesListRequestReferences.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/load_balancers/search",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/load_balancers/search",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListSearchesRequest",
 }) as any as S.Schema<ListSearchesRequest>;
@@ -4665,7 +4788,7 @@ export interface ListSearchesResponse {
 export const ListSearchesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resources: S.optional(SearchesListResponseResourcesList),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListSearchesResponse",
 }) as any as S.Schema<ListSearchesResponse>;
@@ -5066,13 +5189,15 @@ export const PatchLoadBalancerRequest = /*@__PURE__*/ S.suspend(() =>
     ),
     steeringPolicy: S.optional(S.Unknown.pipe(T.Body("steering_policy"))),
     ttl: S.optional(S.Number),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/zones/{zone_id}/load_balancers/{load_balancer_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/zones/{zone_id}/load_balancers/{load_balancer_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchLoadBalancerRequest",
 }) as any as S.Schema<PatchLoadBalancerRequest>;
@@ -5488,7 +5613,7 @@ export const PatchLoadBalancerResponse = /*@__PURE__*/ S.suspend(() =>
     steeringPolicy: S.optional(S.Unknown.pipe(T.Body("steering_policy"))),
     ttl: S.optional(S.Number),
     zoneName: S.optional(S.String.pipe(T.Body("zone_name"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchLoadBalancerResponse",
 }) as any as S.Schema<PatchLoadBalancerResponse>;
@@ -5561,13 +5686,15 @@ export const PatchMonitorRequest = /*@__PURE__*/ S.suspend(() =>
     retries: S.optional(S.Number),
     timeout: S.optional(S.Number),
     type: S.optional(MonitorsEditRequestType),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/accounts/{account_id}/load_balancers/monitors/{monitor_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/accounts/{account_id}/load_balancers/monitors/{monitor_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchMonitorRequest",
 }) as any as S.Schema<PatchMonitorRequest>;
@@ -5642,7 +5769,7 @@ export const PatchMonitorResponse = /*@__PURE__*/ S.suspend(() =>
     retries: S.optional(S.Number),
     timeout: S.optional(S.Number),
     type: S.optional(MonitorsEditResponseType),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchMonitorResponse",
 }) as any as S.Schema<PatchMonitorResponse>;
@@ -5695,13 +5822,15 @@ export const PatchMonitorGroupRequest = /*@__PURE__*/ S.suspend(() =>
     monitorGroupId: S.String.pipe(T.Label("monitor_group_id")),
     description: S.String,
     members: MonitorGroupsEditRequestMembersList,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/accounts/{account_id}/load_balancers/monitor_groups/{monitor_group_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/accounts/{account_id}/load_balancers/monitor_groups/{monitor_group_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchMonitorGroupRequest",
 }) as any as S.Schema<PatchMonitorGroupRequest>;
@@ -5760,7 +5889,7 @@ export const PatchMonitorGroupResponse = /*@__PURE__*/ S.suspend(() =>
     members: MonitorGroupsEditResponseMembersList,
     createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
     modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchMonitorGroupResponse",
 }) as any as S.Schema<PatchMonitorGroupResponse>;
@@ -5972,13 +6101,15 @@ export const PatchPoolRequest = /*@__PURE__*/ S.suspend(() =>
       PoolsEditRequestOriginSteering.pipe(T.Body("origin_steering")),
     ),
     origins: S.optional(PoolsEditRequestOriginsList),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/accounts/{account_id}/load_balancers/pools/{pool_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/accounts/{account_id}/load_balancers/pools/{pool_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchPoolRequest",
 }) as any as S.Schema<PatchPoolRequest>;
@@ -6205,7 +6336,7 @@ export const PatchPoolResponse = /*@__PURE__*/ S.suspend(() =>
       PoolsEditResponseOriginSteering.pipe(T.Body("origin_steering")),
     ),
     origins: S.optional(PoolsEditResponseOriginsList),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchPoolResponse",
 }) as any as S.Schema<PatchPoolResponse>;
@@ -6619,13 +6750,15 @@ export const UpdateLoadBalancerRequest = /*@__PURE__*/ S.suspend(() =>
     ),
     steeringPolicy: S.optional(S.Unknown.pipe(T.Body("steering_policy"))),
     ttl: S.optional(S.Number),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/zones/{zone_id}/load_balancers/{load_balancer_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/zones/{zone_id}/load_balancers/{load_balancer_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateLoadBalancerRequest",
 }) as any as S.Schema<UpdateLoadBalancerRequest>;
@@ -7048,7 +7181,7 @@ export const UpdateLoadBalancerResponse = /*@__PURE__*/ S.suspend(() =>
     steeringPolicy: S.optional(S.Unknown.pipe(T.Body("steering_policy"))),
     ttl: S.optional(S.Number),
     zoneName: S.optional(S.String.pipe(T.Body("zone_name"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateLoadBalancerResponse",
 }) as any as S.Schema<UpdateLoadBalancerResponse>;
@@ -7125,13 +7258,15 @@ export const UpdateMonitorRequest = /*@__PURE__*/ S.suspend(() =>
     retries: S.optional(S.Number),
     timeout: S.optional(S.Number),
     type: S.optional(MonitorsUpdateRequestType),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/load_balancers/monitors/{monitor_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/load_balancers/monitors/{monitor_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateMonitorRequest",
 }) as any as S.Schema<UpdateMonitorRequest>;
@@ -7210,7 +7345,7 @@ export const UpdateMonitorResponse = /*@__PURE__*/ S.suspend(() =>
     retries: S.optional(S.Number),
     timeout: S.optional(S.Number),
     type: S.optional(MonitorsUpdateResponseType),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateMonitorResponse",
 }) as any as S.Schema<UpdateMonitorResponse>;
@@ -7264,13 +7399,15 @@ export const UpdateMonitorGroupRequest = /*@__PURE__*/ S.suspend(() =>
     monitorGroupId: S.String.pipe(T.Label("monitor_group_id")),
     description: S.String,
     members: MonitorGroupsUpdateRequestMembersList,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/load_balancers/monitor_groups/{monitor_group_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/load_balancers/monitor_groups/{monitor_group_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateMonitorGroupRequest",
 }) as any as S.Schema<UpdateMonitorGroupRequest>;
@@ -7329,7 +7466,7 @@ export const UpdateMonitorGroupResponse = /*@__PURE__*/ S.suspend(() =>
     members: MonitorGroupsUpdateResponseMembersList,
     createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
     modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateMonitorGroupResponse",
 }) as any as S.Schema<UpdateMonitorGroupResponse>;
@@ -7551,13 +7688,15 @@ export const UpdatePoolRequest = /*@__PURE__*/ S.suspend(() =>
     originSteering: S.optional(
       PoolsUpdateRequestOriginSteering.pipe(T.Body("origin_steering")),
     ),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/load_balancers/pools/{pool_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/load_balancers/pools/{pool_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdatePoolRequest",
 }) as any as S.Schema<UpdatePoolRequest>;
@@ -7793,7 +7932,7 @@ export const UpdatePoolResponse = /*@__PURE__*/ S.suspend(() =>
       PoolsUpdateResponseOriginSteering.pipe(T.Body("origin_steering")),
     ),
     origins: S.optional(PoolsUpdateResponseOriginsList),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdatePoolResponse",
 }) as any as S.Schema<UpdatePoolResponse>;

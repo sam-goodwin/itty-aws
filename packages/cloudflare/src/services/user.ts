@@ -14,6 +14,82 @@ import * as Retry from "../retry.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
+/** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
+const KEY_DICTIONARY: Record<string, string> = {
+  accountCreation: "account_creation",
+  accountDeletion: "account_deletion",
+  accountMigration: "account_migration",
+  accountMobility: "account_mobility",
+  accountType: "account_type",
+  businessAddress: "business_address",
+  businessEmail: "business_email",
+  businessName: "business_name",
+  businessPhone: "business_phone",
+  cardExpiryMonth: "card_expiry_month",
+  cardExpiryYear: "card_expiry_year",
+  cardNumber: "card_number",
+  createTime: "create_time",
+  createdOn: "created_on",
+  currentPeriodEnd: "current_period_end",
+  currentPeriodStart: "current_period_start",
+  deviceData: "device_data",
+  editedOn: "edited_on",
+  enterpriseBillingEmail: "enterprise_billing_email",
+  enterprisePrimaryEmail: "enterprise_primary_email",
+  expiresOn: "expires_on",
+  externalMetadata: "external_metadata",
+  externallyManaged: "externally_managed",
+  firstName: "first_name",
+  hasBusinessZones: "has_business_zones",
+  hasEnterpriseZones: "has_enterprise_zones",
+  hasProZones: "has_pro_zones",
+  hierarchyTags: "hierarchy_tags",
+  invitedBy: "invited_by",
+  invitedMemberEmail: "invited_member_email",
+  invitedMemberId: "invited_member_id",
+  invitedOn: "invited_on",
+  isContract: "is_contract",
+  isPartner: "is_partner",
+  issuedOn: "issued_on",
+  lastName: "last_name",
+  lastUsedOn: "last_used_on",
+  managedBy: "managed_by",
+  modifiedOn: "modified_on",
+  nextBillDate: "next_bill_date",
+  notBefore: "not_before",
+  notIn: "not_in",
+  occurredAt: "occurred_at",
+  organizationId: "organization_id",
+  organizationIsEnforcingTwofactor: "organization_is_enforcing_twofactor",
+  organizationName: "organization_name",
+  paymentAddress: "payment_address",
+  paymentAddress2: "payment_address2",
+  paymentCity: "payment_city",
+  paymentCountry: "payment_country",
+  paymentEmail: "payment_email",
+  paymentFirstName: "payment_first_name",
+  paymentGateway: "payment_gateway",
+  paymentLastName: "payment_last_name",
+  paymentNonce: "payment_nonce",
+  paymentState: "payment_state",
+  paymentZipcode: "payment_zipcode",
+  perPage: "per_page",
+  permissionGroups: "permission_groups",
+  primaryEmail: "primary_email",
+  publicName: "public_name",
+  ratePlan: "rate_plan",
+  requestIp: "request_ip",
+  resultInfo: "result_info",
+  subOrgCreation: "sub_org_creation",
+  subscriptionId: "subscription_id",
+  taxIdType: "tax_id_type",
+  totalCount: "total_count",
+  twoFactorAuthenticationEnabled: "two_factor_authentication_enabled",
+  twoFactorAuthenticationLocked: "two_factor_authentication_locked",
+  useLegacy: "use_legacy",
+  validationCode: "validation_code",
+};
+
 export class Forbidden extends T.applyErrorMatchers(
   S.TaggedErrorClass<Forbidden>()("Forbidden", {
     code: S.Number,
@@ -241,7 +317,9 @@ export const CreateTokenRequest = /*@__PURE__*/ S.suspend(() =>
     condition: S.optional(TokensCreateRequestCondition),
     expiresOn: S.optional(S.String.pipe(T.Body("expires_on"))),
     notBefore: S.optional(S.String.pipe(T.Body("not_before"))),
-  }).pipe(T.Http({ method: "POST", uri: "/user/tokens", code: 200 })),
+  })
+    .pipe(T.Http({ method: "POST", uri: "/user/tokens", code: 200 }))
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateTokenRequest",
 }) as any as S.Schema<CreateTokenRequest>;
@@ -454,7 +532,7 @@ export const CreateTokenResponse = /*@__PURE__*/ S.suspend(() =>
     policies: S.optional(TokensCreateResponsePoliciesList),
     status: S.optional(TokensCreateResponseStatus),
     value: S.optional(S.Unknown),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateTokenResponse",
 }) as any as S.Schema<CreateTokenResponse>;
@@ -466,13 +544,15 @@ export interface DeleteOrganizationRequest {
 export const DeleteOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organizationId: S.String.pipe(T.Label("organization_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/user/organizations/{organization_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/user/organizations/{organization_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteOrganizationRequest",
 }) as any as S.Schema<DeleteOrganizationRequest>;
@@ -485,7 +565,7 @@ export interface DeleteOrganizationResponse {
 export const DeleteOrganizationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteOrganizationResponse",
 }) as any as S.Schema<DeleteOrganizationResponse>;
@@ -497,13 +577,15 @@ export interface DeleteSubscriptionRequest {
 export const DeleteSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     identifier: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/user/subscriptions/{identifier}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/user/subscriptions/{identifier}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteSubscriptionRequest",
 }) as any as S.Schema<DeleteSubscriptionRequest>;
@@ -516,7 +598,7 @@ export interface DeleteSubscriptionResponse {
 export const DeleteSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.optional(S.String.pipe(T.Body("subscription_id"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteSubscriptionResponse",
 }) as any as S.Schema<DeleteSubscriptionResponse>;
@@ -528,9 +610,11 @@ export interface DeleteTokenRequest {
 export const DeleteTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tokenId: S.String.pipe(T.Label("token_id")),
-  }).pipe(
-    T.Http({ method: "DELETE", uri: "/user/tokens/{token_id}", code: 200 }),
-  ),
+  })
+    .pipe(
+      T.Http({ method: "DELETE", uri: "/user/tokens/{token_id}", code: 200 }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteTokenRequest",
 }) as any as S.Schema<DeleteTokenRequest>;
@@ -543,16 +627,16 @@ export interface DeleteTokenResponse {
 export const DeleteTokenResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteTokenResponse",
 }) as any as S.Schema<DeleteTokenResponse>;
 
 export interface GetBillingProfileRequest {}
 export const GetBillingProfileRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(
-    T.Http({ method: "GET", uri: "/user/billing/profile", code: 200 }),
-  ),
+  S.Struct({})
+    .pipe(T.Http({ method: "GET", uri: "/user/billing/profile", code: 200 }))
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetBillingProfileRequest",
 }) as any as S.Schema<GetBillingProfileRequest>;
@@ -645,7 +729,7 @@ export const GetBillingProfileResponse = /*@__PURE__*/ S.suspend(() =>
     validationCode: S.optional(S.String.pipe(T.Body("validation_code"))),
     vat: S.optional(S.String),
     zipcode: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetBillingProfileResponse",
 }) as any as S.Schema<GetBillingProfileResponse>;
@@ -657,9 +741,11 @@ export interface GetInviteRequest {
 export const GetInviteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     inviteId: S.String.pipe(T.Label("invite_id")),
-  }).pipe(
-    T.Http({ method: "GET", uri: "/user/invites/{invite_id}", code: 200 }),
-  ),
+  })
+    .pipe(
+      T.Http({ method: "GET", uri: "/user/invites/{invite_id}", code: 200 }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetInviteRequest",
 }) as any as S.Schema<GetInviteRequest>;
@@ -718,7 +804,7 @@ export const GetInviteResponse = /*@__PURE__*/ S.suspend(() =>
     organizationName: S.optional(S.String.pipe(T.Body("organization_name"))),
     roles: S.optional(InvitesGetResponseRolesList),
     status: S.optional(InvitesGetResponseStatus),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetInviteResponse",
 }) as any as S.Schema<GetInviteResponse>;
@@ -730,13 +816,15 @@ export interface GetOrganizationRequest {
 export const GetOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organizationId: S.String.pipe(T.Label("organization_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/user/organizations/{organization_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/user/organizations/{organization_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetOrganizationRequest",
 }) as any as S.Schema<GetOrganizationRequest>;
@@ -748,16 +836,16 @@ export interface GetOrganizationResponse {
 export const GetOrganizationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetOrganizationResponse",
 }) as any as S.Schema<GetOrganizationResponse>;
 
 export interface GetSubscriptionRequest {}
 export const GetSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(
-    T.Http({ method: "GET", uri: "/user/subscriptions", code: 200 }),
-  ),
+  S.Struct({})
+    .pipe(T.Http({ method: "GET", uri: "/user/subscriptions", code: 200 }))
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetSubscriptionRequest",
 }) as any as S.Schema<GetSubscriptionRequest>;
@@ -871,7 +959,7 @@ export const GetSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: SubscriptionsGetResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetSubscriptionResponse",
 }) as any as S.Schema<GetSubscriptionResponse>;
@@ -883,7 +971,9 @@ export interface GetTokenRequest {
 export const GetTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tokenId: S.String.pipe(T.Label("token_id")),
-  }).pipe(T.Http({ method: "GET", uri: "/user/tokens/{token_id}", code: 200 })),
+  })
+    .pipe(T.Http({ method: "GET", uri: "/user/tokens/{token_id}", code: 200 }))
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetTokenRequest",
 }) as any as S.Schema<GetTokenRequest>;
@@ -1087,14 +1177,16 @@ export const GetTokenResponse = /*@__PURE__*/ S.suspend(() =>
     notBefore: S.optional(S.String.pipe(T.Body("not_before"))),
     policies: S.optional(TokensGetResponsePoliciesList),
     status: S.optional(TokensGetResponseStatus),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetTokenResponse",
 }) as any as S.Schema<GetTokenResponse>;
 
 export interface GetUserRequest {}
 export const GetUserRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(T.Http({ method: "GET", uri: "/user", code: 200 })),
+  S.Struct({})
+    .pipe(T.Http({ method: "GET", uri: "/user", code: 200 }))
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "GetUserRequest" }) as any as S.Schema<GetUserRequest>;
 
 export type GetResponseBetasList = string[];
@@ -1197,7 +1289,7 @@ export const GetUserResponse = /*@__PURE__*/ S.suspend(() =>
       S.Boolean.pipe(T.Body("two_factor_authentication_locked")),
     ),
     zipcode: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetUserResponse",
 }) as any as S.Schema<GetUserResponse>;
@@ -1239,7 +1331,9 @@ export const ListAuditLogsRequest = /*@__PURE__*/ S.suspend(() =>
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
     since: S.optional(S.String.pipe(T.Query())),
     zone: S.optional(S.String.pipe(T.Query())),
-  }).pipe(T.Http({ method: "GET", uri: "/user/audit_logs", code: 200 })),
+  })
+    .pipe(T.Http({ method: "GET", uri: "/user/audit_logs", code: 200 }))
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListAuditLogsRequest",
 }) as any as S.Schema<ListAuditLogsRequest>;
@@ -1257,7 +1351,7 @@ export const ListAuditLogsResponse = /*@__PURE__*/ S.suspend(() =>
     AaaAPIResponseCommonObjectErrorsMessagesSuccess__: S.Unknown.pipe(
       T.Body("AaaAPIResponseCommon object { errors, messages, success }"),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListAuditLogsResponse",
 }) as any as S.Schema<ListAuditLogsResponse>;
@@ -1291,7 +1385,9 @@ export const ListBillingHistoriesRequest = /*@__PURE__*/ S.suspend(() =>
     page: S.optional(S.Number.pipe(T.Query())),
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
     type: S.optional(S.String.pipe(T.Query())),
-  }).pipe(T.Http({ method: "GET", uri: "/user/billing/history", code: 200 })),
+  })
+    .pipe(T.Http({ method: "GET", uri: "/user/billing/history", code: 200 }))
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListBillingHistoriesRequest",
 }) as any as S.Schema<ListBillingHistoriesRequest>;
@@ -1354,14 +1450,16 @@ export const ListBillingHistoriesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: BillingHistoryListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListBillingHistoriesResponse",
 }) as any as S.Schema<ListBillingHistoriesResponse>;
 
 export interface ListInvitesRequest {}
 export const ListInvitesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(T.Http({ method: "GET", uri: "/user/invites", code: 200 })),
+  S.Struct({})
+    .pipe(T.Http({ method: "GET", uri: "/user/invites", code: 200 }))
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListInvitesRequest",
 }) as any as S.Schema<ListInvitesRequest>;
@@ -1439,7 +1537,7 @@ export const ListInvitesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: InvitesListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListInvitesResponse",
 }) as any as S.Schema<ListInvitesResponse>;
@@ -1488,7 +1586,9 @@ export const ListOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
     page: S.optional(S.Number.pipe(T.Query())),
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
     status: S.optional(OrganizationsListRequestStatus.pipe(T.Query())),
-  }).pipe(T.Http({ method: "GET", uri: "/user/organizations", code: 200 })),
+  })
+    .pipe(T.Http({ method: "GET", uri: "/user/organizations", code: 200 }))
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListOrganizationsRequest",
 }) as any as S.Schema<ListOrganizationsRequest>;
@@ -1542,14 +1642,16 @@ export const ListOrganizationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: OrganizationsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListOrganizationsResponse",
 }) as any as S.Schema<ListOrganizationsResponse>;
 
 export interface ListTenantsRequest {}
 export const ListTenantsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(T.Http({ method: "GET", uri: "/user/tenants", code: 200 })),
+  S.Struct({})
+    .pipe(T.Http({ method: "GET", uri: "/user/tenants", code: 200 }))
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListTenantsRequest",
 }) as any as S.Schema<ListTenantsRequest>;
@@ -1665,7 +1767,7 @@ export const ListTenantsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: TenantsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListTenantsResponse",
 }) as any as S.Schema<ListTenantsResponse>;
@@ -1680,9 +1782,15 @@ export const ListTokenPermissionGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String.pipe(T.Query())),
     scope: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({ method: "GET", uri: "/user/tokens/permission_groups", code: 200 }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/user/tokens/permission_groups",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListTokenPermissionGroupsRequest",
 }) as any as S.Schema<ListTokenPermissionGroupsRequest>;
@@ -1749,7 +1857,7 @@ export const ListTokenPermissionGroupsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: TokensPermissionGroupsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListTokenPermissionGroupsResponse",
 }) as any as S.Schema<ListTokenPermissionGroupsResponse>;
@@ -1770,7 +1878,9 @@ export const ListTokensRequest = /*@__PURE__*/ S.suspend(() =>
     direction: S.optional(TokensListRequestDirection.pipe(T.Query())),
     page: S.optional(S.Number.pipe(T.Query())),
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-  }).pipe(T.Http({ method: "GET", uri: "/user/tokens", code: 200 })),
+  })
+    .pipe(T.Http({ method: "GET", uri: "/user/tokens", code: 200 }))
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListTokensRequest",
 }) as any as S.Schema<ListTokensRequest>;
@@ -1999,7 +2109,7 @@ export const ListTokensResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: TokensListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListTokensResponse",
 }) as any as S.Schema<ListTokensResponse>;
@@ -2017,9 +2127,11 @@ export const PatchInviteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     inviteId: S.String.pipe(T.Label("invite_id")),
     status: InvitesEditRequestStatus,
-  }).pipe(
-    T.Http({ method: "PATCH", uri: "/user/invites/{invite_id}", code: 200 }),
-  ),
+  })
+    .pipe(
+      T.Http({ method: "PATCH", uri: "/user/invites/{invite_id}", code: 200 }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchInviteRequest",
 }) as any as S.Schema<PatchInviteRequest>;
@@ -2078,7 +2190,7 @@ export const PatchInviteResponse = /*@__PURE__*/ S.suspend(() =>
     organizationName: S.optional(S.String.pipe(T.Body("organization_name"))),
     roles: S.optional(InvitesEditResponseRolesList),
     status: S.optional(InvitesEditResponseStatus),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchInviteResponse",
 }) as any as S.Schema<PatchInviteResponse>;
@@ -2102,7 +2214,9 @@ export const PatchUserRequest = /*@__PURE__*/ S.suspend(() =>
     lastName: S.optional(S.String.pipe(T.Body("last_name"))),
     telephone: S.optional(S.String),
     zipcode: S.optional(S.String),
-  }).pipe(T.Http({ method: "PATCH", uri: "/user", code: 200 })),
+  })
+    .pipe(T.Http({ method: "PATCH", uri: "/user", code: 200 }))
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchUserRequest",
 }) as any as S.Schema<PatchUserRequest>;
@@ -2207,7 +2321,7 @@ export const PatchUserResponse = /*@__PURE__*/ S.suspend(() =>
       S.Boolean.pipe(T.Body("two_factor_authentication_locked")),
     ),
     zipcode: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchUserResponse",
 }) as any as S.Schema<PatchUserResponse>;
@@ -2277,13 +2391,15 @@ export const PutSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
     ratePlan: S.optional(
       SubscriptionsUpdateRequestRatePlan.pipe(T.Body("rate_plan")),
     ),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/user/subscriptions/{identifier}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/user/subscriptions/{identifier}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutSubscriptionRequest",
 }) as any as S.Schema<PutSubscriptionRequest>;
@@ -2297,7 +2413,7 @@ export const PutSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unknown: S.Unknown,
     string: S.Unknown,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutSubscriptionResponse",
 }) as any as S.Schema<PutSubscriptionResponse>;
@@ -2311,9 +2427,15 @@ export const PutTokenValueRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tokenId: S.String.pipe(T.Label("token_id")),
     body: S.Unknown,
-  }).pipe(
-    T.Http({ method: "PUT", uri: "/user/tokens/{token_id}/value", code: 200 }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/user/tokens/{token_id}/value",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutTokenValueRequest",
 }) as any as S.Schema<PutTokenValueRequest>;
@@ -2325,7 +2447,7 @@ export interface PutTokenValueResponse {
 export const PutTokenValueResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutTokenValueResponse",
 }) as any as S.Schema<PutTokenValueResponse>;
@@ -2522,7 +2644,9 @@ export const UpdateTokenRequest = /*@__PURE__*/ S.suspend(() =>
     expiresOn: S.optional(S.String.pipe(T.Body("expires_on"))),
     notBefore: S.optional(S.String.pipe(T.Body("not_before"))),
     status: S.optional(TokensUpdateRequestStatus),
-  }).pipe(T.Http({ method: "PUT", uri: "/user/tokens/{token_id}", code: 200 })),
+  })
+    .pipe(T.Http({ method: "PUT", uri: "/user/tokens/{token_id}", code: 200 }))
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateTokenRequest",
 }) as any as S.Schema<UpdateTokenRequest>;
@@ -2732,16 +2856,16 @@ export const UpdateTokenResponse = /*@__PURE__*/ S.suspend(() =>
     notBefore: S.optional(S.String.pipe(T.Body("not_before"))),
     policies: S.optional(TokensUpdateResponsePoliciesList),
     status: S.optional(TokensUpdateResponseStatus),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateTokenResponse",
 }) as any as S.Schema<UpdateTokenResponse>;
 
 export interface VerifyTokenRequest {}
 export const VerifyTokenRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(
-    T.Http({ method: "GET", uri: "/user/tokens/verify", code: 200 }),
-  ),
+  S.Struct({})
+    .pipe(T.Http({ method: "GET", uri: "/user/tokens/verify", code: 200 }))
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "VerifyTokenRequest",
 }) as any as S.Schema<VerifyTokenRequest>;
@@ -2770,7 +2894,7 @@ export const VerifyTokenResponse = /*@__PURE__*/ S.suspend(() =>
     status: TokensVerifyResponseStatus,
     expiresOn: S.optional(S.String.pipe(T.Body("expires_on"))),
     notBefore: S.optional(S.String.pipe(T.Body("not_before"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "VerifyTokenResponse",
 }) as any as S.Schema<VerifyTokenResponse>;

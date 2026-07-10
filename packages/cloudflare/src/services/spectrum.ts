@@ -14,6 +14,26 @@ import * as Retry from "../retry.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
+/** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
+const KEY_DICTIONARY: Record<string, string> = {
+  argoSmartRouting: "argo_smart_routing",
+  createdOn: "created_on",
+  dataLag: "data_lag",
+  edgeIps: "edge_ips",
+  ipFirewall: "ip_firewall",
+  modifiedOn: "modified_on",
+  originDirect: "origin_direct",
+  originDns: "origin_dns",
+  originPort: "origin_port",
+  perPage: "per_page",
+  proxyProtocol: "proxy_protocol",
+  resultInfo: "result_info",
+  timeIntervals: "time_intervals",
+  totalCount: "total_count",
+  trafficType: "traffic_type",
+  virtualNetworkId: "virtual_network_id",
+};
+
 export class Forbidden extends T.applyErrorMatchers(
   S.TaggedErrorClass<Forbidden>()("Forbidden", {
     code: S.Number,
@@ -69,13 +89,15 @@ export const CreateAppRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     body: AppsCreateRequestBody,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/zones/{zone_id}/spectrum/apps",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/zones/{zone_id}/spectrum/apps",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateAppRequest",
 }) as any as S.Schema<CreateAppRequest>;
@@ -95,7 +117,7 @@ export const CreateAppResponse = /*@__PURE__*/ S.suspend(() =>
         "SpectrumConfigPaygoAppConfig object { id, created_on, dns, 3 more }",
       ),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateAppResponse",
 }) as any as S.Schema<CreateAppResponse>;
@@ -110,13 +132,15 @@ export const DeleteAppRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     appId: S.String.pipe(T.Label("app_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/zones/{zone_id}/spectrum/apps/{app_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/zones/{zone_id}/spectrum/apps/{app_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteAppRequest",
 }) as any as S.Schema<DeleteAppRequest>;
@@ -129,7 +153,7 @@ export interface DeleteAppResponse {
 export const DeleteAppResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteAppResponse",
 }) as any as S.Schema<DeleteAppResponse>;
@@ -147,13 +171,15 @@ export const GetAnalyticAggregateCurrentRequest = /*@__PURE__*/ S.suspend(() =>
     zoneId: S.String.pipe(T.Label("zone_id")),
     appID: S.optional(S.String.pipe(T.Query())),
     coloName: S.optional(S.String.pipe(T.Query("colo_name"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/spectrum/analytics/aggregate/current",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/spectrum/analytics/aggregate/current",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetAnalyticAggregateCurrentRequest",
 }) as any as S.Schema<GetAnalyticAggregateCurrentRequest>;
@@ -198,7 +224,7 @@ export const GetAnalyticAggregateCurrentResponse = /*@__PURE__*/ S.suspend(() =>
     result: S.optional(
       AnalyticsAggregatesCurrentsGetResultList.pipe(T.EnvelopePayload()),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetAnalyticAggregateCurrentResponse",
 }) as any as S.Schema<GetAnalyticAggregateCurrentResponse>;
@@ -269,13 +295,15 @@ export const GetAnalyticEventBytimeRequest = /*@__PURE__*/ S.suspend(() =>
     since: S.optional(S.String.pipe(T.Query())),
     sort: S.optional(AnalyticsEventsBytimesGetRequestSortList.pipe(T.Query())),
     until: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/spectrum/analytics/events/bytime",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/spectrum/analytics/events/bytime",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetAnalyticEventBytimeRequest",
 }) as any as S.Schema<GetAnalyticEventBytimeRequest>;
@@ -452,7 +480,7 @@ export const GetAnalyticEventBytimeResponse = /*@__PURE__*/ S.suspend(() =>
         T.Body("time_intervals"),
       ),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetAnalyticEventBytimeResponse",
 }) as any as S.Schema<GetAnalyticEventBytimeResponse>;
@@ -513,13 +541,15 @@ export const GetAnalyticEventSummaryRequest = /*@__PURE__*/ S.suspend(() =>
       AnalyticsEventsSummariesGetRequestSortList.pipe(T.Query()),
     ),
     until: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/spectrum/analytics/events/summary",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/spectrum/analytics/events/summary",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetAnalyticEventSummaryRequest",
 }) as any as S.Schema<GetAnalyticEventSummaryRequest>;
@@ -700,7 +730,7 @@ export const GetAnalyticEventSummaryResponse = /*@__PURE__*/ S.suspend(() =>
         T.Body("time_intervals"),
       ),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetAnalyticEventSummaryResponse",
 }) as any as S.Schema<GetAnalyticEventSummaryResponse>;
@@ -715,13 +745,15 @@ export const GetAppRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     appId: S.String.pipe(T.Label("app_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/spectrum/apps/{app_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/spectrum/apps/{app_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "GetAppRequest" }) as any as S.Schema<GetAppRequest>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -739,7 +771,7 @@ export const GetAppResponse = /*@__PURE__*/ S.suspend(() =>
         "SpectrumConfigPaygoAppConfig object { id, created_on, dns, 3 more }",
       ),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "GetAppResponse" }) as any as S.Schema<GetAppResponse>;
 
 export type AppsListRequestDirection = "asc" | "desc" | (string & {});
@@ -771,9 +803,15 @@ export const ListAppsRequest = /*@__PURE__*/ S.suspend(() =>
     order: S.optional(AppsListRequestOrder.pipe(T.Query())),
     page: S.optional(S.Number.pipe(T.Query())),
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-  }).pipe(
-    T.Http({ method: "GET", uri: "/zones/{zone_id}/spectrum/apps", code: 200 }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/spectrum/apps",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListAppsRequest",
 }) as any as S.Schema<ListAppsRequest>;
@@ -810,7 +848,7 @@ export const ListAppsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: AppsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListAppsResponse",
 }) as any as S.Schema<ListAppsResponse>;
@@ -846,13 +884,15 @@ export const UpdateAppRequest = /*@__PURE__*/ S.suspend(() =>
     zoneId: S.String.pipe(T.Label("zone_id")),
     appId: S.String.pipe(T.Label("app_id")),
     body: AppsUpdateRequestBody,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/zones/{zone_id}/spectrum/apps/{app_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/zones/{zone_id}/spectrum/apps/{app_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateAppRequest",
 }) as any as S.Schema<UpdateAppRequest>;
@@ -872,7 +912,7 @@ export const UpdateAppResponse = /*@__PURE__*/ S.suspend(() =>
         "SpectrumConfigPaygoAppConfig object { id, created_on, dns, 3 more }",
       ),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateAppResponse",
 }) as any as S.Schema<UpdateAppResponse>;

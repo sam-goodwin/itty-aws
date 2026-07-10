@@ -14,6 +14,53 @@ import * as Retry from "../retry.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
+/** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
+const KEY_DICTIONARY: Record<string, string> = {
+  affectedAsns: "affected_asns",
+  affectedComponents: "affected_components",
+  affectedLocations: "affected_locations",
+  airportCode: "airport_code",
+  alertBody: "alert_body",
+  alertInterval: "alert_interval",
+  alertTriggerPreferences: "alert_trigger_preferences",
+  alertTriggerPreferencesValue: "alert_trigger_preferences_value",
+  alertType: "alert_type",
+  createdAt: "created_at",
+  endTime: "end_time",
+  eventSource: "event_source",
+  eventType: "event_type",
+  groupBy: "group_by",
+  healthCheckId: "health_check_id",
+  incidentImpact: "incident_impact",
+  inputId: "input_id",
+  insightClass: "insight_class",
+  lastFailure: "last_failure",
+  lastSuccess: "last_success",
+  logoTag: "logo_tag",
+  mechanismType: "mechanism_type",
+  megabitsPerSecond: "megabits_per_second",
+  newHealth: "new_health",
+  newStatus: "new_status",
+  packetsPerSecond: "packets_per_second",
+  perPage: "per_page",
+  policyId: "policy_id",
+  poolId: "pool_id",
+  popNames: "pop_names",
+  projectId: "project_id",
+  queryTag: "query_tag",
+  requestsPerSecond: "requests_per_second",
+  resultInfo: "result_info",
+  startTime: "start_time",
+  targetHostname: "target_hostname",
+  targetIp: "target_ip",
+  targetZoneName: "target_zone_name",
+  totalCount: "total_count",
+  trafficExclusions: "traffic_exclusions",
+  tunnelId: "tunnel_id",
+  tunnelName: "tunnel_name",
+  updatedAt: "updated_at",
+};
+
 export class FiltersRequired extends T.applyErrorMatchers(
   S.TaggedErrorClass<FiltersRequired>()("FiltersRequired", {
     code: S.Number,
@@ -120,13 +167,15 @@ export interface CreateDestinationPagerdutyRequest {
 export const CreateDestinationPagerdutyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/alerting/v3/destinations/pagerduty/connect",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/alerting/v3/destinations/pagerduty/connect",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateDestinationPagerdutyRequest",
 }) as any as S.Schema<CreateDestinationPagerdutyRequest>;
@@ -139,7 +188,7 @@ export interface CreateDestinationPagerdutyResponse {
 export const CreateDestinationPagerdutyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateDestinationPagerdutyResponse",
 }) as any as S.Schema<CreateDestinationPagerdutyResponse>;
@@ -160,13 +209,15 @@ export const CreateDestinationWebhookRequest = /*@__PURE__*/ S.suspend(() =>
     name: S.String,
     url: S.String,
     secret: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/alerting/v3/destinations/webhooks",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/alerting/v3/destinations/webhooks",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateDestinationWebhookRequest",
 }) as any as S.Schema<CreateDestinationWebhookRequest>;
@@ -179,7 +230,7 @@ export interface CreateDestinationWebhookResponse {
 export const CreateDestinationWebhookResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateDestinationWebhookResponse",
 }) as any as S.Schema<CreateDestinationWebhookResponse>;
@@ -767,13 +818,15 @@ export const CreatePolicyRequest = /*@__PURE__*/ S.suspend(() =>
     alertInterval: S.optional(S.String.pipe(T.Body("alert_interval"))),
     description: S.optional(S.String),
     filters: S.optional(PoliciesCreateRequestFilters),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/alerting/v3/policies",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/alerting/v3/policies",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreatePolicyRequest",
 }) as any as S.Schema<CreatePolicyRequest>;
@@ -786,7 +839,7 @@ export interface CreatePolicyResponse {
 export const CreatePolicyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreatePolicyResponse",
 }) as any as S.Schema<CreatePolicyResponse>;
@@ -823,20 +876,22 @@ export const CreateSilenceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     body: SilencesCreateRequestBodyList,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/alerting/v3/silences",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/alerting/v3/silences",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateSilenceRequest",
 }) as any as S.Schema<CreateSilenceRequest>;
 
 export interface CreateSilenceResponse {}
 export const CreateSilenceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
+  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateSilenceResponse",
 }) as any as S.Schema<CreateSilenceResponse>;
@@ -848,20 +903,22 @@ export interface DeleteDestinationPagerdutyRequest {
 export const DeleteDestinationPagerdutyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/alerting/v3/destinations/pagerduty",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/alerting/v3/destinations/pagerduty",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteDestinationPagerdutyRequest",
 }) as any as S.Schema<DeleteDestinationPagerdutyRequest>;
 
 export interface DeleteDestinationPagerdutyResponse {}
 export const DeleteDestinationPagerdutyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
+  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteDestinationPagerdutyResponse",
 }) as any as S.Schema<DeleteDestinationPagerdutyResponse>;
@@ -876,20 +933,22 @@ export const DeleteDestinationWebhookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     webhookId: S.String.pipe(T.Label("webhook_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/alerting/v3/destinations/webhooks/{webhook_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/alerting/v3/destinations/webhooks/{webhook_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteDestinationWebhookRequest",
 }) as any as S.Schema<DeleteDestinationWebhookRequest>;
 
 export interface DeleteDestinationWebhookResponse {}
 export const DeleteDestinationWebhookResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
+  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteDestinationWebhookResponse",
 }) as any as S.Schema<DeleteDestinationWebhookResponse>;
@@ -904,20 +963,22 @@ export const DeletePolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     policyId: S.String.pipe(T.Label("policy_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/alerting/v3/policies/{policy_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/alerting/v3/policies/{policy_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeletePolicyRequest",
 }) as any as S.Schema<DeletePolicyRequest>;
 
 export interface DeletePolicyResponse {}
 export const DeletePolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
+  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeletePolicyResponse",
 }) as any as S.Schema<DeletePolicyResponse>;
@@ -932,20 +993,22 @@ export const DeleteSilenceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     silenceId: S.String.pipe(T.Label("silence_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/alerting/v3/silences/{silence_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/alerting/v3/silences/{silence_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteSilenceRequest",
 }) as any as S.Schema<DeleteSilenceRequest>;
 
 export interface DeleteSilenceResponse {}
 export const DeleteSilenceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
+  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteSilenceResponse",
 }) as any as S.Schema<DeleteSilenceResponse>;
@@ -957,13 +1020,15 @@ export interface GetDestinationEligibleRequest {
 export const GetDestinationEligibleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/alerting/v3/destinations/eligible",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/alerting/v3/destinations/eligible",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDestinationEligibleRequest",
 }) as any as S.Schema<GetDestinationEligibleRequest>;
@@ -985,7 +1050,7 @@ export const GetDestinationEligibleResponse = /*@__PURE__*/ S.suspend(() =>
     result: S.optional(
       DestinationsEligibleGetResultMap.pipe(T.EnvelopePayload()),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDestinationEligibleResponse",
 }) as any as S.Schema<GetDestinationEligibleResponse>;
@@ -997,13 +1062,15 @@ export interface GetDestinationPagerdutyRequest {
 export const GetDestinationPagerdutyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/alerting/v3/destinations/pagerduty",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/alerting/v3/destinations/pagerduty",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDestinationPagerdutyRequest",
 }) as any as S.Schema<GetDestinationPagerdutyRequest>;
@@ -1039,7 +1106,7 @@ export const GetDestinationPagerdutyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: DestinationsPagerdutyGetResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDestinationPagerdutyResponse",
 }) as any as S.Schema<GetDestinationPagerdutyResponse>;
@@ -1054,13 +1121,15 @@ export const GetDestinationWebhookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     webhookId: S.String.pipe(T.Label("webhook_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/alerting/v3/destinations/webhooks/{webhook_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/alerting/v3/destinations/webhooks/{webhook_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDestinationWebhookRequest",
 }) as any as S.Schema<GetDestinationWebhookRequest>;
@@ -1101,7 +1170,7 @@ export const GetDestinationWebhookResponse = /*@__PURE__*/ S.suspend(() =>
     secret: S.optional(S.String),
     type: S.optional(DestinationsWebhooksGetResponseType),
     url: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDestinationWebhookResponse",
 }) as any as S.Schema<GetDestinationWebhookResponse>;
@@ -1116,13 +1185,15 @@ export const GetPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     policyId: S.String.pipe(T.Label("policy_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/alerting/v3/policies/{policy_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/alerting/v3/policies/{policy_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetPolicyRequest",
 }) as any as S.Schema<GetPolicyRequest>;
@@ -1706,7 +1777,7 @@ export const GetPolicyResponse = /*@__PURE__*/ S.suspend(() =>
     mechanisms: S.optional(PoliciesGetResponseMechanisms),
     modified: S.optional(S.String),
     name: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetPolicyResponse",
 }) as any as S.Schema<GetPolicyResponse>;
@@ -1721,13 +1792,15 @@ export const GetSilenceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     silenceId: S.String.pipe(T.Label("silence_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/alerting/v3/silences/{silence_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/alerting/v3/silences/{silence_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetSilenceRequest",
 }) as any as S.Schema<GetSilenceRequest>;
@@ -1755,7 +1828,7 @@ export const GetSilenceResponse = /*@__PURE__*/ S.suspend(() =>
     policyId: S.optional(S.String.pipe(T.Body("policy_id"))),
     startTime: S.optional(S.String.pipe(T.Body("start_time"))),
     updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetSilenceResponse",
 }) as any as S.Schema<GetSilenceResponse>;
@@ -1770,13 +1843,15 @@ export const LinkDestinationPagerdutyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     tokenId: S.String.pipe(T.Label("token_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/alerting/v3/destinations/pagerduty/connect/{token_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/alerting/v3/destinations/pagerduty/connect/{token_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "LinkDestinationPagerdutyRequest",
 }) as any as S.Schema<LinkDestinationPagerdutyRequest>;
@@ -1789,7 +1864,7 @@ export interface LinkDestinationPagerdutyResponse {
 export const LinkDestinationPagerdutyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "LinkDestinationPagerdutyResponse",
 }) as any as S.Schema<LinkDestinationPagerdutyResponse>;
@@ -1801,13 +1876,15 @@ export interface ListAvailableAlertsRequest {
 export const ListAvailableAlertsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/alerting/v3/available_alerts",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/alerting/v3/available_alerts",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListAvailableAlertsRequest",
 }) as any as S.Schema<ListAvailableAlertsRequest>;
@@ -1827,7 +1904,7 @@ export interface ListAvailableAlertsResponse {
 export const ListAvailableAlertsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(AvailableAlertsListResultMap.pipe(T.EnvelopePayload())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListAvailableAlertsResponse",
 }) as any as S.Schema<ListAvailableAlertsResponse>;
@@ -1839,13 +1916,15 @@ export interface ListDestinationWebhooksRequest {
 export const ListDestinationWebhooksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/alerting/v3/destinations/webhooks",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/alerting/v3/destinations/webhooks",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListDestinationWebhooksRequest",
 }) as any as S.Schema<ListDestinationWebhooksRequest>;
@@ -1906,7 +1985,7 @@ export const ListDestinationWebhooksResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: DestinationsWebhooksListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListDestinationWebhooksResponse",
 }) as any as S.Schema<ListDestinationWebhooksResponse>;
@@ -1930,13 +2009,15 @@ export const ListHistoriesRequest = /*@__PURE__*/ S.suspend(() =>
     page: S.optional(S.Number.pipe(T.Query())),
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
     since: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/alerting/v3/history",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/alerting/v3/history",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListHistoriesRequest",
 }) as any as S.Schema<ListHistoriesRequest>;
@@ -2001,7 +2082,7 @@ export const ListHistoriesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: HistoryListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListHistoriesResponse",
 }) as any as S.Schema<ListHistoriesResponse>;
@@ -2013,13 +2094,15 @@ export interface ListPoliciesRequest {
 export const ListPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/alerting/v3/policies",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/alerting/v3/policies",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListPoliciesRequest",
 }) as any as S.Schema<ListPoliciesRequest>;
@@ -2634,7 +2717,7 @@ export const ListPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: PoliciesListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListPoliciesResponse",
 }) as any as S.Schema<ListPoliciesResponse>;
@@ -2646,13 +2729,15 @@ export interface ListSilencesRequest {
 export const ListSilencesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/alerting/v3/silences",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/alerting/v3/silences",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListSilencesRequest",
 }) as any as S.Schema<ListSilencesRequest>;
@@ -2699,7 +2784,7 @@ export const ListSilencesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: SilencesListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListSilencesResponse",
 }) as any as S.Schema<ListSilencesResponse>;
@@ -2723,13 +2808,15 @@ export const UpdateDestinationWebhookRequest = /*@__PURE__*/ S.suspend(() =>
     name: S.String,
     url: S.String,
     secret: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/alerting/v3/destinations/webhooks/{webhook_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/alerting/v3/destinations/webhooks/{webhook_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateDestinationWebhookRequest",
 }) as any as S.Schema<UpdateDestinationWebhookRequest>;
@@ -2742,7 +2829,7 @@ export interface UpdateDestinationWebhookResponse {
 export const UpdateDestinationWebhookResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateDestinationWebhookResponse",
 }) as any as S.Schema<UpdateDestinationWebhookResponse>;
@@ -3335,13 +3422,15 @@ export const UpdatePolicyRequest = /*@__PURE__*/ S.suspend(() =>
     filters: S.optional(PoliciesUpdateRequestFilters),
     mechanisms: S.optional(PoliciesUpdateRequestMechanisms),
     name: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/alerting/v3/policies/{policy_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/alerting/v3/policies/{policy_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdatePolicyRequest",
 }) as any as S.Schema<UpdatePolicyRequest>;
@@ -3354,7 +3443,7 @@ export interface UpdatePolicyResponse {
 export const UpdatePolicyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdatePolicyResponse",
 }) as any as S.Schema<UpdatePolicyResponse>;
@@ -3391,13 +3480,15 @@ export const UpdateSilenceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     body: SilencesUpdateRequestBodyList,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/alerting/v3/silences",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/alerting/v3/silences",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateSilenceRequest",
 }) as any as S.Schema<UpdateSilenceRequest>;
@@ -3444,7 +3535,7 @@ export const UpdateSilenceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: SilencesUpdateResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateSilenceResponse",
 }) as any as S.Schema<UpdateSilenceResponse>;

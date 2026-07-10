@@ -14,6 +14,39 @@ import * as Retry from "../retry.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
+/** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
+const KEY_DICTIONARY: Record<string, string> = {
+  completionTokens: "completion_tokens",
+  createdAt: "created_at",
+  fileName: "file_name",
+  frequencyPenalty: "frequency_penalty",
+  ignoreEos: "ignore_eos",
+  imageB64: "image_b64",
+  imageUrl: "image_url",
+  inputText: "input_text",
+  jsonSchema: "json_schema",
+  maxLength: "max_length",
+  maxTokens: "max_tokens",
+  modifiedAt: "modified_at",
+  negativePrompt: "negative_prompt",
+  numSteps: "num_steps",
+  perPage: "per_page",
+  presencePenalty: "presence_penalty",
+  promptTokens: "prompt_tokens",
+  repetitionPenalty: "repetition_penalty",
+  responseFormat: "response_format",
+  resultInfo: "result_info",
+  sourceLang: "source_lang",
+  targetLang: "target_lang",
+  toolCalls: "tool_calls",
+  topK: "top_k",
+  topP: "top_p",
+  totalCount: "total_count",
+  totalTokens: "total_tokens",
+  translatedText: "translated_text",
+  wordCount: "word_count",
+};
+
 export class AccountNotFound extends T.applyErrorMatchers(
   S.TaggedErrorClass<AccountNotFound>()("AccountNotFound", {
     code: S.Number,
@@ -60,13 +93,15 @@ export const CreateFinetuneRequest = /*@__PURE__*/ S.suspend(() =>
     name: S.String,
     description: S.optional(S.String),
     public: S.optional(S.Boolean),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/ai/finetunes",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/ai/finetunes",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateFinetuneRequest",
 }) as any as S.Schema<CreateFinetuneRequest>;
@@ -90,7 +125,7 @@ export const CreateFinetuneResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.String,
     public: S.Boolean,
     description: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateFinetuneResponse",
 }) as any as S.Schema<CreateFinetuneResponse>;
@@ -103,20 +138,22 @@ export const CreateFinetuneAssetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     finetuneId: S.String.pipe(T.Label("finetune_id")),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/ai/finetunes/{finetune_id}/finetune-assets",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/ai/finetunes/{finetune_id}/finetune-assets",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateFinetuneAssetRequest",
 }) as any as S.Schema<CreateFinetuneAssetRequest>;
 
 export interface CreateFinetuneAssetResponse {}
 export const CreateFinetuneAssetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
+  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateFinetuneAssetResponse",
 }) as any as S.Schema<CreateFinetuneAssetResponse>;
@@ -130,13 +167,15 @@ export const GetModelSchemaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     model: S.String.pipe(T.Query()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/ai/models/schema",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/ai/models/schema",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetModelSchemaRequest",
 }) as any as S.Schema<GetModelSchemaRequest>;
@@ -180,7 +219,7 @@ export const GetModelSchemaResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     input: ModelsSchemaGetResponseInput,
     output: ModelsSchemaGetResponseOutput,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetModelSchemaResponse",
 }) as any as S.Schema<GetModelSchemaResponse>;
@@ -191,13 +230,15 @@ export interface ListAuthorsRequest {
 export const ListAuthorsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/ai/authors/search",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/ai/authors/search",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListAuthorsRequest",
 }) as any as S.Schema<ListAuthorsRequest>;
@@ -217,7 +258,7 @@ export const ListAuthorsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: AuthorsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListAuthorsResponse",
 }) as any as S.Schema<ListAuthorsResponse>;
@@ -237,13 +278,15 @@ export const ListFinetunePublicsRequest = /*@__PURE__*/ S.suspend(() =>
     limit: S.optional(S.Number.pipe(T.Query())),
     offset: S.optional(S.Number.pipe(T.Query())),
     orderBy: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/ai/finetunes/public",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/ai/finetunes/public",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListFinetunePublicsRequest",
 }) as any as S.Schema<ListFinetunePublicsRequest>;
@@ -286,7 +329,7 @@ export const ListFinetunePublicsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: FinetunesPublicListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListFinetunePublicsResponse",
 }) as any as S.Schema<ListFinetunePublicsResponse>;
@@ -297,13 +340,15 @@ export interface ListFinetunesRequest {
 export const ListFinetunesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/ai/finetunes",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/ai/finetunes",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListFinetunesRequest",
 }) as any as S.Schema<ListFinetunesRequest>;
@@ -325,7 +370,7 @@ export const ListFinetunesResponse = /*@__PURE__*/ S.suspend(() =>
     modifiedAt: S.String.pipe(T.Body("modified_at")),
     name: S.String,
     description: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListFinetunesResponse",
 }) as any as S.Schema<ListFinetunesResponse>;
@@ -366,13 +411,15 @@ export const ListModelsRequest = /*@__PURE__*/ S.suspend(() =>
     search: S.optional(S.String.pipe(T.Query())),
     source: S.optional(S.Number.pipe(T.Query())),
     task: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/ai/models/search",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/ai/models/search",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListModelsRequest",
 }) as any as S.Schema<ListModelsRequest>;
@@ -389,7 +436,7 @@ export const ListModelsResponse = /*@__PURE__*/ S.suspend(() =>
       T.Body("object { errors, messages, result, success }"),
     ),
     DataObjectData__: S.Unknown.pipe(T.Body("Data object { data }")),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListModelsResponse",
 }) as any as S.Schema<ListModelsResponse>;
@@ -400,13 +447,15 @@ export interface ListTasksRequest {
 export const ListTasksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/ai/tasks/search",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/ai/tasks/search",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListTasksRequest",
 }) as any as S.Schema<ListTasksRequest>;
@@ -426,7 +475,7 @@ export const ListTasksResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: TasksListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListTasksResponse",
 }) as any as S.Schema<ListTasksResponse>;
@@ -517,13 +566,15 @@ export const RunAiRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     modelName: S.String.pipe(T.Label("model_name")),
     body: S.optional(RunRequestBody),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/ai/run/{model_name}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/ai/run/{model_name}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "RunAiRequest" }) as any as S.Schema<RunAiRequest>;
 
 export interface RunResultItemTextClassificationItem {
@@ -685,7 +736,7 @@ export interface RunAiResponse {
 export const RunAiResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(RunResultList.pipe(T.EnvelopePayload())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "RunAiResponse" }) as any as S.Schema<RunAiResponse>;
 
 export interface SupportedToMarkdownRequest {
@@ -694,13 +745,15 @@ export interface SupportedToMarkdownRequest {
 export const SupportedToMarkdownRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/ai/tomarkdown/supported",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/ai/tomarkdown/supported",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "SupportedToMarkdownRequest",
 }) as any as S.Schema<SupportedToMarkdownRequest>;
@@ -733,7 +786,7 @@ export const SupportedToMarkdownResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: ToMarkdownSupportedResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "SupportedToMarkdownResponse",
 }) as any as S.Schema<SupportedToMarkdownResponse>;
@@ -744,13 +797,15 @@ export interface TransformToMarkdownRequest {
 export const TransformToMarkdownRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/ai/tomarkdown",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/ai/tomarkdown",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "TransformToMarkdownRequest",
 }) as any as S.Schema<TransformToMarkdownRequest>;
@@ -786,7 +841,7 @@ export interface TransformToMarkdownResponse {
 export const TransformToMarkdownResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(ToMarkdownTransformResultList.pipe(T.EnvelopePayload())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "TransformToMarkdownResponse",
 }) as any as S.Schema<TransformToMarkdownResponse>;

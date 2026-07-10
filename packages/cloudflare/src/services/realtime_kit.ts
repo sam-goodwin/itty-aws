@@ -12,6 +12,153 @@ import * as Retry from "../retry.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
+/** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
+const KEY_DICTIONARY: Record<string, string> = {
+  acceptStageRequests: "accept_stage_requests",
+  acceptWaitingRequests: "accept_waiting_requests",
+  accessKey: "access_key",
+  aiConfig: "ai_config",
+  allowMultipleRecordings: "allow_multiple_recordings",
+  associatedId: "associated_id",
+  audioConfig: "audio_config",
+  audioDownloadUrl: "audio_download_url",
+  authMethod: "auth_method",
+  borderRadius: "border_radius",
+  borderWidth: "border_width",
+  breakoutRooms: "breakout_rooms",
+  canAcceptProductionRequests: "can_accept_production_requests",
+  canAlterConnectedMeetings: "can_alter_connected_meetings",
+  canChangeParticipantPermissions: "can_change_participant_permissions",
+  canClose: "can_close",
+  canCreate: "can_create",
+  canEditConfig: "can_edit_config",
+  canEditDisplayName: "can_edit_display_name",
+  canLivestream: "can_livestream",
+  canProduce: "can_produce",
+  canReceive: "can_receive",
+  canRecord: "can_record",
+  canSend: "can_send",
+  canSpotlight: "can_spotlight",
+  canStart: "can_start",
+  canSwitchConnectedMeetings: "can_switch_connected_meetings",
+  canSwitchToParentMeeting: "can_switch_to_parent_meeting",
+  canView: "can_view",
+  canVote: "can_vote",
+  chatDownloadUrl: "chat_download_url",
+  chatDownloadUrlExpiry: "chat_download_url_expiry",
+  configDiff: "config_diff",
+  connectedMeetings: "connected_meetings",
+  createdAt: "created_at",
+  createdBy: "created_by",
+  customParticipantId: "custom_participant_id",
+  customParticipantIds: "custom_participant_ids",
+  dayStats: "day_stats",
+  designTokens: "design_tokens",
+  disableParticipantAudio: "disable_participant_audio",
+  disableParticipantScreensharing: "disable_participant_screensharing",
+  disableParticipantVideo: "disable_participant_video",
+  displayName: "display_name",
+  downloadUrl: "download_url",
+  downloadUrlExpiry: "download_url_expiry",
+  enableHighBitrate: "enable_high_bitrate",
+  enableStereo: "enable_stereo",
+  endOffset: "end_offset",
+  endedAt: "ended_at",
+  errMessage: "err_message",
+  exportFile: "export_file",
+  fileNamePrefix: "file_name_prefix",
+  fileSize: "file_size",
+  fontFamily: "font_family",
+  frameRate: "frame_rate",
+  googleFont: "google_font",
+  hiddenParticipant: "hidden_participant",
+  hideVotes: "hide_votes",
+  ingestSeconds: "ingest_seconds",
+  ingestServer: "ingest_server",
+  interactiveConfig: "interactive_config",
+  invokedTime: "invoked_time",
+  isRecorder: "is_recorder",
+  joinedAt: "joined_at",
+  kickParticipant: "kick_participant",
+  kickedParticipantsCount: "kicked_participants_count",
+  leftAt: "left_at",
+  liveParticipants: "live_participants",
+  liveStreamOnStart: "live_stream_on_start",
+  liveStreamingConfig: "live_streaming_config",
+  livestreamId: "livestream_id",
+  livestreamViewerQualities: "livestream_viewer_qualities",
+  maxConcurrentParticipants: "max_concurrent_participants",
+  maxScreenshareCount: "max_screenshare_count",
+  maxSeconds: "max_seconds",
+  maxVideoStreams: "max_video_streams",
+  meetingDisplayName: "meeting_display_name",
+  meetingId: "meeting_id",
+  minutesConsumed: "minutes_consumed",
+  organizationId: "organization_id",
+  outputFileName: "output_file_name",
+  participantIds: "participant_ids",
+  peerEvents: "peer_events",
+  peerReport: "peer_report",
+  persistChat: "persist_chat",
+  pinParticipant: "pin_participant",
+  playbackUrl: "playback_url",
+  presetId: "preset_id",
+  presetName: "preset_name",
+  privateKey: "private_key",
+  profanityFilter: "profanity_filter",
+  realtimekitBucketConfig: "realtimekit_bucket_config",
+  recordOnStart: "record_on_start",
+  recorderType: "recorder_type",
+  recordingConfig: "recording_config",
+  recordingCount: "recording_count",
+  recordingDuration: "recording_duration",
+  recordingMinutesConsumed: "recording_minutes_consumed",
+  recordingStats: "recording_stats",
+  rtmpOutConfig: "rtmp_out_config",
+  rtmpUrl: "rtmp_url",
+  sessionId: "session_id",
+  sessionKeepAliveTimeInSecs: "session_keep_alive_time_in_secs",
+  sessionStats: "session_stats",
+  sessionsCount: "sessions_count",
+  sessionsMinutesConsumed: "sessions_minutes_consumed",
+  showParticipantList: "show_participant_list",
+  spacingBase: "spacing_base",
+  stageAccess: "stage_access",
+  stageEnabled: "stage_enabled",
+  startOffset: "start_offset",
+  startReason: "start_reason",
+  startedAt: "started_at",
+  startedTime: "started_time",
+  stopReason: "stop_reason",
+  stoppedTime: "stopped_time",
+  storageConfig: "storage_config",
+  streamKey: "stream_key",
+  summarizeOnEnd: "summarize_on_end",
+  summaryType: "summary_type",
+  textFormat: "text_format",
+  textOnBrand: "text_on_brand",
+  totalCount: "total_count",
+  totalIngestSeconds: "total_ingest_seconds",
+  totalRecordingMinutes: "total_recording_minutes",
+  totalRecordings: "total_recordings",
+  totalSessionMinutes: "total_session_minutes",
+  totalSessions: "total_sessions",
+  totalViewerSeconds: "total_viewer_seconds",
+  transcribeOnEnd: "transcribe_on_end",
+  transcriptDownloadUrl: "transcript_download_url",
+  transcriptDownloadUrlExpiry: "transcript_download_url_expiry",
+  transcriptionEnabled: "transcription_enabled",
+  updatedAt: "updated_at",
+  userId: "user_id",
+  userIds: "user_ids",
+  videoBg: "video_bg",
+  videoConfig: "video_config",
+  viewType: "view_type",
+  viewerSeconds: "viewer_seconds",
+  waitingRoomType: "waiting_room_type",
+  wordLimit: "word_limit",
+};
+
 export class Forbidden extends T.applyErrorMatchers(
   S.TaggedErrorClass<Forbidden>()("Forbidden", {
     code: S.Number,
@@ -79,13 +226,15 @@ export const AddParticipantMeetingRequest = /*@__PURE__*/ S.suspend(() =>
     presetName: S.String.pipe(T.Body("preset_name")),
     name: S.optional(S.String),
     picture: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/participants",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/participants",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "AddParticipantMeetingRequest",
 }) as any as S.Schema<AddParticipantMeetingRequest>;
@@ -131,7 +280,7 @@ export interface AddParticipantMeetingResponse {
 export const AddParticipantMeetingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(MeetingsAddParticipantResponseData),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "AddParticipantMeetingResponse",
 }) as any as S.Schema<AddParticipantMeetingResponse>;
@@ -150,13 +299,15 @@ export const CreateIndependentLivestreamLivestreamRequest =
       accountId: S.String.pipe(T.Label("account_id")),
       appId: S.String.pipe(T.Label("app_id")),
       name: S.optional(S.String),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/accounts/{account_id}/realtime/kit/{app_id}/livestreams",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "POST",
+          uri: "/accounts/{account_id}/realtime/kit/{app_id}/livestreams",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "CreateIndependentLivestreamLivestreamRequest",
   }) as any as S.Schema<CreateIndependentLivestreamLivestreamRequest>;
@@ -211,7 +362,7 @@ export const CreateIndependentLivestreamLivestreamResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       data: S.optional(LivestreamsCreateIndependentLivestreamResponseData),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "CreateIndependentLivestreamLivestreamResponse",
   }) as any as S.Schema<CreateIndependentLivestreamLivestreamResponse>;
@@ -608,13 +759,15 @@ export const CreateMeetingRequest = /*@__PURE__*/ S.suspend(() =>
     summarizeOnEnd: S.optional(S.Boolean.pipe(T.Body("summarize_on_end"))),
     title: S.optional(S.String),
     transcribeOnEnd: S.optional(S.Boolean.pipe(T.Body("transcribe_on_end"))),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/realtime/kit/{app_id}/meetings",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/realtime/kit/{app_id}/meetings",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateMeetingRequest",
 }) as any as S.Schema<CreateMeetingRequest>;
@@ -1043,7 +1196,7 @@ export interface CreateMeetingResponse {
 export const CreateMeetingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(MeetingsCreateResponseData),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateMeetingResponse",
 }) as any as S.Schema<CreateMeetingResponse>;
@@ -1077,13 +1230,15 @@ export const CreatePollActiveSessionRequest = /*@__PURE__*/ S.suspend(() =>
     question: S.String,
     anonymous: S.optional(S.Boolean),
     hideVotes: S.optional(S.Boolean.pipe(T.Body("hide_votes"))),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/active-session/poll",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/active-session/poll",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreatePollActiveSessionRequest",
 }) as any as S.Schema<CreatePollActiveSessionRequest>;
@@ -1186,7 +1341,7 @@ export interface CreatePollActiveSessionResponse {
 export const CreatePollActiveSessionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(ActiveSessionCreatePollResponseData),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreatePollActiveSessionResponse",
 }) as any as S.Schema<CreatePollActiveSessionResponse>;
@@ -1814,13 +1969,15 @@ export const CreatePresetRequest = /*@__PURE__*/ S.suspend(() =>
     name: S.String,
     permissions: PresetsCreateRequestPermissions,
     ui: PresetsCreateRequestUi,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/realtime/kit/{app_id}/presets",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/realtime/kit/{app_id}/presets",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreatePresetRequest",
 }) as any as S.Schema<CreatePresetRequest>;
@@ -2473,7 +2630,7 @@ export interface CreatePresetResponse {
 export const CreatePresetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: PresetsCreateResponseData,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreatePresetResponse",
 }) as any as S.Schema<CreatePresetResponse>;
@@ -2513,13 +2670,15 @@ export const CreateWebhookWebhookRequest = /*@__PURE__*/ S.suspend(() =>
     name: S.String,
     url: S.String,
     enabled: S.optional(S.Boolean),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/realtime/kit/{app_id}/webhooks",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/realtime/kit/{app_id}/webhooks",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateWebhookWebhookRequest",
 }) as any as S.Schema<CreateWebhookWebhookRequest>;
@@ -2576,7 +2735,7 @@ export interface CreateWebhookWebhookResponse {
 export const CreateWebhookWebhookResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: WebhooksCreateWebhookResponseData,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateWebhookWebhookResponse",
 }) as any as S.Schema<CreateWebhookWebhookResponse>;
@@ -2596,13 +2755,15 @@ export const DeleteMeetingParticipantMeetingRequest = /*@__PURE__*/ S.suspend(
       appId: S.String.pipe(T.Label("app_id")),
       meetingId: S.String.pipe(T.Label("meeting_id")),
       participantId: S.String.pipe(T.Label("participant_id")),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/participants/{participant_id}",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "DELETE",
+          uri: "/accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/participants/{participant_id}",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteMeetingParticipantMeetingRequest",
 }) as any as S.Schema<DeleteMeetingParticipantMeetingRequest>;
@@ -2638,7 +2799,7 @@ export const DeleteMeetingParticipantMeetingResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       data: S.optional(MeetingsDeleteMeetingParticipantResponseData),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteMeetingParticipantMeetingResponse",
 }) as any as S.Schema<DeleteMeetingParticipantMeetingResponse>;
@@ -2655,13 +2816,15 @@ export const DeletePresetRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     appId: S.String.pipe(T.Label("app_id")),
     presetId: S.String.pipe(T.Label("preset_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/realtime/kit/{app_id}/presets/{preset_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/realtime/kit/{app_id}/presets/{preset_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeletePresetRequest",
 }) as any as S.Schema<DeletePresetRequest>;
@@ -3314,7 +3477,7 @@ export interface DeletePresetResponse {
 export const DeletePresetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: PresetsDeleteResponseData,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeletePresetResponse",
 }) as any as S.Schema<DeletePresetResponse>;
@@ -3331,13 +3494,15 @@ export const DeleteWebhookWebhookRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     appId: S.String.pipe(T.Label("app_id")),
     webhookId: S.String.pipe(T.Label("webhook_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/realtime/kit/{app_id}/webhooks/{webhook_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/realtime/kit/{app_id}/webhooks/{webhook_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteWebhookWebhookRequest",
 }) as any as S.Schema<DeleteWebhookWebhookRequest>;
@@ -3394,7 +3559,7 @@ export interface DeleteWebhookWebhookResponse {
 export const DeleteWebhookWebhookResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: WebhooksDeleteWebhookResponseData,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteWebhookWebhookResponse",
 }) as any as S.Schema<DeleteWebhookWebhookResponse>;
@@ -3422,13 +3587,15 @@ export const EditParticipantMeetingRequest = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     picture: S.optional(S.String),
     presetName: S.optional(S.String.pipe(T.Body("preset_name"))),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/participants/{participant_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/participants/{participant_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "EditParticipantMeetingRequest",
 }) as any as S.Schema<EditParticipantMeetingRequest>;
@@ -3474,7 +3641,7 @@ export interface EditParticipantMeetingResponse {
 export const EditParticipantMeetingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(MeetingsEditParticipantResponseData),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "EditParticipantMeetingResponse",
 }) as any as S.Schema<EditParticipantMeetingResponse>;
@@ -3515,13 +3682,15 @@ export const EditWebhookWebhookRequest = /*@__PURE__*/ S.suspend(() =>
     events: S.optional(WebhooksEditWebhookRequestEventsList),
     name: S.optional(S.String),
     url: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/accounts/{account_id}/realtime/kit/{app_id}/webhooks/{webhook_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/accounts/{account_id}/realtime/kit/{app_id}/webhooks/{webhook_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "EditWebhookWebhookRequest",
 }) as any as S.Schema<EditWebhookWebhookRequest>;
@@ -3576,7 +3745,7 @@ export interface EditWebhookWebhookResponse {
 export const EditWebhookWebhookResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: WebhooksEditWebhookResponseData,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "EditWebhookWebhookResponse",
 }) as any as S.Schema<EditWebhookWebhookResponse>;
@@ -3594,13 +3763,15 @@ export const GenerateSummaryOfTranscriptsSessionRequest =
       accountId: S.String.pipe(T.Label("account_id")),
       appId: S.String.pipe(T.Label("app_id")),
       sessionId: S.String.pipe(T.Label("session_id")),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/accounts/{account_id}/realtime/kit/{app_id}/sessions/{session_id}/summary",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "POST",
+          uri: "/accounts/{account_id}/realtime/kit/{app_id}/sessions/{session_id}/summary",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "GenerateSummaryOfTranscriptsSessionRequest",
   }) as any as S.Schema<GenerateSummaryOfTranscriptsSessionRequest>;
@@ -3627,7 +3798,7 @@ export const GenerateSummaryOfTranscriptsSessionResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       data: S.optional(SessionsGenerateSummaryOfTranscriptsResponseData),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "GenerateSummaryOfTranscriptsSessionResponse",
   }) as any as S.Schema<GenerateSummaryOfTranscriptsSessionResponse>;
@@ -3645,13 +3816,15 @@ export const GetActiveLivestreamsForLivestreamIdLivestreamRequest =
       accountId: S.String.pipe(T.Label("account_id")),
       appId: S.String.pipe(T.Label("app_id")),
       livestreamId: S.String.pipe(T.Label("livestream_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/accounts/{account_id}/realtime/kit/{app_id}/livestreams/{livestream_id}/active-livestream-session",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "GET",
+          uri: "/accounts/{account_id}/realtime/kit/{app_id}/livestreams/{livestream_id}/active-livestream-session",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "GetActiveLivestreamsForLivestreamIdLivestreamRequest",
   }) as any as S.Schema<GetActiveLivestreamsForLivestreamIdLivestreamRequest>;
@@ -3768,7 +3941,7 @@ export const GetActiveLivestreamsForLivestreamIdLivestreamResponse =
       data: S.optional(
         LivestreamsGetActiveLivestreamsForLivestreamIdResponseData,
       ),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "GetActiveLivestreamsForLivestreamIdLivestreamResponse",
   }) as any as S.Schema<GetActiveLivestreamsForLivestreamIdLivestreamResponse>;
@@ -3785,13 +3958,15 @@ export const GetActiveRecordingsRecordingRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     appId: S.String.pipe(T.Label("app_id")),
     meetingId: S.String.pipe(T.Label("meeting_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/realtime/kit/{app_id}/recordings/active-recording/{meeting_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/realtime/kit/{app_id}/recordings/active-recording/{meeting_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetActiveRecordingsRecordingRequest",
 }) as any as S.Schema<GetActiveRecordingsRecordingRequest>;
@@ -3861,7 +4036,7 @@ export const GetActiveRecordingsRecordingResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       data: RecordingsGetActiveRecordingsResponseData,
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetActiveRecordingsRecordingResponse",
 }) as any as S.Schema<GetActiveRecordingsRecordingResponse>;
@@ -3879,13 +4054,15 @@ export const GetActiveSessionActiveSessionRequest = /*@__PURE__*/ S.suspend(
       accountId: S.String.pipe(T.Label("account_id")),
       appId: S.String.pipe(T.Label("app_id")),
       meetingId: S.String.pipe(T.Label("meeting_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/active-session",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "GET",
+          uri: "/accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/active-session",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetActiveSessionActiveSessionRequest",
 }) as any as S.Schema<GetActiveSessionActiveSessionRequest>;
@@ -3977,7 +4154,7 @@ export const GetActiveSessionActiveSessionResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       data: S.optional(ActiveSessionGetActiveSessionResponseData),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetActiveSessionActiveSessionResponse",
 }) as any as S.Schema<GetActiveSessionActiveSessionResponse>;
@@ -4032,13 +4209,15 @@ export const GetAllLivestreamsLivestreamRequest = /*@__PURE__*/ S.suspend(() =>
     status: S.optional(
       LivestreamsGetAllLivestreamsRequestStatus.pipe(T.Query()),
     ),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/realtime/kit/{app_id}/livestreams",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/realtime/kit/{app_id}/livestreams",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetAllLivestreamsLivestreamRequest",
 }) as any as S.Schema<GetAllLivestreamsLivestreamRequest>;
@@ -4116,7 +4295,7 @@ export interface GetAllLivestreamsLivestreamResponse {
 export const GetAllLivestreamsLivestreamResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(LivestreamsGetAllLivestreamsResponseData),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetAllLivestreamsLivestreamResponse",
 }) as any as S.Schema<GetAllLivestreamsLivestreamResponse>;
@@ -4143,13 +4322,15 @@ export const GetAppRequest = /*@__PURE__*/ S.suspend(() =>
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
     search: S.optional(S.String.pipe(T.Query())),
     sortOrder: S.optional(AppsGetRequestSortOrder.pipe(T.Query("sort_order"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/realtime/kit/apps",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/realtime/kit/apps",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "GetAppRequest" }) as any as S.Schema<GetAppRequest>;
 
 export interface AppsGetResponseDataItem {
@@ -4196,7 +4377,7 @@ export const GetAppResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(AppsGetResponseDataList),
     paging: S.optional(AppsGetResponsePaging),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "GetAppResponse" }) as any as S.Schema<GetAppResponse>;
 
 export interface GetLivestreamAnalyticsCompleteLivestreamRequest {
@@ -4219,13 +4400,15 @@ export const GetLivestreamAnalyticsCompleteLivestreamRequest =
       endTime: S.optional(S.Number.pipe(T.Query("end_time"))),
       filters: S.optional(S.String.pipe(T.Query())),
       startTime: S.optional(S.Number.pipe(T.Query("start_time"))),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/accounts/{account_id}/realtime/kit/{app_id}/analytics/livestreams/overall",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "GET",
+          uri: "/accounts/{account_id}/realtime/kit/{app_id}/analytics/livestreams/overall",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "GetLivestreamAnalyticsCompleteLivestreamRequest",
   }) as any as S.Schema<GetLivestreamAnalyticsCompleteLivestreamRequest>;
@@ -4261,7 +4444,7 @@ export const GetLivestreamAnalyticsCompleteLivestreamResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       data: S.optional(LivestreamsGetLivestreamAnalyticsCompleteResponseData),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "GetLivestreamAnalyticsCompleteLivestreamResponse",
   }) as any as S.Schema<GetLivestreamAnalyticsCompleteLivestreamResponse>;
@@ -4286,13 +4469,15 @@ export const GetLivestreamAnalyticsDaywiseLivestreamRequest =
       endTime: S.optional(S.Number.pipe(T.Query("end_time"))),
       filters: S.optional(S.String.pipe(T.Query())),
       startTime: S.optional(S.Number.pipe(T.Query("start_time"))),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/accounts/{account_id}/realtime/kit/{app_id}/analytics/livestreams/daywise",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "GET",
+          uri: "/accounts/{account_id}/realtime/kit/{app_id}/analytics/livestreams/daywise",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "GetLivestreamAnalyticsDaywiseLivestreamRequest",
   }) as any as S.Schema<GetLivestreamAnalyticsDaywiseLivestreamRequest>;
@@ -4340,7 +4525,7 @@ export const GetLivestreamAnalyticsDaywiseLivestreamResponse =
       data: S.optional(
         LivestreamsGetLivestreamAnalyticsDaywiseResponseDataList,
       ),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "GetLivestreamAnalyticsDaywiseLivestreamResponse",
   }) as any as S.Schema<GetLivestreamAnalyticsDaywiseLivestreamResponse>;
@@ -4358,13 +4543,15 @@ export const GetLivestreamSessionDetailsForSessionIdLivestreamRequest =
       accountId: S.String.pipe(T.Label("account_id")),
       appId: S.String.pipe(T.Label("app_id")),
       livestreamSessionId: S.String.pipe(T.Label("livestream_session_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/accounts/{account_id}/realtime/kit/{app_id}/livestreams/sessions/{livestream_session_id}",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "GET",
+          uri: "/accounts/{account_id}/realtime/kit/{app_id}/livestreams/sessions/{livestream_session_id}",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "GetLivestreamSessionDetailsForSessionIdLivestreamRequest",
   }) as any as S.Schema<GetLivestreamSessionDetailsForSessionIdLivestreamRequest>;
@@ -4416,7 +4603,7 @@ export const GetLivestreamSessionDetailsForSessionIdLivestreamResponse =
       data: S.optional(
         LivestreamsGetLivestreamSessionDetailsForSessionIdResponseData,
       ),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "GetLivestreamSessionDetailsForSessionIdLivestreamResponse",
   }) as any as S.Schema<GetLivestreamSessionDetailsForSessionIdLivestreamResponse>;
@@ -4440,13 +4627,15 @@ export const GetLivestreamSessionForLivestreamIdLivestreamRequest =
       livestreamId: S.String.pipe(T.Label("livestream_id")),
       pageNo: S.optional(S.Number.pipe(T.Query("page_no"))),
       perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/accounts/{account_id}/realtime/kit/{app_id}/livestreams/{livestream_id}",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "GET",
+          uri: "/accounts/{account_id}/realtime/kit/{app_id}/livestreams/{livestream_id}",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "GetLivestreamSessionForLivestreamIdLivestreamRequest",
   }) as any as S.Schema<GetLivestreamSessionForLivestreamIdLivestreamRequest>;
@@ -4586,7 +4775,7 @@ export const GetLivestreamSessionForLivestreamIdLivestreamResponse =
       data: S.optional(
         LivestreamsGetLivestreamSessionForLivestreamIdResponseData,
       ),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "GetLivestreamSessionForLivestreamIdLivestreamResponse",
   }) as any as S.Schema<GetLivestreamSessionForLivestreamIdLivestreamResponse>;
@@ -4622,13 +4811,15 @@ export const GetMeetingRequest = /*@__PURE__*/ S.suspend(() =>
     search: S.optional(S.String.pipe(T.Query())),
     startTime: S.optional(S.String.pipe(T.Query("start_time"))),
     status: S.optional(MeetingsGetRequestStatus.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/realtime/kit/{app_id}/meetings",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/realtime/kit/{app_id}/meetings",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetMeetingRequest",
 }) as any as S.Schema<GetMeetingRequest>;
@@ -4979,7 +5170,7 @@ export const GetMeetingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: MeetingsGetResponseDataList,
     paging: MeetingsGetResponsePaging,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetMeetingResponse",
 }) as any as S.Schema<GetMeetingResponse>;
@@ -4997,13 +5188,15 @@ export const GetMeetingActiveLivestreamsLivestreamRequest =
       accountId: S.String.pipe(T.Label("account_id")),
       appId: S.String.pipe(T.Label("app_id")),
       meetingId: S.String.pipe(T.Label("meeting_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/active-livestream",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "GET",
+          uri: "/accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/active-livestream",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "GetMeetingActiveLivestreamsLivestreamRequest",
   }) as any as S.Schema<GetMeetingActiveLivestreamsLivestreamRequest>;
@@ -5065,7 +5258,7 @@ export const GetMeetingActiveLivestreamsLivestreamResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       data: S.optional(LivestreamsGetMeetingActiveLivestreamsResponseData),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "GetMeetingActiveLivestreamsLivestreamResponse",
   }) as any as S.Schema<GetMeetingActiveLivestreamsLivestreamResponse>;
@@ -5084,13 +5277,15 @@ export const GetMeetingByIdMeetingRequest = /*@__PURE__*/ S.suspend(() =>
     appId: S.String.pipe(T.Label("app_id")),
     meetingId: S.String.pipe(T.Label("meeting_id")),
     name: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetMeetingByIdMeetingRequest",
 }) as any as S.Schema<GetMeetingByIdMeetingRequest>;
@@ -5517,7 +5712,7 @@ export interface GetMeetingByIdMeetingResponse {
 export const GetMeetingByIdMeetingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(MeetingsGetMeetingByIdResponseData),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetMeetingByIdMeetingResponse",
 }) as any as S.Schema<GetMeetingByIdMeetingResponse>;
@@ -5536,13 +5731,15 @@ export const GetMeetingParticipantMeetingRequest = /*@__PURE__*/ S.suspend(() =>
     appId: S.String.pipe(T.Label("app_id")),
     meetingId: S.String.pipe(T.Label("meeting_id")),
     participantId: S.String.pipe(T.Label("participant_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/participants/{participant_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/participants/{participant_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetMeetingParticipantMeetingRequest",
 }) as any as S.Schema<GetMeetingParticipantMeetingRequest>;
@@ -5587,7 +5784,7 @@ export const GetMeetingParticipantMeetingResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       data: MeetingsGetMeetingParticipantResponseData,
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetMeetingParticipantMeetingResponse",
 }) as any as S.Schema<GetMeetingParticipantMeetingResponse>;
@@ -5611,13 +5808,15 @@ export const GetMeetingParticipantsMeetingRequest = /*@__PURE__*/ S.suspend(
       meetingId: S.String.pipe(T.Label("meeting_id")),
       pageNo: S.optional(S.Number.pipe(T.Query("page_no"))),
       perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/participants",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "GET",
+          uri: "/accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/participants",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetMeetingParticipantsMeetingRequest",
 }) as any as S.Schema<GetMeetingParticipantsMeetingRequest>;
@@ -5686,7 +5885,7 @@ export const GetMeetingParticipantsMeetingResponse = /*@__PURE__*/ S.suspend(
     S.Struct({
       data: MeetingsGetMeetingParticipantsResponseDataList,
       paging: MeetingsGetMeetingParticipantsResponsePaging,
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetMeetingParticipantsMeetingResponse",
 }) as any as S.Schema<GetMeetingParticipantsMeetingResponse>;
@@ -5703,13 +5902,15 @@ export const GetOneRecordingRecordingRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     appId: S.String.pipe(T.Label("app_id")),
     recordingId: S.String.pipe(T.Label("recording_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/realtime/kit/{app_id}/recordings/{recording_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/realtime/kit/{app_id}/recordings/{recording_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetOneRecordingRecordingRequest",
 }) as any as S.Schema<GetOneRecordingRecordingRequest>;
@@ -5966,7 +6167,7 @@ export interface GetOneRecordingRecordingResponse {
 export const GetOneRecordingRecordingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(RecordingsGetOneRecordingResponseData),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetOneRecordingRecordingResponse",
 }) as any as S.Schema<GetOneRecordingRecordingResponse>;
@@ -5987,13 +6188,15 @@ export const GetOrgAnalyticsAnalyticRequest = /*@__PURE__*/ S.suspend(() =>
     appId: S.String.pipe(T.Label("app_id")),
     endDate: S.optional(S.String.pipe(T.Query("end_date"))),
     startDate: S.optional(S.String.pipe(T.Query("start_date"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/realtime/kit/{app_id}/analytics/daywise",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/realtime/kit/{app_id}/analytics/daywise",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetOrgAnalyticsAnalyticRequest",
 }) as any as S.Schema<GetOrgAnalyticsAnalyticRequest>;
@@ -6134,7 +6337,7 @@ export interface GetOrgAnalyticsAnalyticResponse {
 export const GetOrgAnalyticsAnalyticResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(AnalyticsGetOrgAnalyticsResponseData),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetOrgAnalyticsAnalyticResponse",
 }) as any as S.Schema<GetOrgAnalyticsAnalyticResponse>;
@@ -6170,13 +6373,15 @@ export const GetParticipantDataFromPeerIdSessionRequest =
       includePeerEvents: S.optional(
         S.Boolean.pipe(T.Query("include_peer_events")),
       ),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/accounts/{account_id}/realtime/kit/{app_id}/sessions/peer-report/{peer_id}",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "GET",
+          uri: "/accounts/{account_id}/realtime/kit/{app_id}/sessions/peer-report/{peer_id}",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "GetParticipantDataFromPeerIdSessionRequest",
   }) as any as S.Schema<GetParticipantDataFromPeerIdSessionRequest>;
@@ -8958,7 +9163,7 @@ export const GetParticipantDataFromPeerIdSessionResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       data: S.optional(SessionsGetParticipantDataFromPeerIdResponseData),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "GetParticipantDataFromPeerIdSessionResponse",
   }) as any as S.Schema<GetParticipantDataFromPeerIdSessionResponse>;
@@ -8982,13 +9187,15 @@ export const GetPresetRequest = /*@__PURE__*/ S.suspend(() =>
     pageNo: S.optional(S.Number.pipe(T.Query("page_no"))),
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
     search: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/realtime/kit/{app_id}/presets",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/realtime/kit/{app_id}/presets",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetPresetRequest",
 }) as any as S.Schema<GetPresetRequest>;
@@ -9043,7 +9250,7 @@ export const GetPresetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: PresetsGetResponseDataList,
     paging: PresetsGetResponsePaging,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetPresetResponse",
 }) as any as S.Schema<GetPresetResponse>;
@@ -9060,13 +9267,15 @@ export const GetPresetByIdPresetRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     appId: S.String.pipe(T.Label("app_id")),
     presetId: S.String.pipe(T.Label("preset_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/realtime/kit/{app_id}/presets/{preset_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/realtime/kit/{app_id}/presets/{preset_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetPresetByIdPresetRequest",
 }) as any as S.Schema<GetPresetByIdPresetRequest>;
@@ -9729,7 +9938,7 @@ export interface GetPresetByIdPresetResponse {
 export const GetPresetByIdPresetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: PresetsGetPresetByIdResponseData,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetPresetByIdPresetResponse",
 }) as any as S.Schema<GetPresetByIdPresetResponse>;
@@ -9802,13 +10011,15 @@ export const GetRecordingsRecordingRequest = /*@__PURE__*/ S.suspend(() =>
     status: S.optional(
       RecordingsGetRecordingsRequestStatusList.pipe(T.Query()),
     ),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/realtime/kit/{app_id}/recordings",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/realtime/kit/{app_id}/recordings",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetRecordingsRecordingRequest",
 }) as any as S.Schema<GetRecordingsRecordingRequest>;
@@ -10285,7 +10496,7 @@ export const GetRecordingsRecordingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: RecordingsGetRecordingsResponseDataList,
     paging: RecordingsGetRecordingsResponsePaging,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetRecordingsRecordingResponse",
 }) as any as S.Schema<GetRecordingsRecordingResponse>;
@@ -10302,13 +10513,15 @@ export const GetSessionChatSessionRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     appId: S.String.pipe(T.Label("app_id")),
     sessionId: S.String.pipe(T.Label("session_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/realtime/kit/{app_id}/sessions/{session_id}/chat",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/realtime/kit/{app_id}/sessions/{session_id}/chat",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetSessionChatSessionRequest",
 }) as any as S.Schema<GetSessionChatSessionRequest>;
@@ -10335,7 +10548,7 @@ export interface GetSessionChatSessionResponse {
 export const GetSessionChatSessionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(SessionsGetSessionChatResponseData),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetSessionChatSessionResponse",
 }) as any as S.Schema<GetSessionChatSessionResponse>;
@@ -10357,13 +10570,15 @@ export const GetSessionDetailsSessionRequest = /*@__PURE__*/ S.suspend(() =>
     includeBreakoutRooms: S.optional(
       S.Boolean.pipe(T.Query("include_breakout_rooms")),
     ),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/realtime/kit/{app_id}/sessions/{session_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/realtime/kit/{app_id}/sessions/{session_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetSessionDetailsSessionRequest",
 }) as any as S.Schema<GetSessionDetailsSessionRequest>;
@@ -10452,7 +10667,7 @@ export interface GetSessionDetailsSessionResponse {
 export const GetSessionDetailsSessionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(SessionsGetSessionDetailsResponseData),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetSessionDetailsSessionResponse",
 }) as any as S.Schema<GetSessionDetailsSessionResponse>;
@@ -10477,13 +10692,15 @@ export const GetSessionParticipantDetailsSessionRequest =
       includePeerEvents: S.optional(
         S.Boolean.pipe(T.Query("include_peer_events")),
       ),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/accounts/{account_id}/realtime/kit/{app_id}/sessions/{session_id}/participants/{participant_id}",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "GET",
+          uri: "/accounts/{account_id}/realtime/kit/{app_id}/sessions/{session_id}/participants/{participant_id}",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "GetSessionParticipantDetailsSessionRequest",
   }) as any as S.Schema<GetSessionParticipantDetailsSessionRequest>;
@@ -10625,7 +10842,7 @@ export const GetSessionParticipantDetailsSessionResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       data: S.optional(SessionsGetSessionParticipantDetailsResponseData),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "GetSessionParticipantDetailsSessionResponse",
   }) as any as S.Schema<GetSessionParticipantDetailsSessionResponse>;
@@ -10692,13 +10909,15 @@ export const GetSessionParticipantsSessionRequest = /*@__PURE__*/ S.suspend(
       view: S.optional(
         SessionsGetSessionParticipantsRequestView.pipe(T.Query()),
       ),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/accounts/{account_id}/realtime/kit/{app_id}/sessions/{session_id}/participants",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "GET",
+          uri: "/accounts/{account_id}/realtime/kit/{app_id}/sessions/{session_id}/participants",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetSessionParticipantsSessionRequest",
 }) as any as S.Schema<GetSessionParticipantsSessionRequest>;
@@ -10847,7 +11066,7 @@ export const GetSessionParticipantsSessionResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       data: S.optional(SessionsGetSessionParticipantsResponseData),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetSessionParticipantsSessionResponse",
 }) as any as S.Schema<GetSessionParticipantsSessionResponse>;
@@ -10907,13 +11126,15 @@ export const GetSessionsSessionRequest = /*@__PURE__*/ S.suspend(() =>
     ),
     startTime: S.optional(S.String.pipe(T.Query("start_time"))),
     status: S.optional(SessionsGetSessionsRequestStatus.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/realtime/kit/{app_id}/sessions",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/realtime/kit/{app_id}/sessions",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetSessionsSessionRequest",
 }) as any as S.Schema<GetSessionsSessionRequest>;
@@ -11039,7 +11260,7 @@ export const GetSessionsSessionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(SessionsGetSessionsResponseData),
     paging: S.optional(SessionsGetSessionsResponsePaging),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetSessionsSessionResponse",
 }) as any as S.Schema<GetSessionsSessionResponse>;
@@ -11056,13 +11277,15 @@ export const GetSessionSummarySessionRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     appId: S.String.pipe(T.Label("app_id")),
     sessionId: S.String.pipe(T.Label("session_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/realtime/kit/{app_id}/sessions/{session_id}/summary",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/realtime/kit/{app_id}/sessions/{session_id}/summary",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetSessionSummarySessionRequest",
 }) as any as S.Schema<GetSessionSummarySessionRequest>;
@@ -11092,7 +11315,7 @@ export interface GetSessionSummarySessionResponse {
 export const GetSessionSummarySessionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(SessionsGetSessionSummaryResponseData),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetSessionSummarySessionResponse",
 }) as any as S.Schema<GetSessionSummarySessionResponse>;
@@ -11123,13 +11346,15 @@ export const GetSessionTranscriptsSessionRequest = /*@__PURE__*/ S.suspend(() =>
     format: S.optional(
       SessionsGetSessionTranscriptsRequestFormat.pipe(T.Query()),
     ),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/realtime/kit/{app_id}/sessions/{session_id}/transcript",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/realtime/kit/{app_id}/sessions/{session_id}/transcript",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetSessionTranscriptsSessionRequest",
 }) as any as S.Schema<GetSessionTranscriptsSessionRequest>;
@@ -11162,7 +11387,7 @@ export const GetSessionTranscriptsSessionResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       data: S.optional(SessionsGetSessionTranscriptsResponseData),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetSessionTranscriptsSessionResponse",
 }) as any as S.Schema<GetSessionTranscriptsSessionResponse>;
@@ -11179,13 +11404,15 @@ export const GetWebhookByIdWebhookRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     appId: S.String.pipe(T.Label("app_id")),
     webhookId: S.String.pipe(T.Label("webhook_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/realtime/kit/{app_id}/webhooks/{webhook_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/realtime/kit/{app_id}/webhooks/{webhook_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetWebhookByIdWebhookRequest",
 }) as any as S.Schema<GetWebhookByIdWebhookRequest>;
@@ -11242,7 +11469,7 @@ export interface GetWebhookByIdWebhookResponse {
 export const GetWebhookByIdWebhookResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: WebhooksGetWebhookByIdResponseData,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetWebhookByIdWebhookResponse",
 }) as any as S.Schema<GetWebhookByIdWebhookResponse>;
@@ -11257,13 +11484,15 @@ export const GetWebhooksWebhookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     appId: S.String.pipe(T.Label("app_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/realtime/kit/{app_id}/webhooks",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/realtime/kit/{app_id}/webhooks",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetWebhooksWebhookRequest",
 }) as any as S.Schema<GetWebhooksWebhookRequest>;
@@ -11326,7 +11555,7 @@ export interface GetWebhooksWebhookResponse {
 export const GetWebhooksWebhookResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: WebhooksGetWebhooksResponseDataList,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetWebhooksWebhookResponse",
 }) as any as S.Schema<GetWebhooksWebhookResponse>;
@@ -11344,13 +11573,15 @@ export const KickAllParticipantsActiveSessionRequest = /*@__PURE__*/ S.suspend(
       accountId: S.String.pipe(T.Label("account_id")),
       appId: S.String.pipe(T.Label("app_id")),
       meetingId: S.String.pipe(T.Label("meeting_id")),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/active-session/kick-all",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "POST",
+          uri: "/accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/active-session/kick-all",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "KickAllParticipantsActiveSessionRequest",
 }) as any as S.Schema<KickAllParticipantsActiveSessionRequest>;
@@ -11379,7 +11610,7 @@ export const KickAllParticipantsActiveSessionResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       data: S.optional(ActiveSessionKickAllParticipantsResponseData),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "KickAllParticipantsActiveSessionResponse",
 }) as any as S.Schema<KickAllParticipantsActiveSessionResponse>;
@@ -11420,13 +11651,15 @@ export const KickParticipantsActiveSessionRequest = /*@__PURE__*/ S.suspend(
         ActiveSessionKickParticipantsRequestParticipantIdsList.pipe(
           T.Body("participant_ids"),
         ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/active-session/kick",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "POST",
+          uri: "/accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/active-session/kick",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "KickParticipantsActiveSessionRequest",
 }) as any as S.Schema<KickParticipantsActiveSessionRequest>;
@@ -11488,7 +11721,7 @@ export const KickParticipantsActiveSessionResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       data: S.optional(ActiveSessionKickParticipantsResponseData),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "KickParticipantsActiveSessionResponse",
 }) as any as S.Schema<KickParticipantsActiveSessionResponse>;
@@ -11509,13 +11742,15 @@ export const LivestreamsGetOrgAnalyticsRequest = /*@__PURE__*/ S.suspend(() =>
     appId: S.String.pipe(T.Label("app_id")),
     endDate: S.optional(S.String.pipe(T.Query("end_date"))),
     startDate: S.optional(S.String.pipe(T.Query("start_date"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/realtime/kit/{app_id}/analytics/daywise",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/realtime/kit/{app_id}/analytics/daywise",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "LivestreamsGetOrgAnalyticsRequest",
 }) as any as S.Schema<LivestreamsGetOrgAnalyticsRequest>;
@@ -11657,7 +11892,7 @@ export interface LivestreamsGetOrgAnalyticsResponse {
 export const LivestreamsGetOrgAnalyticsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(LivestreamsGetOrgAnalyticsResponseData),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "LivestreamsGetOrgAnalyticsResponse",
 }) as any as S.Schema<LivestreamsGetOrgAnalyticsResponse>;
@@ -12314,13 +12549,15 @@ export const PatchPresetRequest = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     permissions: S.optional(PresetsUpdateRequestPermissions),
     ui: S.optional(PresetsUpdateRequestUi),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/accounts/{account_id}/realtime/kit/{app_id}/presets/{preset_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/accounts/{account_id}/realtime/kit/{app_id}/presets/{preset_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchPresetRequest",
 }) as any as S.Schema<PatchPresetRequest>;
@@ -12973,7 +13210,7 @@ export interface PatchPresetResponse {
 export const PatchPresetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: PresetsUpdateResponseData,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchPresetResponse",
 }) as any as S.Schema<PatchPresetResponse>;
@@ -13000,13 +13237,15 @@ export const PauseResumeStopRecordingRecordingRequest = /*@__PURE__*/ S.suspend(
       appId: S.String.pipe(T.Label("app_id")),
       recordingId: S.String.pipe(T.Label("recording_id")),
       action: RecordingsPauseResumeStopRecordingRequestAction,
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/accounts/{account_id}/realtime/kit/{app_id}/recordings/{recording_id}",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "PUT",
+          uri: "/accounts/{account_id}/realtime/kit/{app_id}/recordings/{recording_id}",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PauseResumeStopRecordingRecordingRequest",
 }) as any as S.Schema<PauseResumeStopRecordingRecordingRequest>;
@@ -13264,7 +13503,7 @@ export const PauseResumeStopRecordingRecordingResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       data: S.optional(RecordingsPauseResumeStopRecordingResponseData),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "PauseResumeStopRecordingRecordingResponse",
   }) as any as S.Schema<PauseResumeStopRecordingRecordingResponse>;
@@ -13278,13 +13517,15 @@ export const PostAppRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     name: S.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/realtime/kit/apps",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/realtime/kit/apps",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "PostAppRequest" }) as any as S.Schema<PostAppRequest>;
 
 export interface AppsPostResponseDataApp {
@@ -13320,7 +13561,7 @@ export interface PostAppResponse {
 export const PostAppResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(AppsPostResponseData),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PostAppResponse",
 }) as any as S.Schema<PostAppResponse>;
@@ -13340,13 +13581,15 @@ export const RefreshParticipantTokenMeetingRequest = /*@__PURE__*/ S.suspend(
       appId: S.String.pipe(T.Label("app_id")),
       meetingId: S.String.pipe(T.Label("meeting_id")),
       participantId: S.String.pipe(T.Label("participant_id")),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/participants/{participant_id}/token",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "POST",
+          uri: "/accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/participants/{participant_id}/token",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "RefreshParticipantTokenMeetingRequest",
 }) as any as S.Schema<RefreshParticipantTokenMeetingRequest>;
@@ -13373,7 +13616,7 @@ export const RefreshParticipantTokenMeetingResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       data: MeetingsRefreshParticipantTokenResponseData,
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "RefreshParticipantTokenMeetingResponse",
 }) as any as S.Schema<RefreshParticipantTokenMeetingResponse>;
@@ -13782,13 +14025,15 @@ export const ReplaceMeetingByIdMeetingRequest = /*@__PURE__*/ S.suspend(() =>
     summarizeOnEnd: S.optional(S.Boolean.pipe(T.Body("summarize_on_end"))),
     title: S.optional(S.String),
     transcribeOnEnd: S.optional(S.Boolean.pipe(T.Body("transcribe_on_end"))),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ReplaceMeetingByIdMeetingRequest",
 }) as any as S.Schema<ReplaceMeetingByIdMeetingRequest>;
@@ -14212,7 +14457,7 @@ export interface ReplaceMeetingByIdMeetingResponse {
 export const ReplaceMeetingByIdMeetingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(MeetingsReplaceMeetingByIdResponseData),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ReplaceMeetingByIdMeetingResponse",
 }) as any as S.Schema<ReplaceMeetingByIdMeetingResponse>;
@@ -14254,13 +14499,15 @@ export const ReplaceWebhookWebhookRequest = /*@__PURE__*/ S.suspend(() =>
     name: S.String,
     url: S.String,
     enabled: S.optional(S.Boolean),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/realtime/kit/{app_id}/webhooks/{webhook_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/realtime/kit/{app_id}/webhooks/{webhook_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ReplaceWebhookWebhookRequest",
 }) as any as S.Schema<ReplaceWebhookWebhookRequest>;
@@ -14317,7 +14564,7 @@ export interface ReplaceWebhookWebhookResponse {
 export const ReplaceWebhookWebhookResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: WebhooksReplaceWebhookResponseData,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ReplaceWebhookWebhookResponse",
 }) as any as S.Schema<ReplaceWebhookWebhookResponse>;
@@ -14359,13 +14606,15 @@ export const StartLivestreamingAMeetingLivestreamRequest =
           T.Body("video_config"),
         ),
       ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/livestreams",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "POST",
+          uri: "/accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/livestreams",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "StartLivestreamingAMeetingLivestreamRequest",
   }) as any as S.Schema<StartLivestreamingAMeetingLivestreamRequest>;
@@ -14413,7 +14662,7 @@ export const StartLivestreamingAMeetingLivestreamResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       data: S.optional(LivestreamsStartLivestreamingAMeetingResponseData),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "StartLivestreamingAMeetingLivestreamResponse",
   }) as any as S.Schema<StartLivestreamingAMeetingLivestreamResponse>;
@@ -14704,13 +14953,15 @@ export const StartRecordingsRecordingRequest = /*@__PURE__*/ S.suspend(() =>
     videoConfig: S.optional(
       RecordingsStartRecordingsRequestVideoConfig.pipe(T.Body("video_config")),
     ),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/realtime/kit/{app_id}/recordings",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/realtime/kit/{app_id}/recordings",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "StartRecordingsRecordingRequest",
 }) as any as S.Schema<StartRecordingsRecordingRequest>;
@@ -14967,7 +15218,7 @@ export interface StartRecordingsRecordingResponse {
 export const StartRecordingsRecordingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(RecordingsStartRecordingsResponseData),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "StartRecordingsRecordingResponse",
 }) as any as S.Schema<StartRecordingsRecordingResponse>;
@@ -15008,13 +15259,15 @@ export const StartTrackRecordingRecordingRequest = /*@__PURE__*/ S.suspend(() =>
     userIds: S.optional(
       RecordingsStartTrackRecordingRequestUserIdsList.pipe(T.Body("user_ids")),
     ),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/realtime/kit/{app_id}/recordings/track",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/realtime/kit/{app_id}/recordings/track",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "StartTrackRecordingRecordingRequest",
 }) as any as S.Schema<StartTrackRecordingRecordingRequest>;
@@ -15096,7 +15349,7 @@ export const StartTrackRecordingRecordingResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       data: S.optional(RecordingsStartTrackRecordingResponseData),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "StartTrackRecordingRecordingResponse",
 }) as any as S.Schema<StartTrackRecordingRecordingResponse>;
@@ -15114,13 +15367,15 @@ export const StopLivestreamingAMeetingLivestreamRequest =
       accountId: S.String.pipe(T.Label("account_id")),
       appId: S.String.pipe(T.Label("app_id")),
       meetingId: S.String.pipe(T.Label("meeting_id")),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/active-livestream/stop",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "POST",
+          uri: "/accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/active-livestream/stop",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "StopLivestreamingAMeetingLivestreamRequest",
   }) as any as S.Schema<StopLivestreamingAMeetingLivestreamRequest>;
@@ -15145,7 +15400,7 @@ export const StopLivestreamingAMeetingLivestreamResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       data: S.optional(LivestreamsStopLivestreamingAMeetingResponseData),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "StopLivestreamingAMeetingLivestreamResponse",
   }) as any as S.Schema<StopLivestreamingAMeetingLivestreamResponse>;
@@ -15565,13 +15820,15 @@ export const UpdateMeetingByIdMeetingRequest = /*@__PURE__*/ S.suspend(() =>
     summarizeOnEnd: S.optional(S.Boolean.pipe(T.Body("summarize_on_end"))),
     title: S.optional(S.String),
     transcribeOnEnd: S.optional(S.Boolean.pipe(T.Body("transcribe_on_end"))),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateMeetingByIdMeetingRequest",
 }) as any as S.Schema<UpdateMeetingByIdMeetingRequest>;
@@ -15993,7 +16250,7 @@ export interface UpdateMeetingByIdMeetingResponse {
 export const UpdateMeetingByIdMeetingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(MeetingsUpdateMeetingByIdResponseData),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateMeetingByIdMeetingResponse",
 }) as any as S.Schema<UpdateMeetingByIdMeetingResponse>;

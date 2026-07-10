@@ -14,6 +14,28 @@ import * as Retry from "../retry.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
+/** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
+const KEY_DICTIONARY: Record<string, string> = {
+  accountId: "account_id",
+  accountName: "account_name",
+  associatedRecipientCount: "associated_recipient_count",
+  associatingRecipientCount: "associating_recipient_count",
+  associationStatus: "association_status",
+  bodyAccountId: "body_account_id",
+  disassociatedRecipientCount: "disassociated_recipient_count",
+  disassociatingRecipientCount: "disassociating_recipient_count",
+  organizationId: "organization_id",
+  perPage: "per_page",
+  recipientAccountId: "recipient_account_id",
+  resourceAccountId: "resource_account_id",
+  resourceId: "resource_id",
+  resourceType: "resource_type",
+  resourceVersion: "resource_version",
+  resultInfo: "result_info",
+  targetType: "target_type",
+  totalCount: "total_count",
+};
+
 export class Forbidden extends T.applyErrorMatchers(
   S.TaggedErrorClass<Forbidden>()("Forbidden", {
     code: S.Number,
@@ -67,13 +89,15 @@ export const CreateRecipientRequest = /*@__PURE__*/ S.suspend(() =>
     recipientAccountId: S.optional(
       S.String.pipe(T.Body("recipient_account_id")),
     ),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/shares/{share_id}/recipients",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/shares/{share_id}/recipients",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateRecipientRequest",
 }) as any as S.Schema<CreateRecipientRequest>;
@@ -138,7 +162,7 @@ export const CreateRecipientResponse = /*@__PURE__*/ S.suspend(() =>
     created: S.String,
     modified: S.String,
     resources: S.optional(RecipientsCreateResponseResourcesList),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateRecipientResponse",
 }) as any as S.Schema<CreateRecipientResponse>;
@@ -174,13 +198,15 @@ export const CreateResourceRequest = /*@__PURE__*/ S.suspend(() =>
     resourceType: ResourcesCreateRequestResourceType.pipe(
       T.Body("resource_type"),
     ),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/shares/{share_id}/resources",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/shares/{share_id}/resources",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateResourceRequest",
 }) as any as S.Schema<CreateResourceRequest>;
@@ -233,7 +259,7 @@ export const CreateResourceResponse = /*@__PURE__*/ S.suspend(() =>
     ),
     resourceVersion: S.Number.pipe(T.Body("resource_version")),
     status: ResourcesCreateResponseStatus,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateResourceResponse",
 }) as any as S.Schema<CreateResourceResponse>;
@@ -312,9 +338,15 @@ export const CreateResourceSharingRequest = /*@__PURE__*/ S.suspend(() =>
     name: S.String,
     recipients: CreateRequestRecipientsList,
     resources: CreateRequestResourcesList,
-  }).pipe(
-    T.Http({ method: "POST", uri: "/accounts/{account_id}/shares", code: 200 }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/shares",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateResourceSharingRequest",
 }) as any as S.Schema<CreateResourceSharingRequest>;
@@ -447,7 +479,7 @@ export const CreateResourceSharingResponse = /*@__PURE__*/ S.suspend(() =>
     ),
     kind: S.optional(CreateResponseKind),
     resources: S.optional(CreateResponseResourcesList),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateResourceSharingResponse",
 }) as any as S.Schema<CreateResourceSharingResponse>;
@@ -465,13 +497,15 @@ export const DeleteRecipientRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     shareId: S.String.pipe(T.Label("share_id")),
     recipientId: S.String.pipe(T.Label("recipient_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/shares/{share_id}/recipients/{recipient_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/shares/{share_id}/recipients/{recipient_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteRecipientRequest",
 }) as any as S.Schema<DeleteRecipientRequest>;
@@ -536,7 +570,7 @@ export const DeleteRecipientResponse = /*@__PURE__*/ S.suspend(() =>
     created: S.String,
     modified: S.String,
     resources: S.optional(RecipientsDeleteResponseResourcesList),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteRecipientResponse",
 }) as any as S.Schema<DeleteRecipientResponse>;
@@ -554,13 +588,15 @@ export const DeleteResourceRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     shareId: S.String.pipe(T.Label("share_id")),
     shareResourceId: S.String.pipe(T.Label("share_resource_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/shares/{share_id}/resources/{share_resource_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/shares/{share_id}/resources/{share_resource_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteResourceRequest",
 }) as any as S.Schema<DeleteResourceRequest>;
@@ -613,7 +649,7 @@ export const DeleteResourceResponse = /*@__PURE__*/ S.suspend(() =>
     ),
     resourceVersion: S.Number.pipe(T.Body("resource_version")),
     status: ResourcesDeleteResponseStatus,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteResourceResponse",
 }) as any as S.Schema<DeleteResourceResponse>;
@@ -628,13 +664,15 @@ export const DeleteResourceSharingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     shareId: S.String.pipe(T.Label("share_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/shares/{share_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/shares/{share_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteResourceSharingRequest",
 }) as any as S.Schema<DeleteResourceSharingRequest>;
@@ -767,7 +805,7 @@ export const DeleteResourceSharingResponse = /*@__PURE__*/ S.suspend(() =>
     ),
     kind: S.optional(DeleteResponseKind),
     resources: S.optional(DeleteResponseResourcesList),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteResourceSharingResponse",
 }) as any as S.Schema<DeleteResourceSharingResponse>;
@@ -788,13 +826,15 @@ export const GetRecipientRequest = /*@__PURE__*/ S.suspend(() =>
     shareId: S.String.pipe(T.Label("share_id")),
     recipientId: S.String.pipe(T.Label("recipient_id")),
     includeResources: S.optional(S.Boolean.pipe(T.Query("include_resources"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/shares/{share_id}/recipients/{recipient_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/shares/{share_id}/recipients/{recipient_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetRecipientRequest",
 }) as any as S.Schema<GetRecipientRequest>;
@@ -858,7 +898,7 @@ export const GetRecipientResponse = /*@__PURE__*/ S.suspend(() =>
     created: S.String,
     modified: S.String,
     resources: S.optional(RecipientsGetResponseResourcesList),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetRecipientResponse",
 }) as any as S.Schema<GetRecipientResponse>;
@@ -876,13 +916,15 @@ export const GetResourceRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     shareId: S.String.pipe(T.Label("share_id")),
     shareResourceId: S.String.pipe(T.Label("share_resource_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/shares/{share_id}/resources/{share_resource_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/shares/{share_id}/resources/{share_resource_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetResourceRequest",
 }) as any as S.Schema<GetResourceRequest>;
@@ -935,7 +977,7 @@ export const GetResourceResponse = /*@__PURE__*/ S.suspend(() =>
     ),
     resourceVersion: S.Number.pipe(T.Body("resource_version")),
     status: ResourcesGetResponseStatus,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetResourceResponse",
 }) as any as S.Schema<GetResourceResponse>;
@@ -958,13 +1000,15 @@ export const GetResourceSharingRequest = /*@__PURE__*/ S.suspend(() =>
       S.Boolean.pipe(T.Query("include_recipient_counts")),
     ),
     includeResources: S.optional(S.Boolean.pipe(T.Query("include_resources"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/shares/{share_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/shares/{share_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetResourceSharingRequest",
 }) as any as S.Schema<GetResourceSharingRequest>;
@@ -1094,7 +1138,7 @@ export const GetResourceSharingResponse = /*@__PURE__*/ S.suspend(() =>
     ),
     kind: S.optional(GetResponseKind),
     resources: S.optional(GetResponseResourcesList),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetResourceSharingResponse",
 }) as any as S.Schema<GetResourceSharingResponse>;
@@ -1118,13 +1162,15 @@ export const ListRecipientsRequest = /*@__PURE__*/ S.suspend(() =>
     includeResources: S.optional(S.Boolean.pipe(T.Query("include_resources"))),
     page: S.optional(S.Number.pipe(T.Query())),
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/shares/{share_id}/recipients",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/shares/{share_id}/recipients",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListRecipientsRequest",
 }) as any as S.Schema<ListRecipientsRequest>;
@@ -1208,7 +1254,7 @@ export const ListRecipientsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: RecipientsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListRecipientsResponse",
 }) as any as S.Schema<ListRecipientsResponse>;
@@ -1251,13 +1297,15 @@ export const ListResourcesRequest = /*@__PURE__*/ S.suspend(() =>
       ResourcesListRequestResourceType.pipe(T.Query("resource_type")),
     ),
     status: S.optional(ResourcesListRequestStatus.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/shares/{share_id}/resources",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/shares/{share_id}/resources",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListResourcesRequest",
 }) as any as S.Schema<ListResourcesRequest>;
@@ -1329,7 +1377,7 @@ export const ListResourcesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: ResourcesListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListResourcesResponse",
 }) as any as S.Schema<ListResourcesResponse>;
@@ -1414,9 +1462,15 @@ export const ListResourceSharingsRequest = /*@__PURE__*/ S.suspend(() =>
     status: S.optional(ListRequestStatus.pipe(T.Query())),
     tag: S.optional(ListRequestTagList.pipe(T.Query())),
     targetType: S.optional(ListRequestTargetType.pipe(T.Query("target_type"))),
-  }).pipe(
-    T.Http({ method: "GET", uri: "/accounts/{account_id}/shares", code: 200 }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/shares",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListResourceSharingsRequest",
 }) as any as S.Schema<ListResourceSharingsRequest>;
@@ -1566,7 +1620,7 @@ export const ListResourceSharingsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: ListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListResourceSharingsResponse",
 }) as any as S.Schema<ListResourceSharingsResponse>;
@@ -1587,13 +1641,15 @@ export const UpdateResourceRequest = /*@__PURE__*/ S.suspend(() =>
     shareId: S.String.pipe(T.Label("share_id")),
     shareResourceId: S.String.pipe(T.Label("share_resource_id")),
     meta: S.Unknown,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/shares/{share_id}/resources/{share_resource_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/shares/{share_id}/resources/{share_resource_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateResourceRequest",
 }) as any as S.Schema<UpdateResourceRequest>;
@@ -1646,7 +1702,7 @@ export const UpdateResourceResponse = /*@__PURE__*/ S.suspend(() =>
     ),
     resourceVersion: S.Number.pipe(T.Body("resource_version")),
     status: ResourcesUpdateResponseStatus,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateResourceResponse",
 }) as any as S.Schema<UpdateResourceResponse>;
@@ -1664,13 +1720,15 @@ export const UpdateResourceSharingRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     shareId: S.String.pipe(T.Label("share_id")),
     name: S.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/shares/{share_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/shares/{share_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateResourceSharingRequest",
 }) as any as S.Schema<UpdateResourceSharingRequest>;
@@ -1803,7 +1861,7 @@ export const UpdateResourceSharingResponse = /*@__PURE__*/ S.suspend(() =>
     ),
     kind: S.optional(UpdateResponseKind),
     resources: S.optional(UpdateResponseResourcesList),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateResourceSharingResponse",
 }) as any as S.Schema<UpdateResourceSharingResponse>;

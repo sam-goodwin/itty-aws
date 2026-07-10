@@ -14,6 +14,48 @@ import * as Retry from "../retry.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
+/** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
+const KEY_DICTIONARY: Record<string, string> = {
+  backlogBytes: "backlog_bytes",
+  backlogCount: "backlog_count",
+  batchSize: "batch_size",
+  bucketName: "bucket_name",
+  consumerId: "consumer_id",
+  consumersTotalCount: "consumers_total_count",
+  contentType: "content_type",
+  createdAt: "created_at",
+  createdOn: "created_on",
+  deadLetterQueue: "dead_letter_queue",
+  delaySeconds: "delay_seconds",
+  deleteMessagesPermanently: "delete_messages_permanently",
+  deliveryDelay: "delivery_delay",
+  deliveryPaused: "delivery_paused",
+  documentationUrl: "documentation_url",
+  leaseId: "lease_id",
+  maxConcurrency: "max_concurrency",
+  maxRetries: "max_retries",
+  maxWaitTimeMs: "max_wait_time_ms",
+  messageBacklogCount: "message_backlog_count",
+  messageRetentionPeriod: "message_retention_period",
+  modelName: "model_name",
+  modifiedAt: "modified_at",
+  modifiedOn: "modified_on",
+  oldestMessageTimestampMs: "oldest_message_timestamp_ms",
+  perPage: "per_page",
+  producersTotalCount: "producers_total_count",
+  queueId: "queue_id",
+  queueName: "queue_name",
+  resultInfo: "result_info",
+  retryDelay: "retry_delay",
+  scriptName: "script_name",
+  startedAt: "started_at",
+  timestampMs: "timestamp_ms",
+  totalCount: "total_count",
+  visibilityTimeoutMs: "visibility_timeout_ms",
+  workerName: "worker_name",
+  workflowName: "workflow_name",
+};
+
 export class ConsumerAlreadyExists extends T.applyErrorMatchers(
   S.TaggedErrorClass<ConsumerAlreadyExists>()("ConsumerAlreadyExists", {
     code: S.Number,
@@ -204,13 +246,15 @@ export const AckMessageRequest = /*@__PURE__*/ S.suspend(() =>
     queueId: S.String.pipe(T.Label("queue_id")),
     acks: S.optional(MessagesAckRequestAcksList),
     retries: S.optional(MessagesAckRequestRetriesList),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/queues/{queue_id}/messages/ack",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/queues/{queue_id}/messages/ack",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "AckMessageRequest",
 }) as any as S.Schema<AckMessageRequest>;
@@ -237,7 +281,7 @@ export const AckMessageResponse = /*@__PURE__*/ S.suspend(() =>
     ackCount: S.optional(S.Number),
     retryCount: S.optional(S.Number),
     warnings: S.optional(MessagesAckResponseWarningsMap),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "AckMessageResponse",
 }) as any as S.Schema<AckMessageResponse>;
@@ -280,13 +324,15 @@ export const BulkPushMessagesRequest = /*@__PURE__*/ S.suspend(() =>
     queueId: S.String.pipe(T.Label("queue_id")),
     delaySeconds: S.optional(S.Number.pipe(T.Body("delay_seconds"))),
     messages: S.optional(MessagesBulkPushRequestMessagesList),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/queues/{queue_id}/messages/batch",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/queues/{queue_id}/messages/batch",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "BulkPushMessagesRequest",
 }) as any as S.Schema<BulkPushMessagesRequest>;
@@ -331,7 +377,7 @@ export interface BulkPushMessagesResponse {
 export const BulkPushMessagesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metadata: S.optional(MessagesBulkPushResponseMetadata),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "BulkPushMessagesResponse",
 }) as any as S.Schema<BulkPushMessagesResponse>;
@@ -368,13 +414,15 @@ export const CreateConsumerRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     queueId: S.String.pipe(T.Label("queue_id")),
     body: ConsumersCreateRequestBody,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/queues/{queue_id}/consumers",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/queues/{queue_id}/consumers",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateConsumerRequest",
 }) as any as S.Schema<CreateConsumerRequest>;
@@ -396,7 +444,7 @@ export const CreateConsumerResponse = /*@__PURE__*/ S.suspend(() =>
         "HTTPPull object { consumer_id, created_on, dead_letter_queue, 3 more }",
       ),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateConsumerResponse",
 }) as any as S.Schema<CreateConsumerResponse>;
@@ -410,9 +458,15 @@ export const CreateQueueRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     queueName: S.String.pipe(T.Body("queue_name")),
-  }).pipe(
-    T.Http({ method: "POST", uri: "/accounts/{account_id}/queues", code: 200 }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/queues",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateQueueRequest",
 }) as any as S.Schema<CreateQueueRequest>;
@@ -512,7 +566,7 @@ export const CreateQueueResponse = /*@__PURE__*/ S.suspend(() =>
     queueId: S.optional(S.String.pipe(T.Body("queue_id"))),
     queueName: S.optional(S.String.pipe(T.Body("queue_name"))),
     settings: S.optional(CreateResponseSettings),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateQueueResponse",
 }) as any as S.Schema<CreateQueueResponse>;
@@ -606,13 +660,15 @@ export const CreateSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
     events: S.optional(SubscriptionsCreateRequestEventsList),
     name: S.optional(S.String),
     source: S.optional(SubscriptionsCreateRequestSource),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/event_subscriptions/subscriptions",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/event_subscriptions/subscriptions",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateSubscriptionRequest",
 }) as any as S.Schema<CreateSubscriptionRequest>;
@@ -714,7 +770,7 @@ export const CreateSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
     modifiedAt: S.String.pipe(T.Body("modified_at")),
     name: S.String,
     source: SubscriptionsCreateResponseSource,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateSubscriptionResponse",
 }) as any as S.Schema<CreateSubscriptionResponse>;
@@ -732,20 +788,22 @@ export const DeleteConsumerRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     queueId: S.String.pipe(T.Label("queue_id")),
     consumerId: S.String.pipe(T.Label("consumer_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/queues/{queue_id}/consumers/{consumer_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/queues/{queue_id}/consumers/{consumer_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteConsumerRequest",
 }) as any as S.Schema<DeleteConsumerRequest>;
 
 export interface DeleteConsumerResponse {}
 export const DeleteConsumerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
+  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteConsumerResponse",
 }) as any as S.Schema<DeleteConsumerResponse>;
@@ -760,20 +818,22 @@ export const DeleteQueueRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     queueId: S.String.pipe(T.Label("queue_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/queues/{queue_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/queues/{queue_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteQueueRequest",
 }) as any as S.Schema<DeleteQueueRequest>;
 
 export interface DeleteQueueResponse {}
 export const DeleteQueueResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
+  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteQueueResponse",
 }) as any as S.Schema<DeleteQueueResponse>;
@@ -788,13 +848,15 @@ export const DeleteSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     subscriptionId: S.String.pipe(T.Label("subscription_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/event_subscriptions/subscriptions/{subscription_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/event_subscriptions/subscriptions/{subscription_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteSubscriptionRequest",
 }) as any as S.Schema<DeleteSubscriptionRequest>;
@@ -896,7 +958,7 @@ export const DeleteSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
     modifiedAt: S.String.pipe(T.Body("modified_at")),
     name: S.String,
     source: SubscriptionsDeleteResponseSource,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteSubscriptionResponse",
 }) as any as S.Schema<DeleteSubscriptionResponse>;
@@ -914,13 +976,15 @@ export const GetConsumerRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     queueId: S.String.pipe(T.Label("queue_id")),
     consumerId: S.String.pipe(T.Label("consumer_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/queues/{queue_id}/consumers/{consumer_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/queues/{queue_id}/consumers/{consumer_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetConsumerRequest",
 }) as any as S.Schema<GetConsumerRequest>;
@@ -942,7 +1006,7 @@ export const GetConsumerResponse = /*@__PURE__*/ S.suspend(() =>
         "HTTPPull object { consumer_id, created_on, dead_letter_queue, 3 more }",
       ),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetConsumerResponse",
 }) as any as S.Schema<GetConsumerResponse>;
@@ -957,13 +1021,15 @@ export const GetMetricsQueueRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     queueId: S.String.pipe(T.Label("queue_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/queues/{queue_id}/metrics",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/queues/{queue_id}/metrics",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetMetricsQueueRequest",
 }) as any as S.Schema<GetMetricsQueueRequest>;
@@ -984,7 +1050,7 @@ export const GetMetricsQueueResponse = /*@__PURE__*/ S.suspend(() =>
     oldestMessageTimestampMs: S.Number.pipe(
       T.Body("oldest_message_timestamp_ms"),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetMetricsQueueResponse",
 }) as any as S.Schema<GetMetricsQueueResponse>;
@@ -999,13 +1065,15 @@ export const GetQueueRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     queueId: S.String.pipe(T.Label("queue_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/queues/{queue_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/queues/{queue_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetQueueRequest",
 }) as any as S.Schema<GetQueueRequest>;
@@ -1105,7 +1173,7 @@ export const GetQueueResponse = /*@__PURE__*/ S.suspend(() =>
     queueId: S.optional(S.String.pipe(T.Body("queue_id"))),
     queueName: S.optional(S.String.pipe(T.Body("queue_name"))),
     settings: S.optional(GetResponseSettings),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetQueueResponse",
 }) as any as S.Schema<GetQueueResponse>;
@@ -1120,13 +1188,15 @@ export const GetSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     subscriptionId: S.String.pipe(T.Label("subscription_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/event_subscriptions/subscriptions/{subscription_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/event_subscriptions/subscriptions/{subscription_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetSubscriptionRequest",
 }) as any as S.Schema<GetSubscriptionRequest>;
@@ -1226,7 +1296,7 @@ export const GetSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
     modifiedAt: S.String.pipe(T.Body("modified_at")),
     name: S.String,
     source: SubscriptionsGetResponseSource,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetSubscriptionResponse",
 }) as any as S.Schema<GetSubscriptionResponse>;
@@ -1241,13 +1311,15 @@ export const ListConsumersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     queueId: S.String.pipe(T.Label("queue_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/queues/{queue_id}/consumers",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/queues/{queue_id}/consumers",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListConsumersRequest",
 }) as any as S.Schema<ListConsumersRequest>;
@@ -1288,7 +1360,7 @@ export const ListConsumersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: ConsumersListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListConsumersResponse",
 }) as any as S.Schema<ListConsumersResponse>;
@@ -1300,9 +1372,15 @@ export interface ListQueuesRequest {
 export const ListQueuesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({ method: "GET", uri: "/accounts/{account_id}/queues", code: 200 }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/queues",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListQueuesRequest",
 }) as any as S.Schema<ListQueuesRequest>;
@@ -1419,7 +1497,7 @@ export const ListQueuesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: ListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListQueuesResponse",
 }) as any as S.Schema<ListQueuesResponse>;
@@ -1454,13 +1532,15 @@ export const ListSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
     order: S.optional(SubscriptionsListRequestOrder.pipe(T.Query())),
     page: S.optional(S.Number.pipe(T.Query())),
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/event_subscriptions/subscriptions",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/event_subscriptions/subscriptions",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListSubscriptionsRequest",
 }) as any as S.Schema<ListSubscriptionsRequest>;
@@ -1581,7 +1661,7 @@ export const ListSubscriptionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: SubscriptionsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListSubscriptionsResponse",
 }) as any as S.Schema<ListSubscriptionsResponse>;
@@ -1620,13 +1700,15 @@ export const PatchQueueRequest = /*@__PURE__*/ S.suspend(() =>
     queueId: S.String.pipe(T.Label("queue_id")),
     queueName: S.optional(S.String.pipe(T.Body("queue_name"))),
     settings: S.optional(EditRequestSettings),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/accounts/{account_id}/queues/{queue_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/accounts/{account_id}/queues/{queue_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchQueueRequest",
 }) as any as S.Schema<PatchQueueRequest>;
@@ -1726,7 +1808,7 @@ export const PatchQueueResponse = /*@__PURE__*/ S.suspend(() =>
     queueId: S.optional(S.String.pipe(T.Body("queue_id"))),
     queueName: S.optional(S.String.pipe(T.Body("queue_name"))),
     settings: S.optional(EditResponseSettings),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchQueueResponse",
 }) as any as S.Schema<PatchQueueResponse>;
@@ -1779,13 +1861,15 @@ export const PatchSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
     enabled: S.optional(S.Boolean),
     events: S.optional(SubscriptionsUpdateRequestEventsList),
     name: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/accounts/{account_id}/event_subscriptions/subscriptions/{subscription_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/accounts/{account_id}/event_subscriptions/subscriptions/{subscription_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchSubscriptionRequest",
 }) as any as S.Schema<PatchSubscriptionRequest>;
@@ -1887,7 +1971,7 @@ export const PatchSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
     modifiedAt: S.String.pipe(T.Body("modified_at")),
     name: S.String,
     source: SubscriptionsUpdateResponseSource,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchSubscriptionResponse",
 }) as any as S.Schema<PatchSubscriptionResponse>;
@@ -1910,13 +1994,15 @@ export const PullMessageRequest = /*@__PURE__*/ S.suspend(() =>
     visibilityTimeoutMs: S.optional(
       S.Number.pipe(T.Body("visibility_timeout_ms")),
     ),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/queues/{queue_id}/messages/pull",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/queues/{queue_id}/messages/pull",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PullMessageRequest",
 }) as any as S.Schema<PullMessageRequest>;
@@ -1995,7 +2081,7 @@ export const PullMessageResponse = /*@__PURE__*/ S.suspend(() =>
     ),
     messages: S.optional(MessagesPullResponseMessagesList),
     metadata: S.optional(MessagesPullResponseMetadata),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PullMessageResponse",
 }) as any as S.Schema<PullMessageResponse>;
@@ -2029,13 +2115,15 @@ export const PushMessageRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     queueId: S.String.pipe(T.Label("queue_id")),
     body: S.optional(MessagesPushRequestBody),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/queues/{queue_id}/messages",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/queues/{queue_id}/messages",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PushMessageRequest",
 }) as any as S.Schema<PushMessageRequest>;
@@ -2079,7 +2167,7 @@ export interface PushMessageResponse {
 export const PushMessageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metadata: S.optional(MessagesPushResponseMetadata),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PushMessageResponse",
 }) as any as S.Schema<PushMessageResponse>;
@@ -2099,13 +2187,15 @@ export const StartPurgeRequest = /*@__PURE__*/ S.suspend(() =>
     deleteMessagesPermanently: S.optional(
       S.Boolean.pipe(T.Body("delete_messages_permanently")),
     ),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/queues/{queue_id}/purge",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/queues/{queue_id}/purge",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "StartPurgeRequest",
 }) as any as S.Schema<StartPurgeRequest>;
@@ -2205,7 +2295,7 @@ export const StartPurgeResponse = /*@__PURE__*/ S.suspend(() =>
     queueId: S.optional(S.String.pipe(T.Body("queue_id"))),
     queueName: S.optional(S.String.pipe(T.Body("queue_name"))),
     settings: S.optional(PurgeStartResponseSettings),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "StartPurgeResponse",
 }) as any as S.Schema<StartPurgeResponse>;
@@ -2220,13 +2310,15 @@ export const StatusPurgeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     queueId: S.String.pipe(T.Label("queue_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/queues/{queue_id}/purge",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/queues/{queue_id}/purge",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "StatusPurgeRequest",
 }) as any as S.Schema<StatusPurgeRequest>;
@@ -2242,7 +2334,7 @@ export const StatusPurgeResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     completed: S.optional(S.String),
     startedAt: S.optional(S.String.pipe(T.Body("started_at"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "StatusPurgeResponse",
 }) as any as S.Schema<StatusPurgeResponse>;
@@ -2282,13 +2374,15 @@ export const UpdateConsumerRequest = /*@__PURE__*/ S.suspend(() =>
     queueId: S.String.pipe(T.Label("queue_id")),
     consumerId: S.String.pipe(T.Label("consumer_id")),
     body: ConsumersUpdateRequestBody,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/queues/{queue_id}/consumers/{consumer_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/queues/{queue_id}/consumers/{consumer_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateConsumerRequest",
 }) as any as S.Schema<UpdateConsumerRequest>;
@@ -2310,7 +2404,7 @@ export const UpdateConsumerResponse = /*@__PURE__*/ S.suspend(() =>
         "HTTPPull object { consumer_id, created_on, dead_letter_queue, 3 more }",
       ),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateConsumerResponse",
 }) as any as S.Schema<UpdateConsumerResponse>;
@@ -2349,13 +2443,15 @@ export const UpdateQueueRequest = /*@__PURE__*/ S.suspend(() =>
     queueId: S.String.pipe(T.Label("queue_id")),
     queueName: S.optional(S.String.pipe(T.Body("queue_name"))),
     settings: S.optional(UpdateRequestSettings),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/queues/{queue_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/queues/{queue_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateQueueRequest",
 }) as any as S.Schema<UpdateQueueRequest>;
@@ -2455,7 +2551,7 @@ export const UpdateQueueResponse = /*@__PURE__*/ S.suspend(() =>
     queueId: S.optional(S.String.pipe(T.Body("queue_id"))),
     queueName: S.optional(S.String.pipe(T.Body("queue_name"))),
     settings: S.optional(UpdateResponseSettings),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateQueueResponse",
 }) as any as S.Schema<UpdateQueueResponse>;

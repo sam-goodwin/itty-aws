@@ -1,0 +1,8 @@
+{
+  "accessApplicationId": "access_application_id",
+  "resourceId": "resource_id",
+  "resourceType": "resource_type",
+  "resultInfo": "result_info",
+  "workerId": "worker_id",
+  "zoneId": "zone_id"
+}

@@ -14,6 +14,26 @@ import * as Retry from "../retry.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
+/** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
+const KEY_DICTIONARY: Record<string, string> = {
+  bundleMethod: "bundle_method",
+  createdOn: "created_on",
+  customCsrId: "custom_csr_id",
+  expiresOn: "expires_on",
+  geoRestrictions: "geo_restrictions",
+  keylessServer: "keyless_server",
+  modifiedOn: "modified_on",
+  perPage: "per_page",
+  policyRestrictions: "policy_restrictions",
+  privateIp: "private_ip",
+  privateKey: "private_key",
+  resultInfo: "result_info",
+  totalCount: "total_count",
+  uploadedOn: "uploaded_on",
+  vnetId: "vnet_id",
+  zoneId: "zone_id",
+};
+
 export class CustomCertificateNotFound extends T.applyErrorMatchers(
   S.TaggedErrorClass<CustomCertificateNotFound>()("CustomCertificateNotFound", {
     code: S.Number,
@@ -103,13 +123,15 @@ export const CreateCustomCertificateRequest = /*@__PURE__*/ S.suspend(() =>
     policy: S.optional(S.String),
     privateKey: S.optional(S.String.pipe(T.Body("private_key"))),
     type: S.optional(CreateRequestType),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/zones/{zone_id}/custom_certificates",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/zones/{zone_id}/custom_certificates",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateCustomCertificateRequest",
 }) as any as S.Schema<CreateCustomCertificateRequest>;
@@ -263,7 +285,7 @@ export const CreateCustomCertificateResponse = /*@__PURE__*/ S.suspend(() =>
     signature: S.optional(S.String),
     status: S.optional(CreateResponseStatus),
     uploadedOn: S.optional(S.String.pipe(T.Body("uploaded_on"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateCustomCertificateResponse",
 }) as any as S.Schema<CreateCustomCertificateResponse>;
@@ -278,13 +300,15 @@ export const DeleteCustomCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     customCertificateId: S.String.pipe(T.Label("custom_certificate_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/zones/{zone_id}/custom_certificates/{custom_certificate_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/zones/{zone_id}/custom_certificates/{custom_certificate_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteCustomCertificateRequest",
 }) as any as S.Schema<DeleteCustomCertificateRequest>;
@@ -297,7 +321,7 @@ export interface DeleteCustomCertificateResponse {
 export const DeleteCustomCertificateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteCustomCertificateResponse",
 }) as any as S.Schema<DeleteCustomCertificateResponse>;
@@ -312,13 +336,15 @@ export const GetCustomCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     customCertificateId: S.String.pipe(T.Label("custom_certificate_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/custom_certificates/{custom_certificate_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/custom_certificates/{custom_certificate_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetCustomCertificateRequest",
 }) as any as S.Schema<GetCustomCertificateRequest>;
@@ -472,7 +498,7 @@ export const GetCustomCertificateResponse = /*@__PURE__*/ S.suspend(() =>
     signature: S.optional(S.String),
     status: S.optional(GetResponseStatus),
     uploadedOn: S.optional(S.String.pipe(T.Body("uploaded_on"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetCustomCertificateResponse",
 }) as any as S.Schema<GetCustomCertificateResponse>;
@@ -506,13 +532,15 @@ export const ListCustomCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
     page: S.optional(S.Number.pipe(T.Query())),
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
     status: S.optional(ListRequestStatus.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/custom_certificates",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/custom_certificates",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListCustomCertificatesRequest",
 }) as any as S.Schema<ListCustomCertificatesRequest>;
@@ -683,7 +711,7 @@ export const ListCustomCertificatesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: ListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListCustomCertificatesResponse",
 }) as any as S.Schema<ListCustomCertificatesResponse>;
@@ -742,13 +770,15 @@ export const PatchCustomCertificateRequest = /*@__PURE__*/ S.suspend(() =>
     ),
     policy: S.optional(S.String),
     privateKey: S.optional(S.String.pipe(T.Body("private_key"))),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/zones/{zone_id}/custom_certificates/{custom_certificate_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/zones/{zone_id}/custom_certificates/{custom_certificate_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchCustomCertificateRequest",
 }) as any as S.Schema<PatchCustomCertificateRequest>;
@@ -902,7 +932,7 @@ export const PatchCustomCertificateResponse = /*@__PURE__*/ S.suspend(() =>
     signature: S.optional(S.String),
     status: S.optional(EditResponseStatus),
     uploadedOn: S.optional(S.String.pipe(T.Body("uploaded_on"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchCustomCertificateResponse",
 }) as any as S.Schema<PatchCustomCertificateResponse>;
@@ -939,13 +969,15 @@ export const PutPrioritizeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     certificates: PrioritizeUpdateRequestCertificatesList,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/zones/{zone_id}/custom_certificates/prioritize",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/zones/{zone_id}/custom_certificates/prioritize",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutPrioritizeRequest",
 }) as any as S.Schema<PutPrioritizeRequest>;
@@ -1126,7 +1158,7 @@ export const PutPrioritizeResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: PrioritizeUpdateResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutPrioritizeResponse",
 }) as any as S.Schema<PutPrioritizeResponse>;

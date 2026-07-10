@@ -14,6 +14,18 @@ import * as Retry from "../retry.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
+/** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
+const KEY_DICTIONARY: Record<string, string> = {
+  createdOn: "created_on",
+  documentationUrl: "documentation_url",
+  modifiedOn: "modified_on",
+  perPage: "per_page",
+  prefixId: "prefix_id",
+  regionKey: "region_key",
+  resultInfo: "result_info",
+  versionCreatedOn: "version_created_on",
+};
+
 export interface CreateRegionalServicePrefixBindingRequest {
   /** Identifier of a Cloudflare account. */
   accountId: string;
@@ -31,13 +43,15 @@ export const CreateRegionalServicePrefixBindingRequest =
       cidr: S.String,
       prefixId: S.String.pipe(T.Body("prefix_id")),
       regionKey: S.String.pipe(T.Body("region_key")),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/accounts/{account_id}/dls/regional_services/prefix_bindings",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "POST",
+          uri: "/accounts/{account_id}/dls/regional_services/prefix_bindings",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "CreateRegionalServicePrefixBindingRequest",
   }) as any as S.Schema<CreateRegionalServicePrefixBindingRequest>;
@@ -60,7 +74,7 @@ export const CreateRegionalServicePrefixBindingResponse =
       cidr: S.String,
       prefixId: S.String.pipe(T.Body("prefix_id")),
       regionKey: S.String.pipe(T.Body("region_key")),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "CreateRegionalServicePrefixBindingResponse",
   }) as any as S.Schema<CreateRegionalServicePrefixBindingResponse>;
@@ -76,20 +90,24 @@ export const DeleteRegionalServicePrefixBindingRequest =
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
       bindingId: S.String.pipe(T.Label("binding_id")),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/accounts/{account_id}/dls/regional_services/prefix_bindings/{binding_id}",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "DELETE",
+          uri: "/accounts/{account_id}/dls/regional_services/prefix_bindings/{binding_id}",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "DeleteRegionalServicePrefixBindingRequest",
   }) as any as S.Schema<DeleteRegionalServicePrefixBindingRequest>;
 
 export interface DeleteRegionalServicePrefixBindingResponse {}
 export const DeleteRegionalServicePrefixBindingResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  ).annotate({
     identifier: "DeleteRegionalServicePrefixBindingResponse",
   }) as any as S.Schema<DeleteRegionalServicePrefixBindingResponse>;
 
@@ -103,13 +121,15 @@ export const GetRegionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     regionId: S.String.pipe(T.Label("region_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/dls/regions/{region_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/dls/regions/{region_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetRegionRequest",
 }) as any as S.Schema<GetRegionRequest>;
@@ -133,7 +153,7 @@ export const GetRegionResponse = /*@__PURE__*/ S.suspend(() =>
     regionKey: S.String.pipe(T.Body("region_key")),
     version: S.Number,
     versionCreatedOn: S.String.pipe(T.Body("version_created_on")),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetRegionResponse",
 }) as any as S.Schema<GetRegionResponse>;
@@ -149,13 +169,15 @@ export const GetRegionalServicePrefixBindingRequest = /*@__PURE__*/ S.suspend(
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
       bindingId: S.String.pipe(T.Label("binding_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/accounts/{account_id}/dls/regional_services/prefix_bindings/{binding_id}",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "GET",
+          uri: "/accounts/{account_id}/dls/regional_services/prefix_bindings/{binding_id}",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetRegionalServicePrefixBindingRequest",
 }) as any as S.Schema<GetRegionalServicePrefixBindingRequest>;
@@ -178,7 +200,7 @@ export const GetRegionalServicePrefixBindingResponse = /*@__PURE__*/ S.suspend(
       cidr: S.String,
       prefixId: S.String.pipe(T.Body("prefix_id")),
       regionKey: S.String.pipe(T.Body("region_key")),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetRegionalServicePrefixBindingResponse",
 }) as any as S.Schema<GetRegionalServicePrefixBindingResponse>;
@@ -196,13 +218,15 @@ export const ListRegionalServicePrefixBindingsRequest = /*@__PURE__*/ S.suspend(
       accountId: S.String.pipe(T.Label("account_id")),
       cursor: S.optional(S.String.pipe(T.Query())),
       perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/accounts/{account_id}/dls/regional_services/prefix_bindings",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "GET",
+          uri: "/accounts/{account_id}/dls/regional_services/prefix_bindings",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListRegionalServicePrefixBindingsRequest",
 }) as any as S.Schema<ListRegionalServicePrefixBindingsRequest>;
@@ -249,7 +273,7 @@ export const ListRegionalServicePrefixBindingsResponse =
         T.EnvelopePayload(),
       ),
       resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "ListRegionalServicePrefixBindingsResponse",
   }) as any as S.Schema<ListRegionalServicePrefixBindingsResponse>;
@@ -272,13 +296,15 @@ export const ListRegionsRequest = /*@__PURE__*/ S.suspend(() =>
     cursor: S.optional(S.String.pipe(T.Query())),
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
     type: S.optional(RegionsListRequestType.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/dls/regions",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/dls/regions",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListRegionsRequest",
 }) as any as S.Schema<ListRegionsRequest>;
@@ -321,7 +347,7 @@ export const ListRegionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: RegionsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListRegionsResponse",
 }) as any as S.Schema<ListRegionsResponse>;
@@ -340,13 +366,15 @@ export const PatchRegionalServicePrefixBindingRequest = /*@__PURE__*/ S.suspend(
       accountId: S.String.pipe(T.Label("account_id")),
       bindingId: S.String.pipe(T.Label("binding_id")),
       regionKey: S.String.pipe(T.Body("region_key")),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "/accounts/{account_id}/dls/regional_services/prefix_bindings/{binding_id}",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "PATCH",
+          uri: "/accounts/{account_id}/dls/regional_services/prefix_bindings/{binding_id}",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchRegionalServicePrefixBindingRequest",
 }) as any as S.Schema<PatchRegionalServicePrefixBindingRequest>;
@@ -369,7 +397,7 @@ export const PatchRegionalServicePrefixBindingResponse =
       cidr: S.String,
       prefixId: S.String.pipe(T.Body("prefix_id")),
       regionKey: S.String.pipe(T.Body("region_key")),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "PatchRegionalServicePrefixBindingResponse",
   }) as any as S.Schema<PatchRegionalServicePrefixBindingResponse>;

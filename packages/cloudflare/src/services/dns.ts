@@ -14,6 +14,71 @@ import * as Retry from "../retry.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
+/** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
+const KEY_DICTIONARY: Record<string, string> = {
+  autoRefreshSeconds: "auto_refresh_seconds",
+  checkedTime: "checked_time",
+  commentModifiedOn: "comment_modified_on",
+  createdOn: "created_on",
+  createdTime: "created_time",
+  dataLag: "data_lag",
+  digestAlgorithm: "digest_algorithm",
+  digestType: "digest_type",
+  dnssecMultiSigner: "dnssec_multi_signer",
+  dnssecPresigned: "dnssec_presigned",
+  dnssecUseNsec3: "dnssec_use_nsec3",
+  documentationUrl: "documentation_url",
+  enforceDnsOnly: "enforce_dns_only",
+  flattenAllCnames: "flatten_all_cnames",
+  flattenCname: "flatten_cname",
+  foundationDns: "foundation_dns",
+  internalDns: "internal_dns",
+  internalRecordQuota: "internal_record_quota",
+  internalRecordUsage: "internal_record_usage",
+  ipRange: "ip_range",
+  ipv4Only: "ipv4_only",
+  ipv6Only: "ipv6_only",
+  ixfrEnable: "ixfr_enable",
+  keyTag: "key_tag",
+  keyType: "key_type",
+  lastTransferredTime: "last_transferred_time",
+  latDegrees: "lat_degrees",
+  latDirection: "lat_direction",
+  latMinutes: "lat_minutes",
+  latSeconds: "lat_seconds",
+  longDegrees: "long_degrees",
+  longDirection: "long_direction",
+  longMinutes: "long_minutes",
+  longSeconds: "long_seconds",
+  matchingType: "matching_type",
+  minTtl: "min_ttl",
+  modifiedOn: "modified_on",
+  modifiedTime: "modified_time",
+  multiProvider: "multi_provider",
+  nsSet: "ns_set",
+  nsTtl: "ns_ttl",
+  perPage: "per_page",
+  precisionHorz: "precision_horz",
+  precisionVert: "precision_vert",
+  privateRouting: "private_routing",
+  publicKey: "public_key",
+  recordQuota: "record_quota",
+  recordUsage: "record_usage",
+  recsAdded: "recs_added",
+  referenceZoneId: "reference_zone_id",
+  resultInfo: "result_info",
+  secondaryOverrides: "secondary_overrides",
+  soaSerial: "soa_serial",
+  tagsModifiedOn: "tags_modified_on",
+  timeDelta: "time_delta",
+  timeIntervals: "time_intervals",
+  totalCount: "total_count",
+  totalRecordsParsed: "total_records_parsed",
+  tsigId: "tsig_id",
+  zoneDefaults: "zone_defaults",
+  zoneMode: "zone_mode",
+};
+
 export class AclNotFound extends T.applyErrorMatchers(
   S.TaggedErrorClass<AclNotFound>()("AclNotFound", {
     code: S.Number,
@@ -882,13 +947,15 @@ export const BatchRecordRequest = /*@__PURE__*/ S.suspend(() =>
     patches: S.optional(RecordsBatchRequestPatchesList),
     posts: S.optional(RecordsBatchRequestPostsList),
     puts: S.optional(RecordsBatchRequestPutsList),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/zones/{zone_id}/dns_records/batch",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/zones/{zone_id}/dns_records/batch",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "BatchRecordRequest",
 }) as any as S.Schema<BatchRecordRequest>;
@@ -2497,7 +2564,7 @@ export const BatchRecordResponse = /*@__PURE__*/ S.suspend(() =>
     patches: S.optional(RecordsBatchResponsePatchesList),
     posts: S.optional(RecordsBatchResponsePostsList),
     puts: S.optional(RecordsBatchResponsePutsList),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "BatchRecordResponse",
 }) as any as S.Schema<BatchRecordResponse>;
@@ -2609,9 +2676,15 @@ export const CreateRecordRequest = /*@__PURE__*/ S.suspend(() =>
       S.Boolean.pipe(T.Query("include_shadow_metadata")),
     ),
     body: RecordsCreateRequestBody,
-  }).pipe(
-    T.Http({ method: "POST", uri: "/zones/{zone_id}/dns_records", code: 200 }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/zones/{zone_id}/dns_records",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateRecordRequest",
 }) as any as S.Schema<CreateRecordRequest>;
@@ -3931,7 +4004,7 @@ export const CreateRecordResponse = /*@__PURE__*/ S.suspend(() =>
     SVCBRecord: RecordsCreateResponseSVCBRecord,
     TLSARecord: RecordsCreateResponseTLSARecord,
     URIRecord: RecordsCreateResponseURIRecord,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateRecordResponse",
 }) as any as S.Schema<CreateRecordResponse>;
@@ -3954,13 +4027,15 @@ export const CreateSettingAccountViewRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     name: S.String,
     zones: SettingsAccountViewsCreateRequestZonesList,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/dns_settings/views",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/dns_settings/views",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateSettingAccountViewRequest",
 }) as any as S.Schema<CreateSettingAccountViewRequest>;
@@ -3991,7 +4066,7 @@ export const CreateSettingAccountViewResponse = /*@__PURE__*/ S.suspend(() =>
     modifiedTime: S.String.pipe(T.Body("modified_time")),
     name: S.String,
     zones: SettingsAccountViewsCreateResponseZonesList,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateSettingAccountViewResponse",
 }) as any as S.Schema<CreateSettingAccountViewResponse>;
@@ -4008,13 +4083,15 @@ export const CreateZoneTransferAclRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     ipRange: S.String.pipe(T.Body("ip_range")),
     name: S.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/secondary_dns/acls",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/secondary_dns/acls",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateZoneTransferAclRequest",
 }) as any as S.Schema<CreateZoneTransferAclRequest>;
@@ -4032,7 +4109,7 @@ export const CreateZoneTransferAclResponse = /*@__PURE__*/ S.suspend(() =>
     id: S.String,
     ipRange: S.String.pipe(T.Body("ip_range")),
     name: S.String,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateZoneTransferAclResponse",
 }) as any as S.Schema<CreateZoneTransferAclResponse>;
@@ -4045,13 +4122,15 @@ export const CreateZoneTransferForceAxfrRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     body: S.Unknown,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/zones/{zone_id}/secondary_dns/force_axfr",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/zones/{zone_id}/secondary_dns/force_axfr",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateZoneTransferForceAxfrRequest",
 }) as any as S.Schema<CreateZoneTransferForceAxfrRequest>;
@@ -4063,7 +4142,7 @@ export interface CreateZoneTransferForceAxfrResponse {
 export const CreateZoneTransferForceAxfrResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateZoneTransferForceAxfrResponse",
 }) as any as S.Schema<CreateZoneTransferForceAxfrResponse>;
@@ -4089,13 +4168,15 @@ export const CreateZoneTransferIncomingRequest = /*@__PURE__*/ S.suspend(() =>
     autoRefreshSeconds: S.Number.pipe(T.Body("auto_refresh_seconds")),
     name: S.String,
     peers: ZoneTransfersIncomingCreateRequestPeersList,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/zones/{zone_id}/secondary_dns/incoming",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/zones/{zone_id}/secondary_dns/incoming",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateZoneTransferIncomingRequest",
 }) as any as S.Schema<CreateZoneTransferIncomingRequest>;
@@ -4136,7 +4217,7 @@ export const CreateZoneTransferIncomingResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     peers: S.optional(ZoneTransfersIncomingCreateResponsePeersList),
     soaSerial: S.optional(S.Number.pipe(T.Body("soa_serial"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateZoneTransferIncomingResponse",
 }) as any as S.Schema<CreateZoneTransferIncomingResponse>;
@@ -4159,13 +4240,15 @@ export const CreateZoneTransferOutgoingRequest = /*@__PURE__*/ S.suspend(() =>
     zoneId: S.String.pipe(T.Label("zone_id")),
     name: S.String,
     peers: ZoneTransfersOutgoingCreateRequestPeersList,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/zones/{zone_id}/secondary_dns/outgoing",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/zones/{zone_id}/secondary_dns/outgoing",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateZoneTransferOutgoingRequest",
 }) as any as S.Schema<CreateZoneTransferOutgoingRequest>;
@@ -4203,7 +4286,7 @@ export const CreateZoneTransferOutgoingResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     peers: S.optional(ZoneTransfersOutgoingCreateResponsePeersList),
     soaSerial: S.optional(S.Number.pipe(T.Body("soa_serial"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateZoneTransferOutgoingResponse",
 }) as any as S.Schema<CreateZoneTransferOutgoingResponse>;
@@ -4217,13 +4300,15 @@ export const CreateZoneTransferPeerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     name: S.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/secondary_dns/peers",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/secondary_dns/peers",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateZoneTransferPeerRequest",
 }) as any as S.Schema<CreateZoneTransferPeerRequest>;
@@ -4250,7 +4335,7 @@ export const CreateZoneTransferPeerResponse = /*@__PURE__*/ S.suspend(() =>
     ixfrEnable: S.optional(S.Boolean.pipe(T.Body("ixfr_enable"))),
     port: S.optional(S.Number),
     tsigId: S.optional(S.String.pipe(T.Body("tsig_id"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateZoneTransferPeerResponse",
 }) as any as S.Schema<CreateZoneTransferPeerResponse>;
@@ -4270,13 +4355,15 @@ export const CreateZoneTransferTsigRequest = /*@__PURE__*/ S.suspend(() =>
     algo: S.String,
     name: S.String,
     secret: S.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/secondary_dns/tsigs",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/secondary_dns/tsigs",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateZoneTransferTsigRequest",
 }) as any as S.Schema<CreateZoneTransferTsigRequest>;
@@ -4297,7 +4384,7 @@ export const CreateZoneTransferTsigResponse = /*@__PURE__*/ S.suspend(() =>
     algo: S.String,
     name: S.String,
     secret: S.String,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateZoneTransferTsigResponse",
 }) as any as S.Schema<CreateZoneTransferTsigResponse>;
@@ -4309,9 +4396,11 @@ export interface DeleteDnssecRequest {
 export const DeleteDnssecRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-  }).pipe(
-    T.Http({ method: "DELETE", uri: "/zones/{zone_id}/dnssec", code: 200 }),
-  ),
+  })
+    .pipe(
+      T.Http({ method: "DELETE", uri: "/zones/{zone_id}/dnssec", code: 200 }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteDnssecRequest",
 }) as any as S.Schema<DeleteDnssecRequest>;
@@ -4323,7 +4412,7 @@ export interface DeleteDnssecResponse {
 export const DeleteDnssecResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(S.String.pipe(T.EnvelopePayload())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteDnssecResponse",
 }) as any as S.Schema<DeleteDnssecResponse>;
@@ -4338,13 +4427,15 @@ export const DeleteRecordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     dnsRecordId: S.String.pipe(T.Label("dns_record_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/zones/{zone_id}/dns_records/{dns_record_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/zones/{zone_id}/dns_records/{dns_record_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteRecordRequest",
 }) as any as S.Schema<DeleteRecordRequest>;
@@ -4357,7 +4448,7 @@ export interface DeleteRecordResponse {
 export const DeleteRecordResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteRecordResponse",
 }) as any as S.Schema<DeleteRecordResponse>;
@@ -4372,13 +4463,15 @@ export const DeleteSettingAccountViewRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     viewId: S.String.pipe(T.Label("view_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/dns_settings/views/{view_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/dns_settings/views/{view_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteSettingAccountViewRequest",
 }) as any as S.Schema<DeleteSettingAccountViewRequest>;
@@ -4391,7 +4484,7 @@ export interface DeleteSettingAccountViewResponse {
 export const DeleteSettingAccountViewResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteSettingAccountViewResponse",
 }) as any as S.Schema<DeleteSettingAccountViewResponse>;
@@ -4404,13 +4497,15 @@ export const DeleteZoneTransferAclRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     aclId: S.String.pipe(T.Label("acl_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/secondary_dns/acls/{acl_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/secondary_dns/acls/{acl_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteZoneTransferAclRequest",
 }) as any as S.Schema<DeleteZoneTransferAclRequest>;
@@ -4422,7 +4517,7 @@ export interface DeleteZoneTransferAclResponse {
 export const DeleteZoneTransferAclResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteZoneTransferAclResponse",
 }) as any as S.Schema<DeleteZoneTransferAclResponse>;
@@ -4433,13 +4528,15 @@ export interface DeleteZoneTransferIncomingRequest {
 export const DeleteZoneTransferIncomingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/zones/{zone_id}/secondary_dns/incoming",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/zones/{zone_id}/secondary_dns/incoming",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteZoneTransferIncomingRequest",
 }) as any as S.Schema<DeleteZoneTransferIncomingRequest>;
@@ -4451,7 +4548,7 @@ export interface DeleteZoneTransferIncomingResponse {
 export const DeleteZoneTransferIncomingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteZoneTransferIncomingResponse",
 }) as any as S.Schema<DeleteZoneTransferIncomingResponse>;
@@ -4462,13 +4559,15 @@ export interface DeleteZoneTransferOutgoingRequest {
 export const DeleteZoneTransferOutgoingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/zones/{zone_id}/secondary_dns/outgoing",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/zones/{zone_id}/secondary_dns/outgoing",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteZoneTransferOutgoingRequest",
 }) as any as S.Schema<DeleteZoneTransferOutgoingRequest>;
@@ -4480,7 +4579,7 @@ export interface DeleteZoneTransferOutgoingResponse {
 export const DeleteZoneTransferOutgoingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteZoneTransferOutgoingResponse",
 }) as any as S.Schema<DeleteZoneTransferOutgoingResponse>;
@@ -4493,13 +4592,15 @@ export const DeleteZoneTransferPeerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     peerId: S.String.pipe(T.Label("peer_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/secondary_dns/peers/{peer_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/secondary_dns/peers/{peer_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteZoneTransferPeerRequest",
 }) as any as S.Schema<DeleteZoneTransferPeerRequest>;
@@ -4511,7 +4612,7 @@ export interface DeleteZoneTransferPeerResponse {
 export const DeleteZoneTransferPeerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteZoneTransferPeerResponse",
 }) as any as S.Schema<DeleteZoneTransferPeerResponse>;
@@ -4524,13 +4625,15 @@ export const DeleteZoneTransferTsigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     tsigId: S.String.pipe(T.Label("tsig_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/secondary_dns/tsigs/{tsig_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/secondary_dns/tsigs/{tsig_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteZoneTransferTsigRequest",
 }) as any as S.Schema<DeleteZoneTransferTsigRequest>;
@@ -4542,7 +4645,7 @@ export interface DeleteZoneTransferTsigResponse {
 export const DeleteZoneTransferTsigResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteZoneTransferTsigResponse",
 }) as any as S.Schema<DeleteZoneTransferTsigResponse>;
@@ -4555,13 +4658,15 @@ export const DisableZoneTransferOutgoingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     body: S.Unknown,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/zones/{zone_id}/secondary_dns/outgoing/disable",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/zones/{zone_id}/secondary_dns/outgoing/disable",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DisableZoneTransferOutgoingRequest",
 }) as any as S.Schema<DisableZoneTransferOutgoingRequest>;
@@ -4573,7 +4678,7 @@ export interface DisableZoneTransferOutgoingResponse {
 export const DisableZoneTransferOutgoingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DisableZoneTransferOutgoingResponse",
 }) as any as S.Schema<DisableZoneTransferOutgoingResponse>;
@@ -4586,13 +4691,15 @@ export const EnableZoneTransferOutgoingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     body: S.Unknown,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/zones/{zone_id}/secondary_dns/outgoing/enable",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/zones/{zone_id}/secondary_dns/outgoing/enable",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "EnableZoneTransferOutgoingRequest",
 }) as any as S.Schema<EnableZoneTransferOutgoingRequest>;
@@ -4604,7 +4711,7 @@ export interface EnableZoneTransferOutgoingResponse {
 export const EnableZoneTransferOutgoingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "EnableZoneTransferOutgoingResponse",
 }) as any as S.Schema<EnableZoneTransferOutgoingResponse>;
@@ -4616,20 +4723,22 @@ export interface ExportRecordRequest {
 export const ExportRecordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/dns_records/export",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/dns_records/export",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ExportRecordRequest",
 }) as any as S.Schema<ExportRecordRequest>;
 
 export interface ExportRecordResponse {}
 export const ExportRecordResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
+  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ExportRecordResponse",
 }) as any as S.Schema<ExportRecordResponse>;
@@ -4643,13 +4752,15 @@ export const ForceNotifyZoneTransferOutgoingRequest = /*@__PURE__*/ S.suspend(
     S.Struct({
       zoneId: S.String.pipe(T.Label("zone_id")),
       body: S.Unknown,
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/zones/{zone_id}/secondary_dns/outgoing/force_notify",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "POST",
+          uri: "/zones/{zone_id}/secondary_dns/outgoing/force_notify",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ForceNotifyZoneTransferOutgoingRequest",
 }) as any as S.Schema<ForceNotifyZoneTransferOutgoingRequest>;
@@ -4662,7 +4773,7 @@ export const ForceNotifyZoneTransferOutgoingResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       result: S.optional(S.String.pipe(T.EnvelopePayload())),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ForceNotifyZoneTransferOutgoingResponse",
 }) as any as S.Schema<ForceNotifyZoneTransferOutgoingResponse>;
@@ -4695,13 +4806,15 @@ export const GetAnalyticReportRequest = /*@__PURE__*/ S.suspend(() =>
     since: S.optional(S.String.pipe(T.Query())),
     sort: S.optional(S.String.pipe(T.Query())),
     until: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/dns_analytics/report",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/dns_analytics/report",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetAnalyticReportRequest",
 }) as any as S.Schema<GetAnalyticReportRequest>;
@@ -4811,7 +4924,7 @@ export const GetAnalyticReportResponse = /*@__PURE__*/ S.suspend(() =>
     query: AnalyticsReportsGetResponseQuery,
     rows: S.Number,
     totals: S.Unknown,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetAnalyticReportResponse",
 }) as any as S.Schema<GetAnalyticReportResponse>;
@@ -4857,13 +4970,15 @@ export const GetAnalyticReportBytimeRequest = /*@__PURE__*/ S.suspend(() =>
       AnalyticsReportsBytimesGetRequestTimeDelta.pipe(T.Query("time_delta")),
     ),
     until: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/dns_analytics/report/bytime",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/dns_analytics/report/bytime",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetAnalyticReportBytimeRequest",
 }) as any as S.Schema<GetAnalyticReportBytimeRequest>;
@@ -5000,7 +5115,7 @@ export const GetAnalyticReportBytimeResponse = /*@__PURE__*/ S.suspend(() =>
       T.Body("time_intervals"),
     ),
     totals: S.Unknown,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetAnalyticReportBytimeResponse",
 }) as any as S.Schema<GetAnalyticReportBytimeResponse>;
@@ -5012,7 +5127,9 @@ export interface GetDnssecRequest {
 export const GetDnssecRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-  }).pipe(T.Http({ method: "GET", uri: "/zones/{zone_id}/dnssec", code: 200 })),
+  })
+    .pipe(T.Http({ method: "GET", uri: "/zones/{zone_id}/dnssec", code: 200 }))
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDnssecRequest",
 }) as any as S.Schema<GetDnssecRequest>;
@@ -5073,7 +5190,7 @@ export const GetDnssecResponse = /*@__PURE__*/ S.suspend(() =>
     modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
     publicKey: S.optional(S.String.pipe(T.Body("public_key"))),
     status: S.optional(DnssecGetResponseStatus),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDnssecResponse",
 }) as any as S.Schema<GetDnssecResponse>;
@@ -5093,13 +5210,15 @@ export const GetRecordRequest = /*@__PURE__*/ S.suspend(() =>
     includeShadowMetadata: S.optional(
       S.Boolean.pipe(T.Query("include_shadow_metadata")),
     ),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/dns_records/{dns_record_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/dns_records/{dns_record_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetRecordRequest",
 }) as any as S.Schema<GetRecordRequest>;
@@ -6393,7 +6512,7 @@ export const GetRecordResponse = /*@__PURE__*/ S.suspend(() =>
     SVCBRecord: RecordsGetResponseSVCBRecord,
     TLSARecord: RecordsGetResponseTLSARecord,
     URIRecord: RecordsGetResponseURIRecord,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetRecordResponse",
 }) as any as S.Schema<GetRecordResponse>;
@@ -6405,13 +6524,15 @@ export interface GetSettingAccountRequest {
 export const GetSettingAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/dns_settings",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/dns_settings",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetSettingAccountRequest",
 }) as any as S.Schema<GetSettingAccountRequest>;
@@ -6543,7 +6664,7 @@ export const GetSettingAccountResponse = /*@__PURE__*/ S.suspend(() =>
       T.Body("zone_defaults"),
     ),
     enforceDnsOnly: S.optional(S.Boolean.pipe(T.Body("enforce_dns_only"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetSettingAccountResponse",
 }) as any as S.Schema<GetSettingAccountResponse>;
@@ -6558,13 +6679,15 @@ export const GetSettingAccountViewRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     viewId: S.String.pipe(T.Label("view_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/dns_settings/views/{view_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/dns_settings/views/{view_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetSettingAccountViewRequest",
 }) as any as S.Schema<GetSettingAccountViewRequest>;
@@ -6594,7 +6717,7 @@ export const GetSettingAccountViewResponse = /*@__PURE__*/ S.suspend(() =>
     modifiedTime: S.String.pipe(T.Body("modified_time")),
     name: S.String,
     zones: SettingsAccountViewsGetResponseZonesList,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetSettingAccountViewResponse",
 }) as any as S.Schema<GetSettingAccountViewResponse>;
@@ -6606,9 +6729,15 @@ export interface GetSettingZoneRequest {
 export const GetSettingZoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-  }).pipe(
-    T.Http({ method: "GET", uri: "/zones/{zone_id}/dns_settings", code: 200 }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/dns_settings",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetSettingZoneRequest",
 }) as any as S.Schema<GetSettingZoneRequest>;
@@ -6719,7 +6848,7 @@ export const GetSettingZoneResponse = /*@__PURE__*/ S.suspend(() =>
     secondaryOverrides: S.Boolean.pipe(T.Body("secondary_overrides")),
     soa: SettingsZoneGetResponseSoa,
     zoneMode: SettingsZoneGetResponseZoneMode.pipe(T.Body("zone_mode")),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetSettingZoneResponse",
 }) as any as S.Schema<GetSettingZoneResponse>;
@@ -6731,13 +6860,15 @@ export interface GetUsageAccountRequest {
 export const GetUsageAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/dns_records/usage",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/dns_records/usage",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetUsageAccountRequest",
 }) as any as S.Schema<GetUsageAccountRequest>;
@@ -6763,7 +6894,7 @@ export const GetUsageAccountResponse = /*@__PURE__*/ S.suspend(() =>
     internalRecordUsage: S.optional(
       S.Number.pipe(T.Body("internal_record_usage")),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetUsageAccountResponse",
 }) as any as S.Schema<GetUsageAccountResponse>;
@@ -6775,13 +6906,15 @@ export interface GetUsageZoneRequest {
 export const GetUsageZoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/dns_records/usage",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/dns_records/usage",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetUsageZoneRequest",
 }) as any as S.Schema<GetUsageZoneRequest>;
@@ -6797,7 +6930,7 @@ export const GetUsageZoneResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     recordQuota: S.Number.pipe(T.Body("record_quota")),
     recordUsage: S.Number.pipe(T.Body("record_usage")),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetUsageZoneResponse",
 }) as any as S.Schema<GetUsageZoneResponse>;
@@ -6810,13 +6943,15 @@ export const GetZoneTransferAclRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     aclId: S.String.pipe(T.Label("acl_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/secondary_dns/acls/{acl_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/secondary_dns/acls/{acl_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetZoneTransferAclRequest",
 }) as any as S.Schema<GetZoneTransferAclRequest>;
@@ -6834,7 +6969,7 @@ export const GetZoneTransferAclResponse = /*@__PURE__*/ S.suspend(() =>
     id: S.String,
     ipRange: S.String.pipe(T.Body("ip_range")),
     name: S.String,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetZoneTransferAclResponse",
 }) as any as S.Schema<GetZoneTransferAclResponse>;
@@ -6845,13 +6980,15 @@ export interface GetZoneTransferIncomingRequest {
 export const GetZoneTransferIncomingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/secondary_dns/incoming",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/secondary_dns/incoming",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetZoneTransferIncomingRequest",
 }) as any as S.Schema<GetZoneTransferIncomingRequest>;
@@ -6891,7 +7028,7 @@ export const GetZoneTransferIncomingResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     peers: S.optional(ZoneTransfersIncomingGetResponsePeersList),
     soaSerial: S.optional(S.Number.pipe(T.Body("soa_serial"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetZoneTransferIncomingResponse",
 }) as any as S.Schema<GetZoneTransferIncomingResponse>;
@@ -6902,13 +7039,15 @@ export interface GetZoneTransferOutgoingRequest {
 export const GetZoneTransferOutgoingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/secondary_dns/outgoing",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/secondary_dns/outgoing",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetZoneTransferOutgoingRequest",
 }) as any as S.Schema<GetZoneTransferOutgoingRequest>;
@@ -6945,7 +7084,7 @@ export const GetZoneTransferOutgoingResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     peers: S.optional(ZoneTransfersOutgoingGetResponsePeersList),
     soaSerial: S.optional(S.Number.pipe(T.Body("soa_serial"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetZoneTransferOutgoingResponse",
 }) as any as S.Schema<GetZoneTransferOutgoingResponse>;
@@ -6957,13 +7096,15 @@ export const GetZoneTransferOutgoingStatusRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       zoneId: S.String.pipe(T.Label("zone_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/zones/{zone_id}/secondary_dns/outgoing/status",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "GET",
+          uri: "/zones/{zone_id}/secondary_dns/outgoing/status",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetZoneTransferOutgoingStatusRequest",
 }) as any as S.Schema<GetZoneTransferOutgoingStatusRequest>;
@@ -6976,7 +7117,7 @@ export const GetZoneTransferOutgoingStatusResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetZoneTransferOutgoingStatusResponse",
 }) as any as S.Schema<GetZoneTransferOutgoingStatusResponse>;
@@ -6989,13 +7130,15 @@ export const GetZoneTransferPeerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     peerId: S.String.pipe(T.Label("peer_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/secondary_dns/peers/{peer_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/secondary_dns/peers/{peer_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetZoneTransferPeerRequest",
 }) as any as S.Schema<GetZoneTransferPeerRequest>;
@@ -7022,7 +7165,7 @@ export const GetZoneTransferPeerResponse = /*@__PURE__*/ S.suspend(() =>
     ixfrEnable: S.optional(S.Boolean.pipe(T.Body("ixfr_enable"))),
     port: S.optional(S.Number),
     tsigId: S.optional(S.String.pipe(T.Body("tsig_id"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetZoneTransferPeerResponse",
 }) as any as S.Schema<GetZoneTransferPeerResponse>;
@@ -7035,13 +7178,15 @@ export const GetZoneTransferTsigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     tsigId: S.String.pipe(T.Label("tsig_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/secondary_dns/tsigs/{tsig_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/secondary_dns/tsigs/{tsig_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetZoneTransferTsigRequest",
 }) as any as S.Schema<GetZoneTransferTsigRequest>;
@@ -7062,7 +7207,7 @@ export const GetZoneTransferTsigResponse = /*@__PURE__*/ S.suspend(() =>
     algo: S.String,
     name: S.String,
     secret: S.String,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetZoneTransferTsigResponse",
 }) as any as S.Schema<GetZoneTransferTsigResponse>;
@@ -7074,13 +7219,15 @@ export interface ImportRecordRequest {
 export const ImportRecordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/zones/{zone_id}/dns_records/import",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/zones/{zone_id}/dns_records/import",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ImportRecordRequest",
 }) as any as S.Schema<ImportRecordRequest>;
@@ -7098,7 +7245,7 @@ export const ImportRecordResponse = /*@__PURE__*/ S.suspend(() =>
     totalRecordsParsed: S.optional(
       S.Number.pipe(T.Body("total_records_parsed")),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ImportRecordResponse",
 }) as any as S.Schema<ImportRecordResponse>;
@@ -7172,9 +7319,11 @@ export const ListRecordsRequest = /*@__PURE__*/ S.suspend(() =>
     tag: S.optional(S.String.pipe(T.Query())),
     tagMatch: S.optional(RecordsListRequestTagMatch.pipe(T.Query("tag_match"))),
     type: S.optional(RecordsListRequestType.pipe(T.Query())),
-  }).pipe(
-    T.Http({ method: "GET", uri: "/zones/{zone_id}/dns_records", code: 200 }),
-  ),
+  })
+    .pipe(
+      T.Http({ method: "GET", uri: "/zones/{zone_id}/dns_records", code: 200 }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListRecordsRequest",
 }) as any as S.Schema<ListRecordsRequest>;
@@ -8513,7 +8662,7 @@ export const ListRecordsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: RecordsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListRecordsResponse",
 }) as any as S.Schema<ListRecordsResponse>;
@@ -8569,13 +8718,15 @@ export const ListSettingAccountViewsRequest = /*@__PURE__*/ S.suspend(() =>
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
     zoneId: S.optional(S.String.pipe(T.Query("zone_id"))),
     zoneName: S.optional(S.String.pipe(T.Query("zone_name"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/dns_settings/views",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/dns_settings/views",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListSettingAccountViewsRequest",
 }) as any as S.Schema<ListSettingAccountViewsRequest>;
@@ -8626,7 +8777,7 @@ export const ListSettingAccountViewsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: SettingsAccountViewsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListSettingAccountViewsResponse",
 }) as any as S.Schema<ListSettingAccountViewsResponse>;
@@ -8637,13 +8788,15 @@ export interface ListZoneTransferAclsRequest {
 export const ListZoneTransferAclsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/secondary_dns/acls",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/secondary_dns/acls",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListZoneTransferAclsRequest",
 }) as any as S.Schema<ListZoneTransferAclsRequest>;
@@ -8680,7 +8833,7 @@ export const ListZoneTransferAclsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: ZoneTransfersAclsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListZoneTransferAclsResponse",
 }) as any as S.Schema<ListZoneTransferAclsResponse>;
@@ -8691,13 +8844,15 @@ export interface ListZoneTransferPeersRequest {
 export const ListZoneTransferPeersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/secondary_dns/peers",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/secondary_dns/peers",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListZoneTransferPeersRequest",
 }) as any as S.Schema<ListZoneTransferPeersRequest>;
@@ -8744,7 +8899,7 @@ export const ListZoneTransferPeersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: ZoneTransfersPeersListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListZoneTransferPeersResponse",
 }) as any as S.Schema<ListZoneTransferPeersResponse>;
@@ -8755,13 +8910,15 @@ export interface ListZoneTransferTsigsRequest {
 export const ListZoneTransferTsigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/secondary_dns/tsigs",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/secondary_dns/tsigs",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListZoneTransferTsigsRequest",
 }) as any as S.Schema<ListZoneTransferTsigsRequest>;
@@ -8802,7 +8959,7 @@ export const ListZoneTransferTsigsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: ZoneTransfersTsigsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListZoneTransferTsigsResponse",
 }) as any as S.Schema<ListZoneTransferTsigsResponse>;
@@ -8831,9 +8988,11 @@ export const PatchDnssecRequest = /*@__PURE__*/ S.suspend(() =>
     dnssecPresigned: S.optional(S.Boolean.pipe(T.Body("dnssec_presigned"))),
     dnssecUseNsec3: S.optional(S.Boolean.pipe(T.Body("dnssec_use_nsec3"))),
     status: S.optional(DnssecEditRequestStatus),
-  }).pipe(
-    T.Http({ method: "PATCH", uri: "/zones/{zone_id}/dnssec", code: 200 }),
-  ),
+  })
+    .pipe(
+      T.Http({ method: "PATCH", uri: "/zones/{zone_id}/dnssec", code: 200 }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchDnssecRequest",
 }) as any as S.Schema<PatchDnssecRequest>;
@@ -8894,7 +9053,7 @@ export const PatchDnssecResponse = /*@__PURE__*/ S.suspend(() =>
     modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
     publicKey: S.optional(S.String.pipe(T.Body("public_key"))),
     status: S.optional(DnssecEditResponseStatus),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchDnssecResponse",
 }) as any as S.Schema<PatchDnssecResponse>;
@@ -9009,13 +9168,15 @@ export const PatchRecordRequest = /*@__PURE__*/ S.suspend(() =>
       S.Boolean.pipe(T.Query("include_shadow_metadata")),
     ),
     body: RecordsEditRequestBody,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/zones/{zone_id}/dns_records/{dns_record_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/zones/{zone_id}/dns_records/{dns_record_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchRecordRequest",
 }) as any as S.Schema<PatchRecordRequest>;
@@ -10321,7 +10482,7 @@ export const PatchRecordResponse = /*@__PURE__*/ S.suspend(() =>
     SVCBRecord: RecordsEditResponseSVCBRecord,
     TLSARecord: RecordsEditResponseTLSARecord,
     URIRecord: RecordsEditResponseURIRecord,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchRecordResponse",
 }) as any as S.Schema<PatchRecordResponse>;
@@ -10465,13 +10626,15 @@ export const PatchSettingAccountRequest = /*@__PURE__*/ S.suspend(() =>
     zoneDefaults: S.optional(
       SettingsAccountEditRequestZoneDefaults.pipe(T.Body("zone_defaults")),
     ),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/accounts/{account_id}/dns_settings",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/accounts/{account_id}/dns_settings",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchSettingAccountRequest",
 }) as any as S.Schema<PatchSettingAccountRequest>;
@@ -10603,7 +10766,7 @@ export const PatchSettingAccountResponse = /*@__PURE__*/ S.suspend(() =>
       T.Body("zone_defaults"),
     ),
     enforceDnsOnly: S.optional(S.Boolean.pipe(T.Body("enforce_dns_only"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchSettingAccountResponse",
 }) as any as S.Schema<PatchSettingAccountResponse>;
@@ -10629,13 +10792,15 @@ export const PatchSettingAccountViewRequest = /*@__PURE__*/ S.suspend(() =>
     viewId: S.String.pipe(T.Label("view_id")),
     name: S.optional(S.String),
     zones: S.optional(SettingsAccountViewsEditRequestZonesList),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/accounts/{account_id}/dns_settings/views/{view_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/accounts/{account_id}/dns_settings/views/{view_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchSettingAccountViewRequest",
 }) as any as S.Schema<PatchSettingAccountViewRequest>;
@@ -10665,7 +10830,7 @@ export const PatchSettingAccountViewResponse = /*@__PURE__*/ S.suspend(() =>
     modifiedTime: S.String.pipe(T.Body("modified_time")),
     name: S.String,
     zones: SettingsAccountViewsEditResponseZonesList,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchSettingAccountViewResponse",
 }) as any as S.Schema<PatchSettingAccountViewResponse>;
@@ -10782,13 +10947,15 @@ export const PatchSettingZoneRequest = /*@__PURE__*/ S.suspend(() =>
     zoneMode: S.optional(
       SettingsZoneEditRequestZoneMode.pipe(T.Body("zone_mode")),
     ),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/zones/{zone_id}/dns_settings",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/zones/{zone_id}/dns_settings",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchSettingZoneRequest",
 }) as any as S.Schema<PatchSettingZoneRequest>;
@@ -10899,7 +11066,7 @@ export const PatchSettingZoneResponse = /*@__PURE__*/ S.suspend(() =>
     secondaryOverrides: S.Boolean.pipe(T.Body("secondary_overrides")),
     soa: SettingsZoneEditResponseSoa,
     zoneMode: SettingsZoneEditResponseZoneMode.pipe(T.Body("zone_mode")),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchSettingZoneResponse",
 }) as any as S.Schema<PatchSettingZoneResponse>;
@@ -10911,13 +11078,15 @@ export interface ScanListRecordRequest {
 export const ScanListRecordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/dns_records/scan/review",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/dns_records/scan/review",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ScanListRecordRequest",
 }) as any as S.Schema<ScanListRecordRequest>;
@@ -12288,7 +12457,7 @@ export const ScanListRecordResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: RecordsScanListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ScanListRecordResponse",
 }) as any as S.Schema<ScanListRecordResponse>;
@@ -12302,13 +12471,15 @@ export const ScanRecordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     body: S.Unknown,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/zones/{zone_id}/dns_records/scan",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/zones/{zone_id}/dns_records/scan",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ScanRecordRequest",
 }) as any as S.Schema<ScanRecordRequest>;
@@ -12326,7 +12497,7 @@ export const ScanRecordResponse = /*@__PURE__*/ S.suspend(() =>
     totalRecordsParsed: S.optional(
       S.Number.pipe(T.Body("total_records_parsed")),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ScanRecordResponse",
 }) as any as S.Schema<ScanRecordResponse>;
@@ -12459,13 +12630,15 @@ export const ScanReviewRecordRequest = /*@__PURE__*/ S.suspend(() =>
     zoneId: S.String.pipe(T.Label("zone_id")),
     accepts: S.optional(RecordsScanReviewRequestAcceptsList),
     rejects: S.optional(RecordsScanReviewRequestRejectsList),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/zones/{zone_id}/dns_records/scan/review",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/zones/{zone_id}/dns_records/scan/review",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ScanReviewRecordRequest",
 }) as any as S.Schema<ScanReviewRecordRequest>;
@@ -13904,7 +14077,7 @@ export const ScanReviewRecordResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accepts: S.optional(RecordsScanReviewResponseAcceptsList),
     rejects: S.optional(RecordsScanReviewResponseRejectsList),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ScanReviewRecordResponse",
 }) as any as S.Schema<ScanReviewRecordResponse>;
@@ -13916,20 +14089,22 @@ export interface ScanTriggerRecordRequest {
 export const ScanTriggerRecordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/zones/{zone_id}/dns_records/scan/trigger",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/zones/{zone_id}/dns_records/scan/trigger",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ScanTriggerRecordRequest",
 }) as any as S.Schema<ScanTriggerRecordRequest>;
 
 export interface ScanTriggerRecordResponse {}
 export const ScanTriggerRecordResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
+  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ScanTriggerRecordResponse",
 }) as any as S.Schema<ScanTriggerRecordResponse>;
@@ -14044,13 +14219,15 @@ export const UpdateRecordRequest = /*@__PURE__*/ S.suspend(() =>
       S.Boolean.pipe(T.Query("include_shadow_metadata")),
     ),
     body: RecordsUpdateRequestBody,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/zones/{zone_id}/dns_records/{dns_record_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/zones/{zone_id}/dns_records/{dns_record_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateRecordRequest",
 }) as any as S.Schema<UpdateRecordRequest>;
@@ -15370,7 +15547,7 @@ export const UpdateRecordResponse = /*@__PURE__*/ S.suspend(() =>
     SVCBRecord: RecordsUpdateResponseSVCBRecord,
     TLSARecord: RecordsUpdateResponseTLSARecord,
     URIRecord: RecordsUpdateResponseURIRecord,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateRecordResponse",
 }) as any as S.Schema<UpdateRecordResponse>;
@@ -15389,13 +15566,15 @@ export const UpdateZoneTransferAclRequest = /*@__PURE__*/ S.suspend(() =>
     aclId: S.String.pipe(T.Label("acl_id")),
     ipRange: S.String.pipe(T.Body("ip_range")),
     name: S.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/secondary_dns/acls/{acl_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/secondary_dns/acls/{acl_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateZoneTransferAclRequest",
 }) as any as S.Schema<UpdateZoneTransferAclRequest>;
@@ -15413,7 +15592,7 @@ export const UpdateZoneTransferAclResponse = /*@__PURE__*/ S.suspend(() =>
     id: S.String,
     ipRange: S.String.pipe(T.Body("ip_range")),
     name: S.String,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateZoneTransferAclResponse",
 }) as any as S.Schema<UpdateZoneTransferAclResponse>;
@@ -15439,13 +15618,15 @@ export const UpdateZoneTransferIncomingRequest = /*@__PURE__*/ S.suspend(() =>
     autoRefreshSeconds: S.Number.pipe(T.Body("auto_refresh_seconds")),
     name: S.String,
     peers: ZoneTransfersIncomingUpdateRequestPeersList,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/zones/{zone_id}/secondary_dns/incoming",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/zones/{zone_id}/secondary_dns/incoming",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateZoneTransferIncomingRequest",
 }) as any as S.Schema<UpdateZoneTransferIncomingRequest>;
@@ -15486,7 +15667,7 @@ export const UpdateZoneTransferIncomingResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     peers: S.optional(ZoneTransfersIncomingUpdateResponsePeersList),
     soaSerial: S.optional(S.Number.pipe(T.Body("soa_serial"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateZoneTransferIncomingResponse",
 }) as any as S.Schema<UpdateZoneTransferIncomingResponse>;
@@ -15509,13 +15690,15 @@ export const UpdateZoneTransferOutgoingRequest = /*@__PURE__*/ S.suspend(() =>
     zoneId: S.String.pipe(T.Label("zone_id")),
     name: S.String,
     peers: ZoneTransfersOutgoingUpdateRequestPeersList,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/zones/{zone_id}/secondary_dns/outgoing",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/zones/{zone_id}/secondary_dns/outgoing",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateZoneTransferOutgoingRequest",
 }) as any as S.Schema<UpdateZoneTransferOutgoingRequest>;
@@ -15553,7 +15736,7 @@ export const UpdateZoneTransferOutgoingResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     peers: S.optional(ZoneTransfersOutgoingUpdateResponsePeersList),
     soaSerial: S.optional(S.Number.pipe(T.Body("soa_serial"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateZoneTransferOutgoingResponse",
 }) as any as S.Schema<UpdateZoneTransferOutgoingResponse>;
@@ -15581,13 +15764,15 @@ export const UpdateZoneTransferPeerRequest = /*@__PURE__*/ S.suspend(() =>
     ixfrEnable: S.optional(S.Boolean.pipe(T.Body("ixfr_enable"))),
     port: S.optional(S.Number),
     tsigId: S.optional(S.String.pipe(T.Body("tsig_id"))),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/secondary_dns/peers/{peer_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/secondary_dns/peers/{peer_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateZoneTransferPeerRequest",
 }) as any as S.Schema<UpdateZoneTransferPeerRequest>;
@@ -15614,7 +15799,7 @@ export const UpdateZoneTransferPeerResponse = /*@__PURE__*/ S.suspend(() =>
     ixfrEnable: S.optional(S.Boolean.pipe(T.Body("ixfr_enable"))),
     port: S.optional(S.Number),
     tsigId: S.optional(S.String.pipe(T.Body("tsig_id"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateZoneTransferPeerResponse",
 }) as any as S.Schema<UpdateZoneTransferPeerResponse>;
@@ -15636,13 +15821,15 @@ export const UpdateZoneTransferTsigRequest = /*@__PURE__*/ S.suspend(() =>
     algo: S.String,
     name: S.String,
     secret: S.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/secondary_dns/tsigs/{tsig_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/secondary_dns/tsigs/{tsig_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateZoneTransferTsigRequest",
 }) as any as S.Schema<UpdateZoneTransferTsigRequest>;
@@ -15663,7 +15850,7 @@ export const UpdateZoneTransferTsigResponse = /*@__PURE__*/ S.suspend(() =>
     algo: S.String,
     name: S.String,
     secret: S.String,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateZoneTransferTsigResponse",
 }) as any as S.Schema<UpdateZoneTransferTsigResponse>;

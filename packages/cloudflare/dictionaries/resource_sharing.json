@@ -1,0 +1,20 @@
+{
+  "accountId": "account_id",
+  "accountName": "account_name",
+  "associatedRecipientCount": "associated_recipient_count",
+  "associatingRecipientCount": "associating_recipient_count",
+  "associationStatus": "association_status",
+  "bodyAccountId": "body_account_id",
+  "disassociatedRecipientCount": "disassociated_recipient_count",
+  "disassociatingRecipientCount": "disassociating_recipient_count",
+  "organizationId": "organization_id",
+  "perPage": "per_page",
+  "recipientAccountId": "recipient_account_id",
+  "resourceAccountId": "resource_account_id",
+  "resourceId": "resource_id",
+  "resourceType": "resource_type",
+  "resourceVersion": "resource_version",
+  "resultInfo": "result_info",
+  "targetType": "target_type",
+  "totalCount": "total_count"
+}

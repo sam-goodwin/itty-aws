@@ -14,6 +14,25 @@ import * as Retry from "../retry.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
+/** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
+const KEY_DICTIONARY: Record<string, string> = {
+  allowInsecure: "allow_insecure",
+  checkRegions: "check_regions",
+  consecutiveFails: "consecutive_fails",
+  consecutiveSuccesses: "consecutive_successes",
+  createdOn: "created_on",
+  expectedBody: "expected_body",
+  expectedCodes: "expected_codes",
+  failureReason: "failure_reason",
+  followRedirects: "follow_redirects",
+  httpConfig: "http_config",
+  modifiedOn: "modified_on",
+  perPage: "per_page",
+  resultInfo: "result_info",
+  tcpConfig: "tcp_config",
+  totalCount: "total_count",
+};
+
 export class Forbidden extends T.applyErrorMatchers(
   S.TaggedErrorClass<Forbidden>()("Forbidden", {
     code: S.Number,
@@ -164,9 +183,15 @@ export const CreateHealthcheckRequest = /*@__PURE__*/ S.suspend(() =>
     tcpConfig: S.optional(CreateRequestTcpConfig.pipe(T.Body("tcp_config"))),
     timeout: S.optional(S.Number),
     type: S.optional(S.String),
-  }).pipe(
-    T.Http({ method: "POST", uri: "/zones/{zone_id}/healthchecks", code: 200 }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/zones/{zone_id}/healthchecks",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateHealthcheckRequest",
 }) as any as S.Schema<CreateHealthcheckRequest>;
@@ -318,7 +343,7 @@ export const CreateHealthcheckResponse = /*@__PURE__*/ S.suspend(() =>
     tcpConfig: S.optional(CreateResponseTcpConfig.pipe(T.Body("tcp_config"))),
     timeout: S.optional(S.Number),
     type: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateHealthcheckResponse",
 }) as any as S.Schema<CreateHealthcheckResponse>;
@@ -459,13 +484,15 @@ export const CreatePreviewRequest = /*@__PURE__*/ S.suspend(() =>
     ),
     timeout: S.optional(S.Number),
     type: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/zones/{zone_id}/healthchecks/preview",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/zones/{zone_id}/healthchecks/preview",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreatePreviewRequest",
 }) as any as S.Schema<CreatePreviewRequest>;
@@ -625,7 +652,7 @@ export const CreatePreviewResponse = /*@__PURE__*/ S.suspend(() =>
     ),
     timeout: S.optional(S.Number),
     type: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreatePreviewResponse",
 }) as any as S.Schema<CreatePreviewResponse>;
@@ -640,13 +667,15 @@ export const DeleteHealthcheckRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     healthcheckId: S.String.pipe(T.Label("healthcheck_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/zones/{zone_id}/healthchecks/{healthcheck_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/zones/{zone_id}/healthchecks/{healthcheck_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteHealthcheckRequest",
 }) as any as S.Schema<DeleteHealthcheckRequest>;
@@ -659,7 +688,7 @@ export interface DeleteHealthcheckResponse {
 export const DeleteHealthcheckResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteHealthcheckResponse",
 }) as any as S.Schema<DeleteHealthcheckResponse>;
@@ -674,13 +703,15 @@ export const DeletePreviewRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     healthcheckId: S.String.pipe(T.Label("healthcheck_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/zones/{zone_id}/healthchecks/preview/{healthcheck_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/zones/{zone_id}/healthchecks/preview/{healthcheck_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeletePreviewRequest",
 }) as any as S.Schema<DeletePreviewRequest>;
@@ -693,7 +724,7 @@ export interface DeletePreviewResponse {
 export const DeletePreviewResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeletePreviewResponse",
 }) as any as S.Schema<DeletePreviewResponse>;
@@ -708,13 +739,15 @@ export const GetHealthcheckRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     healthcheckId: S.String.pipe(T.Label("healthcheck_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/healthchecks/{healthcheck_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/healthchecks/{healthcheck_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetHealthcheckRequest",
 }) as any as S.Schema<GetHealthcheckRequest>;
@@ -864,7 +897,7 @@ export const GetHealthcheckResponse = /*@__PURE__*/ S.suspend(() =>
     tcpConfig: S.optional(GetResponseTcpConfig.pipe(T.Body("tcp_config"))),
     timeout: S.optional(S.Number),
     type: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetHealthcheckResponse",
 }) as any as S.Schema<GetHealthcheckResponse>;
@@ -879,13 +912,15 @@ export const GetPreviewRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     healthcheckId: S.String.pipe(T.Label("healthcheck_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/healthchecks/preview/{healthcheck_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/healthchecks/preview/{healthcheck_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetPreviewRequest",
 }) as any as S.Schema<GetPreviewRequest>;
@@ -1045,7 +1080,7 @@ export const GetPreviewResponse = /*@__PURE__*/ S.suspend(() =>
     ),
     timeout: S.optional(S.Number),
     type: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetPreviewResponse",
 }) as any as S.Schema<GetPreviewResponse>;
@@ -1063,9 +1098,15 @@ export const ListHealthchecksRequest = /*@__PURE__*/ S.suspend(() =>
     zoneId: S.String.pipe(T.Label("zone_id")),
     page: S.optional(S.Number.pipe(T.Query())),
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-  }).pipe(
-    T.Http({ method: "GET", uri: "/zones/{zone_id}/healthchecks", code: 200 }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/healthchecks",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListHealthchecksRequest",
 }) as any as S.Schema<ListHealthchecksRequest>;
@@ -1234,7 +1275,7 @@ export const ListHealthchecksResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: ListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListHealthchecksResponse",
 }) as any as S.Schema<ListHealthchecksResponse>;
@@ -1368,13 +1409,15 @@ export const PatchHealthcheckRequest = /*@__PURE__*/ S.suspend(() =>
     tcpConfig: S.optional(EditRequestTcpConfig.pipe(T.Body("tcp_config"))),
     timeout: S.optional(S.Number),
     type: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/zones/{zone_id}/healthchecks/{healthcheck_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/zones/{zone_id}/healthchecks/{healthcheck_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchHealthcheckRequest",
 }) as any as S.Schema<PatchHealthcheckRequest>;
@@ -1524,7 +1567,7 @@ export const PatchHealthcheckResponse = /*@__PURE__*/ S.suspend(() =>
     tcpConfig: S.optional(EditResponseTcpConfig.pipe(T.Body("tcp_config"))),
     timeout: S.optional(S.Number),
     type: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchHealthcheckResponse",
 }) as any as S.Schema<PatchHealthcheckResponse>;
@@ -1658,13 +1701,15 @@ export const UpdateHealthcheckRequest = /*@__PURE__*/ S.suspend(() =>
     tcpConfig: S.optional(UpdateRequestTcpConfig.pipe(T.Body("tcp_config"))),
     timeout: S.optional(S.Number),
     type: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/zones/{zone_id}/healthchecks/{healthcheck_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/zones/{zone_id}/healthchecks/{healthcheck_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateHealthcheckRequest",
 }) as any as S.Schema<UpdateHealthcheckRequest>;
@@ -1816,7 +1861,7 @@ export const UpdateHealthcheckResponse = /*@__PURE__*/ S.suspend(() =>
     tcpConfig: S.optional(UpdateResponseTcpConfig.pipe(T.Body("tcp_config"))),
     timeout: S.optional(S.Number),
     type: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateHealthcheckResponse",
 }) as any as S.Schema<UpdateHealthcheckResponse>;

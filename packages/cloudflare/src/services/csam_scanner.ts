@@ -12,6 +12,14 @@ import * as Retry from "../retry.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
+/** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
+const KEY_DICTIONARY: Record<string, string> = {
+  emailState: "email_state",
+  modifiedOn: "modified_on",
+  resendEmail: "resend_email",
+  zonePlan: "zone_plan",
+};
+
 export interface GetCsamScannerRequest {
   /** Identifier for the zone. */
   zoneId: string;
@@ -19,13 +27,15 @@ export interface GetCsamScannerRequest {
 export const GetCsamScannerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/settings/csam_scanner_third_party",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/settings/csam_scanner_third_party",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetCsamScannerRequest",
 }) as any as S.Schema<GetCsamScannerRequest>;
@@ -89,7 +99,7 @@ export const GetCsamScannerResponse = /*@__PURE__*/ S.suspend(() =>
     editable: S.optional(S.Boolean),
     modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
     value: S.optional(GetResponseValue),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetCsamScannerResponse",
 }) as any as S.Schema<GetCsamScannerResponse>;
@@ -137,13 +147,15 @@ export const PatchCsamScannerRequest = /*@__PURE__*/ S.suspend(() =>
     zoneId: S.String.pipe(T.Label("zone_id")),
     id: S.optional(EditRequestId),
     value: S.optional(EditRequestValue),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/zones/{zone_id}/settings/csam_scanner_third_party",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/zones/{zone_id}/settings/csam_scanner_third_party",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchCsamScannerRequest",
 }) as any as S.Schema<PatchCsamScannerRequest>;
@@ -209,7 +221,7 @@ export const PatchCsamScannerResponse = /*@__PURE__*/ S.suspend(() =>
     editable: S.optional(S.Boolean),
     modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
     value: S.optional(EditResponseValue),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchCsamScannerResponse",
 }) as any as S.Schema<PatchCsamScannerResponse>;

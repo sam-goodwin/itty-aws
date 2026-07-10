@@ -14,6 +14,19 @@ import * as Retry from "../retry.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
+/** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
+const KEY_DICTIONARY: Record<string, string> = {
+  endTs: "end_ts",
+  modifiedOn: "modified_on",
+  obtainedCodes: "obtained_codes",
+  originIp: "origin_ip",
+  perPage: "per_page",
+  purgeEverything: "purge_everything",
+  resultInfo: "result_info",
+  startTs: "start_ts",
+  totalCount: "total_count",
+};
+
 export class Forbidden extends T.applyErrorMatchers(
   S.TaggedErrorClass<Forbidden>()("Forbidden", {
     code: S.Number,
@@ -61,13 +74,15 @@ export interface BulkDeleteOriginCloudRegionsRequest {
 export const BulkDeleteOriginCloudRegionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/zones/{zone_id}/origin/cloud_regions/batch",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/zones/{zone_id}/origin/cloud_regions/batch",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "BulkDeleteOriginCloudRegionsRequest",
 }) as any as S.Schema<BulkDeleteOriginCloudRegionsRequest>;
@@ -142,7 +157,7 @@ export const BulkDeleteOriginCloudRegionsResponse = /*@__PURE__*/ S.suspend(
     S.Struct({
       failed: OriginCloudRegionsBulkDeleteResponseFailedList,
       succeeded: OriginCloudRegionsBulkDeleteResponseSucceededList,
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "BulkDeleteOriginCloudRegionsResponse",
 }) as any as S.Schema<BulkDeleteOriginCloudRegionsResponse>;
@@ -191,13 +206,15 @@ export const BulkPutOriginCloudRegionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     body: OriginCloudRegionsBulkUpdateRequestBodyList,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/zones/{zone_id}/origin/cloud_regions/batch",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/zones/{zone_id}/origin/cloud_regions/batch",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "BulkPutOriginCloudRegionsRequest",
 }) as any as S.Schema<BulkPutOriginCloudRegionsRequest>;
@@ -271,7 +288,7 @@ export const BulkPutOriginCloudRegionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     failed: OriginCloudRegionsBulkUpdateResponseFailedList,
     succeeded: OriginCloudRegionsBulkUpdateResponseSucceededList,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "BulkPutOriginCloudRegionsResponse",
 }) as any as S.Schema<BulkPutOriginCloudRegionsResponse>;
@@ -285,13 +302,15 @@ export const ClearCacheReserveRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     body: S.Unknown,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/zones/{zone_id}/cache/cache_reserve_clear",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/zones/{zone_id}/cache/cache_reserve_clear",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ClearCacheReserveRequest",
 }) as any as S.Schema<ClearCacheReserveRequest>;
@@ -316,7 +335,7 @@ export const ClearCacheReserveResponse = /*@__PURE__*/ S.suspend(() =>
     state: S.Unknown,
     endTs: S.optional(S.String.pipe(T.Body("end_ts"))),
     modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ClearCacheReserveResponse",
 }) as any as S.Schema<ClearCacheReserveResponse>;
@@ -334,13 +353,15 @@ export const CreateSmartTieredCacheRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     value: SmartTieredCacheCreateRequestValue,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/zones/{zone_id}/cache/tiered_cache_smart_topology_enable",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/zones/{zone_id}/cache/tiered_cache_smart_topology_enable",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateSmartTieredCacheRequest",
 }) as any as S.Schema<CreateSmartTieredCacheRequest>;
@@ -370,7 +391,7 @@ export const CreateSmartTieredCacheResponse = /*@__PURE__*/ S.suspend(() =>
     editable: S.Boolean,
     value: SmartTieredCacheCreateResponseValue,
     modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateSmartTieredCacheResponse",
 }) as any as S.Schema<CreateSmartTieredCacheResponse>;
@@ -384,13 +405,15 @@ export const DeleteOriginCloudRegionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     originIp: S.String.pipe(T.Label("origin_ip")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/zones/{zone_id}/origin/cloud_regions/{origin_ip}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/zones/{zone_id}/origin/cloud_regions/{origin_ip}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteOriginCloudRegionRequest",
 }) as any as S.Schema<DeleteOriginCloudRegionRequest>;
@@ -403,7 +426,7 @@ export interface DeleteOriginCloudRegionResponse {
 export const DeleteOriginCloudRegionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     originIp: S.String.pipe(T.Body("origin_ip")),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteOriginCloudRegionResponse",
 }) as any as S.Schema<DeleteOriginCloudRegionResponse>;
@@ -415,13 +438,15 @@ export interface DeleteSmartTieredCacheRequest {
 export const DeleteSmartTieredCacheRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/zones/{zone_id}/cache/tiered_cache_smart_topology_enable",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/zones/{zone_id}/cache/tiered_cache_smart_topology_enable",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteSmartTieredCacheRequest",
 }) as any as S.Schema<DeleteSmartTieredCacheRequest>;
@@ -445,7 +470,7 @@ export const DeleteSmartTieredCacheResponse = /*@__PURE__*/ S.suspend(() =>
     id: SmartTieredCacheDeleteResponseId,
     editable: S.Boolean,
     modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteSmartTieredCacheResponse",
 }) as any as S.Schema<DeleteSmartTieredCacheResponse>;
@@ -457,13 +482,15 @@ export interface DeleteVariantRequest {
 export const DeleteVariantRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/zones/{zone_id}/cache/variants",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/zones/{zone_id}/cache/variants",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteVariantRequest",
 }) as any as S.Schema<DeleteVariantRequest>;
@@ -485,7 +512,7 @@ export const DeleteVariantResponse = /*@__PURE__*/ S.suspend(() =>
     id: VariantsDeleteResponseId,
     editable: S.Boolean,
     modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteVariantResponse",
 }) as any as S.Schema<DeleteVariantResponse>;
@@ -497,13 +524,15 @@ export interface GetCacheReserveRequest {
 export const GetCacheReserveRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/cache/cache_reserve",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/cache/cache_reserve",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetCacheReserveRequest",
 }) as any as S.Schema<GetCacheReserveRequest>;
@@ -528,7 +557,7 @@ export const GetCacheReserveResponse = /*@__PURE__*/ S.suspend(() =>
     editable: S.Boolean,
     value: CacheReserveGetResponseValue,
     modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetCacheReserveResponse",
 }) as any as S.Schema<GetCacheReserveResponse>;
@@ -542,13 +571,15 @@ export const GetOriginCloudRegionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     originIp: S.String.pipe(T.Label("origin_ip")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/origin/cloud_regions/{origin_ip}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/origin/cloud_regions/{origin_ip}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetOriginCloudRegionRequest",
 }) as any as S.Schema<GetOriginCloudRegionRequest>;
@@ -578,7 +609,7 @@ export const GetOriginCloudRegionResponse = /*@__PURE__*/ S.suspend(() =>
     region: S.String,
     vendor: OriginCloudRegionsGetResponseVendor,
     modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetOriginCloudRegionResponse",
 }) as any as S.Schema<GetOriginCloudRegionResponse>;
@@ -590,13 +621,15 @@ export interface GetRegionalTieredCacheRequest {
 export const GetRegionalTieredCacheRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/cache/regional_tiered_cache",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/cache/regional_tiered_cache",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetRegionalTieredCacheRequest",
 }) as any as S.Schema<GetRegionalTieredCacheRequest>;
@@ -621,7 +654,7 @@ export const GetRegionalTieredCacheResponse = /*@__PURE__*/ S.suspend(() =>
     editable: S.Boolean,
     value: RegionalTieredCacheGetResponseValue,
     modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetRegionalTieredCacheResponse",
 }) as any as S.Schema<GetRegionalTieredCacheResponse>;
@@ -633,13 +666,15 @@ export interface GetSmartTieredCacheRequest {
 export const GetSmartTieredCacheRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/cache/tiered_cache_smart_topology_enable",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/cache/tiered_cache_smart_topology_enable",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetSmartTieredCacheRequest",
 }) as any as S.Schema<GetSmartTieredCacheRequest>;
@@ -669,7 +704,7 @@ export const GetSmartTieredCacheResponse = /*@__PURE__*/ S.suspend(() =>
     editable: S.Boolean,
     value: SmartTieredCacheGetResponseValue,
     modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetSmartTieredCacheResponse",
 }) as any as S.Schema<GetSmartTieredCacheResponse>;
@@ -681,13 +716,15 @@ export interface GetVariantRequest {
 export const GetVariantRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/cache/variants",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/cache/variants",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetVariantRequest",
 }) as any as S.Schema<GetVariantRequest>;
@@ -809,7 +846,7 @@ export const GetVariantResponse = /*@__PURE__*/ S.suspend(() =>
     editable: S.Boolean,
     value: VariantsGetResponseValue,
     modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetVariantResponse",
 }) as any as S.Schema<GetVariantResponse>;
@@ -827,13 +864,15 @@ export const ListOriginCloudRegionsRequest = /*@__PURE__*/ S.suspend(() =>
     zoneId: S.String.pipe(T.Label("zone_id")),
     page: S.optional(S.Number.pipe(T.Query())),
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/origin/cloud_regions",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/origin/cloud_regions",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListOriginCloudRegionsRequest",
 }) as any as S.Schema<ListOriginCloudRegionsRequest>;
@@ -883,7 +922,7 @@ export const ListOriginCloudRegionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: OriginCloudRegionsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListOriginCloudRegionsResponse",
 }) as any as S.Schema<ListOriginCloudRegionsResponse>;
@@ -896,13 +935,15 @@ export const OriginCloudRegionsBulkDeleteV1Request = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       zoneId: S.String.pipe(T.Label("zone_id")),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/zones/{zone_id}/cache/origin_cloud_regions/batch",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "DELETE",
+          uri: "/zones/{zone_id}/cache/origin_cloud_regions/batch",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "OriginCloudRegionsBulkDeleteV1Request",
 }) as any as S.Schema<OriginCloudRegionsBulkDeleteV1Request>;
@@ -1002,7 +1043,7 @@ export const OriginCloudRegionsBulkDeleteV1Response = /*@__PURE__*/ S.suspend(
       editable: S.Boolean,
       value: OriginCloudRegionsBulkDeleteV1ResponseValue,
       modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "OriginCloudRegionsBulkDeleteV1Response",
 }) as any as S.Schema<OriginCloudRegionsBulkDeleteV1Response>;
@@ -1051,13 +1092,15 @@ export const OriginCloudRegionsBulkEditV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     body: OriginCloudRegionsBulkEditV1RequestBodyList,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/zones/{zone_id}/cache/origin_cloud_regions/batch",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/zones/{zone_id}/cache/origin_cloud_regions/batch",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "OriginCloudRegionsBulkEditV1Request",
 }) as any as S.Schema<OriginCloudRegionsBulkEditV1Request>;
@@ -1157,7 +1200,7 @@ export const OriginCloudRegionsBulkEditV1Response = /*@__PURE__*/ S.suspend(
       editable: S.Boolean,
       value: OriginCloudRegionsBulkEditV1ResponseValue,
       modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "OriginCloudRegionsBulkEditV1Response",
 }) as any as S.Schema<OriginCloudRegionsBulkEditV1Response>;
@@ -1186,13 +1229,15 @@ export const OriginCloudRegionsCreateV1Request = /*@__PURE__*/ S.suspend(() =>
     ip: S.String,
     region: S.String,
     vendor: OriginCloudRegionsCreateV1RequestVendor,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/zones/{zone_id}/cache/origin_cloud_regions",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/zones/{zone_id}/cache/origin_cloud_regions",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "OriginCloudRegionsCreateV1Request",
 }) as any as S.Schema<OriginCloudRegionsCreateV1Request>;
@@ -1249,7 +1294,7 @@ export const OriginCloudRegionsCreateV1Response = /*@__PURE__*/ S.suspend(() =>
     editable: S.Boolean,
     value: OriginCloudRegionsCreateV1ResponseValue,
     modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "OriginCloudRegionsCreateV1Response",
 }) as any as S.Schema<OriginCloudRegionsCreateV1Response>;
@@ -1263,13 +1308,15 @@ export const OriginCloudRegionsDeleteV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     originIp: S.String.pipe(T.Label("origin_ip")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/zones/{zone_id}/cache/origin_cloud_regions/{origin_ip}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/zones/{zone_id}/cache/origin_cloud_regions/{origin_ip}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "OriginCloudRegionsDeleteV1Request",
 }) as any as S.Schema<OriginCloudRegionsDeleteV1Request>;
@@ -1326,7 +1373,7 @@ export const OriginCloudRegionsDeleteV1Response = /*@__PURE__*/ S.suspend(() =>
     editable: S.Boolean,
     value: OriginCloudRegionsDeleteV1ResponseValue,
     modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "OriginCloudRegionsDeleteV1Response",
 }) as any as S.Schema<OriginCloudRegionsDeleteV1Response>;
@@ -1355,13 +1402,15 @@ export const OriginCloudRegionsEditV1Request = /*@__PURE__*/ S.suspend(() =>
     ip: S.String,
     region: S.String,
     vendor: OriginCloudRegionsEditV1RequestVendor,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/zones/{zone_id}/cache/origin_cloud_regions",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/zones/{zone_id}/cache/origin_cloud_regions",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "OriginCloudRegionsEditV1Request",
 }) as any as S.Schema<OriginCloudRegionsEditV1Request>;
@@ -1423,7 +1472,7 @@ export const OriginCloudRegionsEditV1Response = /*@__PURE__*/ S.suspend(() =>
     editable: S.Boolean,
     value: OriginCloudRegionsEditV1ResponseValueList,
     modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "OriginCloudRegionsEditV1Response",
 }) as any as S.Schema<OriginCloudRegionsEditV1Response>;
@@ -1437,13 +1486,15 @@ export const OriginCloudRegionsGetV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     originIp: S.String.pipe(T.Label("origin_ip")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/cache/origin_cloud_regions/{origin_ip}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/cache/origin_cloud_regions/{origin_ip}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "OriginCloudRegionsGetV1Request",
 }) as any as S.Schema<OriginCloudRegionsGetV1Request>;
@@ -1500,7 +1551,7 @@ export const OriginCloudRegionsGetV1Response = /*@__PURE__*/ S.suspend(() =>
     editable: S.Boolean,
     value: OriginCloudRegionsGetV1ResponseValue,
     modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "OriginCloudRegionsGetV1Response",
 }) as any as S.Schema<OriginCloudRegionsGetV1Response>;
@@ -1512,13 +1563,15 @@ export interface OriginCloudRegionsListV1Request {
 export const OriginCloudRegionsListV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/cache/origin_cloud_regions",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/cache/origin_cloud_regions",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "OriginCloudRegionsListV1Request",
 }) as any as S.Schema<OriginCloudRegionsListV1Request>;
@@ -1580,7 +1633,7 @@ export const OriginCloudRegionsListV1Response = /*@__PURE__*/ S.suspend(() =>
     editable: S.Boolean,
     value: OriginCloudRegionsListV1ResponseValueList,
     modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "OriginCloudRegionsListV1Response",
 }) as any as S.Schema<OriginCloudRegionsListV1Response>;
@@ -1593,13 +1646,15 @@ export const OriginCloudRegionsSupportedRegionsV1Request =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       zoneId: S.String.pipe(T.Label("zone_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/zones/{zone_id}/cache/origin_cloud_regions/supported_regions",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "GET",
+          uri: "/zones/{zone_id}/cache/origin_cloud_regions/supported_regions",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "OriginCloudRegionsSupportedRegionsV1Request",
   }) as any as S.Schema<OriginCloudRegionsSupportedRegionsV1Request>;
@@ -1625,7 +1680,7 @@ export const OriginCloudRegionsSupportedRegionsV1Response =
     S.Struct({
       obtainedCodes: S.Boolean.pipe(T.Body("obtained_codes")),
       vendors: OriginCloudRegionsSupportedRegionsV1ResponseVendorsMap,
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "OriginCloudRegionsSupportedRegionsV1Response",
   }) as any as S.Schema<OriginCloudRegionsSupportedRegionsV1Response>;
@@ -1643,13 +1698,15 @@ export const PatchCacheReserveRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     value: CacheReserveEditRequestValue,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/zones/{zone_id}/cache/cache_reserve",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/zones/{zone_id}/cache/cache_reserve",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchCacheReserveRequest",
 }) as any as S.Schema<PatchCacheReserveRequest>;
@@ -1674,7 +1731,7 @@ export const PatchCacheReserveResponse = /*@__PURE__*/ S.suspend(() =>
     editable: S.Boolean,
     value: CacheReserveEditResponseValue,
     modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchCacheReserveResponse",
 }) as any as S.Schema<PatchCacheReserveResponse>;
@@ -1692,13 +1749,15 @@ export const PatchRegionalTieredCacheRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     value: RegionalTieredCacheEditRequestValue,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/zones/{zone_id}/cache/regional_tiered_cache",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/zones/{zone_id}/cache/regional_tiered_cache",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchRegionalTieredCacheRequest",
 }) as any as S.Schema<PatchRegionalTieredCacheRequest>;
@@ -1723,7 +1782,7 @@ export const PatchRegionalTieredCacheResponse = /*@__PURE__*/ S.suspend(() =>
     editable: S.Boolean,
     value: RegionalTieredCacheEditResponseValue,
     modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchRegionalTieredCacheResponse",
 }) as any as S.Schema<PatchRegionalTieredCacheResponse>;
@@ -1741,13 +1800,15 @@ export const PatchSmartTieredCacheRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     value: SmartTieredCacheEditRequestValue,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/zones/{zone_id}/cache/tiered_cache_smart_topology_enable",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/zones/{zone_id}/cache/tiered_cache_smart_topology_enable",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchSmartTieredCacheRequest",
 }) as any as S.Schema<PatchSmartTieredCacheRequest>;
@@ -1777,7 +1838,7 @@ export const PatchSmartTieredCacheResponse = /*@__PURE__*/ S.suspend(() =>
     editable: S.Boolean,
     value: SmartTieredCacheEditResponseValue,
     modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchSmartTieredCacheResponse",
 }) as any as S.Schema<PatchSmartTieredCacheResponse>;
@@ -1889,13 +1950,15 @@ export const PatchVariantRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     value: VariantsEditRequestValue,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/zones/{zone_id}/cache/variants",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/zones/{zone_id}/cache/variants",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchVariantRequest",
 }) as any as S.Schema<PatchVariantRequest>;
@@ -2017,7 +2080,7 @@ export const PatchVariantResponse = /*@__PURE__*/ S.suspend(() =>
     editable: S.Boolean,
     value: VariantsEditResponseValue,
     modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchVariantResponse",
 }) as any as S.Schema<PatchVariantResponse>;
@@ -2063,9 +2126,15 @@ export const PurgeCacheRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     body: PurgeRequestBody,
-  }).pipe(
-    T.Http({ method: "POST", uri: "/zones/{zone_id}/purge_cache", code: 200 }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/zones/{zone_id}/purge_cache",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PurgeCacheRequest",
 }) as any as S.Schema<PurgeCacheRequest>;
@@ -2077,7 +2146,7 @@ export interface PurgeCacheResponse {
 export const PurgeCacheResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PurgeCacheResponse",
 }) as any as S.Schema<PurgeCacheResponse>;
@@ -2125,13 +2194,15 @@ export const PurgeEnvironmentCacheRequest = /*@__PURE__*/ S.suspend(() =>
     zoneId: S.String.pipe(T.Label("zone_id")),
     environmentId: S.String.pipe(T.Label("environment_id")),
     body: PurgeEnvironmentRequestBody,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/zones/{zone_id}/environments/{environment_id}/purge_cache",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/zones/{zone_id}/environments/{environment_id}/purge_cache",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PurgeEnvironmentCacheRequest",
 }) as any as S.Schema<PurgeEnvironmentCacheRequest>;
@@ -2143,7 +2214,7 @@ export interface PurgeEnvironmentCacheResponse {
 export const PurgeEnvironmentCacheResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PurgeEnvironmentCacheResponse",
 }) as any as S.Schema<PurgeEnvironmentCacheResponse>;
@@ -2174,13 +2245,15 @@ export const PutOriginCloudRegionRequest = /*@__PURE__*/ S.suspend(() =>
     originIp2: S.String.pipe(T.Body("origin_ip")),
     region: S.String,
     vendor: OriginCloudRegionsUpdateRequestVendor,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/zones/{zone_id}/origin/cloud_regions/{origin_ip}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/zones/{zone_id}/origin/cloud_regions/{origin_ip}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutOriginCloudRegionRequest",
 }) as any as S.Schema<PutOriginCloudRegionRequest>;
@@ -2210,7 +2283,7 @@ export const PutOriginCloudRegionResponse = /*@__PURE__*/ S.suspend(() =>
     region: S.String,
     vendor: OriginCloudRegionsUpdateResponseVendor,
     modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutOriginCloudRegionResponse",
 }) as any as S.Schema<PutOriginCloudRegionResponse>;
@@ -2222,13 +2295,15 @@ export interface StatusCacheReserveRequest {
 export const StatusCacheReserveRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/cache/cache_reserve_clear",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/cache/cache_reserve_clear",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "StatusCacheReserveRequest",
 }) as any as S.Schema<StatusCacheReserveRequest>;
@@ -2253,7 +2328,7 @@ export const StatusCacheReserveResponse = /*@__PURE__*/ S.suspend(() =>
     state: S.Unknown,
     endTs: S.optional(S.String.pipe(T.Body("end_ts"))),
     modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "StatusCacheReserveResponse",
 }) as any as S.Schema<StatusCacheReserveResponse>;
@@ -2266,13 +2341,15 @@ export const SupportedRegionsOriginCloudRegionRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       zoneId: S.String.pipe(T.Label("zone_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/zones/{zone_id}/origin/cloud_regions/supported_regions",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "GET",
+          uri: "/zones/{zone_id}/origin/cloud_regions/supported_regions",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "SupportedRegionsOriginCloudRegionRequest",
 }) as any as S.Schema<SupportedRegionsOriginCloudRegionRequest>;
@@ -2298,7 +2375,7 @@ export const SupportedRegionsOriginCloudRegionResponse =
     S.Struct({
       obtainedCodes: S.Boolean.pipe(T.Body("obtained_codes")),
       vendors: OriginCloudRegionsSupportedRegionsResponseVendorsMap,
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "SupportedRegionsOriginCloudRegionResponse",
   }) as any as S.Schema<SupportedRegionsOriginCloudRegionResponse>;

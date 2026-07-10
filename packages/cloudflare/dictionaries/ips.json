@@ -1,0 +1,5 @@
+{
+  "ipv4Cidrs": "ipv4_cidrs",
+  "ipv6Cidrs": "ipv6_cidrs",
+  "jdcloudCidrs": "jdcloud_cidrs"
+}

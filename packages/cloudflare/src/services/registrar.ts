@@ -14,6 +14,30 @@ import * as Retry from "../retry.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
+/** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
+const KEY_DICTIONARY: Record<string, string> = {
+  acceptFoa: "accept_foa",
+  approveTransfer: "approve_transfer",
+  autoRenew: "auto_renew",
+  canCancelTransfer: "can_cancel_transfer",
+  canRegister: "can_register",
+  createdAt: "created_at",
+  currentRegistrar: "current_registrar",
+  disablePrivacy: "disable_privacy",
+  enterAuthCode: "enter_auth_code",
+  expiresAt: "expires_at",
+  firstName: "first_name",
+  lastName: "last_name",
+  registrantContact: "registrant_contact",
+  registrationCost: "registration_cost",
+  registryStatuses: "registry_statuses",
+  renewalCost: "renewal_cost",
+  supportedTld: "supported_tld",
+  transferIn: "transfer_in",
+  unlockDomain: "unlock_domain",
+  updatedAt: "updated_at",
+};
+
 export class Forbidden extends T.applyErrorMatchers(
   S.TaggedErrorClass<Forbidden>()("Forbidden", {
     code: S.Number,
@@ -59,13 +83,15 @@ export const CheckRegistrarRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     domains: CheckRequestDomainsList,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/registrar/domain-check",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/registrar/domain-check",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CheckRegistrarRequest",
 }) as any as S.Schema<CheckRegistrarRequest>;
@@ -138,7 +164,7 @@ export interface CheckRegistrarResponse {
 export const CheckRegistrarResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domains: CheckResponseDomainsList,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CheckRegistrarResponse",
 }) as any as S.Schema<CheckRegistrarResponse>;
@@ -153,13 +179,15 @@ export const GetDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     domainName: S.String.pipe(T.Label("domain_name")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/registrar/domains/{domain_name}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/registrar/domains/{domain_name}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDomainRequest",
 }) as any as S.Schema<GetDomainRequest>;
@@ -171,7 +199,7 @@ export interface GetDomainResponse {
 export const GetDomainResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDomainResponse",
 }) as any as S.Schema<GetDomainResponse>;
@@ -186,13 +214,15 @@ export const GetRegistrationStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     domainName: S.String.pipe(T.Label("domain_name")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/registrar/registrations/{domain_name}/registration-status",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/registrar/registrations/{domain_name}/registration-status",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetRegistrationStatusRequest",
 }) as any as S.Schema<GetRegistrationStatusRequest>;
@@ -265,7 +295,7 @@ export const GetRegistrationStatusResponse = /*@__PURE__*/ S.suspend(() =>
     updatedAt: S.String.pipe(T.Body("updated_at")),
     context: S.optional(RegistrationStatusGetResponseContextMap),
     error: S.optional(RegistrationStatusGetResponseError),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetRegistrationStatusResponse",
 }) as any as S.Schema<GetRegistrationStatusResponse>;
@@ -280,13 +310,15 @@ export const GetUpdateStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     domainName: S.String.pipe(T.Label("domain_name")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/registrar/registrations/{domain_name}/update-status",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/registrar/registrations/{domain_name}/update-status",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetUpdateStatusRequest",
 }) as any as S.Schema<GetUpdateStatusRequest>;
@@ -359,7 +391,7 @@ export const GetUpdateStatusResponse = /*@__PURE__*/ S.suspend(() =>
     updatedAt: S.String.pipe(T.Body("updated_at")),
     context: S.optional(UpdateStatusGetResponseContextMap),
     error: S.optional(UpdateStatusGetResponseError),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetUpdateStatusResponse",
 }) as any as S.Schema<GetUpdateStatusResponse>;
@@ -371,13 +403,15 @@ export interface ListDomainsRequest {
 export const ListDomainsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/registrar/domains",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/registrar/domains",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListDomainsRequest",
 }) as any as S.Schema<ListDomainsRequest>;
@@ -578,7 +612,7 @@ export const ListDomainsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: DomainsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListDomainsResponse",
 }) as any as S.Schema<ListDomainsResponse>;
@@ -602,13 +636,15 @@ export const PutDomainRequest = /*@__PURE__*/ S.suspend(() =>
     autoRenew: S.optional(S.Boolean.pipe(T.Body("auto_renew"))),
     locked: S.optional(S.Boolean),
     privacy: S.optional(S.Boolean),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/registrar/domains/{domain_name}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/registrar/domains/{domain_name}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutDomainRequest",
 }) as any as S.Schema<PutDomainRequest>;
@@ -620,7 +656,7 @@ export interface PutDomainResponse {
 export const PutDomainResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutDomainResponse",
 }) as any as S.Schema<PutDomainResponse>;
@@ -734,13 +770,15 @@ export const RegistrationsCreateRequest = /*@__PURE__*/ S.suspend(() =>
       RegistrationsCreateRequestPrivacyMode.pipe(T.Body("privacy_mode")),
     ),
     years: S.optional(S.Number),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/registrar/registrations",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/registrar/registrations",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "RegistrationsCreateRequest",
 }) as any as S.Schema<RegistrationsCreateRequest>;
@@ -813,7 +851,7 @@ export const RegistrationsCreateResponse = /*@__PURE__*/ S.suspend(() =>
     updatedAt: S.String.pipe(T.Body("updated_at")),
     context: S.optional(RegistrationsCreateResponseContextMap),
     error: S.optional(RegistrationsCreateResponseError),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "RegistrationsCreateResponse",
 }) as any as S.Schema<RegistrationsCreateResponse>;
@@ -836,13 +874,15 @@ export const RegistrationsEditRequest = /*@__PURE__*/ S.suspend(() =>
     domainName: S.String.pipe(T.Label("domain_name")),
     Prefer: S.optional(RegistrationsEditRequestPrefer.pipe(T.Header())),
     autoRenew: S.optional(S.Boolean.pipe(T.Body("auto_renew"))),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/accounts/{account_id}/registrar/registrations/{domain_name}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/accounts/{account_id}/registrar/registrations/{domain_name}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "RegistrationsEditRequest",
 }) as any as S.Schema<RegistrationsEditRequest>;
@@ -915,7 +955,7 @@ export const RegistrationsEditResponse = /*@__PURE__*/ S.suspend(() =>
     updatedAt: S.String.pipe(T.Body("updated_at")),
     context: S.optional(RegistrationsEditResponseContextMap),
     error: S.optional(RegistrationsEditResponseError),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "RegistrationsEditResponse",
 }) as any as S.Schema<RegistrationsEditResponse>;
@@ -930,13 +970,15 @@ export const RegistrationsGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     domainName: S.String.pipe(T.Label("domain_name")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/registrar/registrations/{domain_name}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/registrar/registrations/{domain_name}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "RegistrationsGetRequest",
 }) as any as S.Schema<RegistrationsGetRequest>;
@@ -979,7 +1021,7 @@ export const RegistrationsGetResponse = /*@__PURE__*/ S.suspend(() =>
       T.Body("privacy_mode"),
     ),
     status: RegistrationsGetResponseStatus,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "RegistrationsGetResponse",
 }) as any as S.Schema<RegistrationsGetResponse>;
@@ -1013,13 +1055,15 @@ export const RegistrationsListRequest = /*@__PURE__*/ S.suspend(() =>
     direction: S.optional(RegistrationsListRequestDirection.pipe(T.Query())),
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
     sortBy: S.optional(RegistrationsListRequestSortBy.pipe(T.Query("sort_by"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/registrar/registrations",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/registrar/registrations",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "RegistrationsListRequest",
 }) as any as S.Schema<RegistrationsListRequest>;
@@ -1080,7 +1124,7 @@ export interface RegistrationsListResponse {
 export const RegistrationsListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(RegistrationsListResultList.pipe(T.EnvelopePayload())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "RegistrationsListResponse",
 }) as any as S.Schema<RegistrationsListResponse>;
@@ -1106,13 +1150,15 @@ export const SearchRegistrarRequest = /*@__PURE__*/ S.suspend(() =>
     q: S.String.pipe(T.Query()),
     extensions: S.optional(SearchRequestExtensionsList.pipe(T.Query())),
     limit: S.optional(S.Number.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/registrar/domain-search",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/registrar/domain-search",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "SearchRegistrarRequest",
 }) as any as S.Schema<SearchRegistrarRequest>;
@@ -1185,7 +1231,7 @@ export interface SearchRegistrarResponse {
 export const SearchRegistrarResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domains: SearchResponseDomainsList,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "SearchRegistrarResponse",
 }) as any as S.Schema<SearchRegistrarResponse>;

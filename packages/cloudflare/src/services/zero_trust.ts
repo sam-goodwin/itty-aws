@@ -14,6 +14,568 @@ import * as Retry from "../retry.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
+/** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
+const KEY_DICTIONARY: Record<string, string> = {
+  acId: "ac_id",
+  accessClientId: "access_client_id",
+  accessClientSecret: "access_client_secret",
+  accessSeat: "access_seat",
+  accessTokenLifetime: "access_token_lifetime",
+  accountId: "account_id",
+  accountName: "account_name",
+  accountTag: "account_tag",
+  accountType: "account_type",
+  activeDeviceCount: "active_device_count",
+  activeRegistrations: "active_registrations",
+  activeThreats: "active_threats",
+  activityLog: "activity_log",
+  addHeaders: "add_headers",
+  addinIdentifierToken: "addin_identifier_token",
+  aiContextAnalysis: "ai_context_analysis",
+  aiContextAvailable: "ai_context_available",
+  aiContextEnabled: "ai_context_enabled",
+  allowAllHeaders: "allow_all_headers",
+  allowAllMethods: "allow_all_methods",
+  allowAllOrigins: "allow_all_origins",
+  allowAnyOnLocalhost: "allow_any_on_localhost",
+  allowAnyOnLoopback: "allow_any_on_loopback",
+  allowAuthenticateViaWarp: "allow_authenticate_via_warp",
+  allowChildBypass: "allow_child_bypass",
+  allowCodeMode: "allow_code_mode",
+  allowCredentials: "allow_credentials",
+  allowEmailAlias: "allow_email_alias",
+  allowIframe: "allow_iframe",
+  allowModeSwitch: "allow_mode_switch",
+  allowPkceWithoutClientSecret: "allow_pkce_without_client_secret",
+  allowUpdates: "allow_updates",
+  allowedAuthenticators: "allowed_authenticators",
+  allowedClipboardLocalToRemoteFormats:
+    "allowed_clipboard_local_to_remote_formats",
+  allowedClipboardRemoteToLocalFormats:
+    "allowed_clipboard_remote_to_local_formats",
+  allowedHeaders: "allowed_headers",
+  allowedIdps: "allowed_idps",
+  allowedMatchCount: "allowed_match_count",
+  allowedMethods: "allowed_methods",
+  allowedMicrosoftOrganizations: "allowed_microsoft_organizations",
+  allowedOrigins: "allowed_origins",
+  allowedToLeave: "allowed_to_leave",
+  allowedUris: "allowed_uris",
+  amrMatchingSessionDuration: "amr_matching_session_duration",
+  anyValidServiceToken: "any_valid_service_token",
+  apiEndpoints: "api_endpoints",
+  apiUrl: "api_url",
+  appCount: "app_count",
+  appDomain: "app_domain",
+  appLauncherLogoUrl: "app_launcher_logo_url",
+  appLauncherUrl: "app_launcher_url",
+  appLauncherVisible: "app_launcher_visible",
+  appState: "app_state",
+  appUid: "app_uid",
+  applicationConfidenceScore: "application_confidence_score",
+  applicationScoreComposition: "application_score_composition",
+  applicationSource: "application_source",
+  applicationType: "application_type",
+  applicationTypeDescription: "application_type_description",
+  applicationTypeId: "application_type_id",
+  approvalGroups: "approval_groups",
+  approvalRequired: "approval_required",
+  approvalsNeeded: "approvals_needed",
+  appsDomain: "apps_domain",
+  associatedHostnames: "associated_hostnames",
+  attributeName: "attribute_name",
+  attributeValue: "attribute_value",
+  auditSsh: "audit_ssh",
+  authContext: "auth_context",
+  authCredentials: "auth_credentials",
+  authDomain: "auth_domain",
+  authMethod: "auth_method",
+  authRequirements: "auth_requirements",
+  authState: "auth_state",
+  authStatus: "auth_status",
+  authType: "auth_type",
+  authUrl: "auth_url",
+  authorizationServerId: "authorization_server_id",
+  authorizationUrl: "authorization_url",
+  autoConnect: "auto_connect",
+  autoRedirectToIdentity: "auto_redirect_to_identity",
+  backgroundColor: "background_color",
+  bgColor: "bg_color",
+  bindingStatus: "binding_status",
+  bisoAdminControls: "biso_admin_controls",
+  blockPage: "block_page",
+  blockPageEnabled: "block_page_enabled",
+  blockReason: "block_reason",
+  bodyDevices: "body_devices",
+  bodyScanning: "body_scanning",
+  browserIsolation: "browser_isolation",
+  buttonColor: "button_color",
+  buttonTextColor: "button_text_color",
+  bypassParentRule: "bypass_parent_rule",
+  captivePortal: "captive_portal",
+  caseSensitive: "case_sensitive",
+  centrifyAccount: "centrify_account",
+  centrifyAppId: "centrify_app_id",
+  certIssuerDn: "cert_issuer_dn",
+  certIssuerSki: "cert_issuer_ski",
+  certPresented: "cert_presented",
+  certSerial: "cert_serial",
+  certificateId: "certificate_id",
+  certsUrl: "certs_url",
+  cfResourceId: "cf_resource_id",
+  checkPrivateKey: "check_private_key",
+  checkSession: "check_session",
+  chinaNetwork: "china_network",
+  claimName: "claim_name",
+  claimValue: "claim_value",
+  clientCertificateForwarding: "client_certificate_forwarding",
+  clientDefault: "client_default",
+  clientId: "client_id",
+  clientKey: "client_key",
+  clientSecret: "client_secret",
+  clientSecretVersion: "client_secret_version",
+  clientVersion: "client_version",
+  cloudflareAccountMember: "cloudflare_account_member",
+  coloName: "colo_name",
+  commandLogging: "command_logging",
+  commonName: "common_name",
+  completedDate: "completed_date",
+  complianceStatus: "compliance_status",
+  conditionalAccessEnabled: "conditional_access_enabled",
+  confidenceThreshold: "confidence_threshold",
+  configName: "config_name",
+  configSrc: "config_src",
+  configVersion: "config_version",
+  configurationVersion: "configuration_version",
+  connectionId: "connection_id",
+  connectionRules: "connection_rules",
+  connsActiveAt: "conns_active_at",
+  connsInactiveAt: "conns_inactive_at",
+  consumerServiceUrl: "consumer_service_url",
+  contextAwareness: "context_awareness",
+  corsHeaders: "cors_headers",
+  countryCode: "country_code",
+  countryIso: "country_iso",
+  cpuPct: "cpu_pct",
+  createdAt: "created_at",
+  createdBy: "created_by",
+  createdDate: "created_date",
+  currentCertificate: "current_certificate",
+  customAttributes: "custom_attributes",
+  customCertificate: "custom_certificate",
+  customClaims: "custom_claims",
+  customDenyMessage: "custom_deny_message",
+  customDenyUrl: "custom_deny_url",
+  customHtml: "custom_html",
+  customNonIdentityDenyUrl: "custom_non_identity_deny_url",
+  customPages: "custom_pages",
+  customerId: "customer_id",
+  dataClasses: "data_classes",
+  dataTags: "data_tags",
+  daysUntilNextRotation: "days_until_next_rotation",
+  deactivateOnDelete: "deactivate_on_delete",
+  defaultDisabled: "default_disabled",
+  defaultRelayState: "default_relay_state",
+  deletedAt: "deleted_at",
+  denyUnmatchedRequests: "deny_unmatched_requests",
+  denyUnmatchedRequestsExemptedZoneNames:
+    "deny_unmatched_requests_exempted_zone_names",
+  deviceId: "device_id",
+  devicePosture: "device_posture",
+  deviceRegistration: "device_registration",
+  deviceSessions: "device_sessions",
+  deviceType: "device_type",
+  dexTests: "dex_tests",
+  directoryId: "directory_id",
+  disableAutoFallback: "disable_auto_fallback",
+  disableForTime: "disable_for_time",
+  dnsDestinationIpsId: "dns_destination_ips_id",
+  dnsDestinationIpv6BlockId: "dns_destination_ipv6_block_id",
+  dnsResolvers: "dns_resolvers",
+  dnsSearchSuffixes: "dns_search_suffixes",
+  dnsServer: "dns_server",
+  dohJwtDuration: "doh_jwt_duration",
+  dohSubdomain: "doh_subdomain",
+  dynamicClientRegistration: "dynamic_client_registration",
+  eagerRedirectCookieSetting: "eager_redirect_cookie_setting",
+  ecsSupport: "ecs_support",
+  eidLastSeen: "eid_last_seen",
+  emailAddresses: "email_addresses",
+  emailAttributeName: "email_attribute_name",
+  emailClaimName: "email_claim_name",
+  emailDomain: "email_domain",
+  emailList: "email_list",
+  emailListUuid: "email_list_uuid",
+  enableBindingCookie: "enable_binding_cookie",
+  enableEncryption: "enable_encryption",
+  enabledDownloadPhase: "enabled_download_phase",
+  enabledEntries: "enabled_entries",
+  enabledUploadPhase: "enabled_upload_phase",
+  encodingVersion: "encoding_version",
+  entryId: "entry_id",
+  entryName: "entry_name",
+  errorDescription: "error_description",
+  errorDetails: "error_details",
+  evaluateUrl: "evaluate_url",
+  eventCount: "event_count",
+  eventDetails: "event_details",
+  excludeOfficeIps: "exclude_office_ips",
+  executionContext: "execution_context",
+  expiresAt: "expires_at",
+  expiresOn: "expires_on",
+  extendedEmailMatching: "extended_email_matching",
+  extendedKeyUsage: "extended_key_usage",
+  externalEmergencySignalEnabled: "external_emergency_signal_enabled",
+  externalEmergencySignalFingerprint: "external_emergency_signal_fingerprint",
+  externalEmergencySignalInterval: "external_emergency_signal_interval",
+  externalEmergencySignalUrl: "external_emergency_signal_url",
+  externalEvaluation: "external_evaluation",
+  failClosed: "fail_closed",
+  fallbackAction: "fallback_action",
+  fallbackDomains: "fallback_domains",
+  fileTypes: "file_types",
+  fnrId: "fnr_id",
+  footerLinks: "footer_links",
+  footerText: "footer_text",
+  forensicCopy: "forensic_copy",
+  friendlyName: "friendly_name",
+  gatewayDeviceId: "gateway_device_id",
+  gatewayProxyEnabled: "gateway_proxy_enabled",
+  gatewaySeat: "gateway_seat",
+  gatewayTag: "gateway_tag",
+  gatewayUdpProxyEnabled: "gateway_udp_proxy_enabled",
+  gatewayUniqueId: "gateway_unique_id",
+  genAiScore: "gen_ai_score",
+  githubOrganization: "github-organization",
+  globalAcceleration: "global_acceleration",
+  grantTypes: "grant_types",
+  groupFilterRegex: "group_filter_regex",
+  groupId: "group_id",
+  haMode: "ha_mode",
+  haStatus: "ha_status",
+  hardwareId: "hardware_id",
+  headerAttributes: "header_attributes",
+  headerBgColor: "header_bg_color",
+  headerName: "header_name",
+  headerText: "header_text",
+  hostSelector: "host_selector",
+  httpOnlyCookieAttribute: "http_only_cookie_attribute",
+  humanId: "human_id",
+  hybridAndImplicitOptions: "hybrid_and_implicit_options",
+  icmpProxyEnabled: "icmp_proxy_enabled",
+  identityDenied: "identity_denied",
+  identityProviderId: "identity_provider_id",
+  identityUpdateBehavior: "identity_update_behavior",
+  idpEntityId: "idp_entity_id",
+  idpId: "idp_id",
+  idpPublicCerts: "idp_public_certs",
+  idpResourceId: "idp_resource_id",
+  idpUid: "idp_uid",
+  ignoreCnameCategoryMatches: "ignore_cname_category_matches",
+  imageUrl: "image_url",
+  inUse: "in_use",
+  includeContext: "include_context",
+  insecureDisableDnssecValidation: "insecure_disable_dnssec_validation",
+  inspectionMode: "inspection_mode",
+  integrationType: "integration_type",
+  integrationUid: "integration_uid",
+  intelId: "intel_id",
+  ipAddr: "ip_addr",
+  ipAddress: "ip_address",
+  ipCategories: "ip_categories",
+  ipIndicatorFeeds: "ip_indicator_feeds",
+  ipList: "ip_list",
+  ipSubnets: "ip_subnets",
+  ipv4Destination: "ipv4_destination",
+  ipv4DestinationBackup: "ipv4_destination_backup",
+  ipv4Fallback: "ipv4_fallback",
+  isActive: "is_active",
+  isCurrent: "is_current",
+  isDefault: "is_default",
+  isDefaultNetwork: "is_default_network",
+  isGateway: "is_gateway",
+  isPendingReconnect: "is_pending_reconnect",
+  isSharedOauthCallbackEnabled: "is_shared_oauth_callback_enabled",
+  isUiReadOnly: "is_ui_read_only",
+  isUpstream: "is_upstream",
+  isWarp: "is_warp",
+  isolationRequired: "isolation_required",
+  issueCount: "issue_count",
+  issuerOrg: "issuer_org",
+  issuerRaw: "issuer_raw",
+  issuerUrl: "issuer_url",
+  keyRotationIntervalDays: "key_rotation_interval_days",
+  keyType: "key_type",
+  keysUrl: "keys_url",
+  l4Protocol: "l4_protocol",
+  lanAllowMinutes: "lan_allow_minutes",
+  lanAllowSubnetSize: "lan_allow_subnet_size",
+  landingPageDesign: "landing_page_design",
+  lastEvent: "last_event",
+  lastKeyRotationAt: "last_key_rotation_at",
+  lastResetTime: "last_reset_time",
+  lastSeen: "last_seen",
+  lastSeenAt: "last_seen_at",
+  lastSeenRegistration: "last_seen_registration",
+  lastSeenUser: "last_seen_user",
+  lastSuccessfulLogin: "last_successful_login",
+  lastSuccessfulSync: "last_successful_sync",
+  lastSynced: "last_synced",
+  levelId: "level_id",
+  levelIds: "level_ids",
+  linkedAppToken: "linked_app_token",
+  logAll: "log_all",
+  logBlocks: "log_blocks",
+  loggedAt: "logged_at",
+  loginDesign: "login_design",
+  loginMethod: "login_method",
+  logoPath: "logo_path",
+  logoUrl: "logo_url",
+  macAddress: "mac_address",
+  mailtoAddress: "mailto_address",
+  mailtoSubject: "mailto_subject",
+  maskingLevel: "masking_level",
+  masqueEndpoints: "masque_endpoints",
+  maxAge: "max_age",
+  maxCells: "max_cells",
+  maxCustomRegexEntries: "max_custom_regex_entries",
+  maxDatasetCells: "max_dataset_cells",
+  maxDocumentFingerprints: "max_document_fingerprints",
+  maxFileSizeMb: "max-file-size-mb",
+  maxMatchBytes: "max_match_bytes",
+  maxRiskLevel: "max_risk_level",
+  mcpCode: "mcp_code",
+  mcpServerId: "mcp_server_id",
+  mfaConfig: "mfa_config",
+  mfaDisabled: "mfa_disabled",
+  mfaPivKeyRequirements: "mfa_piv_key_requirements",
+  mfaRequiredForAllApps: "mfa_required_for_all_apps",
+  modifiedAt: "modified_at",
+  modifiedBy: "modified_by",
+  mtlsAuth: "mtls_auth",
+  nameByIdp: "name_by_idp",
+  nameFormat: "name_format",
+  nameIdFormat: "name_id_format",
+  nameIdTransformJsonata: "name_id_transform_jsonata",
+  networkId: "network_id",
+  networkStatus: "network_status",
+  newPriorities: "new_priorities",
+  nonIdentityEnabled: "non_identity_enabled",
+  notAfter: "not_after",
+  notificationSettings: "notification_settings",
+  numCells: "num_cells",
+  oauthConfiguration: "oauth_configuration",
+  ocrEnabled: "ocr_enabled",
+  offrampWarpEnabled: "offramp_warp_enabled",
+  oktaAccount: "okta_account",
+  onBehalf: "on_behalf",
+  oneloginAccount: "onelogin_account",
+  openAccess: "open_access",
+  openedAt: "opened_at",
+  operatingSystem: "operating_system",
+  operationalState: "operational_state",
+  optionsPreflightBypass: "options_preflight_bypass",
+  originIp: "origin_ip",
+  osDistroName: "os_distro_name",
+  osDistroRevision: "os_distro_revision",
+  osVersion: "os_version",
+  osVersionExtra: "os_version_extra",
+  overrideHost: "override_host",
+  overrideIps: "override_ips",
+  packetSizeBytes: "packet-size-bytes",
+  pathCookieAttribute: "path_cookie_attribute",
+  payloadLog: "payload_log",
+  payloadLogging: "payload_logging",
+  perPage: "per_page",
+  percentApproved: "percent_approved",
+  percentBlocked: "percent_blocked",
+  percentErrored: "percent_errored",
+  percentUsersProcessed: "percent_users_processed",
+  pinPolicy: "pin_policy",
+  pingEnvId: "ping_env_id",
+  pkceEnabled: "pkce_enabled",
+  policyId: "policy_id",
+  policyIds: "policy_ids",
+  portProtocols: "port_protocols",
+  portRange: "port_range",
+  portalAlias: "portal_alias",
+  portalDescription: "portal_description",
+  preservePathAndQuery: "preserve_path_and_query",
+  previousCertificate: "previous_certificate",
+  previousClientSecretExpiresAt: "previous_client_secret_expires_at",
+  profileId: "profile_id",
+  protocolDetection: "protocol_detection",
+  providerName: "provider_name",
+  publicCertificate: "public_certificate",
+  publicIp: "public_ip",
+  publicKey: "public_key",
+  purposeJustificationPrompt: "purpose_justification_prompt",
+  purposeJustificationRequired: "purpose_justification_required",
+  quotaUsage: "quota_usage",
+  ramUsedPct: "ram_used_pct",
+  rayId: "ray_id",
+  readOnly: "read_only",
+  readServiceTokensFromHeader: "read_service_tokens_from_header",
+  redactPii: "redact_pii",
+  redirectUris: "redirect_uris",
+  redirectUrl: "redirect_url",
+  referenceId: "reference_id",
+  refreshTokenOptions: "refresh_token_options",
+  registerInterfaceIpWithDns: "register_interface_ip_with_dns",
+  registrationId: "registration_id",
+  remoteConfig: "remote_config",
+  remoteUri: "remote_uri",
+  requestBody: "request_body",
+  requestMethod: "request_method",
+  requireFipsDevice: "require_fips_device",
+  requireToken: "require_token",
+  requiredAaguids: "required_aaguids",
+  resetTime: "reset_time",
+  resolveDnsInternally: "resolve_dns_internally",
+  resolveDnsThroughCloudflare: "resolve_dns_through_cloudflare",
+  resourceGroupName: "resource_group_name",
+  resourceType: "resource_type",
+  resourceUserEmail: "resource_user_email",
+  restrictToAccountMembers: "restrict_to_account_members",
+  resultInfo: "result_info",
+  returnAccessTokenFromAuthorizationEndpoint:
+    "return_access_token_from_authorization_endpoint",
+  returnIdTokenFromAuthorizationEndpoint:
+    "return_id_token_from_authorization_endpoint",
+  revokedAt: "revoked_at",
+  riskLevel: "risk_level",
+  rootCertificateInstallationEnabled: "root_certificate_installation_enabled",
+  routeThroughPrivateNetwork: "route_through_private_network",
+  ruleId: "rule_id",
+  ruleSettings: "rule_settings",
+  runAt: "run_at",
+  saasApp: "saas_app",
+  sameSiteCookieAttribute: "same_site_cookie_attribute",
+  samlAttributeTransformJsonata: "saml_attribute_transform_jsonata",
+  samlCertificateSet: "saml_certificate_set",
+  samlCertificateSetId: "saml_certificate_set_id",
+  sccmVpnBoundarySupport: "sccm_vpn_boundary_support",
+  scimBaseUrl: "scim_base_url",
+  scimConfig: "scim_config",
+  seatDeprovision: "seat_deprovision",
+  seatUid: "seat_uid",
+  secureWebGateway: "secure_web_gateway",
+  seedId: "seed_id",
+  selfHostedDomains: "self_hosted_domains",
+  sensitivityLevels: "sensitivity_levels",
+  sensorConfig: "sensor_config",
+  serialNumber: "serial_number",
+  serverAlias: "server_alias",
+  serverDescription: "server_description",
+  serverId: "server_id",
+  serviceAuth_401Redirect: "service_auth_401_redirect",
+  serviceModeV2: "service_mode_v2",
+  serviceToken: "service_token",
+  serviceTokenId: "service_token_id",
+  serviceTokenStatus: "service_token_status",
+  sessionDuration: "session_duration",
+  settingsByRuleType: "settings_by_rule_type",
+  sharedEntries: "shared_entries",
+  signRequest: "sign_request",
+  skipAppLauncherLoginPage: "skip_app_launcher_login_page",
+  skipInterstitial: "skip_interstitial",
+  sourceAccount: "source_account",
+  sourceName: "source_name",
+  spEntityId: "sp_entity_id",
+  sshKeySize: "ssh_key_size",
+  sshKeyType: "ssh_key_type",
+  ssoEndpoint: "sso_endpoint",
+  ssoTargetUrl: "sso_target_url",
+  stateIso: "state_iso",
+  statusCode: "status_code",
+  subjectAlternativeNames: "subject_alternative_names",
+  subnetId: "subnet_id",
+  subnetType: "subnet_type",
+  supportDomains: "support_domains",
+  supportGroups: "support_groups",
+  supportUrl: "support_url",
+  suppressFooter: "suppress_footer",
+  switchLocked: "switch_locked",
+  targetAttributes: "target_attributes",
+  targetCriteria: "target_criteria",
+  targetEnvironment: "target_environment",
+  targetIds: "target_ids",
+  targetPolicies: "target_policies",
+  targetTests: "target_tests",
+  targetUri: "target_uri",
+  targetedTests: "targeted_tests",
+  templateId: "template_id",
+  tenantUrl: "tenant_url",
+  testAllRoutes: "test-all-routes",
+  testId: "test_id",
+  testResultId: "test_result_id",
+  textColor: "text_color",
+  timeLimitMin: "time-limit-min",
+  timeStart: "time_start",
+  timeZone: "time_zone",
+  tlsDecrypt: "tls_decrypt",
+  tlsSockaddr: "tls_sockaddr",
+  tokenId: "token_id",
+  tokenUrl: "token_url",
+  topicType: "topic_type",
+  totalCount: "total_count",
+  totalScore: "total_score",
+  totalUsers: "total_users",
+  touchPolicy: "touch_policy",
+  transformJsonata: "transform_jsonata",
+  trustStores: "trust_stores",
+  tunType: "tun_type",
+  tunnelId: "tunnel_id",
+  tunnelName: "tunnel_name",
+  tunnelProtocol: "tunnel_protocol",
+  tunnelSecret: "tunnel_secret",
+  tunnelType: "tunnel_type",
+  uiReadOnlyToggleReason: "ui_read_only_toggle_reason",
+  untrustedCert: "untrusted_cert",
+  updateWindowDays: "update_window_days",
+  updatedAt: "updated_at",
+  updatedPrompts: "updated_prompts",
+  updatedTools: "updated_tools",
+  uploadStatus: "upload_status",
+  uploadedOn: "uploaded_on",
+  urlBrowserIsolationEnabled: "url_browser_isolation_enabled",
+  useClientlessIsolationAppLauncherUrl:
+    "use_clientless_isolation_app_launcher_url",
+  useZtVirtualIp: "use_zt_virtual_ip",
+  usedCustomRegexEntries: "used_custom_regex_entries",
+  usedDatasetCells: "used_dataset_cells",
+  usedDocumentFingerprints: "used_document_fingerprints",
+  userDeprovision: "user_deprovision",
+  userEmail: "user_email",
+  userId: "user_id",
+  userIdentity: "user_identity",
+  userRiskScore: "user_risk_score",
+  userSeatExpirationInactiveTime: "user_seat_expiration_inactive_time",
+  userUid: "user_uid",
+  userUuid: "user_uuid",
+  usersApproved: "users_approved",
+  usersBlocked: "users_blocked",
+  usersErrored: "users_errored",
+  validityPeriodDays: "validity_period_days",
+  versionConfig: "version_config",
+  viewId: "view_id",
+  vipsPrevious: "vips_previous",
+  virtualIpv4: "virtual_ipv4",
+  virtualIpv6: "virtual_ipv6",
+  virtualNetworkId: "virtual_network_id",
+  virtualNetworkName: "virtual_network_name",
+  virtualNetworks: "virtual_networks",
+  vnetId: "vnet_id",
+  warningStatus: "warning_status",
+  warpAuthSessionDuration: "warp_auth_session_duration",
+  warpSessionReauth: "warp_session_reauth",
+  wellKnownUrl: "well_known_url",
+  wireguardEndpoints: "wireguard_endpoints",
+  wmId: "wm_id",
+  wordList: "word_list",
+  workerId: "worker_id",
+};
+
 export class AccessBookmarkNotFound extends T.applyErrorMatchers(
   S.TaggedErrorClass<AccessBookmarkNotFound>()("AccessBookmarkNotFound", {
     code: S.Number,
@@ -355,13 +917,15 @@ export const AccessAiControlsMcpPortalsListRequest = /*@__PURE__*/ S.suspend(
       page: S.optional(S.Number.pipe(T.Query())),
       perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
       search: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/accounts/{account_id}/access/ai-controls/mcp/portals",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "GET",
+          uri: "/accounts/{account_id}/access/ai-controls/mcp/portals",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "AccessAiControlsMcpPortalsListRequest",
 }) as any as S.Schema<AccessAiControlsMcpPortalsListRequest>;
@@ -640,7 +1204,7 @@ export const AccessAiControlsMcpPortalsListResponse = /*@__PURE__*/ S.suspend(
       result: S.optional(
         AccessAiControlsMcpPortalsListResultList.pipe(T.EnvelopePayload()),
       ),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "AccessAiControlsMcpPortalsListResponse",
 }) as any as S.Schema<AccessAiControlsMcpPortalsListResponse>;
@@ -656,13 +1220,15 @@ export const ActivateGatewayCertificateRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     certificateId: S.String.pipe(T.Label("certificate_id")),
     body: S.Unknown,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/gateway/certificates/{certificate_id}/activate",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/gateway/certificates/{certificate_id}/activate",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ActivateGatewayCertificateRequest",
 }) as any as S.Schema<ActivateGatewayCertificateRequest>;
@@ -723,7 +1289,7 @@ export const ActivateGatewayCertificateResponse = /*@__PURE__*/ S.suspend(() =>
     type: S.optional(GatewayCertificatesActivateResponseType),
     updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
     uploadedOn: S.optional(S.String.pipe(T.Body("uploaded_on"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ActivateGatewayCertificateResponse",
 }) as any as S.Schema<ActivateGatewayCertificateResponse>;
@@ -736,20 +1302,24 @@ export const BulkDeleteAccessInfrastructureTargetsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/accounts/{account_id}/infrastructure/targets/batch",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "DELETE",
+          uri: "/accounts/{account_id}/infrastructure/targets/batch",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "BulkDeleteAccessInfrastructureTargetsRequest",
   }) as any as S.Schema<BulkDeleteAccessInfrastructureTargetsRequest>;
 
 export interface BulkDeleteAccessInfrastructureTargetsResponse {}
 export const BulkDeleteAccessInfrastructureTargetsResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  ).annotate({
     identifier: "BulkDeleteAccessInfrastructureTargetsResponse",
   }) as any as S.Schema<BulkDeleteAccessInfrastructureTargetsResponse>;
 
@@ -769,13 +1339,15 @@ export const BulkDeleteDeviceRegistrationsRequest = /*@__PURE__*/ S.suspend(
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
       id: DevicesRegistrationsBulkDeleteRequestIdList.pipe(T.Query()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/accounts/{account_id}/devices/registrations",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "DELETE",
+          uri: "/accounts/{account_id}/devices/registrations",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "BulkDeleteDeviceRegistrationsRequest",
 }) as any as S.Schema<BulkDeleteDeviceRegistrationsRequest>;
@@ -788,7 +1360,7 @@ export const BulkDeleteDeviceRegistrationsResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "BulkDeleteDeviceRegistrationsResponse",
 }) as any as S.Schema<BulkDeleteDeviceRegistrationsResponse>;
@@ -814,20 +1386,24 @@ export const BulkDeleteV2AccessInfrastructureTargetsRequest =
         AccessInfrastructureTargetsBulkDeleteV2RequestTargetIdsList.pipe(
           T.Body("target_ids"),
         ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/accounts/{account_id}/infrastructure/targets/batch_delete",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "POST",
+          uri: "/accounts/{account_id}/infrastructure/targets/batch_delete",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "BulkDeleteV2AccessInfrastructureTargetsRequest",
   }) as any as S.Schema<BulkDeleteV2AccessInfrastructureTargetsRequest>;
 
 export interface BulkDeleteV2AccessInfrastructureTargetsResponse {}
 export const BulkDeleteV2AccessInfrastructureTargetsResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  ).annotate({
     identifier: "BulkDeleteV2AccessInfrastructureTargetsResponse",
   }) as any as S.Schema<BulkDeleteV2AccessInfrastructureTargetsResponse>;
 
@@ -850,13 +1426,15 @@ export const BulkPatchDlpEmailRulesRequest = /*@__PURE__*/ S.suspend(() =>
     newPriorities: DlpEmailRulesBulkEditRequestNewPrioritiesMap.pipe(
       T.Body("new_priorities"),
     ),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/accounts/{account_id}/dlp/email/rules",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/accounts/{account_id}/dlp/email/rules",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "BulkPatchDlpEmailRulesRequest",
 }) as any as S.Schema<BulkPatchDlpEmailRulesRequest>;
@@ -962,7 +1540,7 @@ export const BulkPatchDlpEmailRulesResponse = /*@__PURE__*/ S.suspend(() =>
     ruleId: S.String.pipe(T.Body("rule_id")),
     updatedAt: S.String.pipe(T.Body("updated_at")),
     description: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "BulkPatchDlpEmailRulesResponse",
 }) as any as S.Schema<BulkPatchDlpEmailRulesResponse>;
@@ -1052,13 +1630,15 @@ export const BulkPutAccessInfrastructureTargetsRequest =
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
       body: AccessInfrastructureTargetsBulkUpdateRequestBodyList,
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/accounts/{account_id}/infrastructure/targets/batch",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "PUT",
+          uri: "/accounts/{account_id}/infrastructure/targets/batch",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "BulkPutAccessInfrastructureTargetsRequest",
   }) as any as S.Schema<BulkPutAccessInfrastructureTargetsRequest>;
@@ -1156,7 +1736,7 @@ export const BulkPutAccessInfrastructureTargetsResponse =
         T.EnvelopePayload(),
       ),
       resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "BulkPutAccessInfrastructureTargetsResponse",
   }) as any as S.Schema<BulkPutAccessInfrastructureTargetsResponse>;
@@ -1176,13 +1756,15 @@ export const CasbApplicationsGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     slug: CasbApplicationsGetRequestSlug.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/one/applications/{slug}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/one/applications/{slug}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CasbApplicationsGetRequest",
 }) as any as S.Schema<CasbApplicationsGetRequest>;
@@ -1395,7 +1977,7 @@ export const CasbApplicationsGetResponse = /*@__PURE__*/ S.suspend(() =>
     logo: S.String,
     slug: CasbApplicationsGetResponseSlug,
     useCases: CasbApplicationsGetResponseUseCasesList.pipe(T.Body("use_cases")),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CasbApplicationsGetResponse",
 }) as any as S.Schema<CasbApplicationsGetResponse>;
@@ -1409,13 +1991,15 @@ export const CasbApplicationsListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     environment: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/one/applications",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/one/applications",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CasbApplicationsListRequest",
 }) as any as S.Schema<CasbApplicationsListRequest>;
@@ -1555,7 +2139,7 @@ export const CasbApplicationsListResponse = /*@__PURE__*/ S.suspend(() =>
     useCases: CasbApplicationsListResponseUseCasesList.pipe(
       T.Body("use_cases"),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CasbApplicationsListResponse",
 }) as any as S.Schema<CasbApplicationsListResponse>;
@@ -1584,13 +2168,15 @@ export const CasbApplicationsSetupFlowsListRequest = /*@__PURE__*/ S.suspend(
       environment: S.optional(
         CasbApplicationsSetupFlowsListRequestEnvironment.pipe(T.Query()),
       ),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/accounts/{account_id}/one/applications/{slug}/setup-flows",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "GET",
+          uri: "/accounts/{account_id}/one/applications/{slug}/setup-flows",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CasbApplicationsSetupFlowsListRequest",
 }) as any as S.Schema<CasbApplicationsSetupFlowsListRequest>;
@@ -1836,7 +2422,7 @@ export const CasbApplicationsSetupFlowsListResponse = /*@__PURE__*/ S.suspend(
           T.Body("auth_config"),
         ),
       ),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CasbApplicationsSetupFlowsListResponse",
 }) as any as S.Schema<CasbApplicationsSetupFlowsListResponse>;
@@ -1913,13 +2499,15 @@ export const CasbIntegrationsCreateRequest = /*@__PURE__*/ S.suspend(() =>
     useCases: S.optional(
       CasbIntegrationsCreateRequestUseCasesList.pipe(T.Body("use_cases")),
     ),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/one/integrations",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/one/integrations",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CasbIntegrationsCreateRequest",
 }) as any as S.Schema<CasbIntegrationsCreateRequest>;
@@ -2061,7 +2649,7 @@ export const CasbIntegrationsCreateResponse = /*@__PURE__*/ S.suspend(() =>
     useCases: CasbIntegrationsCreateResponseUseCasesList.pipe(
       T.Body("use_cases"),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CasbIntegrationsCreateResponse",
 }) as any as S.Schema<CasbIntegrationsCreateResponse>;
@@ -2074,20 +2662,22 @@ export const CasbIntegrationsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/one/integrations/{id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/one/integrations/{id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CasbIntegrationsDeleteRequest",
 }) as any as S.Schema<CasbIntegrationsDeleteRequest>;
 
 export interface CasbIntegrationsDeleteResponse {}
 export const CasbIntegrationsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
+  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CasbIntegrationsDeleteResponse",
 }) as any as S.Schema<CasbIntegrationsDeleteResponse>;
@@ -2100,13 +2690,15 @@ export const CasbIntegrationsGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/one/integrations/{id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/one/integrations/{id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CasbIntegrationsGetRequest",
 }) as any as S.Schema<CasbIntegrationsGetRequest>;
@@ -2243,7 +2835,7 @@ export const CasbIntegrationsGetResponse = /*@__PURE__*/ S.suspend(() =>
     status: S.String,
     updated: S.String,
     useCases: CasbIntegrationsGetResponseUseCasesList.pipe(T.Body("use_cases")),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CasbIntegrationsGetResponse",
 }) as any as S.Schema<CasbIntegrationsGetResponse>;
@@ -2303,20 +2895,22 @@ export const CasbIntegrationsListRequest = /*@__PURE__*/ S.suspend(() =>
     search: S.optional(S.String.pipe(T.Query())),
     status: S.optional(CasbIntegrationsListRequestStatus.pipe(T.Query())),
     useCases: S.optional(S.String.pipe(T.Query("use_cases"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/one/integrations",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/one/integrations",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CasbIntegrationsListRequest",
 }) as any as S.Schema<CasbIntegrationsListRequest>;
 
 export interface CasbIntegrationsListResponse {}
 export const CasbIntegrationsListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
+  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CasbIntegrationsListResponse",
 }) as any as S.Schema<CasbIntegrationsListResponse>;
@@ -2329,13 +2923,15 @@ export const CasbIntegrationsPauseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/one/integrations/{id}/pause",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/one/integrations/{id}/pause",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CasbIntegrationsPauseRequest",
 }) as any as S.Schema<CasbIntegrationsPauseRequest>;
@@ -2477,7 +3073,7 @@ export const CasbIntegrationsPauseResponse = /*@__PURE__*/ S.suspend(() =>
     useCases: CasbIntegrationsPauseResponseUseCasesList.pipe(
       T.Body("use_cases"),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CasbIntegrationsPauseResponse",
 }) as any as S.Schema<CasbIntegrationsPauseResponse>;
@@ -2490,13 +3086,15 @@ export const CasbIntegrationsResumeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/one/integrations/{id}/resume",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/one/integrations/{id}/resume",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CasbIntegrationsResumeRequest",
 }) as any as S.Schema<CasbIntegrationsResumeRequest>;
@@ -2638,7 +3236,7 @@ export const CasbIntegrationsResumeResponse = /*@__PURE__*/ S.suspend(() =>
     useCases: CasbIntegrationsResumeResponseUseCasesList.pipe(
       T.Body("use_cases"),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CasbIntegrationsResumeResponse",
 }) as any as S.Schema<CasbIntegrationsResumeResponse>;
@@ -2704,13 +3302,15 @@ export const CasbIntegrationsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     useCases: S.optional(
       CasbIntegrationsUpdateRequestUseCasesList.pipe(T.Body("use_cases")),
     ),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/accounts/{account_id}/one/integrations/{id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/accounts/{account_id}/one/integrations/{id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CasbIntegrationsUpdateRequest",
 }) as any as S.Schema<CasbIntegrationsUpdateRequest>;
@@ -2852,7 +3452,7 @@ export const CasbIntegrationsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     useCases: CasbIntegrationsUpdateResponseUseCasesList.pipe(
       T.Body("use_cases"),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CasbIntegrationsUpdateResponse",
 }) as any as S.Schema<CasbIntegrationsUpdateResponse>;
@@ -2971,13 +3571,15 @@ export const CreateAccessAiControlMcpPortalRequest = /*@__PURE__*/ S.suspend(
         S.Boolean.pipe(T.Body("secure_web_gateway")),
       ),
       servers: S.optional(AccessAiControlsMcpPortalsCreateRequestServersList),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/accounts/{account_id}/access/ai-controls/mcp/portals",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "POST",
+          uri: "/accounts/{account_id}/access/ai-controls/mcp/portals",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateAccessAiControlMcpPortalRequest",
 }) as any as S.Schema<CreateAccessAiControlMcpPortalRequest>;
@@ -3236,7 +3838,7 @@ export const CreateAccessAiControlMcpPortalResponse = /*@__PURE__*/ S.suspend(
       secureWebGateway: S.optional(
         S.Boolean.pipe(T.Body("secure_web_gateway")),
       ),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateAccessAiControlMcpPortalResponse",
 }) as any as S.Schema<CreateAccessAiControlMcpPortalResponse>;
@@ -3343,13 +3945,15 @@ export const CreateAccessAiControlMcpServerRequest = /*@__PURE__*/ S.suspend(
           T.Body("updated_tools"),
         ),
       ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/accounts/{account_id}/access/ai-controls/mcp/servers",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "POST",
+          uri: "/accounts/{account_id}/access/ai-controls/mcp/servers",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateAccessAiControlMcpServerRequest",
 }) as any as S.Schema<CreateAccessAiControlMcpServerRequest>;
@@ -3538,7 +4142,7 @@ export const CreateAccessAiControlMcpServerResponse = /*@__PURE__*/ S.suspend(
           T.Body("updated_tools"),
         ),
       ),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateAccessAiControlMcpServerResponse",
 }) as any as S.Schema<CreateAccessAiControlMcpServerResponse>;
@@ -3554,13 +4158,15 @@ export const CreateAccessApplicationCaForAccountRequest =
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
       appId: S.String.pipe(T.Label("app_id")),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/accounts/{account_id}/access/apps/{app_id}/ca",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "POST",
+          uri: "/accounts/{account_id}/access/apps/{app_id}/ca",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "CreateAccessApplicationCaForAccountRequest",
   }) as any as S.Schema<CreateAccessApplicationCaForAccountRequest>;
@@ -3580,7 +4186,7 @@ export const CreateAccessApplicationCaForAccountResponse =
       id: S.optional(S.String),
       aud: S.optional(S.String),
       publicKey: S.optional(S.String.pipe(T.Body("public_key"))),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "CreateAccessApplicationCaForAccountResponse",
   }) as any as S.Schema<CreateAccessApplicationCaForAccountResponse>;
@@ -3596,13 +4202,15 @@ export const CreateAccessApplicationCaForZoneRequest = /*@__PURE__*/ S.suspend(
     S.Struct({
       zoneId: S.String.pipe(T.Label("zone_id")),
       appId: S.String.pipe(T.Label("app_id")),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/zones/{zone_id}/access/apps/{app_id}/ca",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "POST",
+          uri: "/zones/{zone_id}/access/apps/{app_id}/ca",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateAccessApplicationCaForZoneRequest",
 }) as any as S.Schema<CreateAccessApplicationCaForZoneRequest>;
@@ -3622,7 +4230,7 @@ export const CreateAccessApplicationCaForZoneResponse = /*@__PURE__*/ S.suspend(
       id: S.optional(S.String),
       aud: S.optional(S.String),
       publicKey: S.optional(S.String.pipe(T.Body("public_key"))),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateAccessApplicationCaForZoneResponse",
 }) as any as S.Schema<CreateAccessApplicationCaForZoneResponse>;
@@ -3740,13 +4348,15 @@ export const CreateAccessApplicationForAccountRequest = /*@__PURE__*/ S.suspend(
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
       body: AccessApplicationsCreateForAccountRequestBody,
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/accounts/{account_id}/access/apps",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "POST",
+          uri: "/accounts/{account_id}/access/apps",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateAccessApplicationForAccountRequest",
 }) as any as S.Schema<CreateAccessApplicationForAccountRequest>;
@@ -3837,7 +4447,7 @@ export const CreateAccessApplicationForAccountResponse =
             "McpServerPortalApplication object { type, id, allow_authenticate_via_warp, 19 more }",
           ),
         ),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "CreateAccessApplicationForAccountResponse",
   }) as any as S.Schema<CreateAccessApplicationForAccountResponse>;
@@ -3955,13 +4565,15 @@ export const CreateAccessApplicationForZoneRequest = /*@__PURE__*/ S.suspend(
     S.Struct({
       zoneId: S.String.pipe(T.Label("zone_id")),
       body: AccessApplicationsCreateForZoneRequestBody,
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/zones/{zone_id}/access/apps",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "POST",
+          uri: "/zones/{zone_id}/access/apps",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateAccessApplicationForZoneRequest",
 }) as any as S.Schema<CreateAccessApplicationForZoneRequest>;
@@ -4052,7 +4664,7 @@ export const CreateAccessApplicationForZoneResponse = /*@__PURE__*/ S.suspend(
             "McpServerPortalApplication object { type, id, allow_authenticate_via_warp, 19 more }",
           ),
         ),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateAccessApplicationForZoneResponse",
 }) as any as S.Schema<CreateAccessApplicationForZoneResponse>;
@@ -4251,13 +4863,15 @@ export const CreateAccessApplicationPolicyForAccountRequest =
         S.Boolean.pipe(T.Body("purpose_justification_required")),
       ),
       sessionDuration: S.optional(S.String.pipe(T.Body("session_duration"))),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/accounts/{account_id}/access/apps/{app_id}/policies",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "POST",
+          uri: "/accounts/{account_id}/access/apps/{app_id}/policies",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "CreateAccessApplicationPolicyForAccountRequest",
   }) as any as S.Schema<CreateAccessApplicationPolicyForAccountRequest>;
@@ -4923,7 +5537,7 @@ export const CreateAccessApplicationPolicyForAccountResponse =
       ),
       sessionDuration: S.optional(S.String.pipe(T.Body("session_duration"))),
       updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "CreateAccessApplicationPolicyForAccountResponse",
   }) as any as S.Schema<CreateAccessApplicationPolicyForAccountResponse>;
@@ -5121,13 +5735,15 @@ export const CreateAccessApplicationPolicyForZoneRequest =
         S.Boolean.pipe(T.Body("purpose_justification_required")),
       ),
       sessionDuration: S.optional(S.String.pipe(T.Body("session_duration"))),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/zones/{zone_id}/access/apps/{app_id}/policies",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "POST",
+          uri: "/zones/{zone_id}/access/apps/{app_id}/policies",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "CreateAccessApplicationPolicyForZoneRequest",
   }) as any as S.Schema<CreateAccessApplicationPolicyForZoneRequest>;
@@ -5793,7 +6409,7 @@ export const CreateAccessApplicationPolicyForZoneResponse =
       ),
       sessionDuration: S.optional(S.String.pipe(T.Body("session_duration"))),
       updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "CreateAccessApplicationPolicyForZoneResponse",
   }) as any as S.Schema<CreateAccessApplicationPolicyForZoneResponse>;
@@ -5834,13 +6450,15 @@ export const CreateAccessApplicationPolicyTestRequest = /*@__PURE__*/ S.suspend(
       policies: S.optional(
         AccessApplicationsPolicyTestsCreateRequestPoliciesList,
       ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/accounts/{account_id}/access/policy-tests",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "POST",
+          uri: "/accounts/{account_id}/access/policy-tests",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateAccessApplicationPolicyTestRequest",
 }) as any as S.Schema<CreateAccessApplicationPolicyTestRequest>;
@@ -5863,7 +6481,7 @@ export const CreateAccessApplicationPolicyTestResponse =
     S.Struct({
       id: S.optional(S.String),
       status: S.optional(AccessApplicationsPolicyTestsCreateResponseStatus),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "CreateAccessApplicationPolicyTestResponse",
   }) as any as S.Schema<CreateAccessApplicationPolicyTestResponse>;
@@ -5879,13 +6497,15 @@ export const CreateAccessBookmarkRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     bookmarkId: S.String.pipe(T.Label("bookmark_id")),
     body: S.Unknown,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/access/bookmarks/{bookmark_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/access/bookmarks/{bookmark_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateAccessBookmarkRequest",
 }) as any as S.Schema<CreateAccessBookmarkRequest>;
@@ -5912,7 +6532,7 @@ export const CreateAccessBookmarkResponse = /*@__PURE__*/ S.suspend(() =>
     domain: S.optional(S.String),
     logoUrl: S.optional(S.String.pipe(T.Body("logo_url"))),
     name: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateAccessBookmarkResponse",
 }) as any as S.Schema<CreateAccessBookmarkResponse>;
@@ -5945,13 +6565,15 @@ export const CreateAccessCertificateForAccountRequest = /*@__PURE__*/ S.suspend(
           T.Body("associated_hostnames"),
         ),
       ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/accounts/{account_id}/access/certificates",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "POST",
+          uri: "/accounts/{account_id}/access/certificates",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateAccessCertificateForAccountRequest",
 }) as any as S.Schema<CreateAccessCertificateForAccountRequest>;
@@ -5987,7 +6609,7 @@ export const CreateAccessCertificateForAccountResponse =
       expiresOn: S.optional(S.String.pipe(T.Body("expires_on"))),
       fingerprint: S.optional(S.String),
       name: S.optional(S.String),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "CreateAccessCertificateForAccountResponse",
   }) as any as S.Schema<CreateAccessCertificateForAccountResponse>;
@@ -6020,13 +6642,15 @@ export const CreateAccessCertificateForZoneRequest = /*@__PURE__*/ S.suspend(
           T.Body("associated_hostnames"),
         ),
       ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/zones/{zone_id}/access/certificates",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "POST",
+          uri: "/zones/{zone_id}/access/certificates",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateAccessCertificateForZoneRequest",
 }) as any as S.Schema<CreateAccessCertificateForZoneRequest>;
@@ -6062,7 +6686,7 @@ export const CreateAccessCertificateForZoneResponse = /*@__PURE__*/ S.suspend(
       expiresOn: S.optional(S.String.pipe(T.Body("expires_on"))),
       fingerprint: S.optional(S.String),
       name: S.optional(S.String),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateAccessCertificateForZoneResponse",
 }) as any as S.Schema<CreateAccessCertificateForZoneResponse>;
@@ -6089,13 +6713,15 @@ export const CreateAccessCustomPageRequest = /*@__PURE__*/ S.suspend(() =>
     customHtml: S.String.pipe(T.Body("custom_html")),
     name: S.String,
     type: AccessCustomPagesCreateRequestType,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/access/custom_pages",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/access/custom_pages",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateAccessCustomPageRequest",
 }) as any as S.Schema<CreateAccessCustomPageRequest>;
@@ -6120,7 +6746,7 @@ export const CreateAccessCustomPageResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.String,
     type: AccessCustomPagesCreateResponseType,
     uid: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateAccessCustomPageResponse",
 }) as any as S.Schema<CreateAccessCustomPageResponse>;
@@ -6132,13 +6758,15 @@ export interface CreateAccessGatewayCaRequest {
 export const CreateAccessGatewayCaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/access/gateway_ca",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/access/gateway_ca",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateAccessGatewayCaRequest",
 }) as any as S.Schema<CreateAccessGatewayCaRequest>;
@@ -6154,7 +6782,7 @@ export const CreateAccessGatewayCaResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     publicKey: S.optional(S.String.pipe(T.Body("public_key"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateAccessGatewayCaResponse",
 }) as any as S.Schema<CreateAccessGatewayCaResponse>;
@@ -6625,13 +7253,15 @@ export const CreateAccessGroupForAccountRequest = /*@__PURE__*/ S.suspend(() =>
     exclude: S.optional(AccessGroupsCreateForAccountRequestExcludeList),
     isDefault: S.optional(S.Boolean.pipe(T.Body("is_default"))),
     require: S.optional(AccessGroupsCreateForAccountRequestRequireList),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/access/groups",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/access/groups",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateAccessGroupForAccountRequest",
 }) as any as S.Schema<CreateAccessGroupForAccountRequest>;
@@ -7255,7 +7885,7 @@ export const CreateAccessGroupForAccountResponse = /*@__PURE__*/ S.suspend(() =>
     ),
     name: S.optional(S.String),
     require: S.optional(AccessGroupsCreateForAccountResponseRequireList),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateAccessGroupForAccountResponse",
 }) as any as S.Schema<CreateAccessGroupForAccountResponse>;
@@ -7726,13 +8356,15 @@ export const CreateAccessGroupForZoneRequest = /*@__PURE__*/ S.suspend(() =>
     exclude: S.optional(AccessGroupsCreateForZoneRequestExcludeList),
     isDefault: S.optional(S.Boolean.pipe(T.Body("is_default"))),
     require: S.optional(AccessGroupsCreateForZoneRequestRequireList),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/zones/{zone_id}/access/groups",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/zones/{zone_id}/access/groups",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateAccessGroupForZoneRequest",
 }) as any as S.Schema<CreateAccessGroupForZoneRequest>;
@@ -8354,7 +8986,7 @@ export const CreateAccessGroupForZoneResponse = /*@__PURE__*/ S.suspend(() =>
     ),
     name: S.optional(S.String),
     require: S.optional(AccessGroupsCreateForZoneResponseRequireList),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateAccessGroupForZoneResponse",
 }) as any as S.Schema<CreateAccessGroupForZoneResponse>;
@@ -8370,13 +9002,15 @@ export const CreateAccessIdpFederationGrantRequest = /*@__PURE__*/ S.suspend(
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
       idpId: S.String.pipe(T.Body("idp_id")),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/accounts/{account_id}/access/idp_federation_grants",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "POST",
+          uri: "/accounts/{account_id}/access/idp_federation_grants",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateAccessIdpFederationGrantRequest",
 }) as any as S.Schema<CreateAccessIdpFederationGrantRequest>;
@@ -8393,7 +9027,7 @@ export const CreateAccessIdpFederationGrantResponse = /*@__PURE__*/ S.suspend(
     S.Struct({
       id: S.String,
       idpId: S.String.pipe(T.Body("idp_id")),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateAccessIdpFederationGrantResponse",
 }) as any as S.Schema<CreateAccessIdpFederationGrantResponse>;
@@ -8460,13 +9094,15 @@ export const CreateAccessInfrastructureTargetRequest = /*@__PURE__*/ S.suspend(
       accountId: S.String.pipe(T.Label("account_id")),
       hostname: S.String,
       ip: AccessInfrastructureTargetsCreateRequestIp,
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/accounts/{account_id}/infrastructure/targets",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "POST",
+          uri: "/accounts/{account_id}/infrastructure/targets",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateAccessInfrastructureTargetRequest",
 }) as any as S.Schema<CreateAccessInfrastructureTargetRequest>;
@@ -8540,7 +9176,7 @@ export const CreateAccessInfrastructureTargetResponse = /*@__PURE__*/ S.suspend(
       hostname: S.String,
       ip: AccessInfrastructureTargetsCreateResponseIp,
       modifiedAt: S.String.pipe(T.Body("modified_at")),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateAccessInfrastructureTargetResponse",
 }) as any as S.Schema<CreateAccessInfrastructureTargetResponse>;
@@ -9182,13 +9818,15 @@ export const CreateAccessPolicyRequest = /*@__PURE__*/ S.suspend(() =>
     ),
     require: S.optional(AccessPoliciesCreateRequestRequireList),
     sessionDuration: S.optional(S.String.pipe(T.Body("session_duration"))),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/access/policies",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/access/policies",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateAccessPolicyRequest",
 }) as any as S.Schema<CreateAccessPolicyRequest>;
@@ -9840,7 +10478,7 @@ export const CreateAccessPolicyResponse = /*@__PURE__*/ S.suspend(() =>
     reusable: S.optional(S.Boolean),
     sessionDuration: S.optional(S.String.pipe(T.Body("session_duration"))),
     updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateAccessPolicyResponse",
 }) as any as S.Schema<CreateAccessPolicyResponse>;
@@ -9869,13 +10507,15 @@ export const CreateAccessServiceTokenForAccountRequest =
       previousClientSecretExpiresAt: S.optional(
         S.String.pipe(T.Body("previous_client_secret_expires_at")),
       ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/accounts/{account_id}/access/service_tokens",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "POST",
+          uri: "/accounts/{account_id}/access/service_tokens",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "CreateAccessServiceTokenForAccountRequest",
   }) as any as S.Schema<CreateAccessServiceTokenForAccountRequest>;
@@ -9901,7 +10541,7 @@ export const CreateAccessServiceTokenForAccountResponse =
       clientSecret: S.optional(S.String.pipe(T.Body("client_secret"))),
       duration: S.optional(S.String),
       name: S.optional(S.String),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "CreateAccessServiceTokenForAccountResponse",
   }) as any as S.Schema<CreateAccessServiceTokenForAccountResponse>;
@@ -9930,13 +10570,15 @@ export const CreateAccessServiceTokenForZoneRequest = /*@__PURE__*/ S.suspend(
       previousClientSecretExpiresAt: S.optional(
         S.String.pipe(T.Body("previous_client_secret_expires_at")),
       ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/zones/{zone_id}/access/service_tokens",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "POST",
+          uri: "/zones/{zone_id}/access/service_tokens",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateAccessServiceTokenForZoneRequest",
 }) as any as S.Schema<CreateAccessServiceTokenForZoneRequest>;
@@ -9962,7 +10604,7 @@ export const CreateAccessServiceTokenForZoneResponse = /*@__PURE__*/ S.suspend(
       clientSecret: S.optional(S.String.pipe(T.Body("client_secret"))),
       duration: S.optional(S.String),
       name: S.optional(S.String),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateAccessServiceTokenForZoneResponse",
 }) as any as S.Schema<CreateAccessServiceTokenForZoneResponse>;
@@ -9977,13 +10619,15 @@ export const CreateAccessTagRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     name: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/access/tags",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/access/tags",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateAccessTagRequest",
 }) as any as S.Schema<CreateAccessTagRequest>;
@@ -9996,7 +10640,7 @@ export interface CreateAccessTagResponse {
 export const CreateAccessTagResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateAccessTagResponse",
 }) as any as S.Schema<CreateAccessTagResponse>;
@@ -10014,13 +10658,15 @@ export const CreateAccessUserRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     email: S.String,
     name: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/access/users",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/access/users",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateAccessUserRequest",
 }) as any as S.Schema<CreateAccessUserRequest>;
@@ -10063,7 +10709,7 @@ export const CreateAccessUserResponse = /*@__PURE__*/ S.suspend(() =>
     seatUid: S.optional(S.String.pipe(T.Body("seat_uid"))),
     uid: S.optional(S.String),
     updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateAccessUserResponse",
 }) as any as S.Schema<CreateAccessUserResponse>;
@@ -10118,13 +10764,15 @@ export const CreateDeviceDeploymentGroupRequest = /*@__PURE__*/ S.suspend(() =>
         T.Body("policy_ids"),
       ),
     ),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/devices/deployment-groups",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/devices/deployment-groups",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateDeviceDeploymentGroupRequest",
 }) as any as S.Schema<CreateDeviceDeploymentGroupRequest>;
@@ -10187,7 +10835,7 @@ export const CreateDeviceDeploymentGroupResponse = /*@__PURE__*/ S.suspend(() =>
         T.Body("policy_ids"),
       ),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateDeviceDeploymentGroupResponse",
 }) as any as S.Schema<CreateDeviceDeploymentGroupResponse>;
@@ -10276,13 +10924,15 @@ export const CreateDeviceDexTestRequest = /*@__PURE__*/ S.suspend(() =>
       ),
     ),
     targeted: S.optional(S.Boolean),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/dex/devices/dex_tests",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/dex/devices/dex_tests",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateDeviceDexTestRequest",
 }) as any as S.Schema<CreateDeviceDexTestRequest>;
@@ -10372,7 +11022,7 @@ export const CreateDeviceDexTestResponse = /*@__PURE__*/ S.suspend(() =>
     ),
     targeted: S.optional(S.Boolean),
     testId: S.optional(S.String.pipe(T.Body("test_id"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateDeviceDexTestResponse",
 }) as any as S.Schema<CreateDeviceDexTestResponse>;
@@ -10401,13 +11051,15 @@ export const CreateDeviceIpProfileRequest = /*@__PURE__*/ S.suspend(() =>
     subnetId: S.String.pipe(T.Body("subnet_id")),
     description: S.optional(S.String),
     enabled: S.optional(S.Boolean),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/devices/ip-profiles",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/devices/ip-profiles",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateDeviceIpProfileRequest",
 }) as any as S.Schema<CreateDeviceIpProfileRequest>;
@@ -10444,7 +11096,7 @@ export const CreateDeviceIpProfileResponse = /*@__PURE__*/ S.suspend(() =>
     precedence: S.Number,
     subnetId: S.String.pipe(T.Body("subnet_id")),
     updatedAt: S.String.pipe(T.Body("updated_at")),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateDeviceIpProfileResponse",
 }) as any as S.Schema<CreateDeviceIpProfileResponse>;
@@ -10482,13 +11134,15 @@ export const CreateDeviceNetworkRequest = /*@__PURE__*/ S.suspend(() =>
     config: DevicesNetworksCreateRequestConfig,
     name: S.String,
     type: DevicesNetworksCreateRequestType,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/devices/networks",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/devices/networks",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateDeviceNetworkRequest",
 }) as any as S.Schema<CreateDeviceNetworkRequest>;
@@ -10528,7 +11182,7 @@ export const CreateDeviceNetworkResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     networkId: S.optional(S.String.pipe(T.Body("network_id"))),
     type: S.optional(DevicesNetworksCreateResponseType),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateDeviceNetworkResponse",
 }) as any as S.Schema<CreateDeviceNetworkResponse>;
@@ -10813,13 +11467,15 @@ export const CreateDevicePolicyCustomRequest = /*@__PURE__*/ S.suspend(() =>
         T.Body("virtual_networks"),
       ),
     ),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/devices/policy",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/devices/policy",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateDevicePolicyCustomRequest",
 }) as any as S.Schema<CreateDevicePolicyCustomRequest>;
@@ -11182,7 +11838,7 @@ export const CreateDevicePolicyCustomResponse = /*@__PURE__*/ S.suspend(() =>
         T.Body("virtual_networks"),
       ),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateDevicePolicyCustomResponse",
 }) as any as S.Schema<CreateDevicePolicyCustomResponse>;
@@ -11362,13 +12018,15 @@ export const CreateDevicePostureRequest = /*@__PURE__*/ S.suspend(() =>
     input: S.optional(DevicesPostureCreateRequestInput),
     match: S.optional(DevicesPostureCreateRequestMatchList),
     schedule: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/devices/posture",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/devices/posture",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateDevicePostureRequest",
 }) as any as S.Schema<CreateDevicePostureRequest>;
@@ -11550,7 +12208,7 @@ export const CreateDevicePostureResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     schedule: S.optional(S.String),
     type: S.optional(DevicesPostureCreateResponseType),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateDevicePostureResponse",
 }) as any as S.Schema<CreateDevicePostureResponse>;
@@ -11648,13 +12306,15 @@ export const CreateDevicePostureIntegrationRequest = /*@__PURE__*/ S.suspend(
       interval: S.String,
       name: S.String,
       type: DevicesPostureIntegrationsCreateRequestType,
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/accounts/{account_id}/devices/posture/integration",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "POST",
+          uri: "/accounts/{account_id}/devices/posture/integration",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateDevicePostureIntegrationRequest",
 }) as any as S.Schema<CreateDevicePostureIntegrationRequest>;
@@ -11707,7 +12367,7 @@ export const CreateDevicePostureIntegrationResponse = /*@__PURE__*/ S.suspend(
       interval: S.optional(S.String),
       name: S.optional(S.String),
       type: S.optional(DevicesPostureIntegrationsCreateResponseType),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateDevicePostureIntegrationResponse",
 }) as any as S.Schema<CreateDevicePostureIntegrationResponse>;
@@ -11725,13 +12385,15 @@ export const CreateDeviceResilienceGlobalWarpOverrideRequest =
       accountId: S.String.pipe(T.Label("account_id")),
       disconnect: S.Boolean,
       justification: S.optional(S.String),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/accounts/{account_id}/devices/resilience/disconnect",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "POST",
+          uri: "/accounts/{account_id}/devices/resilience/disconnect",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "CreateDeviceResilienceGlobalWarpOverrideRequest",
   }) as any as S.Schema<CreateDeviceResilienceGlobalWarpOverrideRequest>;
@@ -11748,7 +12410,7 @@ export const CreateDeviceResilienceGlobalWarpOverrideResponse =
     S.Struct({
       disconnect: S.optional(S.Boolean),
       timestamp: S.optional(S.String),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "CreateDeviceResilienceGlobalWarpOverrideResponse",
   }) as any as S.Schema<CreateDeviceResilienceGlobalWarpOverrideResponse>;
@@ -11767,13 +12429,15 @@ export const CreateDeviceRevokeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     body: DevicesRevokeCreateRequestBodyList,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/devices/revoke",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/devices/revoke",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateDeviceRevokeRequest",
 }) as any as S.Schema<CreateDeviceRevokeRequest>;
@@ -11787,7 +12451,7 @@ export const CreateDeviceRevokeResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unknown: S.Unknown,
     string: S.Unknown,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateDeviceRevokeResponse",
 }) as any as S.Schema<CreateDeviceRevokeResponse>;
@@ -11806,13 +12470,15 @@ export const CreateDeviceUnrevokeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     body: DevicesUnrevokeCreateRequestBodyList,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/devices/unrevoke",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/devices/unrevoke",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateDeviceUnrevokeRequest",
 }) as any as S.Schema<CreateDeviceUnrevokeRequest>;
@@ -11826,7 +12492,7 @@ export const CreateDeviceUnrevokeResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unknown: S.Unknown,
     string: S.Unknown,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateDeviceUnrevokeResponse",
 }) as any as S.Schema<CreateDeviceUnrevokeResponse>;
@@ -11903,13 +12569,15 @@ export const CreateDexCommandRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     commands: DexCommandsCreateRequestCommandsList,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/dex/commands",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/dex/commands",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateDexCommandRequest",
 }) as any as S.Schema<CreateDexCommandRequest>;
@@ -11974,7 +12642,7 @@ export interface CreateDexCommandResponse {
 export const CreateDexCommandResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     commands: S.optional(DexCommandsCreateResponseCommandsList),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateDexCommandResponse",
 }) as any as S.Schema<CreateDexCommandResponse>;
@@ -11994,13 +12662,15 @@ export const CreateDexRuleRequest = /*@__PURE__*/ S.suspend(() =>
     match: S.String,
     name: S.String,
     description: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/dex/rules",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/dex/rules",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateDexRuleRequest",
 }) as any as S.Schema<CreateDexRuleRequest>;
@@ -12084,7 +12754,7 @@ export const CreateDexRuleResponse = /*@__PURE__*/ S.suspend(() =>
       DexRulesCreateResponseTargetedTestsList.pipe(T.Body("targeted_tests")),
     ),
     updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateDexRuleResponse",
 }) as any as S.Schema<CreateDexRuleResponse>;
@@ -12105,13 +12775,15 @@ export const CreateDlpCustomPromptTopicRequest = /*@__PURE__*/ S.suspend(() =>
     topic: S.String,
     description: S.optional(S.String),
     profileId: S.optional(S.String.pipe(T.Body("profile_id"))),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/dlp/custom_prompt_topics",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/dlp/custom_prompt_topics",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateDlpCustomPromptTopicRequest",
 }) as any as S.Schema<CreateDlpCustomPromptTopicRequest>;
@@ -12137,7 +12809,7 @@ export const CreateDlpCustomPromptTopicResponse = /*@__PURE__*/ S.suspend(() =>
     updatedAt: S.String.pipe(T.Body("updated_at")),
     description: S.optional(S.String),
     profileId: S.optional(S.String.pipe(T.Body("profile_id"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateDlpCustomPromptTopicResponse",
 }) as any as S.Schema<CreateDlpCustomPromptTopicResponse>;
@@ -12186,13 +12858,15 @@ export const CreateDlpDataClassRequest = /*@__PURE__*/ S.suspend(() =>
       T.Body("sensitivity_levels"),
     ),
     description: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/dlp/data_classes",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/dlp/data_classes",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateDlpDataClassRequest",
 }) as any as S.Schema<CreateDlpDataClassRequest>;
@@ -12248,7 +12922,7 @@ export const CreateDlpDataClassResponse = /*@__PURE__*/ S.suspend(() =>
     ),
     updatedAt: S.String.pipe(T.Body("updated_at")),
     description: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateDlpDataClassResponse",
 }) as any as S.Schema<CreateDlpDataClassResponse>;
@@ -12273,13 +12947,15 @@ export const CreateDlpDatasetRequest = /*@__PURE__*/ S.suspend(() =>
     description: S.optional(S.String),
     encodingVersion: S.optional(S.Number.pipe(T.Body("encoding_version"))),
     secret: S.optional(S.Boolean),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/dlp/datasets",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/dlp/datasets",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateDlpDatasetRequest",
 }) as any as S.Schema<CreateDlpDatasetRequest>;
@@ -12411,7 +13087,7 @@ export const CreateDlpDatasetResponse = /*@__PURE__*/ S.suspend(() =>
     maxCells: S.Number.pipe(T.Body("max_cells")),
     version: S.Number,
     secret: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateDlpDatasetResponse",
 }) as any as S.Schema<CreateDlpDatasetResponse>;
@@ -12424,13 +13100,15 @@ export const CreateDlpDatasetUploadRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     datasetId: S.String.pipe(T.Label("dataset_id")),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/dlp/datasets/{dataset_id}/upload",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/dlp/datasets/{dataset_id}/upload",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateDlpDatasetUploadRequest",
 }) as any as S.Schema<CreateDlpDatasetUploadRequest>;
@@ -12486,7 +13164,7 @@ export const CreateDlpDatasetUploadResponse = /*@__PURE__*/ S.suspend(() =>
     caseSensitive: S.optional(S.Boolean.pipe(T.Body("case_sensitive"))),
     columns: S.optional(DlpDatasetsUploadCreateResponseColumnsList),
     secret: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateDlpDatasetUploadResponse",
 }) as any as S.Schema<CreateDlpDatasetUploadResponse>;
@@ -12527,13 +13205,15 @@ export const CreateDlpDatasetVersionRequest = /*@__PURE__*/ S.suspend(() =>
     datasetId: S.String.pipe(T.Label("dataset_id")),
     version: S.Number.pipe(T.Label()),
     body: DlpDatasetsVersionsCreateRequestBodyList,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/dlp/datasets/{dataset_id}/versions/{version}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/dlp/datasets/{dataset_id}/versions/{version}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateDlpDatasetVersionRequest",
 }) as any as S.Schema<CreateDlpDatasetVersionRequest>;
@@ -12581,7 +13261,7 @@ export const CreateDlpDatasetVersionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: DlpDatasetsVersionsCreateResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateDlpDatasetVersionResponse",
 }) as any as S.Schema<CreateDlpDatasetVersionResponse>;
@@ -12598,13 +13278,15 @@ export const CreateDlpDatasetVersionEntryRequest = /*@__PURE__*/ S.suspend(() =>
     datasetId: S.String.pipe(T.Label("dataset_id")),
     version: S.Number.pipe(T.Label()),
     entryId: S.String.pipe(T.Label("entry_id")),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/dlp/datasets/{dataset_id}/versions/{version}/entries/{entry_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/dlp/datasets/{dataset_id}/versions/{version}/entries/{entry_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateDlpDatasetVersionEntryRequest",
 }) as any as S.Schema<CreateDlpDatasetVersionEntryRequest>;
@@ -12633,7 +13315,7 @@ export const CreateDlpDatasetVersionEntryResponse = /*@__PURE__*/ S.suspend(
       uploadStatus: DlpDatasetsVersionsEntriesCreateResponseUploadStatus.pipe(
         T.Body("upload_status"),
       ),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateDlpDatasetVersionEntryResponse",
 }) as any as S.Schema<CreateDlpDatasetVersionEntryResponse>;
@@ -12673,13 +13355,15 @@ export const CreateDlpDataTagCategoryRequest = /*@__PURE__*/ S.suspend(() =>
     description: S.optional(S.String),
     tags: S.optional(DlpDataTagCategoriesCreateRequestTagsList),
     templateId: S.optional(S.String.pipe(T.Body("template_id"))),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/dlp/data_tag_categories",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/dlp/data_tag_categories",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateDlpDataTagCategoryRequest",
 }) as any as S.Schema<CreateDlpDataTagCategoryRequest>;
@@ -12729,7 +13413,7 @@ export const CreateDlpDataTagCategoryResponse = /*@__PURE__*/ S.suspend(() =>
     updatedAt: S.String.pipe(T.Body("updated_at")),
     description: S.optional(S.String),
     templateId: S.optional(S.String.pipe(T.Body("template_id"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateDlpDataTagCategoryResponse",
 }) as any as S.Schema<CreateDlpDataTagCategoryResponse>;
@@ -12747,13 +13431,15 @@ export const CreateDlpDataTagCategoryDataTagRequest = /*@__PURE__*/ S.suspend(
       categoryId: S.String.pipe(T.Label("category_id")),
       name: S.String,
       description: S.optional(S.String),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/accounts/{account_id}/dlp/data_tag_categories/{category_id}/data_tags",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "POST",
+          uri: "/accounts/{account_id}/dlp/data_tag_categories/{category_id}/data_tags",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateDlpDataTagCategoryDataTagRequest",
 }) as any as S.Schema<CreateDlpDataTagCategoryDataTagRequest>;
@@ -12774,7 +13460,7 @@ export const CreateDlpDataTagCategoryDataTagResponse = /*@__PURE__*/ S.suspend(
       name: S.String,
       updatedAt: S.String.pipe(T.Body("updated_at")),
       description: S.optional(S.String),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateDlpDataTagCategoryDataTagResponse",
 }) as any as S.Schema<CreateDlpDataTagCategoryDataTagResponse>;
@@ -12805,13 +13491,15 @@ export const CreateDlpEmailAccountMappingRequest = /*@__PURE__*/ S.suspend(() =>
     authRequirements: DlpEmailAccountMappingCreateRequestAuthRequirements.pipe(
       T.Body("auth_requirements"),
     ),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/dlp/email/account_mapping",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/dlp/email/account_mapping",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateDlpEmailAccountMappingRequest",
 }) as any as S.Schema<CreateDlpEmailAccountMappingRequest>;
@@ -12845,7 +13533,7 @@ export const CreateDlpEmailAccountMappingResponse = /*@__PURE__*/ S.suspend(
         DlpEmailAccountMappingCreateResponseAuthRequirements.pipe(
           T.Body("auth_requirements"),
         ),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateDlpEmailAccountMappingResponse",
 }) as any as S.Schema<CreateDlpEmailAccountMappingResponse>;
@@ -12943,13 +13631,15 @@ export const CreateDlpEmailRuleRequest = /*@__PURE__*/ S.suspend(() =>
     enabled: S.Boolean,
     name: S.String,
     description: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/dlp/email/rules",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/dlp/email/rules",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateDlpEmailRuleRequest",
 }) as any as S.Schema<CreateDlpEmailRuleRequest>;
@@ -13054,7 +13744,7 @@ export const CreateDlpEmailRuleResponse = /*@__PURE__*/ S.suspend(() =>
     ruleId: S.String.pipe(T.Body("rule_id")),
     updatedAt: S.String.pipe(T.Body("updated_at")),
     description: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateDlpEmailRuleResponse",
 }) as any as S.Schema<CreateDlpEmailRuleResponse>;
@@ -13091,13 +13781,15 @@ export const CreateDlpEntryRequest = /*@__PURE__*/ S.suspend(() =>
     pattern: DlpEntriesCreateRequestPattern,
     description: S.optional(S.String),
     profileId: S.optional(S.String.pipe(T.Body("profile_id"))),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/dlp/entries",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/dlp/entries",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateDlpEntryRequest",
 }) as any as S.Schema<CreateDlpEntryRequest>;
@@ -13139,7 +13831,7 @@ export const CreateDlpEntryResponse = /*@__PURE__*/ S.suspend(() =>
     updatedAt: S.String.pipe(T.Body("updated_at")),
     description: S.optional(S.String),
     profileId: S.optional(S.String.pipe(T.Body("profile_id"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateDlpEntryResponse",
 }) as any as S.Schema<CreateDlpEntryResponse>;
@@ -13157,13 +13849,15 @@ export const CreateDlpEntryIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
     enabled: S.Boolean,
     entryId: S.String.pipe(T.Body("entry_id")),
     profileId: S.optional(S.String.pipe(T.Body("profile_id"))),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/dlp/entries/integration",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/dlp/entries/integration",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateDlpEntryIntegrationRequest",
 }) as any as S.Schema<CreateDlpEntryIntegrationRequest>;
@@ -13185,7 +13879,7 @@ export const CreateDlpEntryIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.String,
     updatedAt: S.String.pipe(T.Body("updated_at")),
     profileId: S.optional(S.String.pipe(T.Body("profile_id"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateDlpEntryIntegrationResponse",
 }) as any as S.Schema<CreateDlpEntryIntegrationResponse>;
@@ -13203,13 +13897,15 @@ export const CreateDlpEntryPredefinedRequest = /*@__PURE__*/ S.suspend(() =>
     enabled: S.Boolean,
     entryId: S.String.pipe(T.Body("entry_id")),
     profileId: S.optional(S.String.pipe(T.Body("profile_id"))),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/dlp/entries/predefined",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/dlp/entries/predefined",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateDlpEntryPredefinedRequest",
 }) as any as S.Schema<CreateDlpEntryPredefinedRequest>;
@@ -13268,7 +13964,7 @@ export const CreateDlpEntryPredefinedResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.String,
     profileId: S.optional(S.String.pipe(T.Body("profile_id"))),
     variant: S.optional(DlpEntriesPredefinedCreateResponseVariant),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateDlpEntryPredefinedResponse",
 }) as any as S.Schema<CreateDlpEntryPredefinedResponse>;
@@ -13438,13 +14134,15 @@ export const CreateDlpProfileCustomRequest = /*@__PURE__*/ S.suspend(() =>
         T.Body("shared_entries"),
       ),
     ),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/dlp/profiles/custom",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/dlp/profiles/custom",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateDlpProfileCustomRequest",
 }) as any as S.Schema<CreateDlpProfileCustomRequest>;
@@ -13470,7 +14168,7 @@ export const CreateDlpProfileCustomResponse = /*@__PURE__*/ S.suspend(() =>
     IntegrationProfileObjectIdCreatedAtEntries5More__: S.Unknown.pipe(
       T.Body("IntegrationProfile object { id, created_at, entries, 5 more }"),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateDlpProfileCustomResponse",
 }) as any as S.Schema<CreateDlpProfileCustomResponse>;
@@ -13511,13 +14209,15 @@ export const CreateDlpSensitivityGroupRequest = /*@__PURE__*/ S.suspend(() =>
     description: S.optional(S.String),
     levels: S.optional(DlpSensitivityGroupsCreateRequestLevelsList),
     templateId: S.optional(S.String.pipe(T.Body("template_id"))),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/dlp/sensitivity_groups",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/dlp/sensitivity_groups",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateDlpSensitivityGroupRequest",
 }) as any as S.Schema<CreateDlpSensitivityGroupRequest>;
@@ -13568,7 +14268,7 @@ export const CreateDlpSensitivityGroupResponse = /*@__PURE__*/ S.suspend(() =>
     updatedAt: S.String.pipe(T.Body("updated_at")),
     description: S.optional(S.String),
     templateId: S.optional(S.String.pipe(T.Body("template_id"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateDlpSensitivityGroupResponse",
 }) as any as S.Schema<CreateDlpSensitivityGroupResponse>;
@@ -13586,13 +14286,15 @@ export const CreateDlpSensitivityGroupLevelRequest = /*@__PURE__*/ S.suspend(
       sensitivityGroupId: S.String.pipe(T.Label("sensitivity_group_id")),
       name: S.String,
       description: S.optional(S.String),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/accounts/{account_id}/dlp/sensitivity_groups/{sensitivity_group_id}/levels",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "POST",
+          uri: "/accounts/{account_id}/dlp/sensitivity_groups/{sensitivity_group_id}/levels",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateDlpSensitivityGroupLevelRequest",
 }) as any as S.Schema<CreateDlpSensitivityGroupLevelRequest>;
@@ -13613,7 +14315,7 @@ export const CreateDlpSensitivityGroupLevelResponse = /*@__PURE__*/ S.suspend(
       name: S.String,
       updatedAt: S.String.pipe(T.Body("updated_at")),
       description: S.optional(S.String),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateDlpSensitivityGroupLevelResponse",
 }) as any as S.Schema<CreateDlpSensitivityGroupLevelResponse>;
@@ -13624,13 +14326,15 @@ export interface CreateGatewayRequest {
 export const CreateGatewayRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/gateway",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/gateway",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateGatewayRequest",
 }) as any as S.Schema<CreateGatewayRequest>;
@@ -13649,7 +14353,7 @@ export const CreateGatewayResponse = /*@__PURE__*/ S.suspend(() =>
     id: S.optional(S.String),
     gatewayTag: S.optional(S.String.pipe(T.Body("gateway_tag"))),
     providerName: S.optional(S.String.pipe(T.Body("provider_name"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateGatewayResponse",
 }) as any as S.Schema<CreateGatewayResponse>;
@@ -13665,13 +14369,15 @@ export const CreateGatewayCertificateRequest = /*@__PURE__*/ S.suspend(() =>
     validityPeriodDays: S.optional(
       S.Number.pipe(T.Body("validity_period_days")),
     ),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/gateway/certificates",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/gateway/certificates",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateGatewayCertificateRequest",
 }) as any as S.Schema<CreateGatewayCertificateRequest>;
@@ -13732,7 +14438,7 @@ export const CreateGatewayCertificateResponse = /*@__PURE__*/ S.suspend(() =>
     type: S.optional(GatewayCertificatesCreateResponseType),
     updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
     uploadedOn: S.optional(S.String.pipe(T.Body("uploaded_on"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateGatewayCertificateResponse",
 }) as any as S.Schema<CreateGatewayCertificateResponse>;
@@ -13783,13 +14489,15 @@ export const CreateGatewayListRequest = /*@__PURE__*/ S.suspend(() =>
     type: GatewayListsCreateRequestType,
     description: S.optional(S.String),
     items: S.optional(GatewayListsCreateRequestItemsList),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/gateway/lists",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/gateway/lists",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateGatewayListRequest",
 }) as any as S.Schema<CreateGatewayListRequest>;
@@ -13848,7 +14556,7 @@ export const CreateGatewayListResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     type: S.optional(GatewayListsCreateResponseType),
     updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateGatewayListResponse",
 }) as any as S.Schema<CreateGatewayListResponse>;
@@ -14073,13 +14781,15 @@ export const CreateGatewayLocationRequest = /*@__PURE__*/ S.suspend(() =>
       GatewayLocationsCreateRequestMaxTtl.pipe(T.Body("max_ttl")),
     ),
     networks: S.optional(GatewayLocationsCreateRequestNetworksList),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/gateway/locations",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/gateway/locations",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateGatewayLocationRequest",
 }) as any as S.Schema<CreateGatewayLocationRequest>;
@@ -14329,7 +15039,7 @@ export const CreateGatewayLocationResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     networks: S.optional(GatewayLocationsCreateResponseNetworksList),
     updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateGatewayLocationResponse",
 }) as any as S.Schema<CreateGatewayLocationResponse>;
@@ -14352,13 +15062,15 @@ export const CreateGatewayPacfileRequest = /*@__PURE__*/ S.suspend(() =>
     name: S.String,
     description: S.optional(S.String),
     slug: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/gateway/pacfiles",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/gateway/pacfiles",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateGatewayPacfileRequest",
 }) as any as S.Schema<CreateGatewayPacfileRequest>;
@@ -14389,7 +15101,7 @@ export const CreateGatewayPacfileResponse = /*@__PURE__*/ S.suspend(() =>
     slug: S.optional(S.String),
     updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
     url: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateGatewayPacfileResponse",
 }) as any as S.Schema<CreateGatewayPacfileResponse>;
@@ -14418,13 +15130,15 @@ export const CreateGatewayProxyEndpointRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     body: GatewayProxyEndpointsCreateRequestBody,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/gateway/proxy_endpoints",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/gateway/proxy_endpoints",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateGatewayProxyEndpointRequest",
 }) as any as S.Schema<CreateGatewayProxyEndpointRequest>;
@@ -14442,7 +15156,7 @@ export const CreateGatewayProxyEndpointResponse = /*@__PURE__*/ S.suspend(() =>
     IdentityObjectKindNameId3More__: S.Unknown.pipe(
       T.Body("Identity object { kind, name, id, 3 more }"),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateGatewayProxyEndpointResponse",
 }) as any as S.Schema<CreateGatewayProxyEndpointResponse>;
@@ -15141,13 +15855,15 @@ export const CreateGatewayRuleRequest = /*@__PURE__*/ S.suspend(() =>
     ),
     schedule: S.optional(GatewayRulesCreateRequestSchedule),
     traffic: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/gateway/rules",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/gateway/rules",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateGatewayRuleRequest",
 }) as any as S.Schema<CreateGatewayRuleRequest>;
@@ -15871,7 +16587,7 @@ export const CreateGatewayRuleResponse = /*@__PURE__*/ S.suspend(() =>
     updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
     version: S.optional(S.Number),
     warningStatus: S.optional(S.String.pipe(T.Body("warning_status"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateGatewayRuleResponse",
 }) as any as S.Schema<CreateGatewayRuleResponse>;
@@ -15959,13 +16675,15 @@ export const CreateIdentityProviderForAccountRequest = /*@__PURE__*/ S.suspend(
         IdentityProvidersCreateForAccountRequestIdentityProvider.pipe(
           T.Body("identity_provider"),
         ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/accounts/{account_id}/access/identity_providers",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "POST",
+          uri: "/accounts/{account_id}/access/identity_providers",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateIdentityProviderForAccountRequest",
 }) as any as S.Schema<CreateIdentityProviderForAccountRequest>;
@@ -16036,7 +16754,7 @@ export const CreateIdentityProviderForAccountResponse = /*@__PURE__*/ S.suspend(
       AccessCloudflareObjectConfigNameType5More__: S.Unknown.pipe(
         T.Body("AccessCloudflare object { config, name, type, 5 more }"),
       ),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateIdentityProviderForAccountResponse",
 }) as any as S.Schema<CreateIdentityProviderForAccountResponse>;
@@ -16124,13 +16842,15 @@ export const CreateIdentityProviderForZoneRequest = /*@__PURE__*/ S.suspend(
         IdentityProvidersCreateForZoneRequestIdentityProvider.pipe(
           T.Body("identity_provider"),
         ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/zones/{zone_id}/access/identity_providers",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "POST",
+          uri: "/zones/{zone_id}/access/identity_providers",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateIdentityProviderForZoneRequest",
 }) as any as S.Schema<CreateIdentityProviderForZoneRequest>;
@@ -16201,7 +16921,7 @@ export const CreateIdentityProviderForZoneResponse = /*@__PURE__*/ S.suspend(
       AccessCloudflareObjectConfigNameType5More__: S.Unknown.pipe(
         T.Body("AccessCloudflare object { config, name, type, 5 more }"),
       ),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateIdentityProviderForZoneResponse",
 }) as any as S.Schema<CreateIdentityProviderForZoneResponse>;
@@ -16217,13 +16937,15 @@ export const CreateIdentityProviderSamlCertificateRequest =
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
       identityProviderId: S.String.pipe(T.Label("identity_provider_id")),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/accounts/{account_id}/access/identity_providers/{identity_provider_id}/saml_certificate",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "POST",
+          uri: "/accounts/{account_id}/access/identity_providers/{identity_provider_id}/saml_certificate",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "CreateIdentityProviderSamlCertificateRequest",
   }) as any as S.Schema<CreateIdentityProviderSamlCertificateRequest>;
@@ -16278,7 +17000,7 @@ export const CreateIdentityProviderSamlCertificateResponse =
       previousCertificate: S.optional(
         S.Unknown.pipe(T.Body("previous_certificate")),
       ),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "CreateIdentityProviderSamlCertificateResponse",
   }) as any as S.Schema<CreateIdentityProviderSamlCertificateResponse>;
@@ -16299,13 +17021,15 @@ export const CreateNetworkHostnameRouteRequest = /*@__PURE__*/ S.suspend(() =>
     comment: S.optional(S.String),
     hostname: S.optional(S.String),
     tunnelId: S.optional(S.String.pipe(T.Body("tunnel_id"))),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/zerotrust/routes/hostname",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/zerotrust/routes/hostname",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateNetworkHostnameRouteRequest",
 }) as any as S.Schema<CreateNetworkHostnameRouteRequest>;
@@ -16349,7 +17073,7 @@ export const CreateNetworkHostnameRouteResponse = /*@__PURE__*/ S.suspend(() =>
     ),
     tunnelId: S.optional(S.String.pipe(T.Body("tunnel_id"))),
     tunnelName: S.optional(S.String.pipe(T.Body("tunnel_name"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateNetworkHostnameRouteResponse",
 }) as any as S.Schema<CreateNetworkHostnameRouteResponse>;
@@ -16373,13 +17097,15 @@ export const CreateNetworkRouteRequest = /*@__PURE__*/ S.suspend(() =>
     tunnelId: S.String.pipe(T.Body("tunnel_id")),
     comment: S.optional(S.String),
     virtualNetworkId: S.optional(S.String.pipe(T.Body("virtual_network_id"))),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/teamnet/routes",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/teamnet/routes",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateNetworkRouteRequest",
 }) as any as S.Schema<CreateNetworkRouteRequest>;
@@ -16410,7 +17136,7 @@ export const CreateNetworkRouteResponse = /*@__PURE__*/ S.suspend(() =>
     network: S.optional(S.String),
     tunnelId: S.optional(S.String.pipe(T.Body("tunnel_id"))),
     virtualNetworkId: S.optional(S.String.pipe(T.Body("virtual_network_id"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateNetworkRouteResponse",
 }) as any as S.Schema<CreateNetworkRouteResponse>;
@@ -16434,13 +17160,15 @@ export const CreateNetworkRouteNetworkRequest = /*@__PURE__*/ S.suspend(() =>
     tunnelId: S.String.pipe(T.Body("tunnel_id")),
     comment: S.optional(S.String),
     virtualNetworkId: S.optional(S.String.pipe(T.Body("virtual_network_id"))),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/teamnet/routes/network/{ip_network_encoded}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/teamnet/routes/network/{ip_network_encoded}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateNetworkRouteNetworkRequest",
 }) as any as S.Schema<CreateNetworkRouteNetworkRequest>;
@@ -16471,7 +17199,7 @@ export const CreateNetworkRouteNetworkResponse = /*@__PURE__*/ S.suspend(() =>
     network: S.optional(S.String),
     tunnelId: S.optional(S.String.pipe(T.Body("tunnel_id"))),
     virtualNetworkId: S.optional(S.String.pipe(T.Body("virtual_network_id"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateNetworkRouteNetworkResponse",
 }) as any as S.Schema<CreateNetworkRouteNetworkResponse>;
@@ -16495,13 +17223,15 @@ export const CreateNetworkSubnetWarpRequest = /*@__PURE__*/ S.suspend(() =>
     network: S.String,
     comment: S.optional(S.String),
     isDefaultNetwork: S.optional(S.Boolean.pipe(T.Body("is_default_network"))),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/zerotrust/subnets/warp",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/zerotrust/subnets/warp",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateNetworkSubnetWarpRequest",
 }) as any as S.Schema<CreateNetworkSubnetWarpRequest>;
@@ -16544,7 +17274,7 @@ export const CreateNetworkSubnetWarpResponse = /*@__PURE__*/ S.suspend(() =>
     subnetType: S.optional(
       NetworksSubnetsWarpCreateResponseSubnetType.pipe(T.Body("subnet_type")),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateNetworkSubnetWarpResponse",
 }) as any as S.Schema<CreateNetworkSubnetWarpResponse>;
@@ -16568,13 +17298,15 @@ export const CreateNetworkVirtualNetworkRequest = /*@__PURE__*/ S.suspend(() =>
     comment: S.optional(S.String),
     isDefault: S.optional(S.Boolean.pipe(T.Body("is_default"))),
     isDefaultNetwork: S.optional(S.Boolean.pipe(T.Body("is_default_network"))),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/teamnet/virtual_networks",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/teamnet/virtual_networks",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateNetworkVirtualNetworkRequest",
 }) as any as S.Schema<CreateNetworkVirtualNetworkRequest>;
@@ -16602,7 +17334,7 @@ export const CreateNetworkVirtualNetworkResponse = /*@__PURE__*/ S.suspend(() =>
     isDefaultNetwork: S.Boolean.pipe(T.Body("is_default_network")),
     name: S.String,
     deletedAt: S.optional(S.String.pipe(T.Body("deleted_at"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateNetworkVirtualNetworkResponse",
 }) as any as S.Schema<CreateNetworkVirtualNetworkResponse>;
@@ -16853,13 +17585,15 @@ export const CreateOrganizationForAccountRequest = /*@__PURE__*/ S.suspend(() =>
     warpAuthSessionDuration: S.optional(
       S.String.pipe(T.Body("warp_auth_session_duration")),
     ),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/access/organizations",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/access/organizations",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateOrganizationForAccountRequest",
 }) as any as S.Schema<CreateOrganizationForAccountRequest>;
@@ -17133,7 +17867,7 @@ export const CreateOrganizationForAccountResponse = /*@__PURE__*/ S.suspend(
       warpAuthSessionDuration: S.optional(
         S.String.pipe(T.Body("warp_auth_session_duration")),
       ),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateOrganizationForAccountResponse",
 }) as any as S.Schema<CreateOrganizationForAccountResponse>;
@@ -17388,13 +18122,15 @@ export const CreateOrganizationForZoneRequest = /*@__PURE__*/ S.suspend(() =>
     warpAuthSessionDuration: S.optional(
       S.String.pipe(T.Body("warp_auth_session_duration")),
     ),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/zones/{zone_id}/access/organizations",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/zones/{zone_id}/access/organizations",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateOrganizationForZoneRequest",
 }) as any as S.Schema<CreateOrganizationForZoneRequest>;
@@ -17668,7 +18404,7 @@ export const CreateOrganizationForZoneResponse = /*@__PURE__*/ S.suspend(() =>
     warpAuthSessionDuration: S.optional(
       S.String.pipe(T.Body("warp_auth_session_duration")),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateOrganizationForZoneResponse",
 }) as any as S.Schema<CreateOrganizationForZoneResponse>;
@@ -17695,13 +18431,15 @@ export const CreateRiskScoringIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
     ),
     tenantUrl: S.String.pipe(T.Body("tenant_url")),
     referenceId: S.optional(S.String.pipe(T.Body("reference_id"))),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/zt_risk_scoring/integrations",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/zt_risk_scoring/integrations",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateRiskScoringIntegrationRequest",
 }) as any as S.Schema<CreateRiskScoringIntegrationRequest>;
@@ -17744,7 +18482,7 @@ export const CreateRiskScoringIntegrationResponse = /*@__PURE__*/ S.suspend(
       referenceId: S.String.pipe(T.Body("reference_id")),
       tenantUrl: S.String.pipe(T.Body("tenant_url")),
       wellKnownUrl: S.String.pipe(T.Body("well_known_url")),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateRiskScoringIntegrationResponse",
 }) as any as S.Schema<CreateRiskScoringIntegrationResponse>;
@@ -17773,13 +18511,15 @@ export const CreateTunnelCloudflaredRequest = /*@__PURE__*/ S.suspend(() =>
       TunnelsCloudflaredCreateRequestConfigSrc.pipe(T.Body("config_src")),
     ),
     tunnelSecret: S.optional(S.String.pipe(T.Body("tunnel_secret"))),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/cfd_tunnel",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/cfd_tunnel",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateTunnelCloudflaredRequest",
 }) as any as S.Schema<CreateTunnelCloudflaredRequest>;
@@ -17896,7 +18636,7 @@ export const CreateTunnelCloudflaredResponse = /*@__PURE__*/ S.suspend(() =>
     tunType: S.optional(
       TunnelsCloudflaredCreateResponseTunType.pipe(T.Body("tun_type")),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateTunnelCloudflaredResponse",
 }) as any as S.Schema<CreateTunnelCloudflaredResponse>;
@@ -17927,13 +18667,15 @@ export const CreateTunnelCloudflaredManagementRequest = /*@__PURE__*/ S.suspend(
       accountId: S.String.pipe(T.Label("account_id")),
       tunnelId: S.String.pipe(T.Label("tunnel_id")),
       resources: TunnelsCloudflaredManagementCreateRequestResourcesList,
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/accounts/{account_id}/cfd_tunnel/{tunnel_id}/management",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "POST",
+          uri: "/accounts/{account_id}/cfd_tunnel/{tunnel_id}/management",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateTunnelCloudflaredManagementRequest",
 }) as any as S.Schema<CreateTunnelCloudflaredManagementRequest>;
@@ -17946,7 +18688,7 @@ export const CreateTunnelCloudflaredManagementResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       result: S.optional(S.String.pipe(T.EnvelopePayload())),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "CreateTunnelCloudflaredManagementResponse",
   }) as any as S.Schema<CreateTunnelCloudflaredManagementResponse>;
@@ -17964,13 +18706,15 @@ export const CreateTunnelWarpConnectorRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     name: S.String,
     ha: S.optional(S.Boolean),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/warp_connector",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/warp_connector",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateTunnelWarpConnectorRequest",
 }) as any as S.Schema<CreateTunnelWarpConnectorRequest>;
@@ -18073,7 +18817,7 @@ export const CreateTunnelWarpConnectorResponse = /*@__PURE__*/ S.suspend(() =>
     tunType: S.optional(
       TunnelsWarpConnectorCreateResponseTunType.pipe(T.Body("tun_type")),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateTunnelWarpConnectorResponse",
 }) as any as S.Schema<CreateTunnelWarpConnectorResponse>;
@@ -18089,13 +18833,15 @@ export const DeactivateGatewayCertificateRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     certificateId: S.String.pipe(T.Label("certificate_id")),
     body: S.Unknown,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/gateway/certificates/{certificate_id}/deactivate",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/gateway/certificates/{certificate_id}/deactivate",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeactivateGatewayCertificateRequest",
 }) as any as S.Schema<DeactivateGatewayCertificateRequest>;
@@ -18157,7 +18903,7 @@ export const DeactivateGatewayCertificateResponse = /*@__PURE__*/ S.suspend(
       type: S.optional(GatewayCertificatesDeactivateResponseType),
       updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
       uploadedOn: S.optional(S.String.pipe(T.Body("uploaded_on"))),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeactivateGatewayCertificateResponse",
 }) as any as S.Schema<DeactivateGatewayCertificateResponse>;
@@ -18172,13 +18918,15 @@ export const DeleteAccessAiControlMcpPortalRequest = /*@__PURE__*/ S.suspend(
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
       id: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/accounts/{account_id}/access/ai-controls/mcp/portals/{id}",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "DELETE",
+          uri: "/accounts/{account_id}/access/ai-controls/mcp/portals/{id}",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteAccessAiControlMcpPortalRequest",
 }) as any as S.Schema<DeleteAccessAiControlMcpPortalRequest>;
@@ -18214,7 +18962,7 @@ export const DeleteAccessAiControlMcpPortalResponse = /*@__PURE__*/ S.suspend(
       secureWebGateway: S.optional(
         S.Boolean.pipe(T.Body("secure_web_gateway")),
       ),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteAccessAiControlMcpPortalResponse",
 }) as any as S.Schema<DeleteAccessAiControlMcpPortalResponse>;
@@ -18229,13 +18977,15 @@ export const DeleteAccessAiControlMcpServerRequest = /*@__PURE__*/ S.suspend(
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
       id: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/accounts/{account_id}/access/ai-controls/mcp/servers/{id}",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "DELETE",
+          uri: "/accounts/{account_id}/access/ai-controls/mcp/servers/{id}",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteAccessAiControlMcpServerRequest",
 }) as any as S.Schema<DeleteAccessAiControlMcpServerRequest>;
@@ -18424,7 +19174,7 @@ export const DeleteAccessAiControlMcpServerResponse = /*@__PURE__*/ S.suspend(
           T.Body("updated_tools"),
         ),
       ),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteAccessAiControlMcpServerResponse",
 }) as any as S.Schema<DeleteAccessAiControlMcpServerResponse>;
@@ -18440,13 +19190,15 @@ export const DeleteAccessApplicationCaForAccountRequest =
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
       appId: S.String.pipe(T.Label("app_id")),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/accounts/{account_id}/access/apps/{app_id}/ca",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "DELETE",
+          uri: "/accounts/{account_id}/access/apps/{app_id}/ca",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "DeleteAccessApplicationCaForAccountRequest",
   }) as any as S.Schema<DeleteAccessApplicationCaForAccountRequest>;
@@ -18460,7 +19212,7 @@ export const DeleteAccessApplicationCaForAccountResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.optional(S.String),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "DeleteAccessApplicationCaForAccountResponse",
   }) as any as S.Schema<DeleteAccessApplicationCaForAccountResponse>;
@@ -18476,13 +19228,15 @@ export const DeleteAccessApplicationCaForZoneRequest = /*@__PURE__*/ S.suspend(
     S.Struct({
       zoneId: S.String.pipe(T.Label("zone_id")),
       appId: S.String.pipe(T.Label("app_id")),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/zones/{zone_id}/access/apps/{app_id}/ca",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "DELETE",
+          uri: "/zones/{zone_id}/access/apps/{app_id}/ca",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteAccessApplicationCaForZoneRequest",
 }) as any as S.Schema<DeleteAccessApplicationCaForZoneRequest>;
@@ -18496,7 +19250,7 @@ export const DeleteAccessApplicationCaForZoneResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       id: S.optional(S.String),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteAccessApplicationCaForZoneResponse",
 }) as any as S.Schema<DeleteAccessApplicationCaForZoneResponse>;
@@ -18512,13 +19266,15 @@ export const DeleteAccessApplicationForAccountRequest = /*@__PURE__*/ S.suspend(
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
       appId: S.String.pipe(T.Label("app_id")),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/accounts/{account_id}/access/apps/{app_id}",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "DELETE",
+          uri: "/accounts/{account_id}/access/apps/{app_id}",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteAccessApplicationForAccountRequest",
 }) as any as S.Schema<DeleteAccessApplicationForAccountRequest>;
@@ -18532,7 +19288,7 @@ export const DeleteAccessApplicationForAccountResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.optional(S.String),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "DeleteAccessApplicationForAccountResponse",
   }) as any as S.Schema<DeleteAccessApplicationForAccountResponse>;
@@ -18548,13 +19304,15 @@ export const DeleteAccessApplicationForZoneRequest = /*@__PURE__*/ S.suspend(
     S.Struct({
       zoneId: S.String.pipe(T.Label("zone_id")),
       appId: S.String.pipe(T.Label("app_id")),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/zones/{zone_id}/access/apps/{app_id}",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "DELETE",
+          uri: "/zones/{zone_id}/access/apps/{app_id}",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteAccessApplicationForZoneRequest",
 }) as any as S.Schema<DeleteAccessApplicationForZoneRequest>;
@@ -18568,7 +19326,7 @@ export const DeleteAccessApplicationForZoneResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       id: S.optional(S.String),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteAccessApplicationForZoneResponse",
 }) as any as S.Schema<DeleteAccessApplicationForZoneResponse>;
@@ -18587,13 +19345,15 @@ export const DeleteAccessApplicationPolicyForAccountRequest =
       accountId: S.String.pipe(T.Label("account_id")),
       appId: S.String.pipe(T.Label("app_id")),
       policyId: S.String.pipe(T.Label("policy_id")),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/accounts/{account_id}/access/apps/{app_id}/policies/{policy_id}",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "DELETE",
+          uri: "/accounts/{account_id}/access/apps/{app_id}/policies/{policy_id}",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "DeleteAccessApplicationPolicyForAccountRequest",
   }) as any as S.Schema<DeleteAccessApplicationPolicyForAccountRequest>;
@@ -18607,7 +19367,7 @@ export const DeleteAccessApplicationPolicyForAccountResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.optional(S.String),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "DeleteAccessApplicationPolicyForAccountResponse",
   }) as any as S.Schema<DeleteAccessApplicationPolicyForAccountResponse>;
@@ -18626,13 +19386,15 @@ export const DeleteAccessApplicationPolicyForZoneRequest =
       zoneId: S.String.pipe(T.Label("zone_id")),
       appId: S.String.pipe(T.Label("app_id")),
       policyId: S.String.pipe(T.Label("policy_id")),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/zones/{zone_id}/access/apps/{app_id}/policies/{policy_id}",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "DELETE",
+          uri: "/zones/{zone_id}/access/apps/{app_id}/policies/{policy_id}",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "DeleteAccessApplicationPolicyForZoneRequest",
   }) as any as S.Schema<DeleteAccessApplicationPolicyForZoneRequest>;
@@ -18646,7 +19408,7 @@ export const DeleteAccessApplicationPolicyForZoneResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.optional(S.String),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "DeleteAccessApplicationPolicyForZoneResponse",
   }) as any as S.Schema<DeleteAccessApplicationPolicyForZoneResponse>;
@@ -18660,13 +19422,15 @@ export const DeleteAccessBookmarkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     bookmarkId: S.String.pipe(T.Label("bookmark_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/access/bookmarks/{bookmark_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/access/bookmarks/{bookmark_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteAccessBookmarkRequest",
 }) as any as S.Schema<DeleteAccessBookmarkRequest>;
@@ -18679,7 +19443,7 @@ export interface DeleteAccessBookmarkResponse {
 export const DeleteAccessBookmarkResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteAccessBookmarkResponse",
 }) as any as S.Schema<DeleteAccessBookmarkResponse>;
@@ -18695,13 +19459,15 @@ export const DeleteAccessCertificateForAccountRequest = /*@__PURE__*/ S.suspend(
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
       certificateId: S.String.pipe(T.Label("certificate_id")),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/accounts/{account_id}/access/certificates/{certificate_id}",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "DELETE",
+          uri: "/accounts/{account_id}/access/certificates/{certificate_id}",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteAccessCertificateForAccountRequest",
 }) as any as S.Schema<DeleteAccessCertificateForAccountRequest>;
@@ -18715,7 +19481,7 @@ export const DeleteAccessCertificateForAccountResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.optional(S.String),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "DeleteAccessCertificateForAccountResponse",
   }) as any as S.Schema<DeleteAccessCertificateForAccountResponse>;
@@ -18731,13 +19497,15 @@ export const DeleteAccessCertificateForZoneRequest = /*@__PURE__*/ S.suspend(
     S.Struct({
       zoneId: S.String.pipe(T.Label("zone_id")),
       certificateId: S.String.pipe(T.Label("certificate_id")),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/zones/{zone_id}/access/certificates/{certificate_id}",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "DELETE",
+          uri: "/zones/{zone_id}/access/certificates/{certificate_id}",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteAccessCertificateForZoneRequest",
 }) as any as S.Schema<DeleteAccessCertificateForZoneRequest>;
@@ -18751,7 +19519,7 @@ export const DeleteAccessCertificateForZoneResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       id: S.optional(S.String),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteAccessCertificateForZoneResponse",
 }) as any as S.Schema<DeleteAccessCertificateForZoneResponse>;
@@ -18766,13 +19534,15 @@ export const DeleteAccessCustomPageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     customPageId: S.String.pipe(T.Label("custom_page_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/access/custom_pages/{custom_page_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/access/custom_pages/{custom_page_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteAccessCustomPageRequest",
 }) as any as S.Schema<DeleteAccessCustomPageRequest>;
@@ -18785,7 +19555,7 @@ export interface DeleteAccessCustomPageResponse {
 export const DeleteAccessCustomPageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteAccessCustomPageResponse",
 }) as any as S.Schema<DeleteAccessCustomPageResponse>;
@@ -18800,13 +19570,15 @@ export const DeleteAccessGatewayCaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     certificateId: S.String.pipe(T.Label("certificate_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/access/gateway_ca/{certificate_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/access/gateway_ca/{certificate_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteAccessGatewayCaRequest",
 }) as any as S.Schema<DeleteAccessGatewayCaRequest>;
@@ -18819,7 +19591,7 @@ export interface DeleteAccessGatewayCaResponse {
 export const DeleteAccessGatewayCaResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteAccessGatewayCaResponse",
 }) as any as S.Schema<DeleteAccessGatewayCaResponse>;
@@ -18834,13 +19606,15 @@ export const DeleteAccessGroupForAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     groupId: S.String.pipe(T.Label("group_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/access/groups/{group_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/access/groups/{group_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteAccessGroupForAccountRequest",
 }) as any as S.Schema<DeleteAccessGroupForAccountRequest>;
@@ -18853,7 +19627,7 @@ export interface DeleteAccessGroupForAccountResponse {
 export const DeleteAccessGroupForAccountResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteAccessGroupForAccountResponse",
 }) as any as S.Schema<DeleteAccessGroupForAccountResponse>;
@@ -18868,13 +19642,15 @@ export const DeleteAccessGroupForZoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     groupId: S.String.pipe(T.Label("group_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/zones/{zone_id}/access/groups/{group_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/zones/{zone_id}/access/groups/{group_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteAccessGroupForZoneRequest",
 }) as any as S.Schema<DeleteAccessGroupForZoneRequest>;
@@ -18887,7 +19663,7 @@ export interface DeleteAccessGroupForZoneResponse {
 export const DeleteAccessGroupForZoneResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteAccessGroupForZoneResponse",
 }) as any as S.Schema<DeleteAccessGroupForZoneResponse>;
@@ -18903,13 +19679,15 @@ export const DeleteAccessIdpFederationGrantRequest = /*@__PURE__*/ S.suspend(
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
       grantId: S.String.pipe(T.Label("grant_id")),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/accounts/{account_id}/access/idp_federation_grants/{grant_id}",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "DELETE",
+          uri: "/accounts/{account_id}/access/idp_federation_grants/{grant_id}",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteAccessIdpFederationGrantRequest",
 }) as any as S.Schema<DeleteAccessIdpFederationGrantRequest>;
@@ -18923,7 +19701,7 @@ export const DeleteAccessIdpFederationGrantResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       id: S.optional(S.String),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteAccessIdpFederationGrantResponse",
 }) as any as S.Schema<DeleteAccessIdpFederationGrantResponse>;
@@ -18939,20 +19717,22 @@ export const DeleteAccessInfrastructureTargetRequest = /*@__PURE__*/ S.suspend(
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
       targetId: S.String.pipe(T.Label("target_id")),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/accounts/{account_id}/infrastructure/targets/{target_id}",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "DELETE",
+          uri: "/accounts/{account_id}/infrastructure/targets/{target_id}",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteAccessInfrastructureTargetRequest",
 }) as any as S.Schema<DeleteAccessInfrastructureTargetRequest>;
 
 export interface DeleteAccessInfrastructureTargetResponse {}
 export const DeleteAccessInfrastructureTargetResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
+  () => S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteAccessInfrastructureTargetResponse",
 }) as any as S.Schema<DeleteAccessInfrastructureTargetResponse>;
@@ -18967,13 +19747,15 @@ export const DeleteAccessPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     policyId: S.String.pipe(T.Label("policy_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/access/policies/{policy_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/access/policies/{policy_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteAccessPolicyRequest",
 }) as any as S.Schema<DeleteAccessPolicyRequest>;
@@ -18986,7 +19768,7 @@ export interface DeleteAccessPolicyResponse {
 export const DeleteAccessPolicyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteAccessPolicyResponse",
 }) as any as S.Schema<DeleteAccessPolicyResponse>;
@@ -19002,13 +19784,15 @@ export const DeleteAccessServiceTokenForAccountRequest =
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
       serviceTokenId: S.String.pipe(T.Label("service_token_id")),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/accounts/{account_id}/access/service_tokens/{service_token_id}",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "DELETE",
+          uri: "/accounts/{account_id}/access/service_tokens/{service_token_id}",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "DeleteAccessServiceTokenForAccountRequest",
   }) as any as S.Schema<DeleteAccessServiceTokenForAccountRequest>;
@@ -19033,7 +19817,7 @@ export const DeleteAccessServiceTokenForAccountResponse =
       duration: S.optional(S.String),
       expiresAt: S.optional(S.String.pipe(T.Body("expires_at"))),
       name: S.optional(S.String),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "DeleteAccessServiceTokenForAccountResponse",
   }) as any as S.Schema<DeleteAccessServiceTokenForAccountResponse>;
@@ -19049,13 +19833,15 @@ export const DeleteAccessServiceTokenForZoneRequest = /*@__PURE__*/ S.suspend(
     S.Struct({
       zoneId: S.String.pipe(T.Label("zone_id")),
       serviceTokenId: S.String.pipe(T.Label("service_token_id")),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/zones/{zone_id}/access/service_tokens/{service_token_id}",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "DELETE",
+          uri: "/zones/{zone_id}/access/service_tokens/{service_token_id}",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteAccessServiceTokenForZoneRequest",
 }) as any as S.Schema<DeleteAccessServiceTokenForZoneRequest>;
@@ -19080,7 +19866,7 @@ export const DeleteAccessServiceTokenForZoneResponse = /*@__PURE__*/ S.suspend(
       duration: S.optional(S.String),
       expiresAt: S.optional(S.String.pipe(T.Body("expires_at"))),
       name: S.optional(S.String),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteAccessServiceTokenForZoneResponse",
 }) as any as S.Schema<DeleteAccessServiceTokenForZoneResponse>;
@@ -19095,13 +19881,15 @@ export const DeleteAccessTagRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     tagName: S.String.pipe(T.Label("tag_name")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/access/tags/{tag_name}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/access/tags/{tag_name}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteAccessTagRequest",
 }) as any as S.Schema<DeleteAccessTagRequest>;
@@ -19114,7 +19902,7 @@ export interface DeleteAccessTagResponse {
 export const DeleteAccessTagResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteAccessTagResponse",
 }) as any as S.Schema<DeleteAccessTagResponse>;
@@ -19129,13 +19917,15 @@ export const DeleteAccessUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     userId: S.String.pipe(T.Label("user_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/access/users/{user_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/access/users/{user_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteAccessUserRequest",
 }) as any as S.Schema<DeleteAccessUserRequest>;
@@ -19147,7 +19937,7 @@ export interface DeleteAccessUserResponse {
 export const DeleteAccessUserResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteAccessUserResponse",
 }) as any as S.Schema<DeleteAccessUserResponse>;
@@ -19160,13 +19950,15 @@ export const DeleteDeviceDeploymentGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     groupId: S.String.pipe(T.Label("group_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/devices/deployment-groups/{group_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/devices/deployment-groups/{group_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteDeviceDeploymentGroupRequest",
 }) as any as S.Schema<DeleteDeviceDeploymentGroupRequest>;
@@ -19179,7 +19971,7 @@ export interface DeleteDeviceDeploymentGroupResponse {
 export const DeleteDeviceDeploymentGroupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteDeviceDeploymentGroupResponse",
 }) as any as S.Schema<DeleteDeviceDeploymentGroupResponse>;
@@ -19192,13 +19984,15 @@ export const DeleteDeviceDevicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     deviceId: S.String.pipe(T.Label("device_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/devices/physical-devices/{device_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/devices/physical-devices/{device_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteDeviceDevicesRequest",
 }) as any as S.Schema<DeleteDeviceDevicesRequest>;
@@ -19210,7 +20004,7 @@ export interface DeleteDeviceDevicesResponse {
 export const DeleteDeviceDevicesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteDeviceDevicesResponse",
 }) as any as S.Schema<DeleteDeviceDevicesResponse>;
@@ -19225,13 +20019,15 @@ export const DeleteDeviceDexTestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     dexTestId: S.String.pipe(T.Label("dex_test_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/dex/devices/dex_tests/{dex_test_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/dex/devices/dex_tests/{dex_test_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteDeviceDexTestRequest",
 }) as any as S.Schema<DeleteDeviceDexTestRequest>;
@@ -19346,7 +20142,7 @@ export const DeleteDeviceDexTestResponse = /*@__PURE__*/ S.suspend(() =>
     dexTests: S.optional(
       DevicesDexTestsDeleteResponseDexTestsList.pipe(T.Body("dex_tests")),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteDeviceDexTestResponse",
 }) as any as S.Schema<DeleteDeviceDexTestResponse>;
@@ -19359,13 +20155,15 @@ export const DeleteDeviceIpProfileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     profileId: S.String.pipe(T.Label("profile_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/devices/ip-profiles/{profile_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/devices/ip-profiles/{profile_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteDeviceIpProfileRequest",
 }) as any as S.Schema<DeleteDeviceIpProfileRequest>;
@@ -19378,7 +20176,7 @@ export interface DeleteDeviceIpProfileResponse {
 export const DeleteDeviceIpProfileResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteDeviceIpProfileResponse",
 }) as any as S.Schema<DeleteDeviceIpProfileResponse>;
@@ -19392,13 +20190,15 @@ export const DeleteDeviceNetworkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     networkId: S.String.pipe(T.Label("network_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/devices/networks/{network_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/devices/networks/{network_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteDeviceNetworkRequest",
 }) as any as S.Schema<DeleteDeviceNetworkRequest>;
@@ -19458,7 +20258,7 @@ export const DeleteDeviceNetworkResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: DevicesNetworksDeleteResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteDeviceNetworkResponse",
 }) as any as S.Schema<DeleteDeviceNetworkResponse>;
@@ -19471,13 +20271,15 @@ export const DeleteDevicePolicyCustomRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     policyId: S.String.pipe(T.Label("policy_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/devices/policy/{policy_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/devices/policy/{policy_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteDevicePolicyCustomRequest",
 }) as any as S.Schema<DeleteDevicePolicyCustomRequest>;
@@ -19863,7 +20665,7 @@ export const DeleteDevicePolicyCustomResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: DevicesPoliciesCustomDeleteResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteDevicePolicyCustomResponse",
 }) as any as S.Schema<DeleteDevicePolicyCustomResponse>;
@@ -19877,13 +20679,15 @@ export const DeleteDevicePostureRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     ruleId: S.String.pipe(T.Label("rule_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/devices/posture/{rule_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/devices/posture/{rule_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteDevicePostureRequest",
 }) as any as S.Schema<DeleteDevicePostureRequest>;
@@ -19896,7 +20700,7 @@ export interface DeleteDevicePostureResponse {
 export const DeleteDevicePostureResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteDevicePostureResponse",
 }) as any as S.Schema<DeleteDevicePostureResponse>;
@@ -19911,13 +20715,15 @@ export const DeleteDevicePostureIntegrationRequest = /*@__PURE__*/ S.suspend(
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
       integrationId: S.String.pipe(T.Label("integration_id")),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/accounts/{account_id}/devices/posture/integration/{integration_id}",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "DELETE",
+          uri: "/accounts/{account_id}/devices/posture/integration/{integration_id}",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteDevicePostureIntegrationRequest",
 }) as any as S.Schema<DeleteDevicePostureIntegrationRequest>;
@@ -19932,7 +20738,7 @@ export const DeleteDevicePostureIntegrationResponse = /*@__PURE__*/ S.suspend(
     S.Struct({
       unknown: S.Unknown,
       string: S.Unknown,
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteDevicePostureIntegrationResponse",
 }) as any as S.Schema<DeleteDevicePostureIntegrationResponse>;
@@ -19945,13 +20751,15 @@ export const DeleteDeviceRegistrationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     registrationId: S.String.pipe(T.Label("registration_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/devices/registrations/{registration_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/devices/registrations/{registration_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteDeviceRegistrationRequest",
 }) as any as S.Schema<DeleteDeviceRegistrationRequest>;
@@ -19963,7 +20771,7 @@ export interface DeleteDeviceRegistrationResponse {
 export const DeleteDeviceRegistrationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteDeviceRegistrationResponse",
 }) as any as S.Schema<DeleteDeviceRegistrationResponse>;
@@ -19974,13 +20782,15 @@ export interface DeleteDeviceSettingRequest {
 export const DeleteDeviceSettingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/devices/settings",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/devices/settings",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteDeviceSettingRequest",
 }) as any as S.Schema<DeleteDeviceSettingRequest>;
@@ -20031,7 +20841,7 @@ export const DeleteDeviceSettingResponse = /*@__PURE__*/ S.suspend(() =>
       S.Boolean.pipe(T.Body("root_certificate_installation_enabled")),
     ),
     useZtVirtualIp: S.optional(S.Boolean.pipe(T.Body("use_zt_virtual_ip"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteDeviceSettingResponse",
 }) as any as S.Schema<DeleteDeviceSettingResponse>;
@@ -20046,13 +20856,15 @@ export const DeleteDexRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     ruleId: S.String.pipe(T.Label("rule_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/dex/rules/{rule_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/dex/rules/{rule_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteDexRuleRequest",
 }) as any as S.Schema<DeleteDexRuleRequest>;
@@ -20064,7 +20876,7 @@ export interface DeleteDexRuleResponse {
 export const DeleteDexRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(S.Boolean.pipe(T.EnvelopePayload())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteDexRuleResponse",
 }) as any as S.Schema<DeleteDexRuleResponse>;
@@ -20077,13 +20889,15 @@ export const DeleteDlpCustomPromptTopicRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     entryId: S.String.pipe(T.Label("entry_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/dlp/custom_prompt_topics/{entry_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/dlp/custom_prompt_topics/{entry_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteDlpCustomPromptTopicRequest",
 }) as any as S.Schema<DeleteDlpCustomPromptTopicRequest>;
@@ -20095,7 +20909,7 @@ export interface DeleteDlpCustomPromptTopicResponse {
 export const DeleteDlpCustomPromptTopicResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteDlpCustomPromptTopicResponse",
 }) as any as S.Schema<DeleteDlpCustomPromptTopicResponse>;
@@ -20108,13 +20922,15 @@ export const DeleteDlpDataClassRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     dataClassId: S.String.pipe(T.Label("data_class_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/dlp/data_classes/{data_class_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/dlp/data_classes/{data_class_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteDlpDataClassRequest",
 }) as any as S.Schema<DeleteDlpDataClassRequest>;
@@ -20126,7 +20942,7 @@ export interface DeleteDlpDataClassResponse {
 export const DeleteDlpDataClassResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteDlpDataClassResponse",
 }) as any as S.Schema<DeleteDlpDataClassResponse>;
@@ -20139,20 +20955,22 @@ export const DeleteDlpDatasetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     datasetId: S.String.pipe(T.Label("dataset_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/dlp/datasets/{dataset_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/dlp/datasets/{dataset_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteDlpDatasetRequest",
 }) as any as S.Schema<DeleteDlpDatasetRequest>;
 
 export interface DeleteDlpDatasetResponse {}
 export const DeleteDlpDatasetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
+  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteDlpDatasetResponse",
 }) as any as S.Schema<DeleteDlpDatasetResponse>;
@@ -20165,13 +20983,15 @@ export const DeleteDlpDataTagCategoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     categoryId: S.String.pipe(T.Label("category_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/dlp/data_tag_categories/{category_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/dlp/data_tag_categories/{category_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteDlpDataTagCategoryRequest",
 }) as any as S.Schema<DeleteDlpDataTagCategoryRequest>;
@@ -20183,7 +21003,7 @@ export interface DeleteDlpDataTagCategoryResponse {
 export const DeleteDlpDataTagCategoryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteDlpDataTagCategoryResponse",
 }) as any as S.Schema<DeleteDlpDataTagCategoryResponse>;
@@ -20199,13 +21019,15 @@ export const DeleteDlpDataTagCategoryDataTagRequest = /*@__PURE__*/ S.suspend(
       accountId: S.String.pipe(T.Label("account_id")),
       categoryId: S.String.pipe(T.Label("category_id")),
       tagId: S.String.pipe(T.Label("tag_id")),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/accounts/{account_id}/dlp/data_tag_categories/{category_id}/data_tags/{tag_id}",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "DELETE",
+          uri: "/accounts/{account_id}/dlp/data_tag_categories/{category_id}/data_tags/{tag_id}",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteDlpDataTagCategoryDataTagRequest",
 }) as any as S.Schema<DeleteDlpDataTagCategoryDataTagRequest>;
@@ -20218,7 +21040,7 @@ export const DeleteDlpDataTagCategoryDataTagResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteDlpDataTagCategoryDataTagResponse",
 }) as any as S.Schema<DeleteDlpDataTagCategoryDataTagResponse>;
@@ -20231,13 +21053,15 @@ export const DeleteDlpEmailRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     ruleId: S.String.pipe(T.Label("rule_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/dlp/email/rules/{rule_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/dlp/email/rules/{rule_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteDlpEmailRuleRequest",
 }) as any as S.Schema<DeleteDlpEmailRuleRequest>;
@@ -20342,7 +21166,7 @@ export const DeleteDlpEmailRuleResponse = /*@__PURE__*/ S.suspend(() =>
     ruleId: S.String.pipe(T.Body("rule_id")),
     updatedAt: S.String.pipe(T.Body("updated_at")),
     description: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteDlpEmailRuleResponse",
 }) as any as S.Schema<DeleteDlpEmailRuleResponse>;
@@ -20355,13 +21179,15 @@ export const DeleteDlpEntryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     entryId: S.String.pipe(T.Label("entry_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/dlp/entries/{entry_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/dlp/entries/{entry_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteDlpEntryRequest",
 }) as any as S.Schema<DeleteDlpEntryRequest>;
@@ -20373,7 +21199,7 @@ export interface DeleteDlpEntryResponse {
 export const DeleteDlpEntryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteDlpEntryResponse",
 }) as any as S.Schema<DeleteDlpEntryResponse>;
@@ -20386,13 +21212,15 @@ export const DeleteDlpEntryIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     entryId: S.String.pipe(T.Label("entry_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/dlp/entries/integration/{entry_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/dlp/entries/integration/{entry_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteDlpEntryIntegrationRequest",
 }) as any as S.Schema<DeleteDlpEntryIntegrationRequest>;
@@ -20404,7 +21232,7 @@ export interface DeleteDlpEntryIntegrationResponse {
 export const DeleteDlpEntryIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteDlpEntryIntegrationResponse",
 }) as any as S.Schema<DeleteDlpEntryIntegrationResponse>;
@@ -20417,13 +21245,15 @@ export const DeleteDlpEntryPredefinedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     entryId: S.String.pipe(T.Label("entry_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/dlp/entries/predefined/{entry_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/dlp/entries/predefined/{entry_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteDlpEntryPredefinedRequest",
 }) as any as S.Schema<DeleteDlpEntryPredefinedRequest>;
@@ -20435,7 +21265,7 @@ export interface DeleteDlpEntryPredefinedResponse {
 export const DeleteDlpEntryPredefinedResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteDlpEntryPredefinedResponse",
 }) as any as S.Schema<DeleteDlpEntryPredefinedResponse>;
@@ -20448,13 +21278,15 @@ export const DeleteDlpProfileCustomRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     profileId: S.String.pipe(T.Label("profile_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/dlp/profiles/custom/{profile_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/dlp/profiles/custom/{profile_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteDlpProfileCustomRequest",
 }) as any as S.Schema<DeleteDlpProfileCustomRequest>;
@@ -20466,7 +21298,7 @@ export interface DeleteDlpProfileCustomResponse {
 export const DeleteDlpProfileCustomResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteDlpProfileCustomResponse",
 }) as any as S.Schema<DeleteDlpProfileCustomResponse>;
@@ -20479,13 +21311,15 @@ export const DeleteDlpProfilePredefinedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     profileId: S.String.pipe(T.Label("profile_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/dlp/profiles/predefined/{profile_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/dlp/profiles/predefined/{profile_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteDlpProfilePredefinedRequest",
 }) as any as S.Schema<DeleteDlpProfilePredefinedRequest>;
@@ -20497,7 +21331,7 @@ export interface DeleteDlpProfilePredefinedResponse {
 export const DeleteDlpProfilePredefinedResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteDlpProfilePredefinedResponse",
 }) as any as S.Schema<DeleteDlpProfilePredefinedResponse>;
@@ -20510,13 +21344,15 @@ export const DeleteDlpSensitivityGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     sensitivityGroupId: S.String.pipe(T.Label("sensitivity_group_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/dlp/sensitivity_groups/{sensitivity_group_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/dlp/sensitivity_groups/{sensitivity_group_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteDlpSensitivityGroupRequest",
 }) as any as S.Schema<DeleteDlpSensitivityGroupRequest>;
@@ -20528,7 +21364,7 @@ export interface DeleteDlpSensitivityGroupResponse {
 export const DeleteDlpSensitivityGroupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteDlpSensitivityGroupResponse",
 }) as any as S.Schema<DeleteDlpSensitivityGroupResponse>;
@@ -20544,13 +21380,15 @@ export const DeleteDlpSensitivityGroupLevelRequest = /*@__PURE__*/ S.suspend(
       accountId: S.String.pipe(T.Label("account_id")),
       sensitivityGroupId: S.String.pipe(T.Label("sensitivity_group_id")),
       sensitivityLevelId: S.String.pipe(T.Label("sensitivity_level_id")),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/accounts/{account_id}/dlp/sensitivity_groups/{sensitivity_group_id}/levels/{sensitivity_level_id}",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "DELETE",
+          uri: "/accounts/{account_id}/dlp/sensitivity_groups/{sensitivity_group_id}/levels/{sensitivity_level_id}",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteDlpSensitivityGroupLevelRequest",
 }) as any as S.Schema<DeleteDlpSensitivityGroupLevelRequest>;
@@ -20563,7 +21401,7 @@ export const DeleteDlpSensitivityGroupLevelResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteDlpSensitivityGroupLevelResponse",
 }) as any as S.Schema<DeleteDlpSensitivityGroupLevelResponse>;
@@ -20574,13 +21412,15 @@ export interface DeleteDlpSettingRequest {
 export const DeleteDlpSettingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/dlp/settings",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/dlp/settings",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteDlpSettingRequest",
 }) as any as S.Schema<DeleteDlpSettingRequest>;
@@ -20631,7 +21471,7 @@ export const DeleteDlpSettingResponse = /*@__PURE__*/ S.suspend(() =>
     payloadLogging: DlpSettingsDeleteResponsePayloadLogging.pipe(
       T.Body("payload_logging"),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteDlpSettingResponse",
 }) as any as S.Schema<DeleteDlpSettingResponse>;
@@ -20645,13 +21485,15 @@ export const DeleteGatewayCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     certificateId: S.String.pipe(T.Label("certificate_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/gateway/certificates/{certificate_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/gateway/certificates/{certificate_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteGatewayCertificateRequest",
 }) as any as S.Schema<DeleteGatewayCertificateRequest>;
@@ -20712,7 +21554,7 @@ export const DeleteGatewayCertificateResponse = /*@__PURE__*/ S.suspend(() =>
     type: S.optional(GatewayCertificatesDeleteResponseType),
     updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
     uploadedOn: S.optional(S.String.pipe(T.Body("uploaded_on"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteGatewayCertificateResponse",
 }) as any as S.Schema<DeleteGatewayCertificateResponse>;
@@ -20726,13 +21568,15 @@ export const DeleteGatewayListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     listId: S.String.pipe(T.Label("list_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/gateway/lists/{list_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/gateway/lists/{list_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteGatewayListRequest",
 }) as any as S.Schema<DeleteGatewayListRequest>;
@@ -20744,7 +21588,7 @@ export interface DeleteGatewayListResponse {
 export const DeleteGatewayListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteGatewayListResponse",
 }) as any as S.Schema<DeleteGatewayListResponse>;
@@ -20757,13 +21601,15 @@ export const DeleteGatewayLocationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     locationId: S.String.pipe(T.Label("location_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/gateway/locations/{location_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/gateway/locations/{location_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteGatewayLocationRequest",
 }) as any as S.Schema<DeleteGatewayLocationRequest>;
@@ -20775,7 +21621,7 @@ export interface DeleteGatewayLocationResponse {
 export const DeleteGatewayLocationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteGatewayLocationResponse",
 }) as any as S.Schema<DeleteGatewayLocationResponse>;
@@ -20788,13 +21634,15 @@ export const DeleteGatewayPacfileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     pacfileId: S.String.pipe(T.Label("pacfile_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/gateway/pacfiles/{pacfile_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/gateway/pacfiles/{pacfile_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteGatewayPacfileRequest",
 }) as any as S.Schema<DeleteGatewayPacfileRequest>;
@@ -20806,7 +21654,7 @@ export interface DeleteGatewayPacfileResponse {
 export const DeleteGatewayPacfileResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteGatewayPacfileResponse",
 }) as any as S.Schema<DeleteGatewayPacfileResponse>;
@@ -20819,13 +21667,15 @@ export const DeleteGatewayProxyEndpointRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     proxyEndpointId: S.String.pipe(T.Label("proxy_endpoint_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/gateway/proxy_endpoints/{proxy_endpoint_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/gateway/proxy_endpoints/{proxy_endpoint_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteGatewayProxyEndpointRequest",
 }) as any as S.Schema<DeleteGatewayProxyEndpointRequest>;
@@ -20837,7 +21687,7 @@ export interface DeleteGatewayProxyEndpointResponse {
 export const DeleteGatewayProxyEndpointResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteGatewayProxyEndpointResponse",
 }) as any as S.Schema<DeleteGatewayProxyEndpointResponse>;
@@ -20851,13 +21701,15 @@ export const DeleteGatewayRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     ruleId: S.String.pipe(T.Label("rule_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/gateway/rules/{rule_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/gateway/rules/{rule_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteGatewayRuleRequest",
 }) as any as S.Schema<DeleteGatewayRuleRequest>;
@@ -20869,7 +21721,7 @@ export interface DeleteGatewayRuleResponse {
 export const DeleteGatewayRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteGatewayRuleResponse",
 }) as any as S.Schema<DeleteGatewayRuleResponse>;
@@ -20885,13 +21737,15 @@ export const DeleteIdentityProviderForAccountRequest = /*@__PURE__*/ S.suspend(
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
       identityProviderId: S.String.pipe(T.Label("identity_provider_id")),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/accounts/{account_id}/access/identity_providers/{identity_provider_id}",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "DELETE",
+          uri: "/accounts/{account_id}/access/identity_providers/{identity_provider_id}",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteIdentityProviderForAccountRequest",
 }) as any as S.Schema<DeleteIdentityProviderForAccountRequest>;
@@ -20905,7 +21759,7 @@ export const DeleteIdentityProviderForAccountResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       id: S.optional(S.String),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteIdentityProviderForAccountResponse",
 }) as any as S.Schema<DeleteIdentityProviderForAccountResponse>;
@@ -20921,13 +21775,15 @@ export const DeleteIdentityProviderForZoneRequest = /*@__PURE__*/ S.suspend(
     S.Struct({
       zoneId: S.String.pipe(T.Label("zone_id")),
       identityProviderId: S.String.pipe(T.Label("identity_provider_id")),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/zones/{zone_id}/access/identity_providers/{identity_provider_id}",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "DELETE",
+          uri: "/zones/{zone_id}/access/identity_providers/{identity_provider_id}",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteIdentityProviderForZoneRequest",
 }) as any as S.Schema<DeleteIdentityProviderForZoneRequest>;
@@ -20941,7 +21797,7 @@ export const DeleteIdentityProviderForZoneResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       id: S.optional(S.String),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteIdentityProviderForZoneResponse",
 }) as any as S.Schema<DeleteIdentityProviderForZoneResponse>;
@@ -20956,13 +21812,15 @@ export const DeleteNetworkHostnameRouteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     hostnameRouteId: S.String.pipe(T.Label("hostname_route_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/zerotrust/routes/hostname/{hostname_route_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/zerotrust/routes/hostname/{hostname_route_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteNetworkHostnameRouteRequest",
 }) as any as S.Schema<DeleteNetworkHostnameRouteRequest>;
@@ -21006,7 +21864,7 @@ export const DeleteNetworkHostnameRouteResponse = /*@__PURE__*/ S.suspend(() =>
     ),
     tunnelId: S.optional(S.String.pipe(T.Body("tunnel_id"))),
     tunnelName: S.optional(S.String.pipe(T.Body("tunnel_name"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteNetworkHostnameRouteResponse",
 }) as any as S.Schema<DeleteNetworkHostnameRouteResponse>;
@@ -21021,13 +21879,15 @@ export const DeleteNetworkRouteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     routeId: S.String.pipe(T.Label("route_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/teamnet/routes/{route_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/teamnet/routes/{route_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteNetworkRouteRequest",
 }) as any as S.Schema<DeleteNetworkRouteRequest>;
@@ -21058,7 +21918,7 @@ export const DeleteNetworkRouteResponse = /*@__PURE__*/ S.suspend(() =>
     network: S.optional(S.String),
     tunnelId: S.optional(S.String.pipe(T.Body("tunnel_id"))),
     virtualNetworkId: S.optional(S.String.pipe(T.Body("virtual_network_id"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteNetworkRouteResponse",
 }) as any as S.Schema<DeleteNetworkRouteResponse>;
@@ -21092,13 +21952,15 @@ export const DeleteNetworkRouteNetworkRequest = /*@__PURE__*/ S.suspend(() =>
     ),
     tunnelId: S.optional(S.String.pipe(T.Query("tunnel_id"))),
     virtualNetworkId: S.optional(S.String.pipe(T.Query("virtual_network_id"))),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/teamnet/routes/network/{ip_network_encoded}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/teamnet/routes/network/{ip_network_encoded}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteNetworkRouteNetworkRequest",
 }) as any as S.Schema<DeleteNetworkRouteNetworkRequest>;
@@ -21129,7 +21991,7 @@ export const DeleteNetworkRouteNetworkResponse = /*@__PURE__*/ S.suspend(() =>
     network: S.optional(S.String),
     tunnelId: S.optional(S.String.pipe(T.Body("tunnel_id"))),
     virtualNetworkId: S.optional(S.String.pipe(T.Body("virtual_network_id"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteNetworkRouteNetworkResponse",
 }) as any as S.Schema<DeleteNetworkRouteNetworkResponse>;
@@ -21144,13 +22006,15 @@ export const DeleteNetworkSubnetWarpRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     subnetId: S.String.pipe(T.Label("subnet_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/zerotrust/subnets/warp/{subnet_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/zerotrust/subnets/warp/{subnet_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteNetworkSubnetWarpRequest",
 }) as any as S.Schema<DeleteNetworkSubnetWarpRequest>;
@@ -21193,7 +22057,7 @@ export const DeleteNetworkSubnetWarpResponse = /*@__PURE__*/ S.suspend(() =>
     subnetType: S.optional(
       NetworksSubnetsWarpDeleteResponseSubnetType.pipe(T.Body("subnet_type")),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteNetworkSubnetWarpResponse",
 }) as any as S.Schema<DeleteNetworkSubnetWarpResponse>;
@@ -21208,13 +22072,15 @@ export const DeleteNetworkVirtualNetworkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     virtualNetworkId: S.String.pipe(T.Label("virtual_network_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/teamnet/virtual_networks/{virtual_network_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/teamnet/virtual_networks/{virtual_network_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteNetworkVirtualNetworkRequest",
 }) as any as S.Schema<DeleteNetworkVirtualNetworkRequest>;
@@ -21242,7 +22108,7 @@ export const DeleteNetworkVirtualNetworkResponse = /*@__PURE__*/ S.suspend(() =>
     isDefaultNetwork: S.Boolean.pipe(T.Body("is_default_network")),
     name: S.String,
     deletedAt: S.optional(S.String.pipe(T.Body("deleted_at"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteNetworkVirtualNetworkResponse",
 }) as any as S.Schema<DeleteNetworkVirtualNetworkResponse>;
@@ -21255,13 +22121,15 @@ export const DeleteRiskScoringIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     integrationId: S.String.pipe(T.Label("integration_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/zt_risk_scoring/integrations/{integration_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/zt_risk_scoring/integrations/{integration_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteRiskScoringIntegrationRequest",
 }) as any as S.Schema<DeleteRiskScoringIntegrationRequest>;
@@ -21274,7 +22142,7 @@ export const DeleteRiskScoringIntegrationResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteRiskScoringIntegrationResponse",
 }) as any as S.Schema<DeleteRiskScoringIntegrationResponse>;
@@ -21289,13 +22157,15 @@ export const DeleteTunnelCloudflaredRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     tunnelId: S.String.pipe(T.Label("tunnel_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/cfd_tunnel/{tunnel_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/cfd_tunnel/{tunnel_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteTunnelCloudflaredRequest",
 }) as any as S.Schema<DeleteTunnelCloudflaredRequest>;
@@ -21412,7 +22282,7 @@ export const DeleteTunnelCloudflaredResponse = /*@__PURE__*/ S.suspend(() =>
     tunType: S.optional(
       TunnelsCloudflaredDeleteResponseTunType.pipe(T.Body("tun_type")),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteTunnelCloudflaredResponse",
 }) as any as S.Schema<DeleteTunnelCloudflaredResponse>;
@@ -21431,13 +22301,15 @@ export const DeleteTunnelCloudflaredConnectionRequest = /*@__PURE__*/ S.suspend(
       accountId: S.String.pipe(T.Label("account_id")),
       tunnelId: S.String.pipe(T.Label("tunnel_id")),
       clientId: S.optional(S.String.pipe(T.Query("client_id"))),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/accounts/{account_id}/cfd_tunnel/{tunnel_id}/connections",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "DELETE",
+          uri: "/accounts/{account_id}/cfd_tunnel/{tunnel_id}/connections",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteTunnelCloudflaredConnectionRequest",
 }) as any as S.Schema<DeleteTunnelCloudflaredConnectionRequest>;
@@ -21450,7 +22322,7 @@ export const DeleteTunnelCloudflaredConnectionResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "DeleteTunnelCloudflaredConnectionResponse",
   }) as any as S.Schema<DeleteTunnelCloudflaredConnectionResponse>;
@@ -21465,13 +22337,15 @@ export const DeleteTunnelWarpConnectorRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     tunnelId: S.String.pipe(T.Label("tunnel_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/warp_connector/{tunnel_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/warp_connector/{tunnel_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteTunnelWarpConnectorRequest",
 }) as any as S.Schema<DeleteTunnelWarpConnectorRequest>;
@@ -21574,7 +22448,7 @@ export const DeleteTunnelWarpConnectorResponse = /*@__PURE__*/ S.suspend(() =>
     tunType: S.optional(
       TunnelsWarpConnectorDeleteResponseTunType.pipe(T.Body("tun_type")),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteTunnelWarpConnectorResponse",
 }) as any as S.Schema<DeleteTunnelWarpConnectorResponse>;
@@ -21615,13 +22489,15 @@ export const DlpEntriesCustomCreateRequest = /*@__PURE__*/ S.suspend(() =>
     pattern: DlpEntriesCustomCreateRequestPattern,
     description: S.optional(S.String),
     profileId: S.optional(S.String.pipe(T.Body("profile_id"))),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/dlp/entries",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/dlp/entries",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DlpEntriesCustomCreateRequest",
 }) as any as S.Schema<DlpEntriesCustomCreateRequest>;
@@ -21667,7 +22543,7 @@ export const DlpEntriesCustomCreateResponse = /*@__PURE__*/ S.suspend(() =>
     updatedAt: S.String.pipe(T.Body("updated_at")),
     description: S.optional(S.String),
     profileId: S.optional(S.String.pipe(T.Body("profile_id"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DlpEntriesCustomCreateResponse",
 }) as any as S.Schema<DlpEntriesCustomCreateResponse>;
@@ -21680,13 +22556,15 @@ export const DlpEntriesCustomDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     entryId: S.String.pipe(T.Label("entry_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/dlp/entries/{entry_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/dlp/entries/{entry_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DlpEntriesCustomDeleteRequest",
 }) as any as S.Schema<DlpEntriesCustomDeleteRequest>;
@@ -21698,7 +22576,7 @@ export interface DlpEntriesCustomDeleteResponse {
 export const DlpEntriesCustomDeleteResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DlpEntriesCustomDeleteResponse",
 }) as any as S.Schema<DlpEntriesCustomDeleteResponse>;
@@ -21711,13 +22589,15 @@ export const DlpEntriesCustomGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     entryId: S.String.pipe(T.Label("entry_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/dlp/entries/{entry_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/dlp/entries/{entry_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DlpEntriesCustomGetRequest",
 }) as any as S.Schema<DlpEntriesCustomGetRequest>;
@@ -21755,7 +22635,7 @@ export const DlpEntriesCustomGetResponse = /*@__PURE__*/ S.suspend(() =>
     objectIdCreatedAtEnabled7More__: S.Unknown.pipe(
       T.Body("object { id, created_at, enabled, 7 more }"),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DlpEntriesCustomGetResponse",
 }) as any as S.Schema<DlpEntriesCustomGetResponse>;
@@ -21766,13 +22646,15 @@ export interface DlpEntriesCustomListRequest {
 export const DlpEntriesCustomListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/dlp/entries",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/dlp/entries",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DlpEntriesCustomListRequest",
 }) as any as S.Schema<DlpEntriesCustomListRequest>;
@@ -21829,7 +22711,7 @@ export const DlpEntriesCustomListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: DlpEntriesCustomListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DlpEntriesCustomListResponse",
 }) as any as S.Schema<DlpEntriesCustomListResponse>;
@@ -21842,13 +22724,15 @@ export const DlpEntriesIntegrationGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     entryId: S.String.pipe(T.Label("entry_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/dlp/entries/{entry_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/dlp/entries/{entry_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DlpEntriesIntegrationGetRequest",
 }) as any as S.Schema<DlpEntriesIntegrationGetRequest>;
@@ -21886,7 +22770,7 @@ export const DlpEntriesIntegrationGetResponse = /*@__PURE__*/ S.suspend(() =>
     objectIdCreatedAtEnabled7More__: S.Unknown.pipe(
       T.Body("object { id, created_at, enabled, 7 more }"),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DlpEntriesIntegrationGetResponse",
 }) as any as S.Schema<DlpEntriesIntegrationGetResponse>;
@@ -21897,13 +22781,15 @@ export interface DlpEntriesIntegrationListRequest {
 export const DlpEntriesIntegrationListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/dlp/entries",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/dlp/entries",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DlpEntriesIntegrationListRequest",
 }) as any as S.Schema<DlpEntriesIntegrationListRequest>;
@@ -21961,7 +22847,7 @@ export const DlpEntriesIntegrationListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: DlpEntriesIntegrationListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DlpEntriesIntegrationListResponse",
 }) as any as S.Schema<DlpEntriesIntegrationListResponse>;
@@ -21974,13 +22860,15 @@ export const DlpEntriesPredefinedGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     entryId: S.String.pipe(T.Label("entry_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/dlp/entries/{entry_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/dlp/entries/{entry_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DlpEntriesPredefinedGetRequest",
 }) as any as S.Schema<DlpEntriesPredefinedGetRequest>;
@@ -22018,7 +22906,7 @@ export const DlpEntriesPredefinedGetResponse = /*@__PURE__*/ S.suspend(() =>
     objectIdCreatedAtEnabled7More__: S.Unknown.pipe(
       T.Body("object { id, created_at, enabled, 7 more }"),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DlpEntriesPredefinedGetResponse",
 }) as any as S.Schema<DlpEntriesPredefinedGetResponse>;
@@ -22029,13 +22917,15 @@ export interface DlpEntriesPredefinedListRequest {
 export const DlpEntriesPredefinedListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/dlp/entries",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/dlp/entries",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DlpEntriesPredefinedListRequest",
 }) as any as S.Schema<DlpEntriesPredefinedListRequest>;
@@ -22093,7 +22983,7 @@ export const DlpEntriesPredefinedListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: DlpEntriesPredefinedListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DlpEntriesPredefinedListResponse",
 }) as any as S.Schema<DlpEntriesPredefinedListResponse>;
@@ -22108,13 +22998,15 @@ export const EditDlpDatasetUploadRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     datasetId: S.String.pipe(T.Label("dataset_id")),
     version: S.Number.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/dlp/datasets/{dataset_id}/upload/{version}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/dlp/datasets/{dataset_id}/upload/{version}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "EditDlpDatasetUploadRequest",
 }) as any as S.Schema<EditDlpDatasetUploadRequest>;
@@ -22221,7 +23113,7 @@ export const EditDlpDatasetUploadResponse = /*@__PURE__*/ S.suspend(() =>
     uploads: DlpDatasetsUploadEditResponseUploadsList,
     caseSensitive: S.optional(S.Boolean.pipe(T.Body("case_sensitive"))),
     description: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "EditDlpDatasetUploadResponse",
 }) as any as S.Schema<EditDlpDatasetUploadResponse>;
@@ -22237,13 +23129,15 @@ export const GetAccessApplicationCaForAccountRequest = /*@__PURE__*/ S.suspend(
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
       appId: S.String.pipe(T.Label("app_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/accounts/{account_id}/access/apps/{app_id}/ca",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "GET",
+          uri: "/accounts/{account_id}/access/apps/{app_id}/ca",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetAccessApplicationCaForAccountRequest",
 }) as any as S.Schema<GetAccessApplicationCaForAccountRequest>;
@@ -22263,7 +23157,7 @@ export const GetAccessApplicationCaForAccountResponse = /*@__PURE__*/ S.suspend(
       id: S.optional(S.String),
       aud: S.optional(S.String),
       publicKey: S.optional(S.String.pipe(T.Body("public_key"))),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetAccessApplicationCaForAccountResponse",
 }) as any as S.Schema<GetAccessApplicationCaForAccountResponse>;
@@ -22279,13 +23173,15 @@ export const GetAccessApplicationCaForZoneRequest = /*@__PURE__*/ S.suspend(
     S.Struct({
       zoneId: S.String.pipe(T.Label("zone_id")),
       appId: S.String.pipe(T.Label("app_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/zones/{zone_id}/access/apps/{app_id}/ca",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "GET",
+          uri: "/zones/{zone_id}/access/apps/{app_id}/ca",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetAccessApplicationCaForZoneRequest",
 }) as any as S.Schema<GetAccessApplicationCaForZoneRequest>;
@@ -22305,7 +23201,7 @@ export const GetAccessApplicationCaForZoneResponse = /*@__PURE__*/ S.suspend(
       id: S.optional(S.String),
       aud: S.optional(S.String),
       publicKey: S.optional(S.String.pipe(T.Body("public_key"))),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetAccessApplicationCaForZoneResponse",
 }) as any as S.Schema<GetAccessApplicationCaForZoneResponse>;
@@ -22321,13 +23217,15 @@ export const GetAccessApplicationForAccountRequest = /*@__PURE__*/ S.suspend(
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
       appId: S.String.pipe(T.Label("app_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/accounts/{account_id}/access/apps/{app_id}",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "GET",
+          uri: "/accounts/{account_id}/access/apps/{app_id}",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetAccessApplicationForAccountRequest",
 }) as any as S.Schema<GetAccessApplicationForAccountRequest>;
@@ -22418,7 +23316,7 @@ export const GetAccessApplicationForAccountResponse = /*@__PURE__*/ S.suspend(
             "McpServerPortalApplication object { type, id, allow_authenticate_via_warp, 19 more }",
           ),
         ),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetAccessApplicationForAccountResponse",
 }) as any as S.Schema<GetAccessApplicationForAccountResponse>;
@@ -22433,13 +23331,15 @@ export const GetAccessApplicationForZoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     appId: S.String.pipe(T.Label("app_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/access/apps/{app_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/access/apps/{app_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetAccessApplicationForZoneRequest",
 }) as any as S.Schema<GetAccessApplicationForZoneRequest>;
@@ -22527,7 +23427,7 @@ export const GetAccessApplicationForZoneResponse = /*@__PURE__*/ S.suspend(() =>
           "McpServerPortalApplication object { type, id, allow_authenticate_via_warp, 19 more }",
         ),
       ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetAccessApplicationForZoneResponse",
 }) as any as S.Schema<GetAccessApplicationForZoneResponse>;
@@ -22546,13 +23446,15 @@ export const GetAccessApplicationPolicyForAccountRequest =
       accountId: S.String.pipe(T.Label("account_id")),
       appId: S.String.pipe(T.Label("app_id")),
       policyId: S.String.pipe(T.Label("policy_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/accounts/{account_id}/access/apps/{app_id}/policies/{policy_id}",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "GET",
+          uri: "/accounts/{account_id}/access/apps/{app_id}/policies/{policy_id}",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "GetAccessApplicationPolicyForAccountRequest",
   }) as any as S.Schema<GetAccessApplicationPolicyForAccountRequest>;
@@ -23218,7 +24120,7 @@ export const GetAccessApplicationPolicyForAccountResponse =
       ),
       sessionDuration: S.optional(S.String.pipe(T.Body("session_duration"))),
       updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "GetAccessApplicationPolicyForAccountResponse",
   }) as any as S.Schema<GetAccessApplicationPolicyForAccountResponse>;
@@ -23237,13 +24139,15 @@ export const GetAccessApplicationPolicyForZoneRequest = /*@__PURE__*/ S.suspend(
       zoneId: S.String.pipe(T.Label("zone_id")),
       appId: S.String.pipe(T.Label("app_id")),
       policyId: S.String.pipe(T.Label("policy_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/zones/{zone_id}/access/apps/{app_id}/policies/{policy_id}",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "GET",
+          uri: "/zones/{zone_id}/access/apps/{app_id}/policies/{policy_id}",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetAccessApplicationPolicyForZoneRequest",
 }) as any as S.Schema<GetAccessApplicationPolicyForZoneRequest>;
@@ -23908,7 +24812,7 @@ export const GetAccessApplicationPolicyForZoneResponse =
       ),
       sessionDuration: S.optional(S.String.pipe(T.Body("session_duration"))),
       updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "GetAccessApplicationPolicyForZoneResponse",
   }) as any as S.Schema<GetAccessApplicationPolicyForZoneResponse>;
@@ -23924,13 +24828,15 @@ export const GetAccessApplicationPolicyTestRequest = /*@__PURE__*/ S.suspend(
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
       policyTestId: S.String.pipe(T.Label("policy_test_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/accounts/{account_id}/access/policy-tests/{policy_test_id}",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "GET",
+          uri: "/accounts/{account_id}/access/policy-tests/{policy_test_id}",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetAccessApplicationPolicyTestRequest",
 }) as any as S.Schema<GetAccessApplicationPolicyTestRequest>;
@@ -23982,7 +24888,7 @@ export const GetAccessApplicationPolicyTestResponse = /*@__PURE__*/ S.suspend(
       usersApproved: S.optional(S.Number.pipe(T.Body("users_approved"))),
       usersBlocked: S.optional(S.Number.pipe(T.Body("users_blocked"))),
       usersErrored: S.optional(S.Number.pipe(T.Body("users_errored"))),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetAccessApplicationPolicyTestResponse",
 }) as any as S.Schema<GetAccessApplicationPolicyTestResponse>;
@@ -23996,13 +24902,15 @@ export const GetAccessBookmarkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     bookmarkId: S.String.pipe(T.Label("bookmark_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/access/bookmarks/{bookmark_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/access/bookmarks/{bookmark_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetAccessBookmarkRequest",
 }) as any as S.Schema<GetAccessBookmarkRequest>;
@@ -24029,7 +24937,7 @@ export const GetAccessBookmarkResponse = /*@__PURE__*/ S.suspend(() =>
     domain: S.optional(S.String),
     logoUrl: S.optional(S.String.pipe(T.Body("logo_url"))),
     name: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetAccessBookmarkResponse",
 }) as any as S.Schema<GetAccessBookmarkResponse>;
@@ -24045,13 +24953,15 @@ export const GetAccessCertificateForAccountRequest = /*@__PURE__*/ S.suspend(
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
       certificateId: S.String.pipe(T.Label("certificate_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/accounts/{account_id}/access/certificates/{certificate_id}",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "GET",
+          uri: "/accounts/{account_id}/access/certificates/{certificate_id}",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetAccessCertificateForAccountRequest",
 }) as any as S.Schema<GetAccessCertificateForAccountRequest>;
@@ -24087,7 +24997,7 @@ export const GetAccessCertificateForAccountResponse = /*@__PURE__*/ S.suspend(
       expiresOn: S.optional(S.String.pipe(T.Body("expires_on"))),
       fingerprint: S.optional(S.String),
       name: S.optional(S.String),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetAccessCertificateForAccountResponse",
 }) as any as S.Schema<GetAccessCertificateForAccountResponse>;
@@ -24102,13 +25012,15 @@ export const GetAccessCertificateForZoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     certificateId: S.String.pipe(T.Label("certificate_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/access/certificates/{certificate_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/access/certificates/{certificate_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetAccessCertificateForZoneRequest",
 }) as any as S.Schema<GetAccessCertificateForZoneRequest>;
@@ -24143,7 +25055,7 @@ export const GetAccessCertificateForZoneResponse = /*@__PURE__*/ S.suspend(() =>
     expiresOn: S.optional(S.String.pipe(T.Body("expires_on"))),
     fingerprint: S.optional(S.String),
     name: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetAccessCertificateForZoneResponse",
 }) as any as S.Schema<GetAccessCertificateForZoneResponse>;
@@ -24156,13 +25068,15 @@ export const GetAccessCertificateSettingForAccountRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/accounts/{account_id}/access/certificates/settings",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "GET",
+          uri: "/accounts/{account_id}/access/certificates/settings",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "GetAccessCertificateSettingForAccountRequest",
   }) as any as S.Schema<GetAccessCertificateSettingForAccountRequest>;
@@ -24208,7 +25122,7 @@ export const GetAccessCertificateSettingForAccountResponse =
         T.EnvelopePayload(),
       ),
       resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "GetAccessCertificateSettingForAccountResponse",
   }) as any as S.Schema<GetAccessCertificateSettingForAccountResponse>;
@@ -24221,13 +25135,15 @@ export const GetAccessCertificateSettingForZoneRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       zoneId: S.String.pipe(T.Label("zone_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/zones/{zone_id}/access/certificates/settings",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "GET",
+          uri: "/zones/{zone_id}/access/certificates/settings",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "GetAccessCertificateSettingForZoneRequest",
   }) as any as S.Schema<GetAccessCertificateSettingForZoneRequest>;
@@ -24273,7 +25189,7 @@ export const GetAccessCertificateSettingForZoneResponse =
         T.EnvelopePayload(),
       ),
       resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "GetAccessCertificateSettingForZoneResponse",
   }) as any as S.Schema<GetAccessCertificateSettingForZoneResponse>;
@@ -24288,13 +25204,15 @@ export const GetAccessCustomPageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     customPageId: S.String.pipe(T.Label("custom_page_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/access/custom_pages/{custom_page_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/access/custom_pages/{custom_page_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetAccessCustomPageRequest",
 }) as any as S.Schema<GetAccessCustomPageRequest>;
@@ -24322,7 +25240,7 @@ export const GetAccessCustomPageResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.String,
     type: AccessCustomPagesGetResponseType,
     uid: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetAccessCustomPageResponse",
 }) as any as S.Schema<GetAccessCustomPageResponse>;
@@ -24337,13 +25255,15 @@ export const GetAccessGroupForAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     groupId: S.String.pipe(T.Label("group_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/access/groups/{group_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/access/groups/{group_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetAccessGroupForAccountRequest",
 }) as any as S.Schema<GetAccessGroupForAccountRequest>;
@@ -24965,7 +25885,7 @@ export const GetAccessGroupForAccountResponse = /*@__PURE__*/ S.suspend(() =>
     ),
     name: S.optional(S.String),
     require: S.optional(AccessGroupsGetForAccountResponseRequireList),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetAccessGroupForAccountResponse",
 }) as any as S.Schema<GetAccessGroupForAccountResponse>;
@@ -24980,13 +25900,15 @@ export const GetAccessGroupForZoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     groupId: S.String.pipe(T.Label("group_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/access/groups/{group_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/access/groups/{group_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetAccessGroupForZoneRequest",
 }) as any as S.Schema<GetAccessGroupForZoneRequest>;
@@ -25605,7 +26527,7 @@ export const GetAccessGroupForZoneResponse = /*@__PURE__*/ S.suspend(() =>
     ),
     name: S.optional(S.String),
     require: S.optional(AccessGroupsGetForZoneResponseRequireList),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetAccessGroupForZoneResponse",
 }) as any as S.Schema<GetAccessGroupForZoneResponse>;
@@ -25620,13 +26542,15 @@ export const GetAccessIdpFederationGrantRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     grantId: S.String.pipe(T.Label("grant_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/access/idp_federation_grants/{grant_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/access/idp_federation_grants/{grant_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetAccessIdpFederationGrantRequest",
 }) as any as S.Schema<GetAccessIdpFederationGrantRequest>;
@@ -25642,7 +26566,7 @@ export const GetAccessIdpFederationGrantResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     idpId: S.String.pipe(T.Body("idp_id")),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetAccessIdpFederationGrantResponse",
 }) as any as S.Schema<GetAccessIdpFederationGrantResponse>;
@@ -25658,13 +26582,15 @@ export const GetAccessInfrastructureTargetRequest = /*@__PURE__*/ S.suspend(
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
       targetId: S.String.pipe(T.Label("target_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/accounts/{account_id}/infrastructure/targets/{target_id}",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "GET",
+          uri: "/accounts/{account_id}/infrastructure/targets/{target_id}",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetAccessInfrastructureTargetRequest",
 }) as any as S.Schema<GetAccessInfrastructureTargetRequest>;
@@ -25738,7 +26664,7 @@ export const GetAccessInfrastructureTargetResponse = /*@__PURE__*/ S.suspend(
       hostname: S.String,
       ip: AccessInfrastructureTargetsGetResponseIp,
       modifiedAt: S.String.pipe(T.Body("modified_at")),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetAccessInfrastructureTargetResponse",
 }) as any as S.Schema<GetAccessInfrastructureTargetResponse>;
@@ -25750,13 +26676,15 @@ export interface GetAccessKeyRequest {
 export const GetAccessKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/access/keys",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/access/keys",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetAccessKeyRequest",
 }) as any as S.Schema<GetAccessKeyRequest>;
@@ -25781,7 +26709,7 @@ export const GetAccessKeyResponse = /*@__PURE__*/ S.suspend(() =>
     lastKeyRotationAt: S.optional(
       S.String.pipe(T.Body("last_key_rotation_at")),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetAccessKeyResponse",
 }) as any as S.Schema<GetAccessKeyResponse>;
@@ -25796,13 +26724,15 @@ export const GetAccessPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     policyId: S.String.pipe(T.Label("policy_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/access/policies/{policy_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/access/policies/{policy_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetAccessPolicyRequest",
 }) as any as S.Schema<GetAccessPolicyRequest>;
@@ -26451,7 +27381,7 @@ export const GetAccessPolicyResponse = /*@__PURE__*/ S.suspend(() =>
     reusable: S.optional(S.Boolean),
     sessionDuration: S.optional(S.String.pipe(T.Body("session_duration"))),
     updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetAccessPolicyResponse",
 }) as any as S.Schema<GetAccessPolicyResponse>;
@@ -26466,13 +27396,15 @@ export const GetAccessSamlCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     samlCertSetId: S.String.pipe(T.Label("saml_cert_set_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/access/saml_certificates/{saml_cert_set_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/access/saml_certificates/{saml_cert_set_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetAccessSamlCertificateRequest",
 }) as any as S.Schema<GetAccessSamlCertificateRequest>;
@@ -26525,7 +27457,7 @@ export const GetAccessSamlCertificateResponse = /*@__PURE__*/ S.suspend(() =>
     previousCertificate: S.optional(
       S.Unknown.pipe(T.Body("previous_certificate")),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetAccessSamlCertificateResponse",
 }) as any as S.Schema<GetAccessSamlCertificateResponse>;
@@ -26541,13 +27473,15 @@ export const GetAccessServiceTokenForAccountRequest = /*@__PURE__*/ S.suspend(
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
       serviceTokenId: S.String.pipe(T.Label("service_token_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/accounts/{account_id}/access/service_tokens/{service_token_id}",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "GET",
+          uri: "/accounts/{account_id}/access/service_tokens/{service_token_id}",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetAccessServiceTokenForAccountRequest",
 }) as any as S.Schema<GetAccessServiceTokenForAccountRequest>;
@@ -26572,7 +27506,7 @@ export const GetAccessServiceTokenForAccountResponse = /*@__PURE__*/ S.suspend(
       duration: S.optional(S.String),
       expiresAt: S.optional(S.String.pipe(T.Body("expires_at"))),
       name: S.optional(S.String),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetAccessServiceTokenForAccountResponse",
 }) as any as S.Schema<GetAccessServiceTokenForAccountResponse>;
@@ -26587,13 +27521,15 @@ export const GetAccessServiceTokenForZoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     serviceTokenId: S.String.pipe(T.Label("service_token_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/access/service_tokens/{service_token_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/access/service_tokens/{service_token_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetAccessServiceTokenForZoneRequest",
 }) as any as S.Schema<GetAccessServiceTokenForZoneRequest>;
@@ -26618,7 +27554,7 @@ export const GetAccessServiceTokenForZoneResponse = /*@__PURE__*/ S.suspend(
       duration: S.optional(S.String),
       expiresAt: S.optional(S.String.pipe(T.Body("expires_at"))),
       name: S.optional(S.String),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetAccessServiceTokenForZoneResponse",
 }) as any as S.Schema<GetAccessServiceTokenForZoneResponse>;
@@ -26633,13 +27569,15 @@ export const GetAccessTagRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     tagName: S.String.pipe(T.Label("tag_name")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/access/tags/{tag_name}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/access/tags/{tag_name}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetAccessTagRequest",
 }) as any as S.Schema<GetAccessTagRequest>;
@@ -26652,7 +27590,7 @@ export interface GetAccessTagResponse {
 export const GetAccessTagResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetAccessTagResponse",
 }) as any as S.Schema<GetAccessTagResponse>;
@@ -26667,13 +27605,15 @@ export const GetAccessUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     userId: S.String.pipe(T.Label("user_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/access/users/{user_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/access/users/{user_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetAccessUserRequest",
 }) as any as S.Schema<GetAccessUserRequest>;
@@ -26716,7 +27656,7 @@ export const GetAccessUserResponse = /*@__PURE__*/ S.suspend(() =>
     seatUid: S.optional(S.String.pipe(T.Body("seat_uid"))),
     uid: S.optional(S.String),
     updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetAccessUserResponse",
 }) as any as S.Schema<GetAccessUserResponse>;
@@ -26733,13 +27673,15 @@ export const GetAccessUserActiveSessionRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     userId: S.String.pipe(T.Label("user_id")),
     nonce: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/access/users/{user_id}/active_sessions/{nonce}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/access/users/{user_id}/active_sessions/{nonce}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetAccessUserActiveSessionRequest",
 }) as any as S.Schema<GetAccessUserActiveSessionRequest>;
@@ -26861,7 +27803,7 @@ export const GetAccessUserActiveSessionResponse = /*@__PURE__*/ S.suspend(() =>
     ),
     userUuid: S.optional(S.String.pipe(T.Body("user_uuid"))),
     version: S.optional(S.Number),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetAccessUserActiveSessionResponse",
 }) as any as S.Schema<GetAccessUserActiveSessionResponse>;
@@ -26877,13 +27819,15 @@ export const GetAccessUserLastSeenIdentityRequest = /*@__PURE__*/ S.suspend(
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
       userId: S.String.pipe(T.Label("user_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/accounts/{account_id}/access/users/{user_id}/last_seen_identity",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "GET",
+          uri: "/accounts/{account_id}/access/users/{user_id}/last_seen_identity",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetAccessUserLastSeenIdentityRequest",
 }) as any as S.Schema<GetAccessUserLastSeenIdentityRequest>;
@@ -27006,7 +27950,7 @@ export const GetAccessUserLastSeenIdentityResponse = /*@__PURE__*/ S.suspend(
       ),
       userUuid: S.optional(S.String.pipe(T.Body("user_uuid"))),
       version: S.optional(S.Number),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetAccessUserLastSeenIdentityResponse",
 }) as any as S.Schema<GetAccessUserLastSeenIdentityResponse>;
@@ -27018,13 +27962,15 @@ export interface GetConnectivitySettingRequest {
 export const GetConnectivitySettingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/zerotrust/connectivity_settings",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/zerotrust/connectivity_settings",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetConnectivitySettingRequest",
 }) as any as S.Schema<GetConnectivitySettingRequest>;
@@ -27042,7 +27988,7 @@ export const GetConnectivitySettingResponse = /*@__PURE__*/ S.suspend(() =>
     offrampWarpEnabled: S.optional(
       S.Boolean.pipe(T.Body("offramp_warp_enabled")),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetConnectivitySettingResponse",
 }) as any as S.Schema<GetConnectivitySettingResponse>;
@@ -27056,13 +28002,15 @@ export const GetDeviceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     deviceId: S.String.pipe(T.Label("device_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/devices/{device_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/devices/{device_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDeviceRequest",
 }) as any as S.Schema<GetDeviceRequest>;
@@ -27159,7 +28107,7 @@ export const GetDeviceResponse = /*@__PURE__*/ S.suspend(() =>
     updated: S.optional(S.String),
     user: S.optional(DevicesGetResponseUser),
     version: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDeviceResponse",
 }) as any as S.Schema<GetDeviceResponse>;
@@ -27172,13 +28120,15 @@ export const GetDeviceDeploymentGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     groupId: S.String.pipe(T.Label("group_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/devices/deployment-groups/{group_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/devices/deployment-groups/{group_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDeviceDeploymentGroupRequest",
 }) as any as S.Schema<GetDeviceDeploymentGroupRequest>;
@@ -27241,7 +28191,7 @@ export const GetDeviceDeploymentGroupResponse = /*@__PURE__*/ S.suspend(() =>
         T.Body("policy_ids"),
       ),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDeviceDeploymentGroupResponse",
 }) as any as S.Schema<GetDeviceDeploymentGroupResponse>;
@@ -27257,13 +28207,15 @@ export const GetDeviceDevicesRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     deviceId: S.String.pipe(T.Label("device_id")),
     include: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/devices/physical-devices/{device_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/devices/physical-devices/{device_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDeviceDevicesRequest",
 }) as any as S.Schema<GetDeviceDevicesRequest>;
@@ -27393,7 +28345,7 @@ export const GetDeviceDevicesResponse = /*@__PURE__*/ S.suspend(() =>
     osVersionExtra: S.optional(S.String.pipe(T.Body("os_version_extra"))),
     publicIp: S.optional(S.String.pipe(T.Body("public_ip"))),
     serialNumber: S.optional(S.String.pipe(T.Body("serial_number"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDeviceDevicesResponse",
 }) as any as S.Schema<GetDeviceDevicesResponse>;
@@ -27408,13 +28360,15 @@ export const GetDeviceDexTestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     dexTestId: S.String.pipe(T.Label("dex_test_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/dex/devices/dex_tests/{dex_test_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/dex/devices/dex_tests/{dex_test_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDeviceDexTestRequest",
 }) as any as S.Schema<GetDeviceDexTestRequest>;
@@ -27504,7 +28458,7 @@ export const GetDeviceDexTestResponse = /*@__PURE__*/ S.suspend(() =>
     ),
     targeted: S.optional(S.Boolean),
     testId: S.optional(S.String.pipe(T.Body("test_id"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDeviceDexTestResponse",
 }) as any as S.Schema<GetDeviceDexTestResponse>;
@@ -27528,13 +28482,15 @@ export const GetDeviceFleetStatusRequest = /*@__PURE__*/ S.suspend(() =>
     sinceMinutes: S.Number.pipe(T.Query("since_minutes")),
     colo: S.optional(S.String.pipe(T.Query())),
     timeNow: S.optional(S.String.pipe(T.Query("time_now"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/dex/devices/{device_id}/fleet-status/live",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/dex/devices/{device_id}/fleet-status/live",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDeviceFleetStatusRequest",
 }) as any as S.Schema<GetDeviceFleetStatusRequest>;
@@ -28169,7 +29125,7 @@ export const GetDeviceFleetStatusResponse = /*@__PURE__*/ S.suspend(() =>
     tunnelStats: S.optional(DevicesFleetStatusGetResponseTunnelStats),
     tunnelType: S.optional(S.String),
     wifiStrengthDbm: S.optional(S.Number),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDeviceFleetStatusResponse",
 }) as any as S.Schema<GetDeviceFleetStatusResponse>;
@@ -28182,13 +29138,15 @@ export const GetDeviceIpProfileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     profileId: S.String.pipe(T.Label("profile_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/devices/ip-profiles/{profile_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/devices/ip-profiles/{profile_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDeviceIpProfileRequest",
 }) as any as S.Schema<GetDeviceIpProfileRequest>;
@@ -28225,7 +29183,7 @@ export const GetDeviceIpProfileResponse = /*@__PURE__*/ S.suspend(() =>
     precedence: S.Number,
     subnetId: S.String.pipe(T.Body("subnet_id")),
     updatedAt: S.String.pipe(T.Body("updated_at")),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDeviceIpProfileResponse",
 }) as any as S.Schema<GetDeviceIpProfileResponse>;
@@ -28239,13 +29197,15 @@ export const GetDeviceNetworkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     networkId: S.String.pipe(T.Label("network_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/devices/networks/{network_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/devices/networks/{network_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDeviceNetworkRequest",
 }) as any as S.Schema<GetDeviceNetworkRequest>;
@@ -28285,7 +29245,7 @@ export const GetDeviceNetworkResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     networkId: S.optional(S.String.pipe(T.Body("network_id"))),
     type: S.optional(DevicesNetworksGetResponseType),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDeviceNetworkResponse",
 }) as any as S.Schema<GetDeviceNetworkResponse>;
@@ -28298,13 +29258,15 @@ export const GetDeviceOverrideCodeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     registrationId: S.String.pipe(T.Label("registration_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/devices/registrations/{registration_id}/override_codes",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/devices/registrations/{registration_id}/override_codes",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDeviceOverrideCodeRequest",
 }) as any as S.Schema<GetDeviceOverrideCodeRequest>;
@@ -28329,7 +29291,7 @@ export const GetDeviceOverrideCodeResponse = /*@__PURE__*/ S.suspend(() =>
         T.Body("disable_for_time"),
       ),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDeviceOverrideCodeResponse",
 }) as any as S.Schema<GetDeviceOverrideCodeResponse>;
@@ -28342,13 +29304,15 @@ export const GetDevicePolicyCustomRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     policyId: S.String.pipe(T.Label("policy_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/devices/policy/{policy_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/devices/policy/{policy_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDevicePolicyCustomRequest",
 }) as any as S.Schema<GetDevicePolicyCustomRequest>;
@@ -28711,7 +29675,7 @@ export const GetDevicePolicyCustomResponse = /*@__PURE__*/ S.suspend(() =>
         T.Body("virtual_networks"),
       ),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDevicePolicyCustomResponse",
 }) as any as S.Schema<GetDevicePolicyCustomResponse>;
@@ -28724,13 +29688,15 @@ export const GetDevicePolicyCustomExcludeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     policyId: S.String.pipe(T.Label("policy_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/devices/policy/{policy_id}/exclude",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/devices/policy/{policy_id}/exclude",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDevicePolicyCustomExcludeRequest",
 }) as any as S.Schema<GetDevicePolicyCustomExcludeRequest>;
@@ -28778,7 +29744,7 @@ export const GetDevicePolicyCustomExcludeResponse = /*@__PURE__*/ S.suspend(
         T.EnvelopePayload(),
       ),
       resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDevicePolicyCustomExcludeResponse",
 }) as any as S.Schema<GetDevicePolicyCustomExcludeResponse>;
@@ -28792,13 +29758,15 @@ export const GetDevicePolicyCustomFallbackDomainRequest =
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
       policyId: S.String.pipe(T.Label("policy_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/accounts/{account_id}/devices/policy/{policy_id}/fallback_domains",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "GET",
+          uri: "/accounts/{account_id}/devices/policy/{policy_id}/fallback_domains",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "GetDevicePolicyCustomFallbackDomainRequest",
   }) as any as S.Schema<GetDevicePolicyCustomFallbackDomainRequest>;
@@ -28853,7 +29821,7 @@ export const GetDevicePolicyCustomFallbackDomainResponse =
         T.EnvelopePayload(),
       ),
       resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "GetDevicePolicyCustomFallbackDomainResponse",
   }) as any as S.Schema<GetDevicePolicyCustomFallbackDomainResponse>;
@@ -28866,13 +29834,15 @@ export const GetDevicePolicyCustomIncludeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     policyId: S.String.pipe(T.Label("policy_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/devices/policy/{policy_id}/include",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/devices/policy/{policy_id}/include",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDevicePolicyCustomIncludeRequest",
 }) as any as S.Schema<GetDevicePolicyCustomIncludeRequest>;
@@ -28920,7 +29890,7 @@ export const GetDevicePolicyCustomIncludeResponse = /*@__PURE__*/ S.suspend(
         T.EnvelopePayload(),
       ),
       resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDevicePolicyCustomIncludeResponse",
 }) as any as S.Schema<GetDevicePolicyCustomIncludeResponse>;
@@ -28931,13 +29901,15 @@ export interface GetDevicePolicyDefaultRequest {
 export const GetDevicePolicyDefaultRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/devices/policy",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/devices/policy",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDevicePolicyDefaultRequest",
 }) as any as S.Schema<GetDevicePolicyDefaultRequest>;
@@ -29251,7 +30223,7 @@ export const GetDevicePolicyDefaultResponse = /*@__PURE__*/ S.suspend(() =>
         T.Body("virtual_networks"),
       ),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDevicePolicyDefaultResponse",
 }) as any as S.Schema<GetDevicePolicyDefaultResponse>;
@@ -29263,13 +30235,15 @@ export const GetDevicePolicyDefaultCertificateRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       zoneId: S.String.pipe(T.Label("zone_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/zones/{zone_id}/devices/policy/certificates",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "GET",
+          uri: "/zones/{zone_id}/devices/policy/certificates",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDevicePolicyDefaultCertificateRequest",
 }) as any as S.Schema<GetDevicePolicyDefaultCertificateRequest>;
@@ -29283,7 +30257,7 @@ export const GetDevicePolicyDefaultCertificateResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       enabled: S.Boolean,
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "GetDevicePolicyDefaultCertificateResponse",
   }) as any as S.Schema<GetDevicePolicyDefaultCertificateResponse>;
@@ -29295,13 +30269,15 @@ export const GetDevicePolicyDefaultExcludeRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/accounts/{account_id}/devices/policy/exclude",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "GET",
+          uri: "/accounts/{account_id}/devices/policy/exclude",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDevicePolicyDefaultExcludeRequest",
 }) as any as S.Schema<GetDevicePolicyDefaultExcludeRequest>;
@@ -29350,7 +30326,7 @@ export const GetDevicePolicyDefaultExcludeResponse = /*@__PURE__*/ S.suspend(
         T.EnvelopePayload(),
       ),
       resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDevicePolicyDefaultExcludeResponse",
 }) as any as S.Schema<GetDevicePolicyDefaultExcludeResponse>;
@@ -29362,13 +30338,15 @@ export const GetDevicePolicyDefaultFallbackDomainRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/accounts/{account_id}/devices/policy/fallback_domains",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "GET",
+          uri: "/accounts/{account_id}/devices/policy/fallback_domains",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "GetDevicePolicyDefaultFallbackDomainRequest",
   }) as any as S.Schema<GetDevicePolicyDefaultFallbackDomainRequest>;
@@ -29423,7 +30401,7 @@ export const GetDevicePolicyDefaultFallbackDomainResponse =
         T.EnvelopePayload(),
       ),
       resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "GetDevicePolicyDefaultFallbackDomainResponse",
   }) as any as S.Schema<GetDevicePolicyDefaultFallbackDomainResponse>;
@@ -29435,13 +30413,15 @@ export const GetDevicePolicyDefaultIncludeRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/accounts/{account_id}/devices/policy/include",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "GET",
+          uri: "/accounts/{account_id}/devices/policy/include",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDevicePolicyDefaultIncludeRequest",
 }) as any as S.Schema<GetDevicePolicyDefaultIncludeRequest>;
@@ -29490,7 +30470,7 @@ export const GetDevicePolicyDefaultIncludeResponse = /*@__PURE__*/ S.suspend(
         T.EnvelopePayload(),
       ),
       resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDevicePolicyDefaultIncludeResponse",
 }) as any as S.Schema<GetDevicePolicyDefaultIncludeResponse>;
@@ -29504,13 +30484,15 @@ export const GetDevicePostureRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     ruleId: S.String.pipe(T.Label("rule_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/devices/posture/{rule_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/devices/posture/{rule_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDevicePostureRequest",
 }) as any as S.Schema<GetDevicePostureRequest>;
@@ -29691,7 +30673,7 @@ export const GetDevicePostureResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     schedule: S.optional(S.String),
     type: S.optional(DevicesPostureGetResponseType),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDevicePostureResponse",
 }) as any as S.Schema<GetDevicePostureResponse>;
@@ -29705,13 +30687,15 @@ export const GetDevicePostureIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     integrationId: S.String.pipe(T.Label("integration_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/devices/posture/integration/{integration_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/devices/posture/integration/{integration_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDevicePostureIntegrationRequest",
 }) as any as S.Schema<GetDevicePostureIntegrationRequest>;
@@ -29762,7 +30746,7 @@ export const GetDevicePostureIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
     interval: S.optional(S.String),
     name: S.optional(S.String),
     type: S.optional(DevicesPostureIntegrationsGetResponseType),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDevicePostureIntegrationResponse",
 }) as any as S.Schema<GetDevicePostureIntegrationResponse>;
@@ -29778,13 +30762,15 @@ export const GetDeviceRegistrationRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     registrationId: S.String.pipe(T.Label("registration_id")),
     include: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/devices/registrations/{registration_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/devices/registrations/{registration_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDeviceRegistrationRequest",
 }) as any as S.Schema<GetDeviceRegistrationRequest>;
@@ -29897,7 +30883,7 @@ export const GetDeviceRegistrationResponse = /*@__PURE__*/ S.suspend(() =>
     user: S.optional(DevicesRegistrationsGetResponseUser),
     virtualIpv4: S.optional(S.String.pipe(T.Body("virtual_ipv4"))),
     virtualIpv6: S.optional(S.String.pipe(T.Body("virtual_ipv6"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDeviceRegistrationResponse",
 }) as any as S.Schema<GetDeviceRegistrationResponse>;
@@ -29909,13 +30895,15 @@ export const GetDeviceResilienceGlobalWarpOverrideRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/accounts/{account_id}/devices/resilience/disconnect",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "GET",
+          uri: "/accounts/{account_id}/devices/resilience/disconnect",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "GetDeviceResilienceGlobalWarpOverrideRequest",
   }) as any as S.Schema<GetDeviceResilienceGlobalWarpOverrideRequest>;
@@ -29932,7 +30920,7 @@ export const GetDeviceResilienceGlobalWarpOverrideResponse =
     S.Struct({
       disconnect: S.optional(S.Boolean),
       timestamp: S.optional(S.String),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "GetDeviceResilienceGlobalWarpOverrideResponse",
   }) as any as S.Schema<GetDeviceResilienceGlobalWarpOverrideResponse>;
@@ -29943,13 +30931,15 @@ export interface GetDeviceSettingRequest {
 export const GetDeviceSettingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/devices/settings",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/devices/settings",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDeviceSettingRequest",
 }) as any as S.Schema<GetDeviceSettingRequest>;
@@ -30000,7 +30990,7 @@ export const GetDeviceSettingResponse = /*@__PURE__*/ S.suspend(() =>
       S.Boolean.pipe(T.Body("root_certificate_installation_enabled")),
     ),
     useZtVirtualIp: S.optional(S.Boolean.pipe(T.Body("use_zt_virtual_ip"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDeviceSettingResponse",
 }) as any as S.Schema<GetDeviceSettingResponse>;
@@ -30017,20 +31007,22 @@ export const GetDexCommandDownloadRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     commandId: S.String.pipe(T.Label("command_id")),
     filename: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/dex/commands/{command_id}/downloads/{filename}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/dex/commands/{command_id}/downloads/{filename}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDexCommandDownloadRequest",
 }) as any as S.Schema<GetDexCommandDownloadRequest>;
 
 export interface GetDexCommandDownloadResponse {}
 export const GetDexCommandDownloadResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
+  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDexCommandDownloadResponse",
 }) as any as S.Schema<GetDexCommandDownloadResponse>;
@@ -30042,13 +31034,15 @@ export interface GetDexCommandQuotaRequest {
 export const GetDexCommandQuotaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/dex/commands/quota",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/dex/commands/quota",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDexCommandQuotaRequest",
 }) as any as S.Schema<GetDexCommandQuotaRequest>;
@@ -30067,7 +31061,7 @@ export const GetDexCommandQuotaResponse = /*@__PURE__*/ S.suspend(() =>
     quota: S.Number,
     quotaUsage: S.Number.pipe(T.Body("quota_usage")),
     resetTime: S.String.pipe(T.Body("reset_time")),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDexCommandQuotaResponse",
 }) as any as S.Schema<GetDexCommandQuotaResponse>;
@@ -30105,13 +31099,15 @@ export const GetDexHttpTestRequest = /*@__PURE__*/ S.suspend(() =>
     to: S.String.pipe(T.Query()),
     colo: S.optional(S.String.pipe(T.Query())),
     deviceId: S.optional(DexHttpTestsGetRequestDeviceIdList.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/dex/http-tests/{test_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/dex/http-tests/{test_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDexHttpTestRequest",
 }) as any as S.Schema<GetDexHttpTestRequest>;
@@ -30408,7 +31404,7 @@ export const GetDexHttpTestResponse = /*@__PURE__*/ S.suspend(() =>
       DexHttpTestsGetResponseTargetPoliciesList.pipe(T.Body("target_policies")),
     ),
     targeted: S.optional(S.Boolean),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDexHttpTestResponse",
 }) as any as S.Schema<GetDexHttpTestResponse>;
@@ -30443,13 +31439,15 @@ export const GetDexHttpTestPercentileRequest = /*@__PURE__*/ S.suspend(() =>
     deviceId: S.optional(
       DexHttpTestsPercentilesGetRequestDeviceIdList.pipe(T.Query()),
     ),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/dex/http-tests/{test_id}/percentiles",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/dex/http-tests/{test_id}/percentiles",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDexHttpTestPercentileRequest",
 }) as any as S.Schema<GetDexHttpTestPercentileRequest>;
@@ -30489,7 +31487,7 @@ export const GetDexHttpTestPercentileResponse = /*@__PURE__*/ S.suspend(() =>
     ),
     resourceFetchTimeMs: S.optional(S.Unknown),
     serverResponseTimeMs: S.optional(S.Unknown),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDexHttpTestPercentileResponse",
 }) as any as S.Schema<GetDexHttpTestPercentileResponse>;
@@ -30504,13 +31502,15 @@ export const GetDexRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     ruleId: S.String.pipe(T.Label("rule_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/dex/rules/{rule_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/dex/rules/{rule_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDexRuleRequest",
 }) as any as S.Schema<GetDexRuleRequest>;
@@ -30594,7 +31594,7 @@ export const GetDexRuleResponse = /*@__PURE__*/ S.suspend(() =>
       DexRulesGetResponseTargetedTestsList.pipe(T.Body("targeted_tests")),
     ),
     updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDexRuleResponse",
 }) as any as S.Schema<GetDexRuleResponse>;
@@ -30637,13 +31637,15 @@ export const GetDexTracerouteTestRequest = /*@__PURE__*/ S.suspend(() =>
     deviceId: S.optional(
       DexTracerouteTestsGetRequestDeviceIdList.pipe(T.Query()),
     ),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/dex/traceroute-tests/{test_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/dex/traceroute-tests/{test_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDexTracerouteTestRequest",
 }) as any as S.Schema<GetDexTracerouteTestRequest>;
@@ -30980,7 +31982,7 @@ export const GetDexTracerouteTestResponse = /*@__PURE__*/ S.suspend(() =>
     tracerouteStatsByColo: S.optional(
       DexTracerouteTestsGetResponseTracerouteStatsByColoList,
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDexTracerouteTestResponse",
 }) as any as S.Schema<GetDexTracerouteTestResponse>;
@@ -30996,13 +31998,15 @@ export const GetDexTracerouteTestResultNetworkPathRequest =
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
       testResultId: S.String.pipe(T.Label("test_result_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/accounts/{account_id}/dex/traceroute-test-results/{test_result_id}/network-path",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "GET",
+          uri: "/accounts/{account_id}/dex/traceroute-test-results/{test_result_id}/network-path",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "GetDexTracerouteTestResultNetworkPathRequest",
   }) as any as S.Schema<GetDexTracerouteTestResultNetworkPathRequest>;
@@ -31116,7 +32120,7 @@ export const GetDexTracerouteTestResultNetworkPathResponse =
       testName: S.optional(S.String),
       timeStart: S.optional(S.String.pipe(T.Body("time_start"))),
       tunnelType: S.optional(S.String.pipe(T.Body("tunnel_type"))),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "GetDexTracerouteTestResultNetworkPathResponse",
   }) as any as S.Schema<GetDexTracerouteTestResultNetworkPathResponse>;
@@ -31172,13 +32176,15 @@ export const GetDexWarpChangeEventRequest = /*@__PURE__*/ S.suspend(() =>
     ),
     toggle: S.optional(DexWarpChangeEventsGetRequestToggle.pipe(T.Query())),
     type: S.optional(DexWarpChangeEventsGetRequestType.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/dex/warp-change-events",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/dex/warp-change-events",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDexWarpChangeEventRequest",
 }) as any as S.Schema<GetDexWarpChangeEventRequest>;
@@ -31221,7 +32227,7 @@ export const GetDexWarpChangeEventResponse = /*@__PURE__*/ S.suspend(() =>
     result: S.optional(
       DexWarpChangeEventsGetResultList.pipe(T.EnvelopePayload()),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDexWarpChangeEventResponse",
 }) as any as S.Schema<GetDexWarpChangeEventResponse>;
@@ -31234,13 +32240,15 @@ export const GetDlpCustomPromptTopicRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     entryId: S.String.pipe(T.Label("entry_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/dlp/custom_prompt_topics/{entry_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/dlp/custom_prompt_topics/{entry_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDlpCustomPromptTopicRequest",
 }) as any as S.Schema<GetDlpCustomPromptTopicRequest>;
@@ -31266,7 +32274,7 @@ export const GetDlpCustomPromptTopicResponse = /*@__PURE__*/ S.suspend(() =>
     updatedAt: S.String.pipe(T.Body("updated_at")),
     description: S.optional(S.String),
     profileId: S.optional(S.String.pipe(T.Body("profile_id"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDlpCustomPromptTopicResponse",
 }) as any as S.Schema<GetDlpCustomPromptTopicResponse>;
@@ -31279,13 +32287,15 @@ export const GetDlpDataClassRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     dataClassId: S.String.pipe(T.Label("data_class_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/dlp/data_classes/{data_class_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/dlp/data_classes/{data_class_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDlpDataClassRequest",
 }) as any as S.Schema<GetDlpDataClassRequest>;
@@ -31339,7 +32349,7 @@ export const GetDlpDataClassResponse = /*@__PURE__*/ S.suspend(() =>
     ),
     updatedAt: S.String.pipe(T.Body("updated_at")),
     description: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDlpDataClassResponse",
 }) as any as S.Schema<GetDlpDataClassResponse>;
@@ -31352,13 +32362,15 @@ export const GetDlpDatasetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     datasetId: S.String.pipe(T.Label("dataset_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/dlp/datasets/{dataset_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/dlp/datasets/{dataset_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDlpDatasetRequest",
 }) as any as S.Schema<GetDlpDatasetRequest>;
@@ -31462,7 +32474,7 @@ export const GetDlpDatasetResponse = /*@__PURE__*/ S.suspend(() =>
     uploads: DlpDatasetsGetResponseUploadsList,
     caseSensitive: S.optional(S.Boolean.pipe(T.Body("case_sensitive"))),
     description: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDlpDatasetResponse",
 }) as any as S.Schema<GetDlpDatasetResponse>;
@@ -31475,13 +32487,15 @@ export const GetDlpDataTagCategoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     categoryId: S.String.pipe(T.Label("category_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/dlp/data_tag_categories/{category_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/dlp/data_tag_categories/{category_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDlpDataTagCategoryRequest",
 }) as any as S.Schema<GetDlpDataTagCategoryRequest>;
@@ -31531,7 +32545,7 @@ export const GetDlpDataTagCategoryResponse = /*@__PURE__*/ S.suspend(() =>
     updatedAt: S.String.pipe(T.Body("updated_at")),
     description: S.optional(S.String),
     templateId: S.optional(S.String.pipe(T.Body("template_id"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDlpDataTagCategoryResponse",
 }) as any as S.Schema<GetDlpDataTagCategoryResponse>;
@@ -31546,13 +32560,15 @@ export const GetDlpDataTagCategoryDataTagRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     categoryId: S.String.pipe(T.Label("category_id")),
     tagId: S.String.pipe(T.Label("tag_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/dlp/data_tag_categories/{category_id}/data_tags/{tag_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/dlp/data_tag_categories/{category_id}/data_tags/{tag_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDlpDataTagCategoryDataTagRequest",
 }) as any as S.Schema<GetDlpDataTagCategoryDataTagRequest>;
@@ -31573,7 +32589,7 @@ export const GetDlpDataTagCategoryDataTagResponse = /*@__PURE__*/ S.suspend(
       name: S.String,
       updatedAt: S.String.pipe(T.Body("updated_at")),
       description: S.optional(S.String),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDlpDataTagCategoryDataTagResponse",
 }) as any as S.Schema<GetDlpDataTagCategoryDataTagResponse>;
@@ -31584,13 +32600,15 @@ export interface GetDlpEmailAccountMappingRequest {
 export const GetDlpEmailAccountMappingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/dlp/email/account_mapping",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/dlp/email/account_mapping",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDlpEmailAccountMappingRequest",
 }) as any as S.Schema<GetDlpEmailAccountMappingRequest>;
@@ -31622,7 +32640,7 @@ export const GetDlpEmailAccountMappingResponse = /*@__PURE__*/ S.suspend(() =>
     authRequirements: DlpEmailAccountMappingGetResponseAuthRequirements.pipe(
       T.Body("auth_requirements"),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDlpEmailAccountMappingResponse",
 }) as any as S.Schema<GetDlpEmailAccountMappingResponse>;
@@ -31635,13 +32653,15 @@ export const GetDlpEmailRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     ruleId: S.String.pipe(T.Label("rule_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/dlp/email/rules/{rule_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/dlp/email/rules/{rule_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDlpEmailRuleRequest",
 }) as any as S.Schema<GetDlpEmailRuleRequest>;
@@ -31746,7 +32766,7 @@ export const GetDlpEmailRuleResponse = /*@__PURE__*/ S.suspend(() =>
     ruleId: S.String.pipe(T.Body("rule_id")),
     updatedAt: S.String.pipe(T.Body("updated_at")),
     description: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDlpEmailRuleResponse",
 }) as any as S.Schema<GetDlpEmailRuleResponse>;
@@ -31759,13 +32779,15 @@ export const GetDlpEntryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     entryId: S.String.pipe(T.Label("entry_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/dlp/entries/{entry_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/dlp/entries/{entry_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDlpEntryRequest",
 }) as any as S.Schema<GetDlpEntryRequest>;
@@ -31803,7 +32825,7 @@ export const GetDlpEntryResponse = /*@__PURE__*/ S.suspend(() =>
     objectIdCreatedAtEnabled7More__: S.Unknown.pipe(
       T.Body("object { id, created_at, enabled, 7 more }"),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDlpEntryResponse",
 }) as any as S.Schema<GetDlpEntryResponse>;
@@ -31814,13 +32836,15 @@ export interface GetDlpPayloadLogRequest {
 export const GetDlpPayloadLogRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/dlp/payload_log",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/dlp/payload_log",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDlpPayloadLogRequest",
 }) as any as S.Schema<GetDlpPayloadLogRequest>;
@@ -31848,7 +32872,7 @@ export const GetDlpPayloadLogResponse = /*@__PURE__*/ S.suspend(() =>
       DlpPayloadLogsGetResponseMaskingLevel.pipe(T.Body("masking_level")),
     ),
     publicKey: S.optional(S.String.pipe(T.Body("public_key"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDlpPayloadLogResponse",
 }) as any as S.Schema<GetDlpPayloadLogResponse>;
@@ -31861,13 +32885,15 @@ export const GetDlpProfileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     profileId: S.String.pipe(T.Label("profile_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/dlp/profiles/{profile_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/dlp/profiles/{profile_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDlpProfileRequest",
 }) as any as S.Schema<GetDlpProfileRequest>;
@@ -31893,7 +32919,7 @@ export const GetDlpProfileResponse = /*@__PURE__*/ S.suspend(() =>
     IntegrationProfileObjectIdCreatedAtEntries5More__: S.Unknown.pipe(
       T.Body("IntegrationProfile object { id, created_at, entries, 5 more }"),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDlpProfileResponse",
 }) as any as S.Schema<GetDlpProfileResponse>;
@@ -31906,13 +32932,15 @@ export const GetDlpProfileCustomRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     profileId: S.String.pipe(T.Label("profile_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/dlp/profiles/custom/{profile_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/dlp/profiles/custom/{profile_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDlpProfileCustomRequest",
 }) as any as S.Schema<GetDlpProfileCustomRequest>;
@@ -31938,7 +32966,7 @@ export const GetDlpProfileCustomResponse = /*@__PURE__*/ S.suspend(() =>
     IntegrationProfileObjectIdCreatedAtEntries5More__: S.Unknown.pipe(
       T.Body("IntegrationProfile object { id, created_at, entries, 5 more }"),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDlpProfileCustomResponse",
 }) as any as S.Schema<GetDlpProfileCustomResponse>;
@@ -31951,13 +32979,15 @@ export const GetDlpProfilePredefinedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     profileId: S.String.pipe(T.Label("profile_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/dlp/profiles/predefined/{profile_id}/config",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/dlp/profiles/predefined/{profile_id}/config",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDlpProfilePredefinedRequest",
 }) as any as S.Schema<GetDlpProfilePredefinedRequest>;
@@ -32049,7 +33079,7 @@ export const GetDlpProfilePredefinedResponse = /*@__PURE__*/ S.suspend(() =>
     aiContextEnabled: S.optional(S.Boolean.pipe(T.Body("ai_context_enabled"))),
     ocrEnabled: S.optional(S.Boolean.pipe(T.Body("ocr_enabled"))),
     openAccess: S.optional(S.Boolean.pipe(T.Body("open_access"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDlpProfilePredefinedResponse",
 }) as any as S.Schema<GetDlpProfilePredefinedResponse>;
@@ -32062,13 +33092,15 @@ export const GetDlpSensitivityGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     sensitivityGroupId: S.String.pipe(T.Label("sensitivity_group_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/dlp/sensitivity_groups/{sensitivity_group_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/dlp/sensitivity_groups/{sensitivity_group_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDlpSensitivityGroupRequest",
 }) as any as S.Schema<GetDlpSensitivityGroupRequest>;
@@ -32118,7 +33150,7 @@ export const GetDlpSensitivityGroupResponse = /*@__PURE__*/ S.suspend(() =>
     updatedAt: S.String.pipe(T.Body("updated_at")),
     description: S.optional(S.String),
     templateId: S.optional(S.String.pipe(T.Body("template_id"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDlpSensitivityGroupResponse",
 }) as any as S.Schema<GetDlpSensitivityGroupResponse>;
@@ -32133,13 +33165,15 @@ export const GetDlpSensitivityGroupLevelRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     sensitivityGroupId: S.String.pipe(T.Label("sensitivity_group_id")),
     sensitivityLevelId: S.String.pipe(T.Label("sensitivity_level_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/dlp/sensitivity_groups/{sensitivity_group_id}/levels/{sensitivity_level_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/dlp/sensitivity_groups/{sensitivity_group_id}/levels/{sensitivity_level_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDlpSensitivityGroupLevelRequest",
 }) as any as S.Schema<GetDlpSensitivityGroupLevelRequest>;
@@ -32159,7 +33193,7 @@ export const GetDlpSensitivityGroupLevelResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.String,
     updatedAt: S.String.pipe(T.Body("updated_at")),
     description: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDlpSensitivityGroupLevelResponse",
 }) as any as S.Schema<GetDlpSensitivityGroupLevelResponse>;
@@ -32173,13 +33207,15 @@ export const GetDlpSensitivityGroupLevelOrderRequest = /*@__PURE__*/ S.suspend(
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
       sensitivityGroupId: S.String.pipe(T.Label("sensitivity_group_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/accounts/{account_id}/dlp/sensitivity_groups/{sensitivity_group_id}/level_order",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "GET",
+          uri: "/accounts/{account_id}/dlp/sensitivity_groups/{sensitivity_group_id}/level_order",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDlpSensitivityGroupLevelOrderRequest",
 }) as any as S.Schema<GetDlpSensitivityGroupLevelOrderRequest>;
@@ -32200,7 +33236,7 @@ export const GetDlpSensitivityGroupLevelOrderResponse = /*@__PURE__*/ S.suspend(
       levelIds: DlpSensitivityGroupsLevelsOrderGetResponseLevelIdsList.pipe(
         T.Body("level_ids"),
       ),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDlpSensitivityGroupLevelOrderResponse",
 }) as any as S.Schema<GetDlpSensitivityGroupLevelOrderResponse>;
@@ -32211,13 +33247,15 @@ export interface GetDlpSettingRequest {
 export const GetDlpSettingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/dlp/settings",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/dlp/settings",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDlpSettingRequest",
 }) as any as S.Schema<GetDlpSettingRequest>;
@@ -32268,7 +33306,7 @@ export const GetDlpSettingResponse = /*@__PURE__*/ S.suspend(() =>
     payloadLogging: DlpSettingsGetResponsePayloadLogging.pipe(
       T.Body("payload_logging"),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDlpSettingResponse",
 }) as any as S.Schema<GetDlpSettingResponse>;
@@ -32279,13 +33317,15 @@ export interface GetGatewayAuditSshSettingRequest {
 export const GetGatewayAuditSshSettingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/gateway/audit_ssh_settings",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/gateway/audit_ssh_settings",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetGatewayAuditSshSettingRequest",
 }) as any as S.Schema<GetGatewayAuditSshSettingRequest>;
@@ -32305,7 +33345,7 @@ export const GetGatewayAuditSshSettingResponse = /*@__PURE__*/ S.suspend(() =>
     publicKey: S.optional(S.String.pipe(T.Body("public_key"))),
     seedId: S.optional(S.String.pipe(T.Body("seed_id"))),
     updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetGatewayAuditSshSettingResponse",
 }) as any as S.Schema<GetGatewayAuditSshSettingResponse>;
@@ -32319,13 +33359,15 @@ export const GetGatewayCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     certificateId: S.String.pipe(T.Label("certificate_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/gateway/certificates/{certificate_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/gateway/certificates/{certificate_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetGatewayCertificateRequest",
 }) as any as S.Schema<GetGatewayCertificateRequest>;
@@ -32386,7 +33428,7 @@ export const GetGatewayCertificateResponse = /*@__PURE__*/ S.suspend(() =>
     type: S.optional(GatewayCertificatesGetResponseType),
     updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
     uploadedOn: S.optional(S.String.pipe(T.Body("uploaded_on"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetGatewayCertificateResponse",
 }) as any as S.Schema<GetGatewayCertificateResponse>;
@@ -32397,13 +33439,15 @@ export interface GetGatewayConfigurationRequest {
 export const GetGatewayConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/gateway/configuration",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/gateway/configuration",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetGatewayConfigurationRequest",
 }) as any as S.Schema<GetGatewayConfigurationRequest>;
@@ -32841,7 +33885,7 @@ export const GetGatewayConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
     createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
     settings: S.optional(GatewayConfigurationsGetResponseSettings),
     updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetGatewayConfigurationResponse",
 }) as any as S.Schema<GetGatewayConfigurationResponse>;
@@ -32853,13 +33897,15 @@ export const GetGatewayConfigurationCustomCertificateRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/accounts/{account_id}/gateway/configuration/custom_certificate",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "GET",
+          uri: "/accounts/{account_id}/gateway/configuration/custom_certificate",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "GetGatewayConfigurationCustomCertificateRequest",
   }) as any as S.Schema<GetGatewayConfigurationCustomCertificateRequest>;
@@ -32878,7 +33924,7 @@ export const GetGatewayConfigurationCustomCertificateResponse =
             "CustomCertificateSettings object { enabled, id, binding_status, updated_at }",
           ),
         ),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "GetGatewayConfigurationCustomCertificateResponse",
   }) as any as S.Schema<GetGatewayConfigurationCustomCertificateResponse>;
@@ -32892,13 +33938,15 @@ export const GetGatewayListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     listId: S.String.pipe(T.Label("list_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/gateway/lists/{list_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/gateway/lists/{list_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetGatewayListRequest",
 }) as any as S.Schema<GetGatewayListRequest>;
@@ -32960,7 +34008,7 @@ export const GetGatewayListResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     type: S.optional(GatewayListsGetResponseType),
     updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetGatewayListResponse",
 }) as any as S.Schema<GetGatewayListResponse>;
@@ -32973,13 +34021,15 @@ export const GetGatewayLocationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     locationId: S.String.pipe(T.Label("location_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/gateway/locations/{location_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/gateway/locations/{location_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetGatewayLocationRequest",
 }) as any as S.Schema<GetGatewayLocationRequest>;
@@ -33224,7 +34274,7 @@ export const GetGatewayLocationResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     networks: S.optional(GatewayLocationsGetResponseNetworksList),
     updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetGatewayLocationResponse",
 }) as any as S.Schema<GetGatewayLocationResponse>;
@@ -33235,13 +34285,15 @@ export interface GetGatewayLoggingRequest {
 export const GetGatewayLoggingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/gateway/logging",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/gateway/logging",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetGatewayLoggingRequest",
 }) as any as S.Schema<GetGatewayLoggingRequest>;
@@ -33328,7 +34380,7 @@ export const GetGatewayLoggingResponse = /*@__PURE__*/ S.suspend(() =>
         T.Body("settings_by_rule_type"),
       ),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetGatewayLoggingResponse",
 }) as any as S.Schema<GetGatewayLoggingResponse>;
@@ -33341,13 +34393,15 @@ export const GetGatewayPacfileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     pacfileId: S.String.pipe(T.Label("pacfile_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/gateway/pacfiles/{pacfile_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/gateway/pacfiles/{pacfile_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetGatewayPacfileRequest",
 }) as any as S.Schema<GetGatewayPacfileRequest>;
@@ -33378,7 +34432,7 @@ export const GetGatewayPacfileResponse = /*@__PURE__*/ S.suspend(() =>
     slug: S.optional(S.String),
     updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
     url: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetGatewayPacfileResponse",
 }) as any as S.Schema<GetGatewayPacfileResponse>;
@@ -33391,13 +34445,15 @@ export const GetGatewayProxyEndpointRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     proxyEndpointId: S.String.pipe(T.Label("proxy_endpoint_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/gateway/proxy_endpoints/{proxy_endpoint_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/gateway/proxy_endpoints/{proxy_endpoint_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetGatewayProxyEndpointRequest",
 }) as any as S.Schema<GetGatewayProxyEndpointRequest>;
@@ -33415,7 +34471,7 @@ export const GetGatewayProxyEndpointResponse = /*@__PURE__*/ S.suspend(() =>
     IdentityObjectKindNameId3More__: S.Unknown.pipe(
       T.Body("Identity object { kind, name, id, 3 more }"),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetGatewayProxyEndpointResponse",
 }) as any as S.Schema<GetGatewayProxyEndpointResponse>;
@@ -33429,13 +34485,15 @@ export const GetGatewayRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     ruleId: S.String.pipe(T.Label("rule_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/gateway/rules/{rule_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/gateway/rules/{rule_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetGatewayRuleRequest",
 }) as any as S.Schema<GetGatewayRuleRequest>;
@@ -34141,7 +35199,7 @@ export const GetGatewayRuleResponse = /*@__PURE__*/ S.suspend(() =>
     updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
     version: S.optional(S.Number),
     warningStatus: S.optional(S.String.pipe(T.Body("warning_status"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetGatewayRuleResponse",
 }) as any as S.Schema<GetGatewayRuleResponse>;
@@ -34157,13 +35215,15 @@ export const GetIdentityProviderForAccountRequest = /*@__PURE__*/ S.suspend(
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
       identityProviderId: S.String.pipe(T.Label("identity_provider_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/accounts/{account_id}/access/identity_providers/{identity_provider_id}",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "GET",
+          uri: "/accounts/{account_id}/access/identity_providers/{identity_provider_id}",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetIdentityProviderForAccountRequest",
 }) as any as S.Schema<GetIdentityProviderForAccountRequest>;
@@ -34234,7 +35294,7 @@ export const GetIdentityProviderForAccountResponse = /*@__PURE__*/ S.suspend(
       AccessCloudflareObjectConfigNameType5More__: S.Unknown.pipe(
         T.Body("AccessCloudflare object { config, name, type, 5 more }"),
       ),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetIdentityProviderForAccountResponse",
 }) as any as S.Schema<GetIdentityProviderForAccountResponse>;
@@ -34249,13 +35309,15 @@ export const GetIdentityProviderForZoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     identityProviderId: S.String.pipe(T.Label("identity_provider_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/access/identity_providers/{identity_provider_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/access/identity_providers/{identity_provider_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetIdentityProviderForZoneRequest",
 }) as any as S.Schema<GetIdentityProviderForZoneRequest>;
@@ -34325,7 +35387,7 @@ export const GetIdentityProviderForZoneResponse = /*@__PURE__*/ S.suspend(() =>
     AccessCloudflareObjectConfigNameType5More__: S.Unknown.pipe(
       T.Body("AccessCloudflare object { config, name, type, 5 more }"),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetIdentityProviderForZoneResponse",
 }) as any as S.Schema<GetIdentityProviderForZoneResponse>;
@@ -34340,13 +35402,15 @@ export const GetNetworkHostnameRouteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     hostnameRouteId: S.String.pipe(T.Label("hostname_route_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/zerotrust/routes/hostname/{hostname_route_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/zerotrust/routes/hostname/{hostname_route_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetNetworkHostnameRouteRequest",
 }) as any as S.Schema<GetNetworkHostnameRouteRequest>;
@@ -34389,7 +35453,7 @@ export const GetNetworkHostnameRouteResponse = /*@__PURE__*/ S.suspend(() =>
     ),
     tunnelId: S.optional(S.String.pipe(T.Body("tunnel_id"))),
     tunnelName: S.optional(S.String.pipe(T.Body("tunnel_name"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetNetworkHostnameRouteResponse",
 }) as any as S.Schema<GetNetworkHostnameRouteResponse>;
@@ -34404,13 +35468,15 @@ export const GetNetworkRouteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     routeId: S.String.pipe(T.Label("route_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/teamnet/routes/{route_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/teamnet/routes/{route_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetNetworkRouteRequest",
 }) as any as S.Schema<GetNetworkRouteRequest>;
@@ -34441,7 +35507,7 @@ export const GetNetworkRouteResponse = /*@__PURE__*/ S.suspend(() =>
     network: S.optional(S.String),
     tunnelId: S.optional(S.String.pipe(T.Body("tunnel_id"))),
     virtualNetworkId: S.optional(S.String.pipe(T.Body("virtual_network_id"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetNetworkRouteResponse",
 }) as any as S.Schema<GetNetworkRouteResponse>;
@@ -34463,13 +35529,15 @@ export const GetNetworkRouteIpRequest = /*@__PURE__*/ S.suspend(() =>
       S.Boolean.pipe(T.Query("default_virtual_network_fallback")),
     ),
     virtualNetworkId: S.optional(S.String.pipe(T.Query("virtual_network_id"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/teamnet/routes/ip/{ip}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/teamnet/routes/ip/{ip}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetNetworkRouteIpRequest",
 }) as any as S.Schema<GetNetworkRouteIpRequest>;
@@ -34520,7 +35588,7 @@ export const GetNetworkRouteIpResponse = /*@__PURE__*/ S.suspend(() =>
     virtualNetworkName: S.optional(
       S.String.pipe(T.Body("virtual_network_name")),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetNetworkRouteIpResponse",
 }) as any as S.Schema<GetNetworkRouteIpResponse>;
@@ -34535,13 +35603,15 @@ export const GetNetworkSubnetWarpRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     subnetId: S.String.pipe(T.Label("subnet_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/zerotrust/subnets/warp/{subnet_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/zerotrust/subnets/warp/{subnet_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetNetworkSubnetWarpRequest",
 }) as any as S.Schema<GetNetworkSubnetWarpRequest>;
@@ -34583,7 +35653,7 @@ export const GetNetworkSubnetWarpResponse = /*@__PURE__*/ S.suspend(() =>
     subnetType: S.optional(
       NetworksSubnetsWarpGetResponseSubnetType.pipe(T.Body("subnet_type")),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetNetworkSubnetWarpResponse",
 }) as any as S.Schema<GetNetworkSubnetWarpResponse>;
@@ -34598,13 +35668,15 @@ export const GetNetworkVirtualNetworkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     virtualNetworkId: S.String.pipe(T.Label("virtual_network_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/teamnet/virtual_networks/{virtual_network_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/teamnet/virtual_networks/{virtual_network_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetNetworkVirtualNetworkRequest",
 }) as any as S.Schema<GetNetworkVirtualNetworkRequest>;
@@ -34632,7 +35704,7 @@ export const GetNetworkVirtualNetworkResponse = /*@__PURE__*/ S.suspend(() =>
     isDefaultNetwork: S.Boolean.pipe(T.Body("is_default_network")),
     name: S.String,
     deletedAt: S.optional(S.String.pipe(T.Body("deleted_at"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetNetworkVirtualNetworkResponse",
 }) as any as S.Schema<GetNetworkVirtualNetworkResponse>;
@@ -34644,13 +35716,15 @@ export interface GetOrganizationDohRequest {
 export const GetOrganizationDohRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/access/organizations/doh",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/access/organizations/doh",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetOrganizationDohRequest",
 }) as any as S.Schema<GetOrganizationDohRequest>;
@@ -34677,7 +35751,7 @@ export const GetOrganizationDohResponse = /*@__PURE__*/ S.suspend(() =>
     duration: S.optional(S.String),
     expiresAt: S.optional(S.String.pipe(T.Body("expires_at"))),
     name: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetOrganizationDohResponse",
 }) as any as S.Schema<GetOrganizationDohResponse>;
@@ -34692,20 +35766,22 @@ export const GetPemAccessSamlCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     samlCertSetId: S.String.pipe(T.Label("saml_cert_set_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/access/saml_certificates/{saml_cert_set_id}/pem",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/access/saml_certificates/{saml_cert_set_id}/pem",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetPemAccessSamlCertificateRequest",
 }) as any as S.Schema<GetPemAccessSamlCertificateRequest>;
 
 export interface GetPemAccessSamlCertificateResponse {}
 export const GetPemAccessSamlCertificateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
+  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetPemAccessSamlCertificateResponse",
 }) as any as S.Schema<GetPemAccessSamlCertificateResponse>;
@@ -34719,13 +35795,15 @@ export const GetResourceLibraryApplicationRequest = /*@__PURE__*/ S.suspend(
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
       id: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/accounts/{account_id}/resource-library/applications/{id}",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "GET",
+          uri: "/accounts/{account_id}/resource-library/applications/{id}",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetResourceLibraryApplicationRequest",
 }) as any as S.Schema<GetResourceLibraryApplicationRequest>;
@@ -34843,7 +35921,7 @@ export const GetResourceLibraryApplicationResponse = /*@__PURE__*/ S.suspend(
         S.Unknown.pipe(T.Body("application_score_composition")),
       ),
       intelId: S.optional(S.Number.pipe(T.Body("intel_id"))),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetResourceLibraryApplicationResponse",
 }) as any as S.Schema<GetResourceLibraryApplicationResponse>;
@@ -34856,13 +35934,15 @@ export const GetResourceLibraryCategoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/resource-library/categories/{id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/resource-library/categories/{id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetResourceLibraryCategoryRequest",
 }) as any as S.Schema<GetResourceLibraryCategoryRequest>;
@@ -34884,7 +35964,7 @@ export const GetResourceLibraryCategoryResponse = /*@__PURE__*/ S.suspend(() =>
     createdAt: S.String.pipe(T.Body("created_at")),
     description: S.String,
     name: S.String,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetResourceLibraryCategoryResponse",
 }) as any as S.Schema<GetResourceLibraryCategoryResponse>;
@@ -34897,13 +35977,15 @@ export const GetRiskScoringRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     userId: S.String.pipe(T.Label("user_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/zt_risk_scoring/{user_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/zt_risk_scoring/{user_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetRiskScoringRequest",
 }) as any as S.Schema<GetRiskScoringRequest>;
@@ -34966,7 +36048,7 @@ export const GetRiskScoringResponse = /*@__PURE__*/ S.suspend(() =>
     riskLevel: S.optional(
       RiskScoringGetResponseRiskLevel.pipe(T.Body("risk_level")),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetRiskScoringResponse",
 }) as any as S.Schema<GetRiskScoringResponse>;
@@ -34977,13 +36059,15 @@ export interface GetRiskScoringBehaviourRequest {
 export const GetRiskScoringBehaviourRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/zt_risk_scoring/behaviors",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/zt_risk_scoring/behaviors",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetRiskScoringBehaviourRequest",
 }) as any as S.Schema<GetRiskScoringBehaviourRequest>;
@@ -35004,7 +36088,7 @@ export interface GetRiskScoringBehaviourResponse {
 export const GetRiskScoringBehaviourResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     behaviors: RiskScoringBehavioursGetResponseBehaviorsMap,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetRiskScoringBehaviourResponse",
 }) as any as S.Schema<GetRiskScoringBehaviourResponse>;
@@ -35017,13 +36101,15 @@ export const GetRiskScoringIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     integrationId: S.String.pipe(T.Label("integration_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/zt_risk_scoring/integrations/{integration_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/zt_risk_scoring/integrations/{integration_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetRiskScoringIntegrationRequest",
 }) as any as S.Schema<GetRiskScoringIntegrationRequest>;
@@ -35064,7 +36150,7 @@ export const GetRiskScoringIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
     referenceId: S.String.pipe(T.Body("reference_id")),
     tenantUrl: S.String.pipe(T.Body("tenant_url")),
     wellKnownUrl: S.String.pipe(T.Body("well_known_url")),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetRiskScoringIntegrationResponse",
 }) as any as S.Schema<GetRiskScoringIntegrationResponse>;
@@ -35078,13 +36164,15 @@ export const GetRiskScoringIntegrationReferenceRequest =
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
       referenceId: S.String.pipe(T.Label("reference_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/accounts/{account_id}/zt_risk_scoring/integrations/reference_id/{reference_id}",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "GET",
+          uri: "/accounts/{account_id}/zt_risk_scoring/integrations/reference_id/{reference_id}",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "GetRiskScoringIntegrationReferenceRequest",
   }) as any as S.Schema<GetRiskScoringIntegrationReferenceRequest>;
@@ -35127,7 +36215,7 @@ export const GetRiskScoringIntegrationReferenceResponse =
       referenceId: S.String.pipe(T.Body("reference_id")),
       tenantUrl: S.String.pipe(T.Body("tenant_url")),
       wellKnownUrl: S.String.pipe(T.Body("well_known_url")),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "GetRiskScoringIntegrationReferenceResponse",
   }) as any as S.Schema<GetRiskScoringIntegrationReferenceResponse>;
@@ -35138,13 +36226,15 @@ export interface GetRiskScoringSummaryRequest {
 export const GetRiskScoringSummaryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/zt_risk_scoring/summary",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/zt_risk_scoring/summary",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetRiskScoringSummaryRequest",
 }) as any as S.Schema<GetRiskScoringSummaryRequest>;
@@ -35194,7 +36284,7 @@ export interface GetRiskScoringSummaryResponse {
 export const GetRiskScoringSummaryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     users: RiskScoringSummaryGetResponseUsersList,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetRiskScoringSummaryResponse",
 }) as any as S.Schema<GetRiskScoringSummaryResponse>;
@@ -35209,13 +36299,15 @@ export const GetTunnelCloudflaredRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     tunnelId: S.String.pipe(T.Label("tunnel_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/cfd_tunnel/{tunnel_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/cfd_tunnel/{tunnel_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetTunnelCloudflaredRequest",
 }) as any as S.Schema<GetTunnelCloudflaredRequest>;
@@ -35332,7 +36424,7 @@ export const GetTunnelCloudflaredResponse = /*@__PURE__*/ S.suspend(() =>
     tunType: S.optional(
       TunnelsCloudflaredGetResponseTunType.pipe(T.Body("tun_type")),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetTunnelCloudflaredResponse",
 }) as any as S.Schema<GetTunnelCloudflaredResponse>;
@@ -35348,13 +36440,15 @@ export const GetTunnelCloudflaredConfigurationRequest = /*@__PURE__*/ S.suspend(
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
       tunnelId: S.String.pipe(T.Label("tunnel_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/accounts/{account_id}/cfd_tunnel/{tunnel_id}/configurations",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "GET",
+          uri: "/accounts/{account_id}/cfd_tunnel/{tunnel_id}/configurations",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetTunnelCloudflaredConfigurationRequest",
 }) as any as S.Schema<GetTunnelCloudflaredConfigurationRequest>;
@@ -35610,7 +36704,7 @@ export const GetTunnelCloudflaredConfigurationResponse =
       source: S.optional(TunnelsCloudflaredConfigurationsGetResponseSource),
       tunnelId: S.optional(S.String.pipe(T.Body("tunnel_id"))),
       version: S.optional(S.Number),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "GetTunnelCloudflaredConfigurationResponse",
   }) as any as S.Schema<GetTunnelCloudflaredConfigurationResponse>;
@@ -35626,13 +36720,15 @@ export const GetTunnelCloudflaredConnectionRequest = /*@__PURE__*/ S.suspend(
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
       tunnelId: S.String.pipe(T.Label("tunnel_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/accounts/{account_id}/cfd_tunnel/{tunnel_id}/connections",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "GET",
+          uri: "/accounts/{account_id}/cfd_tunnel/{tunnel_id}/connections",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetTunnelCloudflaredConnectionRequest",
 }) as any as S.Schema<GetTunnelCloudflaredConnectionRequest>;
@@ -35738,7 +36834,7 @@ export const GetTunnelCloudflaredConnectionResponse = /*@__PURE__*/ S.suspend(
         T.EnvelopePayload(),
       ),
       resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetTunnelCloudflaredConnectionResponse",
 }) as any as S.Schema<GetTunnelCloudflaredConnectionResponse>;
@@ -35757,13 +36853,15 @@ export const GetTunnelCloudflaredConnectorRequest = /*@__PURE__*/ S.suspend(
       accountId: S.String.pipe(T.Label("account_id")),
       tunnelId: S.String.pipe(T.Label("tunnel_id")),
       connectorId: S.String.pipe(T.Label("connector_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/accounts/{account_id}/cfd_tunnel/{tunnel_id}/connectors/{connector_id}",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "GET",
+          uri: "/accounts/{account_id}/cfd_tunnel/{tunnel_id}/connectors/{connector_id}",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetTunnelCloudflaredConnectorRequest",
 }) as any as S.Schema<GetTunnelCloudflaredConnectorRequest>;
@@ -35844,7 +36942,7 @@ export const GetTunnelCloudflaredConnectorResponse = /*@__PURE__*/ S.suspend(
       features: S.optional(TunnelsCloudflaredConnectorsGetResponseFeaturesList),
       runAt: S.optional(S.String.pipe(T.Body("run_at"))),
       version: S.optional(S.String),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetTunnelCloudflaredConnectorResponse",
 }) as any as S.Schema<GetTunnelCloudflaredConnectorResponse>;
@@ -35859,13 +36957,15 @@ export const GetTunnelCloudflaredTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     tunnelId: S.String.pipe(T.Label("tunnel_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/cfd_tunnel/{tunnel_id}/token",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/cfd_tunnel/{tunnel_id}/token",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetTunnelCloudflaredTokenRequest",
 }) as any as S.Schema<GetTunnelCloudflaredTokenRequest>;
@@ -35877,7 +36977,7 @@ export interface GetTunnelCloudflaredTokenResponse {
 export const GetTunnelCloudflaredTokenResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(S.String.pipe(T.EnvelopePayload())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetTunnelCloudflaredTokenResponse",
 }) as any as S.Schema<GetTunnelCloudflaredTokenResponse>;
@@ -35892,13 +36992,15 @@ export const GetTunnelWarpConnectorRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     tunnelId: S.String.pipe(T.Label("tunnel_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/warp_connector/{tunnel_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/warp_connector/{tunnel_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetTunnelWarpConnectorRequest",
 }) as any as S.Schema<GetTunnelWarpConnectorRequest>;
@@ -36001,7 +37103,7 @@ export const GetTunnelWarpConnectorResponse = /*@__PURE__*/ S.suspend(() =>
     tunType: S.optional(
       TunnelsWarpConnectorGetResponseTunType.pipe(T.Body("tun_type")),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetTunnelWarpConnectorResponse",
 }) as any as S.Schema<GetTunnelWarpConnectorResponse>;
@@ -36017,13 +37119,15 @@ export const GetTunnelWarpConnectorConfigurationRequest =
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
       tunnelId: S.String.pipe(T.Label("tunnel_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/accounts/{account_id}/warp_connector/{tunnel_id}/configurations",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "GET",
+          uri: "/accounts/{account_id}/warp_connector/{tunnel_id}/configurations",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "GetTunnelWarpConnectorConfigurationRequest",
   }) as any as S.Schema<GetTunnelWarpConnectorConfigurationRequest>;
@@ -36081,7 +37185,7 @@ export const GetTunnelWarpConnectorConfigurationResponse =
       tunnelId: S.String.pipe(T.Body("tunnel_id")),
       config: S.optional(TunnelsWarpConnectorConfigurationsGetResponseConfig),
       updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "GetTunnelWarpConnectorConfigurationResponse",
   }) as any as S.Schema<GetTunnelWarpConnectorConfigurationResponse>;
@@ -36097,13 +37201,15 @@ export const GetTunnelWarpConnectorConnectionRequest = /*@__PURE__*/ S.suspend(
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
       tunnelId: S.String.pipe(T.Label("tunnel_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/accounts/{account_id}/warp_connector/{tunnel_id}/connections",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "GET",
+          uri: "/accounts/{account_id}/warp_connector/{tunnel_id}/connections",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetTunnelWarpConnectorConnectionRequest",
 }) as any as S.Schema<GetTunnelWarpConnectorConnectionRequest>;
@@ -36214,7 +37320,7 @@ export const GetTunnelWarpConnectorConnectionResponse = /*@__PURE__*/ S.suspend(
         T.EnvelopePayload(),
       ),
       resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetTunnelWarpConnectorConnectionResponse",
 }) as any as S.Schema<GetTunnelWarpConnectorConnectionResponse>;
@@ -36233,13 +37339,15 @@ export const GetTunnelWarpConnectorConnectorRequest = /*@__PURE__*/ S.suspend(
       accountId: S.String.pipe(T.Label("account_id")),
       tunnelId: S.String.pipe(T.Label("tunnel_id")),
       connectorId: S.String.pipe(T.Label("connector_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/accounts/{account_id}/warp_connector/{tunnel_id}/connectors/{connector_id}",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "GET",
+          uri: "/accounts/{account_id}/warp_connector/{tunnel_id}/connectors/{connector_id}",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetTunnelWarpConnectorConnectorRequest",
 }) as any as S.Schema<GetTunnelWarpConnectorConnectorRequest>;
@@ -36326,7 +37434,7 @@ export const GetTunnelWarpConnectorConnectorResponse = /*@__PURE__*/ S.suspend(
       ),
       runAt: S.optional(S.String.pipe(T.Body("run_at"))),
       version: S.optional(S.String),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetTunnelWarpConnectorConnectorResponse",
 }) as any as S.Schema<GetTunnelWarpConnectorConnectorResponse>;
@@ -36341,13 +37449,15 @@ export const GetTunnelWarpConnectorTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     tunnelId: S.String.pipe(T.Label("tunnel_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/warp_connector/{tunnel_id}/token",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/warp_connector/{tunnel_id}/token",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetTunnelWarpConnectorTokenRequest",
 }) as any as S.Schema<GetTunnelWarpConnectorTokenRequest>;
@@ -36359,7 +37469,7 @@ export interface GetTunnelWarpConnectorTokenResponse {
 export const GetTunnelWarpConnectorTokenResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(S.String.pipe(T.EnvelopePayload())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetTunnelWarpConnectorTokenResponse",
 }) as any as S.Schema<GetTunnelWarpConnectorTokenResponse>;
@@ -36378,13 +37488,15 @@ export const ListAccessAiControlMcpServersRequest = /*@__PURE__*/ S.suspend(
       page: S.optional(S.Number.pipe(T.Query())),
       perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
       search: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/accounts/{account_id}/access/ai-controls/mcp/servers",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "GET",
+          uri: "/accounts/{account_id}/access/ai-controls/mcp/servers",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListAccessAiControlMcpServersRequest",
 }) as any as S.Schema<ListAccessAiControlMcpServersRequest>;
@@ -36596,7 +37708,7 @@ export const ListAccessAiControlMcpServersResponse = /*@__PURE__*/ S.suspend(
         T.EnvelopePayload(),
       ),
       resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListAccessAiControlMcpServersResponse",
 }) as any as S.Schema<ListAccessAiControlMcpServersResponse>;
@@ -36615,13 +37727,15 @@ export const ListAccessApplicationCasForAccountRequest =
       accountId: S.String.pipe(T.Label("account_id")),
       page: S.optional(S.Number.pipe(T.Query())),
       perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/accounts/{account_id}/access/apps/ca",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "GET",
+          uri: "/accounts/{account_id}/access/apps/ca",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "ListAccessApplicationCasForAccountRequest",
   }) as any as S.Schema<ListAccessApplicationCasForAccountRequest>;
@@ -36665,7 +37779,7 @@ export const ListAccessApplicationCasForAccountResponse =
         T.EnvelopePayload(),
       ),
       resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "ListAccessApplicationCasForAccountResponse",
   }) as any as S.Schema<ListAccessApplicationCasForAccountResponse>;
@@ -36684,13 +37798,15 @@ export const ListAccessApplicationCasForZoneRequest = /*@__PURE__*/ S.suspend(
       zoneId: S.String.pipe(T.Label("zone_id")),
       page: S.optional(S.Number.pipe(T.Query())),
       perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/zones/{zone_id}/access/apps/ca",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "GET",
+          uri: "/zones/{zone_id}/access/apps/ca",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListAccessApplicationCasForZoneRequest",
 }) as any as S.Schema<ListAccessApplicationCasForZoneRequest>;
@@ -36733,7 +37849,7 @@ export const ListAccessApplicationCasForZoneResponse = /*@__PURE__*/ S.suspend(
         T.EnvelopePayload(),
       ),
       resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListAccessApplicationCasForZoneResponse",
 }) as any as S.Schema<ListAccessApplicationCasForZoneResponse>;
@@ -36755,13 +37871,15 @@ export const ListAccessApplicationPoliciesForAccountRequest =
       appId: S.String.pipe(T.Label("app_id")),
       page: S.optional(S.Number.pipe(T.Query())),
       perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/accounts/{account_id}/access/apps/{app_id}/policies",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "GET",
+          uri: "/accounts/{account_id}/access/apps/{app_id}/policies",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "ListAccessApplicationPoliciesForAccountRequest",
   }) as any as S.Schema<ListAccessApplicationPoliciesForAccountRequest>;
@@ -37451,7 +38569,7 @@ export const ListAccessApplicationPoliciesForAccountResponse =
         T.EnvelopePayload(),
       ),
       resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "ListAccessApplicationPoliciesForAccountResponse",
   }) as any as S.Schema<ListAccessApplicationPoliciesForAccountResponse>;
@@ -37473,13 +38591,15 @@ export const ListAccessApplicationPoliciesForZoneRequest =
       appId: S.String.pipe(T.Label("app_id")),
       page: S.optional(S.Number.pipe(T.Query())),
       perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/zones/{zone_id}/access/apps/{app_id}/policies",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "GET",
+          uri: "/zones/{zone_id}/access/apps/{app_id}/policies",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "ListAccessApplicationPoliciesForZoneRequest",
   }) as any as S.Schema<ListAccessApplicationPoliciesForZoneRequest>;
@@ -38169,7 +39289,7 @@ export const ListAccessApplicationPoliciesForZoneResponse =
         T.EnvelopePayload(),
       ),
       resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "ListAccessApplicationPoliciesForZoneResponse",
   }) as any as S.Schema<ListAccessApplicationPoliciesForZoneResponse>;
@@ -38203,13 +39323,15 @@ export const ListAccessApplicationPolicyTestUsersRequest =
       status: S.optional(
         AccessApplicationsPolicyTestsUsersListRequestStatus.pipe(T.Query()),
       ),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/accounts/{account_id}/access/policy-tests/{policy_test_id}/users",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "GET",
+          uri: "/accounts/{account_id}/access/policy-tests/{policy_test_id}/users",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "ListAccessApplicationPolicyTestUsersRequest",
   }) as any as S.Schema<ListAccessApplicationPolicyTestUsersRequest>;
@@ -38266,7 +39388,7 @@ export const ListAccessApplicationPolicyTestUsersResponse =
         T.EnvelopePayload(),
       ),
       resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "ListAccessApplicationPolicyTestUsersResponse",
   }) as any as S.Schema<ListAccessApplicationPolicyTestUsersResponse>;
@@ -38303,13 +39425,15 @@ export const ListAccessApplicationsForAccountRequest = /*@__PURE__*/ S.suspend(
       perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
       search: S.optional(S.String.pipe(T.Query())),
       targetAttributes: S.optional(S.String.pipe(T.Query("target_attributes"))),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/accounts/{account_id}/access/apps",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "GET",
+          uri: "/accounts/{account_id}/access/apps",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListAccessApplicationsForAccountRequest",
 }) as any as S.Schema<ListAccessApplicationsForAccountRequest>;
@@ -38423,7 +39547,7 @@ export const ListAccessApplicationsForAccountResponse = /*@__PURE__*/ S.suspend(
         T.EnvelopePayload(),
       ),
       resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListAccessApplicationsForAccountResponse",
 }) as any as S.Schema<ListAccessApplicationsForAccountResponse>;
@@ -38460,9 +39584,15 @@ export const ListAccessApplicationsForZoneRequest = /*@__PURE__*/ S.suspend(
       perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
       search: S.optional(S.String.pipe(T.Query())),
       targetAttributes: S.optional(S.String.pipe(T.Query("target_attributes"))),
-    }).pipe(
-      T.Http({ method: "GET", uri: "/zones/{zone_id}/access/apps", code: 200 }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "GET",
+          uri: "/zones/{zone_id}/access/apps",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListAccessApplicationsForZoneRequest",
 }) as any as S.Schema<ListAccessApplicationsForZoneRequest>;
@@ -38574,7 +39704,7 @@ export const ListAccessApplicationsForZoneResponse = /*@__PURE__*/ S.suspend(
     S.Struct({
       result: AccessApplicationsListForZoneResultList.pipe(T.EnvelopePayload()),
       resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListAccessApplicationsForZoneResponse",
 }) as any as S.Schema<ListAccessApplicationsForZoneResponse>;
@@ -38590,13 +39720,15 @@ export const ListAccessApplicationUserPolicyChecksForAccountRequest =
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
       appId: S.String.pipe(T.Label("app_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/accounts/{account_id}/access/apps/{app_id}/user_policy_checks",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "GET",
+          uri: "/accounts/{account_id}/access/apps/{app_id}/user_policy_checks",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "ListAccessApplicationUserPolicyChecksForAccountRequest",
   }) as any as S.Schema<ListAccessApplicationUserPolicyChecksForAccountRequest>;
@@ -38701,7 +39833,7 @@ export const ListAccessApplicationUserPolicyChecksForAccountResponse =
           T.Body("user_identity"),
         ),
       ),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "ListAccessApplicationUserPolicyChecksForAccountResponse",
   }) as any as S.Schema<ListAccessApplicationUserPolicyChecksForAccountResponse>;
@@ -38717,13 +39849,15 @@ export const ListAccessApplicationUserPolicyChecksForZoneRequest =
     S.Struct({
       zoneId: S.String.pipe(T.Label("zone_id")),
       appId: S.String.pipe(T.Label("app_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/zones/{zone_id}/access/apps/{app_id}/user_policy_checks",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "GET",
+          uri: "/zones/{zone_id}/access/apps/{app_id}/user_policy_checks",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "ListAccessApplicationUserPolicyChecksForZoneRequest",
   }) as any as S.Schema<ListAccessApplicationUserPolicyChecksForZoneRequest>;
@@ -38827,7 +39961,7 @@ export const ListAccessApplicationUserPolicyChecksForZoneResponse =
           T.Body("user_identity"),
         ),
       ),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "ListAccessApplicationUserPolicyChecksForZoneResponse",
   }) as any as S.Schema<ListAccessApplicationUserPolicyChecksForZoneResponse>;
@@ -38838,13 +39972,15 @@ export interface ListAccessBookmarksRequest {
 export const ListAccessBookmarksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/access/bookmarks",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/access/bookmarks",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListAccessBookmarksRequest",
 }) as any as S.Schema<ListAccessBookmarksRequest>;
@@ -38890,7 +40026,7 @@ export const ListAccessBookmarksResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: AccessBookmarksListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListAccessBookmarksResponse",
 }) as any as S.Schema<ListAccessBookmarksResponse>;
@@ -38909,13 +40045,15 @@ export const ListAccessCertificatesForAccountRequest = /*@__PURE__*/ S.suspend(
       accountId: S.String.pipe(T.Label("account_id")),
       page: S.optional(S.Number.pipe(T.Query())),
       perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/accounts/{account_id}/access/certificates",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "GET",
+          uri: "/accounts/{account_id}/access/certificates",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListAccessCertificatesForAccountRequest",
 }) as any as S.Schema<ListAccessCertificatesForAccountRequest>;
@@ -38974,7 +40112,7 @@ export const ListAccessCertificatesForAccountResponse = /*@__PURE__*/ S.suspend(
         T.EnvelopePayload(),
       ),
       resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListAccessCertificatesForAccountResponse",
 }) as any as S.Schema<ListAccessCertificatesForAccountResponse>;
@@ -38993,13 +40131,15 @@ export const ListAccessCertificatesForZoneRequest = /*@__PURE__*/ S.suspend(
       zoneId: S.String.pipe(T.Label("zone_id")),
       page: S.optional(S.Number.pipe(T.Query())),
       perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/zones/{zone_id}/access/certificates",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "GET",
+          uri: "/zones/{zone_id}/access/certificates",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListAccessCertificatesForZoneRequest",
 }) as any as S.Schema<ListAccessCertificatesForZoneRequest>;
@@ -39056,7 +40196,7 @@ export const ListAccessCertificatesForZoneResponse = /*@__PURE__*/ S.suspend(
     S.Struct({
       result: AccessCertificatesListForZoneResultList.pipe(T.EnvelopePayload()),
       resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListAccessCertificatesForZoneResponse",
 }) as any as S.Schema<ListAccessCertificatesForZoneResponse>;
@@ -39074,13 +40214,15 @@ export const ListAccessCustomPagesRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     page: S.optional(S.Number.pipe(T.Query())),
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/access/custom_pages",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/access/custom_pages",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListAccessCustomPagesRequest",
 }) as any as S.Schema<ListAccessCustomPagesRequest>;
@@ -39124,7 +40266,7 @@ export const ListAccessCustomPagesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: AccessCustomPagesListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListAccessCustomPagesResponse",
 }) as any as S.Schema<ListAccessCustomPagesResponse>;
@@ -39136,13 +40278,15 @@ export interface ListAccessGatewayCasRequest {
 export const ListAccessGatewayCasRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/access/gateway_ca",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/access/gateway_ca",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListAccessGatewayCasRequest",
 }) as any as S.Schema<ListAccessGatewayCasRequest>;
@@ -39177,7 +40321,7 @@ export const ListAccessGatewayCasResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: AccessGatewayCaListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListAccessGatewayCasResponse",
 }) as any as S.Schema<ListAccessGatewayCasResponse>;
@@ -39201,13 +40345,15 @@ export const ListAccessGroupsForAccountRequest = /*@__PURE__*/ S.suspend(() =>
     page: S.optional(S.Number.pipe(T.Query())),
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
     search: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/access/groups",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/access/groups",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListAccessGroupsForAccountRequest",
 }) as any as S.Schema<ListAccessGroupsForAccountRequest>;
@@ -39852,7 +40998,7 @@ export const ListAccessGroupsForAccountResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: AccessGroupsListForAccountResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListAccessGroupsForAccountResponse",
 }) as any as S.Schema<ListAccessGroupsForAccountResponse>;
@@ -39876,9 +41022,15 @@ export const ListAccessGroupsForZoneRequest = /*@__PURE__*/ S.suspend(() =>
     page: S.optional(S.Number.pipe(T.Query())),
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
     search: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({ method: "GET", uri: "/zones/{zone_id}/access/groups", code: 200 }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/access/groups",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListAccessGroupsForZoneRequest",
 }) as any as S.Schema<ListAccessGroupsForZoneRequest>;
@@ -40520,7 +41672,7 @@ export const ListAccessGroupsForZoneResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: AccessGroupsListForZoneResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListAccessGroupsForZoneResponse",
 }) as any as S.Schema<ListAccessGroupsForZoneResponse>;
@@ -40533,13 +41685,15 @@ export const ListAccessIdpFederationGrantsRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/accounts/{account_id}/access/idp_federation_grants",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "GET",
+          uri: "/accounts/{account_id}/access/idp_federation_grants",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListAccessIdpFederationGrantsRequest",
 }) as any as S.Schema<ListAccessIdpFederationGrantsRequest>;
@@ -40576,7 +41730,7 @@ export const ListAccessIdpFederationGrantsResponse = /*@__PURE__*/ S.suspend(
       result: S.optional(
         AccessIdpFederationGrantsListResultList.pipe(T.EnvelopePayload()),
       ),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListAccessIdpFederationGrantsResponse",
 }) as any as S.Schema<ListAccessIdpFederationGrantsResponse>;
@@ -40687,13 +41841,15 @@ export const ListAccessInfrastructureTargetsRequest = /*@__PURE__*/ S.suspend(
       virtualNetworkId: S.optional(
         S.String.pipe(T.Query("virtual_network_id")),
       ),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/accounts/{account_id}/infrastructure/targets",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "GET",
+          uri: "/accounts/{account_id}/infrastructure/targets",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListAccessInfrastructureTargetsRequest",
 }) as any as S.Schema<ListAccessInfrastructureTargetsRequest>;
@@ -40790,7 +41946,7 @@ export const ListAccessInfrastructureTargetsResponse = /*@__PURE__*/ S.suspend(
         T.EnvelopePayload(),
       ),
       resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListAccessInfrastructureTargetsResponse",
 }) as any as S.Schema<ListAccessInfrastructureTargetsResponse>;
@@ -40951,13 +42107,15 @@ export const ListAccessLogAccessRequestsRequest = /*@__PURE__*/ S.suspend(() =>
     userIdOp: S.optional(
       AccessLogsAccessRequestsListRequestUserIdOp.pipe(T.Query("user_idOp")),
     ),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/access/logs/access_requests",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/access/logs/access_requests",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListAccessLogAccessRequestsRequest",
 }) as any as S.Schema<ListAccessLogAccessRequestsRequest>;
@@ -41013,7 +42171,7 @@ export const ListAccessLogAccessRequestsResponse = /*@__PURE__*/ S.suspend(() =>
     result: S.optional(
       AccessLogsAccessRequestsListResultList.pipe(T.EnvelopePayload()),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListAccessLogAccessRequestsResponse",
 }) as any as S.Schema<ListAccessLogAccessRequestsResponse>;
@@ -41172,13 +42330,15 @@ export const ListAccessLogScimUpdatesRequest = /*@__PURE__*/ S.suspend(() =>
       AccessLogsScimUpdatesListRequestStatusList.pipe(T.Query()),
     ),
     until: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/access/logs/scim/updates",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/access/logs/scim/updates",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListAccessLogScimUpdatesRequest",
 }) as any as S.Schema<ListAccessLogScimUpdatesRequest>;
@@ -41240,7 +42400,7 @@ export const ListAccessLogScimUpdatesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: AccessLogsScimUpdatesListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListAccessLogScimUpdatesResponse",
 }) as any as S.Schema<ListAccessLogScimUpdatesResponse>;
@@ -41258,13 +42418,15 @@ export const ListAccessPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     page: S.optional(S.Number.pipe(T.Query())),
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/access/policies",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/access/policies",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListAccessPoliciesRequest",
 }) as any as S.Schema<ListAccessPoliciesRequest>;
@@ -41935,7 +43097,7 @@ export const ListAccessPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: AccessPoliciesListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListAccessPoliciesResponse",
 }) as any as S.Schema<ListAccessPoliciesResponse>;
@@ -41956,13 +43118,15 @@ export const ListAccessSamlCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
     id: S.optional(S.String.pipe(T.Query())),
     page: S.optional(S.Number.pipe(T.Query())),
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/access/saml_certificates",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/access/saml_certificates",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListAccessSamlCertificatesRequest",
 }) as any as S.Schema<ListAccessSamlCertificatesRequest>;
@@ -42036,7 +43200,7 @@ export const ListAccessSamlCertificatesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: AccessSamlCertificatesListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListAccessSamlCertificatesResponse",
 }) as any as S.Schema<ListAccessSamlCertificatesResponse>;
@@ -42061,13 +43225,15 @@ export const ListAccessServiceTokensForAccountRequest = /*@__PURE__*/ S.suspend(
       page: S.optional(S.Number.pipe(T.Query())),
       perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
       search: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/accounts/{account_id}/access/service_tokens",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "GET",
+          uri: "/accounts/{account_id}/access/service_tokens",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListAccessServiceTokensForAccountRequest",
 }) as any as S.Schema<ListAccessServiceTokensForAccountRequest>;
@@ -42116,7 +43282,7 @@ export const ListAccessServiceTokensForAccountResponse =
         T.EnvelopePayload(),
       ),
       resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "ListAccessServiceTokensForAccountResponse",
   }) as any as S.Schema<ListAccessServiceTokensForAccountResponse>;
@@ -42141,13 +43307,15 @@ export const ListAccessServiceTokensForZoneRequest = /*@__PURE__*/ S.suspend(
       page: S.optional(S.Number.pipe(T.Query())),
       perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
       search: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/zones/{zone_id}/access/service_tokens",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "GET",
+          uri: "/zones/{zone_id}/access/service_tokens",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListAccessServiceTokensForZoneRequest",
 }) as any as S.Schema<ListAccessServiceTokensForZoneRequest>;
@@ -42195,7 +43363,7 @@ export const ListAccessServiceTokensForZoneResponse = /*@__PURE__*/ S.suspend(
         T.EnvelopePayload(),
       ),
       resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListAccessServiceTokensForZoneResponse",
 }) as any as S.Schema<ListAccessServiceTokensForZoneResponse>;
@@ -42213,13 +43381,15 @@ export const ListAccessTagsRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     page: S.optional(S.Number.pipe(T.Query())),
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/access/tags",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/access/tags",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListAccessTagsRequest",
 }) as any as S.Schema<ListAccessTagsRequest>;
@@ -42251,7 +43421,7 @@ export const ListAccessTagsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: AccessTagsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListAccessTagsResponse",
 }) as any as S.Schema<ListAccessTagsResponse>;
@@ -42266,13 +43436,15 @@ export const ListAccessUserActiveSessionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     userId: S.String.pipe(T.Label("user_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/access/users/{user_id}/active_sessions",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/access/users/{user_id}/active_sessions",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListAccessUserActiveSessionsRequest",
 }) as any as S.Schema<ListAccessUserActiveSessionsRequest>;
@@ -42339,7 +43511,7 @@ export const ListAccessUserActiveSessionsResponse = /*@__PURE__*/ S.suspend(
     S.Struct({
       result: AccessUsersActiveSessionsListResultList.pipe(T.EnvelopePayload()),
       resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListAccessUserActiveSessionsResponse",
 }) as any as S.Schema<ListAccessUserActiveSessionsResponse>;
@@ -42354,13 +43526,15 @@ export const ListAccessUserFailedLoginsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     userId: S.String.pipe(T.Label("user_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/access/users/{user_id}/failed_logins",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/access/users/{user_id}/failed_logins",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListAccessUserFailedLoginsRequest",
 }) as any as S.Schema<ListAccessUserFailedLoginsRequest>;
@@ -42395,7 +43569,7 @@ export const ListAccessUserFailedLoginsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: AccessUsersFailedLoginsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListAccessUserFailedLoginsResponse",
 }) as any as S.Schema<ListAccessUserFailedLoginsResponse>;
@@ -42422,13 +43596,15 @@ export const ListAccessUsersRequest = /*@__PURE__*/ S.suspend(() =>
     page: S.optional(S.Number.pipe(T.Query())),
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
     search: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/access/users",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/access/users",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListAccessUsersRequest",
 }) as any as S.Schema<ListAccessUsersRequest>;
@@ -42490,7 +43666,7 @@ export const ListAccessUsersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: AccessUsersListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListAccessUsersResponse",
 }) as any as S.Schema<ListAccessUsersResponse>;
@@ -42507,13 +43683,15 @@ export const ListDeviceDeploymentGroupsRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     page: S.optional(S.Number.pipe(T.Query())),
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/devices/deployment-groups",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/devices/deployment-groups",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListDeviceDeploymentGroupsRequest",
 }) as any as S.Schema<ListDeviceDeploymentGroupsRequest>;
@@ -42598,7 +43776,7 @@ export const ListDeviceDeploymentGroupsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: DevicesDeploymentGroupsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListDeviceDeploymentGroupsResponse",
 }) as any as S.Schema<ListDeviceDeploymentGroupsResponse>;
@@ -42672,13 +43850,15 @@ export const ListDeviceDevicesRequest = /*@__PURE__*/ S.suspend(() =>
     sortOrder: S.optional(
       DevicesDevicesListRequestSortOrder.pipe(T.Query("sort_order")),
     ),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/devices/physical-devices",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/devices/physical-devices",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListDeviceDevicesRequest",
 }) as any as S.Schema<ListDeviceDevicesRequest>;
@@ -42829,7 +44009,7 @@ export const ListDeviceDevicesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: DevicesDevicesListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListDeviceDevicesResponse",
 }) as any as S.Schema<ListDeviceDevicesResponse>;
@@ -42859,13 +44039,15 @@ export const ListDeviceDexTestsRequest = /*@__PURE__*/ S.suspend(() =>
     page: S.optional(S.Number.pipe(T.Query())),
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
     testName: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/dex/devices/dex_tests",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/dex/devices/dex_tests",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListDeviceDexTestsRequest",
 }) as any as S.Schema<ListDeviceDexTestsRequest>;
@@ -42974,7 +44156,7 @@ export const ListDeviceDexTestsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: DevicesDexTestsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListDeviceDexTestsResponse",
 }) as any as S.Schema<ListDeviceDexTestsResponse>;
@@ -42991,13 +44173,15 @@ export const ListDeviceIpProfilesRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     page: S.optional(S.Number.pipe(T.Query())),
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/devices/ip-profiles",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/devices/ip-profiles",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListDeviceIpProfilesRequest",
 }) as any as S.Schema<ListDeviceIpProfilesRequest>;
@@ -43053,7 +44237,7 @@ export const ListDeviceIpProfilesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: DevicesIpProfilesListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListDeviceIpProfilesResponse",
 }) as any as S.Schema<ListDeviceIpProfilesResponse>;
@@ -43064,13 +44248,15 @@ export interface ListDeviceNetworksRequest {
 export const ListDeviceNetworksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/devices/networks",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/devices/networks",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListDeviceNetworksRequest",
 }) as any as S.Schema<ListDeviceNetworksRequest>;
@@ -43129,7 +44315,7 @@ export const ListDeviceNetworksResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: DevicesNetworksListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListDeviceNetworksResponse",
 }) as any as S.Schema<ListDeviceNetworksResponse>;
@@ -43143,13 +44329,15 @@ export const ListDeviceOverrideCodesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     deviceId: S.String.pipe(T.Label("device_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/devices/{device_id}/override_codes",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/devices/{device_id}/override_codes",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListDeviceOverrideCodesRequest",
 }) as any as S.Schema<ListDeviceOverrideCodesRequest>;
@@ -43169,7 +44357,7 @@ export const ListDeviceOverrideCodesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: DevicesOverrideCodesListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListDeviceOverrideCodesResponse",
 }) as any as S.Schema<ListDeviceOverrideCodesResponse>;
@@ -43180,13 +44368,15 @@ export interface ListDevicePolicyCustomsRequest {
 export const ListDevicePolicyCustomsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/devices/policies",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/devices/policies",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListDevicePolicyCustomsRequest",
 }) as any as S.Schema<ListDevicePolicyCustomsRequest>;
@@ -43569,7 +44759,7 @@ export const ListDevicePolicyCustomsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: DevicesPoliciesCustomListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListDevicePolicyCustomsResponse",
 }) as any as S.Schema<ListDevicePolicyCustomsResponse>;
@@ -43581,13 +44771,15 @@ export const ListDevicePostureIntegrationsRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/accounts/{account_id}/devices/posture/integration",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "GET",
+          uri: "/accounts/{account_id}/devices/posture/integration",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListDevicePostureIntegrationsRequest",
 }) as any as S.Schema<ListDevicePostureIntegrationsRequest>;
@@ -43663,7 +44855,7 @@ export const ListDevicePostureIntegrationsResponse = /*@__PURE__*/ S.suspend(
         T.EnvelopePayload(),
       ),
       resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListDevicePostureIntegrationsResponse",
 }) as any as S.Schema<ListDevicePostureIntegrationsResponse>;
@@ -43674,13 +44866,15 @@ export interface ListDevicePosturesRequest {
 export const ListDevicePosturesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/devices/posture",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/devices/posture",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListDevicePosturesRequest",
 }) as any as S.Schema<ListDevicePosturesRequest>;
@@ -43881,7 +45075,7 @@ export const ListDevicePosturesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: DevicesPostureListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListDevicePosturesResponse",
 }) as any as S.Schema<ListDevicePosturesResponse>;
@@ -43955,13 +45149,15 @@ export const ListDeviceRegistrationsRequest = /*@__PURE__*/ S.suspend(() =>
     ),
     status: S.optional(DevicesRegistrationsListRequestStatus.pipe(T.Query())),
     user: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/devices/registrations",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/devices/registrations",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListDeviceRegistrationsRequest",
 }) as any as S.Schema<ListDeviceRegistrationsRequest>;
@@ -44095,7 +45291,7 @@ export const ListDeviceRegistrationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: DevicesRegistrationsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListDeviceRegistrationsResponse",
 }) as any as S.Schema<ListDeviceRegistrationsResponse>;
@@ -44106,9 +45302,15 @@ export interface ListDevicesRequest {
 export const ListDevicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({ method: "GET", uri: "/accounts/{account_id}/devices", code: 200 }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/devices",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListDevicesRequest",
 }) as any as S.Schema<ListDevicesRequest>;
@@ -44222,7 +45424,7 @@ export const ListDevicesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: DevicesListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListDevicesResponse",
 }) as any as S.Schema<ListDevicesResponse>;
@@ -44249,13 +45451,15 @@ export const ListDexColosRequest = /*@__PURE__*/ S.suspend(() =>
     from: S.String.pipe(T.Query()),
     to: S.String.pipe(T.Query()),
     sortBy: S.optional(DexColosListRequestSortBy.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/dex/colos",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/dex/colos",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListDexColosRequest",
 }) as any as S.Schema<ListDexColosRequest>;
@@ -44293,7 +45497,7 @@ export const ListDexColosResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: DexColosListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListDexColosResponse",
 }) as any as S.Schema<ListDexColosResponse>;
@@ -44314,13 +45518,15 @@ export const ListDexCommandDevicesRequest = /*@__PURE__*/ S.suspend(() =>
     page: S.Number.pipe(T.Query()),
     perPage: S.Number.pipe(T.Query("per_page")),
     search: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/dex/commands/devices",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/dex/commands/devices",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListDexCommandDevicesRequest",
 }) as any as S.Schema<ListDexCommandDevicesRequest>;
@@ -44378,7 +45584,7 @@ export interface ListDexCommandDevicesResponse {
 export const ListDexCommandDevicesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     devices: S.optional(DexCommandsDevicesListResponseDevicesList),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListDexCommandDevicesResponse",
 }) as any as S.Schema<ListDexCommandDevicesResponse>;
@@ -44431,13 +45637,15 @@ export const ListDexCommandsRequest = /*@__PURE__*/ S.suspend(() =>
     status: S.optional(DexCommandsListRequestStatus.pipe(T.Query())),
     to: S.optional(S.String.pipe(T.Query())),
     userEmail: S.optional(S.String.pipe(T.Query("user_email"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/dex/commands",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/dex/commands",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListDexCommandsRequest",
 }) as any as S.Schema<ListDexCommandsRequest>;
@@ -44483,7 +45691,7 @@ export interface ListDexCommandsResponse {
 export const ListDexCommandsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     commands: S.optional(DexCommandsListResponseCommandsList),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListDexCommandsResponse",
 }) as any as S.Schema<ListDexCommandsResponse>;
@@ -44529,13 +45737,15 @@ export const ListDexDeviceIspsRequest = /*@__PURE__*/ S.suspend(() =>
       DexDevicesIspsListRequestSortOrder.pipe(T.Query("sort_order")),
     ),
     to: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/dex/devices/{device_id}/isps",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/dex/devices/{device_id}/isps",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListDexDeviceIspsRequest",
 }) as any as S.Schema<ListDexDeviceIspsRequest>;
@@ -44627,7 +45837,7 @@ export interface ListDexDeviceIspsResponse {
 export const ListDexDeviceIspsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     isps: DexDevicesIspsListResponseIspsList,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListDexDeviceIspsResponse",
 }) as any as S.Schema<ListDexDeviceIspsResponse>;
@@ -44691,13 +45901,15 @@ export const ListDexFleetStatusDevicesRequest = /*@__PURE__*/ S.suspend(() =>
     source: S.optional(DexFleetStatusDevicesListRequestSource.pipe(T.Query())),
     status: S.optional(S.String.pipe(T.Query())),
     version: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/dex/fleet-status/devices",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/dex/fleet-status/devices",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListDexFleetStatusDevicesRequest",
 }) as any as S.Schema<ListDexFleetStatusDevicesRequest>;
@@ -45367,7 +46579,7 @@ export const ListDexFleetStatusDevicesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: DexFleetStatusDevicesListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListDexFleetStatusDevicesResponse",
 }) as any as S.Schema<ListDexFleetStatusDevicesResponse>;
@@ -45406,13 +46618,15 @@ export const ListDexRulesRequest = /*@__PURE__*/ S.suspend(() =>
     sortOrder: S.optional(
       DexRulesListRequestSortOrder.pipe(T.Query("sort_order")),
     ),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/dex/rules",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/dex/rules",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListDexRulesRequest",
 }) as any as S.Schema<ListDexRulesRequest>;
@@ -45517,7 +46731,7 @@ export interface ListDexRulesResponse {
 export const ListDexRulesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rules: S.optional(DexRulesListResponseRulesList),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListDexRulesResponse",
 }) as any as S.Schema<ListDexRulesResponse>;
@@ -45558,13 +46772,15 @@ export const ListDexTestsRequest = /*@__PURE__*/ S.suspend(() =>
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
     registrationId: S.optional(S.String.pipe(T.Query("registration_id"))),
     testName: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/dex/tests/overview",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/dex/tests/overview",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListDexTestsRequest",
 }) as any as S.Schema<ListDexTestsRequest>;
@@ -46112,7 +47328,7 @@ export const ListDexTestsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     overviewMetrics: DexTestsListResponseOverviewMetrics,
     tests: DexTestsListResponseTestsList,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListDexTestsResponse",
 }) as any as S.Schema<ListDexTestsResponse>;
@@ -46138,13 +47354,15 @@ export const ListDexTestUniqueDevicesRequest = /*@__PURE__*/ S.suspend(() =>
       DexTestsUniqueDevicesListRequestDeviceIdList.pipe(T.Query()),
     ),
     testName: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/dex/tests/unique-devices",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/dex/tests/unique-devices",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListDexTestUniqueDevicesRequest",
 }) as any as S.Schema<ListDexTestUniqueDevicesRequest>;
@@ -46157,7 +47375,7 @@ export interface ListDexTestUniqueDevicesResponse {
 export const ListDexTestUniqueDevicesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uniqueDevicesTotal: S.Number,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListDexTestUniqueDevicesResponse",
 }) as any as S.Schema<ListDexTestUniqueDevicesResponse>;
@@ -46168,13 +47386,15 @@ export interface ListDlpCustomPromptTopicsRequest {
 export const ListDlpCustomPromptTopicsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/dlp/custom_prompt_topics",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/dlp/custom_prompt_topics",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListDlpCustomPromptTopicsRequest",
 }) as any as S.Schema<ListDlpCustomPromptTopicsRequest>;
@@ -46220,7 +47440,7 @@ export const ListDlpCustomPromptTopicsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: DlpCustomPromptTopicsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListDlpCustomPromptTopicsResponse",
 }) as any as S.Schema<ListDlpCustomPromptTopicsResponse>;
@@ -46231,13 +47451,15 @@ export interface ListDlpDataClassesRequest {
 export const ListDlpDataClassesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/dlp/data_classes",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/dlp/data_classes",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListDlpDataClassesRequest",
 }) as any as S.Schema<ListDlpDataClassesRequest>;
@@ -46312,7 +47534,7 @@ export const ListDlpDataClassesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: DlpDataClassesListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListDlpDataClassesResponse",
 }) as any as S.Schema<ListDlpDataClassesResponse>;
@@ -46323,13 +47545,15 @@ export interface ListDlpDatasetsRequest {
 export const ListDlpDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/dlp/datasets",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/dlp/datasets",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListDlpDatasetsRequest",
 }) as any as S.Schema<ListDlpDatasetsRequest>;
@@ -46433,7 +47657,7 @@ export const ListDlpDatasetsResponse = /*@__PURE__*/ S.suspend(() =>
     uploads: DlpDatasetsListResponseUploadsList,
     caseSensitive: S.optional(S.Boolean.pipe(T.Body("case_sensitive"))),
     description: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListDlpDatasetsResponse",
 }) as any as S.Schema<ListDlpDatasetsResponse>;
@@ -46444,13 +47668,15 @@ export interface ListDlpDataTagCategoriesRequest {
 export const ListDlpDataTagCategoriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/dlp/data_tag_categories",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/dlp/data_tag_categories",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListDlpDataTagCategoriesRequest",
 }) as any as S.Schema<ListDlpDataTagCategoriesRequest>;
@@ -46520,7 +47746,7 @@ export const ListDlpDataTagCategoriesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: DlpDataTagCategoriesListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListDlpDataTagCategoriesResponse",
 }) as any as S.Schema<ListDlpDataTagCategoriesResponse>;
@@ -46534,13 +47760,15 @@ export const ListDlpDataTagCategoryDataTagsRequest = /*@__PURE__*/ S.suspend(
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
       categoryId: S.String.pipe(T.Label("category_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/accounts/{account_id}/dlp/data_tag_categories/{category_id}/data_tags",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "GET",
+          uri: "/accounts/{account_id}/dlp/data_tag_categories/{category_id}/data_tags",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListDlpDataTagCategoryDataTagsRequest",
 }) as any as S.Schema<ListDlpDataTagCategoryDataTagsRequest>;
@@ -46584,7 +47812,7 @@ export const ListDlpDataTagCategoryDataTagsResponse = /*@__PURE__*/ S.suspend(
         T.EnvelopePayload(),
       ),
       resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListDlpDataTagCategoryDataTagsResponse",
 }) as any as S.Schema<ListDlpDataTagCategoryDataTagsResponse>;
@@ -46595,13 +47823,15 @@ export interface ListDlpEmailRulesRequest {
 export const ListDlpEmailRulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/dlp/email/rules",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/dlp/email/rules",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListDlpEmailRulesRequest",
 }) as any as S.Schema<ListDlpEmailRulesRequest>;
@@ -46725,7 +47955,7 @@ export const ListDlpEmailRulesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: DlpEmailRulesListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListDlpEmailRulesResponse",
 }) as any as S.Schema<ListDlpEmailRulesResponse>;
@@ -46736,13 +47966,15 @@ export interface ListDlpEntriesRequest {
 export const ListDlpEntriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/dlp/entries",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/dlp/entries",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListDlpEntriesRequest",
 }) as any as S.Schema<ListDlpEntriesRequest>;
@@ -46799,7 +48031,7 @@ export const ListDlpEntriesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: DlpEntriesListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListDlpEntriesResponse",
 }) as any as S.Schema<ListDlpEntriesResponse>;
@@ -46810,13 +48042,15 @@ export interface ListDlpLimitsRequest {
 export const ListDlpLimitsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/dlp/limits",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/dlp/limits",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListDlpLimitsRequest",
 }) as any as S.Schema<ListDlpLimitsRequest>;
@@ -46846,7 +48080,7 @@ export const ListDlpLimitsResponse = /*@__PURE__*/ S.suspend(() =>
     usedDocumentFingerprints: S.Number.pipe(
       T.Body("used_document_fingerprints"),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListDlpLimitsResponse",
 }) as any as S.Schema<ListDlpLimitsResponse>;
@@ -46860,13 +48094,15 @@ export const ListDlpProfilesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     all: S.optional(S.Boolean.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/dlp/profiles",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/dlp/profiles",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListDlpProfilesRequest",
 }) as any as S.Schema<ListDlpProfilesRequest>;
@@ -46911,7 +48147,7 @@ export const ListDlpProfilesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: DlpProfilesListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListDlpProfilesResponse",
 }) as any as S.Schema<ListDlpProfilesResponse>;
@@ -46925,13 +48161,15 @@ export const ListDlpSensitivityGroupLevelsRequest = /*@__PURE__*/ S.suspend(
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
       sensitivityGroupId: S.String.pipe(T.Label("sensitivity_group_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/accounts/{account_id}/dlp/sensitivity_groups/{sensitivity_group_id}/levels",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "GET",
+          uri: "/accounts/{account_id}/dlp/sensitivity_groups/{sensitivity_group_id}/levels",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListDlpSensitivityGroupLevelsRequest",
 }) as any as S.Schema<ListDlpSensitivityGroupLevelsRequest>;
@@ -46975,7 +48213,7 @@ export const ListDlpSensitivityGroupLevelsResponse = /*@__PURE__*/ S.suspend(
         T.EnvelopePayload(),
       ),
       resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListDlpSensitivityGroupLevelsResponse",
 }) as any as S.Schema<ListDlpSensitivityGroupLevelsResponse>;
@@ -46986,13 +48224,15 @@ export interface ListDlpSensitivityGroupsRequest {
 export const ListDlpSensitivityGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/dlp/sensitivity_groups",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/dlp/sensitivity_groups",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListDlpSensitivityGroupsRequest",
 }) as any as S.Schema<ListDlpSensitivityGroupsRequest>;
@@ -47063,7 +48303,7 @@ export const ListDlpSensitivityGroupsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: DlpSensitivityGroupsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListDlpSensitivityGroupsResponse",
 }) as any as S.Schema<ListDlpSensitivityGroupsResponse>;
@@ -47075,13 +48315,15 @@ export interface ListGatewayAppTypesRequest {
 export const ListGatewayAppTypesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/gateway/app_types",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/gateway/app_types",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListGatewayAppTypesRequest",
 }) as any as S.Schema<ListGatewayAppTypesRequest>;
@@ -47124,7 +48366,7 @@ export const ListGatewayAppTypesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: GatewayAppTypesListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListGatewayAppTypesResponse",
 }) as any as S.Schema<ListGatewayAppTypesResponse>;
@@ -47136,13 +48378,15 @@ export interface ListGatewayCategoriesRequest {
 export const ListGatewayCategoriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/gateway/categories",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/gateway/categories",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListGatewayCategoriesRequest",
 }) as any as S.Schema<ListGatewayCategoriesRequest>;
@@ -47236,7 +48480,7 @@ export const ListGatewayCategoriesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: GatewayCategoriesListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListGatewayCategoriesResponse",
 }) as any as S.Schema<ListGatewayCategoriesResponse>;
@@ -47247,13 +48491,15 @@ export interface ListGatewayCertificatesRequest {
 export const ListGatewayCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/gateway/certificates",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/gateway/certificates",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListGatewayCertificatesRequest",
 }) as any as S.Schema<ListGatewayCertificatesRequest>;
@@ -47334,7 +48580,7 @@ export const ListGatewayCertificatesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: GatewayCertificatesListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListGatewayCertificatesResponse",
 }) as any as S.Schema<ListGatewayCertificatesResponse>;
@@ -47348,13 +48594,15 @@ export const ListGatewayListItemsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     listId: S.String.pipe(T.Label("list_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/gateway/lists/{list_id}/items",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/gateway/lists/{list_id}/items",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListGatewayListItemsRequest",
 }) as any as S.Schema<ListGatewayListItemsRequest>;
@@ -47391,7 +48639,7 @@ export const ListGatewayListItemsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: GatewayListsItemsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListGatewayListItemsResponse",
 }) as any as S.Schema<ListGatewayListItemsResponse>;
@@ -47412,13 +48660,15 @@ export const ListGatewayListsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     type: S.optional(GatewayListsListRequestType.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/gateway/lists",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/gateway/lists",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListGatewayListsRequest",
 }) as any as S.Schema<ListGatewayListsRequest>;
@@ -47499,7 +48749,7 @@ export const ListGatewayListsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: GatewayListsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListGatewayListsResponse",
 }) as any as S.Schema<ListGatewayListsResponse>;
@@ -47510,13 +48760,15 @@ export interface ListGatewayLocationsRequest {
 export const ListGatewayLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/gateway/locations",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/gateway/locations",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListGatewayLocationsRequest",
 }) as any as S.Schema<ListGatewayLocationsRequest>;
@@ -47785,7 +49037,7 @@ export const ListGatewayLocationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: GatewayLocationsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListGatewayLocationsResponse",
 }) as any as S.Schema<ListGatewayLocationsResponse>;
@@ -47796,13 +49048,15 @@ export interface ListGatewayPacfilesRequest {
 export const ListGatewayPacfilesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/gateway/pacfiles",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/gateway/pacfiles",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListGatewayPacfilesRequest",
 }) as any as S.Schema<ListGatewayPacfilesRequest>;
@@ -47849,7 +49103,7 @@ export const ListGatewayPacfilesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: GatewayPacfilesListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListGatewayPacfilesResponse",
 }) as any as S.Schema<ListGatewayPacfilesResponse>;
@@ -47860,13 +49114,15 @@ export interface ListGatewayProxyEndpointsRequest {
 export const ListGatewayProxyEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/gateway/proxy_endpoints",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/gateway/proxy_endpoints",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListGatewayProxyEndpointsRequest",
 }) as any as S.Schema<ListGatewayProxyEndpointsRequest>;
@@ -47904,7 +49160,7 @@ export const ListGatewayProxyEndpointsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: GatewayProxyEndpointsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListGatewayProxyEndpointsResponse",
 }) as any as S.Schema<ListGatewayProxyEndpointsResponse>;
@@ -47915,13 +49171,15 @@ export interface ListGatewayRulesRequest {
 export const ListGatewayRulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/gateway/rules",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/gateway/rules",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListGatewayRulesRequest",
 }) as any as S.Schema<ListGatewayRulesRequest>;
@@ -48664,7 +49922,7 @@ export const ListGatewayRulesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: GatewayRulesListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListGatewayRulesResponse",
 }) as any as S.Schema<ListGatewayRulesResponse>;
@@ -48675,9 +49933,15 @@ export interface ListGatewaysRequest {
 export const ListGatewaysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({ method: "GET", uri: "/accounts/{account_id}/gateway", code: 200 }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/gateway",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListGatewaysRequest",
 }) as any as S.Schema<ListGatewaysRequest>;
@@ -48696,7 +49960,7 @@ export const ListGatewaysResponse = /*@__PURE__*/ S.suspend(() =>
     id: S.optional(S.String),
     gatewayTag: S.optional(S.String.pipe(T.Body("gateway_tag"))),
     providerName: S.optional(S.String.pipe(T.Body("provider_name"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListGatewaysResponse",
 }) as any as S.Schema<ListGatewaysResponse>;
@@ -48747,13 +50011,15 @@ export const ListIdentityProviderScimGroupsRequest = /*@__PURE__*/ S.suspend(
       name: S.optional(S.String.pipe(T.Query())),
       page: S.optional(S.Number.pipe(T.Query())),
       perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/accounts/{account_id}/access/identity_providers/{identity_provider_id}/scim/groups",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "GET",
+          uri: "/accounts/{account_id}/access/identity_providers/{identity_provider_id}/scim/groups",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListIdentityProviderScimGroupsRequest",
 }) as any as S.Schema<ListIdentityProviderScimGroupsRequest>;
@@ -48824,7 +50090,7 @@ export const ListIdentityProviderScimGroupsResponse = /*@__PURE__*/ S.suspend(
         T.EnvelopePayload(),
       ),
       resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListIdentityProviderScimGroupsResponse",
 }) as any as S.Schema<ListIdentityProviderScimGroupsResponse>;
@@ -48881,13 +50147,15 @@ export const ListIdentityProviderScimUsersRequest = /*@__PURE__*/ S.suspend(
       page: S.optional(S.Number.pipe(T.Query())),
       perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
       username: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/accounts/{account_id}/access/identity_providers/{identity_provider_id}/scim/users",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "GET",
+          uri: "/accounts/{account_id}/access/identity_providers/{identity_provider_id}/scim/users",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListIdentityProviderScimUsersRequest",
 }) as any as S.Schema<ListIdentityProviderScimUsersRequest>;
@@ -48989,7 +50257,7 @@ export const ListIdentityProviderScimUsersResponse = /*@__PURE__*/ S.suspend(
         T.EnvelopePayload(),
       ),
       resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListIdentityProviderScimUsersResponse",
 }) as any as S.Schema<ListIdentityProviderScimUsersResponse>;
@@ -49011,13 +50279,15 @@ export const ListIdentityProvidersForAccountRequest = /*@__PURE__*/ S.suspend(
       page: S.optional(S.Number.pipe(T.Query())),
       perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
       scimEnabled: S.optional(S.String.pipe(T.Query("scim_enabled"))),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/accounts/{account_id}/access/identity_providers",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "GET",
+          uri: "/accounts/{account_id}/access/identity_providers",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListIdentityProvidersForAccountRequest",
 }) as any as S.Schema<ListIdentityProvidersForAccountRequest>;
@@ -49111,7 +50381,7 @@ export const ListIdentityProvidersForAccountResponse = /*@__PURE__*/ S.suspend(
         T.EnvelopePayload(),
       ),
       resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListIdentityProvidersForAccountResponse",
 }) as any as S.Schema<ListIdentityProvidersForAccountResponse>;
@@ -49132,13 +50402,15 @@ export const ListIdentityProvidersForZoneRequest = /*@__PURE__*/ S.suspend(() =>
     page: S.optional(S.Number.pipe(T.Query())),
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
     scimEnabled: S.optional(S.String.pipe(T.Query("scim_enabled"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/access/identity_providers",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/access/identity_providers",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListIdentityProvidersForZoneRequest",
 }) as any as S.Schema<ListIdentityProvidersForZoneRequest>;
@@ -49230,7 +50502,7 @@ export const ListIdentityProvidersForZoneResponse = /*@__PURE__*/ S.suspend(
     S.Struct({
       result: IdentityProvidersListForZoneResultList.pipe(T.EnvelopePayload()),
       resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListIdentityProvidersForZoneResponse",
 }) as any as S.Schema<ListIdentityProvidersForZoneResponse>;
@@ -49266,13 +50538,15 @@ export const ListNetworkHostnameRoutesRequest = /*@__PURE__*/ S.suspend(() =>
     page: S.optional(S.Number.pipe(T.Query())),
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
     tunnelId: S.optional(S.String.pipe(T.Query("tunnel_id"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/zerotrust/routes/hostname",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/zerotrust/routes/hostname",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListNetworkHostnameRoutesRequest",
 }) as any as S.Schema<ListNetworkHostnameRoutesRequest>;
@@ -49337,7 +50611,7 @@ export const ListNetworkHostnameRoutesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: NetworksHostnameRoutesListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListNetworkHostnameRoutesResponse",
 }) as any as S.Schema<ListNetworkHostnameRoutesResponse>;
@@ -49397,13 +50671,15 @@ export const ListNetworkRoutesRequest = /*@__PURE__*/ S.suspend(() =>
     ),
     tunnelId: S.optional(S.String.pipe(T.Query("tunnel_id"))),
     virtualNetworkId: S.optional(S.String.pipe(T.Query("virtual_network_id"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/teamnet/routes",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/teamnet/routes",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListNetworkRoutesRequest",
 }) as any as S.Schema<ListNetworkRoutesRequest>;
@@ -49473,7 +50749,7 @@ export const ListNetworkRoutesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: NetworksRoutesListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListNetworkRoutesResponse",
 }) as any as S.Schema<ListNetworkRoutesResponse>;
@@ -49542,13 +50818,15 @@ export const ListNetworkSubnetsRequest = /*@__PURE__*/ S.suspend(() =>
     subnetTypes: S.optional(
       NetworksSubnetsListRequestSubnetTypes.pipe(T.Query("subnet_types")),
     ),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/zerotrust/subnets",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/zerotrust/subnets",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListNetworkSubnetsRequest",
 }) as any as S.Schema<ListNetworkSubnetsRequest>;
@@ -49609,7 +50887,7 @@ export const ListNetworkSubnetsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: NetworksSubnetsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListNetworkSubnetsResponse",
 }) as any as S.Schema<ListNetworkSubnetsResponse>;
@@ -49636,13 +50914,15 @@ export const ListNetworkVirtualNetworksRequest = /*@__PURE__*/ S.suspend(() =>
     isDefaultNetwork: S.optional(S.Boolean.pipe(T.Query("is_default_network"))),
     isDeleted: S.optional(S.Boolean.pipe(T.Query("is_deleted"))),
     name: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/teamnet/virtual_networks",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/teamnet/virtual_networks",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListNetworkVirtualNetworksRequest",
 }) as any as S.Schema<ListNetworkVirtualNetworksRequest>;
@@ -49691,7 +50971,7 @@ export const ListNetworkVirtualNetworksResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: NetworksVirtualNetworksListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListNetworkVirtualNetworksResponse",
 }) as any as S.Schema<ListNetworkVirtualNetworksResponse>;
@@ -49703,13 +50983,15 @@ export interface ListOrganizationsForAccountRequest {
 export const ListOrganizationsForAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/access/organizations",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/access/organizations",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListOrganizationsForAccountRequest",
 }) as any as S.Schema<ListOrganizationsForAccountRequest>;
@@ -49983,7 +51265,7 @@ export const ListOrganizationsForAccountResponse = /*@__PURE__*/ S.suspend(() =>
     warpAuthSessionDuration: S.optional(
       S.String.pipe(T.Body("warp_auth_session_duration")),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListOrganizationsForAccountResponse",
 }) as any as S.Schema<ListOrganizationsForAccountResponse>;
@@ -49995,13 +51277,15 @@ export interface ListOrganizationsForZoneRequest {
 export const ListOrganizationsForZoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/access/organizations",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/access/organizations",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListOrganizationsForZoneRequest",
 }) as any as S.Schema<ListOrganizationsForZoneRequest>;
@@ -50274,7 +51558,7 @@ export const ListOrganizationsForZoneResponse = /*@__PURE__*/ S.suspend(() =>
     warpAuthSessionDuration: S.optional(
       S.String.pipe(T.Body("warp_auth_session_duration")),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListOrganizationsForZoneResponse",
 }) as any as S.Schema<ListOrganizationsForZoneResponse>;
@@ -50301,13 +51585,15 @@ export const ListResourceLibraryApplicationsRequest = /*@__PURE__*/ S.suspend(
       offset: S.optional(S.Number.pipe(T.Query())),
       orderBy: S.optional(S.String.pipe(T.Query("order_by"))),
       search: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/accounts/{account_id}/resource-library/applications",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "GET",
+          uri: "/accounts/{account_id}/resource-library/applications",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListResourceLibraryApplicationsRequest",
 }) as any as S.Schema<ListResourceLibraryApplicationsRequest>;
@@ -50450,7 +51736,7 @@ export const ListResourceLibraryApplicationsResponse = /*@__PURE__*/ S.suspend(
         T.EnvelopePayload(),
       ),
       resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListResourceLibraryApplicationsResponse",
 }) as any as S.Schema<ListResourceLibraryApplicationsResponse>;
@@ -50468,13 +51754,15 @@ export const ListResourceLibraryCategoriesRequest = /*@__PURE__*/ S.suspend(
       accountId: S.String.pipe(T.Label("account_id")),
       limit: S.optional(S.Number.pipe(T.Query())),
       offset: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/accounts/{account_id}/resource-library/categories",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "GET",
+          uri: "/accounts/{account_id}/resource-library/categories",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListResourceLibraryCategoriesRequest",
 }) as any as S.Schema<ListResourceLibraryCategoriesRequest>;
@@ -50518,7 +51806,7 @@ export const ListResourceLibraryCategoriesResponse = /*@__PURE__*/ S.suspend(
     S.Struct({
       result: ResourceLibraryCategoriesListResultList.pipe(T.EnvelopePayload()),
       resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListResourceLibraryCategoriesResponse",
 }) as any as S.Schema<ListResourceLibraryCategoriesResponse>;
@@ -50529,13 +51817,15 @@ export interface ListRiskScoringIntegrationsRequest {
 export const ListRiskScoringIntegrationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/zt_risk_scoring/integrations",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/zt_risk_scoring/integrations",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListRiskScoringIntegrationsRequest",
 }) as any as S.Schema<ListRiskScoringIntegrationsRequest>;
@@ -50598,7 +51888,7 @@ export const ListRiskScoringIntegrationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: RiskScoringIntegrationsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListRiskScoringIntegrationsResponse",
 }) as any as S.Schema<ListRiskScoringIntegrationsResponse>;
@@ -50609,13 +51899,15 @@ export interface ListTenantGatewayRuleRequest {
 export const ListTenantGatewayRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/gateway/rules/tenant",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/gateway/rules/tenant",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListTenantGatewayRuleRequest",
 }) as any as S.Schema<ListTenantGatewayRuleRequest>;
@@ -51357,7 +52649,7 @@ export const ListTenantGatewayRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: GatewayRulesListTenantResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListTenantGatewayRuleResponse",
 }) as any as S.Schema<ListTenantGatewayRuleResponse>;
@@ -51406,13 +52698,15 @@ export const ListTunnelCloudflaredsRequest = /*@__PURE__*/ S.suspend(() =>
     uuid: S.optional(S.String.pipe(T.Query())),
     wasActiveAt: S.optional(S.String.pipe(T.Query("was_active_at"))),
     wasInactiveAt: S.optional(S.String.pipe(T.Query("was_inactive_at"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/cfd_tunnel",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/cfd_tunnel",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListTunnelCloudflaredsRequest",
 }) as any as S.Schema<ListTunnelCloudflaredsRequest>;
@@ -51549,7 +52843,7 @@ export const ListTunnelCloudflaredsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: TunnelsCloudflaredListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListTunnelCloudflaredsResponse",
 }) as any as S.Schema<ListTunnelCloudflaredsResponse>;
@@ -51615,9 +52909,15 @@ export const ListTunnelsRequest = /*@__PURE__*/ S.suspend(() =>
     uuid: S.optional(S.String.pipe(T.Query())),
     wasActiveAt: S.optional(S.String.pipe(T.Query("was_active_at"))),
     wasInactiveAt: S.optional(S.String.pipe(T.Query("was_inactive_at"))),
-  }).pipe(
-    T.Http({ method: "GET", uri: "/accounts/{account_id}/tunnels", code: 200 }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/tunnels",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListTunnelsRequest",
 }) as any as S.Schema<ListTunnelsRequest>;
@@ -51661,7 +52961,7 @@ export const ListTunnelsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: TunnelsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListTunnelsResponse",
 }) as any as S.Schema<ListTunnelsResponse>;
@@ -51710,13 +53010,15 @@ export const ListTunnelWarpConnectorsRequest = /*@__PURE__*/ S.suspend(() =>
     uuid: S.optional(S.String.pipe(T.Query())),
     wasActiveAt: S.optional(S.String.pipe(T.Query("was_active_at"))),
     wasInactiveAt: S.optional(S.String.pipe(T.Query("was_inactive_at"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/warp_connector",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/warp_connector",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListTunnelWarpConnectorsRequest",
 }) as any as S.Schema<ListTunnelWarpConnectorsRequest>;
@@ -51839,7 +53141,7 @@ export const ListTunnelWarpConnectorsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: TunnelsWarpConnectorListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListTunnelWarpConnectorsResponse",
 }) as any as S.Schema<ListTunnelWarpConnectorsResponse>;
@@ -51854,13 +53156,15 @@ export const LiveDexFleetStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     sinceMinutes: S.Number.pipe(T.Query("since_minutes")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/dex/fleet-status/live",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/dex/fleet-status/live",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "LiveDexFleetStatusRequest",
 }) as any as S.Schema<LiveDexFleetStatusRequest>;
@@ -52007,7 +53311,7 @@ export interface LiveDexFleetStatusResponse {
 export const LiveDexFleetStatusResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deviceStats: S.optional(DexFleetStatusLiveResponseDeviceStats),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "LiveDexFleetStatusResponse",
 }) as any as S.Schema<LiveDexFleetStatusResponse>;
@@ -52041,13 +53345,15 @@ export const NetworkPathDexTracerouteTestRequest = /*@__PURE__*/ S.suspend(() =>
     from: S.String.pipe(T.Query()),
     interval: DexTracerouteTestsNetworkPathRequestInterval.pipe(T.Query()),
     to: S.String.pipe(T.Query()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/dex/traceroute-tests/{test_id}/network-path",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/dex/traceroute-tests/{test_id}/network-path",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "NetworkPathDexTracerouteTestRequest",
 }) as any as S.Schema<NetworkPathDexTracerouteTestRequest>;
@@ -52152,7 +53458,7 @@ export const NetworkPathDexTracerouteTestResponse = /*@__PURE__*/ S.suspend(
       name: S.optional(S.String),
       networkPath: S.optional(DexTracerouteTestsNetworkPathResponseNetworkPath),
       url: S.optional(S.String),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "NetworkPathDexTracerouteTestResponse",
 }) as any as S.Schema<NetworkPathDexTracerouteTestResponse>;
@@ -52176,13 +53482,15 @@ export const OverTimeDexFleetStatusRequest = /*@__PURE__*/ S.suspend(() =>
     to: S.String.pipe(T.Query()),
     colo: S.optional(S.String.pipe(T.Query())),
     deviceId: S.optional(S.String.pipe(T.Query("device_id"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/dex/fleet-status/over-time",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/dex/fleet-status/over-time",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "OverTimeDexFleetStatusRequest",
 }) as any as S.Schema<OverTimeDexFleetStatusRequest>;
@@ -52261,7 +53569,7 @@ export interface OverTimeDexFleetStatusResponse {
 export const OverTimeDexFleetStatusResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deviceStats: S.optional(DexFleetStatusOverTimeResponseDeviceStats),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "OverTimeDexFleetStatusResponse",
 }) as any as S.Schema<OverTimeDexFleetStatusResponse>;
@@ -52283,13 +53591,15 @@ export const PatchAccessApplicationSettingForAccountRequest =
       appId: S.String.pipe(T.Label("app_id")),
       allowIframe: S.optional(S.Boolean.pipe(T.Body("allow_iframe"))),
       skipInterstitial: S.optional(S.Boolean.pipe(T.Body("skip_interstitial"))),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "/accounts/{account_id}/access/apps/{app_id}/settings",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "PATCH",
+          uri: "/accounts/{account_id}/access/apps/{app_id}/settings",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "PatchAccessApplicationSettingForAccountRequest",
   }) as any as S.Schema<PatchAccessApplicationSettingForAccountRequest>;
@@ -52306,7 +53616,7 @@ export const PatchAccessApplicationSettingForAccountResponse =
     S.Struct({
       allowIframe: S.optional(S.Boolean.pipe(T.Body("allow_iframe"))),
       skipInterstitial: S.optional(S.Boolean.pipe(T.Body("skip_interstitial"))),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "PatchAccessApplicationSettingForAccountResponse",
   }) as any as S.Schema<PatchAccessApplicationSettingForAccountResponse>;
@@ -52328,13 +53638,15 @@ export const PatchAccessApplicationSettingForZoneRequest =
       appId: S.String.pipe(T.Label("app_id")),
       allowIframe: S.optional(S.Boolean.pipe(T.Body("allow_iframe"))),
       skipInterstitial: S.optional(S.Boolean.pipe(T.Body("skip_interstitial"))),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "/zones/{zone_id}/access/apps/{app_id}/settings",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "PATCH",
+          uri: "/zones/{zone_id}/access/apps/{app_id}/settings",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "PatchAccessApplicationSettingForZoneRequest",
   }) as any as S.Schema<PatchAccessApplicationSettingForZoneRequest>;
@@ -52351,7 +53663,7 @@ export const PatchAccessApplicationSettingForZoneResponse =
     S.Struct({
       allowIframe: S.optional(S.Boolean.pipe(T.Body("allow_iframe"))),
       skipInterstitial: S.optional(S.Boolean.pipe(T.Body("skip_interstitial"))),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "PatchAccessApplicationSettingForZoneResponse",
   }) as any as S.Schema<PatchAccessApplicationSettingForZoneResponse>;
@@ -52371,13 +53683,15 @@ export const PatchConnectivitySettingRequest = /*@__PURE__*/ S.suspend(() =>
     offrampWarpEnabled: S.optional(
       S.Boolean.pipe(T.Body("offramp_warp_enabled")),
     ),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/accounts/{account_id}/zerotrust/connectivity_settings",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/accounts/{account_id}/zerotrust/connectivity_settings",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchConnectivitySettingRequest",
 }) as any as S.Schema<PatchConnectivitySettingRequest>;
@@ -52395,7 +53709,7 @@ export const PatchConnectivitySettingResponse = /*@__PURE__*/ S.suspend(() =>
     offrampWarpEnabled: S.optional(
       S.Boolean.pipe(T.Body("offramp_warp_enabled")),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchConnectivitySettingResponse",
 }) as any as S.Schema<PatchConnectivitySettingResponse>;
@@ -52454,13 +53768,15 @@ export const PatchDeviceDeploymentGroupRequest = /*@__PURE__*/ S.suspend(() =>
         T.Body("version_config"),
       ),
     ),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/accounts/{account_id}/devices/deployment-groups/{group_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/accounts/{account_id}/devices/deployment-groups/{group_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchDeviceDeploymentGroupRequest",
 }) as any as S.Schema<PatchDeviceDeploymentGroupRequest>;
@@ -52523,7 +53839,7 @@ export const PatchDeviceDeploymentGroupResponse = /*@__PURE__*/ S.suspend(() =>
         T.Body("policy_ids"),
       ),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchDeviceDeploymentGroupResponse",
 }) as any as S.Schema<PatchDeviceDeploymentGroupResponse>;
@@ -52554,13 +53870,15 @@ export const PatchDeviceIpProfileRequest = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     precedence: S.optional(S.Number),
     subnetId: S.optional(S.String.pipe(T.Body("subnet_id"))),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/accounts/{account_id}/devices/ip-profiles/{profile_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/accounts/{account_id}/devices/ip-profiles/{profile_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchDeviceIpProfileRequest",
 }) as any as S.Schema<PatchDeviceIpProfileRequest>;
@@ -52597,7 +53915,7 @@ export const PatchDeviceIpProfileResponse = /*@__PURE__*/ S.suspend(() =>
     precedence: S.Number,
     subnetId: S.String.pipe(T.Body("subnet_id")),
     updatedAt: S.String.pipe(T.Body("updated_at")),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchDeviceIpProfileResponse",
 }) as any as S.Schema<PatchDeviceIpProfileResponse>;
@@ -52884,13 +54202,15 @@ export const PatchDevicePolicyCustomRequest = /*@__PURE__*/ S.suspend(() =>
         T.Body("virtual_networks"),
       ),
     ),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/accounts/{account_id}/devices/policy/{policy_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/accounts/{account_id}/devices/policy/{policy_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchDevicePolicyCustomRequest",
 }) as any as S.Schema<PatchDevicePolicyCustomRequest>;
@@ -53253,7 +54573,7 @@ export const PatchDevicePolicyCustomResponse = /*@__PURE__*/ S.suspend(() =>
         T.Body("virtual_networks"),
       ),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchDevicePolicyCustomResponse",
 }) as any as S.Schema<PatchDevicePolicyCustomResponse>;
@@ -53523,13 +54843,15 @@ export const PatchDevicePolicyDefaultRequest = /*@__PURE__*/ S.suspend(() =>
         T.Body("virtual_networks"),
       ),
     ),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/accounts/{account_id}/devices/policy",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/accounts/{account_id}/devices/policy",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchDevicePolicyDefaultRequest",
 }) as any as S.Schema<PatchDevicePolicyDefaultRequest>;
@@ -53843,7 +55165,7 @@ export const PatchDevicePolicyDefaultResponse = /*@__PURE__*/ S.suspend(() =>
         T.Body("virtual_networks"),
       ),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchDevicePolicyDefaultResponse",
 }) as any as S.Schema<PatchDevicePolicyDefaultResponse>;
@@ -53858,13 +55180,15 @@ export const PatchDevicePolicyDefaultCertificateRequest =
     S.Struct({
       zoneId: S.String.pipe(T.Label("zone_id")),
       enabled: S.Boolean,
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "/zones/{zone_id}/devices/policy/certificates",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "PATCH",
+          uri: "/zones/{zone_id}/devices/policy/certificates",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "PatchDevicePolicyDefaultCertificateRequest",
   }) as any as S.Schema<PatchDevicePolicyDefaultCertificateRequest>;
@@ -53878,7 +55202,7 @@ export const PatchDevicePolicyDefaultCertificateResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       enabled: S.Boolean,
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "PatchDevicePolicyDefaultCertificateResponse",
   }) as any as S.Schema<PatchDevicePolicyDefaultCertificateResponse>;
@@ -53978,13 +55302,15 @@ export const PatchDevicePostureIntegrationRequest = /*@__PURE__*/ S.suspend(
       interval: S.optional(S.String),
       name: S.optional(S.String),
       type: S.optional(DevicesPostureIntegrationsEditRequestType),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "/accounts/{account_id}/devices/posture/integration/{integration_id}",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "PATCH",
+          uri: "/accounts/{account_id}/devices/posture/integration/{integration_id}",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchDevicePostureIntegrationRequest",
 }) as any as S.Schema<PatchDevicePostureIntegrationRequest>;
@@ -54037,7 +55363,7 @@ export const PatchDevicePostureIntegrationResponse = /*@__PURE__*/ S.suspend(
       interval: S.optional(S.String),
       name: S.optional(S.String),
       type: S.optional(DevicesPostureIntegrationsEditResponseType),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchDevicePostureIntegrationResponse",
 }) as any as S.Schema<PatchDevicePostureIntegrationResponse>;
@@ -54089,13 +55415,15 @@ export const PatchDeviceSettingRequest = /*@__PURE__*/ S.suspend(() =>
       S.Boolean.pipe(T.Body("root_certificate_installation_enabled")),
     ),
     useZtVirtualIp: S.optional(S.Boolean.pipe(T.Body("use_zt_virtual_ip"))),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/accounts/{account_id}/devices/settings",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/accounts/{account_id}/devices/settings",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchDeviceSettingRequest",
 }) as any as S.Schema<PatchDeviceSettingRequest>;
@@ -54146,7 +55474,7 @@ export const PatchDeviceSettingResponse = /*@__PURE__*/ S.suspend(() =>
       S.Boolean.pipe(T.Body("root_certificate_installation_enabled")),
     ),
     useZtVirtualIp: S.optional(S.Boolean.pipe(T.Body("use_zt_virtual_ip"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchDeviceSettingResponse",
 }) as any as S.Schema<PatchDeviceSettingResponse>;
@@ -54169,13 +55497,15 @@ export const PatchDexRuleRequest = /*@__PURE__*/ S.suspend(() =>
     description: S.optional(S.String),
     match: S.optional(S.String),
     name: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/accounts/{account_id}/dex/rules/{rule_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/accounts/{account_id}/dex/rules/{rule_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchDexRuleRequest",
 }) as any as S.Schema<PatchDexRuleRequest>;
@@ -54259,7 +55589,7 @@ export const PatchDexRuleResponse = /*@__PURE__*/ S.suspend(() =>
       DexRulesUpdateResponseTargetedTestsList.pipe(T.Body("targeted_tests")),
     ),
     updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchDexRuleResponse",
 }) as any as S.Schema<PatchDexRuleResponse>;
@@ -54312,13 +55642,15 @@ export const PatchDlpSettingRequest = /*@__PURE__*/ S.suspend(() =>
     payloadLogging: S.optional(
       DlpSettingsEditRequestPayloadLogging.pipe(T.Body("payload_logging")),
     ),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/accounts/{account_id}/dlp/settings",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/accounts/{account_id}/dlp/settings",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchDlpSettingRequest",
 }) as any as S.Schema<PatchDlpSettingRequest>;
@@ -54369,7 +55701,7 @@ export const PatchDlpSettingResponse = /*@__PURE__*/ S.suspend(() =>
     payloadLogging: DlpSettingsEditResponsePayloadLogging.pipe(
       T.Body("payload_logging"),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchDlpSettingResponse",
 }) as any as S.Schema<PatchDlpSettingResponse>;
@@ -54804,13 +56136,15 @@ export const PatchGatewayConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     settings: S.optional(GatewayConfigurationsEditRequestSettings),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/accounts/{account_id}/gateway/configuration",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/accounts/{account_id}/gateway/configuration",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchGatewayConfigurationRequest",
 }) as any as S.Schema<PatchGatewayConfigurationRequest>;
@@ -55249,7 +56583,7 @@ export const PatchGatewayConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
     createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
     settings: S.optional(GatewayConfigurationsEditResponseSettings),
     updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchGatewayConfigurationResponse",
 }) as any as S.Schema<PatchGatewayConfigurationResponse>;
@@ -55295,13 +56629,15 @@ export const PatchGatewayListRequest = /*@__PURE__*/ S.suspend(() =>
     listId: S.String.pipe(T.Label("list_id")),
     append: S.optional(GatewayListsEditRequestAppendList),
     remove: S.optional(GatewayListsEditRequestRemoveList),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/accounts/{account_id}/gateway/lists/{list_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/accounts/{account_id}/gateway/lists/{list_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchGatewayListRequest",
 }) as any as S.Schema<PatchGatewayListRequest>;
@@ -55363,7 +56699,7 @@ export const PatchGatewayListResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     type: S.optional(GatewayListsEditResponseType),
     updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchGatewayListResponse",
 }) as any as S.Schema<PatchGatewayListResponse>;
@@ -55387,13 +56723,15 @@ export const PatchGatewayProxyEndpointRequest = /*@__PURE__*/ S.suspend(() =>
     proxyEndpointId: S.String.pipe(T.Label("proxy_endpoint_id")),
     ips: S.optional(GatewayProxyEndpointsEditRequestIpsList),
     name: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/accounts/{account_id}/gateway/proxy_endpoints/{proxy_endpoint_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/accounts/{account_id}/gateway/proxy_endpoints/{proxy_endpoint_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchGatewayProxyEndpointRequest",
 }) as any as S.Schema<PatchGatewayProxyEndpointRequest>;
@@ -55411,7 +56749,7 @@ export const PatchGatewayProxyEndpointResponse = /*@__PURE__*/ S.suspend(() =>
     IdentityObjectKindNameId3More__: S.Unknown.pipe(
       T.Body("Identity object { kind, name, id, 3 more }"),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchGatewayProxyEndpointResponse",
 }) as any as S.Schema<PatchGatewayProxyEndpointResponse>;
@@ -55435,13 +56773,15 @@ export const PatchNetworkHostnameRouteRequest = /*@__PURE__*/ S.suspend(() =>
     comment: S.optional(S.String),
     hostname: S.optional(S.String),
     tunnelId: S.optional(S.String.pipe(T.Body("tunnel_id"))),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/accounts/{account_id}/zerotrust/routes/hostname/{hostname_route_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/accounts/{account_id}/zerotrust/routes/hostname/{hostname_route_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchNetworkHostnameRouteRequest",
 }) as any as S.Schema<PatchNetworkHostnameRouteRequest>;
@@ -55484,7 +56824,7 @@ export const PatchNetworkHostnameRouteResponse = /*@__PURE__*/ S.suspend(() =>
     ),
     tunnelId: S.optional(S.String.pipe(T.Body("tunnel_id"))),
     tunnelName: S.optional(S.String.pipe(T.Body("tunnel_name"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchNetworkHostnameRouteResponse",
 }) as any as S.Schema<PatchNetworkHostnameRouteResponse>;
@@ -55511,13 +56851,15 @@ export const PatchNetworkRouteRequest = /*@__PURE__*/ S.suspend(() =>
     network: S.optional(S.String),
     tunnelId: S.optional(S.String.pipe(T.Body("tunnel_id"))),
     virtualNetworkId: S.optional(S.String.pipe(T.Body("virtual_network_id"))),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/accounts/{account_id}/teamnet/routes/{route_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/accounts/{account_id}/teamnet/routes/{route_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchNetworkRouteRequest",
 }) as any as S.Schema<PatchNetworkRouteRequest>;
@@ -55548,7 +56890,7 @@ export const PatchNetworkRouteResponse = /*@__PURE__*/ S.suspend(() =>
     network: S.optional(S.String),
     tunnelId: S.optional(S.String.pipe(T.Body("tunnel_id"))),
     virtualNetworkId: S.optional(S.String.pipe(T.Body("virtual_network_id"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchNetworkRouteResponse",
 }) as any as S.Schema<PatchNetworkRouteResponse>;
@@ -55563,13 +56905,15 @@ export const PatchNetworkRouteNetworkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     ipNetworkEncoded: S.String.pipe(T.Label("ip_network_encoded")),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/accounts/{account_id}/teamnet/routes/network/{ip_network_encoded}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/accounts/{account_id}/teamnet/routes/network/{ip_network_encoded}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchNetworkRouteNetworkRequest",
 }) as any as S.Schema<PatchNetworkRouteNetworkRequest>;
@@ -55600,7 +56944,7 @@ export const PatchNetworkRouteNetworkResponse = /*@__PURE__*/ S.suspend(() =>
     network: S.optional(S.String),
     tunnelId: S.optional(S.String.pipe(T.Body("tunnel_id"))),
     virtualNetworkId: S.optional(S.String.pipe(T.Body("virtual_network_id"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchNetworkRouteNetworkResponse",
 }) as any as S.Schema<PatchNetworkRouteNetworkResponse>;
@@ -55635,13 +56979,15 @@ export const PatchNetworkSubnetCloudflareSourceRequest =
       comment: S.optional(S.String),
       name: S.optional(S.String),
       network: S.optional(S.String),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "/accounts/{account_id}/zerotrust/subnets/cloudflare_source/{address_family}",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "PATCH",
+          uri: "/accounts/{account_id}/zerotrust/subnets/cloudflare_source/{address_family}",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "PatchNetworkSubnetCloudflareSourceRequest",
   }) as any as S.Schema<PatchNetworkSubnetCloudflareSourceRequest>;
@@ -55689,7 +57035,7 @@ export const PatchNetworkSubnetCloudflareSourceResponse =
           T.Body("subnet_type"),
         ),
       ),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "PatchNetworkSubnetCloudflareSourceResponse",
   }) as any as S.Schema<PatchNetworkSubnetCloudflareSourceResponse>;
@@ -55716,13 +57062,15 @@ export const PatchNetworkSubnetWarpRequest = /*@__PURE__*/ S.suspend(() =>
     isDefaultNetwork: S.optional(S.Boolean.pipe(T.Body("is_default_network"))),
     name: S.optional(S.String),
     network: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/accounts/{account_id}/zerotrust/subnets/warp/{subnet_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/accounts/{account_id}/zerotrust/subnets/warp/{subnet_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchNetworkSubnetWarpRequest",
 }) as any as S.Schema<PatchNetworkSubnetWarpRequest>;
@@ -55764,7 +57112,7 @@ export const PatchNetworkSubnetWarpResponse = /*@__PURE__*/ S.suspend(() =>
     subnetType: S.optional(
       NetworksSubnetsWarpEditResponseSubnetType.pipe(T.Body("subnet_type")),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchNetworkSubnetWarpResponse",
 }) as any as S.Schema<PatchNetworkSubnetWarpResponse>;
@@ -55788,13 +57136,15 @@ export const PatchNetworkVirtualNetworkRequest = /*@__PURE__*/ S.suspend(() =>
     comment: S.optional(S.String),
     isDefaultNetwork: S.optional(S.Boolean.pipe(T.Body("is_default_network"))),
     name: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/accounts/{account_id}/teamnet/virtual_networks/{virtual_network_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/accounts/{account_id}/teamnet/virtual_networks/{virtual_network_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchNetworkVirtualNetworkRequest",
 }) as any as S.Schema<PatchNetworkVirtualNetworkRequest>;
@@ -55822,7 +57172,7 @@ export const PatchNetworkVirtualNetworkResponse = /*@__PURE__*/ S.suspend(() =>
     isDefaultNetwork: S.Boolean.pipe(T.Body("is_default_network")),
     name: S.String,
     deletedAt: S.optional(S.String.pipe(T.Body("deleted_at"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchNetworkVirtualNetworkResponse",
 }) as any as S.Schema<PatchNetworkVirtualNetworkResponse>;
@@ -55859,13 +57209,15 @@ export const PatchSeatRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     body: SeatsEditRequestBodyList,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/accounts/{account_id}/access/seats",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/accounts/{account_id}/access/seats",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchSeatRequest",
 }) as any as S.Schema<PatchSeatRequest>;
@@ -55907,7 +57259,7 @@ export const PatchSeatResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: SeatsEditResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchSeatResponse",
 }) as any as S.Schema<PatchSeatResponse>;
@@ -55928,13 +57280,15 @@ export const PatchTunnelCloudflaredRequest = /*@__PURE__*/ S.suspend(() =>
     tunnelId: S.String.pipe(T.Label("tunnel_id")),
     name: S.optional(S.String),
     tunnelSecret: S.optional(S.String.pipe(T.Body("tunnel_secret"))),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/accounts/{account_id}/cfd_tunnel/{tunnel_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/accounts/{account_id}/cfd_tunnel/{tunnel_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchTunnelCloudflaredRequest",
 }) as any as S.Schema<PatchTunnelCloudflaredRequest>;
@@ -56051,7 +57405,7 @@ export const PatchTunnelCloudflaredResponse = /*@__PURE__*/ S.suspend(() =>
     tunType: S.optional(
       TunnelsCloudflaredEditResponseTunType.pipe(T.Body("tun_type")),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchTunnelCloudflaredResponse",
 }) as any as S.Schema<PatchTunnelCloudflaredResponse>;
@@ -56072,13 +57426,15 @@ export const PatchTunnelWarpConnectorRequest = /*@__PURE__*/ S.suspend(() =>
     tunnelId: S.String.pipe(T.Label("tunnel_id")),
     name: S.optional(S.String),
     tunnelSecret: S.optional(S.String.pipe(T.Body("tunnel_secret"))),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/accounts/{account_id}/warp_connector/{tunnel_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/accounts/{account_id}/warp_connector/{tunnel_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchTunnelWarpConnectorRequest",
 }) as any as S.Schema<PatchTunnelWarpConnectorRequest>;
@@ -56181,7 +57537,7 @@ export const PatchTunnelWarpConnectorResponse = /*@__PURE__*/ S.suspend(() =>
     tunType: S.optional(
       TunnelsWarpConnectorEditResponseTunType.pipe(T.Body("tun_type")),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchTunnelWarpConnectorResponse",
 }) as any as S.Schema<PatchTunnelWarpConnectorResponse>;
@@ -56216,13 +57572,15 @@ export const PercentilesDexTracerouteTestRequest = /*@__PURE__*/ S.suspend(() =>
     deviceId: S.optional(
       DexTracerouteTestsPercentilesRequestDeviceIdList.pipe(T.Query()),
     ),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/dex/traceroute-tests/{test_id}/percentiles",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/dex/traceroute-tests/{test_id}/percentiles",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PercentilesDexTracerouteTestRequest",
 }) as any as S.Schema<PercentilesDexTracerouteTestRequest>;
@@ -56261,7 +57619,7 @@ export const PercentilesDexTracerouteTestResponse = /*@__PURE__*/ S.suspend(
       hopsCount: S.optional(DexTracerouteTestsPercentilesResponseHopsCount),
       packetLossPct: S.optional(S.Unknown),
       roundTripTimeMs: S.optional(S.Unknown),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PercentilesDexTracerouteTestResponse",
 }) as any as S.Schema<PercentilesDexTracerouteTestResponse>;
@@ -56283,13 +57641,15 @@ export const PutAccessApplicationSettingForAccountRequest =
       appId: S.String.pipe(T.Label("app_id")),
       allowIframe: S.optional(S.Boolean.pipe(T.Body("allow_iframe"))),
       skipInterstitial: S.optional(S.Boolean.pipe(T.Body("skip_interstitial"))),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/accounts/{account_id}/access/apps/{app_id}/settings",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "PUT",
+          uri: "/accounts/{account_id}/access/apps/{app_id}/settings",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "PutAccessApplicationSettingForAccountRequest",
   }) as any as S.Schema<PutAccessApplicationSettingForAccountRequest>;
@@ -56306,7 +57666,7 @@ export const PutAccessApplicationSettingForAccountResponse =
     S.Struct({
       allowIframe: S.optional(S.Boolean.pipe(T.Body("allow_iframe"))),
       skipInterstitial: S.optional(S.Boolean.pipe(T.Body("skip_interstitial"))),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "PutAccessApplicationSettingForAccountResponse",
   }) as any as S.Schema<PutAccessApplicationSettingForAccountResponse>;
@@ -56328,13 +57688,15 @@ export const PutAccessApplicationSettingForZoneRequest =
       appId: S.String.pipe(T.Label("app_id")),
       allowIframe: S.optional(S.Boolean.pipe(T.Body("allow_iframe"))),
       skipInterstitial: S.optional(S.Boolean.pipe(T.Body("skip_interstitial"))),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/zones/{zone_id}/access/apps/{app_id}/settings",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "PUT",
+          uri: "/zones/{zone_id}/access/apps/{app_id}/settings",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "PutAccessApplicationSettingForZoneRequest",
   }) as any as S.Schema<PutAccessApplicationSettingForZoneRequest>;
@@ -56351,7 +57713,7 @@ export const PutAccessApplicationSettingForZoneResponse =
     S.Struct({
       allowIframe: S.optional(S.Boolean.pipe(T.Body("allow_iframe"))),
       skipInterstitial: S.optional(S.Boolean.pipe(T.Body("skip_interstitial"))),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "PutAccessApplicationSettingForZoneResponse",
   }) as any as S.Schema<PutAccessApplicationSettingForZoneResponse>;
@@ -56394,13 +57756,15 @@ export const PutAccessCertificateSettingForAccountRequest =
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
       settings: AccessCertificatesSettingsUpdateForAccountRequestSettingsList,
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/accounts/{account_id}/access/certificates/settings",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "PUT",
+          uri: "/accounts/{account_id}/access/certificates/settings",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "PutAccessCertificateSettingForAccountRequest",
   }) as any as S.Schema<PutAccessCertificateSettingForAccountRequest>;
@@ -56446,7 +57810,7 @@ export const PutAccessCertificateSettingForAccountResponse =
         T.EnvelopePayload(),
       ),
       resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "PutAccessCertificateSettingForAccountResponse",
   }) as any as S.Schema<PutAccessCertificateSettingForAccountResponse>;
@@ -56489,13 +57853,15 @@ export const PutAccessCertificateSettingForZoneRequest =
     S.Struct({
       zoneId: S.String.pipe(T.Label("zone_id")),
       settings: AccessCertificatesSettingsUpdateForZoneRequestSettingsList,
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/zones/{zone_id}/access/certificates/settings",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "PUT",
+          uri: "/zones/{zone_id}/access/certificates/settings",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "PutAccessCertificateSettingForZoneRequest",
   }) as any as S.Schema<PutAccessCertificateSettingForZoneRequest>;
@@ -56541,7 +57907,7 @@ export const PutAccessCertificateSettingForZoneResponse =
         T.EnvelopePayload(),
       ),
       resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "PutAccessCertificateSettingForZoneResponse",
   }) as any as S.Schema<PutAccessCertificateSettingForZoneResponse>;
@@ -56558,13 +57924,15 @@ export const PutAccessKeyRequest = /*@__PURE__*/ S.suspend(() =>
     keyRotationIntervalDays: S.Number.pipe(
       T.Body("key_rotation_interval_days"),
     ),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/access/keys",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/access/keys",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutAccessKeyRequest",
 }) as any as S.Schema<PutAccessKeyRequest>;
@@ -56589,7 +57957,7 @@ export const PutAccessKeyResponse = /*@__PURE__*/ S.suspend(() =>
     lastKeyRotationAt: S.optional(
       S.String.pipe(T.Body("last_key_rotation_at")),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutAccessKeyResponse",
 }) as any as S.Schema<PutAccessKeyResponse>;
@@ -56635,13 +58003,15 @@ export const PutDevicePolicyCustomExcludeRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     policyId: S.String.pipe(T.Label("policy_id")),
     body: DevicesPoliciesCustomExcludesUpdateRequestBodyList,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/devices/policy/{policy_id}/exclude",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/devices/policy/{policy_id}/exclude",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutDevicePolicyCustomExcludeRequest",
 }) as any as S.Schema<PutDevicePolicyCustomExcludeRequest>;
@@ -56690,7 +58060,7 @@ export const PutDevicePolicyCustomExcludeResponse = /*@__PURE__*/ S.suspend(
         T.EnvelopePayload(),
       ),
       resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutDevicePolicyCustomExcludeResponse",
 }) as any as S.Schema<PutDevicePolicyCustomExcludeResponse>;
@@ -56743,13 +58113,15 @@ export const PutDevicePolicyCustomFallbackDomainRequest =
       accountId: S.String.pipe(T.Label("account_id")),
       policyId: S.String.pipe(T.Label("policy_id")),
       domains: DevicesPoliciesCustomFallbackDomainsUpdateRequestDomainsList,
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/accounts/{account_id}/devices/policy/{policy_id}/fallback_domains",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "PUT",
+          uri: "/accounts/{account_id}/devices/policy/{policy_id}/fallback_domains",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "PutDevicePolicyCustomFallbackDomainRequest",
   }) as any as S.Schema<PutDevicePolicyCustomFallbackDomainRequest>;
@@ -56804,7 +58176,7 @@ export const PutDevicePolicyCustomFallbackDomainResponse =
         T.EnvelopePayload(),
       ),
       resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "PutDevicePolicyCustomFallbackDomainResponse",
   }) as any as S.Schema<PutDevicePolicyCustomFallbackDomainResponse>;
@@ -56850,13 +58222,15 @@ export const PutDevicePolicyCustomIncludeRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     policyId: S.String.pipe(T.Label("policy_id")),
     body: DevicesPoliciesCustomIncludesUpdateRequestBodyList,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/devices/policy/{policy_id}/include",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/devices/policy/{policy_id}/include",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutDevicePolicyCustomIncludeRequest",
 }) as any as S.Schema<PutDevicePolicyCustomIncludeRequest>;
@@ -56905,7 +58279,7 @@ export const PutDevicePolicyCustomIncludeResponse = /*@__PURE__*/ S.suspend(
         T.EnvelopePayload(),
       ),
       resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutDevicePolicyCustomIncludeResponse",
 }) as any as S.Schema<PutDevicePolicyCustomIncludeResponse>;
@@ -56950,13 +58324,15 @@ export const PutDevicePolicyDefaultExcludeRequest = /*@__PURE__*/ S.suspend(
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
       body: DevicesPoliciesDefaultExcludesUpdateRequestBodyList,
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/accounts/{account_id}/devices/policy/exclude",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "PUT",
+          uri: "/accounts/{account_id}/devices/policy/exclude",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutDevicePolicyDefaultExcludeRequest",
 }) as any as S.Schema<PutDevicePolicyDefaultExcludeRequest>;
@@ -57005,7 +58381,7 @@ export const PutDevicePolicyDefaultExcludeResponse = /*@__PURE__*/ S.suspend(
         T.EnvelopePayload(),
       ),
       resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutDevicePolicyDefaultExcludeResponse",
 }) as any as S.Schema<PutDevicePolicyDefaultExcludeResponse>;
@@ -57056,13 +58432,15 @@ export const PutDevicePolicyDefaultFallbackDomainRequest =
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
       domains: DevicesPoliciesDefaultFallbackDomainsUpdateRequestDomainsList,
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/accounts/{account_id}/devices/policy/fallback_domains",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "PUT",
+          uri: "/accounts/{account_id}/devices/policy/fallback_domains",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "PutDevicePolicyDefaultFallbackDomainRequest",
   }) as any as S.Schema<PutDevicePolicyDefaultFallbackDomainRequest>;
@@ -57117,7 +58495,7 @@ export const PutDevicePolicyDefaultFallbackDomainResponse =
         T.EnvelopePayload(),
       ),
       resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "PutDevicePolicyDefaultFallbackDomainResponse",
   }) as any as S.Schema<PutDevicePolicyDefaultFallbackDomainResponse>;
@@ -57162,13 +58540,15 @@ export const PutDevicePolicyDefaultIncludeRequest = /*@__PURE__*/ S.suspend(
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
       body: DevicesPoliciesDefaultIncludesUpdateRequestBodyList,
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/accounts/{account_id}/devices/policy/include",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "PUT",
+          uri: "/accounts/{account_id}/devices/policy/include",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutDevicePolicyDefaultIncludeRequest",
 }) as any as S.Schema<PutDevicePolicyDefaultIncludeRequest>;
@@ -57217,7 +58597,7 @@ export const PutDevicePolicyDefaultIncludeResponse = /*@__PURE__*/ S.suspend(
         T.EnvelopePayload(),
       ),
       resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutDevicePolicyDefaultIncludeResponse",
 }) as any as S.Schema<PutDevicePolicyDefaultIncludeResponse>;
@@ -57269,13 +58649,15 @@ export const PutDeviceSettingRequest = /*@__PURE__*/ S.suspend(() =>
       S.Boolean.pipe(T.Body("root_certificate_installation_enabled")),
     ),
     useZtVirtualIp: S.optional(S.Boolean.pipe(T.Body("use_zt_virtual_ip"))),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/devices/settings",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/devices/settings",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutDeviceSettingRequest",
 }) as any as S.Schema<PutDeviceSettingRequest>;
@@ -57326,7 +58708,7 @@ export const PutDeviceSettingResponse = /*@__PURE__*/ S.suspend(() =>
       S.Boolean.pipe(T.Body("root_certificate_installation_enabled")),
     ),
     useZtVirtualIp: S.optional(S.Boolean.pipe(T.Body("use_zt_virtual_ip"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutDeviceSettingResponse",
 }) as any as S.Schema<PutDeviceSettingResponse>;
@@ -57353,13 +58735,15 @@ export const PutDlpPayloadLogRequest = /*@__PURE__*/ S.suspend(() =>
       DlpPayloadLogsUpdateRequestMaskingLevel.pipe(T.Body("masking_level")),
     ),
     publicKey: S.optional(S.String.pipe(T.Body("public_key"))),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/dlp/payload_log",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/dlp/payload_log",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutDlpPayloadLogRequest",
 }) as any as S.Schema<PutDlpPayloadLogRequest>;
@@ -57387,7 +58771,7 @@ export const PutDlpPayloadLogResponse = /*@__PURE__*/ S.suspend(() =>
       DlpPayloadLogsUpdateResponseMaskingLevel.pipe(T.Body("masking_level")),
     ),
     publicKey: S.optional(S.String.pipe(T.Body("public_key"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutDlpPayloadLogResponse",
 }) as any as S.Schema<PutDlpPayloadLogResponse>;
@@ -57445,13 +58829,15 @@ export const PutDlpProfilePredefinedRequest = /*@__PURE__*/ S.suspend(() =>
     ),
     entries: S.optional(DlpProfilesPredefinedUpdateRequestEntriesList),
     ocrEnabled: S.optional(S.Boolean.pipe(T.Body("ocr_enabled"))),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/dlp/profiles/predefined/{profile_id}/config",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/dlp/profiles/predefined/{profile_id}/config",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutDlpProfilePredefinedRequest",
 }) as any as S.Schema<PutDlpProfilePredefinedRequest>;
@@ -57543,7 +58929,7 @@ export const PutDlpProfilePredefinedResponse = /*@__PURE__*/ S.suspend(() =>
     aiContextEnabled: S.optional(S.Boolean.pipe(T.Body("ai_context_enabled"))),
     ocrEnabled: S.optional(S.Boolean.pipe(T.Body("ocr_enabled"))),
     openAccess: S.optional(S.Boolean.pipe(T.Body("open_access"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutDlpProfilePredefinedResponse",
 }) as any as S.Schema<PutDlpProfilePredefinedResponse>;
@@ -57567,13 +58953,15 @@ export const PutDlpSensitivityGroupLevelOrderRequest = /*@__PURE__*/ S.suspend(
       levelIds: DlpSensitivityGroupsLevelsOrderUpdateRequestLevelIdsList.pipe(
         T.Body("level_ids"),
       ),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/accounts/{account_id}/dlp/sensitivity_groups/{sensitivity_group_id}/level_order",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "PUT",
+          uri: "/accounts/{account_id}/dlp/sensitivity_groups/{sensitivity_group_id}/level_order",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutDlpSensitivityGroupLevelOrderRequest",
 }) as any as S.Schema<PutDlpSensitivityGroupLevelOrderRequest>;
@@ -57595,7 +58983,7 @@ export const PutDlpSensitivityGroupLevelOrderResponse = /*@__PURE__*/ S.suspend(
       levelIds: DlpSensitivityGroupsLevelsOrderUpdateResponseLevelIdsList.pipe(
         T.Body("level_ids"),
       ),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutDlpSensitivityGroupLevelOrderResponse",
 }) as any as S.Schema<PutDlpSensitivityGroupLevelOrderResponse>;
@@ -57648,13 +59036,15 @@ export const PutDlpSettingRequest = /*@__PURE__*/ S.suspend(() =>
     payloadLogging: S.optional(
       DlpSettingsUpdateRequestPayloadLogging.pipe(T.Body("payload_logging")),
     ),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/dlp/settings",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/dlp/settings",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutDlpSettingRequest",
 }) as any as S.Schema<PutDlpSettingRequest>;
@@ -57705,7 +59095,7 @@ export const PutDlpSettingResponse = /*@__PURE__*/ S.suspend(() =>
     payloadLogging: DlpSettingsUpdateResponsePayloadLogging.pipe(
       T.Body("payload_logging"),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutDlpSettingResponse",
 }) as any as S.Schema<PutDlpSettingResponse>;
@@ -57719,13 +59109,15 @@ export const PutGatewayAuditSshSettingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     publicKey: S.String.pipe(T.Body("public_key")),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/gateway/audit_ssh_settings",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/gateway/audit_ssh_settings",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutGatewayAuditSshSettingRequest",
 }) as any as S.Schema<PutGatewayAuditSshSettingRequest>;
@@ -57745,7 +59137,7 @@ export const PutGatewayAuditSshSettingResponse = /*@__PURE__*/ S.suspend(() =>
     publicKey: S.optional(S.String.pipe(T.Body("public_key"))),
     seedId: S.optional(S.String.pipe(T.Body("seed_id"))),
     updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutGatewayAuditSshSettingResponse",
 }) as any as S.Schema<PutGatewayAuditSshSettingResponse>;
@@ -58185,13 +59577,15 @@ export const PutGatewayConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     settings: S.optional(GatewayConfigurationsUpdateRequestSettings),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/gateway/configuration",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/gateway/configuration",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutGatewayConfigurationRequest",
 }) as any as S.Schema<PutGatewayConfigurationRequest>;
@@ -58636,7 +60030,7 @@ export const PutGatewayConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
     createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
     settings: S.optional(GatewayConfigurationsUpdateResponseSettings),
     updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutGatewayConfigurationResponse",
 }) as any as S.Schema<PutGatewayConfigurationResponse>;
@@ -58724,13 +60118,15 @@ export const PutGatewayLoggingRequest = /*@__PURE__*/ S.suspend(() =>
         T.Body("settings_by_rule_type"),
       ),
     ),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/gateway/logging",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/gateway/logging",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutGatewayLoggingRequest",
 }) as any as S.Schema<PutGatewayLoggingRequest>;
@@ -58817,7 +60213,7 @@ export const PutGatewayLoggingResponse = /*@__PURE__*/ S.suspend(() =>
         T.Body("settings_by_rule_type"),
       ),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutGatewayLoggingResponse",
 }) as any as S.Schema<PutGatewayLoggingResponse>;
@@ -58835,13 +60231,15 @@ export const PutOrganizationDohRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     dohJwtDuration: S.optional(S.String.pipe(T.Body("doh_jwt_duration"))),
     serviceTokenId: S.optional(S.String.pipe(T.Body("service_token_id"))),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/access/organizations/doh",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/access/organizations/doh",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutOrganizationDohRequest",
 }) as any as S.Schema<PutOrganizationDohRequest>;
@@ -58868,7 +60266,7 @@ export const PutOrganizationDohResponse = /*@__PURE__*/ S.suspend(() =>
     duration: S.optional(S.String),
     expiresAt: S.optional(S.String.pipe(T.Body("expires_at"))),
     name: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutOrganizationDohResponse",
 }) as any as S.Schema<PutOrganizationDohResponse>;
@@ -58890,13 +60288,15 @@ export const PutRiskScoringBehaviourRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     behaviors: RiskScoringBehavioursUpdateRequestBehaviorsMap,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/zt_risk_scoring/behaviors",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/zt_risk_scoring/behaviors",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutRiskScoringBehaviourRequest",
 }) as any as S.Schema<PutRiskScoringBehaviourRequest>;
@@ -58917,7 +60317,7 @@ export interface PutRiskScoringBehaviourResponse {
 export const PutRiskScoringBehaviourResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     behaviors: RiskScoringBehavioursUpdateResponseBehaviorsMap,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutRiskScoringBehaviourResponse",
 }) as any as S.Schema<PutRiskScoringBehaviourResponse>;
@@ -59158,13 +60558,15 @@ export const PutTunnelCloudflaredConfigurationRequest = /*@__PURE__*/ S.suspend(
       accountId: S.String.pipe(T.Label("account_id")),
       tunnelId: S.String.pipe(T.Label("tunnel_id")),
       config: S.optional(TunnelsCloudflaredConfigurationsUpdateRequestConfig),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/accounts/{account_id}/cfd_tunnel/{tunnel_id}/configurations",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "PUT",
+          uri: "/accounts/{account_id}/cfd_tunnel/{tunnel_id}/configurations",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutTunnelCloudflaredConfigurationRequest",
 }) as any as S.Schema<PutTunnelCloudflaredConfigurationRequest>;
@@ -59421,7 +60823,7 @@ export const PutTunnelCloudflaredConfigurationResponse =
       source: S.optional(TunnelsCloudflaredConfigurationsUpdateResponseSource),
       tunnelId: S.optional(S.String.pipe(T.Body("tunnel_id"))),
       version: S.optional(S.Number),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "PutTunnelCloudflaredConfigurationResponse",
   }) as any as S.Schema<PutTunnelCloudflaredConfigurationResponse>;
@@ -59475,13 +60877,15 @@ export const PutTunnelWarpConnectorConfigurationRequest =
         T.Body("ha_mode"),
       ),
       config: S.optional(TunnelsWarpConnectorConfigurationsUpdateRequestConfig),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/accounts/{account_id}/warp_connector/{tunnel_id}/configurations",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "PUT",
+          uri: "/accounts/{account_id}/warp_connector/{tunnel_id}/configurations",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "PutTunnelWarpConnectorConfigurationRequest",
   }) as any as S.Schema<PutTunnelWarpConnectorConfigurationRequest>;
@@ -59541,7 +60945,7 @@ export const PutTunnelWarpConnectorConfigurationResponse =
         TunnelsWarpConnectorConfigurationsUpdateResponseConfig,
       ),
       updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "PutTunnelWarpConnectorConfigurationResponse",
   }) as any as S.Schema<PutTunnelWarpConnectorConfigurationResponse>;
@@ -59560,13 +60964,15 @@ export const PutTunnelWarpConnectorFailoverRequest = /*@__PURE__*/ S.suspend(
       accountId: S.String.pipe(T.Label("account_id")),
       tunnelId: S.String.pipe(T.Label("tunnel_id")),
       clientId: S.String.pipe(T.Body("client_id")),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/accounts/{account_id}/warp_connector/{tunnel_id}/failover",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "PUT",
+          uri: "/accounts/{account_id}/warp_connector/{tunnel_id}/failover",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutTunnelWarpConnectorFailoverRequest",
 }) as any as S.Schema<PutTunnelWarpConnectorFailoverRequest>;
@@ -59579,7 +60985,7 @@ export const PutTunnelWarpConnectorFailoverResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutTunnelWarpConnectorFailoverResponse",
 }) as any as S.Schema<PutTunnelWarpConnectorFailoverResponse>;
@@ -59593,13 +60999,15 @@ export const ReadAccessAiControlMcpPortalRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/access/ai-controls/mcp/portals/{id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/access/ai-controls/mcp/portals/{id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ReadAccessAiControlMcpPortalRequest",
 }) as any as S.Schema<ReadAccessAiControlMcpPortalRequest>;
@@ -59857,7 +61265,7 @@ export const ReadAccessAiControlMcpPortalResponse = /*@__PURE__*/ S.suspend(
       secureWebGateway: S.optional(
         S.Boolean.pipe(T.Body("secure_web_gateway")),
       ),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ReadAccessAiControlMcpPortalResponse",
 }) as any as S.Schema<ReadAccessAiControlMcpPortalResponse>;
@@ -59871,13 +61279,15 @@ export const ReadAccessAiControlMcpServerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/access/ai-controls/mcp/servers/{id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/access/ai-controls/mcp/servers/{id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ReadAccessAiControlMcpServerRequest",
 }) as any as S.Schema<ReadAccessAiControlMcpServerRequest>;
@@ -60066,7 +61476,7 @@ export const ReadAccessAiControlMcpServerResponse = /*@__PURE__*/ S.suspend(
           T.Body("updated_tools"),
         ),
       ),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ReadAccessAiControlMcpServerResponse",
 }) as any as S.Schema<ReadAccessAiControlMcpServerResponse>;
@@ -60081,13 +61491,15 @@ export const RefreshAccessServiceTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     serviceTokenId: S.String.pipe(T.Label("service_token_id")),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/access/service_tokens/{service_token_id}/refresh",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/access/service_tokens/{service_token_id}/refresh",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "RefreshAccessServiceTokenRequest",
 }) as any as S.Schema<RefreshAccessServiceTokenRequest>;
@@ -60111,7 +61523,7 @@ export const RefreshAccessServiceTokenResponse = /*@__PURE__*/ S.suspend(() =>
     duration: S.optional(S.String),
     expiresAt: S.optional(S.String.pipe(T.Body("expires_at"))),
     name: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "RefreshAccessServiceTokenResponse",
 }) as any as S.Schema<RefreshAccessServiceTokenResponse>;
@@ -60125,13 +61537,15 @@ export const ResetExpirationGatewayRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     ruleId: S.String.pipe(T.Label("rule_id")),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/gateway/rules/{rule_id}/reset_expiration",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/gateway/rules/{rule_id}/reset_expiration",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ResetExpirationGatewayRuleRequest",
 }) as any as S.Schema<ResetExpirationGatewayRuleRequest>;
@@ -60848,7 +62262,7 @@ export const ResetExpirationGatewayRuleResponse = /*@__PURE__*/ S.suspend(() =>
     updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
     version: S.optional(S.Number),
     warningStatus: S.optional(S.String.pipe(T.Body("warning_status"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ResetExpirationGatewayRuleResponse",
 }) as any as S.Schema<ResetExpirationGatewayRuleResponse>;
@@ -60861,13 +62275,15 @@ export const ResetRiskScoringRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     userId: S.String.pipe(T.Label("user_id")),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/zt_risk_scoring/{user_id}/reset",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/zt_risk_scoring/{user_id}/reset",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ResetRiskScoringRequest",
 }) as any as S.Schema<ResetRiskScoringRequest>;
@@ -60879,7 +62295,7 @@ export interface ResetRiskScoringResponse {
 export const ResetRiskScoringResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ResetRiskScoringResponse",
 }) as any as S.Schema<ResetRiskScoringResponse>;
@@ -60892,13 +62308,15 @@ export const RevokeDeviceDevicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     deviceId: S.String.pipe(T.Label("device_id")),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/devices/physical-devices/{device_id}/revoke",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/devices/physical-devices/{device_id}/revoke",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "RevokeDeviceDevicesRequest",
 }) as any as S.Schema<RevokeDeviceDevicesRequest>;
@@ -60910,7 +62328,7 @@ export interface RevokeDeviceDevicesResponse {
 export const RevokeDeviceDevicesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "RevokeDeviceDevicesResponse",
 }) as any as S.Schema<RevokeDeviceDevicesResponse>;
@@ -60929,13 +62347,15 @@ export const RevokeDeviceRegistrationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     id: DevicesRegistrationsRevokeRequestIdList.pipe(T.Query()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/devices/registrations/revoke",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/devices/registrations/revoke",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "RevokeDeviceRegistrationRequest",
 }) as any as S.Schema<RevokeDeviceRegistrationRequest>;
@@ -60947,7 +62367,7 @@ export interface RevokeDeviceRegistrationResponse {
 export const RevokeDeviceRegistrationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "RevokeDeviceRegistrationResponse",
 }) as any as S.Schema<RevokeDeviceRegistrationResponse>;
@@ -60963,13 +62383,15 @@ export const RevokeTokensAccessApplicationForAccountRequest =
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
       appId: S.String.pipe(T.Label("app_id")),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/accounts/{account_id}/access/apps/{app_id}/revoke_tokens",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "POST",
+          uri: "/accounts/{account_id}/access/apps/{app_id}/revoke_tokens",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "RevokeTokensAccessApplicationForAccountRequest",
   }) as any as S.Schema<RevokeTokensAccessApplicationForAccountRequest>;
@@ -60982,7 +62404,7 @@ export const RevokeTokensAccessApplicationForAccountResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "RevokeTokensAccessApplicationForAccountResponse",
   }) as any as S.Schema<RevokeTokensAccessApplicationForAccountResponse>;
@@ -60998,13 +62420,15 @@ export const RevokeTokensAccessApplicationForZoneRequest =
     S.Struct({
       zoneId: S.String.pipe(T.Label("zone_id")),
       appId: S.String.pipe(T.Label("app_id")),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/zones/{zone_id}/access/apps/{app_id}/revoke_tokens",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "POST",
+          uri: "/zones/{zone_id}/access/apps/{app_id}/revoke_tokens",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "RevokeTokensAccessApplicationForZoneRequest",
   }) as any as S.Schema<RevokeTokensAccessApplicationForZoneRequest>;
@@ -61017,7 +62441,7 @@ export const RevokeTokensAccessApplicationForZoneResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "RevokeTokensAccessApplicationForZoneResponse",
   }) as any as S.Schema<RevokeTokensAccessApplicationForZoneResponse>;
@@ -61047,13 +62471,15 @@ export const RevokeUsersOrganizationForAccountRequest = /*@__PURE__*/ S.suspend(
       warpSessionReauth: S.optional(
         S.Boolean.pipe(T.Body("warp_session_reauth")),
       ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/accounts/{account_id}/access/organizations/revoke_user",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "POST",
+          uri: "/accounts/{account_id}/access/organizations/revoke_user",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "RevokeUsersOrganizationForAccountRequest",
 }) as any as S.Schema<RevokeUsersOrganizationForAccountRequest>;
@@ -61068,7 +62494,7 @@ export const RevokeUsersOrganizationForAccountResponse =
     S.Struct({
       true: S.Unknown,
       false: S.Unknown,
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "RevokeUsersOrganizationForAccountResponse",
   }) as any as S.Schema<RevokeUsersOrganizationForAccountResponse>;
@@ -61098,13 +62524,15 @@ export const RevokeUsersOrganizationForZoneRequest = /*@__PURE__*/ S.suspend(
       warpSessionReauth: S.optional(
         S.Boolean.pipe(T.Body("warp_session_reauth")),
       ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/zones/{zone_id}/access/organizations/revoke_user",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "POST",
+          uri: "/zones/{zone_id}/access/organizations/revoke_user",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "RevokeUsersOrganizationForZoneRequest",
 }) as any as S.Schema<RevokeUsersOrganizationForZoneRequest>;
@@ -61119,7 +62547,7 @@ export const RevokeUsersOrganizationForZoneResponse = /*@__PURE__*/ S.suspend(
     S.Struct({
       true: S.Unknown,
       false: S.Unknown,
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "RevokeUsersOrganizationForZoneResponse",
 }) as any as S.Schema<RevokeUsersOrganizationForZoneResponse>;
@@ -61131,13 +62559,15 @@ export interface RotateAccessKeyRequest {
 export const RotateAccessKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/access/keys/rotate",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/access/keys/rotate",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "RotateAccessKeyRequest",
 }) as any as S.Schema<RotateAccessKeyRequest>;
@@ -61162,7 +62592,7 @@ export const RotateAccessKeyResponse = /*@__PURE__*/ S.suspend(() =>
     lastKeyRotationAt: S.optional(
       S.String.pipe(T.Body("last_key_rotation_at")),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "RotateAccessKeyResponse",
 }) as any as S.Schema<RotateAccessKeyResponse>;
@@ -61177,13 +62607,15 @@ export const RotateAccessSamlCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     samlCertSetId: S.String.pipe(T.Label("saml_cert_set_id")),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/access/saml_certificates/{saml_cert_set_id}/rotate",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/access/saml_certificates/{saml_cert_set_id}/rotate",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "RotateAccessSamlCertificateRequest",
 }) as any as S.Schema<RotateAccessSamlCertificateRequest>;
@@ -61236,7 +62668,7 @@ export const RotateAccessSamlCertificateResponse = /*@__PURE__*/ S.suspend(() =>
     previousCertificate: S.optional(
       S.Unknown.pipe(T.Body("previous_certificate")),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "RotateAccessSamlCertificateResponse",
 }) as any as S.Schema<RotateAccessSamlCertificateResponse>;
@@ -61256,13 +62688,15 @@ export const RotateAccessServiceTokenRequest = /*@__PURE__*/ S.suspend(() =>
     previousClientSecretExpiresAt: S.optional(
       S.String.pipe(T.Body("previous_client_secret_expires_at")),
     ),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/access/service_tokens/{service_token_id}/rotate",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/access/service_tokens/{service_token_id}/rotate",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "RotateAccessServiceTokenRequest",
 }) as any as S.Schema<RotateAccessServiceTokenRequest>;
@@ -61287,7 +62721,7 @@ export const RotateAccessServiceTokenResponse = /*@__PURE__*/ S.suspend(() =>
     clientSecret: S.optional(S.String.pipe(T.Body("client_secret"))),
     duration: S.optional(S.String),
     name: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "RotateAccessServiceTokenResponse",
 }) as any as S.Schema<RotateAccessServiceTokenResponse>;
@@ -61299,13 +62733,15 @@ export const RotateSeedGatewayAuditSshSettingRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/accounts/{account_id}/gateway/audit_ssh_settings/rotate_seed",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "POST",
+          uri: "/accounts/{account_id}/gateway/audit_ssh_settings/rotate_seed",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "RotateSeedGatewayAuditSshSettingRequest",
 }) as any as S.Schema<RotateSeedGatewayAuditSshSettingRequest>;
@@ -61326,7 +62762,7 @@ export const RotateSeedGatewayAuditSshSettingResponse = /*@__PURE__*/ S.suspend(
       publicKey: S.optional(S.String.pipe(T.Body("public_key"))),
       seedId: S.optional(S.String.pipe(T.Body("seed_id"))),
       updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "RotateSeedGatewayAuditSshSettingResponse",
 }) as any as S.Schema<RotateSeedGatewayAuditSshSettingResponse>;
@@ -61340,13 +62776,15 @@ export const SyncAccessAiControlMcpServerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/access/ai-controls/mcp/servers/{id}/sync",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/access/ai-controls/mcp/servers/{id}/sync",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "SyncAccessAiControlMcpServerRequest",
 }) as any as S.Schema<SyncAccessAiControlMcpServerRequest>;
@@ -61392,7 +62830,7 @@ export const SyncAccessAiControlMcpServerResponse = /*@__PURE__*/ S.suspend(
         ),
       ),
       status: S.optional(S.String),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "SyncAccessAiControlMcpServerResponse",
 }) as any as S.Schema<SyncAccessAiControlMcpServerResponse>;
@@ -61411,13 +62849,15 @@ export const UnrevokeDeviceRegistrationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     id: DevicesRegistrationsUnrevokeRequestIdList.pipe(T.Query()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/devices/registrations/unrevoke",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/devices/registrations/unrevoke",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UnrevokeDeviceRegistrationRequest",
 }) as any as S.Schema<UnrevokeDeviceRegistrationRequest>;
@@ -61429,7 +62869,7 @@ export interface UnrevokeDeviceRegistrationResponse {
 export const UnrevokeDeviceRegistrationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UnrevokeDeviceRegistrationResponse",
 }) as any as S.Schema<UnrevokeDeviceRegistrationResponse>;
@@ -61548,13 +62988,15 @@ export const UpdateAccessAiControlMcpPortalRequest = /*@__PURE__*/ S.suspend(
         S.Boolean.pipe(T.Body("secure_web_gateway")),
       ),
       servers: S.optional(AccessAiControlsMcpPortalsUpdateRequestServersList),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/accounts/{account_id}/access/ai-controls/mcp/portals/{id}",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "PUT",
+          uri: "/accounts/{account_id}/access/ai-controls/mcp/portals/{id}",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateAccessAiControlMcpPortalRequest",
 }) as any as S.Schema<UpdateAccessAiControlMcpPortalRequest>;
@@ -61813,7 +63255,7 @@ export const UpdateAccessAiControlMcpPortalResponse = /*@__PURE__*/ S.suspend(
       secureWebGateway: S.optional(
         S.Boolean.pipe(T.Body("secure_web_gateway")),
       ),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateAccessAiControlMcpPortalResponse",
 }) as any as S.Schema<UpdateAccessAiControlMcpPortalResponse>;
@@ -61906,13 +63348,15 @@ export const UpdateAccessAiControlMcpServerRequest = /*@__PURE__*/ S.suspend(
           T.Body("updated_tools"),
         ),
       ),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/accounts/{account_id}/access/ai-controls/mcp/servers/{id}",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "PUT",
+          uri: "/accounts/{account_id}/access/ai-controls/mcp/servers/{id}",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateAccessAiControlMcpServerRequest",
 }) as any as S.Schema<UpdateAccessAiControlMcpServerRequest>;
@@ -62101,7 +63545,7 @@ export const UpdateAccessAiControlMcpServerResponse = /*@__PURE__*/ S.suspend(
           T.Body("updated_tools"),
         ),
       ),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateAccessAiControlMcpServerResponse",
 }) as any as S.Schema<UpdateAccessAiControlMcpServerResponse>;
@@ -62222,13 +63666,15 @@ export const UpdateAccessApplicationForAccountRequest = /*@__PURE__*/ S.suspend(
       accountId: S.String.pipe(T.Label("account_id")),
       appId: S.String.pipe(T.Label("app_id")),
       body: AccessApplicationsUpdateForAccountRequestBody,
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/accounts/{account_id}/access/apps/{app_id}",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "PUT",
+          uri: "/accounts/{account_id}/access/apps/{app_id}",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateAccessApplicationForAccountRequest",
 }) as any as S.Schema<UpdateAccessApplicationForAccountRequest>;
@@ -62319,7 +63765,7 @@ export const UpdateAccessApplicationForAccountResponse =
             "McpServerPortalApplication object { type, id, allow_authenticate_via_warp, 19 more }",
           ),
         ),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "UpdateAccessApplicationForAccountResponse",
   }) as any as S.Schema<UpdateAccessApplicationForAccountResponse>;
@@ -62440,13 +63886,15 @@ export const UpdateAccessApplicationForZoneRequest = /*@__PURE__*/ S.suspend(
       zoneId: S.String.pipe(T.Label("zone_id")),
       appId: S.String.pipe(T.Label("app_id")),
       body: AccessApplicationsUpdateForZoneRequestBody,
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/zones/{zone_id}/access/apps/{app_id}",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "PUT",
+          uri: "/zones/{zone_id}/access/apps/{app_id}",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateAccessApplicationForZoneRequest",
 }) as any as S.Schema<UpdateAccessApplicationForZoneRequest>;
@@ -62537,7 +63985,7 @@ export const UpdateAccessApplicationForZoneResponse = /*@__PURE__*/ S.suspend(
             "McpServerPortalApplication object { type, id, allow_authenticate_via_warp, 19 more }",
           ),
         ),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateAccessApplicationForZoneResponse",
 }) as any as S.Schema<UpdateAccessApplicationForZoneResponse>;
@@ -62739,13 +64187,15 @@ export const UpdateAccessApplicationPolicyForAccountRequest =
         S.Boolean.pipe(T.Body("purpose_justification_required")),
       ),
       sessionDuration: S.optional(S.String.pipe(T.Body("session_duration"))),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/accounts/{account_id}/access/apps/{app_id}/policies/{policy_id}",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "PUT",
+          uri: "/accounts/{account_id}/access/apps/{app_id}/policies/{policy_id}",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "UpdateAccessApplicationPolicyForAccountRequest",
   }) as any as S.Schema<UpdateAccessApplicationPolicyForAccountRequest>;
@@ -63411,7 +64861,7 @@ export const UpdateAccessApplicationPolicyForAccountResponse =
       ),
       sessionDuration: S.optional(S.String.pipe(T.Body("session_duration"))),
       updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "UpdateAccessApplicationPolicyForAccountResponse",
   }) as any as S.Schema<UpdateAccessApplicationPolicyForAccountResponse>;
@@ -63612,13 +65062,15 @@ export const UpdateAccessApplicationPolicyForZoneRequest =
         S.Boolean.pipe(T.Body("purpose_justification_required")),
       ),
       sessionDuration: S.optional(S.String.pipe(T.Body("session_duration"))),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/zones/{zone_id}/access/apps/{app_id}/policies/{policy_id}",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "PUT",
+          uri: "/zones/{zone_id}/access/apps/{app_id}/policies/{policy_id}",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "UpdateAccessApplicationPolicyForZoneRequest",
   }) as any as S.Schema<UpdateAccessApplicationPolicyForZoneRequest>;
@@ -64284,7 +65736,7 @@ export const UpdateAccessApplicationPolicyForZoneResponse =
       ),
       sessionDuration: S.optional(S.String.pipe(T.Body("session_duration"))),
       updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "UpdateAccessApplicationPolicyForZoneResponse",
   }) as any as S.Schema<UpdateAccessApplicationPolicyForZoneResponse>;
@@ -64300,13 +65752,15 @@ export const UpdateAccessBookmarkRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     bookmarkId: S.String.pipe(T.Label("bookmark_id")),
     body: S.Unknown,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/access/bookmarks/{bookmark_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/access/bookmarks/{bookmark_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateAccessBookmarkRequest",
 }) as any as S.Schema<UpdateAccessBookmarkRequest>;
@@ -64333,7 +65787,7 @@ export const UpdateAccessBookmarkResponse = /*@__PURE__*/ S.suspend(() =>
     domain: S.optional(S.String),
     logoUrl: S.optional(S.String.pipe(T.Body("logo_url"))),
     name: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateAccessBookmarkResponse",
 }) as any as S.Schema<UpdateAccessBookmarkResponse>;
@@ -64365,13 +65819,15 @@ export const UpdateAccessCertificateForAccountRequest = /*@__PURE__*/ S.suspend(
           T.Body("associated_hostnames"),
         ),
       name: S.optional(S.String),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/accounts/{account_id}/access/certificates/{certificate_id}",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "PUT",
+          uri: "/accounts/{account_id}/access/certificates/{certificate_id}",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateAccessCertificateForAccountRequest",
 }) as any as S.Schema<UpdateAccessCertificateForAccountRequest>;
@@ -64407,7 +65863,7 @@ export const UpdateAccessCertificateForAccountResponse =
       expiresOn: S.optional(S.String.pipe(T.Body("expires_on"))),
       fingerprint: S.optional(S.String),
       name: S.optional(S.String),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "UpdateAccessCertificateForAccountResponse",
   }) as any as S.Schema<UpdateAccessCertificateForAccountResponse>;
@@ -64439,13 +65895,15 @@ export const UpdateAccessCertificateForZoneRequest = /*@__PURE__*/ S.suspend(
           T.Body("associated_hostnames"),
         ),
       name: S.optional(S.String),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/zones/{zone_id}/access/certificates/{certificate_id}",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "PUT",
+          uri: "/zones/{zone_id}/access/certificates/{certificate_id}",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateAccessCertificateForZoneRequest",
 }) as any as S.Schema<UpdateAccessCertificateForZoneRequest>;
@@ -64481,7 +65939,7 @@ export const UpdateAccessCertificateForZoneResponse = /*@__PURE__*/ S.suspend(
       expiresOn: S.optional(S.String.pipe(T.Body("expires_on"))),
       fingerprint: S.optional(S.String),
       name: S.optional(S.String),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateAccessCertificateForZoneResponse",
 }) as any as S.Schema<UpdateAccessCertificateForZoneResponse>;
@@ -64511,13 +65969,15 @@ export const UpdateAccessCustomPageRequest = /*@__PURE__*/ S.suspend(() =>
     customHtml: S.String.pipe(T.Body("custom_html")),
     name: S.String,
     type: AccessCustomPagesUpdateRequestType,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/access/custom_pages/{custom_page_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/access/custom_pages/{custom_page_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateAccessCustomPageRequest",
 }) as any as S.Schema<UpdateAccessCustomPageRequest>;
@@ -64542,7 +66002,7 @@ export const UpdateAccessCustomPageResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.String,
     type: AccessCustomPagesUpdateResponseType,
     uid: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateAccessCustomPageResponse",
 }) as any as S.Schema<UpdateAccessCustomPageResponse>;
@@ -65016,13 +66476,15 @@ export const UpdateAccessGroupForAccountRequest = /*@__PURE__*/ S.suspend(() =>
     exclude: S.optional(AccessGroupsUpdateForAccountRequestExcludeList),
     isDefault: S.optional(S.Boolean.pipe(T.Body("is_default"))),
     require: S.optional(AccessGroupsUpdateForAccountRequestRequireList),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/access/groups/{group_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/access/groups/{group_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateAccessGroupForAccountRequest",
 }) as any as S.Schema<UpdateAccessGroupForAccountRequest>;
@@ -65646,7 +67108,7 @@ export const UpdateAccessGroupForAccountResponse = /*@__PURE__*/ S.suspend(() =>
     ),
     name: S.optional(S.String),
     require: S.optional(AccessGroupsUpdateForAccountResponseRequireList),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateAccessGroupForAccountResponse",
 }) as any as S.Schema<UpdateAccessGroupForAccountResponse>;
@@ -66120,13 +67582,15 @@ export const UpdateAccessGroupForZoneRequest = /*@__PURE__*/ S.suspend(() =>
     exclude: S.optional(AccessGroupsUpdateForZoneRequestExcludeList),
     isDefault: S.optional(S.Boolean.pipe(T.Body("is_default"))),
     require: S.optional(AccessGroupsUpdateForZoneRequestRequireList),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/zones/{zone_id}/access/groups/{group_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/zones/{zone_id}/access/groups/{group_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateAccessGroupForZoneRequest",
 }) as any as S.Schema<UpdateAccessGroupForZoneRequest>;
@@ -66748,7 +68212,7 @@ export const UpdateAccessGroupForZoneResponse = /*@__PURE__*/ S.suspend(() =>
     ),
     name: S.optional(S.String),
     require: S.optional(AccessGroupsUpdateForZoneResponseRequireList),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateAccessGroupForZoneResponse",
 }) as any as S.Schema<UpdateAccessGroupForZoneResponse>;
@@ -66818,13 +68282,15 @@ export const UpdateAccessInfrastructureTargetRequest = /*@__PURE__*/ S.suspend(
       targetId: S.String.pipe(T.Label("target_id")),
       hostname: S.String,
       ip: AccessInfrastructureTargetsUpdateRequestIp,
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/accounts/{account_id}/infrastructure/targets/{target_id}",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "PUT",
+          uri: "/accounts/{account_id}/infrastructure/targets/{target_id}",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateAccessInfrastructureTargetRequest",
 }) as any as S.Schema<UpdateAccessInfrastructureTargetRequest>;
@@ -66898,7 +68364,7 @@ export const UpdateAccessInfrastructureTargetResponse = /*@__PURE__*/ S.suspend(
       hostname: S.String,
       ip: AccessInfrastructureTargetsUpdateResponseIp,
       modifiedAt: S.String.pipe(T.Body("modified_at")),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateAccessInfrastructureTargetResponse",
 }) as any as S.Schema<UpdateAccessInfrastructureTargetResponse>;
@@ -67543,13 +69009,15 @@ export const UpdateAccessPolicyRequest = /*@__PURE__*/ S.suspend(() =>
     ),
     require: S.optional(AccessPoliciesUpdateRequestRequireList),
     sessionDuration: S.optional(S.String.pipe(T.Body("session_duration"))),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/access/policies/{policy_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/access/policies/{policy_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateAccessPolicyRequest",
 }) as any as S.Schema<UpdateAccessPolicyRequest>;
@@ -68201,7 +69669,7 @@ export const UpdateAccessPolicyResponse = /*@__PURE__*/ S.suspend(() =>
     reusable: S.optional(S.Boolean),
     sessionDuration: S.optional(S.String.pipe(T.Body("session_duration"))),
     updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateAccessPolicyResponse",
 }) as any as S.Schema<UpdateAccessPolicyResponse>;
@@ -68233,13 +69701,15 @@ export const UpdateAccessServiceTokenForAccountRequest =
       previousClientSecretExpiresAt: S.optional(
         S.String.pipe(T.Body("previous_client_secret_expires_at")),
       ),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/accounts/{account_id}/access/service_tokens/{service_token_id}",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "PUT",
+          uri: "/accounts/{account_id}/access/service_tokens/{service_token_id}",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "UpdateAccessServiceTokenForAccountRequest",
   }) as any as S.Schema<UpdateAccessServiceTokenForAccountRequest>;
@@ -68264,7 +69734,7 @@ export const UpdateAccessServiceTokenForAccountResponse =
       duration: S.optional(S.String),
       expiresAt: S.optional(S.String.pipe(T.Body("expires_at"))),
       name: S.optional(S.String),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "UpdateAccessServiceTokenForAccountResponse",
   }) as any as S.Schema<UpdateAccessServiceTokenForAccountResponse>;
@@ -68296,13 +69766,15 @@ export const UpdateAccessServiceTokenForZoneRequest = /*@__PURE__*/ S.suspend(
       previousClientSecretExpiresAt: S.optional(
         S.String.pipe(T.Body("previous_client_secret_expires_at")),
       ),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/zones/{zone_id}/access/service_tokens/{service_token_id}",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "PUT",
+          uri: "/zones/{zone_id}/access/service_tokens/{service_token_id}",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateAccessServiceTokenForZoneRequest",
 }) as any as S.Schema<UpdateAccessServiceTokenForZoneRequest>;
@@ -68327,7 +69799,7 @@ export const UpdateAccessServiceTokenForZoneResponse = /*@__PURE__*/ S.suspend(
       duration: S.optional(S.String),
       expiresAt: S.optional(S.String.pipe(T.Body("expires_at"))),
       name: S.optional(S.String),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateAccessServiceTokenForZoneResponse",
 }) as any as S.Schema<UpdateAccessServiceTokenForZoneResponse>;
@@ -68345,13 +69817,15 @@ export const UpdateAccessTagRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     tagName: S.String.pipe(T.Label("tag_name")),
     name: S.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/access/tags/{tag_name}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/access/tags/{tag_name}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateAccessTagRequest",
 }) as any as S.Schema<UpdateAccessTagRequest>;
@@ -68364,7 +69838,7 @@ export interface UpdateAccessTagResponse {
 export const UpdateAccessTagResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateAccessTagResponse",
 }) as any as S.Schema<UpdateAccessTagResponse>;
@@ -68385,13 +69859,15 @@ export const UpdateAccessUserRequest = /*@__PURE__*/ S.suspend(() =>
     userId: S.String.pipe(T.Label("user_id")),
     email: S.String,
     name: S.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/access/users/{user_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/access/users/{user_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateAccessUserRequest",
 }) as any as S.Schema<UpdateAccessUserRequest>;
@@ -68434,7 +69910,7 @@ export const UpdateAccessUserResponse = /*@__PURE__*/ S.suspend(() =>
     seatUid: S.optional(S.String.pipe(T.Body("seat_uid"))),
     uid: S.optional(S.String),
     updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateAccessUserResponse",
 }) as any as S.Schema<UpdateAccessUserResponse>;
@@ -68526,13 +70002,15 @@ export const UpdateDeviceDexTestRequest = /*@__PURE__*/ S.suspend(() =>
       ),
     ),
     targeted: S.optional(S.Boolean),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/dex/devices/dex_tests/{dex_test_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/dex/devices/dex_tests/{dex_test_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateDeviceDexTestRequest",
 }) as any as S.Schema<UpdateDeviceDexTestRequest>;
@@ -68622,7 +70100,7 @@ export const UpdateDeviceDexTestResponse = /*@__PURE__*/ S.suspend(() =>
     ),
     targeted: S.optional(S.Boolean),
     testId: S.optional(S.String.pipe(T.Body("test_id"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateDeviceDexTestResponse",
 }) as any as S.Schema<UpdateDeviceDexTestResponse>;
@@ -68663,13 +70141,15 @@ export const UpdateDeviceNetworkRequest = /*@__PURE__*/ S.suspend(() =>
     config: S.optional(DevicesNetworksUpdateRequestConfig),
     name: S.optional(S.String),
     type: S.optional(DevicesNetworksUpdateRequestType),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/devices/networks/{network_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/devices/networks/{network_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateDeviceNetworkRequest",
 }) as any as S.Schema<UpdateDeviceNetworkRequest>;
@@ -68709,7 +70189,7 @@ export const UpdateDeviceNetworkResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     networkId: S.optional(S.String.pipe(T.Body("network_id"))),
     type: S.optional(DevicesNetworksUpdateResponseType),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateDeviceNetworkResponse",
 }) as any as S.Schema<UpdateDeviceNetworkResponse>;
@@ -68892,13 +70372,15 @@ export const UpdateDevicePostureRequest = /*@__PURE__*/ S.suspend(() =>
     input: S.optional(DevicesPostureUpdateRequestInput),
     match: S.optional(DevicesPostureUpdateRequestMatchList),
     schedule: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/devices/posture/{rule_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/devices/posture/{rule_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateDevicePostureRequest",
 }) as any as S.Schema<UpdateDevicePostureRequest>;
@@ -69080,7 +70562,7 @@ export const UpdateDevicePostureResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     schedule: S.optional(S.String),
     type: S.optional(DevicesPostureUpdateResponseType),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateDevicePostureResponse",
 }) as any as S.Schema<UpdateDevicePostureResponse>;
@@ -69101,13 +70583,15 @@ export const UpdateDlpCustomPromptTopicRequest = /*@__PURE__*/ S.suspend(() =>
     name: S.String,
     topic: S.String,
     description: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/dlp/custom_prompt_topics/{entry_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/dlp/custom_prompt_topics/{entry_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateDlpCustomPromptTopicRequest",
 }) as any as S.Schema<UpdateDlpCustomPromptTopicRequest>;
@@ -69133,7 +70617,7 @@ export const UpdateDlpCustomPromptTopicResponse = /*@__PURE__*/ S.suspend(() =>
     updatedAt: S.String.pipe(T.Body("updated_at")),
     description: S.optional(S.String),
     profileId: S.optional(S.String.pipe(T.Body("profile_id"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateDlpCustomPromptTopicResponse",
 }) as any as S.Schema<UpdateDlpCustomPromptTopicResponse>;
@@ -69188,13 +70672,15 @@ export const UpdateDlpDataClassRequest = /*@__PURE__*/ S.suspend(() =>
         T.Body("sensitivity_levels"),
       ),
     ),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/dlp/data_classes/{data_class_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/dlp/data_classes/{data_class_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateDlpDataClassRequest",
 }) as any as S.Schema<UpdateDlpDataClassRequest>;
@@ -69250,7 +70736,7 @@ export const UpdateDlpDataClassResponse = /*@__PURE__*/ S.suspend(() =>
     ),
     updatedAt: S.String.pipe(T.Body("updated_at")),
     description: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateDlpDataClassResponse",
 }) as any as S.Schema<UpdateDlpDataClassResponse>;
@@ -69272,13 +70758,15 @@ export const UpdateDlpDatasetRequest = /*@__PURE__*/ S.suspend(() =>
     caseSensitive: S.optional(S.Boolean.pipe(T.Body("case_sensitive"))),
     description: S.optional(S.String),
     name: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/dlp/datasets/{dataset_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/dlp/datasets/{dataset_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateDlpDatasetRequest",
 }) as any as S.Schema<UpdateDlpDatasetRequest>;
@@ -69385,7 +70873,7 @@ export const UpdateDlpDatasetResponse = /*@__PURE__*/ S.suspend(() =>
     uploads: DlpDatasetsUpdateResponseUploadsList,
     caseSensitive: S.optional(S.Boolean.pipe(T.Body("case_sensitive"))),
     description: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateDlpDatasetResponse",
 }) as any as S.Schema<UpdateDlpDatasetResponse>;
@@ -69428,13 +70916,15 @@ export const UpdateDlpDataTagCategoryRequest = /*@__PURE__*/ S.suspend(() =>
     description: S.optional(S.String),
     name: S.optional(S.String),
     tags: S.optional(DlpDataTagCategoriesUpdateRequestTagsList),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/dlp/data_tag_categories/{category_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/dlp/data_tag_categories/{category_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateDlpDataTagCategoryRequest",
 }) as any as S.Schema<UpdateDlpDataTagCategoryRequest>;
@@ -69484,7 +70974,7 @@ export const UpdateDlpDataTagCategoryResponse = /*@__PURE__*/ S.suspend(() =>
     updatedAt: S.String.pipe(T.Body("updated_at")),
     description: S.optional(S.String),
     templateId: S.optional(S.String.pipe(T.Body("template_id"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateDlpDataTagCategoryResponse",
 }) as any as S.Schema<UpdateDlpDataTagCategoryResponse>;
@@ -69504,13 +70994,15 @@ export const UpdateDlpDataTagCategoryDataTagRequest = /*@__PURE__*/ S.suspend(
       tagId: S.String.pipe(T.Label("tag_id")),
       description: S.optional(S.String),
       name: S.optional(S.String),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/accounts/{account_id}/dlp/data_tag_categories/{category_id}/data_tags/{tag_id}",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "PUT",
+          uri: "/accounts/{account_id}/dlp/data_tag_categories/{category_id}/data_tags/{tag_id}",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateDlpDataTagCategoryDataTagRequest",
 }) as any as S.Schema<UpdateDlpDataTagCategoryDataTagRequest>;
@@ -69531,7 +71023,7 @@ export const UpdateDlpDataTagCategoryDataTagResponse = /*@__PURE__*/ S.suspend(
       name: S.String,
       updatedAt: S.String.pipe(T.Body("updated_at")),
       description: S.optional(S.String),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateDlpDataTagCategoryDataTagResponse",
 }) as any as S.Schema<UpdateDlpDataTagCategoryDataTagResponse>;
@@ -69631,13 +71123,15 @@ export const UpdateDlpEmailRuleRequest = /*@__PURE__*/ S.suspend(() =>
     enabled: S.Boolean,
     name: S.String,
     description: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/dlp/email/rules/{rule_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/dlp/email/rules/{rule_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateDlpEmailRuleRequest",
 }) as any as S.Schema<UpdateDlpEmailRuleRequest>;
@@ -69742,7 +71236,7 @@ export const UpdateDlpEmailRuleResponse = /*@__PURE__*/ S.suspend(() =>
     ruleId: S.String.pipe(T.Body("rule_id")),
     updatedAt: S.String.pipe(T.Body("updated_at")),
     description: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateDlpEmailRuleResponse",
 }) as any as S.Schema<UpdateDlpEmailRuleResponse>;
@@ -69778,13 +71272,15 @@ export const UpdateDlpEntryRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     entryId: S.String.pipe(T.Label("entry_id")),
     body: DlpEntriesUpdateRequestBody,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/dlp/entries/{entry_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/dlp/entries/{entry_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateDlpEntryRequest",
 }) as any as S.Schema<UpdateDlpEntryRequest>;
@@ -69828,7 +71324,7 @@ export const UpdateDlpEntryResponse = /*@__PURE__*/ S.suspend(() =>
     WordListEntryObjectIdCreatedAtEnabled5More__: S.Unknown.pipe(
       T.Body("WordListEntry object { id, created_at, enabled, 5 more }"),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateDlpEntryResponse",
 }) as any as S.Schema<UpdateDlpEntryResponse>;
@@ -69869,13 +71365,15 @@ export const UpdateDlpEntryCustomRequest = /*@__PURE__*/ S.suspend(() =>
     name: S.String,
     pattern: DlpEntriesCustomUpdateRequestPattern,
     description: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/dlp/entries/custom/{entry_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/dlp/entries/custom/{entry_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateDlpEntryCustomRequest",
 }) as any as S.Schema<UpdateDlpEntryCustomRequest>;
@@ -69921,7 +71419,7 @@ export const UpdateDlpEntryCustomResponse = /*@__PURE__*/ S.suspend(() =>
     updatedAt: S.String.pipe(T.Body("updated_at")),
     description: S.optional(S.String),
     profileId: S.optional(S.String.pipe(T.Body("profile_id"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateDlpEntryCustomResponse",
 }) as any as S.Schema<UpdateDlpEntryCustomResponse>;
@@ -69936,13 +71434,15 @@ export const UpdateDlpEntryIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     entryId: S.String.pipe(T.Label("entry_id")),
     enabled: S.Boolean,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/dlp/entries/integration/{entry_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/dlp/entries/integration/{entry_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateDlpEntryIntegrationRequest",
 }) as any as S.Schema<UpdateDlpEntryIntegrationRequest>;
@@ -69964,7 +71464,7 @@ export const UpdateDlpEntryIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.String,
     updatedAt: S.String.pipe(T.Body("updated_at")),
     profileId: S.optional(S.String.pipe(T.Body("profile_id"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateDlpEntryIntegrationResponse",
 }) as any as S.Schema<UpdateDlpEntryIntegrationResponse>;
@@ -69979,13 +71479,15 @@ export const UpdateDlpEntryPredefinedRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     entryId: S.String.pipe(T.Label("entry_id")),
     enabled: S.Boolean,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/dlp/entries/predefined/{entry_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/dlp/entries/predefined/{entry_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateDlpEntryPredefinedRequest",
 }) as any as S.Schema<UpdateDlpEntryPredefinedRequest>;
@@ -70044,7 +71546,7 @@ export const UpdateDlpEntryPredefinedResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.String,
     profileId: S.optional(S.String.pipe(T.Body("profile_id"))),
     variant: S.optional(DlpEntriesPredefinedUpdateResponseVariant),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateDlpEntryPredefinedResponse",
 }) as any as S.Schema<UpdateDlpEntryPredefinedResponse>;
@@ -70218,13 +71720,15 @@ export const UpdateDlpProfileCustomRequest = /*@__PURE__*/ S.suspend(() =>
         T.Body("shared_entries"),
       ),
     ),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/dlp/profiles/custom/{profile_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/dlp/profiles/custom/{profile_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateDlpProfileCustomRequest",
 }) as any as S.Schema<UpdateDlpProfileCustomRequest>;
@@ -70250,7 +71754,7 @@ export const UpdateDlpProfileCustomResponse = /*@__PURE__*/ S.suspend(() =>
     IntegrationProfileObjectIdCreatedAtEntries5More__: S.Unknown.pipe(
       T.Body("IntegrationProfile object { id, created_at, entries, 5 more }"),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateDlpProfileCustomResponse",
 }) as any as S.Schema<UpdateDlpProfileCustomResponse>;
@@ -70294,13 +71798,15 @@ export const UpdateDlpSensitivityGroupRequest = /*@__PURE__*/ S.suspend(() =>
     description: S.optional(S.String),
     levels: S.optional(DlpSensitivityGroupsUpdateRequestLevelsList),
     name: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/dlp/sensitivity_groups/{sensitivity_group_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/dlp/sensitivity_groups/{sensitivity_group_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateDlpSensitivityGroupRequest",
 }) as any as S.Schema<UpdateDlpSensitivityGroupRequest>;
@@ -70351,7 +71857,7 @@ export const UpdateDlpSensitivityGroupResponse = /*@__PURE__*/ S.suspend(() =>
     updatedAt: S.String.pipe(T.Body("updated_at")),
     description: S.optional(S.String),
     templateId: S.optional(S.String.pipe(T.Body("template_id"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateDlpSensitivityGroupResponse",
 }) as any as S.Schema<UpdateDlpSensitivityGroupResponse>;
@@ -70371,13 +71877,15 @@ export const UpdateDlpSensitivityGroupLevelRequest = /*@__PURE__*/ S.suspend(
       sensitivityLevelId: S.String.pipe(T.Label("sensitivity_level_id")),
       description: S.optional(S.String),
       name: S.optional(S.String),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/accounts/{account_id}/dlp/sensitivity_groups/{sensitivity_group_id}/levels/{sensitivity_level_id}",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "PUT",
+          uri: "/accounts/{account_id}/dlp/sensitivity_groups/{sensitivity_group_id}/levels/{sensitivity_level_id}",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateDlpSensitivityGroupLevelRequest",
 }) as any as S.Schema<UpdateDlpSensitivityGroupLevelRequest>;
@@ -70398,7 +71906,7 @@ export const UpdateDlpSensitivityGroupLevelResponse = /*@__PURE__*/ S.suspend(
       name: S.String,
       updatedAt: S.String.pipe(T.Body("updated_at")),
       description: S.optional(S.String),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateDlpSensitivityGroupLevelResponse",
 }) as any as S.Schema<UpdateDlpSensitivityGroupLevelResponse>;
@@ -70442,13 +71950,15 @@ export const UpdateGatewayListRequest = /*@__PURE__*/ S.suspend(() =>
     name: S.String,
     description: S.optional(S.String),
     items: S.optional(GatewayListsUpdateRequestItemsList),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/gateway/lists/{list_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/gateway/lists/{list_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateGatewayListRequest",
 }) as any as S.Schema<UpdateGatewayListRequest>;
@@ -70510,7 +72020,7 @@ export const UpdateGatewayListResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     type: S.optional(GatewayListsUpdateResponseType),
     updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateGatewayListResponse",
 }) as any as S.Schema<UpdateGatewayListResponse>;
@@ -70737,13 +72247,15 @@ export const UpdateGatewayLocationRequest = /*@__PURE__*/ S.suspend(() =>
       GatewayLocationsUpdateRequestMaxTtl.pipe(T.Body("max_ttl")),
     ),
     networks: S.optional(GatewayLocationsUpdateRequestNetworksList),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/gateway/locations/{location_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/gateway/locations/{location_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateGatewayLocationRequest",
 }) as any as S.Schema<UpdateGatewayLocationRequest>;
@@ -70993,7 +72505,7 @@ export const UpdateGatewayLocationResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     networks: S.optional(GatewayLocationsUpdateResponseNetworksList),
     updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateGatewayLocationResponse",
 }) as any as S.Schema<UpdateGatewayLocationResponse>;
@@ -71015,13 +72527,15 @@ export const UpdateGatewayPacfileRequest = /*@__PURE__*/ S.suspend(() =>
     contents: S.String,
     description: S.String,
     name: S.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/gateway/pacfiles/{pacfile_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/gateway/pacfiles/{pacfile_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateGatewayPacfileRequest",
 }) as any as S.Schema<UpdateGatewayPacfileRequest>;
@@ -71052,7 +72566,7 @@ export const UpdateGatewayPacfileResponse = /*@__PURE__*/ S.suspend(() =>
     slug: S.optional(S.String),
     updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
     url: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateGatewayPacfileResponse",
 }) as any as S.Schema<UpdateGatewayPacfileResponse>;
@@ -71754,13 +73268,15 @@ export const UpdateGatewayRuleRequest = /*@__PURE__*/ S.suspend(() =>
     ),
     schedule: S.optional(GatewayRulesUpdateRequestSchedule),
     traffic: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/gateway/rules/{rule_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/gateway/rules/{rule_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateGatewayRuleRequest",
 }) as any as S.Schema<UpdateGatewayRuleRequest>;
@@ -72484,7 +74000,7 @@ export const UpdateGatewayRuleResponse = /*@__PURE__*/ S.suspend(() =>
     updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
     version: S.optional(S.Number),
     warningStatus: S.optional(S.String.pipe(T.Body("warning_status"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateGatewayRuleResponse",
 }) as any as S.Schema<UpdateGatewayRuleResponse>;
@@ -72575,13 +74091,15 @@ export const UpdateIdentityProviderForAccountRequest = /*@__PURE__*/ S.suspend(
         IdentityProvidersUpdateForAccountRequestIdentityProvider.pipe(
           T.Body("identity_provider"),
         ),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/accounts/{account_id}/access/identity_providers/{identity_provider_id}",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "PUT",
+          uri: "/accounts/{account_id}/access/identity_providers/{identity_provider_id}",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateIdentityProviderForAccountRequest",
 }) as any as S.Schema<UpdateIdentityProviderForAccountRequest>;
@@ -72652,7 +74170,7 @@ export const UpdateIdentityProviderForAccountResponse = /*@__PURE__*/ S.suspend(
       AccessCloudflareObjectConfigNameType5More__: S.Unknown.pipe(
         T.Body("AccessCloudflare object { config, name, type, 5 more }"),
       ),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateIdentityProviderForAccountResponse",
 }) as any as S.Schema<UpdateIdentityProviderForAccountResponse>;
@@ -72743,13 +74261,15 @@ export const UpdateIdentityProviderForZoneRequest = /*@__PURE__*/ S.suspend(
         IdentityProvidersUpdateForZoneRequestIdentityProvider.pipe(
           T.Body("identity_provider"),
         ),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/zones/{zone_id}/access/identity_providers/{identity_provider_id}",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "PUT",
+          uri: "/zones/{zone_id}/access/identity_providers/{identity_provider_id}",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateIdentityProviderForZoneRequest",
 }) as any as S.Schema<UpdateIdentityProviderForZoneRequest>;
@@ -72820,7 +74340,7 @@ export const UpdateIdentityProviderForZoneResponse = /*@__PURE__*/ S.suspend(
       AccessCloudflareObjectConfigNameType5More__: S.Unknown.pipe(
         T.Body("AccessCloudflare object { config, name, type, 5 more }"),
       ),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateIdentityProviderForZoneResponse",
 }) as any as S.Schema<UpdateIdentityProviderForZoneResponse>;
@@ -73093,13 +74613,15 @@ export const UpdateOrganizationForAccountRequest = /*@__PURE__*/ S.suspend(() =>
     warpAuthSessionDuration: S.optional(
       S.String.pipe(T.Body("warp_auth_session_duration")),
     ),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/access/organizations",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/access/organizations",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateOrganizationForAccountRequest",
 }) as any as S.Schema<UpdateOrganizationForAccountRequest>;
@@ -73373,7 +74895,7 @@ export const UpdateOrganizationForAccountResponse = /*@__PURE__*/ S.suspend(
       warpAuthSessionDuration: S.optional(
         S.String.pipe(T.Body("warp_auth_session_duration")),
       ),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateOrganizationForAccountResponse",
 }) as any as S.Schema<UpdateOrganizationForAccountResponse>;
@@ -73648,13 +75170,15 @@ export const UpdateOrganizationForZoneRequest = /*@__PURE__*/ S.suspend(() =>
     warpAuthSessionDuration: S.optional(
       S.String.pipe(T.Body("warp_auth_session_duration")),
     ),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/zones/{zone_id}/access/organizations",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/zones/{zone_id}/access/organizations",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateOrganizationForZoneRequest",
 }) as any as S.Schema<UpdateOrganizationForZoneRequest>;
@@ -73928,7 +75452,7 @@ export const UpdateOrganizationForZoneResponse = /*@__PURE__*/ S.suspend(() =>
     warpAuthSessionDuration: S.optional(
       S.String.pipe(T.Body("warp_auth_session_duration")),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateOrganizationForZoneResponse",
 }) as any as S.Schema<UpdateOrganizationForZoneResponse>;
@@ -73950,13 +75474,15 @@ export const UpdateRiskScoringIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
     active: S.Boolean,
     tenantUrl: S.String.pipe(T.Body("tenant_url")),
     referenceId: S.optional(S.String.pipe(T.Body("reference_id"))),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/zt_risk_scoring/integrations/{integration_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/zt_risk_scoring/integrations/{integration_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateRiskScoringIntegrationRequest",
 }) as any as S.Schema<UpdateRiskScoringIntegrationRequest>;
@@ -73999,7 +75525,7 @@ export const UpdateRiskScoringIntegrationResponse = /*@__PURE__*/ S.suspend(
       referenceId: S.String.pipe(T.Body("reference_id")),
       tenantUrl: S.String.pipe(T.Body("tenant_url")),
       wellKnownUrl: S.String.pipe(T.Body("well_known_url")),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateRiskScoringIntegrationResponse",
 }) as any as S.Schema<UpdateRiskScoringIntegrationResponse>;
@@ -74015,13 +75541,15 @@ export const ValidateDlpPatternRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     regex: S.String,
     maxMatchBytes: S.optional(S.Number.pipe(T.Body("max_match_bytes"))),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/dlp/patterns/validate",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/dlp/patterns/validate",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ValidateDlpPatternRequest",
 }) as any as S.Schema<ValidateDlpPatternRequest>;
@@ -74033,7 +75561,7 @@ export interface ValidateDlpPatternResponse {
 export const ValidateDlpPatternResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     valid: S.Boolean,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ValidateDlpPatternResponse",
 }) as any as S.Schema<ValidateDlpPatternResponse>;

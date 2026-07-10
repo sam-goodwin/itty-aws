@@ -14,6 +14,15 @@ import * as Retry from "../retry.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
+/** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
+const KEY_DICTIONARY: Record<string, string> = {
+  expiresOn: "expires_on",
+  privateKey: "private_key",
+  serialNumber: "serial_number",
+  updatedAt: "updated_at",
+  uploadedOn: "uploaded_on",
+};
+
 export class CertificateAlreadyDeleted extends T.applyErrorMatchers(
   S.TaggedErrorClass<CertificateAlreadyDeleted>()("CertificateAlreadyDeleted", {
     code: S.Number,
@@ -60,13 +69,15 @@ export const CreateMtlsCertificateRequest = /*@__PURE__*/ S.suspend(() =>
     certificates: S.String,
     name: S.optional(S.String),
     privateKey: S.optional(S.String.pipe(T.Body("private_key"))),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/mtls_certificates",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/mtls_certificates",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateMtlsCertificateRequest",
 }) as any as S.Schema<CreateMtlsCertificateRequest>;
@@ -116,7 +127,7 @@ export const CreateMtlsCertificateResponse = /*@__PURE__*/ S.suspend(() =>
     type: S.optional(CreateResponseType),
     updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
     uploadedOn: S.optional(S.String.pipe(T.Body("uploaded_on"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateMtlsCertificateResponse",
 }) as any as S.Schema<CreateMtlsCertificateResponse>;
@@ -131,13 +142,15 @@ export const DeleteMtlsCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     mtlsCertificateId: S.String.pipe(T.Label("mtls_certificate_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/mtls_certificates/{mtls_certificate_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/mtls_certificates/{mtls_certificate_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteMtlsCertificateRequest",
 }) as any as S.Schema<DeleteMtlsCertificateRequest>;
@@ -184,7 +197,7 @@ export const DeleteMtlsCertificateResponse = /*@__PURE__*/ S.suspend(() =>
     signature: S.optional(S.String),
     type: S.optional(DeleteResponseType),
     uploadedOn: S.optional(S.String.pipe(T.Body("uploaded_on"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteMtlsCertificateResponse",
 }) as any as S.Schema<DeleteMtlsCertificateResponse>;
@@ -199,13 +212,15 @@ export const GetAssociationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     mtlsCertificateId: S.String.pipe(T.Label("mtls_certificate_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/mtls_certificates/{mtls_certificate_id}/associations",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/mtls_certificates/{mtls_certificate_id}/associations",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetAssociationRequest",
 }) as any as S.Schema<GetAssociationRequest>;
@@ -240,7 +255,7 @@ export const GetAssociationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: AssociationsGetResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetAssociationResponse",
 }) as any as S.Schema<GetAssociationResponse>;
@@ -255,13 +270,15 @@ export const GetMtlsCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     mtlsCertificateId: S.String.pipe(T.Label("mtls_certificate_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/mtls_certificates/{mtls_certificate_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/mtls_certificates/{mtls_certificate_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetMtlsCertificateRequest",
 }) as any as S.Schema<GetMtlsCertificateRequest>;
@@ -308,7 +325,7 @@ export const GetMtlsCertificateResponse = /*@__PURE__*/ S.suspend(() =>
     signature: S.optional(S.String),
     type: S.optional(GetResponseType),
     uploadedOn: S.optional(S.String.pipe(T.Body("uploaded_on"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetMtlsCertificateResponse",
 }) as any as S.Schema<GetMtlsCertificateResponse>;
@@ -335,13 +352,15 @@ export const ListMtlsCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     type: S.optional(ListRequestTypeList.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/mtls_certificates",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/mtls_certificates",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListMtlsCertificatesRequest",
 }) as any as S.Schema<ListMtlsCertificatesRequest>;
@@ -405,7 +424,7 @@ export const ListMtlsCertificatesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: ListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListMtlsCertificatesResponse",
 }) as any as S.Schema<ListMtlsCertificatesResponse>;

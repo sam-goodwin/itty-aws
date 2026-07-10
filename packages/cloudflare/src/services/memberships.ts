@@ -12,6 +12,25 @@ import * as Retry from "../retry.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
+/** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
+const KEY_DICTIONARY: Record<string, string> = {
+  abuseContactEmail: "abuse_contact_email",
+  apiAccessEnabled: "api_access_enabled",
+  cachePurge: "cache_purge",
+  createdOn: "created_on",
+  dnsRecords: "dns_records",
+  enforceTwofactor: "enforce_twofactor",
+  managedBy: "managed_by",
+  parentOrgId: "parent_org_id",
+  parentOrgName: "parent_org_name",
+  perPage: "per_page",
+  permissionGroups: "permission_groups",
+  resourceGroups: "resource_groups",
+  resultInfo: "result_info",
+  totalCount: "total_count",
+  zoneSettings: "zone_settings",
+};
+
 export interface DeleteMembershipRequest {
   /** Membership identifier tag. */
   membershipId: string;
@@ -19,13 +38,15 @@ export interface DeleteMembershipRequest {
 export const DeleteMembershipRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     membershipId: S.String.pipe(T.Label("membership_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/memberships/{membership_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/memberships/{membership_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteMembershipRequest",
 }) as any as S.Schema<DeleteMembershipRequest>;
@@ -38,7 +59,7 @@ export interface DeleteMembershipResponse {
 export const DeleteMembershipResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteMembershipResponse",
 }) as any as S.Schema<DeleteMembershipResponse>;
@@ -50,9 +71,11 @@ export interface GetMembershipRequest {
 export const GetMembershipRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     membershipId: S.String.pipe(T.Label("membership_id")),
-  }).pipe(
-    T.Http({ method: "GET", uri: "/memberships/{membership_id}", code: 200 }),
-  ),
+  })
+    .pipe(
+      T.Http({ method: "GET", uri: "/memberships/{membership_id}", code: 200 }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetMembershipRequest",
 }) as any as S.Schema<GetMembershipRequest>;
@@ -361,7 +384,7 @@ export const GetMembershipResponse = /*@__PURE__*/ S.suspend(() =>
     policies: S.optional(GetResponsePoliciesList),
     roles: S.optional(GetResponseRolesList),
     status: S.optional(GetResponseStatus),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetMembershipResponse",
 }) as any as S.Schema<GetMembershipResponse>;
@@ -403,7 +426,9 @@ export const ListMembershipsRequest = /*@__PURE__*/ S.suspend(() =>
     page: S.optional(S.Number.pipe(T.Query())),
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
     status: S.optional(ListRequestStatus.pipe(T.Query())),
-  }).pipe(T.Http({ method: "GET", uri: "/memberships", code: 200 })),
+  })
+    .pipe(T.Http({ method: "GET", uri: "/memberships", code: 200 }))
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListMembershipsRequest",
 }) as any as S.Schema<ListMembershipsRequest>;
@@ -427,7 +452,7 @@ export const ListMembershipsResponse = /*@__PURE__*/ S.suspend(() =>
           "IAMCollectionMembershipResponseWithPolicies object { errors, messages, success, 2 more }",
         ),
       ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListMembershipsResponse",
 }) as any as S.Schema<ListMembershipsResponse>;
@@ -445,9 +470,11 @@ export const PutMembershipRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     membershipId: S.String.pipe(T.Label("membership_id")),
     status: UpdateRequestStatus,
-  }).pipe(
-    T.Http({ method: "PUT", uri: "/memberships/{membership_id}", code: 200 }),
-  ),
+  })
+    .pipe(
+      T.Http({ method: "PUT", uri: "/memberships/{membership_id}", code: 200 }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutMembershipRequest",
 }) as any as S.Schema<PutMembershipRequest>;
@@ -763,7 +790,7 @@ export const PutMembershipResponse = /*@__PURE__*/ S.suspend(() =>
     policies: S.optional(UpdateResponsePoliciesList),
     roles: S.optional(UpdateResponseRolesList),
     status: S.optional(UpdateResponseStatus),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutMembershipResponse",
 }) as any as S.Schema<PutMembershipResponse>;

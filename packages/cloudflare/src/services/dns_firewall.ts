@@ -14,6 +14,27 @@ import * as Retry from "../retry.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
+/** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
+const KEY_DICTIONARY: Record<string, string> = {
+  attackMitigation: "attack_mitigation",
+  dataLag: "data_lag",
+  deprecateAnyRequests: "deprecate_any_requests",
+  dnsFirewallIpCount: "dns_firewall_ip_count",
+  dnsFirewallIps: "dns_firewall_ips",
+  ecsFallback: "ecs_fallback",
+  maximumCacheTtl: "maximum_cache_ttl",
+  minimumCacheTtl: "minimum_cache_ttl",
+  modifiedOn: "modified_on",
+  negativeCacheTtl: "negative_cache_ttl",
+  onlyWhenUpstreamUnhealthy: "only_when_upstream_unhealthy",
+  perPage: "per_page",
+  resultInfo: "result_info",
+  timeDelta: "time_delta",
+  timeIntervals: "time_intervals",
+  totalCount: "total_count",
+  upstreamIps: "upstream_ips",
+};
+
 export class DnsFirewallNotEntitled extends T.applyErrorMatchers(
   S.TaggedErrorClass<DnsFirewallNotEntitled>()("DnsFirewallNotEntitled", {
     code: S.Number,
@@ -105,13 +126,15 @@ export const CreateDnsFirewallRequest = /*@__PURE__*/ S.suspend(() =>
     negativeCacheTtl: S.optional(S.Number.pipe(T.Body("negative_cache_ttl"))),
     ratelimit: S.optional(S.Number),
     retries: S.optional(S.Number),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/dns_firewall",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/dns_firewall",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateDnsFirewallRequest",
 }) as any as S.Schema<CreateDnsFirewallRequest>;
@@ -189,7 +212,7 @@ export const CreateDnsFirewallResponse = /*@__PURE__*/ S.suspend(() =>
     attackMitigation: S.optional(
       CreateResponseAttackMitigation.pipe(T.Body("attack_mitigation")),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateDnsFirewallResponse",
 }) as any as S.Schema<CreateDnsFirewallResponse>;
@@ -204,13 +227,15 @@ export const DeleteDnsFirewallRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     dnsFirewallId: S.String.pipe(T.Label("dns_firewall_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/dns_firewall/{dns_firewall_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/dns_firewall/{dns_firewall_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteDnsFirewallRequest",
 }) as any as S.Schema<DeleteDnsFirewallRequest>;
@@ -223,7 +248,7 @@ export interface DeleteDnsFirewallResponse {
 export const DeleteDnsFirewallResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteDnsFirewallResponse",
 }) as any as S.Schema<DeleteDnsFirewallResponse>;
@@ -259,13 +284,15 @@ export const GetAnalyticReportRequest = /*@__PURE__*/ S.suspend(() =>
     since: S.optional(S.String.pipe(T.Query())),
     sort: S.optional(S.String.pipe(T.Query())),
     until: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/dns_firewall/{dns_firewall_id}/dns_analytics/report",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/dns_firewall/{dns_firewall_id}/dns_analytics/report",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetAnalyticReportRequest",
 }) as any as S.Schema<GetAnalyticReportRequest>;
@@ -375,7 +402,7 @@ export const GetAnalyticReportResponse = /*@__PURE__*/ S.suspend(() =>
     query: AnalyticsReportsGetResponseQuery,
     rows: S.Number,
     totals: S.Unknown,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetAnalyticReportResponse",
 }) as any as S.Schema<GetAnalyticReportResponse>;
@@ -424,13 +451,15 @@ export const GetAnalyticReportBytimeRequest = /*@__PURE__*/ S.suspend(() =>
       AnalyticsReportsBytimesGetRequestTimeDelta.pipe(T.Query("time_delta")),
     ),
     until: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/dns_firewall/{dns_firewall_id}/dns_analytics/report/bytime",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/dns_firewall/{dns_firewall_id}/dns_analytics/report/bytime",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetAnalyticReportBytimeRequest",
 }) as any as S.Schema<GetAnalyticReportBytimeRequest>;
@@ -567,7 +596,7 @@ export const GetAnalyticReportBytimeResponse = /*@__PURE__*/ S.suspend(() =>
       T.Body("time_intervals"),
     ),
     totals: S.Unknown,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetAnalyticReportBytimeResponse",
 }) as any as S.Schema<GetAnalyticReportBytimeResponse>;
@@ -582,13 +611,15 @@ export const GetDnsFirewallRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     dnsFirewallId: S.String.pipe(T.Label("dns_firewall_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/dns_firewall/{dns_firewall_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/dns_firewall/{dns_firewall_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDnsFirewallRequest",
 }) as any as S.Schema<GetDnsFirewallRequest>;
@@ -666,7 +697,7 @@ export const GetDnsFirewallResponse = /*@__PURE__*/ S.suspend(() =>
     attackMitigation: S.optional(
       GetResponseAttackMitigation.pipe(T.Body("attack_mitigation")),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDnsFirewallResponse",
 }) as any as S.Schema<GetDnsFirewallResponse>;
@@ -681,13 +712,15 @@ export const GetReverseDnRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     dnsFirewallId: S.String.pipe(T.Label("dns_firewall_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/dns_firewall/{dns_firewall_id}/reverse_dns",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/dns_firewall/{dns_firewall_id}/reverse_dns",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetReverseDnRequest",
 }) as any as S.Schema<GetReverseDnRequest>;
@@ -708,7 +741,7 @@ export interface GetReverseDnResponse {
 export const GetReverseDnResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ptr: ReverseDnsGetResponsePtrMap,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetReverseDnResponse",
 }) as any as S.Schema<GetReverseDnResponse>;
@@ -726,13 +759,15 @@ export const ListDnsFirewallsRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     page: S.optional(S.Number.pipe(T.Query())),
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/dns_firewall",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/dns_firewall",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListDnsFirewallsRequest",
 }) as any as S.Schema<ListDnsFirewallsRequest>;
@@ -827,7 +862,7 @@ export const ListDnsFirewallsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: ListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListDnsFirewallsResponse",
 }) as any as S.Schema<ListDnsFirewallsResponse>;
@@ -899,13 +934,15 @@ export const PatchDnsFirewallRequest = /*@__PURE__*/ S.suspend(() =>
     upstreamIps: S.optional(
       EditRequestUpstreamIpsList.pipe(T.Body("upstream_ips")),
     ),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/accounts/{account_id}/dns_firewall/{dns_firewall_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/accounts/{account_id}/dns_firewall/{dns_firewall_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchDnsFirewallRequest",
 }) as any as S.Schema<PatchDnsFirewallRequest>;
@@ -983,7 +1020,7 @@ export const PatchDnsFirewallResponse = /*@__PURE__*/ S.suspend(() =>
     attackMitigation: S.optional(
       EditResponseAttackMitigation.pipe(T.Body("attack_mitigation")),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchDnsFirewallResponse",
 }) as any as S.Schema<PatchDnsFirewallResponse>;
@@ -1009,13 +1046,15 @@ export const PatchReverseDnRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     dnsFirewallId: S.String.pipe(T.Label("dns_firewall_id")),
     ptr: S.optional(ReverseDnsEditRequestPtrMap),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/accounts/{account_id}/dns_firewall/{dns_firewall_id}/reverse_dns",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/accounts/{account_id}/dns_firewall/{dns_firewall_id}/reverse_dns",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchReverseDnRequest",
 }) as any as S.Schema<PatchReverseDnRequest>;
@@ -1036,7 +1075,7 @@ export interface PatchReverseDnResponse {
 export const PatchReverseDnResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ptr: ReverseDnsEditResponsePtrMap,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchReverseDnResponse",
 }) as any as S.Schema<PatchReverseDnResponse>;

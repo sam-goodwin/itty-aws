@@ -1,0 +1,9 @@
+{
+  "allowOutOfRegionAccess": "allow_out_of_region_access",
+  "createdAt": "created_at",
+  "datasetId": "dataset_id",
+  "objectId": "object_id",
+  "objectType": "object_type",
+  "timestampField": "timestamp_field",
+  "updatedAt": "updated_at"
+}

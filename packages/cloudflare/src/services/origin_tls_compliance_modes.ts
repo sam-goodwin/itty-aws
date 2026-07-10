@@ -12,6 +12,9 @@ import * as Retry from "../retry.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
+/** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
+const KEY_DICTIONARY: Record<string, string> = { modifiedOn: "modified_on" };
+
 export interface DeleteOriginTlsComplianceModeRequest {
   /** Identifier. */
   zoneId: string;
@@ -20,13 +23,15 @@ export const DeleteOriginTlsComplianceModeRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       zoneId: S.String.pipe(T.Label("zone_id")),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/zones/{zone_id}/settings/origin_tls_compliance_modes",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "DELETE",
+          uri: "/zones/{zone_id}/settings/origin_tls_compliance_modes",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteOriginTlsComplianceModeRequest",
 }) as any as S.Schema<DeleteOriginTlsComplianceModeRequest>;
@@ -49,7 +54,7 @@ export const DeleteOriginTlsComplianceModeResponse = /*@__PURE__*/ S.suspend(
       id: DeleteResponseId,
       editable: S.Boolean,
       modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteOriginTlsComplianceModeResponse",
 }) as any as S.Schema<DeleteOriginTlsComplianceModeResponse>;
@@ -61,13 +66,15 @@ export interface GetOriginTlsComplianceModeRequest {
 export const GetOriginTlsComplianceModeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/settings/origin_tls_compliance_modes",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/settings/origin_tls_compliance_modes",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetOriginTlsComplianceModeRequest",
 }) as any as S.Schema<GetOriginTlsComplianceModeRequest>;
@@ -97,7 +104,7 @@ export const GetOriginTlsComplianceModeResponse = /*@__PURE__*/ S.suspend(() =>
     editable: S.Boolean,
     value: GetResponseValueList,
     modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetOriginTlsComplianceModeResponse",
 }) as any as S.Schema<GetOriginTlsComplianceModeResponse>;
@@ -117,13 +124,15 @@ export const PatchOriginTlsComplianceModeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     value: EditRequestValueList,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/zones/{zone_id}/settings/origin_tls_compliance_modes",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/zones/{zone_id}/settings/origin_tls_compliance_modes",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchOriginTlsComplianceModeRequest",
 }) as any as S.Schema<PatchOriginTlsComplianceModeRequest>;
@@ -154,7 +163,7 @@ export const PatchOriginTlsComplianceModeResponse = /*@__PURE__*/ S.suspend(
       editable: S.Boolean,
       value: EditResponseValueList,
       modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchOriginTlsComplianceModeResponse",
 }) as any as S.Schema<PatchOriginTlsComplianceModeResponse>;
@@ -174,13 +183,15 @@ export const PutOriginTlsComplianceModeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     value: UpdateRequestValueList,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/zones/{zone_id}/settings/origin_tls_compliance_modes",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/zones/{zone_id}/settings/origin_tls_compliance_modes",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutOriginTlsComplianceModeRequest",
 }) as any as S.Schema<PutOriginTlsComplianceModeRequest>;
@@ -210,7 +221,7 @@ export const PutOriginTlsComplianceModeResponse = /*@__PURE__*/ S.suspend(() =>
     editable: S.Boolean,
     value: UpdateResponseValueList,
     modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutOriginTlsComplianceModeResponse",
 }) as any as S.Schema<PutOriginTlsComplianceModeResponse>;

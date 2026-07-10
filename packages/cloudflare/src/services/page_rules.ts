@@ -12,6 +12,16 @@ import * as Retry from "../retry.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
+/** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
+const KEY_DICTIONARY: Record<string, string> = {
+  checkPresence: "check_presence",
+  createdOn: "created_on",
+  deviceType: "device_type",
+  modifiedOn: "modified_on",
+  queryString: "query_string",
+  statusCode: "status_code",
+};
+
 export class Forbidden extends T.applyErrorMatchers(
   S.TaggedErrorClass<Forbidden>()("Forbidden", {
     code: S.Number,
@@ -248,9 +258,11 @@ export const CreatePageRuleRequest = /*@__PURE__*/ S.suspend(() =>
     targets: CreateRequestTargetsList,
     priority: S.optional(S.Number),
     status: S.optional(CreateRequestStatus),
-  }).pipe(
-    T.Http({ method: "POST", uri: "/zones/{zone_id}/pagerules", code: 200 }),
-  ),
+  })
+    .pipe(
+      T.Http({ method: "POST", uri: "/zones/{zone_id}/pagerules", code: 200 }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreatePageRuleRequest",
 }) as any as S.Schema<CreatePageRuleRequest>;
@@ -474,7 +486,7 @@ export const CreatePageRuleResponse = /*@__PURE__*/ S.suspend(() =>
     priority: S.Number,
     status: CreateResponseStatus,
     targets: CreateResponseTargetsList,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreatePageRuleResponse",
 }) as any as S.Schema<CreatePageRuleResponse>;
@@ -489,13 +501,15 @@ export const DeletePageRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     pageruleId: S.String.pipe(T.Label("pagerule_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/zones/{zone_id}/pagerules/{pagerule_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/zones/{zone_id}/pagerules/{pagerule_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeletePageRuleRequest",
 }) as any as S.Schema<DeletePageRuleRequest>;
@@ -508,7 +522,7 @@ export interface DeletePageRuleResponse {
 export const DeletePageRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeletePageRuleResponse",
 }) as any as S.Schema<DeletePageRuleResponse>;
@@ -523,13 +537,15 @@ export const GetPageRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     pageruleId: S.String.pipe(T.Label("pagerule_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/pagerules/{pagerule_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/pagerules/{pagerule_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetPageRuleRequest",
 }) as any as S.Schema<GetPageRuleRequest>;
@@ -752,7 +768,7 @@ export const GetPageRuleResponse = /*@__PURE__*/ S.suspend(() =>
     priority: S.Number,
     status: GetResponseStatus,
     targets: GetResponseTargetsList,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetPageRuleResponse",
 }) as any as S.Schema<GetPageRuleResponse>;
@@ -788,9 +804,11 @@ export const ListPageRulesRequest = /*@__PURE__*/ S.suspend(() =>
     match: S.optional(ListRequestMatch.pipe(T.Query())),
     order: S.optional(ListRequestOrder.pipe(T.Query())),
     status: S.optional(ListRequestStatus.pipe(T.Query())),
-  }).pipe(
-    T.Http({ method: "GET", uri: "/zones/{zone_id}/pagerules", code: 200 }),
-  ),
+  })
+    .pipe(
+      T.Http({ method: "GET", uri: "/zones/{zone_id}/pagerules", code: 200 }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListPageRulesRequest",
 }) as any as S.Schema<ListPageRulesRequest>;
@@ -1028,7 +1046,7 @@ export interface ListPageRulesResponse {
 export const ListPageRulesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(ListResultList.pipe(T.EnvelopePayload())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListPageRulesResponse",
 }) as any as S.Schema<ListPageRulesResponse>;
@@ -1247,13 +1265,15 @@ export const PatchPageRuleRequest = /*@__PURE__*/ S.suspend(() =>
     priority: S.optional(S.Number),
     status: S.optional(EditRequestStatus),
     targets: S.optional(EditRequestTargetsList),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/zones/{zone_id}/pagerules/{pagerule_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/zones/{zone_id}/pagerules/{pagerule_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchPageRuleRequest",
 }) as any as S.Schema<PatchPageRuleRequest>;
@@ -1476,7 +1496,7 @@ export const PatchPageRuleResponse = /*@__PURE__*/ S.suspend(() =>
     priority: S.Number,
     status: EditResponseStatus,
     targets: EditResponseTargetsList,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchPageRuleResponse",
 }) as any as S.Schema<PatchPageRuleResponse>;
@@ -1696,13 +1716,15 @@ export const UpdatePageRuleRequest = /*@__PURE__*/ S.suspend(() =>
     targets: UpdateRequestTargetsList,
     priority: S.optional(S.Number),
     status: S.optional(UpdateRequestStatus),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/zones/{zone_id}/pagerules/{pagerule_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/zones/{zone_id}/pagerules/{pagerule_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdatePageRuleRequest",
 }) as any as S.Schema<UpdatePageRuleRequest>;
@@ -1926,7 +1948,7 @@ export const UpdatePageRuleResponse = /*@__PURE__*/ S.suspend(() =>
     priority: S.Number,
     status: UpdateResponseStatus,
     targets: UpdateResponseTargetsList,
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdatePageRuleResponse",
 }) as any as S.Schema<UpdatePageRuleResponse>;

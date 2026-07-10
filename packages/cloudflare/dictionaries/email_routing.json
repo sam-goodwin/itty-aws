@@ -1,0 +1,9 @@
+{
+  "documentationUrl": "documentation_url",
+  "perPage": "per_page",
+  "resultInfo": "result_info",
+  "skipWizard": "skip_wizard",
+  "supportSubaddress": "support_subaddress",
+  "totalCount": "total_count",
+  "totalPages": "total_pages"
+}

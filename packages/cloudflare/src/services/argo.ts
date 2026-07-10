@@ -12,6 +12,9 @@ import * as Retry from "../retry.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
+/** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
+const KEY_DICTIONARY: Record<string, string> = { modifiedOn: "modified_on" };
+
 export class Forbidden extends T.applyErrorMatchers(
   S.TaggedErrorClass<Forbidden>()("Forbidden", {
     code: S.Number,
@@ -51,13 +54,15 @@ export interface GetSmartRoutingRequest {
 export const GetSmartRoutingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/argo/smart_routing",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/argo/smart_routing",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetSmartRoutingRequest",
 }) as any as S.Schema<GetSmartRoutingRequest>;
@@ -82,7 +87,7 @@ export const GetSmartRoutingResponse = /*@__PURE__*/ S.suspend(() =>
     editable: S.Boolean,
     value: SmartRoutingGetResponseValue,
     modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetSmartRoutingResponse",
 }) as any as S.Schema<GetSmartRoutingResponse>;
@@ -94,13 +99,15 @@ export interface GetTieredCachingRequest {
 export const GetTieredCachingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/argo/tiered_caching",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/argo/tiered_caching",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetTieredCachingRequest",
 }) as any as S.Schema<GetTieredCachingRequest>;
@@ -128,7 +135,7 @@ export const GetTieredCachingResponse = /*@__PURE__*/ S.suspend(() =>
     editable: S.Boolean,
     value: TieredCachingGetResponseValue,
     modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetTieredCachingResponse",
 }) as any as S.Schema<GetTieredCachingResponse>;
@@ -146,13 +153,15 @@ export const PatchSmartRoutingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     value: SmartRoutingEditRequestValue,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/zones/{zone_id}/argo/smart_routing",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/zones/{zone_id}/argo/smart_routing",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchSmartRoutingRequest",
 }) as any as S.Schema<PatchSmartRoutingRequest>;
@@ -177,7 +186,7 @@ export const PatchSmartRoutingResponse = /*@__PURE__*/ S.suspend(() =>
     editable: S.Boolean,
     value: SmartRoutingEditResponseValue,
     modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchSmartRoutingResponse",
 }) as any as S.Schema<PatchSmartRoutingResponse>;
@@ -195,13 +204,15 @@ export const PatchTieredCachingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     value: TieredCachingEditRequestValue,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/zones/{zone_id}/argo/tiered_caching",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/zones/{zone_id}/argo/tiered_caching",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchTieredCachingRequest",
 }) as any as S.Schema<PatchTieredCachingRequest>;
@@ -229,7 +240,7 @@ export const PatchTieredCachingResponse = /*@__PURE__*/ S.suspend(() =>
     editable: S.Boolean,
     value: TieredCachingEditResponseValue,
     modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchTieredCachingResponse",
 }) as any as S.Schema<PatchTieredCachingResponse>;

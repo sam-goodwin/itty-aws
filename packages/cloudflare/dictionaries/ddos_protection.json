@@ -1,0 +1,11 @@
+{
+  "burstSensitivity": "burst_sensitivity",
+  "createdOn": "created_on",
+  "documentationUrl": "documentation_url",
+  "mitigationType": "mitigation_type",
+  "modifiedOn": "modified_on",
+  "perPage": "per_page",
+  "rateSensitivity": "rate_sensitivity",
+  "resultInfo": "result_info",
+  "totalCount": "total_count"
+}

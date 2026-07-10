@@ -14,6 +14,17 @@ import * as Retry from "../retry.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
+/** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
+const KEY_DICTIONARY: Record<string, string> = {
+  documentationUrl: "documentation_url",
+  perPage: "per_page",
+  resultInfo: "result_info",
+  skipWizard: "skip_wizard",
+  supportSubaddress: "support_subaddress",
+  totalCount: "total_count",
+  totalPages: "total_pages",
+};
+
 export class DestinationNotVerified extends T.applyErrorMatchers(
   S.TaggedErrorClass<DestinationNotVerified>()("DestinationNotVerified", {
     code: S.Number,
@@ -59,13 +70,15 @@ export const AddressesEditRequest = /*@__PURE__*/ S.suspend(() =>
       T.Label("destination_address_identifier"),
     ),
     status: AddressesEditRequestStatus,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/accounts/{account_id}/email/routing/addresses/{destination_address_identifier}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/accounts/{account_id}/email/routing/addresses/{destination_address_identifier}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "AddressesEditRequest",
 }) as any as S.Schema<AddressesEditRequest>;
@@ -93,7 +106,7 @@ export const AddressesEditResponse = /*@__PURE__*/ S.suspend(() =>
     modified: S.optional(S.String),
     tag: S.optional(S.String),
     verified: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "AddressesEditResponse",
 }) as any as S.Schema<AddressesEditResponse>;
@@ -108,13 +121,15 @@ export const CreateAddressRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     email: S.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/email/routing/addresses",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/email/routing/addresses",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateAddressRequest",
 }) as any as S.Schema<CreateAddressRequest>;
@@ -142,7 +157,7 @@ export const CreateAddressResponse = /*@__PURE__*/ S.suspend(() =>
     modified: S.optional(S.String),
     tag: S.optional(S.String),
     verified: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateAddressResponse",
 }) as any as S.Schema<CreateAddressResponse>;
@@ -157,13 +172,15 @@ export const CreateDnsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     name: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/zones/{zone_id}/email/routing/dns",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/zones/{zone_id}/email/routing/dns",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateDnsRequest",
 }) as any as S.Schema<CreateDnsRequest>;
@@ -250,7 +267,7 @@ export const CreateDnsResponse = /*@__PURE__*/ S.suspend(() =>
       DnsCreateResponseSupportSubaddress.pipe(T.Body("support_subaddress")),
     ),
     tag: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateDnsResponse",
 }) as any as S.Schema<CreateDnsResponse>;
@@ -362,13 +379,15 @@ export const CreateRuleRequest = /*@__PURE__*/ S.suspend(() =>
     ownerWorkerTag: S.optional(S.String.pipe(T.Body("owner_worker_tag"))),
     priority: S.optional(S.Number),
     source: S.optional(RulesCreateRequestSource),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/zones/{zone_id}/email/routing/rules",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/zones/{zone_id}/email/routing/rules",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateRuleRequest",
 }) as any as S.Schema<CreateRuleRequest>;
@@ -481,7 +500,7 @@ export const CreateRuleResponse = /*@__PURE__*/ S.suspend(() =>
     priority: S.optional(S.Number),
     source: S.optional(RulesCreateResponseSource),
     tag: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateRuleResponse",
 }) as any as S.Schema<CreateRuleResponse>;
@@ -498,13 +517,15 @@ export const DeleteAddressRequest = /*@__PURE__*/ S.suspend(() =>
     destinationAddressIdentifier: S.String.pipe(
       T.Label("destination_address_identifier"),
     ),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/email/routing/addresses/{destination_address_identifier}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/email/routing/addresses/{destination_address_identifier}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteAddressRequest",
 }) as any as S.Schema<DeleteAddressRequest>;
@@ -532,7 +553,7 @@ export const DeleteAddressResponse = /*@__PURE__*/ S.suspend(() =>
     modified: S.optional(S.String),
     tag: S.optional(S.String),
     verified: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteAddressResponse",
 }) as any as S.Schema<DeleteAddressResponse>;
@@ -544,13 +565,15 @@ export interface DeleteDnsRequest {
 export const DeleteDnsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/zones/{zone_id}/email/routing/dns",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/zones/{zone_id}/email/routing/dns",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteDnsRequest",
 }) as any as S.Schema<DeleteDnsRequest>;
@@ -571,7 +594,7 @@ export const DeleteDnsResponse = /*@__PURE__*/ S.suspend(() =>
           "EmailDNSSettingsResponseCollection object { errors, messages, success, 2 more }",
         ),
       ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteDnsResponse",
 }) as any as S.Schema<DeleteDnsResponse>;
@@ -586,13 +609,15 @@ export const DeleteRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     ruleIdentifier: S.String.pipe(T.Label("rule_identifier")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/zones/{zone_id}/email/routing/rules/{rule_identifier}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/zones/{zone_id}/email/routing/rules/{rule_identifier}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteRuleRequest",
 }) as any as S.Schema<DeleteRuleRequest>;
@@ -705,7 +730,7 @@ export const DeleteRuleResponse = /*@__PURE__*/ S.suspend(() =>
     priority: S.optional(S.Number),
     source: S.optional(RulesDeleteResponseSource),
     tag: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteRuleResponse",
 }) as any as S.Schema<DeleteRuleResponse>;
@@ -719,13 +744,15 @@ export const DisableEmailRoutingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     body: S.Unknown,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/zones/{zone_id}/email/routing/disable",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/zones/{zone_id}/email/routing/disable",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DisableEmailRoutingRequest",
 }) as any as S.Schema<DisableEmailRoutingRequest>;
@@ -812,7 +839,7 @@ export const DisableEmailRoutingResponse = /*@__PURE__*/ S.suspend(() =>
       DisableResponseSupportSubaddress.pipe(T.Body("support_subaddress")),
     ),
     tag: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DisableEmailRoutingResponse",
 }) as any as S.Schema<DisableEmailRoutingResponse>;
@@ -826,13 +853,15 @@ export const EnableEmailRoutingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     body: S.Unknown,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/zones/{zone_id}/email/routing/enable",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/zones/{zone_id}/email/routing/enable",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "EnableEmailRoutingRequest",
 }) as any as S.Schema<EnableEmailRoutingRequest>;
@@ -919,7 +948,7 @@ export const EnableEmailRoutingResponse = /*@__PURE__*/ S.suspend(() =>
       EnableResponseSupportSubaddress.pipe(T.Body("support_subaddress")),
     ),
     tag: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "EnableEmailRoutingResponse",
 }) as any as S.Schema<EnableEmailRoutingResponse>;
@@ -936,13 +965,15 @@ export const GetAddressRequest = /*@__PURE__*/ S.suspend(() =>
     destinationAddressIdentifier: S.String.pipe(
       T.Label("destination_address_identifier"),
     ),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/email/routing/addresses/{destination_address_identifier}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/email/routing/addresses/{destination_address_identifier}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetAddressRequest",
 }) as any as S.Schema<GetAddressRequest>;
@@ -970,7 +1001,7 @@ export const GetAddressResponse = /*@__PURE__*/ S.suspend(() =>
     modified: S.optional(S.String),
     tag: S.optional(S.String),
     verified: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetAddressResponse",
 }) as any as S.Schema<GetAddressResponse>;
@@ -985,13 +1016,15 @@ export const GetDnsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     subdomain: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/email/routing/dns",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/email/routing/dns",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "GetDnsRequest" }) as any as S.Schema<GetDnsRequest>;
 
 /** Raw response payload (operation does not use the standard v4 result envelope). */
@@ -1013,7 +1046,7 @@ export const GetDnsResponse = /*@__PURE__*/ S.suspend(() =>
           "EmailDNSSettingsResponseCollection object { errors, messages, success, 2 more }",
         ),
       ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "GetDnsResponse" }) as any as S.Schema<GetDnsResponse>;
 
 export interface GetEmailRoutingRequest {
@@ -1023,9 +1056,15 @@ export interface GetEmailRoutingRequest {
 export const GetEmailRoutingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-  }).pipe(
-    T.Http({ method: "GET", uri: "/zones/{zone_id}/email/routing", code: 200 }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/email/routing",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetEmailRoutingRequest",
 }) as any as S.Schema<GetEmailRoutingRequest>;
@@ -1110,7 +1149,7 @@ export const GetEmailRoutingResponse = /*@__PURE__*/ S.suspend(() =>
       GetResponseSupportSubaddress.pipe(T.Body("support_subaddress")),
     ),
     tag: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetEmailRoutingResponse",
 }) as any as S.Schema<GetEmailRoutingResponse>;
@@ -1125,13 +1164,15 @@ export const GetRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     ruleIdentifier: S.String.pipe(T.Label("rule_identifier")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/email/routing/rules/{rule_identifier}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/email/routing/rules/{rule_identifier}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "GetRuleRequest" }) as any as S.Schema<GetRuleRequest>;
 
 export type RulesGetResponseActionsItemType =
@@ -1242,7 +1283,7 @@ export const GetRuleResponse = /*@__PURE__*/ S.suspend(() =>
     priority: S.optional(S.Number),
     source: S.optional(RulesGetResponseSource),
     tag: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetRuleResponse",
 }) as any as S.Schema<GetRuleResponse>;
@@ -1254,13 +1295,15 @@ export interface GetRuleCatchAllRequest {
 export const GetRuleCatchAllRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/email/routing/rules/catch_all",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/email/routing/rules/catch_all",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetRuleCatchAllRequest",
 }) as any as S.Schema<GetRuleCatchAllRequest>;
@@ -1366,7 +1409,7 @@ export const GetRuleCatchAllResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     source: S.optional(RulesCatchAllsGetResponseSource),
     tag: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetRuleCatchAllResponse",
 }) as any as S.Schema<GetRuleCatchAllResponse>;
@@ -1393,13 +1436,15 @@ export const ListAddressesRequest = /*@__PURE__*/ S.suspend(() =>
     page: S.optional(S.Number.pipe(T.Query())),
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
     verified: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/email/routing/addresses",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/email/routing/addresses",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListAddressesRequest",
 }) as any as S.Schema<ListAddressesRequest>;
@@ -1446,7 +1491,7 @@ export const ListAddressesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: AddressesListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListAddressesResponse",
 }) as any as S.Schema<ListAddressesResponse>;
@@ -1461,13 +1506,15 @@ export const PatchDnsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     name: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/zones/{zone_id}/email/routing/dns",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/zones/{zone_id}/email/routing/dns",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchDnsRequest",
 }) as any as S.Schema<PatchDnsRequest>;
@@ -1554,7 +1601,7 @@ export const PatchDnsResponse = /*@__PURE__*/ S.suspend(() =>
       DnsEditResponseSupportSubaddress.pipe(T.Body("support_subaddress")),
     ),
     tag: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchDnsResponse",
 }) as any as S.Schema<PatchDnsResponse>;
@@ -1661,13 +1708,15 @@ export const PutRuleCatchAllRequest = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     ownerWorkerTag: S.optional(S.String.pipe(T.Body("owner_worker_tag"))),
     source: S.optional(RulesCatchAllsUpdateRequestSource),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/zones/{zone_id}/email/routing/rules/catch_all",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/zones/{zone_id}/email/routing/rules/catch_all",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutRuleCatchAllRequest",
 }) as any as S.Schema<PutRuleCatchAllRequest>;
@@ -1777,7 +1826,7 @@ export const PutRuleCatchAllResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     source: S.optional(RulesCatchAllsUpdateResponseSource),
     tag: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutRuleCatchAllResponse",
 }) as any as S.Schema<PutRuleCatchAllResponse>;
@@ -1792,13 +1841,15 @@ export const UnlockRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     name: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/zones/{zone_id}/email/routing/unlock",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/zones/{zone_id}/email/routing/unlock",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "UnlockRequest" }) as any as S.Schema<UnlockRequest>;
 
 export interface UnlockResponseEnabled {
@@ -1883,7 +1934,7 @@ export const UnlockResponse = /*@__PURE__*/ S.suspend(() =>
       UnlockResponseSupportSubaddress.pipe(T.Body("support_subaddress")),
     ),
     tag: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "UnlockResponse" }) as any as S.Schema<UnlockResponse>;
 
 export type RulesUpdateRequestActionsItemType =
@@ -1996,13 +2047,15 @@ export const UpdateRuleRequest = /*@__PURE__*/ S.suspend(() =>
     ownerWorkerTag: S.optional(S.String.pipe(T.Body("owner_worker_tag"))),
     priority: S.optional(S.Number),
     source: S.optional(RulesUpdateRequestSource),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/zones/{zone_id}/email/routing/rules/{rule_identifier}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/zones/{zone_id}/email/routing/rules/{rule_identifier}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateRuleRequest",
 }) as any as S.Schema<UpdateRuleRequest>;
@@ -2115,7 +2168,7 @@ export const UpdateRuleResponse = /*@__PURE__*/ S.suspend(() =>
     priority: S.optional(S.Number),
     source: S.optional(RulesUpdateResponseSource),
     tag: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateRuleResponse",
 }) as any as S.Schema<UpdateRuleResponse>;

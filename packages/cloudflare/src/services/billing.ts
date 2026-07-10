@@ -12,6 +12,78 @@ import * as Retry from "../retry.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
+/** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
+const KEY_DICTIONARY: Record<string, string> = {
+  accountType: "account_type",
+  billedCost: "BilledCost",
+  billingAccountId: "BillingAccountId",
+  billingAccountName: "BillingAccountName",
+  billingCurrency: "BillingCurrency",
+  billingPeriodEnd: "BillingPeriodEnd",
+  billingPeriodStart: "BillingPeriodStart",
+  cardExpiryMonth: "card_expiry_month",
+  cardExpiryYear: "card_expiry_year",
+  cardNumber: "card_number",
+  chargeCategory: "ChargeCategory",
+  chargeClass: "ChargeClass",
+  chargeDescription: "ChargeDescription",
+  chargeFrequency: "ChargeFrequency",
+  chargePeriodEnd: "ChargePeriodEnd",
+  chargePeriodStart: "ChargePeriodStart",
+  consumedQuantity: "ConsumedQuantity",
+  consumedUnit: "ConsumedUnit",
+  contractedCost: "ContractedCost",
+  contractedUnitPrice: "ContractedUnitPrice",
+  createdOn: "created_on",
+  cumulatedContractedCost: "CumulatedContractedCost",
+  cumulatedPricingQuantity: "CumulatedPricingQuantity",
+  deviceData: "device_data",
+  editedOn: "edited_on",
+  effectiveCost: "EffectiveCost",
+  enterpriseBillingEmail: "enterprise_billing_email",
+  enterprisePrimaryEmail: "enterprise_primary_email",
+  firstName: "first_name",
+  hostProviderName: "HostProviderName",
+  invoiceIssuerName: "InvoiceIssuerName",
+  isPartner: "is_partner",
+  lastName: "last_name",
+  listCost: "ListCost",
+  listUnitPrice: "ListUnitPrice",
+  nextBillDate: "next_bill_date",
+  paymentAddress: "payment_address",
+  paymentAddress2: "payment_address2",
+  paymentCity: "payment_city",
+  paymentCountry: "payment_country",
+  paymentEmail: "payment_email",
+  paymentFirstName: "payment_first_name",
+  paymentGateway: "payment_gateway",
+  paymentLastName: "payment_last_name",
+  paymentNonce: "payment_nonce",
+  paymentState: "payment_state",
+  paymentZipcode: "payment_zipcode",
+  pricingQuantity: "PricingQuantity",
+  pricingUnit: "PricingUnit",
+  primaryEmail: "primary_email",
+  regionId: "RegionId",
+  regionName: "RegionName",
+  serviceFamilyName: "ServiceFamilyName",
+  serviceName: "ServiceName",
+  serviceProviderName: "ServiceProviderName",
+  subAccountId: "SubAccountId",
+  subAccountName: "SubAccountName",
+  subscriptionId: "SubscriptionId",
+  taxIdType: "tax_id_type",
+  useLegacy: "use_legacy",
+  validationCode: "validation_code",
+  xBillableMetricId: "x_BillableMetricId",
+  xBillableMetricName: "x_BillableMetricName",
+  xProductFamilyName: "x_ProductFamilyName",
+  xZoneId: "x_ZoneId",
+  xZoneName: "x_ZoneName",
+  zoneId: "ZoneId",
+  zoneName: "ZoneName",
+};
+
 export interface GetProfileRequest {
   /** Identifier */
   accountId: string;
@@ -19,13 +91,15 @@ export interface GetProfileRequest {
 export const GetProfileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/billing/profile",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/billing/profile",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetProfileRequest",
 }) as any as S.Schema<GetProfileRequest>;
@@ -118,7 +192,7 @@ export const GetProfileResponse = /*@__PURE__*/ S.suspend(() =>
     validationCode: S.optional(S.String.pipe(T.Body("validation_code"))),
     vat: S.optional(S.String),
     zipcode: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetProfileResponse",
 }) as any as S.Schema<GetProfileResponse>;
@@ -139,13 +213,15 @@ export const GetUsageRequest = /*@__PURE__*/ S.suspend(() =>
     from: S.optional(S.String.pipe(T.Query())),
     metric: S.optional(S.String.pipe(T.Query())),
     to: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/billable/usage",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/billable/usage",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetUsageRequest",
 }) as any as S.Schema<GetUsageRequest>;
@@ -281,7 +357,7 @@ export interface GetUsageResponse {
 export const GetUsageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(UsageGetResultList.pipe(T.EnvelopePayload())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetUsageResponse",
 }) as any as S.Schema<GetUsageResponse>;
@@ -299,13 +375,15 @@ export const PaygoUsageRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     from: S.optional(S.String.pipe(T.Query())),
     to: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/paygo-usage",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/paygo-usage",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PaygoUsageRequest",
 }) as any as S.Schema<PaygoUsageRequest>;
@@ -376,7 +454,7 @@ export interface PaygoUsageResponse {
 export const PaygoUsageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(UsagePaygoResultList.pipe(T.EnvelopePayload())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PaygoUsageResponse",
 }) as any as S.Schema<PaygoUsageResponse>;

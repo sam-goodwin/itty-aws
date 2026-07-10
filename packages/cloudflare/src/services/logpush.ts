@@ -14,6 +14,33 @@ import * as Retry from "../retry.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
+/** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
+const KEY_DICTIONARY: Record<string, string> = {
+  batchPrefix: "batch_prefix",
+  batchSuffix: "batch_suffix",
+  destinationConf: "destination_conf",
+  errorMessage: "error_message",
+  fieldDelimiter: "field_delimiter",
+  fieldNames: "field_names",
+  lastComplete: "last_complete",
+  lastError: "last_error",
+  logpullOptions: "logpull_options",
+  maxUploadBytes: "max_upload_bytes",
+  maxUploadIntervalSeconds: "max_upload_interval_seconds",
+  maxUploadRecords: "max_upload_records",
+  mergeSubrequests: "merge_subrequests",
+  outputOptions: "output_options",
+  outputType: "output_type",
+  ownershipChallenge: "ownership_challenge",
+  recordDelimiter: "record_delimiter",
+  recordPrefix: "record_prefix",
+  recordSuffix: "record_suffix",
+  recordTemplate: "record_template",
+  sampleRate: "sample_rate",
+  sessionId: "session_id",
+  timestampFormat: "timestamp_format",
+};
+
 export interface CreateEdgeRequest {
   /** Identifier. */
   zoneId: string;
@@ -30,13 +57,15 @@ export const CreateEdgeRequest = /*@__PURE__*/ S.suspend(() =>
     fields: S.optional(S.String),
     filter: S.optional(S.String),
     sample: S.optional(S.Number),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/zones/{zone_id}/logpush/edge/jobs",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/zones/{zone_id}/logpush/edge/jobs",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateEdgeRequest",
 }) as any as S.Schema<CreateEdgeRequest>;
@@ -61,7 +90,7 @@ export const CreateEdgeResponse = /*@__PURE__*/ S.suspend(() =>
     filter: S.optional(S.String),
     sample: S.optional(S.Number),
     sessionId: S.optional(S.String.pipe(T.Body("session_id"))),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateEdgeResponse",
 }) as any as S.Schema<CreateEdgeResponse>;
@@ -271,13 +300,15 @@ export const CreateJobForAccountRequest = /*@__PURE__*/ S.suspend(() =>
     ownershipChallenge: S.optional(
       S.String.pipe(T.Body("ownership_challenge")),
     ),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/logpush/jobs",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/logpush/jobs",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateJobForAccountRequest",
 }) as any as S.Schema<CreateJobForAccountRequest>;
@@ -489,7 +520,7 @@ export const CreateJobForAccountResponse = /*@__PURE__*/ S.suspend(() =>
     outputOptions: S.optional(
       JobsCreateForAccountResponseOutputOptions.pipe(T.Body("output_options")),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateJobForAccountResponse",
 }) as any as S.Schema<CreateJobForAccountResponse>;
@@ -694,9 +725,15 @@ export const CreateJobForZoneRequest = /*@__PURE__*/ S.suspend(() =>
     ownershipChallenge: S.optional(
       S.String.pipe(T.Body("ownership_challenge")),
     ),
-  }).pipe(
-    T.Http({ method: "POST", uri: "/zones/{zone_id}/logpush/jobs", code: 200 }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/zones/{zone_id}/logpush/jobs",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateJobForZoneRequest",
 }) as any as S.Schema<CreateJobForZoneRequest>;
@@ -903,7 +940,7 @@ export const CreateJobForZoneResponse = /*@__PURE__*/ S.suspend(() =>
     outputOptions: S.optional(
       JobsCreateForZoneResponseOutputOptions.pipe(T.Body("output_options")),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateJobForZoneResponse",
 }) as any as S.Schema<CreateJobForZoneResponse>;
@@ -918,13 +955,15 @@ export const CreateOwnershipForAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     destinationConf: S.String.pipe(T.Body("destination_conf")),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/logpush/ownership",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/logpush/ownership",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateOwnershipForAccountRequest",
 }) as any as S.Schema<CreateOwnershipForAccountRequest>;
@@ -940,7 +979,7 @@ export const CreateOwnershipForAccountResponse = /*@__PURE__*/ S.suspend(() =>
     filename: S.optional(S.String),
     message: S.optional(S.String),
     valid: S.optional(S.Boolean),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateOwnershipForAccountResponse",
 }) as any as S.Schema<CreateOwnershipForAccountResponse>;
@@ -955,13 +994,15 @@ export const CreateOwnershipForZoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     destinationConf: S.String.pipe(T.Body("destination_conf")),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/zones/{zone_id}/logpush/ownership",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/zones/{zone_id}/logpush/ownership",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateOwnershipForZoneRequest",
 }) as any as S.Schema<CreateOwnershipForZoneRequest>;
@@ -977,7 +1018,7 @@ export const CreateOwnershipForZoneResponse = /*@__PURE__*/ S.suspend(() =>
     filename: S.optional(S.String),
     message: S.optional(S.String),
     valid: S.optional(S.Boolean),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateOwnershipForZoneResponse",
 }) as any as S.Schema<CreateOwnershipForZoneResponse>;
@@ -992,13 +1033,15 @@ export const DeleteJobForAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     jobId: S.Number.pipe(T.Label("job_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/logpush/jobs/{job_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/logpush/jobs/{job_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteJobForAccountRequest",
 }) as any as S.Schema<DeleteJobForAccountRequest>;
@@ -1011,7 +1054,7 @@ export interface DeleteJobForAccountResponse {
 export const DeleteJobForAccountResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteJobForAccountResponse",
 }) as any as S.Schema<DeleteJobForAccountResponse>;
@@ -1026,13 +1069,15 @@ export const DeleteJobForZoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     jobId: S.Number.pipe(T.Label("job_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/zones/{zone_id}/logpush/jobs/{job_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/zones/{zone_id}/logpush/jobs/{job_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteJobForZoneRequest",
 }) as any as S.Schema<DeleteJobForZoneRequest>;
@@ -1045,7 +1090,7 @@ export interface DeleteJobForZoneResponse {
 export const DeleteJobForZoneResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteJobForZoneResponse",
 }) as any as S.Schema<DeleteJobForZoneResponse>;
@@ -1061,13 +1106,15 @@ export const DestinationExistsValidateForAccountRequest =
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
       destinationConf: S.String.pipe(T.Body("destination_conf")),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/accounts/{account_id}/logpush/validate/destination/exists",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "POST",
+          uri: "/accounts/{account_id}/logpush/validate/destination/exists",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "DestinationExistsValidateForAccountRequest",
   }) as any as S.Schema<DestinationExistsValidateForAccountRequest>;
@@ -1080,7 +1127,7 @@ export const DestinationExistsValidateForAccountResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       exists: S.optional(S.Boolean),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "DestinationExistsValidateForAccountResponse",
   }) as any as S.Schema<DestinationExistsValidateForAccountResponse>;
@@ -1096,13 +1143,15 @@ export const DestinationExistsValidateForZoneRequest = /*@__PURE__*/ S.suspend(
     S.Struct({
       zoneId: S.String.pipe(T.Label("zone_id")),
       destinationConf: S.String.pipe(T.Body("destination_conf")),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/zones/{zone_id}/logpush/validate/destination/exists",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "POST",
+          uri: "/zones/{zone_id}/logpush/validate/destination/exists",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DestinationExistsValidateForZoneRequest",
 }) as any as S.Schema<DestinationExistsValidateForZoneRequest>;
@@ -1115,7 +1164,7 @@ export const DestinationExistsValidateForZoneResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       exists: S.optional(S.Boolean),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DestinationExistsValidateForZoneResponse",
 }) as any as S.Schema<DestinationExistsValidateForZoneResponse>;
@@ -1131,13 +1180,15 @@ export const DestinationValidateForAccountRequest = /*@__PURE__*/ S.suspend(
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
       destinationConf: S.String.pipe(T.Body("destination_conf")),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/accounts/{account_id}/logpush/validate/destination",
-        code: 200,
-      }),
-    ),
+    })
+      .pipe(
+        T.Http({
+          method: "POST",
+          uri: "/accounts/{account_id}/logpush/validate/destination",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DestinationValidateForAccountRequest",
 }) as any as S.Schema<DestinationValidateForAccountRequest>;
@@ -1152,7 +1203,7 @@ export const DestinationValidateForAccountResponse = /*@__PURE__*/ S.suspend(
     S.Struct({
       message: S.optional(S.String),
       valid: S.optional(S.Boolean),
-    }),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DestinationValidateForAccountResponse",
 }) as any as S.Schema<DestinationValidateForAccountResponse>;
@@ -1167,13 +1218,15 @@ export const DestinationValidateForZoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     destinationConf: S.String.pipe(T.Body("destination_conf")),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/zones/{zone_id}/logpush/validate/destination",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/zones/{zone_id}/logpush/validate/destination",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DestinationValidateForZoneRequest",
 }) as any as S.Schema<DestinationValidateForZoneRequest>;
@@ -1187,7 +1240,7 @@ export const DestinationValidateForZoneResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.String),
     valid: S.optional(S.Boolean),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DestinationValidateForZoneResponse",
 }) as any as S.Schema<DestinationValidateForZoneResponse>;
@@ -1212,13 +1265,15 @@ export const GetDatasetFieldForAccountRequest = /*@__PURE__*/ S.suspend(() =>
     datasetId: DatasetsFieldsGetForAccountRequestDatasetId.pipe(
       T.Label("dataset_id"),
     ),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/logpush/datasets/{dataset_id}/fields",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/logpush/datasets/{dataset_id}/fields",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDatasetFieldForAccountRequest",
 }) as any as S.Schema<GetDatasetFieldForAccountRequest>;
@@ -1230,7 +1285,7 @@ export interface GetDatasetFieldForAccountResponse {
 export const GetDatasetFieldForAccountResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDatasetFieldForAccountResponse",
 }) as any as S.Schema<GetDatasetFieldForAccountResponse>;
@@ -1254,13 +1309,15 @@ export const GetDatasetFieldForZoneRequest = /*@__PURE__*/ S.suspend(() =>
     datasetId: DatasetsFieldsGetForZoneRequestDatasetId.pipe(
       T.Label("dataset_id"),
     ),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/logpush/datasets/{dataset_id}/fields",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/logpush/datasets/{dataset_id}/fields",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDatasetFieldForZoneRequest",
 }) as any as S.Schema<GetDatasetFieldForZoneRequest>;
@@ -1272,7 +1329,7 @@ export interface GetDatasetFieldForZoneResponse {
 export const GetDatasetFieldForZoneResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDatasetFieldForZoneResponse",
 }) as any as S.Schema<GetDatasetFieldForZoneResponse>;
@@ -1296,13 +1353,15 @@ export const GetDatasetJobForAccountRequest = /*@__PURE__*/ S.suspend(() =>
     datasetId: DatasetsJobsGetForAccountRequestDatasetId.pipe(
       T.Label("dataset_id"),
     ),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/logpush/datasets/{dataset_id}/jobs",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/logpush/datasets/{dataset_id}/jobs",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDatasetJobForAccountRequest",
 }) as any as S.Schema<GetDatasetJobForAccountRequest>;
@@ -1542,7 +1601,7 @@ export const GetDatasetJobForAccountResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: DatasetsJobsGetForAccountResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDatasetJobForAccountResponse",
 }) as any as S.Schema<GetDatasetJobForAccountResponse>;
@@ -1566,13 +1625,15 @@ export const GetDatasetJobForZoneRequest = /*@__PURE__*/ S.suspend(() =>
     datasetId: DatasetsJobsGetForZoneRequestDatasetId.pipe(
       T.Label("dataset_id"),
     ),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/logpush/datasets/{dataset_id}/jobs",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/logpush/datasets/{dataset_id}/jobs",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDatasetJobForZoneRequest",
 }) as any as S.Schema<GetDatasetJobForZoneRequest>;
@@ -1807,7 +1868,7 @@ export const GetDatasetJobForZoneResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: DatasetsJobsGetForZoneResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDatasetJobForZoneResponse",
 }) as any as S.Schema<GetDatasetJobForZoneResponse>;
@@ -1819,13 +1880,15 @@ export interface GetEdgeRequest {
 export const GetEdgeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/logpush/edge/jobs",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/logpush/edge/jobs",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "GetEdgeRequest" }) as any as S.Schema<GetEdgeRequest>;
 
 export interface EdgeGetResultItem {
@@ -1867,7 +1930,7 @@ export const GetEdgeResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: EdgeGetResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetEdgeResponse",
 }) as any as S.Schema<GetEdgeResponse>;
@@ -1882,13 +1945,15 @@ export const GetJobForAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     jobId: S.Number.pipe(T.Label("job_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/logpush/jobs/{job_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/logpush/jobs/{job_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetJobForAccountRequest",
 }) as any as S.Schema<GetJobForAccountRequest>;
@@ -2095,7 +2160,7 @@ export const GetJobForAccountResponse = /*@__PURE__*/ S.suspend(() =>
     outputOptions: S.optional(
       JobsGetForAccountResponseOutputOptions.pipe(T.Body("output_options")),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetJobForAccountResponse",
 }) as any as S.Schema<GetJobForAccountResponse>;
@@ -2110,13 +2175,15 @@ export const GetJobForZoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     jobId: S.Number.pipe(T.Label("job_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/logpush/jobs/{job_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/logpush/jobs/{job_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetJobForZoneRequest",
 }) as any as S.Schema<GetJobForZoneRequest>;
@@ -2318,7 +2385,7 @@ export const GetJobForZoneResponse = /*@__PURE__*/ S.suspend(() =>
     outputOptions: S.optional(
       JobsGetForZoneResponseOutputOptions.pipe(T.Body("output_options")),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetJobForZoneResponse",
 }) as any as S.Schema<GetJobForZoneResponse>;
@@ -2330,13 +2397,15 @@ export interface ListJobsForAccountRequest {
 export const ListJobsForAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/logpush/jobs",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/logpush/jobs",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListJobsForAccountRequest",
 }) as any as S.Schema<ListJobsForAccountRequest>;
@@ -2567,7 +2636,7 @@ export const ListJobsForAccountResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: JobsListForAccountResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListJobsForAccountResponse",
 }) as any as S.Schema<ListJobsForAccountResponse>;
@@ -2579,9 +2648,15 @@ export interface ListJobsForZoneRequest {
 export const ListJobsForZoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-  }).pipe(
-    T.Http({ method: "GET", uri: "/zones/{zone_id}/logpush/jobs", code: 200 }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/logpush/jobs",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListJobsForZoneRequest",
 }) as any as S.Schema<ListJobsForZoneRequest>;
@@ -2807,7 +2882,7 @@ export const ListJobsForZoneResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: JobsListForZoneResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListJobsForZoneResponse",
 }) as any as S.Schema<ListJobsForZoneResponse>;
@@ -2822,13 +2897,15 @@ export const OriginValidateForAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     logpullOptions: S.String.pipe(T.Body("logpull_options")),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/logpush/validate/origin",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/logpush/validate/origin",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "OriginValidateForAccountRequest",
 }) as any as S.Schema<OriginValidateForAccountRequest>;
@@ -2842,7 +2919,7 @@ export const OriginValidateForAccountResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.String),
     valid: S.optional(S.Boolean),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "OriginValidateForAccountResponse",
 }) as any as S.Schema<OriginValidateForAccountResponse>;
@@ -2857,13 +2934,15 @@ export const OriginValidateForZoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     logpullOptions: S.String.pipe(T.Body("logpull_options")),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/zones/{zone_id}/logpush/validate/origin",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/zones/{zone_id}/logpush/validate/origin",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "OriginValidateForZoneRequest",
 }) as any as S.Schema<OriginValidateForZoneRequest>;
@@ -2877,7 +2956,7 @@ export const OriginValidateForZoneResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.String),
     valid: S.optional(S.Boolean),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "OriginValidateForZoneResponse",
 }) as any as S.Schema<OriginValidateForZoneResponse>;
@@ -3080,13 +3159,15 @@ export const UpdateJobForAccountRequest = /*@__PURE__*/ S.suspend(() =>
     ownershipChallenge: S.optional(
       S.String.pipe(T.Body("ownership_challenge")),
     ),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/logpush/jobs/{job_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/logpush/jobs/{job_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateJobForAccountRequest",
 }) as any as S.Schema<UpdateJobForAccountRequest>;
@@ -3298,7 +3379,7 @@ export const UpdateJobForAccountResponse = /*@__PURE__*/ S.suspend(() =>
     outputOptions: S.optional(
       JobsUpdateForAccountResponseOutputOptions.pipe(T.Body("output_options")),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateJobForAccountResponse",
 }) as any as S.Schema<UpdateJobForAccountResponse>;
@@ -3496,13 +3577,15 @@ export const UpdateJobForZoneRequest = /*@__PURE__*/ S.suspend(() =>
     ownershipChallenge: S.optional(
       S.String.pipe(T.Body("ownership_challenge")),
     ),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/zones/{zone_id}/logpush/jobs/{job_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/zones/{zone_id}/logpush/jobs/{job_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateJobForZoneRequest",
 }) as any as S.Schema<UpdateJobForZoneRequest>;
@@ -3709,7 +3792,7 @@ export const UpdateJobForZoneResponse = /*@__PURE__*/ S.suspend(() =>
     outputOptions: S.optional(
       JobsUpdateForZoneResponseOutputOptions.pipe(T.Body("output_options")),
     ),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateJobForZoneResponse",
 }) as any as S.Schema<UpdateJobForZoneResponse>;
@@ -3727,13 +3810,15 @@ export const ValidateOwnershipForAccountRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     destinationConf: S.String.pipe(T.Body("destination_conf")),
     ownershipChallenge: S.String.pipe(T.Body("ownership_challenge")),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/logpush/ownership/validate",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/logpush/ownership/validate",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ValidateOwnershipForAccountRequest",
 }) as any as S.Schema<ValidateOwnershipForAccountRequest>;
@@ -3745,7 +3830,7 @@ export interface ValidateOwnershipForAccountResponse {
 export const ValidateOwnershipForAccountResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     valid: S.optional(S.Boolean),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ValidateOwnershipForAccountResponse",
 }) as any as S.Schema<ValidateOwnershipForAccountResponse>;
@@ -3763,13 +3848,15 @@ export const ValidateOwnershipForZoneRequest = /*@__PURE__*/ S.suspend(() =>
     zoneId: S.String.pipe(T.Label("zone_id")),
     destinationConf: S.String.pipe(T.Body("destination_conf")),
     ownershipChallenge: S.String.pipe(T.Body("ownership_challenge")),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/zones/{zone_id}/logpush/ownership/validate",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/zones/{zone_id}/logpush/ownership/validate",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ValidateOwnershipForZoneRequest",
 }) as any as S.Schema<ValidateOwnershipForZoneRequest>;
@@ -3781,7 +3868,7 @@ export interface ValidateOwnershipForZoneResponse {
 export const ValidateOwnershipForZoneResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     valid: S.optional(S.Boolean),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ValidateOwnershipForZoneResponse",
 }) as any as S.Schema<ValidateOwnershipForZoneResponse>;

@@ -14,6 +14,18 @@ import * as Retry from "../retry.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
+/** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
+const KEY_DICTIONARY: Record<string, string> = {
+  accountTag: "account_tag",
+  commonName: "common_name",
+  createdAt: "created_at",
+  keyType: "key_type",
+  organizationalUnit: "organizational_unit",
+  perPage: "per_page",
+  resultInfo: "result_info",
+  totalCount: "total_count",
+};
+
 export type CreateForAccountRequestSansList = string[];
 export const CreateForAccountRequestSansList = /*@__PURE__*/ S.Array(
   S.String,
@@ -66,13 +78,15 @@ export const CreateCustomCsrForAccountRequest = /*@__PURE__*/ S.suspend(() =>
     organizationalUnit: S.optional(
       S.String.pipe(T.Body("organizational_unit")),
     ),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/custom_csrs",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/custom_csrs",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateCustomCsrForAccountRequest",
 }) as any as S.Schema<CreateCustomCsrForAccountRequest>;
@@ -137,7 +151,7 @@ export const CreateCustomCsrForAccountResponse = /*@__PURE__*/ S.suspend(() =>
     ),
     sans: S.optional(CreateForAccountResponseSansList),
     state: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateCustomCsrForAccountResponse",
 }) as any as S.Schema<CreateCustomCsrForAccountResponse>;
@@ -189,9 +203,15 @@ export const CreateCustomCsrForZoneRequest = /*@__PURE__*/ S.suspend(() =>
     organizationalUnit: S.optional(
       S.String.pipe(T.Body("organizational_unit")),
     ),
-  }).pipe(
-    T.Http({ method: "POST", uri: "/zones/{zone_id}/custom_csrs", code: 200 }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/zones/{zone_id}/custom_csrs",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateCustomCsrForZoneRequest",
 }) as any as S.Schema<CreateCustomCsrForZoneRequest>;
@@ -253,7 +273,7 @@ export const CreateCustomCsrForZoneResponse = /*@__PURE__*/ S.suspend(() =>
     ),
     sans: S.optional(CreateForZoneResponseSansList),
     state: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateCustomCsrForZoneResponse",
 }) as any as S.Schema<CreateCustomCsrForZoneResponse>;
@@ -268,13 +288,15 @@ export const DeleteCustomCsrForAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     customCsrId: S.String.pipe(T.Label("custom_csr_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/custom_csrs/{custom_csr_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/custom_csrs/{custom_csr_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteCustomCsrForAccountRequest",
 }) as any as S.Schema<DeleteCustomCsrForAccountRequest>;
@@ -287,7 +309,7 @@ export interface DeleteCustomCsrForAccountResponse {
 export const DeleteCustomCsrForAccountResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteCustomCsrForAccountResponse",
 }) as any as S.Schema<DeleteCustomCsrForAccountResponse>;
@@ -302,13 +324,15 @@ export const DeleteCustomCsrForZoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     customCsrId: S.String.pipe(T.Label("custom_csr_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/zones/{zone_id}/custom_csrs/{custom_csr_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/zones/{zone_id}/custom_csrs/{custom_csr_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteCustomCsrForZoneRequest",
 }) as any as S.Schema<DeleteCustomCsrForZoneRequest>;
@@ -321,7 +345,7 @@ export interface DeleteCustomCsrForZoneResponse {
 export const DeleteCustomCsrForZoneResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteCustomCsrForZoneResponse",
 }) as any as S.Schema<DeleteCustomCsrForZoneResponse>;
@@ -336,13 +360,15 @@ export const GetCustomCsrForAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     customCsrId: S.String.pipe(T.Label("custom_csr_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/custom_csrs/{custom_csr_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/custom_csrs/{custom_csr_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetCustomCsrForAccountRequest",
 }) as any as S.Schema<GetCustomCsrForAccountRequest>;
@@ -404,7 +430,7 @@ export const GetCustomCsrForAccountResponse = /*@__PURE__*/ S.suspend(() =>
     ),
     sans: S.optional(GetForAccountResponseSansList),
     state: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetCustomCsrForAccountResponse",
 }) as any as S.Schema<GetCustomCsrForAccountResponse>;
@@ -419,13 +445,15 @@ export const GetCustomCsrForZoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     customCsrId: S.String.pipe(T.Label("custom_csr_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/custom_csrs/{custom_csr_id}",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/custom_csrs/{custom_csr_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetCustomCsrForZoneRequest",
 }) as any as S.Schema<GetCustomCsrForZoneRequest>;
@@ -487,7 +515,7 @@ export const GetCustomCsrForZoneResponse = /*@__PURE__*/ S.suspend(() =>
     ),
     sans: S.optional(GetForZoneResponseSansList),
     state: S.optional(S.String),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetCustomCsrForZoneResponse",
 }) as any as S.Schema<GetCustomCsrForZoneResponse>;
@@ -505,13 +533,15 @@ export const ListCustomCsrsForAccountRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     page: S.optional(S.Number.pipe(T.Query())),
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/custom_csrs",
-      code: 200,
-    }),
-  ),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/custom_csrs",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListCustomCsrsForAccountRequest",
 }) as any as S.Schema<ListCustomCsrsForAccountRequest>;
@@ -595,7 +625,7 @@ export const ListCustomCsrsForAccountResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: ListForAccountResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListCustomCsrsForAccountResponse",
 }) as any as S.Schema<ListCustomCsrsForAccountResponse>;
@@ -613,9 +643,11 @@ export const ListCustomCsrsForZoneRequest = /*@__PURE__*/ S.suspend(() =>
     zoneId: S.String.pipe(T.Label("zone_id")),
     page: S.optional(S.Number.pipe(T.Query())),
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-  }).pipe(
-    T.Http({ method: "GET", uri: "/zones/{zone_id}/custom_csrs", code: 200 }),
-  ),
+  })
+    .pipe(
+      T.Http({ method: "GET", uri: "/zones/{zone_id}/custom_csrs", code: 200 }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListCustomCsrsForZoneRequest",
 }) as any as S.Schema<ListCustomCsrsForZoneRequest>;
@@ -696,7 +728,7 @@ export const ListCustomCsrsForZoneResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: ListForZoneResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListCustomCsrsForZoneResponse",
 }) as any as S.Schema<ListCustomCsrsForZoneResponse>;
