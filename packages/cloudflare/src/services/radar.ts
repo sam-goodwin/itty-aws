@@ -439,7 +439,9 @@ export const AiTimeseriesGroupsSummaryResponseMetaConfidenceInfoAnnotationsItem 
       description: S.String,
       endDate: S.String,
       eventType:
-        AiTimeseriesGroupsSummaryResponseMetaConfidenceInfoAnnotationsItemEventType,
+        AiTimeseriesGroupsSummaryResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -834,7 +836,9 @@ export const AiTimeseriesGroupsTimeseriesResponseMetaConfidenceInfoAnnotationsIt
       description: S.String,
       endDate: S.String,
       eventType:
-        AiTimeseriesGroupsTimeseriesResponseMetaConfidenceInfoAnnotationsItemEventType,
+        AiTimeseriesGroupsTimeseriesResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -1263,7 +1267,9 @@ export const AiTimeseriesGroupsTimeseriesGroupsResponseMetaConfidenceInfoAnnotat
       description: S.String,
       endDate: S.String,
       eventType:
-        AiTimeseriesGroupsTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemEventType,
+        AiTimeseriesGroupsTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -1601,7 +1607,9 @@ export const EmailRoutingSummaryArcResponseMetaConfidenceInfoAnnotationsItem =
       description: S.String,
       endDate: S.String,
       eventType:
-        EmailRoutingSummaryArcResponseMetaConfidenceInfoAnnotationsItemEventType,
+        EmailRoutingSummaryArcResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -1976,7 +1984,9 @@ export const EmailRoutingTimeseriesGroupsArcResponseMetaConfidenceInfoAnnotation
       description: S.String,
       endDate: S.String,
       eventType:
-        EmailRoutingTimeseriesGroupsArcResponseMetaConfidenceInfoAnnotationsItemEventType,
+        EmailRoutingTimeseriesGroupsArcResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -2314,7 +2324,9 @@ export const EmailSecuritySummaryArcResponseMetaConfidenceInfoAnnotationsItem =
       description: S.String,
       endDate: S.String,
       eventType:
-        EmailSecuritySummaryArcResponseMetaConfidenceInfoAnnotationsItemEventType,
+        EmailSecuritySummaryArcResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -2673,7 +2685,9 @@ export const EmailSecurityTimeseriesGroupsArcResponseMetaConfidenceInfoAnnotatio
       description: S.String,
       endDate: S.String,
       eventType:
-        EmailSecurityTimeseriesGroupsArcResponseMetaConfidenceInfoAnnotationsItemEventType,
+        EmailSecurityTimeseriesGroupsArcResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -2978,7 +2992,7 @@ export const BgpRoutesAsesResponseAsnsItem = /*@__PURE__*/ S.suspend(() =>
     ipv4Count: S.Number,
     ipv6Count: S.String,
     name: S.String,
-    pfxsCount: S.Number,
+    pfxsCount: S.Number.pipe(T.Body("pfxs_count")),
     rpkiInvalid: S.Number,
     rpkiUnknown: S.Number,
     rpkiValid: S.Number,
@@ -3002,9 +3016,9 @@ export interface BgpRoutesAsesResponseMeta {
 }
 export const BgpRoutesAsesResponseMeta = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    dataTime: S.String,
-    queryTime: S.String,
-    totalPeers: S.Number,
+    dataTime: S.String.pipe(T.Body("data_time")),
+    queryTime: S.String.pipe(T.Body("query_time")),
+    totalPeers: S.Number.pipe(T.Body("total_peers")),
   }),
 ).annotate({
   identifier: "BgpRoutesAsesResponseMeta",
@@ -3282,7 +3296,10 @@ export const DnsTopAsesResponseMetaConfidenceInfoAnnotationsItem =
       dataSource: DnsTopAsesResponseMetaConfidenceInfoAnnotationsItemDataSource,
       description: S.String,
       endDate: S.String,
-      eventType: DnsTopAsesResponseMetaConfidenceInfoAnnotationsItemEventType,
+      eventType:
+        DnsTopAsesResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -3545,7 +3562,9 @@ export const NetflowsTopAsesResponseMetaConfidenceInfoAnnotationsItem =
       description: S.String,
       endDate: S.String,
       eventType:
-        NetflowsTopAsesResponseMetaConfidenceInfoAnnotationsItemEventType,
+        NetflowsTopAsesResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -3807,7 +3826,9 @@ export const QualitySpeedTopAsesResponseMetaConfidenceInfoAnnotationsItem =
       description: S.String,
       endDate: S.String,
       eventType:
-        QualitySpeedTopAsesResponseMetaConfidenceInfoAnnotationsItemEventType,
+        QualitySpeedTopAsesResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -4263,7 +4284,9 @@ export const AttacksLayer3TopAttacksResponseMetaConfidenceInfoAnnotationsItem =
       description: S.String,
       endDate: S.String,
       eventType:
-        AttacksLayer3TopAttacksResponseMetaConfidenceInfoAnnotationsItemEventType,
+        AttacksLayer3TopAttacksResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -4593,7 +4616,9 @@ export const AttacksLayer7TopAttacksResponseMetaConfidenceInfoAnnotationsItem =
       description: S.String,
       endDate: S.String,
       eventType:
-        AttacksLayer7TopAttacksResponseMetaConfidenceInfoAnnotationsItemEventType,
+        AttacksLayer7TopAttacksResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -4927,7 +4952,9 @@ export const AttacksLayer3SummaryBitrateResponseMetaConfidenceInfoAnnotationsIte
       description: S.String,
       endDate: S.String,
       eventType:
-        AttacksLayer3SummaryBitrateResponseMetaConfidenceInfoAnnotationsItemEventType,
+        AttacksLayer3SummaryBitrateResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -5310,7 +5337,9 @@ export const AttacksLayer3TimeseriesGroupsBitrateResponseMetaConfidenceInfoAnnot
       description: S.String,
       endDate: S.String,
       eventType:
-        AttacksLayer3TimeseriesGroupsBitrateResponseMetaConfidenceInfoAnnotationsItemEventType,
+        AttacksLayer3TimeseriesGroupsBitrateResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -5781,7 +5810,9 @@ export const HttpSummaryBotClassResponseMetaConfidenceInfoAnnotationsItem =
       description: S.String,
       endDate: S.String,
       eventType:
-        HttpSummaryBotClassResponseMetaConfidenceInfoAnnotationsItemEventType,
+        HttpSummaryBotClassResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -6226,7 +6257,9 @@ export const HttpTimeseriesGroupsBotClassResponseMetaConfidenceInfoAnnotationsIt
       description: S.String,
       endDate: S.String,
       eventType:
-        HttpTimeseriesGroupsBotClassResponseMetaConfidenceInfoAnnotationsItemEventType,
+        HttpTimeseriesGroupsBotClassResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -6520,7 +6553,9 @@ export const LeakedCredentialsSummaryBotClassResponseMetaConfidenceInfoAnnotatio
       description: S.String,
       endDate: S.String,
       eventType:
-        LeakedCredentialsSummaryBotClassResponseMetaConfidenceInfoAnnotationsItemEventType,
+        LeakedCredentialsSummaryBotClassResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -6834,7 +6869,9 @@ export const LeakedCredentialsTimeseriesGroupsBotClassResponseMetaConfidenceInfo
       description: S.String,
       endDate: S.String,
       eventType:
-        LeakedCredentialsTimeseriesGroupsBotClassResponseMetaConfidenceInfoAnnotationsItemEventType,
+        LeakedCredentialsTimeseriesGroupsBotClassResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -7267,7 +7304,9 @@ export const VerifiedBotsTopBotsResponseMetaConfidenceInfoAnnotationsItem =
       description: S.String,
       endDate: S.String,
       eventType:
-        VerifiedBotsTopBotsResponseMetaConfidenceInfoAnnotationsItemEventType,
+        VerifiedBotsTopBotsResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -7733,7 +7772,9 @@ export const HttpTimeseriesGroupsBrowserFamilyResponseMetaConfidenceInfoAnnotati
       description: S.String,
       endDate: S.String,
       eventType:
-        HttpTimeseriesGroupsBrowserFamilyResponseMetaConfidenceInfoAnnotationsItemEventType,
+        HttpTimeseriesGroupsBrowserFamilyResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -8142,7 +8183,9 @@ export const HttpTopBrowserFamilyResponseMetaConfidenceInfoAnnotationsItem =
       description: S.String,
       endDate: S.String,
       eventType:
-        HttpTopBrowserFamilyResponseMetaConfidenceInfoAnnotationsItemEventType,
+        HttpTopBrowserFamilyResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -8614,7 +8657,9 @@ export const HttpTimeseriesGroupsBrowserResponseMetaConfidenceInfoAnnotationsIte
       description: S.String,
       endDate: S.String,
       eventType:
-        HttpTimeseriesGroupsBrowserResponseMetaConfidenceInfoAnnotationsItemEventType,
+        HttpTimeseriesGroupsBrowserResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -9016,7 +9061,9 @@ export const HttpTopBrowserResponseMetaConfidenceInfoAnnotationsItem =
       description: S.String,
       endDate: S.String,
       eventType:
-        HttpTopBrowserResponseMetaConfidenceInfoAnnotationsItemEventType,
+        HttpTopBrowserResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -9341,7 +9388,9 @@ export const DnsSummaryCacheHitResponseMetaConfidenceInfoAnnotationsItem =
       description: S.String,
       endDate: S.String,
       eventType:
-        DnsSummaryCacheHitResponseMetaConfidenceInfoAnnotationsItemEventType,
+        DnsSummaryCacheHitResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -9719,7 +9768,9 @@ export const DnsTimeseriesGroupsCacheHitResponseMetaConfidenceInfoAnnotationsIte
       description: S.String,
       endDate: S.String,
       eventType:
-        DnsTimeseriesGroupsCacheHitResponseMetaConfidenceInfoAnnotationsItemEventType,
+        DnsTimeseriesGroupsCacheHitResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -10102,7 +10153,9 @@ export const VerifiedBotsTopCategoriesResponseMetaConfidenceInfoAnnotationsItem 
       description: S.String,
       endDate: S.String,
       eventType:
-        VerifiedBotsTopCategoriesResponseMetaConfidenceInfoAnnotationsItemEventType,
+        VerifiedBotsTopCategoriesResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -10374,7 +10427,7 @@ export const BgpRpkiAspaChangesResponseChangesItem = /*@__PURE__*/ S.suspend(
       entries: BgpRpkiAspaChangesResponseChangesItemEntriesList,
       providersAdded: S.Number,
       providersRemoved: S.Number,
-      totalCount: S.Number,
+      totalCount: S.Number.pipe(T.Body("total_count")),
     }),
 ).annotate({
   identifier: "BgpRpkiAspaChangesResponseChangesItem",
@@ -10394,8 +10447,8 @@ export interface BgpRpkiAspaChangesResponseMeta {
 }
 export const BgpRpkiAspaChangesResponseMeta = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    dataTime: S.String,
-    queryTime: S.String,
+    dataTime: S.String.pipe(T.Body("data_time")),
+    queryTime: S.String.pipe(T.Body("query_time")),
   }),
 ).annotate({
   identifier: "BgpRpkiAspaChangesResponseMeta",
@@ -10409,7 +10462,7 @@ export interface ChangesBgpRpkiAspaResponse {
 }
 export const ChangesBgpRpkiAspaResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    asnInfo: BgpRpkiAspaChangesResponseAsnInfo,
+    asnInfo: BgpRpkiAspaChangesResponseAsnInfo.pipe(T.Body("asn_info")),
     changes: BgpRpkiAspaChangesResponseChangesList,
     meta: BgpRpkiAspaChangesResponseMeta,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -10548,7 +10601,9 @@ export const LeakedCredentialsSummaryCompromisedResponseMetaConfidenceInfoAnnota
       description: S.String,
       endDate: S.String,
       eventType:
-        LeakedCredentialsSummaryCompromisedResponseMetaConfidenceInfoAnnotationsItemEventType,
+        LeakedCredentialsSummaryCompromisedResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -10863,7 +10918,9 @@ export const LeakedCredentialsTimeseriesGroupsCompromisedResponseMetaConfidenceI
       description: S.String,
       endDate: S.String,
       eventType:
-        LeakedCredentialsTimeseriesGroupsCompromisedResponseMetaConfidenceInfoAnnotationsItemEventType,
+        LeakedCredentialsTimeseriesGroupsCompromisedResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -11299,7 +11356,9 @@ export const HttpSummaryDeviceTypeResponseMetaConfidenceInfoAnnotationsItem =
       description: S.String,
       endDate: S.String,
       eventType:
-        HttpSummaryDeviceTypeResponseMetaConfidenceInfoAnnotationsItemEventType,
+        HttpSummaryDeviceTypeResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -11421,7 +11480,7 @@ export const HttpSummaryDeviceTypeResponseSummary0 = /*@__PURE__*/ S.suspend(
     S.Struct({
       desktop: S.String,
       mobile: S.String,
-      other: S.String,
+      other: S.String.pipe(T.Body("OTHER")),
     }),
 ).annotate({
   identifier: "HttpSummaryDeviceTypeResponseSummary0",
@@ -11757,7 +11816,9 @@ export const HttpTimeseriesGroupsDeviceTypeResponseMetaConfidenceInfoAnnotations
       description: S.String,
       endDate: S.String,
       eventType:
-        HttpTimeseriesGroupsDeviceTypeResponseMetaConfidenceInfoAnnotationsItemEventType,
+        HttpTimeseriesGroupsDeviceTypeResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -11907,7 +11968,9 @@ export const HttpTimeseriesGroupsDeviceTypeResponseSerie0 =
     S.Struct({
       desktop: HttpTimeseriesGroupsDeviceTypeResponseSerie0DesktopList,
       mobile: HttpTimeseriesGroupsDeviceTypeResponseSerie0MobileList,
-      other: HttpTimeseriesGroupsDeviceTypeResponseSerie0OtherList,
+      other: HttpTimeseriesGroupsDeviceTypeResponseSerie0OtherList.pipe(
+        T.Body("OTHER"),
+      ),
       timestamps: HttpTimeseriesGroupsDeviceTypeResponseSerie0TimestampsList,
     }),
   ).annotate({
@@ -12061,7 +12124,9 @@ export const RobotsTxtTopUserAgentsDirectiveResponseMetaConfidenceInfoAnnotation
       description: S.String,
       endDate: S.String,
       eventType:
-        RobotsTxtTopUserAgentsDirectiveResponseMetaConfidenceInfoAnnotationsItemEventType,
+        RobotsTxtTopUserAgentsDirectiveResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -12403,7 +12468,9 @@ export const EmailRoutingSummaryDkimResponseMetaConfidenceInfoAnnotationsItem =
       description: S.String,
       endDate: S.String,
       eventType:
-        EmailRoutingSummaryDkimResponseMetaConfidenceInfoAnnotationsItemEventType,
+        EmailRoutingSummaryDkimResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -12779,7 +12846,9 @@ export const EmailRoutingTimeseriesGroupsDkimResponseMetaConfidenceInfoAnnotatio
       description: S.String,
       endDate: S.String,
       eventType:
-        EmailRoutingTimeseriesGroupsDkimResponseMetaConfidenceInfoAnnotationsItemEventType,
+        EmailRoutingTimeseriesGroupsDkimResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -13118,7 +13187,9 @@ export const EmailSecuritySummaryDkimResponseMetaConfidenceInfoAnnotationsItem =
       description: S.String,
       endDate: S.String,
       eventType:
-        EmailSecuritySummaryDkimResponseMetaConfidenceInfoAnnotationsItemEventType,
+        EmailSecuritySummaryDkimResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -13480,7 +13551,9 @@ export const EmailSecurityTimeseriesGroupsDkimResponseMetaConfidenceInfoAnnotati
       description: S.String,
       endDate: S.String,
       eventType:
-        EmailSecurityTimeseriesGroupsDkimResponseMetaConfidenceInfoAnnotationsItemEventType,
+        EmailSecurityTimeseriesGroupsDkimResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -13835,7 +13908,9 @@ export const EmailRoutingSummaryDmarcResponseMetaConfidenceInfoAnnotationsItem =
       description: S.String,
       endDate: S.String,
       eventType:
-        EmailRoutingSummaryDmarcResponseMetaConfidenceInfoAnnotationsItemEventType,
+        EmailRoutingSummaryDmarcResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -14214,7 +14289,9 @@ export const EmailRoutingTimeseriesGroupsDmarcResponseMetaConfidenceInfoAnnotati
       description: S.String,
       endDate: S.String,
       eventType:
-        EmailRoutingTimeseriesGroupsDmarcResponseMetaConfidenceInfoAnnotationsItemEventType,
+        EmailRoutingTimeseriesGroupsDmarcResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -14555,7 +14632,9 @@ export const EmailSecuritySummaryDmarcResponseMetaConfidenceInfoAnnotationsItem 
       description: S.String,
       endDate: S.String,
       eventType:
-        EmailSecuritySummaryDmarcResponseMetaConfidenceInfoAnnotationsItemEventType,
+        EmailSecuritySummaryDmarcResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -14917,7 +14996,9 @@ export const EmailSecurityTimeseriesGroupsDmarcResponseMetaConfidenceInfoAnnotat
       description: S.String,
       endDate: S.String,
       eventType:
-        EmailSecurityTimeseriesGroupsDmarcResponseMetaConfidenceInfoAnnotationsItemEventType,
+        EmailSecurityTimeseriesGroupsDmarcResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -15249,7 +15330,9 @@ export const As112SummaryDnssecResponseMetaConfidenceInfoAnnotationsItem =
       description: S.String,
       endDate: S.String,
       eventType:
-        As112SummaryDnssecResponseMetaConfidenceInfoAnnotationsItemEventType,
+        As112SummaryDnssecResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -15600,7 +15683,9 @@ export const As112TimeseriesGroupsDnssecResponseMetaConfidenceInfoAnnotationsIte
       description: S.String,
       endDate: S.String,
       eventType:
-        As112TimeseriesGroupsDnssecResponseMetaConfidenceInfoAnnotationsItemEventType,
+        As112TimeseriesGroupsDnssecResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -15886,7 +15971,9 @@ export const As112TopDnssecResponseMetaConfidenceInfoAnnotationsItem =
       description: S.String,
       endDate: S.String,
       eventType:
-        As112TopDnssecResponseMetaConfidenceInfoAnnotationsItemEventType,
+        As112TopDnssecResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -16225,7 +16312,9 @@ export const DnsSummaryDnssecAwareResponseMetaConfidenceInfoAnnotationsItem =
       description: S.String,
       endDate: S.String,
       eventType:
-        DnsSummaryDnssecAwareResponseMetaConfidenceInfoAnnotationsItemEventType,
+        DnsSummaryDnssecAwareResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -16615,7 +16704,9 @@ export const DnsTimeseriesGroupsDnssecAwareResponseMetaConfidenceInfoAnnotations
       description: S.String,
       endDate: S.String,
       eventType:
-        DnsTimeseriesGroupsDnssecAwareResponseMetaConfidenceInfoAnnotationsItemEventType,
+        DnsTimeseriesGroupsDnssecAwareResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -16958,7 +17049,9 @@ export const DnsSummaryDnssecResponseMetaConfidenceInfoAnnotationsItem =
       description: S.String,
       endDate: S.String,
       eventType:
-        DnsSummaryDnssecResponseMetaConfidenceInfoAnnotationsItemEventType,
+        DnsSummaryDnssecResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -17333,7 +17426,9 @@ export const DnsTimeseriesGroupsDnssecResponseMetaConfidenceInfoAnnotationsItem 
       description: S.String,
       endDate: S.String,
       eventType:
-        DnsTimeseriesGroupsDnssecResponseMetaConfidenceInfoAnnotationsItemEventType,
+        DnsTimeseriesGroupsDnssecResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -17700,7 +17795,9 @@ export const DnsSummaryDnssecE2eResponseMetaConfidenceInfoAnnotationsItem =
       description: S.String,
       endDate: S.String,
       eventType:
-        DnsSummaryDnssecE2eResponseMetaConfidenceInfoAnnotationsItemEventType,
+        DnsSummaryDnssecE2eResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -18079,7 +18176,9 @@ export const DnsTimeseriesGroupsDnssecE2eResponseMetaConfidenceInfoAnnotationsIt
       description: S.String,
       endDate: S.String,
       eventType:
-        DnsTimeseriesGroupsDnssecE2eResponseMetaConfidenceInfoAnnotationsItemEventType,
+        DnsTimeseriesGroupsDnssecE2eResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -18336,7 +18435,9 @@ export const RobotsTxtTopDomainCategoriesResponseMetaConfidenceInfoAnnotationsIt
       description: S.String,
       endDate: S.String,
       eventType:
-        RobotsTxtTopDomainCategoriesResponseMetaConfidenceInfoAnnotationsItemEventType,
+        RobotsTxtTopDomainCategoriesResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -18712,7 +18813,9 @@ export const AttacksLayer3SummaryDurationResponseMetaConfidenceInfoAnnotationsIt
       description: S.String,
       endDate: S.String,
       eventType:
-        AttacksLayer3SummaryDurationResponseMetaConfidenceInfoAnnotationsItemEventType,
+        AttacksLayer3SummaryDurationResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -19105,7 +19208,9 @@ export const AttacksLayer3TimeseriesGroupsDurationResponseMetaConfidenceInfoAnno
       description: S.String,
       endDate: S.String,
       eventType:
-        AttacksLayer3TimeseriesGroupsDurationResponseMetaConfidenceInfoAnnotationsItemEventType,
+        AttacksLayer3TimeseriesGroupsDurationResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -19489,7 +19594,9 @@ export const As112SummaryEdnsResponseMetaConfidenceInfoAnnotationsItem =
       description: S.String,
       endDate: S.String,
       eventType:
-        As112SummaryEdnsResponseMetaConfidenceInfoAnnotationsItemEventType,
+        As112SummaryEdnsResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -19832,7 +19939,9 @@ export const As112TimeseriesGroupsEdnsResponseMetaConfidenceInfoAnnotationsItem 
       description: S.String,
       endDate: S.String,
       eventType:
-        As112TimeseriesGroupsEdnsResponseMetaConfidenceInfoAnnotationsItemEventType,
+        As112TimeseriesGroupsEdnsResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -20116,7 +20225,10 @@ export const As112TopEdnsResponseMetaConfidenceInfoAnnotationsItem =
         As112TopEdnsResponseMetaConfidenceInfoAnnotationsItemDataSource,
       description: S.String,
       endDate: S.String,
-      eventType: As112TopEdnsResponseMetaConfidenceInfoAnnotationsItemEventType,
+      eventType:
+        As112TopEdnsResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -20455,7 +20567,9 @@ export const EmailRoutingSummaryEncryptedResponseMetaConfidenceInfoAnnotationsIt
       description: S.String,
       endDate: S.String,
       eventType:
-        EmailRoutingSummaryEncryptedResponseMetaConfidenceInfoAnnotationsItemEventType,
+        EmailRoutingSummaryEncryptedResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -20841,7 +20955,9 @@ export const EmailRoutingTimeseriesGroupsEncryptedResponseMetaConfidenceInfoAnno
       description: S.String,
       endDate: S.String,
       eventType:
-        EmailRoutingTimeseriesGroupsEncryptedResponseMetaConfidenceInfoAnnotationsItemEventType,
+        EmailRoutingTimeseriesGroupsEncryptedResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -21193,7 +21309,7 @@ export const AnnotationsOutagesGetResponseAnnotationsItem =
       asns: AnnotationsOutagesGetResponseAnnotationsItemAsnsList,
       asnsDetails: AnnotationsOutagesGetResponseAnnotationsItemAsnsDetailsList,
       dataSource: S.String,
-      eventType: S.String,
+      eventType: S.String.pipe(T.Body("event_type")),
       locations: AnnotationsOutagesGetResponseAnnotationsItemLocationsList,
       locationsDetails:
         AnnotationsOutagesGetResponseAnnotationsItemLocationsDetailsList,
@@ -22060,7 +22176,9 @@ export const EmailSecurityTopTldsGetResponseMetaConfidenceInfoAnnotationsItem =
       description: S.String,
       endDate: S.String,
       eventType:
-        EmailSecurityTopTldsGetResponseMetaConfidenceInfoAnnotationsItemEventType,
+        EmailSecurityTopTldsGetResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -22446,7 +22564,9 @@ export const EmailSecurityTopTldsMaliciousGetResponseMetaConfidenceInfoAnnotatio
       description: S.String,
       endDate: S.String,
       eventType:
-        EmailSecurityTopTldsMaliciousGetResponseMetaConfidenceInfoAnnotationsItemEventType,
+        EmailSecurityTopTldsMaliciousGetResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -22821,7 +22941,9 @@ export const EmailSecurityTopTldsSpamGetResponseMetaConfidenceInfoAnnotationsIte
       description: S.String,
       endDate: S.String,
       eventType:
-        EmailSecurityTopTldsSpamGetResponseMetaConfidenceInfoAnnotationsItemEventType,
+        EmailSecurityTopTldsSpamGetResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -23194,7 +23316,9 @@ export const EmailSecurityTopTldsSpoofGetResponseMetaConfidenceInfoAnnotationsIt
       description: S.String,
       endDate: S.String,
       eventType:
-        EmailSecurityTopTldsSpoofGetResponseMetaConfidenceInfoAnnotationsItemEventType,
+        EmailSecurityTopTldsSpoofGetResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -23507,7 +23631,7 @@ export const EntitiesAsnsGetResponseAsn = /*@__PURE__*/ S.suspend(() =>
     countryName: S.String,
     estimatedUsers: EntitiesAsnsGetResponseAsnEstimatedUsers,
     name: S.String,
-    orgName: S.String,
+    orgName: S.String.pipe(T.Body("org_name")),
     related: EntitiesAsnsGetResponseAsnRelatedList,
     source: S.String,
     website: S.String,
@@ -23980,7 +24104,10 @@ export const HttpAsesGetResponseMetaConfidenceInfoAnnotationsItem =
         HttpAsesGetResponseMetaConfidenceInfoAnnotationsItemDataSource,
       description: S.String,
       endDate: S.String,
-      eventType: HttpAsesGetResponseMetaConfidenceInfoAnnotationsItemEventType,
+      eventType:
+        HttpAsesGetResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -24388,7 +24515,9 @@ export const HttpAsesBotClassGetResponseMetaConfidenceInfoAnnotationsItem =
       description: S.String,
       endDate: S.String,
       eventType:
-        HttpAsesBotClassGetResponseMetaConfidenceInfoAnnotationsItemEventType,
+        HttpAsesBotClassGetResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -24820,7 +24949,9 @@ export const HttpAsesBrowserFamilyGetResponseMetaConfidenceInfoAnnotationsItem =
       description: S.String,
       endDate: S.String,
       eventType:
-        HttpAsesBrowserFamilyGetResponseMetaConfidenceInfoAnnotationsItemEventType,
+        HttpAsesBrowserFamilyGetResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -25244,7 +25375,9 @@ export const HttpAsesDeviceTypeGetResponseMetaConfidenceInfoAnnotationsItem =
       description: S.String,
       endDate: S.String,
       eventType:
-        HttpAsesDeviceTypeGetResponseMetaConfidenceInfoAnnotationsItemEventType,
+        HttpAsesDeviceTypeGetResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -25665,7 +25798,9 @@ export const HttpAsesHttpMethodGetResponseMetaConfidenceInfoAnnotationsItem =
       description: S.String,
       endDate: S.String,
       eventType:
-        HttpAsesHttpMethodGetResponseMetaConfidenceInfoAnnotationsItemEventType,
+        HttpAsesHttpMethodGetResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -26097,7 +26232,9 @@ export const HttpAsesHttpProtocolGetResponseMetaConfidenceInfoAnnotationsItem =
       description: S.String,
       endDate: S.String,
       eventType:
-        HttpAsesHttpProtocolGetResponseMetaConfidenceInfoAnnotationsItemEventType,
+        HttpAsesHttpProtocolGetResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -26514,7 +26651,9 @@ export const HttpAsesIpVersionGetResponseMetaConfidenceInfoAnnotationsItem =
       description: S.String,
       endDate: S.String,
       eventType:
-        HttpAsesIpVersionGetResponseMetaConfidenceInfoAnnotationsItemEventType,
+        HttpAsesIpVersionGetResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -26908,7 +27047,9 @@ export const HttpAsesOsGetResponseMetaConfidenceInfoAnnotationsItem =
       description: S.String,
       endDate: S.String,
       eventType:
-        HttpAsesOsGetResponseMetaConfidenceInfoAnnotationsItemEventType,
+        HttpAsesOsGetResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -27323,7 +27464,9 @@ export const HttpAsesTlsVersionGetResponseMetaConfidenceInfoAnnotationsItem =
       description: S.String,
       endDate: S.String,
       eventType:
-        HttpAsesTlsVersionGetResponseMetaConfidenceInfoAnnotationsItemEventType,
+        HttpAsesTlsVersionGetResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -27726,7 +27869,9 @@ export const HttpLocationsGetResponseMetaConfidenceInfoAnnotationsItem =
       description: S.String,
       endDate: S.String,
       eventType:
-        HttpLocationsGetResponseMetaConfidenceInfoAnnotationsItemEventType,
+        HttpLocationsGetResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -28156,7 +28301,9 @@ export const HttpLocationsBotClassGetResponseMetaConfidenceInfoAnnotationsItem =
       description: S.String,
       endDate: S.String,
       eventType:
-        HttpLocationsBotClassGetResponseMetaConfidenceInfoAnnotationsItemEventType,
+        HttpLocationsBotClassGetResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -28610,7 +28757,9 @@ export const HttpLocationsBrowserFamilyGetResponseMetaConfidenceInfoAnnotationsI
       description: S.String,
       endDate: S.String,
       eventType:
-        HttpLocationsBrowserFamilyGetResponseMetaConfidenceInfoAnnotationsItemEventType,
+        HttpLocationsBrowserFamilyGetResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -29055,7 +29204,9 @@ export const HttpLocationsDeviceTypeGetResponseMetaConfidenceInfoAnnotationsItem
       description: S.String,
       endDate: S.String,
       eventType:
-        HttpLocationsDeviceTypeGetResponseMetaConfidenceInfoAnnotationsItemEventType,
+        HttpLocationsDeviceTypeGetResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -29498,7 +29649,9 @@ export const HttpLocationsHttpMethodGetResponseMetaConfidenceInfoAnnotationsItem
       description: S.String,
       endDate: S.String,
       eventType:
-        HttpLocationsHttpMethodGetResponseMetaConfidenceInfoAnnotationsItemEventType,
+        HttpLocationsHttpMethodGetResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -29948,7 +30101,9 @@ export const HttpLocationsHttpProtocolGetResponseMetaConfidenceInfoAnnotationsIt
       description: S.String,
       endDate: S.String,
       eventType:
-        HttpLocationsHttpProtocolGetResponseMetaConfidenceInfoAnnotationsItemEventType,
+        HttpLocationsHttpProtocolGetResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -30391,7 +30546,9 @@ export const HttpLocationsIpVersionGetResponseMetaConfidenceInfoAnnotationsItem 
       description: S.String,
       endDate: S.String,
       eventType:
-        HttpLocationsIpVersionGetResponseMetaConfidenceInfoAnnotationsItemEventType,
+        HttpLocationsIpVersionGetResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -30806,7 +30963,9 @@ export const HttpLocationsOsGetResponseMetaConfidenceInfoAnnotationsItem =
       description: S.String,
       endDate: S.String,
       eventType:
-        HttpLocationsOsGetResponseMetaConfidenceInfoAnnotationsItemEventType,
+        HttpLocationsOsGetResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -31244,7 +31403,9 @@ export const HttpLocationsTlsVersionGetResponseMetaConfidenceInfoAnnotationsItem
       description: S.String,
       endDate: S.String,
       eventType:
-        HttpLocationsTlsVersionGetResponseMetaConfidenceInfoAnnotationsItemEventType,
+        HttpLocationsTlsVersionGetResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -32089,7 +32250,9 @@ export const QualitySpeedHistogramResponseMetaConfidenceInfoAnnotationsItem =
       description: S.String,
       endDate: S.String,
       eventType:
-        QualitySpeedHistogramResponseMetaConfidenceInfoAnnotationsItemEventType,
+        QualitySpeedHistogramResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -32435,7 +32598,9 @@ export const AttacksLayer7SummaryHttpMethodResponseMetaConfidenceInfoAnnotations
       description: S.String,
       endDate: S.String,
       eventType:
-        AttacksLayer7SummaryHttpMethodResponseMetaConfidenceInfoAnnotationsItemEventType,
+        AttacksLayer7SummaryHttpMethodResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -32839,7 +33004,9 @@ export const AttacksLayer7TimeseriesGroupsHttpMethodResponseMetaConfidenceInfoAn
       description: S.String,
       endDate: S.String,
       eventType:
-        AttacksLayer7TimeseriesGroupsHttpMethodResponseMetaConfidenceInfoAnnotationsItemEventType,
+        AttacksLayer7TimeseriesGroupsHttpMethodResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -33267,7 +33434,9 @@ export const HttpSummaryHttpProtocolResponseMetaConfidenceInfoAnnotationsItem =
       description: S.String,
       endDate: S.String,
       eventType:
-        HttpSummaryHttpProtocolResponseMetaConfidenceInfoAnnotationsItemEventType,
+        HttpSummaryHttpProtocolResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -33386,8 +33555,8 @@ export interface HttpSummaryHttpProtocolResponseSummary0 {
 export const HttpSummaryHttpProtocolResponseSummary0 = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      http: S.String,
-      https: S.String,
+      http: S.String.pipe(T.Body("HTTP")),
+      https: S.String.pipe(T.Body("HTTPS")),
     }),
 ).annotate({
   identifier: "HttpSummaryHttpProtocolResponseSummary0",
@@ -33726,7 +33895,9 @@ export const HttpTimeseriesGroupsHttpProtocolResponseMetaConfidenceInfoAnnotatio
       description: S.String,
       endDate: S.String,
       eventType:
-        HttpTimeseriesGroupsHttpProtocolResponseMetaConfidenceInfoAnnotationsItemEventType,
+        HttpTimeseriesGroupsHttpProtocolResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -33868,8 +34039,12 @@ export interface HttpTimeseriesGroupsHttpProtocolResponseSerie0 {
 export const HttpTimeseriesGroupsHttpProtocolResponseSerie0 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      http: HttpTimeseriesGroupsHttpProtocolResponseSerie0HttpList,
-      https: HttpTimeseriesGroupsHttpProtocolResponseSerie0HttpsList,
+      http: HttpTimeseriesGroupsHttpProtocolResponseSerie0HttpList.pipe(
+        T.Body("HTTP"),
+      ),
+      https: HttpTimeseriesGroupsHttpProtocolResponseSerie0HttpsList.pipe(
+        T.Body("HTTPS"),
+      ),
       timestamps: HttpTimeseriesGroupsHttpProtocolResponseSerie0TimestampsList,
     }),
   ).annotate({
@@ -34100,7 +34275,9 @@ export const AttacksLayer7SummaryHttpVersionResponseMetaConfidenceInfoAnnotation
       description: S.String,
       endDate: S.String,
       eventType:
-        AttacksLayer7SummaryHttpVersionResponseMetaConfidenceInfoAnnotationsItemEventType,
+        AttacksLayer7SummaryHttpVersionResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -34508,7 +34685,9 @@ export const AttacksLayer7TimeseriesGroupsHttpVersionResponseMetaConfidenceInfoA
       description: S.String,
       endDate: S.String,
       eventType:
-        AttacksLayer7TimeseriesGroupsHttpVersionResponseMetaConfidenceInfoAnnotationsItemEventType,
+        AttacksLayer7TimeseriesGroupsHttpVersionResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -34967,7 +35146,9 @@ export const HttpSummaryHttpVersionResponseMetaConfidenceInfoAnnotationsItem =
       description: S.String,
       endDate: S.String,
       eventType:
-        HttpSummaryHttpVersionResponseMetaConfidenceInfoAnnotationsItemEventType,
+        HttpSummaryHttpVersionResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -35426,7 +35607,9 @@ export const HttpTimeseriesGroupsHttpVersionResponseMetaConfidenceInfoAnnotation
       description: S.String,
       endDate: S.String,
       eventType:
-        HttpTimeseriesGroupsHttpVersionResponseMetaConfidenceInfoAnnotationsItemEventType,
+        HttpTimeseriesGroupsHttpVersionResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -35794,7 +35977,9 @@ export const AttacksLayer3SummaryIndustryResponseMetaConfidenceInfoAnnotationsIt
       description: S.String,
       endDate: S.String,
       eventType:
-        AttacksLayer3SummaryIndustryResponseMetaConfidenceInfoAnnotationsItemEventType,
+        AttacksLayer3SummaryIndustryResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -36171,7 +36356,9 @@ export const AttacksLayer3TimeseriesGroupsIndustryResponseMetaConfidenceInfoAnno
       description: S.String,
       endDate: S.String,
       eventType:
-        AttacksLayer3TimeseriesGroupsIndustryResponseMetaConfidenceInfoAnnotationsItemEventType,
+        AttacksLayer3TimeseriesGroupsIndustryResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -36494,7 +36681,9 @@ export const AttacksLayer3TopIndustryResponseMetaConfidenceInfoAnnotationsItem =
       description: S.String,
       endDate: S.String,
       eventType:
-        AttacksLayer3TopIndustryResponseMetaConfidenceInfoAnnotationsItemEventType,
+        AttacksLayer3TopIndustryResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -36862,7 +37051,9 @@ export const AttacksLayer7SummaryIndustryResponseMetaConfidenceInfoAnnotationsIt
       description: S.String,
       endDate: S.String,
       eventType:
-        AttacksLayer7SummaryIndustryResponseMetaConfidenceInfoAnnotationsItemEventType,
+        AttacksLayer7SummaryIndustryResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -37281,7 +37472,9 @@ export const AttacksLayer7TimeseriesGroupsIndustryResponseMetaConfidenceInfoAnno
       description: S.String,
       endDate: S.String,
       eventType:
-        AttacksLayer7TimeseriesGroupsIndustryResponseMetaConfidenceInfoAnnotationsItemEventType,
+        AttacksLayer7TimeseriesGroupsIndustryResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -37651,7 +37844,9 @@ export const AttacksLayer7TopIndustryResponseMetaConfidenceInfoAnnotationsItem =
       description: S.String,
       endDate: S.String,
       eventType:
-        AttacksLayer7TopIndustryResponseMetaConfidenceInfoAnnotationsItemEventType,
+        AttacksLayer7TopIndustryResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -37901,7 +38096,7 @@ export const EntitiesAsnsIpResponseAsn = /*@__PURE__*/ S.suspend(() =>
     countryName: S.String,
     estimatedUsers: EntitiesAsnsIpResponseAsnEstimatedUsers,
     name: S.String,
-    orgName: S.String,
+    orgName: S.String.pipe(T.Body("org_name")),
     related: EntitiesAsnsIpResponseAsnRelatedList,
     source: S.String,
     website: S.String,
@@ -38098,7 +38293,9 @@ export const As112SummaryIpVersionResponseMetaConfidenceInfoAnnotationsItem =
       description: S.String,
       endDate: S.String,
       eventType:
-        As112SummaryIpVersionResponseMetaConfidenceInfoAnnotationsItemEventType,
+        As112SummaryIpVersionResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -38455,7 +38652,9 @@ export const As112TimeseriesGroupsIpVersionResponseMetaConfidenceInfoAnnotations
       description: S.String,
       endDate: S.String,
       eventType:
-        As112TimeseriesGroupsIpVersionResponseMetaConfidenceInfoAnnotationsItemEventType,
+        As112TimeseriesGroupsIpVersionResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -38737,7 +38936,9 @@ export const As112TopIpVersionResponseMetaConfidenceInfoAnnotationsItem =
       description: S.String,
       endDate: S.String,
       eventType:
-        As112TopIpVersionResponseMetaConfidenceInfoAnnotationsItemEventType,
+        As112TopIpVersionResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -39046,7 +39247,9 @@ export const AttacksLayer3SummaryIpVersionResponseMetaConfidenceInfoAnnotationsI
       description: S.String,
       endDate: S.String,
       eventType:
-        AttacksLayer3SummaryIpVersionResponseMetaConfidenceInfoAnnotationsItemEventType,
+        AttacksLayer3SummaryIpVersionResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -39412,7 +39615,9 @@ export const AttacksLayer3TimeseriesGroupsIpVersionResponseMetaConfidenceInfoAnn
       description: S.String,
       endDate: S.String,
       eventType:
-        AttacksLayer3TimeseriesGroupsIpVersionResponseMetaConfidenceInfoAnnotationsItemEventType,
+        AttacksLayer3TimeseriesGroupsIpVersionResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -39792,7 +39997,9 @@ export const AttacksLayer7SummaryIpVersionResponseMetaConfidenceInfoAnnotationsI
       description: S.String,
       endDate: S.String,
       eventType:
-        AttacksLayer7SummaryIpVersionResponseMetaConfidenceInfoAnnotationsItemEventType,
+        AttacksLayer7SummaryIpVersionResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -40198,7 +40405,9 @@ export const AttacksLayer7TimeseriesGroupsIpVersionResponseMetaConfidenceInfoAnn
       description: S.String,
       endDate: S.String,
       eventType:
-        AttacksLayer7TimeseriesGroupsIpVersionResponseMetaConfidenceInfoAnnotationsItemEventType,
+        AttacksLayer7TimeseriesGroupsIpVersionResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -40570,7 +40779,9 @@ export const DnsSummaryIpVersionResponseMetaConfidenceInfoAnnotationsItem =
       description: S.String,
       endDate: S.String,
       eventType:
-        DnsSummaryIpVersionResponseMetaConfidenceInfoAnnotationsItemEventType,
+        DnsSummaryIpVersionResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -40949,7 +41160,9 @@ export const DnsTimeseriesGroupsIpVersionResponseMetaConfidenceInfoAnnotationsIt
       description: S.String,
       endDate: S.String,
       eventType:
-        DnsTimeseriesGroupsIpVersionResponseMetaConfidenceInfoAnnotationsItemEventType,
+        DnsTimeseriesGroupsIpVersionResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -41303,7 +41516,9 @@ export const EmailRoutingSummaryIpVersionResponseMetaConfidenceInfoAnnotationsIt
       description: S.String,
       endDate: S.String,
       eventType:
-        EmailRoutingSummaryIpVersionResponseMetaConfidenceInfoAnnotationsItemEventType,
+        EmailRoutingSummaryIpVersionResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -41689,7 +41904,9 @@ export const EmailRoutingTimeseriesGroupsIpVersionResponseMetaConfidenceInfoAnno
       description: S.String,
       endDate: S.String,
       eventType:
-        EmailRoutingTimeseriesGroupsIpVersionResponseMetaConfidenceInfoAnnotationsItemEventType,
+        EmailRoutingTimeseriesGroupsIpVersionResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -42110,7 +42327,9 @@ export const HttpSummaryIpVersionResponseMetaConfidenceInfoAnnotationsItem =
       description: S.String,
       endDate: S.String,
       eventType:
-        HttpSummaryIpVersionResponseMetaConfidenceInfoAnnotationsItemEventType,
+        HttpSummaryIpVersionResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -42561,7 +42780,9 @@ export const HttpTimeseriesGroupsIpVersionResponseMetaConfidenceInfoAnnotationsI
       description: S.String,
       endDate: S.String,
       eventType:
-        HttpTimeseriesGroupsIpVersionResponseMetaConfidenceInfoAnnotationsItemEventType,
+        HttpTimeseriesGroupsIpVersionResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -42927,7 +43148,7 @@ export const AnnotationsListResponseAnnotationsItem = /*@__PURE__*/ S.suspend(
       asns: AnnotationsListResponseAnnotationsItemAsnsList,
       asnsDetails: AnnotationsListResponseAnnotationsItemAsnsDetailsList,
       dataSource: S.String,
-      eventType: S.String,
+      eventType: S.String.pipe(T.Body("event_type")),
       locations: AnnotationsListResponseAnnotationsItemLocationsList,
       locationsDetails:
         AnnotationsListResponseAnnotationsItemLocationsDetailsList,
@@ -43766,7 +43987,7 @@ export const EntitiesAsnsListResponseAsnsItem = /*@__PURE__*/ S.suspend(() =>
     estimatedUsers: EntitiesAsnsListResponseAsnsItemEstimatedUsers,
     name: S.String,
     aka: S.optional(S.String),
-    orgName: S.optional(S.String),
+    orgName: S.optional(S.String.pipe(T.Body("org_name"))),
     website: S.optional(S.String),
   }),
 ).annotate({
@@ -44230,7 +44451,9 @@ export const As112TopLocationsResponseMetaConfidenceInfoAnnotationsItem =
       description: S.String,
       endDate: S.String,
       eventType:
-        As112TopLocationsResponseMetaConfidenceInfoAnnotationsItemEventType,
+        As112TopLocationsResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -44654,7 +44877,9 @@ export const DnsTopLocationsResponseMetaConfidenceInfoAnnotationsItem =
       description: S.String,
       endDate: S.String,
       eventType:
-        DnsTopLocationsResponseMetaConfidenceInfoAnnotationsItemEventType,
+        DnsTopLocationsResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -44931,7 +45156,9 @@ export const NetflowsTopLocationsResponseMetaConfidenceInfoAnnotationsItem =
       description: S.String,
       endDate: S.String,
       eventType:
-        NetflowsTopLocationsResponseMetaConfidenceInfoAnnotationsItemEventType,
+        NetflowsTopLocationsResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -45205,7 +45432,9 @@ export const QualitySpeedTopLocationsResponseMetaConfidenceInfoAnnotationsItem =
       description: S.String,
       endDate: S.String,
       eventType:
-        QualitySpeedTopLocationsResponseMetaConfidenceInfoAnnotationsItemEventType,
+        QualitySpeedTopLocationsResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -45576,7 +45805,9 @@ export const EmailSecuritySummaryMaliciousResponseMetaConfidenceInfoAnnotationsI
       description: S.String,
       endDate: S.String,
       eventType:
-        EmailSecuritySummaryMaliciousResponseMetaConfidenceInfoAnnotationsItemEventType,
+        EmailSecuritySummaryMaliciousResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -45968,7 +46199,9 @@ export const EmailSecurityTimeseriesGroupsMaliciousResponseMetaConfidenceInfoAnn
       description: S.String,
       endDate: S.String,
       eventType:
-        EmailSecurityTimeseriesGroupsMaliciousResponseMetaConfidenceInfoAnnotationsItemEventType,
+        EmailSecurityTimeseriesGroupsMaliciousResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -46367,7 +46600,9 @@ export const AttacksLayer7SummaryManagedRulesResponseMetaConfidenceInfoAnnotatio
       description: S.String,
       endDate: S.String,
       eventType:
-        AttacksLayer7SummaryManagedRulesResponseMetaConfidenceInfoAnnotationsItemEventType,
+        AttacksLayer7SummaryManagedRulesResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -46796,7 +47031,9 @@ export const AttacksLayer7TimeseriesGroupsManagedRulesResponseMetaConfidenceInfo
       description: S.String,
       endDate: S.String,
       eventType:
-        AttacksLayer7TimeseriesGroupsManagedRulesResponseMetaConfidenceInfoAnnotationsItemEventType,
+        AttacksLayer7TimeseriesGroupsManagedRulesResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -47163,7 +47400,9 @@ export const DnsSummaryMatchingAnswerResponseMetaConfidenceInfoAnnotationsItem =
       description: S.String,
       endDate: S.String,
       eventType:
-        DnsSummaryMatchingAnswerResponseMetaConfidenceInfoAnnotationsItemEventType,
+        DnsSummaryMatchingAnswerResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -47559,7 +47798,9 @@ export const DnsTimeseriesGroupsMatchingAnswerResponseMetaConfidenceInfoAnnotati
       description: S.String,
       endDate: S.String,
       eventType:
-        DnsTimeseriesGroupsMatchingAnswerResponseMetaConfidenceInfoAnnotationsItemEventType,
+        DnsTimeseriesGroupsMatchingAnswerResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -47944,7 +48185,9 @@ export const AttacksLayer7SummaryMitigationProductResponseMetaConfidenceInfoAnno
       description: S.String,
       endDate: S.String,
       eventType:
-        AttacksLayer7SummaryMitigationProductResponseMetaConfidenceInfoAnnotationsItemEventType,
+        AttacksLayer7SummaryMitigationProductResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -48355,7 +48598,9 @@ export const AttacksLayer7TimeseriesGroupsMitigationProductResponseMetaConfidenc
       description: S.String,
       endDate: S.String,
       eventType:
-        AttacksLayer7TimeseriesGroupsMitigationProductResponseMetaConfidenceInfoAnnotationsItemEventType,
+        AttacksLayer7TimeseriesGroupsMitigationProductResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -48713,7 +48958,9 @@ export const AiInferenceSummaryModelResponseMetaConfidenceInfoAnnotationsItem =
       description: S.String,
       endDate: S.String,
       eventType:
-        AiInferenceSummaryModelResponseMetaConfidenceInfoAnnotationsItemEventType,
+        AiInferenceSummaryModelResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -48997,7 +49244,9 @@ export const AiInferenceTimeseriesGroupsSummaryModelResponseMetaConfidenceInfoAn
       description: S.String,
       endDate: S.String,
       eventType:
-        AiInferenceTimeseriesGroupsSummaryModelResponseMetaConfidenceInfoAnnotationsItemEventType,
+        AiInferenceTimeseriesGroupsSummaryModelResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -49332,7 +49581,9 @@ export const AttacksLayer3TopLocationsOriginResponseMetaConfidenceInfoAnnotation
       description: S.String,
       endDate: S.String,
       eventType:
-        AttacksLayer3TopLocationsOriginResponseMetaConfidenceInfoAnnotationsItemEventType,
+        AttacksLayer3TopLocationsOriginResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -49695,7 +49946,9 @@ export const AttacksLayer7TopAsesOriginResponseMetaConfidenceInfoAnnotationsItem
       description: S.String,
       endDate: S.String,
       eventType:
-        AttacksLayer7TopAsesOriginResponseMetaConfidenceInfoAnnotationsItemEventType,
+        AttacksLayer7TopAsesOriginResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -50063,7 +50316,9 @@ export const AttacksLayer7TopLocationsOriginResponseMetaConfidenceInfoAnnotation
       description: S.String,
       endDate: S.String,
       eventType:
-        AttacksLayer7TopLocationsOriginResponseMetaConfidenceInfoAnnotationsItemEventType,
+        AttacksLayer7TopLocationsOriginResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -50509,7 +50764,9 @@ export const OriginsSummaryResponseMetaConfidenceInfoAnnotationsItem =
       description: S.String,
       endDate: S.String,
       eventType:
-        OriginsSummaryResponseMetaConfidenceInfoAnnotationsItemEventType,
+        OriginsSummaryResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -50784,7 +51041,9 @@ export const OriginsTimeseriesResponseMetaConfidenceInfoAnnotationsItem =
       description: S.String,
       endDate: S.String,
       eventType:
-        OriginsTimeseriesResponseMetaConfidenceInfoAnnotationsItemEventType,
+        OriginsTimeseriesResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -51096,7 +51355,9 @@ export const OriginsTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItem =
       description: S.String,
       endDate: S.String,
       eventType:
-        OriginsTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemEventType,
+        OriginsTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -51475,7 +51736,9 @@ export const HttpSummaryOsResponseMetaConfidenceInfoAnnotationsItem =
       description: S.String,
       endDate: S.String,
       eventType:
-        HttpSummaryOsResponseMetaConfidenceInfoAnnotationsItemEventType,
+        HttpSummaryOsResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -51898,7 +52161,9 @@ export const HttpTimeseriesGroupsOsResponseMetaConfidenceInfoAnnotationsItem =
       description: S.String,
       endDate: S.String,
       eventType:
-        HttpTimeseriesGroupsOsResponseMetaConfidenceInfoAnnotationsItemEventType,
+        HttpTimeseriesGroupsOsResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -52418,7 +52683,9 @@ export const HttpSummaryPostQuantumResponseMetaConfidenceInfoAnnotationsItem =
       description: S.String,
       endDate: S.String,
       eventType:
-        HttpSummaryPostQuantumResponseMetaConfidenceInfoAnnotationsItemEventType,
+        HttpSummaryPostQuantumResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -52894,7 +53161,9 @@ export const HttpTimeseriesGroupsPostQuantumResponseMetaConfidenceInfoAnnotation
       description: S.String,
       endDate: S.String,
       eventType:
-        HttpTimeseriesGroupsPostQuantumResponseMetaConfidenceInfoAnnotationsItemEventType,
+        HttpTimeseriesGroupsPostQuantumResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -53438,7 +53707,9 @@ export const As112SummaryProtocolResponseMetaConfidenceInfoAnnotationsItem =
       description: S.String,
       endDate: S.String,
       eventType:
-        As112SummaryProtocolResponseMetaConfidenceInfoAnnotationsItemEventType,
+        As112SummaryProtocolResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -53778,7 +54049,9 @@ export const As112TimeseriesGroupsProtocolResponseMetaConfidenceInfoAnnotationsI
       description: S.String,
       endDate: S.String,
       eventType:
-        As112TimeseriesGroupsProtocolResponseMetaConfidenceInfoAnnotationsItemEventType,
+        As112TimeseriesGroupsProtocolResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -54115,7 +54388,9 @@ export const AttacksLayer3SummaryProtocolResponseMetaConfidenceInfoAnnotationsIt
       description: S.String,
       endDate: S.String,
       eventType:
-        AttacksLayer3SummaryProtocolResponseMetaConfidenceInfoAnnotationsItemEventType,
+        AttacksLayer3SummaryProtocolResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -54479,7 +54754,9 @@ export const AttacksLayer3TimeseriesGroupsProtocolResponseMetaConfidenceInfoAnno
       description: S.String,
       endDate: S.String,
       eventType:
-        AttacksLayer3TimeseriesGroupsProtocolResponseMetaConfidenceInfoAnnotationsItemEventType,
+        AttacksLayer3TimeseriesGroupsProtocolResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -54842,7 +55119,9 @@ export const DnsSummaryProtocolResponseMetaConfidenceInfoAnnotationsItem =
       description: S.String,
       endDate: S.String,
       eventType:
-        DnsSummaryProtocolResponseMetaConfidenceInfoAnnotationsItemEventType,
+        DnsSummaryProtocolResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -55205,7 +55484,9 @@ export const DnsTimeseriesGroupsProtocolResponseMetaConfidenceInfoAnnotationsIte
       description: S.String,
       endDate: S.String,
       eventType:
-        DnsTimeseriesGroupsProtocolResponseMetaConfidenceInfoAnnotationsItemEventType,
+        DnsTimeseriesGroupsProtocolResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -55536,7 +55817,9 @@ export const As112SummaryQueryTypeResponseMetaConfidenceInfoAnnotationsItem =
       description: S.String,
       endDate: S.String,
       eventType:
-        As112SummaryQueryTypeResponseMetaConfidenceInfoAnnotationsItemEventType,
+        As112SummaryQueryTypeResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -55870,7 +56153,9 @@ export const As112TimeseriesGroupsQueryTypeResponseMetaConfidenceInfoAnnotations
       description: S.String,
       endDate: S.String,
       eventType:
-        As112TimeseriesGroupsQueryTypeResponseMetaConfidenceInfoAnnotationsItemEventType,
+        As112TimeseriesGroupsQueryTypeResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -56202,7 +56487,9 @@ export const DnsSummaryQueryTypeResponseMetaConfidenceInfoAnnotationsItem =
       description: S.String,
       endDate: S.String,
       eventType:
-        DnsSummaryQueryTypeResponseMetaConfidenceInfoAnnotationsItemEventType,
+        DnsSummaryQueryTypeResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -56557,7 +56844,9 @@ export const DnsTimeseriesGroupsQueryTypeResponseMetaConfidenceInfoAnnotationsIt
       description: S.String,
       endDate: S.String,
       eventType:
-        DnsTimeseriesGroupsQueryTypeResponseMetaConfidenceInfoAnnotationsItemEventType,
+        DnsTimeseriesGroupsQueryTypeResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -57182,7 +57471,9 @@ export const DnsSummaryResponseCodeResponseMetaConfidenceInfoAnnotationsItem =
       description: S.String,
       endDate: S.String,
       eventType:
-        DnsSummaryResponseCodeResponseMetaConfidenceInfoAnnotationsItemEventType,
+        DnsSummaryResponseCodeResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -57550,7 +57841,9 @@ export const DnsTimeseriesGroupsResponseCodeResponseMetaConfidenceInfoAnnotation
       description: S.String,
       endDate: S.String,
       eventType:
-        DnsTimeseriesGroupsResponseCodeResponseMetaConfidenceInfoAnnotationsItemEventType,
+        DnsTimeseriesGroupsResponseCodeResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -57870,7 +58163,9 @@ export const As112SummaryResponseCodesResponseMetaConfidenceInfoAnnotationsItem 
       description: S.String,
       endDate: S.String,
       eventType:
-        As112SummaryResponseCodesResponseMetaConfidenceInfoAnnotationsItemEventType,
+        As112SummaryResponseCodesResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -58207,7 +58502,9 @@ export const As112TimeseriesGroupsResponseCodesResponseMetaConfidenceInfoAnnotat
       description: S.String,
       endDate: S.String,
       eventType:
-        As112TimeseriesGroupsResponseCodesResponseMetaConfidenceInfoAnnotationsItemEventType,
+        As112TimeseriesGroupsResponseCodesResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -58560,7 +58857,9 @@ export const DnsSummaryResponseTtlResponseMetaConfidenceInfoAnnotationsItem =
       description: S.String,
       endDate: S.String,
       eventType:
-        DnsSummaryResponseTtlResponseMetaConfidenceInfoAnnotationsItemEventType,
+        DnsSummaryResponseTtlResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -58965,7 +59264,9 @@ export const DnsTimeseriesGroupsResponseTtlResponseMetaConfidenceInfoAnnotations
       description: S.String,
       endDate: S.String,
       eventType:
-        DnsTimeseriesGroupsResponseTtlResponseMetaConfidenceInfoAnnotationsItemEventType,
+        DnsTimeseriesGroupsResponseTtlResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -59286,9 +59587,9 @@ export interface BgpRpkiAspaSnapshotResponseMeta {
 }
 export const BgpRpkiAspaSnapshotResponseMeta = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    dataTime: S.String,
-    queryTime: S.String,
-    totalCount: S.Number,
+    dataTime: S.String.pipe(T.Body("data_time")),
+    queryTime: S.String.pipe(T.Body("query_time")),
+    totalCount: S.Number.pipe(T.Body("total_count")),
   }),
 ).annotate({
   identifier: "BgpRpkiAspaSnapshotResponseMeta",
@@ -59302,7 +59603,7 @@ export interface SnapshotBgpRpkiAspaResponse {
 }
 export const SnapshotBgpRpkiAspaResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    asnInfo: BgpRpkiAspaSnapshotResponseAsnInfo,
+    asnInfo: BgpRpkiAspaSnapshotResponseAsnInfo.pipe(T.Body("asn_info")),
     aspaObjects: BgpRpkiAspaSnapshotResponseAspaObjectsList,
     meta: BgpRpkiAspaSnapshotResponseMeta,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -59498,7 +59799,9 @@ export const EmailSecuritySummarySpamResponseMetaConfidenceInfoAnnotationsItem =
       description: S.String,
       endDate: S.String,
       eventType:
-        EmailSecuritySummarySpamResponseMetaConfidenceInfoAnnotationsItemEventType,
+        EmailSecuritySummarySpamResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -59877,7 +60180,9 @@ export const EmailSecurityTimeseriesGroupsSpamResponseMetaConfidenceInfoAnnotati
       description: S.String,
       endDate: S.String,
       eventType:
-        EmailSecurityTimeseriesGroupsSpamResponseMetaConfidenceInfoAnnotationsItemEventType,
+        EmailSecurityTimeseriesGroupsSpamResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -60223,7 +60528,9 @@ export const EmailRoutingSummarySpfResponseMetaConfidenceInfoAnnotationsItem =
       description: S.String,
       endDate: S.String,
       eventType:
-        EmailRoutingSummarySpfResponseMetaConfidenceInfoAnnotationsItemEventType,
+        EmailRoutingSummarySpfResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -60598,7 +60905,9 @@ export const EmailRoutingTimeseriesGroupsSpfResponseMetaConfidenceInfoAnnotation
       description: S.String,
       endDate: S.String,
       eventType:
-        EmailRoutingTimeseriesGroupsSpfResponseMetaConfidenceInfoAnnotationsItemEventType,
+        EmailRoutingTimeseriesGroupsSpfResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -60936,7 +61245,9 @@ export const EmailSecuritySummarySpfResponseMetaConfidenceInfoAnnotationsItem =
       description: S.String,
       endDate: S.String,
       eventType:
-        EmailSecuritySummarySpfResponseMetaConfidenceInfoAnnotationsItemEventType,
+        EmailSecuritySummarySpfResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -61295,7 +61606,9 @@ export const EmailSecurityTimeseriesGroupsSpfResponseMetaConfidenceInfoAnnotatio
       description: S.String,
       endDate: S.String,
       eventType:
-        EmailSecurityTimeseriesGroupsSpfResponseMetaConfidenceInfoAnnotationsItemEventType,
+        EmailSecurityTimeseriesGroupsSpfResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -61654,7 +61967,9 @@ export const EmailSecuritySummarySpoofResponseMetaConfidenceInfoAnnotationsItem 
       description: S.String,
       endDate: S.String,
       eventType:
-        EmailSecuritySummarySpoofResponseMetaConfidenceInfoAnnotationsItemEventType,
+        EmailSecuritySummarySpoofResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -62033,7 +62348,9 @@ export const EmailSecurityTimeseriesGroupsSpoofResponseMetaConfidenceInfoAnnotat
       description: S.String,
       endDate: S.String,
       eventType:
-        EmailSecurityTimeseriesGroupsSpoofResponseMetaConfidenceInfoAnnotationsItemEventType,
+        EmailSecurityTimeseriesGroupsSpoofResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -62556,7 +62873,9 @@ export const AiMarkdownForAgentsSummaryResponseMetaConfidenceInfoAnnotationsItem
       description: S.String,
       endDate: S.String,
       eventType:
-        AiMarkdownForAgentsSummaryResponseMetaConfidenceInfoAnnotationsItemEventType,
+        AiMarkdownForAgentsSummaryResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -62912,7 +63231,9 @@ export const AiBotsSummaryV2ResponseMetaConfidenceInfoAnnotationsItem =
       description: S.String,
       endDate: S.String,
       eventType:
-        AiBotsSummaryV2ResponseMetaConfidenceInfoAnnotationsItemEventType,
+        AiBotsSummaryV2ResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -63235,7 +63556,10 @@ export const BotsSummaryResponseMetaConfidenceInfoAnnotationsItem =
         BotsSummaryResponseMetaConfidenceInfoAnnotationsItemDataSource,
       description: S.String,
       endDate: S.String,
-      eventType: BotsSummaryResponseMetaConfidenceInfoAnnotationsItemEventType,
+      eventType:
+        BotsSummaryResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -63559,7 +63883,9 @@ export const BotsWebCrawlersSummaryResponseMetaConfidenceInfoAnnotationsItem =
       description: S.String,
       endDate: S.String,
       eventType:
-        BotsWebCrawlersSummaryResponseMetaConfidenceInfoAnnotationsItemEventType,
+        BotsWebCrawlersSummaryResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -63993,7 +64319,10 @@ export const CtSummaryResponseMetaConfidenceInfoAnnotationsItem =
       dataSource: CtSummaryResponseMetaConfidenceInfoAnnotationsItemDataSource,
       description: S.String,
       endDate: S.String,
-      eventType: CtSummaryResponseMetaConfidenceInfoAnnotationsItemEventType,
+      eventType:
+        CtSummaryResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -64239,7 +64568,9 @@ export const NetflowsSummaryResponseMetaConfidenceInfoAnnotationsItem =
       description: S.String,
       endDate: S.String,
       eventType:
-        NetflowsSummaryResponseMetaConfidenceInfoAnnotationsItemEventType,
+        NetflowsSummaryResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -64486,7 +64817,9 @@ export const PostQuantumOriginSummaryResponseMetaConfidenceInfoAnnotationsItem =
       description: S.String,
       endDate: S.String,
       eventType:
-        PostQuantumOriginSummaryResponseMetaConfidenceInfoAnnotationsItemEventType,
+        PostQuantumOriginSummaryResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -64752,7 +65085,9 @@ export const QualityIqiSummaryResponseMetaConfidenceInfoAnnotationsItem =
       description: S.String,
       endDate: S.String,
       eventType:
-        QualityIqiSummaryResponseMetaConfidenceInfoAnnotationsItemEventType,
+        QualityIqiSummaryResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -64989,7 +65324,9 @@ export const QualitySpeedSummaryResponseMetaConfidenceInfoAnnotationsItem =
       description: S.String,
       endDate: S.String,
       eventType:
-        QualitySpeedSummaryResponseMetaConfidenceInfoAnnotationsItemEventType,
+        QualitySpeedSummaryResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -65268,7 +65605,9 @@ export const TcpResetsTimeoutsSummaryResponseMetaConfidenceInfoAnnotationsItem =
       description: S.String,
       endDate: S.String,
       eventType:
-        TcpResetsTimeoutsSummaryResponseMetaConfidenceInfoAnnotationsItemEventType,
+        TcpResetsTimeoutsSummaryResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -65558,7 +65897,9 @@ export const AiInferenceSummaryV2ResponseMetaConfidenceInfoAnnotationsItem =
       description: S.String,
       endDate: S.String,
       eventType:
-        AiInferenceSummaryV2ResponseMetaConfidenceInfoAnnotationsItemEventType,
+        AiInferenceSummaryV2ResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -65867,7 +66208,9 @@ export const As112SummaryV2ResponseMetaConfidenceInfoAnnotationsItem =
       description: S.String,
       endDate: S.String,
       eventType:
-        As112SummaryV2ResponseMetaConfidenceInfoAnnotationsItemEventType,
+        As112SummaryV2ResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -66176,7 +66519,9 @@ export const AttacksLayer3SummaryV2ResponseMetaConfidenceInfoAnnotationsItem =
       description: S.String,
       endDate: S.String,
       eventType:
-        AttacksLayer3SummaryV2ResponseMetaConfidenceInfoAnnotationsItemEventType,
+        AttacksLayer3SummaryV2ResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -66529,7 +66874,9 @@ export const AttacksLayer7SummaryV2ResponseMetaConfidenceInfoAnnotationsItem =
       description: S.String,
       endDate: S.String,
       eventType:
-        AttacksLayer7SummaryV2ResponseMetaConfidenceInfoAnnotationsItemEventType,
+        AttacksLayer7SummaryV2ResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -66944,7 +67291,10 @@ export const DnsSummaryV2ResponseMetaConfidenceInfoAnnotationsItem =
         DnsSummaryV2ResponseMetaConfidenceInfoAnnotationsItemDataSource,
       description: S.String,
       endDate: S.String,
-      eventType: DnsSummaryV2ResponseMetaConfidenceInfoAnnotationsItemEventType,
+      eventType:
+        DnsSummaryV2ResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -67281,7 +67631,9 @@ export const EmailRoutingSummaryV2ResponseMetaConfidenceInfoAnnotationsItem =
       description: S.String,
       endDate: S.String,
       eventType:
-        EmailRoutingSummaryV2ResponseMetaConfidenceInfoAnnotationsItemEventType,
+        EmailRoutingSummaryV2ResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -67614,7 +67966,9 @@ export const EmailSecuritySummaryV2ResponseMetaConfidenceInfoAnnotationsItem =
       description: S.String,
       endDate: S.String,
       eventType:
-        EmailSecuritySummaryV2ResponseMetaConfidenceInfoAnnotationsItemEventType,
+        EmailSecuritySummaryV2ResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -68027,7 +68381,9 @@ export const HttpSummaryV2ResponseMetaConfidenceInfoAnnotationsItem =
       description: S.String,
       endDate: S.String,
       eventType:
-        HttpSummaryV2ResponseMetaConfidenceInfoAnnotationsItemEventType,
+        HttpSummaryV2ResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -68339,7 +68695,9 @@ export const LeakedCredentialsSummaryV2ResponseMetaConfidenceInfoAnnotationsItem
       description: S.String,
       endDate: S.String,
       eventType:
-        LeakedCredentialsSummaryV2ResponseMetaConfidenceInfoAnnotationsItemEventType,
+        LeakedCredentialsSummaryV2ResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -68633,7 +68991,9 @@ export const NetflowsSummaryV2ResponseMetaConfidenceInfoAnnotationsItem =
       description: S.String,
       endDate: S.String,
       eventType:
-        NetflowsSummaryV2ResponseMetaConfidenceInfoAnnotationsItemEventType,
+        NetflowsSummaryV2ResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -69001,7 +69361,9 @@ export const AttacksLayer3TopLocationsTargetResponseMetaConfidenceInfoAnnotation
       description: S.String,
       endDate: S.String,
       eventType:
-        AttacksLayer3TopLocationsTargetResponseMetaConfidenceInfoAnnotationsItemEventType,
+        AttacksLayer3TopLocationsTargetResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -69303,7 +69665,9 @@ export const AttacksLayer7TopLocationsTargetResponseMetaConfidenceInfoAnnotation
       description: S.String,
       endDate: S.String,
       eventType:
-        AttacksLayer7TopLocationsTargetResponseMetaConfidenceInfoAnnotationsItemEventType,
+        AttacksLayer7TopLocationsTargetResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -69562,7 +69926,9 @@ export const AiInferenceSummaryTaskResponseMetaConfidenceInfoAnnotationsItem =
       description: S.String,
       endDate: S.String,
       eventType:
-        AiInferenceSummaryTaskResponseMetaConfidenceInfoAnnotationsItemEventType,
+        AiInferenceSummaryTaskResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -69844,7 +70210,9 @@ export const AiInferenceTimeseriesGroupsSummaryTaskResponseMetaConfidenceInfoAnn
       description: S.String,
       endDate: S.String,
       eventType:
-        AiInferenceTimeseriesGroupsSummaryTaskResponseMetaConfidenceInfoAnnotationsItemEventType,
+        AiInferenceTimeseriesGroupsSummaryTaskResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -70215,7 +70583,9 @@ export const EmailSecuritySummaryThreatCategoryResponseMetaConfidenceInfoAnnotat
       description: S.String,
       endDate: S.String,
       eventType:
-        EmailSecuritySummaryThreatCategoryResponseMetaConfidenceInfoAnnotationsItemEventType,
+        EmailSecuritySummaryThreatCategoryResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -70626,7 +70996,9 @@ export const EmailSecurityTimeseriesGroupsThreatCategoryResponseMetaConfidenceIn
       description: S.String,
       endDate: S.String,
       eventType:
-        EmailSecurityTimeseriesGroupsThreatCategoryResponseMetaConfidenceInfoAnnotationsItemEventType,
+        EmailSecurityTimeseriesGroupsThreatCategoryResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -71027,7 +71399,9 @@ export const AiBotsTimeseriesResponseMetaConfidenceInfoAnnotationsItem =
       description: S.String,
       endDate: S.String,
       eventType:
-        AiBotsTimeseriesResponseMetaConfidenceInfoAnnotationsItemEventType,
+        AiBotsTimeseriesResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -71281,7 +71655,9 @@ export const AiMarkdownForAgentsTimeseriesResponseMetaConfidenceInfoAnnotationsI
       description: S.String,
       endDate: S.String,
       eventType:
-        AiMarkdownForAgentsTimeseriesResponseMetaConfidenceInfoAnnotationsItemEventType,
+        AiMarkdownForAgentsTimeseriesResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -71584,7 +71960,9 @@ export const As112TimeseriesResponseMetaConfidenceInfoAnnotationsItem =
       description: S.String,
       endDate: S.String,
       eventType:
-        As112TimeseriesResponseMetaConfidenceInfoAnnotationsItemEventType,
+        As112TimeseriesResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -71928,7 +72306,9 @@ export const AttacksLayer3TimeseriesResponseMetaConfidenceInfoAnnotationsItem =
       description: S.String,
       endDate: S.String,
       eventType:
-        AttacksLayer3TimeseriesResponseMetaConfidenceInfoAnnotationsItemEventType,
+        AttacksLayer3TimeseriesResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -72296,7 +72676,9 @@ export const AttacksLayer7TimeseriesResponseMetaConfidenceInfoAnnotationsItem =
       description: S.String,
       endDate: S.String,
       eventType:
-        AttacksLayer7TimeseriesResponseMetaConfidenceInfoAnnotationsItemEventType,
+        AttacksLayer7TimeseriesResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -72593,7 +72975,9 @@ export const BgpTimeseriesResponseMetaConfidenceInfoAnnotationsItem =
       description: S.String,
       endDate: S.String,
       eventType:
-        BgpTimeseriesResponseMetaConfidenceInfoAnnotationsItemEventType,
+        BgpTimeseriesResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -72830,7 +73214,9 @@ export const BgpIpsTimeseriesResponseMetaConfidenceInfoAnnotationsItem =
       description: S.String,
       endDate: S.String,
       eventType:
-        BgpIpsTimeseriesResponseMetaConfidenceInfoAnnotationsItemEventType,
+        BgpIpsTimeseriesResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -73048,8 +73434,8 @@ export interface BgpIpsTimeseriesResponseSerie0 {
 }
 export const BgpIpsTimeseriesResponseSerie0 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    ipv4: BgpIpsTimeseriesResponseSerie0Ipv4List,
-    ipv6: BgpIpsTimeseriesResponseSerie0Ipv6List,
+    ipv4: BgpIpsTimeseriesResponseSerie0Ipv4List.pipe(T.Body("IPv4")),
+    ipv6: BgpIpsTimeseriesResponseSerie0Ipv6List.pipe(T.Body("IPv6")),
     timestamps: BgpIpsTimeseriesResponseSerie0TimestampsList,
   }),
 ).annotate({
@@ -73142,8 +73528,8 @@ export interface BgpRpkiAspaTimeseriesResponseMeta {
 }
 export const BgpRpkiAspaTimeseriesResponseMeta = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    dataTime: S.String,
-    queryTime: S.String,
+    dataTime: S.String.pipe(T.Body("data_time")),
+    queryTime: S.String.pipe(T.Body("query_time")),
   }),
 ).annotate({
   identifier: "BgpRpkiAspaTimeseriesResponseMeta",
@@ -73261,8 +73647,8 @@ export interface BgpRpkiRoasTimeseriesResponseMeta {
 }
 export const BgpRpkiRoasTimeseriesResponseMeta = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    dataTime: S.String,
-    queryTime: S.String,
+    dataTime: S.String.pipe(T.Body("data_time")),
+    queryTime: S.String.pipe(T.Body("query_time")),
   }),
 ).annotate({
   identifier: "BgpRpkiRoasTimeseriesResponseMeta",
@@ -73507,7 +73893,9 @@ export const BotsTimeseriesResponseMetaConfidenceInfoAnnotationsItem =
       description: S.String,
       endDate: S.String,
       eventType:
-        BotsTimeseriesResponseMetaConfidenceInfoAnnotationsItemEventType,
+        BotsTimeseriesResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -73920,7 +74308,10 @@ export const CtTimeseriesResponseMetaConfidenceInfoAnnotationsItem =
         CtTimeseriesResponseMetaConfidenceInfoAnnotationsItemDataSource,
       description: S.String,
       endDate: S.String,
-      eventType: CtTimeseriesResponseMetaConfidenceInfoAnnotationsItemEventType,
+      eventType:
+        CtTimeseriesResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -74324,7 +74715,9 @@ export const DnsTimeseriesResponseMetaConfidenceInfoAnnotationsItem =
       description: S.String,
       endDate: S.String,
       eventType:
-        DnsTimeseriesResponseMetaConfidenceInfoAnnotationsItemEventType,
+        DnsTimeseriesResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -74712,7 +75105,9 @@ export const AiBotsTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItem =
       description: S.String,
       endDate: S.String,
       eventType:
-        AiBotsTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemEventType,
+        AiBotsTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -75087,7 +75482,9 @@ export const BotsTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItem =
       description: S.String,
       endDate: S.String,
       eventType:
-        BotsTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemEventType,
+        BotsTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -75482,7 +75879,9 @@ export const BotsWebCrawlersTimeseriesGroupsResponseMetaConfidenceInfoAnnotation
       description: S.String,
       endDate: S.String,
       eventType:
-        BotsWebCrawlersTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemEventType,
+        BotsWebCrawlersTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -75976,7 +76375,9 @@ export const CtTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItem =
       description: S.String,
       endDate: S.String,
       eventType:
-        CtTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemEventType,
+        CtTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -76508,7 +76909,9 @@ export const NetflowsTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItem =
       description: S.String,
       endDate: S.String,
       eventType:
-        NetflowsTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemEventType,
+        NetflowsTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -76786,7 +77189,9 @@ export const PostQuantumOriginTimeseriesGroupsResponseMetaConfidenceInfoAnnotati
       description: S.String,
       endDate: S.String,
       eventType:
-        PostQuantumOriginTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemEventType,
+        PostQuantumOriginTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -77108,7 +77513,9 @@ export const QualityIqiTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItem
       description: S.String,
       endDate: S.String,
       eventType:
-        QualityIqiTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemEventType,
+        QualityIqiTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -77413,7 +77820,9 @@ export const RankingTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItem =
       description: S.String,
       endDate: S.String,
       eventType:
-        RankingTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemEventType,
+        RankingTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -77705,7 +78114,9 @@ export const RankingInternetServicesTimeseriesGroupsResponseMetaConfidenceInfoAn
       description: S.String,
       endDate: S.String,
       eventType:
-        RankingInternetServicesTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemEventType,
+        RankingInternetServicesTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -78030,7 +78441,9 @@ export const TcpResetsTimeoutsTimeseriesGroupsResponseMetaConfidenceInfoAnnotati
       description: S.String,
       endDate: S.String,
       eventType:
-        TcpResetsTimeoutsTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemEventType,
+        TcpResetsTimeoutsTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -78430,7 +78843,9 @@ export const AiInferenceTimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsI
       description: S.String,
       endDate: S.String,
       eventType:
-        AiInferenceTimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItemEventType,
+        AiInferenceTimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -78798,7 +79213,9 @@ export const As112TimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItem =
       description: S.String,
       endDate: S.String,
       eventType:
-        As112TimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItemEventType,
+        As112TimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -79180,7 +79597,9 @@ export const AttacksLayer3TimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotation
       description: S.String,
       endDate: S.String,
       eventType:
-        AttacksLayer3TimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItemEventType,
+        AttacksLayer3TimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -79607,7 +80026,9 @@ export const AttacksLayer7TimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotation
       description: S.String,
       endDate: S.String,
       eventType:
-        AttacksLayer7TimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItemEventType,
+        AttacksLayer7TimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -80105,7 +80526,9 @@ export const DnsTimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItem =
       description: S.String,
       endDate: S.String,
       eventType:
-        DnsTimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItemEventType,
+        DnsTimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -80512,7 +80935,9 @@ export const EmailRoutingTimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotations
       description: S.String,
       endDate: S.String,
       eventType:
-        EmailRoutingTimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItemEventType,
+        EmailRoutingTimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -80912,7 +81337,9 @@ export const EmailSecurityTimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotation
       description: S.String,
       endDate: S.String,
       eventType:
-        EmailSecurityTimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItemEventType,
+        EmailSecurityTimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -81409,7 +81836,9 @@ export const HttpTimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItem =
       description: S.String,
       endDate: S.String,
       eventType:
-        HttpTimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItemEventType,
+        HttpTimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -81811,7 +82240,9 @@ export const LeakedCredentialsTimeseriesGroupsV2ResponseMetaConfidenceInfoAnnota
       description: S.String,
       endDate: S.String,
       eventType:
-        LeakedCredentialsTimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItemEventType,
+        LeakedCredentialsTimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -82276,7 +82707,9 @@ export const HttpTimeseriesResponseMetaConfidenceInfoAnnotationsItem =
       description: S.String,
       endDate: S.String,
       eventType:
-        HttpTimeseriesResponseMetaConfidenceInfoAnnotationsItemEventType,
+        HttpTimeseriesResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -82566,7 +82999,9 @@ export const NetflowsTimeseriesResponseMetaConfidenceInfoAnnotationsItem =
       description: S.String,
       endDate: S.String,
       eventType:
-        NetflowsTimeseriesResponseMetaConfidenceInfoAnnotationsItemEventType,
+        NetflowsTimeseriesResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -82983,7 +83418,9 @@ export const TldsPerformanceSummaryResponseMetaConfidenceInfoAnnotationsItem =
       description: S.String,
       endDate: S.String,
       eventType:
-        TldsPerformanceSummaryResponseMetaConfidenceInfoAnnotationsItemEventType,
+        TldsPerformanceSummaryResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -83304,7 +83741,9 @@ export const TldsPerformanceTimeseriesGroupsResponseMetaConfidenceInfoAnnotation
       description: S.String,
       endDate: S.String,
       eventType:
-        TldsPerformanceTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemEventType,
+        TldsPerformanceTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -83644,7 +84083,9 @@ export const EmailSecuritySummaryTlsVersionResponseMetaConfidenceInfoAnnotations
       description: S.String,
       endDate: S.String,
       eventType:
-        EmailSecuritySummaryTlsVersionResponseMetaConfidenceInfoAnnotationsItemEventType,
+        EmailSecuritySummaryTlsVersionResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -84020,7 +84461,9 @@ export const EmailSecurityTimeseriesGroupsTlsVersionResponseMetaConfidenceInfoAn
       description: S.String,
       endDate: S.String,
       eventType:
-        EmailSecurityTimeseriesGroupsTlsVersionResponseMetaConfidenceInfoAnnotationsItemEventType,
+        EmailSecurityTimeseriesGroupsTlsVersionResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -84476,7 +84919,9 @@ export const HttpSummaryTlsVersionResponseMetaConfidenceInfoAnnotationsItem =
       description: S.String,
       endDate: S.String,
       eventType:
-        HttpSummaryTlsVersionResponseMetaConfidenceInfoAnnotationsItemEventType,
+        HttpSummaryTlsVersionResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -84940,7 +85385,9 @@ export const HttpTimeseriesGroupsTlsVersionResponseMetaConfidenceInfoAnnotations
       description: S.String,
       endDate: S.String,
       eventType:
-        HttpTimeseriesGroupsTlsVersionResponseMetaConfidenceInfoAnnotationsItemEventType,
+        HttpTimeseriesGroupsTlsVersionResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -85247,7 +85694,10 @@ export const RankingTopResponseMetaConfidenceInfoAnnotationsItem =
       dataSource: RankingTopResponseMetaConfidenceInfoAnnotationsItemDataSource,
       description: S.String,
       endDate: S.String,
-      eventType: RankingTopResponseMetaConfidenceInfoAnnotationsItemEventType,
+      eventType:
+        RankingTopResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -85502,7 +85952,9 @@ export const RankingInternetServicesTopResponseMetaConfidenceInfoAnnotationsItem
       description: S.String,
       endDate: S.String,
       eventType:
-        RankingInternetServicesTopResponseMetaConfidenceInfoAnnotationsItemEventType,
+        RankingInternetServicesTopResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -85830,7 +86282,9 @@ export const AiBotsSummaryUserAgentResponseMetaConfidenceInfoAnnotationsItem =
       description: S.String,
       endDate: S.String,
       eventType:
-        AiBotsSummaryUserAgentResponseMetaConfidenceInfoAnnotationsItemEventType,
+        AiBotsSummaryUserAgentResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -86129,7 +86583,9 @@ export const AiTimeseriesGroupsUserAgentResponseMetaConfidenceInfoAnnotationsIte
       description: S.String,
       endDate: S.String,
       eventType:
-        AiTimeseriesGroupsUserAgentResponseMetaConfidenceInfoAnnotationsItemEventType,
+        AiTimeseriesGroupsUserAgentResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -86457,7 +86913,9 @@ export const AttacksLayer3SummaryVectorResponseMetaConfidenceInfoAnnotationsItem
       description: S.String,
       endDate: S.String,
       eventType:
-        AttacksLayer3SummaryVectorResponseMetaConfidenceInfoAnnotationsItemEventType,
+        AttacksLayer3SummaryVectorResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -86817,7 +87275,9 @@ export const AttacksLayer3TimeseriesGroupsVectorResponseMetaConfidenceInfoAnnota
       description: S.String,
       endDate: S.String,
       eventType:
-        AttacksLayer3TimeseriesGroupsVectorResponseMetaConfidenceInfoAnnotationsItemEventType,
+        AttacksLayer3TimeseriesGroupsVectorResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -87158,7 +87618,9 @@ export const AttacksLayer3SummaryVerticalResponseMetaConfidenceInfoAnnotationsIt
       description: S.String,
       endDate: S.String,
       eventType:
-        AttacksLayer3SummaryVerticalResponseMetaConfidenceInfoAnnotationsItemEventType,
+        AttacksLayer3SummaryVerticalResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -87535,7 +87997,9 @@ export const AttacksLayer3TimeseriesGroupsVerticalResponseMetaConfidenceInfoAnno
       description: S.String,
       endDate: S.String,
       eventType:
-        AttacksLayer3TimeseriesGroupsVerticalResponseMetaConfidenceInfoAnnotationsItemEventType,
+        AttacksLayer3TimeseriesGroupsVerticalResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -87858,7 +88322,9 @@ export const AttacksLayer3TopVerticalResponseMetaConfidenceInfoAnnotationsItem =
       description: S.String,
       endDate: S.String,
       eventType:
-        AttacksLayer3TopVerticalResponseMetaConfidenceInfoAnnotationsItemEventType,
+        AttacksLayer3TopVerticalResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -88226,7 +88692,9 @@ export const AttacksLayer7SummaryVerticalResponseMetaConfidenceInfoAnnotationsIt
       description: S.String,
       endDate: S.String,
       eventType:
-        AttacksLayer7SummaryVerticalResponseMetaConfidenceInfoAnnotationsItemEventType,
+        AttacksLayer7SummaryVerticalResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -88645,7 +89113,9 @@ export const AttacksLayer7TimeseriesGroupsVerticalResponseMetaConfidenceInfoAnno
       description: S.String,
       endDate: S.String,
       eventType:
-        AttacksLayer7TimeseriesGroupsVerticalResponseMetaConfidenceInfoAnnotationsItemEventType,
+        AttacksLayer7TimeseriesGroupsVerticalResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,
@@ -89015,7 +89485,9 @@ export const AttacksLayer7TopVerticalResponseMetaConfidenceInfoAnnotationsItem =
       description: S.String,
       endDate: S.String,
       eventType:
-        AttacksLayer7TopVerticalResponseMetaConfidenceInfoAnnotationsItemEventType,
+        AttacksLayer7TopVerticalResponseMetaConfidenceInfoAnnotationsItemEventType.pipe(
+          T.Body("event_type"),
+        ),
       isInstantaneous: S.Boolean,
       linkedUrl: S.String,
       startDate: S.String,

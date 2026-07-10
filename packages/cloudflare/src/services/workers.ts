@@ -2923,7 +2923,10 @@ export interface ObservabilityDestinationsCreateRequestConfiguration {
 export const ObservabilityDestinationsCreateRequestConfiguration =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      headers: ObservabilityDestinationsCreateRequestConfigurationHeadersMap,
+      headers:
+        ObservabilityDestinationsCreateRequestConfigurationHeadersMap.pipe(
+          T.Body("_headers"),
+        ),
       logpushDataset:
         ObservabilityDestinationsCreateRequestConfigurationLogpushDataset,
       type: ObservabilityDestinationsCreateRequestConfigurationType,
@@ -7474,8 +7477,8 @@ export interface ObservabilitySharedQueriesGetResponseCalculationsItemAggregates
 export const ObservabilitySharedQueriesGetResponseCalculationsItemAggregatesItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      count: S.Number,
-      interval: S.Number,
+      count: S.Number.pipe(T.Body("_count")),
+      interval: S.Number.pipe(T.Body("_interval")),
       sampleInterval: S.Number,
       value: S.Number,
       groups: S.optional(
@@ -7546,15 +7549,15 @@ export interface ObservabilitySharedQueriesGetResponseCalculationsItemSeriesItem
 export const ObservabilitySharedQueriesGetResponseCalculationsItemSeriesItemDataItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      count: S.Number,
-      interval: S.Number,
+      count: S.Number.pipe(T.Body("_count")),
+      interval: S.Number.pipe(T.Body("_interval")),
       sampleInterval: S.Number,
       value: S.Number,
-      firstSeen: S.optional(S.String),
+      firstSeen: S.optional(S.String.pipe(T.Body("_firstSeen"))),
       groups: S.optional(
         ObservabilitySharedQueriesGetResponseCalculationsItemSeriesItemDataItemGroupsList,
       ),
-      lastSeen: S.optional(S.String),
+      lastSeen: S.optional(S.String.pipe(T.Body("_lastSeen"))),
     }),
   ).annotate({
     identifier:
@@ -7666,8 +7669,8 @@ export interface ObservabilitySharedQueriesGetResponseCompareItemAggregatesItem 
 export const ObservabilitySharedQueriesGetResponseCompareItemAggregatesItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      count: S.Number,
-      interval: S.Number,
+      count: S.Number.pipe(T.Body("_count")),
+      interval: S.Number.pipe(T.Body("_interval")),
       sampleInterval: S.Number,
       value: S.Number,
       groups: S.optional(
@@ -7738,15 +7741,15 @@ export interface ObservabilitySharedQueriesGetResponseCompareItemSeriesItemDataI
 export const ObservabilitySharedQueriesGetResponseCompareItemSeriesItemDataItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      count: S.Number,
-      interval: S.Number,
+      count: S.Number.pipe(T.Body("_count")),
+      interval: S.Number.pipe(T.Body("_interval")),
       sampleInterval: S.Number,
       value: S.Number,
-      firstSeen: S.optional(S.String),
+      firstSeen: S.optional(S.String.pipe(T.Body("_firstSeen"))),
       groups: S.optional(
         ObservabilitySharedQueriesGetResponseCompareItemSeriesItemDataItemGroupsList,
       ),
-      lastSeen: S.optional(S.String),
+      lastSeen: S.optional(S.String.pipe(T.Body("_lastSeen"))),
     }),
   ).annotate({
     identifier:
@@ -8033,7 +8036,7 @@ export const ObservabilitySharedQueriesGetResponseEventsEventsItemWorkers =
         ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersEventType,
       ),
       requestId: S.optional(S.String),
-      scriptName: S.optional(S.String),
+      scriptName: S.optional(S.String.pipe(T.Body("script_name"))),
       durableObjectId: S.optional(S.String),
       entrypoint: S.optional(S.String),
       event: S.optional(
@@ -8057,7 +8060,9 @@ export const ObservabilitySharedQueriesGetResponseEventsEventsItemWorkers =
       diagnosticsChannelEvents: S.optional(
         ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersDiagnosticsChannelEventsList,
       ),
-      dispatchNamespace: S.optional(S.String),
+      dispatchNamespace: S.optional(
+        S.String.pipe(T.Body("dispatch_namespace")),
+      ),
     }),
   ).annotate({
     identifier: "ObservabilitySharedQueriesGetResponseEventsEventsItemWorkers",
@@ -8175,8 +8180,8 @@ export const ObservabilitySharedQueriesGetResponseEventsSeriesItemDataItem =
     S.Struct({
       aggregates:
         ObservabilitySharedQueriesGetResponseEventsSeriesItemDataItemAggregates,
-      count: S.Number,
-      interval: S.Number,
+      count: S.Number.pipe(T.Body("_count")),
+      interval: S.Number.pipe(T.Body("_interval")),
       sampleInterval: S.Number,
       errors: S.optional(S.Number),
       groups: S.optional(
@@ -8228,7 +8233,7 @@ export interface ObservabilitySharedQueriesGetResponseEvents {
 export const ObservabilitySharedQueriesGetResponseEvents =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      count: S.optional(S.Number),
+      count: S.optional(S.Number.pipe(T.Body("_count"))),
       events: S.optional(ObservabilitySharedQueriesGetResponseEventsEventsList),
       fields: S.optional(ObservabilitySharedQueriesGetResponseEventsFieldsList),
       series: S.optional(ObservabilitySharedQueriesGetResponseEventsSeriesList),
@@ -12320,7 +12325,10 @@ export const ObservabilityDestinationsListResultItemConfiguration =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       destinationConf: S.String.pipe(T.Body("destination_conf")),
-      headers: ObservabilityDestinationsListResultItemConfigurationHeadersMap,
+      headers:
+        ObservabilityDestinationsListResultItemConfigurationHeadersMap.pipe(
+          T.Body("_headers"),
+        ),
       jobStatus: ObservabilityDestinationsListResultItemConfigurationJobStatus,
       logpushDataset:
         ObservabilityDestinationsListResultItemConfigurationLogpushDataset,
@@ -14410,7 +14418,10 @@ export interface ObservabilityDestinationsUpdateRequestConfiguration {
 export const ObservabilityDestinationsUpdateRequestConfiguration =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      headers: ObservabilityDestinationsUpdateRequestConfigurationHeadersMap,
+      headers:
+        ObservabilityDestinationsUpdateRequestConfigurationHeadersMap.pipe(
+          T.Body("_headers"),
+        ),
       type: ObservabilityDestinationsUpdateRequestConfigurationType,
       url: S.String,
     }),
@@ -16230,6 +16241,7 @@ export const PutScriptMetadata = /*@__PURE__*/ S.suspend(() =>
     bodyPart: S.optional(S.String.pipe(T.Body("body_part"))),
     cache: S.optional(
       S.Unknown.pipe(
+        T.Body("cache_options"),
         T.KeyDictionary({
           abrLevel: "abr_level",
           allowedDestinationAddresses: "allowed_destination_addresses",
@@ -19220,8 +19232,8 @@ export interface ObservabilityTelemetryQueryResponseCalculationsItemAggregatesIt
 export const ObservabilityTelemetryQueryResponseCalculationsItemAggregatesItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      count: S.Number,
-      interval: S.Number,
+      count: S.Number.pipe(T.Body("_count")),
+      interval: S.Number.pipe(T.Body("_interval")),
       sampleInterval: S.Number,
       value: S.Number,
       groups: S.optional(
@@ -19292,15 +19304,15 @@ export interface ObservabilityTelemetryQueryResponseCalculationsItemSeriesItemDa
 export const ObservabilityTelemetryQueryResponseCalculationsItemSeriesItemDataItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      count: S.Number,
-      interval: S.Number,
+      count: S.Number.pipe(T.Body("_count")),
+      interval: S.Number.pipe(T.Body("_interval")),
       sampleInterval: S.Number,
       value: S.Number,
-      firstSeen: S.optional(S.String),
+      firstSeen: S.optional(S.String.pipe(T.Body("_firstSeen"))),
       groups: S.optional(
         ObservabilityTelemetryQueryResponseCalculationsItemSeriesItemDataItemGroupsList,
       ),
-      lastSeen: S.optional(S.String),
+      lastSeen: S.optional(S.String.pipe(T.Body("_lastSeen"))),
     }),
   ).annotate({
     identifier:
@@ -19411,8 +19423,8 @@ export interface ObservabilityTelemetryQueryResponseCompareItemAggregatesItem {
 export const ObservabilityTelemetryQueryResponseCompareItemAggregatesItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      count: S.Number,
-      interval: S.Number,
+      count: S.Number.pipe(T.Body("_count")),
+      interval: S.Number.pipe(T.Body("_interval")),
       sampleInterval: S.Number,
       value: S.Number,
       groups: S.optional(
@@ -19482,15 +19494,15 @@ export interface ObservabilityTelemetryQueryResponseCompareItemSeriesItemDataIte
 export const ObservabilityTelemetryQueryResponseCompareItemSeriesItemDataItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      count: S.Number,
-      interval: S.Number,
+      count: S.Number.pipe(T.Body("_count")),
+      interval: S.Number.pipe(T.Body("_interval")),
       sampleInterval: S.Number,
       value: S.Number,
-      firstSeen: S.optional(S.String),
+      firstSeen: S.optional(S.String.pipe(T.Body("_firstSeen"))),
       groups: S.optional(
         ObservabilityTelemetryQueryResponseCompareItemSeriesItemDataItemGroupsList,
       ),
-      lastSeen: S.optional(S.String),
+      lastSeen: S.optional(S.String.pipe(T.Body("_lastSeen"))),
     }),
   ).annotate({
     identifier:
@@ -19777,7 +19789,7 @@ export const ObservabilityTelemetryQueryResponseEventsEventsItemWorkers =
         ObservabilityTelemetryQueryResponseEventsEventsItemWorkersEventType,
       ),
       requestId: S.optional(S.String),
-      scriptName: S.optional(S.String),
+      scriptName: S.optional(S.String.pipe(T.Body("script_name"))),
       durableObjectId: S.optional(S.String),
       entrypoint: S.optional(S.String),
       event: S.optional(
@@ -19801,7 +19813,9 @@ export const ObservabilityTelemetryQueryResponseEventsEventsItemWorkers =
       diagnosticsChannelEvents: S.optional(
         ObservabilityTelemetryQueryResponseEventsEventsItemWorkersDiagnosticsChannelEventsList,
       ),
-      dispatchNamespace: S.optional(S.String),
+      dispatchNamespace: S.optional(
+        S.String.pipe(T.Body("dispatch_namespace")),
+      ),
     }),
   ).annotate({
     identifier: "ObservabilityTelemetryQueryResponseEventsEventsItemWorkers",
@@ -19919,8 +19933,8 @@ export const ObservabilityTelemetryQueryResponseEventsSeriesItemDataItem =
     S.Struct({
       aggregates:
         ObservabilityTelemetryQueryResponseEventsSeriesItemDataItemAggregates,
-      count: S.Number,
-      interval: S.Number,
+      count: S.Number.pipe(T.Body("_count")),
+      interval: S.Number.pipe(T.Body("_interval")),
       sampleInterval: S.Number,
       errors: S.optional(S.Number),
       groups: S.optional(
@@ -19972,7 +19986,7 @@ export interface ObservabilityTelemetryQueryResponseEvents {
 export const ObservabilityTelemetryQueryResponseEvents =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      count: S.optional(S.Number),
+      count: S.optional(S.Number.pipe(T.Body("_count"))),
       events: S.optional(ObservabilityTelemetryQueryResponseEventsEventsList),
       fields: S.optional(ObservabilityTelemetryQueryResponseEventsFieldsList),
       series: S.optional(ObservabilityTelemetryQueryResponseEventsSeriesList),

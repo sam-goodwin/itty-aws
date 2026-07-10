@@ -128,7 +128,7 @@ export interface CreateTurnResponse {
 export const CreateTurnResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     created: S.optional(S.String),
-    key: S.optional(S.String),
+    key: S.optional(S.String.pipe(T.Body("secret"))),
     modified: S.optional(S.String),
     name: S.optional(S.String),
     uid: S.optional(S.String),

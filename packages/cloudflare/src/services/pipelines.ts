@@ -2843,7 +2843,7 @@ export interface ListPipelinesResponse {
 }
 export const ListPipelinesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    results: ListResponseResultsList,
+    results: ListResponseResultsList.pipe(T.Body("result")),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListPipelinesResponse",

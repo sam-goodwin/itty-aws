@@ -342,7 +342,7 @@ export const ScansGetResponseDataCookiesItem = /*@__PURE__*/ S.suspend(() =>
     httpOnly: S.Boolean,
     name: S.String,
     path: S.String,
-    priority: S.String,
+    priority: S.String.pipe(T.Body("_priority")),
     sameParty: S.Boolean,
     secure: S.Boolean,
     session: S.Boolean,
@@ -447,7 +447,7 @@ export interface ScansGetResponseDataRequestsItemRequestRequest {
 export const ScansGetResponseDataRequestsItemRequestRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      initialPriority: S.String,
+      initialPriority: S.String.pipe(T.Body("_initialPriority")),
       isSameSite: S.Boolean,
       method: S.String,
       mixedContentType: S.String,
@@ -536,7 +536,7 @@ export const ScansGetResponseDataRequestsItemRequest = /*@__PURE__*/ S.suspend(
       initiator: ScansGetResponseDataRequestsItemRequestInitiator,
       redirectHasExtraInfo: S.Boolean,
       request: ScansGetResponseDataRequestsItemRequestRequest,
-      requestId: S.String,
+      requestId: S.String.pipe(T.Body("_requestId")),
       type: S.String,
       wallTime: S.Number,
       frameId: S.optional(S.String),
@@ -724,7 +724,7 @@ export const ScansGetResponseDataRequestsItemResponse = /*@__PURE__*/ S.suspend(
       encodedDataLength: S.Number,
       geoip: ScansGetResponseDataRequestsItemResponseGeoip,
       hasExtraInfo: S.Boolean,
-      requestId: S.String,
+      requestId: S.String.pipe(T.Body("_requestId")),
       response: ScansGetResponseDataRequestsItemResponseResponse,
       size: S.Number,
       type: S.String,
@@ -772,7 +772,7 @@ export const ScansGetResponseDataRequestsItemRequestsItemRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       headers: ScansGetResponseDataRequestsItemRequestsItemRequestHeaders,
-      initialPriority: S.String,
+      initialPriority: S.String.pipe(T.Body("_initialPriority")),
       isSameSite: S.Boolean,
       method: S.String,
       mixedContentType: S.String,
@@ -805,7 +805,7 @@ export const ScansGetResponseDataRequestsItemRequestsItem =
       loaderId: S.String,
       redirectHasExtraInfo: S.Boolean,
       request: ScansGetResponseDataRequestsItemRequestsItemRequest,
-      requestId: S.String,
+      requestId: S.String.pipe(T.Body("_requestId")),
       type: S.String,
       wallTime: S.Number,
     }),
@@ -1186,7 +1186,7 @@ export const ScansGetResponseMetaProcessorsWappaDataItemCategoriesItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String,
-      priority: S.Number,
+      priority: S.Number.pipe(T.Body("_priority")),
     }),
   ).annotate({
     identifier: "ScansGetResponseMetaProcessorsWappaDataItemCategoriesItem",
@@ -3735,7 +3735,7 @@ export interface ScansGetResponseMetaProcessorsUrlCategoriesDataItemContentItem 
 export const ScansGetResponseMetaProcessorsUrlCategoriesDataItemContentItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      id: S.Number,
+      id: S.Number.pipe(T.Body("_id")),
       name: S.String,
       superCategoryId: S.Number.pipe(T.Body("super_category_id")),
     }),
@@ -3759,7 +3759,7 @@ export interface ScansGetResponseMetaProcessorsUrlCategoriesDataItemInheritedCon
 export const ScansGetResponseMetaProcessorsUrlCategoriesDataItemInheritedContentItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      id: S.Number,
+      id: S.Number.pipe(T.Body("_id")),
       name: S.String,
       superCategoryId: S.Number.pipe(T.Body("super_category_id")),
     }),
@@ -3783,7 +3783,7 @@ export interface ScansGetResponseMetaProcessorsUrlCategoriesDataItemInheritedRis
 export const ScansGetResponseMetaProcessorsUrlCategoriesDataItemInheritedRisksItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      id: S.Number,
+      id: S.Number.pipe(T.Body("_id")),
       name: S.String,
       superCategoryId: S.Number.pipe(T.Body("super_category_id")),
     }),
@@ -3825,7 +3825,7 @@ export interface ScansGetResponseMetaProcessorsUrlCategoriesDataItemRisksItem {
 export const ScansGetResponseMetaProcessorsUrlCategoriesDataItemRisksItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      id: S.Number,
+      id: S.Number.pipe(T.Body("_id")),
       name: S.String,
       superCategoryId: S.Number.pipe(T.Body("super_category_id")),
     }),
@@ -4685,7 +4685,7 @@ export interface ScansHarResponseLogPagesItem {
 }
 export const ScansHarResponseLogPagesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.String,
+    id: S.String.pipe(T.Body("_id")),
     pageTimings: ScansHarResponseLogPagesItemPageTimings,
     startedDateTime: S.String,
     title: S.String,

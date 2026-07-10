@@ -262,7 +262,9 @@ export const CreateBucketRequest = /*@__PURE__*/ S.suspend(() =>
     ),
     name: S.String,
     locationHint: S.optional(BucketsCreateRequestLocationHint),
-    storageClass: S.optional(BucketsCreateRequestStorageClass),
+    storageClass: S.optional(
+      BucketsCreateRequestStorageClass.pipe(T.Body("storage_class")),
+    ),
   })
     .pipe(
       T.Http({
@@ -1400,7 +1402,7 @@ export interface GetBucketEventNotificationResponse {
 }
 export const GetBucketEventNotificationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    queueId: S.optional(S.String),
+    queueId: S.optional(S.String.pipe(T.Body("queue"))),
     queueName: S.optional(S.String),
     rules: S.optional(BucketsEventNotificationsGetResponseRulesList),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -1574,7 +1576,9 @@ export const BucketsLifecycleGetResponseRulesItemStorageClassTransitionsItem =
       condition:
         BucketsLifecycleGetResponseRulesItemStorageClassTransitionsItemCondition,
       storageClass:
-        BucketsLifecycleGetResponseRulesItemStorageClassTransitionsItemStorageClass,
+        BucketsLifecycleGetResponseRulesItemStorageClassTransitionsItemStorageClass.pipe(
+          T.Body("storage_class"),
+        ),
     }),
   ).annotate({
     identifier:
@@ -2297,7 +2301,7 @@ export interface BucketsEventNotificationsListResponseQueuesItem {
 export const BucketsEventNotificationsListResponseQueuesItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      queueId: S.optional(S.String),
+      queueId: S.optional(S.String.pipe(T.Body("queue"))),
       queueName: S.optional(S.String),
       rules: S.optional(
         BucketsEventNotificationsListResponseQueuesItemRulesList,
@@ -3559,7 +3563,9 @@ export const BucketsLifecycleUpdateRequestRulesItemStorageClassTransitionsItem =
       condition:
         BucketsLifecycleUpdateRequestRulesItemStorageClassTransitionsItemCondition,
       storageClass:
-        BucketsLifecycleUpdateRequestRulesItemStorageClassTransitionsItemStorageClass,
+        BucketsLifecycleUpdateRequestRulesItemStorageClassTransitionsItemStorageClass.pipe(
+          T.Body("storage_class"),
+        ),
     }),
   ).annotate({
     identifier:

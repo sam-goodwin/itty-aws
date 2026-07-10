@@ -802,7 +802,7 @@ export const GetInstanceResponse = /*@__PURE__*/ S.suspend(() =>
     steps: InstancesGetResponseStepsList,
     success: S.Boolean,
     trigger: InstancesGetResponseTrigger,
-    versionId: S.String,
+    versionId: S.String.pipe(T.Body("version_id")),
     schedule: S.optional(InstancesGetResponseSchedule),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({

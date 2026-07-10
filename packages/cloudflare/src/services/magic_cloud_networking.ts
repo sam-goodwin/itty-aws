@@ -2333,7 +2333,7 @@ export interface ResourcesGetResponseSectionsItemHiddenItemsItem {
 export const ResourcesGetResponseSectionsItemHiddenItemsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      helpText: S.optional(S.String),
+      helpText: S.optional(S.String.pipe(T.Body("help_text"))),
       name: S.optional(S.String),
       value: S.optional(ResourcesGetResponseSectionsItemHiddenItemsItemValue),
     }),
@@ -2519,7 +2519,7 @@ export interface ResourcesGetResponseSectionsItemVisibleItemsItem {
 export const ResourcesGetResponseSectionsItemVisibleItemsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      helpText: S.optional(S.String),
+      helpText: S.optional(S.String.pipe(T.Body("help_text"))),
       name: S.optional(S.String),
       value: S.optional(ResourcesGetResponseSectionsItemVisibleItemsItemValue),
     }),
@@ -3979,7 +3979,7 @@ export interface ResourcesListResultItemSectionsItemHiddenItemsItem {
 export const ResourcesListResultItemSectionsItemHiddenItemsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      helpText: S.optional(S.String),
+      helpText: S.optional(S.String.pipe(T.Body("help_text"))),
       name: S.optional(S.String),
       value: S.optional(
         ResourcesListResultItemSectionsItemHiddenItemsItemValue,
@@ -4169,7 +4169,7 @@ export interface ResourcesListResultItemSectionsItemVisibleItemsItem {
 export const ResourcesListResultItemSectionsItemVisibleItemsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      helpText: S.optional(S.String),
+      helpText: S.optional(S.String.pipe(T.Body("help_text"))),
       name: S.optional(S.String),
       value: S.optional(
         ResourcesListResultItemSectionsItemVisibleItemsItemValue,

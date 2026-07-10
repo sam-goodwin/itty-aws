@@ -1095,7 +1095,7 @@ export interface GetAppEvaluateResponse {
 }
 export const GetAppEvaluateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    flagKey: S.String,
+    flagKey: S.String.pipe(T.Body("flag_key")),
     reason: AppsEvaluateGetResponseReason,
     variant: S.String,
     value: S.optional(AppsEvaluateGetResponseValue),
