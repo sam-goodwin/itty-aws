@@ -55,12 +55,28 @@ export class DurableObjectCheckError extends T.applyErrorMatchers(
   ],
 ) {}
 
+export class DurableObjectNotContainerEnabled extends T.applyErrorMatchers(
+  S.TaggedErrorClass<DurableObjectNotContainerEnabled>()(
+    "DurableObjectNotContainerEnabled",
+    {
+      code: S.Number,
+      message: S.String,
+    },
+  ),
+  [
+    {
+      code: 1607,
+      message: { includes: "DURABLE_OBJECT_NOT_CONTAINER_ENABLED" },
+    },
+  ],
+) {}
+
 export class InvalidRoute extends T.applyErrorMatchers(
   S.TaggedErrorClass<InvalidRoute>()("InvalidRoute", {
     code: S.Number,
     message: S.String,
   }),
-  [{ code: 7003 }],
+  [{ code: 7003, message: { includes: "Could not route" } }],
 ) {}
 
 export interface EnvironmentVariable {
@@ -403,8 +419,8 @@ export const UpdateContainerApplicationResponse = /*@__PURE__*/ S.suspend(() =>
 
 export type CreateContainerApplicationError =
   | InvalidRoute
-  | ContainerApplicationNotFound
   | DurableObjectAlreadyHasApplication
+  | DurableObjectNotContainerEnabled
   | DurableObjectCheckError
   | CloudflareOpError;
 export const createContainerApplication: API.OperationMethod<
@@ -417,8 +433,8 @@ export const createContainerApplication: API.OperationMethod<
   output: CreateContainerApplicationResponse,
   errors: [
     InvalidRoute,
-    ContainerApplicationNotFound,
     DurableObjectAlreadyHasApplication,
+    DurableObjectNotContainerEnabled,
     DurableObjectCheckError,
     CloudflareRateLimited,
     CloudflareError,

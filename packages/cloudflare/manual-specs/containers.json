@@ -7,43 +7,71 @@
     "com.cloudflare.containers#InvalidRoute": {
       "type": "structure",
       "members": {
-        "code": { "target": "smithy.api#Integer" },
-        "message": { "target": "smithy.api#String" }
+        "code": {
+          "target": "smithy.api#Integer"
+        },
+        "message": {
+          "target": "smithy.api#String"
+        }
       },
       "traits": {
         "smithy.api#error": "client",
-        "com.cloudflare.protocols#errorMatchers": [{ "code": 7003 }]
+        "com.cloudflare.protocols#errorMatchers": [
+          {
+            "code": 7003,
+            "message": {
+              "includes": "Could not route"
+            }
+          }
+        ]
       }
     },
     "com.cloudflare.containers#ContainerApplicationNotFound": {
       "type": "structure",
       "members": {
-        "code": { "target": "smithy.api#Integer" },
-        "message": { "target": "smithy.api#String" }
+        "code": {
+          "target": "smithy.api#Integer"
+        },
+        "message": {
+          "target": "smithy.api#String"
+        }
       },
       "traits": {
         "smithy.api#error": "client",
         "com.cloudflare.protocols#errorMatchers": [
           {
             "code": 1609,
-            "message": { "includes": "Container application not found" }
+            "message": {
+              "includes": "Container application not found"
+            }
           },
-          { "code": 1609, "message": { "includes": "APPLICATION_NOT_FOUND" } }
+          {
+            "code": 1609,
+            "message": {
+              "includes": "APPLICATION_NOT_FOUND"
+            }
+          }
         ]
       }
     },
     "com.cloudflare.containers#DurableObjectAlreadyHasApplication": {
       "type": "structure",
       "members": {
-        "code": { "target": "smithy.api#Integer" },
-        "message": { "target": "smithy.api#String" }
+        "code": {
+          "target": "smithy.api#Integer"
+        },
+        "message": {
+          "target": "smithy.api#String"
+        }
       },
       "traits": {
         "smithy.api#error": "client",
         "com.cloudflare.protocols#errorMatchers": [
           {
             "code": 1608,
-            "message": { "includes": "DURABLE_OBJECT_ALREADY_HAS_APPLICATION" }
+            "message": {
+              "includes": "DURABLE_OBJECT_ALREADY_HAS_APPLICATION"
+            }
           }
         ]
       }
@@ -51,15 +79,21 @@
     "com.cloudflare.containers#DurableObjectCheckError": {
       "type": "structure",
       "members": {
-        "code": { "target": "smithy.api#Integer" },
-        "message": { "target": "smithy.api#String" }
+        "code": {
+          "target": "smithy.api#Integer"
+        },
+        "message": {
+          "target": "smithy.api#String"
+        }
       },
       "traits": {
         "smithy.api#error": "client",
         "com.cloudflare.protocols#errorMatchers": [
           {
             "code": 1000,
-            "message": { "includes": "checking the application durable object" }
+            "message": {
+              "includes": "checking the application durable object"
+            }
           }
         ]
       }
@@ -69,32 +103,44 @@
       "members": {
         "name": {
           "target": "smithy.api#String",
-          "traits": { "smithy.api#required": {} }
+          "traits": {
+            "smithy.api#required": {}
+          }
         },
         "value": {
           "target": "smithy.api#String",
-          "traits": { "smithy.api#required": {} }
+          "traits": {
+            "smithy.api#required": {}
+          }
         }
       }
     },
     "com.cloudflare.containers#EnvironmentVariableList": {
       "type": "list",
-      "member": { "target": "com.cloudflare.containers#EnvironmentVariable" }
+      "member": {
+        "target": "com.cloudflare.containers#EnvironmentVariable"
+      }
     },
     "com.cloudflare.containers#StringList": {
       "type": "list",
-      "member": { "target": "smithy.api#String" }
+      "member": {
+        "target": "smithy.api#String"
+      }
     },
     "com.cloudflare.containers#DocumentList": {
       "type": "list",
-      "member": { "target": "smithy.api#Document" }
+      "member": {
+        "target": "smithy.api#Document"
+      }
     },
     "com.cloudflare.containers#DurableObjectsRef": {
       "type": "structure",
       "members": {
         "namespace_id": {
           "target": "smithy.api#String",
-          "traits": { "smithy.api#required": {} }
+          "traits": {
+            "smithy.api#required": {}
+          }
         }
       }
     },
@@ -103,25 +149,55 @@
       "members": {
         "image": {
           "target": "smithy.api#String",
-          "traits": { "smithy.api#required": {} }
+          "traits": {
+            "smithy.api#required": {}
+          }
         },
-        "instance_type": { "target": "smithy.api#String" },
-        "vcpu": { "target": "smithy.api#Double" },
-        "memory": { "target": "smithy.api#String" },
-        "memory_mib": { "target": "smithy.api#Double" },
-        "disk": { "target": "smithy.api#Document" },
+        "instance_type": {
+          "target": "smithy.api#String"
+        },
+        "vcpu": {
+          "target": "smithy.api#Double"
+        },
+        "memory": {
+          "target": "smithy.api#String"
+        },
+        "memory_mib": {
+          "target": "smithy.api#Double"
+        },
+        "disk": {
+          "target": "smithy.api#Document"
+        },
         "environment_variables": {
           "target": "com.cloudflare.containers#EnvironmentVariableList"
         },
-        "secrets": { "target": "com.cloudflare.containers#DocumentList" },
-        "labels": { "target": "com.cloudflare.containers#DocumentList" },
-        "ports": { "target": "com.cloudflare.containers#DocumentList" },
-        "network": { "target": "smithy.api#Document" },
-        "command": { "target": "com.cloudflare.containers#StringList" },
-        "entrypoint": { "target": "com.cloudflare.containers#StringList" },
-        "observability": { "target": "smithy.api#Document" },
-        "checks": { "target": "com.cloudflare.containers#DocumentList" },
-        "dns": { "target": "smithy.api#Document" },
+        "secrets": {
+          "target": "com.cloudflare.containers#DocumentList"
+        },
+        "labels": {
+          "target": "com.cloudflare.containers#DocumentList"
+        },
+        "ports": {
+          "target": "com.cloudflare.containers#DocumentList"
+        },
+        "network": {
+          "target": "smithy.api#Document"
+        },
+        "command": {
+          "target": "com.cloudflare.containers#StringList"
+        },
+        "entrypoint": {
+          "target": "com.cloudflare.containers#StringList"
+        },
+        "observability": {
+          "target": "smithy.api#Document"
+        },
+        "checks": {
+          "target": "com.cloudflare.containers#DocumentList"
+        },
+        "dns": {
+          "target": "smithy.api#Document"
+        },
         "ssh_public_key_ids": {
           "target": "com.cloudflare.containers#StringList"
         }
@@ -132,24 +208,36 @@
       "members": {
         "account_id": {
           "target": "smithy.api#String",
-          "traits": { "smithy.api#httpLabel": {}, "smithy.api#required": {} }
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
         },
         "application_id": {
           "target": "smithy.api#String",
-          "traits": { "smithy.api#httpLabel": {}, "smithy.api#required": {} }
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
         }
       },
-      "traits": { "smithy.api#input": {} }
+      "traits": {
+        "smithy.api#input": {}
+      }
     },
     "com.cloudflare.containers#GetContainerApplicationResponse": {
       "type": "structure",
       "members": {
         "result": {
           "target": "smithy.api#Document",
-          "traits": { "com.cloudflare.protocols#envelopePayload": {} }
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {}
+          }
         }
       },
-      "traits": { "smithy.api#output": {} }
+      "traits": {
+        "smithy.api#output": {}
+      }
     },
     "com.cloudflare.containers#GetContainerApplication": {
       "type": "operation",
@@ -160,8 +248,12 @@
         "target": "com.cloudflare.containers#GetContainerApplicationResponse"
       },
       "errors": [
-        { "target": "com.cloudflare.containers#InvalidRoute" },
-        { "target": "com.cloudflare.containers#ContainerApplicationNotFound" }
+        {
+          "target": "com.cloudflare.containers#InvalidRoute"
+        },
+        {
+          "target": "com.cloudflare.containers#ContainerApplicationNotFound"
+        }
       ],
       "traits": {
         "smithy.api#http": {
@@ -177,20 +269,29 @@
       "members": {
         "account_id": {
           "target": "smithy.api#String",
-          "traits": { "smithy.api#httpLabel": {}, "smithy.api#required": {} }
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
         }
       },
-      "traits": { "smithy.api#input": {} }
+      "traits": {
+        "smithy.api#input": {}
+      }
     },
     "com.cloudflare.containers#ListContainerApplicationsResponse": {
       "type": "structure",
       "members": {
         "result": {
           "target": "smithy.api#Document",
-          "traits": { "com.cloudflare.protocols#envelopePayload": {} }
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {}
+          }
         }
       },
-      "traits": { "smithy.api#output": {} }
+      "traits": {
+        "smithy.api#output": {}
+      }
     },
     "com.cloudflare.containers#ListContainerApplications": {
       "type": "operation",
@@ -200,7 +301,11 @@
       "output": {
         "target": "com.cloudflare.containers#ListContainerApplicationsResponse"
       },
-      "errors": [{ "target": "com.cloudflare.containers#InvalidRoute" }],
+      "errors": [
+        {
+          "target": "com.cloudflare.containers#InvalidRoute"
+        }
+      ],
       "traits": {
         "smithy.api#http": {
           "method": "GET",
@@ -215,40 +320,65 @@
       "members": {
         "account_id": {
           "target": "smithy.api#String",
-          "traits": { "smithy.api#httpLabel": {}, "smithy.api#required": {} }
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
         },
         "name": {
           "target": "smithy.api#String",
-          "traits": { "smithy.api#required": {} }
+          "traits": {
+            "smithy.api#required": {}
+          }
         },
         "max_instances": {
           "target": "smithy.api#Integer",
-          "traits": { "smithy.api#required": {} }
+          "traits": {
+            "smithy.api#required": {}
+          }
         },
         "configuration": {
           "target": "com.cloudflare.containers#ContainerConfiguration",
-          "traits": { "smithy.api#required": {} }
+          "traits": {
+            "smithy.api#required": {}
+          }
         },
         "durable_objects": {
           "target": "com.cloudflare.containers#DurableObjectsRef"
         },
-        "instances": { "target": "smithy.api#Integer" },
-        "scheduling_policy": { "target": "smithy.api#String" },
-        "constraints": { "target": "smithy.api#Document" },
-        "affinities": { "target": "smithy.api#Document" },
-        "jobs": { "target": "smithy.api#Boolean" }
+        "instances": {
+          "target": "smithy.api#Integer"
+        },
+        "scheduling_policy": {
+          "target": "smithy.api#String"
+        },
+        "constraints": {
+          "target": "smithy.api#Document"
+        },
+        "affinities": {
+          "target": "smithy.api#Document"
+        },
+        "jobs": {
+          "target": "smithy.api#Boolean"
+        }
       },
-      "traits": { "smithy.api#input": {} }
+      "traits": {
+        "smithy.api#input": {}
+      }
     },
     "com.cloudflare.containers#CreateContainerApplicationResponse": {
       "type": "structure",
       "members": {
         "result": {
           "target": "smithy.api#Document",
-          "traits": { "com.cloudflare.protocols#envelopePayload": {} }
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {}
+          }
         }
       },
-      "traits": { "smithy.api#output": {} }
+      "traits": {
+        "smithy.api#output": {}
+      }
     },
     "com.cloudflare.containers#CreateContainerApplication": {
       "type": "operation",
@@ -259,12 +389,18 @@
         "target": "com.cloudflare.containers#CreateContainerApplicationResponse"
       },
       "errors": [
-        { "target": "com.cloudflare.containers#InvalidRoute" },
-        { "target": "com.cloudflare.containers#ContainerApplicationNotFound" },
+        {
+          "target": "com.cloudflare.containers#InvalidRoute"
+        },
         {
           "target": "com.cloudflare.containers#DurableObjectAlreadyHasApplication"
         },
-        { "target": "com.cloudflare.containers#DurableObjectCheckError" }
+        {
+          "target": "com.cloudflare.containers#DurableObjectNotContainerEnabled"
+        },
+        {
+          "target": "com.cloudflare.containers#DurableObjectCheckError"
+        }
       ],
       "traits": {
         "smithy.api#http": {
@@ -279,32 +415,54 @@
       "members": {
         "account_id": {
           "target": "smithy.api#String",
-          "traits": { "smithy.api#httpLabel": {}, "smithy.api#required": {} }
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
         },
         "application_id": {
           "target": "smithy.api#String",
-          "traits": { "smithy.api#httpLabel": {}, "smithy.api#required": {} }
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
         },
-        "max_instances": { "target": "smithy.api#Integer" },
+        "max_instances": {
+          "target": "smithy.api#Integer"
+        },
         "configuration": {
           "target": "com.cloudflare.containers#ContainerConfiguration"
         },
-        "instances": { "target": "smithy.api#Integer" },
-        "scheduling_policy": { "target": "smithy.api#String" },
-        "constraints": { "target": "smithy.api#Document" },
-        "affinities": { "target": "smithy.api#Document" }
+        "instances": {
+          "target": "smithy.api#Integer"
+        },
+        "scheduling_policy": {
+          "target": "smithy.api#String"
+        },
+        "constraints": {
+          "target": "smithy.api#Document"
+        },
+        "affinities": {
+          "target": "smithy.api#Document"
+        }
       },
-      "traits": { "smithy.api#input": {} }
+      "traits": {
+        "smithy.api#input": {}
+      }
     },
     "com.cloudflare.containers#UpdateContainerApplicationResponse": {
       "type": "structure",
       "members": {
         "result": {
           "target": "smithy.api#Document",
-          "traits": { "com.cloudflare.protocols#envelopePayload": {} }
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {}
+          }
         }
       },
-      "traits": { "smithy.api#output": {} }
+      "traits": {
+        "smithy.api#output": {}
+      }
     },
     "com.cloudflare.containers#UpdateContainerApplication": {
       "type": "operation",
@@ -315,8 +473,12 @@
         "target": "com.cloudflare.containers#UpdateContainerApplicationResponse"
       },
       "errors": [
-        { "target": "com.cloudflare.containers#InvalidRoute" },
-        { "target": "com.cloudflare.containers#ContainerApplicationNotFound" }
+        {
+          "target": "com.cloudflare.containers#InvalidRoute"
+        },
+        {
+          "target": "com.cloudflare.containers#ContainerApplicationNotFound"
+        }
       ],
       "traits": {
         "smithy.api#http": {
@@ -331,24 +493,36 @@
       "members": {
         "account_id": {
           "target": "smithy.api#String",
-          "traits": { "smithy.api#httpLabel": {}, "smithy.api#required": {} }
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
         },
         "application_id": {
           "target": "smithy.api#String",
-          "traits": { "smithy.api#httpLabel": {}, "smithy.api#required": {} }
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
         }
       },
-      "traits": { "smithy.api#input": {} }
+      "traits": {
+        "smithy.api#input": {}
+      }
     },
     "com.cloudflare.containers#DeleteContainerApplicationResponse": {
       "type": "structure",
       "members": {
         "result": {
           "target": "smithy.api#Document",
-          "traits": { "com.cloudflare.protocols#envelopePayload": {} }
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {}
+          }
         }
       },
-      "traits": { "smithy.api#output": {} }
+      "traits": {
+        "smithy.api#output": {}
+      }
     },
     "com.cloudflare.containers#DeleteContainerApplication": {
       "type": "operation",
@@ -359,8 +533,12 @@
         "target": "com.cloudflare.containers#DeleteContainerApplicationResponse"
       },
       "errors": [
-        { "target": "com.cloudflare.containers#InvalidRoute" },
-        { "target": "com.cloudflare.containers#ContainerApplicationNotFound" }
+        {
+          "target": "com.cloudflare.containers#InvalidRoute"
+        },
+        {
+          "target": "com.cloudflare.containers#ContainerApplicationNotFound"
+        }
       ],
       "traits": {
         "smithy.api#http": {
@@ -375,37 +553,57 @@
       "members": {
         "account_id": {
           "target": "smithy.api#String",
-          "traits": { "smithy.api#httpLabel": {}, "smithy.api#required": {} }
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
         },
         "application_id": {
           "target": "smithy.api#String",
-          "traits": { "smithy.api#httpLabel": {}, "smithy.api#required": {} }
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
         },
         "description": {
           "target": "smithy.api#String",
-          "traits": { "smithy.api#required": {} }
+          "traits": {
+            "smithy.api#required": {}
+          }
         },
         "strategy": {
           "target": "smithy.api#String",
-          "traits": { "smithy.api#required": {} }
+          "traits": {
+            "smithy.api#required": {}
+          }
         },
-        "kind": { "target": "smithy.api#String" },
-        "step_percentage": { "target": "smithy.api#Integer" },
+        "kind": {
+          "target": "smithy.api#String"
+        },
+        "step_percentage": {
+          "target": "smithy.api#Integer"
+        },
         "target_configuration": {
           "target": "com.cloudflare.containers#ContainerConfiguration"
         }
       },
-      "traits": { "smithy.api#input": {} }
+      "traits": {
+        "smithy.api#input": {}
+      }
     },
     "com.cloudflare.containers#CreateContainerApplicationRolloutResponse": {
       "type": "structure",
       "members": {
         "result": {
           "target": "smithy.api#Document",
-          "traits": { "com.cloudflare.protocols#envelopePayload": {} }
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {}
+          }
         }
       },
-      "traits": { "smithy.api#output": {} }
+      "traits": {
+        "smithy.api#output": {}
+      }
     },
     "com.cloudflare.containers#CreateContainerApplicationRollout": {
       "type": "operation",
@@ -416,8 +614,12 @@
         "target": "com.cloudflare.containers#CreateContainerApplicationRolloutResponse"
       },
       "errors": [
-        { "target": "com.cloudflare.containers#InvalidRoute" },
-        { "target": "com.cloudflare.containers#ContainerApplicationNotFound" }
+        {
+          "target": "com.cloudflare.containers#InvalidRoute"
+        },
+        {
+          "target": "com.cloudflare.containers#ContainerApplicationNotFound"
+        }
       ],
       "traits": {
         "smithy.api#http": {
@@ -432,20 +634,29 @@
       "members": {
         "account_id": {
           "target": "smithy.api#String",
-          "traits": { "smithy.api#httpLabel": {}, "smithy.api#required": {} }
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
         }
       },
-      "traits": { "smithy.api#input": {} }
+      "traits": {
+        "smithy.api#input": {}
+      }
     },
     "com.cloudflare.containers#GetContainerIdentityResponse": {
       "type": "structure",
       "members": {
         "result": {
           "target": "smithy.api#Document",
-          "traits": { "com.cloudflare.protocols#envelopePayload": {} }
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {}
+          }
         }
       },
-      "traits": { "smithy.api#output": {} }
+      "traits": {
+        "smithy.api#output": {}
+      }
     },
     "com.cloudflare.containers#GetContainerIdentity": {
       "type": "operation",
@@ -455,7 +666,11 @@
       "output": {
         "target": "com.cloudflare.containers#GetContainerIdentityResponse"
       },
-      "errors": [{ "target": "com.cloudflare.containers#InvalidRoute" }],
+      "errors": [
+        {
+          "target": "com.cloudflare.containers#InvalidRoute"
+        }
+      ],
       "traits": {
         "smithy.api#http": {
           "method": "GET",
@@ -470,32 +685,48 @@
       "members": {
         "account_id": {
           "target": "smithy.api#String",
-          "traits": { "smithy.api#httpLabel": {}, "smithy.api#required": {} }
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
         },
         "registry_id": {
           "target": "smithy.api#String",
-          "traits": { "smithy.api#httpLabel": {}, "smithy.api#required": {} }
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
         },
         "permissions": {
           "target": "com.cloudflare.containers#StringList",
-          "traits": { "smithy.api#required": {} }
+          "traits": {
+            "smithy.api#required": {}
+          }
         },
         "expiration_minutes": {
           "target": "smithy.api#Integer",
-          "traits": { "smithy.api#required": {} }
+          "traits": {
+            "smithy.api#required": {}
+          }
         }
       },
-      "traits": { "smithy.api#input": {} }
+      "traits": {
+        "smithy.api#input": {}
+      }
     },
     "com.cloudflare.containers#CreateContainerRegistryCredentialsResponse": {
       "type": "structure",
       "members": {
         "result": {
           "target": "smithy.api#Document",
-          "traits": { "com.cloudflare.protocols#envelopePayload": {} }
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {}
+          }
         }
       },
-      "traits": { "smithy.api#output": {} }
+      "traits": {
+        "smithy.api#output": {}
+      }
     },
     "com.cloudflare.containers#CreateContainerRegistryCredentials": {
       "type": "operation",
@@ -505,13 +736,39 @@
       "output": {
         "target": "com.cloudflare.containers#CreateContainerRegistryCredentialsResponse"
       },
-      "errors": [{ "target": "com.cloudflare.containers#InvalidRoute" }],
+      "errors": [
+        {
+          "target": "com.cloudflare.containers#InvalidRoute"
+        }
+      ],
       "traits": {
         "smithy.api#http": {
           "method": "POST",
           "uri": "/accounts/{account_id}/containers/registries/{registry_id}/credentials",
           "code": 200
         }
+      }
+    },
+    "com.cloudflare.containers#DurableObjectNotContainerEnabled": {
+      "type": "structure",
+      "members": {
+        "code": {
+          "target": "smithy.api#Integer"
+        },
+        "message": {
+          "target": "smithy.api#String"
+        }
+      },
+      "traits": {
+        "smithy.api#error": "client",
+        "com.cloudflare.protocols#errorMatchers": [
+          {
+            "code": 1607,
+            "message": {
+              "includes": "DURABLE_OBJECT_NOT_CONTAINER_ENABLED"
+            }
+          }
+        ]
       }
     }
   }
