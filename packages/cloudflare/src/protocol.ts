@@ -154,13 +154,23 @@ const resolveNode = (ast: AST.AST): AST.AST => {
   return ast;
 };
 
+/** Binary/opaque values that must never be treated as key-value objects. */
+const isOpaqueValue = (v: unknown): boolean =>
+  v instanceof Blob ||
+  v instanceof File ||
+  v instanceof ArrayBuffer ||
+  v instanceof Uint8Array ||
+  v instanceof Date;
+
 /** Deep-rename keys via a plain dictionary (see `T.KeyDictionary`). */
 const mapKeysByDictionary = (
   dict: Record<string, string>,
   value: unknown,
   direction: "encode" | "decode",
 ): unknown => {
-  if (value === null || typeof value !== "object") return value;
+  if (value === null || typeof value !== "object" || isOpaqueValue(value)) {
+    return value;
+  }
   if (Array.isArray(value)) {
     return value.map((v) => mapKeysByDictionary(dict, v, direction));
   }
@@ -191,7 +201,12 @@ const mapKeys = (
   direction: "encode" | "decode",
   fallback?: Record<string, string>,
 ): unknown => {
-  if (value === null || value === undefined || typeof value !== "object") {
+  if (
+    value === null ||
+    value === undefined ||
+    typeof value !== "object" ||
+    isOpaqueValue(value)
+  ) {
     return value;
   }
   const dict =
@@ -485,20 +500,40 @@ const encode = ({
       // appends under its own filename. A whole-body member (T.HttpBody) that
       // is a record of files becomes one part per entry (worker asset upload:
       // { <hash>: File }).
+      // Mirror distilled's buildFormData exactly: File/Blob → binary part
+      // (filename = File.name), array of files → each appended, object →
+      // JSON string (matches wrangler's formData.set(k, JSON.stringify(v))),
+      // primitive → string.
       const form = new FormData();
       const parts =
         rawBody !== undefined && typeof rawBody === "object"
           ? (rawBody as Record<string, unknown>)
           : body;
-      for (const [name, value] of Object.entries(parts)) {
-        form.append(
-          name,
-          typeof value === "string"
-            ? value
-            : value instanceof Blob
-              ? value // named single-file part (e.g. Pages `_worker.bundle`)
-              : new Blob([JSON.stringify(value)], { type: "application/json" }),
-        );
+      const isFileOrBlob = (v: unknown): v is Blob =>
+        v instanceof Blob || v instanceof File;
+      for (const [key, value] of Object.entries(parts)) {
+        if (value === undefined || value === null) continue;
+        if (isFileOrBlob(value)) {
+          form.append(key, value, value instanceof File ? value.name : key);
+        } else if (
+          Array.isArray(value) &&
+          value.length > 0 &&
+          isFileOrBlob(value[0])
+        ) {
+          for (const file of value as Blob[]) {
+            if (isFileOrBlob(file)) {
+              form.append(
+                file instanceof File ? file.name : key,
+                file,
+                file instanceof File ? file.name : undefined,
+              );
+            }
+          }
+        } else if (typeof value === "object") {
+          form.append(key, JSON.stringify(value));
+        } else {
+          form.append(key, String(value));
+        }
       }
       for (const f of files) {
         const filename = (f as File).name ?? "file";
