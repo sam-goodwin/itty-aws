@@ -17,6 +17,7 @@ import {
   type PayloadParser,
 } from "../eventstream/parser.ts";
 import {
+  getEventSchema,
   getHttpHeader,
   getHttpPrefixHeaders,
   getHttpQuery,
@@ -116,6 +117,7 @@ export const restXmlProtocol: Protocol = (
     type: AST.AST;
     isStreaming: boolean;
     isEventStream: boolean;
+    eventSchema?: S.Schema<unknown>;
     isRawString: boolean;
     xmlName?: string;
   };
@@ -146,11 +148,13 @@ export const restXmlProtocol: Protocol = (
       prefixHeaderProps.push({ name, prefix: prefixHeader.toLowerCase() });
     } else if (hasHttpPayload(prop)) {
       const unwrapped = unwrapUnion(prop.type);
+      const isEventStream = isOutputEventStream(prop.type);
       outputPayloadProp = {
         name,
         type: prop.type,
         isStreaming: isStreamingType(prop.type),
-        isEventStream: isOutputEventStream(prop.type),
+        isEventStream,
+        eventSchema: isEventStream ? getEventSchema(prop.type) : undefined,
         isRawString: unwrapped._tag === "Union" || unwrapped._tag === "String",
         // Use property name as fallback when type annotations aren't preserved
         // (e.g., when using Schema.pipe to add HttpPayload annotation)
@@ -262,6 +266,7 @@ export const restXmlProtocol: Protocol = (
           result[outputPayloadProp.name] = parseEventStreamToUnion(
             response.body as ReadableStream<Uint8Array>,
             xmlPayloadParser,
+            outputPayloadProp.eventSchema,
           );
         } else {
           // Raw streaming output (blob)

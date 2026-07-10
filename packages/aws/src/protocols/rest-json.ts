@@ -278,9 +278,13 @@ export const restJson1Protocol: Protocol = (
       // Handle streaming output payload - return early
       if (outputPayloadProp?.isStreaming) {
         if (outputPayloadProp.isEventStream && response.body) {
-          // Parse event stream - converts raw bytes to typed union events
+          // Parse event stream - converts raw bytes to typed union events,
+          // decoded through the event schema so blob/timestamp members match
+          // the generated types
           result[outputPayloadProp.name] = parseEventStreamToUnion(
             response.body as ReadableStream<Uint8Array>,
+            undefined,
+            outputPayloadProp.eventSchema,
           );
         } else {
           // Raw streaming output (blob)
