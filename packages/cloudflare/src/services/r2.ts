@@ -262,7 +262,9 @@ export const CreateBucketRequest = /*@__PURE__*/ S.suspend(() =>
     ),
     name: S.String,
     locationHint: S.optional(BucketsCreateRequestLocationHint),
-    storageClass: S.optional(BucketsCreateRequestStorageClass),
+    storageClass: S.optional(
+      BucketsCreateRequestStorageClass.pipe(T.Header("cf-r2-storage-class")),
+    ),
   })
     .pipe(
       T.Http({
