@@ -3177,16 +3177,16 @@
             "smithy.api#required": {}
           }
         },
-        "_CF_WORKER_BODY_PART_": {
+        "CF_WORKER_BODY_PART": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpHeader": "\"CF-WORKER-BODY-PART\""
+            "smithy.api#httpHeader": "CF-WORKER-BODY-PART"
           }
         },
-        "_CF_WORKER_MAIN_MODULE_PART_": {
+        "CF_WORKER_MAIN_MODULE_PART": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpHeader": "\"CF-WORKER-MAIN-MODULE-PART\""
+            "smithy.api#httpHeader": "CF-WORKER-MAIN-MODULE-PART"
           }
         }
       },

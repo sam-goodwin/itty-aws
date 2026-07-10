@@ -83,6 +83,11 @@
           "target": "com.cloudflare.r2#InvalidRoute"
         }
       ]
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.r2#PutBucketLockRequest/members/cf_r2_jurisdiction",
+      "path": "/shapes/com.cloudflare.r2#PutBucketLockRequest/members/jurisdiction"
     }
   ]
 }

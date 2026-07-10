@@ -51,12 +51,12 @@ export class ZoneTagResourceNotFound extends T.applyErrorMatchers(
 export interface DeleteAccountTagRequest {
   /** Identifier. */
   accountId: string;
-  IfMatch_?: string;
+  ifMatch?: string;
 }
 export const DeleteAccountTagRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-    IfMatch_: S.optional(S.String.pipe(T.Header('"If-Match"'))),
+    ifMatch: S.optional(S.String.pipe(T.Header("If-Match"))),
   })
     .pipe(
       T.Http({
@@ -80,12 +80,12 @@ export const DeleteAccountTagResponse = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteZoneTagRequest {
   /** Zone ID is required only for zone-level resources */
   zoneId: string;
-  IfMatch_?: string;
+  ifMatch?: string;
 }
 export const DeleteZoneTagRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-    IfMatch_: S.optional(S.String.pipe(T.Header('"If-Match"'))),
+    ifMatch: S.optional(S.String.pipe(T.Header("If-Match"))),
   })
     .pipe(T.Http({ method: "DELETE", uri: "/zones/{zone_id}/tags", code: 200 }))
     .pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -553,15 +553,15 @@ export const AccountTagsUpdateRequestBody = /*@__PURE__*/ S.Unknown.pipe(
 export interface PutAccountTagRequest {
   /** Identifier. */
   accountId: string;
-  IfMatch_?: string;
   /** Request body schema for setting tags on account-level resources. */
   body: AccountTagsUpdateRequestBody;
+  ifMatch?: string;
 }
 export const PutAccountTagRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-    IfMatch_: S.optional(S.String.pipe(T.Header('"If-Match"'))),
     body: AccountTagsUpdateRequestBody.pipe(T.HttpBody()),
+    ifMatch: S.optional(S.String.pipe(T.Header("If-Match"))),
   })
     .pipe(
       T.Http({ method: "PUT", uri: "/accounts/{account_id}/tags", code: 200 }),
@@ -717,15 +717,15 @@ export const ZoneTagsUpdateRequestBody = /*@__PURE__*/ S.Unknown.pipe(
 export interface PutZoneTagRequest {
   /** Zone ID is required only for zone-level resources */
   zoneId: string;
-  IfMatch_?: string;
   /** Request body schema for setting tags on zone-level resources. */
   body: ZoneTagsUpdateRequestBody;
+  ifMatch?: string;
 }
 export const PutZoneTagRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-    IfMatch_: S.optional(S.String.pipe(T.Header('"If-Match"'))),
     body: ZoneTagsUpdateRequestBody.pipe(T.HttpBody()),
+    ifMatch: S.optional(S.String.pipe(T.Header("If-Match"))),
   })
     .pipe(T.Http({ method: "PUT", uri: "/zones/{zone_id}/tags", code: 200 }))
     .pipe(T.KeyDictionary(KEY_DICTIONARY)),

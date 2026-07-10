@@ -9432,7 +9432,7 @@ export interface AccessApplicationsCreateForAccountRequestBodyInfrastructureAppl
   /** An empty object which matches on all users. */
   everyone?: unknown;
   externalEvaluation?: AccessApplicationsCreateForAccountRequestBodyInfrastructureApplicationPoliciesItemIncludeItemExternalEvaluation;
-  GithubOrganization_?: AccessApplicationsCreateForAccountRequestBodyInfrastructureApplicationPoliciesItemIncludeItemGithubOrganization;
+  githubOrganization?: AccessApplicationsCreateForAccountRequestBodyInfrastructureApplicationPoliciesItemIncludeItemGithubOrganization;
   gsuite?: AccessApplicationsCreateForAccountRequestBodyInfrastructureApplicationPoliciesItemIncludeItemGsuite;
   loginMethod?: AccessApplicationsCreateForAccountRequestBodyInfrastructureApplicationPoliciesItemIncludeItemLoginMethod;
   ipList?: AccessApplicationsCreateForAccountRequestBodyInfrastructureApplicationPoliciesItemIncludeItemIpList;
@@ -9500,9 +9500,9 @@ export const AccessApplicationsCreateForAccountRequestBodyInfrastructureApplicat
           T.Body("external_evaluation"),
         ),
       ),
-      GithubOrganization_: S.optional(
+      githubOrganization: S.optional(
         AccessApplicationsCreateForAccountRequestBodyInfrastructureApplicationPoliciesItemIncludeItemGithubOrganization.pipe(
-          T.Body('"github-organization"'),
+          T.Body("github-organization"),
         ),
       ),
       gsuite: S.optional(
@@ -13225,7 +13225,7 @@ export interface AccessApplicationsCreateForAccountResponsePoliciesItemExcludeIt
   /** An empty object which matches on all users. */
   everyone?: unknown;
   externalEvaluation?: AccessApplicationsCreateForAccountResponsePoliciesItemExcludeItemExternalEvaluation;
-  GithubOrganization_?: AccessApplicationsCreateForAccountResponsePoliciesItemExcludeItemGithubOrganization;
+  githubOrganization?: AccessApplicationsCreateForAccountResponsePoliciesItemExcludeItemGithubOrganization;
   gsuite?: AccessApplicationsCreateForAccountResponsePoliciesItemExcludeItemGsuite;
   loginMethod?: AccessApplicationsCreateForAccountResponsePoliciesItemExcludeItemLoginMethod;
   ipList?: AccessApplicationsCreateForAccountResponsePoliciesItemExcludeItemIpList;
@@ -13293,9 +13293,9 @@ export const AccessApplicationsCreateForAccountResponsePoliciesItemExcludeItem =
           T.Body("external_evaluation"),
         ),
       ),
-      GithubOrganization_: S.optional(
+      githubOrganization: S.optional(
         AccessApplicationsCreateForAccountResponsePoliciesItemExcludeItemGithubOrganization.pipe(
-          T.Body('"github-organization"'),
+          T.Body("github-organization"),
         ),
       ),
       gsuite: S.optional(
@@ -19803,7 +19803,7 @@ export interface AccessApplicationsCreateForZoneRequestBodyInfrastructureApplica
   /** An empty object which matches on all users. */
   everyone?: unknown;
   externalEvaluation?: AccessApplicationsCreateForZoneRequestBodyInfrastructureApplicationPoliciesItemIncludeItemExternalEvaluation;
-  GithubOrganization_?: AccessApplicationsCreateForZoneRequestBodyInfrastructureApplicationPoliciesItemIncludeItemGithubOrganization;
+  githubOrganization?: AccessApplicationsCreateForZoneRequestBodyInfrastructureApplicationPoliciesItemIncludeItemGithubOrganization;
   gsuite?: AccessApplicationsCreateForZoneRequestBodyInfrastructureApplicationPoliciesItemIncludeItemGsuite;
   loginMethod?: AccessApplicationsCreateForZoneRequestBodyInfrastructureApplicationPoliciesItemIncludeItemLoginMethod;
   ipList?: AccessApplicationsCreateForZoneRequestBodyInfrastructureApplicationPoliciesItemIncludeItemIpList;
@@ -19871,9 +19871,9 @@ export const AccessApplicationsCreateForZoneRequestBodyInfrastructureApplication
           T.Body("external_evaluation"),
         ),
       ),
-      GithubOrganization_: S.optional(
+      githubOrganization: S.optional(
         AccessApplicationsCreateForZoneRequestBodyInfrastructureApplicationPoliciesItemIncludeItemGithubOrganization.pipe(
-          T.Body('"github-organization"'),
+          T.Body("github-organization"),
         ),
       ),
       gsuite: S.optional(
@@ -23596,7 +23596,7 @@ export interface AccessApplicationsCreateForZoneResponsePoliciesItemExcludeItem 
   /** An empty object which matches on all users. */
   everyone?: unknown;
   externalEvaluation?: AccessApplicationsCreateForZoneResponsePoliciesItemExcludeItemExternalEvaluation;
-  GithubOrganization_?: AccessApplicationsCreateForZoneResponsePoliciesItemExcludeItemGithubOrganization;
+  githubOrganization?: AccessApplicationsCreateForZoneResponsePoliciesItemExcludeItemGithubOrganization;
   gsuite?: AccessApplicationsCreateForZoneResponsePoliciesItemExcludeItemGsuite;
   loginMethod?: AccessApplicationsCreateForZoneResponsePoliciesItemExcludeItemLoginMethod;
   ipList?: AccessApplicationsCreateForZoneResponsePoliciesItemExcludeItemIpList;
@@ -23664,9 +23664,9 @@ export const AccessApplicationsCreateForZoneResponsePoliciesItemExcludeItem =
           T.Body("external_evaluation"),
         ),
       ),
-      GithubOrganization_: S.optional(
+      githubOrganization: S.optional(
         AccessApplicationsCreateForZoneResponsePoliciesItemExcludeItemGithubOrganization.pipe(
-          T.Body('"github-organization"'),
+          T.Body("github-organization"),
         ),
       ),
       gsuite: S.optional(
@@ -25735,7 +25735,7 @@ export interface AccessApplicationsPoliciesCreateForAccountResponseExcludeItem {
   /** An empty object which matches on all users. */
   everyone?: unknown;
   externalEvaluation?: AccessApplicationsPoliciesCreateForAccountResponseExcludeItemExternalEvaluation;
-  GithubOrganization_?: AccessApplicationsPoliciesCreateForAccountResponseExcludeItemGithubOrganization;
+  githubOrganization?: AccessApplicationsPoliciesCreateForAccountResponseExcludeItemGithubOrganization;
   gsuite?: AccessApplicationsPoliciesCreateForAccountResponseExcludeItemGsuite;
   loginMethod?: AccessApplicationsPoliciesCreateForAccountResponseExcludeItemLoginMethod;
   ipList?: AccessApplicationsPoliciesCreateForAccountResponseExcludeItemIpList;
@@ -25803,9 +25803,9 @@ export const AccessApplicationsPoliciesCreateForAccountResponseExcludeItem =
           T.Body("external_evaluation"),
         ),
       ),
-      GithubOrganization_: S.optional(
+      githubOrganization: S.optional(
         AccessApplicationsPoliciesCreateForAccountResponseExcludeItemGithubOrganization.pipe(
-          T.Body('"github-organization"'),
+          T.Body("github-organization"),
         ),
       ),
       gsuite: S.optional(
@@ -26977,7 +26977,7 @@ export interface AccessApplicationsPoliciesCreateForZoneResponseExcludeItem {
   /** An empty object which matches on all users. */
   everyone?: unknown;
   externalEvaluation?: AccessApplicationsPoliciesCreateForZoneResponseExcludeItemExternalEvaluation;
-  GithubOrganization_?: AccessApplicationsPoliciesCreateForZoneResponseExcludeItemGithubOrganization;
+  githubOrganization?: AccessApplicationsPoliciesCreateForZoneResponseExcludeItemGithubOrganization;
   gsuite?: AccessApplicationsPoliciesCreateForZoneResponseExcludeItemGsuite;
   loginMethod?: AccessApplicationsPoliciesCreateForZoneResponseExcludeItemLoginMethod;
   ipList?: AccessApplicationsPoliciesCreateForZoneResponseExcludeItemIpList;
@@ -27045,9 +27045,9 @@ export const AccessApplicationsPoliciesCreateForZoneResponseExcludeItem =
           T.Body("external_evaluation"),
         ),
       ),
-      GithubOrganization_: S.optional(
+      githubOrganization: S.optional(
         AccessApplicationsPoliciesCreateForZoneResponseExcludeItemGithubOrganization.pipe(
-          T.Body('"github-organization"'),
+          T.Body("github-organization"),
         ),
       ),
       gsuite: S.optional(
@@ -27912,7 +27912,7 @@ export interface AccessApplicationsPolicyTestsCreateRequestPoliciesItemIncludeIt
   /** An empty object which matches on all users. */
   everyone?: unknown;
   externalEvaluation?: AccessApplicationsPolicyTestsCreateRequestPoliciesItemIncludeItemExternalEvaluation;
-  GithubOrganization_?: AccessApplicationsPolicyTestsCreateRequestPoliciesItemIncludeItemGithubOrganization;
+  githubOrganization?: AccessApplicationsPolicyTestsCreateRequestPoliciesItemIncludeItemGithubOrganization;
   gsuite?: AccessApplicationsPolicyTestsCreateRequestPoliciesItemIncludeItemGsuite;
   loginMethod?: AccessApplicationsPolicyTestsCreateRequestPoliciesItemIncludeItemLoginMethod;
   ipList?: AccessApplicationsPolicyTestsCreateRequestPoliciesItemIncludeItemIpList;
@@ -27980,9 +27980,9 @@ export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemIncludeItem =
           T.Body("external_evaluation"),
         ),
       ),
-      GithubOrganization_: S.optional(
+      githubOrganization: S.optional(
         AccessApplicationsPolicyTestsCreateRequestPoliciesItemIncludeItemGithubOrganization.pipe(
-          T.Body('"github-organization"'),
+          T.Body("github-organization"),
         ),
       ),
       gsuite: S.optional(
@@ -29282,7 +29282,7 @@ export interface AccessGroupsCreateForAccountRequestIncludeItem {
   /** An empty object which matches on all users. */
   everyone?: unknown;
   externalEvaluation?: AccessGroupsCreateForAccountRequestIncludeItemExternalEvaluation;
-  GithubOrganization_?: AccessGroupsCreateForAccountRequestIncludeItemGithubOrganization;
+  githubOrganization?: AccessGroupsCreateForAccountRequestIncludeItemGithubOrganization;
   gsuite?: AccessGroupsCreateForAccountRequestIncludeItemGsuite;
   loginMethod?: AccessGroupsCreateForAccountRequestIncludeItemLoginMethod;
   ipList?: AccessGroupsCreateForAccountRequestIncludeItemIpList;
@@ -29344,9 +29344,9 @@ export const AccessGroupsCreateForAccountRequestIncludeItem =
           T.Body("external_evaluation"),
         ),
       ),
-      GithubOrganization_: S.optional(
+      githubOrganization: S.optional(
         AccessGroupsCreateForAccountRequestIncludeItemGithubOrganization.pipe(
-          T.Body('"github-organization"'),
+          T.Body("github-organization"),
         ),
       ),
       gsuite: S.optional(AccessGroupsCreateForAccountRequestIncludeItemGsuite),
@@ -30097,7 +30097,7 @@ export interface AccessGroupsCreateForAccountResponseExcludeItem {
   /** An empty object which matches on all users. */
   everyone?: unknown;
   externalEvaluation?: AccessGroupsCreateForAccountResponseExcludeItemExternalEvaluation;
-  GithubOrganization_?: AccessGroupsCreateForAccountResponseExcludeItemGithubOrganization;
+  githubOrganization?: AccessGroupsCreateForAccountResponseExcludeItemGithubOrganization;
   gsuite?: AccessGroupsCreateForAccountResponseExcludeItemGsuite;
   loginMethod?: AccessGroupsCreateForAccountResponseExcludeItemLoginMethod;
   ipList?: AccessGroupsCreateForAccountResponseExcludeItemIpList;
@@ -30159,9 +30159,9 @@ export const AccessGroupsCreateForAccountResponseExcludeItem =
           T.Body("external_evaluation"),
         ),
       ),
-      GithubOrganization_: S.optional(
+      githubOrganization: S.optional(
         AccessGroupsCreateForAccountResponseExcludeItemGithubOrganization.pipe(
-          T.Body('"github-organization"'),
+          T.Body("github-organization"),
         ),
       ),
       gsuite: S.optional(AccessGroupsCreateForAccountResponseExcludeItemGsuite),
@@ -31055,7 +31055,7 @@ export interface AccessGroupsCreateForZoneRequestIncludeItem {
   /** An empty object which matches on all users. */
   everyone?: unknown;
   externalEvaluation?: AccessGroupsCreateForZoneRequestIncludeItemExternalEvaluation;
-  GithubOrganization_?: AccessGroupsCreateForZoneRequestIncludeItemGithubOrganization;
+  githubOrganization?: AccessGroupsCreateForZoneRequestIncludeItemGithubOrganization;
   gsuite?: AccessGroupsCreateForZoneRequestIncludeItemGsuite;
   loginMethod?: AccessGroupsCreateForZoneRequestIncludeItemLoginMethod;
   ipList?: AccessGroupsCreateForZoneRequestIncludeItemIpList;
@@ -31115,9 +31115,9 @@ export const AccessGroupsCreateForZoneRequestIncludeItem =
           T.Body("external_evaluation"),
         ),
       ),
-      GithubOrganization_: S.optional(
+      githubOrganization: S.optional(
         AccessGroupsCreateForZoneRequestIncludeItemGithubOrganization.pipe(
-          T.Body('"github-organization"'),
+          T.Body("github-organization"),
         ),
       ),
       gsuite: S.optional(AccessGroupsCreateForZoneRequestIncludeItemGsuite),
@@ -31868,7 +31868,7 @@ export interface AccessGroupsCreateForZoneResponseExcludeItem {
   /** An empty object which matches on all users. */
   everyone?: unknown;
   externalEvaluation?: AccessGroupsCreateForZoneResponseExcludeItemExternalEvaluation;
-  GithubOrganization_?: AccessGroupsCreateForZoneResponseExcludeItemGithubOrganization;
+  githubOrganization?: AccessGroupsCreateForZoneResponseExcludeItemGithubOrganization;
   gsuite?: AccessGroupsCreateForZoneResponseExcludeItemGsuite;
   loginMethod?: AccessGroupsCreateForZoneResponseExcludeItemLoginMethod;
   ipList?: AccessGroupsCreateForZoneResponseExcludeItemIpList;
@@ -31928,9 +31928,9 @@ export const AccessGroupsCreateForZoneResponseExcludeItem =
           T.Body("external_evaluation"),
         ),
       ),
-      GithubOrganization_: S.optional(
+      githubOrganization: S.optional(
         AccessGroupsCreateForZoneResponseExcludeItemGithubOrganization.pipe(
-          T.Body('"github-organization"'),
+          T.Body("github-organization"),
         ),
       ),
       gsuite: S.optional(AccessGroupsCreateForZoneResponseExcludeItemGsuite),
@@ -33011,7 +33011,7 @@ export interface AccessPoliciesCreateRequestIncludeItem {
   /** An empty object which matches on all users. */
   everyone?: unknown;
   externalEvaluation?: AccessPoliciesCreateRequestIncludeItemExternalEvaluation;
-  GithubOrganization_?: AccessPoliciesCreateRequestIncludeItemGithubOrganization;
+  githubOrganization?: AccessPoliciesCreateRequestIncludeItemGithubOrganization;
   gsuite?: AccessPoliciesCreateRequestIncludeItemGsuite;
   loginMethod?: AccessPoliciesCreateRequestIncludeItemLoginMethod;
   ipList?: AccessPoliciesCreateRequestIncludeItemIpList;
@@ -33071,9 +33071,9 @@ export const AccessPoliciesCreateRequestIncludeItem = /*@__PURE__*/ S.suspend(
           T.Body("external_evaluation"),
         ),
       ),
-      GithubOrganization_: S.optional(
+      githubOrganization: S.optional(
         AccessPoliciesCreateRequestIncludeItemGithubOrganization.pipe(
-          T.Body('"github-organization"'),
+          T.Body("github-organization"),
         ),
       ),
       gsuite: S.optional(AccessPoliciesCreateRequestIncludeItemGsuite),
@@ -34089,7 +34089,7 @@ export interface AccessPoliciesCreateResponseExcludeItem {
   /** An empty object which matches on all users. */
   everyone?: unknown;
   externalEvaluation?: AccessPoliciesCreateResponseExcludeItemExternalEvaluation;
-  GithubOrganization_?: AccessPoliciesCreateResponseExcludeItemGithubOrganization;
+  githubOrganization?: AccessPoliciesCreateResponseExcludeItemGithubOrganization;
   gsuite?: AccessPoliciesCreateResponseExcludeItemGsuite;
   loginMethod?: AccessPoliciesCreateResponseExcludeItemLoginMethod;
   ipList?: AccessPoliciesCreateResponseExcludeItemIpList;
@@ -34149,9 +34149,9 @@ export const AccessPoliciesCreateResponseExcludeItem = /*@__PURE__*/ S.suspend(
           T.Body("external_evaluation"),
         ),
       ),
-      GithubOrganization_: S.optional(
+      githubOrganization: S.optional(
         AccessPoliciesCreateResponseExcludeItemGithubOrganization.pipe(
-          T.Body('"github-organization"'),
+          T.Body("github-organization"),
         ),
       ),
       gsuite: S.optional(AccessPoliciesCreateResponseExcludeItemGsuite),
@@ -37162,12 +37162,12 @@ export const DexCommandsCreateRequestCommandsItemType = /*@__PURE__*/ S.String;
 
 export interface DexCommandsCreateRequestCommandsItemArgsWARPDiagArgs {
   /** Test an IP address from all included or excluded ranges. Essentially the same as running 'route get <ip>' and collecting the results. This option may increase the time taken to collect the warp-diag. */
-  TestAllRoutes_?: boolean;
+  testAllRoutes?: boolean;
 }
 export const DexCommandsCreateRequestCommandsItemArgsWARPDiagArgs =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      TestAllRoutes_: S.optional(S.Boolean.pipe(T.Body('"test-all-routes"'))),
+      testAllRoutes: S.optional(S.Boolean.pipe(T.Body("test-all-routes"))),
     }),
   ).annotate({
     identifier: "DexCommandsCreateRequestCommandsItemArgsWARPDiagArgs",
@@ -37175,20 +37175,18 @@ export const DexCommandsCreateRequestCommandsItemArgsWARPDiagArgs =
 
 export interface DexCommandsCreateRequestCommandsItemArgsPCAPArgs {
   /** Maximum file size (in MB) for the capture file. If the capture artifact exceeds the specified max file size, it will NOT be uploaded. */
-  MaxFileSizeMb_?: number;
+  maxFileSizeMb?: number;
   /** Maximum number of bytes to save for each packet */
-  PacketSizeBytes_?: number;
+  packetSizeBytes?: number;
   /** Limit on capture duration (in minutes) */
-  TimeLimitMin_?: number;
+  timeLimitMin?: number;
 }
 export const DexCommandsCreateRequestCommandsItemArgsPCAPArgs =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      MaxFileSizeMb_: S.optional(S.Number.pipe(T.Body('"max-file-size-mb"'))),
-      PacketSizeBytes_: S.optional(
-        S.Number.pipe(T.Body('"packet-size-bytes"')),
-      ),
-      TimeLimitMin_: S.optional(S.Number.pipe(T.Body('"time-limit-min"'))),
+      maxFileSizeMb: S.optional(S.Number.pipe(T.Body("max-file-size-mb"))),
+      packetSizeBytes: S.optional(S.Number.pipe(T.Body("packet-size-bytes"))),
+      timeLimitMin: S.optional(S.Number.pipe(T.Body("time-limit-min"))),
     }),
   ).annotate({
     identifier: "DexCommandsCreateRequestCommandsItemArgsPCAPArgs",
@@ -37228,8 +37226,8 @@ export type DexCommandsCreateRequestCommandsItemArgs =
 export const DexCommandsCreateRequestCommandsItemArgs =
   /*@__PURE__*/ S.Unknown.pipe(
     T.UnionCases([
-      ["TestAllRoutes_"],
-      ["MaxFileSizeMb_", "PacketSizeBytes_", "TimeLimitMin_"],
+      ["testAllRoutes"],
+      ["maxFileSizeMb", "packetSizeBytes", "timeLimitMin"],
       ["interfaces"],
     ]),
   );
@@ -50428,7 +50426,7 @@ export interface AccessApplicationsGetForAccountResponsePoliciesItemExcludeItem 
   /** An empty object which matches on all users. */
   everyone?: unknown;
   externalEvaluation?: AccessApplicationsGetForAccountResponsePoliciesItemExcludeItemExternalEvaluation;
-  GithubOrganization_?: AccessApplicationsGetForAccountResponsePoliciesItemExcludeItemGithubOrganization;
+  githubOrganization?: AccessApplicationsGetForAccountResponsePoliciesItemExcludeItemGithubOrganization;
   gsuite?: AccessApplicationsGetForAccountResponsePoliciesItemExcludeItemGsuite;
   loginMethod?: AccessApplicationsGetForAccountResponsePoliciesItemExcludeItemLoginMethod;
   ipList?: AccessApplicationsGetForAccountResponsePoliciesItemExcludeItemIpList;
@@ -50496,9 +50494,9 @@ export const AccessApplicationsGetForAccountResponsePoliciesItemExcludeItem =
           T.Body("external_evaluation"),
         ),
       ),
-      GithubOrganization_: S.optional(
+      githubOrganization: S.optional(
         AccessApplicationsGetForAccountResponsePoliciesItemExcludeItemGithubOrganization.pipe(
-          T.Body('"github-organization"'),
+          T.Body("github-organization"),
         ),
       ),
       gsuite: S.optional(
@@ -52639,7 +52637,7 @@ export interface AccessApplicationsGetForZoneResponsePoliciesItemExcludeItem {
   /** An empty object which matches on all users. */
   everyone?: unknown;
   externalEvaluation?: AccessApplicationsGetForZoneResponsePoliciesItemExcludeItemExternalEvaluation;
-  GithubOrganization_?: AccessApplicationsGetForZoneResponsePoliciesItemExcludeItemGithubOrganization;
+  githubOrganization?: AccessApplicationsGetForZoneResponsePoliciesItemExcludeItemGithubOrganization;
   gsuite?: AccessApplicationsGetForZoneResponsePoliciesItemExcludeItemGsuite;
   loginMethod?: AccessApplicationsGetForZoneResponsePoliciesItemExcludeItemLoginMethod;
   ipList?: AccessApplicationsGetForZoneResponsePoliciesItemExcludeItemIpList;
@@ -52707,9 +52705,9 @@ export const AccessApplicationsGetForZoneResponsePoliciesItemExcludeItem =
           T.Body("external_evaluation"),
         ),
       ),
-      GithubOrganization_: S.optional(
+      githubOrganization: S.optional(
         AccessApplicationsGetForZoneResponsePoliciesItemExcludeItemGithubOrganization.pipe(
-          T.Body('"github-organization"'),
+          T.Body("github-organization"),
         ),
       ),
       gsuite: S.optional(
@@ -54587,7 +54585,7 @@ export interface AccessApplicationsPoliciesGetForAccountResponseExcludeItem {
   /** An empty object which matches on all users. */
   everyone?: unknown;
   externalEvaluation?: AccessApplicationsPoliciesGetForAccountResponseExcludeItemExternalEvaluation;
-  GithubOrganization_?: AccessApplicationsPoliciesGetForAccountResponseExcludeItemGithubOrganization;
+  githubOrganization?: AccessApplicationsPoliciesGetForAccountResponseExcludeItemGithubOrganization;
   gsuite?: AccessApplicationsPoliciesGetForAccountResponseExcludeItemGsuite;
   loginMethod?: AccessApplicationsPoliciesGetForAccountResponseExcludeItemLoginMethod;
   ipList?: AccessApplicationsPoliciesGetForAccountResponseExcludeItemIpList;
@@ -54655,9 +54653,9 @@ export const AccessApplicationsPoliciesGetForAccountResponseExcludeItem =
           T.Body("external_evaluation"),
         ),
       ),
-      GithubOrganization_: S.optional(
+      githubOrganization: S.optional(
         AccessApplicationsPoliciesGetForAccountResponseExcludeItemGithubOrganization.pipe(
-          T.Body('"github-organization"'),
+          T.Body("github-organization"),
         ),
       ),
       gsuite: S.optional(
@@ -55642,7 +55640,7 @@ export interface AccessApplicationsPoliciesGetForZoneResponseExcludeItem {
   /** An empty object which matches on all users. */
   everyone?: unknown;
   externalEvaluation?: AccessApplicationsPoliciesGetForZoneResponseExcludeItemExternalEvaluation;
-  GithubOrganization_?: AccessApplicationsPoliciesGetForZoneResponseExcludeItemGithubOrganization;
+  githubOrganization?: AccessApplicationsPoliciesGetForZoneResponseExcludeItemGithubOrganization;
   gsuite?: AccessApplicationsPoliciesGetForZoneResponseExcludeItemGsuite;
   loginMethod?: AccessApplicationsPoliciesGetForZoneResponseExcludeItemLoginMethod;
   ipList?: AccessApplicationsPoliciesGetForZoneResponseExcludeItemIpList;
@@ -55710,9 +55708,9 @@ export const AccessApplicationsPoliciesGetForZoneResponseExcludeItem =
           T.Body("external_evaluation"),
         ),
       ),
-      GithubOrganization_: S.optional(
+      githubOrganization: S.optional(
         AccessApplicationsPoliciesGetForZoneResponseExcludeItemGithubOrganization.pipe(
-          T.Body('"github-organization"'),
+          T.Body("github-organization"),
         ),
       ),
       gsuite: S.optional(
@@ -57006,7 +57004,7 @@ export interface AccessGroupsGetForAccountResponseExcludeItem {
   /** An empty object which matches on all users. */
   everyone?: unknown;
   externalEvaluation?: AccessGroupsGetForAccountResponseExcludeItemExternalEvaluation;
-  GithubOrganization_?: AccessGroupsGetForAccountResponseExcludeItemGithubOrganization;
+  githubOrganization?: AccessGroupsGetForAccountResponseExcludeItemGithubOrganization;
   gsuite?: AccessGroupsGetForAccountResponseExcludeItemGsuite;
   loginMethod?: AccessGroupsGetForAccountResponseExcludeItemLoginMethod;
   ipList?: AccessGroupsGetForAccountResponseExcludeItemIpList;
@@ -57066,9 +57064,9 @@ export const AccessGroupsGetForAccountResponseExcludeItem =
           T.Body("external_evaluation"),
         ),
       ),
-      GithubOrganization_: S.optional(
+      githubOrganization: S.optional(
         AccessGroupsGetForAccountResponseExcludeItemGithubOrganization.pipe(
-          T.Body('"github-organization"'),
+          T.Body("github-organization"),
         ),
       ),
       gsuite: S.optional(AccessGroupsGetForAccountResponseExcludeItemGsuite),
@@ -57983,7 +57981,7 @@ export interface AccessGroupsGetForZoneResponseExcludeItem {
   /** An empty object which matches on all users. */
   everyone?: unknown;
   externalEvaluation?: AccessGroupsGetForZoneResponseExcludeItemExternalEvaluation;
-  GithubOrganization_?: AccessGroupsGetForZoneResponseExcludeItemGithubOrganization;
+  githubOrganization?: AccessGroupsGetForZoneResponseExcludeItemGithubOrganization;
   gsuite?: AccessGroupsGetForZoneResponseExcludeItemGsuite;
   loginMethod?: AccessGroupsGetForZoneResponseExcludeItemLoginMethod;
   ipList?: AccessGroupsGetForZoneResponseExcludeItemIpList;
@@ -58043,9 +58041,9 @@ export const AccessGroupsGetForZoneResponseExcludeItem =
           T.Body("external_evaluation"),
         ),
       ),
-      GithubOrganization_: S.optional(
+      githubOrganization: S.optional(
         AccessGroupsGetForZoneResponseExcludeItemGithubOrganization.pipe(
-          T.Body('"github-organization"'),
+          T.Body("github-organization"),
         ),
       ),
       gsuite: S.optional(AccessGroupsGetForZoneResponseExcludeItemGsuite),
@@ -59234,7 +59232,7 @@ export interface AccessPoliciesGetResponseExcludeItem {
   /** An empty object which matches on all users. */
   everyone?: unknown;
   externalEvaluation?: AccessPoliciesGetResponseExcludeItemExternalEvaluation;
-  GithubOrganization_?: AccessPoliciesGetResponseExcludeItemGithubOrganization;
+  githubOrganization?: AccessPoliciesGetResponseExcludeItemGithubOrganization;
   gsuite?: AccessPoliciesGetResponseExcludeItemGsuite;
   loginMethod?: AccessPoliciesGetResponseExcludeItemLoginMethod;
   ipList?: AccessPoliciesGetResponseExcludeItemIpList;
@@ -59294,9 +59292,9 @@ export const AccessPoliciesGetResponseExcludeItem = /*@__PURE__*/ S.suspend(
           T.Body("external_evaluation"),
         ),
       ),
-      GithubOrganization_: S.optional(
+      githubOrganization: S.optional(
         AccessPoliciesGetResponseExcludeItemGithubOrganization.pipe(
-          T.Body('"github-organization"'),
+          T.Body("github-organization"),
         ),
       ),
       gsuite: S.optional(AccessPoliciesGetResponseExcludeItemGsuite),
@@ -72358,7 +72356,7 @@ export interface AccessApplicationsPoliciesListForAccountResultItemExcludeItem {
   /** An empty object which matches on all users. */
   everyone?: unknown;
   externalEvaluation?: AccessApplicationsPoliciesListForAccountResultItemExcludeItemExternalEvaluation;
-  GithubOrganization_?: AccessApplicationsPoliciesListForAccountResultItemExcludeItemGithubOrganization;
+  githubOrganization?: AccessApplicationsPoliciesListForAccountResultItemExcludeItemGithubOrganization;
   gsuite?: AccessApplicationsPoliciesListForAccountResultItemExcludeItemGsuite;
   loginMethod?: AccessApplicationsPoliciesListForAccountResultItemExcludeItemLoginMethod;
   ipList?: AccessApplicationsPoliciesListForAccountResultItemExcludeItemIpList;
@@ -72426,9 +72424,9 @@ export const AccessApplicationsPoliciesListForAccountResultItemExcludeItem =
           T.Body("external_evaluation"),
         ),
       ),
-      GithubOrganization_: S.optional(
+      githubOrganization: S.optional(
         AccessApplicationsPoliciesListForAccountResultItemExcludeItemGithubOrganization.pipe(
-          T.Body('"github-organization"'),
+          T.Body("github-organization"),
         ),
       ),
       gsuite: S.optional(
@@ -73448,7 +73446,7 @@ export interface AccessApplicationsPoliciesListForZoneResultItemExcludeItem {
   /** An empty object which matches on all users. */
   everyone?: unknown;
   externalEvaluation?: AccessApplicationsPoliciesListForZoneResultItemExcludeItemExternalEvaluation;
-  GithubOrganization_?: AccessApplicationsPoliciesListForZoneResultItemExcludeItemGithubOrganization;
+  githubOrganization?: AccessApplicationsPoliciesListForZoneResultItemExcludeItemGithubOrganization;
   gsuite?: AccessApplicationsPoliciesListForZoneResultItemExcludeItemGsuite;
   loginMethod?: AccessApplicationsPoliciesListForZoneResultItemExcludeItemLoginMethod;
   ipList?: AccessApplicationsPoliciesListForZoneResultItemExcludeItemIpList;
@@ -73516,9 +73514,9 @@ export const AccessApplicationsPoliciesListForZoneResultItemExcludeItem =
           T.Body("external_evaluation"),
         ),
       ),
-      GithubOrganization_: S.optional(
+      githubOrganization: S.optional(
         AccessApplicationsPoliciesListForZoneResultItemExcludeItemGithubOrganization.pipe(
-          T.Body('"github-organization"'),
+          T.Body("github-organization"),
         ),
       ),
       gsuite: S.optional(
@@ -74912,7 +74910,7 @@ export interface AccessApplicationsListForAccountResultItemPoliciesItemExcludeIt
   /** An empty object which matches on all users. */
   everyone?: unknown;
   externalEvaluation?: AccessApplicationsListForAccountResultItemPoliciesItemExcludeItemExternalEvaluation;
-  GithubOrganization_?: AccessApplicationsListForAccountResultItemPoliciesItemExcludeItemGithubOrganization;
+  githubOrganization?: AccessApplicationsListForAccountResultItemPoliciesItemExcludeItemGithubOrganization;
   gsuite?: AccessApplicationsListForAccountResultItemPoliciesItemExcludeItemGsuite;
   loginMethod?: AccessApplicationsListForAccountResultItemPoliciesItemExcludeItemLoginMethod;
   ipList?: AccessApplicationsListForAccountResultItemPoliciesItemExcludeItemIpList;
@@ -74980,9 +74978,9 @@ export const AccessApplicationsListForAccountResultItemPoliciesItemExcludeItem =
           T.Body("external_evaluation"),
         ),
       ),
-      GithubOrganization_: S.optional(
+      githubOrganization: S.optional(
         AccessApplicationsListForAccountResultItemPoliciesItemExcludeItemGithubOrganization.pipe(
-          T.Body('"github-organization"'),
+          T.Body("github-organization"),
         ),
       ),
       gsuite: S.optional(
@@ -77175,7 +77173,7 @@ export interface AccessApplicationsListForZoneResultItemPoliciesItemExcludeItem 
   /** An empty object which matches on all users. */
   everyone?: unknown;
   externalEvaluation?: AccessApplicationsListForZoneResultItemPoliciesItemExcludeItemExternalEvaluation;
-  GithubOrganization_?: AccessApplicationsListForZoneResultItemPoliciesItemExcludeItemGithubOrganization;
+  githubOrganization?: AccessApplicationsListForZoneResultItemPoliciesItemExcludeItemGithubOrganization;
   gsuite?: AccessApplicationsListForZoneResultItemPoliciesItemExcludeItemGsuite;
   loginMethod?: AccessApplicationsListForZoneResultItemPoliciesItemExcludeItemLoginMethod;
   ipList?: AccessApplicationsListForZoneResultItemPoliciesItemExcludeItemIpList;
@@ -77243,9 +77241,9 @@ export const AccessApplicationsListForZoneResultItemPoliciesItemExcludeItem =
           T.Body("external_evaluation"),
         ),
       ),
-      GithubOrganization_: S.optional(
+      githubOrganization: S.optional(
         AccessApplicationsListForZoneResultItemPoliciesItemExcludeItemGithubOrganization.pipe(
-          T.Body('"github-organization"'),
+          T.Body("github-organization"),
         ),
       ),
       gsuite: S.optional(
@@ -79654,7 +79652,7 @@ export interface AccessGroupsListForAccountResultItemExcludeItem {
   /** An empty object which matches on all users. */
   everyone?: unknown;
   externalEvaluation?: AccessGroupsListForAccountResultItemExcludeItemExternalEvaluation;
-  GithubOrganization_?: AccessGroupsListForAccountResultItemExcludeItemGithubOrganization;
+  githubOrganization?: AccessGroupsListForAccountResultItemExcludeItemGithubOrganization;
   gsuite?: AccessGroupsListForAccountResultItemExcludeItemGsuite;
   loginMethod?: AccessGroupsListForAccountResultItemExcludeItemLoginMethod;
   ipList?: AccessGroupsListForAccountResultItemExcludeItemIpList;
@@ -79716,9 +79714,9 @@ export const AccessGroupsListForAccountResultItemExcludeItem =
           T.Body("external_evaluation"),
         ),
       ),
-      GithubOrganization_: S.optional(
+      githubOrganization: S.optional(
         AccessGroupsListForAccountResultItemExcludeItemGithubOrganization.pipe(
-          T.Body('"github-organization"'),
+          T.Body("github-organization"),
         ),
       ),
       gsuite: S.optional(AccessGroupsListForAccountResultItemExcludeItemGsuite),
@@ -80667,7 +80665,7 @@ export interface AccessGroupsListForZoneResultItemExcludeItem {
   /** An empty object which matches on all users. */
   everyone?: unknown;
   externalEvaluation?: AccessGroupsListForZoneResultItemExcludeItemExternalEvaluation;
-  GithubOrganization_?: AccessGroupsListForZoneResultItemExcludeItemGithubOrganization;
+  githubOrganization?: AccessGroupsListForZoneResultItemExcludeItemGithubOrganization;
   gsuite?: AccessGroupsListForZoneResultItemExcludeItemGsuite;
   loginMethod?: AccessGroupsListForZoneResultItemExcludeItemLoginMethod;
   ipList?: AccessGroupsListForZoneResultItemExcludeItemIpList;
@@ -80727,9 +80725,9 @@ export const AccessGroupsListForZoneResultItemExcludeItem =
           T.Body("external_evaluation"),
         ),
       ),
-      GithubOrganization_: S.optional(
+      githubOrganization: S.optional(
         AccessGroupsListForZoneResultItemExcludeItemGithubOrganization.pipe(
-          T.Body('"github-organization"'),
+          T.Body("github-organization"),
         ),
       ),
       gsuite: S.optional(AccessGroupsListForZoneResultItemExcludeItemGsuite),
@@ -82480,7 +82478,7 @@ export interface AccessPoliciesListResultItemExcludeItem {
   /** An empty object which matches on all users. */
   everyone?: unknown;
   externalEvaluation?: AccessPoliciesListResultItemExcludeItemExternalEvaluation;
-  GithubOrganization_?: AccessPoliciesListResultItemExcludeItemGithubOrganization;
+  githubOrganization?: AccessPoliciesListResultItemExcludeItemGithubOrganization;
   gsuite?: AccessPoliciesListResultItemExcludeItemGsuite;
   loginMethod?: AccessPoliciesListResultItemExcludeItemLoginMethod;
   ipList?: AccessPoliciesListResultItemExcludeItemIpList;
@@ -82540,9 +82538,9 @@ export const AccessPoliciesListResultItemExcludeItem = /*@__PURE__*/ S.suspend(
           T.Body("external_evaluation"),
         ),
       ),
-      GithubOrganization_: S.optional(
+      githubOrganization: S.optional(
         AccessPoliciesListResultItemExcludeItemGithubOrganization.pipe(
-          T.Body('"github-organization"'),
+          T.Body("github-organization"),
         ),
       ),
       gsuite: S.optional(AccessPoliciesListResultItemExcludeItemGsuite),
@@ -109911,7 +109909,7 @@ export interface AccessApplicationsUpdateForAccountRequestBodyInfrastructureAppl
   /** An empty object which matches on all users. */
   everyone?: unknown;
   externalEvaluation?: AccessApplicationsUpdateForAccountRequestBodyInfrastructureApplicationPoliciesItemIncludeItemExternalEvaluation;
-  GithubOrganization_?: AccessApplicationsUpdateForAccountRequestBodyInfrastructureApplicationPoliciesItemIncludeItemGithubOrganization;
+  githubOrganization?: AccessApplicationsUpdateForAccountRequestBodyInfrastructureApplicationPoliciesItemIncludeItemGithubOrganization;
   gsuite?: AccessApplicationsUpdateForAccountRequestBodyInfrastructureApplicationPoliciesItemIncludeItemGsuite;
   loginMethod?: AccessApplicationsUpdateForAccountRequestBodyInfrastructureApplicationPoliciesItemIncludeItemLoginMethod;
   ipList?: AccessApplicationsUpdateForAccountRequestBodyInfrastructureApplicationPoliciesItemIncludeItemIpList;
@@ -109979,9 +109977,9 @@ export const AccessApplicationsUpdateForAccountRequestBodyInfrastructureApplicat
           T.Body("external_evaluation"),
         ),
       ),
-      GithubOrganization_: S.optional(
+      githubOrganization: S.optional(
         AccessApplicationsUpdateForAccountRequestBodyInfrastructureApplicationPoliciesItemIncludeItemGithubOrganization.pipe(
-          T.Body('"github-organization"'),
+          T.Body("github-organization"),
         ),
       ),
       gsuite: S.optional(
@@ -113707,7 +113705,7 @@ export interface AccessApplicationsUpdateForAccountResponsePoliciesItemExcludeIt
   /** An empty object which matches on all users. */
   everyone?: unknown;
   externalEvaluation?: AccessApplicationsUpdateForAccountResponsePoliciesItemExcludeItemExternalEvaluation;
-  GithubOrganization_?: AccessApplicationsUpdateForAccountResponsePoliciesItemExcludeItemGithubOrganization;
+  githubOrganization?: AccessApplicationsUpdateForAccountResponsePoliciesItemExcludeItemGithubOrganization;
   gsuite?: AccessApplicationsUpdateForAccountResponsePoliciesItemExcludeItemGsuite;
   loginMethod?: AccessApplicationsUpdateForAccountResponsePoliciesItemExcludeItemLoginMethod;
   ipList?: AccessApplicationsUpdateForAccountResponsePoliciesItemExcludeItemIpList;
@@ -113775,9 +113773,9 @@ export const AccessApplicationsUpdateForAccountResponsePoliciesItemExcludeItem =
           T.Body("external_evaluation"),
         ),
       ),
-      GithubOrganization_: S.optional(
+      githubOrganization: S.optional(
         AccessApplicationsUpdateForAccountResponsePoliciesItemExcludeItemGithubOrganization.pipe(
-          T.Body('"github-organization"'),
+          T.Body("github-organization"),
         ),
       ),
       gsuite: S.optional(
@@ -120285,7 +120283,7 @@ export interface AccessApplicationsUpdateForZoneRequestBodyInfrastructureApplica
   /** An empty object which matches on all users. */
   everyone?: unknown;
   externalEvaluation?: AccessApplicationsUpdateForZoneRequestBodyInfrastructureApplicationPoliciesItemIncludeItemExternalEvaluation;
-  GithubOrganization_?: AccessApplicationsUpdateForZoneRequestBodyInfrastructureApplicationPoliciesItemIncludeItemGithubOrganization;
+  githubOrganization?: AccessApplicationsUpdateForZoneRequestBodyInfrastructureApplicationPoliciesItemIncludeItemGithubOrganization;
   gsuite?: AccessApplicationsUpdateForZoneRequestBodyInfrastructureApplicationPoliciesItemIncludeItemGsuite;
   loginMethod?: AccessApplicationsUpdateForZoneRequestBodyInfrastructureApplicationPoliciesItemIncludeItemLoginMethod;
   ipList?: AccessApplicationsUpdateForZoneRequestBodyInfrastructureApplicationPoliciesItemIncludeItemIpList;
@@ -120353,9 +120351,9 @@ export const AccessApplicationsUpdateForZoneRequestBodyInfrastructureApplication
           T.Body("external_evaluation"),
         ),
       ),
-      GithubOrganization_: S.optional(
+      githubOrganization: S.optional(
         AccessApplicationsUpdateForZoneRequestBodyInfrastructureApplicationPoliciesItemIncludeItemGithubOrganization.pipe(
-          T.Body('"github-organization"'),
+          T.Body("github-organization"),
         ),
       ),
       gsuite: S.optional(
@@ -124081,7 +124079,7 @@ export interface AccessApplicationsUpdateForZoneResponsePoliciesItemExcludeItem 
   /** An empty object which matches on all users. */
   everyone?: unknown;
   externalEvaluation?: AccessApplicationsUpdateForZoneResponsePoliciesItemExcludeItemExternalEvaluation;
-  GithubOrganization_?: AccessApplicationsUpdateForZoneResponsePoliciesItemExcludeItemGithubOrganization;
+  githubOrganization?: AccessApplicationsUpdateForZoneResponsePoliciesItemExcludeItemGithubOrganization;
   gsuite?: AccessApplicationsUpdateForZoneResponsePoliciesItemExcludeItemGsuite;
   loginMethod?: AccessApplicationsUpdateForZoneResponsePoliciesItemExcludeItemLoginMethod;
   ipList?: AccessApplicationsUpdateForZoneResponsePoliciesItemExcludeItemIpList;
@@ -124149,9 +124147,9 @@ export const AccessApplicationsUpdateForZoneResponsePoliciesItemExcludeItem =
           T.Body("external_evaluation"),
         ),
       ),
-      GithubOrganization_: S.optional(
+      githubOrganization: S.optional(
         AccessApplicationsUpdateForZoneResponsePoliciesItemExcludeItemGithubOrganization.pipe(
-          T.Body('"github-organization"'),
+          T.Body("github-organization"),
         ),
       ),
       gsuite: S.optional(
@@ -126223,7 +126221,7 @@ export interface AccessApplicationsPoliciesUpdateForAccountResponseExcludeItem {
   /** An empty object which matches on all users. */
   everyone?: unknown;
   externalEvaluation?: AccessApplicationsPoliciesUpdateForAccountResponseExcludeItemExternalEvaluation;
-  GithubOrganization_?: AccessApplicationsPoliciesUpdateForAccountResponseExcludeItemGithubOrganization;
+  githubOrganization?: AccessApplicationsPoliciesUpdateForAccountResponseExcludeItemGithubOrganization;
   gsuite?: AccessApplicationsPoliciesUpdateForAccountResponseExcludeItemGsuite;
   loginMethod?: AccessApplicationsPoliciesUpdateForAccountResponseExcludeItemLoginMethod;
   ipList?: AccessApplicationsPoliciesUpdateForAccountResponseExcludeItemIpList;
@@ -126291,9 +126289,9 @@ export const AccessApplicationsPoliciesUpdateForAccountResponseExcludeItem =
           T.Body("external_evaluation"),
         ),
       ),
-      GithubOrganization_: S.optional(
+      githubOrganization: S.optional(
         AccessApplicationsPoliciesUpdateForAccountResponseExcludeItemGithubOrganization.pipe(
-          T.Body('"github-organization"'),
+          T.Body("github-organization"),
         ),
       ),
       gsuite: S.optional(
@@ -127468,7 +127466,7 @@ export interface AccessApplicationsPoliciesUpdateForZoneResponseExcludeItem {
   /** An empty object which matches on all users. */
   everyone?: unknown;
   externalEvaluation?: AccessApplicationsPoliciesUpdateForZoneResponseExcludeItemExternalEvaluation;
-  GithubOrganization_?: AccessApplicationsPoliciesUpdateForZoneResponseExcludeItemGithubOrganization;
+  githubOrganization?: AccessApplicationsPoliciesUpdateForZoneResponseExcludeItemGithubOrganization;
   gsuite?: AccessApplicationsPoliciesUpdateForZoneResponseExcludeItemGsuite;
   loginMethod?: AccessApplicationsPoliciesUpdateForZoneResponseExcludeItemLoginMethod;
   ipList?: AccessApplicationsPoliciesUpdateForZoneResponseExcludeItemIpList;
@@ -127536,9 +127534,9 @@ export const AccessApplicationsPoliciesUpdateForZoneResponseExcludeItem =
           T.Body("external_evaluation"),
         ),
       ),
-      GithubOrganization_: S.optional(
+      githubOrganization: S.optional(
         AccessApplicationsPoliciesUpdateForZoneResponseExcludeItemGithubOrganization.pipe(
-          T.Body('"github-organization"'),
+          T.Body("github-organization"),
         ),
       ),
       gsuite: S.optional(
@@ -128649,7 +128647,7 @@ export interface AccessGroupsUpdateForAccountRequestIncludeItem {
   /** An empty object which matches on all users. */
   everyone?: unknown;
   externalEvaluation?: AccessGroupsUpdateForAccountRequestIncludeItemExternalEvaluation;
-  GithubOrganization_?: AccessGroupsUpdateForAccountRequestIncludeItemGithubOrganization;
+  githubOrganization?: AccessGroupsUpdateForAccountRequestIncludeItemGithubOrganization;
   gsuite?: AccessGroupsUpdateForAccountRequestIncludeItemGsuite;
   loginMethod?: AccessGroupsUpdateForAccountRequestIncludeItemLoginMethod;
   ipList?: AccessGroupsUpdateForAccountRequestIncludeItemIpList;
@@ -128711,9 +128709,9 @@ export const AccessGroupsUpdateForAccountRequestIncludeItem =
           T.Body("external_evaluation"),
         ),
       ),
-      GithubOrganization_: S.optional(
+      githubOrganization: S.optional(
         AccessGroupsUpdateForAccountRequestIncludeItemGithubOrganization.pipe(
-          T.Body('"github-organization"'),
+          T.Body("github-organization"),
         ),
       ),
       gsuite: S.optional(AccessGroupsUpdateForAccountRequestIncludeItemGsuite),
@@ -129467,7 +129465,7 @@ export interface AccessGroupsUpdateForAccountResponseExcludeItem {
   /** An empty object which matches on all users. */
   everyone?: unknown;
   externalEvaluation?: AccessGroupsUpdateForAccountResponseExcludeItemExternalEvaluation;
-  GithubOrganization_?: AccessGroupsUpdateForAccountResponseExcludeItemGithubOrganization;
+  githubOrganization?: AccessGroupsUpdateForAccountResponseExcludeItemGithubOrganization;
   gsuite?: AccessGroupsUpdateForAccountResponseExcludeItemGsuite;
   loginMethod?: AccessGroupsUpdateForAccountResponseExcludeItemLoginMethod;
   ipList?: AccessGroupsUpdateForAccountResponseExcludeItemIpList;
@@ -129529,9 +129527,9 @@ export const AccessGroupsUpdateForAccountResponseExcludeItem =
           T.Body("external_evaluation"),
         ),
       ),
-      GithubOrganization_: S.optional(
+      githubOrganization: S.optional(
         AccessGroupsUpdateForAccountResponseExcludeItemGithubOrganization.pipe(
-          T.Body('"github-organization"'),
+          T.Body("github-organization"),
         ),
       ),
       gsuite: S.optional(AccessGroupsUpdateForAccountResponseExcludeItemGsuite),
@@ -130425,7 +130423,7 @@ export interface AccessGroupsUpdateForZoneRequestIncludeItem {
   /** An empty object which matches on all users. */
   everyone?: unknown;
   externalEvaluation?: AccessGroupsUpdateForZoneRequestIncludeItemExternalEvaluation;
-  GithubOrganization_?: AccessGroupsUpdateForZoneRequestIncludeItemGithubOrganization;
+  githubOrganization?: AccessGroupsUpdateForZoneRequestIncludeItemGithubOrganization;
   gsuite?: AccessGroupsUpdateForZoneRequestIncludeItemGsuite;
   loginMethod?: AccessGroupsUpdateForZoneRequestIncludeItemLoginMethod;
   ipList?: AccessGroupsUpdateForZoneRequestIncludeItemIpList;
@@ -130485,9 +130483,9 @@ export const AccessGroupsUpdateForZoneRequestIncludeItem =
           T.Body("external_evaluation"),
         ),
       ),
-      GithubOrganization_: S.optional(
+      githubOrganization: S.optional(
         AccessGroupsUpdateForZoneRequestIncludeItemGithubOrganization.pipe(
-          T.Body('"github-organization"'),
+          T.Body("github-organization"),
         ),
       ),
       gsuite: S.optional(AccessGroupsUpdateForZoneRequestIncludeItemGsuite),
@@ -131241,7 +131239,7 @@ export interface AccessGroupsUpdateForZoneResponseExcludeItem {
   /** An empty object which matches on all users. */
   everyone?: unknown;
   externalEvaluation?: AccessGroupsUpdateForZoneResponseExcludeItemExternalEvaluation;
-  GithubOrganization_?: AccessGroupsUpdateForZoneResponseExcludeItemGithubOrganization;
+  githubOrganization?: AccessGroupsUpdateForZoneResponseExcludeItemGithubOrganization;
   gsuite?: AccessGroupsUpdateForZoneResponseExcludeItemGsuite;
   loginMethod?: AccessGroupsUpdateForZoneResponseExcludeItemLoginMethod;
   ipList?: AccessGroupsUpdateForZoneResponseExcludeItemIpList;
@@ -131301,9 +131299,9 @@ export const AccessGroupsUpdateForZoneResponseExcludeItem =
           T.Body("external_evaluation"),
         ),
       ),
-      GithubOrganization_: S.optional(
+      githubOrganization: S.optional(
         AccessGroupsUpdateForZoneResponseExcludeItemGithubOrganization.pipe(
-          T.Body('"github-organization"'),
+          T.Body("github-organization"),
         ),
       ),
       gsuite: S.optional(AccessGroupsUpdateForZoneResponseExcludeItemGsuite),
@@ -132346,7 +132344,7 @@ export interface AccessPoliciesUpdateRequestIncludeItem {
   /** An empty object which matches on all users. */
   everyone?: unknown;
   externalEvaluation?: AccessPoliciesUpdateRequestIncludeItemExternalEvaluation;
-  GithubOrganization_?: AccessPoliciesUpdateRequestIncludeItemGithubOrganization;
+  githubOrganization?: AccessPoliciesUpdateRequestIncludeItemGithubOrganization;
   gsuite?: AccessPoliciesUpdateRequestIncludeItemGsuite;
   loginMethod?: AccessPoliciesUpdateRequestIncludeItemLoginMethod;
   ipList?: AccessPoliciesUpdateRequestIncludeItemIpList;
@@ -132406,9 +132404,9 @@ export const AccessPoliciesUpdateRequestIncludeItem = /*@__PURE__*/ S.suspend(
           T.Body("external_evaluation"),
         ),
       ),
-      GithubOrganization_: S.optional(
+      githubOrganization: S.optional(
         AccessPoliciesUpdateRequestIncludeItemGithubOrganization.pipe(
-          T.Body('"github-organization"'),
+          T.Body("github-organization"),
         ),
       ),
       gsuite: S.optional(AccessPoliciesUpdateRequestIncludeItemGsuite),
@@ -133427,7 +133425,7 @@ export interface AccessPoliciesUpdateResponseExcludeItem {
   /** An empty object which matches on all users. */
   everyone?: unknown;
   externalEvaluation?: AccessPoliciesUpdateResponseExcludeItemExternalEvaluation;
-  GithubOrganization_?: AccessPoliciesUpdateResponseExcludeItemGithubOrganization;
+  githubOrganization?: AccessPoliciesUpdateResponseExcludeItemGithubOrganization;
   gsuite?: AccessPoliciesUpdateResponseExcludeItemGsuite;
   loginMethod?: AccessPoliciesUpdateResponseExcludeItemLoginMethod;
   ipList?: AccessPoliciesUpdateResponseExcludeItemIpList;
@@ -133487,9 +133485,9 @@ export const AccessPoliciesUpdateResponseExcludeItem = /*@__PURE__*/ S.suspend(
           T.Body("external_evaluation"),
         ),
       ),
-      GithubOrganization_: S.optional(
+      githubOrganization: S.optional(
         AccessPoliciesUpdateResponseExcludeItemGithubOrganization.pipe(
-          T.Body('"github-organization"'),
+          T.Body("github-organization"),
         ),
       ),
       gsuite: S.optional(AccessPoliciesUpdateResponseExcludeItemGsuite),

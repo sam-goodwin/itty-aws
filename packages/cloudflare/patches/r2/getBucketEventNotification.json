@@ -187,6 +187,11 @@
           "target": "com.cloudflare.r2#Forbidden"
         }
       ]
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.r2#GetBucketEventNotificationRequest/members/cf_r2_jurisdiction",
+      "path": "/shapes/com.cloudflare.r2#GetBucketEventNotificationRequest/members/jurisdiction"
     }
   ]
 }

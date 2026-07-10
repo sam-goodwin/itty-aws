@@ -174,6 +174,14 @@ const parseFieldTree = (lines: string[]): FieldNode[] => {
           typeStr = "unknown";
         }
       }
+      // Header/param names are frequently written quoted in the docs
+      // (e.g. `"cf-r2-storage-class": ...`). The quotes are markdown emphasis
+      // of the literal wire name, never part of the field name itself —
+      // strip a single surrounding pair so the httpHeader trait and member
+      // ident don't carry stray quote characters.
+      if (name.length >= 2 && name.startsWith('"') && name.endsWith('"')) {
+        name = name.slice(1, -1);
+      }
       const node: FieldNode = { name, typeStr, children: [] };
       while (stack.length && stack[stack.length - 1].indent >= indent) {
         stack.pop();

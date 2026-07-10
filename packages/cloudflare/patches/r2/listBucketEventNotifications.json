@@ -135,6 +135,11 @@
           "target": "com.cloudflare.r2#BucketNotFound"
         }
       ]
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.r2#ListBucketEventNotificationsRequest/members/cf_r2_jurisdiction",
+      "path": "/shapes/com.cloudflare.r2#ListBucketEventNotificationsRequest/members/jurisdiction"
     }
   ]
 }

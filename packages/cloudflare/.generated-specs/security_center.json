@@ -188,10 +188,10 @@
             "smithy.api#httpQuery": "issue_class"
           }
         },
-        "_issue_class_neq_": {
+        "issue_class_neq": {
           "target": "com.cloudflare.security_center#InsightsListForAccountRequestIssueClassNeqList",
           "traits": {
-            "smithy.api#httpQuery": "\"issue_class~neq\""
+            "smithy.api#httpQuery": "issue_class~neq"
           }
         },
         "issue_type": {
@@ -200,10 +200,10 @@
             "smithy.api#httpQuery": "issue_type"
           }
         },
-        "_issue_type_neq_": {
+        "issue_type_neq": {
           "target": "com.cloudflare.security_center#InsightsListForAccountRequestIssueTypeNeqList",
           "traits": {
-            "smithy.api#httpQuery": "\"issue_type~neq\""
+            "smithy.api#httpQuery": "issue_type~neq"
           }
         },
         "page": {
@@ -226,10 +226,10 @@
             "smithy.api#httpQuery": "product"
           }
         },
-        "_product_neq_": {
+        "product_neq": {
           "target": "com.cloudflare.security_center#InsightsListForAccountRequestProductNeqList",
           "traits": {
-            "smithy.api#httpQuery": "\"product~neq\""
+            "smithy.api#httpQuery": "product~neq"
           }
         },
         "severity": {
@@ -238,10 +238,10 @@
             "smithy.api#httpQuery": "severity"
           }
         },
-        "_severity_neq_": {
+        "severity_neq": {
           "target": "com.cloudflare.security_center#InsightsListForAccountRequestSeverityNeqList",
           "traits": {
-            "smithy.api#httpQuery": "\"severity~neq\""
+            "smithy.api#httpQuery": "severity~neq"
           }
         },
         "subject": {
@@ -250,10 +250,10 @@
             "smithy.api#httpQuery": "subject"
           }
         },
-        "_subject_neq_": {
+        "subject_neq": {
           "target": "com.cloudflare.security_center#InsightsListForAccountRequestSubjectNeqList",
           "traits": {
-            "smithy.api#httpQuery": "\"subject~neq\""
+            "smithy.api#httpQuery": "subject~neq"
           }
         }
       },
@@ -531,10 +531,10 @@
             "smithy.api#httpQuery": "issue_class"
           }
         },
-        "_issue_class_neq_": {
+        "issue_class_neq": {
           "target": "com.cloudflare.security_center#InsightsListForZoneRequestIssueClassNeqList",
           "traits": {
-            "smithy.api#httpQuery": "\"issue_class~neq\""
+            "smithy.api#httpQuery": "issue_class~neq"
           }
         },
         "issue_type": {
@@ -543,10 +543,10 @@
             "smithy.api#httpQuery": "issue_type"
           }
         },
-        "_issue_type_neq_": {
+        "issue_type_neq": {
           "target": "com.cloudflare.security_center#InsightsListForZoneRequestIssueTypeNeqList",
           "traits": {
-            "smithy.api#httpQuery": "\"issue_type~neq\""
+            "smithy.api#httpQuery": "issue_type~neq"
           }
         },
         "page": {
@@ -569,10 +569,10 @@
             "smithy.api#httpQuery": "product"
           }
         },
-        "_product_neq_": {
+        "product_neq": {
           "target": "com.cloudflare.security_center#InsightsListForZoneRequestProductNeqList",
           "traits": {
-            "smithy.api#httpQuery": "\"product~neq\""
+            "smithy.api#httpQuery": "product~neq"
           }
         },
         "severity": {
@@ -581,10 +581,10 @@
             "smithy.api#httpQuery": "severity"
           }
         },
-        "_severity_neq_": {
+        "severity_neq": {
           "target": "com.cloudflare.security_center#InsightsListForZoneRequestSeverityNeqList",
           "traits": {
-            "smithy.api#httpQuery": "\"severity~neq\""
+            "smithy.api#httpQuery": "severity~neq"
           }
         },
         "subject": {
@@ -593,10 +593,10 @@
             "smithy.api#httpQuery": "subject"
           }
         },
-        "_subject_neq_": {
+        "subject_neq": {
           "target": "com.cloudflare.security_center#InsightsListForZoneRequestSubjectNeqList",
           "traits": {
-            "smithy.api#httpQuery": "\"subject~neq\""
+            "smithy.api#httpQuery": "subject~neq"
           }
         }
       },
@@ -1744,10 +1744,10 @@
             "smithy.api#httpQuery": "issue_class"
           }
         },
-        "_issue_class_neq_": {
+        "issue_class_neq": {
           "target": "com.cloudflare.security_center#InsightsClassGetForAccountRequestIssueClassNeqList",
           "traits": {
-            "smithy.api#httpQuery": "\"issue_class~neq\""
+            "smithy.api#httpQuery": "issue_class~neq"
           }
         },
         "issue_type": {
@@ -1756,10 +1756,10 @@
             "smithy.api#httpQuery": "issue_type"
           }
         },
-        "_issue_type_neq_": {
+        "issue_type_neq": {
           "target": "com.cloudflare.security_center#InsightsClassGetForAccountRequestIssueTypeNeqList",
           "traits": {
-            "smithy.api#httpQuery": "\"issue_type~neq\""
+            "smithy.api#httpQuery": "issue_type~neq"
           }
         },
         "product": {
@@ -1768,10 +1768,10 @@
             "smithy.api#httpQuery": "product"
           }
         },
-        "_product_neq_": {
+        "product_neq": {
           "target": "com.cloudflare.security_center#InsightsClassGetForAccountRequestProductNeqList",
           "traits": {
-            "smithy.api#httpQuery": "\"product~neq\""
+            "smithy.api#httpQuery": "product~neq"
           }
         },
         "severity": {
@@ -1780,10 +1780,10 @@
             "smithy.api#httpQuery": "severity"
           }
         },
-        "_severity_neq_": {
+        "severity_neq": {
           "target": "com.cloudflare.security_center#InsightsClassGetForAccountRequestSeverityNeqList",
           "traits": {
-            "smithy.api#httpQuery": "\"severity~neq\""
+            "smithy.api#httpQuery": "severity~neq"
           }
         },
         "subject": {
@@ -1792,10 +1792,10 @@
             "smithy.api#httpQuery": "subject"
           }
         },
-        "_subject_neq_": {
+        "subject_neq": {
           "target": "com.cloudflare.security_center#InsightsClassGetForAccountRequestSubjectNeqList",
           "traits": {
-            "smithy.api#httpQuery": "\"subject~neq\""
+            "smithy.api#httpQuery": "subject~neq"
           }
         }
       },
@@ -1936,10 +1936,10 @@
             "smithy.api#httpQuery": "issue_class"
           }
         },
-        "_issue_class_neq_": {
+        "issue_class_neq": {
           "target": "com.cloudflare.security_center#InsightsClassGetForZoneRequestIssueClassNeqList",
           "traits": {
-            "smithy.api#httpQuery": "\"issue_class~neq\""
+            "smithy.api#httpQuery": "issue_class~neq"
           }
         },
         "issue_type": {
@@ -1948,10 +1948,10 @@
             "smithy.api#httpQuery": "issue_type"
           }
         },
-        "_issue_type_neq_": {
+        "issue_type_neq": {
           "target": "com.cloudflare.security_center#InsightsClassGetForZoneRequestIssueTypeNeqList",
           "traits": {
-            "smithy.api#httpQuery": "\"issue_type~neq\""
+            "smithy.api#httpQuery": "issue_type~neq"
           }
         },
         "product": {
@@ -1960,10 +1960,10 @@
             "smithy.api#httpQuery": "product"
           }
         },
-        "_product_neq_": {
+        "product_neq": {
           "target": "com.cloudflare.security_center#InsightsClassGetForZoneRequestProductNeqList",
           "traits": {
-            "smithy.api#httpQuery": "\"product~neq\""
+            "smithy.api#httpQuery": "product~neq"
           }
         },
         "severity": {
@@ -1972,10 +1972,10 @@
             "smithy.api#httpQuery": "severity"
           }
         },
-        "_severity_neq_": {
+        "severity_neq": {
           "target": "com.cloudflare.security_center#InsightsClassGetForZoneRequestSeverityNeqList",
           "traits": {
-            "smithy.api#httpQuery": "\"severity~neq\""
+            "smithy.api#httpQuery": "severity~neq"
           }
         },
         "subject": {
@@ -1984,10 +1984,10 @@
             "smithy.api#httpQuery": "subject"
           }
         },
-        "_subject_neq_": {
+        "subject_neq": {
           "target": "com.cloudflare.security_center#InsightsClassGetForZoneRequestSubjectNeqList",
           "traits": {
-            "smithy.api#httpQuery": "\"subject~neq\""
+            "smithy.api#httpQuery": "subject~neq"
           }
         }
       },
@@ -2343,10 +2343,10 @@
             "smithy.api#httpQuery": "issue_class"
           }
         },
-        "_issue_class_neq_": {
+        "issue_class_neq": {
           "target": "com.cloudflare.security_center#InsightsSeverityGetForAccountRequestIssueClassNeqList",
           "traits": {
-            "smithy.api#httpQuery": "\"issue_class~neq\""
+            "smithy.api#httpQuery": "issue_class~neq"
           }
         },
         "issue_type": {
@@ -2355,10 +2355,10 @@
             "smithy.api#httpQuery": "issue_type"
           }
         },
-        "_issue_type_neq_": {
+        "issue_type_neq": {
           "target": "com.cloudflare.security_center#InsightsSeverityGetForAccountRequestIssueTypeNeqList",
           "traits": {
-            "smithy.api#httpQuery": "\"issue_type~neq\""
+            "smithy.api#httpQuery": "issue_type~neq"
           }
         },
         "product": {
@@ -2367,10 +2367,10 @@
             "smithy.api#httpQuery": "product"
           }
         },
-        "_product_neq_": {
+        "product_neq": {
           "target": "com.cloudflare.security_center#InsightsSeverityGetForAccountRequestProductNeqList",
           "traits": {
-            "smithy.api#httpQuery": "\"product~neq\""
+            "smithy.api#httpQuery": "product~neq"
           }
         },
         "severity": {
@@ -2379,10 +2379,10 @@
             "smithy.api#httpQuery": "severity"
           }
         },
-        "_severity_neq_": {
+        "severity_neq": {
           "target": "com.cloudflare.security_center#InsightsSeverityGetForAccountRequestSeverityNeqList",
           "traits": {
-            "smithy.api#httpQuery": "\"severity~neq\""
+            "smithy.api#httpQuery": "severity~neq"
           }
         },
         "subject": {
@@ -2391,10 +2391,10 @@
             "smithy.api#httpQuery": "subject"
           }
         },
-        "_subject_neq_": {
+        "subject_neq": {
           "target": "com.cloudflare.security_center#InsightsSeverityGetForAccountRequestSubjectNeqList",
           "traits": {
-            "smithy.api#httpQuery": "\"subject~neq\""
+            "smithy.api#httpQuery": "subject~neq"
           }
         }
       },
@@ -2535,10 +2535,10 @@
             "smithy.api#httpQuery": "issue_class"
           }
         },
-        "_issue_class_neq_": {
+        "issue_class_neq": {
           "target": "com.cloudflare.security_center#InsightsSeverityGetForZoneRequestIssueClassNeqList",
           "traits": {
-            "smithy.api#httpQuery": "\"issue_class~neq\""
+            "smithy.api#httpQuery": "issue_class~neq"
           }
         },
         "issue_type": {
@@ -2547,10 +2547,10 @@
             "smithy.api#httpQuery": "issue_type"
           }
         },
-        "_issue_type_neq_": {
+        "issue_type_neq": {
           "target": "com.cloudflare.security_center#InsightsSeverityGetForZoneRequestIssueTypeNeqList",
           "traits": {
-            "smithy.api#httpQuery": "\"issue_type~neq\""
+            "smithy.api#httpQuery": "issue_type~neq"
           }
         },
         "product": {
@@ -2559,10 +2559,10 @@
             "smithy.api#httpQuery": "product"
           }
         },
-        "_product_neq_": {
+        "product_neq": {
           "target": "com.cloudflare.security_center#InsightsSeverityGetForZoneRequestProductNeqList",
           "traits": {
-            "smithy.api#httpQuery": "\"product~neq\""
+            "smithy.api#httpQuery": "product~neq"
           }
         },
         "severity": {
@@ -2571,10 +2571,10 @@
             "smithy.api#httpQuery": "severity"
           }
         },
-        "_severity_neq_": {
+        "severity_neq": {
           "target": "com.cloudflare.security_center#InsightsSeverityGetForZoneRequestSeverityNeqList",
           "traits": {
-            "smithy.api#httpQuery": "\"severity~neq\""
+            "smithy.api#httpQuery": "severity~neq"
           }
         },
         "subject": {
@@ -2583,10 +2583,10 @@
             "smithy.api#httpQuery": "subject"
           }
         },
-        "_subject_neq_": {
+        "subject_neq": {
           "target": "com.cloudflare.security_center#InsightsSeverityGetForZoneRequestSubjectNeqList",
           "traits": {
-            "smithy.api#httpQuery": "\"subject~neq\""
+            "smithy.api#httpQuery": "subject~neq"
           }
         }
       },
@@ -2727,10 +2727,10 @@
             "smithy.api#httpQuery": "issue_class"
           }
         },
-        "_issue_class_neq_": {
+        "issue_class_neq": {
           "target": "com.cloudflare.security_center#InsightsTypeGetForAccountRequestIssueClassNeqList",
           "traits": {
-            "smithy.api#httpQuery": "\"issue_class~neq\""
+            "smithy.api#httpQuery": "issue_class~neq"
           }
         },
         "issue_type": {
@@ -2739,10 +2739,10 @@
             "smithy.api#httpQuery": "issue_type"
           }
         },
-        "_issue_type_neq_": {
+        "issue_type_neq": {
           "target": "com.cloudflare.security_center#InsightsTypeGetForAccountRequestIssueTypeNeqList",
           "traits": {
-            "smithy.api#httpQuery": "\"issue_type~neq\""
+            "smithy.api#httpQuery": "issue_type~neq"
           }
         },
         "product": {
@@ -2751,10 +2751,10 @@
             "smithy.api#httpQuery": "product"
           }
         },
-        "_product_neq_": {
+        "product_neq": {
           "target": "com.cloudflare.security_center#InsightsTypeGetForAccountRequestProductNeqList",
           "traits": {
-            "smithy.api#httpQuery": "\"product~neq\""
+            "smithy.api#httpQuery": "product~neq"
           }
         },
         "severity": {
@@ -2763,10 +2763,10 @@
             "smithy.api#httpQuery": "severity"
           }
         },
-        "_severity_neq_": {
+        "severity_neq": {
           "target": "com.cloudflare.security_center#InsightsTypeGetForAccountRequestSeverityNeqList",
           "traits": {
-            "smithy.api#httpQuery": "\"severity~neq\""
+            "smithy.api#httpQuery": "severity~neq"
           }
         },
         "subject": {
@@ -2775,10 +2775,10 @@
             "smithy.api#httpQuery": "subject"
           }
         },
-        "_subject_neq_": {
+        "subject_neq": {
           "target": "com.cloudflare.security_center#InsightsTypeGetForAccountRequestSubjectNeqList",
           "traits": {
-            "smithy.api#httpQuery": "\"subject~neq\""
+            "smithy.api#httpQuery": "subject~neq"
           }
         }
       },
@@ -2919,10 +2919,10 @@
             "smithy.api#httpQuery": "issue_class"
           }
         },
-        "_issue_class_neq_": {
+        "issue_class_neq": {
           "target": "com.cloudflare.security_center#InsightsTypeGetForZoneRequestIssueClassNeqList",
           "traits": {
-            "smithy.api#httpQuery": "\"issue_class~neq\""
+            "smithy.api#httpQuery": "issue_class~neq"
           }
         },
         "issue_type": {
@@ -2931,10 +2931,10 @@
             "smithy.api#httpQuery": "issue_type"
           }
         },
-        "_issue_type_neq_": {
+        "issue_type_neq": {
           "target": "com.cloudflare.security_center#InsightsTypeGetForZoneRequestIssueTypeNeqList",
           "traits": {
-            "smithy.api#httpQuery": "\"issue_type~neq\""
+            "smithy.api#httpQuery": "issue_type~neq"
           }
         },
         "product": {
@@ -2943,10 +2943,10 @@
             "smithy.api#httpQuery": "product"
           }
         },
-        "_product_neq_": {
+        "product_neq": {
           "target": "com.cloudflare.security_center#InsightsTypeGetForZoneRequestProductNeqList",
           "traits": {
-            "smithy.api#httpQuery": "\"product~neq\""
+            "smithy.api#httpQuery": "product~neq"
           }
         },
         "severity": {
@@ -2955,10 +2955,10 @@
             "smithy.api#httpQuery": "severity"
           }
         },
-        "_severity_neq_": {
+        "severity_neq": {
           "target": "com.cloudflare.security_center#InsightsTypeGetForZoneRequestSeverityNeqList",
           "traits": {
-            "smithy.api#httpQuery": "\"severity~neq\""
+            "smithy.api#httpQuery": "severity~neq"
           }
         },
         "subject": {
@@ -2967,10 +2967,10 @@
             "smithy.api#httpQuery": "subject"
           }
         },
-        "_subject_neq_": {
+        "subject_neq": {
           "target": "com.cloudflare.security_center#InsightsTypeGetForZoneRequestSubjectNeqList",
           "traits": {
-            "smithy.api#httpQuery": "\"subject~neq\""
+            "smithy.api#httpQuery": "subject~neq"
           }
         }
       },

@@ -164,15 +164,15 @@ export interface GetInsightClassForAccountRequest {
   accountId: string;
   dismissed?: boolean;
   issueClass?: InsightsClassGetForAccountRequestIssueClassList;
-  IssueClassNeq_?: InsightsClassGetForAccountRequestIssueClassNeqList;
+  issueClassNeq?: InsightsClassGetForAccountRequestIssueClassNeqList;
   issueType?: InsightsClassGetForAccountRequestIssueTypeList;
-  IssueTypeNeq_?: InsightsClassGetForAccountRequestIssueTypeNeqList;
+  issueTypeNeq?: InsightsClassGetForAccountRequestIssueTypeNeqList;
   product?: InsightsClassGetForAccountRequestProductList;
-  ProductNeq_?: InsightsClassGetForAccountRequestProductNeqList;
+  productNeq?: InsightsClassGetForAccountRequestProductNeqList;
   severity?: InsightsClassGetForAccountRequestSeverityList;
-  SeverityNeq_?: InsightsClassGetForAccountRequestSeverityNeqList;
+  severityNeq?: InsightsClassGetForAccountRequestSeverityNeqList;
   subject?: InsightsClassGetForAccountRequestSubjectList;
-  SubjectNeq_?: InsightsClassGetForAccountRequestSubjectNeqList;
+  subjectNeq?: InsightsClassGetForAccountRequestSubjectNeqList;
 }
 export const GetInsightClassForAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -183,9 +183,9 @@ export const GetInsightClassForAccountRequest = /*@__PURE__*/ S.suspend(() =>
         T.Query("issue_class"),
       ),
     ),
-    IssueClassNeq_: S.optional(
+    issueClassNeq: S.optional(
       InsightsClassGetForAccountRequestIssueClassNeqList.pipe(
-        T.Query('"issue_class~neq"'),
+        T.Query("issue_class~neq"),
       ),
     ),
     issueType: S.optional(
@@ -193,33 +193,33 @@ export const GetInsightClassForAccountRequest = /*@__PURE__*/ S.suspend(() =>
         T.Query("issue_type"),
       ),
     ),
-    IssueTypeNeq_: S.optional(
+    issueTypeNeq: S.optional(
       InsightsClassGetForAccountRequestIssueTypeNeqList.pipe(
-        T.Query('"issue_type~neq"'),
+        T.Query("issue_type~neq"),
       ),
     ),
     product: S.optional(
       InsightsClassGetForAccountRequestProductList.pipe(T.Query()),
     ),
-    ProductNeq_: S.optional(
+    productNeq: S.optional(
       InsightsClassGetForAccountRequestProductNeqList.pipe(
-        T.Query('"product~neq"'),
+        T.Query("product~neq"),
       ),
     ),
     severity: S.optional(
       InsightsClassGetForAccountRequestSeverityList.pipe(T.Query()),
     ),
-    SeverityNeq_: S.optional(
+    severityNeq: S.optional(
       InsightsClassGetForAccountRequestSeverityNeqList.pipe(
-        T.Query('"severity~neq"'),
+        T.Query("severity~neq"),
       ),
     ),
     subject: S.optional(
       InsightsClassGetForAccountRequestSubjectList.pipe(T.Query()),
     ),
-    SubjectNeq_: S.optional(
+    subjectNeq: S.optional(
       InsightsClassGetForAccountRequestSubjectNeqList.pipe(
-        T.Query('"subject~neq"'),
+        T.Query("subject~neq"),
       ),
     ),
   })
@@ -325,15 +325,15 @@ export interface GetInsightClassForZoneRequest {
   zoneId: string;
   dismissed?: boolean;
   issueClass?: InsightsClassGetForZoneRequestIssueClassList;
-  IssueClassNeq_?: InsightsClassGetForZoneRequestIssueClassNeqList;
+  issueClassNeq?: InsightsClassGetForZoneRequestIssueClassNeqList;
   issueType?: InsightsClassGetForZoneRequestIssueTypeList;
-  IssueTypeNeq_?: InsightsClassGetForZoneRequestIssueTypeNeqList;
+  issueTypeNeq?: InsightsClassGetForZoneRequestIssueTypeNeqList;
   product?: InsightsClassGetForZoneRequestProductList;
-  ProductNeq_?: InsightsClassGetForZoneRequestProductNeqList;
+  productNeq?: InsightsClassGetForZoneRequestProductNeqList;
   severity?: InsightsClassGetForZoneRequestSeverityList;
-  SeverityNeq_?: InsightsClassGetForZoneRequestSeverityNeqList;
+  severityNeq?: InsightsClassGetForZoneRequestSeverityNeqList;
   subject?: InsightsClassGetForZoneRequestSubjectList;
-  SubjectNeq_?: InsightsClassGetForZoneRequestSubjectNeqList;
+  subjectNeq?: InsightsClassGetForZoneRequestSubjectNeqList;
 }
 export const GetInsightClassForZoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -342,42 +342,38 @@ export const GetInsightClassForZoneRequest = /*@__PURE__*/ S.suspend(() =>
     issueClass: S.optional(
       InsightsClassGetForZoneRequestIssueClassList.pipe(T.Query("issue_class")),
     ),
-    IssueClassNeq_: S.optional(
+    issueClassNeq: S.optional(
       InsightsClassGetForZoneRequestIssueClassNeqList.pipe(
-        T.Query('"issue_class~neq"'),
+        T.Query("issue_class~neq"),
       ),
     ),
     issueType: S.optional(
       InsightsClassGetForZoneRequestIssueTypeList.pipe(T.Query("issue_type")),
     ),
-    IssueTypeNeq_: S.optional(
+    issueTypeNeq: S.optional(
       InsightsClassGetForZoneRequestIssueTypeNeqList.pipe(
-        T.Query('"issue_type~neq"'),
+        T.Query("issue_type~neq"),
       ),
     ),
     product: S.optional(
       InsightsClassGetForZoneRequestProductList.pipe(T.Query()),
     ),
-    ProductNeq_: S.optional(
-      InsightsClassGetForZoneRequestProductNeqList.pipe(
-        T.Query('"product~neq"'),
-      ),
+    productNeq: S.optional(
+      InsightsClassGetForZoneRequestProductNeqList.pipe(T.Query("product~neq")),
     ),
     severity: S.optional(
       InsightsClassGetForZoneRequestSeverityList.pipe(T.Query()),
     ),
-    SeverityNeq_: S.optional(
+    severityNeq: S.optional(
       InsightsClassGetForZoneRequestSeverityNeqList.pipe(
-        T.Query('"severity~neq"'),
+        T.Query("severity~neq"),
       ),
     ),
     subject: S.optional(
       InsightsClassGetForZoneRequestSubjectList.pipe(T.Query()),
     ),
-    SubjectNeq_: S.optional(
-      InsightsClassGetForZoneRequestSubjectNeqList.pipe(
-        T.Query('"subject~neq"'),
-      ),
+    subjectNeq: S.optional(
+      InsightsClassGetForZoneRequestSubjectNeqList.pipe(T.Query("subject~neq")),
     ),
   })
     .pipe(
@@ -520,15 +516,15 @@ export interface GetInsightSeverityForAccountRequest {
   accountId: string;
   dismissed?: boolean;
   issueClass?: InsightsSeverityGetForAccountRequestIssueClassList;
-  IssueClassNeq_?: InsightsSeverityGetForAccountRequestIssueClassNeqList;
+  issueClassNeq?: InsightsSeverityGetForAccountRequestIssueClassNeqList;
   issueType?: InsightsSeverityGetForAccountRequestIssueTypeList;
-  IssueTypeNeq_?: InsightsSeverityGetForAccountRequestIssueTypeNeqList;
+  issueTypeNeq?: InsightsSeverityGetForAccountRequestIssueTypeNeqList;
   product?: InsightsSeverityGetForAccountRequestProductList;
-  ProductNeq_?: InsightsSeverityGetForAccountRequestProductNeqList;
+  productNeq?: InsightsSeverityGetForAccountRequestProductNeqList;
   severity?: InsightsSeverityGetForAccountRequestSeverityList;
-  SeverityNeq_?: InsightsSeverityGetForAccountRequestSeverityNeqList;
+  severityNeq?: InsightsSeverityGetForAccountRequestSeverityNeqList;
   subject?: InsightsSeverityGetForAccountRequestSubjectList;
-  SubjectNeq_?: InsightsSeverityGetForAccountRequestSubjectNeqList;
+  subjectNeq?: InsightsSeverityGetForAccountRequestSubjectNeqList;
 }
 export const GetInsightSeverityForAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -539,9 +535,9 @@ export const GetInsightSeverityForAccountRequest = /*@__PURE__*/ S.suspend(() =>
         T.Query("issue_class"),
       ),
     ),
-    IssueClassNeq_: S.optional(
+    issueClassNeq: S.optional(
       InsightsSeverityGetForAccountRequestIssueClassNeqList.pipe(
-        T.Query('"issue_class~neq"'),
+        T.Query("issue_class~neq"),
       ),
     ),
     issueType: S.optional(
@@ -549,33 +545,33 @@ export const GetInsightSeverityForAccountRequest = /*@__PURE__*/ S.suspend(() =>
         T.Query("issue_type"),
       ),
     ),
-    IssueTypeNeq_: S.optional(
+    issueTypeNeq: S.optional(
       InsightsSeverityGetForAccountRequestIssueTypeNeqList.pipe(
-        T.Query('"issue_type~neq"'),
+        T.Query("issue_type~neq"),
       ),
     ),
     product: S.optional(
       InsightsSeverityGetForAccountRequestProductList.pipe(T.Query()),
     ),
-    ProductNeq_: S.optional(
+    productNeq: S.optional(
       InsightsSeverityGetForAccountRequestProductNeqList.pipe(
-        T.Query('"product~neq"'),
+        T.Query("product~neq"),
       ),
     ),
     severity: S.optional(
       InsightsSeverityGetForAccountRequestSeverityList.pipe(T.Query()),
     ),
-    SeverityNeq_: S.optional(
+    severityNeq: S.optional(
       InsightsSeverityGetForAccountRequestSeverityNeqList.pipe(
-        T.Query('"severity~neq"'),
+        T.Query("severity~neq"),
       ),
     ),
     subject: S.optional(
       InsightsSeverityGetForAccountRequestSubjectList.pipe(T.Query()),
     ),
-    SubjectNeq_: S.optional(
+    subjectNeq: S.optional(
       InsightsSeverityGetForAccountRequestSubjectNeqList.pipe(
-        T.Query('"subject~neq"'),
+        T.Query("subject~neq"),
       ),
     ),
   })
@@ -684,15 +680,15 @@ export interface GetInsightSeverityForZoneRequest {
   zoneId: string;
   dismissed?: boolean;
   issueClass?: InsightsSeverityGetForZoneRequestIssueClassList;
-  IssueClassNeq_?: InsightsSeverityGetForZoneRequestIssueClassNeqList;
+  issueClassNeq?: InsightsSeverityGetForZoneRequestIssueClassNeqList;
   issueType?: InsightsSeverityGetForZoneRequestIssueTypeList;
-  IssueTypeNeq_?: InsightsSeverityGetForZoneRequestIssueTypeNeqList;
+  issueTypeNeq?: InsightsSeverityGetForZoneRequestIssueTypeNeqList;
   product?: InsightsSeverityGetForZoneRequestProductList;
-  ProductNeq_?: InsightsSeverityGetForZoneRequestProductNeqList;
+  productNeq?: InsightsSeverityGetForZoneRequestProductNeqList;
   severity?: InsightsSeverityGetForZoneRequestSeverityList;
-  SeverityNeq_?: InsightsSeverityGetForZoneRequestSeverityNeqList;
+  severityNeq?: InsightsSeverityGetForZoneRequestSeverityNeqList;
   subject?: InsightsSeverityGetForZoneRequestSubjectList;
-  SubjectNeq_?: InsightsSeverityGetForZoneRequestSubjectNeqList;
+  subjectNeq?: InsightsSeverityGetForZoneRequestSubjectNeqList;
 }
 export const GetInsightSeverityForZoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -703,9 +699,9 @@ export const GetInsightSeverityForZoneRequest = /*@__PURE__*/ S.suspend(() =>
         T.Query("issue_class"),
       ),
     ),
-    IssueClassNeq_: S.optional(
+    issueClassNeq: S.optional(
       InsightsSeverityGetForZoneRequestIssueClassNeqList.pipe(
-        T.Query('"issue_class~neq"'),
+        T.Query("issue_class~neq"),
       ),
     ),
     issueType: S.optional(
@@ -713,33 +709,33 @@ export const GetInsightSeverityForZoneRequest = /*@__PURE__*/ S.suspend(() =>
         T.Query("issue_type"),
       ),
     ),
-    IssueTypeNeq_: S.optional(
+    issueTypeNeq: S.optional(
       InsightsSeverityGetForZoneRequestIssueTypeNeqList.pipe(
-        T.Query('"issue_type~neq"'),
+        T.Query("issue_type~neq"),
       ),
     ),
     product: S.optional(
       InsightsSeverityGetForZoneRequestProductList.pipe(T.Query()),
     ),
-    ProductNeq_: S.optional(
+    productNeq: S.optional(
       InsightsSeverityGetForZoneRequestProductNeqList.pipe(
-        T.Query('"product~neq"'),
+        T.Query("product~neq"),
       ),
     ),
     severity: S.optional(
       InsightsSeverityGetForZoneRequestSeverityList.pipe(T.Query()),
     ),
-    SeverityNeq_: S.optional(
+    severityNeq: S.optional(
       InsightsSeverityGetForZoneRequestSeverityNeqList.pipe(
-        T.Query('"severity~neq"'),
+        T.Query("severity~neq"),
       ),
     ),
     subject: S.optional(
       InsightsSeverityGetForZoneRequestSubjectList.pipe(T.Query()),
     ),
-    SubjectNeq_: S.optional(
+    subjectNeq: S.optional(
       InsightsSeverityGetForZoneRequestSubjectNeqList.pipe(
-        T.Query('"subject~neq"'),
+        T.Query("subject~neq"),
       ),
     ),
   })
@@ -848,15 +844,15 @@ export interface GetInsightTypeForAccountRequest {
   accountId: string;
   dismissed?: boolean;
   issueClass?: InsightsTypeGetForAccountRequestIssueClassList;
-  IssueClassNeq_?: InsightsTypeGetForAccountRequestIssueClassNeqList;
+  issueClassNeq?: InsightsTypeGetForAccountRequestIssueClassNeqList;
   issueType?: InsightsTypeGetForAccountRequestIssueTypeList;
-  IssueTypeNeq_?: InsightsTypeGetForAccountRequestIssueTypeNeqList;
+  issueTypeNeq?: InsightsTypeGetForAccountRequestIssueTypeNeqList;
   product?: InsightsTypeGetForAccountRequestProductList;
-  ProductNeq_?: InsightsTypeGetForAccountRequestProductNeqList;
+  productNeq?: InsightsTypeGetForAccountRequestProductNeqList;
   severity?: InsightsTypeGetForAccountRequestSeverityList;
-  SeverityNeq_?: InsightsTypeGetForAccountRequestSeverityNeqList;
+  severityNeq?: InsightsTypeGetForAccountRequestSeverityNeqList;
   subject?: InsightsTypeGetForAccountRequestSubjectList;
-  SubjectNeq_?: InsightsTypeGetForAccountRequestSubjectNeqList;
+  subjectNeq?: InsightsTypeGetForAccountRequestSubjectNeqList;
 }
 export const GetInsightTypeForAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -867,41 +863,41 @@ export const GetInsightTypeForAccountRequest = /*@__PURE__*/ S.suspend(() =>
         T.Query("issue_class"),
       ),
     ),
-    IssueClassNeq_: S.optional(
+    issueClassNeq: S.optional(
       InsightsTypeGetForAccountRequestIssueClassNeqList.pipe(
-        T.Query('"issue_class~neq"'),
+        T.Query("issue_class~neq"),
       ),
     ),
     issueType: S.optional(
       InsightsTypeGetForAccountRequestIssueTypeList.pipe(T.Query("issue_type")),
     ),
-    IssueTypeNeq_: S.optional(
+    issueTypeNeq: S.optional(
       InsightsTypeGetForAccountRequestIssueTypeNeqList.pipe(
-        T.Query('"issue_type~neq"'),
+        T.Query("issue_type~neq"),
       ),
     ),
     product: S.optional(
       InsightsTypeGetForAccountRequestProductList.pipe(T.Query()),
     ),
-    ProductNeq_: S.optional(
+    productNeq: S.optional(
       InsightsTypeGetForAccountRequestProductNeqList.pipe(
-        T.Query('"product~neq"'),
+        T.Query("product~neq"),
       ),
     ),
     severity: S.optional(
       InsightsTypeGetForAccountRequestSeverityList.pipe(T.Query()),
     ),
-    SeverityNeq_: S.optional(
+    severityNeq: S.optional(
       InsightsTypeGetForAccountRequestSeverityNeqList.pipe(
-        T.Query('"severity~neq"'),
+        T.Query("severity~neq"),
       ),
     ),
     subject: S.optional(
       InsightsTypeGetForAccountRequestSubjectList.pipe(T.Query()),
     ),
-    SubjectNeq_: S.optional(
+    subjectNeq: S.optional(
       InsightsTypeGetForAccountRequestSubjectNeqList.pipe(
-        T.Query('"subject~neq"'),
+        T.Query("subject~neq"),
       ),
     ),
   })
@@ -1005,15 +1001,15 @@ export interface GetInsightTypeForZoneRequest {
   zoneId: string;
   dismissed?: boolean;
   issueClass?: InsightsTypeGetForZoneRequestIssueClassList;
-  IssueClassNeq_?: InsightsTypeGetForZoneRequestIssueClassNeqList;
+  issueClassNeq?: InsightsTypeGetForZoneRequestIssueClassNeqList;
   issueType?: InsightsTypeGetForZoneRequestIssueTypeList;
-  IssueTypeNeq_?: InsightsTypeGetForZoneRequestIssueTypeNeqList;
+  issueTypeNeq?: InsightsTypeGetForZoneRequestIssueTypeNeqList;
   product?: InsightsTypeGetForZoneRequestProductList;
-  ProductNeq_?: InsightsTypeGetForZoneRequestProductNeqList;
+  productNeq?: InsightsTypeGetForZoneRequestProductNeqList;
   severity?: InsightsTypeGetForZoneRequestSeverityList;
-  SeverityNeq_?: InsightsTypeGetForZoneRequestSeverityNeqList;
+  severityNeq?: InsightsTypeGetForZoneRequestSeverityNeqList;
   subject?: InsightsTypeGetForZoneRequestSubjectList;
-  SubjectNeq_?: InsightsTypeGetForZoneRequestSubjectNeqList;
+  subjectNeq?: InsightsTypeGetForZoneRequestSubjectNeqList;
 }
 export const GetInsightTypeForZoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1022,42 +1018,38 @@ export const GetInsightTypeForZoneRequest = /*@__PURE__*/ S.suspend(() =>
     issueClass: S.optional(
       InsightsTypeGetForZoneRequestIssueClassList.pipe(T.Query("issue_class")),
     ),
-    IssueClassNeq_: S.optional(
+    issueClassNeq: S.optional(
       InsightsTypeGetForZoneRequestIssueClassNeqList.pipe(
-        T.Query('"issue_class~neq"'),
+        T.Query("issue_class~neq"),
       ),
     ),
     issueType: S.optional(
       InsightsTypeGetForZoneRequestIssueTypeList.pipe(T.Query("issue_type")),
     ),
-    IssueTypeNeq_: S.optional(
+    issueTypeNeq: S.optional(
       InsightsTypeGetForZoneRequestIssueTypeNeqList.pipe(
-        T.Query('"issue_type~neq"'),
+        T.Query("issue_type~neq"),
       ),
     ),
     product: S.optional(
       InsightsTypeGetForZoneRequestProductList.pipe(T.Query()),
     ),
-    ProductNeq_: S.optional(
-      InsightsTypeGetForZoneRequestProductNeqList.pipe(
-        T.Query('"product~neq"'),
-      ),
+    productNeq: S.optional(
+      InsightsTypeGetForZoneRequestProductNeqList.pipe(T.Query("product~neq")),
     ),
     severity: S.optional(
       InsightsTypeGetForZoneRequestSeverityList.pipe(T.Query()),
     ),
-    SeverityNeq_: S.optional(
+    severityNeq: S.optional(
       InsightsTypeGetForZoneRequestSeverityNeqList.pipe(
-        T.Query('"severity~neq"'),
+        T.Query("severity~neq"),
       ),
     ),
     subject: S.optional(
       InsightsTypeGetForZoneRequestSubjectList.pipe(T.Query()),
     ),
-    SubjectNeq_: S.optional(
-      InsightsTypeGetForZoneRequestSubjectNeqList.pipe(
-        T.Query('"subject~neq"'),
-      ),
+    subjectNeq: S.optional(
+      InsightsTypeGetForZoneRequestSubjectNeqList.pipe(T.Query("subject~neq")),
     ),
   })
     .pipe(
@@ -1694,19 +1686,19 @@ export interface ListInsightsForAccountRequest {
   accountId: string;
   dismissed?: boolean;
   issueClass?: InsightsListForAccountRequestIssueClassList;
-  IssueClassNeq_?: InsightsListForAccountRequestIssueClassNeqList;
+  issueClassNeq?: InsightsListForAccountRequestIssueClassNeqList;
   issueType?: InsightsListForAccountRequestIssueTypeList;
-  IssueTypeNeq_?: InsightsListForAccountRequestIssueTypeNeqList;
+  issueTypeNeq?: InsightsListForAccountRequestIssueTypeNeqList;
   /** Specifies the current page within paginated list of results. */
   page?: number;
   /** Sets the number of results per page of results. */
   perPage?: number;
   product?: InsightsListForAccountRequestProductList;
-  ProductNeq_?: InsightsListForAccountRequestProductNeqList;
+  productNeq?: InsightsListForAccountRequestProductNeqList;
   severity?: InsightsListForAccountRequestSeverityList;
-  SeverityNeq_?: InsightsListForAccountRequestSeverityNeqList;
+  severityNeq?: InsightsListForAccountRequestSeverityNeqList;
   subject?: InsightsListForAccountRequestSubjectList;
-  SubjectNeq_?: InsightsListForAccountRequestSubjectNeqList;
+  subjectNeq?: InsightsListForAccountRequestSubjectNeqList;
 }
 export const ListInsightsForAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1715,17 +1707,17 @@ export const ListInsightsForAccountRequest = /*@__PURE__*/ S.suspend(() =>
     issueClass: S.optional(
       InsightsListForAccountRequestIssueClassList.pipe(T.Query("issue_class")),
     ),
-    IssueClassNeq_: S.optional(
+    issueClassNeq: S.optional(
       InsightsListForAccountRequestIssueClassNeqList.pipe(
-        T.Query('"issue_class~neq"'),
+        T.Query("issue_class~neq"),
       ),
     ),
     issueType: S.optional(
       InsightsListForAccountRequestIssueTypeList.pipe(T.Query("issue_type")),
     ),
-    IssueTypeNeq_: S.optional(
+    issueTypeNeq: S.optional(
       InsightsListForAccountRequestIssueTypeNeqList.pipe(
-        T.Query('"issue_type~neq"'),
+        T.Query("issue_type~neq"),
       ),
     ),
     page: S.optional(S.Number.pipe(T.Query())),
@@ -1733,26 +1725,22 @@ export const ListInsightsForAccountRequest = /*@__PURE__*/ S.suspend(() =>
     product: S.optional(
       InsightsListForAccountRequestProductList.pipe(T.Query()),
     ),
-    ProductNeq_: S.optional(
-      InsightsListForAccountRequestProductNeqList.pipe(
-        T.Query('"product~neq"'),
-      ),
+    productNeq: S.optional(
+      InsightsListForAccountRequestProductNeqList.pipe(T.Query("product~neq")),
     ),
     severity: S.optional(
       InsightsListForAccountRequestSeverityList.pipe(T.Query()),
     ),
-    SeverityNeq_: S.optional(
+    severityNeq: S.optional(
       InsightsListForAccountRequestSeverityNeqList.pipe(
-        T.Query('"severity~neq"'),
+        T.Query("severity~neq"),
       ),
     ),
     subject: S.optional(
       InsightsListForAccountRequestSubjectList.pipe(T.Query()),
     ),
-    SubjectNeq_: S.optional(
-      InsightsListForAccountRequestSubjectNeqList.pipe(
-        T.Query('"subject~neq"'),
-      ),
+    subjectNeq: S.optional(
+      InsightsListForAccountRequestSubjectNeqList.pipe(T.Query("subject~neq")),
     ),
   })
     .pipe(
@@ -1935,19 +1923,19 @@ export interface ListInsightsForZoneRequest {
   zoneId: string;
   dismissed?: boolean;
   issueClass?: InsightsListForZoneRequestIssueClassList;
-  IssueClassNeq_?: InsightsListForZoneRequestIssueClassNeqList;
+  issueClassNeq?: InsightsListForZoneRequestIssueClassNeqList;
   issueType?: InsightsListForZoneRequestIssueTypeList;
-  IssueTypeNeq_?: InsightsListForZoneRequestIssueTypeNeqList;
+  issueTypeNeq?: InsightsListForZoneRequestIssueTypeNeqList;
   /** Specifies the current page within paginated list of results. */
   page?: number;
   /** Sets the number of results per page of results. */
   perPage?: number;
   product?: InsightsListForZoneRequestProductList;
-  ProductNeq_?: InsightsListForZoneRequestProductNeqList;
+  productNeq?: InsightsListForZoneRequestProductNeqList;
   severity?: InsightsListForZoneRequestSeverityList;
-  SeverityNeq_?: InsightsListForZoneRequestSeverityNeqList;
+  severityNeq?: InsightsListForZoneRequestSeverityNeqList;
   subject?: InsightsListForZoneRequestSubjectList;
-  SubjectNeq_?: InsightsListForZoneRequestSubjectNeqList;
+  subjectNeq?: InsightsListForZoneRequestSubjectNeqList;
 }
 export const ListInsightsForZoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1956,34 +1944,34 @@ export const ListInsightsForZoneRequest = /*@__PURE__*/ S.suspend(() =>
     issueClass: S.optional(
       InsightsListForZoneRequestIssueClassList.pipe(T.Query("issue_class")),
     ),
-    IssueClassNeq_: S.optional(
+    issueClassNeq: S.optional(
       InsightsListForZoneRequestIssueClassNeqList.pipe(
-        T.Query('"issue_class~neq"'),
+        T.Query("issue_class~neq"),
       ),
     ),
     issueType: S.optional(
       InsightsListForZoneRequestIssueTypeList.pipe(T.Query("issue_type")),
     ),
-    IssueTypeNeq_: S.optional(
+    issueTypeNeq: S.optional(
       InsightsListForZoneRequestIssueTypeNeqList.pipe(
-        T.Query('"issue_type~neq"'),
+        T.Query("issue_type~neq"),
       ),
     ),
     page: S.optional(S.Number.pipe(T.Query())),
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
     product: S.optional(InsightsListForZoneRequestProductList.pipe(T.Query())),
-    ProductNeq_: S.optional(
-      InsightsListForZoneRequestProductNeqList.pipe(T.Query('"product~neq"')),
+    productNeq: S.optional(
+      InsightsListForZoneRequestProductNeqList.pipe(T.Query("product~neq")),
     ),
     severity: S.optional(
       InsightsListForZoneRequestSeverityList.pipe(T.Query()),
     ),
-    SeverityNeq_: S.optional(
-      InsightsListForZoneRequestSeverityNeqList.pipe(T.Query('"severity~neq"')),
+    severityNeq: S.optional(
+      InsightsListForZoneRequestSeverityNeqList.pipe(T.Query("severity~neq")),
     ),
     subject: S.optional(InsightsListForZoneRequestSubjectList.pipe(T.Query())),
-    SubjectNeq_: S.optional(
-      InsightsListForZoneRequestSubjectNeqList.pipe(T.Query('"subject~neq"')),
+    subjectNeq: S.optional(
+      InsightsListForZoneRequestSubjectNeqList.pipe(T.Query("subject~neq")),
     ),
   })
     .pipe(

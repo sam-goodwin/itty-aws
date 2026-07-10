@@ -3292,11 +3292,11 @@
     "com.cloudflare.cloudforce_one#ScansResultsGetResponse": {
       "type": "structure",
       "members": {
-        "_1_1_1_1_": {
+        "_1_1_1_1": {
           "target": "com.cloudflare.cloudforce_one#ScansResultsGetResponse1111List",
           "traits": {
             "smithy.api#required": {},
-            "smithy.api#jsonName": "\"1.1.1.1\""
+            "smithy.api#jsonName": "1.1.1.1"
           }
         }
       },

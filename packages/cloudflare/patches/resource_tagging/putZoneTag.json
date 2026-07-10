@@ -109,6 +109,11 @@
           "target": "com.cloudflare.resource_tagging#TagPreconditionFailed"
         }
       ]
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.resource_tagging#PutZoneTagRequest/members/If_Match",
+      "path": "/shapes/com.cloudflare.resource_tagging#PutZoneTagRequest/members/ifMatch"
     }
   ]
 }

@@ -8990,23 +8990,23 @@ export interface VersionDevtoolBrowserResponse {
   /** Browser name and version. */
   Browser: string;
   /** Chrome DevTools Protocol version. */
-  ProtocolVersion_: string;
+  ProtocolVersion: string;
   /** User agent string. */
-  UserAgent_: string;
+  UserAgent: string;
   /** V8 JavaScript engine version. */
-  V8Version_: string;
+  V8Version: string;
   /** WebKit version. */
-  WebKitVersion_: string;
+  WebKitVersion: string;
   /** WebSocket URL for debugging the browser. */
   webSocketDebuggerUrl: string;
 }
 export const VersionDevtoolBrowserResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Browser: S.String,
-    ProtocolVersion_: S.String.pipe(T.Body('"Protocol-Version"')),
-    UserAgent_: S.String.pipe(T.Body('"User-Agent"')),
-    V8Version_: S.String.pipe(T.Body('"V8-Version"')),
-    WebKitVersion_: S.String.pipe(T.Body('"WebKit-Version"')),
+    ProtocolVersion: S.String.pipe(T.Body("Protocol-Version")),
+    UserAgent: S.String.pipe(T.Body("User-Agent")),
+    V8Version: S.String.pipe(T.Body("V8-Version")),
+    WebKitVersion: S.String.pipe(T.Body("WebKit-Version")),
     webSocketDebuggerUrl: S.String,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({

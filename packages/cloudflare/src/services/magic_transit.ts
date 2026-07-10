@@ -434,16 +434,16 @@ export class SiteWanNotFound extends T.applyErrorMatchers(
 export interface BulkPutCfInterconnectsRequest {
   /** Identifier */
   accountId: string;
-  XMagicNewHcTarget_?: boolean;
   body: unknown;
+  xMagicNewHcTarget?: boolean;
 }
 export const BulkPutCfInterconnectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-    XMagicNewHcTarget_: S.optional(
-      S.Boolean.pipe(T.Header('"x-magic-new-hc-target"')),
-    ),
     body: S.Unknown.pipe(T.HttpBody()),
+    xMagicNewHcTarget: S.optional(
+      S.Boolean.pipe(T.Header("x-magic-new-hc-target")),
+    ),
   })
     .pipe(
       T.Http({
@@ -604,16 +604,16 @@ export const BulkPutCfInterconnectsResponse = /*@__PURE__*/ S.suspend(() =>
 export interface BulkPutGreTunnelsRequest {
   /** Identifier */
   accountId: string;
-  XMagicNewHcTarget_?: boolean;
   body: unknown;
+  xMagicNewHcTarget?: boolean;
 }
 export const BulkPutGreTunnelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-    XMagicNewHcTarget_: S.optional(
-      S.Boolean.pipe(T.Header('"x-magic-new-hc-target"')),
-    ),
     body: S.Unknown.pipe(T.HttpBody()),
+    xMagicNewHcTarget: S.optional(
+      S.Boolean.pipe(T.Header("x-magic-new-hc-target")),
+    ),
   })
     .pipe(
       T.Http({
@@ -846,16 +846,16 @@ export const BulkPutGreTunnelsResponse = /*@__PURE__*/ S.suspend(() =>
 export interface BulkPutIpsecTunnelsRequest {
   /** Identifier */
   accountId: string;
-  XMagicNewHcTarget_?: boolean;
   body: unknown;
+  xMagicNewHcTarget?: boolean;
 }
 export const BulkPutIpsecTunnelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-    XMagicNewHcTarget_: S.optional(
-      S.Boolean.pipe(T.Header('"x-magic-new-hc-target"')),
-    ),
     body: S.Unknown.pipe(T.HttpBody()),
+    xMagicNewHcTarget: S.optional(
+      S.Boolean.pipe(T.Header("x-magic-new-hc-target")),
+    ),
   })
     .pipe(
       T.Http({
@@ -1997,7 +1997,6 @@ export const GreTunnelsCreateRequestHealthCheck = /*@__PURE__*/ S.suspend(() =>
 export interface CreateGreTunnelRequest {
   /** Identifier */
   accountId: string;
-  XMagicNewHcTarget_?: boolean;
   /** The IP address assigned to the Cloudflare side of the GRE tunnel. */
   cloudflareGreEndpoint: string;
   /** The IP address assigned to the customer side of the GRE tunnel. */
@@ -2018,13 +2017,11 @@ export interface CreateGreTunnelRequest {
   mtu?: number;
   /** Time To Live (TTL) in number of hops of the GRE tunnel. */
   ttl?: number;
+  xMagicNewHcTarget?: boolean;
 }
 export const CreateGreTunnelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-    XMagicNewHcTarget_: S.optional(
-      S.Boolean.pipe(T.Header('"x-magic-new-hc-target"')),
-    ),
     cloudflareGreEndpoint: S.String.pipe(T.Body("cloudflare_gre_endpoint")),
     customerGreEndpoint: S.String.pipe(T.Body("customer_gre_endpoint")),
     interfaceAddress: S.String.pipe(T.Body("interface_address")),
@@ -2040,6 +2037,9 @@ export const CreateGreTunnelRequest = /*@__PURE__*/ S.suspend(() =>
     interfaceAddress6: S.optional(S.String.pipe(T.Body("interface_address6"))),
     mtu: S.optional(S.Number),
     ttl: S.optional(S.Number),
+    xMagicNewHcTarget: S.optional(
+      S.Boolean.pipe(T.Header("x-magic-new-hc-target")),
+    ),
   })
     .pipe(
       T.Http({
@@ -2328,7 +2328,6 @@ export const IpsecTunnelsCreateRequestHealthCheck = /*@__PURE__*/ S.suspend(
 export interface CreateIpsecTunnelRequest {
   /** Identifier */
   accountId: string;
-  XMagicNewHcTarget_?: boolean;
   /** The IP address assigned to the Cloudflare side of the IPsec tunnel. */
   cloudflareEndpoint: string;
   /** A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255. */
@@ -2350,13 +2349,11 @@ export interface CreateIpsecTunnelRequest {
   psk?: string;
   /** If `true`, then IPsec replay protection will be supported in the Cloudflare-to-customer direction. */
   replayProtection?: boolean;
+  xMagicNewHcTarget?: boolean;
 }
 export const CreateIpsecTunnelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-    XMagicNewHcTarget_: S.optional(
-      S.Boolean.pipe(T.Header('"x-magic-new-hc-target"')),
-    ),
     cloudflareEndpoint: S.String.pipe(T.Body("cloudflare_endpoint")),
     interfaceAddress: S.String.pipe(T.Body("interface_address")),
     name: S.String,
@@ -2377,6 +2374,9 @@ export const CreateIpsecTunnelRequest = /*@__PURE__*/ S.suspend(() =>
     interfaceAddress6: S.optional(S.String.pipe(T.Body("interface_address6"))),
     psk: S.optional(S.String),
     replayProtection: S.optional(S.Boolean.pipe(T.Body("replay_protection"))),
+    xMagicNewHcTarget: S.optional(
+      S.Boolean.pipe(T.Header("x-magic-new-hc-target")),
+    ),
   })
     .pipe(
       T.Http({
@@ -4310,14 +4310,14 @@ export interface DeleteGreTunnelRequest {
   accountId: string;
   /** Identifier */
   greTunnelId: string;
-  XMagicNewHcTarget_?: boolean;
+  xMagicNewHcTarget?: boolean;
 }
 export const DeleteGreTunnelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     greTunnelId: S.String.pipe(T.Label("gre_tunnel_id")),
-    XMagicNewHcTarget_: S.optional(
-      S.Boolean.pipe(T.Header('"x-magic-new-hc-target"')),
+    xMagicNewHcTarget: S.optional(
+      S.Boolean.pipe(T.Header("x-magic-new-hc-target")),
     ),
   })
     .pipe(
@@ -4547,14 +4547,14 @@ export interface DeleteIpsecTunnelRequest {
   accountId: string;
   /** Identifier */
   ipsecTunnelId: string;
-  XMagicNewHcTarget_?: boolean;
+  xMagicNewHcTarget?: boolean;
 }
 export const DeleteIpsecTunnelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     ipsecTunnelId: S.String.pipe(T.Label("ipsec_tunnel_id")),
-    XMagicNewHcTarget_: S.optional(
-      S.Boolean.pipe(T.Header('"x-magic-new-hc-target"')),
+    xMagicNewHcTarget: S.optional(
+      S.Boolean.pipe(T.Header("x-magic-new-hc-target")),
     ),
   })
     .pipe(
@@ -5784,14 +5784,14 @@ export interface GetCfInterconnectRequest {
   accountId: string;
   /** Identifier */
   cfInterconnectId: string;
-  XMagicNewHcTarget_?: boolean;
+  xMagicNewHcTarget?: boolean;
 }
 export const GetCfInterconnectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     cfInterconnectId: S.String.pipe(T.Label("cf_interconnect_id")),
-    XMagicNewHcTarget_: S.optional(
-      S.Boolean.pipe(T.Header('"x-magic-new-hc-target"')),
+    xMagicNewHcTarget: S.optional(
+      S.Boolean.pipe(T.Header("x-magic-new-hc-target")),
     ),
   })
     .pipe(
@@ -7673,14 +7673,14 @@ export interface GetGreTunnelRequest {
   accountId: string;
   /** Identifier */
   greTunnelId: string;
-  XMagicNewHcTarget_?: boolean;
+  xMagicNewHcTarget?: boolean;
 }
 export const GetGreTunnelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     greTunnelId: S.String.pipe(T.Label("gre_tunnel_id")),
-    XMagicNewHcTarget_: S.optional(
-      S.Boolean.pipe(T.Header('"x-magic-new-hc-target"')),
+    xMagicNewHcTarget: S.optional(
+      S.Boolean.pipe(T.Header("x-magic-new-hc-target")),
     ),
   })
     .pipe(
@@ -7893,14 +7893,14 @@ export interface GetIpsecTunnelRequest {
   accountId: string;
   /** Identifier */
   ipsecTunnelId: string;
-  XMagicNewHcTarget_?: boolean;
+  xMagicNewHcTarget?: boolean;
 }
 export const GetIpsecTunnelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     ipsecTunnelId: S.String.pipe(T.Label("ipsec_tunnel_id")),
-    XMagicNewHcTarget_: S.optional(
-      S.Boolean.pipe(T.Header('"x-magic-new-hc-target"')),
+    xMagicNewHcTarget: S.optional(
+      S.Boolean.pipe(T.Header("x-magic-new-hc-target")),
     ),
   })
     .pipe(
@@ -8473,14 +8473,14 @@ export interface GetSiteRequest {
   accountId: string;
   /** Identifier */
   siteId: string;
-  XMagicNewHcTarget_?: boolean;
+  xMagicNewHcTarget?: boolean;
 }
 export const GetSiteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     siteId: S.String.pipe(T.Label("site_id")),
-    XMagicNewHcTarget_: S.optional(
-      S.Boolean.pipe(T.Header('"x-magic-new-hc-target"')),
+    xMagicNewHcTarget: S.optional(
+      S.Boolean.pipe(T.Header("x-magic-new-hc-target")),
     ),
   })
     .pipe(
@@ -9302,13 +9302,13 @@ export const ListCf1SitesResponse = /*@__PURE__*/ S.suspend(() =>
 export interface ListCfInterconnectsRequest {
   /** Identifier */
   accountId: string;
-  XMagicNewHcTarget_?: boolean;
+  xMagicNewHcTarget?: boolean;
 }
 export const ListCfInterconnectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-    XMagicNewHcTarget_: S.optional(
-      S.Boolean.pipe(T.Header('"x-magic-new-hc-target"')),
+    xMagicNewHcTarget: S.optional(
+      S.Boolean.pipe(T.Header("x-magic-new-hc-target")),
     ),
   })
     .pipe(
@@ -11475,13 +11475,13 @@ export const ListConnectorSnapshotsResponse = /*@__PURE__*/ S.suspend(() =>
 export interface ListGreTunnelsRequest {
   /** Identifier */
   accountId: string;
-  XMagicNewHcTarget_?: boolean;
+  xMagicNewHcTarget?: boolean;
 }
 export const ListGreTunnelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-    XMagicNewHcTarget_: S.optional(
-      S.Boolean.pipe(T.Header('"x-magic-new-hc-target"')),
+    xMagicNewHcTarget: S.optional(
+      S.Boolean.pipe(T.Header("x-magic-new-hc-target")),
     ),
   })
     .pipe(
@@ -11708,13 +11708,13 @@ export const ListGreTunnelsResponse = /*@__PURE__*/ S.suspend(() =>
 export interface ListIpsecTunnelsRequest {
   /** Identifier */
   accountId: string;
-  XMagicNewHcTarget_?: boolean;
+  xMagicNewHcTarget?: boolean;
 }
 export const ListIpsecTunnelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-    XMagicNewHcTarget_: S.optional(
-      S.Boolean.pipe(T.Header('"x-magic-new-hc-target"')),
+    xMagicNewHcTarget: S.optional(
+      S.Boolean.pipe(T.Header("x-magic-new-hc-target")),
     ),
   })
     .pipe(
@@ -14201,7 +14201,6 @@ export interface PutCfInterconnectRequest {
   accountId: string;
   /** Identifier */
   cfInterconnectId: string;
-  XMagicNewHcTarget_?: boolean;
   /** True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `coupler_integration` account flag to be enabled; requests setting this to `true` without that flag will be rejected. */
   automaticReturnRouting?: boolean;
   /** An optional description of the interconnect. */
@@ -14217,14 +14216,12 @@ export interface PutCfInterconnectRequest {
   mtu?: number;
   /** The name of the interconnect. The name cannot share a name with other tunnels. */
   name?: string;
+  xMagicNewHcTarget?: boolean;
 }
 export const PutCfInterconnectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     cfInterconnectId: S.String.pipe(T.Label("cf_interconnect_id")),
-    XMagicNewHcTarget_: S.optional(
-      S.Boolean.pipe(T.Header('"x-magic-new-hc-target"')),
-    ),
     automaticReturnRouting: S.optional(
       S.Boolean.pipe(T.Body("automatic_return_routing")),
     ),
@@ -14237,6 +14234,9 @@ export const PutCfInterconnectRequest = /*@__PURE__*/ S.suspend(() =>
     interfaceAddress6: S.optional(S.String.pipe(T.Body("interface_address6"))),
     mtu: S.optional(S.Number),
     name: S.optional(S.String),
+    xMagicNewHcTarget: S.optional(
+      S.Boolean.pipe(T.Header("x-magic-new-hc-target")),
+    ),
   })
     .pipe(
       T.Http({
@@ -15215,7 +15215,6 @@ export interface UpdateGreTunnelRequest {
   accountId: string;
   /** Identifier */
   greTunnelId: string;
-  XMagicNewHcTarget_?: boolean;
   /** The IP address assigned to the Cloudflare side of the GRE tunnel. */
   cloudflareGreEndpoint: string;
   /** The IP address assigned to the customer side of the GRE tunnel. */
@@ -15235,14 +15234,12 @@ export interface UpdateGreTunnelRequest {
   mtu?: number;
   /** Time To Live (TTL) in number of hops of the GRE tunnel. */
   ttl?: number;
+  xMagicNewHcTarget?: boolean;
 }
 export const UpdateGreTunnelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     greTunnelId: S.String.pipe(T.Label("gre_tunnel_id")),
-    XMagicNewHcTarget_: S.optional(
-      S.Boolean.pipe(T.Header('"x-magic-new-hc-target"')),
-    ),
     cloudflareGreEndpoint: S.String.pipe(T.Body("cloudflare_gre_endpoint")),
     customerGreEndpoint: S.String.pipe(T.Body("customer_gre_endpoint")),
     interfaceAddress: S.String.pipe(T.Body("interface_address")),
@@ -15257,6 +15254,9 @@ export const UpdateGreTunnelRequest = /*@__PURE__*/ S.suspend(() =>
     interfaceAddress6: S.optional(S.String.pipe(T.Body("interface_address6"))),
     mtu: S.optional(S.Number),
     ttl: S.optional(S.Number),
+    xMagicNewHcTarget: S.optional(
+      S.Boolean.pipe(T.Header("x-magic-new-hc-target")),
+    ),
   })
     .pipe(
       T.Http({
@@ -15582,7 +15582,6 @@ export interface UpdateIpsecTunnelRequest {
   accountId: string;
   /** Identifier */
   ipsecTunnelId: string;
-  XMagicNewHcTarget_?: boolean;
   /** The IP address assigned to the Cloudflare side of the IPsec tunnel. */
   cloudflareEndpoint: string;
   /** A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255. */
@@ -15604,14 +15603,12 @@ export interface UpdateIpsecTunnelRequest {
   psk?: string;
   /** If `true`, then IPsec replay protection will be supported in the Cloudflare-to-customer direction. */
   replayProtection?: boolean;
+  xMagicNewHcTarget?: boolean;
 }
 export const UpdateIpsecTunnelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     ipsecTunnelId: S.String.pipe(T.Label("ipsec_tunnel_id")),
-    XMagicNewHcTarget_: S.optional(
-      S.Boolean.pipe(T.Header('"x-magic-new-hc-target"')),
-    ),
     cloudflareEndpoint: S.String.pipe(T.Body("cloudflare_endpoint")),
     interfaceAddress: S.String.pipe(T.Body("interface_address")),
     name: S.String,
@@ -15632,6 +15629,9 @@ export const UpdateIpsecTunnelRequest = /*@__PURE__*/ S.suspend(() =>
     interfaceAddress6: S.optional(S.String.pipe(T.Body("interface_address6"))),
     psk: S.optional(S.String),
     replayProtection: S.optional(S.Boolean.pipe(T.Body("replay_protection"))),
+    xMagicNewHcTarget: S.optional(
+      S.Boolean.pipe(T.Header("x-magic-new-hc-target")),
+    ),
   })
     .pipe(
       T.Http({

@@ -138,6 +138,16 @@
           "target": "com.cloudflare.workers#ScriptModuleNotFound"
         }
       ]
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.workers#PutScriptContentRequest/members/CF_WORKER_BODY_PART",
+      "path": "/shapes/com.cloudflare.workers#PutScriptContentRequest/members/cfworkerbodypart"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.workers#PutScriptContentRequest/members/CF_WORKER_MAIN_MODULE_PART",
+      "path": "/shapes/com.cloudflare.workers#PutScriptContentRequest/members/cfworkermainmodulepart"
     }
   ]
 }

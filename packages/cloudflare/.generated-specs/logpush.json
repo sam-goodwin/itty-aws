@@ -399,11 +399,11 @@
             "smithy.api#documentation": "String to be appended after each batch."
           }
         },
-        "_CVE_2021_44228_": {
+        "CVE_2021_44228": {
           "target": "smithy.api#Boolean",
           "traits": {
             "smithy.api#documentation": "If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`.",
-            "smithy.api#jsonName": "\"CVE-2021-44228\""
+            "smithy.api#jsonName": "CVE-2021-44228"
           }
         },
         "field_delimiter": {
@@ -824,11 +824,11 @@
             "smithy.api#documentation": "String to be appended after each batch."
           }
         },
-        "_CVE_2021_44228_": {
+        "CVE_2021_44228": {
           "target": "smithy.api#Boolean",
           "traits": {
             "smithy.api#documentation": "If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`.",
-            "smithy.api#jsonName": "\"CVE-2021-44228\""
+            "smithy.api#jsonName": "CVE-2021-44228"
           }
         },
         "field_delimiter": {
@@ -1382,11 +1382,11 @@
             "smithy.api#documentation": "String to be appended after each batch."
           }
         },
-        "_CVE_2021_44228_": {
+        "CVE_2021_44228": {
           "target": "smithy.api#Boolean",
           "traits": {
             "smithy.api#documentation": "If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`.",
-            "smithy.api#jsonName": "\"CVE-2021-44228\""
+            "smithy.api#jsonName": "CVE-2021-44228"
           }
         },
         "field_delimiter": {
@@ -1721,11 +1721,11 @@
             "smithy.api#documentation": "String to be appended after each batch."
           }
         },
-        "_CVE_2021_44228_": {
+        "CVE_2021_44228": {
           "target": "smithy.api#Boolean",
           "traits": {
             "smithy.api#documentation": "If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`.",
-            "smithy.api#jsonName": "\"CVE-2021-44228\""
+            "smithy.api#jsonName": "CVE-2021-44228"
           }
         },
         "field_delimiter": {
@@ -2081,11 +2081,11 @@
             "smithy.api#documentation": "String to be appended after each batch."
           }
         },
-        "_CVE_2021_44228_": {
+        "CVE_2021_44228": {
           "target": "smithy.api#Boolean",
           "traits": {
             "smithy.api#documentation": "If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`.",
-            "smithy.api#jsonName": "\"CVE-2021-44228\""
+            "smithy.api#jsonName": "CVE-2021-44228"
           }
         },
         "field_delimiter": {
@@ -2420,11 +2420,11 @@
             "smithy.api#documentation": "String to be appended after each batch."
           }
         },
-        "_CVE_2021_44228_": {
+        "CVE_2021_44228": {
           "target": "smithy.api#Boolean",
           "traits": {
             "smithy.api#documentation": "If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`.",
-            "smithy.api#jsonName": "\"CVE-2021-44228\""
+            "smithy.api#jsonName": "CVE-2021-44228"
           }
         },
         "field_delimiter": {
@@ -2918,11 +2918,11 @@
             "smithy.api#documentation": "String to be appended after each batch."
           }
         },
-        "_CVE_2021_44228_": {
+        "CVE_2021_44228": {
           "target": "smithy.api#Boolean",
           "traits": {
             "smithy.api#documentation": "If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`.",
-            "smithy.api#jsonName": "\"CVE-2021-44228\""
+            "smithy.api#jsonName": "CVE-2021-44228"
           }
         },
         "field_delimiter": {
@@ -3303,11 +3303,11 @@
             "smithy.api#documentation": "String to be appended after each batch."
           }
         },
-        "_CVE_2021_44228_": {
+        "CVE_2021_44228": {
           "target": "smithy.api#Boolean",
           "traits": {
             "smithy.api#documentation": "If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`.",
-            "smithy.api#jsonName": "\"CVE-2021-44228\""
+            "smithy.api#jsonName": "CVE-2021-44228"
           }
         },
         "field_delimiter": {
@@ -3680,11 +3680,11 @@
             "smithy.api#documentation": "String to be appended after each batch."
           }
         },
-        "_CVE_2021_44228_": {
+        "CVE_2021_44228": {
           "target": "smithy.api#Boolean",
           "traits": {
             "smithy.api#documentation": "If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`.",
-            "smithy.api#jsonName": "\"CVE-2021-44228\""
+            "smithy.api#jsonName": "CVE-2021-44228"
           }
         },
         "field_delimiter": {
@@ -4074,11 +4074,11 @@
             "smithy.api#documentation": "String to be appended after each batch."
           }
         },
-        "_CVE_2021_44228_": {
+        "CVE_2021_44228": {
           "target": "smithy.api#Boolean",
           "traits": {
             "smithy.api#documentation": "If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`.",
-            "smithy.api#jsonName": "\"CVE-2021-44228\""
+            "smithy.api#jsonName": "CVE-2021-44228"
           }
         },
         "field_delimiter": {
@@ -4429,11 +4429,11 @@
             "smithy.api#documentation": "String to be appended after each batch."
           }
         },
-        "_CVE_2021_44228_": {
+        "CVE_2021_44228": {
           "target": "smithy.api#Boolean",
           "traits": {
             "smithy.api#documentation": "If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`.",
-            "smithy.api#jsonName": "\"CVE-2021-44228\""
+            "smithy.api#jsonName": "CVE-2021-44228"
           }
         },
         "field_delimiter": {
@@ -4769,11 +4769,11 @@
             "smithy.api#documentation": "String to be appended after each batch."
           }
         },
-        "_CVE_2021_44228_": {
+        "CVE_2021_44228": {
           "target": "smithy.api#Boolean",
           "traits": {
             "smithy.api#documentation": "If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`.",
-            "smithy.api#jsonName": "\"CVE-2021-44228\""
+            "smithy.api#jsonName": "CVE-2021-44228"
           }
         },
         "field_delimiter": {
@@ -5107,11 +5107,11 @@
             "smithy.api#documentation": "String to be appended after each batch."
           }
         },
-        "_CVE_2021_44228_": {
+        "CVE_2021_44228": {
           "target": "smithy.api#Boolean",
           "traits": {
             "smithy.api#documentation": "If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`.",
-            "smithy.api#jsonName": "\"CVE-2021-44228\""
+            "smithy.api#jsonName": "CVE-2021-44228"
           }
         },
         "field_delimiter": {
@@ -5447,11 +5447,11 @@
             "smithy.api#documentation": "String to be appended after each batch."
           }
         },
-        "_CVE_2021_44228_": {
+        "CVE_2021_44228": {
           "target": "smithy.api#Boolean",
           "traits": {
             "smithy.api#documentation": "If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`.",
-            "smithy.api#jsonName": "\"CVE-2021-44228\""
+            "smithy.api#jsonName": "CVE-2021-44228"
           }
         },
         "field_delimiter": {

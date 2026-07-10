@@ -109,6 +109,11 @@
           "target": "com.cloudflare.r2#NoRoute"
         }
       ]
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.r2#DeleteBucketRequest/members/cf_r2_jurisdiction",
+      "path": "/shapes/com.cloudflare.r2#DeleteBucketRequest/members/jurisdiction"
     }
   ]
 }

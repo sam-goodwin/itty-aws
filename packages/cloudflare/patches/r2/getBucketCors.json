@@ -109,6 +109,11 @@
           "target": "com.cloudflare.r2#NoCorsConfiguration"
         }
       ]
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.r2#GetBucketCorsRequest/members/cf_r2_jurisdiction",
+      "path": "/shapes/com.cloudflare.r2#GetBucketCorsRequest/members/jurisdiction"
     }
   ]
 }

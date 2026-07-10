@@ -10300,11 +10300,11 @@ export const BgpRpkiAspaChangesResponseAsnInfo13335 = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<BgpRpkiAspaChangesResponseAsnInfo13335>;
 
 export interface BgpRpkiAspaChangesResponseAsnInfo {
-  "13335_": BgpRpkiAspaChangesResponseAsnInfo13335;
+  "13335": BgpRpkiAspaChangesResponseAsnInfo13335;
 }
 export const BgpRpkiAspaChangesResponseAsnInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    "13335_": BgpRpkiAspaChangesResponseAsnInfo13335.pipe(T.Body('"13335"')),
+    "13335": BgpRpkiAspaChangesResponseAsnInfo13335,
   }),
 ).annotate({
   identifier: "BgpRpkiAspaChangesResponseAsnInfo",
@@ -34212,16 +34212,16 @@ export const AttacksLayer7SummaryHttpVersionResponseMeta =
   }) as any as S.Schema<AttacksLayer7SummaryHttpVersionResponseMeta>;
 
 export interface AttacksLayer7SummaryHttpVersionResponseSummary0 {
-  HTTP1X_: string;
-  HTTP2_: string;
-  HTTP3_: string;
+  HTTP1X: string;
+  HTTP2: string;
+  HTTP3: string;
 }
 export const AttacksLayer7SummaryHttpVersionResponseSummary0 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      HTTP1X_: S.String.pipe(T.Body('"HTTP/1.x"')),
-      HTTP2_: S.String.pipe(T.Body('"HTTP/2"')),
-      HTTP3_: S.String.pipe(T.Body('"HTTP/3"')),
+      HTTP1X: S.String.pipe(T.Body("HTTP/1.x")),
+      HTTP2: S.String.pipe(T.Body("HTTP/2")),
+      HTTP3: S.String.pipe(T.Body("HTTP/3")),
     }),
   ).annotate({
     identifier: "AttacksLayer7SummaryHttpVersionResponseSummary0",
@@ -34657,25 +34657,25 @@ export const AttacksLayer7TimeseriesGroupsHttpVersionResponseSerie0TimestampsLis
   ) as any as S.Schema<AttacksLayer7TimeseriesGroupsHttpVersionResponseSerie0TimestampsList>;
 
 export interface AttacksLayer7TimeseriesGroupsHttpVersionResponseSerie0 {
-  HTTP1X_: AttacksLayer7TimeseriesGroupsHttpVersionResponseSerie0HTTP1XList;
-  HTTP2_: AttacksLayer7TimeseriesGroupsHttpVersionResponseSerie0HTTP2List;
-  HTTP3_: AttacksLayer7TimeseriesGroupsHttpVersionResponseSerie0HTTP3List;
+  HTTP1X: AttacksLayer7TimeseriesGroupsHttpVersionResponseSerie0HTTP1XList;
+  HTTP2: AttacksLayer7TimeseriesGroupsHttpVersionResponseSerie0HTTP2List;
+  HTTP3: AttacksLayer7TimeseriesGroupsHttpVersionResponseSerie0HTTP3List;
   timestamps: AttacksLayer7TimeseriesGroupsHttpVersionResponseSerie0TimestampsList;
 }
 export const AttacksLayer7TimeseriesGroupsHttpVersionResponseSerie0 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      HTTP1X_:
+      HTTP1X:
         AttacksLayer7TimeseriesGroupsHttpVersionResponseSerie0HTTP1XList.pipe(
-          T.Body('"HTTP/1.x"'),
+          T.Body("HTTP/1.x"),
         ),
-      HTTP2_:
+      HTTP2:
         AttacksLayer7TimeseriesGroupsHttpVersionResponseSerie0HTTP2List.pipe(
-          T.Body('"HTTP/2"'),
+          T.Body("HTTP/2"),
         ),
-      HTTP3_:
+      HTTP3:
         AttacksLayer7TimeseriesGroupsHttpVersionResponseSerie0HTTP3List.pipe(
-          T.Body('"HTTP/3"'),
+          T.Body("HTTP/3"),
         ),
       timestamps:
         AttacksLayer7TimeseriesGroupsHttpVersionResponseSerie0TimestampsList,
@@ -35079,18 +35079,18 @@ export const HttpSummaryHttpVersionResponseMeta = /*@__PURE__*/ S.suspend(() =>
 
 export interface HttpSummaryHttpVersionResponseSummary0 {
   /** A numeric string. */
-  HTTP1X_: string;
+  HTTP1X: string;
   /** A numeric string. */
-  HTTP2_: string;
+  HTTP2: string;
   /** A numeric string. */
-  HTTP3_: string;
+  HTTP3: string;
 }
 export const HttpSummaryHttpVersionResponseSummary0 = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      HTTP1X_: S.String.pipe(T.Body('"HTTP/1.x"')),
-      HTTP2_: S.String.pipe(T.Body('"HTTP/2"')),
-      HTTP3_: S.String.pipe(T.Body('"HTTP/3"')),
+      HTTP1X: S.String.pipe(T.Body("HTTP/1.x")),
+      HTTP2: S.String.pipe(T.Body("HTTP/2")),
+      HTTP3: S.String.pipe(T.Body("HTTP/3")),
     }),
 ).annotate({
   identifier: "HttpSummaryHttpVersionResponseSummary0",
@@ -35566,22 +35566,22 @@ export const HttpTimeseriesGroupsHttpVersionResponseSerie0TimestampsList =
   ) as any as S.Schema<HttpTimeseriesGroupsHttpVersionResponseSerie0TimestampsList>;
 
 export interface HttpTimeseriesGroupsHttpVersionResponseSerie0 {
-  HTTP1X_: HttpTimeseriesGroupsHttpVersionResponseSerie0HTTP1XList;
-  HTTP2_: HttpTimeseriesGroupsHttpVersionResponseSerie0HTTP2List;
-  HTTP3_: HttpTimeseriesGroupsHttpVersionResponseSerie0HTTP3List;
+  HTTP1X: HttpTimeseriesGroupsHttpVersionResponseSerie0HTTP1XList;
+  HTTP2: HttpTimeseriesGroupsHttpVersionResponseSerie0HTTP2List;
+  HTTP3: HttpTimeseriesGroupsHttpVersionResponseSerie0HTTP3List;
   timestamps: HttpTimeseriesGroupsHttpVersionResponseSerie0TimestampsList;
 }
 export const HttpTimeseriesGroupsHttpVersionResponseSerie0 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      HTTP1X_: HttpTimeseriesGroupsHttpVersionResponseSerie0HTTP1XList.pipe(
-        T.Body('"HTTP/1.x"'),
+      HTTP1X: HttpTimeseriesGroupsHttpVersionResponseSerie0HTTP1XList.pipe(
+        T.Body("HTTP/1.x"),
       ),
-      HTTP2_: HttpTimeseriesGroupsHttpVersionResponseSerie0HTTP2List.pipe(
-        T.Body('"HTTP/2"'),
+      HTTP2: HttpTimeseriesGroupsHttpVersionResponseSerie0HTTP2List.pipe(
+        T.Body("HTTP/2"),
       ),
-      HTTP3_: HttpTimeseriesGroupsHttpVersionResponseSerie0HTTP3List.pipe(
-        T.Body('"HTTP/3"'),
+      HTTP3: HttpTimeseriesGroupsHttpVersionResponseSerie0HTTP3List.pipe(
+        T.Body("HTTP/3"),
       ),
       timestamps: HttpTimeseriesGroupsHttpVersionResponseSerie0TimestampsList,
     }),
@@ -59239,11 +59239,11 @@ export const BgpRpkiAspaSnapshotResponseAsnInfo13335 = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<BgpRpkiAspaSnapshotResponseAsnInfo13335>;
 
 export interface BgpRpkiAspaSnapshotResponseAsnInfo {
-  "13335_": BgpRpkiAspaSnapshotResponseAsnInfo13335;
+  "13335": BgpRpkiAspaSnapshotResponseAsnInfo13335;
 }
 export const BgpRpkiAspaSnapshotResponseAsnInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    "13335_": BgpRpkiAspaSnapshotResponseAsnInfo13335.pipe(T.Body('"13335"')),
+    "13335": BgpRpkiAspaSnapshotResponseAsnInfo13335,
   }),
 ).annotate({
   identifier: "BgpRpkiAspaSnapshotResponseAsnInfo",
@@ -83894,21 +83894,21 @@ export const EmailSecuritySummaryTlsVersionResponseMeta =
 
 export interface EmailSecuritySummaryTlsVersionResponseSummary0 {
   /** A numeric string. */
-  TLS10_: string;
+  TLS10: string;
   /** A numeric string. */
-  TLS11_: string;
+  TLS11: string;
   /** A numeric string. */
-  TLS12_: string;
+  TLS12: string;
   /** A numeric string. */
-  TLS13_: string;
+  TLS13: string;
 }
 export const EmailSecuritySummaryTlsVersionResponseSummary0 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      TLS10_: S.String.pipe(T.Body('"TLS 1.0"')),
-      TLS11_: S.String.pipe(T.Body('"TLS 1.1"')),
-      TLS12_: S.String.pipe(T.Body('"TLS 1.2"')),
-      TLS13_: S.String.pipe(T.Body('"TLS 1.3"')),
+      TLS10: S.String.pipe(T.Body("TLS 1.0")),
+      TLS11: S.String.pipe(T.Body("TLS 1.1")),
+      TLS12: S.String.pipe(T.Body("TLS 1.2")),
+      TLS13: S.String.pipe(T.Body("TLS 1.3")),
     }),
   ).annotate({
     identifier: "EmailSecuritySummaryTlsVersionResponseSummary0",
@@ -84306,29 +84306,29 @@ export const EmailSecurityTimeseriesGroupsTlsVersionResponseSerie0TLS13List =
   ) as any as S.Schema<EmailSecurityTimeseriesGroupsTlsVersionResponseSerie0TLS13List>;
 
 export interface EmailSecurityTimeseriesGroupsTlsVersionResponseSerie0 {
-  TLS10_: EmailSecurityTimeseriesGroupsTlsVersionResponseSerie0TLS10List;
-  TLS11_: EmailSecurityTimeseriesGroupsTlsVersionResponseSerie0TLS11List;
-  TLS12_: EmailSecurityTimeseriesGroupsTlsVersionResponseSerie0TLS12List;
-  TLS13_: EmailSecurityTimeseriesGroupsTlsVersionResponseSerie0TLS13List;
+  TLS10: EmailSecurityTimeseriesGroupsTlsVersionResponseSerie0TLS10List;
+  TLS11: EmailSecurityTimeseriesGroupsTlsVersionResponseSerie0TLS11List;
+  TLS12: EmailSecurityTimeseriesGroupsTlsVersionResponseSerie0TLS12List;
+  TLS13: EmailSecurityTimeseriesGroupsTlsVersionResponseSerie0TLS13List;
 }
 export const EmailSecurityTimeseriesGroupsTlsVersionResponseSerie0 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      TLS10_:
+      TLS10:
         EmailSecurityTimeseriesGroupsTlsVersionResponseSerie0TLS10List.pipe(
-          T.Body('"TLS 1.0"'),
+          T.Body("TLS 1.0"),
         ),
-      TLS11_:
+      TLS11:
         EmailSecurityTimeseriesGroupsTlsVersionResponseSerie0TLS11List.pipe(
-          T.Body('"TLS 1.1"'),
+          T.Body("TLS 1.1"),
         ),
-      TLS12_:
+      TLS12:
         EmailSecurityTimeseriesGroupsTlsVersionResponseSerie0TLS12List.pipe(
-          T.Body('"TLS 1.2"'),
+          T.Body("TLS 1.2"),
         ),
-      TLS13_:
+      TLS13:
         EmailSecurityTimeseriesGroupsTlsVersionResponseSerie0TLS13List.pipe(
-          T.Body('"TLS 1.3"'),
+          T.Body("TLS 1.3"),
         ),
     }),
   ).annotate({
@@ -84724,24 +84724,24 @@ export const HttpSummaryTlsVersionResponseMeta = /*@__PURE__*/ S.suspend(() =>
 
 export interface HttpSummaryTlsVersionResponseSummary0 {
   /** A numeric string. */
-  TLS10_: string;
+  TLS10: string;
   /** A numeric string. */
-  TLS11_: string;
+  TLS11: string;
   /** A numeric string. */
-  TLS12_: string;
+  TLS12: string;
   /** A numeric string. */
-  TLS13_: string;
+  TLS13: string;
   /** A numeric string. */
-  TLSQUIC_: string;
+  TLSQUIC: string;
 }
 export const HttpSummaryTlsVersionResponseSummary0 = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      TLS10_: S.String.pipe(T.Body('"TLS 1.0"')),
-      TLS11_: S.String.pipe(T.Body('"TLS 1.1"')),
-      TLS12_: S.String.pipe(T.Body('"TLS 1.2"')),
-      TLS13_: S.String.pipe(T.Body('"TLS 1.3"')),
-      TLSQUIC_: S.String.pipe(T.Body('"TLS QUIC"')),
+      TLS10: S.String.pipe(T.Body("TLS 1.0")),
+      TLS11: S.String.pipe(T.Body("TLS 1.1")),
+      TLS12: S.String.pipe(T.Body("TLS 1.2")),
+      TLS13: S.String.pipe(T.Body("TLS 1.3")),
+      TLSQUIC: S.String.pipe(T.Body("TLS QUIC")),
     }),
 ).annotate({
   identifier: "HttpSummaryTlsVersionResponseSummary0",
@@ -85230,30 +85230,30 @@ export const HttpTimeseriesGroupsTlsVersionResponseSerie0TLSQUICList =
 
 export interface HttpTimeseriesGroupsTlsVersionResponseSerie0 {
   timestamps: HttpTimeseriesGroupsTlsVersionResponseSerie0TimestampsList;
-  TLS10_: HttpTimeseriesGroupsTlsVersionResponseSerie0TLS10List;
-  TLS11_: HttpTimeseriesGroupsTlsVersionResponseSerie0TLS11List;
-  TLS12_: HttpTimeseriesGroupsTlsVersionResponseSerie0TLS12List;
-  TLS13_: HttpTimeseriesGroupsTlsVersionResponseSerie0TLS13List;
-  TLSQUIC_: HttpTimeseriesGroupsTlsVersionResponseSerie0TLSQUICList;
+  TLS10: HttpTimeseriesGroupsTlsVersionResponseSerie0TLS10List;
+  TLS11: HttpTimeseriesGroupsTlsVersionResponseSerie0TLS11List;
+  TLS12: HttpTimeseriesGroupsTlsVersionResponseSerie0TLS12List;
+  TLS13: HttpTimeseriesGroupsTlsVersionResponseSerie0TLS13List;
+  TLSQUIC: HttpTimeseriesGroupsTlsVersionResponseSerie0TLSQUICList;
 }
 export const HttpTimeseriesGroupsTlsVersionResponseSerie0 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       timestamps: HttpTimeseriesGroupsTlsVersionResponseSerie0TimestampsList,
-      TLS10_: HttpTimeseriesGroupsTlsVersionResponseSerie0TLS10List.pipe(
-        T.Body('"TLS 1.0"'),
+      TLS10: HttpTimeseriesGroupsTlsVersionResponseSerie0TLS10List.pipe(
+        T.Body("TLS 1.0"),
       ),
-      TLS11_: HttpTimeseriesGroupsTlsVersionResponseSerie0TLS11List.pipe(
-        T.Body('"TLS 1.1"'),
+      TLS11: HttpTimeseriesGroupsTlsVersionResponseSerie0TLS11List.pipe(
+        T.Body("TLS 1.1"),
       ),
-      TLS12_: HttpTimeseriesGroupsTlsVersionResponseSerie0TLS12List.pipe(
-        T.Body('"TLS 1.2"'),
+      TLS12: HttpTimeseriesGroupsTlsVersionResponseSerie0TLS12List.pipe(
+        T.Body("TLS 1.2"),
       ),
-      TLS13_: HttpTimeseriesGroupsTlsVersionResponseSerie0TLS13List.pipe(
-        T.Body('"TLS 1.3"'),
+      TLS13: HttpTimeseriesGroupsTlsVersionResponseSerie0TLS13List.pipe(
+        T.Body("TLS 1.3"),
       ),
-      TLSQUIC_: HttpTimeseriesGroupsTlsVersionResponseSerie0TLSQUICList.pipe(
-        T.Body('"TLS QUIC"'),
+      TLSQUIC: HttpTimeseriesGroupsTlsVersionResponseSerie0TLSQUICList.pipe(
+        T.Body("TLS QUIC"),
       ),
     }),
   ).annotate({

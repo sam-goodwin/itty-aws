@@ -2970,36 +2970,36 @@
             "smithy.api#required": {}
           }
         },
-        "_Protocol_Version_": {
+        "Protocol_Version": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Chrome DevTools Protocol version.",
             "smithy.api#required": {},
-            "smithy.api#jsonName": "\"Protocol-Version\""
+            "smithy.api#jsonName": "Protocol-Version"
           }
         },
-        "_User_Agent_": {
+        "User_Agent": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "User agent string.",
             "smithy.api#required": {},
-            "smithy.api#jsonName": "\"User-Agent\""
+            "smithy.api#jsonName": "User-Agent"
           }
         },
-        "_V8_Version_": {
+        "V8_Version": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "V8 JavaScript engine version.",
             "smithy.api#required": {},
-            "smithy.api#jsonName": "\"V8-Version\""
+            "smithy.api#jsonName": "V8-Version"
           }
         },
-        "_WebKit_Version_": {
+        "WebKit_Version": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "WebKit version.",
             "smithy.api#required": {},
-            "smithy.api#jsonName": "\"WebKit-Version\""
+            "smithy.api#jsonName": "WebKit-Version"
           }
         },
         "webSocketDebuggerUrl": {

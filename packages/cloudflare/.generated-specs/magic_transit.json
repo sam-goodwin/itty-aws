@@ -2062,10 +2062,10 @@
             "smithy.api#required": {}
           }
         },
-        "_x_magic_new_hc_target_": {
+        "x_magic_new_hc_target": {
           "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#httpHeader": "\"x-magic-new-hc-target\""
+            "smithy.api#httpHeader": "x-magic-new-hc-target"
           }
         },
         "body": {
@@ -2281,10 +2281,10 @@
             "smithy.api#required": {}
           }
         },
-        "_x_magic_new_hc_target_": {
+        "x_magic_new_hc_target": {
           "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#httpHeader": "\"x-magic-new-hc-target\""
+            "smithy.api#httpHeader": "x-magic-new-hc-target"
           }
         }
       },
@@ -2476,10 +2476,10 @@
             "smithy.api#required": {}
           }
         },
-        "_x_magic_new_hc_target_": {
+        "x_magic_new_hc_target": {
           "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#httpHeader": "\"x-magic-new-hc-target\""
+            "smithy.api#httpHeader": "x-magic-new-hc-target"
           }
         }
       },
@@ -2748,10 +2748,10 @@
             "smithy.api#required": {}
           }
         },
-        "_x_magic_new_hc_target_": {
+        "x_magic_new_hc_target": {
           "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#httpHeader": "\"x-magic-new-hc-target\""
+            "smithy.api#httpHeader": "x-magic-new-hc-target"
           }
         },
         "automatic_return_routing": {
@@ -9426,10 +9426,10 @@
             "smithy.api#required": {}
           }
         },
-        "_x_magic_new_hc_target_": {
+        "x_magic_new_hc_target": {
           "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#httpHeader": "\"x-magic-new-hc-target\""
+            "smithy.api#httpHeader": "x-magic-new-hc-target"
           }
         },
         "body": {
@@ -9880,10 +9880,10 @@
             "smithy.api#required": {}
           }
         },
-        "_x_magic_new_hc_target_": {
+        "x_magic_new_hc_target": {
           "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#httpHeader": "\"x-magic-new-hc-target\""
+            "smithy.api#httpHeader": "x-magic-new-hc-target"
           }
         },
         "cloudflare_gre_endpoint": {
@@ -10264,10 +10264,10 @@
             "smithy.api#required": {}
           }
         },
-        "_x_magic_new_hc_target_": {
+        "x_magic_new_hc_target": {
           "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#httpHeader": "\"x-magic-new-hc-target\""
+            "smithy.api#httpHeader": "x-magic-new-hc-target"
           }
         }
       },
@@ -10596,10 +10596,10 @@
             "smithy.api#required": {}
           }
         },
-        "_x_magic_new_hc_target_": {
+        "x_magic_new_hc_target": {
           "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#httpHeader": "\"x-magic-new-hc-target\""
+            "smithy.api#httpHeader": "x-magic-new-hc-target"
           }
         }
       },
@@ -10917,10 +10917,10 @@
             "smithy.api#required": {}
           }
         },
-        "_x_magic_new_hc_target_": {
+        "x_magic_new_hc_target": {
           "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#httpHeader": "\"x-magic-new-hc-target\""
+            "smithy.api#httpHeader": "x-magic-new-hc-target"
           }
         }
       },
@@ -11327,10 +11327,10 @@
             "smithy.api#required": {}
           }
         },
-        "_x_magic_new_hc_target_": {
+        "x_magic_new_hc_target": {
           "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#httpHeader": "\"x-magic-new-hc-target\""
+            "smithy.api#httpHeader": "x-magic-new-hc-target"
           }
         },
         "cloudflare_gre_endpoint": {
@@ -11712,10 +11712,10 @@
             "smithy.api#required": {}
           }
         },
-        "_x_magic_new_hc_target_": {
+        "x_magic_new_hc_target": {
           "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#httpHeader": "\"x-magic-new-hc-target\""
+            "smithy.api#httpHeader": "x-magic-new-hc-target"
           }
         },
         "body": {
@@ -12207,10 +12207,10 @@
             "smithy.api#required": {}
           }
         },
-        "_x_magic_new_hc_target_": {
+        "x_magic_new_hc_target": {
           "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#httpHeader": "\"x-magic-new-hc-target\""
+            "smithy.api#httpHeader": "x-magic-new-hc-target"
           }
         },
         "cloudflare_endpoint": {
@@ -12623,10 +12623,10 @@
             "smithy.api#required": {}
           }
         },
-        "_x_magic_new_hc_target_": {
+        "x_magic_new_hc_target": {
           "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#httpHeader": "\"x-magic-new-hc-target\""
+            "smithy.api#httpHeader": "x-magic-new-hc-target"
           }
         }
       },
@@ -12985,10 +12985,10 @@
             "smithy.api#required": {}
           }
         },
-        "_x_magic_new_hc_target_": {
+        "x_magic_new_hc_target": {
           "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#httpHeader": "\"x-magic-new-hc-target\""
+            "smithy.api#httpHeader": "x-magic-new-hc-target"
           }
         }
       },
@@ -13336,10 +13336,10 @@
             "smithy.api#required": {}
           }
         },
-        "_x_magic_new_hc_target_": {
+        "x_magic_new_hc_target": {
           "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#httpHeader": "\"x-magic-new-hc-target\""
+            "smithy.api#httpHeader": "x-magic-new-hc-target"
           }
         }
       },
@@ -14026,10 +14026,10 @@
             "smithy.api#required": {}
           }
         },
-        "_x_magic_new_hc_target_": {
+        "x_magic_new_hc_target": {
           "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#httpHeader": "\"x-magic-new-hc-target\""
+            "smithy.api#httpHeader": "x-magic-new-hc-target"
           }
         },
         "cloudflare_endpoint": {
@@ -17457,10 +17457,10 @@
             "smithy.api#required": {}
           }
         },
-        "_x_magic_new_hc_target_": {
+        "x_magic_new_hc_target": {
           "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#httpHeader": "\"x-magic-new-hc-target\""
+            "smithy.api#httpHeader": "x-magic-new-hc-target"
           }
         }
       },

@@ -15,6 +15,26 @@
       "op": "replace",
       "path": "/shapes/com.cloudflare.stream#CreateStream/input/target",
       "value": "com.cloudflare.stream#CreateStreamRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.stream#CreateStreamRequest/members/Tus_Resumable",
+      "path": "/shapes/com.cloudflare.stream#CreateStreamRequest/members/tusResumable"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.stream#CreateStreamRequest/members/Upload_Length",
+      "path": "/shapes/com.cloudflare.stream#CreateStreamRequest/members/uploadLength"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.stream#CreateStreamRequest/members/Upload_Creator",
+      "path": "/shapes/com.cloudflare.stream#CreateStreamRequest/members/uploadCreator"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.stream#CreateStreamRequest/members/Upload_Metadata",
+      "path": "/shapes/com.cloudflare.stream#CreateStreamRequest/members/uploadMetadata"
     }
   ]
 }

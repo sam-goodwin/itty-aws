@@ -3503,25 +3503,25 @@
     "com.cloudflare.workers#BetaWorkersVersionsCreateRequestAnnotations": {
       "type": "structure",
       "members": {
-        "_workers_message_": {
+        "workers_message": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Human-readable message about the version. Truncated to 1000 bytes if longer.",
-            "smithy.api#jsonName": "\"workers/message\""
+            "smithy.api#jsonName": "workers/message"
           }
         },
-        "_workers_tag_": {
+        "workers_tag": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "User-provided identifier for the version. Maximum 100 bytes.",
-            "smithy.api#jsonName": "\"workers/tag\""
+            "smithy.api#jsonName": "workers/tag"
           }
         },
-        "_workers_triggered_by_": {
+        "workers_triggered_by": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Operation that triggered the creation of the version.",
-            "smithy.api#jsonName": "\"workers/triggered_by\""
+            "smithy.api#jsonName": "workers/triggered_by"
           }
         }
       }
@@ -4805,25 +4805,25 @@
     "com.cloudflare.workers#BetaWorkersVersionsCreateResponseAnnotations": {
       "type": "structure",
       "members": {
-        "_workers_message_": {
+        "workers_message": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Human-readable message about the version. Truncated to 1000 bytes if longer.",
-            "smithy.api#jsonName": "\"workers/message\""
+            "smithy.api#jsonName": "workers/message"
           }
         },
-        "_workers_tag_": {
+        "workers_tag": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "User-provided identifier for the version. Maximum 100 bytes.",
-            "smithy.api#jsonName": "\"workers/tag\""
+            "smithy.api#jsonName": "workers/tag"
           }
         },
-        "_workers_triggered_by_": {
+        "workers_triggered_by": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Operation that triggered the creation of the version.",
-            "smithy.api#jsonName": "\"workers/triggered_by\""
+            "smithy.api#jsonName": "workers/triggered_by"
           }
         }
       }
@@ -6248,25 +6248,25 @@
     "com.cloudflare.workers#BetaWorkersVersionsGetResponseAnnotations": {
       "type": "structure",
       "members": {
-        "_workers_message_": {
+        "workers_message": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Human-readable message about the version. Truncated to 1000 bytes if longer.",
-            "smithy.api#jsonName": "\"workers/message\""
+            "smithy.api#jsonName": "workers/message"
           }
         },
-        "_workers_tag_": {
+        "workers_tag": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "User-provided identifier for the version. Maximum 100 bytes.",
-            "smithy.api#jsonName": "\"workers/tag\""
+            "smithy.api#jsonName": "workers/tag"
           }
         },
-        "_workers_triggered_by_": {
+        "workers_triggered_by": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Operation that triggered the creation of the version.",
-            "smithy.api#jsonName": "\"workers/triggered_by\""
+            "smithy.api#jsonName": "workers/triggered_by"
           }
         }
       }
@@ -7630,25 +7630,25 @@
     "com.cloudflare.workers#BetaWorkersVersionsListResultItemAnnotations": {
       "type": "structure",
       "members": {
-        "_workers_message_": {
+        "workers_message": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Human-readable message about the version. Truncated to 1000 bytes if longer.",
-            "smithy.api#jsonName": "\"workers/message\""
+            "smithy.api#jsonName": "workers/message"
           }
         },
-        "_workers_tag_": {
+        "workers_tag": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "User-provided identifier for the version. Maximum 100 bytes.",
-            "smithy.api#jsonName": "\"workers/tag\""
+            "smithy.api#jsonName": "workers/tag"
           }
         },
-        "_workers_triggered_by_": {
+        "workers_triggered_by": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Operation that triggered the creation of the version.",
-            "smithy.api#jsonName": "\"workers/triggered_by\""
+            "smithy.api#jsonName": "workers/triggered_by"
           }
         }
       }
@@ -14721,12 +14721,12 @@
     "com.cloudflare.workers#ObservabilitySharedQueriesGetResponseEventsEventsItem": {
       "type": "structure",
       "members": {
-        "__metadata_": {
+        "_metadata": {
           "target": "com.cloudflare.workers#ObservabilitySharedQueriesGetResponseEventsEventsItemMetadata",
           "traits": {
             "smithy.api#documentation": "Structured metadata extracted from the event. These fields are indexed and available for filtering and aggregation.",
             "smithy.api#required": {},
-            "smithy.api#jsonName": "\"$metadata\""
+            "smithy.api#jsonName": "$metadata"
           }
         },
         "dataset": {
@@ -14750,18 +14750,18 @@
             "smithy.api#required": {}
           }
         },
-        "__containers_": {
+        "_containers": {
           "target": "com.cloudflare.workers#ObservabilitySharedQueriesGetResponseEventsEventsItemContainersMap",
           "traits": {
             "smithy.api#documentation": "Cloudflare Containers event information that enriches your logs for identifying and debugging issues.",
-            "smithy.api#jsonName": "\"$containers\""
+            "smithy.api#jsonName": "$containers"
           }
         },
-        "__workers_": {
+        "_workers": {
           "target": "com.cloudflare.workers#ObservabilitySharedQueriesGetResponseEventsEventsItemWorkers",
           "traits": {
             "smithy.api#documentation": "Cloudflare Workers event information that enriches your logs for identifying and debugging issues.",
-            "smithy.api#jsonName": "\"$workers\""
+            "smithy.api#jsonName": "$workers"
           }
         }
       }
@@ -18699,12 +18699,12 @@
     "com.cloudflare.workers#ObservabilityTelemetryQueryResponseEventsEventsItem": {
       "type": "structure",
       "members": {
-        "__metadata_": {
+        "_metadata": {
           "target": "com.cloudflare.workers#ObservabilityTelemetryQueryResponseEventsEventsItemMetadata",
           "traits": {
             "smithy.api#documentation": "Structured metadata extracted from the event. These fields are indexed and available for filtering and aggregation.",
             "smithy.api#required": {},
-            "smithy.api#jsonName": "\"$metadata\""
+            "smithy.api#jsonName": "$metadata"
           }
         },
         "dataset": {
@@ -18728,18 +18728,18 @@
             "smithy.api#required": {}
           }
         },
-        "__containers_": {
+        "_containers": {
           "target": "com.cloudflare.workers#ObservabilityTelemetryQueryResponseEventsEventsItemContainersMap",
           "traits": {
             "smithy.api#documentation": "Cloudflare Containers event information that enriches your logs for identifying and debugging issues.",
-            "smithy.api#jsonName": "\"$containers\""
+            "smithy.api#jsonName": "$containers"
           }
         },
-        "__workers_": {
+        "_workers": {
           "target": "com.cloudflare.workers#ObservabilityTelemetryQueryResponseEventsEventsItemWorkers",
           "traits": {
             "smithy.api#documentation": "Cloudflare Workers event information that enriches your logs for identifying and debugging issues.",
-            "smithy.api#jsonName": "\"$workers\""
+            "smithy.api#jsonName": "$workers"
           }
         }
       }
@@ -22480,16 +22480,16 @@
             "smithy.api#required": {}
           }
         },
-        "_CF_WORKER_BODY_PART_": {
+        "CF_WORKER_BODY_PART": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpHeader": "\"CF-WORKER-BODY-PART\""
+            "smithy.api#httpHeader": "CF-WORKER-BODY-PART"
           }
         },
-        "_CF_WORKER_MAIN_MODULE_PART_": {
+        "CF_WORKER_MAIN_MODULE_PART": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpHeader": "\"CF-WORKER-MAIN-MODULE-PART\""
+            "smithy.api#httpHeader": "CF-WORKER-MAIN-MODULE-PART"
           }
         }
       },
@@ -23499,18 +23499,18 @@
     "com.cloudflare.workers#ScriptsDeploymentsCreateRequestAnnotations": {
       "type": "structure",
       "members": {
-        "_workers_message_": {
+        "workers_message": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Human-readable message about the deployment. Truncated to 1000 bytes if longer.",
-            "smithy.api#jsonName": "\"workers/message\""
+            "smithy.api#jsonName": "workers/message"
           }
         },
-        "_workers_triggered_by_": {
+        "workers_triggered_by": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Operation that triggered the creation of the deployment.",
-            "smithy.api#jsonName": "\"workers/triggered_by\""
+            "smithy.api#jsonName": "workers/triggered_by"
           }
         }
       }
@@ -23598,18 +23598,18 @@
     "com.cloudflare.workers#ScriptsDeploymentsCreateResponseAnnotations": {
       "type": "structure",
       "members": {
-        "_workers_message_": {
+        "workers_message": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Human-readable message about the deployment. Truncated to 1000 bytes if longer.",
-            "smithy.api#jsonName": "\"workers/message\""
+            "smithy.api#jsonName": "workers/message"
           }
         },
-        "_workers_triggered_by_": {
+        "workers_triggered_by": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Operation that triggered the creation of the deployment.",
-            "smithy.api#jsonName": "\"workers/triggered_by\""
+            "smithy.api#jsonName": "workers/triggered_by"
           }
         }
       }
@@ -23793,18 +23793,18 @@
     "com.cloudflare.workers#ScriptsDeploymentsGetResponseAnnotations": {
       "type": "structure",
       "members": {
-        "_workers_message_": {
+        "workers_message": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Human-readable message about the deployment. Truncated to 1000 bytes if longer.",
-            "smithy.api#jsonName": "\"workers/message\""
+            "smithy.api#jsonName": "workers/message"
           }
         },
-        "_workers_triggered_by_": {
+        "workers_triggered_by": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Operation that triggered the creation of the deployment.",
-            "smithy.api#jsonName": "\"workers/triggered_by\""
+            "smithy.api#jsonName": "workers/triggered_by"
           }
         }
       }
@@ -23933,18 +23933,18 @@
     "com.cloudflare.workers#ScriptsDeploymentsListResponseDeploymentsItemAnnotations": {
       "type": "structure",
       "members": {
-        "_workers_message_": {
+        "workers_message": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Human-readable message about the deployment. Truncated to 1000 bytes if longer.",
-            "smithy.api#jsonName": "\"workers/message\""
+            "smithy.api#jsonName": "workers/message"
           }
         },
-        "_workers_triggered_by_": {
+        "workers_triggered_by": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Operation that triggered the creation of the deployment.",
-            "smithy.api#jsonName": "\"workers/triggered_by\""
+            "smithy.api#jsonName": "workers/triggered_by"
           }
         }
       }
@@ -24246,25 +24246,25 @@
     "com.cloudflare.workers#ScriptsScriptAndVersionSettingsEditResponseAnnotations": {
       "type": "structure",
       "members": {
-        "_workers_message_": {
+        "workers_message": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Human-readable message about the version. Truncated to 1000 bytes if longer.",
-            "smithy.api#jsonName": "\"workers/message\""
+            "smithy.api#jsonName": "workers/message"
           }
         },
-        "_workers_tag_": {
+        "workers_tag": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "User-provided identifier for the version. Maximum 100 bytes.",
-            "smithy.api#jsonName": "\"workers/tag\""
+            "smithy.api#jsonName": "workers/tag"
           }
         },
-        "_workers_triggered_by_": {
+        "workers_triggered_by": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Operation that triggered the creation of the version. This is read-only and set by the server.",
-            "smithy.api#jsonName": "\"workers/triggered_by\""
+            "smithy.api#jsonName": "workers/triggered_by"
           }
         }
       }
@@ -25537,25 +25537,25 @@
     "com.cloudflare.workers#ScriptsScriptAndVersionSettingsGetResponseAnnotations": {
       "type": "structure",
       "members": {
-        "_workers_message_": {
+        "workers_message": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Human-readable message about the version. Truncated to 1000 bytes if longer.",
-            "smithy.api#jsonName": "\"workers/message\""
+            "smithy.api#jsonName": "workers/message"
           }
         },
-        "_workers_tag_": {
+        "workers_tag": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "User-provided identifier for the version. Maximum 100 bytes.",
-            "smithy.api#jsonName": "\"workers/tag\""
+            "smithy.api#jsonName": "workers/tag"
           }
         },
-        "_workers_triggered_by_": {
+        "workers_triggered_by": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Operation that triggered the creation of the version. This is read-only and set by the server.",
-            "smithy.api#jsonName": "\"workers/triggered_by\""
+            "smithy.api#jsonName": "workers/triggered_by"
           }
         }
       }

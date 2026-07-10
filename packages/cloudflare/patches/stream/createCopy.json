@@ -25,6 +25,11 @@
       "op": "replace",
       "path": "/shapes/com.cloudflare.stream#CreateCopy/output/target",
       "value": "com.cloudflare.stream#CreateCopyResponse"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.stream#CreateCopyRequest/members/Upload_Creator",
+      "path": "/shapes/com.cloudflare.stream#CreateCopyRequest/members/uploadCreator"
     }
   ]
 }

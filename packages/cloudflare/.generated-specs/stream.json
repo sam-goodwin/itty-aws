@@ -46,34 +46,34 @@
             "smithy.api#httpQuery": "direct_user"
           }
         },
-        "_Tus_Resumable_": {
+        "Tus_Resumable": {
           "target": "com.cloudflare.stream#CreateRequestTusResumable",
           "traits": {
             "smithy.api#documentation": "Specifies the TUS protocol version. This value must be included in every upload request.",
-            "smithy.api#httpHeader": "\"Tus-Resumable\"",
+            "smithy.api#httpHeader": "Tus-Resumable",
             "smithy.api#required": {}
           }
         },
-        "_Upload_Length_": {
+        "Upload_Length": {
           "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "Indicates the size of the entire upload in bytes. The value must be a non-negative integer.",
-            "smithy.api#httpHeader": "\"Upload-Length\"",
+            "smithy.api#httpHeader": "Upload-Length",
             "smithy.api#required": {}
           }
         },
-        "_Upload_Creator_": {
+        "Upload_Creator": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "A user-defined identifier for the media creator.",
-            "smithy.api#httpHeader": "\"Upload-Creator\""
+            "smithy.api#httpHeader": "Upload-Creator"
           }
         },
-        "_Upload_Metadata_": {
+        "Upload_Metadata": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Comma-separated key-value pairs following the TUS protocol specification. Values are Base-64 encoded.",
-            "smithy.api#httpHeader": "\"Upload-Metadata\""
+            "smithy.api#httpHeader": "Upload-Metadata"
           }
         }
       },
@@ -2951,11 +2951,11 @@
             "smithy.api#required": {}
           }
         },
-        "_Upload_Creator_": {
+        "Upload_Creator": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "A user-defined identifier for the media creator.",
-            "smithy.api#httpHeader": "\"Upload-Creator\""
+            "smithy.api#httpHeader": "Upload-Creator"
           }
         },
         "allowedOrigins": {
@@ -3404,11 +3404,11 @@
             "smithy.api#required": {}
           }
         },
-        "_Upload_Creator_": {
+        "Upload_Creator": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "A user-defined identifier for the media creator.",
-            "smithy.api#httpHeader": "\"Upload-Creator\""
+            "smithy.api#httpHeader": "Upload-Creator"
           }
         },
         "maxDurationSeconds": {

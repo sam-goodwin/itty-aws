@@ -517,15 +517,15 @@ export interface InsertIndexRequest {
   accountId: string;
   indexName: string;
   /** Behavior for ndjson parse failures. */
-  UnparsableBehavior_?: IndexesInsertRequestUnparsableBehavior;
+  unparsableBehavior?: IndexesInsertRequestUnparsableBehavior;
 }
 export const InsertIndexRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     indexName: S.String.pipe(T.Label("index_name")),
-    UnparsableBehavior_: S.optional(
+    unparsableBehavior: S.optional(
       IndexesInsertRequestUnparsableBehavior.pipe(
-        T.Query('"unparsable-behavior"'),
+        T.Query("unparsable-behavior"),
       ),
     ),
   })
@@ -890,15 +890,15 @@ export interface UpsertIndexRequest {
   accountId: string;
   indexName: string;
   /** Behavior for ndjson parse failures. */
-  UnparsableBehavior_?: IndexesUpsertRequestUnparsableBehavior;
+  unparsableBehavior?: IndexesUpsertRequestUnparsableBehavior;
 }
 export const UpsertIndexRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     indexName: S.String.pipe(T.Label("index_name")),
-    UnparsableBehavior_: S.optional(
+    unparsableBehavior: S.optional(
       IndexesUpsertRequestUnparsableBehavior.pipe(
-        T.Query('"unparsable-behavior"'),
+        T.Query("unparsable-behavior"),
       ),
     ),
   })

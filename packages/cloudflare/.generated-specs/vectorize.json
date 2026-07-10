@@ -634,11 +634,11 @@
             "smithy.api#required": {}
           }
         },
-        "_unparsable_behavior_": {
+        "unparsable_behavior": {
           "target": "com.cloudflare.vectorize#IndexesInsertRequestUnparsableBehavior",
           "traits": {
             "smithy.api#documentation": "Behavior for ndjson parse failures.",
-            "smithy.api#httpQuery": "\"unparsable-behavior\""
+            "smithy.api#httpQuery": "unparsable-behavior"
           }
         }
       },
@@ -1120,11 +1120,11 @@
             "smithy.api#required": {}
           }
         },
-        "_unparsable_behavior_": {
+        "unparsable_behavior": {
           "target": "com.cloudflare.vectorize#IndexesUpsertRequestUnparsableBehavior",
           "traits": {
             "smithy.api#documentation": "Behavior for ndjson parse failures.",
-            "smithy.api#httpQuery": "\"unparsable-behavior\""
+            "smithy.api#httpQuery": "unparsable-behavior"
           }
         }
       },

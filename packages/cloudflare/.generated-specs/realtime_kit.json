@@ -9168,39 +9168,39 @@
     "com.cloudflare.realtime_kit#PresetsCreateRequestUiDesignTokensColorsBackground": {
       "type": "structure",
       "members": {
-        "_1000_": {
+        "_1000": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#required": {},
-            "smithy.api#jsonName": "\"1000\""
+            "smithy.api#jsonName": "1000"
           }
         },
-        "_600_": {
+        "_600": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#required": {},
-            "smithy.api#jsonName": "\"600\""
+            "smithy.api#jsonName": "600"
           }
         },
-        "_700_": {
+        "_700": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#required": {},
-            "smithy.api#jsonName": "\"700\""
+            "smithy.api#jsonName": "700"
           }
         },
-        "_800_": {
+        "_800": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#required": {},
-            "smithy.api#jsonName": "\"800\""
+            "smithy.api#jsonName": "800"
           }
         },
-        "_900_": {
+        "_900": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#required": {},
-            "smithy.api#jsonName": "\"900\""
+            "smithy.api#jsonName": "900"
           }
         }
       }
@@ -9208,39 +9208,39 @@
     "com.cloudflare.realtime_kit#PresetsCreateRequestUiDesignTokensColorsBrand": {
       "type": "structure",
       "members": {
-        "_300_": {
+        "_300": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#required": {},
-            "smithy.api#jsonName": "\"300\""
+            "smithy.api#jsonName": "300"
           }
         },
-        "_400_": {
+        "_400": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#required": {},
-            "smithy.api#jsonName": "\"400\""
+            "smithy.api#jsonName": "400"
           }
         },
-        "_500_": {
+        "_500": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#required": {},
-            "smithy.api#jsonName": "\"500\""
+            "smithy.api#jsonName": "500"
           }
         },
-        "_600_": {
+        "_600": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#required": {},
-            "smithy.api#jsonName": "\"600\""
+            "smithy.api#jsonName": "600"
           }
         },
-        "_700_": {
+        "_700": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#required": {},
-            "smithy.api#jsonName": "\"700\""
+            "smithy.api#jsonName": "700"
           }
         }
       }
@@ -10221,39 +10221,39 @@
     "com.cloudflare.realtime_kit#PresetsCreateResponseDataUiDesignTokensColorsBackground": {
       "type": "structure",
       "members": {
-        "_1000_": {
+        "_1000": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#required": {},
-            "smithy.api#jsonName": "\"1000\""
+            "smithy.api#jsonName": "1000"
           }
         },
-        "_600_": {
+        "_600": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#required": {},
-            "smithy.api#jsonName": "\"600\""
+            "smithy.api#jsonName": "600"
           }
         },
-        "_700_": {
+        "_700": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#required": {},
-            "smithy.api#jsonName": "\"700\""
+            "smithy.api#jsonName": "700"
           }
         },
-        "_800_": {
+        "_800": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#required": {},
-            "smithy.api#jsonName": "\"800\""
+            "smithy.api#jsonName": "800"
           }
         },
-        "_900_": {
+        "_900": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#required": {},
-            "smithy.api#jsonName": "\"900\""
+            "smithy.api#jsonName": "900"
           }
         }
       }
@@ -10261,39 +10261,39 @@
     "com.cloudflare.realtime_kit#PresetsCreateResponseDataUiDesignTokensColorsBrand": {
       "type": "structure",
       "members": {
-        "_300_": {
+        "_300": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#required": {},
-            "smithy.api#jsonName": "\"300\""
+            "smithy.api#jsonName": "300"
           }
         },
-        "_400_": {
+        "_400": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#required": {},
-            "smithy.api#jsonName": "\"400\""
+            "smithy.api#jsonName": "400"
           }
         },
-        "_500_": {
+        "_500": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#required": {},
-            "smithy.api#jsonName": "\"500\""
+            "smithy.api#jsonName": "500"
           }
         },
-        "_600_": {
+        "_600": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#required": {},
-            "smithy.api#jsonName": "\"600\""
+            "smithy.api#jsonName": "600"
           }
         },
-        "_700_": {
+        "_700": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#required": {},
-            "smithy.api#jsonName": "\"700\""
+            "smithy.api#jsonName": "700"
           }
         }
       }
@@ -11340,39 +11340,39 @@
     "com.cloudflare.realtime_kit#PresetsDeleteResponseDataUiDesignTokensColorsBackground": {
       "type": "structure",
       "members": {
-        "_1000_": {
+        "_1000": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#required": {},
-            "smithy.api#jsonName": "\"1000\""
+            "smithy.api#jsonName": "1000"
           }
         },
-        "_600_": {
+        "_600": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#required": {},
-            "smithy.api#jsonName": "\"600\""
+            "smithy.api#jsonName": "600"
           }
         },
-        "_700_": {
+        "_700": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#required": {},
-            "smithy.api#jsonName": "\"700\""
+            "smithy.api#jsonName": "700"
           }
         },
-        "_800_": {
+        "_800": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#required": {},
-            "smithy.api#jsonName": "\"800\""
+            "smithy.api#jsonName": "800"
           }
         },
-        "_900_": {
+        "_900": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#required": {},
-            "smithy.api#jsonName": "\"900\""
+            "smithy.api#jsonName": "900"
           }
         }
       }
@@ -11380,39 +11380,39 @@
     "com.cloudflare.realtime_kit#PresetsDeleteResponseDataUiDesignTokensColorsBrand": {
       "type": "structure",
       "members": {
-        "_300_": {
+        "_300": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#required": {},
-            "smithy.api#jsonName": "\"300\""
+            "smithy.api#jsonName": "300"
           }
         },
-        "_400_": {
+        "_400": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#required": {},
-            "smithy.api#jsonName": "\"400\""
+            "smithy.api#jsonName": "400"
           }
         },
-        "_500_": {
+        "_500": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#required": {},
-            "smithy.api#jsonName": "\"500\""
+            "smithy.api#jsonName": "500"
           }
         },
-        "_600_": {
+        "_600": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#required": {},
-            "smithy.api#jsonName": "\"600\""
+            "smithy.api#jsonName": "600"
           }
         },
-        "_700_": {
+        "_700": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#required": {},
-            "smithy.api#jsonName": "\"700\""
+            "smithy.api#jsonName": "700"
           }
         }
       }
@@ -12602,39 +12602,39 @@
     "com.cloudflare.realtime_kit#PresetsGetPresetByIdResponseDataUiDesignTokensColorsBackground": {
       "type": "structure",
       "members": {
-        "_1000_": {
+        "_1000": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#required": {},
-            "smithy.api#jsonName": "\"1000\""
+            "smithy.api#jsonName": "1000"
           }
         },
-        "_600_": {
+        "_600": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#required": {},
-            "smithy.api#jsonName": "\"600\""
+            "smithy.api#jsonName": "600"
           }
         },
-        "_700_": {
+        "_700": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#required": {},
-            "smithy.api#jsonName": "\"700\""
+            "smithy.api#jsonName": "700"
           }
         },
-        "_800_": {
+        "_800": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#required": {},
-            "smithy.api#jsonName": "\"800\""
+            "smithy.api#jsonName": "800"
           }
         },
-        "_900_": {
+        "_900": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#required": {},
-            "smithy.api#jsonName": "\"900\""
+            "smithy.api#jsonName": "900"
           }
         }
       }
@@ -12642,39 +12642,39 @@
     "com.cloudflare.realtime_kit#PresetsGetPresetByIdResponseDataUiDesignTokensColorsBrand": {
       "type": "structure",
       "members": {
-        "_300_": {
+        "_300": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#required": {},
-            "smithy.api#jsonName": "\"300\""
+            "smithy.api#jsonName": "300"
           }
         },
-        "_400_": {
+        "_400": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#required": {},
-            "smithy.api#jsonName": "\"400\""
+            "smithy.api#jsonName": "400"
           }
         },
-        "_500_": {
+        "_500": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#required": {},
-            "smithy.api#jsonName": "\"500\""
+            "smithy.api#jsonName": "500"
           }
         },
-        "_600_": {
+        "_600": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#required": {},
-            "smithy.api#jsonName": "\"600\""
+            "smithy.api#jsonName": "600"
           }
         },
-        "_700_": {
+        "_700": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#required": {},
-            "smithy.api#jsonName": "\"700\""
+            "smithy.api#jsonName": "700"
           }
         }
       }
@@ -13587,34 +13587,34 @@
     "com.cloudflare.realtime_kit#PresetsUpdateRequestUiDesignTokensColorsBackground": {
       "type": "structure",
       "members": {
-        "_1000_": {
+        "_1000": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#jsonName": "\"1000\""
+            "smithy.api#jsonName": "1000"
           }
         },
-        "_600_": {
+        "_600": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#jsonName": "\"600\""
+            "smithy.api#jsonName": "600"
           }
         },
-        "_700_": {
+        "_700": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#jsonName": "\"700\""
+            "smithy.api#jsonName": "700"
           }
         },
-        "_800_": {
+        "_800": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#jsonName": "\"800\""
+            "smithy.api#jsonName": "800"
           }
         },
-        "_900_": {
+        "_900": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#jsonName": "\"900\""
+            "smithy.api#jsonName": "900"
           }
         }
       }
@@ -13622,34 +13622,34 @@
     "com.cloudflare.realtime_kit#PresetsUpdateRequestUiDesignTokensColorsBrand": {
       "type": "structure",
       "members": {
-        "_300_": {
+        "_300": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#jsonName": "\"300\""
+            "smithy.api#jsonName": "300"
           }
         },
-        "_400_": {
+        "_400": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#jsonName": "\"400\""
+            "smithy.api#jsonName": "400"
           }
         },
-        "_500_": {
+        "_500": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#jsonName": "\"500\""
+            "smithy.api#jsonName": "500"
           }
         },
-        "_600_": {
+        "_600": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#jsonName": "\"600\""
+            "smithy.api#jsonName": "600"
           }
         },
-        "_700_": {
+        "_700": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#jsonName": "\"700\""
+            "smithy.api#jsonName": "700"
           }
         }
       }
@@ -14585,39 +14585,39 @@
     "com.cloudflare.realtime_kit#PresetsUpdateResponseDataUiDesignTokensColorsBackground": {
       "type": "structure",
       "members": {
-        "_1000_": {
+        "_1000": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#required": {},
-            "smithy.api#jsonName": "\"1000\""
+            "smithy.api#jsonName": "1000"
           }
         },
-        "_600_": {
+        "_600": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#required": {},
-            "smithy.api#jsonName": "\"600\""
+            "smithy.api#jsonName": "600"
           }
         },
-        "_700_": {
+        "_700": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#required": {},
-            "smithy.api#jsonName": "\"700\""
+            "smithy.api#jsonName": "700"
           }
         },
-        "_800_": {
+        "_800": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#required": {},
-            "smithy.api#jsonName": "\"800\""
+            "smithy.api#jsonName": "800"
           }
         },
-        "_900_": {
+        "_900": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#required": {},
-            "smithy.api#jsonName": "\"900\""
+            "smithy.api#jsonName": "900"
           }
         }
       }
@@ -14625,39 +14625,39 @@
     "com.cloudflare.realtime_kit#PresetsUpdateResponseDataUiDesignTokensColorsBrand": {
       "type": "structure",
       "members": {
-        "_300_": {
+        "_300": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#required": {},
-            "smithy.api#jsonName": "\"300\""
+            "smithy.api#jsonName": "300"
           }
         },
-        "_400_": {
+        "_400": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#required": {},
-            "smithy.api#jsonName": "\"400\""
+            "smithy.api#jsonName": "400"
           }
         },
-        "_500_": {
+        "_500": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#required": {},
-            "smithy.api#jsonName": "\"500\""
+            "smithy.api#jsonName": "500"
           }
         },
-        "_600_": {
+        "_600": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#required": {},
-            "smithy.api#jsonName": "\"600\""
+            "smithy.api#jsonName": "600"
           }
         },
-        "_700_": {
+        "_700": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#required": {},
-            "smithy.api#jsonName": "\"700\""
+            "smithy.api#jsonName": "700"
           }
         }
       }
@@ -18980,22 +18980,22 @@
     "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerCumulativeJitterBufferDelay": {
       "type": "structure",
       "members": {
-        "_100ms_or_greater_event_fraction_": {
+        "_100ms_or_greater_event_fraction": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#jsonName": "\"100ms_or_greater_event_fraction\""
+            "smithy.api#jsonName": "100ms_or_greater_event_fraction"
           }
         },
-        "_250ms_or_greater_event_fraction_": {
+        "_250ms_or_greater_event_fraction": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#jsonName": "\"250ms_or_greater_event_fraction\""
+            "smithy.api#jsonName": "250ms_or_greater_event_fraction"
           }
         },
-        "_500ms_or_greater_event_fraction_": {
+        "_500ms_or_greater_event_fraction": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#jsonName": "\"500ms_or_greater_event_fraction\""
+            "smithy.api#jsonName": "500ms_or_greater_event_fraction"
           }
         },
         "avg": {
@@ -19006,28 +19006,28 @@
     "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerCumulativePacketLoss": {
       "type": "structure",
       "members": {
-        "_10_or_greater_event_fraction_": {
+        "_10_or_greater_event_fraction": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#jsonName": "\"10_or_greater_event_fraction\""
+            "smithy.api#jsonName": "10_or_greater_event_fraction"
           }
         },
-        "_25_or_greater_event_fraction_": {
+        "_25_or_greater_event_fraction": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#jsonName": "\"25_or_greater_event_fraction\""
+            "smithy.api#jsonName": "25_or_greater_event_fraction"
           }
         },
-        "_5_or_greater_event_fraction_": {
+        "_5_or_greater_event_fraction": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#jsonName": "\"5_or_greater_event_fraction\""
+            "smithy.api#jsonName": "5_or_greater_event_fraction"
           }
         },
-        "_50_or_greater_event_fraction_": {
+        "_50_or_greater_event_fraction": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#jsonName": "\"50_or_greater_event_fraction\""
+            "smithy.api#jsonName": "50_or_greater_event_fraction"
           }
         },
         "avg": {
@@ -19119,28 +19119,28 @@
     "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerCumulativePacketLoss": {
       "type": "structure",
       "members": {
-        "_10_or_greater_event_fraction_": {
+        "_10_or_greater_event_fraction": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#jsonName": "\"10_or_greater_event_fraction\""
+            "smithy.api#jsonName": "10_or_greater_event_fraction"
           }
         },
-        "_25_or_greater_event_fraction_": {
+        "_25_or_greater_event_fraction": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#jsonName": "\"25_or_greater_event_fraction\""
+            "smithy.api#jsonName": "25_or_greater_event_fraction"
           }
         },
-        "_5_or_greater_event_fraction_": {
+        "_5_or_greater_event_fraction": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#jsonName": "\"5_or_greater_event_fraction\""
+            "smithy.api#jsonName": "5_or_greater_event_fraction"
           }
         },
-        "_50_or_greater_event_fraction_": {
+        "_50_or_greater_event_fraction": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#jsonName": "\"50_or_greater_event_fraction\""
+            "smithy.api#jsonName": "50_or_greater_event_fraction"
           }
         },
         "avg": {
@@ -19168,22 +19168,22 @@
     "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerCumulativeRtt": {
       "type": "structure",
       "members": {
-        "_100ms_or_greater_event_fraction_": {
+        "_100ms_or_greater_event_fraction": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#jsonName": "\"100ms_or_greater_event_fraction\""
+            "smithy.api#jsonName": "100ms_or_greater_event_fraction"
           }
         },
-        "_250ms_or_greater_event_fraction_": {
+        "_250ms_or_greater_event_fraction": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#jsonName": "\"250ms_or_greater_event_fraction\""
+            "smithy.api#jsonName": "250ms_or_greater_event_fraction"
           }
         },
-        "_500ms_or_greater_event_fraction_": {
+        "_500ms_or_greater_event_fraction": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#jsonName": "\"500ms_or_greater_event_fraction\""
+            "smithy.api#jsonName": "500ms_or_greater_event_fraction"
           }
         },
         "avg": {
@@ -19270,22 +19270,22 @@
     "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioConsumerCumulativeJitterBufferDelay": {
       "type": "structure",
       "members": {
-        "_100ms_or_greater_event_fraction_": {
+        "_100ms_or_greater_event_fraction": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#jsonName": "\"100ms_or_greater_event_fraction\""
+            "smithy.api#jsonName": "100ms_or_greater_event_fraction"
           }
         },
-        "_250ms_or_greater_event_fraction_": {
+        "_250ms_or_greater_event_fraction": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#jsonName": "\"250ms_or_greater_event_fraction\""
+            "smithy.api#jsonName": "250ms_or_greater_event_fraction"
           }
         },
-        "_500ms_or_greater_event_fraction_": {
+        "_500ms_or_greater_event_fraction": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#jsonName": "\"500ms_or_greater_event_fraction\""
+            "smithy.api#jsonName": "500ms_or_greater_event_fraction"
           }
         },
         "avg": {
@@ -19296,28 +19296,28 @@
     "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioConsumerCumulativePacketLoss": {
       "type": "structure",
       "members": {
-        "_10_or_greater_event_fraction_": {
+        "_10_or_greater_event_fraction": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#jsonName": "\"10_or_greater_event_fraction\""
+            "smithy.api#jsonName": "10_or_greater_event_fraction"
           }
         },
-        "_25_or_greater_event_fraction_": {
+        "_25_or_greater_event_fraction": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#jsonName": "\"25_or_greater_event_fraction\""
+            "smithy.api#jsonName": "25_or_greater_event_fraction"
           }
         },
-        "_5_or_greater_event_fraction_": {
+        "_5_or_greater_event_fraction": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#jsonName": "\"5_or_greater_event_fraction\""
+            "smithy.api#jsonName": "5_or_greater_event_fraction"
           }
         },
-        "_50_or_greater_event_fraction_": {
+        "_50_or_greater_event_fraction": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#jsonName": "\"50_or_greater_event_fraction\""
+            "smithy.api#jsonName": "50_or_greater_event_fraction"
           }
         },
         "avg": {
@@ -19409,28 +19409,28 @@
     "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioProducerCumulativePacketLoss": {
       "type": "structure",
       "members": {
-        "_10_or_greater_event_fraction_": {
+        "_10_or_greater_event_fraction": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#jsonName": "\"10_or_greater_event_fraction\""
+            "smithy.api#jsonName": "10_or_greater_event_fraction"
           }
         },
-        "_25_or_greater_event_fraction_": {
+        "_25_or_greater_event_fraction": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#jsonName": "\"25_or_greater_event_fraction\""
+            "smithy.api#jsonName": "25_or_greater_event_fraction"
           }
         },
-        "_5_or_greater_event_fraction_": {
+        "_5_or_greater_event_fraction": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#jsonName": "\"5_or_greater_event_fraction\""
+            "smithy.api#jsonName": "5_or_greater_event_fraction"
           }
         },
-        "_50_or_greater_event_fraction_": {
+        "_50_or_greater_event_fraction": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#jsonName": "\"50_or_greater_event_fraction\""
+            "smithy.api#jsonName": "50_or_greater_event_fraction"
           }
         },
         "avg": {
@@ -19458,22 +19458,22 @@
     "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioProducerCumulativeRtt": {
       "type": "structure",
       "members": {
-        "_100ms_or_greater_event_fraction_": {
+        "_100ms_or_greater_event_fraction": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#jsonName": "\"100ms_or_greater_event_fraction\""
+            "smithy.api#jsonName": "100ms_or_greater_event_fraction"
           }
         },
-        "_250ms_or_greater_event_fraction_": {
+        "_250ms_or_greater_event_fraction": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#jsonName": "\"250ms_or_greater_event_fraction\""
+            "smithy.api#jsonName": "250ms_or_greater_event_fraction"
           }
         },
-        "_500ms_or_greater_event_fraction_": {
+        "_500ms_or_greater_event_fraction": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#jsonName": "\"500ms_or_greater_event_fraction\""
+            "smithy.api#jsonName": "500ms_or_greater_event_fraction"
           }
         },
         "avg": {
@@ -19626,22 +19626,22 @@
     "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulativeJitterBufferDelay": {
       "type": "structure",
       "members": {
-        "_100ms_or_greater_event_fraction_": {
+        "_100ms_or_greater_event_fraction": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#jsonName": "\"100ms_or_greater_event_fraction\""
+            "smithy.api#jsonName": "100ms_or_greater_event_fraction"
           }
         },
-        "_250ms_or_greater_event_fraction_": {
+        "_250ms_or_greater_event_fraction": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#jsonName": "\"250ms_or_greater_event_fraction\""
+            "smithy.api#jsonName": "250ms_or_greater_event_fraction"
           }
         },
-        "_500ms_or_greater_event_fraction_": {
+        "_500ms_or_greater_event_fraction": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#jsonName": "\"500ms_or_greater_event_fraction\""
+            "smithy.api#jsonName": "500ms_or_greater_event_fraction"
           }
         },
         "avg": {
@@ -19652,28 +19652,28 @@
     "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulativePacketLoss": {
       "type": "structure",
       "members": {
-        "_10_or_greater_event_fraction_": {
+        "_10_or_greater_event_fraction": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#jsonName": "\"10_or_greater_event_fraction\""
+            "smithy.api#jsonName": "10_or_greater_event_fraction"
           }
         },
-        "_25_or_greater_event_fraction_": {
+        "_25_or_greater_event_fraction": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#jsonName": "\"25_or_greater_event_fraction\""
+            "smithy.api#jsonName": "25_or_greater_event_fraction"
           }
         },
-        "_5_or_greater_event_fraction_": {
+        "_5_or_greater_event_fraction": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#jsonName": "\"5_or_greater_event_fraction\""
+            "smithy.api#jsonName": "5_or_greater_event_fraction"
           }
         },
-        "_50_or_greater_event_fraction_": {
+        "_50_or_greater_event_fraction": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#jsonName": "\"50_or_greater_event_fraction\""
+            "smithy.api#jsonName": "50_or_greater_event_fraction"
           }
         },
         "avg": {
@@ -19913,28 +19913,28 @@
     "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulativePacketLoss": {
       "type": "structure",
       "members": {
-        "_10_or_greater_event_fraction_": {
+        "_10_or_greater_event_fraction": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#jsonName": "\"10_or_greater_event_fraction\""
+            "smithy.api#jsonName": "10_or_greater_event_fraction"
           }
         },
-        "_25_or_greater_event_fraction_": {
+        "_25_or_greater_event_fraction": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#jsonName": "\"25_or_greater_event_fraction\""
+            "smithy.api#jsonName": "25_or_greater_event_fraction"
           }
         },
-        "_5_or_greater_event_fraction_": {
+        "_5_or_greater_event_fraction": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#jsonName": "\"5_or_greater_event_fraction\""
+            "smithy.api#jsonName": "5_or_greater_event_fraction"
           }
         },
-        "_50_or_greater_event_fraction_": {
+        "_50_or_greater_event_fraction": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#jsonName": "\"50_or_greater_event_fraction\""
+            "smithy.api#jsonName": "50_or_greater_event_fraction"
           }
         },
         "avg": {
@@ -19962,22 +19962,22 @@
     "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulativeRtt": {
       "type": "structure",
       "members": {
-        "_100ms_or_greater_event_fraction_": {
+        "_100ms_or_greater_event_fraction": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#jsonName": "\"100ms_or_greater_event_fraction\""
+            "smithy.api#jsonName": "100ms_or_greater_event_fraction"
           }
         },
-        "_250ms_or_greater_event_fraction_": {
+        "_250ms_or_greater_event_fraction": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#jsonName": "\"250ms_or_greater_event_fraction\""
+            "smithy.api#jsonName": "250ms_or_greater_event_fraction"
           }
         },
-        "_500ms_or_greater_event_fraction_": {
+        "_500ms_or_greater_event_fraction": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#jsonName": "\"500ms_or_greater_event_fraction\""
+            "smithy.api#jsonName": "500ms_or_greater_event_fraction"
           }
         },
         "avg": {
@@ -20151,22 +20151,22 @@
     "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerCumulativeJitterBufferDelay": {
       "type": "structure",
       "members": {
-        "_100ms_or_greater_event_fraction_": {
+        "_100ms_or_greater_event_fraction": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#jsonName": "\"100ms_or_greater_event_fraction\""
+            "smithy.api#jsonName": "100ms_or_greater_event_fraction"
           }
         },
-        "_250ms_or_greater_event_fraction_": {
+        "_250ms_or_greater_event_fraction": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#jsonName": "\"250ms_or_greater_event_fraction\""
+            "smithy.api#jsonName": "250ms_or_greater_event_fraction"
           }
         },
-        "_500ms_or_greater_event_fraction_": {
+        "_500ms_or_greater_event_fraction": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#jsonName": "\"500ms_or_greater_event_fraction\""
+            "smithy.api#jsonName": "500ms_or_greater_event_fraction"
           }
         },
         "avg": {
@@ -20177,28 +20177,28 @@
     "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerCumulativePacketLoss": {
       "type": "structure",
       "members": {
-        "_10_or_greater_event_fraction_": {
+        "_10_or_greater_event_fraction": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#jsonName": "\"10_or_greater_event_fraction\""
+            "smithy.api#jsonName": "10_or_greater_event_fraction"
           }
         },
-        "_25_or_greater_event_fraction_": {
+        "_25_or_greater_event_fraction": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#jsonName": "\"25_or_greater_event_fraction\""
+            "smithy.api#jsonName": "25_or_greater_event_fraction"
           }
         },
-        "_5_or_greater_event_fraction_": {
+        "_5_or_greater_event_fraction": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#jsonName": "\"5_or_greater_event_fraction\""
+            "smithy.api#jsonName": "5_or_greater_event_fraction"
           }
         },
-        "_50_or_greater_event_fraction_": {
+        "_50_or_greater_event_fraction": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#jsonName": "\"50_or_greater_event_fraction\""
+            "smithy.api#jsonName": "50_or_greater_event_fraction"
           }
         },
         "avg": {
@@ -20438,28 +20438,28 @@
     "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerCumulativePacketLoss": {
       "type": "structure",
       "members": {
-        "_10_or_greater_event_fraction_": {
+        "_10_or_greater_event_fraction": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#jsonName": "\"10_or_greater_event_fraction\""
+            "smithy.api#jsonName": "10_or_greater_event_fraction"
           }
         },
-        "_25_or_greater_event_fraction_": {
+        "_25_or_greater_event_fraction": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#jsonName": "\"25_or_greater_event_fraction\""
+            "smithy.api#jsonName": "25_or_greater_event_fraction"
           }
         },
-        "_5_or_greater_event_fraction_": {
+        "_5_or_greater_event_fraction": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#jsonName": "\"5_or_greater_event_fraction\""
+            "smithy.api#jsonName": "5_or_greater_event_fraction"
           }
         },
-        "_50_or_greater_event_fraction_": {
+        "_50_or_greater_event_fraction": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#jsonName": "\"50_or_greater_event_fraction\""
+            "smithy.api#jsonName": "50_or_greater_event_fraction"
           }
         },
         "avg": {
@@ -20487,22 +20487,22 @@
     "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerCumulativeRtt": {
       "type": "structure",
       "members": {
-        "_100ms_or_greater_event_fraction_": {
+        "_100ms_or_greater_event_fraction": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#jsonName": "\"100ms_or_greater_event_fraction\""
+            "smithy.api#jsonName": "100ms_or_greater_event_fraction"
           }
         },
-        "_250ms_or_greater_event_fraction_": {
+        "_250ms_or_greater_event_fraction": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#jsonName": "\"250ms_or_greater_event_fraction\""
+            "smithy.api#jsonName": "250ms_or_greater_event_fraction"
           }
         },
-        "_500ms_or_greater_event_fraction_": {
+        "_500ms_or_greater_event_fraction": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#jsonName": "\"500ms_or_greater_event_fraction\""
+            "smithy.api#jsonName": "500ms_or_greater_event_fraction"
           }
         },
         "avg": {

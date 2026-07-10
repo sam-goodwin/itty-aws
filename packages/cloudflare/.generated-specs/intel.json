@@ -294,10 +294,10 @@
             "smithy.api#httpQuery": "issue_class"
           }
         },
-        "_issue_class_neq_": {
+        "issue_class_neq": {
           "target": "com.cloudflare.intel#AttackSurfaceReportIssuesClassRequestIssueClassNeqList",
           "traits": {
-            "smithy.api#httpQuery": "\"issue_class~neq\""
+            "smithy.api#httpQuery": "issue_class~neq"
           }
         },
         "issue_type": {
@@ -306,10 +306,10 @@
             "smithy.api#httpQuery": "issue_type"
           }
         },
-        "_issue_type_neq_": {
+        "issue_type_neq": {
           "target": "com.cloudflare.intel#AttackSurfaceReportIssuesClassRequestIssueTypeNeqList",
           "traits": {
-            "smithy.api#httpQuery": "\"issue_type~neq\""
+            "smithy.api#httpQuery": "issue_type~neq"
           }
         },
         "product": {
@@ -318,10 +318,10 @@
             "smithy.api#httpQuery": "product"
           }
         },
-        "_product_neq_": {
+        "product_neq": {
           "target": "com.cloudflare.intel#AttackSurfaceReportIssuesClassRequestProductNeqList",
           "traits": {
-            "smithy.api#httpQuery": "\"product~neq\""
+            "smithy.api#httpQuery": "product~neq"
           }
         },
         "severity": {
@@ -330,10 +330,10 @@
             "smithy.api#httpQuery": "severity"
           }
         },
-        "_severity_neq_": {
+        "severity_neq": {
           "target": "com.cloudflare.intel#AttackSurfaceReportIssuesClassRequestSeverityNeqList",
           "traits": {
-            "smithy.api#httpQuery": "\"severity~neq\""
+            "smithy.api#httpQuery": "severity~neq"
           }
         },
         "subject": {
@@ -342,10 +342,10 @@
             "smithy.api#httpQuery": "subject"
           }
         },
-        "_subject_neq_": {
+        "subject_neq": {
           "target": "com.cloudflare.intel#AttackSurfaceReportIssuesClassRequestSubjectNeqList",
           "traits": {
-            "smithy.api#httpQuery": "\"subject~neq\""
+            "smithy.api#httpQuery": "subject~neq"
           }
         }
       },
@@ -530,10 +530,10 @@
             "smithy.api#httpQuery": "issue_class"
           }
         },
-        "_issue_class_neq_": {
+        "issue_class_neq": {
           "target": "com.cloudflare.intel#AttackSurfaceReportIssuesListRequestIssueClassNeqList",
           "traits": {
-            "smithy.api#httpQuery": "\"issue_class~neq\""
+            "smithy.api#httpQuery": "issue_class~neq"
           }
         },
         "issue_type": {
@@ -542,10 +542,10 @@
             "smithy.api#httpQuery": "issue_type"
           }
         },
-        "_issue_type_neq_": {
+        "issue_type_neq": {
           "target": "com.cloudflare.intel#AttackSurfaceReportIssuesListRequestIssueTypeNeqList",
           "traits": {
-            "smithy.api#httpQuery": "\"issue_type~neq\""
+            "smithy.api#httpQuery": "issue_type~neq"
           }
         },
         "page": {
@@ -568,10 +568,10 @@
             "smithy.api#httpQuery": "product"
           }
         },
-        "_product_neq_": {
+        "product_neq": {
           "target": "com.cloudflare.intel#AttackSurfaceReportIssuesListRequestProductNeqList",
           "traits": {
-            "smithy.api#httpQuery": "\"product~neq\""
+            "smithy.api#httpQuery": "product~neq"
           }
         },
         "severity": {
@@ -580,10 +580,10 @@
             "smithy.api#httpQuery": "severity"
           }
         },
-        "_severity_neq_": {
+        "severity_neq": {
           "target": "com.cloudflare.intel#AttackSurfaceReportIssuesListRequestSeverityNeqList",
           "traits": {
-            "smithy.api#httpQuery": "\"severity~neq\""
+            "smithy.api#httpQuery": "severity~neq"
           }
         },
         "subject": {
@@ -592,10 +592,10 @@
             "smithy.api#httpQuery": "subject"
           }
         },
-        "_subject_neq_": {
+        "subject_neq": {
           "target": "com.cloudflare.intel#AttackSurfaceReportIssuesListRequestSubjectNeqList",
           "traits": {
-            "smithy.api#httpQuery": "\"subject~neq\""
+            "smithy.api#httpQuery": "subject~neq"
           }
         }
       },
@@ -873,10 +873,10 @@
             "smithy.api#httpQuery": "issue_class"
           }
         },
-        "_issue_class_neq_": {
+        "issue_class_neq": {
           "target": "com.cloudflare.intel#AttackSurfaceReportIssuesSeverityRequestIssueClassNeqList",
           "traits": {
-            "smithy.api#httpQuery": "\"issue_class~neq\""
+            "smithy.api#httpQuery": "issue_class~neq"
           }
         },
         "issue_type": {
@@ -885,10 +885,10 @@
             "smithy.api#httpQuery": "issue_type"
           }
         },
-        "_issue_type_neq_": {
+        "issue_type_neq": {
           "target": "com.cloudflare.intel#AttackSurfaceReportIssuesSeverityRequestIssueTypeNeqList",
           "traits": {
-            "smithy.api#httpQuery": "\"issue_type~neq\""
+            "smithy.api#httpQuery": "issue_type~neq"
           }
         },
         "product": {
@@ -897,10 +897,10 @@
             "smithy.api#httpQuery": "product"
           }
         },
-        "_product_neq_": {
+        "product_neq": {
           "target": "com.cloudflare.intel#AttackSurfaceReportIssuesSeverityRequestProductNeqList",
           "traits": {
-            "smithy.api#httpQuery": "\"product~neq\""
+            "smithy.api#httpQuery": "product~neq"
           }
         },
         "severity": {
@@ -909,10 +909,10 @@
             "smithy.api#httpQuery": "severity"
           }
         },
-        "_severity_neq_": {
+        "severity_neq": {
           "target": "com.cloudflare.intel#AttackSurfaceReportIssuesSeverityRequestSeverityNeqList",
           "traits": {
-            "smithy.api#httpQuery": "\"severity~neq\""
+            "smithy.api#httpQuery": "severity~neq"
           }
         },
         "subject": {
@@ -921,10 +921,10 @@
             "smithy.api#httpQuery": "subject"
           }
         },
-        "_subject_neq_": {
+        "subject_neq": {
           "target": "com.cloudflare.intel#AttackSurfaceReportIssuesSeverityRequestSubjectNeqList",
           "traits": {
-            "smithy.api#httpQuery": "\"subject~neq\""
+            "smithy.api#httpQuery": "subject~neq"
           }
         }
       },
@@ -1065,10 +1065,10 @@
             "smithy.api#httpQuery": "issue_class"
           }
         },
-        "_issue_class_neq_": {
+        "issue_class_neq": {
           "target": "com.cloudflare.intel#AttackSurfaceReportIssuesTypeRequestIssueClassNeqList",
           "traits": {
-            "smithy.api#httpQuery": "\"issue_class~neq\""
+            "smithy.api#httpQuery": "issue_class~neq"
           }
         },
         "issue_type": {
@@ -1077,10 +1077,10 @@
             "smithy.api#httpQuery": "issue_type"
           }
         },
-        "_issue_type_neq_": {
+        "issue_type_neq": {
           "target": "com.cloudflare.intel#AttackSurfaceReportIssuesTypeRequestIssueTypeNeqList",
           "traits": {
-            "smithy.api#httpQuery": "\"issue_type~neq\""
+            "smithy.api#httpQuery": "issue_type~neq"
           }
         },
         "product": {
@@ -1089,10 +1089,10 @@
             "smithy.api#httpQuery": "product"
           }
         },
-        "_product_neq_": {
+        "product_neq": {
           "target": "com.cloudflare.intel#AttackSurfaceReportIssuesTypeRequestProductNeqList",
           "traits": {
-            "smithy.api#httpQuery": "\"product~neq\""
+            "smithy.api#httpQuery": "product~neq"
           }
         },
         "severity": {
@@ -1101,10 +1101,10 @@
             "smithy.api#httpQuery": "severity"
           }
         },
-        "_severity_neq_": {
+        "severity_neq": {
           "target": "com.cloudflare.intel#AttackSurfaceReportIssuesTypeRequestSeverityNeqList",
           "traits": {
-            "smithy.api#httpQuery": "\"severity~neq\""
+            "smithy.api#httpQuery": "severity~neq"
           }
         },
         "subject": {
@@ -1113,10 +1113,10 @@
             "smithy.api#httpQuery": "subject"
           }
         },
-        "_subject_neq_": {
+        "subject_neq": {
           "target": "com.cloudflare.intel#AttackSurfaceReportIssuesTypeRequestSubjectNeqList",
           "traits": {
-            "smithy.api#httpQuery": "\"subject~neq\""
+            "smithy.api#httpQuery": "subject~neq"
           }
         }
       },

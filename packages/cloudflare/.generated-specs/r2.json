@@ -91,11 +91,11 @@
             "smithy.api#required": {}
           }
         },
-        "_cf_r2_jurisdiction_": {
+        "cf_r2_jurisdiction": {
           "target": "com.cloudflare.r2#BucketsCreateRequestCfR2Jurisdiction",
           "traits": {
             "smithy.api#documentation": "Jurisdiction where objects in this bucket are guaranteed to be stored.",
-            "smithy.api#httpHeader": "\"cf-r2-jurisdiction\""
+            "smithy.api#httpHeader": "cf-r2-jurisdiction"
           }
         },
         "name": {
@@ -283,11 +283,11 @@
             "smithy.api#required": {}
           }
         },
-        "_cf_r2_jurisdiction_": {
+        "cf_r2_jurisdiction": {
           "target": "com.cloudflare.r2#BucketsDeleteRequestCfR2Jurisdiction",
           "traits": {
             "smithy.api#documentation": "Jurisdiction where objects in this bucket are guaranteed to be stored.",
-            "smithy.api#httpHeader": "\"cf-r2-jurisdiction\""
+            "smithy.api#httpHeader": "cf-r2-jurisdiction"
           }
         }
       },
@@ -387,19 +387,19 @@
             "smithy.api#required": {}
           }
         },
-        "_cf_r2_storage_class_": {
+        "cf_r2_storage_class": {
           "target": "com.cloudflare.r2#BucketsEditRequestCfR2StorageClass",
           "traits": {
             "smithy.api#documentation": "Storage class for newly uploaded objects, unless specified otherwise.",
-            "smithy.api#httpHeader": "\"cf-r2-storage-class\"",
+            "smithy.api#httpHeader": "cf-r2-storage-class",
             "smithy.api#required": {}
           }
         },
-        "_cf_r2_jurisdiction_": {
+        "cf_r2_jurisdiction": {
           "target": "com.cloudflare.r2#BucketsEditRequestCfR2Jurisdiction",
           "traits": {
             "smithy.api#documentation": "Jurisdiction where objects in this bucket are guaranteed to be stored.",
-            "smithy.api#httpHeader": "\"cf-r2-jurisdiction\""
+            "smithy.api#httpHeader": "cf-r2-jurisdiction"
           }
         }
       },
@@ -568,11 +568,11 @@
             "smithy.api#required": {}
           }
         },
-        "_cf_r2_jurisdiction_": {
+        "cf_r2_jurisdiction": {
           "target": "com.cloudflare.r2#BucketsGetRequestCfR2Jurisdiction",
           "traits": {
             "smithy.api#documentation": "Jurisdiction where objects in this bucket are guaranteed to be stored.",
-            "smithy.api#httpHeader": "\"cf-r2-jurisdiction\""
+            "smithy.api#httpHeader": "cf-r2-jurisdiction"
           }
         }
       },
@@ -804,11 +804,11 @@
             "smithy.api#httpQuery": "start_after"
           }
         },
-        "_cf_r2_jurisdiction_": {
+        "cf_r2_jurisdiction": {
           "target": "com.cloudflare.r2#BucketsListRequestCfR2Jurisdiction",
           "traits": {
             "smithy.api#documentation": "Jurisdiction where objects in this bucket are guaranteed to be stored.",
-            "smithy.api#httpHeader": "\"cf-r2-jurisdiction\""
+            "smithy.api#httpHeader": "cf-r2-jurisdiction"
           }
         }
       },
@@ -992,11 +992,11 @@
             "smithy.api#required": {}
           }
         },
-        "_cf_r2_jurisdiction_": {
+        "cf_r2_jurisdiction": {
           "target": "com.cloudflare.r2#BucketsCorsDeleteRequestCfR2Jurisdiction",
           "traits": {
             "smithy.api#documentation": "Jurisdiction where objects in this bucket are guaranteed to be stored.",
-            "smithy.api#httpHeader": "\"cf-r2-jurisdiction\""
+            "smithy.api#httpHeader": "cf-r2-jurisdiction"
           }
         }
       },
@@ -1079,11 +1079,11 @@
             "smithy.api#required": {}
           }
         },
-        "_cf_r2_jurisdiction_": {
+        "cf_r2_jurisdiction": {
           "target": "com.cloudflare.r2#BucketsCorsGetRequestCfR2Jurisdiction",
           "traits": {
             "smithy.api#documentation": "Jurisdiction where objects in this bucket are guaranteed to be stored.",
-            "smithy.api#httpHeader": "\"cf-r2-jurisdiction\""
+            "smithy.api#httpHeader": "cf-r2-jurisdiction"
           }
         }
       },
@@ -1379,11 +1379,11 @@
             "smithy.api#required": {}
           }
         },
-        "_cf_r2_jurisdiction_": {
+        "cf_r2_jurisdiction": {
           "target": "com.cloudflare.r2#BucketsCorsUpdateRequestCfR2Jurisdiction",
           "traits": {
             "smithy.api#documentation": "Jurisdiction where objects in this bucket are guaranteed to be stored.",
-            "smithy.api#httpHeader": "\"cf-r2-jurisdiction\""
+            "smithy.api#httpHeader": "cf-r2-jurisdiction"
           }
         },
         "rules": {
@@ -1504,11 +1504,11 @@
             "smithy.api#required": {}
           }
         },
-        "_cf_r2_jurisdiction_": {
+        "cf_r2_jurisdiction": {
           "target": "com.cloudflare.r2#BucketsDomainsCustomCreateRequestCfR2Jurisdiction",
           "traits": {
             "smithy.api#documentation": "Jurisdiction where objects in this bucket are guaranteed to be stored.",
-            "smithy.api#httpHeader": "\"cf-r2-jurisdiction\""
+            "smithy.api#httpHeader": "cf-r2-jurisdiction"
           }
         },
         "domain": {
@@ -1693,11 +1693,11 @@
             "smithy.api#required": {}
           }
         },
-        "_cf_r2_jurisdiction_": {
+        "cf_r2_jurisdiction": {
           "target": "com.cloudflare.r2#BucketsDomainsCustomDeleteRequestCfR2Jurisdiction",
           "traits": {
             "smithy.api#documentation": "Jurisdiction where objects in this bucket are guaranteed to be stored.",
-            "smithy.api#httpHeader": "\"cf-r2-jurisdiction\""
+            "smithy.api#httpHeader": "cf-r2-jurisdiction"
           }
         }
       },
@@ -1789,11 +1789,11 @@
             "smithy.api#required": {}
           }
         },
-        "_cf_r2_jurisdiction_": {
+        "cf_r2_jurisdiction": {
           "target": "com.cloudflare.r2#BucketsDomainsCustomGetRequestCfR2Jurisdiction",
           "traits": {
             "smithy.api#documentation": "Jurisdiction where objects in this bucket are guaranteed to be stored.",
-            "smithy.api#httpHeader": "\"cf-r2-jurisdiction\""
+            "smithy.api#httpHeader": "cf-r2-jurisdiction"
           }
         }
       },
@@ -2014,11 +2014,11 @@
             "smithy.api#required": {}
           }
         },
-        "_cf_r2_jurisdiction_": {
+        "cf_r2_jurisdiction": {
           "target": "com.cloudflare.r2#BucketsDomainsCustomListRequestCfR2Jurisdiction",
           "traits": {
             "smithy.api#documentation": "Jurisdiction where objects in this bucket are guaranteed to be stored.",
-            "smithy.api#httpHeader": "\"cf-r2-jurisdiction\""
+            "smithy.api#httpHeader": "cf-r2-jurisdiction"
           }
         }
       },
@@ -2299,11 +2299,11 @@
             "smithy.api#required": {}
           }
         },
-        "_cf_r2_jurisdiction_": {
+        "cf_r2_jurisdiction": {
           "target": "com.cloudflare.r2#BucketsDomainsCustomUpdateRequestCfR2Jurisdiction",
           "traits": {
             "smithy.api#documentation": "Jurisdiction where objects in this bucket are guaranteed to be stored.",
-            "smithy.api#httpHeader": "\"cf-r2-jurisdiction\""
+            "smithy.api#httpHeader": "cf-r2-jurisdiction"
           }
         },
         "ciphers": {
@@ -2458,11 +2458,11 @@
             "smithy.api#required": {}
           }
         },
-        "_cf_r2_jurisdiction_": {
+        "cf_r2_jurisdiction": {
           "target": "com.cloudflare.r2#BucketsDomainsManagedListRequestCfR2Jurisdiction",
           "traits": {
             "smithy.api#documentation": "Jurisdiction where objects in this bucket are guaranteed to be stored.",
-            "smithy.api#httpHeader": "\"cf-r2-jurisdiction\""
+            "smithy.api#httpHeader": "cf-r2-jurisdiction"
           }
         }
       },
@@ -2560,11 +2560,11 @@
             "smithy.api#required": {}
           }
         },
-        "_cf_r2_jurisdiction_": {
+        "cf_r2_jurisdiction": {
           "target": "com.cloudflare.r2#BucketsDomainsManagedUpdateRequestCfR2Jurisdiction",
           "traits": {
             "smithy.api#documentation": "Jurisdiction where objects in this bucket are guaranteed to be stored.",
-            "smithy.api#httpHeader": "\"cf-r2-jurisdiction\""
+            "smithy.api#httpHeader": "cf-r2-jurisdiction"
           }
         },
         "enabled": {
@@ -2677,11 +2677,11 @@
             "smithy.api#required": {}
           }
         },
-        "_cf_r2_jurisdiction_": {
+        "cf_r2_jurisdiction": {
           "target": "com.cloudflare.r2#BucketsEventNotificationsDeleteRequestCfR2Jurisdiction",
           "traits": {
             "smithy.api#documentation": "Jurisdiction where objects in this bucket are guaranteed to be stored.",
-            "smithy.api#httpHeader": "\"cf-r2-jurisdiction\""
+            "smithy.api#httpHeader": "cf-r2-jurisdiction"
           }
         }
       },
@@ -2772,11 +2772,11 @@
             "smithy.api#required": {}
           }
         },
-        "_cf_r2_jurisdiction_": {
+        "cf_r2_jurisdiction": {
           "target": "com.cloudflare.r2#BucketsEventNotificationsGetRequestCfR2Jurisdiction",
           "traits": {
             "smithy.api#documentation": "The bucket jurisdiction.",
-            "smithy.api#httpHeader": "\"cf-r2-jurisdiction\""
+            "smithy.api#httpHeader": "cf-r2-jurisdiction"
           }
         }
       },
@@ -2945,11 +2945,11 @@
             "smithy.api#required": {}
           }
         },
-        "_cf_r2_jurisdiction_": {
+        "cf_r2_jurisdiction": {
           "target": "com.cloudflare.r2#BucketsEventNotificationsListRequestCfR2Jurisdiction",
           "traits": {
             "smithy.api#documentation": "Jurisdiction where objects in this bucket are guaranteed to be stored.",
-            "smithy.api#httpHeader": "\"cf-r2-jurisdiction\""
+            "smithy.api#httpHeader": "cf-r2-jurisdiction"
           }
         }
       },
@@ -3214,11 +3214,11 @@
             "smithy.api#required": {}
           }
         },
-        "_cf_r2_jurisdiction_": {
+        "cf_r2_jurisdiction": {
           "target": "com.cloudflare.r2#BucketsEventNotificationsUpdateRequestCfR2Jurisdiction",
           "traits": {
             "smithy.api#documentation": "Jurisdiction where objects in this bucket are guaranteed to be stored.",
-            "smithy.api#httpHeader": "\"cf-r2-jurisdiction\""
+            "smithy.api#httpHeader": "cf-r2-jurisdiction"
           }
         },
         "rules": {
@@ -3308,11 +3308,11 @@
             "smithy.api#required": {}
           }
         },
-        "_cf_r2_jurisdiction_": {
+        "cf_r2_jurisdiction": {
           "target": "com.cloudflare.r2#BucketsLifecycleGetRequestCfR2Jurisdiction",
           "traits": {
             "smithy.api#documentation": "Jurisdiction where objects in this bucket are guaranteed to be stored.",
-            "smithy.api#httpHeader": "\"cf-r2-jurisdiction\""
+            "smithy.api#httpHeader": "cf-r2-jurisdiction"
           }
         }
       },
@@ -3954,11 +3954,11 @@
             "smithy.api#required": {}
           }
         },
-        "_cf_r2_jurisdiction_": {
+        "cf_r2_jurisdiction": {
           "target": "com.cloudflare.r2#BucketsLifecycleUpdateRequestCfR2Jurisdiction",
           "traits": {
             "smithy.api#documentation": "Jurisdiction where objects in this bucket are guaranteed to be stored.",
-            "smithy.api#httpHeader": "\"cf-r2-jurisdiction\""
+            "smithy.api#httpHeader": "cf-r2-jurisdiction"
           }
         },
         "rules": {
@@ -4044,11 +4044,11 @@
             "smithy.api#required": {}
           }
         },
-        "_cf_r2_jurisdiction_": {
+        "cf_r2_jurisdiction": {
           "target": "com.cloudflare.r2#BucketsLocksGetRequestCfR2Jurisdiction",
           "traits": {
             "smithy.api#documentation": "Jurisdiction where objects in this bucket are guaranteed to be stored.",
-            "smithy.api#httpHeader": "\"cf-r2-jurisdiction\""
+            "smithy.api#httpHeader": "cf-r2-jurisdiction"
           }
         }
       },
@@ -4388,11 +4388,11 @@
             "smithy.api#required": {}
           }
         },
-        "_cf_r2_jurisdiction_": {
+        "cf_r2_jurisdiction": {
           "target": "com.cloudflare.r2#BucketsLocksUpdateRequestCfR2Jurisdiction",
           "traits": {
             "smithy.api#documentation": "Jurisdiction where objects in this bucket are guaranteed to be stored.",
-            "smithy.api#httpHeader": "\"cf-r2-jurisdiction\""
+            "smithy.api#httpHeader": "cf-r2-jurisdiction"
           }
         },
         "rules": {
@@ -4667,11 +4667,11 @@
             "smithy.api#required": {}
           }
         },
-        "_cf_r2_jurisdiction_": {
+        "cf_r2_jurisdiction": {
           "target": "com.cloudflare.r2#BucketsObjectsDeleteRequestCfR2Jurisdiction",
           "traits": {
             "smithy.api#documentation": "Jurisdiction where objects in this bucket are guaranteed to be stored.",
-            "smithy.api#httpHeader": "\"cf-r2-jurisdiction\""
+            "smithy.api#httpHeader": "cf-r2-jurisdiction"
           }
         }
       },
@@ -4762,25 +4762,25 @@
             "smithy.api#required": {}
           }
         },
-        "_cf_r2_jurisdiction_": {
+        "cf_r2_jurisdiction": {
           "target": "com.cloudflare.r2#BucketsObjectsGetRequestCfR2Jurisdiction",
           "traits": {
             "smithy.api#documentation": "Jurisdiction where objects in this bucket are guaranteed to be stored.",
-            "smithy.api#httpHeader": "\"cf-r2-jurisdiction\""
+            "smithy.api#httpHeader": "cf-r2-jurisdiction"
           }
         },
-        "_If_Modified_Since_": {
+        "If_Modified_Since": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Returns the object only if it has been modified since the specified time.",
-            "smithy.api#httpHeader": "\"If-Modified-Since\""
+            "smithy.api#httpHeader": "If-Modified-Since"
           }
         },
-        "_If_None_Match_": {
+        "If_None_Match": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Returns the object only if its ETag does not match the given value.",
-            "smithy.api#httpHeader": "\"If-None-Match\""
+            "smithy.api#httpHeader": "If-None-Match"
           }
         }
       },
@@ -4883,11 +4883,11 @@
             "smithy.api#httpQuery": "start_after"
           }
         },
-        "_cf_r2_jurisdiction_": {
+        "cf_r2_jurisdiction": {
           "target": "com.cloudflare.r2#BucketsObjectsListRequestCfR2Jurisdiction",
           "traits": {
             "smithy.api#documentation": "Jurisdiction where objects in this bucket are guaranteed to be stored.",
-            "smithy.api#httpHeader": "\"cf-r2-jurisdiction\""
+            "smithy.api#httpHeader": "cf-r2-jurisdiction"
           }
         }
       },
@@ -5121,18 +5121,18 @@
             "smithy.api#required": {}
           }
         },
-        "_cf_r2_jurisdiction_": {
+        "cf_r2_jurisdiction": {
           "target": "com.cloudflare.r2#BucketsObjectsUploadRequestCfR2Jurisdiction",
           "traits": {
             "smithy.api#documentation": "Jurisdiction where objects in this bucket are guaranteed to be stored.",
-            "smithy.api#httpHeader": "\"cf-r2-jurisdiction\""
+            "smithy.api#httpHeader": "cf-r2-jurisdiction"
           }
         },
-        "_cf_r2_storage_class_": {
+        "cf_r2_storage_class": {
           "target": "com.cloudflare.r2#BucketsObjectsUploadRequestCfR2StorageClass",
           "traits": {
             "smithy.api#documentation": "Storage class for newly uploaded objects, unless specified otherwise.",
-            "smithy.api#httpHeader": "\"cf-r2-storage-class\""
+            "smithy.api#httpHeader": "cf-r2-storage-class"
           }
         }
       },
@@ -5262,11 +5262,11 @@
             "smithy.api#required": {}
           }
         },
-        "_cf_r2_jurisdiction_": {
+        "cf_r2_jurisdiction": {
           "target": "com.cloudflare.r2#BucketsSippyDeleteRequestCfR2Jurisdiction",
           "traits": {
             "smithy.api#documentation": "Jurisdiction where objects in this bucket are guaranteed to be stored.",
-            "smithy.api#httpHeader": "\"cf-r2-jurisdiction\""
+            "smithy.api#httpHeader": "cf-r2-jurisdiction"
           }
         }
       },
@@ -5346,11 +5346,11 @@
             "smithy.api#required": {}
           }
         },
-        "_cf_r2_jurisdiction_": {
+        "cf_r2_jurisdiction": {
           "target": "com.cloudflare.r2#BucketsSippyGetRequestCfR2Jurisdiction",
           "traits": {
             "smithy.api#documentation": "Jurisdiction where objects in this bucket are guaranteed to be stored.",
-            "smithy.api#httpHeader": "\"cf-r2-jurisdiction\""
+            "smithy.api#httpHeader": "cf-r2-jurisdiction"
           }
         }
       },
@@ -5759,11 +5759,11 @@
             "smithy.api#required": {}
           }
         },
-        "_cf_r2_jurisdiction_": {
+        "cf_r2_jurisdiction": {
           "target": "com.cloudflare.r2#BucketsSippyUpdateRequestCfR2Jurisdiction",
           "traits": {
             "smithy.api#documentation": "Jurisdiction where objects in this bucket are guaranteed to be stored.",
-            "smithy.api#httpHeader": "\"cf-r2-jurisdiction\""
+            "smithy.api#httpHeader": "cf-r2-jurisdiction"
           }
         },
         "body": {

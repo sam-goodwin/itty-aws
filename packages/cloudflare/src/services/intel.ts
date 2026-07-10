@@ -246,15 +246,15 @@ export interface ClassAttackSurfaceReportIssueRequest {
   accountId: string;
   dismissed?: boolean;
   issueClass?: AttackSurfaceReportIssuesClassRequestIssueClassList;
-  IssueClassNeq_?: AttackSurfaceReportIssuesClassRequestIssueClassNeqList;
+  issueClassNeq?: AttackSurfaceReportIssuesClassRequestIssueClassNeqList;
   issueType?: AttackSurfaceReportIssuesClassRequestIssueTypeList;
-  IssueTypeNeq_?: AttackSurfaceReportIssuesClassRequestIssueTypeNeqList;
+  issueTypeNeq?: AttackSurfaceReportIssuesClassRequestIssueTypeNeqList;
   product?: AttackSurfaceReportIssuesClassRequestProductList;
-  ProductNeq_?: AttackSurfaceReportIssuesClassRequestProductNeqList;
+  productNeq?: AttackSurfaceReportIssuesClassRequestProductNeqList;
   severity?: AttackSurfaceReportIssuesClassRequestSeverityList;
-  SeverityNeq_?: AttackSurfaceReportIssuesClassRequestSeverityNeqList;
+  severityNeq?: AttackSurfaceReportIssuesClassRequestSeverityNeqList;
   subject?: AttackSurfaceReportIssuesClassRequestSubjectList;
-  SubjectNeq_?: AttackSurfaceReportIssuesClassRequestSubjectNeqList;
+  subjectNeq?: AttackSurfaceReportIssuesClassRequestSubjectNeqList;
 }
 export const ClassAttackSurfaceReportIssueRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -266,9 +266,9 @@ export const ClassAttackSurfaceReportIssueRequest = /*@__PURE__*/ S.suspend(
           T.Query("issue_class"),
         ),
       ),
-      IssueClassNeq_: S.optional(
+      issueClassNeq: S.optional(
         AttackSurfaceReportIssuesClassRequestIssueClassNeqList.pipe(
-          T.Query('"issue_class~neq"'),
+          T.Query("issue_class~neq"),
         ),
       ),
       issueType: S.optional(
@@ -276,33 +276,33 @@ export const ClassAttackSurfaceReportIssueRequest = /*@__PURE__*/ S.suspend(
           T.Query("issue_type"),
         ),
       ),
-      IssueTypeNeq_: S.optional(
+      issueTypeNeq: S.optional(
         AttackSurfaceReportIssuesClassRequestIssueTypeNeqList.pipe(
-          T.Query('"issue_type~neq"'),
+          T.Query("issue_type~neq"),
         ),
       ),
       product: S.optional(
         AttackSurfaceReportIssuesClassRequestProductList.pipe(T.Query()),
       ),
-      ProductNeq_: S.optional(
+      productNeq: S.optional(
         AttackSurfaceReportIssuesClassRequestProductNeqList.pipe(
-          T.Query('"product~neq"'),
+          T.Query("product~neq"),
         ),
       ),
       severity: S.optional(
         AttackSurfaceReportIssuesClassRequestSeverityList.pipe(T.Query()),
       ),
-      SeverityNeq_: S.optional(
+      severityNeq: S.optional(
         AttackSurfaceReportIssuesClassRequestSeverityNeqList.pipe(
-          T.Query('"severity~neq"'),
+          T.Query("severity~neq"),
         ),
       ),
       subject: S.optional(
         AttackSurfaceReportIssuesClassRequestSubjectList.pipe(T.Query()),
       ),
-      SubjectNeq_: S.optional(
+      subjectNeq: S.optional(
         AttackSurfaceReportIssuesClassRequestSubjectNeqList.pipe(
-          T.Query('"subject~neq"'),
+          T.Query("subject~neq"),
         ),
       ),
     })
@@ -1898,19 +1898,19 @@ export interface ListAttackSurfaceReportIssuesRequest {
   accountId: string;
   dismissed?: boolean;
   issueClass?: AttackSurfaceReportIssuesListRequestIssueClassList;
-  IssueClassNeq_?: AttackSurfaceReportIssuesListRequestIssueClassNeqList;
+  issueClassNeq?: AttackSurfaceReportIssuesListRequestIssueClassNeqList;
   issueType?: AttackSurfaceReportIssuesListRequestIssueTypeList;
-  IssueTypeNeq_?: AttackSurfaceReportIssuesListRequestIssueTypeNeqList;
+  issueTypeNeq?: AttackSurfaceReportIssuesListRequestIssueTypeNeqList;
   /** Specifies the current page within paginated list of results. */
   page?: number;
   /** Sets the number of results per page of results. */
   perPage?: number;
   product?: AttackSurfaceReportIssuesListRequestProductList;
-  ProductNeq_?: AttackSurfaceReportIssuesListRequestProductNeqList;
+  productNeq?: AttackSurfaceReportIssuesListRequestProductNeqList;
   severity?: AttackSurfaceReportIssuesListRequestSeverityList;
-  SeverityNeq_?: AttackSurfaceReportIssuesListRequestSeverityNeqList;
+  severityNeq?: AttackSurfaceReportIssuesListRequestSeverityNeqList;
   subject?: AttackSurfaceReportIssuesListRequestSubjectList;
-  SubjectNeq_?: AttackSurfaceReportIssuesListRequestSubjectNeqList;
+  subjectNeq?: AttackSurfaceReportIssuesListRequestSubjectNeqList;
 }
 export const ListAttackSurfaceReportIssuesRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -1922,9 +1922,9 @@ export const ListAttackSurfaceReportIssuesRequest = /*@__PURE__*/ S.suspend(
           T.Query("issue_class"),
         ),
       ),
-      IssueClassNeq_: S.optional(
+      issueClassNeq: S.optional(
         AttackSurfaceReportIssuesListRequestIssueClassNeqList.pipe(
-          T.Query('"issue_class~neq"'),
+          T.Query("issue_class~neq"),
         ),
       ),
       issueType: S.optional(
@@ -1932,9 +1932,9 @@ export const ListAttackSurfaceReportIssuesRequest = /*@__PURE__*/ S.suspend(
           T.Query("issue_type"),
         ),
       ),
-      IssueTypeNeq_: S.optional(
+      issueTypeNeq: S.optional(
         AttackSurfaceReportIssuesListRequestIssueTypeNeqList.pipe(
-          T.Query('"issue_type~neq"'),
+          T.Query("issue_type~neq"),
         ),
       ),
       page: S.optional(S.Number.pipe(T.Query())),
@@ -1942,25 +1942,25 @@ export const ListAttackSurfaceReportIssuesRequest = /*@__PURE__*/ S.suspend(
       product: S.optional(
         AttackSurfaceReportIssuesListRequestProductList.pipe(T.Query()),
       ),
-      ProductNeq_: S.optional(
+      productNeq: S.optional(
         AttackSurfaceReportIssuesListRequestProductNeqList.pipe(
-          T.Query('"product~neq"'),
+          T.Query("product~neq"),
         ),
       ),
       severity: S.optional(
         AttackSurfaceReportIssuesListRequestSeverityList.pipe(T.Query()),
       ),
-      SeverityNeq_: S.optional(
+      severityNeq: S.optional(
         AttackSurfaceReportIssuesListRequestSeverityNeqList.pipe(
-          T.Query('"severity~neq"'),
+          T.Query("severity~neq"),
         ),
       ),
       subject: S.optional(
         AttackSurfaceReportIssuesListRequestSubjectList.pipe(T.Query()),
       ),
-      SubjectNeq_: S.optional(
+      subjectNeq: S.optional(
         AttackSurfaceReportIssuesListRequestSubjectNeqList.pipe(
-          T.Query('"subject~neq"'),
+          T.Query("subject~neq"),
         ),
       ),
     })
@@ -2483,15 +2483,15 @@ export interface SeverityAttackSurfaceReportIssueRequest {
   accountId: string;
   dismissed?: boolean;
   issueClass?: AttackSurfaceReportIssuesSeverityRequestIssueClassList;
-  IssueClassNeq_?: AttackSurfaceReportIssuesSeverityRequestIssueClassNeqList;
+  issueClassNeq?: AttackSurfaceReportIssuesSeverityRequestIssueClassNeqList;
   issueType?: AttackSurfaceReportIssuesSeverityRequestIssueTypeList;
-  IssueTypeNeq_?: AttackSurfaceReportIssuesSeverityRequestIssueTypeNeqList;
+  issueTypeNeq?: AttackSurfaceReportIssuesSeverityRequestIssueTypeNeqList;
   product?: AttackSurfaceReportIssuesSeverityRequestProductList;
-  ProductNeq_?: AttackSurfaceReportIssuesSeverityRequestProductNeqList;
+  productNeq?: AttackSurfaceReportIssuesSeverityRequestProductNeqList;
   severity?: AttackSurfaceReportIssuesSeverityRequestSeverityList;
-  SeverityNeq_?: AttackSurfaceReportIssuesSeverityRequestSeverityNeqList;
+  severityNeq?: AttackSurfaceReportIssuesSeverityRequestSeverityNeqList;
   subject?: AttackSurfaceReportIssuesSeverityRequestSubjectList;
-  SubjectNeq_?: AttackSurfaceReportIssuesSeverityRequestSubjectNeqList;
+  subjectNeq?: AttackSurfaceReportIssuesSeverityRequestSubjectNeqList;
 }
 export const SeverityAttackSurfaceReportIssueRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -2503,9 +2503,9 @@ export const SeverityAttackSurfaceReportIssueRequest = /*@__PURE__*/ S.suspend(
           T.Query("issue_class"),
         ),
       ),
-      IssueClassNeq_: S.optional(
+      issueClassNeq: S.optional(
         AttackSurfaceReportIssuesSeverityRequestIssueClassNeqList.pipe(
-          T.Query('"issue_class~neq"'),
+          T.Query("issue_class~neq"),
         ),
       ),
       issueType: S.optional(
@@ -2513,33 +2513,33 @@ export const SeverityAttackSurfaceReportIssueRequest = /*@__PURE__*/ S.suspend(
           T.Query("issue_type"),
         ),
       ),
-      IssueTypeNeq_: S.optional(
+      issueTypeNeq: S.optional(
         AttackSurfaceReportIssuesSeverityRequestIssueTypeNeqList.pipe(
-          T.Query('"issue_type~neq"'),
+          T.Query("issue_type~neq"),
         ),
       ),
       product: S.optional(
         AttackSurfaceReportIssuesSeverityRequestProductList.pipe(T.Query()),
       ),
-      ProductNeq_: S.optional(
+      productNeq: S.optional(
         AttackSurfaceReportIssuesSeverityRequestProductNeqList.pipe(
-          T.Query('"product~neq"'),
+          T.Query("product~neq"),
         ),
       ),
       severity: S.optional(
         AttackSurfaceReportIssuesSeverityRequestSeverityList.pipe(T.Query()),
       ),
-      SeverityNeq_: S.optional(
+      severityNeq: S.optional(
         AttackSurfaceReportIssuesSeverityRequestSeverityNeqList.pipe(
-          T.Query('"severity~neq"'),
+          T.Query("severity~neq"),
         ),
       ),
       subject: S.optional(
         AttackSurfaceReportIssuesSeverityRequestSubjectList.pipe(T.Query()),
       ),
-      SubjectNeq_: S.optional(
+      subjectNeq: S.optional(
         AttackSurfaceReportIssuesSeverityRequestSubjectNeqList.pipe(
-          T.Query('"subject~neq"'),
+          T.Query("subject~neq"),
         ),
       ),
     })
@@ -2650,15 +2650,15 @@ export interface TypeAttackSurfaceReportIssueRequest {
   accountId: string;
   dismissed?: boolean;
   issueClass?: AttackSurfaceReportIssuesTypeRequestIssueClassList;
-  IssueClassNeq_?: AttackSurfaceReportIssuesTypeRequestIssueClassNeqList;
+  issueClassNeq?: AttackSurfaceReportIssuesTypeRequestIssueClassNeqList;
   issueType?: AttackSurfaceReportIssuesTypeRequestIssueTypeList;
-  IssueTypeNeq_?: AttackSurfaceReportIssuesTypeRequestIssueTypeNeqList;
+  issueTypeNeq?: AttackSurfaceReportIssuesTypeRequestIssueTypeNeqList;
   product?: AttackSurfaceReportIssuesTypeRequestProductList;
-  ProductNeq_?: AttackSurfaceReportIssuesTypeRequestProductNeqList;
+  productNeq?: AttackSurfaceReportIssuesTypeRequestProductNeqList;
   severity?: AttackSurfaceReportIssuesTypeRequestSeverityList;
-  SeverityNeq_?: AttackSurfaceReportIssuesTypeRequestSeverityNeqList;
+  severityNeq?: AttackSurfaceReportIssuesTypeRequestSeverityNeqList;
   subject?: AttackSurfaceReportIssuesTypeRequestSubjectList;
-  SubjectNeq_?: AttackSurfaceReportIssuesTypeRequestSubjectNeqList;
+  subjectNeq?: AttackSurfaceReportIssuesTypeRequestSubjectNeqList;
 }
 export const TypeAttackSurfaceReportIssueRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2669,9 +2669,9 @@ export const TypeAttackSurfaceReportIssueRequest = /*@__PURE__*/ S.suspend(() =>
         T.Query("issue_class"),
       ),
     ),
-    IssueClassNeq_: S.optional(
+    issueClassNeq: S.optional(
       AttackSurfaceReportIssuesTypeRequestIssueClassNeqList.pipe(
-        T.Query('"issue_class~neq"'),
+        T.Query("issue_class~neq"),
       ),
     ),
     issueType: S.optional(
@@ -2679,33 +2679,33 @@ export const TypeAttackSurfaceReportIssueRequest = /*@__PURE__*/ S.suspend(() =>
         T.Query("issue_type"),
       ),
     ),
-    IssueTypeNeq_: S.optional(
+    issueTypeNeq: S.optional(
       AttackSurfaceReportIssuesTypeRequestIssueTypeNeqList.pipe(
-        T.Query('"issue_type~neq"'),
+        T.Query("issue_type~neq"),
       ),
     ),
     product: S.optional(
       AttackSurfaceReportIssuesTypeRequestProductList.pipe(T.Query()),
     ),
-    ProductNeq_: S.optional(
+    productNeq: S.optional(
       AttackSurfaceReportIssuesTypeRequestProductNeqList.pipe(
-        T.Query('"product~neq"'),
+        T.Query("product~neq"),
       ),
     ),
     severity: S.optional(
       AttackSurfaceReportIssuesTypeRequestSeverityList.pipe(T.Query()),
     ),
-    SeverityNeq_: S.optional(
+    severityNeq: S.optional(
       AttackSurfaceReportIssuesTypeRequestSeverityNeqList.pipe(
-        T.Query('"severity~neq"'),
+        T.Query("severity~neq"),
       ),
     ),
     subject: S.optional(
       AttackSurfaceReportIssuesTypeRequestSubjectList.pipe(T.Query()),
     ),
-    SubjectNeq_: S.optional(
+    subjectNeq: S.optional(
       AttackSurfaceReportIssuesTypeRequestSubjectNeqList.pipe(
-        T.Query('"subject~neq"'),
+        T.Query("subject~neq"),
       ),
     ),
   })

@@ -209,10 +209,10 @@
             "smithy.api#required": {}
           }
         },
-        "_If_Match_": {
+        "If_Match": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpHeader": "\"If-Match\""
+            "smithy.api#httpHeader": "If-Match"
           }
         }
       },
@@ -535,10 +535,10 @@
             "smithy.api#required": {}
           }
         },
-        "_If_Match_": {
+        "If_Match": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpHeader": "\"If-Match\""
+            "smithy.api#httpHeader": "If-Match"
           }
         },
         "body": {
@@ -818,10 +818,10 @@
             "smithy.api#required": {}
           }
         },
-        "_If_Match_": {
+        "If_Match": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpHeader": "\"If-Match\""
+            "smithy.api#httpHeader": "If-Match"
           }
         }
       },
@@ -1144,10 +1144,10 @@
             "smithy.api#required": {}
           }
         },
-        "_If_Match_": {
+        "If_Match": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpHeader": "\"If-Match\""
+            "smithy.api#httpHeader": "If-Match"
           }
         },
         "body": {

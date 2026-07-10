@@ -207,7 +207,7 @@ export interface JobsCreateForAccountRequestOutputOptions {
   /** String to be appended after each batch. */
   batchSuffix?: string;
   /** If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`. */
-  CVE202144228_?: boolean;
+  CVE202144228?: boolean;
   /** String to join fields. This field be ignored when `record_template` is set. */
   fieldDelimiter?: string;
   /** List of field names to be included in the Logpush output. For the moment, there is no option to add all fields at once, so you must specify all the fields names you are interested in. */
@@ -234,7 +234,7 @@ export const JobsCreateForAccountRequestOutputOptions = /*@__PURE__*/ S.suspend(
     S.Struct({
       batchPrefix: S.optional(S.String.pipe(T.Body("batch_prefix"))),
       batchSuffix: S.optional(S.String.pipe(T.Body("batch_suffix"))),
-      CVE202144228_: S.optional(S.Boolean.pipe(T.Body('"CVE-2021-44228"'))),
+      CVE202144228: S.optional(S.Boolean.pipe(T.Body("CVE-2021-44228"))),
       fieldDelimiter: S.optional(S.String.pipe(T.Body("field_delimiter"))),
       fieldNames: S.optional(
         JobsCreateForAccountRequestOutputOptionsFieldNamesList.pipe(
@@ -425,7 +425,7 @@ export interface JobsCreateForAccountResponseOutputOptions {
   /** String to be appended after each batch. */
   batchSuffix?: string;
   /** If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`. */
-  CVE202144228_?: boolean;
+  CVE202144228?: boolean;
   /** String to join fields. This field be ignored when `record_template` is set. */
   fieldDelimiter?: string;
   /** List of field names to be included in the Logpush output. For the moment, there is no option to add all fields at once, so you must specify all the fields names you are interested in. */
@@ -452,7 +452,7 @@ export const JobsCreateForAccountResponseOutputOptions =
     S.Struct({
       batchPrefix: S.optional(S.String.pipe(T.Body("batch_prefix"))),
       batchSuffix: S.optional(S.String.pipe(T.Body("batch_suffix"))),
-      CVE202144228_: S.optional(S.Boolean.pipe(T.Body('"CVE-2021-44228"'))),
+      CVE202144228: S.optional(S.Boolean.pipe(T.Body("CVE-2021-44228"))),
       fieldDelimiter: S.optional(S.String.pipe(T.Body("field_delimiter"))),
       fieldNames: S.optional(
         JobsCreateForAccountResponseOutputOptionsFieldNamesList.pipe(
@@ -634,7 +634,7 @@ export interface JobsCreateForZoneRequestOutputOptions {
   /** String to be appended after each batch. */
   batchSuffix?: string;
   /** If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`. */
-  CVE202144228_?: boolean;
+  CVE202144228?: boolean;
   /** String to join fields. This field be ignored when `record_template` is set. */
   fieldDelimiter?: string;
   /** List of field names to be included in the Logpush output. For the moment, there is no option to add all fields at once, so you must specify all the fields names you are interested in. */
@@ -661,7 +661,7 @@ export const JobsCreateForZoneRequestOutputOptions = /*@__PURE__*/ S.suspend(
     S.Struct({
       batchPrefix: S.optional(S.String.pipe(T.Body("batch_prefix"))),
       batchSuffix: S.optional(S.String.pipe(T.Body("batch_suffix"))),
-      CVE202144228_: S.optional(S.Boolean.pipe(T.Body('"CVE-2021-44228"'))),
+      CVE202144228: S.optional(S.Boolean.pipe(T.Body("CVE-2021-44228"))),
       fieldDelimiter: S.optional(S.String.pipe(T.Body("field_delimiter"))),
       fieldNames: S.optional(
         JobsCreateForZoneRequestOutputOptionsFieldNamesList.pipe(
@@ -847,7 +847,7 @@ export interface JobsCreateForZoneResponseOutputOptions {
   /** String to be appended after each batch. */
   batchSuffix?: string;
   /** If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`. */
-  CVE202144228_?: boolean;
+  CVE202144228?: boolean;
   /** String to join fields. This field be ignored when `record_template` is set. */
   fieldDelimiter?: string;
   /** List of field names to be included in the Logpush output. For the moment, there is no option to add all fields at once, so you must specify all the fields names you are interested in. */
@@ -874,7 +874,7 @@ export const JobsCreateForZoneResponseOutputOptions = /*@__PURE__*/ S.suspend(
     S.Struct({
       batchPrefix: S.optional(S.String.pipe(T.Body("batch_prefix"))),
       batchSuffix: S.optional(S.String.pipe(T.Body("batch_suffix"))),
-      CVE202144228_: S.optional(S.Boolean.pipe(T.Body('"CVE-2021-44228"'))),
+      CVE202144228: S.optional(S.Boolean.pipe(T.Body("CVE-2021-44228"))),
       fieldDelimiter: S.optional(S.String.pipe(T.Body("field_delimiter"))),
       fieldNames: S.optional(
         JobsCreateForZoneResponseOutputOptionsFieldNamesList.pipe(
@@ -1474,7 +1474,7 @@ export interface DatasetsJobsGetForAccountResultItemOutputOptions {
   /** String to be appended after each batch. */
   batchSuffix?: string;
   /** If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`. */
-  CVE202144228_?: boolean;
+  CVE202144228?: boolean;
   /** String to join fields. This field be ignored when `record_template` is set. */
   fieldDelimiter?: string;
   /** List of field names to be included in the Logpush output. For the moment, there is no option to add all fields at once, so you must specify all the fields names you are interested in. */
@@ -1501,7 +1501,7 @@ export const DatasetsJobsGetForAccountResultItemOutputOptions =
     S.Struct({
       batchPrefix: S.optional(S.String.pipe(T.Body("batch_prefix"))),
       batchSuffix: S.optional(S.String.pipe(T.Body("batch_suffix"))),
-      CVE202144228_: S.optional(S.Boolean.pipe(T.Body('"CVE-2021-44228"'))),
+      CVE202144228: S.optional(S.Boolean.pipe(T.Body("CVE-2021-44228"))),
       fieldDelimiter: S.optional(S.String.pipe(T.Body("field_delimiter"))),
       fieldNames: S.optional(
         DatasetsJobsGetForAccountResultItemOutputOptionsFieldNamesList.pipe(
@@ -1741,7 +1741,7 @@ export interface DatasetsJobsGetForZoneResultItemOutputOptions {
   /** String to be appended after each batch. */
   batchSuffix?: string;
   /** If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`. */
-  CVE202144228_?: boolean;
+  CVE202144228?: boolean;
   /** String to join fields. This field be ignored when `record_template` is set. */
   fieldDelimiter?: string;
   /** List of field names to be included in the Logpush output. For the moment, there is no option to add all fields at once, so you must specify all the fields names you are interested in. */
@@ -1768,7 +1768,7 @@ export const DatasetsJobsGetForZoneResultItemOutputOptions =
     S.Struct({
       batchPrefix: S.optional(S.String.pipe(T.Body("batch_prefix"))),
       batchSuffix: S.optional(S.String.pipe(T.Body("batch_suffix"))),
-      CVE202144228_: S.optional(S.Boolean.pipe(T.Body('"CVE-2021-44228"'))),
+      CVE202144228: S.optional(S.Boolean.pipe(T.Body("CVE-2021-44228"))),
       fieldDelimiter: S.optional(S.String.pipe(T.Body("field_delimiter"))),
       fieldNames: S.optional(
         DatasetsJobsGetForZoneResultItemOutputOptionsFieldNamesList.pipe(
@@ -2057,7 +2057,7 @@ export interface JobsGetForAccountResponseOutputOptions {
   /** String to be appended after each batch. */
   batchSuffix?: string;
   /** If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`. */
-  CVE202144228_?: boolean;
+  CVE202144228?: boolean;
   /** String to join fields. This field be ignored when `record_template` is set. */
   fieldDelimiter?: string;
   /** List of field names to be included in the Logpush output. For the moment, there is no option to add all fields at once, so you must specify all the fields names you are interested in. */
@@ -2084,7 +2084,7 @@ export const JobsGetForAccountResponseOutputOptions = /*@__PURE__*/ S.suspend(
     S.Struct({
       batchPrefix: S.optional(S.String.pipe(T.Body("batch_prefix"))),
       batchSuffix: S.optional(S.String.pipe(T.Body("batch_suffix"))),
-      CVE202144228_: S.optional(S.Boolean.pipe(T.Body('"CVE-2021-44228"'))),
+      CVE202144228: S.optional(S.Boolean.pipe(T.Body("CVE-2021-44228"))),
       fieldDelimiter: S.optional(S.String.pipe(T.Body("field_delimiter"))),
       fieldNames: S.optional(
         JobsGetForAccountResponseOutputOptionsFieldNamesList.pipe(
@@ -2287,7 +2287,7 @@ export interface JobsGetForZoneResponseOutputOptions {
   /** String to be appended after each batch. */
   batchSuffix?: string;
   /** If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`. */
-  CVE202144228_?: boolean;
+  CVE202144228?: boolean;
   /** String to join fields. This field be ignored when `record_template` is set. */
   fieldDelimiter?: string;
   /** List of field names to be included in the Logpush output. For the moment, there is no option to add all fields at once, so you must specify all the fields names you are interested in. */
@@ -2313,7 +2313,7 @@ export const JobsGetForZoneResponseOutputOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     batchPrefix: S.optional(S.String.pipe(T.Body("batch_prefix"))),
     batchSuffix: S.optional(S.String.pipe(T.Body("batch_suffix"))),
-    CVE202144228_: S.optional(S.Boolean.pipe(T.Body('"CVE-2021-44228"'))),
+    CVE202144228: S.optional(S.Boolean.pipe(T.Body("CVE-2021-44228"))),
     fieldDelimiter: S.optional(S.String.pipe(T.Body("field_delimiter"))),
     fieldNames: S.optional(
       JobsGetForZoneResponseOutputOptionsFieldNamesList.pipe(
@@ -2512,7 +2512,7 @@ export interface JobsListForAccountResultItemOutputOptions {
   /** String to be appended after each batch. */
   batchSuffix?: string;
   /** If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`. */
-  CVE202144228_?: boolean;
+  CVE202144228?: boolean;
   /** String to join fields. This field be ignored when `record_template` is set. */
   fieldDelimiter?: string;
   /** List of field names to be included in the Logpush output. For the moment, there is no option to add all fields at once, so you must specify all the fields names you are interested in. */
@@ -2539,7 +2539,7 @@ export const JobsListForAccountResultItemOutputOptions =
     S.Struct({
       batchPrefix: S.optional(S.String.pipe(T.Body("batch_prefix"))),
       batchSuffix: S.optional(S.String.pipe(T.Body("batch_suffix"))),
-      CVE202144228_: S.optional(S.Boolean.pipe(T.Body('"CVE-2021-44228"'))),
+      CVE202144228: S.optional(S.Boolean.pipe(T.Body("CVE-2021-44228"))),
       fieldDelimiter: S.optional(S.String.pipe(T.Body("field_delimiter"))),
       fieldNames: S.optional(
         JobsListForAccountResultItemOutputOptionsFieldNamesList.pipe(
@@ -2760,7 +2760,7 @@ export interface JobsListForZoneResultItemOutputOptions {
   /** String to be appended after each batch. */
   batchSuffix?: string;
   /** If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`. */
-  CVE202144228_?: boolean;
+  CVE202144228?: boolean;
   /** String to join fields. This field be ignored when `record_template` is set. */
   fieldDelimiter?: string;
   /** List of field names to be included in the Logpush output. For the moment, there is no option to add all fields at once, so you must specify all the fields names you are interested in. */
@@ -2787,7 +2787,7 @@ export const JobsListForZoneResultItemOutputOptions = /*@__PURE__*/ S.suspend(
     S.Struct({
       batchPrefix: S.optional(S.String.pipe(T.Body("batch_prefix"))),
       batchSuffix: S.optional(S.String.pipe(T.Body("batch_suffix"))),
-      CVE202144228_: S.optional(S.Boolean.pipe(T.Body('"CVE-2021-44228"'))),
+      CVE202144228: S.optional(S.Boolean.pipe(T.Body("CVE-2021-44228"))),
       fieldDelimiter: S.optional(S.String.pipe(T.Body("field_delimiter"))),
       fieldNames: S.optional(
         JobsListForZoneResultItemOutputOptionsFieldNamesList.pipe(
@@ -3056,7 +3056,7 @@ export interface JobsUpdateForAccountRequestOutputOptions {
   /** String to be appended after each batch. */
   batchSuffix?: string;
   /** If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`. */
-  CVE202144228_?: boolean;
+  CVE202144228?: boolean;
   /** String to join fields. This field be ignored when `record_template` is set. */
   fieldDelimiter?: string;
   /** List of field names to be included in the Logpush output. For the moment, there is no option to add all fields at once, so you must specify all the fields names you are interested in. */
@@ -3083,7 +3083,7 @@ export const JobsUpdateForAccountRequestOutputOptions = /*@__PURE__*/ S.suspend(
     S.Struct({
       batchPrefix: S.optional(S.String.pipe(T.Body("batch_prefix"))),
       batchSuffix: S.optional(S.String.pipe(T.Body("batch_suffix"))),
-      CVE202144228_: S.optional(S.Boolean.pipe(T.Body('"CVE-2021-44228"'))),
+      CVE202144228: S.optional(S.Boolean.pipe(T.Body("CVE-2021-44228"))),
       fieldDelimiter: S.optional(S.String.pipe(T.Body("field_delimiter"))),
       fieldNames: S.optional(
         JobsUpdateForAccountRequestOutputOptionsFieldNamesList.pipe(
@@ -3274,7 +3274,7 @@ export interface JobsUpdateForAccountResponseOutputOptions {
   /** String to be appended after each batch. */
   batchSuffix?: string;
   /** If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`. */
-  CVE202144228_?: boolean;
+  CVE202144228?: boolean;
   /** String to join fields. This field be ignored when `record_template` is set. */
   fieldDelimiter?: string;
   /** List of field names to be included in the Logpush output. For the moment, there is no option to add all fields at once, so you must specify all the fields names you are interested in. */
@@ -3301,7 +3301,7 @@ export const JobsUpdateForAccountResponseOutputOptions =
     S.Struct({
       batchPrefix: S.optional(S.String.pipe(T.Body("batch_prefix"))),
       batchSuffix: S.optional(S.String.pipe(T.Body("batch_suffix"))),
-      CVE202144228_: S.optional(S.Boolean.pipe(T.Body('"CVE-2021-44228"'))),
+      CVE202144228: S.optional(S.Boolean.pipe(T.Body("CVE-2021-44228"))),
       fieldDelimiter: S.optional(S.String.pipe(T.Body("field_delimiter"))),
       fieldNames: S.optional(
         JobsUpdateForAccountResponseOutputOptionsFieldNamesList.pipe(
@@ -3476,7 +3476,7 @@ export interface JobsUpdateForZoneRequestOutputOptions {
   /** String to be appended after each batch. */
   batchSuffix?: string;
   /** If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`. */
-  CVE202144228_?: boolean;
+  CVE202144228?: boolean;
   /** String to join fields. This field be ignored when `record_template` is set. */
   fieldDelimiter?: string;
   /** List of field names to be included in the Logpush output. For the moment, there is no option to add all fields at once, so you must specify all the fields names you are interested in. */
@@ -3503,7 +3503,7 @@ export const JobsUpdateForZoneRequestOutputOptions = /*@__PURE__*/ S.suspend(
     S.Struct({
       batchPrefix: S.optional(S.String.pipe(T.Body("batch_prefix"))),
       batchSuffix: S.optional(S.String.pipe(T.Body("batch_suffix"))),
-      CVE202144228_: S.optional(S.Boolean.pipe(T.Body('"CVE-2021-44228"'))),
+      CVE202144228: S.optional(S.Boolean.pipe(T.Body("CVE-2021-44228"))),
       fieldDelimiter: S.optional(S.String.pipe(T.Body("field_delimiter"))),
       fieldNames: S.optional(
         JobsUpdateForZoneRequestOutputOptionsFieldNamesList.pipe(
@@ -3689,7 +3689,7 @@ export interface JobsUpdateForZoneResponseOutputOptions {
   /** String to be appended after each batch. */
   batchSuffix?: string;
   /** If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`. */
-  CVE202144228_?: boolean;
+  CVE202144228?: boolean;
   /** String to join fields. This field be ignored when `record_template` is set. */
   fieldDelimiter?: string;
   /** List of field names to be included in the Logpush output. For the moment, there is no option to add all fields at once, so you must specify all the fields names you are interested in. */
@@ -3716,7 +3716,7 @@ export const JobsUpdateForZoneResponseOutputOptions = /*@__PURE__*/ S.suspend(
     S.Struct({
       batchPrefix: S.optional(S.String.pipe(T.Body("batch_prefix"))),
       batchSuffix: S.optional(S.String.pipe(T.Body("batch_suffix"))),
-      CVE202144228_: S.optional(S.Boolean.pipe(T.Body('"CVE-2021-44228"'))),
+      CVE202144228: S.optional(S.Boolean.pipe(T.Body("CVE-2021-44228"))),
       fieldDelimiter: S.optional(S.String.pipe(T.Body("field_delimiter"))),
       fieldNames: S.optional(
         JobsUpdateForZoneResponseOutputOptionsFieldNamesList.pipe(

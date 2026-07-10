@@ -958,7 +958,7 @@ export const OriginCloudRegionsBulkDeleteV1ResponseId = /*@__PURE__*/ S.String;
 
 export interface OriginCloudRegionsBulkDeleteV1ResponseValueFailedItem {
   /** The origin IP address for this item. */
-  OriginIp_: string;
+  originIp: string;
   /** Error message explaining why the item failed. Present only on failed items. */
   error?: string;
   /** Cloud vendor region identifier. Present on succeeded items for patch operations. */
@@ -969,7 +969,7 @@ export interface OriginCloudRegionsBulkDeleteV1ResponseValueFailedItem {
 export const OriginCloudRegionsBulkDeleteV1ResponseValueFailedItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      OriginIp_: S.String.pipe(T.Body('"origin-ip"')),
+      originIp: S.String.pipe(T.Body("origin-ip")),
       error: S.optional(S.String),
       region: S.optional(S.String),
       vendor: S.optional(S.String),
@@ -987,7 +987,7 @@ export const OriginCloudRegionsBulkDeleteV1ResponseValueFailedList =
 
 export interface OriginCloudRegionsBulkDeleteV1ResponseValueSucceededItem {
   /** The origin IP address for this item. */
-  OriginIp_: string;
+  originIp: string;
   /** Error message explaining why the item failed. Present only on failed items. */
   error?: string;
   /** Cloud vendor region identifier. Present on succeeded items for patch operations. */
@@ -998,7 +998,7 @@ export interface OriginCloudRegionsBulkDeleteV1ResponseValueSucceededItem {
 export const OriginCloudRegionsBulkDeleteV1ResponseValueSucceededItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      OriginIp_: S.String.pipe(T.Body('"origin-ip"')),
+      originIp: S.String.pipe(T.Body("origin-ip")),
       error: S.optional(S.String),
       region: S.optional(S.String),
       vendor: S.optional(S.String),
@@ -1115,7 +1115,7 @@ export const OriginCloudRegionsBulkEditV1ResponseId = /*@__PURE__*/ S.String;
 
 export interface OriginCloudRegionsBulkEditV1ResponseValueFailedItem {
   /** The origin IP address for this item. */
-  OriginIp_: string;
+  originIp: string;
   /** Error message explaining why the item failed. Present only on failed items. */
   error?: string;
   /** Cloud vendor region identifier. Present on succeeded items for patch operations. */
@@ -1126,7 +1126,7 @@ export interface OriginCloudRegionsBulkEditV1ResponseValueFailedItem {
 export const OriginCloudRegionsBulkEditV1ResponseValueFailedItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      OriginIp_: S.String.pipe(T.Body('"origin-ip"')),
+      originIp: S.String.pipe(T.Body("origin-ip")),
       error: S.optional(S.String),
       region: S.optional(S.String),
       vendor: S.optional(S.String),
@@ -1144,7 +1144,7 @@ export const OriginCloudRegionsBulkEditV1ResponseValueFailedList =
 
 export interface OriginCloudRegionsBulkEditV1ResponseValueSucceededItem {
   /** The origin IP address for this item. */
-  OriginIp_: string;
+  originIp: string;
   /** Error message explaining why the item failed. Present only on failed items. */
   error?: string;
   /** Cloud vendor region identifier. Present on succeeded items for patch operations. */
@@ -1155,7 +1155,7 @@ export interface OriginCloudRegionsBulkEditV1ResponseValueSucceededItem {
 export const OriginCloudRegionsBulkEditV1ResponseValueSucceededItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      OriginIp_: S.String.pipe(T.Body('"origin-ip"')),
+      originIp: S.String.pipe(T.Body("origin-ip")),
       error: S.optional(S.String),
       region: S.optional(S.String),
       vendor: S.optional(S.String),
@@ -1261,7 +1261,7 @@ export const OriginCloudRegionsCreateV1ResponseValueVendor =
 
 export interface OriginCloudRegionsCreateV1ResponseValue {
   /** The origin IP address (IPv4 or IPv6, canonicalized). */
-  OriginIp_: string;
+  originIp: string;
   /** Cloud vendor region identifier. */
   region: string;
   /** Cloud vendor hosting the origin. */
@@ -1272,7 +1272,7 @@ export interface OriginCloudRegionsCreateV1ResponseValue {
 export const OriginCloudRegionsCreateV1ResponseValue = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      OriginIp_: S.String.pipe(T.Body('"origin-ip"')),
+      originIp: S.String.pipe(T.Body("origin-ip")),
       region: S.String,
       vendor: OriginCloudRegionsCreateV1ResponseValueVendor,
       modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
@@ -1340,7 +1340,7 @@ export const OriginCloudRegionsDeleteV1ResponseValueVendor =
 
 export interface OriginCloudRegionsDeleteV1ResponseValue {
   /** The origin IP address (IPv4 or IPv6, canonicalized). */
-  OriginIp_: string;
+  originIp: string;
   /** Cloud vendor region identifier. */
   region: string;
   /** Cloud vendor hosting the origin. */
@@ -1351,7 +1351,7 @@ export interface OriginCloudRegionsDeleteV1ResponseValue {
 export const OriginCloudRegionsDeleteV1ResponseValue = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      OriginIp_: S.String.pipe(T.Body('"origin-ip"')),
+      originIp: S.String.pipe(T.Body("origin-ip")),
       region: S.String,
       vendor: OriginCloudRegionsDeleteV1ResponseValueVendor,
       modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
@@ -1434,7 +1434,7 @@ export const OriginCloudRegionsEditV1ResponseValueItemVendor =
 
 export interface OriginCloudRegionsEditV1ResponseValueItem {
   /** The origin IP address (IPv4 or IPv6, canonicalized). */
-  OriginIp_: string;
+  originIp: string;
   /** Cloud vendor region identifier. */
   region: string;
   /** Cloud vendor hosting the origin. */
@@ -1445,7 +1445,7 @@ export interface OriginCloudRegionsEditV1ResponseValueItem {
 export const OriginCloudRegionsEditV1ResponseValueItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      OriginIp_: S.String.pipe(T.Body('"origin-ip"')),
+      originIp: S.String.pipe(T.Body("origin-ip")),
       region: S.String,
       vendor: OriginCloudRegionsEditV1ResponseValueItemVendor,
       modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
@@ -1518,7 +1518,7 @@ export const OriginCloudRegionsGetV1ResponseValueVendor =
 
 export interface OriginCloudRegionsGetV1ResponseValue {
   /** The origin IP address (IPv4 or IPv6, canonicalized). */
-  OriginIp_: string;
+  originIp: string;
   /** Cloud vendor region identifier. */
   region: string;
   /** Cloud vendor hosting the origin. */
@@ -1529,7 +1529,7 @@ export interface OriginCloudRegionsGetV1ResponseValue {
 export const OriginCloudRegionsGetV1ResponseValue = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      OriginIp_: S.String.pipe(T.Body('"origin-ip"')),
+      originIp: S.String.pipe(T.Body("origin-ip")),
       region: S.String,
       vendor: OriginCloudRegionsGetV1ResponseValueVendor,
       modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
@@ -1595,7 +1595,7 @@ export const OriginCloudRegionsListV1ResponseValueItemVendor =
 
 export interface OriginCloudRegionsListV1ResponseValueItem {
   /** The origin IP address (IPv4 or IPv6, canonicalized). */
-  OriginIp_: string;
+  originIp: string;
   /** Cloud vendor region identifier. */
   region: string;
   /** Cloud vendor hosting the origin. */
@@ -1606,7 +1606,7 @@ export interface OriginCloudRegionsListV1ResponseValueItem {
 export const OriginCloudRegionsListV1ResponseValueItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      OriginIp_: S.String.pipe(T.Body('"origin-ip"')),
+      originIp: S.String.pipe(T.Body("origin-ip")),
       region: S.String,
       vendor: OriginCloudRegionsListV1ResponseValueItemVendor,
       modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),

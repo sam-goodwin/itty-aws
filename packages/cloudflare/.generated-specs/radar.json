@@ -34358,25 +34358,25 @@
     "com.cloudflare.radar#AttacksLayer7SummaryHttpVersionResponseSummary0": {
       "type": "structure",
       "members": {
-        "_HTTP_1_x_": {
+        "HTTP_1_x": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#required": {},
-            "smithy.api#jsonName": "\"HTTP/1.x\""
+            "smithy.api#jsonName": "HTTP/1.x"
           }
         },
-        "_HTTP_2_": {
+        "HTTP_2": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#required": {},
-            "smithy.api#jsonName": "\"HTTP/2\""
+            "smithy.api#jsonName": "HTTP/2"
           }
         },
-        "_HTTP_3_": {
+        "HTTP_3": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#required": {},
-            "smithy.api#jsonName": "\"HTTP/3\""
+            "smithy.api#jsonName": "HTTP/3"
           }
         }
       }
@@ -38328,25 +38328,25 @@
     "com.cloudflare.radar#AttacksLayer7TimeseriesGroupsHttpVersionResponseSerie0": {
       "type": "structure",
       "members": {
-        "_HTTP_1_x_": {
+        "HTTP_1_x": {
           "target": "com.cloudflare.radar#AttacksLayer7TimeseriesGroupsHttpVersionResponseSerie0HTTP1XList",
           "traits": {
             "smithy.api#required": {},
-            "smithy.api#jsonName": "\"HTTP/1.x\""
+            "smithy.api#jsonName": "HTTP/1.x"
           }
         },
-        "_HTTP_2_": {
+        "HTTP_2": {
           "target": "com.cloudflare.radar#AttacksLayer7TimeseriesGroupsHttpVersionResponseSerie0HTTP2List",
           "traits": {
             "smithy.api#required": {},
-            "smithy.api#jsonName": "\"HTTP/2\""
+            "smithy.api#jsonName": "HTTP/2"
           }
         },
-        "_HTTP_3_": {
+        "HTTP_3": {
           "target": "com.cloudflare.radar#AttacksLayer7TimeseriesGroupsHttpVersionResponseSerie0HTTP3List",
           "traits": {
             "smithy.api#required": {},
-            "smithy.api#jsonName": "\"HTTP/3\""
+            "smithy.api#jsonName": "HTTP/3"
           }
         },
         "timestamps": {
@@ -48084,11 +48084,11 @@
     "com.cloudflare.radar#BgpRpkiAspaChangesResponseAsnInfo": {
       "type": "structure",
       "members": {
-        "_13335_": {
+        "_13335": {
           "target": "com.cloudflare.radar#BgpRpkiAspaChangesResponseAsnInfo13335",
           "traits": {
             "smithy.api#required": {},
-            "smithy.api#jsonName": "\"13335\""
+            "smithy.api#jsonName": "13335"
           }
         }
       }
@@ -48370,11 +48370,11 @@
     "com.cloudflare.radar#BgpRpkiAspaSnapshotResponseAsnInfo": {
       "type": "structure",
       "members": {
-        "_13335_": {
+        "_13335": {
           "target": "com.cloudflare.radar#BgpRpkiAspaSnapshotResponseAsnInfo13335",
           "traits": {
             "smithy.api#required": {},
-            "smithy.api#jsonName": "\"13335\""
+            "smithy.api#jsonName": "13335"
           }
         }
       }
@@ -87481,36 +87481,36 @@
     "com.cloudflare.radar#EmailSecuritySummaryTlsVersionResponseSummary0": {
       "type": "structure",
       "members": {
-        "_TLS_1_0_": {
+        "TLS_1_0": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "A numeric string.",
             "smithy.api#required": {},
-            "smithy.api#jsonName": "\"TLS 1.0\""
+            "smithy.api#jsonName": "TLS 1.0"
           }
         },
-        "_TLS_1_1_": {
+        "TLS_1_1": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "A numeric string.",
             "smithy.api#required": {},
-            "smithy.api#jsonName": "\"TLS 1.1\""
+            "smithy.api#jsonName": "TLS 1.1"
           }
         },
-        "_TLS_1_2_": {
+        "TLS_1_2": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "A numeric string.",
             "smithy.api#required": {},
-            "smithy.api#jsonName": "\"TLS 1.2\""
+            "smithy.api#jsonName": "TLS 1.2"
           }
         },
-        "_TLS_1_3_": {
+        "TLS_1_3": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "A numeric string.",
             "smithy.api#required": {},
-            "smithy.api#jsonName": "\"TLS 1.3\""
+            "smithy.api#jsonName": "TLS 1.3"
           }
         }
       }
@@ -93186,32 +93186,32 @@
     "com.cloudflare.radar#EmailSecurityTimeseriesGroupsTlsVersionResponseSerie0": {
       "type": "structure",
       "members": {
-        "_TLS_1_0_": {
+        "TLS_1_0": {
           "target": "com.cloudflare.radar#EmailSecurityTimeseriesGroupsTlsVersionResponseSerie0TLS10List",
           "traits": {
             "smithy.api#required": {},
-            "smithy.api#jsonName": "\"TLS 1.0\""
+            "smithy.api#jsonName": "TLS 1.0"
           }
         },
-        "_TLS_1_1_": {
+        "TLS_1_1": {
           "target": "com.cloudflare.radar#EmailSecurityTimeseriesGroupsTlsVersionResponseSerie0TLS11List",
           "traits": {
             "smithy.api#required": {},
-            "smithy.api#jsonName": "\"TLS 1.1\""
+            "smithy.api#jsonName": "TLS 1.1"
           }
         },
-        "_TLS_1_2_": {
+        "TLS_1_2": {
           "target": "com.cloudflare.radar#EmailSecurityTimeseriesGroupsTlsVersionResponseSerie0TLS12List",
           "traits": {
             "smithy.api#required": {},
-            "smithy.api#jsonName": "\"TLS 1.2\""
+            "smithy.api#jsonName": "TLS 1.2"
           }
         },
-        "_TLS_1_3_": {
+        "TLS_1_3": {
           "target": "com.cloudflare.radar#EmailSecurityTimeseriesGroupsTlsVersionResponseSerie0TLS13List",
           "traits": {
             "smithy.api#required": {},
-            "smithy.api#jsonName": "\"TLS 1.3\""
+            "smithy.api#jsonName": "TLS 1.3"
           }
         }
       }
@@ -116081,28 +116081,28 @@
     "com.cloudflare.radar#HttpSummaryHttpVersionResponseSummary0": {
       "type": "structure",
       "members": {
-        "_HTTP_1_x_": {
+        "HTTP_1_x": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "A numeric string.",
             "smithy.api#required": {},
-            "smithy.api#jsonName": "\"HTTP/1.x\""
+            "smithy.api#jsonName": "HTTP/1.x"
           }
         },
-        "_HTTP_2_": {
+        "HTTP_2": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "A numeric string.",
             "smithy.api#required": {},
-            "smithy.api#jsonName": "\"HTTP/2\""
+            "smithy.api#jsonName": "HTTP/2"
           }
         },
-        "_HTTP_3_": {
+        "HTTP_3": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "A numeric string.",
             "smithy.api#required": {},
-            "smithy.api#jsonName": "\"HTTP/3\""
+            "smithy.api#jsonName": "HTTP/3"
           }
         }
       }
@@ -118825,44 +118825,44 @@
     "com.cloudflare.radar#HttpSummaryTlsVersionResponseSummary0": {
       "type": "structure",
       "members": {
-        "_TLS_1_0_": {
+        "TLS_1_0": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "A numeric string.",
             "smithy.api#required": {},
-            "smithy.api#jsonName": "\"TLS 1.0\""
+            "smithy.api#jsonName": "TLS 1.0"
           }
         },
-        "_TLS_1_1_": {
+        "TLS_1_1": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "A numeric string.",
             "smithy.api#required": {},
-            "smithy.api#jsonName": "\"TLS 1.1\""
+            "smithy.api#jsonName": "TLS 1.1"
           }
         },
-        "_TLS_1_2_": {
+        "TLS_1_2": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "A numeric string.",
             "smithy.api#required": {},
-            "smithy.api#jsonName": "\"TLS 1.2\""
+            "smithy.api#jsonName": "TLS 1.2"
           }
         },
-        "_TLS_1_3_": {
+        "TLS_1_3": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "A numeric string.",
             "smithy.api#required": {},
-            "smithy.api#jsonName": "\"TLS 1.3\""
+            "smithy.api#jsonName": "TLS 1.3"
           }
         },
-        "_TLS_QUIC_": {
+        "TLS_QUIC": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "A numeric string.",
             "smithy.api#required": {},
-            "smithy.api#jsonName": "\"TLS QUIC\""
+            "smithy.api#jsonName": "TLS QUIC"
           }
         }
       }
@@ -123439,25 +123439,25 @@
     "com.cloudflare.radar#HttpTimeseriesGroupsHttpVersionResponseSerie0": {
       "type": "structure",
       "members": {
-        "_HTTP_1_x_": {
+        "HTTP_1_x": {
           "target": "com.cloudflare.radar#HttpTimeseriesGroupsHttpVersionResponseSerie0HTTP1XList",
           "traits": {
             "smithy.api#required": {},
-            "smithy.api#jsonName": "\"HTTP/1.x\""
+            "smithy.api#jsonName": "HTTP/1.x"
           }
         },
-        "_HTTP_2_": {
+        "HTTP_2": {
           "target": "com.cloudflare.radar#HttpTimeseriesGroupsHttpVersionResponseSerie0HTTP2List",
           "traits": {
             "smithy.api#required": {},
-            "smithy.api#jsonName": "\"HTTP/2\""
+            "smithy.api#jsonName": "HTTP/2"
           }
         },
-        "_HTTP_3_": {
+        "HTTP_3": {
           "target": "com.cloudflare.radar#HttpTimeseriesGroupsHttpVersionResponseSerie0HTTP3List",
           "traits": {
             "smithy.api#required": {},
-            "smithy.api#jsonName": "\"HTTP/3\""
+            "smithy.api#jsonName": "HTTP/3"
           }
         },
         "timestamps": {
@@ -126534,39 +126534,39 @@
             "smithy.api#required": {}
           }
         },
-        "_TLS_1_0_": {
+        "TLS_1_0": {
           "target": "com.cloudflare.radar#HttpTimeseriesGroupsTlsVersionResponseSerie0TLS10List",
           "traits": {
             "smithy.api#required": {},
-            "smithy.api#jsonName": "\"TLS 1.0\""
+            "smithy.api#jsonName": "TLS 1.0"
           }
         },
-        "_TLS_1_1_": {
+        "TLS_1_1": {
           "target": "com.cloudflare.radar#HttpTimeseriesGroupsTlsVersionResponseSerie0TLS11List",
           "traits": {
             "smithy.api#required": {},
-            "smithy.api#jsonName": "\"TLS 1.1\""
+            "smithy.api#jsonName": "TLS 1.1"
           }
         },
-        "_TLS_1_2_": {
+        "TLS_1_2": {
           "target": "com.cloudflare.radar#HttpTimeseriesGroupsTlsVersionResponseSerie0TLS12List",
           "traits": {
             "smithy.api#required": {},
-            "smithy.api#jsonName": "\"TLS 1.2\""
+            "smithy.api#jsonName": "TLS 1.2"
           }
         },
-        "_TLS_1_3_": {
+        "TLS_1_3": {
           "target": "com.cloudflare.radar#HttpTimeseriesGroupsTlsVersionResponseSerie0TLS13List",
           "traits": {
             "smithy.api#required": {},
-            "smithy.api#jsonName": "\"TLS 1.3\""
+            "smithy.api#jsonName": "TLS 1.3"
           }
         },
-        "_TLS_QUIC_": {
+        "TLS_QUIC": {
           "target": "com.cloudflare.radar#HttpTimeseriesGroupsTlsVersionResponseSerie0TLSQUICList",
           "traits": {
             "smithy.api#required": {},
-            "smithy.api#jsonName": "\"TLS QUIC\""
+            "smithy.api#jsonName": "TLS QUIC"
           }
         }
       }

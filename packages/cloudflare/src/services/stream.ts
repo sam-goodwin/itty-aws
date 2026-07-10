@@ -495,8 +495,6 @@ export const CopyCreateRequestWatermark = /*@__PURE__*/ S.suspend(() =>
 export interface CreateCopyRequest {
   /** The account identifier tag. */
   accountId: string;
-  /** A user-defined identifier for the media creator. */
-  UploadCreator_?: string;
   /** Lists the origins allowed to display the video. Enter allowed origin domains in an array and use `*` for wildcard subdomains. Empty arrays allow the video to be viewed on any origin. */
   allowedOrigins?: CopyCreateRequestAllowedOriginsList;
   /** A user-defined identifier for the media creator. */
@@ -516,11 +514,12 @@ export interface CreateCopyRequest {
   /** A video's URL. The server must be publicly routable and support `HTTP HEAD` requests and `HTTP GET` range requests. The server should respond to `HTTP HEAD` requests with a `content-range` header that includes the size of the file. This field is deprecated in favor of `input`. */
   url?: string;
   watermark?: CopyCreateRequestWatermark;
+  /** A user-defined identifier for the media creator. */
+  uploadCreator?: string;
 }
 export const CreateCopyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-    UploadCreator_: S.optional(S.String.pipe(T.Header('"Upload-Creator"'))),
     allowedOrigins: S.optional(CopyCreateRequestAllowedOriginsList),
     creator: S.optional(S.String),
     input: S.optional(S.String),
@@ -531,6 +530,7 @@ export const CreateCopyRequest = /*@__PURE__*/ S.suspend(() =>
     thumbnailTimestampPct: S.optional(S.Number),
     url: S.optional(S.String),
     watermark: S.optional(CopyCreateRequestWatermark),
+    uploadCreator: S.optional(S.String.pipe(T.Header("Upload-Creator"))),
   })
     .pipe(
       T.Http({
@@ -774,8 +774,6 @@ export const DirectUploadCreateRequestWatermark = /*@__PURE__*/ S.suspend(() =>
 export interface CreateDirectUploadRequest {
   /** The account identifier tag. */
   accountId: string;
-  /** A user-defined identifier for the media creator. */
-  UploadCreator_?: string;
   /** The maximum duration in seconds for a video upload. Can be set for a video that is not yet uploaded to limit its duration. Uploads that exceed the specified duration will fail during processing. A value of `-1` means the value is unknown. */
   maxDurationSeconds: number;
   /** Lists the origins allowed to display the video. Enter allowed origin domains in an array and use `*` for wildcard subdomains. Empty arrays allow the video to be viewed on any origin. */
@@ -793,11 +791,12 @@ export interface CreateDirectUploadRequest {
   /** The timestamp for a thumbnail image calculated as a percentage value of the video's duration. To convert from a second-wise timestamp to a percentage, divide the desired timestamp by the total duration of the video. If this value is not set, the default thumbnail image is taken from 0s of the video. */
   thumbnailTimestampPct?: number;
   watermark?: DirectUploadCreateRequestWatermark;
+  /** A user-defined identifier for the media creator. */
+  uploadCreator?: string;
 }
 export const CreateDirectUploadRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-    UploadCreator_: S.optional(S.String.pipe(T.Header('"Upload-Creator"'))),
     maxDurationSeconds: S.Number,
     allowedOrigins: S.optional(DirectUploadCreateRequestAllowedOriginsList),
     creator: S.optional(S.String),
@@ -807,6 +806,7 @@ export const CreateDirectUploadRequest = /*@__PURE__*/ S.suspend(() =>
     scheduledDeletion: S.optional(S.String),
     thumbnailTimestampPct: S.optional(S.Number),
     watermark: S.optional(DirectUploadCreateRequestWatermark),
+    uploadCreator: S.optional(S.String.pipe(T.Header("Upload-Creator"))),
   })
     .pipe(
       T.Http({
@@ -1350,22 +1350,22 @@ export interface CreateStreamRequest {
   /** Provisions a URL to let your end users upload videos directly to Cloudflare Stream without exposing your API token to clients. */
   directUser?: boolean;
   /** Specifies the TUS protocol version. This value must be included in every upload request. */
-  TusResumable_: CreateRequestTusResumable;
+  tusResumable: CreateRequestTusResumable;
   /** Indicates the size of the entire upload in bytes. The value must be a non-negative integer. */
-  UploadLength_: number;
+  uploadLength: number;
   /** A user-defined identifier for the media creator. */
-  UploadCreator_?: string;
+  uploadCreator?: string;
   /** Comma-separated key-value pairs following the TUS protocol specification. Values are Base-64 encoded. */
-  UploadMetadata_?: string;
+  uploadMetadata?: string;
 }
 export const CreateStreamRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     directUser: S.optional(S.Boolean.pipe(T.Query("direct_user"))),
-    TusResumable_: CreateRequestTusResumable.pipe(T.Header('"Tus-Resumable"')),
-    UploadLength_: S.Number.pipe(T.Header('"Upload-Length"')),
-    UploadCreator_: S.optional(S.String.pipe(T.Header('"Upload-Creator"'))),
-    UploadMetadata_: S.optional(S.String.pipe(T.Header('"Upload-Metadata"'))),
+    tusResumable: CreateRequestTusResumable.pipe(T.Header("Tus-Resumable")),
+    uploadLength: S.Number.pipe(T.Header("Upload-Length")),
+    uploadCreator: S.optional(S.String.pipe(T.Header("Upload-Creator"))),
+    uploadMetadata: S.optional(S.String.pipe(T.Header("Upload-Metadata"))),
   })
     .pipe(
       T.Http({

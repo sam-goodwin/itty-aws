@@ -112,6 +112,11 @@
           "target": "com.cloudflare.r2#CustomDomainInUse"
         }
       ]
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.r2#CreateBucketDomainCustomRequest/members/cf_r2_jurisdiction",
+      "path": "/shapes/com.cloudflare.r2#CreateBucketDomainCustomRequest/members/jurisdiction"
     }
   ]
 }

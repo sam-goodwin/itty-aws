@@ -923,12 +923,12 @@
     "com.cloudflare.cache#OriginCloudRegionsBulkDeleteV1ResponseValueFailedItem": {
       "type": "structure",
       "members": {
-        "_origin_ip_": {
+        "origin_ip": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "The origin IP address for this item.",
             "smithy.api#required": {},
-            "smithy.api#jsonName": "\"origin-ip\""
+            "smithy.api#jsonName": "origin-ip"
           }
         },
         "error": {
@@ -960,12 +960,12 @@
     "com.cloudflare.cache#OriginCloudRegionsBulkDeleteV1ResponseValueSucceededItem": {
       "type": "structure",
       "members": {
-        "_origin_ip_": {
+        "origin_ip": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "The origin IP address for this item.",
             "smithy.api#required": {},
-            "smithy.api#jsonName": "\"origin-ip\""
+            "smithy.api#jsonName": "origin-ip"
           }
         },
         "error": {
@@ -1163,12 +1163,12 @@
     "com.cloudflare.cache#OriginCloudRegionsBulkEditV1ResponseValueFailedItem": {
       "type": "structure",
       "members": {
-        "_origin_ip_": {
+        "origin_ip": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "The origin IP address for this item.",
             "smithy.api#required": {},
-            "smithy.api#jsonName": "\"origin-ip\""
+            "smithy.api#jsonName": "origin-ip"
           }
         },
         "error": {
@@ -1200,12 +1200,12 @@
     "com.cloudflare.cache#OriginCloudRegionsBulkEditV1ResponseValueSucceededItem": {
       "type": "structure",
       "members": {
-        "_origin_ip_": {
+        "origin_ip": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "The origin IP address for this item.",
             "smithy.api#required": {},
-            "smithy.api#jsonName": "\"origin-ip\""
+            "smithy.api#jsonName": "origin-ip"
           }
         },
         "error": {
@@ -1610,12 +1610,12 @@
     "com.cloudflare.cache#OriginCloudRegionsCreateV1ResponseValue": {
       "type": "structure",
       "members": {
-        "_origin_ip_": {
+        "origin_ip": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "The origin IP address (IPv4 or IPv6, canonicalized).",
             "smithy.api#required": {},
-            "smithy.api#jsonName": "\"origin-ip\""
+            "smithy.api#jsonName": "origin-ip"
           }
         },
         "region": {
@@ -1815,12 +1815,12 @@
     "com.cloudflare.cache#OriginCloudRegionsDeleteV1ResponseValue": {
       "type": "structure",
       "members": {
-        "_origin_ip_": {
+        "origin_ip": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "The origin IP address (IPv4 or IPv6, canonicalized).",
             "smithy.api#required": {},
-            "smithy.api#jsonName": "\"origin-ip\""
+            "smithy.api#jsonName": "origin-ip"
           }
         },
         "region": {
@@ -2007,12 +2007,12 @@
     "com.cloudflare.cache#OriginCloudRegionsEditV1ResponseValueItem": {
       "type": "structure",
       "members": {
-        "_origin_ip_": {
+        "origin_ip": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "The origin IP address (IPv4 or IPv6, canonicalized).",
             "smithy.api#required": {},
-            "smithy.api#jsonName": "\"origin-ip\""
+            "smithy.api#jsonName": "origin-ip"
           }
         },
         "region": {
@@ -2266,12 +2266,12 @@
     "com.cloudflare.cache#OriginCloudRegionsGetV1ResponseValue": {
       "type": "structure",
       "members": {
-        "_origin_ip_": {
+        "origin_ip": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "The origin IP address (IPv4 or IPv6, canonicalized).",
             "smithy.api#required": {},
-            "smithy.api#jsonName": "\"origin-ip\""
+            "smithy.api#jsonName": "origin-ip"
           }
         },
         "region": {
@@ -2538,12 +2538,12 @@
     "com.cloudflare.cache#OriginCloudRegionsListV1ResponseValueItem": {
       "type": "structure",
       "members": {
-        "_origin_ip_": {
+        "origin_ip": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "The origin IP address (IPv4 or IPv6, canonicalized).",
             "smithy.api#required": {},
-            "smithy.api#jsonName": "\"origin-ip\""
+            "smithy.api#jsonName": "origin-ip"
           }
         },
         "region": {

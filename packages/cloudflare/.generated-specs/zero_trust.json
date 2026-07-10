@@ -9468,10 +9468,10 @@
         "external_evaluation": {
           "target": "com.cloudflare.zero_trust#AccessApplicationsCreateForAccountRequestBodyInfrastructureApplicationPoliciesItemIncludeItemExternalEvaluation"
         },
-        "_github_organization_": {
+        "github_organization": {
           "target": "com.cloudflare.zero_trust#AccessApplicationsCreateForAccountRequestBodyInfrastructureApplicationPoliciesItemIncludeItemGithubOrganization",
           "traits": {
-            "smithy.api#jsonName": "\"github-organization\""
+            "smithy.api#jsonName": "github-organization"
           }
         },
         "gsuite": {
@@ -13526,10 +13526,10 @@
         "external_evaluation": {
           "target": "com.cloudflare.zero_trust#AccessApplicationsCreateForAccountResponsePoliciesItemExcludeItemExternalEvaluation"
         },
-        "_github_organization_": {
+        "github_organization": {
           "target": "com.cloudflare.zero_trust#AccessApplicationsCreateForAccountResponsePoliciesItemExcludeItemGithubOrganization",
           "traits": {
-            "smithy.api#jsonName": "\"github-organization\""
+            "smithy.api#jsonName": "github-organization"
           }
         },
         "gsuite": {
@@ -21241,10 +21241,10 @@
         "external_evaluation": {
           "target": "com.cloudflare.zero_trust#AccessApplicationsCreateForZoneRequestBodyInfrastructureApplicationPoliciesItemIncludeItemExternalEvaluation"
         },
-        "_github_organization_": {
+        "github_organization": {
           "target": "com.cloudflare.zero_trust#AccessApplicationsCreateForZoneRequestBodyInfrastructureApplicationPoliciesItemIncludeItemGithubOrganization",
           "traits": {
-            "smithy.api#jsonName": "\"github-organization\""
+            "smithy.api#jsonName": "github-organization"
           }
         },
         "gsuite": {
@@ -25299,10 +25299,10 @@
         "external_evaluation": {
           "target": "com.cloudflare.zero_trust#AccessApplicationsCreateForZoneResponsePoliciesItemExcludeItemExternalEvaluation"
         },
-        "_github_organization_": {
+        "github_organization": {
           "target": "com.cloudflare.zero_trust#AccessApplicationsCreateForZoneResponsePoliciesItemExcludeItemGithubOrganization",
           "traits": {
-            "smithy.api#jsonName": "\"github-organization\""
+            "smithy.api#jsonName": "github-organization"
           }
         },
         "gsuite": {
@@ -28025,10 +28025,10 @@
         "external_evaluation": {
           "target": "com.cloudflare.zero_trust#AccessApplicationsGetForAccountResponsePoliciesItemExcludeItemExternalEvaluation"
         },
-        "_github_organization_": {
+        "github_organization": {
           "target": "com.cloudflare.zero_trust#AccessApplicationsGetForAccountResponsePoliciesItemExcludeItemGithubOrganization",
           "traits": {
-            "smithy.api#jsonName": "\"github-organization\""
+            "smithy.api#jsonName": "github-organization"
           }
         },
         "gsuite": {
@@ -30638,10 +30638,10 @@
         "external_evaluation": {
           "target": "com.cloudflare.zero_trust#AccessApplicationsGetForZoneResponsePoliciesItemExcludeItemExternalEvaluation"
         },
-        "_github_organization_": {
+        "github_organization": {
           "target": "com.cloudflare.zero_trust#AccessApplicationsGetForZoneResponsePoliciesItemExcludeItemGithubOrganization",
           "traits": {
-            "smithy.api#jsonName": "\"github-organization\""
+            "smithy.api#jsonName": "github-organization"
           }
         },
         "gsuite": {
@@ -33299,10 +33299,10 @@
         "external_evaluation": {
           "target": "com.cloudflare.zero_trust#AccessApplicationsListForAccountResultItemPoliciesItemExcludeItemExternalEvaluation"
         },
-        "_github_organization_": {
+        "github_organization": {
           "target": "com.cloudflare.zero_trust#AccessApplicationsListForAccountResultItemPoliciesItemExcludeItemGithubOrganization",
           "traits": {
-            "smithy.api#jsonName": "\"github-organization\""
+            "smithy.api#jsonName": "github-organization"
           }
         },
         "gsuite": {
@@ -35977,10 +35977,10 @@
         "external_evaluation": {
           "target": "com.cloudflare.zero_trust#AccessApplicationsListForZoneResultItemPoliciesItemExcludeItemExternalEvaluation"
         },
-        "_github_organization_": {
+        "github_organization": {
           "target": "com.cloudflare.zero_trust#AccessApplicationsListForZoneResultItemPoliciesItemExcludeItemGithubOrganization",
           "traits": {
-            "smithy.api#jsonName": "\"github-organization\""
+            "smithy.api#jsonName": "github-organization"
           }
         },
         "gsuite": {
@@ -43822,10 +43822,10 @@
         "external_evaluation": {
           "target": "com.cloudflare.zero_trust#AccessApplicationsUpdateForAccountRequestBodyInfrastructureApplicationPoliciesItemIncludeItemExternalEvaluation"
         },
-        "_github_organization_": {
+        "github_organization": {
           "target": "com.cloudflare.zero_trust#AccessApplicationsUpdateForAccountRequestBodyInfrastructureApplicationPoliciesItemIncludeItemGithubOrganization",
           "traits": {
-            "smithy.api#jsonName": "\"github-organization\""
+            "smithy.api#jsonName": "github-organization"
           }
         },
         "gsuite": {
@@ -47888,10 +47888,10 @@
         "external_evaluation": {
           "target": "com.cloudflare.zero_trust#AccessApplicationsUpdateForAccountResponsePoliciesItemExcludeItemExternalEvaluation"
         },
-        "_github_organization_": {
+        "github_organization": {
           "target": "com.cloudflare.zero_trust#AccessApplicationsUpdateForAccountResponsePoliciesItemExcludeItemGithubOrganization",
           "traits": {
-            "smithy.api#jsonName": "\"github-organization\""
+            "smithy.api#jsonName": "github-organization"
           }
         },
         "gsuite": {
@@ -55604,10 +55604,10 @@
         "external_evaluation": {
           "target": "com.cloudflare.zero_trust#AccessApplicationsUpdateForZoneRequestBodyInfrastructureApplicationPoliciesItemIncludeItemExternalEvaluation"
         },
-        "_github_organization_": {
+        "github_organization": {
           "target": "com.cloudflare.zero_trust#AccessApplicationsUpdateForZoneRequestBodyInfrastructureApplicationPoliciesItemIncludeItemGithubOrganization",
           "traits": {
-            "smithy.api#jsonName": "\"github-organization\""
+            "smithy.api#jsonName": "github-organization"
           }
         },
         "gsuite": {
@@ -59670,10 +59670,10 @@
         "external_evaluation": {
           "target": "com.cloudflare.zero_trust#AccessApplicationsUpdateForZoneResponsePoliciesItemExcludeItemExternalEvaluation"
         },
-        "_github_organization_": {
+        "github_organization": {
           "target": "com.cloudflare.zero_trust#AccessApplicationsUpdateForZoneResponsePoliciesItemExcludeItemGithubOrganization",
           "traits": {
-            "smithy.api#jsonName": "\"github-organization\""
+            "smithy.api#jsonName": "github-organization"
           }
         },
         "gsuite": {
@@ -62759,10 +62759,10 @@
         "external_evaluation": {
           "target": "com.cloudflare.zero_trust#AccessApplicationsPoliciesCreateForAccountResponseExcludeItemExternalEvaluation"
         },
-        "_github_organization_": {
+        "github_organization": {
           "target": "com.cloudflare.zero_trust#AccessApplicationsPoliciesCreateForAccountResponseExcludeItemGithubOrganization",
           "traits": {
-            "smithy.api#jsonName": "\"github-organization\""
+            "smithy.api#jsonName": "github-organization"
           }
         },
         "gsuite": {
@@ -64188,10 +64188,10 @@
         "external_evaluation": {
           "target": "com.cloudflare.zero_trust#AccessApplicationsPoliciesCreateForZoneResponseExcludeItemExternalEvaluation"
         },
-        "_github_organization_": {
+        "github_organization": {
           "target": "com.cloudflare.zero_trust#AccessApplicationsPoliciesCreateForZoneResponseExcludeItemGithubOrganization",
           "traits": {
-            "smithy.api#jsonName": "\"github-organization\""
+            "smithy.api#jsonName": "github-organization"
           }
         },
         "gsuite": {
@@ -65551,10 +65551,10 @@
         "external_evaluation": {
           "target": "com.cloudflare.zero_trust#AccessApplicationsPoliciesGetForAccountResponseExcludeItemExternalEvaluation"
         },
-        "_github_organization_": {
+        "github_organization": {
           "target": "com.cloudflare.zero_trust#AccessApplicationsPoliciesGetForAccountResponseExcludeItemGithubOrganization",
           "traits": {
-            "smithy.api#jsonName": "\"github-organization\""
+            "smithy.api#jsonName": "github-organization"
           }
         },
         "gsuite": {
@@ -66785,10 +66785,10 @@
         "external_evaluation": {
           "target": "com.cloudflare.zero_trust#AccessApplicationsPoliciesGetForZoneResponseExcludeItemExternalEvaluation"
         },
-        "_github_organization_": {
+        "github_organization": {
           "target": "com.cloudflare.zero_trust#AccessApplicationsPoliciesGetForZoneResponseExcludeItemGithubOrganization",
           "traits": {
-            "smithy.api#jsonName": "\"github-organization\""
+            "smithy.api#jsonName": "github-organization"
           }
         },
         "gsuite": {
@@ -68025,10 +68025,10 @@
         "external_evaluation": {
           "target": "com.cloudflare.zero_trust#AccessApplicationsPoliciesListForAccountResultItemExcludeItemExternalEvaluation"
         },
-        "_github_organization_": {
+        "github_organization": {
           "target": "com.cloudflare.zero_trust#AccessApplicationsPoliciesListForAccountResultItemExcludeItemGithubOrganization",
           "traits": {
-            "smithy.api#jsonName": "\"github-organization\""
+            "smithy.api#jsonName": "github-organization"
           }
         },
         "gsuite": {
@@ -69282,10 +69282,10 @@
         "external_evaluation": {
           "target": "com.cloudflare.zero_trust#AccessApplicationsPoliciesListForZoneResultItemExcludeItemExternalEvaluation"
         },
-        "_github_organization_": {
+        "github_organization": {
           "target": "com.cloudflare.zero_trust#AccessApplicationsPoliciesListForZoneResultItemExcludeItemGithubOrganization",
           "traits": {
-            "smithy.api#jsonName": "\"github-organization\""
+            "smithy.api#jsonName": "github-organization"
           }
         },
         "gsuite": {
@@ -70737,10 +70737,10 @@
         "external_evaluation": {
           "target": "com.cloudflare.zero_trust#AccessApplicationsPoliciesUpdateForAccountResponseExcludeItemExternalEvaluation"
         },
-        "_github_organization_": {
+        "github_organization": {
           "target": "com.cloudflare.zero_trust#AccessApplicationsPoliciesUpdateForAccountResponseExcludeItemGithubOrganization",
           "traits": {
-            "smithy.api#jsonName": "\"github-organization\""
+            "smithy.api#jsonName": "github-organization"
           }
         },
         "gsuite": {
@@ -72175,10 +72175,10 @@
         "external_evaluation": {
           "target": "com.cloudflare.zero_trust#AccessApplicationsPoliciesUpdateForZoneResponseExcludeItemExternalEvaluation"
         },
-        "_github_organization_": {
+        "github_organization": {
           "target": "com.cloudflare.zero_trust#AccessApplicationsPoliciesUpdateForZoneResponseExcludeItemGithubOrganization",
           "traits": {
-            "smithy.api#jsonName": "\"github-organization\""
+            "smithy.api#jsonName": "github-organization"
           }
         },
         "gsuite": {
@@ -73279,10 +73279,10 @@
         "external_evaluation": {
           "target": "com.cloudflare.zero_trust#AccessApplicationsPolicyTestsCreateRequestPoliciesItemIncludeItemExternalEvaluation"
         },
-        "_github_organization_": {
+        "github_organization": {
           "target": "com.cloudflare.zero_trust#AccessApplicationsPolicyTestsCreateRequestPoliciesItemIncludeItemGithubOrganization",
           "traits": {
-            "smithy.api#jsonName": "\"github-organization\""
+            "smithy.api#jsonName": "github-organization"
           }
         },
         "gsuite": {
@@ -77785,10 +77785,10 @@
         "external_evaluation": {
           "target": "com.cloudflare.zero_trust#AccessGroupsCreateForAccountRequestIncludeItemExternalEvaluation"
         },
-        "_github_organization_": {
+        "github_organization": {
           "target": "com.cloudflare.zero_trust#AccessGroupsCreateForAccountRequestIncludeItemGithubOrganization",
           "traits": {
-            "smithy.api#jsonName": "\"github-organization\""
+            "smithy.api#jsonName": "github-organization"
           }
         },
         "gsuite": {
@@ -78762,10 +78762,10 @@
         "external_evaluation": {
           "target": "com.cloudflare.zero_trust#AccessGroupsCreateForAccountResponseExcludeItemExternalEvaluation"
         },
-        "_github_organization_": {
+        "github_organization": {
           "target": "com.cloudflare.zero_trust#AccessGroupsCreateForAccountResponseExcludeItemGithubOrganization",
           "traits": {
-            "smithy.api#jsonName": "\"github-organization\""
+            "smithy.api#jsonName": "github-organization"
           }
         },
         "gsuite": {
@@ -79972,10 +79972,10 @@
         "external_evaluation": {
           "target": "com.cloudflare.zero_trust#AccessGroupsCreateForZoneRequestIncludeItemExternalEvaluation"
         },
-        "_github_organization_": {
+        "github_organization": {
           "target": "com.cloudflare.zero_trust#AccessGroupsCreateForZoneRequestIncludeItemGithubOrganization",
           "traits": {
-            "smithy.api#jsonName": "\"github-organization\""
+            "smithy.api#jsonName": "github-organization"
           }
         },
         "gsuite": {
@@ -80949,10 +80949,10 @@
         "external_evaluation": {
           "target": "com.cloudflare.zero_trust#AccessGroupsCreateForZoneResponseExcludeItemExternalEvaluation"
         },
-        "_github_organization_": {
+        "github_organization": {
           "target": "com.cloudflare.zero_trust#AccessGroupsCreateForZoneResponseExcludeItemGithubOrganization",
           "traits": {
-            "smithy.api#jsonName": "\"github-organization\""
+            "smithy.api#jsonName": "github-organization"
           }
         },
         "gsuite": {
@@ -82297,10 +82297,10 @@
         "external_evaluation": {
           "target": "com.cloudflare.zero_trust#AccessGroupsGetForAccountResponseExcludeItemExternalEvaluation"
         },
-        "_github_organization_": {
+        "github_organization": {
           "target": "com.cloudflare.zero_trust#AccessGroupsGetForAccountResponseExcludeItemGithubOrganization",
           "traits": {
-            "smithy.api#jsonName": "\"github-organization\""
+            "smithy.api#jsonName": "github-organization"
           }
         },
         "gsuite": {
@@ -83532,10 +83532,10 @@
         "external_evaluation": {
           "target": "com.cloudflare.zero_trust#AccessGroupsGetForZoneResponseExcludeItemExternalEvaluation"
         },
-        "_github_organization_": {
+        "github_organization": {
           "target": "com.cloudflare.zero_trust#AccessGroupsGetForZoneResponseExcludeItemGithubOrganization",
           "traits": {
-            "smithy.api#jsonName": "\"github-organization\""
+            "smithy.api#jsonName": "github-organization"
           }
         },
         "gsuite": {
@@ -84787,10 +84787,10 @@
         "external_evaluation": {
           "target": "com.cloudflare.zero_trust#AccessGroupsListForAccountResultItemExcludeItemExternalEvaluation"
         },
-        "_github_organization_": {
+        "github_organization": {
           "target": "com.cloudflare.zero_trust#AccessGroupsListForAccountResultItemExcludeItemGithubOrganization",
           "traits": {
-            "smithy.api#jsonName": "\"github-organization\""
+            "smithy.api#jsonName": "github-organization"
           }
         },
         "gsuite": {
@@ -86059,10 +86059,10 @@
         "external_evaluation": {
           "target": "com.cloudflare.zero_trust#AccessGroupsListForZoneResultItemExcludeItemExternalEvaluation"
         },
-        "_github_organization_": {
+        "github_organization": {
           "target": "com.cloudflare.zero_trust#AccessGroupsListForZoneResultItemExcludeItemGithubOrganization",
           "traits": {
-            "smithy.api#jsonName": "\"github-organization\""
+            "smithy.api#jsonName": "github-organization"
           }
         },
         "gsuite": {
@@ -87287,10 +87287,10 @@
         "external_evaluation": {
           "target": "com.cloudflare.zero_trust#AccessGroupsUpdateForAccountRequestIncludeItemExternalEvaluation"
         },
-        "_github_organization_": {
+        "github_organization": {
           "target": "com.cloudflare.zero_trust#AccessGroupsUpdateForAccountRequestIncludeItemGithubOrganization",
           "traits": {
-            "smithy.api#jsonName": "\"github-organization\""
+            "smithy.api#jsonName": "github-organization"
           }
         },
         "gsuite": {
@@ -88272,10 +88272,10 @@
         "external_evaluation": {
           "target": "com.cloudflare.zero_trust#AccessGroupsUpdateForAccountResponseExcludeItemExternalEvaluation"
         },
-        "_github_organization_": {
+        "github_organization": {
           "target": "com.cloudflare.zero_trust#AccessGroupsUpdateForAccountResponseExcludeItemGithubOrganization",
           "traits": {
-            "smithy.api#jsonName": "\"github-organization\""
+            "smithy.api#jsonName": "github-organization"
           }
         },
         "gsuite": {
@@ -89483,10 +89483,10 @@
         "external_evaluation": {
           "target": "com.cloudflare.zero_trust#AccessGroupsUpdateForZoneRequestIncludeItemExternalEvaluation"
         },
-        "_github_organization_": {
+        "github_organization": {
           "target": "com.cloudflare.zero_trust#AccessGroupsUpdateForZoneRequestIncludeItemGithubOrganization",
           "traits": {
-            "smithy.api#jsonName": "\"github-organization\""
+            "smithy.api#jsonName": "github-organization"
           }
         },
         "gsuite": {
@@ -90468,10 +90468,10 @@
         "external_evaluation": {
           "target": "com.cloudflare.zero_trust#AccessGroupsUpdateForZoneResponseExcludeItemExternalEvaluation"
         },
-        "_github_organization_": {
+        "github_organization": {
           "target": "com.cloudflare.zero_trust#AccessGroupsUpdateForZoneResponseExcludeItemGithubOrganization",
           "traits": {
-            "smithy.api#jsonName": "\"github-organization\""
+            "smithy.api#jsonName": "github-organization"
           }
         },
         "gsuite": {
@@ -94112,10 +94112,10 @@
         "external_evaluation": {
           "target": "com.cloudflare.zero_trust#AccessPoliciesCreateRequestIncludeItemExternalEvaluation"
         },
-        "_github_organization_": {
+        "github_organization": {
           "target": "com.cloudflare.zero_trust#AccessPoliciesCreateRequestIncludeItemGithubOrganization",
           "traits": {
-            "smithy.api#jsonName": "\"github-organization\""
+            "smithy.api#jsonName": "github-organization"
           }
         },
         "gsuite": {
@@ -95386,10 +95386,10 @@
         "external_evaluation": {
           "target": "com.cloudflare.zero_trust#AccessPoliciesCreateResponseExcludeItemExternalEvaluation"
         },
-        "_github_organization_": {
+        "github_organization": {
           "target": "com.cloudflare.zero_trust#AccessPoliciesCreateResponseExcludeItemGithubOrganization",
           "traits": {
-            "smithy.api#jsonName": "\"github-organization\""
+            "smithy.api#jsonName": "github-organization"
           }
         },
         "gsuite": {
@@ -96671,10 +96671,10 @@
         "external_evaluation": {
           "target": "com.cloudflare.zero_trust#AccessPoliciesGetResponseExcludeItemExternalEvaluation"
         },
-        "_github_organization_": {
+        "github_organization": {
           "target": "com.cloudflare.zero_trust#AccessPoliciesGetResponseExcludeItemGithubOrganization",
           "traits": {
-            "smithy.api#jsonName": "\"github-organization\""
+            "smithy.api#jsonName": "github-organization"
           }
         },
         "gsuite": {
@@ -97906,10 +97906,10 @@
         "external_evaluation": {
           "target": "com.cloudflare.zero_trust#AccessPoliciesListResultItemExcludeItemExternalEvaluation"
         },
-        "_github_organization_": {
+        "github_organization": {
           "target": "com.cloudflare.zero_trust#AccessPoliciesListResultItemExcludeItemGithubOrganization",
           "traits": {
-            "smithy.api#jsonName": "\"github-organization\""
+            "smithy.api#jsonName": "github-organization"
           }
         },
         "gsuite": {
@@ -99030,10 +99030,10 @@
         "external_evaluation": {
           "target": "com.cloudflare.zero_trust#AccessPoliciesUpdateRequestIncludeItemExternalEvaluation"
         },
-        "_github_organization_": {
+        "github_organization": {
           "target": "com.cloudflare.zero_trust#AccessPoliciesUpdateRequestIncludeItemGithubOrganization",
           "traits": {
-            "smithy.api#jsonName": "\"github-organization\""
+            "smithy.api#jsonName": "github-organization"
           }
         },
         "gsuite": {
@@ -100312,10 +100312,10 @@
         "external_evaluation": {
           "target": "com.cloudflare.zero_trust#AccessPoliciesUpdateResponseExcludeItemExternalEvaluation"
         },
-        "_github_organization_": {
+        "github_organization": {
           "target": "com.cloudflare.zero_trust#AccessPoliciesUpdateResponseExcludeItemGithubOrganization",
           "traits": {
-            "smithy.api#jsonName": "\"github-organization\""
+            "smithy.api#jsonName": "github-organization"
           }
         },
         "gsuite": {
@@ -124642,11 +124642,11 @@
     "com.cloudflare.zero_trust#DexCommandsCreateRequestCommandsItemArgsWARPDiagArgs": {
       "type": "structure",
       "members": {
-        "_test_all_routes_": {
+        "test_all_routes": {
           "target": "smithy.api#Boolean",
           "traits": {
             "smithy.api#documentation": "Test an IP address from all included or excluded ranges. Essentially the same as running 'route get <ip>' and collecting the results. This option may increase the time taken to collect the warp-diag.",
-            "smithy.api#jsonName": "\"test-all-routes\""
+            "smithy.api#jsonName": "test-all-routes"
           }
         }
       }
@@ -124654,25 +124654,25 @@
     "com.cloudflare.zero_trust#DexCommandsCreateRequestCommandsItemArgsPCAPArgs": {
       "type": "structure",
       "members": {
-        "_max_file_size_mb_": {
+        "max_file_size_mb": {
           "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "Maximum file size (in MB) for the capture file. If the capture artifact exceeds the specified max file size, it will NOT be uploaded.",
-            "smithy.api#jsonName": "\"max-file-size-mb\""
+            "smithy.api#jsonName": "max-file-size-mb"
           }
         },
-        "_packet_size_bytes_": {
+        "packet_size_bytes": {
           "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "Maximum number of bytes to save for each packet",
-            "smithy.api#jsonName": "\"packet-size-bytes\""
+            "smithy.api#jsonName": "packet-size-bytes"
           }
         },
-        "_time_limit_min_": {
+        "time_limit_min": {
           "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "Limit on capture duration (in minutes)",
-            "smithy.api#jsonName": "\"time-limit-min\""
+            "smithy.api#jsonName": "time-limit-min"
           }
         }
       }

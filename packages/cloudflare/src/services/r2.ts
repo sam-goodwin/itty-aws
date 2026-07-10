@@ -220,13 +220,6 @@ export const AbortSuperSlurperJobResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "AbortSuperSlurperJobResponse",
 }) as any as S.Schema<AbortSuperSlurperJobResponse>;
 
-export type BucketsCreateRequestCfR2Jurisdiction =
-  | "default"
-  | "eu"
-  | "fedramp"
-  | (string & {});
-export const BucketsCreateRequestCfR2Jurisdiction = /*@__PURE__*/ S.String;
-
 export type BucketsCreateRequestLocationHint =
   | "apac"
   | "eeur"
@@ -240,29 +233,34 @@ export type BucketsCreateRequestStorageClass =
   | (string & {});
 export const BucketsCreateRequestStorageClass = /*@__PURE__*/ S.String;
 
+export type BucketsCreateRequestCfR2Jurisdiction =
+  | "default"
+  | "eu"
+  | "fedramp"
+  | (string & {});
+export const BucketsCreateRequestCfR2Jurisdiction = /*@__PURE__*/ S.String;
+
 export interface CreateBucketRequest {
   /** Account ID. */
   accountId: string;
-  /** Jurisdiction where objects in this bucket are guaranteed to be stored. */
-  CfR2Jurisdiction_?: BucketsCreateRequestCfR2Jurisdiction;
   /** Name of the bucket. */
   name: string;
   /** Location of the bucket. */
   locationHint?: BucketsCreateRequestLocationHint;
   /** Storage class for newly uploaded objects, unless specified otherwise. */
   storageClass?: BucketsCreateRequestStorageClass;
+  /** Jurisdiction where objects in this bucket are guaranteed to be stored. */
+  jurisdiction?: BucketsCreateRequestCfR2Jurisdiction;
 }
 export const CreateBucketRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-    CfR2Jurisdiction_: S.optional(
-      BucketsCreateRequestCfR2Jurisdiction.pipe(
-        T.Header('"cf-r2-jurisdiction"'),
-      ),
-    ),
     name: S.String,
     locationHint: S.optional(BucketsCreateRequestLocationHint),
     storageClass: S.optional(BucketsCreateRequestStorageClass),
+    jurisdiction: S.optional(
+      BucketsCreateRequestCfR2Jurisdiction.pipe(T.Header("cf-r2-jurisdiction")),
+    ),
   })
     .pipe(
       T.Http({
@@ -323,14 +321,6 @@ export const CreateBucketResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateBucketResponse",
 }) as any as S.Schema<CreateBucketResponse>;
 
-export type BucketsDomainsCustomCreateRequestCfR2Jurisdiction =
-  | "default"
-  | "eu"
-  | "fedramp"
-  | (string & {});
-export const BucketsDomainsCustomCreateRequestCfR2Jurisdiction =
-  /*@__PURE__*/ S.String;
-
 export type BucketsDomainsCustomCreateRequestCiphersList = string[];
 export const BucketsDomainsCustomCreateRequestCiphersList =
   /*@__PURE__*/ S.Array(
@@ -345,13 +335,19 @@ export type BucketsDomainsCustomCreateRequestMinTLS =
   | (string & {});
 export const BucketsDomainsCustomCreateRequestMinTLS = /*@__PURE__*/ S.String;
 
+export type BucketsDomainsCustomCreateRequestCfR2Jurisdiction =
+  | "default"
+  | "eu"
+  | "fedramp"
+  | (string & {});
+export const BucketsDomainsCustomCreateRequestCfR2Jurisdiction =
+  /*@__PURE__*/ S.String;
+
 export interface CreateBucketDomainCustomRequest {
   /** Account ID. */
   accountId: string;
   /** Name of the bucket. */
   bucketName: string;
-  /** Jurisdiction where objects in this bucket are guaranteed to be stored. */
-  CfR2Jurisdiction_?: BucketsDomainsCustomCreateRequestCfR2Jurisdiction;
   /** Name of the custom domain to be added. */
   domain: string;
   /** Whether to enable public bucket access at the custom domain. If undefined, the domain will be enabled. */
@@ -362,21 +358,23 @@ export interface CreateBucketDomainCustomRequest {
   ciphers?: BucketsDomainsCustomCreateRequestCiphersList;
   /** Minimum TLS Version the custom domain will accept for incoming connections. If not set, defaults to 1.0. */
   minTLS?: BucketsDomainsCustomCreateRequestMinTLS;
+  /** Jurisdiction where objects in this bucket are guaranteed to be stored. */
+  jurisdiction?: BucketsDomainsCustomCreateRequestCfR2Jurisdiction;
 }
 export const CreateBucketDomainCustomRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     bucketName: S.String.pipe(T.Label("bucket_name")),
-    CfR2Jurisdiction_: S.optional(
-      BucketsDomainsCustomCreateRequestCfR2Jurisdiction.pipe(
-        T.Header('"cf-r2-jurisdiction"'),
-      ),
-    ),
     domain: S.String,
     enabled: S.Boolean,
     zoneId: S.String,
     ciphers: S.optional(BucketsDomainsCustomCreateRequestCiphersList),
     minTLS: S.optional(BucketsDomainsCustomCreateRequestMinTLS),
+    jurisdiction: S.optional(
+      BucketsDomainsCustomCreateRequestCfR2Jurisdiction.pipe(
+        T.Header("cf-r2-jurisdiction"),
+      ),
+    ),
   })
     .pipe(
       T.Http({
@@ -766,16 +764,14 @@ export interface DeleteBucketRequest {
   /** Name of the bucket. */
   bucketName: string;
   /** Jurisdiction where objects in this bucket are guaranteed to be stored. */
-  CfR2Jurisdiction_?: BucketsDeleteRequestCfR2Jurisdiction;
+  jurisdiction?: BucketsDeleteRequestCfR2Jurisdiction;
 }
 export const DeleteBucketRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     bucketName: S.String.pipe(T.Label("bucket_name")),
-    CfR2Jurisdiction_: S.optional(
-      BucketsDeleteRequestCfR2Jurisdiction.pipe(
-        T.Header('"cf-r2-jurisdiction"'),
-      ),
+    jurisdiction: S.optional(
+      BucketsDeleteRequestCfR2Jurisdiction.pipe(T.Header("cf-r2-jurisdiction")),
     ),
   })
     .pipe(
@@ -810,15 +806,15 @@ export interface DeleteBucketCorsRequest {
   /** Name of the bucket. */
   bucketName: string;
   /** Jurisdiction where objects in this bucket are guaranteed to be stored. */
-  CfR2Jurisdiction_?: BucketsCorsDeleteRequestCfR2Jurisdiction;
+  jurisdiction?: BucketsCorsDeleteRequestCfR2Jurisdiction;
 }
 export const DeleteBucketCorsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     bucketName: S.String.pipe(T.Label("bucket_name")),
-    CfR2Jurisdiction_: S.optional(
+    jurisdiction: S.optional(
       BucketsCorsDeleteRequestCfR2Jurisdiction.pipe(
-        T.Header('"cf-r2-jurisdiction"'),
+        T.Header("cf-r2-jurisdiction"),
       ),
     ),
   })
@@ -857,16 +853,16 @@ export interface DeleteBucketDomainCustomRequest {
   /** Name of the custom domain. */
   domain: string;
   /** Jurisdiction where objects in this bucket are guaranteed to be stored. */
-  CfR2Jurisdiction_?: BucketsDomainsCustomDeleteRequestCfR2Jurisdiction;
+  jurisdiction?: BucketsDomainsCustomDeleteRequestCfR2Jurisdiction;
 }
 export const DeleteBucketDomainCustomRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     bucketName: S.String.pipe(T.Label("bucket_name")),
     domain: S.String.pipe(T.Label()),
-    CfR2Jurisdiction_: S.optional(
+    jurisdiction: S.optional(
       BucketsDomainsCustomDeleteRequestCfR2Jurisdiction.pipe(
-        T.Header('"cf-r2-jurisdiction"'),
+        T.Header("cf-r2-jurisdiction"),
       ),
     ),
   })
@@ -911,7 +907,7 @@ export interface DeleteBucketEventNotificationRequest {
   /** Queue ID. */
   queueId: string;
   /** Jurisdiction where objects in this bucket are guaranteed to be stored. */
-  CfR2Jurisdiction_?: BucketsEventNotificationsDeleteRequestCfR2Jurisdiction;
+  jurisdiction?: BucketsEventNotificationsDeleteRequestCfR2Jurisdiction;
 }
 export const DeleteBucketEventNotificationRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -919,9 +915,9 @@ export const DeleteBucketEventNotificationRequest = /*@__PURE__*/ S.suspend(
       accountId: S.String.pipe(T.Label("account_id")),
       bucketName: S.String.pipe(T.Label("bucket_name")),
       queueId: S.String.pipe(T.Label("queue_id")),
-      CfR2Jurisdiction_: S.optional(
+      jurisdiction: S.optional(
         BucketsEventNotificationsDeleteRequestCfR2Jurisdiction.pipe(
-          T.Header('"cf-r2-jurisdiction"'),
+          T.Header("cf-r2-jurisdiction"),
         ),
       ),
     })
@@ -960,16 +956,16 @@ export interface DeleteBucketObjectRequest {
   /** The key (name) of the object to delete. May contain slashes for path-like keys. */
   objectKey: string;
   /** Jurisdiction where objects in this bucket are guaranteed to be stored. */
-  CfR2Jurisdiction_?: BucketsObjectsDeleteRequestCfR2Jurisdiction;
+  jurisdiction?: BucketsObjectsDeleteRequestCfR2Jurisdiction;
 }
 export const DeleteBucketObjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     bucketName: S.String.pipe(T.Label("bucket_name")),
     objectKey: S.String.pipe(T.Label("object_key")),
-    CfR2Jurisdiction_: S.optional(
+    jurisdiction: S.optional(
       BucketsObjectsDeleteRequestCfR2Jurisdiction.pipe(
-        T.Header('"cf-r2-jurisdiction"'),
+        T.Header("cf-r2-jurisdiction"),
       ),
     ),
   })
@@ -1011,15 +1007,15 @@ export interface DeleteBucketSippyRequest {
   /** Name of the bucket. */
   bucketName: string;
   /** Jurisdiction where objects in this bucket are guaranteed to be stored. */
-  CfR2Jurisdiction_?: BucketsSippyDeleteRequestCfR2Jurisdiction;
+  jurisdiction?: BucketsSippyDeleteRequestCfR2Jurisdiction;
 }
 export const DeleteBucketSippyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     bucketName: S.String.pipe(T.Label("bucket_name")),
-    CfR2Jurisdiction_: S.optional(
+    jurisdiction: S.optional(
       BucketsSippyDeleteRequestCfR2Jurisdiction.pipe(
-        T.Header('"cf-r2-jurisdiction"'),
+        T.Header("cf-r2-jurisdiction"),
       ),
     ),
   })
@@ -1101,14 +1097,14 @@ export interface GetBucketRequest {
   /** Name of the bucket. */
   bucketName: string;
   /** Jurisdiction where objects in this bucket are guaranteed to be stored. */
-  CfR2Jurisdiction_?: BucketsGetRequestCfR2Jurisdiction;
+  jurisdiction?: BucketsGetRequestCfR2Jurisdiction;
 }
 export const GetBucketRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     bucketName: S.String.pipe(T.Label("bucket_name")),
-    CfR2Jurisdiction_: S.optional(
-      BucketsGetRequestCfR2Jurisdiction.pipe(T.Header('"cf-r2-jurisdiction"')),
+    jurisdiction: S.optional(
+      BucketsGetRequestCfR2Jurisdiction.pipe(T.Header("cf-r2-jurisdiction")),
     ),
   })
     .pipe(
@@ -1183,15 +1179,15 @@ export interface GetBucketCorsRequest {
   /** Name of the bucket. */
   bucketName: string;
   /** Jurisdiction where objects in this bucket are guaranteed to be stored. */
-  CfR2Jurisdiction_?: BucketsCorsGetRequestCfR2Jurisdiction;
+  jurisdiction?: BucketsCorsGetRequestCfR2Jurisdiction;
 }
 export const GetBucketCorsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     bucketName: S.String.pipe(T.Label("bucket_name")),
-    CfR2Jurisdiction_: S.optional(
+    jurisdiction: S.optional(
       BucketsCorsGetRequestCfR2Jurisdiction.pipe(
-        T.Header('"cf-r2-jurisdiction"'),
+        T.Header("cf-r2-jurisdiction"),
       ),
     ),
   })
@@ -1313,16 +1309,16 @@ export interface GetBucketDomainCustomRequest {
   /** Name of the custom domain. */
   domain: string;
   /** Jurisdiction where objects in this bucket are guaranteed to be stored. */
-  CfR2Jurisdiction_?: BucketsDomainsCustomGetRequestCfR2Jurisdiction;
+  jurisdiction?: BucketsDomainsCustomGetRequestCfR2Jurisdiction;
 }
 export const GetBucketDomainCustomRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     bucketName: S.String.pipe(T.Label("bucket_name")),
     domain: S.String.pipe(T.Label()),
-    CfR2Jurisdiction_: S.optional(
+    jurisdiction: S.optional(
       BucketsDomainsCustomGetRequestCfR2Jurisdiction.pipe(
-        T.Header('"cf-r2-jurisdiction"'),
+        T.Header("cf-r2-jurisdiction"),
       ),
     ),
   })
@@ -1428,16 +1424,16 @@ export interface GetBucketEventNotificationRequest {
   /** Queue ID. */
   queueId: string;
   /** The bucket jurisdiction. */
-  CfR2Jurisdiction_?: BucketsEventNotificationsGetRequestCfR2Jurisdiction;
+  jurisdiction?: BucketsEventNotificationsGetRequestCfR2Jurisdiction;
 }
 export const GetBucketEventNotificationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     bucketName: S.String.pipe(T.Label("bucket_name")),
     queueId: S.String.pipe(T.Label("queue_id")),
-    CfR2Jurisdiction_: S.optional(
+    jurisdiction: S.optional(
       BucketsEventNotificationsGetRequestCfR2Jurisdiction.pipe(
-        T.Header('"cf-r2-jurisdiction"'),
+        T.Header("cf-r2-jurisdiction"),
       ),
     ),
   })
@@ -1535,15 +1531,15 @@ export interface GetBucketLifecycleRequest {
   /** Name of the bucket. */
   bucketName: string;
   /** Jurisdiction where objects in this bucket are guaranteed to be stored. */
-  CfR2Jurisdiction_?: BucketsLifecycleGetRequestCfR2Jurisdiction;
+  jurisdiction?: BucketsLifecycleGetRequestCfR2Jurisdiction;
 }
 export const GetBucketLifecycleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     bucketName: S.String.pipe(T.Label("bucket_name")),
-    CfR2Jurisdiction_: S.optional(
+    jurisdiction: S.optional(
       BucketsLifecycleGetRequestCfR2Jurisdiction.pipe(
-        T.Header('"cf-r2-jurisdiction"'),
+        T.Header("cf-r2-jurisdiction"),
       ),
     ),
   })
@@ -1820,15 +1816,15 @@ export interface GetBucketLockRequest {
   /** Name of the bucket. */
   bucketName: string;
   /** Jurisdiction where objects in this bucket are guaranteed to be stored. */
-  CfR2Jurisdiction_?: BucketsLocksGetRequestCfR2Jurisdiction;
+  jurisdiction?: BucketsLocksGetRequestCfR2Jurisdiction;
 }
 export const GetBucketLockRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     bucketName: S.String.pipe(T.Label("bucket_name")),
-    CfR2Jurisdiction_: S.optional(
+    jurisdiction: S.optional(
       BucketsLocksGetRequestCfR2Jurisdiction.pipe(
-        T.Header('"cf-r2-jurisdiction"'),
+        T.Header("cf-r2-jurisdiction"),
       ),
     ),
   })
@@ -1965,26 +1961,24 @@ export interface GetBucketObjectRequest {
   /** The key (name) of the object to retrieve. May contain slashes for path-like keys. */
   objectKey: string;
   /** Jurisdiction where objects in this bucket are guaranteed to be stored. */
-  CfR2Jurisdiction_?: BucketsObjectsGetRequestCfR2Jurisdiction;
+  jurisdiction?: BucketsObjectsGetRequestCfR2Jurisdiction;
   /** Returns the object only if it has been modified since the specified time. */
-  IfModifiedSince_?: string;
+  ifModifiedSince?: string;
   /** Returns the object only if its ETag does not match the given value. */
-  IfNoneMatch_?: string;
+  ifNoneMatch?: string;
 }
 export const GetBucketObjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     bucketName: S.String.pipe(T.Label("bucket_name")),
     objectKey: S.String.pipe(T.Label("object_key")),
-    CfR2Jurisdiction_: S.optional(
+    jurisdiction: S.optional(
       BucketsObjectsGetRequestCfR2Jurisdiction.pipe(
-        T.Header('"cf-r2-jurisdiction"'),
+        T.Header("cf-r2-jurisdiction"),
       ),
     ),
-    IfModifiedSince_: S.optional(
-      S.String.pipe(T.Header('"If-Modified-Since"')),
-    ),
-    IfNoneMatch_: S.optional(S.String.pipe(T.Header('"If-None-Match"'))),
+    ifModifiedSince: S.optional(S.String.pipe(T.Header("If-Modified-Since"))),
+    ifNoneMatch: S.optional(S.String.pipe(T.Header("If-None-Match"))),
   })
     .pipe(
       T.Http({
@@ -2018,15 +2012,15 @@ export interface GetBucketSippyRequest {
   /** Name of the bucket. */
   bucketName: string;
   /** Jurisdiction where objects in this bucket are guaranteed to be stored. */
-  CfR2Jurisdiction_?: BucketsSippyGetRequestCfR2Jurisdiction;
+  jurisdiction?: BucketsSippyGetRequestCfR2Jurisdiction;
 }
 export const GetBucketSippyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     bucketName: S.String.pipe(T.Label("bucket_name")),
-    CfR2Jurisdiction_: S.optional(
+    jurisdiction: S.optional(
       BucketsSippyGetRequestCfR2Jurisdiction.pipe(
-        T.Header('"cf-r2-jurisdiction"'),
+        T.Header("cf-r2-jurisdiction"),
       ),
     ),
   })
@@ -2317,15 +2311,15 @@ export interface ListBucketDomainCustomsRequest {
   /** Name of the bucket. */
   bucketName: string;
   /** Jurisdiction where objects in this bucket are guaranteed to be stored. */
-  CfR2Jurisdiction_?: BucketsDomainsCustomListRequestCfR2Jurisdiction;
+  jurisdiction?: BucketsDomainsCustomListRequestCfR2Jurisdiction;
 }
 export const ListBucketDomainCustomsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     bucketName: S.String.pipe(T.Label("bucket_name")),
-    CfR2Jurisdiction_: S.optional(
+    jurisdiction: S.optional(
       BucketsDomainsCustomListRequestCfR2Jurisdiction.pipe(
-        T.Header('"cf-r2-jurisdiction"'),
+        T.Header("cf-r2-jurisdiction"),
       ),
     ),
   })
@@ -2453,15 +2447,15 @@ export interface ListBucketDomainManagedsRequest {
   /** Name of the bucket. */
   bucketName: string;
   /** Jurisdiction where objects in this bucket are guaranteed to be stored. */
-  CfR2Jurisdiction_?: BucketsDomainsManagedListRequestCfR2Jurisdiction;
+  jurisdiction?: BucketsDomainsManagedListRequestCfR2Jurisdiction;
 }
 export const ListBucketDomainManagedsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     bucketName: S.String.pipe(T.Label("bucket_name")),
-    CfR2Jurisdiction_: S.optional(
+    jurisdiction: S.optional(
       BucketsDomainsManagedListRequestCfR2Jurisdiction.pipe(
-        T.Header('"cf-r2-jurisdiction"'),
+        T.Header("cf-r2-jurisdiction"),
       ),
     ),
   })
@@ -2510,15 +2504,15 @@ export interface ListBucketEventNotificationsRequest {
   /** Name of the bucket. */
   bucketName: string;
   /** Jurisdiction where objects in this bucket are guaranteed to be stored. */
-  CfR2Jurisdiction_?: BucketsEventNotificationsListRequestCfR2Jurisdiction;
+  jurisdiction?: BucketsEventNotificationsListRequestCfR2Jurisdiction;
 }
 export const ListBucketEventNotificationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     bucketName: S.String.pipe(T.Label("bucket_name")),
-    CfR2Jurisdiction_: S.optional(
+    jurisdiction: S.optional(
       BucketsEventNotificationsListRequestCfR2Jurisdiction.pipe(
-        T.Header('"cf-r2-jurisdiction"'),
+        T.Header("cf-r2-jurisdiction"),
       ),
     ),
   })
@@ -2794,7 +2788,7 @@ export interface ListBucketObjectsRequest {
   /** Returns objects with keys that come after the specified key in lexicographic order. */
   startAfter?: string;
   /** Jurisdiction where objects in this bucket are guaranteed to be stored. */
-  CfR2Jurisdiction_?: BucketsObjectsListRequestCfR2Jurisdiction;
+  jurisdiction?: BucketsObjectsListRequestCfR2Jurisdiction;
 }
 export const ListBucketObjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2805,9 +2799,9 @@ export const ListBucketObjectsRequest = /*@__PURE__*/ S.suspend(() =>
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
     prefix: S.optional(S.String.pipe(T.Query())),
     startAfter: S.optional(S.String.pipe(T.Query("start_after"))),
-    CfR2Jurisdiction_: S.optional(
+    jurisdiction: S.optional(
       BucketsObjectsListRequestCfR2Jurisdiction.pipe(
-        T.Header('"cf-r2-jurisdiction"'),
+        T.Header("cf-r2-jurisdiction"),
       ),
     ),
   })
@@ -2956,7 +2950,7 @@ export interface ListBucketsRequest {
   /** Bucket name to start searching after. Buckets are ordered lexicographically. */
   startAfter?: string;
   /** Jurisdiction where objects in this bucket are guaranteed to be stored. */
-  CfR2Jurisdiction_?: BucketsListRequestCfR2Jurisdiction;
+  jurisdiction?: BucketsListRequestCfR2Jurisdiction;
 }
 export const ListBucketsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2967,8 +2961,8 @@ export const ListBucketsRequest = /*@__PURE__*/ S.suspend(() =>
     order: S.optional(BucketsListRequestOrder.pipe(T.Query())),
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
     startAfter: S.optional(S.String.pipe(T.Query("start_after"))),
-    CfR2Jurisdiction_: S.optional(
-      BucketsListRequestCfR2Jurisdiction.pipe(T.Header('"cf-r2-jurisdiction"')),
+    jurisdiction: S.optional(
+      BucketsListRequestCfR2Jurisdiction.pipe(T.Header("cf-r2-jurisdiction")),
     ),
   })
     .pipe(
@@ -3360,19 +3354,19 @@ export interface PatchBucketRequest {
   /** Name of the bucket. */
   bucketName: string;
   /** Storage class for newly uploaded objects, unless specified otherwise. */
-  CfR2StorageClass_: BucketsEditRequestCfR2StorageClass;
+  storageClass: BucketsEditRequestCfR2StorageClass;
   /** Jurisdiction where objects in this bucket are guaranteed to be stored. */
-  CfR2Jurisdiction_?: BucketsEditRequestCfR2Jurisdiction;
+  jurisdiction?: BucketsEditRequestCfR2Jurisdiction;
 }
 export const PatchBucketRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     bucketName: S.String.pipe(T.Label("bucket_name")),
-    CfR2StorageClass_: BucketsEditRequestCfR2StorageClass.pipe(
-      T.Header('"cf-r2-storage-class"'),
+    storageClass: BucketsEditRequestCfR2StorageClass.pipe(
+      T.Header("cf-r2-storage-class"),
     ),
-    CfR2Jurisdiction_: S.optional(
-      BucketsEditRequestCfR2Jurisdiction.pipe(T.Header('"cf-r2-jurisdiction"')),
+    jurisdiction: S.optional(
+      BucketsEditRequestCfR2Jurisdiction.pipe(T.Header("cf-r2-jurisdiction")),
     ),
   })
     .pipe(
@@ -3515,13 +3509,6 @@ export const ProgressSuperSlurperJobResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProgressSuperSlurperJobResponse",
 }) as any as S.Schema<ProgressSuperSlurperJobResponse>;
 
-export type BucketsCorsUpdateRequestCfR2Jurisdiction =
-  | "default"
-  | "eu"
-  | "fedramp"
-  | (string & {});
-export const BucketsCorsUpdateRequestCfR2Jurisdiction = /*@__PURE__*/ S.String;
-
 export type BucketsCorsUpdateRequestRulesItemAllowedMethodsItem =
   | "GET"
   | "PUT"
@@ -3603,25 +3590,32 @@ export const BucketsCorsUpdateRequestRulesList = /*@__PURE__*/ S.Array(
   BucketsCorsUpdateRequestRulesItem,
 ) as any as S.Schema<BucketsCorsUpdateRequestRulesList>;
 
+export type BucketsCorsUpdateRequestCfR2Jurisdiction =
+  | "default"
+  | "eu"
+  | "fedramp"
+  | (string & {});
+export const BucketsCorsUpdateRequestCfR2Jurisdiction = /*@__PURE__*/ S.String;
+
 export interface PutBucketCorsRequest {
   /** Account ID. */
   accountId: string;
   /** Name of the bucket. */
   bucketName: string;
-  /** Jurisdiction where objects in this bucket are guaranteed to be stored. */
-  CfR2Jurisdiction_?: BucketsCorsUpdateRequestCfR2Jurisdiction;
   rules?: BucketsCorsUpdateRequestRulesList;
+  /** Jurisdiction where objects in this bucket are guaranteed to be stored. */
+  jurisdiction?: BucketsCorsUpdateRequestCfR2Jurisdiction;
 }
 export const PutBucketCorsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     bucketName: S.String.pipe(T.Label("bucket_name")),
-    CfR2Jurisdiction_: S.optional(
+    rules: S.optional(BucketsCorsUpdateRequestRulesList),
+    jurisdiction: S.optional(
       BucketsCorsUpdateRequestCfR2Jurisdiction.pipe(
-        T.Header('"cf-r2-jurisdiction"'),
+        T.Header("cf-r2-jurisdiction"),
       ),
     ),
-    rules: S.optional(BucketsCorsUpdateRequestRulesList),
   })
     .pipe(
       T.Http({
@@ -3655,21 +3649,21 @@ export interface PutBucketDomainManagedRequest {
   accountId: string;
   /** Name of the bucket. */
   bucketName: string;
-  /** Jurisdiction where objects in this bucket are guaranteed to be stored. */
-  CfR2Jurisdiction_?: BucketsDomainsManagedUpdateRequestCfR2Jurisdiction;
   /** Whether to enable public bucket access at the r2.dev domain. */
   enabled: boolean;
+  /** Jurisdiction where objects in this bucket are guaranteed to be stored. */
+  jurisdiction?: BucketsDomainsManagedUpdateRequestCfR2Jurisdiction;
 }
 export const PutBucketDomainManagedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     bucketName: S.String.pipe(T.Label("bucket_name")),
-    CfR2Jurisdiction_: S.optional(
+    enabled: S.Boolean,
+    jurisdiction: S.optional(
       BucketsDomainsManagedUpdateRequestCfR2Jurisdiction.pipe(
-        T.Header('"cf-r2-jurisdiction"'),
+        T.Header("cf-r2-jurisdiction"),
       ),
     ),
-    enabled: S.Boolean,
   })
     .pipe(
       T.Http({
@@ -3701,14 +3695,6 @@ export const PutBucketDomainManagedResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PutBucketDomainManagedResponse",
 }) as any as S.Schema<PutBucketDomainManagedResponse>;
-
-export type BucketsEventNotificationsUpdateRequestCfR2Jurisdiction =
-  | "default"
-  | "eu"
-  | "fedramp"
-  | (string & {});
-export const BucketsEventNotificationsUpdateRequestCfR2Jurisdiction =
-  /*@__PURE__*/ S.String;
 
 export type BucketsEventNotificationsUpdateRequestRulesItemActionsItem =
   | "PutObject"
@@ -3754,6 +3740,14 @@ export const BucketsEventNotificationsUpdateRequestRulesList =
     BucketsEventNotificationsUpdateRequestRulesItem,
   ) as any as S.Schema<BucketsEventNotificationsUpdateRequestRulesList>;
 
+export type BucketsEventNotificationsUpdateRequestCfR2Jurisdiction =
+  | "default"
+  | "eu"
+  | "fedramp"
+  | (string & {});
+export const BucketsEventNotificationsUpdateRequestCfR2Jurisdiction =
+  /*@__PURE__*/ S.String;
+
 export interface PutBucketEventNotificationRequest {
   /** Account ID. */
   accountId: string;
@@ -3761,22 +3755,22 @@ export interface PutBucketEventNotificationRequest {
   bucketName: string;
   /** Queue ID. */
   queueId: string;
-  /** Jurisdiction where objects in this bucket are guaranteed to be stored. */
-  CfR2Jurisdiction_?: BucketsEventNotificationsUpdateRequestCfR2Jurisdiction;
   /** Array of rules to drive notifications. */
   rules: BucketsEventNotificationsUpdateRequestRulesList;
+  /** Jurisdiction where objects in this bucket are guaranteed to be stored. */
+  jurisdiction?: BucketsEventNotificationsUpdateRequestCfR2Jurisdiction;
 }
 export const PutBucketEventNotificationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     bucketName: S.String.pipe(T.Label("bucket_name")),
     queueId: S.String.pipe(T.Label("queue_id")),
-    CfR2Jurisdiction_: S.optional(
+    rules: BucketsEventNotificationsUpdateRequestRulesList,
+    jurisdiction: S.optional(
       BucketsEventNotificationsUpdateRequestCfR2Jurisdiction.pipe(
-        T.Header('"cf-r2-jurisdiction"'),
+        T.Header("cf-r2-jurisdiction"),
       ),
     ),
-    rules: BucketsEventNotificationsUpdateRequestRulesList,
   })
     .pipe(
       T.Http({
@@ -3796,14 +3790,6 @@ export const PutBucketEventNotificationResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PutBucketEventNotificationResponse",
 }) as any as S.Schema<PutBucketEventNotificationResponse>;
-
-export type BucketsLifecycleUpdateRequestCfR2Jurisdiction =
-  | "default"
-  | "eu"
-  | "fedramp"
-  | (string & {});
-export const BucketsLifecycleUpdateRequestCfR2Jurisdiction =
-  /*@__PURE__*/ S.String;
 
 export interface BucketsLifecycleUpdateRequestRulesItemConditions {
   /** Transitions will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads. */
@@ -4041,25 +4027,33 @@ export const BucketsLifecycleUpdateRequestRulesList = /*@__PURE__*/ S.Array(
   BucketsLifecycleUpdateRequestRulesItem,
 ) as any as S.Schema<BucketsLifecycleUpdateRequestRulesList>;
 
+export type BucketsLifecycleUpdateRequestCfR2Jurisdiction =
+  | "default"
+  | "eu"
+  | "fedramp"
+  | (string & {});
+export const BucketsLifecycleUpdateRequestCfR2Jurisdiction =
+  /*@__PURE__*/ S.String;
+
 export interface PutBucketLifecycleRequest {
   /** Account ID. */
   accountId: string;
   /** Name of the bucket. */
   bucketName: string;
-  /** Jurisdiction where objects in this bucket are guaranteed to be stored. */
-  CfR2Jurisdiction_?: BucketsLifecycleUpdateRequestCfR2Jurisdiction;
   rules?: BucketsLifecycleUpdateRequestRulesList;
+  /** Jurisdiction where objects in this bucket are guaranteed to be stored. */
+  jurisdiction?: BucketsLifecycleUpdateRequestCfR2Jurisdiction;
 }
 export const PutBucketLifecycleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     bucketName: S.String.pipe(T.Label("bucket_name")),
-    CfR2Jurisdiction_: S.optional(
+    rules: S.optional(BucketsLifecycleUpdateRequestRulesList),
+    jurisdiction: S.optional(
       BucketsLifecycleUpdateRequestCfR2Jurisdiction.pipe(
-        T.Header('"cf-r2-jurisdiction"'),
+        T.Header("cf-r2-jurisdiction"),
       ),
     ),
-    rules: S.optional(BucketsLifecycleUpdateRequestRulesList),
   })
     .pipe(
       T.Http({
@@ -4079,13 +4073,6 @@ export const PutBucketLifecycleResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PutBucketLifecycleResponse",
 }) as any as S.Schema<PutBucketLifecycleResponse>;
-
-export type BucketsLocksUpdateRequestCfR2Jurisdiction =
-  | "default"
-  | "eu"
-  | "fedramp"
-  | (string & {});
-export const BucketsLocksUpdateRequestCfR2Jurisdiction = /*@__PURE__*/ S.String;
 
 export type BucketsLocksUpdateRequestRulesItemConditionR2LockRuleAgeConditionType =
   "Age" | (string & {});
@@ -4181,25 +4168,32 @@ export const BucketsLocksUpdateRequestRulesList = /*@__PURE__*/ S.Array(
   BucketsLocksUpdateRequestRulesItem,
 ) as any as S.Schema<BucketsLocksUpdateRequestRulesList>;
 
+export type BucketsLocksUpdateRequestCfR2Jurisdiction =
+  | "default"
+  | "eu"
+  | "fedramp"
+  | (string & {});
+export const BucketsLocksUpdateRequestCfR2Jurisdiction = /*@__PURE__*/ S.String;
+
 export interface PutBucketLockRequest {
   /** Account ID. */
   accountId: string;
   /** Name of the bucket. */
   bucketName: string;
-  /** Jurisdiction where objects in this bucket are guaranteed to be stored. */
-  CfR2Jurisdiction_?: BucketsLocksUpdateRequestCfR2Jurisdiction;
   rules?: BucketsLocksUpdateRequestRulesList;
+  /** Jurisdiction where objects in this bucket are guaranteed to be stored. */
+  jurisdiction?: BucketsLocksUpdateRequestCfR2Jurisdiction;
 }
 export const PutBucketLockRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     bucketName: S.String.pipe(T.Label("bucket_name")),
-    CfR2Jurisdiction_: S.optional(
+    rules: S.optional(BucketsLocksUpdateRequestRulesList),
+    jurisdiction: S.optional(
       BucketsLocksUpdateRequestCfR2Jurisdiction.pipe(
-        T.Header('"cf-r2-jurisdiction"'),
+        T.Header("cf-r2-jurisdiction"),
       ),
     ),
-    rules: S.optional(BucketsLocksUpdateRequestRulesList),
   })
     .pipe(
       T.Http({
@@ -4219,13 +4213,6 @@ export const PutBucketLockResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PutBucketLockResponse",
 }) as any as S.Schema<PutBucketLockResponse>;
-
-export type BucketsSippyUpdateRequestCfR2Jurisdiction =
-  | "default"
-  | "eu"
-  | "fedramp"
-  | (string & {});
-export const BucketsSippyUpdateRequestCfR2Jurisdiction = /*@__PURE__*/ S.String;
 
 export interface BucketsSippyUpdateRequestBodyR2EnableSippyAwsDestination {
   /** ID of a Cloudflare API token. */
@@ -4437,25 +4424,32 @@ export const BucketsSippyUpdateRequestBody = /*@__PURE__*/ S.Unknown.pipe(
   ]),
 );
 
+export type BucketsSippyUpdateRequestCfR2Jurisdiction =
+  | "default"
+  | "eu"
+  | "fedramp"
+  | (string & {});
+export const BucketsSippyUpdateRequestCfR2Jurisdiction = /*@__PURE__*/ S.String;
+
 export interface PutBucketSippyRequest {
   /** Account ID. */
   accountId: string;
   /** Name of the bucket. */
   bucketName: string;
-  /** Jurisdiction where objects in this bucket are guaranteed to be stored. */
-  CfR2Jurisdiction_?: BucketsSippyUpdateRequestCfR2Jurisdiction;
   body: BucketsSippyUpdateRequestBody;
+  /** Jurisdiction where objects in this bucket are guaranteed to be stored. */
+  jurisdiction?: BucketsSippyUpdateRequestCfR2Jurisdiction;
 }
 export const PutBucketSippyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     bucketName: S.String.pipe(T.Label("bucket_name")),
-    CfR2Jurisdiction_: S.optional(
+    body: BucketsSippyUpdateRequestBody.pipe(T.HttpBody()),
+    jurisdiction: S.optional(
       BucketsSippyUpdateRequestCfR2Jurisdiction.pipe(
-        T.Header('"cf-r2-jurisdiction"'),
+        T.Header("cf-r2-jurisdiction"),
       ),
     ),
-    body: BucketsSippyUpdateRequestBody.pipe(T.HttpBody()),
   })
     .pipe(
       T.Http({
@@ -4868,14 +4862,6 @@ export const TargetSuperSlurperConnectivityPrecheckResponse =
     identifier: "TargetSuperSlurperConnectivityPrecheckResponse",
   }) as any as S.Schema<TargetSuperSlurperConnectivityPrecheckResponse>;
 
-export type BucketsDomainsCustomUpdateRequestCfR2Jurisdiction =
-  | "default"
-  | "eu"
-  | "fedramp"
-  | (string & {});
-export const BucketsDomainsCustomUpdateRequestCfR2Jurisdiction =
-  /*@__PURE__*/ S.String;
-
 export type BucketsDomainsCustomUpdateRequestCiphersList = string[];
 export const BucketsDomainsCustomUpdateRequestCiphersList =
   /*@__PURE__*/ S.Array(
@@ -4890,6 +4876,14 @@ export type BucketsDomainsCustomUpdateRequestMinTLS =
   | (string & {});
 export const BucketsDomainsCustomUpdateRequestMinTLS = /*@__PURE__*/ S.String;
 
+export type BucketsDomainsCustomUpdateRequestCfR2Jurisdiction =
+  | "default"
+  | "eu"
+  | "fedramp"
+  | (string & {});
+export const BucketsDomainsCustomUpdateRequestCfR2Jurisdiction =
+  /*@__PURE__*/ S.String;
+
 export interface UpdateBucketDomainCustomRequest {
   /** Account ID. */
   accountId: string;
@@ -4897,28 +4891,28 @@ export interface UpdateBucketDomainCustomRequest {
   bucketName: string;
   /** Name of the custom domain. */
   domain: string;
-  /** Jurisdiction where objects in this bucket are guaranteed to be stored. */
-  CfR2Jurisdiction_?: BucketsDomainsCustomUpdateRequestCfR2Jurisdiction;
   /** An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format. */
   ciphers?: BucketsDomainsCustomUpdateRequestCiphersList;
   /** Whether to enable public bucket access at the specified custom domain. */
   enabled?: boolean;
   /** Minimum TLS Version the custom domain will accept for incoming connections. If not set, defaults to previous value. */
   minTLS?: BucketsDomainsCustomUpdateRequestMinTLS;
+  /** Jurisdiction where objects in this bucket are guaranteed to be stored. */
+  jurisdiction?: BucketsDomainsCustomUpdateRequestCfR2Jurisdiction;
 }
 export const UpdateBucketDomainCustomRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     bucketName: S.String.pipe(T.Label("bucket_name")),
     domain: S.String.pipe(T.Label()),
-    CfR2Jurisdiction_: S.optional(
-      BucketsDomainsCustomUpdateRequestCfR2Jurisdiction.pipe(
-        T.Header('"cf-r2-jurisdiction"'),
-      ),
-    ),
     ciphers: S.optional(BucketsDomainsCustomUpdateRequestCiphersList),
     enabled: S.optional(S.Boolean),
     minTLS: S.optional(BucketsDomainsCustomUpdateRequestMinTLS),
+    jurisdiction: S.optional(
+      BucketsDomainsCustomUpdateRequestCfR2Jurisdiction.pipe(
+        T.Header("cf-r2-jurisdiction"),
+      ),
+    ),
   })
     .pipe(
       T.Http({
@@ -4991,23 +4985,23 @@ export interface UploadBucketObjectRequest {
   /** The key (name) to assign to the object. May contain slashes for path-like keys. */
   objectKey: string;
   /** Jurisdiction where objects in this bucket are guaranteed to be stored. */
-  CfR2Jurisdiction_?: BucketsObjectsUploadRequestCfR2Jurisdiction;
+  jurisdiction?: BucketsObjectsUploadRequestCfR2Jurisdiction;
   /** Storage class for newly uploaded objects, unless specified otherwise. */
-  CfR2StorageClass_?: BucketsObjectsUploadRequestCfR2StorageClass;
+  cfR2StorageClass?: BucketsObjectsUploadRequestCfR2StorageClass;
 }
 export const UploadBucketObjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     bucketName: S.String.pipe(T.Label("bucket_name")),
     objectKey: S.String.pipe(T.Label("object_key")),
-    CfR2Jurisdiction_: S.optional(
+    jurisdiction: S.optional(
       BucketsObjectsUploadRequestCfR2Jurisdiction.pipe(
-        T.Header('"cf-r2-jurisdiction"'),
+        T.Header("cf-r2-jurisdiction"),
       ),
     ),
-    CfR2StorageClass_: S.optional(
+    cfR2StorageClass: S.optional(
       BucketsObjectsUploadRequestCfR2StorageClass.pipe(
-        T.Header('"cf-r2-storage-class"'),
+        T.Header("cf-r2-storage-class"),
       ),
     ),
   })

@@ -3634,15 +3634,15 @@ export const ScansGetResponseMetaProcessorsRobotsTxtDataItemRulesShapeDisallowLi
   ) as any as S.Schema<ScansGetResponseMetaProcessorsRobotsTxtDataItemRulesShapeDisallowList>;
 
 export interface ScansGetResponseMetaProcessorsRobotsTxtDataItemRulesShapeContentSignal {
-  AiInput_?: string;
-  AiTrain_?: string;
+  aiInput?: string;
+  aiTrain?: string;
   search?: string;
 }
 export const ScansGetResponseMetaProcessorsRobotsTxtDataItemRulesShapeContentSignal =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      AiInput_: S.optional(S.String.pipe(T.Body('"ai-input"'))),
-      AiTrain_: S.optional(S.String.pipe(T.Body('"ai-train"'))),
+      aiInput: S.optional(S.String.pipe(T.Body("ai-input"))),
+      aiTrain: S.optional(S.String.pipe(T.Body("ai-train"))),
       search: S.optional(S.String),
     }),
   ).annotate({
@@ -3672,13 +3672,13 @@ export const ScansGetResponseMetaProcessorsRobotsTxtDataItemRulesShape =
   }) as any as S.Schema<ScansGetResponseMetaProcessorsRobotsTxtDataItemRulesShape>;
 
 export interface ScansGetResponseMetaProcessorsRobotsTxtDataItemRules {
-  ___: ScansGetResponseMetaProcessorsRobotsTxtDataItemRulesShape;
+  _: ScansGetResponseMetaProcessorsRobotsTxtDataItemRulesShape;
 }
 export const ScansGetResponseMetaProcessorsRobotsTxtDataItemRules =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      ___: ScansGetResponseMetaProcessorsRobotsTxtDataItemRulesShape.pipe(
-        T.Body('"*"'),
+      _: ScansGetResponseMetaProcessorsRobotsTxtDataItemRulesShape.pipe(
+        T.Body("*"),
       ),
     }),
   ).annotate({
@@ -4280,12 +4280,12 @@ export const ScansGetResponseStatsTlsStatsItemIpsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ScansGetResponseStatsTlsStatsItemIpsList>;
 
 export interface ScansGetResponseStatsTlsStatsItemProtocols {
-  TLS13AES128GCM_: number;
+  TLS13AES128GCM: number;
 }
 export const ScansGetResponseStatsTlsStatsItemProtocols =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      TLS13AES128GCM_: S.Number.pipe(T.Body('"TLS 1.3 / AES_128_GCM"')),
+      TLS13AES128GCM: S.Number.pipe(T.Body("TLS 1.3 / AES_128_GCM")),
     }),
   ).annotate({
     identifier: "ScansGetResponseStatsTlsStatsItemProtocols",

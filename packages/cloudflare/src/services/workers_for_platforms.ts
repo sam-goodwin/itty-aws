@@ -4813,8 +4813,8 @@ export interface PutDispatchNamespaceScriptContentRequest {
   dispatchNamespace: string;
   /** Name of the script, used in URLs and route configuration. */
   scriptName: string;
-  CFWORKERBODYPART_?: string;
-  CFWORKERMAINMODULEPART_?: string;
+  cfworkerbodypart?: string;
+  cfworkermainmodulepart?: string;
 }
 export const PutDispatchNamespaceScriptContentRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -4822,11 +4822,11 @@ export const PutDispatchNamespaceScriptContentRequest = /*@__PURE__*/ S.suspend(
       accountId: S.String.pipe(T.Label("account_id")),
       dispatchNamespace: S.String.pipe(T.Label("dispatch_namespace")),
       scriptName: S.String.pipe(T.Label("script_name")),
-      CFWORKERBODYPART_: S.optional(
-        S.String.pipe(T.Header('"CF-WORKER-BODY-PART"')),
+      cfworkerbodypart: S.optional(
+        S.String.pipe(T.Header("CF-WORKER-BODY-PART")),
       ),
-      CFWORKERMAINMODULEPART_: S.optional(
-        S.String.pipe(T.Header('"CF-WORKER-MAIN-MODULE-PART"')),
+      cfworkermainmodulepart: S.optional(
+        S.String.pipe(T.Header("CF-WORKER-MAIN-MODULE-PART")),
       ),
     })
       .pipe(

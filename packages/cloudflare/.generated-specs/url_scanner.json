@@ -4585,16 +4585,16 @@
     "com.cloudflare.url_scanner#ScansGetResponseMetaProcessorsRobotsTxtDataItemRulesShapeContentSignal": {
       "type": "structure",
       "members": {
-        "_ai_input_": {
+        "ai_input": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#jsonName": "\"ai-input\""
+            "smithy.api#jsonName": "ai-input"
           }
         },
-        "_ai_train_": {
+        "ai_train": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#jsonName": "\"ai-train\""
+            "smithy.api#jsonName": "ai-train"
           }
         },
         "search": {
@@ -4628,11 +4628,11 @@
     "com.cloudflare.url_scanner#ScansGetResponseMetaProcessorsRobotsTxtDataItemRules": {
       "type": "structure",
       "members": {
-        "___": {
+        "_": {
           "target": "com.cloudflare.url_scanner#ScansGetResponseMetaProcessorsRobotsTxtDataItemRulesShape",
           "traits": {
             "smithy.api#required": {},
-            "smithy.api#jsonName": "\"*\""
+            "smithy.api#jsonName": "*"
           }
         }
       }
@@ -5546,11 +5546,11 @@
     "com.cloudflare.url_scanner#ScansGetResponseStatsTlsStatsItemProtocols": {
       "type": "structure",
       "members": {
-        "_TLS_1_3___AES_128_GCM_": {
+        "TLS_1_3___AES_128_GCM": {
           "target": "smithy.api#Double",
           "traits": {
             "smithy.api#required": {},
-            "smithy.api#jsonName": "\"TLS 1.3 / AES_128_GCM\""
+            "smithy.api#jsonName": "TLS 1.3 / AES_128_GCM"
           }
         }
       }

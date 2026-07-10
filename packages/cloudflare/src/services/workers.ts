@@ -1082,19 +1082,19 @@ export const CreateBetaWorkerResponse = /*@__PURE__*/ S.suspend(() =>
 
 export interface BetaWorkersVersionsCreateRequestAnnotations {
   /** Human-readable message about the version. Truncated to 1000 bytes if longer. */
-  WorkersMessage_?: string;
+  workersMessage?: string;
   /** User-provided identifier for the version. Maximum 100 bytes. */
-  WorkersTag_?: string;
+  workersTag?: string;
   /** Operation that triggered the creation of the version. */
-  WorkersTriggeredBy_?: string;
+  workersTriggeredBy?: string;
 }
 export const BetaWorkersVersionsCreateRequestAnnotations =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      WorkersMessage_: S.optional(S.String.pipe(T.Body('"workers/message"'))),
-      WorkersTag_: S.optional(S.String.pipe(T.Body('"workers/tag"'))),
-      WorkersTriggeredBy_: S.optional(
-        S.String.pipe(T.Body('"workers/triggered_by"')),
+      workersMessage: S.optional(S.String.pipe(T.Body("workers/message"))),
+      workersTag: S.optional(S.String.pipe(T.Body("workers/tag"))),
+      workersTriggeredBy: S.optional(
+        S.String.pipe(T.Body("workers/triggered_by")),
       ),
     }),
   ).annotate({
@@ -2127,19 +2127,19 @@ export const BetaWorkersVersionsCreateResponseUrlsList = /*@__PURE__*/ S.Array(
 
 export interface BetaWorkersVersionsCreateResponseAnnotations {
   /** Human-readable message about the version. Truncated to 1000 bytes if longer. */
-  WorkersMessage_?: string;
+  workersMessage?: string;
   /** User-provided identifier for the version. Maximum 100 bytes. */
-  WorkersTag_?: string;
+  workersTag?: string;
   /** Operation that triggered the creation of the version. */
-  WorkersTriggeredBy_?: string;
+  workersTriggeredBy?: string;
 }
 export const BetaWorkersVersionsCreateResponseAnnotations =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      WorkersMessage_: S.optional(S.String.pipe(T.Body('"workers/message"'))),
-      WorkersTag_: S.optional(S.String.pipe(T.Body('"workers/tag"'))),
-      WorkersTriggeredBy_: S.optional(
-        S.String.pipe(T.Body('"workers/triggered_by"')),
+      workersMessage: S.optional(S.String.pipe(T.Body("workers/message"))),
+      workersTag: S.optional(S.String.pipe(T.Body("workers/tag"))),
+      workersTriggeredBy: S.optional(
+        S.String.pipe(T.Body("workers/triggered_by")),
       ),
     }),
   ).annotate({
@@ -4631,16 +4631,16 @@ export const ScriptsDeploymentsCreateRequestVersionsList =
 
 export interface ScriptsDeploymentsCreateRequestAnnotations {
   /** Human-readable message about the deployment. Truncated to 1000 bytes if longer. */
-  WorkersMessage_?: string;
+  workersMessage?: string;
   /** Operation that triggered the creation of the deployment. */
-  WorkersTriggeredBy_?: string;
+  workersTriggeredBy?: string;
 }
 export const ScriptsDeploymentsCreateRequestAnnotations =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      WorkersMessage_: S.optional(S.String.pipe(T.Body('"workers/message"'))),
-      WorkersTriggeredBy_: S.optional(
-        S.String.pipe(T.Body('"workers/triggered_by"')),
+      workersMessage: S.optional(S.String.pipe(T.Body("workers/message"))),
+      workersTriggeredBy: S.optional(
+        S.String.pipe(T.Body("workers/triggered_by")),
       ),
     }),
   ).annotate({
@@ -4707,16 +4707,16 @@ export const ScriptsDeploymentsCreateResponseVersionsList =
 
 export interface ScriptsDeploymentsCreateResponseAnnotations {
   /** Human-readable message about the deployment. Truncated to 1000 bytes if longer. */
-  WorkersMessage_?: string;
+  workersMessage?: string;
   /** Operation that triggered the creation of the deployment. */
-  WorkersTriggeredBy_?: string;
+  workersTriggeredBy?: string;
 }
 export const ScriptsDeploymentsCreateResponseAnnotations =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      WorkersMessage_: S.optional(S.String.pipe(T.Body('"workers/message"'))),
-      WorkersTriggeredBy_: S.optional(
-        S.String.pipe(T.Body('"workers/triggered_by"')),
+      workersMessage: S.optional(S.String.pipe(T.Body("workers/message"))),
+      workersTriggeredBy: S.optional(
+        S.String.pipe(T.Body("workers/triggered_by")),
       ),
     }),
   ).annotate({
@@ -6241,19 +6241,19 @@ export const BetaWorkersVersionsGetResponseUrlsList = /*@__PURE__*/ S.Array(
 
 export interface BetaWorkersVersionsGetResponseAnnotations {
   /** Human-readable message about the version. Truncated to 1000 bytes if longer. */
-  WorkersMessage_?: string;
+  workersMessage?: string;
   /** User-provided identifier for the version. Maximum 100 bytes. */
-  WorkersTag_?: string;
+  workersTag?: string;
   /** Operation that triggered the creation of the version. */
-  WorkersTriggeredBy_?: string;
+  workersTriggeredBy?: string;
 }
 export const BetaWorkersVersionsGetResponseAnnotations =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      WorkersMessage_: S.optional(S.String.pipe(T.Body('"workers/message"'))),
-      WorkersTag_: S.optional(S.String.pipe(T.Body('"workers/tag"'))),
-      WorkersTriggeredBy_: S.optional(
-        S.String.pipe(T.Body('"workers/triggered_by"')),
+      workersMessage: S.optional(S.String.pipe(T.Body("workers/message"))),
+      workersTag: S.optional(S.String.pipe(T.Body("workers/tag"))),
+      workersTriggeredBy: S.optional(
+        S.String.pipe(T.Body("workers/triggered_by")),
       ),
     }),
   ).annotate({
@@ -8625,7 +8625,7 @@ export const ObservabilitySharedQueriesGetResponseEventsEventsItemWorkers =
 
 export interface ObservabilitySharedQueriesGetResponseEventsEventsItem {
   /** Structured metadata extracted from the event. These fields are indexed and available for filtering and aggregation. */
-  Metadata_: ObservabilitySharedQueriesGetResponseEventsEventsItemMetadata;
+  Metadata: ObservabilitySharedQueriesGetResponseEventsEventsItemMetadata;
   /** The dataset this event belongs to (e.g. cloudflare-workers). */
   dataset: string;
   /** Raw log payload. May be a string or a structured object depending on how the log was emitted. */
@@ -8633,28 +8633,28 @@ export interface ObservabilitySharedQueriesGetResponseEventsEventsItem {
   /** Event timestamp as a Unix epoch in milliseconds. */
   timestamp: number;
   /** Cloudflare Containers event information that enriches your logs for identifying and debugging issues. */
-  Containers_?: ObservabilitySharedQueriesGetResponseEventsEventsItemContainersMap;
+  Containers?: ObservabilitySharedQueriesGetResponseEventsEventsItemContainersMap;
   /** Cloudflare Workers event information that enriches your logs for identifying and debugging issues. */
-  Workers_?: ObservabilitySharedQueriesGetResponseEventsEventsItemWorkers;
+  Workers?: ObservabilitySharedQueriesGetResponseEventsEventsItemWorkers;
 }
 export const ObservabilitySharedQueriesGetResponseEventsEventsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      Metadata_:
+      Metadata:
         ObservabilitySharedQueriesGetResponseEventsEventsItemMetadata.pipe(
-          T.Body('"$metadata"'),
+          T.Body("$metadata"),
         ),
       dataset: S.String,
       source: ObservabilitySharedQueriesGetResponseEventsEventsItemSource,
       timestamp: S.Number,
-      Containers_: S.optional(
+      Containers: S.optional(
         ObservabilitySharedQueriesGetResponseEventsEventsItemContainersMap.pipe(
-          T.Body('"$containers"'),
+          T.Body("$containers"),
         ),
       ),
-      Workers_: S.optional(
+      Workers: S.optional(
         ObservabilitySharedQueriesGetResponseEventsEventsItemWorkers.pipe(
-          T.Body('"$workers"'),
+          T.Body("$workers"),
         ),
       ),
     }),
@@ -9058,16 +9058,16 @@ export const ScriptsDeploymentsGetResponseVersionsList = /*@__PURE__*/ S.Array(
 
 export interface ScriptsDeploymentsGetResponseAnnotations {
   /** Human-readable message about the deployment. Truncated to 1000 bytes if longer. */
-  WorkersMessage_?: string;
+  workersMessage?: string;
   /** Operation that triggered the creation of the deployment. */
-  WorkersTriggeredBy_?: string;
+  workersTriggeredBy?: string;
 }
 export const ScriptsDeploymentsGetResponseAnnotations = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      WorkersMessage_: S.optional(S.String.pipe(T.Body('"workers/message"'))),
-      WorkersTriggeredBy_: S.optional(
-        S.String.pipe(T.Body('"workers/triggered_by"')),
+      workersMessage: S.optional(S.String.pipe(T.Body("workers/message"))),
+      workersTriggeredBy: S.optional(
+        S.String.pipe(T.Body("workers/triggered_by")),
       ),
     }),
 ).annotate({
@@ -9181,19 +9181,19 @@ export const GetScriptScriptAndVersionSettingRequest = /*@__PURE__*/ S.suspend(
 
 export interface ScriptsScriptAndVersionSettingsGetResponseAnnotations {
   /** Human-readable message about the version. Truncated to 1000 bytes if longer. */
-  WorkersMessage_?: string;
+  workersMessage?: string;
   /** User-provided identifier for the version. Maximum 100 bytes. */
-  WorkersTag_?: string;
+  workersTag?: string;
   /** Operation that triggered the creation of the version. This is read-only and set by the server. */
-  WorkersTriggeredBy_?: string;
+  workersTriggeredBy?: string;
 }
 export const ScriptsScriptAndVersionSettingsGetResponseAnnotations =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      WorkersMessage_: S.optional(S.String.pipe(T.Body('"workers/message"'))),
-      WorkersTag_: S.optional(S.String.pipe(T.Body('"workers/tag"'))),
-      WorkersTriggeredBy_: S.optional(
-        S.String.pipe(T.Body('"workers/triggered_by"')),
+      workersMessage: S.optional(S.String.pipe(T.Body("workers/message"))),
+      workersTag: S.optional(S.String.pipe(T.Body("workers/tag"))),
+      workersTriggeredBy: S.optional(
+        S.String.pipe(T.Body("workers/triggered_by")),
       ),
     }),
   ).annotate({
@@ -11913,19 +11913,19 @@ export const BetaWorkersVersionsListResultItemUrlsList = /*@__PURE__*/ S.Array(
 
 export interface BetaWorkersVersionsListResultItemAnnotations {
   /** Human-readable message about the version. Truncated to 1000 bytes if longer. */
-  WorkersMessage_?: string;
+  workersMessage?: string;
   /** User-provided identifier for the version. Maximum 100 bytes. */
-  WorkersTag_?: string;
+  workersTag?: string;
   /** Operation that triggered the creation of the version. */
-  WorkersTriggeredBy_?: string;
+  workersTriggeredBy?: string;
 }
 export const BetaWorkersVersionsListResultItemAnnotations =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      WorkersMessage_: S.optional(S.String.pipe(T.Body('"workers/message"'))),
-      WorkersTag_: S.optional(S.String.pipe(T.Body('"workers/tag"'))),
-      WorkersTriggeredBy_: S.optional(
-        S.String.pipe(T.Body('"workers/triggered_by"')),
+      workersMessage: S.optional(S.String.pipe(T.Body("workers/message"))),
+      workersTag: S.optional(S.String.pipe(T.Body("workers/tag"))),
+      workersTriggeredBy: S.optional(
+        S.String.pipe(T.Body("workers/triggered_by")),
       ),
     }),
   ).annotate({
@@ -13733,16 +13733,16 @@ export const ScriptsDeploymentsListResponseDeploymentsItemVersionsList =
 
 export interface ScriptsDeploymentsListResponseDeploymentsItemAnnotations {
   /** Human-readable message about the deployment. Truncated to 1000 bytes if longer. */
-  WorkersMessage_?: string;
+  workersMessage?: string;
   /** Operation that triggered the creation of the deployment. */
-  WorkersTriggeredBy_?: string;
+  workersTriggeredBy?: string;
 }
 export const ScriptsDeploymentsListResponseDeploymentsItemAnnotations =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      WorkersMessage_: S.optional(S.String.pipe(T.Body('"workers/message"'))),
-      WorkersTriggeredBy_: S.optional(
-        S.String.pipe(T.Body('"workers/triggered_by"')),
+      workersMessage: S.optional(S.String.pipe(T.Body("workers/message"))),
+      workersTriggeredBy: S.optional(
+        S.String.pipe(T.Body("workers/triggered_by")),
       ),
     }),
   ).annotate({
@@ -15631,19 +15631,19 @@ export const PatchScriptScriptAndVersionSettingRequest =
 
 export interface ScriptsScriptAndVersionSettingsEditResponseAnnotations {
   /** Human-readable message about the version. Truncated to 1000 bytes if longer. */
-  WorkersMessage_?: string;
+  workersMessage?: string;
   /** User-provided identifier for the version. Maximum 100 bytes. */
-  WorkersTag_?: string;
+  workersTag?: string;
   /** Operation that triggered the creation of the version. This is read-only and set by the server. */
-  WorkersTriggeredBy_?: string;
+  workersTriggeredBy?: string;
 }
 export const ScriptsScriptAndVersionSettingsEditResponseAnnotations =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      WorkersMessage_: S.optional(S.String.pipe(T.Body('"workers/message"'))),
-      WorkersTag_: S.optional(S.String.pipe(T.Body('"workers/tag"'))),
-      WorkersTriggeredBy_: S.optional(
-        S.String.pipe(T.Body('"workers/triggered_by"')),
+      workersMessage: S.optional(S.String.pipe(T.Body("workers/message"))),
+      workersTag: S.optional(S.String.pipe(T.Body("workers/tag"))),
+      workersTriggeredBy: S.optional(
+        S.String.pipe(T.Body("workers/triggered_by")),
       ),
     }),
   ).annotate({
@@ -19021,18 +19021,18 @@ export interface PutScriptContentRequest {
   accountId: string;
   /** Name of the script, used in URLs and route configuration. */
   scriptName: string;
-  CFWORKERBODYPART_?: string;
-  CFWORKERMAINMODULEPART_?: string;
+  cfworkerbodypart?: string;
+  cfworkermainmodulepart?: string;
 }
 export const PutScriptContentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     scriptName: S.String.pipe(T.Label("script_name")),
-    CFWORKERBODYPART_: S.optional(
-      S.String.pipe(T.Header('"CF-WORKER-BODY-PART"')),
+    cfworkerbodypart: S.optional(
+      S.String.pipe(T.Header("CF-WORKER-BODY-PART")),
     ),
-    CFWORKERMAINMODULEPART_: S.optional(
-      S.String.pipe(T.Header('"CF-WORKER-MAIN-MODULE-PART"')),
+    cfworkermainmodulepart: S.optional(
+      S.String.pipe(T.Header("CF-WORKER-MAIN-MODULE-PART")),
     ),
   })
     .pipe(
@@ -21743,7 +21743,7 @@ export const ObservabilityTelemetryQueryResponseEventsEventsItemWorkers =
 
 export interface ObservabilityTelemetryQueryResponseEventsEventsItem {
   /** Structured metadata extracted from the event. These fields are indexed and available for filtering and aggregation. */
-  Metadata_: ObservabilityTelemetryQueryResponseEventsEventsItemMetadata;
+  Metadata: ObservabilityTelemetryQueryResponseEventsEventsItemMetadata;
   /** The dataset this event belongs to (e.g. cloudflare-workers). */
   dataset: string;
   /** Raw log payload. May be a string or a structured object depending on how the log was emitted. */
@@ -21751,28 +21751,28 @@ export interface ObservabilityTelemetryQueryResponseEventsEventsItem {
   /** Event timestamp as a Unix epoch in milliseconds. */
   timestamp: number;
   /** Cloudflare Containers event information that enriches your logs for identifying and debugging issues. */
-  Containers_?: ObservabilityTelemetryQueryResponseEventsEventsItemContainersMap;
+  Containers?: ObservabilityTelemetryQueryResponseEventsEventsItemContainersMap;
   /** Cloudflare Workers event information that enriches your logs for identifying and debugging issues. */
-  Workers_?: ObservabilityTelemetryQueryResponseEventsEventsItemWorkers;
+  Workers?: ObservabilityTelemetryQueryResponseEventsEventsItemWorkers;
 }
 export const ObservabilityTelemetryQueryResponseEventsEventsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      Metadata_:
+      Metadata:
         ObservabilityTelemetryQueryResponseEventsEventsItemMetadata.pipe(
-          T.Body('"$metadata"'),
+          T.Body("$metadata"),
         ),
       dataset: S.String,
       source: ObservabilityTelemetryQueryResponseEventsEventsItemSource,
       timestamp: S.Number,
-      Containers_: S.optional(
+      Containers: S.optional(
         ObservabilityTelemetryQueryResponseEventsEventsItemContainersMap.pipe(
-          T.Body('"$containers"'),
+          T.Body("$containers"),
         ),
       ),
-      Workers_: S.optional(
+      Workers: S.optional(
         ObservabilityTelemetryQueryResponseEventsEventsItemWorkers.pipe(
-          T.Body('"$workers"'),
+          T.Body("$workers"),
         ),
       ),
     }),
