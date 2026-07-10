@@ -233,10 +233,7 @@ const waitForStreamActive = (streamName: string) =>
     Effect.retry({
       while: (err) =>
         err instanceof NotReady && err.status !== "DELETING_FAILED",
-      schedule: Schedule.exponential("1 second", 1.5).pipe(
-        Schedule.either(Schedule.spaced("10 seconds")),
-        Schedule.both(Schedule.recurs(60)),
-      ),
+      schedule: Schedule.max([Schedule.min([Schedule.exponential("1 second", 1.5), Schedule.spaced("10 seconds")]), Schedule.recurs(60)]),
     }),
     Effect.mapError(() => new StreamNotActive()),
   );
@@ -253,10 +250,7 @@ const waitForStreamDeleted = (streamName: string) =>
     Effect.catchTag("ResourceNotFoundException", () => Effect.void),
     Effect.retry({
       while: (err) => err instanceof StillExists,
-      schedule: Schedule.exponential("1 second", 1.5).pipe(
-        Schedule.either(Schedule.spaced("10 seconds")),
-        Schedule.both(Schedule.recurs(60)),
-      ),
+      schedule: Schedule.max([Schedule.min([Schedule.exponential("1 second", 1.5), Schedule.spaced("10 seconds")]), Schedule.recurs(60)]),
     }),
     Effect.mapError(() => new StreamNotDeleted()),
   );
@@ -326,9 +320,7 @@ const withDeliveryStream = <A, E, R>(
         while: (err) =>
           err._tag === "InvalidArgumentException" &&
           err.message?.includes("role"),
-        schedule: Schedule.spaced("5 seconds").pipe(
-          Schedule.both(Schedule.recurs(6)),
-        ),
+        schedule: Schedule.max([Schedule.spaced("5 seconds"), Schedule.recurs(6)]),
       }),
     );
 

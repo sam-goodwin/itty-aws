@@ -37,10 +37,7 @@ describe("getFieldForDataset", () => {
               e !== null &&
               "_tag" in e &&
               (e as { _tag: string })._tag === "NoFieldsYet",
-            schedule: Schedule.both(
-              Schedule.recurs(15),
-              Schedule.spaced("2 seconds"),
-            ),
+            schedule: Schedule.max([Schedule.recurs(15), Schedule.spaced("2 seconds")]),
           },
         );
 
@@ -89,10 +86,7 @@ describe("getFieldForDataset", () => {
               : Effect.succeed(e),
           ),
           Effect.retry({
-            schedule: Schedule.both(
-              Schedule.spaced("2 seconds"),
-              Schedule.recurs(5),
-            ),
+            schedule: Schedule.max([Schedule.spaced("2 seconds"), Schedule.recurs(5)]),
           }),
         );
 

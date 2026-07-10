@@ -8,6 +8,7 @@
  * for that SDK without wrapping every call with `Effect.retry`.
  */
 import * as Config from "effect/Config";
+import * as ConfigProvider from "effect/ConfigProvider";
 import * as Context from "effect/Context";
 import * as Duration from "effect/Duration";
 import * as Effect from "effect/Effect";
@@ -82,7 +83,7 @@ export const jittered = Schedule.addDelay(() =>
  * Cap delay at a maximum duration.
  */
 export const capped = (max: Duration.Duration) =>
-  Schedule.modifyDelay((duration: Duration.Duration) =>
+  Schedule.modifyDelay(({ duration }) =>
     Effect.succeed(
       Duration.isGreaterThan(duration, max) ? Duration.millis(5000) : duration,
     ),
@@ -147,6 +148,12 @@ export const readServerRetryHintCapMsFromEnv = (): number =>
   Effect.runSync(
     serverRetryHintCapMsConfig.pipe(
       Effect.orElseSucceed(() => DEFAULT_SERVER_RETRY_HINT_CAP_MS),
+      // The default ConfigProvider caches env reads; use a fresh provider so
+      // each call observes the current process.env value.
+      Effect.provideService(
+        ConfigProvider.ConfigProvider,
+        ConfigProvider.fromEnv(),
+      ),
     ),
   );
 
@@ -159,6 +166,10 @@ const resolveServerRetryHintCapMs = (): Effect.Effect<number, never, never> =>
     }
     return yield* serverRetryHintCapMsConfig.pipe(
       Effect.orElseSucceed(() => DEFAULT_SERVER_RETRY_HINT_CAP_MS),
+      Effect.provideService(
+        ConfigProvider.ConfigProvider,
+        ConfigProvider.fromEnv(),
+      ),
     );
   });
 
@@ -190,7 +201,7 @@ const honorServerHint = (
   baseline?: (duration: Duration.Duration, error: unknown) => Duration.Duration,
 ) =>
   Schedule.modifyDelay(
-    Effect.fnUntraced(function* (duration: Duration.Duration) {
+    Effect.fnUntraced(function* ({ duration }) {
       const capMs = yield* resolveServerRetryHintCapMs();
       const error = yield* Ref.get(lastError);
       const hint = serverHintMillis(error, capMs);
@@ -219,17 +230,18 @@ const honorServerHint = (
  */
 export const makeDefault: Factory = (lastError) => ({
   while: (error) => isTransientError(error),
-  schedule: pipe(
-    Schedule.exponential(100, 2),
-    honorServerHint(lastError, (duration, error) => {
-      if (isThrottling(error) && Duration.toMillis(duration) < 500) {
-        return Duration.millis(500);
-      }
-      return duration;
-    }),
-    Schedule.both(Schedule.recurs(5)),
-    jittered,
-  ),
+  schedule: Schedule.max([
+    pipe(
+      Schedule.exponential(100, 2),
+      honorServerHint(lastError, (duration, error) => {
+        if (isThrottling(error) && Duration.toMillis(duration) < 500) {
+          return Duration.millis(500);
+        }
+        return duration;
+      }),
+    ),
+    Schedule.recurs(5),
+  ]).pipe(jittered),
 });
 
 /**

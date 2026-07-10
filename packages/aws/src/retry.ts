@@ -81,33 +81,34 @@ export const none: <A, E, R>(
 export const makeDefault: Factory = (lastError) => ({
   while: (error) =>
     isTransientError(error) || isThrottlingError(error) || isRetryable(error),
-  schedule: pipe(
-    Schedule.exponential(100, 2),
-    Schedule.modifyDelay(
-      Effect.fnUntraced(function* (duration) {
-        const error = yield* Ref.get(lastError);
-        if (isRetryable(error)) {
-          const retryAfter = Number(
-            (error as any).retryAfterSeconds ??
-              (error as any).RetryAfterSeconds ??
-              0,
-          );
-          if (!isNaN(retryAfter)) {
-            return Duration.toMillis(Duration.seconds(retryAfter));
+  schedule: Schedule.max([
+    pipe(
+      Schedule.exponential(100, 2),
+      Schedule.modifyDelay(
+        Effect.fnUntraced(function* ({ duration }) {
+          const error = yield* Ref.get(lastError);
+          if (isRetryable(error)) {
+            const retryAfter = Number(
+              (error as any).retryAfterSeconds ??
+                (error as any).RetryAfterSeconds ??
+                0,
+            );
+            if (!isNaN(retryAfter)) {
+              return Duration.toMillis(Duration.seconds(retryAfter));
+            }
           }
-        }
-        if (isThrottlingError(error)) {
-          if (Duration.toMillis(duration) < 500) {
-            // if we got throttled, ensure the delay is at least 500ms
-            return Duration.toMillis(Duration.millis(500));
+          if (isThrottlingError(error)) {
+            if (Duration.toMillis(duration) < 500) {
+              // if we got throttled, ensure the delay is at least 500ms
+              return Duration.toMillis(Duration.millis(500));
+            }
           }
-        }
-        return Duration.toMillis(duration);
-      }),
+          return Duration.toMillis(duration);
+        }),
+      ),
     ),
-    Schedule.both(Schedule.recurs(5)),
-    jittered,
-  ),
+    Schedule.recurs(5),
+  ]).pipe(jittered),
 });
 
 export const jittered = Schedule.addDelay(() =>
@@ -116,7 +117,7 @@ export const jittered = Schedule.addDelay(() =>
 );
 
 export const capped = (max: Duration.Duration) =>
-  Schedule.modifyDelay((duration: Duration.Duration) =>
+  Schedule.modifyDelay(({ duration }) =>
     Effect.succeed(Duration.isGreaterThan(duration, max) ? max : duration),
   );
 

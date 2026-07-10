@@ -52,12 +52,7 @@ import { afterAll, beforeAll, test, testRunId } from "../test.ts";
 // ============================================================================
 
 // Retry schedule for eventual consistency and transient errors
-const eventualConsistencyRetry = Schedule.both(
-  Schedule.recurs(15),
-  Schedule.exponential("500 millis", 2).pipe(
-    Schedule.either(Schedule.spaced("5 seconds")),
-  ),
-);
+const eventualConsistencyRetry = Schedule.max([Schedule.recurs(15), Schedule.min([Schedule.exponential("500 millis", 2), Schedule.spaced("5 seconds")])]);
 
 // Check if an error is retryable for cluster deletion
 const isClusterDeletionRetryable = (err: unknown): boolean => {
@@ -112,10 +107,7 @@ const waitForTasksStopped = (cluster: string) =>
   }).pipe(
     Effect.retry({
       while: (err) => err === "tasks still running",
-      schedule: Schedule.both(
-        Schedule.recurs(30),
-        Schedule.spaced("2 seconds"),
-      ),
+      schedule: Schedule.max([Schedule.recurs(30), Schedule.spaced("2 seconds")]),
     }),
     Effect.ignore,
   );
@@ -161,10 +153,7 @@ const cleanupCluster = (clusterName: string) =>
     yield* deleteCluster({ cluster: clusterName }).pipe(
       Effect.retry({
         while: isClusterDeletionRetryable,
-        schedule: Schedule.both(
-          Schedule.recurs(20),
-          Schedule.spaced("3 seconds"),
-        ),
+        schedule: Schedule.max([Schedule.recurs(20), Schedule.spaced("3 seconds")]),
       }),
       Effect.ignore,
     );
@@ -433,12 +422,7 @@ const ensureNetworking = Effect.gen(function* () {
 });
 
 // Retry schedule for cleanup operations (handles eventual consistency)
-const cleanupRetry = Schedule.both(
-  Schedule.recurs(20),
-  Schedule.exponential("1 second", 2).pipe(
-    Schedule.either(Schedule.spaced("10 seconds")),
-  ),
-);
+const cleanupRetry = Schedule.max([Schedule.recurs(20), Schedule.min([Schedule.exponential("1 second", 2), Schedule.spaced("10 seconds")])]);
 
 // Helper: retry on DependencyViolation, succeed on NotFound errors
 const withCleanupRetry = <A, E, R>(
@@ -546,10 +530,7 @@ test(
       }).pipe(
         Effect.retry({
           while: (err) => err === "cluster not found in list",
-          schedule: Schedule.both(
-            Schedule.recurs(10),
-            Schedule.spaced("1 second"),
-          ),
+          schedule: Schedule.max([Schedule.recurs(10), Schedule.spaced("1 second")]),
         }),
       );
     }),
@@ -610,10 +591,7 @@ test(
       }).pipe(
         Effect.retry({
           while: (err) => err === "tags not found yet",
-          schedule: Schedule.both(
-            Schedule.recurs(10),
-            Schedule.spaced("1 second"),
-          ),
+          schedule: Schedule.max([Schedule.recurs(10), Schedule.spaced("1 second")]),
         }),
       );
 
@@ -647,10 +625,7 @@ test(
       }).pipe(
         Effect.retry({
           while: (err) => err === "tag not removed yet",
-          schedule: Schedule.both(
-            Schedule.recurs(10),
-            Schedule.spaced("1 second"),
-          ),
+          schedule: Schedule.max([Schedule.recurs(10), Schedule.spaced("1 second")]),
         }),
       );
     }),
@@ -680,10 +655,7 @@ test(
       }).pipe(
         Effect.retry({
           while: (err) => err === "task definition not found",
-          schedule: Schedule.both(
-            Schedule.recurs(10),
-            Schedule.spaced("1 second"),
-          ),
+          schedule: Schedule.max([Schedule.recurs(10), Schedule.spaced("1 second")]),
         }),
       );
     }),
@@ -848,10 +820,7 @@ test(
       }).pipe(
         Effect.retry({
           while: (err) => err === "task not found in list",
-          schedule: Schedule.both(
-            Schedule.recurs(10),
-            Schedule.spaced("1 second"),
-          ),
+          schedule: Schedule.max([Schedule.recurs(10), Schedule.spaced("1 second")]),
         }),
       );
 
@@ -895,10 +864,7 @@ test(
       }).pipe(
         Effect.retry({
           while: (err) => err === "still running",
-          schedule: Schedule.both(
-            Schedule.recurs(30),
-            Schedule.spaced("2 seconds"),
-          ),
+          schedule: Schedule.max([Schedule.recurs(30), Schedule.spaced("2 seconds")]),
         }),
       );
     }).pipe(Effect.ensuring(cleanup));
@@ -966,10 +932,7 @@ test(
       }).pipe(
         Effect.retry({
           while: (err) => err === "not all clusters found",
-          schedule: Schedule.both(
-            Schedule.recurs(10),
-            Schedule.spaced("1 second"),
-          ),
+          schedule: Schedule.max([Schedule.recurs(10), Schedule.spaced("1 second")]),
         }),
       );
     }).pipe(Effect.ensuring(cleanup));

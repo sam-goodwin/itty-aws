@@ -1,3 +1,3 @@
 [install]
 minimumReleaseAge = 259200
-minimumReleaseAgeExcludes = ["effect"]
+minimumReleaseAgeExcludes = ["effect", "fast-check", "@effect/platform-bun", "@effect/platform-node", "@effect/vitest", "@effect/platform-node-shared"]

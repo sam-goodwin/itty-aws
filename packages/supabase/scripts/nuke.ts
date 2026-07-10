@@ -145,10 +145,7 @@ function waitForProjectGone(
     ),
     Effect.retry({
       while: (e) => e === "still-there",
-      schedule: Schedule.both(
-        Schedule.spaced("3 seconds"),
-        Schedule.recurs(60),
-      ),
+      schedule: Schedule.max([Schedule.spaced("3 seconds"), Schedule.recurs(60)]),
     }),
     Effect.match({
       onSuccess: () => undefined as void,
