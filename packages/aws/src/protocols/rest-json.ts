@@ -383,9 +383,12 @@ export const restJson1Protocol: Protocol = (
             body = parsed as Record<string, unknown>;
           }
         } catch {
-          return yield* new ParseError({
-            message: `Failed to parse error JSON body: ${bodyText}`,
-          });
+          // Some API Gateway-fronted services (e.g. FinSpace Data) return
+          // plain-text error bodies ("Failed to retrieve environment").
+          // Treat the text as the error message and fall back to matching
+          // the operation's declared errors by httpError status instead of
+          // failing the deserializer.
+          return { errorCode: "", data: { message: bodyText } };
         }
       }
 

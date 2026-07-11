@@ -9134,6 +9134,7 @@ export const UpdateMonitorSettingsResponse =
 export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
   "AccessDeniedException",
   { message: S.String, context: S.optional(ExceptionContext) },
+  T.HttpError(403),
 ).pipe(C.withAuthError) {}
 export class InternalServerErrorException extends S.TaggedErrorClass<InternalServerErrorException>()(
   "InternalServerErrorException",
@@ -9141,7 +9142,7 @@ export class InternalServerErrorException extends S.TaggedErrorClass<InternalSer
     message: S.String,
     retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
   },
-  T.Retryable(),
+  T.all(T.HttpError(500), T.Retryable()),
 ).pipe(C.withServerError, C.withRetryableError) {}
 export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
   "ThrottlingException",
@@ -9152,7 +9153,7 @@ export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>
     retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
     context: S.optional(ExceptionContext),
   },
-  T.Retryable({ throttling: true }),
+  T.all(T.HttpError(429), T.Retryable({ throttling: true })),
 ).pipe(C.withThrottlingError, C.withRetryableError) {}
 export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
   "ValidationException",
@@ -9162,6 +9163,7 @@ export class ValidationException extends S.TaggedErrorClass<ValidationException>
     fieldList: S.optional(ValidationExceptionFieldList),
     context: S.optional(ExceptionContext),
   },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
   "ResourceNotFoundException",
@@ -9171,6 +9173,7 @@ export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFou
     resourceType: S.String,
     context: S.optional(ExceptionContext),
   },
+  T.HttpError(404),
 ).pipe(C.withBadRequestError) {}
 export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
   "ConflictException",
@@ -9181,6 +9184,7 @@ export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
     resourceType: S.String,
     context: S.optional(ExceptionContext),
   },
+  T.HttpError(409),
 ).pipe(C.withConflictError) {}
 export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
   "ServiceQuotaExceededException",
@@ -9193,6 +9197,7 @@ export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuo
     resourceId: S.optional(S.String),
     context: S.optional(ExceptionContext),
   },
+  T.HttpError(402),
 ).pipe(C.withQuotaError) {}
 
 //# Operations
@@ -9222,6 +9227,7 @@ export const batchGetJob: API.OperationMethod<
     ValidationException,
   ],
   operationName: "BatchGetJob",
+  endpointHostPrefix: "management.",
 }));
 export type BatchGetSessionError =
   | AccessDeniedException
@@ -9249,6 +9255,7 @@ export const batchGetSession: API.OperationMethod<
     ValidationException,
   ],
   operationName: "BatchGetSession",
+  endpointHostPrefix: "management.",
 }));
 export type BatchGetSessionActionError =
   | AccessDeniedException
@@ -9276,6 +9283,7 @@ export const batchGetSessionAction: API.OperationMethod<
     ValidationException,
   ],
   operationName: "BatchGetSessionAction",
+  endpointHostPrefix: "management.",
 }));
 export type BatchGetStepError =
   | AccessDeniedException
@@ -9303,6 +9311,7 @@ export const batchGetStep: API.OperationMethod<
     ValidationException,
   ],
   operationName: "BatchGetStep",
+  endpointHostPrefix: "management.",
 }));
 export type BatchGetTaskError =
   | AccessDeniedException
@@ -9330,6 +9339,7 @@ export const batchGetTask: API.OperationMethod<
     ValidationException,
   ],
   operationName: "BatchGetTask",
+  endpointHostPrefix: "management.",
 }));
 export type BatchGetWorkerError =
   | AccessDeniedException
@@ -9357,6 +9367,7 @@ export const batchGetWorker: API.OperationMethod<
     ValidationException,
   ],
   operationName: "BatchGetWorker",
+  endpointHostPrefix: "management.",
 }));
 export type BatchUpdateJobError =
   | AccessDeniedException
@@ -9388,6 +9399,7 @@ export const batchUpdateJob: API.OperationMethod<
     ValidationException,
   ],
   operationName: "BatchUpdateJob",
+  endpointHostPrefix: "management.",
 }));
 export type BatchUpdateTaskError =
   | AccessDeniedException
@@ -9415,6 +9427,7 @@ export const batchUpdateTask: API.OperationMethod<
     ValidationException,
   ],
   operationName: "BatchUpdateTask",
+  endpointHostPrefix: "management.",
 }));
 export type CreateQueueFleetAssociationError =
   | AccessDeniedException
@@ -9442,6 +9455,7 @@ export const createQueueFleetAssociation: API.OperationMethod<
     ValidationException,
   ],
   operationName: "CreateQueueFleetAssociation",
+  endpointHostPrefix: "management.",
 }));
 export type CreateQueueLimitAssociationError =
   | AccessDeniedException
@@ -9469,6 +9483,7 @@ export const createQueueLimitAssociation: API.OperationMethod<
     ValidationException,
   ],
   operationName: "CreateQueueLimitAssociation",
+  endpointHostPrefix: "management.",
 }));
 export type DeleteQueueFleetAssociationError =
   | AccessDeniedException
@@ -9498,6 +9513,7 @@ export const deleteQueueFleetAssociation: API.OperationMethod<
     ValidationException,
   ],
   operationName: "DeleteQueueFleetAssociation",
+  endpointHostPrefix: "management.",
 }));
 export type DeleteQueueLimitAssociationError =
   | AccessDeniedException
@@ -9527,6 +9543,7 @@ export const deleteQueueLimitAssociation: API.OperationMethod<
     ValidationException,
   ],
   operationName: "DeleteQueueLimitAssociation",
+  endpointHostPrefix: "management.",
 }));
 export type GetQueueFleetAssociationError =
   | AccessDeniedException
@@ -9554,6 +9571,7 @@ export const getQueueFleetAssociation: API.OperationMethod<
     ValidationException,
   ],
   operationName: "GetQueueFleetAssociation",
+  endpointHostPrefix: "management.",
 }));
 export type GetQueueLimitAssociationError =
   | AccessDeniedException
@@ -9581,6 +9599,7 @@ export const getQueueLimitAssociation: API.OperationMethod<
     ValidationException,
   ],
   operationName: "GetQueueLimitAssociation",
+  endpointHostPrefix: "management.",
 }));
 export type GetSessionsStatisticsAggregationError =
   | AccessDeniedException
@@ -9623,6 +9642,7 @@ export const getSessionsStatisticsAggregation: API.OperationMethod<
     ValidationException,
   ],
   operationName: "GetSessionsStatisticsAggregation",
+  endpointHostPrefix: "management.",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -9662,6 +9682,7 @@ export const listAvailableMeteredProducts: API.OperationMethod<
   output: ListAvailableMeteredProductsResponse,
   errors: [InternalServerErrorException, ThrottlingException],
   operationName: "ListAvailableMeteredProducts",
+  endpointHostPrefix: "management.",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -9708,6 +9729,7 @@ export const listQueueFleetAssociations: API.OperationMethod<
     ThrottlingException,
   ],
   operationName: "ListQueueFleetAssociations",
+  endpointHostPrefix: "management.",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -9754,6 +9776,7 @@ export const listQueueLimitAssociations: API.OperationMethod<
     ThrottlingException,
   ],
   operationName: "ListQueueLimitAssociations",
+  endpointHostPrefix: "management.",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -9787,6 +9810,7 @@ export const listTagsForResource: API.OperationMethod<
     ValidationException,
   ],
   operationName: "ListTagsForResource",
+  endpointHostPrefix: "management.",
 }));
 export type SearchJobsError =
   | AccessDeniedException
@@ -9814,6 +9838,7 @@ export const searchJobs: API.OperationMethod<
     ValidationException,
   ],
   operationName: "SearchJobs",
+  endpointHostPrefix: "management.",
 }));
 export type SearchStepsError =
   | AccessDeniedException
@@ -9841,6 +9866,7 @@ export const searchSteps: API.OperationMethod<
     ValidationException,
   ],
   operationName: "SearchSteps",
+  endpointHostPrefix: "management.",
 }));
 export type SearchTasksError =
   | AccessDeniedException
@@ -9868,6 +9894,7 @@ export const searchTasks: API.OperationMethod<
     ValidationException,
   ],
   operationName: "SearchTasks",
+  endpointHostPrefix: "management.",
 }));
 export type SearchWorkersError =
   | AccessDeniedException
@@ -9895,6 +9922,7 @@ export const searchWorkers: API.OperationMethod<
     ValidationException,
   ],
   operationName: "SearchWorkers",
+  endpointHostPrefix: "management.",
 }));
 export type StartSessionsStatisticsAggregationError =
   | AccessDeniedException
@@ -9922,6 +9950,7 @@ export const startSessionsStatisticsAggregation: API.OperationMethod<
     ValidationException,
   ],
   operationName: "StartSessionsStatisticsAggregation",
+  endpointHostPrefix: "management.",
 }));
 export type TagResourceError =
   | AccessDeniedException
@@ -9951,6 +9980,7 @@ export const tagResource: API.OperationMethod<
     ValidationException,
   ],
   operationName: "TagResource",
+  endpointHostPrefix: "management.",
 }));
 export type UntagResourceError =
   | AccessDeniedException
@@ -9980,6 +10010,7 @@ export const untagResource: API.OperationMethod<
     ValidationException,
   ],
   operationName: "UntagResource",
+  endpointHostPrefix: "management.",
 }));
 export type UpdateQueueFleetAssociationError =
   | AccessDeniedException
@@ -10007,6 +10038,7 @@ export const updateQueueFleetAssociation: API.OperationMethod<
     ValidationException,
   ],
   operationName: "UpdateQueueFleetAssociation",
+  endpointHostPrefix: "management.",
 }));
 export type UpdateQueueLimitAssociationError =
   | AccessDeniedException
@@ -10034,6 +10066,7 @@ export const updateQueueLimitAssociation: API.OperationMethod<
     ValidationException,
   ],
   operationName: "UpdateQueueLimitAssociation",
+  endpointHostPrefix: "management.",
 }));
 export type CreateFarmError =
   | AccessDeniedException
@@ -10063,6 +10096,7 @@ export const createFarm: API.OperationMethod<
     ValidationException,
   ],
   operationName: "CreateFarm",
+  endpointHostPrefix: "management.",
 }));
 export type GetFarmError =
   | AccessDeniedException
@@ -10090,6 +10124,7 @@ export const getFarm: API.OperationMethod<
     ValidationException,
   ],
   operationName: "GetFarm",
+  endpointHostPrefix: "management.",
 }));
 export type UpdateFarmError =
   | AccessDeniedException
@@ -10097,6 +10132,7 @@ export type UpdateFarmError =
   | ResourceNotFoundException
   | ThrottlingException
   | ValidationException
+  | ConflictException
   | CommonErrors;
 /**
  * Updates a farm.
@@ -10115,8 +10151,10 @@ export const updateFarm: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
     ValidationException,
+    ConflictException,
   ],
   operationName: "UpdateFarm",
+  endpointHostPrefix: "management.",
 }));
 export type DeleteFarmError =
   | AccessDeniedException
@@ -10124,6 +10162,7 @@ export type DeleteFarmError =
   | ResourceNotFoundException
   | ThrottlingException
   | ValidationException
+  | ConflictException
   | CommonErrors;
 /**
  * Deletes a farm.
@@ -10142,8 +10181,10 @@ export const deleteFarm: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
     ValidationException,
+    ConflictException,
   ],
   operationName: "DeleteFarm",
+  endpointHostPrefix: "management.",
 }));
 export type ListFarmsError =
   | AccessDeniedException
@@ -10184,6 +10225,7 @@ export const listFarms: API.OperationMethod<
     ValidationException,
   ],
   operationName: "ListFarms",
+  endpointHostPrefix: "management.",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -10219,6 +10261,7 @@ export const associateMemberToFarm: API.OperationMethod<
     ValidationException,
   ],
   operationName: "AssociateMemberToFarm",
+  endpointHostPrefix: "management.",
 }));
 export type CreateLimitError =
   | AccessDeniedException
@@ -10250,6 +10293,7 @@ export const createLimit: API.OperationMethod<
     ValidationException,
   ],
   operationName: "CreateLimit",
+  endpointHostPrefix: "management.",
 }));
 export type CreateStorageProfileError =
   | AccessDeniedException
@@ -10258,6 +10302,7 @@ export type CreateStorageProfileError =
   | ServiceQuotaExceededException
   | ThrottlingException
   | ValidationException
+  | ConflictException
   | CommonErrors;
 /**
  * Creates a storage profile that specifies the operating system, file type, and file location of resources used on a farm.
@@ -10277,8 +10322,10 @@ export const createStorageProfile: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
     ValidationException,
+    ConflictException,
   ],
   operationName: "CreateStorageProfile",
+  endpointHostPrefix: "management.",
 }));
 export type DeleteLimitError =
   | AccessDeniedException
@@ -10304,12 +10351,15 @@ export const deleteLimit: API.OperationMethod<
     ValidationException,
   ],
   operationName: "DeleteLimit",
+  endpointHostPrefix: "management.",
 }));
 export type DeleteStorageProfileError =
   | AccessDeniedException
   | InternalServerErrorException
   | ThrottlingException
   | ValidationException
+  | ConflictException
+  | ResourceNotFoundException
   | CommonErrors;
 /**
  * Deletes a storage profile.
@@ -10327,8 +10377,11 @@ export const deleteStorageProfile: API.OperationMethod<
     InternalServerErrorException,
     ThrottlingException,
     ValidationException,
+    ConflictException,
+    ResourceNotFoundException,
   ],
   operationName: "DeleteStorageProfile",
+  endpointHostPrefix: "management.",
 }));
 export type DisassociateMemberFromFarmError =
   | AccessDeniedException
@@ -10356,6 +10409,7 @@ export const disassociateMemberFromFarm: API.OperationMethod<
     ValidationException,
   ],
   operationName: "DisassociateMemberFromFarm",
+  endpointHostPrefix: "management.",
 }));
 export type GetLimitError =
   | AccessDeniedException
@@ -10383,6 +10437,7 @@ export const getLimit: API.OperationMethod<
     ValidationException,
   ],
   operationName: "GetLimit",
+  endpointHostPrefix: "management.",
 }));
 export type GetStorageProfileError =
   | AccessDeniedException
@@ -10410,6 +10465,7 @@ export const getStorageProfile: API.OperationMethod<
     ValidationException,
   ],
   operationName: "GetStorageProfile",
+  endpointHostPrefix: "management.",
 }));
 export type ListFarmMembersError =
   | AccessDeniedException
@@ -10452,6 +10508,7 @@ export const listFarmMembers: API.OperationMethod<
     ValidationException,
   ],
   operationName: "ListFarmMembers",
+  endpointHostPrefix: "management.",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -10500,6 +10557,7 @@ export const listLimits: API.OperationMethod<
     ValidationException,
   ],
   operationName: "ListLimits",
+  endpointHostPrefix: "management.",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -10548,6 +10606,7 @@ export const listStorageProfiles: API.OperationMethod<
     ValidationException,
   ],
   operationName: "ListStorageProfiles",
+  endpointHostPrefix: "management.",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -10581,6 +10640,7 @@ export const updateLimit: API.OperationMethod<
     ValidationException,
   ],
   operationName: "UpdateLimit",
+  endpointHostPrefix: "management.",
 }));
 export type UpdateStorageProfileError =
   | AccessDeniedException
@@ -10588,6 +10648,7 @@ export type UpdateStorageProfileError =
   | ResourceNotFoundException
   | ThrottlingException
   | ValidationException
+  | ConflictException
   | CommonErrors;
 /**
  * Updates a storage profile.
@@ -10606,8 +10667,10 @@ export const updateStorageProfile: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
     ValidationException,
+    ConflictException,
   ],
   operationName: "UpdateStorageProfile",
+  endpointHostPrefix: "management.",
 }));
 export type CreateBudgetError =
   | AccessDeniedException
@@ -10616,6 +10679,7 @@ export type CreateBudgetError =
   | ServiceQuotaExceededException
   | ThrottlingException
   | ValidationException
+  | ConflictException
   | CommonErrors;
 /**
  * Creates a budget to set spending thresholds for your rendering activity.
@@ -10635,8 +10699,10 @@ export const createBudget: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
     ValidationException,
+    ConflictException,
   ],
   operationName: "CreateBudget",
+  endpointHostPrefix: "management.",
 }));
 export type GetBudgetError =
   | AccessDeniedException
@@ -10664,6 +10730,7 @@ export const getBudget: API.OperationMethod<
     ValidationException,
   ],
   operationName: "GetBudget",
+  endpointHostPrefix: "management.",
 }));
 export type UpdateBudgetError =
   | AccessDeniedException
@@ -10671,6 +10738,7 @@ export type UpdateBudgetError =
   | ResourceNotFoundException
   | ThrottlingException
   | ValidationException
+  | ConflictException
   | CommonErrors;
 /**
  * Updates a budget that sets spending thresholds for rendering activity.
@@ -10689,8 +10757,10 @@ export const updateBudget: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
     ValidationException,
+    ConflictException,
   ],
   operationName: "UpdateBudget",
+  endpointHostPrefix: "management.",
 }));
 export type DeleteBudgetError =
   | AccessDeniedException
@@ -10698,6 +10768,7 @@ export type DeleteBudgetError =
   | ResourceNotFoundException
   | ThrottlingException
   | ValidationException
+  | ConflictException
   | CommonErrors;
 /**
  * Deletes a budget.
@@ -10716,8 +10787,10 @@ export const deleteBudget: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
     ValidationException,
+    ConflictException,
   ],
   operationName: "DeleteBudget",
+  endpointHostPrefix: "management.",
 }));
 export type ListBudgetsError =
   | AccessDeniedException
@@ -10760,6 +10833,7 @@ export const listBudgets: API.OperationMethod<
     ValidationException,
   ],
   operationName: "ListBudgets",
+  endpointHostPrefix: "management.",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -10774,6 +10848,7 @@ export type CreateFleetError =
   | ServiceQuotaExceededException
   | ThrottlingException
   | ValidationException
+  | ConflictException
   | CommonErrors;
 /**
  * Creates a fleet. Fleets gather information relating to compute, or capacity, for renders within your farms. You can choose to manage your own capacity or opt to have fleets fully managed by Deadline Cloud.
@@ -10793,8 +10868,10 @@ export const createFleet: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
     ValidationException,
+    ConflictException,
   ],
   operationName: "CreateFleet",
+  endpointHostPrefix: "management.",
 }));
 export type GetFleetError =
   | AccessDeniedException
@@ -10822,6 +10899,7 @@ export const getFleet: API.OperationMethod<
     ValidationException,
   ],
   operationName: "GetFleet",
+  endpointHostPrefix: "management.",
 }));
 export type UpdateFleetError =
   | AccessDeniedException
@@ -10851,6 +10929,7 @@ export const updateFleet: API.OperationMethod<
     ValidationException,
   ],
   operationName: "UpdateFleet",
+  endpointHostPrefix: "management.",
 }));
 export type DeleteFleetError =
   | AccessDeniedException
@@ -10880,6 +10959,7 @@ export const deleteFleet: API.OperationMethod<
     ValidationException,
   ],
   operationName: "DeleteFleet",
+  endpointHostPrefix: "management.",
 }));
 export type ListFleetsError =
   | AccessDeniedException
@@ -10922,6 +11002,7 @@ export const listFleets: API.OperationMethod<
     ValidationException,
   ],
   operationName: "ListFleets",
+  endpointHostPrefix: "management.",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -10957,6 +11038,7 @@ export const associateMemberToFleet: API.OperationMethod<
     ValidationException,
   ],
   operationName: "AssociateMemberToFleet",
+  endpointHostPrefix: "management.",
 }));
 export type AssumeFleetRoleForReadError =
   | AccessDeniedException
@@ -10984,6 +11066,7 @@ export const assumeFleetRoleForRead: API.OperationMethod<
     ValidationException,
   ],
   operationName: "AssumeFleetRoleForRead",
+  endpointHostPrefix: "management.",
 }));
 export type DisassociateMemberFromFleetError =
   | AccessDeniedException
@@ -11013,6 +11096,7 @@ export const disassociateMemberFromFleet: API.OperationMethod<
     ValidationException,
   ],
   operationName: "DisassociateMemberFromFleet",
+  endpointHostPrefix: "management.",
 }));
 export type ListFleetMembersError =
   | AccessDeniedException
@@ -11055,6 +11139,7 @@ export const listFleetMembers: API.OperationMethod<
     ValidationException,
   ],
   operationName: "ListFleetMembers",
+  endpointHostPrefix: "management.",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -11088,6 +11173,7 @@ export const getVolume: API.OperationMethod<
     ValidationException,
   ],
   operationName: "GetVolume",
+  endpointHostPrefix: "management.",
 }));
 export type DeleteVolumeError =
   | AccessDeniedException
@@ -11117,6 +11203,7 @@ export const deleteVolume: API.OperationMethod<
     ValidationException,
   ],
   operationName: "DeleteVolume",
+  endpointHostPrefix: "management.",
 }));
 export type ListVolumesError =
   | AccessDeniedException
@@ -11159,6 +11246,7 @@ export const listVolumes: API.OperationMethod<
     ValidationException,
   ],
   operationName: "ListVolumes",
+  endpointHostPrefix: "management.",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -11196,6 +11284,7 @@ export const createWorker: API.OperationMethod<
     ValidationException,
   ],
   operationName: "CreateWorker",
+  endpointHostPrefix: "scheduling.",
 }));
 export type GetWorkerError =
   | AccessDeniedException
@@ -11223,6 +11312,7 @@ export const getWorker: API.OperationMethod<
     ValidationException,
   ],
   operationName: "GetWorker",
+  endpointHostPrefix: "management.",
 }));
 export type UpdateWorkerError =
   | AccessDeniedException
@@ -11252,6 +11342,7 @@ export const updateWorker: API.OperationMethod<
     ValidationException,
   ],
   operationName: "UpdateWorker",
+  endpointHostPrefix: "scheduling.",
 }));
 export type DeleteWorkerError =
   | AccessDeniedException
@@ -11281,6 +11372,7 @@ export const deleteWorker: API.OperationMethod<
     ValidationException,
   ],
   operationName: "DeleteWorker",
+  endpointHostPrefix: "management.",
 }));
 export type ListWorkersError =
   | AccessDeniedException
@@ -11323,6 +11415,7 @@ export const listWorkers: API.OperationMethod<
     ValidationException,
   ],
   operationName: "ListWorkers",
+  endpointHostPrefix: "management.",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -11358,6 +11451,7 @@ export const assumeFleetRoleForWorker: API.OperationMethod<
     ValidationException,
   ],
   operationName: "AssumeFleetRoleForWorker",
+  endpointHostPrefix: "scheduling.",
 }));
 export type AssumeQueueRoleForWorkerError =
   | AccessDeniedException
@@ -11387,6 +11481,7 @@ export const assumeQueueRoleForWorker: API.OperationMethod<
     ValidationException,
   ],
   operationName: "AssumeQueueRoleForWorker",
+  endpointHostPrefix: "scheduling.",
 }));
 export type BatchGetJobEntityError =
   | AccessDeniedException
@@ -11414,6 +11509,7 @@ export const batchGetJobEntity: API.OperationMethod<
     ValidationException,
   ],
   operationName: "BatchGetJobEntity",
+  endpointHostPrefix: "scheduling.",
 }));
 export type ListSessionsForWorkerError =
   | AccessDeniedException
@@ -11456,6 +11552,7 @@ export const listSessionsForWorker: API.OperationMethod<
     ValidationException,
   ],
   operationName: "ListSessionsForWorker",
+  endpointHostPrefix: "management.",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -11491,6 +11588,7 @@ export const updateWorkerSchedule: API.OperationMethod<
     ValidationException,
   ],
   operationName: "UpdateWorkerSchedule",
+  endpointHostPrefix: "scheduling.",
 }));
 export type CreateQueueError =
   | AccessDeniedException
@@ -11499,6 +11597,7 @@ export type CreateQueueError =
   | ServiceQuotaExceededException
   | ThrottlingException
   | ValidationException
+  | ConflictException
   | CommonErrors;
 /**
  * Creates a queue to coordinate the order in which jobs run on a farm. A queue can also specify where to pull resources and indicate where to output completed jobs.
@@ -11518,8 +11617,10 @@ export const createQueue: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
     ValidationException,
+    ConflictException,
   ],
   operationName: "CreateQueue",
+  endpointHostPrefix: "management.",
 }));
 export type GetQueueError =
   | AccessDeniedException
@@ -11547,6 +11648,7 @@ export const getQueue: API.OperationMethod<
     ValidationException,
   ],
   operationName: "GetQueue",
+  endpointHostPrefix: "management.",
 }));
 export type UpdateQueueError =
   | AccessDeniedException
@@ -11574,6 +11676,7 @@ export const updateQueue: API.OperationMethod<
     ValidationException,
   ],
   operationName: "UpdateQueue",
+  endpointHostPrefix: "management.",
 }));
 export type DeleteQueueError =
   | AccessDeniedException
@@ -11605,6 +11708,7 @@ export const deleteQueue: API.OperationMethod<
     ValidationException,
   ],
   operationName: "DeleteQueue",
+  endpointHostPrefix: "management.",
 }));
 export type ListQueuesError =
   | AccessDeniedException
@@ -11647,6 +11751,7 @@ export const listQueues: API.OperationMethod<
     ValidationException,
   ],
   operationName: "ListQueues",
+  endpointHostPrefix: "management.",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -11682,6 +11787,7 @@ export const associateMemberToQueue: API.OperationMethod<
     ValidationException,
   ],
   operationName: "AssociateMemberToQueue",
+  endpointHostPrefix: "management.",
 }));
 export type AssumeQueueRoleForReadError =
   | AccessDeniedException
@@ -11709,6 +11815,7 @@ export const assumeQueueRoleForRead: API.OperationMethod<
     ValidationException,
   ],
   operationName: "AssumeQueueRoleForRead",
+  endpointHostPrefix: "management.",
 }));
 export type AssumeQueueRoleForUserError =
   | AccessDeniedException
@@ -11736,6 +11843,7 @@ export const assumeQueueRoleForUser: API.OperationMethod<
     ValidationException,
   ],
   operationName: "AssumeQueueRoleForUser",
+  endpointHostPrefix: "management.",
 }));
 export type CreateQueueEnvironmentError =
   | AccessDeniedException
@@ -11765,6 +11873,7 @@ export const createQueueEnvironment: API.OperationMethod<
     ValidationException,
   ],
   operationName: "CreateQueueEnvironment",
+  endpointHostPrefix: "management.",
 }));
 export type DeleteQueueEnvironmentError =
   | AccessDeniedException
@@ -11790,6 +11899,7 @@ export const deleteQueueEnvironment: API.OperationMethod<
     ValidationException,
   ],
   operationName: "DeleteQueueEnvironment",
+  endpointHostPrefix: "management.",
 }));
 export type DisassociateMemberFromQueueError =
   | AccessDeniedException
@@ -11819,6 +11929,7 @@ export const disassociateMemberFromQueue: API.OperationMethod<
     ValidationException,
   ],
   operationName: "DisassociateMemberFromQueue",
+  endpointHostPrefix: "management.",
 }));
 export type GetQueueEnvironmentError =
   | AccessDeniedException
@@ -11846,6 +11957,7 @@ export const getQueueEnvironment: API.OperationMethod<
     ValidationException,
   ],
   operationName: "GetQueueEnvironment",
+  endpointHostPrefix: "management.",
 }));
 export type GetStorageProfileForQueueError =
   | AccessDeniedException
@@ -11873,6 +11985,7 @@ export const getStorageProfileForQueue: API.OperationMethod<
     ValidationException,
   ],
   operationName: "GetStorageProfileForQueue",
+  endpointHostPrefix: "management.",
 }));
 export type ListQueueEnvironmentsError =
   | AccessDeniedException
@@ -11915,6 +12028,7 @@ export const listQueueEnvironments: API.OperationMethod<
     ValidationException,
   ],
   operationName: "ListQueueEnvironments",
+  endpointHostPrefix: "management.",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -11963,6 +12077,7 @@ export const listQueueMembers: API.OperationMethod<
     ValidationException,
   ],
   operationName: "ListQueueMembers",
+  endpointHostPrefix: "management.",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -12011,6 +12126,7 @@ export const listStorageProfilesForQueue: API.OperationMethod<
     ValidationException,
   ],
   operationName: "ListStorageProfilesForQueue",
+  endpointHostPrefix: "management.",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -12044,6 +12160,7 @@ export const updateQueueEnvironment: API.OperationMethod<
     ValidationException,
   ],
   operationName: "UpdateQueueEnvironment",
+  endpointHostPrefix: "management.",
 }));
 export type CreateJobError =
   | AccessDeniedException
@@ -12073,6 +12190,7 @@ export const createJob: API.OperationMethod<
     ValidationException,
   ],
   operationName: "CreateJob",
+  endpointHostPrefix: "management.",
 }));
 export type GetJobError =
   | AccessDeniedException
@@ -12100,6 +12218,7 @@ export const getJob: API.OperationMethod<
     ValidationException,
   ],
   operationName: "GetJob",
+  endpointHostPrefix: "management.",
 }));
 export type UpdateJobError =
   | AccessDeniedException
@@ -12133,6 +12252,7 @@ export const updateJob: API.OperationMethod<
     ValidationException,
   ],
   operationName: "UpdateJob",
+  endpointHostPrefix: "management.",
 }));
 export type ListJobsError =
   | AccessDeniedException
@@ -12175,6 +12295,7 @@ export const listJobs: API.OperationMethod<
     ValidationException,
   ],
   operationName: "ListJobs",
+  endpointHostPrefix: "management.",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -12210,6 +12331,7 @@ export const associateMemberToJob: API.OperationMethod<
     ValidationException,
   ],
   operationName: "AssociateMemberToJob",
+  endpointHostPrefix: "management.",
 }));
 export type CopyJobTemplateError =
   | AccessDeniedException
@@ -12237,6 +12359,7 @@ export const copyJobTemplate: API.OperationMethod<
     ValidationException,
   ],
   operationName: "CopyJobTemplate",
+  endpointHostPrefix: "management.",
 }));
 export type DisassociateMemberFromJobError =
   | AccessDeniedException
@@ -12264,6 +12387,7 @@ export const disassociateMemberFromJob: API.OperationMethod<
     ValidationException,
   ],
   operationName: "DisassociateMemberFromJob",
+  endpointHostPrefix: "management.",
 }));
 export type GetSessionError =
   | AccessDeniedException
@@ -12291,6 +12415,7 @@ export const getSession: API.OperationMethod<
     ValidationException,
   ],
   operationName: "GetSession",
+  endpointHostPrefix: "management.",
 }));
 export type GetSessionActionError =
   | AccessDeniedException
@@ -12318,6 +12443,7 @@ export const getSessionAction: API.OperationMethod<
     ValidationException,
   ],
   operationName: "GetSessionAction",
+  endpointHostPrefix: "management.",
 }));
 export type GetStepError =
   | AccessDeniedException
@@ -12345,6 +12471,7 @@ export const getStep: API.OperationMethod<
     ValidationException,
   ],
   operationName: "GetStep",
+  endpointHostPrefix: "management.",
 }));
 export type GetTaskError =
   | AccessDeniedException
@@ -12372,6 +12499,7 @@ export const getTask: API.OperationMethod<
     ValidationException,
   ],
   operationName: "GetTask",
+  endpointHostPrefix: "management.",
 }));
 export type ListJobMembersError =
   | AccessDeniedException
@@ -12414,6 +12542,7 @@ export const listJobMembers: API.OperationMethod<
     ValidationException,
   ],
   operationName: "ListJobMembers",
+  endpointHostPrefix: "management.",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -12462,6 +12591,7 @@ export const listJobParameterDefinitions: API.OperationMethod<
     ValidationException,
   ],
   operationName: "ListJobParameterDefinitions",
+  endpointHostPrefix: "management.",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -12510,6 +12640,7 @@ export const listSessionActions: API.OperationMethod<
     ValidationException,
   ],
   operationName: "ListSessionActions",
+  endpointHostPrefix: "management.",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -12558,6 +12689,7 @@ export const listSessions: API.OperationMethod<
     ValidationException,
   ],
   operationName: "ListSessions",
+  endpointHostPrefix: "management.",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -12606,6 +12738,7 @@ export const listStepConsumers: API.OperationMethod<
     ValidationException,
   ],
   operationName: "ListStepConsumers",
+  endpointHostPrefix: "management.",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -12654,6 +12787,7 @@ export const listStepDependencies: API.OperationMethod<
     ValidationException,
   ],
   operationName: "ListStepDependencies",
+  endpointHostPrefix: "management.",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -12702,6 +12836,7 @@ export const listSteps: API.OperationMethod<
     ValidationException,
   ],
   operationName: "ListSteps",
+  endpointHostPrefix: "management.",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -12750,6 +12885,7 @@ export const listTasks: API.OperationMethod<
     ValidationException,
   ],
   operationName: "ListTasks",
+  endpointHostPrefix: "management.",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -12785,6 +12921,7 @@ export const updateSession: API.OperationMethod<
     ValidationException,
   ],
   operationName: "UpdateSession",
+  endpointHostPrefix: "management.",
 }));
 export type UpdateStepError =
   | AccessDeniedException
@@ -12814,6 +12951,7 @@ export const updateStep: API.OperationMethod<
     ValidationException,
   ],
   operationName: "UpdateStep",
+  endpointHostPrefix: "management.",
 }));
 export type UpdateTaskError =
   | AccessDeniedException
@@ -12843,6 +12981,7 @@ export const updateTask: API.OperationMethod<
     ValidationException,
   ],
   operationName: "UpdateTask",
+  endpointHostPrefix: "management.",
 }));
 export type CreateLicenseEndpointError =
   | AccessDeniedException
@@ -12872,6 +13011,7 @@ export const createLicenseEndpoint: API.OperationMethod<
     ValidationException,
   ],
   operationName: "CreateLicenseEndpoint",
+  endpointHostPrefix: "management.",
 }));
 export type GetLicenseEndpointError =
   | AccessDeniedException
@@ -12899,6 +13039,7 @@ export const getLicenseEndpoint: API.OperationMethod<
     ValidationException,
   ],
   operationName: "GetLicenseEndpoint",
+  endpointHostPrefix: "management.",
 }));
 export type DeleteLicenseEndpointError =
   | AccessDeniedException
@@ -12928,6 +13069,7 @@ export const deleteLicenseEndpoint: API.OperationMethod<
     ValidationException,
   ],
   operationName: "DeleteLicenseEndpoint",
+  endpointHostPrefix: "management.",
 }));
 export type ListLicenseEndpointsError =
   | AccessDeniedException
@@ -12970,6 +13112,7 @@ export const listLicenseEndpoints: API.OperationMethod<
     ValidationException,
   ],
   operationName: "ListLicenseEndpoints",
+  endpointHostPrefix: "management.",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -13003,6 +13146,7 @@ export const deleteMeteredProduct: API.OperationMethod<
     ValidationException,
   ],
   operationName: "DeleteMeteredProduct",
+  endpointHostPrefix: "management.",
 }));
 export type ListMeteredProductsError =
   | AccessDeniedException
@@ -13045,6 +13189,7 @@ export const listMeteredProducts: API.OperationMethod<
     ValidationException,
   ],
   operationName: "ListMeteredProducts",
+  endpointHostPrefix: "management.",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -13078,6 +13223,7 @@ export const putMeteredProduct: API.OperationMethod<
     ValidationException,
   ],
   operationName: "PutMeteredProduct",
+  endpointHostPrefix: "management.",
 }));
 export type CreateMonitorError =
   | AccessDeniedException
@@ -13085,6 +13231,7 @@ export type CreateMonitorError =
   | ServiceQuotaExceededException
   | ThrottlingException
   | ValidationException
+  | ConflictException
   | CommonErrors;
 /**
  * Creates an Amazon Web Services Deadline Cloud monitor that you can use to view your farms, queues, and fleets. After you submit a job, you can track the progress of the tasks and steps that make up the job, and then download the job's results.
@@ -13103,8 +13250,10 @@ export const createMonitor: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
     ValidationException,
+    ConflictException,
   ],
   operationName: "CreateMonitor",
+  endpointHostPrefix: "management.",
 }));
 export type GetMonitorError =
   | AccessDeniedException
@@ -13132,6 +13281,7 @@ export const getMonitor: API.OperationMethod<
     ValidationException,
   ],
   operationName: "GetMonitor",
+  endpointHostPrefix: "management.",
 }));
 export type UpdateMonitorError =
   | AccessDeniedException
@@ -13139,6 +13289,7 @@ export type UpdateMonitorError =
   | ResourceNotFoundException
   | ThrottlingException
   | ValidationException
+  | ConflictException
   | CommonErrors;
 /**
  * Modifies the settings for a Deadline Cloud monitor. You can modify one or all of the settings when you call `UpdateMonitor`.
@@ -13157,8 +13308,10 @@ export const updateMonitor: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
     ValidationException,
+    ConflictException,
   ],
   operationName: "UpdateMonitor",
+  endpointHostPrefix: "management.",
 }));
 export type DeleteMonitorError =
   | AccessDeniedException
@@ -13166,6 +13319,7 @@ export type DeleteMonitorError =
   | ResourceNotFoundException
   | ThrottlingException
   | ValidationException
+  | ConflictException
   | CommonErrors;
 /**
  * Removes a Deadline Cloud monitor. After you delete a monitor, you can create a new one and attach farms to the monitor.
@@ -13184,8 +13338,10 @@ export const deleteMonitor: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
     ValidationException,
+    ConflictException,
   ],
   operationName: "DeleteMonitor",
+  endpointHostPrefix: "management.",
 }));
 export type ListMonitorsError =
   | AccessDeniedException
@@ -13226,6 +13382,7 @@ export const listMonitors: API.OperationMethod<
     ValidationException,
   ],
   operationName: "ListMonitors",
+  endpointHostPrefix: "management.",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -13259,6 +13416,7 @@ export const getMonitorSettings: API.OperationMethod<
     ValidationException,
   ],
   operationName: "GetMonitorSettings",
+  endpointHostPrefix: "management.",
 }));
 export type UpdateMonitorSettingsError =
   | AccessDeniedException
@@ -13286,4 +13444,5 @@ export const updateMonitorSettings: API.OperationMethod<
     ValidationException,
   ],
   operationName: "UpdateMonitorSettings",
+  endpointHostPrefix: "management.",
 }));

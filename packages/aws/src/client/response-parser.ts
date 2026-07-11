@@ -22,7 +22,12 @@ import {
   getSyntheticError,
   type SyntheticErrorTrait,
 } from "../traits.ts";
-import { getIdentifier, getPropertySignatures } from "../util/ast.ts";
+import {
+  getIdentifier,
+  getPropertySignatures,
+  isBooleanAST,
+  isNumberAST,
+} from "../util/ast.ts";
 import type { Operation } from "./operation.ts";
 import type { Protocol, ProtocolHandler } from "./protocol.ts";
 import type { Response } from "./response.ts";
@@ -245,7 +250,17 @@ export const makeResponseParser = <A>(
         if (headerName) {
           const headerValue = response.headers[headerName.toLowerCase()];
           if (headerValue !== undefined) {
-            (data as Record<string, unknown>)[String(prop.name)] = headerValue;
+            // Coerce string header values to the member's declared type —
+            // e.g. ThrottlingException.retryAfterSeconds (S.Number) bound to
+            // the Retry-After header. Without coercion the decode fails and
+            // the error degrades to a plain object, losing its error class
+            // and retry/throttling categorization.
+            (data as Record<string, unknown>)[String(prop.name)] =
+              isNumberAST(prop.type)
+                ? Number(headerValue)
+                : isBooleanAST(prop.type)
+                  ? headerValue === "true"
+                  : headerValue;
           }
         }
       }

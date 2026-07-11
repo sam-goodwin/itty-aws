@@ -2230,13 +2230,13 @@ export type RuleStringOperator =
   | "CONTAINS"
   | (string & {});
 export const RuleStringOperator = /*@__PURE__*/ /*#__PURE__*/ S.String;
-export type RuleStringList = string | redacted.Redacted<string>[];
+export type RuleStringList = (string | redacted.Redacted<string>)[];
 export const RuleStringList =
   /*@__PURE__*/ /*#__PURE__*/ S.Array(SensitiveString);
 export interface RuleStringExpression {
   Evaluate: RuleStringToEvaluate;
   Operator: RuleStringOperator;
-  Values: string | redacted.Redacted<string>[];
+  Values: (string | redacted.Redacted<string>)[];
 }
 export const RuleStringExpression = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2479,10 +2479,10 @@ export const AddHeaderAction = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AddHeaderAction",
 }) as any as S.Schema<AddHeaderAction>;
-export type Recipients = string | redacted.Redacted<string>[];
+export type Recipients = (string | redacted.Redacted<string>)[];
 export const Recipients = /*@__PURE__*/ /*#__PURE__*/ S.Array(SensitiveString);
 export interface ReplaceRecipientAction {
-  ReplaceWith?: string | redacted.Redacted<string>[];
+  ReplaceWith?: (string | redacted.Redacted<string>)[];
 }
 export const ReplaceRecipientAction = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () => S.Struct({ ReplaceWith: S.optional(Recipients) }),
@@ -3297,26 +3297,32 @@ export const ListTrafficPoliciesResponse =
 export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
   "AccessDeniedException",
   { Message: S.optional(S.String) },
+  T.HttpError(403),
 ).pipe(C.withAuthError) {}
 export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
   "ResourceNotFoundException",
   { Message: S.optional(S.String) },
+  T.HttpError(404),
 ).pipe(C.withBadRequestError) {}
 export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
   "ThrottlingException",
   { Message: S.optional(S.String) },
+  T.HttpError(429),
 ).pipe(C.withThrottlingError) {}
 export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
   "ValidationException",
   { Message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
   "ConflictException",
   { Message: S.optional(S.String) },
+  T.HttpError(409),
 ).pipe(C.withConflictError) {}
 export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
   "ServiceQuotaExceededException",
   { Message: S.optional(S.String) },
+  T.HttpError(402),
 ).pipe(C.withQuotaError) {}
 
 //# Operations
