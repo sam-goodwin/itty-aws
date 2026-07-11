@@ -344,12 +344,12 @@ export const Tags = /*@__PURE__*/ /*#__PURE__*/ S.Record(
 );
 export type FeatureEnableParameter = "ENABLED" | "DISABLED" | (string & {});
 export const FeatureEnableParameter = /*@__PURE__*/ /*#__PURE__*/ S.String;
-export type AllowedDomainsList = string | redacted.Redacted<string>[];
+export type AllowedDomainsList = (string | redacted.Redacted<string>)[];
 export const AllowedDomainsList =
   /*@__PURE__*/ /*#__PURE__*/ S.Array(SensitiveString);
 export interface SupportedEmailDomainsParameters {
   enabled?: FeatureEnableParameter;
-  allowedDomains?: string | redacted.Redacted<string>[];
+  allowedDomains?: (string | redacted.Redacted<string>)[];
 }
 export const SupportedEmailDomainsParameters =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -556,7 +556,7 @@ export type FeatureEnableStatus =
 export const FeatureEnableStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface SupportedEmailDomainsStatus {
   enabled?: FeatureEnableStatus;
-  allowedDomains?: string | redacted.Redacted<string>[];
+  allowedDomains?: (string | redacted.Redacted<string>)[];
 }
 export const SupportedEmailDomainsStatus =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -967,6 +967,7 @@ export const UpdateSpaceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
   "AccessDeniedException",
   { message: S.String },
+  T.HttpError(403),
 ).pipe(C.withAuthError) {}
 export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
   "InternalServerException",
@@ -974,11 +975,12 @@ export class InternalServerException extends S.TaggedErrorClass<InternalServerEx
     message: S.String,
     retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
   },
-  T.Retryable(),
+  T.all(T.HttpError(500), T.Retryable()),
 ).pipe(C.withServerError, C.withRetryableError) {}
 export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
   "ResourceNotFoundException",
   { message: S.String, resourceId: S.String, resourceType: S.String },
+  T.HttpError(404),
 ).pipe(C.withBadRequestError) {}
 export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
   "ThrottlingException",
@@ -988,7 +990,7 @@ export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>
     quotaCode: S.optional(S.String),
     retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
   },
-  T.Retryable({ throttling: true }),
+  T.all(T.HttpError(429), T.Retryable({ throttling: true })),
 ).pipe(C.withThrottlingError, C.withRetryableError) {}
 export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
   "ValidationException",
@@ -997,10 +999,12 @@ export class ValidationException extends S.TaggedErrorClass<ValidationException>
     reason: ValidationExceptionReason,
     fieldList: S.optional(ValidationExceptionFieldList),
   },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
   "ConflictException",
   { message: S.String, resourceId: S.String, resourceType: S.String },
+  T.HttpError(409),
 ).pipe(C.withConflictError) {}
 export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
   "ServiceQuotaExceededException",
@@ -1011,6 +1015,7 @@ export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuo
     serviceCode: S.String,
     quotaCode: S.String,
   },
+  T.HttpError(402),
 ).pipe(C.withQuotaError) {}
 
 //# Operations

@@ -13,9 +13,10 @@
 import * as Effect from "effect/Effect";
 import * as Schema from "effect/Schema";
 import * as SchemaIssue from "effect/SchemaIssue";
-import { COMMON_ERRORS, UnknownAwsError } from "../errors.ts";
+import { COMMON_ERRORS, ParseError, UnknownAwsError } from "../errors.ts";
 import {
   getAwsQueryError,
+  getHttpError,
   getHttpHeader,
   getProtocol,
   getSyntheticError,
@@ -217,6 +218,24 @@ export const makeResponseParser = <A>(
     }
     errorSchema ??= errorSchemas.get(errorCode);
 
+    // Status-based fallback: rest-json returns an empty error code when the
+    // response carries none (no X-Amzn-Errortype header, no __type/code body
+    // field — e.g. IoT Managed Integrations). Match the operation's declared
+    // errors by their smithy.api#httpError status, but only when exactly one
+    // declared error carries the response status.
+    if (errorSchema === undefined && errorCode === "") {
+      const statusMatches = (operation.errors ?? []).filter(
+        (err) => getHttpError(err.ast) === response.status,
+      );
+      if (statusMatches.length === 1) {
+        errorSchema = statusMatches[0];
+      } else {
+        return yield* new ParseError({
+          message: `No error code found in response and ${statusMatches.length} declared errors match status ${response.status}. Data: ${JSON.stringify(data)}`,
+        });
+      }
+    }
+
     if (errorSchema) {
       // Extract headers for error members with HttpHeader traits
       // This handles error fields not in the body (e.g., x-amz-bucket-region)
@@ -227,6 +246,23 @@ export const makeResponseParser = <A>(
           const headerValue = response.headers[headerName.toLowerCase()];
           if (headerValue !== undefined) {
             (data as Record<string, unknown>)[String(prop.name)] = headerValue;
+          }
+        }
+      }
+
+      // REST-JSON services with jsonName-renamed error members (e.g.
+      // MediaLive) send camelCase wire keys ("message", "validationErrors")
+      // while the generated error class declares the Smithy member names
+      // ("Message", "ValidationErrors") without a key mapping. Backfill the
+      // schema-cased key from its camelCase wire twin so the decode keeps
+      // the payload instead of silently dropping every field.
+      for (const prop of errorProps) {
+        const name = String(prop.name);
+        const record = data as Record<string, unknown>;
+        if (record[name] === undefined) {
+          const wireName = name.charAt(0).toLowerCase() + name.slice(1);
+          if (wireName !== name && record[wireName] !== undefined) {
+            record[name] = record[wireName];
           }
         }
       }

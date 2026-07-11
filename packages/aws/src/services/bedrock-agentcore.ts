@@ -5648,7 +5648,7 @@ export interface Event {
   sessionId: string;
   eventId: string;
   eventTimestamp: Date;
-  payload: PayloadType[];
+  payload?: PayloadType[];
   branch?: Branch;
   metadata?: { [key: string]: MetadataValue | undefined };
 }
@@ -5659,7 +5659,7 @@ export const Event = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     sessionId: S.String,
     eventId: S.String,
     eventTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    payload: PayloadTypeList,
+    payload: S.optional(PayloadTypeList),
     branch: S.optional(Branch),
     metadata: S.optional(MetadataMap),
   }),
@@ -7319,22 +7319,27 @@ export const SearchRegistryRecordsResponse =
 export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
   "AccessDeniedException",
   { message: S.optional(S.String) },
+  T.HttpError(403),
 ).pipe(C.withAuthError) {}
 export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
   "InternalServerException",
   { message: S.optional(S.String) },
+  T.HttpError(500),
 ).pipe(C.withServerError) {}
 export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
   "ResourceNotFoundException",
   { message: S.optional(S.String) },
+  T.HttpError(404),
 ).pipe(C.withBadRequestError) {}
 export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
   "ThrottlingException",
   { message: S.optional(S.String) },
+  T.HttpError(429),
 ).pipe(C.withThrottlingError) {}
 export class UnauthorizedException extends S.TaggedErrorClass<UnauthorizedException>()(
   "UnauthorizedException",
   { message: S.optional(S.String) },
+  T.HttpError(401),
 ).pipe(C.withAuthError) {}
 export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
   "ValidationException",
@@ -7343,39 +7348,47 @@ export class ValidationException extends S.TaggedErrorClass<ValidationException>
     reason: ValidationExceptionReason,
     fieldList: S.optional(ValidationExceptionFieldList),
   },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
   "ConflictException",
   { message: S.optional(S.String) },
+  T.HttpError(409),
 ).pipe(C.withConflictError) {}
 export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
   "ServiceQuotaExceededException",
   { message: S.optional(S.String) },
+  T.HttpError(402),
 ).pipe(C.withQuotaError) {}
 export class RuntimeClientError extends S.TaggedErrorClass<RuntimeClientError>()(
   "RuntimeClientError",
   { message: S.optional(S.String) },
+  T.HttpError(424),
 ) {}
 export class RetryableConflictException extends S.TaggedErrorClass<RetryableConflictException>()(
   "RetryableConflictException",
   { message: S.String },
-  T.Retryable(),
+  T.all(T.HttpError(409), T.Retryable()),
 ).pipe(C.withConflictError, C.withRetryableError) {}
 export class DuplicateIdException extends S.TaggedErrorClass<DuplicateIdException>()(
   "DuplicateIdException",
   { message: S.optional(S.String) },
+  T.HttpError(409),
 ).pipe(C.withConflictError) {}
 export class ServiceException extends S.TaggedErrorClass<ServiceException>()(
   "ServiceException",
   { message: S.String },
+  T.HttpError(500),
 ).pipe(C.withServerError) {}
 export class ThrottledException extends S.TaggedErrorClass<ThrottledException>()(
   "ThrottledException",
   { message: S.String },
+  T.HttpError(429),
 ).pipe(C.withThrottlingError) {}
 export class InvalidInputException extends S.TaggedErrorClass<InvalidInputException>()(
   "InvalidInputException",
   { message: S.String },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 
 //# Operations

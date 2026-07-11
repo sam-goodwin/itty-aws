@@ -51,6 +51,7 @@ import {
 } from "../traits.ts";
 import {
   getEncodedPropertySignatures,
+  getIdentifier,
   isBooleanAST,
   isNumberAST,
 } from "../util/ast.ts";
@@ -65,6 +66,7 @@ import {
   convertStreamingInput,
   isEffectStream,
   readableToEffectStream,
+  readStreamAsBytes,
   readStreamAsText,
 } from "../util/stream.ts";
 
@@ -98,6 +100,7 @@ export const restJson1Protocol: Protocol = (
     name: string;
     isStreaming: boolean;
     isRaw: boolean;
+    isBlob: boolean;
     isEventStream: boolean;
     eventSchema?: Schema.Schema<unknown>;
   };
@@ -132,6 +135,7 @@ export const restJson1Protocol: Protocol = (
         name,
         isStreaming: isStreamingType(prop.type),
         isRaw: isRawPayload(prop.type),
+        isBlob: isBlobPayload(prop.type),
         isEventStream,
         eventSchema: isEventStream ? getEventSchema(prop.type) : undefined,
       };
@@ -142,6 +146,7 @@ export const restJson1Protocol: Protocol = (
         name,
         isStreaming: true,
         isRaw: false,
+        isBlob: false,
         isEventStream,
         eventSchema: isEventStream ? getEventSchema(prop.type) : undefined,
       };
@@ -324,6 +329,18 @@ export const restJson1Protocol: Protocol = (
         return result;
       }
 
+      // Non-streaming blob payload (e.g. geo-maps GetTile / GetStaticMap):
+      // the raw body bytes ARE the payload. Read them as bytes and re-encode
+      // to the wire (base64 string) form the Blob schema decodes from.
+      // The body is binary, not a JSON document, so JSON parsing is skipped.
+      if (outputPayloadProp?.isBlob) {
+        const bytes = yield* readStreamAsBytes(response.body);
+        if (bytes.byteLength > 0) {
+          result[outputPayloadProp.name] = bytesToBase64(bytes);
+        }
+        return result;
+      }
+
       // Non-streaming response - read body as text
       const bodyText = yield* readStreamAsText(response.body);
 
@@ -379,9 +396,12 @@ export const restJson1Protocol: Protocol = (
         extractJsonErrorCode(body);
 
       if (!rawErrorCode) {
-        return yield* new ParseError({
-          message: `No error code found in response. Headers: ${JSON.stringify(response.headers)}, Body: ${bodyText}`,
-        });
+        // Some services (API Gateway-fronted, e.g. IoT Managed Integrations)
+        // return error responses with no error code at all — no
+        // X-Amzn-Errortype header and no __type/code body field. Return an
+        // empty error code so the response parser can fall back to matching
+        // the operation's declared errors by smithy.api#httpError status.
+        return { errorCode: "", data: extractJsonErrorData(body) };
       }
 
       // Sanitize the error code
@@ -403,4 +423,25 @@ function isRawPayload(ast: AST.AST): boolean {
   if (ast._tag === "String") return true;
   if (AST.isUnion(ast)) return ast.types.some(isRawPayload);
   return false;
+}
+
+/**
+ * Check if AST represents a non-streaming blob payload (T.Blob — decoded
+ * Uint8Array with a base64-string wire form). For httpPayload bindings the
+ * HTTP body carries the raw bytes directly, so the deserializer must read
+ * bytes instead of JSON-parsing the body.
+ */
+function isBlobPayload(ast: AST.AST): boolean {
+  if (AST.isUnion(ast)) return ast.types.some(isBlobPayload);
+  return getIdentifier(ast) === "Blob";
+}
+
+/** Base64-encode bytes without blowing the stack on large payloads. */
+function bytesToBase64(bytes: Uint8Array): string {
+  let binary = "";
+  const chunkSize = 0x2000;
+  for (let i = 0; i < bytes.length; i += chunkSize) {
+    binary += String.fromCharCode(...bytes.subarray(i, i + chunkSize));
+  }
+  return btoa(binary);
 }

@@ -1,0 +1,16 @@
+{
+  "operations": {
+    "createChannel": {
+      "syntheticErrors": [
+        {
+          "name": "MediaLiveRoleNotYetTrusted",
+          "from": "UnprocessableEntityException",
+          "message": { "includes": "is a trusted service" }
+        }
+      ]
+    }
+  },
+  "errorCategories": {
+    "MediaLiveRoleNotYetTrusted": ["RetryableError"]
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "operations": {
+    "getPlaybackConfiguration": {
+      "syntheticErrors": [
+        {
+          "name": "PlaybackConfigurationNotFound",
+          "from": "NotFoundException",
+          "message": { "includes": "not found" }
+        }
+      ]
+    }
+  },
+  "errors": {
+    "PlaybackConfigurationNotFound": {
+      "message": { "type": "string" }
+    }
+  },
+  "errorCategories": {
+    "PlaybackConfigurationNotFound": ["NotFoundError"]
+  }
+}

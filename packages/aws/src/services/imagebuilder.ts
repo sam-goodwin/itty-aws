@@ -2116,7 +2116,7 @@ export interface DistributionConfiguration {
   name?: string;
   description?: string;
   distributions?: Distribution[];
-  timeoutMinutes: number;
+  timeoutMinutes?: number;
   dateCreated?: string;
   dateUpdated?: string;
   tags?: { [key: string]: string | undefined };
@@ -2128,7 +2128,7 @@ export const DistributionConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       name: S.optional(S.String),
       description: S.optional(S.String),
       distributions: S.optional(DistributionList),
-      timeoutMinutes: S.Number,
+      timeoutMinutes: S.optional(S.Number),
       dateCreated: S.optional(S.String),
       dateUpdated: S.optional(S.String),
       tags: S.optional(TagMap),
@@ -5586,82 +5586,100 @@ export const UpdateLifecyclePolicyResponse =
 export class CallRateLimitExceededException extends S.TaggedErrorClass<CallRateLimitExceededException>()(
   "CallRateLimitExceededException",
   { message: S.optional(S.String) },
+  T.HttpError(429),
 ).pipe(C.withThrottlingError) {}
 export class ClientException extends S.TaggedErrorClass<ClientException>()(
   "ClientException",
   { message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class ForbiddenException extends S.TaggedErrorClass<ForbiddenException>()(
   "ForbiddenException",
   { message: S.optional(S.String) },
+  T.HttpError(403),
 ).pipe(C.withAuthError) {}
 export class IdempotentParameterMismatchException extends S.TaggedErrorClass<IdempotentParameterMismatchException>()(
   "IdempotentParameterMismatchException",
   { message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class InvalidRequestException extends S.TaggedErrorClass<InvalidRequestException>()(
   "InvalidRequestException",
   { message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class ResourceInUseException extends S.TaggedErrorClass<ResourceInUseException>()(
   "ResourceInUseException",
   { message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class ServiceException extends S.TaggedErrorClass<ServiceException>()(
   "ServiceException",
   { message: S.optional(S.String) },
+  T.HttpError(500),
 ).pipe(C.withServerError) {}
 export class ServiceUnavailableException extends S.TaggedErrorClass<ServiceUnavailableException>()(
   "ServiceUnavailableException",
   { message: S.optional(S.String) },
+  T.HttpError(503),
 ).pipe(C.withServerError) {}
 export class DryRunOperationException extends S.TaggedErrorClass<DryRunOperationException>()(
   "DryRunOperationException",
   { message: S.optional(S.String) },
+  T.HttpError(412),
 ) {}
 export class InvalidParameterCombinationException extends S.TaggedErrorClass<InvalidParameterCombinationException>()(
   "InvalidParameterCombinationException",
   { message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class InvalidVersionNumberException extends S.TaggedErrorClass<InvalidVersionNumberException>()(
   "InvalidVersionNumberException",
   { message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
   "ServiceQuotaExceededException",
   { message: S.optional(S.String) },
+  T.HttpError(402),
 ).pipe(C.withQuotaError) {}
 export class ResourceAlreadyExistsException extends S.TaggedErrorClass<ResourceAlreadyExistsException>()(
   "ResourceAlreadyExistsException",
   { message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
+export class InvalidParameterValueException extends S.TaggedErrorClass<InvalidParameterValueException>()(
+  "InvalidParameterValueException",
+  { message: S.optional(S.String) },
+) {}
 export class ResourceDependencyException extends S.TaggedErrorClass<ResourceDependencyException>()(
   "ResourceDependencyException",
   { message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  {},
+) {}
 export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
   "AccessDeniedException",
   { message: S.optional(S.String) },
+  T.HttpError(403),
 ).pipe(C.withAuthError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
 export class TooManyRequestsException extends S.TaggedErrorClass<TooManyRequestsException>()(
   "TooManyRequestsException",
   { message: S.optional(S.String) },
+  T.HttpError(429),
 ).pipe(C.withThrottlingError) {}
 export class InvalidPaginationTokenException extends S.TaggedErrorClass<InvalidPaginationTokenException>()(
   "InvalidPaginationTokenException",
   { message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class InvalidParameterException extends S.TaggedErrorClass<InvalidParameterException>()(
   "InvalidParameterException",
   { message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class InvalidParameterValueException extends S.TaggedErrorClass<InvalidParameterValueException>()(
-  "InvalidParameterValueException",
-  { message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 
 //# Operations
@@ -5987,6 +6005,7 @@ export type CreateInfrastructureConfigurationError =
   | ServiceException
   | ServiceQuotaExceededException
   | ServiceUnavailableException
+  | InvalidParameterValueException
   | CommonErrors;
 /**
  * Creates a new infrastructure configuration. An infrastructure configuration defines
@@ -6011,6 +6030,7 @@ export const createInfrastructureConfiguration: API.OperationMethod<
     ServiceException,
     ServiceQuotaExceededException,
     ServiceUnavailableException,
+    InvalidParameterValueException,
   ],
   operationName: "CreateInfrastructureConfiguration",
 }));
@@ -6100,6 +6120,7 @@ export type DeleteComponentError =
   | ResourceDependencyException
   | ServiceException
   | ServiceUnavailableException
+  | ResourceNotFoundException
   | CommonErrors;
 /**
  * Deletes a component build version.
@@ -6120,6 +6141,7 @@ export const deleteComponent: API.OperationMethod<
     ResourceDependencyException,
     ServiceException,
     ServiceUnavailableException,
+    ResourceNotFoundException,
   ],
   operationName: "DeleteComponent",
 }));
@@ -6162,6 +6184,7 @@ export type DeleteDistributionConfigurationError =
   | ResourceDependencyException
   | ServiceException
   | ServiceUnavailableException
+  | ResourceNotFoundException
   | CommonErrors;
 /**
  * Deletes a distribution configuration.
@@ -6182,6 +6205,7 @@ export const deleteDistributionConfiguration: API.OperationMethod<
     ResourceDependencyException,
     ServiceException,
     ServiceUnavailableException,
+    ResourceNotFoundException,
   ],
   operationName: "DeleteDistributionConfiguration",
 }));
@@ -6240,6 +6264,7 @@ export type DeleteImagePipelineError =
   | ResourceDependencyException
   | ServiceException
   | ServiceUnavailableException
+  | ResourceNotFoundException
   | CommonErrors;
 /**
  * Deletes an image pipeline.
@@ -6260,6 +6285,7 @@ export const deleteImagePipeline: API.OperationMethod<
     ResourceDependencyException,
     ServiceException,
     ServiceUnavailableException,
+    ResourceNotFoundException,
   ],
   operationName: "DeleteImagePipeline",
 }));
@@ -6271,6 +6297,7 @@ export type DeleteImageRecipeError =
   | ResourceDependencyException
   | ServiceException
   | ServiceUnavailableException
+  | ResourceNotFoundException
   | CommonErrors;
 /**
  * Deletes an image recipe.
@@ -6291,6 +6318,7 @@ export const deleteImageRecipe: API.OperationMethod<
     ResourceDependencyException,
     ServiceException,
     ServiceUnavailableException,
+    ResourceNotFoundException,
   ],
   operationName: "DeleteImageRecipe",
 }));
@@ -6302,6 +6330,7 @@ export type DeleteInfrastructureConfigurationError =
   | ResourceDependencyException
   | ServiceException
   | ServiceUnavailableException
+  | ResourceNotFoundException
   | CommonErrors;
 /**
  * Deletes an infrastructure configuration.
@@ -6322,6 +6351,7 @@ export const deleteInfrastructureConfiguration: API.OperationMethod<
     ResourceDependencyException,
     ServiceException,
     ServiceUnavailableException,
+    ResourceNotFoundException,
   ],
   operationName: "DeleteInfrastructureConfiguration",
 }));
@@ -6437,6 +6467,7 @@ export type GetComponentError =
   | InvalidRequestException
   | ServiceException
   | ServiceUnavailableException
+  | ResourceNotFoundException
   | CommonErrors;
 /**
  * Gets a component object.
@@ -6456,6 +6487,7 @@ export const getComponent: API.OperationMethod<
     InvalidRequestException,
     ServiceException,
     ServiceUnavailableException,
+    ResourceNotFoundException,
   ],
   operationName: "GetComponent",
 }));
@@ -6553,6 +6585,7 @@ export type GetDistributionConfigurationError =
   | InvalidRequestException
   | ServiceException
   | ServiceUnavailableException
+  | ResourceNotFoundException
   | CommonErrors;
 /**
  * Gets a distribution configuration.
@@ -6572,6 +6605,7 @@ export const getDistributionConfiguration: API.OperationMethod<
     InvalidRequestException,
     ServiceException,
     ServiceUnavailableException,
+    ResourceNotFoundException,
   ],
   operationName: "GetDistributionConfiguration",
 }));
@@ -6611,6 +6645,7 @@ export type GetImagePipelineError =
   | InvalidRequestException
   | ServiceException
   | ServiceUnavailableException
+  | ResourceNotFoundException
   | CommonErrors;
 /**
  * Gets an image pipeline.
@@ -6630,6 +6665,7 @@ export const getImagePipeline: API.OperationMethod<
     InvalidRequestException,
     ServiceException,
     ServiceUnavailableException,
+    ResourceNotFoundException,
   ],
   operationName: "GetImagePipeline",
 }));
@@ -6669,6 +6705,7 @@ export type GetImageRecipeError =
   | InvalidRequestException
   | ServiceException
   | ServiceUnavailableException
+  | ResourceNotFoundException
   | CommonErrors;
 /**
  * Gets an image recipe.
@@ -6688,6 +6725,7 @@ export const getImageRecipe: API.OperationMethod<
     InvalidRequestException,
     ServiceException,
     ServiceUnavailableException,
+    ResourceNotFoundException,
   ],
   operationName: "GetImageRecipe",
 }));
@@ -6727,6 +6765,7 @@ export type GetInfrastructureConfigurationError =
   | InvalidRequestException
   | ServiceException
   | ServiceUnavailableException
+  | ResourceNotFoundException
   | CommonErrors;
 /**
  * Gets an infrastructure configuration.
@@ -6746,6 +6785,7 @@ export const getInfrastructureConfiguration: API.OperationMethod<
     InvalidRequestException,
     ServiceException,
     ServiceUnavailableException,
+    ResourceNotFoundException,
   ],
   operationName: "GetInfrastructureConfiguration",
 }));
@@ -7028,6 +7068,7 @@ export type ListComponentBuildVersionsError =
   | InvalidRequestException
   | ServiceException
   | ServiceUnavailableException
+  | ResourceNotFoundException
   | CommonErrors;
 /**
  * Returns the list of component build versions for the specified component
@@ -7064,6 +7105,7 @@ export const listComponentBuildVersions: API.OperationMethod<
     InvalidRequestException,
     ServiceException,
     ServiceUnavailableException,
+    ResourceNotFoundException,
   ],
   operationName: "ListComponentBuildVersions",
   pagination: {
@@ -8511,6 +8553,7 @@ export type UpdateDistributionConfigurationError =
   | ResourceInUseException
   | ServiceException
   | ServiceUnavailableException
+  | ResourceNotFoundException
   | CommonErrors;
 /**
  * Updates a new distribution configuration. Distribution configurations define and
@@ -8534,6 +8577,7 @@ export const updateDistributionConfiguration: API.OperationMethod<
     ResourceInUseException,
     ServiceException,
     ServiceUnavailableException,
+    ResourceNotFoundException,
   ],
   operationName: "UpdateDistributionConfiguration",
 }));
@@ -8546,6 +8590,7 @@ export type UpdateImagePipelineError =
   | ResourceInUseException
   | ServiceException
   | ServiceUnavailableException
+  | ResourceNotFoundException
   | CommonErrors;
 /**
  * Updates an image pipeline. Image pipelines enable you to automate the creation and
@@ -8573,6 +8618,7 @@ export const updateImagePipeline: API.OperationMethod<
     ResourceInUseException,
     ServiceException,
     ServiceUnavailableException,
+    ResourceNotFoundException,
   ],
   operationName: "UpdateImagePipeline",
 }));
@@ -8585,6 +8631,8 @@ export type UpdateInfrastructureConfigurationError =
   | ResourceInUseException
   | ServiceException
   | ServiceUnavailableException
+  | ResourceNotFoundException
+  | InvalidParameterValueException
   | CommonErrors;
 /**
  * Updates a new infrastructure configuration. An infrastructure configuration defines
@@ -8607,6 +8655,8 @@ export const updateInfrastructureConfiguration: API.OperationMethod<
     ResourceInUseException,
     ServiceException,
     ServiceUnavailableException,
+    ResourceNotFoundException,
+    InvalidParameterValueException,
   ],
   operationName: "UpdateInfrastructureConfiguration",
 }));

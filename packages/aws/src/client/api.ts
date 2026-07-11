@@ -13,7 +13,12 @@ import { SingleShotGen } from "effect/Utils";
 
 import { makeDefault, Retry } from "../retry.ts";
 import { makeEndpointResolver } from "../rules-engine/endpoint-resolver.ts";
-import { getAwsApiService, getAwsAuthSigv4, getPath } from "../traits.ts";
+import {
+  getAwsApiService,
+  getAwsAuthSigv2,
+  getAwsAuthSigv4,
+  getPath,
+} from "../traits.ts";
 import { getIdentifier } from "../util/ast.ts";
 import type { Operation } from "./operation.ts";
 import { makeRequestBuilder } from "./request-builder.ts";
@@ -66,6 +71,10 @@ export const make = <Op extends Operation<any, any, any>>(
     // Get SigV4 service name from annotations
     const sigv4 = getAwsAuthSigv4(inputAst);
 
+    // Legacy SigV2 (SimpleDB only) — when present it takes precedence and
+    // the request is signed via body parameters instead of headers.
+    const sigv2 = getAwsAuthSigv2(inputAst);
+
     // Create rules resolver (if rule set available)
     const resolveEndpoint = makeEndpointResolver(op);
 
@@ -73,6 +82,7 @@ export const make = <Op extends Operation<any, any, any>>(
       buildRequest,
       parseResponse,
       sigv4,
+      sigv2,
       resolveEndpoint,
       serviceSdkId,
       operationName,
@@ -84,6 +94,7 @@ export const make = <Op extends Operation<any, any, any>>(
       buildRequest,
       parseResponse,
       sigv4,
+      sigv2,
       resolveEndpoint: rulesResolver,
       serviceSdkId: _serviceSdkId,
       operationName: _operationName,
@@ -186,6 +197,98 @@ export const make = <Op extends Operation<any, any, any>>(
     const fullPath = queryString
       ? `${resolvedRequest.path}?${queryString}`
       : resolvedRequest.path;
+
+    // Legacy Signature Version 2 (SimpleDB is the sole remaining SigV2-only
+    // service). The signature is an HMAC-SHA256 over the sorted,
+    // RFC3986-encoded form parameters and travels IN the form-encoded body —
+    // there is no Authorization header. The classic endpoint rejects SigV4
+    // with `AuthFailure: access credentials are missing`.
+    if (sigv2) {
+      const rfc3986 = (s: string) =>
+        encodeURIComponent(s).replace(
+          /[!'()*]/g,
+          (c) => "%" + c.charCodeAt(0).toString(16).toUpperCase(),
+        );
+      const pairs: Array<[string, string]> = [];
+      const bodyStr =
+        typeof resolvedRequest.body === "string" ? resolvedRequest.body : "";
+      for (const part of bodyStr.split("&")) {
+        if (!part) continue;
+        const eq = part.indexOf("=");
+        pairs.push([
+          decodeURIComponent(eq === -1 ? part : part.slice(0, eq)),
+          eq === -1 ? "" : decodeURIComponent(part.slice(eq + 1)),
+        ]);
+      }
+      pairs.push(
+        ["AWSAccessKeyId", Redacted.value(credentials.accessKeyId)],
+        ["SignatureVersion", "2"],
+        ["SignatureMethod", "HmacSHA256"],
+        ["Timestamp", new Date().toISOString().replace(/\.\d{3}/, "")],
+      );
+      if (credentials.sessionToken) {
+        pairs.push(["SecurityToken", Redacted.value(credentials.sessionToken)]);
+      }
+      const canonical = pairs
+        .map(([k, v]) => [rfc3986(k), rfc3986(v)] as const)
+        .sort(([a, av], [b, bv]) =>
+          a < b ? -1 : a > b ? 1 : av < bv ? -1 : av > bv ? 1 : 0,
+        )
+        .map(([k, v]) => `${k}=${v}`)
+        .join("&");
+      const requestUrl = new URL(`${endpoint}${fullPath}`);
+      const stringToSign = [
+        resolvedRequest.method,
+        requestUrl.host,
+        requestUrl.pathname || "/",
+        canonical,
+      ].join("\n");
+      const signatureBytes = yield* Effect.promise(async () => {
+        const key = await crypto.subtle.importKey(
+          "raw",
+          new TextEncoder().encode(Redacted.value(credentials.secretAccessKey)),
+          { name: "HMAC", hash: "SHA-256" },
+          false,
+          ["sign"],
+        );
+        return crypto.subtle.sign(
+          "HMAC",
+          key,
+          new TextEncoder().encode(stringToSign),
+        );
+      });
+      const signature = Buffer.from(signatureBytes).toString("base64");
+      const signedBody = `${canonical}&Signature=${rfc3986(signature)}`;
+      const contentTypeV2 =
+        resolvedRequest.headers["Content-Type"] ??
+        resolvedRequest.headers["content-type"] ??
+        "application/x-www-form-urlencoded";
+
+      const httpRequestV2 = pipe(
+        HttpClientRequest.make(
+          resolvedRequest.method as "GET" | "POST" | "PUT" | "DELETE",
+        )(requestUrl.toString()),
+        HttpClientRequest.setHeaders(resolvedRequest.headers),
+        HttpClientRequest.setBody(HttpBody.text(signedBody, contentTypeV2)),
+      );
+
+      const clientV2 = yield* HttpClient.HttpClient;
+      const rawResponseV2 = yield* clientV2.execute(httpRequestV2);
+      const responseHeadersV2 = rawResponseV2.headers as Record<string, string>;
+      const isEmptyBodyV2 =
+        responseHeadersV2["content-length"] === "0" ||
+        rawResponseV2.status === 204;
+      const responseBodyV2 = isEmptyBodyV2
+        ? new ReadableStream<Uint8Array>({ start: (c) => c.close() })
+        : yield* Stream.toReadableStreamEffect(rawResponseV2.stream);
+
+      return yield* parseResponse({
+        status: rawResponseV2.status,
+        statusText: "OK",
+        headers: responseHeadersV2,
+        body: responseBodyV2,
+      });
+    }
 
     // For streaming bodies (ReadableStream), we can't compute a hash
     // so we use UNSIGNED-PAYLOAD and don't pass the body to the signer

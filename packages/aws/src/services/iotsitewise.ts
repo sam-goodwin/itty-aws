@@ -7227,6 +7227,7 @@ export const associateAssets: API.OperationMethod<
     ThrottlingException,
   ],
   operationName: "AssociateAssets",
+  endpointHostPrefix: "api.",
 }));
 export type AssociateTimeSeriesToAssetPropertyError =
   | ConflictingOperationException
@@ -7254,6 +7255,7 @@ export const associateTimeSeriesToAssetProperty: API.OperationMethod<
     ThrottlingException,
   ],
   operationName: "AssociateTimeSeriesToAssetProperty",
+  endpointHostPrefix: "api.",
 }));
 export type BatchAssociateProjectAssetsError =
   | InternalFailureException
@@ -7281,6 +7283,7 @@ export const batchAssociateProjectAssets: API.OperationMethod<
     ThrottlingException,
   ],
   operationName: "BatchAssociateProjectAssets",
+  endpointHostPrefix: "monitor.",
 }));
 export type BatchDisassociateProjectAssetsError =
   | InternalFailureException
@@ -7306,6 +7309,7 @@ export const batchDisassociateProjectAssets: API.OperationMethod<
     ThrottlingException,
   ],
   operationName: "BatchDisassociateProjectAssets",
+  endpointHostPrefix: "monitor.",
 }));
 export type BatchGetAssetPropertyAggregatesError =
   | InternalFailureException
@@ -7348,6 +7352,7 @@ export const batchGetAssetPropertyAggregates: API.OperationMethod<
     ThrottlingException,
   ],
   operationName: "BatchGetAssetPropertyAggregates",
+  endpointHostPrefix: "data.",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -7394,6 +7399,7 @@ export const batchGetAssetPropertyValue: API.OperationMethod<
     ThrottlingException,
   ],
   operationName: "BatchGetAssetPropertyValue",
+  endpointHostPrefix: "data.",
   pagination: { inputToken: "nextToken", outputToken: "nextToken" } as const,
 }));
 export type BatchGetAssetPropertyValueHistoryError =
@@ -7436,6 +7442,7 @@ export const batchGetAssetPropertyValueHistory: API.OperationMethod<
     ThrottlingException,
   ],
   operationName: "BatchGetAssetPropertyValueHistory",
+  endpointHostPrefix: "data.",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -7494,6 +7501,7 @@ export const batchPutAssetPropertyValue: API.OperationMethod<
     ThrottlingException,
   ],
   operationName: "BatchPutAssetPropertyValue",
+  endpointHostPrefix: "data.",
 }));
 export type CreateAccessPolicyError =
   | InternalFailureException
@@ -7524,6 +7532,7 @@ export const createAccessPolicy: API.OperationMethod<
     ThrottlingException,
   ],
   operationName: "CreateAccessPolicy",
+  endpointHostPrefix: "monitor.",
 }));
 export type CreateAssetError =
   | ConflictingOperationException
@@ -7556,6 +7565,7 @@ export const createAsset: API.OperationMethod<
     ThrottlingException,
   ],
   operationName: "CreateAsset",
+  endpointHostPrefix: "api.",
 }));
 export type CreateAssetModelError =
   | ConflictingOperationException
@@ -7605,6 +7615,7 @@ export const createAssetModel: API.OperationMethod<
     ThrottlingException,
   ],
   operationName: "CreateAssetModel",
+  endpointHostPrefix: "api.",
 }));
 export type CreateAssetModelCompositeModelError =
   | ConflictingOperationException
@@ -7658,6 +7669,7 @@ export const createAssetModelCompositeModel: API.OperationMethod<
     ThrottlingException,
   ],
   operationName: "CreateAssetModelCompositeModel",
+  endpointHostPrefix: "api.",
 }));
 export type CreateBulkImportJobError =
   | ConflictingOperationException
@@ -7702,6 +7714,7 @@ export const createBulkImportJob: API.OperationMethod<
     ThrottlingException,
   ],
   operationName: "CreateBulkImportJob",
+  endpointHostPrefix: "data.",
 }));
 export type CreateComputationModelError =
   | ConflictingOperationException
@@ -7733,6 +7746,7 @@ export const createComputationModel: API.OperationMethod<
     ThrottlingException,
   ],
   operationName: "CreateComputationModel",
+  endpointHostPrefix: "api.",
 }));
 export type CreateDashboardError =
   | InternalFailureException
@@ -7760,6 +7774,7 @@ export const createDashboard: API.OperationMethod<
     ThrottlingException,
   ],
   operationName: "CreateDashboard",
+  endpointHostPrefix: "monitor.",
 }));
 export type CreateDatasetError =
   | ConflictingOperationException
@@ -7791,6 +7806,7 @@ export const createDataset: API.OperationMethod<
     ThrottlingException,
   ],
   operationName: "CreateDataset",
+  endpointHostPrefix: "api.",
 }));
 export type CreateGatewayError =
   | InternalFailureException
@@ -7820,6 +7836,7 @@ export const createGateway: API.OperationMethod<
     ThrottlingException,
   ],
   operationName: "CreateGateway",
+  endpointHostPrefix: "api.",
 }));
 export type CreatePortalError =
   | InternalFailureException
@@ -7852,6 +7869,7 @@ export const createPortal: API.OperationMethod<
     ThrottlingException,
   ],
   operationName: "CreatePortal",
+  endpointHostPrefix: "monitor.",
 }));
 export type CreateProjectError =
   | InternalFailureException
@@ -7882,6 +7900,7 @@ export const createProject: API.OperationMethod<
     ThrottlingException,
   ],
   operationName: "CreateProject",
+  endpointHostPrefix: "monitor.",
 }));
 export type DeleteAccessPolicyError =
   | InternalFailureException
@@ -7909,6 +7928,7 @@ export const deleteAccessPolicy: API.OperationMethod<
     ThrottlingException,
   ],
   operationName: "DeleteAccessPolicy",
+  endpointHostPrefix: "monitor.",
 }));
 export type DeleteAssetError =
   | ConflictingOperationException
@@ -7940,6 +7960,7 @@ export const deleteAsset: API.OperationMethod<
     ThrottlingException,
   ],
   operationName: "DeleteAsset",
+  endpointHostPrefix: "api.",
 }));
 export type DeleteAssetModelError =
   | ConflictingOperationException
@@ -7973,6 +7994,7 @@ export const deleteAssetModel: API.OperationMethod<
     ThrottlingException,
   ],
   operationName: "DeleteAssetModel",
+  endpointHostPrefix: "api.",
 }));
 export type DeleteAssetModelCompositeModelError =
   | ConflictingOperationException
@@ -8006,6 +8028,7 @@ export const deleteAssetModelCompositeModel: API.OperationMethod<
     ThrottlingException,
   ],
   operationName: "DeleteAssetModelCompositeModel",
+  endpointHostPrefix: "api.",
 }));
 export type DeleteAssetModelInterfaceRelationshipError =
   | ConflictingOperationException
@@ -8034,6 +8057,7 @@ export const deleteAssetModelInterfaceRelationship: API.OperationMethod<
     ThrottlingException,
   ],
   operationName: "DeleteAssetModelInterfaceRelationship",
+  endpointHostPrefix: "api.",
 }));
 export type DeleteComputationModelError =
   | ConflictingOperationException
@@ -8061,6 +8085,7 @@ export const deleteComputationModel: API.OperationMethod<
     ThrottlingException,
   ],
   operationName: "DeleteComputationModel",
+  endpointHostPrefix: "api.",
 }));
 export type DeleteDashboardError =
   | InternalFailureException
@@ -8086,6 +8111,7 @@ export const deleteDashboard: API.OperationMethod<
     ThrottlingException,
   ],
   operationName: "DeleteDashboard",
+  endpointHostPrefix: "monitor.",
 }));
 export type DeleteDatasetError =
   | ConflictingOperationException
@@ -8113,6 +8139,7 @@ export const deleteDataset: API.OperationMethod<
     ThrottlingException,
   ],
   operationName: "DeleteDataset",
+  endpointHostPrefix: "api.",
 }));
 export type DeleteGatewayError =
   | ConflictingOperationException
@@ -8141,6 +8168,7 @@ export const deleteGateway: API.OperationMethod<
     ThrottlingException,
   ],
   operationName: "DeleteGateway",
+  endpointHostPrefix: "api.",
 }));
 export type DeletePortalError =
   | ConflictingOperationException
@@ -8168,6 +8196,7 @@ export const deletePortal: API.OperationMethod<
     ThrottlingException,
   ],
   operationName: "DeletePortal",
+  endpointHostPrefix: "monitor.",
 }));
 export type DeleteProjectError =
   | InternalFailureException
@@ -8193,6 +8222,7 @@ export const deleteProject: API.OperationMethod<
     ThrottlingException,
   ],
   operationName: "DeleteProject",
+  endpointHostPrefix: "monitor.",
 }));
 export type DeleteTimeSeriesError =
   | ConflictingOperationException
@@ -8234,6 +8264,7 @@ export const deleteTimeSeries: API.OperationMethod<
     ThrottlingException,
   ],
   operationName: "DeleteTimeSeries",
+  endpointHostPrefix: "api.",
 }));
 export type DescribeAccessPolicyError =
   | InternalFailureException
@@ -8260,6 +8291,7 @@ export const describeAccessPolicy: API.OperationMethod<
     ThrottlingException,
   ],
   operationName: "DescribeAccessPolicy",
+  endpointHostPrefix: "monitor.",
 }));
 export type DescribeActionError =
   | InternalFailureException
@@ -8285,6 +8317,7 @@ export const describeAction: API.OperationMethod<
     ThrottlingException,
   ],
   operationName: "DescribeAction",
+  endpointHostPrefix: "api.",
 }));
 export type DescribeAssetError =
   | InternalFailureException
@@ -8310,6 +8343,7 @@ export const describeAsset: API.OperationMethod<
     ThrottlingException,
   ],
   operationName: "DescribeAsset",
+  endpointHostPrefix: "api.",
 }));
 export type DescribeAssetCompositeModelError =
   | InternalFailureException
@@ -8338,6 +8372,7 @@ export const describeAssetCompositeModel: API.OperationMethod<
     ThrottlingException,
   ],
   operationName: "DescribeAssetCompositeModel",
+  endpointHostPrefix: "api.",
 }));
 export type DescribeAssetModelError =
   | InternalFailureException
@@ -8365,6 +8400,7 @@ export const describeAssetModel: API.OperationMethod<
     ThrottlingException,
   ],
   operationName: "DescribeAssetModel",
+  endpointHostPrefix: "api.",
 }));
 export type DescribeAssetModelCompositeModelError =
   | InternalFailureException
@@ -8392,6 +8428,7 @@ export const describeAssetModelCompositeModel: API.OperationMethod<
     ThrottlingException,
   ],
   operationName: "DescribeAssetModelCompositeModel",
+  endpointHostPrefix: "api.",
 }));
 export type DescribeAssetModelInterfaceRelationshipError =
   | InternalFailureException
@@ -8418,6 +8455,7 @@ export const describeAssetModelInterfaceRelationship: API.OperationMethod<
     ThrottlingException,
   ],
   operationName: "DescribeAssetModelInterfaceRelationship",
+  endpointHostPrefix: "api.",
 }));
 export type DescribeAssetPropertyError =
   | InternalFailureException
@@ -8450,6 +8488,7 @@ export const describeAssetProperty: API.OperationMethod<
     ThrottlingException,
   ],
   operationName: "DescribeAssetProperty",
+  endpointHostPrefix: "api.",
 }));
 export type DescribeBulkImportJobError =
   | InternalFailureException
@@ -8476,6 +8515,7 @@ export const describeBulkImportJob: API.OperationMethod<
     ThrottlingException,
   ],
   operationName: "DescribeBulkImportJob",
+  endpointHostPrefix: "data.",
 }));
 export type DescribeComputationModelError =
   | InternalFailureException
@@ -8501,6 +8541,7 @@ export const describeComputationModel: API.OperationMethod<
     ThrottlingException,
   ],
   operationName: "DescribeComputationModel",
+  endpointHostPrefix: "api.",
 }));
 export type DescribeComputationModelExecutionSummaryError =
   | InternalFailureException
@@ -8526,6 +8567,7 @@ export const describeComputationModelExecutionSummary: API.OperationMethod<
     ThrottlingException,
   ],
   operationName: "DescribeComputationModelExecutionSummary",
+  endpointHostPrefix: "api.",
 }));
 export type DescribeDashboardError =
   | InternalFailureException
@@ -8551,6 +8593,7 @@ export const describeDashboard: API.OperationMethod<
     ThrottlingException,
   ],
   operationName: "DescribeDashboard",
+  endpointHostPrefix: "monitor.",
 }));
 export type DescribeDatasetError =
   | InternalFailureException
@@ -8576,6 +8619,7 @@ export const describeDataset: API.OperationMethod<
     ThrottlingException,
   ],
   operationName: "DescribeDataset",
+  endpointHostPrefix: "api.",
 }));
 export type DescribeDefaultEncryptionConfigurationError =
   | InternalFailureException
@@ -8601,6 +8645,7 @@ export const describeDefaultEncryptionConfiguration: API.OperationMethod<
     ThrottlingException,
   ],
   operationName: "DescribeDefaultEncryptionConfiguration",
+  endpointHostPrefix: "api.",
 }));
 export type DescribeExecutionError =
   | InternalFailureException
@@ -8626,6 +8671,7 @@ export const describeExecution: API.OperationMethod<
     ThrottlingException,
   ],
   operationName: "DescribeExecution",
+  endpointHostPrefix: "api.",
 }));
 export type DescribeGatewayError =
   | InternalFailureException
@@ -8651,6 +8697,7 @@ export const describeGateway: API.OperationMethod<
     ThrottlingException,
   ],
   operationName: "DescribeGateway",
+  endpointHostPrefix: "api.",
 }));
 export type DescribeGatewayCapabilityConfigurationError =
   | InternalFailureException
@@ -8688,6 +8735,7 @@ export const describeGatewayCapabilityConfiguration: API.OperationMethod<
     ThrottlingException,
   ],
   operationName: "DescribeGatewayCapabilityConfiguration",
+  endpointHostPrefix: "api.",
 }));
 export type DescribeLoggingOptionsError =
   | InternalFailureException
@@ -8713,6 +8761,7 @@ export const describeLoggingOptions: API.OperationMethod<
     ThrottlingException,
   ],
   operationName: "DescribeLoggingOptions",
+  endpointHostPrefix: "api.",
 }));
 export type DescribePortalError =
   | InternalFailureException
@@ -8738,6 +8787,7 @@ export const describePortal: API.OperationMethod<
     ThrottlingException,
   ],
   operationName: "DescribePortal",
+  endpointHostPrefix: "monitor.",
 }));
 export type DescribeProjectError =
   | InternalFailureException
@@ -8763,6 +8813,7 @@ export const describeProject: API.OperationMethod<
     ThrottlingException,
   ],
   operationName: "DescribeProject",
+  endpointHostPrefix: "monitor.",
 }));
 export type DescribeStorageConfigurationError =
   | ConflictingOperationException
@@ -8792,6 +8843,7 @@ export const describeStorageConfiguration: API.OperationMethod<
     ThrottlingException,
   ],
   operationName: "DescribeStorageConfiguration",
+  endpointHostPrefix: "api.",
 }));
 export type DescribeTimeSeriesError =
   | InternalFailureException
@@ -8829,6 +8881,7 @@ export const describeTimeSeries: API.OperationMethod<
     ThrottlingException,
   ],
   operationName: "DescribeTimeSeries",
+  endpointHostPrefix: "api.",
 }));
 export type DisassociateAssetsError =
   | ConflictingOperationException
@@ -8857,6 +8910,7 @@ export const disassociateAssets: API.OperationMethod<
     ThrottlingException,
   ],
   operationName: "DisassociateAssets",
+  endpointHostPrefix: "api.",
 }));
 export type DisassociateTimeSeriesFromAssetPropertyError =
   | ConflictingOperationException
@@ -8884,6 +8938,7 @@ export const disassociateTimeSeriesFromAssetProperty: API.OperationMethod<
     ThrottlingException,
   ],
   operationName: "DisassociateTimeSeriesFromAssetProperty",
+  endpointHostPrefix: "api.",
 }));
 export type ExecuteActionError =
   | ConflictingOperationException
@@ -8913,6 +8968,7 @@ export const executeAction: API.OperationMethod<
     ThrottlingException,
   ],
   operationName: "ExecuteAction",
+  endpointHostPrefix: "api.",
 }));
 export type ExecuteQueryError =
   | AccessDeniedException
@@ -8960,6 +9016,7 @@ export const executeQuery: API.OperationMethod<
     ValidationException,
   ],
   operationName: "ExecuteQuery",
+  endpointHostPrefix: "data.",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -9016,6 +9073,7 @@ export const getAssetPropertyAggregates: API.OperationMethod<
     ThrottlingException,
   ],
   operationName: "GetAssetPropertyAggregates",
+  endpointHostPrefix: "data.",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -9057,6 +9115,7 @@ export const getAssetPropertyValue: API.OperationMethod<
     ThrottlingException,
   ],
   operationName: "GetAssetPropertyValue",
+  endpointHostPrefix: "data.",
 }));
 export type GetAssetPropertyValueHistoryError =
   | InternalFailureException
@@ -9107,6 +9166,7 @@ export const getAssetPropertyValueHistory: API.OperationMethod<
     ThrottlingException,
   ],
   operationName: "GetAssetPropertyValueHistory",
+  endpointHostPrefix: "data.",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -9167,6 +9227,7 @@ export const getInterpolatedAssetPropertyValues: API.OperationMethod<
     ThrottlingException,
   ],
   operationName: "GetInterpolatedAssetPropertyValues",
+  endpointHostPrefix: "data.",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -9204,6 +9265,7 @@ export const invokeAssistant: API.OperationMethod<
     ThrottlingException,
   ],
   operationName: "InvokeAssistant",
+  endpointHostPrefix: "data.",
 }));
 export type ListAccessPoliciesError =
   | InternalFailureException
@@ -9243,6 +9305,7 @@ export const listAccessPolicies: API.OperationMethod<
     ThrottlingException,
   ],
   operationName: "ListAccessPolicies",
+  endpointHostPrefix: "monitor.",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -9289,6 +9352,7 @@ export const listActions: API.OperationMethod<
     ThrottlingException,
   ],
   operationName: "ListActions",
+  endpointHostPrefix: "api.",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -9335,6 +9399,7 @@ export const listAssetModelCompositeModels: API.OperationMethod<
     ThrottlingException,
   ],
   operationName: "ListAssetModelCompositeModels",
+  endpointHostPrefix: "api.",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -9383,6 +9448,7 @@ export const listAssetModelProperties: API.OperationMethod<
     ThrottlingException,
   ],
   operationName: "ListAssetModelProperties",
+  endpointHostPrefix: "api.",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -9427,6 +9493,7 @@ export const listAssetModels: API.OperationMethod<
     ThrottlingException,
   ],
   operationName: "ListAssetModels",
+  endpointHostPrefix: "api.",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -9475,6 +9542,7 @@ export const listAssetProperties: API.OperationMethod<
     ThrottlingException,
   ],
   operationName: "ListAssetProperties",
+  endpointHostPrefix: "api.",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -9523,6 +9591,7 @@ export const listAssetRelationships: API.OperationMethod<
     ThrottlingException,
   ],
   operationName: "ListAssetRelationships",
+  endpointHostPrefix: "api.",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -9579,6 +9648,7 @@ export const listAssets: API.OperationMethod<
     ThrottlingException,
   ],
   operationName: "ListAssets",
+  endpointHostPrefix: "api.",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -9631,6 +9701,7 @@ export const listAssociatedAssets: API.OperationMethod<
     ThrottlingException,
   ],
   operationName: "ListAssociatedAssets",
+  endpointHostPrefix: "api.",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -9678,6 +9749,7 @@ export const listBulkImportJobs: API.OperationMethod<
     ThrottlingException,
   ],
   operationName: "ListBulkImportJobs",
+  endpointHostPrefix: "data.",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -9725,6 +9797,7 @@ export const listCompositionRelationships: API.OperationMethod<
     ThrottlingException,
   ],
   operationName: "ListCompositionRelationships",
+  endpointHostPrefix: "api.",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -9771,6 +9844,7 @@ export const listComputationModelDataBindingUsages: API.OperationMethod<
     ThrottlingException,
   ],
   operationName: "ListComputationModelDataBindingUsages",
+  endpointHostPrefix: "api.",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -9818,6 +9892,7 @@ export const listComputationModelResolveToResources: API.OperationMethod<
     ThrottlingException,
   ],
   operationName: "ListComputationModelResolveToResources",
+  endpointHostPrefix: "api.",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -9862,6 +9937,7 @@ export const listComputationModels: API.OperationMethod<
     ThrottlingException,
   ],
   operationName: "ListComputationModels",
+  endpointHostPrefix: "api.",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -9906,6 +9982,7 @@ export const listDashboards: API.OperationMethod<
     ThrottlingException,
   ],
   operationName: "ListDashboards",
+  endpointHostPrefix: "monitor.",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -9950,6 +10027,7 @@ export const listDatasets: API.OperationMethod<
     ThrottlingException,
   ],
   operationName: "ListDatasets",
+  endpointHostPrefix: "api.",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -9996,6 +10074,7 @@ export const listExecutions: API.OperationMethod<
     ThrottlingException,
   ],
   operationName: "ListExecutions",
+  endpointHostPrefix: "api.",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -10040,6 +10119,7 @@ export const listGateways: API.OperationMethod<
     ThrottlingException,
   ],
   operationName: "ListGateways",
+  endpointHostPrefix: "api.",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -10087,6 +10167,7 @@ export const listInterfaceRelationships: API.OperationMethod<
     ThrottlingException,
   ],
   operationName: "ListInterfaceRelationships",
+  endpointHostPrefix: "api.",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -10131,6 +10212,7 @@ export const listPortals: API.OperationMethod<
     ThrottlingException,
   ],
   operationName: "ListPortals",
+  endpointHostPrefix: "monitor.",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -10175,6 +10257,7 @@ export const listProjectAssets: API.OperationMethod<
     ThrottlingException,
   ],
   operationName: "ListProjectAssets",
+  endpointHostPrefix: "monitor.",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -10219,6 +10302,7 @@ export const listProjects: API.OperationMethod<
     ThrottlingException,
   ],
   operationName: "ListProjects",
+  endpointHostPrefix: "monitor.",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -10256,6 +10340,7 @@ export const listTagsForResource: API.OperationMethod<
     UnauthorizedException,
   ],
   operationName: "ListTagsForResource",
+  endpointHostPrefix: "api.",
 }));
 export type ListTimeSeriesError =
   | InternalFailureException
@@ -10296,6 +10381,7 @@ export const listTimeSeries: API.OperationMethod<
     ThrottlingException,
   ],
   operationName: "ListTimeSeries",
+  endpointHostPrefix: "api.",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -10332,6 +10418,7 @@ export const putAssetModelInterfaceRelationship: API.OperationMethod<
     ThrottlingException,
   ],
   operationName: "PutAssetModelInterfaceRelationship",
+  endpointHostPrefix: "api.",
 }));
 export type PutDefaultEncryptionConfigurationError =
   | ConflictingOperationException
@@ -10361,6 +10448,7 @@ export const putDefaultEncryptionConfiguration: API.OperationMethod<
     ThrottlingException,
   ],
   operationName: "PutDefaultEncryptionConfiguration",
+  endpointHostPrefix: "api.",
 }));
 export type PutLoggingOptionsError =
   | ConflictingOperationException
@@ -10388,6 +10476,7 @@ export const putLoggingOptions: API.OperationMethod<
     ThrottlingException,
   ],
   operationName: "PutLoggingOptions",
+  endpointHostPrefix: "api.",
 }));
 export type PutStorageConfigurationError =
   | ConflictingOperationException
@@ -10419,6 +10508,7 @@ export const putStorageConfiguration: API.OperationMethod<
     ThrottlingException,
   ],
   operationName: "PutStorageConfiguration",
+  endpointHostPrefix: "api.",
 }));
 export type TagResourceError =
   | ConflictingOperationException
@@ -10453,6 +10543,7 @@ export const tagResource: API.OperationMethod<
     UnauthorizedException,
   ],
   operationName: "TagResource",
+  endpointHostPrefix: "api.",
 }));
 export type UntagResourceError =
   | ConflictingOperationException
@@ -10484,6 +10575,7 @@ export const untagResource: API.OperationMethod<
     UnauthorizedException,
   ],
   operationName: "UntagResource",
+  endpointHostPrefix: "api.",
 }));
 export type UpdateAccessPolicyError =
   | InternalFailureException
@@ -10510,6 +10602,7 @@ export const updateAccessPolicy: API.OperationMethod<
     ThrottlingException,
   ],
   operationName: "UpdateAccessPolicy",
+  endpointHostPrefix: "monitor.",
 }));
 export type UpdateAssetError =
   | ConflictingOperationException
@@ -10540,6 +10633,7 @@ export const updateAsset: API.OperationMethod<
     ThrottlingException,
   ],
   operationName: "UpdateAsset",
+  endpointHostPrefix: "api.",
 }));
 export type UpdateAssetModelError =
   | ConflictingOperationException
@@ -10589,6 +10683,7 @@ export const updateAssetModel: API.OperationMethod<
     ThrottlingException,
   ],
   operationName: "UpdateAssetModel",
+  endpointHostPrefix: "api.",
 }));
 export type UpdateAssetModelCompositeModelError =
   | ConflictingOperationException
@@ -10638,6 +10733,7 @@ export const updateAssetModelCompositeModel: API.OperationMethod<
     ThrottlingException,
   ],
   operationName: "UpdateAssetModelCompositeModel",
+  endpointHostPrefix: "api.",
 }));
 export type UpdateAssetPropertyError =
   | ConflictingOperationException
@@ -10669,6 +10765,7 @@ export const updateAssetProperty: API.OperationMethod<
     ThrottlingException,
   ],
   operationName: "UpdateAssetProperty",
+  endpointHostPrefix: "api.",
 }));
 export type UpdateComputationModelError =
   | ConflictingOperationException
@@ -10700,6 +10797,7 @@ export const updateComputationModel: API.OperationMethod<
     ThrottlingException,
   ],
   operationName: "UpdateComputationModel",
+  endpointHostPrefix: "api.",
 }));
 export type UpdateDashboardError =
   | InternalFailureException
@@ -10725,6 +10823,7 @@ export const updateDashboard: API.OperationMethod<
     ThrottlingException,
   ],
   operationName: "UpdateDashboard",
+  endpointHostPrefix: "monitor.",
 }));
 export type UpdateDatasetError =
   | ConflictingOperationException
@@ -10754,6 +10853,7 @@ export const updateDataset: API.OperationMethod<
     ThrottlingException,
   ],
   operationName: "UpdateDataset",
+  endpointHostPrefix: "api.",
 }));
 export type UpdateGatewayError =
   | ConflictingOperationException
@@ -10781,6 +10881,7 @@ export const updateGateway: API.OperationMethod<
     ThrottlingException,
   ],
   operationName: "UpdateGateway",
+  endpointHostPrefix: "api.",
 }));
 export type UpdateGatewayCapabilityConfigurationError =
   | ConflictingOperationException
@@ -10826,6 +10927,7 @@ export const updateGatewayCapabilityConfiguration: API.OperationMethod<
     ThrottlingException,
   ],
   operationName: "UpdateGatewayCapabilityConfiguration",
+  endpointHostPrefix: "api.",
 }));
 export type UpdatePortalError =
   | ConflictingOperationException
@@ -10853,6 +10955,7 @@ export const updatePortal: API.OperationMethod<
     ThrottlingException,
   ],
   operationName: "UpdatePortal",
+  endpointHostPrefix: "monitor.",
 }));
 export type UpdateProjectError =
   | InternalFailureException
@@ -10878,4 +10981,5 @@ export const updateProject: API.OperationMethod<
     ThrottlingException,
   ],
   operationName: "UpdateProject",
+  endpointHostPrefix: "monitor.",
 }));

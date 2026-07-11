@@ -1,0 +1,9 @@
+{
+  "structures": {
+    "Event": {
+      "members": {
+        "payload": { "optional": true }
+      }
+    }
+  }
+}

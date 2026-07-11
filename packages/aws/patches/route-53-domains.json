@@ -1,0 +1,20 @@
+{
+  "operations": {
+    "getDomainDetail": {
+      "syntheticErrors": [
+        {
+          "name": "DomainNotFound",
+          "from": "InvalidInput",
+          "message": {
+            "includes": "not found in account"
+          }
+        }
+      ]
+    }
+  },
+  "errorCategories": {
+    "DomainNotFound": [
+      "NotFoundError"
+    ]
+  }
+}

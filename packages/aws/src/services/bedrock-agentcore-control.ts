@@ -1302,10 +1302,10 @@ export const CreateAgentRuntimeRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   identifier: "CreateAgentRuntimeRequest",
 }) as any as S.Schema<CreateAgentRuntimeRequest>;
 export interface WorkloadIdentityDetails {
-  workloadIdentityArn: string;
+  workloadIdentityArn?: string;
 }
 export const WorkloadIdentityDetails = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ workloadIdentityArn: S.String }),
+  () => S.Struct({ workloadIdentityArn: S.optional(S.String) }),
 ).annotate({
   identifier: "WorkloadIdentityDetails",
 }) as any as S.Schema<WorkloadIdentityDetails>;
@@ -13421,18 +13421,22 @@ export const ListWorkloadIdentitiesResponse =
 export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
   "AccessDeniedException",
   { message: S.optional(S.String) },
+  T.HttpError(403),
 ).pipe(C.withAuthError) {}
 export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
   "InternalServerException",
   { message: S.optional(S.String) },
+  T.HttpError(500),
 ).pipe(C.withServerError) {}
 export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
   "ResourceNotFoundException",
   { message: S.optional(S.String) },
+  T.HttpError(404),
 ).pipe(C.withBadRequestError) {}
 export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
   "ThrottlingException",
   { message: S.optional(S.String) },
+  T.HttpError(429),
 ).pipe(C.withThrottlingError) {}
 export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
   "ValidationException",
@@ -13441,44 +13445,52 @@ export class ValidationException extends S.TaggedErrorClass<ValidationException>
     reason: ValidationExceptionReason,
     fieldList: S.optional(ValidationExceptionFieldList),
   },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class UnauthorizedException extends S.TaggedErrorClass<UnauthorizedException>()(
   "UnauthorizedException",
   { message: S.optional(S.String) },
+  T.HttpError(401),
 ).pipe(C.withAuthError) {}
 export class ConcurrentModificationException extends S.TaggedErrorClass<ConcurrentModificationException>()(
   "ConcurrentModificationException",
   { message: S.String },
+  T.HttpError(409),
 ).pipe(C.withConflictError) {}
 export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
   "ServiceQuotaExceededException",
   { message: S.optional(S.String) },
+  T.HttpError(402),
 ).pipe(C.withQuotaError) {}
 export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
   "ConflictException",
   { message: S.optional(S.String) },
+  T.HttpError(409),
 ).pipe(C.withConflictError) {}
 export class DecryptionFailure extends S.TaggedErrorClass<DecryptionFailure>()(
   "DecryptionFailure",
   { message: S.String },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class EncryptionFailure extends S.TaggedErrorClass<EncryptionFailure>()(
   "EncryptionFailure",
   { message: S.String },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class ResourceLimitExceededException extends S.TaggedErrorClass<ResourceLimitExceededException>()(
   "ResourceLimitExceededException",
   { message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class ServiceException extends S.TaggedErrorClass<ServiceException>()(
   "ServiceException",
   { message: S.optional(S.String) },
-  T.Retryable(),
+  T.all(T.HttpError(500), T.Retryable()),
 ).pipe(C.withServerError, C.withRetryableError) {}
 export class ThrottledException extends S.TaggedErrorClass<ThrottledException>()(
   "ThrottledException",
   { message: S.optional(S.String) },
-  T.Retryable(),
+  T.all(T.HttpError(429), T.Retryable()),
 ).pipe(C.withThrottlingError, C.withRetryableError) {}
 
 //# Operations

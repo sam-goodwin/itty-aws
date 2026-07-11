@@ -24,6 +24,21 @@ export const readStreamAsText = (
     : Effect.promise(() => new globalThis.Response(stream).text());
 
 /**
+ * Read a ReadableStream fully as raw bytes (for non-streaming binary
+ * responses such as httpPayload blobs).
+ * This is lazy - only consumes when called.
+ */
+export const readStreamAsBytes = (
+  stream: string | ReadableStream<Uint8Array>,
+): Effect.Effect<Uint8Array> =>
+  typeof stream === "string"
+    ? Effect.succeed(new TextEncoder().encode(stream))
+    : Effect.promise(async () => {
+        const buffer = await new globalThis.Response(stream).arrayBuffer();
+        return new Uint8Array(buffer);
+      });
+
+/**
  * Convert Effect Stream to ReadableStream for fetch.
  */
 export const effectStreamToReadable = <Err>(

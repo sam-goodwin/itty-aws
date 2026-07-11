@@ -951,14 +951,17 @@ export const UpdateRoomResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
   "AccessDeniedException",
   { message: S.String },
+  T.HttpError(403),
 ).pipe(C.withAuthError) {}
 export class PendingVerification extends S.TaggedErrorClass<PendingVerification>()(
   "PendingVerification",
   { message: S.String },
+  T.HttpError(403),
 ).pipe(C.withAuthError) {}
 export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
   "ResourceNotFoundException",
   { message: S.String, resourceId: S.String, resourceType: S.String },
+  T.HttpError(404),
 ).pipe(C.withBadRequestError) {}
 export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
   "ValidationException",
@@ -967,10 +970,12 @@ export class ValidationException extends S.TaggedErrorClass<ValidationException>
     reason: S.String,
     fieldList: S.optional(ValidationExceptionFieldList),
   },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
   "ConflictException",
   { message: S.String, resourceId: S.String, resourceType: S.String },
+  T.HttpError(409),
 ).pipe(C.withConflictError) {}
 export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
   "ServiceQuotaExceededException",
@@ -980,19 +985,16 @@ export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuo
     resourceType: S.String,
     limit: S.Number,
   },
+  T.HttpError(402),
 ).pipe(C.withQuotaError) {}
 export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
   "ThrottlingException",
-  {
-    message: S.String,
-    resourceId: S.String,
-    resourceType: S.String,
-    limit: S.Number,
-  },
-).pipe(C.withThrottlingError) {}
+  {},
+) {}
 export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
   "InternalServerException",
   { message: S.String },
+  T.HttpError(500),
 ).pipe(C.withServerError) {}
 
 //# Operations
@@ -1042,6 +1044,7 @@ export type CreateLoggingConfigurationError =
   | ResourceNotFoundException
   | ServiceQuotaExceededException
   | ValidationException
+  | ThrottlingException
   | CommonErrors;
 /**
  * Creates a logging configuration that allows clients to store and record sent
@@ -1062,6 +1065,7 @@ export const createLoggingConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     ServiceQuotaExceededException,
     ValidationException,
+    ThrottlingException,
   ],
   operationName: "CreateLoggingConfiguration",
 }));
@@ -1072,6 +1076,7 @@ export type CreateRoomError =
   | ResourceNotFoundException
   | ServiceQuotaExceededException
   | ValidationException
+  | ThrottlingException
   | CommonErrors;
 /**
  * Creates a room that allows clients to connect and pass messages.
@@ -1091,6 +1096,7 @@ export const createRoom: API.OperationMethod<
     ResourceNotFoundException,
     ServiceQuotaExceededException,
     ValidationException,
+    ThrottlingException,
   ],
   operationName: "CreateRoom",
 }));
@@ -1100,6 +1106,7 @@ export type DeleteLoggingConfigurationError =
   | PendingVerification
   | ResourceNotFoundException
   | ValidationException
+  | ThrottlingException
   | CommonErrors;
 /**
  * Deletes the specified logging configuration.
@@ -1118,6 +1125,7 @@ export const deleteLoggingConfiguration: API.OperationMethod<
     PendingVerification,
     ResourceNotFoundException,
     ValidationException,
+    ThrottlingException,
   ],
   operationName: "DeleteLoggingConfiguration",
 }));
@@ -1156,6 +1164,7 @@ export type DeleteRoomError =
   | PendingVerification
   | ResourceNotFoundException
   | ValidationException
+  | ThrottlingException
   | CommonErrors;
 /**
  * Deletes the specified room.
@@ -1173,6 +1182,7 @@ export const deleteRoom: API.OperationMethod<
     PendingVerification,
     ResourceNotFoundException,
     ValidationException,
+    ThrottlingException,
   ],
   operationName: "DeleteRoom",
 }));
@@ -1209,6 +1219,7 @@ export type GetLoggingConfigurationError =
   | AccessDeniedException
   | ResourceNotFoundException
   | ValidationException
+  | ThrottlingException
   | CommonErrors;
 /**
  * Gets the specified logging configuration.
@@ -1225,6 +1236,7 @@ export const getLoggingConfiguration: API.OperationMethod<
     AccessDeniedException,
     ResourceNotFoundException,
     ValidationException,
+    ThrottlingException,
   ],
   operationName: "GetLoggingConfiguration",
 }));
@@ -1232,6 +1244,7 @@ export type GetRoomError =
   | AccessDeniedException
   | ResourceNotFoundException
   | ValidationException
+  | ThrottlingException
   | CommonErrors;
 /**
  * Gets the specified room.
@@ -1248,12 +1261,14 @@ export const getRoom: API.OperationMethod<
     AccessDeniedException,
     ResourceNotFoundException,
     ValidationException,
+    ThrottlingException,
   ],
   operationName: "GetRoom",
 }));
 export type ListLoggingConfigurationsError =
   | AccessDeniedException
   | ValidationException
+  | ThrottlingException
   | CommonErrors;
 /**
  * Gets summary information about all your logging configurations in the AWS region where
@@ -1282,7 +1297,7 @@ export const listLoggingConfigurations: API.OperationMethod<
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListLoggingConfigurationsRequest,
   output: ListLoggingConfigurationsResponse,
-  errors: [AccessDeniedException, ValidationException],
+  errors: [AccessDeniedException, ValidationException, ThrottlingException],
   operationName: "ListLoggingConfigurations",
   pagination: {
     inputToken: "nextToken",
@@ -1294,6 +1309,7 @@ export type ListRoomsError =
   | AccessDeniedException
   | ResourceNotFoundException
   | ValidationException
+  | ThrottlingException
   | CommonErrors;
 /**
  * Gets summary information about all your rooms in the AWS region where the API request is
@@ -1326,6 +1342,7 @@ export const listRooms: API.OperationMethod<
     AccessDeniedException,
     ResourceNotFoundException,
     ValidationException,
+    ThrottlingException,
   ],
   operationName: "ListRooms",
   pagination: {
@@ -1338,6 +1355,7 @@ export type ListTagsForResourceError =
   | InternalServerException
   | ResourceNotFoundException
   | ValidationException
+  | ThrottlingException
   | CommonErrors;
 /**
  * Gets information about AWS tags for the specified ARN.
@@ -1354,6 +1372,7 @@ export const listTagsForResource: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
     ValidationException,
+    ThrottlingException,
   ],
   operationName: "ListTagsForResource",
 }));
@@ -1390,6 +1409,7 @@ export type TagResourceError =
   | InternalServerException
   | ResourceNotFoundException
   | ValidationException
+  | ThrottlingException
   | CommonErrors;
 /**
  * Adds or updates tags for the AWS resource with the specified ARN.
@@ -1406,6 +1426,7 @@ export const tagResource: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
     ValidationException,
+    ThrottlingException,
   ],
   operationName: "TagResource",
 }));
@@ -1413,6 +1434,7 @@ export type UntagResourceError =
   | InternalServerException
   | ResourceNotFoundException
   | ValidationException
+  | ThrottlingException
   | CommonErrors;
 /**
  * Removes tags from the resource with the specified ARN.
@@ -1429,6 +1451,7 @@ export const untagResource: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
     ValidationException,
+    ThrottlingException,
   ],
   operationName: "UntagResource",
 }));
@@ -1438,6 +1461,7 @@ export type UpdateLoggingConfigurationError =
   | PendingVerification
   | ResourceNotFoundException
   | ValidationException
+  | ThrottlingException
   | CommonErrors;
 /**
  * Updates a specified logging configuration.
@@ -1456,6 +1480,7 @@ export const updateLoggingConfiguration: API.OperationMethod<
     PendingVerification,
     ResourceNotFoundException,
     ValidationException,
+    ThrottlingException,
   ],
   operationName: "UpdateLoggingConfiguration",
 }));
@@ -1464,6 +1489,7 @@ export type UpdateRoomError =
   | PendingVerification
   | ResourceNotFoundException
   | ValidationException
+  | ThrottlingException
   | CommonErrors;
 /**
  * Updates a room’s configuration.
@@ -1481,6 +1507,7 @@ export const updateRoom: API.OperationMethod<
     PendingVerification,
     ResourceNotFoundException,
     ValidationException,
+    ThrottlingException,
   ],
   operationName: "UpdateRoom",
 }));

@@ -10334,14 +10334,17 @@ export const UpdateTestSetResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
   "InternalServerException",
   { message: S.optional(S.String) },
+  T.HttpError(500),
 ).pipe(C.withServerError) {}
 export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
   "ResourceNotFoundException",
   { message: S.optional(S.String) },
+  T.HttpError(404),
 ).pipe(C.withBadRequestError) {}
 export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
   "ServiceQuotaExceededException",
   { message: S.optional(S.String) },
+  T.HttpError(402),
 ).pipe(C.withQuotaError) {}
 export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
   "ThrottlingException",
@@ -10349,18 +10352,22 @@ export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>
     retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
     message: S.optional(S.String),
   },
+  T.HttpError(429),
 ).pipe(C.withThrottlingError) {}
 export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
   "ValidationException",
   { message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
   "ConflictException",
   { message: S.optional(S.String) },
+  T.HttpError(409),
 ).pipe(C.withConflictError) {}
 export class PreconditionFailedException extends S.TaggedErrorClass<PreconditionFailedException>()(
   "PreconditionFailedException",
   { message: S.optional(S.String) },
+  T.HttpError(412),
 ) {}
 
 //# Operations
@@ -12075,6 +12082,7 @@ export type ListBotAliasesError =
   | ServiceQuotaExceededException
   | ThrottlingException
   | ValidationException
+  | ResourceNotFoundException
   | CommonErrors;
 /**
  * Gets a list of aliases for the specified bot.
@@ -12107,6 +12115,7 @@ export const listBotAliases: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
     ValidationException,
+    ResourceNotFoundException,
   ],
   operationName: "ListBotAliases",
   pagination: {
@@ -12835,6 +12844,7 @@ export type ListIntentsError =
   | ServiceQuotaExceededException
   | ThrottlingException
   | ValidationException
+  | ResourceNotFoundException
   | CommonErrors;
 /**
  * Get a list of intents that meet the specified criteria.
@@ -12867,6 +12877,7 @@ export const listIntents: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
     ValidationException,
+    ResourceNotFoundException,
   ],
   operationName: "ListIntents",
   pagination: {
@@ -13143,6 +13154,7 @@ export type ListSlotTypesError =
   | ServiceQuotaExceededException
   | ThrottlingException
   | ValidationException
+  | ResourceNotFoundException
   | CommonErrors;
 /**
  * Gets a list of slot types that match the specified criteria.
@@ -13175,6 +13187,7 @@ export const listSlotTypes: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
     ValidationException,
+    ResourceNotFoundException,
   ],
   operationName: "ListSlotTypes",
   pagination: {

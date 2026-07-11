@@ -2521,6 +2521,13 @@ const addError = Effect.fn(function* (error: {
       );
     }
 
+    // Add httpError annotation if present (smithy.api#httpError). The
+    // response parser uses it as a status-based fallback for services whose
+    // error responses carry no error code (e.g. IoT Managed Integrations).
+    if (errorTraits?.httpError) {
+      annotations.push(`T.HttpError(${errorTraits.httpError})`);
+    }
+
     // Add retryable annotation if present (smithy.api#retryable)
     if (errorTraits?.retryable) {
       if (errorTraits.retryable.throttling) {

@@ -3546,6 +3546,14 @@ export class BadRequestException extends S.TaggedErrorClass<BadRequestException>
   "BadRequestException",
   { Message: S.optional(S.String) },
 ).pipe(C.withBadRequestError) {}
+export class PlaybackConfigurationNotFound extends S.TaggedErrorClass<PlaybackConfigurationNotFound>()(
+  "PlaybackConfigurationNotFound",
+  { message: S.optional(S.String) },
+  T.SyntheticError({
+    from: "NotFoundException",
+    message: { includes: "not found" },
+  }),
+).pipe(C.withNotFoundError) {}
 
 //# Operations
 export type ConfigureLogsForPlaybackConfigurationError = CommonErrors;
@@ -4118,7 +4126,9 @@ export const putPlaybackConfiguration: API.OperationMethod<
   errors: [],
   operationName: "PutPlaybackConfiguration",
 }));
-export type GetPlaybackConfigurationError = CommonErrors;
+export type GetPlaybackConfigurationError =
+  | PlaybackConfigurationNotFound
+  | CommonErrors;
 /**
  * Retrieves a playback configuration. For information about MediaTailor configurations, see Working with configurations in AWS Elemental MediaTailor.
  */
@@ -4130,7 +4140,7 @@ export const getPlaybackConfiguration: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetPlaybackConfigurationRequest,
   output: GetPlaybackConfigurationResponse,
-  errors: [],
+  errors: [PlaybackConfigurationNotFound],
   operationName: "GetPlaybackConfiguration",
 }));
 export type DeletePlaybackConfigurationError = CommonErrors;

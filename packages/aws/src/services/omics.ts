@@ -6749,45 +6749,52 @@ export const ListWorkflowVersionsResponse =
 export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
   "AccessDeniedException",
   { message: S.String },
+  T.HttpError(403),
 ).pipe(C.withAuthError) {}
 export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
   "InternalServerException",
   { message: S.String },
-  T.Retryable(),
+  T.all(T.HttpError(500), T.Retryable()),
 ).pipe(C.withServerError, C.withRetryableError) {}
 export class NotSupportedOperationException extends S.TaggedErrorClass<NotSupportedOperationException>()(
   "NotSupportedOperationException",
   { message: S.String },
+  T.HttpError(405),
 ).pipe(C.withBadRequestError) {}
 export class RequestTimeoutException extends S.TaggedErrorClass<RequestTimeoutException>()(
   "RequestTimeoutException",
   { message: S.String },
+  T.HttpError(408),
 ).pipe(C.withTimeoutError) {}
 export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
   "ResourceNotFoundException",
   { message: S.String },
+  T.HttpError(404),
 ).pipe(C.withBadRequestError) {}
 export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
   "ThrottlingException",
   { message: S.String },
-  T.Retryable({ throttling: true }),
+  T.all(T.HttpError(429), T.Retryable({ throttling: true })),
 ).pipe(C.withThrottlingError, C.withRetryableError) {}
 export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
   "ValidationException",
   { message: S.String },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
   "ServiceQuotaExceededException",
   { message: S.String },
+  T.HttpError(402),
 ).pipe(C.withQuotaError) {}
 export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
   "ConflictException",
   { message: S.String },
+  T.HttpError(409),
 ).pipe(C.withConflictError) {}
 export class RangeNotSatisfiableException extends S.TaggedErrorClass<RangeNotSatisfiableException>()(
   "RangeNotSatisfiableException",
   { message: S.String },
-  T.Retryable(),
+  T.all(T.HttpError(416), T.Retryable()),
 ).pipe(C.withRetryableError) {}
 
 //# Operations
@@ -6821,6 +6828,7 @@ export const deleteS3AccessPolicy: API.OperationMethod<
     ValidationException,
   ],
   operationName: "DeleteS3AccessPolicy",
+  endpointHostPrefix: "control-storage-",
 }));
 export type GetS3AccessPolicyError =
   | AccessDeniedException
@@ -6854,6 +6862,7 @@ export const getS3AccessPolicy: API.OperationMethod<
     ValidationException,
   ],
   operationName: "GetS3AccessPolicy",
+  endpointHostPrefix: "control-storage-",
 }));
 export type PutS3AccessPolicyError =
   | AccessDeniedException
@@ -6885,6 +6894,7 @@ export const putS3AccessPolicy: API.OperationMethod<
     ValidationException,
   ],
   operationName: "PutS3AccessPolicy",
+  endpointHostPrefix: "control-storage-",
 }));
 export type StartAnnotationImportJobError =
   | AccessDeniedException
@@ -6916,6 +6926,7 @@ export const startAnnotationImportJob: API.OperationMethod<
     ValidationException,
   ],
   operationName: "StartAnnotationImportJob",
+  endpointHostPrefix: "analytics-",
 }));
 export type GetAnnotationImportJobError =
   | AccessDeniedException
@@ -6945,6 +6956,7 @@ export const getAnnotationImportJob: API.OperationMethod<
     ValidationException,
   ],
   operationName: "GetAnnotationImportJob",
+  endpointHostPrefix: "analytics-",
 }));
 export type CancelAnnotationImportJobError =
   | AccessDeniedException
@@ -6974,6 +6986,7 @@ export const cancelAnnotationImportJob: API.OperationMethod<
     ValidationException,
   ],
   operationName: "CancelAnnotationImportJob",
+  endpointHostPrefix: "analytics-",
 }));
 export type ListAnnotationImportJobsError =
   | AccessDeniedException
@@ -7018,6 +7031,7 @@ export const listAnnotationImportJobs: API.OperationMethod<
     ValidationException,
   ],
   operationName: "ListAnnotationImportJobs",
+  endpointHostPrefix: "analytics-",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -7057,6 +7071,7 @@ export const createAnnotationStore: API.OperationMethod<
     ValidationException,
   ],
   operationName: "CreateAnnotationStore",
+  endpointHostPrefix: "analytics-",
 }));
 export type GetAnnotationStoreError =
   | AccessDeniedException
@@ -7086,6 +7101,7 @@ export const getAnnotationStore: API.OperationMethod<
     ValidationException,
   ],
   operationName: "GetAnnotationStore",
+  endpointHostPrefix: "analytics-",
 }));
 export type UpdateAnnotationStoreError =
   | AccessDeniedException
@@ -7115,6 +7131,7 @@ export const updateAnnotationStore: API.OperationMethod<
     ValidationException,
   ],
   operationName: "UpdateAnnotationStore",
+  endpointHostPrefix: "analytics-",
 }));
 export type DeleteAnnotationStoreError =
   | AccessDeniedException
@@ -7146,6 +7163,7 @@ export const deleteAnnotationStore: API.OperationMethod<
     ValidationException,
   ],
   operationName: "DeleteAnnotationStore",
+  endpointHostPrefix: "analytics-",
 }));
 export type ListAnnotationStoresError =
   | AccessDeniedException
@@ -7190,6 +7208,7 @@ export const listAnnotationStores: API.OperationMethod<
     ValidationException,
   ],
   operationName: "ListAnnotationStores",
+  endpointHostPrefix: "analytics-",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -7227,6 +7246,7 @@ export const createAnnotationStoreVersion: API.OperationMethod<
     ValidationException,
   ],
   operationName: "CreateAnnotationStoreVersion",
+  endpointHostPrefix: "analytics-",
 }));
 export type GetAnnotationStoreVersionError =
   | AccessDeniedException
@@ -7254,6 +7274,7 @@ export const getAnnotationStoreVersion: API.OperationMethod<
     ValidationException,
   ],
   operationName: "GetAnnotationStoreVersion",
+  endpointHostPrefix: "analytics-",
 }));
 export type UpdateAnnotationStoreVersionError =
   | AccessDeniedException
@@ -7281,6 +7302,7 @@ export const updateAnnotationStoreVersion: API.OperationMethod<
     ValidationException,
   ],
   operationName: "UpdateAnnotationStoreVersion",
+  endpointHostPrefix: "analytics-",
 }));
 export type ListAnnotationStoreVersionsError =
   | AccessDeniedException
@@ -7323,6 +7345,7 @@ export const listAnnotationStoreVersions: API.OperationMethod<
     ValidationException,
   ],
   operationName: "ListAnnotationStoreVersions",
+  endpointHostPrefix: "analytics-",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -7358,6 +7381,7 @@ export const deleteAnnotationStoreVersions: API.OperationMethod<
     ValidationException,
   ],
   operationName: "DeleteAnnotationStoreVersions",
+  endpointHostPrefix: "analytics-",
 }));
 export type CreateConfigurationError =
   | AccessDeniedException
@@ -7391,6 +7415,7 @@ export const createConfiguration: API.OperationMethod<
     ValidationException,
   ],
   operationName: "CreateConfiguration",
+  endpointHostPrefix: "workflows-",
 }));
 export type GetConfigurationError =
   | AccessDeniedException
@@ -7424,6 +7449,7 @@ export const getConfiguration: API.OperationMethod<
     ValidationException,
   ],
   operationName: "GetConfiguration",
+  endpointHostPrefix: "workflows-",
 }));
 export type DeleteConfigurationError =
   | AccessDeniedException
@@ -7457,6 +7483,7 @@ export const deleteConfiguration: API.OperationMethod<
     ValidationException,
   ],
   operationName: "DeleteConfiguration",
+  endpointHostPrefix: "workflows-",
 }));
 export type ListConfigurationsError =
   | AccessDeniedException
@@ -7505,6 +7532,7 @@ export const listConfigurations: API.OperationMethod<
     ValidationException,
   ],
   operationName: "ListConfigurations",
+  endpointHostPrefix: "workflows-",
   pagination: {
     inputToken: "startingToken",
     outputToken: "nextToken",
@@ -7542,6 +7570,7 @@ export const createReferenceStore: API.OperationMethod<
     ValidationException,
   ],
   operationName: "CreateReferenceStore",
+  endpointHostPrefix: "control-storage-",
 }));
 export type GetReferenceStoreError =
   | AccessDeniedException
@@ -7571,6 +7600,7 @@ export const getReferenceStore: API.OperationMethod<
     ValidationException,
   ],
   operationName: "GetReferenceStore",
+  endpointHostPrefix: "control-storage-",
 }));
 export type DeleteReferenceStoreError =
   | AccessDeniedException
@@ -7604,6 +7634,7 @@ export const deleteReferenceStore: API.OperationMethod<
     ValidationException,
   ],
   operationName: "DeleteReferenceStore",
+  endpointHostPrefix: "control-storage-",
 }));
 export type ListReferenceStoresError =
   | AccessDeniedException
@@ -7648,6 +7679,7 @@ export const listReferenceStores: API.OperationMethod<
     ValidationException,
   ],
   operationName: "ListReferenceStores",
+  endpointHostPrefix: "control-storage-",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -7683,6 +7715,7 @@ export const getReferenceImportJob: API.OperationMethod<
     ValidationException,
   ],
   operationName: "GetReferenceImportJob",
+  endpointHostPrefix: "control-storage-",
 }));
 export type ListReferenceImportJobsError =
   | AccessDeniedException
@@ -7727,6 +7760,7 @@ export const listReferenceImportJobs: API.OperationMethod<
     ValidationException,
   ],
   operationName: "ListReferenceImportJobs",
+  endpointHostPrefix: "control-storage-",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -7764,6 +7798,7 @@ export const startReferenceImportJob: API.OperationMethod<
     ValidationException,
   ],
   operationName: "StartReferenceImportJob",
+  endpointHostPrefix: "control-storage-",
 }));
 export type GetReferenceMetadataError =
   | AccessDeniedException
@@ -7793,6 +7828,7 @@ export const getReferenceMetadata: API.OperationMethod<
     ValidationException,
   ],
   operationName: "GetReferenceMetadata",
+  endpointHostPrefix: "control-storage-",
 }));
 export type DeleteReferenceError =
   | AccessDeniedException
@@ -7826,6 +7862,7 @@ export const deleteReference: API.OperationMethod<
     ValidationException,
   ],
   operationName: "DeleteReference",
+  endpointHostPrefix: "control-storage-",
 }));
 export type ListReferencesError =
   | AccessDeniedException
@@ -7872,6 +7909,7 @@ export const listReferences: API.OperationMethod<
     ValidationException,
   ],
   operationName: "ListReferences",
+  endpointHostPrefix: "control-storage-",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -7911,6 +7949,7 @@ export const getReference: API.OperationMethod<
     ValidationException,
   ],
   operationName: "GetReference",
+  endpointHostPrefix: "storage-",
 }));
 export type StartRunBatchError =
   | AccessDeniedException
@@ -7946,6 +7985,7 @@ export const startRunBatch: API.OperationMethod<
     ValidationException,
   ],
   operationName: "StartRunBatch",
+  endpointHostPrefix: "workflows-",
 }));
 export type GetBatchError =
   | AccessDeniedException
@@ -7975,6 +8015,7 @@ export const getBatch: API.OperationMethod<
     ValidationException,
   ],
   operationName: "GetBatch",
+  endpointHostPrefix: "workflows-",
 }));
 export type DeleteBatchError =
   | AccessDeniedException
@@ -8010,6 +8051,7 @@ export const deleteBatch: API.OperationMethod<
     ValidationException,
   ],
   operationName: "DeleteBatch",
+  endpointHostPrefix: "workflows-",
 }));
 export type ListBatchError =
   | AccessDeniedException
@@ -8052,6 +8094,7 @@ export const listBatch: API.OperationMethod<
     ValidationException,
   ],
   operationName: "ListBatch",
+  endpointHostPrefix: "workflows-",
   pagination: {
     inputToken: "startingToken",
     outputToken: "nextToken",
@@ -8093,6 +8136,7 @@ export const cancelRunBatch: API.OperationMethod<
     ValidationException,
   ],
   operationName: "CancelRunBatch",
+  endpointHostPrefix: "workflows-",
 }));
 export type DeleteRunBatchError =
   | AccessDeniedException
@@ -8128,6 +8172,7 @@ export const deleteRunBatch: API.OperationMethod<
     ValidationException,
   ],
   operationName: "DeleteRunBatch",
+  endpointHostPrefix: "workflows-",
 }));
 export type ListRunsInBatchError =
   | AccessDeniedException
@@ -8176,6 +8221,7 @@ export const listRunsInBatch: API.OperationMethod<
     ValidationException,
   ],
   operationName: "ListRunsInBatch",
+  endpointHostPrefix: "workflows-",
   pagination: {
     inputToken: "startingToken",
     outputToken: "nextToken",
@@ -8217,6 +8263,7 @@ export const createRunCache: API.OperationMethod<
     ValidationException,
   ],
   operationName: "CreateRunCache",
+  endpointHostPrefix: "workflows-",
 }));
 export type GetRunCacheError =
   | AccessDeniedException
@@ -8252,6 +8299,7 @@ export const getRunCache: API.OperationMethod<
     ValidationException,
   ],
   operationName: "GetRunCache",
+  endpointHostPrefix: "workflows-",
 }));
 export type UpdateRunCacheError =
   | AccessDeniedException
@@ -8287,6 +8335,7 @@ export const updateRunCache: API.OperationMethod<
     ValidationException,
   ],
   operationName: "UpdateRunCache",
+  endpointHostPrefix: "workflows-",
 }));
 export type DeleteRunCacheError =
   | AccessDeniedException
@@ -8322,6 +8371,7 @@ export const deleteRunCache: API.OperationMethod<
     ValidationException,
   ],
   operationName: "DeleteRunCache",
+  endpointHostPrefix: "workflows-",
 }));
 export type ListRunCachesError =
   | AccessDeniedException
@@ -8370,6 +8420,7 @@ export const listRunCaches: API.OperationMethod<
     ValidationException,
   ],
   operationName: "ListRunCaches",
+  endpointHostPrefix: "workflows-",
   pagination: {
     inputToken: "startingToken",
     outputToken: "nextToken",
@@ -8409,6 +8460,7 @@ export const createRunGroup: API.OperationMethod<
     ValidationException,
   ],
   operationName: "CreateRunGroup",
+  endpointHostPrefix: "workflows-",
 }));
 export type GetRunGroupError =
   | AccessDeniedException
@@ -8442,6 +8494,7 @@ export const getRunGroup: API.OperationMethod<
     ValidationException,
   ],
   operationName: "GetRunGroup",
+  endpointHostPrefix: "workflows-",
 }));
 export type UpdateRunGroupError =
   | AccessDeniedException
@@ -8489,6 +8542,7 @@ export const updateRunGroup: API.OperationMethod<
     ValidationException,
   ],
   operationName: "UpdateRunGroup",
+  endpointHostPrefix: "workflows-",
 }));
 export type DeleteRunGroupError =
   | AccessDeniedException
@@ -8528,6 +8582,7 @@ export const deleteRunGroup: API.OperationMethod<
     ValidationException,
   ],
   operationName: "DeleteRunGroup",
+  endpointHostPrefix: "workflows-",
 }));
 export type ListRunGroupsError =
   | AccessDeniedException
@@ -8576,6 +8631,7 @@ export const listRunGroups: API.OperationMethod<
     ValidationException,
   ],
   operationName: "ListRunGroups",
+  endpointHostPrefix: "workflows-",
   pagination: {
     inputToken: "startingToken",
     outputToken: "nextToken",
@@ -8647,6 +8703,7 @@ export const startRun: API.OperationMethod<
     ValidationException,
   ],
   operationName: "StartRun",
+  endpointHostPrefix: "workflows-",
 }));
 export type GetRunError =
   | AccessDeniedException
@@ -8682,6 +8739,7 @@ export const getRun: API.OperationMethod<
     ValidationException,
   ],
   operationName: "GetRun",
+  endpointHostPrefix: "workflows-",
 }));
 export type DeleteRunError =
   | AccessDeniedException
@@ -8721,6 +8779,7 @@ export const deleteRun: API.OperationMethod<
     ValidationException,
   ],
   operationName: "DeleteRun",
+  endpointHostPrefix: "workflows-",
 }));
 export type ListRunsError =
   | AccessDeniedException
@@ -8771,6 +8830,7 @@ export const listRuns: API.OperationMethod<
     ValidationException,
   ],
   operationName: "ListRuns",
+  endpointHostPrefix: "workflows-",
   pagination: {
     inputToken: "startingToken",
     outputToken: "nextToken",
@@ -8810,6 +8870,7 @@ export const cancelRun: API.OperationMethod<
     ValidationException,
   ],
   operationName: "CancelRun",
+  endpointHostPrefix: "workflows-",
 }));
 export type GetRunTaskError =
   | AccessDeniedException
@@ -8843,6 +8904,7 @@ export const getRunTask: API.OperationMethod<
     ValidationException,
   ],
   operationName: "GetRunTask",
+  endpointHostPrefix: "workflows-",
 }));
 export type ListRunTasksError =
   | AccessDeniedException
@@ -8891,6 +8953,7 @@ export const listRunTasks: API.OperationMethod<
     ValidationException,
   ],
   operationName: "ListRunTasks",
+  endpointHostPrefix: "workflows-",
   pagination: {
     inputToken: "startingToken",
     outputToken: "nextToken",
@@ -8940,6 +9003,7 @@ export const createSequenceStore: API.OperationMethod<
     ValidationException,
   ],
   operationName: "CreateSequenceStore",
+  endpointHostPrefix: "control-storage-",
 }));
 export type GetSequenceStoreError =
   | AccessDeniedException
@@ -8969,6 +9033,7 @@ export const getSequenceStore: API.OperationMethod<
     ValidationException,
   ],
   operationName: "GetSequenceStore",
+  endpointHostPrefix: "control-storage-",
 }));
 export type UpdateSequenceStoreError =
   | AccessDeniedException
@@ -9000,6 +9065,7 @@ export const updateSequenceStore: API.OperationMethod<
     ValidationException,
   ],
   operationName: "UpdateSequenceStore",
+  endpointHostPrefix: "control-storage-",
 }));
 export type DeleteSequenceStoreError =
   | AccessDeniedException
@@ -9035,6 +9101,7 @@ export const deleteSequenceStore: API.OperationMethod<
     ValidationException,
   ],
   operationName: "DeleteSequenceStore",
+  endpointHostPrefix: "control-storage-",
 }));
 export type ListSequenceStoresError =
   | AccessDeniedException
@@ -9079,6 +9146,7 @@ export const listSequenceStores: API.OperationMethod<
     ValidationException,
   ],
   operationName: "ListSequenceStores",
+  endpointHostPrefix: "control-storage-",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -9118,6 +9186,7 @@ export const abortMultipartReadSetUpload: API.OperationMethod<
     ValidationException,
   ],
   operationName: "AbortMultipartReadSetUpload",
+  endpointHostPrefix: "control-storage-",
 }));
 export type CompleteMultipartReadSetUploadError =
   | AccessDeniedException
@@ -9153,6 +9222,7 @@ export const completeMultipartReadSetUpload: API.OperationMethod<
     ValidationException,
   ],
   operationName: "CompleteMultipartReadSetUpload",
+  endpointHostPrefix: "storage-",
 }));
 export type CreateMultipartReadSetUploadError =
   | AccessDeniedException
@@ -9196,6 +9266,7 @@ export const createMultipartReadSetUpload: API.OperationMethod<
     ValidationException,
   ],
   operationName: "CreateMultipartReadSetUpload",
+  endpointHostPrefix: "control-storage-",
 }));
 export type GetReadSetActivationJobError =
   | AccessDeniedException
@@ -9225,6 +9296,7 @@ export const getReadSetActivationJob: API.OperationMethod<
     ValidationException,
   ],
   operationName: "GetReadSetActivationJob",
+  endpointHostPrefix: "control-storage-",
 }));
 export type GetReadSetExportJobError =
   | AccessDeniedException
@@ -9254,6 +9326,7 @@ export const getReadSetExportJob: API.OperationMethod<
     ValidationException,
   ],
   operationName: "GetReadSetExportJob",
+  endpointHostPrefix: "control-storage-",
 }));
 export type GetReadSetImportJobError =
   | AccessDeniedException
@@ -9283,6 +9356,7 @@ export const getReadSetImportJob: API.OperationMethod<
     ValidationException,
   ],
   operationName: "GetReadSetImportJob",
+  endpointHostPrefix: "control-storage-",
 }));
 export type ListMultipartReadSetUploadsError =
   | AccessDeniedException
@@ -9331,6 +9405,7 @@ export const listMultipartReadSetUploads: API.OperationMethod<
     ValidationException,
   ],
   operationName: "ListMultipartReadSetUploads",
+  endpointHostPrefix: "control-storage-",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -9381,6 +9456,7 @@ export const listReadSetActivationJobs: API.OperationMethod<
     ValidationException,
   ],
   operationName: "ListReadSetActivationJobs",
+  endpointHostPrefix: "control-storage-",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -9431,6 +9507,7 @@ export const listReadSetExportJobs: API.OperationMethod<
     ValidationException,
   ],
   operationName: "ListReadSetExportJobs",
+  endpointHostPrefix: "control-storage-",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -9481,6 +9558,7 @@ export const listReadSetImportJobs: API.OperationMethod<
     ValidationException,
   ],
   operationName: "ListReadSetImportJobs",
+  endpointHostPrefix: "control-storage-",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -9535,6 +9613,7 @@ export const listReadSetUploadParts: API.OperationMethod<
     ValidationException,
   ],
   operationName: "ListReadSetUploadParts",
+  endpointHostPrefix: "control-storage-",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -9574,6 +9653,7 @@ export const startReadSetActivationJob: API.OperationMethod<
     ValidationException,
   ],
   operationName: "StartReadSetActivationJob",
+  endpointHostPrefix: "control-storage-",
 }));
 export type StartReadSetExportJobError =
   | AccessDeniedException
@@ -9607,6 +9687,7 @@ export const startReadSetExportJob: API.OperationMethod<
     ValidationException,
   ],
   operationName: "StartReadSetExportJob",
+  endpointHostPrefix: "control-storage-",
 }));
 export type StartReadSetImportJobError =
   | AccessDeniedException
@@ -9638,6 +9719,7 @@ export const startReadSetImportJob: API.OperationMethod<
     ValidationException,
   ],
   operationName: "StartReadSetImportJob",
+  endpointHostPrefix: "control-storage-",
 }));
 export type UploadReadSetPartError =
   | AccessDeniedException
@@ -9673,6 +9755,7 @@ export const uploadReadSetPart: API.OperationMethod<
     ValidationException,
   ],
   operationName: "UploadReadSetPart",
+  endpointHostPrefix: "storage-",
 }));
 export type GetReadSetMetadataError =
   | AccessDeniedException
@@ -9702,6 +9785,7 @@ export const getReadSetMetadata: API.OperationMethod<
     ValidationException,
   ],
   operationName: "GetReadSetMetadata",
+  endpointHostPrefix: "control-storage-",
 }));
 export type ListReadSetsError =
   | AccessDeniedException
@@ -9746,6 +9830,7 @@ export const listReadSets: API.OperationMethod<
     ValidationException,
   ],
   operationName: "ListReadSets",
+  endpointHostPrefix: "control-storage-",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -9785,6 +9870,7 @@ export const getReadSet: API.OperationMethod<
     ValidationException,
   ],
   operationName: "GetReadSet",
+  endpointHostPrefix: "storage-",
 }));
 export type BatchDeleteReadSetError =
   | AccessDeniedException
@@ -9814,6 +9900,7 @@ export const batchDeleteReadSet: API.OperationMethod<
     ValidationException,
   ],
   operationName: "BatchDeleteReadSet",
+  endpointHostPrefix: "control-storage-",
 }));
 export type CreateShareError =
   | AccessDeniedException
@@ -9853,6 +9940,7 @@ export const createShare: API.OperationMethod<
     ValidationException,
   ],
   operationName: "CreateShare",
+  endpointHostPrefix: "analytics-",
 }));
 export type GetShareError =
   | AccessDeniedException
@@ -9884,6 +9972,7 @@ export const getShare: API.OperationMethod<
     ValidationException,
   ],
   operationName: "GetShare",
+  endpointHostPrefix: "analytics-",
 }));
 export type AcceptShareError =
   | AccessDeniedException
@@ -9915,6 +10004,7 @@ export const acceptShare: API.OperationMethod<
     ValidationException,
   ],
   operationName: "AcceptShare",
+  endpointHostPrefix: "analytics-",
 }));
 export type DeleteShareError =
   | AccessDeniedException
@@ -9946,6 +10036,7 @@ export const deleteShare: API.OperationMethod<
     ValidationException,
   ],
   operationName: "DeleteShare",
+  endpointHostPrefix: "analytics-",
 }));
 export type ListSharesError =
   | AccessDeniedException
@@ -9992,6 +10083,7 @@ export const listShares: API.OperationMethod<
     ValidationException,
   ],
   operationName: "ListShares",
+  endpointHostPrefix: "analytics-",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -10031,6 +10123,7 @@ export const listTagsForResource: API.OperationMethod<
     ValidationException,
   ],
   operationName: "ListTagsForResource",
+  endpointHostPrefix: "tags-",
 }));
 export type TagResourceError =
   | AccessDeniedException
@@ -10064,6 +10157,7 @@ export const tagResource: API.OperationMethod<
     ValidationException,
   ],
   operationName: "TagResource",
+  endpointHostPrefix: "tags-",
 }));
 export type UntagResourceError =
   | AccessDeniedException
@@ -10097,6 +10191,7 @@ export const untagResource: API.OperationMethod<
     ValidationException,
   ],
   operationName: "UntagResource",
+  endpointHostPrefix: "tags-",
 }));
 export type StartVariantImportJobError =
   | AccessDeniedException
@@ -10128,6 +10223,7 @@ export const startVariantImportJob: API.OperationMethod<
     ValidationException,
   ],
   operationName: "StartVariantImportJob",
+  endpointHostPrefix: "analytics-",
 }));
 export type GetVariantImportJobError =
   | AccessDeniedException
@@ -10157,6 +10253,7 @@ export const getVariantImportJob: API.OperationMethod<
     ValidationException,
   ],
   operationName: "GetVariantImportJob",
+  endpointHostPrefix: "analytics-",
 }));
 export type CancelVariantImportJobError =
   | AccessDeniedException
@@ -10186,6 +10283,7 @@ export const cancelVariantImportJob: API.OperationMethod<
     ValidationException,
   ],
   operationName: "CancelVariantImportJob",
+  endpointHostPrefix: "analytics-",
 }));
 export type ListVariantImportJobsError =
   | AccessDeniedException
@@ -10230,6 +10328,7 @@ export const listVariantImportJobs: API.OperationMethod<
     ValidationException,
   ],
   operationName: "ListVariantImportJobs",
+  endpointHostPrefix: "analytics-",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -10269,6 +10368,7 @@ export const createVariantStore: API.OperationMethod<
     ValidationException,
   ],
   operationName: "CreateVariantStore",
+  endpointHostPrefix: "analytics-",
 }));
 export type GetVariantStoreError =
   | AccessDeniedException
@@ -10298,6 +10398,7 @@ export const getVariantStore: API.OperationMethod<
     ValidationException,
   ],
   operationName: "GetVariantStore",
+  endpointHostPrefix: "analytics-",
 }));
 export type UpdateVariantStoreError =
   | AccessDeniedException
@@ -10327,6 +10428,7 @@ export const updateVariantStore: API.OperationMethod<
     ValidationException,
   ],
   operationName: "UpdateVariantStore",
+  endpointHostPrefix: "analytics-",
 }));
 export type DeleteVariantStoreError =
   | AccessDeniedException
@@ -10358,6 +10460,7 @@ export const deleteVariantStore: API.OperationMethod<
     ValidationException,
   ],
   operationName: "DeleteVariantStore",
+  endpointHostPrefix: "analytics-",
 }));
 export type ListVariantStoresError =
   | AccessDeniedException
@@ -10402,6 +10505,7 @@ export const listVariantStores: API.OperationMethod<
     ValidationException,
   ],
   operationName: "ListVariantStores",
+  endpointHostPrefix: "analytics-",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -10453,6 +10557,7 @@ export const createWorkflow: API.OperationMethod<
     ValidationException,
   ],
   operationName: "CreateWorkflow",
+  endpointHostPrefix: "workflows-",
 }));
 export type GetWorkflowError =
   | AccessDeniedException
@@ -10490,6 +10595,7 @@ export const getWorkflow: API.OperationMethod<
     ValidationException,
   ],
   operationName: "GetWorkflow",
+  endpointHostPrefix: "workflows-",
 }));
 export type UpdateWorkflowError =
   | AccessDeniedException
@@ -10537,6 +10643,7 @@ export const updateWorkflow: API.OperationMethod<
     ValidationException,
   ],
   operationName: "UpdateWorkflow",
+  endpointHostPrefix: "workflows-",
 }));
 export type DeleteWorkflowError =
   | AccessDeniedException
@@ -10576,6 +10683,7 @@ export const deleteWorkflow: API.OperationMethod<
     ValidationException,
   ],
   operationName: "DeleteWorkflow",
+  endpointHostPrefix: "workflows-",
 }));
 export type ListWorkflowsError =
   | AccessDeniedException
@@ -10624,6 +10732,7 @@ export const listWorkflows: API.OperationMethod<
     ValidationException,
   ],
   operationName: "ListWorkflows",
+  endpointHostPrefix: "workflows-",
   pagination: {
     inputToken: "startingToken",
     outputToken: "nextToken",
@@ -10671,6 +10780,7 @@ export const createWorkflowVersion: API.OperationMethod<
     ValidationException,
   ],
   operationName: "CreateWorkflowVersion",
+  endpointHostPrefix: "workflows-",
 }));
 export type GetWorkflowVersionError =
   | AccessDeniedException
@@ -10704,6 +10814,7 @@ export const getWorkflowVersion: API.OperationMethod<
     ValidationException,
   ],
   operationName: "GetWorkflowVersion",
+  endpointHostPrefix: "workflows-",
 }));
 export type UpdateWorkflowVersionError =
   | AccessDeniedException
@@ -10737,6 +10848,7 @@ export const updateWorkflowVersion: API.OperationMethod<
     ValidationException,
   ],
   operationName: "UpdateWorkflowVersion",
+  endpointHostPrefix: "workflows-",
 }));
 export type DeleteWorkflowVersionError =
   | AccessDeniedException
@@ -10772,6 +10884,7 @@ export const deleteWorkflowVersion: API.OperationMethod<
     ValidationException,
   ],
   operationName: "DeleteWorkflowVersion",
+  endpointHostPrefix: "workflows-",
 }));
 export type ListWorkflowVersionsError =
   | AccessDeniedException
@@ -10820,6 +10933,7 @@ export const listWorkflowVersions: API.OperationMethod<
     ValidationException,
   ],
   operationName: "ListWorkflowVersions",
+  endpointHostPrefix: "workflows-",
   pagination: {
     inputToken: "startingToken",
     outputToken: "nextToken",

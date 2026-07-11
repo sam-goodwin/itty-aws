@@ -291,6 +291,21 @@ export interface AwsAuthSigv4Trait {
 export const AwsAuthSigv4 = (trait: AwsAuthSigv4Trait) =>
   makeAnnotation(awsAuthSigv4Symbol, trait);
 
+/**
+ * Legacy Signature Version 2 authentication. SimpleDB (2009-04-15) is the
+ * sole remaining SigV2-only service: its endpoint rejects SigV4
+ * Authorization headers outright (`AuthFailure: access credentials are
+ * missing`). SigV2 auth parameters ride in the form-encoded request body
+ * (`AWSAccessKeyId`, `SignatureVersion=2`, `SignatureMethod=HmacSHA256`,
+ * `Timestamp`, `SecurityToken`, `Signature`) rather than in headers.
+ */
+export const awsAuthSigv2Symbol = "distilled-aws/aws.auth#sigv2" as const;
+export interface AwsAuthSigv2Trait {
+  name: string;
+}
+export const AwsAuthSigv2 = (trait: AwsAuthSigv2Trait) =>
+  makeAnnotation(awsAuthSigv2Symbol, trait);
+
 // =============================================================================
 // AWS Protocol Traits (aws.protocols#*)
 // Each protocol annotation embeds its implementation for optimal tree-shaking
@@ -1036,6 +1051,9 @@ export const getAwsApiService = (
 export const getAwsAuthSigv4 = (ast: AST.AST): AwsAuthSigv4Trait | undefined =>
   getAnnotationUnwrap<AwsAuthSigv4Trait>(ast, awsAuthSigv4Symbol);
 
+export const getAwsAuthSigv2 = (ast: AST.AST): AwsAuthSigv2Trait | undefined =>
+  getAnnotationUnwrap<AwsAuthSigv2Trait>(ast, awsAuthSigv2Symbol);
+
 export const getServiceVersion = (ast: AST.AST): string | undefined =>
   getAnnotationUnwrap<string>(ast, serviceVersionSymbol);
 
@@ -1072,6 +1090,10 @@ export const getAwsQueryError = (
   ast: AST.AST,
 ): AwsQueryErrorTrait | undefined =>
   getAnnotationUnwrap<AwsQueryErrorTrait>(ast, awsQueryErrorSymbol);
+
+/** smithy.api#httpError status code declared on an error shape */
+export const getHttpError = (ast: AST.AST): number | undefined =>
+  getAnnotationUnwrap<number>(ast, httpErrorSymbol);
 
 export const getSyntheticError = (
   ast: AST.AST,

@@ -1,0 +1,20 @@
+{
+  "operations": {
+    "createChannel": { "errors": ["ThrottlingException"] },
+    "createStreamKey": { "errors": ["ThrottlingException"] },
+    "deleteChannel": { "errors": ["ThrottlingException"] },
+    "deletePlaybackKeyPair": { "errors": ["ThrottlingException"] },
+    "deleteStreamKey": { "errors": ["ThrottlingException"] },
+    "getChannel": { "errors": ["ThrottlingException"] },
+    "getPlaybackKeyPair": { "errors": ["ThrottlingException"] },
+    "getStreamKey": { "errors": ["ThrottlingException"] },
+    "importPlaybackKeyPair": { "errors": ["ThrottlingException"] },
+    "listChannels": { "errors": ["ThrottlingException"] },
+    "listPlaybackKeyPairs": { "errors": ["ThrottlingException"] },
+    "listStreamKeys": { "errors": ["ThrottlingException"] },
+    "listTagsForResource": { "errors": ["ThrottlingException"] },
+    "tagResource": { "errors": ["ThrottlingException"] },
+    "untagResource": { "errors": ["ThrottlingException"] },
+    "updateChannel": { "errors": ["ThrottlingException"] }
+  }
+}

@@ -4033,13 +4033,13 @@ export const AppliedAttachmentsConfiguration =
 export type AutoSubscriptionStatus = "ENABLED" | "DISABLED" | (string & {});
 export const AutoSubscriptionStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface AutoSubscriptionConfiguration {
-  autoSubscribe: AutoSubscriptionStatus;
+  autoSubscribe?: AutoSubscriptionStatus;
   defaultSubscriptionType?: SubscriptionType;
 }
 export const AutoSubscriptionConfiguration =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     S.Struct({
-      autoSubscribe: AutoSubscriptionStatus,
+      autoSubscribe: S.optional(AutoSubscriptionStatus),
       defaultSubscriptionType: S.optional(SubscriptionType),
     }),
   ).annotate({
@@ -6224,26 +6224,32 @@ export const ListWebExperiencesResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
   "AccessDeniedException",
   { message: S.String },
+  T.HttpError(403),
 ).pipe(C.withAuthError) {}
 export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
   "ConflictException",
   { message: S.String, resourceId: S.String, resourceType: S.String },
+  T.HttpError(409),
 ).pipe(C.withConflictError) {}
 export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
   "InternalServerException",
   { message: S.String },
+  T.HttpError(500),
 ).pipe(C.withServerError) {}
 export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
   "ResourceNotFoundException",
   { message: S.String, resourceId: S.String, resourceType: S.String },
+  T.HttpError(404),
 ).pipe(C.withBadRequestError) {}
 export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
   "ServiceQuotaExceededException",
   { message: S.String, resourceId: S.String, resourceType: S.String },
+  T.HttpError(402),
 ).pipe(C.withQuotaError) {}
 export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
   "ThrottlingException",
   { message: S.String },
+  T.HttpError(429),
 ).pipe(C.withThrottlingError) {}
 export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
   "ValidationException",
@@ -6252,18 +6258,22 @@ export class ValidationException extends S.TaggedErrorClass<ValidationException>
     reason: ValidationExceptionReason,
     fields: S.optional(ValidationExceptionFields),
   },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class ExternalResourceException extends S.TaggedErrorClass<ExternalResourceException>()(
   "ExternalResourceException",
   { message: S.String },
+  T.HttpError(424),
 ) {}
 export class LicenseNotFoundException extends S.TaggedErrorClass<LicenseNotFoundException>()(
   "LicenseNotFoundException",
   { message: S.String },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class MediaTooLargeException extends S.TaggedErrorClass<MediaTooLargeException>()(
   "MediaTooLargeException",
   { message: S.String },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 
 //# Operations

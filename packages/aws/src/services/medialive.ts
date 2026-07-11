@@ -20155,34 +20155,42 @@ export const UpdateSdiSourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 export class BadGatewayException extends S.TaggedErrorClass<BadGatewayException>()(
   "BadGatewayException",
   { Message: S.optional(S.String) },
+  T.HttpError(502),
 ).pipe(C.withServerError) {}
 export class BadRequestException extends S.TaggedErrorClass<BadRequestException>()(
   "BadRequestException",
   { Message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
   "ConflictException",
   { Message: S.optional(S.String) },
+  T.HttpError(409),
 ).pipe(C.withConflictError) {}
 export class ForbiddenException extends S.TaggedErrorClass<ForbiddenException>()(
   "ForbiddenException",
   { Message: S.optional(S.String) },
+  T.HttpError(403),
 ).pipe(C.withAuthError) {}
 export class GatewayTimeoutException extends S.TaggedErrorClass<GatewayTimeoutException>()(
   "GatewayTimeoutException",
   { Message: S.optional(S.String) },
+  T.HttpError(504),
 ).pipe(C.withTimeoutError) {}
 export class InternalServerErrorException extends S.TaggedErrorClass<InternalServerErrorException>()(
   "InternalServerErrorException",
   { Message: S.optional(S.String) },
+  T.HttpError(500),
 ).pipe(C.withServerError) {}
 export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
   "NotFoundException",
   { Message: S.optional(S.String) },
+  T.HttpError(404),
 ).pipe(C.withBadRequestError) {}
 export class TooManyRequestsException extends S.TaggedErrorClass<TooManyRequestsException>()(
   "TooManyRequestsException",
   { Message: S.optional(S.String) },
+  T.HttpError(429),
 ).pipe(C.withThrottlingError) {}
 export class UnprocessableEntityException extends S.TaggedErrorClass<UnprocessableEntityException>()(
   "UnprocessableEntityException",
@@ -20190,7 +20198,19 @@ export class UnprocessableEntityException extends S.TaggedErrorClass<Unprocessab
     Message: S.optional(S.String),
     ValidationErrors: S.optional(__listOfValidationError),
   },
+  T.HttpError(422),
 ).pipe(C.withBadRequestError) {}
+export class MediaLiveRoleNotYetTrusted extends S.TaggedErrorClass<MediaLiveRoleNotYetTrusted>()(
+  "MediaLiveRoleNotYetTrusted",
+  {
+    Message: S.optional(S.String),
+    ValidationErrors: S.optional(__listOfValidationError),
+  },
+  T.SyntheticError({
+    from: "UnprocessableEntityException",
+    message: { includes: "is a trusted service" },
+  }),
+).pipe(C.withRetryableError) {}
 
 //# Operations
 export type AcceptInputDeviceTransferError =
@@ -20437,6 +20457,7 @@ export type CreateChannelError =
   | InternalServerErrorException
   | TooManyRequestsException
   | UnprocessableEntityException
+  | MediaLiveRoleNotYetTrusted
   | CommonErrors;
 /**
  * Creates a new channel
@@ -20458,6 +20479,7 @@ export const createChannel: API.OperationMethod<
     InternalServerErrorException,
     TooManyRequestsException,
     UnprocessableEntityException,
+    MediaLiveRoleNotYetTrusted,
   ],
   operationName: "CreateChannel",
 }));
