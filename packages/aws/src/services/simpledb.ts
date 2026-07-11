@@ -202,6 +202,352 @@ export const ListDomainsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "ListDomainsResponse",
 }) as any as S.Schema<ListDomainsResponse>;
 
+//# Schemas — data plane (Select / GetAttributes / PutAttributes /
+//# DeleteAttributes / BatchPutAttributes / BatchDeleteAttributes)
+//
+// Wire shapes verified against the SimpleDB API reference and the SDK v2 /
+// botocore `sdb-2009-04-15` model: all lists are FLATTENED with singular
+// locationNames (`Attribute.N.*`, `Item.N.*`, `AttributeName.N`), and batch
+// item structures use the `ItemName` member on the wire.
+export interface Attribute {
+  Name: string;
+  AlternateNameEncoding?: string;
+  Value: string;
+  AlternateValueEncoding?: string;
+}
+export const Attribute = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Name: S.String,
+    AlternateNameEncoding: S.optional(S.String),
+    Value: S.String,
+    AlternateValueEncoding: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "Attribute",
+}) as any as S.Schema<Attribute>;
+export type AttributeList = Attribute[];
+export const AttributeList = /*@__PURE__*/ /*#__PURE__*/ S.Array(Attribute);
+
+export interface ReplaceableAttribute {
+  Name: string;
+  Value: string;
+  Replace?: boolean;
+}
+export const ReplaceableAttribute = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Name: S.String,
+    Value: S.String,
+    Replace: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "ReplaceableAttribute",
+}) as any as S.Schema<ReplaceableAttribute>;
+export type ReplaceableAttributeList = ReplaceableAttribute[];
+export const ReplaceableAttributeList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(ReplaceableAttribute);
+
+export interface DeletableAttribute {
+  Name: string;
+  Value?: string;
+}
+export const DeletableAttribute = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Name: S.String,
+    Value: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DeletableAttribute",
+}) as any as S.Schema<DeletableAttribute>;
+export type DeletableAttributeList = DeletableAttribute[];
+export const DeletableAttributeList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(DeletableAttribute);
+
+export interface UpdateCondition {
+  Name?: string;
+  Value?: string;
+  Exists?: boolean;
+}
+export const UpdateCondition = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Name: S.optional(S.String),
+    Value: S.optional(S.String),
+    Exists: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "UpdateCondition",
+}) as any as S.Schema<UpdateCondition>;
+
+export interface ReplaceableItem {
+  ItemName: string;
+  Attributes: ReplaceableAttribute[];
+}
+export const ReplaceableItem = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ItemName: S.String,
+    Attributes: ReplaceableAttributeList.pipe(
+      T.XmlName("Attribute"),
+      T.XmlFlattened(),
+    ),
+  }),
+).annotate({
+  identifier: "ReplaceableItem",
+}) as any as S.Schema<ReplaceableItem>;
+export type ReplaceableItemList = ReplaceableItem[];
+export const ReplaceableItemList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(ReplaceableItem);
+
+export interface DeletableItem {
+  ItemName: string;
+  Attributes?: DeletableAttribute[];
+}
+export const DeletableItem = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ItemName: S.String,
+    Attributes: S.optional(DeletableAttributeList).pipe(
+      T.XmlName("Attribute"),
+      T.XmlFlattened(),
+    ),
+  }),
+).annotate({
+  identifier: "DeletableItem",
+}) as any as S.Schema<DeletableItem>;
+export type DeletableItemList = DeletableItem[];
+export const DeletableItemList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(DeletableItem);
+
+export interface Item {
+  Name: string;
+  AlternateNameEncoding?: string;
+  Attributes?: Attribute[];
+}
+export const Item = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Name: S.String,
+    AlternateNameEncoding: S.optional(S.String),
+    Attributes: S.optional(AttributeList).pipe(
+      T.XmlName("Attribute"),
+      T.XmlFlattened(),
+    ),
+  }),
+).annotate({
+  identifier: "Item",
+}) as any as S.Schema<Item>;
+export type ItemList = Item[];
+export const ItemList = /*@__PURE__*/ /*#__PURE__*/ S.Array(Item);
+
+export interface GetAttributesRequest {
+  DomainName: string;
+  ItemName: string;
+  AttributeNames?: string[];
+  ConsistentRead?: boolean;
+}
+export const GetAttributesRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DomainName: S.String,
+    ItemName: S.String,
+    AttributeNames: S.optional(S.Array(S.String)).pipe(
+      T.XmlName("AttributeName"),
+      T.XmlFlattened(),
+    ),
+    ConsistentRead: S.optional(S.Boolean),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetAttributesRequest",
+}) as any as S.Schema<GetAttributesRequest>;
+export interface GetAttributesResponse {
+  Attributes?: Attribute[];
+}
+export const GetAttributesResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    // SimpleDB returns a flattened list of repeated <Attribute> elements
+    Attributes: S.optional(AttributeList).pipe(
+      T.XmlName("Attribute"),
+      T.XmlFlattened(),
+    ),
+  }),
+).annotate({
+  identifier: "GetAttributesResponse",
+}) as any as S.Schema<GetAttributesResponse>;
+
+export interface PutAttributesRequest {
+  DomainName: string;
+  ItemName: string;
+  Attributes: ReplaceableAttribute[];
+  Expected?: UpdateCondition;
+}
+export const PutAttributesRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DomainName: S.String,
+    ItemName: S.String,
+    Attributes: ReplaceableAttributeList.pipe(
+      T.XmlName("Attribute"),
+      T.XmlFlattened(),
+    ),
+    Expected: S.optional(UpdateCondition),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "PutAttributesRequest",
+}) as any as S.Schema<PutAttributesRequest>;
+export interface PutAttributesResponse {}
+export const PutAttributesResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "PutAttributesResponse",
+}) as any as S.Schema<PutAttributesResponse>;
+
+export interface DeleteAttributesRequest {
+  DomainName: string;
+  ItemName: string;
+  Attributes?: DeletableAttribute[];
+  Expected?: UpdateCondition;
+}
+export const DeleteAttributesRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      DomainName: S.String,
+      ItemName: S.String,
+      Attributes: S.optional(DeletableAttributeList).pipe(
+        T.XmlName("Attribute"),
+        T.XmlFlattened(),
+      ),
+      Expected: S.optional(UpdateCondition),
+    }).pipe(
+      T.all(
+        ns,
+        T.Http({ method: "POST", uri: "/" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+).annotate({
+  identifier: "DeleteAttributesRequest",
+}) as any as S.Schema<DeleteAttributesRequest>;
+export interface DeleteAttributesResponse {}
+export const DeleteAttributesResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "DeleteAttributesResponse",
+}) as any as S.Schema<DeleteAttributesResponse>;
+
+export interface BatchPutAttributesRequest {
+  DomainName: string;
+  Items: ReplaceableItem[];
+}
+export const BatchPutAttributesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      DomainName: S.String,
+      Items: ReplaceableItemList.pipe(T.XmlName("Item"), T.XmlFlattened()),
+    }).pipe(
+      T.all(
+        ns,
+        T.Http({ method: "POST", uri: "/" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "BatchPutAttributesRequest",
+  }) as any as S.Schema<BatchPutAttributesRequest>;
+export interface BatchPutAttributesResponse {}
+export const BatchPutAttributesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+    identifier: "BatchPutAttributesResponse",
+  }) as any as S.Schema<BatchPutAttributesResponse>;
+
+export interface BatchDeleteAttributesRequest {
+  DomainName: string;
+  Items: DeletableItem[];
+}
+export const BatchDeleteAttributesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      DomainName: S.String,
+      Items: DeletableItemList.pipe(T.XmlName("Item"), T.XmlFlattened()),
+    }).pipe(
+      T.all(
+        ns,
+        T.Http({ method: "POST", uri: "/" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "BatchDeleteAttributesRequest",
+  }) as any as S.Schema<BatchDeleteAttributesRequest>;
+export interface BatchDeleteAttributesResponse {}
+export const BatchDeleteAttributesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+    identifier: "BatchDeleteAttributesResponse",
+  }) as any as S.Schema<BatchDeleteAttributesResponse>;
+
+export interface SelectRequest {
+  SelectExpression: string;
+  NextToken?: string;
+  ConsistentRead?: boolean;
+}
+export const SelectRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    SelectExpression: S.String,
+    NextToken: S.optional(S.String),
+    ConsistentRead: S.optional(S.Boolean),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "SelectRequest",
+}) as any as S.Schema<SelectRequest>;
+export interface SelectResponse {
+  Items?: Item[];
+  NextToken?: string;
+}
+export const SelectResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    // SimpleDB returns a flattened list of repeated <Item> elements
+    Items: S.optional(ItemList).pipe(T.XmlName("Item"), T.XmlFlattened()),
+    NextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SelectResponse",
+}) as any as S.Schema<SelectResponse>;
+
 //# Errors
 export class NoSuchDomain extends S.TaggedErrorClass<NoSuchDomain>()(
   "NoSuchDomain",
@@ -223,6 +569,54 @@ export class InvalidNextToken extends S.TaggedErrorClass<InvalidNextToken>()(
   "InvalidNextToken",
   { message: S.optional(S.String), BoxUsage: S.optional(S.String) },
 ).pipe(C.withBadRequestError) {}
+export class AttributeDoesNotExist extends S.TaggedErrorClass<AttributeDoesNotExist>()(
+  "AttributeDoesNotExist",
+  { message: S.optional(S.String), BoxUsage: S.optional(S.String) },
+).pipe(C.withNotFoundError) {}
+export class DuplicateItemName extends S.TaggedErrorClass<DuplicateItemName>()(
+  "DuplicateItemName",
+  { message: S.optional(S.String), BoxUsage: S.optional(S.String) },
+).pipe(C.withBadRequestError) {}
+export class InvalidNumberPredicates extends S.TaggedErrorClass<InvalidNumberPredicates>()(
+  "InvalidNumberPredicates",
+  { message: S.optional(S.String), BoxUsage: S.optional(S.String) },
+).pipe(C.withBadRequestError) {}
+export class InvalidNumberValueTests extends S.TaggedErrorClass<InvalidNumberValueTests>()(
+  "InvalidNumberValueTests",
+  { message: S.optional(S.String), BoxUsage: S.optional(S.String) },
+).pipe(C.withBadRequestError) {}
+export class InvalidQueryExpression extends S.TaggedErrorClass<InvalidQueryExpression>()(
+  "InvalidQueryExpression",
+  { message: S.optional(S.String), BoxUsage: S.optional(S.String) },
+).pipe(C.withBadRequestError) {}
+export class TooManyRequestedAttributes extends S.TaggedErrorClass<TooManyRequestedAttributes>()(
+  "TooManyRequestedAttributes",
+  { message: S.optional(S.String), BoxUsage: S.optional(S.String) },
+).pipe(C.withBadRequestError) {}
+export class RequestTimeout extends S.TaggedErrorClass<RequestTimeout>()(
+  "RequestTimeout",
+  { message: S.optional(S.String), BoxUsage: S.optional(S.String) },
+).pipe(C.withTimeoutError) {}
+export class NumberDomainAttributesExceeded extends S.TaggedErrorClass<NumberDomainAttributesExceeded>()(
+  "NumberDomainAttributesExceeded",
+  { message: S.optional(S.String), BoxUsage: S.optional(S.String) },
+).pipe(C.withQuotaError) {}
+export class NumberDomainBytesExceeded extends S.TaggedErrorClass<NumberDomainBytesExceeded>()(
+  "NumberDomainBytesExceeded",
+  { message: S.optional(S.String), BoxUsage: S.optional(S.String) },
+).pipe(C.withQuotaError) {}
+export class NumberItemAttributesExceeded extends S.TaggedErrorClass<NumberItemAttributesExceeded>()(
+  "NumberItemAttributesExceeded",
+  { message: S.optional(S.String), BoxUsage: S.optional(S.String) },
+).pipe(C.withQuotaError) {}
+export class NumberSubmittedAttributesExceeded extends S.TaggedErrorClass<NumberSubmittedAttributesExceeded>()(
+  "NumberSubmittedAttributesExceeded",
+  { message: S.optional(S.String), BoxUsage: S.optional(S.String) },
+).pipe(C.withQuotaError) {}
+export class NumberSubmittedItemsExceeded extends S.TaggedErrorClass<NumberSubmittedItemsExceeded>()(
+  "NumberSubmittedItemsExceeded",
+  { message: S.optional(S.String), BoxUsage: S.optional(S.String) },
+).pipe(C.withQuotaError) {}
 
 //# Operations
 export type CreateDomainError =
@@ -316,5 +710,191 @@ export const listDomains: API.OperationMethod<
     outputToken: "NextToken",
     items: "DomainNames",
     pageSize: "MaxNumberOfDomains",
+  } as const,
+}));
+export type GetAttributesError =
+  | InvalidParameterValue
+  | MissingParameter
+  | NoSuchDomain
+  | CommonErrors;
+/**
+ * Returns all (or the requested subset of) attributes of a SimpleDB item.
+ * Reads are eventually consistent unless `ConsistentRead` is set.
+ */
+export const getAttributes: API.OperationMethod<
+  GetAttributesRequest,
+  GetAttributesResponse,
+  GetAttributesError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetAttributesRequest,
+  output: GetAttributesResponse,
+  errors: [InvalidParameterValue, MissingParameter, NoSuchDomain],
+  operationName: "GetAttributes",
+}));
+export type PutAttributesError =
+  | AttributeDoesNotExist
+  | InvalidParameterValue
+  | MissingParameter
+  | NoSuchDomain
+  | NumberDomainAttributesExceeded
+  | NumberDomainBytesExceeded
+  | NumberItemAttributesExceeded
+  | CommonErrors;
+/**
+ * Creates or replaces attributes of a SimpleDB item. With `Replace: true` an
+ * attribute's existing values are overwritten; otherwise values accumulate.
+ */
+export const putAttributes: API.OperationMethod<
+  PutAttributesRequest,
+  PutAttributesResponse,
+  PutAttributesError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: PutAttributesRequest,
+  output: PutAttributesResponse,
+  errors: [
+    AttributeDoesNotExist,
+    InvalidParameterValue,
+    MissingParameter,
+    NoSuchDomain,
+    NumberDomainAttributesExceeded,
+    NumberDomainBytesExceeded,
+    NumberItemAttributesExceeded,
+  ],
+  operationName: "PutAttributes",
+}));
+export type DeleteAttributesError =
+  | AttributeDoesNotExist
+  | InvalidParameterValue
+  | MissingParameter
+  | NoSuchDomain
+  | CommonErrors;
+/**
+ * Deletes one or more attributes of a SimpleDB item — or the whole item when
+ * no attributes are named. Idempotent: deleting a missing attribute/item
+ * succeeds.
+ */
+export const deleteAttributes: API.OperationMethod<
+  DeleteAttributesRequest,
+  DeleteAttributesResponse,
+  DeleteAttributesError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteAttributesRequest,
+  output: DeleteAttributesResponse,
+  errors: [
+    AttributeDoesNotExist,
+    InvalidParameterValue,
+    MissingParameter,
+    NoSuchDomain,
+  ],
+  operationName: "DeleteAttributes",
+}));
+export type BatchPutAttributesError =
+  | DuplicateItemName
+  | InvalidParameterValue
+  | MissingParameter
+  | NoSuchDomain
+  | NumberDomainAttributesExceeded
+  | NumberDomainBytesExceeded
+  | NumberItemAttributesExceeded
+  | NumberSubmittedAttributesExceeded
+  | NumberSubmittedItemsExceeded
+  | CommonErrors;
+/**
+ * Puts attributes on up to 25 items in a single call.
+ */
+export const batchPutAttributes: API.OperationMethod<
+  BatchPutAttributesRequest,
+  BatchPutAttributesResponse,
+  BatchPutAttributesError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: BatchPutAttributesRequest,
+  output: BatchPutAttributesResponse,
+  errors: [
+    DuplicateItemName,
+    InvalidParameterValue,
+    MissingParameter,
+    NoSuchDomain,
+    NumberDomainAttributesExceeded,
+    NumberDomainBytesExceeded,
+    NumberItemAttributesExceeded,
+    NumberSubmittedAttributesExceeded,
+    NumberSubmittedItemsExceeded,
+  ],
+  operationName: "BatchPutAttributes",
+}));
+export type BatchDeleteAttributesError = CommonErrors;
+/**
+ * Deletes attributes (or whole items) on up to 25 items in a single call.
+ * Idempotent — missing items/attributes are not an error.
+ */
+export const batchDeleteAttributes: API.OperationMethod<
+  BatchDeleteAttributesRequest,
+  BatchDeleteAttributesResponse,
+  BatchDeleteAttributesError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: BatchDeleteAttributesRequest,
+  output: BatchDeleteAttributesResponse,
+  errors: [],
+  operationName: "BatchDeleteAttributes",
+}));
+export type SelectError =
+  | InvalidNextToken
+  | InvalidNumberPredicates
+  | InvalidNumberValueTests
+  | InvalidParameterValue
+  | InvalidQueryExpression
+  | MissingParameter
+  | NoSuchDomain
+  | RequestTimeout
+  | TooManyRequestedAttributes
+  | CommonErrors;
+/**
+ * Runs a SimpleDB select expression (`select output_list from domain
+ * [where ...]`). Paginated via `NextToken`.
+ */
+export const select: API.OperationMethod<
+  SelectRequest,
+  SelectResponse,
+  SelectError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: SelectRequest,
+  ) => stream.Stream<
+    SelectResponse,
+    SelectError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: SelectRequest,
+  ) => stream.Stream<
+    Item,
+    SelectError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: SelectRequest,
+  output: SelectResponse,
+  errors: [
+    InvalidNextToken,
+    InvalidNumberPredicates,
+    InvalidNumberValueTests,
+    InvalidParameterValue,
+    InvalidQueryExpression,
+    MissingParameter,
+    NoSuchDomain,
+    RequestTimeout,
+    TooManyRequestedAttributes,
+  ],
+  operationName: "Select",
+  pagination: {
+    inputToken: "NextToken",
+    outputToken: "NextToken",
+    items: "Items",
   } as const,
 }));
