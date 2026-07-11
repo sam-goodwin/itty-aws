@@ -637,28 +637,29 @@ export const infoIndex: API.OperationMethod<
 }));
 
 export interface InsertIndexRequest {
-  indexName: string;
-  /** Path param: Identifier */
+  /** Identifier */
   accountId: string;
-  /** Query param: Behavior for ndjson parse failures. */
+  /** The name of the index. */
+  indexName: string;
+  /** Behavior for ndjson parse failures. */
   unparsableBehavior?: "error" | "discard" | (string & {});
-  /** Body param: ndjson file containing vectors to insert. */
-  body: File | Blob;
+  /** ndjson file containing vectors to insert. */
+  vectors: File | Blob;
 }
 
 export const InsertIndexRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
   () =>
     Schema.Struct({
-      indexName: Schema.String.pipe(T.HttpPath("indexName")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      indexName: Schema.String.pipe(T.HttpPath("index_name")),
       unparsableBehavior: Schema.optional(
         Schema.Union([Schema.Literals(["error", "discard"]), Schema.String]),
       ).pipe(T.HttpQuery("unparsable-behavior")),
-      body: UploadableSchema.pipe(T.HttpFormDataFile()).pipe(T.HttpBody()),
+      vectors: UploadableSchema.pipe(T.HttpFormDataFile()),
     }).pipe(
       T.Http({
         method: "POST",
-        path: "/accounts/{account_id}/vectorize/v2/indexes/{indexName}/insert",
+        path: "/accounts/{account_id}/vectorize/v2/indexes/{index_name}/insert",
         contentType: "multipart",
       }),
     ),
@@ -767,28 +768,29 @@ export const queryIndex: API.OperationMethod<
 }));
 
 export interface UpsertIndexRequest {
-  indexName: string;
-  /** Path param: Identifier */
+  /** Identifier */
   accountId: string;
-  /** Query param: Behavior for ndjson parse failures. */
+  /** The name of the index. */
+  indexName: string;
+  /** Behavior for ndjson parse failures. */
   unparsableBehavior?: "error" | "discard" | (string & {});
-  /** Body param: ndjson file containing vectors to upsert. */
-  body: File | Blob;
+  /** ndjson file containing vectors to upsert. */
+  vectors: File | Blob;
 }
 
 export const UpsertIndexRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
   () =>
     Schema.Struct({
-      indexName: Schema.String.pipe(T.HttpPath("indexName")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      indexName: Schema.String.pipe(T.HttpPath("index_name")),
       unparsableBehavior: Schema.optional(
         Schema.Union([Schema.Literals(["error", "discard"]), Schema.String]),
       ).pipe(T.HttpQuery("unparsable-behavior")),
-      body: UploadableSchema.pipe(T.HttpFormDataFile()).pipe(T.HttpBody()),
+      vectors: UploadableSchema.pipe(T.HttpFormDataFile()),
     }).pipe(
       T.Http({
         method: "POST",
-        path: "/accounts/{account_id}/vectorize/v2/indexes/{indexName}/upsert",
+        path: "/accounts/{account_id}/vectorize/v2/indexes/{index_name}/upsert",
         contentType: "multipart",
       }),
     ),
