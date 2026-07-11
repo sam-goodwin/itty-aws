@@ -264,7 +264,14 @@ export interface DisassociateDefaultViewRequest {}
 export const DisassociateDefaultViewRequest =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     S.Struct({}).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+      T.all(
+        T.Http({ method: "POST", uri: "/DisassociateDefaultView" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
     ),
   ).annotate({
     identifier: "DisassociateDefaultViewRequest",
@@ -278,7 +285,14 @@ export interface GetAccountLevelServiceConfigurationRequest {}
 export const GetAccountLevelServiceConfigurationRequest =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     S.Struct({}).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+      T.all(
+        T.Http({ method: "POST", uri: "/GetAccountLevelServiceConfiguration" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
     ),
   ).annotate({
     identifier: "GetAccountLevelServiceConfigurationRequest",
@@ -307,7 +321,14 @@ export const GetAccountLevelServiceConfigurationOutput =
 export interface GetDefaultViewRequest {}
 export const GetDefaultViewRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+    T.all(
+      T.Http({ method: "POST", uri: "/GetDefaultView" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
   ),
 ).annotate({
   identifier: "GetDefaultViewRequest",
@@ -323,7 +344,14 @@ export const GetDefaultViewOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface GetIndexRequest {}
 export const GetIndexRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+    T.all(
+      T.Http({ method: "POST", uri: "/GetIndex" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
   ),
 ).annotate({
   identifier: "GetIndexRequest",
@@ -511,7 +539,14 @@ export interface GetServiceIndexRequest {}
 export const GetServiceIndexRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
     S.Struct({}).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+      T.all(
+        T.Http({ method: "POST", uri: "/GetServiceIndex" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
     ),
 ).annotate({
   identifier: "GetServiceIndexRequest",

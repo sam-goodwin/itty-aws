@@ -3660,11 +3660,12 @@ export const CloudFormationProperties = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "CloudFormationProperties",
 }) as any as S.Schema<CloudFormationProperties>;
-export type ProvisioningProperties = {
-  cloudFormation: CloudFormationProperties;
-};
+export type ProvisioningProperties =
+  | { cloudFormation: CloudFormationProperties; manual?: never }
+  | { cloudFormation?: never; manual: Record<string, never> };
 export const ProvisioningProperties = /*@__PURE__*/ /*#__PURE__*/ S.Union([
   S.Struct({ cloudFormation: CloudFormationProperties }),
+  S.Struct({ manual: S.Struct({}) }),
 ]);
 export interface DeploymentProperties {
   startTimeoutMinutes?: number;
@@ -19664,6 +19665,7 @@ export type ListEnvironmentsError =
   | InternalServerException
   | ThrottlingException
   | ValidationException
+  | ResourceNotFoundException
   | CommonErrors;
 /**
  * Lists Amazon DataZone environments.
@@ -19696,6 +19698,7 @@ export const listEnvironments: API.OperationMethod<
     InternalServerException,
     ThrottlingException,
     ValidationException,
+    ResourceNotFoundException,
   ],
   operationName: "ListEnvironments",
   pagination: {
@@ -20038,6 +20041,7 @@ export type ListProjectsError =
   | InternalServerException
   | ThrottlingException
   | ValidationException
+  | ResourceNotFoundException
   | CommonErrors;
 /**
  * Lists Amazon DataZone projects.
@@ -20070,6 +20074,7 @@ export const listProjects: API.OperationMethod<
     InternalServerException,
     ThrottlingException,
     ValidationException,
+    ResourceNotFoundException,
   ],
   operationName: "ListProjects",
   pagination: {
@@ -22546,6 +22551,7 @@ export type DeleteEnvironmentBlueprintConfigurationError =
   | AccessDeniedException
   | InternalServerException
   | ValidationException
+  | ResourceNotFoundException
   | CommonErrors;
 /**
  * Deletes the blueprint configuration in Amazon DataZone.
@@ -22558,7 +22564,12 @@ export const deleteEnvironmentBlueprintConfiguration: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteEnvironmentBlueprintConfigurationInput,
   output: DeleteEnvironmentBlueprintConfigurationOutput,
-  errors: [AccessDeniedException, InternalServerException, ValidationException],
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ValidationException,
+    ResourceNotFoundException,
+  ],
   operationName: "DeleteEnvironmentBlueprintConfiguration",
 }));
 export type ListEnvironmentBlueprintConfigurationsError =

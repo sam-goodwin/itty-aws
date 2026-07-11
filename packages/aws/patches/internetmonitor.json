@@ -1,0 +1,13 @@
+{
+  "errorCategories": {
+    "ResourceNotFoundException": ["NotFoundError"]
+  },
+  "operations": {
+    "getMonitor": {
+      "errors": ["ResourceNotFoundException"]
+    },
+    "deleteMonitor": {
+      "errors": ["ResourceNotFoundException"]
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "operations": {
+    "createAnomalyMonitor": {
+      "syntheticErrors": [
+        {
+          "name": "AnomalyMonitorAlreadyExists",
+          "from": "ValidationException",
+          "message": {
+            "includes": "same monitor name as an existing monitor"
+          }
+        }
+      ]
+    },
+    "createAnomalySubscription": {
+      "syntheticErrors": [
+        {
+          "name": "AnomalySubscriptionAlreadyExists",
+          "from": "ValidationException",
+          "message": {
+            "includes": "same subscription name as an existing subscription"
+          }
+        }
+      ]
+    }
+  },
+  "errorCategories": {
+    "AnomalyMonitorAlreadyExists": [
+      "AlreadyExistsError",
+      "ConflictError"
+    ],
+    "AnomalySubscriptionAlreadyExists": [
+      "AlreadyExistsError",
+      "ConflictError"
+    ]
+  }
+}

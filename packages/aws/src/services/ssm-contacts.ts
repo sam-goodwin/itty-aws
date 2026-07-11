@@ -1629,6 +1629,18 @@ export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuo
     ServiceCode: S.String,
   },
 ).pipe(C.withQuotaError) {}
+export class IncidentManagerNotOnboarded extends S.TaggedErrorClass<IncidentManagerNotOnboarded>()(
+  "IncidentManagerNotOnboarded",
+  {
+    Message: S.String,
+    Reason: S.optional(ValidationExceptionReason),
+    Fields: S.optional(ValidationExceptionFieldList),
+  },
+  T.SyntheticError({
+    from: "ValidationException",
+    message: { includes: "Account not found for the request" },
+  }),
+).pipe(C.withBadRequestError) {}
 
 //# Operations
 export type AcceptPageError =
@@ -1694,6 +1706,7 @@ export type CreateContactError =
   | ServiceQuotaExceededException
   | ThrottlingException
   | ValidationException
+  | IncidentManagerNotOnboarded
   | CommonErrors;
 /**
  * Contacts are either the contacts that Incident Manager engages during an incident or the
@@ -1716,6 +1729,7 @@ export const createContact: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
     ValidationException,
+    IncidentManagerNotOnboarded,
   ],
   operationName: "CreateContact",
 }));
@@ -1726,6 +1740,7 @@ export type CreateContactChannelError =
   | InternalServerException
   | ThrottlingException
   | ValidationException
+  | IncidentManagerNotOnboarded
   | CommonErrors;
 /**
  * A contact channel is the method that Incident Manager uses to engage your contact.
@@ -1745,6 +1760,7 @@ export const createContactChannel: API.OperationMethod<
     InternalServerException,
     ThrottlingException,
     ValidationException,
+    IncidentManagerNotOnboarded,
   ],
   operationName: "CreateContactChannel",
 }));
@@ -1755,6 +1771,8 @@ export type CreateRotationError =
   | ServiceQuotaExceededException
   | ThrottlingException
   | ValidationException
+  | ConflictException
+  | IncidentManagerNotOnboarded
   | CommonErrors;
 /**
  * Creates a rotation in an on-call schedule.
@@ -1774,6 +1792,8 @@ export const createRotation: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
     ValidationException,
+    ConflictException,
+    IncidentManagerNotOnboarded,
   ],
   operationName: "CreateRotation",
 }));
@@ -1841,6 +1861,7 @@ export type DeleteContactError =
   | ResourceNotFoundException
   | ThrottlingException
   | ValidationException
+  | IncidentManagerNotOnboarded
   | CommonErrors;
 /**
  * To remove a contact from Incident Manager, you can delete the contact. However, deleting a
@@ -1864,6 +1885,7 @@ export const deleteContact: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
     ValidationException,
+    IncidentManagerNotOnboarded,
   ],
   operationName: "DeleteContact",
 }));
@@ -1873,6 +1895,7 @@ export type DeleteContactChannelError =
   | ResourceNotFoundException
   | ThrottlingException
   | ValidationException
+  | IncidentManagerNotOnboarded
   | CommonErrors;
 /**
  * To stop receiving engagements on a contact channel, you can delete the channel from a
@@ -1895,6 +1918,7 @@ export const deleteContactChannel: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
     ValidationException,
+    IncidentManagerNotOnboarded,
   ],
   operationName: "DeleteContactChannel",
 }));
@@ -1905,6 +1929,7 @@ export type DeleteRotationError =
   | ResourceNotFoundException
   | ThrottlingException
   | ValidationException
+  | IncidentManagerNotOnboarded
   | CommonErrors;
 /**
  * Deletes a rotation from the system. If a rotation belongs to more than one on-call
@@ -1925,6 +1950,7 @@ export const deleteRotation: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
     ValidationException,
+    IncidentManagerNotOnboarded,
   ],
   operationName: "DeleteRotation",
 }));
@@ -2021,6 +2047,7 @@ export type GetContactError =
   | ResourceNotFoundException
   | ThrottlingException
   | ValidationException
+  | IncidentManagerNotOnboarded
   | CommonErrors;
 /**
  * Retrieves information about the specified contact or escalation plan.
@@ -2040,6 +2067,7 @@ export const getContact: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
     ValidationException,
+    IncidentManagerNotOnboarded,
   ],
   operationName: "GetContact",
 }));
@@ -2050,6 +2078,7 @@ export type GetContactChannelError =
   | ResourceNotFoundException
   | ThrottlingException
   | ValidationException
+  | IncidentManagerNotOnboarded
   | CommonErrors;
 /**
  * List details about a specific contact channel.
@@ -2069,6 +2098,7 @@ export const getContactChannel: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
     ValidationException,
+    IncidentManagerNotOnboarded,
   ],
   operationName: "GetContactChannel",
 }));
@@ -2106,6 +2136,7 @@ export type GetRotationError =
   | ResourceNotFoundException
   | ThrottlingException
   | ValidationException
+  | IncidentManagerNotOnboarded
   | CommonErrors;
 /**
  * Retrieves information about an on-call rotation.
@@ -2124,6 +2155,7 @@ export const getRotation: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
     ValidationException,
+    IncidentManagerNotOnboarded,
   ],
   operationName: "GetRotation",
 }));
@@ -2161,6 +2193,7 @@ export type ListContactChannelsError =
   | ResourceNotFoundException
   | ThrottlingException
   | ValidationException
+  | IncidentManagerNotOnboarded
   | CommonErrors;
 /**
  * Lists all contact channels for the specified contact.
@@ -2195,6 +2228,7 @@ export const listContactChannels: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
     ValidationException,
+    IncidentManagerNotOnboarded,
   ],
   operationName: "ListContactChannels",
   pagination: {
@@ -2209,6 +2243,7 @@ export type ListContactsError =
   | InternalServerException
   | ThrottlingException
   | ValidationException
+  | IncidentManagerNotOnboarded
   | CommonErrors;
 /**
  * Lists all contacts and escalation plans in Incident Manager.
@@ -2241,6 +2276,7 @@ export const listContacts: API.OperationMethod<
     InternalServerException,
     ThrottlingException,
     ValidationException,
+    IncidentManagerNotOnboarded,
   ],
   operationName: "ListContacts",
   pagination: {
@@ -2593,6 +2629,7 @@ export type ListRotationsError =
   | ResourceNotFoundException
   | ThrottlingException
   | ValidationException
+  | IncidentManagerNotOnboarded
   | CommonErrors;
 /**
  * Retrieves a list of on-call rotations.
@@ -2626,6 +2663,7 @@ export const listRotations: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
     ValidationException,
+    IncidentManagerNotOnboarded,
   ],
   operationName: "ListRotations",
   pagination: {
@@ -2691,6 +2729,7 @@ export type ListTagsForResourceError =
   | ResourceNotFoundException
   | ThrottlingException
   | ValidationException
+  | IncidentManagerNotOnboarded
   | CommonErrors;
 /**
  * Lists the tags of a contact, escalation plan, rotation, or on-call schedule.
@@ -2709,6 +2748,7 @@ export const listTagsForResource: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
     ValidationException,
+    IncidentManagerNotOnboarded,
   ],
   operationName: "ListTagsForResource",
 }));
@@ -2841,6 +2881,7 @@ export type TagResourceError =
   | ServiceQuotaExceededException
   | ThrottlingException
   | ValidationException
+  | IncidentManagerNotOnboarded
   | CommonErrors;
 /**
  * Tags a contact or escalation plan. You can tag only contacts and escalation plans in the
@@ -2861,6 +2902,7 @@ export const tagResource: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
     ValidationException,
+    IncidentManagerNotOnboarded,
   ],
   operationName: "TagResource",
 }));
@@ -2870,6 +2912,7 @@ export type UntagResourceError =
   | ResourceNotFoundException
   | ThrottlingException
   | ValidationException
+  | IncidentManagerNotOnboarded
   | CommonErrors;
 /**
  * Removes tags from the specified resource.
@@ -2888,6 +2931,7 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
     ValidationException,
+    IncidentManagerNotOnboarded,
   ],
   operationName: "UntagResource",
 }));
@@ -2899,6 +2943,7 @@ export type UpdateContactError =
   | ServiceQuotaExceededException
   | ThrottlingException
   | ValidationException
+  | IncidentManagerNotOnboarded
   | CommonErrors;
 /**
  * Updates the contact or escalation plan specified.
@@ -2919,6 +2964,7 @@ export const updateContact: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
     ValidationException,
+    IncidentManagerNotOnboarded,
   ],
   operationName: "UpdateContact",
 }));
@@ -2930,6 +2976,7 @@ export type UpdateContactChannelError =
   | ResourceNotFoundException
   | ThrottlingException
   | ValidationException
+  | IncidentManagerNotOnboarded
   | CommonErrors;
 /**
  * Updates a contact's contact channel.
@@ -2950,6 +2997,7 @@ export const updateContactChannel: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
     ValidationException,
+    IncidentManagerNotOnboarded,
   ],
   operationName: "UpdateContactChannel",
 }));
@@ -2960,6 +3008,7 @@ export type UpdateRotationError =
   | ResourceNotFoundException
   | ThrottlingException
   | ValidationException
+  | IncidentManagerNotOnboarded
   | CommonErrors;
 /**
  * Updates the information specified for an on-call rotation.
@@ -2979,6 +3028,7 @@ export const updateRotation: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
     ValidationException,
+    IncidentManagerNotOnboarded,
   ],
   operationName: "UpdateRotation",
 }));

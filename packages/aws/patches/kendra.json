@@ -1,0 +1,7 @@
+{
+  "operations": {
+    "listTagsForResource": {
+      "errors": ["ResourceNotFoundException"]
+    }
+  }
+}

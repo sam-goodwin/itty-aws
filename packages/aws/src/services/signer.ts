@@ -1245,6 +1245,14 @@ export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
   "NotFoundException",
   { message: S.optional(S.String), code: S.optional(S.String) },
 ).pipe(C.withBadRequestError) {}
+export class SigningProfileAlreadyExists extends S.TaggedErrorClass<SigningProfileAlreadyExists>()(
+  "SigningProfileAlreadyExists",
+  { message: S.optional(S.String), code: S.optional(S.String) },
+  T.SyntheticError({
+    from: "ValidationException",
+    message: { includes: "already exists" },
+  }),
+).pipe(C.withAlreadyExistsError) {}
 export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
   "ThrottlingException",
   { message: S.optional(S.String), code: S.optional(S.String) },
@@ -1361,6 +1369,7 @@ export const getRevocationStatus: API.OperationMethod<
     ValidationException,
   ],
   operationName: "GetRevocationStatus",
+  endpointHostPrefix: "data-",
 }));
 export type GetSigningPlatformError =
   | AccessDeniedException
@@ -1622,6 +1631,7 @@ export type PutSigningProfileError =
   | ResourceNotFoundException
   | TooManyRequestsException
   | ValidationException
+  | SigningProfileAlreadyExists
   | CommonErrors;
 /**
  * Creates a signing profile. A signing profile is a code-signing template that can be used to
@@ -1641,6 +1651,7 @@ export const putSigningProfile: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
     ValidationException,
+    SigningProfileAlreadyExists,
   ],
   operationName: "PutSigningProfile",
 }));

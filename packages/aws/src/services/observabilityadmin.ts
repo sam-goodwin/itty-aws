@@ -946,7 +946,14 @@ export interface GetTelemetryEnrichmentStatusRequest {}
 export const GetTelemetryEnrichmentStatusRequest =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     S.Struct({}).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+      T.all(
+        T.Http({ method: "POST", uri: "/GetTelemetryEnrichmentStatus" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
     ),
   ).annotate({
     identifier: "GetTelemetryEnrichmentStatusRequest",
@@ -974,7 +981,14 @@ export interface GetTelemetryEvaluationStatusRequest {}
 export const GetTelemetryEvaluationStatusRequest =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     S.Struct({}).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+      T.all(
+        T.Http({ method: "POST", uri: "/GetTelemetryEvaluationStatus" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
     ),
   ).annotate({
     identifier: "GetTelemetryEvaluationStatusRequest",
@@ -1026,7 +1040,17 @@ export interface GetTelemetryEvaluationStatusForOrganizationRequest {}
 export const GetTelemetryEvaluationStatusForOrganizationRequest =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     S.Struct({}).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+      T.all(
+        T.Http({
+          method: "POST",
+          uri: "/GetTelemetryEvaluationStatusForOrganization",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
     ),
   ).annotate({
     identifier: "GetTelemetryEvaluationStatusForOrganizationRequest",
@@ -1535,7 +1559,14 @@ export interface StartTelemetryEnrichmentRequest {}
 export const StartTelemetryEnrichmentRequest =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     S.Struct({}).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+      T.all(
+        T.Http({ method: "POST", uri: "/StartTelemetryEnrichment" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
     ),
   ).annotate({
     identifier: "StartTelemetryEnrichmentRequest",
@@ -1614,7 +1645,14 @@ export interface StopTelemetryEnrichmentRequest {}
 export const StopTelemetryEnrichmentRequest =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     S.Struct({}).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+      T.all(
+        T.Http({ method: "POST", uri: "/StopTelemetryEnrichment" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
     ),
   ).annotate({
     identifier: "StopTelemetryEnrichmentRequest",
@@ -1632,7 +1670,14 @@ export interface StopTelemetryEvaluationRequest {}
 export const StopTelemetryEvaluationRequest =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     S.Struct({}).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+      T.all(
+        T.Http({ method: "POST", uri: "/StopTelemetryEvaluation" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
     ),
   ).annotate({
     identifier: "StopTelemetryEvaluationRequest",
@@ -1646,7 +1691,17 @@ export interface StopTelemetryEvaluationForOrganizationRequest {}
 export const StopTelemetryEvaluationForOrganizationRequest =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     S.Struct({}).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+      T.all(
+        T.Http({
+          method: "POST",
+          uri: "/StopTelemetryEvaluationForOrganization",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
     ),
   ).annotate({
     identifier: "StopTelemetryEvaluationForOrganizationRequest",

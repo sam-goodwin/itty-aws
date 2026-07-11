@@ -4022,10 +4022,26 @@ export class LimitExceededException extends S.TaggedErrorClass<LimitExceededExce
   "LimitExceededException",
   { Message: S.optional(S.String) },
 ) {}
+export class AnomalyMonitorAlreadyExists extends S.TaggedErrorClass<AnomalyMonitorAlreadyExists>()(
+  "AnomalyMonitorAlreadyExists",
+  {},
+  T.SyntheticError({
+    from: "ValidationException",
+    message: { includes: "same monitor name as an existing monitor" },
+  }),
+).pipe(C.withAlreadyExistsError, C.withConflictError) {}
 export class UnknownMonitorException extends S.TaggedErrorClass<UnknownMonitorException>()(
   "UnknownMonitorException",
   { Message: S.optional(S.String) },
 ).pipe(C.withBadRequestError) {}
+export class AnomalySubscriptionAlreadyExists extends S.TaggedErrorClass<AnomalySubscriptionAlreadyExists>()(
+  "AnomalySubscriptionAlreadyExists",
+  {},
+  T.SyntheticError({
+    from: "ValidationException",
+    message: { includes: "same subscription name as an existing subscription" },
+  }),
+).pipe(C.withAlreadyExistsError, C.withConflictError) {}
 export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
   "ServiceQuotaExceededException",
   { Message: S.optional(S.String) },
@@ -4080,7 +4096,10 @@ export class TooManyTagsException extends S.TaggedErrorClass<TooManyTagsExceptio
 ).pipe(C.withBadRequestError) {}
 
 //# Operations
-export type CreateAnomalyMonitorError = LimitExceededException | CommonErrors;
+export type CreateAnomalyMonitorError =
+  | LimitExceededException
+  | AnomalyMonitorAlreadyExists
+  | CommonErrors;
 /**
  * Creates a new cost anomaly detection monitor with the requested type and monitor
  * specification.
@@ -4093,12 +4112,13 @@ export const createAnomalyMonitor: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAnomalyMonitorRequest,
   output: CreateAnomalyMonitorResponse,
-  errors: [LimitExceededException],
+  errors: [LimitExceededException, AnomalyMonitorAlreadyExists],
   operationName: "CreateAnomalyMonitor",
 }));
 export type CreateAnomalySubscriptionError =
   | LimitExceededException
   | UnknownMonitorException
+  | AnomalySubscriptionAlreadyExists
   | CommonErrors;
 /**
  * Adds an alert subscription to a cost anomaly detection monitor. You can use each
@@ -4113,7 +4133,11 @@ export const createAnomalySubscription: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAnomalySubscriptionRequest,
   output: CreateAnomalySubscriptionResponse,
-  errors: [LimitExceededException, UnknownMonitorException],
+  errors: [
+    LimitExceededException,
+    UnknownMonitorException,
+    AnomalySubscriptionAlreadyExists,
+  ],
   operationName: "CreateAnomalySubscription",
 }));
 export type CreateCostCategoryDefinitionError =

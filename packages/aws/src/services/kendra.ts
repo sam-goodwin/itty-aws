@@ -7354,6 +7354,7 @@ export type ListTagsForResourceError =
   | ResourceUnavailableException
   | ThrottlingException
   | ValidationException
+  | ResourceNotFoundException
   | CommonErrors;
 /**
  * Gets a list of tags associated with a resource. Indexes, FAQs, data sources, and
@@ -7373,6 +7374,7 @@ export const listTagsForResource: API.OperationMethod<
     ResourceUnavailableException,
     ThrottlingException,
     ValidationException,
+    ResourceNotFoundException,
   ],
   operationName: "ListTagsForResource",
 }));

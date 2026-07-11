@@ -1096,8 +1096,8 @@ export class LimitExceededException extends S.TaggedErrorClass<LimitExceededExce
 ).pipe(C.withAuthError) {}
 export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
   "ResourceNotFoundException",
-  { message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
+  {},
+).pipe(C.withNotFoundError) {}
 
 //# Operations
 export type ListTagsForResourceError =
@@ -1312,6 +1312,7 @@ export type GetMonitorError =
   | InternalServerException
   | ThrottlingException
   | ValidationException
+  | ResourceNotFoundException
   | CommonErrors;
 /**
  * Gets information about a monitor in Amazon CloudWatch Internet Monitor based on a monitor name. The information returned includes the Amazon Resource Name (ARN), create time,
@@ -1330,6 +1331,7 @@ export const getMonitor: API.OperationMethod<
     InternalServerException,
     ThrottlingException,
     ValidationException,
+    ResourceNotFoundException,
   ],
   operationName: "GetMonitor",
 }));
@@ -1371,6 +1373,7 @@ export type DeleteMonitorError =
   | InternalServerException
   | ThrottlingException
   | ValidationException
+  | ResourceNotFoundException
   | CommonErrors;
 /**
  * Deletes a monitor in Amazon CloudWatch Internet Monitor.
@@ -1388,6 +1391,7 @@ export const deleteMonitor: API.OperationMethod<
     InternalServerException,
     ThrottlingException,
     ValidationException,
+    ResourceNotFoundException,
   ],
   operationName: "DeleteMonitor",
 }));

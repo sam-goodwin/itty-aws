@@ -38,9 +38,12 @@ import {
   getEventSchema,
   getHttpHeader,
   getHttpPrefixHeaders,
+  getHttpQuery,
   getPropAnnotations,
   getServiceVersion,
+  hasHttpLabel,
   hasHttpPayload,
+  hasHttpQueryParams,
   isInputEventStream,
   isOutputEventStream,
   isStreamingType,
@@ -145,6 +148,27 @@ export const restJson1Protocol: Protocol = (
     }
   }
 
+  // restJson1 sends an explicit empty JSON document (`{}`) whenever the
+  // input shape has at least one member bound to the body but none were
+  // set (matching the AWS SDK v3 / botocore behavior — see
+  // AwsRestJsonProtocol.serializeRequest + ProtocolLib.resolveRestContentType
+  // in aws-sdk-js-v3). Several services reject an absent body outright:
+  // resource-explorer-2's ListIndexes/ListViews return
+  // `ValidationException: Invalid request body` when called with no body.
+  // Unit inputs (zero members) and inputs whose members are all bound to
+  // labels/query/headers keep an empty body.
+  const hasBodyCapableInputMembers = getEncodedPropertySignatures(
+    inputAst,
+  ).some(
+    (prop) =>
+      getHttpHeader(prop) === undefined &&
+      !hasHttpLabel(prop) &&
+      getHttpQuery(prop) === undefined &&
+      !hasHttpQueryParams(prop) &&
+      getHttpPrefixHeaders(prop) === undefined &&
+      !hasHttpPayload(prop),
+  );
+
   return {
     serializeRequest: Effect.fn(function* (input: unknown) {
       const encoded = yield* encodeInput(input).pipe(
@@ -223,7 +247,12 @@ export const restJson1Protocol: Protocol = (
           request.headers["Content-Type"] = "application/json";
         }
       } else {
-        // No body - set default JSON content type for consistency
+        if (hasBodyCapableInputMembers) {
+          // Body-capable members exist but none were set: send an explicit
+          // empty JSON document, matching AWS SDK v3 / botocore.
+          request.body = "{}";
+        }
+        // No body members set - default JSON content type for consistency
         if (!userSetContentType) {
           request.headers["Content-Type"] = "application/json";
         }

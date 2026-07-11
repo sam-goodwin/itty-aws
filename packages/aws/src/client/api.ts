@@ -153,7 +153,16 @@ export const make = <Op extends Operation<any, any, any>>(
         (_, member: string) =>
           String((payload as Record<string, unknown>)?.[member] ?? ""),
       );
-      endpoint = endpoint.replace("://", `://${resolvedPrefix}`);
+      // The endpoint rules engine may already have baked the same label into
+      // the host (e.g. S3 Control resolves `{AccountId}.s3-control.{region}`
+      // from the AccountId context param, and the operations ALSO carry the
+      // `{AccountId}.` hostPrefix trait). Only prepend when the resolved
+      // endpoint does not already start with the prefix, else the label is
+      // applied twice and TLS fails on the doubled host.
+      const hostStart = endpoint.indexOf("://") + 3;
+      if (!endpoint.startsWith(resolvedPrefix, hostStart)) {
+        endpoint = endpoint.replace("://", `://${resolvedPrefix}`);
+      }
     }
 
     // Build full URL with query string
@@ -195,12 +204,45 @@ export const make = <Op extends Operation<any, any, any>>(
     // Use unsigned payload for streaming bodies OR when service provides checksum with body
     const useUnsignedPayload =
       (isStreamingBody || (hasServiceChecksum && hasBody)) && !hasContentSha256;
-    const signingHeaders = useUnsignedPayload
+    let signingHeaders = useUnsignedPayload
       ? {
           ...resolvedRequest.headers,
           "X-Amz-Content-Sha256": "UNSIGNED-PAYLOAD",
         }
       : resolvedRequest.headers;
+
+    // S3 Control rejects UNSIGNED-PAYLOAD on several routes (access point
+    // operations fail with `InvalidRequest: "Request body cannot be
+    // unsigned"`). aws4fetch injects UNSIGNED-PAYLOAD for any service signing
+    // as "s3" when the header is absent, so pre-compute the real payload
+    // SHA-256 here (matching the official SDK's applyChecksum behavior).
+    if (
+      _serviceSdkId === "S3 Control" &&
+      !useUnsignedPayload &&
+      !hasContentSha256 &&
+      !isStreamingBody
+    ) {
+      const bodyBytes =
+        resolvedRequest.body === undefined
+          ? new Uint8Array(0)
+          : resolvedRequest.body instanceof Uint8Array
+            ? resolvedRequest.body
+            : new TextEncoder().encode(String(resolvedRequest.body));
+      const digest = yield* Effect.promise(() =>
+        crypto.subtle.digest(
+          "SHA-256",
+          // copy into a fresh ArrayBuffer-backed view for the DOM typings
+          bodyBytes.slice(),
+        ),
+      );
+      const payloadHash = Array.from(new Uint8Array(digest))
+        .map((byte) => byte.toString(16).padStart(2, "0"))
+        .join("");
+      signingHeaders = {
+        ...signingHeaders,
+        "X-Amz-Content-Sha256": payloadHash,
+      };
+    }
 
     const signer = new AwsV4Signer({
       method: resolvedRequest.method,

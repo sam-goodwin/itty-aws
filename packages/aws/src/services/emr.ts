@@ -5077,6 +5077,64 @@ export class InternalServerError extends S.TaggedErrorClass<InternalServerError>
   {},
   T.AwsQueryError({ code: "InternalFailure", httpResponseCode: 500 }),
 ).pipe(C.withServerError) {}
+export class SecurityConfigurationAlreadyExists extends S.TaggedErrorClass<SecurityConfigurationAlreadyExists>()(
+  "SecurityConfigurationAlreadyExists",
+  { ErrorCode: S.optional(S.String), Message: S.optional(S.String) },
+  T.SyntheticError({
+    from: "InvalidRequestException",
+    message: { matches: "^SecurityConfiguration with name .* already exists" },
+  }),
+).pipe(C.withAlreadyExistsError, C.withConflictError) {}
+export class StudioServiceRoleNotAssumable extends S.TaggedErrorClass<StudioServiceRoleNotAssumable>()(
+  "StudioServiceRoleNotAssumable",
+  { ErrorCode: S.optional(S.String), Message: S.optional(S.String) },
+  T.SyntheticError({
+    from: "InvalidRequestException",
+    message: { includes: "does not have permissions to assume role" },
+  }),
+).pipe(C.withRetryableError) {}
+export class StudioServiceRoleMissingS3Access extends S.TaggedErrorClass<StudioServiceRoleMissingS3Access>()(
+  "StudioServiceRoleMissingS3Access",
+  { ErrorCode: S.optional(S.String), Message: S.optional(S.String) },
+  T.SyntheticError({
+    from: "InvalidRequestException",
+    message: {
+      includes: "does not have permission to access the 'S3 Location'",
+    },
+  }),
+).pipe(C.withRetryableError) {}
+export class SecurityConfigurationNotFound extends S.TaggedErrorClass<SecurityConfigurationNotFound>()(
+  "SecurityConfigurationNotFound",
+  { ErrorCode: S.optional(S.String), Message: S.optional(S.String) },
+  T.SyntheticError({
+    from: "InvalidRequestException",
+    message: { matches: "^Security configuration with name .* does not exist" },
+  }),
+).pipe(C.withNotFoundError) {}
+export class StudioNotFound extends S.TaggedErrorClass<StudioNotFound>()(
+  "StudioNotFound",
+  { ErrorCode: S.optional(S.String), Message: S.optional(S.String) },
+  T.SyntheticError({
+    from: "InvalidRequestException",
+    message: { includes: "Studio does not exist" },
+  }),
+).pipe(C.withNotFoundError) {}
+export class ClusterNotFound extends S.TaggedErrorClass<ClusterNotFound>()(
+  "ClusterNotFound",
+  { ErrorCode: S.optional(S.String), Message: S.optional(S.String) },
+  T.SyntheticError({
+    from: "InvalidRequestException",
+    message: { matches: "^Cluster id .* is not valid" },
+  }),
+).pipe(C.withNotFoundError) {}
+export class JobFlowNotFound extends S.TaggedErrorClass<JobFlowNotFound>()(
+  "JobFlowNotFound",
+  {},
+  T.SyntheticError({
+    from: "ValidationException",
+    message: { includes: "Specified job flow ID not valid" },
+  }),
+).pipe(C.withNotFoundError) {}
 
 //# Operations
 export type AddInstanceFleetError =
@@ -5216,6 +5274,7 @@ export const createPersistentAppUI: API.OperationMethod<
 export type CreateSecurityConfigurationError =
   | InternalServerException
   | InvalidRequestException
+  | SecurityConfigurationAlreadyExists
   | CommonErrors;
 /**
  * Creates a security configuration, which is stored in the service and can be specified
@@ -5229,12 +5288,18 @@ export const createSecurityConfiguration: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateSecurityConfigurationInput,
   output: CreateSecurityConfigurationOutput,
-  errors: [InternalServerException, InvalidRequestException],
+  errors: [
+    InternalServerException,
+    InvalidRequestException,
+    SecurityConfigurationAlreadyExists,
+  ],
   operationName: "CreateSecurityConfiguration",
 }));
 export type CreateStudioError =
   | InternalServerException
   | InvalidRequestException
+  | StudioServiceRoleNotAssumable
+  | StudioServiceRoleMissingS3Access
   | CommonErrors;
 /**
  * Creates a new Amazon EMR Studio.
@@ -5247,7 +5312,12 @@ export const createStudio: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateStudioInput,
   output: CreateStudioOutput,
-  errors: [InternalServerException, InvalidRequestException],
+  errors: [
+    InternalServerException,
+    InvalidRequestException,
+    StudioServiceRoleNotAssumable,
+    StudioServiceRoleMissingS3Access,
+  ],
   operationName: "CreateStudio",
 }));
 export type CreateStudioSessionMappingError =
@@ -5275,6 +5345,7 @@ export const createStudioSessionMapping: API.OperationMethod<
 export type DeleteSecurityConfigurationError =
   | InternalServerException
   | InvalidRequestException
+  | SecurityConfigurationNotFound
   | CommonErrors;
 /**
  * Deletes a security configuration.
@@ -5287,12 +5358,17 @@ export const deleteSecurityConfiguration: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteSecurityConfigurationInput,
   output: DeleteSecurityConfigurationOutput,
-  errors: [InternalServerException, InvalidRequestException],
+  errors: [
+    InternalServerException,
+    InvalidRequestException,
+    SecurityConfigurationNotFound,
+  ],
   operationName: "DeleteSecurityConfiguration",
 }));
 export type DeleteStudioError =
   | InternalServerException
   | InvalidRequestException
+  | StudioNotFound
   | CommonErrors;
 /**
  * Removes an Amazon EMR Studio from the Studio metadata store.
@@ -5305,7 +5381,7 @@ export const deleteStudio: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteStudioInput,
   output: DeleteStudioResponse,
-  errors: [InternalServerException, InvalidRequestException],
+  errors: [InternalServerException, InvalidRequestException, StudioNotFound],
   operationName: "DeleteStudio",
 }));
 export type DeleteStudioSessionMappingError =
@@ -5329,6 +5405,7 @@ export const deleteStudioSessionMapping: API.OperationMethod<
 export type DescribeClusterError =
   | InternalServerException
   | InvalidRequestException
+  | ClusterNotFound
   | CommonErrors;
 /**
  * Provides cluster-level details including status, hardware and software configuration,
@@ -5342,7 +5419,7 @@ export const describeCluster: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeClusterInput,
   output: DescribeClusterOutput,
-  errors: [InternalServerException, InvalidRequestException],
+  errors: [InternalServerException, InvalidRequestException, ClusterNotFound],
   operationName: "DescribeCluster",
 }));
 export type DescribeJobFlowsError = InternalServerError | CommonErrors;
@@ -5438,6 +5515,7 @@ export const describeReleaseLabel: API.OperationMethod<
 export type DescribeSecurityConfigurationError =
   | InternalServerException
   | InvalidRequestException
+  | SecurityConfigurationNotFound
   | CommonErrors;
 /**
  * Provides the details of a security configuration by returning the configuration
@@ -5451,7 +5529,11 @@ export const describeSecurityConfiguration: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeSecurityConfigurationInput,
   output: DescribeSecurityConfigurationOutput,
-  errors: [InternalServerException, InvalidRequestException],
+  errors: [
+    InternalServerException,
+    InvalidRequestException,
+    SecurityConfigurationNotFound,
+  ],
   operationName: "DescribeSecurityConfiguration",
 }));
 export type DescribeStepError =
@@ -5475,6 +5557,7 @@ export const describeStep: API.OperationMethod<
 export type DescribeStudioError =
   | InternalServerException
   | InvalidRequestException
+  | StudioNotFound
   | CommonErrors;
 /**
  * Returns details for the specified Amazon EMR Studio including ID, Name, VPC,
@@ -5488,7 +5571,7 @@ export const describeStudio: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeStudioInput,
   output: DescribeStudioOutput,
-  errors: [InternalServerException, InvalidRequestException],
+  errors: [InternalServerException, InvalidRequestException, StudioNotFound],
   operationName: "DescribeStudio",
 }));
 export type GetAutoTerminationPolicyError = CommonErrors;
@@ -6434,7 +6517,10 @@ export const setKeepJobFlowAliveWhenNoSteps: API.OperationMethod<
   errors: [InternalServerError],
   operationName: "SetKeepJobFlowAliveWhenNoSteps",
 }));
-export type SetTerminationProtectionError = InternalServerError | CommonErrors;
+export type SetTerminationProtectionError =
+  | InternalServerError
+  | JobFlowNotFound
+  | CommonErrors;
 /**
  * SetTerminationProtection locks a cluster (job flow) so the Amazon EC2 instances
  * in the cluster cannot be terminated by user intervention, an API call, or in the event of a
@@ -6464,7 +6550,7 @@ export const setTerminationProtection: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetTerminationProtectionInput,
   output: SetTerminationProtectionResponse,
-  errors: [InternalServerError],
+  errors: [InternalServerError, JobFlowNotFound],
   operationName: "SetTerminationProtection",
 }));
 export type SetUnhealthyNodeReplacementError =
@@ -6579,7 +6665,10 @@ export const stopNotebookExecution: API.OperationMethod<
   errors: [InternalServerError, InvalidRequestException],
   operationName: "StopNotebookExecution",
 }));
-export type TerminateJobFlowsError = InternalServerError | CommonErrors;
+export type TerminateJobFlowsError =
+  | InternalServerError
+  | JobFlowNotFound
+  | CommonErrors;
 /**
  * TerminateJobFlows shuts a list of clusters (job flows) down. When a job flow is shut
  * down, any step not yet completed is canceled and the Amazon EC2 instances on which
@@ -6598,7 +6687,7 @@ export const terminateJobFlows: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TerminateJobFlowsInput,
   output: TerminateJobFlowsResponse,
-  errors: [InternalServerError],
+  errors: [InternalServerError, JobFlowNotFound],
   operationName: "TerminateJobFlows",
 }));
 export type TerminateSessionError =
@@ -6622,6 +6711,7 @@ export const terminateSession: API.OperationMethod<
 export type UpdateStudioError =
   | InternalServerException
   | InvalidRequestException
+  | StudioNotFound
   | CommonErrors;
 /**
  * Updates an Amazon EMR Studio configuration, including attributes such as name,
@@ -6635,7 +6725,7 @@ export const updateStudio: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateStudioInput,
   output: UpdateStudioResponse,
-  errors: [InternalServerException, InvalidRequestException],
+  errors: [InternalServerException, InvalidRequestException, StudioNotFound],
   operationName: "UpdateStudio",
 }));
 export type UpdateStudioSessionMappingError =

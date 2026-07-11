@@ -1,0 +1,170 @@
+{
+  "operations": {
+    "getContact": {
+      "syntheticErrors": [
+        {
+          "name": "IncidentManagerNotOnboarded",
+          "from": "ValidationException",
+          "message": { "includes": "Account not found for the request" }
+        }
+      ]
+    },
+    "getContactChannel": {
+      "syntheticErrors": [
+        {
+          "name": "IncidentManagerNotOnboarded",
+          "from": "ValidationException",
+          "message": { "includes": "Account not found for the request" }
+        }
+      ]
+    },
+    "getRotation": {
+      "syntheticErrors": [
+        {
+          "name": "IncidentManagerNotOnboarded",
+          "from": "ValidationException",
+          "message": { "includes": "Account not found for the request" }
+        }
+      ]
+    },
+    "createContact": {
+      "syntheticErrors": [
+        {
+          "name": "IncidentManagerNotOnboarded",
+          "from": "ValidationException",
+          "message": { "includes": "Account not found for the request" }
+        }
+      ]
+    },
+    "createContactChannel": {
+      "syntheticErrors": [
+        {
+          "name": "IncidentManagerNotOnboarded",
+          "from": "ValidationException",
+          "message": { "includes": "Account not found for the request" }
+        }
+      ]
+    },
+    "createRotation": {
+      "errors": ["ConflictException"],
+      "syntheticErrors": [
+        {
+          "name": "IncidentManagerNotOnboarded",
+          "from": "ValidationException",
+          "message": { "includes": "Account not found for the request" }
+        }
+      ]
+    },
+    "updateContact": {
+      "syntheticErrors": [
+        {
+          "name": "IncidentManagerNotOnboarded",
+          "from": "ValidationException",
+          "message": { "includes": "Account not found for the request" }
+        }
+      ]
+    },
+    "updateContactChannel": {
+      "syntheticErrors": [
+        {
+          "name": "IncidentManagerNotOnboarded",
+          "from": "ValidationException",
+          "message": { "includes": "Account not found for the request" }
+        }
+      ]
+    },
+    "updateRotation": {
+      "syntheticErrors": [
+        {
+          "name": "IncidentManagerNotOnboarded",
+          "from": "ValidationException",
+          "message": { "includes": "Account not found for the request" }
+        }
+      ]
+    },
+    "deleteContact": {
+      "syntheticErrors": [
+        {
+          "name": "IncidentManagerNotOnboarded",
+          "from": "ValidationException",
+          "message": { "includes": "Account not found for the request" }
+        }
+      ]
+    },
+    "deleteContactChannel": {
+      "syntheticErrors": [
+        {
+          "name": "IncidentManagerNotOnboarded",
+          "from": "ValidationException",
+          "message": { "includes": "Account not found for the request" }
+        }
+      ]
+    },
+    "deleteRotation": {
+      "syntheticErrors": [
+        {
+          "name": "IncidentManagerNotOnboarded",
+          "from": "ValidationException",
+          "message": { "includes": "Account not found for the request" }
+        }
+      ]
+    },
+    "listContacts": {
+      "syntheticErrors": [
+        {
+          "name": "IncidentManagerNotOnboarded",
+          "from": "ValidationException",
+          "message": { "includes": "Account not found for the request" }
+        }
+      ]
+    },
+    "listContactChannels": {
+      "syntheticErrors": [
+        {
+          "name": "IncidentManagerNotOnboarded",
+          "from": "ValidationException",
+          "message": { "includes": "Account not found for the request" }
+        }
+      ]
+    },
+    "listRotations": {
+      "syntheticErrors": [
+        {
+          "name": "IncidentManagerNotOnboarded",
+          "from": "ValidationException",
+          "message": { "includes": "Account not found for the request" }
+        }
+      ]
+    },
+    "listTagsForResource": {
+      "syntheticErrors": [
+        {
+          "name": "IncidentManagerNotOnboarded",
+          "from": "ValidationException",
+          "message": { "includes": "Account not found for the request" }
+        }
+      ]
+    },
+    "tagResource": {
+      "syntheticErrors": [
+        {
+          "name": "IncidentManagerNotOnboarded",
+          "from": "ValidationException",
+          "message": { "includes": "Account not found for the request" }
+        }
+      ]
+    },
+    "untagResource": {
+      "syntheticErrors": [
+        {
+          "name": "IncidentManagerNotOnboarded",
+          "from": "ValidationException",
+          "message": { "includes": "Account not found for the request" }
+        }
+      ]
+    }
+  },
+  "errorCategories": {
+    "IncidentManagerNotOnboarded": ["BadRequestError"]
+  }
+}

@@ -74,6 +74,14 @@ class SdkFile extends Context.Service<
     serviceXmlNamespace: string | undefined;
     // Map of input schema names to their operation traits
     operationInputTraits: Map<string, OperationInputTraits>;
+    // Per-operation trait overrides for input shapes SHARED by multiple
+    // operations with conflicting operation-level traits (keyed by operation
+    // shape name, e.g. "DisableTrustAnchor"). The operation generator emits a
+    // derived `${OpName}Request` schema carrying the correct @http trait —
+    // otherwise every op silently inherits one op's method/uri (observed
+    // live: rolesanywhere DisableTrustAnchor issued GET /trustanchor/{id}
+    // instead of POST .../disable and no-op'd).
+    operationInputTraitOverrides: Map<string, OperationInputTraits>;
     // Map of output schema names to their operation traits
     operationOutputTraits: Map<string, OperationOutputTraits>;
     // Service-level traits (applied to all request schemas)
@@ -598,9 +606,14 @@ const shapeToTsType = (
       }
 
       case "list": {
-        // For lists, get the element type and return an array type
+        // For lists, get the element type and return an array type.
+        // Parenthesize union element types (e.g. sensitive members that
+        // render as `string | redacted.Redacted<string>`) so the `[]`
+        // suffix binds to the whole union, not just the last member.
         const elementType = yield* shapeToTsType(shape.member.target);
-        return `${elementType}[]`;
+        return elementType.includes("|")
+          ? `(${elementType})[]`
+          : `${elementType}[]`;
       }
 
       case "map": {
@@ -946,11 +959,27 @@ interface OperationInputTraits {
   staticContextParams?: Record<string, { value: unknown }>;
 }
 
-// Collect operation traits for input schemas
-function collectOperationInputTraits(
-  model: SmithyModel,
-): Map<string, OperationInputTraits> {
+// Collect operation traits for input schemas.
+//
+// Returns two maps:
+// - inputTraits: input schema name -> traits baked into that schema constant
+// - inputTraitOverrides: operation shape name -> traits, for operations whose
+//   input shape is SHARED by multiple operations with CONFLICTING traits
+//   (restJson services commonly reuse one `Scalar{X}Request` shape across
+//   Get/Delete/Enable/Disable with different @http bindings). Keying traits
+//   by input shape name alone made the last writer win, so e.g. rolesanywhere
+//   DisableTrustAnchor issued GET /trustanchor/{id} and silently no-op'd. The
+//   operation generator emits a derived `${OpName}Request` schema for each
+//   overridden operation.
+function collectOperationInputTraits(model: SmithyModel): {
+  operationInputTraits: Map<string, OperationInputTraits>;
+  operationInputTraitOverrides: Map<string, OperationInputTraits>;
+} {
   const inputTraits = new Map<string, OperationInputTraits>();
+  const opsByInput = new Map<
+    string,
+    { opName: string; traits: OperationInputTraits }[]
+  >();
 
   for (const [_shapeId, shape] of Object.entries(model.shapes)) {
     if (shape.type === "operation" && shape.input) {
@@ -972,17 +1001,58 @@ function collectOperationInputTraits(
         "smithy.rules#staticContextParams"
       ] as Record<string, { value: unknown }> | undefined;
 
-      const inputName = formatName(shape.input.target);
-      inputTraits.set(inputName, {
+      const traits: OperationInputTraits = {
         method: httpTrait.method ?? "POST",
         uri: httpTrait.uri ?? "/",
         httpChecksum: httpChecksumTrait,
         staticContextParams: staticContextParamsTrait,
-      });
+      };
+
+      // Operations with `smithy.api#Unit` inputs get a synthesized
+      // `${OpName}Request` schema (see the Unit-input branch in the
+      // operation generator), so key their traits under that name —
+      // keying under "Unit" loses the operation's real @http trait and
+      // every Unit-input operation silently falls back to POST "/"
+      // (observed live: resource-explorer-2 GetIndex returned
+      // AccessDeniedException because it was posted to "/" instead of
+      // "/GetIndex").
+      if (shape.input.target === "smithy.api#Unit") {
+        inputTraits.set(`${_shapeId.split("#")[1]}Request`, traits);
+        continue;
+      }
+      const inputName = formatName(shape.input.target);
+      const ops = opsByInput.get(inputName) ?? [];
+      ops.push({ opName: _shapeId.split("#")[1], traits });
+      opsByInput.set(inputName, ops);
     }
   }
 
-  return inputTraits;
+  const inputTraitOverrides = new Map<string, OperationInputTraits>();
+  for (const [inputName, ops] of opsByInput) {
+    const distinct = new Set(ops.map((o) => JSON.stringify(o.traits)));
+    if (distinct.size === 1) {
+      inputTraits.set(inputName, ops[0].traits);
+      continue;
+    }
+    // Conflicting traits on a shared input shape. The op whose natural
+    // `${OpName}Request` name matches the shape keeps ownership of the base
+    // schema (so no derived name can collide with the base); otherwise the
+    // first op in model order owns it. Every other op with different traits
+    // gets a per-operation override.
+    const owner =
+      ops.find((o) => `${o.opName}Request` === inputName) ?? ops[0];
+    inputTraits.set(inputName, owner.traits);
+    const ownerKey = JSON.stringify(owner.traits);
+    for (const op of ops) {
+      if (op === owner || JSON.stringify(op.traits) === ownerKey) continue;
+      inputTraitOverrides.set(op.opName, op.traits);
+    }
+  }
+
+  return {
+    operationInputTraits: inputTraits,
+    operationInputTraitOverrides: inputTraitOverrides,
+  };
 }
 
 interface OperationOutputTraits {
@@ -1654,7 +1724,12 @@ const convertShapeToSchema: (
                       const memberTsType = yield* shapeToTsType(
                         s.member.target,
                       );
-                      const typeAlias = `export type ${schemaName} = ${memberTsType}[];`;
+                      // Parenthesize union element types so `[]` binds to the
+                      // whole union, not just the last member.
+                      const memberTsTypeForArray = memberTsType.includes("|")
+                        ? `(${memberTsType})`
+                        : memberTsType;
+                      const typeAlias = `export type ${schemaName} = ${memberTsTypeForArray}[];`;
                       const schemaDef = isCyclic
                         ? annotatePureExportConst(
                             `export const ${schemaName} = S.Array(${innerType})${sparsePipe} as any as S.Schema<${schemaName}>;`,
@@ -2686,9 +2761,68 @@ const generateClient = Effect.fn(function* (
             ]);
             return className;
           }
-          return yield* convertShapeToSchema(operationShape.input.target).pipe(
-            Effect.flatMap(Deferred.await),
+          const baseName = yield* convertShapeToSchema(
+            operationShape.input.target,
+          ).pipe(Effect.flatMap(Deferred.await));
+
+          // Input shape shared by multiple operations with CONFLICTING
+          // operation-level traits: emit a derived per-operation request
+          // schema whose direct annotations (getAnnotationUnwrap checks the
+          // outermost AST node first) override the traits baked into the
+          // shared base schema.
+          const overrideTraits =
+            sdkFile.operationInputTraitOverrides.get(opName);
+          if (overrideTraits === undefined) return baseName;
+          let derivedName = `${opName}Request`;
+          if (derivedName === baseName) return baseName;
+          if (sdkFile.allSchemaNames.has(derivedName)) {
+            derivedName = `${derivedName}_`;
+          }
+
+          const overrideAnnotations: string[] = [
+            `T.Http({ method: "${overrideTraits.method}", uri: "${overrideTraits.uri}" })`,
+          ];
+          if (overrideTraits.httpChecksum) {
+            const checksumParts: string[] = [];
+            if (overrideTraits.httpChecksum.requestAlgorithmMember) {
+              checksumParts.push(
+                `requestAlgorithmMember: "${overrideTraits.httpChecksum.requestAlgorithmMember}"`,
+              );
+            }
+            if (overrideTraits.httpChecksum.requestChecksumRequired) {
+              checksumParts.push(`requestChecksumRequired: true`);
+            }
+            if (overrideTraits.httpChecksum.responseAlgorithms) {
+              checksumParts.push(
+                `responseAlgorithms: [${overrideTraits.httpChecksum.responseAlgorithms.map((a) => `"${a}"`).join(", ")}]`,
+              );
+            }
+            overrideAnnotations.push(
+              `T.AwsProtocolsHttpChecksum({ ${checksumParts.join(", ")} })`,
+            );
+          }
+          if (overrideTraits.staticContextParams) {
+            overrideAnnotations.push(
+              `T.StaticContextParams(${JSON.stringify(overrideTraits.staticContextParams)})`,
+            );
+          }
+          const overridePipe =
+            overrideAnnotations.length === 1
+              ? overrideAnnotations[0]
+              : `T.all(${overrideAnnotations.join(", ")})`;
+          const interfaceDef = `export interface ${derivedName} extends ${baseName} {}`;
+          const schemaDef = annotatePureExportConst(
+            `export const ${derivedName} = ${baseName}.pipe(${overridePipe}).annotate({ identifier: "${derivedName}" }) as any as S.Schema<${derivedName}>;`,
           );
+          yield* Ref.update(sdkFile.schemas, (arr) => [
+            ...arr,
+            {
+              name: derivedName,
+              definition: `${interfaceDef}\n${schemaDef}`,
+              deps: [baseName],
+            },
+          ]);
+          return derivedName;
         });
 
         const output = yield* Effect.gen(function* () {
@@ -3269,7 +3403,8 @@ const generateClient = Effect.fn(function* (
   const errorShapeIds = collectErrorShapeIds(model);
 
   // Pre-collect operation input traits and output traits
-  const operationInputTraits = collectOperationInputTraits(model);
+  const { operationInputTraits, operationInputTraitOverrides } =
+    collectOperationInputTraits(model);
   const operationOutputTraits = collectOperationOutputTraits(model);
   const inputEventStreamShapeIds = collectInputEventStreamShapeIds(model);
   const sensitiveShapeIds = collectSensitiveShapeIds(model);
@@ -3318,6 +3453,35 @@ const generateClient = Effect.fn(function* (
   // Load spec patches for this service
   const serviceSpec = loadServiceSpecPatch(serviceTraits.sdkId);
 
+  // Apply union member patches to the loaded model — the live API can return
+  // union variants the published Smithy model is missing (e.g. DataZone's
+  // ProvisioningProperties `{ "manual": {} }` for CustomAwsService
+  // blueprints). Members are added before any codegen consumes the shape.
+  if (serviceSpec.unions) {
+    for (const [unionName, override] of Object.entries(serviceSpec.unions)) {
+      const shapeEntry = Object.entries(model.shapes).find(
+        ([id, shape]) =>
+          id.split("#")[1] === unionName && shape.type === "union",
+      );
+      if (shapeEntry === undefined) {
+        return yield* Effect.fail(
+          new UnableToTransformShapeToSchema({
+            message: `patches/${serviceTraits.sdkId
+              .toLowerCase()
+              .replaceAll(" ", "-")}.json patches union "${unionName}" which does not exist in the model`,
+          }),
+        );
+      }
+      const members = shapeEntry[1].members as Record<
+        string,
+        { target: string }
+      >;
+      for (const [memberName, target] of Object.entries(override.add)) {
+        members[memberName] ??= { target };
+      }
+    }
+  }
+
   return yield* client.pipe(
     Effect.provideService(SdkFile, {
       schemas: yield* Ref.make<
@@ -3343,6 +3507,7 @@ const generateClient = Effect.fn(function* (
       usesMiddleware: yield* Ref.make<boolean>(false),
       serviceXmlNamespace,
       operationInputTraits,
+      operationInputTraitOverrides,
       operationOutputTraits,
       serviceTraits,
       endpointRuleSet,

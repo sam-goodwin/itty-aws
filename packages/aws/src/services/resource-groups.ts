@@ -277,14 +277,14 @@ export const GroupConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "GroupConfiguration",
 }) as any as S.Schema<GroupConfiguration>;
 export interface CreateGroupOutput {
-  Group?: Group;
+  Group: Group;
   ResourceQuery?: ResourceQuery;
   Tags?: { [key: string]: string | undefined };
   GroupConfiguration?: GroupConfiguration;
 }
 export const CreateGroupOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
-    Group: S.optional(Group),
+    Group: Group,
     ResourceQuery: S.optional(ResourceQuery),
     Tags: S.optional(Tags),
     GroupConfiguration: S.optional(GroupConfiguration),
@@ -387,10 +387,10 @@ export const GetGroupInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "GetGroupInput" }) as any as S.Schema<GetGroupInput>;
 export interface GetGroupOutput {
-  Group?: Group;
+  Group: Group;
 }
 export const GetGroupOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-  S.Struct({ Group: S.optional(Group) }),
+  S.Struct({ Group: Group }),
 ).annotate({ identifier: "GetGroupOutput" }) as any as S.Schema<GetGroupOutput>;
 export interface GetGroupConfigurationInput {
   Group?: string;
@@ -1287,6 +1287,14 @@ export class UnauthorizedException extends S.TaggedErrorClass<UnauthorizedExcept
   "UnauthorizedException",
   { Message: S.optional(S.String) },
 ).pipe(C.withAuthError) {}
+export class GroupAlreadyExists extends S.TaggedErrorClass<GroupAlreadyExists>()(
+  "GroupAlreadyExists",
+  { Message: S.optional(S.String) },
+  T.SyntheticError({
+    from: "BadRequestException",
+    message: { includes: "group already exists" },
+  }),
+).pipe(C.withAlreadyExistsError) {}
 export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
   "NotFoundException",
   { Message: S.optional(S.String) },
@@ -1336,6 +1344,7 @@ export type CreateGroupError =
   | InternalServerErrorException
   | MethodNotAllowedException
   | TooManyRequestsException
+  | GroupAlreadyExists
   | CommonErrors;
 /**
  * Creates a resource group with the specified name and description. You can optionally
@@ -1364,6 +1373,7 @@ export const createGroup: API.OperationMethod<
     InternalServerErrorException,
     MethodNotAllowedException,
     TooManyRequestsException,
+    GroupAlreadyExists,
   ],
   operationName: "CreateGroup",
 }));

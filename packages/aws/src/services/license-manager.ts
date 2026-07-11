@@ -3672,6 +3672,14 @@ export class UnsupportedDigitalSignatureMethodException extends S.TaggedErrorCla
   "UnsupportedDigitalSignatureMethodException",
   { Message: S.optional(S.String) },
 ).pipe(C.withBadRequestError) {}
+export class LicenseConfigurationNotFound extends S.TaggedErrorClass<LicenseConfigurationNotFound>()(
+  "LicenseConfigurationNotFound",
+  { Message: S.optional(S.String) },
+  T.SyntheticError({
+    from: "InvalidParameterValueException",
+    message: { includes: "Invalid license configuration ARN" },
+  }),
+).pipe(C.withNotFoundError) {}
 export class FilterLimitExceededException extends S.TaggedErrorClass<FilterLimitExceededException>()(
   "FilterLimitExceededException",
   { Message: S.optional(S.String) },
@@ -4286,6 +4294,7 @@ export type DeleteLicenseConfigurationError =
   | InvalidParameterValueException
   | RateLimitExceededException
   | ServerInternalException
+  | LicenseConfigurationNotFound
   | CommonErrors;
 /**
  * Deletes the specified license configuration.
@@ -4306,6 +4315,7 @@ export const deleteLicenseConfiguration: API.OperationMethod<
     InvalidParameterValueException,
     RateLimitExceededException,
     ServerInternalException,
+    LicenseConfigurationNotFound,
   ],
   operationName: "DeleteLicenseConfiguration",
 }));
@@ -4559,6 +4569,7 @@ export type GetLicenseConfigurationError =
   | InvalidParameterValueException
   | RateLimitExceededException
   | ServerInternalException
+  | LicenseConfigurationNotFound
   | CommonErrors;
 /**
  * Gets detailed information about the specified license configuration.
@@ -4577,6 +4588,7 @@ export const getLicenseConfiguration: API.OperationMethod<
     InvalidParameterValueException,
     RateLimitExceededException,
     ServerInternalException,
+    LicenseConfigurationNotFound,
   ],
   operationName: "GetLicenseConfiguration",
 }));
@@ -5482,6 +5494,7 @@ export type UpdateLicenseConfigurationError =
   | RateLimitExceededException
   | ResourceLimitExceededException
   | ServerInternalException
+  | LicenseConfigurationNotFound
   | CommonErrors;
 /**
  * Modifies the attributes of an existing license configuration.
@@ -5502,6 +5515,7 @@ export const updateLicenseConfiguration: API.OperationMethod<
     RateLimitExceededException,
     ResourceLimitExceededException,
     ServerInternalException,
+    LicenseConfigurationNotFound,
   ],
   operationName: "UpdateLicenseConfiguration",
 }));

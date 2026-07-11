@@ -1771,6 +1771,10 @@ export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuo
     quotaCode: S.String,
   },
 ).pipe(C.withQuotaError) {}
+export class UnsupportedOperationException extends S.TaggedErrorClass<UnsupportedOperationException>()(
+  "UnsupportedOperationException",
+  {},
+).pipe(C.withBadRequestError) {}
 
 //# Operations
 export type BatchGetIncidentFindingsError =
@@ -1810,6 +1814,7 @@ export type CreateReplicationSetError =
   | ServiceQuotaExceededException
   | ThrottlingException
   | ValidationException
+  | UnsupportedOperationException
   | CommonErrors;
 /**
  * A replication set replicates and encrypts your data to the provided Regions with the
@@ -1830,6 +1835,7 @@ export const createReplicationSet: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
     ValidationException,
+    UnsupportedOperationException,
   ],
   operationName: "CreateReplicationSet",
 }));

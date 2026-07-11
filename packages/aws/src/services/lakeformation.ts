@@ -3182,6 +3182,14 @@ export class ResourceNotReadyException extends S.TaggedErrorClass<ResourceNotRea
   "ResourceNotReadyException",
   { Message: S.optional(S.String) },
 ).pipe(C.withBadRequestError) {}
+export class LastServiceLinkedRoleRegistration extends S.TaggedErrorClass<LastServiceLinkedRoleRegistration>()(
+  "LastServiceLinkedRoleRegistration",
+  { Message: S.optional(S.String) },
+  T.SyntheticError({
+    from: "InvalidInputException",
+    message: { includes: "Must manually delete service-linked role" },
+  }),
+).pipe(C.withConflictError) {}
 export class ExpiredException extends S.TaggedErrorClass<ExpiredException>()(
   "ExpiredException",
   { Message: S.optional(S.String) },
@@ -3211,6 +3219,14 @@ export class WorkUnitsNotReadyYetException extends S.TaggedErrorClass<WorkUnitsN
   "WorkUnitsNotReadyYetException",
   { Message: S.optional(S.String) },
 ) {}
+export class InvalidLakeFormationPrincipal extends S.TaggedErrorClass<InvalidLakeFormationPrincipal>()(
+  "InvalidLakeFormationPrincipal",
+  { Message: S.optional(S.String) },
+  T.SyntheticError({
+    from: "InvalidInputException",
+    message: { includes: "Invalid principal" },
+  }),
+).pipe(C.withBadRequestError, C.withRetryableError) {}
 
 //# Operations
 export type AddLFTagsToResourceError =
@@ -3726,6 +3742,7 @@ export type DeregisterResourceError =
   | InternalServiceException
   | InvalidInputException
   | OperationTimeoutException
+  | LastServiceLinkedRoleRegistration
   | CommonErrors;
 /**
  * Deregisters the resource as managed by the Data Catalog.
@@ -3745,6 +3762,7 @@ export const deregisterResource: API.OperationMethod<
     InternalServiceException,
     InvalidInputException,
     OperationTimeoutException,
+    LastServiceLinkedRoleRegistration,
   ],
   operationName: "DeregisterResource",
 }));
@@ -4053,6 +4071,7 @@ export const getQueryState: API.OperationMethod<
     InvalidInputException,
   ],
   operationName: "GetQueryState",
+  endpointHostPrefix: "query-",
 }));
 export type GetQueryStatisticsError =
   | AccessDeniedException
@@ -4082,6 +4101,7 @@ export const getQueryStatistics: API.OperationMethod<
     ThrottledException,
   ],
   operationName: "GetQueryStatistics",
+  endpointHostPrefix: "query-",
 }));
 export type GetResourceLFTagsError =
   | AccessDeniedException
@@ -4299,6 +4319,7 @@ export const getWorkUnitResults: API.OperationMethod<
     ThrottledException,
   ],
   operationName: "GetWorkUnitResults",
+  endpointHostPrefix: "data-",
 }));
 export type GetWorkUnitsError =
   | AccessDeniedException
@@ -4341,6 +4362,7 @@ export const getWorkUnits: API.OperationMethod<
     WorkUnitsNotReadyYetException,
   ],
   operationName: "GetWorkUnits",
+  endpointHostPrefix: "query-",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4352,6 +4374,7 @@ export type GrantPermissionsError =
   | ConcurrentModificationException
   | EntityNotFoundException
   | InvalidInputException
+  | InvalidLakeFormationPrincipal
   | CommonErrors;
 /**
  * Grants permissions to the principal to access metadata in the Data Catalog and data organized in underlying data storage such as Amazon S3.
@@ -4370,6 +4393,7 @@ export const grantPermissions: API.OperationMethod<
     ConcurrentModificationException,
     EntityNotFoundException,
     InvalidInputException,
+    InvalidLakeFormationPrincipal,
   ],
   operationName: "GrantPermissions",
 }));
@@ -4564,6 +4588,7 @@ export type ListPermissionsError =
   | InternalServiceException
   | InvalidInputException
   | OperationTimeoutException
+  | InvalidLakeFormationPrincipal
   | CommonErrors;
 /**
  * Returns a list of the principal permissions on the resource, filtered by the permissions of the caller. For example, if you are granted an ALTER permission, you are able to see only the principal permissions for ALTER.
@@ -4601,6 +4626,7 @@ export const listPermissions: API.OperationMethod<
     InternalServiceException,
     InvalidInputException,
     OperationTimeoutException,
+    InvalidLakeFormationPrincipal,
   ],
   operationName: "ListPermissions",
   pagination: {
@@ -4745,6 +4771,7 @@ export const listTransactions: API.OperationMethod<
 export type PutDataLakeSettingsError =
   | InternalServiceException
   | InvalidInputException
+  | InvalidLakeFormationPrincipal
   | CommonErrors;
 /**
  * Sets the list of data lake administrators who have admin privileges on all resources managed by Lake Formation. For more information on admin privileges, see Granting Lake Formation Permissions.
@@ -4759,7 +4786,11 @@ export const putDataLakeSettings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutDataLakeSettingsRequest,
   output: PutDataLakeSettingsResponse,
-  errors: [InternalServiceException, InvalidInputException],
+  errors: [
+    InternalServiceException,
+    InvalidInputException,
+    InvalidLakeFormationPrincipal,
+  ],
   operationName: "PutDataLakeSettings",
 }));
 export type RegisterResourceError =
@@ -4839,6 +4870,7 @@ export type RevokePermissionsError =
   | ConcurrentModificationException
   | EntityNotFoundException
   | InvalidInputException
+  | InvalidLakeFormationPrincipal
   | CommonErrors;
 /**
  * Revokes permissions to the principal to access metadata in the Data Catalog and data organized in underlying data storage such as Amazon S3.
@@ -4855,6 +4887,7 @@ export const revokePermissions: API.OperationMethod<
     ConcurrentModificationException,
     EntityNotFoundException,
     InvalidInputException,
+    InvalidLakeFormationPrincipal,
   ],
   operationName: "RevokePermissions",
 }));
@@ -4984,6 +5017,7 @@ export const startQueryPlanning: API.OperationMethod<
     ThrottledException,
   ],
   operationName: "StartQueryPlanning",
+  endpointHostPrefix: "query-",
 }));
 export type StartTransactionError =
   | InternalServiceException

@@ -2740,6 +2740,10 @@ export class ValidationException extends S.TaggedErrorClass<ValidationException>
   "ValidationException",
   { Message: S.optional(S.String) },
 ).pipe(C.withBadRequestError) {}
+export class TooManyRequestsException extends S.TaggedErrorClass<TooManyRequestsException>()(
+  "TooManyRequestsException",
+  {},
+).pipe(C.withThrottlingError, C.withRetryableError) {}
 export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
   "AccessDeniedException",
   { Message: S.optional(S.String) },
@@ -2748,6 +2752,14 @@ export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuo
   "ServiceQuotaExceededException",
   { Message: S.optional(S.String) },
 ).pipe(C.withQuotaError) {}
+export class DataBrewRoleNotAssumable extends S.TaggedErrorClass<DataBrewRoleNotAssumable>()(
+  "DataBrewRoleNotAssumable",
+  { Message: S.optional(S.String) },
+  T.SyntheticError({
+    from: "ValidationException",
+    message: { includes: "is not a trusted entity for the data access role" },
+  }),
+).pipe(C.withBadRequestError, C.withRetryableError) {}
 export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
   "InternalServerException",
   { Message: S.optional(S.String) },
@@ -2758,6 +2770,7 @@ export type BatchDeleteRecipeVersionError =
   | ConflictException
   | ResourceNotFoundException
   | ValidationException
+  | TooManyRequestsException
   | CommonErrors;
 /**
  * Deletes one or more versions of a recipe at a time.
@@ -2798,7 +2811,12 @@ export const batchDeleteRecipeVersion: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchDeleteRecipeVersionRequest,
   output: BatchDeleteRecipeVersionResponse,
-  errors: [ConflictException, ResourceNotFoundException, ValidationException],
+  errors: [
+    ConflictException,
+    ResourceNotFoundException,
+    ValidationException,
+    TooManyRequestsException,
+  ],
   operationName: "BatchDeleteRecipeVersion",
 }));
 export type CreateDatasetError =
@@ -2806,6 +2824,7 @@ export type CreateDatasetError =
   | ConflictException
   | ServiceQuotaExceededException
   | ValidationException
+  | TooManyRequestsException
   | CommonErrors;
 /**
  * Creates a new DataBrew dataset.
@@ -2823,6 +2842,7 @@ export const createDataset: API.OperationMethod<
     ConflictException,
     ServiceQuotaExceededException,
     ValidationException,
+    TooManyRequestsException,
   ],
   operationName: "CreateDataset",
 }));
@@ -2832,6 +2852,8 @@ export type CreateProfileJobError =
   | ResourceNotFoundException
   | ServiceQuotaExceededException
   | ValidationException
+  | TooManyRequestsException
+  | DataBrewRoleNotAssumable
   | CommonErrors;
 /**
  * Creates a new job to analyze a dataset and create its data profile.
@@ -2850,6 +2872,8 @@ export const createProfileJob: API.OperationMethod<
     ResourceNotFoundException,
     ServiceQuotaExceededException,
     ValidationException,
+    TooManyRequestsException,
+    DataBrewRoleNotAssumable,
   ],
   operationName: "CreateProfileJob",
 }));
@@ -2858,6 +2882,8 @@ export type CreateProjectError =
   | InternalServerException
   | ServiceQuotaExceededException
   | ValidationException
+  | TooManyRequestsException
+  | DataBrewRoleNotAssumable
   | CommonErrors;
 /**
  * Creates a new DataBrew project.
@@ -2875,6 +2901,8 @@ export const createProject: API.OperationMethod<
     InternalServerException,
     ServiceQuotaExceededException,
     ValidationException,
+    TooManyRequestsException,
+    DataBrewRoleNotAssumable,
   ],
   operationName: "CreateProject",
 }));
@@ -2882,6 +2910,7 @@ export type CreateRecipeError =
   | ConflictException
   | ServiceQuotaExceededException
   | ValidationException
+  | TooManyRequestsException
   | CommonErrors;
 /**
  * Creates a new DataBrew recipe.
@@ -2898,6 +2927,7 @@ export const createRecipe: API.OperationMethod<
     ConflictException,
     ServiceQuotaExceededException,
     ValidationException,
+    TooManyRequestsException,
   ],
   operationName: "CreateRecipe",
 }));
@@ -2907,6 +2937,8 @@ export type CreateRecipeJobError =
   | ResourceNotFoundException
   | ServiceQuotaExceededException
   | ValidationException
+  | TooManyRequestsException
+  | DataBrewRoleNotAssumable
   | CommonErrors;
 /**
  * Creates a new job to transform input data, using steps defined in an existing Glue DataBrew recipe
@@ -2925,6 +2957,8 @@ export const createRecipeJob: API.OperationMethod<
     ResourceNotFoundException,
     ServiceQuotaExceededException,
     ValidationException,
+    TooManyRequestsException,
+    DataBrewRoleNotAssumable,
   ],
   operationName: "CreateRecipeJob",
 }));
@@ -2932,6 +2966,7 @@ export type CreateRulesetError =
   | ConflictException
   | ServiceQuotaExceededException
   | ValidationException
+  | TooManyRequestsException
   | CommonErrors;
 /**
  * Creates a new ruleset that can be used in a profile job to validate
@@ -2949,6 +2984,7 @@ export const createRuleset: API.OperationMethod<
     ConflictException,
     ServiceQuotaExceededException,
     ValidationException,
+    TooManyRequestsException,
   ],
   operationName: "CreateRuleset",
 }));
@@ -2956,6 +2992,7 @@ export type CreateScheduleError =
   | ConflictException
   | ServiceQuotaExceededException
   | ValidationException
+  | TooManyRequestsException
   | CommonErrors;
 /**
  * Creates a new schedule for one or more DataBrew jobs. Jobs can be run at a specific
@@ -2973,6 +3010,7 @@ export const createSchedule: API.OperationMethod<
     ConflictException,
     ServiceQuotaExceededException,
     ValidationException,
+    TooManyRequestsException,
   ],
   operationName: "CreateSchedule",
 }));
@@ -2980,6 +3018,7 @@ export type DeleteDatasetError =
   | ConflictException
   | ResourceNotFoundException
   | ValidationException
+  | TooManyRequestsException
   | CommonErrors;
 /**
  * Deletes a dataset from DataBrew.
@@ -2992,13 +3031,19 @@ export const deleteDataset: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteDatasetRequest,
   output: DeleteDatasetResponse,
-  errors: [ConflictException, ResourceNotFoundException, ValidationException],
+  errors: [
+    ConflictException,
+    ResourceNotFoundException,
+    ValidationException,
+    TooManyRequestsException,
+  ],
   operationName: "DeleteDataset",
 }));
 export type DeleteJobError =
   | ConflictException
   | ResourceNotFoundException
   | ValidationException
+  | TooManyRequestsException
   | CommonErrors;
 /**
  * Deletes the specified DataBrew job.
@@ -3011,13 +3056,19 @@ export const deleteJob: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteJobRequest,
   output: DeleteJobResponse,
-  errors: [ConflictException, ResourceNotFoundException, ValidationException],
+  errors: [
+    ConflictException,
+    ResourceNotFoundException,
+    ValidationException,
+    TooManyRequestsException,
+  ],
   operationName: "DeleteJob",
 }));
 export type DeleteProjectError =
   | ConflictException
   | ResourceNotFoundException
   | ValidationException
+  | TooManyRequestsException
   | CommonErrors;
 /**
  * Deletes an existing DataBrew project.
@@ -3030,13 +3081,19 @@ export const deleteProject: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectRequest,
   output: DeleteProjectResponse,
-  errors: [ConflictException, ResourceNotFoundException, ValidationException],
+  errors: [
+    ConflictException,
+    ResourceNotFoundException,
+    ValidationException,
+    TooManyRequestsException,
+  ],
   operationName: "DeleteProject",
 }));
 export type DeleteRecipeVersionError =
   | ConflictException
   | ResourceNotFoundException
   | ValidationException
+  | TooManyRequestsException
   | CommonErrors;
 /**
  * Deletes a single version of a DataBrew recipe.
@@ -3049,13 +3106,19 @@ export const deleteRecipeVersion: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteRecipeVersionRequest,
   output: DeleteRecipeVersionResponse,
-  errors: [ConflictException, ResourceNotFoundException, ValidationException],
+  errors: [
+    ConflictException,
+    ResourceNotFoundException,
+    ValidationException,
+    TooManyRequestsException,
+  ],
   operationName: "DeleteRecipeVersion",
 }));
 export type DeleteRulesetError =
   | ConflictException
   | ResourceNotFoundException
   | ValidationException
+  | TooManyRequestsException
   | CommonErrors;
 /**
  * Deletes a ruleset.
@@ -3068,12 +3131,18 @@ export const deleteRuleset: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteRulesetRequest,
   output: DeleteRulesetResponse,
-  errors: [ConflictException, ResourceNotFoundException, ValidationException],
+  errors: [
+    ConflictException,
+    ResourceNotFoundException,
+    ValidationException,
+    TooManyRequestsException,
+  ],
   operationName: "DeleteRuleset",
 }));
 export type DeleteScheduleError =
   | ResourceNotFoundException
   | ValidationException
+  | TooManyRequestsException
   | CommonErrors;
 /**
  * Deletes the specified DataBrew schedule.
@@ -3086,12 +3155,17 @@ export const deleteSchedule: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteScheduleRequest,
   output: DeleteScheduleResponse,
-  errors: [ResourceNotFoundException, ValidationException],
+  errors: [
+    ResourceNotFoundException,
+    ValidationException,
+    TooManyRequestsException,
+  ],
   operationName: "DeleteSchedule",
 }));
 export type DescribeDatasetError =
   | ResourceNotFoundException
   | ValidationException
+  | TooManyRequestsException
   | CommonErrors;
 /**
  * Returns the definition of a specific DataBrew dataset.
@@ -3104,12 +3178,17 @@ export const describeDataset: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeDatasetRequest,
   output: DescribeDatasetResponse,
-  errors: [ResourceNotFoundException, ValidationException],
+  errors: [
+    ResourceNotFoundException,
+    ValidationException,
+    TooManyRequestsException,
+  ],
   operationName: "DescribeDataset",
 }));
 export type DescribeJobError =
   | ResourceNotFoundException
   | ValidationException
+  | TooManyRequestsException
   | CommonErrors;
 /**
  * Returns the definition of a specific DataBrew job.
@@ -3122,12 +3201,17 @@ export const describeJob: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeJobRequest,
   output: DescribeJobResponse,
-  errors: [ResourceNotFoundException, ValidationException],
+  errors: [
+    ResourceNotFoundException,
+    ValidationException,
+    TooManyRequestsException,
+  ],
   operationName: "DescribeJob",
 }));
 export type DescribeJobRunError =
   | ResourceNotFoundException
   | ValidationException
+  | TooManyRequestsException
   | CommonErrors;
 /**
  * Represents one run of a DataBrew job.
@@ -3140,12 +3224,17 @@ export const describeJobRun: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeJobRunRequest,
   output: DescribeJobRunResponse,
-  errors: [ResourceNotFoundException, ValidationException],
+  errors: [
+    ResourceNotFoundException,
+    ValidationException,
+    TooManyRequestsException,
+  ],
   operationName: "DescribeJobRun",
 }));
 export type DescribeProjectError =
   | ResourceNotFoundException
   | ValidationException
+  | TooManyRequestsException
   | CommonErrors;
 /**
  * Returns the definition of a specific DataBrew project.
@@ -3158,12 +3247,17 @@ export const describeProject: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeProjectRequest,
   output: DescribeProjectResponse,
-  errors: [ResourceNotFoundException, ValidationException],
+  errors: [
+    ResourceNotFoundException,
+    ValidationException,
+    TooManyRequestsException,
+  ],
   operationName: "DescribeProject",
 }));
 export type DescribeRecipeError =
   | ResourceNotFoundException
   | ValidationException
+  | TooManyRequestsException
   | CommonErrors;
 /**
  * Returns the definition of a specific DataBrew recipe corresponding to a particular
@@ -3177,12 +3271,17 @@ export const describeRecipe: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeRecipeRequest,
   output: DescribeRecipeResponse,
-  errors: [ResourceNotFoundException, ValidationException],
+  errors: [
+    ResourceNotFoundException,
+    ValidationException,
+    TooManyRequestsException,
+  ],
   operationName: "DescribeRecipe",
 }));
 export type DescribeRulesetError =
   | ResourceNotFoundException
   | ValidationException
+  | TooManyRequestsException
   | CommonErrors;
 /**
  * Retrieves detailed information about the ruleset.
@@ -3195,12 +3294,17 @@ export const describeRuleset: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeRulesetRequest,
   output: DescribeRulesetResponse,
-  errors: [ResourceNotFoundException, ValidationException],
+  errors: [
+    ResourceNotFoundException,
+    ValidationException,
+    TooManyRequestsException,
+  ],
   operationName: "DescribeRuleset",
 }));
 export type DescribeScheduleError =
   | ResourceNotFoundException
   | ValidationException
+  | TooManyRequestsException
   | CommonErrors;
 /**
  * Returns the definition of a specific DataBrew schedule.
@@ -3213,10 +3317,17 @@ export const describeSchedule: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeScheduleRequest,
   output: DescribeScheduleResponse,
-  errors: [ResourceNotFoundException, ValidationException],
+  errors: [
+    ResourceNotFoundException,
+    ValidationException,
+    TooManyRequestsException,
+  ],
   operationName: "DescribeSchedule",
 }));
-export type ListDatasetsError = ValidationException | CommonErrors;
+export type ListDatasetsError =
+  | ValidationException
+  | TooManyRequestsException
+  | CommonErrors;
 /**
  * Lists all of the DataBrew datasets.
  */
@@ -3243,7 +3354,7 @@ export const listDatasets: API.OperationMethod<
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListDatasetsRequest,
   output: ListDatasetsResponse,
-  errors: [ValidationException],
+  errors: [ValidationException, TooManyRequestsException],
   operationName: "ListDatasets",
   pagination: {
     inputToken: "NextToken",
@@ -3255,6 +3366,7 @@ export const listDatasets: API.OperationMethod<
 export type ListJobRunsError =
   | ResourceNotFoundException
   | ValidationException
+  | TooManyRequestsException
   | CommonErrors;
 /**
  * Lists all of the previous runs of a particular DataBrew job.
@@ -3282,7 +3394,11 @@ export const listJobRuns: API.OperationMethod<
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListJobRunsRequest,
   output: ListJobRunsResponse,
-  errors: [ResourceNotFoundException, ValidationException],
+  errors: [
+    ResourceNotFoundException,
+    ValidationException,
+    TooManyRequestsException,
+  ],
   operationName: "ListJobRuns",
   pagination: {
     inputToken: "NextToken",
@@ -3291,7 +3407,10 @@ export const listJobRuns: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
-export type ListJobsError = ValidationException | CommonErrors;
+export type ListJobsError =
+  | ValidationException
+  | TooManyRequestsException
+  | CommonErrors;
 /**
  * Lists all of the DataBrew jobs that are defined.
  */
@@ -3318,7 +3437,7 @@ export const listJobs: API.OperationMethod<
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListJobsRequest,
   output: ListJobsResponse,
-  errors: [ValidationException],
+  errors: [ValidationException, TooManyRequestsException],
   operationName: "ListJobs",
   pagination: {
     inputToken: "NextToken",
@@ -3327,7 +3446,10 @@ export const listJobs: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
-export type ListProjectsError = ValidationException | CommonErrors;
+export type ListProjectsError =
+  | ValidationException
+  | TooManyRequestsException
+  | CommonErrors;
 /**
  * Lists all of the DataBrew projects that are defined.
  */
@@ -3354,7 +3476,7 @@ export const listProjects: API.OperationMethod<
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsRequest,
   output: ListProjectsResponse,
-  errors: [ValidationException],
+  errors: [ValidationException, TooManyRequestsException],
   operationName: "ListProjects",
   pagination: {
     inputToken: "NextToken",
@@ -3363,7 +3485,10 @@ export const listProjects: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
-export type ListRecipesError = ValidationException | CommonErrors;
+export type ListRecipesError =
+  | ValidationException
+  | TooManyRequestsException
+  | CommonErrors;
 /**
  * Lists all of the DataBrew recipes that are defined.
  */
@@ -3390,7 +3515,7 @@ export const listRecipes: API.OperationMethod<
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListRecipesRequest,
   output: ListRecipesResponse,
-  errors: [ValidationException],
+  errors: [ValidationException, TooManyRequestsException],
   operationName: "ListRecipes",
   pagination: {
     inputToken: "NextToken",
@@ -3399,7 +3524,11 @@ export const listRecipes: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
-export type ListRecipeVersionsError = ValidationException | CommonErrors;
+export type ListRecipeVersionsError =
+  | ValidationException
+  | TooManyRequestsException
+  | ResourceNotFoundException
+  | CommonErrors;
 /**
  * Lists the versions of a particular DataBrew recipe, except for
  * `LATEST_WORKING`.
@@ -3427,7 +3556,11 @@ export const listRecipeVersions: API.OperationMethod<
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListRecipeVersionsRequest,
   output: ListRecipeVersionsResponse,
-  errors: [ValidationException],
+  errors: [
+    ValidationException,
+    TooManyRequestsException,
+    ResourceNotFoundException,
+  ],
   operationName: "ListRecipeVersions",
   pagination: {
     inputToken: "NextToken",
@@ -3439,6 +3572,7 @@ export const listRecipeVersions: API.OperationMethod<
 export type ListRulesetsError =
   | ResourceNotFoundException
   | ValidationException
+  | TooManyRequestsException
   | CommonErrors;
 /**
  * List all rulesets available in the current account or rulesets associated
@@ -3467,7 +3601,11 @@ export const listRulesets: API.OperationMethod<
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListRulesetsRequest,
   output: ListRulesetsResponse,
-  errors: [ResourceNotFoundException, ValidationException],
+  errors: [
+    ResourceNotFoundException,
+    ValidationException,
+    TooManyRequestsException,
+  ],
   operationName: "ListRulesets",
   pagination: {
     inputToken: "NextToken",
@@ -3476,7 +3614,10 @@ export const listRulesets: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
-export type ListSchedulesError = ValidationException | CommonErrors;
+export type ListSchedulesError =
+  | ValidationException
+  | TooManyRequestsException
+  | CommonErrors;
 /**
  * Lists the DataBrew schedules that are defined.
  */
@@ -3503,7 +3644,7 @@ export const listSchedules: API.OperationMethod<
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListSchedulesRequest,
   output: ListSchedulesResponse,
-  errors: [ValidationException],
+  errors: [ValidationException, TooManyRequestsException],
   operationName: "ListSchedules",
   pagination: {
     inputToken: "NextToken",
@@ -3516,6 +3657,7 @@ export type ListTagsForResourceError =
   | InternalServerException
   | ResourceNotFoundException
   | ValidationException
+  | TooManyRequestsException
   | CommonErrors;
 /**
  * Lists all the tags for a DataBrew resource.
@@ -3532,6 +3674,7 @@ export const listTagsForResource: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
     ValidationException,
+    TooManyRequestsException,
   ],
   operationName: "ListTagsForResource",
 }));
@@ -3539,6 +3682,7 @@ export type PublishRecipeError =
   | ResourceNotFoundException
   | ServiceQuotaExceededException
   | ValidationException
+  | TooManyRequestsException
   | CommonErrors;
 /**
  * Publishes a new version of a DataBrew recipe.
@@ -3555,6 +3699,7 @@ export const publishRecipe: API.OperationMethod<
     ResourceNotFoundException,
     ServiceQuotaExceededException,
     ValidationException,
+    TooManyRequestsException,
   ],
   operationName: "PublishRecipe",
 }));
@@ -3583,6 +3728,7 @@ export type StartJobRunError =
   | ResourceNotFoundException
   | ServiceQuotaExceededException
   | ValidationException
+  | TooManyRequestsException
   | CommonErrors;
 /**
  * Runs a DataBrew job.
@@ -3600,6 +3746,7 @@ export const startJobRun: API.OperationMethod<
     ResourceNotFoundException,
     ServiceQuotaExceededException,
     ValidationException,
+    TooManyRequestsException,
   ],
   operationName: "StartJobRun",
 }));
@@ -3632,6 +3779,7 @@ export const startProjectSession: API.OperationMethod<
 export type StopJobRunError =
   | ResourceNotFoundException
   | ValidationException
+  | TooManyRequestsException
   | CommonErrors;
 /**
  * Stops a particular run of a job.
@@ -3644,13 +3792,18 @@ export const stopJobRun: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StopJobRunRequest,
   output: StopJobRunResponse,
-  errors: [ResourceNotFoundException, ValidationException],
+  errors: [
+    ResourceNotFoundException,
+    ValidationException,
+    TooManyRequestsException,
+  ],
   operationName: "StopJobRun",
 }));
 export type TagResourceError =
   | InternalServerException
   | ResourceNotFoundException
   | ValidationException
+  | TooManyRequestsException
   | CommonErrors;
 /**
  * Adds metadata tags to a DataBrew resource, such as a dataset, project, recipe, job, or
@@ -3668,6 +3821,7 @@ export const tagResource: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
     ValidationException,
+    TooManyRequestsException,
   ],
   operationName: "TagResource",
 }));
@@ -3675,6 +3829,7 @@ export type UntagResourceError =
   | InternalServerException
   | ResourceNotFoundException
   | ValidationException
+  | TooManyRequestsException
   | CommonErrors;
 /**
  * Removes metadata tags from a DataBrew resource.
@@ -3691,6 +3846,7 @@ export const untagResource: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
     ValidationException,
+    TooManyRequestsException,
   ],
   operationName: "UntagResource",
 }));
@@ -3698,6 +3854,7 @@ export type UpdateDatasetError =
   | AccessDeniedException
   | ResourceNotFoundException
   | ValidationException
+  | TooManyRequestsException
   | CommonErrors;
 /**
  * Modifies the definition of an existing DataBrew dataset.
@@ -3714,6 +3871,7 @@ export const updateDataset: API.OperationMethod<
     AccessDeniedException,
     ResourceNotFoundException,
     ValidationException,
+    TooManyRequestsException,
   ],
   operationName: "UpdateDataset",
 }));
@@ -3721,6 +3879,8 @@ export type UpdateProfileJobError =
   | AccessDeniedException
   | ResourceNotFoundException
   | ValidationException
+  | TooManyRequestsException
+  | DataBrewRoleNotAssumable
   | CommonErrors;
 /**
  * Modifies the definition of an existing profile job.
@@ -3737,12 +3897,16 @@ export const updateProfileJob: API.OperationMethod<
     AccessDeniedException,
     ResourceNotFoundException,
     ValidationException,
+    TooManyRequestsException,
+    DataBrewRoleNotAssumable,
   ],
   operationName: "UpdateProfileJob",
 }));
 export type UpdateProjectError =
   | ResourceNotFoundException
   | ValidationException
+  | TooManyRequestsException
+  | DataBrewRoleNotAssumable
   | CommonErrors;
 /**
  * Modifies the definition of an existing DataBrew project.
@@ -3755,12 +3919,18 @@ export const updateProject: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateProjectRequest,
   output: UpdateProjectResponse,
-  errors: [ResourceNotFoundException, ValidationException],
+  errors: [
+    ResourceNotFoundException,
+    ValidationException,
+    TooManyRequestsException,
+    DataBrewRoleNotAssumable,
+  ],
   operationName: "UpdateProject",
 }));
 export type UpdateRecipeError =
   | ResourceNotFoundException
   | ValidationException
+  | TooManyRequestsException
   | CommonErrors;
 /**
  * Modifies the definition of the `LATEST_WORKING` version of a DataBrew
@@ -3774,13 +3944,19 @@ export const updateRecipe: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateRecipeRequest,
   output: UpdateRecipeResponse,
-  errors: [ResourceNotFoundException, ValidationException],
+  errors: [
+    ResourceNotFoundException,
+    ValidationException,
+    TooManyRequestsException,
+  ],
   operationName: "UpdateRecipe",
 }));
 export type UpdateRecipeJobError =
   | AccessDeniedException
   | ResourceNotFoundException
   | ValidationException
+  | TooManyRequestsException
+  | DataBrewRoleNotAssumable
   | CommonErrors;
 /**
  * Modifies the definition of an existing DataBrew recipe job.
@@ -3797,12 +3973,15 @@ export const updateRecipeJob: API.OperationMethod<
     AccessDeniedException,
     ResourceNotFoundException,
     ValidationException,
+    TooManyRequestsException,
+    DataBrewRoleNotAssumable,
   ],
   operationName: "UpdateRecipeJob",
 }));
 export type UpdateRulesetError =
   | ResourceNotFoundException
   | ValidationException
+  | TooManyRequestsException
   | CommonErrors;
 /**
  * Updates specified ruleset.
@@ -3815,13 +3994,18 @@ export const updateRuleset: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateRulesetRequest,
   output: UpdateRulesetResponse,
-  errors: [ResourceNotFoundException, ValidationException],
+  errors: [
+    ResourceNotFoundException,
+    ValidationException,
+    TooManyRequestsException,
+  ],
   operationName: "UpdateRuleset",
 }));
 export type UpdateScheduleError =
   | ResourceNotFoundException
   | ServiceQuotaExceededException
   | ValidationException
+  | TooManyRequestsException
   | CommonErrors;
 /**
  * Modifies the definition of an existing DataBrew schedule.
@@ -3838,6 +4022,7 @@ export const updateSchedule: API.OperationMethod<
     ResourceNotFoundException,
     ServiceQuotaExceededException,
     ValidationException,
+    TooManyRequestsException,
   ],
   operationName: "UpdateSchedule",
 }));

@@ -1392,7 +1392,7 @@ export type CustomActionAttachmentVariables = {
 export const CustomActionAttachmentVariables =
   /*@__PURE__*/ /*#__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
 export interface CustomActionAttachment {
-  NotificationType?: string;
+  NotificationType: string;
   ButtonText?: string;
   Criteria?: CustomActionAttachmentCriteria[];
   Variables?: { [key: string]: string | undefined };
@@ -1400,7 +1400,7 @@ export interface CustomActionAttachment {
 export const CustomActionAttachment = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      NotificationType: S.optional(S.String),
+      NotificationType: S.String,
       ButtonText: S.optional(S.String),
       Criteria: S.optional(CustomActionAttachmentCriteriaList),
       Variables: S.optional(CustomActionAttachmentVariables),
@@ -1628,10 +1628,26 @@ export class CreateTeamsChannelConfigurationException extends S.TaggedErrorClass
   "CreateTeamsChannelConfigurationException",
   { Message: S.optional(S.String) },
 ).pipe(C.withServerError) {}
+export class MicrosoftTeamsTeamNotConfigured extends S.TaggedErrorClass<MicrosoftTeamsTeamNotConfigured>()(
+  "MicrosoftTeamsTeamNotConfigured",
+  { message: S.optional(S.String) },
+  T.SyntheticError({
+    from: "InvalidRequestException",
+    message: { includes: "team id you are using is not configured" },
+  }),
+).pipe(C.withBadRequestError) {}
 export class CreateSlackChannelConfigurationException extends S.TaggedErrorClass<CreateSlackChannelConfigurationException>()(
   "CreateSlackChannelConfigurationException",
   { Message: S.optional(S.String) },
 ).pipe(C.withServerError) {}
+export class SlackWorkspaceNotAuthorized extends S.TaggedErrorClass<SlackWorkspaceNotAuthorized>()(
+  "SlackWorkspaceNotAuthorized",
+  { message: S.optional(S.String) },
+  T.SyntheticError({
+    from: "InvalidRequestException",
+    message: { includes: "is not authorized with AWS account" },
+  }),
+).pipe(C.withBadRequestError) {}
 export class DeleteChimeWebhookConfigurationException extends S.TaggedErrorClass<DeleteChimeWebhookConfigurationException>()(
   "DeleteChimeWebhookConfigurationException",
   { Message: S.optional(S.String) },
@@ -1782,6 +1798,7 @@ export type CreateMicrosoftTeamsChannelConfigurationError =
   | InvalidParameterException
   | InvalidRequestException
   | LimitExceededException
+  | MicrosoftTeamsTeamNotConfigured
   | CommonErrors;
 /**
  * Creates an AWS Chatbot configuration for Microsoft Teams.
@@ -1800,6 +1817,7 @@ export const createMicrosoftTeamsChannelConfiguration: API.OperationMethod<
     InvalidParameterException,
     InvalidRequestException,
     LimitExceededException,
+    MicrosoftTeamsTeamNotConfigured,
   ],
   operationName: "CreateMicrosoftTeamsChannelConfiguration",
 }));
@@ -1809,6 +1827,7 @@ export type CreateSlackChannelConfigurationError =
   | InvalidParameterException
   | InvalidRequestException
   | LimitExceededException
+  | SlackWorkspaceNotAuthorized
   | CommonErrors;
 /**
  * Creates an AWS Chatbot confugration for Slack.
@@ -1827,6 +1846,7 @@ export const createSlackChannelConfiguration: API.OperationMethod<
     InvalidParameterException,
     InvalidRequestException,
     LimitExceededException,
+    SlackWorkspaceNotAuthorized,
   ],
   operationName: "CreateSlackChannelConfiguration",
 }));
@@ -2208,6 +2228,7 @@ export type GetMicrosoftTeamsChannelConfigurationError =
   | GetTeamsChannelConfigurationException
   | InvalidParameterException
   | InvalidRequestException
+  | ResourceNotFoundException
   | CommonErrors;
 /**
  * Returns a Microsoft Teams channel configuration in an AWS account.
@@ -2224,6 +2245,7 @@ export const getMicrosoftTeamsChannelConfiguration: API.OperationMethod<
     GetTeamsChannelConfigurationException,
     InvalidParameterException,
     InvalidRequestException,
+    ResourceNotFoundException,
   ],
   operationName: "GetMicrosoftTeamsChannelConfiguration",
 }));

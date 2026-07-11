@@ -1,0 +1,20 @@
+{
+  "operations": {
+    "listEnvironments": {
+      "errors": ["ResourceNotFoundException"]
+    },
+    "listProjects": {
+      "errors": ["ResourceNotFoundException"]
+    },
+    "deleteEnvironmentBlueprintConfiguration": {
+      "errors": ["ResourceNotFoundException"]
+    }
+  },
+  "unions": {
+    "ProvisioningProperties": {
+      "add": {
+        "manual": "smithy.api#Unit"
+      }
+    }
+  }
+}

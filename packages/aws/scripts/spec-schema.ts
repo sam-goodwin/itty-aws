@@ -168,6 +168,24 @@ export const StructureOverride = S.Struct({
 export type StructureOverride = typeof StructureOverride.Type;
 
 /**
+ * Union override - adds members to a Smithy union shape.
+ * Use this when the live API returns a union variant that the published
+ * Smithy model is missing (e.g. DataZone's ProvisioningProperties returns
+ * `{ "manual": {} }` for CustomAwsService blueprints, but the model only
+ * declares `cloudFormation`). The patch is applied to the loaded model
+ * before code generation.
+ */
+export const UnionOverride = S.Struct({
+  /**
+   * Map of member names to their target shape ids (e.g. "smithy.api#Unit"
+   * for an empty-struct variant, or a fully-qualified shape id already
+   * present in the model). Members that already exist are left untouched.
+   */
+  add: S.Record(S.String, S.String),
+});
+export type UnionOverride = typeof UnionOverride.Type;
+
+/**
  * Error member patch - adds a member to an error schema.
  * Use this for errors not fully documented in Smithy (e.g., PermanentRedirect).
  */
@@ -207,6 +225,12 @@ export const ServiceSpec = S.Struct({
    * For example, when AWS returns undefined for a field marked as required.
    */
   structures: S.optional(S.Record(S.String, StructureOverride)),
+  /**
+   * Map of union shape names to their member additions.
+   * Use this when the live API returns union variants missing from the
+   * published Smithy model. Applied to the loaded model before generation.
+   */
+  unions: S.optional(S.Record(S.String, UnionOverride)),
   /**
    * Map of enum names to their value overrides.
    * Use this to fix enums where AWS returns values not in the Smithy model,

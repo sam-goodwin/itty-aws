@@ -1,0 +1,40 @@
+{
+  "operations": {
+    "getLicenseConfiguration": {
+      "syntheticErrors": [
+        {
+          "name": "LicenseConfigurationNotFound",
+          "from": "InvalidParameterValueException",
+          "message": {
+            "includes": "Invalid license configuration ARN"
+          }
+        }
+      ]
+    },
+    "updateLicenseConfiguration": {
+      "syntheticErrors": [
+        {
+          "name": "LicenseConfigurationNotFound",
+          "from": "InvalidParameterValueException",
+          "message": {
+            "includes": "Invalid license configuration ARN"
+          }
+        }
+      ]
+    },
+    "deleteLicenseConfiguration": {
+      "syntheticErrors": [
+        {
+          "name": "LicenseConfigurationNotFound",
+          "from": "InvalidParameterValueException",
+          "message": {
+            "includes": "Invalid license configuration ARN"
+          }
+        }
+      ]
+    }
+  },
+  "errorCategories": {
+    "LicenseConfigurationNotFound": ["NotFoundError"]
+  }
+}

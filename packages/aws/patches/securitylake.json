@@ -1,0 +1,22 @@
+{
+  "operations": {
+    "createAwsLogSource": { "errors": ["UnauthorizedException"] },
+    "deleteAwsLogSource": { "errors": ["UnauthorizedException"] },
+    "listLogSources": { "errors": ["UnauthorizedException"] },
+    "createDataLake": { "errors": ["UnauthorizedException"] },
+    "updateDataLake": { "errors": ["UnauthorizedException"] },
+    "deleteDataLake": { "errors": ["UnauthorizedException"] },
+    "listDataLakes": { "errors": ["UnauthorizedException"] },
+    "createSubscriber": { "errors": ["UnauthorizedException"] },
+    "getSubscriber": { "errors": ["UnauthorizedException"] },
+    "updateSubscriber": { "errors": ["UnauthorizedException"] },
+    "deleteSubscriber": { "errors": ["UnauthorizedException"] },
+    "listSubscribers": { "errors": ["UnauthorizedException"] },
+    "listTagsForResource": { "errors": ["UnauthorizedException"] },
+    "tagResource": { "errors": ["UnauthorizedException"] },
+    "untagResource": { "errors": ["UnauthorizedException"] }
+  },
+  "errorCategories": {
+    "UnauthorizedException": ["AuthError"]
+  }
+}

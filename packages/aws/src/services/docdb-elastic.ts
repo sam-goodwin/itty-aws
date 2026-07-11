@@ -323,7 +323,7 @@ export interface Cluster {
   clusterName: string;
   clusterArn: string;
   status: string;
-  clusterEndpoint: string;
+  clusterEndpoint?: string;
   createTime: string;
   adminUserName: string;
   authType: string;
@@ -343,7 +343,7 @@ export const Cluster = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     clusterName: S.String,
     clusterArn: S.String,
     status: S.String,
-    clusterEndpoint: S.String,
+    clusterEndpoint: S.optional(S.String),
     createTime: S.String,
     adminUserName: S.String,
     authType: S.String,
