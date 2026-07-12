@@ -1,3 +1,14 @@
+## v0.29.0
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- Migrate to effect 4.0.0-beta.97 Schedule/Config APIs &nbsp;-&nbsp; by **sam** in https://github.com/alchemy-run/distilled/issues/370 [<samp>(da355)</samp>](https://github.com/alchemy-run/distilled/commit/da355daac)
+- **stripe**: Encode Stripe wire shapes &nbsp;-&nbsp; by **Alex** in https://github.com/alchemy-run/distilled/issues/359 [<samp>(61d0f)</samp>](https://github.com/alchemy-run/distilled/commit/61d0fc3b2)
+
+##### &nbsp;&nbsp;&nbsp;&nbsp;[View changes on GitHub](https://github.com/alchemy-run/distilled/compare/v0.28.2...HEAD)
+
+---
+
 ## v0.28.2
 
 ### &nbsp;&nbsp;&nbsp;🚀 Features
