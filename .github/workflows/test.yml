@@ -42,6 +42,7 @@ jobs:
       typesense: ${{ steps.force.outputs.all || steps.changes.outputs.typesense }}
       workos: ${{ steps.force.outputs.all || steps.changes.outputs.workos }}
       expo-eas: ${{ steps.force.outputs.all || steps.changes.outputs.expo-eas }}
+      better-auth: ${{ steps.force.outputs.all || steps.changes.outputs.better-auth }}
     steps:
       - id: force
         if: contains(github.event.pull_request.labels.*.name, 'force-ci')
@@ -110,6 +111,9 @@ jobs:
             expo-eas:
               - 'packages/expo-eas/**'
               - 'packages/core/**'
+            better-auth:
+              - 'packages/better-auth/**'
+              - 'packages/core/**'
 
   ci-core:
     needs: detect-changes
@@ -123,6 +127,25 @@ jobs:
       - run: bun install --frozen-lockfile
       - run: bun run check
         working-directory: packages/core
+
+  ci-better-auth:
+    needs: detect-changes
+    if: needs.detect-changes.outputs.better-auth == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+      - run: bun install --frozen-lockfile
+      - run: bun run build
+        working-directory: packages/core
+      - run: bun run check
+        working-directory: packages/better-auth
+      # Tests boot an in-process better-auth server (memory adapter) — no
+      # external credentials or network access required.
+      - run: bun run test
+        working-directory: packages/better-auth
 
   ci-aws:
     needs: detect-changes

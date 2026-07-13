@@ -5,6 +5,7 @@
     { "path": "./packages/aws/tsconfig.json" },
     { "path": "./packages/axiom/tsconfig.json" },
     { "path": "./packages/azure/tsconfig.json" },
+    { "path": "./packages/better-auth/tsconfig.json" },
     { "path": "./packages/cloudflare/tsconfig.json" },
     { "path": "./packages/coinbase/tsconfig.json" },
     { "path": "./packages/expo-eas/tsconfig.json" },

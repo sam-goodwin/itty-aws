@@ -9,6 +9,7 @@ distilled/
 ├── packages/
 │   ├── core/             # @distilled.cloud/sdk-core — shared client, traits, errors, categories
 │   ├── aws/              # @distilled.cloud/aws — AWS SDK from Smithy models
+│   ├── better-auth/      # @distilled.cloud/better-auth — better-auth HTTP API client (hand-written, no spec)
 │   ├── cloudflare/       # @distilled.cloud/cloudflare — Cloudflare SDK from TypeScript SDK
 │   ├── coinbase/         # @distilled.cloud/coinbase — Coinbase CDP SDK from OpenAPI spec
 │   ├── fly-io/           # @distilled.cloud/fly-io — Fly.io SDK from OpenAPI spec
