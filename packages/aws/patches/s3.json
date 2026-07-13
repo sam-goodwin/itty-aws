@@ -2,6 +2,7 @@
   "errorCategories": {
     "SlowDown": ["ThrottlingError", "RetryableError"],
     "BucketNotEmpty": ["ConflictError"],
+    "BucketHasAccessPointsAttached": ["ConflictError"],
     "BucketAlreadyOwnedByYou": ["AlreadyExistsError"],
     "MalformedXML": ["BadRequestError"],
     "MalformedPolicy": ["BadRequestError"],
@@ -31,6 +32,7 @@
         "RequestLimitExceeded",
         "SlowDown",
         "BucketNotEmpty",
+        "BucketHasAccessPointsAttached",
         "NoSuchBucket",
         "PermanentRedirect"
       ]

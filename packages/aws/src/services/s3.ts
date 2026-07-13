@@ -12856,6 +12856,7 @@ export const WriteGetObjectResponseResponse =
 export class NoSuchUpload extends S.TaggedErrorClass<NoSuchUpload>()(
   "NoSuchUpload",
   {},
+  T.HttpError(404),
 ).pipe(C.withBadRequestError) {}
 export class RequestLimitExceeded extends S.TaggedErrorClass<RequestLimitExceeded>()(
   "RequestLimitExceeded",
@@ -12873,6 +12874,7 @@ export class NotFound extends S.TaggedErrorClass<NotFound>()("NotFound", {}) {}
 export class ObjectNotInActiveTierError extends S.TaggedErrorClass<ObjectNotInActiveTierError>()(
   "ObjectNotInActiveTierError",
   {},
+  T.HttpError(403),
 ).pipe(C.withAuthError) {}
 export class PermanentRedirect extends S.TaggedErrorClass<PermanentRedirect>()(
   "PermanentRedirect",
@@ -12888,10 +12890,12 @@ export class PermanentRedirect extends S.TaggedErrorClass<PermanentRedirect>()(
 export class BucketAlreadyExists extends S.TaggedErrorClass<BucketAlreadyExists>()(
   "BucketAlreadyExists",
   {},
+  T.HttpError(409),
 ).pipe(C.withConflictError, C.withAlreadyExistsError) {}
 export class BucketAlreadyOwnedByYou extends S.TaggedErrorClass<BucketAlreadyOwnedByYou>()(
   "BucketAlreadyOwnedByYou",
   {},
+  T.HttpError(409),
 ).pipe(C.withConflictError, C.withAlreadyExistsError) {}
 export class IllegalLocationConstraintException extends S.TaggedErrorClass<IllegalLocationConstraintException>()(
   "IllegalLocationConstraintException",
@@ -12913,6 +12917,10 @@ export class BucketNotEmpty extends S.TaggedErrorClass<BucketNotEmpty>()(
   "BucketNotEmpty",
   {},
 ).pipe(C.withConflictError) {}
+export class BucketHasAccessPointsAttached extends S.TaggedErrorClass<BucketHasAccessPointsAttached>()(
+  "BucketHasAccessPointsAttached",
+  {},
+).pipe(C.withConflictError) {}
 export class SignatureDoesNotMatch extends S.TaggedErrorClass<SignatureDoesNotMatch>()(
   "SignatureDoesNotMatch",
   {},
@@ -12920,6 +12928,7 @@ export class SignatureDoesNotMatch extends S.TaggedErrorClass<SignatureDoesNotMa
 export class NoSuchKey extends S.TaggedErrorClass<NoSuchKey>()(
   "NoSuchKey",
   {},
+  T.HttpError(404),
 ).pipe(C.withBadRequestError) {}
 export class NoSuchConfiguration extends S.TaggedErrorClass<NoSuchConfiguration>()(
   "NoSuchConfiguration",
@@ -12963,10 +12972,12 @@ export class InvalidObjectState extends S.TaggedErrorClass<InvalidObjectState>()
     StorageClass: S.optional(StorageClass),
     AccessTier: S.optional(IntelligentTieringAccessTier),
   },
+  T.HttpError(403),
 ).pipe(C.withAuthError) {}
 export class NoSuchAnnotation extends S.TaggedErrorClass<NoSuchAnnotation>()(
   "NoSuchAnnotation",
   {},
+  T.HttpError(404),
 ).pipe(C.withBadRequestError) {}
 export class InvalidRequest extends S.TaggedErrorClass<InvalidRequest>()(
   "InvalidRequest",
@@ -12987,6 +12998,7 @@ export class RequestError extends S.TaggedErrorClass<RequestError>()(
 export class InvalidPrefix extends S.TaggedErrorClass<InvalidPrefix>()(
   "InvalidPrefix",
   {},
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class MalformedXML extends S.TaggedErrorClass<MalformedXML>()(
   "MalformedXML",
@@ -13007,14 +13019,17 @@ export class MalformedPolicy extends S.TaggedErrorClass<MalformedPolicy>()(
 export class EncryptionTypeMismatch extends S.TaggedErrorClass<EncryptionTypeMismatch>()(
   "EncryptionTypeMismatch",
   {},
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class InvalidWriteOffset extends S.TaggedErrorClass<InvalidWriteOffset>()(
   "InvalidWriteOffset",
   {},
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class TooManyParts extends S.TaggedErrorClass<TooManyParts>()(
   "TooManyParts",
   {},
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class PreconditionFailed extends S.TaggedErrorClass<PreconditionFailed>()(
   "PreconditionFailed",
@@ -13027,18 +13042,22 @@ export class ConditionalRequestConflict extends S.TaggedErrorClass<ConditionalRe
 export class AnnotationLimitExceeded extends S.TaggedErrorClass<AnnotationLimitExceeded>()(
   "AnnotationLimitExceeded",
   {},
+  T.HttpError(400),
 ).pipe(C.withBadRequestError, C.withThrottlingError) {}
 export class AnnotationNameTooLong extends S.TaggedErrorClass<AnnotationNameTooLong>()(
   "AnnotationNameTooLong",
   {},
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class InvalidAnnotationName extends S.TaggedErrorClass<InvalidAnnotationName>()(
   "InvalidAnnotationName",
   {},
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class UnsupportedMediaType extends S.TaggedErrorClass<UnsupportedMediaType>()(
   "UnsupportedMediaType",
   {},
+  T.HttpError(415),
 ).pipe(C.withBadRequestError) {}
 export class InvalidBucketState extends S.TaggedErrorClass<InvalidBucketState>()(
   "InvalidBucketState",
@@ -13047,10 +13066,12 @@ export class InvalidBucketState extends S.TaggedErrorClass<InvalidBucketState>()
 export class IdempotencyParameterMismatch extends S.TaggedErrorClass<IdempotencyParameterMismatch>()(
   "IdempotencyParameterMismatch",
   {},
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class ObjectAlreadyInActiveTierError extends S.TaggedErrorClass<ObjectAlreadyInActiveTierError>()(
   "ObjectAlreadyInActiveTierError",
   {},
+  T.HttpError(403),
 ).pipe(C.withAuthError) {}
 
 //# Operations
@@ -14028,6 +14049,7 @@ export type DeleteBucketError =
   | RequestLimitExceeded
   | SlowDown
   | BucketNotEmpty
+  | BucketHasAccessPointsAttached
   | NoSuchBucket
   | PermanentRedirect
   | CommonErrors;
@@ -14078,6 +14100,7 @@ export const deleteBucket: API.OperationMethod<
     RequestLimitExceeded,
     SlowDown,
     BucketNotEmpty,
+    BucketHasAccessPointsAttached,
     NoSuchBucket,
     PermanentRedirect,
   ],
@@ -20806,4 +20829,5 @@ export const writeGetObjectResponse: API.OperationMethod<
   output: WriteGetObjectResponseResponse,
   errors: [],
   operationName: "WriteGetObjectResponse",
+  endpointHostPrefix: "{RequestRoute}.",
 }));
