@@ -46,6 +46,7 @@ For larger SDKs its very likely you hit 5hr limits on claude, you can just run t
 | [`@distilled.cloud/mongodb-atlas`](./packages/mongodb-atlas) | MongoDB Atlas SDK from OpenAPI spec |
 | [`@distilled.cloud/neon`](./packages/neon) | Neon serverless Postgres SDK from OpenAPI spec |
 | [`@distilled.cloud/planetscale`](./packages/planetscale) | PlanetScale MySQL SDK from OpenAPI spec |
+| [`@distilled.cloud/polar`](./packages/polar) | Polar billing SDK from OpenAPI spec (products, subscriptions, meters, events, checkouts) |
 | [`@distilled.cloud/prisma-postgres`](./packages/prisma-postgres) | Prisma Postgres SDK from OpenAPI spec |
 | [`@distilled.cloud/stripe`](./packages/stripe) | Stripe SDK from OpenAPI spec |
 | [`@distilled.cloud/supabase`](./packages/supabase) | Supabase Management API SDK from OpenAPI spec |
