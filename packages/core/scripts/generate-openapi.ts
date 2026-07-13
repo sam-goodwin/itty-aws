@@ -1385,7 +1385,12 @@ function generateInputSchema3(
     }
     if (bodyContent?.schema) {
       let bodySchema = bodyContent.schema;
-      if (bodySchema.$ref) {
+      // Unwrap chained `$ref`s (e.g. Polar's `CheckoutCreate` → `$ref`
+      // `CheckoutProductsCreate`). Resolving only once leaves a bare-ref
+      // schema with no `properties`/`oneOf`, degenerating to an empty body.
+      const seenBodyRefs = new Set<string>();
+      while (bodySchema.$ref && !seenBodyRefs.has(bodySchema.$ref)) {
+        seenBodyRefs.add(bodySchema.$ref);
         bodySchema = resolveRef(spec, bodySchema.$ref);
       }
 
@@ -1413,6 +1418,53 @@ function generateInputSchema3(
           type: "object",
           properties: mergedProps,
           required: [...new Set(mergedRequired)],
+        };
+      }
+
+      // Flatten a top-level `oneOf`/`anyOf` request body — a discriminated
+      // union like Polar's `CustomerCreate` / `ProductCreate` — into a single
+      // permissive struct: the union of every branch's properties, marking a
+      // field required only when it is required in EVERY branch (so a shared
+      // field like `name` stays required while variant-only fields like
+      // `email` / `recurring_interval` become optional). Without this a union
+      // body has no `.properties` and degenerates to an EMPTY input schema —
+      // the operation compiles but can never send its body.
+      const bodyBranches = bodySchema.oneOf ?? bodySchema.anyOf;
+      if (!bodySchema.properties && bodyBranches && bodyBranches.length > 0) {
+        const mergedProps: Record<string, SchemaObject> = {};
+        const requiredSets: Set<string>[] = [];
+        for (const branch of bodyBranches) {
+          const resolved = branch.$ref
+            ? (resolveRef(spec, branch.$ref) as SchemaObject)
+            : branch;
+          const branchProps: Record<string, SchemaObject> = {
+            ...resolved.properties,
+          };
+          const branchRequired: string[] = [...(resolved.required ?? [])];
+          // A branch may itself be an `allOf` — merge those props too.
+          for (const sub of resolved.allOf ?? []) {
+            const resolvedSub = sub.$ref
+              ? (resolveRef(spec, sub.$ref) as SchemaObject)
+              : sub;
+            if (resolvedSub.properties) {
+              Object.assign(branchProps, resolvedSub.properties);
+            }
+            if (resolvedSub.required) {
+              branchRequired.push(...resolvedSub.required);
+            }
+          }
+          Object.assign(mergedProps, branchProps);
+          requiredSets.push(new Set(branchRequired));
+        }
+        // Required only where required in every branch (intersection).
+        const requiredEverywhere = Object.keys(mergedProps).filter((key) =>
+          requiredSets.every((set) => set.has(key)),
+        );
+        bodySchema = {
+          ...bodySchema,
+          type: "object",
+          properties: mergedProps,
+          required: requiredEverywhere,
         };
       }
 
