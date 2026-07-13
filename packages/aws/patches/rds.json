@@ -5,6 +5,12 @@
     },
     "modifyDBInstance": {
       "errors": ["InvalidParameterCombination", "InvalidParameterValue"]
+    },
+    "createDBCluster": {
+      "errors": ["InvalidParameterCombination", "InvalidParameterValue"]
+    },
+    "modifyDBCluster": {
+      "errors": ["InvalidParameterCombination", "InvalidParameterValue"]
     }
   },
   "errors": {
