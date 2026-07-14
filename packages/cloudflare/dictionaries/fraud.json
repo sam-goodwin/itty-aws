@@ -1,8 +1,0 @@
-{
-  "authenticationSettings": "authentication_settings",
-  "failureCriteria": "failure_criteria",
-  "statusCodes": "status_codes",
-  "successCriteria": "success_criteria",
-  "userProfiles": "user_profiles",
-  "usernameExpressions": "username_expressions"
-}

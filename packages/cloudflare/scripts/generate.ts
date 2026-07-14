@@ -819,22 +819,16 @@ const command = Command.make(
           }
         }
 
-        // Per-service fallback key dictionary (written by
-        // import-distilled-patches.ts), attached to op I/O roots.
-        const dictPath = path.join(root, "dictionaries", `${resource}.json`);
-        const keyDictionary = (yield* fs.exists(dictPath))
-          ? (JSON.parse(yield* fs.readFileString(dictPath)) as Record<
-              string,
-              string
-            >)
-          : undefined;
-        const aliasPath = path.join(root, "aliases", `${resource}.json`);
-        const opAliases = (yield* fs.exists(aliasPath))
-          ? (JSON.parse(yield* fs.readFileString(aliasPath)) as Array<{
-              alias: string;
-              target: string;
-            }>)
-          : undefined;
+        // Per-service fallback key dictionary and route aliases, patched
+        // into the model's metadata by patches/<resource>/_metadata.json
+        // (written by import-distilled-patches.ts). The dictionary attaches
+        // to op I/O roots; the aliases become re-exports.
+        const keyDictionary = model.metadata?.keyDictionary as
+          | Record<string, string>
+          | undefined;
+        const opAliases = model.metadata?.opAliases as
+          | Array<{ alias: string; target: string }>
+          | undefined;
 
         const { code, operations } = generateModel(
           model,

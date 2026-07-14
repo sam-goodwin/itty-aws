@@ -1,7 +1,0 @@
-{
-  "expiresOn": "expires_on",
-  "privateKey": "private_key",
-  "serialNumber": "serial_number",
-  "updatedAt": "updated_at",
-  "uploadedOn": "uploaded_on"
-}

@@ -1,7 +1,0 @@
-{
-  "lingeringSubscribe": "lingering_subscribe",
-  "maxTimeoutMs": "max_timeout_ms",
-  "originFallback": "origin_fallback",
-  "tokenPublishSubscribe": "token_publish_subscribe",
-  "tokenSubscribe": "token_subscribe"
-}

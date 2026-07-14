@@ -1,9 +1,0 @@
-{
-  "expiresOn": "expires_on",
-  "perPage": "per_page",
-  "requestType": "request_type",
-  "requestedValidity": "requested_validity",
-  "resultInfo": "result_info",
-  "revokedAt": "revoked_at",
-  "totalCount": "total_count"
-}

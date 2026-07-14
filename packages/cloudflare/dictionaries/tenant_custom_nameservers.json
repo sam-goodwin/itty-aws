@@ -1,6 +1,0 @@
-{
-  "dnsRecords": "dns_records",
-  "nsName": "ns_name",
-  "nsSet": "ns_set",
-  "zoneTag": "zone_tag"
-}

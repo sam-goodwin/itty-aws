@@ -1,6 +1,0 @@
-[
-  {
-    "alias": "listTokenPermissionGroups",
-    "target": "getTokenPermissionGroup"
-  }
-]

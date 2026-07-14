@@ -1,8 +1,0 @@
-{
-  "checkPresence": "check_presence",
-  "createdOn": "created_on",
-  "deviceType": "device_type",
-  "modifiedOn": "modified_on",
-  "queryString": "query_string",
-  "statusCode": "status_code"
-}

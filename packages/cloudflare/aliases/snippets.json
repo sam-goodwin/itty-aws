@@ -1,6 +1,0 @@
-[
-  {
-    "alias": "listRules",
-    "target": "getRule"
-  }
-]
