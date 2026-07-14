@@ -1,4 +1,4 @@
-const annotationMetaSymbol = Symbol.for(
+export const annotationMetaSymbol = Symbol.for(
   "@distilled.cloud/core/annotation-meta",
 );
 
@@ -12,7 +12,12 @@ export interface Annotation {
   readonly [key: symbol]: unknown;
 }
 
-function makeAnnotation<T>(sym: symbol, value: T): Annotation {
+/**
+ * Build a pipeable schema annotation carrying `value` under `sym`. Exported
+ * so SDK packages can define their own protocol traits (e.g. cloudflare's
+ * envelope traits) with the same mechanics as the generic ones here.
+ */
+export function makeAnnotation<T>(sym: symbol, value: T): Annotation {
   const fn = <A extends Annotatable>(schema: A): A =>
     schema.annotate({ [sym]: value }) as A;
   (fn as any)[annotationMetaSymbol] = [{ symbol: sym, value }];
@@ -74,7 +79,90 @@ export const Body = (name?: string) => makeAnnotation(bodySymbol, name ?? true);
 export const querySymbol = Symbol.for("@distilled.cloud/core/http/query");
 export const Query = (name?: string) =>
   makeAnnotation(querySymbol, name ?? true);
+
+export const httpBodySymbol = Symbol.for("@distilled.cloud/core/http-body");
+/**
+ * Marks the input member whose value IS the entire request body (raw arrays/
+ * scalars — e.g. endpoints that POST a bare JSON array). Mirrors
+ * `smithy.api#httpPayload`.
+ */
+export const HttpBody = () => makeAnnotation(httpBodySymbol, true);
+
+export const formDataFileSymbol = Symbol.for(
+  "@distilled.cloud/core/form-data-file",
+);
+/**
+ * Marks an input member holding `File`/`Blob` parts for a multipart upload
+ * (`Http({ contentType: "multipart" })`). Each file is appended to the form
+ * under its own filename.
+ */
+export const FormDataFile = () => makeAnnotation(formDataFileSymbol, true);
 //#endregion
 
 //#region Generic JSON traits
+
+export const keyDictionarySymbol = Symbol.for(
+  "@distilled.cloud/core/key-dictionary",
+);
+/**
+ * Deep TS-name→wire-name key dictionary for members whose full structure is
+ * not modeled (opaque `Document` content). The protocol renames any matching
+ * key at any depth on encode (and the reverse on decode); keys not in the
+ * dictionary pass through verbatim.
+ */
+export const KeyDictionary = (dict: Record<string, string>) =>
+  makeAnnotation(keyDictionarySymbol, dict);
+
+export const unionCasesSymbol = Symbol.for("@distilled.cloud/core/union-cases");
+/**
+ * Marks an opaque schema standing in for a discriminated union of object
+ * cases, carrying each case's TS-facing key set. For APIs that return every
+ * case's keys with `null` for the inactive ones, the protocol uses these key
+ * sets to pick the active case and drop the others, so consumers' `"key" in
+ * value` discrimination works.
+ */
+export const UnionCases = (cases: ReadonlyArray<ReadonlyArray<string>>) =>
+  makeAnnotation(unionCasesSymbol, cases);
+//#endregion
+
+//#region Error matcher traits
+
+export const errorMatchersSymbol = Symbol.for(
+  "@distilled.cloud/core/error-matchers",
+);
+
+/**
+ * One wire-matching rule for a typed error class. A matcher matches a wire
+ * failure when every present field matches: `code` equals the wire error's
+ * code, `status` equals the HTTP status, and `message` either equals the
+ * error message (string form) or satisfies `includes` (substring) /
+ * `matches` (regex). A matcher with no fields matches nothing.
+ */
+export interface ErrorMatcher {
+  readonly code?: number;
+  readonly status?: number;
+  readonly message?:
+    | string
+    | { readonly includes?: string; readonly matches?: string };
+}
+
+/**
+ * Stamp wire-matching rules onto a generated error class. Protocols consult
+ * these to decide which of an operation's declared error classes a failed
+ * response should surface as (most specific matcher wins; ties break by
+ * declaration order — see `matchTypedError` in `core/protocol-http`).
+ */
+export const applyErrorMatchers = <C>(
+  cls: C,
+  matchers: ReadonlyArray<ErrorMatcher>,
+): C => {
+  (cls as any)[errorMatchersSymbol] = matchers;
+  return cls;
+};
+
+/** Read the matchers stamped on an error class, if any. */
+export const getErrorMatchers = (
+  cls: unknown,
+): ReadonlyArray<ErrorMatcher> | undefined =>
+  (cls as any)?.[errorMatchersSymbol];
 //#endregion
