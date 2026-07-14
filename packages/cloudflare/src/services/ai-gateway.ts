@@ -109,7 +109,13 @@ export class RouteAlreadyExists extends T.applyErrorMatchers(
     code: Schema.Number,
     message: Schema.String,
   }),
-  [{ code: 7005, message: { includes: "already exists" } }],
+  [
+    { code: 7005, message: { includes: "already exists" } },
+    {
+      status: 500,
+      message: { includes: "UNIQUE constraint failed: routes.name" },
+    },
+  ],
 ) {}
 
 export class RouteNotFound extends T.applyErrorMatchers(

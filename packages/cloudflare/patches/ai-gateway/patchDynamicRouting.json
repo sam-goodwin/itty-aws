@@ -4,7 +4,11 @@
       { "code": 7005, "message": { "includes": "not found" } }
     ],
     "RouteAlreadyExists": [
-      { "code": 7005, "message": { "includes": "already exists" } }
+      { "code": 7005, "message": { "includes": "already exists" } },
+      {
+        "status": 500,
+        "message": { "includes": "UNIQUE constraint failed: routes.name" }
+      }
     ]
   },
   "response": {
