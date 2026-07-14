@@ -341,15 +341,28 @@ const GLOBAL_ERROR_CODE_MAP: Record<
   9103: (message) => new Unauthorized({ message }),
   9106: (message) => new Unauthorized({ message }),
   9109: (message) => new Unauthorized({ message }),
-  // Deliberately NOT retryable: the same message covers transient auth-edge
-  // blips and genuinely invalid tokens.
-  10000: (message) => new Unauthorized({ message }),
-  // Dual-use: "Method not allowed for token" is a real permission denial;
-  // "internal error" is a CF hiccup mistagged as 403 — only that variant is
-  // tagged retryable.
+  // "Authentication error" is tagged retryable: under high request
+  // concurrency Cloudflare intermittently rejects valid, long-lived tokens
+  // with this message (the same call against the same zone succeeds in
+  // isolation — verified in alchemy's provider suite, which previously
+  // carried this as a custom retry predicate). A genuinely invalid token
+  // produces the same message persistently, but the default retry policy is
+  // bounded, so it still fails within seconds of backoff instead of looping;
+  // the win is that valid tokens stop flaking under load.
+  10000: (message) => {
+    const error = new Unauthorized({ message });
+    return /authentication error/i.test(message) ? tagRetryable(error) : error;
+  },
+  // Dual-use: "Method not allowed for token" is a real permission denial
+  // (NOT retryable); "internal error" is a CF hiccup mistagged as 403, and
+  // "Unable to authenticate request" is a transient auth/edge blip against
+  // otherwise-valid credentials (real credential problems surface as code
+  // 10000 instead) — those two variants are tagged retryable.
   10001: (message) => {
     const error = new Forbidden({ message });
-    return /internal error/i.test(message) ? tagRetryable(error) : error;
+    return /internal error|unable to authenticate request/i.test(message)
+      ? tagRetryable(error)
+      : error;
   },
   // "Invalid request: invalid route" — a path component (typically
   // accountId/zoneId) doesn't resolve to a real resource.
